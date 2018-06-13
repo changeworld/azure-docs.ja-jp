@@ -1,11 +1,11 @@
 ---
-title: ".NET Framework を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs"
-description: ".NET Framework で Event Hubs にイベントを送信してみる"
+title: .NET Framework を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
+description: .NET Framework で Event Hubs にイベントを送信してみる
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984988"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs にイベントを送信する
 
@@ -45,7 +46,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 2. ソリューション エクスプローラーで **[Sender]** プロジェクトを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。 
-3. **[参照]** タブをクリックして、`WindowsAzure.ServiceBus` を検索します。 **[インストール]**をクリックして、使用条件に同意します。 
+3. **[参照]** タブをクリックして、`WindowsAzure.ServiceBus` を検索します。 **[インストール]** をクリックして、使用条件に同意します。 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    

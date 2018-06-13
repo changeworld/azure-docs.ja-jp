@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager を使用した Redis Cache のプロビジョニング | Microsoft Docs"
-description: "Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。"
+title: Azure Resource Manager を使用した Redis Cache のプロビジョニング | Microsoft Docs
+description: Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910743"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>テンプレートを使用して Redis Cache を作成する
 このトピックでは、Azure Redis Cache をデプロイする Azure Resource Manager のテンプレートを作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。

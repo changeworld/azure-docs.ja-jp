@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault - CLI で論理的な削除を使用する方法"
-description: "CLI コード スニペットを使用した論理的な削除のユース ケース"
+ms.assetid: ''
+title: Azure Key Vault - CLI で論理的な削除を使用する方法
+description: CLI コード スニペットを使用した論理的な削除のユース ケース
 author: lleonard-msft
 manager: mbaldwin
 ms.service: key-vault
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927976"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 

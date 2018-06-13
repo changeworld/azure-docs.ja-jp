@@ -1,12 +1,12 @@
 ---
-title: "VM のネットワーク スループットの最適化 | Microsoft Docs"
-description: "Azure 仮想マシンのネットワーク スループットを最適化する方法について説明します。"
+title: VM のネットワーク スループットの最適化 | Microsoft Docs
+description: Azure 仮想マシンのネットワーク スループットを最適化する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29132893"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 

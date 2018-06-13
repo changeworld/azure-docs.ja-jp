@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus メッセージの有効期限の設定 | Microsoft Docs"
-description: "Azure Service Bus メッセージの Time to Live と有効期限の設定"
+title: Azure Service Bus メッセージの有効期限の設定 | Microsoft Docs
+description: Azure Service Bus メッセージの Time to Live と有効期限の設定
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196770"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 

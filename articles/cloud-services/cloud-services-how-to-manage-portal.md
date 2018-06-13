@@ -1,11 +1,11 @@
 ---
-title: "一般的なクラウド サービス管理タスク | Microsoft Docs"
-description: "Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。"
+title: 一般的なクラウド サービス管理タスク | Microsoft Docs
+description: Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121197"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。

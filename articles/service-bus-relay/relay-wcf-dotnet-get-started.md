@@ -1,11 +1,11 @@
 ---
-title: ".NET での Azure Relay WCF リレーの概要 | Microsoft Docs"
-description: "Azure Relay WCF リレーを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。"
+title: .NET での Azure Relay WCF リレーの概要 | Microsoft Docs
+description: Azure Relay WCF リレーを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
 ms.service: service-bus-relay
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26856084"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>.NET で Azure Relay WCF リレーを使用する方法
 この記事では、Azure Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Azure Relay の詳細については、[Azure Relay の概要](relay-what-is-it.md)に関するページをご覧ください。

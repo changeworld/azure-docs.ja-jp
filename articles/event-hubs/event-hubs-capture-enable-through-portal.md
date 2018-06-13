@@ -1,12 +1,12 @@
 ---
-title: "ポータルを使用した Azure Event Hubs Capture の有効化 | Microsoft Docs"
-description: "Azure Portal を使用して Event Hubs Capture 機能を有効にします。"
+title: ポータルを使用した Azure Event Hubs Capture の有効化 | Microsoft Docs
+description: Azure Portal を使用して Event Hubs Capture 機能を有効にします。
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855013"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs Capture を有効にする
 

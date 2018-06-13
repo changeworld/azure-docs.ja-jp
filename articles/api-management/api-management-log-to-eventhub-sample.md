@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management、Event Hubs、Runscope を使用した API の監視 | Microsoft Docs"
-description: "このサンプル アプリケーションでは、HTTP のログ記録および監視用に Azure API Management、Azure Event Hubs、および Runscope を関連付けた log-to-eventhub ポリシーの実例を示します"
+title: Azure API Management、Event Hubs、Runscope を使用した API の監視 | Microsoft Docs
+description: このサンプル アプリケーションでは、HTTP のログ記録および監視用に Azure API Management、Azure Event Hubs、および Runscope を関連付けた log-to-eventhub ポリシーの実例を示します
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: darrelmiller
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c528cf6f-5f16-4a06-beea-fa1207541a47
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117070"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。

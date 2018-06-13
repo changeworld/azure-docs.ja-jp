@@ -1,9 +1,9 @@
 ---
-title: "管理ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs"
-description: "スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換します。"
-keywords: "仮想マシン スケール セット"
+title: 管理ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs
+description: スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換します。
+keywords: 仮想マシン スケール セット
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781073"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換する
 

@@ -1,11 +1,11 @@
 ---
-title: "Service Bus の配信不能キュー | Microsoft Docs"
-description: "Azure Service Bus の配信不能キューの概要"
+title: Service Bus の配信不能キュー | Microsoft Docs
+description: Azure Service Bus の配信不能キューの概要
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28925664"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 

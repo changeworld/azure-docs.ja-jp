@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションのサンプル プロジェクト | Microsoft Docs"
-description: "Azure マネージ アプリケーションの利用可能なサンプル プロジェクトの概要について説明します"
+title: Azure マネージ アプリケーションのサンプル プロジェクト | Microsoft Docs
+description: Azure マネージ アプリケーションの利用可能なサンプル プロジェクトの概要について説明します
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26753062"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Azure マネージ アプリケーションのサンプル プロジェクト
 

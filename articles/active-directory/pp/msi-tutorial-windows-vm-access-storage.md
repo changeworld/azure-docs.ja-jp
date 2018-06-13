@@ -1,8 +1,8 @@
 ---
-title: "Windows VM の MSI を使用した Azure Storage へのアクセス"
-description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。"
+title: Windows VM の MSI を使用した Azure Storage へのアクセス
+description: Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984835"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Windows VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 

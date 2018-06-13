@@ -1,8 +1,8 @@
 ---
-title: "Windows VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする"
-description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。"
+title: Windows VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする
+description: Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28979988"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Windows VM 管理対象サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする
 

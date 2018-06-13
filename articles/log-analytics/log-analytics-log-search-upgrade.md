@@ -1,11 +1,11 @@
 ---
-title: "新しいログ検索への Azure Log Analytics のアップグレード | Microsoft Docs"
-description: "新しい Log Analytics クエリ言語の準備がほぼ整ったので、パブリック プレビューに参加できます。  この記事では、新しい言語の利点、およびワークスペースを変換する方法について説明します。"
+title: 新しいログ検索への Azure Log Analytics のアップグレード | Microsoft Docs
+description: 新しい Log Analytics クエリ言語の準備がほぼ整ったので、パブリック プレビューに参加できます。  この記事では、新しい言語の利点、およびワークスペースを変換する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28983990"
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>新しいログ検索への Azure Log Analytics のアップグレード
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs .NET Standard API の概要 | Microsoft Docs"
-description: ".NET Standard API の概要"
+title: Azure Event Hubs .NET Standard API の概要 | Microsoft Docs
+description: .NET Standard API の概要
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a173f8e4-556c-42b8-b856-838189f7e636
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783001"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 

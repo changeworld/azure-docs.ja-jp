@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ　サポート パッケージの作成 | Microsoft Docs"
-description: "StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。"
+title: StorSimple 8000 シリーズ　サポート パッケージの作成 | Microsoft Docs
+description: StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743580"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -50,7 +51,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_です。
      
       ![PowerShell の [資格情報] ダイアログ ボックス](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. **[OK]**を選択します。
+   3. **[OK]** を選択します。
    4. コマンド プロンプトに、次のコマンドを入力します。
      
       `Enter-PSSession $MS`

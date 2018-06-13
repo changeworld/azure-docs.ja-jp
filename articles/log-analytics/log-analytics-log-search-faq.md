@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics の新しいログ検索についてよく寄せられる質問 | Microsoft Docs"
-description: "この記事では、よく寄せられる新しいクエリ言語への Log Analytics のアップグレードに関する質問について説明します。"
+title: Log Analytics の新しいログ検索についてよく寄せられる質問 | Microsoft Docs
+description: この記事では、よく寄せられる新しいクエリ言語への Log Analytics のアップグレードに関する質問について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993871"
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics の新しいログ検索についての FAQ と既知の問題
 

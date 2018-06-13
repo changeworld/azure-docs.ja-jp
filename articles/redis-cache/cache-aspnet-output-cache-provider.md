@@ -1,6 +1,6 @@
 ---
-title: "Cache ASP.NET 出力キャッシュ プロバイダー"
-description: "Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。"
+title: Cache ASP.NET 出力キャッシュ プロバイダー
+description: Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909824"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
 Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。

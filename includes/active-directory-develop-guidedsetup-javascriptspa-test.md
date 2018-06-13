@@ -11,7 +11,7 @@ Visual Studio を使用していない場合は、お使いの Web サーバー�
 ```bash
 python -m http.server 8080
 ```
-ブラウザーを開き、「http://<span></span>localhost:8080」または「http://<span></span>localhost:{ポート}」と入力します (ここで、**"ポート"**は Web サーバーがリッスンしているポートです)。 index.html ファイルのコンテンツと **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンが表示されます。
+ブラウザーを開き、「http://<span></span>localhost:8080」または「http://<span></span>localhost:{ポート}」と入力します (ここで、**"ポート"** は Web サーバーがリッスンしているポートです)。 index.html ファイルのコンテンツと **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンが表示されます。
 
 ## <a name="test-your-application"></a>アプリケーションのテスト
 

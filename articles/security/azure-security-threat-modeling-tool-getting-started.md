@@ -1,6 +1,6 @@
 ---
-title: "概要 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "ここでは、Threat Modeling Tool の動作を中心にして、より深い概要を説明します。"
+title: 概要 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: ここでは、Threat Modeling Tool の動作を中心にして、より深い概要を説明します。
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754188"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
@@ -41,7 +42,7 @@ Threat Modeling Tool を起動すると、次の図のようにいくつかの�
 
 | コンポーネント                                   | 詳細                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[Feedback, Suggestions and Issues]\(フィードバック、提案、問題\) ボタン** | すべての SDL の **[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)**が表示されます。 他のユーザーが実行していること、回避策、推奨事項を読むことができます。 探している情報が見つからない場合は、サポート チーム (tmtextsupport@microsoft.com) に電子メールで問い合わせてください。                                                                                                                            |
+| **[Feedback, Suggestions and Issues]\(フィードバック、提案、問題\) ボタン** | すべての SDL の **[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** が表示されます。 他のユーザーが実行していること、回避策、推奨事項を読むことができます。 探している情報が見つからない場合は、サポート チーム (tmtextsupport@microsoft.com) に電子メールで問い合わせてください。                                                                                                                            |
 | **Create a Model (モデルの作成)**                          | ダイアグラムを描画できる空白のキャンバスが開きます。 実際のモデルで使用したいテンプレートを選択してください。                                                                                                                                                                                                                                                                                                                                                                       |
 | **Template for New Models (新しいモデル用のテンプレート)**                 | モデルを作成する前に、テンプレートを選択する必要があります。 メインのテンプレートは Azure Threat Model Template です。Azure 固有のステンシル、脅威、軽減策が含まれています。 汎用的なモデルの場合は、ドロップダウン メニューから [SDL TM Knowledge Base]\(SDL TM ナレッジ ベース\) を選択します。 独自のテンプレートを作成する場合、または全ユーザーが使用できるように新しいテンプレートを提出する場合は、 「**[Template Repository](https://github.com/Microsoft/threat-modeling-templates)**」(テンプレート レポジトリ) GitHub ページで詳細を確認してください。                              |
 | **Open a Model (モデルを開く)**                            | <p>以前に保存した脅威モデルを開きます。 [Recently Opened Models]\(最近開いたモデル\) 機能は、最近使ったファイルを開く必要がある場合に便利です。 この項目にマウスを移動すると、モデルを開く方法が 2 つ表示されます。</p><p><ul><li>[Open From this Computer]\(このコンピューターから開く\) - ローカル記憶域を使用するファイルを開く従来の方法です</li><li>[Open from OneDrive]\(OneDrive から開く\) - チームで OneDrive 内のフォルダーを使用して 1 個所にすべての脅威モデルを保存し、共有することで、生産性を向上し、コラボレーションに利用することができます。</li></ul></p> |
@@ -142,4 +143,4 @@ Azure テンプレートの詳細情報には、説明、例、Azure 固有の�
 
 ## <a name="next-steps"></a>次の手順
 
-ご質問、ご意見、懸念事項は tmtextsupport@microsoft.com に送信してください。**[Threat Modeling Tool をダウンロード](https://aka.ms/tmtpreview)**すると、すぐに使い始めることができます。
+ご質問、ご意見、懸念事項は tmtextsupport@microsoft.com に送信してください。**[Threat Modeling Tool をダウンロード](https://aka.ms/tmtpreview)** すると、すぐに使い始めることができます。

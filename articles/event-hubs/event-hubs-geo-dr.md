@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs geo ディザスター リカバリー | Microsoft Docs"
-description: "Azure Event Hubs でリージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法"
+title: Azure Event Hubs geo ディザスター リカバリー | Microsoft Docs
+description: Azure Event Hubs でリージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745896"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs geo ディザスター リカバリー
 

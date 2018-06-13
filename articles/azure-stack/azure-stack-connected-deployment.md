@@ -1,12 +1,12 @@
 ---
-title: "Azure Stack 統合システムの Azure に接続されたデプロイの決定 | Microsoft Docs"
-description: "マルチノード Azure Stack の Azure に接続されたデプロイのためのデプロイ計画の決定を確認します。"
+title: Azure Stack 統合システムの Azure に接続されたデプロイの決定 | Microsoft Docs
+description: マルチノード Azure Stack の Azure に接続されたデプロイのためのデプロイ計画の決定を確認します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120388"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure に接続されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。

@@ -1,12 +1,12 @@
 ---
-title: "Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー) | Microsoft Docs"
-description: "この記事では、Security Center の評価をカスタマイズする方法について説明します"
+title: Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー) | Microsoft Docs
+description: この記事では、Security Center の評価をカスタマイズする方法について説明します
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200012"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 

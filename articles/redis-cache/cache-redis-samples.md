@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache のサンプル | Microsoft Docs"
-description: "Azure Redis Cache の使用方法について説明します"
+title: Azure Redis Cache のサンプル | Microsoft Docs
+description: Azure Redis Cache の使用方法について説明します
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909698"
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis Cache のサンプル
 このトピックでは、キャッシュへの接続、キャッシュ内のデータの読み取りと書き込み、ASP.NET Redis Cache プロバイダーの使用などのシナリオを対象とする、Azure Redis Cache のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
