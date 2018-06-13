@@ -1,23 +1,24 @@
 ---
-title: "Azure ハイブリッド ID ソリューションの選択 | Microsoft Docs"
-description: "組織に最適な ID ガバナンスの決定を行えるように、ハイブリッド ID ソリューションの基本および推奨事項について説明します。"
-keywords: 
+title: Azure ハイブリッド ID ソリューションの選択 | Microsoft Docs
+description: 組織に最適な ID ガバナンスの決定を行えるように、ハイブリッド ID ソリューションの基本および推奨事項について説明します。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800739"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft ハイブリッド ID ソリューション
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、同期済み ID を使用するかフェデレーション済み ID を使用するかです。 同期済み ID (およびオプションでパスワード ハッシュ) を使用すると、ユーザーは、オンプレミスとクラウドベースの両方の組織リソースへのアクセスに同じパスワードを使用できます。 シングル サインオン (SSO) やオンプレミスの MFA などのより高度なシナリオ要件では、Active Directory フェデレーション サービス (AD FS) をフェデレーション済み ID にデプロイする必要があります。 

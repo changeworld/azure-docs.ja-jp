@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246459"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する
 このスクリプトでは、Ubuntu オペレーティング システムおよびロード バランサーなどの関連ネットワーク リソースを持つ Azure 仮想マシン スケール セットを作成します。 スクリプトを実行すると、SSH で VM インスタンスにアクセスできるようになります。

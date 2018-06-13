@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI のサンプル スクリプト - スナップショットから VM を作成する | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - スナップショットから VM を作成します"
+title: Azure CLI のサンプル スクリプト - スナップショットから VM を作成する | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - スナップショットから VM を作成します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: ramankum
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847500"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>CLI でスナップショットから仮想マシンを作成する
 

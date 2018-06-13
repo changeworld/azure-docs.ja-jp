@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 デバイスをトラブルシューティングする診断ツール | Microsoft Docs"
-description: "StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。"
+title: StorSimple 8000 デバイスをトラブルシューティングする診断ツール | Microsoft Docs
+description: StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27744114"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 

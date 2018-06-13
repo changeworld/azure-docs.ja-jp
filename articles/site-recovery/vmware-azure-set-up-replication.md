@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811109"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>VMware レプリケーションのレプリケーション ポリシーの構成と管理
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM を Azure に レプリケートする場合の、レプリケーション ポリシーの構成方法について説明します。
@@ -46,5 +47,5 @@ ms.lasthandoff: 03/08/2018
 ## <a name="disassociate-or-delete-a-replication-policy"></a>レプリケーション ポリシーの関連付け解除と削除
 1. レプリケーション ポリシーを選択します。
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 構成サーバーからポリシーの関連付けを解除するには、まずレプリケートされたマシンでそのポリシーが使用されていないことを確認します。 その後、**[関連付けの解除]** をクリックします。
-    b. ポリシーを削除するには、まずそのポリシーが構成サーバーに関連付けられていないことを確認します。 その後、 **[削除]**をクリックします。 削除には 30 ～ 60 秒かかります。
+    b. ポリシーを削除するには、まずそのポリシーが構成サーバーに関連付けられていないことを確認します。 その後、 **[削除]** をクリックします。 削除には 30 ～ 60 秒かかります。
 2. Click **OK**.

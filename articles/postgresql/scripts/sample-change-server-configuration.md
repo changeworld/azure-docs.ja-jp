@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI スクリプト - サーバーの構成を変更する"
-description: "このサンプル CLI スクリプトは、すべての利用可能なサーバー構成オプションを一覧表示し、1 つのオプションの値を更新します。"
+title: Azure CLI スクリプト - サーバーの構成を変更する
+description: このサンプル CLI スクリプトは、すべての利用可能なサーバー構成オプションを一覧表示し、1 つのオプションの値を更新します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29850839"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for PostgreSQL サーバーのすべての利用可能な構成パラメーターと、許容値を一覧表示し、*log_retention_days* を既定値以外の値に設定します。

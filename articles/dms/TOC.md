@@ -13,11 +13,11 @@
 
 # リソース
 ## [ユーザーの声によるフィードバック](https://feedback.azure.com/forums/906100-azure-database-migration-service)
-## [Azure のロードマップ](https://azure.microsoft.com/en-us/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [データベース移行ガイド](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [料金](https://aka.ms/dms-pricing)
 ## [前提条件の概要](pre-reqs.md)
 ## [FAQ](faq.md)
-## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=database-migration)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=database-migration)
 ## [Azure SQL DB マネージ インスタンスへの移行のネットワーク トポロジ](resource-network-topologies.md)

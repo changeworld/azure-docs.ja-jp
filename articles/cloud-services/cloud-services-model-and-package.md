@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービス モデルとパッケージ | Microsoft Docs"
-description: "Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。"
+title: クラウド サービス モデルとパッケージ | Microsoft Docs
+description: Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876561"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
 クラウド サービスは、サービス定義 *(.csdef)*、サービスの構成 *(.cscfg)*、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。

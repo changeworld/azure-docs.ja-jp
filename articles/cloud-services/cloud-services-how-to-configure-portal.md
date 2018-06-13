@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874323"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
 
@@ -101,7 +102,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 4. サービス構成ファイルを更新した後、次のステップでファイルをアップロードして構成の更新内容を適用します。
 
     ![アップロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-5. .cscfg ファイルを選択し、 **[OK]**をクリックします。
+5. .cscfg ファイルを選択し、 **[OK]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

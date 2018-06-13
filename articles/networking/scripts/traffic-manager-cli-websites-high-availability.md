@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング | Microsoft Docs"
-description: "Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング"
+title: Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング | Microsoft Docs
+description: Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
 editor: tysonn
 tags: azure-infrastructure
-ms.assetid: 
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: azurecli
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847354"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>高可用性アプリケーションのためのトラフィックのルーティング
 

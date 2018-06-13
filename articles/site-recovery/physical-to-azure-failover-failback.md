@@ -1,6 +1,6 @@
 ---
-title: "Site Recovery を使用して Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック | Microsoft Docs"
-description: "Azure Site Recovery を使用して、物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。"
+title: Site Recovery を使用して Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用して、物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876013"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -42,7 +43,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 ## <a name="run-a-failover-to-azure"></a>Azure へのフェールオーバーを実行する
 
 1. **[設定]** > **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
-2. **[フェールオーバー]** で、フェールオーバーする**[復旧ポイント]** を選択します。 次のいずれかのオプションを使うことができます。
+2. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。 次のいずれかのオプションを使うことができます。
    - **[最新]** (既定値): 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
    - **[最後に処理があった時点]**: Site Recovery によって処理された最新の復旧ポイントに マシンをフェールオーバーします。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO (目標復旧時間) を低くできます。
    - **[最新のアプリ整合性]**: Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントにマシンをフェールオーバーします。

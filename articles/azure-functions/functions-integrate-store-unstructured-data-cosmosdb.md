@@ -1,14 +1,14 @@
 ---
-title: "Azure Cosmos DB と Functions を使用して非構造化データを格納する | Microsoft Docs"
-description: "Azure Functions と Cosmos DB を使用して非構造化データを格納する"
+title: Azure Cosmos DB と Functions を使用して非構造化データを格納する | Microsoft Docs
+description: Azure Functions と Cosmos DB を使用して非構造化データを格納する
 services: functions
 documentationcenter: functions
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, Cosmos DB, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: 
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, イベント処理, Cosmos DB, 動的コンピューティング, サーバーなしのアーキテクチャ
+ms.assetid: ''
 ms.service: functions
 ms.devlang: csharp
 ms.topic: quickstart
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/11/2018
+ms.locfileid: "27767555"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
