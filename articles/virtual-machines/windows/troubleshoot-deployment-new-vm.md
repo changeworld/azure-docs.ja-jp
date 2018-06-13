@@ -1,11 +1,11 @@
 ---
-title: "Azure での Windows VM デプロイのトラブルシューティング | Microsoft Docs"
-description: "Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング"
+title: Azure での Windows VM デプロイのトラブルシューティング | Microsoft Docs
+description: Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27580373"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -77,7 +78,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
   * 可用性セットのすべての VM を停止します。
     **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
   * すべての VM が停止したら、目的のサイズで新しい VM を作成します。
-  * 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]**をクリックします。
+  * 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]** をクリックします。
 
 **原因 2:** クラスターに空きリソースがない。
 

@@ -1,15 +1,15 @@
 ---
-title: "Azure Windows VM の Azure File Storage をマウントする | Microsoft Docs"
-description: "Azure File Storage があるクラウドにファイルを保存し、Azure 仮想マシン (VM) からクラウド ファイル共有をマウントします。"
-documentationcenter: 
+title: Azure Windows VM の Azure File Storage をマウントする | Microsoft Docs
+description: Azure File Storage があるクラウドにファイルを保存し、Azure 仮想マシン (VM) からクラウド ファイル共有をマウントします。
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577553"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Windows VM で Azure のファイル共有を使用する 
 

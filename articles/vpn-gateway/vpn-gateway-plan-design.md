@@ -1,11 +1,11 @@
 ---
-title: "クロスプレミス接続の計画と設計: Azure VPN Gateway| Microsoft Docs"
-description: "クロスプレミス、ハイブリッド、および VNet 間接続のための VPN ゲートウェイの計画と設計について説明します。"
+title: 'クロスプレミス接続の計画と設計: Azure VPN Gateway| Microsoft Docs'
+description: クロスプレミス、ハイブリッド、および VNet 間接続のための VPN ゲートウェイの計画と設計について説明します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23125480"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>VPN ゲートウェイの計画と設計
 

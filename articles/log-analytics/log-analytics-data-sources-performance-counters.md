@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
-description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。"
+title: Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
+description: Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783164"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -28,7 +29,7 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
 パフォーマンス カウンターは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)から構成します。
 
-新しい Log Analytics ワークスペースの Windows または Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]**をクリックします。
+新しい Log Analytics ワークスペースの Windows または Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]** をクリックします。
 
 Windows のパフォーマンス カウンターの場合、パフォーマンス カウンターごとに特定のインスタンスを選択できます。 Linux のパフォーマンス カウンターの場合、各カウンターに対して選択したインスタンスが、そのすべての子カウンターに適用されます。 次の表は、Linux と Windows の両方のパフォーマンス カウンターで利用できる共通のインスタンスを示しています。
 

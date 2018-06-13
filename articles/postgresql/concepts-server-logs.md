@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL のサーバー ログ"
-description: "この記事では、Azure Database for PostgreSQL がクエリ ログとエラー ログを生成する方法、およびログのリテンション期間を構成する方法について説明します。"
+title: Azure Database for PostgreSQL のサーバー ログ
+description: この記事では、Azure Database for PostgreSQL がクエリ ログとエラー ログを生成する方法、およびログのリテンション期間を構成する方法について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691095"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のサーバー ログ 
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 ただし、トランザクション ログへのアクセスはサポートされていません。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 詳細については、「[Error Reporting and Logging (エラー レポートとログ記録)](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)」を参照してください。
