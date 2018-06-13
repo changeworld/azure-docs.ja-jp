@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export - v1 を使ったプロパティとメタデータの設定 | Microsoft Docs"
-description: "Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。"
+title: Azure Import/Export - v1 を使ったプロパティとメタデータの設定 | Microsoft Docs
+description: Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: e8541695-bcfb-4bf0-84d9-72c9de32a0a8
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059447"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>インポート処理中にプロパティとメタデータを設定する
 Microsoft Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定できます。 次の手順に従います。  

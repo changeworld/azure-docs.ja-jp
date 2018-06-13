@@ -1,8 +1,8 @@
 ---
-title: "Azure Storage のオブジェクトのプロパティおよびメタデータの設定と取得 | Microsoft Docs"
-description: "Azure Storage のオブジェクトにカスタム メタデータを格納して、システムのプロパティを設定、取得します。"
+title: Azure Storage のオブジェクトのプロパティおよびメタデータの設定と取得 | Microsoft Docs
+description: Azure Storage のオブジェクトにカスタム メタデータを格納して、システムのプロパティを設定、取得します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23056057"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>プロパティおよびメタデータを設定および取得する
 

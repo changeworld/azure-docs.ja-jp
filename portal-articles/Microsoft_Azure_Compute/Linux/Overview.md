@@ -1,6 +1,6 @@
 ---
-title: "Linux 仮想マシンの概要 | Microsoft Docs"
-description: "Azure Portal 内にある Linux 仮想マシンの概要に関するヘルプ コンテンツ"
+title: Linux 仮想マシンの概要 | Microsoft Docs
+description: Azure Portal 内にある Linux 仮想マシンの概要に関するヘルプ コンテンツ
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073913"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 

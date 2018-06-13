@@ -1,7 +1,7 @@
 <!--author=SharS last changed: 11/18/16-->
 
 #### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用して通常の更新プログラムをインストールするには
-1. デバイスのシリアル コンソールを開き、オプション 1 の **[フル アクセスによるログイン]**を選択します。 パスワードを入力します。 既定のパスワードは *Password1*です。 
+1. デバイスのシリアル コンソールを開き、オプション 1 の **[フル アクセスによるログイン]** を選択します。 パスワードを入力します。 既定のパスワードは *Password1*です。 
 2. コマンド プロンプトに、次のコマンドを入力します。
    
      `Get-HcsUpdateAvailability`

@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage での BLOB の読み取り専用スナップショットの作成 | Microsoft Docs"
-description: "BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
+title: Azure Storage での BLOB の読み取り専用スナップショットの作成 | Microsoft Docs
+description: BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852933"
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 

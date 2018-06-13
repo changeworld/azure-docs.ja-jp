@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export ドライブ マニフェストのバックアップ | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのドライブ マニフェストを自動的にバックアップする方法について説明します。"
+title: Azure Import/Export ドライブ マニフェストのバックアップ | Microsoft Docs
+description: Microsoft Azure Import/Export サービスのドライブ マニフェストを自動的にバックアップする方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 594abd80-b834-4077-a474-d8a0f4b7928a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059327"
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Azure Import/Export ジョブのドライブ マニフェストのバックアップ
 

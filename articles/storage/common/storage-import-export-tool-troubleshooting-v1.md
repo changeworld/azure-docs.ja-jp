@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export ツールのトラブルシューティング | Microsoft Docs"
-description: "Azure Import/Export ツールを使用する際によく見られるいくつかの問題と対処方法について説明します。"
+title: Azure Import/Export ツールのトラブルシューティング | Microsoft Docs
+description: Azure Import/Export ツールを使用する際によく見られるいくつかの問題と対処方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b91ca5eb-c557-460a-9afc-0590b38471f9
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059367"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Azure Import/Export ツールのトラブルシューティング
 Microsoft Azure Import/Export ツールでは、問題が発生するとエラー メッセージが返されます。 この記事では、ユーザーがよく経験する問題について説明します。  

@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072135"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>異なる Azure リージョン間で仮想ネットワークをマッピングする
 

@@ -1,11 +1,11 @@
 ---
-title: "App Service 環境を使用した geo 分散スケール"
-description: "Traffic Manager および App Service 環境による geo 分散を使用してアプリを水平方向にスケールする方法について説明します。"
+title: App Service 環境を使用した geo 分散スケール
+description: Traffic Manager および App Service 環境による geo 分散を使用してアプリを水平方向にスケールする方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986787"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境を使用した geo 分散スケール
 ## <a name="overview"></a>概要

@@ -1,6 +1,6 @@
 ---
-title: "監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+title: 監査とログ記録 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威の軽減策
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23044407"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム: 監査とログ記録 | 対応策 
 | 製品/サービス | 記事 |

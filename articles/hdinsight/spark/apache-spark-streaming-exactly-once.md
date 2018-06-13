@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164864"
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成
 

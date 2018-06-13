@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のマニフェスト ファイルの形式 | Microsoft Docs"
-description: "Azure Blob Storage の BLOB とインポート/エクスポート サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します。"
+title: Azure Import/Export のマニフェスト ファイルの形式 | Microsoft Docs
+description: Azure Blob Storage の BLOB とインポート/エクスポート サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f3119e1c-2c25-48ad-8752-a6ed4adadbb0
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059737"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export サービスのマニフェスト ファイルの形式
 ドライブ マニフェスト ファイルは、Azure Blob Storage の BLOB とインポートまたはエクスポート ジョブを構成するドライブ上のファイル間のマッピングを表します。 インポート操作の場合、マニフェスト ファイルはドライブの準備プロセスの一部として作成され、ドライブが Azure データ センターに送信される前にそのドライブに格納されます。 エクスポート操作の場合、マニフェストは Azure Import/Export サービスによって作成され、ドライブに保存されます。  

@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics でのカスタム JSON データの収集 | Microsoft Docs"
-description: "カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。"
+title: OMS Log Analytics でのカスタム JSON データの収集 | Microsoft Docs
+description: カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020897"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Log Analytics での OMS Agent for Linux を使用したカスタム JSON データ ソースの収集
 カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30232434"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
@@ -169,7 +170,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * **[Values]\(値\)** を **level** に設定します。
     * **[Aggregation]\(集計\)** を **[COUNT]\(個数\)** に設定します。
 
-    **[Apply]**をクリックします。
+    **[Apply]** をクリックします。
 
 9. 出力は、次のスクリーンショットのようなビジュアル表現になります。
 

@@ -16,6 +16,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171807"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -99,16 +100,16 @@ ms.lasthandoff: 03/23/2018
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
-    b. **[新規作成]**を選択し、リソース グループの名前を入力します。 
+    b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
 
 5. **[バージョン]** で、**[V2 (プレビュー)]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 7. **[ダッシュボードにピン留めする]** をオンにします。 
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 9. ダッシュボードの **[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** タイルに処理の状態が表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-tool/deploying-data-factory.png)
@@ -134,7 +135,7 @@ ms.lasthandoff: 03/23/2018
 
     b. **[ストレージ アカウント名]** ボックスの一覧から目的のストレージ アカウント名を選択します。
 
-    c. **[次へ]**を選択します。 
+    c. **[次へ]** を選択します。 
 
     ![ストレージ アカウントを指定する](./media/tutorial-copy-data-tool/specify-blob-storage-account.png)
 
@@ -148,11 +149,11 @@ ms.lasthandoff: 03/23/2018
 
     c. **[選択]** を選択します。 または、**inputEmp.txt** ファイルをダブルクリックしてもかまいません。
 
-    d. **[次へ]**を選択します。 
+    d. **[次へ]** を選択します。 
 
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-copy-data-tool/choose-input-file-folder.png)
 
-6. **[File format settings]\(ファイル形式設定\)** ページで、列区切り記号と行区切り記号がツールによって自動的に検出されたことを確認します。 **[次へ]**を選択します。 このページでは、データのプレビューと入力データのスキーマの表示を行うこともできます。 
+6. **[File format settings]\(ファイル形式設定\)** ページで、列区切り記号と行区切り記号がツールによって自動的に検出されたことを確認します。 **[次へ]** を選択します。 このページでは、データのプレビューと入力データのスキーマの表示を行うこともできます。 
 
     ![ファイル形式設定](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 7. **[Destination data store]\(コピー先データ ストア\)** ページで **[Azure SQL Database]** を選択し、**[次へ]** を選択します。
@@ -170,7 +171,7 @@ ms.lasthandoff: 03/23/2018
 
     e. **[パスワード]** に、ユーザーのパスワードを入力します。
 
-    f. **[次へ]**を選択します。 
+    f. **[次へ]** を選択します。 
 
     ![SQL データベースを指定する](./media/tutorial-copy-data-tool/specify-azure-sql-database.png)
 

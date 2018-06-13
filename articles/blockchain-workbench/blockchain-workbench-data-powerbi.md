@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 2b909c0a8441010b87c913e5937d25c8127058f1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 321a34589277d62290c2fde680bb461de34b4568
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075172"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
@@ -56,4 +57,5 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Blockchain Workbench のデータベース ビュー](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench のデータベース ビュー](blockchain-workbench-database-views.md)

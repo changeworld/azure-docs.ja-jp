@@ -1,13 +1,13 @@
 ---
-title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN (クラシック): ポータル | Microsoft Docs"
-description: "パブリック インターネットを経由したオンプレミスのネットワークからクラシック Azure 仮想ネットワークへの IPsec 接続を作成します。"
+title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN (クラシック): ポータル | Microsoft Docs'
+description: パブリック インターネットを経由したオンプレミスのネットワークからクラシック Azure 仮想ネットワークへの IPsec 接続を作成します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401074"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 

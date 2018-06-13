@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235021"
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Azure Security Center での Azure Storage アカウント暗号化の有効化
 Azure Security Center は、Azure Storage Service Encryption for Data at Rest の有効化を勧める場合があります。
@@ -43,7 +44,7 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
    ![Enable encryption for storage account][1]
 2. **[Enable storage encryption (ストレージ暗号化の有効化)]** ブレードが開きます。 このブレードには、ストレージの暗号化が無効になっている Azure Storage アカウントが一覧表示されます。 この例では、**storageacct1** を選択します。
    ![Enable storage encryption][2]
-3. **storageacct1**の**[暗号化]** ブレードが開きます。 **[Enabled]**を選択します。
+3. **storageacct1**の **[暗号化]** ブレードが開きます。 **[Enabled]** を選択します。
    ![Encryption blade][3]
 4. **[保存]** を選択します。
 

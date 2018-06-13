@@ -1,6 +1,6 @@
 ---
-title: "Azure 上の Docker"
-description: "Docker をデプロイして Azure と統合する"
+title: Azure 上の Docker
+description: Docker をデプロイして Azure と統合する
 services: multiple
 author: czeumault
 manager: carolz
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23069105"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   

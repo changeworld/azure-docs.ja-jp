@@ -1,6 +1,6 @@
 ---
-title: "Python による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Docs"
-description: "Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
+title: Python による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Docs
+description: Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。
 services: storage
 documentationcenter: python
 author: lakasa
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742644"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Python による Microsoft Azure Storage のクライアント側の暗号化
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

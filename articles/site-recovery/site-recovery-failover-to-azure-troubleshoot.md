@@ -1,12 +1,12 @@
 ---
-title: "Azure へのフェールオーバー障害のトラブルシューティング | Microsoft Docs"
-description: "この記事では、Azure へのフェールオーバー時の一般的なエラーをトラブルシューティングする方法を説明します。"
+title: Azure へのフェールオーバー障害のトラブルシューティング | Microsoft Docs
+description: この記事では、Azure へのフェールオーバー時の一般的なエラーをトラブルシューティングする方法を説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874361"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>仮想マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 仮想マシンから Azure へフェールオーバーを実行中に、次のいずれかのエラーを受け取る可能性があります。 トラブルシューティングするには、各エラー条件に説明されている手順に従います。

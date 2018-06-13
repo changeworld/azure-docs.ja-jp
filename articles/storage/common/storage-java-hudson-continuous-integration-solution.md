@@ -1,6 +1,6 @@
 ---
-title: "Hudson と Blob Storage を使用する方法 | Microsoft Docs"
-description: "Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。"
+title: Hudson と Blob Storage を使用する方法 | Microsoft Docs
+description: Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23060127"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -64,16 +65,16 @@ Hudson CI ソリューションで Blob service を使用するには、次の�
 Hudson で Blob service を使用するには、Azure Storage プラグインをインストールし、そのプラグインを構成してストレージ アカウントを使用するようにしたうえで、ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションを作成する必要があります。 以降のセクションでは、ここに挙げた手順について説明します。
 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Azure Storage プラグインのインストール方法
-1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
+1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
 2. **[Manage Hudson]** ページで **[Manage Plugins]** をクリックします。
 3. **[Available]** タブをクリックします。
-4. **[Others]**をクリックします。
+4. **[Others]** をクリックします。
 5. **[Artifact Uploaders]** セクションで、**[Microsoft Azure Storage plugin]** を選択します。
-6. **[インストール]**をクリックします。
+6. **[インストール]** をクリックします。
 7. インストール完了後、Hudson を再起動します。
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Azure Storage プラグインを構成してストレージ アカウントを使用する方法
-1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
+1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
    
@@ -85,17 +86,17 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
    
     d. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
    
-    e. [省略可能] Hudson CI で利用できるストレージ アカウントを追加する場合は、 **[Add more storage accounts]**をクリックします。
+    e. [省略可能] Hudson CI で利用できるストレージ アカウントを追加する場合は、 **[Add more storage accounts]** をクリックします。
    
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックして設定を保存します。
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法
 説明のため、ストレージ アカウントにファイルをアップロードするためのビルド後のアクションを追加する前に、複数のファイルを作成するジョブを作成する必要があります。
 
-1. Hudson ダッシュボードで、 **[New Job]**をクリックします。
+1. Hudson ダッシュボードで、 **[New Job]** をクリックします。
 2. ジョブの名前を **MyJob** に設定し、**[Build a free-style software job]**、**[OK]** の順にクリックします。
 3. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックした後、**[Execute Windows batch command]** を選択します。
-4. **[Command]**で次のコマンドを使用します。
+4. **[Command]** で次のコマンドを使用します。
 
     ```   
         md text
@@ -106,8 +107,8 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     ```
 
 5. ジョブ構成の **[Post-build Actions]** セクションで **[Upload artifacts to Microsoft Azure Blob storage]** をクリックします。
-6. **[Storage Account Name]**では、使用するストレージ アカウントを選択します。
-7. **[Container Name]**では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「**${JOB_NAME}**」と入力します。
+6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
+7. **[Container Name]** では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「**${JOB_NAME}**」と入力します。
    
     **ヒント**
    
@@ -122,11 +123,11 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) にサインインします。
     
-    b. **[Storage]**をクリックします。
+    b. **[Storage]** をクリックします。
     
     c. Hudson に使用したストレージ アカウント名をクリックします。
     
-    d. **[コンテナー]**をクリックします。
+    d. **[コンテナー]** をクリックします。
     
     e. **myjob** という名前のコンテナーをクリックします。これは、Hudson ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。 Azure Storage では、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。 **myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。 そのどちらかの URL をコピーして、ブラウザーで開きます。 このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
@@ -136,10 +137,10 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 次の手順では、Azure BLOB ストレージから項目をダウンロードするビルド手順を構成する方法を示します。 この手順は、Azure BLOB ストレージに保持している JAR ファイルなどの項目をビルドに含める場合に便利です。
 
 1. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックし、**[Download from Azure Blob storage]** を選択します。
-2. **[Storage Account Name]**では、使用するストレージ アカウントを選択します。
-3. **[Container name]**では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。 環境変数を使用できます。
-4. **[Blob name]**には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
-5. [省略可能] **[Download path]** では、Azure Blob Storage のファイルのダウンロード先となる、Hudson を実行しているコンピューター上のパスを指定します。 Azure BLOB ストレージのファイルはこのパスにダウンロードされます。 環境変数も使用できます( **[Download path]**に値を入力しない場合、Azure Blob Storage のファイルは、ジョブのワークスペースにダウンロードされます)。
+2. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
+3. **[Container name]** では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。 環境変数を使用できます。
+4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
+5. [省略可能] **[Download path]** では、Azure Blob Storage のファイルのダウンロード先となる、Hudson を実行しているコンピューター上のパスを指定します。 Azure BLOB ストレージのファイルはこのパスにダウンロードされます。 環境変数も使用できます( **[Download path]** に値を入力しない場合、Azure Blob Storage のファイルは、ジョブのワークスペースにダウンロードされます)。
 
 Azure BLOB ストレージからダウンロードする項目が他にもある場合は、追加のビルド手順を作成できます。
 
@@ -157,7 +158,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   
     (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。 これとは異なる Azure クラウドを使用している場合は、[Azure Portal](https://portal.azure.com) 内のエンドポイントを使用して URL エンドポイントを指定します。)
   
-    この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。 コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ**/**で区切ります。 このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
+    この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。 コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ**/** で区切ります。 このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
