@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939010"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Microsoft Azure 認定プログラムを介した事前承認
 この記事では、ご自身のソリューションを Azure Marketplace に発行して、マーケティング メリットを得られるように、Microsoft Azure 認定を受ける方法について説明します。 Microsoft Azure 認定プログラムとその利点の詳細については、[http://azure.com/certified](http://azure.com/certified) をご覧ください。

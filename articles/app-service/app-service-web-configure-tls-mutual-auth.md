@@ -1,8 +1,8 @@
 ---
-title: "Web アプリの TLS 相互認証を構成する方法"
-description: "Web アプリを TLS でクライアント証明書認証を使用するように構成する方法について説明します。"
+title: Web アプリの TLS 相互認証を構成する方法
+description: Web アプリを TLS でクライアント証明書認証を使用するように構成する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22985767"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Web アプリの TLS 相互認証を構成する方法
 ## <a name="overview"></a>概要

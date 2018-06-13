@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Gateway の SSL ポリシーの概要 | Microsoft Docs"
-description: "Azure Application Gateway での SSL ポリシーの構成について説明します"
+title: Azure Application Gateway の SSL ポリシーの概要 | Microsoft Docs
+description: Azure Application Gateway での SSL ポリシーの構成について説明します
 services: application gateway
 documentationcenter: na
 author: amsriva
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure resource manager
 ms.service: application gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987077"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway の SSL ポリシーの概要
 

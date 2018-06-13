@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30174731"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 

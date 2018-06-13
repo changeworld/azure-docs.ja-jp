@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943243"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Azure Marketplace へのプランのデプロイ
 プラン (テスト済みの顧客シナリオやマーケティング コンテンツなど) の内容に問題がなく、発行の準備が整ったら、**[発行]** タブで**本番へのプッシュ**を要求します。  
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/16/2018
 2. 左側のリストから **[発行]** タブを選択します。
    
     ![図][img-pubportal-menu-publish]
-3. **[Request approval to push to production (本番にプッシュするための承認を要求)]**をクリックします。 要求が行われると、承認チームが最終レビューを実行し、その後、プランが Azure Marketplace で使用できるようになります。
+3. **[Request approval to push to production (本番にプッシュするための承認を要求)]** をクリックします。 要求が行われると、承認チームが最終レビューを実行し、その後、プランが Azure Marketplace で使用できるようになります。
    
     ![図][img-pubportal-publish-pushproduction]
 

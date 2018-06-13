@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30173136"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 このチュートリアルでは、Azure Blob Storage から Azure SQL Database にデータをコピーする Data Factory パイプラインを作成します。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。

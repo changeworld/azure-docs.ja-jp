@@ -15,6 +15,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30186310"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して Azure Database for PostgreSQL を設計する
 
@@ -62,7 +63,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 4.  **[価格レベル]** をクリックして、新しいサーバーの価格レベルを指定します。 このチュートリアルでは、**汎用**、**Gen 4** コンピューティング世代、2 **仮想コア**、5 GB の**ストレージ**を選択します。また、**バックアップの保有期間**は 7 日に設定します。 **[地理冗長]** バックアップ冗長オプションを選択して、サーバーの自動バックアップを geo 冗長ストレージに保存します。
  ![Azure Database for PostgreSQL - 価格レベルの選択](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
 
-5.  **[OK]**をクリックします。
+5.  **[OK]** をクリックします。
 
 6.  **[作成]** をクリックしてサーバーをプロビジョニングします。 プロビジョニングには数分かかります。
 

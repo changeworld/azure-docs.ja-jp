@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943175"
 ---
 > [!NOTE]
 > このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。

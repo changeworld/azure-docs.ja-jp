@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936657"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件
 始める前にプロセスをよく読み、各ステップをどこで、なぜ実行するのかを理解してください。 可能な限り、会社の情報と他のデータを準備し、必要なツールをダウンロードし、技術コンポーネントを作成してから、プラン作成プロセスを開始する必要があります。 この記事を読んでよく理解してください。  

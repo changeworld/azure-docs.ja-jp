@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30178710"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 

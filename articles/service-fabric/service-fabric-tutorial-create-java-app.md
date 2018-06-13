@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949890"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成およびデプロイする
 このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存する投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。

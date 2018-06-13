@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29974139"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit のアーキテクチャ
 Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイです。 すべてのコンポーネントは、1 台のホスト マシンで実行されている仮想マシンにインストールされます。 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30190400"
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>VirtualBox を使用した Docker ホストの構成
 ## <a name="overview"></a>概要

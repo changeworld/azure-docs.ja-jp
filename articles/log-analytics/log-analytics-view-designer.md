@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939871"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Azure Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure Portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/16/2018
 
 
 ## <a name="concepts"></a>概念
-ビューは、Azure Portal の Log Analytics ワークスペースの **[概要]**ページに表示されます。 各カスタム ビューのタイルは、同じワークスペースにインストールされたソリューションのタイルと共に、アルファベット順に表示されます。
+ビューは、Azure Portal の Log Analytics ワークスペースの **[概要]** ページに表示されます。 各カスタム ビューのタイルは、同じワークスペースにインストールされたソリューションのタイルと共に、アルファベット順に表示されます。
 
 ![[概要] ページ](media/log-analytics-view-designer/overview-page.png)
 

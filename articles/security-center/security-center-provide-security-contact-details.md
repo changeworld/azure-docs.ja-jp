@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でセキュリティ連絡先の詳細情報を指定する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center でセキュリティ連絡先の詳細情報を指定する方法について説明します。"
+title: Azure Security Center でセキュリティ連絡先の詳細情報を指定する | Microsoft Docs
+description: このドキュメントでは、Azure Security Center でセキュリティ連絡先の詳細情報を指定する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040707"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
 Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
@@ -40,7 +41,7 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 
    * セキュリティ連絡先の電子メール アドレスを (複数の場合はコンマで区切って) 入力します。 入力できる電子メール アドレスの数に制限はありません。
    * セキュリティ連絡先の国際電話番号を 1 件入力します。
-   * 重大度が高い警告に関する電子メールを受信するには、 **[Send me emails about alerts (警告に関する電子メールを受け取る)]**オプションをオンにします。
+   * 重大度が高い警告に関する電子メールを受信するには、 **[Send me emails about alerts (警告に関する電子メールを受け取る)]** オプションをオンにします。
    * 将来的には、サブスクリプションの所有者に電子メール通知を送信するオプションが使用できるようになります。 現在、このオプションは淡色表示されています。
    * **[保存]** を選択して、セキュリティ連絡先の情報をサブスクリプションに適用します。
 

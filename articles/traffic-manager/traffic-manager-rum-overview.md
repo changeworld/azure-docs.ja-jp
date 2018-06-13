@@ -21,6 +21,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30178115"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager の Real User Measurements の概要
 

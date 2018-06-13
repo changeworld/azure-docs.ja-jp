@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery での物理サーバーから Azure へのレプリケーション アーキテクチャ | Microsoft Docs"
-description: "この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します"
+title: Azure Site Recovery での物理サーバーから Azure へのレプリケーション アーキテクチャ | Microsoft Docs
+description: この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
@@ -11,6 +11,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874894"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理サーバーから Azure へのレプリケーション アーキテクチャ
 

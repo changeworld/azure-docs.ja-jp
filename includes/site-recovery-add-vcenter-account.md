@@ -1,4 +1,4 @@
-1. 構成サーバーで、CSPSConfigtool.exe を起動します。 これはデスクトップにショートカットがあり、*<インストール場所>*\home\svsystems\bin フォルダーに保存されています。
+1. 構成サーバーで、CSPSConfigtool.exe を起動します。 これはデスクトップにショートカットがあり、*<インストール場所>* \home\svsystems\bin フォルダーに保存されています。
 2. **[アカウントの管理]** > **[アカウントの追加]** の順にクリックします。
 
     ![[アカウントの追加]](./media/site-recovery-add-vcenter-account/credentials1.png)

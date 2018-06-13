@@ -1,13 +1,13 @@
 ---
-title: "Azure App Service のローカル キャッシュの概要 | Microsoft Docs"
-description: "この記事では、Azure App Service のローカル キャッシュ機能を有効にする方法、サイズを変更する方法、状態をクエリする方法について説明します。"
+title: Azure App Service のローカル キャッシュの概要 | Microsoft Docs
+description: この記事では、Azure App Service のローカル キャッシュ機能を有効にする方法、サイズを変更する方法、状態をクエリする方法について説明します。
 services: app-service
 documentationcenter: app-service
 author: SyntaxC4
 manager: yochayk
-editor: 
+editor: ''
 tags: optional
-keywords: 
+keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22985947"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 Azure Web アプリのコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  

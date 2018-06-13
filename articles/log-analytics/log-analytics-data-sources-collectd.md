@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics での CollectD からのデータの収集 | Microsoft Docs"
-description: "CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Log Analytics での CollectD からのデータの収集に関する情報を提供します。"
+title: OMS Log Analytics での CollectD からのデータの収集 | Microsoft Docs
+description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Log Analytics での CollectD からのデータの収集に関する情報を提供します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020857"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30182730"
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS の Agent Health ソリューション
 OMS の Agent Health ソリューションを使用すると、OMS ワークスペースに対して、または OMS に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    

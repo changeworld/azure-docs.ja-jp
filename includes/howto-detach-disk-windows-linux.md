@@ -11,7 +11,7 @@
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. **[仮想マシン]**をクリックし、適切な VM を選択します。
+2. **[仮想マシン]** をクリックし、適切な VM を選択します。
 
 3. 仮想マシン ダッシュボードの左側にある **[設定]** で **[ディスク]** をクリックします。
 
@@ -28,7 +28,7 @@
 
   ![切断するディスクを特定する](./media/howto-detach-disk-windows-linux/disklist.png)
 
-4. コマンド バーの **[切断]**をクリックします。
+4. コマンド バーの **[切断]** をクリックします。
 
   ![切断コマンドを見つける](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 

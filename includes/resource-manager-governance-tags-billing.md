@@ -1,6 +1,6 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29956185"
 ---
 リソースにタグを適用した後、それらのタグでリソースのコストを表示できます。 コスト分析に最新の使用状況が表示されるには少し時間がかかるため、まだコストが表示されない可能性があります。 コストが使用可能な場合は、サブスクリプション内のリソース グループにまたがるリソースのコストを表示できます。 コストを表示するには、ユーザーに[課金情報へのサブスクリプション レベルのアクセス権](../articles/billing/billing-manage-access.md)が必要です。
 

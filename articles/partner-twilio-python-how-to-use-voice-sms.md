@@ -1,11 +1,11 @@
 ---
-title: "Twilio を使用して音声通話と SMS を実行する方法 (Python) - Microsoft Docs"
-description: "Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Python で記述されています。"
-services: 
+title: Twilio を使用して音声通話と SMS を実行する方法 (Python) - Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Python で記述されています。
+services: ''
 documentationcenter: python
 author: devinrader
 manager: twilio
-editor: 
+editor: ''
 ms.assetid: 561bc75b-4ac4-40ba-bcba-48e901f27cc3
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040007"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。

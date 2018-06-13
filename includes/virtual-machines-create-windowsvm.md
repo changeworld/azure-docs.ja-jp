@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958913"
 ---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -59,7 +60,7 @@ VM サイズを選択し、**[選択]** をクリックして続行します。 
 
 Azure Premium Storage をサポートする仮想マシン サイズを選択した場合は、[ディスクの種類] の [Premium (SSD)] を選択することで、Premium Storage を試用できます。
 
-変更が済んだら **[OK]**をクリックします。
+変更が済んだら **[OK]** をクリックします。
 
 ## <a name="4-summary-blade"></a>4.[概要] ブレード
 

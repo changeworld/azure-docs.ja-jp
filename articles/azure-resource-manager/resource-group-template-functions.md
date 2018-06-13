@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359494"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。

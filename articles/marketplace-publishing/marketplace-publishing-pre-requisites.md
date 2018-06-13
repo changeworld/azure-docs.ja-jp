@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29940043"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Azure Marketplace 向けプラン作成の一般的な前提条件
 プランの作成プロセスに必要な、ビジネス処理中心の一般的な前提条件を理解します。

@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Docs"
-description: "スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。 スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します"
+title: Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Docs
+description: スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。 スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22999137"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。

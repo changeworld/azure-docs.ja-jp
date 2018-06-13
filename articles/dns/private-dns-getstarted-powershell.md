@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30177656"
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>PowerShell で Azure DNS プライベート ゾーンの使用を開始する
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management のユーザー プロファイル テンプレート | Microsoft Docs"
-description: "Azure API Management で開発者ポータルの ユーザー プロファイル ページの内容をカスタマイズ方法について説明します。"
+title: Azure API Management のユーザー プロファイル テンプレート | Microsoft Docs
+description: Azure API Management で開発者ポータルの ユーザー プロファイル ページの内容をカスタマイズ方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22983447"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
