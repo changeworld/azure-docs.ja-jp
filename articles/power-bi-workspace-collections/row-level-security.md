@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31414104"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -63,7 +64,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 
 その方法は次のとおりです。
 
-1. [モデリング] タブで **[ロールの管理]**をクリックします。  
+1. [モデリング] タブで **[ロールの管理]** をクリックします。  
    ![[モデリング] リボンの [ロールの管理] ボタン](media/row-level-security/modeling-tab-5.png)
 2. **Manager**という新しいロールを作成します。  
    ![Power BI Desktop でのロールの作成](media/row-level-security/manager-role-6.png)

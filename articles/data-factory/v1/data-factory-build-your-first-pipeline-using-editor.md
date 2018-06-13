@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406560"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -77,7 +78,7 @@ ms.lasthandoff: 04/16/2018
 
 7. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 
    > [!IMPORTANT]
    > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
@@ -414,7 +415,7 @@ ms.lasthandoff: 04/16/2018
 
     ![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-2. 監視と管理アプリで、パイプラインの開始時刻と終了時刻に一致するように、**[開始時刻]** と **[終了時刻]** を変更します。 **[適用]**を選択します。
+2. 監視と管理アプリで、パイプラインの開始時刻と終了時刻に一致するように、**[開始時刻]** と **[終了時刻]** を変更します。 **[適用]** を選択します。
 
     ![監視と管理アプリ](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 

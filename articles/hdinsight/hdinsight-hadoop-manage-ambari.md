@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405268"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -106,7 +107,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ### <a name="cluster"></a>クラスター
 
-ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。 **[CPU Usage]**などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
+ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。 **[CPU Usage]** などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
 
 ![metrics のダッシュボード](./media/hdinsight-hadoop-manage-ambari/metrics.png)
 
@@ -226,7 +227,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
     ![構成](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
-3. 表示されたフィールドを使用して構成を変更し、 **[Save]**を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
+3. 表示されたフィールドを使用して構成を変更し、 **[Save]** を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
 
 ## <a name="ambari-views"></a>Ambari ビュー
 

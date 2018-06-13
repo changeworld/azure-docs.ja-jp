@@ -18,6 +18,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323306"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -248,7 +249,7 @@ Message Analyzer 向けの Storage アセットには Azure Storage View Layouts
 
 ![[View Layout] メニュー](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
-まずは、 **[Grouped by ClientRequestID and Module]**を選択します。 このビュー レイアウトは、3 種類すべてのログからのログ データを、最初はクライアント要求 ID、次にソース ログ ファイル (または Message Analyzer 内の **Module** ) によってグループ化しています。 このビューを使用すると、特定のクライアント要求 ID へとドリル ダウンし、そのクライアント要求 ID について、3 種類すべてのログ ファイルのデータを見ることができます。
+まずは、 **[Grouped by ClientRequestID and Module]** を選択します。 このビュー レイアウトは、3 種類すべてのログからのログ データを、最初はクライアント要求 ID、次にソース ログ ファイル (または Message Analyzer 内の **Module** ) によってグループ化しています。 このビューを使用すると、特定のクライアント要求 ID へとドリル ダウンし、そのクライアント要求 ID について、3 種類すべてのログ ファイルのデータを見ることができます。
 
 以下の画像では、このレイアウト ビューがサンプル ログ データに適用され、列のサブセットが表示されています。 特定のクライアント要求 ID について、Analysis Grid がクライアント ログ、サーバー ログ、ネットワーク トレースのデータを表示していることがわかります。
 
@@ -264,7 +265,7 @@ Azure Storage ビュー レイアウトを使用するだけでなく、独自�
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>Analysis Grid にカラー ルールを適用する
 Storage アセットにはカラー ルールも含まれており、これによって Analysis Grid で異なる種類のエラーを視覚的に識別できます。 定義済みのカラー ルールは HTTP エラーに適用されるため、サーバー ログとネットワーク トレースに対してだけ影響があります。
 
-カラー ルールを適用するには、ツール バー リボンから **[Color Rules]** を選択します。 Azure Storage カラー ルールがメニューに表示されます。 このチュートリアルでは、以下の画像のように **[Client Errors (StatusCode between 400 and 499)]**を選択します。
+カラー ルールを適用するには、ツール バー リボンから **[Color Rules]** を選択します。 Azure Storage カラー ルールがメニューに表示されます。 このチュートリアルでは、以下の画像のように **[Client Errors (StatusCode between 400 and 499)]** を選択します。
 
 ![Azure Storage View Layout](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
@@ -301,7 +302,7 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 Storage アセットには定義済みのフィルターが含まれており、これを使用してログ データを絞り込み、探しているエラーや傾向を見つけることができます。 次は、2 つの定義済みフィルターを適用します。1 つは 404 エラーについてサーバーおよびネットワーク トレース ログに適用するフィルターで、もう 1 つは指定した時間範囲についてそれらのデータに適用するフィルターです。
 
 1. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、**[Tool Windows]**、**[View Filter]** の順に選択します。
-2. View Filter ウィンドウで、**[Library]** を選択し、`Azure Storage` を検索して Azure Storage フィルターを見つけます。 **[404 (Not Found) messages in all logs]**のフィルターを選択します。
+2. View Filter ウィンドウで、**[Library]** を選択し、`Azure Storage` を検索して Azure Storage フィルターを見つけます。 **[404 (Not Found) messages in all logs]** のフィルターを選択します。
 3. もう一度 **[Library]** メニューを表示し、**[Global Time Filter]** を見つけて選択します。
 4. フィルター内に表示されるタイムスタンプを、確認したい範囲に編集します。 これにより、分析するデータの範囲を絞り込むことができます。
 5. フィルターは以下の例のように表示されます。 **[Apply]** をクリックして Analysis Grid にフィルターを適用します。

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31415692"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

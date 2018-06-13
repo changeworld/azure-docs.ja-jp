@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915261"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Marketplace イメージを利用し、Azure VM で HPC Pack クラスターのヘッド ノードを作成する
 Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)と Azure Portal を使用して、HPC クラスターのヘッド ノードを作成します。 この HPC Pack VM イメージは、HPC Pack 2012 R2 更新プログラム 3 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。 このヘッド ノードを Azure の HPC Pack の概念実証デプロイとして利用し、 クラスターにコンピューティング ノードを追加して HPC ワークロードを実行できます。
@@ -44,7 +45,7 @@ Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](
 ここでは、Azure ポータルで Resource Manager デプロイメント モデルを使用して、HPC Pack ヘッド ノード用の Azure VM を作成する手順の概要を示します。 
 
 1. Azure で別のドメイン コントローラー VM を持つ新しい Active Directory フォレストを作成する場合は、 [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc)を使用する方法があります。 単純な概念実証のデプロイの場合、この手順を省略して、ヘッド ノード VM 自体をドメイン コントローラーとして構成してもかまいません。 このオプションは、この記事の後半で説明します。
-2. Azure Marketplace の [HPC Pack 2012 R2 on Windows Server 2012 R2R2 のページ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) で、 **[仮想マシンの作成]**をクリックします。 
+2. Azure Marketplace の [HPC Pack 2012 R2 on Windows Server 2012 R2R2 のページ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) で、 **[仮想マシンの作成]** をクリックします。 
 3. ポータルの **HPC Pack 2012 R2 on Windows Server 2012 R2** のページで **Resource Manager** デプロイメント モデルを選択し、**[作成]** をクリックします。
    
     ![HPC Pack イメージ][marketplace]

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31412112"
 ---
 # <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>チュートリアル: Azure Stream Analytics ジョブのアラートを設定する
 メトリックが指定した条件に達したときにアラートをトリガーするルールを設定できます。 たとえば、次のような条件でアラートを設定できます。

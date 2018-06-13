@@ -18,6 +18,7 @@ ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30928038"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -53,7 +54,7 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 5. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用できます。
 
-6. **[作成]**を選択します。
+6. **[作成]** を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -69,7 +70,7 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 4. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用するか、実際の API Management インスタンスのサインイン URL を使用できます (この例では、URL は `https://contoso5.portal.azure-api.net/signin` です)。
 
-5. **[作成]**を選択します。
+5. **[作成]** を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -132,7 +133,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 12. クライアント シークレットの直後には、承認コード付与タイプの **redirect_url** があります。 この URL をメモします。
 
-13. **[作成]**を選択します。
+13. **[作成]** を選択します。
 
 14. クライアントアプリの **[設定]** ページに戻ります。
 
@@ -146,7 +147,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 2. 保護する API を選択します。 この例では、`Echo API` を使用します。
 
-3. **[設定]**に移動します。
+3. **[設定]** に移動します。
 
 4. **[セキュリティ]** で **[OAuth 2.0]** を選択し、先ほど構成した OAuth 2.0 サーバーを選択します。 
 

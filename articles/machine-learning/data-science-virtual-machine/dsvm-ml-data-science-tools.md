@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409552"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 データ サイエンス仮想マシン (DSVM) には、Python、R、Julia などの一般的な言語で使用可能な、機械学習用のツールおよびライブラリの豊富なセットがあります。 

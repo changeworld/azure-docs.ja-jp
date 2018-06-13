@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409467"
 ---
 # <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>Azure HDInsight の R Server 向けの Azure Storage ソリューション
 
