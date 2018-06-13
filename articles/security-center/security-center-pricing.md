@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化 | Microsoft Docs"
-description: "この記事では、Azure Security Center の価格について説明します。"
+title: Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化 | Microsoft Docs
+description: この記事では、Azure Security Center の価格について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/20/2017
+ms.locfileid: "23473938"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。

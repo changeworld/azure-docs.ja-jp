@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスを非アクティブ化して削除する | Microsoft Docs"
-description: "StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスを非アクティブ化して削除する | Microsoft Docs
+description: StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108460"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
 

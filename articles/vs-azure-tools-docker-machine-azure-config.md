@@ -1,11 +1,11 @@
 ---
-title: "Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Docs"
-description: "Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
+title: Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Docs
+description: Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 7a3ff6e1-fa93-4a62-b524-ab182d2fea08
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23124500"
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Docker マシンを利用し、Azure で Docker ホストを作成する
 [Docker](https://www.docker.com/) コンテナーを実行するには、Docker デーモンを実行しているホスト VM が必要です。

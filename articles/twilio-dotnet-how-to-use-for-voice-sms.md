@@ -1,11 +1,11 @@
 ---
-title: "音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Docs"
-description: "Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは .NET で記述されています。"
-services: 
+title: 音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは .NET で記述されています。
+services: ''
 documentationcenter: .net
 author: devinrader
 manager: twilio
-editor: 
+editor: ''
 ms.assetid: 74d4f3c9-f1cb-4968-b744-36b32cd0e834
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111790"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure から音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「 [次の手順](#NextSteps) 」を参照してください。
@@ -104,9 +105,9 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 
 ### <a id="use_nuget"></a>Twilio ライブラリを Visual Studio プロジェクトに追加するには、次の手順を実行します。
 1. Visual Studio でソリューションを開きます。
-2. **[参照]**を右クリックします。
+2. **[参照]** を右クリックします。
 3. **[NuGet パッケージの管理]**
-4. **[オンライン]**をクリックします。
+4. **[オンライン]** をクリックします。
 5. [オンライン検索] ボックスに、「 *twilio*」と入力します。
 6. Twilio パッケージで **[インストール]** をクリックします。
 
