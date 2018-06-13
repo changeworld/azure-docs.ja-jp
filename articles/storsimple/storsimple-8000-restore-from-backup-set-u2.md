@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズのバックアップからのボリュームの復元 | Microsoft Docs"
-description: "StorSimple Device Manager サービスの [バックアップ カタログ] を使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。"
+title: StorSimple 8000 シリーズのバックアップからのボリュームの復元 | Microsoft Docs
+description: StorSimple Device Manager サービスの [バックアップ カタログ] を使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109260"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
