@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Event Hubs を使用して、さまざまなプラットフォーム上にある接続された IoT デバイスやアプリケーションから毎秒数百万のイベントを取り込む方法について説明します。"
+title: Azure Event Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Event Hubs を使用して、さまざまなプラットフォーム上にある接続された IoT デバイスやアプリケーションから毎秒数百万のイベントを取り込む方法について説明します。
 services: event-hubs
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/28/2017
+ms.locfileid: "25945756"
 ---
 # <a name="event-hubs-documentation"></a>Event Hubs のドキュメント
 

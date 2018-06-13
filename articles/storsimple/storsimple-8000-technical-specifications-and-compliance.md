@@ -1,12 +1,12 @@
 ---
-title: "StorSimple の技術仕様 | Microsoft Docs"
-description: "StorSimple ハードウェア コンポーネントの技術仕様と規制標準対応情報について説明します。"
+title: StorSimple の技術仕様 | Microsoft Docs
+description: StorSimple ハードウェア コンポーネントの技術仕様と規制標準対応情報について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27785528"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
 

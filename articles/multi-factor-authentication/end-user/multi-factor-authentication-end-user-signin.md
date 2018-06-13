@@ -1,9 +1,9 @@
 ---
-title: "2 段階認証を使用した Azure MFA サインイン | Microsoft Docs"
-description: "このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。"
-keywords: "ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン"
+title: 2 段階認証を使用した Azure MFA サインイン | Microsoft Docs
+description: このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。
+keywords: ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628415"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]

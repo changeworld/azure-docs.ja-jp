@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics で System Center Operations Manager 環境を最適化する | Microsoft Docs"
-description: "System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。"
+title: Azure Log Analytics で System Center Operations Manager 環境を最適化する | Microsoft Docs
+description: System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29180038"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -222,7 +223,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 4. **[概要]** ページの **[System Center Operations Manager Health Check]** タイルをクリックします。
 5. **[System Center Operations Manager Health Check]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![対象領域](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+7. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 

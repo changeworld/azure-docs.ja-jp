@@ -1,8 +1,8 @@
 ---
-title: "Azure の Windows VM ディスク用 Standard Storage | Microsoft Docs"
-description: "コスト効率に優れた Standard Storage および Windows VM の非管理対象ディスクと管理ディスクについて説明します。"
+title: Azure の Windows VM ディスク用 Standard Storage | Microsoft Docs
+description: コスト効率に優れた Standard Storage および Windows VM の非管理対象ディスクと管理ディスクについて説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: aungoo-msft
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23667164"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

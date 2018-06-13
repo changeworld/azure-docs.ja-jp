@@ -1,25 +1,26 @@
 ---
-title: "Azure での OpenShift デプロイのトラブルシューティング | Microsoft Docs"
-description: "Azure での OpenShift デプロイの問題を解決します。"
+title: Azure での OpenShift デプロイのトラブルシューティング | Microsoft Docs
+description: Azure での OpenShift デプロイの問題を解決します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
 ms.openlocfilehash: 35e554d3a9c7e7d56546ae9723c33eb59e906472
 ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/11/2017
+ms.locfileid: "24139452"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Azure での OpenShift デプロイのトラブルシューティング
 

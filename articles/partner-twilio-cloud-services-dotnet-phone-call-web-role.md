@@ -1,11 +1,11 @@
 ---
-title: "Twilio から通話する方法 (.NET) | Microsoft Docs"
-description: "Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは .NET で記述されています。"
-services: 
+title: Twilio から通話する方法 (.NET) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは .NET で記述されています。
+services: ''
 documentationcenter: .net
 author: devinrader
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26366006"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure の Web ロールで Twilio を使用して通話する方法
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。 次のスクリーンショットに示すように、作成されたアプリケーションは指定された番号とメッセージで呼び出しを行うことをユーザーに求めます。
@@ -37,9 +38,9 @@ ms.lasthandoff: 12/08/2017
 <a id="use_nuget"></a>Twilio ライブラリを Web ロール プロジェクトに追加するには
 
 1. Visual Studio でソリューションを開きます。
-2. **[参照]**を右クリックします。
-3. **[NuGet パッケージの管理]**をクリックします。
-4. **[オンライン]**をクリックします。
+2. **[参照]** を右クリックします。
+3. **[NuGet パッケージの管理]** をクリックします。
+4. **[オンライン]** をクリックします。
 5. [オンライン検索] ボックスに、「 *twilio*」と入力します。
 6. Twilio パッケージで **[インストール]** をクリックします。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure に Python Web アプリを作成する| Microsoft Docs"
-description: "Azure App Service の Web Apps で、初めての Python の Hello World を数分でデプロイします。"
+title: Azure に Python Web アプリを作成する| Microsoft Docs
+description: Azure App Service の Web Apps で、初めての Python の Hello World を数分でデプロイします。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 928ee2e5-6143-4c0c-8546-366f5a3d80ce
 ms.service: app-service-web
 ms.workload: web
@@ -20,6 +20,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28979366"
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Azure に Python Web アプリを作成する
 

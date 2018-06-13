@@ -1,8 +1,8 @@
 ---
-title: "Azure CLI で初めての関数を作成する | Microsoft Docs"
-description: "Azure CLI を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。"
+title: Azure CLI で初めての関数を作成する | Microsoft Docs
+description: Azure CLI を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118773"
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>Azure CLI での初めての関数の作成
 

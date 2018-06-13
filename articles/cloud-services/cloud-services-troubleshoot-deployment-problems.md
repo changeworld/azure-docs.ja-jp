@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービスのデプロイメントに関する問題のトラブルシューティング | Microsoft Docs"
-description: "クラウド サービスを Azure にデプロイするときに発生しやすい問題がいくつか存在します。 この記事では、その解決方法について説明しています。"
+title: クラウド サービスのデプロイメントに関する問題のトラブルシューティング | Microsoft Docs
+description: クラウド サービスを Azure にデプロイするときに発生しやすい問題がいくつか存在します。 この記事では、その解決方法について説明しています。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408181"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 クラウド サービス アプリケーション パッケージを Azure にデプロイするとき、デプロイメントに関する情報は、Azure Portal の **[プロパティ]** ウィンドウで確認できます。 クラウド サービスに関する問題は、このウィンドウの情報を頼りにトラブルシューティングすることができます。新規にサポート リクエストを行う際も、この情報を Azure サポートに提供してください。
@@ -72,8 +73,8 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 ## <a name="problem-my-application-stopped-working"></a>問題: アプリケーションの動作しなくなった
 1. Azure ポータルで、ロール インスタンスをクリックします。
 2. Azure ポータルの **[プロパティ]** ウィンドウで次の状況を考慮しながら、問題を解決します。
-   * ロール インスタンスが最近停止した場合 ( **[中止の数]**の値を確認)、デプロイが更新中である可能性があります。 しばらく待って、ロール インスタンスの機能が自然に再開するかどうかを確認してください。
-   * ロール インスタンスが **[ビジー]**状態である場合、アプリケーション コードを見て、 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) イベントを処理しているかどうかを確認します。 場合によっては、このイベントを処理するコードを追加するか、コードに修正を加える必要があります。
+   * ロール インスタンスが最近停止した場合 ( **[中止の数]** の値を確認)、デプロイが更新中である可能性があります。 しばらく待って、ロール インスタンスの機能が自然に再開するかどうかを確認してください。
+   * ロール インスタンスが **[ビジー]** 状態である場合、アプリケーション コードを見て、 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) イベントを処理しているかどうかを確認します。 場合によっては、このイベントを処理するコードを追加するか、コードに修正を加える必要があります。
    * [Azure PaaS コンピューティング診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事で、診断データとトラブルシューティングのシナリオを参照してください。
 
 > [!WARNING]

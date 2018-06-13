@@ -1,11 +1,11 @@
 ---
-title: "カスタム開発されたアプリケーションへのサインインに関する問題 | Microsoft Docs"
-description: "Azure AD で開発したアプリケーションにサインインできなくなる一般的なエラー"
+title: カスタム開発されたアプリケーションへのサインインに関する問題 | Microsoft Docs
+description: Azure AD で開発したアプリケーションにサインインできなくなる一般的なエラー
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614140"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>カスタム開発されたアプリケーションへのサインインに関する問題
 

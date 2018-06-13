@@ -1,12 +1,12 @@
 ---
-title: "Azure Stack 統合システムの接続モデル | Microsoft Docs"
-description: "マルチノード Azure Stack のデプロイ計画の決定を確認します。"
+title: Azure Stack 統合システムの接続モデル | Microsoft Docs
+description: マルチノード Azure Stack のデプロイ計画の決定を確認します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118790"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack 統合システムの接続モデル
 Azure Stack 統合システムに関心がある場合は、Azure Stack デプロイに関して、[データセンターの統合についてのいくつかの考慮事項](azure-stack-datacenter-integration.md)を理解し、このシステムがデータセンターにどのように適合するかを確認する必要があります。 さらに、Azure Stack をハイブリッド クラウド環境に統合する方法を正確に決定する必要があります。 この記事では、これらの主な決定 (Azure 接続、ID ストア、および課金モデルの決定を含む) の概要について説明します。
