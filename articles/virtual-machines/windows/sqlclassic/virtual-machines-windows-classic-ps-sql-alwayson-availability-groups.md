@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Docs"
-description: "このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用します。 PowerShell を使用して、Azure に AlwaysOn 可用性グループを作成します。"
+title: PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Docs
+description: このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用します。 PowerShell を使用して、Azure に AlwaysOn 可用性グループを作成します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a4e2f175-fe56-4218-86c7-a43fb916cc64
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401292"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]

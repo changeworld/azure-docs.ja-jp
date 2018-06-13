@@ -1,12 +1,12 @@
 ---
-title: "Functions を使用して Azure Storage キューにメッセージを追加する | Microsoft Docs"
-description: "Azure Functions を使用して、HTTP 要求によって呼び出されて、Azure Storage キューにメッセージを作成する、サーバーレス関数を作成します。"
+title: Functions を使用して Azure Storage キューにメッセージを追加する | Microsoft Docs
+description: Azure Functions を使用して、HTTP 要求によって呼び出されて、Azure Storage キューにメッセージを作成する、サーバーレス関数を作成します。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: functions
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387066"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -46,7 +47,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[統合] > [新しい出力] > [Azure Queue Storage]** の順に選択します。
 
-1. **[選択]**をクリックします。
+1. **[選択]** をクリックします。
     
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 

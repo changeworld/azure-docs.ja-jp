@@ -1,11 +1,11 @@
 ---
-title: "Azure WCF Relay ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs"
-description: "Azure WCF Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。"
+title: Azure WCF Relay ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs
+description: Azure WCF Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
 ms.service: service-bus-relay
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29346443"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Azure WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
 
@@ -77,13 +78,13 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 5. 既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。 まだインストールしていない場合は、[NuGet][NuGet] にアクセスし、[[Install NuGet (NuGet のインストール)]](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。 メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
 6. ソリューション エクスプローラーで **ProductsServer** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 7. **[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 **[WindowsAzure.ServiceBus]** パッケージを選択します。
-8. **[インストール]**をクリックして、使用条件に同意します。
+8. **[インストール]** をクリックして、使用条件に同意します。
 
    ![][13]
 
    これで、必要なクライアント アセンブリを参照できるようになりました。
 8. 商品のコントラクト用に新しいクラスを追加します。 ソリューション エクスプローラーで、**[ProductsServer]** プロジェクトを右クリックし、**[追加]** をクリックしてから **[クラス]** をクリックします。
-9. **[名前]** ボックスに「**ProductsContract.cs**」と入力します。 **[追加]**をクリックします。
+9. **[名前]** ボックスに「**ProductsContract.cs**」と入力します。 **[追加]** をクリックします。
 10. **ProductsContract.cs** で、名前空間の定義を次のコードに置き換えます。このコードはサービスのコントラクトを定義します。
 
     ```csharp
@@ -218,7 +219,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 
 1. Microsoft Visual Studio 2013 が管理者特権で実行されていることを確認します。
 2. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
-3. **[インストールされたテンプレート]** で **[Visual C#]** をクリックし、**[ASP.NET Web アプリケーション (.NET Framework)]** をクリックします。 プロジェクト名として、「**ProductsPortal**」と入力します。 次に、 **[OK]**をクリックします
+3. **[インストールされたテンプレート]** で **[Visual C#]** をクリックし、**[ASP.NET Web アプリケーション (.NET Framework)]** をクリックします。 プロジェクト名として、「**ProductsPortal**」と入力します。 次に、 **[OK]** をクリックします
 
    ![][15]
 
@@ -232,7 +233,7 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 
 7. **[新しい ASP.NET Web アプリケーション]** ダイアログに戻り、**[OK]** をクリックして MVC アプリを作成します。
 8. 次に、新しい Web アプリの Azure リソースを構成する必要があります。 [この記事の「Azure に発行する」セクション](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure)の手順に従います。 完了したら、このチュートリアルに戻り、次の手順に進んでください。
-10. ソリューション エクスプローラーで **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに、名前として「**Product.cs**」と入力します。 **[追加]**をクリックします。
+10. ソリューション エクスプローラーで **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに、名前として「**Product.cs**」と入力します。 **[追加]** をクリックします。
 
     ![][17]
 

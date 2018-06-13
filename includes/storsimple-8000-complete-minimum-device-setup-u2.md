@@ -25,7 +25,7 @@
 
             ![Test-HcsmConnection showing routable IPs](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. **[OK]**をクリックします。 デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
+1. **[OK]** をクリックします。 デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
 
     ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

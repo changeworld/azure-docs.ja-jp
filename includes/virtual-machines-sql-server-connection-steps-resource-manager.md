@@ -11,7 +11,7 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
     ![パブリック IP アドレス](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
-1. パブリック IP アドレスのプロパティで、 **[構成]**を展開します。
+1. パブリック IP アドレスのプロパティで、 **[構成]** を展開します。
 
 1. DNS ラベル名を入力します。 この名前は、IP アドレスを直接使用するのではなく名前で SQL Server VM に接続するために使用できる A レコードです。
 
@@ -31,6 +31,6 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
 1. **[パスワード]** ボックスに、ログインのパスワードを入力します。
 
-1. **[接続]**をクリックします。
+1. **[接続]** をクリックします。
 
     ![SSMS 接続](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)

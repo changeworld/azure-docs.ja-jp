@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法 | Microsoft Docs"
-description: "既に Azure AD アプリケーション ギャラリーに一覧表示されているアプリケーションに対するユーザー アカウントのプロビジョニングとその解除を行えるように、さまざまな機能が用意されています。これらをすばやく構成する方法について説明します。"
+title: Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法 | Microsoft Docs
+description: 既に Azure AD アプリケーション ギャラリーに一覧表示されているアプリケーションに対するユーザー アカウントのプロビジョニングとその解除を行えるように、さまざまな機能が用意されています。これらをすばやく構成する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464427"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法
 

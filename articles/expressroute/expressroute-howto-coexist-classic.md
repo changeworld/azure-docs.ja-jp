@@ -1,11 +1,11 @@
 ---
-title: "共存する ExpressRoute とサイト間 VPN の接続の構成: クラシック: Azure | Microsoft Docs"
-description: "この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。"
+title: '共存する ExpressRoute とサイト間 VPN の接続の構成: クラシック: Azure | Microsoft Docs'
+description: この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: dcf1a5af-a289-466a-b812-0bfedbd2bda0
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "22710135"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
 > [!div class="op_single_selector"]

@@ -7,7 +7,7 @@
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
-3. 確認を求められたら、 **[はい]**をクリックします。
+3. 確認を求められたら、 **[はい]** をクリックします。
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 

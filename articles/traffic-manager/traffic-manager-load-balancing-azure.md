@@ -1,11 +1,11 @@
 ---
-title: "Azure で負荷分散サービスを使用する | Microsoft Docs"
-description: "このチュートリアルでは、Azure の負荷分散のポートフォリオである、Traffic Manager、Application Gateway、ロード バランサーを使用したシナリオの作成方法を説明します。"
+title: Azure で負荷分散サービスを使用する | Microsoft Docs
+description: このチュートリアルでは、Azure の負荷分散のポートフォリオである、Traffic Manager、Application Gateway、ロード バランサーを使用したシナリオの作成方法を説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: liumichelle
 manager: vitinnan
-editor: 
+editor: ''
 ms.assetid: f89be3be-a16f-4d47-bcae-db2ab72ade17
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401108"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 

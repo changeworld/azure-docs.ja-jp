@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway でのエンド ツー エンド SSL の有効化 | Microsoft Docs"
-description: "このページでは、Application Gateway によるエンドツーエンド SSL のサポートの概要を示します。"
+title: Azure Application Gateway でのエンド ツー エンド SSL の有効化 | Microsoft Docs
+description: このページでは、Application Gateway によるエンドツーエンド SSL のサポートの概要を示します。
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704712"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL の概要
 
