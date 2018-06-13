@@ -1,12 +1,12 @@
 ---
-title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備する | Microsoft Docs"
-description: "WAImportExport ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。"
+title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備する | Microsoft Docs
+description: WAImportExport ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23469241"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 

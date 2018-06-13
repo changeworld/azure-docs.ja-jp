@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23112430"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
 
@@ -274,11 +275,11 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]**を選択します。
+2.  **[New Backup Repository] \(新しいバックアップ リポジトリ)** ダイアログ ボックスで、レポジトリの名前と説明を入力します。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、名前と説明ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  タイプについて、**[Microsoft Windows server] \(Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]**を選択します。
+3.  タイプについて、**[Microsoft Windows server] \(Microsoft Windows サーバー)** を選択します。 Veeam サーバーを選択します。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -291,7 +292,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、ストレージの互換性設定](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  **[New Backup Repository] \(新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] \(マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]**を選択します。
+6.  **[New Backup Repository] \(新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] \(マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -347,7 +348,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. **[Storage] \(ストレージ)** タブで、**[Enable inline data deduplication] \(インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] \(スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] \(削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] \(圧縮レベル)** を **[None] \(なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] \(ストレージの最適化)** を **[LAN target] \(LAN ターゲット)** に設定します。 **[OK]**を選択します。
+6. **[Storage] \(ストレージ)** タブで、**[Enable inline data deduplication] \(インライン データ重複除去を有効にする)** チェック ボックスがオフになっていることを確認します。 **[Exclude swap file blocks] \(スワップ ファイル ブロックを除外する)** チェック ボックスと **[Exclude deleted file blocks] \(削除済みのファイル ブロックを除外する)** チェック ボックスをオンにします。 **[Compression level] \(圧縮レベル)** を **[None] \(なし)** に設定します。 パフォーマンスと重複除去のバランスを取るために、**[Storage optimization] \(ストレージの最適化)** を **[LAN target] \(LAN ターゲット)** に設定します。 **[OK]** を選択します。
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブの詳細設定ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 

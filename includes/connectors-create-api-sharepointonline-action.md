@@ -22,7 +22,7 @@
    ![SharePoint オンライン アクション イメージ 5](./media/connectors-create-api-sharepointonline/action-5.png)  
 7. **[フォルダー パス]** を選択し、新しいファイルを配置するフォルダーを検索します。  
    ![SharePoint オンライン アクション イメージ 6](./media/connectors-create-api-sharepointonline/action-6.png)  
-8. **[ファイル名]** 制御を選択し、作成するファイルの名前を入力します。 これで、直接ファイル名を入力できたり、以前に作成したトリガーのプロパティのいずれかを使用できます。 **[Outputs from When a new item is created (新しい項目の作成時に出力)]**の一覧からプロパティを選択してこれを行います。 この一覧は、 **[ファイル名]** コントロールを選択後にのみ、表示されます。 このチュートリアルでは、 **[SharePoint Online - Create file (SharePoint Online - ファイルを作成)]** アクションで作成されるファイル名として、ID (新しいリスト アイテムの ID)を選択します。    
+8. **[ファイル名]** 制御を選択し、作成するファイルの名前を入力します。 これで、直接ファイル名を入力できたり、以前に作成したトリガーのプロパティのいずれかを使用できます。 **[Outputs from When a new item is created (新しい項目の作成時に出力)]** の一覧からプロパティを選択してこれを行います。 この一覧は、 **[ファイル名]** コントロールを選択後にのみ、表示されます。 このチュートリアルでは、 **[SharePoint Online - Create file (SharePoint Online - ファイルを作成)]** アクションで作成されるファイル名として、ID (新しいリスト アイテムの ID)を選択します。    
    ![SharePoint オンライン アクション イメージ 7](./media/connectors-create-api-sharepointonline/action-7.png)  
 9. **[File content (ファイルのコンテンツ)]** 制御を選択し、作成されるファイルに書き込まれるコンテンツを入力します。 ファイルの内容は、以前に作成したトリガーのプロパティのいずれかを使用できることに留意してください。 表示されるリストからプロパティを単純に選択します。 また、コントロールに直接 **[File content (ファイルのコンテンツ)]** のテキストを入力できます。 この例ではいくつかのプロパティを選択し、スペースや各プロパティ間のハイフンを追加します。        
    ![SharePoint オンライン アクション イメージ 8](./media/connectors-create-api-sharepointonline/action-8.png)  

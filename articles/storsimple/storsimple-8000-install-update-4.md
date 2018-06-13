@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスへの Update 4 のインストール | Microsoft Docs"
-description: "StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 4 をインストールする方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスへの Update 4 のインストール | Microsoft Docs
+description: StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 4 をインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108390"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple デバイスへの Update 4 のインストール
 

@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Virtual Academy の Azure セキュリティ関連コース | Microsoft Docs"
-description: "この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。  Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。"
+title: Microsoft Virtual Academy の Azure セキュリティ関連コース | Microsoft Docs
+description: この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。  Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540050"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy の Azure セキュリティ関連コース
 Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
