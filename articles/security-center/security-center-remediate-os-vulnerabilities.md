@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのセキュリティ構成の修復 | Microsoft Docs"
-description: "このドキュメントでは、\"セキュリティ構成の修復\" という Azure Security Center の推奨事項を実装する方法について説明します。"
+title: Azure Security Center でのセキュリティ構成の修復 | Microsoft Docs
+description: このドキュメントでは、"セキュリティ構成の修復" という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103933"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。

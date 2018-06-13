@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS へのドメインの委任 | Microsoft Docs"
-description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
+title: Azure DNS へのドメインの委任 | Microsoft Docs
+description: ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030525"
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>Azure DNS へのドメインの委任
 

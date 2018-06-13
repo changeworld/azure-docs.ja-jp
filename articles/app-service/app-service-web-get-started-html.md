@@ -1,11 +1,11 @@
 ---
-title: "Azure で静的な HTML Web アプリを作成する | Microsoft Docs"
-description: "静的 HTML のサンプル アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
+title: Azure で静的な HTML Web アプリを作成する | Microsoft Docs
+description: 静的 HTML のサンプル アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.service: app-service-web
 ms.workload: web
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28918779"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的な HTML Web アプリを作成する
 

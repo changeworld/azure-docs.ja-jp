@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のメッセージ数 | Microsoft Docs"
-description: "Azure Service Bus のメッセージ数の取得"
+title: Azure Service Bus のメッセージ数 | Microsoft Docs
+description: Azure Service Bus のメッセージ数の取得
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197733"
 ---
 # <a name="message-counters"></a>メッセージ カウンター
 

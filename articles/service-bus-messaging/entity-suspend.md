@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus メッセージング エンティティの一時停止 |Microsoft Docs"
-description: "Azure Service Bus メッセージ エンティティを一時停止し再アクティブ化します。"
+title: Azure Service Bus メッセージング エンティティの一時停止 |Microsoft Docs
+description: Azure Service Bus メッセージ エンティティを一時停止し再アクティブ化します。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197028"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
 

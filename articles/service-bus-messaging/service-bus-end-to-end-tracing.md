@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のエンドツーエンド トレースと診断 | Microsoft Docs"
-description: "Service Bus のクライアント診断とエンドツーエンド トレースの概要"
+title: Azure Service Bus のエンドツーエンド トレースと診断 | Microsoft Docs
+description: Service Bus のクライアント診断とエンドツーエンド トレースの概要
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: lmolkova
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27741219"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 

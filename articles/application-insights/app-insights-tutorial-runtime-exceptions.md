@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights を使ってランタイムの例外を診断する | Microsoft Docs"
-description: "Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。"
+title: Azure Application Insights を使ってランタイムの例外を診断する | Microsoft Docs
+description: Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "27998051"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -49,11 +50,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 Application Insights は、お使いのアプリケーションのエラーを収集し、さまざまな操作全体のエラー頻度を表示して、影響が最も高いエラーに専念できるようにします。  その後、これらのエラーの詳細を掘り下げて、根本原因を特定できます。   
 
 1. **Application Insights** を選んでから、ご利用のサブスクリプションを選びます。  
-2. **[失敗]** パネルを開くには、**[調査]** メニューの下にある**[失敗]** を選ぶか、**[失敗した要求]** グラフをクリックします。
+2. **[失敗]** パネルを開くには、**[調査]** メニューの下にある **[失敗]** を選ぶか、**[失敗した要求]** グラフをクリックします。
 
     ![失敗した要求](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
 
-3. **[失敗した要求]** パネルは、失敗した要求の数と、アプリケーションの各操作の影響を受けたユーザーの数を表示します。  ユーザーがこの情報を並べ替えることによって、ユーザーに大きく影響するそのようなエラーを特定できます。  この例では、**GET Employees/Create (従業員を取得/作成)**  と **GET Customers/Details (顧客を取得/詳細)**　が、エラーと影響を受けたユーザーの数が多いため、有力な調査候補です。  操作を選ぶと、右のパネルにこの操作のより詳しい情報が表示されます。
+3. **[失敗した要求]** パネルは、失敗した要求の数と、アプリケーションの各操作の影響を受けたユーザーの数を表示します。  ユーザーがこの情報を並べ替えることによって、ユーザーに大きく影響するそのようなエラーを特定できます。  この例では、**GET Employees/Create (従業員を取得/作成)**  と **GET Customers/Details (顧客を取得/詳細)** 　が、エラーと影響を受けたユーザーの数が多いため、有力な調査候補です。  操作を選ぶと、右のパネルにこの操作のより詳しい情報が表示されます。
 
     ![失敗した要求パネル](media/app-insights-tutorial-runtime-exceptions/failed-requests-blade.png)
 
@@ -107,9 +108,9 @@ Application Insights によって収集されたすべてのデータはAzure Lo
 ## <a name="add-work-item"></a>作業項目を追加する
 Application Insights を Visual Studio Team Services や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。
 
-1. Application Insights の**[Exception Properties]\(例外プロパティ\)** パネルに戻ります。
+1. Application Insights の **[Exception Properties]\(例外プロパティ\)** パネルに戻ります。
 2. **[新しい作業項目]** をクリックします。
-3. **[新しい作業項目]**パネルが開き、既に取り込まれている例外の詳細が表示されます。  保存する前にその他の情報を追加できます。
+3. **[新しい作業項目]** パネルが開き、既に取り込まれている例外の詳細が表示されます。  保存する前にその他の情報を追加できます。
 
     ![新しい作業項目](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 

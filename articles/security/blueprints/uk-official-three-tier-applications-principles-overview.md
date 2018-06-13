@@ -1,6 +1,6 @@
 ---
-title: "UK-OFFICIAL 向け 3 層 Web アプリケーション - 概要"
-description: "UK-OFFICIAL 向け 3 層 Web アプリケーション - 概要"
+title: UK-OFFICIAL 向け 3 層 Web アプリケーション - 概要
+description: UK-OFFICIAL 向け 3 層 Web アプリケーション - 概要
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151380"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>英国立サイバー セキュリティ センターのクラウド セキュリティに関する原則の概要
 

@@ -1,6 +1,6 @@
 ---
-title: "セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+title: セッション管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威の軽減策
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019961"
 ---
 # <a name="security-frame-session-management--articles"></a>セキュリティ フレーム: セッション管理 | 記事 
 | 製品/サービス | 記事 |

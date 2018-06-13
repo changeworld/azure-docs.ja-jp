@@ -1,11 +1,11 @@
 ---
-title: "特権エンドポイントを使用した Azure Stack での更新プログラムのモニター | Microsoft Docs"
-description: "特権エンドポイントを使用して Azure Stack 統合システムの更新プログラムの状態をモニターする方法を説明します。"
+title: 特権エンドポイントを使用した Azure Stack での更新プログラムのモニター | Microsoft Docs
+description: 特権エンドポイントを使用して Azure Stack 統合システムの更新プログラムの状態をモニターする方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621863"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 

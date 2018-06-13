@@ -1,11 +1,11 @@
 ---
-title: "Azure テンプレートを使用して Azure VM のユーザーによって割り当てられた MSI を構成する方法"
-description: "Azure Resource Manager テンプレートを使用して、Azure VM でユーザーに割り当てられた管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。"
+title: Azure テンプレートを使用して Azure VM のユーザーによって割り当てられた MSI を構成する方法
+description: Azure Resource Manager テンプレートを使用して、Azure VM でユーザーに割り当てられた管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984041"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Azure テンプレートを使用して、VM のユーザーによって割り当てられた管理対象サービス ID (MSI) を構成する
 

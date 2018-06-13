@@ -1,12 +1,12 @@
 ---
-title: "Azure で App Service プランを管理する | Microsoft Docs"
-description: "App Service プランを管理するためのさまざまなタスクを実行する方法について説明します。"
-keywords: "App Service, Azure App Service, スケール, App Service プラン, 変更する, 作成する, 管理する, 管理"
+title: Azure で App Service プランを管理する | Microsoft Docs
+description: App Service プランを管理するためのさまざまなタスクを実行する方法について説明します。
+keywords: App Service, Azure App Service, スケール, App Service プラン, 変更する, 作成する, 管理する, 管理
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117682"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 02/09/2018
 
    b. **[App Service プラン]** に、プランの名前を入力します。
 
-   c. **[場所]**で、適切な場所を選択します。
+   c. **[場所]** で、適切な場所を選択します。
 
    d. **[価格レベル]** で、サービスの適切な価格レベルを選択します。 **[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。 価格レベルを選択したら、 **[選択]** をクリックします。
 

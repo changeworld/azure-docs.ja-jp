@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する | Microsoft Docs"
-description: "Azure Stack 統合システムのハードウェア コンポーネントの交換方法について説明します。"
+title: Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する | Microsoft Docs
+description: Azure Stack 統合システムのハードウェア コンポーネントの交換方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c6e036bf-8c80-48b5-b2d2-aa7390c1b7c9
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919714"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する
 

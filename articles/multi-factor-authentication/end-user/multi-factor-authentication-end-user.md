@@ -1,8 +1,8 @@
 ---
-title: "2 段階認証の概要 |Microsoft Docs"
-description: "この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。"
+title: 2 段階認証の概要 |Microsoft Docs
+description: この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198107"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure Multi-Factor Authentication とは何ですか
 お客様のアカウントに対して追加のセキュリティ確認が加えられたという電子メールを IT 部門のだれかまたは上司から受け取りました。  これはどういう意味でしょうか。

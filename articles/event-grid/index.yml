@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Event Grid のドキュメント"
+title: Azure Event Grid のドキュメント
 metadata:
-  title: "Azure Event Grid のドキュメント - チュートリアル、API リファレンス"
-  description: "Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。"
+  title: Azure Event Grid のドキュメント - チュートリアル、API リファレンス
+  description: Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。
   services: event-grid
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 02/01/2018
+  ms.locfileid: "28921771"
 abstract:
-  description: "Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。"
+  description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "カスタム イベントを作成してサブスクライブする方法を学習します。"
+    text: カスタム イベントを作成してサブスクライブする方法を学習します。
   - type: list
     style: icon48
     items:
@@ -41,7 +42,7 @@ sections:
       text: Azure Portal
       href: /azure/event-grid/custom-event-quickstart-portal
   - type: paragraph
-    text: "Blob Storage イベントのルーティング方法を学習します。"
+    text: Blob Storage イベントのルーティング方法を学習します。
   - type: list
     style: icon48
     items:
@@ -53,25 +54,25 @@ sections:
         src: /azure/event-grid/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-- title: "ステップバイステップのチュートリアル"
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: "イベントに対応するアプリケーションを開発する方法を学習します。"
+    text: イベントに対応するアプリケーションを開発する方法を学習します。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">ロジック アプリを使用して VM への変更を監視する</a>"
-    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">アップロードされたイメージをサイズ変更する</a>"
-    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">Azure Automation を Event Grid と統合する</a>"
-- title: "リファレンス"
+    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
+    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
+    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "コマンド ライン"
+    - title: コマンド ライン
       html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
     - title: REST API
       html: <p><a href="/rest/api/eventgrid">REST</a></p>
-    - title: "スキーマ"
-      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">サブスクリプション スキーマ</a></p><p><a href=\"/azure/event-grid/event-schema\">イベント スキーマ</a></p>"
+    - title: スキーマ
+      html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>

@@ -1,6 +1,6 @@
 ---
-title: "Ruby から Queue Storage を使用する方法 | Microsoft Docs"
-description: "Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Ruby で記述されています。"
+title: Ruby から Queue Storage を使用する方法 | Microsoft Docs
+description: Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Ruby で記述されています。
 services: storage
 documentationcenter: ruby
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993638"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -62,7 +63,7 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
-3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
+3. 右側の [設定] ブレードで、 **[アクセス キー]** をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。 
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure 仮想マシンのネットワーク スループット | Microsoft Docs"
-description: "Azure 仮想マシンのネットワーク スループットについて説明します。"
+title: Azure 仮想マシンのネットワーク スループット | Microsoft Docs
+description: Azure 仮想マシンのネットワーク スループットについて説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27778957"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
