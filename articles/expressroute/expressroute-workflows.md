@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 回線の構成ワークフロー | Microsoft Docs"
-description: "このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。"
+title: ExpressRoute 回線の構成ワークフロー | Microsoft Docs
+description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23013127"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。

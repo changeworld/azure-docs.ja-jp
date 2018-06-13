@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30186235"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
@@ -54,7 +55,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. OMS ポータルで、**[設定]** &gt; **[データ]** &gt; **[Application Insights]** をクリックします。
-3. **[サブスクリプションの選択]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[アプリケーション名]**で、1 つまたは複数のアプリケーションを選択します。
+3. **[サブスクリプションの選択]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[アプリケーション名]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[Save]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
@@ -117,7 +118,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ![Application Insights の [例外] ブレード](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;**クエリでも、次の図のように、パースペクティブ タブが表示されます。
+**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
 ![アプリケーション インサイト ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用"
-description: "Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Node.js で記述されています。"
-services: 
+title: Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Node.js で記述されています。
+services: ''
 documentationcenter: nodejs
 author: devinrader
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039497"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。

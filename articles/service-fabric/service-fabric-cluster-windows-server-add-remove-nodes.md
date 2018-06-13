@@ -1,24 +1,25 @@
 ---
-title: "スタンドアロン Service Fabric クラスターでノードを追加または削除する | Microsoft Docs"
-description: "Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。"
+title: スタンドアロン Service Fabric クラスターでノードを追加または削除する | Microsoft Docs
+description: Windows Server を実行する物理コンピューターまたは仮想マシン上で、Azure Service Fabric クラスターにノードを追加または削除する方法について説明します。追加先または削除元は、オンプレミスでも、任意のクラウドでもかまいません。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 252dcdf0ff9e1fecd6665808bfe7978a4417018b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: b1ffe3510cf4f5e73b05572a482f49d529fca60d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212546"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
 [Windows Server マシンでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加や削除が必要になることがあります。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
@@ -57,7 +58,7 @@ ms.lasthandoff: 11/06/2017
     アップグレードの進行状況は Service Fabric Explorer で監視できます。 また、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行する方法もあります。
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Windows セキュリティで gMSA を使用して構成したクラスターにノードを追加する
-グループ管理サービス アカウント (gMSA) を使用して構成したクラスターの場合 (https://technet.microsoft.com/library/hh831782.aspx)、構成のアップグレードを使用して新しいノードを追加できます。
+グループ管理サービス アカウント (gMSA) を使用して構成したクラスターの場合 (https://technet.microsoft.com/library/hh831782.aspx))、構成のアップグレードを使用して新しいノードを追加できます。
 1. 既存のノードのいずれかで [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、"Nodes" セクションに追加する新しいノードについて詳細を追加します。 新しいノードが同じグループ管理アカウントに属していることを確認します。 このアカウントは、すべてのコンピューターで Administrator である必要があります。
 
     ```
@@ -127,7 +128,7 @@ ms.lasthandoff: 11/06/2017
 プライマリ ノードの置き換えは、まとめて削除して後で追加するのではなく、1 ノードづつ実行する必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 * [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)

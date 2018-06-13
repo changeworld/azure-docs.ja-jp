@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171198"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -32,7 +33,7 @@ ms.lasthandoff: 03/23/2018
 
 
 1. ホスト コンピューターが CloudBuilder.vhdx イメージで正常に起動した後、ASDK インストールの[開発キットのホスト コンピューターを準備](asdk-prepare-host.md)するときに指定した管理者資格情報を使ってログインします。 これは、開発キット ホストのローカル管理者の資格情報と同じである必要があります。
-2. 管理者特権で PowerShell コンソールを開き、**&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** スクリプト (現時点では CloudBuilder.vhdx イメージの C:\ 以外のドライブにある可能性があります) を実行します。 **[インストール]**をクリックします。
+2. 管理者特権で PowerShell コンソールを開き、**&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** スクリプト (現時点では CloudBuilder.vhdx イメージの C:\ 以外のドライブにある可能性があります) を実行します。 **[インストール]** をクリックします。
 
     ![](media/asdk-install/1.PNG) 
 

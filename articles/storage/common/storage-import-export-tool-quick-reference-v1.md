@@ -1,12 +1,12 @@
 ---
-title: "Azure Import/Export ツールのインポート ジョブのコマンドのクイック リファレンス - v1 | Microsoft Docs"
-description: "Azure Import/Export ツールで頻繁に使用されるインポート ジョブ コマンドのコマンド リファレンスです。 このリファレンスでは、Import/Export ツール v1 について説明します。"
+title: Azure Import/Export ツールのインポート ジョブのコマンドのクイック リファレンス - v1 | Microsoft Docs
+description: Azure Import/Export ツールで頻繁に使用されるインポート ジョブ コマンドのコマンド リファレンスです。 このリファレンスでは、Import/Export ツール v1 について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059347"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>インポート ジョブで頻繁に使用するコマンドのクイック リファレンス
 このセクションでは、よく使用されるコマンドのクイック リファレンスを提供します。 詳細な使用方法については、「[インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)」を参照してください。  

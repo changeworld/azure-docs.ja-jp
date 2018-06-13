@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841913"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
 この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
@@ -298,12 +299,12 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 いよいよ HPC クラスター マネージャーでジョブを送信します。 いくつかのジョブ タスクでは、コマンド ラインにスクリプト hpcimpirun.sh を指定する必要があります。
 
 1. クラスター ヘッド ノードに接続し、HPC クラスター マネージャーを開始します。
-2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]**をクリックします。
+2. **[リソース管理]** で、Linux 計算ノードが**オンライン**状態にあることを確認します。 オンライン状態にない場合は、その計算ノードを選択し、 **[オンラインにする]** をクリックします。
 3. **[ジョブ管理]** で、**[新しいジョブ]** をクリックします。
 4. ジョブの名前を入力します (たとえば、 *sloshingTank3D*)。
    
    ![Job details][job_details]
-5. **[ジョブ リソース]**で、リソースの種類として “ノード” を選択し、[最小] を 2 に設定します。 この例では、この構成により、それぞれ 8 個のコアを持つ 2 つの Linux ノード上でジョブが実行されます。
+5. **[ジョブ リソース]** で、リソースの種類として “ノード” を選択し、[最小] を 2 に設定します。 この例では、この構成により、それぞれ 8 個のコアを持つ 2 つの Linux ノード上でジョブが実行されます。
    
    ![[ジョブ リソース]][job_resources]
 6. 左側のナビゲーションで **[Edit Tasks (タスクの編集)]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。 次のコマンド ラインと設定を使用して、4 つのタスクをジョブに追加します。
@@ -342,7 +343,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    ![Task dependencies][task_dependencies]
 8. **[送信]** をクリックして、このジョブを実行します。
    
-   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]**をクリックした後、ユーザー名とパスワードの入力を求めるダイアログ ボックスが表示される場合があります。
+   既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。 **[送信]** をクリックした後、ユーザー名とパスワードの入力を求めるダイアログ ボックスが表示される場合があります。
    
    ![ジョブの資格情報][creds]
    
@@ -376,7 +377,7 @@ OpenFOAM ジョブの結果は、 [EnSight](https://www.ceisoftware.com/) を使
    
    ![Edit isosurface color][isosurface_color]
 5. **[Parts]** パネルの **[walls]** を選択して **[walls]** から **[Iso-volume]** を作成し、ツール バーの **[Isosurfaces]** ボタンをクリックします。
-6. ダイアログ ボックスで **[Type]** に **[Isovolume]** を選び、**[Isovolume range]** の [Min] を「0.5」に設定します。 Isovolume を作成するには、 **[Create with selected parts (選択したパーツで作成)]**をクリックします。
+6. ダイアログ ボックスで **[Type]** に **[Isovolume]** を選び、**[Isovolume range]** の [Min] を「0.5」に設定します。 Isovolume を作成するには、 **[Create with selected parts (選択したパーツで作成)]** をクリックします。
 7. 前の手順で作成した **Iso_volume_part** の色を設定します。 たとえば濃い水色に設定します。
 8. **walls**の色を設定します。 たとえば透明白色に設定します。
 9. これで **[Play]** をクリックすると、シミュレーションの結果が表示されます。

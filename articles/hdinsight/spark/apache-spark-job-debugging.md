@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31519384"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
@@ -45,14 +46,14 @@ ms.lasthandoff: 04/18/2018
     ![Find Spark application ID](./media/apache-spark-job-debugging/find-application-id.png)
    
     Jupyter Notebook から起動されたアプリケーションの場合、ノートブックを終了するまでステータスは常に **[実行中]** になります。
-3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]**に対応するリンクをクリックして Spark UI を起動することもできます。 
+3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]** に対応するリンクをクリックして Spark UI を起動することもできます。 
    
     ![Download container logs](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Spark UI でのアプリケーションの追跡
 以前アプリケーションを実行したときに生成された Spark ジョブは、Spark UI からドリルダウンすることができます。
 
-1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]**に対応するリンクをクリックします (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
+1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]** に対応するリンクをクリックします (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
    
     ![View Spark jobs](./media/apache-spark-job-debugging/view-spark-jobs.png)
 2. **[Executors]** タブをクリックすると、実行プログラムごとの処理や記憶域の情報が表示されます。 **[Thread Dump (スレッド ダンプ)]** リンクをクリックして呼び出し履歴を取得することもできます。

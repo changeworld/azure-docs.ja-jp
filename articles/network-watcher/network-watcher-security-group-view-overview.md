@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher のセキュリティ グループ ビューの概要 | Microsoft Docs"
-description: "このページでは、Network Watcher のセキュリティ ビュー機能の概要を説明します。"
+title: Azure Network Watcher のセキュリティ グループ ビューの概要 | Microsoft Docs
+description: このページでは、Network Watcher のセキュリティ ビュー機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23036717"
 ---
 # <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Azure Network Watcher のネットワーク セキュリティ グループ ビューの概要
 

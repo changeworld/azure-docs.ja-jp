@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN リソースの正常性の監視| Microsoft Docs"
-description: "Azure Resource Health を使用して、Azure CDN リソースの正常性を監視する方法について説明します。"
+title: Azure CDN リソースの正常性の監視| Microsoft Docs
+description: Azure Resource Health を使用して、Azure CDN リソースの正常性を監視する方法について説明します。
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: zhangmanling
-editor: 
+editor: ''
 ms.assetid: bf23bd89-35b2-4aca-ac7f-68ee02953f31
 ms.service: cdn
 ms.devlang: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997927"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
   

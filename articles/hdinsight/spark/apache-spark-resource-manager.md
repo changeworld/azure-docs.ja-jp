@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31520510"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 
@@ -80,7 +81,7 @@ Spark クラスターで現在実行されているアプリケーションを�
 2. 一連の既定値は、クラスター上で 4 つの Spark アプリケーションを同時実行することを想定して決められています。 次のスクリーンショットに示すように、これらの値をユーザー インターフェイスから変更できます。
 
     ![Set parameters using Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png)
-3. **[保存]** をクリックして構成の変更を保存します。 変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。 **[Restart (再開)]**をクリックします。
+3. **[保存]** をクリックして構成の変更を保存します。 変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。 **[Restart (再開)]** をクリックします。
 
     ![Restart services](./media/apache-spark-resource-manager/restart-services.png)
 
@@ -126,14 +127,14 @@ Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使�
 ## <a name="reclaim-spark-cluster-resources"></a>Spark クラスター リソースを解放する
 Spark の動的割り当てにより、Thrift サーバーから利用できるリソースは、2 つのアプリケーション マスターのリソースのみです。 これらのリソースの領域を解放するには、クラスター上で実行されている Thrift サーバー サービスを停止する必要があります。
 
-1. Ambari UI の左ペインで **[Spark]**をクリックします。
-2. 次のページで、 **[Spark Thrift Servers]**をクリックします。
+1. Ambari UI の左ペインで **[Spark]** をクリックします。
+2. 次のページで、 **[Spark Thrift Servers]** をクリックします。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-1.png)
 3. Spark Thrift サーバーが実行されている 2 つのヘッド ノードが表示されます。 いずれかのヘッド ノードをクリックしてください。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-2.png)
-4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]**をクリックします。
+4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]** をクリックします。
 
     ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-3.png)
 5. もう一方のヘッド ノードについても同じ手順を繰り返します。
@@ -149,7 +150,7 @@ Spark の動的割り当てにより、Thrift サーバーから利用できる�
 ![リソースの制限](./media/apache-spark-resource-manager/resource-limit.png "リソースの制限")
 
 ## <a name="kill-running-applications"></a>実行中のアプリケーションを強制終了する
-1. Yarn UI の左側のパネルで**[Running]** をクリックします。 実行中のアプリケーションの一覧から、強制終了するアプリケーションを決定し、**[ID]** をクリックします。
+1. Yarn UI の左側のパネルで **[Running]** をクリックします。 実行中のアプリケーションの一覧から、強制終了するアプリケーションを決定し、**[ID]** をクリックします。
 
     ![App1 の強制終了](./media/apache-spark-resource-manager/kill-app1.png "App1 の強制終了")
 

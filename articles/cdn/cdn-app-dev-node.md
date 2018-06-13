@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN SDK for Node.js の概要 | Microsoft Docs"
-description: "Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。"
+title: Azure CDN SDK for Node.js の概要 | Microsoft Docs
+description: Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c4bb6a61-de3d-4f0c-9dca-202554c43dfa
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "22998387"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603846"
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する
 HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターのワークロードに合わせて、ノードやコアなどのクラスター リソースを自動的に増減できれば便利です。 この方法でクラスター リソースをスケーリングすると、Azure リソースをさらに効率的に利用し、そのコストを制御できます。

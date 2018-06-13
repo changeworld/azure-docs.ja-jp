@@ -1,11 +1,11 @@
 ---
-title: "App Service 環境からバックエンド リソースへの安全な接続"
-description: "App Service 環境からバックエンド リソースに安全に接続する方法について説明します。"
+title: App Service 環境からバックエンド リソースへの安全な接続
+description: App Service 環境からバックエンド リソースに安全に接続する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986267"
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースへの安全な接続
 ## <a name="overview"></a>概要

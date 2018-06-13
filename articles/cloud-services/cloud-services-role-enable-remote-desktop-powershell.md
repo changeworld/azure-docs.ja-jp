@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする"
-description: "PowerShell で Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法"
+title: PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
+description: PowerShell で Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf2f70a4-20dc-4302-a91a-38cd7a2baa62
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874142"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 

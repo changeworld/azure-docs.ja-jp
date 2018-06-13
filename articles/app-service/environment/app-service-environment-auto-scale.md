@@ -1,11 +1,11 @@
 ---
-title: "自動スケールと App Service Environment v1"
-description: "自動スケールと App Service Environment"
+title: 自動スケールと App Service Environment v1
+description: 自動スケールと App Service Environment
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987567"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
 

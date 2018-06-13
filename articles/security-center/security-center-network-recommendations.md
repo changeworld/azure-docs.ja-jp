@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのネットワークの保護 | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の Azure ネットワークを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
+title: Azure Security Center でのネットワークの保護 | Microsoft Docs
+description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の Azure ネットワークを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040597"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>Azure Security Center でのネットワークの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。

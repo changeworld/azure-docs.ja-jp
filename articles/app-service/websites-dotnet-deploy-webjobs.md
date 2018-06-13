@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30161525"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -72,7 +73,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
 2. **[プロジェクト名]** ボックスの一覧で、コンソール アプリケーション プロジェクトを選択し、Web ジョブとして追加します。
    
     ![Selecting project in Add Azure WebJob dialog](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. [[Azure Web ジョブの追加]](#configure) ダイアログで必要な設定を完了し、 **[OK]**をクリックします。 
+3. [[Azure Web ジョブの追加]](#configure) ダイアログで必要な設定を完了し、 **[OK]** をクリックします。 
 
 ### <a id="convertnolink"></a> Web プロジェクトなしで Web ジョブ デプロイメントを有効にする
 1. **ソリューション エクスプローラー**でコンソール アプリケーション プロジェクトを右クリックし、**[Azure WebJob として発行する]** をクリックします。 
@@ -80,7 +81,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
     ![[Azure Web ジョブとして発行]](./media/websites-dotnet-deploy-webjobs/paw.png)
    
     [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスが表示され、 **[プロジェクト名]** ボックスに選択されたプロジェクトが示されます。
-2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]**をクリックします。
+2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]** をクリックします。
    
    **Web の発行** ウィザードが表示されます。  すぐに発行しない場合は、ウィザードを閉じます。 [プロジェクトをデプロイする](#deploy)ときのために、入力した設定値は保存されます。
 
@@ -111,7 +112,7 @@ Visual Studio 2017 を使用している場合は、[Azure 開発ワークロー
     ![New Azure WebJob Project menu entry](./media/websites-dotnet-deploy-webjobs/nawj.png)
    
     [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスが表示されます。
-2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]**をクリックします。
+2. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスで必要な設定を完了し、 **[OK]** をクリックします。
 
 ## <a id="configure"></a>[Azure Web ジョブの追加] ダイアログ ボックス
 **[Azure WebJob の追加]** ダイアログを使用して、Web ジョブの Web ジョブ名と実行モード設定を入力できます。 

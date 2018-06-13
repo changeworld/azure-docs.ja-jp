@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Azure 仮想マシンのバックアップ | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Azure 仮想マシンのバックアップ"
+title: Azure PowerShell のサンプル スクリプト - Azure 仮想マシンのバックアップ | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Azure 仮想マシンのバックアップ
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: backup
 ms.devlang: na
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997527"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>PowerShell を使用して、暗号化された Azure 仮想マシンをバックアップする
 

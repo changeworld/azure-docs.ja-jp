@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260971"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 要素
 見出しの下の 1 つまたは複数の要素をグループ化するコントロールです。

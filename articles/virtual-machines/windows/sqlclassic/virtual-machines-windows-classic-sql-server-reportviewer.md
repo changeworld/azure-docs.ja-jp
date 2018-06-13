@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424620"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT] 
@@ -64,7 +65,7 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 1. [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=317386)から、適切な Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをインストールします。
 2. ドロップダウン リストから言語を選択すると、ダウンロード センターの対応するページにリダイレクトされます。
 3. **[ダウンロード]** をクリックして、ReportViewerLP.exe のダウンロードを開始します。
-4. ReportViewerLP.exe をダウンロードしたら、**[実行]** をクリックしてすぐにインストールするか、**[保存]** をクリックしてコンピューターに保存します。 **[保存]**をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
+4. ReportViewerLP.exe をダウンロードしたら、**[実行]** をクリックしてすぐにインストールするか、**[保存]** をクリックしてコンピューターに保存します。 **[保存]** をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
 5. ファイルを保存したフォルダーを見つけます。 ReportViewerLP.exe を右クリックし、**[管理者として実行]**、**[はい]** の順にクリックします。
 6. ReportViewerLP.exe を実行した後、C:\windows\assembly にリソース ファイル **Microsoft.ReportViewer.Webforms.Resources** および **Microsoft.ReportViewer.Common.Resources** が含まれていることが確認できます。
 

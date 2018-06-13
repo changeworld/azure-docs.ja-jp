@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409266"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -64,7 +65,7 @@ Azure ポータルのログ検索ポータルで、1 行の基本的なクエリ
 Perf | where CounterName == "% Processor Time" and ObjectName == "Processor" and InstanceName == "_Total" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1m), Computer | render timechart
 ```
 
-右上の **[クエリの保存]** を選択して、クエリを保存します。<br> ![高度な分析ポータルでクエリを保存する](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> **[クエリの保存]** コントロール パネルで、名前 ("*Azure VM - プロセッサ使用率*" など) を指定し、**[保存]** をクリックします。  この方法で、検索するための一般的なクエリのライブラリを作成したり、全体を書き直すことなくクエリを変更したりできます。  最後に、ページの右上中央にあ る**[Pin chart to your Azure dashboard]\(グラフを Azure ダッシュボードにピン留め\)** を選択して、先ほど作成した共有ダッシュボードにピン留めします。  
+右上の **[クエリの保存]** を選択して、クエリを保存します。<br> ![高度な分析ポータルでクエリを保存する](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> **[クエリの保存]** コントロール パネルで、名前 ("*Azure VM - プロセッサ使用率*" など) を指定し、**[保存]** をクリックします。  この方法で、検索するための一般的なクエリのライブラリを作成したり、全体を書き直すことなくクエリを変更したりできます。  最後に、ページの右上中央にあ る **[Pin chart to your Azure dashboard]\(グラフを Azure ダッシュボードにピン留め\)** を選択して、先ほど作成した共有ダッシュボードにピン留めします。  
 
 ダッシュボードにクエリがピン留めされ、一般的なタイトルとその下にコメントが表示されます。<br> ![Azure ダッシュボードの例](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-01.png)<br><br>  見た人が簡単に理解できる意味のある名前に変更する必要があります。  タイルを右クリックし、**[タイルの編集]** を選択します。  タイルのタイトルとサブタイトルのカスタマイズが完了したら、**[更新]** をクリックします。  変更を発行するか破棄するかを確認するバナーが表示されます。  **[変更の発行]** をクリックした後、**[タイルの編集]** コントロール ウィンドウを閉じます。  
 

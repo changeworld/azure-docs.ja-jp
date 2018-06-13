@@ -1,7 +1,7 @@
 ---
-title: "Twilio から通話する方法 (Java) | Microsoft Docs"
-description: "Azure 上の Java アプリケーションで Twilio を使用して Web ページから通話する方法について説明します。"
-services: 
+title: Twilio から通話する方法 (Java) | Microsoft Docs
+description: Azure 上の Java アプリケーションで Twilio を使用して Web ページから通話する方法について説明します。
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039627"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Azure 上の Java アプリケーションで Twilio を使用して通話する方法
 次の例では、Azure でホストされる Java Web ページから Twilio を使用して通話する方法を示しています。 次のスクリーン ショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
@@ -173,7 +174,7 @@ ms.lasthandoff: 10/11/2017
 3. アプリケーションをコンピューティング エミュレーター用にコンパイルします。
 4. コンピューティング エミュレーターでデプロイを開始します。
 5. ブラウザーを開き、**http://localhost:8080/TwilioCloud/callform.jsp** を実行します。
-6. フォームで値を入力し、 **[電話をかける]**をクリックして、makecall.jsp で結果を確認します。
+6. フォームで値を入力し、 **[電話をかける]** をクリックして、makecall.jsp で結果を確認します。
 
 Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します (*your_hosted_name* は実際の値に置き換えてください)。
 

@@ -16,6 +16,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526520"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -142,7 +143,7 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 3. クリックして **[DHCP サーバー]** チェック ボックスをオンにし、**[機能の追加]** をクリックして、ウィザードが完了するまで **[次へ]** をクリックします。
   
-4. **[インストール]**をクリックします。
+4. **[インストール]** をクリックします。
 
 #### <a name="configure-a-new-dhcp-scope"></a>新しい DHCP スコープを構成する
 

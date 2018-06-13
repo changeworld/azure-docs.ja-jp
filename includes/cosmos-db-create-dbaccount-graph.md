@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31429196"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 04/16/2018
     Geo 冗長の有効化| 空白 | データベースのレプリケート バージョンが 2 番目 (ペア) のリージョンに作成されます。 空白のままにします。  
     [ダッシュボードにピン留めする] | elect | このボックスを選択すると、新しいデータベース アカウントが、アクセスしやすいようにポータルのダッシュボードに追加されます。
 
-    **[Create]**をクリックします。
+    **[Create]** をクリックします。
 
     ![Azure Cosmos DB の [新しいアカウント] ブレード](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
 

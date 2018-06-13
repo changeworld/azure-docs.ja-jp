@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のログ ファイルの形式 | Microsoft Docs"
-description: "インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します。"
+title: Azure Import/Export のログ ファイルの形式 | Microsoft Docs
+description: インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23060007"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  

@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics の webhook アラート アクション サンプル| Microsoft Docs"
-description: "Log Analytics のアラートに対して実行できるアクションの 1 つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。"
+title: OMS Log Analytics の webhook アラート アクション サンプル| Microsoft Docs
+description: Log Analytics のアラートに対して実行できるアクションの 1 つが *Webhook* であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。 この記事では、Slack を使用して、Log Analytics のアラートで Webhook アクションを作成する例を見ていきます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020807"
 ---
 # <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>OMS Log Analytics で アラート webhook アクションを作成して、メッセージを Slack に送信する
 [Log Analytics のアラート](log-analytics-alerts.md) に対して実行できるアクションの 1 つが *Webhook*であり、1 つの HTTP 要求を使用して外部プロセスを呼び出すことができます。  アラートと Webhook の詳細については、「 [Log Analytics のアラート](log-analytics-alerts.md)

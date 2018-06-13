@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "22999157"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/05/2018
     ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。  **[ダッシュボード]**をクリックします。
+2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。  **[ダッシュボード]** をクリックします。
    
     エッジ ノード分析ダッシュボードが表示されます。
 
@@ -142,7 +143,7 @@ ms.lasthandoff: 04/05/2018
     ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。  **[HTTP ラージ オブジェクト]**をクリックします。
+2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。  **[HTTP ラージ オブジェクト]** をクリックします。
    
     エッジ ノード分析レポート画面が表示されます。
 
