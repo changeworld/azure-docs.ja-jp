@@ -20,13 +20,14 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200999"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 Microsoft Authenticator アプリは、職場または学校アカウント (bsimon@contoso.com など)、または Microsoft アカウント (bsimon@outlook.com など) に追加のセキュリティ レベルを提供します。
 
 アプリは次のいずれかの方法で機能します。
 
-* **通知**。 スマートフォンまたはタブレットに通知をプッシュして、アカウントへの不正アクセスを防止したり、不正なトランザクションを停止させることができます。 通知を確認し、適切である場合は **[認証]**を選択するだけです。 適切でない場合は、 **[拒否]**を選択します。
+* **通知**。 スマートフォンまたはタブレットに通知をプッシュして、アカウントへの不正アクセスを防止したり、不正なトランザクションを停止させることができます。 通知を確認し、適切である場合は **[認証]** を選択するだけです。 適切でない場合は、 **[拒否]** を選択します。
 * **確認コード**。 アプリをソフトウェア トークンとして使用して、OAuth 検証コードを生成できます。 ユーザー名とパスワードを入力したら、アプリから提供されたコードをサインイン画面に入力します。 検証コードにより、2 番目の形式の認証が行われます。
 
 Azure Authenticator アプリは Microsoft Authenticator アプリに置き換えられています。 Azure Authenticator アプリは引き続き機能しますが、新しい Microsoft Authenticator アプリに移行することにした場合は、この記事が役に立ちます。  
@@ -71,7 +72,7 @@ Microsoft Authenticator アプリに追加する各アカウントについて�
 
 ### <a name="add-an-account-to-the-app-manually"></a>アプリにアカウントを手動で追加する
 1. セキュリティ確認の設定画面に移動します。  この画面の表示方法の詳細については、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md)に関するページを参照してください。
-2. **[構成]**をクリックします。
+2. **[構成]** をクリックします。
 
     ![セキュリティ確認の設定画面の [構成] ボタン](./media/authenticator-app-how-to/azureauthe.png)
 
@@ -80,7 +81,7 @@ Microsoft Authenticator アプリに追加する各アカウントについて�
     ![QR コードと URL を提供する画面](./media/authenticator-app-how-to/barcode2.png)
 3. Microsoft Authenticator アプリを開きます。 **[アカウント]** 画面で、**+** を選択し、職場または学校のアカウントの追加を指定します。
 
-4. スキャナーで、 **[enter code manually (コードを手動で入力)]**を選択します。
+4. スキャナーで、 **[enter code manually (コードを手動で入力)]** を選択します。
 
     ![QR コードをスキャンする画面](./media/multi-factor-authentication-end-user-first-time/scan2.png)
 5. アプリの適切なボックスにコードと URL を入力し、**[完了]** を選択します。

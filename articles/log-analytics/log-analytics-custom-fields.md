@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics のカスタム フィールド | Microsoft Docs"
-description: "Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される Log Analytics レコードから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。"
+title: Azure Log Analytics のカスタム フィールド | Microsoft Docs
+description: Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される Log Analytics レコードから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030705"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
 Log Analytics の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、Log Analytics の既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
@@ -48,7 +49,7 @@ Log Analytics の**カスタム フィールド**機能を使用すると、独�
 
 1. **ログ検索** を開き、 [クエリを使用してカスタム フィールドを追加するレコードを取得](log-analytics-log-searches.md) します。
 2. Log Analytics でカスタム フィールドを設定するデータを抽出する際に、モデルとして機能するために使用するレコードを選択します。  このレコードから抽出するデータを特定すると、Log Analytics はその情報を使用して、すべての同様のレコードのカスタム フィールドを設定します。
-3. レコードのテキスト プロパティの左にあるボタンをクリックし、 **[フィールドの抽出]**を選択します。
+3. レコードのテキスト プロパティの左にあるボタンをクリックし、 **[フィールドの抽出]** を選択します。
 4. **フィールドの抽出ウィザード**が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
 5. 目的の選択内容ではない場合、追加のフィールドを選択して条件を絞り込みます。  条件のフィールド値を変更するには、取り消して、目的の条件と一致する別のレコードを選択する必要があります。
 
@@ -105,7 +106,7 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 ![[検索結果]](media/log-analytics-custom-fields/search-results-01.png)
 
-まず **WMI Performance Adapter** レコードから始めます。  そのレコードの編集アイコンをクリックし、 **[この選択内容の変更]**をクリックします。  
+まず **WMI Performance Adapter** レコードから始めます。  そのレコードの編集アイコンをクリックし、 **[この選択内容の変更]** をクリックします。  
 
 ![選択内容の変更](media/log-analytics-custom-fields/modify-highlight.png)
 

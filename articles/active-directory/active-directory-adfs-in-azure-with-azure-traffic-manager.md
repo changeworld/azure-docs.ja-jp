@@ -1,12 +1,12 @@
 ---
-title: "Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ | Microsoft Docs"
-description: "このドキュメントでは、Azure に AD FS をデプロイして高可用性を確保する方法について説明します。"
-keywords: "Azure traffic manager を使用した Ad fs, Azure Traffic Manager を使用した adfs, 地理的, 複数のデータセンター, 地域のデータセンター, 複数の地域のデータセンター, azure への AD FS のデプロイ, azure adfs のデプロイ, azure adfs, azure ad fs, adfs のデプロイ, ad fs のデプロイ, azure での adfs, azure への adfs のデプロイ, azure への AD FS のデプロイ, adfs azure, AD FS の概要, Azure, azure での AD FS, iaas, ADFS, azure への adfs の移行"
+title: Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ | Microsoft Docs
+description: このドキュメントでは、Azure に AD FS をデプロイして高可用性を確保する方法について説明します。
+keywords: Azure traffic manager を使用した Ad fs, Azure Traffic Manager を使用した adfs, 地理的, 複数のデータセンター, 地域のデータセンター, 複数の地域のデータセンター, azure への AD FS のデプロイ, azure adfs のデプロイ, azure adfs, azure ad fs, adfs のデプロイ, ad fs のデプロイ, azure での adfs, azure への adfs のデプロイ, azure への AD FS のデプロイ, adfs azure, AD FS の概要, Azure, azure での AD FS, iaas, ADFS, azure への adfs の移行
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a14bc870-9fad-45ed-acd5-a90ccd432e54
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26604781"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ
 [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md) 」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。 この記事では、その次の手順として、 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。 Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない | Microsoft Docs"
-description: "Azure AD でユーザーをプロビジョニングできるように構成した Azure AD ギャラリー アプリケーションにユーザーが表示されないときの一般的な問題をトラブルシューティングする方法について説明します。"
+title: Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない | Microsoft Docs
+description: Azure AD でユーザーをプロビジョニングできるように構成した Azure AD ギャラリー アプリケーションにユーザーが表示されないときの一般的な問題をトラブルシューティングする方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26616294"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 

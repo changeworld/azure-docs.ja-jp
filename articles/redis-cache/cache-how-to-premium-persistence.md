@@ -1,11 +1,11 @@
 ---
-title: "Premium Azure Redis Cache のデータ永続化の構成方法"
-description: "Premium レベルの Azure Redis Cache インスタンス用にデータの永続化を構成して管理する方法について説明します"
+title: Premium Azure Redis Cache のデータ永続化の構成方法
+description: Premium レベルの Azure Redis Cache インスタンス用にデータの永続化を構成して管理する方法について説明します
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910851"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache のデータ永続化の構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
@@ -37,7 +38,7 @@ Azure Redis Cache では、以下のモデルを使用した Redis 永続化を�
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Premium 価格レベルを選択した後、 **[Redis の永続化]**をクリックします。
+Premium 価格レベルを選択した後、 **[Redis の永続化]** をクリックします。
 
 ![[Redis の永続化]][redis-cache-persistence]
 
