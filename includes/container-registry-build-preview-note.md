@@ -13,6 +13,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34059880"
 ---
 > [!IMPORTANT]
 > ACR ビルドは現在プレビュー段階にあり、**米国東部**と**西ヨーロッパ** リージョンの Azure コンテナー レジストリでのみサポートされています。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。

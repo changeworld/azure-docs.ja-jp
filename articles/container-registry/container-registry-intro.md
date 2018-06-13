@@ -9,11 +9,12 @@ ms.topic: overview
 ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 10055b75000e5affdcdef5841a8d45db8b41ef05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34058082"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -54,13 +55,10 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) は､Azure 上で簡略化し効率的な Docker コンテナー イメージ ビルドを行えるようにする､Azure Container Registry の機能一式です｡ ACR Build を利用して､`docker build` オペレーションを Azure にオフロードすることで開発内部ループをクラウドにまで拡大することができます｡ ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
 
-> [!NOTE]
-> ACR Build は現在プレビュー段階であり､**East US**  (eastus) と **West Europe** (westeurope) 地域の Azure コンテナー レジストリによってのみサポートされています｡ プレビュー版は､[追加使用条件 ][terms-of-use] に同意することを条件にご利用いただけます｡ この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Portal を使用したコンテナー レジストリの作成](container-registry-get-started-portal.md)
 * [Azure CLI を使用したコンテナー レジストリの作成](container-registry-get-started-azure-cli.md)
 * [ACR Build による OS および フレームワーク パッチ適用の自動化](container-registry-build-overview.md) (プレビュー)
-
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

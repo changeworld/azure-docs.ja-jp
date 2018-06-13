@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941603"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>VHD 作成中に発生する一般的な問題をトラブルシューティングする方法
 この記事では、Azure Marketplace の発行者や共同管理者が仮想マシン ソリューションを発行または管理するときによく発生する問題や一般的な質問について説明します。

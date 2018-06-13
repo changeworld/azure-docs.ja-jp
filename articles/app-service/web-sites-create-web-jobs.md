@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30231104"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -129,7 +130,7 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブの一覧](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. Web ジョブを実行するには、一覧でその名前を右クリックし、 **[実行]**をクリックします。
+7. Web ジョブを実行するには、一覧でその名前を右クリックし、 **[実行]** をクリックします。
    
     ![Web ジョブの実行](./media/web-sites-create-web-jobs/runondemand.png)
 

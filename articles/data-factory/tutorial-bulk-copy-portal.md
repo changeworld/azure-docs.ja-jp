@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30173285"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -88,8 +89,8 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。
@@ -127,7 +128,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
     3. **[データベース名]** で、使用する Azure SQL Database を選択します。 
     4. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
-    5. **[パスワード]**に、そのユーザーのパスワードを入力します。 
+    5. **[パスワード]** に、そのユーザーのパスワードを入力します。 
     6. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
     7. **[Save]** をクリックします。
 
@@ -143,7 +144,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     2. **[サーバー名]** で、使用する Azure SQL Server を選択します。
     3. **[データベース名]** で、使用する Azure SQL Database を選択します。 
     4. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
-    5. **[パスワード]**に、そのユーザーのパスワードを入力します。 
+    5. **[パスワード]** に、そのユーザーのパスワードを入力します。 
     6. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
     7. **[Save]** をクリックします。
 

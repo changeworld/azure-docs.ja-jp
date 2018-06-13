@@ -5,20 +5,21 @@ services: key-vault
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
-ms.assetid: ''
+ms.assetid: 1126f665-2e6c-4cca-897e-7d61842e8334
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/27/2018
+ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 8c10a784e80432d60fae132cd31a9cbd604b1c8e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e7aa675e849fb8c4dac0bfb5a1ae44dd16ca25e3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068298"
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>クイック スタート: PowerShell を使用した Azure Key Vault の作成
 

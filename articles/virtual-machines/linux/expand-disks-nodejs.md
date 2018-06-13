@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905335"
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Azure CLI と Azure CLI 1.0 を使用して Linux VM の OS ディスクを拡張する
 Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して追加の記憶域を提供できますが、OS ディスクを拡張することもできます。 この記事では、Azure CLI 1.0 で非管理対象ディスクを使用して Linux VM の OS ディスクを拡張する方法について詳しく説明します。

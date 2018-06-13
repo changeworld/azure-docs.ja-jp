@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913418"
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Azure Portal で Windows VM に管理対象のデータ ディスクを接続する方法
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/06/2018
 5. 新しいディスクのドロップダウン リストで **[ディスクの作成]** を選択します。
 6. **[管理ディスクの作成]** ページで、ディスクの名前を入力し、必要に応じてその他の設定を調整します。 完了したら、**[作成]** をクリックします。
 7. **[ディスク]** ページで **[保存]** をクリックして、VM の新しいディスク構成を保存します。
-6. Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]**に新しいディスクが表示されます。
+6. Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。
 
 
 ## <a name="initialize-a-new-data-disk"></a>新しいデータ ディスクの初期化

@@ -12,7 +12,7 @@
 
    ![ストレージ アカウントを選択する](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. **[BLOB]**を選択します。
+1. **[BLOB]** を選択します。
 
    ![BLOB の選択](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
@@ -20,7 +20,7 @@
 
    ![コンテナーの追加](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. コンテナーに名前とアクセス レベルを付与します。 この記事のサンプル テンプレートには機密性の高い情報は含まれていないため、匿名の読み取りアクセスを許可します。 **[OK]**を選択します。
+1. コンテナーに名前とアクセス レベルを付与します。 この記事のサンプル テンプレートには機密性の高い情報は含まれていないため、匿名の読み取りアクセスを許可します。 **[OK]** を選択します。
 
    ![コンテナーの値の指定](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
@@ -28,7 +28,7 @@
 
    ![新しいコンテナーの選択](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. **[アップロード]**を選択します。
+1. **[アップロード]** を選択します。
 
    ![BLOB のアップロード](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

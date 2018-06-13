@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30266140"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
@@ -143,7 +144,7 @@ public ActionResult About()
 
     ![デバッグ モードでの発行](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. **[発行]**をクリックします。 デプロイが完了し、ブラウザーが起動して Web アプリケーションの Azure URL が表示されたら、ブラウザーを閉じます。
+8. **[発行]** をクリックします。 デプロイが完了し、ブラウザーが起動して Web アプリケーションの Azure URL が表示されたら、ブラウザーを閉じます。
 
 9. **サーバー エクスプローラー**で、Web アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
@@ -198,7 +199,7 @@ public ActionResult About()
 
 7. **サーバー エクスプローラー**で、**[Azure]、[App Service]、使用するリソース グループ、使用する Web アプリ、[Web ジョブ]、[継続]** の順に展開し、**[ContosoAdsWebJob]** を右クリックします。
 
-8. **[デバッガーの接続]**をクリックします。
+8. **[デバッガーの接続]** をクリックします。
 
     ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
 
@@ -372,7 +373,7 @@ public ActionResult Contact()
     ログ ストリーミング サービスに接続されたことを示すメッセージが**出力**ウィンドウに表示されます。ログが出力されないまま 1 分が経過すると、その都度、1 行の通知が追加されます。
 
     ![コンテキスト メニューからストリーミング ログを表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
-4. アプリケーションのホーム ページが表示されているブラウザー ウィンドウで、 **[Contact]**をクリックします。
+4. アプリケーションのホーム ページが表示されているブラウザー ウィンドウで、 **[Contact]** をクリックします。
 
     数秒すると、`Contact` メソッドに追加したエラー レベルのトレースが**出力**ウィンドウに表示されます。
 

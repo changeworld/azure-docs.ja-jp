@@ -1,6 +1,6 @@
 ---
-title: "ターゲットを準備する (物理サーバーから Azure) | Microsoft Docs"
-description: "この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、Azure 環境を準備する方法について説明します。"
+title: ターゲットを準備する (物理サーバーから Azure) | Microsoft Docs
+description: この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、Azure 環境を準備する方法について説明します。
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811059"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 
