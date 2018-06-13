@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844079"
 ---
 サービスは 1 つのサブスクリプションの枠内で複数作成することができます。作成したサービスはそれぞれ、一定のレベルでプロビジョニングされます。ただし、各レベルにはサービス数に上限が設けられています。 たとえば、Basic レベルのサービスであれば 12 個まで作成できますが、同じサブスクリプションの枠内で S1 レベルのサービスをさらにもう 12 個まで作成できます。 レベルの詳細については、「[Azure Search 用の SKU または価格レベルの選択](../articles/search/search-sku-tier.md)」を参照してください。
 

@@ -6,10 +6,10 @@
 3. インストーラーをダブルクリックします。 SharePoint 用 StorSimple アダプターのセットアップ ウィザードが起動します。 **[次へ]** をクリックしてインストールを開始します。
    
     ![StorSimple adapter setup start page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. SharePoint 用 StorSimple アダプターのセットアップ構成ページで、インストールする場所を選択し、StorSimple デバイス上の DATA 0 ネットワーク インターフェイスの IP アドレスを入力し、 **[次へ]**をクリックします。 
+4. SharePoint 用 StorSimple アダプターのセットアップ構成ページで、インストールする場所を選択し、StorSimple デバイス上の DATA 0 ネットワーク インターフェイスの IP アドレスを入力し、 **[次へ]** をクリックします。 
    
     ![StorSimple adapter setup configuration page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. セットアップの確認ページで、 **[インストール]**をクリックします。
+5. セットアップの確認ページで、 **[インストール]** をクリックします。
    
     ![StorSimple adapter setup confirmation page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
 6. **[完了]** をクリックしてセットアップ ウィザードを閉じます。

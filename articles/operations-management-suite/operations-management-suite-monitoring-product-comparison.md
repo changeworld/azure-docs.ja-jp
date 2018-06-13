@@ -1,8 +1,8 @@
 ---
-title: "Microsoft 監視製品の比較 | Microsoft Docs"
-description: "Microsoft Operations Management Suite (OMS) は、Microsoft のクラウド ベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。"
+title: Microsoft 監視製品の比較 | Microsoft Docs
+description: Microsoft Operations Management Suite (OMS) は、Microsoft のクラウド ベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事では、OMS に含まれるさまざまなサービスについて説明し、詳細なコンテンツへのリンクを提供します。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040297"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 監視製品の比較
 この記事では、アーキテクチャ、リソースの監視方法のロジック、収集したデータの分析方法の観点から、System Center Operations Manager (SCOM) と Operations Management Suite (OMS) の Log Analytics の比較について説明します。  両者の相違点と相対的なメリットについて基本的な理解を得ることを目的としています。  

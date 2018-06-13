@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのセキュリティ イベントの監視と処理 | Microsoft Docs"
-description: "Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。"
+title: Azure Security Center でのセキュリティ イベントの監視と処理 | Microsoft Docs
+description: Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040657"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
@@ -79,7 +80,7 @@ Security Center は、すぐに使用できる注目すべきイベントを提�
 
   ![クエリの入力][8]
 
-4. **[OK]**を選択します。
+4. **[OK]** を選択します。
 
 ## <a name="update-your-workspace-for-events-processing"></a>イベント処理用にワークスペースを更新する
 Security Center でイベント処理を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 **[イベント ダッシュボード]** ワークスペース セレクターで、これらの要件を満たしていないワークスペースを識別できます。

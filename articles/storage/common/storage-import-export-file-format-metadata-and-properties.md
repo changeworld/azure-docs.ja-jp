@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のメタデータとプロパティ ファイルの形式 | Microsoft Docs"
-description: "インポートまたはエクスポート ジョブの一部である 1 つまたは複数の BLOB のメタデータとプロパティを指定する方法について説明します。"
+title: Azure Import/Export のメタデータとプロパティ ファイルの形式 | Microsoft Docs
+description: インポートまたはエクスポート ジョブの一部である 1 つまたは複数の BLOB のメタデータとプロパティを指定する方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059307"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export サービスのメタデータとプロパティ ファイルの形式
 インポートまたはエクスポート ジョブの一部として 1 つ以上の BLOB のメタデータとプロパティを指定できます。 インポート ジョブの一部として作成されている BLOB のメタデータまたはプロパティを設定するには、インポートするデータを含むハード ドライブでメタデータまたはプロパティ ファイルを提供します。 エクスポート ジョブの場合、メタデータとプロパティは返されるハード ドライブに含まれるメタデータまたはプロパティ ファイルに書き込まれます。  

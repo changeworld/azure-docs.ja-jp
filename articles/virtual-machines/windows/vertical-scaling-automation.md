@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918423"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Azure Automation を使用して Windows VM を垂直方向にスケーリングする
 

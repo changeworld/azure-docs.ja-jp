@@ -21,6 +21,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30282574"
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
 
@@ -53,7 +54,7 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
      ![GitHub webhook トリガー テンプレートを選択します。](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 
-2. 関数の**名前**を入力し、**[作成]**を選択します。 
+2. 関数の**名前**を入力し、**[作成]** を選択します。 
 
      ![Azure Portal で GitHub webhook でトリガーされる関数を構成する](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger-2.png) 
 
@@ -95,7 +96,7 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 1. 新しいウィンドウで、**[New Issue (新しい問題)]** をクリックし、タイトルを入力して、**[Submit new issue (新しい問題の送信)]** をクリックします。
 
-1. 問題にコメントを入力し、 **[コメント]**をクリックします。
+1. 問題にコメントを入力し、 **[コメント]** をクリックします。
 
     ![GitHub の問題コメントを追加します。](./media/functions-create-github-webhook-triggered-function/functions-github-webhook-add-comment.png)
 

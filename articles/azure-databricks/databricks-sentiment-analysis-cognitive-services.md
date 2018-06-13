@@ -21,6 +21,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30315400"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析
 
@@ -176,7 +177,7 @@ Twitter アプリケーションについて取得した値を保存します。
     - サービスの価格レベルを選択します。 Cognitive Services の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
     - 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。
 
-    **[作成]**を選択します。
+    **[作成]** を選択します。
 
 5. アカウントの作成後、**[概要]** タブで **[アクセス キーを表示]** を選択します。
 
@@ -205,7 +206,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **[作成]**を選択します。
+    **[作成]** を選択します。
 
 3. 手順を繰り返して **AnalyzeTweetsFromEventHub** ノートブックを作成します。
 

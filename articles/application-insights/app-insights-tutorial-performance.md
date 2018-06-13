@@ -15,6 +15,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969136"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -99,7 +100,7 @@ Application Insights Analytics には、Application Insights によって収集�
 ## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する
 Application Insights は、最適化するためのサーバー プロセスを識別するだけでなく、クライアント ブラウザーの観点から分析することもできます。  これは、クライアント コンポーネントの潜在的な改善を識別し、複数の場所にあるさまざまなブラウザーの問題を特定するためにも役立ちます。
 
-1. **[調査]** の下の**[ブラウザー]** を選択して、ブラウザーの概要を開きます。  これにより、アプリケーションのさまざまなテレメトリをブラウザーの観点から見た概要が視覚的に表示されます。
+1. **[調査]** の下の **[ブラウザー]** を選択して、ブラウザーの概要を開きます。  これにより、アプリケーションのさまざまなテレメトリをブラウザーの観点から見た概要が視覚的に表示されます。
 
     ![ブラウザーの概要](media/app-insights-tutorial-performance/browser-summary.png)
 

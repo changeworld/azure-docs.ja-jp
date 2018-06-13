@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958709"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>ポータルを使用して、VM を他のサブスクリプションに移動する
 ポータルを使用して、VM とその関連リソースを他のサブスクリプションに移動できます。

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841505"
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Azure Linux VM 上での MySQL のパフォーマンスを最適化する
 Azure では、仮想ハードウェアの選択およびソフトウェアの構成の両方で MySQL のパフォーマンスに影響を与える多くの要素があります。 この記事では、ストレージ、システム、およびデータベースの構成でのパフォーマンスの最適化について説明します。
@@ -54,7 +55,7 @@ Azure Portarl でダッシュボードに移動し、データ ディスクを�
 
 ![仮想マシンにディスクを追加する](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-500 GB の新しい ディスクを作成します。 **[ホスト キャッシュ設定]** が **[なし]** に設定されていることを確認します。  操作が終了したら、 **[OK]**をクリックします。
+500 GB の新しい ディスクを作成します。 **[ホスト キャッシュ設定]** が **[なし]** に設定されていることを確認します。  操作が終了したら、 **[OK]** をクリックします。
 
 ![空のディスクの接続](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 

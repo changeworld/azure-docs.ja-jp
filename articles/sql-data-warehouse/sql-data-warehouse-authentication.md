@@ -2,19 +2,20 @@
 title: Azure SQL Data Warehouse に対して認証する | Microsoft Docs
 description: Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
 services: sql-data-warehouse
-author: ronortloff
+author: kavithaj
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/12/2018
-ms.author: rortloff
+ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2340168e736c13b5d911a987d36b0224d3c3b1ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 173bc797cb6436decddb68aaf1599ea7a6dd597e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793581"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse に対して認証する
 Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。

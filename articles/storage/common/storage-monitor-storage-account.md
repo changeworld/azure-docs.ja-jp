@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30322915"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>ストレージ アカウントの監視の設定
 
-1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]**を選択し、目的のストレージ アカウントの名前を選択して、アカウント ダッシュボードを開きます。
+1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]** を選択し、目的のストレージ アカウントの名前を選択して、アカウント ダッシュボードを開きます。
 1. メニュー ブレードの **[監視]** セクションで **[診断]** を選択します。
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
@@ -54,7 +55,7 @@ ms.lasthandoff: 04/03/2018
    > メトリック データを手動で削除するときは課金されます。 システムによって古い分析データ (保持ポリシーよりも古いデータ) が削除されるときは費用がかかりません。 アカウントのストレージ分析データを保持する必要がある期間に基づいて、データ保持ポリシーを設定することをお勧めします。 詳細については、「[ストレージ メトリックを有効にした場合に発生する課金](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics)」を参照してください。
    >
 
-1. 監視の構成が完了したら、**[保存]**を選択します。
+1. 監視の構成が完了したら、**[保存]** を選択します。
 
 既定のメトリック セットは、ストレージ アカウント ブレードのグラフと、個別のサービス ブレード (BLOB、キュー、テーブル、およびファイル) に表示されます。 サービスのメトリックを有効にした場合、データがグラフに表示されるまでに最大で 1 時間かかる場合があります。 メトリック グラフで **[編集]** を選択すると、グラフに表示する[メトリックを構成](#how-to-customize-metrics-charts)できます。
 
@@ -138,7 +139,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 > 現在、Azure Files は、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。
 >
 
-1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]**を選択し、ストレージ アカウントの名前を選択して、ストレージ アカウント ブレードを開きます。
+1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択して、ストレージ アカウント ブレードを開きます。
 1. メニュー ブレードの **[監視]** セクションで **[診断]** を選択します。
 
     ![Azure Portal の [監視] の [診断] メニュー。](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)

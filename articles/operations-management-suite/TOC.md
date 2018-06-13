@@ -46,7 +46,6 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### サービス マップ
-##### [チュートリアル](../monitoring/monitoring-walkthrough-servicemap.md)
 ##### [用途](../monitoring/monitoring-service-map.md)
 ##### [構成](../monitoring/monitoring-service-map-configure.md)
 ##### [Operations Manager との統合](../monitoring/monitoring-service-map-scom.md)

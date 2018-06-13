@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30922775"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -91,7 +92,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 エージェントを削除するには:
 
-1. **[コントロール パネル]**を開きます。
+1. **[コントロール パネル]** を開きます。
 2. **[プログラムと機能]** を開きます。
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックします。
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526874"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Azure SQL Data Warehouse の復元 (Portal)
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/18/2018
    最新の復元ポイントを選択していることを確認します。 復元ポイントは協定世界時 (UTC) で表示されるため、表示される既定のオプションが最新の復元ポイントでない場合があります。
 
       ![復元ポイントを選択](./media/sql-data-warehouse-restore-database-portal/01-restore-blade-from-active.png)
-8. **[OK]**を選択します。
+8. **[OK]** を選択します。
 9. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
 > [!NOTE]
@@ -79,7 +80,7 @@ ms.lasthandoff: 04/18/2018
 7. 新しい**データベース名**を指定します。
 
     ![データベースの名前を追加](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
-8. **[OK]**を選択します。
+8. **[OK]** を選択します。
 9. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
 > [!NOTE]

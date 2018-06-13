@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - Azure CLI 1.0 | Microsoft Docs"
-description: "この記事では、Azure CLI 1.0 を使って、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。"
+title: Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - Azure CLI 1.0 | Microsoft Docs
+description: この記事では、Azure CLI 1.0 を使って、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23034427"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-10"></a>Azure CLI 1.0 を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 

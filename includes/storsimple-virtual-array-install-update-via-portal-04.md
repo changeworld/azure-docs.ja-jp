@@ -22,7 +22,7 @@
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. **[新しい更新プログラム]** ブレードで、"更新プログラムをダウンロードしたら、インストールを確認する必要があります" という情報を確認します。 **[OK]**をクリックします。
+5. **[新しい更新プログラム]** ブレードで、"更新プログラムをダウンロードしたら、インストールを確認する必要があります" という情報を確認します。 **[OK]** をクリックします。
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30921550"
 ---
 Azure Portal を使用して Resource Manager デプロイメント モデルで VNet を作成するには、次の手順に従います。 これらの手順をチュートリアルとして使用する場合は、[例として示されている値](#values)を使用してください。 これらの手順をチュートリアルとして使用しない場合は、必ず独自の値に置き換えてください。 仮想ネットワークの操作の詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center の検索機能 | Microsoft Docs"
-description: "Azure Security Center が Log Analytics 検索を使用してセキュリティ データを取得し、分析するしくみについて説明します。"
+title: Azure Security Center の検索機能 | Microsoft Docs
+description: Azure Security Center が Log Analytics 検索を使用してセキュリティ データを取得し、分析するしくみについて説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040437"
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center の検索機能
 Azure Security Center では、[Log Analytics 検索](../log-analytics/log-analytics-log-searches.md)を使用してセキュリティ データを取得し、分析します。 Log Analytics には、データをすばやく取得して統合するためのクエリ言語が用意されています。 Security Center から Log Analytics 検索を活用してクエリを作成し、収集したデータを分析できます。

@@ -1,9 +1,9 @@
 ---
-title: "エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ | Microsoft Docs"
-description: "エネルギー公益事業者の需要予測に役立つ Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャ。"
-keywords: "ソリューション アクセラレータ;Cortana Analytics;エネルギー予測"
+title: エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ | Microsoft Docs
+description: エネルギー公益事業者の需要予測に役立つ Microsoft Cortana Intelligence ソリューション テンプレートのアーキテクチャ。
+keywords: ソリューション アクセラレータ;Cortana Analytics;エネルギー予測
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23002387"
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence ソリューション テンプレートのアーキテクチャ
 次の図に、 [エネルギー需要予測のための Cortana Intelligence ソリューション テンプレート](cortana-analytics-playbook-demand-forecasting-energy.md)のアーキテクチャの概要を示します。

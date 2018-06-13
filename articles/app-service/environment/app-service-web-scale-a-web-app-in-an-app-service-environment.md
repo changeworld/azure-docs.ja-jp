@@ -1,8 +1,8 @@
 ---
-title: "App Service 環境内でアプリをスケーリングする方法"
-description: "App Service 環境内でのアプリのスケーリング"
+title: App Service 環境内でアプリをスケーリングする方法
+description: App Service 環境内でのアプリのスケーリング
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986317"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>App Service 環境内でのアプリのスケーリング
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。

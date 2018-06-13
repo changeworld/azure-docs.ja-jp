@@ -1,13 +1,13 @@
 ---
 title: "\"502 無効なゲートウェイ\" エラーと \"503 サービス利用不可\" エラーの解決 | Microsoft Docs"
-description: "Azure App Service でホストされている Web アプリで発生するエラー \"502 無効なゲートウェイ\" と \"503 サービス利用不可\" のトラブルシューティングを行います。"
+description: Azure App Service でホストされている Web アプリで発生するエラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティングを行います。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "502 無効なゲートウェイ, 503 サービス利用不可, 503 エラー, 502 エラー"
+keywords: 502 無効なゲートウェイ, 503 サービス利用不可, 503 エラー, 502 エラー
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -21,11 +21,12 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986257"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Azure Web アプリでの HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)でホストされている Web アプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
 ## <a name="symptom"></a>症状
 ブラウザーで Web アプリにアクセスすると、"502 無効なゲートウェイ" または "503 サービス利用不可" という HTTP エラーが返される。
