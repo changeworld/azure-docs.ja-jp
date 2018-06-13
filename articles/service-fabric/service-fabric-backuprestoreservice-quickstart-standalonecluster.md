@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206047"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
 > [!div class="op_single_selector"]

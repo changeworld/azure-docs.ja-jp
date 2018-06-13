@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32177956"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
 

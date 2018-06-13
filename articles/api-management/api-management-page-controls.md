@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936153"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
 Azure API Management には、開発者ポータル テンプレート用に次のページ コントロールが用意されています。  

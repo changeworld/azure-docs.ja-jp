@@ -16,6 +16,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32160258"
 abstract:
   description: サービスとしてのアプリケーション配信コントローラー (ADC) である Application Gateway をデプロイする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、スケーラブルな高可用性 Web フロントエンドを構築できるようにする、アプリケーション レベルのルーティングおよび負荷分散サービスを設定する方法を紹介します。
 sections:

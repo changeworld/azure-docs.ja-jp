@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206438"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性を実現するうえで欠かせないのは、サービスがあらゆる種類の障害を切り抜けられるようにすることです。 これは、計画外の障害や、制御できない障害に関しては特に重要です。 この記事では、正しくモデル化および管理されていない場合に、災害につながる可能性がある一般的な障害モードをいくつか取り上げて説明します。 さらに、軽減策や、災害が発生した場合に実行するアクションについても解説します。 その目的は、計画的または計画外の障害が発生したときに、ダウンタイムやデータ損失のリスクを軽減または排除することです。

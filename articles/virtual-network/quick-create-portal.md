@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841403"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用した仮想ネットワークの作成
 
@@ -88,7 +89,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 2. **[接続]** ボタンを選択した後、リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。  
 3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
-4. **[OK]**を選択します。
+4. **[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 
 ## <a name="communicate-between-vms"></a>VM 間の通信

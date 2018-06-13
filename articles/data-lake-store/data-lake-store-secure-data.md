@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197037"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。

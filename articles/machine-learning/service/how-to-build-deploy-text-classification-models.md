@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939713"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Azure Machine Learning でテキスト分類モデルを構築して配置する
 
@@ -136,7 +137,7 @@ df_test.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ラベル</th>
+      <th>label</th>
       <th>テキスト</th>
     </tr>
   </thead>
@@ -185,7 +186,7 @@ int_to_categories
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>category</th>
+      <th>カテゴリ</th>
       <th>category_name</th>
     </tr>
   </thead>
@@ -420,13 +421,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>異なるパイプライン手順のパラメーターを調べて設定する
 
-scikit-learn モデルの適合にかかわらず、プリプロセッサと特徴抽出器 (変換) のパイプラインの手順を使用して、適合に先立って前処理が行われます。 そのため、トレーニングのために "パイプライン" が参照されます。 評価中に、前処理と scikit-learn モデルの予測を含むパイプライン全体がテスト データセットに適用されます。
+トレーニングの間、テキスト列とラベル列の両方を用意する必要があります。 ただし、予測にはテキスト列のみが必要となります。 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>異なるパイプライン手順のパラメーターを調べて設定する
+    
+通常、モデルを適合させる前に、パラメーターを設定します。 
 
 ***text_word_ngrams を示す例*** 
-
-通常、モデルを適合させる前に、パラメーターを設定します。 
 
 次のコード サンプルは、既定のパイプラインとモデル パラメーターを使用して、モデルをトレーニングする方法を示しています。 
 
@@ -572,7 +574,7 @@ text_classifier.export_params(params_file_path)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ラベル</th>
+      <th>label</th>
       <th>テキスト</th>
       <th>確率</th>
       <th>予測</th>

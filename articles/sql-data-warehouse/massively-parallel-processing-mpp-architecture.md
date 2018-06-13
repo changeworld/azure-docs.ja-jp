@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31799279"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ
 Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。 

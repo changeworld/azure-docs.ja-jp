@@ -3,21 +3,36 @@ title: Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続
 description: Azure Kubernetes Service (AKS) クラスター ノードとの SSH 接続を作成します
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164324"
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードへの SSH 接続
 
-場合によっては、メンテナンス、ログ収集、またはその他のトラブルシューティング操作のために、Azure Kubernetes Service (AKS) ノードにアクセスしなければならない場合があります。 Azure Kubernetes Service (AKS) ノードは、インターネットに公開されていません。 このドキュメントで説明されている手順を使用して、AKS ノードとの SSH 接続を作成してください。
+場合によっては、メンテナンス、ログ収集、またはその他のトラブルシューティング操作のために、Azure Kubernetes Service (AKS) ノードにアクセスしなければならない場合があります。 AKS ノードが、インターネットに公開されていません。 このドキュメントで説明されている手順を使用して、AKS ノードとの SSH 接続を作成してください。
+
+## <a name="reset-ssh-keys"></a>SSH キーのリセット
+
+SSH キーを使用せず AKS を展開したか、適切な SSH キーにアクセスできない場合、Azure Portal を使用してリセットできます。
+
+AKS クラスターに移動して AKS ノード (仮想マシン) を選択し、**[パスワードのリセット]** を選択して SSH 公開キーをリセットします。
+
+![[パスワードのリセット] ボタンのある AKS VM](media/aks-ssh/reset-password.png)
+
+**[SSH 公開キーのリセット]** を選択し、AKS クラスター ユーザー名 (既定では **azueruser**) を入力し、SSH 公開キーをコピーします。 完了したら、**[更新]** を選択します。
+
+![[パスワードのリセット] ボタンのある AKS ポータル VM](media/aks-ssh/reset-password-2.png)
+
+SSH キーがリセットされたら、対応する秘密キーを使用して SSH 接続を作成できます。
 
 ## <a name="get-aks-node-address"></a>AKS ノード アドレスの取得
 
@@ -56,7 +71,7 @@ NAME                       READY     STATUS    RESTARTS   AGE
 aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
 ```
 
-ポッドに SSH キーをコピーし、ポッド名を適切な値に置き換えます。
+ポッドにプライベート SSH キーをコピーし、ポッド名を適切な値に置き換えます。
 
 ```console
 kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844070"
 ---
 ストレージは、ディスク容量、またはインデックス、ドキュメント、その他の高水準リソースの "*最大数*" のハード制限のうち、先に達したものによって制約されます。 次の表では、ストレージの制限についてまとめています。 インデックス、ドキュメント、その他のオブジェクトの上限については、[リソースによる制限](../articles/search/search-limits-quotas-capacity.md#index-limits)に関するページを参照してください。
 
