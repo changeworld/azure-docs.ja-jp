@@ -33,13 +33,13 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき_ません_。
+>シームレス SSO は、Active Directory フェデレーション サービス (AD FS) には適用できません。
 
 ## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
-  - ユーザーはパスワードを繰り返し入力する必要はありません。
+  - ユーザーは、パスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
   - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。
@@ -48,7 +48,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 ## <a name="feature-highlights"></a>機能概要
 
-- サインインのユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID`) を指定できます。 シームレス SSO は Kerberos チケットの `securityIdentifier` 要求を使用して Azure AD で対応するユーザー オブジェクトを検索するので、どちらを使用しても問題ありません。
+- サインインのユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID`) を指定できます。 シームレス SSO は Kerberos チケットの `securityIdentifier` 要求を使用して Azure AD で対応するユーザー オブジェクトを検索するため、どちらを使用しても問題ありません。
 - シームレス SSO は便宜的な機能です。 これが何らかの理由で失敗した場合、ユーザーのサインイン エクスペリエンスは通常の動作に戻ります。つまり、ユーザーはサインイン ページでパスワードを入力する必要があります。
 - アプリケーション (たとえば、https://myapps.microsoft.com/contoso.com) が Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
 - アプリケーション (たとえば、https://contoso.sharepoint.com) がサインイン要求を、Azure AD の共通エンドポイント (つまり、https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
