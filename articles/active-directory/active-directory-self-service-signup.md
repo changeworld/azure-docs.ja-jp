@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760291"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 この記事では、セルフサービス サインアップの概要と、Azure Active Directory (Azure AD) でサポートする方法について説明します。 管理されていない Azure AD テナントからドメイン名を引き継ぐ場合は、[管理されていないディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。

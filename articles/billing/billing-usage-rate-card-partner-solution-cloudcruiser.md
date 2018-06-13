@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771499"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser と Microsoft Azure Billing API の統合
 この記事では、新しい Azure Billing API から収集した情報を Cloud Cruiser で使用して、ワークフローのコスト シミュレーションと分析を行う方法について説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782881"
 ---
 # <a name="monitor-job-progress-using-net"></a>.NET を使用したジョブの進行状況の監視
 > [!div class="op_single_selector"]

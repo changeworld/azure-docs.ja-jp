@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33766106"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング
 この記事により、404 HTTP 応答状態コードを返す Content Delivery Network (CDN) エンドポイントに関する問題のトラブルシューティングを行うことができます。

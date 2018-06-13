@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762015"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>セルフサービス グループ管理に必要な Azure Active Directory の設定
 Azure Active Directory (Azure AD) では、管理下のユーザーが自分でセキュリティ グループまたは Office 365 グループを作成して管理することができます。 ユーザーはセキュリティ グループまたは Office 365 グループのメンバーシップを要求することもできます。要求されたメンバーシップは、グループの所有者が承認または拒否できます。 グループの業務上の趣旨を理解している人物に日常的なメンバーシップ管理を委任することができます。 セルフサービスによるグループ管理機能を使用できるのはセキュリティ グループと Office 365 グループだけであり、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。

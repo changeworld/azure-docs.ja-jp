@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33778666"
 abstract:
   description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントで、Hadoop、Spark、Hive、LLAP、Kafka、Storm、R といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:

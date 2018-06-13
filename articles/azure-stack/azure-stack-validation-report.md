@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937555"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 検証レポート
 Azure Stack 適合性チェッカー ツールでは、Azure Stack 環境のデプロイとサービスをサポートする検証が実行されます。 このツールでは、検証結果が .json レポート ファイルに書き込まれます。 レポートには、Azure Stack デプロイの前提条件の状態と、既存のAzure Stack デプロイのシークレット ローテーションに関する詳細データと概要データが表示されます。  

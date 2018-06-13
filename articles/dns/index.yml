@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32773021"
 abstract:
   description: Azure DNS の使用方法。 ドメイン名の DNS ゾーンとレコードを設定して管理する方法について、クイック スタートやチュートリアル、サンプルなどで説明します。
 sections:

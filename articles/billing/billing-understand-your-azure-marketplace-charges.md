@@ -21,6 +21,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203971"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>外部サービスの課金に対する Azure での請求について
 外部サービスは、Azure Marketplace でサード パーティ ソフトウェア ベンダーによって公開されています。 たとえば、ClearDB と SendGrid は、Azure で購入できる外部サービスですが、これらはマイクロソフトが公開したものではありません。

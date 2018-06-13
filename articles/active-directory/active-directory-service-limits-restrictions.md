@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33759982"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD サービスの制限と制約
 この記事では、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。 Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../azure-subscription-service-limits.md)」を参照してください。

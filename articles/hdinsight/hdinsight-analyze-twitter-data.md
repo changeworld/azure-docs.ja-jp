@@ -18,6 +18,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31593714"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
@@ -76,7 +77,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 **Twitter アプリケーションを作成するには**
 
 1. [https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクをクリックします。
-2. **[Create New App]**をクリックします。
+2. **[Create New App]** をクリックします。
 3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
@@ -87,7 +88,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
 6. **[Keys and Access Tokens]** タブをクリックします。
-7. **[Create my access token]**をクリックします。
+7. **[Create my access token]** をクリックします。
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。 これらの値は後で必要になります。
 

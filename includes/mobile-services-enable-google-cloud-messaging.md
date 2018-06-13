@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33836525"
 ---
 1. [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager)に移動し、Google アカウントの資格情報でサインインします。 
 2. ツールバーの **[プロジェクトの作成]** を選択します。 

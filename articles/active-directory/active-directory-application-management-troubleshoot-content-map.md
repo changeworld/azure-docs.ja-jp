@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927782"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Azure Active Directory アプリケーションの管理のトラブルシューティング
 次のリンクをクリックすると、Azure Active Directory で**エンタープライズ アプリケーション**を管理するときに発生する、最も一般的な問題のいくつかを解決するうえで役に立つコンテンツ マップが表示されます。

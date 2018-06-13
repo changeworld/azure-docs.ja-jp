@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31594697"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -350,7 +351,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 以下の点に注意してください。
 
-* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"**というエラーが表示される場合は、次の手順に従います。  
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"** というエラーが表示される場合は、次の手順に従います。  
   
   1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783571"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  

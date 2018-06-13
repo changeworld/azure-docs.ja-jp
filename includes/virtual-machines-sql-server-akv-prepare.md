@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32787418"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
 Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。 

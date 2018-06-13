@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935116"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>関連付け ID を含むヘッダーの追加
 

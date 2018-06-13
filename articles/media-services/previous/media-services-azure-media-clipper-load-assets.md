@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782901"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Azure Media Clipper への資産の読み込み
 資産は、次の 2 つの方法で Azure Media Clipper に読み込むことができます。

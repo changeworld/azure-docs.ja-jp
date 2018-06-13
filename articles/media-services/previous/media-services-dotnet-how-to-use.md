@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783501"
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]

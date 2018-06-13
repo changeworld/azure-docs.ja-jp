@@ -21,6 +21,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778445"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>チュートリアル: Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 このチュートリアルでは、Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する方法について学習します。 

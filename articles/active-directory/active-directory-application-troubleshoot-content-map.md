@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927935"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う
 この記事は、**エンタープライズ アプリケーション**の管理と、**アプリケーション レジストリ**で新しいアプリケーションの開発に関する最も一般的な問題のいくつかをトラブルシューティングするためのドキュメントの検索に役立ちます。

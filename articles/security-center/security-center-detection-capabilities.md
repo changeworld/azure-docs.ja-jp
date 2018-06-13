@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894253"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソースが今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
