@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack ADFS のユーザーを追加する | Microsoft Docs"
-description: "Azure Stack の ADFS デプロイ用にユーザーを追加する方法について説明します"
+title: Azure Stack ADFS のユーザーを追加する | Microsoft Docs
+description: Azure Stack の ADFS デプロイ用にユーザーを追加する方法について説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29554582"
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Azure Stack Development Kit でユーザーを追加する
 

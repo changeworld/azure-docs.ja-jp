@@ -1,12 +1,12 @@
 ---
-title: "PowerShell for StorSimple デバイス管理 | Microsoft Docs"
-description: "Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
+title: PowerShell for StorSimple デバイス管理 | Microsoft Docs
+description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743723"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -67,13 +68,13 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    | Enable extra keyboard features |Control-Alt is different from AltGr |
    
     ![サポートされる Putty 設定](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. **[Apply]**をクリックします。
+3. **[Apply]** をクリックします。
 4. **[Category]** パネルで、**[Translation]** を選択します。
 5. **[Remote character set]** ボックスの一覧から **[UTF-8]** を選択します。
 6. **[Handling of line drawing characters]** の **[Use Unicode line drawing code points]** を選択します。 次のスクリーンショットに、正しい PuTTY の選択を示します。
    
     ![UTF PuTTY 設定](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. **[Apply]**をクリックします。
+7. **[Apply]** をクリックします。
 
 これで、PuTTY を使用して、次の手順に従ってデバイスのシリアル コンソールに接続できます。
 

@@ -1,11 +1,11 @@
 ---
-title: "サインイン後、アプリケーションのページでエラーが発生 | Microsoft Docs"
-description: "アプリケーション自体がエラーを出力するときに Azure AD サインインで問題を解決する方法"
+title: サインイン後、アプリケーションのページでエラーが発生 | Microsoft Docs
+description: アプリケーション自体がエラーを出力するときに Azure AD サインインで問題を解決する方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384907"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>サインイン後、アプリケーションのページでエラーが発生する
 
@@ -55,7 +56,7 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
    属性を追加するには、次の手順に従います。
 
-   * **[属性の追加]** をクリックします。 **[名前]** を入力し、ドロップダウンから**[値]** を選択します。
+   * **[属性の追加]** をクリックします。 **[名前]** を入力し、ドロップダウンから **[値]** を選択します。
 
    * **[保存]** をクリックします。 テーブルに新しい属性が表示されます。
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Blob Storage エンドポイントのカスタム ドメイン名の構成 | Microsoft Docs"
-description: "Azure ポータルを使用して、独自の正規名 (CNAME) を Azure Storage アカウントの BLOB ストレージ エンドポイントにマッピングします。"
+title: Azure Blob Storage エンドポイントのカスタム ドメイン名の構成 | Microsoft Docs
+description: Azure ポータルを使用して、独自の正規名 (CNAME) を Azure Storage アカウントの BLOB ストレージ エンドポイントにマッピングします。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559929"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
 

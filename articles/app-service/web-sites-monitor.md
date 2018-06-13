@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service でアプリを監視する | Microsoft Docs"
-description: "Azure Portal を使用して Azure App Service のアプリを監視する方法を説明します。"
+title: Azure App Service でアプリを監視する | Microsoft Docs
+description: Azure Portal を使用して Azure App Service のアプリを監視する方法を説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29573805"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。

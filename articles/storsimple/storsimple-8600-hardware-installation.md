@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple 8600 デバイスの取り付け | Microsoft Docs"
-description: "ソフトウェアのデプロイと構成の前に、StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブルの接続をする方法について説明します。"
+title: Microsoft Azure StorSimple 8600 デバイスの取り付け | Microsoft Docs
+description: ソフトウェアのデプロイと構成の前に、StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブルの接続をする方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743720"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
 ## <a name="overview"></a>概要

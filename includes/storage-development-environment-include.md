@@ -8,7 +8,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 2. **[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** の順に選択します。
 3. **[コンソール アプリ (.NET Framework)]** を選択します。
 4. **[名前]** フィールドに、アプリケーションの名前を入力します。
-5. **[OK]**を選択します。
+5. **[OK]** を選択します。
 
 ![Visual Studio の [新しいプロジェクト] ダイアログ ボックスのスクリーンショット](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 

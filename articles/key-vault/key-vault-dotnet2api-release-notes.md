@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "27909756"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
 次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書**など、改善後の新機能を完全にサポートする必要があります。
@@ -63,7 +64,7 @@ Key Vault 証明書では x509 証明書を管理し、次の動作をサポー�
 
 * *KeyVaultClientException* は *KeyVaultErrorException* に変更されます。
 * サービス エラーは *exception.Error* から *exception.Body.Error.Message* に変更されます。
-* **[JsonExtensionData]**のエラー メッセージの追加情報が削除されました。
+* **[JsonExtensionData]** のエラー メッセージの追加情報が削除されました。
 
 ## <a name="constructors"></a>コンストラクター
 

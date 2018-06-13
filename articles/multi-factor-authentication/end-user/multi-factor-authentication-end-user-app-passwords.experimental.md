@@ -1,8 +1,8 @@
 ---
-title: "Azure MFA でアプリ パスワードを使用する方法 | Microsoft Docs"
-description: "このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。"
+title: Azure MFA でアプリ パスワードを使用する方法 | Microsoft Docs
+description: このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700447"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
 現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。  これは、次の場合にユーザーが多要素認証を使用できないことを意味します。
@@ -66,7 +67,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 1. Azure ポータルにサインインします。
 2. 上部で、ユーザー名をクリックし、**[パスワードの変更]** を選択します。
 3. 確認ページの上部の **[アプリ パスワード]** を選択します。
-4. **[作成]**を選択します。
+4. **[作成]** を選択します。
 5. アプリ パスワードの名前を入力し、**[次へ]** を選択します。
 6. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
 
@@ -86,7 +87,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
    ![[アプリ パスワード] を選択する - スクリーンショット](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
 5. **Create** をクリックしてください。
-6. アプリ パスワードの名前を入力し、 **[次へ]**をクリックします。
+6. アプリ パスワードの名前を入力し、 **[次へ]** をクリックします。
 7. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
    ![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
@@ -101,7 +102,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 
    ![[アプリ パスワード] を選択する - スクリーンショット](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
-5. 削除するアプリ パスワードの横にある **[削除]**をクリックします。
+5. 削除するアプリ パスワードの横にある **[削除]** をクリックします。
 
    ![アプリケーション パスワードの削除](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
 

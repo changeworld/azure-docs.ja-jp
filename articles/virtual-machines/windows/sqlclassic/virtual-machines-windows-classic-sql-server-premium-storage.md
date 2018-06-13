@@ -1,8 +1,8 @@
 ---
-title: "SQL Server で Azure Premium Storage を使用する | Microsoft Docs"
-description: "この記事では、クラシック デプロイ モデルで作成されたリソースを使用し、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage を使用するガイダンスを提供します。"
+title: SQL Server で Azure Premium Storage を使用する | Microsoft Docs
+description: この記事では、クラシック デプロイ モデルで作成されたリソースを使用し、Azure Virtual Machines で実行している SQL Server で Azure Premium Storage を使用するガイダンスを提供します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: craigg
 editor: monicar
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400615"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要

@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center チュートリアル - Azure Security Center でリソースを保護する | Microsoft Docs"
-description: "このチュートリアルでは、Just In Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。"
+title: Azure Security Center チュートリアル - Azure Security Center でリソースを保護する | Microsoft Docs
+description: このチュートリアルでは、Just In Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529416"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル: Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just In Time 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。

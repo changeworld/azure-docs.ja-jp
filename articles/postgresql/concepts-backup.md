@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL でのバックアップと復元"
-description: "Azure Database for PostgreSQL サーバーの自動バックアップと復元について説明します。"
+title: Azure Database for PostgreSQL でのバックアップと復元
+description: Azure Database for PostgreSQL サーバーの自動バックアップと復元について説明します。
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29693050"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのバックアップと復元
 

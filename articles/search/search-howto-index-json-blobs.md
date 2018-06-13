@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363004"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
 この記事では、Azure Blob Storage 内の JSON BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。

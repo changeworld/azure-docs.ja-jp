@@ -1,12 +1,12 @@
 ---
-title: "Azure での Traffic Manager プロファイルの作成 | Microsoft Docs"
-description: "この記事では、Traffic Manager プロファイルの作成方法について説明します。"
+title: Azure での Traffic Manager プロファイルの作成 | Microsoft Docs
+description: この記事では、Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397572"
 ---
 # <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
@@ -44,7 +45,7 @@ ms.lasthandoff: 02/21/2018
 
 1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** をクリックします。
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. 次のように入力します。
     1. **[種類]** で、**[Azure エンドポイント]** をクリックします。
     2. このエンドポイントを識別するための**名前**を指定します。
@@ -60,7 +61,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="use-the-traffic-manager-profile"></a>Traffic Manager プロファイルの使用
 1.  ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。
-2. **[Overview]**をクリックします。
+2. **[Overview]** をクリックします。
 3. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
 
 ## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除

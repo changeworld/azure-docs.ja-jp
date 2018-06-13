@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs"
-description: "このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。"
+title: Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs
+description: このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29531674"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
@@ -45,7 +46,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 Security Center を初めて起動してから数分以内に、以下の項目が表示されます。
 
 - Azure サブスクリプションのセキュリティを向上させる方法についての**推奨事項**。 **[推奨事項]** タイルをクリックすると優先順位が付けられた一覧が起動します。
-- Security Center によって現在評価されている**[計算]**、**[ネットワーク]**、**[ストレージおよびデータ]**、**[アプリケーション]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
+- Security Center によって現在評価されている **[計算]**、**[ネットワーク]**、**[ストレージおよびデータ]**、**[アプリケーション]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
 
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
 
