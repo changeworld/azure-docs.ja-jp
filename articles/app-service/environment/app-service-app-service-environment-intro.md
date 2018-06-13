@@ -1,11 +1,11 @@
 ---
-title: "App Service Environment v1 の概要"
-description: "すべてのアプリを実行するためのセキュリティで保護され、VNet に参加している専用のスケール ユニットを提供する、App Service Environment v1 の機能について説明します。"
+title: App Service Environment v1 の概要
+description: すべてのアプリを実行するためのセキュリティで保護され、VNet に参加している専用のスケール ユニットを提供する、App Service Environment v1 の機能について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986697"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 

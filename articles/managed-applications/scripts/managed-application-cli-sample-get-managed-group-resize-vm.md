@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI スクリプトのサンプル - マネージ リソース グループを取得し、VM のサイズを変更する | Microsoft Docs"
-description: "Azure CLI スクリプトのサンプル - マネージ リソース グループを取得し、VM のサイズを変更する"
+title: Azure CLI スクリプトのサンプル - マネージ リソース グループを取得し、VM のサイズを変更する | Microsoft Docs
+description: Azure CLI スクリプトのサンプル - マネージ リソース グループを取得し、VM のサイズを変更する
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847201"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Azure CLI でマネージ リソース グループ内のリソースを取得し、VM のサイズを変更します
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875336"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -104,8 +105,8 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 3. インスタンスが起動したら、 **サーバー エクスプローラー**を開きます。
 4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
 5. ロール インスタンスが表示されるまでデプロイメントを展開します。 いずれかのインスタンスを右クリックします。
-6. **[IntelliTrace ログの表示]**を選択します。 **[IntelliTrace の概要]** が表示されます。
-7. 概要の例外セクションを探します。 例外が存在する場合、そのセクションには **[例外データ]**という見出しが付きます。
+6. **[IntelliTrace ログの表示]** を選択します。 **[IntelliTrace の概要]** が表示されます。
+7. 概要の例外セクションを探します。 例外が存在する場合、そのセクションには **[例外データ]** という見出しが付きます。
 8. **[例外データ]** を展開し、次のような **System.IO.FileNotFoundException** エラーを探します。
 
 ![Exception data, missing file or assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)

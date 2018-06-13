@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export ジョブの状態情報の取得 | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービス ジョブの状態情報を取得する方法について説明します。"
+title: Azure Import/Export ジョブの状態情報の取得 | Microsoft Docs
+description: Microsoft Azure Import/Export サービス ジョブの状態情報を取得する方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059907"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Import/Export ジョブの状態情報の取得
 [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作を呼び出して、インポートとエクスポートの両方のジョブに関する情報を取得することができます。 返される情報には、次の情報が含まれます。

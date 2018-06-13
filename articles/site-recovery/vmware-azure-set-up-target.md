@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811069"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Azure への VMware レプリケーションのターゲット環境を準備する
 

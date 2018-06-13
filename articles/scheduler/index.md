@@ -1,11 +1,11 @@
 ---
-title: "Azure Scheduler のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Scheduler を使用して、定期的なアプリケーション アクションや日常的なメンテナンスなどのジョブをスケジュールして呼び出す方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+title: Azure Scheduler のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Scheduler を使用して、定期的なアプリケーション アクションや日常的なメンテナンスなどのジョブをスケジュールして呼び出す方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 services: scheduler
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: scheduler
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071349"
 ---
 # <a name="scheduler-documentation"></a>Scheduler のドキュメント
 

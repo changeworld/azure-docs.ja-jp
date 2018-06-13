@@ -1,11 +1,11 @@
 ---
-title: "BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド | Microsoft Docs"
-description: "MABS (Microsoft Azure BizTalk Services) への EDI の移行"
+title: 'BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド | Microsoft Docs'
+description: MABS (Microsoft Azure BizTalk Services) への EDI の移行
 services: biztalk-services
 documentationcenter: na
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 61c179fa-3f37-495b-8016-dee7474fd3a6
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22998847"
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド
 

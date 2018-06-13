@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export エクスポート ジョブのドライブ使用率のプレビュー - v1 | Microsoft Docs"
-description: "Azure Import/Export サービスでエクスポート ジョブに選択した BLOB の一覧をプレビューする方法について説明します。"
+title: Azure Import/Export エクスポート ジョブのドライブ使用率のプレビュー - v1 | Microsoft Docs
+description: Azure Import/Export サービスでエクスポート ジョブに選択した BLOB の一覧をプレビューする方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059297"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>エクスポート ジョブのドライブ使用率のプレビュー
 エクスポート ジョブを作成する前に、エクスポートする一連の BLOB を選択する必要があります。 Microsoft Azure Import/Export サービスを使用すると、BLOB のパスの一覧や BLOB プレフィックスを使用して、選択した BLOB を表すことができます。  

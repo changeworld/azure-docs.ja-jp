@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN の詳細な HTTP レポートを使用した利用統計の分析 | Microsoft Docs"
-description: "Microsoft Azure CDN の詳細な HTTP レポートを作成する方法を説明します。 これらのレポートでは、CDN アクティビティの詳細情報が提供されます。"
+title: Azure CDN の詳細な HTTP レポートを使用した利用統計の分析 | Microsoft Docs
+description: Microsoft Azure CDN の詳細な HTTP レポートを作成する方法を説明します。 これらのレポートでは、CDN アクティビティの詳細情報が提供されます。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22999037"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN の詳細な HTTP レポートを使用した利用統計の分析
 ## <a name="overview"></a>概要
@@ -32,7 +33,7 @@ ms.lasthandoff: 10/11/2017
     ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[詳細な HTTP レポート]** フライアウトにポインターを合わせます。  **[HTTP ラージ プラットフォーム]**をクリックします。
+2. **[分析]** タブにマウス ポインターを合わせ、次に **[詳細な HTTP レポート]** フライアウトにポインターを合わせます。  **[HTTP ラージ プラットフォーム]** をクリックします。
    
     ![CDN management portal - Advanced Reports menu](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    

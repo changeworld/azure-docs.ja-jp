@@ -1,6 +1,6 @@
 ---
-title: "Site Recovery を使用して Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック | Microsoft Docs"
-description: "Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します"
+title: Site Recovery を使用して Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852899"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 
@@ -82,5 +83,5 @@ Azure からオンプレミス サイトにフェールオーバーし、オン�
 4. フェールオーバーを開始します。 フェールオーバーの進行状況は、 **[ジョブ]** タブで確認できます。
 5. 初回のデータ同期が完了し、Azure VM をシャットダウンする準備ができた時点で、**[ジョブ]** > 計画されたフェールオーバーのジョブ名 > **[フェールオーバーの完了]** をクリックします。 これにより Azure VM がシャットダウンされ、最新の変更がオンプレミスに転送され、オンプレミスの VM が起動します。
 6. オンプレミスの VM にログオンして、それが期待どおりに使用できることを確認します。
-7. オンプレミスの VM は、この時点では **[コミット保留中]**の状態です。 **[コミット]** をクリックします。 これにより、Azure VM とそのディスクが削除され、オンプレミスの VM でレプリケーションの反転が準備されます。
+7. オンプレミスの VM は、この時点では **[コミット保留中]** の状態です。 **[コミット]** をクリックします。 これにより、Azure VM とそのディスクが削除され、オンプレミスの VM でレプリケーションの反転が準備されます。
 オンプレミスの VM の Azure へのレプリケーションを開始するには、**[レプリケーションの反転]** を有効にします。 これにより、Azure VM をシャットダウンした後に発生した差分変更のレプリケーションが開始されます。  

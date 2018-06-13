@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Function App へのカスタム ドメインのマッピング | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Azure における Function App へのカスタム ドメインのマッピング。"
+title: Azure CLI のサンプル スクリプト - Function App へのカスタム ドメインのマッピング | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Azure における Function App へのカスタム ドメインのマッピング。
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: d127e347-7581-47d7-b289-e0f51f2fbfbc
 ms.service: functions
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843988"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
