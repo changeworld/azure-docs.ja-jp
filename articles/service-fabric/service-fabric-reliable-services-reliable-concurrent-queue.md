@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206579"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
 Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高い同時実行性を備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。

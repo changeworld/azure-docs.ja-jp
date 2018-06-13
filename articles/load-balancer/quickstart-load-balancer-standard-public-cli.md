@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 997129d1c67a690fb4890aeb2de9f45a681e3efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 48ed4270838a32c8060bf96a63fcfdd8c65f9689
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305074"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -262,5 +263,8 @@ VM がデプロイされるまでに、数分かかる場合があります。
   az group delete --name myResourceGroupSLB
 ```
 ## <a name="next-step"></a>次のステップ
-[Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
+このクイック スタートでは、Standard Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 

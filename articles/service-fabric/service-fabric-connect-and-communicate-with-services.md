@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205588"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。

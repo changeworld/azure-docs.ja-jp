@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194113"
 ---
 # <a name="migrate-automation-account-and-resources"></a>Automation アカウントとリソースを移行する
 Azure Portal で作成した、また、あるリソース グループまたはサブスクリプションから別のリソース グループまたはサブスクリプションに移行する必要のある Automation アカウントとそれに関連付けられたリソース (つまり、資産、Runbook、モジュールなど) については、Azure Portal で利用できる[リソースの移動](../azure-resource-manager/resource-group-move-resources.md)機能で、移行を簡単に達成できます。 ただし、この操作を行う前に、[リソース移動前のチェックリスト](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources)を確認した後、Automation に固有の次のリストもチェックする必要があります。  

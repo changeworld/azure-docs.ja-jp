@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher を使用したパケット インスペクション | Microsoft Docs"
-description: "この記事では、Network Watcher を使用して、VM から収集されたディープ パケット インスペクションを実行する方法について説明します"
+title: Azure Network Watcher を使用したパケット インスペクション | Microsoft Docs
+description: この記事では、Network Watcher を使用して、VM から収集されたディープ パケット インスペクションを実行する方法について説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23036337"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 

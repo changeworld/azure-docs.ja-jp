@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072557"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング
 

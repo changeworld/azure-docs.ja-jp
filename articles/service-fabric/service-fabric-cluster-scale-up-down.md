@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204816"
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>自動スケール ルールを使用した、または手動による Service Fabric クラスターのスケールインとスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 詳細については、 [Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md) に関するドキュメントを参照してください。 クラスター内の Service Fabric のノードの種類はバックエンドの仮想マシン スケール セットで構成されるため、ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定する必要があります。

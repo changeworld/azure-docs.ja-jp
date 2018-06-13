@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する| Microsoft Docs"
-description: "Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する"
+title: Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する| Microsoft Docs
+description: Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846793"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI を使用した同じまたは別のサブスクリプションへの管理ディスクのコピー
 

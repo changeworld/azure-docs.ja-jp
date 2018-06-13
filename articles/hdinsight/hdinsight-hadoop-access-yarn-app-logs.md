@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31403936"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
 このドキュメントでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した YARN アプリケーションのログにアクセスする方法について説明します。

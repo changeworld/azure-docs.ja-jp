@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions でのバージョン管理 - Azure"
-description: "Azure Functions の Durable Functions 拡張機能にバージョン管理を実装する方法を説明します。"
+title: Durable Functions でのバージョン管理 - Azure
+description: Azure Functions の Durable Functions 拡張機能にバージョン管理を実装する方法を説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22991287"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのバージョン管理
 

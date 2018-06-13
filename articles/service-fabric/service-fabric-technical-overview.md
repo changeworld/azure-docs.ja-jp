@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212070"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208813"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Service Fabric クラスターの記述
 Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。 クラスター リソース マネージャーは、実行時にこの情報を利用することで、クラスターで実行されているサービスの高可用性を確保します。 クラスター リソース マネージャーはこれらの重要なルールを適用すると同時に、クラスター内のリソース消費量の最適化も試みます。

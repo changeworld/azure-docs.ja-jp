@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206994"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Active Directory ユーザーまたはグループとしてサービスを実行する
 Windows Server のスタンドアロン クラスターで、RunAs ポリシーを使用してサービスを Active Directory ユーザーまたはグループとして実行できます。  既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 これは、ドメイン内のオンプレミスの Active Directory を使用しており、Azure Active Directory (Azure AD) ではないことに注意してください。  また、[グループ管理サービス アカウント (gMSA)](service-fabric-run-service-as-gmsa.md) としてサービスを実行することもできます。

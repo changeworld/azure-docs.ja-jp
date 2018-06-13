@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209340"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors フレームワークにおけるポリモーフィズム
 Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。 このような手法の 1 つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。 Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。 Java/Linux の場合は、Java モデルに従います。

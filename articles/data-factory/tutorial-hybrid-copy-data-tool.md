@@ -16,6 +16,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171905"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,15 +132,15 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
       リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
 5. **[バージョン]** で、**[V2 (プレビュー)]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 7. **[ダッシュボードにピン留めする]** をオンにします。 
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 9. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-hybrid-copy-data-tool/deploying-data-factory.png)

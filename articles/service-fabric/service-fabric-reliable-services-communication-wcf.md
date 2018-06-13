@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212226"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。 **CreateServiceReplicaListeners または CreateServiceInstanceListeners** メソッドから返された [ICommunicationListener](service-fabric-reliable-services-communication.md) を介し、選択した通信スタックをプラグインできます。 フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。

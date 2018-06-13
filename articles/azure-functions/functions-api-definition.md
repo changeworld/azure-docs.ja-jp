@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "22991677"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。

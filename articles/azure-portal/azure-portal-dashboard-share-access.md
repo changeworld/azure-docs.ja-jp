@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165130"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 

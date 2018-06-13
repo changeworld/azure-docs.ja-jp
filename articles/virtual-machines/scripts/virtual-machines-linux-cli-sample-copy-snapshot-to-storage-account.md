@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI サンプル スクリプト - 別のリージョンのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする | Microsoft Docs"
-description: "Azure CLI サンプル スクリプト - 同じまたは別のサブスクリプションのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする"
+title: Azure CLI サンプル スクリプト - 別のリージョンのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする | Microsoft Docs
+description: Azure CLI サンプル スクリプト - 同じまたは別のサブスクリプションのストレージ アカウントに、スナップショットを VHD としてエクスポート/コピーする
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852620"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-cli"></a>CLI を使用して別のリージョンのストレージ アカウントに管理スナップショットを VHD としてエクスポート/コピーする
 

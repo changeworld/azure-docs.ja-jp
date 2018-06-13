@@ -16,6 +16,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077396"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 

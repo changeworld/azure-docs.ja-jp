@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33882870"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。

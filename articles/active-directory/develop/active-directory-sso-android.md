@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157673"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Android で ADAL を使用してクロス アプリ SSO を有効にする方法
 シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。

@@ -14,6 +14,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057570"
 ---
 # <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-build"></a>チュートリアル: Azure Container Registry Build を使用してクラウド内のコンテナー イメージをビルドする
 

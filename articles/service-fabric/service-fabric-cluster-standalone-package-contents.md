@@ -18,6 +18,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209357"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。

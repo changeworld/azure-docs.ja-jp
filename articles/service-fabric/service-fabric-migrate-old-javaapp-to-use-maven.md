@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206657"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。

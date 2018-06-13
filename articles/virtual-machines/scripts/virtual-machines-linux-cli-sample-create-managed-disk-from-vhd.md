@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する | Microsoft Docs"
-description: "Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する"
+title: Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する | Microsoft Docs
+description: Azure CLI サンプル スクリプト - 同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29851009"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>CLI で同じサブスクリプションのストレージ アカウントに VHD ファイルから管理ディスクを作成する
 

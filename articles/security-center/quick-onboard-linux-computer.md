@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs"
-description: "このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。"
+title: Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs
+description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29530168"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイックスタート: Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。

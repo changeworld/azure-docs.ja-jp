@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でシステムの更新プログラムを適用する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項である \"**システムの更新プログラムを適用する**\" と \"**システムの更新後に再起動する**\" を実装する方法について説明します。"
+title: Azure Security Center でシステムの更新プログラムを適用する | Microsoft Docs
+description: このドキュメントでは、Azure Security Center の推奨事項である "**システムの更新プログラムを適用する**" と "**システムの更新後に再起動する**" を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040487"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
@@ -32,7 +33,7 @@ Azure Security Center では、オペレーティング システムに不足し
 
    ![[コンピューティング] を選択する][1]
 
-2. **[コンピューティング]** で、**[不足しているシステムの更新]** を選択します。 **[システムの更新プログラムを適用する]**ダッシュボードが開きます。
+2. **[コンピューティング]** で、**[不足しているシステムの更新]** を選択します。 **[システムの更新プログラムを適用する]** ダッシュボードが開きます。
 
    ![[システムの更新プログラムを適用する] ダッシュボード][2]
 
@@ -71,10 +72,10 @@ Azure Security Center では、オペレーティング システムに不足し
     ![Log Analytics 検索][5]
 
 ## <a name="reboot-after-system-updates"></a>システムの更新後に再起動する
-1. **[推奨事項]** ブレードに戻ります。 システムの更新プログラムを適用した後は、 **[システムの更新後に再起動する]**という新しいエントリが生成されています。 このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。
+1. **[推奨事項]** ブレードに戻ります。 システムの更新プログラムを適用した後は、 **[システムの更新後に再起動する]** という新しいエントリが生成されています。 このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。
 
    ![システムの更新後に再起動する][6]
-2. **[システムの更新後に再起動する]**を選択します。 これにより、 **[システムの更新を完了するために、再起動は保留中です]** ブレードが開き、システムの更新プログラムの適用プロセスを完了するために再起動が必要な VM の一覧が表示されます。
+2. **[システムの更新後に再起動する]** を選択します。 これにより、 **[システムの更新を完了するために、再起動は保留中です]** ブレードが開き、システムの更新プログラムの適用プロセスを完了するために再起動が必要な VM の一覧が表示されます。
 
    ![Restart pending][7]
 

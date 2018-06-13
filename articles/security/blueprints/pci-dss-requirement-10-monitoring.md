@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894922"
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境の監視要件 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS 要件 10

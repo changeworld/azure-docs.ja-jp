@@ -1,6 +1,6 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: machine-learning
 author: j-martens
 ms.service: machine-learning
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29574974"
 ---
 このアプリの使用を続けない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを削除して、課金が発生しないようにします。
 

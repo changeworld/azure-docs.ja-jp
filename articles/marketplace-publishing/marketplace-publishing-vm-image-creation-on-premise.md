@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944433"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
 Azure 仮想ハード ディスク (VHD) は、リモート デスクトップ プロトコルを使用してクラウドで直接作成することを強くお勧めします。 ただし、必要な場合は、VHD をダウンロードして、オンプレミスのインフラストラクチャを使用して開発できます。  
@@ -65,7 +66,7 @@ BLOB URL が分かったら、 [Azure ポータル](http://manage.windowsazure.c
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
 6. URL を保存済みの URL と比較して、適切なオペレーティング システム VHD を選択します。
-7. **[Download]**をクリックします。
+7. **[Download]** をクリックします。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
@@ -93,16 +94,16 @@ VHD は、米国内のリージョンのストレージ アカウントにアッ
 **Microsoft Azure ポータルからのストレージ アカウントの作成**
 
 1. **[リソースの作成]** をクリックします。
-2. **[ストレージ]**を選択します。
+2. **[ストレージ]** を選択します。
 3. ストレージ アカウント名を入力し、場所を選択します。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
 4. **Create** をクリックしてください。
 5. 作成したストレージ アカウント用のブレードが開きます。 開かない場合は、**[参照]**  >  **[ストレージ アカウント]** の順に選択します。 [ストレージ アカウント] ブレードで、先ほど作成したストレージ アカウントを選択します。
-6. **[コンテナー]**を選択します。
+6. **[コンテナー]** を選択します。
    
    ![図](media/marketplace-publishing-vm-image-creation-on-premise/img09.png) 
-7. [コンテナー] ブレードで、 **[追加]**を選択し、コンテナー名とコンテナーのアクセス許可を入力します。 コンテナーのアクセス許可には **[プライベート]** を選択します。
+7. [コンテナー] ブレードで、 **[追加]** を選択し、コンテナー名とコンテナーのアクセス許可を入力します。 コンテナーのアクセス許可には **[プライベート]** を選択します。
 
 > [!TIP]
 > 発行する予定の SKU ごとに 1 つのコンテナーを作成することをお勧めします。

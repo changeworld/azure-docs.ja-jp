@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207963"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877485"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack での使用量と請求
 

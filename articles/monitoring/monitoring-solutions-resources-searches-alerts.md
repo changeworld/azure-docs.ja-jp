@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887502"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 

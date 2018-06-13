@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Bus での管理対象サービス ID (プレビュー) | Microsoft Docs"
-description: "Azure Service Bus で管理対象サービス ID を使用します。"
+title: Azure Service Bus での管理対象サービス ID (プレビュー) | Microsoft Docs
+description: Azure Service Bus で管理対象サービス ID を使用します。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874654"
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 
@@ -54,7 +55,7 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 次に、RBAC のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、管理対象サービス ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]**をクリックします。
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、管理対象サービス ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 ![](./media/service-bus-managed-service-identity/msi2.png)
  

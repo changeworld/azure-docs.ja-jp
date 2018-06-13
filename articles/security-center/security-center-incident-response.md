@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894489"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Azure Security Center を活用したインシデント対応
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。

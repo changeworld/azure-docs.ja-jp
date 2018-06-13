@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics での IIS 用 Blob Storage とイベント用 Table Storage の使用 | Microsoft Docs"
-description: "Log Analytics は、Table Storage に診断情報を出力する Azure サービスのログと Blob Storage に出力された IIS のログを読み取ることができます。"
+title: Azure Log Analytics での IIS 用 Blob Storage とイベント用 Table Storage の使用 | Microsoft Docs
+description: Log Analytics は、Table Storage に診断情報を出力する Azure サービスのログと Blob Storage に出力された IIS のログを読み取ることができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23021347"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
 
@@ -66,11 +67,11 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
 2. 既存の VM で監視を有効にし、イベント ログを構成します。 診断は VM レベルで有効にすることができます。 診断を有効にして、イベント ログを構成するには、次の手順を実行します。
 
    1. VM を選択します。
-   2. **[監視]**をクリックします。
-   3. **[診断]**をクリックします。
+   2. **[監視]** をクリックします。
+   3. **[診断]** をクリックします。
    4. **[状態]** を **[オン]** に設定します。
    5. 収集する各診断ログを選択します。
-   6. **[OK]**をクリックします。
+   6. **[OK]** をクリックします。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>IIS ログとイベントの収集のために Web ロールで Azure 診断を有効にする
 Azure 診断を有効にする一般的な手順については、[クラウド サービスで診断を有効にする方法](../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事をご覧ください。 以下の手順ではこの情報を使用し、Log Analytics で使用するためにカスタマイズします。

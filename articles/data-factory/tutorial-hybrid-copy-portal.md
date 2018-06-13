@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171565"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -136,15 +137,15 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。
          
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
 6. **[バージョン]** で、**[V2 (プレビュー)]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 8. **[ダッシュボードにピン留めする]** をオンにします。 
-9. **[作成]**を選択します。
+9. **[作成]** を選択します。
 10. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-hybrid-copy-portal/deploying-data-factory.png)
@@ -168,7 +169,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 4. **[プロパティ]** ウィンドウの **[ソース]** タブに移動し、**[+ 新規]** を選択します。
 
    ![[ソース] タブ](./media/tutorial-hybrid-copy-portal/source-dataset-new-button.png)
-5. **[新しいデータセット]**ウィンドウで **SQL Server** を検索します。 **[SQL Server]** を選択し、**[完了]** を選択します。 **[SqlServerTable1]** という新しいタブが表示されます。 左側のツリービューにも **SqlServerTable1** データセットが表示されます。 
+5. **[新しいデータセット]** ウィンドウで **SQL Server** を検索します。 **[SQL Server]** を選択し、**[完了]** を選択します。 **[SqlServerTable1]** という新しいタブが表示されます。 左側のツリービューにも **SqlServerTable1** データセットが表示されます。 
 
    ![SQL Server の選択](./media/tutorial-hybrid-copy-portal/select-sql-server.png)
 6. **[プロパティ]** ウィンドウの下部にある **[General]\(一般\)** タブで、**[名前]** に「**SqlServerDataset**」と入力します。

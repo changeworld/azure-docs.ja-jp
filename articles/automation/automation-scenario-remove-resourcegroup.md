@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194522"
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。

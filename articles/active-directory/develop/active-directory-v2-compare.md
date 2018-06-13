@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156808"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 エンドポイントの変更点
 Azure Active Directory を使い慣れている場合、または以前にアプリを Azure AD に統合した場合は、v2.0 エンドポイントで予想外の違いを体験する可能性があります。 このドキュメントでは、それらの違いについて説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952600"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>cloud-init を使用して Linux VM 上のスワップファイルを構成する
 この記事では、[cloud-init](https://cloudinit.readthedocs.io) を使用してさまざまな Linux ディストリビューションのスワップファイルを構成する方法を示します。 従来、スワップファイルはそれを必要とするディストリビューションに基づいて Linux エージェント (WALA) によって構成されました。  このドキュメントでは、cloud-init を使用したプロビジョニング時にスワップファイルをオンデマンドで構築するプロセスを概説します。  cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法について詳しくは、「[cloud-init の概要](using-cloud-init.md)」をご覧ください

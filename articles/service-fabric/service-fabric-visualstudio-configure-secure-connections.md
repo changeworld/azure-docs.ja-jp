@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208687"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio から Service Fabric クラスターにセキュリティ保護された接続を構成する
 アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。

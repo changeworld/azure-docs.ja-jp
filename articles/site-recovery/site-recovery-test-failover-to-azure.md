@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery での Azure へのテスト フェールオーバー | Microsoft Docs"
-description: "Azure Site Recovery サービスを使用して、オンプレミスから Azure へのテスト フェールオーバーの実行について説明します。"
+title: Azure Site Recovery での Azure へのテスト フェールオーバー | Microsoft Docs
+description: Azure Site Recovery サービスを使用して、オンプレミスから Azure へのテスト フェールオーバーの実行について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: raynew
-ms.openlocfilehash: bfc9df3c1190d9b94f5e8d726665acb7f999311f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bdbeee0e0caaa0e6db7249c2f4aeaa19d5d2ed0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643653"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Azure Site Recovery での Azure へのテスト フェールオーバー
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/02/2018
 
     - Site Recovery は、VM の **[コンピューティングとネットワーク]** の設定で提供されたものと同じ名前と同じ IP アドレスのサブネットに、テスト VM の作成を試みます。
     - テスト フェールオーバーに使用される Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト VM が作成されます。
-    - サブネットで同じ IP アドレスを使用できない場合、VM はサブネットで使用できる別の IP アドレスを受け取ります。 [詳細情報](#creating-a-network-for-test-failover)。
+    - サブネットで同じ IP アドレスを使用できない場合、VM はサブネットで使用できる別の IP アドレスを受け取ります。 [詳細情報](#create-a-network-for-test-failover)。
 4. Azure にフェールオーバーしていて、データ暗号化が有効になっている場合は、**[暗号化キー]** で、プロバイダーのインストール中に暗号化を有効にしたときに発行された証明書を選びます。 暗号化が有効にされていない場合は、この手順を無視できます。
 5. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。テスト レプリカ マシンも Azure ポータルで確認できます。
 6. Azure VM への RDP 接続を開始するには、フェールオーバーされる VM のネットワーク インターフェイスで、[パブリック IP アドレスを追加](https://aka.ms/addpublicip)する必要があります。 
