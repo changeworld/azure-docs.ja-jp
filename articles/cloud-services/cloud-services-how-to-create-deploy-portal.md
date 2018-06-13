@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービスを作成してデプロイする方法 | Microsoft Docs"
-description: "Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。"
+title: クラウド サービスを作成してデプロイする方法 | Microsoft Docs
+description: Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388086"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
 Azure Portal には、クラウド サービスを作成してデプロイする方法として、"*簡易作成*" と "*カスタム作成*" の 2 つの方法が用意されています。
@@ -64,11 +65,11 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
     ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 新しい **[クラウド サービス]** ウィンドウで、**[DNS 名]** の値を入力します。
 4. 新しい **リソース グループ** を作成するか、または既存のリソース グループを選択します。
-5. **[場所]**を選択します。
-6. **[パッケージ]**をクリックします。 これにより、**[パッケージのアップロード]** ウィンドウが開きます。 必須フィールドに必要事項を入力します。 いずれかのロールに単一インスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします]** チェック ボックスがオンになっていることを確認してください。
+5. **[場所]** を選択します。
+6. **[パッケージ]** をクリックします。 これにより、**[パッケージのアップロード]** ウィンドウが開きます。 必須フィールドに必要事項を入力します。 いずれかのロールに単一インスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします]** チェック ボックスがオンになっていることを確認してください。
 7. **[デプロイの開始]** がオンになっていることを確認します。
 8. **[OK]** をクリックして、**[パッケージのアップロード]** ウィンドウを閉じます。
-9. 追加する証明書がない場合は、 **[作成]**をクリックします。
+9. 追加する証明書がない場合は、 **[作成]** をクリックします。
 
     ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 

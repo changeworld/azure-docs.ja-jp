@@ -1,11 +1,11 @@
 ---
-title: "VNet 間接続を使用して仮想ネットワークを別の VNet に接続する: Azure CLI | Microsoft Docs"
-description: "VNet 間接続と Azure CLI を使用して仮想ネットワークどうしを接続します。"
+title: 'VNet 間接続を使用して仮想ネットワークを別の VNet に接続する: Azure CLI | Microsoft Docs'
+description: VNet 間接続と Azure CLI を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400319"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 

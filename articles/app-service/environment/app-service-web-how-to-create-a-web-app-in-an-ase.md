@@ -1,11 +1,11 @@
 ---
-title: "App Service Environment v1 で Web アプリを作成する"
-description: "App Service Environment v1 で Web アプリと App Service プランを作成する方法について説明します"
+title: App Service Environment v1 で Web アプリを作成する
+description: App Service Environment v1 で Web アプリと App Service プランを作成する方法について説明します
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386913"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 02/21/2018
     ![][5]
    
     App Service 環境に既に存在する App Service プランを使用する場合は、そのプランを選択します。 App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「 [App Service 環境で App Service プランを作成する](#createplan)」を参照してください。
-5. Web アプリの名前を入力し、 **[作成]**をクリックします。 
+5. Web アプリの名前を入力し、 **[作成]** をクリックします。 
    
     ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*サイト名*].azurewebsites.net ではなく、[*サイト名*].[*App Service Environment の名前*].p.azurewebsites.net になります。
    

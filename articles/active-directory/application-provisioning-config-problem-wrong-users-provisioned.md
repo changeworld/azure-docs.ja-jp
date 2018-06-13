@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ | Microsoft Docs"
-description: "アプリケーションにプロビジョニングされているユーザーが予期したグループと違うことを見つける方法と、異なる理由について学習します。"
+title: Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ | Microsoft Docs
+description: アプリケーションにプロビジョニングされているユーザーが予期したグループと違うことを見つける方法と、異なる理由について学習します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383139"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ
 

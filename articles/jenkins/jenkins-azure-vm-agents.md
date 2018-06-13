@@ -1,8 +1,8 @@
 ---
-title: "Azure VM エージェントを使用した Jenkins デプロイのスケーリング。"
-description: "Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。"
+title: Azure VM エージェントを使用した Jenkins デプロイのスケーリング。
+description: Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。
 services: multiple
-documentationcenter: 
+documentationcenter: ''
 author: rloutlaw
 manager: justhe
 ms.service: multiple
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29392642"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
@@ -126,7 +127,7 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 ## <a name="create-a-job-in-jenkins"></a>Jenkins でジョブを作成する
 
-1. Jenkins ダッシュボードで、 **[New Item]**をクリックします。 
+1. Jenkins ダッシュボードで、 **[New Item]** をクリックします。 
 2. 名前に `demoproject1` を入力し、**[Freestyle project]\(フリースタイル プロジェクト\)** 選択してから **[OK]** を選択します。
 3. **[全般]** タブで、**[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、**[ラベル式]** に `ubuntu` と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
    ![ジョブを設定する](./media/jenkins-azure-vm-agents/job-config.png)
