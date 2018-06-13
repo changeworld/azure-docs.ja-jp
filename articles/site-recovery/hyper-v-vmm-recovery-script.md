@@ -1,11 +1,11 @@
 ---
-title: "Azure Site Recovery での復旧計画にスクリプトを追加する | Microsoft Docs"
-description: "Azure の復旧計画に新しい System Center Virtual Machine Manager (VMM) スクリプトを追加するための前提条件について説明します。"
+title: Azure Site Recovery での復旧計画にスクリプトを追加する | Microsoft Docs
+description: Azure の復旧計画に新しい System Center Virtual Machine Manager (VMM) スクリプトを追加するための前提条件について説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: shons
-editor: 
+editor: ''
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402073"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
 

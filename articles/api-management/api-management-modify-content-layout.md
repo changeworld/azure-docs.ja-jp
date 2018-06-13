@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management での開発者ポータルのページ コンテンツの変更 | Microsoft Docs"
-description: "Azure API Management での開発者ポータルのページ コンテンツの編集方法について説明します。"
+title: Azure API Management での開発者ポータルのページ コンテンツの変更 | Microsoft Docs
+description: Azure API Management での開発者ポータルのページ コンテンツの編集方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: vlvinogr
-editor: 
+editor: ''
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29377801"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのコンテンツとレイアウトを変更する
 Azure API Management で開発者ポータルをカスタマイズする基本的な方法は 3 つあります。

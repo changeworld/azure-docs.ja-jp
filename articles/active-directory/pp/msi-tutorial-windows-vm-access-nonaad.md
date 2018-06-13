@@ -1,8 +1,8 @@
 ---
-title: "Windows VM の MSI を使用した Azure Key Vault へのアクセス"
-description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。"
+title: Windows VM の MSI を使用した Azure Key Vault へのアクセス
+description: Windows VM 管理対象サービス ID (MSI) を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383785"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Windows VM 管理対象サービス ID (MSI) を使用して Azure Key Vault にアクセスする 
 

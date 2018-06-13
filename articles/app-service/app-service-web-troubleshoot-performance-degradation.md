@@ -1,13 +1,13 @@
 ---
-title: "App Service での Web アプリのパフォーマンスの低下 | Microsoft Docs"
-description: "この記事は、Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。"
+title: App Service での Web アプリのパフォーマンスの低下 | Microsoft Docs
+description: この記事は、Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "Web アプリのパフォーマンス、低速なアプリ、アプリが低速"
+keywords: Web アプリのパフォーマンス、低速なアプリ、アプリが低速
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
@@ -21,11 +21,12 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461844"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
 ## <a name="symptom"></a>症状
 ブラウザーで Web アプリにアクセスしたときのページの読み込みが遅く、タイムアウトすることもある

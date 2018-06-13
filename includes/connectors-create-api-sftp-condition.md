@@ -7,6 +7,6 @@
    ![SFTP 条件イメージ 3](./media/connectors-create-api-sftp/condition-3.png)   
 5. 演算子の一覧から *[を含む]* を選択します。       
    ![SFTP 条件イメージ 4](./media/connectors-create-api-sftp/condition-4.png)   
-6. 右側にある **[値の選択]** を選択して、 *「ExtractMeFirst」*と入力します。 この例では、ExtractMeFirst は、抽出されるアーカイブ ファイルであることを示す SFTP フォルダーにアクセスした人物によって、ファイル内にあると想定される値です。  
+6. 右側にある **[値の選択]** を選択して、 *「ExtractMeFirst」* と入力します。 この例では、ExtractMeFirst は、抽出されるアーカイブ ファイルであることを示す SFTP フォルダーにアクセスした人物によって、ファイル内にあると想定される値です。  
    ![SFTP 条件イメージ 5](./media/connectors-create-api-sftp/condition-5.png)   
 

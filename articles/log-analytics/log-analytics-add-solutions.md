@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics 管理ソリューションの追加 | Microsoft Docs"
-description: "Azure の管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。"
+title: Azure Log Analytics 管理ソリューションの追加 | Microsoft Docs
+description: Azure の管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395464"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
 

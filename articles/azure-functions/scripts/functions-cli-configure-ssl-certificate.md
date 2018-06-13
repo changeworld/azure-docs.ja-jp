@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Function App へのカスタム SSL 証明書のバインド | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Azure における Function App へのカスタム SSL 証明書のバインド"
+title: Azure CLI のサンプル スクリプト - Function App へのカスタム SSL 証明書のバインド | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Azure における Function App へのカスタム SSL 証明書のバインド
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.service: functions
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843478"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>カスタム SSL 証明書を Function App にバインドする
 

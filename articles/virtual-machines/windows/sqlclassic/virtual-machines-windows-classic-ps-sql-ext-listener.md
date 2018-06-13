@@ -1,11 +1,11 @@
 ---
-title: "AlwaysOn 可用性グループの外部リスナーの構成 | Microsoft Docs"
-description: "このチュートリアルでは、関連付けられているクラウド サービスのパブリック仮想 IP アドレスを使用して外部からアクセスできる、AlwaysOn 可用性グループ リスナーを Azure で作成する手順について説明します。"
+title: AlwaysOn 可用性グループの外部リスナーの構成 | Microsoft Docs
+description: このチュートリアルでは、関連付けられているクラウド サービスのパブリック仮想 IP アドレスを使用して外部からアクセスできる、AlwaysOn 可用性グループ リスナーを Azure で作成する手順について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a2453032-94ab-4775-b976-c74d24716728
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398864"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Azure での AlwaysOn 可用性グループの外部リスナーの構成
 > [!div class="op_single_selector"]
@@ -95,7 +96,7 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>PowerShell でクラスター リソースを構成する
 1. 外部負荷分散の場合、レプリカが含まれるクラウド サービスのパブリック仮想 IP アドレスを取得する必要があります。 Azure Portal にログインします。 可用性グループの VM が含まれるクラウド サービスに移動します。 **[ダッシュボード]** ビューを開きます。
-2. **[パブリック仮想 IP (VIP) アドレス]**に表示されているアドレスをメモします。 ソリューションが複数の VNet にまたがっている場合は、レプリカをホストする VM が含まれるクラウド サービスごとにこの手順を繰り返します。
+2. **[パブリック仮想 IP (VIP) アドレス]** に表示されているアドレスをメモします。 ソリューションが複数の VNet にまたがっている場合は、レプリカをホストする VM が含まれるクラウド サービスごとにこの手順を繰り返します。
 3. VM のいずれかで、次の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
    
         # Define variables

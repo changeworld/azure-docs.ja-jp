@@ -1,11 +1,11 @@
 ---
-title: "NSG フロー ログの読み取り | Microsoft Docs"
-description: "この記事では、NSG フロー ログの解析方法を説明します"
+title: NSG フロー ログの読み取り | Microsoft Docs
+description: この記事では、NSG フロー ログの解析方法を説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149636"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 

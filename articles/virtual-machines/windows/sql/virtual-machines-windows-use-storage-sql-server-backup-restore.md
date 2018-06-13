@@ -1,8 +1,8 @@
 ---
-title: "Azure Storage を使用した SQL Server のバックアップと復元の方法 | Microsoft Docs"
-description: "SQL Server を Azure Storage に バックアップする方法について説明します。 SQL データベースを Azure Storage にバックアップする利点について説明します。"
+title: Azure Storage を使用した SQL Server のバックアップと復元の方法 | Microsoft Docs
+description: SQL Server を Azure Storage に バックアップする方法について説明します。 SQL データベースを Azure Storage にバックアップする利点について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MikeRayMSFT
 manager: craigg
 tags: azure-service-management
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399051"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 ## <a name="overview"></a>概要

@@ -1,12 +1,12 @@
 ---
-title: "App Service の概要: Azure Stack | Microsoft Docs"
-description: "Azure Stack 上の App Service の概要"
+title: 'App Service の概要: Azure Stack | Microsoft Docs'
+description: Azure Stack 上の App Service の概要
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386080"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 *適用先: Azure Stack 統合システムと Azure Stack Development Kit*
