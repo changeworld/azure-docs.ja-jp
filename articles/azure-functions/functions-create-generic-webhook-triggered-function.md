@@ -21,6 +21,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283009"
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>ジェネリック webhook でトリガーされる関数の作成
 
@@ -50,7 +51,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
      ![汎用 webhook トリガー テンプレートの選択](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png)
 
-2. 関数の**名前**を入力し、**[作成]**を選択します。 
+2. 関数の**名前**を入力し、**[作成]** を選択します。 
 
      ![Azure Portal でのジェネリック webhook によってトリガーされる関数の作成](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger-2.png) 
 

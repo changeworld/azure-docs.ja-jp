@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30197535"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 選択するゲートウェイ SKU が上位になるほど、ゲートウェイに割り当てられる CPU やネットワーク帯域幅が増えます。その結果、ゲートウェイで仮想ネットワークに対してより高いネットワーク スループットをサポートできます。 
 

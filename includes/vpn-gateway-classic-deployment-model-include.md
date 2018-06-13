@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197909"
 ---
 > [!NOTE]
 > この記事は、クラシック デプロイメント モデルを想定しています。 Azure に慣れていない場合には、代わりに Resource Manager デプロイメント モデルを使用することをお勧めします。 Resource Manager デプロイメント モデルは、最新のデプロイメント モデルであり、クラシック デプロイメント モデルよりも多くのオプションと機能の互換性を提供します。 デプロイメント モデルについては、[デプロイメント モデルの概要](../articles/resource-manager-deployment-model.md)に関するページを参照してください。

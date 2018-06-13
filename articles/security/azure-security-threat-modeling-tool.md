@@ -1,6 +1,6 @@
 ---
 title: Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: "Microsoft Threat Modeling Tool のメイン ページ。ツールの使い方や、Threat Modeling プロセスについて説明しています。"
+description: Microsoft Threat Modeling Tool のメイン ページ。ツールの使い方や、Threat Modeling プロセスについて説明しています。
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043357"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 

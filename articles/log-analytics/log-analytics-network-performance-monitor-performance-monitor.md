@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30241447"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション: パフォーマンスの監視
 

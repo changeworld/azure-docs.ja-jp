@@ -15,6 +15,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30835604"
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 
@@ -52,7 +53,7 @@ Fiddler を開き、**[Rules]\(ルール\)**、**[Customize Rules]\(ルールの
 
 ![Fiddler のルールをカスタマイズする](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
-Fiddler ScriptEditor が起動し、**SampleRules.js** ファイルが表示されます。 このファイルを使用して Fiddler をカスタマイズします。 `OnBeforeResponse` 関数に次のコード サンプルを貼り付けます。 新しいコードをコメント アウトして、作成したロジックがすぐに実装されないようにします。 完了したら、**[File]\(ファイル\)**、**[Save]\(保存\)**の順に選択します。
+Fiddler ScriptEditor が起動し、**SampleRules.js** ファイルが表示されます。 このファイルを使用して Fiddler をカスタマイズします。 `OnBeforeResponse` 関数に次のコード サンプルを貼り付けます。 新しいコードをコメント アウトして、作成したロジックがすぐに実装されないようにします。 完了したら、**[File]\(ファイル\)**、**[Save]\(保存\)** の順に選択します。
 
 ```javascript
     /*
@@ -107,7 +108,7 @@ Fiddler に移動し、**[Rules]\(ルール\)** -> **[Customize Rules]\(ルー�
 
 アプリケーションを一時停止するために、**任意のキー**を押します。
 
-Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルールのカスタマイズ\)** の順に選択します。既定の関数はそのままにして、`OnBeforeResponse` 関数のカスタム ロジックをコメントアウトするか削除します。 **[File]\(ファイル\)**、**[Save]\(保存\)**の順に選択して変更を保存します。
+Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルールのカスタマイズ\)** の順に選択します。既定の関数はそのままにして、`OnBeforeResponse` 関数のカスタム ロジックをコメントアウトするか削除します。 **[File]\(ファイル\)**、**[Save]\(保存\)** の順に選択して変更を保存します。
 
 ![カスタマイズしたルールを削除する](media/storage-simulate-failure-ragrs-account-app/figure5.png)
 

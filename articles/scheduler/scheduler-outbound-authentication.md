@@ -1,11 +1,11 @@
 ---
-title: "Scheduler 送信認証"
-description: "Scheduler 送信認証"
+title: Scheduler 送信認証
+description: Scheduler 送信認証
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040337"
 ---
 # <a name="scheduler-outbound-authentication"></a>Scheduler 送信認証
 Scheduler ジョブでは、認証を必要とするサービスを呼び出すことが必要になる場合があります。 このようにして、呼び出されたサービスは、Scheduler ジョブがそのリソースにアクセスできるかどうかを確認できます。 このようなサービスには、他の Azure サービス、Salesforce.com、Facebook、およびセキュリティで保護されたカスタム Web サイトが含まれます。

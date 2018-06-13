@@ -16,6 +16,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171079"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -43,7 +44,7 @@ ms.lasthandoff: 03/23/2018
 3. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、**[名前]**に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/quickstart-create-data-factory-portal/new-azure-data-factory.png)
  
@@ -54,7 +55,7 @@ ms.lasthandoff: 03/23/2018
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
    - **[既存のものを使用]** を選択し、一覧から既存のリソース グループを選択します。 
-   - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/23/2018
 
    この一覧に表示されるのは、Data Factory でサポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 8. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//quickstart-create-data-factory-portal/deploying-data-factory.png)

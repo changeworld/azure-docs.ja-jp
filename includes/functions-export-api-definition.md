@@ -23,4 +23,4 @@
  
     ![PowerApps および Microsoft Flow にエクスポートする](media/functions-export-api-definition/export-api-2.png)
 
-1. **[OK]**をクリックします。 カスタム API が作成され、指定した環境に追加されます。
+1. **[OK]** をクリックします。 カスタム API が作成され、指定した環境に追加されます。

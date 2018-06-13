@@ -1,8 +1,8 @@
 ---
-title: "共有アクセス署名 (SAS) を作成して Azure Blob Storage で使用する | Microsoft Docs"
-description: "このチュートリアルでは、Blob Storage で使用する共有アクセス署名を作成する方法と、クライアント アプリケーションから共有アクセス署名を使用する方法について説明します。"
+title: 共有アクセス署名 (SAS) を作成して Azure Blob Storage で使用する | Microsoft Docs
+description: このチュートリアルでは、Blob Storage で使用する共有アクセス署名を作成する方法と、クライアント アプリケーションから共有アクセス署名を使用する方法について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23056797"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用
 

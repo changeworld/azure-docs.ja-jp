@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN ルール エンジンの条件式 | Microsoft Docs"
-description: "Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。"
+title: Azure CDN ルール エンジンの条件式 | Microsoft Docs
+description: Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997977"
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Azure CDN ルール エンジンの条件式
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)の条件式について詳しく説明します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205974"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric プログラミング モデルの概要
 Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。 サービスでは、Service Fabric API を使用するように選択して、プラットフォームの機能とアプリケーション フレームワークを最大限に活用できます。 サービスはまた、任意の言語で記述されたコンパイル済みの実行可能プログラム、または Service Fabric クラスターでホストされるコンテナー内で実行されているコードにすることもできます。

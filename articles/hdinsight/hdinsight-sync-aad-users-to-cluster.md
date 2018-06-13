@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409283"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/16/2018
 
     ![[New user] (新しいユーザー) ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
-4. **[作成]**を選択します。
+4. **[作成]** を選択します。
 
 ## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>Ambari REST API を使用してユーザーを同期する
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30173340"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -98,15 +99,15 @@ ms.lasthandoff: 03/23/2018
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
-    b. **[新規作成]**を選択し、リソース グループの名前を入力します。 
+    b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
 6. **[バージョン]** で、**[V2 (プレビュー)]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 8. **[ダッシュボードにピン留めする]** をオンにします。 
-9. **[作成]**を選択します。 
+9. **[作成]** を選択します。 
 10. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-portal/deploying-data-factory.png)
@@ -398,13 +399,13 @@ Visual Studio Team Services コード リポジトリの作業が不要であれ
 
     e. **分**の部分を現在の日時の数分後に変更します。 トリガーは、変更を発行した後にのみアクティブ化されます。 これをわずか数分後に設定し、それまでに発行しなかった場合、トリガー実行は表示されません。
 
-    f. **[適用]**を選択します。 
+    f. **[適用]** を選択します。 
 
     ![トリガーのプロパティ](./media/tutorial-copy-data-portal/set-trigger-properties.png)
 
     g. **[アクティブ化]** オプションをオンにします。 このチェック ボックスを使用して、後で非アクティブ化したりアクティブ化したりできます。
 
-    h. **[次へ]**を選択します。
+    h. **[次へ]** を選択します。
 
     ![[アクティブ化] ボタン](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
 

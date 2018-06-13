@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917651"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
@@ -48,7 +49,7 @@ Windows 仮想マシンを選び、**[Reset Remote... (リモートのリセッ�
 
 ![パスワード リセット ページ](./media/reset-rdp/Portal-PW-Reset-Windows.png)
 
-新しいユーザー名とパスワードを入力して、 **[保存]**をクリックします。
+新しいユーザー名とパスワードを入力して、 **[保存]** をクリックします。
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess 拡張機能と PowerShell
 仮想マシンに VM エージェントがインストールされていることを確認します。 VM エージェントを使用するには、VMAccess 拡張機能を使用前にインストールしておく必要があります。 次のコマンドを使用して VM エージェントがインストールされていることを確認します。 ("myCloudService" と "myVM" は、それぞれ実際のクラウド サービスの名前と VM に置き換えます。 これらの名前を確認するには、パラメーターを指定せずに `Get-AzureVM` を実行します)。

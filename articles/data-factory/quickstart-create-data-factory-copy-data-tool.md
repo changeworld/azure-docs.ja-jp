@@ -16,6 +16,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30169827"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/23/2018
 1. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、**[名前]**に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory.png)
  
@@ -48,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
    - **[既存のものを使用]** を選択し、一覧から既存のリソース グループを選択します。 
-   - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
@@ -57,7 +58,7 @@ ms.lasthandoff: 03/23/2018
    このリストに表示されるのは、サポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所/リージョンに配置できます。
 
 6. **[ダッシュボードにピン留めする]** をオンにします。     
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 8. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
@@ -87,7 +88,7 @@ ms.lasthandoff: 03/23/2018
 
    c. **[選択]** を選択します。 **emp.txt** をダブルクリックすると、この手順をスキップできます。
 
-   d. **[次へ]**を選択します。 
+   d. **[次へ]** を選択します。 
 
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/choose-input-file-folder.png)
 6. **[File format settings]\(ファイル形式設定\)** ページで、列区切り記号と行区切り記号がツールによって自動的に検出されたことを確認して、**[次へ]** を選択します。 このページでは、データのプレビューと入力データのスキーマの表示を行うこともできます。 
@@ -105,7 +106,7 @@ ms.lasthandoff: 03/23/2018
 
    b. ファイル名に「**emp.txt**」と入力します。
 
-   c. **[次へ]**を選択します。 
+   c. **[次へ]** を選択します。 
 
    ![[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/choose-output-file-folder.png) 
 10. **[File format settings]\(ファイル形式設定\)** ページで **[次へ]** を選択します。 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30910528"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -266,7 +267,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
     このクエリは、**System.Timestamp** プロパティを使用して、各期間の終わりのタイムスタンプにもアクセスします。
 
-5. **[Test]**をクリックします。 サンプリングされたデータに対してクエリが実行されます。
+5. **[Test]** をクリックします。 サンプリングされたデータに対してクエリが実行されます。
     
 6. **[Save]** をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
 
