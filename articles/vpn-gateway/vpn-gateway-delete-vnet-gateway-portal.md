@@ -1,16 +1,16 @@
 ---
-title: "仮想ネットワーク ゲートウェイの削除: Azure Portal: Resource Manager | Microsoft ドキュメント"
-description: "Resource Manager デプロイメント モデルで、Azure Portal を使用して仮想ネットワーク ゲートウェイを削除します。"
+title: '仮想ネットワーク ゲートウェイの削除: Azure Portal: Resource Manager | Microsoft ドキュメント'
+description: Resource Manager デプロイメント モデルで、Azure Portal を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
@@ -20,6 +20,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593458"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 

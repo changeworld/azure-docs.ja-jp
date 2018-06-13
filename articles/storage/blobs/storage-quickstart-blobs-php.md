@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188828"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 

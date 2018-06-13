@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center での仮想マシンの保護 | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の仮想マシンを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
+title: Azure Security Center での仮想マシンの保護 | Microsoft Docs
+description: このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の仮想マシンを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27623500"
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Azure Security Center での仮想マシンの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。

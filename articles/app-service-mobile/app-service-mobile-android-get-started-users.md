@@ -1,11 +1,11 @@
 ---
-title: "Mobile Apps を使用した Android での認証の追加 | Microsoft Docs"
-description: "Azure App Service の Mobile Apps 機能を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。"
+title: Mobile Apps を使用した Android での認証の追加 | Microsoft Docs
+description: Azure App Service の Mobile Apps 機能を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595229"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

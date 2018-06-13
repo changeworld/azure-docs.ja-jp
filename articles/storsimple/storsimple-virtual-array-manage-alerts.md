@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array アラートを表示して管理する | Microsoft Docs"
-description: "StorSimple Virtual Array アラートの状態と重大度について、また StorSimple Manager サービスを使用してアラートを管理する方法について説明します。"
+title: Microsoft Azure StorSimple Virtual Array アラートを表示して管理する | Microsoft Docs
+description: StorSimple Virtual Array アラートの状態と重大度について、また StorSimple Manager サービスを使用してアラートを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27786409"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -61,10 +62,10 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
        ![Alerts test notification email sent](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > テスト通知のメッセージを送信できない場合、StorSimple デバイス マネージャー サービスにその旨を通知するメッセージが表示されます。 **[OK]**をクリックして数分待ってから、再度テスト通知のメッセージを送信してみてください。
+      > テスト通知のメッセージを送信できない場合、StorSimple デバイス マネージャー サービスにその旨を通知するメッセージが表示されます。 **[OK]** をクリックして数分待ってから、再度テスト通知のメッセージを送信してみてください。
       > 
       > 
-   5. ページの下部の **[保存]** をクリックして構成内容を保存します。 確認を求められたら、 **[はい]**をクリックします。
+   5. ページの下部の **[保存]** をクリックして構成内容を保存します。 確認を求められたら、 **[はい]** をクリックします。
       
       ![Alerts test notification email sent](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
@@ -101,7 +102,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。 推奨事項に従って、オンプレミスのアラートの状態が解決したら、一覧からアラートをクリアする必要があります。 一覧からアラートを選択し、**[クリア]** をクリックします。 複数のアラートをクリアするには、各アラートを選択し、**[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、**[クリア]** をクリックします。
 
-**[クリア]**をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。 
+**[クリア]** をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。 
 
 ![アラートに関するコメント](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 

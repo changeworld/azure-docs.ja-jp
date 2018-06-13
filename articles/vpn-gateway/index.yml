@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32779494"
 abstract:
   description: Azure VPN ゲートウェイを構成、作成、管理する方法について説明します。 オンプレミスの場所から仮想ネットワークへの暗号化されたクロスプレミス接続を作成します。または、暗号化された接続を VNet 間に作成します。
 sections:

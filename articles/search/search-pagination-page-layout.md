@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186880"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Azure Search でのページ検索結果の表示方法
 この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを、Azure Search サービス REST API を使用して実装する方法を説明します。

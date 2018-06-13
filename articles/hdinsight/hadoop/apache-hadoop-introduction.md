@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771026"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Azure HDInsight および Hadoop テクノロジ スタックとは
 この記事では、Azure HDInsight 上の Apache Hadoop の概要について説明します。 Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R など、オープン ソースのフレームワークを使用することができます。 

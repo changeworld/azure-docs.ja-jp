@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192946"
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Visual Studio Team Services (VS Team Services) にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
