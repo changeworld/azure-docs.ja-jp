@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914057"
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 > [!IMPORTANT]
@@ -59,7 +60,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 6. Azure Portal で **[仮想マシン (クラシック)]** をクリックし、キャプチャする仮想マシンを選択します。 **[VM イメージ (クラシック)]** グループは、**[すべてのサービス]** を表示したときに **[Compute]** の下に表示されます。
 
-7. コマンド バーで、 **[取り込み]**をクリックします。
+7. コマンド バーで、 **[取り込み]** をクリックします。
 
    ![仮想マシンをキャプチャする](./media/capture-image/CaptureVM.png)
 

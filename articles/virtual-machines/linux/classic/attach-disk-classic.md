@@ -21,6 +21,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942219"
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30921563"
 ---
 1. ポータル ページの左側の **+** をクリックし、検索ボックスに「Virtual Network ゲートウェイ」と入力します。 **[結果]** から **[Virtual Network ゲートウェイ]** を探してクリックします。
 2. [仮想ネットワーク ゲートウェイ] ページの下部にある **[作成]** をクリックします。 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。

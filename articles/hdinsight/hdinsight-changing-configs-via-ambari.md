@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406186"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
 
@@ -207,7 +208,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
     d. [Add Property]\(プロパティの追加\) ウィンドウで、キーとして `mapred.map.output.compression.codec`、値として `org.apache.hadoop.io.compress.SnappyCodec` を入力します。
 
-    e. **[追加]**をクリックします。
+    e. **[追加]** をクリックします。
 
     ![Hive のカスタム プロパティ](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 

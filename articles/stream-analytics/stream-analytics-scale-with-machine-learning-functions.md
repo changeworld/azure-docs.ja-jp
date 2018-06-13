@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909277"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング
 Stream Analytics ジョブを設定し、そのジョブにサンプル データを供給することは簡単です。 同じジョブを大量のデータに対して実行する必要がある場合は、どうしたらよいのでしょうか。 それには、Stream Analytics ジョブをスケールできるように構成する方法を把握する必要があります。 このドキュメントでは、Machine Learning 関数を使用した Stream Analytics ジョブのスケーリングの特別な側面について説明します。 通常の Stream Analytics ジョブをスケーリングする方法の詳細については、「 [ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163848"
 ---
 # <a name="azure-portal-documentation"></a>Azure Portal のドキュメント
 Azure Portal で使用できる、リソースをデプロイするための機能について説明します。 チュートリアル、API リファレンスなどのドキュメントで、Azure リソースのデプロイ、管理、監視を行う方法を紹介します。

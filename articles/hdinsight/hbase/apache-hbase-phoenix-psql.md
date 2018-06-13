@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164740"
 ---
 # <a name="bulk-load-data-into-phoenix-using-psql"></a>psql を使用して Phoenix にデータを一括で読み込む
 

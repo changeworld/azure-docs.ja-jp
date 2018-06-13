@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196713"
 ---
 料金は 2 つの要素に対して課金されます。1 つは仮想ネットワーク ゲートウェイに対する時間単位のコンピューティング コスト、もう 1 つは仮想ネットワーク ゲートウェイからのエグレス (送信) データ転送のコストです。 料金情報については、[価格](https://azure.microsoft.com/pricing/details/vpn-gateway)に関するページをご覧ください。
 

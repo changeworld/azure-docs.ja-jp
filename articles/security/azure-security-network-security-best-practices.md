@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367326"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure のネットワーク セキュリティに関するベスト プラクティス
 Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure Virtual Network に配置して、ネットワークに接続された他のデバイスと接続できます。 Azure Virtual Network の構造では、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続し、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになっています。 Azure の仮想ネットワークに接続された Azure 仮想マシンは、同じ Azure 仮想ネットワーク上のデバイス、異なる Azure 仮想ネットワーク上のデバイス、インターネット上のデバイス、さらにはオンプレミス ネットワーク上のデバイスにも接続できます。

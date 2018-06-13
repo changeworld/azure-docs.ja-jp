@@ -21,6 +21,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792261"
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 この記事では、2 段階認証に関してお客様から寄せられる最も一般的な質問の回答を掲載しています。

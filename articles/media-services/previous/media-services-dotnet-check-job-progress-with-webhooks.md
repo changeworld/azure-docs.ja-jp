@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33784491"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 この記事では、Webhook を使用する方法を説明します。

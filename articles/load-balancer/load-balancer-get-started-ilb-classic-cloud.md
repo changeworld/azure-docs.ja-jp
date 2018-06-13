@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067760"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
 

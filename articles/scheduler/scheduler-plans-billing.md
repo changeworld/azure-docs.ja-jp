@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30837440"
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure Scheduler のプランと課金
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン

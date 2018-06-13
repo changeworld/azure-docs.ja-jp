@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206484"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 

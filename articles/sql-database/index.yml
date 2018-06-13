@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/06/2018
+  ms.locfileid: "30922384"
 abstract:
   description: Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:

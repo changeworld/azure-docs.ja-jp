@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841896"
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 > [!IMPORTANT] 
@@ -59,7 +60,7 @@ Azure は、さまざまな Linux ディストリビューションをサポー�
 > 
 > 
 
-Azure で Linux イメージを準備する際のその他のヒントについては、**[Linux のインストールに関する注記](../create-upload-generic.md#general-linux-installation-notes)**をご覧ください。
+Azure で Linux イメージを準備する際のその他のヒントについては、**[Linux のインストールに関する注記](../create-upload-generic.md#general-linux-installation-notes)** をご覧ください。
 
 <a id="connect"> </a>
 

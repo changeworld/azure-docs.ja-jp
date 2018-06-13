@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781851"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
 Azure DevTest Labs を使うと多くの重要なシナリオを実装できますが、主要なシナリオの 1 つは、DevTest Labs を使って開発者のために開発用コンピューターをホストすることです。 このシナリオでは、DevTest Labs には次のような利点があります。

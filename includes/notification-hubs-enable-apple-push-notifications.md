@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33814732"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 Apple Push Notification Service (APNS) では、証明書を使用してプッシュ通知を認証します。 次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。 これらの概念の詳細については、[Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584) の公式ドキュメントを参照してください。

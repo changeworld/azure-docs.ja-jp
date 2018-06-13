@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911685"
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使って Linux VM のディスクを暗号化する
 仮想マシン (VM) のセキュリティと法令遵守を強化するため、Azure の仮想ディスクに保存されるデータを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 1.0 と Resource Manager デプロイメント モデルを使って、Linux VM の仮想ディスクを暗号化する方法を詳しく説明します。

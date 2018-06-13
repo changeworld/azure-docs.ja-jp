@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841695"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。
@@ -62,8 +63,8 @@ HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデ�
 * **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)から最新版のスクリプトをダウンロードし、解凍します。 `.\New-HPCIaaSCluster.ps1 –Version`を実行すると、スクリプトのバージョンを確認できます。 この記事はバージョン 4.4.1 以降のスクリプトに基づきます。
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>デプロイ オプション 1:  Resource Manager テンプレートを使用する
-1. Azure Marketplace で [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) テンプレートに移動し、 **[デプロイ]**をクリックします。
-2. Azure ポータルで情報を確認し、 **[作成]**をクリックします。
+1. Azure Marketplace で [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) テンプレートに移動し、 **[デプロイ]** をクリックします。
+2. Azure ポータルで情報を確認し、 **[作成]** をクリックします。
    
     ![ポータルの作成][portal]
 3. **[基本]** ブレードで、クラスターの名前を入力します。これは、ヘッド ノード VM の名前にもなります。 使用可能な場所へのデプロイ用には、既存のリソース グループを選択することも、リソース グループを作成することもできます。 場所は、特定の VM サイズとその他の Azure サービスの可用性に影響を与えます (「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください)。
@@ -80,7 +81,7 @@ HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデ�
    > HPC Pack は、Active Directory ドメインを使用してクラスターのユーザーを認証します。 
    > 
    > 
-7. 検証テストを実行し、使用条件を確認したら、 **[購入]**をクリックします。
+7. 検証テストを実行し、使用条件を確認したら、 **[購入]** をクリックします。
 
 ### <a name="deployment-option-2-use-the-iaas-deployment-script"></a>デプロイ オプション 2:  IaaS デプロイ スクリプトを使用する
 HPC Pack IaaS デプロイ スクリプトを使用してクラスターをデプロイするためのその他の前提条件は次のとおりです。

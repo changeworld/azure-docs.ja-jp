@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30325329"
 ---
 >[!NOTE]
 >初期のデバイス ツインの状態の構成は、IoT Hub の Standard レベルだけで使用することができます。 IoT Hub の Basic レベルおよび Standard レベルの詳細については、[適切な IoT Hub レベルの選び方](../articles/iot-hub/iot-hub-scaling.md)に関するページを参照してください。

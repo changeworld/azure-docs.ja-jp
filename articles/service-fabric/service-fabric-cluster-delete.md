@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211271"
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Azure の Service Fabric クラスターとその使用リソースの削除
 Service Fabric クラスターは、クラスター リソース自体に加え、その他の多くの Azure リソースで構成されます。 そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。

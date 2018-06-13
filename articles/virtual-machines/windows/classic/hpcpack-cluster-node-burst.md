@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915109"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加
 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターを Azure に設定した場合、事前構成された一連のコンピューティング ノード VM を保持することなく、クラスターの容量を迅速にスケールアップまたはスケールダウンする方法が必要になる可能性があります。 この記事では、オンデマンドの "バースト" ノード (クラウド サービスで実行されている worker ロール インスタンス) をコンピューティング リソースとして Azure のヘッド ノードに追加する方法について説明します。 

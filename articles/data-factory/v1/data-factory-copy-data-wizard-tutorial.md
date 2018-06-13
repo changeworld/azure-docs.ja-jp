@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30178091"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -103,7 +104,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    2. **emp.txt** を選択し、**[選択]** をクリックします。
       
       ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
-6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]**は選択しないでください。 
+6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]** は選択しないでください。 
    
     ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (上書き) することもできます。 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。 
