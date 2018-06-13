@@ -1,6 +1,6 @@
 ---
-title: "Azure Blob Storage のコンテナーと BLOB に対するパブリック読み取りアクセスを有効にする | Microsoft Docs"
-description: "コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。"
+title: Azure Blob Storage のコンテナーと BLOB に対するパブリック読み取りアクセスを有効にする | Microsoft Docs
+description: コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29557065"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
 Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブリック読み取りアクセスを有効にすることができます。 そうすることで、アカウント キーを共有せず、Shared Access Signature (SAS) も必要とせずに、これらのリソースに対する読み取り専用のアクセスを付与できます。

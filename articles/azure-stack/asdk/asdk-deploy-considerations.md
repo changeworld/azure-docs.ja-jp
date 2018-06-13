@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30164969"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。

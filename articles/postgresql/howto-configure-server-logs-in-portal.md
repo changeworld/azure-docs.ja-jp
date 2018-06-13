@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal での PostgreSQL のサーバー ログの構成とアクセス"
-description: "この記事では、Azure Portal から Azure Database for PostgreSQL のサーバー ログの構成方法とアクセス方法について説明します。"
+title: Azure Portal での PostgreSQL のサーバー ログの構成とアクセス
+description: この記事では、Azure Portal から Azure Database for PostgreSQL のサーバー ログの構成方法とアクセス方法について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692166"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 

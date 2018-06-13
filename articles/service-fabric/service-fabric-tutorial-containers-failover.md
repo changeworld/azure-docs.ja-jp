@@ -1,14 +1,14 @@
 ---
-title: "Azure Service Fabric コンテナー アプリのフェールオーバーとスケーリング | Microsoft Docs"
-description: "このチュートリアルでは、Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。"
+title: Azure Service Fabric コンテナー アプリのフェールオーバーとスケーリング | Microsoft Docs
+description: このチュートリアルでは、Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, コンテナー, マイクロサービス, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29555486"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
 

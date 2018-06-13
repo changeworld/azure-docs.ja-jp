@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery Deployment Planner のコスト見積もりの詳細 (Hyper-V から Azure) | Microsoft Docs"
-description: "この記事では、Azure Site Recovery Deployment Planner を使用して生成されるレポートのコスト見積もりについて、Hyper-V から Azure へのシナリオを想定して詳しく説明します。"
+title: Azure Site Recovery Deployment Planner のコスト見積もりの詳細 (Hyper-V から Azure) | Microsoft Docs
+description: この記事では、Azure Site Recovery Deployment Planner を使用して生成されるレポートのコスト見積もりについて、Hyper-V から Azure へのシナリオを想定して詳しく説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466828"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -89,7 +90,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]**です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。
 
@@ -148,7 +149,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Data redundancy]\(データの冗長性\)**: ローカル冗長ストレージ、geo 冗長ストレージ、読み取りアクセス geo 冗長ストレージのいずれかを指定できます。 既定値はローカル冗長ストレージです。 特定の VM のストレージ アカウントに基づいて種類を変更できるほか、変更後の種類をすべての VM に適用することができます。 一番上の行で種類を変更し、**[Apply to all]\(すべてに適用\)** を選択してください。 レプリケーションに使用されるストレージのコストは、選択したデータ冗長性の料金に基づいて計算されます。 
 
-**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)**: Windows VM には Azure ハイブリッド使用特典を適用できます (該当する場合)。 既定値は **[はい]**です。 特定の VM の設定を変更できるほか、すべての VM の設定を更新することができます。 **[Apply to all]\(すべてに適用\)** を選択してください。
+**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)**: Windows VM には Azure ハイブリッド使用特典を適用できます (該当する場合)。 既定値は **[はい]** です。 特定の VM の設定を変更できるほか、すべての VM の設定を更新することができます。 **[Apply to all]\(すべてに適用\)** を選択してください。
 
 **[Total Azure consumption]\(Azure 消費合計\)**: 対象 DR のコンピューティング、ストレージ、Site Recovery のライセンス コスト。 選択内容に応じて、月単位または年単位でコストが表示されます。
 

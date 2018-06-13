@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL での高可用性の概念"
-description: "この記事では、Azure Database for PostgreSQL を使用する場合の高可用性の情報を提供します。"
+title: Azure Database for PostgreSQL での高可用性の概念
+description: この記事では、Azure Database for PostgreSQL を使用する場合の高可用性の情報を提供します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687084"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での高可用性の概念
 Azure Database for PostgreSQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。

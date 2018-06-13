@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 可用性グループ リスナーを Azure 仮想マシンに作成する | Microsoft Docs"
-description: "Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。"
+title: SQL Server 可用性グループ リスナーを Azure 仮想マシンに作成する | Microsoft Docs
+description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400632"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
@@ -54,7 +55,7 @@ ms.lasthandoff: 02/21/2018
 
 1. Azure ポータルで、SQL Server の仮想マシンを含んだリソース グループを開きます。 
 
-2. リソース グループで **[追加]**をクリックします。
+2. リソース グループで **[追加]** をクリックします。
 
 3. **ロード バランサー**を探し、検索結果から **[ロード バランサー]** (**Microsoft** によって発行されたもの) を選択します。
 

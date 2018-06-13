@@ -13,7 +13,7 @@
    これで、プロジェクトではコード署名のために新しいプロファイルを使用するようになります。 公式の Xamarin デバイス プロビジョニングのドキュメントについては、 [Xamarin デバイス プロビジョニング]に関するページを参照してください。
 
 #### <a name="configure-the-ios-project-in-visual-studio"></a>Visual Studio での iOS プロジェクトの構成
-1. Visual Studio で、プロジェクトを右クリックし、 **[プロパティ]**をクリックします。
+1. Visual Studio で、プロジェクトを右クリックし、 **[プロパティ]** をクリックします。
 2. [プロパティ] ページで、**[iOS アプリケーション]** タブをクリックし、前に作成した ID で **[識別子]** を更新します。
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197075"
 ---
 エンタープライズ ソリューション (推奨) を使って生成されたルート証明書を使用するか、または自己署名証明書を生成してください。 ルート証明書の作成後、(秘密キーではなく) 公開証明書データを、Base-64 でエンコードされた X.509 .cer ファイルとしてエクスポートし、公開証明書データを Azure にアップロードします。
 

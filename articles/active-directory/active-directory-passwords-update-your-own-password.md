@@ -1,9 +1,9 @@
 ---
-title: "Azure AD: パスワードのリセット | Microsoft Docs"
-description: "セルフサービスによるパスワードのリセットを使用して職場または学校のユーザー アカウントへのアクセスを回復する"
+title: 'Azure AD: パスワードのリセット | Microsoft Docs'
+description: セルフサービスによるパスワードのリセットを使用して職場または学校のユーザー アカウントへのアクセスを回復する
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463780"
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL の接続ライブラリ"
-description: "この記事では、アプリケーションをコーディングして PostgreSQL for Azure Database に接続およびクエリを実行するときに、開発者が使用できるさまざまなライブラリやドライバーについて説明します。"
+title: Azure Database for PostgreSQL の接続ライブラリ
+description: この記事では、アプリケーションをコーディングして PostgreSQL for Azure Database に接続およびクエリを実行するときに、開発者が使用できるさまざまなライブラリやドライバーについて説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687008"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続ライブラリ
 この記事では、Azure Database for PostgreSQL に接続およびクエリを実行するアプリケーションの開発に使用できるライブラリとドライバーを紹介します。

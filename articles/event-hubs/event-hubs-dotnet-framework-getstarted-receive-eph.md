@@ -1,11 +1,11 @@
 ---
-title: ".NET Framework を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs"
-description: "このチュートリアルでは、.NET Framework を使用して Azure Event Hubs からイベントを受信する操作を行います。"
+title: .NET Framework を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
+description: このチュートリアルでは、.NET Framework を使用して Azure Event Hubs からイベントを受信する操作を行います。
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29393220"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs からイベントを受信する
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。
 
-このチュートリアルでは、**[イベント プロセッサ ホスト][EventProcessorHost]**を使用してイベント ハブからメッセージを受信する .NET Framework コンソール アプリケーションの記述方法を説明します。 .NET Framework を使用してイベントを送信するには、[.NET Framework を使用して Azure Event Hubs にイベントを送信する方法](event-hubs-dotnet-framework-getstarted-send.md)に関する記事を参照するか、左側の目次で適切な送信側の言語をクリックしてください。
+このチュートリアルでは、**[イベント プロセッサ ホスト][EventProcessorHost]** を使用してイベント ハブからメッセージを受信する .NET Framework コンソール アプリケーションの記述方法を説明します。 .NET Framework を使用してイベントを送信するには、[.NET Framework を使用して Azure Event Hubs にイベントを送信する方法](event-hubs-dotnet-framework-getstarted-send.md)に関する記事を参照するか、左側の目次で適切な送信側の言語をクリックしてください。
 
 [イベント プロセッサ ホスト][EventProcessorHost]は、永続的なチェックポイントの管理によってイベント ハブのイベントの受信を簡素化し、並列してそれらのイベント ハブから受信する .NET クラスです。 [イベント プロセッサ ホスト][Event Processor Host]を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。 この例では、受信側が単一の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。 [イベント処理のスケールアウト][Scale out Event Processing with Event Hubs]のサンプルは、受信者側が複数の場合に[イベント プロセッサ ホスト][EventProcessorHost]を使用する方法を示します。
 
@@ -49,11 +50,11 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 2. **[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 リソースが作成される Azure サブスクリプション、リソース グループ、場所を選択します。 **[Create]**をクリックします。
+3. **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 リソースが作成される Azure サブスクリプション、リソース グループ、場所を選択します。 **[Create]** をクリックします。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 4. ストレージ アカウントの一覧で、新しく作成したストレージ アカウントをクリックします。
-5. ストレージ アカウントのウィンドウで、**[アクセス キー]**をクリックします。 後でこのチュートリアルで使用するため、 **key1** の値をコピーしておきます。
+5. ストレージ アカウントのウィンドウで、**[アクセス キー]** をクリックします。 後でこのチュートリアルで使用するため、 **key1** の値をコピーしておきます。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
@@ -63,7 +64,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
 2. ソリューション エクスプローラーで **[Receiver]** プロジェクトを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
-3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索します。 **[インストール]**をクリックして、使用条件に同意します。
+3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索します。 **[インストール]** をクリックして、使用条件に同意します。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    

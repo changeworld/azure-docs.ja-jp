@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL での監視"
-description: "この記事では、Azure Database for PostgreSQL での監視およびアラート生成のためのメトリック (CPU、ストレージ、および接続の統計を含む) について説明します。"
+title: Azure Database for PostgreSQL での監視
+description: この記事では、Azure Database for PostgreSQL での監視およびアラート生成のためのメトリック (CPU、ストレージ、および接続の統計を含む) について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687610"
 ---
 # <a name="monitoring-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、PostgreSQL サーバーをサポートするリソースの動作に関する洞察を提供する各種のメトリックが用意されています。 

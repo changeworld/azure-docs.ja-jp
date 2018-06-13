@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937401"
 ---
 # <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Azure Marketplace のプランを作成するための Azure PowerShell のセットアップ
 Azure で PowerShell をセットアップする方法の詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。 証明書方式を使用すると、認証に必要な証明書がダウンロードおよびインポートされるため簡単に処理できます。 必要な証明書を取得するには、 **Get-AzurePublishSettingsFile** コマンドレットを使用します。 求められたらファイルを保存します。 証明書を PowerShell セッションにインポートするには、 **Import-AzurePublishSettingsFile** コマンドレットを使用します。

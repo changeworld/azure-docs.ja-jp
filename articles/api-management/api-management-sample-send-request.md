@@ -1,11 +1,11 @@
 ---
-title: "HTTP 要求を生成するための API Management サービスの使用"
-description: "API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。"
+title: HTTP 要求を生成するための API Management サービスの使用
+description: API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29714673"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。

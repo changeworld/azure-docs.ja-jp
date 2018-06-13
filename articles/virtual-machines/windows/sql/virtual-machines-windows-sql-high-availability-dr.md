@@ -1,11 +1,11 @@
 ---
-title: "SQL Server の高可用性とディザスター リカバリー | Microsoft Docs"
-description: "Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略についての説明。"
+title: SQL Server の高可用性とディザスター リカバリー | Microsoft Docs
+description: Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略についての説明。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401261"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 

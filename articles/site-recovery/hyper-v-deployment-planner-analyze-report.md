@@ -1,6 +1,6 @@
 ---
-title: "Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、Hyper-V から Azure へのシナリオを想定して説明します。"
+title: Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
+description: この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、Hyper-V から Azure へのシナリオを想定して説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466878"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。

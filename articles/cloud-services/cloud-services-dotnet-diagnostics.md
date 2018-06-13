@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services で Azure 診断 (.NET) を使用する方法 | Microsoft Docs"
-description: "デバッグ、パフォーマンスの測定、監視、トラフィック分析などに使用するために、Azure 診断を使用して、Azure Cloud Services からデータを収集します。"
+title: Cloud Services で Azure 診断 (.NET) を使用する方法 | Microsoft Docs
+description: デバッグ、パフォーマンスの測定、監視、トラフィック分析などに使用するために、Azure 診断を使用して、Azure Cloud Services からデータを収集します。
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460901"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure 診断の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。

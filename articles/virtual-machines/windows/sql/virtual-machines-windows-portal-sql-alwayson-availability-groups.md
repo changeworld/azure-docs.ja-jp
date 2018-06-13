@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager VM の高可用性を設定する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Resource Manager モードの Azure 仮想マシンで Always On 可用性グループを作成する方法について説明します。"
+title: Azure Resource Manager VM の高可用性を設定する | Microsoft Docs
+description: このチュートリアルでは、Azure Resource Manager モードの Azure 仮想マシンで Always On 可用性グループを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401023"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
 
@@ -169,7 +170,7 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 **[SQL Server の設定]** では、SQL Server 仮想マシン名のプレフィックス、SQL Server のバージョン、SQL Server のサービス アカウントとパスワード、SQL の自動修正メンテナンス スケジュールを確認および変更できます。
 
 * **[SQL Server Name Prefix] \(SQL Server 名のプレフィックス)** は、各 SQL Server 仮想マシンの名前を作成するために使用します。 このチュートリアルでは **sqlserver** を使用します。 テンプレートにより、SQL Server 仮想マシンに *sqlserver-0* および *sqlserver-1* という名前が付けられます。
-* **[SQL Server のバージョン]** は、SQL Server のバージョンです。 このチュートリアルでは **[SQL Server 2014]**を使用します。 **[SQL Server 2012]** または **[SQL Server 2016]** を選択することもできます。
+* **[SQL Server のバージョン]** は、SQL Server のバージョンです。 このチュートリアルでは **[SQL Server 2014]** を使用します。 **[SQL Server 2012]** または **[SQL Server 2016]** を選択することもできます。
 * **[SQL Server service account user name (SQL Server サービス アカウント ユーザー名)]** は、SQL Server サービスのドメイン アカウント名です。 このチュートリアルでは **sqlservice** を使用します。
 * **[パスワード]** は、SQL Server サービス アカウントのパスワードです。  複雑なパスワードを使用します。 パスワードを確認入力します。
 * **[SQL Auto Patching maintenance schedule] \(SQL 自動修正メンテナンス スケジュール)** では、Azure が SQL Server に修正を自動的に適用する曜日を特定します。 このチュートリアルでは、「**日曜日**」と入力します。
@@ -203,11 +204,11 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 SQL Server に RDP 接続するには、次の手順に従います。
 
 1. Azure Portal のダッシュ ボードで、デプロイが成功したことを確認します。
-2. **[リソース]**をクリックします。
+2. **[リソース]** をクリックします。
 3. **[リソース]** ブレードで、SQL Server を実行する仮想マシンの 1 つのコンピューター名である **[sqlserver-0]** をクリックします。
-4. **sqlserver-0** のブレードで **[接続]** をクリックします。 ブラウザーから、リモート接続オブジェクトを開くか保存するかをたずねられます。 **[開く]**をクリックします。
-5. **リモート デスクトップ接続** で、このリモート接続の発行元が識別できないことが通知される場合があります。 **[接続]**をクリックします。
-6. Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。 **[別のアカウントを使用する]**をクリックします。 **[ユーザー名]** に「**contoso\DomainAdmin**」と入力します。 このアカウントは、テンプレートで管理者ユーザー名を設定したときに構成したものです。 テンプレートを構成したときに選択した複雑なパスワードを使用します。
+4. **sqlserver-0** のブレードで **[接続]** をクリックします。 ブラウザーから、リモート接続オブジェクトを開くか保存するかをたずねられます。 **[開く]** をクリックします。
+5. **リモート デスクトップ接続** で、このリモート接続の発行元が識別できないことが通知される場合があります。 **[接続]** をクリックします。
+6. Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。 **[別のアカウントを使用する]** をクリックします。 **[ユーザー名]** に「**contoso\DomainAdmin**」と入力します。 このアカウントは、テンプレートで管理者ユーザー名を設定したときに構成したものです。 テンプレートを構成したときに選択した複雑なパスワードを使用します。
 7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。**[はい]** をクリックします。
 
 これで SQL Server 仮想マシンに RDP 接続できました。 SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続して、可用性グループが構成済みであることを確認できます。

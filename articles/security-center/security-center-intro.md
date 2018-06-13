@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center とは | Microsoft Docs"
-description: "Azure Security Center の主な機能とそのしくみについて説明します。"
+title: Azure Security Center とは | Microsoft Docs
+description: Azure Security Center の主な機能とそのしくみについて説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395651"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Security Center を使用して、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。

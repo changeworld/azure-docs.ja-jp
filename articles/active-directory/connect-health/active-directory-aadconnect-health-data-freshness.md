@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Health - アラート \"Health サービス データが最新ではありません\" | Microsoft Docs"
-description: "このドキュメントでは、アラート \"Health サービス データが最新ではありません\" の原因と、そのトラブルシューティングを実行する方法について説明します。"
+title: Azure AD Connect Health - アラート "Health サービス データが最新ではありません" | Microsoft Docs
+description: このドキュメントでは、アラート "Health サービス データが最新ではありません" の原因と、そのトラブルシューティングを実行する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhiweiw
 manager: maheshu
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29715013"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30179091"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
 Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。

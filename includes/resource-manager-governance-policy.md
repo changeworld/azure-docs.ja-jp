@@ -1,6 +1,6 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29817044"
 ---
 [Azure のポリシー](/azure/azure-policy/)は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 ポリシーを使用し、展開オプションを承認されたリソースの種類と SKU のみに制限することでコストを削減します。 リソースのルールとアクションを定義すると、それらのルールは展開時に自動的に適用されます。 たとえば、展開されているリソースの種類を制御できます。 また、リソースの承認済みの場所を制限することもできます。 アクションを拒否するポリシーや、アクションの監査を設定するポリシーがあります。
 
