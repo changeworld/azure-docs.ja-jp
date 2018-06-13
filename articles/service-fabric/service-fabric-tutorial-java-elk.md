@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949822"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル: ELK を使用して Service Fabric アプリケーションを監視する 
 このチュートリアルは、シリーズの第 4 部です。 ここでは、ELK (Elasticsearch、Logstash、Kibana) を使用して、Azure で実行されている Service Fabric アプリケーションを監視する方法について説明します。 

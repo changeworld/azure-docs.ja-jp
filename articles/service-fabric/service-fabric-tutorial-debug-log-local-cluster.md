@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949805"
 ---
 #  <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル: ローカルの Service Fabric クラスターでデプロイされた Java アプリケーションをデバッグする 
 このチュートリアルは、シリーズの第 2 部です。 Eclipse を使用して Service Fabric アプリケーション用にリモート デバッガーをアタッチする方法について説明します。 さらに、実行中のアプリケーションから開発者にとって都合のよい場所にログをリダイレクトする方法について説明します。

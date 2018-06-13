@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs 管理ライブラリ | Microsoft Docs"
-description: ".NET から Event Hubs の名前空間とエンティティを管理します。"
+title: Azure Event Hubs 管理ライブラリ | Microsoft Docs
+description: .NET から Event Hubs の名前空間とエンティティを管理します。
 services: event-hubs
 cloud: na
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780975"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs 管理ライブラリ
 

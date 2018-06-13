@@ -1,11 +1,11 @@
 ---
-title: "Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Dynamics AX をレプリケートして保護する方法について説明します"
+title: Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Dynamics AX をレプリケートして保護する方法について説明します
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: asgang
 manager: rochakm
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876958"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
 
@@ -96,7 +97,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 * Application Object Server サーバー用に、適切な可用性セットを選択します。
 
-* 静的 IP を使用している場合は、VM に割り当てる IP を**[ターゲット IP]** テキスト ボックスに指定します。
+* 静的 IP を使用している場合は、VM に割り当てる IP を **[ターゲット IP]** テキスト ボックスに指定します。
 
     ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)が必要です。
 

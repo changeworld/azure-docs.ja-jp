@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949839"
 ---
 # <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>チュートリアル: Service Fabric と共に Jenkins 環境をセットアップする
 このチュートリアルは、シリーズの第 5 部です。 Jenkins を使用してアプリケーションにアップグレードをデプロイする方法を示します。 このチュートリアルでは、Service Fabric Jenkins プラグインと、投票アプリケーションをホストする GitHub リポジトリを組み合わせて使用して、アプリケーションをクラスターにデプロイします。 
