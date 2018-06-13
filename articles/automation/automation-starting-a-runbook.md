@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195296"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。

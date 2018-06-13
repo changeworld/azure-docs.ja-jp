@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187982"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>REST API を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]

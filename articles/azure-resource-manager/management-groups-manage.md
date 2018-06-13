@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195796"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを変更、削除、管理して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) で使用できる階層を作成できます。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。

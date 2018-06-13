@@ -20,6 +20,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887472"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]

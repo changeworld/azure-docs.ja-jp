@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31418456"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>チュートリアル: Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
 Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。

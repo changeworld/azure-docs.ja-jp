@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424700"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
 次の SPECInt ベンチマーク スコアは、Windows Server を実行している高いパフォーマンスの Azure の VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。 

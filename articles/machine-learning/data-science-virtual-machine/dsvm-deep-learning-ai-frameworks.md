@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160752"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 

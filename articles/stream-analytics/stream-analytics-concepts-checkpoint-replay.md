@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31529205"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブでのチェックポイントと再生の概念
 この記事では、Azure Stream Analytics の内部チェックポイントおよび再生の概念と、これらがジョブの回復に与える影響について説明します。 Stream Analytics ジョブが実行されるたびに、状態情報が内部的に維持されます。 状態情報は、チェックポイントに定期的に保存されます。 一部のシナリオでは、ジョブ エラーまたはアップグレードが発生した場合にチェックポイント情報がジョブの回復に使用されます。 その他の状況では、チェックポイントを回復に使用できず、再生が必要です。

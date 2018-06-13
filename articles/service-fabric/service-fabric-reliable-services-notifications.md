@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207012"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知をサポートするオブジェクトには、*Reliable State Manager* と *Reliable Dictionary* の 2 種類があります。

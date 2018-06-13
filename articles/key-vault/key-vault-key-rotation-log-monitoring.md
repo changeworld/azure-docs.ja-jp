@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31594122"
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
 ## <a name="introduction"></a>はじめに
@@ -187,7 +188,7 @@ Azure Automation 接続のアプリケーション ID を取得したら、こ�
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-次に、Azure Automation インスタンスで **[Runbook]** を選択し、**[Runbook の追加]** を選択します。 **[簡易作成]**を選択します。 Runbook に名前を付けて、Runbook の種類として **[PowerShell]** を選択します。 説明を追加するオプションがあります。 最後に、**[作成]** をクリックします。
+次に、Azure Automation インスタンスで **[Runbook]** を選択し、**[Runbook の追加]** を選択します。 **[簡易作成]** を選択します。 Runbook に名前を付けて、Runbook の種類として **[PowerShell]** を選択します。 説明を追加するオプションがあります。 最後に、**[作成]** をクリックします。
 
 ![Runbook を作成する](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -437,6 +438,6 @@ Logic App が作成されたら、そのアプリに移動し、**[編集]** を
 
 ![Azure Logic App 選択アクション](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-アクションで、**[Office 365 - send email (Office 365 - メール送信)]**を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
+アクションで、**[Office 365 - send email (Office 365 - メール送信)]** を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
 
 この時点では、1 分ごとに新しい Key Vault 監査ログを確認するエンド ツー エンドのパイプラインがあります。 これは検出した新しいログを Service Bus キューにプッシュします。 新しいメッセージがキューに届くと、ロジック アプリがトリガーされます。 イベント内の *appid* が呼び出し元アプリケーションのアプリケーション ID と一致しない場合、電子メールが送信されます。

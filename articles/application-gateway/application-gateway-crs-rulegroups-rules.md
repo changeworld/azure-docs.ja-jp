@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31515528"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供されている Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧
 

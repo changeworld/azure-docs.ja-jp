@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33785721"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー
 Azure Media Services でライブ ストリーミングを行う際には、チャネルでの入力ストリームの受信方法を指定できます。 ライブ エンコード チャネルを使用したオンプレミス エンコーダーを使用する場合、エンコーダーでは、出力として高品質のシングルビットレート ストリームをプッシュする必要があります。 パススルー チャネルを使用したオンプレミス エンコーダーを使用する場合、エンコーダーでは、目的の出力品質をすべて満たした出力として、マルチビット レート ストリームをプッシュする必要があります。 詳細については、「[Live streaming with on-prem encoders (オンプレミス エンコーダーを使用したライブ ストリーミング)](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。

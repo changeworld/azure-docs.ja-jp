@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31528360"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -88,7 +89,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
           }
         }
 
-4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}**は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。
+4. **{USERNAME}****{CLUSTERDNSNAME}****{BASE64ENCODEDPASSWORD}** は、それぞれ適切な値に置き換えてください。 base64 エンコード パスワードは、ご利用のプログラミング言語のユーティリティまたはオンライン ユーティリティを使用して、実際のパスワードから生成してください。
 
 5. `config.json` で右側のハートビート設定を構成します。 この設定は、前に追加した `kernel_python_credentials` と`kernel_scala_credentials` のスニペットと同じレベルに追加する必要があります。 ハートビート設定を追加する方法と場所の例については、こちらの [ config.json のサンプル](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)を参照してください。
 
@@ -113,7 +114,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
 7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]** をクリックします。
 
     ![Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 

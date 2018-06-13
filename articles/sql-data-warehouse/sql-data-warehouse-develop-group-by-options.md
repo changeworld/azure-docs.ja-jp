@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526048"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
 ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。

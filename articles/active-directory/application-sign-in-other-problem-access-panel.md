@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070281"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>アクセス パネルからアプリケーションへのサインインに関する問題
 

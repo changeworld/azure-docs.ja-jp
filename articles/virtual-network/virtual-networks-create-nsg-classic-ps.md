@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793193"
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>PowerShell を使用してネットワーク セキュリティ グループ (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

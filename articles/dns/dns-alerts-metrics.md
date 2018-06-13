@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31591621"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。

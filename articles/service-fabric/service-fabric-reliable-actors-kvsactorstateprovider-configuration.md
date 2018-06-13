@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208262"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。

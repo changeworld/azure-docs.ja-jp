@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311371"
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs の認証とセキュリティ モデルの概要
 

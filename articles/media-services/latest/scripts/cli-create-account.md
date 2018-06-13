@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34159715"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI の例: Azure Media Services アカウントを作成する
 

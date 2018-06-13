@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523477"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse にソリューションを移行する
 既存のデータベース ソリューションを Azure SQL Data Warehouse に移行するときに行うことについて説明します。 

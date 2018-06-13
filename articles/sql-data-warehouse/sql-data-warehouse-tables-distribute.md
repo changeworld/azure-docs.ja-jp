@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526255"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
 Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。

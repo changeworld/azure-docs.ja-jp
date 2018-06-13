@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31789386"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -165,7 +166,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **[作成]**を選択します。
+    **[作成]** を選択します。
 
 3. 手順を繰り返して **ReadTweetsFromEventHub** ノートブックを作成します。
 

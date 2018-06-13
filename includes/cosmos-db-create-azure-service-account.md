@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31431758"
 ---
 Azure Table ストレージまたは Azure Cosmos DB を使用してテーブルを操作できます。 サービスによる違いの詳細については、「[Table のサービス](../articles/cosmos-db/table-introduction.md#table-offerings)」を参照してください。 使用するサービスのアカウントを作成する必要があります。 
 

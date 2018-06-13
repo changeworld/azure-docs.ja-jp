@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31401311"
 ---
 # <a name="install-published-application---datameer"></a>発行済みアプリケーションのインストール - Datameer
 
@@ -64,7 +65,7 @@ Datameer は Hadoop プラットフォーム向けのネイティブ アプリ�
 
     ![ファイルのアップロード](./media/hdinsight-apps-install-datameer/upload.png)
 
-3. アップロード ダイアログで、ダウンロードした **Hello World.csv** ファイルを参照して選択します。 **[ファイルの種類]** が [CSV / TSV] に設定されていることを確認します。 **[次へ]**を選択します。 ウィザードの最後に至るまで **[次へ]** をクリックし続けます。
+3. アップロード ダイアログで、ダウンロードした **Hello World.csv** ファイルを参照して選択します。 **[ファイルの種類]** が [CSV / TSV] に設定されていることを確認します。 **[次へ]** を選択します。 ウィザードの最後に至るまで **[次へ]** をクリックし続けます。
 
     ![ファイルのアップロード](./media/hdinsight-apps-install-datameer/upload-browse.png)
 

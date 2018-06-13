@@ -58,7 +58,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-ゾーンの "頂点" (この例では "contoso.com") にレコード セットを作成するには、レコード セット名 "@" (引用符を除く) を使います。
+ゾーンの "頂点" (この例では "contoso.com") にレコード セットを作成するには、レコード セット名 \"\@\" (引用符を除く) を使います。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190033"
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>ポータルでの Azure Search インデックスの作成、照会、フィルター処理
 

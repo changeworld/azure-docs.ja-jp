@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426793"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Azure VM の接続されていないネットワーク インターフェイス カード (NIC) を検索して削除する方法
 Azure 内の仮想マシン (VM) を削除しても、ネットワーク インターフェイス カード (NIC) は既定では削除されません。 複数の VM を作成して削除すると、未使用の NIC は内部 IP アドレスのリースを引き続き使用します。 他の VM NIC を作成するときに、サブネットのアドレス空間で IP リースを取得できない可能性があります。 この記事では、接続されていない NIC を検索して削除する方法を示します。

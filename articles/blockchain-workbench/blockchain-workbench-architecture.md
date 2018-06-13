@@ -15,6 +15,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076734"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
 

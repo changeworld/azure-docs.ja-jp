@@ -18,6 +18,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054599"
 ---
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>アプリケーションを追加するときに使用するアプリケーションの種類の選択方法
 

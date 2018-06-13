@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770340"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -30,7 +31,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-http://contoso.com/video/* * の要求は、VideoServerPool にルーティングされ、http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
+http://contoso.com/video/* の要求は、VideoServerPool にルーティングされ、http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。

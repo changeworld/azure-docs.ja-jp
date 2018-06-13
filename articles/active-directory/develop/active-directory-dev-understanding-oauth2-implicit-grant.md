@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155781"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最も多く含むアクセス許可であることで知られています。 それでも、ADAL JS によって実装されるアプローチであり、SPA アプリケーションを作成するときにお勧めするアプローチでもあります。 何のためでしょう。 これはすべてトレードオフの問題です。結局のところ、暗黙的な許可が、ブラウザーで JavaScript を使用して Web API を使用するアプリケーションのために行うことができる最善のアプローチだからです。

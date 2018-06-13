@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795043"
 ---
 # <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>パート 2: クラウド ストレージで半構造化データを検索する
 

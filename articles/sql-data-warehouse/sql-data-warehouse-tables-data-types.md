@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523508"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルのデータ型
 Azure SQL Data Warehouse におけるテーブルのデータ型の定義に関する推奨事項。 

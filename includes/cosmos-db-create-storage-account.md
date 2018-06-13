@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31431749"
 ---
 最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 

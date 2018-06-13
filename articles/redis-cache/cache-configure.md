@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31420733"
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
 このトピックでは、Azure Redis Cache インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Redis Cache インスタンスの既定の Redis サーバー構成についても説明します。
@@ -130,7 +131,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>メモリ ポリシー
-**[詳細設定]** ブレードの **[Maxmemory ポリシー]****[maxmemory-reserved]****[maxfragmentationmemory-reserved]**の設定によって、キャッシュのメモリ ポリシーが構成されます。
+**[詳細設定]** ブレードの **[Maxmemory ポリシー]****[maxmemory-reserved]****[maxfragmentationmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。
 
 ![Redis Cache の Maxmemory ポリシー](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -243,7 +244,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ![更新のスケジュール](./media/cache-configure/redis-schedule-updates.png)
 
-メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]**をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
+メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
 > [!IMPORTANT]
 > **更新のスケジュール**機能は Premium レベルのキャッシュにのみ使用できます。 詳細および手順については、 [Azure Redis Cache の管理 - 更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
@@ -325,7 +326,7 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 
 ![Reboot](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]**をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するシャードを選択し、 **[再起動]**をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
+キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]** をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するシャードを選択し、 **[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
 
 > [!IMPORTANT]
 > 現在、再起動はすべての価格レベルで使用できます。 詳細および手順については、 [Azure Redis Cache の管理 - 再起動](cache-administration.md#reboot)に関するページをご覧ください。
@@ -506,7 +507,7 @@ shard1>get myKey
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>新しいサブスクリプションへのキャッシュの移動
-新しいサブスクリプションにキャッシュを移動するには、 **[移動]**をクリックします。
+新しいサブスクリプションにキャッシュを移動するには、 **[移動]** をクリックします。
 
 ![Redis Cache の移動](./media/cache-configure/redis-cache-move.png)
 

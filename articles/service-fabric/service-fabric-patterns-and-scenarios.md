@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206142"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric のパターンとシナリオ
 Azure Service Fabric を使用して大規模なマイクロサービスを構築することを検討している場合は、このサービスとしてのプラットフォーム (PaaS) を設計および構築した専門家から学んでください。 適切なアーキテクチャから始め、アプリケーションのリソースを最適化する方法を確認します。 「[Service Fabric Patterns and Practices (Service Fabric のパターンと実践)](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)」コースでは、Service Fabric のシナリオとアプリケーション領域について、実際のお客様からよく寄せられる質問に答えます。

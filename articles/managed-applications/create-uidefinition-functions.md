@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304506"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31521607"
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure Virtual Network での HDInsight HBase クラスターの作成
 [Azure Virtual Network][1] での Azure HDInsight HBase クラスターの作成方法について説明します。

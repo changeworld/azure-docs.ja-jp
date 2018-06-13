@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206421"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
 Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。

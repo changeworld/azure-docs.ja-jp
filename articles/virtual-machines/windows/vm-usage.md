@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425182"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](../../billing/billing-understand-your-bill.md)に関するページをご覧ください。

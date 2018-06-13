@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31512930"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 

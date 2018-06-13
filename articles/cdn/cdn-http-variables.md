@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011460"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。

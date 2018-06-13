@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156893"
 ---
 # <a name="permissions-in-azure-ad"></a>Azure AD におけるアクセス許可
 Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OIDC) フローの両方でアクセス許可を広く利用します。 アプリが Azure AD から受け取るアクセス トークンには、特定のリソースに関してアプリに付与されたアクセス許可 (スコープとも呼ばれます) を示す要求が含まれています。 呼び出す API に適したアクセス許可がトークンに含まれていることを確認するだけで済むため、リソースに対する承認が容易になります。 

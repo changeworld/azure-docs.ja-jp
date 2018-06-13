@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069810"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する方法
 

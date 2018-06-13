@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31423240"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 

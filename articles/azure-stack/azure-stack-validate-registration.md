@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937567"
 ---
 # <a name="validate-azure-registration"></a>Azure の登録の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure サブスクリプションを Azure Stack で使用する準備が整っていることを検証します。 Azure Stack デプロイを開始する前に、登録を検証します。 適合性チェッカーは以下を検証します。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776127"
 ---
 # <a name="security-policies-overview"></a>セキュリティ ポリシーの概要
 この記事では、Security Center のセキュリティ ポリシーの概要を示します。

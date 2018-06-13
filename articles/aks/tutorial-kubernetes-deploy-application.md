@@ -3,17 +3,18 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: AKS チュートリアル - アプリケーションのデプロイ
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067675"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -72,10 +73,10 @@ containers:
 
 ## <a name="deploy-application"></a>アプリケーションをデプロイする
 
-[kubectl create][kubectl-create] コマンドを使ってアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
+[kubectl apply][kubectl-apply] コマンドを使ってアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 出力:
@@ -132,6 +133,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 > [Kubernetes アプリケーションと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
 
 <!-- LINKS - external -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-documentation]: https://kubernetes.io/docs/home/

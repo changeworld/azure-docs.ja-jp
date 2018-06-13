@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156706"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 この記事では、Azure Active Directory (Azure AD) がシングル サインオンに対してサポートする SAML 2.0 の認証要求と応答について説明します。

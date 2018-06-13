@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598967"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SDL Data Warehouse での T-SQL のループの使用
 ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
