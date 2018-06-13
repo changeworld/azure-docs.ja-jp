@@ -1,11 +1,11 @@
 ---
-title: "Traffic Manager エンドポイントの種類 | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します"
+title: Traffic Manager エンドポイントの種類 | Microsoft Docs
+description: この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23112690"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 Microsoft Azure Traffic Manager を使用すると、世界中のさまざまなデータ センターで実行されているアプリケーションのデプロイに、ネットワーク トラフィックを分散させる方法を制御できます。 Traffic Manager では、各アプリケーションのデプロイを 'エンドポイント' として構成します。 Traffic Manager が DNS 要求を受信すると、DNS 応答で返すことができるエンドポイントを選択します。 Traffic Manager は、現在のエンドポイントの状態とトラフィック ルーティング方法に基づいて選択を行います。 詳細については、「 [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)」をご覧ください。

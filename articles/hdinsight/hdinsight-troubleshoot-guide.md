@@ -1,11 +1,11 @@
 ---
-title: "Azure HDInsight トラブルシューティング ガイド | Microsoft Docs"
-description: "Azure HDInsight を使用して、Hadoop ワークロードのトラブルシューティングを行います。 ステップ バイ ステップ ドキュメントには、HDInsight を使用して、Hive、Spark、YARN、HBase、HDFS、Storm の一般的な問題を解決する方法が示されています。"
+title: Azure HDInsight トラブルシューティング ガイド | Microsoft Docs
+description: Azure HDInsight を使用して、Hadoop ワークロードのトラブルシューティングを行います。 ステップ バイ ステップ ドキュメントには、HDInsight を使用して、Hive、Spark、YARN、HBase、HDFS、Storm の一般的な問題を解決する方法が示されています。
 services: hdinsight
 author: arijitt
 manager: arijitt
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984726"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Azure HDInsight を使用したトラブルシューティング
 

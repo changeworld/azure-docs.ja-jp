@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Cloud Appliance への StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs"
-description: "クラウド アプライアンスに StorSimple 8000 シリーズ物理デバイスをフェールオーバーする方法を説明します。"
+title: StorSimple Cloud Appliance への StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs
+description: クラウド アプライアンスに StorSimple 8000 シリーズ物理デバイスをフェールオーバーする方法を説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108330"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance にフェールオーバーする
 

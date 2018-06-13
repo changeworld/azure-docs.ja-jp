@@ -1,6 +1,6 @@
 ---
-title: "Azure クラウド ストレージで非構造化データを検索する"
-description: "Azure Search を使用した非構造化データの検索。"
+title: Azure クラウド ストレージで非構造化データを検索する
+description: Azure Search を使用した非構造化データの検索。
 author: roygara
 manager: timlt
 services: storage
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23451639"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>クラウド ストレージで非構造化データを検索する
 

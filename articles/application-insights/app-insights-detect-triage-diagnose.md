@@ -1,9 +1,9 @@
 ---
-title: "DevOps のための Azure Application Insights の概要 | Microsoft Docs"
-description: "Dev Ops 環境で Application Insights を使用する方法を説明します。"
+title: DevOps のための Azure Application Insights の概要 | Microsoft Docs
+description: Dev Ops 環境で Application Insights を使用する方法を説明します。
 author: mrbullwinkle
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 manager: carmonm
 ms.assetid: 6ccab5d4-34c4-4303-9d3b-a0f1b11e6651
 ms.service: application-insights
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23660597"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要
 

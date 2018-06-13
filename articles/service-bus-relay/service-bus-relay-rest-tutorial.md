@@ -1,11 +1,11 @@
 ---
-title: "Azure Relay を使用した REST のチュートリアル | Microsoft Docs"
-description: "REST ベースのインターフェイスを表示する簡易な Azure Service Bus Relay ホスト アプリケーションを構築します。"
+title: Azure Relay を使用した REST のチュートリアル | Microsoft Docs
+description: REST ベースのインターフェイスを表示する簡易な Azure Service Bus Relay ホスト アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24008038"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
 
@@ -41,7 +42,7 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
 1. 管理者として Visual Studio を開きます。**[スタート]** メニューの[Visual Studio] を右クリックし、**[管理者として実行]** をクリックします。
 2. 新しいコンソール アプリケーション プロジェクトを作成します。 **[ファイル]** メニューをクリックし、**[新規作成]**、**[プロジェクト]** の順に選択します。 **[新しいプロジェクト]** ダイアログ ボックスで **[Visual C#]** をクリックします。**[コンソール アプリケーション]** テンプレートを選択し、「**ImageListener**」と名前を付けます。 既定の **[場所]** を使用します。 **[OK]** をクリックしてプロジェクトを作成します。
 3. C# プロジェクトの場合、`Program.cs` ファイルが作成されます。 このクラスには、空の `Main()` メソッドが含まれています。このメソッドは、コンソール アプリケーション プロジェクトを正常にビルドするために必要です。
-4. Service Bus NuGet パッケージをインストールして、Service Bus と **System.ServiceModel.dll** への参照をプロジェクトに追加します。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 ソリューション エクスプローラーで **ImageListener** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]**をクリックして、使用条件に同意します。
+4. Service Bus NuGet パッケージをインストールして、Service Bus と **System.ServiceModel.dll** への参照をプロジェクトに追加します。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 ソリューション エクスプローラーで **ImageListener** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]** をクリックして、使用条件に同意します。
 5. **System.ServiceModel.Web.dll** への参照をプロジェクトに明示的に追加する必要があります。
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 ソリューション エクスプローラーでプロジェクト フォルダーの **[参照]** フォルダーを右クリックし、**[参照の追加]** をクリックします。

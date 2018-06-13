@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 2.0 を使って Web App for Containers を管理する | Microsoft Docs"
-description: "Azure CLI を使って Web App for Containers を管理します。"
-keywords: "Azure App Service, Web アプリ, CLI, Linux, OSS"
+title: Azure CLI 2.0 を使って Web App for Containers を管理する | Microsoft Docs
+description: Azure CLI を使って Web App for Containers を管理します。
+keywords: Azure App Service, Web アプリ, CLI, Linux, OSS
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105391"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 

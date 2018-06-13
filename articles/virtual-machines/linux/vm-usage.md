@@ -1,15 +1,15 @@
 ---
-title: "Azure 仮想マシンの使用量について | Microsoft Docs"
-description: "仮想マシンの使用量の詳細について"
+title: Azure 仮想マシンの使用量について | Microsoft Docs
+description: 仮想マシンの使用量の詳細について
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345402"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、使用に関する強力な洞察を得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure コンピューティングの使用について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](/billing/billing-understand-your-bill.md)に関するページをご覧ください。

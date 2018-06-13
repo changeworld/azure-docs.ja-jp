@@ -1,13 +1,13 @@
 ---
-title: "Azure ExpressRoute 回線の作成と変更: CLI | Microsoft Docs"
-description: "この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。"
+title: 'Azure ExpressRoute 回線の作成と変更: CLI | Microsoft Docs'
+description: この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23479611"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 

@@ -1,11 +1,11 @@
 ---
-title: "IPsec トンネルを再確立するための Azure VPN Gateway のリセット | Microsoft Docs"
-description: "この記事では、Azure VPN Gateway をリセットして IPsec トンネルを再確立する方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。"
+title: IPsec トンネルを再確立するための Azure VPN Gateway のリセット | Microsoft Docs
+description: この記事では、Azure VPN Gateway をリセットして IPsec トンネルを再確立する方法を紹介します。 この記事は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方の VPN ゲートウェイに適用されます。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23125820"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 

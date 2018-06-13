@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23126680"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>例 1 – NSG と Azure Resource Manager テンプレートを使用して簡単な DMZ を構築する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]

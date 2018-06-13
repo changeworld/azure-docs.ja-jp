@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービス向けの SSL の構成 | Microsoft Docs"
-description: "Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。 これらの例では、Azure ポータルを使用します。"
+title: クラウド サービス向けの SSL の構成 | Microsoft Docs
+description: Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 371ba204-48b6-41af-ab9f-ed1d64efe704
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24859778"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 

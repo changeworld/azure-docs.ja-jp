@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23112840"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -313,7 +314,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
     ![NetBackup 管理コンソール、新しいポリシーを作成する](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  **[Add a New Policy (新しいポリシーの追加)]** ダイアログ ボックスでポリシーの名前を入力し、**[Use Policy Configuration Wizard (ポリシー構成ウィザードを使用する)]** チェック ボックスをオンにします。 **[OK]**を選択します。
+2.  **[Add a New Policy (新しいポリシーの追加)]** ダイアログ ボックスでポリシーの名前を入力し、**[Use Policy Configuration Wizard (ポリシー構成ウィザードを使用する)]** チェック ボックスをオンにします。 **[OK]** を選択します。
 
     ![NetBackup 管理コンソール、[Add a New Policy (新しいポリシーの追加)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
@@ -325,7 +326,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
     ![NetBackup 管理コンソール、ポリシーの種類を選択する](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  ホストを選択し、**[Detect client operating system (クライアント オペレーティング システムを検出する)]** チェック ボックスをオンにして、**[Add (追加)]** を選択します。 **[次へ]**を選択します。
+5.  ホストを選択し、**[Detect client operating system (クライアント オペレーティング システムを検出する)]** チェック ボックスをオンにして、**[Add (追加)]** を選択します。 **[次へ]** を選択します。
 
     ![NetBackup 管理コンソール、新しいポリシーのクライアントを一覧表示する](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -357,7 +358,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
     ![NetBackup 管理コンソール、開始時間帯を変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  **[OK]**を選択します。
+14.  **[OK]** を選択します。
 
 15.  各増分バックアップに対して、手順 10. ～ 14. を繰り返します。 適切なボリュームを選択し、作成する各バックアップのスケジュールを設定します。
 
@@ -432,7 +433,7 @@ NetBackup にはストレージおよびメディア管理用のさまざまな�
 
 2.  スナップショットの名前を入力し、**[Add (追加)]** を選択します。
 
-3.  **[New Operation (新しい操作)]** ダイアログ ボックスの **[Properties (プロパティ)]** タブで、**[Operation (操作)]** の **[Backup (バックアップ)]** を選択します。 **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。 **[OK]**を選択します。
+3.  **[New Operation (新しい操作)]** ダイアログ ボックスの **[Properties (プロパティ)]** タブで、**[Operation (操作)]** の **[Backup (バックアップ)]** を選択します。 **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。 **[OK]** を選択します。
 
     ![NetBackup 管理コンソール、[New Operation (新しい操作)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 

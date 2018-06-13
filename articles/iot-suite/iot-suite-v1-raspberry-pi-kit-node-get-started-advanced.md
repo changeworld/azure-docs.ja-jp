@@ -1,12 +1,12 @@
 ---
-title: "Node.js を使用して Raspberry Pi を Azure IoT Suite に接続しファームウェアを更新する | Microsoft Docs"
-description: "Raspberry Pi 3 と Azure IoT Suite に対応した Microsoft Azure IoT スタート キットを使用します。 Node.js を使用して Raspberry Pi をリモート監視ソリューションに接続し、センサーから受信したテレメトリをクラウドに送信して、リモート ファームウェア更新を実行します。"
-services: 
+title: Node.js を使用して Raspberry Pi を Azure IoT Suite に接続しファームウェアを更新する | Microsoft Docs
+description: Raspberry Pi 3 と Azure IoT Suite に対応した Microsoft Azure IoT スタート キットを使用します。 Node.js を使用して Raspberry Pi をリモート監視ソリューションに接続し、センサーから受信したテレメトリをクラウドに送信して、リモート ファームウェア更新を実行します。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: nodejs
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010875"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Node.js を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、リモート ファームウェア更新を有効にする
 

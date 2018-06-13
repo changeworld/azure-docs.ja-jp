@@ -1,12 +1,12 @@
 ---
-title: "Raspberry Pi を Azure IoT Suite に 接続する | Microsoft Docs"
-description: "このチュートリアルでは、Node.js または C を使用して、Raspberry Pi 3 と IoT Suite リモート監視ソリューションに対応した Microsoft Azure IoT スタート キットの使用方法について説明します。 テレメトリをシミュレートするチュートリアル、実際のセンサーを使用するチュートリアル、またはリモート ファームウェア更新を有効にするチュートリアルの中から選択できます。"
-services: 
+title: Raspberry Pi を Azure IoT Suite に 接続する | Microsoft Docs
+description: このチュートリアルでは、Node.js または C を使用して、Raspberry Pi 3 と IoT Suite リモート監視ソリューションに対応した Microsoft Azure IoT スタート キットの使用方法について説明します。 テレメトリをシミュレートするチュートリアル、実際のセンサーを使用するチュートリアル、またはリモート ファームウェア更新を有効にするチュートリアルの中から選択できます。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010425"
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Microsoft Azure IoT Raspberry Pi 3 スタート キットをリモート監視ソリューションに接続する
 

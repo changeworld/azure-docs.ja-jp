@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する"
+title: Azure PowerShell サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する | Microsoft Docs
+description: Azure PowerShell サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23116460"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>PowerShell で管理ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
 

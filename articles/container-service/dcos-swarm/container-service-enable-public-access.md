@@ -1,6 +1,6 @@
 ---
-title: "Azure DC/OS コンテナー アプリへのアクセスの有効化"
-description: "Azure Container Service の DC/OS コンテナーへのパブリック アクセスを有効にする方法。"
+title: Azure DC/OS コンテナー アプリへのアクセスの有効化
+description: Azure Container Service の DC/OS コンテナーへのパブリック アクセスを有効にする方法。
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332281"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Azure Container Service アプリケーションへのパブリック アクセスを有効にする
 
@@ -30,7 +31,7 @@ ACS [パブリック エージェント プール](container-service-mesos-marat
 4. **[プローブ]**、**[追加]** の順にクリックします。
    
     ![Azure container service load balancer probes](./media/container-service-enable-public-access/add-probe.png)
-5. プローブのフォームに入力し、 **[OK]**をクリックします。
+5. プローブのフォームに入力し、 **[OK]** をクリックします。
    
    | フィールド | Description |
    | --- | --- |
@@ -42,7 +43,7 @@ ACS [パブリック エージェント プール](container-service-mesos-marat
 6. エージェント ロード バランサーのプロパティに戻って、**[負荷分散規則]**、**[追加]** の順にクリックします。
    
     ![Azure container service load balancer rules](./media/container-service-enable-public-access/add-balancer-rule.png)
-7. ロード バランサーのフォームに入力し、 **[OK]**をクリックします。
+7. ロード バランサーのフォームに入力し、 **[OK]** をクリックします。
    
    | フィールド | Description |
    | --- | --- |
@@ -65,7 +66,7 @@ ACS [パブリック エージェント プール](container-service-mesos-marat
 4. **[受信セキュリティ規則]**、**[追加]** の順に選択します。
    
     ![Azure container service network security group rules](./media/container-service-enable-public-access/add-firewall-rule.png)
-5. パブリック ポートを許可するようにファイアウォール規則を設定し、 **[OK]**をクリックします。
+5. パブリック ポートを許可するようにファイアウォール規則を設定し、 **[OK]** をクリックします。
    
    | フィールド | Description |
    | --- | --- |

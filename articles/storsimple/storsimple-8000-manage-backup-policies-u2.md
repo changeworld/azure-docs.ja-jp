@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ バックアップ ポリシーの管理 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスを使用して、StorSimple 8000 シリーズ デバイスで手動バックアップ、バックアップのスケジュールを作成して、バックアップのリテンション期間を管理する方法について説明します。"
+title: StorSimple 8000 シリーズ バックアップ ポリシーの管理 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスを使用して、StorSimple 8000 シリーズ デバイスで手動バックアップ、バックアップのスケジュールを作成して、バックアップのリテンション期間を管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108280"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してバックアップ ポリシーを管理する
 

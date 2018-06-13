@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management の認証ポリシー | Microsoft Docs"
-description: "Azure API Management で使用できる認証ポリシーについて説明します。"
+title: Azure API Management の認証ポリシー | Microsoft Docs
+description: Azure API Management で使用できる認証ポリシーについて説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26127761"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array をファイル サーバーとして設定する | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
+title: StorSimple Virtual Array をファイル サーバーとして設定する | Microsoft Docs
+description: StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f609f6ff-0927-48bb-a68a-6d8985d2fe34
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111850"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -45,7 +46,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    `https://<ip-address of network interface>`
    
-   前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]**をクリックして、この Web ページに進みます。
+   前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]** をクリックして、この Web ページに進みます。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
 2. 仮想アレイの Web UI に **StorSimpleAdmin** としてサインインします。 [Hyper-V での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-hyperv.md)に関する記事または[VMware での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-vmware.md)に関する記事の手順 3: 仮想アレイの起動に関するページで変更したデバイス管理者のパスワードを入力します。
@@ -67,12 +68,12 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    1. デバイスに一意の **名前** を割り当てます。 この名前は 1 ～ 15 文字を指定でき、文字、数字、ハイフンを含めることができます。
    2. 作成するデバイスの**種類**として、**[ファイル サーバー]** アイコン ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) をクリックします。 ファイル サーバーにより、共有フォルダーを作成できるようになります。
-   3. デバイスの種類がファイル サーバーなので、そのデバイスをドメインに参加させる必要があります。 **[ドメイン名]**を入力します。
-   4. **[Apply]**をクリックします。
+   3. デバイスの種類がファイル サーバーなので、そのデバイスをドメインに参加させる必要があります。 **[ドメイン名]** を入力します。
+   4. **[Apply]** をクリックします。
 7. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 チェック マーク アイコンをクリックします。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. **[Apply]**をクリックします。 これにより、デバイスの設定が適用、検証されます。
+8. **[Apply]** をクリックします。 これにより、デバイスの設定が適用、検証されます。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -89,7 +90,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    1. *http://&lt;host-IP アドレスまたは FDQN&gt;:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**ユーザー名**と**パスワード**も指定する必要があります。
-   4. **[Apply]**をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
+   4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
 10. (省略可能) デバイスの時刻設定を構成します (タイム ゾーン、プライマリおよびセカンダリ NTP サーバーなど)。 デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -99,14 +100,14 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **タイム ゾーン** を選択します。 デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
     2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
     3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
-    4. **[Apply]**をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
+    4. **[Apply]** をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 11. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。
     
     1. StorSimple Virtual Array の「 **手順 2. サービス登録キーを取得する** 」で取得した [サービス登録キー](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) を入力します。
     2. このサービスに登録する最初のデバイスの場合は、**サービス データ暗号化キー**が提供されます。 このキーをコピーし、安全な場所に保存しておきます。 このキーは、StorSimple デバイス マネージャー サービスに追加のデバイスを登録するときに、サービス登録キーと共に必要になります。 
        
        このサービスに登録する最初のデバイスでない場合は、サービス データ暗号化キーを指定する必要があります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」を参照してください。
-    3. **[登録]**をクリックします。 これにより、デバイスが再起動します。 デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。 デバイスが再起動したら、サインイン ページが表示されます。
+    3. **[登録]** をクリックします。 これにより、デバイスが再起動します。 デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。 デバイスが再起動したら、サインイン ページが表示されます。
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. Azure Portal に戻ります。 **[すべてのリソース]** に移動して、StorSimple デバイス マネージャー サービスを検索します。
@@ -151,7 +152,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
         ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. ストレージ アカウントの資格情報が正常に作成されると、**[構成]** ブレードが更新され、指定したストレージ アカウントの資格情報が表示されます。 **[構成]**をクリックします。
+5. ストレージ アカウントの資格情報が正常に作成されると、**[構成]** ブレードが更新され、指定したストレージ アカウントの資格情報が表示されます。 **[構成]** をクリックします。
    
    ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
@@ -199,7 +200,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
 
 #### <a name="to-connect-to-the-share"></a>共有に接続するには
-1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]**をクリックします。
+1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]** をクリックします。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. これによりファイル エクスプローラーが開きます。 フォルダーとして作成した共有が表示されます。 コンテンツを表示するには、共有 (フォルダー) を選択してダブルクリックします。

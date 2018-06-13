@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ向けのジョブを表示および管理する | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスの [ジョブ] ブレードと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、およびスケジュールされたバックアップ ジョブを追跡する方法について説明します。"
+title: StorSimple 8000 シリーズ向けのジョブを表示および管理する | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスの [ジョブ] ブレードと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、およびスケジュールされたバックアップ ジョブを追跡する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108190"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>StorSimple デバイス マネージャー サービスを使用してジョブを表示および管理する (Update 3 以降)
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 
     ![Job details](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. 確認を求められたら、 **[はい]**をクリックします。 このジョブが取り消されました。
+3. 確認を求められたら、 **[はい]** をクリックします。 このジョブが取り消されました。
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple バックアップ ポリシーの管理方法](storsimple-8000-manage-backup-policies-u2.md)。

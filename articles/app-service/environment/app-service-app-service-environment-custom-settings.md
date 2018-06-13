@@ -1,11 +1,11 @@
 ---
-title: "App Service Environment のカスタム設定"
-description: "App Service Environment のカスタム構成設定"
+title: App Service Environment のカスタム設定
+description: App Service Environment のカスタム構成設定
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129517"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>Overview

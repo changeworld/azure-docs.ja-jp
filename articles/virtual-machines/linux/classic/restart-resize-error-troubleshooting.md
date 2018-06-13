@@ -1,11 +1,11 @@
 ---
-title: "VM の再起動またはサイズ変更に関する問題 | Microsoft Docs"
-description: "Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング"
+title: VM の再起動またはサイズ変更に関する問題 | Microsoft Docs
+description: Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 73f2672c-602e-4766-8948-2b180115d299
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "24051615"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 > [!div class="op_single_selector"]

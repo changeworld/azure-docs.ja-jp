@@ -1,12 +1,12 @@
 ---
-title: "StorSimple に使用できるリージョン | Microsoft Docs"
-description: "多様な StorSimple デバイス モデルを使用できる Azure リージョンについて説明します。"
+title: StorSimple に使用できるリージョン | Microsoft Docs
+description: 多様な StorSimple デバイス モデルを使用できる Azure リージョンについて説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879060"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple に使用できるリージョン
 
@@ -95,7 +96,7 @@ Microsoft は、前述の一覧に記載されている地域に物理ハード�
 
 StorSimple Cloud Appliance 8010 または 8020 を使用している場合、基になる VM がサポートされているすべてのリージョンでデバイスがサポートされ、使用できます。 8010 は、すべての Azure リージョンでサポートされている _Standard_A3_ VM を使用しています。
 
-8020 は、Premium Storage と _Standard_DS3_ VM を使用してクラウド アプライアンスを作成しています。 8020 は、Premium Storage と _Standard_DS3_ Azure VM をサポートする Azure リージョンでサポートされています。 [こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで**「Virtual Machines」の「DS シリーズ」**と**「Storage」の「Disk Storage」**の両方が利用できるかどうかを確認してください。
+8020 は、Premium Storage と _Standard_DS3_ VM を使用してクラウド アプライアンスを作成しています。 8020 は、Premium Storage と _Standard_DS3_ Azure VM をサポートする Azure リージョンでサポートされています。 [こちらの表](https://azure.microsoft.com/regions/services/)を参照し、該当するリージョンで **「Virtual Machines」の「DS シリーズ」** と **「Storage」の「Disk Storage」** の両方が利用できるかどうかを確認してください。
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Virtual Array (モデル 1200)
 

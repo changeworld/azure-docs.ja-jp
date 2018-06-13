@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs のプログラミング ガイド |Microsoft Docs"
-description: "Azure .NET SDK を使用して、Azure Event Hubs 用のコードを記述します。"
+title: Azure Event Hubs のプログラミング ガイド |Microsoft Docs
+description: Azure .NET SDK を使用して、Azure Event Hubs 用のコードを記述します。
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 64cbfd3d-4a0e-4455-a90a-7f3d4f080323
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25986836"
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
 

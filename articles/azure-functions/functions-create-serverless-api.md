@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions を使用してサーバーレス API を作成する | Microsoft Docs"
-description: "Azure Functions を使用してサーバーレス API を作成する方法"
+title: Azure Functions を使用してサーバーレス API を作成する | Microsoft Docs
+description: Azure Functions を使用してサーバーレス API を作成する方法
 services: functions
 author: mattchenderson
 manager: cfowler
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24811602"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 

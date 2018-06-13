@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array サービスの概要ブレード | Microsoft Docs"
-description: "StorSimple デバイス マネージャーのサービスの概要ブレードと、そのブレードを使用して StorSimple Virtual Array の正常性を監視する方法について説明します。"
+title: StorSimple Virtual Array サービスの概要ブレード | Microsoft Docs
+description: StorSimple デバイス マネージャーのサービスの概要ブレードと、そのブレードを使用して StorSimple Virtual Array の正常性を監視する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 8a2b9a84-b0e6-48b9-b366-d16f004241a5
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109740"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array に接続されている StorSimple デバイス マネージャーのサービスの概要ブレードを使用する
 ## <a name="overview"></a>Overview

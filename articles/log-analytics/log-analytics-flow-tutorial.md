@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Flow で Azure Log Analytics のプロセスを自動化する"
-description: "Azure Log Analytics コネクタを使用して、Microsoft Flow で反復可能なプロセスを迅速に自動化する方法について説明します。"
+title: Microsoft Flow で Azure Log Analytics のプロセスを自動化する
+description: Azure Log Analytics コネクタを使用して、Microsoft Flow で反復可能なプロセスを迅速に自動化する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: CFreemanwa
 manager: carmonm
 ms.service: log-analytics
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/16/2017
+ms.locfileid: "23444095"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使用して Log Analytics のプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 対応の Azure Log Analytics コネクタを使用すると、Log Analytics のログ検索機能によって取得されたデータが含まれるワークフローを構築できます。

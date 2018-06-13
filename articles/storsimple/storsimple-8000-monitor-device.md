@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスを監視する | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスを使用して、使用状況、I/O パフォーマンス、および容量使用率を監視する方法について説明します。"
+title: StorSimple 8000 シリーズ デバイスを監視する | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスを使用して、使用状況、I/O パフォーマンス、および容量使用率を監視する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/21/2017
+ms.locfileid: "23479268"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 

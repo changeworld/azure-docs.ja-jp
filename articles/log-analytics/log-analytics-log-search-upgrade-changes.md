@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics の変更点 | Microsoft Docs"
-description: "この記事では、よく寄せられる新しいクエリ言語への Log Analytics のアップグレードに関する質問について説明します。"
+title: Azure Log Analytics の変更点 | Microsoft Docs
+description: この記事では、よく寄せられる新しいクエリ言語への Log Analytics のアップグレードに関する質問について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26039861"
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Azure Log Analytics の変更点
 クエリ言語自体に加えて、Log Analytics ワークスペースが[新しいクエリ言語にアップグレード](log-analytics-log-search-new.md)されるときに認識しておく必要のあるいくつかの改善点と変更点があります。  この記事では、従来のワークスペースとアップグレードされたワークスペース間での変更について簡単に説明し、それぞれの詳しいコンテンツへのリンクを示します。 

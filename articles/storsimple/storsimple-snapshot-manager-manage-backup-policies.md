@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager のバックアップ ポリシー | Microsoft Docs"
-description: "StorSimple Snapshot Manager MMC スナップインを使用して、スケジュールされたバックアップを管理するバックアップ ポリシーを作成し、管理する方法について説明します。"
+title: StorSimple Snapshot Manager のバックアップ ポリシー | Microsoft Docs
+description: StorSimple Snapshot Manager MMC スナップインを使用して、スケジュールされたバックアップを管理するバックアップ ポリシーを作成し、管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109280"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理
 ## <a name="overview"></a>概要
@@ -47,7 +48,7 @@ ms.lasthandoff: 10/11/2017
    1. **[名前]** ボックスに、ポリシーの名前を入力します。
    2. **[ボリューム グループ]** ボックスに、ポリシーに関連付けるボリューム グループの名前を入力します。
    3. **[ローカル スナップショット]** または **[クラウド スナップショット]** を選択します。
-   4. 保持するスナップショットの数を選択します。 **[すべて]**を選択すると、64 個のスナップショットが保持されます (最大)。
+   4. 保持するスナップショットの数を選択します。 **[すべて]** を選択すると、64 個のスナップショットが保持されます (最大)。
 4. **[スケジュール]** タブをクリックします。
 
     ![[ポリシーの作成] - [スケジュール] タブ](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
@@ -56,8 +57,8 @@ ms.lasthandoff: 10/11/2017
    1. **[有効化]** チェック ボックスをオンにし、次回のバックアップをスケジュールします。
    2. **[設定]** で、**[1 回限り]**、**[毎日]**、**[毎週]**、または **[毎月]** を選択します。
    3. **[開始]** ボックスで、カレンダー アイコンをクリックし、開始日を選択します。
-   4. **[詳細設定]**では、必要に応じて、繰り返しスケジュールと終了日を設定できます。
-   5. **[OK]**をクリックします。
+   4. **[詳細設定]** では、必要に応じて、繰り返しスケジュールと終了日を設定できます。
+   5. **[OK]** をクリックします。
 
 バックアップ ポリシーを作成すると、 **結果** ウィンドウに次の情報が表示されます。
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 #### <a name="to-edit-a-backup-policy"></a>バックアップ ポリシーを編集するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **[スコープ]** ウィンドウで **[バックアップ ポリシー]** ノードをクリックします。 **結果** ウィンドウにすべてのバックアップ ポリシーが表示されます。
-3. 編集するポリシーを右クリックし、 **[編集]**をクリックします。
+3. 編集するポリシーを右クリックし、 **[編集]** をクリックします。
 
     ![バックアップ ポリシーの編集](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
 4. **[ポリシーの作成]** ウィンドウが表示されたら、変更内容を入力し、**[OK]** をクリックします。
@@ -85,8 +86,8 @@ ms.lasthandoff: 10/11/2017
 #### <a name="to-delete-a-backup-policy"></a>バックアップ ポリシーを削除するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **[スコープ]** ウィンドウで **[バックアップ ポリシー]** ノードをクリックします。 **結果** ウィンドウにすべてのバックアップ ポリシーが表示されます。
-3. 削除するバックアップ ポリシーを右クリックし、 **[削除]**をクリックします。
-4. 確認メッセージが表示されたら、 **[はい]**をクリックします。
+3. 削除するバックアップ ポリシーを右クリックし、 **[削除]** をクリックします。
+4. 確認メッセージが表示されたら、 **[はい]** をクリックします。
 
     ![バックアップ ポリシーの削除の確認](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 

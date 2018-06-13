@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズのハードウェア コンポーネントの交換 | Microsoft Docs"
-description: "StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
+title: StorSimple 8000 シリーズのハードウェア コンポーネントの交換 | Microsoft Docs
+description: StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: 6de50c5031db59176bdf17ecc69b934559220f6a
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108450"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
 

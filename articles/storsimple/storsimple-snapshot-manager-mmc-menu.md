@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Docs"
-description: "StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。"
+title: StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Docs
+description: StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109970"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager での MMC メニュー操作の使用
 
@@ -48,14 +49,14 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
    * **[表示される列]** の一覧で項目をクリックし、**[削除]** をクリックして一覧から削除します。 
    * **[表示される列]** の一覧で項目を選択し、**[上へ移動]** または **[下へ移動]** をクリックして、一覧内で項目を上下に移動します。 
    * **結果**ウィンドウの既定の構成に戻すには、**[既定値に戻す]** をクリックします。 
-5. 項目の選択が完了したら、 **[OK]**をクリックします。 
+5. 項目の選択が完了したら、 **[OK]** をクリックします。 
 
 #### <a name="to-change-the-console-window-view"></a>コンソール ウィンドウの表示を変更するには
 1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 2. **スコープ** ウィンドウで任意のノードを右クリックし、**[表示]** をクリックして、**[カスタマイズ]** をクリックします。 **[表示のカスタマイズ]** ダイアログ ボックスが表示されます。
    
     ![コンソール ウィンドウのカスタマイズ](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
-3. チェック ボックスをオンまたはオフにして、コンソール ウィンドウの項目の表示/非表示を切り替えます。 項目の選択が完了したら、 **[OK]**をクリックします。
+3. チェック ボックスをオンまたはオフにして、コンソール ウィンドウの項目の表示/非表示を切り替えます。 項目の選択が完了したら、 **[OK]** をクリックします。
 
 ## <a name="new-window-from-here"></a>ここから新しいウィンドウ
 **[ここから新しいウィンドウ]** オプションを使用すると、新しいコンソール ウィンドウを開くことができます。
@@ -86,7 +87,7 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
    1. **[ファイル名]** ボックスで、CSV ファイルの名前を入力するか、矢印をクリックしてドロップダウン リストから選択します。
    2. **[保存の種類]** ボックスで、矢印をクリックし、ドロップダウン リストからファイルの種類を選択します。
    3. 選択した項目だけを保存するには、行を選択し、 **[選択した行のみ保存]** チェック ボックスをオンにします。 エクスポートされたすべてのリストを保存するには、 **[選択した行のみ保存]** チェック ボックスをオフにします。
-   4. **[保存]**をクリックします。
+   4. **[保存]** をクリックします。
       
       ![リストをコンマ区切り値ファイルとしてエクスポート](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 

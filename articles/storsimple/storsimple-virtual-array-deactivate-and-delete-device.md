@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array を非アクティブ化および削除する | Microsoft Docs"
-description: "StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
+title: Microsoft Azure StorSimple Virtual Array を非アクティブ化および削除する | Microsoft Docs
+description: StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109880"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure のアーキテクチャ設計へのセキュリティの統合 | Microsoft Docs"
+title: Azure のアーキテクチャ設計へのセキュリティの統合 | Microsoft Docs
 description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。 "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25549434"
 ---
 # <a name="application-architecture-on-azure"></a>Azure のアプリケーション アーキテクチャ
 Microsoft Azure 上のクラウド ベースのソリューションをセキュリティ保護するには、アーキテクチャの強力な基盤が不可欠です。 アーキテクト、デザイナー、および実装者は、アプリケーションとサービスのアーキテクチャに関する強力な知識を利用します。 この基礎知識は、クラウド ベースのソリューションのすべてのコンポーネントを理解するのに役立ち、設計および実装のすべての側面にセキュリティを統合しやすくします。

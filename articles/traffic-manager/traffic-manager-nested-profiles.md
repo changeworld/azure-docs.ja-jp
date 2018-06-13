@@ -1,11 +1,11 @@
 ---
-title: "入れ子になった Traffic Manager プロファイル | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager の \"入れ子になったプロファイル\" 機能について説明します。"
+title: 入れ子になった Traffic Manager プロファイル | Microsoft Docs
+description: この記事では、Azure Traffic Manager の "入れ子になったプロファイル" 機能について説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111700"
 ---
 # <a name="nested-traffic-manager-profiles"></a>入れ子になった Traffic Manager プロファイル
 

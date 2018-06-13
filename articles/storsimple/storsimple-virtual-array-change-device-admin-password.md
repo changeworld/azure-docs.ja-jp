@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array デバイス管理者のパスワードを変更する |Microsoft Docs"
-description: "Azure Portal または StorSimple Virtual Array の Web UI を使用して、デバイス管理者のパスワードを変更する方法について説明します。"
+title: StorSimple Virtual Array デバイス管理者のパスワードを変更する |Microsoft Docs
+description: Azure Portal または StorSimple Virtual Array の Web UI を使用して、デバイス管理者のパスワードを変更する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109430"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple デバイス マネージャー を介して StorSimple Virtual Array デバイス管理者のパスワードを変更する
 
@@ -69,7 +70,7 @@ Azure Portal を使用してデバイス管理者のパスワードを変更す�
 4. 確認のためにパスワードを再入力します。
    
     ![password2 の変更](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. ページの下部にある **[適用]**をクリックします。 これで、新しいパスワードが適用されました。 パスワードの変更が失敗した場合は、次のエラーが表示されます。
+5. ページの下部にある **[適用]** をクリックします。 これで、新しいパスワードが適用されました。 パスワードの変更が失敗した場合は、次のエラーが表示されます。
    
     ![パスワード エラー](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    

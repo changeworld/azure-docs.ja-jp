@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array のシステム要件 | Microsoft Docs"
-description: "StorSimple Virtual Array のソフトウェア要件とネットワーク要件について説明します。"
+title: Microsoft Azure StorSimple Virtual Array のシステム要件 | Microsoft Docs
+description: StorSimple Virtual Array のソフトウェア要件とネットワーク要件について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24815230"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要

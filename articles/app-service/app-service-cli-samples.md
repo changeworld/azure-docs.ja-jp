@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI のサンプル - App Service | Microsoft Docs"
-description: "Azure CLI のサンプル - App Service"
+title: Azure CLI のサンプル - App Service | Microsoft Docs
+description: Azure CLI のサンプル - App Service
 services: app-service
 documentationcenter: app-service
 author: syntaxc4
@@ -21,6 +21,7 @@ ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26658365"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager のデプロイ | Microsoft Docs"
-description: "StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。"
+title: StorSimple Snapshot Manager のデプロイ | Microsoft Docs
+description: StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110670"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC スナップインのデプロイ
 
@@ -86,7 +87,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 #### <a name="to-install-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager をインストールするには
 1. StorSimple Snapshot Manager ソフトウェアをダウンロードして (Microsoft ダウンロード センターの [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) にアクセス)、それをホストのローカルに保存します。
-2. エクスプローラーで、圧縮ファイルを右クリックし、 **[すべて展開する]**をクリックします。
+2. エクスプローラーで、圧縮ファイルを右クリックし、 **[すべて展開する]** をクリックします。
 3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
    
     > [!IMPORTANT]
@@ -116,7 +117,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 2. **[スコープ]** ウィンドウで **[デバイス]** ノードを右クリックし、**[デバイスの構成]** をクリックします。 **[デバイスの構成]** ダイアログ ボックスが表示されます。
    
     ![[デバイスの構成]](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。 **[パスワード]** テキスト ボックスに、Azure ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 **[OK]**をクリックします。
+3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。 **[パスワード]** テキスト ボックスに、Azure ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。 **[OK]** をクリックします。
 4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。 デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。 [デバイスへの接続を検証](#to-verify-the-connection) して、接続が正常に追加されたことを確認できます。
    
     何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。 **[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
@@ -151,7 +152,7 @@ StorSimple Snapshot Manager をアンインストールするには、以下の�
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager をアンインストールするには
 1. ホスト コンピューターで、**[コントロール パネル]** を開き、**[プログラム]** をクリックしてから、**[プログラムと機能]** をクリックします。
-2. 左側のウィンドウで、 **[プログラムのアンインストールまたは変更]**をクリックします。
+2. 左側のウィンドウで、 **[プログラムのアンインストールまたは変更]** をクリックします。
 3. **[StorSimple Snapshot Manager]** を右クリックし、**[アンインストール]** をクリックします。
 4. これにより、StorSimple Snapshot Manager のセットアップ プログラムが開始します。 **[セットアップの変更]** をクリックし、**[アンインストール]** をクリックします。
    
@@ -159,7 +160,7 @@ StorSimple Snapshot Manager をアンインストールするには、以下の�
    > StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に、MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。 **[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
    > 
    > 
-5. アンインストール プロセスが完了したら、 **[セットアップ完了]** メッセージが表示されます。 **[閉じる]**をクリックします。
+5. アンインストール プロセスが完了したら、 **[セットアップ完了]** メッセージが表示されます。 **[閉じる]** をクリックします。
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>手順 2: StorSimple Snapshot Manager データベースをバックアップします
 StorSimple Snapshot Manager データベースのコピーを作成して保存するには、以下の手順を実行します。

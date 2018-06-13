@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services ロール構成の XPath チート シート |Microsoft Docs"
-description: "クラウド サービス ロール構成で設定を環境変数として公開するために使用できるさまざまな XPath 設定。"
+title: Cloud Services ロール構成の XPath チート シート |Microsoft Docs
+description: クラウド サービス ロール構成で設定を環境変数として公開するために使用できるさまざまな XPath 設定。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860373"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
 クラウド サービス worker ロールまたは Web ロールのサービス定義ファイルで、ランタイム構成値を環境変数として公開できます。 次の XPath 値がサポートされています (これは API 値に対応します)。

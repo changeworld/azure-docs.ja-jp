@@ -1,11 +1,11 @@
 ---
-title: "Azure Marketplace イメージのセキュリティに関する推奨事項 | Microsoft Docs"
-description: "この記事では、Marketplace に含まれるイメージについての推奨事項を示します"
+title: Azure Marketplace イメージのセキュリティに関する推奨事項 | Microsoft Docs
+description: この記事では、Marketplace に含まれるイメージについての推奨事項を示します
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23465407"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 

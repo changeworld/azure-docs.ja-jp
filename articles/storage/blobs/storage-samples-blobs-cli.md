@@ -1,12 +1,12 @@
 ---
-title: "BLOB Storage の Azure CLI サンプル | Microsoft Docs"
-description: "Azure Blob Storage を使用する場合の Azure CLI サンプル"
+title: BLOB Storage の Azure CLI サンプル | Microsoft Docs
+description: Azure Blob Storage を使用する場合の Azure CLI サンプル
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26040177"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure CLI サンプル
 

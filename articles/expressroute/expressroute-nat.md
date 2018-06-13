@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 回線の NAT 要件 | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。"
+title: ExpressRoute 回線の NAT 要件 | Microsoft Docs
+description: このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 867bf936-c851-485f-84c8-d8d6e33fee9f
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/13/2017
+ms.locfileid: "23409267"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、NAT をセットアップして管理する必要があります。 一部の接続プロバイダーでは、NAT のセットアップと管理が管理されたサービスとして提供されています。 このようなサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 このようなサービスが提供されていない場合は、次に示す要件に従う必要があります。 

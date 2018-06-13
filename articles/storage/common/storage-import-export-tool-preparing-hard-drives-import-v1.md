@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備する - v1 | Microsoft Docs"
-description: "WAImportExport v1 ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。"
+title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備する - v1 | Microsoft Docs
+description: WAImportExport v1 ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23107850"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。

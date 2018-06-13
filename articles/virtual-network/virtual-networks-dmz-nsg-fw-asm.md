@@ -1,11 +1,11 @@
 ---
-title: "DMZ の例 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する | Microsoft Docs"
-description: "ファイアウォールとネットワーク セキュリティ グループ (NSG) から成る DMZ を構築する"
+title: DMZ の例 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する | Microsoft Docs
+description: ファイアウォールとネットワーク セキュリティ グループ (NSG) から成る DMZ を構築する
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: c78491c7-54ac-4469-851c-b35bfed0f528
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23126930"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]

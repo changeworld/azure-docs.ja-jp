@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Manager Virtual Array の管理 | Microsoft Docs"
-description: "Azure Portal で StorSimple デバイス マネージャー サービスを使用して、オンプレミスの StorSimple Virtual Array を管理する方法について説明します。"
+title: Microsoft Azure StorSimple Manager Virtual Array の管理 | Microsoft Docs
+description: Azure Portal で StorSimple デバイス マネージャー サービスを使用して、オンプレミスの StorSimple Virtual Array を管理する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109900"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
 ![セットアップ プロセス フロー](./media/storsimple-virtual-array-manager-service-administration/manage4.png)

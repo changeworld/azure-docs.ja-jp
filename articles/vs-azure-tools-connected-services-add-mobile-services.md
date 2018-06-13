@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio の接続済みサービスを使用した Mobile Services の追加 | Microsoft Docs"
-description: "Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して Mobile Services を追加する"
+title: Visual Studio の接続済みサービスを使用した Mobile Services の追加 | Microsoft Docs
+description: Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して Mobile Services を追加する
 services: visual-studio-online
 documentationcenter: na
 author: mlhoop
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 75c3cb93-88e1-476d-a416-f34caa3608e3
 ms.service: visual-studio-online
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23125110"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用した Mobile Services の追加
 Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイアログを利用して Azure Mobile Services に接続できます。 あらゆる C# クライアント アプリ、JavaScript アプリ、プラットフォーム非依存 Cordova アプリから接続できます。 接続すると、データを作成してアクセスしたり、カスタム API や定期ジョブを作成したり、プッシュ通信のサポートを追加したりできます。  接続済みサービスの操作は適切なあらゆる参照と接続コードを追加します。 また、Azure AD、Facebook、Twitter、Microsoft アカウントなど、さまざまな人気 ID スキームによる認証に対応しており、それを最大限に活用できます。
@@ -42,7 +43,7 @@ Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイア�
    * .NET アプリの場合、Visual Studio でプロジェクトを開き、ソリューション エクスプローラーで **[参照]** ノードのコンテキスト メニューを開いて **[接続済みサービスの追加]** を選択します。
      
         ![Azure Mobile Services への接続](./media/vs-azure-tools-connected-services-add-mobile-services/IC797635.png)
-   * Apache Cordova アプリ プロジェクトの場合、Visual Studio でプロジェクトを開き、ソリューション エクスプローラーでプロジェクト ノードのコンテキスト メニューを開いて **[接続済みサービスの追加]**を選択します。
+   * Apache Cordova アプリ プロジェクトの場合、Visual Studio でプロジェクトを開き、ソリューション エクスプローラーでプロジェクト ノードのコンテキスト メニューを開いて **[接続済みサービスの追加]** を選択します。
 3. **[接続済みサービスの追加]** ダイアログ ボックスで、**[Azure Mobile Services]** を選択し、**[構成]** ボタンをクリックします。 Azure にまだログインしていない場合は、ログインを促すメッセージが表示される場合があります。
    
     ![Azure Mobile Service の追加](./media/vs-azure-tools-connected-services-add-mobile-services/IC797636.png)

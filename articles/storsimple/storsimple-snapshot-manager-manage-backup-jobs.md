@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager のバックアップ ジョブ | Microsoft Docs"
-description: "スケジュールされたバックアップ ジョブ、現在実行中のバックアップ ジョブ、および完了したバックアップ ジョブの表示し、管理するためのStorSimple Snapshot Manager MMC スナップインの使用方法について説明します。"
+title: StorSimple Snapshot Manager のバックアップ ジョブ | Microsoft Docs
+description: スケジュールされたバックアップ ジョブ、現在実行中のバックアップ ジョブ、および完了したバックアップ ジョブの表示し、管理するためのStorSimple Snapshot Manager MMC スナップインの使用方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109860"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理
 

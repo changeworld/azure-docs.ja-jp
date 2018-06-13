@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズの帯域幅テンプレートを管理する | Microsoft Docs"
-description: "帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
+title: StorSimple 8000 シリーズの帯域幅テンプレートを管理する | Microsoft Docs
+description: 帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108620"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple 帯域幅テンプレートを管理する
 
@@ -72,7 +73,7 @@ ms.lasthandoff: 10/11/2017
            > [!NOTE]
            > スケジュールの重複は許可されません。 開始時刻と終了時刻によってスケジュールの重複が発生すると、そのことを示すエラー メッセージが表示されます。
 
-        4. **[帯域幅レート]**を指定します。 これは、クラウドに関連する操作 (アップロードとダウンロード) で StorSimple デバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。 1 ～ 1,000 の値をこのフィールドで指定します。
+        4. **[帯域幅レート]** を指定します。 これは、クラウドに関連する操作 (アップロードとダウンロード) で StorSimple デバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。 1 ～ 1,000 の値をこのフィールドで指定します。
 
             ![帯域幅のスケジュールを定義](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          

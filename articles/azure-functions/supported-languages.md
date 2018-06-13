@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions でサポートされている言語"
-description: "どの言語がサポートされているか (GA) と、どの言語が試験段階またはプレビューの段階であるかを説明します。"
+title: Azure Functions でサポートされている言語
+description: どの言語がサポートされているか (GA) と、どの言語が試験段階またはプレビューの段階であるかを説明します。
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879406"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 

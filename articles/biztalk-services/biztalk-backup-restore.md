@@ -1,11 +1,11 @@
 ---
-title: "BizTalk Services でのバックアップの作成と復元 | Microsoft Docs"
-description: "BizTalk Services には、バックアップと復元の機能が備わっています。 バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。 MABS、WABS"
+title: BizTalk Services でのバックアップの作成と復元 | Microsoft Docs
+description: BizTalk Services には、バックアップと復元の機能が備わっています。 バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。 MABS、WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102343"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
 
