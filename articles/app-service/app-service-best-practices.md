@@ -1,8 +1,8 @@
 ---
-title: "Azure App Service のベスト プラクティス"
-description: "Azure App Service のベスト プラクティスとトラブルシューティングについて説明します。"
+title: Azure App Service のベスト プラクティス
+description: Azure App Service のベスト プラクティスとトラブルシューティングについて説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27868320"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
