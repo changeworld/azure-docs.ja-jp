@@ -82,7 +82,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 2 TB | 5 GB ～ 2 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS | 3 IOPS/GB<br/>最小 100 IOPS |
+| IOPS | 可変 |3 IOPS/GB<br/>最小 100 IOPS | 3 IOPS/GB<br/>最小 100 IOPS |
 
 サーバーの作成中および作成後に、ストレージ容量を追加できます。 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
