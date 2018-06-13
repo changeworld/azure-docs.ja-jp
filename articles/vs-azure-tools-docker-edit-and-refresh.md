@@ -1,11 +1,11 @@
 ---
-title: "ローカルの Docker コンテナーでアプリをデバッグする | Microsoft Docs"
-description: "編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。"
+title: ローカルの Docker コンテナーでアプリをデバッグする | Microsoft Docs
+description: 編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781396"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>ローカルの Docker コンテナーでアプリをデバッグする
 ## <a name="overview"></a>概要

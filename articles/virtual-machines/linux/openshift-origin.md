@@ -1,25 +1,26 @@
 ---
-title: "Azure に OpenShift Origin をデプロイする| Microsoft Docs"
-description: "Azure に OpenShift Origin をデプロイします。"
+title: Azure に OpenShift Origin をデプロイする| Microsoft Docs
+description: Azure に OpenShift Origin をデプロイします。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
 ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
 ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123121"
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Azure に OpenShift Origin をデプロイする
 

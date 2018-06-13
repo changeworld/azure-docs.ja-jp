@@ -1,11 +1,11 @@
 ---
-title: "Azure BizTalk Services のリリース ノート | Microsoft Docs"
-description: "Azure BizTalk Services の既知の問題を一覧にまとめています"
+title: Azure BizTalk Services のリリース ノート | Microsoft Docs
+description: Azure BizTalk Services の既知の問題を一覧にまとめています
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f4906fdc-4cd9-4a57-a007-a88c2e51a18f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26633818"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -156,7 +157,7 @@ LOB コンポーネントのアドレスとエンティティ名には特殊文�
 "DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。 この問題を解決するには、次の手順に従って、ディスプレイを **[小 - 100% (既定)]** に設定します。  
 
 1. **コントロール パネル**を開き、**[デスクトップのカスタマイズ]** をクリックします。
-2. **[ディスプレイ]**をクリックします。
+2. **[ディスプレイ]** をクリックします。
 3. **[小 - 100% (既定)]** をクリックし、**[適用]** をクリックします。
 
 これで、 **[フォーマット]** ボックスの一覧は正常に動作するようになります。

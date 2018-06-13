@@ -1,8 +1,8 @@
 ---
-title: "Azure のコンピューティング オプション - Azure Cloud Services | Microsoft Docs"
-description: "Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Azure Cloud Services、Virtual Machines"
+title: Azure のコンピューティング オプション - Azure Cloud Services | Microsoft Docs
+description: 'Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Azure Cloud Services、Virtual Machines'
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120286"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Azure Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルで異なるサービスのセットが提供されます。 実行する内容に正確に基づいて実行モデルを選択してください。

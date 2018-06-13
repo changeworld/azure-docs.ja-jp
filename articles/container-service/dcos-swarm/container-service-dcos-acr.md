@@ -1,6 +1,6 @@
 ---
-title: "Azure DC/OS クラスターでの ACR の使用"
-description: "Azure Container Service の DC/OS クラスターで Azure Container Registry を使用する"
+title: Azure DC/OS クラスターでの ACR の使用
+description: Azure Container Service の DC/OS クラスターで Azure Container Registry を使用する
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28922894"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
 

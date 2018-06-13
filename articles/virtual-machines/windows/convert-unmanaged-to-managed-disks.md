@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29804217"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換します
 

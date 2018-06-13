@@ -1,11 +1,11 @@
 ---
-title: "Azure AD とアプリケーション: アプリケーションへのユーザーの割り当て | Microsoft Docs"
-description: "Azure アプリケーションへのユーザーの割り当てを実装する方法です。"
+title: 'Azure AD とアプリケーション: アプリケーションへのユーザーの割り当て | Microsoft Docs'
+description: Azure アプリケーションへのユーザーの割り当てを実装する方法です。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 97ce69c1-4034-4e38-bd82-8caf984f6b98
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598625"
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD とアプリケーション: アプリケーションへのユーザーの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。  ユーザー割り当てを要求する方法については、「 [ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md) 」を参照してください。
@@ -32,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 5. このディレクトリに関連付けられているアプリケーションの一覧から、アプリケーションを選択します。
 6. **[ユーザーとグループ]** タブをクリックします。
 7. アプリケーションに割り当てるユーザーを選択します。
-8. **[割り当て]**をクリックします。
+8. **[割り当て]** をクリックします。
 9. 確認を求めるメッセージが表示されたら、 **[はい]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ

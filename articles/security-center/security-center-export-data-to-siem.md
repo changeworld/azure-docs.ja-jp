@@ -1,12 +1,12 @@
 ---
-title: "Azure Security のデータを SIEM にエクスポートする - パイプラインの構成 (プレビュー) | Microsoft Docs"
-description: "この記事では、Azure Security Center のログを SIEM に取得する手順について説明します"
+title: Azure Security のデータを SIEM にエクスポートする - パイプラインの構成 (プレビュー) | Microsoft Docs
+description: この記事では、Azure Security Center のログを SIEM に取得する手順について説明します
 services: security-center
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124835"
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Azure Security のデータを SIEM にエクスポートする - パイプラインの構成 (プレビュー)
 

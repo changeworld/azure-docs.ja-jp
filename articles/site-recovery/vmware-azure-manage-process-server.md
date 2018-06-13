@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811199"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs"
-description: "SQLFilter の文法について詳しく説明します。"
+title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
+description: SQLFilter の文法について詳しく説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29132169"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 

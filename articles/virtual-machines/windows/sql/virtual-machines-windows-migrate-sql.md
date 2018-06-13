@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809439"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Azure VM の SQL Server への SQL Server データベースの移行
 

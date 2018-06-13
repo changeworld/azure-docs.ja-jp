@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のメッセージ遅延 | Microsoft Docs"
-description: "Service Bus メッセージの配信を遅延させます"
+title: Azure Service Bus のメッセージ遅延 | Microsoft Docs
+description: Service Bus メッセージの配信を遅延させます
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196977"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 

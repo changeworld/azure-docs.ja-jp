@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー - v1 | Microsoft Docs"
-description: "Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。"
+title: Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー - v1 | Microsoft Docs
+description: Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26692025"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  

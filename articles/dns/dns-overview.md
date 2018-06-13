@@ -1,11 +1,11 @@
 ---
-title: "Azure DNS の概要 | Microsoft Docs"
-description: "Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。"
+title: Azure DNS の概要 | Microsoft Docs
+description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
 ms.service: dns
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/19/2017
+ms.locfileid: "26761632"
 ---
 # <a name="azure-dns-overview"></a>Azure DNS の概要
 

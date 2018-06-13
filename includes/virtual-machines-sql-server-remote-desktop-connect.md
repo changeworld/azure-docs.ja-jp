@@ -3,7 +3,7 @@
 
 1. 新しい VM の省略記号 **[...]** をクリックします。
 
-1. **[接続]**をクリックします。
+1. **[接続]** をクリックします。
 
    ![ポータルで VM に接続する](./media/virtual-machines-sql-server-remote-desktop-connect/azure-virtual-machine-connect.png)
 

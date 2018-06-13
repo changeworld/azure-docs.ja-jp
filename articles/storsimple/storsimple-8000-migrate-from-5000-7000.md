@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する | Microsoft Docs"
-description: "移行機能の概要と前提条件について説明します。"
+title: StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する | Microsoft Docs
+description: 移行機能の概要と前提条件について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639870"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する
 
