@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs"
-description: "Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
+title: StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs
+description: Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010865"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 のリリース ノート
 

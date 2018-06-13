@@ -1,11 +1,11 @@
 ---
-title: "Azure VM の テンプレートのダウンロード | Microsoft Docs"
-description: "Resource Manager デプロイ モデルでのデプロイの自動化に役立つ、VM のテンプレートをダウンロードします。"
+title: Azure VM の テンプレートのダウンロード | Microsoft Docs
+description: Resource Manager デプロイ モデルでのデプロイの自動化に役立つ、VM のテンプレートをダウンロードします。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2017
+ms.locfileid: "26055791"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM のテンプレートをダウンロードする
 Azure でポータルまたは PowerShell を使用して VM を作成する際に、Resource Manager テンプレートが自動的に作成されます。 このテンプレートを使用すると、デプロイを簡単に複製できます。 テンプレートには、リソース グループ内のすべてのリソースに関する情報が含まれています。 仮想マシンの場合、これはそのリソース グループ内の VM をサポートするために作成されたすべてのもの (ネットワーク リソースなど) がテンプレートに含まれていることを意味します。
@@ -28,7 +29,7 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューで **[Virtual Machines]** を選択します。
 3. 一覧から仮想マシンを選択します。
-4. **[Automation スクリプト]**を選択します。
+4. **[Automation スクリプト]** を選択します。
 5. 上部のメニューから **[ダウンロード]** を選択して .zip ファイルをローカル コンピューターに保存します。
 6. .zip ファイルを開き、ファイルをフォルダーに展開します。 .zip ファイルには以下が含まれています。
    
