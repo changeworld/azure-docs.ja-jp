@@ -1,11 +1,11 @@
 ---
-title: "Xamarin.iOS アプリに Azure App Service Mobile Apps を使用する | Microsoft Doc"
-description: "このチュートリアルに従って、Xamarin.iOS 開発用の Azure Mobile Apps を使用します。"
+title: Xamarin.iOS アプリに Azure App Service Mobile Apps を使用する | Microsoft Doc
+description: このチュートリアルに従って、Xamarin.iOS 開発用の Azure Mobile Apps を使用します。
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
 ms.service: app-service-mobile
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592713"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

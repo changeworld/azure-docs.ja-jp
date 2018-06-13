@@ -31,7 +31,7 @@ Azure ポータルを使用するには。
 7. **[オプションの構成]、[可用性セット]** の順に選択し、仮想マシンを追加する可用性セットを選択します。
    
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
-8. 構成設定を確認します。 完了したら、 **[作成]**をクリックします。
+8. 構成設定を確認します。 完了したら、 **[作成]** をクリックします。
 9. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[仮想マシン]** で追跡できます。
 
 Azure PowerShell コマンドを使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、[Azure PowerShell を使用した Windows ベースの仮想マシンの作成および事前構成](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。

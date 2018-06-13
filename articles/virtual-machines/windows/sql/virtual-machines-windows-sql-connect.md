@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Docs"
-description: "Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイメント モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
+title: SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Docs
+description: Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイメント モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400241"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 

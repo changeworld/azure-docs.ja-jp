@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181016"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>多要素認証 (MFA) をサブスクリプション管理者に適用する
 

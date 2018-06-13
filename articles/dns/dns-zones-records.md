@@ -1,11 +1,11 @@
 ---
-title: "DNS ゾーンとレコードの概要 - Azure DNS | Microsoft Docs"
-description: "Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要"
+title: DNS ゾーンとレコードの概要 - Azure DNS | Microsoft Docs
+description: Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/19/2017
+ms.locfileid: "26761915"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 

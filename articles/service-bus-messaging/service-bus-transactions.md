@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus で処理されるトランザクションの概要 | Microsoft Docs"
-description: "Azure Service Bus のアトミック トランザクションと経由送信の概要"
+title: Azure Service Bus で処理されるトランザクションの概要 | Microsoft Docs
+description: Azure Service Bus のアトミック トランザクションと経由送信の概要
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29558943"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 

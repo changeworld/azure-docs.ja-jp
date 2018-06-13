@@ -1,11 +1,11 @@
 ---
-title: "Azure スケール セット テンプレートでの既存の仮想ネットワークの参照 | Microsoft Docs"
-description: "仮想ネットワークを既存の Azure 仮想マシン スケール セット テンプレートに追加する方法について説明します。"
+title: Azure スケール セット テンプレートでの既存の仮想ネットワークの参照 | Microsoft Docs
+description: 仮想ネットワークを既存の Azure 仮想マシン スケール セット テンプレートに追加する方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782373"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>既成の仮想ネットワークへの参照を Azure スケール セット テンプレートに追加する
 

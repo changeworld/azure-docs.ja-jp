@@ -1,8 +1,8 @@
 ---
-title: "Azure App Service へのアクティブな DNS 名の移行 | Microsoft Docs"
-description: "既にライブ サイトに割り当てられているカスタム DNS ドメイン名を、ダウンタイムを発生させずに Azure App Service に移行する方法について説明します。"
+title: Azure App Service へのアクティブな DNS 名の移行 | Microsoft Docs
+description: 既にライブ サイトに割り当てられているカスタム DNS ドメイン名を、ダウンタイムを発生させずに Azure App Service に移行する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27566493"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 

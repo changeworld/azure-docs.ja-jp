@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Bus のロールベースのアクセス制御 (RBAC) (プレビュー) | Microsoft Docs"
-description: "Azure Service Bus のロールベースのアクセス制御"
+title: Azure Service Bus のロールベースのアクセス制御 (RBAC) (プレビュー) | Microsoft Docs
+description: Azure Service Bus のロールベースのアクセス制御
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783383"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -48,7 +49,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 次に、RBAC のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します。 
 
-名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]**をクリックします。
+名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 ![](./media/service-bus-role-based-access-control/rbac1.PNG)
 
