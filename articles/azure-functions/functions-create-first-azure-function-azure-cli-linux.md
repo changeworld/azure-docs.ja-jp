@@ -1,8 +1,8 @@
 ---
-title: "Azure CLI を使用して Linux で初めての関数を作成する (プレビュー) | Microsoft Docs"
-description: "Azure CLI を使って既定の Linux イメージで実行する Azure 関数を初めて作成する方法について説明します。"
+title: Azure CLI を使用して Linux で初めての関数を作成する (プレビュー) | Microsoft Docs
+description: Azure CLI を使って既定の Linux イメージで実行する Azure 関数を初めて作成する方法について説明します。
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919391"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Azure CLI を使用して Linux で実行する関数を初めて作成する (プレビュー)
 

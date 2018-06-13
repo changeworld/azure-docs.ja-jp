@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights を使用して ASP.NET Web アプリを監視する | Microsoft Docs"
-description: "Application Insights で監視するために ASP.NET Web アプリを迅速に設定する手順を説明します"
+title: Azure Application Insights を使用して ASP.NET Web アプリを監視する | Microsoft Docs
+description: Application Insights で監視するために ASP.NET Web アプリを迅速に設定する手順を説明します
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/14/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23660550"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 

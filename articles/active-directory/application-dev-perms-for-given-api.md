@@ -1,11 +1,11 @@
 ---
-title: "指定の API のアクセス許可を選択する方法 | Microsoft Docs"
-description: "開発中のアプリケーションに関するクライアント アプリケーションとリソース アプリケーションでアクセス許可要求を使用する方法について説明します"
+title: 指定の API のアクセス許可を選択する方法 | Microsoft Docs
+description: 開発中のアプリケーションに関するクライアント アプリケーションとリソース アプリケーションでアクセス許可要求を使用する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614168"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法 
 

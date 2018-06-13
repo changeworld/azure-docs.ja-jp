@@ -1,12 +1,12 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Blob コンテナーの合計課金サイズを計算する | Microsoft Docs"
-description: "課金の目的で Azure Blob ストレージ内のコンテナーの合計サイズを計算します。"
+title: Azure PowerShell のサンプル スクリプト - Blob コンテナーの合計課金サイズを計算する | Microsoft Docs
+description: 課金の目的で Azure Blob ストレージ内のコンテナーの合計サイズを計算します。
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26368546"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 

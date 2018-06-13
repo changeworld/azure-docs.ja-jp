@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell の価格 | Microsoft Docs"
-description: "Azure Cloud Shell の価格の概要"
-services: 
-documentationcenter: 
+title: Azure Cloud Shell の価格 | Microsoft Docs
+description: Azure Cloud Shell の価格の概要
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24809868"
 ---
 # <a name="pricing"></a>価格
 Cloud Shell の Bash および Cloud Shell の PowerShell(プレビュー) には、以下の情報が適用されます。

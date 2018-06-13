@@ -1,7 +1,7 @@
 ---
-title: "Terraform と HCL を使用して VM クラスターを作成する"
-description: "Azure で Terraform と HashiCorp Configuration Language (HCL) を使ってロード バランサーを備えた Linux 仮想マシン クラスターを作成する方法について説明します"
-keywords: "Terraform、DevOps、仮想マシン、ネットワーク、モジュール"
+title: Terraform と HCL を使用して VM クラスターを作成する
+description: Azure で Terraform と HashiCorp Configuration Language (HCL) を使ってロード バランサーを備えた Linux 仮想マシン クラスターを作成する方法について説明します
+keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
 author: tomarcher
 manager: routlaw
 ms.service: virtual-machines-linux
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518802"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
 

@@ -1,11 +1,11 @@
 ---
-title: "BizTalk Services でのスロットルについて | Microsoft Docs"
-description: "調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。 調整は、メモリ使用率とメッセージの数に基づいて行われます。 MABS、WABS"
+title: BizTalk Services でのスロットルについて | Microsoft Docs
+description: 調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。 調整は、メモリ使用率とメッセージの数に基づいて行われます。 MABS、WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: f6663cf2-cda4-4bac-855e-27d2ad5c4fa4
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102088"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: 調整
 

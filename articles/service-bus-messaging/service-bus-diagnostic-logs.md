@@ -1,13 +1,13 @@
 ---
-title: "Azure Service Bus 診断ログ | Microsoft Docs"
-description: "Service Bus の診断ログを設定する方法について説明します。"
-keywords: 
+title: Azure Service Bus 診断ログ | Microsoft Docs
+description: Service Bus の診断ログを設定する方法について説明します。
+keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
 author: banisadr
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29122181"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 

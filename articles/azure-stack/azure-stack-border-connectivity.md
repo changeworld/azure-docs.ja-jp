@@ -1,12 +1,12 @@
 ---
-title: "Azure Stack 統合システムの境界接続のネットワーク統合に関する考慮事項 | Microsoft Docs"
-description: "マルチノードの Azure Stack とデータセンターの境界ネットワーク接続を計画するためにできることを説明します。"
+title: Azure Stack 統合システムの境界接続のネットワーク統合に関する考慮事項 | Microsoft Docs
+description: マルチノードの Azure Stack とデータセンターの境界ネットワーク接続を計画するためにできることを説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919436"
 ---
 # <a name="border-connectivity"></a>境界接続 
 ネットワーク統合の計画は、Azure Stack 統合システムの展開、操作、および管理を正常に行うための重要な前提条件です。 境界接続の計画は、境界ゲートウェイ プロトコル (BGP) による動的ルーティングを使用するかどうかを選択することから始まります。 これを行うには、16 ビットの BGP 自律システム番号 (パブリックまたはプライベート) を割り当てるか、または既定の静的ルートが境界デバイスに割り当てられる静的ルーティングを使用する必要があります。

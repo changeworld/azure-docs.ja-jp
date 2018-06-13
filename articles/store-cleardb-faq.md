@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問に答えます。"
+title: Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ) | Microsoft Docs
+description: Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問に答えます。
 documentationcenter: php
-services: 
+services: ''
 author: sunbuild
 manager: yochayk
-editor: 
+editor: ''
 tags: mysql
 ms.assetid: c2ed5e78-6d7d-4d0c-b7ee-a52ae41ceab8
 ms.service: multiple
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28948038"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。

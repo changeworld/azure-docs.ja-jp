@@ -1,7 +1,7 @@
 ---
-title: "Azure Application Insights でカスタム ダッシュボードを作成する | Microsoft Docs"
-description: "Azure Application Insights を使ってカスタム KPI ダッシュボードを作成するチュートリアルです。"
-keywords: 
+title: Azure Application Insights でカスタム ダッシュボードを作成する | Microsoft Docs
+description: Azure Application Insights を使ってカスタム KPI ダッシュボードを作成するチュートリアルです。
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29178198"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -67,7 +68,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
     ![概要タイムラインをピン留めする](media/app-insights-tutorial-dashboards/pin-overview-timeline.png)
  
 3. 画面のトップで **[ダッシュボードの表示]** をクリックしてダッシュボードに戻ります。
-4. これで概要タイムラインがダッシュボードに追加されました。  これをクリックして適切な位置にドラッグし、その後**[カスタマイズ完了]** と **[変更の発行]** をクリックします。  これで、有用な情報が表示されたタイルをダッシュボードで確認できるようになりました。
+4. これで概要タイムラインがダッシュボードに追加されました。  これをクリックして適切な位置にドラッグし、その後 **[カスタマイズ完了]** と **[変更の発行]** をクリックします。  これで、有用な情報が表示されたタイルをダッシュボードで確認できるようになりました。
 
     ![概要タイムラインが表示されたダッシュボード](media/app-insights-tutorial-dashboards/dashboard-02.png)
 
@@ -120,7 +121,7 @@ Azure Application Insights の Analytics は独立したサービスであるた
 
     ![ダッシュボードの発行](media/app-insights-tutorial-dashboards/publish-dashboard.png)
 
-2. **ダッシュボード名**を同じ名前にして、**サブスクリプション名**を選び、ダッシュボードを共有します。  **[発行]**をクリックします。  これで、ほかのサービスとサブスクリプションでダッシュボードを利用できるようになりました。  必要に応じて、ダッシュボードにアクセス権を持つ特定のユーザーを定義できます。
+2. **ダッシュボード名**を同じ名前にして、**サブスクリプション名**を選び、ダッシュボードを共有します。  **[発行]** をクリックします。  これで、ほかのサービスとサブスクリプションでダッシュボードを利用できるようになりました。  必要に応じて、ダッシュボードにアクセス権を持つ特定のユーザーを定義できます。
 1. Azure メニューで **[Application Insights]** を選び、その後お使いのアプリケーションを選びます。
 2. 画面トップにある **[分析]** をクリックして Analytics ポータルを開きます。
 

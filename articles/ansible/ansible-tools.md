@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28209538"
 ---
 # <a name="tools-for-using-ansible-with-azure"></a>Azure で Ansible を使用するためのツール
 

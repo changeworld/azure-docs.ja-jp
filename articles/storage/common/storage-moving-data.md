@@ -1,8 +1,8 @@
 ---
-title: "Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs"
-description: "Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。"
+title: Azure のクラウド ストレージ間で大量のデータを移動する | Microsoft Docs
+description: Azure Storage との間でデータを移動するためのさまざまな方法の概要を説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984597"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
 オンプレミスのデータを Azure Storage に (またはその逆に) 移動する場合は、さまざまな方法があります。 最適な方法は、シナリオによって異なります。 この記事では、さまざまなシナリオとそれぞれに適した手段の概要を説明します。

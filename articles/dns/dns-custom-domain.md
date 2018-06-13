@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS を Azure リソースと統合する | Microsoft Docs"
-description: "Azure DNS を使用して Azure リソースに DNS を提供する方法を説明します。"
+title: Azure DNS を Azure リソースと統合する | Microsoft Docs
+description: Azure DNS を使用して Azure リソースに DNS を提供する方法を説明します。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27994384"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ デバイス コントローラーを管理する | Microsoft Docs"
-description: "StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。"
+title: StorSimple 8000 シリーズ デバイス コントローラーを管理する | Microsoft Docs
+description: StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108680"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 
@@ -60,7 +61,7 @@ Azure ポータルからデバイス コントローラーを管理するには�
 2. **[設定]、[コントローラー]** の順に移動します。
    
     ![StorSimple デバイス コントローラーが正常であることを確認する](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. **[コントローラー]** ブレードで、デバイスの両方のコントローラーの状態が **[正常]** であることを確認します。 コントローラーを選択します。右クリックした後、**[再起動]** または**[シャットダウン]** を選択します。
+3. **[コントローラー]** ブレードで、デバイスの両方のコントローラーの状態が **[正常]** であることを確認します。 コントローラーを選択します。右クリックした後、**[再起動]** または **[シャットダウン]** を選択します。
 
     ![StorSimple デバイス コントローラーの再起動またはシャットダウンを選択する](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 

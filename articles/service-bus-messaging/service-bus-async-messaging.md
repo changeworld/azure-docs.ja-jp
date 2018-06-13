@@ -1,11 +1,11 @@
 ---
-title: "Service Bus の非同期メッセージング |Microsoft Docs"
-description: "Azure Service Bus の非同期メッセージングに関する説明です。"
+title: Service Bus の非同期メッセージング |Microsoft Docs
+description: Azure Service Bus の非同期メッセージングに関する説明です。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28929987"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 
