@@ -1,7 +1,7 @@
 ---
-title: "Azure Application Insights で顧客を理解する | Microsoft Docs"
-description: "Azure Application Insights を使用して、顧客がアプリケーションをどのように使用しているかを理解するためのチュートリアルです。"
-keywords: 
+title: Azure Application Insights で顧客を理解する | Microsoft Docs
+description: Azure Application Insights を使用して、顧客がアプリケーションをどのように使用しているかを理解するためのチュートリアルです。
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24099023"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -141,7 +142,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
     ![](media\app-insights-tutorial-users\flows.png)
 
-5.  フローからイベントを削除するには、アクションの角にある **[x]** クリックした後、**[グラフの作成]** をクリックします。  グラフは、そのイベントが削除されたインスタンスを使用して再描画されます。  **[編集]** をクリックして、そのイベントが**[除外されたイベント]** に追加されていることを確認します。
+5.  フローからイベントを削除するには、アクションの角にある **[x]** クリックした後、**[グラフの作成]** をクリックします。  グラフは、そのイベントが削除されたインスタンスを使用して再描画されます。  **[編集]** をクリックして、そのイベントが **[除外されたイベント]** に追加されていることを確認します。
 
     ![](media\app-insights-tutorial-users\flowsexclude.png)
 

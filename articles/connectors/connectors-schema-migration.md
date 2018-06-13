@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法 | Microsoft Docs"
-description: "ロジック アプリは、簡単な手順で最新のスキーマ バージョンに移行できます。 必要な作業は、これらの手順に従うだけです。"
+title: ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法 | Microsoft Docs
+description: ロジック アプリは、簡単な手順で最新のスキーマ バージョンに移行できます。 必要な作業は、これらの手順に従うだけです。
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: MSFTMAN
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22707126"
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法
 既存のロジック アプリを新しいスキーマに移行するには、次の手順に従います。  

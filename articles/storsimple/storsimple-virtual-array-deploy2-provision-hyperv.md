@@ -1,11 +1,11 @@
 ---
-title: "Hyper-V で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイのこの 2 番目のチュートリアルでは、Hyper-V で仮想アレイをプロビジョニングします。"
+title: Hyper-V で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs
+description: StorSimple Virtual Array のデプロイのこの 2 番目のチュートリアルでは、Hyper-V で仮想アレイをプロビジョニングします。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111080"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -114,15 +115,15 @@ ms.lasthandoff: 10/11/2017
 10. **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image9.png)
-11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]**を選択します。
+11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[適用]**をクリックします。
+12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[適用]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. 最小要件を満たすには、500 GB の仮想データ ディスクを追加する必要もあります。 **[設定]** ページで次の操作を行います。
 
-    1. 左側のウィンドウで **[SCSI コントローラー]**を選択します。
+    1. 左側のウィンドウで **[SCSI コントローラー]** を選択します。
     2. 右側のウィンドウで **[ハード ドライブ]** を選択し、**[追加]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image12.png)
@@ -156,10 +157,10 @@ ms.lasthandoff: 10/11/2017
 1. 仮想アレイを起動します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image21.png)
-2. デバイスが起動したら、デバイスを選択して右クリックし、 **[接続]**を選択します。
+2. デバイスが起動したら、デバイスを選択して右クリックし、 **[接続]** を選択します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. デバイスの準備ができるまでに 5 ～ 10 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]**に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想アレイにログインします。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
+3. デバイスの準備ができるまでに 5 ～ 10 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]** に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想アレイにログインします。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。 このため、パスワードを変更するよう求められます。
