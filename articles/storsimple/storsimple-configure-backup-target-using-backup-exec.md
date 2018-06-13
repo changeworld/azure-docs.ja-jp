@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23112140"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -272,7 +273,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、ストレージの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  **Saturday Full** (土曜日・完全) などの内容が分かる名前と説明を入力します。 **[次へ]**を選択します。
+3.  **Saturday Full** (土曜日・完全) などの内容が分かる名前と説明を入力します。 **[次へ]** を選択します。
 
     ![Backup Exec 管理コンソール、名前と説明のページ](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -411,7 +412,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  **[OK]**を選択します。
+6.  **[OK]** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
