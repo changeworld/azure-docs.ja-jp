@@ -1,11 +1,11 @@
 ---
-title: "API Management 開発者ポータルをテンプレートを使用してカスタマイズする - Azure | Microsoft Docs"
-description: "Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。"
+title: API Management 開発者ポータルをテンプレートを使用してカスタマイズする - Azure | Microsoft Docs
+description: Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118226"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -33,7 +34,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
 テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
 
-開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]**をクリックします。
+開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]** をクリックします。
 
 ![開発者ポータル テンプレート][api-management-customize-menu]
 

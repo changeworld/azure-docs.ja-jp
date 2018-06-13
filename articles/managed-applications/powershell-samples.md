@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell のサンプル - Azure マネージ アプリケーション | Microsoft Docs"
-description: "Azure PowerShell のサンプル - Azure マネージ アプリケーション"
+title: Azure PowerShell のサンプル - Azure マネージ アプリケーション | Microsoft Docs
+description: Azure PowerShell のサンプル - Azure マネージ アプリケーション
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636982"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 

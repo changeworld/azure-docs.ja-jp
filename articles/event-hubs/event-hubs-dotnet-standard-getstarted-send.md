@@ -1,12 +1,12 @@
 ---
-title: ".NET Standard を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs"
-description: ".NET Standard で Event Hubs へのイベント送信を開始する"
+title: .NET Standard を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
+description: .NET Standard で Event Hubs へのイベント送信を開始する
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28985206"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
 

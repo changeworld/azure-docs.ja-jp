@@ -13,6 +13,6 @@
 6. **[ハイブリッド接続の作成]** の下で、ハイブリッド接続名の値を入力します。 その他は既定値のままにします。
    
     ![Select New](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

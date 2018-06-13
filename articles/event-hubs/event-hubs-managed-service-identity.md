@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs での管理対象サービス ID (プレビュー) | Microsoft Docs"
-description: "Azure Event Hubs で管理対象サービス ID を使用します。"
+title: Azure Event Hubs での管理対象サービス ID (プレビュー) | Microsoft Docs
+description: Azure Event Hubs で管理対象サービス ID を使用します。
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783345"
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 
@@ -54,7 +55,7 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 次に、MSI のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Event Hubs 名前空間を作成](event-hubs-create.md)します。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、管理対象サービス ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]**をクリックします。
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、管理対象サービス ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 ![](./media/event-hubs-managed-service-identity/msi2.png)
  

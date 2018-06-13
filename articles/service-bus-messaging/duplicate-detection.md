@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus の重複メッセージの検出 | Microsoft Docs"
-description: "Service Bus の重複メッセージの検出"
+title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
+description: Service Bus の重複メッセージの検出
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198555"
 ---
 # <a name="duplicate-detection"></a>重複検出
 

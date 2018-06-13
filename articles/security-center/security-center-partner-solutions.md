@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center での接続されたパートナー ソリューションの管理 | Microsoft Docs"
-description: "このドキュメントでは、Azure サブスクリプションに統合されたパートナー ソリューションの正常性状態を、Azure セキュリティ センターでひと目で監視する方法について説明します。"
+title: Azure Security Center での接続されたパートナー ソリューションの管理 | Microsoft Docs
+description: このドキュメントでは、Azure サブスクリプションに統合されたパートナー ソリューションの正常性状態を、Azure セキュリティ センターでひと目で監視する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/18/2017
+ms.locfileid: "23454981"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Azure Security Center での接続されたパートナー ソリューションの管理
 この記事では、Azure Security Center で接続されたセキュリティ ソリューションを管理および監視する方法について説明します。
