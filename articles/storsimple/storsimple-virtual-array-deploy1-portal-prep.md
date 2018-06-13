@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array のポータルの準備 | Microsoft Docs"
-description: "StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。"
+title: StorSimple Virtual Array のポータルの準備 | Microsoft Docs
+description: StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24526555"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -151,7 +152,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 1. デバイス マネージャー サービスに移動し、選択してダブルクリックします。 **[概要]** ブレードが開きます。
 2. **[構成]** セクションで **[ストレージ アカウントの資格情報]** を選択します。
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. **[ストレージ アカウントの追加]** ブレードで、次の操作を行います。
    
     1. **[サブスクリプション]** で **[現在]** を選択します。
@@ -160,7 +161,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
    
     3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
    
-    4. **[追加]**をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
+    4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
    
      ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management インスタンスのアップグレードとスケーリングを行う | Microsoft Docs"
-description: "このトピックでは、Azure API Management インスタンスのアップグレードとスケーリングを行う方法について説明します。"
+title: Azure API Management インスタンスのアップグレードとスケーリングを行う | Microsoft Docs
+description: このトピックでは、Azure API Management インスタンスのアップグレードとスケーリングを行う方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26658638"
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>API Management インスタンスのアップグレードとスケーリングを行う 
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory の PoC 戦略の成分 |Microsoft ドキュメント"
-description: "ID とアクセスを管理するシナリオを探索して迅速に実装します"
+title: Azure Active Directory の PoC 戦略の成分 |Microsoft ドキュメント
+description: ID とアクセスを管理するシナリオを探索して迅速に実装します
 services: active-directory
-keywords: "Azure Acitve Directory、戦略、概念実証、PoC"
-documentationcenter: 
+keywords: Azure Acitve Directory、戦略、概念実証、PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602541"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-ingredients"></a>Azure Active Directory の概念実証戦略の成分 
 

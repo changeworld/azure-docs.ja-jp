@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus の認証と承認 | Microsoft Docs"
-description: "Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。"
+title: Azure Service Bus の認証と承認 | Microsoft Docs
+description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24813931"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 

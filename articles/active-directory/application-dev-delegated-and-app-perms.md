@@ -1,11 +1,11 @@
 ---
-title: "委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法 | Microsoft Docs"
-description: "委任されたアクセス許可とアプリケーションのアクセス許可について説明します。また、Azure AD で開発中のアプリケーションに関して、これらのアクセス許可をクライアントで使用する方法とリソースで公開する方法について説明します"
+title: 委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法 | Microsoft Docs
+description: 委任されたアクセス許可とアプリケーションのアクセス許可について説明します。また、Azure AD で開発中のアプリケーションに関して、これらのアクセス許可をクライアントで使用する方法とリソースで公開する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26612888"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法
 

@@ -1,12 +1,12 @@
 ---
-title: "Government ポータルでの StorSimple 8000 シリーズ デバイスのデプロイ | Microsoft Docs"
-description: "Update 3 以降を実行する StorSimple 8000 シリーズ デバイスおよびサービスを Azure Government ポータルでデプロイするための手順とベスト プラクティスを説明します。"
+title: Government ポータルでの StorSimple 8000 シリーズ デバイスのデプロイ | Microsoft Docs
+description: Update 3 以降を実行する StorSimple 8000 シリーズ デバイスおよびサービスを Azure Government ポータルでデプロイするための手順とベスト プラクティスを説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108750"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Government ポータルでのオンプレミスの StorSimple デバイスのデプロイ
 

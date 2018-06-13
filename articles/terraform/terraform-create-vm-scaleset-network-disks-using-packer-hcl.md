@@ -1,7 +1,7 @@
 ---
-title: "Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する"
-description: "Terraform を使用して、Packer で生成されたカスタム イメージから Azure 仮想マシン スケール セットを構成し、バージョンを管理します (仮想ネットワークおよび接続された管理ディスクを使用)。"
-keywords: "Terraform, DevOps, スケール セット, 仮想マシン, ネットワーク, ストレージ, モジュール, カスタム イメージ, Packer"
+title: Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
+description: Terraform を使用して、Packer で生成されたカスタム イメージから Azure 仮想マシン スケール セットを構成し、バージョンを管理します (仮想ネットワークおよび接続された管理ディスクを使用)。
+keywords: Terraform, DevOps, スケール セット, 仮想マシン, ネットワーク, ストレージ, モジュール, カスタム イメージ, Packer
 author: VaijanathB
 ms.author: tarcher
 ms.date: 10/29/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23655394"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 

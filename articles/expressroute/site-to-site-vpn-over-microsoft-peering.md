@@ -1,12 +1,12 @@
 ---
-title: "Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs"
-description: "サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。"
+title: Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs
+description: サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26357666"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 

@@ -1,12 +1,12 @@
 ---
-title: "Node.js を使用して Raspberry Pi を Azure IoT Suite に接続し、シミュレートされたテレメトリを送信する | Microsoft Docs"
-description: "Raspberry Pi 3 と Azure IoT Suite に対応した Microsoft Azure IoT スタート キットを使用します。 Node.js を使用して Raspberry Pi をリモート監視ソリューションに接続し、シミュレートされたテレメトリをクラウドに送信して、ソリューション ダッシュボードから呼び出されたメソッドに応答します。"
-services: 
+title: Node.js を使用して Raspberry Pi を Azure IoT Suite に接続し、シミュレートされたテレメトリを送信する | Microsoft Docs
+description: Raspberry Pi 3 と Azure IoT Suite に対応した Microsoft Azure IoT スタート キットを使用します。 Node.js を使用して Raspberry Pi をリモート監視ソリューションに接続し、シミュレートされたテレメトリをクラウドに送信して、ソリューション ダッシュボードから呼び出されたメソッドに応答します。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: node.js
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010655"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-nodejs"></a>Node.js を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、シミュレートされたテレメトリを送信する
 

@@ -1,9 +1,9 @@
 ---
-title: "2 段階認証設定の管理 | Microsoft Docs"
-description: "連絡先情報の変更やデバイスの構成などの Azure Multi-Factor Authentication の使用方法を管理します。"
+title: 2 段階認証設定の管理 | Microsoft Docs
+description: 連絡先情報の変更やデバイスの構成などの Azure Multi-Factor Authentication の使用方法を管理します。
 services: multi-factor-authentication
-keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
-documentationcenter: 
+keywords: 多要素認証のクライアント, 認証の問題, 関連付け ID
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626659"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。

@@ -1,6 +1,6 @@
 ---
-title: "Azure セキュリティの概要 | Microsoft Docs"
-description: "Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。"
+title: Azure セキュリティの概要 | Microsoft Docs
+description: Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542148"
 ---
 # <a name="azure-security-overview"></a>Azure セキュリティの概要
 Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。 Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx)にアクセスしてください。

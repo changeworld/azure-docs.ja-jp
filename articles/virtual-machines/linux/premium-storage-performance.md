@@ -1,6 +1,6 @@
 ---
-title: "Azure Premium Storage: Windows VM におけるパフォーマンスのための設計 | Microsoft Docs"
-description: "Azure Premium Storage を使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
+title: 'Azure Premium Storage: Windows VM におけるパフォーマンスのための設計 | Microsoft Docs'
+description: Azure Premium Storage を使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23666984"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

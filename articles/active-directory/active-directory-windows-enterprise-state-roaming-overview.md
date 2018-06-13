@@ -1,9 +1,9 @@
 ---
-title: "Enterprise State Roaming の概要 | Microsoft Docs"
-description: "Windows デバイスの Enterprise State Roaming の設定について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。"
+title: Enterprise State Roaming の概要 | Microsoft Docs
+description: Windows デバイスの Enterprise State Roaming の設定について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。
 services: active-directory
-keywords: "Enterprise State Roaming とは, エンタープライズ同期, Windows クラウド"
-documentationcenter: 
+keywords: Enterprise State Roaming とは, エンタープライズ同期, Windows クラウド
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614951"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Enterprise State Roaming の概要
 Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis.md) のユーザーが、そのユーザー設定とアプリケーション設定のデータをクラウドと安全に同期させることができます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。 Enterprise State Roaming の働きは、Windows 8 で初めて導入された標準的な [コンシューマー設定の同期機能](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) と似ています。 それに加えて、Enterprise State Roaming には次の機能が用意されています。

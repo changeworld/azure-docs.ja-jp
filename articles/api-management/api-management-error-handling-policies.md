@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management ポリシーにおけるエラー処理 | Microsoft Docs"
-description: "Azure API Management 内の要求の処理中に発生するエラーに対応する方法について説明します。"
+title: Azure API Management ポリシーにおけるエラー処理 | Microsoft Docs
+description: Azure API Management 内の要求の処理中に発生するエラーに対応する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128228"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 Azure API Management では、パブリッシャーは `ProxyError` オブジェクトを指定することにより、要求の処理中に発生するエラーに対応することができます。 `ProxyError` オブジェクトは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティからアクセスでき、`on-error` ポリシー セクションのポリシーで使用できます。 このトピックでは、Azure API Management におけるエラー処理機能向けの参考資料を提供します。  

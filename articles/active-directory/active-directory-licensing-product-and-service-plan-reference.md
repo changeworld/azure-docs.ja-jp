@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory でライセンスを付与するための製品名とサービス プラン 識別子 | Microsoft Docs"
-description: "Azure Portal、Office 365 ポータル、PowerShell、または Microsoft Graph でAzure AD のライセンスを管理する識別子のマップ"
+title: Azure Active Directory でライセンスを付与するための製品名とサービス プラン 識別子 | Microsoft Docs
+description: Azure Portal、Office 365 ポータル、PowerShell、または Microsoft Graph でAzure AD のライセンスを管理する識別子のマップ
 services: active-directory
-keywords: "Azure Active Directory のライセンスのサービス プラン"
-documentationcenter: 
+keywords: Azure Active Directory のライセンスのサービス プラン
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609329"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 

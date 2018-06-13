@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Microsoft Genomics のドキュメント"
+title: Microsoft Genomics のドキュメント
 metadata:
-  title: "Microsoft Genomics のドキュメント"
+  title: Microsoft Genomics のドキュメント
   meta.description: Learn how to use the Microsoft Genomics service.
   services: microsoft-genomics
   author: grhuynh
@@ -18,17 +18,18 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 12/13/2017
+  ms.locfileid: "26684587"
 abstract:
-  description: "Microsoft Genomics なら、二次的な分析のために、Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を利用して、ゲノム シーケンシングを強化できます。ここではその方法を説明します。"
+  description: Microsoft Genomics なら、二次的な分析のために、Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を利用して、ゲノム シーケンシングを強化できます。ここではその方法を説明します。
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "Microsoft Genomics サービスを通じてワークフローを送信します。"
+    text: Microsoft Genomics サービスを通じてワークフローを送信します。
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/helix-blue-orange.svg
-      text: "ワークフローの送信"
+      text: ワークフローの送信
       href: quickstart-run-genomics-workflow-portal
