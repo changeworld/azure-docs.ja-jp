@@ -14,6 +14,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885121"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>クイック スタート: PowerShell を使用して Azure Container Registry を作成する
 

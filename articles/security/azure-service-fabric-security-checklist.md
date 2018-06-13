@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895876"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric セキュリティのチェックリスト
 この記事では、Azure Service Fabric 環境のセキュリティ保護を支援するための使いやすいチェックリストを提供します。

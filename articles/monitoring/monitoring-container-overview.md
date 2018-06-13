@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207529"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Azure 内のコンテナーの監視の概要
 Azure では、Kubernetes または Docker を実行している Azure コンテナーに展開されているワークロードを効果的に監視し、管理できます。 大規模なシステムに信頼性の高いサービスを提供し、監視計画をサポートするためには、複数のマイクロサービス アプリケーションを含むコンテナーのパフォーマンス状況を把握する必要があります。 この記事では、各機能を理解し、お客様の要件に適切な機能を特定できるよう、Azure の 管理機能および監視機能の概要について説明します。

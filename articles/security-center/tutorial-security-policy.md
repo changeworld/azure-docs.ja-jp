@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779470"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>チュートリアル: セキュリティ ポリシーの定義と評価
 Security Center は、ワークロードの望ましい構成を定義するセキュリティ ポリシーを使用して、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure サブスクリプションでポリシーを定義し、それらをワークロードの種類またはデータの機密度に合わせて調整すると、コンピューティング、ネットワーク、SQL およびストレージ、アプリケーションの各リソースについてのセキュリティ推奨事項を Security Center から得ることができます。 このチュートリアルで学習する内容は次のとおりです。
