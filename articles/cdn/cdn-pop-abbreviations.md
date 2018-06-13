@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057106"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN の略称別の POP の場所
 > [!div class="op_single_selector"]

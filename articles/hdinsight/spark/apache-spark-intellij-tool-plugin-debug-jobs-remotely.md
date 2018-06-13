@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31521434"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight で VPN を介して Spark アプリケーションをリモートでデバッグする
 
@@ -92,7 +93,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
-    b. **[次へ]**を選択します。
+    b. **[次へ]** を選択します。
 2. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
 
     - プロジェクト名とプロジェクトの場所を入力します。

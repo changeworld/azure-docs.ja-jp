@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31602503"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。
@@ -59,7 +60,7 @@ Azure PowerShell のインストールには、[PowerShell ギャラリー](http
 この移行を実行には、[Azure ポータル](https://portal.azure.com)で自分をサブスクリプションの共同管理者として追加する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ハブ メニューで、 **[サブスクリプション]**を選択します。 表示されない場合は、**[すべてのサービス]** を選択します。
+2. ハブ メニューで、 **[サブスクリプション]** を選択します。 表示されない場合は、**[すべてのサービス]** を選択します。
 3. 適切なサブスクリプションのエントリを検索し、を見て、**[MY ROLE]** (自分のロール) フィールドを確認します。 共同管理者の場合は、この値は _[アカウント管理者]_ です。
 
 共同管理者を追加できない場合は、サービス管理者またはサブスクリプションの共同管理者に連絡して、追加してもらってください。   

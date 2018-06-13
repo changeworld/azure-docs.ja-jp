@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797177"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。

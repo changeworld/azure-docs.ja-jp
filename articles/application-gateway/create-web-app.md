@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770323"
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成 
 

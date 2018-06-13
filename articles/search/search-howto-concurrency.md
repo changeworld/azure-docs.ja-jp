@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796382"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search で同時実行を管理する方法
 

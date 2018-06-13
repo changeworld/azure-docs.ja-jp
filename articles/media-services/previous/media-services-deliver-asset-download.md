@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782801"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>方法: ダウンロードによってアセットを配信する
 この記事では、Media Services にアップロードされたメディア アセットを配信するためのオプションについて説明します。 メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。 エンコード後、生成されたメディア アセットをダウンロードするか、ストリーミング ロケーターを使用してアクセスします。 パフォーマンスとスケーラビリティを高めるために、Content Delivery Network (CDN) を使用してコンテンツを配信することもできます。

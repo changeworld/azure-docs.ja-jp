@@ -20,6 +20,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31525937"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 04/18/2018
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
 1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、**[インストール]** をクリックします。 サマリーで、**[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
-2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]**をクリックします。
+2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
 3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
 
 ## <a name="install-the-package"></a>パッケージをインストールする

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011426"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN ルール エンジンの機能
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる機能の詳しい説明を一覧表示します。

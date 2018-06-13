@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208473"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。

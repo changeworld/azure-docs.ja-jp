@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31525997"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のビュー
 ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。 

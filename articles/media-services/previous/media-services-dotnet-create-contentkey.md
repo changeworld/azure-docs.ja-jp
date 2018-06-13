@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782741"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成
 > [!div class="op_single_selector"]

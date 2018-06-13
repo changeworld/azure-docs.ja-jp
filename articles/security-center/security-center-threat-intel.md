@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774575"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Azure Security Center の脅威インテリジェンス
 この記事は、Azure Security Center の脅威インテリジェンスを使用して、セキュリティ関連の問題に対処する際に役立ちます。

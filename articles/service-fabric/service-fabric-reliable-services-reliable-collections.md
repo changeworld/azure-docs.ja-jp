@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212927"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要
 Reliable Collection では、高可用性でスケーラブルな、待機時間が短いクラウド アプリケーションを、単一のコンピューターのアプリケーションを作成しているかのように作成できます。 **Microsoft.ServiceFabric.Data.Collections** 名前空間のクラスは、状態の可用性を自動的に高める、一連のコレクションを提供します。 開発者は Reliable Collection API に対してプログラミングするだけで、Reliable Collection によって、レプリケートされたローカルの状態が管理されます。

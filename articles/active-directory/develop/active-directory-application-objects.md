@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155621"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト (Azure AD)
 「アプリケーション」という用語の意味が、Azure AD のコンテキストで使用する場合に誤解されることがあります。 この記事の目的は、Azure AD アプリケーション統合の概念的および具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録と同意の例を示しながら明らかにすることです。

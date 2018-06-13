@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31596927"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>SQL Data Warehouse でのトランザクションの使用
 ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。

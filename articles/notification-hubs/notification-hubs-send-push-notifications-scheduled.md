@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33776979"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
 ## <a name="overview"></a>概要

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782701"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
 この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われています。 新しいビデオとポッドキャストを参照したり、質問してフィードバックをもらったりすることができます。   

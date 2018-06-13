@@ -13,5 +13,6 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31431748"
 ---
 Azure Cosmos DB Table API アカウントの作成手順については、[Table API アカウントの作成](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
