@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache の geo レプリケーションの構成方法 | Microsoft Docs"
-description: "地理的リージョン全体で Azure Redis Cache インスタンスをレプリケートする方法を説明します。"
+title: Azure Redis Cache の geo レプリケーションの構成方法 | Microsoft Docs
+description: 地理的リージョン全体で Azure Redis Cache インスタンスをレプリケートする方法を説明します。
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911372"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Azure Redis Cache の geo レプリケーションの構成方法
 
@@ -61,7 +62,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     ![geo レプリケーションのコンテキスト メニュー](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. **[リンク]**をクリックして、2 つのキャッシュをリンクし、レプリケーション プロセスを開始します。
+3. **[リンク]** をクリックして、2 つのキャッシュをリンクし、レプリケーション プロセスを開始します。
 
     ![キャッシュのリンク](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 

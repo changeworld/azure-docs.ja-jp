@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell の埋め込み | Microsoft Docs"
-description: "Azure Cloud Shell を埋め込む方法について説明します。"
+title: Azure Cloud Shell の埋め込み | Microsoft Docs
+description: Azure Cloud Shell を埋め込む方法について説明します。
 services: cloud-shell
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27864886"
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure Cloud Shell の埋め込み
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions の外部ファイル バインディング (試験段階)"
-description: "Azure Functions の外部ファイル バインディングを使用する"
+title: Azure Functions の外部ファイル バインディング (試験段階)
+description: Azure Functions の外部ファイル バインディングを使用する
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27607923"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions の外部ファイル バインディング (試験段階)
 この記事では、Azure Functions でさまざまな SaaS プロバイダー (Dropbox、Google ドライブなど) のファイルを操作する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。 これらのバインディングでは、SaaS プロバイダーへの API 接続を作成するか、または Function App のリソース グループにある既存の API 接続を使用します。

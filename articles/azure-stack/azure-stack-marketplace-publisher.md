@@ -1,12 +1,12 @@
 ---
-title: "Marketplace ツールキットを使用して Marketplace アイテムの作成と発行を行う | Microsoft Docs"
-description: "発行ツールキットを使用して Marketplace アイテムをすばやく作成する方法を説明します"
+title: Marketplace ツールキットを使用して Marketplace アイテムの作成と発行を行う | Microsoft Docs
+description: 発行ツールキットを使用して Marketplace アイテムをすばやく作成する方法を説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386879"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>発行ツールを使用して Marketplace アイテムを追加する
 [Azure Stack Marketplace](azure-stack-marketplace.md) にコンテンツを追加して、オペレーターやテナントがデプロイのためにソリューションを使用できるようにします。  Marketplace ツールキットでは、IaaS の Azure Resource Manager テンプレートまたは VM 拡張機能に基づく Azure Marketplace パッケージ (.azpkg) ファイルを作成します。  Marketplace ツールキットを使用して、このツールまたは[手動](azure-stack-create-and-publish-marketplace-item.md)の手順で作成した .azpkg ファイルを発行することもできます。  このトピックでは、ツールをダウンロードし、VM テンプレートに基づいて Marketplace アイテムを作成してから、Azure Stack Marketplace にそのアイテムを発行する手順を説明します。     

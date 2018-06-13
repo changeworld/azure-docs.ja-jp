@@ -1,11 +1,11 @@
 ---
-title: "Web アプリと Redis Cache にプロビジョニングする"
-description: "Azure リソース マネージャー テンプレートを使用し、Web アプリと Redis Cache を展開します。"
+title: Web アプリと Redis Cache にプロビジョニングする
+description: Azure リソース マネージャー テンプレートを使用し、Web アプリと Redis Cache を展開します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909892"
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>テンプレートを使用し、Web アプリと Redis Cache を作成する
 このトピックでは、Azure Web アプリと Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。

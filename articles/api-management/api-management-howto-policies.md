@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management のポリシー | Microsoft Docs"
-description: "API Management のポリシーを作成、編集、構成する方法について説明します。"
+title: Azure API Management のポリシー | Microsoft Docs
+description: API Management のポリシーを作成、編集、構成する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29712870"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 

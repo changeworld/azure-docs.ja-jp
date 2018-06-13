@@ -1,8 +1,8 @@
 ---
-title: "Azure App Service のデプロイ資格情報 | Microsoft Docs"
-description: "Azure App Service のデプロイ資格情報を使用する方法について説明します。"
+title: Azure App Service のデプロイ資格情報 | Microsoft Docs
+description: Azure App Service のデプロイ資格情報を使用する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "27778549"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらは Azure Active Directory の資格情報とは異なります。
@@ -86,7 +87,7 @@ App Service 内のアプリごとに、アプリ レベルの資格情報が XML
 
 1. [Azure Portal](https://portal.azure.com) で、[App Service] > **&lt;任意のアプリ>**  >  **[概要]** をクリックします。
 
-2. **[...More (...その他)]**  >  **[発行プロファイルのリセット]**をクリックします。 **[はい]** をクリックして変更を確定します。
+2. **[...More (...その他)]**  >  **[発行プロファイルのリセット]** をクリックします。 **[はい]** をクリックして変更を確定します。
 
     リセット操作は、前にダウンロードしたすべての .PublishSettings ファイルを無効にします。
 

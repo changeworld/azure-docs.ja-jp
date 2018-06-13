@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple 8100 デバイスの取り付け | Microsoft Docs"
-description: "ソフトウェアのデプロイと構成の前に、StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブルの接続方法について説明します。"
+title: Microsoft Azure StorSimple 8100 デバイスの取り付け | Microsoft Docs
+description: ソフトウェアのデプロイと構成の前に、StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブルの接続方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743468"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
 ## <a name="overview"></a>概要

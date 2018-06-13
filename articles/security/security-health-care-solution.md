@@ -1,5 +1,5 @@
 ---
-title: "Azure を使用して安全な医療ソリューションを設計するための実用ガイド | Microsoft Docs"
+title: Azure を使用して安全な医療ソリューションを設計するための実用ガイド | Microsoft Docs
 description: " この記事では、Azure サービスおよび機能を構成および使用して医療ソリューションのセキュリティを向上させる方法について説明します。 "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540977"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Azure を使用して安全な医療ソリューションを設計するための実用ガイド
 Azure への移行を検討している医療業界のスタートアップ、システム インテグレーター (SI)、独立系ソフトウェア ベンダー (ISV)、および医療機関からは、コンプライアンス義務を果たすセキュリティ制御を組み込むうえで役に立つガイダンスが求められています。
