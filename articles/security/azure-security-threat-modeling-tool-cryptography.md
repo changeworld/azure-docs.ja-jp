@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911660"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 | 製品/サービス | 記事 |

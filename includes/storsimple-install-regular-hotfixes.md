@@ -2,7 +2,7 @@
 
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 1. デバイスのシリアル コンソールに接続します。 詳細については、「[手順 1: シリアル コンソールに接続する](../articles/storsimple/storsimple-update-device.md#step1)」を参照してください。
-2. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]**を選択します。 パスワードを入力します。 既定のパスワードは **Password1**です。
+2. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。 パスワードを入力します。 既定のパスワードは **Password1**です。
 3. コマンド プロンプトに、次のコマンドを入力します。
    
     ```

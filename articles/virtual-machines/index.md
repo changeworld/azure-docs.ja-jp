@@ -1,11 +1,11 @@
 ---
-title: "Azure Virtual Machines のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Windows または Linux 仮想マシンを作成、デプロイ、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+title: Azure Virtual Machines のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Windows または Linux 仮想マシンを作成、デプロイ、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
 services: virtual-machines
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23072862"
 ---
 # <a name="virtual-machines-documentation"></a>Virtual Machines のドキュメント
 

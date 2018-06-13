@@ -1,6 +1,6 @@
 次の表は、Azure Functions の 2 つのメジャー バージョンのランタイムでサポートされているバインディングを示します。
 
-| データ型 | 1.x | 2.x | トリガー | 入力 | 出力 |  
+| type | 1.x | 2.x | トリガー | 入力 | 出力 |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔<sup>1</sup>|✔|✔|✔|  
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|  

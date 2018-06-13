@@ -1,7 +1,7 @@
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
-1. デバイスのシリアル コンソールにアクセスし、オプション 1 の **[フル アクセスによるログイン]**を選択します (まだの場合)。 
+1. デバイスのシリアル コンソールにアクセスし、オプション 1 の **[フル アクセスによるログイン]** を選択します (まだの場合)。 
 2. パスワードを入力します。 既定のパスワードは **Password1**です。
 3. コマンド プロンプトに、次のコマンドを入力します。
    

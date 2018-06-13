@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913486"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Azure Automation で Azure Linux 仮想マシンを垂直方向にスケーリングする
 垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。 Azure では、仮想マシンのサイズを変更することで実行できます。 これは、次のようなシナリオで役立ちます。

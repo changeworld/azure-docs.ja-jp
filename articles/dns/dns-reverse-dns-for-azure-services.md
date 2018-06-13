@@ -17,6 +17,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30264865"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 

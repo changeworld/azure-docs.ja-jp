@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions の概要 | Microsoft Docs"
-description: "Azure Portal 内にある Azure Functions の概要に関するヘルプ コンテンツ"
+title: Azure Functions の概要 | Microsoft Docs
+description: Azure Portal 内にある Azure Functions の概要に関するヘルプ コンテンツ
 services: functions
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073811"
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions のドキュメント
 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165402"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure ポータルでハイ コントラストを有効にするかテーマを変更する
 Azure ポータルのコントラストを上げる必要があったり、カラー テーマを変更したくなったりした場合は、ポータルの設定に移動して変更を行います。 

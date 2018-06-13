@@ -6,17 +6,17 @@ ms.service: time-series-insights
 author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 45f081c4e1dbd32b46c8a69f32b0b205b948f9b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652323"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 

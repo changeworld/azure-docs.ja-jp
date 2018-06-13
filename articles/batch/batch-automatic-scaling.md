@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30317023"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -162,8 +163,8 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 | timeinterval *&lt;演算子&gt;* timestamp |+ |timestamp |
 | timestamp *&lt;演算子&gt;* timeinterval |+ |timestamp |
 | timestamp *<演算子>* timestamp |- |timeinterval |
-| *&lt;演算子&gt;*double |-, ! |double |
-| *&lt;演算子&gt;*timeinterval |- |timeinterval |
+| *&lt;演算子&gt;* double |-, ! |double |
+| *&lt;演算子&gt;* timeinterval |- |timeinterval |
 | double *&lt;演算子&gt;* double |<, <=, ==, >=, >, != |double |
 | string *<演算子>* string |<, <=, ==, >=, >, != |double |
 | timestamp *<演算子>* timestamp |<, <=, ==, >=, >, != |double |

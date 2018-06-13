@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164535"
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Spark のトラブルシューティング
 

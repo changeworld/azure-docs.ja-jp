@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164552"
 ---
 # <a name="create-a-spark-machine-learning-pipeline"></a>Spark 機械学習パイプラインの作成
 

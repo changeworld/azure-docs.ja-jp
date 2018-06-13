@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208422"
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。

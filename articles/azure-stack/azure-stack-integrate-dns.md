@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack とデータセンターの統合 - DNS"
-description: "Azure Stack の DNS をデータセンターの DNS と統合する方法について説明します。"
+title: Azure Stack とデータセンターの統合 - DNS
+description: Azure Stack の DNS をデータセンターの DNS と統合する方法について説明します。
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733861"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
 Azure Stack の外部から Azure Stack エンドポイント (`portal`、`adminportal`、`management`、`adminmanagement` など) にアクセスできるようにするには、Azure Stack DNS サービスを、Azure Stack で使用したい DNS ゾーンをホストする DNS サーバーと統合する必要があります。
