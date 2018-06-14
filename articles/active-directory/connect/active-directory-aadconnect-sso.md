@@ -33,13 +33,13 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき_ません_。
+>シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用できません。
 
 ## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
-  - ユーザーはパスワードを繰り返し入力する必要はありません。
+  - ユーザーは、パスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
   - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。
