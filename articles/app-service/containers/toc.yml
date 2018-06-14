@@ -157,6 +157,8 @@
       href: /rest/api/appservice/
 - name: リソース
   items:
+    - name: App Service on Linux の FAQ
+      href: app-service-linux-faq.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格

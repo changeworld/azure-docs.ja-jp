@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: アプリケーション マニフェストとサービス マニフェスト
           href: service-fabric-application-and-service-manifests.md
+        - name: アプリケーション マニフェストとサービス マニフェストの例
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: 複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
+              href: service-fabric-manifest-example-container-app.md
         - name: ホスティング モデル
           href: service-fabric-hosting-model.md
         - name: アプリケーションのセキュリティ
@@ -399,6 +406,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: ASP.NET Core サービスの構築
           href: service-fabric-add-a-web-frontend.md
+        - name: Linux での Apache Tomcat サーバー コンテナーの構築
+          href: service-fabric-get-started-tomcat.md
         - name: セキュリティを構成する
           items:
             - name: アプリケーション シークレットの管理
