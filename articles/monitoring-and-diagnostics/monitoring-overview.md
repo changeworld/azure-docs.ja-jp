@@ -1,25 +1,19 @@
 ---
-title: Azure のアプリケーションおよびリソースの監視 | Microsoft Docs
+title: Azure のアプリケーションおよびリソースの監視
 description: Azure のサービスおよびアプリケーションの包括的な監視戦略に役立つ Microsoft のサービスと機能の概要。
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1b962c74-8d36-4778-b816-a893f738f92d
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: overview
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: ''
+ms.openlocfilehash: e6adcc136c273210cc40d23ed2cb177287654005
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777554"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265134"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure のアプリケーションおよびリソースの監視
 
@@ -118,9 +112,9 @@ Azure かオンプレミスかに関係なく、連携してネットワーク�
 
 [Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) は、Azure の各種ネットワーク シナリオに応じた監視と診断の機能を提供します。 将来の分析に使用できるように、Azure メトリックおよび診断にデータが格納されます。 次のソリューションと連携して、ネットワークのさまざまな面を監視します。
 
-[Network Performance Monitor (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) は、パブリック クラウド、データ センター、オンプレミス環境間の接続を監視するクラウドベースのネットワーク監視ソリューションです。
+[Network Performance Monitor (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) は、パブリック クラウド、データ センター、オンプレミス環境間の接続を監視するクラウドベースのネットワーク監視ソリューションです。
 
-[ExpressRoute モニター](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)は、Azure ExpressRoute 回線を介したエンド ツー エンド接続とパフォーマンスを監視する NPM 機能です。
+[ExpressRoute モニター](../expressroute/how-to-npm.md)は、Azure ExpressRoute 回線を介したエンド ツー エンド接続とパフォーマンスを監視する NPM 機能です。
 
 [DNS Analytics](../log-analytics/log-analytics-dns.md) は、DNS サーバーに基づいて、セキュリティ、パフォーマンス、および操作に関連する分析情報を提供するソリューションです。
 

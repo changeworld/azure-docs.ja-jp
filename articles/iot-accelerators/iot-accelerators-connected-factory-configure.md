@@ -1,24 +1,19 @@
 ---
 title: コネクテッド ファクトリ トポロジの構成 | Microsoft Docs
 description: コネクテッド ファクトリ ソリューション アクセラレータのトポロジの構成方法。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 1674ffefb3ee12584771e27d785e014830f84642
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c6c5e27dad7f80a329edbd8fbcb95647dc4cd15a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626733"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -270,9 +265,9 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 このカテゴリのプロパティは、コネクテッド ファクトリ ダッシュボードの視覚的な外観を定義します。 たとえば、次のようになります。
 
 * Name
-* [説明]
+* 説明
 * イメージ
-* 場所
+* リージョン
 * Units
 * Visible
 

@@ -1,22 +1,20 @@
 ---
-title: "Azure IoT Hub Device Provisioning Service を使用して負荷分散された IoT ハブにデバイスをプロビジョニングする | Microsoft Docs"
-description: "Azure Portal での負荷分散された IoT ハブへの DPS による自動デバイス プロビジョニング"
-services: iot-dps
-keywords: 
+title: Azure IoT Hub Device Provisioning Service を使用して負荷分散された IoT ハブにデバイスをプロビジョニングする | Microsoft Docs
+description: Azure Portal での負荷分散された IoT ハブへの DPS による自動デバイス プロビジョニング
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4842944cd0d980fb7e817165da23b9c3c4037e94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0a3720fe729d5e260bbe5b0902460c8c7cfc7cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629628"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>負荷分散された IoT ハブへのデバイスのプロビジョニング
 
@@ -58,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 割り当てポリシーを設定するには、DPS ページで **[Manage allocation policy]\(割り当てポリシーの管理\)** をクリックします。
 2. 割り当てポリシーを **[Evenly weighted distribution]\(均等に重み付けされた分散\)** に設定します。
-3. [ **Save**] をクリックします。
+3. **[Save]** をクリックします。
 
 ## <a name="link-the-new-iot-hub-to-dps"></a>新しい IoT ハブを DPS にリンクする
 
@@ -66,11 +64,11 @@ DPS と IoT ハブをリンクして、DPS がその ハブにデバイスを登
 
 1. **[すべてのリソース]** ページで、以前に作成した DPS をクリックします。
 2. DPS ページで、**[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、**[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

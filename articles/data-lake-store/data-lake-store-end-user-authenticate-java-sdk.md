@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: b638860dbdab7e3b5a747a4ddd82e7247f24845f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 633bf87d1e02a1132cfc5cd151b1e58418de8152
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625020"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-java"></a>Data Lake Store での Java を使用したエンドユーザー認証
 > [!div class="op_single_selector"]

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6052dae1321e8ac8238ec2994886de30db27551e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0149b15fdfbd9fd7a3c9f9c099db9d505d27d1c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623062"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +59,7 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、SAP HANA のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 [サーバー] | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | 文字列 | [はい]
 authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | [はい] 
@@ -80,7 +81,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 
 
 コピー アクティビティのソースの種類が **RelationalSource** (SAP HANA を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | [はい] |
 

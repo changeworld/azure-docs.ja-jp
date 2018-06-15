@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 5882f79b6479f71cfd1df503f55703e6177c072b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ab806f8191bc8edc4d5be6003cd177d8c24d71e7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834677"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>データのインポート モジュールで各種オンライン データ ソースから Azure Machine Learning Studio にデータをインポートする
 この記事では、各種ソースからのオンライン データのインポートのサポートについて説明し、これらのソースから Azure Machine Learning の実験にデータを移動するために必要な情報を提供します。
@@ -50,7 +52,7 @@ Studio の実験でオンライン データ ソースにアクセスするに�
 このトレーニング データは実験中にアクセスされるため、利用できるのは、その実験が行われている間だけです。 一方、データセット モジュールに保存されているデータには、ワークスペース内の任意の実験からアクセスできます。
 
 > [!IMPORTANT]
-> 現在、[データのインポート][import-data] モジュールと [データのエクスポート][export-data] モジュールでは、クラシック デプロイメント モデルを使用して作成された Azure Storage からのみ、データの読み取りと書き込みを行うことができます。 つまり、ホット ストレージ アクセス層またはクール ストレージアクセス層を利用できる新しい Azure BLOB ストレージ アカウントの種類は、まだサポートされていません。 
+> 現在、[データのインポート][import-data] モジュールと [データのエクスポート][export-data] モジュールでは、クラシック デプロイ モデルを使用して作成された Azure Storage からのみ、データの読み取りと書き込みを行うことができます。 つまり、ホット ストレージ アクセス層またはクール ストレージアクセス層を利用できる新しい Azure BLOB ストレージ アカウントの種類は、まだサポートされていません。 
 > 
 > 一般的に、このサービス オプションが利用可能になる前に作成された可能性のある Azure ストレージ アカウントに、影響が及ぶことはありません。 
 > 新しいアカウントを作成する必要がある場合は、デプロイメント モデルとして **[クラシック]** を選択するか、Resource Manager を使用して、**[アカウントの種類]** に **[Blob ストレージ]** ではなく **[General (汎用)]** を選択します。 
@@ -62,7 +64,7 @@ Studio の実験でオンライン データ ソースにアクセスするに�
 ## <a name="supported-online-data-sources"></a>サポートされるオンライン データ ソース
 Azure Machine Learning の **データのインポート** モジュールは、以下のデータ ソースをサポートしています。
 
-| [データ ソース] | [説明] | parameters |
+| [データ ソース] | 説明 | parameters |
 | --- | --- | --- |
 | HTTP を使用する Web URL |コンマ区切り (CSV)、タブ区切り (TSV)、ARFF (Attribute-Relation File Format)、サポート ベクター マシン (SVM-Light) の各形式のデータを HTTP を使用する任意の Web URL から読み取ります。 |<b>URL</b>: サイトの URL とファイル名、拡張子を含むファイルの完全名を指定します。 <br/><br/><b>データ形式</b>: サポートされているいずれかのデータ形式 (CSV、TSV、ARFF、SVM-light) を指定します。 データにヘッダー行がある場合、その行が列名の割り当てに使用されます。 |
 | Hadoop/HDFS |Hadoop の分散ストレージからデータを読み取ります。 必要なデータは、HiveQL という SQL に似たクエリ言語で指定します。 Machine Learning Studio にデータを追加する前に、HiveQL を使用してデータを集計したり、データのフィルタリングを実行したりすることもできます。 |<b>Hive データベース クエリ</b>: データを生成するために使用する Hive クエリを指定します。<br/><br/><b>HCatalog サーバー URI</b>: *&lt;your cluster name&gt;.azurehdinsight.net* 形式でクラスターの名前を指定します。<br/><br/><b>Hadoop ユーザー アカウント名</b>: クラスターをプロビジョニングするために使用する Hadoop ユーザー アカウント名を指定します。<br/><br/><b>Hadoop ユーザー アカウントのパスワード</b>: クラスターをプロビジョニングするために使用する資格情報を指定します。 詳細については、[HDInsight での Hadoop クラスターの作成](../../hdinsight/hdinsight-provision-clusters.md)に関する記事をご覧ください。<br/><br/><b>出力データの場所</b>: データを Hadoop 分散ファイル システム (HDFS) に保存するか、Azure に保存するかを指定します。 <br/><ul>出力データを HDFS に保存する場合、HDFS サーバーの URI を指定します (必ず、HTTPS:// プレフィックスなしの HDInsight クラスター名を使用してください)。 <br/><br/>出力データを Azure に保存する場合は、Azure ストレージ アカウント名、ストレージ アクセス キー、ストレージ コンテナー名を指定する必要があります。</ul> |

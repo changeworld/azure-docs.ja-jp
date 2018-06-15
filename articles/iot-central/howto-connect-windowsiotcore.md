@@ -1,19 +1,19 @@
 ---
 title: Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する | Microsoft Docs
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
-services: iot-central
-author: miriamb
+author: miriambrus
 ms.author: mriamb
 ms.date: 04/09/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: peterpr
-ms.openlocfilehash: c38231f97eeb1c4511702bf3e788f72918cab045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200406"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261901"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -45,14 +45,14 @@ ms.locfileid: "34200406"
 | ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
 
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | 場所     | location   | 該当なし       |
+| テキスト            | リージョン     | location   | 該当なし       |
 
-## <a name="add-a-real-device"></a>実デバイスを追加する
+## <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 

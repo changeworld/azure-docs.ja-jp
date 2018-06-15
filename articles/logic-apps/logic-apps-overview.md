@@ -1,12 +1,12 @@
 ---
-title: "概要 - Azure Logic Apps とのエンタープライズ統合 | Microsoft Docs"
-description: "企業や組織の間でデータ、サービス、アプリ、システムを統合するための自動化されたワークフローとビジネス プロセスを構築します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。"
+title: 概要 - Azure Logic Apps とのエンタープライズ統合 | Microsoft Docs
+description: 企業や組織の間でデータ、サービス、アプリ、システムを統合するための自動化されたワークフローとビジネス プロセスを構築します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。
 keywords: automate, workflows, enterprise application integration, EAI, system integration, data integration, orchestration, integration services, iPaaS
 services: logic-apps
 author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 07765c05-72a6-4169-a8ab-f6420bfbaf07
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 6c88c51eb4def92164e221efa5c6293f9b2247e4
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c575ae1f9c801072fb1f6f32a13f111b9edd18ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299241"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 

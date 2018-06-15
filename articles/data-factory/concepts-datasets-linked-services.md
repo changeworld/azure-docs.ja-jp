@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616007"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +66,7 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 
 次の表では、上記の JSON のプロパティについて説明します。
 
-プロパティ | [説明] | 必須 |
+プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
 name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  [はい] |
 型 | リンクされたサービスの種類  例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | [はい] |
@@ -122,7 +123,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 ```
 次の表では、上記の JSON のプロパティについて説明します。
 
-プロパティ | [説明] | 必須 |
+プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
 name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  [はい] |
 型 | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | [はい] |
@@ -188,7 +189,7 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
 
 structure の各列には次のプロパティが含まれます。
 
-プロパティ | [説明] | 必須
+プロパティ | 説明 | 必須
 -------- | ----------- | --------
 name | 列の名前です。 | [はい]
 型 | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ 

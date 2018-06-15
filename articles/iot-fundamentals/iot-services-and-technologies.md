@@ -1,44 +1,39 @@
 ---
 title: Azure のモノのインターネット (IoT) テクノロジとソリューション
 description: PaaS/SaaS テクノロジと Azure IoT ソリューションを構築するために使用可能なソリューションのコレクションを表示します。
-services: iot-hub
-documentationcenter: ''
 author: BryanLa
 manager: timlt
-editor: bryanla; v-clay
-ms.service: iot
-ms.devlang: na
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/30/2018
-ms.author: bryanla; v-clay
-ms.custom: ''
-ms.openlocfilehash: 04b4079038ab0ef3f87cfceea521a1424e93cce1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.date: 05/18/2018
+ms.author: bryanla
+ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631413"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT テクノロジとソリューション: PaaS と SaaS
 
 Microsoft には、デジタル変換の特典へのアクセスを有効にして、すべての顧客のニーズをサポートするポートフォリオが構築されています。 Azure IoT 製品群は、使用可能な PaaS/SaaS テクノロジとソリューションの概要です。 これには、独自のソリューションをビルドするために使用できる 2 つのパスが表示されます:
-- サービスとしてプラットフォーム (PaaS)：エンタープライズ グレードの構成済みソリューションのコレクションである、[Azure IoT Suite](https://www.azureiotsuite.com/) を使用したアプリケーションを構築し、これを使用するとカスタム IoT ソリューションの開発を加速できます。
+- サービスとしてプラットフォーム (PaaS): [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/) を使用してアプリケーションを構築します。これは、カスタム IoT ソリューションの開発を加速するため使用できる、エンタープライズ グレードの構成済みソリューションのコレクションです。
 - サービスとしてのソフトウェア(SaaS): 高速で、開始[Azure IoT Central](https://azure.microsoft.com/services/iot-central/)、新しい SaaS ソリューションは、IoT ソリューションの複雑さにさらされることがなく IoT アプリケーションを開発します。 組織にIoT ソリューションをビルドするリソースが不足している場合、Azure IoT Central は、コード不要で数分以内にデバイス モデル、ダッシュ ボード、およびルールを作成できるIoT ソリューションです。
 
-![業界で最も包括的なテクノロジとソリューション][img-paas-saas-technologies-solutions]
+![Azure IoT のテクノロジとソリューション][img-paas-saas-technologies-solutions]
 
 ## <a name="solutions"></a>解決方法
 
-Azure IoT Suite と SaaS ソリューションですぐに開始します。 リモートの監視、予測の保守、および接続されているファクトリを完全にカスタマイズ可能なソリューションを作成するなど、一般的な IoT シナリオを有効にする構成済みのソリューションから選択します。 または、Azure IoT Central では、クラウド ソリューションに関する専門知識を必要としない、強力な IoT シナリオを実現する完全な管理、エンド ツー エンド ソリューションを使用します。
+ソリューション アクセラレータと SaaS サービスですばやく作業を開始します。 リモートの監視、予測の保守、および接続されているファクトリを完全にカスタマイズ可能なソリューションを作成するなど、一般的な IoT シナリオを有効にする構成済みのソリューションから選択します。 または、Azure IoT Central では、クラウド ソリューションに関する専門知識を必要としない、強力な IoT シナリオを実現する完全な管理、エンド ツー エンド ソリューションを使用します。
 
-### <a name="azure-iot-suite-paas"></a>Azure IoT Suite (PaaS)
+### <a name="azure-iot-solution-accelerators-paas"></a>Azure IoT ソリューション アクセラレータ (PaaS)
 
-Azure IoT Suite とは、高レベルの IoT ソリューションに制御を提供するカスタマイズ可能な PaaS ソリューションのエンタープライズ レベルのコレクションです。 ビジネスが接続された操作の IoT　を実行している場合、または、接続済み製品への特定のカスタマイズ要件がある場合は、Azure IoT Suite が必要なコントロールを提供します。 
+Azure IoT ソリューション アクセラレータは、高レベルの IoT ソリューションに制御を提供するカスタマイズ可能な PaaS ソリューションです。 企業が接続された操作のために IoT を実装する場合、または接続済み製品への特定のカスタマイズ要件がある場合は、Azure IoT ソリューション アクセラレータが必要なコントロールを提供します。 
 
-多数のデバイスまたはデバイス モデルを持つ組織、また、接続ファクトリソリューションを必要としている製造業者は、Azure IoT Suite から利点を活用できる会社の例です。 複雑なニーズに対応する高度なカスタマイズソリューションを作り出す、IoT Suite が提供するもの：
+多数のデバイスまたはデバイス モデルのある組織や、コネクテッド ファクトリ ソリューションを必要としている製造業者は、Azure IoT ソリューション アクセラレータから利点を活用できる会社の例です。 IoT ソリューション アクセラレータは、複雑なニーズに対応する高度なカスタマイズソリューションを作り出すことで、次のものを提供します。 
 
-- 構成済みのソリューション
+- 事前構築済みのソリューション
     - リモート監視
     - コネクテッド ファクトリ
     - 予測的なメンテナンス
@@ -58,26 +53,26 @@ Azure IoT Central (SaaS) は完全に管理された SaaS ソリューション�
 - ニーズに合わせて構成可能
 - 単純なIoT ニーズに最適
 
-### <a name="compare-azure-iot-suite-and-azure-iot-central"></a>Azure IoT Suite と Microsoft IoT Central の比較
+### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Azure IoT ソリューション アクセラレータと Azure IoT Central の比較
 
-この [IoT ソリューションアーキテクチャを実装するため](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)、Azure IoT は、[Azure IoT](/azure/iot-suite)や [Suite Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)など、複数のオプションを提供しており、顧客の異なる要求のセットにそれぞれ対応しています。
+一般的な [IoT ソリューションアーキテクチャ](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture)を実装するため、Azure IoT は、[Azure IoT ソリューション アクセラレータ](/azure/iot-suite)や [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)などの複数のオプションを提供しており、顧客のさまざまな要求のセットのそれぞれに対応しています。
 
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、Azure IoT Central と Azure IoT Suite の両方によって使用されるコア Azure PaaS です。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
+[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、Azure IoT Central と Azure IoT ソリューション アクセラレータの両方によって使用されるコア Azure PaaS です。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
 
 * 大量のデバイスの接続と管理。
 * 大量のテレメトリ インジェスト。
 * コマンドとデバイスの制御。
 * デバイスに対するセキュリティの強制。
 
-IoT ソリューションを計画するうえで、Azure IoT 製品の選択は重要です。 IoT Hub は、単独ではエンド ツー エンドの IoT ソリューションを提供することができない単一の Azure サービスです。 IoT Hub は、任意の IoT ソリューションの開始点として使用でき、これを使用するために Azure IoT Suite や Azure IoT Central を使用する必要はありません。 Azure IoT Suite と Azure IoT Central はどちらも、他の Azure サービスと共に IoT Hub を使用します。 要件に合わせていずれかを適切に選択できるように、Azure IoT Suite と Azure IoT Central の主な違いを次の表にまとめます:
+IoT ソリューションを計画するうえで、Azure IoT 製品の選択は重要です。 IoT Hub は、単独ではエンド ツー エンドの IoT ソリューションを提供することができない単一の Azure サービスです。 IoT Hub は、任意の IoT ソリューションの開始点として使用でき、これを使用するために Azure IoT ソリューション アクセラレータや Azure IoT Central を使用する必要はありません。 Azure IoT ソリューション アクセラレータと Azure IoT Central はどちらも、他の Azure サービスと共に IoT Hub を使用します。 要件に合わせていずれかを適切に選択できるように、Azure IoT ソリューション アクセラレータと Azure IoT Central の主な違いを次の表にまとめます。
 
-|                        | Azure IoT Suite | Azure IoT Central |
+|                        | Azure IoT ソリューション アクセラレータ | Azure IoT Central |
 | ---------------------- | --------- | ----------- |
 | 主な用途 | 最大限の柔軟性が求められるカスタム IoT ソリューションの開発を加速します。 | サービスの細かなカスタマイズを必要としないシンプルな IoT ソリューションの市場投入時間を短縮します。 |
 | 基になる PaaS サービスへのアクセス          | 基になる Azure サービスにアクセスして管理します。または、必要に応じてサービスを置き換えます。 | SaaS。 完全に管理されたソリューション。基になるサービスは公開されません。 |
 | 柔軟性            | 高。 マイクロサービスのコードはオープン ソースであるため、必要に応じて、どのようにも変更できます。 また、デプロイ インフラストラクチャをカスタマイズすることもできます。| 中。 組み込みのブラウザー ベースのユーザー エクスペリエンスを使用して、ソリューション モデルやさまざまな UI 要素をカスタマイズできます。 各種コンポーネントが公開されないため、インフラストラクチャをカスタマイズすることはできません。|
 | 難易度                 | 中/高。 ソリューション バックエンドをカスタマイズするには、Java または .NET のスキルが必要です。 視覚化をカスタマイズするには、JavaScript のスキルが必要です。 | 低。 ソリューションをカスタマイズするには、モデリングのスキルが必要です。 コーディングのスキルは必要ありません。 |
-| 開始 | 構成済みソリューションによって一般的な IoT シナリオが実装されます。 数分でデプロイできます。 | アプリケーション テンプレートとデバイス テンプレートには、既製のモデルが用意されています。 数分でデプロイできます。 |
+| 開始 | ソリューション アクセラレータによって一般的な IoT シナリオが実装されます。 数分でデプロイできます。 | アプリケーション テンプレートとデバイス テンプレートには、既製のモデルが用意されています。 数分でデプロイできます。 |
 | 価格                | サービスを細かく調整してコストを制御できます。 | シンプルで予測可能な料金体系です。 |
 
 最終的には以下を検討して、どの製品を使って IoT ソリューションを構築するかを決定します。

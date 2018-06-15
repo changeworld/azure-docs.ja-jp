@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT Hub の通信プロトコルとポート | Microsoft Docs"
-description: "開発者ガイド - サポートされている device-to-cloud と cloud-to-device 通信の通信プロトコルと、開く必要があるポート番号について説明します。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Hub の通信プロトコルとポート | Microsoft Docs
+description: 開発者ガイド - サポートされている device-to-cloud と cloud-to-device 通信の通信プロトコルと、開く必要があるポート番号について説明します。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633004"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -55,7 +50,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 デバイスは、さまざまなプロトコルを使用して Azure の IoT Hub と通信できます。 通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。 次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
 
-| プロトコル | Port |
+| プロトコル | ポート |
 | --- | --- |
 | MQTT |8883 |
 | WebSocket 経由の MQTT |443 |

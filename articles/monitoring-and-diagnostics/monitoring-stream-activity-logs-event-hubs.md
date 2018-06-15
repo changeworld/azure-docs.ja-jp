@@ -1,24 +1,19 @@
 ---
-title: Event Hubs への Azure アクティビティ ログのストリーミング | Microsoft Docs
+title: Event Hubs への Azure アクティビティ ログのストリーミング
 description: Azure アクティビティ ログを Event Hubs にストリーミングする方法について説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ec4c2d2c-8907-484f-a910-712403a06829
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: 8a599558fc35ca2bf48ce2a5f11ec4978bf10277
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: activitylog
+ms.openlocfilehash: 1f1a131d4e0cf900d04acc9730b04e1375f396a6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264301"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。

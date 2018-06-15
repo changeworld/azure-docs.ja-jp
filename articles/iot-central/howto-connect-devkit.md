@@ -1,19 +1,19 @@
 ---
 title: DevKit デバイスを Azure IoT Central アプリケーションに接続する | Microsoft Docs
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200743"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261578"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -28,7 +28,9 @@ ms.locfileid: "34200743"
 
 **サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。
 
-### <a name="telemetry-measurements"></a>テレメトリ測定
+### <a name="measurements"></a>測定
+
+#### <a name="telemetry"></a>テレメトリ 
 
 | フィールド名     | Units  | 最小値 | 最大値 | 小数点以下の桁数 |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -44,6 +46,20 @@ ms.locfileid: "34200743"
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+#### <a name="states"></a>States 
+
+| Name          | 表示名   | 正常 | 注意 | 危険 | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
+
+#### <a name="events"></a>イベント 
+
+| Name             | 表示名      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | ボタン B の押下  | 
+
+
 
 ### <a name="settings"></a>設定
 
@@ -61,26 +77,15 @@ ms.locfileid: "34200743"
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | 場所     | location   | 該当なし       |
+| テキスト            | リージョン     | location   | 該当なし       |
 
-### <a name="states"></a>States 
 
-| Name          | 表示名   | 正常 | 注意 | 危険 | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
-
-### <a name="events"></a>イベント 
-
-| Name             | 表示名      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | ボタン B の押下  | 
-
-### <a name="add-a-real-device"></a>実デバイスを追加する
+### <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 

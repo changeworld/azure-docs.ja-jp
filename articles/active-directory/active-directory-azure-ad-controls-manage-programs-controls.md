@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/14/2018
-ms.author: billmath
-ms.openlocfilehash: a3fb812623b490e27907f63c1f7c6610ae754fb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 3bce933787e49d787c9414ef75ee0e97a41b79aa
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192882"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233640"
 ---
 # <a name="manage-programs-and-their-controls"></a>プログラムとそのコントロールの管理 
 

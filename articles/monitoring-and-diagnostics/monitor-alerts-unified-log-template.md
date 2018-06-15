@@ -1,25 +1,19 @@
 ---
-title: Resource Manager テンプレートでログ アラートを作成する | Microsoft Docs
+title: Resource Manager テンプレートでログ アラートを作成する
 description: Azure Resource Manager テンプレートと API を使用してログ アラートを作成する方法を説明します。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 14a2560d91fd0f8dcc729b32c7155c4b74aa8aa1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204160"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263203"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 この記事では、Azure で [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) と [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) を介して [Azure Resource Manager テンプレート](..//azure-resource-manager/resource-group-authoring-templates.md)を使用して、[ログ アラート](monitor-alerts-unified-log.md)をプログラムから大規模に管理する方法を示します。 現在、Azure アラートは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) からのクエリに関するログ アラートをサポートしています。

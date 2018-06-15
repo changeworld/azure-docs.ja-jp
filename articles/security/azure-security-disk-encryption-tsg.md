@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: DevTiw
 ms.openlocfilehash: 4bc1f7cf64a2a08215cd82d8e72e40eba8db3093
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809075"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 

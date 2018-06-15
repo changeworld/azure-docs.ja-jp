@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836377"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
 
@@ -227,7 +229,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 4. zip ファイルを、**データセット**から **ML Studio キャンバス**にドラッグ アンド ドロップします。
 5. **zip データ アイコン**の出力を、[R スクリプトの実行][execute-r-script]モジュールの**スクリプト バンドル**入力に接続します。
 6. [R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。 たとえば、「 `source("src/simpleplot.R")`」と入力します。  
-7. 必ず **[保存]**をクリックします。
+7. 必ず **[保存]** をクリックします。
 
 これらの手順の完了後に実験を実行すると、[R スクリプトの実行][execute-r-script]モジュールは zip ファイル内の R スクリプトを実行します。 この時点で、実験は図 5 のように表示されます。
 
@@ -291,7 +293,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
     maml.mapOutputPort('cadairydata')
 
-この実験の実行後、結果データセット 1 出力ポートをクリックし、 **[視覚化]**をクリックします。 図 6 の内容が表示されます。
+この実験の実行後、結果データセット 1 出力ポートをクリックし、 **[視覚化]** をクリックします。 図 6 の内容が表示されます。
 
 ![カリフォルニア酪農データの出力の視覚化][7]
 
@@ -302,7 +304,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 ### <a name="r-device-output"></a>R デバイス出力
 [R スクリプトの実行][execute-r-script]モジュールのデバイス出力には、メッセージとグラフィックスの出力が含まれています。 R からの標準出力と標準エラー メッセージは両方とも、R デバイス出力ポートに送信されます。  
 
-R デバイス出力を表示するは、ポートをクリックして、 **[視覚化]**をクリックします。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
+R デバイス出力を表示するは、ポートをクリックして、 **[視覚化]** をクリックします。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
 
 ![R デバイス ポートからの標準出力と標準エラー][8]
 

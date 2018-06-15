@@ -13,14 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5a268a29c7a767084049bf56270aa8bc9d2ccc3f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850629"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack Development Kit とは
 [Microsoft Azure Stack 統合システム](.\.\azure-stack-poc.md)には 4 ノードから 12 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、[オペレーター ドキュメント](https://docs.microsoft.com/azure/azure-stack)を参照してください。
@@ -44,7 +45,7 @@ ASDK の詳細については、次の短い動画をご覧ください。
 ## <a name="asdk-and-multi-node-azure-stack-differences"></a>ASDK とマルチノード Azure Stack の相違点
 単一ノードの ASDK デプロイは、マルチノードの Azure Stack デプロイとはいくつかの点で異なるため、注意が必要です。
 
-|[説明]|ASDK|マルチノード Azure Stack|
+|説明|ASDK|マルチノード Azure Stack|
 |-----|-----|-----|
 |**スケール**|すべてのコンポーネントが、単一ノードのサーバー コンピューターにインストールされます。|サイズは 4 から 12 ノードの範囲で設定できます。|
 |**回復力**|単一ノードの構成では、高可用性は提供されません|[高可用性](.\.\azure-stack-key-features.md#high-availability-for-azure-stack)機能がサポートされています。|
@@ -79,4 +80,4 @@ Azure Stack には、引き続き Azure サービスのサポートが追加さ�
 
 
 ## <a name="next-steps"></a>次の手順
-Azure Stack の評価を開始するには、開発キットのホスト サーバー コンピューターを準備し、次に [ASDK をインストール](asdk-deploy.md)する必要があります。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。
+Azure Stack の評価を開始するには、開発キットのホスト サーバー コンピューターを準備し、次に [ASDK をインストール](asdk-install.md)する必要があります。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。

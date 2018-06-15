@@ -1,22 +1,20 @@
 ---
-title: "ポータルで Azure IoT Hub Device Provisioning Service のためのクラウドを設定する | Microsoft Docs"
-description: "Azure Portal での IoT Hub 自動デバイス プロビジョニング"
-services: iot-dps
-keywords: 
+title: ポータルで Azure IoT Hub Device Provisioning Service のためのクラウドを設定する | Microsoft Docs
+description: Azure Portal での IoT Hub 自動デバイス プロビジョニング
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 247c2155943d651c3be7791571522b652cf63483
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630087"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
@@ -66,7 +64,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 1. **[すべてのリソース]** ページで、先ほど作成した Device Provisioning Service インスタンスをクリックします。
 2. Device Provisioning Service ページで、**[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、**[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
 5. **[Save]** をクリックします。
 

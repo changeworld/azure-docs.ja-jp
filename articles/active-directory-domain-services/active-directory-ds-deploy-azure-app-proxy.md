@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ac3ea6d696eaf5ba4b2554f416118718271526a8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292468"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services 管理対象ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -75,7 +77,7 @@ Azure AD Domain Services 管理対象ドメインを有効化済みの同じ仮�
     * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
     * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
     * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
-    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/active-directory-application-proxy-troubleshoot.md)」をご覧ください。
+    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。
 
     ![コネクタのインストール完了](./media/app-proxy/app-proxy-connector-installed.png)
 4. コネクタが適切に動作していることを確認するには、Azure AD アプリケーション プロキシ コネクタのトラブルシューティング ツールを実行します。 トラブルシューティング ツールを実行すると、正常であることを示すレポートが表示されます。

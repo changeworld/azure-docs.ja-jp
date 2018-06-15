@@ -3,22 +3,23 @@ title: Azure リソース向けの Privileged Identity Management - サブスク
 description: グローバル管理者がテナント内のサブスクリプションを管理できる方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/27/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e164d8adaf5df63dba31bb6aa8e56f768741479c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 628ee70f7eb59673d4229441e3c4242e1ef8e0d3
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200877"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234274"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>テナントのサブスクリプション管理を有効にする
 

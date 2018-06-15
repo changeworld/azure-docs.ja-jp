@@ -1,25 +1,20 @@
 ---
 title: Azure デバイス ツインを使用して MXChip IoT DevKit ユーザー LED を制御する | Microsoft Docs
 description: このチュートリアルでは、Azure IoT Hub デバイス ツインを使用して DevKit の状態を監視し、ユーザー LED を制御する方法について説明します。
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 3678eb20429d9e5123272499d474fdec2cdab065
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2845b545484f4eef1e6999c1c54aaba5de14b832
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202188"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633266"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 

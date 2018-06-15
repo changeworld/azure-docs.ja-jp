@@ -14,12 +14,12 @@ ms.date: 05/17/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 38f65804e9166a77278a11d545374461e6f6c38f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303370"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261119"
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 -In 演算子を使用した例を次に示します。
 ```
-    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
 値のリストの開始と終了に "[" と "]" を使用していることに注意してください。 この条件は、user.department の値がリスト内のいずれかの値に等しい場合に True に評価されます。
 
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * -eq
 * -ne
 
-| [プロパティ] | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
@@ -153,7 +153,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * -in
 * -notIn
 
-| [プロパティ] | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
@@ -188,7 +188,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * -contains
 * -notContains
 
-| [プロパティ] | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -199,7 +199,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
 * -all (コレクション内のすべての項目が条件に一致するときに満たされる)
 
-| [プロパティ] | 値 | 使用法 |
+| Properties | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 

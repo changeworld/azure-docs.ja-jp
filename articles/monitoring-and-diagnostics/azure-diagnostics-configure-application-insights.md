@@ -1,24 +1,19 @@
 ---
-title: "Application Insights にデータを送信するための Azure 診断の構成 | Microsoft Docs"
-description: "Application Insights にデータを送信するように Azure 診断のパブリック構成を更新します。"
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Application Insights にデータを送信するための Azure 診断の構成
+description: Application Insights にデータを送信するように Azure 診断のパブリック構成を更新します。
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: f9e12c3e-c307-435e-a149-ef0fef20513a
-ms.service: monitoring-and-diagnostics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: diagnostic-extension
+ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262139"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure 診断拡張機能を使用してデータを収集します。  Azure 診断のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure 診断拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -84,7 +79,7 @@ Application Insights のシンクの構成の例を以下に示します。
 
 ![Diagnostics Public Configuration](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
 
-次の図は、構成値とそのしくみについてまとめたものです。 構成の階層内のさまざまなレベルに複数のシンクを含めることができます。 最上位のシンクはグローバルな設定として機能し、個々の要素のレベルに指定されたシンクはそのグローバル設定よりも優先されます。
+次の図は、構成値とそのしくみについてまとめたものです。 構成の階層内のさまざまなレベルに複数のシンクを含めることができます。 最上位のシンクはグローバルな設定として機能し、個々の要素のレベルに指定されたシンクはそのグローバル設定をオーバーライドします。
 
 ![Application Insights による診断シンクの構成](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
 

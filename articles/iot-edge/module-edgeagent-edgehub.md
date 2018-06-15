@@ -1,19 +1,19 @@
 ---
 title: Azure IoT EdgeAgent および EdgeHub リファレンス | Microsoft Docs
 description: edgeAgent および edgeHub モジュール ツインの特定のプロパティとその値を確認します。
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+services: iot-edge
+ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632909"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge エージェントと Edge ハブのモジュール ツインのプロパティ
 
@@ -25,7 +25,7 @@ Edge エージェントと Edge ハブは、IoT Edge ランタイムを構成す
 
 Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ、デバイス上で実行されている Edge エージェントと IoT Hub の間の通信を調整します。 必要なプロパティは、単一デバイスまたは大規模デプロイの一部として特定のデバイスにデプロイ マニフェストを適用するときに設定されます。 
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | schemaVersion | "1.0" である必要がある | [はい] |
 | runtime.type | "docker" である必要がある | [はい] |
@@ -63,7 +63,7 @@ Edge エージェントの報告されるプロパティには、次の 3 つの
 
 次の表には、必要なプロパティからコピーされる情報は含まれません。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
@@ -93,7 +93,7 @@ Edge エージェントの報告されるプロパティには、次の 3 つの
 
 Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイス上で実行されている Edge ハブと IoT Hub の間の通信を調整します。 必要なプロパティは、単一デバイスまたは大規模デプロイの一部として特定のデバイスにデプロイ マニフェストを適用するときに設定されます。 
 
-| プロパティ | [説明] | デプロイ マニフェストに必要 |
+| プロパティ | 説明 | デプロイ マニフェストに必要 |
 | -------- | ----------- | -------- |
 | schemaVersion | "1.0" である必要がある | [はい] |
 | routes.{routeName} | Edge ハブのルートを表す文字列。 | `routes` 要素は存在できますが、空です。 |
@@ -101,7 +101,7 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 
 ## <a name="edgehub-reported-properties"></a>edgeHub の報告されるプロパティ
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |

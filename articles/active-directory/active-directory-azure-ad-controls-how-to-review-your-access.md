@@ -1,21 +1,23 @@
 ---
-title: "アクセス権をレビューする | Microsoft Docs"
-description: "Azure Active Directory でアクセス権をレビューする"
+title: アクセス権をレビューする | Microsoft Docs
+description: Azure Active Directory でアクセス権をレビューする
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: ded64234d4b40c594a0b92e15e5a446d4ae176b6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 779f462edee42272320dd828b084bbff7629904c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233701"
 ---
 # <a name="review-your-access"></a>アクセス権をレビューする
 
@@ -37,7 +39,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 アクセス権の継続を承認することについて、その正当性を説明するよう求められる場合もあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 拒否されたアクセス権はすぐには削除されません。 回答と承認の内容に変更がある場合は、回答をいったんリセットしてから改めて選択してください。 この手順は、アクセス レビューが完了するまで行うことができます。
 

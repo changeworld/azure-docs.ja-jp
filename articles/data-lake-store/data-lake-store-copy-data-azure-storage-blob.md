@@ -10,14 +10,14 @@ ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 964ba0eb9c619fa226b0704a6c83c05186a95261
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7422c84851c766b608bc5951ec0472c8976e7ec0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197156"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624269"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Azure Storage BLOB から Data Lake Store へのデータのコピー
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 構文のパラメーターを次に示します。
 
-| オプション | [説明] |
+| オプション | 説明 |
 | --- | --- |
 | ソース |Azure Storage Blob のソース データの場所を指定します。 ソースには BLOB コンテナー、BLOB、または別の Data Lake Store アカウントを指定できます。 |
 | Dest |Data Lake Store のコピー先を指定します。 |

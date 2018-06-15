@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central アプリケーションを作成する | Microsoft Docs
 description: 管理者として、Azure IoT Central アプリケーションを作成する方法。
-services: iot-central
-author: TanmayBhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 03/20/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 83879c6b81985f61b9fcff665e9f764c1346592e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200811"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629288"
 ---
 # <a name="create-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションを作成する
 
@@ -70,7 +70,7 @@ Azure IoT Central を使用できるリージョンは、[[リージョン別の
 
 新しい Azure IoT Central アプリケーションには、使用可能なアプリケーション テンプレートのずれかを選択できます。 アプリケーション テンプレートには、使用開始に役立つデバイス テンプレートやダッシュボードなどの事前に定義された項目を含めることができます。
 
-| アプリケーション テンプレート | [説明] |
+| アプリケーション テンプレート | 説明 |
 | -------------------- | ----------- |
 | カスタム アプリケーション   | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
 | サンプル Contoso       | 単純な接続デバイス用のデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、Azure IoT Central の調査を開始するために使用します。 |

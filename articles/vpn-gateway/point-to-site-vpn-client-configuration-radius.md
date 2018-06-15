@@ -1,31 +1,36 @@
 ---
-title: "P2S RADIUS 接続用の VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs"
-description: "RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。"
+title: 'P2S RADIUS 接続用の VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs'
+description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1d57537428f5ac1085b6cbae93be6f77c71b12e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235891"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
 仮想ネットワークにポイント対サイト (P2S) 接続するには、接続元のクライアント デバイスを構成する必要があります。 Windows、Mac OS X、および Linux のクライアント デバイスから P2S VPN 接続を作成できます。 
 
 RADIUS 認証を使用する場合、認証には複数のオプションがあります (ユーザー名/パスワード認証、証明書認証、その他の認証の種類)。 VPN クライアント構成は、認証の種類ごとに異なります。 VPN クライアントを構成するには、必要な設定を含むクライアント構成ファイルを使用します。 この記事は、使用する RADIUS 認証の種類用の VPN クライアント構成を作成してインストールするのに役立ちます。
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 P2S RADIUS 認証の構成ワークフローは次のとおりです。
 
@@ -103,7 +108,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 5. プロファイルのインストール中に、VPN 認証用のユーザー名とパスワードを指定するオプションがあります。 この情報の入力は必須ではありません。 指定した場合は、その情報が保存され、接続の開始時に自動的に使用されます。 **[インストール]** を選択して続行します。
 
    ![VPN のためのユーザー名とパスワード ボックス](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-6. コンピューターにプロファイルをインストールするために必要な特権のユーザー名とパスワードを入力します。 **[OK]**を選択します。
+6. コンピューターにプロファイルをインストールするために必要な特権のユーザー名とパスワードを入力します。 **[OK]** を選択します。
 
    ![プロファイルのインストールのためのユーザー名とパスワード ボックス](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 7. プロファイルのインストールが完了すると、**[プロファイル]** ダイアログ ボックスに表示されます。 このダイアログ ボックスは、後で **[システム環境設定]** から開くこともできます。
@@ -152,6 +157,10 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ## <a name="certeap"></a>証明書認証
  
 EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クライアント構成ファイルを作成できます。 通常、企業が発行した証明書を使用して、VPN のユーザーを認証します。 接続するすべてのユーザーのデバイスに証明書がインストールされていることと、その証明書が RADIUS サーバーで検証できることを確認します。
+
+>[!NOTE]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 コマンドでは、`-AuthenticationMethod` は `EapTls` です。 証明書認証時に、クライアントはその証明書を検証することで RADIUS サーバーを検証します。 `-RadiusRootCert` は、RADIUS サーバーの検証に使用されるルート証明書を含む .cer ファイルです。
 
@@ -227,7 +236,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
 7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、**[続ける]** を選択します。
 
    !["ID の選択" 一覧](./media/point-to-site-vpn-client-configuration-radius/identity.png)
-8. **[ローカル ID]** ボックスに、(手順 6 の) 証明書の名前を指定します。 この例では、**ikev2Client.com** です。次に、**[適用]** ボタンを選択して変更を保存します。
+8. **[ローカル ID]** ボックスに、(手順 6 の) 証明書の名前を指定します。 この例では、**ikev2Client.com** です。 次に、**[適用]** ボタンを選択して変更を保存します。
 
    !["ローカル ID" ボックス](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
 9. **[ネットワーク]** ダイアログ ボックスで、**[適用]** を選択して、すべての変更を保存します。 次に、**[接続]** を選択して、Azure 仮想ネットワークへの P2S 接続を開始します。

@@ -15,11 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c3f07aa0ef4fea773e214e3e161a61e9337dc617
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292740"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -175,4 +176,4 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 - [アプリケーション プロキシを有効にする](application-proxy-enable.md)
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
 - [条件付きアクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)
-- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](../active-directory-application-proxy-troubleshoot.md)
+- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)

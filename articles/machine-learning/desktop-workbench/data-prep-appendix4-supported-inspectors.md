@@ -7,16 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 5d5797ede15be0779873f0a023433f0a915dd74a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830716"
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Azure Machine Learning データ準備のプレビューでサポートされているインスペクター
 このドキュメントでは、このプレビューで使用可能なインスペクターのセットについて説明します。
@@ -42,7 +44,7 @@ ms.lasthandoff: 04/19/2018
 - なし
 
 ## <a name="histogram"></a>ヒストグラム 
-単一の数値列のヒストグラムを計算し表示します。 既定のバケット数は、Scott の規則を使用して計算されます。 ただし、規則は、オプションを使用して上書きできます。
+単一の数値列のヒストグラムを計算し表示します。 既定のバケット数は、Scott の規則を使用して計算されます。 ただし、規則は、オプションを使用してオーバーライドできます。
 
 このインスペクターは、ハロー効果をサポートしています。
 
@@ -79,7 +81,7 @@ ms.lasthandoff: 04/19/2018
 - グループ化列
 
 ## <a name="scatter-plot"></a>"散布図"
-2 つの数値列の散布図です。 データは、パフォーマンス上の理由からダウン サンプリングされます。 サンプル サイズは、オプションで上書きできます。
+2 つの数値列の散布図です。 データは、パフォーマンス上の理由からダウン サンプリングされます。 サンプル サイズは、オプションでオーバーライドできます。
 
 ### <a name="options"></a>オプション  
 - X 軸の列

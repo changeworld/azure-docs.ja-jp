@@ -14,12 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354534"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292893"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -59,7 +59,7 @@ Azure AD では、アプリケーションにサインインする方法とし�
 
 Azure AD では、SAML 2.0、WS-Federation、または OpenID Connect プロトコルをサポートするアプリケーションでフェデレーション シングル サインオンをサポートできます。
 
-参照: [フェデレーション シングル サインオンのための証明書の管理](../active-directory-sso-certs.md)
+参照: [フェデレーション シングル サインオンのための証明書の管理](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>パスワードベースのシングル サインオン
 パスワードベースのシングル サインオンを構成すると、サードパーティの SaaS アプリケーションからのユーザー アカウント情報を使用して、組織のユーザーが Azure AD によってサードパーティの SaaS アプリケーションに自動的にサインインするように設定できます。 この機能を有効にした場合、ユーザー アカウント情報および関連するパスワードが Azure AD によって収集され、安全に格納されます。
@@ -191,10 +191,10 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 これらのリンクにはアクセス パネルや Office 365 と同じアクセス制御メカニズムが使用され、Azure 管理ポータルでアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。 ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するアクセス パネルを呼び出すためのリンクが示されます。
 
 ## <a name="related-articles"></a>関連記事
-* [Article Index for Application Management in Azure Active Directory](../active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../active-directory-saas-tutorial-list.md)
 * [承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](cloud-app-discovery.md)
-* [アプリへのアクセスの管理](../active-directory-managing-access-to-apps.md)
+* [アプリへのアクセスの管理](what-is-access-management.md)
 * [Azure Active Directory を使用して外部 ID を管理するための機能の比較](../active-directory-b2b-compare-b2c.md)
 
 

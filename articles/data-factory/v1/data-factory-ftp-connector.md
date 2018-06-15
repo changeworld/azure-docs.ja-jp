@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7799eeb65a109a6ff517d50bb9603fe83f80ed14
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: fe8982c9c4995cd9ddd6faa9a28fae1f321a2988
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769881"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623249"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,7 +64,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP リンク サービスに固有の JSON 要素について説明しています。
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | 型 |FtpServer に設定します。 |[はい] |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |[はい] |&nbsp; |
@@ -154,7 +154,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 **typeProperties** セクションは、データセットの型ごとに異なります。 これは、データセット型に固有の情報を提供します。 **FileShare** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブパス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始および終了日時に基づくフォルダー パスを使用できます。 |[はい] |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
@@ -205,7 +205,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 コピー アクティビティで、source が **FileSystemSource** 型の場合は、**typeProperties** セクションで次のプロパティを使用できます:
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
 

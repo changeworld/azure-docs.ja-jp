@@ -8,15 +8,15 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 06/07/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: ff605b7512a27f81b111560f5d151010dbb62273
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c6f397c2cfcfd9fbd4a5cc8f70a99f4abc86ba21
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "31426204"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34850680"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
 

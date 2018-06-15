@@ -1,22 +1,24 @@
 ---
-title: "Azure AD のアクセス レビューを使ってアクセス権をレビューする | Microsoft Docs"
-description: "Azure Active Directory のアクセス レビューを使ってアクセス権をレビューする方法について説明します。"
+title: Azure AD のアクセス レビューを使ってアクセス権をレビューする | Microsoft Docs
+description: Azure Active Directory のアクセス レビューを使ってアクセス権をレビューする方法について説明します。
 services: active-directory
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: 98658a2b9fdd0ede98b3f6c10a19af527a8677cc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: dbc06f7978b5669e67f1e4161ebcd0bbeb3dec41
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233497"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでアクセス権をレビューする
 
@@ -40,7 +42,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 アクセス権の継続またはグループ メンバーシップの継続を承認することについて、その正当性を説明するよう求められる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ユーザーによって拒否されたアクセス権はすぐには削除されません。 削除できる状態になるのは、レビューが完了するか、管理者がレビューを停止したときです。 回答に変更が生じて、一度拒否したユーザーを承認する場合や一度承認したユーザーを拒否する場合は、その行をクリックして回答をリセットしてから改めて回答を選択してください。 この手順は、アクセス レビューが完了するまで行うことができます。
 

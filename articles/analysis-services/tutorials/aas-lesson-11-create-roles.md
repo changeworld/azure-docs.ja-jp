@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 11: ロー�
 description: この Azure Analysis Services チュートリアル プロジェクトでロールを作成する方法を説明します。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7a34884482a53a9b96dac87dc30803be08fdc806
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0d71edd74c26f7888fca41838f164ec896dd1d90
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596119"
 ---
 # <a name="create-roles"></a>ロールを作成する
 
@@ -73,7 +74,7 @@ ms.lasthandoff: 04/16/2018
   
 #### <a name="to-create-an-administrator-user-role"></a>Administrator ユーザー ロールを作成する  
   
-1.  **[新規]**をクリックします。  
+1.  **[新規]** をクリックします。  
   
 2.  ロール名を**管理者**に変更します。  
   

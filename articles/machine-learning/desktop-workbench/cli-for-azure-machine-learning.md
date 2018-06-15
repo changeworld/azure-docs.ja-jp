@@ -7,15 +7,16 @@ ms.author: haining
 manager: cgronlun
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: core
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 45f96884bf6abe1c3868680be29b7f90cc50489d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4b6ed5c70201b918a5bfa252719b2673303b38e9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830862"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Azure Machine Learning でよく使うタスクのための Machine Learning CLI をインストールして使用する
 
