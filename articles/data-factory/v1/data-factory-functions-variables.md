@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b9884dac8a2716cbce6fca7b8172f7d272ad8f2f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 265b227520f25ebd1112d940aaf28fed9f88ecdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621022"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -27,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 この記事では、Azure Data Factory でサポートされている関数および変数に関する情報を提供します。
 
 ## <a name="data-factory-system-variables"></a>Data Factory のシステム変数
-| 変数名 | [説明] | オブジェクトのスコープ | JSON のスコープと使用事例 |
+| 変数名 | 説明 | オブジェクトのスコープ | JSON のスコープと使用事例 |
 | --- | --- | --- | --- |
 | WindowStart |現在のアクティビティ実行ウィンドウの時間間隔の開始 |activity |<ol><li>データ選択クエリを指定します。 [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。</li> |
 | WindowEnd |現在のアクティビティ実行ウィンドウの時間間隔の終了 |アクティビティ |WindowStart と同じです。 |
@@ -77,7 +78,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 ### <a name="functions"></a>Functions
 次の表は、Azure Data Factory の全関数の一覧です。
 
-| カテゴリ | 関数 | parameters | [説明] |
+| カテゴリ | 関数 | parameters | 説明 |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime  <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime  <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

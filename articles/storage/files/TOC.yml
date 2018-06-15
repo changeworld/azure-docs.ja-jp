@@ -16,7 +16,7 @@
       href: storage-how-to-use-files-windows.md
     - name: Linux でのマウント
       href: storage-how-to-use-files-linux.md
-    - name: Mac でのマウント
+    - name: macOS でのマウント
       href: storage-how-to-use-files-mac.md
     - name: Azure Portal で管理する
       href: storage-how-to-use-files-portal.md

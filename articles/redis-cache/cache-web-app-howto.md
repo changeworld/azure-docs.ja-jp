@@ -15,27 +15,23 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 7bf08849cd03a77095ffe717c8387d79d1961b06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: baaa53b04f608e2cb3546fcac6a6eb4eda4d3c4b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640756"
 ---
 # <a name="quickstart-create-a-aspnet-web-app-with-redis-cache"></a>クイック スタート: Redis Cache を使用して ASP.NET Web アプリを作成する
 
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.JS](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
->
 
 ## <a name="introduction"></a>はじめに
 
 このクイック スタートでは、Visual Studio 2017 を使用して ASP.NET Web アプリケーションを作成し Azure App Service にデプロイする方法を説明します。 このサンプル アプリケーションは、Azure Redis Cache に接続して、キャッシュにデータを格納し、キャッシュからデータを取得します。 このクイック スタートを最後まで行うと、Azure Redis Cache との間で読み書きを行う Web アプリが完成し、Azure でホストされています。
 
 ![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,8 +40,6 @@ ms.lasthandoff: 04/28/2018
 * 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     * ASP.NET および Web の開発
     * Azure 開発
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
@@ -277,7 +271,7 @@ Visual Studio で、ソリューション エクスプローラーのプロジ�
 
 **[App Service の作成]** ダイアログで、次のように変更します。
 
-| Setting | 推奨値 | [説明] |
+| Setting | 推奨値 | 説明 |
 | ------- | :---------------: | ----------- |
 | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 一意にするために必要な場合、名前にタイムスタンプのサフィックスが追加される場合があります。 |
 | **サブスクリプション** | Azure サブスクリプションを選びます | このサブスクリプションに関連するホスティング料金が請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
@@ -322,7 +316,7 @@ Visual Studio の **[出力]** ウィンドウを監視し、Azure への発行�
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 このトピックの手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: d9ba650549d313a4ecc9ceae5eb05e1cde727892
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 672bdd3ddb5b32b82d83322eadce2a594b13ce5b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643534"
 ---
 # <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
 WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。
@@ -52,7 +53,7 @@ class MyService : StatelessService, IMyService
     {
     }
 
-    public Task HelloWorldAsync()
+    public Task<string> HelloWorldAsync()
     {
         return Task.FromResult("Hello!");
     }
@@ -86,7 +87,7 @@ ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要�
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 プロキシの作成に api `ServiceProxy.Create` を使用する場合、フレームワークによってシングルトン ServiceProxy が作成されます。
-手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) プロパティを上書きする必要があるときに効果的です。
+手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリの作成は負荷の高い操作です。 ServiceProxyFactory は通信クライアントの内部キャッシュを保持します。
 ServiceProxyFactory はできるだけ長くキャッシュすることをお勧めします。
 
@@ -361,7 +362,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
     }
  ```
 
-2.    既定のシリアル化プロバイダーをリモート処理リスナー用の JsonSerializationProvider で上書きします。
+2.    既定のシリアル化プロバイダーをリモート処理リスナー用の JsonSerializationProvider でオーバーライドします。
 
   ```csharp
   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -377,7 +378,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
    }
   ```
 
-3.    既定のシリアル化プロバイダーをリモート処理クライアント ファクトリ用の JsonSerializationProvider で上書きします。
+3.    既定のシリアル化プロバイダーをリモート処理クライアント ファクトリ用の JsonSerializationProvider でオーバーライドします。
 
 ```csharp
   var proxyFactory = new ServiceProxyFactory((c) =>
@@ -391,3 +392,4 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services との WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
+

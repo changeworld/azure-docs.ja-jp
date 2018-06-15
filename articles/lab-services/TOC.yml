@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: VM を再デプロイする
               href: devtest-lab-redeploy-vm.md
+            - name: VM のインポート
+              href: devtest-lab-import-vm.md
         - name: ラボでの環境の使用
           items:
             - name: 環境の作成

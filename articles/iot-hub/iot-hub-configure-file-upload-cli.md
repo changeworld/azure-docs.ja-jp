@@ -1,24 +1,19 @@
 ---
-title: "Azure CLI (az.py) を使用して IoT Hub へのファイルのアップロードを構成する | Microsoft Docs"
-description: "クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub へのファイルのアップロードを構成する方法です。"
-services: iot-hub
-documentationcenter: 
+title: Azure CLI (az.py) を使用して IoT Hub へのファイルのアップロードを構成する | Microsoft Docs
+description: クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub へのファイルのアップロードを構成する方法です。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6b100e65aba604fd8becb02c3a205b3348872bc4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633854"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLI を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -28,7 +23,7 @@ ms.lasthandoff: 11/18/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure CLI 2.0][lnk-CLI-install]。
 * Azure IoT Hub。 IoT Hub がない場合は、`az iot hub create` [コマンド][lnk-cli-create-iothub]を使用して作成するか、ポータルを使用して [IoT Hub を作成][lnk-portal-hub] できます。
 * Azure Storage のアカウント Azure Storage アカウントがない場合は、「[Azure CLI 2.0 - ストレージ アカウントの管理][lnk-manage-storage]」に従って作成するか、ポータルを使用して[ストレージ アカウントを作成][lnk-portal-storage]できます。
@@ -131,7 +126,7 @@ az iot hub update --name {your iot hub name} --set properties.messagingEndpoints
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub のファイル アップロード機能に関する詳細については、[デバイスからのファイルのアップロード][lnk-upload]に関するページをご覧ください。
 

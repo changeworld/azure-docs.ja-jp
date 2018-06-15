@@ -1,25 +1,20 @@
 ---
 title: ESP8266 をクラウドへ - Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続する | Microsoft Docs
 description: このチュートリアルでは、Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続し、Sparkfun ESP8266 Thing Dev で Azure クラウド プラットフォームにデータを送信する方法について説明します。
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
-keywords: ''
-ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
+manager: ''
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 75ff53d5be29af08bb8e9c1b41f61040e5710cf7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635323"
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 Thing Dev をクラウドの Azure IoT Hub に接続する
 
@@ -155,7 +150,7 @@ Arduino IDE の Sparkfun ESP8266 Thing Dev パッケージをインストール�
    ![Arduino IDE で パッケージの URL を指定する](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
 1. **[環境設定]** ダイアログ ボックスで、**[OK]** をクリックします。
-1. 次に**[ツール]** > **[ボード]** > **[ボードマネージャ]** をクリックし、「esp8266」を検索します。
+1. 次に **[ツール]** > **[ボード]** > **[ボードマネージャ]** をクリックし、「esp8266」を検索します。
    ESP8266 バージョン 2.2.0 以降をインストールする必要があります。
 
    ![ESP8266 のインストール](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)

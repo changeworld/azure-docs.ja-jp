@@ -1,24 +1,20 @@
 ---
 title: C 用 Azure IoT device SDK – シリアライザー | Microsoft Docs
 description: C 用 Azure IoT device SDK でシリアライザー ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
-services: iot-hub
-documentationcenter: ''
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
+manager: arjmands
 ms.service: iot-hub
-ms.devlang: cpp
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: c
+ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 04b5ebf6d8c568fbfd9b291bef95af973ec5d6d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a724fa5acc930475bdbe4ffcc74141470a92326c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634146"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。それに続く記事では、[**IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md) について詳しく説明しました。 今回の記事では、残りのコンポーネントである **シリアライザー** ライブラリについて詳しく説明し、SDK の対応範囲をすべて説明します。
@@ -66,7 +62,7 @@ END_NAMESPACE(WeatherStation);
 ### <a name="supported-data-types"></a>サポートされているデータ型
 次のデータの型は、 **シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| type | [説明] |
+| type | 説明 |
 | --- | --- |
 | double |倍精度浮動小数点数 |
 | int |32 ビット整数 |

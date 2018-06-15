@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 871098642f586a123d056e2da22d2fceae9bdfe5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638077"
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>リモート監視の事前構成済みソリューションのチュートリアル
 
@@ -35,7 +36,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
 
-![論理アーキテクチャ](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+![論理アーキテクチャ](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
 
 ## <a name="microservices--docker-containers"></a>Microservices および Docker コンテナー
 リモート監視は、マイクロサービス アーキテクチャを利用した最初の構成済みソリューションです。 ソリューションは、[.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) と [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) の両方で使用できます。
@@ -55,7 +56,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレーション デバイスはそれぞれ、次の種類のメッセージを IoT Hub に送信することができます。
 
-| メッセージ | [説明] |
+| メッセージ | 説明 |
 | --- | --- |
 | Startup |デバイスは、起動すると、デバイス自体に関する情報が含まれる **device-info** メッセージをバックエンドに送信します。 このデータには、デバイス ID と、デバイスでサポートされているコマンドとメソッドの一覧が含まれています。 |
 | プレゼンス |デバイスは定期的に **presence** メッセージを送信して、センサーの存在を感知できるかどうかを報告します。 |
@@ -102,7 +103,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレートされたデバイスは、ソリューション ポータルから IoT ハブを通じて呼び出された以下のメソッド ([ダイレクト メソッド][lnk-direct-methods]) を処理することができます。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | InitiateFirmwareUpdate |ファームウェアの更新を実行するようにデバイスに指示します |
 | Reboot |再起動するようにデバイスに指示します |
@@ -114,7 +115,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレートされたデバイスは、ソリューション ポータルから IoT ハブを通じて送信される以下のコマンド (cloud-to-device メッセージ) を処理することができます。
 
-| コマンド | [説明] |
+| コマンド | 説明 |
 | --- | --- |
 | PingDevice |デバイスに *ping* を送信して、デバイスが起動しているかどうかを確認します。 |
 | StartTelemetry |デバイスのテレメトリ送信を開始します。 |

@@ -2,13 +2,13 @@
 
 # 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
-## [Azure の ID 管理について](identity-fundamentals.md)
-## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
+## [Azure の ID 管理について](fundamentals/identity-fundamentals.md)
+## [Azure ID ソリューションについて](fundamentals/understand-azure-identity-solutions.md)
 ## [ハイブリッド ID ソリューションの選択](choose-hybrid-identity-solution.md)
 ## [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)
-## [保存場所とデータに関する考慮事項](active-directory-data-storage-eu.md)
-## [FAQ](active-directory-faq.md)
-## [最新情報](whats-new.md)
+## [保存場所とデータに関する考慮事項](fundamentals/active-directory-data-storage-eu.md)
+## [FAQ](fundamentals/active-directory-faq.md)
+## [最新情報](fundamentals/whats-new.md)
 
 
 # 作業開始
@@ -17,14 +17,14 @@
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
 ## [会社のブランドの構成](customize-branding.md)
 ## [Azure AD へのユーザーの追加](add-users-azure-active-directory.md)
-## [ユーザーへのライセンスの割り当て](license-users-groups.md)
+## [ユーザーへのライセンスの割り当て](fundamentals/license-users-groups.md)
 ## [セルフサービスによるパスワードのリセットの構成](authentication/quickstart-sspr.md)
 ## [Azure AD での組織のプライバシーに関する情報の追加](active-directory-properties-area.md)
 
 
 # 方法
 ## 計画と設計
-### [Azure AD のアーキテクチャを理解する](active-directory-architecture.md)
+### [Azure AD のアーキテクチャを理解する](fundamentals/active-directory-architecture.md)
 ### [Azure Active Directory での要求マッピング](active-directory-claims-mapping.md)
 ### [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
 #### 要件を確認する
@@ -87,7 +87,7 @@
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [グループ メンバーを管理する](active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](active-directory-accessmanagement-managing-group-owners.md)
-### [グループ メンバーシップを管理する](active-directory-groups-membership-azure-portal.md)
+### [グループ メンバーシップを管理する](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
 #### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
 #### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
@@ -100,7 +100,7 @@
 ### [グループの名前付けポリシーの適用](groups-naming-policy.md)
 ### [グループをすべて表示する](active-directory-groups-view-azure-portal.md)
 ### [SaaS アプリへのグループ アクセスの追加](active-directory-accessmanagement-group-saasapps.md)
-### [削除された Office 365 グループを復元する](active-directory-groups-restore-azure-portal.md)
+### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [グループ設定の管理](active-directory-groups-settings-azure-portal.md) 
 ### 高度なルールの作成
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
@@ -134,8 +134,6 @@
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Azure Active Directory アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-content-pack.md)
 ### [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
-#### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
-#### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -281,7 +279,8 @@
 ### カスタム ドメイン名
 #### [クイックスタート](add-custom-domain.md)
 #### [カスタム ドメイン名を追加する](active-directory-domains-manage-azure-portal.md)
-### [ディレクトリを管理する](active-directory-administer.md)
+### [ディレクトリを管理する](fundamentals/active-directory-administer.md)
+### [ディレクトリを削除する](directory-delete-howto.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [セルフサービス サインアップ](active-directory-self-service-signup.md)
 ### [管理されていないディレクトリの引き継ぎ](domains-admin-takeover.md)
@@ -300,12 +299,12 @@
 ## リソースへのアクセスを委任する
 ### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
 #### [ユーザーに管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md) 
-#### [メンバーとゲスト ユーザーのアクセス許可の比較](users-default-permissions.md) 
+#### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md) 
 ### [特権アクセスのセキュリティ保護](admin-roles-best-practices.md)  
 ### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md) 
 
 
-#### [既定のユーザー アクセス許可](users-default-permissions.md)
+#### [既定のユーザー アクセス許可](fundamentals/users-default-permissions.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 ### [特権ロールのセキュリティ保護](admin-roles-best-practices.md)
@@ -323,27 +322,29 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [条件](active-directory-conditional-access-conditions.md)
-#### [場所の条件](active-directory-conditional-access-locations.md)
-#### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
-#### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
-#### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
-#### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
-#### [What if ツール](active-directory-conditional-access-whatif.md)
+#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
-#### タスク
+#### チュートリアル
 ##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
+#### 概念
+##### [条件](active-directory-conditional-access-conditions.md)
+##### [場所の条件](active-directory-conditional-access-locations.md)
+##### [コントロール](active-directory-conditional-access-controls.md)
+##### [What if ツール](active-directory-conditional-access-whatif.md)
+##### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
+#### ハウツー ガイド
+##### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
+##### [信頼されていないネットワークからのアクセスの試行に関する条件付きアクセス ポリシーを構成する](active-directory-conditional-access-untrusted-networks.md)
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
 ##### [アプリベースの条件付きアクセスの設定](active-directory-conditional-access-mam.md)
 ##### [ユーザーとアプリの使用条件を指定する](active-directory-tou.md)
+##### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
 ##### [VPN 接続の設定](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [SharePoint Online と Exchange Online の設定](active-directory-conditional-access-no-modern-authentication.md)
 ##### [修復](active-directory-conditional-access-device-remediation.md)
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [FAQ](active-directory-conditional-faqs.md)
-
 
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)

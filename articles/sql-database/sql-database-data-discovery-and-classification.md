@@ -7,20 +7,20 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: giladm
-ms.openlocfilehash: b43b010a88f313930217289549448de30a82a070
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 673286c8dc9ec688199fe80cf5a763f249192de5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363810"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646781"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
 最も機微なデータの検出と分類 (ビジネス/金融、医療、PII など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
-* データのプライバシー基準および規制のコンプライアンス要件を満たす支援 (GDPR など)。
+* データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
 * さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 * 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
@@ -49,7 +49,7 @@ ms.locfileid: "34363810"
 
 2. [Azure SQL Database] ウィンドウの [セキュリティ] で、**[Advanced Threat Protection]** に移動します。 [Advanced Threat Protection] をクリックして有効にし、**[データの検出と分類 (プレビュー)]** カードをクリックします。
 
-   ![データベースをスキャンする](./media/sql-data-discovery-and-classification/data_classification.png) 
+   ![データベースのスキャン](./media/sql-data-discovery-and-classification/data_classification.png) 
 
 3. **[概要]** タブには、データベースの現在の分類状態の概要が表示されます。これには分類済みのすべての列の詳細な一覧が含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルだけを表示することもできます。 まだどの列も分類していない場合は、[手順 5 に進みます](#step-5)。
 

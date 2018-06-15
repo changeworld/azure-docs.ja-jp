@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jingwang
-ms.openlocfilehash: e0d801dbb8060cf2fa175086fc5324f444870412
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e50016003a7ef5202a9405b19a1c6ea567c5be16
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617095"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Presto からデータをコピーする
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Presto のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Presto** に設定する必要があります。 | [はい] |
 | host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | [はい] |
@@ -115,7 +116,7 @@ Presto からデータをコピーするには、データセットの type プ�
 
 Presto からデータをコピーするには、コピー アクティビティのソースの種類を **PrestoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **PrestoSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

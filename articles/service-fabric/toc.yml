@@ -632,6 +632,10 @@
           href: service-fabric-troubleshoot-local-cluster-setup.md
         - name: 一般的なシナリオの診断
           href: service-fabric-diagnostics-common-scenarios.md
+    - name: ベスト プラクティス
+      items:
+        - name: 運用環境の準備状況チェックリスト
+          href: service-fabric-production-readiness-checklist.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

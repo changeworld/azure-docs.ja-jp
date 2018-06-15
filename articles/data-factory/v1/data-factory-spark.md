@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d22829217209b7d0b1b5690d6a864b58bf102e3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622280"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -327,12 +328,12 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 
 次の表で、JSON 定義で使用される JSON プロパティについて説明します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | name | パイプラインのアクティビティの名前。 | [はい] |
-| 説明 | アクティビティの動作を説明するテキスト。 | いいえ  |
+| description  | アクティビティの動作を説明するテキスト。 | いいえ  |
 | 型 | このプロパティは HDInsightSpark に設定する必要があります。 | [はい] |
-| 既定のコンテナー | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | [はい] |
+| linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | [はい] |
 | rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | [はい] |
 | entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | [はい] |
 | className | アプリケーションの Java/Spark のメイン クラス。 | いいえ  |
@@ -347,7 +348,7 @@ Spark アクティビティでは、Pig および Hive アクティビティが�
 
 HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。 
 
-| パス | [説明] | 必須 | type |
+| パス | 説明 | 必須 | type |
 | ---- | ----------- | -------- | ---- |
 | が必要です。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | [はい] | フォルダー |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | [はい] | ファイル |
