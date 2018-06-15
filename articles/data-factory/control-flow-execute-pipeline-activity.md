@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 9542f11830415a84af6857c9008ad26056a8af3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a858e3e901f300ce5f0dbc44437106905078375
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617717"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
 パイプラインの実行アクティビティを使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/23/2018
 ```
 
 ## <a name="type-properties"></a>型のプロパティ
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | パイプラインの実行アクティビティの名前。 | String | [はい]
 型 | **ExecutePipeline** に設定する必要があります。 | String | [はい]

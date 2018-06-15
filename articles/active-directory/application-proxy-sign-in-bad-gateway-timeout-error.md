@@ -3,22 +3,24 @@ title: アプリケーション プロキシ アプリケーション使用時�
 description: Azure AD アプリケーション プロキシ アプリケーションのアクセスに関する一般的な問題の解決方法。
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 1c6c6f56f8e4d8d1d7a10bd07679732d64b86e23
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156094"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292305"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -108,7 +110,7 @@ ms.locfileid: "34156094"
 
 引き続きエラーが表示される場合は、コネクタがインストールされているマシンに移動してブラウザーを開き、アプリケーションに使用されている内部 URL への到達を試みます。 コネクタは、同じマシンの別のクライアントのように動作します。 アプリケーションに到達できない場合は、そのマシンがアプリケーションに到達できない原因を調査するか、またはアプリケーションにアクセスできるサーバー上のコネクタを使用します。
 
-そのマシンからアプリケーションに到達できる場合は、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](active-directory-application-proxy-troubleshoot.md#connector-errors)で確認できます。 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージで、解決策のためのより具体的な推奨事項を共有できます。 ログを表示する方法については、[コネクタのドキュメント](manage-apps/application-proxy-connectors.md#under-the-hood)を参照してください。
+そのマシンからアプリケーションに到達できる場合は、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](manage-apps/application-proxy-troubleshoot.md#connector-errors)で確認できます。 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージで、解決策のためのより具体的な推奨事項を共有できます。 ログを表示する方法については、[コネクタのドキュメント](manage-apps/application-proxy-connectors.md#under-the-hood)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 [Azure AD アプリケーション プロキシ コネクタについて](manage-apps/application-proxy-connectors.md)

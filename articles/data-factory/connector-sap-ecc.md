@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 95b0440dbec1a13096928bdefd31383d07a1f86d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618574"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -54,7 +55,7 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 
 SAP ECC のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **SapEcc** に設定する必要があります | [はい] |
 | url | SAP ECC OData サービスの URL。 | [はい] |
@@ -91,7 +92,7 @@ SAP ECC のリンクされたサービスでは、次のプロパティがサポ
 
 SAP ECC からデータをコピーするには、データセットの type プロパティを **SapEccResource** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | パス | SAP ECC OData エンティティのパス。 | [はい] |
 
@@ -121,7 +122,7 @@ SAP ECC からデータをコピーするには、データセットの type プ
 
 SAP ECC からデータをコピーするには、コピー アクティビティのソース タイプを **SapEccSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **SapEccSource** に設定する必要があります。 | [はい] |
 | クエリ | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: 3977aa16878ea1e2d808376165f551ce5fb8d00f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 89b3f1184254964a32073c63de3fe69d8a51e292
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944984"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652959"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -39,11 +39,11 @@ ms.locfileid: "33944984"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Linux 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で実行できます。詳細については、この[記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)を参照してください。
+Linux 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で実行できます。詳細については、この[記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)をご覧ください。
 
 ### <a name="script-location"></a>スクリプトの場所
 
-拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob ストレージにアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
+拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob Storage にアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
@@ -52,10 +52,10 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 
 ### <a name="tips-and-tricks"></a>ヒントとコツ
 * この拡張機能が失敗する原因として最もよく挙げられるものはスクリプトの構文エラーであるため、スクリプトを実行してもエラーが発生しないことをテストしたり、失敗した個所を簡単に特定できるロギング機能をスクリプトに追加してください。
-* 誤って 1 回以上実行されたときも、システムに変更が加えられないよう、べき等のスクリプトを作成してください。
+* 誤って複数回実行されたときも、システムに変更が加えられないよう、べき等のスクリプトを作成してください。
 * スクリプトの実行時に、ユーザー入力を必要としないように作成してください。
 * スクリプトの実行に許されているのは 90 分間で、これを超えると拡張機能へのプロビジョニングが失敗します。
-* スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張機能で問題が発生し、再起動後、その拡張機能の実行は継続されません。 
+* スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張で問題が発生し、再起動後にその拡張は実行されなくなります。 
 * 再起動が必要なスクリプトの場合は、アプリケーションをインストールしてから、スクリプトを実行するなどしてください。Cron ジョブを使用して、あるいは DSC、Chef、Puppet 拡張機能などのツールを使用して再起動をスケジュールしてください。
 * 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、Systemd サービス ユニットを作成するためにスクリプトを使用することができます。
 * スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Cron ジョブを作成する必要があります。 
@@ -76,7 +76,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 ```json
 {
   "name": "config-app",
-  "type": "extensions",
+  "type": "Microsoft.Compute/virtualMachines/extensions",
   "location": "[resourceGroup().location]",
   "apiVersion": "2015-06-15",
   "dependsOn": [

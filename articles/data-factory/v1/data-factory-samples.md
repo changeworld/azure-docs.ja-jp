@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b0b8f56266f77724a60253991556b15a923e537f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c56501deaf4d30374690a112b1ba11eaa9344cdb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622365"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/28/2018
 ## <a name="samples-on-github"></a>GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory) には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。 Samples\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
 
-| サンプル | [説明] |
+| サンプル | 説明 |
 |:--- |:--- |
 | [ADF チュートリアル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |このサンプルでは、Azure Data Factory を使用したログ ファイルの処理によってログ ファイルのデータから知見を得る方法をエンドツーエンドでわかりやすく解説します。 <br/><br/>このチュートリアルでは、Data Factory パイプラインでサンプル ログを収集、処理します。ログから得たデータを参照データで補強し、そのデータを変換することによって、最近開始されたマーケティング キャンペーンの有効性を評価します。 |
 | [JSON のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |一般的なシナリオにおける JSON の使用例を紹介したサンプルです。 |
@@ -48,7 +49,7 @@ ms.lasthandoff: 04/28/2018
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレートがあります。
 
-| テンプレート | [説明] |
+| テンプレート | 説明 |
 | --- | --- |
 | [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
 | [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |

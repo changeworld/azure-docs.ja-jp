@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f349158873acca9d50d4d6e5fdfa3539f26207fe
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba779ebcbc791f9caa60948feeb38b88a23ef379
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362569"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640664"
 ---
 #    <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 
@@ -28,7 +28,7 @@ Microsoft.Skills.Util.TextMerger
 
 パラメーターの大文字と小文字は区別されます。
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | insertPreTag  | 各挿入前に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
 | insertPostTag | 各挿入後に含まれる文字列。 既定値は `" "` です。 スペースを省略するには、値を `""` に設定します。  |
@@ -144,4 +144,4 @@ Microsoft.Skills.Util.TextMerger
 
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [インデクサーの作成 (REST)](ref-create-indexer.md)
++ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

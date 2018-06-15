@@ -1,24 +1,19 @@
 ---
-title: Azure Monitor での役割、アクセス許可、およびセキュリティの使用 | Microsoft Docs
+title: Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 description: Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: ''
+ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264604"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージ サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -73,7 +68,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| 操作 | [説明] |
+| 操作 | 説明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |
@@ -125,7 +120,7 @@ New-AzureRmRoleDefinition -Role $role
 
 * 1 つの専用ストレージ アカウントを使用して、データを監視します。 複数のストレージ アカウントに監視データを分割する必要がある場合は、ストレージ アカウントの使用状況を、監視データと監視対象外データで共有しないでください。監視データ (サード パーティ SIEM など) にのみアクセスする必要があるユーザーに対して、監視対象外データへのアクセス権が誤って付与されることがあります。
 * 1 つの専用 Service Bus または Event Hub 名前空間を使用します。
-* 監視関連のストレージ アカウントまたはイベント ハブを別のリソース グループに保持することで、そのストレージ アカウントとイベント ハブへのアクセスを制限したうえで、監視の役割の [スコープを使用して](../role-based-access-control/overview.md#basics-of-access-management-in-azure) 、アクセスをそのリソース グループだけに限定します。
+* 監視関連のストレージ アカウントまたはイベント ハブを別のリソース グループに保持することで、そのストレージ アカウントとイベント ハブへのアクセスを制限したうえで、監視の役割の [スコープを使用して](../role-based-access-control/overview.md#scope) 、アクセスをそのリソース グループだけに限定します。
 * ユーザーによるアクセス対象が監視データだけの場合、ListKeys アクセス許可は、サブスクリプション スコープでストレージ アカウントまたはイベント ハブに付与しないでください。 代わりに、このアクセス許可は、リソースまたはリソース グループ (専用監視リソース グループの場合) スコープでユーザーに付与します。
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>監視関連のストレージ アカウントに対するアクセスの制限

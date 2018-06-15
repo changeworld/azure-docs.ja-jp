@@ -259,6 +259,8 @@
               href: active-directory-v2-protocols-oauth-on-behalf-of.md
             - name: 証明書の資格情報
               href: active-directory-certificate-credentials.md
+            - name: Oauth 2.0 のサンプル コード
+              href: active-directory-protocols-oauth-get-jwt-token.md
         - name: トークン
           href: active-directory-v2-tokens.md
         - name: スコープと同意

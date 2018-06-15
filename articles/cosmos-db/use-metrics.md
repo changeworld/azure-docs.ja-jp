@@ -6,20 +6,17 @@ services: cosmos-db
 author: gnot
 manager: kfile
 editor: ''
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: a2934e636166867ce158d79897d8f1fccb1699fc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 49a381efa0603889336f43e409698bbcef44f41f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615643"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -42,7 +39,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determining-the-throughput-distribution-across-partitions"></a>パーティション全体のスループットの分散を決める
 
-適切な基数のパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コレクションのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。 
+適切なカーディナリティのパーティション キーを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コレクションのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の **[メトリック]** ブレードに移動します。 **[スループット]** タブの **[各物理パーティションによる 1 秒あたりの最大消費 RU]** グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切な例です。 
 
 ![3:05 PM に 1 つのパーティションの使用量が高い](media/use-metrics/metrics-17.png)
 
@@ -50,7 +47,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="determining-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
 
-適切な基数のパーティションを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コレクションのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の [メトリック] ブレードに移動します。 [スループット] タブの [各物理パーティションによる 1 秒あたりの最大消費 RU] グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切なことを示しています。 
+適切なカーディナリティのパーティションを持つことは、スケーラブルなアプリケーションのために重要です。 パーティションごとに分けられたパーティション コレクションのスループットの分散を決めるには、[Azure Portal](https://portal.azure.com) の [メトリック] ブレードに移動します。 [スループット] タブの [各物理パーティションによる 1 秒あたりの最大消費 RU] グラフにストレージの内訳が表示されます。 次の図は、パーティションが左端に偏っていることでわかるように、データの分散が不適切なことを示しています。 
 
 ![不適切なデータ分散の例](media/use-metrics/metrics-07.png)
 

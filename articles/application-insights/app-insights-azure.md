@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure アプリ向けの Application Insights | Microsoft Docs"
-description: "Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。"
+title: Microsoft Azure アプリ向けの Application Insights | Microsoft Docs
+description: Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: mbullwin
-ms.openlocfilehash: 071e7099e57ed7156799af4ffb49cccbd003052d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a980ad7d078c27e91616f07187b75ab442ea5f70
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294957"
 ---
 # <a name="application-insights-for-microsoft-azure-apps"></a>Microsoft Azure アプリ向けの Application Insights
 

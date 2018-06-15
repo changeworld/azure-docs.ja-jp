@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
-ms.author: mbullwin; borooji
-ms.openlocfilehash: 987ae184a0812f24df99a0b6e6543c8be55a9e79
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: mbullwin
+ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294098"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -203,7 +204,7 @@ public void Process(ITelemetry item)
 <a name="add-properties"></a>
 
 ## <a name="add-properties-itelemetryinitializer"></a>プロパティの追加: ITelemetryInitializer
-テレメトリ初期化子を使用して、すべてのテレメトリで送信されるグローバル プロパティを定義し、標準テレメトリ モジュールの選択された動作を上書きします。
+テレメトリ初期化子を使用して、すべてのテレメトリで送信されるグローバル プロパティを定義し、標準テレメトリ モジュールの選択された動作をオーバーライドします。
 
 たとえば、Web 向けの Application Insights パッケージでは HTTP 要求に関するテレメトリが収集されます。 既定では、応答コードが 400 以上の要求はすべて失敗としてフラグが設定されます。 これに対して 400 を成功として処理する場合は、"成功" プロパティを設定するテレメトリ初期化子を指定できます。
 

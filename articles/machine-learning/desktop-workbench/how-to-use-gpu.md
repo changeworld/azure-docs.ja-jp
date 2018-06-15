@@ -7,14 +7,16 @@ ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 1bd8f28b472361470fa8020149a9af0c690fbc52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db0cfa1d91681d48a21ac160706dc4e8c72f81c2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830913"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Azure Machine Learning で GPU を使用する方法
 グラフィカル処理ユニット (GPU) は、特定の深層ニューラル ネットワーク モデルをトレーニングするときに通常発生する負荷の大きいタスクの処理に広く使用されます。 GPU の使用により、モデルのトレーニング時間を大幅に削減できます。 このドキュメントでは、GPU を搭載した [DSVM (データ サイエンス仮想マシン)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) を実行ターゲットとして使用するように Azure ML Workbench を構成する方法を説明します。 
@@ -57,7 +59,7 @@ Azure ML Workbench は、Azure Linux VM 上の Docker での実行もサポー�
 ### <a name="create-a-ubuntu-based-linux-data-science-virtual-machine-in-azure"></a>Azure で Ubuntu ベースの Linux データ サイエンス仮想マシンを作成する
 1. Web ブラウザーを開き、[Azure Portal](https://portal.azure.com) に移動します。
 
-2. ポータルの左側で**+ 新規**を選択します。
+2. ポータルの左側で **+ 新規**を選択します。
 
 3. マーケットプレースで「Linux (Ubuntu) データ サイエンス仮想マシン」を検索します。
 

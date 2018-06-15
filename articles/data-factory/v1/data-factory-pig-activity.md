@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af0c19988c52760a681477a5cea7ebbc48492c83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d65851f73ca3cc0bc85caff39b3a322900b78843
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622518"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -81,14 +82,14 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 }
 ```
 ## <a name="syntax-details"></a>構文の詳細
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |アクティビティの名前 |[はい] |
-| 説明 |アクティビティの用途を説明するテキストです。 |いいえ  |
+| description  |アクティビティの用途を説明するテキストです。 |いいえ  |
 | 型 |HDInsightPig |[はい] |
 | inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
 | outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |[はい] |
-| 既定のコンテナー |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
+| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
 | script (スクリプト) |Pig スクリプトをインラインに指定します |いいえ  |
 | スクリプトのパス |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |

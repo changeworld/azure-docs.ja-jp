@@ -1,22 +1,22 @@
 ---
 title: Azure Active Directory 認証を構成する - SQL | Microsoft Docs
-description: Azure Active Directory を構成した後で、Azure AD 認証を使って SQL Database、マネージ インスタンス、および SQL Data Warehouse に接続する方法について説明します。
+description: Azure Active Directory を構成した後で、Azure AD 認証を使って SQL Database、Managed Instance、および SQL Data Warehouse に接続する方法について説明します。
 services: sql-database
 author: GithubMirek
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 5451046eb2bfc611db863d18cee93a248e651f88
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a0cb3d69cd161a409d0a035be783bb255a83036
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194251"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644367"
 ---
-# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>SQL Database、マネージ インスタンス、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
+# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>SQL Database、Managed Instance、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
 
 この記事では、Azure AD を作成して設定した後、Azure SQL Database と SQL Data Warehouse で Azure AD を使用する方法を示します。 概要については、「[Azure Active Directory 認証](sql-database-aad-authentication.md)」を参照してください。
 
@@ -44,18 +44,18 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 > Azure AD アカウント (Azure SQL Server の管理者アカウントを含みます) に基づいていないユーザーは、Azure AD に基づくユーザーを作成できません。これは、Azure AD で提示されるデータベース ユーザーを検証するアクセス許可がないためです。
 > 
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>マネージ インスタンスの Azure Active Directory 管理者をプロビジョニングする
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする
 
 > [!IMPORTANT]
-> 次の手順は、マネージ インスタンスをプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
+> 次の手順は、マネージド インスタンスをプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
 
-セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、マネージ インスタンスに Azure AD の読み取りアクセス許可が必要です。 そのためには、マネージ インスタンスに Azure AD の読み取りアクセス許可を付与する必要があります。 これには 2 つの方法があります。ポータルから付与する方法と、PowerShell を使用する方法です。 いずれの場合も、次の手順を実行します。
+セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、マネージド インスタンスに Azure AD の読み取りアクセス許可が必要です。 そのためには、Managed Instance に Azure AD の読み取りアクセス許可を付与する必要があります。 これには 2 つの方法があります。ポータルから付与する方法と、PowerShell を使用する方法です。 いずれの場合も、次の手順を実行します。
 
 1. Azure Portal の右上隅にあるユーザー アイコンを選択すると、Active Directory 候補の一覧がドロップダウンで表示されます。 
 2. 既定の Azure AD として適切な Active Directory を選択します。 
 
-   この手順では、Active Directory に関連付けられたサブスクリプションをマネージ インスタンスとリンクすることで、Azure AD とマネージ インスタンスの両方に同じサブスクリプションが使用されるようにします 。
-3. マネージ インスタンスに移動し、Azure AD 統合に使用するものを選択します。
+   この手順では、Active Directory に関連付けられたサブスクリプションを Managed Instance とリンクすることで、Azure AD とマネージド インスタンスの両方に同じサブスクリプションが使用されるようにします 。
+3. Managed Instance に移動し、Azure AD 統合に使用するものを選択します。
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
@@ -71,7 +71,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     ![成功](./media/sql-database-aad-authentication/success.png)
 
-6.  これで、マネージ インスタンスの Azure AD 管理者を選択できるようになりました。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** を選択します。
+6.  これで、マネージド インスタンスの Azure AD 管理者を選択できるようになりました。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** を選択します。
 
     ![管理者の設定](./media/sql-database-aad-authentication/set-admin.png)
 
@@ -140,7 +140,7 @@ Azure AD 管理者をプロビジョニングするには、次のような Azur
 
 Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
-| コマンドレット名 | [説明] |
+| コマンドレット名 | 説明 |
 | --- | --- |
 | [Set-AzureRMSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
 | [Remove-AzureRMSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -188,7 +188,7 @@ Azure Active Directory 管理者は、REST API を使用してプロビジョニ
 
 ### <a name="cli"></a>CLI  
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
-| コマンド | [説明] |
+| コマンド | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -293,7 +293,7 @@ Azure AD のネイティブ ユーザーまたはフェデレーション ユー
 ネイティブ ユーザーとは、Azure AD に明示的に作成され、ユーザー名とパスワードを使用して認証されるユーザーです。これに対し、フェデレーション ユーザーとは、所属ドメインが Azure AD との間でフェデレーションされている Windows ユーザーをいいます。 後者の (ユーザーとパスワードを使用した) 方法は、ユーザーが自分の Windows 資格情報の使用を希望しているものの、そのローカル コンピューターがドメインに参加していない (つまりリモート アクセスを使用している) 場合に使用できます。 このケースでは、Windows ユーザーが自分のドメイン アカウントとパスワードを指定し、フェデレーションされた資格情報を使用して SQL DB/DW に対する認証を行うことができます。
 
 1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - パスワード]** を選択します。
-2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。 これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 
     ![AD パスワード認証を選択する][12]

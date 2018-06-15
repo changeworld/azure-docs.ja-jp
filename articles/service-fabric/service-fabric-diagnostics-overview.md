@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: srrengar
-ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643177"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -46,9 +47,6 @@ Service Fabric は、標準で、包括的なイベントのセットを提供�
 EventStore は、すばやい分析や、クラスターがどのように動作しているか、そして、物事が想定したとおりに起きているかどうかの概要を把握するために使用することをお勧めします。 クラスターによって生成されたログとイベントを収集するには、通常、[Azure 診断拡張機能](service-fabric-diagnostics-event-aggregation-wad.md)を使用することをお勧めします。 この機能は OMS Log Analytics の Service Fabric 固有のソリューションである Service Fabric Analytics と緊密に統合されています。Service Fabric Analytics は Service Fabric クラスターを監視するためのカスタム ダッシュボードを備えており、クラスターのイベントのクエリを実行し、アラートを設定することができます。 [OMS を使用したイベント分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事で、これに関する詳細をご覧ください。 
 
  クラスターの監視の詳細については、「[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)」でご覧いただけます。
-
-
- ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>パフォーマンスの監視
 基盤となるインフラストラクチャを監視することは、クラスターやリソース使用率の状態を把握する上で重要です。 システム パフォーマンスの測定はいくつかの要因に依存します。その各要因は通常、主要業績評価指標 (KPI) を使用して測定されます。 Service Fabric 関連の KPI は、パフォーマンス カウンターとして、クラスター内のノードから収集できるメトリックに対応させることができます。

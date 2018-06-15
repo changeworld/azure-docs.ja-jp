@@ -56,8 +56,6 @@
     - name: IaaS セキュリティ
       href: security-virtual-machines-overview.md
       items:
-        - name: ベスト プラクティス - Azure VM
-          href: azure-security-best-practices-vms.md
         - name: ベスト プラクティス - IaaS ワークロード
           href: azure-security-iaas.md
         - name: Azure Marketplace イメージ

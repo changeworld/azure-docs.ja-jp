@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: pabutler
-ms.openlocfilehash: 48b0b4177dad6262105bf30be2b8714f6ea1228f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076712"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809473"
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>SaaS アプリケーションの技術的な発行ガイド
 
@@ -37,21 +37,21 @@ SaaS オファーを発行する方法についての理解をより深められ
 
 SaaS アプリケーションは、両方の Azure ネットショップで入手できます。次の表では、現在利用できるオプションについて説明しています。
 
-| ネットショップのオプション | 登録 | 試用版/取引 |  
+| ネットショップのオプション | 一覧 | 試用版/取引 |  
 | --- | --- | --- |  
 | AppSource | あり (お問い合わせ) | あり (PowerBI/Dynamics) |
-| Azure Marketplace | なし | あり (SaaS アプリ) |   
+| Azure Marketplace | いいえ  | あり (SaaS アプリ) |   
 
 **登録:** 発行の登録オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | あり | なし |  
-| **PowerBI/Dynamics** | あり | あり (Azure AD の統合) |  
-| **SaaS アプリ**| あり | あり (Azure AD の統合) |     
+| **お問い合わせ** | [はい] | いいえ  |  
+| **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
+| **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
 
-Marketplace ネットショップの詳細と各発行オプションの説明については、[Marketplace のパブリッシャー ガイド](https://aka.ms/sellerguide)と[発行のオプション](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option)に関するページを参照してください。
+Marketplace ネットショップの詳細と各発行オプションの説明については、[Marketplace のパブリッシャー ガイド](https://aka.ms/sellerguide)と[発行のオプション](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option)に関するページを参照してください。
 
 ## <a name="business-requirements"></a>ビジネス要件
 SaaS オファーのビジネス要件は、テクノロジ要件と並行して満たすことができます。 ビジネス要件と情報のほとんどは、Cloud パートナー ポータルで SaaS オファーを作成するときに収集されます。 ビジネス要件は次のとおりです。 
@@ -62,7 +62,7 @@ SaaS オファーのビジネス要件は、テクノロジ要件と並行して
 * プライバシー ポリシーと使用条件を設定する
 * サポートの連絡先を定義する  
 
-詳細については、「[Marketplace での発行に関する前提条件](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)」を参照してください。
+詳細については、「[Marketplace での発行に関する前提条件](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)」を参照してください。
 
 ## <a name="technical-requirements"></a>技術的な要件
 
@@ -72,11 +72,11 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 
 最適な Azure Active Directory のドキュメント、サンプル、およびガイダンスについては、以下のサイトを参照してください。 
 
-* [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+* [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Azure Active Directory との統合](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+* [Azure Active Directory との統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+* [Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 * [Azure のロードマップ - セキュリティ + ID](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -102,7 +102,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="publishing-process"></a>発行プロセス
+## <a name="publishing-process"></a>公開プロセス
 
 SaaS の発行プロセスには、技術的な手順とビジネス上の手順があります。  Azure Active Directory の開発と統合を行うほとんどの作業は、オファーのビジネス要件を満たすために必要な作業と並行して実行できます。 ビジネス要件の大部分は、SaaS アプリ オファーの構成の一部である Cloud パートナー ポータルです。  
 次の図は、試用版/取引オファーの主な発行手順を示しています。  
@@ -111,7 +111,7 @@ SaaS の発行プロセスには、技術的な手順とビジネス上の手順
 
 次の表は、各主要な発行手順を示しています。  
 
-| 発行手順 | [説明] |   
+| 発行手順 | 説明 |   
 | --- | --- |  
 | **SaaS アプリケーションを作成する** | Cloud パートナー ポータルにログインし、**[新規]** を選択し、**[SaaS アプリ]** オファーを選択します。 |  
 | **Azure AD との統合を作成する** | 前のセクションで説明したテクノロジ要件に従って、SaaS オファーと Azure AD を統合します。 |  
@@ -125,7 +125,7 @@ SaaS の発行プロセスには、技術的な手順とビジネス上の手順
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする  
 
-Microsoft はすべての Marketplace ユーザーを Azure AD で認証するので、認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 認証の間にアプリが Azure AD から受け取るトークンには、アプリでユーザー アカウントを作成するために使うことができる重要なユーザー情報が含まれているので、プロビジョニング エクスペリエンスを自動化し、変換の可能性を高くすることができます。 トークンの詳細については、[サンプル トークン](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims)に関するページを参照してください。
+Microsoft はすべての Marketplace ユーザーを Azure AD で認証するので、認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 認証の間にアプリが Azure AD から受け取るトークンには、アプリでユーザー アカウントを作成するために使うことができる重要なユーザー情報が含まれているので、プロビジョニング エクスペリエンスを自動化し、変換の可能性を高くすることができます。 トークンの詳細については、[サンプル トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)に関するページを参照してください。
 
 Azure AD を使ってアプリまたは試用版の 1 クリック認証を有効にすると、次のことが可能になります。  
 * Marketplace から試用版への顧客エクスペリエンスを簡素化する。  
@@ -141,15 +141,15 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 既に Azure AD をサポートしている場合は、以下を実行します。
 1.  Azure Portal でアプリケーションを登録します
-2.  Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
+2.  Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
 
 Azure AD フェデレーション SSO が初めての場合は、以下を実行します。 
 1.  Azure Portal でアプリケーションを登録します
-2.  [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発します。
-3.  AAD のマルチテナントのサポート機能を有効にして、ワンクリック試用環境を用意します。詳細情報については、[こちら](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)を参照してください。  
+2.  [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発します。
+3.  AAD のマルチテナントのサポート機能を有効にして、ワンクリック試用環境を用意します。詳細情報については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)を参照してください。  
 
 **シングルテナントアプリケーションの場合は、以下のいずれかのオプションを使用してください。**  
-* [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使用して、ユーザーをゲスト ユーザーとしてディレクトリに追加します
+* [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使用して、ユーザーをゲスト ユーザーとしてディレクトリに追加します
 * "お問い合わせ" を使用して、顧客用に試用版を手動でプロビジョニングします
 * 顧客ごとの "体験版" を開発します
 * SSO を使ってマルチテナント サンプル デモ アプリをビルドします

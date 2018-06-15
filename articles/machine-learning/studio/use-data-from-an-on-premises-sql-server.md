@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 73b68ec612f10fabe0891bfddfa7783b981642bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c3402c824b70d357b68e71ed7cb5783a7489b2b0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837380"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
 
@@ -90,7 +92,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 5. [Download and register data gateway (データ ゲートウェイのダウンロードと登録)] ダイアログで、ゲートウェイ登録キーをクリップボードにコピーします。
 
     ![データ ゲートウェイをダウンロードして登録](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]**をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
+6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
 7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
 8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
 9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。

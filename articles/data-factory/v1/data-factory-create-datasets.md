@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a572824225c0d83af698c4ff18d6b297b1ebb729
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620481"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +80,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 次の表では、上記の JSON のプロパティについて説明します。   
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |[はい] |該当なし |
 | 型 |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
@@ -192,7 +193,7 @@ structure:
 
 structure の各列には次のプロパティが含まれます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |列の名前です。 |[はい] |
 | 型 |列のデータ型です。  |いいえ  |
@@ -235,7 +236,7 @@ structure の各列には次のプロパティが含まれます。
 
 次の表では、availability セクションで使用できるプロパティについて説明します。
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされている頻度</b>は、Minute、Hour、Day、Week、Month です。 |[はい] |該当なし |
 | interval |頻度の乗数を指定します。<br/><br/>"frequency x interval" で、スライスが生成される頻度が決まります。 たとえば、データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/>注: **frequency** に **Minute** を指定する場合は、interval を 15 以上に設定してください。 |[はい] |該当なし |
@@ -282,7 +283,7 @@ structure の各列には次のプロパティが含まれます。
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
 ### <a name="validation-policies"></a>検証ポリシー
-| ポリシー名 | [説明] | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure Blob Storage** のデータが最小サイズ要件 (MB 単位) を満たしていることを検証します。 |Azure BLOB ストレージ |いいえ  |該当なし |
 | minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
@@ -318,7 +319,7 @@ structure の各列には次のプロパティが含まれます。
 
 データセットは Data Factory で作成されている場合を除き、**external** とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
-| Name | [説明] | 必須 | 既定値 |
+| Name | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | dataDelay |特定のスライスの外部データの可用性チェックを遅らせる時間。 たとえば、この設定を使用して、時間単位のチェックを延期することができます。<br/><br/>この設定は、現在の時刻にのみ適用されます。  たとえば、現在時刻が午後 1 時 00 分で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>注: この設定は、過去のスライスには影響しません。 **スライス終了時間** + **dataDelay** < **現在時刻**であるスライスは、遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、`day.hours:minutes:seconds` 形式で指定してください。 たとえば、24 時間を指定する場合は、24:00:00 を使用するのではなく、 1.00:00:00 を使用してください。 24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。 1 日と 4 時間の場合は 1:04:00:00 と指定します。 |いいえ  |0 |
 | retryInterval |エラーから次の試行までの待機時間です。 この設定は、現在の時刻に適用されます。 前の試行が失敗した場合に、次に試行できるのは **retryInterval** が経過した後です。 <br/><br/>現在時刻が午後 1 時 00 分の場合に最初の試行を開始したとします。 最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は "午後 1 時 00 分 + 1 分 (チェック時間) + 1 分 (再試行間隔) = 午後 1 時 02 分" になります。 <br/><br/>過去のスライスの場合、遅延はありません。 再試行は直ちに行われます。 |いいえ  |00:01:00 (1 分) |

@@ -8,12 +8,13 @@ ms.service: sql-database
 ms.custom: load & move data
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.topic: article
-ms.openlocfilehash: 6b594c81f86a87e3b50b487f523cf4699c97365a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.topic: conceptual
+ms.openlocfilehash: 2217df046cf95ddcd12f6dcaa41b2c3f8b0090f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646203"
 ---
 # <a name="copy-an-azure-sql-database"></a>Azure SQL Database のコピー
 

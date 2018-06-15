@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアルの補足のレッスン: �
 description: この Azure Analysis Services チュートリアルでは、詳細行の式を作成する方法について説明します。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6e15788992e66fdb8e742b290e5bcf5bce8d20fb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596102"
 ---
 # <a name="supplemental-lesson---detail-rows"></a>補足のレッスン - 詳細行
 

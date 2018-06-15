@@ -1,8 +1,8 @@
 ---
-title: "Azure Traffic Manager による Azure App Service トラフィックの制御"
-description: "この記事では、Azure App Service に関連する Azure Traffic Manager の概要を説明します。"
+title: Azure Traffic Manager による Azure App Service トラフィックの制御
+description: この記事では、Azure App Service に関連する Azure Traffic Manager の概要を説明します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: efb732e9be62313eb199cb2cfbb1fa4d2cde0282
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824042"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager による Azure App Service トラフィックの制御
 > [!NOTE]
@@ -33,10 +34,10 @@ Azure Traffic Manager を使用すると、Web クライアントからの要求
 ## <a name="routing-methods"></a>ルーティング方法
 Azure Traffic Manager は 4 つのルーティング方法を使用します。 Azure App Service に関連する、これらの方法については、次の一覧で説明します。
 
-* **[優先順位](#priority):** すべてのトラフィックにプライマリ アプリケーションを使用し、プライマリまたはバックアップ アプリケーションが使用できなくなった場合に備えてバックアップを用意します。
-* **[重み付け](#weighted):** 一連のアプリに、均等にまたは定義した重みに従ってトラフィックを分散させます。
-* **[パフォーマンス](#performance):** 異なる地理的位置にアプリケーションがある場合は、最短のネットワーク待機時間という観点から "最も近い" アプリケーションを使用します。
-* **[地域](#geographic):** ユーザーの DNS クエリが送信された地理的位置に基づいて、ユーザーを特定のアプリケーションにルーティングします。 
+* **[優先順位](../traffic-manager/traffic-manager-routing-methods.md#priority):** すべてのトラフィックにプライマリ アプリケーションを使用し、プライマリまたはバックアップ アプリケーションが使用できなくなった場合に備えてバックアップを用意します。
+* **[重み付け](../traffic-manager/traffic-manager-routing-methods.md#weighted):** 一連のアプリに、均等にまたは定義した重みに従ってトラフィックを分散させます。
+* **[パフォーマンス](../traffic-manager/traffic-manager-routing-methods.md#performance):** 異なる地理的位置にアプリケーションがある場合は、最短のネットワーク待機時間という観点から "最も近い" アプリケーションを使用します。
+* **[地域](../traffic-manager/traffic-manager-routing-methods.md#geographic):** ユーザーの DNS クエリが送信された地理的位置に基づいて、ユーザーを特定のアプリケーションにルーティングします。 
 
 詳細については、「[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)」を参照してください。
 
@@ -53,7 +54,7 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 * カスタム ドメイン名は予期したとおりに機能しますが、それらのドメイン名をアプリに追加するだけでなく、Traffic Manager の URL を参照するように DNS マップを構成する必要もあります。 App Service アプリのカスタム ドメインを設定する方法については、「[既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)」を参照してください。
 * 標準またはプレミアム モードのアプリのみを Azure Traffic Manager のプロファイルに追加できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure トラフィック マネージャーの概念と技術的概要については、「 [Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
 App Service での Traffic Manager の使用の詳細については、ブログ記事「[Using Azure Traffic Manager with Azure Web Sites (Azure Web サイトでの Azure Traffic Manager の使用)](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager can now integrate with Azure Web Sites (Azure Traffic Manager と Azure Web サイトの統合が可能になりました)](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。

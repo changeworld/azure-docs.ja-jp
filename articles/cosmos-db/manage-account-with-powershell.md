@@ -6,20 +6,17 @@ author: dmakwana
 manager: kfile
 editor: ''
 tags: azure-resource-manager
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: e049c94ae6c0ea2cf350d8c2ae9ca359f18a8751
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 833202353901fb9822b756f54fbcbcc155533108
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611964"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622025"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +80,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 ## <a name="db2-linked-service-properties"></a>DB2 のリンクされたサービスのプロパティ
 次の表は、DB2 のリンクされたサービスに固有の JSON プロパティの一覧です。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |[はい] |
 | **server** |DB2 サーバーの名前です。 |[はい] |
@@ -95,7 +96,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (DB2 データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -104,7 +105,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 

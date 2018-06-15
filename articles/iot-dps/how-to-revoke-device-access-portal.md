@@ -1,22 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 description: Azure IoT Hub Device Provisioning サービスでデバイスの登録を抹消してプロビジョニングを防ぐ方法
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr;bryanla
+ms.author: bryanla
 ms.date: 04/05/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b6c948765575c92c962999fe394ffaf1a0d22f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628846"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 

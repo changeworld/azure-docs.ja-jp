@@ -8,12 +8,13 @@ ms.reviewer: CarlRabeler
 ms.service: sql-database
 ms.custom: develop databases, mvc, devcenter
 ms.topic: tutorial
-ms.date: 03/15/2018
-ms.openlocfilehash: 3b6f260983e3c826bf558f0fe6d1a0fa6ae6b3af
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 06/07/2018
+ms.openlocfilehash: 4e2238968d29bc0081a472c9c05662cb7813d866
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850663"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
 
@@ -61,5 +62,5 @@ And it starts with a ## H2.
 次のチュートリアルに進み、データの移行について確認してください。
 
 > [!div class="nextstepaction"]
->[SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
+> [SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
 

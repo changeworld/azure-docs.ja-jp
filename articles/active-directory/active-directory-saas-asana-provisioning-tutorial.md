@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84fa3c5bd57e1f9f5b3eddf872307829f6c9c509
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292968"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>チュートリアル: Asana を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -42,7 +43,7 @@ Azure AD では、選択されたアプリへのアクセスが付与される�
 
 プロビジョニング サービスを構成して有効にする前に、Asana アプリにアクセスする必要がある Azure AD 内のユーザーを決定しておく必要があります。 その後、次の手順でこれらのユーザーを Asana アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
+[エンタープライズ アプリケーションにユーザーを割り当てる](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>ユーザーを Asana に割り当てる際の重要なヒント
 
@@ -99,6 +100,6 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](active-directory-saas-asana-tutorial.md)

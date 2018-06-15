@@ -1,22 +1,19 @@
 ---
 title: Azure Maps の交通情報の対象範囲 | Microsoft Docs
 description: Azure Maps の交通情報の対象範囲について説明します
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 11/28/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: 49e91287d23c35d8cfea858d41c47ba15efd820c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a6fc1a8f050c3b1f546b4d0150f14b2cbebc31d0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599708"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
 
@@ -93,7 +90,7 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |トルコ     |✓         |✓         |
 |ウクライナ     |✓         |✓         |
 |アラブ首長国連邦     |✓         |✓         |
-|英国     |✓         |✓         |
+|イギリス     |✓         |✓         |
 |(ガーンジー島とジャージー島)     |✓         |✓         |
 |マン島     |✓         |✓         |
 |米国     |✓         |✓        |
