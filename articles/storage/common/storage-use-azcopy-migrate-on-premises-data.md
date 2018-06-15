@@ -10,11 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267445"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 
@@ -22,8 +23,8 @@ AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Fil
 
 ダウンロードできる AzCopy には、2 つのバージョンがあります。
 
-* [AzCopy on Linux](storage-use-azcopy.md) は、.NET Core Framework で構築されています。 その対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 
-* [AzCopy on Windows](../storage-use-azcopy.md) は、.NET Framework で構築されています。 このバージョンには、Windows スタイルのコマンドライン オプションが用意されています。 
+* [AzCopy on Linux](storage-use-azcopy-linux.md) は、.NET Core Framework で構築されています。 その対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 
+* [AzCopy on Windows](storage-use-azcopy.md) は、.NET Framework で構築されています。 このバージョンには、Windows スタイルのコマンドライン オプションが用意されています。 
  
 このチュートリアルで学習する内容は次のとおりです。
 

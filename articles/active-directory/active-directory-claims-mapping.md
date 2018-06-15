@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261206"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
@@ -280,7 +281,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3: ソースごとに有効な ID 値
-|ソース|ID|[説明]|
+|ソース|ID|説明|
 |-----|-----|-----|
 |User|surname|姓|
 |User|givenname|名|
@@ -353,7 +354,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 選択した方法に基づいて、一連の入力と出力が想定されます。 これは、**InputClaims** 要素、**InputParameters** 要素、**OutputClaims** 要素を使用して定義されます。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4: 変換方法と想定される入出力
-|TransformationMethod|想定される入力|想定される出力|[説明]|
+|TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
 |Join (結合)|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 @ 記号がない場合、元の入力文字列がそのまま返されます。|
@@ -378,7 +379,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 **SAML NameID と UPN:** NameID と UPN の値のソース属性と、許可される要求変換には、制限があります。
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5: SAML NameID のデータ ソースとして許可されている属性
-|ソース|ID|[説明]|
+|ソース|ID|説明|
 |-----|-----|-----|
 |User|mail|電子メール アドレス|
 |User|userprincipalname|ユーザー プリンシパル名|
@@ -467,7 +468,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
     1. ポリシーを作成するには、このコマンドを実行します。  
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
     ```
     
     2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。

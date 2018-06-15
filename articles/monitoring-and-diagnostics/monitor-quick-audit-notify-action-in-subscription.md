@@ -1,20 +1,20 @@
 ---
-title: Azure サブスクリプションの重要なアクションを監査して通知を受信する | Microsoft Docs
+title: Azure サブスクリプションの重要なアクションを監査して通知を受信する
 description: アクティビティ ログのリソース管理履歴、サービスの状態、およびその他のサブスクリプション アクティビティを理解し、アクティビティ ログ アラートを使用して、特定のサブスクリプションで高度な特権が必要な操作が実行されたときに電子メール通知を受信するようにします。
 author: johnkemnetz
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 5a6f4d7ab978543a6871eb0ac3926fa25fb65ad2
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263332"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Azure サブスクリプションの重要なアクションを監査して通知を受信する
 
@@ -42,11 +42,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側のナビゲーション一覧の **[モニター]** ボタンをクリックします。 [アクティビティ ログ] セクションが開きます。 このセクションには、特定のサブスクリプションのリソースに対して実行されたすべてのアクションの履歴が表示されます。アクションは、**[リソース グループ]**、**[時間枠]**、**[カテゴリ]** などのさまざまなプロパティによってフィルター処理できます。
 
-2. **[アクティビティ ログ]** セクションで、**[リソース グループ]** ドロップダウンをクリックし、**[myResourceGroup]** を選択します。 **[時間枠]** ドロップダウンで、**[過去 1 時間]** に変更します。 **[Apply]**をクリックします。
+2. **[アクティビティ ログ]** セクションで、**[リソース グループ]** ドロップダウンをクリックし、**[myResourceGroup]** を選択します。 **[時間枠]** ドロップダウンで、**[過去 1 時間]** に変更します。 **[Apply]** をクリックします。
 
     ![アクティビティ ログをフィルター処理する](./media/monitor-quick-audit-notify-action-in-subscription/browse-activity-log.png)
 
-3. 表示されているイベント テーブルの**[NetworkSecurityGroups の書き込み]** イベントをクリックします。
+3. 表示されているイベント テーブルの **[NetworkSecurityGroups の書き込み]** イベントをクリックします。
 
 ## <a name="browse-an-event-in-the-activity-log"></a>アクティビティ ログでイベントを参照する
 
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. 表示されたセクションで、アクティビティ ログ アラートに名前を付けます。
 
-4. **[条件]** の **[イベント カテゴリ]** が **[管理者]** に、**[リソースの種類]** が **[ネットワーク セキュリティ グループ]**に、**[操作名]** が **[Create or Update Network Security Group]\(ネットワークセキュリティグループの作成または更新\)** に、**[状態]** が **[成功]** に設定され、その他の条件フィールドは空白であるか **[すべて]** が設定されていることを確認します。 条件は、アクティビティ ログに新しいイベントが出現したときにアラートをアクティブ化するかどうかを判断するためのルールを定義します。
+4. **[条件]** の **[イベント カテゴリ]** が **[管理者]** に、**[リソースの種類]** が **[ネットワーク セキュリティ グループ]** に、**[操作名]** が **[Create or Update Network Security Group]\(ネットワークセキュリティグループの作成または更新\)** に、**[状態]** が **[成功]** に設定され、その他の条件フィールドは空白であるか **[すべて]** が設定されていることを確認します。 条件は、アクティビティ ログに新しいイベントが出現したときにアラートをアクティブ化するかどうかを判断するためのルールを定義します。
 
     ![ポータルでネットワーク セキュリティ グループを作成する](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-criteria.png)
 
