@@ -3,7 +3,7 @@ title: ワークフロー定義言語スキーマ - Azure Logic Apps | Microsoft
 description: ワークフロー定義言語を使って Azure Logic Apps 用のカスタム ワークフロー定義を記述します。
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33886809"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300183"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>ワークフロー定義言語スキーマによるロジック アプリのワークフロー定義
 
@@ -74,7 +74,7 @@ ms.locfileid: "33886809"
 },
 ```
 
-| 要素 | 必須 | データ型 | 説明 |  
+| 要素 | 必須 | type | 説明 |  
 |---------|----------|------|-------------|  
 | 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
 | defaultValue | いいえ  | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 | 
@@ -104,7 +104,7 @@ ms.locfileid: "33886809"
 } 
 ```
 
-| 要素 | 必須 | データ型 | 説明 | 
+| 要素 | 必須 | type | 説明 | 
 |---------|----------|------|-------------| 
 | <*key-name*> | [はい] | String | 出力戻り値のキーの名前 |  
 | 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 
@@ -125,7 +125,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "rainbowColorsCount": 7 
 ```
 
-実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つ以上の[関数](#functions)、[演算子](#operators)、変数、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (@) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、@ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。 
+実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つ以上の[関数](#functions)、[演算子](#operators)、変数、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (\@\) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、\@\ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。 
 
 たとえば、前に定義した `customerName` プロパティでは、式の中で [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 関数を使ってプロパティの値を取得し、その値を `accountName` プロパティに割り当てることができます。
 
@@ -134,7 +134,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "accountName": "@parameters('customerName')"
 ```
 
-"*文字列の補間*" により、@ 文字と中かっこ ({}) によってラップされている文字列内で複数の式を使用することもできます。 構文は次のとおりです。
+"*文字列の補間*" により、\@\ 文字と中かっこ ({}) によってラップされている文字列内で複数の式を使用することもできます。 構文は次のとおりです。
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -146,7 +146,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-@ 文字で始まるリテラル文字列がある場合は、エスケープ文字として別の @ 文字を @ の前に付けます (@@)。
+\@\ 文字で始まるリテラル文字列がある場合は、エスケープ文字として別の \@\ 文字を \@\ の前に付けます (\@@\)。
 
 式の評価方法の例を次に示します。
 
@@ -154,8 +154,8 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 |------------|--------| 
 | "Sophia Owen" | 文字 'Sophia Owen' を返します |
 | "array[1]" | 文字 'array[1]' を返します |
-| "\@@\" | 1 文字の '@' を返します |   
-| \" \@\" | 2 文字の ' @' を返します |
+| "\@@\" | 1 文字の \'\@\' を返します |   
+| \" \@\" | 2 文字の \' \@\' を返します |
 |||
 
 次の例では、"myBirthMonth" を "January" に、"myAge" を数値 42 に定義してあるものとします。  
