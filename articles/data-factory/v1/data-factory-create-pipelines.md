@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: be071c8138a6782ad144a42d52d737f248ff7a7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f80a22c39608a9d9c67977f2d0493af7300f475b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622708"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -92,10 +93,10 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 }
 ```
 
-| タグ | [説明] | 必須 |
+| タグ | 説明 | 必須 |
 | --- | --- | --- |
 | name |パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |[はい] |
-| 説明 | パイプラインの用途を説明するテキストを指定します。 |[はい] |
+| description  | パイプラインの用途を説明するテキストを指定します。 |[はい] |
 | activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、次のセクションを参照してください。 | [はい] |  
 | start | パイプラインの開始日時。 [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。 たとえば、「 `2016-10-14T16:32:41Z`」のように入力します。 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。 出力スライスは、この有効期間にのみ生成されます。 |いいえ <br/><br/>end プロパティの値を指定する場合は、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいません。 パイプラインを実行できる有効期間を設定するには、両方の値を指定する必要があります。 パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureRmDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 |
 | end | パイプラインの終了日時。 ISO 形式で指定する必要があります。 次に例を示します。`2016-10-14T17:32:41Z` <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00-05:00` は、東部標準時で午前 6 時です。<br/><br/>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。 <br/><br/> パイプラインは、開始時刻と終了時刻の間のみアクティブです。 開始時刻より前または終了時刻より後には実行されません。 パイプラインは、一時停止している場合、その開始時刻と終了時刻に関係なく実行されません。 パイプラインを実行するには、一時停止しないでください。 Azure Data Factory でのスケジュールと実行の方法については、「 [スケジュールと実行](data-factory-scheduling-and-execution.md) 」を参照してください。 |いいえ  <br/><br/>start プロパティの値を指定する場合は、end プロパティの値も指定する必要があります。<br/><br/>**start** プロパティの注意事項を参照してください。 |
@@ -130,14 +131,14 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 アクティビティの JSON 定義内のプロパティを次の表で説明します。
 
-| タグ | [説明] | 必須 |
+| タグ | 説明 | 必須 |
 | --- | --- | --- |
 | name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |[はい] |
-| 説明 | アクティビティの用途を説明するテキスト。 |[はい] |
-| 型 | アクティビティの種類。 アクティビティの種類については、[データ移動アクティビティ](#data-movement-activities)に関するセクションと、[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。 |[はい] |
+| description  | アクティビティの用途を説明するテキスト。 |はい |
+| type | アクティビティの種類。 アクティビティの種類については、[データ移動アクティビティ](#data-movement-activities)に関するセクションと、[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。 |[はい] |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |[はい] |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |[はい] |
-| 既定のコンテナー |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合は "はい" <br/><br/>それ以外の場合は "いいえ" |
+| linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合は "はい" <br/><br/>それ以外の場合は "いいえ" |
 | typeProperties |**typeProperties** セクションのプロパティは、アクティビティの種類によって異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ  |
 | policy |アクティビティの実行時の動作に影響するポリシーです。 指定されていない場合は、既定のポリシーが使用されます。 |いいえ  |
 | scheduler | "scheduler" プロパティは、アクティビティのスケジュールを定義するために使用します。 サブプロパティは、 [データセットの availability](data-factory-create-datasets.md#dataset-availability)プロパティにあるサブプロパティと同じです。 |いいえ  |
@@ -146,7 +147,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 ### <a name="policies"></a>ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。 次の表で詳細に説明します。
 
-| プロパティ | 使用できる値 | 既定値 | [説明] |
+| プロパティ | 使用できる値 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | 同時実行 |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、同時実行の値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |

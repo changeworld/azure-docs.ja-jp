@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 89a747fec08ad96c21429d2034eaf395e65566a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ffa9b7408475820735e35a82edc0b1751abeb08a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624851"
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Data Lake Store に対する REST API を使用したサービス間認証
 > [!div class="op_single_selector"]

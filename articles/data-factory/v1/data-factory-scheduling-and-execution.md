@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 58274b2255de13efaa1fba8af8beff7b7b59f7a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f18d6817d3a04ad787888ba058e1251303e575a7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622409"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -184,7 +185,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 ### <a name="dataset-availability"></a>データセットの可用性 
 次の表では、**availability** セクションで使用できるプロパティについて説明します。
 
-| プロパティ | [説明] | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされている頻度</b>は、Minute、Hour、Day、Week、Month です。 |[はい] |該当なし |
 | interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>注</b>: Frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |[はい] |該当なし |
@@ -232,7 +233,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。 次の表では、**policy** セクションで使用できるプロパティについて説明します。
 
-| ポリシー名 | [説明] | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |該当なし |
 | minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
@@ -268,7 +269,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 ## <a name="activity-policies"></a>アクティビティ ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。 次の表で詳細に説明します。
 
-| プロパティ | 使用できる値 | 既定値 | [説明] |
+| プロパティ | 使用できる値 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | 同時実行 |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、同時実行の値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |

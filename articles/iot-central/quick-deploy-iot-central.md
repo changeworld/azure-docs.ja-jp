@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Central アプリケーションのデプロイ | Microsoft Docs
 description: 冷蔵自動販売機を管理するための新しい Azure IoT Central アプリケーションを作成します。 シミュレートされたデバイスから生成された利用統計情報を表示します。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/15/2018
-ms.topic: hero-article
-ms.prod: microsoft-iot-central
+ms.topic: quickstart
+ms.service: iot-central
+services: iot-central
 ms.custom: mvc
-manager: timlt
-ms.openlocfilehash: 54219246f073f48c2a7e1b04dce7653bd2da0b40
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+manager: peterpr
+ms.openlocfilehash: 9a9b9e66995a2945ef95056f2fcbcd59814d08ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202375"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630495"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
@@ -98,14 +98,14 @@ Azure IoT Central の [[Application Manager]\(アプリケーション マネー
 
 その変更がデバイスによって確認されると、設定に "**同期済み**" として表示されます。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
 **[Properties]\(プロパティ\)** を選択します。 **[Properties]\(プロパティ\)** ページでは、次の操作を実行できます。
 
 * デバイスに関する情報 (顧客名など) をメンテナンスします。
 * デバイスからレポートされたプロパティ値を表示します (振動警告など)。
 
-![[プロパティ]](media/quick-deploy-iot-central/properties.png)
+![Properties](media/quick-deploy-iot-central/properties.png)
 
 ### <a name="dashboard"></a>ダッシュボード
 

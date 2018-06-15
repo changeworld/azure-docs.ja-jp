@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a295bf741862bb58a86234b5c85f48d7a1b52be7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 056cff192b25068fa2e895fd46d143a834b7af0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786861"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641086"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例: Text Translate API を使用してカスタム スキルを作成する
 
@@ -322,5 +322,5 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 
 + [コグニティブ検索パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](ref-create-skillset.md)
++ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

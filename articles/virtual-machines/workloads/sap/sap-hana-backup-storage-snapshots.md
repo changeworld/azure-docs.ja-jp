@@ -1,11 +1,11 @@
 ---
-title: "ストレージ スナップショットに基づいた SAP HANA Azure バックアップ | Microsoft Docs"
-description: "Azure 仮想マシン上の SAP HANA をバックアップする方法は主に 2 つあります。この記事では、ストレージ スナップショットに基づいた SAP HANA のバックアップについて説明します"
+title: ストレージ スナップショットに基づいた SAP HANA Azure バックアップ | Microsoft Docs
+description: Azure 仮想マシン上の SAP HANA をバックアップする方法は主に 2 つあります。この記事では、ストレージ スナップショットに基づいた SAP HANA のバックアップについて説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -13,11 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658725"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>ストレージ スナップショットに基づいた SAP HANA のバックアップ
 
@@ -164,7 +165,7 @@ Azure Backup サービスを使用するのではなく、PowerShell を使用�
 
 もし BLOB スナップショットの前に SAP HANA をシャットダウンできるのであれば、手順の複雑さは減少します。 その場合 HANA スナップショットをスキップできます。また、システム内で他に何も行われない場合、ファイル システムのフリーズもスキップできます。 すべてが稼働している間にスナップショットを実行する必要がある場合、手順の複雑さは増加します。 関連記事「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」の「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」には、概要と基本的な情報が記載されています。
 * 「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」では、ファイルベースのバックアップ オプションについて説明しています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
