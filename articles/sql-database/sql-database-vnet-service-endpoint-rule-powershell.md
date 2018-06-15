@@ -6,15 +6,16 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: VNet Service endpoints
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 2c53eaa0ff6a866f6a061ec1613630ad9626ac9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 503aef620679c9bf3f65cd7f463ba604c6b9e451
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649518"
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database 用の仮想サービス エンドポイントと規則を作成します。
 

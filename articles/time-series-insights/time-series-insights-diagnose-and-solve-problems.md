@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights の問題を診断して解決する | Microsoft Docs
 description: この記事では、Azure Time Series Insights 環境内で発生する可能性がある一般的な問題を診断、トラブルシューティング、および解決する方法について説明します。
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 64fd67915a4a39b7e8dfce4381002ae0888aa42a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652690"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -70,7 +70,7 @@ IoT Hub またはイベント ハブの登録時に、データを読み取る�
 ### <a name="possible-cause-b-initial-ingestion-of-historical-data-is-causing-slow-ingress"></a>考えられる原因 B: 履歴データの初期の取り込みで受信の遅延が発生している
 既存のイベント ソースを接続している場合は、IoT Hub またはイベント ハブに既にデータがある可能性があります。 環境はイベント ソース メッセージのリテンション期間の始めからデータをプルし始めます。
 
-この動作は既定の動作であり、無効にすることはできません。 調整を適用できますが、履歴データの受信の遅れを取り戻すのに時間がかかることがあります。
+この動作は既定の動作であり、オーバーライドできません。 調整を適用できますが、履歴データの受信の遅れを取り戻すのに時間がかかることがあります。
 
 #### <a name="recommended-resolution-steps-of-large-initial-ingestion"></a>大規模な初期の取り込みの推奨される解決方法の手順
 タイム ラグを解消するには、次の手順を実行します。
