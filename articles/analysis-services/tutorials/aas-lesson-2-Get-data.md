@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 2 : デー�
 description: Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: be3368b5207669d7cc5b03e7eeb6953b757c786d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d66b3f303ab4e19ee645be8768512a451454769b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596976"
 ---
 # <a name="get-data"></a>データを取得する
 
@@ -63,7 +64,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
 #### <a name="to-filter-the-table-data-before-importing"></a>インポートの前にテーブル データをフィルターする  
   
-1.  Query Editor で**[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDW2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます。 
+1.  Query Editor で **[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDW2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます。 
   
 2.  Ctrl を押しながら､**SpanishEducation**､ **FrenchEducation**､**SpanishOccupation**､および **FrenchOccupation** をクリックし (複数項目の選択)､右クリックして､**[Remove Columns]** をクリックします｡ 
 
@@ -139,7 +140,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     ![aas-lesson2-success](../tutorials/media/aas-lesson2-success.png) 
   
-2.  **[閉じる]**をクリックします。  
+2.  **[閉じる]** をクリックします。  
 
   
 ## <a name="save-your-model-project"></a>モデル プロジェクトを保存します｡  

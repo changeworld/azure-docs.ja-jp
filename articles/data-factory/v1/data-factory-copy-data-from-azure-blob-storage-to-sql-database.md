@@ -1,25 +1,26 @@
 ---
-title: "Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs"
-description: "このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。"
+title: Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs
+description: このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6575a68423df97d7727401b79ded44545a43afca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621107"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -65,7 +66,7 @@ ms.lasthandoff: 03/02/2018
 6. **key1**についても、前のコピー手順を繰り返すか、メモしておきます。
 
     ![スストレージ アクセス キー](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. **[X]**をクリックしてすべてのブレードを閉じます。
+7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
 このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/02/2018
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。 **データベース名**をメモしておきます。  
 3. **[SQL データベース]** ブレードで、**[設定]** の **[プロパティ]** をクリックします。
 4. **[サーバー名]** と **[サーバー管理ログイン]** の値をメモしておきます。
-5. **[X]**をクリックしてすべてのブレードを閉じます。
+5. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure サービスに SQL サーバーへのアクセスを許可する
 Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
@@ -82,7 +83,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 1. 左側にある **[すべてのサービス]** ハブをクリックし、**[SQL サーバー]** をクリックします。
 2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
-4. **[X]**をクリックしてすべてのブレードを閉じます。
+4. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage と SQL Database を準備する
 ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  

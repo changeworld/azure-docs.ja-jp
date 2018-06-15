@@ -1,19 +1,20 @@
 ---
-title: "Azure Database for MySQL によるビジネス継続性の概要"
-description: "Azure Database for MySQL でのビジネス継続性の概要について説明します。"
+title: Azure Database for MySQL によるビジネス継続性の概要
+description: Azure Database for MySQL でのビジネス継続性の概要について説明します。
 services: mysql
 author: kamathsun
 ms.author: sukamat
 manager: kfile
 editor: jasonwhowell
-ms.service: MySQL
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 7961da65abacf6058b4b0ece4e9cbe7b8d1ef254
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 127255514c434717be07886b1b1739027d3a14ea
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263574"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Azure Database for MySQL によるビジネス継続性の概要
 

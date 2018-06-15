@@ -4,7 +4,7 @@ description: Enterprise Integration SDK を使用して、ロジック アプリ
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1621843d58954aa05a572f43fdab0fb16097332e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299455"
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML 変換での Enterprise Integration
 ## <a name="overview"></a>概要

@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアルのレッスン 12: Excel �
 description: Azure Analysis Services チュートリアル プロジェクトで Excel の Analyze を使用する方法を説明します｡
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17dba7be2acab18108dc50a5c16d55e0e720cbcc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 729156636795fce3355ab1474fdfcb9337296ddd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596925"
 ---
 # <a name="analyze-in-excel"></a>Excel で分析
 

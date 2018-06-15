@@ -1,24 +1,26 @@
 ---
-title: "Azure AD Domain Services - 管理対象ドメインの正常性を確認する | Microsoft Docs"
-description: "Azure Portal の正常性ページを使用して、管理対象ドメインの正常性を確認します。"
+title: Azure AD Domain Services - 管理対象ドメインの正常性を確認する | Microsoft Docs
+description: Azure Portal の正常性ページを使用して、管理対象ドメインの正常性を確認します。
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9421ace7abf1f3d45b1f8cd810067d79faa92ec
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5be6a2c36dfec8c8543f6dcfe252ce01b4c28e50
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587240"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services の管理対象ドメインの正常性を確認する
 
@@ -51,6 +53,7 @@ Azure Portal の正常性ページを使用して、管理対象ドメインの�
 
 Azure AD Domain Services の現在の監視対象を次に示します。
  - Backup
+
  - Azure AD での同期
 
 ### <a name="the-backup-monitor"></a>"バックアップ" モニター

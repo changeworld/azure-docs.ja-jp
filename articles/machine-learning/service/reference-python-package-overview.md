@@ -2,17 +2,18 @@
 title: Azure Machine Learning 用 Python パッケージ
 description: Azure Machine Learning ユーザーが利用できる Python パッケージについて説明します。
 ms.service: machine-learning
-ms.component: core
+ms.component: studio
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jmartens
 author: j-martens
 ms.date: 05/07/2018
-ms.openlocfilehash: 7ff80a812ebf704315524ffb5ea518704e472429
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7a8f9e9d757aaab04706dd3b7dc2b962b3a04130
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833269"
 ---
 # <a name="python-packages-for-azure-machine-learning"></a>Azure Machine Learning 用 Python パッケージ
 

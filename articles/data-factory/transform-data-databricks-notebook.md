@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: d4a57e45d5ddf55906fcf575df39135a227418ec
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbf713b2d52469ae12fc284e0a3d7e3bc369daeb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620505"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 
@@ -52,11 +53,11 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 
 次の表で、JSON 定義で使用される JSON プロパティについて説明します。
 
-|プロパティ|[説明]|必須|
+|プロパティ|説明|必須|
 |---|---|---|
 |name|パイプラインのアクティビティの名前。|[はい]|
-|説明|アクティビティの動作を説明するテキスト。|いいえ |
+|description |アクティビティの動作を説明するテキスト。|いいえ |
 |型|Databricks Notebook アクティビティでは、アクティビティの種類は DatabricksNotebook です。|[はい]|
-|既定のコンテナー|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。|[はい]|
+|linkedServiceName|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。|[はい]|
 |notebookPath|Databricks ワークスペースで実行するノートブックの絶対パスです。 このパスはスラッシュで始まる必要があります。|[はい]|
 |baseParameters|キーと値ペアの配列です。 基本パラメーターは、各アクティビティの実行に使うことができます。 指定されていないパラメーターをノートブックが受け取った場合は、ノートブックの既定値が使われます。 パラメーターについて詳しくは、[Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) に関する記事をご覧ください。|いいえ |

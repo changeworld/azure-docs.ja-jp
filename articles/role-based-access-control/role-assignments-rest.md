@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
-ms.openlocfilehash: e520b4b85ff7c840c46175cae5b853ec6979c04a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: bagovind
+ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267477"
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]
@@ -434,7 +436,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-| 要素名 | 必須 | type | [説明] |
+| 要素名 | 必須 | type | 説明 |
 | --- | --- | --- | --- |
 | name |[はい] |String |カスタム ロールの GUID 識別子。 |
 | properties.roleName |[はい] |String |カスタム ロールの表示名。 最大 128 文字です。 |
@@ -537,7 +539,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-| 要素名 | 必須 | type | [説明] |
+| 要素名 | 必須 | type | 説明 |
 | --- | --- | --- | --- |
 | name |[はい] |String |カスタム ロールの GUID 識別子。 |
 | properties.roleName |[はい] |String |更新するカスタム ロールの表示名。 |

@@ -1,24 +1,19 @@
 ---
-title: "自動スケールの一般的なパターンの概要 | Microsoft Docs"
-description: "Azure におけるリソースの自動スケールの一般的なパターンについて説明します。"
+title: 自動スケールの一般的なパターンの概要
+description: Azure におけるリソースの自動スケールの一般的なパターンについて説明します。
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 84727ec3694f64d40ad002a248a255df9074d7f4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263263"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>自動スケールの一般的なパターンの概要
 この記事では、Azure におけるリソースのスケールの一般的なパターンについて説明します。
@@ -53,7 +48,7 @@ Web アプリ (/VMSS/クラウド サービス ロール) があり、次の要�
 Web アプリ (/VMSS/クラウド サービス ロール) があり、次の要件がある場合は、このパターンを使用します。 
 
 - 既定で CPU 使用率に基づいてスケールアップ/スケールダウンする。
-- ただし、休暇シーズン (またはビジネスにとって重要な特定の日) には、既定値を上書きし、容量を自由に増やす。
+- ただし、休暇シーズン (またはビジネスにとって重要な特定の日) には、既定値をオーバーライドし、容量を自由に増やす。
 
 ![休日は異なる方法でスケールする][4]
 

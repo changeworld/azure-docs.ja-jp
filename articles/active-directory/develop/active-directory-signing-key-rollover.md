@@ -16,11 +16,12 @@ ms.date: 07/18/2016
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 02d7cb28411e0baec20d334994b385dcd3b06451
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293383"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory の署名キーのロールオーバー
 この記事では、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -50,7 +51,7 @@ OpenID Connect Discovery ドキュメントとフェデレーション メタデ
 
 このガイダンスは、次のアプリケーションには適用 **されません** 。
 
-* Azure AD アプリケーション ギャラリーから追加したアプリケーションについては (カスタム アプリケーションも含め)、キーの署名に関して別個のガイダンスがあります。 [詳細については、こちらをご覧ください。](../active-directory-sso-certs.md)
+* Azure AD アプリケーション ギャラリーから追加したアプリケーションについては (カスタム アプリケーションも含め)、キーの署名に関して別個のガイダンスがあります。 [詳細については、こちらをご覧ください。](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 * アプリケーション プロキシ経由で発行されたオンプレミスのアプリケーションでは、キーの署名について配慮する必要はありません。
 
 ### <a name="nativeclient"></a>リソースにアクセスするネイティブ クライアント アプリケーション

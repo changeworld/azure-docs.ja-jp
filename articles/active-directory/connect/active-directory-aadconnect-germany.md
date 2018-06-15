@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Cloud Germany の Azure AD Connect"
-description: "Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。"
-keywords: "Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール, Germany, Black Forest"
+title: Microsoft Cloud Germany の Azure AD Connect
+description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。
+keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール, Germany, Black Forest
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2bcb0caf-5d97-46cb-8c32-bda66cc22dad
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2b0c05b12877fdda11b941d822c265d34d5c04ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5771d3319194ff4952f4c93140594db2d93bb7f8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593556"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
 ## <a name="introduction"></a>はじめに
@@ -36,7 +38,7 @@ Azure AD Connect は、オンプレミス Active Directory と Azure Active Dire
   * Azure AD Connect Health
   * 自動更新
  
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。  Azure AD Connect ブレードを表示するには、次の手順に従います。
 
 ### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect ブレード
@@ -52,7 +54,7 @@ Azure Portal にサインインしたら、次の操作を行います。
 
 次の表は、ブレードに表示される機能の説明です。
 
-| タイトル | Description |
+| タイトル | 説明 |
 | --- | --- |
 | 同期状態 |同期が有効か無効かを示します。 |
 | 最後の同期 |正常に完了した前回の同期です。 |

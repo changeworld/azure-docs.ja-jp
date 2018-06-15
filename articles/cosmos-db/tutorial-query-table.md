@@ -2,25 +2,23 @@
 title: Azure Cosmos DB でテーブル データのクエリを実行する方法 | Microsoft Docs
 description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
 services: cosmos-db
-documentationcenter: ''
 author: kanshiG
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: d3b46169f7cc175d1959ecaa7184faa0fd81590c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a629a7b1340547f43919a1e88abbda53e9e2ae0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763393"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル: Table API を使って Azure Cosmos DB を照会する
 

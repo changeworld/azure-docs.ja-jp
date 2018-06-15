@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5ad9b01d3821b481fe3255c821e8674dcb26b322
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723798"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
 
@@ -40,7 +42,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="supported-browser"></a>サポートされているブラウザー
 
-管理者によって条件付きアクセス ポリシーが構成されている場合、サポートされているブラウザーを使用しないと組織のリソースにアクセスできません。 Windows デバイスでは、サポートされているのは **Internet Explorer** と **Microsoft Edge** のみです。
+管理者によって条件付きアクセス ポリシーが構成されている場合、サポートされているブラウザーを使用しないと組織のリソースにアクセスできません。 Windows デバイスでは、サポートされているのは **Internet Explorer** と **Edge** のみです。
 
 リソースにアクセスできない原因がサポートされていないブラウザーにあるかどうかは、エラー ページの詳細セクションで簡単に識別できます。
 
@@ -104,7 +106,7 @@ ms.lasthandoff: 01/16/2018
 
 1. **[設定]** アプリを開きます。
 2. **[アカウント]** > **[職場または学校にアクセスする]** をクリックします。
-3. **[接続]**をクリックします。
+3. **[接続]** をクリックします。
 4. **[Join this device to Azure AD (このデバイスを Azure AD に参加させる)]** をクリックします。
 5. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
 6. サインアウトしてから、職場アカウントを使用してサインインします。
@@ -114,7 +116,7 @@ ms.lasthandoff: 01/16/2018
 
 1. **[設定]** アプリを開きます。
 2. **[システム]** > **[バージョン情報]** をクリックします。
-3. **[Azure AD に参加]**をクリックします。
+3. **[Azure AD に参加]** をクリックします。
 4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
 5. サインアウトしてから、職場アカウント (Azure AD アカウント) を使用してサインインします。
 6. アプリケーションにもう一度アクセスしてみます。
@@ -124,11 +126,11 @@ ms.lasthandoff: 01/16/2018
 
 デバイスがドメインに参加しておらず、Windows 8.1 を実行している場合は、Workplace Join を実行し、次の手順に従って、Microsoft Intune に登録できます。
 
-1. **[PC 設定]**を開きます。
+1. **[PC 設定]** を開きます。
 2. **[ネットワーク]** > **[社内]** をクリックします。
-3. **[結合]**をクリックします。
+3. **[結合]** をクリックします。
 4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
-5. **[オン]**をクリックします。
+5. **[オン]** をクリックします。
 6. アプリケーションにもう一度アクセスしてみます。
 
 
@@ -140,7 +142,7 @@ ms.lasthandoff: 01/16/2018
 
 1. **[設定]** アプリを開きます。
 2. **[アカウント]** > **[職場または学校にアクセスする]** をクリックします。
-3. **[接続]**をクリックします。
+3. **[接続]** をクリックします。
 4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
 5. アプリケーションにもう一度アクセスしてみます。
 
@@ -149,7 +151,7 @@ ms.lasthandoff: 01/16/2018
 
 1. **[設定]** アプリを開きます。
 2. **[アカウント]** > **[Your accounts (自分のアカウント)]** をクリックします。
-3. **[Add work or school account (職場または学校アカウントを追加)]**をクリックします。
+3. **[Add work or school account (職場または学校アカウントを追加)]** をクリックします。
 4. 自分の組織に対する本人確認を行い、Multi-Factor Authentication の認証情報を提示して、表示される手順に従います。
 5. アプリケーションにもう一度アクセスしてみます。
 

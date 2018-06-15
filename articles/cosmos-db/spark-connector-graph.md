@@ -2,23 +2,21 @@
 title: 'Azure Cosmos DB: Spark と Apache TinkerPop Gremlin を使用してグラフ分析を実行する | Microsoft Docs'
 description: この記事では、Azure Cosmos DB で Spark と TinkerPop SparkGraphComputer を使用して、グラフ分析と並列計算を設定して実行するための手順を示します。
 services: cosmosdb
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: gremlin
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: sngun
-ms.openlocfilehash: f44c7d432ac9c07daf9b99dd922f1dcd5de5d58e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7cc68bfabff5a3afafb89bdb6bb393480946a7a7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796041"
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Spark と Apache TinkerPop Gremlin を使用してグラフ分析を実行する
 

@@ -191,6 +191,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: シークレットの切り替え
           href: azure-stack-rotate-secrets.md
+        - name: ウイルス対策の更新
+          href: azure-stack-security-av.md
     - name: サービスの提供
       items:
         - name: サービスの提供の概要

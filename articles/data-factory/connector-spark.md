@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 4089fe636ad25f97fe78f0bd10553b93d768321d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bf51e0ce03c2f69ab08aa56b8d48cf3e3636ed40
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618387"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Azure Data Factory を使用して Spark からデータをコピーする 
 
@@ -45,12 +46,12 @@ Spark のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Spark** に設定します | はい |
-| host | Spark サーバーの IP アドレスまたはホスト名  | はい |
-| port | Spark サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | はい |
+| 型 | type プロパティは **Spark** に設定します | [はい] |
+| host | Spark サーバーの IP アドレスまたはホスト名  | [はい] |
+| ポート | Spark サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | [はい] |
 | serverType | Spark サーバーの種類。 <br/>使用可能な値: **SharkServer**、**SharkServer2**、**SparkThriftServer** | いいえ  |
 | thriftTransportProtocol | Thrift レイヤーで使用するトランスポート プロトコル。 <br/>使用可能な値: **Binary**、**SASL**、**HTTP** | いいえ  |
-| authenticationType | Spark サーバーへのアクセスに使用する認証方法。 <br/>使用可能な値: **Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | はい |
+| authenticationType | Spark サーバーへのアクセスに使用する認証方法。 <br/>使用可能な値: **Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
 | username | Spark サーバーへのアクセスに使用するユーザー名。  | いいえ  |
 | password | ユーザーに対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | httpPath | Spark サーバーに対応する部分的な URL。  | いいえ  |
@@ -113,8 +114,8 @@ Spark からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SparkSource** に設定する必要があります | はい |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | はい |
+| 型 | コピー アクティビティのソースの type プロパティを **SparkSource** に設定する必要があります | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 

@@ -4,7 +4,7 @@ description: Logic Apps におけるエラーと例外の処理パターン。
 services: logic-apps
 documentationcenter: ''
 author: dereklee
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee2c4f1408dcb6527220cd3870ab00d83987f471
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300064"
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Logic Apps におけるエラーと例外の処理
 
@@ -68,7 +69,7 @@ ms.lasthandoff: 04/03/2018
 
 **retryPolicy** が **none** に設定されると、そのポリシーは、失敗した要求を再試行しません。
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | type | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | 型 | [はい] | String | "**なし**" | 
 ||||| 
@@ -77,7 +78,7 @@ ms.lasthandoff: 04/03/2018
 
 **retryPolicy** が **fixed** に設定されると、そのポリシーは、指定された時間待機した後で次の要求を送信することで、失敗した要求を再試行します。
 
-| 要素名 | 必須 | type | [説明] |
+| 要素名 | 必須 | type | 説明 |
 | ------------ | -------- | ---- | ----------- |
 | 型 | [はい] | String | **fixed** |
 | count | [はい] | 整数 | 再試行の回数。1 - 90 で指定する必要があります。 | 
@@ -88,9 +89,9 @@ ms.lasthandoff: 04/03/2018
 
 ### <a name="exponential-interval"></a>指数関数的な間隔
 
-**retryPolicy**が **exponential** に設定されると、ポリシーは、指数関数的に延長されるランダムな時間間隔で、失敗した要求を再試行します。 このポリシーでは、各々の再試行は、**minimumInterval** より大きく **maximumInterval** より小さいランダムな間隔で送信されることも保証されています。 指数関数的なポリシーでは、**count** と **interval** が必須ですが、**minimumInterval** と **maximumInterval** の値はオプションです。 既定値の PT5S と PT1D それぞれを上書きする場合は、次の値を追加できます。
+**retryPolicy**が **exponential** に設定されると、ポリシーは、指数関数的に延長されるランダムな時間間隔で、失敗した要求を再試行します。 このポリシーでは、各々の再試行は、**minimumInterval** より大きく **maximumInterval** より小さいランダムな間隔で送信されることも保証されています。 指数関数的なポリシーでは、**count** と **interval** が必須ですが、**minimumInterval** と **maximumInterval** の値はオプションです。 既定値の PT5S と PT1D それぞれをオーバーライドする場合は、次の値を追加できます。
 
-| 要素名 | 必須 | type | [説明] |
+| 要素名 | 必須 | type | 説明 |
 | ------------ | -------- | ---- | ----------- |
 | 型 | [はい] | String | **exponential** |
 | count | [はい] | 整数 | 再試行の回数。1 - 90 で指定する必要があります。  |

@@ -1,26 +1,21 @@
 ---
-title: "Windows Server を Azure にバックアップする | Microsoft Docs"
-description: "このチュートリアルでは、オンプレミスの Windows Server を Recovery Services コンテナーにバックアップする方法について説明します。"
+title: Windows Server を Azure にバックアップする
+description: このチュートリアルでは、オンプレミスの Windows Server を Recovery Services コンテナーにバックアップする方法について説明します。
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-keywords: "windows server バックアップ; windows server をバックアップする; バックアップとディザスター リカバリー"
-ms.assetid: 
+keywords: windows server バックアップ; windows server をバックアップする; バックアップとディザスター リカバリー
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: saurabhsensharma;markgal;
+ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: de0398b7f295894a3cac7c67b68cef237c3ac2c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609020"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -42,7 +37,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 Windows Server をバックアップするには、まず、保存するバックアップの場所 (復元ポイント) を作成する必要があります。 [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は Azure にあるコンテナーで、そこに Windows Server からのバックアップを保存します。 以下の手順で Azure Portal に Recovery Services コンテナーを作成します。 
 
-1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に**「Recovery Services」**と入力します。 **[Recovery Services コンテナー]**をクリックします。
+1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に **「Recovery Services」** と入力します。 **[Recovery Services コンテナー]** をクリックします。
 
    ![Recovery Services コンテナーを開く](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
@@ -102,7 +97,7 @@ Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server 
  
 4. 入力が求められたら、暗号化パスフレーズを指定し、Windows Server からのバックアップを暗号化します。 安全な場所にパスフレーズを保存します。Microsoft はなくされたパスフレーズを回復できません。
 
-5. **[完了]**をクリックします。 
+5. **[完了]** をクリックします。 
 
 ## <a name="configure-backup-and-retention"></a>バックアップとリテンション期間を設定する
 
@@ -116,17 +111,17 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
 3. **[次へ]** をクリックし、**[Select Items to Back up]\(バックアップする項目を選択\)** ページに移動します。
 
-4. **[項目の追加]** をクリックし、表示されたダイアログ ボックスで **[システム状態]** とバックアップするファイルまたはフォルダーを選択します。 次に、 **[OK]**をクリックします
+4. **[項目の追加]** をクリックし、表示されたダイアログ ボックスで **[システム状態]** とバックアップするファイルまたはフォルダーを選択します。 次に、 **[OK]** をクリックします
 
 5. **[次へ]** をクリックします。
 
-6. **[Specify Backup Schedule (System State)](バックアップ スケジュールの選択 (システム状態))** ページで、システム状態に対してバックアップを開始する時間や曜日を指定し、**[次へ]** をクリックします。 
+6. **[バックアップ スケジュールの選択 (システム状態)]** ページで、システム状態に対してバックアップを開始する時間や曜日を指定し、**[次へ]** をクリックします。 
 
-7.  **[Select Retention Policy (System State)](保持ポリシーの選択 (システム状態))** ページで、システム状態を対象に、バックアップ コピーのリテンション期間ポリシーを選択し、**[次へ]** をクリックします。
+7.  **[保持ポリシーの選択 (システム状態)]** ページで、システム状態を対象に、バックアップ コピーのリテンション期間ポリシーを選択し、**[次へ]** をクリックします。
 8. 同様に、選択したファイルとフォルダーに対して、バックアップ スケジュールと保持ポリシーを選択します。 
 8.  **[Choose Initial Back up Type]\(初回バックアップの種類\)** ページで、**[自動でネットワーク経由]** オプションが選択されている状態のまま、**[次へ]** をクリックします。
 9.  **[確認]** ページで情報を確認し、**[完了]** をクリックします。
-10. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]**をクリックします。
+10. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
 
 ## <a name="perform-an-ad-hoc-back-up"></a>臨時バックアップを実行する
 
@@ -137,7 +132,7 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
     ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
 2.  **[今すぐバックアップ]** ウィザードで、**[ファイルとフォルダー]** または **[システム状態]** からバックアップ対象を選択し、**[次へ]** をクリックします。 
-3. **[確認]** ページで、**[今すぐバックアップ]** ウィザードのサーバー バックアップ設定を確認します。 次に、 **[バックアップ]**をクリックします。
+3. **[確認]** ページで、**[今すぐバックアップ]** ウィザードのサーバー バックアップ設定を確認します。 次に、 **[バックアップ]** をクリックします。
 4.  **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 4.  初回バックアップが完了すると、**[ジョブは完了しました]** 状態が MARS エージェント コンソールの **[ジョブ]** ウィンドウに表示されます。
 

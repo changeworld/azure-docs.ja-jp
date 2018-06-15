@@ -14,11 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598081"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -95,7 +96,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 1. **[新しいプロジェクト]** ダイアログ ボックスを開きます (**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順にクリックします)。
 2. **[テンプレート]** > **[JavaScript]** > **[Node.js]** の順に展開します。
 3. **[Basic Azure Node.js Express 4 Application]** を選択します。
-4. プロジェクト名を入力します。 **[OK]**を選択します。
+4. プロジェクト名を入力します。 **[OK]** を選択します。
 
    ![Visual Studio 2015 の新しいプロジェクト][1]
 5. **npm** ノードを右クリックし、**[新しい npm パッケージのインストール]** を選択します。
@@ -103,7 +104,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 7. 検索ボックスに「 **azure-mobile-apps** 」と入力します。 **azure-mobile-apps 2.0.0** パッケージを選択し、**[パッケージのインストール]** を選択します。
 
    ![新しい npm パッケージのインストール][2]
-8. **[閉じる]**を選択します。
+8. **[閉じる]** を選択します。
 9. app.js ファイルを開き、Mobile Apps SDK のサポートを追加します。 ライブラリの `require` ステートメントの下の 6 行目に、次のコードを追加します。
 
         var bodyParser = require('body-parser');
@@ -122,7 +123,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 10. アプリケーションをローカルで実行するか (API は http://localhost:3000) で動作します)、Azure に発行します。
 
 ### <a name="create-node-backend-portal"></a>Azure Portal を使用して Node.js バックエンドを作成する
-Mobile Apps バックエンドは、[[アプリ設定]] ですぐに作成できます。 次の手順を実行するか、[モバイル アプリの作成](app-service-mobile-ios-get-started.md)のチュートリアルに従ってクライアントとサーバーをまとめて作成することもできます。 このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
+Mobile Apps バックエンドは、[Azure Portal] ですぐに作成できます。 次の手順を実行するか、[モバイル アプリの作成](app-service-mobile-ios-get-started.md)のチュートリアルに従ってクライアントとサーバーをまとめて作成することもできます。 このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -168,7 +169,7 @@ Azure App Service には、バックエンドを公開する前に確認する�
 ## <a name="TableOperations"></a>テーブル操作
 azure-mobile-apps Node.js Server SDK では、Web API として Azure SQL Database に格納されたデータ テーブルを公開するためのメカニズムが提供されます。 以下の 5 つの操作が提供されます。
 
-| 操作 | [説明] |
+| 操作 | 説明 |
 | --- | --- |
 | GET /tables/*tablename* |テーブルのすべてのレコードを取得します。 |
 | GET /tables/*tablename*/:id |テーブルの特定のレコードを取得します。 |
@@ -267,7 +268,7 @@ Mobile Apps Node.js SDK では [mssql Node.js パッケージ] を使用して�
 
       ![TCP/IP 用に SQL Server Express を構成する][3]
 
-   g. **[OK]**を選択します。 ポップアップ ダイアログ ボックスで **[OK]** を選択します。
+   g. **[OK]** を選択します。 ポップアップ ダイアログ ボックスで **[OK]** を選択します。
 
    h. ツリー メニューの **[SQL Server のサービス]** を選択します。
 
@@ -279,19 +280,19 @@ Mobile Apps Node.js SDK では [mssql Node.js パッケージ] を使用して�
    1. オブジェクト エクスプローラーでインスタンスを右クリックし、**[プロパティ]** を選択します。
    2. **[セキュリティ]** ページを選択します。
    3. **[SQL Server 認証モードと Windows 認証モード]** が選択されていることを確認します。
-   4. **[OK]**を選択します。
+   4. **[OK]** を選択します。
 
       ![SQL Server Express 認証の構成][4]
    5. オブジェクト エクスプローラーで **[セキュリティ]** > **[ログイン]** の順に展開します。
    6. **[ログイン]** を右クリックし、**[新しいログイン]** を選択します。
-   7. ログイン名を入力します。 **[SQL Server 認証]**を選択します。 パスワードを入力し、**[パスワードの確認入力]** に同じパスワードを入力します。 パスワードは、Windows の複雑さの要件を満たしている必要があります。
-   8. **[OK]**を選択します。
+   7. ログイン名を入力します。 **[SQL Server 認証]** を選択します。 パスワードを入力し、**[パスワードの確認入力]** に同じパスワードを入力します。 パスワードは、Windows の複雑さの要件を満たしている必要があります。
+   8. **[OK]** を選択します。
 
       ![SQL Server Express に新しいユーザーを追加する][5]
    9. 新しいログインを右クリックし、**[プロパティ]** を選択します。
    10. **[サーバー ロール]** ページを選択します。
    11. **dbcreator** サーバー ロールのチェック ボックスをオンにします。
-   12. **[OK]**を選択します。
+   12. **[OK]** を選択します。
    13. SQL Server 2015 Management Studio を閉じます。
 
 選択したユーザー名とパスワードは必ずメモしておきます。 データベース要件によっては、他のサーバーの役割またはアクセス許可の割り当てが必要になる場合があります。
@@ -303,7 +304,7 @@ Node.js アプリケーションは、`SQLCONNSTR_MS_TableConnectionString` 環�
 TCP/IP 接続を介してデータベースにアクセスします。 接続に使用するユーザー名とパスワードを入力します。
 
 ### <a name="howto-config-localdev"></a>ローカル開発用のプロジェクトを構成する
-Mobile Apps は、ローカル ファイルシステムから *azureMobile.js* という JavaScript ファイルを読み取ります。 運用環境の Mobile Apps SDK の構成にはこのファイルを使用しないでください。 運用環境では、[[アプリ設定]] の **[アプリ設定]** を使用してください。 
+Mobile Apps は、ローカル ファイルシステムから *azureMobile.js* という JavaScript ファイルを読み取ります。 運用環境の Mobile Apps SDK の構成にはこのファイルを使用しないでください。 運用環境では、[Azure Portal] の **[アプリ設定]** を使用してください。 
 
 azureMobile.js ファイルでは構成オブジェクトをエクスポートする必要があります。 最も一般的な設定は次のとおりです。
 
@@ -329,12 +330,12 @@ azureMobile.js ファイルでは構成オブジェクトをエクスポート�
         }
     };
 
-パスワードがクラウドに保存されないように、azureMobile.js を .gitignore ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず **Azure Portal** の [[アプリ設定]] で構成してください。
+パスワードがクラウドに保存されないように、azureMobile.js を .gitignore ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず **Azure Portal** の [Azure Portal] で構成してください。
 
 ### <a name="howto-appsettings"></a>モバイル アプリのアプリ設定を構成する
-azureMobile.js ファイル内のほとんどの設定には、[[アプリ設定]] 内に対応するアプリ設定があります。 次の一覧を参照して、**[アプリ設定]** でアプリを構成してください。
+azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] 内に対応するアプリ設定があります。 次の一覧を参照して、**[アプリ設定]** でアプリを構成してください。
 
-| アプリ設定 | azureMobile.js setting | [説明] | 有効な値 |
+| アプリ設定 | azureMobile.js setting | 説明 | 有効な値 |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |アプリの名前 |文字列 |
 | **MS_MobileLoggingLevel** |logging.level |ログ記録するメッセージの最小ログ レベル |error、warning、info、verbose、debug、silly |
@@ -346,7 +347,7 @@ azureMobile.js ファイル内のほとんどの設定には、[[アプリ設定
 
 アプリ設定を設定するには:
 
-1. [[アプリ設定]]にサインインします。
+1. [Azure Portal]にサインインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. **[設定]** ウィンドウが既定で開きます。 開かない場合は、**[すべての設定]** を選択します。
 4. **[全般]** メニューの **[アプリケーション設定]** を選択します。
@@ -362,7 +363,7 @@ azureMobile.js ファイル内のほとんどの設定には、[[アプリ設定
 
 Azure SQL Database をデータ ストアとして使用する方法は、Azure App Service アプリケーションのすべての種類で同じです。 Mobile Apps バックエンドをまだ作成していない場合は、次の手順に従って作成します。
 
-1. [[アプリ設定]]にサインインします。
+1. [Azure Portal]にサインインします。
 2. ウィンドウの左上で、**[+ 新規]**、**[Web + モバイル]** > **[モバイル アプリ]** の順に選択し、Mobile Apps バックエンドの名前を指定します。
 3. **[リソース グループ]** ボックスで、アプリと同じ名前を入力します。
 4. 既定の App Service プランが選択されています。 App Service プランを変更する場合:
@@ -376,7 +377,7 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
    d. **[選択]** ボタンをクリックします。 
    
    e. **[App Service プラン]** ウィンドウに戻り、**[OK]** を選択します。
-5. **[作成]**を選択します。 
+5. **[作成]** を選択します。 
 
 Mobile Apps バックエンドのプロビジョニングには数分かかる場合があります。 Mobile Apps バックエンドのプロビジョニングが完了すると、ポータルで Mobile Apps バックエンドの **[設定]** ウィンドウが開きます。
 
@@ -389,11 +390,11 @@ Mobile Apps バックエンドのプロビジョニングには数分かかる�
 
 1. 新しい Mobile Apps バックエンドで、**[設定]** > **[モバイル アプリ]** > **[データ]** > **[+ 追加]** の順に選択します。
 2. **[データ接続の追加]** ウィンドウで、**[SQL Database - 必要な設定の構成]** > **[新しいデータベースの作成]** の順に選択します。 **[名前]** ボックスに新しいデータベースの名前を入力します。
-3. **[サーバー]** を選択します。 **[新しいサーバー]** ウィンドウで、**[サーバー名]** ボックスに一意のサーバー名を入力し、サーバー管理ログインとパスワードに適切な内容を指定します。 **[Azure サービスにサーバーへのアクセスを許可する]** が選択されていることを確認します。 **[OK]**を選択します。
+3. **[サーバー]** を選択します。 **[新しいサーバー]** ウィンドウで、**[サーバー名]** ボックスに一意のサーバー名を入力し、サーバー管理ログインとパスワードに適切な内容を指定します。 **[Azure サービスにサーバーへのアクセスを許可する]** が選択されていることを確認します。 **[OK]** を選択します。
 
    ![Azure SQL データベースの作成][6]
 4. **[新しいデータベース]** ウィンドウで、**[OK]** を選択します。
-5. **[データ接続の追加]** ウィンドウに戻り、**[接続文字列]** を選択して、データベースの作成時に指定したログイン名とパスワードを入力します。 既存のデータベースを使用する場合は、そのデータベースのログイン資格情報を入力します。 **[OK]**を選択します。
+5. **[データ接続の追加]** ウィンドウに戻り、**[接続文字列]** を選択して、データベースの作成時に指定したログイン名とパスワードを入力します。 既存のデータベースを使用する場合は、そのデータベースのログイン資格情報を入力します。 **[OK]** を選択します。
 6. もう一度 **[データ接続の追加]** ウィンドウに戻り、**[OK]** を選択してデータベースを作成します。
 
 <!--- END OF ALTERNATE INCLUDE -->
@@ -401,7 +402,7 @@ Mobile Apps バックエンドのプロビジョニングには数分かかる�
 データベースの作成には数分かかる場合があります。 **[通知]** 領域を使用して、デプロイの進行状況を監視します。 データベースのデプロイが正常に完了するまで、先に進まないでください。 データベースがデプロイされると、Mobile Apps バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。 このアプリ設定を確認するには、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>テーブルへのアクセスに認証を要求する
-`tables` エンドポイントで App Service 認証を使用する場合は、まず、[[アプリ設定]] で App Service 認証を構成する必要があります。 詳細については、使用する ID プロバイダーの構成ガイドを参照してください。
+`tables` エンドポイントで App Service 認証を使用する場合は、まず、[Azure Portal] で App Service 認証を構成する必要があります。 詳細については、使用する ID プロバイダーの構成ガイドを参照してください。
 
 * [Azure Active Directory 認証を構成する]
 * [Facebook 認証を構成する]
@@ -681,7 +682,7 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 ### <a name="howto-customapi-basic"></a>カスタム API を定義する
 `/tables` エンドポイント経由のデータ アクセス API に加え、Mobile Apps ではカスタム API も提供できます。 カスタム API はテーブル定義と同じような方法で定義され、認証を含む、すべての同じ機能にアクセスできます。
 
-カスタム API で App Service 認証を使用する場合は、まず、[[アプリ設定]] で App Service 認証を構成する必要があります。 詳細については、使用する ID プロバイダーの構成ガイドを参照してください。
+カスタム API で App Service 認証を使用する場合は、まず、[Azure Portal] で App Service 認証を構成する必要があります。 詳細については、使用する ID プロバイダーの構成ガイドを参照してください。
 
 * [Azure Active Directory 認証を構成する]
 * [Facebook 認証を構成する]
@@ -818,7 +819,7 @@ Node.js Mobile Apps バックエンドのトラブルシューティングを開
 * [Azure App Service での診断ログの有効化]
 * [Visual Studio での Azure App Service のトラブルシューティング]
 
-Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。 Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。 デバッグ モードを有効にするか、[[アプリ設定]] で `MS_DebugMode` アプリ設定を true に設定すると、ログは自動的に有効になります。 生成されたログは、[[アプリ設定]] の診断ログに表示されます。
+Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。 Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。 デバッグ モードを有効にするか、[Azure Portal] で `MS_DebugMode` アプリ設定を true に設定すると、ログは自動的に有効になります。 生成されたログは、[Azure Portal] の診断ログに表示されます。
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Azure Portal で Easy Tables を使用する
 [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。 CSV 形式で、Easy Tables にデータセットをアップロードできます。 Mobile Apps バックエンドのシステム プロパティ名と競合するプロパティ名 (お使いの CSV データセット内) は使用できないことに注意してください。 システム プロパティ名は次のとおりです。
@@ -892,7 +893,7 @@ Azure Portal では、ローカル コンピューターにプロジェクトを
 [Express]: http://expressjs.com/
 [Swagger]: http://swagger.io/
 
-[[アプリ設定]]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [OData]: http://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [GitHub の basicapp サンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app

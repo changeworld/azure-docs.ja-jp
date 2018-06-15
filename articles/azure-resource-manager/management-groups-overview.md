@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604745"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
@@ -69,7 +70,7 @@ ms.lasthandoff: 05/04/2018
 
 Azure 管理グループは、すべてのリソース アクセスとロール定義について、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) をサポートします。 これらのアクセス許可は、階層内に存在する子リソースに継承されます。   
 
-任意の[組み込み RBAC ロール](../role-based-access-control/overview.md#built-in-roles)を管理グループに割り当てることができますが、よく使われるロールが 4 つあります。 
+任意の[組み込み RBAC ロール](../role-based-access-control/built-in-roles.md)を管理グループに割り当てることができますが、よく使われるロールが 4 つあります。 
 - **所有者** は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
 - **共同作成者**は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
 - **リソース ポリシーの共同作成者**は、リソースのディレクトリ内のポリシーを作成および管理できます。     

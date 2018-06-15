@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 024736ed76e9b268e85db3ecc62b853d6c276fbf
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2c1cad49314dfa051a5c4ddddba2dbe0fc8b93ce
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590625"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
@@ -31,8 +33,8 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 1. Azure AD Connect をインストールするサーバーにローカル管理者としてサインインします。 この作業は、同期サーバーとなるサーバーに対して行う必要があります。
 2. **AzureADConnect.msi**を検索し、ダブルクリックします。
-3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]**をクリックします。  
-4. [簡単設定] 画面で、 **[簡単設定を使う]**をクリックします。  
+3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
+4. [簡単設定] 画面で、 **[簡単設定を使う]** をクリックします。  
    ![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
    ![Connect to Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)  
@@ -42,12 +44,12 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 7. [**[Azure AD サインインの構成]**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](active-directory-aadconnect-prerequisites.md)の[ドメインの検証](../active-directory-domains-add-azure-portal.md)が済んでいない場合にのみ表示されます。
    ![Unverified domains](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
    このページが表示されたら、**[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。
-8. [構成の準備完了] 画面で、 **[インストール]**をクリックします。
+8. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
    * 必要に応じて、[構成の準備完了] ページの **[Start the synchronization process as soon as configuration completes (構成が完了したらすぐに同期プロセスを開始する)]** チェック ボックスをオフにします。 続けて[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)などの構成作業を行う場合は、このチェック ボックスをオフにする必要があります。 このオプションをオフにした場合、同期の構成は実行されますが、スケジューラは無効のままとなります。 スケジューラを実行するには、[もう一度インストール ウィザードを実行](active-directory-aadconnectsync-installation-wizard.md)して手動で有効にする必要があります。
    * **[Start the synchronization process as soon as configuration completes]\(構成が完了したらすぐに同期プロセスを開始する\)** チェック ボックスをオンのままにすると、すべてのユーザー、グループ、連絡先について、直ちに Azure AD との完全同期がトリガーされます。 
    * オンプレミスの Active Directory に Exchange がある場合、[**Exchange ハイブリッド デプロイ**](https://technet.microsoft.com/library/jj200581.aspx)を有効にすることもできます。 クラウドとオンプレミスの両方に Exchange メールボックスを同時に配置する場合は、このオプションを有効にしてください。
      ![Ready to configure Azure AD Connect](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
-9. インストールが完了したら、 **[終了]**をクリックします。
+9. インストールが完了したら、 **[終了]** をクリックします。
 10. インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトし、もう一度サインインします。
 
 ## <a name="videos"></a>ビデオ

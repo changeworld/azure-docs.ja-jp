@@ -1,11 +1,11 @@
 ---
-title: ".NET での Azure Files 用の開発 | Microsoft Docs"
-description: "Azure Files を使ってファイル データを格納する.NET アプリケーションとサービスを開発する方法を説明します。"
+title: .NET での Azure Files 用の開発 | Microsoft Docs
+description: Azure Files を使ってファイル データを格納する.NET アプリケーションとサービスを開発する方法を説明します。
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 11bc2418e439f86a228ff7d5c845caef683d9018
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 95f890ccbe03fc734b54ac8c5edee2ec7b56d9c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737631"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -41,7 +42,7 @@ Azure Files の詳細については、「[Azure Files の概要](storage-files-
 
 Azure Files は、クライアント アプリケーションに対して、サーバー メッセージ ブロック (SMB) と REST という 2 つの幅広いアプローチを提供します。 .NET 内では、これらのアプローチは `System.IO` API と `WindowsAzure.Storage` API によって抽象化されています。
 
-API | 使用時の注意 | メモ
+API | いつ使用するか | メモ
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB 経由でファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O のコーディングは、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O のコーディングと同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、[このチュートリアル](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)を参照してください。
 [WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 の SMB 経由で Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST とファイル共有の管理を使用するファイル I/O に `WindowsAzure.Storage` を使用する方法について説明します。
@@ -461,7 +462,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File のトラブルシューティングに関する記事](storage-troubleshoot-windows-file-connection-problems.md)も参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Files の詳細については、次のリンクをご覧ください。
 
 ### <a name="conceptual-articles-and-videos"></a>概念に関する記事とビデオ

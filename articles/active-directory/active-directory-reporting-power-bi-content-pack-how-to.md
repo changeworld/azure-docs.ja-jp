@@ -1,23 +1,25 @@
 ---
-title: "Azure Active Directory Power BI コンテンツ パックの使用方法 | Microsoft Docs"
-description: "Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。"
+title: Azure Active Directory Power BI コンテンツ パックの使用方法 | Microsoft Docs
+description: Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。
 services: active-directory
-author: MarkusVi
+author: rolyon
 manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: get-started-article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/06/2017
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 503b3f4c576382d8ce965d1f90aadda32c819a0b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd52f8a31d0fe54cce9b39d7de7eb45336efeb7c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588326"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -88,7 +90,7 @@ ms.lasthandoff: 12/11/2017
 
 - ユーザー名
 - IP アドレス
-- 場所 
+- リージョン 
 - サインインの状態 
 
 このレポートでは、社内で使われている各種デバイスのプロファイルを把握し、実際の使用状況に基づいてデバイスのポリシーを決めることができます。
@@ -146,6 +148,6 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 [トラブルシューティング ガイド](active-directory-reporting-troubleshoot-content-pack.md)を参照してください。 Power BI 全般のヘルプ情報については、こちらの[ヘルプ記事](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-started/)を参照してください。
  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。

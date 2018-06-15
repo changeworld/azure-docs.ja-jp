@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e6b5839af6d6d7f4b2dfbb712d5e90de7023747e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8eaeb0342ee21844a21dea79067491561afb4177
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617758"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-beta"></a>Azure Data Factory を使用して Zoho からデータをコピーする (Beta)
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Zoho のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Zoho** に設定する必要があります | [はい] |
 | endpoint | Zoho サーバーのエンドポイント (`crm.zoho.com/crm/private`)。 | [はい] |
@@ -101,7 +102,7 @@ Zoho からデータをコピーするには、データセットの type プロ
 
 Zoho からデータをコピーするは、コピー アクティビティのソースの種類を **ZohoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **ZohoSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Accounts"`」のように入力します。 | [はい] |

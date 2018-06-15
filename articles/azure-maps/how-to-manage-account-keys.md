@@ -1,18 +1,19 @@
 ---
 title: Azure Maps のアカウントとキーを管理する方法 | Microsoft Docs
 description: Azure Portal を使用して、Azure Maps アカウントを管理し、アクセス キーを管理することができます。
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
+services: azure-maps
 manager: timlt
-ms.openlocfilehash: 091b91b51f7c880a1edbf65a0e2c83560d4bc38b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 153fb87b0e2b576fd67a24bb833165f2a1c93c56
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599662"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Azure Maps のアカウントとキーを管理する方法
 

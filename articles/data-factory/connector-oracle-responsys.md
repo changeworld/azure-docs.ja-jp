@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jingwang
-ms.openlocfilehash: 629c1e071f475ab1d3ae3bf25839d6832b416264
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3d4c36578402d5a31464bc8a1c77f60cba9104c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206469"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617404"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Oracle Responsys からデータをコピーする
 
@@ -46,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Oracle Responsys のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Responsys** に設定する必要があります | [はい] |
 | endpoint | Respopnsys サーバーのエンドポイント  | [はい] |
@@ -109,7 +109,7 @@ Oracle Responsys からデータをコピーするには、データセットの
 
 Oracle Responsys からデータをコピーするには、コピー アクティビティのソースの種類を **ResponsysSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **ResponsysSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

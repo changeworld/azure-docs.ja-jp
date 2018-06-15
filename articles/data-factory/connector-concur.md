@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ad93d40f7d1a08b248ed4b8ceb744929aeb13c79
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e72736e13733b8b4e7dbdbb1cea5594f6631ca70
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617047"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Concur からデータをコピーする
 
@@ -48,7 +49,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Concur のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Concur** に設定する必要があります。 | [はい] |
 | clientId | Concur App Management によって提供されるアプリケーションの client_id。  | [はい] |
@@ -106,7 +107,7 @@ Concur からデータをコピーするには、データセットの type プ�
 
 Concur からデータをコピーするには、コピー アクティビティのソースの種類を **ConcurSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |

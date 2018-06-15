@@ -2,24 +2,22 @@
 title: 'Azure Cosmos DB: .NET での Table API を使用した開発 | Microsoft Docs'
 description: .NET を使用した Azure Cosmos DB の Table API による開発方法について
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 52d91205e7b0daa82fb12c166222b1dce4c699eb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763454"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -137,7 +135,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 特定の機能には、接続ポリシーと一貫性レベルを指定できる CreateCloudTableClient の新しいオーバーロードを使ってアクセスします。
 
-| テーブル接続の設定 | [説明] |
+| テーブル接続の設定 | 説明 |
 | --- | --- |
 | 接続モード  | Azure Cosmos DB では 2 つの接続モードがサポートされます。 `Gateway` モードでは、要求は常に Azure Cosmos DB ゲートウェイに対して行われ、そこから対応するデータ パーティションに転送されます。 `Direct` 接続モードでは、クライアントがテーブルとパーティションのマッピングをフェッチし、要求がデータ パーティションに直接行われます。 既定値の `Direct` をお勧めします。  |
 | 接続プロトコル | Azure Cosmos DB では 2 つの接続プロトコル、`Https` と `Tcp` がサポートされます。 軽量であるため、既定の `Tcp` をお勧めします。 |
@@ -146,7 +144,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 他の機能は、次の `appSettings` 構成値で有効にすることができます。
 
-| キー | [説明] |
+| キー | 説明 |
 | --- | --- |
 | TableQueryMaxItemCount | 1 回のラウンド トリップでテーブル クエリごとに返される最大項目数を構成します。 既定値の `-1` では、Azure Cosmos DB が実行時に値を動的に決定できます。 |
 | TableQueryEnableScan | クエリがすべてのフィルターでインデックスを使用できない場合、スキャンを使用して実行します。 既定値は `false`です。|

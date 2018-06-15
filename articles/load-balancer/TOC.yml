@@ -74,6 +74,8 @@
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: ゾーン内で VM の負荷分散を行う (CLI)
       href: load-balancer-standard-public-zonal-cli.md
+    - name: REST API を使用して Azure Load Balancer を作成する
+      href: create-load-balancer-rest-api.md
     - name: Basic Load Balancer を作成する (テンプレート)
       href: load-balancer-get-started-internet-arm-template.md
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
@@ -106,6 +108,8 @@
           href: load-balancer-multiple-ip-powershell.md
     - name: Azure Load Balancer のログ分析
       href: load-balancer-monitor-log.md
+    - name: REST を使用して Load Balancer のメトリックを取得する
+      href: load-balancer-query-metrics-rest-api.md
     - name: 内部ロード バランサー用の高可用性ポートを構成する
       href: load-balancer-configure-ha-ports.md
     - name: トラブルシューティング

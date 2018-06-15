@@ -1,11 +1,11 @@
 ---
-title: "Logic Apps B2B の UNH2.5 を使用した EDIFACT デコードの解決 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps B2B の UNH2.5 を使用した EDIFACT デコードの解決"
+title: Logic Apps B2B の UNH2.5 を使用した EDIFACT デコードの解決 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps B2B の UNH2.5 を使用した EDIFACT デコードの解決
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e04e7515a8ddfe512ba2efbbd45c3d1b571c1fd
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297949"
 ---
 # <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>UNH2.5 セグメントを持つ EDIFACT ドキュメントを処理する方法
 EDIFACT ドキュメント内に UNH2.5 がある場合は、スキーマの検索に使用します。 
@@ -50,5 +51,5 @@ UNH2.5 セグメントが異なる D03B_ORDERS ごとに、個々のスキーマ
 3. EDIFACT アグリーメントを選択して **[JSON として編集]** をクリックします。  UNH2.5 の値を送信契約 **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) に追加します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [統合アカウント契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")  

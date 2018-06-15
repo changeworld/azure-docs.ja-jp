@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295627"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure Portal では "属性マッピング" と呼ばれる構成の形でその属性値を管理します。
@@ -83,7 +84,7 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
 グループ オブジェクトの一部としてプロビジョニングされる属性は、前に説明したユーザー オブジェクトの場合と同じ方法でカスタマイズできます。 
 
 >[!TIP]
->グループ オブジェクト (プロパティとメンバー) のプロビジョニングは、アプリケーションへの[グループの割り当て](active-directory-coreapps-assign-user-azure-portal.md)とは異なる概念です。 グループをアプリケーションに割り当てることができますが、プロビジョニングできるのはグループに含まれるユーザー オブジェクトのみです。 グループ オブジェクト全体のプロビジョニングは、割り当てでグループを使用するためには必要ありません。
+>グループ オブジェクト (プロパティとメンバー) のプロビジョニングは、アプリケーションへの[グループの割り当て](manage-apps/assign-user-or-group-access-portal.md)とは異なる概念です。 グループをアプリケーションに割り当てることができますが、プロビジョニングできるのはグループに含まれるユーザー オブジェクトのみです。 グループ オブジェクト全体のプロビジョニングは、割り当てでグループを使用するためには必要ありません。
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>サポートされている属性一覧の編集
@@ -149,7 +150,7 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
 * [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
-* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->

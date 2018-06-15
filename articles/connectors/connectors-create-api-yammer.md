@@ -4,7 +4,7 @@ description: Yammer コネクタと REST API パラメーターの概要
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 7f1758e9b95f534b23188f427ae0edaddbb29a48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63f7b341b456d51cbde523684275a99632a672ed
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296477"
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer コネクタの使用
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。 Yammer で次のことができます。
@@ -33,7 +34,7 @@ Yammer に接続し、エンタープライズ ネットワークの会話にア
 ## <a name="create-a-connection-to-yammer"></a>Yammer への接続を作成する
 Yammer コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。 
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | トークン |[はい] |Yammer 資格情報を入力します |
 

@@ -9,17 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 424af2ffd1b7931701036aeb819cbb8879cb7a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832664"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
@@ -88,7 +90,7 @@ DSVM の IP アドレス | xxx|
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します。
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに、「**Workload Forecasting on Terabytes Data**」と入力し、テンプレートを選択します。
-5.  **[作成]**を選択します。
+5.  **[作成]** を選択します。
 
 [こちらの手順](./tutorial-classifying-iris-part-1.md)に従って事前に作成した Git リポジトリを使用して、Workbench プロジェクトを作成できます。  
 バージョンを追跡するために、`git status` を実行してファイルの状態を検査します。
@@ -99,7 +101,7 @@ DSVM の IP アドレス | xxx|
 
 合計データ サイズは約 1 TB です。 各ファイルは約 1 ～ 3 GB であり、ヘッダーなしの CSV ファイル形式です。 データの各行は、特定のサーバーで発生したトランザクションの負荷を示しています。 データ スキーマの詳細情報は次のとおりです。
 
-列番号 | フィールド名| type | [説明] |  
+列番号 | フィールド名| type | 説明 |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | DateTime |    セッションの開始時間
 2  |`SessionEnd`    | DateTime | セッションの終了時間
@@ -127,7 +129,7 @@ DSVM の IP アドレス | xxx|
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | type | [説明] |
+| ファイル名 | type | 説明 |
 |-----------|------|-------------|
 | `Code` | フォルダー | このフォルダーには、この例のすべてのコードが含まれています。 |
 | `Config` | フォルダー | このフォルダーには、構成ファイルが含まれています。 |
@@ -158,7 +160,7 @@ DSVM の IP アドレス | xxx|
 
 1 か月のデータセットでの実験用に 1 つのコンテナーを使用し、完全なデータセットでの実験用に別のコンテナーを使用することをお勧めします。 データとモデルは Parquet ファイルとして保存されるので、各ファイルは実際には複数の BLOB を含むコンテナー内の 1 つのフォルダーです。 結果のコンテナーは次のようになります。
 
-| BLOB のプレフィックス名 | type | [説明] |
+| BLOB のプレフィックス名 | type | 説明 |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数値特徴の標準スケーラー モデル。 |
 | stringIndexModel | Parquet | 数値特徴以外の文字列インデクサー モデル。|
@@ -184,7 +186,7 @@ DSVM の IP アドレス | xxx|
 
 最初の引数である `configFilename` は、Blob Storage 情報を格納し、データを読み込む場所を指定するローカル構成ファイルです。 既定では、[`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json) であり、1 か月のデータ実行で使用されます。 また、[`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) も含まれています。これは、完全なデータセット実行で使用する必要があります。 構成の内容は次のとおりです。 
 
-| フィールド | type | [説明] |
+| フィールド | type | 説明 |
 |-----------|------|-------------|
 | storageAccount | String | Azure ストレージ アカウント名 |
 | storageContainer | String | 中間の結果を格納する Azure ストレージ アカウントのコンテナー |

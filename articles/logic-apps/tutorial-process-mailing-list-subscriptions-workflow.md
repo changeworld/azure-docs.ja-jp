@@ -1,12 +1,12 @@
 ---
-title: "メーリング リストの登録申請を処理する承認ワークフローの作成 - Azure Logic Apps | Microsoft Docs"
-description: "このチュートリアルでは、メーリング リストの登録を処理する自動化された承認ワークフローを Azure Logic Apps で作成する方法について説明します。"
+title: メーリング リストの登録申請を処理する承認ワークフローの作成 - Azure Logic Apps | Microsoft Docs
+description: このチュートリアルでは、メーリング リストの登録を処理する自動化された承認ワークフローを Azure Logic Apps で作成する方法について説明します。
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4765a38689d5476331c593b89e54f94d4bd310c3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300676"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>ロジック アプリでメーリング リストの登録申請を管理する
 
@@ -96,7 +97,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Setting | 値 | [説明] | 
+      | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | 監視するメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -197,7 +198,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[メンバーをリストに追加する] の情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **リスト ID** | test-members-ML | MailChimp メーリング リストの名前 | 
    | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
