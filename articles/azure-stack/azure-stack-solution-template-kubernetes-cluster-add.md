@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f74d378359ec66b76fd53b95ab898f1cec9b07f7
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0ba0e1f3d9e0f1cbb6ba4109a21fc29dc41df5fc
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34009573"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603455"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Kubernetes Cluster を Azure Stack Marketplace に追加する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!note]  
-> Azure Stack 上の Azure Container Services (ACS) Kubernetes はプレビュー段階にあります。 この記事の手順を実行するために必要な Kubernetes Marketplace 項目へのアクセスを要求するには、[アクセス取得の要求を送信](https://aka.ms/azsk8)してください。
+> Azure Stack 上の Azure Container Services (ACS) Kubernetes はプライベート プレビューの段階にあります。 この記事の手順を実行するために必要な Kubernetes Marketplace 項目へのアクセスを要求するには、[アクセス取得の要求を送信](https://aka.ms/azsk8)してください。
 
 Kubernetes Cluster は、Marketplace 項目としてユーザーに提供できます。 ユーザーは、1 回の連携した操作で Kubernetes をデプロイできます。
 
@@ -48,7 +48,7 @@ Kubernetes Cluster の Marketplace 項目のプラン、オファー、サブス
 
 6. **[状態の変更]** を選択します。 **[パブリック]** を選択します。
 
-7. **[+ 新規]** > **[Offers and Plans](オファーとプラン)** > **[サブスクリプション]** と選択し、新しいサブスクリプションを作成します。
+7. **+ 新規** > Offers and Plans **(オファーとプラン)** > **サブスクリプション** と選択し、新しいサブスクリプションを作成します。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **表示名**を入力します。
 
@@ -68,7 +68,7 @@ Kubernetes Cluster の Marketplace 項目のプラン、オファー、サブス
 
 2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **[+ Add from Azure](+ Azure から追加)** を選択します。
+3. **+ Add from Azure**(+ Azure から追加) を選択します。
 
 4. 「`UbuntuServer`」を入力します。
 
@@ -91,7 +91,7 @@ Marketplace から Kubernetes Cluster を追加します。
 
 2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **[+ Add from Azure](+ Azure から追加)** を選択します。
+3. **+ Add from Azure**(+ Azure から追加) を選択します。
 
 4. 「`Custom Script for Linux`」を入力します。
 
@@ -112,7 +112,7 @@ Marketplace から Kubernetes Cluster を追加します。
 
 2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** の順に選択します。
 
-3. **[+ Add from Azure](+ Azure から追加)** を選択します。
+3. **+ Add from Azure**(+ Azure から追加) を選択します。
 
 4. 「`Kubernetes Cluster`」を入力します。
 
