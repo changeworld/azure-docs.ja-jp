@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836468"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -108,7 +110,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="detectors"></a>検出機能
 異常検出 API がサポートしている検出機能 (ディテクター) は大きく 3 つのカテゴリに分けられます。 検出機能ごとの具体的な入力パラメーターと出力について詳しくは、次の表を参照してください。
 
-| 検出機能のカテゴリ | 検出機能 | [説明] | 入力パラメーター | 出力 |
+| 検出機能のカテゴリ | 検出機能 | 説明 | 入力パラメーター | 出力 |
 | --- | --- | --- | --- | --- |
 | スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
 | スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
@@ -118,7 +120,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | [説明] | 既定の設定 | type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
 | detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
@@ -131,7 +133,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
-| 出力 | [説明] |
+| 出力 | 説明 |
 | --- | --- |
 | Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
 | データ |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |
@@ -154,7 +156,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | [説明] | 既定の設定 | type | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | 説明 | 既定の設定 | type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
 | preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |
@@ -174,7 +176,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
-| 出力 | [説明] |
+| 出力 | 説明 |
 | --- | --- |
 | Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
 | OriginalData |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |

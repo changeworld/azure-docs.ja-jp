@@ -3,22 +3,20 @@ title: Azure Cosmos DB SQL API の SQL クエリ メトリック | Microsoft Doc
 description: Azure Cosmos DB 要求の SQL クエリをインストルメント化し、SQL クエリのパフォーマンスをデバッグする方法について説明します。
 keywords: sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: b2fa8e8f-7291-45a3-9bd1-7284ed9077f8
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 00e50c3b2f4dc50e43aac03b162bc637f0821656
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ed0008f4b574691387d6e0ee0300b5f05f1ec1b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798697"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
@@ -44,7 +42,7 @@ Azure Cosmos DB にクエリを発行すると、SDK はこれらの論理手順
 
 SDK は、クエリの実行にさまざまなオプションを提供します。 たとえば、.NET では、これらのオプションは `FeedOptions` クラスで提供されています。 次の表は、これらのオプションと、オプションがクエリ実行時間に及ぼす影響を示しています。 
 
-| オプション | [説明] |
+| オプション | 説明 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 1 つ以上のパーティションにわたって実行する必要があるクエリでは true に設定する必要があります。 これは、開発時にパフォーマンスのトレードオフを意識的に評価するための明示的なフラグです。 |
 | `EnableScanInQuery` | インデックスを作成しないことを選択したが、スキャンを使用してクエリを実行する必要がある場合は、true に設定する必要があります。 要求されたフィルター パスのインデックス作成が無効になっている場合のみ適用されます。 | 
@@ -130,7 +128,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 クエリから返されたキーの応答ヘッダー、次のとおりです。
 
-| オプション | [説明] |
+| オプション | 説明 |
 | ------ | ----------- |
 | `x-ms-item-count` | 応答で返される項目の数。 これは、指定された `x-ms-max-item-count` や、応答の最大ペイロード サイズ、プロビジョニングされたスループット、およびクエリの実行時間の範囲内に収まる項目数によって異なります。 |  
 | `x-ms-continuation:` | その他の結果が利用可能な場合は、クエリの実行を再開する継続トークンです。 | 
@@ -241,7 +239,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| メトリック | 単位 | [説明] | 
+| メトリック | 単位 | 説明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ミリ秒 | クエリ実行時間 | 
 | `queryCompileTimeInMs` | ミリ秒 | クエリのコンパイル時間  | 
@@ -263,7 +261,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 以下は、クエリの例とクエリ実行から返されたメトリックを解釈する方法です。 
 
-| クエリ | メトリックの例 | [説明] | 
+| クエリ | メトリックの例 | 説明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 取得されたドキュメントの数は、TOP 句と一致した 100 + 1 になっています。 スキャンであるため、クエリ時間の大部分が `WriteOutputTime` と `DocumentLoadTime` で費やされています。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount が高くなっています (TOP 句と一致する 500 + 1 になっています)。 | 

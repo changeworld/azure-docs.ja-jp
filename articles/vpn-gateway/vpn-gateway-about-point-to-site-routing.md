@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: d25709fb4abb1b8a35596c3dc246f7419a99419b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702178"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 
@@ -228,7 +229,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ## <a name="multivnets2sbranchbgp"></a>S2S を使用して接続された複数の VNet と 1 つのブランチ オフィス (BGP)
 
-この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は、サイト間 VPN 接続を使用して VNet2 に接続されています。 VNet2 は、サイト間 VPN 接続を使用して VNet3 に接続されています。 VNet1 と VNet3 のネットワーク間に直接ピアリングやサイト間 VPN トンネルはありません。 VNet3 は、サイト間 VPN 接続を使用してブランチ オフィス (Site1) に接続されています。 どの VPN 接続でも BGP は実行されていません。 すべての VPN 接続で BGP が実行されています。
+この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は、サイト間 VPN 接続を使用して VNet2 に接続されています。 VNet2 は、サイト間 VPN 接続を使用して VNet3 に接続されています。 VNet1 と VNet3 のネットワーク間に直接ピアリングやサイト間 VPN トンネルはありません。 VNet3 は、サイト間 VPN 接続を使用してブランチ オフィス (Site1) に接続されています。 すべての VPN 接続で BGP が実行されています。
 
 Windows を使用しているクライアントは、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできますが、VNet2、VNet3、Site1 へのルートをクライアントに手動で追加する必要があります。 Windows 以外のクライアントは、手動で介入しなくても、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできます。 アクセスは推移的であり、クライアントは、接続されているすべての VNet とサイト (オンプレミス) のリソースにアクセスできます。
 

@@ -1,14 +1,15 @@
 ---
-title: "Azure Portal での多要素認証が必要なクラシック ポリシーの移行 | Microsoft Docs"
-description: "この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。"
+title: Azure Portal での多要素認証が必要なクラシック ポリシーの移行 | Microsoft Docs
+description: この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 77484dc3773736ea15c39ede5f9d49b6b694d960
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723689"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行 
 
@@ -87,7 +89,7 @@ ms.lasthandoff: 12/12/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/05.png)
 
-    a. クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/35.png)
 
@@ -107,9 +109,9 @@ ms.lasthandoff: 12/12/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/08.png)
 
-    a. **[アプリを選択]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリを選択]** をクリックします。
 
-    b. **[選択]**をクリックします。
+    b. **[選択]** をクリックします。
 
     c. **[選択]** ページでクラウド アプリを選択し、**[選択]** をクリックします。
 
@@ -121,13 +123,13 @@ ms.lasthandoff: 12/12/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/26.png)
 
-    a. **[アクセス制御]** セクションで、**[許可]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アクセス制御]** セクションで、**[許可]** をクリックします。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/27.png)
 
     b. **[許可]** ページで、**[アクセス権の付与]** をクリックし、**[多要素認証を要求する]** をクリックします。
 
-    c. **[選択]**をクリックします。
+    c. **[選択]** をクリックします。
 
 
 10. **[オン]** をクリックしてポリシーを有効にします。
@@ -144,7 +146,7 @@ ms.lasthandoff: 12/12/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - クラシック ポリシーの移行について詳しくは、「[Azure Portal でクラシック ポリシーを移行する](active-directory-conditional-access-migration.md)」をご覧ください。
 

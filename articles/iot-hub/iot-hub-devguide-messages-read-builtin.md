@@ -1,29 +1,25 @@
 ---
-title: "Azure IoT Hub 組み込みエンドポイントについて | Microsoft Docs"
-description: "開発者ガイド - デバイスからクラウドへのメッセージを読むためにイベント ハブと互換性のある組み込みのエンドポイントを使用する方法を説明します。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Hub 組み込みエンドポイントについて | Microsoft Docs
+description: 開発者ガイド - デバイスからクラウドへのメッセージを読むためにイベント ハブと互換性のある組み込みのエンドポイントを使用する方法を説明します。
 author: dominicbetts
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 82681214e9e42819bfc698aa670755467d250fa7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a09cc42763787890a4dabf17b1a1a87e7427ba37
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808538"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
 既定では、メッセージは [Event Hubs][lnk-event-hubs] と互換性のある組み込みサービス向けエンドポイント (**messages/events**) にルーティングされます。 このエンドポイントは、現在、[AMQP][lnk-amqp] プロトコルを使用してポート 5671 のみで公開されています。 IoT Hub は、Event Hub と互換性のある組み込みのメッセージング エンドポイント **messages/events** を制御するための以下のプロパティを公開しています。
 
-| プロパティ            | [説明] |
+| プロパティ            | 説明 |
 | ------------------- | ----------- |
 | **パーティション数** | このプロパティは作成時に設定し、D2C イベントを取り込む場合の[パーティション][lnk-event-hub-partitions]数を定義します。 |
 | **リテンション期間**  | このプロパティは、IoT Hub によってメッセージが保持される期間を日数で指定します。 既定は 1 日ですが、7 日間に増やすことができます。 |
@@ -43,7 +39,7 @@ IoT Hub は、**messages/events** 組み込みエンドポイントをバック�
 IoT Hub を認識しない SDK (または製品統合) を使用する場合は、イベント ハブ互換性エンドポイントとイベント ハブ互換名を取得する必要があります。
 
 1. [Azure Portal][lnk-management-portal] にサインインし、IoT ハブに移動します。
-1. **[エンドポイント]**をクリックします。
+1. **[エンドポイント]** をクリックします。
 1. **[Built-in endpoints]** (組み込みエンドポイント) セクションで、**[イベント]** をクリックします。 
 1. プロパティ ページが開き、**[イベント ハブ互換エンドポイント]**、**[イベント ハブ互換名]**、**[パーティション]**、**[保持期間]**、**[コンシューマー グループ]** の各値が表示されます。
 
@@ -81,7 +77,7 @@ IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポ
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
 [lnk-management-portal]: https://portal.azure.com
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md
 [lnk-event-hub-partitions]: ../event-hubs/event-hubs-features.md#partitions
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx

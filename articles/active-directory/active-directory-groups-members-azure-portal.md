@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: a35e85feb10997f458c7f3764920891e7932de59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06f0b0bcc1e12b6a5bb34a3a62458483244cd365
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33760009"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712754"
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する
 この記事では、Azure Active Directory (Azure AD) でグループのメンバーを管理する方法について説明します。
@@ -33,7 +33,7 @@ ms.locfileid: "33760009"
 
    ![グループ ブレードを開く](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
 4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
-5. **[グループ - \*グループ名\*]** ブレードで、**[メンバー]** を選択します。
+5. **[グループ - *グループ名*]** ブレードで、**[メンバー]** を選択します。
 
    ![[メンバー] ブレードを開く](./media/active-directory-groups-members-azure-portal/view-group-members.png)
 6. グループにメンバーを追加するには、**[グループ - メンバー]** ブレードで、**[メンバーの追加]** をクリックします。

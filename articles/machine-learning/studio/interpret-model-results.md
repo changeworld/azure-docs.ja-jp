@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e8f6d3accc7ad8de1161f08cceb0e856cf764255
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837006"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning"></a>Azure Machine Learning でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
@@ -260,7 +262,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 **特定のユーザーに項目を推奨する**
 
-**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]**を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 22 のようになります。
+**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 22 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 項目の推奨](./media/interpret-model-results/22.png)
 

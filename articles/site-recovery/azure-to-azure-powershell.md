@@ -7,14 +7,14 @@ manager: abhemraj
 editor: raynew
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/31/2018
 ms.author: bsiva
-ms.openlocfilehash: 83f167b047fa9c5df7c04304c7955ae838ae8373
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3fa9ee27a1b9717d8011b7b46a1116f1f1ac1df5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32196055"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716331"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "32196055"
 > - 復旧リージョンにフェールオーバーします。
 
 > [!NOTE]
-> Azure Site Recovery での、"*Azure 仮想マシンのディザスター リカバリー*" のシナリオに対する PowerShell のサポートは、現在プレビューの段階です。 ポータル経由では使用できるシナリオ機能には、Azure PowerShell からは使用できないものがあります。 Azure PowerShell で現在サポートされていないシナリオ機能は次のとおりです。
+> ポータル経由では使用できるシナリオ機能には、Azure PowerShell からは使用できないものがあります。 Azure PowerShell で現在サポートされていないシナリオ機能は次のとおりです。
 > - 管理ディスクを使用する Azure 仮想マシンをレプリケートする機能。
 > - 仮想マシンの各ディスクを明示的に指定することなく、仮想マシン内のすべてのディスクがレプリケートされる必要があることを指定する機能。  
 

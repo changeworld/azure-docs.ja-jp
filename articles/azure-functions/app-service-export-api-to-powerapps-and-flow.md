@@ -1,24 +1,26 @@
 ---
-title: "Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする | Microsoft Docs"
-description: "App Service でホストされる API を PowerApps および Microsoft Flow に公開する方法の概要について説明します"
+title: Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする | Microsoft Docs
+description: App Service でホストされる API を PowerApps および Microsoft Flow に公開する方法の概要について説明します
 services: app-service
-documentationcenter: 
-author: mattchenderson
-manager: erikre
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ggailey777
+manager: cfowler
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: mahender; mblythe
-ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: glenga
+ms.reviewer: sunayv
+ms.openlocfilehash: ef3fe5002a28c66478a10909a7e9556449cd9712
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234769"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -27,7 +29,7 @@ ms.lasthandoff: 03/02/2018
 同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 このトピックでは、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/app-service-web-overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
 
 ## <a name="create-and-export-an-api-definition"></a>API 定義を作成してエクスポートする
-API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関するページをご覧ください。
+API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関する記事をご覧ください。
 
 > [!NOTE]
 > OpenAPI 定義を使用せずに、PowerApps と Microsoft Flow の UI でカスタム コネクタをビルドすることもできます。 詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/)」および「[Microsoft Flow でカスタム コネクタを登録して使用する](https://flow.microsoft.com/documentation/register-custom-api/)」をご覧ください。
@@ -68,7 +70,7 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 2. 次の表で指定されている設定を使用してください。
 
-    |Setting|[説明]|
+    |Setting|説明|
     |--------|------------|
     |**Environment**|カスタム コネクタの保存先の環境を選択します。 詳細については、「[環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)」を参照してください。|
     |**カスタム API 名**|名前を入力すると、PowerApps および Microsoft Flow ビルダーがコネクタ一覧に表示されます。|
@@ -115,13 +117,13 @@ PowerApps と Microsoft Flow に API 定義をインポートするには、次�
 
 4. **[全般]** タブで、OpenAPI 定義から取得される情報を確認します。
 
-5. **[セキュリティ]** タブで、認証の種類に適した値を入力します。 **[続行]**をクリックします。
+5. **[セキュリティ]** タブで、認証の種類に適した値を入力します。 **[続行]** をクリックします。
 
     ![[セキュリティ] タブ](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 
     この例では、API キー認証に必要なフィールドを示します。 フィールドは、認証の種類によって異なります。
 
-6. **[Definitions]**\(定義\) タブでは、OpenAPI ファイルに定義されている操作に自動入力されています。 必要な操作がすべて定義されている場合、次の手順に進むことができます。 すべて定義されていない場合、ここで操作を追加したり、変更したりできます。
+6. **[Definitions]** \(定義\) タブでは、OpenAPI ファイルに定義されている操作に自動入力されています。 必要な操作がすべて定義されている場合、次の手順に進むことができます。 すべて定義されていない場合、ここで操作を追加したり、変更したりできます。
 
     ![[定義] タブ](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 

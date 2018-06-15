@@ -1,24 +1,25 @@
 ---
-title: "Azure Portal で特殊化された VHD から Windows VM を作成する | Microsoft Docs"
-description: "Azure Portal で VHD から新しい Windows VM を作成します。"
+title: Azure Portal で特殊化された VHD から Windows VM を作成する | Microsoft Docs
+description: Azure Portal で VHD から新しい Windows VM を作成します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 33e94777047ea8a116ae6f393439521356a53509
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 428003747b7c746a2849a042e54647e86361c562
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716562"
 ---
 # <a name="create-a-vm-from-a-vhd-using-the-azure-portal"></a>Azure Portal を使用して VHD から VM を作成する
 
@@ -41,7 +42,7 @@ VM または VHD を使用して複数の VM を作成する場合は、この�
 3. 使用するディスクをクリックします。 ディスクの **[概要]** ページが開きます。
 4. [概要] ページで、上部のメニューにある **[スナップショットの作成]** をクリックします。 
 5. スナップショットの名前を入力します。
-6. スナップショットの **[リソース グループ]**を選択します。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
+6. スナップショットの **[リソース グループ]** を選択します。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 7. standard (HDD) または Premium (SDD) ストレージのどちらを使用するかを選択します。
 8. 選択したら、**[作成]** をクリックしてスナップショットを作成します。
 9. スナップショットが作成されたら、左側のメニューにある **[+ リソースの作成]** をクリックします。
@@ -61,13 +62,13 @@ VM または VHD を使用して複数の VM を作成する場合は、この�
 1. 左側のメニューで、**[すべてのリソース]** をクリックします。
 2. **[All types]\(すべての種類\)** ドロップダウンで、**[すべて選択]** を選択解除し、下にスクロールして **[ディスク]** を選択して、使用可能なディスクを検索します。
 3. 使用するディスクをクリックします。 ディスクの **[概要]** ページが開きます。
-[概要] ページで、**[DISK STATE]\(ディスクの状態\)** が **[未接続]**として一覧に示されていることを確認します。 [未接続] になっていない場合、必要に応じて VM からディスクを取り外すか、または VM を削除してディスクを解放する必要があります。
+[概要] ページで、**[DISK STATE]\(ディスクの状態\)** が **[未接続]** として一覧に示されていることを確認します。 [未接続] になっていない場合、必要に応じて VM からディスクを取り外すか、または VM を削除してディスクを解放する必要があります。
 4. ウィンドウ上部にあるメニューで、**[+ VM の作成]** をクリックします。
 5. 新しい VM の **[基本]** ページで名前を入力して、既存のリソース グループを選択するか、または新しいリソース グループを作成します。
 6. **[サイズ]** ページで、VM サイズのページを選択して、**[選択]** をクリックします。
 7. **[設定]** ページで、新しいすべてのリソースをポータルで作成するか、または既存の**仮想ネットワーク**と**ネットワーク セキュリティ グループ**を選択できます。 ポータルでは常に新しい NIC と、新しい VM のためのパブリック IP アドレスが作成されます。 
 8. 監視オプションを変更して、必要に応じて拡張機能を追加します。
-9. 完了したら、 **[OK]**をクリックします。 
+9. 完了したら、 **[OK]** をクリックします。 
 10. VM 構成が検証に合格したら、**[OK]** をクリックしてデプロイを開始します。
 
 ## <a name="next-steps"></a>次の手順

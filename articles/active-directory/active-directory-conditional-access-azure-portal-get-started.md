@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +16,12 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd701b8c6f015afc60b434317d0d7fef0560e9af
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723706"
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory での条件付きアクセスの基本
 
@@ -80,7 +82,7 @@ ms.lasthandoff: 04/19/2018
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーとグループの選択]** をクリックします。
 
-    b. **[選択]**をクリックします。
+    b. **[選択]** をクリックします。
 
     c. **[選択]** ブレードでテスト ユーザーを選択し、**[選択]** をクリックします。
 
@@ -96,7 +98,7 @@ ms.lasthandoff: 04/19/2018
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリを選択]** をクリックします。
 
-    b. **[選択]**をクリックします。
+    b. **[選択]** をクリックします。
 
     c. **[選択]** ブレードでクラウド アプリを選択し、**[選択]** をクリックします。
 
@@ -122,7 +124,7 @@ ms.lasthandoff: 04/19/2018
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/12.png)
 
-    d. **[Done]**をクリックします。
+    d. **[Done]** をクリックします。
 
 12. **[条件]** ブレードで、**[完了]** をクリックします。
 
@@ -136,7 +138,7 @@ ms.lasthandoff: 04/19/2018
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[多要素認証が必要です]** を選択します。
 
-    b. **[選択]**をクリックします。
+    b. **[選択]** をクリックします。
 
 15. **[新規]** ブレードの **[ポリシーの有効化]** で、**[On (オン)]** をクリックします。
 

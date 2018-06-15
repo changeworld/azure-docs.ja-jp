@@ -1,20 +1,21 @@
 ---
 title: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs
-description: Azure Active Directory B2C のカスタム ポリシーについて説明します
+description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: 0980c79ccd9ebd170e747514bba712c498e1387c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711911"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -137,7 +138,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 次の表に、上記の HTML5 ページの目的を示します。
 
-| HTML5 テンプレート | [説明] |
+| HTML5 テンプレート | 説明 |
 |----------------|-------------|
 | *phonefactor.html* | このページは、多要素認証ページのテンプレートとして使用できます。 |
 | *resetpassword.html* | このページは、パスワードを忘れた場合のページのテンプレートとして使用できます。 |
@@ -153,7 +154,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 次の表に、Azure AD B2C Identity Experience Engine で検出されたコンテンツ定義 ID のセットと、それに関連するページの種類を示します。
 
-| コンテンツ定義 ID | [説明] |
+| コンテンツ定義 ID | 説明 |
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 これらのプロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウント (メール アドレスやユーザー名を使用するもの) のいずれかです。 |

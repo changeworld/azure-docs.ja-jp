@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195449"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650470"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Azure SQL Database のパフォーマンスのチューニング
 
@@ -140,7 +140,7 @@ Azure SQL Database は、インデックス不足の一般的な状態を発見�
 ### <a name="query-tuning-and-hinting"></a>クエリの調整とヒント
 Azure SQL Database のクエリ オプティマイザーは、従来の SQL Server クエリ オプティマイザーと似ています。 クエリを調整し、クエリ オプティマイザーの推論モデル制約を理解するためのベスト プラクティスのほとんどは、Azure SQL Database にも活かすことができます。 Azure SQL Database のクエリを調整すると、総リソース要求を減らせる場合があります。 下位のパフォーマンス レベルで実行できるため、クエリが調整されていない場合に比べて少ないコストでアプリケーションを実行できます。
 
-SQL Server でよく見られ Azure SQL Database にも適用される例は、クエリ オプティマイザーによるパラメーターの "スニッフィング" です。 コンパイル中、クエリ オプティマイザーによってパラメーターの現在の値が評価され、より最適なクエリ プランを生成できるかどうかが判断されます。 この戦略を使用すると多くの場合、既知のパラメーター値を使用せずにコンパイルされたプランよりもはるかに速いクエリ プランが生成されます。ただし現時点では、SQL Server と Azure SQL Database の両方で動作が不完全です。 パラメーターがスニッフィングされなかったり、パラメーターがスニッフィングされたものの、生成されたプランがワークロードのすべてのパラメーター値に関して最適でなかったりする場合があります。 意図をより慎重に指定し、パラメーター スニッフィングの既定の動作を上書きできるように、Microsoft はクエリ ヒント (ディレクティブ) を追加しています。 多くの場合、ヒントを使用すると、SQL Server または Azure SQL Database の既定の動作で特定のユーザーのワークロードに完全に対応できない問題を修正できます。
+SQL Server でよく見られ Azure SQL Database にも適用される例は、クエリ オプティマイザーによるパラメーターの "スニッフィング" です。 コンパイル中、クエリ オプティマイザーによってパラメーターの現在の値が評価され、より最適なクエリ プランを生成できるかどうかが判断されます。 この戦略を使用すると多くの場合、既知のパラメーター値を使用せずにコンパイルされたプランよりもはるかに速いクエリ プランが生成されます。ただし現時点では、SQL Server と Azure SQL Database の両方で動作が不完全です。 パラメーターがスニッフィングされなかったり、パラメーターがスニッフィングされたものの、生成されたプランがワークロードのすべてのパラメーター値に関して最適でなかったりする場合があります。 意図をより慎重に指定し、パラメーター スニッフィングの既定の動作をオーバーライドできるように、Microsoft はクエリ ヒント (ディレクティブ) を追加しています。 多くの場合、ヒントを使用すると、SQL Server または Azure SQL Database の既定の動作で特定のユーザーのワークロードに完全に対応できない問題を修正できます。
 
 次の例は、パフォーマンスとリソースの両方の要件について最適でないプランがクエリ プロセッサによって生成されるようすを示しています。 この例から、クエリ ヒントを使用すると、SQL データベースのクエリの実行時間とリソース要件を抑えることができることもわかります。
 

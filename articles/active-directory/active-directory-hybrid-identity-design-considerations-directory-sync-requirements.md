@@ -1,11 +1,11 @@
 ---
-title: "ハイブリッド ID 設計 - ディレクトリ同期要件 - Azure | Microsoft Docs"
-description: "企業のオンプレミスとクラウド間で、すべてのユーザーを同期するために必要な要件を特定します。"
-documentationcenter: 
+title: ハイブリッド ID 設計 - ディレクトリ同期要件 - Azure | Microsoft Docs
+description: 企業のオンプレミスとクラウド間で、すべてのユーザーを同期するために必要な要件を特定します。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 475b35c767fcc9c42b828dd2219a14890e05f779
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d6749960806e858909f42c6ecccd445ba8d5ec00
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801563"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
 同期とは、ユーザーのオンプレミス ID に基づいてクラウドに ID を提供することです。 認証またはフェデレーション認証のために同期されたアカウントを使用するかどうかにかかわらず、ユーザーはクラウドに ID を持つ必要があります。  この ID は保守し、定期的に更新する必要があります。  更新プログラムには、タイトルの変更からパスワードの変更まで、さまざまな形式があります。  

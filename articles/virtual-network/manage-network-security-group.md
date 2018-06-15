@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894250"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658674"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -66,7 +66,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 ### <a name="view-details-of-a-network-security-group"></a>ネットワーク セキュリティ グループの詳細を表示する
 
 1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ」*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
-2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](virtual-network-nsg-troubleshoot-portal.md)に関する記事を参照してください。
+2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](diagnose-network-traffic-filter-problem.md)に関する記事を参照してください。
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
     *   [アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
@@ -129,7 +129,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
     |アクションを表示します。     | **[許可]** または **[拒否]** を選択します。        |         |
     |優先順位     | ネットワーク セキュリティ グループ内のすべてのセキュリティ規則に対して一意である 100 ～ 4096 の範囲の値を入力します。 |規則は、優先順位に従って処理されます。 数値が小さいほど、優先度は高くなります。 規則を作成するときに、間を空けて優先順位を指定することをお勧めします (100、200、300 など)。 間を空けることで、既存の規則よりも優先順位が高いまたは低い規則が必要になった場合に、そのような規則を簡単に追加できます。         |
     |Name     | ネットワーク セキュリティ グループ内の一意の名前。        |  名前の最大長は 80 文字です。 先頭にはアルファベットまたは数字、末尾にはアルファベット、数字、またはアンダースコアを使用する必要があります。また、使用できるのは、アルファベット、数字、アンダースコア、ピリオド、ハイフンのみです。       |
-    |[説明]     | 任意の説明です。        |         |
+    |説明     | 任意の説明です。        |         |
 
     **[ソース]** または **[宛先]** に対する[アプリケーション セキュリティ グループ](#work-with-application-security-groups)の指定は、ポータルでは実行できません。 ただし、Azure CLI または PowerShell による指定は可能です。 **送信セキュリティ規則**も同じような方法で設定できるため、特に説明しません。
 

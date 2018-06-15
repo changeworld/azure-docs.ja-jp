@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: e5c5ff74ee94f8df03ceb5b469ad635bd80d5a11
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ce8221cd7bf427084e63f8b13dcf6f0f1cc7a35e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931029"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699004"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Azure Resource Manager を使用して、ユーザー割り当て ID を作成、一覧表示、削除する
 
@@ -53,8 +53,7 @@ Azure Portal とスクリプトの場合と同じように、Azure Resource Mana
 
 ユーザー割り当て ID を作成するには、次のテンプレートを使います。 `<USER ASSIGNED IDENTITY NAME>` は実際の値に置き換えます。
 
-> [!IMPORTANT]
-> ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さは 24 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳しくは、「[FAQ と既知の問題](known-issues.md)」をご覧ください。
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```json
 {

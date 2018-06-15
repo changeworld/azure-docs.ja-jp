@@ -8,12 +8,13 @@ ms.service: sql-database
 ms.custom: develop databases
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.topic: article
-ms.openlocfilehash: f36d7b551a0ff89589564f5f9170aa24f62a61ad
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.topic: conceptual
+ms.openlocfilehash: 687986d108a15973c19ff06f5ca98a468439f30d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649001"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Database の JSON 機能の概要
 Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。

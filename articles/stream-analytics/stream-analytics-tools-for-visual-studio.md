@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcb4302c3a237ec75ff670b322c9d068d8700de9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941838"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738515"
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールの使用
 Visual Studio の Azure Stream Analytics ツールが一般公開されます。 これらのツールを使用すると、Stream Analytics ユーザーのトラブルシューティング エクスペリエンスがさらに充実すると共に、複雑なクエリを記述したり、ローカルでクエリを記述することができます。 また、Stream Analytics ジョブを Visual Studio プロジェクトにエクスポートすることもできます。
@@ -31,8 +31,7 @@ Visual Studio の Azure Stream Analytics ツールが一般公開されます。
 * 既存のジョブをプロジェクトにエクスポートする。
 
 >[!IMPORTANT]
->
->2018 月 5 月 25 日に施行される新しい一般データ保護規則 (GDPR) に備えて、お使いの Azure Stream Analytics for Visual Studio をバージョン 2.3.3000.5 以降にアップグレードすることをお勧めします。 このバージョンには、最新のデータ保護要件に基づいた変更が含まれています。 以前のバージョンはダウンロードできません。また、非推奨です。 
+> Microsoft では、Azure Data Lake Tools for Visual Studio バージョン 2.3.3000.4 以降にアップグレードすることをお勧めしています。 以前のバージョンはダウンロードできなくなり、非推奨になっています。 
 >
 >**必要な操作**
 >

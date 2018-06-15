@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f7603d56a56e45771fa170c05ec62a0725ba367a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715824"
 ---
 # <a name="traffic-analytics"></a>トラフィック分析
 
@@ -70,7 +71,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
 
 ### <a name="select-a-network-security-group"></a>ネットワーク セキュリティ グループを選択する 
 
-NSG フロー ログを有効にする前に、フローをログに記録する、対象のネットワーク セキュリティ グループを選択する必要があります。 ネットワーク セキュリティ グループがない場合、作成方法については、[ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)に関する記事をご覧ください。
+NSG フロー ログを有効にする前に、フローをログに記録する、対象のネットワーク セキュリティ グループを選択する必要があります。 ネットワーク セキュリティ グループがない場合、作成方法については、[ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md#create-a-network-security-group)に関する記事をご覧ください。
 
 Azure Portal の左側にある **[監視]** を選択し、**[Network Watcher]**、**[NSG フロー ログ]** の順に選択します。 次の図に示すように、NSG フロー ログを有効にするネットワーク セキュリティ グループを選択します。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でサポートされているプラットフォーム | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center でサポートされている Windows と Linux のオペレーティング システムの一覧を示します。"
+title: Azure Security Center でサポートされているプラットフォーム | Microsoft Docs
+description: このドキュメントでは、Azure Security Center でサポートされている Windows と Linux のオペレーティング システムの一覧を示します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 86e8c1c8f0d8654c86b851e3ae7296476f38b94e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756903"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure Security Center でサポートされているプラットフォーム
-セキュリティ状態の監視と推奨事項は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのどちらかで作成された仮想マシン (VM)、およびコンピューターで利用できます。
+セキュリティ状態の監視と推奨事項は、クラシック デプロイ モデルと Resource Manager デプロイ モデルのどちらかで作成された仮想マシン (VM)、およびコンピューターで利用できます。
 
 > [!NOTE]
-> Azure リソースの詳細については、 [クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md) に関するページを参照してください。
+> Azure リソースの詳細については、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)に関するページを参照してください。
 >
 >
 
@@ -59,6 +60,6 @@ ms.lasthandoff: 03/13/2018
 ## <a name="next-steps"></a>次の手順
 
 - 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
-- [Azure Security Center のタイプ別のセキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) - Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析について説明します。
+- [Azure Security Center のタイプ別のセキュリティ アラート](security-center-alerts-type.md#virtual-machine-behavioral-analysis) - Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析について説明します。
 - [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

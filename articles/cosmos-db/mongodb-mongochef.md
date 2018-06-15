@@ -3,22 +3,20 @@ title: Azure Cosmos DB での Studio 3T (MongoChef) の使用 | Microsoft Docs
 description: Azure Cosmos DB MongoDB API アカウントで Studio 3T を使用する方法について説明します。
 keywords: MongoChef、Studio 3T
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: anhoh
-ms.openlocfilehash: 98f1a83ad2470d4e133167b6c4d140a0aa34e114
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 9d00f260252e31ab9186c8aab8f07db848d1af29
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794772"
 ---
 # <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Azure Cosmos DB: MongoDB API アカウントでの Studio 3T の使用
 
@@ -55,16 +53,16 @@ Studio 3T を使用してデータベース、コレクション、およびド�
 1. **接続マネージャー**で目的の接続を強調表示し、**[Connect (接続)]** をクリックします。
 
     ![Studio 3T 接続マネージャーのスクリーンショット](./media/mongodb-mongochef/ConnectToAccount.png)
-2. ホストを右クリックし、**[データベースの追加]** を選択します。  データベースの名前を指定し、 **[OK]**をクリックします。
+2. ホストを右クリックし、**[データベースの追加]** を選択します。  データベースの名前を指定し、 **[OK]** をクリックします。
 
     ![Studio 3T の [データベースの追加] オプションのスクリーンショット](./media/mongodb-mongochef/AddDatabase1.png)
-3. データベースを右クリックし、**[コレクションの追加]** を選択します。  コレクションの名前を指定し、 **[Create (作成)]**をクリックします。
+3. データベースを右クリックし、**[コレクションの追加]** を選択します。  コレクションの名前を指定し、 **[Create (作成)]** をクリックします。
 
     ![Studio 3T の [コレクションの追加] オプションのスクリーンショット](./media/mongodb-mongochef/AddCollection.png)
 4. **[Collection (コレクション)]** メニュー項目をクリックし、**[Add Document (ドキュメントの追加)]** をクリックします。
 
     ![Studio 3T の [ドキュメントの追加] メニュー項目のスクリーンショット](./media/mongodb-mongochef/AddDocument1.png)
-5. [Add Document (ドキュメントの追加)] ダイアログに次の情報を貼り付けて **[Add Document (ドキュメントの追加)]**をクリックします。
+5. [Add Document (ドキュメントの追加)] ダイアログに次の情報を貼り付けて **[Add Document (ドキュメントの追加)]** をクリックします。
 
         {
         "_id": "AndersenFamily",

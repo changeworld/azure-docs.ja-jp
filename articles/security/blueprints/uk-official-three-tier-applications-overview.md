@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757197"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化
 
 ## <a name="overview"></a>概要
 
- この記事では、英国で OFFICIAL として分類される多くのワークロードの処理に適したアーキテクチャに基づく Microsoft Azure 3 層 Web を提供するためのガイダンスと自動化スクリプトを提供します。
+ この記事では、イギリスで OFFICIAL として分類される多くのワークロードの処理に適したアーキテクチャに基づく Microsoft Azure 3 層 Web を提供するためのガイダンスと自動化スクリプトを提供します。
 
  コードとしてのインフラストラクチャ アプローチを使用して、一連の [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートは、英国立サーバー セキュリティ センター (NCSC) の 14 の[クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)と Center for Internet Security (CIS) の[重要なセキュリティ コントロール](https://www.cisecurity.org/critical-controls.cfm)に準拠する環境をデプロイします。
 
@@ -148,7 +149,7 @@ Storage
 
 **インターネット ゲートウェイとパブリック IP アドレス**: インターネット ゲートウェイは、インターネットを通じてユーザーにアプリケーション サービスを公開します。 これらのサービスにアクセスするトラフィックは、レイヤー 7 のルーティングと負荷分散の機能を Web アプリケーション ファイアウォール (WAF) 保護と共に提供する [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) を使用して保護されます。
 
-**管理 VNet**: この [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) には、運用 VNet で実行されているワークロードの管理および監視機能を実装するリソースが含まれます。
+**管理 VNet**: この [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) には、運用 VNet で実行されているワークロードの管理および監視機能を実装するリソースが含まれます。
 
 **ジャンプボックス**: [要塞ホスト](https://en.wikipedia.org/wiki/Bastion_host)とも呼ばれ、運用 VNet で VM に接続するために管理者が使用する、ネットワーク上の安全な VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。 運用リソースの管理は、セキュリティで保護されたジャンプボックス VM を使用して RDP を介して行われます。
 

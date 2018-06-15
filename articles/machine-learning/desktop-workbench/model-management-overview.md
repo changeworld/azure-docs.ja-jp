@@ -7,14 +7,16 @@ ms.author: padou
 manager: mwinkle
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6fac3fa0207d942c5a7f5fa438ba8262ea5b7a22
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832229"
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 

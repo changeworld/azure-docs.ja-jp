@@ -3,23 +3,21 @@ title: Azure Cosmos DB の SQL クエリ | Microsoft Docs
 description: Azure Cosmos DB の SQL 構文、データベースの概念、および SQL クエリについて説明します。 Azure Cosmos DB では、JSON クエリ言語として SQL を使用できます。
 keywords: sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数
 services: cosmos-db
-documentationcenter: ''
 author: LalithaMV
 manager: kfile
 editor: monicar
-ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798323"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリ
 
@@ -930,7 +928,7 @@ TOP キーワードを使用すると、クエリの値数を制限できます�
 
 次の表は、SQL API でサポートされている集計関数の一覧です。 `SUM` と `AVG` は、数値に対して実行します。`COUNT`、`MIN`、`MAX` は、数値、文字列、ブール値、null 値に対して実行できます。 
 
-| 使用法 | [説明] |
+| 使用法 | 説明 |
 |-------|-------------|
 | COUNT | 式の項目の数を返します。 |
 | SUM   | 式のすべての値の合計を返します。 |
@@ -1266,7 +1264,7 @@ Azure Cosmos DB が提供するプログラミング モデルでは、ストア
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。 UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で 修飾する必要があります。 
 
 > [!NOTE]
-> 2015 年 3 月 17 日以前では、SELECT REGEX_MATCH() のような、"udf." プレフィックス のない UDF 呼び出しが DocumentDB でサポートされていました。 この呼び出しパターンは廃止されました。  
+> 2015 年 3 月 17 日以前では、SELECT REGEX_MATCH() のような、"udf." プレフィックス のない UDF 呼び出しが DocumentDB でサポートされていました。 この呼び出しパターンは非推奨となりました。  
 > 
 > 
 
@@ -1408,7 +1406,7 @@ Cosmos DB では、ユーザー定義関数 (UDF) のようにクエリ内で使
 各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。 次の表に、サポートされている組み込みの数学関数を示します。
 
 
-| 使用法 | [説明] |
+| 使用法 | 説明 |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [[ABS (num_expr)](#bk_abs) | 指定された数値式の絶対値 (正の値) を返します。 |
 | [CEILING (num_expr)](#bk_ceiling) | 指定された数値式以上の最小の整数値を返します。 |
@@ -1502,7 +1500,7 @@ Cosmos DB の関数と ANSI SQL の間の主な違いとして、Cosmos DB の�
 ### <a name="string-functions"></a>文字列関数
 次のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。 組み込みの文字列関数を次の表に示します。
 
-| 使用法 | [説明] |
+| 使用法 | 説明 |
 | --- | --- |
 | [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |指定された文字列式の文字数を返します。 |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |2 つ以上の文字列値を連結した結果である文字列を返します。 |
@@ -1572,7 +1570,7 @@ Cosmos DB の関数と ANSI SQL の間の主な違いとして、Cosmos DB の�
 ### <a name="array-functions"></a>配列関数
 次のスカラー関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。 組み込みの配列関数を次の表に示します。
 
-| 使用法 | [説明] |
+| 使用法 | 説明 |
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |指定された配列式の要素の数を返します。 |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |2 つ以上の配列値を連結した結果である配列を返します。 |

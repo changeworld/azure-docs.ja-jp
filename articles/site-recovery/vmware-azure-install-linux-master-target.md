@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072438"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802512"
 ---
 # <a name="install-a-linux-master-target-server"></a>Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -243,7 +243,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 2. **multipath -ll** コマンドを使用し、リテンション ディスクのマルチパス ID を確認します。**multipath -ll**
 
-    ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
 3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/<リテンション ディスクのマルチパス ID>**
     
