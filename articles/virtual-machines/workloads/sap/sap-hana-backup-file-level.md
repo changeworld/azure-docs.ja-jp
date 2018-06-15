@@ -4,7 +4,7 @@ description: Azure 仮想マシン上の SAP HANA をバックアップする方
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,11 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c0222bffe6ccf2ca35e5ca5874f91a490ab352d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656994"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 
@@ -43,7 +44,7 @@ SAP HANA バックアップの専用 VHD を、geo レプリケーションさ�
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 
-Azure Backup には、VM を丸ごとバックアップする方法だけでなく、Backup エージェント (ゲスト OS へのインストールが必要) を介してファイルとディレクトリをバックアップする方法もあります。 ただし 2016 年 12 月現在、このエージェントがサポートされているのは Windows のみです (「[Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする](../../../backup/backup-configure-vault.md)」を参照)。
+Azure Backup には、VM を丸ごとバックアップする方法だけでなく、Backup エージェント (ゲスト OS へのインストールが必要) を介してファイルとディレクトリをバックアップする方法もあります。 ただし 2016 年 12 月現在、このエージェントがサポートされているのは Windows のみです (「[Resource Manager デプロイ モデルで Windows Server または Windows クライアントを Azure にバックアップする](../../../backup/backup-configure-vault.md)」を参照)。
 
 次善の策としては、(たとえば SAMBA 共有を使用して) SAP HANA バックアップ ファイルを Azure の Windows VM にコピーしてから、そこで Azure Backup エージェントを使用する方法があります。 技術的には可能ですが、Linux VM と Windows VM の間でコピーを行うため、バックアップ プロセスまたは復元プロセスがかなり複雑になるうえ、プロセスにかかる時間がかなり長くなります。 この方法を実行することはお勧めしません。
 

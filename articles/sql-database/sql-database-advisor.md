@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: b88b8a313a03ef2ad72aeb053b89505201c23819
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4cee9fd9072e2db9a5f90a84b7683a76bba2504d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644020"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 

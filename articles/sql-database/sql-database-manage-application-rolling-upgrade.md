@@ -6,14 +6,15 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sashan
-ms.openlocfilehash: d1799befb2b5f59f1794bbca2a1daa2a13990882
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a73284d679b4be1fbae6d5e1688915c98cbf2392
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649501"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 > [!NOTE]

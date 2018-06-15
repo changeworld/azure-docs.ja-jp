@@ -6,14 +6,15 @@ author: GithubMirek
 manager: johammer
 ms.custom: security
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: f7f34bc7a28cdf3a23af54785002b12fba4baf1d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 83762136659756204aab5da367b905f66e770087
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647461"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 

@@ -7,14 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: f43e380d1af846a0c77d61b4e8827c8b45fb08a6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1848fea8a21afc473873cb8c4a5ba87b09da02e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646815"
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 
@@ -106,7 +107,7 @@ Azure ポータルでサーバー レベルのファイアウォール規則を�
 2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、**[保存]** をクリックします。 現在の IP アドレスに対してサーバーレベルのファイアウォール規則が作成されます。
 
 ## <a name="manage-firewall-rules-using-transact-sql"></a>Transact-SQL を使ってファイアウォール規則を管理する
-| カタログ ビューまたはストアド プロシージャ | レベル | 説明 |
+| カタログ ビューまたはストアド プロシージャ | Level | 説明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |
@@ -136,7 +137,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```   
 
 ## <a name="manage-firewall-rules-using-azure-powershell"></a>Azure PowerShell を使ってファイアウォール規則を管理する
-| コマンドレット | レベル | 説明 |
+| コマンドレット | Level | 説明 |
 | --- | --- | --- |
 | [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
@@ -157,7 +158,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 >
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Azure CLI を使ってファイアウォール規則を管理する
-| コマンドレット | レベル | 説明 |
+| コマンドレット | Level | 説明 |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|サーバー|サーバーのファイアウォール規則を作成します。|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|サーバー|サーバーのファイアウォール規則を一覧表示します。|
@@ -177,7 +178,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 >
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>REST API を使ってファイアウォール規則を管理する
-| API | レベル | 説明 |
+| API | Level | 説明 |
 | --- | --- | --- |
 | [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/FirewallRules/ListByServer) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
 | [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/FirewallRules/CreateOrUpdate) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |

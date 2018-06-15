@@ -6,14 +6,15 @@ manager: craigg
 author: anumjs
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: anjangsh
-ms.openlocfilehash: fa6899b285bcd1d3f2d4c1e17e3fbab7a6e0f839
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf180149ceb0b6c88fab8a0a7bb58a84d25b1b9c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647233"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 このドキュメントでは、サンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Azure SQL Database の Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .NET と Java で使用できます。 

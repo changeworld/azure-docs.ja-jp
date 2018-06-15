@@ -6,14 +6,15 @@ author: bonova
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 3175236306f05831a78ae8ca01911d0c5d19f893
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f65f7ec44ccbeb6f64d43d20b1bd7a77329fa97f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649025"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。

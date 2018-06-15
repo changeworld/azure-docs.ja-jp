@@ -1,13 +1,13 @@
 ---
-title: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID 高可用性 | Microsoft Docs"
-description: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性"
+title: Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID 高可用性 | Microsoft Docs
+description: Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82cc943f983b3dedfc0f64f2eec5b4425a4bf81
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656732"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -215,18 +216,18 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 この記事では、追加の SAP ASCS/SCS クラスター化インスタンスを、共有ディスクを持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
 
 > [!NOTE]
-> この機能は、Azure Resource Manager デプロイメント モデルでのみ使用できます。
+> この機能は、Azure Resource Manager デプロイ モデルでのみ使用できます。
 >
 >Azure 内部ロード バランサーごとにプライベート フロントエンド IP の数に制限があります。
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサー制限の詳細については、[Azure Resource Manager のネットワーク制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」セクションを参照してください。
+ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-次の図に示すように、**ファイル共有**を使用して 1 つの SAP ASCS/SCS インスタンスに使用する WSFC クラスターを構成済みであることが必要です。
+次の図に示すように、**ファイル共有**を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
 
 ![高可用性の SAP ASCS/SCS インスタンス][sap-ha-guide-figure-6001]
 
@@ -242,7 +243,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 ![Azure の複数の SAP ASCS/SCS クラスター化されたインスタンス][sap-ha-guide-figure-6002]
 
-ロード バランサー制限の詳細については、[Azure Resource Manager のネットワーク制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」セクションを参照してください。
+ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -432,7 +433,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ネットワークの制限: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]

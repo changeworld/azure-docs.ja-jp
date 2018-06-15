@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646934"
 ---
 # <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -81,14 +82,14 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>個人用ストアへのクライアント証明書のインポート
 1. Windows エクスプローラーで、 **MyCert.pfx**をダブルクリックします。
 2. **証明書のインポート ウィザード**で **[現在のユーザー]** を選択し、**[次へ]** をクリックします。
-3. ファイルのパスを確認し、 **[次へ]**をクリックします。
+3. ファイルのパスを確認し、 **[次へ]** をクリックします。
 4. パスワードを入力します。**[すべての拡張プロパティを含める]** はオンのままにして **[次へ]** をクリックします。
 5. **[自動的に証明書ストアを選択する]** をオンのままにして、**[次へ]** をクリックします。
 6. **[完了]**、**[OK]** の順にクリックします。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>クラウド サービスへの PFX ファイルのアップロード
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. **[クラウド サービス]**を選択します。
+2. **[クラウド サービス]** を選択します。
 3. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
 4. 上部メニューで **[証明書]** をクリックします。
 5. 下部のバーで **[アップロード]** をクリックします。
@@ -119,8 +120,8 @@ Web ロール:
 ## <a name="deploy-your-service"></a>サービスのデプロイ
 1. [Azure ポータル](https://manage.windowsazure.com)にアクセスします。
 2. 左側の **[クラウド サービス]** タブをクリックし、先ほど作成したクラウド サービスを選択します。
-3. **[ダッシュボード]**をクリックします。
-4. ステージング環境を選択し、 **[新しいステージング環境のデプロイをアップロードします]**をクリックします。
+3. **[ダッシュボード]** をクリックします。
+4. ステージング環境を選択し、 **[新しいステージング環境のデプロイをアップロードします]** をクリックします。
    
    ![ステージング][3]
 5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、**SplitMergeService.cspkg** ファイルと、先ほど構成した cscfg ファイルを選択します。

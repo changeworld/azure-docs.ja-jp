@@ -7,15 +7,15 @@ author: veljko-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: c18d4d175bace79fefedc09fb887e707b8c066d9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c9126080db4d8091b672a9250c68a5c5590e10c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365765"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650181"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -268,7 +268,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -319,7 +319,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -357,7 +357,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>エラー データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -386,7 +386,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -415,7 +415,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -438,7 +438,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>ブロックしているデータセット
 
-|プロパティ|[説明]|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|

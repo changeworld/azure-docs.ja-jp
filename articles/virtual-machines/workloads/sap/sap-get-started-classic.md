@@ -1,13 +1,13 @@
 ---
-title: "Linux 仮想マシンにおける SAP の使用 | Microsoft Docs"
-description: "Microsoft Azure での Linux 仮想マシン (VM) における SAP の使用について説明します"
+title: Linux 仮想マシンにおける SAP の使用 | Microsoft Docs
+description: Microsoft Azure での Linux 仮想マシン (VM) における SAP の使用について説明します
 services: virtual-machines-linux,virtual-network,storage
 documentationcenter: saponazure
 author: MSSedusch
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
-keywords: 
+keywords: ''
 ms.assetid: f9cd93dc-71ad-48a4-8778-4e48aec484a6
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 66eb53f99ce4b30ec283243deb3649c9ca897a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0802816ba45a3d0fb390b64d4308ab2e966d86ce
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657181"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンにおける SAP の使用
 クラウド コンピューティングという言葉は、今や多くの人々に認知され、小規模な企業から大企業、多国籍企業にいたるまで、IT 業界における存在感を日増しに高めています。 Microsoft Azure はマイクロソフトが提供する Cloud Services プラットフォームで、多方面にわたって新たな可能性を生み出しています。 アプリケーションを Cloud Services として迅速にプロビジョニングしたり、プロビジョニング解除したりすることができるようになった今、技術や予算の制約に縛られることはありません。 企業は、ハードウェア インフラストラクチャに貴重な時間と予算を費やすことなく、アプリケーションやビジネス プロセス、そして顧客とユーザーの利益にのみ目を向けることができます。

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9ad7a35864f8e8a1aa95f0b54174a792f069ba18
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700708"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 05/20/2018
         az network nsg list --resource-group $RESOURCEGROUP
         ```
 
-        詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) 」をご覧ください。
+        詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/diagnose-network-traffic-filter-problem.md) 」をご覧ください。
 
         > [!IMPORTANT]
         > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
@@ -107,7 +108,7 @@ ms.lasthandoff: 05/20/2018
         az network route-table list --resource-group $RESOURCEGROUP
         ```
 
-        詳細については、「 [ルートのトラブルシューティング](../virtual-network/virtual-network-routes-troubleshoot-portal.md)」をご覧ください。
+        詳細については、「 [ルートのトラブルシューティング](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
 
 4. HDInsight クラスターを作成し、構成時に Azure Virtual Network を選択します。 次のドキュメントの手順を使って、クラスターの作成プロセスを理解してください。
 
@@ -293,7 +294,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
     | &nbsp; | 西日本 | 40.74.125.69</br>138.91.29.150 | 443 | 受信 |
     | 韓国 | 韓国中部 | 52.231.39.142</br>52.231.36.209 | 433 | 受信 |
     | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | 443 | 受信
-    | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
+    | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
     | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 | 受信 |
     | 米国 | 米国中央部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
     | &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | 443 | 受信 |

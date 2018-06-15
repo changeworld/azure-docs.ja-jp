@@ -2,23 +2,18 @@
 title: Azure Storage での Shared Access Signatures (SAS) の使用 | Microsoft Docs
 description: Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage リソースへのアクセスを委任する方法について説明します。
 services: storage
-documentationcenter: ''
 author: craigshoemaker
 manager: jeconnoc
-editor: tysonn
-ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650742"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -113,7 +108,7 @@ BLOB に読み書きアクセス許可を付与するサービス SAS URI の例
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Name | SAS の部分 | [説明] |
+| Name | SAS の部分 | 説明 |
 | --- | --- | --- |
 | Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |BLOB のアドレス。 HTTPS の使用を強くお勧めします。 |
 | ストレージ サービスのバージョン |`sv=2015-04-05` |ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。 |
@@ -133,7 +128,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| Name | SAS の部分 | [説明] |
+| Name | SAS の部分 | 説明 |
 | --- | --- | --- |
 | リソース URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Blob service エンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーターまたは (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。 |
 | サービス |`ss=bf` |SAS は BLOB およびファイル サービスに適用されます。 |

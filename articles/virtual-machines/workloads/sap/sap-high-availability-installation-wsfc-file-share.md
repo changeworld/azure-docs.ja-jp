@@ -1,13 +1,13 @@
 ---
-title: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール | Microsoft Docs"
-description: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール"
+title: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール | Microsoft Docs
+description: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc957ece0250d233db9cec4f1fdd8b063c13a136
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658657"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 11/17/2017
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP マルチ SID 高可用性構成)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -578,7 +579,7 @@ ASCS/SCS クラスターの "*両方*" のノードに Enqueue Replication Serve
 * プライマリの SAP アプリケーション サーバー。
 * 追加の SAP アプリケーション サーバー。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする: 高可用性ファイル共有向け公式 SAP ガイドライン][sap-official-ha-file-share-document]
 

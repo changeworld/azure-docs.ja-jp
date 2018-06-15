@@ -1,29 +1,29 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure Time Series Insights 環境を管理する方法 | Microsoft Docs
 description: この記事では、Azure Resource Manager を使用して Azure Time Series Insights 環境をプログラムによって管理する方法について説明します。
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 99aabc01132da60a1b09fcf65f439b8e084bbffa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651966"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Time Series Insights リソースプロバイダーを使用して Time Series Insights リソースを作成し、デプロイする方法について説明します。
 
 Time Series Insights は、次のリソースをサポートしています。
-   | リソース | [説明] |
+   | リソース | 説明 |
    | --- | --- |
    | 環境 | Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化し、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください。 |
    | イベント ソース | イベント ソースとは、イベント ブローカーへの接続を指します。Time Series Insights は、このイベント ブローカーからイベントを読み取って環境に取り込みます。 現在サポートされているイベント ソースは、IoT Hub とイベント ハブです。 |
@@ -88,7 +88,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 #### <a name="required-parameters"></a>必須のパラメーター
 
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    | --- | --- |
    | eventHubNamespaceName | ソース イベント ハブの名前空間。 |
    | eventHubName | ソース イベント ハブの名前。 |
@@ -98,7 +98,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 #### <a name="optional-parameters"></a>省略可能なパラメーター
 
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    | --- | --- |
    | existingEventHubResourceId | イベント ソースを介して Time Series Insights 環境に接続する既存のイベント ハブの省略可能なリソース ID。 **注:** テンプレートを展開するユーザーには、イベント ハブに対して listkeys 操作を実行する権限が必要です。 値が渡されない場合、新しいイベント ハブがテンプレートによって作成されます。 |
    | environmentDisplayName | ツールやユーザー インターフェイスで環境名の代わりに表示される省略可能なフレンドリ名。 |

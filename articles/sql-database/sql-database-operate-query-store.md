@@ -6,14 +6,15 @@ author: bonova
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 4722399525b376e232f2bc7802a570836da79e29
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92e4180f1efe62d2dae9778f70e25f1bb0273b7f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649885"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作
 Azure のクエリ ストアは、すべてのクエリに関する詳細な履歴情報を継続的に収集して提示する、完全に管理されたデータベース機能です。 クエリ ストアは、航空機のフライト データ レコーダーに似ていると考えることができます。この機能によって、クラウドとオンプレミスのユーザーの両方が、クエリ パフォーマンスのトラブルシューティングを大幅に簡素化できます。 この記事では、Azure でのクエリ ストアの動作の特定の側面について説明します。 この事前収集されたクエリ データを使用してパフォーマンスの問題をすばやく診断して解決することで、業務に向ける時間を増やすことができます。 
@@ -28,7 +29,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 ## <a name="optimal-query-store-configuration"></a>クエリ ストアの最適構成
 このセクションでは、クエリ ストアと、 [SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などの依存機能の信頼できる動作を保証するように考えられた、最適構成の既定値について説明します。 既定の構成は、データ収集が継続的に実施される (OFF/READ_ONLY 状態の時間が最小限になる) ように最適化されています。
 
-| 構成 | [説明] | 既定値 | Comment (コメント) |
+| 構成 | 説明 | 既定値 | Comment (コメント) |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |クエリ ストアがユーザーのデータベース内で使用するデータ領域の制限を指定します。 |100 |新しいデータベースに適用 |
 | INTERVAL_LENGTH_MINUTES |クエリ プランで収集されたランタイム統計が集計されて保存される間隔を定義します。 すべてのアクティブなクエリ プランには、この構成で定義された期間の行が最大で 1 行含まれます。 |60 |新しいデータベースに適用 |

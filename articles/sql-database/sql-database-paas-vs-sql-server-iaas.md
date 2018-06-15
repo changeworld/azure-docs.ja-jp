@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: carlrab
-ms.openlocfilehash: 1c42d99d101307b17d0f6d15520c97457d5065c5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 236a9489f65f3347076699aa5357476e74f7f986
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194901"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649569"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 Azure には、Microsoft Azure で SQL Server ワークロードをホストするためのオプションが 2 つあります。
@@ -75,7 +75,8 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 #### <a name="billing-and-licensing-basics"></a>課金とライセンスの基礎
 **SQL Database** は、ライセンスではなくサービスとしてお客様に販売されます。  [Azure VM 上の SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) は、分単位で支払いを行う付属のライセンスと共に販売されます。 既存のライセンスをお持ちの場合、それを使用することもできます。  
 
-現在、 **SQL Database** は複数のサービス階層で利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 Basic、Standard、Premium、General Purpose、および Mission Critical の各サービス レベルは、アプリケーションのピーク時の要件を満たすために、複数のパフォーマンス レベルで、予測できるパフォーマンスを実現するように設計されています。 サービス階層とパフォーマンス レベルを変更して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在のサポートされているサービス レベルの最新情報については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有することもできます。
+現在、 **SQL Database** は複数のサービス階層で利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 Basic、Standard、Premium、General Purpose、および Mission Critical の各サービス レベルは、アプリケーションのピーク時の要件を満たすために、複数のパフォーマンス レベルで、予測できるパフォーマンスを実現するように設計されています。 サービス階層とパフォーマンス レベルを変更して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在のサポートされているサービス レベルの最新情報については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。 
+  [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有することもできます。
 
 > [!IMPORTANT]
 > データベースのトランザクション量が膨大で、多数の同時ユーザーをサポートする必要がある場合は、Premium または Mission Critical のサービス階層をお勧めします。 アプリケーションと SQL データベース間の待機時間を最小限にするには、アプリケーションをデータベースと同じリージョン内に配置してからパフォーマンスをテストし、必要に応じてサービス階層とパフォーマンス レベルを高めます。
@@ -121,7 +122,8 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 **Azure VM 上で実行される SQL Server**では、仮想マシンのみを対象に、可用性 99.95% の SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも 2 つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、 [AlwaysOn 可用性グループ](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ 99.99% のデータベース可用性が実現されます。
 
 ### <a name="market"></a>製品化に要する時間
-**SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。 プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。 たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell コマンドレット](http://msdn.microsoft.com/library/mt740629.aspx)を使用して、数千のデータベースの管理の操作を自動化して管理できます。 [エラスティック プール](sql-database-elastic-pool.md)などの機能を使用すると、アプリケーション層に注目し、ソリューションをより早く市場に提供することができます。
+**SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。 プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。 たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell コマンドレット](http://msdn.microsoft.com/library/mt740629.aspx)を使用して、数千のデータベースの管理の操作を自動化して管理できます。 
+  [エラスティック プール](sql-database-elastic-pool.md)などの機能を使用すると、アプリケーション層に注目し、ソリューションをより早く市場に提供することができます。
 
 **Azure VM 上で実行される SQL Server** は、既存または新規のアプリケーションに、大規模なデータベース、相互に関連するデータベース、SQL Server または Windows の全機能へのアクセスのいずれかが必要な場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)に関するページを参照してください。
 

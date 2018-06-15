@@ -3,16 +3,17 @@ title: Azure SQL データ同期 (プレビュー) のベスト プラクティ�
 description: Azure SQL データ同期 (プレビュー) の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646009"
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) のベスト プラクティス 
 

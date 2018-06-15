@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 2d8760476fd7b8a5a11d01a434a383ec1ba27ef1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649154"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
 Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用すると、複数のデータベースに対して T-SQL スクリプトを確実に実行できます。また、スクリプトは自動的に再試行されるので、最終的な完了が保証されます。 Elastic Database ジョブ機能の詳細については、[Elastic ジョブ](sql-database-elastic-jobs-overview.md)に関するページをご覧ください。
@@ -321,7 +322,8 @@ Elastic Database ジョブは、ジョブ取り消し要求をサポートして
    ```
 
 ## <a name="create-a-custom-database-target"></a>カスタム データベース ターゲットを作成する
-Elastic Database ジョブでは、カスタム データベース ターゲットを定義できます。このターゲットは、直接の実行、またはカスタム データベース グループ内に含まれる実行に使用できます。 **エラスティック プール**は、まだ PowerShell API で直接サポートされていません。そのため、プール内のすべてのデータベースを網羅するカスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成します。
+Elastic Database ジョブでは、カスタム データベース ターゲットを定義できます。このターゲットは、直接の実行、またはカスタム データベース グループ内に含まれる実行に使用できます。 
+  **エラスティック プール**は、まだ PowerShell API で直接サポートされていません。そのため、プール内のすべてのデータベースを網羅するカスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成します。
 
 目的のデータベース情報を反映するように、次の変数を設定します。
 
@@ -449,9 +451,9 @@ Elastic Database ジョブでは、カスタム データベース ターゲッ�
 
    ![他のソースから Excel へのインポート](./media/sql-database-elastic-query-getting-started/exel-sources.png)
 
-4. **[データ接続ウィザード]** で、サーバー名とログイン時の資格情報を入力します。 その後、 **[次へ]**をクリックします。
+4. **[データ接続ウィザード]** で、サーバー名とログイン時の資格情報を入力します。 その後、 **[次へ]** をクリックします。
 5. **[使用するデータが含まれているデータベースを選択]** ダイアログ ボックスで、**[ElasticDBQuery]** データベースを選択します。
-6. リスト ビューで **[Customers]** テーブルを選択し、**[次へ]** をクリックします。 **[完了]**をクリックします。
+6. リスト ビューで **[Customers]** テーブルを選択し、**[次へ]** をクリックします。 **[完了]** をクリックします。
 7. **[データのインポート]** フォームの **[このデータをブックでどのように表示するかを選択してください。]** で、**[テーブル]** を選択し、**[OK]** をクリックします。
 
 さまざまなシャードに格納されている、 **[Customers]** テーブルからのすべての行が Excel シートに読み込まれます。

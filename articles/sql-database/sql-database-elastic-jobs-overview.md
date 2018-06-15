@@ -7,20 +7,22 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3fdc24a811544de87d97da498d7946507653cec5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646087"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベースの管理
 スケールアウトされシャード化されたデータベースを管理するために、**Elastic Database ジョブ**機能 (プレビュー) を利用すると、次を含むデータベースのグループ全体で、信頼できる方法で Transact-SQL (T-SQL) スクリプトを実行できます。
 
 * データベースのカスタム定義コレクション (詳細は後述)
-* [エラスティック プール](sql-database-elastic-pool.md)内のすべてのデータベース
+* 
+  [エラスティック プール](sql-database-elastic-pool.md)内のすべてのデータベース
 * シャード セット ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成) 
 
 ## <a name="documentation"></a>ドキュメント
@@ -68,7 +70,8 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
 ## <a name="elastic-database-jobs-end-to-end"></a>Elastic Database ジョブ: エンド ツー エンド
 1. **エラスティック データベース ジョブ** コンポーネントをインストールします。 詳細については、「 [エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。 インストールが失敗した場合は、「 [アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
-2. カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。 **エラスティック プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。 
+2. カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。 
+  **エラスティック プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。 
 3. ジョブ実行用に暗号化された資格情報を作成し、 [グループ内の各データベースにユーザー (またはロール) を追加します](sql-database-security-overview.md)。
 4. グループ内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。 
 5. 「 [Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、Azure ポータルを使用してジョブを作成します。 

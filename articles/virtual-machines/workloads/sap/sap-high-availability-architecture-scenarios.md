@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ | Microsoft Docs"
-description: "Azure Virtual Machines での SAP NetWeaver のための高可用性のアーキテクチャとシナリオ"
+title: SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ | Microsoft Docs
+description: Azure Virtual Machines での SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f3765d807882e65a247819a5999c191f9e7ac5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656926"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -146,7 +147,7 @@ ms.lasthandoff: 11/15/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP マルチ SID 高可用性構成)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -248,7 +249,7 @@ Azure での SAP 高可用性は、次の 3 つの種類に分類できます。
 
 * **SAP アプリケーションの高可用性** 
 
-    SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 For example:
+    SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例: 
     * SAP アプリケーション サーバーの冗長性。
     * 一意のコンポーネント。 たとえば、SAP ASCS/SCS インスタンスやデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントがあります。
 
@@ -266,7 +267,7 @@ Windows 向けはありますが、Linux 向けの sapinst-integrated SAP 高可
 
 (可用性サービス #1/100) * (可用性サービス #2/100) * (可用性サービス #3/100) \*…
 
-For example:
+例: 
 
 (99.95/100) * (99.9/100) * (99.9/100) = 0.9975、つまり 99.75% の全体的な可用性。
 
@@ -320,7 +321,7 @@ Linux で WSFC や Pacemaker などの機能 (現在 SUSE Linux Enterprise Serve
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS での SAP アプリケーションの高可用性
 
-SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 For example:
+SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例: 
   * SAP アプリケーション サーバーの冗長性。
   * 一意のコンポーネント。 たとえば、SAP ASCS/SCS インスタンスやデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントがあります。
 

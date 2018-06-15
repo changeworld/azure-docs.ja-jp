@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 44d1dabdb6a9e5f4b405b876f37daa9097c6e7f8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 09ee4dfc403bf570631f64b0b13d1592a03eed17
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931862"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698970"
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Azure CLI を使用して Azure VM において管理対象サービス ID (MSI) を構成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "33931862"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 管理対象サービス ID について不慣れな場合は、[概要](overview.md)に関するページをご覧ください。 **システム割り当て ID と[ユーザー割り当て ID の違いを確認してください](overview.md#how-does-it-work)**。
+- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
 
@@ -117,35 +117,34 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 
 2. [az identity create](/cli/azure/identity#az_identity_create) を使用してユーザー割り当て ID を作成します。  `-g` パラメーターではユーザー割り当て ID を作成するリソース グループを指定し、`-n` パラメーターではその名前を指定します。    
     
-    > [!IMPORTANT]
-    > ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さは 24 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳細については、[よく寄せられる質問と既知の問題](known-issues.md)に関する記事をご覧ください。
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
-    ```azurecli-interactive
-    az identity create -g myResourceGroup -n myUserAssignedIdentity
-    ```
+```azurecli-interactive
+az identity create -g myResourceGroup -n myUserAssignedIdentity
+```
 応答には、次のように、作成されたユーザー割り当て ID の詳細が含まれています。 ユーザー割り当て ID に割り当てられたリソース ID 値は、次の手順で使用されます。
 
-   ```json
-   {
-        "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
-        "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
-        "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
-        "location": "westcentralus",
-        "name": "<MSI NAME>",
-        "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
-        "resourceGroup": "<RESOURCE GROUP>",
-        "tags": {},
-        "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
-   }
-   ```
+```json
+{
+    "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
+    "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
+    "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
+    "location": "westcentralus",
+    "name": "<MSI NAME>",
+    "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
+    "resourceGroup": "<RESOURCE GROUP>",
+    "tags": {},
+    "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
+}
+```
 
 3. [az vm create](/cli/azure/vm/#az_vm_create) を使用して VM を作成します。 次の例では、`--assign-identity` パラメーターで指定された新しいユーザー割り当て ID に関連付けられている VM を作成します。 `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>`、および `<MSI ID>` の各パラメーターの値は、必ず実際の値に置き換えてください。 `<MSI ID>` の場合は、前の手順で作成されたユーザー割り当て ID のリソース `id` プロパティを使用します。 
 
-   ```azurecli-interactive 
-   az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
-   ```
+```azurecli-interactive 
+az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
+```
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>ユーザー割り当て ID を既存の Azure VM に割り当てる
 

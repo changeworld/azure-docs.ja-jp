@@ -1,13 +1,13 @@
 ---
-title: "Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする | Microsoft Docs"
-description: "Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイします"
+title: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする | Microsoft Docs
+description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイします
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1895fb1910c5f30cbcff1c16ca66057d31a580b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656484"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。
@@ -28,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 SAP CAL を開始するには、[SAP Cloud Appliance Library](https://cal.sap.com/) の Web サイトにアクセスします。 SAP には新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) に関するブログも用意されています。 
 
 > [!NOTE]
-2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイメント モデルに加えて Azure Resource Manager デプロイメント モデルを使用できるようになりました。 クラシック デプロイメント モデルの代わりに新しい Resource Manager デプロイメント モデルを使用することをお勧めします。
+2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイ モデルに加えて Azure Resource Manager デプロイ モデルを使用できるようになりました。 クラシック デプロイ モデルの代わりに新しい Resource Manager デプロイ モデルを使用することをお勧めします。
 
 クラシック モデルを使用する SAP CAL アカウントを既に作成している場合は、"*別の SAP CAL アカウントを作成する必要があります*"。 このアカウントは、Resource Manager モデルを使用して Azure に排他的にデプロイする必要があります。
 
@@ -39,7 +40,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 ### <a name="create-an-account-in-the-sap-cal"></a>SAP CAL にアカウントを作成する
 1. 初めて SAP CAL にサインインするには、SAP S-User または SAP に登録された他のユーザーを使用します。 次に、SAP CAL で使用される SAP CAL アカウントを定義し、アプライアンスを Azure にデプロイします。 アカウントの定義では、次を行う必要があります。
 
-    a. Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
 
     b. Azure サブスクリプションを入力します。 SAP CAL アカウントは 1 つのサブスクリプションにのみ割り当てることができます。 複数のサブスクリプションが必要な場合は、別の SAP CAL アカウントを作成する必要があります。
     
@@ -50,9 +51,11 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
 2. 新しい SAP CAL アカウントを作成する方法として、**[Accounts]\(アカウント\)** ページに次の 2 つの選択肢が用意されています。 
 
-    a. **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイメント モデルで、推奨されなくなりました。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 
+  **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイ モデルで、推奨されなくなりました。
 
-    b. **[Microsoft Azure]** は新しい Resource Manager デプロイメント モデルです。
+    b. 
+  **[Microsoft Azure]** は新しい Resource Manager デプロイ モデルです。
 
     ![SAP CAL アカウント](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
@@ -86,7 +89,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
 正しく作成した SAP CAL アカウントでは、次のことが可能です。
 
-- Resource Manager デプロイメント モデルを使用する。
+- Resource Manager デプロイ モデルを使用する。
 - SAP システムを Azure サブスクリプションにデプロイする。
 
 > [!NOTE]
@@ -97,7 +100,7 @@ Windows や SQL Server に基づく SAP IDES ソリューションをデプロ�
 
 2. **[Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)** ページでは、次のことを行う必要があります。
 
-    a. インスタンスの**名前**を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 インスタンスの**名前**を入力します。
 
     b. Azure の**リージョン**を選択します。 複数の Azure リージョンが提供されるには、SAP CAL のサブスクリプションが必要な場合があります。
 

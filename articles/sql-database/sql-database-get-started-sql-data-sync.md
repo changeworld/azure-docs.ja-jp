@@ -6,15 +6,16 @@ author: douglaslms
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7598484a20d2d719c84e1789664ac2b40c2d0639
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647852"
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) をセットアップする
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。

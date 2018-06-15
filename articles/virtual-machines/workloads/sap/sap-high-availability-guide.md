@@ -4,7 +4,7 @@ description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガ
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e65f38b6fb4f5434c840af1866ccf09671111f3e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1fcec2046ae8e655a1e38bb62e338b8f2380e543
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657970"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -156,10 +157,10 @@ ms.lasthandoff: 04/28/2018
 
 Azure Virtual Machines は、最短時間で、時間のかかる調達サイクルなしに、コンピューティング リソース、ストレージ リソース、およびネットワーク リソースを入手する必要のある組織向けのソリューションです。 Azure Virtual Machines を使用すると、SAP NetWeaver ベースの ABAP、Java、ABAP+Java スタックなどの従来のアプリケーションをデプロイできます。 オンプレミスのリソースを追加することなく、信頼性と可用性を高めます。 Azure Virtual Machines はクロスプレミス接続をサポートしているので、Azure Virtual Machines を組織のオンプレミスのドメイン、プライベート クラウド、SAP システム ランドスケープに統合できます。
 
-この記事では、Azure Resource Manager デプロイメント モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。
+この記事では、Azure Resource Manager デプロイ モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。
 
 * 「[リソース][sap-ha-guide-2]」セクションの一覧で、適切な SAP Note とインストール ガイドを探します。 この記事は SAP インストール ドキュメントと SAP Note を補完するものであり、これらは特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースです。
-* Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルの違いについて理解します。
+* Azure Resource Manager デプロイ モデルと Azure クラシック デプロイ モデルの違いについて理解します。
 * Azure のデプロイに適したモデルを選択できるように、Windows Server フェールオーバー クラスタリングのクォーラム モードについて理解します。
 * Azure サービスでの Windows Server フェールオーバー クラスタリングの共有記憶域について理解します。
 * Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) やデータベース管理システム (DBMS) のような単一障害点コンポーネントおよび SAP アプリケーション サーバーのような冗長コンポーネントを Azure で保護するために役立つ方法を理解します。
@@ -200,7 +201,7 @@ Azure での SAP のデプロイについては、以下の記事で説明され
 一般的な既定の制限事項や上限など、[Azure サブスクリプションの制限事項][azure-subscription-service-limits-subscription]について理解しておいてください。
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルでの高可用性 SAP
-Azure Resource Manager デプロイメント モデルと Azure クラシック デプロイメント モデルでは、次の点が異なります。
+Azure Resource Manager デプロイ モデルと Azure クラシック デプロイ モデルでは、次の点が異なります。
 
 - リソース グループ
 - Azure リソース グループに対する Azure 内部ロード バランサーの依存関係
@@ -211,7 +212,7 @@ Azure Resource Manager では、リソース グループを使用して Azure �
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Azure リソース グループに対する Azure 内部ロード バランサーの依存関係
 
-Azure クラシック デプロイメント モデルでは、Azure 内部ロード バランサー (Azure Load Balancer サービス) とクラウド サービスの間に依存関係があります。 どの内部ロード バランサーにも 1 つのクラウド サービスが必要です。
+Azure クラシック デプロイ モデルでは、Azure 内部ロード バランサー (Azure Load Balancer サービス) とクラウド サービスの間に依存関係があります。 どの内部ロード バランサーにも 1 つのクラウド サービスが必要です。
 
 Azure Resource Manager では、すべての Azure リソースを Azure リソース グループに配置する必要があり、これは Azure Load Balancer についても有効です。 ただし、Azure Load Balancer ごとに 1 つの Azure リソース グループを割り当てる必要はありません (たとえば、1 つの Azure リソース グループに複数の Azure Load Balancer を含めることができます)。 環境は、よりシンプルで柔軟性が高くなります。 
 
@@ -219,10 +220,10 @@ Azure Resource Manager では、すべての Azure リソースを Azure リソ�
 
 Azure Resource Manager では、1 つのクラスターに複数の SAP システム識別子 (SID) ASCS/SCS インスタンスをインストールすることができます。 各 Azure 内部ロード バランサーで複数の IP アドレスがサポートされているため、マルチ SID インスタンスが可能になります。
 
-Azure クラシック デプロイメント モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](http://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
+Azure クラシック デプロイ モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](http://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
 
 > [!IMPORTANT]
-> SAP のインストールには、Azure Resource Manager デプロイメント モデルを使用することを強くお勧めします。 クラシック デプロイメント モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
+> SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
 >
 >
 
@@ -345,7 +346,7 @@ DBMS は、SAP システムでの単一接続点でもあります。 高可用�
 
 _**図 7:** 高可用性の SAP DBMS と SQL Server Always On の例_
 
-Azure Resource Manager デプロイメント モデルを使用した Azure での SQL Server のクラスタリングの詳細については、次の記事を参照してください。
+Azure Resource Manager デプロイ モデルを使用した Azure での SQL Server のクラスタリングの詳細については、次の記事を参照してください。
 
 * [Azure VM での AlwaysOn 可用性グループの手動構成 - Resource Manager][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 * [Azure の AlwaysOn 可用性グループに使用する Azure 内部ロード バランサーの構成][virtual-machines-windows-portal-sql-alwayson-int-listener]

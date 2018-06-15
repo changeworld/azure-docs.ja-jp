@@ -1,26 +1,27 @@
 ---
-title: Azure SQL Database マネージ インスタンスのカスタム DNS | Microsoft Docs
-description: このトピックでは、Azure SQL Database マネージ インスタンスのカスタム DNS の構成オプションについて説明します。
+title: Azure SQL Database Managed Instance のカスタム DNS | Microsoft Docs
+description: このトピックでは、Azure SQL Database マネージド インスタンスのカスタム DNS の構成オプションについて説明します。
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 05a7b600ae8672447126b79cda10ca94c6d0fb48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649331"
 ---
-# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスのカスタム DNS の構成
+# <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のカスタム DNS の構成
 
-Azure SQL Database マネージ インスタンス (プレビュー) は、Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) 内にデプロイする必要があります。 クラウドまたはハイブリッド環境内の他の SQL インスタンスにリンクされたサーバーのプライベート ホスト名をマネージ インスタンスから解決する必要のあるシナリオがいくつか存在します。 この場合は、Azure の内部でカスタム DNS を構成する必要があります。 マネージ インスタンスはその内側の作業に同じ DNS を使用するため、仮想ネットワークの DNS 構成をマネージ インスタンスと互換性があるようにする必要があります。 
+Azure SQL Database マネージド インスタンス (プレビュー) は、Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) 内にデプロイする必要があります。 クラウドまたはハイブリッド環境内の他の SQL インスタンスにリンクされたサーバーのプライベート ホスト名をマネージド インスタンスから解決する必要のあるシナリオがいくつか存在します。 この場合は、Azure の内部でカスタム DNS を構成する必要があります。 Managed Instance はその内側の作業に同じ DNS を使用するため、仮想ネットワークの DNS 構成を Managed Instance と互換性があるようにする必要があります。 
 
-カスタム DNS 構成をマネージ インスタンスと互換性があるようにするには、次の手順を完了する必要があります。 
+カスタム DNS 構成を Managed Instance と互換性があるようにするには、次の手順を完了する必要があります。 
 - 要求を Azure DNS に転送するようにカスタム DNS を構成する 
 - カスタム DNS を VNet のプライマリとして、Azure DNS をセカンダリとして設定する 
 - カスタム DNS をプライマリとして、Azure DNS をセカンダリとして登録する
@@ -74,10 +75,10 @@ Azure VNet 上の DNS 構成では IP アドレスを入力する必要がある
    ![カスタム DNS オプション](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > DNS の一覧で Azure の再帰リゾルバーを設定しないと、マネージ インスタンスが問題のある状態になります。 その状態から回復するには、準拠するネットワーク ポリシーを使用して VNet 内に新しいインスタンスを作成し、インスタンス レベル データを作成して、データベースを復元することが必要になる可能性があります。 「[VNet 構成](sql-database-managed-instance-vnet-configuration.md)」を参照してください。
+   > DNS の一覧で Azure の再帰リゾルバーを設定しないと、マネージド インスタンスが問題のある状態になります。 その状態から回復するには、準拠するネットワーク ポリシーを使用して VNet 内に新しいインスタンスを作成し、インスタンス レベル データを作成して、データベースを復元することが必要になる可能性があります。 「[VNet 構成](sql-database-managed-instance-vnet-configuration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 概要については、[マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
+- 概要については、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。
 - マネージド インスタンスの VNet を構成する方法については、[マネージド インスタンスの VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。

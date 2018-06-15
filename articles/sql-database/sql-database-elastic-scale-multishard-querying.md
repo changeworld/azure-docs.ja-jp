@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 13d62250112d47ce79f0345828ba69358f153c2d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 17fb937dc24cbf2fa1630a26ea6876fa56a384f5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646849"
 ---
 # <a name="multi-shard-querying"></a>マルチシャード クエリ実行
 ## <a name="overview"></a>概要
@@ -54,7 +55,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 主な相違点は、マルチシャード接続の構築です。 **SqlConnection** が単一のデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。 シャードのコレクションは、シャード マップから設定します。 次に、 **UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。 必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。 
 
-ここで、 **myShardMap.GetShards()**の呼び出しに注目してください。 このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。 マルチシャード クエリのためのシャードのコレクションは、 **myShardMap.GetShards()**呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。 部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
+ここで、 **myShardMap.GetShards()** の呼び出しに注目してください。 このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。 マルチシャード クエリのためのシャードのコレクションは、 **myShardMap.GetShards()** 呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。 部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
 
 現在のマルチシャード クエリ実行には、クエリの対象となるシャードとシャードレットの検証が欠けているという制限があります。 データ依存ルーティングでは特定のシャードがシャード マップの一部であることが照会時に確認されますが、マルチシャード クエリ実行ではこのようなチェックは実行されません。 そのため、シャード マップから削除されたデータベースに対してマルチシャード クエリが実行される可能性があります。
 

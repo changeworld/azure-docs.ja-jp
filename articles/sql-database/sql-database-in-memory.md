@@ -6,15 +6,15 @@ author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195170"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647869"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -135,7 +135,8 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 **クラスター化された**列ストア インデックスがある場合、ダウングレード後はテーブル全体が使用できなくなります。 そのため、サポートされていないレベルにデータベースをダウングレードする前に、*クラスター化された* 列ストア インデックスをすべて削除することをお勧めします。
 
-*サポートされている下位レベルへのダウングレード*: データベース全体がターゲット価格レベルの最大データベース サイズ、またはエラスティック プールの使用可能なストレージに収まっている場合、このダウングレードは正常に行われます。 列ストア インデックスからの特定の影響はありません。
+
+  *サポートされている下位レベルへのダウングレード*: データベース全体がターゲット価格レベルの最大データベース サイズ、またはエラスティック プールの使用可能なストレージに収まっている場合、このダウングレードは正常に行われます。 列ストア インデックスからの特定の影響はありません。
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>

@@ -1,21 +1,21 @@
 ---
-title: "Azure Time Series Insights に Event Hub イベント ソースを追加する方法 | Microsoft Docs"
-description: "この記事では、イベント ハブに接続されたイベント ソースを Time Series Insights 環境に追加する方法を説明します。"
-services: time-series-insights
+title: Azure Time Series Insights に Event Hub イベント ソースを追加する方法 | Microsoft Docs
+description: この記事では、イベント ハブに接続されたイベント ソースを Time Series Insights 環境に追加する方法を説明します。
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: ed151160bd8bd0f0241e1a728fab53570e33a201
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656019"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する方法
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/22/2017
 - イベント ハブに Time Series Insight 環境で使用する専用コンシューマー グループを作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。 詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」をご覧ください。
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/22/2017
 
 5. **[作成]** を選択して、新しいコンシューマー グループを作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
 - イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
 - [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境にアクセスします。

@@ -6,21 +6,16 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: rajanaki
-ms.openlocfilehash: ccec4262297314bad261a852bb5db25c428ce0a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6a57226f81e626e620033750c58d5998d8e7e894
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716586"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
-
-
->[!NOTE]
->
-> Azure VM の Site Recovery レプリケーションは現在プレビューの段階です。
-
 
 
 [Azure Site Recovery](site-recovery-overview.md) を使用してリージョンから別のリージョンに Azure VM を[フェールオーバー](site-recovery-failover.md)すると、VM は保護されていない状態でセカンダリ リージョンで起動されます。 VM をプライマリ リージョンにフェールバックする場合、次の操作を行う必要があります。

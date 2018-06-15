@@ -6,16 +6,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9f2fd54a1ce3cf8900b04545a258a32f9aa3e31a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942430"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647189"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して Azure SQL Database から長期的なバックアップ保有期間を構成して復元する
 

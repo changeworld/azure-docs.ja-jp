@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5e7702c164a414ee2b9c08ccb276d5d74ad90f19
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 56500a21822f7c7122a20cb676b9ad307de49c87
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647012"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
 [エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md) の新しいバージョンが NuGet と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。 アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/06/2018
 
 * Visual Studio ソリューションで **[ツール]** --> **[NuGet Package Manager]** -->  **[Manage NuGet Packages for Solution (ソリューションの NuGet パッケージを管理)]** と選択します。 
 * (Visual Studio 2013) 左側のパネルで **[更新]** を選択し、ウィンドウに表示される **Azure SQL Database Elastic Scale Client Library** パッケージの **[更新]** ボタンを選択します。
-* (Visual Studio 2015) [フィルター] ボックスで **[アップグレード可能]**を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
+* (Visual Studio 2015) [フィルター] ボックスで **[アップグレード可能]** を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
 * (Visual Studio 2017) ダイアログの上部にある **[更新プログラム]** を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
 * 構築してデプロイします。 
 

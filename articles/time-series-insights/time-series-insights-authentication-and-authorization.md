@@ -1,22 +1,22 @@
 ---
-title: "Azure Time Series Insights の API によって認証と承認を行う方法"
-description: "この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。"
-services: time-series-insights
+title: Azure Time Series Insights の API によって認証と承認を行う方法
+description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
+services: time-series-insights
 author: dmdenmsft
 ms.author: dmden
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: dd78e1e726029aaceef5aff0e0eed84acac646cf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: a18caf03dbc5377f0adc540c8550129ef3bdb9e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652435"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -72,7 +72,7 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
 
    ![[ユーザーの選択] ダイアログ ボックスでアプリケーションを検索する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)
 
-8. 役割 (データを照会する場合は**[閲覧者]**、データを照会して参照データを変更する場合は **[共同作成者]**) を選択して、**[OK]** をクリックします。
+8. 役割 (データを照会する場合は **[閲覧者]**、データを照会して参照データを変更する場合は **[共同作成者]**) を選択して、**[OK]** をクリックします。
 
    ![[役割の選択] ダイアログ ボックスで、[閲覧者] または [共同作成者] を選択する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)
 
@@ -101,7 +101,7 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
 
 お使いのアプリケーションのアプリケーション ID とキーを使用し、Azure Time Series Insight で認証します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
 - API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/time-series-insights-reference-queryapi)に関するページをご覧ください。
 

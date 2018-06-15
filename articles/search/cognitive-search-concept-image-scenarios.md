@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367275"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640202"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "34367275"
 
 画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。
 
-| 構成パラメーター | [説明] |
+| 構成パラメーター | 説明 |
 |--------------------|-------------|
 | imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。 これらの画像は、*normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 |
 |  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。|
@@ -45,7 +45,7 @@ ms.locfileid: "34367275"
 正規化された画像の最大幅と最大高さの既定値 (2000 ピクセル) は、 [OCR スキル](cognitive-search-skill-ocr.md)と[画像分析スキル](cognitive-search-skill-image-analysis.md)でサポートされる最大サイズに基づいています。 最大の制限値を引き上げると、より大きい画像で処理が失敗する可能性があります。
 
 
-ImageAction は、[インデクサー定義](ref-create-indexer.md)で次のように指定します。
+ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api/searchservice/create-indexer)で次のように指定します。
 
 ```json
 {
@@ -63,7 +63,7 @@ ImageAction は、[インデクサー定義](ref-create-indexer.md)で次のよ�
 
 *imageAction* が "generateNormalizedImages" に設定されている場合は、新しい *normalized_images* フィールドに画像の配列が含められます。 各画像は、次のメンバーを含んだ複合型になります。
 
-| 画像のメンバー       | [説明]                             |
+| 画像のメンバー       | 説明                             |
 |--------------------|-----------------------------------------|
 | data               | JPEG 形式の正規化画像を BASE64 でエンコードした文字列。   |
 | width              | 正規化画像の幅 (ピクセル単位)。 |
@@ -218,7 +218,7 @@ OCR ステップは正規化された画像に対して実行されるため、�
 ```
 
 ## <a name="see-also"></a>関連項目
-+ [インデクサーの作成 (REST)](ref-create-indexer.md)
++ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [画像分析スキル](cognitive-search-skill-image-analysis.md)
 + [OCR スキル](cognitive-search-skill-ocr.md)
 + [テキスト マージ スキル](cognitive-search-skill-textmerger.md)

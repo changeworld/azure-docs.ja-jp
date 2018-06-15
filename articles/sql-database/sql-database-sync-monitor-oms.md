@@ -3,17 +3,18 @@ title: Log Analytics を使用した Azure SQL データ同期の監視 (プレ�
 description: Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します (プレビュー)
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650249"
 ---
 # <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Log Analytics を使用した SQL データ同期 (プレビュー) の監視 
 
@@ -77,7 +78,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 4.  **[Runbook file] (Runbook ファイル)** で、指定された `DataSyncLogPowerShellRunbook` ファイルを使用します。 **[Runbook type] (Runbook の種類)** を `PowerShell` として設定します。 この Runbook に名前を付けます。
 
-5.  **[作成]**を選択します。 これで Runbook が作成されました。
+5.  **[作成]** を選択します。 これで Runbook が作成されました。
 
 6.  Azure Automation アカウントで、[共有リソース] の下にある **[変数]** タブを選択します。
 
@@ -115,7 +116,7 @@ Runbook のスケジュールを設定するには:
 
 5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と OMS で同じ間隔を使用します。
 
-6.  **[作成]**を選択します。
+6.  **[作成]** を選択します。
 
 ### <a name="check-the-automation"></a>オートメーションをチェックする
 

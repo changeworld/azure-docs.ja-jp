@@ -7,15 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: ea76bc4cc182902fb5618d23358579ec229a5ef4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a40ca715c15540bf7048fae8b5dde152890eb1c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189719"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648328"
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 
@@ -79,7 +79,7 @@ SQL Database Auditing は、データベース イベントを Azure Storage ア
 脅威の検出では、Azure SQL Database サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。 脅威の検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「 [SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
  
 ## <a name="compliance"></a>コンプライアンス
-アプリケーションがさまざまなセキュリティ要件を満たすために役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
+アプリケーションがさまざまなセキュリティ要件を満たすために役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings/)の一覧を入手できます。
 
 
 ## <a name="security-management"></a>セキュリティ管理

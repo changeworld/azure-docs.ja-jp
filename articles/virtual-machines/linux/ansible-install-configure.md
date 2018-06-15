@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c00ebcb771081f8e35c67bf384f5f6822e16f268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896131"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652993"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Azure の仮想マシンを管理するための Ansible のインストールと構成
 
@@ -150,7 +150,7 @@ sudo pip uninstall -y cryptography
 
 Ansible は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、Ansible などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 この例では、ユーザー名とパスワードを提供するだけでなく、セキュリティを強化するために、基本的なサービス プリンシパルを作成します。
 
-ホスト コンピューターまたは Azure Cloud Shell で、[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用して、サービス プリンシパルを作成します。 Ansible に必要な資格情報が画面に出力されます。
+ホスト コンピューターまたは Azure Cloud Shell で、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) を使用して、サービス プリンシパルを作成します。 Ansible に必要な資格情報が画面に出力されます。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -166,7 +166,7 @@ az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tena
 }
 ```
 
-Azure に対して認証するには、[az account show](/cli/azure/account#az_account_show) を使用して Azure サブスクリプション ID を取得する必要もあります。
+Azure に対して認証するには、[az account show](/cli/azure/account#az-account-show) を使用して Azure サブスクリプション ID を取得する必要もあります。
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

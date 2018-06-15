@@ -1,22 +1,22 @@
 ---
-title: "Azure Time Series Insights 環境をスケーリングする方法 | Microsoft Docs"
-description: "この記事では、Azure Time Series Insights 環境をスケーリングする方法について説明します。 Azure Portal を使用して、価格 SKU 内の容量を追加または減算します。"
-services: time-series-insights
+title: Azure Time Series Insights 環境をスケーリングする方法 | Microsoft Docs
+description: この記事では、Azure Time Series Insights 環境をスケーリングする方法について説明します。 Azure Portal を使用して、価格 SKU 内の容量を追加または減算します。
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 7e603cc9c130de6b65ae1935ac974557f5e74737
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651993"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
@@ -58,6 +58,6 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 4. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [新しい容量が、スロットルを防止するのに十分であることを確認します](time-series-insights-diagnose-and-solve-problems.md)。

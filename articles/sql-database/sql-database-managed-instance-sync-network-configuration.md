@@ -5,19 +5,20 @@ ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5b139b1279776acfca63def25a9fdae0f627a727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea8f4aae0324e201def6b9b6cd33b0e79042ebbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647971"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 
-場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../app-service/web-sites-integrate-with-vnet.md)、マネージ インスタンスへの接続を確立できないことがあります。 その場合の対処の 1 つとして、使用するサービス プラン用にネットワーク構成を更新するという対処方法があります。 
+場合によっては、[アプリを Azure Virtual Network と統合したにもかかわらず](../app-service/web-sites-integrate-with-vnet.md)、Managed Instance への接続を確立できないことがあります。 その場合の対処の 1 つとして、使用するサービス プラン用にネットワーク構成を更新するという対処方法があります。 
 
 ## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>ネットワーク構成を App Service のホスティング プラン用に同期する
 
@@ -39,8 +40,8 @@ ms.lasthandoff: 03/16/2018
   
    ![同期の完了](./media/sql-database-managed-instance-sync-networking/sync-done.png)
 
-これで、マネージ インスタンスへの接続を再確立する準備が整いました。
+これで、マネージド インスタンスへの接続を再確立する準備が整いました。
 
 ## <a name="next-steps"></a>次の手順
 
-- VNet をマネージ インスタンス用に構成する方法について詳しくは、[マネージ インスタンスの VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関する記事をご覧ください。
+- VNet を Managed Instance 用に構成する方法について詳しくは、[Managed Instance VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関する記事をご覧ください。

@@ -1,13 +1,13 @@
 ---
-title: "Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する | Microsoft Docs"
-description: "クラスター共有ディスクを使って Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する方法を説明します。"
+title: Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する | Microsoft Docs
+description: クラスター共有ディスクを使って Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する方法を説明します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9eec2d28b436b97cbdaaf4e0e5f154a6ef15fe8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 69071ef211e6787aa7bbae121cc4d55ccf2a6ef6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657756"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -71,7 +72,7 @@ ms.lasthandoff: 11/14/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP マルチ SID 高可用性構成)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -224,10 +225,10 @@ SAP ASCS/SCS インスタンスには、次のコンポーネントがありま�
 
 
 * SAP グローバル ホスト ファイル:
-    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\SYS\...
+    * ファイル構造: S:\usr\sap\\&lt;SID&gt;\SYS\..
     * 次の UNC パスを使ってこれらのグローバルな S:\usr\sap\\&lt;SID&gt;\SYS\... ファイルにアクセスできるようにする sapmnt ファイル共有。
 
-     \\\\<ASCS/SCS 仮想ホスト名>\sapmnt\\&lt;SID&gt;\SYS\...
+     \\\\&lt;ASCS/SCS 仮想ホスト名&gt;\sapmnt\\&lt;SID&gt;\SYS\..
 
 
 ![図 2: プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
@@ -273,7 +274,7 @@ _**図 5:** SIOS DataKeeper を使う Azure の Windows フェールオーバー
 > SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する][sap-high-availability-infrastructure-wsfc-shared-disk]
 

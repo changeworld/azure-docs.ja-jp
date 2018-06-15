@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT プロトコル ゲートウェイ | Microsoft Docs"
-description: "Azure IoT プロトコル ゲートウェイを使用して IoT Hub の機能およびプロトコルのサポートを拡張し、IoT Hub ではネイティブでサポートされていないプロトコルを使用してデバイスとハブの接続を有効にする方法。"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT プロトコル ゲートウェイ | Microsoft Docs
+description: Azure IoT プロトコル ゲートウェイを使用して IoT Hub の機能およびプロトコルのサポートを拡張し、IoT Hub ではネイティブでサポートされていないプロトコルを使用してデバイスとハブの接続を有効にする方法。
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: 555e59ae-3136-4533-8ba8-f3a3b6acf648
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: elioda
-ms.openlocfilehash: 1ed8ec28b95bbc91b731fd7bb7b3f1f6654e7fcf
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 2c90ee899d0002d41ca21ed4a4927470ee53b2e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635306"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub に対するその他のプロトコルのサポート
 Azure IoT Hub は MQTT、AMQP、および HTTPS プロトコルを介した通信をネイティブでサポートします。 場合によっては、デバイスまたはフィールド ゲートウェイでこれらの標準プロトコルをいずれも使用できず、プロトコルの適応が必要になることがあります。 このような場合は、カスタム ゲートウェイを使用できます。 カスタム ゲートウェイによって IoT Hub との間のトラフィックをブリッジすることにより、IoT Hub エンドポイントにプロトコルを適応できます。 IoT Hub に対するプロトコルの適用を可能にするには、 [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) をカスタム ゲートウェイとして使用します。
@@ -34,7 +29,7 @@ MQTT アダプターは、その他のプロトコルのプロトコル アダ�
 
 柔軟性を高めるために、Azure IoT プロトコル ゲートウェイと MQTT の実装はオープン ソース ソフトウェア プロジェクトで提供されます。 オープンソース プロジェクトを使用して、さまざまなプロトコルやプロトコル バージョンのサポートを追加したり、シナリオに合わせて実装をカスタマイズしたりできます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure IoT プロトコル ゲートウェイについて、およびそれを IoT ソリューションの一部として使用およびデプロイする方法については、以下をご覧ください。
 
 * [Azure IoT protocol gateway repository on GitHub (GitHub の Azure IoT プロトコル ゲートウェイ リポジトリ)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)

@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 425213f66a4b9960cf68a40c935fedff12f9f75d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1869dd689ef090978c3835e0a16fec82dfb5c05
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648688"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
     <th>オブジェクトの種類</th>
-    <th>[説明]</th>
+    <th>説明</th>
     <th>関連する PowerShell API</th>
   </tr>
   <tr>

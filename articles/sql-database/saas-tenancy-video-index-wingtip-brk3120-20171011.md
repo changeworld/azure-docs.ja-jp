@@ -5,16 +5,16 @@ services: sql-database
 ms.date: 05/14/2018
 ms.service: sql-database
 ms.reviewer: billgib
-ms.topic: article
+ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 4ea62855b61cb7439b19204564cbc2d7fcdbd0fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43fca4649344ab3c5adcd3e58ba0a7cea583de66
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211295"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644455"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 

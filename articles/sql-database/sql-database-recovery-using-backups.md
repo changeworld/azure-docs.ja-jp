@@ -6,16 +6,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f40bd7954bbf079c87f8312bff731b68d1acb7dc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 027a10e687673bdeedf2858b4c23ff459df61b70
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192766"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649110"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 SQL Database は、[自動データベース バックアップ](sql-database-automated-backups.md)および[長期保存でのバックアップ](sql-database-long-term-retention.md)を使用して、データベース復旧のためのこれらのオプションを提供します。 データベース バックアップは、次のものに復元できます。
@@ -130,7 +130,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 前に説明したように、データベースの復旧は、Azure Portal のほかに、Azure PowerShell または REST API を使用してプログラムで実行できます。 次の表では、使用できるコマンド セットについて説明します。
 
 ### <a name="powershell"></a>PowerShell
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |1 つまたは複数のデータベースを取得します。 |
 | [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | 復元する削除済みデータベースを取得します。 |
@@ -139,7 +139,7 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 |  | |
 
 ### <a name="rest-api"></a>REST API
-| API | [説明] |
+| API | 説明 |
 | --- | --- |
 | [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |データベースを復元します |
 | [Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx) |復元操作中にステータスを返します |

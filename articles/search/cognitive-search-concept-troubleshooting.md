@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 15fc879958bfd886210a90239e0247c60fe231f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786831"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640967"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 
@@ -99,7 +99,7 @@ https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-s
 
 ## <a name="tip-7-increase-indexing-throughput"></a>ヒント 7: インデックス作成のスループットを向上させる
 
-[並列インデックス作成](search-howto-reindex.md#parallel-indexing)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
+[並列インデックス作成](search-howto-large-index.md)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
 詳細については、「[大規模なデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)」を参照してください。
 
 ## <a name="see-also"></a>関連項目

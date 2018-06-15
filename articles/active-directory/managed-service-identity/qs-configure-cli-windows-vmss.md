@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: faf526082a9a38d5d98443ff2b74eac4eef1ca08
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a0e05543734ae0604149d18564ae1bc1eff1892b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157457"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714631"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Azure CLI を使用して、Azure 仮想マシン スケール セットの管理対象サービス ID (MSI) を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "34157457"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 管理対象サービス ID について不慣れな場合は、[概要](overview.md)に関するページをご覧ください。 **システム割り当て ID と[ユーザー割り当て ID の違いを確認してください](overview.md#how-does-it-work)**。
+- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
@@ -120,8 +120,7 @@ MSI VM 拡張機能を削除するには、[az vmss identity remove](/cli/azure/
 
 2. [az identity create](/cli/azure/identity#az-identity-create) を使用してユーザー割り当て ID を作成します。  `-g` パラメーターではユーザー割り当て ID を作成するリソース グループを指定し、`-n` パラメーターではその名前を指定します。 `<RESOURCE GROUP>` と `<USER ASSIGNED IDENTITY NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。
 
-    > [!IMPORTANT]
-    > ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さは 24 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳細については、[よく寄せられる質問と既知の問題](known-issues.md)に関する記事をご覧ください。
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
     ```azurecli-interactive
@@ -177,10 +176,10 @@ MSI VM 拡張機能を削除するには、[az vmss identity remove](/cli/azure/
    }
    ```
 
-2. [az vmss identity assign](/cli/azure/vmss/identity#az_vm_assign_identity) を使用して、ユーザー割り当て ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY ID>` は、前の手順で作成されたユーザー割り当て ID のリソース `id` プロパティになります。
+2. [az vmss identity assign](/cli/azure/vmss/identity#az_vm_assign_identity) を使用して、ユーザー割り当て ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY ID>` は、前の手順で作成されたユーザー割り当て ID のリソース `id` プロパティになります。
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Azure VMSS からユーザー割り当て ID を削除する
@@ -188,15 +187,15 @@ MSI VM 拡張機能を削除するには、[az vmss identity remove](/cli/azure/
 > [!NOTE]
 >  システム割り当て ID がない限り、仮想マシン スケール セットからすべてのユーザー割り当て ID を削除することは現在サポートされていません。 
 
-VMSS に複数のユーザー割り当て ID がある場合は、[az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove) を使用して、最後の ID 以外の ID をすべて削除できます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<MSI NAME>` はユーザー割り当て ID の名前プロパティで、`az vm show` を使用して VM の ID セクションで求めることができます。
+VMSS に複数のユーザー割り当て ID がある場合は、[az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove) を使用して、最後の ID 以外の ID をすべて削除できます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<MSI NAME>` はユーザー割り当て ID の名前プロパティで、`az vm show` を使用して VM の ID セクションで求めることができます。
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
 VMSS にシステム割り当て ID とユーザー割り当て ID の両方がある場合は、システム割り当て ID のみを使用するように切り替えることによって、すべてのユーザー割り当て ID を削除できます。 次のコマンドを使用します。 
 
 ```azurecli-interactive
-az vmss update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
 ```
 
 ## <a name="next-steps"></a>次の手順

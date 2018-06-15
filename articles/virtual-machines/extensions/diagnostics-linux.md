@@ -9,11 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: 430d8f78a4c00c37479bc083cd565e49ccd6cbae
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8ffa9823000efbb101be73397cd0025f9933cecd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652646"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -82,7 +83,7 @@ sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" porta
 sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
 # Build the protected settings (storage account SAS token)
-my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 9999-12-31T23:59Z --permissions wlacu --resource-types co --services bt -o tsv)
+my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
 # Finallly tell Azure to install and enable the extension
@@ -233,7 +234,7 @@ JsonBlob シンクに転送されたデータは、Azure ストレージ内の B
 要素 | 値
 ------- | -----
 StorageAccount | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。 [保護された設定](#protected-settings)で指定されている名前と同じにする必要があります。
-mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)での場合と同じです。 プライベート値が設定されている場合、パブリック値はこれに上書きされます。 [保護された設定](#protected-settings)に、パスワードなどの秘密を含むプロキシ設定を配置します。
+mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)での場合と同じです。 プライベート値が設定されている場合、パブリック値はこれにオーバーライドされます。 [保護された設定](#protected-settings)に、パスワードなどの秘密を含むプロキシ設定を配置します。
 
 残りの要素については、以降のセクションで詳しく説明します。
 

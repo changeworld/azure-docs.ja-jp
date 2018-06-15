@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C とは | Microsoft Docs
 description: Azure Active Directory B2C を使用してアプリケーションのサインイン エクスペリエンスの作成と管理を行う方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.component: B2C
+ms.openlocfilehash: 878d4da715308abf6dbe536ea0d1df2a68225179
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711316"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 

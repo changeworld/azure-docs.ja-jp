@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c63076f9e3ed2e9ec16507e62a37e966218ec4d6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c39f59c4648fb8eafb8db4cb8cd2bc73de02dca4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647114"
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>GEP 社のグローバルな事業展開と効率性向上を Azure が支援
 ![GEP ロゴ](./media/sql-database-implementation-gep/geplogo.png)

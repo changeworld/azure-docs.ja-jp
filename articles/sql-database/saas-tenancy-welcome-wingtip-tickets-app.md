@@ -7,14 +7,15 @@ author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: b4f91ab1e6debb39980eeedc58249b50b5ac85e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3c7d1d40af3a0b8f70302171eb13ac0a180b0bfe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644394"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS アプリケーション
 

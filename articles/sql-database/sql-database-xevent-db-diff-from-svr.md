@@ -7,14 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4a1a8a332628e79972e7c03dbc2ac839f244a002
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 446c1f3af3f00fb70a230dfec5f5c533b45a285f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650045"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -79,7 +80,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 拡張イベント機能をサポートする [カタログ ビュー](http://msdn.microsoft.com/library/ms174365.aspx)がいくつかあります。 カタログ ビューでは、現在のデータベースにおけるユーザー作成のイベント セッションの *メタデータまたは定義* がわかります。 ビューでは、アクティブなイベント セッションのインスタンスについてはわかりません。
 
-| カタログ ビューの名前<br/>カタログ ビュー | [説明] |
+| カタログ ビューの名前<br/>カタログ ビュー | 説明 |
 |:--- |:--- |
 | **sys.database_event_session_actions** |イベント セッションの各イベントに対する操作ごとに行を返します。 |
 | **sys.database_event_session_events** |イベント セッションのイベントごとに行を返します。 |
@@ -93,7 +94,7 @@ Microsoft SQL Server では、同様のカタログ ビュー名には *.databas
 
 Azure SQL Database には、拡張イベントをサポートする [動的管理ビュー (DMV)](http://msdn.microsoft.com/library/bb677293.aspx) があります。 DMV では *アクティブな* イベント セッションについて参照できます。
 
-| DMV の名前 | [説明] |
+| DMV の名前 | 説明 |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |イベント セッション アクションに関する情報を返します。 |
 | **sys.dm_xe_database_session_events** |セッション イベントに関する情報を返します。 |
@@ -169,7 +170,7 @@ Azure Storage コンテナーのために生成した SAS トークンには、�
 
 - 読み取り
 - 書き込み
-- 一覧表示
+- List
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 

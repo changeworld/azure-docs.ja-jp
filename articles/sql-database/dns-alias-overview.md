@@ -6,15 +6,16 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: DNS alias
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: da771f71566a912a3f172a1382bcd90ab0c3a0a2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646070"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 

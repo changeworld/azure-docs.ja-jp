@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 5ce83198e1d2afb713044879724df88ad2696548
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3d1a9045ed89bd3e5714762add7cb9568c46e44f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648243"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
