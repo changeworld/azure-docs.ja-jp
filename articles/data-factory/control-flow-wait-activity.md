@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 9887f735fab30c95241bd84f49f30140efc27873
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9eaa8f369c69468a9bd6f4c5403d6a11476e8595
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619016"
 ---
 # <a name="wait-activity-in-azure-data-factory"></a>Azure Data Factory の Wait アクティビティ
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | [説明] | 使用できる値 | 必須
+プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | `Wait` アクティビティの名前。 | String | [はい]
 型 | **Wait** に設定する必要があります。 | String | [はい]

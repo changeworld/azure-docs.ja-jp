@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: チュートリアル
   items:
-    - name: 1 - Azure-SSIS 統合ランタイムを作成する
+    - name: 1 - Azure-SSIS 統合ランタイムをプロビジョニングする
       items:
         - name: ユーザー インターフェイス (UI)
           href: tutorial-deploy-ssis-packages-azure.md

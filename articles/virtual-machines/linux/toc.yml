@@ -222,6 +222,8 @@
           href: scheduled-events.md
         - name: メタデータの監視
           href: instance-metadata-service.md
+        - name: REST による使用状況メトリックの取得
+          href: metrics-vm-usage-rest.md
     - name: イメージの使用
       items:
         - name: イメージを検索および使用する

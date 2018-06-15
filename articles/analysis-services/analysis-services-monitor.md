@@ -3,16 +3,17 @@ title: Azure Analysis Services でのサーバー メトリックの監視 | Mic
 description: Azure Portal で、Analysis Services のサーバー メトリックを監視する方法を説明します。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b07bd41ee3aa67924256d694c1f9dadd39b038cc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f7c4afc2b48d097c67d69ef0cee8a45a1fdeb557
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596194"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
@@ -35,7 +36,7 @@ Analysis Services は、サーバーのパフォーマンスと正常性を監�
 ## <a name="server-metrics"></a>サーバー メトリック
 この表を使用すると、お使いの監視シナリオに最適なメトリックを確認できます。 同じグラフには、同じ単位のメトリックのみを表示することができます。
 
-|メトリック|メトリックの表示名|単位|集計の種類|[説明]|
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|コマンド プールのジョブ キューの長さ|Count|平均|コマンド スレッド プールのキュー内のジョブの数。|
 |CurrentConnections|接続: 現在の接続|Count|平均|現在確立されているクライアント接続の数。|

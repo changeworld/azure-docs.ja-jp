@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Edge モジュールの構成 | Microsoft Docs
 description: Azure IoT Edge モジュールを構成する内容と、それらをどのように再利用できるかについて説明します。
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/23/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631685"
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
 
@@ -122,7 +122,7 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 ### <a name="source"></a>ソース
 ソースでは、メッセージがどこから送信されるのかを指定します。 次のいずれかの値を指定できます。
 
-| ソース | [説明] |
+| ソース | 説明 |
 | ------ | ----------- |
 | `/*` | 任意のデバイスまたはモジュールからの、デバイスからクラウドへのすべてのメッセージ |
 | `/messages/*` | 何らかの出力と共に、または出力なしでデバイスまたはモジュールによって送信された、デバイスからクラウドへの任意のメッセージ |
@@ -153,7 +153,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ### <a name="sink"></a>シンク
 シンクでは、メッセージの送信先が定義されます。 次のいずれかの値を指定できます。
 
-| シンク | [説明] |
+| シンク | 説明 |
 | ---- | ----------- |
 | `$upstream` | IoT Hub にメッセージを送信する |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | モジュール `{moduleId}` の入力 `{input}` にメッセージを送信する |

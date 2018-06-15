@@ -3,16 +3,17 @@ title: Azure Analysis Services でのデータベース ロールとユーザー
 description: Azure の Analysis Services サーバーでデータベース ロールとユーザーを管理する方法について説明します。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3c35fb1ee70544b8b01bbadaf72ee38145179b27
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a2338045c43f9eb240ce55fd1ec31a4db40fd4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598353"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -39,7 +40,7 @@ model データベース レベルでは、すべてのユーザーがロール�
   
 4.  次のアクセス許可のいずれかを選択します。  
   
-    |アクセス許可|[説明]|  
+    |アクセス許可|説明|  
     |----------------|-----------------|  
     |**なし**|メンバーは、モデル スキーマを変更できず、データのクエリもできません。|  
     |**読み取り**|メンバーは、(行フィルターに基づいて) データをクエリできますが、モデル スキーマを変更することはできません。|  
@@ -66,7 +67,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 2. **[Create Role(ロールの作成)]** で、ロールの名前と説明を入力します。
 
 3. アクセス許可を選択します。
-   |アクセス許可|[説明]|  
+   |アクセス許可|説明|  
    |----------------|-----------------|  
    |**フル コントロール (管理者)**|メンバーは、モデル スキーマの変更とプロセス、およびすべてのデータのクエリを実行できます。| 
    |**Process database (データベースのプロセス)**|メンバーは、プロセス操作および Process All (すべてプロセス) 操作を実行できます。 モデル スキーマを変更できず、データのクエリもできません。|  
@@ -114,7 +115,7 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell を使用してロールとユーザーを追加する方法
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
   
-|コマンドレット|[説明]|
+|コマンドレット|説明|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|データベース ロールにメンバーを追加します。| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|データベース ロールからメンバーを削除します。|   

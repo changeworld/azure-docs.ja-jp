@@ -5,11 +5,23 @@
 - name: ロール ベースのアクセス制御 (RBAC)
   href: overview.md
   items:
+    - name: クイック スタート
+      items:
+        - name: ユーザーのアクセス権の付与 - ポータル
+          href: quickstart-assign-role-user-portal.md
+    - name: チュートリアル
+      items:
+        - name: ユーザーのアクセス権の付与 - PowerShell
+          href: tutorial-role-assignments-user-powershell.md
+        - name: グループのアクセス権の付与 - PowerShell
+          href: tutorial-role-assignments-group-powershell.md
+        - name: カスタム ロールの作成 - PowerShell
+          href: tutorial-custom-role-powershell.md
+        - name: カスタム ロールの作成 - CLI
+          href: tutorial-custom-role-cli.md
     - name: ロールの割り当てを管理する
       items:
-        - name: User
-          href: role-assignments-users.md
-        - name: リソース
+        - name: ポータル
           href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
         - name: Azure CLI
           href: role-assignments-cli.md
@@ -17,11 +29,13 @@
           href: role-assignments-powershell.md
         - name: REST ()
           href: role-assignments-rest.md
+    - name: ロール定義について
+      href: role-definitions.md
     - name: 組み込みのロール
       href: built-in-roles.md
     - name: カスタム ロール
       href: custom-roles.md
-    - name: 内部ユーザーと外部ユーザーのカスタム ロールの割り当て
+    - name: 外部ユーザーに対するロールの割り当てを管理する
       href: role-assignments-external-users.md
     - name: アクティビティ ログ
       href: change-history-report.md

@@ -9,10 +9,10 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 064bda1b4201d30e32766b4d0e19e9950901152f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "30197484"
 ---
 > [!IMPORTANT] 

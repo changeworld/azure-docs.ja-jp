@@ -1,8 +1,8 @@
 ---
-title: "Azure Databricks とは | Microsoft Docs"
-description: "Azure Databricks の概要と、Databricks 上の Spark を Azure で利用する方法について説明します。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。"
+title: Azure Databricks とは | Microsoft Docs
+description: Azure Databricks の概要と、Databricks 上の Spark を Azure で利用する方法について説明します。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,14 +11,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/22/2018
+ms.date: 05/29/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 2c42f8a9dd67ec2debecffd7cb2cdb902ab203a2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c621962c8ff0dcdb5070a81c5732012cb0898394
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599740"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 

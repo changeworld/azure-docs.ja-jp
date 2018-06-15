@@ -1,12 +1,12 @@
 ---
-title: "リモート監視ソリューションのデバイス情報メタデータ | Microsoft Docs"
-description: "Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
-services: 
+title: リモート監視ソリューションのデバイス情報メタデータ | Microsoft Docs
+description: Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1b334769-103b-4eb0-a293-184f3d1ba9a3
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 5ada9413b1bb0923df96cfd93c3a0a875e80dd28
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 80f03a4cef1d79e819c59ca68a786776a5c4edb7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636098"
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視構成済みソリューションのデバイス情報メタデータ
 
@@ -32,7 +33,7 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 
 リモート監視構成済みソリューションでは、対象のデバイスからクラウドにデータを送信できるようにする [Azure IoT Hub][lnk-iot-hub] を使用します。 このソリューションでは、次の 3 つの異なる場所にデバイスに関する情報を格納します。
 
-| 場所 | 格納される情報 | 実装 |
+| リージョン | 格納される情報 | 実装 |
 | -------- | ------------------ | -------------- |
 | ID レジストリ | デバイス ID、認証キー、有効化の状態 | IoT Hub に組み込まれている |
 | デバイス ツイン | メタデータ: 報告されるプロパティ、必要なプロパティ、タグ | IoT Hub に組み込まれている |
@@ -109,7 +110,7 @@ IoT Hub では、リモート監視ソリューションに接続されている
 > [!NOTE]
 > デバイス情報メッセージは、標準的なデバイスからクラウドへのメッセージです。 このソリューションでは、ASA クエリを使用してデバイス情報メッセージとテレメトリ メッセージが区別されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 構成済みのソリューションをカスタマイズする方法を学習し終えたので、次のリンク先で IoT Suite の構成済みのソリューションのその他の機能のいくつかについて調べることができます。
 
@@ -129,6 +130,6 @@ IoT Hub では、リモート監視ソリューションに接続されている
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-dynamic-telemetry]: iot-suite-v1-dynamic-telemetry.md
 
-[lnk-predictive-overview]: iot-suite-predictive-overview.md
+[lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
 [lnk-faq]: iot-suite-v1-faq.md
-[lnk-security-groundup]: securing-iot-ground-up.md
+[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md

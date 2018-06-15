@@ -1,26 +1,21 @@
 ---
-title: Azure Backup とは | Microsoft Docs
+title: Azure Backup とは
 description: Azure Backup を使用して、Windows Server、Windows ワークステーション、System Center DPM サーバー、Azure 仮想マシンのデータとワークロードをバックアップおよび復元します。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: バックアップと復元, 復元サービス, バックアップ ソリューション
-ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;anuragm
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607101"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -122,7 +117,7 @@ Azure Backup では、完全な管理ディスク VM を復元するか、管理
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | Recovery Services コンテナー |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
-| ディスク ストレージ | |![[はい]][green] |![[はい]][green] | |
+| Disk Storage | |![[はい]][green] |![[はい]][green] | |
 | テープ ストレージ | |![[はい]][green] | | |
 | 圧縮 <br/>(Recovery Services コンテナー内) |![[はい]][green] |![はい][green] |![[はい]][green] | |
 | 増分バックアップ |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
@@ -230,7 +225,8 @@ Azure Backup は、オンプレミスのデータとクラウドのデータを�
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
-| 概念 | 詳細 | バックアップ | ディザスター リカバリー (DR) |
+| 概念 | 詳細 | Backup
+ | ディザスター リカバリー (DR) |
 | --- | --- | --- | --- |
 | 目標復旧時点 (RPO) |復旧を行う必要がある場合に許容されるデータ損失の量です。 |バックアップ ソリューションの許容されるRPO には幅があります。 仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 |障害復旧ソリューションでは RPO が低くなります。 DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
 | 目標復旧時間 (RTO) |復旧または復元の完了に要する時間です。 |RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。 たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 |障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。 必要な変更は少数です。 |

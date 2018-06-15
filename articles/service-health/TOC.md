@@ -11,6 +11,7 @@
 ### [ServiceNow での構成](service-health-alert-webhook-servicenow.md)
 ### [PagerDuty での構成](service-health-alert-webhook-pagerduty.md)
 ### [OpsGenie での構成](service-health-alert-webhook-opsgenie.md)
+### [REST を使用した正常性イベントの取得](service-health-rest.md)
 # リソース
 ## [よく寄せられる質問](resource-health-faq.md)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

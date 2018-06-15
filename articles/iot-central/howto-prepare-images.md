@@ -1,19 +1,19 @@
 ---
 title: イメージを Azure IoT Central アプリケーションにアップロードする | Microsoft Docs
 description: 開発者として、イメージを準備して Azure IoT Central アプリケーションにアップロードする方法を学習します。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a43f2dd780604235ada1d8e3ae8a20563042fbaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 7fd9c8ed5559b00bc755e3f04c768dceeb487562
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200233"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628023"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>イメージを準備して Azure IoT Central アプリケーションにアップロードする
 
@@ -56,7 +56,7 @@ ms.locfileid: "34200233"
 
 次の表は、使用できるイメージ サイズをまとめたものです。
 
-| 場所 | サイズ |
+| リージョン | サイズ |
 | -------- | ------ |
 | **アプリケーション マネージャー** | 268 x 160 ピクセル |
 | デバイス テンプレート | 64 x 64 ピクセル |

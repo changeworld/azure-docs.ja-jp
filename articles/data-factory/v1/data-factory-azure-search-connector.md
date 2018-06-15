@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa5ca52f399f74ac6b3eae5c6918442292f87955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e30cffa836beb2086e3bc4e94bf60be94136d3a0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620624"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +57,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 次の表は、Azure Search のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | 型 | type プロパティを **AzureSearch** に設定する必要があります。 | [はい] |
 | URL | Azure Search サービスの URL。 | [はい] |
@@ -66,7 +67,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、 [データセットの作成](data-factory-create-datasets.md) に関する記事をご覧ください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。 **typeProperties** セクションは、データセットの型ごとに異なります。 **AzureSearchIndex** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | 型 | type プロパティを **AzureSearchIndex** に設定する必要があります。| [はい] |
 | indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
@@ -77,7 +78,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 コピー アクティビティで、シンクの種類が **AzureSearchIndexSink** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。| マージ (既定値)<br/>アップロード| いいえ  |
 | WriteBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。 | 1 ～ 1,000。 既定値は 1,000 です。 | いいえ  |

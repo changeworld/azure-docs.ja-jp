@@ -1,24 +1,19 @@
 ---
 title: お使いの接続済みファクトリ ゲートウェイをデプロイする - Azure | Microsoft Docs
 description: Windows または Linux 上にゲートウェイをデプロイして、接続済みファクトリ ソリューション アクセラレータに接続できるようにする方法。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 829b2031458b78a1046e900dbf37028ac9eb4dc8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626906"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
@@ -170,6 +165,6 @@ OPC Proxy は、インストール中に接続文字列を保存します。 セ
 
 ## <a name="next-steps"></a>次の手順
 
-接続済みファクトリ ソリューション アクセラレータのアーキテクチャの詳細については、[接続済みファクトリ ソリューション アクセラレータのチュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)をご覧ください。
+接続済みファクトリ ソリューション アクセラレータのアーキテクチャの詳細については、[接続済みファクトリ ソリューション アクセラレータのチュートリアル](iot-accelerators-connected-factory-sample-walkthrough.md)をご覧ください。
 
 [OPC Publisher のリファレンス実装](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher)をご覧ください。

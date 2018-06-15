@@ -59,18 +59,16 @@
       href: create-account-cli-how-to.md
     - name: API へのアクセス - CLI
       href: access-api-cli-how-to.md
-    - name: ジョブの状態イベント - CLI
+    - name: ジョブの状態イベントの監視 - CLI
       href: job-state-events-cli-how-to.md
-    - name: コンテンツのアップロード - .NET
+    - name: 変換プリセットのカスタマイズ - .NET Core
+      href: customize-encoder-presets-how-to.md
+    - name: コンテンツをアップロードする
       items:
-        - name: HTTP から
+        - name: HTTP(s) から - .NET
           href: job-input-from-http-how-to.md
-        - name: ローカル ファイルから
+        - name: ローカル ファイルから - .NET
           href: job-input-from-local-file-how-to.md
-    - name: 変換プリセットのカスタマイズ
-      items:
-        - name: .NET Core の場合
-          href: customize-encoder-presets-how-to.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)

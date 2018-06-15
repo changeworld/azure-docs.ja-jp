@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: クイック スタート
   items:
-    - name: DNS ゾーンとレコードを作成する - ポータル
+    - name: 名前解決 - ポータル
       href: dns-getstarted-portal.md
     - name: DNS ゾーンとレコードを作成する - PowerShell
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: チュートリアル
   items:
-    - name: プライベート DNS ゾーンとレコードを作成する
-      href: private-dns-getstarted-powershell.md
-    - name: Azure DNS にドメインを委任する
+    - name: Azure DNS でドメインをホストする
       href: dns-delegate-domain-azure-dns.md
     - name: Web アプリのカスタム DNS レコードを作成する
       href: dns-web-sites-custom-domain.md
+    - name: プライベート DNS ゾーンとレコードを作成する
+      href: private-dns-getstarted-powershell.md
 - name: サンプル
   items:
     - name: Azure CLI

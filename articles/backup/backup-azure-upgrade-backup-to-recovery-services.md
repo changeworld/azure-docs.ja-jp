@@ -1,23 +1,19 @@
 ---
-title: Backup コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs
+title: Backup コンテナーを Recovery Services コンテナーにアップグレードする
 description: Azure Backup コンテナーを Recovery Services コンテナーにアップグレードするための手順とサポート情報です。
 services: backup
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-ms.assetid: 228fef19-2f6b-4067-acc3-fb6e501afb88
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 1/4/2018
-ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: sogup
+ms.openlocfilehash: 551bc2aa4ff80feb3f28b5698e25dfd1b03dc870
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607339"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -34,7 +30,8 @@ Backup コンテナーを Recovery Services コンテナーにアップグレー
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>アップグレード後のオートメーションおよびツールの変更
 
 コンテナーをアップグレードするためにインフラストラクチャーを準備するときに、既存のオートメーションまたはツールがアップグレード後も引き続き動作できるように、それらをアップグレードする必要があります。
-[Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
+
+  [Resource Manager デプロイ モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 
 ## <a name="before-you-upgrade"></a>アップグレードする前に
@@ -123,7 +120,7 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 2017 年 11 月 30 日以降、PowerShell を使用してバックアップ コンテナーを作成できなくなります。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
-ツールを Resource Manager デプロイメント モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイメント モデルで使用するように作成されています。 Resource Manager デプロイメント モデルの計画を立て、コンテナーの違いを考慮することが重要です。 
+ツールを Resource Manager デプロイ モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイ モデルで使用するように作成されています。 Resource Manager デプロイ モデルの計画を立て、コンテナーの違いを考慮することが重要です。 
 
 **アップグレード中のダウンタイムはどれくらいですか?**</br>
 アップグレードされるリソースの数によって異なります。 小規模なデプロイ (保護されたインスタンスが数十) では、アップグレード全体は 20 分未満で実行されます。 大規模なデプロイでは、最大 1 時間かかります。

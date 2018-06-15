@@ -10,13 +10,14 @@ ms.assetid: 45321f6a-179f-4ee4-b8aa-efa7745b8eb6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 03d8cc4440d7adcb947e7c150a565e51b6401e92
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625680"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。

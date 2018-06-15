@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 8cc6fa994c750f4718e6cc065819763d8be4f18c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d17af33a3cfa0720649c8c4c7cffd5c4b0a8f272
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618081"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Azure Data Factory を使用して Phoenix からデータをコピーする 
 
@@ -44,11 +45,11 @@ Phoenix のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Phoenix** に設定する必要があります | はい |
-| host | Phoenix サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160)  | はい |
-| port | Phoenix サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8765 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
+| 型 | type プロパティは **Phoenix** に設定する必要があります | [はい] |
+| host | Phoenix サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160)  | [はい] |
+| ポート | Phoenix サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8765 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
 | httpPath | Phoenix サーバーに対応する部分的な URL。 (つまり、/gateway/sandbox/phoenix/version)。 WindowsAzureHDInsightService を使う場合の既定値は `hbasephoenix` です。  | いいえ  |
-| authenticationType | Phoenix サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | はい |
+| authenticationType | Phoenix サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
 | username | Phoenix サーバーへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
@@ -111,8 +112,8 @@ Phoenix からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **PhoenixSource** に設定する必要があります。 | はい |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | はい |
+| 型 | コピー アクティビティのソースの type プロパティを **PhoenixSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 

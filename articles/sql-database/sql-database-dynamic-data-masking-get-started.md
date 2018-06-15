@@ -6,14 +6,15 @@ author: ronitr
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: 4d948786d70ffc1350825b04dbddc128cf89466e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e5ed226c0d2f849e59abcf3b46c9ec6fb7cc679a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645251"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL Database の動的データ マスク
 

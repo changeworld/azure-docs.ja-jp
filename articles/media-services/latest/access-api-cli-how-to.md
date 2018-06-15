@@ -12,11 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: a4a7c59e93b860245d67695de90fbae2becac3e9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639777"
 ---
 # <a name="access-azure-media-services-api-with-cli-20"></a>CLI 2.0 で Azure Media Services API にアクセスする
  
@@ -35,7 +36,7 @@ Azure Media Services API に接続するには、Azure AD サービス プリン
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Azure Portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
+[Azure portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -46,4 +47,8 @@ CLI をローカルにインストールして使用する場合、このトピ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ファイルをストリーミングする](stream-files-dotnet-quickstart.md)
+> [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+
+## <a name="see-also"></a>関連項目
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

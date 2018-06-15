@@ -6,14 +6,15 @@ manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645614"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
@@ -58,7 +59,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
     <th>パラメーター</th>
-    <th>[説明]</th>
+    <th>説明</th>
   </tr>
 
 <tr>
@@ -119,7 +120,7 @@ ms.lasthandoff: 04/06/2018
 <table style="width:100%">
   <tr>
   <th>パラメーター</th>
-  <th>[説明]</th>
+  <th>説明</th>
 </tr>
 
   <tr>
@@ -145,14 +146,16 @@ ms.lasthandoff: 04/06/2018
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
-[エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+
+  [エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
 
 **推定所要時間:** 10 分。
 
-1. [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
+1. 
+  [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
-4. [サービスのインストール] ビューで、 **[ジョブの資格情報]**をクリックします。
+4. [サービスのインストール] ビューで、 **[ジョブの資格情報]** をクリックします。
    
     ![サービスのインストール][1]
 5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。 この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。 ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。 プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
