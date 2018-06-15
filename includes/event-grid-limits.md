@@ -9,10 +9,11 @@ ms.date: 04/30/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc50a6a0597d299aeffdea32d368b3bc008d8f04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "33823427"
 ---
 | リソース | 制限 |
 | --- | --- |

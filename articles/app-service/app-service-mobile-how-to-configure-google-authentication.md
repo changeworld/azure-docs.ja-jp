@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 1a174913446c0a1d5e3e3b01123db8b40bfd172c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233821"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -28,22 +29,22 @@ ms.lasthandoff: 04/28/2018
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
-1. [Azure ポータル]にログオンし、目的のアプリケーションに移動します。 **URL** をコピーします。この URL は、後で Google アプリを構成するために使用します。
+1. [Azure Portal]にログオンし、目的のアプリケーションに移動します。 **URL** をコピーします。この URL は、後で Google アプリを構成するために使用します。
 2. [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。**[Create Project (プロジェクトの作成)]** をクリックして**プロジェクト名**を入力し、**[Create (作成)]** をクリックします。
 3. プロジェクトが作成されたら選択します。 プロジェクト ダッシュボードから、**[Go to APIs overview] (API の概要に移動)** をクリックします。
 4. **[Enable APIs and Services] (API とサービスの有効化)** を選択します。 **[Google+ API]** を検索し、それを選択します。 **[有効]** をクリックします。
-6. 左側のナビゲーションで、**[Credentials (資格情報)]** > **[OAuth consent screen (OAuth 同意画面)]** の順にクリックした後、自分の**電子メール アドレス**を選択し、**製品名**を入力して、**[Save (保存)]** をクリックします。
-7. **[Credentials (資格情報)]** タブで、**[Create credentials (資格情報の作成)]** > **[OAuth client ID (OAuth クライアント ID)]** の順にクリックします。 **[Configure consent screen] (同意の構成画面)** をクリックして、**製品名**を指定します。 **[保存]**
-8. [Create client ID] (クライアント ID の作成) 画面で、**[Web application] (Web アプリケーション)** を選択します。
-9. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]** をクリックします。
-10. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
+5. 左側のナビゲーションで、**[Credentials (資格情報)]** > **[OAuth consent screen (OAuth 同意画面)]** の順にクリックした後、自分の**電子メール アドレス**を選択し、**製品名**を入力して、**[Save (保存)]** をクリックします。
+6. **[Credentials (資格情報)]** タブで、**[Create credentials (資格情報の作成)]** > **[OAuth client ID (OAuth クライアント ID)]** の順にクリックします。
+7. [Create client ID] (クライアント ID の作成) 画面で、**[Web application] (Web アプリケーション)** を選択します。
+8. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]** をクリックします。
+9. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
     > [!IMPORTANT]
     > クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
-1. [Azure ポータル]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
+1. [Azure Portal]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
 2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
 3. **[Google]** にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]** をクリックします
    
@@ -69,5 +70,5 @@ ms.lasthandoff: 04/28/2018
 
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 

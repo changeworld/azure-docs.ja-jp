@@ -16,10 +16,10 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
 ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "34358083"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service on Azure Stack Update 1 のリリース ノート

@@ -16,10 +16,10 @@ ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
 ms.openlocfilehash: 7c052f30e564700b0a99b76342dc6c34ec5983b7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "33901280"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録

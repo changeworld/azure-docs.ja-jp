@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: be60e79d9e5a57cd93a4aa57efdbb3e4c034d064
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 07572e11a0856c05e173c6ccda2a7c89d75625ef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010899"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616279"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ HDFS から、サポートされている任意のシンク データ ストア�
 
 HDFS のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Hdfs** に設定する必要があります。 | [はい] |
 | url |HDFS への URL |[はい] |
@@ -114,7 +114,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 HDFS からデータをコピーするには、データセットの type プロパティを **FileShare** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
 | folderPath | フォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 例: folder/subfolder/ |[はい] |
@@ -161,7 +161,7 @@ HDFS からデータをコピーするには、データセットの type プロ
 
 HDFS からデータをコピーするは、コピー アクティビティのソースの種類を **HdfsSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **HdfsSource** に設定する必要があります。 |[はい] |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |

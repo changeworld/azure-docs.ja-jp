@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/23/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936190"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604218"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack ファイアウォールの統合
 Azure Stack は、ファイアウォール デバイスを使って保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃や侵入検出、コンテンツ検査などに効果がありますが、BLOB、テーブル、キューなどの Azure Storage サービスのスループットのボトルネックにもなります。
@@ -49,7 +49,7 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 
 通常、パブリックにルーティング可能な IP アドレスは、デプロイ時に、外部ネットワークからパブリック VIP プールに対して指定されます。 エッジのシナリオでは、セキュリティ上、他のどのネットワークに対しても、パブリックにルーティング可能な IP を使用することは推奨されません。 このシナリオでは、Azure などのパブリック クラウドでのエクスペリエンスのような、完全に自己管理型のクラウドを体験できます。  
 
-![Azure Stack のエッジ ファイアウォールの例](.\media\azure-stack-firewall\edge-firewall-scenario.png)
+![Azure Stack のエッジ ファイアウォールの例](.\media\azure-stack-firewall\firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>企業イントラネットまたは境界ネットワークのファイアウォール シナリオ
 企業イントラネットまたは境界デプロイでは、Azure Stack のデプロイ先が、マルチゾーン ファイアウォールか、またはエッジ ファイアウォールと内部の企業ネットワーク ファイアウォールとの間になります。 そのトラフィックは、セキュア ゾーン、境界ネットワーク ゾーン (DMZ)、セキュリティ保護なしゾーンに分散されます。

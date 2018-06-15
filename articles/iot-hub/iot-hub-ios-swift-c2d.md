@@ -1,30 +1,25 @@
 ---
 title: Azure IoT Hub (iOS) を使用した cloud-to-device メッセージ | Microsoft Docs
 description: Azure IoT SDK for iOS を使用して、cloud-to-device メッセージを Azure IoT Hub からデバイスへ送信する方法。
-services: iot-hub
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 23dbd1f359f947b8e87ab4115887120dfd55907a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62647620f6bbeadecfa778f91855ef1eee5240dd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634281"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 「[Send telemetry from a device to an IoT hub]」(デバイスから IoT ハブへのテレメトリの送信) の記事には、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 「[デバイスから IoT ハブへのテレメトリの送信]」(デバイスから IoT ハブへのテレメトリの送信) の記事には、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 この記事では、その方法について説明します。
 
@@ -36,7 +31,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 この記事の最後で、2 つの Swift iOS プロジェクトを実行します。
 
-* **sample-device**: [Send telemetry from a device to an IoT hub] (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
+* **sample-device**: [デバイスから IoT ハブへのテレメトリの送信] (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 * **sample-service**: IoT Hub を介してシミュレート対象デバイス アプリに cloud-to-device メッセージを送信し、その配信確認を受け取ります。
 
 > [!NOTE]
@@ -54,7 +49,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 ## <a name="simulate-an-iot-device"></a>IoT デバイスのシミュレート
 ここでは、Swift アプリケーションを実行して IoT ハブから cloud-to-device メッセージを受信する iOS デバイスをシミュレートします。 
 
-これは、「[Send telemetry from a device to an IoT hub]」(デバイスから IoT ハブへのテレメトリの送信) の記事で作成したサンプルのサンプル デバイスです。 既に実行中の場合、このセクションはスキップしてかまいません。
+これは、「[デバイスから IoT ハブへのテレメトリの送信]」(デバイスから IoT ハブへのテレメトリの送信) の記事で作成したサンプルのサンプル デバイスです。 既に実行中の場合、このセクションはスキップしてかまいません。
 
 ### <a name="install-cocoapods"></a>CocoaPods のインストール
 
@@ -166,7 +161,7 @@ pod install
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ]に関するドキュメントをご覧ください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ]に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
@@ -176,7 +171,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [img-message-recieved]: media/iot-hub-python-python-c2d/message-recieved.png
 
 <!-- Links -->
-[Send telemetry from a device to an IoT hub]: quickstart-send-telemetry-ios.md
+[デバイスから IoT ハブへのテレメトリの送信]: quickstart-send-telemetry-ios.md
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md

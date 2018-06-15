@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304360"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604711"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 証明書署名要求の生成
 

@@ -1,23 +1,25 @@
 ---
-title: Azure Machine Learning ワークベンチを使用した [Split Column by Example] \(例による列の分割) 変換
-description: '[Split Column by Example] \(例による列の分割) 変換の参照ドキュメント'
+title: Azure Machine Learning ワークベンチを使用した [例による列の分割] 変換
+description: '[例による列の分割]  変換の参照ドキュメント'
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cc53fc52590bc9991dcfd4730d9e4cb03e05efd5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831484"
 ---
-# <a name="split-column-by-example-transformation"></a>[Split Column by Example] \(例による列の分割) 変換
+# <a name="split-column-by-example-transformation"></a>[例による列の分割]  変換
 この変換は、ユーザーが入力することなく、予測して、意味のある境界上で列のコンテンツを分割します。 分割アルゴリズムが、列のコンテンツを分析した後で境界を選択します。 これらの境界は以下の項目によって定義できます
 * 固定の区切り記号、
 * 特定のコンテキストで現れる複数の不定の区切り記号、
@@ -41,7 +43,8 @@ ms.lasthandoff: 04/19/2018
 
 **[Keep Delimiter Columns] \(区切り記号の列を保持)** を選択した場合、最終結果に区切り記号が含まれます。 既定では、区切り記号は除外されます。
 
-**[区切り記号]** を指定した場合、自動区切り記号選択ロジックを上書きします。 行ごとに 1 つずつ、複数の区切り記号を **[区切り記号]** として指定できます。 列を分割するための区切り文字としてこれらのすべての文字が使用されます。
+
+  **[区切り記号]** を指定した場合、自動区切り記号選択ロジックをオーバーライドします。 行ごとに 1 つずつ、複数の区切り記号を **[区切り記号]** として指定できます。 列を分割するための区切り文字としてこれらのすべての文字が使用されます。
 
 決定された境界上で値を分割すると、他の大多数とは異なる数の列が生成されることがあります。 このような場合、列を入力する順序を決定するために **[Fill Direction] \(入力方向)** が使用されます。
 

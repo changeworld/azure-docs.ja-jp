@@ -1,34 +1,30 @@
 ---
 title: Azure IoT Hub (.NET) を使用したクラウドからデバイスへのメッセージ | Microsoft Docs
 description: Azure IoT SDK for .NET を使用して、クラウドからデバイスへのメッセージを Azure IoT Hub からデバイスへ送信する方法。 クラウドからデバイスへのメッセージを受信するためにデバイス アプリを変更し、クラウドからデバイスへのメッセージを送信するためにバックエンド アプリを変更します。
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: a31c05ed-6ec0-40f3-99ab-8fdd28b1a89a
+manager: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e4bec631550d6ca3dc2c702b3b3f56bd29c59f03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631889"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [Azure IoT Hub for .NET の使用]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [IoT Hub の概要]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[Azure IoT Hub for .NET の使用]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
+このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 * クラウドからデバイスへのメッセージをデバイスで受信する。
@@ -38,7 +34,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
 
-* **SimulatedDevice**。「[Azure IoT Hub for .NET の使用]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
+* **SimulatedDevice**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **SendCloudToDevice**。クラウドからデバイスへのメッセージを IoT Hub を介してデバイス アプリに送信し、その配信確認を受け取ります。
 
 > [!NOTE]
@@ -52,7 +48,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 ## <a name="receive-messages-in-the-device-app"></a>デバイス アプリでメッセージを受信する
-このセクションでは、[Azure IoT Hub for .NET の使用]に関するページで作成したデバイス アプリを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+このセクションでは、[IoT Hub の概要]に関するページで作成したデバイス アプリを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
 1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **Program** クラスに追加します。
    
@@ -100,12 +96,12 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     この操作によって、**[NuGet パッケージの管理]** ウィンドウが開きます。
 3. **Microsoft.Azure.Devices** を検索し、**[インストール]** をクリックして使用条件に同意します。 
    
-    これによりパッケージのダウンロードとインストールが実行され、[Azure IoT - サービス SDK NuGet パッケージ]への参照が追加されます。
+    これによりパッケージのダウンロードとインストールが実行され、[Azure IoT サービス SDK NuGet パッケージ]への参照が追加されます。
 
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を「[Azure IoT Hub for .NET の使用]」で取得した IoT hub の接続文字列に置き換えます。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を「[IoT Hub の概要]」で取得した IoT hub の接続文字列に置き換えます。
    
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
@@ -117,7 +113,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
             await serviceClient.SendAsync("myFirstDevice", commandMessage);
         }
    
-    このメソッドは、クラウドからデバイスへの新しいメッセージを ID `myFirstDevice`を持つデバイスに送信します。 [Azure IoT Hub for .NET の使用]に関するページで使用したパラメーターに変更を加えた場合にのみ、このパラメーターを変更します。
+    このメソッドは、クラウドからデバイスへの新しいメッセージを ID `myFirstDevice`を持つデバイスに送信します。 [IoT Hub の概要]に関するページで使用したパラメーターに変更を加えた場合にのみ、このパラメーターを変更します。
 7. 最後に、**Main** メソッドに次の行を追加します。
    
         Console.WriteLine("Send Cloud-to-Device message\n");
@@ -187,13 +183,13 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 
 <!-- Links -->
 
-[Azure IoT - サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[Azure IoT サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[Azure IoT Hub for .NET の使用]: iot-hub-csharp-csharp-getstarted.md
+[IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure IoT リモート監視ソリューション アクセラレータ]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT device SDK]: iot-hub-devguide-sdks.md

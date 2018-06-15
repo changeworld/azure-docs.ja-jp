@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub の IP 接続フィルター | Microsoft Docs
 description: Azure IoT Hub への特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。 個別の IP アドレスまたは一定の範囲の IP アドレスからの接続をブロックできます。
-services: iot-hub
-documentationcenter: ''
 author: BeatriceOltean
-manager: timlt
-editor: ''
-ms.assetid: f833eac3-5b5f-46a7-a47b-f4f6fc927f3f
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: boltean
-ms.openlocfilehash: 0229b8b16de1fa04d953c90895b29e4fbad60ec3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fa44fd21eadb910ce90523b46332505c7303751e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635969"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -28,7 +23,7 @@ ms.lasthandoff: 04/28/2018
 
 特定の IP アドレスの IoT Hub エンドポイントをブロックすると有用な特定のユース ケースには、次の 2 つがあります。
 
-- IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure Express Route] と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
+- IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure ExpressRoute] と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
 - IoT Hub の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
@@ -103,7 +98,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 <!-- Links -->
 
 [IoT Hub developer guide]: iot-hub-devguide.md
-[Azure Express Route]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
+[Azure ExpressRoute]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md
