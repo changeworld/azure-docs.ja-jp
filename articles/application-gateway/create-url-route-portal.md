@@ -155,7 +155,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://http://40.121.222.19 など。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://40.121.222.19 など。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-url-route-portal/application-gateway-iistest.png)
 
