@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bcf266813476c682d47bfd483db77f5d8b73837a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7cc86f56f7f68c70d66407bd44e6368f31f202d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593787"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 このトピックでは、パスワード ハッシュ同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
@@ -251,7 +253,7 @@ Azure AD との接続がありますか。
  
 3. コネクタを選択し、**[プロパティ]** をクリックします。 
  
-4. **[Active Directory フォレストに接続]**を選択します。  
+4. **[Active Directory フォレストに接続]** を選択します。  
     
     ![Active Directory コネクタで使用されるアカウント](./media/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization/connectoraccount.png)  
     ユーザー名と、アカウントがあるドメインをメモしておきます。
@@ -285,11 +287,11 @@ Azure AD との接続がありますか。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
 
-    b. **[コネクタ]**をクリックします。
+    b. **[コネクタ]** をクリックします。
 
     c. ユーザーが存在する **Active Directory コネクタ**を選択します。
 
-    d. **[Search Connector Space (コネクタ スペースの検索)]**を選択します。
+    d. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
 
     e. **[スコープ]** ボックスで、**[DN or Anchor]\(DN またはアンカー\)** を選択し、トラブルシューティングを行うユーザーの完全な DN を入力します。
 
@@ -317,17 +319,17 @@ Azure AD との接続がありますか。
 
     ![メタバース情報](./media/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization/mvconnectors.png)  
 
-    k. Azure AD を表す行を選択し、**[プロパティ]**、**[系列]** タブの順にクリックします。コネクタ スペース オブジェクトでは、**[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]**という名前の同期規則です。  
+    k. Azure AD を表す行を選択し、**[プロパティ]**、**[系列]** タブの順にクリックします。コネクタ スペース オブジェクトでは、**[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]** という名前の同期規則です。  
 
     ![[コネクタ スペース オブジェクトのプロパティ] ダイアログ ボックス](./media/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>パスワード同期ログ
 状態列には次の値が入ります。
 
-| 状態 | [説明] |
+| 状態 | 説明 |
 | --- | --- |
 | Success |パスワードが正常に同期されました。 |
-| FilteredByTarget |パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]**に設定されています。 パスワードは同期されていません。 |
+| FilteredByTarget |パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]** に設定されています。 パスワードは同期されていません。 |
 | NoTargetConnection |メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません。 |
 | SourceConnectorNotPresent |オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
 | TargetNotExportedToDirectory |Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |

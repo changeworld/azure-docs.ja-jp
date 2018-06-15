@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs"
-description: "Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。"
+title: 'Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs'
+description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bb6a0c16322884afba3d306c491c3cd592fc8595
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593193"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -39,9 +41,9 @@ ms.lasthandoff: 01/18/2018
 * [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
 * Target (ターゲット): ターゲット オブジェクト
 
-## <a name="scope"></a>Scope (スコープ)
+## <a name="scope"></a>スコープ
 スコープ モジュールはオブジェクトを評価し、スコープ内にあり、処理に含める必要のある規則を決定します。 オブジェクトの属性値に応じて、各種同期規則がスコープ内にあるかどうか評価されます。 たとえば、Exchange のメールボックスを持たない無効なユーザーには、メールボックスを持つ有効なユーザーとは異なる規則が適用されます。  
-![Scope (スコープ)](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
+![スコープ](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
 
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
@@ -50,7 +52,7 @@ ms.lasthandoff: 01/18/2018
 
 スコープ モジュールでは、次の演算がサポートされています。
 
-| 操作 | [説明] |
+| 操作 | 説明 |
 | --- | --- |
 | EQUAL、NOTEQUAL |値が属性内の値と等しいかどうかを評価する文字列の比較。 複数値の属性については、ISIN と ISNOTIN を参照してください。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |値が属性内の値未満であるかどうかを評価する文字列の比較。 |
@@ -74,7 +76,7 @@ ms.lasthandoff: 01/18/2018
 ![Join definition](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join2.png)  
 この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
 
-すべての結合規則が評価されても一致するものが 1 つでない場合は、**[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]**に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
+すべての結合規則が評価されても一致するものが 1 つでない場合は、**[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
 ![Provision or join](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/join3.png)  
 
 オブジェクトには、スコープ内の結合規則を持つ同期規則が 1 つだけ必要です。 結合が定義されている複数の同期規則がある場合、エラーが発生します。 優先順位は、結合の競合の解決には使用されません。 同じ受信/送信方向で属性をフローさせるためには、オブジェクトにスコープ内の結合規則が必要です。 同じオブジェクトに送受信双方向で属性をフローさせる必要がある場合は、結合が設定された受信と送信両方の同期規則が必要です。

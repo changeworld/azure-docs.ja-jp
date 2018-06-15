@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services の概要 | Microsoft Docs"
-description: "Azure Active Directory Domain Services の概要"
+title: Azure Active Directory Domain Services の概要 | Microsoft Docs
+description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 2c00d324adfc1b71d436cb017214af98ff3002cf
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 5918791fdbb1fe7bcfe20bb44077f77d938b39b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587744"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
 ## <a name="overview"></a>概要

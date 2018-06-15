@@ -1,24 +1,26 @@
 ---
-title: "Azure Cloud Solution Provider 用 Azure Active Directory Domain Services | Microsoft Docs"
-description: "Azure Cloud Solution Provider 用 Azure Active Directory Domain Services。"
+title: Azure Cloud Solution Provider 用 Azure Active Directory Domain Services | Microsoft Docs
+description: Azure Cloud Solution Provider 用 Azure Active Directory Domain Services。
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 313c4853b0f585921739779bb764c50036c9ac8a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f8a6e73420f1b53b8c253842001e8227e48e7d4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589527"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services
 この記事では、Azure CSP サブスクリプションで Azure AD Domain Services を使用する方法について説明します。
@@ -84,7 +86,7 @@ Azure CSP サブスクリプションで管理対象ドメインを管理する�
 * **継続的な管理用に作成されたユーザー アカウントを "AAD DC Administrators" グループに追加する必要がある:** "AAD DC Administrators" グループには、管理対象ドメインで特定の委任された管理タスクを実行する権限があります。 これらのタスクには、DNS の構成、組織単位の作成、グループ ポリシーの管理などがあります。CSP パートナーが管理対象ドメインでこのようなタスクを実行するには、顧客の Azure AD ディレクトリ内にユーザー アカウントを作成する必要があります。 このアカウントの資格情報は、CSP パートナーの管理エージェントと共有する必要があります。 また、このユーザー アカウントを使用して、管理対象ドメインで構成タスクを実行できるようにするには、このユーザーアカウントを "AAD DC Administrators" グループに追加する必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure CSP プログラムに登録](https://partnercenter.microsoft.com/partner/programs)し、Azure CSP を通じてビジネスを創出する
 * [Azure CSP で利用できる Azure サービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)の一覧を確認する
 * [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)

@@ -3,23 +3,24 @@ title: Azure Active Directory アプリケーション プロキシのワイル�
 description: Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
-ms.author: markvi
+ms.date: 05/21/2018
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: bf50c63b351c711b2b6fc5091109289635036513
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589510"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション 
 
@@ -167,7 +168,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 ![AppId](./media/active-directory-application-proxy-wildcard\05.png)
 
-| 色 | [説明] |
+| 色 | 説明 |
 | ---   | ---         |
 | 青  | 明示的に発行されており、Azure Portal に表示されるアプリケーション。 |
 | グレー  | 親アプリケーション経由でアクセスできるアプリケーション。 |

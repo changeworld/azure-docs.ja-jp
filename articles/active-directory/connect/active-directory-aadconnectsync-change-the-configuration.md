@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595106"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -49,7 +51,7 @@ ms.lasthandoff: 03/17/2018
 ![スケジューラを無効にする](./media/active-directory-aadconnectsync-change-the-configuration/schedulerdisable.png)  
 
 ### <a name="create-the-rule"></a>規則を作成する
-1. **Add new rule (新しい規則の追加)**をクリックします。
+1. **Add new rule (新しい規則の追加)** をクリックします。
 2. **[説明]** ページで、次のように入力します。  
    ![Inbound rule filtering](./media/active-directory-aadconnectsync-change-the-configuration/description2.png)  
    * **名前**: 規則にわかりやすい名前を付けます。
@@ -89,8 +91,8 @@ ms.lasthandoff: 03/17/2018
 **1 つのオブジェクトに対するプレビューと完全同期**  
 
    1. [Actions (操作)] の **[コネクタ]** を選択します。 前の手順で変更を加えたコネクタ (この場合は Active Directory Domain Services) を特定して選択します。
-   2. **[Search Connector Space (コネクタ スペースの検索)]**を選択します。 
-   3. **スコープ**を使用して、変更のテストに使用するオブジェクトを検索します。 オブジェクトを選択し、 **[プレビュー]**をクリックします。 
+   2. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。 
+   3. **スコープ**を使用して、変更のテストに使用するオブジェクトを検索します。 オブジェクトを選択し、 **[プレビュー]** をクリックします。 
    4. 新しい画面で、**[コミット プレビュー]** を選択します。  
    ![Commit preview](./media/active-directory-aadconnectsync-change-the-configuration/commitpreview.png)  
    これで、変更はメタバースにコミットされました。
@@ -100,7 +102,7 @@ ms.lasthandoff: 03/17/2018
 1. 値が要求されていることと規則が適用されたことを確認するために、いくつかのサンプル オブジェクトを選択します。 
 2. 上部の **[Metaverse Search (メタバース検索)]** を選択します。 関連するオブジェクトを検索するために必要なフィルターを追加します。 
 3. 検索結果からオブジェクトを開きます。 属性値を確認し、**[同期規則]** 列で、規則が適切に適用されていることを確認します。  
-![メタバース検索](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)  
+![Metaverse search](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>スケジューラを有効にする
 すべてが想定どおりになったら、もう一度スケジューラを有効にすることができます。 PowerShell から、 `Set-ADSyncScheduler -SyncCycleEnabled $true`を実行します。
@@ -192,7 +194,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 - Azure AD コネクタで、**User** オブジェクト タイプのスキーマが拡張され、UserType 属性 (文字列型、単一値) が追加されました。
 - メタバースで、**Person** オブジェクト タイプのスキーマが拡張され、UserType 属性 (文字列型、単一値) が追加されました。
 
-既定では、UserType 属性が同期の対象として有効になっていません。これは、対応する UserType 属性がオンプレミス Active Directory に存在しないためです。 同期を手動で有効にする必要があります。 この操作の前に、Azure AD によって適用されている次の動作に注意する必要があります。
+既定では、UserType 属性の同期が有効になっていません。これは、対応する UserType 属性がオンプレミスの Active Directory に存在しないためです。 同期を手動で有効にする必要があります。 この操作の前に、Azure AD によって適用されている次の動作に注意する必要があります。
 
 - Azure AD が受け入れる UserType 属性の値は **Member** と **Guest** の 2 つのみです。
 - Azure AD Connect で同期に対して UserType 属性が有効になっていない場合、ディレクトリの同期によって作成された Azure AD ユーザーの UserType 属性は **Member** に設定されます。
@@ -258,10 +260,10 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | 値 | 詳細 |
+    | Attribute | 値 | 詳細 |
     | --- | --- | --- |
-    | Name | *名前を入力します* | 例: *In from AD – User UserType* |
-    | [説明] | *説明を入力します* |  |
+    | 名前 | *名前を入力します* | 例: *In from AD – User UserType* |
+    | 説明 | *説明を入力します* |  |
     | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
     | メタバース オブジェクトの種類 | **Person** |  |
@@ -270,7 +272,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | 属性 | 演算子 | 値 |
+    | Attribute | 演算子 | 値 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | ユーザー\_ |
 
@@ -280,7 +282,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | extensionAttribute1 | オフ | プライマリの |
+    | 直接 | UserType | extensionAttribute1 | オフ | アップデート |
 
     他の例として、他のプロパティから UserType 属性の値を派生させる場合があります。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が *@partners.fabrikam123.org* である場合、すべてのユーザーをゲストとして同期する必要があるとします。次のように式を実装することができます。
 
@@ -300,10 +302,10 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックします。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | 値 | 詳細 |
+    | Attribute | 値 | 詳細 |
     | ----- | ------ | --- |
-    | Name | *名前を入力します* | 例: *Out to AAD – User UserType* |
-    | [説明] | *説明を入力します* ||
+    | 名前 | *名前を入力します* | 例: *Out to AAD – User UserType* |
+    | 説明 | *説明を入力します* ||
     | 接続先システム | "*AAD コネクタを選択します*" ||
     | 接続先システム オブジェクトの種類 | **User** ||
     | メタバース オブジェクトの種類 | **Person** ||
@@ -312,7 +314,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | 属性 | 演算子 | 値 |
+    | Attribute | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -323,7 +325,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | UserType | オフ | プライマリの |
+    | 直接 | UserType | UserType | オフ | アップデート |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 

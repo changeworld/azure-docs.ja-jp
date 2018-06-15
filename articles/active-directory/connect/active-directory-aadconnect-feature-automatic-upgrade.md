@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: 自動アップグレード | Microsoft Docs"
-description: "このトピックでは、Azure AD Connect Sync の組み込みの自動アップグレード機能について説明します。"
+title: 'Azure AD Connect: 自動アップグレード | Microsoft Docs'
+description: このトピックでは、Azure AD Connect Sync の組み込みの自動アップグレード機能について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: adfce1195a6a322e0225ee09a45148001d0167c8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592131"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
@@ -64,7 +66,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 
 結果コードには、状態についての概要を含むプレフィックスが付加されています。
 
-| 結果コードのプレフィックス | [説明] |
+| 結果コードのプレフィックス | 説明 |
 | --- | --- |
 | 成功 |正常にアップグレードしました。 |
 | UpgradeAborted |一時的な状況により、アップグレードが停止しました。 後でもう一度試すと、成功することが予想されます。 |
@@ -72,7 +74,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 
 特によく表示されるメッセージの一覧を次に示します。 これですべてではありませんが、結果メッセージを見ると、何が問題となっているかが把握しやすくなります。
 
-| 結果メッセージ | [説明] |
+| 結果メッセージ | 説明 |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |レジストリに書き込むことができません。 |

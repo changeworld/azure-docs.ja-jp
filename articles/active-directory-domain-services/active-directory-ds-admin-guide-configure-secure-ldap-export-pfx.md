@@ -1,24 +1,26 @@
 ---
-title: "Azure AD ドメイン サービスでのセキュリティで保護された LDAP (LDAPS) の構成 | Microsoft Docs"
-description: "Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成"
+title: Azure AD ドメイン サービスでのセキュリティで保護された LDAP (LDAPS) の構成 | Microsoft Docs
+description: Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: maheshu
-ms.openlocfilehash: 4d495fcef89a68ca544100dcea8e6c55d4709ae0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 178302bd28e83da73590faf2be98fe5d2853ce56
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586887"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services の管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 
@@ -50,7 +52,7 @@ ms.lasthandoff: 12/11/2017
 7. **[スナップインの追加と削除]** ダイアログで **[OK]** をクリックし、証明書スナップインを MMC に追加します。
 
     ![MMC に証明書スナップインを追加する - 完了](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin-done.png)
-8. MMC のウィンドウで **[コンソール ルート]**をクリックして展開します。 証明書スナップインが読み込まれます。 **[証明書 (ローカル コンピューター)]** をクリックして展開します。 **[個人]** ノード、**[証明書]** ノードの順にクリックします。
+8. MMC のウィンドウで **[コンソール ルート]** をクリックして展開します。 証明書スナップインが読み込まれます。 **[証明書 (ローカル コンピューター)]** をクリックして展開します。 **[個人]** ノード、**[証明書]** ノードの順にクリックします。
 
     ![個人証明書ストアを開く](./media/active-directory-domain-services-admin-guide/secure-ldap-open-personal-store.png)
 9. 前の手順で作成した自己署名証明書が表示されます。 証明書のプロパティを確認して、証明書を作成したときに PowerShell ウィンドウで報告されたものと拇印が一致することを確認します。

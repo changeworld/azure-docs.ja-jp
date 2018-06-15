@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect sync: 誤って削除されないように保護する | Microsoft Docs"
-description: "このトピックでは、Azure AD Connect の \"誤って削除されないように保護する\" 機能について説明します。"
+title: 'Azure AD Connect sync: 誤って削除されないように保護する | Microsoft Docs'
+description: このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 57ce7b2fcece751b1386ef1d57762ad8d1c27c62
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ecec08dcfa251b94ccfd09e87a8499dc03164ea9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595072"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -48,10 +50,10 @@ Azure AD にエクスポートするようにステージングされた削除�
 これを予想していなかった場合は、調査し、修正のアクションを実行します。 削除されようとしているオブジェクトを表示するには、次の操作を行います。
 
 1. [スタート] メニューから **[同期サービス]** を起動します。
-2. **[コネクタ]**に進みます。
+2. **[コネクタ]** に進みます。
 3. 種類が「 **Azure Active Directory**」のコネクタを選択します。
 4. 右にある **[アクション]** で、**[コネクタの検索領域]** を選択します。
-5. ポップアップ ウィンドウの **[Scope (範囲)]** で、**[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]**をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
+5. ポップアップ ウィンドウの **[Scope (範囲)]** で、**[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
 
 ![[コネクタの検索領域]](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/searchcs.png)
 

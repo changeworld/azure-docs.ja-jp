@@ -1,24 +1,19 @@
 ---
-title: "System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする | Microsoft Docs"
-description: "System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する"
+title: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
+description: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する
 services: backup
-documentationcenter: 
 author: MaanasSaran
 manager: NKolli1
-editor: 
-ms.assetid: 13f32256-888e-416e-a78b-40c2a26a5939
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
-ms.author: masaran;jimpark;delhan;trinadhk;markgal
-ms.openlocfilehash: 9dc0105034e0d354a6cbbd7ba70634bdff83c1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 4edec499d12261add398e5a9297f039ecfb252e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605102"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。  
@@ -50,7 +45,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 1. DPM 管理者コンソールで **[保護]** をクリックし、次にツール リボンの **[新規]** をクリックして **[新しい保護グループの作成]** ウィザードを開きます。
 2. ウィザードの **[ようこそ]** 画面で **[次へ]** をクリックします。
 3. **[保護グループの種類の選択]** 画面で、**[サーバー]** を選択し、**[次へ]** をクリックします。
-4. 保護する Exchange サーバー データベースを選択し、 **[次へ]**をクリックします。
+4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
    > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://technet.microsoft.com/library/dn751029.aspx)」を確認してください。
@@ -84,13 +79,13 @@ Exchange サーバーに DPM 保護エージェントをインストールする
    >
    >
 10. **[短期的なバックアップ]** の目標を構成し、**[次へ]** をクリックします。
-11. 使用可能なディスク領域を確認し、 **[次へ]**をクリックします。
-12. DPM サーバーで初期レプリケーションを作成する時刻を選択し、 **[次へ]**をクリックします。
-13. 整合性チェック オプションを選択し、 **[次へ]**をクリックします。
-14. Azure にバックアップするデータベースを選択し、 **[次へ]**をクリックします。 次に例を示します。
+11. 使用可能なディスク領域を確認し、 **[次へ]** をクリックします。
+12. DPM サーバーで初期レプリケーションを作成する時刻を選択し、 **[次へ]** をクリックします。
+13. 整合性チェック オプションを選択し、 **[次へ]** をクリックします。
+14. Azure にバックアップするデータベースを選択し、 **[次へ]** をクリックします。 例: 
 
     ![オンライン保護データの指定](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup** のスケジュールを定義し、**[次へ]** をクリックします。 次に例を示します。
+15. **Azure Backup** のスケジュールを定義し、**[次へ]** をクリックします。 例: 
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -99,13 +94,13 @@ Exchange サーバーに DPM 保護エージェントをインストールする
     >
     >
 16. **Azure Backup** のリテンション期間ポリシーを構成し、**[次へ]** をクリックします。
-17. オンライン レプリケーション オプションを選択し、 **[次へ]**をクリックします。
+17. オンライン レプリケーション オプションを選択し、 **[次へ]** をクリックします。
 
     データベースの規模が大きい場合は、ネットワーク経由で最初のバックアップを作成するのに時間がかかる可能性があります。 この問題を回避するには、オフライン バックアップを作成します。  
 
     ![オンライン保持ポリシーの指定](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. 設定を確認し、 **[グループの作成]**をクリックします。
-19. **[閉じる]**をクリックします。
+18. 設定を確認し、 **[グループの作成]** をクリックします。
+19. **[閉じる]** をクリックします。
 
 ## <a name="recover-the-exchange-database"></a>Exchange データベースを回復する
 1. Exchange データベースを回復するには、DPM 管理者コンソールで **[回復]** をクリックします。
@@ -123,5 +118,5 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Backup FAQ](backup-azure-backup-faq.md)

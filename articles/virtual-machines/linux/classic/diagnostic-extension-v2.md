@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "32193048"
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
@@ -44,11 +44,11 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 * [System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)で指定されているすべてのシステム データ。
 * ユーザーが指定したログ ファイル。
 
-この拡張機能は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方で機能します。
+この拡張機能は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方で機能します。
 
 ### <a name="current-version-of-the-extension-and-deprecation-of-old-versions"></a>現行バージョンの拡張機能と以前のバージョンの廃止予定
 
-この拡張機能の最新バージョンは **2.3** です。**以前のバージョン (2.0、2.1、2.2) は今年 (2017 年) の終わりまでに廃止され、公開が停止されます**。 マイナー バージョンの自動アップグレードを無効にして Linux の診断拡張機能をインストールした場合は、一度拡張機能をアンインストールし、マイナー バージョンの自動アップグレードを有効にして再インストールすることを強くお勧めします。 クラシック (ASM) VM に、Azure XPLAT CLI または PowerShell で拡張機能をインストールする場合、バージョンとして「2.*」を指定します。 ARM VM の場合は、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を追加します。 また、拡張機能を新規インストールする場合は、マイナー バージョンの自動アップグレード オプションをオンにする必要があります。
+この拡張機能の最新バージョンは **2.3** です。**以前のバージョン (2.0、2.1、2.2) は今年 (2017 年) の終わりまでに非推奨となり、公開が停止されます**。 マイナー バージョンの自動アップグレードを無効にして Linux の診断拡張機能をインストールした場合は、一度拡張機能をアンインストールし、マイナー バージョンの自動アップグレードを有効にして再インストールすることを強くお勧めします。 クラシック (ASM) VM に、Azure XPLAT CLI または PowerShell で拡張機能をインストールする場合、バージョンとして「2.*」を指定します。 ARM VM の場合は、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を追加します。 また、拡張機能を新規インストールする場合は、マイナー バージョンの自動アップグレード オプションをオンにする必要があります。
 
 ## <a name="enable-the-extension"></a>拡張機能を有効にする
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect - AD FS ファームの SSL 証明書の更新 | Microsoft Docs"
-description: "このドキュメントでは、Azure AD Connect を使って AD FS ファームの SSL 証明書を更新する手順について詳しく説明します。"
+title: Azure AD Connect - AD FS ファームの SSL 証明書の更新 | Microsoft Docs
+description: このドキュメントでは、Azure AD Connect を使って AD FS ファームの SSL 証明書を更新する手順について詳しく説明します。
 services: active-directory
-keywords: "Azure AD Connect, AD FS SSL の更新, AD FS 証明書の更新, 変更、AD FS 証明書, 新しい AD FS 証明書, AD FS 証明書, 更新、AD FS SSL 証明書, 更新、SSL 証明書、AD FS, 構成、AD FS SSL 証明書, AD FS, SSL, 証明書, AD FS サービス通信証明書, 更新、フェデレーション, 構成、フェデレーション, AAD Connect"
+keywords: Azure AD Connect, AD FS SSL の更新, AD FS 証明書の更新, 変更、AD FS 証明書, 新しい AD FS 証明書, AD FS 証明書, 更新、AD FS SSL 証明書, 更新、SSL 証明書、AD FS, 構成、AD FS SSL 証明書, AD FS, SSL, 証明書, AD FS サービス通信証明書, 更新、フェデレーション, 構成、フェデレーション, AAD Connect
 authors: anandyadavmsft
 manager: mtillman
 editor: billmath
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
+ms.component: hybrid
 ms.author: anandy
 ms.custom: seohack1
-ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d657725b7bfb75a118c1d8bbbe701c1c121b1ef2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595004"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
@@ -85,7 +87,7 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 * **新しい AD FS SSL 証明書のサブジェクト名はどのようなものにする必要がありますか。**
 
-    Azure AD Connect は、証明書のサブジェクト名/代替サブジェクト名にフェデレーション サービスの名前が含まれるかどうかを確認します。 たとえば、フェデレーション サービス名が fs.contoso.com である場合、サブジェクト名/代替サブジェクト名も fs.contoso.com である必要があります。ワイルドカード証明書も受け付けられます。
+    Azure AD Connect は、証明書のサブジェクト名/代替サブジェクト名にフェデレーション サービスの名前が含まれるかどうかを確認します。 たとえば、フェデレーション サービス名が fs.contoso.com である場合、サブジェクト名/代替サブジェクト名も fs.contoso.com である必要があります。  ワイルドカード証明書も受け付けられます。
 
 * **WAP サーバー ページで資格情報を再度要求されるのはなぜですか。**
 

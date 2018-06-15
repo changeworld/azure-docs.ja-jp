@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Docs"
-description: "Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。"
+title: 'Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Docs'
+description: Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e898ee203276b072605fe0f21af633ecfdaae1fe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8b73e70606adc2b1fa593745b3ac426c679f417
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592087"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 この記事の操作手順を使用して、組織のニーズや要件を満たすように Azure Active Directory (Azure AD) Connect をカスタマイズします。  
@@ -32,9 +34,9 @@ ms.lasthandoff: 12/11/2017
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Azure AD Premium または Enterprise Mobility Suite のライセンスを割り当てるには
 
 1. Azure Portal に管理者としてサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
+2. 左側で、 **[Active Directory]** を選択します。
 3. **[Active Directory]** ページで、設定するユーザーが存在するディレクトリをダブルクリックします。
-4. ディレクトリ ページの上部にある **[ライセンス]**を選択します。
+4. ディレクトリ ページの上部にある **[ライセンス]** を選択します。
 5. **[ライセンス]** ページで、**[Active Directory Premium]** または **[Enterprise Mobility Suite]** を選択し、**[割り当て]** をクリックします。
 6. ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。
 
@@ -43,9 +45,9 @@ Azure Portal を使用して、同期の状態を確認します。
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>スケジュールされた同期タスクを確認するには
 1. Azure Portal に管理者としてサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
+2. 左側で、 **[Active Directory]** を選択します。
 3. **[Active Directory]** ページで、設定するユーザーが存在するディレクトリをダブルクリックします。
-4. ディレクトリ ページの上部にある **[ディレクトリ統合]**を選択します。
+4. ディレクトリ ページの上部にある **[ディレクトリ統合]** を選択します。
 5. **[ローカル Active Directory との統合]** で、最後の同期時刻を確認します。
 
 <center>![ディレクトリ同期時刻](./media/active-directory-aadconnect-whats-next/verify.png)</center>
@@ -70,5 +72,5 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 | **同期オプションをカスタマイズする** |構成への Active Directory フォレストの追加、ユーザー、グループ、デバイス、パスワード ライトバックなどの同期オプションの有効化など、現在の構成を変更します。 |
 | **ステージング モードを有効にする** |すぐには同期されず、Azure AD やオンプレミスの Active Directory にエクスポートされない情報をステージングします。  この機能では、事前に同期のプレビューを表示できます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関する記事をご覧ください。

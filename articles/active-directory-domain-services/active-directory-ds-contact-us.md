@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: お問い合わせ | Microsoft Docs"
-description: "Azure AD ドメイン サービスの製品チームにお問い合わせください"
+title: 'Azure Active Directory Domain Services: お問い合わせ | Microsoft Docs'
+description: Azure AD ドメイン サービスの製品チームにお問い合わせください
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: c342d34c66af334bfb7cccffd2e1ee700dd46bef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ec74ac2823532b6eef7bf88b4dbf21487d509217
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586989"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD ドメイン サービス - お問い合わせ
 ## <a name="contact-the-product-team"></a>製品チームへのお問い合わせ
@@ -32,6 +34,6 @@ ms.lasthandoff: 12/11/2017
 * AAD ドメイン サービスの管理対象ドメインに構成した **DNS ドメイン名** 。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
-**[Azure Active Directory User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/)**より Azure AD Domain Services についてのご意見をお待ちしております。
+**[Azure Active Directory User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/)** より Azure AD Domain Services についてのご意見をお待ちしております。
 
-弊社が確認できるように、質問またはご意見の先頭に **"AADDS"**という単語を付けてください。
+弊社が確認できるように、質問またはご意見の先頭に **"AADDS"** という単語を付けてください。

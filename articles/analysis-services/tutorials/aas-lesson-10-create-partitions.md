@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 10: パー�
 description: この Azure Analysis Services チュートリアル プロジェクトでパーティションを作成する方法を説明します。
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743eff21154502fc4ff651177abb8df91edb7494
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51ba9b80bd5572be451107dee13453e4d5037ff9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596051"
 ---
 # <a name="create-partitions"></a>パーティションを作成する
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/16/2018
     
     クエリ エディターの [適用したステップ] に、Filtered Rows という名前の新しいステップがあります。 このフィルターを使って、2010 年以降の注文日のみを選択します。
 
-8.  **[インポート]**をクリックします。
+8.  **[インポート]** をクリックします。
 
     Partition Manager のクエリ式に Filtered Rows 句が追加されています｡
 

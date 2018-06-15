@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595310"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -137,15 +139,15 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 ### <a name="synchronization-rule"></a>同期規則
 同期規則は、条件が満たされた場合に、フローする属性のセットを含む構成オブジェクトです。 また、これを使用して、**結合**または**一致**と呼ばれる、コネクタ スペース内のオブジェクトとメタバース内のオブジェクトとの関連付けを記述することもできます。 同期規則には、互いがどのように関連するのかを示す優先順位値があります。 数値が低い同期規則ほど、優先順位が高くなります。属性のフローの競合が発生した場合には、優先順位の高い同期規則が優先される形で競合が解決されます。
 
-例として、同期規則 " **AD からの受信 - ユーザー アカウント有効**" を使って説明します。 SRE でこの行をマークし、 **[編集]**を選択します。
+例として、同期規則 " **AD からの受信 - ユーザー アカウント有効**" を使って説明します。 SRE でこの行をマークし、 **[編集]** を選択します。
 
-この規則は既定の規則であるため、開くと警告が表示されます。 [既定の規則に変更を加える](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)ことは避ける必要があるため、その意図を尋ねるメッセージが表示されます。 今回の場合、必要なのは規則の表示のみです。 このため、 **[いいえ]**を選択します。
+この規則は既定の規則であるため、開くと警告が表示されます。 [既定の規則に変更を加える](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)ことは避ける必要があるため、その意図を尋ねるメッセージが表示されます。 今回の場合、必要なのは規則の表示のみです。 このため、 **[いいえ]** を選択します。
 
 ![Synchronization Rules warning](./media/active-directory-aadconnectsync-understanding-default-configuration/warningeditrule.png)
 
 同期規則には、[説明]、[スコープ フィルター]、[結合規則]、[変換] という 4 つの構成セクションがあります。
 
-#### <a name="description"></a>[説明]
+#### <a name="description"></a>説明
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
 ![Description tab in Sync rule editor ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)
@@ -170,7 +172,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 ![Join rules tab in Sync rule editor ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulejoinrules.png)
 
-結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[Provision (プロビジョニング)]**に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
+結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[Provision (プロビジョニング)]** に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
 
 結合規則は、1 回のみ評価されます。 コネクタ スペース オブジェクトとメタバース オブジェクトが結合されている場合は、同期規則のスコープが引き続き満たされている限り、結合が維持されます。
 

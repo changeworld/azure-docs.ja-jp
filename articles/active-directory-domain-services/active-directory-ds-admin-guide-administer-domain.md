@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: 管理対象ドメインを管理する | Microsoft Docs"
-description: "Azure Active Directory Domain Services で管理されているドメインを管理する"
+title: 'Azure Active Directory Domain Services: 管理対象ドメインを管理する | Microsoft Docs'
+description: Azure Active Directory Domain Services で管理されているドメインを管理する
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 7ffe3e54b891fd74e14666c136be49132d78590b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 68f963b7f3107bad58edb183ec104777903b20d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588524"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services で管理されているドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスで管理されているドメインを管理する方法について説明します。
@@ -69,7 +71,7 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
-4. スタート画面で、 **[サーバー マネージャー]**を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
+4. スタート画面で、 **[サーバー マネージャー]** を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
@@ -97,10 +99,10 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 >
 >
 
-1. スタート画面で **[管理ツール]**をクリックします。 仮想マシンにインストールされた AD 管理ツールを確認できます。
+1. スタート画面で **[管理ツール]** をクリックします。 仮想マシンにインストールされた AD 管理ツールを確認できます。
 
     ![Administrative Tools installed on server](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
-2. **[Active Directory 管理センター]**をクリックします。
+2. **[Active Directory 管理センター]** をクリックします。
 
     ![[Active Directory 管理センター]](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. ドメインを確認するには、左ウィンドウのドメイン名 ("contoso100.com" など) をクリックします。 'AADDC Computers' と 'AADDC Users' という名前の 2 つのコンテナーがあります。

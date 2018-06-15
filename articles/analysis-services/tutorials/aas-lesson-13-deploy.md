@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 13: デプ�
 description: Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 889cc4224e2ffe31e15590c04c3dbf4b656bc386
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9b953428525e7970fef7224e65200cf9811b6304
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596282"
 ---
 # <a name="deploy"></a>デプロイ
 
@@ -52,13 +53,13 @@ ms.lasthandoff: 04/16/2018
 
 2.  **AW Internet Sales** プロジェクトを右クリックし､**Deploy** を選択します｡
 
-    Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡このアカウントは､サーバーの管理者である必要があります。
+    Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡ このアカウントは､サーバーの管理者である必要があります。
   
     [Deploy] ダイアログ ボックスにモデルに含まれるメタデータと各テーブルのデプロイ状況が表示されます｡  
     
     ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
-3. デプロイが正常に終了したら､**[Close]**をクリックします｡  
+3. デプロイが正常に終了したら､**[Close]** をクリックします｡  
   
 
 このレッスンでは、SSDT から表形式モデルをデプロイするための最も一般的で簡単な方法を説明します。 デプロイ ウィザードや、XMLA と AMO による自動化など、高度なデプロイ オプションを使用すると、より柔軟性と一貫性が高い、スケジュールされたデプロイを行うことができます。 詳細については、「[Tabular model solution deployment (表形式モデル ソリューションのデプロイ)](https://docs.microsoft.com/sql/analysis-services/tabular-models/tabular-model-solution-deployment-ssas-tabular)」を参照してください。

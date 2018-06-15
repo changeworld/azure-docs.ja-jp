@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: トラブルシューティング ガイド | Microsoft Docs"
-description: "Azure AD ドメイン サービスのトラブルシューティング ガイド"
+title: 'Azure Active Directory Domain Services: トラブルシューティング ガイド | Microsoft Docs'
+description: Azure AD ドメイン サービスのトラブルシューティング ガイド
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 012ff7621c74035133ca704a9bbf44e43ee839f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587761"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
