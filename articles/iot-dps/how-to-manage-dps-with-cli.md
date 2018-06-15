@@ -1,22 +1,19 @@
 ---
 title: Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法 | Microsoft Docs
 description: Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法を説明します
-services: iot-dps
-keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 174f8447b17d1fa580472cbb45d0a72f41c793c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628319"
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法について説明します
 
@@ -57,7 +54,7 @@ IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完�
 
     az group create -l eastus -n IoTHubBlogDemo
 
-![Create resource group][2]
+![リソース グループの作成][2]
 
 
 ### <a name="3-create-two-device-provisioning-services"></a>手順 3.2 つのデバイス プロビジョニング サービスを作成する

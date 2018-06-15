@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 69171686f13b67d33696eaefbb2bfa36abdd899a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c080ef95bb6341e9d90940381cf86ff5e1722ed7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618788"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Shopify からデータをコピーする
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Shopify のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Shopify** に設定する必要があります。 | [はい] |
 | host | Shopify サーバーのエンドポイント。 (つまり、mystore.myshopify.com)  | [はい] |
@@ -101,7 +102,7 @@ Shopify からデータをコピーするには、データセットの type プ
 
 Shopify からデータをコピーするには、コピー アクティビティのソースの種類を **ShopifySource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **ShopifySource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM "Products" WHERE Product_Id = '123'"`」のように入力します。 | [はい] |

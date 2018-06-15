@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619322"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -151,7 +152,7 @@ ms.lasthandoff: 05/14/2018
 ## <a name="string-functions"></a>文字列関数  
  次の関数は、文字列にのみ適用されます。 文字列では、いくつかのコレクション関数を使用することもできます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |concat|任意の数の文字列を結合します。 たとえば、パラメーター 1 が `foo,` である場合、次の式は `somevalue-foo-somevalue` を返します: `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: String *n*<br /><br /> **説明**: 必須。 1 つの文字列に結合する文字列です。|  
 |substring|文字列から文字のサブセットを返します。 たとえば、次の式<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> は次を返します。<br /><br /> `foo`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 部分文字列を取得する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Start index<br /><br /> **説明**: 必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Length<br /><br /> **説明**: 必須。 部分文字列の長さです。|  
@@ -169,7 +170,7 @@ ms.lasthandoff: 05/14/2018
 ## <a name="collection-functions"></a>コレクション関数  
  これらの関数は、配列、文字列、場合によっては辞書などのコレクションに対して動作します。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |contains|ディクショナリにキーが含まれる場合、リストに値が含まれる場合、または文字列に部分文字列が含まれる場合、true を返します。 たとえば、次の式は `true:``contains('abacaba','aca')` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Within collection<br /><br /> **説明**: 必須。 その中で検索を行うコレクションです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Find object<br /><br /> **説明**: 必須。 **Within collection** 内で検索するオブジェクトです。|  
 |length|配列または文字列内の要素の数を返します。 たとえば、次の式は `3` を返します: `length('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 次の長さを取得するコレクション。|  
@@ -184,7 +185,7 @@ ms.lasthandoff: 05/14/2018
 ## <a name="logical-functions"></a>論理関数  
  これらの関数は条件の内部で役立ち、任意の種類のロジックを評価するために使用できます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |equals|2 つの値が等しい場合、true を返します。 たとえば、パラメーター 1 が foo である場合、次の式は `true` を返します: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Object 1<br /><br /> **説明**: 必須。 **Object 2** と比較するオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Object 2<br /><br /> **説明**: 必須。 **Object 1** と比較するオブジェクトです。|  
 |less|1 番目の引数が 2 番目の引数より小さい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `true` を返します: `less(10,100)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Object 1<br /><br /> **説明**: 必須。 **Object 2** より小さいかどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Object 2<br /><br /> **説明**: 必須。 **Object 1** より大きいかどうかを調べるオブジェクトです。|  
@@ -211,7 +212,7 @@ ms.lasthandoff: 05/14/2018
   
 -   dictionaries  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |int|パラメーターを整数に変換します。 たとえば、次の式は文字列ではなく、数値として 100 を返します: `int('100')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 整数に変換する値です。|  
 |文字列|パラメーターを文字列に変換します。 たとえば、次の式は `'10'` を返します: `string(10)` また、オブジェクトを文字列に変換することもできます。たとえば、**foo** パラメーターが 1 つのプロパティ `bar : baz` を持つオブジェクトである場合、次は `{"bar" : "baz"}` `string(pipeline().parameters.foo)` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 文字列に変換する値です。|  
@@ -241,7 +242,7 @@ ms.lasthandoff: 05/14/2018
 ## <a name="math-functions"></a>算術関数  
  これらの関数は、**integer** 型および **float** 型の値に使うことができます。  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |追加|2 つの数値の加算の結果を返します。 たとえば、この関数は `20.333` を返します: `add(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Summand 1<br /><br /> **説明**: 必須。 **Summand 2** に加算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Summand 2<br /><br /> **説明**: 必須。 **Summand 1** に加算する値です。|  
 |sub|2 つの数値の減算の結果を返します。 たとえば、この関数は `-0.333` を返します。<br /><br /> `sub(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Minuend<br /><br /> **説明**: 必須。 **Subtrahend** を減算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Subtrahend<br /><br /> **説明**: 必須。 **Minuend** から減算する値です。|  
@@ -255,7 +256,7 @@ ms.lasthandoff: 05/14/2018
   
 ## <a name="date-functions"></a>データ関数  
   
-|関数名|[説明]|  
+|関数名|説明|  
 |-------------------|-----------------|  
 |utcnow|現在のタイムスタンプを文字列として返します。 例: `2015-03-15T13:27:36Z`<br /><br /> `utcnow()`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z`<br /><br /> `addseconds('2015-03-15T13:27:36Z', -36)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Seconds<br /><br /> **説明**: 必須。 追加する秒の値です。 負の値にして秒数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  

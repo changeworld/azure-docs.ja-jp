@@ -1,23 +1,19 @@
 ---
-title: "IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs"
-description: "概念: - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。"
-services: iot-dps
-documentationcenter: .net
+title: IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs
+description: '概念: - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。'
 author: dsk-2015
 manager: timlt
-editor: 
 ms.service: iot-dps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-dps
+ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: dkshir,rajeevmv
-ms.openlocfilehash: 718fe9b3ca449f8f7b1420080ea75716e8badcf5
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.author: dkshir
+ms.openlocfilehash: e33f6b61f757c9d7f6a773141ad0deea363be2b7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629390"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -28,7 +24,7 @@ ms.lasthandoff: 11/15/2017
 * プロビジョニング サービスへのアクセス用にバックエンド アプリに付与できるアクセス許可の種類。
 * アクセス許可の確認に使用する認証プロセスとトークン。
 
-### <a name="when-to-use"></a>使用時の注意
+### <a name="when-to-use"></a>いつ使用するか
 
 プロビジョニング サービスのエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、サービスに送信するすべてのメッセージと共に、バックエンド アプリにはセキュリティ資格情報が格納されているトークンを含める必要があります。
 
@@ -79,7 +75,7 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
-| {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「 `mydps.azure-devices-provisioning.net`」のように入力します。 |
+| {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「`mydps.azure-devices-provisioning.net`」のように入力します。 |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 |
 
 **プレフィックスに関する注意事項**: URI プレフィックスは、文字単位ではなくセグメント単位で計算されます。 たとえば、`/a/b` は `/a/b/c` のプレフィックスであり、`/a/bc` のプレフィックスではありません。

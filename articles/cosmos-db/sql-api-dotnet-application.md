@@ -3,23 +3,21 @@ title: 'Azure Cosmos DB の ASP.NET MVC チュートリアル: Web アプリケ�
 description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ
 keywords: ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
 manager: kfile
-ms.assetid: 52532d89-a40e-4fdf-9b38-aadb3a4cccbc
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: 1193ef84f8edf701f98e50d92a67426e36c40218
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 193f0f74d7a8ebaee72105698c646b55a8159a3b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796997"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
 > [!div class="op_single_selector"]
@@ -77,7 +75,7 @@ ms.lasthandoff: 04/06/2018
       **[新しい ASP.NET Web アプリケーション]** ダイアログ ボックスが表示されます。
    
     ![MVC アプリケーション テンプレートが強調表示されている [新しい ASP.NET Web アプリケーション] ダイアログ ボックスのスクリーン ショット](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
-5. テンプレート ウィンドウで、 **[MVC]**を選択します。
+5. テンプレート ウィンドウで、 **[MVC]** を選択します。
 
 6. **[OK]** をクリックすると、Visual Studio のスキャフォールディング機能によって空の ASP.NET MVC テンプレートが作成されます。 
 
@@ -202,7 +200,7 @@ ms.lasthandoff: 04/06/2018
    * **[テンプレート]** ボックスで、***[作成]*** を選択します。
    * **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
    * レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
-   * **[追加]**をクリックします。
+   * **[追加]** をクリックします。
    
 #### <a name="_Toc395888515"></a>項目を編集するためのビューを追加する
 最後にもう 1 つ、 **Item** を編集するためのビューを同じように作成します。
@@ -214,7 +212,7 @@ ms.lasthandoff: 04/06/2018
    * **[テンプレート]** ボックスで、***[編集]*** を選択します。
    * **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
    * レイアウト ページ ボックスに、「***~/Views/Shared/_Layout.cshtml***」と入力します。
-   * **[追加]**をクリックします。
+   * **[追加]** をクリックします。
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
 

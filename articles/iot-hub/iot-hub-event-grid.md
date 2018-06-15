@@ -1,22 +1,19 @@
 ---
-title: "Azure IoT Hub と Event Grid | Microsoft Docs"
-description: "Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT Hub と Event Grid | Microsoft Docs
+description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
 author: kgremban
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 7c75a65714898f27ab0008ad5a30a5714d7174f4
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: f187aa81ca519f2597657f01c2d7a630740b5348
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634313"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする - プレビュー
 
@@ -34,7 +31,7 @@ Event Grid の統合は、Event Grid イベントグリッドがサポートさ�
 
 IoT Hub は次のイベントの種類を発行します。 
 
-| イベントの種類 | [説明] |
+| イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | デバイスが IoT Hub に登録されると発行されます。 |
 | Microsoft.Devices.DeviceDeleted | デバイスが IoT Hub から削除されると発行されます。 | 

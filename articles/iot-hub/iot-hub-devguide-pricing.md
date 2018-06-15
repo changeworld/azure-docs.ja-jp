@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub の価格について | Microsoft Docs
 description: 開発者ガイド - 体系例を含む IoT Hub での課金および価格体系に関する情報。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 9b0d2df078c59c7d261fd3231450ddfb2fdcd88e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 672adba0b4b17a25c0c0a1da3596808f767e3fbd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632841"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 
@@ -37,7 +32,7 @@ ms.lasthandoff: 05/03/2018
 | ダイレクト メソッド | 成功したメソッド要求は 4 KB のチャンク単位で課金され、本文が空白でない応答は、追加メッセージとして 4 KB のチャンク単位で課金されます。 デバイスの接続解除要求は、メッセージとして 4 KB のチャンク単位で課金されます。 たとえば、6 KB の本文があり、デバイスからは本文のない応答が返されるメソッドの場合、2 メッセージとして課金されます。 6 KB の本文があり、デバイスから 1 KB の応答が返されるメソッドの場合、要求の 2 メッセージ分と応答の 1 メッセージ分課金されます。 |
 | デバイスおよびモジュール ツインの読み取り | デバイスまたはモジュールからのツインの読み取り、およびソリューション バックエンドからのツインの読み取りは、メッセージとして 512 バイトのチャンク単位で課金されます。 たとえば、6 KB ツインの読み取りは 12 メッセージとして課金されます。 |
 | デバイスおよびモジュール ツインの更新 (タグとプロパティ) | デバイスまたはモジュールからのツインの更新、およびソリューション バックエンドからのツインの更新は、メッセージとして 512 バイトのチャンク単位で課金されます。 たとえば、6 KB ツインの読み取りは 12 メッセージとして課金されます。 |
-| デバイスおよびモジュール ツインのクエリ | クエリは、結果のサイズに応じて、メッセージとして 512 バイトのチャンク単位で課金されます。 |
+| デバイス ツインとモジュール ツインのクエリ | クエリは、結果のサイズに応じて、メッセージとして 512 バイトのチャンク単位で課金されます。 |
 | ジョブ操作 <br/> (作成、更新、一覧表示、削除) | 課金されません。 |
 | デバイスごとのジョブの操作 | ジョブの操作 (ツインの更新やメソッドなど) は通常どおり課金されます。 たとえば、ジョブが 1 KB の要求と本文が空白の応答による 1,000 回のメソッドの呼び出しとなる場合は、1,000 メッセージとして課金されます。 |
 

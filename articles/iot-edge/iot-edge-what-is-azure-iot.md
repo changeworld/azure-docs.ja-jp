@@ -1,28 +1,23 @@
 ---
-title: "モノのインターネット (IoT Edge) 用の Azure ソリューション | Microsoft Docs"
-description: "サンプル IoT ソリューション アーキテクチャの概要と、このアーキテクチャとデバイス、Azure IoT Hub サービス、Azure IoT device SDK、Azure IoT service SDK、その他の Azure サービスとの関係。"
-services: iot-hub
-documentationcenter: 
+title: モノのインターネット (IoT Edge) 用の Azure ソリューション | Microsoft Docs
+description: サンプル IoT ソリューション アーキテクチャの概要と、このアーキテクチャとデバイス、Azure IoT Hub サービス、Azure IoT device SDK、Azure IoT service SDK、その他の Azure サービスとの関係。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a859e379-dca7-42fa-bdf6-1125c86ad140
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: 587b733106d511ec63d71f67a06e520324a3e594
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd59e740803f8f0e6f5f542805d615772efba913
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630342"
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT Edge は、分析とデータ処理をエッジ側で実行できるようにする Azure サービスです。 IoT Edge を使用すると、既にご利用の Azure サービスから直接呼び出したロジックや、実際のソリューションに特化した独自のコードをコンテナー ベースのコードに含めて、デバイスの能力を高めることができます。 対象となるデバイスでは、次のことが可能となります。
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI のサンプル スクリプト - NLB がインストールされた Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - NLB がインストールされた Linux VM の作成"
+title: Azure CLI のサンプル スクリプト - NLB がインストールされた Linux VM の作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - NLB がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1089f353608b84208c44e64454c6b2eed11607e7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9b4a6bbc97ea465bc2e845fd9b1468dea6abab12
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654421"
 ---
 # <a name="create-a-highly-available-vm"></a>高可用性 VM の作成
 

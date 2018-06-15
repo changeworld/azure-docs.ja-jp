@@ -8,14 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bf0d607d63a68a222a1d44d9cb05253497d12591
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fdfb35b0e1c52ad2aad164a38ae308f9142880a6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619628"
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Store へのデータの読み込み
 
@@ -58,7 +59,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
     * **バージョン**: **[V2 (プレビュー)]** を選択します。
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
    ![データ ファクトリのホーム ページ](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -79,7 +80,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
 4. **[Amazon S3 接続の指定]** ページで、次の手順を実行します。 
    1. **[アクセス キー ID]** の値を指定します。
    2. **[シークレット アクセス キー]** の値を指定します。
-   3. **[次へ]**を選択します。
+   3. **[次へ]** を選択します。
    
    ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、**[選択]**、**[次へ]** の順に選択します。
@@ -98,7 +99,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
 
    1. **[Data Lake Store アカウント名]** で、Data Lake Store を選択します。
    2. サービス プリンシパル情報として **[テナント]**、**[サービス プリンシパル ID]**、および **[サービス プリンシパル キー]** を指定します。
-   3. **[次へ]**を選択します。
+   3. **[次へ]** を選択します。
    
    > [!IMPORTANT]
    > このチュートリアルでは、"_サービス プリンシパル_" を使用して、Data Lake Store を認証します。 [次の手順](connector-azure-data-lake-store.md#using-service-principal-authentication)に従って、サービス プリンシパルに Azure Data Lake Store のアクセス許可を適切に付与します。

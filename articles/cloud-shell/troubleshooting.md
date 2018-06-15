@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608952"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -43,11 +44,6 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
  - **解決策**: HTTPS 要求および WebSocket 要求の *.console.azure.com のドメインへの送信を有効にするようにネットワーク設定を構成していることを確認します。
 
 ## <a name="bash-troubleshooting"></a>Bash のトラブルシューティング
-
-### <a name="cannot-run-az-login"></a>az login を実行できない
-
-- **詳細**: Cloud Shell または Azure Portal へのサインインに使用するアカウントで既に認証されているため、`az login` を実行しても正しく動作しません。
-- **解決策**: サインインまたはサインアウトに使用するアカウントを利用して、目的の Azure アカウントを再認証してください。
 
 ### <a name="cannot-run-the-docker-daemon"></a>Docker デーモンを実行できない
 

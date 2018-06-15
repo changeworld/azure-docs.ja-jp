@@ -5,19 +5,19 @@ author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.date: 05/14/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: e403afa5c870b2d007a8c5e1d46162cd899ead29
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ef30958ed0a88853b20278e6d628639ffc0cea34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164824"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619475"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 

@@ -1,26 +1,28 @@
 ---
-title: "Microsoft Flow から Azure 関数を呼び出す | Microsoft Docs"
-description: "カスタム コネクタを作成し、そのコネクタを使用して関数を呼び出します。"
+title: Microsoft Flow から Azure 関数を呼び出す | Microsoft Docs
+description: カスタム コネクタを作成し、そのコネクタを使用して関数を呼び出します。
 services: functions
-keywords: "クラウド アプリ, クラウド サービス, Microsoft Flow, ビジネス プロセス, ビジネス アプリケーション"
-documentationcenter: 
-author: mgblythe
+keywords: クラウド アプリ, クラウド サービス, Microsoft Flow, ビジネス プロセス, ビジネス アプリケーション
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234803"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Microsoft Flow から関数を呼び出す
 
@@ -169,7 +171,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![コストの計算の既定値](media/functions-flow-scenario/calculates-costs-default.png)
 
-3. **[Calculates costs]\(コストの計算\)** カードで、**[動的なコンテンツ]** ダイアログ ボックスを使用して、この関数の入力内容を選択します。 Microsoft Flow では、数値フィールドは表示されますが、日付フィールドは表示されません。それは、OpenAPI 定義で**[時間]** と **[容量]** が数値に指定されているためです。
+3. **[Calculates costs]\(コストの計算\)** カードで、**[動的なコンテンツ]** ダイアログ ボックスを使用して、この関数の入力内容を選択します。 Microsoft Flow では、数値フィールドは表示されますが、日付フィールドは表示されません。それは、OpenAPI 定義で **[時間]** と **[容量]** が数値に指定されているためです。
 
     **[時間]** に **[EstimatedEffort]** を選択し、**[容量]** に **[MaxOutput]** を選択します。
 
@@ -235,7 +237,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
     | **ServiceRequired** | [はい] |
     | **EstimatedEffort** | 10 |
 
-3. **[Done]**をクリックします。
+3. **[Done]** をクリックします。
 
     ![クイック編集の完了](media/functions-flow-scenario/quick-edit-done.png)
 

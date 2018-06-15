@@ -2,10 +2,9 @@
 title: 予測メンテナンス ソリューションのための Azure AI ガイド | Microsoft Docs
 description: 複数の垂直的業界向けのメンテナンス ソリューションを実現するデータ サイエンスについて包括的に説明します。
 services: machine-learning
-documentationcenter: ''
 author: fboylu
-manager: jhubbard
-editor: cgronlun
+manager: cgronlun
+editor: ''
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -15,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 581e9d586f007fe0cd28d60b5558594777656ca8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248539"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -412,7 +412,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 このガイドの最後のセクションでは、PdM のソリューション テンプレート、チュートリアル、および Azure で実装された実験の一覧を示します。 これらの PdM アプリケーションは、場合によっては数分で Azure サブスクリプションにデプロイできます。 これらは、概念実証のデモ、代替手段を実験するためのサンドボックス、または実稼働の実装のためのアクセラレータとして使用できます。 これらのテンプレートは、[Azure AI Gallery](http://gallery.azure.ai) または [Azure GitHub](https://github.com/Azure) に配置されます。 これらのさまざまなサンプルは、時間とともにこのソリューション テンプレートにまとめられます。
 
-| # | タイトル | [説明] |
+| # | タイトル | 説明 |
 |--:|:------|-------------|
 | 1 | [Azure 予測メンテナンスの機械学習サンプル](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |次の N 期間における障害を予測する PdM のサンプルです。 このサンプルは Azure ML の Workbench プロジェクトとして記述されており、PdM の初心者に最適です。 関連する[追加ドキュメント](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)をご覧ください。|
 | 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | 複数の PdM シナリオを実演するエンド ツー エンド フレームワークです。 このテンプレートでは 2 つのシナリオが提示されます。1 つ目は、リアルタイムで障害条件を分類する新しいユース ケースです。 2 つ目のシナリオは、ソリューション [1] をこのソリューション テンプレートに単純に統合したものです。 デプロイされた同じインフラストラクチャを再利用して、他の新しいシナリオ、または既存のシナリオを追加する方法が実演されます。|

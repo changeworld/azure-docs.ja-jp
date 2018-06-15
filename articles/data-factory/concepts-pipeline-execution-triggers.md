@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 05/29/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715039"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -138,6 +139,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 2 種類のトリガーをサポートしています。
 
 - スケジュール トリガー: 実時間のスケジュールによってパイプラインを起動するトリガー。
+
 - タンブリング ウィンドウ トリガー: 状態を保持しながら定期的に実行されるトリガー。 Azure Data Factory では、現在、イベントベースのトリガーがサポートされていません。 たとえば、ファイル到着イベントに対応するパイプライン実行のトリガーはサポートされていません。
 
 パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガー定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストを参照します。 プロパティ定義には、パイプライン パラメーターの値が含まれています。
@@ -175,7 +177,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 スケジュール トリガーの詳細と例については、[スケジュール トリガーの作成](how-to-create-schedule-trigger.md)に関するページを参照してください。
 
 ## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
-タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
+タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
+
+タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
 ## <a name="schedule-trigger-definition"></a>スケジュール トリガーの定義
 スケジュール トリガーを作成する場合、JSON 定義を使用してスケジュール設定と繰り返しを指定します。 
@@ -232,7 +236,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-overview"></a>スキーマの概要
 次の表は、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示しています。
 
-| JSON プロパティ | [説明] |
+| JSON プロパティ | 説明 |
 |:--- |:--- |
 | **startTime** | 日付/時刻の値。 基本的なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 <!-- This property is optional. --> |
@@ -311,7 +315,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 次の表に、**schedule** の要素の詳細を示します。
 
-| JSON 要素 | [説明] | 有効な値 |
+| JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
 | **分** | トリガーを実行する時刻 (分)。 |- Integer<br />- 整数の配列|
 | **hours** | トリガーを実行する時刻 (時)。 |- Integer<br />- 整数の配列|
@@ -324,7 +328,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで **monthDays** の変更を指定することはできません。 これらの種類の制限については、前のセクションの表で説明されています。
 
-| 例 | [説明] |
+| 例 | 説明 |
 |:--- |:--- |
 | `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
 | `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |

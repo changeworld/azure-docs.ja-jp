@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT のセキュリティ アーキテクチャ | Microsoft Docs"
-description: "脅威のモデル化を含む IoT のセキュリティ アーキテクチャのガイドラインと考慮事項"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT のセキュリティ アーキテクチャ | Microsoft Docs
+description: 脅威のモデル化を含む IoT のセキュリティ アーキテクチャのガイドラインと考慮事項
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 6c28b173-0d3c-415a-a9ea-02908ff87b3b
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: concepetual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 32a829ab37017a20835c3bdda6fe44285fd7a631
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 90e97b8ad1ce1513199e4d935dd097eff2df5084
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636360"
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 

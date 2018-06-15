@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b18fa2879056600cfc9c6a85afc599e2695af711
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6f3259170a1b3fe0bbd33899a74863f5e71a49f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618455"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -99,7 +100,7 @@ ms.lasthandoff: 04/05/2018
 11. コンピューターで実行している Microsoft 統合ランタイム構成マネージャーの**統合ランタイム (自己ホスト型) 登録**ページで、次の手順を実行します。
     1. **認証キー**をテキスト領域に貼り付けます。
     2. オプションとして、キー文字列を表示する場合は **[Show gateway key (ゲートウェイのキーを表示する)]** をクリックします。
-    3. **[登録]**をクリックします。
+    3. **[登録]** をクリックします。
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
@@ -137,7 +138,7 @@ ms.lasthandoff: 04/05/2018
 
 **企業ファイアウォール**レベルで、次のドメインと送信ポートを構成する必要があります。
 
-ドメイン名 | ポート | [説明]
+ドメイン名 | ポート | 説明
 ------------ | ----- | ------------
 *.servicebus.windows.net | 443、80 | Data Movement Service のバックエンドとの通信に使用
 *.core.windows.net | 443 | Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)

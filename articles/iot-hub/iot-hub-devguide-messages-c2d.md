@@ -1,23 +1,19 @@
 ---
 title: Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs
 description: 開発者ガイド - IoT Hub での cloud-to-device メッセージの使用方法。 メッセージのライフサイクル、および構成オプションについて説明します。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d3d8df0d1e00fdff4d0e1e93715e1a408116d1e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632477"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
@@ -85,7 +81,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 [エンドポイント][lnk-endpoints]に関するページで説明されているように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/feedback**) 経由でメッセージとしてフィードバックを配信します。 フィードバックを受信するためのセマンティクスは C2D メッセージの場合と同様です。 可能な限り、メッセージのフィードバックは、次の形式で 1 つのメッセージのバッチとして処理します。
 
-| プロパティ     | [説明] |
+| プロパティ     | 説明 |
 | ------------ | ----------- |
 | EnqueuedTime | フィードバック メッセージがハブで受信された日時を示すタイムスタンプ。 |
 | UserId       | `{iot hub name}` |
@@ -93,12 +89,12 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 本文はシリアル化された JSON レコードの配列で、それぞれ次のプロパティを持っています。
 
-| プロパティ           | [説明] |
+| プロパティ           | 説明 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ。 たとえば、ハブがフィードバック メッセージを受信したときや、元のメッセージの有効期限が切れたときです。 |
 | OriginalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの **MessageId** です。 |
 | StatusCode         | 必須の文字列。 IoT Hub によって生成されたフィードバック メッセージで使用されます。 <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> 'Purged' |
-| [説明]        | **StatusCode**の文字列値。 |
+| 説明        | **StatusCode**の文字列値。 |
 | deviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの **DeviceId** です。 |
 | DeviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの **DeviceGenerationId** です。 |
 
@@ -127,7 +123,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 各 IoT hub では、cloud-to-device メッセージング用に次の構成オプションを公開しています。
 
-| プロパティ                  | [説明] | 範囲と既定値 |
+| プロパティ                  | 説明 | 範囲と既定値 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | C2D メッセージの TTL の既定値。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
 | maxDeliveryCount          | デバイスごとの C2D キューの最大配信数。 | 1 ～ 100。 既定値: 10。 |

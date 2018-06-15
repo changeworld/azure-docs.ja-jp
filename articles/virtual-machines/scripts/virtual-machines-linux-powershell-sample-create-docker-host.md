@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell スクリプトのサンプル - Docker | Microsoft Docs"
-description: "Azure PowerShell スクリプトのサンプル - Docker"
+title: Azure PowerShell スクリプトのサンプル - Docker | Microsoft Docs
+description: Azure PowerShell スクリプトのサンプル - Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c8b700d13e4645d408e4e752a541e521ef93a6e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87b87734ebf2eaa266447cab0083c24399844f55
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653394"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>PowerShell で Docker ホストを作成する
 
@@ -61,7 +62,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | 仮想マシンに VM 拡張機能を追加します。 このサンプルでは、Docker を構成し、NGINX Docker コンテナーを実行するために、Docker 拡張機能が使用されます。 |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

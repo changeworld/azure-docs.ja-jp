@@ -7,14 +7,15 @@ manager: craigg
 author: tmullaney
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: thmullan
-ms.openlocfilehash: 151a21a60b6205ca9a454faaaeff65330d9b57ec
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 02ad01185a86aa5a975be2a66b54a214029dd73f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645812"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -299,7 +300,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を "*含めない*" ことをお勧めします。 これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された SESSION\_CONTEXT を使用する既定の制約が上書きされるためです。
+> Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を "*含めない*" ことをお勧めします。 これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された SESSION\_CONTEXT を使用する既定の制約がオーバーライドされるためです。
 > たとえば、サンプル プロジェクトで既定の制約を使用するには、DataClasses.cs から TenantId を削除し (さらにパッケージ マネージャー コンソールで Add-Migration を実行し)、T-SQL を使ってフィールドがデータベース テーブルにのみ存在することを確認します。 これにより、データを挿入するときに Entity Framework によって不適切な既定値が自動的に指定されなくなります。
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>(省略可能) "*スーパーユーザー*" がすべての行にアクセスできるようにする
@@ -347,7 +348,8 @@ GO
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
+- 
+  [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
 - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 - [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)
 - [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)

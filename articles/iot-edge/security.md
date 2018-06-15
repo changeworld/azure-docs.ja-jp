@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge のセキュリティ | Microsoft Docs"
-description: "IoT Edge デバイスのセキュリティ、認証、および承認"
-services: iot-edge
-keywords: 
+title: Azure IoT Edge のセキュリティ | Microsoft Docs
+description: IoT Edge デバイスのセキュリティ、認証、および承認
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8a5bf1f35fcdd779cf27edeba7dfd5705cbae205
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631430"
 ---
 # <a name="securing-azure-iot-edge---preview"></a>Azure IoT Edge のセキュリティ保護 - プレビュー
 
@@ -83,7 +83,7 @@ Azure IoT Edge セキュリティ フレームワークにおいて、拡張性�
 
 この結果、IoT をセキュリティ保護するという共通の利益を追及するオープン コミュニティからの協力を得て、インテリジェント エッジをセキュリティ保護できるのです。  この協力は、セキュリティ テクノロジまたはサービスの形体で行われます。  Azure IoT Edge セキュリティ フレームワークは、Azure クラウドと同じレベルの信頼性と整合性をインテリジェント エッジで提供するため、最大限の防御範囲のセキュリティを実現する強固な基盤を提供します。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT Edge の詳細については、[インテリジェント エッジをセキュリティで保護する][lnk-edge-blog]を参照してください。
 

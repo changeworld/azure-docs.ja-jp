@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c37ab34b241e59f70b6417036506dd132ce9aa43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6826d87e5613ce4892e9fd839c66ec26282ad188
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622127"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -73,14 +74,14 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
 }
 ```
 ## <a name="syntax-details"></a>構文の詳細
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |アクティビティの名前 |[はい] |
-| 説明 |アクティビティの用途を説明するテキストです。 |いいえ  |
+| description  |アクティビティの用途を説明するテキストです。 |いいえ  |
 | 型 |HDinsightHive |[はい] |
 | inputs |Hive アクティビティによって使用される入力 |いいえ  |
 | outputs |Hive アクティビティによって生成される出力 |[はい] |
-| 既定のコンテナー |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
+| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
 | script (スクリプト) |Hive スクリプトをインラインに指定します |いいえ  |
 | スクリプトのパス |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
@@ -216,7 +217,7 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
       }
     }
     ```
-* Hive スクリプトでは、 **${hiveconf:parameterName}**を使用してパラメーターを参照します。 
+* Hive スクリプトでは、 **${hiveconf:parameterName}** を使用してパラメーターを参照します。 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 

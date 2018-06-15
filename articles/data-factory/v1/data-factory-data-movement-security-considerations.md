@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cad363309b6086197ced1a5d1c1793995db11228
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621620"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -148,7 +149,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名 | 送信ポート | [説明] |
+| ドメイン名 | 送信ポート | 説明 |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443、80 | ゲートウェイが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net` | 443 | [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用する場合に、ゲートウェイが Azure ストレージ アカウントに接続するために使用します。 | 
@@ -161,7 +162,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、**Windows ファイアウォール**の**受信ポート**の要件を示しています。
 
-| 受信ポート | [説明] | 
+| 受信ポート | 説明 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 資格情報マネージャー アプリケーションがゲートウェイでオンプレミス データ ストアの資格情報を安全に設定するために必要です。 | 
 

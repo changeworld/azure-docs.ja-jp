@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c97aa3aba9b705eeb0e3f40f289af389e6f380b0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7d1fa8d05de11ed68bedbc91fbe22aa64b25372e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650385"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
@@ -65,9 +66,10 @@ Azure SQL Database では、[パフォーマンスの推奨事項](sql-database-
 
   ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
 
-このページの詳細については、**[Query Performance Insight の使用方法](sql-database-query-performance.md)**に関する記事を参照してください。
+このページの詳細については、**[Query Performance Insight の使用方法](sql-database-query-performance.md)** に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
-* [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
+* 
+  [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 

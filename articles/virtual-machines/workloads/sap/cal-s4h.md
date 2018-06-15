@@ -1,13 +1,13 @@
 ---
-title: "Azure VM に SAP S/4HANA または BW/4HANA をデプロイする | Microsoft Docs"
-description: "Azure VM に SAP S/4HANA または BW/4HANA をデプロイします"
+title: Azure VM に SAP S/4HANA または BW/4HANA をデプロイする | Microsoft Docs
+description: Azure VM に SAP S/4HANA または BW/4HANA をデプロイします
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 342bd20466cdeb0b9df1cdacd4664fa4e3e0c604
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 10c5116afa46817a42834e0350937fde7ae0b927
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657344"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure に SAP S/4HANA または BW/4HANA をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Azure に S/4HANA をデプロイする方法について説明します。 BW/4HANA などの他の SAP HANA ベースのソリューションをデプロイする手順は同じです。
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/17/2017
 SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap.com/) の Web サイトにアクセスします。 SAP には [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) に関するブログも用意されています。
 
 > [!NOTE]
-2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイメント モデルに加えて Azure Resource Manager デプロイメント モデルを使用できるようになりました。 クラシック デプロイメント モデルの代わりに新しい Resource Manager デプロイメント モデルを使用することをお勧めします。
+2017 年 5 月 29 日より、SAP CAL のデプロイに、クラシック デプロイ モデルに加えて Azure Resource Manager デプロイ モデルを使用できるようになりました。 クラシック デプロイ モデルの代わりに新しい Resource Manager デプロイ モデルを使用することをお勧めします。
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>ソリューションを配置するための段階的なプロセス
 
@@ -42,7 +43,7 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 ### <a name="create-an-account-in-the-sap-cal"></a>SAP CAL にアカウントを作成する
 1. 初めて SAP CAL にサインインするには、SAP S-User または SAP に登録された他のユーザーを使用します。 次に、SAP CAL で使用される SAP CAL アカウントを定義し、アプライアンスを Azure にデプロイします。 アカウントの定義では、次を行う必要があります。
 
-    a. Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
 
     b. Azure サブスクリプションを入力します。 SAP CAL アカウントは 1 つのサブスクリプションにのみ割り当てることができます。 複数のサブスクリプションが必要な場合は、別の SAP CAL アカウントを作成する必要があります。
 
@@ -53,11 +54,14 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 
 2. 新しい SAP CAL アカウントを作成します。 **[Accounts]\(アカウント\)** ページには、Azure の 3 つの選択肢が用意されています。 
 
-    a. **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイメント モデルで、推奨されなくなりました。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 
+  **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイ モデルで、推奨されなくなりました。
 
-    b. **[Microsoft Azure]** は新しい Resource Manager デプロイメント モデルです。
+    b. 
+  **[Microsoft Azure]** は新しい Resource Manager デプロイ モデルです。
 
-    c. **[Windows Azure operated by 21Vianet]\(21Vianet が運用する Windows Azure\)** は中国向けのオプションで、クラシック デプロイメント モデルを使用します。
+    c. 
+  **[Windows Azure operated by 21Vianet]\(21Vianet が運用する Windows Azure\)** は中国向けのオプションで、クラシック デプロイ モデルを使用します。
 
     Resource Manager モデルでデプロイするには、**[Microsoft Azure]** を選択します。
 
@@ -89,7 +93,7 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 
 正しく作成した SAP CAL アカウントでは、次のことが可能です。
 
-- Resource Manager デプロイメント モデルを使用する。
+- Resource Manager デプロイ モデルを使用する。
 - SAP システムを Azure サブスクリプションにデプロイする。
 
 これで Azure のユーザー サブスクリプションに S/4HANA のデプロイを開始できます。
@@ -111,7 +115,7 @@ SAP CAL の **[Solutions]\(ソリューション\)** ページからソリュー
 
 1. **[Account Details]\(アカウントの詳細\)** ページで、次のことを行う必要があります。
 
-    a. SAP CAL アカウントを選択します  (Resource Manager デプロイメント モデルを使用したデプロイに関連付けられているアカウントを使用します)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAP CAL アカウントを選択します  (Resource Manager デプロイ モデルを使用したデプロイに関連付けられているアカウントを使用します)。
 
     b. インスタンスの**名前**を入力します。
 

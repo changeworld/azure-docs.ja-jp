@@ -5,21 +5,18 @@ keywords: eventual 一貫性, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9e60a69e69f13dd6b8b34fafaa384f032f2ece11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611825"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
 Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証と、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 有界整合性制約、セッション、一貫性のあるプレフィックス、および最終的は、厳密より一貫性が低いので "緩やかな一貫性モデル" と呼ばれます。厳密は、使用できる最も一貫性の高いモデルです。 
@@ -49,7 +46,7 @@ Azure Cosmos DB は、すべてのデータ モデルについて、最初から
 | 一貫性のあるプレフィックス | 返される更新が、それ以外の全更新の一部のプレフィックスとなる (ギャップなし) |
 | Eventual  | 読み取りは順不同 |
 
-Cosmos DB アカウントには、既定の整合性レベルを構成できます (さらに、後から特定の読み取り要求について既定の整合性を無視することもできます)。 内部的には、複数のリージョンにまたがる可能性があるパーティション セット内のデータに対して、既定の整合性レベルが適用されます。 Azure Cosmos DB テナントの 約 73% がセッション一貫性を使い、20% が有界整合性制約を使っています。 Azure Cosmos DB の顧客の約 3% が、アプリケーション用に特定の一貫性の設定を選ぶ前に、さまざまな一貫性レベルを試しています。 要求ベースで一貫性レベルをオーバーライドしているのは、Azure Cosmos DB テナントのわずか 2% です。 
+Cosmos DB アカウントには、既定の整合性レベルを構成できます (さらに、後から特定の読み取り要求について既定の整合性をオーバーライドすることもできます)。 内部的には、複数のリージョンにまたがる可能性があるパーティション セット内のデータに対して、既定の整合性レベルが適用されます。 Azure Cosmos DB テナントの 約 73% がセッション一貫性を使い、20% が有界整合性制約を使っています。 Azure Cosmos DB の顧客の約 3% が、アプリケーション用に特定の一貫性の設定を選ぶ前に、さまざまな一貫性レベルを試しています。 要求ベースで一貫性レベルをオーバーライドしているのは、Azure Cosmos DB テナントのわずか 2% です。 
 
 Cosmos DB では、Session、Consistent Prefix、Eventual Consistency での読み取りは、Strong または Bounded Staleness 一貫性での読み取りより 2 倍節約できます。 Cosmos DB は、一貫性の保証に加え、可用性、スループット、待機時間を含む、業界最高レベルの包括的な SLA を誇ります。 Azure Cosmos DB では、サービス テレメトリで継続的に動作し、一貫性の違反を公表する[線形化可能性チェッカー](http://dl.acm.org/citation.cfm?id=1806634)が採用されています。 有界整合性制約では、違反がないか監視して k および t 制約に報告します。 また、5 つの緩やかな一貫性レベルすべてについて、[確率論的有界整合性制約メトリック](http://dl.acm.org/citation.cfm?id=2212359)をユーザーに直接報告します。  
 

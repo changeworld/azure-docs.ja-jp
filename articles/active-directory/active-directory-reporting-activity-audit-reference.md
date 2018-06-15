@@ -3,7 +3,7 @@ title: Azure Active Directory (Azure AD) 監査アクティビティ リファ�
 description: Azure Active Directory (Azure AD) で監査ログに記録できる監査アクティビティの概要を示します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 04/19/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: be19130f7a2f45049cd7e08bb961ac6cb5aa14ff
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1b96dfae5d03d46e183a5e0c3917bb1cd98e3fad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589450"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
 

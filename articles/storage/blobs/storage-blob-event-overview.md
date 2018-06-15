@@ -8,11 +8,12 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db062fc36478d6ba2cf0f00544793f635ccdbb06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650130"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -30,7 +31,7 @@ Blob Storage イベントは、[Blob Storage アカウント](../common/storage-
 ## <a name="available-blob-storage-events"></a>使用できる Blob Storage イベント
 Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。  Blob Storage のイベント サブスクリプションは、2 種類のイベントを含むことができます。  
 
-> |イベント名|[説明]|
+> |イベント名|説明|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|`PutBlob`、`PutBlockList`、または `CopyBlob` 操作によって BLOB が作成または置換されると生成されます|
 > |`Microsoft.Storage.BlobDeleted`|`DeleteBlob` 操作によって BLOB が削除されると生成されます|
@@ -39,7 +40,7 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 Blob Storage イベントには、データの変更に対応するために必要なすべての情報が含まれます。  Blob Storage イベントは eventType プロパティが "Microsoft.Storage" で始まっていることで識別できます。  
 Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../../event-grid/event-schema.md)」をご覧ください。  
 
-> |プロパティ|type|[説明]|
+> |プロパティ|type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |トピック|文字列|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
 > |subject|文字列|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|
@@ -118,7 +119,7 @@ BLOB 名プレフィックスを共有する特定のコンテナーで作成さ
 
 BLOB サフィックスを共有する特定のコンテナーで作成された BLOB からのイベントと一致させるには、".log" や ".jpg" などの `subjectEndsWith` フィルターを使います。
 
-詳しくは、「[Event Grid の概念](../../event-grid/concepts.md#filters)」をご覧ください。
+詳しくは、「[Event Grid の概念](../../event-grid/concepts.md#event-subscriptions)」をご覧ください。
 
 ## <a name="practices-for-consuming-events"></a>イベントの使用に関する手法
 Blob Storage イベントを処理するアプリケーションは、いくつかの推奨される手法に従う必要があります。

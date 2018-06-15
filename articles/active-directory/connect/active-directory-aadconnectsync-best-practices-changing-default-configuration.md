@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Sync: 既定の構成の変更 | Microsoft Docs"
-description: "Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。"
+title: 'Azure AD Connect Sync: 既定の構成の変更 | Microsoft Docs'
+description: Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7638a031-1635-4942-94c3-fce8f09eed5e
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 384794849eb0bf2cb2f4dd056b0c95ab84d77b6e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2c2fc3bcba4b685fba36683f89c0b6ad877dbb1d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595140"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
@@ -55,7 +57,7 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 上の図では、インストール ウィザードによって、アカウント フォレスト内にある古い Exchange 2003 スキーマが検出されています。 このスキーマ拡張が追加されてから、リソース フォレストが Fabrikam の環境に導入されました。 古い Exchange 実装の属性が同期されないようにするには、図のように同期規則を無効にする必要があります。
 
 ### <a name="change-an-out-of-box-rule"></a>標準の規則の変更
-標準の規則を変更する必要があるのは、結合規則を変更しなければならない場合のみです。 属性フローを変更する必要がある場合は、標準の規則よりも優先順位が高い同期規則を作成してください。 実際に複製する必要がある規則は **In from AD - User Join** のみです。 他のすべての規則は、優先順位が高い規則で上書きできます。
+標準の規則を変更する必要があるのは、結合規則を変更しなければならない場合のみです。 属性フローを変更する必要がある場合は、標準の規則よりも優先順位が高い同期規則を作成してください。 実際に複製する必要がある規則は **In from AD - User Join** のみです。 他のすべての規則は、優先順位が高い規則でオーバーライドできます。
 
 標準の規則を変更する必要がある場合は、標準の規則のコピーを作成し、元の規則を無効にする必要があります。 そして、コピーした規則を変更します。 同期規則エディターは、この手順で役立ちます。 標準の規則を開くと、次のダイアログ ボックスが表示されます。  
 ![標準の規則の警告](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)

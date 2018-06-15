@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 6466d6cb535bbe0042d7c4c3e828e576e23d5d07
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618924"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
@@ -312,7 +313,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 ### <a name="schema-overview"></a>スキーマの概要
 次の表に、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示します。
 
-| JSON プロパティ | [説明] |
+| JSON プロパティ | 説明 |
 |:--- |:--- |
 | **startTime** | 日付/時刻の値。 単純なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 このプロパティは省略可能です。 |
@@ -359,7 +360,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 次の表に、**schedule** の要素の詳細を示します。
 
 
-| JSON 要素 | [説明] | 有効な値 |
+| JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
 | **分** | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
 | **hours** | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul> |
@@ -373,7 +374,7 @@ Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで "monthDays" の変更を指定することはできません。 このような制限事項は、前のセクションの表に記載されています。
 
-| 例 | [説明] |
+| 例 | 説明 |
 |:--- |:--- |
 | `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
 | `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |

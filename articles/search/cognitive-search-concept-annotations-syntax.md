@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 2e838e9c94d5b19565bea3d02890fe6164bb37d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786791"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640908"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "33786791"
 
 構文を調べる前に、この記事の後の方で説明する例をよく理解できるように、いくつかの重要な概念を再確認しておきましょう。
 
-| 用語 | [説明] |
+| 用語 | 説明 |
 |------|-------------|
 | エンリッチされたドキュメント | エンリッチされたドキュメントは、ドキュメントに関連するすべての注釈を保持するためにパイプラインによって作成されて使用される内部構造です。 エンリッチされたドキュメントのことは、注釈のツリーとして考えてください。 一般に、前の注釈から作成された注釈は、その子になります。<p/>エンリッチされたドキュメントは、スキルセットの実行中にのみ存在します。 コンテンツが検索インデックスにマップされると、エンリッチされたドキュメントは必要なくなります。 エンリッチされたドキュメントを直接操作することはありませんが、スキルセットの作成時にドキュメントのメンタル モデルがあると便利です。 |
 | エンリッチメント コンテキスト | どの要素がエンリッチされるかという観点での、エンリッチメントが行われるコンテキストです。 既定では、エンリッチメント コンテキストは `"/document"` レベルであり、個々のドキュメントがスコープになります。 スキルを実行すると、そのスキルの出力は、[定義されたコンテキストのプロパティ](#example-2)になります。|
@@ -125,5 +125,5 @@ Azure Blob ストレージに、名前付きエンティティ認識を使用し
 ## <a name="see-also"></a>関連項目
 + [エンリッチメント パイプラインにカスタム スキルを統合する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](ref-create-skillset.md)
++ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをインデックスにマップする方法](cognitive-search-output-field-mapping.md)
