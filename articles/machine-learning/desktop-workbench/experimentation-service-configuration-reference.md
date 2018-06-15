@@ -7,14 +7,16 @@ ms.author: gokhanu
 manager: haining
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 8ea7e7453ba49b17560b7c2147dd6c71c6c1a7a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1a4b6b803687b2c433ad94a54f076f23fe63c350
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831314"
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 
@@ -190,7 +192,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **TrackedRun**: このフラグは、Azure ML Workbench 実行履歴インフラストラクチャ内での実行を追跡するかどうかを実験サービスに指示します。 既定値は _true_です。 
 
-**UseSampling**: _UseSampling_ は、データ ソースのアクティブなサンプル データセットを実行に使用するかどうかを指定します。 _false_ に設定した場合、データ ソースを取り込み、データ ストアから読み取られた完全なデータを使用します。 _true_ に設定した場合、アクティブなサンプルが使用されます。 ユーザーは、**DataSourceSettings** を使って、アクティブなサンプルを上書きする場合に使う特定のサンプル データセットを指定できます。 
+**UseSampling**: _UseSampling_ は、データ ソースのアクティブなサンプル データセットを実行に使用するかどうかを指定します。 _false_ に設定した場合、データ ソースを取り込み、データ ストアから読み取られた完全なデータを使用します。 _true_ に設定した場合、アクティブなサンプルが使用されます。 ユーザーは、**DataSourceSettings** を使って、アクティブなサンプルをオーバーライドする場合に使う特定のサンプル データセットを指定できます。 
 
 **DataSourceSettings**: この構成セクションは、データ ソース設定を指定します。 このセクションでは、ユーザーは、実行の一部として使用される特定のデータ ソースの既存のデータ サンプルを指定します。 
 

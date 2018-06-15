@@ -7,14 +7,16 @@ ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: cbb077796d9f14a7f9d1d00268c7b6889ade8375
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 60d65b17d4cbe8a45ff3fb62b06852d7b945e8f1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832861"
 ---
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
 
@@ -83,7 +85,7 @@ ms.lasthandoff: 04/19/2018
 
 データ ファイルには、9 個のデータ フィールドがあります。 データ フィールドの名前と説明は以下のとおりです。
 
-| フィールド名 | type | [説明] | 欠損値を含む |
+| フィールド名 | type | 説明 | 欠損値を含む |
 |------------|------|-------------|---------------|
 | `ID` | String | 法案/決議の ID。 このフィールドの形式は、[法案の種類][番号]-[会議] です。 たとえば、"hconres1-93" は、法案の種類は "hconres" (両院一致決議を表します。詳細については[こちらのドキュメント](https://github.com/unitedstates/congress/wiki/bills#basic-information)を参照してください)、法案番号は "1"、会議番号は "93" です。 | いいえ  |
 | `Text` | String | 法案/決議の内容。 | いいえ  |
@@ -101,7 +103,7 @@ ms.lasthandoff: 04/19/2018
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | type | [説明] |
+| ファイル名 | type | 説明 |
 |-----------|------|-------------|
 | `aml_config` | フォルダー | Azure Machine Learning Workbench 構成フォルダー。詳細な実験の実行構成については、[こちらのドキュメント](./experimentation-service-configuration-reference.md)を参照してください |
 | `Code` | フォルダー | Python スクリプトと Python パッケージを保存するために使用されるコード フォルダー |

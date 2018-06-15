@@ -4,7 +4,7 @@ description: Twitter コネクタと REST API パラメーターの概要
 services: ''
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: eb953ee7701d407b9b75a0699f53b9b64828a0e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b44a973a94043f71f2fd9803abca47652363d8a1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296545"
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Twitter コネクタの使用
 Twitter コネクタでは、次のことが可能です。
@@ -83,7 +84,7 @@ Twitter コネクタでは、次のことが可能です。
 
 次の手順では、50 人以上のフォロワーを持つユーザーが投稿した各ツイートのプロパティの一部を使用してツイートを投稿する Twitter アクションを追加します。  
 
-1. **[アクションの追加]**を選択します。 この手順で、他のアクションやトリガーを検索できる検索コントロールが開きます。  
+1. **[アクションの追加]** を選択します。 この手順で、他のアクションやトリガーを検索できる検索コントロールが開きます。  
    ![Twitter 条件の画像 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
 2. 検索ボックスに「*twitter*」と入力し、**[Twitter - Post a tweet (Twitter - ツイートの投稿)]** アクションを選択します。 この手順で、**[Post a tweet (ツイートの投稿)]** コントロールが開きます。ここで、投稿するツイートの詳細をすべて入力します。      
    ![Twitter アクションの画像 1 ～ 5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   

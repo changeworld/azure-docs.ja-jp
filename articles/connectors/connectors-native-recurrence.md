@@ -1,11 +1,11 @@
 ---
-title: "定期的に実行されるワークフローとタスクのスケジューリング - Azure Logic Apps | Microsoft Docs"
-description: "定期的に実行されるタスク、アクション、ワークフロー、プロセス、ワークロードをロジック アプリで作成し、スケジューリングします。"
+title: 定期的に実行されるワークフローとタスクのスケジューリング - Azure Logic Apps | Microsoft Docs
+description: 定期的に実行されるタスク、アクション、ワークフロー、プロセス、ワークロードをロジック アプリで作成し、スケジューリングします。
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296789"
 ---
 # <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Azure Logic Apps を使用して定期的に実行されるタスクを作成し、スケジュールを設定する
 
@@ -44,7 +45,7 @@ ms.lasthandoff: 03/05/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金のサブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識 
 
@@ -96,7 +97,7 @@ ms.lasthandoff: 03/05/2018
 
 繰り返しトリガーに関して構成できるプロパティは次のとおりです。
 
-| Name | 必須 | プロパティ名 | type | [説明] | 
+| Name | 必須 | プロパティ名 | type | 説明 | 
 |----- | -------- | ------------- | ---- | ----------- | 
 | **頻度** | [はい] | frequency | String | 繰り返しの時間の単位。**秒**、**分**、**時**、**日**、**週**、**月**のいずれかになります。 | 
 | **間隔** | [はい] | interval | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>既定の間隔は 1 です。 間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- 秒: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 | 

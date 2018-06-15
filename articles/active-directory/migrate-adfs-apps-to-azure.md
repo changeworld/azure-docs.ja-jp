@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 93282f3d4a7ca84e59fa8831d5eb650a643d1e83
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 6c82ba9f5864da96ae008974b758058fc6d63cb1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296713"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -93,7 +94,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 - AD FS の用語: 証明書利用者または証明書利用者信頼。
 - Azure AD の用語: エンタープライズ アプリケーションまたはアプリの登録 (アプリの種類によって異なります)。
 
-|アプリの構成要素|[説明]|AD FS 構成内の場所|Azure AD 構成内の対応する場所|SAML トークン要素|
+|アプリの構成要素|説明|AD FS 構成内の場所|Azure AD 構成内の対応する場所|SAML トークン要素|
 |-----|-----|-----|-----|-----|
 |アプリのサインオン URL|このアプリケーションのサインイン ページの URL。 これは、SP によって開始された SAML フローでユーザーがアプリにサインインする場所です。|該当なし|Azure AD では、サインオン URL は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの [サインオン URL] として構成します</br></br>([サインオン URL] を表示するには、**[詳細な URL 設定の表示]** を選択しなければならない場合があります)。|該当なし|
 |アプリの応答 URL|ID プロバイダー (IdP) の観点からの、アプリの URL。 これは、ユーザーが IdP でサインオンした後で、ユーザーとトークンが送信される場所です。</br></br> "SAML アサーション コンシューマー エンドポイント" と呼ばれることもあります。|アプリの AD FS 証明書利用者信頼にあります。 証明書利用者を右クリックし、**[プロパティ]** を選択し、**[エンドポイント]** タブをクリックします。|Azure AD では、応答 URL は Azure Portal 内でアプリケーションの **[シングル サインオン]** プロパティの [応答 URL] として構成します</br></br>([応答 URL] を表示するには、**[詳細な URL 設定の表示]** を選択しなければならない場合があります)。|SAML トークンの **Destination** 要素にマッピングされます。</br></br> 値の例: https://contoso.my.salesforce.com|
@@ -116,7 +117,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 
 次の表では、アプリで SSO 設定を構成するための主要な IdP 構成要素と、その値、または AD FS と Azure AD 内での場所について説明しています。 表の基準となっているのは、SaaS アプリです。SaaS アプリでは、認証要求の送信先と、受信したトークンの検証方法を知っている必要があります。
 
-|構成要素|[説明]|AD FS|Azure AD|
+|構成要素|説明|AD FS|Azure AD|
 |---|---|---|---|
 |IdP </br>サインオン </br>URL|アプリの観点からの IdP のサインオン URL (ユーザーがログインのためにリダイレクトされる場所)。|AD FS のサインオン URL は、AD FS フェデレーション サービス名に "/adfs/ls/" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます。</br></br>SAML-P プロトコルを使用するアプリの場合: https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>WS-Federation プロトコルを使用するアプリの場合: https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
 |IdP </br>サインアウト </br>URL|アプリの観点からの IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。|AD FS の場合、サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD での対応する値は、アプリが SAML 2.0 サインアウトをサポートしているかどうかによって異なります。</br></br>アプリが SAML サインアウトをサポートしている場合、値は、以下のパターンに従います。{tenant-id} はテナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//login.microsoftonline.com/{tenant-id}/saml2)。</br></br>アプリが SAML サインアウトをサポートしていない場合: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
@@ -201,7 +202,7 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 
 ![[割り当ての追加] ウィンドウ](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは http://myapps.microsoft.com にあります。この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
+アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは http://myapps.microsoft.com にあります。 この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
 
 ![Salesforce と ServiceNow アプリが表示されているアクセス パネルの例](media/migrate-adfs-apps-to-azure/migrate8.png)
 
@@ -235,5 +236,5 @@ Azure AD で SaaS アプリのユーザー プロビジョニングを直接処�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Active Directory でのアプリケーションの管理](manage-apps/what-is-application-management.md)
-- [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
+- [アプリへのアクセスを管理する](manage-apps/what-is-access-management.md)
 - [Azure AD Connect フェデレーション](active-directory-aadconnectfed-whatis.md)

@@ -8,6 +8,7 @@ editor: mezmicrosoft
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
-ms.openlocfilehash: 081ca444aee5cd3d426ee569a98bf54c7923af79
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835102"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 
@@ -80,7 +82,7 @@ Posts データの `PostTypeId` フィールドは、投稿が `Question` と `A
 
 次の表に、3 つのデータセットのデータ スキーマとダウンロード リンクを示します。
 
-| Dataset | フィールド | type | [説明]
+| Dataset | フィールド | type | 説明
 | ----------|------------|------------|--------
 | [questions](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | String | 一意の質問 ID (主キー)
 |  | AnswerId | String | 質問ごとの一意の回答 ID
@@ -100,7 +102,7 @@ Q&A 照合の例では、3 種類のファイルを使用しています。 1 �
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | type | [説明]
+| ファイル名 | type | 説明
 | ----------|------------|--------
 | `Image` | フォルダー | README ファイルの画像を保存するためのフォルダー
 | `notebooks` | フォルダー | Jupyter Notebook のフォルダー

@@ -2,29 +2,26 @@
 title: Azure Cosmos DB 入力バインドで HTTP トリガーを作成する | Microsoft Docs
 description: HTTP トリガーで Azure Functions を使用して Azure Cosmos DB にクエリを実行する方法について説明します。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818901"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Azure Cosmos DB 入力バインドで Azure Functions HTTP トリガーを作成する
 
 Azure Cosmos DB は、スキーマレスかつサーバーレスなグローバル分散型マルチモデル データベースです。 Azure 関数はサーバーレス コンピューティング サービスで、このサービスにより、オンデマンドでコードを実行することができます。 この 2 つの Azure サービスを組み合わせることで、サーバーレス アーキテクチャの基盤が確保され、優れたアプリの構築に専念できます。コンピューティングおよびデータベースのニーズに応じて、サーバーのプロビジョニングや保守を行うことを心配する必要がありません。
 
-このチュートリアルは、[.NET 用 Graph API クイックスタート](create-graph-dotnet.md)で作成したコードに基づいており、 [HTTP トリガー](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger)を含む Azure 関数を追加します。 HTTP トリガーは、Azure Cosmos DB [入力バインド](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md)を使用して、クイックスタートで作成したグラフ データベースからデータを取得します。 この特定の HTTP トリガーは、Azure Cosmos DB に対してデータのクエリを実行しますが、Azure Cosmos DB からの入力バインドを使用して、関数に必要なものすべてについてデータ入力値を取得できます。
+このチュートリアルは、[.NET 用 Graph API クイックスタート](create-graph-dotnet.md)で作成したコードに基づいており、 [HTTP トリガー](../azure-functions/functions-bindings-http-webhook.md)を含む Azure 関数を追加します。 HTTP トリガーは、Azure Cosmos DB [入力バインド](../azure-functions/functions-triggers-bindings.md)を使用して、クイックスタートで作成したグラフ データベースからデータを取得します。 この特定の HTTP トリガーは、Azure Cosmos DB に対してデータのクエリを実行しますが、Azure Cosmos DB からの入力バインドを使用して、関数に必要なものすべてについてデータ入力値を取得できます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 

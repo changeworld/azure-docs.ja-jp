@@ -7,14 +7,16 @@ ms.author: svankam
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 05db4e47e5b2931a101a323a0210c080b87c1c42
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832943"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -183,7 +185,7 @@ username ALL=(ALL) NOPASSWD:ALL
 
 _username_ は、リモート ホストにログインする際に使用する Azure Machine Learning Workbench の名前です。
 
-この行は、#includedir "/etc/sudoers.d" の後に配置する必要があります。そうしないと、別の規則によって上書きされる場合があります。
+この行は、#includedir "/etc/sudoers.d" の後に配置する必要があります。そうしないと、別の規則によってオーバーライドされる場合があります。
 
 より複雑な sudo 構成がある場合、使用可能な Ubuntu については、sudo のドキュメント (https://help.ubuntu.com/community/Sudoers) を参照してください。
 

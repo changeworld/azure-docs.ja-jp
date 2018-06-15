@@ -2,7 +2,7 @@
 title: B2B 監視の AS2 追跡スキーマ - Azure Logic Apps | Microsoft Docs
 description: AS2 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8605950f3cc07730ee13b91999076e3a093e8d92
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 48e39fd20716e962c4a3e367fdff18e0b4fba32d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300883"
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>AS2 メッセージおよび MDN の追跡を開始または有効にして、成功、失敗、メッセージのプロパティを監視する
 Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して企業間 (B2B) 取引の監視に役立てることができます。
@@ -59,7 +60,7 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
     }
 ````
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |
@@ -111,7 +112,7 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
     }
 ````
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |

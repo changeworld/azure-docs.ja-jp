@@ -9,17 +9,19 @@ editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 48c88f541f650fac3bdec431f3164138fb0f3205
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832681"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 
@@ -35,7 +37,7 @@ ms.lasthandoff: 04/19/2018
 ### <a name="purpose"></a>目的
 このサンプルの主な目的は、[Team Data Science Process (TDSP)](https://github.com/Azure/Microsoft-TDSP) 構造と Azure Machine Learning のテンプレートを使用して、機械学習プロジェクトをインスタンス化し実行する方法について説明することです。 このために、よく知られている [UCI Machine Learning Repository から取得された、1994 年の米国の国勢調査データ](https://archive.ics.uci.edu/ml/datasets/adult)を使用します。 モデリングのタスクは、米国国勢調査情報 (年齢、人種、学歴、出身国など) から米国の年間収入分類を予測することです。
 
-### <a name="scope"></a>Scope (スコープ)
+### <a name="scope"></a>スコープ
  * ユース ケースの概要で説明されている予測問題に対処する機械学習モデルのデータ探索、トレーニング、および配置。 
  * このプロジェクトのために、Azure Machine Learning から Team Data Science Process (TDSP) テンプレートを使用して Azure Machine Learning でプロジェクトを実行します。 プロジェクトの実行とレポートには、TDSP ライフサイクルを使用します。
  * ソリューションは、Azure Container Services の Azure Machine Learning から直接、運用化します。

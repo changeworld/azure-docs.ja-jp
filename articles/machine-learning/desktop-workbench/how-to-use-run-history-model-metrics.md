@@ -7,14 +7,16 @@ ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dddf6af506269c7f22cea69e39b55effa2f14d63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831871"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法
 
@@ -68,7 +70,7 @@ run_logger = get_azureml_logger()
 開発が完了したら、コマンド ラインで値を渡せるように、スクリプトをパラメーター化すると便利です。
 次の例は、標準の Python ライブラリを使用してコマンド ライン パラメーター (存在する場合) を受け入れる方法を示しています。
 このスクリプトは、オーバーフィットを発生させずに*精度*を上げる作業に分類モデルを適合させるために使用される [Regularization Rate]\(正則化率)\ (*reg*) の 1 つのパラメーターを受け取ります。
-これらの変数は *[Regularization Rate]\(正則化率)* および *[Accuracy]\(精度)* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
+これらの変数は *[Regularization Rate]\(正則化率)\*および *[Accuracy] \(精度)\* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -122,7 +124,7 @@ run_logger.log("Accuracy", accuracy)
 
 ### <a name="run-history-dashboard"></a>実行履歴ダッシュボード
 8 つの実行すべての結果が、**実行履歴ダッシュボード**に表示されます。
-**iris_sklearn.py** では *[Regularization Rate]\(正則化率)* と *[Accuracy]\(精度)* がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
+**iris_sklearn.py** では *[Regularization Rate]\(正則化率)\*と *[Accuracy]\(精度)\*がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
 
 ![実行履歴ダッシュボード](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
@@ -130,7 +132,7 @@ run_logger.log("Accuracy", accuracy)
 
 ![実行履歴ダッシュボードのグリッドのカスタマイズ](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)\** と **[Accuracy]\(精度)\** をクリックすると、これらの値がグリッドに追加されます。
+追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)\**と **[Accuracy]\(精度)\** をクリックすると、これらの値がグリッドに追加されます。
 
 ![カスタマイズしたグリッドに表示されたログ記録された値](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 

@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: ee34520973a482a5a7741efe1306c8a656315277
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6b8cb104c734edf688d875a8e9674a660f2db4e2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834602"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -69,7 +71,7 @@ ms.lasthandoff: 03/23/2018
    > 
    
     ![[Public (公開)] または [Unlisted (非公開)] を選択する](./media/gallery-collections/create-collection-page-3.png)
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 
 これで、コレクションが Azure AI ギャラリーに追加されます。 コレクションは、アカウント ページの **[Collection (コレクション)]** タブに一覧表示されます。
 
@@ -86,7 +88,7 @@ ms.lasthandoff: 03/23/2018
 
 ![詳細ページから項目をコレクションに追加する](./media/gallery-collections/add-to-collection-from-item-details.png)
 
-コレクションの概要、説明、またはタグを変更するには、コレクションを開いて **[Edit (編集)]**を選択します。 
+コレクションの概要、説明、またはタグを変更するには、コレクションを開いて **[Edit (編集)]** を選択します。 
 
 コレクションの編集中に、コレクション内の項目の順序を変更できます。 項目の横にある矢印ボタンを使用して、順序リストで上または下に移動します。 
 

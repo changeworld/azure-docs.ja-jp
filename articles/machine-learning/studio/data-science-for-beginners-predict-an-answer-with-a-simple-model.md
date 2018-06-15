@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 019f3a94e81d0ae581414f62c5e0389c9c2b6813
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ad1b8369358f7811a02d344fdc0306662413a404
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833827"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ
@@ -74,7 +76,7 @@ ms.lasthandoff: 03/23/2018
 
 ![重さと価格の軸](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-このデータを取得し、 *"散布図"*に変換します。 数値のデータ セットを視覚化するにはこの方法がお勧めです。
+このデータを取得し、 *"散布図"* に変換します。 数値のデータ セットを視覚化するにはこの方法がお勧めです。
 
 最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。 次に、7,366 ドルの位置で水平軸の見当を付けてください。 それらが交差する場所に点を描きます。 これが 1 番目のダイヤモンドを表します。
 
@@ -91,7 +93,7 @@ ms.lasthandoff: 03/23/2018
 
 直線から外れた点があってもかまいません。 データ サイエンティストの説明では、この直線がモデルです。また、各点には、"*ノイズ*" または "*分散*" が付随しています。 基になる理想的な関係が存在し、一方、ノイズや不確実性を含むザラザラした現実世界があります。
 
-"*どの程度か*" という質問に回答しようとしているため、これを "*回帰*" と呼びます。 また、直線を使用しているため、これは *"線形回帰"*です。
+"*どの程度か*" という質問に回答しようとしているため、これを "*回帰*" と呼びます。 また、直線を使用しているため、これは *"線形回帰"* です。
 
 ## <a name="use-the-model-to-find-the-answer"></a>モデルを使用して回答を見つける
 では、作成したモデルに "1.35 カラットのダイヤモンドの価格はいくらですか" と質問します。

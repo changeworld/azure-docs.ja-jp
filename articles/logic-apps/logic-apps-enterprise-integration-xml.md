@@ -4,7 +4,7 @@ description: Enterprise Integration Pack を使用した、ロジック アプ�
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 02/27/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 495cb44219ee9d8ca20ea17c373545668839f4c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85bdaff5cb88bbadaed778458b66c0cce7bce9de
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298976"
 ---
 # <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>ロジック アプリでの XML の検証と変換、フラット ファイルのエンコードとデコード、メッセージ機能の強化
 

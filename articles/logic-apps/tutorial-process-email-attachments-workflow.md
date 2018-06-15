@@ -1,12 +1,12 @@
 ---
-title: "メールと添付ファイルを処理するワークフローの作成 - Azure Logic Apps | Microsoft Docs"
-description: "このチュートリアルでは、Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理する自動化されたワークフローの作成方法について説明します。"
+title: メールと添付ファイルを処理するワークフローの作成 - Azure Logic Apps | Microsoft Docs
+description: このチュートリアルでは、Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理する自動化されたワークフローの作成方法について説明します。
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 8c327599585e67ccc6ebdf849d3e9cf9b95e7398
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 3d6d66dca06c1f34a31155a27c32bbe3e48c8aa3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300635"
 ---
 # <a name="process-emails-and-attachments-with-a-logic-app"></a>ロジック アプリでメールと添付ファイルを処理する
 
@@ -128,7 +129,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. 関数を作成する前に、次の設定で[関数アプリを作成](../azure-functions/functions-create-function-app-portal.md)します。
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **アプリ名** | CleanTextFunctionApp | 関数アプリの名前。グローバルに一意で、かつわかりやすい名前を付けます。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
@@ -245,7 +246,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | Setting | 値 | [説明] | 
+      | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | チェックするメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -254,7 +255,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
   
    2. **[詳細オプションを表示する]** を選択し、次の設定を指定します。
 
-      | Setting | 値 | [説明] | 
+      | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
       | **添付ファイルあり** | [はい] | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
       | **添付ファイルを含める** | [はい] | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
@@ -415,7 +416,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![メールの本文に使う BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 コンテナーを参照して選択することもできます。 | 
    | **BLOB 名** | **[差出人]** フィールド | BLOB 名としてメールの送信者名を渡します。 パラメーター リストまたは動的コンテンツ リストから、**[新しい電子メールが届いたとき]** の **[差出人]** を選択します。 | 
@@ -448,7 +449,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 3. ロジック アプリによって適切なストレージ コンテナーにメールが保存されたことを確認します。 
 
    1. Storage Explorer で **[(Local and Attached)]\((ローカルと接続)\)**> 
-   **[ストレージ アカウント]** > **[attachmentstorageacct (External)]\(attachmentstorageacct (外部)\)** > 
+    **[ストレージ アカウント]** > **[attachmentstorageacct (External)]\(attachmentstorageacct (外部)\)** > 
     **[BLOB コンテナー]** > **[添付ファイル]** の順に展開します。
 
    2. メールの **attachments** コンテナーを確認します。 
@@ -500,7 +501,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 コンテナーを参照して選択することもできます。 | 
    | **BLOB 名** | **[名前]** フィールド | BLOB 名には、パラメーター リストまたは動的コンテンツ リストから **[名前]** を選択し、添付ファイルの名前を渡します。 | 
@@ -527,7 +528,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 3. ロジック アプリによって、適切なストレージ コンテナーにメールと添付ファイルが保存されたことを確認します。 
 
    1. Storage Explorer で **[(Local and Attached)]\((ローカルと接続)\)**> 
-   **[ストレージ アカウント]** > **[attachmentstorageacct (External)]\(attachmentstorageacct (外部)\)** > 
+    **[ストレージ アカウント]** > **[attachmentstorageacct (External)]\(attachmentstorageacct (外部)\)** > 
     **[BLOB コンテナー]** > **[添付ファイル]** の順に展開します。
 
    2. メールと添付ファイルが両方とも存在することを **attachments** コンテナーで確認します。

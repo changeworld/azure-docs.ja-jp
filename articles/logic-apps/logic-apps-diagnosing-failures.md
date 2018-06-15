@@ -1,24 +1,25 @@
 ---
-title: "障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリが失敗する状況と理由について"
+title: 障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリが失敗する状況と理由について
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: de706f711e9c57b2e575d130a2a0cfd0bdc907a1
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298792"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>ロジック アプリの障害のトラブルシューティングと診断
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 10/21/2017
 1. トリガーが起動したかどうかを確認するには、ロジック アプリのメニューの **[概要]** を選択します。 **[トリガーの履歴]** で、トリガーの状態を確認します。
 
    > [!TIP]
-   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリを開き直してください。
 
    ![トリガー履歴を確認する](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 10/21/2017
 
    トリガー試行には次のような状態があります。
 
-   | 状態 | Description | 
+   | 状態 | 説明 | 
    | ------ | ----------- | 
    | **成功** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
    | **スキップ済み** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
@@ -72,7 +73,7 @@ ms.lasthandoff: 10/21/2017
 1. ロジック アプリのメニューで、**[概要]** を選択します。 **[実行の履歴]** で、起動されたトリガーの実行を確認します。
 
    > [!TIP]
-   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+   > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリを開き直してください。
 
    ![実行履歴を確認する](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
 
@@ -82,7 +83,7 @@ ms.lasthandoff: 10/21/2017
 
    実行には次のような状態があります。
 
-   | 状態 | Description | 
+   | 状態 | 説明 | 
    | ------ | ----------- | 
    | **成功** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
    | **失敗** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 
@@ -98,7 +99,7 @@ ms.lasthandoff: 10/21/2017
 
    ![ロジック アプリの実行の詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 For example:
+3. 特定の手順の入出力と、エラー メッセージを確認するには、手順を選択します。これにより、シェイプを拡張され、詳細が表示されます。 例: 
 
    ![ステップの詳細を表示する](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
@@ -114,6 +115,6 @@ ms.lasthandoff: 10/21/2017
 
 4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリの実行し、RequestBin を更新します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)

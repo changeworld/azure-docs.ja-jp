@@ -8,18 +8,19 @@ manager: deguhath
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 18/05/2018
+ms.date: 05/18/2018
 ms.author: xibingao
-ms.openlocfilehash: cfb49f08a245fc08ba3fe78333e801ea2d358c4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a3dcfd8a9292d31c7342b8d50ec58c0da53318d3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367944"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837220"
 ---
 # <a name="skin-cancer-image-classification-with-azure-machine-learning-aml-package-for-computer-vision-amlpcv-and-team-data-science-process-tdsp"></a>Azure Machine Learning (AML) Package for Computer Vision (AMLPCV) と Team Data Science Process (TDSP) を使用した皮膚がんの画像分類
 

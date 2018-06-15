@@ -7,14 +7,16 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 6f3e08cf36a27d8f42291d13e82458e3fcebc03f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 65efee0eea5e2595ef8833788281c5ba60ca3a43
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830784"
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスを構成する
 

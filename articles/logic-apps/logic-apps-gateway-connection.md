@@ -1,12 +1,12 @@
 ---
-title: "Azure Logic Apps 用のオンプレミスのデータ ソースにアクセスする | Microsoft Docs"
-description: "オンプレミス データ ゲートウェイを設定して、ロジック アプリからオンプレミスのデータ ソースにアクセスできるようにします"
-keywords: "データへのアクセス, オンプレミス, データ転送, 暗号化, データ ソース"
+title: Azure Logic Apps 用のオンプレミスのデータ ソースにアクセスする | Microsoft Docs
+description: オンプレミス データ ゲートウェイを設定して、ロジック アプリからオンプレミスのデータ ソースにアクセスできるようにします
+keywords: データへのアクセス, オンプレミス, データ転送, 暗号化, データ ソース
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 6cb4449d-e6b8-4c35-9862-15110ae73e6a
 ms.service: logic-apps
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0bf51f22e41ec78ef1dca7cba7bd5e26cbe1d969
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300008"
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する
 

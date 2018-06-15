@@ -4,7 +4,7 @@ description: Azure App Service を使用してロジック アプリを作成し
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: e87173b4a31a721ca3cd5af41d4a6d725c46c972
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0b34a76ecaf4997cbf66c3d026cd770aa8aa080d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295841"
 ---
 # <a name="get-started-with-the-sendgrid-connector"></a>SendGrid コネクタの使用
 SendGrid 接続プロバイダーを使用して、電子メールを送信し、受信者リストを管理できます。
@@ -29,7 +30,7 @@ SendGrid 接続プロバイダーを使用して、電子メールを送信し�
 ## <a name="create-a-connection-to-sendgrid"></a>SendGrid への接続の作成
 SendGrid を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。 
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | ApiKey |[はい] |SendGrid API キーを指定します。 |
 

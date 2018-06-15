@@ -7,21 +7,23 @@ ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 791c34785fa817fd68d0bec8111bf23e606c9b64
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f3f24a9b269205dd77ec3301b2650ee7a03f435b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832698"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>現実的なシナリオに対応した予測メンテナンス
 
-予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 使用率やパフォーマンスを最大化し、コストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが必須です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
+予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 使用率やパフォーマンスを最大化し、コストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが極めて重要です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
 
-このシナリオでは、比較的[大規模なシミュレートされたデータ セット](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)を使用して、予測メンテナンスのデータ サイエンス プロジェクト (データ インジェスト、特徴エンジニアリング、モデルの構築、モデルの運用化とデプロイ) について説明します。 プロセス全体のコードは、Azure Machine Learning Workbench で PySpark を使用して、Jupyter Notebook に記述されています。 最終的なモデルは、設備の障害をリアルタイムで予測するために、Azure Machine Learning モデル管理を使用してデプロイされます。   
+このシナリオでは、比較的[大規模なシミュレートされたデータ セット](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)を使用して、予測メンテナンスのデータ サイエンス プロジェクト (データ インジェスト、特徴エンジニアリング、モデルの構築、モデルの運用化とデプロイ) について説明します。 プロセス全体のコードは、Azure Machine Learning Workbench 上の PySpark を使用して、Jupyter Notebook に記述されています。 最終的なモデルは、設備の障害をリアルタイムで予測するために、Azure Machine Learning モデル管理を使用してデプロイされます。   
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence ギャラリーの GitHub リポジトリ
 
@@ -30,11 +32,11 @@ PM チュートリアルの Cortana Intelligence ギャラリーはパブリッ�
 
 ## <a name="use-case-overview"></a>ユース ケースの概要
 
-資産の量が多い業種の企業が直面する主な問題は、機械的な問題による遅延に関係する重大なコストです。 ほとんどの企業は、このような問題が生じる前に事前に防ぐために、問題が発生するタイミングの予測に関心があります。 目標は、ダウンタイムを短縮してコストを削減し、できる限り安全性を高めることです。 
+資産の量が多い業種の企業が直面する主な問題は、機械的な問題による遅延に関係する重大なコストです。 企業の多くは、このような問題を未然に防ぐために、問題が発生するタイミングの予測に関心を寄せています。 目標は、ダウンタイムを短縮してコストを削減し、できる限り安全性を高めることです。 
 
 このシナリオでは、シミュレートされたデータ セット用の予測モデルの構築方法を示す目的で、[予測メンテナンス プレイブック](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)のアイデアを利用します。 サンプルのデータは、多くの予測メンテナンスのユース ケースで見られる一般的な要素から得られたものです。
 
-このシミュレートされたデータのビジネスの問題は、コンポーネント エラーで発生する問題を予測することです。 ビジネスの質問は、"*コンポーネント エラーが原因でマシンが停止する可能性はどのくらいか*" です。 この問題は、多クラス分類の問題 (コンピューターごとの複数のコンポーネント) としてフォーマットされます。 予測モデルの作成には、機械学習アルゴリズムが使用されます。 モデルは、マシンから収集された履歴データに対してトレーニングされます。 このシナリオでは、さまざまな手順を実行して、Machine Learning Workbench 環境内にモデルを実装します。
+このシミュレートされたデータのビジネス上の問題は、コンポーネント エラーで発生する問題を予測することです。 ビジネス上の疑問は、"*コンポーネント エラーが原因でマシンが停止する可能性はどのくらいか*" です。 この問題は、多クラス分類の問題 (コンピューターごとの複数のコンポーネント) としてフォーマットされます。 予測モデルの作成には、機械学習アルゴリズムが使用されます。 モデルは、マシンから収集された履歴データに対してトレーニングされます。 このシナリオでは、さまざまな手順を実行して、Machine Learning Workbench 環境内にモデルを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 

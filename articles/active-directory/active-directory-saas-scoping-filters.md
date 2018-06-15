@@ -1,8 +1,8 @@
 ---
-title: "スコープ フィルターを使用してアプリをプロビジョニングする | Microsoft Docs"
-description: "スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのにプロビジョニングされてしまうことを防ぐ方法について説明します。"
+title: スコープ フィルターを使用してアプリをプロビジョニングする | Microsoft Docs
+description: スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのにプロビジョニングされてしまうことを防ぐ方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293077"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/11/2017
 
 スコープ フィルターは、プロビジョニング コネクタの種類によって異なる方法で使用できます。
 
-* **Azure AD から SaaS アプリケーションへの外向きプロビジョニング**。 Azure AD がソース システムのとき、プロビジョニングに含めるユーザーを決定する方法として最も一般的なものが[ユーザーとグループの割り当て](active-directory-coreapps-assign-user-azure-portal.md)です。 ユーザーとグループの割り当てはシングル サインオンの有効化にも利用され、1 つの方法でアクセスとプロビジョニングを管理できます。 スコープ フィルターを割り当てに加えて (任意で)、あるいは割り当ての代わりに利用し、属性値に基づいてユーザーを絞り込むことができます。
+* **Azure AD から SaaS アプリケーションへの外向きプロビジョニング**。 Azure AD がソース システムのとき、プロビジョニングに含めるユーザーを決定する方法として最も一般的なものが[ユーザーとグループの割り当て](manage-apps/assign-user-or-group-access-portal.md)です。 ユーザーとグループの割り当てはシングル サインオンの有効化にも利用され、1 つの方法でアクセスとプロビジョニングを管理できます。 スコープ フィルターを割り当てに加えて (任意で)、あるいは割り当ての代わりに利用し、属性値に基づいてユーザーを絞り込むことができます。
 
     >[!TIP]
     > エンタープライズ アプリケーションの割り当てに基づいてプロビジョニングを無効にできます。プロビジョニング設定の [[スコープ]](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) を **[すべてのユーザーとグループを同期する]** に設定します。 このオプションと属性基準のスコープ フィルターを利用することで、グループ基準の割り当てよりパフォーマンスが速くなります。  
@@ -77,7 +78,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
 7. 照合対象としてソースの **[属性名]**、**[演算子]**、**[属性値]** を選択し、句を定義します。 次の演算子がサポートされています。
 
-   a. **EQUALS**。 評価される属性が (大文字と小文字の区別を含めて) 入力文字列値と完全に一致する場合、句は "true" を返します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **EQUALS**。 評価される属性が (大文字と小文字の区別を含めて) 入力文字列値と完全に一致する場合、句は "true" を返します。
 
    b. **NOT EQUALS**。 評価される属性が (大文字と小文字の区別を含めて) 入力文字列値と一致しない場合、句は "true" を返します。
 
@@ -87,7 +88,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
    e. **IS NULL**。 評価される属性が空の場合、句は "true" を返します。
 
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **IS NOT NULL**。 評価される属性が空でない場合、句は "true" を返します。
+   f. **IS NOT NULL**。 評価される属性が空でない場合、句は "true" を返します。
 
    g. **REGEX MATCH**。 評価される属性が正規表現パターンと一致する場合、句は "true" を返します。 例: ([1-9][0-9]) は 10 から 99 までのあらゆる数字と一致します。
 
@@ -99,7 +100,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
 10. **[スコープ フィルターのタイトル]** で、スコープ フィルターの名前を追加します。
 
-11. **[OK]**を選択します。
+11. **[OK]** を選択します。
 
 12. **[スコープ フィルター]** 画面でもう一度 **[OK]** を選択します。 必要に応じて、手順 6 ～ 11 を繰り返して別のスコープ フィルターを追加します。
 
@@ -115,6 +116,6 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
 * [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
-* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [SaaS アプリを統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 

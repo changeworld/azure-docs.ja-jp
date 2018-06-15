@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: 764e7c61b5ef023608767dfe78f3aa76e4463f05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84c6f4a1cedc0a04ee820f1de60f51e653f28425
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833881"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
@@ -56,7 +58,7 @@ ms.lasthandoff: 03/23/2018
 
 Microsoft では、[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) という、無料で試用できるクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、**[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)**というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
+このサービスの一部として、**[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning の実験 (モデル) のコレクションがあります。多くの人々によって構築され、有志で提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
 
 ![Azure AI ギャラリー](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -75,7 +77,7 @@ Microsoft では、[Azure Machine Learning Studio](https://azure.microsoft.com/s
 
 ![Clustering experiment description page](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-**[Open in Studio (Studio で開く)]**と書かれたリンクに注目してください。
+**[Open in Studio (Studio で開く)]** と書かれたリンクに注目してください。
 
 ![Open in Studio button](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 

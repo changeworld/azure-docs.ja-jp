@@ -5,7 +5,7 @@ keywords: データへのアクセス, オンプレミス, データ転送, 暗�
 services: logic-apps
 documentationcenter: ''
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 63ec26325e045d2ddc027194377e1604d083d82c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179012"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300539"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
 
@@ -206,7 +206,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 
 ゲートウェイによって [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) への送信接続が作成され、送信ポートの TCP 443 (既定)、5671、5672、9350 ～ 9354 で通信が行われます。 ゲートウェイでは受信ポートは必要ありません。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) に関するページを参照してください。
 
-| ドメイン名 | 送信ポート | [説明] |
+| ドメイン名 | 送信ポート | 説明 |
 | ------------ | -------------- | ----------- |
 | *. analysis.windows.net | 443 | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 

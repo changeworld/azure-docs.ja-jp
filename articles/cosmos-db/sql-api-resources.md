@@ -3,23 +3,21 @@ title: Azure Cosmos DB のリソース モデルと概念 | Microsoft Docs
 description: Azure Cosmos DB 階層型のデータベース、コレクション、ユーザー定義関数 (UDF)、ドキュメント、リソース管理アクセス許可などについて説明します。
 keywords: 階層型モデル, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 21b1e69573d2ddd31979e6c23dd7f3bd130cadbe
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798018"
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 階層型リソース モデルと中心的概念
 
@@ -50,9 +48,9 @@ Azure Cosmos DB が管理するデータベースのエンティティを**リ�
 ![Azure Cosmos DB 階層型リソース モデル][1]  
 **階層型リソース モデル**   
 
-リソースの操作を開始するには、Azure サブスクリプションを使用して[データベース アカウントを作成する](create-sql-api-dotnet.md)必要があります。 データベース アカウントは、一連の**データベース**から構成できます。それぞれのデータベースには、複数の**コレクション**が含まれており、さらに、それぞれのコレクションに、**ストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する**添付ファイル**が含まれています。 また、データベースには**ユーザー**が関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連の**アクセス許可**が関連付けられます。 データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメントと添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。  
+リソースの操作を開始するには、Azure サブスクリプションを使用して[データベース アカウントを作成する](create-sql-api-dotnet.md)必要があります。 データベース アカウントは、一連の**データベース**から構成できます。それぞれのデータベースには、複数の**コレクション**が含まれており、さらに、それぞれのコレクションに、ストアド プロシージャ、トリガー、UDF、ドキュメント、関連する**添付ファイル**が含まれています。 また、データベースには**ユーザー**が関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連の**アクセス許可**が関連付けられます。 データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメントと添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。  
 
-| リソース | [説明] |
+| リソース | 説明 |
 | --- | --- |
 | データベース アカウント |データベース アカウントは一連のデータベースと添付ファイルを格納する固定量の BLOB ストレージと関連付けられます。 データベース アカウントは、Azure サブスクリプションを使用して作成できます。 詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。 |
 | データベース |データベースは、コレクションに分割されたドキュメント ストレージの論理上のコンテナーです。 ユーザーのコンテナーとしても使用されます。 |
@@ -114,7 +112,7 @@ Cosmos DB は、JSON 標準に対する独自の拡張や特殊なエンコー�
 ### <a name="addressing-a-resource"></a>リソースのアドレス指定
 すべてのリソースは URI でアドレス指定されます。 リソースの相対 URI は、その **_self** プロパティの値で表されます。 URI の形式は、/\<feed\>/{_rid} パス セグメントから成ります。  
 
-| _self の値 | [説明] |
+| _self の値 | 説明 |
 | --- | --- |
 | /dbs |データベース アカウント下のデータベースのフィード |
 | /dbs/{dbName} |{dbName} の値と一致する ID を持つデータベース |

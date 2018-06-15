@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
-ms.author: danha; mbullwin
-ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: danha
+ms.author: mbullwin
+ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869888"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295521"
 ---
 # <a name="using-analytics-in-application-insights"></a>Application Insights の Analytics の使用
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。

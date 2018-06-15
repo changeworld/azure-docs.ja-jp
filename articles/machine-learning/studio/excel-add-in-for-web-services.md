@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 6610777ff4ad3a04f9d0d5b47f402aea7db59d9b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e2f72dfd8cc58d42263f4b6378d89304aaaa4d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834194"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Azure Machine Learning Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
@@ -29,10 +31,10 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    
     ![Web サービスの選択][01]
-3. この操作により、**[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]**をクリックすることもできます。
+3. この操作により、**[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]** をクリックすることもできます。
 4. ヘッダーを含めてデータを選択し、入力データ範囲のアイコンをクリックします。  [先頭行をデータの見出しとして使用する] ボックスを必ずオンにします。
 5. **[出力]** で、データを出力するセル番号を入力します。この場合、「H1」などと入力します。
-6. **[予測]**をクリックします。
+6. **[予測]** をクリックします。
    
     ![[予測] セクション][02]
 
@@ -59,21 +61,21 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 **新しい Web サービスを使用する**
 
 1. [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルで、**[WEB サービス]** をクリックし、Web サービスを選択します。 
-2. **[Consume (使用)]**をクリックします。
+2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 
 ## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
 
 1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイについて詳しくは、「[チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」をご覧ください。
-2. **[Consume (使用)]**をクリックします。
+2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 4. Excel で、**[Web サービス]** セクションに移動します (**[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。
    
     ![Web サービスの選択への移動][03]
-5. **[Web サービスの追加]**をクリックします。
+5. **[Web サービスの追加]** をクリックします。
 6. **URL**というラベルが付いた、Excell アドインのテキスト ボックスに URL を貼り付けます。
 7. **API キー**というラベルが付いたテキスト ボックスに API/主キーを貼り付けます。
-8. **[追加]**をクリックします。
+8. **[追加]** をクリックします。
    
     ![クラシック Web サービスの URL と API キー。][06]
 9. Web サービスを使用するには、前述の「既存の Web サービスを使用する手順」に従います。

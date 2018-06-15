@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157700"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293111"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
 ## <a name="catalog-of-roles"></a>ロールのカタログ
 
-| 役割 | [説明] | 概念実証 (PoC) の責任範囲 |
+| 役割 | 説明 | 概念実証 (PoC) の責任範囲 |
 | --- | --- | --- |
 | **ID アーキテクチャ/開発チーム** | このチームは、通常、ソリューションを設計し、プロトタイプを実装して、承認を得たうえで最後にオペレーションへの引き渡しを行います。 | 必要な環境を提供します。また管理の容易さの観点からさまざまなシナリオを評価する役割を担います。 |
 | **オンプレミス ID オペレーション チーム** | オンプレミスのさまざまな ID ソースを管理します (Active Directory フォレスト、LDAP ディレクトリ、人事システム、フェデレーション ID プロバイダー)。 | PoC のシナリオに必要なオンプレミス リソースへのアクセスを提供します。<br/>このチームの関与はできるだけ少なくする必要があります。|
@@ -141,7 +141,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | SaaS アプリケーションのテスト環境が利用できること。 このガイドでは、ServiceNow を例として使用します。<br/>既存データの品質とマッピングをナビゲートする際の負荷を最小限に抑えるために、テスト インスタンスの使用を強くお勧めします。 | https://developer.servicenow.com/app.do#!/home に移動して、テスト インスタンスの取得プロセスを開始します。 |
 | ServiceNow 管理コンソールへの管理者アクセス | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
-| アプリケーションの割り当て先となる一連の対象ユーザー。 PoC ユーザーを含むセキュリティ グループをお勧めします。 <br/>このグループの作成が現実的に難しい場合は、PoC のアプリケーションに直接ユーザーを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
+| アプリケーションの割り当て先となる一連の対象ユーザー。 PoC ユーザーを含むセキュリティ グループをお勧めします。 <br/>このグループの作成が現実的に難しい場合は、PoC のアプリケーションに直接ユーザーを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>手順
 
@@ -149,13 +149,13 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | すべてのアクターに Microsoft ドキュメントのチュートリアルを共有します。  | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
 | 作業ミーティングを設定し、各アクターと共にチュートリアルの手順を実行します。 | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
-| 「前提条件」に示されているグループにアプリを割り当てます。 POC の範囲に条件付きアクセスが含まれている場合は、後から再度アクセスして MFA などを追加してください。 <br/>これにより、プロビジョニング プロセスが開始されることに注意してください (構成されている場合)。 |  [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
+| 「前提条件」に示されているグループにアプリを割り当てます。 POC の範囲に条件付きアクセスが含まれている場合は、後から再度アクセスして MFA などを追加してください。 <br/>これにより、プロビジョニング プロセスが開始されることに注意してください (構成されている場合)。 |  [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
 | Azure AD 管理ポータルを使用してギャラリーから ServiceNow アプリケーションを追加します。| [Azure AD 管理ポータル: エンタープライズ アプリケーション](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Azure Active Directory でのエンタープライズ アプリケーション管理の新機能](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | ServiceNow アプリの [シングル サインオン] ブレードで [SAML ベースのサインオン] を有効にします。 |  |
 | [サインオン URL] と [識別子] フィールドに実際の ServiceNow URL を入力します。<br/>[新しい証明書をアクティブにする] チェック ボックスをオンにし、<br/>設定を保存します。 |  |
 | パネルの一番下にある [ServiceNow の構成] ブレードを開き、自分用にカスタマイズされた ServiceNow の構成手順を確認します。 |  |
 | ServiceNow の構成手順に従います。 |  |
-| ServiceNow アプリの [プロビジョニング] ブレードで "自動" プロビジョニングを有効にします。 | [新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する](active-directory-enterprise-apps-manage-provisioning.md) |
+| ServiceNow アプリの [プロビジョニング] ブレードで "自動" プロビジョニングを有効にします。 | [新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | プロビジョニングが完了するまで数分待ちます。  その間にプロビジョニング レポートを確認できます。 |  |
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
 | 作成したアプリケーションのタイルをクリックします。 アクセスを確認します。 |  |
@@ -176,7 +176,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | SaaS アプリケーションのテスト環境。 パスワード SSO の例としては、HipChat や Twitter があります。 その他のアプリケーションでは、HTML のサインイン フォームがあるページの正確な URL が必要です。 | [Twitter (Microsoft Azure Marketplace)](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat (Microsoft Azure Marketplace)](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | アプリケーションのテスト アカウント。 | [Twitter のサインアップ](https://twitter.com/signup?lang=en)<br/>[無料サインアップ: HipChat](https://www.hipchat.com/sign_up) |
-| アプリケーションの割り当て先となる一連の対象ユーザー。 それらのユーザーを含むセキュリティ グループをお勧めします。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
+| アプリケーションの割り当て先となる一連の対象ユーザー。 それらのユーザーを含むセキュリティ グループをお勧めします。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | Internet Explorer、Chrome、Firefox 用のアクセス パネル拡張機能をデプロイするコンピューターへのローカル管理者アクセス。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>手順
@@ -185,8 +185,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| 「前提条件」に示されているグループにアプリを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
+| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| 「前提条件」に示されているグループにアプリを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 |  |
 | 作成したアプリケーションのタイルをクリックします。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | アプリケーションの資格情報を指定します。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -211,7 +211,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | 対象アプリケーションのリストと実際のサインイン URL を事前に準備しておくこと。 たとえば Twitter を使用できます。 | [Twitter (Microsoft Azure Marketplace)](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Twitter のサインアップ](https://twitter.com/signup?lang=en) |
 | この SaaS アプリケーションの共有資格情報。 | [Azure AD とのアカウントの共有](active-directory-sharing-accounts.md)<br/>[Facebook、Twitter、LinkedIn の Azure AD 自動パスワード ロールオーバーがプレビュー段階になりました - Enterprise Mobility および Security ブログ] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
-| 同じアカウントにアクセスする少なくとも 2 人のチーム メンバーの資格情報。 これらのチーム メンバーはセキュリティ グループに属している必要があります。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
+| 同じアカウントにアクセスする少なくとも 2 人のチーム メンバーの資格情報。 これらのチーム メンバーはセキュリティ グループに属している必要があります。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | Internet Explorer、Chrome、Firefox 用のアクセス パネル拡張機能をデプロイするコンピューターへのローカル管理者アクセス。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>手順
@@ -220,8 +220,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | ブラウザー拡張機能をインストールします。 | [IE 用アクセス パネル拡張機能](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Chrome 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Firefox 用アクセス パネル拡張機能](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | ギャラリーからアプリケーションを構成します。 | [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 改良された新しいアプリケーション ギャラリー](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md) |
+| パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | **同じ共有アカウント**としてアプリにアクセスする別のユーザーとしてログインします。  |  |
 | 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージ アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
 

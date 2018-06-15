@@ -7,14 +7,16 @@ ms.author: haining
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 6d244e990552ac4899361360efb44be140b06fe8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 134e02f976f1ed0084e24ddbda06ba70b237edad
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833242"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>Machine Learning Workbench プロジェクトで Git リポジトリを使用する
 Azure Machine Learning Workbench で Git を使って、バージョン コントロールを提供し、データ サイエンス実験での再現性を確保する方法について説明します。 プロジェクトをクラウド Git リポジトリに関連付ける方法も示します。
@@ -51,7 +53,7 @@ Machine Learning 実験アカウントを作成し、Azure Machine Learning Work
     - **[Version Control]\(バージョン コントロール\)**: **[Git]** を選びます。
     - **[サブスクリプション]**: Machine Learning 実験アカウントのあるサブスクリプションを選びます。
     - **[場所]**: できる限り、Machine Learning 実験リソースに近いリージョンを選びます。
-4. **[作成]**を選択します。 
+4. **[作成]** を選択します。 
 
 ![Azure Portal でチーム プロジェクトを作成する](media/using-git-ml-project/create_vsts_team.png)
 

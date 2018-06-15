@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 540f97d1383b8a992a12426b03249ef82af0e7a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0494963f59e885cf2e7fe42704f1314e66ea28a5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834789"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -46,7 +48,7 @@ Azure AI ギャラリーには、独自の分析ソリューションの開発�
 * **[コレクション](gallery-collections.md)**: コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー項目をグループ化できます。
 * **[業界](gallery-industries.md)**: ギャラリーの [業界] セクションでは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
 
-最後に、**[コンペティション](gallery-competitions.md)**では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
+最後に、**[コンペティション](gallery-competitions.md)** では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
 
 ![Azure AI ギャラリーのホーム ページ](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 

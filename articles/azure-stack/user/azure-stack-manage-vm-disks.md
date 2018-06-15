@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 8e91b4d83aa90a7e744fb8e73cda788dbf8c58ec
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807433"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク ストレージをプロビジョニングする
 
@@ -61,7 +62,7 @@ VM の作成後、ポータルを使って次の操作を行うことができ�
 追加するアンマネージド ディスクはそれぞれ、個別のコンテナーに配置する必要があります。
 
 >[!NOTE]
->Azure によって作成および管理されているディスクは、[マネージド ディスク](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)と呼ばれます。
+>Azure によって作成および管理されているディスクは、[マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)と呼ばれます。
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>ポータルを使用して新しいデータ ディスクを作成して接続する
 

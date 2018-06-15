@@ -2,28 +2,26 @@
 title: PowerShell を使用した Azure Cosmos DB Table API 操作の実行 | Microsoft Docs
 description: PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798646"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cosmos DB Table API 操作の実行 
 
 >[!NOTE]
->Azure Cosmos DB Table API は、ターンキー グローバル配布、低待ち時間の読み取りと書き込み、自動セカンダリ インデックス付け、専用スループットなど、テーブル ストレージに対する高度な機能を提供します。 この記事の PowerShell コマンドは、ほとんどの場合、Azure Cosmos DB Table API と Azure Table Storage の両方で機能しますが、この記事は Azure Cosmos DB Table API に固有のものです。 Azure Table Storage を使用している場合は、「[Azure PowerShell を使用した Azure Table Storage 操作の実行](table-storage-how-to-use-powershell.md)」を参照してください。
+>Azure Cosmos DB Table API は、ターンキー グローバル配布、低待ち時間の読み取りと書き込み、自動セカンダリ インデックス付け、専用スループットなど、テーブル ストレージに対する高度な機能を提供します。 この記事の PowerShell コマンドは、ほとんどの場合、Azure Cosmos DB Table API と Azure Table Storage の両方で機能しますが、この記事は Azure Cosmos DB Table API に固有のものです。 Azure Table Storage を使用している場合は、「[Azure PowerShell を使用した Azure Table Storage 操作の実行](../storage/tables/table-storage-how-to-use-powershell.md)」を参照してください。
 >
 
 Azure Cosmos DB Table API を使用すると、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Cosmos DB Table API の概念について既に理解しているユーザーを対象としています。 詳細については、「[Azure Cosmos DB の Table API の概要](table-introduction.md)」および [Table API を使用した .NET アプリケーションの構築](create-table-dotnet.md)に関するページを参照してください。

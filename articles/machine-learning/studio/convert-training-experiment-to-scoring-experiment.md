@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 45b8e8812c2c63d60ccdb143656cca9f0dade183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bfbe22ba04f154c9f24daa13231d18e73316f9c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833844"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -72,7 +74,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 * **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、[データの分割][split] モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split] を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
 
-**[Web サービスの設定]**をクリックした後で、この例がどのようになるのかを次に示します。
+**[Web サービスの設定]** をクリックした後で、この例がどのようになるのかを次に示します。
 
 ![変換された予測実験][figure3]
 

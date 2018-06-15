@@ -2,22 +2,20 @@
 title: Azure Cosmos DB での Gremlin のサポート | Microsoft Docs
 description: Apache TinkerPop の Gremlin 言語について説明します。 Azure Cosmos DB で使用できる機能と手順について説明します。
 services: cosmos-db
-documentationcenter: ''
 author: LuisBosquez
 manager: kfile
-ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: ''
+ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797619"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB では、[Apache Tinkerpop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) をサポートしています。これは、グラフ エンティティを作成し、グラフ クエリ操作を実行するための Graph API です。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
@@ -130,7 +128,7 @@ Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphS
 
 GraphSON で使用される頂点のプロパティは次のとおりです。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | id | 頂点の ID。 一意である必要があります (該当する場合は、_partition の値との組み合わせにおいて一意である必要があります)。 |
 | label | 頂点のラベル。 これは省略可能です。エンティティの種類を示すために使用します。 |
@@ -141,7 +139,7 @@ GraphSON で使用される頂点のプロパティは次のとおりです。
 
 辺には、グラフの他の部分へのナビゲーションに役立つ次の情報が含まれています。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | id | 辺の ID。 一意である必要があります (該当する場合は、_partition の値との組み合わせにおいて一意である必要があります)。 |
 | label | 辺のラベル。 このプロパティは省略可能です。関係の種類を示すために使用します。 |
@@ -150,14 +148,14 @@ GraphSON で使用される頂点のプロパティは次のとおりです。
 
 各プロパティでは、配列内に複数の値を格納できます。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | value | プロパティの値。
 
 ## <a name="gremlin-steps"></a>Gremlin のステップ
 次に、Azure Cosmos DB でサポートされている Gremlin のステップを見てみましょう。 Gremlin の完全なリファレンスについては、[TinkerPop リファレンス](http://tinkerpop.apache.org/docs/current/reference)をご覧ください。
 
-| ステップ | [説明] | TinkerPop 3.2 ドキュメント |
+| ステップ | 説明 | TinkerPop 3.2 ドキュメント |
 | --- | --- | --- |
 | `addE` | 2 つの頂点の間に辺を追加します。 | [addE ステップ](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
 | `addV` | グラフに頂点を追加します。 | [addV ステップ](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |

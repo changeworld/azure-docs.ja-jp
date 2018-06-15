@@ -1,11 +1,11 @@
 ---
-title: "Azure Functions を使用した Azure Logic Apps のカスタム コード | Microsoft Docs"
-description: "Azure Functions を使用した Azure Logic Apps のカスタム コードの作成と実行"
+title: Azure Functions を使用した Azure Logic Apps のカスタム コード | Microsoft Docs
+description: Azure Functions を使用した Azure Logic Apps のカスタム コードの作成と実行
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 18442c87b049200fac5ed41cc7034ba7a848b8d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297871"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Azure Functions を使用したロジック アプリのカスタム コードの追加と実行
 
@@ -61,7 +62,7 @@ function start(req, res){
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Logic App デザイナーから関数を作成する
 
-Node.js webhook 関数は、デザイナーから作成することもできます。 最初に、 **[自分のリージョンの Azure Functions]** を選択し、関数用にコンテナーを選択します。 コンテナーがまだない場合は、 [Azure Functions ポータル](https://functions.azure.com/signin)から作成する必要があります。 **[新規作成]**を選択します。  
+Node.js webhook 関数は、デザイナーから作成することもできます。 最初に、 **[自分のリージョンの Azure Functions]** を選択し、関数用にコンテナーを選択します。 コンテナーがまだない場合は、 [Azure Functions ポータル](https://functions.azure.com/signin)から作成する必要があります。 **[新規作成]** を選択します。  
 
 計算するデータに基づいてテンプレートを生成するには、関数に渡すコンテキスト オブジェクトを指定します。 このオブジェクトは JSON オブジェクトである必要があります。 たとえば、FTP アクションからファイル コンテンツを渡す場合、コンテキストのペイロードは次の例のようになります。
 

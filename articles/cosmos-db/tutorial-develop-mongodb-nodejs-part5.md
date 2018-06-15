@@ -2,24 +2,22 @@
 title: Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 5 | Microsoft Docs
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 5 です。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7a4b25792577247d3121c5226da55081ed55ff2d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b6e3f66c6fb16adf6a8a1c51af61afb26aad59f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798663"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 5: Mongoose を使って Azure Cosmos DB に接続する
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 04/16/2018
 
 3. 次のコードを **mongo.js** にコピーします。 このコードによって以下が行われます。
     * Mongoose を要求する。
-    * Mongo の Promise を上書きして ES6/ES2015 以上に組み込まれている基本的な Promise を使用する。
+    * Mongo の Promise をオーバーライドして ES6/ES2015 以上に組み込まれている基本的な Promise を使用する。
     * 環境の種類 (ステージング、運用、開発) に応じて特定の動作を設定できる env ファイルを要求する。 このファイルは、この後すぐ作成します。
     * MongoDB 接続文字列をインクルードする。接続文字列は env ファイルで設定します。
     * Mongoose を呼び出す connect 関数を作成する。

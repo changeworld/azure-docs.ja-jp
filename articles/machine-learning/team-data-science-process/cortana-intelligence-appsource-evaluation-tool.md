@@ -7,17 +7,19 @@ author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams
-ms.openlocfilehash: 24e6ab7e94d8a1bdbfa0b5ee9112aaaff7e358ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a94febdb89573930715006501b3690c0aa845b7b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836751"
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
 ## <a name="overview"></a>概要

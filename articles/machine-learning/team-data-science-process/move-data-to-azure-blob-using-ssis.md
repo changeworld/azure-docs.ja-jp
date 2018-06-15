@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 39feca23532264c1f4c17017f89b064af09e9c1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 165180c49de75cf4b635a89dacec311d5370acd3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837747"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -66,7 +68,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 
 タスクで使用されるパラメーターについて、ここで説明します。
 
-| フィールド | [説明] |
+| フィールド | 説明 |
 | --- | --- |
 | **AzureStorageConnection** |既存の Azure Storage 接続マネージャーを指定するか、BLOB ファイルがホストされる場所を指す Azure ストレージ アカウントを参照する、新しい Azure Storage 接続マネージャーを作成します。 |
 | **BlobContainer** |アップロードしたファイルを BLOB として保持する BLOB コンテナーの名前を指定します。 |

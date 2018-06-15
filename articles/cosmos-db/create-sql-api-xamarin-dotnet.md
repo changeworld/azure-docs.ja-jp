@@ -2,23 +2,21 @@
 title: 'Azure Cosmos DB: Xamarin を使用した todo アプリの構築 | Microsoft Docs'
 description: Azure Cosmos DB への接続とデータの照会に使用できる Xamarin コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 05/30/2018
 ms.author: sngun
-ms.openlocfilehash: ca6780f9cec478cf9ed756aaefc7f6c059b6316a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b224a40f1ed5e778da6429d44a449d3f9ffdf16d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796124"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Xamarin を使用した todo アプリの構築
 
@@ -75,10 +73,10 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
-    git clone https://github.com/Azure/azure-documentdb-dotnet.git
+    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-3. 次に、Visual Studio の samples/xamarin/ToDoItems フォルダーにある ToDoItems.sln ファイルを開きます。
+4. 次に、Visual Studio の samples/xamarin/ToDoItems フォルダーにある ToDoItems.sln ファイルを開きます。
 
 ## <a name="obtain-your-api-keys"></a>API キーの取得
 
@@ -97,6 +95,8 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 4. 次に、ポータルから [主キー] 値をコピーし、APIKeys.cs 内の `Cosmos Auth Key` の値に設定します。
 
     `public static readonly string CosmosAuthKey = "{Azure Cosmos DB secret}";`
+
+[!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
 ## <a name="review-the-code"></a>コードの確認
 

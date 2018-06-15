@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 4c9e7ec65db80e0af91645d70cea39bb1a396791
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831787"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 
@@ -30,7 +31,7 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 
 |Request Header Key | 値|
 |-|-|
-|承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09|
+|承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>Consumption API
 下記の API では、[こちら](https://consumption.azure.com/swagger/ui/index)の Swagger エンドポイントを使用できます。これによって、API のイントロスペクションが容易になり、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](http://swagger.io/swagger-codegen/) を使用したクライアント SDK の生成機能が有効になります。 2014 年 5 月 1 日以降のデータは、この API で使用できます。 
@@ -50,8 +51,8 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
  **請求期間の一覧表示** - [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) を使用すると、指定された加入契約の消費量データが含まれる請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marketplace Charges および Price Sheet の 4 セットのデータの API ルートを示すプロパティが含まれています。
 
 
-## <a name="api-response-codes"></a>API 応答コード  
-|応答の状態コード|メッセージ|[説明]|
+## <a name="api-response-codes"></a>API 応答コード   
+|応答の状態コード|メッセージ|説明|
 |-|-|-|
 |200| OK|エラーなし|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|
