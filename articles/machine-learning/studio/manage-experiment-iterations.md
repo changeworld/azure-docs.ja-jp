@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: c5419eed1de50c29cf6e5bcaf7070c48d7a335ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4dcae0bb3cb89e65079b88f7be68ddf360ce1b8c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834813"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での実験イテレーションの管理
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
@@ -35,7 +37,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="viewing-the-prior-run"></a>前回の実行の表示
 1 回以上実行したことのある実験を開いている場合、[プロパティ] ウィンドウで **[前回の実行]** をクリックすると、実験の以前の実行を表示できます。
 
-たとえば、実験を作成し、11 時 23 分、11 時 42 分、11 時 55 分の実行バージョンがあると想定します。 この実験を最後に実行したバージョン (11:55) を開き、 **[前回の実行]**をクリックすると、11 時 42 分に実行したバージョンが開きます。
+たとえば、実験を作成し、11 時 23 分、11 時 42 分、11 時 55 分の実行バージョンがあると想定します。 この実験を最後に実行したバージョン (11:55) を開き、 **[前回の実行]** をクリックすると、11 時 42 分に実行したバージョンが開きます。
 
 ## <a name="viewing-the-run-history"></a>実行履歴の表示
 これまでに実行したすべての実験のバージョンは、開いている実験で **[実行履歴を表示]** をクリックすると表示できます。
@@ -49,7 +51,7 @@ ms.lasthandoff: 03/23/2018
 | 0.4 |2014 年 9 月 11 日 午後 4:28:36 |
 | 0.5 |2014 年 9 月 11 日 午後 4:33:31 |
 
-**[実行履歴を表示]**をクリックすると、これらの実行すべてがリストに表示されます。
+**[実行履歴を表示]** をクリックすると、これらの実行すべてがリストに表示されます。
 
 ![実行履歴の例][runhistory]
 
@@ -70,10 +72,10 @@ Machine Learning Studio の **[EXPERIMENTS]** タブの実験のリストには�
 たとえば、前のセクションで示した実験の実行履歴があると仮定します。 **[学習速度]** パラメーターを 0.4 に設定した場合の結果を観察し、**[Number of training epochs]** パラメーターでさまざまな値を試します。
 
 1. **[実行履歴を表示]** をクリックし、午後 4時 28 分 36 秒に実行した実験のイテレーションを開きます (パラメーター値は 0.4 に設定されています)。
-2. **[名前を付けて保存]**をクリックします。
+2. **[名前を付けて保存]** をクリックします。
 3. 新しいタイトルを入力し、 **[OK]** チェックマークをクリックします。 実験の新しいコピーが作成されます。
 4. **[Number of training epochs]** パラメーターを変更します。
-5. **[実行]**をクリックします。
+5. **[実行]** をクリックします。
 
 これで、このバージョンの実験を引き続き変更、実行して、作業を記録する新しい実行履歴をビルドできます。
 

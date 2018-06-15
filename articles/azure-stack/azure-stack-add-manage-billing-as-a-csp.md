@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 23e3a675e6a464c92d26df220c8126c970f590a0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 21a52af4943004789b0a9bdbe4695ab1a603c046
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796701"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>クラウド サービス プロバイダーとして Azure Stack の使用状況と課金を管理する 
 
@@ -47,7 +48,7 @@ Azure Stack に使用する共有サービス アカウントの種類を選択�
 
 Cloud Service Provider Shared Services (CSPSS) サブスクリプションは、直接 CSP または CSP ディストリビューターが Azure Stack を操作するときに登録のために推奨される選択肢です。
 
-CSPSS サブスクリプションは、共有サービス テナントに関連付けられています。 Azure Stack を登録する場合は、このサブスクリプションの所有者であるアカウントの資格情報を指定する必要があります。 Azure Stack を登録するために使用するアカウントは、デプロイに使用する管理者アカウントとは別のものにすることができます。この 2 つが同じドメインに属している必要は*ありません*。 つまり、既に使用しているテナントを使用してデプロイできます。 たとえば、ContosoCSP.onmicrosoft.com を使用した後、別のテナント (IURContosoCSP.onmicrosoft.com など) を使用して登録することが可能です。日常の Azure Stack 管理を実行する場合は、ContosoCSP.onmicrosoft.com を使用してログインするように注意する必要があります。 登録操作を実行する必要がある場合は、IURContosoCSP.onmicrosoft.com を使用して Azure にサインインします。
+CSPSS サブスクリプションは、共有サービス テナントに関連付けられています。 Azure Stack を登録する場合は、このサブスクリプションの所有者であるアカウントの資格情報を指定する必要があります。 Azure Stack を登録するために使用するアカウントは、デプロイに使用する管理者アカウントとは別のものにすることができます。この 2 つが同じドメインに属している必要は*ありません*。 つまり、既に使用しているテナントを使用してデプロイできます。 たとえば、ContosoCSP.onmicrosoft.com を使用した後、別のテナント (IURContosoCSP.onmicrosoft.com など) を使用して登録することが可能です。 日常の Azure Stack 管理を実行する場合は、ContosoCSP.onmicrosoft.com を使用してログインするように注意する必要があります。 登録操作を実行する必要がある場合は、IURContosoCSP.onmicrosoft.com を使用して Azure にサインインします。
 
 CSPSS サブスクリプションおよびサブスクリプションの作成方法については、[Azure Partner Shared Services の追加](https://msdn.microsoft.com/partner-center/shared-services)に関するページを参照してください。
 
@@ -83,5 +84,5 @@ Azure Stack が使用状況の情報をグローバル Azure に転送すると�
 
 ## <a name="next-steps"></a>次の手順
 
- - CSP プログラムの詳細については、[Cloud Solution Provider プログラム](https://partnercenter.microsoft.com/en-us/partner/programs)に関するページを参照してください。
- - リソース使用状況の情報を Azure Stack から取得する方法の詳細については、[Azure Stack での使用状況と課金](/azure-stack-billing-and-chargeback.md)に関するページを参照してください。
+ - CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](https://partnercenter.microsoft.com/en-us/partner/programs)」をご覧ください。
+ - Azure Stack からリソース使用量情報を取得する方法ついて詳しくは、「[Azure Stack での使用量と請求](azure-stack-billing-and-chargeback.md)」をご覧ください。

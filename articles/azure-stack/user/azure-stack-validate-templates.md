@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 88fac41ce2c9fa0c5569beae02ab90a507c89a34
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358644"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294491"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>テンプレート検証ツールを使用して Azure Stack のテンプレートをチェックする
 
@@ -32,8 +32,8 @@ ms.locfileid: "34358644"
 
 テンプレートを検証するには、最初にクラウド機能ファイルをビルドしてから検証ツールを実行します。 Azure Stack ツールから、次の PowerShell モジュールを使用します。
 
-- **TemplateValidator** フォルダー内:<br>         AzureRM.CloudCapabilities.psm1 は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
-- **CloudCapabilities** フォルダー内:<br>
+- **CloudCapabilities** フォルダー内:<br>         AzureRM.CloudCapabilities.psm1 は、Azure Stack クラウド内のサービスとバージョンを表すクラウド機能 JSON ファイルを作成します。
+- **TemplateValidator** フォルダー内:<br>
 AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使用して、Azure Stack へのデプロイ用テンプレートをテストします。
 
 ## <a name="build-the-cloud-capabilities-file"></a>クラウド機能ファイルをビルドする
@@ -83,7 +83,7 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 
 テンプレートの検証では、次のパラメーターがサポートされています。
 
-| パラメーター | [説明] | 必須 |
+| パラメーター | 説明 | 必須 |
 | ----- | -----| ----- |
 | TemplatePath | Azure Resource Manager テンプレートを再帰的に検索するパスを指定します | [はい] | 
 | TemplatePattern | 照合するテンプレート ファイルの名前を指定します。 | いいえ  |
@@ -99,7 +99,7 @@ AzureRM.TemplateValidator.psm1 は、クラウド機能 JSON ファイルを使�
 
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
--CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json.json `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json`
 -IncludeComputeCapabilities`
 -Report TemplateReport.html

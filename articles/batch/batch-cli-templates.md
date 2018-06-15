@@ -11,11 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 0a6e355d8f16fed9022cc2cf55dc09781364f0b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 565ceb179d8cf749842bb58ab25a8b3d946efa12
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608649"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
 
@@ -92,7 +93,7 @@ Azure Batch テンプレートは、機能と構文が Azure Resource Manager �
 
     -   必要に応じて、パッケージ マネージャーを使用して、ソフトウェアをプール ノードにコピーできます。 パッケージ マネージャーとパッケージ ID が指定されます。 1 つ以上のパッケージを宣言することで、必要なパッケージを取得するスクリプトを作成し、そのスクリプトをインストールして、各プール ノードで実行する必要がなくなります。
 
-ffmpeg がインストールされた Linux VM のプールを作成するテンプレートの例を次に示します。 このテンプレートを使用するには、プールの ID 文字列と、プール内の VM の数のみを指定します。
+ffmpeg がインストールされた Linux VM のプールを作成するテンプレートの例を次に示します。 これを使用するには、プールの ID 文字列と、プール内の VM の数のみを指定します。
 
 ```json
 {
@@ -119,7 +120,7 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
                 "imageReference": {
                     "publisher": "Canonical",
                     "offer": "UbuntuServer",
-                    "sku": "16.04.0-LTS",
+                    "sku": "16.04-LTS",
                     "version": "latest"
                 },
                 "nodeAgentSKUId": "batch.node.ubuntu 16.04"
@@ -139,7 +140,7 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
 }
 ```
 
-このテンプレート ファイルに "_pool-ffmpeg.json_" という名前を付けた場合、テンプレートを次のように呼び出します。
+このテンプレート ファイルに _pool-ffmpeg.json_ という名前を付けた場合、テンプレートを次のように呼び出します。
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -153,7 +154,7 @@ az batch pool create --template pool-ffmpeg.json
 
     -   1 つのタスク定義からジョブの複数のタスクを作成します。 パラメーター スイープ、ファイルごとのタスク、タスク コレクションの 3 種類のタスク ファクトリがサポートされています。
 
-ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のいずれかにトランスコードするジョブを作成するテンプレートの例を次に示します。 このテンプレートは、ソース ビデオ ファイルごとに 1 つのタスクを作成します。
+ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のいずれかにトランスコードするジョブを作成するテンプレートの例を次に示します。 ソース ビデオ ファイルごとに 1 つのタスクを作成します。
 
 ```json
 {
@@ -229,7 +230,7 @@ ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のい�
 }
 ```
 
-このテンプレート ファイルに "_job-ffmpeg.json_" という名前を付けた場合、テンプレートを次のように呼び出します。
+このテンプレート ファイルに _job-ffmpeg.json_ という名前を付けた場合、テンプレートを次のように呼び出します。
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -251,7 +252,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-プール テンプレートとジョブ テンプレートでは、プール ノードにコピーしたり、プール ノードからファイル グループにコピーしたりするために、ファイル グループに保存されたファイルを指定できます。 たとえば、前に指定したジョブ テンプレートでは、コード変換するためにノードにコピーされるソース ビデオ ファイルの場所として、タスク ファクトリにファイル グループ "ffmpeg-input" が指定されています。ファイル グループ "ffmpeg-output" は、各タスクを実行するノードとの間で、トランスコードされた出力ファイルをコピーする場所です。
+プール テンプレートとジョブ テンプレートでは、プール ノードにコピーしたり、プール ノードからファイル グループにコピーしたりするために、ファイル グループに保存されたファイルを指定できます。 たとえば、前に指定したジョブ テンプレートでは、コード変換するためにノードにコピーされるソース ビデオ ファイルの場所として、タスク ファクトリにファイル グループ "ffmpeg-input" が指定されています。ファイル グループ "ffmpeg-output" は、各タスクを実行するノードから、トランスコードされた出力ファイルをコピーする場所です。
 
 ## <a name="summary"></a>まとめ
 

@@ -1,6 +1,5 @@
 > [!div class="op_single_selector"]
 > * [デバイス: Node.js サービス: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [デバイス: Node.js サービス: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
 > * [デバイス: C# サービス: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [デバイス: Java サービス: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [デバイス: Python サービス: Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)

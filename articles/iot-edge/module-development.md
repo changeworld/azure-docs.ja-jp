@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge のモジュールを開発する | Microsoft Docs"
-description: "Azure IoT Edge のカスタム モジュールの作成方法について説明します"
-services: iot-edge
-keywords: 
+title: Azure IoT Edge のモジュールを開発する | Microsoft Docs
+description: Azure IoT Edge のカスタム モジュールの作成方法について説明します
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 95b1d5d4e5e11f96b6abb17f0aeba935cc65512d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: bf6a14020f26691195963a210d668912705f3b8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631719"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>IoT Edge モジュールを開発するための要件と ツールについて理解する - プレビュー
 
@@ -52,7 +52,7 @@ IoT Edge ハブは、[モジュール構成][lnk-module-comp]に関する記事�
 
 最後に、Edge ハブによって処理された D2C メッセージには、次のシステム プロパティを使用してスタンプが付けられます。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | -------- | ----------- |
 | $connectionDeviceId | メッセージを送信したクライアントのデバイス ID |
 | $connectionModuleId | メッセージを送信したモジュールのモジュール ID |
@@ -72,7 +72,7 @@ IoT Edge ハブは、[モジュール構成][lnk-module-comp]に関する記事�
 IoT Edge モジュールは、Docker イメージとしてパッケージ化されます。
 ユーザーは、Docker ツールチェーンを直接使用することもできますし、「[Develop and deploy an IoT Edge module to a simulated device (IoT Edge モジュールを開発し、シミュレートされたデバイスにデプロイする)][lnk-tutorial2]」チュートリアルに示すように、Visual Studio Code を使用することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 モジュールを開発したら、[IoT Edge モジュールを大規模にデプロイして監視する][lnk-howto-deploy]方法について学習してください。
 

@@ -15,11 +15,11 @@ ms.date: 05/10/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.openlocfilehash: d7c8520602132722fd0c7138de4a276b9ac2208a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076455"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807341"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -75,7 +75,7 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 プラグイン ファイルの "Azurestack_plugin.py" を次のパラメーターで構成します。
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 |---------|---------|---------|
 | *arm_endpoint* | Azure Resource Manager (管理者) エンドポイント |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Azure Resource Manager (管理者) エンドポイント  | https://adminmanagement.local.azurestack.external |

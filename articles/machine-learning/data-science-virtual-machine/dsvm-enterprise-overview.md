@@ -8,18 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34361377"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830539"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [データ サイエンス仮想マシン](overview.md) (DSVM) は、AI およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure クラウド上のリッチな環境を提供します。 従来の DSVM は個人の分析デスクトップとして使用されてきましたが、構築済み分析環境のこの共有概念により個々のデータサイエンティストの生産性が向上します。 データサイエンティストと AI 開発者のための分析環境を計画する大規模な分析チームに繰り返し登場するテーマの 1 つが、エンタープライズの IT ポリシーに沿って管理され、データ サイエンス/分析チーム全体のコラボレーションと一貫性も促進するような、共有分析開発および実験インフラストラクチャです。 共有インフラストラクチャにより、分析環境をいっそう有効に活用することもできます。 チーム ベースのデータ サイエンス/分析インフラストラクチャは "分析サンドボックス" と呼ばれることもあり、これによりデータ サイエンティストは、さまざまなデータ資産にアクセスしても運用環境が影響を受けないような安全な方法で、データの理解、実験、仮説の検証、予測モデルの構築を迅速に行うことができます。 

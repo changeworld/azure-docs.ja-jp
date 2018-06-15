@@ -2,24 +2,19 @@
 title: Azure Backup の Log Analytics データ モデル
 description: この記事では、Azure Backup データに使用する Log Analytics データ モデルの詳細について説明します。
 services: backup
-documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: ''
-ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5a2ba1d523e7a6364420302eee095f24fd08eadb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605775"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 この記事では、Log Analytics にレポート データをプッシュするのに使用するデータ モデルについて説明します。 このデータ モデルを使用すると、カスタム クエリ、ダッシュボードを作成し、Log Analytics で活用することができます。 
@@ -30,7 +25,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="alert"></a>アラート:
 次の表は、アラートに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | AlertUniqueId_s |テキスト |生成されたアラートの一意の ID |
 | AlertType_s |テキスト |生成されたアラートの種類 (例: バックアップ) |
@@ -57,7 +52,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="backupitem"></a>BackupItem
 次の表は、バックアップ項目に関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
 | BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
@@ -83,7 +78,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 次の表は、バックアップ項目 アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
 | BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
@@ -106,7 +101,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="job"></a>ジョブ
 次の表は、ジョブに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | BackupItemUniqueId_s |テキスト |このジョブが属しているバックアップ項目の一意の ID |
@@ -136,7 +131,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="policy"></a>ポリシー
 次の表は、ポリシーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -176,7 +171,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="policyassociation"></a>PolicyAssociation
 次の表は、ポリシー アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -197,7 +192,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="protectedserver"></a>ProtectedServer
 次の表は、保護されるサーバーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | ProtectedServerName_s |テキスト |保護されるサーバーの名前 |
@@ -222,7 +217,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 次の表は、保護されるサーバー アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -243,7 +238,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="storage"></a>Storage
 次の表は、ストレージに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | CloudStorageInBytes_s |10 進数 |最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ |
 | ProtectedInstances_s |10 進数 |最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
@@ -266,7 +261,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="vault"></a>コンテナー
 次の表は、コンテナーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | [説明] |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19dd6a693daf0b54c7df448f21bdb098d9bbdcac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653503"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。 
@@ -79,7 +80,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   スムーズな移行を行うための最善の方法は、正確なシナリオ (コンピューティング、ネットワーク、およびストレージ) のラボ テストを実施することです。 これにより、次のメリットが得られます。
 
   - 完全に独立したラボまたは既存の非運用環境をテストに使用できます。 繰り返し移行可能であり、破壊的な変更が可能な、完全に独立したラボの使用をお勧めします。  実際のサブスクリプションからメタデータを収集およびハイドレートするスクリプトについては後述します。
-  - 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し撤去されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
+  - 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し解体されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
 
   これは、AsmMetadataParser ツールを使用して実施できます。 [このツールについては、こちらをご覧ください](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)。
 
@@ -91,7 +92,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
-- **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシックから Resource Manager デプロイメント モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
+- **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
   - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo v1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure 診断やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。

@@ -25,7 +25,7 @@ Usage :
 UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 ```
 
-| パラメーター|データ型|説明|指定できる値|
+| パラメーター|type|説明|指定できる値|
 |-|-|-|-|
 |/Role|必須|モビリティ サービス (MS) とマスター ターゲット (MS) のどちらをインストールするかを指定します。|MS </br> MT|
 |/InstallLocation|省略可能|モビリティ サービスをインストールする場所。|コンピューター上の任意のフォルダー|
@@ -42,7 +42,7 @@ Usage :
 UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
-  | パラメーター|データ型|説明|指定できる値|
+  | パラメーター|type|説明|指定できる値|
   |-|-|-|-|
   |/CSEndPoint |必須|構成サーバーの IP アドレス| 任意の有効な IP アドレス|
   |/PassphraseFilePath|必須|パス フレーズの場所 |任意の有効な UNC またはローカル ファイル パス|

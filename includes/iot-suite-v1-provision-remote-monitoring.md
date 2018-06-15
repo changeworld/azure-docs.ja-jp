@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 4224575644e754724d2129f101aed6b9e4b54b65
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670168"
+---
 ## <a name="provision-the-solution"></a>ソリューションのプロビジョニング
 
 リモート監視の事前構成済みソリューションをアカウントにまだプロビジョニングしていない場合は、次の手順を実施します。
@@ -11,7 +28,7 @@
 ### <a name="wait-for-the-provisioning-process-to-complete"></a>プロビジョニング プロセスが完了するまで待機します。
 1. **プロビジョニング** の状態を表示する、目的のソリューションのタイルをクリックします。
 2. Azure サービスが Azure サブスクリプションにデプロイされたら、 **プロビジョニングの状態** を確認します。
-3. プロビジョニングが完了すると、状態が **[準備完了]**に変わります。
+3. プロビジョニングが完了すると、状態が **[準備完了]** に変わります。
 4. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。
 
 > [!NOTE]
@@ -21,7 +38,7 @@
 
 ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)のページで機能に関する提案をお寄せください。
 
-[lnk-azureiotsuite]: https://www.azureiotsuite.com
+[lnk-azureiotsuite]: https://www.azureiotsolutions.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-v1-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-v1-faq.md

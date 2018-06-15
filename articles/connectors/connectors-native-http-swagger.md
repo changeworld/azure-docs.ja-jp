@@ -1,11 +1,11 @@
 ---
-title: "Azure ロジック アプリ用 HTTP + Swagger コネクタで REST エンドポイントを呼び出す |Microsoft Docs"
-description: "ロジック アプリから Swagger と HTTP + Swagger コネクタを通じて REST エンドポイントに接続します。"
+title: Azure ロジック アプリ用 HTTP + Swagger コネクタで REST エンドポイントを呼び出す |Microsoft Docs
+description: ロジック アプリから Swagger と HTTP + Swagger コネクタを通じて REST エンドポイントに接続します。
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296521"
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger アクションの概要
 
@@ -36,7 +37,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
 
 1. **[新しいステップ]** をクリックします。
-2. **[アクションの追加]**を選択します。
+2. **[アクションの追加]** を選択します。
 3. アクションの検索ボックスに「 **swagger** 」と入力して、HTTP + Swagger アクションを表示します。
    
     ![HTTP + Swagger アクションの選択](./media/connectors-native-http-swagger/using-action-1.png)
@@ -77,14 +78,14 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが 1 つあります。
 
-| トリガー | [説明] |
+| トリガー | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
 
-| アクションを表示します。 | [説明] |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
@@ -95,7 +96,7 @@ HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用�
 Swagger メタデータを使用して HTTP 送信要求を行います。
 アスタリスク (*) は、必須フィールドであることを意味します。
 
-| 表示名 | プロパティ名 | [説明] |
+| 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | メソッド* |method |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
@@ -107,7 +108,7 @@ Swagger メタデータを使用して HTTP 送信要求を行います。
 
 HTTP 応答
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | headers |オブジェクト |応答ヘッダー |
 | 本文 |オブジェクト |応答オブジェクト |
@@ -116,7 +117,7 @@ HTTP 応答
 ### <a name="http-responses"></a>HTTP 応答
 さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。 次の表に、対応する応答と説明を示します。
 
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | 200 |OK |
 | 202 |承認済み |
