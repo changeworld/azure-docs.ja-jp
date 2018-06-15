@@ -1,11 +1,11 @@
 ---
-title: "SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視 | Microsoft Docs"
-description: "SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視を行います。"
+title: SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視 | Microsoft Docs
+description: SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視を行います。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657198"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視の方法
 
@@ -125,10 +126,10 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) を実行します_。_
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
   
 2. ノード間通信を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) を実行します_。_
+  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
 
 3. Linux コマンド **ifconfig** を実行します (出力は、パケット損失が発生しているかどうかを示します)。
 4. Linux コマンド **tcpdump** を実行します。
