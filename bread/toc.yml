@@ -470,6 +470,9 @@
     - name: 回復性
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: ロールベースのアクセス制御
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: サービス正常性
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/

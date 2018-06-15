@@ -12,11 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 04/15/2018
 ms.author: juliako
-ms.openlocfilehash: bbf69bdcc92316642f6b37d267cdea2aad920316
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: acc92662aa5b727656a8eda368ba6d78a87d9ecd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640891"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Azure Media Services 用の Azure CLI の例
 
@@ -36,3 +37,6 @@ ms.lasthandoff: 05/14/2018
 | [ジョブを作成する](./scripts/cli-create-jobs.md)|HTTPS URL を使用する単純なエンコードされたトランスフォームにジョブを送信します。|
 | [EventGrid を作成する](./scripts/cli-create-event-grid.md)|ジョブ状態変更用のアカウント レベルの Event Grid サブスクリプションを作成します。|
 
+## <a name="see-also"></a>関連項目
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

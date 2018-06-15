@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619526"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +61,7 @@ ms.lasthandoff: 03/23/2018
 
 次の表は、Amazon Redshift のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
 | **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
@@ -75,7 +76,7 @@ ms.lasthandoff: 03/23/2018
 
 **typeProperties** セクションはデータセット型ごとに異なり、ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Amazon Redshift データセットを含む) の **typeProperties** セクションには、次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する Amazon Redshift データベースのテーブルの名前です。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 03/23/2018
 
 コピー アクティビティのソースの種類が **AmazonRedshiftSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **query** | カスタム クエリを使用してデータを読み取ります。 |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 | **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ  |
@@ -94,7 +95,7 @@ ms.lasthandoff: 03/23/2018
 
 また、(Amazon Redshift を含む) **RelationalSource** 型を **typeProperties** セクションの以下のプロパティで使用することもできます。 このソースの型では Redshift の **UNLOAD** コマンドがサポートされないことに注意してください。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 | いいえ (データセットの **tableName** プロパティが指定されている場合) |
 

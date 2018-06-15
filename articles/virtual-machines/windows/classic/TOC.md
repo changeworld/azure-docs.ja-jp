@@ -25,7 +25,8 @@
 ### [Symantec Endpoint Protection をインストールおよび構成する](install-symantec.md)
 ### [Trend Micro Deep Security をサービスとしてインストールおよび構成する](install-trend.md)
 ### [可用性セットを構成する](configure-availability-classic.md)
-### [クラシック デプロイメント モデルで作成された Windows VM のサイズ変更](resize-vm-classic.md)
+### 
+  [クラシック デプロイ モデルで作成された Windows VM のサイズ変更](resize-vm-classic.md)
 ### [メンテナンス](planned-maintenance-schedule-classic.md)
 
 ## [管理]
@@ -33,7 +34,6 @@
 ### [Azure PowerShell を使用した仮想マシンの管理](manage-psh-classic.md)
 ### [VM エージェントおよび拡張機能について](agents-and-extensions-classic.md)
 ### [VM 拡張機能を管理する](manage-extensions-classic.md)
-### [VM 用カスタム スクリプト拡張機能](extensions-customscript-classic.md)
 
 ## ワークロードの管理
 ### [ハイパフォーマンス コンピューティング (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -53,7 +53,7 @@
 ### [RDP パスワードをリセットする](reset-rdp.md)
 ### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
-# 参照
+# リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)

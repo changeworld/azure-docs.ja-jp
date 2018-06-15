@@ -7,17 +7,17 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.workload: On Demand
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e5c64ed51fd7c36b1c2cb3b5d98df18b82e08cc3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0399b9037e162aa712b87b498b968750226af23a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192392"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646390"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -112,7 +112,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 * オプションの 1 つは、データ センターの停止が終了し、データベースがオンラインに戻るのを待つことです。 このオプションは、オフラインのデータベースが許容されるアプリケーションで有効です。 たとえば、常時作業する必要のない開発プロジェクトや無料試用版がこれに該当します。 また、データ センターが停止したときに、復旧までの時間を予測できないため、当面はデータベースが必要ない場合にのみ使用できます。
 * もう 1 つは、アクティブ geo レプリケーションを使用して別のデータ リージョンにフェールオーバーするか、geo 冗長データベース バックアップ (geo リストア) を使用してデータベースを復旧するオプションです。 フェールオーバーの所要時間はわずか数秒ですが、バックアップからデータベースが復旧する場合は数時間かかります。
 
-アクションを実行するタイミング、復旧にかかる時間、および発生するデータ損失の量は、ビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。 実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)) に関するページと[エラスティック プールのディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+アクションを実行するタイミング、復旧にかかる時間、および発生するデータ損失の量は、ビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。 実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと [Elastic Pool のディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
 以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートしてディザスター リカバリー訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
@@ -153,4 +153,4 @@ Geo 冗長ストレージ レプリケーションによる自動バックアッ
 アプリケーションのアップグレードなど、計画されたメンテナンスのために、アプリケーションをオフラインにしなければならないことがあります。 [アプリケーション アップグレードの管理](sql-database-manage-application-rolling-upgrade.md) に関するページでは、アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを有効化し、アップグレード中のダウンタイムを最小限に抑え、問題が発生した場合の復旧パスを提供する方法について説明します。 
 
 ## <a name="next-steps"></a>次の手順
-スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール ディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと [Elastic Pool のディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。

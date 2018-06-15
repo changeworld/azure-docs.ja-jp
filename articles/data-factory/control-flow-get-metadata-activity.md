@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011392"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617982"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
 GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、バージョン 2 の Data Factory でのみサポートされています。 これは、次のシナリオで使用できます。
@@ -67,7 +67,7 @@ GetMetadata アクティビティは必須の入力としてデータセット�
 
 GetMetadata アクティビティのフィールド リストで、次のメタデータの種類を指定して取得することができます。
 
-| メタデータの種類 | [説明] |
+| メタデータの種類 | 説明 |
 |:--- |:--- |
 | itemName | ファイルまたはフォルダーの名前です。 |
 | itemType | ファイルまたはフォルダーの種類です。 出力値は `File` または `Folder` です。 |
@@ -127,7 +127,7 @@ GetMetadata アクティビティのフィールド リストで、次のメタ�
 
 現在、GetMetadata アクティビティは、次の種類のメタデータ情報をフェッチできます。
 
-プロパティ | [説明] | 必須
+プロパティ | 説明 | 必須
 -------- | ----------- | --------
 fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | [はい] 
 dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | [はい]

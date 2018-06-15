@@ -31,6 +31,8 @@
   items:
     - name: クォータと地域の制限
       href: container-service-quotas.md
+    - name: ACS から AKS への移行
+      href: acs-aks-migration.md
 - name: ハウツー ガイド
   items:
     - name: クラスターの操作
@@ -43,6 +45,13 @@
           href: upgrade-cluster.md
         - name: AKS クラスターの削除
           href: delete-cluster.md
+        - name: Azure AD 対応の AKS
+          href: aad-integration.md
+        - name: Virtual Kubelet の使用
+          href: virtual-kubelet.md
+        - name: Terraform を使用した AKS のデプロイ
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
     - name: データ ボリュームの構成
       items:
         - name: Azure ディスク - 動的
@@ -77,18 +86,26 @@
       items:
         - name: Helm を使用したアプリケーションの実行
           href: kubernetes-helm.md
+        - name: Dev Spaces を使用した開発
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
         - name: Draft を使用したアプリケーションの開発
           href: kubernetes-draft.md
         - name: Open Service Broker for Azure
           href: integrate-azure.md
-        - name: Jenkins の継続的なデプロイ
-          href: jenkins-continuous-deployment.md
         - name: AKS での OpenFaaS の使用
           href: openfaas.md
         - name: AKS での Spark ジョブの実行
           href: spark-job.md
         - name: AKS での GPU の使用
           href: gpu-cluster.md
+    - name: AKS の DevOps
+      items:
+        - name: Jenkins の継続的なデプロイ
+          href: jenkins-continuous-deployment.md
+        - name: AKS 用の Azure DevOps プロジェクト
+          href: 'https://docs.microsoft.com/en-us/vsts/pipelines/actions/azure-devops-project-aks'
+          maintainContext: true
     - name: Kubernetes の基本
       items:
         - name: Kubernetes ダッシュボードの使用
@@ -105,6 +122,14 @@
       href: /cli/azure/aks
     - name: REST ()
       href: /rest/api/aks
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: リソース
   items:
     - name: 利用可能なリージョン

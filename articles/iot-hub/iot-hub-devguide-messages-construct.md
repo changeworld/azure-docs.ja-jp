@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub メッセージの形式について | Microsoft Docs
 description: 開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633929"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -41,7 +36,7 @@ ms.lasthandoff: 04/03/2018
 
 次のテーブルは、IoT Hub メッセージ内の一連のシステム プロパティです。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | MessageId |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式: ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 |
 | Sequence number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 |

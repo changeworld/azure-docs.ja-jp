@@ -1,23 +1,19 @@
 ---
-title: "Azure IoT Hub の X.509 セキュリティのチュートリアル | Microsoft Docs"
-description: "シミュレートされた環境で Azure IoT Hub の X.509 ベースのセキュリティの作業を開始します。"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT Hub の X.509 セキュリティのチュートリアル | Microsoft Docs
+description: シミュレートされた環境で Azure IoT Hub の X.509 ベースのセキュリティの作業を開始します。
 author: dsk-2015
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: 93f9099d7aef1161f7789e7b21a88a8691cb2a8e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: dd5b9f196f911011d9dd606d46f515b88d338531
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635578"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -48,7 +44,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 1. Azure Portal で、対象の IoT ハブに移動し、**[設定]** > **[証明書]** メニューの順に開きます。 
 2. **[追加]** をクリックして新しい証明書を追加します。
-3. 証明書のわかりやすい表示名を入力します。 前のセクションで作成した *RootCA.cer* という名前のルート証明書ファイルをマシンから選択します。 **[アップロード]**をクリックします。
+3. 証明書のわかりやすい表示名を入力します。 前のセクションで作成した *RootCA.cer* という名前のルート証明書ファイルをマシンから選択します。 **[アップロード]** をクリックします。
 4. 証明書が正常にアップロードされたことを示す通知が表示されたら、**[保存]** をクリックします。
 
     ![証明書のアップロード](./media/iot-hub-security-x509-get-started/add-new-cert.png)  

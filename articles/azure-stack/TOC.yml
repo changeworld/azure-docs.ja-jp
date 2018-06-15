@@ -128,6 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: ネットワーク リソースの管理
           href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: ユーザー サブスクリプションの所有者の変更
+          href: azure-stack-change-subscription-owner.md
         - name: Windows Azure Pack VM の管理
           href: azure-stack-manage-windows-azure-pack.md
         - name: Azure Stack の開始および停止
@@ -216,7 +218,7 @@
           items:
             - name: SQL Server リソース プロバイダーのデプロイ
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: ホスティング サーバーの追加
+            - name: SQL ホスティング サーバーの追加
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: SQL データベースの作成
               href: azure-stack-sql-resource-provider-databases.md
@@ -227,7 +229,20 @@
             - name: SQL Server リソース プロバイダーの削除
               href: azure-stack-sql-resource-provider-remove.md
         - name: MySQL を PaaS として提供する
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: MySQL Server リソース プロバイダーのデプロイ
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: MySQL ホスティング サーバーの追加
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: MySQL データベースの作成
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: MySQL Server リソース プロバイダーの更新
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: MySQL Server リソース プロバイダーの維持
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: MySQL Server リソース プロバイダーの削除
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: App Service を PaaS として提供する
           items:
             - name: Azure Stack 上の App Service の概要

@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fbfad00956faad49980a431504d991cfde22cafb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167553"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619373"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Xero からデータをコピーする
 
@@ -51,7 +51,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Xero のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Xero** に設定する必要があります。 | [はい] |
 | host | Xero サーバーのエンドポイント (`api.xero.com`)。  | [はい] |
@@ -120,7 +120,7 @@ Xero からデータをコピーするには、データセットの type プロ
 
 Xero からデータをコピーするは、コピー アクティビティのソースの種類を **XeroSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **XeroSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Contacts"`」のように入力します。 | [はい] |

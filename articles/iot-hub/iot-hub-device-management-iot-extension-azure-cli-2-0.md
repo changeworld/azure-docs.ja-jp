@@ -1,25 +1,21 @@
 ---
 title: Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs
 description: Azure IoT Hub デバイス管理用の Azure CLI 2.0 向けの IoT 拡張機能を使用します。このツールでは、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。
-services: iot-hub
-documentationcenter: ''
 author: chrissie926
-manager: timlt
-tags: ''
+manager: ''
 keywords: Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理
-ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 27a8dca68000e3f4b7f33508fc6dbc3450fc80b4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: dc96e70a031d6080217e71b829ec5de3c64e4cf7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632817"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
