@@ -25,8 +25,7 @@
 ### [Symantec Endpoint Protection をインストールおよび構成する](install-symantec.md)
 ### [Trend Micro Deep Security をサービスとしてインストールおよび構成する](install-trend.md)
 ### [可用性セットを構成する](configure-availability-classic.md)
-### 
-  [クラシック デプロイ モデルで作成された Windows VM のサイズ変更](resize-vm-classic.md)
+### [クラシック デプロイ モデルで作成された Windows VM のサイズ変更](resize-vm-classic.md)
 ### [メンテナンス](planned-maintenance-schedule-classic.md)
 
 ## [管理]
