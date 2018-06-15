@@ -5,20 +5,17 @@ keywords: power bi チュートリアル, データの視覚化, power bi コネ
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 67ea7a9ea1a1be4fd0780f8b8ce22f1a133615e0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615871"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Azure Cosmos DB コネクタ経由で Azure Cosmos DB アカウントに接続できるようになりました。   
@@ -34,7 +31,7 @@ ms.lasthandoff: 04/23/2018
 * PowerBI.com では、どのようにしてレポートを発行して共有できますか?
 
 > [!NOTE]
-> Azure Cosmos DB 用の Power BI コネクタは、データの抽出および変換のために Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、後で PowerBI.com に発行できます。PowerBI.com では、Azure Cosmos DB データの直接抽出および変換は実行できません。 
+> Azure Cosmos DB 用の Power BI コネクタは、データの抽出および変換のために Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、後で PowerBI.com に発行できます。 PowerBI.com では、Azure Cosmos DB データの直接抽出および変換は実行できません。 
 
 > [!NOTE]
 > MongoDB API を使用して Azure Cosmos DB を Power BI に接続するには、[Simba MongoDB ODBC Driver](http://www.simba.com/drivers/mongodb-odbc-jdbc/) を使用する必要があります。
@@ -49,7 +46,7 @@ ms.lasthandoff: 04/23/2018
     * 読み取り専用キー: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * または、独自のアカウントを作成する場合は、[Azure Portal を使用した Azure Cosmos DB データベース アカウントの作成](https://azure.microsoft.com/documentation/articles/create-account/)に関するページをご覧ください。 その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[Azure Cosmos DB データ移行ツール](import-data.md)を使用してデータをインポートしてください。
 
-PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。Power BI (無料) および Power BI Pro について詳しくは、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) をご覧ください。
+PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro について詳しくは、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) をご覧ください。
 
 ## <a name="lets-get-started"></a>作業を開始する
 このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。  火山データは Azure Cosmos DB アカウントで格納されており、JSON ドキュメントは次のサンプル ドキュメントのようになっています。
@@ -160,18 +157,18 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 レポート ビューには以下が表示されます。
 
 1. **[フィールド]** ウィンドウ。ここで、レポートに使用できるデータ モデルとフィールドの一覧を確認できます。
-2. **[視覚化]** ウィンドウ。 レポートに 1 つまたは複数のビジュアルを含めることができます。  **[視覚化]** ウィンドウで、ニーズに合ったビジュアルの種類を指定します。
+2. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
 3. **[レポート]** キャンバス。ここで、レポート用のビジュアルを作成します。
 4. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
 
 単純な対話型マップ ビュー レポートを作成する基本的な手順を次に示します。
 
-1. 例として、個々の火山の場所を示すマップ ビューを作成します。  **[視覚化]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。  **[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。  **[視覚化]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
-2. ここで、**[フィールド]** ウィンドウの LatLong フィールドを **[視覚化]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
+1. 例として、個々の火山の場所を示すマップ ビューを作成します。  **[視覚エフェクト]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。  **[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。  **[視覚化エフェクト]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
+2. ここで、**[フィールド]** ウィンドウの LatLong フィールドを **[視覚エフェクト]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
 3. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。  
 4. さらに、Elevation フィールドを **Size** プロパティにドラッグ アンド ドロップします。  
 5. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
-6. これで、基本的なレポートを作成できました。  別のビジュアルを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
+6. これで、基本的なレポートを作成できました。  別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
    
     ![Azure Cosmos DB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーンショット](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 7. [ファイル] メニューの **[保存]** をクリックして、ファイルを PowerBITutorial.pbix として保存します。

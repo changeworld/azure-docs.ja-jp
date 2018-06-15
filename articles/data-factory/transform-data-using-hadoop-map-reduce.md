@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ecaa9b612dcf7760987b8b8438808b0a961ef193
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: be925521178bba0ae4ae9820e78042509b2f1741
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621005"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,12 +66,12 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 
 ## <a name="syntax-details"></a>構文の詳細
 
-| プロパティ          | [説明]                              | 必須 |
+| プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | アクティビティの名前                     | [はい]      |
-| 説明       | アクティビティの用途を説明するテキストです。 | いいえ        |
+| description        | アクティビティの用途を説明するテキストです。 | いいえ        |
 | 型              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | [はい]      |
-| 既定のコンテナー | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | className         | 実行するクラスの名前         | [はい]      |
 | jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |
 | jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | [はい]      |

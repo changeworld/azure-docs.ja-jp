@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 11a04d40a403231db728d6bf0caade5969bba84d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593663"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -33,13 +35,13 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用できません。
+>シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき_ません_。
 
 ## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
-  - ユーザーは、パスワードを繰り返し入力する必要はありません。
+  - ユーザーはパスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
   - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。

@@ -5,20 +5,17 @@ keywords: データベースのパフォーマンスを向上させる方法
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: dfe8f426-3c98-4edc-8094-092d41f2795e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.devlang: java
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 95f6e3d6d9db5a88b5b974daf6e36573b60878a5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34613984"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)

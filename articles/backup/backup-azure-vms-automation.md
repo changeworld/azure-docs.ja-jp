@@ -1,25 +1,20 @@
 ---
-title: Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する | Microsoft Docs
+title: Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する
 description: PowerShell を使用して Azure で Resource Manager によりデプロイされた VM のバックアップをデプロイおよび管理する
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk;pullabhk
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606241"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする
 
@@ -92,13 +87,11 @@ AzureRm.RecoveryServices.Backup PowerShell コマンドレット リファレン
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ```
 
 6. 次のコマンドを使用して、プロバイダーが正しく登録されたことを確認できます。
     ```PS
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
 コマンドの出力では、**RegistrationState** に **Registered** が設定されているはずです。 そうでない場合は、上に示した**[レジスタ AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** コマンドレットを再実行するだけです。
 

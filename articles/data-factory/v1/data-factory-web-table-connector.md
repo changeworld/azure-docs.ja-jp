@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f35a2bec410eccc59a19e5b82b9e109b15f0738
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb26e7a6ae4a0756ec9d20d7a3d9f9b37e8ab779
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622901"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +72,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Web のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | 型 |type プロパティを **Web** |[はい] |
 | Url |Web ソースへの URL |[はい] |
@@ -99,7 +100,7 @@ ms.lasthandoff: 03/23/2018
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **WebTable** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 |データセットの型。 **データセット** |[はい] |
 | パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
@@ -289,7 +290,7 @@ WebSource でサポートされるプロパティの一覧については、 [We
 2. ツール バーの **[新しいクエリ]** をクリックし、**[その他のソースから]** をポイントし、**[Web から]** をクリックします。
 
     ![Power Query メニュー](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/))、データセットに指定するパスを入力し (例: AFI%27s_100_Years...100_Movies)、**[OK]** をクリックします。
+3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s_100_Years...100_Movies)、**[OK]** をクリックします。
 
     ![Web ダイアログから](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

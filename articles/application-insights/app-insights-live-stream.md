@@ -11,16 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/24/2018
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 3b17344af099ea8b5d2554d5f6045a10641ff861
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193429"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599237"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断 
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断
 
 [Application Insights](app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](app-insights-profiler.md)、[スナップショット デバッガー](app-insights-snapshot-debugger.md)、[パフォーマンス テスト](app-insights-monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
 
@@ -35,8 +35,6 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 * 問題が発生しているサーバーを簡単に特定し、すべての KPI/ライブ フィードをフィルター処理してそのサーバーだけに絞り込むことができます。
 
 [![Live Metrics Stream 動画](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
-
-Live Metrics Stream は現在、オンプレミスまたはクラウドで実行されている ASP.NET アプリケーションで使用できます。 
 
 ## <a name="get-started"></a>作業開始
 
@@ -180,7 +178,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.A
 ```
 
 
-ただし、接続されているすべてのサーバーを認識し、信頼している場合は、認証済みチャネルなしにカスタム フィルターを試すことができます。 このオプションは 6 か月間使用できます。 この上書きは、新しいセッションごとに 1 回、または新しいサーバーがオンラインになったときに必要になります。
+ただし、接続されているすべてのサーバーを認識し、信頼している場合は、認証済みチャネルなしにカスタム フィルターを試すことができます。 このオプションは 6 か月間使用できます。 このオーバーライドは、新しいセッションごとに 1 回、または新しいサーバーがオンラインになったときに必要になります。
 
 ![Live Metrics の認証オプション](./media/app-insights-live-stream/live-stream-auth.png)
 

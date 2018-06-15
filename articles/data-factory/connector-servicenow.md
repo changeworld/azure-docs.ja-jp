@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/22/2018
+ms.topic: conceptual
+ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9fcf751d1b7655cf38bbcaca0aa8c918e38e4fda
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619067"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 
@@ -42,13 +43,13 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ServiceNow のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **ServiceNow** に設定する必要があります。 | [はい] |
 | endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | [はい] |
 | authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
-| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ  |
-| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | [はい] |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | clientId | OAuth2 認証のクライアント ID。  | いいえ  |
 | clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -104,7 +105,7 @@ ServiceNow からデータをコピーするには、データセットの type 
 
 ServiceNow からデータをコピーするには、コピー アクティビティのソースの種類を **ServiceNowSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **ServiceNowSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Actual.alm_asset"`」のように入力します。 | [はい] |

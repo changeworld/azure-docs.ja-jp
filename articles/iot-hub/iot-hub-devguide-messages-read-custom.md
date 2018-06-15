@@ -1,29 +1,25 @@
 ---
 title: Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs
 description: 開発者ガイド - カスタム エンドポイントへの device-to-cloud メッセージのルーティングにルーティング ルールを使用します。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: 3d54da43141dc2bdf34c9f71adc41dc7cf24ff10
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b035c7ef6dfe56c4b4534e081e70d95ea7c14847
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808028"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
 IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サービス向けのエンドポイントに [device-to-cloud メッセージ][lnk-device-to-cloud]をルーティングできます。 ルーティング ルールによってメッセージ送信を柔軟に実行できるため、メッセージにサービスやカスタム コードを追加する必要はありません。 各ルーティング ルールには、次のプロパティがあります。
 
-| プロパティ      | [説明] |
+| プロパティ      | 説明 |
 | ------------- | ----------- |
 | **名前**      | ルールを識別する一意の名前。 |
 | **ソース**    | 処理するデータ ストリームの元データ。 たとえば、デバイス テレメトリです。 |
@@ -71,7 +67,7 @@ IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポ
 [lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-query-language]: iot-hub-devguide-query-language.md
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md
 [lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 [lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md

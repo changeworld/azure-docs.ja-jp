@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b8a35e19628ebbe75d3f1890a6d64ab777519698
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621549"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,7 +64,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 オンプレミスの HDFS をデータ ファクトリにリンクするには、**Hdfs** 型のリンクされたサービスを作成します。 次の表は、HDFS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | 型 |type プロパティを **Hdfs** |[はい] |
 | Url |HDFS への URL |[はい] |
@@ -116,7 +117,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **FileShare** 型のデータセットの typeProperties セクション (HDFS データセットを含む) には次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |[はい] |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ  |
@@ -167,7 +168,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 **FileSystemSource** では次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
 
@@ -470,7 +471,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
 
-    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]**を表示し、**[Kerberos 名]** タブをクリックします。
+    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]** を表示し、**[Kerberos 名]** タブをクリックします。
 
     4. 領域からプリンシパルを追加します。
 

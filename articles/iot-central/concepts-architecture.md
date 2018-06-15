@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: conceptual
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: c97db3eb2c0fe1a5ec3c743ca75c595ec127823e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 44408e7b6ad1a068f265bf7b78d973e6aae3001b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200090"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628761"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 

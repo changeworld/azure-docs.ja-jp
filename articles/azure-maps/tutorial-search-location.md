@@ -1,22 +1,20 @@
 ---
 title: Azure Maps での検索 | Microsoft Docs
 description: Azure Maps を使用して近くの目的地を検索する
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a4479ceebd4c8aad477b5f13a5bcc06d24c1202d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4a414b5b865d31dd99b54ef9693abafb5490a50f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601787"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -41,16 +39,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Portal](https://portal.azure.com) の左上隅にある **[リソースの作成]** をクリックします。
 2. *[Marketplace を検索]* ボックスに「**Maps**」と入力します。
-3. "*結果*" から **"Maps"** を選びます。 マップの下に表示される **[作成]** ボタンをクリックします。 
-4. **[Create Maps Account]\(Maps アカウントの作成\)** ページで、次の値を入力します。
+3. *[結果]* から **[Maps]** を選択します。 マップの下に表示される **[作成]** ボタンをクリックします。 
+4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
     - 新しいアカウントの "*名前*"。 
     - このアカウントで使う "*サブスクリプション*"。
     - このアカウントの "*リソース グループ*" の名前。 *[新規作成]* を選んで新しく作成することも、*[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
     - "*リソース グループの場所*" を選びます。
-    - "*ライセンス*" と "*プライバシーに関する声明*" を読み、チェック ボックスをオンにして条件に同意します。 
+    - *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。 
     - **[作成]** ボタンをクリックします。
    
-    ![ポータルでの Maps アカウントの作成](./media/tutorial-search-location/create-account.png)
+    ![ポータルでの Azure Maps アカウントの作成](./media/tutorial-search-location/create-account.png)
 
 
 <a id="getkey"></a>
@@ -69,7 +67,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>新しいマップの作成 
-マップ コントロール API は、Maps を Web アプリケーションに簡単に統合できる便利なクライアント ライブラリです。 ベア REST サービスの呼び出しの複雑さを隠ぺいし、スタイルの設定とカスタマイズが可能なコンポーネントにより生産性を高めます。 次の手順では、マップ コントロール API で埋め込まれる静的な HTML ページを作成する方法を示します。 
+マップ コントロール API は、Maps を Web アプリケーションに簡単に統合できる便利なクライアント ライブラリです。 ベア REST サービスの呼び出しの複雑さを隠ぺいし、スタイルの設定とカスタマイズが可能なコンポーネントにより生産性を高めます。 次の手順は、マップ コントロール API を使用して埋め込まれた静的 HTML ページの作成方法を示したものです。 
 
 1. ローカル コンピューターに新しいファイルを作成し、名前を **MapSearch.html** にします。 
 2. 次の HTML コンポーネントをファイルに追加します。
@@ -113,7 +111,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     ``` 
     HTML ヘッダーに、Azure マップ コントロール ライブラリによってホストされる CSS および JavaScript のリソース ファイルが含まれることに注意してください。 HTML ファイルの *body* に追加された *script* セグメントに注意してください。 このセグメントには、Azure Maps API にアクセスするためのインライン JavaScript コードが含まれます。
  
-3. 次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 文字列 **\<your account key\>** を、Maps アカウントからコピーした主キーに置き換えます。
+3. 次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 **\<your account key\>** の文字列は、Maps アカウントからコピーした主キーに置き換えてください。
 
     ```JavaScript
     // Instantiate map to the div with id "map"

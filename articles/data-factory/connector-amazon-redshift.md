@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc4af39a659a9c3c910c835265886b79ad5cf62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5787f944211c5dd6c0c83e7dc10170d8a0cd9a23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616612"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +55,7 @@ Amazon Redshift から、サポートされている任意のシンク データ
 
 Amazon Redshift のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **AmazonRedshift**に設定する必要があります。 | [はい] |
 | [サーバー] |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
@@ -96,7 +97,7 @@ Amazon Redshift のリンクされたサービスでは、次のプロパティ�
 
 Amazon Redshift からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Amazon Redshift 内のテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -126,7 +127,7 @@ Amazon Redshift からデータをコピーするには、データセットの 
 
 Amazon Redshift からデータをコピーするには、コピー アクティビティでソースの型を **AmazonRedshiftSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **AmazonRedshiftSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (データセットの "tableName" が指定されている場合) |

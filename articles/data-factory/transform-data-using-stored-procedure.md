@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 729974d37351c12f551e165567bb11467a0dd963
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25329d65861dc31e67bba146e15a6446a6449e83
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620590"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,12 +70,12 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 次の表に、JSON のプロパティを示します。
 
-| プロパティ                  | [説明]                              | 必須 |
+| プロパティ                  | 説明                              | 必須 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | アクティビティの名前                     | [はい]      |
-| 説明               | アクティビティの用途を説明するテキストです。 | いいえ        |
+| description                | アクティビティの用途を説明するテキストです。 | いいえ        |
 | 型                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | [はい]      |
-| 既定のコンテナー         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| linkedServiceName         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | [はい]      |
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ        |
 

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5eae173e02c92bd43faaa9533ce29489d40f1389
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157409"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592927"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同期: Office 365 リソースの優先されるデータの場所を構成する
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -47,7 +48,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | インド | IND |
 | 日本 | JPN |
 | 韓国 | KOR |
-| 英国 | GBR |
+| イギリス | GBR |
 | 米国 | NAM |
 
 * この表に掲載されていない geo (南米など) は、Multi-Geo には使用できません。
@@ -124,7 +125,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
     | Attribute | 値 | 詳細 |
     | --- | --- | --- |
     | 名前 | *名前を入力します* | 例: "In from AD – User preferredDataLocation" |
-    | [説明] | "*ユーザー設定の説明を入力します*" |  |
+    | 説明 | "*ユーザー設定の説明を入力します*" |  |
     | 接続先システム | "*オンプレミスの Active Directory コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
     | メタバース オブジェクトの種類 | **Person** |  |
@@ -136,7 +137,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    |直接 | preferredDataLocation | ソース属性を選択します | オフ | プライマリの |
+    |直接 | preferredDataLocation | ソース属性を選択します | オフ | アップデート |
 
 7. 受信方向の規則を作成するには、**[追加]** を選択します。
 
@@ -153,7 +154,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
     | Attribute | 値 | 詳細 |
     | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: "Out to Azure AD – User preferredDataLocation" |
-    | [説明] | *説明を入力します* ||
+    | 説明 | *説明を入力します* ||
     | 接続先システム | *Azure AD Connector を選択する* ||
     | 接続先システム オブジェクトの種類 | **User** ||
     | メタバース オブジェクトの種類 | **Person** ||

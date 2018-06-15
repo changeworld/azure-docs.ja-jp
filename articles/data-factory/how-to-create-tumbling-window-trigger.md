@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 312072a5de21ff1c6b602fed93b77c564b15a9f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619713"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
@@ -72,7 +73,7 @@ ms.lasthandoff: 03/23/2018
 
 次の表に、タンブリング ウィンドウ トリガーの繰り返しとスケジュール設定に関連する主な JSON 要素の概要を示します。
 
-| JSON 要素 | [説明] | type | 使用できる値 | 必須 |
+| JSON 要素 | 説明 | type | 使用できる値 | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | トリガーの種類。 種類は固定値の "TumblingWindowTrigger" です。 | String | "TumblingWindowTrigger" | [はい] |
 | **runtimeState** | トリガー実行時の現在の状態。<br/>**注**: この要素は \<readOnly> です。 | String | "Started"、"Stopped"、"Disabled" | [はい] |

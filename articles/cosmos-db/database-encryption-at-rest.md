@@ -4,20 +4,17 @@ description: Azure Cosmos DB ですべてのデータが既定で暗号化され
 services: cosmos-db
 author: voellm
 manager: kfile
-documentationcenter: ''
-ms.assetid: 99725c52-d7ca-4bfa-888b-19b1569754d3
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: 831fa2b6b9afb39bff715ef54cc41e11ee903e50
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ab22cc64265efe3948256d81f964796b6d21d3d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611026"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 

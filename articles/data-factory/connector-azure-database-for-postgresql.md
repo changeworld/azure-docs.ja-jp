@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b47dbf081d857d0c6eb5e1bd4eb9781c4c894698
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205331"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615939"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for PostgreSQL からデータをコピーする 
 
@@ -43,7 +43,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Azure Database for PostgreSQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **AzurePostgreSql** に設定する必要があります | [はい] |
 | connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -51,7 +51,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 一般的な接続文字列は `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
-| プロパティ | [説明] | オプション | 必須 |
+| プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 例:  `ValidateServerCertificate=<0/1/6>;`| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ  |
 | ValidateServerCertificate (VSC) | SSL 暗号化が有効 (Encryption Method=1) になっているときに、データベース サーバーによって送信される証明書をドライバーが検証するかどうかを決定します。 例:  `ValidateServerCertificate=<0/1>;`| 0 (無効) **(既定)** / 1 (有効) | いいえ  |
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL からデータをコピーするには、デー�
 
 Azure Database for PostgreSQL からデータをコピーするには、コピー アクティビティのソースの種類を **AzurePostgreSqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **AzurePostgreSqlSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 3: 日付�
 description: Azure Analysis Services チュートリアル プロジェクトで日付テーブルをマークする方法を説明します｡
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b7f6252faef02676be6ccb22653f5d4805020df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 837543b6e9af714189e1d79eef483caabc2d32ad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597316"
 ---
 # <a name="mark-as-date-table"></a>日付テーブルとしてマークする
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/16/2018
   
 2.  **[Table]** メニューをクリックし､**[Date]** をクリックして､**[Mark as Date Table]** をクリックします｡  
   
-3.  **[Mark as Date Table]** ダイアログ ボックスの**[Date]** リストボックスで､一意の識別子として**[Date]** 列を選択します｡ この列は既定で選択されています｡ Click **OK**. 
+3.  **[Mark as Date Table]** ダイアログ ボックスの **[Date]** リストボックスで､一意の識別子として **[Date]** 列を選択します｡ この列は既定で選択されています｡ Click **OK**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

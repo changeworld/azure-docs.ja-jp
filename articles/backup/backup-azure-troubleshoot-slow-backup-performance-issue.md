@@ -1,24 +1,19 @@
 ---
-title: Azure Backup でファイルやフォルダーのバックアップが遅い場合のトラブルシューティング | Microsoft Docs
+title: Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 description: Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
-ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6ed1e2d7bfc08afe135cb85995fdebaa30202c23
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 46ec43aee8588af98c815bdf6aadffd90aec8537
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606292"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。

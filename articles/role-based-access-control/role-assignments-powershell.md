@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/17/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
-ms.openlocfilehash: 9c8f5bf8036874213338b646b642407ab65e2293
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: bagovind
+ms.openlocfilehash: 00646187da1f93c01c3a57b50905239afd5e2bc8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266800"
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Azure PowerShell を使用したロールベースのアクセス制御の管理
 > [!div class="op_single_selector"]

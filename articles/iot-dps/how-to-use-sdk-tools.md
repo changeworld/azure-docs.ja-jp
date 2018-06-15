@@ -1,22 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning サービス SDK に付属するツールを使用して開発を簡略化する
 description: このドキュメントでは、開発用に Azure IoT Hub Device Provisioning サービス SDK に付属するツールを確認します。
-services: iot-dps
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/09/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: a7e1a55bcfc8c7a8f76416fb12edf712340fadd2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: arjmands
+ms.openlocfilehash: afc7059f3b066ac5f3c9b49d543bc2b3e52ad6af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631124"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>SDK に付属するツールを使用してプロビジョニング用の開発を簡略化する方法
 IoT Hub Device Provisioning サービスは、セキュリティで保護されたスケーラブルな方法で、ゼロタッチの Just-In-Time [自動プロビジョニング](concepts-auto-provisioning.md)によってプロビジョニング プロセスを簡略化します。  X.509 証明書またはトラステッド プラットフォーム モジュール (TPM) の形式でのセキュリティの構成証明が必要です。  さらに Microsoft は[他のセキュリティ ハードウェア パートナー](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)と提携することで、IoT デプロイのセキュリティ保護における信頼性を高めています。 ハードウェアのセキュリティ要件を理解することは、開発者にとってきわめて困難な場合があります。 開発者がプロビジョニング サービスと通信するクライアントを作成するために便利なレイヤーを使用できるように、一連の Azure IoT Provisioning サービス SDK が提供されています。 この SDK では、一般的なシナリオのサンプルのほか、開発でのセキュリティ構成証明を簡略化するための一連のツールも提供しています。

@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2438914449ff609d149fca20f2f3756576877752
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1268ed0f5c46e0f65e1bf5381f2baca95fa0b915
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610601"
 ---
 # <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのコンテナーのデプロイ
 
@@ -55,7 +56,7 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 次に、[az container create][az-container-create] コマンドを使用して、コンテナーをデプロイします。 `<acrLoginServer>` および `<acrPassword>` を、前の 2 つのコマンドから取得した値に置き換えます。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
 数秒以内に、Azure から最初の応答を受信します。 `--dns-name-label` の値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル**のエラー メッセージが表示された場合は、前述のコマンドの値を変更してください。

@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594229"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -102,7 +104,7 @@ November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250
 2. **[スタート]** メニューから **[同期サービス]** を起動します。
 3. **[コネクタ]** を選択し、**[コネクタ]** の一覧から、種類が "**Active Directory Domain Services**" であるコネクタを選択します。 **[アクション]** の **[プロパティ]** を選択します。  
    ![コネクタのプロパティ](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
-4. **[ディレクトリ パーティションの構成]**をクリックします。
+4. **[ディレクトリ パーティションの構成]** をクリックします。
 5. **[ディレクトリ パーティションの選択]** の一覧で、必要に応じてドメインを選択 (または選択を解除) します。 同期するパーティションのみが選択されていることを確認します。  
    ![パーティション](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png)  
    オンプレミスの Active Directory インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、**[更新]** ボタンをクリックして一覧を最新の情報に更新します。 最新の情報に更新しようとすると資格情報を求められます。 Windows Server Active Directory に対する読み取りアクセス権を持った資格情報を指定します。 ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。  
@@ -123,8 +125,8 @@ November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250
     * エクスポート
 3. 各プロファイルについて、**追加対象**のドメインと**削除対象**のドメインを調整します。
     1. 5 つのプロファイルのそれぞれについて、**追加対象**のドメインごとに次の手順を実行します。
-        1. 実行プロファイルを選択し、 **[新しいステップ]**をクリックします。
-        2. **[ステップの構成]** ページの **[タイプ]** ドロップダウン メニューから、構成するプロファイルと同じ名前の付いたステップの種類を選択します。 その後、 **[次へ]**をクリックします。  
+        1. 実行プロファイルを選択し、 **[新しいステップ]** をクリックします。
+        2. **[ステップの構成]** ページの **[タイプ]** ドロップダウン メニューから、構成するプロファイルと同じ名前の付いたステップの種類を選択します。 その後、 **[次へ]** をクリックします。  
         ![コネクタ実行プロファイル 2](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)  
         3. **[コネクタの構成]** ページで、**[パーティション]** ドロップダウン メニューから、ドメイン フィルターに追加したドメインの名前を選択します。  
         ![コネクタ実行プロファイル 3](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)  

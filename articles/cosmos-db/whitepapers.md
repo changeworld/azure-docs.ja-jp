@@ -5,15 +5,16 @@ services: cosmos-db
 author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: sngun
-ms.openlocfilehash: 40e8473000a14d98416d033652050ad509116c9e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c392e51cdde1b66cad1fa00ea5a301d62f24846c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616119"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB のホワイトペーパー 
 

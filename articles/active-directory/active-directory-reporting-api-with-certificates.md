@@ -12,17 +12,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: ramical
-ms.openlocfilehash: 54e661284c539b835089e858ba7b5e0016e89a83
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5ceb3d1ef99189e5b0cfcc48b38906ed28c07730
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588959"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
-[Azure Active Directory (Azure AD) Reporting API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
+[Azure Active Directory (Azure AD) レポート API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
 
 ユーザーの介入なしに Azure AD Reporting API にアクセスする場合は、証明書を使用するようにアクセスを構成できます。
 
@@ -107,9 +109,9 @@ Azure AD PowerShell V2 と AzureADUtils モジュールがインストールさ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Reporting API の概要を掴む](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+- [Reporting API の概要を把握します](active-directory-reporting-api-getting-started-azure-portal.md#explore)
 
-- [独自のソリューションを作成する](active-directory-reporting-api-getting-started-azure-portal.md#customize)
+- [独自のソリューションを作成します](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 
 
 

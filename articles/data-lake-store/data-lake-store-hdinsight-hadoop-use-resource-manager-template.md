@@ -10,13 +10,14 @@ ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/28/2017
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1a5651e9e1b8c46e8151e44308de44245aa2ac35
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7f49b643550b1888e1b0a4a6a57bbe4d428c65ac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625782"
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する
 > [!div class="op_single_selector"]

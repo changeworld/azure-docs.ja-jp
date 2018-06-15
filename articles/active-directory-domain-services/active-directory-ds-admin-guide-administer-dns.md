@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: 管理対象ドメインの DNS を管理する | Microsoft Docs"
-description: "Azure Active Directory Domain Services で管理されているドメイン上の DNS の管理"
+title: 'Azure Active Directory Domain Services: 管理対象ドメインの DNS を管理する | Microsoft Docs'
+description: Azure Active Directory Domain Services で管理されているドメイン上の DNS の管理
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 55b6368d55b5d0ad50d066a4963e74d8c44a2049
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b2cb351e18cfa8a0d0552c9a2a36e5bb11b2d3f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587502"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスで管理されているドメイン上の DNS の管理
 Azure Active Directory Domain Services には、管理対象ドメインの DNS 解決を提供する DNS (ドメイン名解決) サーバーが含まれています。 場合によっては、管理対象ドメインの DNS を構成する必要があります。 ドメインに参加していないコンピューターの DNS レコードを作成したり、ロード バランサーの仮想 IP アドレスを構成したり、外部 DNS フォワーダーを設定したりすることが必要になる場合があります。 このため、AAD DC 管理者グループに属するユーザーは、管理対象ドメインの DNS 管理者権限が付与されます。
@@ -50,7 +52,7 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
 
-4. スタート画面で、 **[サーバー マネージャー]**を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
+4. スタート画面で、 **[サーバー マネージャー]** を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
@@ -78,7 +80,7 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 >
 >
 
-1. スタート画面で **[管理ツール]**をクリックします。 仮想マシンにインストールされた **DNS** コンソールが表示されます。
+1. スタート画面で **[管理ツール]** をクリックします。 仮想マシンにインストールされた **DNS** コンソールが表示されます。
 
     ![管理ツール： DNS コンソール](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
 2. **[DNS]** をクリックして、DNS 管理コンソールを起動します。

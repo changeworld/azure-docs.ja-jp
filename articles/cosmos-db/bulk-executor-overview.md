@@ -6,15 +6,16 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: d395376ad6cf191f8f355f6308f27e525da2911f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5f1987009d2277590e32136336340aa1b3be07fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610343"
 ---
 # <a name="azure-cosmos-db-bulkexecutor-library-overview"></a>Azure Cosmos DB BulkExecutor ライブラリの概要
  

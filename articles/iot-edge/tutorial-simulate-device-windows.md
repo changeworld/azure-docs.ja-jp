@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Edge on Windows のシミュレート | Microsoft Docs
 description: Windows のシミュレートされたデバイスに Azure IoT Edge ランタイムをインストールし、最初のモジュールをデプロイする
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
 ms.date: 11/16/2017
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 7ad99a49a578de4997a2d76d48da33aba6847f3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166116"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631192"
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Windows のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー
 

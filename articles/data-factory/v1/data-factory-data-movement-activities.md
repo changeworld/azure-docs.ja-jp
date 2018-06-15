@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 09b35483b5ace1523c88576cfe37dfc313b93036
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cdea020ad4c9c9e828d62fff8639acec2e3d6c74
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621923"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -108,7 +109,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | ブラジル | ブラジル南部 | ブラジル南部 |
 | ヨーロッパ | 北ヨーロッパ | 北ヨーロッパ |
 | &nbsp; | 西ヨーロッパ | 西ヨーロッパ |
-| 英国 | 英国西部 | 英国南部 |
+| イギリス | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | アジア太平洋 | 東南アジア | 東南アジア |
 | &nbsp; | 東アジア | 東南アジア |

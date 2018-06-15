@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8dc5b504891d49ce495850e31d53d813849bc1c2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0f3a884246cad8f123544ca293967d63040f7fed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616561"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Jira からデータをコピーする
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Jira のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Jira** に設定する必要があります | [はい] |
 | host | Jira サービスの IP アドレスまたはホスト名。 (たとえば、jira.example.com)  | [はい] |
@@ -105,7 +106,7 @@ Jira からデータをコピーするには、データセットの type プロ
 
 Jira からデータをコピーするは、コピー アクティビティのソースの種類を **JiraSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **JiraSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

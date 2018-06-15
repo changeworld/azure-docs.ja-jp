@@ -1,24 +1,19 @@
 ---
-title: "DPM を使用した SQL Server ワークロード用 Azure Backup | Microsoft Docs"
-description: "Azure Backup サービスを使用した SQL Server データベースのバックアップの概要"
+title: DPM を使用した SQL Server ワークロード用 Azure Backup
+description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 services: backup
-documentationcenter: 
 author: adigan
 manager: Nkolli
-editor: 
-ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
-ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: cebbe532b5d1b13588604c61ac10bf3c56a85e07
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604966"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -40,7 +35,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Create Protection Group](./media/backup-azure-backup-sql/protection-group.png)
 3. DPM のスタート画面に **保護グループ**の作成に関するガイダンスが表示されます。 **[次へ]** をクリックします。
-4. **[サーバー]**を選択します。
+4. **[サーバー]** を選択します。
 
     ![Select Protection Group Type - 'Servers'](./media/backup-azure-backup-sql/pg-servers.png)
 5. バックアップ対象のデータベースが存在する SQL Server コンピューターを展開します。 DPM に、そのサーバーからバックアップ可能なさまざまなデータ ソースが表示されます。 **[すべての SQL 共有]** を展開し、バックアップ対象のデータベース (ここでは ReportServer$MSDPM2012 と ReportServer$MSDPM2012TempDB) を選択します。 **[次へ]** をクリックします。
@@ -66,7 +61,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Disk allocation](./media/backup-azure-backup-sql/pg-storage.png)
 
-    既定では、DPM は、初期バックアップ コピー用に、データ ソース (SQL Server データベース) ごとに 1 つのボリュームを作成します。 この方法では、論理ディスク マネージャー (LDM) は、DPM 保護を 300 データ ソース (SQL Server データベース) に制限します。 この制限を避けるには、 **[DPM 記憶域プールにデータを併置する]**を選択します。 このオプションを使用すると、DPM では複数のデータ ソースに単一のボリュームを使用して、最大 2000 の SQL データベース を保護できます。
+    既定では、DPM は、初期バックアップ コピー用に、データ ソース (SQL Server データベース) ごとに 1 つのボリュームを作成します。 この方法では、論理ディスク マネージャー (LDM) は、DPM 保護を 300 データ ソース (SQL Server データベース) に制限します。 この制限を避けるには、 **[DPM 記憶域プールにデータを併置する]** を選択します。 このオプションを使用すると、DPM では複数のデータ ソースに単一のボリュームを使用して、最大 2000 の SQL データベース を保護できます。
 
     **[ボリュームを自動的に拡大する]** オプションがオンになっている場合、運用データの増大に伴って DPM がバックアップ ボリュームを増加することができます。 **[ボリュームを自動的に拡大する]** がオフになっている場合は、保護グループ内のデータ ソースに使用するバックアップ ストレージが制限されます。
 9. 管理者は、帯域幅の輻輳を避けるために手動 (オフ ネット) でこの初期バックアップを転送するか、ネットワーク経由で転送するかを選択できます。 最初の転送が行われるときに構成することもできます。 **[次へ]** をクリックします。
@@ -76,12 +71,12 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     初期バックアップ コピーでは、運用サーバー (SQL Server コンピューター) から DPM サーバーに、データ ソース (SQL Server データベース) 全体を転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 したがって、管理者は初期バックアップを転送する際に、帯域幅の輻輳を避けるために (リムーバブル メディアを使用して) **手動で**転送するか、(指定した時刻に) **ネットワーク経由で自動で**転送するかを選択できます。
 
     初期バックアップが完了した後は、残りのバックアップは初期バックアップのコピーに対する増分バックアップになります。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
-10. 整合性チェックをいつ実行するかを選択し、 **[次へ]**をクリックします。
+10. 整合性チェックをいつ実行するかを選択し、 **[次へ]** をクリックします。
 
     ![Consistency check](./media/backup-azure-backup-sql/pg-consistent.png)
 
     DPM は整合性チェックを実行して、バックアップ ポイントの整合性を確認します。 このチェックでは、運用サーバー (このシナリオでは SQL Server コンピューター) のバックアップ ファイルと DPM にバックアップされたこのファイルのデータのチェックサムを計算します。 競合がある場合は、DPM にバックアップされたファイルが破損していると見なされます。 DPM は、チェックサムの不一致に対応するブロックを送信することにより、バックアップされたデータを修正します。 整合性チェックは負荷の高い処理であるため、管理者はこのチェックをスケジュール設定するか、自動的に実行するかを選択できます。
-11. データ ソースのオンライン保護を指定するには、Azure で保護されるデータベースを選択し、 **[次へ]**をクリックします。
+11. データ ソースのオンライン保護を指定するには、Azure で保護されるデータベースを選択し、 **[次へ]** をクリックします。
 
     ![Select datasources](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 12. 管理者は、組織のポリシーに合わせてバックアップ スケジュールや保有ポリシーを選択できます。
@@ -112,7 +107,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     * **[自動 (ネットワーク経由)]** の場合は、バックアップ用に選択されたスケジュールに従って、バックアップ データが Azure に転送されます。
     * **[オフライン バックアップ]** のしくみについては、「 [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。
 
-    初期バックアップのコピーを Azure に転送するための適切な転送メカニズムを選択し、 **[次へ]**をクリックします。
+    初期バックアップのコピーを Azure に転送するための適切な転送メカニズムを選択し、 **[次へ]** をクリックします。
 15. **[概要]** 画面でポリシーの詳細を確認したら、**[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックして、[監視] ワークスペースでジョブの進行状況を監視できます。
 
     ![Creation of Protection Group In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
@@ -123,7 +118,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 1. データベースの保護グループの状態に " **OK** " と表示されるのを待ってから、回復ポイントを作成します。
 
     ![Protection Group Members](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-2. データベースを右クリックし、 **[回復ポイントの作成]**を選択します。
+2. データベースを右クリックし、 **[回復ポイントの作成]** を選択します。
 
     ![Create Online Recovery Point](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
 3. ドロップダウン メニューから **[オンライン保護]** を選択し、**[OK]** をクリックします。 これにより、Azure での回復ポイントの作成が開始されます。
@@ -142,13 +137,13 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 2. データベース名を右クリックし、**[回復]** をクリックします。
 
     ![Recover from Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM に回復ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]**を選択します。 **[次へ]** をクリックします。
+3. DPM に回復ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]** を選択します。 **[次へ]** をクリックします。
 
     ![Recover to Original Location](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     この例では、DPM はデータベースを別の SQL Server インスタンスまたはスタンドアロンのネットワーク フォルダーに回復できます。
 4. **[回復オプションの指定]** 画面で、[ネットワークの使用帯域幅の調整] を選択して回復で使用される帯域幅を調整するなど、回復のオプションを選択できます。 **[次へ]** をクリックします。
-5. **[概要]** 画面に、これまでに指定した回復の構成が表示されます。 **[回復]**をクリックします。
+5. **[概要]** 画面に、これまでに指定した回復の構成が表示されます。 **[回復]** をクリックします。
 
     回復の状態に、データベースが回復されていることが表示されます。 **[閉じる]** をクリックしてウィザードを閉じ、**[監視]** ワークスペースで進行状況を確認できます。
 

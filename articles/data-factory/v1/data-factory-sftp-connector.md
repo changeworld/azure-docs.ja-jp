@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e43e147fa352a38dd8c051725e92245047921689
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9efb385e96e77b3cfc69556406bbc9777338b5d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623470"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +50,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | 型 | type プロパティを `Sftp` に設定する必要があります。 |[はい] |
 | host | SFTP サーバーの名前または IP アドレス。 |[はい] |
@@ -64,7 +65,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 基本認証を使用するには、`authenticationType` を `Basic` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |[はい] |
 | password | ユーザー (username) のパスワード。 | [はい] |
@@ -114,7 +115,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 SSH 公開キー認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username |SFTP サーバーにアクセスできるユーザー |[はい] |
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
@@ -170,7 +171,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 
 **typeProperties** セクションは、データセットの型ごとに異なります。 これは、データセット型に固有の情報を提供します。 **FileShare** 型のデータセットの typeProperties セクションには、次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |[はい] |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |

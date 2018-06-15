@@ -4,19 +4,17 @@ description: Azure Cosmos DB の上位 5 つのユース ケースとして、�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: 67ff272f669e65f0466865349691bd69156401a9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ab24dc98ef4c767f04dc083ac6208e2c9d831935
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616806"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -107,8 +105,8 @@ Azure Cosmos DB の使用を開始するには、[クイック スタート](cre
 
 または、Cosmos DB を使用しているお客様の詳細情報を確認したい場合は、次の顧客事例が提供されています。
 
-* [Jet.com](https://jet.com)。電子商取引の挑戦者はトップを見据えて、Microsoft のクラウド上で運用を行い、世界規模で Cosmos DB を活用しています。
-* [Asos.com](http://www.asos.com/)。Asos.com は、英国のファッションおよび美容用品のオンライン ストアです。 主に若者をターゲットとし、Asos は 850 以上のブランドおよび、独自のラインナップの衣類やアクセサリーを販売しています。
+* [Jet.com](https://jet.com)。 電子商取引の挑戦者はトップを見据えて、Microsoft のクラウド上で運用を行い、世界規模で Cosmos DB を活用しています。
+* [Asos.com](http://www.asos.com/)。 Asos.com は、英国のファッションおよび美容用品のオンライン ストアです。 主に若者をターゲットとし、Asos は 850 以上のブランドおよび、独自のラインナップの衣類やアクセサリーを販売しています。
 * [トヨタ](https://www.toyota.com/)。 トヨタ自動車は日本の自動車メーカーです。 トヨタでは、グローバル IoT アプリに Cosmos DB を活用しています。
 * [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix では、Azure Service Fabric および Azure Cosmos DB を使用してシングル サインオン ソリューションを開発しています。
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA の革新的な車両所有者向け IoT ソリューションは、時間、費用、ガソリンを節約し、ひいては生活全般の負担を軽減します。
@@ -116,7 +114,7 @@ Azure Cosmos DB の使用を開始するには、[クイック スタート](cre
 * [Johnson Controls](http://www.johnsoncontrols.com)。 Johnson Controls は、150 か国以上で幅広い顧客にサービスを提供する、グローバルな総合テクノロジーおよび多業種のリーダーです。
 * [Microsoft Windows、ユニバーサル ストア、Azure IoT Hub、Xbox Live、その他のインターネット規模のサービス](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft が Azure Cosmos DB を使用して大規模でスケーラブルなサービスを構築する方法。
 * [Microsoft のデータと分析チーム](https://customers.microsoft.com/story/microsoftdataandanalytics)。 マイクロソフトのデータと分析チームは、Azure Cosmos DB を使用して、地球規模のビッグデータの収集を実現しました。
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。Sulekha では、Azure Cosmos DB を使用してインド各地で顧客と企業を結び付けています。
+* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。 Sulekha では、Azure Cosmos DB を使用してインド各地で顧客と企業を結び付けています。
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb)。 NewOrbit は、Azure Cosmos DB を使用することで飛躍を遂げています。
 * [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale)。 Affinio は、大規模なソーシャル データを処理するために、AWS から Azure Cosmos DB に切り替えます。
 * [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)。 Azure Cosmos DB のサポートにより、「The Walking Dead: No Man's Land」がランキング 1 位に浮上しました。

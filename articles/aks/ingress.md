@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8452708ef6b3d1944495c3c2c152c1e753a9cebf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599900"
 ---
-# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) での HTTPS イングレス
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での HTTPS イングレス
 
 イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使うと、1 つの外部アドレスを使って Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
 
@@ -68,12 +69,11 @@ IP="51.145.155.210"
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"
 
-# Get resource group and public ip name
-RESOURCEGROUP=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[resourceGroup]" --output tsv)
-PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[name]" --output tsv)
+# Get the resource-id of the public ip
+PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
 
 # Update public ip address with dns name
-az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
+az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
 ```
 
 FQDN 経由でイングレス コントローラーにアクセスできるようになります。

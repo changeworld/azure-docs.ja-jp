@@ -1,25 +1,20 @@
 ---
-title: "Azure Backup のデータ モデル"
-description: "この記事では、Azure Backup レポートに使用する Power BI データ モデルの詳細について説明します。"
+title: Azure Backup のデータ モデル
+description: この記事では、Azure Backup レポートに使用する Power BI データ モデルの詳細について説明します。
 services: backup
-documentationcenter: 
 author: JPallavi
 manager: vijayts
-editor: 
-ms.assetid: 0767c330-690d-474d-85a6-aa8ddc410bb2
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efecbc9f1c410744f49795889c4ec3cc618f07e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17e011452f9b87c1201cea12f394a9cdd18e54b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606224"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
 この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。 
@@ -33,7 +28,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="alert"></a>アラート:
 次の表は、さまざまなアラートに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |整数 |選択した期間に作成されるアラートの数 |
 | %ActiveAlertsCreatedInPeriod |割合 |選択した期間のアクティブなアラートの割合 |
@@ -50,7 +45,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="backup-item"></a>バックアップ項目
 次の表は、さまざまなバックアップ項目に関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #BackupItems |整数 |バックアップ項目の数 |
 | #UnprotectedBackupItems |整数 |保護のために停止されたか、バックアップを構成されているが、バックアップが開始されていないバックアップ項目の数|
@@ -68,7 +63,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="calendar"></a>カレンダー
 次の表は、カレンダーに関連するフィールドを示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | 日付 |日付 |データをフィルター処理するために選択した日付 |
 | DateKey |テキスト |各日付項目の一意のキー |
@@ -79,13 +74,13 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | 週 |テキスト |データをフィルター処理するために選択した週。週は日曜日から始まり、土曜日で終わります |
 | WeekDate |日付 |データをフィルター処理するために選択した、週が終わる曜日 |
 | WeekDiff |10 進数 |データのフィルター処理に使用する週単位の差。たとえば、0 は現在の週のデータを示し、-1 は前の週のデータを示し、0 および-1 は現在と前の週のデータを示します |
-| Year |テキスト |データをフィルター処理するために選択したカレンダーの年 |
+| 年 |テキスト |データをフィルター処理するために選択したカレンダーの年 |
 | YearDate |日付 |データをフィルター処理するために選択した、年が終わる日付 |
 
 ### <a name="job"></a>ジョブ
 次の表は、さまざまなジョブに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |整数 |選択した期間に作成されるジョブの数 |
 | %FailuresForJobsCreatedInPeriod |割合 |選択された期間の全体的なジョブ エラーの割合 |
@@ -102,10 +97,10 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | JobStatus |テキスト |完了したジョブの状態 (例: 完了、失敗) |
 | JobUniqueId |テキスト |ジョブを識別する一意の ID |
 
-### <a name="policy"></a>[ポリシー]
+### <a name="policy"></a>ポリシー
 次の表は、さまざまなポリシーに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #Policies |整数 |システム内に存在するバックアップ ポリシーの数 |
 | #PoliciesInUse |整数 |現在、バックアップを構成するために使用されているポリシーの数 |
@@ -139,7 +134,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="protected-server"></a>保護されるサーバー
 次の表は、さまざまな保護されるサーバーに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #ProtectedServers |整数 |保護されるサーバーの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
@@ -158,7 +153,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="storage"></a>Storage
 次の表は、さまざまなストレージに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #ProtectedInstances |10 進数 |選択した時刻の最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
@@ -169,7 +164,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="time"></a>Time
 次の表は、時刻に関連するフィールドを示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | Hour |Time |時刻 (例: 1:00:00 PM) |
 | HourNumber |10 進数 |1 日の時間 (例: 13.00) |
@@ -181,7 +176,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 ### <a name="vault"></a>コンテナー
 次の表は、さまざまなコンテナーに関連するフィールドの基本フィールドと集計を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | 説明 |
 | --- | --- | --- |
 | #Vaults |整数 |コンテナーの数 |
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
@@ -192,7 +187,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | VaultName |テキスト |コンテナーの名前 |
 | VaultTags |テキスト |コンテナーに関連付けられるタグ |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Backup のレポートを作成するためのデータ モデルを確認した時点で、Power BI レポートの作成および表示に関する詳細について、次の記事を参照してください。
 
 * [Power BI でレポートを作成する](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

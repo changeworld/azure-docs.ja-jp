@@ -10,11 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8730cb61ac598a547c58e473bcd26589bd1b2a52
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 85be7763535b8b067c5a52729fb2be855ffa4b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608459"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート: Python API で最初の Batch ジョブを実行する
 
@@ -162,7 +163,7 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04.0-LTS",
+            sku="16.04-LTS",
             version="latest"
             ),
         node_agent_sku_id="batch.node.ubuntu 16.04"),

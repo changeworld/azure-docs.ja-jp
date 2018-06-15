@@ -1,25 +1,20 @@
 ---
-title: "Azure Backup のレポートを構成する"
-description: "この記事では、Recovery Services コンテナーを使用する Azure Backup の Power BI レポートを構成する方法について説明します。"
+title: Azure Backup のレポートを構成する
+description: この記事では、Recovery Services コンテナーを使用する Azure Backup の Power BI レポートを構成する方法について説明します。
 services: backup
-documentationcenter: 
 author: JPallavi
 manager: vijayts
-editor: 
-ms.assetid: 86e465f1-8996-4a40-b582-ccf75c58ab87
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b645d12255ab2bd6c3747eb966b2a6ecc3e284b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605231"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用する Azure Backup のレポートを構成し、Power BI を使用してそのレポートにアクセスする手順を説明します。 この手順を実行すると、Power BI に直接アクセスしてすべてのレポートを表示し、レポートのカスタマイズおよび作成を行えるようになります。 
@@ -41,7 +36,7 @@ Azure Portal で次の手順を使用して、Recovery Services コンテナー�
 1. 既に Recovery Services コンテナーが開かれている場合は、次の手順に進みます。 Recovery Services コンテナーが開かれていないが、Azure Portal 内にいる場合は、**[すべてのサービス]** をクリックします。
 
    * リソース ボックスに「 **Recovery Services**」と入力します。
-   * 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**が表示されたら、それをクリックします。
+   * 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** が表示されたら、それをクリックします。
 
       ![Create Recovery Services Vault step 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
 

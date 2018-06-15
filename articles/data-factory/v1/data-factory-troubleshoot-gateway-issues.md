@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d82592bfda3eaf44d28f67b8bb6599aa4ae4bae7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 66e6725dd4e23eeaf0c8d0dcff6e5d26e3743218
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624286"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。

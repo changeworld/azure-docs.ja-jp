@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e80408176d6907ded3a3247776e51a5086846e8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d47f9f7a6225dc3359c212a3df638805097d1dcc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616789"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Couchbase からデータをコピーする
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Couchbase のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Couchbase** に設定する必要があります | [はい] |
 | connectionString | Couchbase に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -101,7 +102,7 @@ Couchbase からデータをコピーするには、データセットの type �
 
 Couchbase からデータをコピーするには、コピー アクティビティのソースの種類を **CouchbaseSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **CouchbaseSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

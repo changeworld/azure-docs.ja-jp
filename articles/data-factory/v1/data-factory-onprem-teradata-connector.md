@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622562"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +63,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Teradata のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | 型 |type プロパティを **OnPremisesTeradata** |[はい] |
 | [サーバー] |Teradata のサーバーの名前です。 |[はい] |
@@ -83,7 +84,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 source の種類が **RelationalSource** (Teradata を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |[はい] |
 

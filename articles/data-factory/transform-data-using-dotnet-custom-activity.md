@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: a9e70ad5296a832e711ebac97302d56429ab5bff
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 345ea6f91593e14ff19616f5512916ee77f38486
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619951"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,10 +62,6 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
                 "type": "LinkedServiceReference"
             }
         }
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
     }
 }
 ```
@@ -104,12 +101,12 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ              | [説明]                              | 必須 |
+| プロパティ              | 説明                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | パイプラインのアクティビティの名前。     | [はい]      |
-| 説明           | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description            | アクティビティの動作を説明するテキスト。  | いいえ        |
 | 型                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | [はい]      |
-| 既定のコンテナー     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
+| linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
 | コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | [はい]      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ        |
 | folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ        |
@@ -218,7 +215,7 @@ namespace SampleApp
 
             // From LinkedServices
             dynamic linkedServices = JsonConvert.DeserializeObject(File.ReadAllText("linkedServices.json"));
-            Console.WriteLine(linkedServices[0].properties.typeProperties.connectionString.value);
+            Console.WriteLine(linkedServices[0].properties.typeProperties.accountName);
         }
     }
 }

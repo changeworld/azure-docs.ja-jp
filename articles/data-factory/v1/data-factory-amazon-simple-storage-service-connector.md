@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 455c1247ee68c4841647d942a1ac210b1b91694a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8f73643d25dbcb507e3660a726516d69b7151ecb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619900"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,7 +64,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 リンクされたサービスは、データ ストアをデータ ファクトリにリンクします。 Amazon S3 データ ストアをデータ ファクトリにリンクするには、**AwsAccessKey** 型のリンクされたサービスを作成します。 次の表は、Amazon S3 (AwsAccessKey) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | accessKeyID |シークレット アクセス キーの ID。 |文字列 |[はい] |
 | secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |[はい] |
@@ -92,7 +93,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (SQL Database、Azure BLOB、Azure テーブルなど) でほぼ同じです。 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **AmazonS3** 型のデータセットの **typeProperties** セクション (Amazon S3 データセットを含む) には次のプロパティがあります。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | bucketName |S3 バケットの名前。 |String |[はい] |
 | key |S3 オブジェクト キー。 |String |いいえ  |
@@ -173,7 +174,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。 アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、プロパティはソースとシンクの種類によって異なります。 コピー アクティビティのソースの種類が **FileSystemSource** (Amazon S3を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true または false |いいえ  |
 

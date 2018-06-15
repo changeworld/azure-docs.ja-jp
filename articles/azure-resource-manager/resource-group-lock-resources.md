@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57e1226a263a045784f0278c68246c0e953f6e22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1a0f813e1857d2f1c1cc36b34b6339d26fa91c13
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602688"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止 
 
@@ -218,5 +219,5 @@ az lock delete --ids $lockid
 * リソースを理論的に整理する方法については、「 [タグを使用したリソースの整理](resource-group-using-tags.md)
 * リソースが存在するリソース グループを変更するには、「 [新しいリソース グループへのリソースの移動](resource-group-move-resources.md)
 * カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
+* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
 

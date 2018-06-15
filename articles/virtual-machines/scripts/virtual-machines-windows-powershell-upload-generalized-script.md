@@ -1,26 +1,27 @@
 ---
-title: "Azure PowerShell のサンプル スクリプトに一般化した VHD をアップロードする | Microsoft Docs"
-description: "一般化した VHD を Azure にアップロードし、Resource Manager デプロイメント モデルと Managed Disks を使用した新しい VM を作成する、PowerShell サンプル スクリプトです。"
+title: Azure PowerShell のサンプル スクリプトに一般化した VHD をアップロードする | Microsoft Docs
+description: 一般化した VHD を Azure にアップロードし、Resource Manager デプロイ モデルと Managed Disks を使用した新しい VM を作成する、PowerShell サンプル スクリプトです。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/02/2017
+ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9534ce2a32ac57a441535cfa26f2981b804182d1
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: c1887bc7dc3cddce7f1c9f91f077388df2e73e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716773"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>VHD を Azure にアップロードし新しい VM を作成するサンプル スクリプト
 

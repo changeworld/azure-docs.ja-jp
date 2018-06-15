@@ -1,17 +1,19 @@
 ---
 title: Azure Maps Search サービスを使用して住所を検索する方法 | Microsoft Docs
 description: Azure Maps Search サービスを使用して住所を検索する方法について説明します。
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-ms.openlocfilehash: 4a87c0d0a487706209acc1c6a4ded92e6aab8f9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: timlt
+ms.openlocfilehash: 1acb95af7b62641c371627d6250067f9c2eac99c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600308"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する方法
 
@@ -28,7 +30,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 Search サービスの既定の API は[あいまい検索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)であり、住所または POI トークンの任意の組み合わせの入力を処理します。 この検索 API は正規の "一行検索" であり、ユーザーが検索クエリとして入力した内容を把握していない場合に便利です。 あいまい検索 API は、POI 検索およびジオコーディングの組み合わせです。 また、API はコンテキストの位置 (緯度/経度 のペア) で重み付けされたり、座標と半径によって完全に制約を受けたりする場合があります。あるいは、地理的偏向のアンカー ポイントなしで、より汎用的に API を実行することもできます。
 
-ほとんどの検索クエリは、より優れたパフォーマンスを得て想定外の結果を減らすために、既定で 'maxFuzzyLevel=1' に設定されます。 この既定値は、クエリ パラメーターに 'maxFuzzyLevel=2' または '3' を渡すことで、必要に応じて要求ごとに上書きできます。
+ほとんどの検索クエリは、より優れたパフォーマンスを得て想定外の結果を減らすために、既定で 'maxFuzzyLevel=1' に設定されます。 この既定値は、クエリ パラメーターに 'maxFuzzyLevel=2' または '3' を渡すことで、必要に応じて要求ごとにオーバーライドできます。
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>あいまい検索を使用した住所の検索
 

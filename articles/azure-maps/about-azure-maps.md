@@ -1,23 +1,20 @@
 ---
 title: Azure Maps の概要 | Microsoft Docs
 description: Azure Maps の概要
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: overview
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193953"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600063"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Azure Maps の概要
 Azure Maps は、Maps、Search、Routing、Traffic、Time Zones のサービス API を含む地理空間サービスのポートフォリオです。 サービスのポートフォリオにより、使い慣れたツールを使って、Azure ソリューションに場所情報を統合するソリューションを迅速に開発および拡張できます。 Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 Azure Maps は一連の REST API であり、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。 

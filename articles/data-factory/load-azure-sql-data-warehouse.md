@@ -8,14 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 49ba61ba8cf68a39eef21b1939a3e8a6c92f8827
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c7549297f040e251f3c0109debf757c28750d0a0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619271"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
@@ -59,7 +60,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
     * **バージョン**: **[V2 (プレビュー)]** を選択します。
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
@@ -82,7 +83,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
    2. **[データベース名]** で Azure SQL データベースを選択します。
    3. **[ユーザー名]** でユーザーの名前を指定します。
    4. **[パスワード]** でユーザーのパスワードを指定します。
-   5. **[次へ]**を選択します。
+   5. **[次へ]** を選択します。
    
    ![Azure SQL DB の指定](./media/load-azure-sql-data-warehouse/specify-source-connection.png)
 5. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、「**SalesLT**」と入力してテーブルをフィルター処理します。 **[(すべて選択)]** ボックスを選択してコピーにすべてのテーブルを使用し、**[次へ]** を選択します。 
@@ -98,7 +99,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
    2. **[データベース名]** で Azure SQL Data Warehouse を選択します。
    3. **[ユーザー名]** でユーザーの名前を指定します。
    4. **[パスワード]** でユーザーのパスワードを指定します。
-   5. **[次へ]**を選択します。
+   5. **[次へ]** を選択します。
    
    ![Azure SQL Data Warehouse の指定](./media/load-azure-sql-data-warehouse/specify-sink-connection.png)
 8. **[テーブル マッピング]** ページで、コンテンツを確認し、**[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18a3f3080c58e01117e0fc73adad76d28c298536
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599434"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -161,7 +162,7 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 > [!TIP]
 > ファンアウトとは異なり、ファンイン操作は 1 台の VM に制限されます。 アプリケーションでファンアウト/ファンイン パターンを使用しており、ファンインのパフォーマンスを懸念している場合は、アクティビティ関数のファンアウトを複数の[サブオーケストレーション](durable-functions-sub-orchestrations.md)に分けることを検討してください。
 
-次の表に、前述のシナリオで予想される "*最大*" スループットの数値を示します。 "インスタンス" は、Azure App Service の単一のサイズの小さい ([A1](../virtual-machines/windows/sizes-general.md#a-series)) VM で実行されるオーケストレーター関数の単一のインスタンスを指します。 どの場合も、[延長セッション](#orchestrator-function-replay)が有効になっていることを前提としています。 実際の結果は、関数コードで実行される CPU または I/O の処理によって異なる可能性があります。
+次の表に、前述のシナリオで予想される "*最大*" スループットの数値を示します。 "インスタンス" は、Azure App Service の単一のサイズの小さい ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM で実行されるオーケストレーター関数の単一のインスタンスを指します。 どの場合も、[延長セッション](#orchestrator-function-replay)が有効になっていることを前提としています。 実際の結果は、関数コードで実行される CPU または I/O の処理によって異なる可能性があります。
 
 | シナリオ | 最大スループット |
 |-|-|

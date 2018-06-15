@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 47a0f2e1cdb873dc907748ed2f3def29efccaa98
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 797421e40a5550e1897443f35089838a349ad85a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607397"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -149,7 +150,7 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 | Cloud Solution Provider (CSP) | プロバイダーに連絡してください |
 | Azure スポンサー プラン | [スポンサー プラン ポータル](https://www.microsoftazuresponsorships.com/) |
 
-大規模な組織の IT を管理している場合は、[Azure エンタープライズ スキャフォールディング](../azure-resource-manager/resource-manager-subscription-governance.md)に関する記事と、[エンタープライズ IT に関するホワイト ペーパー](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf をダウンロード、英語のみ) を読むことをお勧めします。
+大規模な組織の IT を管理している場合は、[Azure エンタープライズ スキャフォールディング](/azure/architecture/cloud-adoption-guide/subscription-governance)に関する記事と、[エンタープライズ IT に関するホワイト ペーパー](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf をダウンロード、英語のみ) を読むことをお勧めします。
 
 #### <a name="EA"></a>Azure Portal 内の プレビュー Enterprise Agreement のコスト ビュー 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 05/23/2018
 ms.author: andret
-ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b4ad805fe799e328631c13af5a599a9d1dbd91d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156463"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594569"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリへの "Microsoft でサインイン" の追加
@@ -49,7 +49,7 @@ ms.locfileid: "32156463"
 
 このガイドでは、次のパッケージを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|アプリケーションで認証に OpenIDConnect を使用できるようにするためのミドルウェア|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|アプリケーションで Cookie を使用してユーザー セッションを維持できるようにするためのミドルウェア|
@@ -221,7 +221,7 @@ Azure Active Directory と統合されている会社または組織の職場お
 
 ### <a name="restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
 
-このオプションは、"*LOB アプリケーション*" で一般的なシナリオです。アプリケーションが特定の Azure Active Directory インスタンスに属するアカウント (そのインスタンスの "*ゲスト アカウント*" を含む) からのサインインのみを受け入れるようにする場合は、`Common` の *web.config* の `Tenant` パラメーターを組織のテナント名 (たとえば、*contoso.onmicrosoft.com*) で置き換えます。その後、"[*OWIN Startup クラス*](#configure-the-authentication-pipeline)" 内の `ValidateIssuer` 引数を `true` に変更します。
+このオプションは、"*LOB アプリケーション*" で一般的なシナリオです。アプリケーションが特定の Azure Active Directory インスタンスに属するアカウント (そのインスタンスの "*ゲスト アカウント*" を含む) からのサインインのみを受け入れるようにする場合は、`Common` の *web.config* の `Tenant` パラメーターを組織のテナント名 (たとえば、*contoso.onmicrosoft.com*) で置き換えます。 その後、"[*OWIN Startup クラス*](#configure-the-authentication-pipeline)" 内の `ValidateIssuer` 引数を `true` に変更します。
 
 特定の組織の一覧に記載されたユーザーのみを許可するには、`ValidateIssuer` を true に設定し、`ValidIssuers` パラメーターを使用して組織の一覧を指定します。
 
@@ -268,7 +268,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 #### <a name="expected-results"></a>予想される結果
  ログオンしたユーザーの次の基本プロパティが記載されたテーブルが表示されます。
 
-| プロパティ | 値 | [説明]|
+| プロパティ | 値 | 説明|
 |---|---|---|
 | Name | {ユーザーのフルネーム} | ユーザーの姓と名
 |ユーザー名 | <span>user@domain.com</span>| ログオンしたユーザーの識別に使用されるユーザー名

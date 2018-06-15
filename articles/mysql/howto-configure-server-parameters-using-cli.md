@@ -1,20 +1,21 @@
 ---
-title: "Azure Database for MySQL でのサービスのパラメーターの構成"
-description: "この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MySQL のサービス パラメーターを構成する方法について説明します。"
+title: Azure Database for MySQL でのサービスのパラメーターの構成
+description: この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MySQL のサービス パラメーターを構成する方法について説明します。
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 9caf6b164f2433ab3c1b701554f562211cc2de80
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4c04cb77513ec070edce739aa0a49447dc915a1b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265216"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 

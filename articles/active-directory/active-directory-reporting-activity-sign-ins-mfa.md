@@ -3,7 +3,7 @@ title: Azure Portal での多要素認証レポートのリファレンス | Mic
 description: Azure Portal の多要素認証レポートの参照情報
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 03/16/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e92d1383f3179f03194b460e0467314c137fd9e2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ac24b5dcf1aa5b8c616e14bcbb696c9e99b6cecf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589068"
 ---
 # <a name="reference-for-multi-factor-authentication-reporting-in-the-azure-portal"></a>Azure Portal の多要素認証レポートのリファレンス
 

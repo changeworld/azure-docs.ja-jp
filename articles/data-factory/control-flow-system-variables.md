@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 77285692846d2a301e091426801e20203816181a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 498ca342976888ab4ae67826689bb5e21325b94d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618251"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
 この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。 
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="pipeline-scope"></a>パイプラインのスコープ:
 
-| 変数名 | [説明] |
+| 変数名 | 説明 |
 | --- | --- |
 | @pipeline().DataFactory |パイプライン実行が実行されているデータ ファクトリの名前 | 
 | @pipeline().Pipeline |パイプラインの名前 |
@@ -40,7 +41,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="trigger-scope"></a>トリガーのスコープ:
 
-| 変数名 | [説明] |
+| 変数名 | 説明 |
 | --- | --- |
 | trigger().scheduledTime |トリガーがパイプライン実行を呼び出すようにスケジュールされた時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:29:00Z` を返します。|
 | trigger().startTime |トリガーが**実際に**パイプライン実行を呼び出すために起動した時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ、`2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:29:00.9935483Z` のような値を返します。|

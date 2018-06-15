@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jingwang
-ms.openlocfilehash: b8de35aef53458142e24224deb9886548fab221c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 59ad27a8609b4491ba131649b574d2a3bf55309b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206472"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617931"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Salesforce Marketing Cloud からデータをコピーする
 
@@ -46,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Salesforce Marketing Cloud のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **SalesforceMarketingCloud** に設定する必要があります。 | [はい] |
 | clientId | Salesforce Marketing Cloud アプリケーションに関連付けられたクライアント ID。  | [はい] |
@@ -106,7 +106,7 @@ Salesforce Marketing Cloud からデータをコピーするには、データ�
 
 Salesforce Marketing Cloud からデータをコピーするには、コピー アクティビティのソースの種類を **SalesforceMarketingCloudSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **SalesforceMarketingCloudSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

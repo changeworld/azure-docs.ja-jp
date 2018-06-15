@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 2bc47c8963630351d3097938bc7f3d65116d9e4b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fb3aca61b63d70c9341a3964247addf7241a844
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205416"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618125"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ Web テーブル データベースから、サポートされている任意の
 
 Web テーブルのリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Web** |[はい] |
 | url | Web ソースへの URL |[はい] |
@@ -82,7 +82,7 @@ Web テーブルのリンクされたサービスでは、次のプロパティ�
 
 Web テーブルからデータをコピーするには、データセットの type プロパティを **WebTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティを **WebTable** に設定する必要があります。 | [はい] |
 | パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |

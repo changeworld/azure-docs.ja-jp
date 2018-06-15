@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d4c679722e36eb9533b65037a488fb9af9a5bc80
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dddb29d2a796449d6a2c9b68e01e94f32d3022e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621991"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +69,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Salesforce のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | 型 |type プロパティを **Salesforce**に設定する必要があります。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
@@ -81,7 +82,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | tableName |Salesforce のテーブル名。 |いいえ (**RelationalSource** の**クエリ**が指定されている場合) |
 
@@ -97,7 +98,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 コピー アクティビティで、source が **RelationalSource** 型 (Salesforce を含む) の場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 

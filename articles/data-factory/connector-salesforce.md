@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f4de97ef2df5351ac7e8574717ee1439b54a90e8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 99429b8090eca6d8633abfb1309f02168f1d06fb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618312"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,7 +62,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 Salesforce のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 |type プロパティを **Salesforce** に設定する必要があります。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ  |
@@ -139,7 +140,7 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 
 Salesforce をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **SalesforceObject** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **SalesforceObject** に設定する必要があります。  | [はい] |
 | objectApiName | データの取得元の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
@@ -170,7 +171,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 >[!NOTE]
 >旧バージョンとの互換性の維持: Salesforce からデータをコピーする際に、以前の "RelationalTable" 型のデータセットを引き続き使用できますが、新しい "SalesforceObject" 型に切り替えることを推奨するメッセージが表示されます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Salesforce のテーブル名。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -183,7 +184,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 
 Salesforce からデータをコピーするには、コピー アクティビティのソースの種類を **SalesforceSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリを使用できます。 例: `select * from MyTable__c`。 | いいえ (データセットの "tableName" が指定されている場合) |
@@ -233,7 +234,7 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 
 Salesforce にデータをコピーするには、コピー アクティビティのシンクの種類を **SalesforceSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | [はい] |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |

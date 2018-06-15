@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory パススルー認証のセキュリティの詳細 | Microsoft Docs"
-description: "この記事では、Azure Active Directory (Azure AD) パススルー認証でオンプレミス アカウントがどのように保護されるかについて説明します。"
+title: Azure Active Directory パススルー認証のセキュリティの詳細 | Microsoft Docs
+description: この記事では、Azure Active Directory (Azure AD) パススルー認証でオンプレミス アカウントがどのように保護されるかについて説明します。
 services: active-directory
-keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595038"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -203,7 +205,7 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 >
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。

@@ -1,19 +1,19 @@
 ---
 title: Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python) | Microsoft Docs
 description: デバイス開発者として、Python を使用して Raspberry Pi を Azure IoT Central アプリケーションに接続する方法。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/23/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: 23ab31d6d2357bfcb184e5b3022155bef5ace658
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9c2d18a518bd5c98fcc35efdb0dff36970a49b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199879"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629067"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -64,14 +64,14 @@ ms.locfileid: "34199879"
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| テキスト            | 場所     | location   | 該当なし       |
+| テキスト            | リージョン     | location   | 該当なし       |
 
-### <a name="add-a-real-device"></a>実デバイスを追加する
+### <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 

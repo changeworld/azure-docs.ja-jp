@@ -1,19 +1,20 @@
 ---
 title: Azure IoT Edge C# モジュール | Microsoft Docs
 description: C# コードで IoT Edge モジュールを作成し、エッジ デバイスにデプロイする
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 1caa887a13453ce2b2b07e83b74f0ed57535b026
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 1da3a246a2ad33a4563f491058f5d4d115f3954d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631073"
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 

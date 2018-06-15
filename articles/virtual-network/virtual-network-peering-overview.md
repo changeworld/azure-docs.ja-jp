@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: f2dddb6e9a933c1dc1eb4ccbf7ace6757d546fc8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367108"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267130"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -53,7 +53,7 @@ ms.locfileid: "34367108"
 
 ハブ アンド スポーク型のネットワークを展開することができます。この場合、ハブ仮想ネットワークでインフラストラクチャ コンポーネント (ネットワーク仮想アプライアンスや VPN ゲートウェイなど) をホストできます。 すべてのスポーク仮想ネットワークが、ハブ仮想ネットワークとピアリングできるようになります。 トラフィックは、ハブ仮想ネットワークでネットワーク仮想アプライアンスまたは VPN ゲートウェイを経由することができます。 
 
-仮想ネットワーク ピアリングによって、ユーザー定義ルート上の次ホップを、ピアリングされた仮想ネットワーク内の仮想マシンまたは VPN ゲートウェイの IP アドレスにすることができます。 ただし、ExpressRoute ゲートウェイを次ホップの種類として指定するユーザー定義のルートを使用して、仮想ネットワーク間をルーティングすることはできません。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。 ハブとスポークのネットワーク トポロジを作成する方法については、[ハブとスポークのネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)に関する記事を参照してください。
+仮想ネットワーク ピアリングによって、ユーザー定義ルート上の次ホップを、ピアリングされた仮想ネットワーク内の仮想マシンまたは VPN ゲートウェイの IP アドレスにすることができます。 ただし、ExpressRoute ゲートウェイを次ホップの種類として指定するユーザー定義のルートを使用して、仮想ネットワーク間をルーティングすることはできません。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。 ハブとスポークのネットワーク トポロジを作成する方法については、[ハブとスポークのネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="gateways-and-on-premises-connectivity"></a>ゲートウェイとオンプレミスの接続
 
@@ -71,7 +71,7 @@ ms.locfileid: "34367108"
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-仮想ネットワークのピアリングを確認するには、仮想ネットワークの任意のサブネットでネットワーク インターフェイスの[有効なルートを確認](virtual-network-routes-troubleshoot-portal.md)します。 仮想ネットワークのピアリングが存在する場合、仮想ネットワーク内のすべてのサブネットは、ピアリングされている各仮想ネットワークのアドレス空間ごとに、*VNet ピアリング*という種類の次ホップとのルートがあります。
+仮想ネットワークのピアリングを確認するには、仮想ネットワークの任意のサブネットでネットワーク インターフェイスの[有効なルートを確認](diagnose-network-routing-problem.md)します。 仮想ネットワークのピアリングが存在する場合、仮想ネットワーク内のすべてのサブネットは、ピアリングされている各仮想ネットワークのアドレス空間ごとに、*VNet ピアリング*という種類の次ホップとのルートがあります。
 
 Network Watcher の[接続チェック](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使って、ピアリングされた仮想ネットワーク内の仮想マシンへの接続をトラブルシューティングすることもできます。 接続チェックを実行すると、接続元の仮想マシンのネットワーク インターフェイスから接続先の仮想マシンのネットワーク インターフェイスまでのトラフィックのルーティング方法がわかります。
 
@@ -91,12 +91,12 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 * 仮想ネットワーク ピアリングは、同じまたは異なるサブスクリプションに存在する同じまたは異なるデプロイメント モデルを使って作成された仮想ネットワーク間に作成されます。 次のいずれかのシナリオのチュートリアルを完了します。
 
-    |Azure デプロイメント モデル             | [サブスクリプション]  |
+    |Azure デプロイメント モデル             | サブスクリプション  |
     |---------                          |---------|
     |両方が Resource Manager              |[同じ](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[異なる](create-peering-different-subscriptions.md)|
     |一方が Resource Manager、もう一方がクラシック  |[同じ](create-peering-different-deployment-models.md)|
     |                                   |[異なる](create-peering-different-deployment-models-subscriptions.md)|
 
-* [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)を作成する方法を学習します。
+* [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成する方法を学習します。
 * [仮想ネットワーク ピアリングの設定と変更方法](virtual-network-manage-peering.md)のすべてを学習する

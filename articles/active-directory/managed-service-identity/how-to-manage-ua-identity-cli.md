@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 5262914e469bdc07921c3b82e990d544349b5fd4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 24172ebac8c7f124d0873b9d93d260fa2e1a8a44
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930668"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594613"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Azure CLI を使用して、ユーザー割り当て ID を作成、一覧表示、削除する
 
@@ -31,7 +31,7 @@ ms.locfileid: "33930668"
 
 ## <a name="prerequisites"></a>前提条件
 
-- MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を見直すようにしてください。**
+- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。 **[システム割り当て ID とユーザー割り当て ID の違い](overview.md#how-does-it-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 - CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
@@ -44,10 +44,9 @@ ms.locfileid: "33930668"
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当て管理対象 ID を作成する 
 
-ユーザー割り当て ID を作成するには、[az identity create](/cli/azure/identity#az-identity-create) コマンドを使用します。 `-g` パラメーターはユーザー割り当て ID が作成されるリソース グループを指定し、`-n` パラメーターはその名前を指定します。 `<RESOURCE GROUP>` と `<USER ASSIGNED IDENTITY NAME>` のパラメーターの値を、実際の値に置き換えます。
+ユーザー割り当て ID を作成するには、[az identity create](/cli/azure/identity#az-identity-create) コマンドを使用します。 `-g` パラメーターはユーザー割り当て ID が作成されるリソース グループを指定し、`-n` パラメーターはその名前を指定します。 `<RESOURCE GROUP>` および `<USER ASSIGNED IDENTITY NAME>` パラメーターの値は、実際の値に置き換えます。
 
-> [!IMPORTANT]
-> ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前は 24 文字の長さに制限する必要があります。 アップデートは後ほどご確認ください。 詳細については、[FAQ と既知の問題](known-issues.md)をご覧ください。
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>

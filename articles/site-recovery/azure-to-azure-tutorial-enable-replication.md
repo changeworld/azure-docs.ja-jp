@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5cfca7f0413a680369c926f58d0a4e15f182a5b3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211669"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716484"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する
 
@@ -28,7 +28,7 @@ ms.locfileid: "34211669"
 > * VM の発信アクセスを設定する
 > * VM のレプリケーションを有効にする
 
-Azure から Azure へのレプリケーションは、現在プレビュー段階です。
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
@@ -129,7 +129,7 @@ Site Recovery は、サブスクリプションとリソース グループ/ク�
 Site Recovery では、ターゲット リージョンの既定の設定とレプリケーション ポリシーが作成されます。 設定は、要件に基づいて変更できます。
 
 1. **[設定]** をクリックしてターゲットおよびレプリケーションの設定を表示します。
-2. 既定のターゲット設定を上書きするには、**[リソース グループ、ネットワーク、ストレージ、可用性セット]** の横にある **[カスタマイズ]** をクリックします。
+2. 既定のターゲット設定をオーバーライドするには、**[リソース グループ、ネットワーク、ストレージ、可用性セット]** の横にある **[カスタマイズ]** をクリックします。
 
   ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
@@ -149,7 +149,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 - **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。 VM がソース リージョンにあるセットの一部である場合、可用性セットのみを追加できます。
 
-既定のレプリケーション ポリシー設定を上書きするには、**[レプリケーション ポリシー]** の横にある **[カスタマイズ]** をクリックします。  
+既定のレプリケーション ポリシー設定をオーバーライドするには、**[レプリケーション ポリシー]** の横にある **[カスタマイズ]** をクリックします。  
 
 - **レプリケーション ポリシー名** : ポリシーの名前。
 

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b1540ccd8a80d1cb3e3cff7b0ee488dd58c48df5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7fa26e71651f0b13da97653e998974c6fd39fe3f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617197"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Oracle Eloqua からデータをコピーする
 
@@ -45,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Oracle Eloqua のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Eloqua** に設定する必要があります | [はい] |
 | endpoint | Eloqua サーバーのエンドポイント。 (つまり、eloqua.example.com)  | [はい] |
@@ -103,7 +104,7 @@ Oracle Eloqua からデータをコピーするには、データセットの ty
 
 Oracle Eloqua からデータをコピーするは、コピー アクティビティのソースの種類を **EloquaSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **EloquaSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Accounts"`」のように入力します。 | [はい] |
