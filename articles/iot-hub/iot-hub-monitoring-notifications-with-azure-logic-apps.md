@@ -1,25 +1,21 @@
 ---
 title: Azure Logic Apps による IoT リモート監視と通知 | Microsoft Docs
 description: IoT Hub の IoT 温度の監視と、検出された異常に関するメール通知の自動送信には、Azure Logic Apps を使用します。
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: IoT の監視、IoT の通知、IoT の温度の監視
-ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e54c36d0cfbaedb93db86ad6ce5f99b288b63c9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e59577e99114f1b2061a2f9075976da3f0b1811f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634456"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -135,7 +131,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 1. **[Service Bus - 1 つ以上のメッセージがキューに届いたとき (オートコンプリート)]** をクリックします。
 1. Service Bus の接続を作成します。
    1. 接続名を入力します。
-   1. Service Bus 名前空間 > Service Bus ポリシー > **作成** をクリックします。
+   1. Service Bus 名前空間] > Service Bus ポリシー] > **[作成]** をクリックします。
 
       ![Azure Portal でロジック アプリ用の Service Bus 接続を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7_create-service-bus-connection-in-logic-app-azure-portal.png)
 

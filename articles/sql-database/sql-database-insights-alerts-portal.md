@@ -6,14 +6,15 @@ manager: craigg
 services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648025"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -42,11 +43,12 @@ ms.lasthandoff: 04/06/2018
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 2. この手順は、SQL DB およびエラスティック プールと SQL DW では異なります。 
 
-   - **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+   - 
+  **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
      ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
   
-   - **SQL DW のみ**: 主なタスク セクションで **監視** を選択します。 **[DWU 利用状況]** グラフをクリックします。
+   - **SQL DW のみ**: [主なタスク] セクションで **監視** を選択します。 **[DWU 利用状況]** グラフをクリックします。
 
      ![主なタスク](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
 

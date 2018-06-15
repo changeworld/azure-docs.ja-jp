@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836227"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Azure Machine Learning での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 
@@ -108,7 +110,7 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 ### <a name="integration-with-excel"></a>Excel との統合
 ソリューションは、トレーニング済みのモデルから Web サービスを作成することで、Machine Learning の回帰モデルを運用することでした。 数分以内に、Web サービスを作成し、これを Excel から直接呼び出して予測収益値を返すことができます。 
 
-*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Excel ブックのダウンロード]*をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
+*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *Excel ブックのダウンロード* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
 
 ![][1]
 

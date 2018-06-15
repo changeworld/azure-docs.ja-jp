@@ -6,14 +6,16 @@ author: hning86
 ms.author: haining
 manager: mwinkle
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6085762f9f3874df8dd90866e387a581915dbbaf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831603"
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 
@@ -265,14 +267,14 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 - Workbench は、ユーザーが実行を開始したとき、保存されていない_すべての_ファイルを保存します。
 - Workbench はローカル コンピューター上の最後に使用されたワークスペースを記憶しているため、それが自動的に開きます。
 - Workbench の 1 つのインスタンスだけが実行を許可されるようになりました。 以前は、複数のインスタンスを起動できたため、同じプロジェクトで動作しているときに問題が発生しました。
-- [ファイル] メニューの [Open Project...] (プロジェクトを開く...) は [Add Existing Folder as Project...](既存のフォルダーをプロジェクトとして追加する...) に名前が変更されました。 
+- [ファイル] メニューの [プロジェクトを開く...] は [既存のフォルダーをプロジェクトとして追加する...] に名前が変更されました。 
 - タブの切り替えがきわめて迅速になりました。
-- [Configuring IDE] (IDE の構成) ダイアログ ボックスにヘルプ リンクが追加されました。
+- [IDE の構成] ダイアログ ボックスにヘルプ リンクが追加されました。
 - フィードバック フォームが最後に入力された電子メール アドレスを記憶するようになりました。
 - 長所と欠点のフォームはテキスト領域が大きくなったため、より多くのフィードバックを送信できます。 
 - `az ml workspace create` 内の `--owner` スイッチのヘルプ テキストが修正されました。
 - ユーザーがアプリのバージョン番号を簡単に表示したりコピーしたりできるようにするために、[バージョン情報] ダイアログ ボックスを追加しました。
-- [ヘルプ] メニューに [Suggest a feature] (機能の提案) メニュー項目が追加されました。
+- [ヘルプ] メニューに [機能の提案] メニュー項目が追加されました。
 - 実験アカウント名が、アプリのタイトル バー内のアプリ名 "Azure Machine Learning Workbench" の前に表示されるようになりました。
 - 検出されたアプリのバージョンに基づいて、バージョン固有のアプリ ホームページが表示されるようになりました。
 

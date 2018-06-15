@@ -4,18 +4,18 @@ description: Microsoft Excel をクラウド内の Azure SQL データベース�
 services: sql-database
 keywords: SQL への Excel の接続、Excel へのデータのインポート
 author: joseidz
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: craigg
-ms.openlocfilehash: 5d2d863c0266467a60eafa70f0ef3ecaa9736ac0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a87dd484b5931292fafd7f8b28d31f0f7f775a40
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188414"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645669"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 
@@ -27,7 +27,7 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 
 ## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Excel を SQL データベースに接続してデータを読み込む
 1. Excel を SQL データベースに接続するには、Excel を開き、新しいブックを作成するか、既存の Excel ブックを開きます。
-2. ページ上部のメニュー バーで **[データ]** タブを選択し、**[Get Data]**(データの取得)、[From Azure](Azure から)、**[From Azure SQL Database]**(Azure SQL データベースから) の順に選択します。 
+2. ページ上部のメニュー バーで **データ** タブを選択し、**データの取得**、[Azure から]、**Azure SQL データベースから** の順に選択します。 
    
    ![データ ソースの選択: SQL データベースに Excel を接続します。](./media/sql-database-connect-excel/excel_data_source.png)
    
@@ -96,6 +96,7 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 
 ## <a name="next-steps"></a>次の手順
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。
-* [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
+* 
+  [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 * [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)方法を学習します。
 

@@ -1,24 +1,19 @@
 ---
-title: Azure Backup Server v2 のインストール | Microsoft Docs
+title: Azure Backup Server v2 のインストール
 description: Azure Backup Server v2 には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。 Azure Backup Server v2 をインストールまたはアップグレードする方法を説明します。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: adigan
+ms.openlocfilehash: 27da52a46b52e06a8ea4f80fa06487aca34c1c3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606955"
 ---
 # <a name="install-azure-backup-server-v2"></a>Azure Backup Server v2 のインストール
 
@@ -46,41 +41,41 @@ Backup Server v1 から Backup Server v2 にアップグレードするには、
 
 1. ダウンロード センターで、[アップグレード インストーラーをダウンロード](https://go.microsoft.com/fwlink/?LinkId=626082)します。
 
-2. セットアップ ウィザードを抽出したら、**[Execute setup.exe]**\(setup.exe を実行する) が選択されていることを確認してから **[完了]** を選択します。
+2. セットアップ ウィザードを抽出したら、**[setup.exe を実行する]** が選択されていることを確認してから **[完了]** を選択します。
 
   ![セットアップ インストーラー - セットアップを実行](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
-3. Microsoft Azure Backup Server ウィザードの **[Install]**\(インストール) で **[Microsoft Azure Backup Server]** を選択します。
+3. Microsoft Azure Backup Server ウィザードの **[インストール]** で **[Microsoft Azure Backup Server]** を選択します。
 
   ![セットアップ インストーラー - インストールを選択](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
 
-4. **[Welcome]**\(ようこそ) ページで、警告を確認して、**[Next]**\(次へ) を選択します。
+4. **[ようこそ]** ページで、警告を確認して、**[次へ]** を選択します。
 
-  ![セットアップ インストーラー - [Welcome]\(ようこそ) ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
+  ![セットアップ インストーラー - [ようこそ] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
 
-5. セットアップ ウィザードでは、前提条件の確認を実行し、お客様の環境をアップグレードできるかどうかを確認します。 **[Prerequisite Checks]**\(前提条件のチェック) ページで、**[Check]**\(チェック) を選択します。
+5. セットアップ ウィザードでは、前提条件の確認を実行し、お客様の環境をアップグレードできるかどうかを確認します。 **前提条件のチェック** ページで、**チェック** を選択します。
 
-  ![セットアップ インストーラー - [Prerequisite Checks]\(前提条件のチェック) ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
+  ![セットアップ インストーラー - [前提条件のチェック] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
 
-6. 環境が前提条件のチェックをパスする必要があります。 環境がチェックに合格しなかった場合は、問題をメモし、修正します。 **[Check Again]**\(再チェック) を選択します。 前提条件のチェックに合格してから、**[Next]**\(次へ) を選択します。
+6. 環境が前提条件のチェックをパスする必要があります。 環境がチェックに合格しなかった場合は、問題をメモし、修正します。 **[再チェック]** を選択します。 前提条件のチェックに合格してから、**[Next]** \(次へ) を選択します。
 
   ![セットアップ インストーラー - [Check Again]\(再チェック) ボタン](./media/backup-mabs-upgrade-to-v2/mabs-installer-s4-pass-checks.png)
 
-7. **[SQL Settings]**\(SQL 設定) ページで、SQL のインストールに関連するオプションを選択し、**[Check and Install]**\(チェックしてインストール) を選択します。
+7. **SQL Settings**\(SQL 設定) ページで、SQL のインストールに関連するオプションを選択し、**Check and Install**\(チェックしてインストール) を選択します。
 
-  ![セットアップ インストーラー - [SQL Settings]\(SQL 設定) ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
+  ![セットアップ インストーラー - [SQL 設定] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
 
-  このチェックには数分間かかります。 チェックが完了したら、**[Next]**\(次へ) をクリックします。
+  このチェックには数分間かかります。 チェックが完了したら、**[Next]**(次へ) をクリックします。
 
   ![セットアップ インストーラー - [SQL Settings]\(SQL 設定) の [Check and Install]\(チェックしてインストール) ボタン](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
 
-8. **[Installation Settings]**\(インストール設定) ページで、Backup Server をインストールする場所、またはスクラッチ ロケーションを変更します。 **[次へ]**を選択します。
+8. **[インストール設定]**() ページで、Backup Server をインストールする場所、またはスクラッチ ロケーションを変更します。 **[次へ]** を選択します。
 
-  ![セットアップ インストーラー - [Installation Settings]\(インストール設定) ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
+  ![セットアップ インストーラー - [インストール設定] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
-9. セットアップ ウィザードを終了するには、**[Finish]**\(完了) を選択します。
+9. セットアップ ウィザードを終了するには、**[Finish]** \(完了) を選択します。
 
-  ![セットアップ インストーラー - [Finish]\(完了)](./media/backup-mabs-upgrade-to-v2/run-setup.png)
+  ![セットアップ インストーラー - [完了]](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
 
 
@@ -91,18 +86,18 @@ Backup Server v1 から Backup Server v2 にアップグレードするには、
 ### <a name="add-volumes-and-disks"></a>ボリュームとディスクの追加
 Windows Server 2016 で Backup Server v2 を実行している場合、ボリュームを使用してバックアップ データを格納できます。 ボリュームを使用すると、記憶域を節約でき、バックアップが高速になります。 ボリュームは Backup Server の新機能であるため、これを追加する必要があります。 
 
-Backup Server にボリュームを追加する場合、ボリュームにフレンドリ名を指定できます。 名前を付けるボリュームの **[Friendly Name]**\(フレンドリ名) 列をクリックします。 後で名前を変えることもできます。 PowerShell を使用して、ボリュームのフレンドリ名を追加または変更することができます。
+Backup Server にボリュームを追加する場合、ボリュームにフレンドリ名を指定できます。 名前を付けるボリュームの **[Friendly Name]**(フレンドリ名) 列をクリックします。 後で名前を変えることもできます。 PowerShell を使用して、ボリュームのフレンドリ名を追加または変更することができます。
 
 管理者コンソールでボリュームを追加するには、次の手順を実行します。
 
-1. Azure Backup Server の管理者コンソールで、**[Management]**\(管理) > **[Disk Storage]**\(ディスク ストレージ) > **[Add]**\(追加) の順に選択します。
+1. Azure Backup Server の管理者コンソールで、**Management**(管理) > **Disk Storage**(ディスク ストレージ) > **Add**(追加) の順に選択します。
 
-    ![[Add Disk Storage]\(ディスク ストレージの追加) ウィザードを開きます](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
+    ![[ディスク ストレージの追加] ウィザードを開きます](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
     [Add Disk Storage] \(ディスク ストレージの追加) ウィザードが開きます。
 
-2. **[Add Disk Storage]**\(ディスク ストレージの追加) ページの **[Available volumes]**\(使用可能なボリューム) ボックスで、ボリュームを選択し、**[Add]**\(追加) を選択します。
-3. **[Selected volumes]**\(選択したボリューム) ボックスに、ボリュームのフレンドリ名を入力し、**[OK]** を選択します。
+2. **[Add Disk Storage]**(ディスク ストレージの追加) ページの **[Available volumes]**(使用可能なボリューム) ボックスで、ボリュームを選択し、**[Add]**(追加) を選択します。
+3. **[Selected volumes]**(選択したボリューム) ボックスに、ボリュームのフレンドリ名を入力し、**[OK]** を選択します。
 
       ![[ディスク ストレージの追加] ウィザード - ボリュームの追加](./media/backup-mabs-upgrade-to-v2/add-volume.png)
 
@@ -135,9 +130,9 @@ PowerShell を使用して行ったすべての変更は、UI に反映されま
 
 保護グループを作成する手順は次のとおりです。
 
-1. Backup Server の管理者コンソールで、**[Protection]**\(保護) を選択します。
+1. Backup Server の管理者コンソールで、**[Protection]**(保護) を選択します。
 
-2. ツール リボンで、**[New]**\(新規) を選択します。
+2. ツール リボンで、**[New]**(新規) を選択します。
 
     新しい保護グループの作成ウィザードが開きます。
 
@@ -148,7 +143,7 @@ PowerShell を使用して行ったすべての変更は、UI に反映されま
 
   ![[保護グループの種類の選択] ページ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. **[グループ メンバーの選択]** ページの **[利用可能なメンバー]** ウィンドウで、メンバーと保護エージェントの一覧が表示されます。 この例では、ボリューム D:\ と E:\ を選択し、これらを **[Selected members]**\(選択済みメンバー) ウィンドウに追加します。 **[次へ]**を選択します。
+5. **[グループ メンバーの選択]** ページの **[利用可能なメンバー]** ウィンドウで、メンバーと保護エージェントの一覧が表示されます。 この例では、ボリューム D:\ と E:\ を選択し、これらを **[Selected members]**(選択済みメンバー) ウィンドウに追加します。 **[次へ]** を選択します。
 
   ![[グループ メンバーの選択] ページ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
@@ -164,9 +159,9 @@ PowerShell を使用して行ったすべての変更は、UI に反映されま
 
   ![[ディスク ストレージの割り当ての確認] ページ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  記憶域のボリュームは、(PowerShell を使用して設定される) ワークロードのボリュームの割り当てと使用可能記憶域に基づいています。 ドロップダウン メニューでその他のボリュームを選択して、記憶域ボリュームを変更できます。 **[ターゲット記憶域]** の値を変更する場合、**[使用可能なディスクの記憶域]** の値は動的に変化し、**[空き領域]** と **[Underprovisioned Space]**\(過小にプロビジョニングされた領域) の値を反映します。
+  記憶域のボリュームは、(PowerShell を使用して設定される) ワークロードのボリュームの割り当てと使用可能記憶域に基づいています。 ドロップダウン メニューでその他のボリュームを選択して、記憶域ボリュームを変更できます。 **[ターゲット記憶域]** の値を変更する場合、**[使用可能なディスクの記憶域]** の値は動的に変化し、**[空き領域]** と **[Underprovisioned Space]**(過小にプロビジョニングされた領域) の値を反映します。
 
-  データ ソースが計画どおりに増えると、**[使用可能なディスクの記憶域]** の **[Underprovisioned Space]**\(過小にプロビジョニングされた領域) の値は、必要な追加記憶域の量を反映します。 この値を使用して、スムーズなバックアップに必要な記憶域のニーズの計画に役立ててください。 値が 0 の場合、近い将来に記憶域に問題が発生する可能性はありません。 値が 0 以外の数値の場合は、保護ポリシーと保護されたメンバーのデータ サイズに基づいた十分な記憶域が割り当てられていません。
+  データ ソースが計画どおりに増えると、**[使用可能なディスクの記憶域]** の **[Underprovisioned Space]**(過小にプロビジョニングされた領域) の値は、必要な追加記憶域の量を反映します。 この値を使用して、スムーズなバックアップに必要な記憶域のニーズの計画に役立ててください。 値が 0 の場合、近い将来に記憶域に問題が発生する可能性はありません。 値が 0 以外の数値の場合は、保護ポリシーと保護されたメンバーのデータ サイズに基づいた十分な記憶域が割り当てられていません。
 
   ![過少割り当てされたディスク ストレージ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-7.png)
 
@@ -177,7 +172,7 @@ Backup Server v2 にアップグレードまたはこれをインストールし
 
 Modern Backup Storage を使用するように保護グループを更新することはオプションです。 保護グループを更新するには、データ保持オプションを使用して、すべてのデータ ソースの保護を停止します。 次に、新しい保護グループにデータ ソースを追加します。
 
-1. 管理者コンソールで、**[Protection]**\(保護) 機能を選択します。 **[保護グループ メンバー]** 一覧で、メンバーを右クリックし、**[Stop protection of member]**\(メンバーの保護を停止する) を選択します。
+1. 管理者コンソールで、**[Protection]**(保護) 機能を選択します。 **[保護グループ メンバー]** 一覧で、メンバーを右クリックし、**[Stop protection of member]**(メンバーの保護を停止する) を選択します。
 
   ![メンバーの保護の停止](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
@@ -196,11 +191,11 @@ Backup Server で従来の記憶域を使用する場合、ディスクを追加
 
 ディスク ストレージを追加するには、次の手順を実行します。
 
-1. 管理者コンソールで、**[Management]**\(管理) > **[Disk Storage]**\(ディスク ストレージ) > **[Add]**\(追加) の順に選択します。
+1. 管理者コンソールで、**[Management]**(管理) > **[Disk Storage]**(ディスク ストレージ) > **[Add]**(追加) の順に選択します。
 
     ![[Add Disk Storage]\(ディスク ストレージの追加) ダイアログ](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. **[Add Disk Storage]**\(ディスク ストレージの追加) ダイアログで **[Add disks]**\(ディスクの追加) を選択します。
+4. **[Add Disk Storage]**(ディスク ストレージの追加) ダイアログで **[Add disks]**(ディスクの追加) を選択します。
 
 5. 使用可能なディスクの一覧で、追加するディスクを選択し、**[追加]** を選択し、**[OK]** を選択します。
 
@@ -212,12 +207,12 @@ Backup Server は、System Center Data Protection Manager 保護エージェン�
 
 ### <a name="update-a-protection-agent-for-a-connected-client-computer"></a>接続されているクライアント コンピューターの保護エージェントの更新
 
-1. Backup Server の管理者コンソールで、**[Management]**\(管理) > **[Agents]**\(エージェント) の順に選択します。
+1. Backup Server の管理者コンソールで、**[Management]** \(管理) > **[Agents]** \(エージェント) の順に選択します。
 
 2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 
   > [!NOTE]
-  > **[Agent Updates]**\(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
+  > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
   >
   >
 
@@ -225,12 +220,12 @@ Backup Server は、System Center Data Protection Manager 保護エージェン�
 
 ### <a name="update-a-protection-agent-on-a-client-computer-that-is-not-connected"></a>接続されていないクライアント コンピューターの保護エージェントの更新
 
-1. Backup Server の管理者コンソールで、**[Management]**\(管理) > **[Agents]**\(エージェント) の順に選択します。
+1. Backup Server の管理者コンソールで、**[Management]**(管理) > **[Agents]**(エージェント) の順に選択します。
 
 2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 
   > [!NOTE]
-   > **[Agent Updates]**\(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていても更新プログラムが利用できないときには使用できません。
+   > **[Agent Updates]**(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていても更新プログラムが利用できないときには使用できません。
   >
   >
 
@@ -238,7 +233,7 @@ Backup Server は、System Center Data Protection Manager 保護エージェン�
 
 4. ネットワークに接続されていないクライアント コンピューターでは、コンピューターがネットワークに接続されるまで、**[エージェントの状態]** 列には **[更新保留中]** の状態が表示されます。
 
-  クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]**\(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
+  クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]**(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
   
 ### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>従来の保護グループを古いバージョンから移動して新しいバージョンを Azure と同期させる
 

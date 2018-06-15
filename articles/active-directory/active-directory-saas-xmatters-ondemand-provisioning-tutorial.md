@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: e0b945a99766ee52cb357f54d7135fbbdf1fada2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 52fe23f5353a68e3afbac6a91955a61c7b8fb44c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34353791"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292672"
 ---
 # <a name="tutorial-configure-xmatters-ondemand-for-automatic-user-provisioning"></a>チュートリアル: xMatters OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -73,7 +73,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成および有効にする前に、xMatters OnDemand にアクセスが必要な Azure AD のユーザーやグループを決定する必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを xMatters OnDemand に割り当てることができます。
 
-*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
+*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-xmatters-ondemand"></a>ユーザーを xMatters OnDemand に割り当てる際の重要なヒント
 
@@ -123,7 +123,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 8. **[Save]** をクリックします。
 
-9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to xMatters OnDemand](Azure Active Directory ユーザーを xMatters OnDemand に同期する)** を選択します。
+9. **[マッピング]** セクションの **[Azure Active Directory ユーザーを xMatters OnDemand に同期する]** を選択します。
 
     ![xMatters OnDemand のプロビジョニング](./media/active-directory-saas-xmatters-ondemand-provisioning-tutorial/SyncUsers.png)
 
@@ -131,7 +131,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![xMatters OnDemand のプロビジョニング](./media/active-directory-saas-xmatters-ondemand-provisioning-tutorial/UserAttributes.png)
 
-11. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to xMatters OnDemand](Azure Active Directory グループを xMatters OnDemand に同期する)** を選択します。
+11. **[マッピング]** セクションの **[Azure Active Directory グループを xMatters OnDemand に同期する]** を選択します。
 
     ![xMatters OnDemand のプロビジョニング](./media/active-directory-saas-xmatters-ondemand-provisioning-tutorial/SyncGroups.png)
 
@@ -159,7 +159,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次の手順

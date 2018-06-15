@@ -3,22 +3,23 @@ title: Privileged Identity Management での Azure リソース ロールの承�
 description: Azure リソースの承認ワークフロー プロセスについて説明します。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7781c858a5c0e4db8593df0cf77b868b6fd23622
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de15a02e706ec7f7b4cff0af303ea30fc87b8f34
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151095"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233769"
 ---
 # <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure リソース ロールの承認ワークフロー
 
@@ -40,7 +41,7 @@ Alice が Contoso サブスクリプションの所有者ロールのアクテ�
 
 承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定するには、次の手順を使用します。
 
-## <a name="require-approval-to-activate"></a>アクティブ化に承認を要求する
+## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
 1. Azure Portal で PIM を参照し、一覧からリソースを選択します。
 
@@ -65,7 +66,7 @@ Alice が Contoso サブスクリプションの所有者ロールのアクテ�
 
 リソース管理者は、承認者の一覧にユーザーとグループの任意の組み合わせを追加できます。 
 
-![[Select a user or group](ユーザーまたはグループの選択) ウィンドウでユーザーが選択されている](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
+![[ユーザーまたはグループの選択] ウィンドウでユーザーが選択されている](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
 
 ## <a name="request-approval-to-activate"></a>アクティブ化のために承認を要求する
 
@@ -95,7 +96,7 @@ Alice が Contoso サブスクリプションの所有者ロールのアクテ�
 
 - ロールの要求のレビューが保留中の場合、承認者一覧のすべてのメンバーに電子メールで通知されます。 電子メール通知には、承認者が承認または拒否できる、要求への直接リンクが含まれています。
 - 要求は、一覧の承認または拒否した最初のメンバーによって解決されます。 
-- 承認者が要求に応答すると、承認者一覧のすべてのメンバーにアクションが通知されます。 
+- 承認者が要求に応答すると、承認者一覧のすべてのメンバーにその動作が通知されます。 
 - リソース管理者には、承認されたメンバーがロール内でアクティブになったときに通知されます。 
 
 >[!Note]
