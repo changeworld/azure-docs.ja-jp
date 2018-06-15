@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940139"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617894"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Netezza からデータをコピーする
 
@@ -46,7 +46,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Netezza のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **Netezza** に設定する必要があります | [はい] |
 | connectionString | Netezza に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -54,10 +54,10 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 
 一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 例:  `SecurityLevel=preferredSecured` サポートされる値は次のとおりです。<br/>- セキュリティで保護されていない接続のみ (**onlyUnSecured**): ドライバーは SSL を使用しません。<br/>- **セキュリティで保護されていない接続を推奨 (preferredUnSecured) (既定値)** : サーバーで選択できる場合、ドライバーは SSL を使用しません。 <br/>- **セキュリティで保護されている接続を推奨 (preferredSecured)**: サーバーで選択できる場合、ドライバーは SSL を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)**: SSL 接続を利用できない場合、ドライバーは接続しません | いいえ  |
-| CaCertFile | サーバーによって使用される SSL 証明書の完全パス。 例:  `UseSystemTrustStore=<cert path>;`| はい (SSL が有効になっている場合) |
+| CaCertFile | サーバーによって使用される SSL 証明書の完全パス。 例:  `CaCertFile=<cert path>;`| はい (SSL が有効になっている場合) |
 
 **例:**
 
@@ -109,7 +109,7 @@ Netezza からデータをコピーするには、データセットの type プ
 
 Netezza からデータをコピーするには、コピー アクティビティのソース タイプを **NetezzaSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **NetezzaSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |

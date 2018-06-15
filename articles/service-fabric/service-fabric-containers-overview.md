@@ -12,22 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/20/2017
+ms.date: 5/21/2018
 ms.author: msfussell
-ms.openlocfilehash: c70db92d6071a295dfc329768ab8a0fd561f8ce5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641914"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
-> [!NOTE]
-> Windows 10 内の、または Docker CE がインストールされている Service Fabric クラスターへのコンテナーのデプロイはサポートされていません。 
->   
-
-> [!NOTE]
-> Service Fabric バージョン 6.1 は、Windows Server バージョン 1709 をプレビュー版サポートしています。 Open ネットワークおよび Service Fabric の DNS サービスは、Windows Server バージョン 1709 で機能しません。 
-> 
 
 ## <a name="introduction"></a>はじめに
 Azure Service Fabric は、マシンのクラスター全体にわたるサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft の大規模なサービスで長年にわたって使用され、最適化されてきました。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。   
@@ -44,10 +38,6 @@ Azure Service Fabric は、マシンのクラスター全体にわたるサー�
 
 ## <a name="container-types-and-supported-environments"></a>コンテナーの種類とサポートされる環境
 Service Fabric は Linux と Windows の両方でコンテナーをサポートしています。また、Windows では Hyper-V の分離モードもサポートしています。 
-
-> [!NOTE]
-> Windows 10 での Service Fabric クラスターへのコンテナーのデプロイは、まだサポートされていません。 
-> 
 
 ### <a name="docker-containers-on-linux"></a>Linux 上の Docker コンテナー
 Docker は、Linux カーネル コンテナー上でコンテナーを作成、管理するための上位レベルの API を提供します。 Docker Hub は、コンテナー イメージの格納と取得に使用する中央リポジトリです。

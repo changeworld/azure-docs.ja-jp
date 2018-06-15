@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636972"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -113,7 +114,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 - Log Analytics ワークスペース ID
 - Log Analytics 共有キー
 
-イベント ハブ名と接続文字列を取得するには、「[Event Hubs 名前空間を確認して、接続文字列を検索する](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs)」の手順に従います。
+イベント ハブ名と接続文字列を取得するには、「[Event Hubs 名前空間を確認して、接続文字列を検索する](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string)」の手順に従います。
 
 
 ### <a name="create-a-new-blank-logic-app"></a>新しい空のロジック アプリの作成
@@ -126,16 +127,16 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
     ![ロジック アプリを作成する](media/log-analytics-activity-logs-subscriptions/create-logic-app.png)
 
-   |Setting | [説明]  |
+   |Setting | 説明  |
    |:---|:---|
    | Name           | ロジック アプリの一意の名前。 |
-   | [サブスクリプション]   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
+   | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
-   | 場所       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
+   | リージョン       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
    | Log Analytics  | ロジック アプリを実行するたびにその状態を Log Analytics に記録する場合に選択します。  |
 
     
-3. **[作成]**を選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[リソースに移動]** をクリックしてロジック アプリを開きます。
+3. **[作成]** を選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[リソースに移動]** をクリックしてロジック アプリを開きます。
 
 4. **[テンプレート]** で **[空のロジック アプリ]** を選択します。 
 
@@ -149,7 +150,7 @@ Logic Apps デザイナーには、使用可能なコネクタとそのトリガ
 
    ![イベント ハブ トリガーのロジック アプリへの追加の画像](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. 資格情報の入力を求められたら、Event Hubs の名前空間に接続します。 コピーしておいた接続の名前と接続文字列を入力します。  **[作成]**を選択します。
+2. 資格情報の入力を求められたら、Event Hubs の名前空間に接続します。 コピーしておいた接続の名前と接続文字列を入力します。  **[作成]** を選択します。
 
    ![イベント ハブ接続のロジック アプリへの追加の画像](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 
@@ -301,7 +302,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
 
     ![データ送信アクションの構成](media/log-analytics-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Setting        | 値           | [説明]  |
+   |Setting        | 値           | 説明  |
    |---------------|---------------------------|--------------|
    |[JSON Request body]\(JSON 要求本文\)  | **Compose** アクションの**出力** | Compose アクションの本文からレコードを取得します。 |
    | [カスタム ログの名前] | AzureActivity | インポートされるデータを保持するために Log Analytics 内に作成するカスタム ログ テーブルの名前。 |

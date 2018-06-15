@@ -10,11 +10,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9f0cc6ee06042948442aace05d56fcffa3742a8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b4fed559b6364149170dc8b1da421c9c3ee1203c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635765"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="prerequisites"></a>前提条件
 
 - **Azure サブスクリプション**。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- **Visual Studio 2017 バージョン 15.7**(**Web 開発**ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload)でダウンロードできます。
+- **Visual Studio 2017 バージョン 15.7**(**Web 開発**ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
 - ASP.NET (Core ではありません) では .NET Framework 4.7.1 開発ツールが必要ですが、これは既定ではインストールされません。 インストールするには、Visual Studio インストーラーを起動し、**[変更]** を選択します。次に、**[個々 のコンポーネント]** を選択した後、右側にある **[ASP.NET と Web 開発]** を展開し、**[.NET Framework 4.7.1 開発ツール]** を選択します。
 - ASP.NET 4.7.1 または ASP.NET Core 2.0 Web プロジェクトが開きます。
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 05/07/2018
    Visual Studio にサインインしたときに、アカウントに関連付けられている Azure サブスクリプションがある場合は、サブスクリプションのドロップダウン リストがページに表示されます。
 1. 使用するサブスクリプションを選択し、新規または既存の Key Vault を選択するか、自動的に生成された名前を変更するために [編集] リンクを選択します。
 
-   ![サブスクリプションを選択する](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)
+   ![サブスクリプションを選択します。](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)
 
 1. Key Vault で使用する名前を入力します。
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 05/07/2018
 
    ![接続済みサービスをプロジェクトに追加する](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. 次に、Azure 内の Key Vault にシークレットを追加します。 ポータルの適切な場所に移動するには、この Key Vault に格納される管理シークレット用のリンクをクリックします。 ページまたはプロジェクトが閉じている場合は、[Azure Portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、**[セキュリティ]** の下の **[Key Vault]** を選択します。次に、先ほど作成した Key Vault を選択することで、同じ場所に移動できます。
+1. 次に、Azure 内の Key Vault にシークレットを追加します。 ポータルの適切な場所に移動するには、この Key Vault に格納される管理シークレット用のリンクをクリックします。 ページまたはプロジェクトが閉じている場合は、[Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、**[セキュリティ]** の下の **[Key Vault]** を選択します。次に、先ほど作成したキー コンテナーを選択することで、同じ場所に移動できます。
 
    ![ポータルに移動する](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 05/07/2018
 
 1. 「MySecret」などのシークレットを入力し、テストとして任意の文字列値を指定した後、**[作成]** ボタンを選択します。
 
-   ![シークレットを作成する](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
+   ![シークレットの作成](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
 1. (省略可能) 別のシークレットを入力しますが、今回は「Secrets--MySecret」 という名前を付けることでカテゴリに配置します。 この構文は、"MySecret" というシークレットを含む "Secrets" というカテゴリを指定します。
  
@@ -98,7 +99,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>コードでシークレットにアクセスする (ASP.NET 4.7.1 プロジェクト)
 
-1. 次のように web.config を変更します。 キーは、Key Vault 内のシークレットの値を持つ AzureKeyVault ConfigurationBuilder によって置き換えられるプレース ホルダーです。
+1. 次のように web.config を変更します。 キーは、AzureKeyVault ConfigurationBuilder によって Key Vault 内のシークレットの値に置き換えられるプレースホルダーです。
 
    ```xml
      <appSettings configBuilders="AzureKeyVault">
@@ -111,7 +112,7 @@ ms.lasthandoff: 05/07/2018
      </appSettings>
    ```
 
-1. HomeController で、シークレットを取得して ViewBag に格納する次の行を About コントローラー メソッドに追加します。
+1. HomeController の About コントローラー メソッドに、シークレットを取得して ViewBag に格納する次の行を追加します。
  
    ```csharp
             var secret = ConfigurationManager.AppSettings["MySecret"];
@@ -131,7 +132,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、リソース グループを削除します。 これにより、Key Vault と関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
+不要になったら、リソース グループを削除します。 これにより、キー コンテナーと関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b71ad5701cfd1f8a274318c69d3464cf4fa34708
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621090"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -160,7 +161,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">副状態</th><th align="left">[説明]</th>
+    <th align="left">状態</th><th align="left">副状態</th><th align="left">説明</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>アクティビティ ウィンドウが実行される時刻になっていません。</td>
@@ -216,7 +217,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 </table>
 
 
-一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または**[プロパティ]** ウィンドウに詳細が表示されます。
+一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または **[プロパティ]** ウィンドウに詳細が表示されます。
 
 ![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
@@ -255,7 +256,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 **[最近のアクティビティ ウィンドウ]** を選択すると、最近のアクティビティ ウィンドウが**最終試行時刻**の降順ですべて表示されます。
 
-**[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。 一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは**[アクティビティ ウィンドウ エクスプローラー]** に表示されます。 また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
+**[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。 一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは **[アクティビティ ウィンドウ エクスプローラー]** に表示されます。 また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
 
 ## <a name="sort-and-filter-activity-windows"></a>アクティビティ ウィンドウの並べ替えとフィルター処理
 アクティビティ ウィンドウをフィルター処理するには、コマンド バーの **[開始時刻]** と **[終了時刻]** の設定を変更します。 開始時刻と終了時刻を変更したら、終了時刻の横にあるボタンをクリックして、[アクティビティ ウィンドウ] 一覧を更新します。
@@ -267,7 +268,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 >
 >
 
-**[アクティビティ ウィンドウ]**の一覧で、列の名前 (例: 状態) をクリックします。
+**[アクティビティ ウィンドウ]** の一覧で、列の名前 (例: 状態) をクリックします。
 
 ![[アクティビティ ウィンドウ] 一覧の列メニュー](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 

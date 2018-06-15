@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db8718b60cdd934e3301479489f21fe45f5578cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ff80130ebb9c4095d4a20202cdfabd9aaf1b1992
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832008"
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning モデル データ収集 API リファレンス
 
@@ -53,14 +55,14 @@ ModelDataCollector の新しいインスタンスをインスタンス化しま�
 クラスとパラメーターの詳細は以下のとおりです。
 
 ### <a name="class"></a>クラス
-| Name | [説明] |
+| Name | 説明 |
 |--------------------|--------------------|
 | ModelDataCollector | azureml.datacollector 名前空間のクラスです。 このクラスのインスタンスが、モデル データの収集に使われます。 1 つのスコア付けファイルに、複数の ModelDataCollector を含めることができます。 収集されるデータのスキーマの一貫性が保たれるように (つまり、入力と予測)、スコア付けファイルの 1 つの独立した場所でのデータ収集に、各インスタンスを使う必要があります。|
 
 
 ### <a name="parameters"></a>parameters
 
-| Name | type | [説明] |
+| Name | type | 説明 |
 |-------------|------------|-------------------------|
 | model_name | 文字列 | データが収集対象であるモデルの名前です。 |
 | identifier | 文字列 | このデータを示すコード内の場所です。つまり、"RawInput" または "Prediction" です。 |
@@ -83,14 +85,14 @@ ModelDataCollector の新しいインスタンスをインスタンス化しま�
 メソッドとパラメーターの詳細は以下のとおりです。
 
 ### <a name="method"></a>方法
-| Name | [説明] |
+| Name | 説明 |
 |--------------------|--------------------|
 | collect | モデルの入力または予測のデータを収集するために使います。|
 
 
 ### <a name="parameters"></a>parameters
 
-| Name | type | [説明] |
+| Name | type | 説明 |
 |-------------|------------|-------------------------|
 | input_data | 複数の型 | 収集対象のデータです (現在受け付けられる型: list、numpy.array、pandas.DataFrame、pyspark.sql.DataFrame)。 DataFrame 型の場合、機能名のヘッダーが存在すると、その情報が対象のデータに組み込まれます (ModelDataCollector コンストラクターで機能名を明示的に渡す必要はありません)。 |
 | user_correlation_id | 文字列 | オプションの相関 ID です。これは、この予測を関連付けるためにユーザーが提供できます。 |

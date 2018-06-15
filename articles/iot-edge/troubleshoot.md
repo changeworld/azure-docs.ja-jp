@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Edge のトラブルシューティング | Microsoft Docs
 description: Azure IoT Edge での一般的な問題を解決し、トラブルシューティング スキルについて説明します
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/23/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+services: iot-edge
+ms.openlocfilehash: ad22b0cd1457c1d4146a75047ff18e916c0c7ccd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633538"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -75,7 +74,7 @@ Edge エージェント ログの例:
 IoT Edge ランタイムは、各モジュールが通信するネットワークをセットアップします。 Linux では、このネットワークはブリッジ ネットワークです。 Windows では、NAT を使います。 この問題は、NAT ネットワークを使う Windows コンテナーを使っている Windows デバイスで、より多く見られます。 
 
 ### <a name="resolution"></a>解決策
-このブリッジ/NAT ネットワークに割り当てられている IP アドレスにインターネットへのルートが存在することを確認します。 ホストでの VPN 構成が IoT Edge ネットワークを上書きしている場合があります。 
+このブリッジ/NAT ネットワークに割り当てられている IP アドレスにインターネットへのルートが存在することを確認します。 ホストでの VPN 構成が IoT Edge ネットワークをオーバーライドしている場合があります。 
 
 ## <a name="edge-hub-fails-to-start"></a>Edge ハブの起動が失敗する
 

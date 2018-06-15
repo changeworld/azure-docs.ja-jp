@@ -1,24 +1,20 @@
 ---
-title: "Azure IoT Hub への物理デバイス接続入門 |Microsoft Docs"
-description: "物理デバイスとボードを Azure IoT Hub に接続する方法を説明します。 デバイスは IoT Hub にテレメトリを送信でき、IoT Hub はデバイスを監視および管理することができます。"
-services: iot-hub
-documentationcenter: 
+title: Azure IoT Hub への物理デバイス接続入門 |Microsoft Docs
+description: 物理デバイスとボードを Azure IoT Hub に接続する方法を説明します。 デバイスは IoT Hub にテレメトリを送信でき、IoT Hub はデバイスを監視および管理することができます。
 author: dominicbetts
 manager: timlt
-editor: 
-keywords: "Azure IoT Hub チュートリアル"
+keywords: Azure IoT Hub チュートリアル
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: 26a2d63aef21bd470d65d79e1abf8cefd2828419
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7911c190ded59f758eff868add6440f5add6579
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633997"
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub と物理デバイス入門チュートリアル
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f625a8a5bc5c477e785ec645b37b0604052d11b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6bddb3d5beca57852ef62361b278ec1fa8961f45
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621260"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -190,7 +191,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |
 | arguments |wordcount プログラムは、入力と出力という2 つの引数を使用します。 入力ファイルは davinci.txt ファイルです。 |
 | frequency/interval |これらのプロパティの値は、出力データセットと一致します。 |
-| 既定のコンテナー |前に作成した HDInsight のリンクされたサービスを参照します。 |
+| linkedServiceName |前に作成した HDInsight のリンクされたサービスを参照します。 |
 
 ```JSON
 {

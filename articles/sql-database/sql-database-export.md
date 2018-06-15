@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: load & move data
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.topic: article
-ms.openlocfilehash: 30e89ea940b25e8db4a1203e966000981c47abc9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.openlocfilehash: c2f29d8c660e3d39f91bcdd97209d2e88f5ae864
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894043"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647954"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database を BACPAC ファイルにエクスポートする
 

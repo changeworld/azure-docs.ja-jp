@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310980"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618591"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
@@ -95,7 +95,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 6.  Azure Key Vault からシークレットを取得します。 シークレットを処理する方法は 2 つあります。
 
-    a.  シークレットをパラメーター ファイルに追加する:
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  シークレットをパラメーター ファイルに追加する:
 
        -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
 
@@ -128,7 +128,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 7.  Azure Resource Manager デプロイ タスクを追加します。
 
-    a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
 
     b.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
 
@@ -138,7 +138,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
     e.  パラメーター ファイルに対して同じことを行います。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
 
-    f.  **[…]** を選択します  (**[テンプレート パラメーターの無視]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
+    f.  **[…]** を選択します  (**[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 

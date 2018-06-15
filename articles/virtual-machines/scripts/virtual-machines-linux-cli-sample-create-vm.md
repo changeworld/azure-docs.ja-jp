@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Linux VM の作成"
+title: Azure CLI のサンプル スクリプト - Linux VM の作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 089041663eb9d27f4e680ccdd9e78e657e105bd4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 645689f5bd79a30f57842af8672f24634eda471b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653231"
 ---
 # <a name="create-a-fully-configured-virtual-machine"></a>完全に構成された仮想マシンの作成
 

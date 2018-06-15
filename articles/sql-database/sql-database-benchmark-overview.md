@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a045a545b8a0d4dda33dd404d0d206723eb822ad
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2efcad27c0a7de2691195c2b3cb2f201fa3bf487
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363980"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644795"
 ---
 # <a name="azure-sql-database-dtu-benchmark-overview"></a>Azure SQL Database DTU ベンチマークの概要
 ## <a name="overview"></a>概要
@@ -49,7 +49,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 ## <a name="transactions"></a>トランザクション
 ワークロードは、次の表で示すように、9 種類のトランザクションで構成されます。 各トランザクションは、データベース エンジンおよびシステム ハードウェアの特定のシステム特性セットが強調され、他のトランザクションとの違いがはっきりわかるように設計されています。 この方法では、異なるコンポーネントのパフォーマンス全体に対する影響を簡単に評価できます。 たとえば、トランザクション "読み取り (高負荷)" では、ディスクからの読み取り操作が大量に生成されます。
 
-| トランザクションの種類 | [説明] |
+| トランザクションの種類 | 説明 |
 | --- | --- |
 | 読み取り (低負荷) |SELECT、メモリ内、読み取りのみ |
 | 読み取り (中負荷) |SELECT、ほぼメモリ内、読み取りのみ |

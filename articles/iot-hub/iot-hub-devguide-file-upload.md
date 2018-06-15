@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT Hub ファイルのアップロードについて | Microsoft Docs"
-description: "開発者ガイド - IoT Hub のファイルのアップロード機能を使用して、デバイスから Azure Storage Blob コンテナーへのファイルのアップロードを管理します。"
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Hub ファイルのアップロードについて | Microsoft Docs
+description: 開発者ガイド - IoT Hub のファイルのアップロード機能を使用して、デバイスから Azure Storage Blob コンテナーへのファイルのアップロードを管理します。
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a0427925-3e40-4fcd-96c1-2a31d1ddc14b
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e16d32bdba1374540c03d1034a94192a54e6a109
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634898"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -65,10 +60,10 @@ IoT Hub は次のデータを返します。デバイスはこのデータを使
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>不使用: ファイルのアップロードの初期化
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>非推奨: ファイルのアップロードの初期化
 
 > [!NOTE]
-> このセクションでは、IoT Hub から SAS URI を 受信するための廃止された機能について説明しています。 前述の POST メソッドを使用します。
+> このセクションでは、IoT Hub から SAS URI を 受信するための非推奨の機能について説明しています。 前述の POST メソッドを使用します。
 
 IoT Hub には、ファイルのアップロードをサポートする 2 つの REST エンドポイントがあります。1 つは、ストレージの SAS URI を取得します。もう 1 つは、アップロードの完了を IoT Hub に通知します。 デバイスは、`{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` で IoT Hub に GET を送信することで、ファイルのアップロード処理を開始します。 IoT Hub は以下を返します。
 

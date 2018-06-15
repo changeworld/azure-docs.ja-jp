@@ -7,14 +7,16 @@ ms.author: tedway
 manager: mwinkle
 ms.reviewer: mldocs, raymondl
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 8ff2bca405bbd8faeaa4527f493804950fced6ce
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 715b4c1f02622b015e4118ac38edd9fe6a051ed7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834711"
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Azure ML モデルに使用されるコンテナー イメージをカスタマイズする
 

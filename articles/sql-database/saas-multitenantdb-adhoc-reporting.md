@@ -10,14 +10,15 @@ ms.custom: scale out apps
 ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: AyoOlubeko
-ms.openlocfilehash: 88831534ffb8efe32ad3fe53a7aebb9fa67d8904
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 95ea5f2a40bd629384e1bc1f7d707eb30d9eaf5f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644275"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 

@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bc91d8f954c0b41c5a6139de71071edaeac8d485
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19a033b79879f1b51626a14510fc4cc71c43426c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644061"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
@@ -99,7 +100,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 ## <a name="create-a-table"></a>テーブルを作成する
 このセクションでは、患者データを保持するテーブルを作成します。 これは最初は通常のテーブルで、次のセクションで暗号化を構成します。
 
-1. **[データベース]**を展開します。
+1. **[データベース]** を展開します。
 2. **Clinic** データベースを右クリックして、**[新しいクエリ]** をクリックします。
 3. [新しいクエリ] ウィンドウに次の Transact-SQL (T-SQL) を貼り付けて、 **実行** します。
 
@@ -121,7 +122,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 ## <a name="encrypt-columns-configure-always-encrypted"></a>列を暗号化する (Always Encrypted を構成する)
 SSMS に用意されているウィザードを使用すると、列マスター キー、列暗号化キー、および暗号化する列を設定するだけで簡単に Always Encrypted を構成できます。
 
-1. **[データベース]** > **空の** > **[テーブル]**を使用して、SQL データベース内の機密データを保護する方法について説明します。
+1. **[データベース]** > **空の** > **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
    
     ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
@@ -142,7 +143,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 
 このチュートリアルでは、Azure Key Vault にキーを格納する方法を説明します。
 
-1. **[Azure Key Vault]**を選択します。
+1. **[Azure Key Vault]** を選択します。
 2. ドロップダウン リストから必要な Key Vault を選択します。
 3. **[次へ]** をクリックします。
 

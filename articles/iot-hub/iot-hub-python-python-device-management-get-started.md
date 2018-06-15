@@ -1,24 +1,20 @@
 ---
 title: Azure IoT Hub デバイス管理の開始 (Python) | Microsoft Docs
 description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Python を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
-services: iot-hub
-documentationcenter: .net
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: python
+ms.topic: conceptual
 ms.date: 01/02/2018
-ms.author: v-masebo;kgremban
-ms.openlocfilehash: 001a5d180e2b97894174ba7c63ec3947c9968364
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: kgremban
+ms.openlocfilehash: fa966ee2ea26cccc7d841a0e969d8329ac5bc0de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635289"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 

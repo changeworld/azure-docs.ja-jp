@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 5d77c2dc121d7f291fa755f66d7d9a5d7213bf9f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9bb79a2054a0e51ce435f51a52f964062427cea4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195432"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647998"
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -26,13 +26,13 @@ Microsoft は、サービス レベルに関係なく、お使いの Microsoft A
 
 ## <a name="whatis-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Azure SQL Database の新しい仮想コアベースの購入モデル (プレビュー) とは何ですか。
 
-新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースとエラスティック プールのオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 
+新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースと Elastic Pool のオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 
 
 ## <a name="what-is-a-vcore"></a>仮想コアとは何ですか。 
 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。
 
 ## <a name="is-moving-to-the-vcore-based-model-required"></a>仮想コアベースのモデルへの移行は必須ですか。
-いいえ。エラスティック プールと単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要はありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。 
+いいえ。Elastic Pool と単一データベースのデプロイ オプションへの仮想コアベース モデルの導入は、Microsoft によるお客様への選択肢と柔軟性の提供に対するコミットメントを反映しています。 お客様が DTU ベースのモデルを引き続き使用したいと考えている場合は、このお知らせによって、特別な対応は必要はありません。お客様は現在のエクスペリエンスをこれまでどおりの料金でお使いいただけます。 
 
 多くの場合、アプリケーションは、事前構成済みリソース バンドルのシンプルさからメリットを得られます。 したがって、Microsoft では、これらの DTU ベースのオプションを引き続きお客様に提供し、サポートしています。 このオプションをご使用中で、それがご自分のビジネス要件を満たしている場合は、このまま使用し続けてください。
 
@@ -52,7 +52,7 @@ DTU ベースのモデルと仮想コアベースのモデルは並行して提�
 現在、Microsoft では、SQL Server のお客様に、ソフトウェア アシュアランスのライセンス モビリティ特典を提供しています。これにより、サード パーティ共有サーバーへのライセンスの再割り当てが可能になります。 この特典は、Azure IaaS および AWS EC2 でご利用いただけます。
 SQL Server 向け Azure ハイブリッド特典は、次の 2 つの重要な点において、ライセンス モビリティとは異なります。
 - 高度に仮想化されたワークロードを Azure に移動することで、コスト面でメリットがもたらされます。 SQL EE のお客様は、高度に仮想化されたアプリケーション用にオンプレミスで所有するコアごとに、Azure の General Purpose SKU で 4 つのコアを取得できます。 ライセンス モビリティの場合、仮想化されたワークロードをクラウドに移動しても、コスト上のメリットは特にありません。
-- オンプレミスの SQL Server と高い互換性がある PaaS 移行先を Azure に提供します - SQL Database マネージ インスタンス。
+- オンプレミスの SQL Server と高い互換性がある PaaS 移行先を Azure に提供します - SQL Database Managed Instance。
 
 ## <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、具体的にはどのような権限が付与されますか。
 SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特典によって次の権限が付与されます。
@@ -63,8 +63,8 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 |SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができます</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
 |||
 
-## <a name="is-the-vcore-based-model-available-to-sql-database-managed-instance"></a>仮想コアベースのモデルは、SQL Database マネージ インスタンスで利用できますか。
-仮想コアベースのモデルでのみ、[マネージ インスタンス](sql-database-managed-instance.md)をご利用いただけます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/managed/)をご覧ください。 
+## <a name="is-the-vcore-based-model-available-to-sql-database-managed-instance"></a>仮想コアベースのモデルは、SQL Database Managed Instance で利用できますか。
+仮想コアベースのモデルでのみ、[Managed Instance](sql-database-managed-instance.md) をご利用いただけます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/managed/)をご覧ください。 
 
 ## <a name="does-the-cost-of-compute-and-storage-depend-on-the-service-tier-that-i-choose"></a>コンピューティングとストレージのコストは、選択したサービス レベルによって決まりますか。
 コンピューティング コストには、アプリケーションに対してプロビジョニングされたコンピューティング能力の合計が反映されています。 Business Critical サービス レベルでは、少なくとも 3 つの Always On レプリカが自動的に割り当てられます。 追加で割り当てられたこのコンピューティング リソースを反映するために、仮想コアの価格は、Business Critical では約 2.7 倍高くなっています。 同じ理由で、Business Critical レベルでは GB あたりのストレージ価格も高く、これには SSD ストレージの高 IO と低遅延が反映されています。 一方、バックアップ ストレージについては、両方のケースで Standard Storage クラスが使用されているため、コストは変わりません。
@@ -93,21 +93,25 @@ PITR のバックアップ リテンション期間は 7 ～ 35 日の間で構�
 Microsoft の目標は、アプリケーションのニーズに近いパフォーマンス構成を選択できるように最大限の柔軟性を実現することです。 上記の表は、Gen4 と Gen5 の違いを示しています。 具体的には、Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティングをはるかに高くまでスケールアップできます。 Microsoft では、アプリケーションにとって最適な価格/パフォーマンス比率を実現できるように、こうした違いを透明化したいと考えています。
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>DTU ベースのデータベースから仮想コアベースのサービス レベルに変更するには、アプリケーションをオフラインにする必要がありますか。 
-新しいサービス レベルでは、シンプルなオンラインの変換方法が提供されます。これは、Standard と Premium のサービス レベルの間でデータベースを切り替える既存のプロセスと同様です。 この変換は、ポータル、ARM、PowerShell、Azure CLI、または T-SQL を使用して開始できます。 [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+新しいサービス レベルでは、シンプルなオンラインの変換方法が提供されます。これは、Standard と Premium のサービス レベルの間でデータベースを切り替える既存のプロセスと同様です。 この変換は、ポータル、ARM、PowerShell、Azure CLI、または T-SQL を使用して開始できます。 
+  [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>仮想コアベースのサービス レベルから DTU ベースのサービス レベルにデータベースを変換できますか。 
-はい。お使いのデータベースは、ポータルを使用するか、ポータル、ARM、PowerShell、Azure CLI、T-SQL のいずれかでプログラムを使用して、サポートされている任意のパフォーマンス目標に簡単に変換できます。 [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+はい。お使いのデータベースは、ポータルを使用するか、ポータル、ARM、PowerShell、Azure CLI、T-SQL のいずれかでプログラムを使用して、サポートされている任意のパフォーマンス目標に簡単に変換できます。 
+  [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>General Purpose サービス レベルと Business Critical サービス レベルの間で、アップグレードまたはダウングレードできますか。 
 はい。ただし、制限がいくつかあります。 使用している既存のデプロイに対して構成した、データベースまたはエラスティック プールの最大サイズを、移行先 SKU が満たす必要があります。 [SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、Business Critical SKU をご利用いただけるのは、Enterprise Edition ライセンスをお持ちのお客様のみです。 Enterprise Edition ライセンスを持つお客様が、SQL Server 向け Azure ハイブリッド特典を使用してオンプレミスから General Purpose に移行した場合にのみ、Business Critical にアップグレードできます。 詳細については、[SQL Server 向け Azure ハイブリッド使用特典の具体的な権限](../virtual-machines/windows/hybrid-use-benefit-licensing.md)に関するページをご覧ください。
 
-この変換によるダウンタイムはありません。また、ポータル、ARM、PowerShell、Azure CLI、または T-SQL を使用して開始できます。 [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+この変換によるダウンタイムはありません。また、ポータル、ARM、PowerShell、Azure CLI、または T-SQL を使用して開始できます。 
+  [単一データベースの管理](sql-database-single-database-resources.md)および[エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>一般公開されない Premium RS データベースを使用しています。これを新しいレベルにアップグレードして、同様の価格/パフォーマンス上のメリットを得ることができますか。
 仮想コアモデルでは、プロビジョニングされたコンピューティングとストレージの量を個別に制御でき、結果として生じるコストをより効率的に管理できるため、Premium RS データベースの魅力的な移行先となっています。 さらに、仮想コアベースのモデルを使用する場合、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)により大幅な割引を受けることができます。 
 
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>各プールのリソースはどのくらいの頻度で調整できますか。
-頻度に制限はありません。必要なだけ調整できます。 [エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
+頻度に制限はありません。必要なだけ調整できます。 
+  [エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Single Database のサービス階層またはパフォーマンス レベルの変更や、エラスティック プールからのデータベースの出し入れには、どれくらいの時間がかかりますか。
 データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-service-tiers-dtu.md)」を参照してください。 
@@ -152,8 +156,8 @@ DTU ベースの購入モデルの例:
 例: 
 - SQL データベースが 1 か月に 12 時間存在した場合、請求書には 12 時間の仮想コアが使用量として記載されます。 この SQL データベースで 100 GB のストレージを追加プロビジョニングした場合、請求書には、時間割りで計算された GB/月単位のストレージ使用量と 1 か月に使用した IO の数が記載されます。
 - SQL データベースのアクティブ期間が 1 時間未満の場合でも、指定のサービス レベルのうちで最も高いものと、この時間内に適用されたプロビジョニング ストレージおよび IO を使用したデータベースが存在した時間ごとに課金されます。使用量や、データベースのアクティブ期間が 1 時間未満であったかどうかは加味されません。
-- マネージ インスタンスを作成し、その 5 分後にそのマネージ インスタンスを削除した場合、1 データベース時間分の料金が課金されます。
-- 8 個の仮想コアを使用する General Purpose レベルのマネージ インスタンスを作成し、それをすぐに 16 個の仮想コアにアップグレードした場合、最初の 1 時間分の課金では 16 個の仮想コアのレートが使用されます。
+- マネージド インスタンスを作成し、その 5 分後にそのマネージド インスタンスを削除した場合、1 データベース時間分の料金が課金されます。
+- 8 個の仮想コアを使用する General Purpose レベルのマネージド インスタンスを作成し、それをすぐに 16 個の仮想コアにアップグレードした場合、最初の 1 時間分の課金では 16 個の仮想コアのレートが使用されます。
 
 > [!NOTE]
 > 2018 年 6 月 30 日までの期間限定で、バックアップと IO の料金が無料です。

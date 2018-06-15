@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: 8891e8b9fbf3ce8422036e8add900504ea7e4162
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644333"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
@@ -33,7 +34,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 次の手順に従い、Marketplace で Automation アプリを選択して構成する方法により、Azure Automation アカウントを作成します。
 
 - Azure Portal にログインします。
-- 左上隅の **[+ リソースの作成]**をクリックします。
+- 左上隅の **[+ リソースの作成]** をクリックします。
 - 「**Automation**」を検索します (Enter キーを押します)。
 - 検索結果で Automation アプリをクリックします。
 

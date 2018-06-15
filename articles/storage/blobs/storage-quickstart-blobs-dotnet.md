@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 7607643698cddb0cf5a113191ef638d36ab176bc
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0074e0a66ae842d798d6fd8cd2f4392644d873fa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650759"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

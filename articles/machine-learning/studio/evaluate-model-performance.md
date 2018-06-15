@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bb49fd2fe7f72e211fbbda7cffdd2308c2c36fba
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834235"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Azure Machine Learning でモデルのパフォーマンスを評価する方法
 この記事では、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。 以下の 3 種類の学習のシナリオを取り上げます。 

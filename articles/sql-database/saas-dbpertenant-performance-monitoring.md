@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: f76a9f0aa5e68e729c67dad52f6dae4e01fdb56a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bc24465fa0efc9c473a78503d18200ea5b361920
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644608"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -104,7 +105,8 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 1. [Azure Portal](https://portal.azure.com) を開いて、*tenants1-dpt-&lt;USER&gt;* サーバーを参照します。
 1. 下にスクロールし、エラスティック プールを検索して、**[Pool1]** をクリックします。 このプールには、これまでに作成されたすべてのテナント データベースが含まれています。
 
-**エラスティック プールの監視**と**エラスティック データベースの監視**のグラフを確認します。
+
+  **エラスティック プールの監視**と**エラスティック データベースの監視**のグラフを確認します。
 
 プールのリソース使用は、プール内のすべてのデータベースのデータベース使用の集計を示しています。 データベースのグラフは、5 つの最新のデータベースを示しています。
 
@@ -202,7 +204,8 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 1. **contosoconcerthall** データベースをクリックします。
 1. **contosoconcerthall** が含まれるプールをクリックします。 **[エラスティック データベース プール]** セクションでプールを検索します。
 
-1. **弾力性プールの監視**グラフを検査し、プールの eDTU 使用の増加を探します。 数分後にさらに高い負荷が発生し、プール使用率がすぐに 100% に達します。
+1. 
+  **エラスティック プールの監視**グラフを検査し、プールの eDTU 使用の増加を探します。 数分後にさらに高い負荷が発生し、プール使用率がすぐに 100% に達します。
 2. **[弾力性データベースの監視]** を検査します。これは、過去 1 時間で最も使用率が高いデータベースを示しています。 すぐに *contosoconcerthall* データベースが最も使用率が高い 5 つのデータベースの 1 つとして表示されます。
 3. **[弾力性データベースの監視]** **グラフ**をクリックすると、**[データベース リソースの使用率]** ページが開きます。このページでは、データベースを監視できます。 これにより、*contosoconcerthall* データベースの表示を切り離すことができます。
 4. データベースの一覧から **contosoconcerthall** をクリックします。
@@ -242,6 +245,7 @@ contosoconcerthall データベースの高い負荷が落ち着いたら、コ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [SQL エラスティック プール](sql-database-elastic-pool.md)
+* 
+  [SQL エラスティック プール](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](saas-dbpertenant-log-analytics.md) - Log Analytics の設定および使用チュートリアル

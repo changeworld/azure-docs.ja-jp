@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653656"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -31,13 +32,13 @@ Azure Storage には、次のデータ サービスが含まれます。
 - [Azure BLOB](../blobs/storage-blobs-introduction.md): テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
 - [Azure Files](../files/storage-files-introduction.md): クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
 - [Azure キュー](../queues/storage-queues-introduction.md): アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
-- [Azure テーブル](../../cosmos-db/table-storage-overview.md): 構造化データのスキーマレス ストレージのための NoSQL ストア。
+- [Azure テーブル](../tables/table-storage-overview.md): 構造化データのスキーマレス ストレージのための NoSQL ストア。
 
 それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
-Azure Blob ストレージは、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
+Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
 
 BLOB ストレージは、次の目的に最適です。
 
@@ -78,13 +79,13 @@ Azure キューの詳細については、「[キューの概要](../queues/stor
 
 ## <a name="table-storage"></a>テーブル ストレージ
 
-Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azure Table Storage のドキュメントについては、「[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)」を参照してください。 既存の Azure Table Storage サービスに加えて、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用できる新しい Azure Cosmos DB Table API プランが追加されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
+Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azure Table Storage のドキュメントについては、「[Azure Table Storage の概要](../tables/table-storage-overview.md)」を参照してください。 既存の Azure Table Storage サービスに加えて、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用できる新しい Azure Cosmos DB Table API プランが追加されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
 
-テーブル ストレージの詳細については、「[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)」を参照してください。
+テーブル ストレージの詳細については、「[Azure Table Storage の概要](../tables/table-storage-overview.md)」を参照してください。
 
-## <a name="disk-storage"></a>ディスク ストレージ
+## <a name="disk-storage"></a>Disk Storage
 
-Azure Storage には、仮想マシンで使用される管理ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)を参照してください。
+Azure Storage には、仮想マシンで使用される管理ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute)を参照してください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 

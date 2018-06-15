@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus WCF Relay のチュートリアル | Microsoft Docs"
-description: "WCF Relay を使用してクライアントとサービス アプリケーションを構築します。"
+title: Azure Service Bus WCF Relay のチュートリアル | Microsoft Docs
+description: WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: a0b06c32cf5f154cf5eb01842d9b917dcb35f7b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642310"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
 
-このチュートリアルでは、Azure Relay を使用して簡単な WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このチュートリアルでは、Azure Relay を使用して簡単な WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 このチュートリアルを利用すると、WCF Relay のクライアント アプリケーションとサービス アプリケーションを作成するために必要な手順を理解できます。 元の WCF サービスと同様に、サービスは 1 つ以上のエンドポイントを公開するコンストラクトであり、各エンドポイントは 1 つ以上のサービス操作を公開します。 サービスのエンドポイントでは、サービスが見つかるアドレス、クライアントがサービスとやり取りする必要がある情報を含むバインド、サービスがそのクライアントに提供する機能を定義するコントラクトを指定します。 WCF と WCF Relay の主な違いは、エンドポイントがコンピューターのローカルではなくクラウドで公開される点です。
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 11/04/2017
 このチュートリアルを完了するには、次のものが必要です。
 
 * [Microsoft Visual Studio 2015 以上](http://visualstudio.com)。 このチュートリアルでは、Visual Studio 2017 を使用します。
-* アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
 
 ## <a name="create-a-service-namespace"></a>サービス名前空間の作成
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 11/04/2017
 
 3. Service Bus NuGet パッケージをインストールします。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできるようにする名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。
 
-    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。
+    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]** をクリックして、使用条件に同意します。
 
     ![][3]
 4. エディターに Program.cs ファイルがまだ表示されていない場合は、ソリューション エクスプローラーでこのファイルをダブルクリックして開きます。
@@ -413,11 +414,11 @@ namespace Microsoft.ServiceBus.Samples
 
    1. ソリューション エクスプローラーで、サービスを含む同じソリューションの (プロジェクトではなく) 現在のソリューションを右クリックし、**[追加]** をクリックします。 次に、**[新しいプロジェクト]** をクリックします。
    2. **[新しいプロジェクトの追加]** ダイアログ ボックスで **[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を探してください)。**[コンソール アプリ (.NET Framework)]** テンプレートを選択し、「**EchoClient**」という名前を付けます。
-   3. **[OK]**をクリックします。
+   3. Click **OK**.
       <br />
 2. ソリューション エクスプローラーで **EchoClient** プロジェクトの Program.cs ファイルをダブルクリックしてエディターで開きます (まだ開いていない場合)。
 3. 名前空間の名前を、既定の名前である `EchoClient` から `Microsoft.ServiceBus.Samples` に変更します。
-4. [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をインストールします。ソリューション エクスプローラーで **EchoClient** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]**をクリックして、使用条件に同意します。
+4. [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をインストールします。ソリューション エクスプローラーで **EchoClient** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **[インストール]** をクリックして、使用条件に同意します。
 
     ![][3]
 5. Program.cs ファイルに、[System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 名前空間の `using` ステートメントを追加します。
@@ -683,7 +684,7 @@ namespace Microsoft.ServiceBus.Samples
 4. **EchoService** プロジェクトと **EchoClient** プロジェクトの両方の **[アクション]** ボックスを **[開始]** に設定します。
 
     ![][5]
-5. **[プロジェクトの依存関係]**をクリックします。 **[プロジェクト]** ボックスの **[EchoClient]** を選択します。 **[依存先]** ボックスで、**[EchoService]** がオンになっていることを確認します。
+5. **[プロジェクトの依存関係]** をクリックします。 **[プロジェクト]** ボックスの **[EchoClient]** を選択します。 **[依存先]** ボックスで、**[EchoService]** がオンになっていることを確認します。
 
     ![][6]
 6. **[OK]** をクリックして、**[プロパティ]** ダイアログを閉じます。
@@ -712,9 +713,9 @@ namespace Microsoft.ServiceBus.Samples
     `Server echoed: My sample text`
 12. この方法で、クライアントからサービスにテキスト メッセージの送信を続けることができます。 終了したら、クライアント コンソール ウィンドウとサービス コンソール ウィンドウで Enter キーを押して両方のアプリケーションを終了します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Service Bus の WCF Relay 機能を使用して、Azure Relay クライアント アプリケーションとサービスを構築する方法を紹介しました。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このチュートリアルでは、Service Bus の WCF Relay 機能を使用して、Azure Relay クライアント アプリケーションとサービスを構築する方法を紹介しました。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 Azure Relay の詳細については、次のトピックを参照してください。
 

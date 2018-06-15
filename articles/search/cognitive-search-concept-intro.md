@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942161"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641113"
 ---
 # <a name="what-is-cognitive-search"></a>コグニティブ検索とは
 
@@ -68,7 +68,7 @@ AI 統合は、検索インデックスへの順次処理により、ソース �
 
 ## <a name="key-features-and-concepts"></a>主要機能および概念
 
-| 概念 | [説明]| リンク |
+| 概念 | 説明| リンク |
 |---------|------------|-------|
 | スキルセット | スキルのコレクションを含む最上位の名前付きリソースです。 スキルセットはエンリッチメント パイプラインです。 スキルセットは、インデクサーによるインデックス作成時に呼び出されます。 | [スキルセットを定義する](cognitive-search-defining-skillset.md) |
 | 認知スキル | 認知スキルは、エンリッチメント パイプラインでのアトミック変換です。 多くの場合、構造を抽出または推論し、ユーザーによる入力データの理解を補佐するコンポーネントです。 ほとんどの場合、テキスト形式で出力され、画像入力からテキストを抽出または生成する自然言語処理または画像処理で処理されます。 スキルからの出力は、インデックス内のフィールドにマッピングするか、または下流のエンリッチメントの入力として使用できます。 スキルは、定義済みか、Microsoft が提供、またはカスタム スキルとしてお客様が作成および展開できます。 | [定義済みのスキル](cognitive-search-predefined-skills.md) |
@@ -100,12 +100,12 @@ AI 統合は、検索インデックスへの順次処理により、ソース �
 
 現時点では、REST API のみが提供されています。 すべての要求で `api-version=2017-11-11-Preview` を使用します。 次の API を使用して、コグニティブ検索ソリューションを構築します。 コグニティブ検索用に追加または拡張された API は 2 つのみです。 その他の API では、一般的に使用可能なバージョンと同じ構文です。
 
-| REST API | [説明] |
+| REST API | 説明 |
 |-----|-------------|
 | [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | エンリッチメントされたドキュメントを作成するために使用されるソース データを提供する外部データ ソースを識別するリソースです。  |
-| [スキルセットの作成 (api-version=2017-11-11-Preview)](ref-create-skillset.md)  | エンリッチメント パイプラインでインデックス作成時に使用される[定義済みのスキル](cognitive-search-predefined-skills.md)と[カスタム認知スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
+| [スキルセットの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | エンリッチメント パイプラインでインデックス作成時に使用される[定義済みのスキル](cognitive-search-predefined-skills.md)と[カスタム認知スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
 | [インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Azure Search インデックスを表すスキーマです。 ソース データ内のフィールドやエンリッチメント フェーズで作成されたフィールドにマッピングされるインデックス内のフィールド (たとえば、エンティティ認識によって作成された組織名のためのフィールド)。 |
-| [インデクサーの作成 (api-version=2017-11-11-Preview)](ref-create-skillset.md)  | データ ソース、スキルセット、ソースからのフィールドの関連付け、ターゲット インデックスまでの中間データ構造、およびインデックス自体などの、インデックス作成時に使用されるコンポーネントを定義するリソースです。 インデクサーを実行すると、データの取り込みやエンリッチメントがトリガーされます。 出力は、インデックス スキーマを基に作成され、ソース データが入力され、スキルセットでエンリッチメントされた検索コーパスです。  |
+| [インデクサーの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | データ ソース、スキルセット、ソースからのフィールドの関連付け、ターゲット インデックスまでの中間データ構造、およびインデックス自体などの、インデックス作成時に使用されるコンポーネントを定義するリソースです。 インデクサーを実行すると、データの取り込みやエンリッチメントがトリガーされます。 出力は、インデックス スキーマを基に作成され、ソース データが入力され、スキルセットでエンリッチメントされた検索コーパスです。  |
 
 **一般的なワークフローのチェックリスト**
 
@@ -113,11 +113,11 @@ AI 統合は、検索インデックスへの順次処理により、ソース �
 
 1. データ取得のための接続文字列を指定する[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を Azure Search で作成します。
 
-1. エンリッチメント手順に従って[スキルセット](ref-create-skillset.md)を作成します。
+1. エンリッチメント手順に従って[スキルセット](https://docs.microsoft.com/rest/api/searchservice/create-skillset)を作成します。
 
 1. [インデックス スキーマ](https://docs.microsoft.com/rest/api/searchservice/create-index)を定義します。 *フィールド* コレクションには、ソース データからのフィールドが含まれます。 エンリッチメント中に作成された、コンテンツのために生成された値を保管するための追加フィールドも削除する必要があります。
 
-1. データ ソース、スキルセット、およびインデックスを参照する[インデクサー](ref-create-skillset.md)を定義します。
+1. データ ソース、スキルセット、およびインデックスを参照する[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-skillset)を定義します。
 
 1. インデクサー内に *outputFieldMappings* を追加します。 このセクションでは、(手順 4 の) インデックス スキーマ内の入力フィールドに、(手順 3 の) スキルセットからの出力をマッピングします。
 

@@ -6,17 +6,18 @@ author: joesackmsft
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650113"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -209,7 +210,8 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
    ![[Query Performance Insight]](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Log Analytics の Azure SQL Analytics (プレビュー)**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) では、主要な Azure SQL パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 15 万個、SQL エラスティック プールは 5 千個サポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
+- 
+  **Log Analytics の Azure SQL Analytics (プレビュー)**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) では、主要な Azure SQL パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 15 万個、SQL エラスティック プールは 5 千個サポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスの問題: SQL Database と SQL Server のトラブルシューティング方法の違いはどのようなものですか?
 クエリおよびデータベース パフォーマンスの問題の診断に使用するトラブルシューティング手法の主要な部分は、変わりません。 クラウドで利用されている SQL Server エンジンは同じものです。 ただし、Azure SQL DB プラットフォームには "インテリジェンス" が組み込まれています。 それにより、パフォーマンスの問題のトラブルシューティングと診断が容易になります。 ユーザーに代わって是正措置の一部を実行することもでき、場合によっては事前に問題を自動的に修復します。 
@@ -234,7 +236,7 @@ SQL Database には、Basic、Standard、Premium というさまざまなサー�
 
 パフォーマンス レベルが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のパフォーマンス レベルへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のパフォーマンス レベルからのスケールダウンを検討します。 
 
-SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 エラスティック プールを使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal)に関するページをご覧ください。 
+SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 Elastic Pool を使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal)に関するページをご覧ください。 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>どのくらいの頻度でデータベースの整合性チェックを実行する必要がありますか?
 SQL Database では、特定のクラスのデータ破損にデータを失うことなく自動的に対処できるスマートな手法が使われています。 これらの手法はサービスに組み込まれており、必要に応じてサービスで利用されます。 サービス間のデータベース バックアップは、定期的に復元して DBCC CHECKDB を実行することでテストされます。 問題がある場合、SQL Database は事前にそれらに対処します。 [ページの自動修復](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)は、破損している、またはデータの整合性に問題があるページの修正に利用されます。 データベースのページは常に、ページの整合性を検証する既定の CHECKSUM 設定で検証されます。 SQL Database は、データベースのデータの整合性を先行的に監視および確認し、問題が発生した場合は高い優先順位で対処します。 これらに加えて、必要に応じて、独自の整合性チェックを実行することもできます。  詳しくは、「[Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」(Azure SQL Database のデータ整合性) をご覧ください。

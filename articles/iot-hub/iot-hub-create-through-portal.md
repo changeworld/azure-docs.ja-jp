@@ -1,24 +1,19 @@
 ---
 title: Azure Portal を使用して IoT Hub を作成する | Microsoft Docs
 description: Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635935"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -147,7 +142,7 @@ IoT Hub にルートを追加するには、**[ルート]*** ブレードの上�
 
 ## <a name="delete-the-iot-hub"></a>IoT Hub の削除
 
-削除する IoT Hub は、 **[参照]**をクリックしてから、削除対象の適切なハブを選択することで参照できます。 IoT Hub を削除するには、IoT Hub 名の下の **[削除]** をクリックします。
+削除する IoT Hub は、 **[参照]** をクリックしてから、削除対象の適切なハブを選択することで参照できます。 IoT Hub を削除するには、IoT Hub 名の下の **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

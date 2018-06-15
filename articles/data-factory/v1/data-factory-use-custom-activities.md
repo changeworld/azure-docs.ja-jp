@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 88095c7b3c31c5111f1e1d1e5b157403359053bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d12038daf5d74889ca99ed2c7d35009f4cb7add7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622815"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -428,7 +429,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 2. **[新しい Data Factory]** ブレードで、[名前] フィールドに「**CustomActivityFactory**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 **""CustomActivityFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、Data Factory の名前を変更して (**yournameCustomActivityFactory** など) 作成し直してください。
 
     ![新しい Azure Data Factory ブレード](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
-3. **[リソース グループ名]**をクリックし、既存のリソース グループを選択するか、リソース グループを作成します。
+3. **[リソース グループ名]** をクリックし、既存のリソース グループを選択するか、リソース グループを作成します。
 4. 作成する Data Factory に適した**サブスクリプション**と**リージョン**を使用していることを確認します。
 5. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 6. 作成した Data Factory は、Azure ポータルの **ダッシュボード** に表示されます。
@@ -628,7 +629,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 3. パイプラインをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。
 
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
-1. Azure ポータルの [Data Factory] ブレードで、 **[ダイアグラム]**をクリックします。
+1. Azure ポータルの [Data Factory] ブレードで、 **[ダイアグラム]** をクリックします。
 
     ![Diagram tile](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. [ダイアグラム] ビューで、OutputDataset をクリックします。
@@ -693,7 +694,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx*
     ```
 
    名前が一致する場合は、zip ファイルの **ルート フォルダー** にすべてのバイナリが含まれていることを確認します。 つまり、zip ファイルを開くと、サブ フォルダーではなく、ルート フォルダーにすべてのファイルが表示されます。   
-3. 入力スライスが **[準備完了]**に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに **file.txt** が存在することを確認します。
+3. 入力スライスが **[準備完了]** に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに **file.txt** が存在することを確認します。
 3. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは、ユーザー ログ ファイル (user-0.log、user-1.log、user-2.log などの名前が付けられた 1 つ以上のファイル) に表示されます。
 
    **[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。 そのスライスの **アクティビティの実行** が表示されます。 このスライスには 1 回のアクティビティの実行が表示されます。 コマンド バーの [実行] をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。

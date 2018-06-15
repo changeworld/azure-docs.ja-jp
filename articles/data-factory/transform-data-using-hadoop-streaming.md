@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c0143b4f2d6858883ac11df18f7844802c667404
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea83701e834895b09faf8eb6602bd342b648ec37
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620206"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop Streaming アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,12 +72,12 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 
 ## <a name="syntax-details"></a>構文の詳細
 
-| プロパティ          | [説明]                              | 必須 |
+| プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | アクティビティの名前                     | [はい]      |
-| 説明       | アクティビティの用途を説明するテキストです。 | いいえ        |
+| description        | アクティビティの用途を説明するテキストです。 | いいえ        |
 | 型              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | [はい]      |
-| 既定のコンテナー | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | mapper            | mapper 実行可能ファイルの名前を指定します。 | [はい]      |
 | reducer           | reducer 実行可能ファイルの名前を指定します。 | [はい]      |
 | combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ        |

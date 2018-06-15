@@ -1,22 +1,20 @@
 ---
 title: Azure IoT Hub の概要 | Microsoft Docs
 description: Azure IoT Hub について説明します。 この IoT サービスは、スケーラブルなデータ インジェスト、デバイスの管理、およびセキュリティを目的として作成されています。
-services: iot-hub
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 04/27/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.openlocfilehash: 7ba74834e1c3aad5915959e0457b6e034e4a49ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: iot-hub
+manager: briz
+ms.openlocfilehash: 1d3df8f1f65d02502c11c6d6ef431292efea64e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632358"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
