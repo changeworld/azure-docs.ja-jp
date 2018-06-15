@@ -94,7 +94,7 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 
 参照データは遡及的に結合されないことにご注意ください。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。  大量の履歴データを TSI に送信する予定のとき、TSI で最初に参照データをアップロードまたは作成しない場合、作業をやり直す必要があるかもしれません (それは楽しい作業ではないかもしれません)。  
 
-TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ*に関する文書https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)をご覧ください。
+TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ* [に関する文書] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set) をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順
