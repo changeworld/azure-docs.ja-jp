@@ -4,7 +4,7 @@ description: Azure App Service を使用してロジック アプリを作成し
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9bf7c9b7c3e775ab03b071d13d792f4b2d8fb3e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 516110abc1786d99bc719d47d61475cdc2ebcc4b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296069"
 ---
 # <a name="get-started-with-the-smtp-connector"></a>SMTP コネクタの概要
 SMTP に接続してメールを送信します。
@@ -55,7 +56,7 @@ SMTP に接続してメールを送信します。
 
 1. **[+ 新しいステップ]** をクリックして、新しい潜在顧客が作成されたときに実行するアクションを追加します。  
    ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
-2. **[アクションの追加]**を選択します。 これにより検索ボックスが開き、行う操作について検索できます。  
+2. **[アクションの追加]** を選択します。 これにより検索ボックスが開き、行う操作について検索できます。  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
 3. 「*smtp*」と入力して、SMTP に関連するアクションを検索します。  
 4. 新しい潜在顧客が作成されたときに実行するアクションとして、**[SMTP - Send Email (SMTP - 電子メールの送信)]** を選択します。 アクションの制御ブロックが表示されます。 これまで SMTP 接続を確立したことがない場合は、このデザイナー ブロックで接続を確立する必要があります。  

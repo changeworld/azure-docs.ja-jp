@@ -1,10 +1,10 @@
 ---
-title: "B2B ソリューションを作成する - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信します"
+title: B2B ソリューションを作成する - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信します
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a27a413ba9a0d974cf90fe842d5fc325ab308a56
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298119"
 ---
 # <a name="receive-data-in-logic-apps-with-the-b2b-features-in-the-enterprise-integration-pack"></a>ロジック アプリで Enterprise Integration Pack の B2B 機能を使用してデータを受信する
 
@@ -56,7 +57,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
 
 7. AS2 で必要な **[ヘッダー]** を追加します。これは HTTP 要求ヘッダーで見つけることができます。 この例では、ロジック アプリをトリガーする HTTP 要求のヘッダーを選択します。
 
-8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]**を選択します。
+8. 次に、X12 メッセージのデコード アクションを追加します。 **[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
 
@@ -78,7 +79,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
     次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
     データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-12. **[応答]**アクションを追加するには、**[アクションの追加]** を選択します。
+12. **[応答]** アクションを追加するには、**[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 

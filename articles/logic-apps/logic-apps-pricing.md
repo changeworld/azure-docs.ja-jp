@@ -3,7 +3,7 @@ title: 価格と課金 - Azure Logic Apps | Microsoft Docs
 description: Azure Logic Apps の価格と課金のしくみについて説明します
 services: logic-apps
 author: kevinlam1
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: klam
-ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166286"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299258"
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps の料金モデル
 

@@ -4,7 +4,7 @@ description: Azure Logic Apps を使用したエンタープライズ統合と B
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166241"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297990"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>ロジック アプリを使用した B2B ソリューション用の統合アカウントの作成と管理
 
@@ -52,13 +52,13 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | プロパティ | 必須 | 値の例 | [説明] | 
+   | プロパティ | 必須 | 値の例 | 説明 | 
    |----------|----------|---------------|-------------|
    | Name | [はい] | test-integration-account | 統合アカウントの名前。 たとえば、指定された名前を使用します。 | 
-   | [サブスクリプション] | [はい] | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
+   | サブスクリプション | [はい] | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 | 
    | リソース グループ | [はい] | test-integration-account-rg | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、指定された名前の新しいリソース グループを作成します。 | 
    | 価格レベル | [はい] | 無料 | 使用する価格レベル。 この例では、**[Free]** を選択します。詳しくは、「[LLogic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 | 
-   | 場所 | [はい] | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、 | 
+   | リージョン | [はい] | 米国西部 | 統合アカウントの情報の保存先となるリージョン ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 | 
    | Log Analytics | いいえ  | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    ||||| 
 

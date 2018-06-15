@@ -1,13 +1,13 @@
 ---
-title: "EDI メッセージをグループまたはコレクションとしてバッチ処理を行う - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリでバッチ処理を行う EDI メッセージを送信します"
-keywords: "バッチ, バッチ処理, バッチ エンコード"
+title: EDI メッセージをグループまたはコレクションとしてバッチ処理を行う - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリでバッチ処理を行う EDI メッセージを送信します
+keywords: バッチ, バッチ処理, バッチ エンコード
 author: divswa
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: 837cb0d9595da5b5bd4f01fb4576f75e98ab8912
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 6340d1fc409b64c5e681f9f69e4e2d0895ede61f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299292"
 ---
 # <a name="send-x12-messages-in-batch-to-trading-partners"></a>X12 メッセージを取引先にバッチで送信する
 
@@ -42,7 +43,7 @@ X12 メッセージのバッチ処理では、他のメッセージと同様に�
 
 この例に従うには、次の項目が必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金のサブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
 
 * 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)
 
@@ -82,7 +83,7 @@ X12 メッセージのバッチ処理では、他のメッセージと同様に�
 
 4. グループ化またはバッチ処理されたメッセージをエンコードする別のアクションを追加し、X12 のバッチ処理されたメッセージを作成します。 
 
-   a. **[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+ 新しいステップ]** > **[アクションの追加]** の順に選択します。
 
    b. 検索ボックスにフィルターとして「X12 batch」と入力し、**[X12 - Batch Encode]\(X12 - バッチ エンコード\)** アクションを選択します。 X12 エンコード コネクタと同様に、バッチ エンコード アクションには複数のバリエーションがあります。 いずれかのアクションを選択することができます。
 
@@ -167,7 +168,7 @@ X12 メッセージのバッチ処理では、他のメッセージと同様に�
 
 バッチ処理ソリューションをテストするには、[Postman](https://www.getpostman.com/postman) または類似のツールを使用して、X12 メッセージを送信ロジック アプリに送信します。 間もなく、パーティション キーがすべて同じ X12 メッセージを、5 つの項目を含むバッチとして、または 10 分ごとに、要求ビンで受信するようになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [メッセージをバッチとして処理する](logic-apps-batch-process-send-receive-messages.md) 
 * [Azure Logic Apps と関数を使用して Visual Studio でサーバーレス アプリを構築する](../logic-apps/logic-apps-serverless-get-started-vs.md)

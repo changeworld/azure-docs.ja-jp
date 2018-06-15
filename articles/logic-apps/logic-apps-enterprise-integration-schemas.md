@@ -1,10 +1,10 @@
 ---
-title: "XML 検証のスキーマ - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する"
+title: XML 検証のスキーマ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: db2d9313e443ebc9dd32fcb905b0ae62219e4bbf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299064"
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でスキーマを使用して XML ドキュメントを検証する
 

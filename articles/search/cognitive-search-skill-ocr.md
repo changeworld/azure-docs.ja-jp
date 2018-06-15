@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365826"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640372"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
@@ -35,7 +35,7 @@ ms.locfileid: "34365826"
 
 パラメーターの大文字と小文字は区別されます。
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | detectOrientation | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
 |defaultLanguageCode |  入力テキストの言語コード｡ 以下の言語がサポートされています。`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`｡  言語コードが指定されないか null の場合､言語は自動検出されます｡|
@@ -43,13 +43,13 @@ ms.locfileid: "34365826"
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力名      | [説明]                                          |
+| 入力名      | 説明                                          |
 |---------------|------------------------------------------------------|
 | image         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```generateNormalizedImages``` に設定されている場合に､Azure Blob インデクサーによって生成されます｡ 詳しくは､[サンプル](#sample-output) をご覧ください｡|
 
 
 ## <a name="skill-outputs"></a>スキルの出力
-| 出力名     | [説明]                   |
+| 出力名     | 説明                   |
 |---------------|-------------------------------|
 | テキスト          | イメージから抽出されたプレーン テキスト｡   |
 | layoutText    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型｡|
@@ -61,7 +61,7 @@ ms.locfileid: "34365826"
 {
     "skills": [
       {
-        "description": "Extracts text (plain and structured) from image."
+        "description": "Extracts text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",
         "defaultLanguageCode": null,
@@ -201,4 +201,4 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [インデクサーの作成 (REST)](ref-create-indexer.md)
++ [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

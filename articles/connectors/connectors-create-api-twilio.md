@@ -4,7 +4,7 @@ description: Twilio コネクタと REST API パラメーターの概要
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/19/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 2bb7961c850fc8a35f3e114d9497941b188cf51b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296137"
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Twilio コネクタの使用
 Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信します。 Twilio では次のことができます。
@@ -32,7 +33,7 @@ Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信
 ## <a name="create-a-connection-to-twilio"></a>Twilio への接続を作成する
 このコネクタをロジック アプリに追加するときに、次の Twilio 値を入力します。
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | Account ID |[はい] |Twilio アカウント ID を入力します。 |
 | Access Token |[はい] |Twilio アカウント トークンを入力します。 |

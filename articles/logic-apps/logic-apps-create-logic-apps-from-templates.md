@@ -2,7 +2,7 @@
 title: テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs
 description: ロジック アプリ テンプレートを使用してすばやくワークフローを作成します
 author: kevinlam1
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2e939143d7181722df17ea7837658d96272e3a3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 72aca1420d76a34f8f43f05b25d146eb743b3233
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298690"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 
 テンプレートのカテゴリを次に示します。
 
-| テンプレートの種類 | [説明] | 
+| テンプレートの種類 | 説明 | 
 | ------------- | ----------- | 
 | エンタープライズ クラウド テンプレート | Azure Blob、Dynamics CRM、Salesforce、Box の統合用であり、エンタープライズ クラウドのニーズに応じた他のコネクタを含みます。 たとえば、ビジネスの潜在顧客の整理や、企業のファイル データのバックアップに、これらのテンプレートを使用することができます。 | 
 | 個人的生産性テンプレート | 毎日のアラームを設定し、重要な作業項目を To Do リストに変換し、長期間のタスクを 1 人のユーザーの承認手順に自動化することで、個人の生産性を向上させます。 | 
@@ -59,7 +60,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Log Analytics](../log-analytics/log-analytics-overview.md) によるロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
-4. 準備ができたら、**[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]**を選択します。
+4. 準備ができたら、**[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]** を選択します。
 
    > [!NOTE]
    > ロジック アプリをピン留めしない場合、作業を続けるには、デプロイ後にロジック アプリを手動で探して開く必要があります。

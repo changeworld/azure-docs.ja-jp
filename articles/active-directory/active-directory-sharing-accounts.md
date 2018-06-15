@@ -14,11 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: b97ec4ffacead7630c267284f79f954ef03eff61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1bdc7a4d50b81c615d9aca651c897796d9f60c00
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292278"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -46,7 +47,7 @@ Azure AD 管理者は、アクセス パネルを使用して、ユーザーが�
 
 共有アカウントは、管理作業の強化、使いやすさの向上だけでなく、セキュリティも強化します。 資格情報の使用権限を持つユーザーには、共有パスワードが表示されるのではなく、パスワードを調整された認証フローの一部として使用する権限が与えられます。 さらに、一部のパスワード SSO アプリケーションには、Azure AD を使って定期的にパスワードをロールオーバー (更新) するオプションがあります。 システムは、大規模で複雑なパスワードを使って、アカウントのセキュリティを強化します。 管理者は、アプリケーションへのアクセス権の付与または取り消しを簡単に行うことができ、アカウントへのアクセス権を持つユーザーおよび過去にアプリケーションにアクセスしたユーザーを把握できます。
 
-Azure AD は、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS)、Premium、または Basic のライセンス ユーザーを対象にした共有アカウントをサポートします。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](active-directory-enterprise-apps-manage-sso.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
+Azure AD は、あらゆる種類のパスワード シングル サインオン アプリケーションについて、Enterprise Mobility Suite (EMS)、Premium、または Basic のライセンス ユーザーを対象にした共有アカウントをサポートします。 アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、 [カスタム SSO アプリケーション](manage-apps/configure-single-sign-on-portal.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
@@ -70,7 +71,7 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](active-directory-accessmanagement-self-service-group-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
 ## <a name="related-articles"></a>関連記事
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access-azure-portal.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Logic Apps の Web API と REST API の作成 | Microsoft Docs"
-description: "システム統合のためにロジック アプリ ワークフローから API、サービス、またはシステムを呼び出す Web API と REST API を作成します"
-keywords: "Web API, REST API, ワークフロー, システム統合"
+title: Azure Logic Apps の Web API と REST API の作成 | Microsoft Docs
+description: システム統合のためにロジック アプリ ワークフローから API、サービス、またはシステムを呼び出す Web API と REST API を作成します
+keywords: Web API, REST API, ワークフロー, システム統合
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299530"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>ロジック アプリのワークフローから呼び出すことができるカスタム API の作成
 

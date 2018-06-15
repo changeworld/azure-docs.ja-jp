@@ -4,7 +4,7 @@ description: Azure Resource Manager テンプレートを使用してロジッ�
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 69be968f34d756cc725f5353dcf074c01fad65ce
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0772ed0e6cca98c4e59b563a23549909636d55d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772553"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298224"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリを作成してデプロイする
 
@@ -83,7 +83,7 @@ Azure Logic Apps には、ワークフローを自動化するためのロジッ
 
 テンプレート内のパラメーターの説明を次に示します。
 
-| パラメーター | [説明] | JSON 定義の例 | 
+| パラメーター | 説明 | JSON 定義の例 | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | テンプレートで作成するロジック アプリの名前を定義します。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | ping テスト用の場所を定義します。 | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 

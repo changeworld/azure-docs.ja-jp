@@ -4,7 +4,7 @@ description: Azure Service Bus を使用してロジック アプリのメッセ
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 tags: connectors
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 02/06/2018
 ms.author: ladocs
-ms.openlocfilehash: d5a4760e1e0f38fd81fd779786985f5753d77eab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aa6ab10dded541b352bdb7c8c3a47dbbbfe6a15c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295470"
 ---
 # <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Azure Service Bus コネクタを使用してメッセージを送受信する
 

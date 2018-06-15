@@ -8,15 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "31606521"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850173"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
 
@@ -243,15 +244,20 @@ Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保�
 
 
 ### <a name="parameter-tuning"></a>パラメーターのチューニング
+
 ほとんどの機械学習プロジェクトに当てはまりますが、新しいデータセットで良い結果を得るには、パラメーターの慎重なチューニングと、さまざまな設計に関する決定を評価することが必要です。 これらのタスクに役立つように、1 か所 (`PARAMETERS.py` ファイル) に重要なすべてのパラメーターが指定され、簡単な説明が示されています。
 
 改善に向けた最も有望な手法のいくつかを次に示します。
 
 - データ品質: トレーニング セットとテスト セットの高品質を確保します。 つまり、画像には正しく注釈が付けられ、あいまいな画像が除去され (たとえば、ドットとストライプの両方がある衣服など)、属性が相互に排他的である (つまり、各画像が正確に 1 つの属性に属するように選択する) ようにします。
+
 - 画像内の対象のオブジェクトが小さい場合、画像分類アプローチはうまく機能しないことが知られています。 このような場合は、この[チュートリアル](https://github.com/Azure/ObjectDetectionUsingCntk)で説明しているように、オブジェクト検出アプローチを使用することを検討してください。
 - DNN の調整: おそらく最も重要なパラメーターは、学習率 `rf_lrPerMb` です。 トレーニング セットの精度 (パート 2 の最初の図) は 0 ～ 5 % にほど遠く、これは学習率が悪いことが最大の原因であると考えられます。 `rf_` から始まる他のパラメーターはあまり重要ではありません。 通常、トレーニング後にトレーニング エラーは指数関数的に減少し、0% に近づくはずです。
+
 - 入力解像度: 既定の画像解像度は 224 x 224 ピクセルです。 448 x 448 ピクセルや 896x896 ピクセルなどの高い画像解像度 (パラメーター: `rf_inputResoluton`) を使用すると、大幅に精度が向上することがありますが、DNN の調整の速度が低下します。 **高い画像解像度を使用することは、ほぼ無料で、ほぼ常に精度が飛躍的に向上します**。
+
 - DNN のオーバーフィット: DNN の調整時 (パート 2 の最初の図) は、トレーニングとテストの精度の大きな差を回避します。 この差を縮小するには、0.5 以上のドロップアウト率 `rf_dropoutRate` を使用し、正則化の重み `rf_l2RegWeight` を増やします。 高いドロップアウト率を使用すると、DNN 入力画像の解像度が高い場合に特に役立つことがあります。
+
 - `rf_pretrainedModelFilename` を `ResNet_18.model` から `ResNet_34.model` または `ResNet_50.model` のいずれかに変更することで、深い DNN を使用してみます。 Resnet-50 モデルは、深いだけでなく、最後から 2 番目のレイヤーの出力が、2048 個の浮動小数点数値になります (ResNet-18 および ResNet-34 モデルの 512 個の浮動小数点数値に対して)。 この大きいディメンションは、SVM 分類器のトレーニング時に特に有益です。
 
 ## <a name="part-3---custom-dataset"></a>パート 3 - カスタム データセット

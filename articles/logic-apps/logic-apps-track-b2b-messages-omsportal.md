@@ -2,7 +2,7 @@
 title: Azure Log Analytics - Azure Logic Apps を使用して B2B メッセージを追跡する | Microsoft Docs
 description: Azure Log Analytics を使用して統合アカウントおよびロジック アプリの B2B 通信を追跡する
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299979"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Azure Log Analytics で B2B 通信を追跡する
 
@@ -147,7 +148,7 @@ Log Analytics でロジック アプリの B2B メッセージを追跡するに
 
 AS2 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または AS2 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または AS2 契約の **[送信設定]** で指定されているゲスト パートナー |
@@ -178,7 +179,7 @@ AS2 メッセージごとのプロパティの説明を次に示します。
 
 X12 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または X12 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または X12 契約の **[送信設定]** で指定されているゲスト パートナー |
@@ -211,7 +212,7 @@ X12 メッセージごとのプロパティの説明を次に示します。
 
 EDIFACT メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているゲスト パートナー |

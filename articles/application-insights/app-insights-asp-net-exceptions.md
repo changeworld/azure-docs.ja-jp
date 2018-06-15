@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295712"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -296,7 +297,7 @@ Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Applica
 Application Insights Web SDK 2.5 (および以前) の WebAPI 1 (および以前) を使用する場合は、次の例を参照して例外を追跡します。
 
 #### <a name="web-api-1x"></a>Web API 1.x
-System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
+System.Web.Http.Filters.ExceptionFilterAttribute をオーバーライドします。
 
 ```csharp
     using System.Web.Http.Filters;
@@ -319,7 +320,7 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
     }
 ```
 
-この上書きされた属性を特定のコントローラーに追加するか、WebApiConfig クラスのグローバル フィルター構成に追加できます。
+このオーバーライドされた属性を特定のコントローラーに追加するか、WebApiConfig クラスのグローバル フィルター構成に追加できます。
 
 ```csharp
     using System.Web.Http;

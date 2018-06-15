@@ -13,12 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: rolyon
+ms.reviewer: skwan
 ms.custom: it-pro;
-ms.openlocfilehash: b993721a614f380aa1d5748bc925bd3bc9151841
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3be2026e480f33a7b8d403d375614310695613da
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266722"
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
 

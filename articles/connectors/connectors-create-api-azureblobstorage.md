@@ -2,7 +2,7 @@
 title: Azure Blob Storage に接続する - Azure Logic Apps | Microsoft Docs
 description: Azure Logic Apps を使用して Azure ストレージ内に BLOB を作成して管理します
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 05/21/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 15d737cd85f70717bfdf15dfb3d179f977b63c72
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34723434"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294681"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -84,7 +84,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    この例では、**[Azure Blob Storage - BLOB コンテンツの取得]** というアクションを使用します。
 
-   ![アクションの選択](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![選択アクション](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
 4. 接続の詳細の入力を求められたら、[Azure Blob Storage 接続を今すぐ作成](#create-connection)します。 接続が既に存在する場合は、アクションに必要な情報を指定します。 
 

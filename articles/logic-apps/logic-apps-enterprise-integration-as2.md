@@ -4,7 +4,7 @@ description: Azure Logic Apps を使用した B2B エンタープライズ統合
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: acc66f2cc88734b5c15fb9f4ace8339908418463
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298241"
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の AS2 メッセージを交換する
 
@@ -63,7 +64,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | AS2 である必要があります |
@@ -83,7 +84,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
     ![[受信設定] の構成](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
-2. 必要に応じて、**[メッセージ プロパティを上書きします]** チェック ボックスをオンにすることで、受信メッセージのプロパティを上書きできます。
+2. 必要に応じて、**[メッセージ プロパティをオーバーライドします]** チェック ボックスをオンにすることで、受信メッセージのプロパティをオーバーライドできます。
 
 3. すべての受信メッセージに署名することを要求するには、**[メッセージに署名してください]** チェック ボックスをオンにします。 [[証明書]](../logic-apps/logic-apps-enterprise-integration-certificates.md) ボックスの一覧から、メッセージの署名の検証に使用する既存の**ゲスト パートナーの公開証明書**を選択します。 証明書がない場合は作成します。
 
@@ -101,9 +102,9 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 これで選択した設定に準拠する受信メッセージを処理する準備ができました。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
-| メッセージ プロパティを上書きします |受信メッセージのプロパティを上書きできることを示します。 |
+| メッセージ プロパティをオーバーライドします |受信メッセージのプロパティをオーバーライドできることを示します。 |
 | メッセージに署名してください |メッセージがデジタル署名されることを要求します。 署名を検証するためのゲスト パートナーの公開証明書を構成します。  |
 | メッセージは暗号化する必要があります |メッセージを暗号化することを要求します。 暗号化されていないメッセージは拒否されます。 メッセージを復号化するためのホスト パートナーのプライベート証明書を構成します。  |
 | メッセージは圧縮する必要があります |メッセージを圧縮することを要求します。 圧縮されていないメッセージは拒否されます。 |
@@ -146,7 +147,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 これで選択した設定に準拠する送信メッセージを処理する準備ができました。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | メッセージの署名を有効にしてください |この契約から送信されるすべてのメッセージに署名することを要求します。 |
 | MIC アルゴリズム |メッセージの署名に使用するアルゴリズム。 メッセージに署名するための、ホスト パートナーのプライベート証明書の MIC アルゴリズムを構成します。 |

@@ -11,20 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 12a176a6eba3b6dd83ef7fb97f89ecfe99083059
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213321"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637363"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 
 Azure Key Vault は、資格情報コンテナー、キー、シークレット、証明書、および管理されたストレージ アカウントの作成および更新中に顧客データを受信します。 この顧客データは、Azure Portal および REST API を使用して直接表示できます。 顧客データは、データを含むオブジェクトを更新または削除することにより編集または削除できます。
 
 ユーザーまたはアプリケーションが Azure Key Vault にアクセスするとシステム のアクセス ログが生成されます。 詳細なアクセス ログは、Azure Insights から確認できます。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="identifying-customer-data"></a>顧客データの識別
 

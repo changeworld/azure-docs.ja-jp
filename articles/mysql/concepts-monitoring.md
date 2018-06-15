@@ -6,14 +6,15 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: c3cba00077fd65239382d6fdd98e73a55f926b3b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: af90fb4c89cf552d4c5637db08ef0acd9984b31b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264699"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、MySQL サーバーをサポートするリソースの動作への洞察を提供する各種のメトリックが用意されています。 
@@ -26,14 +27,14 @@ ms.lasthandoff: 03/17/2018
 
 |メトリック|メトリックの表示名|単位|説明|
 |---|---|---|---|---|
-|cpu_percent|CPU 使用率|パーセント|使用されている CPU の割合|
-|memory_percent|メモリの割合|パーセント|使用されているメモリの割合|
-|io_consumption_percent|IO の割合|パーセント|使用されている IO の割合|
-|storage_percent|ストレージの割合|パーセント|サーバーの最大数のうち使用されているストレージの割合|
-|storage_used|使用済みストレージ|バイト|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、およびサーバー ログが含まれます。|
-|storage_limit|ストレージの制限|バイト|このサーバーの最大のストレージ|
-|active_connections|アクティブな接続の合計|カウント|サーバーへのアクティブな接続の数|
-|connections_failed|失敗した接続の合計|カウント|サーバーへの失敗した接続の数|
+|cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
+|memory_percent|メモリの割合|Percent|使用されているメモリの割合|
+|io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
+|storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
+|storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、およびサーバー ログが含まれます。|
+|storage_limit|ストレージの制限|Bytes|このサーバーの最大のストレージ|
+|active_connections|アクティブな接続の合計|Count|サーバーへのアクティブな接続の数|
+|connections_failed|失敗した接続の合計|Count|サーバーへの失敗した接続の数|
 
 
 ## <a name="next-steps"></a>次の手順

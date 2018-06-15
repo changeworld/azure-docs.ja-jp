@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296358"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -31,7 +32,7 @@ Cost Management は、Azure VM からの Azure メトリック データを使�
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>VM でメトリックが有効になっていることを確認する
 
-1. Azure Portal (http://portal.azure.com) にログインします。
+1. Azure Portal (http://portal.azure.com) にサインインします。
 2. **[仮想マシン]** で VM を選んでから、**[監視]** で **[メトリック]** を選びます。 使用可能なメトリックの一覧が表示されます。
 3. メトリックをいくつか選ぶと、グラフにそれらのデータが表示されます。  
     ![メトリックの例: ホストの CPU 使用率](./media/azure-vm-extended-metrics/metric01.png)

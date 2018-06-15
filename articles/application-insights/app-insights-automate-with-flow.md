@@ -1,22 +1,23 @@
 ---
-title: "Microsoft Flow を使って Azure Application Insights のプロセスを自動化する"
-description: "Microsoft Flow を利用し、Application Insights コネクタを使って反復可能なプロセスを迅速に自動化する方法を説明します。"
+title: Microsoft Flow を使って Azure Application Insights のプロセスを自動化する
+description: Microsoft Flow を利用し、Application Insights コネクタを使って反復可能なプロセスを迅速に自動化する方法を説明します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1d2787626ed8fa71e3e4e9921ffb8a4680014cb
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c92b50ee78c100a531a2973181251444b3810967
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293774"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
@@ -90,7 +91,7 @@ ms.lasthandoff: 11/01/2017
 
 4. **[電子メールの送信]** ウィンドウで、次の操作を行います。
 
-   a. 受信者の電子メール アドレスを入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 受信者の電子メール アドレスを入力します。
 
    b. 電子メールの件名を入力します。
 
@@ -102,7 +103,7 @@ ms.lasthandoff: 11/01/2017
 
 5. 動的なコンテンツのメニューで、以下を実行します。
 
-    a. **[添付ファイル名]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[添付ファイル名]** を選択します。
 
     b. **[添付ファイルの内容]** を選択します。
     
@@ -122,7 +123,7 @@ ms.lasthandoff: 11/01/2017
 ![電子メールのサンプル](./media/app-insights-automate-with-flow/flow9.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Analytics クエリ](app-insights-analytics-using.md)の作成についての詳細を見る
 - [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る

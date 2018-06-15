@@ -3,7 +3,7 @@ title: HTTP 経由での任意のエンドポイントとの通信 - Azure Logic
 description: HTTP 経由で任意のエンドポイントと通信できるロジック アプリを作成する
 services: logic-apps
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 tags: connectors
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296426"
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP アクションの概要
 
@@ -93,14 +94,14 @@ HTTP トリガーのパラメーターの詳細については、 [MSDN](https:/
 ## <a name="http-trigger"></a>HTTP トリガー
 ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 HTTP コネクタにはトリガーが 1 つあります。
 
-| トリガー | [説明] |
+| トリガー | 説明 |
 | --- | --- |
 | HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
 
 ## <a name="http-action"></a>HTTP アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 HTTP コネクタには、使用可能なアクションが 1 つあります。
 
-| アクションを表示します。 | [説明] |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
 
@@ -111,7 +112,7 @@ HTTP トリガーのパラメーターの詳細については、 [MSDN](https:/
 HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | [説明] |
+| 表示名 | プロパティ名 | 説明 |
 | --- | --- | --- |
 | メソッド* |静的メソッド |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
@@ -124,7 +125,7 @@ HTTP 送信要求を実行するアクションの入力フィールドを次に
 #### <a name="output-details"></a>出力の詳細
 HTTP 応答の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | headers |オブジェクト |応答ヘッダー |
 | 本文 |オブジェクト |応答オブジェクト |
@@ -142,7 +143,7 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 基本認証には、次の認証オブジェクトが必要です。
 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | Type* |型 |認証の種類 (基本認証の場合は `Basic` を指定する必要があります) |
 | Username* |username |認証するユーザー名 |
@@ -166,7 +167,7 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 
 クライアント証明書認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | Type* |型 |認証の種類 (SSL クライアント証明書の場合は、 `ClientCertificate` を指定する必要があります) |
 | PFX* |pfx |Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
@@ -189,7 +190,7 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 #### <a name="azure-ad-oauth-authentication"></a>Azure AD OAuth 認証
 Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | Type* |型 |認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります) |
 | Tenant* |テナント |Azure AD テナントのテナント識別子。 |

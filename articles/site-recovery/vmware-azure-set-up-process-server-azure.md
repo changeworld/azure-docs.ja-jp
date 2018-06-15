@@ -2,17 +2,18 @@
 title: Azure Site Recovery を使用した VMware VM および物理サーバーのフェールバックのために Azure でプロセス サーバーを設定する | Microsoft Docs
 description: この記事では、Azure VM を VMware にフェールバックするために Azure でプロセス サーバーを設定する方法について説明します。
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: c6ef0ae663727c519f9b6a8a56027a3dd8a9503d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 06/10/2018
+ms.author: raynew
+ms.openlocfilehash: 1a6a1276d1a63971fba68dc868aa56ce687a6cc2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300924"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="deploy-a-process-server-in-azure"></a>Azure でプロセス サーバーをデプロイする
 
-1. コンテナー > **[Site Recovery インフラストラクチャ]**> **[管理]** > **[構成サーバー]** で、構成サーバーを選択します。
+1. コンテナーで **[Site Recovery インフラストラクチャ]**> **[管理]** > **[構成サーバー]** の順に選択し、構成サーバーを選択します。
 2. サーバー ページで、**[+ プロセス サーバー]** をクリックします
 3. **[プロセス サーバーの追加]** ページで、Azure でプロセス サーバーをデプロイすることを選択します。
 4. Azure の設定を指定します。これには、フェールオーバーに使用されるサブスクリプション、リソース グループ、フェールオーバーに使用される Azure リージョン、および Azure VM が配置される仮想ネットワークが含まれます。 複数の Azure ネットワークを使用している場合は、それぞれにプロセス サーバーが必要です。

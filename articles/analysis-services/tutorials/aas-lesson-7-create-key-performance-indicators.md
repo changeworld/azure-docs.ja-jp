@@ -3,16 +3,17 @@ title: 'Azure Analysis Services チュートリアル - レッスン 7: 主要�
 description: Azure Analysis Services チュートリアル プロジェクトで主要業績評価指標を作成する方法を説明します｡
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8534640822030a7aa93c8eafe2a1b1a4a8bc5bc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 877619e5c7e323985339a270f2f60abee2a3714f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596038"
 ---
 # <a name="create-key-performance-indicators"></a>主要業績評価指標を作成する
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/16/2018
   
 4.  メジャー グリッドで **InternetCurrentQuarterSalesPerformance** > **Create KPI** を右クリックします。   
   
-5.  [Key Performance Indicator (KPI)] ダイアログ ボックスの**[Target]** で､**Absolute Value** を選択し､**1.1** と入力します｡  
+5.  [Key Performance Indicator (KPI)] ダイアログ ボックスの **[Target]** で､**Absolute Value** を選択し､**1.1** と入力します｡  
   
 7.  左側 (低) のスライダー フィールドに **1** を入力し､右側 (高) のスライダー フィールドに **1.07** を入力します｡  
   
@@ -68,7 +69,7 @@ ms.lasthandoff: 04/16/2018
  
 3.  Right-click **InternetCurrentQuarterMarginPerformance** > **Create KPI** を右クリックします｡  
   
-4.  [Key Performance Indicator (KPI)] ダイアログ ボックスの**[Target]** で､**Absolute Value** を選択し､**1.25** と入力します｡   
+4.  [Key Performance Indicator (KPI)] ダイアログ ボックスの **[Target]** で､**Absolute Value** を選択し､**1.25** と入力します｡   
   
 5.  左側 (低) のスライダー フィールドでそのフィールドの値が **0.8** になるまでスライドし､右側 (高) のスライダー フィールドでフィールドの値が **1.03** になるまでスライドしします｡  
   
