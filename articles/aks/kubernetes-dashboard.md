@@ -1,4 +1,4 @@
----
+﻿---
 title: Web UI を使用した Azure Kubernetes クラスターの管理
 description: AKS での Kubernetes ダッシュボードの使用
 services: container-service
@@ -49,7 +49,7 @@ Kubernetes ダッシュボードで、右上のウィンドウにある **[作�
 
 ![Kubernetes ポッド](./media/container-service-kubernetes-ui/complete-deployment.png)
 
-アプリケーション ポッドに関するより詳細な情報を表示するには、左側のメニューにある **[Pods] (ポッド)** をクリックしてから、**NGINX** ポッドを選択します。 ここでは、リソース使用量などのポッド固有の情報を確認できます。
+アプリケーション ポッドに関するより詳細な情報を表示するには、左側のメニューにある **[ポッド]** をクリックしてから、**NGINX** ポッドを選択します。 ここでは、リソース使用量などのポッド固有の情報を確認できます。
 
 ![Kubernetes リソース](./media/container-service-kubernetes-ui/running-pods.png)
 
