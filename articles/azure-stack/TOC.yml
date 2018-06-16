@@ -130,8 +130,6 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: ユーザー サブスクリプションの所有者の変更
           href: azure-stack-change-subscription-owner.md
-        - name: Windows Azure Pack VM の管理
-          href: azure-stack-manage-windows-azure-pack.md
         - name: Azure Stack の開始および停止
           href: azure-stack-start-and-stop.md
         - name: 容量の管理
