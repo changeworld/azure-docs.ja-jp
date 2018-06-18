@@ -16,6 +16,8 @@
       href: tutorial-explore-js-client-lib.md
     - name: TSI 環境の作成
       href: tutorial-create-populate-tsi-environment.md
+    - name: TSI 単一ページ Web アプリの作成
+      href: tutorial-create-tsi-sample-spa.md
 - name: 概念
   items:
     - name: 環境を計画する

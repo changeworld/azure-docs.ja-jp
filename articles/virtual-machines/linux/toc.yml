@@ -201,7 +201,13 @@
         - name: リモート デスクトップを使用する
           href: use-remote-desktop.md
         - name: VM を Azure Active Directory に参加させる
-          href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+          items:
+            - name: Red Hat Enteprise Linux
+              href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
+            - name: CentOS
+              href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
+            - name: Ubuntu
+              href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
         - name: Azure Active Directory の資格情報でログインする
           href: login-using-aad.md
         - name: 更新プログラムとパッチ

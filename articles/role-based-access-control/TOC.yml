@@ -1,51 +1,57 @@
 - name: アクセスの管理の概要
   href: manage-access-to-azure-resources.md
-- name: Azure でのリソース アクセス
-  href: rbac-and-directory-admin-roles.md
-- name: ロール ベースのアクセス制御 (RBAC)
-  href: overview.md
+  items: null
+- name: 概要
   items:
-    - name: クイック スタート
-      items:
-        - name: ユーザーのアクセス権の付与 - ポータル
-          href: quickstart-assign-role-user-portal.md
-    - name: チュートリアル
-      items:
-        - name: ユーザーのアクセス権の付与 - PowerShell
-          href: tutorial-role-assignments-user-powershell.md
-        - name: グループのアクセス権の付与 - PowerShell
-          href: tutorial-role-assignments-group-powershell.md
-        - name: カスタム ロールの作成 - PowerShell
-          href: tutorial-custom-role-powershell.md
-        - name: カスタム ロールの作成 - CLI
-          href: tutorial-custom-role-cli.md
-    - name: ロールの割り当てを管理する
-      items:
-        - name: ポータル
-          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
-        - name: Azure CLI
-          href: role-assignments-cli.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: REST ()
-          href: role-assignments-rest.md
+    - name: RBAC とは
+      href: overview.md
+    - name: 各種ロールについて
+      href: rbac-and-directory-admin-roles.md
+- name: クイック スタート
+  items:
+    - name: ユーザーのアクセス権の付与
+      href: quickstart-assign-role-user-portal.md
+- name: チュートリアル
+  items:
+    - name: ユーザーのアクセス権の付与 - PowerShell
+      href: tutorial-role-assignments-user-powershell.md
+    - name: グループのアクセス権の付与 - PowerShell
+      href: tutorial-role-assignments-group-powershell.md
+    - name: カスタム ロールの作成 - PowerShell
+      href: tutorial-custom-role-powershell.md
+    - name: カスタム ロールの作成 - CLI
+      href: tutorial-custom-role-cli.md
+- name: 概念
+  items:
     - name: ロール定義について
       href: role-definitions.md
     - name: 組み込みのロール
       href: built-in-roles.md
     - name: カスタム ロール
       href: custom-roles.md
-    - name: 外部ユーザーに対するロールの割り当てを管理する
-      href: role-assignments-external-users.md
+    - name: リソース プロバイダー操作
+      href: resource-provider-operations.md
+    - name: RBAC のための Privileged Identity Management (PIM)
+      href: pim-azure-resource.md
+    - name: Azure 管理の条件付きアクセス
+      href: conditional-access-azure-management.md
+- name: ハウツー ガイド
+  items:
+    - name: アクセスを管理する
+      items:
+        - name: ポータル
+          href: role-assignments-portal.md
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST ()
+          href: role-assignments-rest.md
     - name: アクティビティ ログ
       href: change-history-report.md
     - name: 全体管理者のアクセス権の昇格
       href: elevate-access-global-admin.md
+    - name: 外部ユーザーのアクセス権の管理
+      href: role-assignments-external-users.md
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: リソース プロバイダー操作
-      href: resource-provider-operations.md
-- name: RBAC のための Privileged Identity Management (PIM)
-  href: pim-azure-resource.md
-- name: Azure 管理の条件付きアクセス
-  href: conditional-access-azure-management.md

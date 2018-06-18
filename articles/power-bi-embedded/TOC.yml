@@ -4,12 +4,14 @@
   items:
     - name: Power BI Embedded とは
       href: what-is-power-bi-embedded.md
-- name: 作業開始
+- name: チュートリアル
+  items:
+    - name: 顧客向けにコンテンツを埋め込むサンプル
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+- name: 概念
   items:
     - name: Power BI Embedded を使ってみる
       href: get-started.md
-    - name: サンプルの使用
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
 - name: 方法
   items:
     - name: 容量の管理

@@ -63,6 +63,8 @@
           href: sql-data-warehouse-overview-manage-security.md
         - name: 認証
           href: sql-data-warehouse-authentication.md
+        - name: 列レベルのセキュリティ
+          href: column-level-security.md
     - name: SQL Data Warehouse への移行
       items:
         - name: 概要

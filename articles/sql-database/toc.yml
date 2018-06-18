@@ -56,11 +56,11 @@
       href: sql-database-security-tutorial.md
     - name: 4 - 地理的に分散したデータベースの実装
       href: sql-database-implement-geo-distributed-database.md
-    - name: 5 - マネージ インスタンスの作成
+    - name: 5 - マネージド インスタンスの作成
       href: sql-database-managed-instance-create-tutorial-portal.md
-    - name: 6 - バックアップをマネージ インスタンスに復元する
+    - name: 6 - バックアップをマネージド インスタンスに復元する
       href: sql-database-managed-instance-restore-from-backup-tutorial.md
-    - name: 7 - DMS を使用してマネージ インスタンスに移行する
+    - name: 7 - DMS を使用してマネージド インスタンスに移行する
       href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: サンプル
   items:
@@ -74,7 +74,7 @@
   items:
     - name: サーバーとデータベース
       href: sql-database-servers-databases.md
-    - name: マネージ インスタンス
+    - name: マネージド インスタンス
       href: sql-database-managed-instance.md
     - name: DTU ベースのサービス レベル
       href: sql-database-service-tiers-dtu.md
@@ -112,7 +112,7 @@
           href: sql-vulnerability-assessment.md
         - name: 脅威の検出 - SQL Database
           href: sql-database-threat-detection.md
-        - name: 脅威の検出 - マネージ インスタンス
+        - name: 脅威の検出 - Managed Instance
           href: sql-database-managed-instance-threat-detection.md
         - name: ファイアウォール規則
           href: sql-database-firewall-configure.md
@@ -128,7 +128,7 @@
           href: sql-database-ssms-mfa-authentication.md
         - name: 監査 - SQL Database
           href: sql-database-auditing.md
-        - name: 監査 - マネージ インスタンス
+        - name: 監査 - Managed Instance
           href: sql-database-managed-instance-auditing.md
         - name: テーブルの監査と TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
@@ -162,11 +162,11 @@
       items:
         - name: SQL Database への移行
           href: sql-database-cloud-migrate.md
-        - name: マネージ インスタンスへの移行
+        - name: Managed Instance への移行
           href: sql-database-managed-instance-migrate.md
         - name: SQL Database T-SQL の詳細
           href: sql-database-transact-sql-information.md
-        - name: マネージ インスタンス T-SQL の詳細
+        - name: Managed Instance T-SQL の詳細
           href: sql-database-managed-instance-transact-sql-information.md
         - name: 移行後の SQL Database の管理
           href: sql-database-manage-after-migration.md
@@ -202,6 +202,30 @@
           href: sql-database-xevent-db-diff-from-svr.md
         - name: インメモリの監視
           href: sql-database-in-memory-oltp-monitoring.md
+    - name: Elastic Database ジョブ
+      items:
+        - name: 概要
+          href: elastic-jobs-overview.md
+        - name: 作成と管理 (PowerShell)
+          href: elastic-jobs-powershell.md
+        - name: 作成と管理 (T-SQL)
+          href: elastic-jobs-tsql.md
+        - name: (古いエラスティック ジョブからの) 移行
+          href: elastic-jobs-migrate.md
+        - name: エラスティック ジョブ (非推奨)
+          items:
+            - name: 概要 (非推奨)
+              href: sql-database-elastic-jobs-overview.md
+            - name: エラスティック ジョブのインストール (非推奨)
+              href: sql-database-elastic-jobs-service-installation.md
+            - name: ジョブの作成 - ポータル (非推奨)
+              href: sql-database-elastic-jobs-create-and-manage.md
+            - name: ジョブの作成 - Azure PowerShell (非推奨)
+              href: sql-database-elastic-jobs-powershell.md
+            - name: ジョブの作成 - サンプル アプリ (非推奨)
+              href: sql-database-elastic-jobs-getting-started.md
+            - name: エラスティック ジョブのアンインストール (非推奨)
+              href: sql-database-elastic-jobs-uninstall.md
     - name: スケールアウト
       items:
         - name: 概要
@@ -212,8 +236,6 @@
           href: sql-database-elastic-query-overview.md
         - name: エラスティック トランザクション
           href: sql-database-elastic-transactions-overview.md
-        - name: エラスティック ジョブ
-          href: sql-database-elastic-jobs-overview.md
         - name: シャード マップ
           href: sql-database-elastic-scale-shard-map-management.md
         - name: クエリのルーティング
@@ -277,23 +299,13 @@
       items:
         - name: エラスティック データベース クライアント ライブラリのアップグレード
           href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: エラスティック ジョブのインストール
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: ジョブの作成 - ポータル
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: ジョブの作成 - Azure PowerShell
-          href: sql-database-elastic-jobs-powershell.md
-        - name: ジョブの作成 - サンプル アプリ
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: エラスティック ジョブのアンインストール
-          href: sql-database-elastic-jobs-uninstall.md
         - name: 垂直方向にパーティション分割されたデータに対するクエリ
           href: sql-database-elastic-query-getting-started-vertical.md
         - name: スケールアウトされたデータ層のレポート
           href: sql-database-elastic-query-horizontal-partitioning.md
         - name: スキーマが異なるテーブル間のクエリ
           href: sql-database-elastic-query-vertical-partitioning.md
-    - name: マネージ インスタンス
+    - name: Managed Instance
       items:
         - name: VNet 構成
           href: sql-database-managed-instance-vnet-configuration.md
@@ -456,8 +468,6 @@
   items:
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
-    - name: PowerShell (エラスティック データベース)
-      href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET
