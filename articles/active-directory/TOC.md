@@ -13,7 +13,7 @@
 
 # 作業開始
 ## [Azure AD を使ってみる](fundamentals/get-started-azure-ad.md)
-## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
+## [Azure AD Premium へのサインアップ](fundamentals/active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](fundamentals/add-custom-domain.md)
 ## [会社のブランドの構成](fundamentals/customize-branding.md)
 ## [Azure AD へのユーザーの追加](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [グループとメンバーの管理](fundamentals/active-directory-manage-groups.md)
 ### グループの管理
-#### [Azure Portal](active-directory-groups-create-azure-portal.md)
+#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [グループ メンバーを管理する](active-directory-groups-members-azure-portal.md)
+### [グループ メンバーを管理する](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [グループ メンバーシップを管理する](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [グループを使用してライセンスを割り当てる](fundamentals/active-directory-licensing-whatis-azure-portal.md)

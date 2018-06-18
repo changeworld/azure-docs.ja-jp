@@ -274,8 +274,7 @@
           href: sql-database-temporal-tables-retention-policy.md
         - name: インメモリの構成
           href: sql-database-in-memory-oltp-migration.md
-    - name: |
-        アプリの開発
+    - name: アプリの開発
       items:
         - name: 接続
           href: sql-database-libraries.md
@@ -344,7 +343,7 @@
         - name: BCP を使用したデータの読み込み
           href: sql-database-load-from-csv-with-bcp.md
         - name: ADF を使用したデータの読み込み
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: データの同期
           href: sql-database-get-started-sql-data-sync.md
     - name: 監視とチューニング
@@ -455,8 +454,7 @@
               href: saas-multitenantdb-schema-management.md
             - name: 分析用の ETL
               href: saas-multitenantdb-tenant-analytics.md
-    - name: |
-        アプリの開発
+    - name: アプリの開発
       items:
         - name: C と C++
           href: sql-database-develop-cplusplus-simple.md

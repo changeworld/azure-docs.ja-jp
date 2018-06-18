@@ -49,8 +49,6 @@
           href: sql-data-warehouse-manage-compute-overview.md
         - name: バックアップと復元
           href: backup-and-restore.md
-        - name: 監査
-          href: sql-data-warehouse-auditing-overview.md
         - name: 容量制限
           href: sql-data-warehouse-service-capacity-limits.md
         - name: 'メンテナンス '
@@ -61,8 +59,22 @@
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
+        - name: アクセス制御
+          href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: ファイアウォール規則
+          href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: ファイアウォールの仮想ネットワーク ルール
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
         - name: 認証
-          href: sql-data-warehouse-authentication.md
+          href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Azure AD
+          href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: ログインとユーザー
+          href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 多要素認証
+          href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 監査
+          href: sql-data-warehouse-auditing-overview.md
         - name: 列レベルのセキュリティ
           href: column-level-security.md
     - name: SQL Data Warehouse への移行
@@ -181,6 +193,12 @@
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: セキュリティ
       items:
+        - name: Azure AD 認証の構成
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 条件付きアクセス
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: PowerShell による仮想ネットワーク ルール
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
         - name: 暗号化の有効化 - ポータル
           href: sql-data-warehouse-encryption-tde.md
         - name: 暗号化の有効化 - T-SQL
