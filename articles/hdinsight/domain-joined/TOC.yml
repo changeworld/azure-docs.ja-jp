@@ -14,7 +14,7 @@
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: VS Code を使用してドメイン参加済みクラスターにリンクする
+    - name: VSCode を使用してドメイン参加済みクラスターにリンクする
       href: ../hdinsight-for-vscode.md
     - name: IntelliJ を使用してドメイン参加済みクラスターにリンクする
       href: ../spark/apache-spark-intellij-tool-plugin.md
@@ -37,13 +37,10 @@
     - name: Azure VNet での HBase クラスター レプリケーション
       href: ../hbase/apache-hbase-replication.md
       maintainContext: true
-- name: OMS を使用した監視
+- name: Log Analytics を使用した監視
   items:
     - name: Azure Log Analytics の使用
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-      maintainContext: true
-    - name: クラスター固有のダッシュボード
-      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
       maintainContext: true
     - name: Log Analytics でのクエリの使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

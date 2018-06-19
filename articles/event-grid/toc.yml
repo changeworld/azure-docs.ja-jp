@@ -69,6 +69,8 @@
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
+    - name: イベント配信の管理
+      href: manage-event-delivery.md
     - name: イベント配信の監視
       href: monitor-event-delivery.md
     - name: イベント サブスクリプションの照会

@@ -16,6 +16,8 @@
   items:
     - name: Web アプリに Azure CDN を追加する
       href: cdn-add-to-web-app.md
+    - name: カスタム ドメインを使用している BLOB に HTTPS 経由でアクセスする
+      href: cdn-storage-custom-domain-https.md
     - name: カスタム ドメインの追加
       href: cdn-map-content-to-custom-domain.md
     - name: カスタム ドメインで HTTPS を構成する

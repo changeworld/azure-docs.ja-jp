@@ -249,15 +249,10 @@
           href: apache-hbase-replication.md
         - name: HBase および Phoenix のバックアップとレプリケーションの設定
           href: apache-hbase-backup-replication.md
-    - name: OMS を使用した監視
+    - name: Log Analytics を使用した監視
       items:
         - name: Azure Log Analytics の使用
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: OMS による HBase の監視
-          href: apache-hbase-monitor-with-oms.md
-        - name: クラスター固有のダッシュボード
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Log Analytics でのクエリの使用
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

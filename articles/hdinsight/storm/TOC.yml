@@ -234,13 +234,10 @@
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: OMS を使用した監視
+    - name: Log Analytics を使用した監視
       items:
         - name: Azure Log Analytics の使用
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: クラスター固有のダッシュボード
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Log Analytics でのクエリの使用
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

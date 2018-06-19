@@ -1,5 +1,5 @@
-- name: アクセスの管理の概要
-  href: manage-access-to-azure-resources.md
+- name: ロールベースのアクセス制御に関するドキュメント
+  href: index.yml
   items: null
 - name: 概要
   items:
@@ -36,6 +36,7 @@
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
 - name: ハウツー ガイド
+  expanded: true
   items:
     - name: アクセスを管理する
       items:
