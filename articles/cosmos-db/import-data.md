@@ -3,24 +3,21 @@ title: Azure Cosmos DB のデータベース移行ツール | Microsoft Docs
 description: オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
 keywords: csv を json へ、データベース移行ツール、csv を json へ
 services: cosmos-db
-author: andrewhoh
+author: SnehaGunda
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: d173581d-782a-445c-98d9-5e3c49b00e25
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/30/2018
-ms.author: anhoh
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 07c41bb02863cc32372722cbcbac4be2c5071860
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611468"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 
@@ -58,7 +55,7 @@ Azure Cosmos DB で使用する API を教えてください。
 * hbase
 * Azure Cosmos DB コレクション
 
-このインポート ツールにはグラフィカル ユーザー インターフェイス (dtui.exe) が搭載されていますが、コマンド ライン (dt.exe) から実行することもできます。 さらに、UI でインポートを設定した後で関連コマンドを出力するオプションもあります。 インポート時には、表形式ソース データ (SQL Server や CSV ファイルなど) を変換して、階層関係 (サブドキュメント) を作成できます。 最後まで目を通し、ソース オプション、各ソースからインポートするためのサンプル コマンド ライン、ターゲット オプション、およびインポート結果の表示に関する詳細を確認してください。
+このインポート ツールにはグラフィカル ユーザー インターフェイス (dtui.exe) が搭載されていますが、コマンド ライン (dt.exe) から実行することもできます。 さらに、UI でインポートを設定した後で関連コマンドを出力するオプションもあります。 インポート時には、表形式ソース データ (SQL Server や CSV ファイルなど) を変換して、階層関係 (サブドキュメント) を作成できます。 最後まで目を通し、ソース オプション、各ソースからインポートするためのサンプル コマンド、ターゲット オプション、およびインポート結果の表示に関する詳細を確認してください。
 
 ## <a id="Install"></a>インストール
 移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip)してから、次のいずれかを実行できます。
@@ -202,8 +199,8 @@ DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに�
 
 CSV のインポートに関して注意することが他に 2 つあります。
 
-1. 既定では、引用符なしの値は常にタブやスペースで切られますが、引用符で囲まれた値はそのまま保持されます。 この動作は、[引用符付きの値をトリミングする] チェックボックスまたはコマンド ライン オプション /s.TrimQuoted を使用して上書きすることができます。
-2. 既定では、引用符なしの null は、null 値として扱われます。 この動作は、[引用符なしの NULL を文字列として扱う] チェックボックスまたはコマンド ライン オプション /s.NoUnquotedNulls を使用して上書きすることができます (つまり、引用符なしの null を "null" という文字列として扱います)。
+1. 既定では、引用符なしの値は常にタブやスペースで切られますが、引用符で囲まれた値はそのまま保持されます。 この動作は、[引用符付きの値をトリミングする] チェックボックスまたはコマンド ライン オプション /s.TrimQuoted を使用してオーバーライドすることができます。
+2. 既定では、引用符なしの null は、null 値として扱われます。 この動作は、[引用符なしの NULL を文字列として扱う] チェックボックスまたはコマンド ライン オプション /s.NoUnquotedNulls を使用してオーバーライドすることができます (つまり、引用符なしの null を "null" という文字列として扱います)。
 
 CSV インポート用のコマンド ライン サンプルを以下に示します。
 
@@ -453,7 +450,7 @@ Azure Cosmos DB アカウントの接続文字列は、「[Azure Cosmos DB ア�
 
 Azure Cosmos DB シーケンシャル レコード インポーターには、次の詳細オプションがあります。
 
-1. 並列要求の数: 並列要求の数は既定で 2 に設定されています。 インポートするドキュメントが小さい場合は、並列要求の数を増やすことを検討してみてください。 ただし、この数が大きすぎると、インポート時に調整が行われる場合があります。
+1. 並列要求の数: 並列要求の数は既定で 2 に設定されています。 インポートするドキュメントが小さい場合は、並列要求の数を増やすことを検討してみてください。 この数が大きすぎると、インポート時に調整が行われる場合があります。
 2. 自動 ID 生成を無効にする: インポートするすべてのドキュメントに ID フィールドが含まれている場合は、このオプションを選択してパフォーマンスを向上できます。 一意の ID フィールドがないドキュメントはインポートされません。
 3. 既存のドキュメントの更新: 既定では、ID が競合する既存のドキュメントは置き換えられません。 このオプションを選択すると、ID が一致する既存のドキュメントを上書きできます。 この機能は、既存のドキュメントを更新するスケジュールされたデータ移行に役立ちます。
 4. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に Azure Cosmos DB への接続を再試行する回数を指定します。

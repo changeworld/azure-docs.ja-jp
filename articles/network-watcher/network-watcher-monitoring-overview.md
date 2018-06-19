@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639345"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
@@ -48,11 +49,11 @@ Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの�
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>VM との間で発生するネットワーク トラフィック フィルターの問題を診断する
 
-VM をデプロイすると、VM との間のトラフィックを許可または拒否するいくつかのセキュリティ規則が既定で VM に適用されます。 Azure の既定の規則を上書きしたり、追加の規則を作成したりできます。 ある時点で、セキュリティ規則が原因となって VM が他のリソースと通信できなくなる場合があります。 "*IP フロー検証*" 機能を使用すると、送信元および宛先 IPv4 アドレス、ポート、プロトコル (TCP または UDP)、トラフィックの方向 (受信または送信) を指定できます。 その後 IP フロー検証によって通信のテストが行われ、接続の成否が通知されます。 接続が失敗した場合、接続を許可または拒否したセキュリティ規則が IP フロー検証によって示されます。これにより、問題を解決できます。 IP フロー検証の詳細については、[こちら](network-watcher-ip-flow-verify-overview.md)を参照してください。
+VM をデプロイすると、VM との間のトラフィックを許可または拒否するいくつかのセキュリティ規則が既定で VM に適用されます。 Azure の既定の規則をオーバーライドしたり、追加の規則を作成したりできます。 ある時点で、セキュリティ規則が原因となって VM が他のリソースと通信できなくなる場合があります。 "*IP フロー検証*" 機能を使用すると、送信元および宛先 IPv4 アドレス、ポート、プロトコル (TCP または UDP)、トラフィックの方向 (受信または送信) を指定できます。 その後 IP フロー検証によって通信のテストが行われ、接続の成否が通知されます。 接続が失敗した場合、接続を許可または拒否したセキュリティ規則が IP フロー検証によって示されます。これにより、問題を解決できます。 IP フロー検証について詳しくは、[仮想マシン ネットワーク トラフィック フィルターの問題の診断](diagnose-vm-network-traffic-filtering-problem.md)のチュートリアルを完了してください。
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>VM からのネットワーク ルーティングに関する問題を診断する
 
-仮想ネットワークを作成すると、ネットワーク トラフィックの送信ルートが既定でいくつか作成されます。 仮想ネットワーク内にデプロイされたすべてのリソース (VM など) からの送信トラフィックは、Azure の既定のルートに基づいてルーティングされます。 Azure の既定のルートを上書きしたり、追加のルートを作成したりできます。 特定のルートが原因となって VM が他のリソースと通信できなくなる場合があります。 "*次ホップ*" 機能を使用すると、送信元および宛先 IPv4 アドレスを指定できます。 その後、次ホップによって通信のテストが行われ、トラフィックのルーティングに使用される次ホップの種類が通知されます。 ルートを削除、変更、または追加して、ルーティングの問題を解決できます。 次ホップ機能の詳細については、[こちら](network-watcher-next-hop-overview.md?)を参照してください。
+仮想ネットワークを作成すると、ネットワーク トラフィックの送信ルートが既定でいくつか作成されます。 仮想ネットワーク内にデプロイされたすべてのリソース (VM など) からの送信トラフィックは、Azure の既定のルートに基づいてルーティングされます。 Azure の既定のルートをオーバーライドしたり、追加のルートを作成したりできます。 特定のルートが原因となって VM が他のリソースと通信できなくなる場合があります。 "*次ホップ*" 機能を使用すると、送信元および宛先 IPv4 アドレスを指定できます。 その後、次ホップによって通信のテストが行われ、トラフィックのルーティングに使用される次ホップの種類が通知されます。 ルートを削除、変更、または追加して、ルーティングの問題を解決できます。 次ホップ機能の詳細については、[こちら](diagnose-vm-network-routing-problem.md)を参照してください。
 
 ### <a name="connection-troubleshoot"></a>VM からの送信接続を診断する
 
@@ -64,7 +65,7 @@ VM をデプロイすると、VM との間のトラフィックを許可また�
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Azure 仮想ネットワーク ゲートウェイと接続に関する問題を診断する
 
-仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 "*VPN 診断*" 機能を使用すると、ゲートウェイと接続を診断できます。 VPN 診断では、ゲートウェイまたはゲートウェイ接続の正常性が診断され、ゲートウェイおよびゲートウェイ接続の使用の可否が通知されます。 ゲートウェイまたは接続が使用できない場合、VPN 診断によって原因が示されます。これにより、問題を解決できます。 VPN 診断の詳細については、[こちら](network-watcher-troubleshoot-overview.md)を参照してください。
+仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 "*VPN 診断*" 機能を使用すると、ゲートウェイと接続を診断できます。 VPN 診断では、ゲートウェイまたはゲートウェイ接続の正常性が診断され、ゲートウェイおよびゲートウェイ接続の使用の可否が通知されます。 ゲートウェイまたは接続が使用できない場合、VPN 診断によって原因が示されます。これにより、問題を解決できます。 VPN の診断について詳しくは、[ネットワーク間の通信に関する問題の診断](diagnose-communication-problem-between-networks.md)のチュートリアルを完了してください。
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Azure リージョンとインターネット サービス プロバイダーの間の相対待ち時間を確認する
 
@@ -90,7 +91,7 @@ Azure のサブスクリプションおよびリージョン内で作成でき�
 
 ![トラフィック分析](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-詳しくは、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関するページと[トラフィック分析](traffic-analytics.md)に関するページを参照してください。
+NSG フロー ログについて詳しくは、[仮想マシンへの送受信ネットワーク トラフィックのログへの記録](network-watcher-nsg-flow-logging-portal.md)のチュートリアルを完了し、[トラフィックの分析](traffic-analytics.md)の実装方法をご覧ください。
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>ネットワーク リソースの診断ログを表示する
 

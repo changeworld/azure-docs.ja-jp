@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304999"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639209"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージ アプリケーションの概要
 
@@ -53,7 +53,9 @@ IT チームは、マネージ アプリケーションを使用して、組織�
 
 ## <a name="resource-groups-for-managed-applications"></a>マネージ アプリケーションのリソース グループ
 
-通常、マネージ アプリケーションのリソースは、2 つのリソース グループ内に存在します。 ユーザーが 1 つのリソース グループを管理し、発行元がもう 1 つのリソース グループを管理します。 発行元は、マネージ アプリケーションを定義するときに、アクセス レベルを指定します。 次の図は、発行元がマネージ リソース グループの所有者ロールを要求しているシナリオを示しています。 発行元は、ユーザー用のリソース グループに対して、読み取り専用ロックを設定しています。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
+通常、マネージ アプリケーションのリソースは、2 つのリソース グループ内に存在します。 ユーザーが 1 つのリソース グループを管理し、発行元がもう 1 つのリソース グループを管理します。 発行元は、マネージ アプリケーションを定義するときに、アクセス レベルを指定します。 [データ操作](../role-based-access-control/role-definitions.md)のアクセスの制限は、現在、Azure 内のすべてのデータ プロバイダーに対してはサポートされていません。
+
+次の図は、発行元がマネージ リソース グループの所有者ロールを要求しているシナリオを示しています。 発行元は、ユーザー用のリソース グループに対して、読み取り専用ロックを設定しています。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
 
 ![リソース グループへのアクセス](./media/overview/access.png)
 

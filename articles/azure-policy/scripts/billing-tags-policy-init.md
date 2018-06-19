@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 49429dd4db4c33f16fce39a932f387e2145da250
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: eebf3e4908f9eb484f9dff9e71d3c2919c523574
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601923"
 ---
 # <a name="billing-tags-policy-initiative"></a>課金タグ ポリシーのイニシアティブ
 
@@ -79,4 +80,4 @@ foreach($r in $resources)
 
 ## <a name="next-steps"></a>次の手順
 
-- その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。
+- 他の例については、「[Azure Policy のサンプル](../json-samples.md)」をご確認ください。

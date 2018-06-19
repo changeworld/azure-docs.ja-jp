@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs のカスタム ラボにアクセスする | Microsoft Docs
+title: Azure DevTest Labs のラボへのアクセス | Microsoft Docs
 description: このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスし、仮想マシンを要求して使用した後、それらを解放します。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361840"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638026"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のカスタム ラボにアクセスする
-このチュートリアルでは、「[チュートリアル: カスタム ラボを作成する](tutorial-create-custom-lab.md)」で作成したカスタム ラボを使います。
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
+このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
 
 このチュートリアルでは、次のアクションを実行します。
 
 > [!div class="checklist"]
-> * カスタム ラボの仮想マシン (VM) を要求する
+> * ラボの仮想マシン (VM) を要求する
 > * VM に接続します
 > * VM を解放する
 
@@ -70,8 +70,8 @@ VM を使い終わったら、次の手順で VM を解放します。
 1. 解放操作が完了すると、下部にある **[要求可能な仮想マシン]** の一覧に VM が表示されます。 
     
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure DevTest Labs を使って作成されたカスタム ラボにアクセスして使用する方法を示しました。 カスタム ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください。 
+このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスして使用する方法を示しました。 ラボの VM にアクセスして使用する方法について詳しくは、次をご覧ください 
 
 > [!div class="nextstepaction"]
-> [方法: カスタム ラボの VM を使用する](devtest-lab-add-vm.md)
+> [方法: ラボでの VM の使用](devtest-lab-add-vm.md)
 

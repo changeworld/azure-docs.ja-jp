@@ -11,22 +11,23 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 154ba47881c65d963729f9074d93c7bb61020389
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657242"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Azure 仮想マシンの管理方法の説明
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
+この記事の例では、バージョン 6.0 以降の Azure PowerShell が必要です。 PowerShell をローカルで実行していて、バージョン 6.0 以降を持っていない場合は、[バージョンを更新](/powershell/azure/install-azurerm-ps)します。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。 ローカル インストールの場合は、[Azure AD PowerShell モジュールをダウンロード](https://www.powershellgallery.com/packages/AzureAD/)して、新しい Azure Active Directory グループを作成する必要もあります。
 
 ## <a name="understand-scope"></a>スコープを理解する
 
@@ -196,13 +197,13 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 タグの名前と値でリソースを検索するには、[Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) コマンドを使います。
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Get-AzureRmResource -Tag @{ Environment="Test"}).Name
 ```
 
 返される値は、タグ値ですべての仮想マシンを停止するような管理タスクで使用できます。
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する

@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使った対話型のマップ検索 | Microsoft Docs
 description: Azure クイック スタート - Azure Maps を使用したデモ版の対話型マップ検索を開始する
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8dedaf95289d9637f5f3d1e80a763b5fb400c617
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8765b634b81742acf9fb4d40be8864800025351d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599764"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Azure Maps を使用して対話形式の検索マップを起動する
 
@@ -77,3 +75,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [Azure Maps を使って目的地を検索する](./tutorial-search-location.md)
+
+他のコード例や対話型のコーディング エクスペリエンスについては、使用方法に関する以下のガイドをご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure Maps REST API を使用してアドレスを検索する方法](./how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Azure Maps のマップ コントロールを使用する方法](./how-to-use-map-control.md)

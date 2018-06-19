@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (Node.js) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Node.js アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: node
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 0be67b936780d68198a00cb99529643d453621e3
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 572ecbfee6a3c361a2940d74b560910fd85b344b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635867"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Node.js) でハブから利用統計情報を読み取る
 
@@ -82,7 +80,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの Node.js プロジェクトのルート フォルダーに移動します。 **Quickstarts\simulated-device** フォルダーに移動します。
+1. ターミナル ウィンドウで、サンプルの Node.js プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **SimulatedDevice.js** ファイルを開きます。
 
@@ -105,7 +103,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
 1. 別のターミナル ウィンドウで、サンプルの Node.js プロジェクトのルート フォルダーに移動します。 **read-d2c-messages** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **Quickstarts\ReadDeviceToCloudMessages.js** ファイルを開きます。
+1. 適当なテキスト エディターで **iot-hub\Quickstarts\ReadDeviceToCloudMessages.js** ファイルを開きます。
 
     `connectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 **ReadDeviceToCloudMessages.js** ファイルに変更を保存します。
 

@@ -1,31 +1,28 @@
 ---
-title: Azure CLI 2.0 で Azure Data Lake Analytics の使用を開始する | Microsoft Docs
-description: 'Azure コマンド ライン インターフェイス 2.0 を使用して Data Lake Analytics アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成し、ジョブを送信する方法について説明します。 '
-services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
+title: Azure CLI 2.0 で Azure Data Lake Analytics の使用を開始する
+description: Azure Command-line Interface 2.0 を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信する方法について説明します。
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.topic: get-started-article
 ms.date: 06/18/2017
-ms.author: jgao
-ms.openlocfilehash: e7ce65446a6af49f15b3ce1881757b16f8fcaa35
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3095c3281e1797c8103e0c229c62aca1aae3444f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625103"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Azure CLI 2.0 で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-このチュートリアルでは、タブ区切り値 (TSV) ファイルを読み取り、コンマ区切り値 (CSV) ファイルに変換するジョブを開発します。 サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるドロップダウン リストを使用してください。
+この記事では、Azure CLI 2.0 コマンド ライン インターフェイスを使用して、Azure Data Lake Analytics のアカウントを作成し、USQL ジョブおよびカタログを送信する方法について説明します。 このジョブでは、タブ区切り値 (TSV) ファイルを読み取り、コンマ区切り値 (CSV) ファイルに変換します。 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+インストールを開始するには、次の項目が必要です。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure CLI 2.0**。 「 [Azure CLI のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)」をご覧ください。

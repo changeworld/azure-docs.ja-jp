@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595201"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -188,7 +190,7 @@ ILB をデプロイするには、Azure ポータルで [ロード バランサ�
 [ILB 設定] パネルで [プローブ] を選択します。
 
 1. [追加] をクリックします。
-2. プローブの詳細を入力します。a.  **[名前]**: プローブ名。b.  **[プロトコル]**: TCP。c.  **[ポート]**: 443 (HTTPS)。d.  **[間隔]**: 5 (既定値) - この値は、ILB がバックエンド プール内の仮想マシンをプローブする間隔です。e.  **[Unhealthy threshold limit (異常しきい値)]**: 2 (既定値) - これはプローブ エラーの連続回数のしきい値です。この値を超えると、ILB はバックエンド プール内の仮想マシンが応答していないと判断し、トラフィックの送信を停止します。
+2. プローブの詳細を入力します。a.  **[名前]**: プローブ名。b.  **[プロトコル]**: TCP。c.  **[ポート]**: 443 (HTTPS)。d.  **[間隔]**: 5 (既定値) - この値は、ILB がバックエンド プール内の仮想マシンをプローブする間隔です。e.  **[Unhealthy threshold limit]\(異常しきい値\)**: 2 (既定値) - これはプローブ エラーの連続回数のしきい値です。この値を超えると、ILB はバックエンド プール内の仮想マシンが応答していないと判断し、トラフィックの送信を停止します。
 
 ![Configure ILB probe](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 
@@ -210,7 +212,7 @@ DNS サーバーに移動して、ILB の CNAME を作成します。 CNAME に�
 ### <a name="7-configuring-the-web-application-proxy-server"></a>7.Web アプリケーション プロキシ サーバーを構成する
 **7.1.AD FS サーバーに到達するための構成を Web アプリケーション プロキシ サーバーに対して行う**
 
-Web アプリケーション プロキシ サーバーが ILB の内側にある AD FS サーバーに到達するためには、%systemroot%\system32\drivers\etc\hosts にその ILB のレコードを作成する必要があります。 識別名 (DN) は、フェデレーション サービスの名前 (例: fs.contoso.com) となることに注意してください。また IP には、ILB の IP アドレスを入力する必要があります (この例では 10.3.0.8)。
+Web アプリケーション プロキシ サーバーが ILB の内側にある AD FS サーバーに到達するためには、%systemroot%\system32\drivers\etc\hosts にその ILB のレコードを作成する必要があります。 識別名 (DN) は、フェデレーション サービスの名前 (例: fs.contoso.com) となることに注意してください。 また IP には、ILB の IP アドレスを入力する必要があります (この例では 10.3.0.8)。
 
 **7.2.Web アプリケーション プロキシ ロールをインストールする**
 
@@ -238,7 +240,7 @@ Azure ポータルで [ロード バランサー] を選択し、[追加] をク
 
 1. 対象のパブリック IP アドレスをクリックします。 パブリック IP とその設定に必要なパネルが開きます。
 2. [構成] をクリックします。
-3. DNS ラベルを指定します。 これが、任意の場所からアクセスできるパブリック DNS ラベルになります (例: contosofs.westus.cloudapp.azure.com)。外部 DNS には、この外部ロード バランサーの DNS ラベル (contosofs.westus.cloudapp.azure.com) に解決されるフェデレーション サービスのエントリ (例: fs.contoso.com) を追加してください。
+3. DNS ラベルを指定します。 これが、任意の場所からアクセスできるパブリック DNS ラベルになります (例: contosofs.westus.cloudapp.azure.com)。 外部 DNS には、この外部ロード バランサーの DNS ラベル (contosofs.westus.cloudapp.azure.com) に解決されるフェデレーション サービスのエントリ (例: fs.contoso.com) を追加してください。
 
 ![Configure internet facing load balancer](./media/active-directory-aadconnect-azure-adfs/elbdeployment3.png) 
 
@@ -267,7 +269,7 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 
 内部サブネットを効率的に保護するには、一般に次の規則が (以下に記載された順序で) 必要となります。
 
-| ルール | [説明] | Flow |
+| ルール | 説明 | Flow |
 |:--- |:--- |:---:|
 | AllowHTTPSFromDMZ |DMZ からの HTTPS 通信を許可します。 |受信 |
 | DenyInternetOutbound |インターネットへのアクセスを禁止します。 |送信 |
@@ -281,7 +283,7 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 
 **9.2.DMZ サブネットを保護する**
 
-| ルール | [説明] | フロー |
+| ルール | 説明 | フロー |
 |:--- |:--- |:---:|
 | AllowHTTPSFromInternet |インターネットから DMZ への HTTPS を許可します。 |受信 |
 | DenyInternetOutbound |インターネットへの通信は HTTPS を除きすべてブロックします。 |送信 |
@@ -319,9 +321,9 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 このテンプレートのデプロイ中、既存の仮想ネットワークを使用するか、新しい VNET を作成できます。 デプロイをカスタマイズするために使用できる各種のパラメーターについて、デプロイ プロセスにおけるパラメーターの使用方法の説明と共に次の一覧に記載します。 
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |:--- |:--- |
-| 場所 |リソースのデプロイ先となるリージョン (例: 米国東部) |
+| リージョン |リソースのデプロイ先となるリージョン (例: 米国東部) |
 | StorageAccountType |作成するストレージ アカウントの種類 |
 | VirtualNetworkUsage |新しい仮想ネットワークを作成するか既存のものを使用するかを示します |
 | VirtualNetworkName |作成する仮想ネットワークの名前 (新しい仮想ネットワークを使用する場合と既存のものを使用する場合の両方で必須) |

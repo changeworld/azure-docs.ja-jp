@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 12/06/2017
+ms.date: 04/13/2018
 ms.author: adegeo
 ms.custom: ''
-ms.openlocfilehash: be7464cab4f9a1014fa129314c332bc41b2f499c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2a58a9d534116dbdd486f1319f3d87e1d2ba24ef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212944"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642769"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric クラスターで実行されているアプリケーションを列挙する
 

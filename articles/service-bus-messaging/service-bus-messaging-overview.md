@@ -1,59 +1,131 @@
 ---
-title: "Azure Service Bus メッセージングの概要 | Microsoft Docs"
-description: "Service Bus のメッセージングと Azure Relay に関する説明"
+title: Azure Service Bus メッセージングの概要 | Microsoft Docs
+description: Service Bus のメッセージングに関する説明
 services: service-bus-messaging
-documentationcenter: .net
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
+editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: get-started-article
-ms.date: 12/21/2017
+ms.topic: overview
+ms.date: 05/22/2018
+ms.custom: mvc
 ms.author: sethm
-ms.openlocfilehash: e299ccfe587d37757cd67cb4367f019b21a09b4a
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 0357602e6085b25fc6d11363113ebc962dc4d008
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643092"
 ---
-# <a name="service-bus-messaging-flexible-data-delivery-in-the-cloud"></a>Service Bus メッセージング: クラウドの柔軟なデータ配信
+# <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
-Microsoft Azure Service Bus は信頼性の高い情報配信サービスです。 このサービスの目的は、通信を容易にすることです。 2 名以上の当事者が情報を交換する場合、通信機構が必要になります。 Service Bus はブローカー型またはサード パーティの通信機構です。 これは、現実世界の郵便サービスと似ています。 郵便サービスを利用すると、さまざまな配送保証を付けて手紙や荷物を世界のどこにでも簡単に送ることができます。
+Microsoft Azure Service Bus は、完全なマネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus の最も一般的な用途は、アプリとサービスを相互に分離する場合です。Service Bus は非同期データと状態転送に適した信頼性の高い安全なプラットフォームです。 データは、*メッセージ*を使用してさまざまなアプリとサービス間で転送されます。 メッセージはバイナリ形式であり、JSON、XML、または単なるテキストを含むことができます。 
 
-郵便配達と同様に、Service Bus では、送信者と受信者の両方から情報を柔軟に配信できます。 メッセージング サービスでは、当事者が両方とも同時にオンラインでない場合や、まったく同じ時刻にアクセスできない場合でも、情報が確実に配信されるようにします。 このようにメッセージングは郵便と似ており、仲介型ではない通信は通話 (キャッチホンや発信者番号通知サービスがなかった頃の電話、こうしたサービスは仲介型メッセージングに似ています) に似ています。
+一般的なメッセージング シナリオの例を次にいくつか示します。
 
-メッセージの送信者は、トランザクション、重複の検出、時間ベースの有効期限、バッチ処理などのさまざまな配信機能も要求できます。 再配送、署名要請、住所変更、呼び戻しなどのパターンも郵便に似ています。
+* メッセージング: 販売または購入の注文、仕訳帳、在庫移動などのビジネス データを転送します。
+* アプリの分離: アプリとサービスの信頼性とスケーラビリティを向上します (クライアントとサービスが同時にオンラインである必要はありません)。
+* トピックとサブスクリプション: 公開元とサブスクライバーの間で 1:*n* の関係が可能になります。
+* メッセージ セッション: メッセージの順序付けやメッセージの遅延が必要なワークフローを実装します。
 
-Service Bus は、*Azure Relay* および "*Service Bus メッセージング*" という 2 つの異なるメッセージング パターンをサポートしています。
+## <a name="namespaces"></a>名前空間
 
-## <a name="azure-relay"></a>Azure Relay
+名前空間は、すべてのメッセージング コンポーネントのスコープ コンテナーです。 複数のキューとトピックを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。
 
-Azure Relay の [WCF Relay](../service-bus-relay/relay-what-is-it.md) コンポーネントは、さまざまな種類のトランスポート プロトコルと Web サービス標準をサポートする一元化された (ただし、高度に負荷分散された) サービスです。 サポートされる標準には、SOAP、WS-*、REST などがあります。 [リレー サービス](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)は、さまざまな種類のリレー接続オプションを提供し、可能な場合は直接ピア ツー ピア接続のネゴシエートを支援することもできます。 Service Bus は Windows Communication Foundation (WCF) をパフォーマンスと使いやすさの両方のために使用する .NET 開発者向けに最適化されており、SOAP および REST インターフェイスを介してリレー サービスへのフル アクセスを提供します。 これにより、任意の SOAP または REST プログラミング環境を Service Bus と統合できるようになります。
+## <a name="queues"></a>キュー
 
-リレー サービスは、従来の一方向メッセージング、要求/応答メッセージング、ピアツーピア メッセージングをサポートしています。 また、インターネット範囲のイベント配信もサポートしているので、発行/サブスクライブのシナリオや、双方向ソケット通信も可能になり、ポイント間の効率が向上します。 リレー型メッセージング パターンでは、オンプレミス サービスが送信ポートを介してリレー サービスに接続され、特定のランデブー アドレスに関連付けられた双方向通信用ソケットが作成されます。 その後、クライアントは、ランデブー アドレス宛てのメッセージをリレー サービスに送信することでオンプレミス サービスと通信できます。 メッセージを受けたリレー サービスは、展開済みの双方向ソケットを介してオンプレミス サービスにメッセージを "リレー" します。 クライアントは、オンプレミス サービスと直接接続する必要はありません。また、クライアントはオンプレミス サービスの場所を知っている必要はありません。オンプレミス サービス側でファイアウォールの着信ポートを開く必要はありません。
+メッセージは*キュー*に送受信されます。 受信側アプリがメッセージを受信して処理できるようになるまで、キューにメッセージを格納できます。
 
-オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングはトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。
+![キュー](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-WCF Relay には多数の利点がありますが、メッセージを送受信するには、サーバーとクライアントの両方が同時にオンラインである必要があります。 これは、通常は要求が長く続かない HTTP 型の通信でも、ブラウザーやモバイル アプリケーションなどのごくまれにしか接続しないクライアントでも、最適ではありません。 仲介型メッセージングは分離型通信をサポートしており、独自の利点があります。クライアントとサーバーが必要に応じて接続でき、非同期的に操作を実行することができます。
+キュー内のメッセージは到着順に並べ替えられ、タイムスタンプが付けられます。 メッセージは、受理されると、冗長ストレージに安全に保管されます。 メッセージは*プル* モードで配信され、要求に応じてメッセージが配信されます。
 
-## <a name="brokered-messaging"></a>仲介型メッセージング
+## <a name="topics"></a>トピック
 
-リレー型方式とは異なり、[キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)を使用した Service Bus メッセージングは、非同期、つまり、"一時的に分離されている" と考えることができます。 プロデューサー (送信側) とコンシューマー (受信側) が、同時にオンラインである必要はありません。 このメッセージング インフラストラクチャは、コンシューマーがメッセージを受信する準備ができるまで、メッセージを "ブローカー" (キューなど) に確実に格納します。 これにより、分散型アプリケーションのコンポーネントをメンテナンスやコンポーネント クラッシュの場合でも システム全体に影響を与えずに自動的に切断できます。 さらに、受信側アプリケーションを 1 日の特定の時間にのみオンラインにすることもできます。たとえば、営業時間の終了時にのみ実行すればよい在庫管理システムなどです。
+*トピック*を使用してメッセージを送受信することもできます。 キューはポイント間通信によく使用されますが、トピックは公開/サブスクライブのシナリオで役立ちます。
 
-Service Bus のメッセージング インフラストラクチャの中心的なコンポーネントは、キュー、トピック、およびサブスクリプションです。 主な違いは、トピックでは高度なコンテンツ ベースのルーティングと、複数の受信者への送信を含む配信ロジックに使用できる発行/サブスクライブ機能がサポートされていることです。 これらのコンポーネントにより、一時的な接続解除、パブリッシュ/サブスクライブ、負荷分散などの新しい非同期メッセージング シナリオが実現できます。 これらのメッセージング エンティティの詳細については、「[Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)」を参照してください。
+![トピック](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-ブローカー メッセージング機能は WCF Relay インフラストラクチャと同様、WCF と .NET Framework プログラマに提供され、REST からも提供されます。
+トピックは、複数の独立したサブスクリプションを持つことができます。 トピックのサブスクライバーは、そのトピックに送信された各メッセージのコピーを受信できます。 サブスクリプションは名前付きエンティティであり、永続的に作成されますが、必要に応じて期限切れまたは自動削除にすることができます。
 
+シナリオによっては、トピックに送信されたすべてのメッセージを個々のサブスクリプションに受信させたくない場合があります。 そのような場合は、[ルールとフィルター](topic-filters.md)を使用して、オプションの[アクション](topic-filters.md#actions)をトリガーし、指定されたメッセージをフィルター処理し、メッセージのプロパティを設定または変更する条件を定義することができます。
+
+## <a name="advanced-features"></a>高度な機能
+
+Service Bus には、より複雑なメッセージングの問題を解決できる高度な機能もあります。 以下のセクションでは、その主な機能について説明します。
+
+### <a name="message-sessions"></a>メッセージ セッション
+
+Service Bus の先入れ先出し (FIFO) 処理を保証するには、セッションを使用します。 [メッセージ セッション](message-sessions.md)では、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 
+
+### <a name="auto-forwarding"></a>自動転送
+
+[自動転送](service-bus-auto-forwarding.md)機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合は、Service Bus は、一方のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、もう一方のキューまたはトピック (転送先) に追加します。
+
+### <a name="dead-lettering"></a>配信不能処理
+
+Service Bus は、受信者に配信できないメッセージ、または処理できなかったメッセージを保持するために[配信不能キュー](service-bus-dead-letter-queues.md) (DLQ) をサポートしています。 そのため、DLQ のメッセージを削除し、検査することができます。
+
+### <a name="scheduled-delivery"></a>スケジュールされた配信
+
+メッセージを、[遅延処理](message-sequencing.md#scheduled-messages)されるようにキューまたはトピックに送信できます。たとえば、特定の時刻にシステムによって処理可能になるようにジョブをスケジュール設定できます。
+
+### <a name="message-deferral"></a>メッセージ遅延
+
+キューまたはサブスクリプションのクライアントが処理すべきメッセージを受信したものの、アプリケーション内の特別な状況が原因ですぐに処理を行えない場合、[メッセージを取得するタイミングを遅延させる](message-deferral.md)ことができます。 メッセージは、キューまたはサブスクリプションに留まり、確保されます。
+
+### <a name="batching"></a>バッチ処理
+
+[クライアント側のバッチ処理](service-bus-performance-improvements.md#client-side-batching)により、キューまたはトピックのクライアントはメッセージの送信を一定期間遅らせることができます。 クライアントがこの期間内に追加のメッセージを送信すると、1 つのバッチで複数のメッセージが送信されます。 
+
+### <a name="transactions"></a>トランザクション
+
+[トランザクション](service-bus-transactions.md)により、複数の操作が 1 つの実行スコープにグループ化されます。 Service Bus は、トランザクションのスコープ内の単一メッセージング エンティティ (キュー、トピック、サブスクリプション) に対するグループ化操作をサポートしています。
+
+### <a name="filtering-and-actions"></a>フィルター処理とアクション
+
+サブスクライバーは、トピックから受信するメッセージを定義できます。 これらのメッセージは、1 つ以上の[名前付きのサブスクリプション ルール](topic-filters.md)の形式で指定されます。 サブスクリプションは、対応するルールの条件ごとに、対応する各ルールに異なる注釈を付けることができる、メッセージのコピーを作成します。
+
+### <a name="auto-delete-on-idle"></a>アイドル状態時の自動削除
+
+[アイドル状態時の自動削除](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)機能を使用すると、アイドル間隔を指定できます。この間隔が経過すると、キューは自動的に削除されます。 最小時間は、5 分です。
+
+### <a name="duplicate-detection"></a>重複検出
+
+クライアントが送信操作の結果について何か疑問を持つようなエラーが発生した場合、[重複メッセージの検出](duplicate-detection.md)機能は、送信側が同じメッセージを再送信することを可能にすることで、このような状況を解決し、重複メッセージはキューまたはトピックで削除されます。
+
+### <a name="sas-rbac-and-msi"></a>SAS、RBAC、MSI
+
+Service Bus は、[Shared Access Signatures](service-bus-sas.md) (SAS)、[ロールベースのアクセス制御](service-bus-role-based-access-control.md) (RBAC)、[マネージド サービス ID](service-bus-managed-service-identity.md) (MSI) などのセキュリティ プロトコルをサポートしています。
+
+### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
+
+Azure リージョンまたはデータセンターでダウンタイムが発生すると、[geo ディザスター リカバリー](service-bus-geo-dr.md)により、異なるリージョンまたはデータ センターでデータ処理を継続できます。
+
+### <a name="security"></a>セキュリティ
+
+Service Bus は、標準の [AMQP 1.0](service-bus-amqp-overview.md) および [HTTP/REST](/rest/api/servicebus/) プロトコルをサポートしています。
+
+## <a name="client-libraries"></a>クライアント ライブラリ
+
+Service Bus は、[.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master)、[Java](https://github.com/Azure/azure-service-bus-java/tree/master)、[JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client) のクライアント ライブラリをサポートしています。
+
+## <a name="integration"></a>統合
+
+Service Bus は、以下の Azure サービスと完全に統合されています。
+
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [関数](https://azure.microsoft.com/services/functions/) 
+- [Dynamics 365](https://dynamics.microsoft.com)
+- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+ 
 ## <a name="next-steps"></a>次の手順
 
-Service Bus メッセージングの詳細については、次のトピックをご覧ください。
+Service Bus メッセージングの基本的な使い方については、以下の記事を参照してください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
-* [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-
+* [Azure メッセージング サービスの比較](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* Azure Service Bus の [Standard レベルと Premium レベル](https://azure.microsoft.com/pricing/details/service-bus/)とその価格の詳細
+* [Azure Service Bus Premium レベルのパフォーマンスと待機時間](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
+* [.NET](service-bus-quickstart-powershell.md)、[Java](service-bus-quickstart-powershell.md)、または[JMS](service-bus-quickstart-powershell.md) のクイック スタートを試す

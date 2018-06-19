@@ -1,19 +1,20 @@
 ---
-title: "Azure 仮想マシンの大規模なバックアップ | Microsoft Docs"
-description: "同時に複数の仮想マシンを Azure にバックアップする"
+title: Azure 仮想マシンの大規模なバックアップ
+description: 同時に複数の仮想マシンを Azure にバックアップする
 services: backup
-keywords: "仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー"
+keywords: 仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー
 author: markgalioto
 ms.author: markgal
 ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607466"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -33,7 +34,7 @@ Azure でデータをバックアップする場合は、Recovery Services コ�
 
 Recovery Services コンテナーには、バックアップ データと、保護される仮想マシンに適用されるバックアップ ポリシーが含まれます。 仮想マシンのバックアップはローカルな処理です。 ある場所から別の場所にある Recovery Services コンテナーに仮想マシンをバックアップすることはできません。 そのため、バックアップする仮想マシンがある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
 
-1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に*「Recovery Services」*と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
+1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に *「Recovery Services」* と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
 
     ![[Recovery Services コンテナー] メニューを開く](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
 

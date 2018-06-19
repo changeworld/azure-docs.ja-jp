@@ -10,31 +10,28 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: eefe59da69eb60f2ac9e266389fa7f68e6139215
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0216a95a5209f5545b34e446904b3215950c6fbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362208"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638111"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>チュートリアル: API を使用してビデオのアップロード、エンコード、ストリーム配信を行う
 
-このチュートリアルでは、Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法を示します。 さまざまなブラウザーおよびデバイスで再生できるように、Apple の HLS、MPEG DASH、または CMAF 形式でコンテンツをストリーム配信する必要があります。 ビデオは、ストリーム配信する前に、適切にエンコードしてパッケージ化する必要があります。
-
-このチュートリアルでは、ビデオをアップロードする手順を示しますが、HTTPS URL を使用して Media Services アカウントがアクセスできるようにするコンテンツをエンコードすることもできます。
+Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。 このチュートリアルでは、ローカルのビデオ ファイルをアップロードし、アップロードされたファイルをエンコードします。 HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードすることもできます。 詳しくは、「[HTTP URL からジョブの入力を作成する」](job-input-from-http-how-to.md)をご覧ください。
 
 ![ビデオを再生する](./media/stream-files-tutorial-with-api/final-video.png)
 
 このチュートリアルでは、次の操作方法について説明します。    
 
 > [!div class="checklist"]
-> * Azure Cloud Shell を起動する
 > * Media Services アカウントを作成する
 > * Media Services API にアクセスする
 > * サンプル アプリの構成
-> * コードを詳しく調べる
+> * アップロード、エンコード、およびストリーム出力するコードを調べる
 > * アプリの実行
 > * ストリーミング URL をテストする
 > * リソースのクリーンアップ
@@ -53,19 +50,31 @@ Visual Studio がインストールされていない場合は、[Visual Studio 
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+サンプルは、[UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) フォルダーにあります。
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-code"></a>コードを確認する
+## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>アップロード、エンコード、およびストリーム出力するコードを調べる
 
 このセクションでは、*UploadEncodeAndStreamFiles* プロジェクトの [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) ファイルで定義されている関数を調べます。
 
+サンプルは、次のアクションを実行します。
+
+1. 新しい変換を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
+2. エンコード ジョブの出力として使用される出力アセットを作成します。
+3. 入力アセットを作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 アセットは、ジョブの入力として使用されます。 
+4. 作成された入力と出力を使用してエンコード ジョブを送信します。
+5. ジョブの状態を確認します。
+6. StreamingLocator を作成します。
+7. ストリーミング URL を作成します。
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
-.NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 まず、トークンを取得し、返されたトークンから **ClientCredential** オブジェクトを作成する必要があります。 記事の先頭で複製したコードでは、**ArmClientCredential** オブジェクトを使用してトークンを取得しています。  
+.NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 この記事の最初に複製したコード内で、ローカル構成ファイルで指定された資格情報に基づいて、**GetCredentialsAsync** 関数が ServiceClientCredentials オブジェクトを作成します。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
@@ -96,7 +105,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 新しい [Transform](https://docs.microsoft.com/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、下記のコードで示すように **TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この記事で説明されているサンプルでは、**AdaptiveStreaming** という名前の組み込みプリセットを使っています。 プリセットは、入力ビデオを入力の解像度とビットレートに基づいて自動生成されるビットレート ラダー (ビットレートと解像度のペア) にエンコードし、ビットレートと解像度の各ペアに対応する、H.264 ビデオと AAC オーディオを含む ISO MP4 ファイルを生成します。 このプリセットについては、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページをご覧ください。
 
-組み込み EncoderNamedPreset またはカスタム プリセットを使用できます。 
+組み込み EncoderNamedPreset またはカスタム プリセットを使用できます。 詳しくは、[エンコーダー プリセットをカスタマイズする方法](customize-encoder-presets-how-to.md)に関する記事をご覧ください。
 
 [Transform](https://docs.microsoft.com/rest/api/media/transforms) を作成するときは、次のコードに示すように、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。  Media Services v3 では、エンティティが存在しない場合 (大文字と小文字の区別がない名前のチェック)、エンティティに対する **Get** メソッドは **null** を返します。
 
@@ -112,7 +121,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-次のコード例では、[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 潜在的な待機時間により、ポーリングは運用アプリケーション用の推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。
+ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 次のコード例では、[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 潜在的な待機時間により、ポーリングは運用アプリケーション用の推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。
 
 Event Grid は、高可用性、一貫したパフォーマンス、および動的スケーリングを目的に設計されています。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 単純な HTTP ベースのリアクティブ イベント ハンドリングでは、インテリジェントなイベント フィルタリングやイベント ルーティングを使用して、効率的なソリューションを構築できます。  [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
 
@@ -126,7 +135,7 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 **StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアなコンテンツ、つまり暗号化されていないコンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー **PredefinedStreamingPolicy.ClearStreamingOnly** を使用できます。
+[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアなコンテンツ (暗号化されていないコンテンツ) をストリーム配信するので、定義済みのクリア ストリーミング ポリシー **PredefinedStreamingPolicy.ClearStreamingOnly** が使用されます。
 
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。

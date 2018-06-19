@@ -1,35 +1,35 @@
 ---
-title: Azure Stack Storage の開発ツールの概要
-description: Azure Stack Storage の開発ツールの使用方法の概要
+title: Azure Stack ストレージの開発ツールの概要 | Microsoft Docs
+description: Azure Stack ストレージの開発ツールの使用方法の概要
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198937"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604479"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack Storage の開発ツールの概要
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage など一連のストレージ サービスがあります。
 
-この記事は、Azure Stack Storage の開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure Storage のチュートリアルでご覧いただけます。
+この記事は、Azure Stack ストレージの開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure ストレージのチュートリアルでご覧いただけます。
 
->[!NOTE]
->Azure Stack Storage と Azure Storage には、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳細については、「[Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)」を参照してください。
+> [!NOTE]  
+> Azure Stack ストレージと Azure ストレージには、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳しくは、「[Azure Stack ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
 
-Azure Stack Storage でサポートされる REST API のバージョンは、1802 update 以降のバージョンでは 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05、それより前のバージョンでは 2015-04-05 となります。 Azure Stack のエンドポイントは、最新バージョンの Azure Storage REST API と完全に対応しているわけではありません。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
+Azure Stack ストレージでサポートされる REST API のバージョンは、1802 update 以降のバージョンでは 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05、それより前のバージョンでは 2015-04-05 となります。 Azure Stack のエンドポイントは、最新バージョンの Azure ストレージ REST API と完全に対応しているわけではありません。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
 
 ### <a name="1802-update-or-newer-versions"></a>1802 update 以降のバージョン
 
@@ -210,4 +210,4 @@ Azure Stack に、次の Azure Table Storage のチュートリアルを応用�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
+* [Microsoft Azure ストレージの概要](../../storage/common/storage-introduction.md)

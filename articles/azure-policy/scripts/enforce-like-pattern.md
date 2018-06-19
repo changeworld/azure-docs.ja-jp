@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 11/13/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: d161e262826150085a75052ad6e268dbc636d97a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 33f67cc96395d1e481618e75fccb535c92d2fe75
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601770"
 ---
 # <a name="enforce-like-pattern-for-naming-conventions"></a>名前付け規則の類似パターンを強制する
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-- その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。
+- 他の例については、「[Azure Policy のサンプル](../json-samples.md)」をご確認ください。

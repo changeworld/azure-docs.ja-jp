@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7d7fcaded1f088961fb139b1fba6b1944b383435
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616513"
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Azure Data Factory の V1 と V2 の比較
 この記事では、Azure Data Factory の V2 を V1 と比較します。 V1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 V2 の概要については、[Data Factory (V2 - プレビュー) の概要](introduction.md)に関するページを参照してください。
@@ -72,7 +73,7 @@ ETL パターンの主要な使用例は、"差分読み込み" です。つま�
 ### <a name="other-control-flow-activities"></a>その他の制御フロー アクティビティ
 Data Factory V2 でサポートされているその他の制御フロー アクティビティをいくつか次に示します。 
 
-制御アクティビティ | [説明]
+制御アクティビティ | 説明
 ---------------- | -----------
 [ForEach アクティビティ](control-flow-for-each-activity.md) | パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
 [Web アクティビティ](control-flow-web-activity.md) | Data Factory パイプラインからカスタム REST エンドポイントを呼び出します。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
@@ -139,7 +140,7 @@ V2 で更新された SDK は、V1 クライアントと下位互換性があり
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 
-Data Factory バージョン 1 の共同作成者ロールを使って、Data Factory v2 リソースの作成と管理を行うことができます。
+Data Factory バージョン 1 の共同作成者ロールを使って、Data Factory v2 リソースの作成と管理を行うことができます。 詳しくは、「[Data Factory Contributor](../role-based-access-control/built-in-roles.md#data-factory-contributor)」をご覧ください。
 
 ## <a name="monitoring-experience"></a>監視のエクスペリエンス
 V2 では、[Azure Monitor](monitor-using-azure-monitor.md) を使用してデータ ファクトリを監視することもできます。 新しい PowerShell コマンドレットでは、[統合ランタイム](monitor-integration-runtime.md)の監視がサポートされています。 V1 と V2 のどちらでも、Azure Portal から起動できる監視アプリケーションによる視覚的な監視がサポートされています。

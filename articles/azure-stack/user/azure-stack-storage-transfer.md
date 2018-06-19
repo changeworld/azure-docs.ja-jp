@@ -1,31 +1,30 @@
 ---
-title: Azure Stack Storage のツール
+title: Azure Stack ストレージ用のツール | Microsoft Docs
 description: Azure Stack Storage のデータ転送ツールについて説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/25/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a148f8089dd104933e6ba95f573182e0c1a32ae5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3d9bd187a70e8b8292e9c47497c2c6b13764045d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257956"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604728"
 ---
-# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack Storage のデータ転送ツールの使用
+# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack ストレージのデータ転送ツールの使用
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack Storage のデータを管理または移動する場合は、Azure Storage のツールのセットを使用ですることができます。 この記事では、使用可能なツールの概要について説明します。
+Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack ストレージのデータを管理または移動する場合は、Azure ストレージ ツールのセットを使用することができます。 この記事では、使用可能なツールの概要について説明します。
 
 お客様の要件によって、次のツールのうちどれが最適であるかが決まります。
 
@@ -41,11 +40,11 @@ Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、お
 
     オープン ソースでクロスプラットフォームの Azure および Azure Stack Platform で使用できるコマンド群が提供されます。
 
-* [Microsoft Storage Explorer](#microsoft-azure-storage-explorer)
+* [Microsoft ストレージ エクスプローラー](#microsoft-azure-storage-explorer)
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
-Azure と Azure Stack の間のストレージ サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack Storage と Azure Storage の間の比較については、「[Azure Stack Storage : 違いと考慮事項](azure-stack-acs-differences.md)」を参照してください。
+Azure と Azure Stack の間のストレージ サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack ストレージと Azure ストレージの間の比較については、「[Azure Stack ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -103,9 +102,9 @@ azcopy \
     --dest-key <key>
 ````
 
-### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure と Azure Stack Storage 間でデータを移動します。
+### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure と Azure Stack ストレージ間でデータを移動します
 
-Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** または **--sync-copy** オプションを使用して転送を指定する必要があります。
+Azure ストレージと Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** または **--sync-copy** オプションを使用して転送を指定する必要があります。
 
 **Windows**
 
@@ -128,7 +127,7 @@ azcopy \
 ### <a name="azcopy-known-issues"></a>Azcopy の既知の問題
 
  - ファイル ストレージは、Azure Stack で使用できないために、ファイル ストアに関する AzCopy 操作は使用できません。
- - Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** オプションを使用して転送を指定し、データをコピーすることができます。
+ - Azure ストレージと Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** オプションを使用して転送を指定し、データをコピーすることができます。
  - Linux バージョンの Azcopy は、1802 更新プログラム以降のバージョンのみをサポートしています。 Table service はサポートしていません。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -151,7 +150,7 @@ Azure Stack を使用するには、Azure Stack と互換性のある Azure Powe
    > [!NOTE]
    > このスクリプトは、**AzureStack_Tools** のルート ディレクトリで実行する必要があります。
 
-```PowerShell
+```PowerShell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environemnt name
@@ -214,7 +213,7 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-```
+````
 
 ### <a name="powershell-known-issues"></a>PowerShell の既知の問題
 
@@ -223,12 +222,12 @@ Azure Stack の現在の互換性のある Azure PowerShell モジュールの�
 * バージョン 1.3.0 では `Get-AzureRmStorageAccountKey` の戻り値の形式に `Key1` と `Key2` という 2 つのプロパティがありますが、Azure 最新バージョンは、すべてのアカウント キーが含まれる配列を返します。
 
    ```
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.4, and later versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.3.2, and previous versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Key1
@@ -243,11 +242,11 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 Azure CLI は、コマンド ラインから Azure リソースを管理したり、Azure Resource Manager を操作対象とする自動化スクリプトを作成したりするために最適化されています。 豊富なデータ アクセスを含む、Azure Stack Portal にあるものと同じ機能の多くを使用できます。
 
-Azure Stack には、Azure CLI バージョン 2.0 が必要です。 Azure Stack と Azure CLI のインストールと構成の詳細については、「[Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)」(Azure Stack CLI のインストールと構成) を参照してください。 Azure CLI 2.0 を使用して Azure Stack Storage アカウント内のリソースを操作するいくつかのタスクを実行する方法の詳細については、「[Azure ストレージでの Azure CLI2.0 の使用](../../storage/storage-azure-cli.md)」を参照してください。
+Azure Stack には、Azure CLI バージョン 2.0 が必要です。 Azure Stack と Azure CLI のインストールと構成の詳細については、「[Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)」(Azure Stack CLI のインストールと構成) を参照してください。 Azure CLI 2.0 を使用して Azure Stack ストレージ アカウント内のリソースを操作するいくつかのタスクを実行する方法の詳細については、「[Azure ストレージでの Azure CLI2.0 の使用](../../storage/storage-azure-cli.md)」を参照してください
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure Stack 用の Azure CLI サンプル スクリプト
 
-CLI のインストールと構成が完了したら、次の手順を試し、Azure Stack Storage リソースと対話する小さなシェル サンプル スクリプトを操作することができます。 スクリプトを実行すると、次のアクションが行われます。
+CLI のインストールと構成が完了したら、次の手順を試し、Azure Stack ストレージ リソースと対話する小さなシェル サンプル スクリプトを操作することができます。 スクリプトを実行すると、次のアクションが行われます。
 
 * ストレージ アカウントに新しいコンテナーを作成する。
 * 既存のファイルを (BLOB として) コンテナーにアップロードする。
@@ -264,7 +263,7 @@ CLI のインストールと構成が完了したら、次の手順を試し、A
 
 ```bash
 #!/bin/bash
-# A simple Azure Stack Storage example script
+# A simple Azure Stack storage example script
 
 export AZURESTACK_RESOURCE_GROUP=<resource_group_name>
 export AZURESTACK_RG_LOCATION="local"
@@ -293,17 +292,18 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-```
+````
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
-Microsoft Azure Storage Explorer は、Microsoft のスタンドアロン アプリです。 これを使用すると、Windows、macOS、Linux のコンピューターで Azure Storage と Azure Stack Storage 両方のデータを簡単に操作できます。 簡単に、Azure Stack Storage データを簡単に管理する方法が必要な場合は、Microsoft Azure Storage Explorer の使用を検討してください。
+Microsoft Azure ストレージ エクスプローラーは、Microsoft のスタンドアロン アプリです。 これを使用すると、Windows、macOS、Linux のコンピューターで Azure ストレージと Azure Stack ストレージ両方のデータを簡単に操作できます。 Azure Stack ストレージ データを簡単に管理する方法が必要な場合は、Microsoft Azure ストレージ エクスプローラーの使用を検討してください。
 
-* Azure Stack を操作する Azure Storage Explorer の構成の詳細については、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)」を参照してください。
-* Microsoft Azure Storage Explorer の詳細については、「[Microsoft Azure Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
+* Azure Stack を操作する Azure ストレージ エクスプローラーの構成について詳しくは、「[Azure Stack サブスクリプションに Microsoft Azure ストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)」をご覧ください。
+* Microsoft Azure ストレージ エクスプローラーについて詳しくは、「[Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)」をご覧ください
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)
+
+* [Azure Stack サブスクリプションに Microsoft Azure ストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)
 * [Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
-* [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
+* [Microsoft Azure ストレージの概要](../../storage/common/storage-introduction.md)

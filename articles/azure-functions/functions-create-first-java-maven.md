@@ -11,14 +11,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/02/2018
+ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f9b8046e0fb730f55dbdacf567869ae88df2a524
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600597"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
@@ -43,23 +44,9 @@ Java で関数アプリを開発するには、以下のものがインストー
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
-[Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
+Azure Functions Core Tools では、ターミナルまたはコマンド プロンプトから Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
 
-インストールするには、Azure Functions Core Tools プロジェクトの「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスし、オペレーティング システムに固有の手順を参照してください。
-
-次の要件のインストール後、[Node.js](https://nodejs.org/) に付属する [npm](https://www.npmjs.com/) を使って手動でインストールすることもできます。
-
--  [.NET Core](https://www.microsoft.com/net/core) の最新バージョン。
--  [Node.js](https://nodejs.org/download/) バージョン 8.6 以降。
-
-npm ベースのインストールを続行するには、次のコマンドを実行します。
-
-```
-npm install -g azure-functions-core-tools@core
-```
-
-> [!NOTE]
-> Azure Functions Core Tools バージョン 2.0 のインストールで問題がある場合は、「[バージョン 2.x ランタイム](/azure/azure-functions/functions-run-local#version-2x-runtime)」をご覧ください。
+続行する前に、[バージョン 2 の Core Tools](functions-run-local.md#v2) をローカル コンピューターにインストールします。
 
 ## <a name="generate-a-new-functions-project"></a>新しい Functions プロジェクトを生成する
 

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642701"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターをスケールする
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-これで接続されたので、コマンドを使用してクラスター内の各ノードの状態を取得できます。 PowerShell では `Get-ServiceFabricClusterHealth` コマンドを使用し、**sfctl** では `sfctl cluster select` コマンドを使用します。
+これで接続されたので、コマンドを使用してクラスター内の各ノードの状態を取得できます。 **PowerShell** では `Get-ServiceFabricClusterHealth` コマンドを使用し、**sfctl** では `sfctl cluster select` コマンドを使用します。
 
 ## <a name="scale-out"></a>スケールアウト
 
@@ -131,15 +132,15 @@ Service Fabric クラスターは、このノードが削除されることを�
 
 1. ノードを無効にして、ノードがデータのレプリケートとならないようにします。  
 PowerShell: `Disable-ServiceFabricNode`  
-sfcli: `sfctl node disable`
+sfctl: `sfctl node disable`
 
 2. ノードを停止して、Service Fabric ランタイムが完全にシャット ダウンされ、アプリが中断要求を取得できるようにします。  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfcli: `sfctl node transition --node-transition-type Stop`
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. クラスターからノードを削除します。  
 PowerShell: `Remove-ServiceFabricNodeState`  
-sfcli: `sfctl node remove-state`
+sfctl: `sfctl node remove-state`
 
 これら 3 つの手順がノードに適用されたら、ノードをスケール セットから削除できます。 [Bronze][durability] 以外の耐久性レベルを利用している場合には、スケール セット インスタンスが削除されるときに、これらの手順が自動的に行われます。
 

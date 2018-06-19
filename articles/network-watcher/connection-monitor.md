@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639029"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
@@ -52,9 +53,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |Name|myVm1|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |[サブスクリプション]| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |場所| **[米国東部]** を選択します。|
+    |リージョン| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で **[拡張機能]** を選択します。 次の図に示すように、**[拡張機能の追加]** を選択して、**[Network Watcher Agent for Windows]** を選択します。
@@ -122,7 +123,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
 ## <a name="view-a-problem"></a>問題を表示する
 
-既定で、Azure は、同じ仮想ネットワーク内の VM 間のすべてのポートで通信を許可します。 時間が経過し、組織のだれかが Azure の既定の規則を上書きし、誤って通信エラーを引き起こすことがあります。 次の手順を実行して、通信の問題を作成してから、再度接続モニターを表示します。
+既定で、Azure は、同じ仮想ネットワーク内の VM 間のすべてのポートで通信を許可します。 時間が経過し、組織のだれかが Azure の既定の規則をオーバーライドし、誤って通信エラーを引き起こすことがあります。 次の手順を実行して、通信の問題を作成してから、再度接続モニターを表示します。
 
 1. ポータル上部の [検索] ボックスに「*myResourceGroup*」と入力します。 検索結果に **myResourceGroup** リソース グループが表示されたら、それを選択します。
 2. **myVm2-ns** ネットワーク セキュリティ グループを選択します。
@@ -141,13 +142,13 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
 5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]**、**[接続モニター]** の順に選択し、**[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
 
-    ![Monitor details fault](./media/connection-monitor/vm-monitor-fault .png)
+    ![モニター詳細のエラー](./media/connection-monitor/vm-monitor-fault.png)
 
     **myvm2529** ネットワーク インターフェイスの状態列に赤の感嘆符アイコンがあることが確認できます。
 
 6. 状態が変更された理由については、前の図の 10.0.0.5 を選択します。 接続モニターは、通信エラーの理由が　*UserRule_DenySshInbound ネットワーク セキュリティ グループ規則によってトラフィックがブロックされた* ためであることを通知します。
 
-    手順 4. で作成したセキュリティの規則をだれかが実装したことを知らなかった場合、接続モニターからこの規則が通信の問題を引き起こしていることがわかります。 その後、規則を変更、上書き、または削除して、VM 間の通信を復元できます。
+    手順 4. で作成したセキュリティの規則をだれかが実装したことを知らなかった場合、接続モニターからこの規則が通信の問題を引き起こしていることがわかります。 その後、規則を変更、オーバーライド、または削除して、VM 間の通信を復元できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

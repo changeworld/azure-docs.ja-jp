@@ -1,23 +1,25 @@
 ---
-title: "Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs"
-description: "Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。"
+title: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs
+description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
-author: MarkusVi
-manager: femila
+author: rolyon
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
-ms.author: markvi
+ms.component: compliance-reports
+ms.date: 05/23/2018
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ed6201e9edcef39b14b948b6b2f6e0b5da01ec60
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588711"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -29,12 +31,20 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 お客様のユーザーのアカウントに対する未承認のアクセスを示す可能性がある異常なアクティビティが検出された場合は、対処できるように通知します。 通知があっても、Microsoft 自体のシステムがなんらかの方法で侵害されたとは限りません。
  
 
-## <a name="azure-active-directory-report-access"></a>Azure Active Directory のレポートのアクセス
+## <a name="access-the-users-flagged-for-risk-report"></a>リスクのフラグ付きユーザー レポートへのアクセス
 
-リスクのフラグ付きユーザーは、オンラインの Azure Active Directory レポートを通じて確認できます。 Azure のサブスクライバーでない場合は、[http://aka.ms/AccessAAD](http://aka.ms/AccessAAD) で、サブスクリプション プロセスを無料で行うことができます。  
-完了したら、Office 365 の資格情報を使用して Azure 管理センターにアクセスすることができます。 Basic サブスクリプション レベルでは、提供される詳細情報の量が限定されていることに注意してください。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。 詳細については、「[Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート](active-directory-reporting-security-user-at-risk.md)」を参照してください。
+リスクのフラグ付きユーザーは、Azure Active Directory (AD) の関連[レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)を通じて確認できます。 Azure AD のサブスクライバーでない場合は、[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) で、1 回限りのサブスクリプション プロセスを無料で行うことができます。 このレポートで、次のようなさまざまなアクションを実行できます。
 
-Azure AD へのアクセスをアクティブにすると、[Azure AD ポータル](https://portal.azure.com)にリダイレクトされます。 レポートに直接移動するには、[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) という URL に移動します。
+- 一時パスワードを生成する
+- ユーザーに次回のサインインで自分のパスワードを安全にリセットすることを要求する
+- 修復アクションを行わずにユーザーのリスクを無視する。
+
+詳しくは、「[Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート](active-directory-reporting-security-user-at-risk.md)」をご覧ください。
+
+### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 のお客様の Azure AD サブスクリプション
+
+完了したら、Office 365 の資格情報を使用して Azure 管理センターにアクセスすることができます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
+
 
 **Office 365 管理センターでリスクのフラグ付きユーザーのレポートにアクセスするには:**
 
@@ -45,7 +55,7 @@ Azure AD へのアクセスをアクティブにすると、[Azure AD ポータ�
 4.  左側のナビゲーション メニューで、**[Azure Active Directory]** をクリックします。 
 5.  ナビゲーション ウィンドウで、**[セキュリティ]** の **[リスクのフラグ付きユーザー]** をクリックします。
 
-ここに表示される情報を確認します。 この一覧に表示されているアカウントのパスワードは、リセットする必要があります。 
+ここに表示される情報を確認します。 一覧に表示されているアカウントのパスワードは、リセットする必要があります。 
 
 ## <a name="remediation-actions"></a>修復アクション
 
@@ -55,7 +65,7 @@ Azure AD へのアクセスをアクティブにすると、[Azure AD ポータ�
 2.  すべてのユーザーの多要素認証を[有効](http://aka.ms/MFAuth)にします。 
 3.  この[修復スクリプト](http://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行することができます。 
 
-    a. パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
 
     b. メールボックスの代理人を削除します。
 
