@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6c84b60018ec03b7f9bc572db9181b8a47a0c595
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 860d28cb6726a86194460977b822197a37ab7279
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365408"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642871"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>クイック スタート: Java Spring Boot アプリケーションを Azure にデプロイする
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
-このクイック スタートでは、Mac または Linux の開発用マシンを使って、Spring Boot アプリケーションを Service Fabric にデプロイする方法について説明します。 このクイックスタートでは、Spring の Web サイトからの [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを使用します。 このクイックスタートでは、使い慣れたコマンド ライン ツールを使用し、Azure Service Fabric アプリケーションとして Spring Boot サンプルをデプロイする方法を説明します。 クイックスタートを完了すると、Spring Boot の Getting Started サンプルが Azure Service Fabric 上で動作します。 
+このクイック スタートでは、使い慣れたコマンドライン ツールを使用し、Spring Web サイトの [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを使用して、開発者の Mac または Linux マシン上に機能的な Spring Boot アプリを Service Fabric に展開する手順について説明します。
 
 ![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -246,7 +246,7 @@ Web フロントエンド サービスをスケーリングするには、以下
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
 
     # Run Bash command to scale instance count for your service
-    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
+    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
 4. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。

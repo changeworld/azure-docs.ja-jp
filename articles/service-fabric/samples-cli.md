@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI のサンプル
-description: Azure Service Fabric CLI のサンプル
+title: Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
+description: Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 services: service-fabric
 documentationcenter: service-fabric
 author: Thraka
@@ -16,23 +16,24 @@ ms.workload: service-fabric
 ms.date: 04/09/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: c7f6ce7cea62bd4bf9baca6119f204fc43cf4d45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e37bbd5e12608c5acbd19d5c57667d9e34c74b3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641851"
 ---
-# <a name="azure-service-fabric-cli-samples"></a>Azure Service Fabric CLI のサンプル
+# <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 
-次の表に、Service Fabric クラスター、アプリケーション、およびサービスを管理する [Service Fabric CLI](service-fabric-cli.md) のサンプル スクリプトへのリンクを示します。
+次の表には、Service Fabric クラスター、アプリ、およびサービスを管理する方法に関するサンプルへのリンクが記載されています。
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
 | | |
 |-|-|
-| **クラスターの作成** ||
-| [セキュリティで保護された Linux クラスターの作成 (Azure)](./scripts/cli-create-cluster.md)| Azure Service Fabric クラスターを作成します。 |
-| **アプリケーションの管理** ||
+| **クラスターの作成** (Azure CLI を使用)||
+| [セキュリティで保護された Linux クラスターの作成](./scripts/cli-create-cluster.md)| Azure Service Fabric クラスターを作成します。 |
+| **アプリの管理** (Service Fabric CLI を使用)||
 | [List applications](./scripts/sfctl-list-applications.md)| クラスターにプロビジョニングされたアプリケーションの一覧を表示します。|
 | [アプリケーションをデプロイする](./scripts/cli-deploy-application.md)| クラスターにアプリケーションをデプロイします。|
 | [アプリケーションの削除](./scripts/cli-remove-application.md)| クラスターからアプリケーションを削除します。|

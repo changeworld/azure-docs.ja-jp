@@ -1,22 +1,21 @@
 ---
 title: シミュレートされた TPM デバイスを Python を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
 description: Azure クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-masebo;bryanla
-ms.date: 04/09/2018
+ms.author: bryanla
+ms.date: 05/21/2018
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 5038a632bc88c7b44f275968779d9d7ca5044d38
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 52b94482e545418c36cfc2bc5c9a5e4ad7d22538
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630743"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -109,7 +108,7 @@ ms.lasthandoff: 04/16/2018
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-1. Python IDE を使用して、**provisioning\_device\_client\_sample.py** という名前の Python スクリプトを編集します。 _GLOBAL\_PROV\_URI_ 変数と _ID\_SCOPE_ 変数を前述の値に変更します。
+1. Python IDE を使用して、**provisioning\_device\_client\_sample.py** という名前の Python スクリプトを編集します。 *GLOBAL\_PROV\_URI* 変数と *ID\_SCOPE* 変数を前述の値に変更します。 また、*SECURITY\_DEVICE\_TYPE* が `ProvisioningSecurityDeviceType.TPM` に設定されていることを確認します
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -151,4 +150,4 @@ ms.lasthandoff: 04/16/2018
 このクイックスタートでは、TPM のシミュレートされたデバイスをコンピューター上に作成し、IoT Hub Device Provisioning Service を使用して IoT ハブにプロビジョニングしました。 プログラミングによって TPM デバイスを登録する方法については、TPM デバイスのプログラミングによる登録のクイックスタートに進みます。 
 
 > [!div class="nextstepaction"]
-> [Azure クイックスタート - Azure IoT Hub Device Provisioning Service への TPM デバイスの登録](quick-enroll-device-tpm-java.md)
+> [Azure クイックスタート - Azure IoT Hub Device Provisioning Service への TPM デバイスの登録](quick-enroll-device-tpm-python.md)

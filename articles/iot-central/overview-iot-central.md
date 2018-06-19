@@ -1,19 +1,20 @@
 ---
 title: Azure IoT Central とは | Microsoft Docs
 description: Azure IoT Central は、カスタム IoT ソリューションの構築と管理に使用できるエンド ツー エンドの SaaS ソリューションです。 この記事では、Azure IoT Central の機能について概要を紹介します。
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: overview
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 41eb9049b45c6835dd866c988af486a4975c4831
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201168"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628778"
 ---
 <!---
 Purpose of an Overview article: 
@@ -109,7 +110,7 @@ Azure IoT Central ソリューションのデバイスは、オペレーター�
 
 これで Azure IoT Central の概要は終了です。推奨される次の手順は以下のとおりです。
 
-- [Azure IoT Central と Azure IoT Suite](overview-iot-options.md) の違いを理解する。
+- [Azure IoT Central と Azure IoT ソリューション アクセラレータ](overview-iot-options.md)の違いを理解する。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
 - 一連のチュートリアルに従って、以下の作業方法を確認する。

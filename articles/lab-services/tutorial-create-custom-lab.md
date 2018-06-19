@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs を使用してカスタム ラボを作成する | Microsoft Docs
-description: このクイック スタートでは、Azure DevTest Labs を使ってカスタム ラボを作成します。
+title: Azure DevTest Labs を使用してラボを作成する | Microsoft Docs
+description: このクイック スタートでは、Azure DevTest Labs を使ってラボを作成します。
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362245"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636989"
 ---
-# <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してカスタム ラボを設定する
-このチュートリアルでは、Azure portal を使ってカスタム ラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
+このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
 
 このチュートリアルでは、次のアクションを実行します。
 
 > [!div class="checklist"]
-> * カスタム ラボを作成する
+> * ラボを作成する
 > * 仮想マシン (VM) をラボに追加する
 > * ユーザーをラボのユーザー ロールに追加する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="create-a-custom-lab"></a>カスタム ラボを作成する
+## <a name="create-a-lab"></a>ラボを作成する
 次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -97,8 +97,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. 同じ手順を繰り返し、自動的に作成された `<your resource group name><random numbers>` という名前の追加リソース グループを削除します。 たとえば、「 `splab3988722144001`」のように入力します。 VM は、ラボが存在するリソース グループではなく、このリソース グループに作成されます。 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、VM を含むカスタム ラボを作成し、ユーザーにラボへのアクセス許可を与えました。 ラボ ユーザーとしてラボにアクセスする方法を学習するには、次のチュートリアルに進んでください。
+このチュートリアルでは、VM を含むラボを作成し、ユーザーにラボへのアクセス許可を与えました。 ラボ ユーザーとしてラボにアクセスする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: カスタム ラボにアクセスする](tutorial-use-custom-lab.md)
+> [チュートリアル: ラボにアクセスする](tutorial-use-custom-lab.md)
 

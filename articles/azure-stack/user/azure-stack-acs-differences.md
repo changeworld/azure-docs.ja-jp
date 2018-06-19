@@ -1,33 +1,33 @@
 ---
-title: 'Azure Stack Storage : 違いと考慮事項'
-description: Azure Stack のデプロイに関する考慮事項と一緒に、Azure Stack Storage と Azure Storage の相違点について説明します。
+title: Azure Stack ストレージの違いと考慮事項 | Microsoft Docs
+description: Azure Stack のデプロイに関する考慮事項と一緒に、Azure Stack ストレージと Azure ストレージの相違点について説明します。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197812"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604462"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage : 違いと考慮事項
+# <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ: 違いと考慮事項
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack Storage は、Microsoft Azure Stack 内のストレージ クラウド サービスのセットです。 Azure Stack Storage では、Azure と整合性のあるセマンティクスによって BLOB、テーブル、キュー、アカウント管理機能が提供されます。
+Azure Stack ストレージは、Microsoft Azure Stack 内のストレージ クラウド サービスのセットです。 Azure Stack ストレージでは、Azure と整合性のあるセマンティクスによって BLOB、テーブル、キュー、アカウント管理機能が提供されます。
 
-この記事では、Azure Stack Storage サービスと Azure Storage サービスとの間で確認されている相違点をまとめています。 Azure Stack をデプロイするときに考慮すべき事柄も取り上げています。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
+この記事では、Azure Stack Storage サービスと Azure Storage サービスとの間で確認されている相違点をまとめています。 Azure Stack をデプロイするときに考慮すべき事柄も取り上げています。 グローバル Azure と Azure Stack との違いの概要については、[主な考慮事項](azure-stack-considerations.md)のトピックをご覧ください。
 
 ## <a name="cheat-sheet-storage-differences"></a>チート シート: ストレージの相違点
 
@@ -35,7 +35,7 @@ Azure Stack Storage は、Microsoft Azure Stack 内のストレージ クラウ�
 | --- | --- | --- |
 |File Storage|クラウド ベースの SMB ファイル共有のサポート|まだサポートされていません
 |Azure Storage Service Encryption for Data at Rest|256 ビット AES 暗号化|BitLocker 128 ビット AES 暗号化
-|ストレージ アカウントの種類|汎用アカウントと Azure Blob ストレージ アカウント|汎用目的のみ。
+|ストレージ アカウントの種類|汎用アカウントと Azure Blob Storage アカウント|汎用目的のみ。
 |レプリケーション オプション|ローカル冗長ストレージ、geo 冗長ストレージ、読み取りアクセス geo 冗長ストレージ、およびゾーン冗長ストレージ|ローカル冗長ストレージ。
 |Premium Storage|完全にサポートされます|プロビジョニング可能ですがパフォーマンス制限や保証がありません。
 |管理ディスク|Premium および標準がサポートされます|まだサポートされていません。
@@ -81,7 +81,7 @@ Azure Storage サービスの Management API:
 
 ## <a name="sdk-versions"></a>SDK バージョン
 
-Azure Stack Storage は、次のクライアント ライブラリをサポートしています。
+Azure Stack ストレージは、次のクライアント ライブラリをサポートしています。
 
 | クライアント ライブラリ | Azure Stack でサポートされるバージョン | リンク                                                                                                                                                                                                                                                                                                                                     | エンドポイントの指定       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|

@@ -4,17 +4,17 @@ description: この記事では、ポリシー定義を作成して、準拠し�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9b1cfd762d6f050994688d1cd6afd91f0e43bfc3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43f069fbd8f4fcc13bbc4d9e75763fa98aec1065
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195779"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601464"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - タグとその値を適用
    - SQL Server バージョン 12.0 が必要
 
-    使用できるすべての組み込みのポリシーの完全な一覧については、「[ポリシー テンプレート](json-samples.md)」をご覧ください。
+    使用できるすべての組み込みのポリシーの完全な一覧については、[ポリシー サンプル](json-samples.md)に関する記事をご覧ください。
 
 7. ポリシー定義の一覧で、"*Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)*" 定義を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
 

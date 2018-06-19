@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: c72f513c7134c556afa5fa5d0b94c17b1142be54
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ed90e50167f7e86c464b1571b91dc27435437e9b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627418"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>チュートリアル: IntelliJ を使用した HDInsight での Spark の Scala Maven アプリケーションの作成
 
@@ -46,6 +47,41 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 * Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 * Java IDE。 この記事では、IntelliJ IDEA 18.1.1 を使用します。 [ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
+
+## <a name="use-intellij-to-create-application"></a>IntelliJ を使用してアプリケーションを作成する
+
+1. IntelliJ IDEA を起動し、プロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。 
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
+
+   b. **[Build tool]\(ビルド ツール\)** ボックスの一覧で、ニーズに応じて次のいずれかを選択します。
+
+      * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合
+      * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合
+
+   ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+
+2. **[次へ]** を選択します。
+
+3. Scala プロジェクト作成ウィザードは Scala プラグインをインストールしたかどうかを自動的に検出します。 **[インストール]** を選択します。
+
+   ![Scala プラグインの確認](./media/apache-spark-create-standalone-application/Scala-Plugin-check-Reminder.PNG) 
+
+4. Scala プラグインをダウンロードするには **[OK]** をクリックします。 手順に従って IntelliJ を再起動します。 
+
+   ![Scala プラグインのインストールのダイアログ ボックス](./media/apache-spark-create-standalone-application/Choose-Scala-Plugin.PNG)
+
+5. **[New Project]\(新しいプロジェクト\)** ウィンドウで、次の操作を行います。  
+
+    ![Spark SDK の選択](./media/apache-spark-create-standalone-application/hdi-new-project.png)
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロジェクト名とプロジェクトの場所を入力します。
+
+   b. **[Project SDK]\(プロジェクトのSDK\)** ボックスの一覧で、Spark 2.x クラスターの場合は **Java 1.8** を選択し、Spark 1.x クラスターの場合は **Java 1.7** を選択します。
+
+   c. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Spark SDK と Scala SDK の適切なバージョンが組み合わされて表示されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、**Spark 2.0.2 (Scala 2.11.8)** を使用します。
+
+6. **[完了]** を選択します。
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA 用の Scala プラグインをインストールする
 Scala プラグインをインストールするには、次の手順を使用します。

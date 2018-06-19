@@ -11,14 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a3bd3e772c6c80bb86af7f6aac6a578e857a3f2d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0ef9ad7705c240e1c06c80ba3b765fa7aad8c70a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356275"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598846"
 ---
-# <a name="restrict-web-traffic-with-a-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して、Web アプリケーション ファイアウォールで Web トラフィックを制限する
+# <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
 [Web アプリケーション ファイアウォール](waf-overview.md) (WAF) で[アプリケーション ゲートウェイ](overview.md)上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。 
 
@@ -31,6 +31,8 @@ ms.locfileid: "34356275"
 > * ストレージ アカウントの作成と診断の構成
 
 ![Web アプリケーション ファイアウォールの例](./media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
+
+好みに応じて、[Azure CLI](tutorial-restrict-web-traffic-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

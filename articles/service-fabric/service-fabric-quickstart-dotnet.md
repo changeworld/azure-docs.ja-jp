@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e6e6464bd8c8174978eded1ed626ca32029b7fbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207208"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643153"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>クイック スタート: Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 

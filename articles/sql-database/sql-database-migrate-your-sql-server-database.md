@@ -7,20 +7,21 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 05/22/2018
 ms.author: carlrab
-ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: be22f2b45262b144c87a0e97f1c78e0167b0e24d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648100"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>DMA を使用して SQL Server データベースを Azure SQL Database に移行する
 
 SQL Server データベースから Azure SQL Database の単一データベースへの移行は、Azure に空の SQL データベースを作成して、[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) を使って Azure にデータベースをインポートする場合と同じくらい簡単です。 追加の移行オプションについては、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure SQL Database マネージ インスタンスに移行するには、[SQL Server からマネージ インスタンスへの移行](sql-database-managed-instance-migrate.md)に関するページを参照してください
+> Azure SQL Database Managed Instance に移行するには、[SQL Server からマネージド インスタンスへの移行](sql-database-managed-instance-migrate.md)に関するページを参照してください
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -58,7 +59,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -67,7 +68,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -89,7 +90,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > [!IMPORTANT]
    > - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
    >
-   > - 現在、Premium レベルでは、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパの各リージョンで、1 TB を超えるストレージを使用できます。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   > - 英国北部、西中央アメリカ、英国南部 2、中国東部、USDoDCentral、ドイツ中部、USDoDEast、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 利用可能なリージョンは今後拡大予定です。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    > 
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
@@ -151,7 +152,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. 左側のメニューで **[+ New]** (新規) をクリックし、**[Assessment]** (評価) を選択して、評価プロジェクトを作成します。 要求された値を入力し、**[作成]** をクリックします。
 
-   | Setting      | 推奨値 | [説明] | 
+   | Setting      | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | プロジェクトの種類 | 移行 | 移行するデータベースを評価するか、または、同じワークフローの一部として移行を評価するかを選択します。 |
    |プロジェクト名|移行のチュートリアル| わかりやすい名前 |
@@ -163,7 +164,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 3.  **[ソースの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | Setting      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | 説明 | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | サーバー名または IP アドレス | サーバー名または IP アドレス |
     | 認証の種類 | 推奨される認証の種類| オプション: Windows 認証、SQL Server 認証、Active Directory 統合認証、Active Directory パスワード認証 |
@@ -177,7 +178,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 6. **[ターゲットの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | Setting      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | 説明 | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | 完全修飾 Azure データベース サーバー名を取得します。 | 前の手順の完全修飾 Azure データベース サーバー名 |
     | 認証の種類 | パブリック | このチュートリアルでは SQL Server 認証が唯一のオプションですが、Azure SQL Database では Active Directory 統合認証および Active Directory パスワード認証もサポートされています。 |
@@ -226,7 +227,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |

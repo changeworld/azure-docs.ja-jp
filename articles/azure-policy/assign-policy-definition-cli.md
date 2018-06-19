@@ -4,16 +4,16 @@ description: PowerShell を使用して Azure Policy の割り当てを作成し
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 27f00f24c1c644e340ff8a2843b56e863136c368
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 813a5a3855132ab4bd5dd0ff3eb3a0c83696b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194810"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600444"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
@@ -34,25 +34,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure CLI を使用して Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録すると、そのリソース プロバイダーで、ご利用のサブスクリプションを確実に動作させることができます。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
 
 ```azurecli-interactive
-az provider register –-namespace 'Microsoft.PolicyInsights'
+az provider register --namespace 'Microsoft.PolicyInsights'
 ```
 
 リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
 
+[ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 Azure Resource Manager ベースの API に HTTP 要求を送信するツールです。
+
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイック スタートでは、ポリシーの割り当てを作成し、"管理ディスクのない仮想マシンを監査" 定義を割り当てます。 このポリシー定義で、ポリシー定義に設定されている条件に準拠していないリソースを特定します。
+このクイック スタートでは、ポリシーの割り当てを作成し、**マネージド ディスクを使用しない監査 VM** 定義を割り当てます。 このポリシー定義で、ポリシー定義に設定されている条件に準拠していないリソースを特定します。
 
 ポリシーの割り当てを作成するには、次のコマンドを実行します。
 
 ```azurecli-interactive
-az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
+az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
 ```
 
 上記のコマンドでは次の情報を使用します。
 
-- **Name** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit Virtual Machines without Managed Disks Assignment*" を使用します。
-- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、"*Audit Virtual Machines without Managed Disks*" というポリシー定義です ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
+- **Name** - 割り当ての実際の名前。  この例では、*audit-vm-manageddisks* が使用されました。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit Virtual Machines without Managed Disks Assignment*" を使用します。
+- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、*マネージド ディスクを使用しない監査 VM* というポリシー定義の ID です。 ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
@@ -60,7 +63,7 @@ az policy assignment create --name 'Audit Virtual Machines without Managed Disks
 この新しい割り当てに準拠していないリソースを表示するには、次のコマンドを実行してポリシー割り当て ID を取得します。
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks' }
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -105,7 +108,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 このコレクションの他のガイドは、このクイックスタートに基づいています。 引き続きチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 続行する予定がない場合は、次のコマンドを実行して、作成した割り当てを削除してください。
 
 ```azurecli-interactive
-az policy assignment delete –name 'Audit Virtual Machines without Managed Disks Assignment' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
+az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>次の手順

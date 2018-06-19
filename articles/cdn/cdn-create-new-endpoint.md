@@ -4,7 +4,7 @@ description: このクイック スタートでは、CDN プロファイルと C
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/13/2018
-ms.author: mazha
+ms.date: 05/24/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198709"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607873"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート: Azure CDN プロファイルとエンドポイントの作成
 このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure Content Delivery Network (CDN) を有効にします。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツの配信を開始することができます。
@@ -28,7 +28,7 @@ ms.locfileid: "34198709"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
-このクイック スタートを行うには、配信元ホスト名として使用する、*mystorageacct123* という名前のストレージ アカウントを作成しておく必要があります。 詳細については、「[Azure ストレージ アカウントと Azure CDN との統合](cdn-create-a-storage-account-with-cdn.md)」を参照してください
+このクイック スタートを行うには、配信元ホスト名として使用する、*mystorageacct123* という名前のストレージ アカウントを作成しておく必要があります。 詳しくは、「[Azure ストレージ アカウントと Azure CDN との統合](cdn-create-a-storage-account-with-cdn.md)」をご覧ください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
@@ -47,23 +47,23 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
    
     ![CDN プロファイル](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    **[エンドポイントの追加]** ページが表示されます。
+    **[エンドポイントの追加]** ウィンドウが表示されます。
 
-    画像の下の表に指定した設定を使用してください。
-   
-    ![エンドポイントの追加ウィンドウ](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+3. エンドポイント設定については、次の表で指定されている値を使用します。
 
     | Setting | 値 |
     | ------- | ----- |
     | **名前** | エンドポイントのホスト名として「*my-endpoint-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 この名前は、ドメイン _&lt;エンドポイント名&gt;_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。|
     | **配信元の種類** | **[ストレージ]** を選択します。 | 
-    | **配信元のホスト名** | ホスト名として「*mystorageacct123.blob.core.windows.net*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください |
+    | **配信元のホスト名** | ホスト名として「*mystorageacct123.blob.core.windows.net*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
     | **配信元のパス** | 空白のままにします。 |
     | **配信元のホスト ヘッダー** | 生成された既定値をそのまま使用します。 |  
     | **プロトコル** | **[HTTP]** と **[HTTPS]** のオプションを既定値の選択状態のままにします。 |
     | **配信元のポート** | 既定のポート値のままにします。 | 
     | **最適化の対象** | 既定で選択される **[一般的な Web 配信]** のままにします。 |
-    
+
+    ![エンドポイントの追加ウィンドウ](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+
 3. **[追加]** を選択して、新しいエンドポイントを作成します。
    
    エンドポイントが作成されると、プロファイルのエンドポイントの一覧に表示されます。

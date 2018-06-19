@@ -12,25 +12,24 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362296"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637914"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>チュートリアル: Azure Media Services を使用してビデオを分析する 
 
-このチュートリアルでは、Azure Media Services を使用したビデオの分析について説明します。 記録されたビデオまたはオーディオ コンテンツに関する詳細な分析情報を得る必要のある多くのシナリオがあります。 たとえば、より高い顧客満足度を実現するため、組織は音声テキスト変換処理を行って、カスタマー サポートの記録をインデックスとダッシュボードを含む検索可能なカタログに変換できます。 その後、一般的なクレーム、そのようなクレームのソースの一覧など、ビジネスの分析情報を取得することができます。
+このチュートリアルでは、Azure Media Services を使用したビデオの分析について説明します。 記録されたビデオまたはオーディオ コンテンツに関する詳細な分析情報を得る必要のある多くのシナリオがあります。 たとえば、より高い顧客満足度を実現するため、組織は音声テキスト変換処理を実行して、カスタマー サポートの記録をインデックスとダッシュボードを含む検索可能なカタログに変換できます。 その後、一般的なクレーム、そのようなクレームのソースの一覧など、ビジネスの分析情報を取得することができます。
 
 このチュートリアルでは、次の操作方法について説明します。    
 
 > [!div class="checklist"]
-> * Azure Cloud Shell を起動する
 > * Media Services アカウントを作成する
 > * Media Services API にアクセスする
 > * サンプル アプリの構成
-> * サンプル コードを詳しく調べる
+> * 指定されたビデオを分析するコードを調べる
 > * アプリの実行
 > * 出力を調べる
 > * リソースのクリーンアップ
@@ -49,23 +48,48 @@ Visual Studio がインストールされていない場合は、[Visual Studio 
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+サンプルは [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) フォルダーにあります。
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-sample-code-in-detail"></a>サンプル コードを詳しく調べる
+## <a name="examine-the-code-that-analyzes-the-specified-video"></a>指定されたビデオを分析するコードを調べる
 
 このセクションでは、*AnalyzeVideos* プロジェクトの [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) ファイルで定義されている関数を調べます。
 
+サンプルは、次のアクションを実行します。
+
+1. ビデオを分析する変換とジョブを作成します。
+2. 入力アセットを作成し、そこにビデオをアップロードします。 アセットは、ジョブの入力として使用されます。
+3. ジョブの出力を格納する出力アセットを作成します。 
+4. ジョブを送信します。
+5. ジョブの状態を確認します。
+6. ジョブの実行から生成されるファイルをダウンロードします。 
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
-.NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 まず、トークンを取得し、返されたトークンから **ClientCredential** オブジェクトを作成する必要があります。 記事の先頭で複製したコードでは、**ArmClientCredential** オブジェクトを使用してトークンを取得しています。  
+.NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 この記事の最初に複製したコード内で、ローカル構成ファイルで指定された資格情報に基づいて、**GetCredentialsAsync** 関数が ServiceClientCredentials オブジェクトを作成します。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>ジョブの結果を格納する出力アセットを作成する 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする 
+
+**CreateInputAsset** 関数は、新しい入力[アセット](https://docs.microsoft.com/rest/api/media/assets)を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 このアセットは、エンコード ジョブへの入力として使われます。 Media Services v3 では、ジョブへの入力としては、アセットを使うか、または HTTPS URL 経由で Media Services アカウントから使用できるようにされたコンテンツを使うことができます。 HTTPS URL からのエンコード方法について詳しくは、[こちら](job-input-from-http-how-to.md)の記事をご覧ください。  
+
+Media Services v3 では、Azure Storage API を使ってファイルをアップロードします。 次の .NET スニペットはその方法を示したものです。
+
+後で示す関数は、次の処理を実行します。
+
+* アセットを作成する 
+* 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) をアセットの[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)に取得する
+* SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
+
+### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>ジョブの結果を格納する出力アセットを作成する 
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、ジョブの結果が格納されます。 プロジェクトで定義されている **DownloadResults** 関数は、この出力アセットから "output" フォルダーに結果をダウンロードするので、取得したものを確認できます。
 
@@ -111,7 +135,7 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
-一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。 たとえば、次のコードはジョブを削除します。
+一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator は保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。 たとえば、次のコードはジョブを削除します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 

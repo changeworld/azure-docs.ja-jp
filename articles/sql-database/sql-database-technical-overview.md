@@ -9,15 +9,16 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: d33f220d0669c6e078e075fc0a93d8d58d491547
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d730c886d2b591a8c7957f2f91cb193d93bf4be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649994"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、および SQL [マネージ インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、2 つの異なる購入モデル ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)) の中で動的に拡張可能なパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、および SQL [マネージド インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、2 つの異なる購入モデル ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)) の中で動的に拡張可能なパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
 
 SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
 
@@ -30,14 +31,14 @@ SQL Database は、そのコード ベースを [Microsoft SQL Server データ�
 SQL Database は、パフォーマンスを予測できる複数のサービス レベルで提供され、ダウンタイムがない動的なスケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、および高度なセキュリティ オプションを備えています。それらはすべてほぼ管理する必要がありません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database サービスは、現在、世界中の 38 か所のデータ センターで提供されていますが、新しいデータ センターが定期的に開設されているため、ご利用のデータベースを最寄りのデータ センターで実行することができます。
 
 > [!IMPORTANT]
-> SQL Database マネージ インスタンスは現在プレビュー段階であり、単一サービス レベルでの利用に限られます。 詳細については、[SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
+> SQL Database Managed Instance は現在プレビュー段階であり、単一サービス レベルでの利用に限られます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください。
 >
 
 ## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
 
 SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) 内の独自のサービス レベルと保証されたパフォーマンス レベルを持っています。 SQL Database には、さまざまなニーズに対応するための複数のパフォーマンス レベルがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
 
-SQL Database マネージ インスタンスでは、各インスタンスが他のインスタンスから分離され、リソースが保証されます。 詳細については、[SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください 
+SQL Database Managed Instance では、各インスタンスが他のインスタンスから分離され、リソースが保証されます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください 
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
 
@@ -45,22 +46,28 @@ SQL Database には、[DTU ベースの購入モデル](sql-database-service-tie
 - DTU ベースの購入モデルには、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
 - 仮想コア ベースの購入モデル (プレビュー) では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
 
-最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティ* により、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
    ![DTU スケーリング](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-SQL Database マネージ インスタンスはプレビュー段階であり、単一サービス レベルでの提供となります。 詳細については、[SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください
+SQL Database Managed Instance はプレビュー段階であり、単一サービス レベルでの提供となります。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください
+
+  > [!IMPORTANT]
+  > \*動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。 単一の Azure SQL Database は、手動の動的スケーラビリティをサポートしますが、自動スケールはサポートしていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。 ただし、単一の Azure SQL Database のスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
-多くのビジネスとアプリケーションにとって、特に使用パターンが比較的予測可能である場合、単一データベースを作成し、要求に応じてパフォーマンスを調整することができれば、それで十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 [エラスティック プール](sql-database-elastic-pool.md)は、この問題を解決するように設計されています。 概念は単純です。 パフォーマンス リソースを個々のデータベースではなくプールに割り当て、課金は単一のデータベースのパフォーマンスではなくプールの全体的なパフォーマンス リソースに対して行われます。 
+多くのビジネスとアプリケーションにとって、特に使用パターンが比較的予測可能である場合、単一データベースを作成し、要求に応じてパフォーマンスを調整することができれば、それで十分です。 しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。 
+  [エラスティック プール](sql-database-elastic-pool.md)は、この問題を解決するように設計されています。 概念は単純です。 パフォーマンス リソースを個々のデータベースではなくプールに割り当て、課金は単一のデータベースのパフォーマンスではなくプールの全体的なパフォーマンス リソースに対して行われます。 
 
    ![エラスティック プール](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。 さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、プールされているすべてのデータベースに最小限のリソースが保証されるようにしたりすることもできます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。 さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、プールされているすべてのデータベースに最小限のリソースが保証されるようにしたりすることもできます。 エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。 
+
+スクリプトは、エラスティック プールの監視とスケールに役立ちます。 例については、「[PowerShell を使用し、Azure SQL Database の SQL エラスティック プールを監視し、スケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md)」を参照してください。
 
 > [!IMPORTANT]
-> SQL Database マネージ インスタンスでは、エラスティック プールはサポートされません。
+> SQL Database Managed Instance では、エラスティック プールはサポートされません。
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>単一データベースとプールされたデータベースの組み合わせ
 
@@ -107,7 +114,7 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 - **自動インデックス管理**: データベースに追加するインデックスと削除するインデックスを識別します。
 - **プランの自動修正**: 問題のあるプランを識別し、SQL プランのパフォーマンスに関する問題を修正します (近日公開予定。SQL Server 2017 では既に利用可能)。
 
-### <a name="adaptive-query-processing"></a>クエリの適応処理
+### <a name="adaptive-query-processing"></a>アダプティブ クエリ処理
 
 SQL Database には、[クエリの適応処理機能](/sql/relational-databases/performance/adaptive-query-processing)ファミリも追加されています。この中には、複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
 

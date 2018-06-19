@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271672"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637533"
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -98,7 +98,7 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 | アクションを表示します。                                                          | 必要とされる Azure のアクセス許可 | メモ |
 |-----------------------------------------------------------------|--------------------------|-------|
-| 管理ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 管理ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
 | 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | *Backup* ソリューション タイルと *Site Recovery* ソリューション タイルのデータの表示 | 管理者/共同管理者 | クラシック デプロイ モデルを使用してデプロイされたリソースにアクセスします |
 | Azure Portal でのワークスペースの作成                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -115,7 +115,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 - すべての監視データを表示および検索する 
 - 監視設定を表示する。これには、すべての Azure リソースに対する Azure 診断の構成の表示などが含まれます。
 
-| type    | アクセス許可 | [説明] |
+| type    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
 | アクションを表示します。 | `*/read`   | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
@@ -125,11 +125,14 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 
 
 "*Log Analytics 共同作成者*" ロールのメンバーは、以下の操作を行うことができます。
-- すべての監視データの読み取り 
-- Automation アカウントの作成と構成
-- 管理ソリューションの追加と削除
-- ストレージ アカウント キーの読み取り 
-- Azure Storage からのログの収集の構成
+- すべての監視データの読み取り  
+- Automation アカウントの作成と構成  
+- 管理ソリューションの追加と削除    
+    > [!NOTE] 
+    > この 2 つのアクションを正常に実行するには、このアクセス許可をリソース グループまたはサブスクリプション レベルで付与する必要があります。  
+
+- ストレージ アカウント キーの読み取り   
+- Azure Storage からのログの収集の構成  
 - 次のような、Azure リソースの監視設定の編集
   - VM への VM 拡張機能の追加
   - すべての Azure リソースに対する Azure 診断の構成
@@ -137,7 +140,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 > [!NOTE] 
 > 仮想マシンに仮想マシン拡張機能を追加する機能を使用して、仮想マシンに対するフル コントロールを取得することができます。
 
-| アクセス許可 | [説明] |
+| アクセス許可 | 説明 |
 | ---------- | ----------- |
 | `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
@@ -157,7 +160,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 - リソース グループ - リソース グループ内のすべてのワークスペースへのアクセス
 - リソース - 指定されたワークスペースのみへのアクセス
 
-必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md)を使用します。
+正確なアクセス制御を行うために、割り当てをリソース レベル (ワークスペース) で実行することをお勧めします。  必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md)を使用します。
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure のユーザー ロールと Log Analytics ポータルのユーザー ロール
 少なくとも Log Analytics ワークスペースに対する Azure の読み取りアクセス許可があれば、Log Analytics ワークスペースを表示する際に **[OMS ポータル]** タスクをクリックして、Log Analytics ポータルを開くことができます。
@@ -271,7 +274,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 7. 必要に応じて、次の項目の値を変更できます。
    * [サブスクリプション]
    * リソース グループ
-   * 場所
+   * リージョン
    * [価格レベル]   
      ![値を変更する](./media/log-analytics-manage-access/manage-access-link-azure05.png)
 8. Click **OK**. これでワークスペースがユーザーの Azure アカウントにリンクされました。

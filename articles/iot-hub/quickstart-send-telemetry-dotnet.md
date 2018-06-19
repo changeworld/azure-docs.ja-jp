@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C#) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 9feade4407f800312556a1db39ce6c315c9330c2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3fe783f8b5a7955ebe117df02edcdc6aafeff4f8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636853"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (C#) でハブから利用統計情報を読み取る
 
@@ -86,7 +84,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **Quickstarts\simulated-device** フォルダーに移動します。
+1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
@@ -112,7 +110,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **Quickstarts\read-d2c-messages** フォルダーに移動します。
+1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。
 

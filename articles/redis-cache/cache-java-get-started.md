@@ -1,84 +1,181 @@
 ---
-title: "Java で Azure Redis Cache を使用する方法 | Microsoft Docs"
-description: "Java を使用して Azure Redis Cache を使用します"
+title: 'クイック スタート: Java で Azure Redis Cache を使用する方法 | Microsoft Docs'
+description: このクイック スタートでは、Azure Redis Cache を使用する新しい Java アプリを作成します
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 08/31/2017
+ms.date: 05/23/2018
 ms.author: wesmc
-ms.openlocfilehash: a93dbf78c9cb94f6c20c8569a69e068ceb3b98bc
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.custom: mvc
+ms.openlocfilehash: f76f9f6280120f5c05cb304a0b87bba9ffaee043
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639760"
 ---
-# <a name="how-to-use-azure-redis-cache-with-java"></a>Java で Azure Redis Cache を使用する方法
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.JS](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
-> 
-> 
+# <a name="quickstart-how-to-use-azure-redis-cache-with-java"></a>クイック スタート: Java で Azure Redis Cache を使用する方法
+
 
 Azure Redis Cache を使用すると、Microsoft が管理している専用の Redis Cache にアクセスできます。 キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
 
-このトピックでは、Java を使用して Azure Redis Cache を使用する方法を説明します。
+この記事では、Java 用の [Jedis](https://github.com/xetorthio/jedis) Redis Cache クライアントを使用して Azure Redis Cache の使用を開始する方法を示します。
+
+![完了したキャッシュ アプリ](./media/cache-java-get-started/cache-app-complete.png)
+
+このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 ## <a name="prerequisites"></a>前提条件
-[Jedis](https://github.com/xetorthio/jedis) - Redis 用 Java クライアント
 
-このチュートリアルでは Jedis を使用しますが、 [http://redis.io/clients](http://redis.io/clients)に記載されている任意の Java クライアントを使用できます。
+[Apache Maven](http://maven.apache.org/)
 
-## <a name="create-a-redis-cache-on-azure"></a>Azure で Redis Cache を作成する
+
+
+## <a name="create-an-azure-redis-cache"></a>Azure Redis Cache の作成
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="retrieve-the-host-name-and-access-keys"></a>ホスト名とアクセス キーを取得する
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-## <a name="connect-to-the-cache-securely-using-ssl"></a>SSL を使用してキャッシュに安全に接続する
-[jedis](https://github.com/xetorthio/jedis) の最新のビルドでは、SSL を使用した Azure Redis Cache への接続をサポートしています。 次の例では、SSL エンドポイント 6380 を使用して Azure Redis Cache に接続する方法を示しています。 `<name>` をキャッシュの名前に、`<key>` を前の「[ホスト名とアクセス キーを取得する](#retrieve-the-host-name-and-access-keys)」セクションで説明したプライマリまたはセカンダリ キーに置き換えます。
+**[ホスト名]** と **[プライマリ]** アクセス キーの環境変数を追加します。 コードに機密情報を直接含める代わりに、これらの変数をコードから使用します。
 
-    boolean useSsl = true;
-    /* In this line, replace <name> with your cache name: */
-    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6380, useSsl);
-    shardInfo.setPassword("<key>"); /* Use your access key. */
+```
+set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
+set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
 
-> [!NOTE]
-> 新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています。 SSL をサポートしていない別のクライアントを使用している場合は、[非 SSL ポートを有効にする方法](cache-configure.md#access-ports)に関するページをご覧ください。
-> 
-> 
+## <a name="create-a-new-java-app"></a>新しい Java アプリを作成する
 
-## <a name="add-something-to-the-cache-and-retrieve-it"></a>キャッシュに何か追加し、取得する
-    package com.mycompany.app;
-    import redis.clients.jedis.Jedis;
-    import redis.clients.jedis.JedisShardInfo;
+Maven を使用して、新しいクイック スタート アプリを生成します。
 
-    public class App
+```
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
+```
+
+新しい *redistest* プロジェクト ディレクトリに移動します。
+
+*pom.xml* ファイルを開き、[Jedis](https://github.com/xetorthio/jedis) の依存関係を追加します。
+
+```xml
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>2.9.0</version>
+        <type>jar</type>
+        <scope>compile</scope>
+    </dependency>
+```
+
+*pom.xml* ファイルを保存します。
+
+*App.java* を開き、コードを次のコードに置き換えます。
+
+```java
+package example.demo;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisShardInfo;
+
+/**
+ * Redis test
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
     {
-      public static void main( String[] args )
-      {
+
         boolean useSsl = true;
-        /* In this line, replace <name> with your cache name: */
-        JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6380, useSsl);
-        shardInfo.setPassword("<key>"); /* Use your access key. */
-        Jedis jedis = new Jedis(shardInfo);
-        jedis.set("foo", "bar");
-        String value = jedis.get("foo");
-      }
+        String cacheHostname = System.getenv("REDISCACHEHOSTNAME");
+        String cachekey = System.getenv("REDISCACHEKEY");
+
+        // Connect to the Redis cache over the SSL port using the key.
+        JedisShardInfo shardInfo = new JedisShardInfo(cacheHostname, 6380, useSsl);
+        shardInfo.setPassword(cachekey); /* Use your access key. */
+        Jedis jedis = new Jedis(shardInfo);      
+
+        // Perform cache operations using the cache connection object...
+
+        // Simple PING command        
+        System.out.println( "\nCache Command  : Ping" );
+        System.out.println( "Cache Response : " + jedis.ping());
+
+        // Simple get and put of integral data types into the cache
+        System.out.println( "\nCache Command  : GET Message" );
+        System.out.println( "Cache Response : " + jedis.get("Message"));
+
+        System.out.println( "\nCache Command  : SET Message" );
+        System.out.println( "Cache Response : " + jedis.set("Message", "Hello! The cache is working from Java!"));
+
+        // Demostrate "SET Message" executed as expected...
+        System.out.println( "\nCache Command  : GET Message" );
+        System.out.println( "Cache Response : " + jedis.get("Message"));
+
+        // Get the client list, useful to see if connection list is growing...
+        System.out.println( "\nCache Command  : CLIENT LIST" );
+        System.out.println( "Cache Response : " + jedis.clientList());
+
+        jedis.close();
     }
+}
+```
+
+このコードは、キャッシュ ホスト名とキー環境変数を使用して Azure Redis Cache インスタンスに接続する方法を示しています。 コードでは、キャッシュ内の文字列値の格納および取得も行います。 `PING` および `CLIENT LIST` コマンドも実行されます。 
+
+*App.java* を保存します。
+
+## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+
+次の Maven コマンドを実行して、アプリをビルドおよび実行します。
+
+```
+mvn exec:java -D exec.mainClass=example.demo.App
+```
+
+次の例では、`Message` キーは、前に Azure portal の Redis コンソールを使って設定されたキャッシュ値を持っていたことがわかります。 アプリは、そのキャッシュ値を更新しました。 また、アプリは `PING` および `CLIENT LIST` コマンドも実行しました。
+
+![完了したキャッシュ アプリ](./media/cache-java-get-started/cache-app-complete.png)
+
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
+
+クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+
+> [!IMPORTANT]
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+>
+
+[Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+
+![削除](./media/cache-java-get-started/cache-delete-resource-group.png)
+
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+
+しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+
 
 
 ## <a name="next-steps"></a>次の手順
-* [キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。
-* 公式の [Redis ドキュメント](http://redis.io/documentation)を読みます。
-* [Redis Cache を使用するように Spring Initializr アプリを構成する方法](cache-java-spring-boot-initializer-with-redis-cache.md)を学びます。
+
+このクイック スタートでは、Java アプリケーションから Azure Redis Cache を使用する方法を説明しました。 ASP.NET Web アプリで Redis Cache を使用するには、次のクイック スタートに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Redis Cache を使用する ASP.NET Web アプリの作成。](./cache-web-app-howto.md)
+
+
+

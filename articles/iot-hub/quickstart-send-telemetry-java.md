@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (Java) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行して、IoT ハブにシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT ハブから利用統計情報を読み取ります。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 36005988611e7ec3f16146919e3ab3f04755e7e5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: fd610af3d1b29b78ef89b8f523ef880696031bf2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637652"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Java) でハブから利用統計情報を読み取る
 
@@ -94,7 +92,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **Quickstarts\simulated-device** フォルダーに移動します。
+1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
 
@@ -120,7 +118,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **Quickstarts\read-d2c-messages** フォルダーに移動します。
+1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** ファイルを開きます。
 

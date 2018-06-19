@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 69148a0ac9a5761eeee0ab47d83862724583619a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5d403f7c1d0fff466f6c0fb9942ec777ab820eab
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258795"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604534"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -86,7 +86,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 - ダウンロードした Marketplace 項目のインポートを有効にするには、[Azure Stack オペレーター用の PowerShell 環境](azure-stack-powershell-configure-admin.md)を構成する必要があります。  
 
-- パブリックにアクセスできるコンテナー (ストレージ BLOB) がある Azure Stack のストレージ アカウントを持っている必要があります。 コンテナーは、Marketplace 項目のギャラリー ファイルのための一時的なストレージとして使用します。 ストレージ アカウントとコンテナーに慣れていない場合は、Azure ドキュメントの [Azure portal での BLOB の操作](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に関するページを参照してください。
+- パブリックにアクセスできるコンテナー (ストレージ BLOB) がある Azure Stack の[ストレージ アカウント](azure-stack-manage-storage-accounts.md)を持っている必要があります。 コンテナーは、Marketplace 項目のギャラリー ファイルのための一時的なストレージとして使用します。 ストレージ アカウントとコンテナーに慣れていない場合は、Azure ドキュメントの [Azure portal での BLOB の操作](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に関するページを参照してください。
 
 - マーケットプレース シンジケーション ツールは、最初の手順でダウンロードされます。 
 

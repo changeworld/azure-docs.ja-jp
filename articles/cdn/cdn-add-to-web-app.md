@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: de8b354cf0199d36d5e0b1410a9f79d4a9e3e05c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359783"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608391"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
 
@@ -55,6 +55,9 @@ ms.locfileid: "34359783"
 
 ブラウザーを開いて [Azure Portal](https://portal.azure.com) に移動します。
 
+### <a name="dynamic-site-acceleration-optimization"></a>動的サイト アクセラレーションの最適化
+動的サイト アクセラレータ (DSA) の CDN エンドポイントを最適化する場合は、[CDN ポータル](cdn-create-new-endpoint.md)を使用して、エンドポイントのプロファイルを作成する必要があります。 [DSA 最適化](cdn-dynamic-site-acceleration.md)を使用すると、動的コンテンツを含む Web ページのパフォーマンスがある程度まで向上します。 CDN ポータルからの DSA の CDN エンドポイント最適化方法については、「[動的ファイルの配信を高速化する CDN エンドポイントの構成](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)」をご覧ください。 または、新しいエンドポイントを最適化したくない場合は、次のセクションの手順に従って、Web アプリ ポータルを使用して作成できます。 **Azure CDN from Verizon** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更することはできません。
+
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN プロファイルと CDN エンドポイントを作成する
 
 左側のナビゲーションで **[App Services]** を選択し、[静的 HTML のクイック スタート](../app-service/app-service-web-get-started-html.md)で作成したアプリを選択します。
@@ -65,14 +68,11 @@ ms.locfileid: "34359783"
 
 ![ポータルで CDN を選択](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-### <a name="dynamic-site-acceleration-optimization"></a>動的サイト アクセラレーションの最適化
-動的サイト アクセラレータ (DSA) の CDN エンドポイントを最適化する場合は、CDN ポータルを使用して、エンドポイントを直接作成します。 [DSA 最適化](cdn-dynamic-site-acceleration.md)を使用すると、動的コンテンツを含む Web ページのパフォーマンスがある程度まで向上します。 CDN ポータルを使用した DSA の CDN エンドポイント最適化の詳細については、[動的ファイルの配信を高速化する CDN エンドポイントの構成](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)に関するページを参照してください。 **Azure CDN from Verizon** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更することはできません。
-
 **[Azure Content Delivery Network]** ページで、**[新しいエンドポイント]** の設定を以下の表に従って指定します。
 
 ![ポータルでプロファイルとエンドポイントを作成](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| Setting | 推奨値 | [説明] |
+| Setting | 推奨値 | 説明 |
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |

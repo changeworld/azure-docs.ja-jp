@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 126a32402487ce742ba90b89e9f16fb77a125dba
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 83017d2cb18fe8568426724b08c7199d5aa63191
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602467"
 ---
 # <a name="use-approved-subnet-for-vm-network-interfaces"></a>VM ネットワーク インターフェイスでの承認されたサブネットの使用
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-- その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。
+- 他の例については、「[Azure Policy のサンプル](../json-samples.md)」をご確認ください。
