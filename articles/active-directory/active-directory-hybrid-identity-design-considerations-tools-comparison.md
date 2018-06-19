@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801451"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>ハイブリッド ID ディレクトリ統合ツールの比較
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。  このドキュメントでは、このようなツールをまとめた表と、各ツールで使用できる機能の比較を示しています。
@@ -27,7 +29,7 @@ ms.lasthandoff: 04/28/2018
 > [!NOTE]
 > Azure AD Connect には、以前 Dirsync と AAD Sync としてリリースされたコンポーネントと機能が組み込まれています。これらのツールは、個別にリリースされなくなりました。今後の機能強化はすべて Azure AD Connect の更新プログラムに含まれるため、最新機能の入手場所はいつでもわかります。
 > 
-> DirSync と Azure AD Sync は使用されていません。 詳しくは、 [こちら](active-directory-aadconnect-dirsync-deprecated.md)を参照してください。
+> DirSync と Azure AD Sync は非推奨となります。 詳しくは、 [こちら](active-directory-aadconnect-dirsync-deprecated.md)を参照してください。
 > 
 > 
 
@@ -38,7 +40,7 @@ FR = 今後リリース
 PP = パブリック プレビュー  
 
 ## <a name="on-premises-to-cloud-synchronization"></a>オンプレミスからクラウドへの同期
-| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス (AAD Sync) | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス (AAD Sync) - サポートされなくなりました | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 単一のオンプレミス AD フォレストへの接続 |● |● |● |● |● |
 | 複数のオンプレミス AD フォレストへの接続 |● |● | |● |● |
@@ -53,7 +55,7 @@ PP = パブリック プレビュー
 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>クラウドからオンプレミスへの同期
-| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | デバイスの書き戻し |● | |● | | |
 | 属性の書き戻し (Exchange ハイブリッド デプロイの場合) |● |● |● |● |● |
@@ -61,15 +63,17 @@ PP = パブリック プレビュー
 | (セルフ サービスによるパスワードのリセット (SSPR) とパスワードの変更による) パスワードの書き戻し |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>認証機能のサポート
-| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| 単一のオンプレミス AD フォレストのパスワード同期 |● |● |● | | |
-| 複数のオンプレミス AD フォレストのパスワード同期 |● |● | | | |
+| 単一のオンプレミス AD フォレストのパスワード ハッシュ同期 |●|●|● | | |
+| 複数のオンプレミス AD フォレストのパスワード ハッシュ同期 |●|● | | | |
+| 単一のオンプレミス AD フォレストのパススルー認証 |●| | | | |
 | フェデレーションを使用したシングル サインオン |● |● |● |● |● |
+| シームレス シングル サインオン|● |||||
 | (SSPR とパスワードの変更による) パスワードの書き戻し |● |● | | | |
 
 ## <a name="set-up-and-installation"></a>セットアップとインストール
-| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | ドメイン コントローラーへのインストールのサポート |● |● |● | |
 | SQL Express を使用したインストールのサポート |● |● |● | |
@@ -80,7 +84,7 @@ PP = パブリック プレビュー
 | Windows Server 2012 および Windows Server 2012 R2 のサポート |● |● |● |● |
 
 ## <a name="filtering-and-configuration"></a>フィルター処理と構成
-| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | ドメインおよび組織単位でのフィルター処理 |● |● |● |● |● |
 | オブジェクトの属性値でのフィルター処理 |● |● |● |● |● |

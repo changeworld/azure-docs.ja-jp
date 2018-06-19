@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (Java) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 6dcbf954fdfd6f5b6f65b54edf33e9da234c7d0f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808208"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Java)
 
@@ -99,7 +97,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、ハブからのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスは、ダイレクト メソッドを実行した後、ハブに受信確認を返送します。
 
-1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **Quickstarts\simulated-device-2** フォルダーに移動します。
+1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\simulated-device-2** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
 
@@ -125,9 +123,9 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションは、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しを行った後、受信確認をリッスンします。 通常、IoT Hub のバックエンド アプリケーションはクラウドで実行されます。
 
-1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 その後、**Quickstarts\back-end-application** フォルダーに移動します。
+1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 その後、**iot-hub\Quickstarts\back-end-application** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** ファイルを開きます。
+1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** ファイルを開きます。
 
     `iotHubConnectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 変更を **BackEndApplication.java** ファイルに保存します。
 
@@ -164,4 +162,4 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 デバイスからクラウドへのメッセージをクラウド内の異なる宛先にルーティングする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](iot-hub-java-java-process-d2c.md)
+> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)

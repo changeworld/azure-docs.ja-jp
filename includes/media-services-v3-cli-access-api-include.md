@@ -5,63 +5,47 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 05/29/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: acb9bdf294dd66005df203f957c155540b658698
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7454e96a2a05bf89a0455674a4f144534c374c71
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33830104"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34667879"
 ---
 ## <a name="access-the-media-services-api"></a>Media Services API にアクセスする
 
-Azure Media Services API に接続するには、Azure AD サービス プリンシパル認証を使用します。 以下のコマンドでは、Azure AD アプリケーションを作成し、そのアカウントにサービス プリンシパルをアタッチしています。 以下の手順で示したように、返された値を使用して .NET アプリを構成することになります。
+Azure Media Services API に接続するには、Azure AD サービス プリンシパル認証を使用します。 以下のコマンドでは、Azure AD アプリケーションを作成し、そのアカウントにサービス プリンシパルをアタッチしています。 返された値を使って、アプリケーションを構成する必要があります。
 
-スクリプトを実行する前に、`amsaccount` と `amsResourceGroup` は、実際にリソースを作成するときに選んだ名前に置き換えてください。 `amsaccount` は、サービス プリンシパルのアタッチ先となる Azure Media Services アカウントの名前です。 <br/>このコマンドには、さらに `xml` オプションが指定されています。このオプションによって返される xml を app.config に貼り付けることができます。`xml` オプションを省略した場合、応答は `json` 形式になります。
+スクリプトを実行する前に、`amsaccount` と `amsResourceGroup` は、実際にリソースを作成するときに選んだ名前に置き換えてください。 `amsaccount` は、サービス プリンシパルのアタッチ先となる Azure Media Services アカウントの名前です。
+
+次のコマンドは、`json` の出力を返します。
 
 ```azurecli-interactive
-az ams account sp create --account-name amsaccount --resource-group amsResourceGroup --xml
+az ams account sp create --account-name amsaccount --resource-group amsResourceGroup
 ```
 
 このコマンドからは、次のような応答が生成されます。
 
-```xml
-<add key="Region" value="West US 2" />
-<add key="ResourceGroup" value="amsResourceGroup" />
-<add key="AadEndpoint" value="https://login.microsoftonline.com" />
-<add key="AccountName" value="amsaccount" />
-<add key="SubscriptionId" value="111111111-0000-2222-3333-55555555555" />
-<add key="ArmAadAudience" value="https://management.core.windows.net/" />
-<add key="AadTenantId" value="2222222222-0000-2222-3333-6666666666666" />
-<add key="AadSecret" value="33333333-0000-2222-3333-55555555555" />
-<add key="AadClientId" value="44444444-0000-2222-3333-55555555555" />
-<add key="ArmEndpoint" value="https://management.azure.com/" />
+```json
+{
+  "AadClientId": "00000000-4cdd-418a-8a72-0755ace03de5",
+  "AadEndpoint": "https://login.microsoftonline.com",
+  "AadSecret": "00000000-02f5-4bf2-9057-1c4f7baff155",
+  "AadTenantId": "00000000-86f1-41af-91ab-2d7cd011db47",
+  "AccountName": "amsaccount22",
+  "ArmAadAudience": "https://management.core.windows.net/",
+  "ArmEndpoint": "https://management.azure.com/",
+  "Region": "West US 2",
+  "ResourceGroup": "amsResourceGroup2",
+  "SubscriptionId": "00000000-6753-4ca2-b1ae-193798e2c9d8"
+}
 ```
 
-### <a name="configure-the-sample-app"></a>サンプル アプリの構成
+応答で `xml` を取得したい場合は、次のコマンドを使います。
 
-アプリを実行して Media Services の API にアクセスするには、正しいアクセス値を App.config で指定する必要があります。 
-
-1. Visual Studio を開きます。
-2. 複製したソリューションにブラウザーでアクセスします。
-3. ソリューション エクスプローラーで、*EncodeAndStreamFiles* プロジェクトを展開します。
-4. このプロジェクトをスタート アップ プロジェクトとして設定します。
-5. App.config を開きます。
-6. appSettings の値を、前の手順で取得した値に置き換えます。
-
- ```xml
- <add key="Region" value="value" />
- <add key="ResourceGroup" value="value" />
- <add key="AadEndpoint" value="value" />
- <add key="AccountName" value="value" />
- <add key="SubscriptionId" value="value" />
- <add key="ArmAadAudience" value="value" />
- <add key="AadTenantId" value="value" />
- <add key="AadSecret" value="value" />
- <add key="AadClientId" value="value" />
- <add key="ArmEndpoint" value="value" />
- ```    
- 
-7. Ctrl + Shift + B キーを押して、ソリューションをビルドします。
+```azurecli-interactive
+az ams account sp create --account-name amsaccount --resource-group amsResourceGroup --xml
+```

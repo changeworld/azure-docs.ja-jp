@@ -1,27 +1,25 @@
 ---
 title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
-description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
+description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: java
 author: SnehaGunda
 manager: kfile
-ms.assetid: 45145189-e67f-4ca6-b15d-43af7bfd3f97
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: Java
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 4ac25fd9e1d7233546b34da89eb1bcaf37f6f38b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797898"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概要
 この記事では、Azure Table Storage サービスと Azure Cosmos DB を使用する一般的なシナリオの実行方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
@@ -36,13 +34,13 @@ ms.lasthandoff: 04/16/2018
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-この記事のサンプルを使用するには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。 その次に、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認します。 システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。 それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+この記事のサンプルを使用するには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントまたは Azure Cosmos DB アカウントを作成する必要があります。 その次に、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認します。 システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。 それらのタスクが完了すると、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="configure-your-application-to-access-table-storage"></a>テーブル ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API または Azure Cosmos DB Table API を使用してテーブルにアクセスする Java ファイルの先頭には、次の import ステートメントを追加します。
@@ -67,7 +65,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-## <a name="add-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列の追加
+## <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Azure Cosmos DB Table API 接続文字列の追加
 Azure Cosmos DB アカウントは、接続文字列を使用して、テーブルのエンドポイントと資格情報を格納します。 クライアント アプリケーションの実行時、Azure Cosmos DB 接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure Portal](https://portal.azure.com) に表示される Azure Cosmos DB アカウントの名前とプライマリ アクセス キーを使用します。 
 
 この例では、Azure Cosmos DB 接続文字列を保持する静的フィールドを宣言する方法が示されています。
@@ -534,7 +532,7 @@ catch (Exception e)
 ```
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
-エンティティは、取得後に簡単に削除できます。 エンティティを取得したら、削除するエンティティを指定して **TableOperation.delete** を呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出します。 次のコードは、ユーザー エンティティを取得して削除します。
+エンティティは、取得後に簡単に削除できます。 エンティティを取得した後、削除するエンティティを指定して **TableOperation.delete** を呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出します。 次のコードは、ユーザー エンティティを取得して削除します。
 
 ```java
 try

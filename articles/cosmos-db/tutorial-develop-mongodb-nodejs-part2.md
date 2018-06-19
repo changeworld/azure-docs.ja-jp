@@ -2,24 +2,22 @@
 title: Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 2 | Microsoft Docs
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 2 です。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 9d3c3209807a201f11d4d0a4ddd905f332a3951f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b35f003c18e19eafd3dfa9988409ceacb44e3bc4
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798068"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 2: Angular CLI で Node.js Express アプリを作成する 
 
@@ -65,10 +63,10 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="use-the-angular-cli-to-create-a-new-project"></a>Angular CLI を使って新しいプロジェクトを作成する
 
-1. コマンド プロンプトで、新しいプロジェクトの作成先となるフォルダーに移動し、次のコマンドを実行します。 このコマンドを実行すると、angular-cosmosdb という新しいフォルダーとプロジェクトが作成され、新しいアプリに必要な Angular コンポーネントがインストールされます。 さらに、src/client フォルダーにソース コードをインストールし (-sd src/client)、最小限の設定を行い (--minimal)、プロジェクトで Sass (フラグ形式の scss を使った CSS ライクな構文) を使うように指定しています。
+1. コマンド プロンプトで、新しいプロジェクトの作成先となるフォルダーに移動し、次のコマンドを実行します。 このコマンドを実行すると、angular-cosmosdb という新しいフォルダーとプロジェクトが作成され、新しいアプリに必要な Angular コンポーネントがインストールされます。 最小限の設定を行い (--minimal)、プロジェクトで Sass (フラグ形式の scss を使った CSS ライクな構文) を使うように指定します。
 
     ```bash
-    ng new angular-cosmosdb -sd src/client --minimal --style scss
+    ng new angular-cosmosdb --minimal --style scss
     ```
 
 2. コマンドが完了したら、src/client フォルダーに移動します。
@@ -151,11 +149,9 @@ ms.lasthandoff: 04/16/2018
 
 7. 変更を加えたファイルをすべて保存します。 
 
-8. Visual Studio Code で **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)) をクリックして歯車ボタン (![Visual Studio Code の歯車ボタン](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png)) をクリックし、**Node.js** を選択して構成を作成します。
+8. Visual Studio Code で **[デバッグ]** ボタン ![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) をクリックして歯車ボタン ![Visual Studio Code の歯車ボタン](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png) をクリックします。 Visual Studio Code で新しい launch.json ファイルが開きます。
 
-   Visual Studio Code で新しい launch.json ファイルが開きます。
-
-8. launch.json ファイルの 11 行目で `"program": "${file}"` を `"program": "${workspaceRoot}/src/server/index.js"` に変更して、ファイルを保存します。
+8. launch.json ファイルの 11 行目で `"${workspaceFolder}\\server"` を `"program": "${workspaceRoot}/src/server/index.js"` に変更して、ファイルを保存します。
 
 9. **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)) をクリックしてアプリを実行します。
 
