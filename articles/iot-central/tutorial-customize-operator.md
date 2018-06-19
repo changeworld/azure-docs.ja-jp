@@ -1,21 +1,22 @@
 ---
 title: Azure IoT Central でオペレーター用ビューをカスタマイズする | Microsoft Docs
 description: 作成者として、Azure IoT Central アプリケーションのオペレーター用ビューをカスタマイズします。
-services: iot-central
 author: sandeeppujar
 ms.author: sadeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 3e0dfab05fc7972a055853af45f0d1b13d52c0a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202324"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235370"
 ---
-# <a name="3---customize-the-azure-iot-central-operators-view"></a>3 - Azure IoT Central オペレーターのビューをカスタマイズする
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>チュートリアル: Azure IoT Central オペレーターのビューをカスタマイズする
 
 このチュートリアルでは、アプリケーションのオペレーター用ビューをカスタマイズする方法を作成者向けに説明します。 作成者としてアプリケーションに変更を行う場合、Microsoft Azure IoT Central アプリケーションのオペレーター用ビューをプレビューできます。
 
@@ -35,8 +36,8 @@ ms.locfileid: "34202324"
 
 開始する前に、前の 2 つのチュートリアルを完了しておく必要があります。
 
-1. [Azure IoT Central アプリケーションで新しいデバイスの種類を定義する](tutorial-define-device-type.md)。
-1. [デバイスのルールとアクションを構成する](tutorial-configure-rules.md)。
+* [Azure IoT Central アプリケーションで新しいデバイスの種類を定義する](tutorial-define-device-type.md)。
+* [デバイスのルールとアクションを構成する](tutorial-configure-rules.md)。
 
 ## <a name="configure-your-device-dashboard"></a>デバイス ダッシュボードを構成する
 
@@ -46,17 +47,17 @@ ms.locfileid: "34202324"
 
     ![[エクスプローラー] ページ](media/tutorial-customize-operator/explorer.png)
 
-1. コネクテッド空調デバイスのダッシュボードのカスタマイズを開始するには、**Connected Air Conditioner (1.0.0)** デバイス テンプレートを選択します。 [アプリケーションでの新しいデバイスの種類の定義](tutorial-define-device-type.md)に関するチュートリアルで作成した **Connected Air Conditioner-1** デバイスを選択します。
+2. コネクテッド空調デバイスのダッシュボードのカスタマイズを開始するには、**Connected Air Conditioner (1.0.0)** デバイス テンプレートを選択します。 [アプリケーションでの新しいデバイスの種類の定義](tutorial-define-device-type.md)に関するチュートリアルで作成した **Connected Air Conditioner-1** デバイスを選択します。
 
     ![コネクテッド空調デバイスを選択する](media/tutorial-customize-operator/selectdevice.png)
 
     デバイス (例: **Connected Air Conditioner-1**) に変更を行う場合、基礎となるテンプレートに変更を行います。 詳細については、「[Create a new device template version (デバイス テンプレートの新しいバージョンを作成する)](howto-version-devicetemplate.md)」を参照してください。
 
-1. ダッシュボードを編集するには、**[ダッシュボード]** を選択します。
+3. ダッシュボードを編集するには、**[ダッシュボード]** を選択します。
 
     ![デバイス テンプレートのダッシュボードのページ](media/tutorial-customize-operator/dashboard.png)
 
-1. ダッシュボードに KPI タイルを追加するには、**[KPI]** を選択します。
+4. ダッシュボードに KPI タイルを追加するには、**[KPI]** を選択します。
 
     ![KPI を追加する](media/tutorial-customize-operator/addkpi.png)
 
@@ -69,11 +70,11 @@ ms.locfileid: "34202324"
     | 集計 | 最大値 |
     | 時間範囲  | Past 1 week |
 
-1. **[保存]** を選択します。 ダッシュボードに KPI タイルが表示されます。
+5. **[保存]** を選択します。 ダッシュボードに KPI タイルが表示されます。
 
     ![KPI タイル](media/tutorial-customize-operator/temperaturekpi.png)
 
-1. ダッシュボード上のタイルを移動させたり、サイズ変更したりするには、そのタイルの上にマウス ポインターを移動させます。 タイルを新しい場所にドラッグしたり、サイズ変更したりできます。
+6. ダッシュボード上のタイルを移動させたり、サイズ変更したりするには、そのタイルの上にマウス ポインターを移動させます。 タイルを新しい場所にドラッグしたり、サイズ変更したりできます。
 
     ![ダッシュボードのレイアウトを編集する](media/tutorial-customize-operator/dashboardlayout.png)
 
@@ -85,7 +86,7 @@ ms.locfileid: "34202324"
 
     ![[設定] ページ](media/tutorial-customize-operator/settings.png)
 
-1. 設定タイルの移動とサイズ変更を行えます。
+2. 設定タイルの移動とサイズ変更を行えます。
 
     ![設定のレイアウトを編集する](media/tutorial-customize-operator/settingslayout.png)
 
@@ -100,7 +101,7 @@ ms.locfileid: "34202324"
 
     ![[プロパティ] ページ](media/tutorial-customize-operator/properties.png)
 
-1. プロパティ フィールドの移動とサイズ変更を行えます。
+2. プロパティ フィールドの移動とサイズ変更を行えます。
 
     ![プロパティのレイアウトを編集する](media/tutorial-customize-operator/propertieslayout.png)
 
@@ -113,17 +114,17 @@ ms.locfileid: "34202324"
 
 1. オペレーターとしてコネクテッド空調デバイスを表示するには、**デザイン モード**をオフに切り替える必要があります。 **デザイン モード**をオフに切り替えるには、ページの右上にある **[Design Mode]\(デザイン モード\)** をオフにします。
 
-1. このデバイスのシリアル番号を更新するには、シリアル番号タイルの値を編集して、**[保存]** を選択します。
+2. このデバイスのシリアル番号を更新するには、シリアル番号タイルの値を編集して、**[保存]** を選択します。
 
     ![プロパティ値を編集する](media/tutorial-customize-operator/editproperty.png)
 
-1. 設定をコネクテッド空調機に送信するには、**[設定]** を選択してタイルの設定値を変更し、**[更新]** を選択します。
+3. 設定をコネクテッド空調機に送信するには、**[設定]** を選択してタイルの設定値を変更し、**[更新]** を選択します。
 
     ![設定をデバイスに送信する](media/tutorial-customize-operator/sendsetting.png)
 
     デバイスが新しい設定値を認識すると、タイルに表示される設定が**同期済み**になります。
 
-1. オペレーターは、作成者が構成したデバイス ダッシュボードを表示できます。
+4. オペレーターは、作成者が構成したデバイス ダッシュボードを表示できます。
 
     ![オペレーター用のデバイス ダッシュボード ビュー](media/tutorial-customize-operator/operatordashboard.png)
 
@@ -131,18 +132,18 @@ ms.locfileid: "34202324"
 
 作成者またはオペレーターが Azure IoT Central アプリケーションにサインインすると、ホーム ページが表示されます。 作成者は、オペレーターにとって最も有益で関連性の高い内容が含まれるよう、このホーム ページの内容を構成できます。
 
-1. 既定のホーム ページをカスタマイズするには、**ホーム** ページに移動して、ページの右上にある **[Design Mode]\(デザイン モード\)** をオンに切り替えます。 **[Design Mode]\(デザイン モード\)** をオンにすると、ホーム ページに追加できるオブジェクトの一覧を含むパネルが、右側からスライドして表示されます。
+1. 既定のホーム ページをカスタマイズするには、**ホーム** ページに移動して、ページの右上にある **[Design Mode]\(デザイン モード\)** をオンに切り替えます。 **[デザイン モード]** をオンにすると、ホーム ページに追加できるオブジェクトの一覧を含むパネルが、右側からスライドして表示されます。
 
     ![[Application Builder]\(アプリケーション ビルダー\) ページ](media/tutorial-customize-operator/builderhome.png)
 
-1. ホーム ページをカスタマイズするには、**[ライブラリ]** からタイルを追加します。 **[リンク]** を選択し、組織の Web サイトの詳細を追加します。 次に、**[保存]** を選択します。
+2. ホーム ページをカスタマイズするには、**[ライブラリ]** からタイルを追加します。 **[リンク]** を選択し、組織の Web サイトの詳細を追加します。 次に、**[保存]** を選択します。
 
     ![リンクをホーム ページに追加する](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > リンクは Azure IoT Central アプリケーション内のページに追加することもできます。 たとえば、デバイス ダッシュボードまたは設定のページにリンクを追加することができます。
 
-1. 必要に応じて **[イメージ]** を選択し、ホーム ページに表示するイメージをアップロードします。 イメージには、クリックしたときの移動先となる URL を付加できます。
+3. 必要に応じて **[イメージ]** を選択し、ホーム ページに表示するイメージをアップロードします。 イメージには、クリックしたときの移動先となる URL を指定できます。
 
     ![イメージをホーム ページに追加する](media/tutorial-customize-operator/addimage.png)
 

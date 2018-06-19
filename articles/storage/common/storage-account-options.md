@@ -2,18 +2,19 @@
 title: Azure Storage アカウントの種類 | Microsoft Docs
 description: Azure Storage の種類と選択について説明します。
 services: storage
-author: hux
+author: xyh1
 manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: hux
-ms.openlocfilehash: 69da15b98e6c519a3a8352cc7ca7212286cb4e52
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d6279a308bc4539184cca37c1343afe8725eca7f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248301"
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -32,7 +33,7 @@ Azure Storage は、3 種類のアカウントから選択できるようにな�
 
 汎用 v2 (GPv2) アカウントは、BLOB、ファイル、キュー、テーブルの最新機能すべてをサポートするストレージ アカウントです。 GPv2 アカウントは、GPv1 でサポートされているすべての API と機能に加え、BLOB ストレージ アカウントをサポートします。 また、これらのアカウントの種類で同じ持続性、可用性、スケーラビリティ、パフォーマンスの機能もサポートします。 GPv2 アカウントの料金体系は、GB 単価の最安値と業界的に競争力の高いトランザクション料金の実現を目指して設定されています。
 
-GPv1 アカウントは、Azure Portal、PowerShell、または Azure CLI を使用して GPv2 アカウントにアップグレードできます。 
+GPv1 または BLOB ストレージ アカウントは、Azure Portal、PowerShell、または Azure CLI を使用して GPv2 アカウントにアップグレードできます。 
 
 GPv2 ストレージ アカウントのブロック BLOB では、アクセス パターンに基づいて、アカウント レベルでホット ストレージ層とクール ストレージ層を選択でき、BLOB レベルでホット層、クール層、およびアーカイブ層を選択することができます。 頻繁にアクセスするデータ、アクセス頻度の低いデータ、ほとんどアクセスしないデータのそれぞれを、ホット、クール、アーカイブの各ストレージ層に格納してコストを最適化します。 
 
@@ -45,11 +46,11 @@ GPv2 ストレージ アカウントは、**アクセス層**属性をアカウ�
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>GPv2 へのストレージ アカウントのアップグレード
 
-ユーザーは、いつでも PowerShell または Azure CLI を使用して GPv1 アカウントを GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。
+ユーザーは、いつでも PowerShell または Azure CLI を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。
 
 #### <a name="upgrade-with-powershell"></a>PowerShell を使用したアップグレード
 
-PowerShell を使用して GPv1 アカウントを GPv2 アカウントをアップグレードするには、まず、**AzureRm.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)」を参照してください。 その後、次のコマンドを呼び出してアカウントをアップグレードします。その際、目的のリソース グループおよびストレージの名前に置き換えます。
+PowerShell を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントをアップグレードするには、まず、**AzureRm.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)」を参照してください。 その後、次のコマンドを呼び出してアカウントをアップグレードします。その際、目的のリソース グループおよびストレージの名前に置き換えます。
 
 ```powershell
 Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
@@ -57,7 +58,7 @@ Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <stor
 
 #### <a name="upgrade-with-azure-cli"></a>Azure CLI を使用したアップグレード
 
-Azure CLI を使用して GPv1 アカウントを GPv2 アカウントをアップグレードするには、最初に、Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 その後、次のコマンドを呼び出してアカウントをアップグレードします。その際、目的のリソース グループおよびストレージの名前に置き換えます。
+Azure CLI を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントをアップグレードするには、最初に、Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 その後、次のコマンドを呼び出してアカウントをアップグレードします。その際、目的のリソース グループおよびストレージの名前に置き換えます。
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
@@ -82,14 +83,11 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 ブロックまたは追加 BLOB ストレージだけを必要とするアプリケーションでは、階層化されたストレージの分化された料金モデルを利用するために、GPv2 ストレージ アカウントを使用することをお勧めします。 ただし、次のような特定のシナリオでは GPv1 を使用することがあります。
 
-* まだクラシック デプロイ モデルを使用する必要がある。 BLOB ストレージ アカウントは、Azure Resource Manager デプロイ モデルだけで利用できます。
+* まだクラシック デプロイ モデルを使用する必要がある。 GPv2 および BLOB ストレージ アカウントは、Azure Resource Manager デプロイ モデルだけで利用できます。
 
 * 大量のトランザクションまたは geo レプリケーション帯域幅を使用している。どちらも GPv2 ストレージ アカウントと BLOB ストレージ アカウントの方が GPv1 よりもコストが割高となり、低い GB 単価の利点が活かせるだけの十分なストレージを確保できません。
 
 * [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。
-
-> [!NOTE]
-> BLOB ストレージ アカウントは、現在、すべての Azure リージョンでサポートされています。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 すべてのストレージ アカウントでは、各 BLOB の層に基づいた Blob Storage の価格モデルを採用しています。 ストレージ アカウントを使用するときには、課金に関して次の点を考慮してください。
@@ -107,7 +105,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 * **ストレージ層の変更**: アカウント ストレージ層をクールからホットに変更すると、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。 ただし、アカウント ストレージ層をホットからクールに変更したときは、クール層への全データの書き込みに相当する課金が発生します (GPv2 アカウントのみ)。
 
 > [!NOTE]
-> BLOB ストレージ アカウントの価格モデルの詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
+> ストレージ アカウントの価格モデルの詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
 
 ## <a name="quickstart-scenarios"></a>クイックスタート シナリオ
 
@@ -115,8 +113,8 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 * [GPv2 ストレージ アカウントを作成する方法。](#create-a-gpv2-storage-account-using-the-azure-portal)
 * [GPv1 または BLOB ストレージ アカウントを GPv2 ストレージ アカウントに変換する方法。](#convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal)
-* [GPv2 ストレージ アカウントにアカウントを設定する方法。](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)
-* [BLOB ストレージまたは GPv2 ストレージ アカウントに BLOB 層を設定する方法。](#change-the-storage-tier-of-a-blob-using-the-azure-portal)
+* [GPv2 または BLOB ストレージ アカウントのアカウント層を設定する方法。](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)
+* [GPv2 または BLOB ストレージ アカウントの BLOB 層を設定する方法。](#change-the-storage-tier-of-a-blob-using-the-azure-portal)
 
 以下の例では、設定がストレージ アカウント全体に適用されるため、アクセス層をアーカイブに設定することはできません。 アーカイブは、特定の BLOB に対してのみ設定できます。
 
@@ -195,7 +193,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 
 ## <a name="evaluating-and-migrating-to-gpv2-storage-accounts"></a>GPv2 ストレージ アカウントの評価と移行
-このセクションの目的は、ご使用のストレージ アカウントを GPv1 から GPv2 にスムーズに移行できるよう支援することです。 2 つのユーザー シナリオがあります。
+このセクションの目的は、ご使用のストレージ アカウントを GPv1 ストレージ アカウントから GPv2 ストレージ アカウントにスムーズに移行できるよう支援することです。 2 つのユーザー シナリオがあります。
 
 * GPv1 ストレージ アカウントを既に持っており、適切なストレージ層の GPv2 ストレージ アカウントへの変更を評価したい。
 * GPv2 ストレージ アカウントの使用を決定しているか、既に所有しており、ホット ストレージ層とクール ストレージ層のどちらを使用すべきかを評価したい。
@@ -271,11 +269,11 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 ## <a name="migrating-existing-data"></a>既存のデータの移行
 
-GPv1 アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの移行も必要ありません。 このため、GPv1 アカウントを BLOB ストレージ アカウントではなく GPv2 アカウントを移行することをお勧めします。
+GPv1 アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの移行も必要ありません。 このため、GPv1 アカウントを BLOB ストレージ アカウントではなく GPv2 アカウントを移行することを強くお勧めします。
 
-それでも BLOB ストレージ アカウントに移行する必要がある場合は、以下の手順に従ってください。
+それでも BLOB ストレージ アカウントに移行する必要があり、GPv2 アカウントを使用できない場合は、次の手順に従ってください。 
 
-BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化しています。 テーブル、キュー、ファイル、ディスク、および BLOB を格納できる既存の汎用ストレージ アカウントは、BLOB ストレージ アカウントに変換することはできません。 つまり、ストレージ層を使用するには、新しい BLOB ストレージ アカウントを作成し、既存のデータを新たに作成したアカウントに移行する必要があります。
+BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化しています。 テーブル、キュー、ファイル、ディスク、および BLOB を格納できる既存の汎用ストレージ アカウントは、BLOB ストレージ アカウントに変換することはできません。 つまり、ストレージ層を使用するには、新しい BLOB ストレージ アカウントを作成し、既存のデータを新たに作成したアカウントに移行する必要があります。 
 
 オンプレミス ストレージ デバイス、サード パーティのクラウド ストレージ プロバイダー、または Azure の既存の汎用ストレージ アカウントから、既存のデータを BLOB ストレージ アカウントに移行するには、以下の方法を使用できます。
 
@@ -326,7 +324,7 @@ GPv2 からのダウングレードはサポートされていないため、ア
 
 はい。ストレージ アカウントの**アクセス層**属性を設定することで、アカウントのストレージ層を変更することができます。 アカウントのストレージ層の変更は、アカウントに格納されている、層が明示的に設定されていないすべてのオブジェクトに適用されます。 ストレージ層をホットからクールに変更すると、書き込み操作 (10,000 件単位) の料金が発生します (GPv2 ストレージ アカウントのみ)。一方、クールからホットに変更すると、アカウント内のすべてのデータの読み取りに対し、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
 
-**自分の BLOB ストレージ アカウントのストレージ層は、どの程度の頻度で変更できますか。**
+**自分の GPv2 または BLOB ストレージ アカウントのストレージ層は、どの程度の頻度で変更できますか。**
 
 ストレージ層の変更頻度に対して制限は設けられていませんが、ストレージ層をクールからホットに変更すると、かなりの料金が発生する可能性があることに注意してください。 ストレージ層を頻繁に変更することは、お勧めしません。
 
@@ -339,6 +337,10 @@ GPv2 ストレージ アカウントと BLOB ストレージ アカウントの�
 **BLOB ストレージ アカウントにページ BLOB と仮想マシンのディスクを保存できますか。**
 
 いいえ。 BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。 Azure の仮想マシンのディスクではページ BLOB が使用されるため、BLOB ストレージ アカウントは仮想マシンのディスクの格納に使用できません。 ただし、仮想マシンのディスクのバックアップを BLOB ストレージ アカウント内にブロック BLOB として格納することはできます。 これは、BLOB ストレージ アカウントではなく GPv2 の使用が検討される理由の 1 つです。
+
+**GPv2 ストレージ アカウントのページ BLOB を階層化できますか。**
+
+いいえ。 ページ BLOB はアカウントのストレージ層を推測しますが、価格や可用性には影響を与えません。 ページ BLOB のアクセス層をホット、クール、またはアーカイブに変更することはできません。 プレミアム ストレージ アカウント内のページ BLOB では BLOB 層の設定操作が許可されていますが、プレミアム ページ BLOB の許可されたサイズ、IOPS、帯域幅のみを決定します。 詳細については、「[Set Blob Tier](https://docs.microsoft.com/en-us/rest/api/storageservices/set-blob-tier)」(BLOB 層を設定する) を参照してください。
 
 **GPv2 ストレージ アカウントを使用するには、既存のアプリケーションを変更する必要がありますか。**
 

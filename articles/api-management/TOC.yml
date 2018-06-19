@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: 相互証明書認証
           href: api-management-howto-mutual-certificates.md
+        - name: プロトコルと暗号を管理する
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: 開発者エクスペリエンスをカスタマイズする
       items:
         - name: ページのコンテンツとレイアウトを変更する

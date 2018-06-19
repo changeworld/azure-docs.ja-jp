@@ -1,29 +1,26 @@
 ---
-title: Visual Studio と Azure Logic Apps を使用してタスクとプロセスを自動化する | Microsoft Docs
-description: このクイックスタートでは、Azure Logic Apps を使用してタスクとプロセスを自動化するワークフローを Visual Studio で作成する方法について説明します
-author: ecfan
-manager: SyntaxC4
-editor: ''
+title: Visual Studio を使用してワークフローを自動化するロジック アプリを作成する - Azure Logic Apps | Microsoft Docs
+description: Visual Studio 内の Azure Logic Apps を使用してタスク、プロセス、ワークフローを自動化する方法に関するクイック スタート
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 03/15/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 02e19de97654d751dc0cd557791a61a863a9a4e0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300754"
 ---
-# <a name="quickstart-automate-tasks-and-processes-with-azure-logic-apps---visual-studio"></a>クイックスタート: Azure Logic Apps を使用してタスクとプロセスを自動化する - Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート: Azure Logic Apps を使用してタスク、プロセス、ワークフローを作成および自動化する - Visual Studio
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) では、タスクとプロセスを自動化するワークフローを作成し、企業および組織の間でアプリ、データ、システム、サービスを統合できます。 このクイックスタートでは、これらのワークフローを設計して構築する方法について説明します。そのために、Visual Studio でロジック アプリを作成し、それらのアプリをクラウドの <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> にデプロイします。 これらのタスクは <a href="https://portal.azure.com" target="_blank">Azure Portal</a> でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio を使用して、企業および組織の間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成できます。 このクイックスタートでは、これらのワークフローを設計して構築する方法について説明します。そのために、Visual Studio でロジック アプリを作成し、それらのアプリをクラウドの <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> にデプロイします。 これらのタスクは <a href="https://portal.azure.com" target="_blank">Azure Portal</a> でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。 
 
 Azure Logic Apps を使用するのが初めてであり、単に基本的な概念を確認したい場合は、[Azure Portal でのロジック アプリの作成に関するクイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)をお試しください。 ロジック アプリ デザイナーの機能は、Azure Portal でも Visual Studio でも同様です。 
 
@@ -94,7 +91,7 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
 
    Visual Studio では、ロジック アプリと接続に関連付けられたリソースの作成とデプロイに、Azure サブスクリプションとリソース グループが必要です。 
 
-   | Setting | 値の例 | [説明] | 
+   | Setting | 値の例 | 説明 | 
    | ------- | ------------- | ----------- | 
    | ユーザー プロファイルの一覧 | Contoso <br> jamalhartnett@contoso.com | 既定ではサインインに使用したアカウント | 
    | **サブスクリプション** | 従量課金制 <br> (jamalhartnett@contoso.com) | Azure サブスクリプションの名前および関連付けられたアカウント |
@@ -161,7 +158,7 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
    技術的には、トリガーが RSS フィードをチェックして新しい項目を見つけると、トリガーが起動し、ワークフローのアクションを実行するロジック アプリのワークフローのインスタンスが Logic Apps エンジンによって作成されます。
    トリガーで新しい項目が見つからなかった場合、トリガーは起動せず、ワークフローのインスタンス作成は "スキップ" されます。
 
-おめでとうございます。これで、Visual Studio でロジック アプリを構築してデプロイできました。 ロジック アプリを管理して実行履歴を確認するには、「[Manage logic apps with Visual Studio (Visual Studio でロジック アプリを管理する)](../logic-apps/manage-logic-apps-with-visual-studio.md)」を参照してください。
+これで、Visual Studio でロジック アプリをビルドしてデプロイできました。 ロジック アプリを管理して実行履歴を確認するには、「[Manage logic apps with Visual Studio (Visual Studio でロジック アプリを管理する)](../logic-apps/manage-logic-apps-with-visual-studio.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -187,4 +184,5 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
 この記事では、Visual Studio を使用してロジック アプリの構築、デプロイ、実行を行いました。 Visual Studio でロジック アプリの高度なデプロイを管理して実行する方法については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Visual Studio でロジック アプリを管理する](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Visual Studio でロジック アプリを管理する](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Visual Studio でロジック アプリのデプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)

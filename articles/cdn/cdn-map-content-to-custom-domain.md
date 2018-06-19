@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196506"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261272"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する
 このチュートリアルでは、カスタム ドメインを Azure Content Delivery Network (CDN) エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
@@ -123,7 +123,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 4. **[エンドポイントのホスト名]** には、CNAME レコードの宛先ドメインとして使用するエンドポイントのホスト名が事前入力されますが、これは CDN エンドポイントの URL (*&lt;エンドポイントのホスト名&gt;*.azureedge.net) から得られます。 この値は変更しないでください。
 
-5. **[カスタム ホスト名]** に、CNAME レコードのソース ドメインとして使用するカスタム ドメイン (サブドメインを含む) を入力します。 たとえば、www.contoso.com または cdn.contoso.com とします。cdnverify サブドメイン名は使用しないでください。
+5. **[カスタム ホスト名]** に、CNAME レコードのソース ドメインとして使用するカスタム ドメイン (サブドメインを含む) を入力します。 たとえば、www.contoso.com または cdn.contoso.com とします。 cdnverify サブドメイン名は使用しないでください。
 
    ![CDN カスタム ドメイン ダイアログ](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
@@ -134,7 +134,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
    新しいカスタム ドメインの設定がすべての CDN エッジ ノードに反映されるまでに、少し時間がかかる場合があります。 
     - **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
     - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
-    - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。   
+    - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 10 分以内で完了します。   
 
 
 ## <a name="verify-the-custom-domain"></a>カスタム ドメインを確認する

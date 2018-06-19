@@ -1,21 +1,22 @@
 ---
 title: Azure IoT Central でデバイスを監視する | Microsoft Docs
 description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視します。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201389"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235483"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>Azure IoT Central を使用してデバイスを監視する
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>チュートリアル: Azure IoT Central を使用してデバイスを監視する
 
 このチュートリアルでは、オペレーター向けに Microsoft Azure IoT Central アプリケーションを使用して、デバイスを監視し、設定を変更する方法について説明します。
 
@@ -50,11 +51,11 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 
 オペレーターは、**[Measurements]\(測定\)**、**[設定]**、**[プロパティ]**、**[ルール]**、および **[ダッシュボード]** の各ページでデバイスに関する情報を確認できます。 作成者は、コネクテッド空調デバイスに関する重要な情報が表示されるよう、**[ダッシュボード]** をカスタマイズしました。
 
-* **[ダッシュボード]** ビューを選択すると、デバイスに関する情報が表示されます。
+**[ダッシュボード]** ビューを選択すると、デバイスに関する情報が表示されます。
 
-    ![デバイス ダッシュボード](media/tutorial-monitor-devices/initial_screen.png)
+![デバイス ダッシュボード](media/tutorial-monitor-devices/initial_screen.png)
 
-    ダッシュボードのグラフには、デバイスの温度のプロットが表示されます。 **[Set target temperature]** タイルでは、デバイスの現在の目標温度を確認することもできます。 目標温度が高すぎると判断したとしましょう。
+ダッシュボードのグラフには、デバイスの温度のプロットが表示されます。 **[Set target temperature]** タイルでは、デバイスの現在の目標温度を確認することもできます。 目標温度が高すぎると判断したとしましょう。
 
 ## <a name="remediate-an-issue"></a>問題の修復
 
@@ -64,7 +65,7 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 
     ![設定の更新](media/tutorial-monitor-devices/change_settings.png)
 
-1. **[ダッシュボード]** を選択し、新しい設定値を確認します。
+2. **[ダッシュボード]** を選択し、新しい設定値を確認します。
 
     ![更新されたデバイスのダッシュボード](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 > * 問題の調査
 > * 問題の修復
 
-ここでは、デバイスを監視しました。推奨される次の手順は、[デバイスの追加](tutorial-add-device.md)です。
+ここでは、デバイスを監視する方法について説明しました。次の手順では、[デバイスを追加する](tutorial-add-device.md)ことをお勧めします。

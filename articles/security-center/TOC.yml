@@ -53,7 +53,7 @@
     - name: セキュリティ正常性を監視する
       href: security-center-monitoring.md
       items:
-        - name: コンピューティングのセキュリティ
+        - name: 計算とアプリのセキュリティ
           href: security-center-virtual-machine-recommendations.md
           items:
             - name: ディスク暗号化の適用
@@ -74,6 +74,10 @@
               href: security-center-update-os-version.md
             - name: 脆弱性評価がインストールされていない
               href: security-center-vulnerability-assessment-recommendations.md
+            - name: Web アプリケーション ファイアウォールの追加
+              href: security-center-add-web-application-firewall.md
+            - name: アプリケーション保護を完了する
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: ネットワークのセキュリティ
           href: security-center-network-recommendations.md
           items:
@@ -94,13 +98,6 @@
               href: security-center-enable-auditing-on-sql-servers.md
             - name: Transparent Data Encryption の有効化
               href: security-center-enable-transparent-data-encryption.md
-        - name: アプリケーションのセキュリティ
-          href: security-center-application-recommendations.md
-          items:
-            - name: Web アプリケーション ファイアウォールの追加
-              href: security-center-add-web-application-firewall.md
-            - name: アプリケーション保護を完了する
-              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: ID とアクセス
           href: security-center-identity-access.md
     - name: クラウドの防御の適用

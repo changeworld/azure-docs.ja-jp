@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297973"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure Cost Management で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -35,7 +36,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory のアクセス許可を確認する
 
-1. [Azure Portal](https://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. Azure Portal で、**[Azure Active Directory]** を選びます。
 3. Azure Active Directory で **[ユーザー設定]** を選択します。
 4. **[アプリの登録]** オプションを確認します。
@@ -59,7 +60,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 1. アカウント管理で Azure Cost Management に既に存在する "_アクティブ化されていない_" サブスクリプションを更新する場合は、親 "_テナントの GUID_" の右側にある編集用の鉛筆アイコンをクリックします。 サブスクリプションは親テナントの下でグループ化されるため、サブスクリプションを個別にアクティブ化しないようにします。
     ![サブスクリプションの再検出](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
-    1. [Azure Portal](https://portal.azure.com) にログインします。
+    1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. Azure Portal で、**[Azure Active Directory]** を選びます。
     3. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。
     4. [ディレクトリ ID] の GUID をコピーします。 この値がテナント ID です。
@@ -95,14 +96,39 @@ Azure Cost Management ポータルを初めて使うとき、Enterprise Agreemen
 1. 再販業者がユーザーのアカウントの "_マークアップ_" を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
 2. ユーザーが Azure Cost Management で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Azure エンタープライズ契約を登録してコスト データを表示する](https://docs.microsoft.com/azure/cost-management/quick-register-ea)」をご覧ください。
 
-Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。
-
 Azure Enterprise Agreement API キーを生成して Azure Cost Management を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
 - [企業ユーザー向けの Reporting API の概要](../billing/billing-enterprise-api.md)
 - 「**Enabling data access to the API (API へのデータ アクセスを有効にする)**」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
 
 また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
+
+Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。 ただし、この管理者の要件は回避できます。 Azure Active Directory 管理者に、PowerShell スクリプトを使用して **CloudynAzureCollector** を承認するアクセス許可を付与するように要求できます。 次のスクリプトは、Azure Active Directory の Service Principal **CloudynAzureCollector** を登録するアクセス許可を付与します。
+
+```
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#Tenant - enter your tenant ID or Name
+$tenant = "<ReplaceWithYourTenantID>"
+
+#Cloudyn Collector application ID
+$appId = "83e638ef-7885-479f-bbe8-9150acccdb3d"
+
+#URL to activate the consent screen
+$url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&response_type=code&client_id="+$appId+"&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FCloudynJava&prompt=consent"
+
+#Choose your browser, the default is Internet Explorer
+
+#Chrome
+#[System.Diagnostics.Process]::Start("chrome.exe", "--incognito $url")
+
+#Firefox
+#[System.Diagnostics.Process]::Start("firefox.exe","-private-window $url" )
+
+#IExplorer
+[System.Diagnostics.Process]::Start("iexplore.exe","$url -private" )
+
+```
 
 ## <a name="next-steps"></a>次の手順
 

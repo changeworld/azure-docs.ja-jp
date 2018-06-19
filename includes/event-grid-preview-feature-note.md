@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 05/09/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: b4014c511261774ff1c8f0b3535ea9f6904f9ffe
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ee84fa12aa55cbe54ac2f40012eb3582f19e422a
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414690"
 ---
 > [!NOTE]
-> この機能はプレビュー段階にあります。 使用するには、[AZ CLI 2.0](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合には、`api-version=2018-05-01-preview` を使用してください。
+> この機能はプレビュー段階にあります。 使用するには、[Azure CLI](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合には、`api-version=2018-05-01-preview` を使用してください。

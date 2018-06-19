@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2018
+ms.date: 06/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9ebdbb8958779e074195623aec90b7a6f6de2bb4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99ecf8af278823fbae41cb14df5c2372d6451e0c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236197"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -111,7 +112,7 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 
 ### <a name="how-do-i-specify-which-traffic-goes-through-the-vpn-gateway"></a>VPN ゲートウェイを通過するトラフィックの種類は、どのようにすれば指定できますか。
 
-#### <a name="resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデル
+#### <a name="resource-manager-deployment-model"></a>Resource Manager デプロイ モデル
 
 * PowerShell: "AddressPrefix" を使用してローカル ネットワーク ゲートウェイのトラフィックを指定します。
 * Azure Portal: ローカル ネットワーク ゲートウェイ、[構成]、[アドレス空間] の順に移動します。
@@ -166,15 +167,15 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="P2S"></a>ポイント対サイト - ネイティブ Azure 証明書認証
+## <a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
 
-このセクションは、Resource Manager デプロイメント モデルに適用されます。
+このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>ポイント対サイト - RADIUS 認証
+## <a name="P2SRADIUS"></a>RADIUS 認証を使用したポイント対サイト
 
-このセクションは、Resource Manager デプロイメント モデルに適用されます。
+このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
@@ -184,11 +185,13 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>オンプレミス サイトや別の仮想ネットワークに向けてトラフィックを通過させるときに、Azure VPN Gateway を使用できますか。
 
-**Resource Manager デプロイメント モデル**<br>
+
+  **Resource Manager デプロイ モデル**<br>
 はい。 詳細については、「[BGP](#bgp)」セクションを参照してください。
 
-**クラシック デプロイメント モデル**<br>
-クラシック デプロイメント モデルを使用して Azure VPN Gateway 経由でトラフィックを通過させることは可能です。この場合、ネットワーク構成ファイル内の静的に定義されたアドレス空間が使用されます。 BGP はまだ、クラシック デプロイメント モデルを使用した Azure Virtual Network と VPN Gateway ではサポートされていません。 BGP が使用できない場合、手動で通過アドレス空間を定義すると非常にエラーが発生しやすいため、これは推奨していません。
+
+  **クラシック デプロイ モデル**<br>
+クラシック デプロイ モデルを使用して Azure VPN Gateway 経由でトラフィックを通過させることは可能です。この場合、ネットワーク構成ファイル内の静的に定義されたアドレス空間が使用されます。 BGP はまだ、クラシック デプロイ モデルを使用した Azure Virtual Network と VPN Gateway ではサポートされていません。 BGP が使用できない場合、手動で通過アドレス空間を定義すると非常にエラーが発生しやすいため、これは推奨していません。
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure では、同一仮想ネットワークのすべての VPN 接続に対して同一の IPsec/IKE 事前共有キーが生成されるのですか。
 

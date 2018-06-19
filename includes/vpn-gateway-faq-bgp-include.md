@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dfc75a64e8bd28d7aba9984e5a1d5720330f1da3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 93698df0e1684b469b6e2a03e6681499949aab6d
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414605"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -37,7 +38,7 @@ ms.lasthandoff: 03/23/2018
 23456、64496 ～ 64511、65535 ～ 65551、および 429496729
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>オンプレミスの VPN ネットワークと Azure Vnet の両方に同じ ASN を使用できますか。
-いいえ、BGP を使用して接続している場合は、オンプレミスのネットワークと Azure Vnet に異なる ASN を割り当てる必要があります。 Azure VPN Gateway には、クロスプレミス接続向けに BGP が有効になっているかどうかにかかわらず、ASN の既定値として 65515 が割り当てられています。 VPN ゲートウェイを作成する際に異なる ASN を割り当てて既定値を上書きするか、ゲートウェイの作成後に ASN を変更することができます。 対応する Azure ローカル ネットワーク ゲートウェイにオンプレミスの ASN を割り当てる必要があります。
+いいえ、BGP を使用して接続している場合は、オンプレミスのネットワークと Azure Vnet に異なる ASN を割り当てる必要があります。 Azure VPN Gateway には、クロスプレミス接続向けに BGP が有効になっているかどうかにかかわらず、ASN の既定値として 65515 が割り当てられています。 VPN ゲートウェイを作成する際に異なる ASN を割り当てて既定値をオーバーライドするか、ゲートウェイの作成後に ASN を変更することができます。 対応する Azure ローカル ネットワーク ゲートウェイにオンプレミスの ASN を割り当てる必要があります。
 
 ### <a name="what-address-prefixes-will-azure-vpn-gateways-advertise-to-me"></a>Azure VPN ゲートウェイはどのようなアドレス プレフィックスをアドバタイズしますか。
 Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに次のルートをアドバタイズします。
@@ -81,7 +82,7 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 Azure VPN ゲートウェイでは、仮想ネットワークに対して定義されている GatewaySubnet 範囲から 1 つの IP アドレスを割り当てます。 既定では、範囲内で最後から 2 つ目のアドレスが使用されます。 たとえば、GatewaySubnet が 10.12.255.0/27 で、範囲が 10.12.255.0 から 10.12.255.31 となる場合、Azure VPN ゲートウェイの BGP ピア IP アドレスは 10.12.255.30 になります。 Azure VPN ゲートウェイの情報を表示すると、この情報を確認できます。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN デバイスの BGP ピア IP アドレスに関する要件はどんなものですか。
-オンプレミスの BGP ピア アドレスを VPN デバイスのパブリック IP アドレスと **同じにすることはできません** 。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイスのループバック インターフェイスに割り当てられたアドレスを使用できます。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
+オンプレミスの BGP ピア アドレスを VPN デバイスのパブリック IP アドレスと **同じにすることはできません** 。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>BGP を使用する際、ローカル ネットワーク ゲートウェイのアドレス プレフィックスとして何を指定する必要がありますか。
 Azure のローカル ネットワーク ゲートウェイでは、オンプレミス ネットワークに初期アドレス プレフィックスが指定されます。 BGP を使用する際は、BGP ピア IP アドレスのホスト プレフィックス (/32 プレフィックス) をオンプレミス ネットワークのアドレス空間として割り当てる必要があります。 BGP ピア IP アドレスが 10.52.255.254 の場合は、このオンプレミス ネットワークを表しているローカル ネットワーク ゲートウェイの localNetworkAddressSpace として "10.52.255.254/32" を指定します。 これにより、Azure VPN ゲートウェイで S2S VPN トンネルを経由する BGP セッションが確立されます。

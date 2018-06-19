@@ -122,7 +122,6 @@
 ### リファレンス
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
-#### [Notifications](active-directory-reporting-notifications.md)
 #### [監査アクティビティのリファレンス](active-directory-reporting-activity-audit-reference.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
 ### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR のレポート](authentication/howto-sspr-reporting.md)
+### [脆弱なパスワードを排除する](authentication/concept-password-ban-bad.md)
+### [禁止パスワード リストを構成する](authentication/howto-password-ban-bad.md)
+### [オンプレミスの統合](authentication/concept-password-ban-bad-on-premises.md)
+### [Azure AD のパスワード保護をデプロイする](authentication/howto-password-ban-bad-on-premises.md)
+### [Azure AD のパスワード保護を構成する](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [Azure AD のパスワード保護を監視する](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT 管理者: パスワードのリセット
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [SSPR のライセンス](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## アプリを管理する
 ### [概要](manage-apps/what-is-application-management.md)
 ### [使用の開始](manage-apps/plan-an-application-integration.md)
-### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
+### [SaaS アプリの統合に関するチュートリアル](saas-apps/tutorial-list.md)
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [スナップショット レポートの作成](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 ### [SaaS アプリへのユーザーのプロビジョニングとプロビジョニング解除](active-directory-saas-app-provisioning.md) 
-#### [アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md) 
+#### [アプリの統合に関するチュートリアル](saas-apps/tutorial-list.md) 
 #### [SCIM 対応アプリへのプロビジョニングの自動化](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md) 
 #### [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md) 
@@ -320,7 +325,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
@@ -348,7 +353,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

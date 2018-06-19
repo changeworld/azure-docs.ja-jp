@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202849"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236367"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -48,8 +48,8 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 **プロパティ** | **詳細**
 --- | ---
 **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 既定では、ターゲットの場所は、米国西部 2 に設定されます。
-**ストレージ冗長** | 移行後に Azure VM で使用される[ストレージ冗長](https://docs.microsoft.com/azure/storage/common/storage-redundancy)の種類。 既定値はローカル冗長ストレージ (LRS) です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされていることに注意してください。そのため、現在、プロパティには LRS オプションだけがあります。
-**サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 サイズ変更は、オンプレミス VM の*パフォーマンス履歴*に基づいて行うことも、パフォーマンス履歴を考慮せずに、Azure でも "*オンプレミスと同じ*" VM サイズにすることもできます。 既定値は、パフォーマンスに基づくサイズ変更です。
+**ストレージの種類** | Azure に割り当てるディスクの種類を指定できます。 このプロパティは、サイズ変更の設定基準が オンプレミスのときに適用されます。 ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 既定値は、Premium マネージド ディスクです。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいてディスクのレコメンデーションが自動的に行われます。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
+**サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 サイズ変更は、オンプレミス VM の*パフォーマンス履歴*に基づいて行うことも、パフォーマンス履歴を考慮せずに、Azure でも "*オンプレミスと同じ*" VM サイズにすることもできます。 サイズ変更設定の既定値はオンプレミスです。
 **価格プラン** | コスト計算の評価では、ソフトウェア アシュアランスがあるかどうかや、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用できるかどうかが考慮されます。 また、登録対象の [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)も考慮されるほか、そのプランに加えて適用されるサブスクリプション固有の割引 (%) を指定することができます。
 **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討するかもしれません。この場合、VM の待ち時間は短くなりますが、コストは高くなります。 一方、開発/テスト環境の場合は、Basic レベルを検討するかもしれません。この場合、VM の待ち時間は長くなり、コストは安くなります。 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
 **パフォーマンス履歴** | 既定では、オンプレミスのマシンのパフォーマンスが、過去 1 日のパフォーマンス履歴の 95% パーセンタイル値を使用して評価されます。 評価のプロパティで、これらの値を変更することができます。
@@ -100,4 +100,6 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 
 
 ## <a name="next-steps"></a>次のステップ
-オンプレミスの VMware VM に関する評価を[チュートリアルに従って](tutorial-assessment-vmware.md)作成します。
+
+- オンプレミスの VMware VM に関する評価を[チュートリアルに従って](tutorial-assessment-vmware.md)作成します。
+- Azure Migrate に関する FAQ の[詳細を確認](resources-faq.md)します。

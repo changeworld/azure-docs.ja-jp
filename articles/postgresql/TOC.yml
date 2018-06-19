@@ -146,7 +146,21 @@
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: ビデオ
-      href: videos.md
+      items:
+        - name: 製品のビデオ
+          href: videos.md
+        - name: ハウツー ビデオ シリーズ
+          items:
+            - name: 製品の機能とベネフィットを学習する
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: PostgreSQL アプリを Azure に移行する
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: Cognitive Services でインテリジェントなアプリを作成する
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: OSBA を使用してコンテナーを接続する
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: アプリのデータを Power BI に接続する
+              href: 'https://aka.ms/postg-powerbi-vid'
     - name: フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
     - name: 利用可能なリージョン

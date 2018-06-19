@@ -1,20 +1,20 @@
 ---
-title: メトリック値が条件を満たしている場合は通知を受け取る | Microsoft Docs
+title: メトリック値が条件を満たしている場合は通知を受け取る
 description: ユーザーがロジック アプリのメトリックを作成するのに役立つクイック スタート ガイド
 author: anirudhcavale
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 01955ba7a61b3eb46be6bad72c7243c4918add12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263050"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>メトリック値が条件を満たしている場合は通知を受け取る
 
@@ -65,11 +65,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="view-metrics-for-your-logic-app"></a>ロジック アプリのメトリックを表示する
 
-1. 左側のナビゲーション ウィンドウで **[監視]**オプションをクリックします。
+1. 左側のナビゲーション ウィンドウで **[監視]** オプションをクリックします。
 
 2. **[メトリック]** タブを選択し、ロジック アプリの**サブスクリプション**、**リソース グループ**、**リソースの種類**および**リソース**の情報を入力します。
 
-3. メトリックの一覧から、**[開始された実行]** を選択します。
+3. メトリックの一覧から、**[失敗した実行]** を選択します。
 
 4. グラフの **[時間の範囲]** を変更し、過去 1 時間のデータを表示するようにします。
 

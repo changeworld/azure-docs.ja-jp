@@ -1,6 +1,6 @@
 ---
 title: Azure Stack とは | Microsoft Docs
-description: Azure Stack を使用すると、お使いのデータセンターで Azure を実行できます。
+description: Azure Stack を使用すると、お使いのデータセンターで Azure のサービスを実行できます。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,33 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/22/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: d54f392eddfcca99e7fe0b037b9efd0a4e90433c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 848df59b01cc0c03b9a5f3dae2644d469c8651bb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234888"
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 
-Microsoft Azure Stack はハイブリッド クラウド プラットフォームで、所属している組織のデータセンターから Azure サービスを提供できます。  Azure Stack は、主要なシナリオで最新アプリケーション向けの新しいシナリオ (エッジ環境や非接続環境など) を実現し、セキュリティとコンプライアンスの要件に対応できるように設計されています。  Azure Stack には、お客様のニーズに合わせて 2 つのデプロイ オプションが用意されています。
+Microsoft Azure Stack は、データセンター内の Azure のサービスを提供できるようにする、ハイブリッド クラウド プラットフォームです。 このプラットフォームは、進化し続けるビジネス要件をサポートするために設計されています。 Azure Stack は、最新アプリケーション向けの新しいシナリオ (エッジ環境や非接続環境など) を実現し、セキュリティとコンプライアンスの要件に対応できるように設計されています。
+
+Azure Stack には、お客様のニーズに合わせて 2 つのデプロイ オプションが用意されています。
 
 ## <a name="azure-stack-integrated-systems"></a>Azure Stack 統合システム
-Azure Stack 統合システムは Microsoft と[ハードウェア パートナー](https://azure.microsoft.com/overview/azure-stack/integrated-systems/)のパートナーシップによって提供され、クラウドと歩調を合わせた革新と、管理のしやすさをバランスよく両立させたソリューションを実現します。  Azure Stack はハードウェアとソフトウェアの統合システムとして提供されるため、クラウドからの革新を採用しつつ適度な柔軟性と制御性が得られます。  Azure Stack 統合システムには 4 ノードから 12 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。  Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。    
+Azure Stack 統合システムは Microsoft と[ハードウェア パートナー](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) のパートナーシップによって提供され、クラウドと歩調を合わせた革新と、コンピューティングの管理のしやすさを両立させたソリューションを実現します。 Azure Stack は統合されたハードウェアおよび ソフトウェア システムとして提供されているため、必要な柔軟性やコントロールが得られるほか、クラウドから革新を図ることができます。 Azure Stack 統合システムには 4 ノードから 12 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。  Azure Stack 統合システムの使用により、運用ワークロードに向けて、新しいシナリオを作成し、新しいソリューションをデプロイできます。
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
-Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) は、Azure Stack の評価と学習に使用できる Azure Stack の単一ノード デプロイです。  ASDK は開発環境としても使用でき、Azure と一貫性のある API やツールを使用して開発を行うことができます。 ASDK の運用環境での使用は想定されていません。
+
+Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) は、Azure Stack の評価と学習に使用できる Azure Stack の単一ノード デプロイです。  ASDK を開発環境として使用し、Azure と一貫性のある API やツールを使用してアプリをビルドできます。
+
+>[!Note]
+>ASDK の運用環境での使用は想定されていません。
 
 ASDK には次の制限事項があります。
+
 * ASDK は、単一の Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
-* すべてのコンポーネントが単一のマシンにデプロイされるため、テナント用のリソースとして使用できる物理リソースは限られます。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
-* 単一ホスト/NIC 要件のため、ネットワークのシナリオは制限されています。  
+* Azure Stack のコンポーネントは単一のホスト コンピューターにデプロイされるため、テナントのリソースに対して使用できる物理リソースは限られています。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
+* 単一のホストと NIC のデプロイ要件により、ネットワークのシナリオは限られています。
 
 ## <a name="next-steps"></a>次の手順
-[主要機能および概念](azure-stack-key-features.md)
 
-[Azure Stack: Azure の拡張機能 (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
-
+- [主要機能および概念](azure-stack-key-features.md)
+- [Azure Stack: Azure の拡張機能 (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)

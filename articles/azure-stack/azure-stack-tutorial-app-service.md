@@ -12,18 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: e2f15ca3a46af51ab6228e772298c51ad33fd49c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0171dba639e480a04cdd1c7f23d546d01121fb42
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247400"
 ---
-# <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
-Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Functions、Web アプリケーション、API アプリケーションを作成できるようにするプランを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
+# <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>チュートリアル: Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
+
+Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Functions、Web アプリケーション、API アプリケーションを作成できるようにするプランを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。
+
+これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
 > * App Service リソース プロバイダーをデプロイする
@@ -46,40 +50,45 @@ Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Fun
 2.  [プランを作成します](azure-stack-create-plan.md)。 *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスと **[AppService Quota]\(AppService クォータ\)** クォータを選択します。
 
     > [!NOTE]
-    > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、Wordpress には **Microsoft.MySQL** が必要です。
-    > 
-    >
+    > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、WordPress には **Microsoft.MySQL** が必要です。
 
 3.  [オファーを作成し](azure-stack-create-offer.md)、それに **TestAppServiceOffer** という名前を付け、**[TestAppServicePlan]** プランを選択します。
 
 ## <a name="test-the-offer"></a>オファーのテスト
 
-これで App Service リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、アプリを作成できます。 この例では、DNN プラットフォーム コンテンツ管理システムを作成します。 最初に SQL データベース、次に DNN Web アプリを作成する必要があります。
+これで App Service リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、アプリを作成できます。
+
+この例では、DNN プラットフォーム コンテンツ管理システムを作成します。 まず、SQL データベース、次に DNN Web アプリを作成する必要があります。
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
+
 1. Azure Stack ポータル (https://portal.local.azurestack.external) にテナントとしてサインインします。
-2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** > **[Select an offer] \(オファーの選択)** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
+2. **[サブスクリプションの取得]** を選択し、**[表示名]** > **[オファーの選択]** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成
 
-1. **+** > **[データ + ストレージ]** > **[SQL Database]** をクリックします。
-2. 次を除き、各フィールドの既定値のままにします。
+1. **+** > **[データ + ストレージ]** > **[SQL Database]** を選択します。
+2. 次のフィールドを除き、既定値のままにします。
+
     - **[データベース名]**: DNNdb
     - **[Max Size in MB] (最大サイズ (MB))**: 100
     - **[サブスクリプション]**: TestAppServiceOffer
     - **[リソース グループ]**: DNN-RG
-3. **[Login Settings] (ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、この手順内の後で使用します。
-4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
-5. **Create** をクリックしてください。
 
-### <a name="create-a-dnn-app"></a>DNN アプリの作成    
+3. **[Login Settings]\(ログイン設定\)** を選択し、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、このチュートリアルで後ほど使用します。
+4. **[SKU]** で、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
+5. **[作成]** を選択します。
 
-1. **+** > **[See all] (すべてを表示)** > **[DNN Platform preview] (DNN プラットフォームのプレビュー)** > **[作成]** をクリックします。
-2. **[App name] \(アプリ名)** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
-3. **[Configure required settings] \(必要な設定の構成)** > **[Create New] \(新規作成)** をクリックし、**App Service プラン**の名前を入力します。
-4. **[Pricing tier] \(価格レベル)** > **[F1 Free] \(F1 無料)** > **[選択]** > **[OK]** をクリックします。
-5. **[Database] \(データベース)** をクリックし、以前に作成した SQL データベースの情報を入力します。
-6. **Create** をクリックしてください。
+### <a name="create-a-dnn-app"></a>DNN アプリの作成
+
+1. **+** > **[See all]\(すべてを表示\)** > **[DNN Platform preview]\(DNN プラットフォームのプレビュー\)** > **[作成]** の順に選択します。
+2. **[アプリ名]** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
+3. **[必要な設定の構成]** > **[新規作成]** の順に選択し、**[App Service プラン]** の名前を入力します。
+4. **[価格レベル]** > **[F1 Free]\(F1 無料\)** > **[選択]** > **[OK]** の順に選択します。
+5. **[データベース]** を選択し、以前に作成した SQL データベースの情報を入力します。
+6. **[作成]** を選択します。
+
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

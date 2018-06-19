@@ -5,14 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9522e1f56c7aa8ce8fbe2b5b7b04f5482738342c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236683"
 ---
 ### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
@@ -28,6 +29,12 @@ ms.lasthandoff: 03/28/2018
 * Windows 10
 * Mac OS X バージョン 10.11 (El Capitan)
 * Mac OS X バージョン 10.12 (Sierra)
+* Linux (StrongSwan)
+* iOS
+
+>[!NOTE]
+>[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+>
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -51,7 +58,7 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>サイト間接続およびポイント対サイト接続の構成は、同一仮想ネットワークに共存させることはできますか。
 
-はい。 Resource Manager デプロイメント モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイメント モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
+はい。 Resource Manager デプロイ モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 

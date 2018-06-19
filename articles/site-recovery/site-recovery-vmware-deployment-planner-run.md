@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1d9fa845171ffa5a40ce569170dfbb577ea4e8c8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 930cd3cc637c2c8286f8388b9f116b9ba33c3fc5
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236010"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (VMware から Azure)
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -71,7 +72,7 @@ ms.lasthandoff: 05/08/2018
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | プロファイリングの対象となる VM がある vCenter サーバー/vSphere ESXi ホストの完全修飾ドメイン名または IP アドレス。|
@@ -85,7 +86,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | (省略可) vCenter サーバー/vSphere ESXi ホストに接続するためのパスワード。 ここで指定しなかった場合は、コマンドの実行時に入力を求められます。|
 |-Port|(省略可) vCenter/ESXi ホストに接続するためのポート番号。 既定のポートは 443 です。|
 |-Protocol| (省略可) vCenter に接続するためのプロトコル ("http" または "https") を指定します。 既定のプロトコルは https です。|
-| -StorageAccountName | (省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 または storageV2 (汎用 v2) のいずれかである必要があります|
+| -StorageAccountName | (省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。 |
 | -StorageAccountKey | (省略可) ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] の順に移動します。 |
 | -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
 
@@ -148,7 +149,7 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|パラメーター名 | [説明] |
+|パラメーター名 | 説明 |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  レポートを生成するプロファイリング対象の VM がある vCenter/vSphere サーバーの完全修飾ドメイン名または IP アドレス (プロファイリング時と同じ名前または IP アドレスを使用します)。 プロファイリング時に vCenter サーバーを使用した場合は、レポートの生成対象として vSphere サーバーを使用することはできません (その逆も同様)。|
@@ -258,12 +259,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|パラメーター名 | [説明] |
+|パラメーター名 | 説明 |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|仮想化の種類を指定します (VMware または Hyper-V)。|
 | -Directory | (省略可) プロファイリング データ (プロファイリング中に生成されたファイル) の格納先となる UNC パスまたはローカル ディレクトリ パス。 レポートを生成するには、このデータが必要となります。 ディレクトリ名を指定しなかった場合は、"ProfiledData" ディレクトリが使用されます。 |
-| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 または storageV2 (汎用 v2) のいずれかである必要があります。|
+| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] \(クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。 |
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する VM 名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致させる必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |

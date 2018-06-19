@@ -5,23 +5,22 @@ services: event-hubs
 documentationcenter: ''
 author: basilhariri
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2018
+ms.date: 06/08/2018
 ms.author: bahariri
-ms.openlocfilehash: cabbb7ed6157a6c68530ab6b5f405aa67b31a1b2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8ef6240d19ce1ac1b891c95ce525a8bd211a2900
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297225"
 ---
-# <a name="stream-into-event-hubs-for-kafka-ecosystem"></a>Kafka エコシステム用 Event Hubs へのストリーム配信
+# <a name="stream-into-event-hubs-for-the-kafka-ecosystem"></a>Kafka エコシステム用 Event Hubs へのストリーム配信
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs) で入手できます。
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、以下が必要です。
+このクイック スタートを完了するには、次の前提条件を満たしている必要があります。
 
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 * [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/10/2018
 
 2. `azure-event-hubs/samples/kafka/quickstart/producer` に移動します。
 
-3. src/main/resources/producer.config にあるプロデューサーの構成の詳細を次のように更新します。
+3. `src/main/resources/producer.config` で次のようにプロデューサーの構成の詳細を更新します。
 
     ```xml
     bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -54,13 +53,13 @@ ms.lasthandoff: 05/10/2018
     ```
 4. プロデューサー コードを実行し、Kafka 対応 Event Hubs にストリーム配信します。
    
-    ```java
+    ```shell
     mvn clean package
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
-5. azure-event-hubs/samples/kafka/quickstart/consumer に移動します。
+5. `azure-event-hubs/samples/kafka/quickstart/consumer` に移動します。
 
-6. src/main/resources/consumer.config にあるコンシューマーの構成の詳細を次のように更新します。
+6. `src/main/resources/consumer.config` で次のようにコンシューマーの構成の詳細を更新します。
    
     ```xml
     bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -76,10 +75,11 @@ ms.lasthandoff: 05/10/2018
     mvn exec:java -Dexec.mainClass="TestConsumer"                                    
     ```
 
-Event Hubs Kafka クラスターに、プロデューサーからキューに配置されたイベントがある場合は、コンシューマーからそれらの受信を開始します。
+Event Hubs Kafka クラスターにイベントがある場合は、コンシューマーからそれらの受信を開始します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Kafka エコシステム用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して、オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Kafka エコシステム用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
+* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Apache Flink](event-hubs-kafka-flink-tutorial.md) または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する。

@@ -1,3 +1,1 @@
-Azure Portal のサービス一覧から **[Azure AD B2C]** を選択します。
-
-![B2C サービスを選択します。](media/active-directory-b2c-find-service-settings/select-b2c-service.png)
+Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、前のチュートリアルで作成したテナントが使用されます。

@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261323"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 
@@ -43,7 +44,7 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 
 * [Git](https://git-scm.com/downloads)
 * 有効な [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
+* [Docker](https://docs.docker.com/install/)
 * [Docker Hub アカウント](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
@@ -226,7 +227,7 @@ AzureWebJobsStorage=$storageConnectionString
 > * Docker Hub から Function App をデプロイします。
 > * Function App にアプリケーション設定を追加します。
 
-Azure Functions Core Tools を使用したローカルでの Azure Functions の開発の詳細については、次を参照してください。
+App Service のコア プラットフォームに組み込まれる継続的インテグレーション機能を有効にする方法について説明します。 関数アプリを構成して、Docker Hub 内のイメージを更新するときに、コンテナーが再デプロイされるように設定できます。
 
 > [!div class="nextstepaction"] 
-> [Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)
+> [Web App for Containers での継続的デプロイ](../app-service/containers/app-service-linux-ci-cd.md)

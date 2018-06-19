@@ -1,30 +1,26 @@
 ---
-title: 初めての自動化されたワークフローの作成 - Azure Logic Apps | Microsoft Docs
-description: このクイックスタートでは、Azure Logic Apps によるワークフロー自動化の基本について説明します。システム統合と Enterprise Application Integration (EAI) によってシステムとクラウド サービスの連携を図るシナリオを想定しています。
-author: ecfan
-manager: anneta
-editor: ''
+title: ワークフローを初めて作成して自動化する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps を使用してタスク、プロセス、ワークフローを自動化するロジック アプリを初めて作成する方法に関するクイック スタート。 お使いのシステム & クラウド サービスのシステム統合ソリューションと Enterprise Application Integration (EAI) ソリューション用のロジック アプリを作成する
 services: logic-apps
-keywords: ワークフロー, クラウド サービス, システム統合, Enterprise Application Integration, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300941"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>クイックスタート: 初めてのロジック アプリ ワークフローの作成 - Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート: Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure Portal
 
-このクイックスタートでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使って、自動化されたワークフローを作成する基本的な方法を紹介しています。 この記事では、Web サイトの RSS フィードを定期的にチェックして新しい項目を検出するロジック アプリを作成します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
+このクイックスタートでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して、自動化されたワークフローを初めてビルドする基本的な方法を紹介しています。 この記事では、Web サイトの RSS フィードを定期的にチェックして新しい項目を検出するロジック アプリを作成します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
 
 ![概要 - ロジック アプリの例](./media/quickstart-create-first-logic-app-workflow/overview.png)
 
@@ -73,7 +69,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **RSS フィードの URL** | ```http://feeds.reuters.com/reuters/topNews``` | 監視する RSS フィードのリンク | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -145,7 +141,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![電子メールの本文の内容を追加する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Setting | [説明] | 
+      | Setting | 説明 | 
       | ------- | ----------- | 
       | **フィード タイトル** | 項目のタイトル | 
       | **フィードの公開日付** | 項目の公開日時 | 

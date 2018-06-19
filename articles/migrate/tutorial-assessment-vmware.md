@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使って Azure に移行するため�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 695298be6cb9f56de26b8682c556285aba22d4a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272065"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236146"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -118,29 +118,6 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    OVA バージョン 1.0.8.59 の場合
-
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    OVA バージョン 1.0.8.49 の場合
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    OVA バージョン 1.0.8.40 の場合:
-
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>コレクター VM を作成する
 
 ダウンロードしたファイルを vCenter Server にインポートします。
@@ -162,7 +139,8 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 1. vSphere Client コンソールで、[VM] を右クリックして **[Open Console]\(コンソールを開く\)** を選択します。
 2. アプライアンスの設定で、言語、タイム ゾーン、パスワードを指定します。
 3. デスクトップにある **[Run collector]\(コレクターの実行\)** ショートカットをクリックします。
-4. Azure Migrate Collector で、**[Set Up Prerequisites]\(前提条件の設定\)** を開きます。
+4. コレクター UI の上部バーの **[Check for updates]\(更新プログラムの確認\)** をクリックし、コレクターが最新のバージョンで実行されていることを確認します。 ない場合は、リンクから最新のアップグレード パッケージをダウンロードしてコレクターを更新することもできます。
+5. Azure Migrate Collector で、**[Set Up Prerequisites]\(前提条件の設定\)** を開きます。
     - ライセンス条項に同意し、サード パーティの情報を確認します。
     - VM がインターネットにアクセスできることをコレクターがチェックします。
     - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件と、コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity)を参照してください。
@@ -173,13 +151,13 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
     - VMware PowerCLI をダウンロードしてインストールします。
 
-5. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
+6. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバーの VM を検出するために使用する読み取り専用の資格情報を指定します。
     - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,500 台を超えないようにします。 大規模な環境を検出する方法の詳細については、[こちら](how-to-scale-assessment.md)を参照してください。
 
-6. **[Specify migration project]\(移行プロジェクトの指定\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
-7. **[View collection progress]\(収集の進行状況の表示\)** で検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。 Azure Migrate Collector によって収集されるデータの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected)を参照してください。
+7. **[Specify migration project]\(移行プロジェクトの指定\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
+8. **[View collection progress]\(収集の進行状況の表示\)** で検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。 Azure Migrate Collector によって収集されるデータの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected)を参照してください。
 
 > [!NOTE]
 > コレクターは、オペレーティング システムの言語およびコレクター インターフェイスの言語として、"英語 (米国)" のみをサポートしています。 他の言語は将来サポートされるようになります。
@@ -219,7 +197,7 @@ VM が検出された後、それらをグループ化して、評価を作成�
 - Azure に未対応
 - 対応不明
 
-準備ができている VM の場合、Azure Migrate は Azure での VM のサイズを推奨します。 Azure Migrate による推奨サイズは、評価プロパティで指定されたサイズ変更の設定基準に依存します。 サイズ変更の設定基準がパフォーマンス ベースである場合は、VM のパフォーマンス履歴を考慮してサイズの推奨が行われます。 サイズ変更の設定基準が "オンプレミスとして" の場合は、オンプレミスの VM のサイズを調べて、Azure での VM サイズの推奨が行われます (現状のままのサイズ)。 VM のサイズ変更では、VM の CPU およびメモリ使用率データは考慮されません。 ただし、オンプレミスのサイズ変更の場合のディスクは、パフォーマンス データを調べてサイズが変更されます。  Azure Migrate でのサイズ変更方法の詳細については、[こちら](concepts-assessment-calculation.md)を参照してください。
+準備ができている VM の場合、Azure Migrate は Azure での VM のサイズを推奨します。 Azure Migrate による推奨サイズは、評価プロパティで指定されたサイズ変更の設定基準に依存します。 サイズ変更の設定基準が「パフォーマンス ベース」である場合は、VM (CPU とメモリ) とディスク (IOPS とスループット) のパフォーマンス履歴を考慮してサイズのレコメンデーションが行われます。 サイズ変更の設定基準が「オンプレミス」の場合、Azure Migrate は VM やディスクのパフォーマンス データを考慮しません。 Azure の VM サイズのレコメンデーションは、オンプレミスの VM のサイズを見て行われ、ディスク サイズの設定はアセスメント プロパティで指定されたストレージの種類の基づいて行われます (既定はプレミアム ディスクです)。 Azure Migrate でのサイズ変更方法の詳細については、[こちら](concepts-assessment-calculation.md)を参照してください。
 
 Azure に未対応か条件付きで対応の VM の場合、Azure Migrate には対応の問題の説明と修復の手順が表示されます。
 
@@ -244,7 +222,7 @@ Azure Migrate では、Azure 対応性とサイズ変更の他に、VM の移行
 
 Azure Migrate の各評価は、1 つ星から 5 つ星 (1 つ星が最低で 5 つ星が最高) の範囲の信頼度レーティングに関連付けられています。 信頼度レーティングは、評価の計算に必要なデータ ポイントの可用性に基づいて、評価に割り当てられます。 評価の信頼度レーティングは、Azure Migrate による推奨サイズの信頼性を判断する目安となります。
 
-VM のパフォーマンス ベースのサイズ変更の場合、Azure Migrate には CPU とメモリの使用率データが必要です。 また、VM に接続されている各ディスクのサイズ変更の場合は、読み取り/書き込みの IOPS とスループットが必要です。 同様に、パフォーマンス ベースのサイズ変更を行うために、VM に接続されている各ネットワーク アダプターについても、ネットワークの入出力が必要です。 上記の使用率の数値のいずれかが vCenter Server にない場合、Azure Migrate による推奨サイズは信頼できないことがあります。 次のように、使用可能なデータ ポイントの割合に応じて、評価の信頼度レーティングが決まります。
+評価の信頼度レーティングは、サイズ変更の設定基準が「パフォーマンス ベース」の場合の評価に便利です。 サイズ変更がパフォーマンス ベースの場合、Azure Migrate には VM の CPU とメモリの使用率データが必要です。 さらに、VM に接続されている各ディスクについて、ディスクの IOPS とスループットのデータが必要です。 同様に、サイズ変更をパフォーマンス ベースで行う場合、Azure Migrate には VM に接続されている各ネットワーク アダプターについても、ネットワークの入出力が必要です。 上記の使用率の数値のいずれかが vCenter Server にない場合、Azure Migrate による推奨サイズは信頼できないことがあります。 次のように、使用可能なデータ ポイントの割合に応じて、評価の信頼度レーティングが決まります。
 
    **データ ポイントの可用性** | **信頼度レーティング**
    --- | ---
@@ -269,3 +247,4 @@ VM のパフォーマンス ベースのサイズ変更の場合、Azure Migrate
 - [マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を使って、信頼度の高い評価グループを作成する方法を確認します。
 - 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。
 - 大規模な VMware 環境の検出と評価の方法を[確認](how-to-scale-assessment.md)します。
+- Azure Migrate に関する FAQ の[詳細を確認](resources-faq.md)します。

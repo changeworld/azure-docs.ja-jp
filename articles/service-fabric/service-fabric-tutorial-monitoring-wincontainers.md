@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248243"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric で Windows コンテナーを監視する
 
@@ -212,18 +213,14 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>パフォーマンス カウンターを選択するように OMS エージェントを構成する
 
-OMS エージェントを使用するもう 1 つの利点として、Azure 診断エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、OMS UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 OMS エージェントを使用するには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ポータル]** をクリックします。
+OMS エージェントを使用するもう 1 つの利点として、Azure 診断エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、OMS UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
 
-![OMS ポータル](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-OMS ポータルにワークスペースが表示されます。ここでは、ソリューションの作成、カスタム ダッシュボードの作成、OMS エージェントの構成を行うことができます。 
-* 画面の右上にある**歯車**をクリックし、*[設定]* メニューを開きます。
+OMS ワークスペースに移動します。ここでは、ソリューションの確認、カスタム ダッシュボードの作成、OMS エージェントの構成を行うことができます。 
+* [詳細設定] メニューを開くには、**[詳細設定]** をクリックします。
 * **[接続されたソース]** > **[Windows Server]** の順にクリックし、*"5 台の Windows コンピューターが接続されています"* と表示されることを確認します。
-* **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Log Analytics の推奨される一覧と、他のカウンターを検索するオプションが表示されます。 **[選択したパフォーマンス カウンターを追加する]** をクリックして、提案されたメトリックの収集を開始します。
+* **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Log Analytics のレコメンデーション一覧と、他のカウンターを検索するオプションが表示されます。 **Processor(_Total)\% Processor Time** カウンターと **Memory(*)\Available MBytes** カウンターが収集されていることを確認します。
 
-    ![Perf counters](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-Azure Portal に戻り、数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
+数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
 
 *注: これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。* 
 

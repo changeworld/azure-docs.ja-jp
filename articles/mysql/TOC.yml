@@ -184,7 +184,19 @@
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: ビデオ
-      href: videos.md
+      items:
+        - name: 製品のビデオ
+          href: videos.md
+        - name: ハウツー ビデオ シリーズ
+          items:
+            - name: 製品の機能とベネフィットを学習する
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: MySQL アプリを Azure に移行する
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: Web アプリをビルドしてデプロイする
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: OSBA を使用してコンテナーを接続する
+              href: 'https://aka.ms/mysql-osba-vid'
     - name: 機能をリクエストする
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: 利用可能なリージョン

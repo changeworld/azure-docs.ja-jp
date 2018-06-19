@@ -16,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ff709d021c9d4201301edd9890f1e4a94f555313
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 105eb95ed28d9a278d60d538aabaadb412c16f4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267113"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -57,7 +58,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用します。 |
@@ -75,11 +76,11 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
 仮想マシンは、[仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
-Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azure.microsoft.com/marketplace/virtual-machines/)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 
+Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azure.microsoft.com/marketplace/virtual-machines/)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 64 ビットのオペレーティング システムのみがサポートされています。 サポートされているゲストのオペレーティング システム、ロール、機能の詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
@@ -100,7 +101,7 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
-| リソース | 必須 | [説明] |
+| リソース | 必須 | 説明 |
 | --- | --- | --- |
 | [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |[はい] |VM は、リソース グループに含まれる必要があります。 |
 | [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |[はい] |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
@@ -131,7 +132,7 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 ### <a name="get-information-about-a-vm"></a>VM に関する情報の取得
 次の表に、VM に関する情報の取得方法の一部を示します。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |ハブ メニューの **[仮想マシン]** をクリックし、一覧から VM を選択します。 その VM のブレードで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。 |
 | Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
