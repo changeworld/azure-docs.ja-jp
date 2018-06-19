@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 447445ace41bb6b4677a75f5324368b269f938ea
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 688f8da809a40f333aeb7b4ef959deb69ff94121
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355238"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808381"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -43,10 +43,11 @@ App Service Environment (ASE) は、以下を必要とするアプリケーシ�
 
 ASE は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。 顧客は、受信と送信の両方のアプリケーション ネットワーク トラフィックをきめ細かく制御することができます。 アプリケーションは VPN を介した、オンプレミスの企業リソースへのセキュリティで保護された高速な接続を確立することができます。
 
-* ASE によって、高スケールなアプリ ホスティングと安全なネットワーク アクセスが実現します。 詳細については、ASE について取り上げた [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) を参照してください。
+* ASE には専用の価格レベルがあります。[独立したオファー](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)が高い拡張性とセキュリティを促進するのにどのように役立つかを学習してください。
+* [App Service Environments v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) は、ネットワークのサブネット内のアプリを保護するための環境と、Azure App Service の独自のプライベートな展開を提供します。
 * 複数の ASE を使って水平方向にスケーリングすることができます。 詳細については、[地理的に分散したアプリ フットプリントの設定](app-service-app-service-environment-geo-distributed-scale.md)に関するページを参照してください。
 * AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
-* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 [ILB App Service Environment と Azure Application Gateway の統合][AppGW]に関するページを参照してください。
+* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
 
 ## <a name="dedicated-environment"></a>専用の環境 ##
 
@@ -87,6 +88,8 @@ ASEv1 では、すべてのリソースを手動で管理する必要があり�
 ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていないワーカーに使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
 <!--Links-->
+[App Service Environments v2]: https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment
+[Isolated offering]: https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
 [MakeASEfromTemplate]: ./create-from-template.md
@@ -105,4 +108,4 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../application-gateway/waf-overview.md

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802053"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データの送信元、送信されたさまざまな種類のデータに関する情報が含まれます。  データ使用状況を確認して分析するには、**[ログ分析の利用状況]** ダッシュボードを使用します。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -116,7 +117,7 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 
 次に、"*利用状況*" ダッシュボードに戻り、*[ソリューションごとのデータ ボリューム]* グラフを確認します。 特定のソリューションでデータを最も多く送信しているコンピューターを確認するには、一覧内のソリューションの名前をクリックします。 一覧内の最初のソリューションの名前をクリックします。 
 
-次のスクリーンショットでは、*acmetomcat* コンピューターが Log Management ソリューションで最も多くのデータを送信していることがわかります。<br><br> ![ソリューションのデータ量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+次のスクリーンショットでは、*mycon* コンピューターが Log Management ソリューションで最も多くのデータを送信していることがわかります。<br><br> ![ソリューションのデータ量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 必要に応じて、追加の分析を実行して、ソリューションまたはデータの種類内でデータ量が多いものを特定します。 クエリの例を次に示します。
 

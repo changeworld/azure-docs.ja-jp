@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724100"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Azure リソースのマネージド サービス ID (MSI) とは
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証用のコードに必要な資格情報を管理する方法です。 これらの資格情報を安全に保つことは重要なタスクです。 こうした資格情報が開発者ワークステーションに表示されず、ソース管理で検査されないことが理想的です。 Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
+マネージド サービス ID は、Azure サブスクリプションの既定値である Azure Active Directory Free に付属しています。 管理対象サービス ID のための追加コストはありません。
+
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 マネージド サービス ID には、**システム割り当て**と**ユーザー割り当て**の 2 種類があります。
 
 - **システム割り当て ID** は、Azure サービス インスタンス上で直接有効にされます。 有効にすると、サービス インスタンスのサブスクリプションによって信頼されている Azure AD テナントに、Azure がサービス インスタンスの ID を作成します。 ID が作成されると、その資格情報がサービス インスタンスにプロビジョニングされます。 システム割り当て ID のライフ サイクルは、その ID が有効にされた Azure サービス インスタンスに直接関連付けられます。 サービス インスタンスが削除された場合、Azure は Azure AD の資格情報および ID を自動的にクリーンアップします。
-- **ユーザー割り当て ID** (パブリック プレビュー) は、スタンドアロン Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 ID が作成された後、1 つまたは複数の Azure サービス インスタンスに割り当てできます。 ユーザー割り当て ID のライフ サイクルは、その ID が割り当てられている Azure サービス インスタンスのライフ サイクルとは個別に管理されます。
+- **ユーザー割り当て ID** は、スタンドアロン Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 ID が作成された後、1 つまたは複数の Azure サービス インスタンスに割り当てできます。 ユーザー割り当て ID のライフ サイクルは、その ID が割り当てられている Azure サービス インスタンスのライフ サイクルとは個別に管理されます。
 
 そのため、コードはシステム割り当て ID とユーザー割り当て ID のいずれかを使用して、Azure AD 認証をサポートするサービスのアクセス トークンを要求することができます。 その間、Azure は、サービス インスタンスによって使用される資格情報のローリングを実行します。
 
@@ -103,17 +106,6 @@ ms.lasthandoff: 05/10/2018
 
 マネージド ID は、Azure AD 認証をサポートするサービスの認証に使用することができます。 マネージド サービス ID をサポートしている Azure サービスの一覧については、次の記事を参照してください。
 - [管理対象サービス ID をサポートするサービス](services-support-msi.md)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>管理対象サービス ID にはどれくらいのコストがかかりますか。
-
-管理対象サービス ID は、Azure サブスクリプションの既定値である Azure Active Directory Free に付属しています。 管理対象サービス ID のための追加コストはありません。
-
-## <a name="support-and-feedback"></a>サポートとフィードバック
-
-お気軽にお問い合わせください。
-
-* タグ [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi) を付けて Stack Overflow にある使用方法に関するご質問からお問い合わせください。
-* 機能の要求またはフィードバックの提供は、[開発者向けの Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)で行ってください。
 
 ## <a name="next-steps"></a>次の手順
 

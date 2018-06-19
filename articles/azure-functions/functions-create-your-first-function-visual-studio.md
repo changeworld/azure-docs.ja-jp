@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用して Azure で初めての関数を作成する | Microsoft Docs
-description: Azure Functions Tools for Visual Studio を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。
+description: Visual Studio を使用し、HTTP によってトリガーされる Azure 関数を作成して発行します。
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 05/22/2018
 ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: a1f0a022b4620b15e2d76a127ed48e5472e4a5bb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc, devcenter, 23113853-34f2-4f
+ms.openlocfilehash: d815bf3fa4b63f12ac9f0d871e353e872a5aca25
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699973"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
@@ -29,23 +30,17 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" 関数をローカルで作成してテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
 
-![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
-
 このトピックには、同じ基本的な手順を示す[動画](#watch-the-video)が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降のバージョン (**Azure 開発**ワークロードを含む) をインストールします。
+* [Visual Studio 2017](https://azure.microsoft.com/downloads/) をインストールし、**Azure 開発**ワークロードもインストールされていることを確認します。
 
-    ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+* [最新の Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)があることを確認します。
 
-    Visual Studio がインストール済みである場合、保留中の更新プログラムがあれば、忘れずにインストールしておいてください。 
-
-* Visual Studio 2017 のバージョン 15.4 以前を使って Azure 開発ワークロードをインストールした場合は、さらに[Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)も更新する必要があります。 
-    
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
@@ -53,17 +48,15 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 Visual Studio によってプロジェクトが作成されます。その中には、選択した関数の種類のスケルトン コードが含まれているクラスがあります。 メソッドの **FunctionName** 属性は、関数の名前を設定します。 **HttpTrigger** 属性は、関数が HTTP 要求によってトリガーされることを指定します。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。 メソッドに適切な属性を適用することによって、関数に入力および出力バインディングを追加することができます。 詳細については、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)の「[トリガーとバインド](functions-dotnet-class-library.md#triggers-and-bindings)」のセクションを参照してください。
 
-![関数コード ファイル](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
-
 関数プロジェクトと、HTTP によってトリガーされる関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio から初めて関数を開始すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio から初めて関数を開始すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
 1. 関数をテストするには、F5 キーを押します。 メッセージが表示されたら、Visual Studio からの要求に同意し、Azure Functions Core (CLI) ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるようにファイアウォールの例外を有効にすることが必要になる場合もあります。
 
-2. Azure Functions のランタイムの出力から、関数の URL をコピーします。  
+2. Azure Functions のランタイムの出力から、関数の URL をコピーします。
 
     ![Azure ローカル ランタイム](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
@@ -89,7 +82,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
         http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
-2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 関数によって返されたリモート GET 要求に対するブラウザーでの応答を次に示します。 
+2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 関数によって返されたリモート GET 要求に対するブラウザーでの応答を次に示します。
 
     ![ブラウザーでの関数の応答](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
 
@@ -99,9 +92,8 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="next-steps"></a>次の手順
 
-Visual Studio を使用して、HTTP によってトリガーされる単純な関数を含む C# 関数アプリを作成して発行しました。 
+Visual Studio を使用して、HTTP によってトリガーされる単純な関数を含む C# 関数アプリを作成して発行しました。
 
-+ 他の種類のトリガーとバインディングをサポートするようにプロジェクトを構成する方法については、「[Azure Functions Tools for Visual Studio](functions-develop-vs.md)」の「[ローカル開発用のプロジェクトを構成する](functions-develop-vs.md#configure-the-project-for-local-development)」セクションを参照してください。
-+ Azure Functions Core Tools を使用したローカル テストとデバッグの詳細については、「[Azure 関数をローカルでコーディングしてテストする方法](functions-run-local.md)」を参照してください。 
-+ .NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions での .NET クラス ライブラリの使用](functions-dotnet-class-library.md)」を参照してください。 
-
+* [他のサービスと統合する入力および出力バインドを追加する方法を学習します。](functions-develop-vs.md#add-bindings)
+* [Azure Functions Core Tools を使用したローカル テストとデバッグについて学習します。](functions-run-local.md#vs-debug)
+* [.NET クラス ライブラリとして関数を開発する詳細を学習します](functions-dotnet-class-library.md)。

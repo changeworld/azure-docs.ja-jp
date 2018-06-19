@@ -5,27 +5,31 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 06/04/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212791"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737206"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
  [Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
-このチュートリアルでは、オンプレミス VM (Hyper-V または VMware) や Windows/Linux 物理サーバーを Azure にレプリケートするときの Azure コンポーネントを準備する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+この記事は、オンプレミスの VM のディザスター リカバリーを設定する方法について説明するシリーズの 1 番目のチュートリアルです。 オンプレミスの VMware VM、Hyper-V VM、または物理サーバーの保護に関係します。
+
+これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 
+
+この記事では、オンプレミス VM (Hyper-V または VMware) や Windows/Linux 物理サーバーを Azure にレプリケートするときの Azure コンポーネントを準備する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * お使いの Azure アカウントにレプリケーションのアクセス許可があることを確認します。
-> * Azure ストレージ アカウントを作成します。 レプリケートされたデータは、そこに格納されます。
-> * Recovery Services コンテナーを作成します。
-> * Azure ネットワークを設定します。 フェールオーバー後に作成された Azure VM は、この Azure ネットワークに参加します。
+> * Azure ストレージ アカウントを作成します。 レプリケートされたマシンのイメージはそこに保存されます。
+> * Recovery Services コンテナーを作成します。 コンテナーには、VM および他のレプリケーション コンポーネントのメタデータと構成情報が保持されます。
+> * Azure ネットワークをセットアップします。 フェールオーバー後に作成された Azure VM は、この Azure ネットワークに参加します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
@@ -45,27 +49,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。
+レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。 ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。 このチュートリアルでは、西ヨーロッパを使用しています。
 
-1. [Azure Portal](https://portal.azure.com) のメニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** を選択します。
+1. [Azure portal](https://portal.azure.com) のメニューで、**[リソースの作成]** > **[Storage]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** を使用します。 選択する名前は Azure 内で一意である必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
 3. **[デプロイ モデル]** で、**[Resource Manager]** を選択します。
-4. **[アカウントの種類]** で **[汎用]** を選択します。 **[パフォーマンス]** で **[Standard]** を選択します。 Blob ストレージを選択しないでください。
-5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。
-6. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。
-7. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** という名前を使用します。
-8. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。 この一連のチュートリアルでは、**[西ヨーロッパ]** リージョンを使用します。
+4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。 **[パフォーマンス]** で **[Standard]** を選択します。 
+5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。 **[安全な転送が必須]** は **[無効]** のままにしています。
+6. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。 
+2. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** を使用します。
+3. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 
 
    ![ストレージ アカウントの作成](media/tutorial-prepare-azure/create-storageacct.png)
 
 9. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-## <a name="create-a-vault"></a>コンテナーの作成
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-1. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]\(Backup と Site Recovery\)** の順に選択します。
+1. Azure portal で、**[リソースの作成]** > **[Storage]** > **[Backup and Site Recovery (OMS)]** の順に選択します。
 2. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
-3. **[リソース グループ]** で、**contosoRG** という名前の既存のリソース グループを選択します。
-4. **[場所]** で、この一連のチュートリアルで使用している Azure リージョン **[西ヨーロッパ]** を指定します。
+3. **[リソース グループ]** では、**contosoRG** を使います。
+4. **[場所]** では、 **[西ヨーロッパ]** を使います。
 5. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** > **[作成]** の順に選択します。
 
    ![新しい資格情報コンテナーの作成](./media/tutorial-prepare-azure/new-vault-settings.png)
@@ -77,25 +81,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 フェールオーバー後にストレージから作成された Azure VM は、このネットワークに参加します。
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。
-2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。 [リソース マネージャー] が推奨されるデプロイ モデルです。 その後、次の手順に従います。
-
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 **ContosoASRnet** という名前を使用します。
-
-   b. **[リソース グループ]** で、既存のリソース グループ **contosoRG** を選択します。
-
-   c. **[アドレス範囲]** で、ネットワーク アドレス範囲として **10.0.0.0/24** を入力します。
-
-   d. このチュートリアルでは、サブネットは必要ありません。
-
-   e. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
-
-   f. **[場所]** では **[西ヨーロッパ]** を選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。
-
-3. **[作成]** を選択します。
+2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
+3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
+4. ネットワークを作成するリソース グループを指定します。 既存のリソース グループ **contosoRG** を使っています。
+5. **[アドレス範囲]** には、ネットワーク **10.0.0.0/24** の範囲を入力します。 このネットワークでは、サブネットは使っていません。
+6. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
+7. **[場所]** では **[西ヨーロッパ]** を選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。
+8. 基本的な DDoS 保護の既定のオプションのままにし、ネットワーク上にサービス エンドポイントはありません。
+9. **Create** をクリックしてください。
 
    ![仮想ネットワークの作成](media/tutorial-prepare-azure/create-network.png)
 
    仮想ネットワークの作成には数秒かかります。 作成が完了すると、Azure Portal ダッシュボードに表示されます。
+
+## <a name="useful-links"></a>便利なリンク
+
+- [Azure ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)についての学習。
+- [Azure Storage の種類](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)についての学習。
+- - [ストレージの冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)についての詳細、およびストレージの[セキュリティで保護された転送](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

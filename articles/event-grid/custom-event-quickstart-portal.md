@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/05/2018
+ms.date: 06/04/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a16a9bdb866803a65bf7204628b735bd9ac60aee
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fa6a232c657d9d96943f241eb05221e42f0f599b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302561"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763342"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Azure Portal と Event Grid を使ったカスタム イベントの作成とルーティング
 
@@ -71,7 +71,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
    ![関数の作成](./media/custom-event-quickstart-portal/create-function.png)
 
-1. Azure Functions の一意の名前を指定します。 画像に示されている名前は使用しないでください。 この記事で作成したリソース グループを選択します ホスティング プランには、**[従量課金プラン]** を使用します。 提示された新しいストレージ アカウントを使用してください。 連の値を指定したら、**[作成]** をクリックします
+1. Azure Functions の一意の名前を指定します。 画像に示されている名前は使用しないでください。 この記事で作成したリソース グループを選択します ホスティング プランには、**[従量課金プラン]** を使用します。 提示された新しいストレージ アカウントを使用してください。 ユーザーは Application Insights を無効にできます。 連の値を指定したら、**[作成]** をクリックします
 
    ![関数の値の指定](./media/custom-event-quickstart-portal/provide-function-values.png)
 

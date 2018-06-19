@@ -1,31 +1,26 @@
 ---
 title: Azure IoT Hub を使用してメッセージ ルーティングを構成する (.NET) | Microsoft Docs
 description: Azure IoT Hub を使用してメッセージ ルーティングを構成します
-services: iot-hub
-documentationcenter: .net
 author: robinsh
 manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 0674ed033f77d7d2eca319d0b1e82171dfa4256d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700827"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>チュートリアル: IoT Hub を使用してメッセージ ルーティングを構成する
 
-メッセージ ルーティングを使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (Blob ストレージ、Service Bus キュー、Service Bus トピック、Event Hubs など) に、利用統計情報を送信できます。 メッセージ ルーティングの構成中に、特定の規則と一致するルートをカスタマイズするためのルーティング規則を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 
+メッセージ ルーティングを使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (BLOB ストレージ、Service Bus キュー、Service Bus トピック、イベント ハブなど) に、利用統計情報を送信できます。 メッセージ ルーティングの構成中に、特定の規則と一致するルートをカスタマイズするためのルーティング規則を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 
 
-このチュートリアルでは、IoT Hub を使用してルーティング規則を設定および使用する方法を説明します。 IoT デバイスから Blob ストレージや Service Bus キューなどの複数のサービスのいずれかに、メッセージをルーティングします。 Service Bus キューへのメッセージは、ロジック アプリによって取得されて、メールで送信されます。 ルーティングが明示的に設定されていないメッセージは、既定のエンドポイントに送信され、PowerBI の視覚エフェクトに表示されます。
+このチュートリアルでは、IoT Hub を使用してルーティング規則を設定および使用する方法を説明します。 IoT デバイスから Blob ストレージや Service Bus キューなどの複数のサービスのいずれかに、メッセージをルーティングします。 Service Bus キューへのメッセージは、ロジック アプリによって取得されて、メールで送信されます。 ルーティングが明示的に設定されていないメッセージは、既定のエンドポイントに送信され、Power BI の視覚エフェクトに表示されます。
 
 このチュートリアルでは、以下のタスクを実行します。
 
@@ -34,11 +29,11 @@ ms.lasthandoff: 05/07/2018
 > * ストレージ アカウントおよび Service Bus キューに対するエンドポイントとルートを IoT hub で構成します。
 > * メッセージが Service Bus キューに追加されるとトリガーされてメールを送信するロジック アプリを作成します。
 > * 異なるルーティング オプションでハブにメッセージを送信する IoT デバイスをシミュレートするアプリをダウンロードして実行します。
-> * 既定のエンドポイントに送信されたデータに対する PowerBI の視覚エフェクトを作成します。
+> * 既定のエンドポイントに送信されたデータに対する Power BI の視覚エフェクトを作成します。
 > * 結果を表示します ...
 > * ... Service Bus キューおよびメール内の結果。
 > * ... ストレージ アカウント内の結果。
-> * ... PowerBI 視覚エフェクト内の結果。
+> * ... Power BI の視覚エフェクト内の結果。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +41,7 @@ ms.lasthandoff: 05/07/2018
 
 - [Visual Studio for Windows](https://www.visualstudio.com/) をインストールする。 
 
-- 既定のエンドポイントの Stream Analytics を分析するための PowerBI アカウント。 ([Power BI を無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web))
+- 既定のエンドポイントの Stream Analytics を分析するための Power BI アカウント。 ([Power BI を無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web))
 
 - 通知メールを送信するための Office 365 アカウント。 
 
@@ -104,24 +99,24 @@ Cloud Shell ではなくローカルな CLI を使うほうがよい場合は、
 # You need it to create the device identity. 
 az extension add --name azure-cli-iot-ext
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
 iotHubConsumerGroup=ContosoConsumers
 containerName=contosoresults
 iotDeviceName=Contoso-Test-Device 
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-iotHubName=ContosoTestHub 
-storageAccountName=contosoresultsstorage 
-sbNameSpace=ContosoSBNamespace 
-sbQueueName=ContosoSBQueue
-
 # Create the resource group to be used
 #   for all the resources for this tutorial.
 az group create --name $resourceGroup \
     --location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+iotHubName=ContosoTestHub$RANDOM
+echo "IoT hub name = " $iotHubName
 
 # Create the IoT hub.
 az iot hub create --name $iotHubName \
@@ -131,6 +126,10 @@ az iot hub create --name $iotHubName \
 # Add a consumer group to the IoT hub.
 az iot hub consumer-group create --hub-name $iotHubName \
     --name $iotHubConsumerGroup
+
+# The storage account name must be globally unique, so add a random number to the end.
+storageAccountName=contosostorage$RANDOM
+echo "Storage account name = " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 az storage account create --name $storageAccountName \
@@ -154,11 +153,19 @@ az storage container create --name $containerName \
     --account-key $storageAccountKey \
     --public-access off 
 
+# The Service Bus namespace must be globally unique, so add a random number to the end.
+sbNameSpace=ContosoSBNamespace$RANDOM
+echo "Service Bus namespace = " $sbNameSpace
+
 # Create the Service Bus namespace.
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
     
+# The Service Bus queue name must be globally unique, so add a random number to the end.
+sbQueueName=ContosoSBQueue$RANDOM
+echo "Service Bus queue name = " $sbQueueName
+
 # Create the Service Bus queue to be used as a routing destination.
 az servicebus queue create --name $sbQueueName \
     --namespace-name $sbNameSpace \
@@ -183,23 +190,23 @@ az iot hub device-identity show --device-id $iotDeviceName \
 # Log into Azure account.
 Login-AzureRMAccount
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 $location = "West US"
 $resourceGroup = "ContosoResources"
 $iotHubConsumerGroup = "ContosoConsumers"
 $containerName = "contosoresults"
 $iotDeviceName = "Contoso-Test-Device"
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-$iotHubName = "ContosoTestHub"
-$storageAccountName = "contosoresultsstorage"
-$serviceBusNamespace = "ContosoSBNamespace"
-$serviceBusQueueName  = "ContosoSBQueue"
-
-# Create the resource group to be used  
+# Create the resource group to be used 
 #   for all resources for this tutorial.
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+$iotHubName = "ContosoTestHub$(Get-Random)"
+Write-Host "IoT hub name is " $iotHubName
 
 # Create the IoT hub.
 New-AzureRmIotHub -ResourceGroupName $resourceGroup `
@@ -213,6 +220,10 @@ Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
   -EventHubConsumerGroupName $iotHubConsumerGroup `
   -EventHubEndpointName "events"
+
+# The storage account name must be globally unique, so add a random number to the end.
+$storageAccountName = "contosostorage$(Get-Random)"
+Write-Host "storage account name is " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 # Save the context for the storage account 
@@ -228,10 +239,20 @@ $storageContext = $storageAccount.Context
 New-AzureStorageContainer -Name $containerName `
     -Context $storageContext
 
+# The Service Bus namespace must be globally unique,
+#   so add a random number to the end.
+$serviceBusNamespace = "ContosoSBNamespace$(Get-Random)"
+Write-Host "Service Bus namespace is " $serviceBusNamespace
+
 # Create the Service Bus namespace.
 New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroup `
     -Location $location `
     -Name $serviceBusNamespace 
+
+# The Service Bus queue name must be globally unique,
+#  so add a random number to the end.
+$serviceBusQueueName  = "ContosoSBQueue$(Get-Random)"
+Write-Host "Service Bus queue name is " $serviceBusQueueName 
 
 # Create the Service Bus queue to be used as a routing destination.
 New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
@@ -256,8 +277,6 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    ![キーを含む、デバイスの詳細を示すスクリーンショット。](./media/tutorial-routing/device-details.png)
 
-
-
 ## <a name="set-up-message-routing"></a>メッセージ ルーティングを設定する
 
 シミュレートされたデバイスによってメッセージに添付されたプロパティに基づいて、メッセージを異なるリソースにルーティングします。 カスタム ルーティングされないメッセージは、既定のエンドポイント (メッセージ/イベント) に送信されます。 
@@ -266,7 +285,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 |------|------|
 |level="storage" |Azure Storage に書き込みます。|
 |level="critical" |Service Bus キューに書き込みます。 ロジック アプリがキューからメッセージを取得し、Office 365 を使ってメールでメッセージを送信します。|
-|default |PowerBI を使ってこのデータを表示します。|
+|default |Power BI を使ってこのデータを表示します。|
 
 ### <a name="routing-to-a-storage-account"></a>ストレージ アカウントへのルーティング 
 
@@ -278,7 +297,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    
    **[エンドポイントのタイプ]**: ドロップダウン リストから **[Azure ストレージ コンテナー]** を選びます。
 
-   **[コンテナーを選択します]** をクリックして、ストレージ アカウントの一覧を表示します。 使うストレージ アカウントを選びます。 このチュートリアルでは、**contosoresultsstorage** を使います。 次に、コンテナーを選びます。 このチュートリアルでは、**contosoresults** を使います。 **[選択]** をクリックすると、[エンドポイントの追加] ウィンドウに戻ります。 
+   **[コンテナーを選択します]** をクリックして、ストレージ アカウントの一覧を表示します。 使うストレージ アカウントを選びます。 このチュートリアルでは、**contosostorage** を使います。 次に、コンテナーを選びます。 このチュートリアルでは、**contosoresults** を使います。 **[選択]** をクリックすると、**[エンドポイントの追加]** ウィンドウに戻ります。 
    
    ![エンドポイントの追加を示すスクリーンショット。](./media/tutorial-routing/add-endpoint-storage-account.png)
    
@@ -390,7 +409,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics を設定する
 
-PowerBI の視覚エフェクトにデータを表示するには、最初に、データを取得するように Stream Analytics ジョブを設定します。 既定のエンドポイントに送信されるのは **level** が **normal** のメッセージだけであり、メッセージは PowerBI の視覚エフェクトのために Stream Analytics ジョブによって取得されることに注意してください。
+Power BI の視覚エフェクトにデータを表示するには、最初に、データを取得するように Stream Analytics ジョブを設定します。 既定のエンドポイントに送信されるのは **level** が **normal** のメッセージだけであり、メッセージは Power BI の視覚エフェクトのために Stream Analytics ジョブによって取得されることに注意してください。
 
 ### <a name="create-the-stream-analytics-job"></a>Stream Analytics ジョブを作成する
 
@@ -405,6 +424,8 @@ PowerBI の視覚エフェクトにデータを表示するには、最初に、
    **[場所]**: セットアップ スクリプトで使われるのと同じ場所を使います。 このチュートリアルでは、**[米国西部]** を使います。 
 
    ![Stream Analytics ジョブの作成方法を示すスクリーンショット。](./media/tutorial-routing/stream-analytics-create-job.png)
+
+3. **[作成]** をクリックしてジョブを作成します。 ジョブに戻るには、**[リソース グループ]** をクリックします。 このチュートリアルでは、**ContosoResources** を使います。 リソース グループを選択し、リソースの一覧で Stream Analytics ジョブをクリックします。 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
@@ -434,17 +455,17 @@ PowerBI の視覚エフェクトにデータを表示するには、最初に、
 
 1. **[ジョブ トポロジ]** で **[出力]** をクリックします。
 
-2. **[出力]** ウィンドウで **[追加]** をクリックし、**[PowerBI]** を選びます。 表示される画面で、次のフィールドを入力します。
+2. **[出力]** ウィンドウで **[追加]** をクリックし、**[Power BI]** を選びます。 表示される画面で、次のフィールドを入力します。
 
    **[出力のエイリアス]**: 出力の一意のエイリアス。 このチュートリアルでは、**contosooutputs** を使います。 
 
-   **[データセット名]**: PowerBI で使うデータセットの名前です。 このチュートリアルでは、**contosodataset** を使います。 
+   **[データセット名]**: Power BI で使うデータセットの名前です。 このチュートリアルでは、**contosodataset** を使います。 
 
-   **[テーブル名]**: PowerBI で使うテーブルの名前です。 このチュートリアルでは、**contosotable** を使います。
+   **[テーブル名]**: Power BI で使うテーブルの名前です。 このチュートリアルでは、**contosotable** を使います。
 
    その他のフィールドについては、既定値を指定できます。
 
-3. **[承認]** をクリックして、PowerBI アカウントにサインインします。
+3. **[承認]** をクリックして、Power BI アカウントにサインインします。
 
    ![Stream Analytics ジョブの出力の設定方法を示すスクリーンショット。](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
@@ -462,19 +483,19 @@ PowerBI の視覚エフェクトにデータを表示するには、最初に、
 
 4. **[Save]** をクリックします。
 
-5. [クエリ] ウィンドウを閉じます。
+5. [クエリ] ウィンドウを閉じます。 [リソース グループ] のリソースの表示に戻ります。 Stream Analytics ジョブをクリックします。 このチュートリアルでは **contosoJob** という名前です。
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
 Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
 
-PowerBI レポートを設定するにはデータが必要なので、デバイスを作成し、デバイス シミュレーション アプリケーションを実行した後で、PowerBI を設定します。
+Power BI レポートを設定するにはデータが必要なので、デバイスを作成し、デバイス シミュレーション アプリケーションを実行した後で、Power BI を設定します。
 
 ## <a name="run-simulated-device-app"></a>シミュレートされたデバイス アプリを実行する
 
 スクリプト設定セクションの前半では、IoT デバイスを使ってシミュレートするようにデバイスを設定しました。 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードします。 このアプリケーションは、異なるルーティング方法ごとにメッセージを送信します。 
 
-[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 これにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、Tutorials/Routing/SimulatedDevice/ にあります。
+[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 これにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、iot-hub/Tutorials/Routing/SimulatedDevice/ にあります。
 
 ソリューション ファイル (SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いた後、Program.cs を開きます。 `{iot hub hostname}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、**{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHub.azure-devices.net** です。 次に、`{device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
 
@@ -512,11 +533,11 @@ PowerBI レポートを設定するにはデータが必要なので、デバイ
 
    * ストレージ アカウントへのルーティングは、正常に動作しています。
 
-アプリケーションをまだ実行したまま、既定のルーティングで送られたメッセージを表示するように、PowerBI の視覚エフェクトを設定します。 
+アプリケーションをまだ実行したまま、既定のルーティングで送られたメッセージを表示するように、Power BI の視覚エフェクトを設定します。 
 
-## <a name="set-up-the-powerbi-visualizations"></a>PowerBI の視覚エフェクトを設定する
+## <a name="set-up-the-power-bi-visualizations"></a>Power BI の視覚エフェクトを設定する
 
-1. お使いの [PowerBI](https://powerbi.microsoft.com/) アカウントにサインインします。
+1. [Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。
 
 2. **[ワークスペース]** に移動し、Stream Analytics ジョブの出力を作成するときに設定したワークスペースを選びます。 このチュートリアルでは、**マイ ワークスペース**を使います。 
 
@@ -526,7 +547,7 @@ PowerBI レポートを設定するにはデータが必要なので、デバイ
 
 4. **[アクション]** の左端のアイコンをクリックし、レポートを作成します。
 
-   ![アクションとレポートのアイコンが強調表示されている PowerBI ワークスペースを示すスクリーンショット。](./media/tutorial-routing/power-bi-actions.png)
+   ![アクションとレポートのアイコンが強調表示されている Power BI ワークスペースを示すスクリーンショット。](./media/tutorial-routing/power-bi-actions.png)
 
 5. 時間の経過に伴う温度の変化を示す折れ線グラフを作成します。
 
@@ -544,7 +565,7 @@ PowerBI レポートを設定するにはデータが必要なので、デバイ
 
 7. 時間の経過に伴う湿度の変化を示す、別の折れ線グラフを作成します。 2 番目のグラフを設定するには、上記と同じ手順を行ったうえで、**EventEnqueuedUtcTime** を x 軸、**humidity** を y 軸に設定します。
 
-   ![2 つのグラフを含む最終的な PowerBI レポートを示すスクリーンショット。](./media/tutorial-routing/power-bi-report.png)
+   ![2 つのグラフを含む最終的な Power BI レポートを示すスクリーンショット。](./media/tutorial-routing/power-bi-report.png)
 
 8. **[保存]** をクリックしてレポートを保存します。
 
@@ -552,17 +573,17 @@ PowerBI レポートを設定するにはデータが必要なので、デバイ
 
    * 既定のエンドポイントへのルーティングは、正常に動作しています。
    * Azure Stream Analytics ジョブは、正常にストリーミングしています。
-   * PowerBI の視覚エフェクトは、正しく設定されています。
+   * Power BI の視覚エフェクトは、正しく設定されています。
 
-PowerBI ウィンドウの上部にある [最新の情報に更新] ボタンをクリックすることで、グラフを更新して最新のデータを表示できます。 
+Power BI ウィンドウの上部にある [最新の情報に更新] ボタンをクリックすることで、グラフを更新して最新のデータを表示できます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
 作成したリソースをすべて削除する場合は、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この例では、IoT ハブ、Service Bus の名前空間とキュー、ロジック アプリ、ストレージ アカウント、およびリソース グループ自体が削除されます。 
 
-### <a name="clean-up-resources-in-the-powerbi-visualization"></a>PowerBI の視覚エフェクトのリソースをクリーンアップする
+### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Power BI の視覚エフェクトのリソースをクリーンアップする
 
-お使いの [PowerBI](https://powerbi.microsoft.com/) アカウントにログインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース**を使います。 PowerBI の視覚エフェクトを削除するには、[データセット] に移動し、ごみ箱アイコンをクリックしてデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
+[Power BI](https://powerbi.microsoft.com/) アカウントにログインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース**を使います。 Power BI の視覚エフェクトを削除するには、[データセット] に移動し、ごみ箱アイコンをクリックしてデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースをクリーンアップする
 
@@ -589,15 +610,15 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 > * ストレージ アカウントおよび Service Bus キューに対するエンドポイントとルートを IoT hub で構成します。
 > * メッセージが Service Bus キューに追加されるとトリガーされてメールを送信するロジック アプリを作成します。
 > * 異なるルーティング オプションでハブにメッセージを送信する IoT デバイスをシミュレートするアプリをダウンロードして実行します。
-> * 既定のエンドポイントに送信されたデータに対する PowerBI の視覚エフェクトを作成します。
+> * 既定のエンドポイントに送信されたデータに対する Power BI の視覚エフェクトを作成します。
 > * 結果を表示します ...
 > * ... Service Bus キューおよびメール内の結果。
 > * ... ストレージ アカウント内の結果。
-> * ... PowerBI 視覚エフェクト内の結果。
+> * ... Power BI の視覚エフェクト内の結果。
 
 次のチュートリアルに進み、IoT デバイスの状態を管理する方法を学習してください。 
 
 > [!div class="nextstepaction"]
-[Azure IoT Hub デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)
+[バックエンド サービスからデバイスを構成する](tutorial-device-twins.md)
 
  <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

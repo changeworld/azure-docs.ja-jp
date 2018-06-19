@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361474"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823913"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
 
@@ -29,10 +29,10 @@ ms.locfileid: "34361474"
 [!INCLUDE[](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
-Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発環境の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。
+Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発環境の構成の大半はクラウドに保存され、他のユーザーと共有することができます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。
 
 > [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.32 以上を使用していることを確認してください。
+> Azure CLI が既にインストールされている場合は、バージョン 2.0.33 以降を使用していることを確認してください。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -121,7 +121,7 @@ Node.js アプリを再起動する必要があるため、サーバー側のコ
 ### <a name="debug-the-container-in-kubernetes"></a>Kubernetes でコンテナーをデバッグする
 **F5** キーを押して、Kubernetes でコードをデバッグします。
 
-`up` コマンドと同様に、デバッグを開始するとコードが開発環境に同期され、コンテナーがビルドされて Kubernetes に展開されます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
+`up` コマンドと同様に、デバッグを開始するとコードが開発環境に同期され、コンテナーがビルドされて Kubernetes にデプロイされます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
 
 [!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
 
@@ -149,7 +149,7 @@ app.get('/api', function (req, res) {
 ### <a name="use-nodemon-to-develop-even-faster"></a>NodeMon を使用して開発をさらに迅速化する
 *nodemon* は、Node.js 開発者が開発を迅速に行うために使用する一般的なツールです。 開発者は、サーバー側のコードを編集するたびに Node プロセスを手動で再開するのではなく、多くの場合、*nodemon* でファイルの変更を監視し、サーバー プロセスを自動的に再開するように Node プロジェクトを構成します。 このスタイルの作業では、開発者はコードの編集後にブラウザーを更新するだけです。
 
-Azure Dev Spaces を使用すると、ローカルでの開発時に使用する開発ワークフローの多くを使用できます。 これを示すために、サンプル `webfrontend` プロジェクトは *nodemon* を使用するように構成されています (`package.json` で開発依存関係として構成されています)。
+Azure Dev Spaces を使用すると、ローカルでの開発時と同じ開発ワークフローの多くを使用することができます。 これを示すために、サンプル `webfrontend` プロジェクトは *nodemon* を使用するように構成されています (`package.json` で開発依存関係として構成されています)。
 
 次の手順を試してみてください。
 1. VS Code デバッガーを停止します。
@@ -185,25 +185,25 @@ Azure Dev Spaces を使用すると、ローカルでの開発時に使用する
 1. `server.js` の先頭に次のコード行を追加します。
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. `/api` GET ハンドラーのコードを*置き換えます*。 要求を処理すると、`mywebapi` が呼び出され、両方のサービスからの結果が返されます。
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-サービスを `http://mywebapi` として参照するために、Kubernetes の DNS サービス検索がどのように使用されるのかに注意してください。 **開発環境のコードは、運用環境で実行される場合と同様に実行されます。**
-
-上記のコード例では、`propagateHeaders` という名前のヘルパー モジュールを使用しています。 このヘルパーは、`azds prep` の実行時にコード フォルダーに追加されました。 `propagateHeaders.from()` 関数は、既存の http.IncomingMessage オブジェクトから送信要求のヘッダー プロジェクトに特定のヘッダーを伝達します。 これがチームによる共同開発にどのように役立つかについては、後ほど説明します。
+前述のコード例は、`azds-route-as` ヘッダーを受信要求から送信要求に転送します。 これがチームによる共同開発にどのように役立つかについては、後ほど説明します。
 
 ### <a name="debug-across-multiple-services"></a>複数のサービスでデバッグする
 1. この時点で、`mywebapi` は引き続きデバッガーがアタッチされた状態で実行されています。 そうでない場合は、`mywebapi` プロジェクトで F5 キーを押します。

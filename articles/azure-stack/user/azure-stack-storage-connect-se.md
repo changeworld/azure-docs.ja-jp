@@ -1,6 +1,6 @@
 ---
-title: Azure Stack サブスクリプションまたはストレージ アカウントに Storage Explorer を接続する | Microsoft Docs
-description: Azure Stack サブスクリプションに Storage Explorer を接続する方法について学習します
+title: Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する | Microsoft Docs
+description: Azure Stack サブスクリプションにストレージ エクスプローラーを接続する方法について学習します
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,32 +10,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: mattbriggs
+ms.date: 05/21/2018
+ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a3a69f3cf91c0d202d54d0da5dc5fe0531ef9db1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9704f05cc6da97e33c0043b93acedc9e66bdcc36
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196379"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714903"
 ---
-# <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントに Storage Explorer を接続する
+# <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-この記事では、Storage Explorer を使用して Azure Stack サブスクリプションとストレージ アカウントに接続する方法を学習します。 Azure Storage Explorer は、Windows、macOS、および Linux で Azure Stack Storage のデータを簡単に操作できるスタンドアロン アプリです。
+この記事では、ストレージ エクスプローラーを使用して Azure Stack サブスクリプションとストレージ アカウントに接続する方法を学習します。 Azure ストレージ エクスプローラーは、Windows、macOS、および Linux で Azure Stack ストレージのデータを簡単に操作できるスタンドアロン アプリです。
 
->[!NOTE]
->Azure Stack Storage からデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
+> [!NOTE]  
+> Azure Stack ストレージからデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
 
-Storage Explorer をまだインストールしていない場合は、[Storage Explorer をダウンロード](http://www.storageexplorer.com/)し、インストールしてください。
+ストレージ エクスプローラーをまだインストールしていない場合は、[ストレージ エクスプローラーをダウンロード](http://www.storageexplorer.com/)し、インストールしてください。
 
-Azure Stack サブスクリプションまたはストレージ アカウントに接続したら、[Azure Storage Explorer の記事](../../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用し、Azure Stack データを操作できます。 
+Azure Stack サブスクリプションまたはストレージ アカウントに接続したら、[Azure ストレージ エクスプローラーの記事](../../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用し、Azure Stack データを操作できます。 
 
 ## <a name="prepare-for-connecting-to-azure-stack"></a>Azure Stack への接続を準備する
 
-Storage Explorer から Azure Stack サブスクリプションにアクセスするには、Azure Stack への直接アクセスまたは VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)に関するページを参照してください。
+ストレージ エクスプローラーから Azure Stack サブスクリプションにアクセスするには、Azure Stack への直接アクセスまたは VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)に関するページを参照してください。
 
 Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。
 
@@ -53,30 +53,30 @@ Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証�
 
     エクスポートした証明書は、次の手順で使用します。
 
-5. Microsoft Azure Storage Explorer を起動し、**[Azure Storage へ接続]** ダイアログ ボックスが表示されたらそれをキャンセルします。
+5. ストレージ エクスプローラーを起動し、**[Azure Storage へ接続]** ダイアログ ボックスが表示されたらそれをキャンセルします。
 
 6. **[編集]** メニューで、**[SSL 証明書]** をポイントし、**[証明書のインポート]** を選択します。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。
 
-    証明書のインポート後は、Storage Explorer の再起動を求めるメッセージが表示されます。
+    証明書のインポート後は、ストレージ エクスプローラーの再起動を求めるメッセージが表示されます。
 
-    ![Storage Explorer に証明書をインポートする](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
+    ![ストレージ エクスプローラーに証明書をインポートする](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. Storage Explorer が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていることを確認します。 **[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
+7. ストレージ エクスプローラーが再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていることを確認します。 **[Target Azure Stack]\(Azure Stack を対象にする\)** が選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
 
     ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続する
 
-Azure Stack サブスクリプションに Storage Explorer を接続するには、次の手順に従います。
+Azure Stack サブスクリプションにストレージ エクスプローラーを接続するには、次の手順に従います。
 
-1. Storage Explorer の左側のウィンドウで、**[アカウントの管理]** を選択します。 
+1. ストレージ エクスプローラーの左側のウィンドウで、**[アカウントの管理]** を選択します。 
     サインインしている Microsoft サブスクリプションがすべて表示されます。
 
 2. Azure Stack サブスクリプションに接続するには、**[アカウントの追加]** を選択します。
 
     ![Azure Stack アカウントを追加する](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. [Azure Storage へ接続] ダイアログ ボックスの **[Azure Environment]\(Azure 環境\)** で、使用している Azure Stack アカウントに応じて **[Azure]** または **[Azure 中国]** を選択します。 **[サインイン]** を選択し、少なくとも 1 つのアクティブな Azure Stack サブスクリプションに関連付けられた Azure Stack アカウントにサインインしてください。
+3. [Azure Storage へ接続] ダイアログ ボックスの **[Azure Environment]\(Azure 環境\)** で、使用している Azure Stack アカウントに応じて **[Azure]** または **[Azure 中国]** を選択し、**[サインイン]** を選択して、少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられている Azure Stack アカウントでサインインします。
 
     ![Azure Storage へ接続](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 
@@ -92,7 +92,7 @@ Azure Stack サブスクリプションに Storage Explorer を接続するに�
 
 ストレージ アカウント名とキーのペアを使用して Azure Stack ストレージ アカウントに接続することもできます。
 
-1. Storage Explorer の左側のウィンドウで、[アカウントの管理] を選択します。 サインインしたことのあるすべての Microsoft アカウントが表示されます。
+1. ストレージ エクスプローラーの左側のウィンドウで、[アカウントの管理] を選択します。 サインインしたことのあるすべての Microsoft アカウントが表示されます。
 
     ![[アカウントの追加]](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
 
@@ -115,6 +115,6 @@ Azure Stack サブスクリプションに Storage Explorer を接続するに�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [ストレージ エクスプローラーの概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)
 * Azure Storage の詳細については、「[Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)」を参照してください。

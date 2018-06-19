@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 777ba32a6c3ec7545c9911c820ceda7ac823096a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809281"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
 Microsoft Azure Media Services (AMS) を使用すると、各種クライアント (テレビ、PC、モバイル デバイスなど) へのオンデマンド ストリーミング配信とライブ ストリーミング配信の両方で、ビデオやオーディオのコンテンツを安全にアップロード、保存、エンコード、パッケージ化できます。
 
-AMS は、世界中の複数のデータ センターで動作しています。 これらのデータ センターは、地理的リージョンにグループ化されているため、アプリケーションの作成場所を柔軟に選択できます。 [リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。 
+AMS は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 [リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。 
 
 このトピックでは、コンテンツの[ライブ](#live_scenarios)配信または[オンデマンド](#vod_scenarios)配信の一般的なシナリオを紹介します。 また、データ センターにおけるメディア機能とサービスの可用性についても説明します。
 

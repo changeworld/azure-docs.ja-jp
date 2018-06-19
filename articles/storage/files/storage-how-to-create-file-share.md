@@ -5,7 +5,7 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 85e021d439698e864a26bde9515369ae801c3796
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737862"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Azure Files にファイル共有を作成する
 Azure のファイル共有は、[Azure ポータル](https://portal.azure.com/)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 このチュートリアルでは、次の事項について説明します。
-* [Azure Portal を使用して Azure ファイル共有を作成する方法](#Create file share through the Portal)
-* [PowerShell を使用して Azure ファイル共有を作成する方法](#Create file share using PowerShell)
-* [CLI を使用して Azure ファイル共有を作成する方法](#create-file-share-using-command-line-interface-cli)
+* [Azure portal を使用して Azure ファイル共有を作成する方法](#create-file-share-through-the-azure-portal)
+* [PowerShell を使用して Azure ファイル共有を作成する方法](#create-file-share-through-powershell)
+* [CLI を使用して Azure ファイル共有を作成する方法](#create-file-share-through-command-line-interface-cli)
 
 ## <a name="prerequisites"></a>前提条件
 Azure ファイル共有を作成するには、既存のストレージ アカウントを使用するか、[新しい Azure ストレージ アカウントを作成する](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)ことができます。 PowerShell で Azure ファイル共有を作成するには、アカウント キーとストレージ アカウントの名前が必要になります。 PowerShell または CLI を使用する場合は、ストレージ アカウント キーが必要になります。

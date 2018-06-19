@@ -5,29 +5,29 @@ services: cosmos-db
 author: SnehaGunda
 manager: kfile
 tags: azure-service-management
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: database
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: fc2ae1ee87b525f2ec6725cea2b19a8b8b3cef86
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 71e75b4b2bb60ad2c1ae1a468991fe1f5520136c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700368"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB 用 Azure PowerShell サンプル
 
-次の表には、Azure Cosmos DB の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。 現時点では、PowerShell 経由で Azure Cosmos DB アカウントレイヤーを管理することしかできません。データベースやコレクションなどの他のリソースは、PowerShell 経由では管理できません。
+次の表には、Azure Cosmos DB の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。 現時点では、PowerShell 経由で Azure Cosmos DB アカウントを管理することしかできません。データベースやコレクションなどの他のリソースは、PowerShell 経由では管理できません。
 
 | |  |
 |---|---|
 |**Azure Cosmos DB アカウントの作成**||
 |[SQL API アカウントの作成](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| SQL API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[MongoDB API アカウントの作成](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| MongoDB API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
+|[Gremlin API アカウントの作成](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Gremlin API で使用する単一の Azure Cosmos DB アカウントを作成します。 |
 |**Azure Cosmos DB のスケーリング**||
 |[複数リージョンへの Azure Cosmos DB アカウントのレプリケートと、フェールオーバーの優先順位の構成](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|指定したフェールオーバー優先順位で、複数リージョンにグローバルにアカウント データをレプリケートします。|
 |**Azure Cosmos DB のセキュリティ保護**||

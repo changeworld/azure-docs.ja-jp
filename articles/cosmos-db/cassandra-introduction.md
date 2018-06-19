@@ -3,21 +3,19 @@ title: Azure Cosmos DB の Cassandra API の概要 | Microsoft Docs
 description: Azure Cosmos DB を使用して既存のアプリケーションを "リフトアンドシフト" し、使い慣れた Cassandra ドライバーと CQL で Cassandra API を使って新しいアプリケーションを構築する方法について説明します。
 services: cosmos-db
 author: govindk
-manager: ''
-documentationcenter: ''
-ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-cassandra
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 65ab01031ed0fe554ef162f0115bdda39fd1c80b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: edc8ba7f8dd52a5facbfeb930a8660b082d72877
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795273"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Azure Cosmos DB の概要: Apache Cassandra API
 
@@ -57,7 +55,7 @@ Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベ�
 
 **整合性レベルの選択:** Azure Cosmos DB には、整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルが用意されています。 整合性レベルは、厳密、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的です。 きめ細かな整合性レベルが明確に定義されていることによって、開発者が、整合性、可用性、および待機時間の最適なトレードオフを検討できます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。 
 
-**エンタープライズ グレード**: セキュリティによる保護とコンプライアンスへの準拠が既定で確保されています。Azure Cosmos DB の[コンプライアンス認定](https://www.microsoft.com/trustcenter)によって、ユーザーはコンプライアンスの問題について気にせずにプラットフォームを使用できます。 また、Azure Cosmos DB には、保存時および移動時の暗号化、IP ファイアウォール、およびコントロール プレーン アクティビティの監査ログも用意されています。  
+**エンタープライズ グレード**: Azure Cosmos DB は[コンプライアンス認定](https://www.microsoft.com/trustcenter)を提供し、ユーザーが安全にプラットフォームを使用できるようにします。 また、Azure Cosmos DB には、保存時および移動時の暗号化、IP ファイアウォール、およびコントロール プレーン アクティビティの監査ログも用意されています。  
 
 <a id="sign-up-now"></a>
 ## <a name="sign-up-now"></a>今すぐサインアップ 

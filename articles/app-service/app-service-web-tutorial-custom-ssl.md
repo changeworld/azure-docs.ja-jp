@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193456"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714580"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
 
@@ -84,17 +84,17 @@ Web アプリ ページの左側のナビゲーションで **[設定]** セク�
 
 ![スケール アップ メニュー](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-Web アプリが **Free** レベルまたは **Shared** レベルに含まれていないことを確認します。 Web アプリの現在のレベルは、ダーク ブルーのボックスで強調表示されます。
+Web アプリが **F1** レベルまたは **D1** レベルに含まれていないことを確認します。 Web アプリの現在のレベルは、ダーク ブルーのボックスで強調表示されます。
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-カスタム SSL は、**Free** レベルまたは **Shared** レベルではサポートされていません。 スケール アップする必要がある場合は、次のセクションの手順に従います。 それ以外の場合は、**[価格レベルの選択]** ページを閉じて、[SSL 証明書のアップロードとバインド](#upload)に関するセクションにスキップします。
+カスタム SSL は、**F1** レベルまたは **D1** レベルではサポートされていません。 スケール アップする必要がある場合は、次のセクションの手順に従います。 それ以外の場合は、**[スケール アップ]** ページを閉じて、「[SSL 証明書のバインド](#upload)」に進んでください。
 
 ### <a name="scale-up-your-app-service-plan"></a>App Service プランのスケール アップ
 
-**Basic**、**Standard**、**Premium** のいずれかのレベルを選択します。
+非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、**[その他のオプションを参照する]** をご覧ください。
 
-**[選択]** をクリックします。
+**[Apply]** をクリックします。
 
 ![価格レベルの選択](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 

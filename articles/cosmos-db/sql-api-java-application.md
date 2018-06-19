@@ -3,22 +3,20 @@ title: Azure Cosmos DB を使用した Java アプリケーション開発のチ
 description: この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB および SQL API を使って、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
 keywords: アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: java
 author: dennyglee
 manager: kfile
-ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 2124e22ca5ab47b5e1836384132014cc0b356ff1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4e3fd2fc31bda1dd8172c574fe087d9fcc6068db
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796827"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -29,7 +27,7 @@ ms.lasthandoff: 04/06/2018
 > 
 > 
 
-この Java Web アプリケーション チュートリアルでは、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービスを使用して、Azure App Service Web Apps でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 このトピックでは、次の内容を説明します。
+この Java Web アプリケーション チュートリアルでは、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービスを使用して、Azure App Service Web Apps でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 この記事では、次のことについて説明します。
 
 * Eclipse で基本的な JavaServer Pages (JSP) アプリケーションを作成する方法。
 * [Azure Cosmos DB Java SDK](https://github.com/Azure/azure-documentdb-java) を使って Azure Cosmos DB サービスを操作する方法。
@@ -120,7 +118,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
             private String name;
         }
    
-    このプロジェクトでは、 [Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。 または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
+    このプロジェクトでは、[Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。 または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
 2. Azure Cosmos DB サービスを呼び出すには、新しい **DocumentClient**をインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、 **DocumentClient** を再利用することをお勧めします。 **DocumentClientFactory**の中にラップすることによって、クライアントを再利用できます。 [手順 1.](#CreateDB) でクリップボードに保存した URI とプライマリ キー値を DocumentClientFactory.java に貼り付ける必要があります。 [YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -711,8 +709,8 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
         $(document).ready(function() {
           todoApp.install();
         });
-5. これで完成です。 後はアプリケーションをテストするだけです。 アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、 **[Add Task]**をクリックして、いくつかの Todo 項目を追加します。
-6. 項目が表示されたら、チェック ボックスを切り替え、 **[Update Tasks]**をクリックすることで、その項目が完了しているかどうかを確認できます。
+5. これで完成です。 後はアプリケーションをテストするだけです。 アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、 **[Add Task]** をクリックして、いくつかの Todo 項目を追加します。
+6. 項目が表示されたら、チェック ボックスを切り替え、 **[Update Tasks]** をクリックすることで、その項目が完了しているかどうかを確認できます。
 
 ## <a id="Deploy"></a>手順 6. Azure Web Sites に Java アプリケーションをデプロイする
 Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
@@ -722,11 +720,11 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
    
    * [Web project] ボックスに、「azure-documentdb-java-sample」と入力します。
    * [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
-   * **[完了]**をクリックします。
+   * **[完了]** をクリックします。
 3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service/web-sites-java-add-app.md)」を参照してください。
    
     WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
-4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ にアクセスして、タスクを追加します。
+4. 完成した製品を表示するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ に移動し、タスクの追加を開始します。
 
 ## <a id="GetProject"></a>GitHub からのプロジェクトの入手
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。 todo プロジェクトを Eclipse にインポートするには、「 [前提条件](#Prerequisites) 」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
@@ -736,7 +734,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]** 画面で、**[URI]** ボックスに「https://github.com/Azure-Samples/java-todo-app.git」と入力し、**[Next]** をクリックします。
+6. **[Source Git Repository]** 画面で、**[URI]** ボックスに「https://github.com/Azure-Samples/documentdb-java-todo-app.git」と入力し、**[Next]** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: pareshmu
-ms.openlocfilehash: 8d17c8dee89bf0ea2a4683c3b41d2eed50c65e2c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45aa884f05cc638002067a502b472731e3393e7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303696"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763563"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -88,7 +88,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、ワシントン DC |
 | **eir** |サポートされています |サポートされています |ダブリン|
 | **Epsilon Global Communications** |サポートされています |サポートされています |シンガポール |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、香港特別行政区、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、ダブリン、香港特別行政区、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **euNetworks** |サポートされています |サポートされています |アムステルダム、ロンドン |
 | **GÉANT** |サポートされています |サポートされています |アムステルダム |
 | **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | サポートされています| サポートされています | チェンナイ、ムンバイ |
@@ -121,7 +121,6 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |サポートされています |サポートされています |大阪、東京 |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |サポートされています |サポートされています |ワシントン DC |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港特別行政区、ロンドン、ムンバイ、シリコン バレー、シンガポール、ワシントン DC |
-| **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |サポートされています |サポートされています |アムステルダム、サンパウロ |
 | **[Telehouse - KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |サポートされています |サポートされています |ロンドン |
 | **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン |
@@ -245,15 +244,15 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **プロバイダー**|
 | --- |
 | **AARNET**| 
-| **DeIC、GÉANT 経由**|
-| **GARR、GÉANT 経由**|
+| **DeIC、GÉANT を介して**|
+| **GARR、GÉANT を介して**|
 | **GÉANT**|
-| **HEAnet、GÉANT 経由**|
+| **HEAnet、GÉANT を介して**|
 | **Internet2**|
 | **JISC**|
-| **RedIRIS、GÉANT 経由**|
+| **RedIRIS、GÉANT を介して**|
 | **SINET**|
-| **Surfnet、GÉANT 経由**|
+| **Surfnet、GÉANT を介して**|
 
 * ご利用の接続プロバイダーがこの一覧にない場合は、そのプロバイダーが上に記載されている ExpressRoute Exchange パートナーに接続されているかどうかを確認してください。
 

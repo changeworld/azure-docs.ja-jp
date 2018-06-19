@@ -2,23 +2,21 @@
 title: Azure Cosmos DB グラフ データベースを Java で作成する | Microsoft Docs
 description: Gremlin を使用した Azure Cosmos DB 内のグラフ データへの接続とクエリに使用できる Java コード サンプルについて説明します。
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
 manager: kfile
-ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: a7c86ab78704baf4048bc0415d89c1ab826e16bc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796181"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 
@@ -172,7 +170,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **[ben]** を選択すると、彼は robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
+2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **ben** を選択すると、ユーザーが robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
@@ -191,7 +189,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     tech | java | 
 
     > [!NOTE]
-    > このクイックスタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
+    > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
 6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
@@ -225,7 +223,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-   以上で、このチュートリアルのリソース作成部分は完了です。引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+   以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

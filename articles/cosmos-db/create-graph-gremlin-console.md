@@ -4,19 +4,18 @@ description: Azure Cosmos DB Graph API を使用して頂点、辺、および�
 services: cosmos-db
 author: luisbosquez
 manager: kfile
-ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: terminal
+ms.component: cosmosdb-graph
+ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 0f50443385f483fd948d7f19164050600fa8c143
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00e4da5fa1867aeddebe0e452f78ea24a3d0a821
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808521"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 
@@ -48,7 +47,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. *host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
-    Setting|推奨値|[説明]
+    Setting|推奨値|説明
     ---|---|---
     hosts|2017 年 12 月 20 日より前に作成したアカウントの場合、[*account-name*.gremlin.cosmosdb.azure.com] または [*account-name*.graphs.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。<br><br>この値は、[キー] タブから取得することもできます。その場合は、[URI] の値から "https://" を削除し、documents を graphs pr gremlin.cosmosdb に変更して、末尾の ":443/" を削除してください。
     ポート|443|443 に設定します。
@@ -79,6 +78,8 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
     > [!TIP]
     > エラー `No appenders could be found for logger` が発生した場合、手順 2. で説明されているとおり、remote-secure.yaml ファイルの serializer 値を更新したことを確認してください。 
+
+5. 次に、`:remote console` を実行して、すべてのコンソール コマンドをリモート サーバーにリダイレクトします。
 
 これでセットアップは終了です。 いくつかのコンソール コマンドの実行を開始しましょう。
 

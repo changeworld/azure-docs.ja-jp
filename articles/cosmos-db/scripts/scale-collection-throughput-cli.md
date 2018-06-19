@@ -6,20 +6,20 @@ documentationcenter: cosmosdb
 author: SnehaGunda
 manager: kfile
 tags: azure-service-management
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
-ms.date: 06/02/2017
+ms.date: 05/23/2018
 ms.author: sngun
-ms.openlocfilehash: e3df30250642617927cb2c98830a8420cb07bc20
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c29428d95a825f71a494fa70746ce742248764d7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795596"
 ---
 # <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Azure CLI での Azure Cosmos DB コンテナー スループットのスケーリング
 
@@ -32,6 +32,24 @@ CLI をローカルにインストールして使用する場合、このトピ�
 ## <a name="sample-script"></a>サンプル スクリプト
 
 [!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-throughput/scale-cosmosdb-throughput.sh?highlight=40-46 "Scale Azure Cosmos DB throughput")]
+
+上のサンプル スクリプトでは、固定のコレクションを作成してスケーリングできます。 無制限のストレージ容量を持つコレクションを作成してスケーリングする場合は、以下のことが必要です。 
+ 
+* 1,000 RU/秒以上のコレクションを作成します。 
+* コレクションを作成するときにパーティション キーを指定します。 
+
+次のコマンドは、無制限のストレージ容量を持つコレクションを作成する例です。
+
+```cli
+az cosmosdb collection create \
+    --collection-name $collectionName \
+    --name $name \
+    --db-name $databaseName \
+    --resource-group $resourceGroupName \
+    --throughput 1000
+    --partition-key-path /deviceId
+
+```
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

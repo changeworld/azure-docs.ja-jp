@@ -16,11 +16,12 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 431268082b24d23289188f5422cd596dc5f37d30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a9f1e66a4c55d866d9f174528eb4912c3b9391c0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714517"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>チュートリアル: 既存のカスタム DNS 名を Azure Web Apps にマップする
 
@@ -81,19 +82,19 @@ App Service アプリの管理ページが表示されます。
 
 ![スケール アップ メニュー](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **Free** レベルに含まれていないことを確認します。 カスタム DNS は、**Free** レベルではサポートされていません。 
+アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。 
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-App Service プランが **Free** ではない場合は、**[価格レベルの選択]** ページを閉じて、[[Map a CNAME record]\(CNAME レコードをマップ\)](#cname) にスキップします。
+App Service プランが **F1** レベルではない場合は、**[スケール アップ]** ページを閉じて、「[CNAME レコードのマップ](#cname)」に進みます。
 
 <a name="scaleup"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
-Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Premium**) を選択します。 
+非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、**[その他のオプションを参照する]** をご覧ください。
 
-**[選択]**をクリックします。
+**[Apply]** をクリックします。
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

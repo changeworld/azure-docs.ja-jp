@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fa1e95263559906ebfd0df82b2756043e38852a6
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9947ff74ac1256ab7f493697798aaf2776d19eff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305159"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716501"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -51,7 +51,7 @@ Microsoft ではパートナーと協力して、パートナーから Azure に
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
 | CoreOS |CoreOS |CoreOS |安定版 |latest |
 | | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest
+| | RedHat | RHEL | 7-RAW-CI | latest |
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
@@ -104,15 +104,15 @@ runcmd:
 cloud-init 構成オプションの詳細については、[cloud-init の構成例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)に関するページを参照してください。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-VM を作成する前に、[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *eastus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVM \
@@ -124,9 +124,9 @@ az vm create \
 
 VM が作成され、パッケージがインストールされて、アプリが開始されるには、数分かかります。 Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。 VM が作成されたら、Azure CLI によって表示される `publicIpAddress` をメモしてください。 このアドレスは、Web ブラウザーから Node.js アプリにアクセスするために使用します。
 
-Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使用してインターネットからポート 80 を開きます。
+Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#az-vm-open-port) を使用してインターネットからポート 80 を開きます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
@@ -149,9 +149,9 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 - VM を作成して証明書を挿入する
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-最初に、[az keyvault create](/cli/azure/keyvault#az_keyvault_create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の *mykeyvault* は一意の Key Vault 名で置き換えてください。
+最初に、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の *mykeyvault* は一意の Key Vault 名で置き換えてください。
 
-```azurecli-interactive 
+```azurecli-interactive
 keyvault_name=mykeyvault
 az keyvault create \
     --resource-group myResourceGroupAutomate \
@@ -160,9 +160,9 @@ az keyvault create \
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>証明書を生成して Key Vault に格納する
-実際の運用では、[az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) で、既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。
+実際の運用では、[az keyvault certificate import](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) を使用して、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[az keyvault certificate create](/cli/azure/keyvault/certificate#az-keyvault-certificate-create) で、既定の証明書ポリシーを使用する自己署名証明書を生成する方法を次の例に示します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
@@ -171,9 +171,9 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>VM で使用する証明書を準備する
-VM の作成処理の際に証明書を使用するには、[az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) を使用して証明書の ID を取得します。 VM は、ブート時に挿入するための特定の形式の証明書を必要とするため、[az vm 形式のシークレット](/cli/azure/vm#az_vm_format_secret)を使って証明書を変換します。 次の例では、以降の手順で使用しやすくするために、コマンドの出力を変数に割り当てています。
+VM の作成処理の際に証明書を使用するには、[az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) を使用して証明書の ID を取得します。 VM は、ブート時に挿入するための特定の形式の証明書を必要とするため、[az vm secret format](/cli/azure/vm#az-vm-secret-format) を使って証明書を変換します。 次の例では、以降の手順で使用しやすくするために、コマンドの出力を変数に割り当てています。
 
-```azurecli-interactive 
+```azurecli-interactive
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
@@ -237,9 +237,9 @@ runcmd:
 ```
 
 ### <a name="create-secure-vm"></a>セキュリティで保護された VM を作成する
-ここで [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 証明書のデータは、`--secrets` パラメーターを使用して Key Vault から挿入されます。 前の例のように、`--custom-data` パラメーターを使用して cloud-init 構成も渡します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 証明書のデータは、`--secrets` パラメーターを使用して Key Vault から挿入されます。 前の例のように、`--custom-data` パラメーターを使用して cloud-init 構成も渡します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVMSecured \
@@ -252,9 +252,9 @@ az vm create \
 
 VM が作成され、パッケージがインストールされて、アプリが開始されるには、数分かかります。 Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。 VM が作成されたら、Azure CLI によって表示される `publicIpAddress` をメモしてください。 このアドレスは、Web ブラウザーから Node.js アプリにアクセスするために使用します。
 
-セキュリティで保護された Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使用してインターネットからポート 443 を開きます。
+セキュリティで保護された Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#az-vm-open-port) を使用してインターネットからポート 443 を開きます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
     --name myVMSecured \
@@ -262,7 +262,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddress>*」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

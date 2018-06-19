@@ -1,5 +1,5 @@
 ---
-title: .NET Core と VS Code を使用してクラウドに Kubernetes 開発環境を作成する | Microsoft Docs
+title: .NET Core と VS Code を使用してクラウドに Kubernetes 開発空間を作成する | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: a57118feb85a010e38d73b758ebfb84d1cc463fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bd42268c36f44dc20b88d27d19cbf378e848b82f
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361253"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823148"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
 
@@ -24,15 +24,15 @@ ms.locfileid: "34361253"
 
 [!INCLUDE[](includes/see-troubleshooting.md)]
 
-これで、Azure に Kubernetes ベースの開発環境を作成する準備ができました。
+これで、Azure に Kubernetes ベースの開発空間を作成する準備ができます。
 
 [!INCLUDE[](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
-Azure Dev Spaces には、ローカル コンピューターの最小限のセットアップが必要です。 開発環境の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
+Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
 
 > [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.32 以上を使用していることを確認してください。
+> Azure CLI が既にインストールされている場合は、バージョン 2.0.33 以降を使用していることを確認してください。
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -42,7 +42,11 @@ Azure Dev Spaces には、ローカル コンピューターの最小限のセ�
 
 クラスターが作成されるのを待っている間に、コードの開発を開始できます。
 
-## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
+## <a name="create-a-web-app-running-in-a-container"></a>コンテナーで実行される Web アプリを作成する
+
+このセクションでは、ASP.NET Core Web アプリを作成し、Kubernetes のコンテナーで実行します。
+
+### <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 [.NET Core](https://www.microsoft.com/net) がインストールされている場合は、`webfrontend` という名前のフォルダーに ASP.NET Core Web アプリを迅速に作成できます。
     
 ```cmd
@@ -55,7 +59,7 @@ dotnet new mvc --name webfrontend
 
 [!INCLUDE[](includes/build-run-k8s-cli.md)]
 
-## <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
+### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
 1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を `<h2>Hello k8s in Azure!</h2>` のように変更します。
@@ -64,15 +68,15 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 
 なぜでしょうか? HTML や CSS などのコンテンツ ファイルを編集しても、.NET Core Web アプリで再コンパイルする必要はありません。アクティブな `azds up` コマンドによって、変更されたコンテンツ ファイルが Azure で実行中のコンテナーに自動的に同期されるので、編集後のコンテンツをすぐに確認できます。
 
-## <a name="update-a-code-file"></a>コード ファイルを更新する
-.NET Core アプリは更新されたアプリケーション バイナリを再構築して生成する必要があるため、コード ファイルを更新するにはもう少し作業が必要です。
+### <a name="update-a-code-file"></a>コード ファイルを更新する
+コード ファイルを更新するには、.NET Core アプリを再ビルドし、更新されたアプリケーション バイナリを生成する必要があるため、もう少し作業が必要です。
 
-1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
+1. ターミナル ウィンドウで `Ctrl+C` キーを押します (`azds up`を停止します)。
 1. `Controllers/HomeController.cs` という名前のコード ファイルを開き、About ページに表示されるメッセージ (`ViewData["Message"] = "Your application description page.";`) を編集します。
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。 
 
-このコマンドにより、コンテナー イメージが再構築され、Helm チャートが再展開されます。 実行中のアプリケーションでコードの変更が有効になっていることを確認するには、Web アプリの [About] メニューに移動します。
+このコマンドにより、コンテナー イメージが再ビルドされ、Helm チャートが再デプロイされます。 コードの変更が実行中のアプリケーションに反映されていることを確認するには、Web アプリの [About]\(バージョン情報\) メニューに移動します。
 
 
 コードを開発するさらに "*迅速な方法*" があります。これについては、次のセクションで説明します。 
@@ -97,11 +101,11 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 ### <a name="debug-the-container-in-kubernetes"></a>Kubernetes でコンテナーをデバッグする
 **F5** キーを押して、Kubernetes でコードをデバッグします。
 
-`up` コマンドと同様に、コードが開発環境に同期され、コンテナーがビルドされて Kubernetes に展開されます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
+`up` コマンドと同様に、コードが開発空間に同期され、コンテナーがビルドされて Kubernetes にデプロイされます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
 
 [!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
 
-サーバー側のコード ファイル (たとえば、`Controllers/HomeController.cs` ソース ファイルの `Index()` 関数内) にブレークポイントを設定します。 ブラウザー ページを更新すると、ブレークポイントに到達します。
+サーバー側のコード ファイル (たとえば、`Controllers/HomeController.cs` ソース ファイルの `Index()` 関数内) にブレークポイントを設定します。 ブラウザーのページを更新すると、ブレークポイントに到達します。
 
 コードがローカルで実行されている場合と同様に、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
@@ -138,7 +142,7 @@ public IActionResult About()
 ### <a name="run-mywebapi"></a>*mywebapi* を実行する
 1. "*別の VS Code ウィンドウ*" で、`mywebapi` フォルダーを開きます。
 1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、VS Code デバッグ バーが表示されます。
-1. エンドポイント URL を書き留めます。これは、http://localhost:\<portnumber\> のように表示されます。 **ヒント: VS Code のステータス バーに、クリック可能な URL が表示されます。** コンテナーはローカルで実行されているように見えますが、実際には Azure の開発環境で実行されています。 localhost アドレスである理由は、`mywebapi` でパブリック エンドポイントが定義されておらず、Kubernetes インスタンス内からしかアクセスできないためです。 利便性を考慮し、また、ローカル コンピューターからのプライベート サービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。
+1. エンドポイント URL を書き留めます。これは、http://localhost:\<portnumber\> のように表示されます。 **ヒント: VS Code のステータス バーに、クリック可能な URL が表示されます。** コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。 localhost アドレスである理由は、`mywebapi` でパブリック エンドポイントが定義されておらず、Kubernetes インスタンス内からしかアクセスできないためです。 利便性を考慮し、また、ローカル コンピューターからのプライベート サービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。
 1. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開きます。 URL に `/api/values` を追加して、`ValuesController` の既定の GET API を呼び出します。 
 1. すべての手順が正常に完了すると、`mywebapi` サービスからの応答を確認できます。
 
@@ -152,23 +156,25 @@ public IActionResult About()
     {
         ViewData["Message"] = "Hello from webfrontend";
         
-        // Use HeaderPropagatingHttpClient instead of HttpClient so we can propagate
-        // headers in the incoming request to any outgoing requests
-        using (var client = new HeaderPropagatingHttpClient(this.Request))
-        {
-            // Call *mywebapi*, and display its response in the page
-            var response = await client.GetAsync("http://mywebapi/api/values/1");
-            ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-        }
+        using (var client = new System.Net.Http.HttpClient())
+            {
+                // Call *mywebapi*, and display its response in the page
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("http://mywebapi/api/values/1");
+                if (this.Request.Headers.ContainsKey("azds-route-as"))
+                {
+                    // Propagate the dev space routing header
+                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
+                }
+                var response = await client.SendAsync(request);
+                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
+            }
 
         return View();
     }
     ```
 
-サービスを `http://mywebapi` として参照するために、Kubernetes の DNS サービス検索がどのように使用されるのかに注意してください。 **開発環境のコードは、運用環境で実行される場合と同様に実行されます。**
-
-上記のコード例では、`HeaderPropagatingHttpClient` クラスも使用しています。 このヘルパー クラスは、`azds prep` の実行時にコード フォルダーに追加されました。 `HeaderPropagatingHttpClient` は、既知の `HttpClient` クラスから派生したものです。このクラスにより、既存の ASP.NET HttpRequest オブジェクトから送信 HttpRequestMessage オブジェクトに特定のヘッダーを伝達する機能が追加されます。 この派生クラスを使用することによって、チーム シナリオでの生産性の高い開発エクスペリエンスがどのように促進されるのかについては、後ほど説明します。
-
+前述のコード例は、`azds-route-as` ヘッダーを受信要求から送信要求に転送します。 これがチームによる共同開発にどのように役立つかについては、後ほど説明します。
 
 ### <a name="debug-across-multiple-services"></a>複数のサービスでデバッグする
 1. この時点で、`mywebapi` は引き続きデバッガーがアタッチされた状態で実行されています。 そうでない場合は、`mywebapi` プロジェクトで F5 キーを押します。

@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 06/05/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: deb2a768d766f3fcfa5523b5b3e77b85c0b87b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b0e19ac859d3f0185c42a79353651996fcbf631
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823565"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>ExpressRoute 接続とサイト間接続の共存の構成
 > [!div class="op_single_selector"]
@@ -28,7 +29,16 @@ ms.lasthandoff: 04/28/2018
 > 
 > 
 
-サイト間 VPN と ExpressRoute が共存する接続を構成することには、いくつかの利点があります。 ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイメント モデルに適用されます。また、ここでは PowerShell が使用されます。 この構成は、Azure Portal で使用できません。
+サイト間 VPN と ExpressRoute が共存する接続を構成することには、いくつかの利点があります。
+
+* ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 
+* また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 
+
+この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 この構成は、Azure Portal で使用できません。
+
+>[!NOTE]
+>ExpressRoute 回線上でサイト間 VPN を作成する場合は、[こちらの記事](site-to-site-vpn-over-microsoft-peering.md)をご覧ください。
+>
 
 ## <a name="limits-and-limitations"></a>制限と制限事項
 * **トランジット ルーティングはサポートされていません。** サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
@@ -62,8 +72,8 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 * VNet がないので作成する必要がある。
   
-    仮想ネットワークがまだない場合、この手順で Resource Manager デプロイメント モデルを使用して新しい仮想ネットワークを作成し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成します。 仮想ネットワークを構成する際は、「[新しい仮想ネットワークおよび共存する接続を作成するには](#new)」の手順に従ってください。
-* リソース マネージャーのデプロイ モデル VNet が既にある。
+    仮想ネットワークがまだない場合、この手順で Resource Manager デプロイ モデルを使用して新しい仮想ネットワークを作成し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成します。 仮想ネットワークを構成する際は、「[新しい仮想ネットワークおよび共存する接続を作成するには](#new)」の手順に従ってください。
+* Resource Manager デプロイ モデル VNet が既にある。
   
     既存のサイト間 VPN 接続または ExpressRoute 接続を使用して、仮想ネットワークを既に配置している場合があります。 このシナリオでは、ゲートウェイのサブネット マスクが /28 以上の場合は、既存のゲートウェイを削除する必要があります。 「[既存の VNet で共存する接続を構成するには](#add)」では、ゲートウェイを削除し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する手順について説明しています。
   

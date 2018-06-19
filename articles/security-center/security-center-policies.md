@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティ ポリシーの設定 | Mi
 description: この記事は、Azure Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364388"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756993"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
 この記事は、Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
@@ -28,7 +28,7 @@ ms.locfileid: "34364388"
 Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集したり、ポリシーのコンプライアンスを監視したりすることができます。
 
 > [!NOTE]
-> Azure Policy (限定プレビュー) を使って Security Center のポリシーを拡張できるようになりました。 プレビューに参加するには、「[Sign up for Azure Policy (Azure Policy へのサインアップ)](https://aka.ms/getpolicy)」に移動します。 詳細については、「[Security Center のセキュリティ ポリシーを Azure Policy に統合する](security-center-azure-policy.md)」を参照してください。
+> [Azure Policy](../azure-policy/azure-policy-introduction.md) を使って Security Center のポリシーを拡張できるようになりました。 詳細については、「[Security Center のセキュリティ ポリシーを Azure Policy に統合する](security-center-azure-policy.md)」を参照してください。
 
 開発やテストに使用されるリソースと運用アプリケーションで使用されるリソースとでは、セキュリティ要件が異なる場合があります。 個人情報のように規制されたデータが使用されるアプリケーションには、より高いレベルのセキュリティが必要と考えられます。 Azure Security Center で有効化されているセキュリティ ポリシーは、セキュリティに関する推奨事項と監視を促進して、潜在的な脆弱性を識別し、脅威を軽減します。 自分に合った選択肢を判断する方法の詳細については、「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」を参照してください。
 
@@ -75,3 +75,5 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問に対する回答を確認します。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+
+Azure Policy について詳しくは、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。

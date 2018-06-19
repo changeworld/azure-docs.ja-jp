@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640263"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート: スキルとサンプル データを使用したコグニティブ検索パイプラインの作成
 
@@ -95,6 +96,8 @@ Azure Search サービスのダッシュボード ページに戻り、コマン
 ### <a name="step-2-add-cognitive-skills"></a>手順 2: コグニティブ スキルを追加する
 
 次に、エンリッチメント ステップをインデックス作成パイプラインに追加します。 Portal には、画像分析とテキスト分析用の定義済みのコグニティブ スキルが表示されます。 Portal では、スキルセットは 1 つのソース フィールドで動作します。 それは小さいターゲットのように見えることもありますが、Azure BLOB の場合は `content` フィールドにほとんどの BLOB ドキュメント (たとえば、Word 文書または PowerPoint デッキ) が含まれています。 そのため、BLOB のすべてのコンテンツがここにあるため、このフィールドは理想的な入力です。
+
+場合によっては、スキャナーによって生成される PDF のように、主にスキャンされた画像で構成されるファイルからテキストの表現を抽出することがあります。 Azure Search では、ドキュメント内の埋め込み画像からコンテンツを自動的に抽出することができます。 この操作を行うには、**[OCR を有効にし、すべてのテキストを merged_content フィールドにマージする]** オプションを選択します。 その結果、ドキュメントから抽出されたテキストと、ドキュメントに埋め込まれた画像のテキスト表現の両方を含む `merged_content` フィールドが自動的に作成されます。 このオプションを選択すると、`Source data field` が `merged_content` に設定されます。
 
 **[Add cognitive skills (コグニティブ スキルの追加)]** で、自然言語処理を実行するスキルを選択します。 このクイックスタートでは、人、組織、および場所のエンティティの認識を選択します。
 

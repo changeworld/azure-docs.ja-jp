@@ -1,23 +1,21 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (.NET) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
+ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: d0233d2bd68397491e22cc7eb6993d0909f92218
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eefb66e50b4dfd601428eec90784b0991276b5a
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807891"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (.NET)
 
@@ -91,7 +89,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、ハブからのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスは、ダイレクト メソッドを実行した後、ハブに受信確認を返送します。
 
-1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **Quickstarts\simulated-device-2** フォルダーに移動します。
+1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device-2** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
@@ -117,7 +115,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションは、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しを行った後、受信確認をリッスンします。 通常、IoT Hub のバックエンド アプリケーションはクラウドで実行されます。
 
-1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 その後、**Quickstarts\back-end-application** フォルダーに移動します。
+1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 その後、**iot-hub\Quickstarts\back-end-application** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **BackEndApplication.cs** ファイルを開きます。
 
@@ -156,4 +154,4 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 デバイスからクラウドへのメッセージをクラウド内の異なる宛先にルーティングする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](iot-hub-csharp-csharp-process-d2c.md)
+> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)

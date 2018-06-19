@@ -1,28 +1,26 @@
 ---
 title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
-description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
+description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: ruby
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: ruby
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19ffdab40b3032421612ef4ba1b840eeb0d2e62b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798272"
 ---
-# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
+# <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概要
 このガイドでは、Azure Table service と Azure Cosmos DB Table API を使用する一般的なシナリオの実行方法を説明します。 サンプルは Ruby で記述され、[Azure Storage Table Client Library for Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table) を使用しています。 紹介するシナリオには、**テーブルの作成と削除の他に、テーブルへのエンティティの挿入とクエリの実行**が含まれています。
@@ -33,7 +31,7 @@ ms.lasthandoff: 04/16/2018
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Storage または Azure Cosmos DB へのアクセスを追加する
@@ -62,7 +60,7 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
-3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
+3. 右側の [設定] ブレードで、 **[アクセス キー]** をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 

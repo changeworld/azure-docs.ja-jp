@@ -6,30 +6,31 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 06/04/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a9b33469a439c9f99c80391bfeb1fb4040dbbc2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737597"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
-このチュートリアルでは、VMware VM を Azure にレプリケートするときに、オンプレミス VMware インフラストラクチャを準備する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
+[Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
+
+- これは、オンプレミスの VMware VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 2 番目のチュートリアルです。 1 番目のチュートリアルでは、VMware のディザスター リカバリーに必要な [Azure コンポーネントを設定](tutorial-prepare-azure.md)しました。
+- これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 
+
+この記事では、Azure Site Recovery を使って VMware VM を Azure にレプリケートしたいときに、オンプレミスの VMware 環境を準備する方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * VM の検出を自動化するために、vCenter サーバーまたは vSphere ESXi ホストのアカウントを準備する
 > * モビリティ サービスを VMware VM に自動インストールするためのアカウントを準備する
-> * VMware サーバーの要件を確認する
-> * VMware VM の要件を確認する
+> * VMware サーバーと VM の要件を確認する
+> * フェールオーバー後に Azure VM に接続するための準備をする
 
-このチュートリアル シリーズでは、Azure Site Recovery を使用して、単一の VM をレプリケートする方法を説明します。 
-
-これは、このシリーズの 2 番目のチュートリアルです。 前のチュートリアルで説明されているように、[Azure コンポーネントを設定](tutorial-prepare-azure.md)しておいてください。
-
-複数の VM をレプリケートする場合は、VMware レプリケーションのための [Deployment Planner ツール](https://aka.ms/asr-deployment-planner)をダウンロードしてください。 [詳細情報](site-recovery-deployment-planner.md)。
 
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>自動検出用のアカウントを準備する
@@ -54,12 +55,17 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストール用のアカウントを準備する
 
-モビリティ サービスは、レプリケートする VM にインストールする必要があります。 VM のレプリケーションを有効にすると、Site Recovery が自動的にこのサービスをインストールします。 自動的にインストールする場合は、Site Recovery で VM へのアクセスに使用するアカウントを準備する必要があります。 Azure コンソールでディザスター リカバリーを設定するときに、このアカウントを指定します。
+モビリティ サービスは、レプリケートするマシンにインストールする必要があります。 マシンのレプリケーションを有効にしている場合は、Site Recovery でこのサービスをプッシュ インストールできます。または、手動でインストールしたり、インストール ツールを使うこともできます。
 
-1. VM にインストールするアクセス許可を持つドメイン アカウントまたはローカル アカウントを準備します。
-2. Windows VM へのインストールでドメイン アカウントを使用していない場合は、ローカル マシンでリモート ユーザー アクセス コントロールを無効にします。
-   - **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** にあるレジストリから、値に 1 を指定した DWORD エントリ **LocalAccountTokenFilterPolicy** を追加します。
-3. Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
+- このチュートリアルでは、プッシュ インストールでモビリティ サービスをインストールします。
+- このプッシュ インストールの場合は、Site Recovery で VM へのアクセスに使用できるアカウントを準備する必要があります。 Azure コンソールでディザスター リカバリーを設定するときに、このアカウントを指定します。
+
+アカウントを次のように準備します。
+
+VM にインストールするアクセス許可を持つドメイン アカウントまたはローカル アカウントを準備します。
+
+- **Windows VM**: ドメイン アカウントを使っていない場合に Windows VM にインストールするには、ローカル マシンでリモート ユーザー アクセス コントロールを無効にします。 これを行うには、レジストリ **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
+- **Linux VM**: Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
 
 
 ## <a name="check-vmware-requirements"></a>VMware の要件を確認する
@@ -67,7 +73,7 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 VMware サーバーと VM が要件に準拠していることを確認します。
 
 1. VMware サーバーの要件を[確認](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)します。
-2. Linux の場合は、ファイル システムとストレージの要件を[チェック](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)します。 
+2. Linux VM の場合は、ファイル システムとストレージの要件を[チェック](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)します。 
 3. オンプレミスの[ネットワーク](vmware-physical-azure-support-matrix.md#network)と[ストレージ](vmware-physical-azure-support-matrix.md#storage)のサポートをチェックします。 
 4. [Azure のネットワーク](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](vmware-physical-azure-support-matrix.md#azure-compute)に関して、フェールオーバー後のサポートをチェックします。
 5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
@@ -75,21 +81,31 @@ VMware サーバーと VM が要件に準拠していることを確認します
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 
-フェールオーバー シナリオ中に、オンプレミスのネットワークから Azure のレプリケートされた VM に接続することがあります。
+フェールオーバーの後、オンプレミスのネットワークから Azure VM に接続することがあります。
 
 フェールオーバー後に RDP を使用して Windows VM に接続するには、次の操作を行います。
 
-1. インターネット経由でアクセスするには、フェールオーバーの前に、オンプレミスの VM 上の RDP を有効にします。 TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
-2. サイト間 VPN 経由でアクセスするには、オンプレミスのコンピューターで RDP を有効にします。 RDP は、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** から、**ドメインとプライベート** ネットワークでの使用を許可する必要があります。
-   オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。 フェールオーバーをトリガーするときに、VM に保留中の Windows 更新プログラムがないようにします。 ある場合は、更新が完了するまで、仮想マシンにログインすることはできません。
-3. フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM を実行していることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)をレビューしてください。
+- **インターネットへのアクセス**。 フェールオーバーの前に、オンプレミスの VM で RDP を有効にします。 TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
+- **サイト間 VPN アクセス**:
+    - フェールオーバーの前に、オンプレミスのマシンで RDP を有効にします。
+    - RDP は、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** から、**ドメインとプライベート** ネットワークでの使用を許可する必要があります。
+    - オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。
+- フェールオーバーをトリガーするときに、VM に保留中の Windows 更新プログラムがないようにします。 ある場合は、更新が完了するまで、仮想マシンにログインすることはできません。
+- フェールオーバー後の Microsoft Azure VM で **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。 接続できない場合は、VM を実行していることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)をレビューしてください。
 
 フェールオーバー後に SSH を使用して Linux VM に接続するには、次の操作を行います。
 
-1. フェールオーバーする前に、オンプレミスのマシンで、システム起動時に Secure Shell サービスが自動的に開始するように設定されていることを確認します。 ファイアウォール規則で SSH 接続が許可されていることを確認します。
+- フェールオーバーする前に、オンプレミスのマシンで、システム起動時に Secure Shell サービスが自動的に開始するように設定されていることを確認します。
+- ファイアウォール規則で SSH 接続が許可されていることを確認します。
+- フェールオーバー後の Azure VM で、フェールオーバーされた VM とその接続先の Azure サブネットのネットワーク セキュリティ グループの規則について、SSH ポートへの受信接続を許可します。
+- VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md)します。
+- **[ブート診断]** をオンにすると、VM のスクリーンショットを確認できます。
 
-2. フェールオーバー後の Azure VM で、フェールオーバーされた VM とその接続先の Azure サブネットのネットワーク セキュリティ グループの規則について、SSH ポートへの受信接続を許可します。
-   VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md)します。 **[ブート診断]** をオンにすると、VM のスクリーンショットを確認できます。
+## <a name="useful-links"></a>便利なリンク
+
+複数の VM をレプリケートする場合は、始める前に、容量と展開を計画する必要があります。 [詳細情報](site-recovery-deployment-planner.md)。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

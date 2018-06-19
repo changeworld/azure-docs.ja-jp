@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824688"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -31,6 +32,7 @@ ms.lasthandoff: 05/07/2018
 - **Azure SQL Database**: 一般公開 (全 Azure リージョン)
 - **Azure Cosmos DB**: 一般公開 (全 Azure パブリック クラウド リージョン) 
 - **Azure SQL Data Warehouse**: プレビュー (全 Azure パブリック クラウド リージョン)
+- **PostgreSQL および MySQL 向け Azure データベースサービス**: データベース サービスを利用できる Azure リージョンでプレビュー段階にあります。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -98,7 +100,7 @@ ms.lasthandoff: 05/07/2018
   - 強制トンネリングのルートに比べ、より直接的なサービスへの接続が実施されていること。
 
 >[!NOTE]
-> サービス エンドポイントのルートは、アドレス プレフィックスが Azure サービスのものと一致するすべての BGP または UDR のルートをオーバーライドします。 [有効なルートを使用したトラブルシューティング](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)の詳細をご覧ください。
+> サービス エンドポイントのルートは、アドレス プレフィックスが Azure サービスのものと一致するすべての BGP または UDR のルートをオーバーライドします。 [有効なルートを使用したトラブルシューティング](diagnose-network-routing-problem.md)の詳細をご覧ください。
 
 ## <a name="provisioning"></a>プロビジョニング
 

@@ -8,18 +8,18 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305312"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247882"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>社内従量課金プラン向けマネージ アプリケーションの発行
 
-組織のメンバーを対象とする Azure [マネージ アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織標準に確実に準拠するマネージ アプリケーションを発行できます。 こうしたマネージ アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
+組織のメンバーを対象とする Azure [マネージ アプリケーション](overview.md)を作成し、発行することができます。 たとえば、IT 部門が、組織の基準を満たすマネージ アプリケーションを発行できます。 こうしたマネージ アプリケーションは、Azure Marketplace ではなく、サービス カタログを利用して入手できます。
 
 サービス カタログ用のマネージ アプリケーションを発行するには、次の操作を行う必要があります。
 
@@ -29,11 +29,13 @@ ms.locfileid: "34305312"
 * どのユーザー、グループ、またはアプリケーションがユーザーのサブスクリプションのリソース グループにアクセスする必要があるかを決める。
 * .zip パッケージを指定して ID アクセスを要求するマネージ アプリケーション定義を作成する。
 
-この記事では、マネージ アプリケーションには、ストレージ アカウントだけが含まれます。 これは、マネージ アプリケーションを公開する手順を説明するためです。 詳細な例については、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
+この記事では、マネージ アプリケーションには、ストレージ アカウントのみ存在します。 これは、マネージ アプリケーションを公開する手順を説明するためです。 詳細な例については、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。
+
+この記事の PowerShell の例では、Azure PowerShell 6.2 以降が必要です。 必要に応じて、[バージョンを更新](/powershell/azure/install-azurerm-ps)してください。
 
 ## <a name="create-the-resource-template"></a>リソース テンプレートの作成
 
-各マネージ アプリケーション定義には、**mainTemplate.json** というファイルが含まれています。 このファイルで、プロビジョニングする Azure リソースを定義します。 テンプレートは、通常の Resource Manager テンプレートと違いはありません。
+各マネージ アプリケーション定義には、**mainTemplate.json** というファイルが含まれています。 この中で、デプロイする Azure リソースを定義します。 テンプレートは、通常の Resource Manager テンプレートと違いはありません。
 
 **mainTemplate.json** というファイルを作成します。 名前は大文字と小文字が区別されます。
 
@@ -209,6 +211,10 @@ New-AzureRmManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+### <a name="make-sure-users-can-see-your-definition"></a>ユーザーが定義を確認できるようにする
+
+自身がアクセスできるマネージ アプリケーション定義に、組織の他のユーザーもアクセスできることを確認する必要があります。 定義に対して閲覧者以上のロールをユーザーに付与してください。 ユーザーはこのレベルのアクセスをサブスクリプションまたはリソース グループから継承している場合があります。 定義にアクセスできるユーザーを確認し、ユーザーやグループを追加する方法については、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
 ## <a name="create-the-managed-application"></a>マネージド アプリケーションの作成
 
 マネージド アプリケーションは、ポータル、PowerShell、または Azure CLI を介してデプロイすることができます。
@@ -256,6 +262,16 @@ New-AzureRmManagedApplication `
 1. 利用可能なソリューションの一覧から、作成するマネージ アプリケーションを見つけて選択します。 **[作成]** を選択します。
 
    ![マネージ アプリケーションを見つける](./media/publish-service-catalog-app/find-application.png)
+
+   ポータルからマネージ アプリケーション定義を確認できない場合、ポータルの設定の変更が必要になることがあります。 **ディレクトリおよびサブスクリプションのフィルター**を選択します。
+
+   ![サブスクリプション フィルターを選択する](./media/publish-service-catalog-app/select-filter.png)
+
+   グローバル サブスクリプション フィルターに、マネージ アプリケーション定義を含むサブスクリプションが含まれていることを確認します。
+
+   ![サブスクリプション フィルターを確認する](./media/publish-service-catalog-app/check-global-filter.png)
+
+   サブスクリプションを選択した後、サービス カタログのマネージ アプリケーションの作成を最初からやり直します。 これで表示されるはずです。
 
 1. マネージ アプリケーションに必要な基本情報を入力します。 サブスクリプションと、マネージ アプリケーションを格納する新しいリソース グループを指定します。 場所は **[米国中西部]** を選択します。 操作が完了したら、**[OK]** をクリックします。
 

@@ -1,8 +1,8 @@
 ---
-title: "ファイアウォールの内側にある Key Vault へのアクセス | Microsoft Docs"
-description: "ファイアウォールの内側にあるアプリケーションから Azure Key Vault にアクセスする方法について説明します。"
+title: ファイアウォールの内側にある Key Vault へのアクセス | Microsoft Docs
+description: ファイアウォールの内側にあるアプリケーションから Azure Key Vault にアクセスする方法について説明します。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d017c0d9940288cb5eeaa45694b324f93b9bb144
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736250"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Q: Key Vault クライアント アプリケーションをファイアウォールの内側に配置する必要があります。 キー コンテナーへのアクセスを有効にするために開く必要があるポート、ホスト、IP アドレスを教えてください。
@@ -31,7 +32,7 @@ ms.lasthandoff: 01/17/2018
 実際の構成と環境に応じて、いくつかのバリエーションがあります。   
 
 ## <a name="ports"></a>ポート
-認証、管理、データ プレーン アクセスの 3 つの機能すべてに関して、Key Vault への全トラフィックはポート 443 (HTTPS) を経由します。 ただし CRL については、トラフィックがポート 80 (HTTP) を経由する場合があります。 OCSP がサポートされているクライアントは、CRL には到達しませんが、 [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl)に到達する場合があります。  
+認証、管理、データ プレーン アクセスの 3 つの機能すべてに関して、Key Vault への全トラフィックはポート 443 (HTTPS) を経由します。 ただし CRL については、トラフィックがポート 80 (HTTP) を経由する場合があります。 OCSP がサポートされているクライアントは、CRL には到達しませんが、[http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) に到達する場合があります。  
 
 ## <a name="authentication"></a>認証
 Key Vault クライアント アプリケーションは、認証用の Azure Active Directory エンドポイントにアクセスする必要があります。 使用されるエンドポイントは、Azure AD テナント構成とプリンシパルの種類 (ユーザー プリンシパルまたはサービス プリンシパル)、アカウントの種類 (Microsoft アカウントや職場または学校のアカウンなど) によって異なります。  
@@ -60,7 +61,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 | キーの暗号化操作、キーとシークレットの作成、読み取り、更新、削除、キー コンテナー オブジェクト (キーまたはシークレット) に対するタグと他の属性の設定または取得などの操作 |**グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>IP アドレス範囲
-Key Vault サービスでは、PaaS インフラストラクチャなどの他の Azure リソースを使用します。 そのため、Key Vault サービス エンドポイントが常に持つことになる、特定の範囲の IP アドレスは提供されません。 ファイアウォールで IP アドレス範囲のみがサポートされている場合は、「[Microsoft Azure Datacenter IP Ranges (Microsoft Azure データセンターの IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」のドキュメントを参照してください。 認証と ID (Azure Active Directory) については、アプリケーションは、[認証と ID のアドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)に関する記事に記載されているエンドポイントに接続できる必要があります。
+Key Vault サービスでは、PaaS インフラストラクチャなどの他の Azure リソースを使用します。 そのため、Key Vault サービス エンドポイントが常に持つことになる、特定の範囲の IP アドレスは提供されません。 ファイアウォールで IP アドレス範囲のみがサポートされている場合は、「[Microsoft Azure Datacenter IP Ranges (Microsoft Azure データセンターの IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」のドキュメントを参照してください。 認証と ID (Azure Active Directory) はグローバル サービスであり、予告なしに他のリージョンにフェールオーバーしたり、トラフィックを移動したりする可能性があります。 このシナリオでは、[認証と ID の IP アドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)に関する記事に記載されているすべての IP 範囲を、ファイアウォールに追加する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。

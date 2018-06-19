@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: bde17a47e0e3e70daf52f4c460118c054b7c1152
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 29d843e2752046e8ab66a4f46fcbb212f6fb57c6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824399"
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
 暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。
@@ -61,7 +62,7 @@ Azure Disk Encryption の前提条件となる構成スクリプトを使用す�
 
 スクリプトの内容が保存されたので、PowerShell ISE でそのスクリプトを開きます。
 
-1. [スタート] メニューの **[Cortana]** をクリックします。 Cortana の検索ボックスに「**PowerShell**」と入力して、"PowerShell" について **Cortana** に質問します。
+1. Windows PowerShell ISE を起動します。
 2. **[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
 3. **[Administrator: Windows PowerShell ISE (管理者: Windows PowerShell ISE)]** ウィンドウで、**[表示]** をクリックし、**[Show Script Pane (スクリプト ウィンドウの表示)]** をクリックします。
 4. ウィンドウの右側に **[コマンド]** ウィンドウが表示される場合は、そのウィンドウの右上隅にある**閉じるボタン**をクリックして閉じます。 表示されるテキストが小さすぎる場合は、 **Ctrl + プラス記号 (+)** キーを押します。 テキストが大きすぎる場合は、 **Ctrl + マイナス記号 (-)** キーを押します。
@@ -74,8 +75,8 @@ Azure Disk Encryption の前提条件となる構成スクリプトを使用す�
 
 上部のウィンドウは "スクリプト ウィンドウ"、下部のウィンドウは "コンソール" と呼ばれています。 この記事では、これ以降、これらの用語を使用します。
 
-## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Azure Disk Encryption の前提条件となる PowerShell コマンドの実行
-Azure Disk Encryption の前提条件となるスクリプトでは、スクリプトの開始後に次の情報が求められます。
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-script"></a>Azure Disk Encryption の前提条件となる PowerShell スクリプトの実行
+Azure Disk Encryption の前提条件となる PowerShell スクリプトは、次のパラメーターを受け入れます。 
 
 * **リソース グループ名** - Key Vault を配置するリソース グループの名前。  入力した名前のリソース グループがまだ作成されていない場合は、その名前の付いた新しいリソース グループが作成されます。 このサブスクリプションで使用するリソース グループが既にある場合は、そのリソース グループ名を入力します。
 * **Key Vault 名** - 暗号化キーが配置される Key Vault の名前。 この名前の Key Vault がまだない場合は、この名前の付いた新しい Key Vault が作成されます。 使用する Key Vault が既にある場合は、既存の Key Vault の名前を入力します。
@@ -92,18 +93,18 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 1. PowerShell ISE を閉じた場合は、PowerShell ISE のインスタンスを管理者特権で開きます。 PowerShell ISE がまだ開いていない場合は、この記事で前に説明した手順に従います。 スクリプトを閉じた場合は、**ADEPrereqScript.ps1** を開きます (これには、**[ファイル]**、**[開く]** の順にクリックし、**C:\AzureADEScript** フォルダーからスクリプトを選択します)。 この記事の手順を最初から実行している場合は、そのまま次の手順に進んでください。
 2. PowerShell ISE のコンソール (PowerShell ISE の下部のウィンドウ) で、「**cd c:\AzureADEScript**」と入力して **Enter** キーを押すことで、スクリプトの場所にフォーカスを移動します。
 3. スクリプトを実行できるようにコンピューター上で実行ポリシーを設定します。 コンソールで「 **Set-ExecutionPolicy Unrestricted** 」と入力し、Enter キーを押します。 変更による実行ポリシーへの影響を示すダイアログ ボックスが表示されたら、**[すべてはい]** または **[はい]** をクリックします (**[すべてはい]** が表示される場合はそれを選択し、**[すべてはい]** が表示されない場合は **[はい]** をクリックします)。
-4. Azure アカウントにログインします。 コンソールで、「**Connect-AzureRmAccount**」と入力し、**Enter** キーを押します。 資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。 わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。 **環境**、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。 **SubscriptionId** をメモ帳にコピーします。 これは手順 6. で必要になります。
+4. Azure アカウントにログインします。 コンソールで、「**Login-AzureRmAccount**」と入力し、**Enter** キーを押します。 資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。 わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。 **環境**、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。 **SubscriptionId** をメモ帳にコピーします。 これは手順 6. で必要になります。
 5. 仮想マシンが属しているサブスクリプションとその仮想マシンの場所を探します。 [https://portal.azure.com](ttps://portal.azure.com) に移動してログインします。  ページの左側にある **[Virtual Machines]** をクリックします。 仮想マシンとそれが属しているサブスクリプションの一覧が表示されます。
 
    ![Virtual Machines](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. PowerShell ISE に戻ります。 スクリプトが実行されるサブスクリプションのコンテキストを設定します。 コンソールで、「**Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**」と入力し、**Enter** キーを押します (**< your_subscription_Id >** は実際のサブスクリプション ID に置き換えてください)。 環境、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。
-7. これで、スクリプトを実行する準備が整いました。 **[スクリプトの実行]** ボタンをクリックするか、**F5** キーを押します。
+7. コマンド ウィンドウで、以下をパラメーターとして渡すスクリプト コマンドを実行します。 
 
    ![Executing PowerShell Script](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. スクリプトにより **resourceGroupName:** の入力が求められます。使用する "*リソース グループ*" の名前を入力し、**Enter** キーを押します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用する "*リソース グループ*" (仮想マシンが存在するものなど) が既にある場合は、既存のリソース グループの名前を入力します。
-9. スクリプトにより **keyVaultName:** の入力が求められます。使用する "*キー コンテナー*" の名前を入力し、Enter キーを押します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用するキー コンテナーが既にある場合は、既存の "*キー コンテナー*" の名前を入力します。
+8. **-resourceGroupName:** 使用する "*リソース グループ*" の名前を入力します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用する "*リソース グループ*" (仮想マシンが存在するものなど) が既にある場合は、既存のリソース グループの名前を入力します。
+9. **-keyVaultName:** 使用する "*キー コンテナー*" の名前を入力します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用するキー コンテナーが既にある場合は、既存の "*キー コンテナー*" の名前を入力します。
 10. スクリプトにより **location:** の入力が求められます。暗号化する VM がある場所の名前を入力し、**Enter** キーを押します。 場所を覚えていない場合は、手順 5. に戻ってください。
-11. スクリプトにより **aadAppName:** の入力が求められます。使用する *Azure Active Directory* アプリケーションの名前を入力し、**Enter** キーを押します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用する "*Azure Active Directory アプリケーション*" が既にある場合は、既存の "*Azure Active Directory アプリケーション*" の名前を入力します。
+11. **-aadAppName:** 使用する *Azure Active Directory* アプリケーションの名前を入力します。 Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。 使用する "*Azure Active Directory アプリケーション*" が既にある場合は、既存の "*Azure Active Directory アプリケーション*" の名前を入力します。
 12. ログイン ダイアログ ボックスが表示されます。 資格情報を入力します (一度ログインしていますが、ここでもう一度入力する必要があります)。
 13. スクリプトが実行され、完了時に、**aadClientID**、**aadClientSecret**、**diskEncryptionKeyVaultUrl**、**keyVaultResourceId** の値をコピーするよう求められます。 これらの値をそれぞれクリップボードにコピーし、メモ帳に貼り付けます。
 14. PowerShell ISE に戻り、最後の行の末尾にカーソルを置いて、 **Enter**キーを押します。

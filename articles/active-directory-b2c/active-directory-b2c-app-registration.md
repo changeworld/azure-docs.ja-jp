@@ -1,20 +1,21 @@
 ---
-title: アプリケーションの登録 - Azure Active Directory B2C
+title: Azure Active Directory B2C でのアプリケーションの登録 | Microsoft Docs
 description: Azure Active Directory B2C にアプリケーションを登録する方法
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 8ba511464f8ce0bef2a14706a272f6c09dfe5d07
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 354c5da815f19e4366a04c8c031fd9cbca6f060b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711860"
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: アプリケーションを登録する
 
@@ -99,7 +100,7 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 `https://new.login.contoso.com`
 
-この場合、login.contoso.com の DNS サブドメインを参照しています。応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
+この場合、login.contoso.com の DNS サブドメインを参照しています。 応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
 
 `https://contoso.com`
 

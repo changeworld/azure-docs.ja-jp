@@ -2,24 +2,21 @@
 title: Azure Cosmos DB Emulator を使用したローカルでの開発 | Microsoft Docs
 description: Azure Cosmos DB Emulator を使用すると、Azure サブスクリプションを作成せずに無料で、アプリケーションの開発とテストをローカルで行うことができます。
 services: cosmos-db
-documentationcenter: ''
 keywords: Azure Cosmos DB Emulator
 author: David-Noble-at-work
 manager: kfile
 editor: ''
-ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 109bd61963b918f2a20c48a5bf7bd89dc353db96
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6869698f2e6dca321d371bb22ded316f32cdeb51
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824096"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -55,7 +52,7 @@ Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的で
 > * トレース ファイルの収集
 > * トラブルシューティング
 
-最初に、Kirill Gavrylyuk が Azure Cosmos DB Emulator の使用のいろはを解説している次のビデオを視聴することをお勧めします。 このビデオでは、エミュレーターを DocumentDB Emulator と呼んでいますが、ビデオの撮影後にツール自体の名前が Azure Cosmos DB Emulator に変更されました。 ビデオのすべての情報は、Azure Cosmos DB Emulator にそのまま適用されます。 
+最初に、Kirill Gavrylyuk が Azure Cosmos DB Emulator の使用のいろはを解説している次のビデオを視聴することをお勧めします。 このビデオではエミュレーターを DocumentDB Emulator と呼んでいますが、ビデオの撮影後にツールの名前は Azure Cosmos DB Emulator に変更されています。 ビデオのすべての情報は、Azure Cosmos DB Emulator にそのまま適用されます。 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
 > 
@@ -69,11 +66,12 @@ Microsoft は実際の Azure Cosmos DB サービスを忠実に再現したロ�
 ## <a name="differences-between-the-emulator-and-the-service"></a>エミュレーターとサービスの違い 
 Azure Cosmos DB Emulator は環境をエミュレートし、ローカルの開発者ワークステーションで実行するものであり、このエミュレーターとクラウドの Azure Cosmos DB アカウントには機能にいくつかの違いがあります。
 
+* 現時点では、エミュレーターのデータ エクスプローラーは SQL API コレクションと MongoDB コレクションのみをサポートしています。 テーブル、グラフ、および Cassandra API はまだサポートされていません。  
 * Azure Cosmos DB Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。  Azure Cosmos DB Emulator では、キーを再生成できません。
 * Azure Cosmos DB Emulator は拡張可能なサービスではなく、大量のコレクションをサポートはありません。
 * Azure Cosmos DB Emulator は異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)をシミュレートしません。
 * Azure Cosmos DB Emulator は[複数リージョンのレプリケーション](distribute-data-globally.md)をシミュレートしません。
-* Azure Cosmos DB Emulator は Azure Cosmos DB サービスで利用できたサービス割り当てオーバーライド (ドキュメントのサイズ上限やパーティション分割コレクション ストレージ増加など) をサポートしません。
+* Azure Cosmos DB Emulator は Azure Cosmos DB サービスで利用できるサービス クオータのオーバーライド (ドキュメント サイズの制限やパーティション分割コレクション ストレージの増加など) をサポートしません。
 * ご利用の Azure Cosmos DB Emulator に Azure Cosmos DB サービスの最近の変更が反映されていない場合があるため、[Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) を利用し、アプリケーションの実稼働スループット (RU) ニーズを正確に見積もってください。
 
 ## <a name="system-requirements"></a>システム要件
@@ -82,7 +80,7 @@ Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件�
 * ソフトウェア要件
   * Windows Server 2012 R2、Windows Server 2016、または Windows 10
 *   最小ハードウェア要件
-  * 2 GB RAM
+  * 2 GB の RAM
   * 10 GB のハードディスク空き容量
 
 ## <a name="installation"></a>インストール
@@ -101,11 +99,11 @@ Azure Cosmos DB Emulator を起動するには、[スタート] ボタンをク�
 
 Azure Cosmos DB Emulator は既定では、ポート 8081 でリッスンしているローカル コンピューター ("localhost") で実行されます。
 
-Azure Cosmos DB Emulator は既定では `C:\Program Files\Azure Cosmos DB Emulator` ディレクトリにインストールされます。 コマンドラインを使ってエミュレーターを起動したり停止したりすることもできます。 詳細については、[コマンドライン ツールのリファレンス](#command-line)に関するセクションを参照してください。
+Azure Cosmos DB Emulator は既定では `C:\Program Files\Azure Cosmos DB Emulator` ディレクトリにインストールされます。 コマンドラインからエミュレーターの起動と停止を行うこともできます。 詳細については、[コマンドライン ツールのリファレンス](#command-line)に関するセクションを参照してください。
 
 ## <a name="start-data-explorer"></a>データ エクスプローラーの起動
 
-Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB データ エクスプローラーが自動的に開きます。 アドレスは [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html) として表示されます。 エクスプローラーを閉じた後にもう一度開きたくなった場合は、ブラウザーで URL を開くか、次に示すように Windows トレイ アイコンの Azure Cosmos DB Emulator から起動することができます。
+Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB データ エクスプローラーが自動的に開きます。 アドレスは [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html) として表示されます。 エクスプローラーを閉じた後にもう一度開く場合は、ブラウザーで URL を開くか、次に示すように Windows トレイ アイコンの Azure Cosmos DB Emulator から起動できます。
 
 ![Azure Cosmos DB ローカル エミュレーターのデータ エクスプローラー起動ツール](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
@@ -133,7 +131,7 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
 
 ローカル ネットワークでのエミュレーターを実行できます。 ネットワーク アクセスを有効にするには、[コマンド ライン](#command-line-syntax)で /AllowNetworkAccess オプションを指定します。また、/Key=key_string または /KeyFile=file_name を指定する必要もあります。 /GenKeyFile=file_name を使用すると、ランダム キーでファイルを事前に生成できます。  その後、/KeyFile=file_name または /Key=contents_of_file に渡すことができます。
 
-ネットワーク アクセスを有効にするのが初めての場合、ユーザーはエミュレーターをシャットダウンし、エミュレーターのデータ ディレクトリ (C:\Users\user_name\AppData\Local\CosmosDBEmulator) を削除する必要があります。
+ネットワーク アクセスを初めて有効にする場合は、エミュレーターをシャットダウンし、エミュレーターのデータ ディレクトリ (C:\Users\user_name\AppData\Local\CosmosDBEmulator) を削除する必要があります。
 
 ## <a name="developing-with-the-emulator"></a>DocumentDB Emulator を使用した開発
 デスクトップで Azure Cosmos DB Emulator を実行している間、サポートされている [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) または [Azure Cosmos DB REST API](/rest/api/cosmos-db/) を使用して Emulator を操作できます。 Azure Cosmos DB Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなく、SQL API と MongoDB API のコレクションを作成したり、ドキュメントの表示と編集を行ったりできます。   
@@ -143,7 +141,7 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
         new Uri("https://localhost:8081"), 
         "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
-[MongoDB 向けの Azure Cosmos DB プロトコル サポート](mongodb-introduction.md)を使用している場合、次の接続文字列を使用してください。
+[MongoDB 向けの Azure Cosmos DB プロトコル サポート](mongodb-introduction.md)を使用している場合は、次の接続文字列を使用します。
 
     mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
@@ -158,7 +156,7 @@ Azure Cosmos DB Emulator を使用して、既定で最大 25 個の単一パー
 
 .NET 言語とランタイムでは、Azure Cosmos DB ローカル エミュレーターに安全に接続するために Windows 証明書ストアが使用されます。 その他の言語では、証明書の管理と使用について独自の方法があります。 Java の場合は独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)が使用され、Python の場合は[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)が使用されます。
 
-Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するためには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、「[Azure Cosmos DB Emulator 証明書のエクスポート](./local-emulator-export-ssl-certificates.md)」の手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
+Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、「[Azure Cosmos DB Emulator 証明書のエクスポート](./local-emulator-export-ssl-certificates.md)」の手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
 
 ![Azure Cosmos DB ローカル エミュレーターの SSL 証明書](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
@@ -167,7 +165,7 @@ X.509 証明書を Java 証明書ストアにインポートするには、「[�
 Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
 
 ## <a id="command-line"></a> コマンドライン ツールのリファレンス
-インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
+インストール先では、コマンドラインを使用して、エミュレーターの起動と停止やオプションの構成などの操作を実行できます。
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
@@ -507,7 +505,7 @@ Cosmos DB クラウド サービスと同等のエミュレーター サービ�
 
    Cosmos DB は、さまざまなサービスを実行するためにタスクを割り当てます。 割り当てられるタスクの数は、ホスト上のコアの数の倍数です。 既定の倍数は、コアの数が多い運用環境では適切に機能します。 ただし、1 または 2 個のプロセッサを備えたマシンでは、この倍数が適用された場合、これらのサービスを実行するためのタスクは割り当てられません。
 
-   エミュレーターに構成の上書きを追加することによって、この問題を修正しました。 現在は、倍数 1 を適用します。 さまざまなサービスを実行するために割り当てられるタスクの数は現在、ホスト上のコアの数と同じです。
+   エミュレーターに構成のオーバーライドを追加することによって、この問題を修正しました。 現在は、倍数 1 を適用します。 さまざまなサービスを実行するために割り当てられるタスクの数は現在、ホスト上のコアの数と同じです。
 
    このリリースで他に何も行わなかったとしたら、この問題への対処だけになったでしょう。 エミュレーターをホストしている多くの開発/テスト環境は、1 または 2 個のコアを備えていることがわかりました。
 

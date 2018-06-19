@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 06/06/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f1dedc83d0d7040a4f7b9760c567437f58dde54
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839658"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure で Linux 仮想マシンの監視と更新を行う
 
@@ -43,13 +44,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-vm"></a>VM を作成する
 
-診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
+診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-ここで [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成し、SSH キーを生成します (*~/.ssh/* にまだ存在していない場合)。
 
 ```azurecli-interactive
 az vm create \
@@ -64,7 +65,7 @@ az vm create \
 
 Linux VM が起動すると、ブート診断拡張機能によってブート出力がキャプチャされて Azure Storage に格納されます。 VM の起動に関する問題は、このデータを使ってトラブルシューティングすることができます。 Azure CLI を使用して Linux VM を作成した場合、ブート診断が自動的に有効になりません。
 
-ブート診断を有効にするにはまず、ブート ログを格納するためのストレージ アカウントを作成しておく必要があります。 ストレージ アカウントには、グローバルに一意の名前が必要です。名前は 3 ～ 24 文字とし、数字と小文字のみを使用できます。 ストレージ アカウントは、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドで作成します。 この例では、ランダムな文字列を使って一意のストレージ アカウント名を作成しています。
+ブート診断を有効にするにはまず、ブート ログを格納するためのストレージ アカウントを作成しておく必要があります。 ストレージ アカウントには、グローバルに一意の名前が必要です。名前は 3 ～ 24 文字とし、数字と小文字のみを使用できます。 ストレージ アカウントは、[az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドで作成します。 この例では、ランダムな文字列を使って一意のストレージ アカウント名を作成しています。
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -82,7 +83,7 @@ az storage account create \
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-今度は、[az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) を使用して、ブート診断を有効にします。 `--storage` の値は、前の手順で取得した BLOB の URI です。
+今度は、[az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable) を使用して、ブート診断を有効にします。 `--storage` の値は、前の手順で取得した BLOB の URI です。
 
 ```azurecli-interactive
 az vm boot-diagnostics enable \
@@ -93,19 +94,19 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>ブート診断を表示する
 
-ブート診断が有効になっている場合、VM を停止して起動するたびに、ブート プロセスに関する情報がログ ファイルに書き込まれます。 この例ではまず、次のように [az vm deallocate](/cli/azure/vm#az_vm_deallocate) コマンドで VM の割り当てを解除します。
+ブート診断が有効になっている場合、VM を停止して起動するたびに、ブート プロセスに関する情報がログ ファイルに書き込まれます。 この例ではまず、次のように [az vm deallocate](/cli/azure/vm#az-vm-deallocate) コマンドで VM の割り当てを解除します。
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-次に、[az vm start]( /cli/azure/vm#az_vm_stop) コマンドで VM を起動します。
+次に、[az vm start]( /cli/azure/vm#az-vm-stop) コマンドで VM を起動します。
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-*myVM* のブート診断データは、次のように [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) コマンドで取得できます。
+*myVM* のブート診断データは、次のように [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) コマンドで取得できます。
 
 ```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
@@ -115,24 +116,18 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Azure には、Linux VM と連動する専用のホストがあります。 メトリックは、そのホストを対象に自動的に収集され、Azure Portal に次のように表示されます。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroupMonitor]** を選択して、リソース一覧から **[myVM]** を選択します。
-1. ホスト VM の実行状況を確認するには、VM ブレードの **[メトリック]** をクリックし、**[利用可能なメトリック]** からいずれかの *[Host]* メトリックを選択します。
+1. Azure Portal で **[リソース グループ]** を選択し、**[myResourceGroupMonitor]** を選択します。次に、リソース一覧から **[myVM]** を選択します。
+1. ホスト VM の実行状況を確認するには、VM ウィンドウの **[メトリック]** を選択し、**[利用可能なメトリック]** からいずれかの *[Host]* メトリックを選択します。
 
     ![ホストのメトリックを表示する](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>診断拡張機能をインストールする
 
-> [!IMPORTANT]
-> このドキュメントでは、非推奨の Linux Diagnostic Extension バージョン 2.3 について説明します。 バージョン 2.3 は 2018 年 6 月 30 日までサポートされる予定です。
->
-> 代わりに Linux Diagnostic Extension バージョン 3.0 をご利用いただけます。 詳細については、[こちらのドキュメント](./diagnostic-extension.md)をご覧ください。
-
 基本的なホスト メトリックは利用できますが、さらに粒度の細かい VM 固有のメトリックを表示するためには、Azure 診断拡張機能を VM にインストールする必要があります。 Azure 診断拡張機能を通じて、より詳しい監視データと診断データを VM から取得することができます。 これらのパフォーマンス メトリックを確認したり、VM のパフォーマンスに基づくアラートを作成したりすることができます。 診断拡張機能は、次のように Azure Portal からインストールします。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
-1. **[診断の設定]** をクリックします。 *[ブート診断]* は、前のセクションで既に有効にしたので、そのように表示されています。 *[基本メトリック]* のチェック ボックスをオンにします。
-1. *[ストレージ アカウント]* セクションで、前のセクションで作成した *mydiagdata[1234]* アカウントに移動して選択します。
-1. **[保存]** ボタンをクリックします。
+1. Azure Portal で **[リソース グループ]** を選択し、**[myResourceGroupMonitor]** を選択します。次に、リソース一覧から **[myVM]** を選択します。
+1. **[診断の設定]** を選択します。 *[ストレージ アカウントの選択]* ドロップダウン メニューから、前のセクションで作成した *mydiagdata [1234]* アカウントを選択します (まだ選択されていない場合)。
+1. **[ゲスト レベルの監視を有効にする]** ボタンを選択します。
 
     ![診断メトリックの表示](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -140,8 +135,8 @@ Azure には、Linux VM と連動する専用のホストがあります。 メ�
 
 VM のメトリックは、ホスト VM のメトリックと同じ方法で表示できます。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
-1. VM の実行状況を確認するには、VM ブレードの **[メトリック]** をクリックし、**[利用可能なメトリック]** からいずれかの診断メトリックを選択します。
+1. Azure Portal で **[リソース グループ]** を選択し、**[myResourceGroupMonitor]** を選択します。次に、リソース一覧から **[myVM]** を選択します。
+1. VM の実行状況を確認するには、VM ウィンドウの **[メトリック]** を選択し、**[利用可能なメトリック]** からいずれかの "*[ゲスト]*" 診断メトリックを選択します。
 
     ![VM のメトリックを表示する](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
@@ -151,12 +146,12 @@ VM のメトリックは、ホスト VM のメトリックと同じ方法で表�
 
 平均 CPU 使用率のアラートを作成する例を次に示します。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
-2. VM ブレードの **[アラート ルール]** をクリックし、アラート ブレード上部にある **[メトリック アラートの追加]** をクリックします。
+1. Azure Portal で **[リソース グループ]** を選択し、**[myResourceGroupMonitor]** を選択します。次に、リソース一覧から **[myVM]** を選択します。
+2. **[アラート (クラシック)]** を選択し、[アラート] ウィンドウの上部にある **[メトリック アラートの追加 (クラシック)]** を選択します。
 3. **[名前]** にアラートの名前を入力します (例: *myAlertRule*)。
 4. CPU の割合が 1.0 を超えた状態が 5 分間続いたときにアラートをトリガーするために、それ以外の選択肢はすべて既定値のままにします。
 5. 必要に応じて *[所有者、共同作成者、閲覧者に電子メールを送信]* のチェック ボックスをオンにして、電子メール通知を送信することもできます。 既定のアクションでは、ポータルに通知が表示されます。
-6. **[OK]** ボタンをクリックします。
+6. **[OK]**  ボタンを選択します。
 
 ## <a name="manage-package-updates"></a>パッケージの更新を管理する
 
@@ -171,7 +166,7 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 
 1. 画面左側の **[仮想マシン]** を選択します。
 2. 一覧から VM を選択します。
-3. [VM] 画面の **[操作]** セクションで、**[更新の管理]** をクリックします。 **[更新管理の有効化]** 画面が開きます。
+3. [VM] 画面の **[操作]** セクションで、**[更新の管理]** を選択します。 **[更新管理の有効化]** 画面が開きます。
 
 この VM で Update Management が有効になっているかを確認する検証が行われます。
 この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
@@ -183,7 +178,7 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
 このエージェントは VM との通信に使用され、更新ステータスに関する情報を取得します。
 
-Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効化]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
+Log Analytics ワークスペースと Automation アカウントを選択し、**[有効にする]** を選択して、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
@@ -191,7 +186,7 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 * [Automation](../../automation/automation-offering-get-started.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
-**[更新の管理]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
+**[更新の管理]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** を選択します。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
 
 ![Update Management ソリューションを有効にする](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -207,7 +202,7 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 更新プログラムをインストールするには、リリース スケジュールとサービス期間に従ってデプロイをスケジュールします。 デプロイに含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
 
-**[更新の管理]** 画面の上部にある **[更新プログラムの展開のスケジュール]** をクリックして、VM の新しい更新プログラムのデプロイをスケジュールします。 **[新しい更新プログラムの展開]** 画面で、次の情報を指定します。
+VM の新しい更新プログラムのデプロイをスケジュールするには、**[更新の管理]** 画面の上部にある **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** 画面で、次の情報を指定します。
 
 * **名前**: 更新プログラムのデプロイを識別する一意の名前を指定します。
 * **更新プログラムの分類** - 更新プログラムのデプロイによってデプロイに追加されたソフトウェアの種類を選択します。 分類の種類は次のとおりです。
@@ -218,13 +213,13 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
   ![更新プログラムのスケジュール設定画面](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
 * **スケジュール設定**: 既定の日時 (現在の時刻から 30 分後) を使用するか、別の日時を指定します。
-  デプロイを 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 定期的なスケジュールを設定するには、[繰り返し] の下の [繰り返し] オプションをクリックします。
+  デプロイを 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 定期的なスケジュールを設定するには、[繰り返し] の下の [繰り返し] オプションを選択します。
 
   ![更新プログラムのスケジュール設定画面](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
 * **メンテナンス期間 (分)**: 更新プログラムをデプロイする期間を指定します。 これにより、定義したサービス期間内に変更が確実に実行されます。
 
-スケジュールの構成が完了したら、**[作成]** ボタンをクリックして、状態ダッシュボードに戻ります。
+スケジュールの構成が完了したら、**[作成]** ボタンを選択して、状態ダッシュボードに戻ります。
 **スケジュール済み**の表に、作成したデプロイ スケジュールが表示されていることを確認してください。
 
 > [!WARNING]
@@ -234,8 +229,8 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 スケジュールされた展開の開始後、**[更新管理]** 画面の **[更新プログラムの展開]** タブに、展開の状態が表示されます。
 実行中の場合、状態は **[処理中]** と表示されます。 正常に完了すると、状態は **[成功]** に変わります。
-デプロイ時に 1 つ以上の更新プログラムでエラーが発生した場合、ステータスは **[部分的に失敗]** になります。
-完了した更新プログラムのデプロイをクリックし、その更新プログラムのデプロイのダッシュボードを確認します。
+デプロイ時に 1 つ以上の更新プログラムでエラーが発生した場合、状態は **[部分的に失敗]** になります。
+完了した更新プログラムのデプロイを選択すると、その更新プログラムのデプロイ用のダッシュボードが表示されます。
 
 ![特定のデプロイに関する更新プログラムのデプロイ ステータスのダッシュボード](./media/tutorial-monitoring/manage-updates-view-results.png)
 
@@ -246,11 +241,11 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 * **成功**: 更新できました。
 * **失敗**: 更新できませんでした。
 
-**[すべてのログ]** をクリックし、デプロイで作成されたすべてのログ エントリを確認します。
+展開によって作成されたログ エントリをすべて表示するには、**[すべてのログ]** を選択します。
 
-**[出力]** タイルをクリックし、ターゲット VM での更新プログラムのデプロイを管理する runbook のジョブ ストリームを確認します。
+ターゲット VM での更新プログラムのデプロイを管理する Runbook のジョブ ストリームを確認するには、**[出力]** タイルを選択します。
 
-デプロイで発生したエラーの詳細情報を確認するには、**[エラー]** をクリックします。
+展開で発生したエラーの詳細情報を確認するには、**[エラー]** を選択します。
 
 ## <a name="monitor-changes-and-inventory"></a>変更とインベントリを監視する
 
@@ -262,9 +257,9 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 1. 画面左側の **[仮想マシン]** を選択します。
 2. 一覧から VM を選択します。
-3. VM 画面で、**[操作]** セクションの **[インベントリ]** または **[変更の追跡]** をクリックします。 **[Enable Change Tracking and Inventory]\(変更の追跡とインベントリの有効化\)** 画面が開きます。
+3. VM 画面で、**[操作]** セクションの **[インベントリ]** または **[変更の追跡]** を選択します。 **[Enable Change Tracking and Inventory]\(変更の追跡とインベントリの有効化\)** 画面が開きます。
 
-使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。 メニューではソリューションは別々に表示されますが、同じソリューションです。 一方を有効にすると、使用している VM に対して両方が有効になります。
+使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** を選択します。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。 メニューではソリューションは別々に表示されますが、同じソリューションです。 一方を有効にすると、使用している VM に対して両方が有効になります。
 
 ![変更とインベントリの追跡を有効にする](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -272,7 +267,7 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 ### <a name="track-changes"></a>変更を追跡する
 
-使用している VM で、**[操作]** の **[変更の追跡]** を選択します。 **[設定の編集]** をクリックすると、**[変更の追跡]** ページが表示されます。 追跡する設定の種類を選択し、**[+ 追加]** をクリックして、設定を構成します。 Linux の場合は、**[Linux ファイル]** を選択できます。
+使用している VM で、**[操作]** の **[変更の追跡]** を選択します。 **[設定の編集]** を選択すると、**[変更の追跡]** ページが表示されます。 追跡する設定の種類を選択し、**[+ 追加]** を選択して、設定を構成します。 Linux の場合は、**[Linux ファイル]** を選択できます。
 
 変更の追跡の詳細については、[VM での変更のトラブルシューティング](../../automation/automation-tutorial-troubleshoot-changes.md)に関するページをご覧ください
 

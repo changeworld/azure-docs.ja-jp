@@ -1,44 +1,42 @@
 ---
-title: Python を使用して Azure Table Storage を使用する | Microsoft Docs
-description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
+title: Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する | Microsoft Docs
+description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
-documentationcenter: python
 author: SnehaGunda
 manager: kfile
-ms.assetid: 7ddb9f3e-4e6d-4103-96e6-f0351d69a17b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: python
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: b4370f63c2e5ccf466de7cb680377b12940a6efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 42e7ef8699ee5f481c6a1c45832dfa3428e3baa8
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798204"
 ---
-# <a name="get-started-with-azure-table-storage-using-python"></a>Python を使用して Azure Table Storage を使用する
+# <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。 Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage のデータ アクセスは、多くの種類のアプリケーションにとって高速でコスト効率に優れ、また一般に、従来の SQL と比較して、同様の容量のデータを低コストで保存することができます。
+Azure Table Storage と Azure Cosmos DB は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。 Table Storage と Azure Cosmos DB はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage と Table API のデータへのアクセスは、多くの種類のアプリケーションにとって高速でコスト効率に優れ、また一般に、従来の SQL と比較して、同様の容量のデータを低コストで保存することができます。
 
-Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
+Table Storage または Azure Cosmos DB を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
-### <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、Azure Table Storage の一般的な用途における [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) の使い方について説明します。 SDK の名前は、Azure Cosmos DB で使うことを示していますが、パッケージは Azure Cosmos DB と Azure Tables ストレージの両方に使うことができます。また、各サービスは一意のエンドポイントを持っています。 次の方法を示す Python の例を使って、これらのシナリオについて説明します。
+### <a name="about-this-sample"></a>このサンプルについて
+このサンプルでは、Azure Table Storage の一般的な用途における [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) の使い方について説明します。 SDK の名前は、Azure Cosmos DB で使うことを示していますが、パッケージは Azure Cosmos DB と Azure Tables ストレージの両方に使うことができます。また、各サービスは一意のエンドポイントを持っています。 次の方法を示す Python の例を使って、これらのシナリオについて説明します。
 * テーブルの作成と削除
 * エンティティの挿入とクエリ
 * エンティティの変更
 
-このチュートリアルでシナリオに従って作業するときに、[Azure Cosmos DB SDK for Python API のリファレンス](https://azure.github.io/azure-cosmosdb-python/)を参照できます。
+このサンプルでシナリオに従って作業するときに、[Azure Cosmos DB SDK for Python API のリファレンス](https://azure.github.io/azure-cosmosdb-python/)を参照できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの作業を行うためには、次のものが必要になります。
+このサンプルの作業を行うためには、次のものが必要になります。
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
 - [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
