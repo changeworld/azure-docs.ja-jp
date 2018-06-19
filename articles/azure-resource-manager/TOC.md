@@ -17,6 +17,7 @@
 ### [テンプレート セクション](resource-group-authoring-templates.md)
 #### [パラメーター](resource-manager-templates-parameters.md)
 #### [変数](resource-manager-templates-variables.md)
+#### [関数](resource-group-authoring-templates.md#functions)
 #### [リソース](resource-manager-templates-resources.md)
 #### [Outputs](resource-manager-templates-outputs.md)
 ### [リンクされたテンプレートと入れ子になったテンプレート](resource-group-linked-templates.md)

@@ -1,4 +1,4 @@
-# [Azure IoT の基礎](../iot-fundamentals/index.yml)
+# [Azure IoT の基礎](/azure/iot-fundamentals)
 # [IoT Hub のドキュメント](index.yml)
 
 # 概要
@@ -84,10 +84,10 @@
 ### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
 ### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 
-## [徹底的なセキュリティ](iot-hub-security-ground-up.md)
-## [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
-## [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
-## [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
+## [徹底的なセキュリティ](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+## [セキュリティのベスト プラクティス](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+## [セキュリティのアーキテクチャ](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+## [IoT デプロイのセキュリティ保護](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## X.509 CA 証明書を使用したセキュリティ保護
 ### [X.509 CA 証明書セキュリティの概要](iot-hub-x509ca-overview.md)
 #### [X.509 CA 証明書セキュリティの概念](iot-hub-x509ca-concept.md)
@@ -206,7 +206,7 @@
 ### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)
 ## 実在のデバイスの使用
-### [はじめに](iot-hub-get-started.md)
+### [使ってみる](iot-hub-get-started.md)
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)

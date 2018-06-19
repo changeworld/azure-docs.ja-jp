@@ -1,5 +1,5 @@
 # 概要
-## [作業開始](get-started.md)
+## [使ってみる](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## [概要とアーキテクチャ](hana-overview-architecture.md)
@@ -51,12 +51,12 @@
 ## [DBMS デプロイ ガイド](dbms-guide.md)
 ## [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP ID 統合およびシングル サインオン
-## [SAP Cloud との統合](../../../active-directory/active-directory-saas-sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD と SAP Cloud Platform Identity Authentication の統合](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [SAP Cloud Platform でのシングル サインオンのセットアップ](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD と SAP NetWeaver の統合](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD と SAP Business ByDesign の統合](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD と SAP HANA DBMS の統合](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [SAP Cloud との統合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD と SAP Cloud Platform Identity Authentication の統合](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [SAP Cloud Platform でのシングル サインオンのセットアップ](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD と SAP NetWeaver の統合](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD と SAP Business ByDesign の統合](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD と SAP HANA DBMS の統合](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[Azure AD を使用した SAP Fiori Launchpad SAML シングル サインオン](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

@@ -1,4 +1,4 @@
-# [Azure IoT の基礎](../iot-fundamentals/index.yml)
+# [Azure IoT の基礎](/azure/iot-fundamentals)
 # [IoT ソリューション アクセラレータのドキュメント](index.md)
 
 # 概要
@@ -94,10 +94,10 @@
 # リファレンス
 ## [開発者向けリファレンス ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [開発者向けトラブルシューティング ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [セキュリティのアーキテクチャ](iot-security-architecture.md)
-## [セキュリティのベスト プラクティス](iot-security-best-practices.md)
-## [IoT デプロイのセキュリティ保護](iot-accelerators-security-deployment.md)
-## [徹底的なセキュリティ](securing-iot-ground-up.md)
+## [徹底的なセキュリティ](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc)
+## [セキュリティのベスト プラクティス](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc)
+## [セキュリティのアーキテクチャ](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc)
+## [IoT デプロイのセキュリティ保護](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc)
 
 # 関連項目
 ## 解決方法 
