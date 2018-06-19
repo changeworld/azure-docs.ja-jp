@@ -1,25 +1,26 @@
 ---
 title: Azure IoT Central でルールとアクションを構成する | Microsoft Docs
 description: このチュートリアルでは、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202239"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236333"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2 - Azure IoT Central でデバイスのルールとアクションを構成する
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル: Azure IoT Central でデバイスのルールとアクションを構成する
 
 このチュートリアルでは、作成者として Microsoft Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 
-このチュートリアルでは、コネクテッド空調デバイスの温度が華氏 90 度を超えた場合にメールが送信されるルールを作成します。
+このチュートリアルでは、コネクテッド空調デバイスの温度が華氏 90&deg; 度を超えた場合にメールが送信されるルールを作成します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -39,17 +40,17 @@ ms.locfileid: "34202239"
 
     前のチュートリアルで作成した **Connected Air Conditioner (1.0.0)** デバイス テンプレートと **Connected Air Conditioner-1** デバイスが表示されます。
 
-1. コネクテッド空調デバイスのカスタマイズを開始するには、前のチュートリアルで作成したデバイスを選択します。
+2. コネクテッド空調デバイスのカスタマイズを開始するには、前のチュートリアルで作成したデバイスを選択します。
 
     ![コネクテッド空調機のページ](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. **[ルール]** ビューでルールの追加を開始するには、**[ルール]** を選択します。
+3. **[ルール]** ビューでルールの追加を開始するには、**[ルール]** を選択します。
 
     ![[ルール] ビュー](media/tutorial-configure-rules/builderrulesview.png)
 
-1. このチュートリアルでは、しきい値に基づいたテレメトリ ルールを追加します。 しきい値に基づいたルールの作成を開始するには、**[新しいルール]**、**[テレメトリ]** の順に選択します。
+4. しきい値に基づいたテレメトリ ルールの作成を開始するには、**[新しいルール]**、**[テレメトリ]** の順に選択します。
 
-1. ルールを定義するには、次の表の情報を使用します。
+5. ルールを定義するには、次の表の情報を使用します。
 
     | Setting     | 値                          |
     | ----------- | ------------------------------ |
@@ -67,7 +68,7 @@ ms.locfileid: "34202239"
 
     ![温度ルールのアクション](media/tutorial-configure-rules/builderaddaction.png)
 
-1. アクションを定義するには、次の表の情報を使用します。
+2. アクションを定義するには、次の表の情報を使用します。
 
     | Setting   | 値                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ ms.locfileid: "34202239"
 
     ![アプリケーション ビルダーの温度アクション](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. **[保存]** を選択します。 ルールが **[ルール]** ページに表示されます。
+3. **[保存]** を選択します。 ルールが **[ルール]** ページに表示されます。
 
     ![アプリケーション ビルダーのルール](media/tutorial-configure-rules/builderrules.png)
 

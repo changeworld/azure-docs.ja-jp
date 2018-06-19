@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597758"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -104,7 +105,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 }
 ```
 
-新しく作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+新しく作成された Web アプリに移動します。 _&lt;app name>_ は、前の手順で作成された一意のアプリ名で置き換えます。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -182,11 +183,11 @@ git push azure master
 
 ![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
+Web アプリの [概要] ページが表示されます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
 ![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
+左側のメニューは、アプリを構成するためのさまざまなオプションを示しています。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

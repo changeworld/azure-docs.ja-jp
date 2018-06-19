@@ -5,41 +5,42 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 06/04/2018
 ms.author: raynew
-ms.openlocfilehash: 724144e8f2f2f76c4ad98b4c5cad84e69dadadbb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d1b6dec122672e4f6260105f7b50af2cd7369947
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209727"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737108"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
-このチュートリアルでは、テスト フェールオーバーを使用したオンプレミス コンピューターの Azure へのディザスター リカバリー訓練を実行する方法を示します。 訓練では、データ損失のないレプリケーション戦略を検証します。 このチュートリアルで学習する内容は次のとおりです。
+[Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
+
+- これは、オンプレミスの VMware VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。 最初の 3 つのチュートリアルを完了していることが想定されています。
+    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
+    - [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
+    - [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
+- これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 
+
+
+この記事では、テスト フェールオーバーを使用したオンプレミス コンピューターの Azure へのディザスター リカバリー訓練を実行する方法を示します。 訓練では、データ損失のないレプリケーション戦略を検証します。 以下の項目について説明します。
 
 > [!div class="checklist"]
 > * テスト フェールオーバー用の分離されたネットワークを設定する
 > * フェールオーバー後に Azure VM に接続するための準備をする
 > * 1 台のコンピューターのテスト フェールオーバーを実行する
 
-これは、シリーズの 5 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクがすでに完了していることを前提としています。
-
-1. [Azure を準備する](tutorial-prepare-azure.md)
-2. [オンプレミスの VMware を準備する](tutorial-prepare-on-premises-vmware.md)
-3. [ディザスター リカバリーを設定する](tutorial-vmware-to-azure.md)
+このチュートリアルでは、最も簡単な設定で Azure に VMware のディザスター リカバリーを設定します。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
-テスト フェールオーバーを実行する前に、VM のプロパティで、Hyper-V VM[hyper-v-azure-support-matrix.md#replicated-vms]、[VMware VM、または物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)が Azure の要件に準拠していることを確認します。
+テスト フェールオーバーを実行する前に、VMware VM のプロパティを確認し、[Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms)、[VMware VM、または物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)が Azure の要件に準拠していることを確認します。
 
-1. **[保護されているアイテム]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
+1. **[保護された項目]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および管理ディスクの設定を変更できます。
-   
-      >[!NOTE]
-      管理ディスクのある Azure VM からオンプレミス Hyper-V マシンへのフェールバックは現在サポートされていません。 オンプレミスの VM を Azure に移行しようと計画している場合は、フェールバックを行わずに、フェールオーバーの管理ディスク オプションを使用するしかありません。
-   
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、可用性セット、およびマネージド ディスクの設定を変更できます。
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 5. **[ディスク]** で、VM のオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 
