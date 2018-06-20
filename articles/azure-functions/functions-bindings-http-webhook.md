@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: d15c5556325284dd3b0b6f11a080c9abc263286c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c85af21a40a1b110ae2088fdf6fc8077ec919039
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356326"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724627"
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 
@@ -32,13 +32,17 @@ HTTP トリガーは [webhook](https://en.wikipedia.org/wiki/Webhook) に応答�
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。
+HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+
+HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>トリガー
 
@@ -619,7 +623,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 C# クラス ライブラリには、*function.json* のこれらのプロパティに対応する属性プロパティはありません。 
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 | **type** |`http` に設定する必要があります。 |
 | **direction** | `out` に設定する必要があります。 |

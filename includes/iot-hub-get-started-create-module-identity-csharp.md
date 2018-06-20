@@ -9,11 +9,12 @@ ms.topic: include
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: include file
-ms.openlocfilehash: a94a68d238a731388d8b13bd962b0db1007c5ca4
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d2b409c7454645893665b080b927998402056cdd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666910"
 ---
 ## <a name="create-a-module-identity"></a>モジュール ID を作成する
 
@@ -43,7 +44,16 @@ ms.lasthandoff: 05/03/2018
     const string moduleID = "myFirstModule";
     ```
 
-5. **Program** クラスに次のメソッドを追加します。
+5. 次の操作を行うコードを **Main** クラスに追加します。
+    ```csharp
+    static void Main(string[] args)
+    {
+        AddDeviceAsync().Wait();
+        AddModuleAsync().Wait();
+    }
+    ```
+
+6. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     private static async Task AddDeviceAsync()
@@ -87,7 +97,7 @@ ms.lasthandoff: 05/03/2018
 
 [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-6. このアプリケーションを実行し、デバイス キーとモジュール キーを書き留めておきます。
+7. このアプリケーションを実行し、デバイス キーとモジュール キーを書き留めておきます。
 
 > [!NOTE]
 > IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。

@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716722"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -38,15 +39,15 @@ ms.lasthandoff: 03/29/2018
 
 次の表に、このチュートリアルを開始する前に完了している必要がある前提条件を示します。
 
-|  |要件 |[説明] |
+|  |要件 |説明 |
 |----- |----- |----- |
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 2 つの SQL Server | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server サービス アカウント | ドメイン アカウント |
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server エージェント サービス アカウント | ドメイン アカウント |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 2 つの SQL Server | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server サービス アカウント | ドメイン アカウント |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server エージェント サービス アカウント | ドメイン アカウント |  
 |![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> -Azure Load Balancer プローブ: **59999** または使用可能な任意のポート |
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|フェールオーバー クラスタリング機能を追加する | 両方の SQL Server にこの機能が必要です |
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|インストール ドメイン アカウント | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|フェールオーバー クラスタリング機能を追加する | 両方の SQL Server にこの機能が必要です |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|インストール ドメイン アカウント | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
 
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](virtual-machines-windows-portal-sql-availability-group-prereq.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
@@ -57,7 +58,7 @@ ms.lasthandoff: 03/29/2018
 <a name="CreateCluster"></a>
 ## クラスターを作成する
 
-前提条件が完了した後は、最初に、2 つの SQL Sever と監視サーバーを含む Windows Server フェールオーバー クラスターを作成します。  
+前提条件が完了した後は、最初に、2 つの SQL Sever と監視サーバーを含む Windows Server フェールオーバー クラスターを作成します。
 
 1. SQL Server と監視サーバー両方の管理者であるドメイン アカウントを使って、1 番目の SQL Server に RDP 接続します。
 
@@ -69,7 +70,7 @@ ms.lasthandoff: 03/29/2018
    ![クラスターの作成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. クラスターの作成ウィザードの各ページで、次の表の設定を使って、単一ノード クラスターを作成します。
 
-   | ページ | [設定] |
+   | ページ | 設定 |
    | --- | --- |
    | 開始する前に |既定値を使用 |
    | サーバーの選択 |1 番目の SQL Server の名前を **[サーバー名を入力してください]** に入力し、**[追加]** をクリックします。 |
@@ -85,7 +86,8 @@ ms.lasthandoff: 03/29/2018
 
    ![クラスターのプロパティ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. **[静的 IP アドレス]** を選択し、SQL Server が存在しているサブネットから使用できるアドレスを [アドレス] ボックスで指定します。 次に、 **[OK]**をクリックします
+3. **[静的 IP アドレス]** を選択し、[アドレス] テキスト ボックスに Automatic Private IP Addressing (APIPA) の範囲で使用できるアドレス (169.254.0.1 から 169.254.255.254) を指定します。 この例では、その範囲内の任意のアドレスを使用できます。 たとえば、「 `169.254.0.1`」のように指定します。 次に、 **[OK]** をクリックします
+
 4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、**[オンラインにする]** をクリックします。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使います。
 
 ### <a name="addNode"></a>他の SQL Server をクラスターに追加する
@@ -98,7 +100,7 @@ ms.lasthandoff: 03/29/2018
 
 1. **ノードの追加ウィザード**で、**[次へ]** をクリックします。 **[サーバーの選択]** ページで、2 番目の SQL Server を追加します。 サーバー名を **[サーバー名を入力してください]** に入力し、**[追加]** をクリックします。 完了したら、**[次へ]** をクリックします。
 
-1. **[検証の警告]** ページで **[いいえ]** をクリックします (実際の運用時には、検証テストを実施する必要があります)。 次に、 **[次へ]**をクリックします。
+1. **[検証の警告]** ページで **[いいえ]** をクリックします (実際の運用時には、検証テストを実施する必要があります)。 次に、 **[次へ]** をクリックします。
 
 8. 記憶域スペースを使っている場合は、**[確認]** ページの **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにします。
 
@@ -109,7 +111,7 @@ ms.lasthandoff: 03/29/2018
 
 1. **[次へ]** をクリックします。
 
-1. **[完了]**をクリックします。
+1. **[完了]** をクリックします。
 
    フェールオーバー クラスター マネージャーで、クラスターに新しいノードがあることが示され、そのノードが **[ノード]** コンテナーの一覧に表示されます。
 
@@ -172,7 +174,7 @@ ms.lasthandoff: 03/29/2018
 
 1. **[確認]** で設定を確認します。 **[次へ]** をクリックします。
 
-1. **[完了]**をクリックします。
+1. **[完了]** をクリックします。
 
 クラスター コア リソースにファイル共有監視が構成されます。
 
@@ -186,7 +188,7 @@ ms.lasthandoff: 03/29/2018
 
     ![AlwaysOn 可用性グループの有効化](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
-4. **[Apply]**をクリックします。 ポップアップ ダイアログで **[OK]** をクリックします。
+4. **[Apply]** をクリックします。 ポップアップ ダイアログで **[OK]** をクリックします。
 
 5. SQL Server サービスを再起動します。
 
@@ -284,7 +286,7 @@ Repeat these steps on the second SQL Server.
 4. **[レプリカの指定]** ページで **[レプリカの追加]** をクリックします。
 
    ![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. **[サーバーに接続]** ダイアログが表示されます。 2 番目のサーバーの名前を **[サーバー名]** に入力します。 **[接続]**をクリックします。
+5. **[サーバーに接続]** ダイアログが表示されます。 2 番目のサーバーの名前を **[サーバー名]** に入力します。 **[接続]** をクリックします。
 
    **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に 2 番目のサーバーが表示されていることがわかります。 次に示すようにレプリカを構成します。
 
@@ -391,7 +393,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. 正常性プローブを次のように設定します。
 
-   | Setting | [説明] | 例
+   | Setting | 説明 | 例
    | --- | --- |---
    | **名前** | テキスト | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
@@ -406,7 +408,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 1. ロード バランサーをクリックし、**[負荷分散規則]** をクリックして、**[+ 追加]** をクリックします。
 
 1. 次のように負荷分散規則を設定します。
-   | Setting | [説明] | 例
+   | Setting | 説明 | 例
    | --- | --- |---
    | **名前** | テキスト | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
@@ -442,7 +444,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. **[AlwaysOn 高可用性]** | 、**[可用性グループ]** | 、**[可用性グループ リスナー]** の順に移動します。
 
-1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]**をクリックします。
+1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]** をクリックします。
 
 1. **[ポート]** ボックスで、以前に使った $EndpointPort (既定値は 1433) を使い、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
 

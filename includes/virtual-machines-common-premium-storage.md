@@ -1,4 +1,21 @@
-# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage と管理ディスク
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806385"
+---
+# <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク
 Azure Premium Storage は、I/O (入力/出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage を使用する VM ディスクでは、ソリッドステート ドライブ (SSD) にデータを格納します。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium Storage に移行することができます。
 
 Azure では、VM にいくつかの Premium Storage ディスクを接続することができます。 複数のディスクを使用すると、アプリケーションは VM あたり最大 256 TB のストレージを利用できます。 Premium Storage を使用した場合、アプリケーションは、VM あたり 80,000 IOPS (秒あたりの I/O 操作数) を達成し、VM あたり最大 2,000 MB/秒のディスク スループットを達成できます。 読み取り操作により、待ち時間は非常に短くなります。
@@ -11,19 +28,19 @@ Premium Storage により、Azure では、Dynamics AX、Dynamics CRM、Exchange
 
 Azure には、VM 用の Premium Storage ディスクを作成する方法が 2 とおりあります。
 
-* **非管理対象ディスク**
+* **アンマネージド ディスク**
 
-    本来の方法では、非管理対象ディスクを使用します。 非管理対象ディスクでは、VM ディスクに対応する仮想ハード ディスク (VHD) ファイルの格納に使用するストレージ アカウントを管理します。 VHD ファイルは、Azure ストレージ アカウントにページ BLOB として格納されます。 
+    本来の方法では、アンマネージド ディスクを使用します。 アンマネージド ディスクでは、VM ディスクに対応する仮想ハード ディスク (VHD) ファイルの格納に使用するストレージ アカウントを管理します。 VHD ファイルは、Azure ストレージ アカウントにページ BLOB として格納されます。 
 
-* **管理ディスク**
+* **マネージド ディスク**
 
     [Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) を選択すると、Azure は、VM ディスクに使用するストレージ アカウントを管理します。 ディスクの種類 (Premium または Standard) と必要なディスクのサイズを指定します。 Azure により自動的にディスクが作成、管理されます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを配慮する必要はありません。 これは Azure によって自動的に処理されます。
 
-管理ディスクを選択して、その多くの機能を利用することをお勧めします。
+マネージド ディスクを選択して、その多くの機能を利用することをお勧めします。
 
 Premium Storage の使用を開始するには、[無料の Azure アカウントを作成してください](https://azure.microsoft.com/pricing/free-trial/)。 
 
-既存の VM を Premium Storage に移行する方法については、[非管理対象ディスクから管理ディスクへの Windows VM の変換](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)に関する記事または[非管理対象ディスクから管理ディスクへの Linux VM の変換](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md)に関する記事を参照してください。
+既存の VM を Premium Storage に移行する方法については、[アンマネージド ディスクからマネージド ディスクへの Windows VM の変換](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)に関する記事または[アンマネージド ディスクからマネージド ディスクへの Linux VM の変換](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Premium Storage は、ほとんどのリージョンで使用できます。 利用可能なリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/regions/#services)に関するページの **Disk Storage** の行を参照してください。
@@ -39,13 +56,13 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium ページ BLOB**
 
-    Premium Storage では、ページ BLOB がサポートされています。 Premium Storage に VM 用の永続的な非管理対象ディスクを保存するには、ページ BLOB を使用します。 Standard Azure Storage とは異なり、Premium Storage では、ブロック BLOB、追加 BLOB、ファイル、テーブル、またはキューがサポートされていません。 Premium ページ BLOB では、P10 から P50、および P60 (8,191 GiB) の 6 つのサイズがサポートされています。 P60 Premium ページ BLOB を VM ディスクとしてアタッチすることは、サポートされていません。 
+    Premium Storage では、ページ BLOB がサポートされています。 Premium Storage に VM 用の永続的なアンマネージド ディスクを保存するには、ページ BLOB を使用します。 Standard Azure Storage とは異なり、Premium Storage では、ブロック BLOB、追加 BLOB、ファイル、テーブル、またはキューがサポートされていません。 Premium ページ BLOB では、P10 から P50、および P60 (8,191 GiB) の 6 つのサイズがサポートされています。 P60 Premium ページ BLOB を VM ディスクとしてアタッチすることは、サポートされていません。 
 
     Premium Storage アカウントに配置されたオブジェクトはページ BLOB になります。 ページ BLOB は、サポートされているプロビジョニング済みのサイズのいずれかにスナップされます。 このため、Premium Storage アカウントは小さな BLOB の格納に使用するためのものではありません。
 
 * **Premium Storage アカウント**
 
-    Premium Storage の使用を開始するには、非管理対象ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) で、Premium Storage アカウントを作成するには、**[Premium]** パフォーマンス レベルを選択します。 **[ローカル冗長ストレージ (LRS)]** レプリケーション オプションを選択します。 また、パフォーマンス レベルを **Premium_LRS** に設定することで、Premium Storage アカウントを作成することもできます。 パフォーマンス レベルを変更するには、次の方法のいずれかを使用します。
+    Premium Storage の使用を開始するには、アンマネージド ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) で、Premium Storage アカウントを作成するには、**[Premium]** パフォーマンス レベルを選択します。 **[ローカル冗長ストレージ (LRS)]** レプリケーション オプションを選択します。 また、パフォーマンス レベルを **Premium_LRS** に設定することで、Premium Storage アカウントを作成することもできます。 パフォーマンス レベルを変更するには、次の方法のいずれかを使用します。
      
     - [Azure Storage 用の PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
     - [Azure Storage 用の Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
@@ -57,11 +74,11 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
     Premium Storage アカウントでは、レプリケーション オプションとしてローカル冗長ストレージのみがサポートされています。 ローカル冗長ストレージでは、1 つのリージョン内にデータのコピーを 3 つ保持します。 リージョンのディザスター リカバリーでは、[Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) を使用して VM ディスクを別のリージョンにバックアップする必要があります。 また、バックアップ コンテナーとして geo 冗長ストレージ (GRS) アカウントを使用する必要もあります。 
 
-    Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクがある Premium Storage をサポートする Azure VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
+    Azure では、ストレージ アカウントをアンマネージド ディスクのコンテナーとして使用します。 アンマネージド ディスクがある Premium Storage をサポートする Azure VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
 
 ## <a name="supported-vms"></a>サポート対象の VM
 
-Premium Storage は、B シリーズ、DS シリーズ、DSv2 シリーズ、DSv3 シリーズ、GS シリーズ、Ls シリーズ、M シリーズ、および Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
+Premium Storage は、B シリーズ、DS シリーズ、DSv2 シリーズ、DSv3 シリーズ、Esv3 シリーズ、GS シリーズ、Ls シリーズ、M シリーズ、および Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
 
 
 Windows 向けの Azure の VM の種類とサイズについては、[Windows VM のサイズ](../articles/virtual-machines/windows/sizes.md)に関する記事を参照してください。 Linux 向けの Azure の VM の種類とサイズについては、[Linux VM のサイズ](../articles/virtual-machines/linux/sizes.md)に関する記事を参照してください。
@@ -124,7 +141,7 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 
 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)」を参照してください。
 
-非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、管理ディスクへの移行が必要になることがあります。 管理ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
+アンマネージド ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、マネージド ディスクへの移行が必要になることがあります。 マネージド ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
 Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P20、P30、P40、および P50 の 7 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
@@ -198,9 +215,9 @@ Premium Storage を使用した高パフォーマンスのための設計の詳�
 
 Storage サービスでは、VHD ファイルはページ BLOB です。 ページ BLOB のスナップショットを作成し、別の場所 (別のストレージ アカウントなど) にコピーできます。
 
-### <a name="unmanaged-disks"></a>非管理対象ディスク
+### <a name="unmanaged-disks"></a>アンマネージド ディスク
 
-Standard Storage でスナップショットを使用する場合と同様に、非管理対象 Premium ディスクの[増分スナップショット](../articles/virtual-machines/linux/incremental-snapshots.md)を作成します。 Premium Storage では、レプリケーション オプションとしてローカル冗長ストレージのみがサポートされています。 スナップショットを作成し、そのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、[Azure Storage の冗長オプション](../articles/storage/common/storage-redundancy.md)に関する記事を参照してください。
+Standard Storage でスナップショットを使用する場合と同様に、アンマネージド Premium ディスクの[増分スナップショット](../articles/virtual-machines/linux/incremental-snapshots.md)を作成します。 Premium Storage では、レプリケーション オプションとしてローカル冗長ストレージのみがサポートされています。 スナップショットを作成し、そのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。 詳細については、[Azure Storage の冗長オプション](../articles/storage/common/storage-redundancy.md)に関する記事を参照してください。
 
 ディスクが VM に接続されている場合、そのディスクに対する一部の API 操作は許可されません。 たとえば、ディスクが VM に接続されている場合は、その BLOB に対して [Copy Blob](/rest/api/storageservices/Copy-Blob) 操作を実行できません。 代わりに、まず、[Snapshot Blob](/rest/api/storageservices/Snapshot-Blob) REST API を使用してその BLOB のスナップショットを作成します。 その後、スナップショットの [Copy Blob](/rest/api/storageservices/Copy-Blob) を実行して、接続されたディスクをコピーします。 または、ディスクの接続を解除してから必要な操作を実行できます。
 
@@ -216,11 +233,11 @@ Premium Storage BLOB スナップショットには次の制限が適用され�
 
 Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、[Azure Premium Storage での Blob service の操作](http://go.microsoft.com/fwlink/?LinkId=521969)に関する記事を参照してください。
 
-### <a name="managed-disks"></a>管理ディスク
+### <a name="managed-disks"></a>マネージド ディスク
 
-管理ディスクのスナップショットは、管理ディスクの読み取り専用コピーです。 このスナップショットは、Standard 管理ディスクとして保存されます。 現時点では、管理ディスクの[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)はサポートされていません。 管理ディスクのスナップショットを作成する方法については、[Windows で管理スナップショットを使用して Azure 管理ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)に関する記事と、[Linux で管理スナップショットを使用して Azure 管理ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)に関する記事を参照してください。
+マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用コピーです。 このスナップショットは、Standard マネージド ディスクとして保存されます。 現時点では、マネージド ディスクの[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)はサポートされていません。 マネージド ディスクのスナップショットを作成する方法については、[Windows でマネージド スナップショットを使用して Azure マネージド ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)に関する記事と、[Linux でマネージド スナップショットを使用して Azure マネージド ディスクとして保存された VHD のコピーを作成する方法](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-管理ディスクが VM に接続されている場合、そのディスクに対する一部の API 操作は許可されません。 たとえば、ディスクが VM に接続されているときには、Shared Access Signature (SAS) を生成してコピー操作を実行することはできません。 代わりに、ディスクのスナップショットを作成してから、スナップショットのコピーを実行します。 または、ディスクの接続を解除してから、SAS を生成してコピー操作を実行することもできます。
+マネージド ディスクが VM に接続されている場合、そのディスクに対する一部の API 操作は許可されません。 たとえば、ディスクが VM に接続されているときには、Shared Access Signature (SAS) を生成してコピー操作を実行することはできません。 代わりに、ディスクのスナップショットを作成してから、スナップショットのコピーを実行します。 または、ディスクの接続を解除してから、SAS を生成してコピー操作を実行することもできます。
 
 
 ## <a name="premium-storage-for-linux-vms"></a>Linux VM 用の Premium Storage
@@ -232,7 +249,7 @@ Premium Storage でスケーラビリティのターゲットを達成するに�
 * **ext3/ext4** の場合、バリアを無効にするには、`barrier=0` マウント オプションを使用します  (バリアを有効にするには、`barrier=1` を使用します)。
 * **XFS** の場合、バリアを無効にするには、`nobarrier` マウント オプションを使用します  (バリアを有効にするには、`barrier` を使用します)。
 * キャッシュが **ReadWrite** に設定されている Premium Storage ディスクの場合は、書き込みの耐久性のためにバリアを有効にしてください。
-* VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する汎用一意識別子 (UUID) 参照で /etc/fstab を更新する必要があります。 詳細については、[Linux VM への管理ディスクの追加](../articles/virtual-machines/linux/add-disk.md)に関する記事を参照してください。
+* VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する汎用一意識別子 (UUID) 参照で /etc/fstab を更新する必要があります。 詳細については、[Linux VM へのマネージド ディスクの追加](../articles/virtual-machines/linux/add-disk.md)に関する記事を参照してください。
 
 Azure Premium Storage では、次の Linux ディストリビューションが検証されました。 Premium Storage でパフォーマンスと安定性を高めるには、VM を最低でも次のいずれかのバージョン (またはそれ以降のバージョン) にアップグレードすることをお勧めします。 バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが検証によって判明することに注意してください。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
@@ -271,19 +288,19 @@ Premium Storage の使用時には、課金に関する次の考慮事項が適�
 
     Premium Storage ディスクまたは BLOB への課金は、ディスクまたは BLOB のプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、最も近い Premium Storage ディスク オプションにマップします。 詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションの表を参照してください。 各ディスクは、サポートされているプロビジョニング済みディスク サイズにマップされ、それに応じて課金されます。 プロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。 たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。 これは、実際にディスクに書き込まれたデータの量や、使用された IOPS およびスループットには関係ありません。
 
-* **Premium 非管理対象ディスクのスナップショット**
+* **Premium アンマネージド ディスクのスナップショット**
 
-    Premium 非管理対象ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、[BLOB のスナップショットの作成](/rest/api/storageservices/Snapshot-Blob)に関する記事を参照してください。
+    Premium アンマネージド ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、[BLOB のスナップショットの作成](/rest/api/storageservices/Snapshot-Blob)に関する記事を参照してください。
 
-* **Premium 管理ディスクのスナップショット**
+* **Premium マネージド ディスクのスナップショット**
 
-    管理ディスクのスナップショットは、ディスクの読み取り専用コピーです。 このディスクは、Standard 管理ディスクとして保存されます。 スナップショットのコストは Standard 管理ディスクと同じです。 たとえば、128 GB の Premium 管理ディスクのスナップショットを作成した場合、スナップショットのコストは 128 GB の Standard 管理ディスクと同等になります。  
+    マネージド ディスクのスナップショットは、ディスクの読み取り専用コピーです。 このディスクは、Standard マネージド ディスクとして保存されます。 スナップショットのコストは Standard マネージド ディスクと同じです。 たとえば、128 GB の Premium マネージド ディスクのスナップショットを作成した場合、スナップショットのコストは 128 GB の Standard マネージド ディスクと同等になります。  
 
 * **送信データ転送**
 
     [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データセンターから送信されるデータ) は、帯域幅の使用量に対して課金されます。
 
-Premium Storage、Premium Storage でサポートされる VM、管理ディスクの価格の詳細については、次の記事を参照してください。
+Premium Storage、Premium Storage でサポートされる VM、マネージド ディスクの価格の詳細については、次の記事を参照してください。
 
 * [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 * [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
@@ -293,7 +310,7 @@ Premium Storage、Premium Storage でサポートされる VM、管理ディス�
 
 リージョンのディザスター リカバリーでは、[Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) のほか、バックアップ コンテナーとして GRS ストレージ アカウントを使用して、VM ディスクを別のリージョンにバックアップする必要があります。
 
-時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用してバックアップ ジョブを作成するには、Azure Backup を使用します。 Backup は、非管理対象ディスクと管理ディスクの両方で使用できます。 詳細については、[非管理対象ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-azure-vms-first-look-arm.md) に関する記事と[管理ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) に関する記事を参照してください。 
+時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用してバックアップ ジョブを作成するには、Azure Backup を使用します。 Backup は、アンマネージド ディスクとマネージド ディスクの両方で使用できます。 詳細については、[アンマネージド ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-azure-vms-first-look-arm.md) に関する記事と[マネージド ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 Premium Storage の詳細については、次の記事を参照してください。

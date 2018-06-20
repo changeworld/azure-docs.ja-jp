@@ -59,11 +59,11 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
     ![key][key]
 2. パスワードは、セットアップ時に選択したものです。 変更するには、**[パスワードの変更]** または **[パスワードのリセット]** を選択します。
 
-電子メール配信を管理するには、**Manage** ボタンをクリックします。 これで、SendGrid のダッシュボードにリダイレクトされます。
+電子メール配信を管理するには、**管理** ボタンをクリックします。 これで、SendGrid のダッシュボードにリダイレクトされます。
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+SendGrid 経由での電子メールの送信の詳細については、[電子メール API の概要][Email API Overview]に関するページを参照してください。
 
 <!--images-->
 

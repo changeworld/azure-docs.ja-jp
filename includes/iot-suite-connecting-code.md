@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a2405eb9698b326693b873edf1cc1396eecadafa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666002"
 ---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>IoT デバイスの動作を指定する
 

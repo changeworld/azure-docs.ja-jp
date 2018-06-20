@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b7e794cb08647dde6fe59b6d4b06a9cbfab06e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726535"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する
 
 ワークロードのホストについて Azure 仮想マシンを評価する場合、既存のアマゾン ウェブ サービス (AWS) EC2 Windows VM インスタンスをエクスポートしてから、仮想ハード ディスク (VHD) を Azure にアップロードできます。 VHD のアップロード後、その VHD から Azure に新しい VM を作成できます。 
 
-このトピックでは、AWS から Azure に 1 つの VM を移行する方法について説明します。 規模を拡大して AWS から Azure に複数の VM を移行したい場合は、「[Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) から Azure に仮想マシンを移行する](../../site-recovery/site-recovery-migrate-aws-to-azure.md)」を参照してください。
+この記事では、AWS から Azure に 1 つの VM を移行する方法について説明します。 規模を拡大して AWS から Azure に複数の VM を移行したい場合は、「[Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) から Azure に仮想マシンを移行する](../../site-recovery/site-recovery-migrate-aws-to-azure.md)」を参照してください。
 
 ## <a name="prepare-the-vm"></a>VM を準備する 
  
@@ -45,7 +46,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="export-and-download-the-vhd"></a>VHD をエクスポートおよびダウンロードする 
 
-Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon ドキュメント トピック「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」で説明されている手順に従って [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
+Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon のドキュメント記事「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」の手順に従って [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
 
 エクスポートされた VHD ファイルは、指定した Amazon S3 バケットに保存されます。 VHD をエクスポートするための基本的な構文を次に示します。<brackets> 内のプレースホルダー テキストを実際の情報に置き換えるだけです。
 

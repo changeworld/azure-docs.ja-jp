@@ -1,6 +1,25 @@
-<!--author=alkohli last changed: 01/23/18-->
-
-ボリューム コンテナーにボリュームが関連付けられている場合は、先にそれらのボリュームをオフラインにします。 「 [ボリュームをオフラインにする](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」の手順に従ってください。 ボリュームがオフラインになったら、それらを削除できます。 ボリューム コンテナーに関連付けられているボリュームがない場合は、ボリューム コンテナーを削除します。 ボリューム コンテナーを削除するには、次の手順を実行します。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storsimple
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 06/08/2018
+ms.author: alkohli
+ms.custom: include file
+ms.openlocfilehash: e7f3f80c886f90a8bc3ae8c38e7d101c506439a6
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35250224"
+---
+ボリューム コンテナーを削除するには、次の操作が必要です。
+ - ボリューム コンテナー内のボリュームを削除します。 ボリューム コンテナーにボリュームが関連付けられている場合は、先にそれらのボリュームをオフラインにします。 「 [ボリュームをオフラインにする](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」の手順に従ってください。 ボリュームがオフラインになったら、それらを削除できます。 
+ - 関連付けられているバックアップ ポリシーおよびクラウド スナップショットを削除します。 ボリューム コンテナーに、関連付けられているバックアップ ポリシーおよびクラウド スナップショットが存在するかどうかを確認します。 存在する場合は、[バックアップ ポリシーを削除](../articles/storsimple/storsimple-8000-manage-backup-policies-u2.md#delete-a-backup-policy)します。 これにより、クラウド スナップショットも削除されます。 
+ 
+ボリューム コンテナー内に関連付けられているボリューム、バックアップ ポリシー、およびクラウド スナップショットが存在していなければ、そのボリューム コンテナーは削除することができます。 ボリューム コンテナーを削除するには、次の手順を実行します。
 
 #### <a name="to-delete-a-volume-container"></a>ボリューム コンテナーを削除するには
 1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 デバイスを選択してクリックし、**[設定]、[管理]、[ボリューム コンテナー]** の順にクリックします。
@@ -11,7 +30,7 @@
 
     ![ボリューム コンテナーの削除](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. ボリューム コンテナーに関連付けられているボリュームがない場合、ボリューム コンテナーを削除できます。 ボリューム コンテナーの削除による影響を示すメッセージが表示されたら、内容を確認し、チェック ボックスをオンにします。 **[削除]** をクリックすると、ボリューム コンテナーが削除されます。
+3. ボリューム コンテナーに関連付けられているボリューム、バックアップ ポリシー、クラウド スナップショットがない場合、ボリューム コンテナーを削除できます。 ボリューム コンテナーの削除による影響を示すメッセージが表示されたら、内容を確認し、チェック ボックスをオンにします。 **[削除]** をクリックすると、ボリューム コンテナーが削除されます。
 
     ![削除の確定](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 

@@ -5,14 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 5/9/2018
+ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323784"
 ---
 # <a name="write-accelerator"></a>書き込みアクセラレータ
 書き込みアクセラレータは、専用の Azure Managed Disks がある Premium Storage 上の M シリーズ仮想マシン (VM) 用のディスク機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 書き込みアクセラレータは、最新のデータベース用のパフォーマンスの高い方法でログ ファイルの更新をディスクに永続化する必要がある場合に最適です。
@@ -20,7 +21,7 @@ ms.lasthandoff: 05/10/2018
 書き込みアクセラレータは、パブリック クラウド内の M シリーズ VM に一般提供されています。
 
 ## <a name="planning-for-using-write-accelerator"></a>書き込みアクセラレータを使用するための計画
-書き込みアクセラレータは、DBMS のトランザクション ログまたは再実行ログを含むボリュームに対して使う必要があります。 書き込みアクセラレータはログ ディスクに使用するように最適化されているので、DBMS のデータ ボリュームに使用することはお勧めしません。
+書き込みアクセラレータは、DBMS のトランザクション ログまたは再実行ログを含むボリュームに対して使用する必要があります。 書き込みアクセラレータはログ ディスクに使用するように最適化されているので、DBMS のデータ ボリュームに使用することはお勧めしません。
 
 書き込みアクセラレータは、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) との連携でのみ動作します。 
 
@@ -42,17 +43,19 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 
 - Premium ディスクのキャッシュを 'None' または 'Read Only' に設定する必要があります。 他のすべてのキャッシュ モードはサポートされていません。
 - 書き込みアクセラレータを有効にしたディスクでのスナップショットは、まだサポートされていません。 この制限により、仮想マシンのすべてのディスクのアプリケーション整合スナップショットを実行する Azure Backup サービスの機能はブロックされます。
-- 高速化パスは、I/O サイズが小さい場合 (<=32KiB) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
+- 高速化パスは、I/O サイズが小さい場合 (32KiB 以下) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
 
 書き込みアクセラレータでサポートできる VM ごとの Azure Premium Storage VHD には制限があります。 現在の制限は次のとおりです。
 
 | VM の SKU | 書き込みアクセラレータ ディスクの数 | VM あたりの書き込みアクセラレータ ディスクの IOPS |
 | --- | --- | --- |
-| M128ms | 16 | 8000 |
-| M128s | 16 | 8000 |
-| M64ms | 8 | 4000 |
-| M64s | 8 | 4000 | 
+| M128ms、128s | 16 | 8000 |
+| M64ms、M64ls、M64s | 8 | 4000 |
+| M32ms、M32ls、M32ts、M32s | 4 | 2000 | 
+| M16ms、M16s | 2 | 1,000 | 
+| M8ms、M8s | 1 | 500 | 
 
+IOPS の制限は、VM あたりの値であり、ディスクあたりの値では*ありません*。 すべての書き込みアクセラレータ ディスクが VM あたりの同じ IOPS 制限を共有します。
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>特定のディスクでの書き込みアクセラレータの有効化
 以降のセクションでは、Azure Premium Storage の VHD で書き込みアクセラレータを有効にする方法を示します。
 
@@ -63,29 +66,29 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 - Azure 書き込みアクセラレータを適用するディスクは、Premium Storage 上の [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) である必要があります。
 - M シリーズの VM を使用する必要があります
 
-### <a name="enabling-through-power-shell"></a>PowerShell で有効にする
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Azure PowerShell を使用した Azure 書き込みアクセラレータの有効化
 バージョン 5.5.0 の Azure PowerShell モジュールには、特定の Azure Premium Storage ディスクに対する書き込みアクセラレータの有効化または無効化に関連するコマンドレットの変更が含まれます。
 書き込みアクセラレータによってサポートされるディスクを有効化または展開するため、次の PowerShell コマンドが変更され、書き込みアクセラレータのパラメーターを受け取るように拡張されています。
 
 新しいスイッチ パラメーター "WriteAccelerator" が、次のコマンドレットに追加されています。 
 
-- Set-AzureRmVMOsDisk
-- Add-AzureRmVMDataDisk
-- Set-AzureRmVMDataDisk
-- Add-AzureRmVmssDataDisk
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 パラメーターを指定しないと、プロパティは false に設定され、書き込みアクセラレータによってサポートされていないディスクが展開されます。
 
 新しいスイッチ パラメーター "OsDiskWriteAccelerator" が、次のコマンドレットに追加されています。 
 
-- Set-AzureRmVmssStorageProfile
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
 パラメーターを指定しないと、プロパティは false に設定され、書き込みアクセラレータを利用しないディスクが提供されます。
 
 新しい省略可能なブール値 (null 非許容) パラメーター "OsDiskWriteAccelerator" が、次のコマンドレットに追加されています。 
 
-- Update-AzureRmVM
-- Update-AzureRmVmss
+- [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 ディスクでの Azure 書き込みアクセラレータのサポートを制御するには、$true または $false を指定します。
 
@@ -158,26 +161,27 @@ VM、ディスク、リソース グループの各名前を調整する必要�
 > [!Note]
 > 上記のスクリプトを実行すると、指定されているディスクがデタッチされ、ディスクに対して書き込みアクセラレータが有効になり、再度ディスクがアタッチされます。
 
-### <a name="enabling-through-azure-portal"></a>Azure Portal を使用して有効にする
+### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>Azure Portal を使用した Azure 書き込みアクセラレータの有効化
 
 ディスク キャッシュ設定を指定するポータルを使用して書き込みアクセラレータを有効にすることができます。 
 
 ![Azure Portal 上の書き込みアクセラレータ](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-through-azure-cli"></a>Azure CLI を使用して有効にする
+## <a name="enabling-through-azure-cli"></a>Azure CLI を使用して有効にする
 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) を使用し、書き込みアクセラレータを有効にできます。 
 
-既存のディスクで書き込みアクセラレータを有効にするには、下のコマンドを使用してください。diskName、VMName、ResourceGroup をそれぞれ、独自の値に変更してください。 
+既存のディスク上で書き込みアクセラレータを有効にするには、[az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) を使用します。次の例のように、diskName、VMName、ResourceGroup をそれぞれ独自の値に変更できます。
+ 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 1=true
+az vm update -g group1 -n vm1 -write-accelerator 1=true
 ```
-書き込みアクセラレータを有効にしたディスクを装着するには、下のコマンドを使用してください。値は独自のものに変更してください。
+書き込みアクセラレータが有効にされたディスクを接続するには、[az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach) を使用します。次の例のように、値を独自の値に変更できます。
 ```
-az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
 ```
-書き込みアクセラレータを無効にするには、プロパティを false に設定します。 
+書き込みアクセラレータを無効にするには、[az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) を使用し、該当するプロパティを false に設定します。 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
 ```
 
 ### <a name="enabling-through-rest-apis"></a>REST API で有効にする

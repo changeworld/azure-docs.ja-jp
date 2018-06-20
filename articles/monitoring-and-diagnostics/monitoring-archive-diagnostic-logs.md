@@ -1,24 +1,19 @@
 ---
-title: Azure 診断ログのアーカイブ | Microsoft Docs
+title: Azure 診断ログのアーカイブ
 description: ストレージ アカウントの長期保持に関する Azure 診断ログをアーカイブする方法を説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 3a55c73f-2ef3-45f3-8956-bcf9c0cb7e05
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: bf776ba8aaeca361250f39fb2c62233ee1dfbd5b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: logs
+ms.openlocfilehash: d1282fa005d609394dacc818c2cb729f580bc3fc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263492"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -28,9 +23,12 @@ ms.lasthandoff: 04/06/2018
 
 開始する前に、診断ログのアーカイブ先となる[ストレージ アカウントを作成する](../storage/storage-create-storage-account.md)必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、アクティビティ ログと診断メトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、診断ログのそのストレージ アカウントも使用するのが適切であることがあります。 使用するストレージ アカウントは、BLOB ストレージ アカウントではなく、一般的な目的のストレージ アカウントである必要があります。
 
+> [!NOTE]
+>  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
+
 ## <a name="diagnostic-settings"></a>診断設定
 
-以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+以下のいずれかの方法で診断ログをアーカイブするには、特定のリソースの **[診断設定]** を定義する必要があります。 リソースの診断設定では、アーカイブ先に送信されるログとメトリック データのカテゴリ (ストレージ アカウントまたは Event Hubs 名前空間、または Log Analytics) を定義します。 また、ストレージ アカウントに格納される各ログ カテゴリおよびメトリック データのイベントに関して、リテンション期間ポリシー (保持する日数) を定義します。 リテンション期間ポリシーが 0 に設定されている場合は、各ログ カテゴリのイベントが無制限に (つまり、いつまでも) 保存されます。 そうでない場合は、リテンション期間ポリシーを 1 ～ 2,147, 483,647 までの範囲の任意の日数にすることができます。 [診断設定の詳細については、こちらを参照してください](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 
 
 > [!NOTE]
 > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -55,7 +53,7 @@ ms.lasthandoff: 04/06/2018
 
    ![診断設定の追加 - 既存の設定が存在する](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. 設定に名前を付けて、**[ストレージ アカウントにエクスポート]**のチェック ボックスをオンにし、ストレージ アカウントを選択します。 必要に応じて **[リテンション期間 (日数)]** スライダーを使用し、ログを保持する日数を設定します。 リテンション期間を 0 にすると、ログが無期限に保存されます。
+3. 設定に名前を付けて、**[ストレージ アカウントにエクスポート]** のチェック ボックスをオンにし、ストレージ アカウントを選択します。 必要に応じて **[リテンション期間 (日数)]** スライダーを使用し、ログを保持する日数を設定します。 リテンション期間を 0 にすると、ログが無期限に保存されます。
 
    ![診断設定の追加 - 既存の設定が存在する](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
 
@@ -69,7 +67,7 @@ ms.lasthandoff: 04/06/2018
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | ResourceId |[はい] |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
@@ -145,7 +143,7 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 }
 ```
 
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | ResourceId |影響を受けるリソースのリソース ID。 |

@@ -1,24 +1,20 @@
 ---
 title: Azure Functions を使用して Twitter メッセージを取得する | Microsoft Docs
 description: モーション センサーを使用して振動を検出し、Azure Functions を使用して指定したハッシュタグ付きのランダム ツイートを検索します。
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0c3df0642d36aa1c4471c433fe9c1d3fa3b0880d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631763"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 

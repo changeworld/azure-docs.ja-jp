@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8b6bc791700e6811f5681ee70329e4d2ac05991
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211927"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824613"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
 Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスまたはデッド コンテナー (クラッシュしたコンテナー) のコンテナー ログを表示する方法について説明します。
@@ -35,6 +35,14 @@ Azure Service Fabric はコンテナー オーケストレーターであり、[
 
 ## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>デッド コンテナー (クラッシュしたコンテナー) のログにアクセスする
 v6.2 以降、[REST API](/rest/api/servicefabric/sfclient-index) または [Service Fabric CLI (SFCTL)](service-fabric-cli.md) コマンドを利用し、デッド コンテナー (クラッシュしたコンテナー) のログも取得できるようになりました。
+
+### <a name="set-container-retention-policy"></a>コンテナーの保持ポリシーを設定する
+コンテナーのスタートアップ エラーの診断を支援するために、Service Fabric (バージョン 6.1 以降) では、終了または起動に失敗したコンテナーの保持をサポートしています。 このポリシーは、次のスニペットで示すように、**ApplicationManifest.xml** ファイルで設定できます。
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+ ```
+
+**ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値が指定されている場合は、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保持されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用環境クラスターで別の値を指定できます。 コンテナー サービスが他のノードに移動することを防ぐためにこの機能を使用する場合は、配置の制約を使用して、コンテナー サービスの対象を特定のノードに制約してください。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
 
 ### <a name="rest"></a>REST ()
 「[Get Container Logs Deployed On Node](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)」 (ノードにデプロイされているコンテナーのログを取得する) の操作を使用し、クラッシュしたコンテナーのログを取得します。 コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。  `&Previous=true` を指定します。 応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。

@@ -5,16 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34677361"
 ---
-**ドキュメントの最終更新日**: 4 月 3 日午後 3:00 (PST)。
+**ドキュメントの最終更新日**: 2018 年 5 月 21 日午後 3:00 (PST)。
 
 予測実行のサイドチャネル攻撃として知られる [CPU 脆弱性の新しいクラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)の最近の公開では、顧客がよりわかりやすい説明を求めていることがわかりました。  
 
@@ -23,6 +24,8 @@ Microsoft は、クラウド サービス全体に軽減策を展開しました
 さらに、Azure では、[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)の使用を可能な限り拡大して、ホストが更新されたり、VM が既に更新されているホストに移動されたりする間、VM を最大 30 秒間一時停止させます。  さらに、メモリ保持メンテナンスによって顧客への影響が最小限に抑えられ、再起動する必要がなくなります。  Azure では、ホストに対してシステム全体の更新を行うときに、これらの方法が使用されます。
 
 > [!NOTE] 
+2018 年 5 月 21 日に、Google Project Zero と Microsoft は、Speculative Store Bypass と呼ばれる予測実行サイド チャネルの脆弱性の新しいサブクラスを発表しました。 徹底的な防御のための追加の防御手段が Microsoft クラウド インフラストラクチャ全体にわたって導入されました。これは予測実行の脆弱性を直接解決します。 詳細については、以下を参照してください: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
+>
 > Intel Corporation は、2018 年 2 月下旬に「[Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)」(マイクロコード リビジョン ガイダンス) の Intel 製マイクロコードのリリース状況を更新しました。このリリースにより、[Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) から開示された最近の脆弱性に対する安定性が改善されています。 [2018 年 1 月 3 日](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/)に Azure で実施された軽減策は、Intel 製マイクロコードの更新プログラムの影響を受けません。 Microsoft は、Azure ユーザーを他の Azure 仮想マシンから保護するために、既に強力な軽減策を実施しています。  
 >
 > Intel 製マイクロコードでは、スペクター バリアント 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)、分岐先のインジェクション) に対処しています。このマイクロコードで、Azure 上の VM 内で共有ワークロードまたは信頼できないワークロードを実行する場合にのみ適用される攻撃から保護できます。 Microsoft のエンジニアは、Azure ユーザーにマイクロコードを提供する前に、パフォーマンスへの影響を最小限に抑えるために安定性をテストしています。  VM 内で信頼できないワークロードを実行するお客様がほとんどいないため、ほとんどのお客様はこの機能がリリースされても有効にする必要がありません。 

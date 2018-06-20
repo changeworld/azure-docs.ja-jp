@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3daf0e214c2c10d682e908ca430f4852df105926
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414656"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコア数<sup>1</sup> |20 |10,000 |
+| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの vCPU <sup>1</sup> |20 |10,000 |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |200 |200 |
 | サブスクリプション<sup>2</sup>あたりのリージョンごとの[ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md)数 |200 |250 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |20 |200 |
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/20/2018
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |256 |256 |
 
 
-<sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
+<sup>1</sup>XS インスタンスは、使用する CPU コア数が 1 コアに満たなくても、vCPU 制限を上限として 1 vCPU とカウントされます。
 
-<sup>2</sup>ストレージ アカウントの制限には、Standard および Premium 両方のストレージ アカウントが含まれます。 単一リージョンで 200 個を超えるストレージ アカウントが必要な場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。 
+<sup>2</sup>ストレージ アカウントの制限には、Standard および Premium 両方のストレージ アカウントが含まれます。 指定したリージョンで 200 個を超えるストレージ アカウントが必要な場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、指定したリージョンに対して最大 250 個のストレージ アカウントが与えられます。 
 

@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: sdwheeler
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/18/2018
+ms.author: kirpas;iainfou;sewhee
+ms.custom: include file
+ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323801"
+---
 ## <a name="overview"></a>概要
 [Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイすることによってリソース グループに新しい仮想マシン (VM) を作成するとき、多くの場合、既定の OS ドライブは 127 GB です (一部のイメージでは既定の OS ディスク サイズが小さくなります)。 VM にデータ ディスクを追加でき (数は選択されている SKU に依存)、アプリケーションおよび CPU 多用ワークロードはこれらの追加ディスクにインストールすることが推奨されますが、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になることがあります。
 
@@ -134,7 +151,7 @@ Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="for-resizing-data-disks"></a>データ ディスクのサイズを変更する場合
 この記事では VM の非管理対象および管理 OS ディスクの拡張に主に重点を置きましたが、作成したスクリプトは、VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、```StorageProfile``` の ```OSDisk``` オブジェクトを ```DataDisks``` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
 
 非管理対象ディスク:

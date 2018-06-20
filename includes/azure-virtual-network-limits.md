@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/12/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568128"
+---
+<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | エンドポイント アクセス制御リスト (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
-次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。
+次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -58,7 +75,10 @@
 | フロントエンド IP の構成、Standard | 10 | 600 |
 | バックエンド プール、Basic | 100、1 つの可用性セット | 100、1 つの可用性セット |
 | バックエンド プール、Standard | 1000、1 つの VNet | 1000、1 つの VNet |
+| ロード バランサーあたりのバックエンド リソース数、Standard&ast; | 50 | 150 |
 | HA ポート、Standard | 内部フロント エンドごとに 1 個 | 内部フロント エンドごとに 1 個 |
+
+&ast;最大 150 のリソース (スタンドアロン仮想マシン、可用性セット、および仮想マシン スケール セットの任意の組み合わせ)。
 
 制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/resource-manager-core-quotas-request.md )ください。
 

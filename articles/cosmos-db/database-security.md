@@ -5,20 +5,17 @@ keywords: NoSQL データベースのセキュリティ, 情報のセキュリ�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: a02a6a82-3baf-405c-9355-7a00aaa1a816
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: aa04ae8d5bdccb52e3f63fb2dfb3c75df83b7a54
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611621"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -73,10 +70,10 @@ ms.lasthandoff: 05/03/2018
 |ローカル レプリケーション|Azure Cosmos DB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](consistency-levels.md)は顧客自身が選択できます。 これにより、すべての単一リージョンのアカウントとすべてのマルチリージョンのアカウントに対する緩やかな整合性の 99.99% の [SLA 可用性](https://azure.microsoft.com/support/legal/sla/cosmos-db)と、すべてのマルチリージョンのデータベース アカウントに対する 99.999% の読み取り可用性が保証されます。|
 |オンライン バックアップの自動化|Azure Cosmos DB データベースは定期的にバックアップされ、ジオリダンダント ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
-|機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
+|機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>個人データと他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
 |攻撃の監視|[監査ログとアクティビティ ログ](logging.md)を使用すると、アカウントの正常なアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://aka.ms/securityresponsepaper)」を参照してください。|
-|ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスとコンプライアンスを保証します。|
+|ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
 |HTTPS/SSL/TLS の暗号化|クライアントからサービスへの Azure Cosmos DB のすべての通信は、SSL/TLS 1.2 に対応しています。 また、データセンター内とデータセンター間のすべてのレプリケーションには、SSL/TLS 1.2 が適用されます。|
 |保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](.\database-encryption-at-rest.md)に関するページを参照してください。|

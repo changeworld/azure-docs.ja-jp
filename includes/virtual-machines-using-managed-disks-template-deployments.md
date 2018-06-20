@@ -1,12 +1,29 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: jboeshart
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: jaboes
+ms.custom: include file
+ms.openlocfilehash: f363c52093e0ae8314e07e750eb4362f71e9a4b1
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826516"
+---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの管理ディスクの使用
 
-このドキュメントでは、Azure Resource Manager テンプレートを使って仮想マシンをプロビジョニングする際の管理ディスクと非管理対象ディスクの違いについて説明します。 非管理対象ディスクが使用されている既存のテンプレートを管理ディスクに更新する際にお役立てください。 ここでは参考として [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) テンプレートを使用しています。 [管理ディスク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)を使用したテンプレートと[非管理対象ディスク](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)を使用した以前のバージョンを見て直接比較することもできます。
+このドキュメントでは、Azure Resource Manager テンプレートを使って仮想マシンをプロビジョニングする際の管理ディスクと非管理対象ディスクの違いについて説明します。 以下の例は、非管理対象ディスクが使用されている既存のテンプレートを管理ディスクに更新する際にお役立てください。 ここでは参考として [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) テンプレートを使用しています。 [管理ディスク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)を使用したテンプレートと[非管理対象ディスク](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)を使用した以前のバージョンを見て直接比較することもできます。
 
 ## <a name="unmanaged-disks-template-formatting"></a>非管理対象ディスクのテンプレートの書式
 
-最初に、非管理対象ディスクのデプロイ方法について見てみましょう。 非管理対象ディスクを作成するときは、VHD ファイルを保持するストレージ アカウントが必要です。 ストレージ アカウントは新たに作成しても、既にあるものを使用してもかまいません。 この記事では、新しいストレージ アカウントの作成方法を紹介します。 そのためには、次に示すように、resources ブロックにストレージ アカウント リソースが必要です。
+最初に、非管理対象ディスクのデプロイ方法について見てみましょう。 非管理対象ディスクを作成するときは、VHD ファイルを保持するストレージ アカウントが必要です。 ストレージ アカウントは新たに作成しても、既にあるものを使用してもかまいません。 この記事では、新しいストレージ アカウントの作成方法を紹介します。 次に示すように、resources ブロックでストレージ アカウント リソースを作成します。
 
-```
+```json
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
@@ -20,9 +37,9 @@
 }
 ```
 
-仮想マシン オブジェクトには、ストレージ アカウントへの依存関係が必要になります。ストレージ アカウントが仮想マシンより前に作成されるようにするためです。 そこで `storageProfile` セクション内に、VHD がある場所の完全 URI を指定します。この URI はストレージ アカウントを参照するもので、OS ディスク用とデータ ディスク用に必要となります。 
+仮想マシン オブジェクト内で、ストレージ アカウントへの依存関係を追加します。ストレージ アカウントが仮想マシンより前に作成されるようにするためです。 `storageProfile` セクション内に、VHD がある場所の完全 URI を指定します。この URI はストレージ アカウントを参照するもので、OS ディスク用とデータ ディスク用に必要となります。
 
-```
+```json
 {
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines",
@@ -81,7 +98,7 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 今後、管理ディスクを使用して VM を作成する場合、ストレージ アカウント リソースを作成する必要はありません。既存の仮想マシン リソースは次のように更新することができます。 具体的には、`apiVersion` に `2017-03-30` が反映され、`osDisk` と `dataDisks` には、VHD の具体的な URI が指定されていません。 デプロイ時に別途プロパティを指定しない限り、ディスクには [Standard LRS ストレージ](../articles/storage/common/storage-redundancy.md)が使用されます。 名前を指定しなかった場合、OS ディスクには `<VMName>_OsDisk_1_<randomstring>` 形式の名前が、各データ ディスクには `<VMName>_disk<#>_<randomstring>` 形式の名前が付きます。 既定では、Azure Disk Encryption が無効になり、キャッシュは、OS ディスクの場合は "読み取り/書き込み" に、データ ディスクの場合は "なし" になります。 下の例を見るとわかるように、ストレージ アカウントの依存関係は依然として存在します。ただし、これはあくまで診断のストレージ用であって、ディスク ストレージに必要なものではありません。
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
@@ -120,9 +137,9 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 ### <a name="using-a-top-level-managed-disk-resource"></a>最上位の管理ディスク リソースの使用
 
-仮想マシン オブジェクトにディスク構成を指定する代わりに、最上位のディスク リソースを作成して、それを仮想マシン作成の過程でアタッチすることもできます。 たとえばデータ ディスクとして使用するディスク リソースは、次のように作成できます。
+仮想マシン オブジェクトにディスク構成を指定する代わりに、最上位のディスク リソースを作成して、それを仮想マシン作成の過程でアタッチすることもできます。 たとえば、データ ディスクとして使用するディスク リソースは次のように作成できます。
 
-```
+```json
 {
     "type": "Microsoft.Compute/disks",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
@@ -140,9 +157,9 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 }
 ```
 
-このディスク オブジェクトは、その後 VM オブジェクト内で参照することでアタッチすることができます。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 VM リソースの `apiVersion` は `2017-03-30` に設定されています。 また、VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係を作成していることに注意してください。 
+VM オブジェクト内で、アタッチするディスク オブジェクトを参照します。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 VM リソースの `apiVersion` は `2017-03-30` に設定されています。 VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係が追加されます。 
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
@@ -185,9 +202,9 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>管理ディスクを使った VM で構成される管理された可用性セットを作成する
 
-管理ディスクを使った VM で構成される管理された可用性セットを作成するには、可用性セット リソースに `sku` オブジェクトを追加し、その `name` プロパティを `Aligned` に設定します。 これにより、各 VM のディスクが単一障害点とならないよう互いに分離されます。 また、可用性セット リソース の `apiVersion` は `2017-03-30` に設定されています。
+管理ディスクを使った VM で構成される管理された可用性セットを作成するには、可用性セット リソースに `sku` オブジェクトを追加し、その `name` プロパティを `Aligned` に設定します。 このプロパティにより、各 VM のディスクが単一障害点とならないよう互いに分離されます。 また、可用性セット リソース の `apiVersion` は `2017-03-30` に設定されています。
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
@@ -203,6 +220,29 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 }
 ```
 
+### <a name="standard-ssd-disks"></a>Standard SSD ディスク
+
+Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
+
+* Microsoft.Compute の *apiVersion* を `2018-04-01` (またはそれ以降) として設定する必要があります。
+* `StandardSSD_LRS` として *managedDisk.storageAccountType* を指定します。
+
+次の例は、Standard SSD ディスクを使用する VM の *properties.storageProfile.osDisk* セクションを示したものです。
+
+```json
+"osDisk": {
+    "osType": "Windows",
+    "name": "myOsDisk",
+    "caching": "ReadWrite",
+    "createOption": "FromImage",
+    "managedDisk": {
+        "storageAccountType": "StandardSSD_LRS"
+    }
+}
+```
+
+テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
+
 ### <a name="additional-scenarios-and-customizations"></a>その他のシナリオとカスタマイズ
 
 REST API の仕様の詳細については、[管理ディスク作成の REST API に関するドキュメント](/rest/api/manageddisks/disks/disks-create-or-update)を参照してください。 その他のシナリオや、テンプレートのデプロイ時に API に送信できる既定値や許容値についても説明されています。 
@@ -216,4 +256,4 @@ REST API の仕様の詳細については、[管理ディスク作成の REST A
 * 管理ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」のドキュメントを参照してください。
 * 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
 * ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/azure/templates/microsoft.compute/disks) ドキュメントを参照してください。
-* Azure VM Scale Sets でマネージド ディスクを使う方法については、「[スケール セットでデータ ディスクを使用する](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md)」をご覧ください。
+* Azure VM Scale Sets で管理ディスクを使う方法については、[スケール セットでデータ ディスクを使用する](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md)方法に関する文書を参照してください。
