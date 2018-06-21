@@ -1,20 +1,17 @@
 ---
 title: Azure Site Recovery を使用した保護の対象からディスクを除外する | Microsoft Docs
 description: VMware から Azure へのレプリケーションで VM ディスクを除外する理由とその方法を説明します。
-services: site-recovery
 author: nsoneji
-manager: garavd
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 71d49ee07c0ccc7641941aea4f688b9700c39a57
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 59c8d38d94604a9950693d6bb73b6263f9cdb23b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29811479"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285092"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>VMware から Azure へのレプリケーションでディスクを除外するシナリオ
 

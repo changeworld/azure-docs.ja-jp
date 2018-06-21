@@ -3,7 +3,7 @@ title: Azure Portal のキーボード ショートカット | Microsoft Docs
 description: Azure ポータルで機能するキーボード ショートカットについて説明します。
 services: azure-portal
 documentationcenter: ''
-author: flanakin
+author: adamabmsft
 manager: lwelicki
 editor: ''
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
-ms.author: micflan
+ms.author: adamab
 ms.custom: accessibility
-ms.openlocfilehash: 17d6c5ecfa3964c03f62e981a4619e02f3d59543
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 4744a752230cfd1f6012d9fe0a502b2653ef8061
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165419"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295229"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 この記事では、Azure ポータル全体で機能するキーボード ショートカットを示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。

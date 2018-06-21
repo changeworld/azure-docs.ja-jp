@@ -12,39 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/20/2018
 ms.author: TomShinder
-ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418222"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295297"
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する
+
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 [Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)には、Azure Storage とセキュリティに関する詳細な情報が記載されています。  この記事では、セキュリティ ガイドに記載されているいくつかの概念をおおまかに説明し、セキュリティ ガイドへのリンクなど、詳細を確認するためのソースを紹介しています。
 
 ## <a name="azure-storage"></a>Azure Storage
+
 Azure は、オンプレミスでは簡単に実現できない方法で、ストレージをデプロイして使用することを可能にしています。 Azure Storage を使用すれば、比較的少ない労力で高レベルのスケーラビリティと可用性を実現できます。 Azure Storage は、Windows と Linux の Azure Virtual Machines の基盤となるだけでなく、大規模な分散アプリケーションもサポートしています。
 
 Azure Storage では、4 つのサービスが提供されます。Blob Storage、Table Storage、Queue Storage、および File Storage です。 詳細については、「[Introduction to Microsoft Azure Storage (Microsoft Azure Storage の概要)](../storage/storage-introduction.md)」をご覧ください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
+
 この記事では、以下のベスト プラクティスを扱います。
 
 - アクセスの保護:
    - Shared Access Signatures (SAS)
-   - 管理ディスク
    - ロール ベースのアクセス制御 (RBAC)
 
 - ストレージ暗号化:
    - 価値の高いデータのクライアント側暗号化
-   - 仮想マシン (VM) 用の Azure Disk Encryption
    - Storage Service Encryption
 
 ## <a name="access-protection"></a>アクセスの保護
+
 ### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに Shared Access Signature を使用する
 
 通常、IaaS ソリューションでは、Windows Server または Linux の仮想マシンの実行中は、アクセス制御メカニズムを使用して漏えいや改ざんの脅威からファイルを保護します。 Windows では[アクセス制御リスト (ACL)](../virtual-network/virtual-networks-acl.md) を使用し、Linux ではおそらく [chmod](https://en.wikipedia.org/wiki/Chmod) を使用することになります。 基本的には、データ センターにあるサーバーのファイルを保護するのであれば、これが現在取り得る適切な手段です。
@@ -66,12 +68,6 @@ SAS を使用すれば、ストレージ アカウント キーを知らせる�
 
 詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。 潜在的なリスクと、リスクを軽減するための推奨事項の詳細については、[SAS 使用時のベスト プラクティス](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関する記事をご覧ください。
 
-### <a name="use-managed-disks-for-vms"></a>VM の管理対象ディスクを使用する
-
-[Azure Managed Disks](../storage/storage-managed-disks-overview.md) を選択すると、Azure は、VM ディスクに使用するストレージ アカウントを管理します。 ディスクの種類 (Premium または Standard) とディスク サイズを選択するだけでかまいません。あとは Azure Storage が行います。 他に複数のストレージ アカウントが必要になるような、スケーラビリティの制限については心配する必要はありません。
-
-詳細については、[Premium 管理ディスクと非管理ディスクについてよく寄せられる質問](../storage/storage-faq-for-disks.md)に関する記事をご覧ください。
-
 ### <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
 
 Shared Access Signature (SAS) を使用すれば、ストレージ アカウント キーを知らせずに、ストレージ アカウントのオブジェクトに制限付きでアクセスする権限を他のクライアントに付与できることは既に述べました。 ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。 別の方法でアクセスを管理した方が容易である場合もあります。
@@ -89,6 +85,7 @@ RBAC の詳細については、次の記事をご覧ください。
 - RBAC を使用してストレージ アカウントをセキュリティ保護する方法の詳細については、[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)をご覧ください。
 
 ## <a name="storage-encryption"></a>ストレージ暗号化
+
 ### <a name="use-client-side-encryption-for-high-value-data"></a>価値の高いデータのクライアント側暗号化を使用する
 
 クライアント側暗号化を使用すると、Azure Storage にアップロードする前に転送中データをプログラムで暗号化でき、ストレージから取得するときにデータをプログラムで複合化できます。  これは転送中のデータの暗号化ですが、保存データの暗号化も可能です。  クライアント側暗号化が最も安全にデータを暗号化できる方法ですが、アプリケーションのプログラムを変更し、キー管理プロセスを組み込む必要があります。
@@ -97,15 +94,12 @@ RBAC の詳細については、次の記事をご覧ください。
 
 クライアント側暗号化は、Java と .NET のストレージ クライアント ライブラリに組み込まれています。  クライアント アプリケーション内のデータの暗号化と、独自の暗号化キーの生成および管理の詳細については、「[Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側暗号化と Azure Key Vault)](../storage/storage-client-side-encryption.md)」をご覧ください。
 
-### <a name="azure-disk-encryption-for-vms"></a>VM の Azure Disk Encryption
-Azure Disk Encryption は、Windows と Linux の IaaS 仮想マシン ディスクを暗号化するのに役立つ機能です。 Azure Disk Encryption では、業界標準である Windows の BitLocker 機能と Linux の DM-Crypt 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。 このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 またこのソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
-
-「[Windows および Linux IaaS VM の Azure ディスク暗号化](azure-security-disk-encryption.md)」をご覧ください。
-
 ### <a name="storage-service-encryption"></a>Storage Service Encryption
+
 File Storage の [Storage Service Encryption](../storage/storage-service-encryption.md) を有効にすると、データは自動的に AES-256 暗号化で暗号化されます。 Microsoft がすべての暗号化、復号化、キー管理を処理します。 この機能は、LRS と GRS という種類の冗長性を使用します。
 
 ## <a name="next-steps"></a>次の手順
+
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)

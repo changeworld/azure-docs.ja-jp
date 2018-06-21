@@ -205,6 +205,8 @@
           href: backup-azure-mars-troubleshoot.md
         - name: Azure ファイル共有
           href: troubleshoot-azure-files.md
+        - name: SQL Server
+          href: backup-sql-server-azure-troubleshoot.md
 - name: リファレンス
   items:
     - name: .NET

@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365969"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646645"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -62,13 +62,15 @@ Azure SQL Database の自動チューニングの核となるロジックは、S
 ## <a name="automatic-tuning-options"></a>自動チューニング オプション
 
 Azure SQL Database で使用可能な自動チューニング オプションは次のとおりです。
- 1. **CREATE INDEX** - ワークロードのパフォーマンスを改善させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが改善されたことを確認します。 Azure では、このオプションは既定で有効に設定されています。
- 2. **DROP INDEX** - 冗長なインデックスや重複するインデックス、また長期間使用されていないインデックスを特定します。 なお、現在のところ、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションとと互換性がありません。 Azure では、このオプションは既定で無効に設定されています。
- 3. **FORCE LAST GOOD PLAN** - 以前の良好なプランよりも速度の低い実行プランを使用している SQL クエリを特定し、その低速なプランの代わりに、最後に確認された良好なプランを使用してクエリを実行します。 Azure では、このオプションは既定で有効に設定されています。
+ 1. **CREATE INDEX** - ワークロードのパフォーマンスを改善させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが改善されたことを確認します。
+ 2. **DROP INDEX** - 冗長なインデックスや重複するインデックス、また長期間使用されていないインデックスを特定します。 なお、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。
+ 3. **FORCE LAST GOOD PLAN** - 以前の良好なプランよりも速度の低い実行プランを使用している SQL クエリを特定し、その低速なプランの代わりに、最後に確認された良好なプランを使用してクエリを実行します。
 
-Azure SQL Database は、データベースを最適化できる **CREATE INDEX**、**DROP INDEX**、および **FORCE LAST GOOD PLAN** の推奨事項を識別し、Azure Portal でそれらを表示します。 変更する必要があるインデックスの識別の詳細については、「[Azure Portal を使用した SQL Database Advisor](sql-database-advisor-portal.md)」参照してください。 ポータルを使用して推奨事項を手動で適用することも、Azure SQL Database で自動的に推奨事項を適用し、変更後のワークロードを監視して、推奨事項によりワークロードのパフォーマンスが向上したことを確認することもできます。
+Azure SQL Database は、データベースを最適化できる **CREATE INDEX**、**DROP INDEX**、および **FORCE LAST GOOD PLAN** の推奨事項を識別し、Azure Portal でそれらを表示します。 変更する必要があるインデックスの識別の詳細については、「[Azure Portal を使用した SQL Database Advisor](sql-database-advisor-portal.md)」参照してください。 ポータルを使用して推奨事項を手動で適用することも、Azure SQL Database で自動的に推奨事項を適用し、変更後のワークロードを監視して、推奨事項によりワークロードのパフォーマンスが向上したことを確認することもできます。 
 
-自動チューニング オプションをデータベースごとに個別にオンまたはオフにすることも、論理サーバーで構成し、サーバーから設定を継承するすべてのデータベースに適用することもできます。 論理サーバーでは、自動チューニングの設定について、Azure の既定値を継承できます。 サーバーでの自動チューニング オプションの構成と、サーバーのデータベースでの設定の継承は、自動チューニングを構成するための推奨される方法です。この方法では、多数のデータベースでの自動チューニング オプションの管理が簡素化されるためです。
+自動チューニング オプションをデータベースごとに個別に有効または無効にすることも、論理サーバーで構成し、サーバーから設定を継承するすべてのデータベースに適用することもできます。 論理サーバーでは、自動チューニングの設定について、Azure の既定値を継承できます。 現時点の Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効に、DROP_INDEX が無効に設定されています。
+
+サーバーでの自動チューニング オプションの構成と、親サーバーに属するデータベースの設定の継承は、自動チューニングを構成するための推奨される方法です。この方法では、多数のデータベースの自動チューニング オプションの管理が簡素化されるためです。
 
 ## <a name="next-steps"></a>次の手順
 

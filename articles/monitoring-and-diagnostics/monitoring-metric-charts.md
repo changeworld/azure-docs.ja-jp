@@ -1,24 +1,19 @@
 ---
-title: "Azure Monitor メトリックス エクスプローラー | Microsoft Docs"
-description: "Azure Monitor メトリックス エクスプローラーの新機能について説明します"
+title: Azure Monitor メトリックス エクスプローラー
+description: Azure Monitor メトリックス エクスプローラーの新機能について説明します
 author: vgorbenko
-manager: Victor.Mushkatin
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2397596a-071f-4d49-8893-bec5f735bd7b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264090"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
@@ -156,6 +151,6 @@ Azure の多数の リソースが、多次元メトリックを公開するよ�
 
    ![メトリックの画像](./media/monitoring-metric-charts/013.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
   [カスタム KPI ダッシュボードの作成](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。

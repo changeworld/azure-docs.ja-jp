@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4e82699b29a0333fae66fefdac8f5326c7e34e11
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: af4fe8ce4d9f5584241b56762ddf9c60aa28f0ba
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712472"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293372"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定 
 
@@ -108,4 +108,4 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 次のステップでは、独自の Azure AD B2C テナントを作成し、そのテナントを使用して実行するようにサンプルを構成します。 
 
 > [!div class="nextstepaction"]
-> [Azure Portal で Azure Active Directory B2C テナントを作成する](active-directory-b2c-get-started.md)
+> [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)

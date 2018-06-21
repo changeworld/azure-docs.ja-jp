@@ -48,7 +48,7 @@
           href: role-assignments-powershell.md
         - name: REST ()
           href: role-assignments-rest.md
-    - name: アクティビティ ログ
+    - name: アクティビティ ログを表示する
       href: change-history-report.md
     - name: 全体管理者のアクセス権の昇格
       href: elevate-access-global-admin.md

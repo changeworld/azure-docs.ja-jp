@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360089"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602722"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -92,6 +92,8 @@ ms.locfileid: "34360089"
 
    * ソース リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action**。
    * ターゲット リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/write**。
+
+5. 可能であれば、大規模な移動は個別の移動操作に分けます。 Resource Manager で単一の操作で 800 を超えるリソースを移動しようとすると、すぐに失敗します。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
 
 ## <a name="when-to-call-support"></a>サポートに問い合わせる場合
 

@@ -188,6 +188,8 @@
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする
           href: storage-https-custom-domain-cdn.md
+        - name: Azure Blob Storage の不変ストレージ機能 (プレビュー)
+          href: storage-blob-immutable-storage.md
     - name: 監視とトラブルシューティング
       items:
         - name: トラブルシューティングのチュートリアル
@@ -350,11 +352,11 @@
     - name: .NET
       items:
         - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: データの移動
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
         - name: リソース マネージャー
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
       items:
         - name: BLOB、キュー、テーブル、ファイル

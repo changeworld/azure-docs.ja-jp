@@ -3,25 +3,25 @@ title: Azure Active Directory ポータルのサインイン アクティビテ�
 description: サインイン アクティビティ レポートのエラー コードのリファレンス。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698511"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232129"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード
 
@@ -65,13 +65,13 @@ ms.locfileid: "34698511"
 |40008|フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。|
 |40009|フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。|
 |40014|フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。|
-|50000|Microsoft のサインイン サービスに問題があります。 この問題を解決するには、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)。|
+|50000|Microsoft のサインイン サービスに問題があります。 この問題を解決するには、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)。|
 |50001|サービス プリンシパル名がこのテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合に発生することがあります。 または、リソースのプリンシパルがディレクトリに見つからないか無効です。|
 |50002|テナントでプロキシ アクセスが制限されているため、サインインが失敗しました。 自分が所有するテナント ポリシーの場合は、制限されたテナント設定を変更して、この問題を解決できます|
 |50003|署名キーまたは証明書がないために、サインインが失敗しました。 アプリケーションで署名キーが構成されていない可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) で説明されている解決策を確認してください。 問題が引き続き発生する場合は、アプリケーションの所有者またはアプリケーション管理者に問い合わせてください|
 |50005|ユーザーが、条件付きアクセス ポリシーによって現在サポートされていないプラットフォームからデバイスにログインしようとしました|
 |50006| 無効な署名のため、署名の検証が失敗しました。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) で説明されている解決策を確認してください。 問題が引き続き発生する場合は、アプリケーションの所有者またはアプリ管理者に問い合わせてください|
-|50007|このアプリケーションのパートナー暗号化証明書が見つかりませんでした。 この問題を解決するには、Microsoft への[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)|
+|50007|このアプリケーションのパートナー暗号化証明書が見つかりませんでした。 この問題を解決するには、Microsoft への[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)|
 |50008|トークンに SAML アサーションがないか、正しく構成されていません。 フェデレーション プロバイダーに問い合わせてください。|
 |50010|トークン対象ユーザーが構成されていないため、アプリケーションの対象ユーザー URI の検証が失敗しました。 アプリケーションの所有者に問い合わせください|
 |50011|返信アドレスがないか、正しく構成されていません。または、アプリケーションに対して構成されている返信アドレスと一致しません。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) で説明されている解決策を試してください。 問題が引き続き発生する場合は、アプリケーションの所有者またはアプリ管理者に問い合わせてください|
@@ -114,8 +114,8 @@ ms.locfileid: "34698511"
 |50133|期限切れまたは最近のパスワード変更が原因でセッションが無効です。|
 |50135|アカウントのリスクのため、パスワードの変更が必要です|
 |50136|MSA セッションをアプリにリダイレクトします。単一 MSA セッションが検出されました |
-|50140|ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)。 |
-|50143|セッションが一致しません。異なるリソースにより、ユーザーのテナントがドメインのヒントと一致しないため、セッションが無効です。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)。|
+|50140|ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)。 |
+|50143|セッションが一致しません。異なるリソースにより、ユーザーのテナントがドメインのヒントと一致しないため、セッションが無効です。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)。|
 |50144|ユーザーの Active Directory パスワードの有効期限が切れています。 ユーザーに新しいパスワードを生成するか、またはエンド ユーザーにセルフサービスのリセット ツールを使用させてください|
 |50146|このアプリケーションは、アプリケーション固有の署名キーを使って構成する必要があります。 そのように構成されていません。または、キーが有効期限切れか、またはまだ有効になっていません。 アプリケーションの所有者に問い合わせください|
 |50148|code_verifier が、PKCE の承認要求で指定された code_challenge と一致しません。 アプリケーション開発者に問い合わせください。 |
@@ -150,7 +150,7 @@ ms.locfileid: "34698511"
 |70007|アプリケーションが、トークンを要求するときに、"response_mode" のサポートされていない値を返しました。 アプリの所有者に問い合わせてください|
 |70008|指定された承認コードまたは更新トークンが、期限切れか、取り消されています。 ユーザーにサインインを再試行させてください|
 |70011|アプリケーションによって要求されたスコープが無効です。 アプリケーションの所有者に問い合わせください|
-|70012|MSA (コンシューマー) ユーザーの認証中にサーバー エラーが発生しました。 もう一度試してください。 まだ失敗する場合は、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md) |
+|70012|MSA (コンシューマー) ユーザーの認証中にサーバー エラーが発生しました。 もう一度試してください。 まだ失敗する場合は、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|ユーザーがデバイス コード フローに誤ったユーザー コードを入力したため、確認コードが無効です。 承認は承認されません|
 |70019|確認コードの有効期限が切れました。 ユーザーにサインインを再試行させてください|
 |70037|正しくないチャレンジ応答が提供されました。 リモート認証セッションが拒否されました。|
@@ -161,15 +161,15 @@ ms.locfileid: "34698511"
 |75011|サービスでのユーザーの認証に使用された認証方法が、要求された認証方法と一致しません。 アプリの所有者に問い合わせてください|
 |75016|SAML2 認証要求の NameIdPolicy が無効です。 アプリの所有者に問い合わせてください|
 |80001|認証エージェントが Active Directory に接続できません。 ユーザーのログイン要求を処理できる DC への通信経路があるドメイン参加コンピューターに認証エージェントがインストールされていることを確認してください。|
-|80002|内部エラーです。 パスワード検証要求がタイムアウトしました。内部のハイブリッド ID サービスに認証要求を送信できませんでした。 エラーの詳細を取得するには、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)|
-|80003|認証エージェントが無効な応答を受信しました。 オンプレミスの Active Directory に対して認証しようとしているときに、不明なエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)。|
-|80005|認証エージェント: 認証エージェントからの応答の処理中に不明なエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)。|
+|80002|内部エラーです。 パスワード検証要求がタイムアウトしました。内部のハイブリッド ID サービスに認証要求を送信できませんでした。 エラーの詳細を取得するには、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)|
+|80003|認証エージェントが無効な応答を受信しました。 オンプレミスの Active Directory に対して認証しようとしているときに、不明なエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)。|
+|80005|認証エージェント: 認証エージェントからの応答の処理中に不明なエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)。|
 |80007|認証エージェントはユーザーのパスワードを検証できません。|
 |80010|認証エージェントはパスワードを復号化できません。 |
 |80011|認証エージェントは暗号化キーを取得できません。|
 |80012|ユーザーは許可されている時間範囲外にログオンしようとしました (時間は AD で指定されています)|
 |80013|認証エージェントを実行しているコンピューターと AD の間に時間のずれがあるため、認証の試行を完了できませんでした。 時刻同期の問題を解決してください|
-|80014|認証エージェントがタイムアウトしました。このエラーの詳細を調べるには、エラー コード、相関 ID、日時を添えて、[サポート チケットを開いてください](active-directory-troubleshooting-support-howto.md)|
+|80014|認証エージェントがタイムアウトしました。このエラーの詳細を調べるには、エラー コード、相関 ID、日時を添えて、[サポート チケットを開いてください](fundamentals/active-directory-troubleshooting-support-howto.md)|
 |81001|ユーザーの Kerberos チケットが大きすぎます。 これは、ユーザーが属しているグループが多すぎ、したがって Kerberos チケットに含まれるグループ メンバーシップが多すぎる場合に発生します。 ユーザーのグループ メンバーシップを減らしてやり直してください。|
 |81005|認証パッケージがサポートされていません|
 |81007|テナントで、シームレス SSO が有効になっていません|

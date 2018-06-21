@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 71e76b234b614f5935775d5c387c9897e1dcb968
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2e9f51cc2afadf70c02a23a85a4c2a866f3fd149
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937674"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285472"
 ---
 # <a name="implement-x-csrf-pattern"></a>X CSRF パターンの実装
 
@@ -28,7 +28,7 @@ ms.locfileid: "33937674"
 
 コードを **inbound** ブロックに貼り付けます。
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Get X-CSRF token from SAP gateway using send request policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Get X-CSRF token from SAP gateway using send request policy.xml)]
 
 ## <a name="next-steps"></a>次の手順
 

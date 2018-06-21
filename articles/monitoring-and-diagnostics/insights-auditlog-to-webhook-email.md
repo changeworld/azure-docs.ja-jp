@@ -1,24 +1,19 @@
 ---
-title: "Azure アクティビティ ログ アラートでの webhook の呼び出し | Microsoft Docs"
-description: "カスタム アクションのためにアクティビティ ログ イベントを他のサービスにルーティングする方法について説明します。 たとえば、SMS メッセージの送信、バグの記録、チャットやメッセージング サービスを使用したチームへの通知を行うことができます。"
+title: Azure アクティビティ ログ アラートでの webhook の呼び出し (クラシック)
+description: カスタム アクションのためにアクティビティ ログ イベントを他のサービスにルーティングする方法について説明します。 たとえば、SMS メッセージの送信、バグの記録、チャットやメッセージング サービスを使用したチームへの通知を行うことができます。
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262462"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Azure アクティビティ ログ アラートでの webhook の呼び出し
 後処理やカスタム アクションのために、webhook を使用して Azure アラート通知を他のシステムにルーティングできます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 また、アラートがアクティブになったときに電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
@@ -104,7 +99,7 @@ POST 操作には、すべてのアクティビティ ログベースのアラ�
 }
 ```
 
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "Activated" に設定されます。|
 | context |イベントのコンテキスト。 |
@@ -116,7 +111,7 @@ POST 操作には、すべてのアクティビティ ログベースのアラ�
 | claims | 要求に関連する情報のコレクション。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの GUID またはユーザー名。 一部のシステム呼び出しでは、null 値の場合があります。 |
 | correlationId |通常は GUID (文字列形式)。 **correlationId** を含むイベントは、より大きな同じアクションに属します。 通常は、同じ **correlationId** 値を持ちます。 |
-| 説明 |アラートの作成時に設定されたアラートの説明。 |
+| description  |アラートの作成時に設定されたアラートの説明。 |
 | eventSource |イベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
 | eventTimestamp |イベントが発生した時刻。 |
 | eventDataId |イベントの一意識別子。 |

@@ -1,39 +1,22 @@
 ---
-title: Azure Monitor の新しいメトリック アラートでサポートされているリソース | Microsoft Docs
+title: 新しい Azure Monitor メトリック アラートでサポートされるリソース
 description: Azure のほぼリアルタイムの新しいメトリック アラートでサポートされているメトリックとログのリファレンスです。
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778115"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264512"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure Portal で使用できる Azure サービスの新しいメトリック アラート
-Azure Monitor では、新しいメトリック アラートの種類がサポートされるようになりました。 新しいアラートは、いくつかの点で[従来のメトリック アラート](insights-alerts-portal.md)とは異なります。
-
-- **待ち時間の短縮**: 新しいメトリック アラートは 1 分ごとに実行できます。 古いメトリック アラートは常に、5 分の頻度で実行されます。 ログ アラートは、ログの取り込みに時間がかかるため、まだ 1 分を超える遅延が発生します。 
-- **多次元メトリックのサポート**: 各次元のメトリックに関するアラートを生成して、メトリックの関心のあるセグメントのみを監視できます。 
-- **メトリックの条件に対する詳細な制御**: より詳細なアラート ルールを定義できます。 この新しいアラートでは、メトリックの最大値、最小値、平均値、および合計値の監視がサポートされています。 
-- **複数のメトリックの監視の組み合わせ**: 複数のメトリック (現時点では最大で 2 つ) を 1 つのルールで監視できます。 両方のメトリックが、指定された期間にわたってしきい値を超えた場合、アラートがトリガーされます。 
-- **より優れた通知システム**: 新しいアラートはすべて、複数のアラートで再利用できる通知とアクションの名前付きグループである[アクション グループ](monitoring-action-groups.md)を使用します。 従来のメトリック アラートと古い Log Analytics のアラートでは、アクション グループを使用しません。 
-- **ログからのメトリック** (限定パブリック プレビュー): Log Analytics に移動するログ データを抽出して、Azure Monitor メトリックに変換し、他のメトリックと同様にアラートの対象にできるようになりました。 
-
-Azure Portal で新しいメトリック アラートを作成する方法を学習するには、「[ Azure Portal でアラート ルールを作成する](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)」を参照してください。 作成後は、[Azure Portal でのアラートの管理](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)に関するページで説明されている手順を使用して、アラートを管理することができます。
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>新しいメトリック アラートでサポートされるメトリックと作成方法
+Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-unified-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](insights-alerts-portal.md)と比較して多くのメリットがあります。 古いアラートは[多数のメトリック](monitoring-supported-metrics.md)をサポートします。 新しいアラートは、この多数の中のサブセットをサポートします (拡大中)。 この記事では、このサブセットを一覧で示します。 
 
 ## <a name="portal-powershell-cli-rest-support"></a>ポータル、PowerShell、CLI、REST のサポート
 現在、新しいメトリック アラートは Azure Portal、[REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate)、または[リソース マネージャー テンプレート](monitoring-create-metric-alerts-with-templates.md)でのみ作成できます。 PowerShell および Azure コマンド ライン インターフェイス (Azure CLI 2.0) を使用した新しいアラートの構成は、近日中にサポートされる予定です。
@@ -57,7 +40,7 @@ Azure Portal で新しいメトリック アラートを作成する方法を学
 |Microsoft.DBforMySQL/servers     |   該当なし      |[DB for MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/servers     |    該当なし     | [DB for PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  [はい]      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
-|Microsoft.KeyVault/vaults| いいえ  | [Vaults](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
+|Microsoft.KeyVault/vaults| いいえ  | [資格情報コンテナー](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     該当なし    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
 |Microsoft.Network/applicationGateways     |    該当なし     | [アプリケーション ゲートウェイ](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/dnsZones | 該当なし| [DNS Zones](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
@@ -154,7 +137,7 @@ Azure Portal で新しいメトリック アラートを作成する方法を学
 |    Average_Uptime |     はい - Computer、ObjectName、InstanceName、CounterPath、SourceSystem    |   Linux パフォーマンス カウンター      |
 |    Average_Users  |     はい - Computer、ObjectName、InstanceName、CounterPath、SourceSystem    |   Linux パフォーマンス カウンター      |
 |    Heartbeat  |     はい - Computer、OSType、Version、SourceComputerId    |   ハートビート レコード |
-|    プライマリの |     はい - Computer、Product、Classification、UpdateState、Optional、Approved    |   更新管理 |
+|    アップデート |     はい - Computer、Product、Classification、UpdateState、Optional、Approved    |   更新管理 |
 
 
 

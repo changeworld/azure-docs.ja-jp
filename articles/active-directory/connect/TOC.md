@@ -18,6 +18,7 @@
 ### [以前のバージョンからのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)
 ### [既存の ADSync データベースを使用したインストール](active-directory-aadconnect-existing-database.md)
 ### [SQL によって委任された管理者の権限を使用したインストール](active-directory-aadconnect-sql-delegation.md)
+### [リモート SQL Server への Azure AD Connect データベースの移行](active-directory-aadconnect-move-db.md)
 
 # 方法
 ## 計画と設計
