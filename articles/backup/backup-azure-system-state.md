@@ -1,25 +1,20 @@
 ---
-title: Windows のシステム状態を Azure にバックアップする | Microsoft Docs
+title: Windows のシステム状態を Azure にバックアップする
 description: Windows Server コンピューターまたは Windows コンピューターのシステム状態を Azure にバックアップする方法を紹介します。
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
-manager: carmonm
-editor: ''
+manager: shivamg
 keywords: バックアップ方法; バックアップ方法; ファイルとフォルダーのバックアップ
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2017
-ms.author: saurse;markgal
-ms.openlocfilehash: b4847a4b2d8397530d8a6bb4bc4729a6966634f2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 05/23/2018
+ms.author: saurse
+ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606071"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
 この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。
@@ -46,7 +41,7 @@ Windows Server のシステム状態をバックアップするには、デー�
 
     ![Recovery Services コンテナーの作成手順 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
 5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
@@ -176,19 +171,24 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 初回バックアップを実行するには、Microsoft Azure Recovery Services エージェントを使用します。
 
+> [!NOTE]
+> Windows Server 2016 を使用して、Windows Server 2008 R2 のシステム状態をバックアップできます。 クライアント SKU では、システム状態のバックアップはサポートされていません。 システム状態は、Windows クライアント、または Windows Server 2008 SP2 マシンのオプションとしては表示されません。
+>
+>
+
 ### <a name="to-schedule-the-backup-job"></a>バックアップ ジョブのスケジュールを設定するには
 
 1. Microsoft Azure Recovery Services エージェントを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
 
     ![Launch the Azure Recovery Services agent](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. Recovery Services エージェントで、 **[バックアップのスケジュール]**をクリックします。
+2. Recovery Services エージェントで、 **[バックアップのスケジュール]** をクリックします。
 
     ![Windows Server のバックアップのスケジュール](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
+3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]** をクリックします。
 
-4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
+4. [バックアップする項目の選択] 画面で、 **[項目の追加]** をクリックします。
 
 5. **[システム状態]** を選択し、**[OK]** をクリックします。
 
@@ -196,9 +196,9 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 7. 後続のページで、必要なバックアップの頻度およびシステム状態のバックアップの保持ポリシーを選択します。 
 
-8. [確認] ページで情報を確認し、 **[完了]**をクリックします。
+8. [確認] ページで情報を確認し、 **[完了]** をクリックします。
 
-9. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]**をクリックします。
+9. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>初めて Windows Server のシステム状態をバックアップするには
 
@@ -210,7 +210,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 3. 表示される **[Select Backup Item](バックアップ項目の選択)** 画面で **[システム状態]** を選択し、**[次へ]** をクリックします。
 
-4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]**をクリックします。
+4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 
 4. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 

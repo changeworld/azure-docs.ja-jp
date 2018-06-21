@@ -1,24 +1,20 @@
 ---
-title: "Azure 診断のトラブルシューティング | Microsoft Docs"
-description: "Azure Virtual Machines、Service Fabric、または Cloud Services で Azure 診断を使うときの問題をトラブルシューティングします。"
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Azure 診断拡張機能のトラブルシューティング
+description: Azure Virtual Machines、Service Fabric、または Cloud Services で Azure 診断を使うときの問題をトラブルシューティングします。
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.component: diagnostic-extension
+ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263848"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](azure-diagnostics.md)に関するページを参照してください。
@@ -61,9 +57,9 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**[診断構成]** > **[メトリック]** > **[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**診断構成****、** > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**[診断構成]** > **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、**診断構成** > **PerformanceCounter** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -122,10 +118,10 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 #### <a name="is-the-host-generating-data"></a>ホストはデータを生成しているか
 - **パフォーマンス カウンター**: perfmon を開き、カウンターを確認します。
 
-- **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  http://msdn.microsoft.com/library/sk36c28t.aspx を参照し、テキスト リスナーをセットアップしてください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
+- **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、http://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
 
-- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** > **Listen etwprovder1** > **etwprovider2** の順に選択し、 を実行します。必要に応じてさらに 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
+- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
 - **イベント ログ**: VM にリモート アクセスします。 `Event Viewer` を開き、イベントが存在することを確認します。
 
@@ -228,7 +224,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診断プラグインの終了コード
 プラグインにより、次の終了コードが返されます。
 
-| 終了コード | [説明] |
+| 終了コード | 説明 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |一般的なエラー。 |
