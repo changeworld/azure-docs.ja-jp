@@ -2,43 +2,50 @@
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery で Azure への VMware ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。
 services: site-recovery
-author: AnoopVasudavan
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: b5ba316b21e0c31e0ecc99fc2d57f81b0f24c086
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 06/04/2018
+ms.author: raynew
+ms.openlocfilehash: 64f5f2105a9048d649503b0790231676182a4c4f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737505"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware VM 用の構成サーバーの管理
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
 
 
+
 ## <a name="modify-vmware-settings"></a>VMware の設定を変更する
 
-構成サーバーが接続する VMware サーバーの設定を変更します。
+次のように構成サーバーにアクセスすることができます。
+    - デプロイ先の VM にサインインし、デスクトップのショートカットから Azure Site Recovery 構成マネージャーを起動します。
+    - または、**https://*ConfigurationServerName*/:44315/** から構成サーバーにリモートでアクセスできます。 管理者の資格情報でサインインします。
+   
+### <a name="modify-vmware-server-settings"></a>VMware サーバーの設定を変更する
 
-1. 構成サーバーを実行しているコンピューターにサインインします。
-2. デスクトップのショートカットから Azure Site Recovery 構成マネージャーを起動します。 または、[このリンク](https://configuration-server-name/IP:44315)を開きます。
-3. **[vCenter Server/vSphere ESXi サーバーの資格情報の管理]** を選択して、次の操作を行います。
+1. 別の VMware サーバーを構成サーバーと関連付けるには、サインイン後に **[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。
+2. 詳細を入力し、**[OK]** を選択します。
 
-    * 別の VMware サーバーを構成サーバーと関連付けるには、**[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。 サーバーの詳細を入力します。
 
-    * VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、**[編集]** を選択します。 新しい資格情報を入力して、**[OK]** を選択します。
+### <a name="modify-credentials-for-automatic-discovery"></a>自動検出用の資格情報を変更する
+
+1. VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、サインイン後に **[編集]** を選択します。
+2. 新しい資格情報を入力して、**[OK]** を選択します。
 
     ![VMware の変更](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
+
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>モビリティ サービス インストール用の資格情報を変更する
 
 レプリケーションを有効にする VMware VM にモビリティ サービスを自動インストールするために使う資格情報を変更します。
 
-1. 構成サーバーを実行しているコンピューターにサインインします。
-2. デスクトップのショートカットから Site Recovery 構成マネージャーを起動します。 または、[このリンク](https://configuration-server-name/IP:44315)を開きます。
-3. **[仮想マシンの資格情報の管理]** を選択して、新しい資格情報を入力します。 次に、**[OK]** を選択して、設定を更新します。
+1. サインイン後に、**[仮想マシンの資格情報の管理]** を選択します
+2. 新しい資格情報を入力して、**[OK]** を選択します。
 
     ![モビリティ サービスの資格情報を変更する](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
@@ -46,15 +53,15 @@ Azure への VMware 仮想マシンと物理サーバーのディザスター �
 
 Azure へのインターネット アクセスのために構成サーバー マシンが使うプロキシの設定を変更します。 構成サーバー マシンで実行されている既定のプロセス サーバーだけでなく、プロセス サーバー マシンがある場合は、両方のマシンで設定を変更します。
 
-1. 構成サーバーを実行しているコンピューターにサインインします。
-2. デスクトップのショートカットから Site Recovery 構成マネージャーを起動します。 または、[このリンク](https://configuration-server-name/IP:44315)を開きます。
-3. **[接続の管理]** を選択して、プロキシの値を更新します。 次に、**[保存]** を選択して、設定を更新します。
+1. 構成サーバーにサインインした後で、**[接続の管理]** を選択します。
+2. プロキシの値を更新します。 次に、**[保存]** を選択して、設定を更新します。
 
 ## <a name="add-a-network-adapter"></a>ネットワーク アダプターを追加する
 
-Open Virtualization Format (OVF) テンプレートは、ネットワーク アダプターが 1 つの構成サーバー VM を展開します。 [VM に新しいアダプターを追加する](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)ことはできますが、構成サーバーをコンテナーに登録する前に追加する必要があります。
+Open Virtualization Format (OVF) テンプレートは、ネットワーク アダプターが 1 つの構成サーバー VM を展開します。
 
-構成サーバーをコンテナーに登録した後でアダプターを追加するには、VM のプロパティでアダプターを追加します。 次に、サーバーをコンテナーに再登録します。
+- [VM にさらにアダプターを追加する](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)ことはできますが、構成サーバーをコンテナーに登録する前に追加する必要があります。
+- 構成サーバーをコンテナーに登録した後でアダプターを追加するには、VM のプロパティでアダプターを追加します。 次に、サーバーをコンテナーに再登録する必要があります。
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>同じコンテナーに構成サーバーを登録する
@@ -65,8 +72,8 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
   1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
   2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
   3. 構成サーバー マシンにサインインします。
-  4. **%ProgramData%\ASR\home\svagent\bin** で、**cspsconfigtool.exe** を開きます。
-  5. **[Vault Registration] (コンテナー登録)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
+  4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
+  5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
   6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
   7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
 
@@ -88,10 +95,22 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 次のようにサーバーをアップグレードします。
 
+1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
+2. 更新プログラムがある場合は、**[エージェントのバージョン]** 列にリンクが表示されます。
+
+    ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
+
 1. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
-2. インストーラーをダブルクリックして実行します。
-3. インストーラーがマシン上で実行中の現在のバージョンを検出します。
-4. **[OK]** を選択して確認し、アップグレードを実行します。 
+
+    ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
+
+4. インストーラーをダブルクリックして実行します。
+2. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。 
+3. アップグレードの完了時に、サーバー構成が検証されます。
+
+    ![アップデート](./media/vmware-azure-manage-configuration-server/update3.png)
+
+4. **[完了]** をクリックしてインストーラーを閉じます。
 
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーを削除または登録解除する

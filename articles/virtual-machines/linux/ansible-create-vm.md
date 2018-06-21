@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e36bdbf84b275fb8a6a4e42496b3080bebf1b193
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896165"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716637"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Ansible を使用して Azure で基本的な仮想マシンを作成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 他のリソースの場合と同じように、Ansible を使用して、Azure の仮想マシン (VM) を管理できます。 この記事では、Ansible で基本的な VM を作成する方法を説明します。 また、[Ansible を使用して完全な VM 環境を作成する](ansible-create-complete-vm.md)方法についても説明します。
@@ -34,17 +34,17 @@ Ansible で Azure リソースを管理するには、次の項目が必要で�
 - Azure の資格情報と、それを使用するように構成された Ansible。
     - [Azure 資格情報の作成と Ansible の構成](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI バージョン 2.0.4 以降。 バージョンを確認するには、`az --version` を実行します。 
-    - アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+    - アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 Web ブラウザーから [Azure Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
 
 
 ## <a name="create-supporting-azure-resources"></a>サポートする Azure リソースの作成
-この例では、既存のインフラストラクチャに VM をデプロイする Runbook を作成します。 最初に、[az group create](/cli/azure/vm#az_vm_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+この例では、既存のインフラストラクチャに VM をデプロイする Runbook を作成します。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、VM 用の仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnet* という名前のサブネットを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、VM 用の仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnet* という名前のサブネットを作成します。
 
 ```azurecli
 az network vnet create \
@@ -77,7 +77,7 @@ az network vnet create \
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 

@@ -1,11 +1,11 @@
 ---
-title: "Java での Azure Files 用の開発 | Microsoft Docs"
-description: "Azure Files を使ってファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。"
+title: Java での Azure Files 用の開発 | Microsoft Docs
+description: Azure Files を使ってファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。
 services: storage
 documentationcenter: java
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 8cd3698d4281b933881c45dfa5e7868bd7b0bdaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738202"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための Java の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、Java と Azure Files による次のような基本的な操作の実行方法を示します。
+このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための Java の基本的な使い方を示します。 このチュートリアルでは、コンソール アプリケーションを作成し、Java と Azure Files による次のような基本的な操作の実行方法を示します。
 
 * Azure ファイル共有を作成および削除する
 * ディレクトリを作成および削除する
@@ -34,10 +35,10 @@ ms.lasthandoff: 10/11/2017
 * ファイルのアップロード、ダウンロード、および削除
 
 > [!Note]  
-> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスするアプリケーションを作成できます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
-サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java][] が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
+サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java](https://github.com/Azure/azure-storage-java) が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
 Azure ストレージ API を使用するには、ストレージ サービスのアクセス元にする Java ファイルの一番上に次の文を追加します。
@@ -127,7 +128,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure Files では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure Files では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に **sampledir** という名前のサブディレクトリを作成します。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -144,7 +145,7 @@ if (sampleDir.createIfNotExists()) {
 ```
 
 ## <a name="delete-a-directory"></a>ディレクトリを削除する
-ディレクトリの削除はかなり単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
+ディレクトリの削除は単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
 
 ```java
 // Get a reference to the root directory for the share.
@@ -172,7 +173,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>ファイルをアップロードする
-Azure ファイル共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
+このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
 
 ファイルをアップロードするための最初の手順は、ファイルを置くディレクトリの参照を取得することです。 これを行うには、share オブジェクトの **getRootDirectoryReference** メソッドを呼び出します。
 
@@ -227,7 +228,7 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他の Azure ストレージ API に関する詳細については、次のリンク先をご覧ください。
 
 * [Java 開発者向けの Azure](/java/azure)/)
@@ -235,6 +236,6 @@ if ( file.deleteIfExists() ) {
 * [Azure Storage SDK for Android に関するページ に関するページ](https://github.com/azure/azure-storage-android)
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md)
 * [Azure Files に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 3492f73b4e376bfd6cc069a97e935442da99dcfb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d63cb26acdc0a8b6c8435167b1043428de9f0729
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807620"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google BigQuery からデータをコピーする
 
@@ -42,7 +43,7 @@ Google BigQuery から、サポートされている任意のシンク データ
 
 Google BigQuery のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **GoogleBigQuery** に設定する必要があります。 | [はい] |
 | project | クエリ対象の既定の BigQuery プロジェクトのプロジェクト ID。  | [はい] |
@@ -54,11 +55,11 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 
 "authenticationType" プロパティを **UserAuthentication** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | clientId | 更新トークンの生成に使用されるアプリケーションの ID。 | いいえ  |
 | clientSecret | 更新トークンの生成に使用されるアプリケーションのシークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens (OAuth 2.0 アクセス トークンの取得)](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」(OAuth 2.0 アクセス トークンの取得) および[こちらのコミュニティ ブログ](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)をご覧ください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 
 **例:**
 
@@ -90,7 +91,7 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 
 "authenticationType" プロパティを **ServiceAuthentication** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。 この認証の種類は、セルフホステッド統合ランタイムのみで使用できます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。 これはセルフホステッド統合ランタイムのみで使用できます。  | いいえ  |
 | keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。 | いいえ  |
@@ -148,7 +149,7 @@ Google BigQuery からデータをコピーするには、データセットの 
 
 Google BigQuery からデータをコピーするには、コピー アクティビティのソースの種類を **GoogleBigQuerySource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **GoogleBigQuerySource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | [はい] |

@@ -1,5 +1,5 @@
 ---
-title: イベント ドリブンのバックグラウンド処理に WebJobs SDK を使用する方法 - Azure
+title: Azure WebJobs SDK の使用方法
 description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理ジョブを作成します。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,18 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3adf725f76f744fd1d321668fe892b9703de25de
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234652"
 ---
-# <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に WebJobs SDK を使用する方法
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
-この記事は [WebJobs SDK](webjobs-sdk-get-started.md) 用のコードを書く方法のガイダンスを提供します。 このドキュメントは、特別に明記されていない限り、バージョン 2.x と 3.x に適用されます。 3.x で導入された主な変更は、.NET Framework ではなく .NET Core を使用することです。
+この記事は、[Azure WebJobs SDK](webjobs-sdk-get-started.md) のコードを記述する方法のガイダンスを提供します。 このドキュメントは、特別に明記されていない限り、バージョン 2.x と 3.x に適用されます。 3.x で導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。
 
 >[!NOTE]
-> [Azure Functions](../azure-functions/functions-overview.md) は WebJobs SDK でビルドされており、この記事は一部のトピックにおいて Azure Functions ドキュメントにリンクしています。 Functions と WebJobs SDK には以下の違いがあります。
+> [Azure Functions](../azure-functions/functions-overview.md) は WebJobs SDK でビルドされており、この記事は Azure Functions ドキュメントの一部のトピックとリンクしています。 Functions と WebJobs SDK には以下の違いがあります。
 > * Azure Functions バージョン 1.x は WebJobs SDK バージョン 2.x に対応しており、Azure Functions 2.x は WebJobs SDK 3.x に対応しています。 ソース コード リポジトリは、WebJobs SDK の番号付けに従っており、多くの場合、 v2.xブランチがあり、マスター ブランチが現在 3.x コードであります。
 > * Azure Functions C# クラス ライブラリのサンプル コードは、WebJobs SDK プロジェクトに `FunctionName` 属性が必要ないということ以外は、WebJobs SDK コードに類似しています。
 > * バインドの種類のいくつかは、HTTP、webhook、(HTTP に基づく) Event Grid のような Functions でのみサポートされます。 
@@ -155,7 +156,7 @@ public static void CreateQueueMessage(
 次のトリガーとバインドの種類は、`Microsoft.Azure.WebJobs` パッケージに含まれています。
 
 * BLOB ストレージ
-* Queue Storage
+* キュー ストレージ
 * テーブル ストレージ
 
 その他の種類のトリガーやバインドを使用するには、それらを含む NuGet パッケージをインストールして、`JobHostConfiguration` オブジェクトの `Use<binding>` メソッドを呼び出します。 たとえば、Timer トリガーを使用する場合は、次の例のように、`Microsoft.Azure.WebJobs.Extensions` をインストールして、`Main` メソッドの `UseTimers` を呼び出します。
@@ -322,7 +323,7 @@ public static void CreateQueueMessage(
 
 それぞれのバインドの種類に関する参照情報は、Azure Functions ドキュメントに記載されています。 それぞれのバインド参照資料で Storage キューを例として使用した、以下の情報を記載してあります。
 
-* [パッケージ](../azure-functions/functions-bindings-storage-queue.md#packages) - WebJobs SDK プロジェクトのバインドのサポートを含めるためにインストールするパッケージに関する情報です。
+* [パッケージ](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x) - WebJobs SDK プロジェクトのバインドのサポートを含めるためにインストールするパッケージに関する情報です。
 * [例](../azure-functions/functions-bindings-storage-queue.md#trigger---example) - C# クラス ライブラリの例は、WebJobs SDK に適用されます。`FunctionName` 属性は省きます。
 * [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes) - バインドの種類に使用する属性です。
 * [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration) - 属性のプロパティとコンストラクターのパラメーターの説明です。
@@ -391,6 +392,26 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 これらの設定を使用すると、単一のインスタンスで、関数がシングルトンとして実行されるようになります。 Web アプリが複数のインスタンスにスケール アウトする際に、関数の単一のインスタンスのみが実行されていることを確認するには、関数にリスナー レベルの Singleton ロック (`[Singleton(Mode = SingletonMode.Listener)]`) を適用します。 リスナー ロックは、JobHost の起動時に取得されます。 3 つのスケール アウト インスタンスのすべてが同時に開始すると、1 つのインスタンスのみがロックを取得して、1 つのみがリスナーを開始します。
 
+### <a name="scope-values"></a>スコープ値
+
+シングルトンに**スコープ式/値**を指定できます。これにより、そのスコープの関数のすべての実行がシリアル化されることが保証されます。 この方法で詳細なロックを実装すると、要件によって指示されたように他の呼び出しをシリアル化すると同時に、関数のある程度の並列処理が可能になります。 たとえば、次の例では、スコープ式は、受信メッセージの `Region` 値 にバインドしています。 リージョンが "東部"、"東部"、および "西部" である 3 つのメッセージがキューに含まれている場合、リージョンが "東部" であるメッセージは連続的に実行され、リージョンが "西部" であるメッセージはこれらと並行して実行されます。
+
+```csharp
+[Singleton("{Region}")]
+public static async Task ProcessWorkItem([QueueTrigger("workitems")] WorkItem workItem)
+{
+     // Process the work item
+}
+
+public class WorkItem
+{
+     public int ID { get; set; }
+     public string Region { get; set; }
+     public int Category { get; set; }
+     public string Description { get; set; }
+}
+```
+
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 
 ロックの既定スコープは `SingletonScope.Function` です。つまり、ロック スコープ (BLOB のリース パス) は、関数の完全修飾名に関連付けられています。 関数にわたってロックするには、`SingletonScope.Host` を指定して、同時に実行したくない関数すべてと同じスコープ ID 名を使用します。 次の例では、  `AddItem` または `RemoveItem`の1 つのみのインスタンス が一度に実行されます。
@@ -446,11 +467,11 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |LogLevel    |コード|
 |------------|---|
 |Trace       | 0 |
-|デバッグ       | 1 |
-|情報 | 2 |
-|警告     | 3 |
-|エラー       | 4 |
-|重大    | 5 |
+|Debug       | 1 |
+|Information | 2 |
+|Warning     | 3 |
+|Error       | 4 |
+|Critical    | 5 |
 |なし        | 6 |
 
 各カテゴリは個別に特定の [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel) でフィルターをかけることができます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。

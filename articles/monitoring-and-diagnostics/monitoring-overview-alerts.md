@@ -1,25 +1,19 @@
 ---
-title: Microsoft Azure と Azure Monitor でのクラシック アラートの概要 | Microsoft Docs
+title: Microsoft Azure と Azure Monitor でのクラシック アラートの概要
 description: アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: a6dea224-57bf-43d8-a292-06523037d70b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: robb
-ms.openlocfilehash: 039ab7226b4ea7e011e1c0cbb4cac528b5237483
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 89c3975a1212aa991e42e0cce4fe5521b53bd373
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204007"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263672"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 

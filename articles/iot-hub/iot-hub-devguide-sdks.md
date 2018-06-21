@@ -1,25 +1,19 @@
 ---
 title: Azure IoT SDK について | Microsoft Docs
 description: 開発者ガイド - デバイス アプリやバックエンド アプリを構築するために使用できる、さまざまな Azure IoT device SDK およびサービス SDK に関する情報とリンク。
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: c5c9a497-bb03-4301-be2d-00edfb7d308f
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d02e3f8bf0757d7ea0622e76b95acda1fefc95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823352"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -61,6 +55,10 @@ Python 用 Azure IoT Hub デバイス SDK:
 * [pip][lnk-pip-device] からインストールする
 * [ソース コード][lnk-python-sdk]
 
+iOS 用 Azure IoT Hub デバイス SDK: 
+* [CocoaPod][lnk-cocoa-device] からインストールする
+* [サンプル][lnk-ios-sample]
+
 > [!NOTE]
 > 言語およびプラットフォームに固有のパッケージ マネージャーを使用して、バイナリと依存関係を開発用コンピューターにインストールする方法については、GitHub リポジトリの readme ファイルを参照してください。
 > 
@@ -96,6 +94,10 @@ Python 用 Azure IoT Hub サービス SDK:
 C 用 Azure IoT Hub サービス SDK: 
 * [apt-get、MBED、Arduino IDE、または Nuget][lnk-c-package] からダウンロードする
 * [ソース コード][lnk-c-sdk]
+
+iOS 用 Azure IoT Hub サービス SDK: 
+* [CocoaPod][lnk-cocoa-service] からインストールする
+* [サンプル][lnk-ios-sample]
 
 > [!NOTE]
 > 言語およびプラットフォームに固有のパッケージ マネージャーを使用して、バイナリと依存関係を開発用コンピューターにインストールする方法については、GitHub リポジトリの readme ファイルを参照してください。
@@ -145,3 +147,6 @@ C 用 Azure IoT Hub サービス SDK:
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-benefits-blog]: https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/
+[lnk-cocoa-device]: https://cocoapods.org/pods/AzureIoTHubClient
+[lnk-ios-sample]: https://github.com/Azure-Samples/azure-iot-samples-ios
+[lnk-cocoa-service]: https://cocoapods.org/pods/AzureIoTHubServiceClient

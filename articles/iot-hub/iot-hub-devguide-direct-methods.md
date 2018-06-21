@@ -1,25 +1,19 @@
 ---
 title: Azure IoT Hub のデバイス メソッドについて | Microsoft Docs
 description: 開発者ガイド - ダイレクト メソッドを使用して、サービス アプリからデバイス上のコードを呼び出す。
-services: iot-hub
-documentationcenter: .net
 author: nberdy
-manager: timlt
-editor: ''
-ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
+manager: briz
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/29/2018
+services: iot-hub
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: nberdy
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736679"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。
@@ -85,6 +79,11 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
     ```
 
     `status` と `body` の両方ともデバイスによって提供され、デバイス自身の状態コードまたは説明とともに応答する場合に使用されます。
+
+### <a name="method-invocation-for-iot-edge-modules"></a>IoT Edge モジュールのメソッド呼び出し
+モジュール ID を使用したダイレクト メソッドの呼び出しは、プレビュー版の C# SDK ([ここ](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)で入手できます) でサポートされています。
+
+この目的で、`ServiceClient.InvokeDeviceMethodAsync()` メソッドを使用し、`deviceId` と `moduleId` をパラメーターとして渡します。
 
 ## <a name="handle-a-direct-method-on-a-device"></a>デバイスでダイレクト メソッドを処理する
 ### <a name="mqtt"></a>MQTT

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809575"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Log Analytics でのパフォーマンスの監視
 
@@ -73,19 +74,27 @@ Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノ
 
 OMS エージェントを追加したら、Log Analytics ポータルに進み、どのパフォーマンス カウンターを収集するか選択します。 
 
-1. Azure Portal で Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfOMSWorkspace\>]** を選択し、概要ページに移動します。 上部の OMS ポータルに移動するリンクをクリックします。
+1. Azure Portal で Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **ServiceFabric\<nameOfOMSWorkspace\>** を選択します。
 
-2. ポータルに移動すると、Service Fabric のものを 1 つを含む、有効なソリューションごとのグラフ形式のタイルが表示されています。 これをクリックし、Service Fabric Analytics ソリューションを継続します。 
+2. **[OMS ワークスペース]** をクリックします。
 
-3. すると、稼働チャネルと信頼性の高いサービス イベントのグラフがいくつかのタイルで表示されます。 右の歯車のアイコンをクリックして設定ページに移動します。
+3. **[詳細設定]** をクリックします。
 
-    ![OMS 設定](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. **[データ]** をクリックし、**[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
 
-4. この設定ページで、[データ] をクリックし、Windows または Linux パフォーマンス カウンターを選択します。 有効にするために選択できる既定の一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
+5. **[保存]** をクリックし、**[OK]** をクリックします。
 
-カウンターを構成し、ソリューション ページに戻ると、**[ノード メトリック]** の下のグラフに、すぐにデータが取り込まれ表示されます。 また、Kusto クエリ言語を使用して、イベントをクラスタリングし、ノード、パフォーマンス カウンター名および値をフィルタリングするために、同様にパフォーマンス カウンター データに対してクエリを実行できます。 
+6. [詳細設定] ブレードを閉じます。
 
-![OMS パフォーマンス カウンターのクエリ](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. [全般] という見出しの下の **[概要]** をクリックします。
+
+8. 有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
+
+9. 稼働チャネルと信頼性の高いサービス イベントのグラフがいくつかのタイルで表示されます。 選択したカウンターについて流れるデータのグラフィック表現が、[Node Metrics]\(ノード メトリック\) の下に表示されます。 
+
+10. [Container Metric]\(コンテナー メトリック\) グラフをクリックすると、詳細が追加表示されます。 また、Kusto クエリ言語を使用して、イベントをクラスタリングし、ノード、パフォーマンス カウンター名および値をフィルタリングするために、同様にパフォーマンス カウンター データに対してクエリを実行できます。
+
+![OMS パフォーマンス カウンターのクエリ](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>次の手順
 

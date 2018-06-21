@@ -1,24 +1,20 @@
 ---
 title: Azure IoT Hub を使用したデバイス ファームウェアの更新 (.NET/.NET) | Microsoft Docs
 description: Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ファームウェアの更新をトリガーするサービス アプリを実装します。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 10/19/2017
-ms.author: v-jamebr;dobett
-ms.openlocfilehash: 50bb2ada9cf848bdcfb4f958272ff918996bf411
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: dobett
+ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736757"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>デバイス管理を使用してデバイス ファームウェアの更新を開始する (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
@@ -345,7 +341,7 @@ ms.lasthandoff: 04/05/2018
 > [!NOTE]
 > このメソッドは、シミュレートされた更新を**タスク**として実行し、メソッド呼び出しにただちに応答して、ファームウェアの更新が開始されたことをサービスに通知します。 更新の状態と完了が、デバイス ツインの報告されたプロパティ経由で、サービスに送信されます。 次の理由で、更新の完了後ではなく、開始時に、メソッド呼び出しに応答します。
 > * 実際の更新プロセスは、メソッド呼び出しのタイムアウトより長くかかる可能性がきわめて高くなります。
-> * 実際の更新プロセスは、再起動を必要とする可能性がきわめて高く、このアプリケーションが再起動されることによって、**MetodRequest** オブジェクトを使用できなくなることがあります。 (ただし、再起動後でも、報告されたプロパティの更新は可能です。) 
+> * 実際の更新プロセスは、再起動を必要とする可能性がきわめて高く、このアプリケーションが再起動されることによって、**MethodRequest** オブジェクトを使用できなくなることがあります。 (ただし、再起動後でも、報告されたプロパティの更新は可能です。) 
 
 14. 最後に、IoT ハブへの接続を開いてメソッド リスナーを初期化する次のコードを **Main** メソッドに追加します。
    

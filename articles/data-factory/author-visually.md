@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725144"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -46,8 +47,8 @@ VSTS Git 統合を使ったビジュアルの作成では、データ ファク�
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Azure Data Factory で VSTS Git リポジトリを構成する
 データ ファクトリで VSTS Git リポジトリを構成するには 2 つの方法があります。
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>構成方法 1: [始めましょう] ページ
+#### <a name="method1"></a> 構成方法 1: [始めましょう] ページ
+
 Azure Data Factory で **[始めましょう]** ページに移動します。 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
 ![VSTS コード リポジトリの構成](media/author-visually/configure-repo.png)
@@ -58,7 +59,7 @@ Azure Data Factory で **[始めましょう]** ページに移動します。 *
 
 ウィンドウに次の VSTS コード リポジトリの設定が表示されます。
 
-| Setting | [説明] | 値 |
+| Setting | 説明 | 値 |
 |:--- |:--- |:--- |
 | **リポジトリの種類** | VSTS コード リポジトリの種類。<br/>**注**: GitHub は現在サポートされていません。 | Visual Studio Team Services Git |
 | **Azure Active Directory** | Azure AD テナントの名前。 | <your tenant name> |
@@ -75,6 +76,14 @@ Azure Data Factory UX **作成キャンバス**でデータ ファクトリを�
 構成ウィンドウが表示されます。 構成設定について詳しくは、「<a href="#method1">構成方法 1</a>」の説明をご覧ください。
 
 ![UX 作成のコード リポジトリ設定の構成](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
+
+別の Git リポジトリに切り替えるには、次のスクリーンショットに示すように、Data Factory の概要ページの右上隅にあるアイコンを探します。 アイコンが表示されていない場合は、ローカル ブラウザーのキャッシュをクリアします。 アイコンを選択して現在のリポジトリとの関連付けを削除します。
+
+現在のリポジトリとの関連付けを削除した後で、別のリポジトリを使用するように Git の設定を構成できます。 その後、既存の Data Factory リソースを新しいリポジトリにインポートできます。
+
+![現在の Git リポジトリとの関連付けを削除します。](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>バージョン コントロールの使用
 開発者は、バージョン コントロール (_ソース管理_とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。

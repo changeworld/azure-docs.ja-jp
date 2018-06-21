@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3fb3ba0757744ba9f84280778be7e274d4ac5a2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 64914a1b3efe81a152f5463f74c70c22f01ec0c1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303843"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724046"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -29,13 +29,20 @@ ms.locfileid: "34303843"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Azure Functions バージョン 1.x の場合、Event Hubs バインディングは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージで提供されます。 Functions 2.x の場合、[Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) パッケージを使用します。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/) GitHub リポジトリにあります。
+Azure Functions バージョン 1.x の場合、Event Hubs バインディングは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 2.x で提供されます。
+パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub リポジトリにあります。
+
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+
+Functions 2.x の場合、[Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) パッケージ、バージョン 3.x を使用します。
+パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>トリガー
 
@@ -125,7 +132,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、イベント ハブ トリガーのメッセージ本文を記録します。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
@@ -136,6 +143,16 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+
 C# スクリプト コードを次に示します。
 
 ```cs
@@ -189,7 +206,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数では、イベント ハブ トリガーのメッセージ本文を記録します。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
@@ -197,6 +214,15 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -212,7 +238,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、[イベント メタデータ](#trigger---event-metadata)を読み取り、メッセージをログに記録します。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
@@ -220,6 +246,15 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -237,8 +272,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-イベントをまとめて受け取るには、*function.json* ファイルで `cardinality` を `many` に設定します。
-
+イベントをまとめて受け取るには、次の例に示すように、*function.json* ファイルで `cardinality` を `many` に設定します。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
@@ -246,6 +280,16 @@ module.exports = function (context, eventHubMessage) {
   "name": "eventHubMessages",
   "direction": "in",
   "path": "MyEventHub",
+  "cardinality": "many",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "eventHubMessages",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -290,7 +334,8 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |**type** | 該当なし | `eventHubTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のイベント項目を表す変数の名前。 | 
-|**path** |**EventHubName** | イベント ハブの名前。 | 
+|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。  | 
+|**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。  |
 |**consumerGroup** |**ConsumerGroup** | ハブのイベントのサブスクライブに使用される[コンシューマー グループ](../event-hubs/event-hubs-features.md#event-consumers)を設定する、省略可能なプロパティ。 省略した場合は、`$Default` コンシューマー グループが使用されます。 | 
 |
   **cardinality** | 該当なし | Javascript 用。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。 | 
@@ -302,7 +347,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [EventData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスのプロパティです。
 
-|プロパティ|type|[説明]|
+|プロパティ|type|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` インスタンス。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
@@ -351,13 +396,22 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -392,13 +446,22 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -417,13 +480,22 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-*function.json* ファイルのバインディング データを次に示します。
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 1.x 用で、2 つ目の例は Functions 2.x 用です。 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -481,7 +553,8 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 |**type** | 該当なし | "eventHub" に設定する必要があります。 |
 |**direction** | 該当なし | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
 |**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 | 
-|**path** |**EventHubName** | イベント ハブの名前。 | 
+|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。  | 
+|**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。  |
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

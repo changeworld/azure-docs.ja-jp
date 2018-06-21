@@ -1,13 +1,13 @@
 ---
-title: "ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell | Azure"
-description: "P2S および RADIUS 認証を使って、Windows クライアントと Mac OS X クライアントを仮想ネットワークに安全に接続します。"
+title: 'ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell | Azure'
+description: P2S および RADIUS 認証を使って、Windows クライアントと Mac OS X クライアントを仮想ネットワークに安全に接続します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: anzaman
-ms.openlocfilehash: 3b7315aaa57d1387e3cea31e8b306131a59a7006
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: df7afe9324831ffb8e79d7320f2c716ed18a7b4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267351"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する: PowerShell
 
-この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、Resource Manager デプロイメント モデルについてのみ使用できます。
+この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、Resource Manager デプロイ モデルについてのみ使用できます。
 
 ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。
 

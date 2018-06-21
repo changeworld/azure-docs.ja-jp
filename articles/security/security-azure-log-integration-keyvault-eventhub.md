@@ -8,21 +8,24 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3de876a8d06a52412bbbfd3ad922c2c4c6d8ec37
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235959"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
+>[!IMPORTANT]
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+
 Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
 
->[!IMPORTANT]
->Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
 
  
 このチュートリアルを使用して、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。

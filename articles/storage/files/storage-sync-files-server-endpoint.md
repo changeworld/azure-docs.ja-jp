@@ -4,22 +4,22 @@ description: Azure Files のデプロイを計画するときの考慮事項に�
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93331dd936a6d7b30ca18743d2079900421b2620
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187744"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738481"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -44,22 +44,25 @@ Azure ファイル同期をエンドツーエンドでデプロイする方法�
 
 - **登録済みサーバー**: サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
 - **パス**: 同期グループの一部として同期する Windows Server 上のパス。
-- **クラウドの階層化**: クラウドの階層化の有効または無効を切り替えるスイッチです。頻繁に使用またはアクセスするファイルを Azure Files に階層化することができます。
+- **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 これにより、オンプレミスのファイル共有は、データセットの完全なコピーではなく、キャッシュに変換されるので、サーバーでの容量効率の管理に役立ちます。
 - **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
 
 **[作成]** を選択してサーバー エンドポイントを追加します。 これで、同期グループの名前空間内のファイルは同期状態が維持されるようになります。 
 
 ## <a name="remove-a-server-endpoint"></a>サーバー エンドポイントを削除する
-サーバー エンドポイントでクラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 その結果、オンプレミスのファイル共有は、データセットの完全なコピーでなくキャッシュとして動作するので、ファイル サーバー上の領域を効率的に使用できるようになります。 ただし、**階層化されたファイルがサーバーのローカルにまだある状態でサーバー エンドポイントを削除すると、それらのファイルにアクセスできなくなります**。 そのため、オンプレミスのファイル共有でファイルのアクセスを継続するには、Azure Files から階層化されたファイルをすべて回収してから、サーバー エンドポイントの削除を進める必要があります。 
+特定のサーバー エンドポイントで Azure File Sync の使用を中止する場合は、サーバー エンドポイントを削除できます。 
 
-この処理は、次のように PowerShell コマンドレットを使用して実行できます。
+> [!Warning]  
+> Microsoft のエンジニアによってはっきりと指示された場合を除き、サーバー エンドポイントを削除してから再作成することにより、同期、クラウドの階層化、または Azure File Sync のその他の側面に関する問題のトラブルシューティングを試みないでください。 サーバー エンドポイントの削除は破壊的な操作であり、サーバー エンドポイントが再作成された後で、サーバー エンドポイント内の階層化されたファイルは Azure ファイル共有上の場所に "再接続" されず、同期エラーが発生します。 また、サーバー エンドポイントの名前空間の外部に存在する階層化されたファイルは完全に失われる可能性があることにも注意してください。 クラウドの階層化が有効にされていなくても、階層化されたファイルがサーバー エンドポイント内に存在することがあります。
+
+サーバー エンドポイントを削除する前に、すべての階層化されたファイルを確実に呼び戻すには、サーバー エンドポイントでクラウドの階層化を無効にした後、次の PowerShell コマンドレットを実行して、サーバー エンドポイントの名前空間内にあるすべての階層化されたファイルを呼び戻します。
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 
-> [!Warning]  
+> [!Note]  
 > サーバーをホストするローカル ボリュームに、階層化されたデータをすべて回収できる空き領域がない場合、`Invoke-StorageSyncFileRecall` コマンドレットは失敗します。  
 
 サーバー エンドポイントを削除するには、次の手順に従います。

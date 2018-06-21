@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage での Azure CLI 1.0 の使用 | Microsoft Docs"
-description: "Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) 1.0 を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI はクロスプラットフォーム ツールです"
+title: Azure Storage での Azure CLI 1.0 の使用 | Microsoft Docs
+description: Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) 1.0 を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI はクロスプラットフォーム ツールです
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737471"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Azure Storage での Azure CLI 1.0 の使用
 
@@ -185,7 +186,7 @@ azure storage blob delete mycontainer myBlockBlob2
 Azure Files は、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。 ファイル共有とファイル データは、Azure CLI を使用して管理できます。 Azure Files の詳細については、[Azure Files の概要](../files/storage-files-introduction.md)に関する記事をご覧ください。
 
 ### <a name="create-a-file-share"></a>ファイル共有を作成する
-Azure File 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
+Azure ファイル共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
 
 ```azurecli
 azure storage share create myshare
@@ -233,11 +234,11 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
     --dest-path hellodir/hello2copy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ストレージ リソースを操作するための Azure CLI 1.0 コマンド リファレンスは、以下のページにあります。
 
 * [Resource Manager モードでの Azure CLI コマンド](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
 * [Azure サービス管理モードでの Azure CLI コマンド](../../cli-install-nodejs.md)
 
-必要に応じて、[Azure CLI 2.0](../storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルで使用できます。
+必要に応じて、[Azure CLI 2.0](../storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイ モデルで使用できます。

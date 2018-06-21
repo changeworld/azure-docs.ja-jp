@@ -2,23 +2,20 @@
 title: Azure Cosmos DB .NET Change Feed Processor API、SDK およびリソース | Microsoft Docs
 description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a2770b9349dac8caa8e0611d77522ab56ca1bf07
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885138"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798865"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -45,6 +42,10 @@ ms.locfileid: "33885138"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="stable-builds"></a>安定したビルド
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* ログが追加されました。
+* 保留中の作業見積もりを複数回呼び出すときの DocumentClient のリークを修正しました。
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * 保留中の作業見積もりを修正しました。
@@ -108,6 +109,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |
 | [1.3.1](#1.3.1) |2018 年 3 月 13 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 10 月 31 日 |--- |

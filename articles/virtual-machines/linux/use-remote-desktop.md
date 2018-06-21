@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: c47822bebdc8b3cc8896fe56b8f9a4ce317495c3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364303"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716620"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -37,7 +37,7 @@ Azure のほとんどの Linux VM では、デスクトップ環境は既定で�
 
 次の例では、軽量 [xfce4](https://www.xfce.org/) デスクトップ環境を Ubuntu 16.04 LTS VM にインストールします。 他のディストリビューションではコマンドが若干異なります (たとえば、Red Hat Enterprise Linux をインストールし、適切な `selinux` 規則をする場合は `yum` を使用し、SUSE にインストールするには `zypper` を使用します)。
 
-最初に、VM に SSH 接続します。 次の例では、*myvm.westus.cloudapp.azure.com* という名前の VM に *azureuser* のユーザー名を使用して接続しています。
+最初に、VM に SSH 接続します。 次の例では、*myvm.westus.cloudapp.azure.com* という名前の VM に *azureuser* のユーザー名を使用して接続しています。 独自の値を使用してください。
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -86,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>リモート デスクトップ トラフィックにネットワーク セキュリティ グループ ルールを作成する
 リモート デスクトップのトラフィックを Linux VM に接続できるようにするには、ポート 3389 で VM への TCP の接続を許可するネットワーク セキュリティ グループ ルールを作成する必要があります。 ネットワーク セキュリティ グループ ルールの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、[Azure Portal を使用してネットワーク セキュリティ グループ ルールを作成することもできます](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-次の例では、[az vm open-port](/cli/azure/vm#az_vm_open_port) で、ネットワーク セキュリティ グループの規則をポート *3389* に作成しています。
+次の例では、[az vm open-port](/cli/azure/vm#az-vm-open-port) で、ネットワーク セキュリティ グループの規則をポート *3389* に作成しています。 Azure CLI 2.0 からは、VM への SSH セッションではなく、次のネットワーク セキュリティ グループ ルールを開きます。
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

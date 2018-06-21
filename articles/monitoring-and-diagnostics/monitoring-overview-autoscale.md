@@ -1,24 +1,19 @@
 ---
-title: "Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要 | Microsoft Docs"
-description: "Microsoft Azure での自動スケールの概要。 Virtual Machines、Cloud Services、および Web Apps に適用されます。"
+title: Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
+description: Microsoft Azure での自動スケール。 Virtual Machines、Virtual Machine Scale Sets、Cloud Services、および Web Apps に適用されます。
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 74bf03be-e658-4239-a214-c12424b53e4c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.component: autoscale
+ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264672"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -101,7 +96,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 ## <a name="methods-of-access"></a>アクセスの方法
 以下を通じて、自動スケールを設定することができます。
 
-* [Azure ポータル](insights-how-to-scale.md)
+* [Azure Portal](insights-how-to-scale.md)
 * [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [クロスプラットフォーム コマンド ライン インターフェイス (CLI)](insights-cli-samples.md#autoscale)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -116,7 +111,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 | Virtual Machines: Linux スケール セット |[Linux での仮想マシン スケール セットのスケーリング](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自動スケールについてさらに学習するには、上の一覧にある自動スケールのチュートリアルを使用するか、以下のリソースを参照してください。
 
 * [Azure Monitor の自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)

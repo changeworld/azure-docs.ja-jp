@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ba4c9d9cd5f8a43be0f97053c02798e3b84a5f7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824338"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -49,7 +50,7 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |[はい] |文字列 |リソースの一意識別子です。 |
 | apiVersion |[はい] |文字列 |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
@@ -95,7 +96,7 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-[resourceId 関数](#resourceid)または `{providerNamespace}/{resourceType}/{resourceName}` の形式を使用してリソースを指定します。
+リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じテンプレートでこの関数を使うときは、リソース名を使ってください。
 
 ### <a name="example"></a>例
 
@@ -155,7 +156,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |[はい] |文字列 |プロバイダーの名前空間 |
 | resourceType |いいえ  |文字列 |指定した名前空間内にあるリソースの種類。 |
@@ -243,7 +244,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |[はい] |文字列 |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ  |文字列 |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
@@ -257,7 +258,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 reference 関数はその値をランタイム状態から取得するので、変数セクションでは使用できません。 これは、テンプレートまたは[リンク済みテンプレート](resource-group-linked-templates.md#link-or-nest-a-template)の出力セクションで使用できます。 [入れ子になったテンプレート](resource-group-linked-templates.md#link-or-nest-a-template)の出力セクションで使用することはできません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。 
 
-reference 関数を使用して、参照先のリソースが同じテンプレート内でプロビジョニングされる場合に、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
+参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
 
 ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
@@ -535,7 +536,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceGroupName |いいえ  |文字列 |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |

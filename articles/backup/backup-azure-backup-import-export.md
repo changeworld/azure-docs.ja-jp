@@ -1,25 +1,19 @@
 ---
-title: Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理 | Microsoft Docs
+title: Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理
 description: Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。 この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939714"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831459"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
@@ -57,7 +51,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 オフライン バックアップ ワークフローを開始する前に、次の前提条件を完了します。 
 * [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)を作成します。 コンテナーの作成手順については、[こちらの記事](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)をご覧ください
 * [最新バージョンの Azure Backup エージェント](https://aka.ms/azurebackup_agent)だけが Windows Server/Windows クライアントにインストールされ、Recovery Services コンテナーにコンピューターが登録されていることを確認します。
-* Azure Backup エージェントを実行しているコンピューターには Azure PowerShell 3.7.0 以降が必要です。 [最新バージョンの Azure PowerShell をインストールする](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)ことをお勧めします。
+* Azure Backup エージェントを実行しているコンピューターには Azure PowerShell 3.7.0 が必要です。 [バージョン 3.7.0 の Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017) をダウンロードしてインストールすることをお勧めします。
 * Azure Backup エージェントを実行しているコンピューターで、Microsoft Edge または Internet Explorer 11 がインストールされ、JavaScript が有効になっていることを確認します。 
 * Recovery Services コンテナーと同じサブスクリプションを使って、Azure ストレージ アカウントを作成します。 
 * Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](../azure-resource-manager/resource-group-create-service-principal-portal.md)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。 
@@ -68,7 +62,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
     4. プロバイダーの一覧で、Microsoft.ImportExport まで下にスクロールします。 状態が [NotRegistered]\(未登録\) の場合は、**[登録]** をクリックします。
     ![リソース プロバイダーの登録](./media/backup-azure-backup-import-export/registerimportexport.png)
 * ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* ディスクを Azure に送付するときは、2.5 インチの SSD、あるいは 2.5 インチまたは 3.5 インチの SATA II/III 内蔵ハード ドライブのみを使用ってください。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-service.md#hard-disk-drives)をご覧ください。
+* ディスクを Azure に送付するときは、2.5 インチの SSD、あるいは 2.5 インチまたは 3.5 インチの SATA II/III 内蔵ハード ドライブのみを使用ってください。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
 * SATA ドライブは、"*ステージング場所*" から SATA ドライブへのバックアップ データのコピーが行われるコンピューター ("*コピー用コンピューター*" と呼ばれます) に接続されている必要があります。 "*コピー用コンピューター*" で BitLocker が有効になっていることを確認します
 
 ## <a name="workflow"></a>ワークフロー
@@ -114,7 +108,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
     * コピー用コンピューターが、 **オフライン バックアップの開始** ワークフロー中に指定されたのと同じネットワーク パスを使用して、オフライン シード処理ワークフローのステージング場所にアクセスできる。
     * コピー用コンピューターで BitLocker が有効になっている。
-    * Azure PowerShell 3.7.0 以降がインストールされている。
+    * Azure PowerShell 3.7.0 がインストールされている。
     * 最新の互換性のあるブラウザー (Edge または Internet Explorer 11) がインストールされていて、JavaScript が有効になっている。 
     * コピー用コンピューターで Azure Portal にアクセスできる。 必要に応じて、コピー用コンピューターをソース コンピューターと同じにすることができます。
     
@@ -125,7 +119,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | パラメーター | [説明] |
+    | パラメーター | 説明 |
     | --- | --- |
     | s:&lt;*ステージング場所のパス*&gt; |必須。**オフライン バックアップの開始**ワークフローで入力したステージング場所へのパスを指定します。 |
     | p:&lt;*PublishSettingsFile へのパス*&gt; |オプション。**オフライン バックアップの開始**ワークフローで入力した **Azure 発行設定**ファイルへのパスを指定します。 |

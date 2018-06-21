@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
-ms.openlocfilehash: d7dea9a3d9eabdc9e4cdf21e6e584b745d22a54e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808725"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +41,7 @@ MySQL データベースのデータを、サポートされているシンク �
 この MySQL コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- 統合ランタイム コンピューターに、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) バージョン 6.6.5 以上をインストールします。 この 32 ビット ドライバーは 64 ビット IR と互換性があります。
+- 統合ランタイム コンピューターに、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) のバージョン 6.6.5 から 6.10.7 までをインストールします。 この 32 ビット ドライバーは 64 ビット IR と互換性があります。
 
 > [!TIP]
 > エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
@@ -55,7 +56,7 @@ MySQL データベースのデータを、サポートされているシンク �
 
 MySQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **MySql** に設定する必要があります。 | [はい] |
 | [サーバー] | MySQL サーバーの名前です。 | [はい] |
@@ -95,7 +96,7 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 
 MySQL からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | MySQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
@@ -125,7 +126,7 @@ MySQL からデータをコピーするには、データセットの type プ�
 
 MySQL からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |

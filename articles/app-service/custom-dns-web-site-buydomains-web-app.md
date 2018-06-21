@@ -1,11 +1,11 @@
 ---
-title: "Azure Web Apps のカスタム ドメイン名を購入する"
-description: "Azure App Service の Web アプリでカスタム ドメイン名を購入する方法について説明します。"
+title: Azure Web Apps のカスタム ドメイン名を購入する
+description: Azure App Service の Web アプリでカスタム ドメイン名を購入する方法について説明します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714886"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -57,17 +58,17 @@ App Service アプリの管理ページが表示されます。
 
 ![スケール アップ メニュー](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **Free** レベルに含まれていないことを確認します。 カスタム DNS は、**Free** レベルではサポートされていません。 
+アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。 
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-App Service プランが **Free** ではない場合は、**[価格レベルの選択]** ページを閉じて、「[ドメインの購入](#buy-the-domain)」に進んでください。
+App Service プランが **F1** レベルではない場合は、**[スケール アップ]** ページを閉じて、「[ドメインを購入する](#buy-the-domain)」に進みます。
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
-Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Premium**) を選択します。 
+非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、**[See additional options]\(その他のオプションを参照する\)** をクリックします。
 
-**[選択]**をクリックします。
+**[Apply]** をクリックします。
 
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -111,7 +112,7 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 次に、ドメインに必要なオプションを選びます。 次の表の説明をご覧ください。
 
-| Setting | 推奨値 | [説明] |
+| Setting | 推奨値 | 説明 |
 |-|-|-|
 |プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、**[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名で Web アプリにアクセスできるようになります。 Web アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |

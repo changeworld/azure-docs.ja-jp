@@ -1,24 +1,19 @@
 ---
-title: "アクション グループの SMS アラート動作 | Microsoft Docs"
-description: "SMS メッセージの形式と登録解除、再登録、ヘルプ要求の SMS メッセージに応答する方法について説明します。"
+title: アクション グループの SMS アラート動作
+description: SMS メッセージの形式と登録解除、再登録、ヘルプ要求の SMS メッセージに応答する方法について説明します。
 author: dkamstra
-manager: chrad
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.openlocfilehash: ce6908de0f6bcc30d1ee846fe92171a0cb589cbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: alerts
+ms.openlocfilehash: f2f463f6c428ce6c72e2640472376fa17a2bfe5a
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263009"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -35,7 +30,7 @@ ms.lasthandoff: 02/21/2018
 * このアラートの送信先のアクション グループの短い名前
 - アラートのタイトル
 
-| 応答 | [説明] |
+| 応答 | 説明 |
 | ----- | ----------- |
 | DISABLE <Action Group Short name> | そのアクション グループからのそれ以上の SMS を無効にします |
 | ENABLE <Action Group Short name> | そのアクション グループからの SMS を再度有効にします |

@@ -1,24 +1,19 @@
 ---
-title: "Azure Monitor の自動スケールの一般的なメトリック | Microsoft Docs"
-description: "Cloud Services、Virtual Machines、Web Apps の自動スケールに一般的に使用されるメトリックについて説明します。"
+title: 自動スケールの一般的なメトリック
+description: Cloud Services、Virtual Machines、Web Apps の自動スケールに一般的に使用されるメトリックについて説明します。
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 189b2a13-01c8-4aca-afd5-90711903ca59
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262241"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 Azure Monitor の自動スケールを使用すると、テレメトリ データ (メトリック) に基づいて、実行インスタンス数を増減してスケールすることができます。 このドキュメントでは、一般的なメトリックについて説明します。必要に応じて利用してください。 Cloud Services とサーバー ファームの Azure Portal で、スケールに使用するリソースのメトリックを選択できます。 ただし、スケールには、さまざまなリソースのメトリックを選択できます。
@@ -58,15 +53,15 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \Processor(_Total)\% Processor Time |Percent |
 | \Processor(_Total)\% Privileged Time |Percent |
 | \Processor(_Total)\% User Time |Percent |
-| \Processor Information(_Total)\Processor Frequency |カウント |
-| \System\Processes |カウント |
-| \Process(_Total)\Thread Count |カウント |
+| \Processor Information(_Total)\Processor Frequency |Count |
+| \System\Processes |Count |
+| \Process(_Total)\Thread Count |Count |
 | \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |Percent |
-| \Memory\Available Bytes |バイト |
-| \Memory\Committed Bytes |バイト |
-| \Memory\Commit Limit |バイト |
-| \Memory\Pool Paged Bytes |バイト |
+| \Memory\Available Bytes |Bytes |
+| \Memory\Committed Bytes |Bytes |
+| \Memory\Commit Limit |Bytes |
+| \Memory\Pool Paged Bytes |Bytes |
 | \Memory\Pool Nonpaged Bytes |Bytes |
 | \PhysicalDisk(_Total)\% Disk Time |Percent |
 | \PhysicalDisk(_Total)\% Disk Read Time |Percent |
@@ -77,11 +72,11 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |BytesPerSecond |
-| \PhysicalDisk(_Total)\Avg.ディスク キューの長さ |カウント |
-| \PhysicalDisk(_Total)\Avg.Disk Read Queue Length |カウント |
+| \PhysicalDisk(_Total)\Avg.ディスク キューの長さ |Count |
+| \PhysicalDisk(_Total)\Avg.Disk Read Queue Length |Count |
 | \PhysicalDisk(_Total)\Avg.Disk Write Queue Length |Count |
 | \LogicalDisk(_Total)\% Free Space |Percent |
-| \LogicalDisk(_Total)\Free Megabytes |カウント |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>ゲスト OS メトリック Linux VM
 診断拡張機能を使用して Azure で VM を作成すると、既定で診断は有効になります。

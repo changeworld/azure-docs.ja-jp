@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235942"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
 
@@ -40,12 +41,9 @@ Linux と Windows のエージェントは、TCP ポート 443 を介して Log 
 
 System Center 2016 - Operations Manager または Operations Manager 2012 R2 でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
-Linux と Windows のエージェントは、Log Analytics への接続だけではなく、Azure Automation もサポートします。これにより、Hybrid Runbook Worker ロールと、Change Tracking や Update Management などの管理ソリューションがホストされます。  Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview) に関する記事を参照してください。  
+Linux と Windows のエージェントは、Log Analytics への接続だけではなく、Azure Automation もサポートします。これにより、Hybrid Runbook Worker ロールと、Change Tracking や Update Management などの管理ソリューションがホストされます。  Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
-## <a name="prerequisites"></a>前提条件
-始める前に、次の詳細を見直して、前提条件が満たされていることを確認してください。
-
-### <a name="windows-operating-system"></a>Windows オペレーティング システム
+## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2008 Service Pack 1 (SP1) 以降
@@ -54,17 +52,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 > [!NOTE]
 > Windows 用のエージェントは、トランスポート層セキュリティ (TLS) 1.0 と 1.1 のみをサポートします。  
 
-#### <a name="network-configuration"></a>ネットワーク構成
-Windows エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。 トラフィックはネットワークから Log Analytics サービスへの送信です。 
-
-| エージェントのリソース | ポート | バイパス HTTPS 検査|
-|----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | [はい] |
-|*.oms.opinsights.azure.com | 443 | [はい] | 
-|*.blob.core.windows.net | 443 | [はい] | 
-|*.azure-automation.net | 443 | [はい] | 
-
-### <a name="linux-operating-systems"></a>Linux オペレーティング システム
+## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 次の Linux ディストリビューションは公式にサポートされています。  ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。  記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
 
 * Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
@@ -75,26 +63,29 @@ Windows エージェントが Log Analytics と通信するために必要なプ
 * Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
-#### <a name="network-configuration"></a>ネットワーク構成
-Linux エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。  
+## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
+Linux および Windows エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。  
 
-|エージェントのリソース| ポート | 方向 |  
-|------|---------|--------|  
-|*.ods.opinsights.azure.com | ポート 443 | 受信および送信|  
-|*.oms.opinsights.azure.com | ポート 443 | 受信および送信|  
-|*.blob.core.windows.net | ポート 443 | 受信および送信|  
-|*.azure-automation.net | ポート 443 | 受信および送信|  
+|エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
+|------|---------|--------|--------|   
+|*.ods.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
+|*.oms.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
+|*.blob.core.windows.net |ポート 443 |受信および送信|[はい] |  
+|*.azure-automation.net |ポート 443 |受信および送信|[はい] |  
 
-Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは OMS ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  プロキシ サーバーは、インストール中、またはインストール後に proxy.conf 構成ファイルを変更して指定することができます。  
 
-プロキシ構成の値には次の構文があります。
+Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
+
+Windows および Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは OMS ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続されている Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](log-analytics-agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
+
+Linux エージェントの場合、プロキシ サーバーは、インストール時や、[インストール後](/log-analytics-agent-manage.md#update-proxy-settings)に proxy.conf 構成ファイルを修正することによって、指定されます。  Linux エージェント プロキシ構成の値には次の構文があります。
 
 `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
 > プロキシ サーバーで認証が不要な場合でも、Linux エージェントは擬似ユーザー/パスワードの指定を必要とします。 これは、どのようなユーザー名とパスワードでもかまいません。
 
-|プロパティ| [説明] |
+|プロパティ| 説明 |
 |--------|-------------|
 |プロトコル | https |
 |user | プロキシ認証のオプションのユーザー名 |
@@ -110,7 +101,7 @@ Linux エージェントは、HTTPS プロトコルを使用したプロキシ �
 ## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する 
 オンプレミス コンピューターの Log Analytics への直接接続は、要件に応じて、さまざまな方法で実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|ソース | 方法 | [説明]|
+|ソース | 方法 | 説明|
 |-------|-------------|-------------|
 | Windows コンピューター|- [手動インストール](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 
 |Linux コンピューター| [手動インストール](log-analytics-quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 

@@ -4,20 +4,18 @@ description: Azure Cosmos DB SQL クエリ言語のリファレンス ドキュ�
 services: cosmos-db
 author: LalithaMV
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798833"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 構文リファレンス
 
@@ -246,7 +244,7 @@ AS `input_alias`
   
     `input_alias1 = A,` の {1, 2}  
   
-    `input_alias1 = B,` の {3}   
+    `input_alias1 = B,` の {3}  
   
     `input_alias1 = C,` の {4, 5}  
   
@@ -264,7 +262,7 @@ AS `input_alias`
   
     `input_alias1 = A,` の {1, 2}  
   
-    `input_alias1 = B,` の {3}   
+    `input_alias1 = B,` の {3}  
   
     `input_alias1 = C,` の {4, 5}  
   
@@ -293,7 +291,7 @@ AS `input_alias`
   
     `input_alias1 = A,` の {1, 2}  
   
-    `input_alias1 = B,` の {3}   
+    `input_alias1 = B,` の {3}  
   
     `input_alias1 = C,` の {4, 5}  
   
@@ -682,7 +680,7 @@ ORDER BY <sort_specification>
 ##  <a name="bk_built_in_functions"></a>組み込み関数  
  Azure の Cosmos DB は、多くの組み込み SQL 関数を提供します。 組み込み関数のカテゴリは次のとおりです。  
   
-|関数|[説明]|  
+|関数|説明|  
 |--------------|-----------------|  
 |[数学関数](#bk_mathematical_functions)|一般に、各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。|  
 |[型チェック関数](#bk_type_checking_functions)|型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。|  

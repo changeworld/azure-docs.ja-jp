@@ -1,25 +1,19 @@
 ---
-title: Azure Monitor でのログ アラート - Alerts | Microsoft Docs
+title: Azure Monitor でのログ アラート
 description: Azure アラートに関して指定した分析クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.component: alerts
+ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057323"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264376"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor でのログ アラート - Alerts 
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、新しい [Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラートの発信基準として使用できます。 ログを使用するメトリック アラートの詳細については、「[Near Real Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)」(ほぼリアルタイムのメトリック アラート) を参照してください。
@@ -36,7 +30,7 @@ ms.locfileid: "34057323"
 - **ログ クエリ**:  警告ルールが実行されるたびに実行されるクエリ。  このクエリから返されるレコードは、アラートを作成するかどうかの決定に使用されます。 *Azure Application Insights* のクエリには、[アプリケーション間呼び出し](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)を含めることもできます (ユーザーが外部アプリケーションへのアクセス権を持っていル場合)。 
 
     > [!IMPORTANT]
-    > [Application Insights 用のアプリケーション間クエリ](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)のサポートはプレビュー段階であり、機能とユーザー エクスペリエンスは変更されることがあります。 [ワークスペース間クエリ](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery)と [Log Analytics 用のリソース間クエリ](../log-analytics/log-analytics-cross-workspace-search.md)は、現在 Azure アラートでは**サポートされていません**。
+    > [Application Insights 用のアプリケーション間クエリ](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery)のサポートはプレビュー段階であり、2 つ以上のアプリでの使用が制限されている機能とユーザー エクスペリエンスは変更されることがあります。 [ワークスペース間クエリ](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery)と [Log Analytics 用のリソース間クエリ](../log-analytics/log-analytics-cross-workspace-search.md)は、現在 Azure アラートでは**サポートされていません**。
 
 - **期間**。  クエリの時間範囲を指定します。 クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。 期間では、ログ クエリ用にフェッチされるデータを制限して不正使用を防いだり、ログ クエリで使用されている時間コマンド (ago など) を回避することができます。 <br>*たとえば、期間が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが、ログ クエリの実行用に返されます。ログ クエリで「ago (7d)」などの時間コマンドが使用されている場合、そのログ クエリは午後 12 時 15 分から午後 1 時 15 分までの間のデータのみを対象に実行されます。つまり、過去 60 分間についてのみデータが存在し、ログ クエリで指定された 7 日間についてはデータが存在しないかのように動作します。*
 - **[頻度]**:   クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、期間の値以下にする必要があります。  この値が期間の値よりも大きい場合、レコードを見落とすおそれがあります。<br>*たとえば、期間が 30 分、頻度が 60 分であるとします。クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。*
@@ -126,7 +120,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 REST API の使用に関する詳細と例については、次の記事をご覧ください。
 - [Log Analytics アラートの REST API に関する記事](../log-analytics/log-analytics-api-alerts.md) -  Azure Log Analytics 用のログ検索アラート ルールを作成、管理する方法
-- [Azure Monitor の Scheduled Query Rules REST API に関する記事](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) - Azure Application Insights 用のログ検索アラート ルールを作成、管理する方法
+- [Azure Monitor の Scheduled Query Rules REST API に関する記事](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) - Azure Application Insights 用のログ検索アラート ルールを作成、管理する方法
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 ユーザーはまた、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の柔軟な機能を使って、リソースの作成や更新を行い、ログ アラートの作成や更新に使用することができます。

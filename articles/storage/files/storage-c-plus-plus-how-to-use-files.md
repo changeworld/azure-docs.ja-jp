@@ -1,11 +1,11 @@
 ---
-title: "C++ での Azure Files 用の開発 | Microsoft Docs"
-description: "Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。"
+title: C++ での Azure Files 用の開発 | Microsoft Docs
+description: Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。
 services: storage
 documentationcenter: .net
 author: renashahmsft
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737573"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,9 +27,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-
 このチュートリアルでは、Azure Files で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 初めて Azure Files を使用する場合は、次のセクションの概念に目を通すと、サンプルを理解するのに役立ちます。
-
 
 * Azure ファイル共有を作成および削除する
 * ディレクトリを作成および削除する
@@ -353,7 +352,7 @@ if (share.exists())
 
 }
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)

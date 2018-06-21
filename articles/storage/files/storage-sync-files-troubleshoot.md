@@ -4,22 +4,21 @@ description: Azure File Sync の一般的な問題をトラブルシューティ
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: ea05c29bb40b595ad32304df55a79a9cf82acc18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010926"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738440"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -30,6 +29,9 @@ Azure File Sync (プレビュー) を使用して、オンプレミスのファ�
 2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
+
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。 サーバー エンドポイントを削除して再作成する必要がありますか。
+[!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="storage-sync-service-object-management"></a>Storage 同期サービスオブジェクトの管理
 1 つのサブスクリプションから別のサブスクリプションにリソースを移動する場合、ファイル同期 (Storage Sync Service) リソースは移動をブロックされます。 
@@ -155,7 +157,7 @@ Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -Vo
     2. Azure File Sync サービスがサーバーで実行されていることを確認します。 これを行うには、サービスの MMC スナップインを開き、ストレージ同期エージェント サービス (FileSyncSvc) が実行されていることを確認します。
 
 <a id="replica-not-ready"></a>**同期が "0x80c8300f - レプリカでは、必要な操作を実行する準備ができていません" エラーで失敗する**  
-この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 Azure ファイル共有での変更検出ジョブの実行が終了すると (最大 24 時間がかかることがあります)、同期は正常に動作を開始します。
+この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 Azure ファイル共有の変更を確認する変更検出ジョブは、24 時間ごとに 1 回でスケジュールされます。  完了までの時間は、Azure ファイル共有の名前空間のサイズに依存します。  完了後、このエラーはなくなるはずです。
 
 
     > [!NOTE]

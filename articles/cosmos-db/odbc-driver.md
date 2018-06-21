@@ -5,20 +5,17 @@ keywords: ODBC、ODBC ドライバー
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 360161ec0485259029be0bbd5194911e484a57e5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725093"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -103,7 +100,7 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 1. 「[Azure Cosmos DB データベースに接続する](#connect)」の手順 1 ～ 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)] ウィンドウの **[スキーマ エディター]** をクリックします。
 2. **[スキーマ エディター]** ウィンドウで、**[新規作成]** をクリックします。
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコレクションが表示されます。 
-3. **[サンプル ビュー]** タブでコレクションを選択し、コレクションの**[マッピング定義]** 列で **[編集]** をクリックします。 次に **[マッピング定義]** ウィンドウで **[Table Delimiters]**(テーブル区切り記号) の方法を選択します。 次に、次を実行します。
+3. **[サンプル ビュー]** タブでコレクションを選択し、コレクションの **[マッピング定義]** 列で **[編集]** をクリックします。 次に **[マッピング定義]** ウィンドウで **[Table Delimiters]**(テーブル区切り記号) の方法を選択します。 次に、次を実行します。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性]** ボックスに、区切り記号のプロパティ名を入力します。 これは、サンプリングのスコープを設定するドキュメントのプロパティ (例：市区町村) です。次に Enter キーを押します。 
 
@@ -123,7 +120,7 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 リンク サーバーの接続を設定することによって、SQL Server Management Studio (SSMS) から Azure Cosmos DB にクエリを実行できます。
 
 1. [手順 2.](#connect) の説明に従って、たとえば `SDS Name` という名前のシステム データ ソースを作成します。
-2. [SQL Server Management Studio をインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+2. [SQL Server Management Studio をインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)し、サーバーに接続します。 
 3. SSMS クエリ エディターで、次のコマンドを使用して、データ ソースのリンク サーバー オブジェクト `DEMOCOSMOS` を作成します。 `DEMOCOSMOS` をリンク サーバーの名前に、`SDS Name` をシステム データ ソースの名前に置き換えます。
 
     ```sql

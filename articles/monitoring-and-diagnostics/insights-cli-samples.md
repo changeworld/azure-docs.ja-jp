@@ -1,32 +1,26 @@
 ---
-title: Azure Monitor の CLI 2.0 クイック スタート サンプル。 | Microsoft Docs
+title: Azure Monitor の CLI クイック スタート サンプル
 description: Azure Monitor の機能用のサンプル CLI 2.0 コマンド。 Azure Monitor は、アラート通知の送信、構成済みのテレメトリ データの値に基づく Web URL の呼び出しに加え、Cloud Services、Virtual Machines、Web Apps の自動スケールを行うことができる Microsoft Azure サービスです。
-author: kamathashwin
-manager: ''
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1653aa81-0ee6-4622-9c65-d4801ed9006f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: ashwink
-ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+author: rboucher
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: robb
+ms.component: ''
+ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34009760"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262404"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Azure Monitor の CLI 2.0 クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI をまだインストールしていない場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」の手順に従います。 [Azure Cloud Shell](/azure/cloud-shell) を使用して、ブラウザーの対話型機能として CLI を実行することもできます。 
+Azure CLI をまだインストールしていない場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」の手順に従います。 [Azure Cloud Shell](/azure/cloud-shell) を使用して、ブラウザーの対話型機能として CLI を実行することもできます。 使用可能なすべてのコマンドについては、[Azure Monitor CLI リファレンス](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest)をご覧ください。 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 まず、Azure アカウントにログインします。
@@ -91,7 +85,8 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="work-with-alerts"></a>アラートの操作 
-[!NOTE] 現時点で CLI でサポートされるのはアラート (クラシック) のみです。 
+> [!NOTE]
+> 現時点で CLI でサポートされるのはアラート (クラシック) のみです。 
 
 ### <a name="get-alert-classic-rules-in-a-resource-group"></a>リソース グループのアラート (クラシック) の取得
 

@@ -1,6 +1,6 @@
 ---
-title: "Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "この記事では、Hyper-V から Azure に移動する場合の Azure Site Recovery Deployment Planner の実行モードについて説明します。"
+title: Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
+description: この記事では、Hyper-V から Azure に移動する場合の Azure Site Recovery Deployment Planner の実行モードについて説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: ae539f136578c6461ef7f680d553fbd76b10ae98
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236231"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (Hyper-V から Azure)
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 02/22/2018
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetVMList |
 | -User | Hyper-V ホストまたは Hyper-V クラスターに接続するためのユーザー名。 ユーザーには管理アクセス権が必要です。|
@@ -84,7 +85,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | StartProfiling |
 | -User | Hyper-V ホストまたは Hyper-V クラスターに接続するためのユーザー名。 ユーザーには管理アクセス権が必要です。|
@@ -95,7 +96,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|仮想化の種類 (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング中に生成されたプロファイリング データの格納先となる UNC パスまたはローカル ディレクトリ パス。 名前を指定しなかった場合、現在のパスの下の ProfiledData という名前のディレクトリが既定のディレクトリとして使用されます。|
 |-Password|(省略可) Hyper-V ホストに接続するためのパスワード。 パラメーターとして指定しない場合は、コマンドの実行時に指定を求めるメッセージが表示されます。|
-|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、General Purpose v1 または General Purpose v2 である必要があります。|
+|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 |-StorageAccountKey|(省略可) ストレージ アカウントにアクセスするためのキー。 Azure Portal の **[ストレージ アカウント]** > [<*ストレージ アカウント名*>] > **[設定]** > **[アクセス キー]** > **[Key1]** (クラシック ストレージ アカウントの場合はプライマリ アクセス キー) の順に移動します。|
 |-Environment|(省略可) Azure ストレージ アカウントのレプリケーション先となる環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先のリージョンが Azure 米国政府機関または Azure China であるときに使用します。|
 
@@ -165,7 +166,7 @@ Deployment Planner ツールでは、マクロ有効 Microsoft Excel ファイ�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
-| パラメーター名 | [説明] |
+| パラメーター名 | 説明 |
 |---|---|
 | -Operation | GenerateReport |
 |-VMListFile | レポートを生成するプロファイリング対象 VM のリストが記述されたファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 Hyper-V の場合、このファイルが GetVMList 操作の出力ファイルとして得られます。 このファイルを手動で作成する場合は、サーバー名または IP アドレスの後に VM 名を記述する必要があります (\ で区切り、1 行に 1 つずつ)。 このファイルに指定する VM 名は、Hyper-V ホスト上の VM 名と同じであることが必要です。<br><br>**例:** VMList.txt ファイルに、次のように VM を記述します。<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -181,7 +182,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -UseManagedDisks | (省略可) UseManagedDisks: Yes/No。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されるかどうかに基づいて計算されます。 |
 |-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプション、それに関連付けられているプラン、ターゲット Azure リージョンに基づき、指定した通貨で最新の料金に関するコスト見積もりレポートを生成する場合に、このパラメーターを使用します。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なるので、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。 既定値は、WestUS2 または最近使用したターゲット リージョンです。 「[サポートされるターゲット リージョン](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
-|-OfferId|(省略可) サブスクリプションに関連付けられているプラン。 既定値は MS-AZR-0003P (従量課金) です。|
+|-OfferId|(省略可) サブスクリプションに関連付けられているプラン。 既定値は MS-AZR-0003P (従量課金制) です。|
 |-Currency|(省略可) 生成されたレポートでコストの表示に使用する通貨。 既定値は、米ドル ($) または最近使用した通貨です。 「[サポートされる通貨](hyper-v-deployment-planner-cost-estimation.md#supported-currencies)」の一覧を参照してください。|
 
 既定では、このツールは最大で 1,000 台の VM をプロファイリングしてレポートを生成するよう構成されています。 上限を変更するには、ASRDeploymentPlanner.exe.config ファイルの MaxVMsSupported キー値を変更します。
@@ -272,12 +273,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
- パラメーター名 | [説明] |
+ パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetThroughput |
 |-Virtualization|仮想化の種類 (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング データ (プロファイリング中に生成されたファイル) の格納先となる UNC パスまたはローカル ディレクトリ パス。 レポートを生成するには、このデータが必要となります。 名前を指定しなかった場合、現在のパスの下の ProfiledData という名前のディレクトリが既定のディレクトリとして使用されます。|
-| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、General Purpose v1 または General Purpose v2 である必要があります。|
+| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の **[ストレージ アカウント]** > [<*ストレージ アカウント名*>] > **[設定]** > **[アクセス キー]** > **[Key1]** の順に移動します。|
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 Hyper-V の場合、このファイルが GetVMList 操作の出力ファイルとして得られます。 このファイルを手動で作成する場合は、サーバー名または IP アドレスの後に VM 名を記述する必要があります (\ で区切り、1 行に 1 つずつ)。 このファイルに指定する VM 名は、Hyper-V ホスト上の VM 名と同じであることが必要です。<br><br>**例:** VMList.txt ファイルに、次のように VM を記述します。<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(省略可) Azure ストレージ アカウントのレプリケーション先となる環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China であるときに使用します。|

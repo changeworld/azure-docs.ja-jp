@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/13/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d20ed753c2e53d6a7c117e0c00671ab05036b03
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 24d641247ad9bb0b5e6199952cbde9cb56fcaea7
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809296"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +54,7 @@ MongoDB データベースのデータを、サポートされているシンク
 
 MongoDB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
 | [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
@@ -98,7 +99,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 MongoDB からデータをコピーするには、データセットの type プロパティを **MongoDbCollection** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
 | collectionName |MongoDB データベースのコレクション名前。 |[はい] |
@@ -129,7 +130,7 @@ MongoDB からデータをコピーするには、データセットの type プ
 
 MongoDB からデータをコピーするには、コピー アクティビティのソースの種類を **MongoDbSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム SQL-92 クエリを使用してデータを読み取ります。 例: Select * from MyTable。 |いいえ (データセットに "collectionName" が指定されている場合) |
@@ -167,7 +168,7 @@ MongoDB からデータをコピーするには、コピー アクティビテ�
 ```
 
 > [!TIP]
-> SQL クエリを指定する場合は、DateTime 形式に注意してください。 次に例を示します。`SELECT * FROM Account WHERE LastModifiedDate >= {{ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')}'}} AND LastModifiedDate < {{ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}'}}`
+> SQL クエリを指定する場合は、DateTime 形式に注意してください。 たとえば、`SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` や、次のパラメーターを使用する場合 `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
 ## <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
 

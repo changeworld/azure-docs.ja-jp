@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735166"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261561"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -161,6 +161,7 @@ SQL API は、JavaScript のストアド プロシージャとトリガーによ
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>ドキュメントを Cosmos DB に一括挿入するにはどうすればよいですか?
 Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれかの方法で実行できます。
 
+* 一括実行ツール。[一括実行 .NET ライブラリの使用](bulk-executor-dot-net.md)および[一括実行 Java ライブラリの使用](bulk-executor-java.md)に関する記事で説明されています。
 * データ移行ツール。[Azure Cosmos DB 用のデータベース移行ツール](import-data.md)に関する記事で説明されています。
 * ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](programming.md)に関する記事で説明されています。
 

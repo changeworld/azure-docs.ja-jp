@@ -1,35 +1,35 @@
 ---
 title: Azure SQL Database の機能の比較 | Microsoft Docs
-description: この記事では、Azure SQL Database およびマネージ インスタンスの機能の相互比較と、SQL Server との比較を行います。
+description: この記事では、各種 Azure SQL Database で使用できる SQL Server の機能を比較します。
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
-ms.topic: article
-ms.date: 05/15/2018
+ms.topic: conceptual
+ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 8144f70737e5f78f568a8a6dd35ddc7d43ced0fd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210057"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248811"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
-Azure SQL Database は、SQL Server と共通のコード ベースを共有します。 Azure SQL Database でサポートされる SQL Server の機能は、作成する Azure SQL データベースの種類に応じて変わります。 Azure SQL Database を利用すると、[マネージ インスタンス](sql-database-managed-instance.md)の一部としてデータベースを作成するか (現在はパブリック プレビューにあります)、単一のデータベースまたはエラスティック プールに属するデータベースのどちらかのデータベースを作成できます。 
+Azure SQL Database は、SQL Server と共通のコード ベースを共有します。 Azure SQL Database でサポートされる SQL Server の機能は、作成する Azure SQL データベースの種類に応じて変わります。 Azure SQL Database を利用すると、[マネージド インスタンス](sql-database-managed-instance.md)の一部としてデータベースを作成するか (現在はパブリック プレビューにあります)、論理サーバーの一部でかつオプションでエラスティック プールに配置されるデータベースを作成できます。 
 
 マイクロソフトは、Azure SQL Database に継続的に機能を追加します。 最新の更新プログラムについては、以下のフィルターを使用して、Azure のサービスの更新情報 Web ページを参照してください。
 
 * サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database)でフィルター処理します。
 * SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
 
-## <a name="sql-server-and-sql-database-feature-support"></a>SQL Server と SQL Database 機能のサポート
+## <a name="sql-server-feature-support-in-azure-sql-database"></a>Azure SQL Database における SQL Server の機能のサポート
 
 次の表は、SQL Server の主要な機能を一覧にして、その機能が一部または完全にサポートされるかに関する情報と、機能に関する詳細情報へのリンクを示します。 
 
-| **SQL の機能** | **Azure SQL Database でのサポート** | **マネージ インスタンス (プレビュー)** |
+| **SQL の機能** | **Azure SQL Database/論理サーバーでサポートされる** | **Azure SQL Database/Managed Instance (プレビュー) でサポートされる** |
 | --- | --- | --- |
 | [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください |
 | [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
@@ -40,7 +40,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [自動チューニング (プランの強制)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| [はい](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [自動チューニング (インデックス)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| いいえ  |
 | [BACPAC ファイル (エクスポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | ○ - [SQL Database のエクスポート](sql-database-export.md)に関する記事を参照してください | [はい] |
-| [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | ○ - [SQL Database のインポート](sql-database-import.md)に関する記事を参照してください | [はい] |
+| [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | ○ - [SQL Database のインポート](sql-database-import.md)に関する記事を参照してください | いいえ  |
 | [BACKUP コマンド](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | いいえ、システムによって開始された自動バックアップのみ - [自動バックアップ](sql-database-automated-backups.md)に関するページを参照してください | システムによって開始された自動バックアップと、ユーザーによって開始されたコピー専用バックアップ - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)に関するページを参照してください |
 | [組み込み関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
 | [変更データのキャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ  | [はい] |
@@ -122,7 +122,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | いいえ - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください | × - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください |
 | [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | × - [SQL Database の監査](sql-database-auditing.md)に関する記事を参照してください | はい - [監査の相違点](sql-database-managed-instance-transact-sql-information.md#auditing)に関するページを参照してください |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | [はい] | [はい] |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、Azure SQL Database でホストされている SSISDB に格納され、[Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) で実行されます。 | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、マネージ インスタンスでホストされている SSISDB に格納され、[Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) で実行されます。 |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、Azure SQL Database でホストされている SSISDB に格納され、[Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) で実行されます。 | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、Managed Instance でホストされている SSISDB に格納され、[Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) で実行されます。 |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | [はい] | [はい] |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | [はい] | [はい] |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください | [はい] |
@@ -138,7 +138,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 |脅威の検出|  [はい](sql-database-threat-detection.md)|[はい](sql-database-managed-instance-threat-detection.md)|
 | [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | いいえ  | いいえ  |
 | [変数](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | [はい] | [はい] |
-| [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [はい] | いいえ、パブリック プレビューにはありません |
+| [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [はい] | 一部、サービスによって管理された暗号化のみ |
 [VNet](../virtual-network/virtual-networks-overview.md) | 一部 - [VNET エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事を参照してください | はい (Resource Manager モデルのみ) |
 | [Windows Server フェールオーバー クラスタリング](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
 | [XML インデックス](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | [はい] | [はい] |

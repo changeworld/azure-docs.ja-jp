@@ -1,24 +1,19 @@
 ---
-title: "自動スケール操作を使用して電子メールと webhook アラート通知を送信する | Microsoft Docs"
-description: "Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。 "
+title: 自動スケールを使用して電子メールと webhook アラート通知を送信する
+description: 'Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。 '
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: eb9a4c98-0894-488c-8ee8-5df0065d094f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.openlocfilehash: 16caf14028494800e9259f0296c292b606d0210a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 65405a6d7f1d49911da1e2a5d26b02098a261c01
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262224"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
@@ -64,15 +59,15 @@ REST API または Resource Manager テンプレートを使用している場�
       }
     ]
 ```
-| フィールド | 必須 | Description |
+| フィールド | 必須 | 説明 |
 | --- | --- | --- |
-| operation |○ |値は "Scale" にする必要があります。 |
-| sendToSubscriptionAdministrator |○ |値は "true" または "false" にする必要があります。 |
-| sendToSubscriptionCoAdministrators |○ |値は "true" または "false" にする必要があります。 |
-| customEmails |○ |値として null [] または電子メールの文字列配列を指定できます。 |
-| Webhook |○ |値として null または有効な URI を指定できます。 |
-| serviceUri |○ |有効な https URI を指定します。 |
-| プロパティ |○ |値は空 {} にするか、キーと値のペアを指定できます。 |
+| operation |はい |値は "Scale" にする必要があります。 |
+| sendToSubscriptionAdministrator |はい |値は "true" または "false" にする必要があります。 |
+| sendToSubscriptionCoAdministrators |はい |値は "true" または "false" にする必要があります。 |
+| customEmails |はい |値として null [] または電子メールの文字列配列を指定できます。 |
+| Webhook |はい |値として null または有効な URI を指定できます。 |
+| serviceUri |はい |有効な https URI を指定します。 |
+| プロパティ |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
 ## <a name="authentication-in-webhooks"></a>Webhook での認証
 webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 たとえば、https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
@@ -107,21 +102,21 @@ webhook はトークンベースの認証を利用して認証できます。ク
 ```
 
 
-| フィールド | 必須 | Description |
+| フィールド | 必須 | 説明 |
 | --- | --- | --- |
-| status |○ |自動スケール操作が生成されたことを示す状態。 |
-| operation |○ |インスタンスの増加の場合は "Scale Out"、インスタンスの減少の場合は "Scale In" になります。 |
-| context |○ |自動スケール操作のコンテキスト。 |
-| timestamp |○ |自動スケール操作がトリガーされたときのタイム スタンプ。 |
-| id |○ |自動スケール設定の Resource Manager ID |
-| name |○ |自動スケール設定の名前。 |
-| 詳細 |○ |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
-| subscriptionId |○ |スケールされるターゲット リソースのサブスクリプション ID。 |
-| resourceGroupName |○ |スケールされるターゲット リソースのリソース グループ名。 |
-| resourceName |○ |スケールされるターゲット リソースの名前。 |
-| resourceType |はい |"microsoft.classiccompute/domainnames/slots/roles" (クラウド サービス ロール)、"microsoft.compute/virtualmachinescalesets" (仮想マシン スケール セット)、"Microsoft.Web/serverfarms" (Web アプリ) の 3 つの値がサポートされています。 |
-| resourceId |○ |スケールされるターゲット リソースの Resource Manager ID。 |
-| portalLink |○ |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
-| oldCapacity |○ |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
-| newCapacity |○ |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
-| プロパティ |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
+| status |はい |自動スケール操作が生成されたことを示す状態。 |
+| operation |はい |インスタンスの増加の場合は "Scale Out"、インスタンスの減少の場合は "Scale In" になります。 |
+| context |はい |自動スケール操作のコンテキスト。 |
+| timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
+| id |[はい] |自動スケール設定の Resource Manager ID |
+| name |[はい] |自動スケール設定の名前。 |
+| 詳細 |[はい] |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| subscriptionId |[はい] |スケールされるターゲット リソースのサブスクリプション ID。 |
+| resourceGroupName |[はい] |スケールされるターゲット リソースのリソース グループ名。 |
+| resourceName |[はい] |スケールされるターゲット リソースの名前。 |
+| resourceType |[はい] |"microsoft.classiccompute/domainnames/slots/roles" (クラウド サービス ロール)、"microsoft.compute/virtualmachinescalesets" (仮想マシン スケール セット)、"Microsoft.Web/serverfarms" (Web アプリ) の 3 つの値がサポートされています。 |
+| ResourceId |[はい] |スケールされるターゲット リソースの Resource Manager ID。 |
+| portalLink |[はい] |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
+| oldCapacity |[はい] |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
+| newCapacity |[はい] |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
+| Properties |いいえ  |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |

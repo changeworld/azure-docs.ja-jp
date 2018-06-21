@@ -1,22 +1,19 @@
 ---
-title: アクティビティ ログ アラートで使用される webhook スキーマの理解 | Microsoft Docs
+title: アクティビティ ログ アラートで使用される webhook スキーマについて理解する
 description: アクティビティ ログ アラートがアクティブになったときに webhook URL に投稿される JSON のスキーマについて説明します。
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 3935da72cb747a642ee1f360dc5318fc2d34e763
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263241"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -131,7 +128,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 
 その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](monitoring-overview-activity-logs.md)に関するページをご覧ください。
 
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "activated" に設定されます。 |
 | context |イベントのコンテキスト。 |
@@ -139,7 +136,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | conditionType |常に "Event" です。 |
 | name |アラート ルールの名前。 |
 | id |アラートのリソース ID。 |
-| 説明 |アラートの作成時に設定したアラートの説明。 |
+| description  |アラートの作成時に設定したアラートの説明。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | timestamp |要求を処理した Azure サービスによってイベントが生成された時刻。 |
 | ResourceId |影響を受けるリソースのリソース ID。 |

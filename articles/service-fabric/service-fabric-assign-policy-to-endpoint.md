@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: f9de8d213d11a8ccb3ffff484a67560d9e2abe77
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 33d6d83d4dcd0ec9bebf8d4197684e0e52c48ac5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701320"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる
 実行ポリシーを適用する場合、サービス マニフェストによって HTTP エンドポイント リソースを宣言するときは、**SecurityAccessPolicy** を指定する必要があります。  **SecurityAccessPolicy** により、これらのエンドポイントに割り当てられたポートは、サービスが実行されるユーザー アカウントでのみ正しく使用できるようになります。 それ以外の場合は、 **http.sys** はサービスにアクセスできず、クライアントからの呼び出しで失敗します。 次の例では、Customer1 アカウントを **EndpointName** エンドポイントに適用し、フル アクセス権限を付与しています。
@@ -42,6 +43,10 @@ HTTPS エンドポイントの場合は、クライアントに返す証明書�
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+
+> [!WARNING] 
+> HTTPS を使用する場合は、同じノードにデプロイされる (アプリケーションから独立した) 異なるサービス インスタンスに同じポートと証明書を使用しないでください。 異なるアプリケーション インスタンスで同じポートを使用して 2 つの異なるサービスをアップグレードすると、アップグレード エラーが発生します。 詳細については、「[HTTPS エンドポイントを持つ複数のアプリケーションのアップグレード](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)」を参照してください。
+> 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 次の手順については、次の記事を参照してください。

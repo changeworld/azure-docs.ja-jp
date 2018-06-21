@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236122"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
 > [!div class="op_single_selector"]
@@ -117,13 +118,13 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 
 最初の手順は、バックアップ スケジュール、バックアップ データのターゲット ストレージ、ポリシー名、および完全バックアップをトリガーする前に許可される増分バックアップの最大数を記述するバックアップ ポリシーの作成です。 
 
-バックアップ ストレージには、先ほど作成した Azure ストレージ アカウントを使用します。 この例では、Azure ストレージ アカウントの名前は `sfbackupstore` と想定しています。 コンテナー `backup-container` がバックアップを保存するように構成されます。この名前のコンテナーが既に存在していなければ、バックアップのアップロード時に作成されます。 `ConnectionString` には、Azure ストレージ アカウントの有効な接続文字列を指定します。
+バックアップ ストレージには、先ほど作成した Azure ストレージ アカウントを使用します。 コンテナー `backup-container` は、バックアップを格納するために構成されます。 まだ存在しない場合は、バックアップのアップロード中に、この名前のコンテナーが作成されます。 Azure Storage アカウントの有効な接続文字列を `ConnectionString`に指定して、`account-name` を実際のストレージ アカウント名に、`account-key` を実際のストレージ アカウント キーにそれぞれ置き換えます。
 
-必要な REST API を呼び出す次の PowerShell スクリプトを実行して、新しいポリシーを作成します。
+必要な REST API を呼び出す次の PowerShell スクリプトを実行して、新しいポリシーを作成します。 `account-name` を実際のストレージ アカウント名に置き換え、`account-key` を実際のストレージ アカウント キーに置き換えます。
 
 ```powershell
 $StorageInfo = @{
-    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=sfbackupstore;AccountKey=64S+3ykBgOuKhd2DK1qHJJtDml3NtRzgaZUa+8iwwBAH4EzuGt95JmOm7mp/HOe8V3l645iv5l8oBfnhhc7dJA==;EndpointSuffix=core.windows.net'
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
     ContainerName = 'backup-container'
     StorageKind = 'AzureBlobStore'
 }

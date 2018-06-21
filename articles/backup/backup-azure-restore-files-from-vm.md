@@ -1,28 +1,24 @@
 ---
-title: 'Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する | Microsoft Docs'
+title: 'Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する'
 description: Azure 仮想マシンの回復ポイントからファイルを回復します
 services: backup
-documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
 keywords: アイテム レベルの回復; Azure VM のバックアップからのファイルの回復; Azure VM からのファイルの復元
-ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: pullabhk;markgal
-ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: pullabhk
+ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737020"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
-Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-arm-restore-vms.md)を Azure VM のバックアップ (復元ポイントとも呼ばれる) から復元する機能を提供します。 この記事では、Azure VM のバックアップからファイルやフォルダーを回復する方法について説明します。 ファイルやフォルダーを回復する機能は、Resource Manager モデルを使用してデプロイされ、Recovery Services コンテナーに保護されている Azure VM に対してのみ使用できます。
+Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-arm-restore-vms.md)を Azure VM のバックアップ (復旧ポイントとも呼ばれる) から復元する機能を提供します。 この記事では、Azure VM のバックアップからファイルやフォルダーを回復する方法について説明します。 ファイルやフォルダーを回復する機能は、Resource Manager モデルを使用してデプロイされ、Recovery Services コンテナーに保護されている Azure VM に対してのみ使用できます。
 
 > [!Note]
 > この機能は、Resource Manager モデルを使用してデプロイされ、Recovery Services コンテナーに保護されている Azure VM に対して使用できます。
@@ -31,9 +27,9 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 ## <a name="mount-the-volume-and-copy-files"></a>ボリュームをマウントしてファイルをコピーする
 
-復元ポイントからファイルまたはフォルダーを復元するには、仮想マシンに移動し、復元ポイントを選択します。 
+復旧ポイントからファイルまたはフォルダーを復元するには、仮想マシンに移動し、目的の復旧ポイントを選択します。 
 
-1. [Azure Portal](http://portal.Azure.com) にサインインし、左側のメニューで**[仮想マシン]** をクリックします。 仮想マシンの一覧から、仮想マシンを選択して、その仮想マシンのダッシュボードを開きます。 
+1. [Azure Portal](http://portal.Azure.com) にサインインし、左側のメニューで **[仮想マシン]** をクリックします。 仮想マシンの一覧から、仮想マシンを選択して、その仮想マシンのダッシュボードを開きます。 
 
 2. 仮想マシンのメニューで、**[バックアップ]** をクリックし、[バックアップ] ダッシュボードを開きます。
 
@@ -43,7 +39,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
     ![[ファイルの回復] メニュー](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. **[回復ポイントの選択]**ドロップ ダウン メニューから、目的のファイルを含む回復ポイントを選択します。 既定では、最新の回復ポイントが既に選択されています。
+4. **[回復ポイントの選択]** ドロップ ダウン メニューから、目的のファイルを含む回復ポイントを選択します。 既定では、最新の回復ポイントが既に選択されています。
 
 5. 回復ポイントからファイルをコピーするために使用するソフトウェアをダウンロードするには、**[実行可能ファイルのダウンロード]** (Windows Azure VM の場合) または **[スクリプトのダウンロード]** (Linux Azure VM の場合) をクリックします。 
 

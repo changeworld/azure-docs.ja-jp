@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: f4fe93078246bc25eb41a7f8e685d75f8dcb6b7c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012626"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726222"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
 
@@ -90,7 +90,7 @@ ms.locfileid: "34012626"
     azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 
-5. リソース グループと仮想ネットワーク (Resource Manager) を作成します。 CLI 1.0 または 2.0 のどちらかを使用できます ([インストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json))。 このチュートリアルでは、ピアリングの作成に 2.0 を使用する必要があるため、仮想ネットワーク (Resource Manager) の作成に CLI 2.0 が使用されています。 CLI 2.0.4 以降がインストールされたローカル コンピューターから、次のBash CLI スクリプトを実行します。 Bash CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Azure Cloud Shell を使用して、スクリプトを実行することもできます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** をクリックすると Cloud Shell が開き、Azure アカウントでログインできます。 スクリプトを実行するには、**[コピー]** ボタンをクリックし、Cloud Shell に内容を貼り付けて、`Enter` を押します。
+5. リソース グループと仮想ネットワーク (Resource Manager) を作成します。 CLI 1.0 または 2.0 のどちらかを使用できます ([インストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json))。 このチュートリアルでは、ピアリングの作成に 2.0 を使用する必要があるため、仮想ネットワーク (Resource Manager) の作成に CLI 2.0 が使用されています。 CLI 2.0.4 以降がインストールされたローカル コンピューターから、次のBash CLI スクリプトを実行します。 bash CLI スクリプトを Windows クライアントで実行する方法については、「[Windows での Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli-windows)」をご覧ください。 Azure Cloud Shell を使用して、スクリプトを実行することもできます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** をクリックすると Cloud Shell が開き、Azure アカウントでログインできます。 スクリプトを実行するには、**[コピー]** ボタンをクリックし、Cloud Shell に内容を貼り付けて、`Enter` を押します。
 
     ```azurecli-interactive
     #!/bin/bash

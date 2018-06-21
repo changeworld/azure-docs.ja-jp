@@ -1,35 +1,39 @@
 ---
-title: "Azure Active Directory 監査ログとの Azure ログ統合 | Microsoft Docs"
-description: "Azure ログ統合サービスをインストールし、Azure 監査ログを統合する方法について説明します"
+title: Azure Active Directory 監査ログとの Azure ログ統合 | Microsoft Docs
+description: Azure ログ統合サービスをインストールし、Azure 監査ログを統合する方法について説明します
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/16/2018
+ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235993"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 
 Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure Active Directory で発生した特権アクションを識別できます。 [Azure Active Directory 監査レポートのイベント](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)に関する記事を確認することで、追跡できるイベントのタイプを確認できます。
 
 
-> [!NOTE]
-> [作業の開始](security-azure-log-integration-get-started.md)に関する記事を読み、手順を完了してから、この記事の手順を試してください。
+>[!IMPORTANT]
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログを統合する手順
+
+> [!NOTE]
+> [作業の開始](security-azure-log-integration-get-started.md)に関する記事を読んで該当する手順を完了してから、この記事の手順を試してください。
 
 1. コマンド プロンプトを開き、このコマンドを実行します。
 

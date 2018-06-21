@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: c1b04968f83271006240fc0e099175e9017574ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e521ef29a338d0c7d80493f92acff4758a091359
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261289"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -61,7 +62,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前は、プロジェクト内で一意にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
+`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前はプロジェクト内で一意であり、文字で始まり、英数字、`_`、および `-` のみが含まれ、127 文字以下にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
 
 トリガー属性は、トリガーの種類を指定し、メソッド パラメーターに入力データをバインドします。 例の関数は 1 つのクエリ メッセージによってトリガーされ、そのクエリ メッセージは `myQueueItem` パラメーターでメソッドに渡されます。
 
@@ -311,6 +312,10 @@ public static class EnvironmentVariablesExample
 }
 ```
 
+アプリ設定は、ローカルでの開発中と Azure での実行中の両方で、環境変数から読み取ることができます。 ローカルでの開発時、アプリ設定は *local.settings.json* ファイルの `Values` コレクションから取得します。 ローカルと Azure の両方の環境において、`GetEnvironmentVariable("<app setting name>")` は名前付きアプリ設定の値を取得します。 たとえば、ローカルでの実行中、*local.settings.json* ファイルに `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` が含まれている場合は、"My Site Name" が返されます。
+
+[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
+
 ## <a name="binding-at-runtime"></a>実行時のバインド
 
 C# および他の .NET 言語では、属性の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
@@ -384,23 +389,7 @@ public static class IBinderExampleMultipleAttributes
 
 ## <a name="triggers-and-bindings"></a>トリガーとバインド 
 
-次の表は、Azure Functions クラス ライブラリ プロジェクトで使用できるトリガーとバインド属性の一覧を示しています。 すべての属性は、名前空間 `Microsoft.Azure.WebJobs` に含まれています。
-
-| トリガー | 入力 | 出力|
-|------   | ------    | ------  |
-| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [BLOB](functions-bindings-storage-blob.md#input---attributes)| [BLOB](functions-bindings-storage-blob.md#output---attributes)|
-| [CosmosDBTrigger](functions-bindings-cosmosdb.md#trigger---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#input---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#output---attributes) |
-| [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [EventHub](functions-bindings-event-hubs.md#output---attributes) |
-| [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||
-| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [キュー](functions-bindings-storage-queue.md#output---attributes) |
-| [ServiceBusTrigger](functions-bindings-service-bus.md#trigger---attributes)|| [ServiceBus](functions-bindings-service-bus.md#output---attributes) |
-| [TimerTrigger](functions-bindings-timer.md#attributes) | ||
-| |[ApiHubFile](functions-bindings-external-file.md)| [ApiHubFile](functions-bindings-external-file.md)|
-| |[MobileTable](functions-bindings-mobile-apps.md#input---attributes)| [MobileTable](functions-bindings-mobile-apps.md#output---attributes) | 
-| |[テーブル](functions-bindings-storage-table.md#input---attributes)| [テーブル](functions-bindings-storage-table.md#output---attributes)  | 
-| ||[NotificationHub](functions-bindings-notification-hubs.md#attributes) |
-| ||[SendGrid](functions-bindings-sendgrid.md#attributes) |
-| ||[Twilio](functions-bindings-twilio.md#attributes)| 
+[!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 ## <a name="next-steps"></a>次の手順
 

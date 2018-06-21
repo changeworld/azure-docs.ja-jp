@@ -1,8 +1,8 @@
 ---
-title: "Azure でのアプリのスケールアップ | Microsoft Docs"
-description: "Azure App Service のアプリをスケールアップして容量と機能を追加する方法について説明します。"
+title: Azure でのアプリのスケールアップ | Microsoft Docs
+description: Azure App Service のアプリをスケールアップして容量と機能を追加する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c07105a34f6778fcd62f6f1bc1d3930f6a8bf173
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714937"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Azure でのアプリのスケールアップ
 
@@ -50,7 +51,7 @@ App Service の個々のプランの価格と機能の詳細については、 [
 2. App Service のアプリ ページで、**[すべての設定]**、**[スケールアップ]** の順にクリックします。
    
     ![Navigate to scale up your Azure app.][ChooseWHP]
-3. レベルを選び、 **[選択]**をクリックします。
+3. レベルを選び、**[適用]** をクリックします。
    
     操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
 

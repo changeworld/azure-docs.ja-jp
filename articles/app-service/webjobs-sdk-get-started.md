@@ -1,5 +1,5 @@
 ---
-title: WebJobs SDK の概要 - Azure
+title: Azure WebJobs SDK の概要
 description: イベント ドリブンのバックグラウンド処理のための WebJobs SDK の概要。 Azure サービスとサード パーティのサービス内のデータにアクセスする方法を説明します。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234522"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>WebJobs SDK の概要
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
-この記事では、WebJobs SDK プロジェクトを作成し、ローカルで実行し、Azure にデプロイする方法を示します。
+この記事では、Azure WebJobs SDK プロジェクトを作成し、ローカルで実行し、Azure App Service にデプロイする方法を示します。
 
 手順は [Visual Studio 2017](https://www.visualstudio.com/vs/) に関するものですが、[Visual Studio Code](https://code.visualstudio.com/) などの他のツールでも同じタスクを実行できます。
 
-## <a name="what-is-the-webjobs-sdk"></a>WebJobs SDK とは
+## <a name="what-is-the-azure-webjobs-sdk"></a>Azure Web ジョブ SDK とは
 
 Azure WebJobs SDK は、Azure サービス内のデータにアクセスするバックグラウンド処理コードを記述するタスクを簡素化するフレームワークです。 この SDK は、キューに追加された新しいメッセージなど、機能をトリガーする必要のあるイベントを指定するための宣言構文を備えています。 同様の宣言構文で、関数がトリガーされた後にデータの読み取りと書き込みを制御します。 Azure およびサードパーティのサービスへのアクセスに関連付けられている低レベルのコーディング作業のほとんどが、このトリガーとバインドのシステムによって行われます。
 
@@ -45,7 +46,7 @@ public static void Run(
 
 ### <a name="versions-2x-and-3x"></a>バージョン 2.x および 3.x
 
-手順では、WebJobs SDK バージョン 2.x プロジェクトを作成する方法を示し、3.x (プレビュー版) との相違点を示します。 3.x で導入された主な変更は、.NET Framework ではなく .NET Core を使用することです。
+手順では、WebJobs SDK バージョン 2.x プロジェクトを作成する方法を示し、3.x (プレビュー版) との相違点を示します。 3.x で導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。
 
 ### <a name="azure-functions"></a>Azure Functions
 
@@ -486,13 +487,13 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 3. ストレージ アカウントで BLOB コンテナーを作成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
+   a. **サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、**[OK]** をクリックします。
 
 4. BLOB コンテナーに *Program.cs* ファイルをアップロードします  (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
+   a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
 
    b. **[コンテナー]** ウィンドウで **アップロード** ボタンをクリックします。
 

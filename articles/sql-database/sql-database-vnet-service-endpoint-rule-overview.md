@@ -3,19 +3,19 @@ title: Azure SQL Database の Virtual Network サービス エンドポイント
 description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778174"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802597"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -208,7 +208,7 @@ PowerShell を使用することで、**IgnoreMissingServiceEndpoint** フラグ
 
 #### <a name="error-40615"></a>エラー 40615
 
-*メッセージ テキスト:* ログインで要求されたサーバー '{0}' を開くことができません。 IP アドレス ’{1}' のクライアントはこのサーバーへのアクセスが許可されていません。
+*メッセージ テキスト:* ログインで要求されたサーバー '{0}' を開くことができません。 IP アドレス '{1}' のクライアントはこのサーバーへのアクセスが許可されていません。
 
 *エラーの説明:* クライアントは、Azure SQL Database サーバーへの接続を許可されていない IP アドレスから接続しようとしています。 サーバーのファイアウォールには、指定された IP アドレスから SQL Database への通信をクライアントに許可する IP アドレス規則がありません。
 
@@ -319,7 +319,7 @@ Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 �
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
-[expressroute-indexmd-744v]: ../expressroute/index.md
+[expressroute-indexmd-744v]: ../expressroute/index.yml
 
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 

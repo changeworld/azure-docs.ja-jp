@@ -1,11 +1,11 @@
 ---
-title: "STONITH を使用した SAP HANA on Azure (L インスタンス) の高可用性のセットアップ | Microsoft Docs"
-description: "STONITH を使って SUSE の SAP HANA on Azure (L インスタンス) の高可用性を確立します"
+title: STONITH を使用した SAP HANA on Azure (L インスタンス) の高可用性のセットアップ | Microsoft Docs
+description: STONITH を使って SUSE の SAP HANA on Azure (L インスタンス) の高可用性を確立します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 344a48ff82bd93bf8dc9924e09399e72b9f88e2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656365"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
@@ -34,8 +35,8 @@ SUSE のクラスタリングを使って高可用性をセットアップする
 - NTP (タイム サーバー) がセットアップされている
 - 最新バージョンの SUSE のドキュメントで HA のセットアップに関する情報を読み、理解している
 
-### <a name="set-up-details"></a>セットアップの詳細
-- このガイドでは、次のセットアップを使いました。
+### <a name="setup-details"></a>セットアップの詳細
+このガイドでは、次のセットアップを使用します。
 - オペレーティング システム: SLES 12 SP1 for SAP
 - HANA L インスタンス: 2xS192 (4 ソケット、2 TB)
 - HANA のバージョン: HANA 2.0 SP1
@@ -107,7 +108,7 @@ rescan-scsi-bus.sh
 
 ![fdisk-l.png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-## <a name="2---initialize-the-sbd-device"></a>手順 2. SBD デバイスを初期化する
+## <a name="2---initialize-the-sbd-device"></a>2. SBD デバイスを初期化する
 
 2.1 **両方**のノードで SBD デバイスを初期化します
 
@@ -122,7 +123,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
+## <a name="3---configuring-the-cluster"></a>手順 3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
 3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方**のノードにインストールしてください。
@@ -134,7 +135,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 クラスターのセットアップ
-3.2.1   *ha-cluster-init* コマンドまたは yast2 ウィザードを使って、クラスターをセットアップできます。 この例では、yast2 ウィザードを使いました。 このステップは、**プライマリ ノードのみ**で実行します。
+3.2.1   *ha-cluster-init* コマンドまたは yast2 ウィザードを使って、クラスターをセットアップできます。 この例では、yast2 ウィザードを使用します。 このステップは、**プライマリ ノードのみ**で実行します。
 
 [yast2] > [High Availability]\(高可用性) > [Cluster]\(クラスター\) の順に選びます ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
@@ -163,7 +164,7 @@ Csync2 で IP アドレスと事前共有キーを使って認証が実行され
 **[Next]\(次へ\)** をクリックします
 ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選択することができます。
+既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選ぶことができます。
 **[Next]\(次へ\)** をクリックしてクラスターの構成を完了します。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softdog ウォッチドッグを設定する
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
-この例では、次のリソースをセットアップしました。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード**だけで実行します。 プライマリ ノードで行います。
+この例では、次のリソースをセットアップします。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード**だけで実行します。 プライマリ ノードで行います。
 
 - クラスターのブートストラップ
 - STONITH デバイス
@@ -342,7 +343,7 @@ Service pacemaker stop
 
 
 ## <a name="9-troubleshooting"></a>9.トラブルシューティング
-このセクションでは、セットアップ中に発生する可能性があるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
+このセクションでは、セットアップ中に発生する可能性のあるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1: クラスター ノードがオンラインではない
 クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、以下の方法でオンラインになる可能性があります。
@@ -369,7 +370,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>シナリオ 2: yast2 でグラフィカル ビューが表示されない
-このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしました。 次のような yast2 のグラフィカル ウィンドウが開かず、Qt エラーがスローされる場合は、次の手順に従います。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
+このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしています。 次のような yast2 のグラフィカル ウィンドウが開かず、Qt エラーがスローされる場合は、次の手順に従います。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
 
 **エラー**
 
@@ -534,7 +535,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
 ## <a name="10-general-documentation"></a>10.一般的なドキュメント
-SUSE HA のセットアップの詳細については、次の記事を参照してください。 
+SUSE HA のセットアップについて詳しくは、次の記事をご覧ください。 
 
 - [SAP HANA SR パフォーマンス最適化シナリオ](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
 - [ストレージ ベースのフェンス操作](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)

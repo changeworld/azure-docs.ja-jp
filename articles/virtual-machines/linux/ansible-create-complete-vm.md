@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d3514b57b5dc3541dd0a3c0f584fd689749ada7c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896182"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716460"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
@@ -38,6 +38,8 @@ Ansible で Azure リソースを管理するには、次の項目が必要で�
 
 
 ## <a name="create-virtual-network"></a>Create virtual network
+Ansible プレイブックの各セクションを参照し、個々の Azure リソースを作成してみましょう。 完全なプレイブックについては、[記事のこのセクション](#complete-ansible-playbook)をご覧ください。
+
 Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アドレス空間に、*myVnet* という名前の仮想ネットワークを作成しています。
 
 ```yaml
@@ -116,14 +118,14 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
     vm_size: Standard_DS1_v2
     admin_username: azureuser
     ssh_password_enabled: false
-    ssh_public_keys: 
+    ssh_public_keys:
       - path: /home/azureuser/.ssh/authorized_keys
         key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
     network_interfaces: myNIC
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.3'
+      sku: '7.5'
       version: latest
 ```
 
@@ -177,18 +179,18 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
           key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
       network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 
-Ansible では、すべてのリソースをデプロイするリソース グループが必要です。 [az group create](/cli/azure/vm#az_vm_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Ansible では、すべてのリソースをデプロイするリソース グループが必要です。 [az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

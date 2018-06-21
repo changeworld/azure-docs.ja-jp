@@ -6,20 +6,17 @@ keywords: 一意キー制約, 一意キー制約の違反
 author: rafats
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: dd23f24fd817bfc443457dee30d2f3091c0d9f6b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261102"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
@@ -34,7 +31,7 @@ ms.lasthandoff: 04/19/2018
 
 一例として、[ソーシャル アプリケーション](use-cases.md#web-and-mobile-applications)に関連付けられているユーザー データベースで、メール アドレスに対して一意キー ポリシーを適用していると、どんな利点があるかを見てみます。 ユーザーのメール アドレスを一意なキーにすると、それぞれのレコードは一意なメール アドレスを持つことが保証され、重複するメール アドレスを持つ新しいレコードを作成することはできません。 
 
-同じメール アドレス (ただし姓と名、メール アドレスが異なる) を持つ複数のレコードをユーザーが作成できるようにするには、一意キー ポリシーに別のパスを追加します。 そうして単にメール アドレスを基にして一意なキーを作成するのではなく、姓と名およびメールを組み合わせた一意なキーを作成できます。 このケースでは 3 つのパスの組み合わせをそれぞれ一意にすることが可能なため、次のパス値を持つ項目をデータベースに含めることができます。 これらのレコード 1 つ 1 つが、一意キー ポリシーに適合します。  
+同じメール アドレス (ただし姓と名、メール アドレスが異なる) を持つ複数のレコードをユーザーが作成できるようにするには、一意キー ポリシーに別のパスを追加します。 このため、メール アドレスを基にして一意なキーを作成する代わりに、姓と名およびメールを組み合わせた一意なキーを作成できます。 このケースでは 3 つのパスの組み合わせをそれぞれ一意にすることが可能なため、次のパス値を持つ項目をデータベースに含めることができます。 これらのレコード 1 つ 1 つが、一意キー ポリシーに適合します。  
 
 **firstName、lastName、email の一意なキーとして有効な値**
 
@@ -46,13 +43,13 @@ ms.lasthandoff: 04/19/2018
 |    |Duperre|gaby@fabrikam.com|
 |    |       |gaby@fabraikam.com|
 
-上記の表に掲載されている組み合わせのレコードをもう 1 つ書き込もうとすると、一意キー 制約を満たしていないことを示すエラーが返されます。 Azure Cosmos DB が返すエラーは、"指定された ID または名前のリソースは既に存在します" か、 または "指定された ID、名前または一意なインデックスのリソースは既に存在します" という内容です。 
+上記の表に掲載されている組み合わせのレコードをもう 1 つ書き込もうとすると、一意キー 制約を満たしていないことを示すエラーが返されます。 Azure Cosmos DB が返したエラーは、"指定された ID または名前のリソースは既に存在します"  または "指定された ID、名前または一意なインデックスのリソースは既に存在します" という内容です。 
 
 ## <a name="using-unique-keys"></a>一意なキーを使用する
 
 コンテナーの作成時には一意なキーを定義して、パーティション キーのスコープに含める必要があります。 先述の例を基に作成すると、郵便番号を基にパーティションを分割する場合、各パーティションで重複するレコードをテーブルから取得できます。
 
-一意なキーを使用するために既存のコンテナーを更新することはできません。
+一意のキーを使用するように既存のコンテナーを更新することはできません。
 
 一意キー ポリシーを持つコンテナーを作成してしまうと、コンテナーを再作成しない限りはポリシーを変更できません。 既存のデータに一意なキーを実装したい場合は、新しいコンテナーを作成してから適切な移行ツールを使用し、そのデータを新しいコンテナーに移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](mongodb-migrate.md) を使用します。
 
@@ -90,9 +87,8 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
                 new Collection<UniqueKey>
                 {
                     new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipCode" } },
-
-                }
+                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
+          }
             };
             await client.CreateDocumentCollectionAsync(
                 UriFactory.CreateDatabaseUri(dataBase),
@@ -115,17 +111,20 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
     "firstName": "Gaby",
     "lastName": "Duperre",
     "email": "gaby@contoso.com",
-    "address": [
+    "address": 
         {            
             "line1": "100 Some Street",
             "line2": "Unit 1",
             "city": "Seattle",
             "state": "WA",
-            "zipCode": 98012
+            "zipcode": 98012
         }
-    ],
+    
 }
 ```
+> [!NOTE]
+> 一意キーの名前は大文字と小文字が区別されます。 上の例に示すように、一意の名前は /address/zipcode に設定されます。 データが ZipCode を持つ場合、郵便番号 (zipcode) は ZipCode と同じではないため、一意キーに "null" を挿入します。 大文字と小文字は区別されることにより、重複の "null" は一意キー制約に違反するため、ZipCode を持つ他のすべてのレコードは挿入できません。
+
 ## <a name="mongodb-api-sample"></a>MongoDB API のサンプル
 
 次のコマンドの例は、MongoDB API のユーザー コレクションの firstName、lastName、email フィールドに対して、一意なインデックスを作成する方法を示しています。 これにより、コレクション内のすべてのドキュメント間で、3 つすべてのフィールドの組み合わせが一意であることが保証されます。 MongoDB API のコレクションでは、一意なインデックスが作成されるのはコレクションの作成後、コレクションにデータが設定される前になります。
@@ -133,6 +132,20 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
+## <a name="configure-unique-keys-by-using-azure-portal"></a>Azure Portal を使用して一意キーを構成する
+
+上記のセクションには、SQL API や MongoDB API を使用してコレクションが作成されるときに、一意キー制約を定義する方法を示すコード サンプルが用意されています。 ただし、Azure Portal の Web UI を介してコレクションを作成するときに、一意キーを定義することもできます。 
+
+- Cosmos DB アカウントで **[データ エクスプローラー]** に移動します。
+- ギャラリー ヘッダーの **[新しいコレクション]**
+- [一意キー]** セクションで、**[Add unique key]\(一意キーの追加\)** をクリックして、使用する一意キー制約を追加できます。
+
+![データ エクスプローラーで一意キーを定義する](./media/unique-keys/unique-keys-azure-portal.png)
+
+- lastName パスに一意キー制約を作成するには、`/lastName` を追加します。
+- lastName と firstName の組み合わせに一意キー制約を作成するには、`/lastName,/firstName` を追加します。
+
+完了したら、**[OK]** をクリックしてコレクションを作成します。
 
 ## <a name="next-steps"></a>次の手順
 

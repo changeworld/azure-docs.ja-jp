@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: b6b78c5ae4506c1405428b60887567f272d6e268
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 12eb182c859617139fce6553496c6aa6e9bcdc98
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839063"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -883,7 +885,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ## <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
 •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 

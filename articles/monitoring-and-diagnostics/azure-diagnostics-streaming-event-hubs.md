@@ -1,24 +1,20 @@
 ---
-title: "Event Hubs を利用し、ホット パスの Azure 診断データをストリーム配信する | Microsoft Docs"
-description: "共通シナリオのガイダンスを含む、Event Hubs で Azure 診断をエンド ツー エンドで構成する方法を説明します。"
-services: event-hubs
-documentationcenter: na
+title: Event Hubs に Azure 診断データをストリーミングする
+description: 共通シナリオのガイダンスを含む、Event Hubs で Azure 診断をエンド ツー エンドで構成する方法を説明します。
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: edeebaac-1c47-4b43-9687-f28e7e1e446a
-ms.service: monitoring-and-diagnostics
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: diagnostic-extension
+ms.openlocfilehash: 98e788d87b0ce03eece35868391aadd5233217b0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267715"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -322,7 +318,7 @@ namespace EventHubListener
 
     Azure 診断自体のログとエラーが含まれる Azure Storage テーブル **WADDiagnosticInfrastructureLogsTable**を確認してください。 1 つの方法は、 [Azure ストレージ エクスプローラー](http://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 •    [Event Hubs の詳細を確認します。](https://azure.microsoft.com/services/event-hubs/)
 
 ## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>付録: 完全な Azure 診断構成ファイル (.wadcfgx) の例
@@ -504,7 +500,7 @@ namespace EventHubListener
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](../event-hubs/event-hubs-what-is-event-hubs.md)

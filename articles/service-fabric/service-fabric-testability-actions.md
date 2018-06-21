@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 27c6671c170f4c03c63270772651051830d8e4ec
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757623"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -36,13 +37,13 @@ Testability アクションは、次の 2 つに大きく分類されます。
 品質をより深く検証するために、さまざまなグレースフル障害とアングレースフル障害エラーを発生させながら、サービスとビジネスのワークロードを実行します。 アングレースフル障害は、何らかのワークフローの途中でサービス プロセスが突然終了するシナリオで使用します。 Service Fabric によってサービスのレプリカが復元された後で復旧パスをテストします。 障害発生後のデータの整合性とサービス状態が正しく維持されているかどうかをテストするために役立ちます。 もう 1 つの障害セット (グレースフル障害) では、Service Fabric によって移動されるレプリカに対してサービスが正しく反応することをテストします。 これは、RunAsync メソッドでのキャンセル処理をテストします。 サービスは、設定されるキャンセル トークンをチェックし、その状態を正しく保存して、RunAsync メソッドを終了する必要があります。
 
 ## <a name="testability-actions-list"></a>Testability アクションの一覧
-| アクションを表示します。 | [説明] | マネージ API | PowerShell コマンドレット | グレースフル/アングレースフル障害 |
+| アクションを表示します。 | 説明 | マネージ API | PowerShell コマンドレット | グレースフル/アングレースフル障害 |
 | --- | --- | --- | --- | --- |
 | CleanTestState |テスト ドライバーの異常なシャットダウンが発生した場合に、クラスターからすべてのテスト状態を削除します。 |CleanTestStateAsync |Remove-ServiceFabricTestState |適用不可 |
 | InvokeDataLoss |サービス パーティションでデータ損失を発生させます。 |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |グレースフル |
 | InvokeQuorumLoss |特定のステートフル サービス パーティションをクォーラム損失状態にします。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |グレースフル |
-| Move Primary |ステートフル サービスの指定したプライマリ レプリカを、指定したクラスター ノードに移動します。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |グレースフル |
-| Move Secondary |ステートフル サービスの現在のセカンダリ レプリカを、別のクラスター ノードに移動します。 |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |グレースフル |
+| MovePrimary |ステートフル サービスの指定したプライマリ レプリカを、指定したクラスター ノードに移動します。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |グレースフル |
+| MoveSecondary |ステートフル サービスの現在のセカンダリ レプリカを、別のクラスター ノードに移動します。 |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |グレースフル |
 | RemoveReplica |クラスターからレプリカを削除することで、レプリカ障害をシミュレートします。 レプリカを閉じてロールを "None" に移行し、すべての状態をクラスターから削除します。 |RemoveReplicaAsync |Remove-ServiceFabricReplica |グレースフル |
 | RestartDeployedCodePackage |クラスター内のノードにデプロイされているコード パッケージを再起動することで、コード パッケージ プロセス障害をシミュレートします。 そのプロセスでホストされているすべてのユーザー サービス レプリカを再起動するコード パッケージ プロセスを中止します。 |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |アングレースフル |
 | RestartNode |ノードを再起動することで、Service Fabric のクラスター ノード障害をシミュレートします。 |RestartNodeAsync |Restart-ServiceFabricNode |アングレースフル |

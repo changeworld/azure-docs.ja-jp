@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807460"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -196,13 +197,24 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 
 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
 
+## <a name="renew-the-certificate"></a>証明書を更新する
+
+いつでも、証明書の自動更新を有効にするには、証明書管理ページで **[自動更新の設定]** をクリックします。 **[オン]** を選択して、**[保存]** をクリックします。
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+代わりに手動で証明書を更新するには、**[手動更新]** をクリックします。
+
+> [!NOTE]
+> 手動更新か自動更新かに関係なく、更新された証明書は自動的にはアプリにバインドされません。 アプリにバインドする方法については、「[証明書の更新](./app-service-web-tutorial-custom-ssl.md#renew-certificates)」をご覧ください。 
+
 <a name="notrenewed"></a>
-## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>SSL 証明書が自動更新されない理由
+## <a name="why-is-my-certificate-not-auto-renewed"></a>証明書が自動更新されない理由
 
 自動更新するように SSL 証明書が構成されているにもかかわらず、自動的に更新されない場合は、ドメインの確認が保留中になっている可能性があります。 以下の点に注意してください。 
 
-- App Service 証明書を生成する GoDaddy では、3 年に 1 回、ドメインの確認を要求します。 ドメインを確認するために、3 年に 1 回、ドメイン管理者に電子メールが送られます。 この電子メールの確認やドメインの確認を怠ると、App Service 証明書は自動的に更新されなくなります。 
-- 2017 年 3 月 31 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 これは、GoDaddy ポリシーの変更によるものです。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
+- App Service 証明書を生成する GoDaddy では、2 年に 1 回、ドメインの確認を要求します。 ドメインを確認するために、3 年に 1 回、ドメイン管理者に電子メールが送られます。 この電子メールの確認やドメインの確認を怠ると、App Service 証明書は自動的に更新されなくなります。 
+- GoDaddy ポリシーの変更のため、2018 年 3 月 1 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
 
 ## <a name="more-resources"></a>その他のリソース
 

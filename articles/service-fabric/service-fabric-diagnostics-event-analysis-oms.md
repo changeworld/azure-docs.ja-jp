@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839590"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Log Analytics を使用したイベントの分析と視覚化
 
@@ -36,17 +37,15 @@ Log Analytics がデータを受け取った後、Azure にはいくつかの*�
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションへのアクセス
 
-1. Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 リソースの [**ServiceFabric\<nameOfOMSWorkspace\>**] を選択し、概要ページに移動します。
+1. Azure Portal で Service Fabric Analytics ソリューションを作成したリソース グループに移動します。
 
-2. [概要] ページで、最上部付近にあるリンクをクリックして、OMS ポータルに移動します。
+2. リソースの [**ServiceFabric\<nameOfOMSWorkspace\>**] を選択します。
 
-    ![OMS ポータルのリンク](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. 概要には、有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **Service Fabric** グラフ (下にある最初の画像) をクリックして、Service Fabric Analytics ソリューション (下にある 2 つ目の画像) に進みます。
 
-3. OMS ポータルが開かれ、有効化したソリューションが表示されます。 "Service Fabric" というタイトルのグラフ (下にある最初の画像) をクリックして、Service Fabric ソリューション (下にある 2 つ目の画像) に移動します。
+    ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 上の画像は、Service Fabric Analytics ソリューションのホーム ページです。 これは、クラスター内で行われる処理のスナップショット ビューです。 クラスター作成時に診断を有効にした場合は、以下に対するイベントが表示されます。 
 
@@ -57,17 +56,17 @@ Log Analytics がデータを受け取った後、Azure にはいくつかの*�
 >[!NOTE]
 >[診断の拡張機能の構成を更新する](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)ことで、操作チャネルだけでなく、より詳細なシステム イベントが収集できます。
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>ノードでの動作を含む操作イベントの表示
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードでの操作を含む Service Fabric Events を表示する
 
-1. OMS ポータル上の [Service Fabric Analytics] ページで、操作チャネルのグラフをクリックします。
+1. Service Fabric Analytics ページで、**Service Fabric Events** グラフをクリックします。
 
-    ![OMS SF ソリューションの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![OMS SF ソリューションの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. [テーブル] をクリックして、一覧にあるイベントを表示します。 ここで、収集済みのすべてのシステム イベントが表示されます。 参照用として、下図のシステム イベントは Azure Storage アカウントの WADServiceFabricSystemEventsTable に由来し、次に確認する Reliable Service イベントや Reliable Actor イベントも同様に、それぞれのテーブルに由来します。
+2. 一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、収集済みのすべてのシステム イベントが表示されます。 参照用として、下図のシステム イベントは Azure Storage アカウントの WADServiceFabricSystemEventsTable に由来し、次に確認する Reliable Service イベントや Reliable Actor イベントも同様に、それぞれのテーブルに由来します。
     
-    ![OMS クエリの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![OMS クエリの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-または、左側にある虫眼鏡をクリックし、Kusto クエリ言語を使って検索対象を見つけることもできます。 たとえば、クラスター内のノードに対して行われたすべての操作を検索するは、次のクエリを使用できます。 以下で使用されるイベント ID は、[操作チャネルのイベントのリファレンス](service-fabric-diagnostics-event-generation-operational.md)に関するページで確認できます。
+または、左側にある虫眼鏡をクリックし、Kusto クエリ言語を使って検索対象を見つけることもできます。 たとえば、クラスター内のノードに対して行われたすべての操作を検索するは、次のクエリを使用できます。 使用されているイベント ID は、[操作チャネルのイベント リファレンス](service-fabric-diagnostics-event-generation-operational.md)で確認できます。
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -78,15 +77,15 @@ ServiceFabricOperationalEvent
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Service Fabric Reliable Service および Actor イベントの表示
 
-1. OMS ポータル上の [Service Fabric Analytics] ページで、"Reliable Services" のグラフをクリックします。
+1. Service Fabric Analytics ページで、**Reliable Services** グラフをクリックします。
 
-    ![OMS SF ソリューションの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![OMS SF ソリューションの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. [テーブル] をクリックして、一覧にあるイベントを表示します。 ここで、Reliable Services のイベントを確認できます。 通常はデプロイおよびアップグレードで行われるサービス runasync の開始時点および完了時点に関する、さまざまなイベントを表示できます。 
+2. 一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、Reliable Services のイベントを確認できます。 通常はデプロイおよびアップグレードで行われるサービス runasync の開始時点および完了時点に関する、さまざまなイベントを表示できます。 
 
-    ![OMS クエリの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS クエリの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Reliable Actor のイベントも、同様の方式で表示できます。 Reliable Actor により詳細なイベントを設定するには、診断の拡張機能の構成 (以下に示します) で `scheduledTransferKeywordFilter` を変更する必要があります。 これらのイベントに対する値の詳細については、[Reliable Actors イベントのリファレンス](service-fabric-reliable-actors-diagnostics.md#keywords)に関するページをご覧ください。
+Reliable Actor のイベントも、同様の方式で表示できます。 Reliable Actor により詳細なイベントを設定するには、診断の拡張機能の構成 (以下に示します) で `scheduledTransferKeywordFilter` を変更する必要があります。 これらの値の詳細については、「[Reliable Actors の診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md#keywords)」を参照してください。
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -100,9 +99,9 @@ Reliable Actor のイベントも、同様の方式で表示できます。 Reli
                 },
 ```
 
-Kusto クエリ言語は優れています。 実行可能なもう 1 つの重要なクエリでは、どのノードで大部分のイベントが生成されているかを検出します。 以下のスクリーン ショットのクエリは、特定のサービスとノードで集計された Reliable Services イベントを示しています。
+Kusto クエリ言語は優れています。 実行可能なもう 1 つの重要なクエリでは、どのノードで大部分のイベントが生成されているかを検出します。 次のスクリーン ショットのクエリは、特定のサービスとノードで集計された Service Fabric の操作イベントを示しています。
 
-![OMS クエリのノードごとのイベント](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![OMS クエリのノードごとのイベント](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>次の手順
 

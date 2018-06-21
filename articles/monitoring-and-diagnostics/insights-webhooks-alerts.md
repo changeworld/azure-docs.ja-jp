@@ -1,24 +1,19 @@
 ---
-title: "Azure メトリック アラートでの webhook の構成 | Microsoft Docs"
-description: "他の Azure 以外のシステムに Azure アラートを再ルーティングする方法について説明します。"
+title: webhook を使用してクラシック メトリック アラートが Azure 以外のシステムに通知するように設定する
+description: 他の Azure 以外のシステムに Azure メトリック アラートを再ルーティングする方法について説明します。
 author: johnkemnetz
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 8b3ae540-1d19-4f3d-a635-376042f8a5bb
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262353"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用して、SMS メッセージを送信するサービス、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションに対して、アラートをルーティングできます。 
@@ -84,7 +79,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | timestamp |Y | |アラートがトリガーされた時刻。 |
 | id |Y | |すべてのアラート ルールには一意の ID があります。 |
 | name |Y | |アラートの名前。 |
-| 説明 |Y | |アラートの説明。 |
+| description  |Y | |アラートの説明。 |
 | conditionType |Y |"Metric"、"Event" |2 つの種類のアラート (メトリックとイベント) がサポートされています。 メトリック アラートは、メトリックの条件に基づいています。 イベント アラートは、アクティビティ ログのイベントに基づいています。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
 | condition |Y | |**conditionType** の値に基づいて確認する特定のフィールド。 |
 | metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。 |

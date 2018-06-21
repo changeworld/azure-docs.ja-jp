@@ -14,11 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737370"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
 
@@ -320,7 +321,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 Azure File は、サーバー メッセージ ブロック (SMB) プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。 ファイル共有とファイル データは、Azure CLI を使用して管理できます。 Azure Files の詳細については、[Azure Files の概要](../files/storage-files-introduction.md)に関する記事をご覧ください。
 
 ### <a name="create-a-file-share"></a>ファイル共有を作成する
-Azure File 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
+Azure ファイル共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
 
 ```azurecli
 az storage share create --name myshare

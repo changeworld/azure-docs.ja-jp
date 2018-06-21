@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eeb5fd765a6cad10be5706162566605feaa8af4c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781165"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802563"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 
@@ -57,7 +57,8 @@ Azure 仮想ネットワークに Azure サービスを統合することで、�
 - [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Application Gateway (内部)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure Kubernetes サービス (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- 
+  [Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)
 - [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): 仮想ネットワーク (クラシック) のみ
 - [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
@@ -67,11 +68,7 @@ Azure 仮想ネットワークに Azure サービスを統合することで、�
 
 ## <a name="service-endpoints-for-azure-services"></a>Azure サービスのサービス エンドポイント
 
-一部の Azure サービスは仮想ネットワークでデプロイできません。 必要であれば、仮想ネットワークのサービス エンドポイントを有効にすることで、一部のサービス リソースへのアクセスを特定の仮想ネットワーク サブネットのみに制限できます。 仮想ネットワーク サービス エンドポイントの詳細については、[こちら](virtual-network-service-endpoints-overview.md)をご覧ください。
-
-現時点では、サービス エンドポイントは以下のサービスでサポートされています。 
-- **Azure Storage**: [Azure ストレージ アカウントを仮想ネットワークに結び付ける](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- **Azure SQL Database**: [Azure SQL Database を仮想ネットワークに結び付ける](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+一部の Azure サービスは仮想ネットワークでデプロイできません。 必要であれば、仮想ネットワークのサービス エンドポイントを有効にすることで、一部のサービス リソースへのアクセスを特定の仮想ネットワーク サブネットのみに制限できます。 [仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)と、エンドポイントを有効にできるサービスの詳細について確認してください。
 
 ## <a name="virtual-network-integration-across-multiple-azure-services"></a>複数の Azure サービスにわたる仮想ネットワーク統合
 

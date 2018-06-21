@@ -4,29 +4,29 @@ description: SAP HANA on Azure (L インスタンス) への SAP HANA のイン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778598"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763453"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
-このガイドを読む前に、確認しておく必要がある重要な定義を以下に示します。 「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」で、HANA L インスタンス ユニットの次の 2 種類のクラスを紹介しました。
+このガイドを読む前に、確認しておく必要がある重要な定義を以下に示します。 「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」では、HANA L インスタンス ユニットの次の 2 種類のクラスを紹介しました。
 
-- S72、S72m、S144、S144m、S192、S192m - "Type I クラス" の SKU と呼びます。
-- S384、S384m、S384xm、S576m、S768m、S960m - "Type II クラス" の SKU と呼びます。
+- S72、S72m、S144、S144m、S192、S192m、S192xm は、"Type I クラス" の SKU と呼ばれます。
+- S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m は、"Type II クラス" の SKU と呼ばれます。
 
 クラス指定子は、HANA L インスタンス SKU に基づいてさまざまな機能や要件を最終的に参照するために、HANA L インスタンスのドキュメント全体にわたって使用されます。
 
@@ -148,7 +148,7 @@ SAP HANA 1.0 バージョンから SPS12 までは、これらのパラメータ
 
 SAP HANA データベースのインストール後に、hdbparam フレームワークを使ってパラメーターを構成することもできます。 
 
-SAP HANA 2.0 では、hdbparam フレームワークが廃止されています。 パラメーターの設定には SQL コマンドを使ってください。 詳しくは、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
+SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりました。 パラメーターの設定には SQL コマンドを使ってください。 詳しくは、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
 
 
 ## <a name="operating-system"></a>オペレーティング システム

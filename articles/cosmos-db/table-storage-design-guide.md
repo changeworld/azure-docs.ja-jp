@@ -2,22 +2,20 @@
 title: Azure Storage Table 設計ガイド | Microsoft Docs
 description: Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する
 services: cosmos-db
-documentationcenter: na
 author: SnehaGunda
 manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824589"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -1061,7 +1059,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>サーバー側のプロジェクション
-1 つのエンティティには最大で 255 個のプロパティを格納でき、エンティティの最大サイズは 1 MB です。 テーブルに対してクエリを実行してエンティティを取得する際、すべてのプロパティが必要ない場合は、データの不要な転送を避けることができます (遅延とコストの削減につながります)。 サーバー側のプロジェクションを使えば、必要なプロパティのみを転送できます。 次の例は、クエリによって選択されたエンティティから**電子メール** プロパティ (**PartitionKey**、**RowKey**、**タイムスタンプ**と **ETag** と連動) を取得しています。  
+1 つのエンティティには最大で 255 個のプロパティを格納でき、エンティティの最大サイズは 1 MB です。 テーブルに対してクエリを実行してエンティティを取得する際、すべてのプロパティが必要ない場合は、データの不要な転送を避けることができます (遅延とコストの削減につながります)。 サーバー側のプロジェクションを使えば、必要なプロパティのみを転送できます。 次の例は、クエリによって選択されたエンティティから **Email** プロパティ (**PartitionKey**、**RowKey**、**Timestamp**、**ETag** と連動) を取得しています。  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(

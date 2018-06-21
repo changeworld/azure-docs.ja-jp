@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824657"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
 リソースによっては、デプロイする前に、他のリソースが存在している必要がある場合があります。 たとえば、SQL データベースをデプロイするには、先に SQL Server が存在している必要があります。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。 
@@ -106,11 +107,19 @@ resources プロパティを使用すると、定義されているリソース�
 ]
 ```
 
-## <a name="reference-function"></a>reference 関数
-[reference 関数](resource-group-template-functions-resource.md#reference) を使用すると、式では、他の JSON の名前と値のペアまたはランタイム リソースからその値を導出することができます。 参照式では、あるリソースが別のリソースに依存することを暗黙的に宣言します。 一般的な形式は次のとおりです。
+## <a name="reference-and-list-functions"></a>reference 関数と list 関数
+[reference 関数](resource-group-template-functions-resource.md#reference) を使用すると、式では、他の JSON の名前と値のペアまたはランタイム リソースからその値を導出することができます。 [list* 関数](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)はリスト操作からリソースの値を返します。  reference 式と list 式は、参照されているリソースが同じテンプレート内でデプロイされ、(リソース ID ではなく) 名前によって参照されていると、あるリソースが他のリソースに依存することを暗黙的に宣言します。 reference 関数または list 関数にリソース ID を渡す場合は、暗黙的な参照は作成されません。
+
+reference 関数の一般的な形式は次のとおりです。
 
 ```json
 reference('resourceName').propertyPath
+```
+
+listKeys 関数の一般的な形式は次のとおりです。
+
+```json
+listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
 次の例の CDN エンドポイントは CDN プロファイルに明示的に依存し、Web アプリに暗黙的に依存しています。
@@ -140,7 +149,7 @@ reference('resourceName').propertyPath
 
 * 設定する依存関係の数はできるだけ少なくします。
 * 子リソースは、その親リソースに依存するように設定します。
-* **reference** 関数を使用して、プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定します。 暗黙的な依存関係を設定した場合、明示的な依存関係 (**dependsOn**) は追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 
+* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な依存関係 (**dependsOn**) を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 
 * 他のリソースの機能がないとリソースを**作成**できないときに、依存関係を設定します。 デプロイ後にやり取りするだけのリソースには、依存関係を設定しないでください。
 * 明示的に設定しなくても連鎖的な依存関係になるようにします。 たとえば、仮想マシンが仮想ネットワーク インターフェイスに依存し、その仮想ネットワーク インターフェイスは仮想ネットワークとパブリック IP アドレスに依存しているとします。 この場合、仮想マシンは、この 3 つのリソースすべての後にデプロイされますが、この仮想マシンを 3 つのリソースすべてに依存するものとして明示的に設定しないでください。 これにより依存関係の順序が明確になり、後でテンプレートを変更するのも簡単になります。
 * デプロイの前に値を指定できる場合は、依存関係なしでリソースをデプロイしてみます。 たとえば、構成値に他のリソースの名前を必要とする場合は、依存関係が不要なことがあります。 ただし、これは必ずしも有効であるとは限りません。リソースによっては、他のリソースが存在するかどうかを確認することがあるためです。 エラーが発生したら、依存関係を追加してください。 

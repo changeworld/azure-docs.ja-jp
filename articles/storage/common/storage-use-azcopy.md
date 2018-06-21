@@ -12,22 +12,34 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/17/2018
 ms.author: seguler
-ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 430979cf197138a9e239eba74e50e9f97d96cbf6
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757606"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
-ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Windows は .NET Framework を使って構築され、Windows スタイルのコマンド ライン オプションが備わっています。 [AzCopy on Linux](storage-use-azcopy-linux.md) は .NET Core Framework を使って構築されています。その対象プラットフォームは Linux で、POSIX スタイルのコマンド ライン オプションが備わっています。 この記事では、AzCopy on Windows を取り上げます。
+ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Windows には、Windows スタイルのコマンドライン オプションが用意されています。 [AzCopy on Linux](storage-use-azcopy-linux.md) の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 この記事では、AzCopy on Windows を取り上げます。
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Windows での AzCopy のダウンロードとインストール
 
-[最新バージョンの AzCopy on Windows](http://aka.ms/downloadazcopy) をダウンロードします。
+### <a name="latest-preview-version-v800"></a>最新のプレビュー バージョン (v8.0.0)
+[最新のプレビュー バージョンの AzCopy on Windows](http://aka.ms/downloadazcopypr) をダウンロードします。 このプレビュー バージョンでは、パフォーマンスが大幅に向上、.NET Core がインストールにパッケージ化されています。
+
+#### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy on Windows 8.0 プレビューのリリース ノート
+- Table service は、最新バージョンではサポートされなくなっています。 テーブル エクスポート機能を使用する場合は、安定バージョンをダウンロードしてください。
+- .NET Core 2.1 でビルドされ、すべての .NET Core 依存関係がインストールにパッケージ化されています。
+- アップロードとダウンロード両方のシナリオでパフォーマンスが大幅に向上しています
+
+### <a name="latest-stable-version-v710"></a>最新の安定バージョン (v7.1.0)
+[最新の安定バージョンの AzCopy on Windows](http://aka.ms/downloadazcopy) をダウンロードします。
+
+### <a name="post-installation-step"></a>インストール後の手順
 
 インストーラーを使用して AzCopy on Windows をインストールした後、コマンド ウィンドウを開き、`AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。 必要に応じて、AzCopy のインストール先をシステム パスに追加できます。 既定で、AzCopy は `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` または `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` にインストールされます。
 
@@ -288,7 +300,7 @@ AzCopy を使用してファイルをダウンロードするいくつかの方�
 AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 ```
 
-指定されたソースが Azure ファイル共有の場合は、厳密なファイル名 ("*例*": `abc.txt`) を指定して単一ファイルをダウンロードするか、オプション `/S` を指定して共有内の全ファイルを再帰的にダウンロードする必要があります。 ファイル パターンとオプション `/S` の両方を同時に指定しようとすると、エラーになります。
+指定されたソースが Azure ファイル共有の場合は、厳密なファイル名 (*例*: `abc.txt`) を指定して単一ファイルをダウンロードするか、オプション `/S` を指定して共有内の全ファイルを再帰的にダウンロードする必要があります。 ファイル パターンとオプション `/S` の両方を同時に指定しようとすると、エラーになります。
 
 ### <a name="download-all-files-in-a-directory"></a>ディレクトリ内のすべてのファイルをダウンロードする
 
@@ -609,6 +621,20 @@ AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder 
 ```azcopy
 AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
 ```
+
+### <a name="automatically-determine-content-type-of-a-blob"></a>BLOB のコンテンツの種類を自動的に判断する
+
+AzCopy は、コンテンツの種類とファイル拡張子のマッピングを格納する JSON ファイルに基づいて BLOB のコンテンツの種類を判断します。 この JSON ファイルの名前は AzCopyConfig.json であり、AzCopy ディレクトリにあります。 一覧に含まれないファイルの種類がある場合は、JSON ファイルにマッピングを追加することができます。
+
+```
+{
+  "MIMETypeMapping": {
+    ".myext": "text/mycustomtype",
+    .
+    .
+  }
+}
+```     
 
 ## <a name="azcopy-parameters"></a>AzCopy のパラメーター
 
@@ -942,10 +968,6 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 AzCopy を使用して BLOB またはファイルをコピーする場合は、コピー中に別のアプリケーションがそのデータを変更している可能性があることに注意してください。 可能な場合は、コピーしているデータがコピー操作中に変更されないようにしてください。 たとえば、Azure 仮想マシンに関連付けられている VHD をコピーしている場合は、その VHD に別のアプリケーションが書き込まないようにします。 これを行う適切な方法は、コピーされるリソースをリースすることです。 または、最初に VHD のスナップショットを作成してからそのスナップショットをコピーします。
 
 コピーしている BLOB またはファイルに対する他のアプリケーションによる書き込みを回避できない場合は、ジョブが終了した時点で、コピー対象のリソースがソース リソースとの間に完全なパリティを保持していない可能性があることを覚えておいてください。
-
-### <a name="run-one-azcopy-instance-on-one-machine"></a>1 つのマシンでは 1 つの AzCopy インスタンスを実行します。
-
-AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `/NC` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
 
 ### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>[暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] を有効にする場合、AzCopy に対して FIPS に準拠している MD5 アルゴリズムを有効にします。
 

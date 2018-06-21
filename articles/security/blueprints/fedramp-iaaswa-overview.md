@@ -1,6 +1,6 @@
 ---
-title: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP のための Web アプリケーション
-description: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP のための Web アプリケーション
+title: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP のための IaaS Web アプリケーション
+description: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP のための IaaS Web アプリケーション
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: b7a81db6a1caf11ac4a85a5202c5ed943225e849
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6a2a72f46c4d5faacb7d5871f4c917a5cd578e96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941937"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809167"
 ---
-# <a name="azure-security-and-compliance-blueprint-web-application-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント: FedRAMP のための Web アプリケーション
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント: FedRAMP のための IaaS Web アプリケーション
 
 ## <a name="overview"></a>概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "33941937"
 
 デプロイ手順については、[ここ](https://aka.ms/fedrampblueprintrepo)をクリックしてください。
 
-## <a name="architecture-diagram-and-components"></a>アーキテクチャ図とコンポーネント
+## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
 このソリューションは、バックエンドに SQL Server を使用する IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、Application Gateway、および Azure Load Balancer が含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために AlwaysOn 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Azure では参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
 
 ![FedRAMP のための IaaS Web アプリケーションの参照アーキテクチャ図](images/fedramp-iaaswa-architecture.png?raw=true "FedRAMP のための IaaS Web アプリケーションの参照アーキテクチャ図")
@@ -106,12 +106,12 @@ ms.locfileid: "33941937"
 **SQL Server**: SQL Server は、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) を使用するように構成されます。TDE は、データとログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。
 
 お客様は、次の SQL Server セキュリティ対策を構成することもできます。
--   [AD 認証と承認](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication)を使用すると、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
--   [SQL Database の監査](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
--   [ファイアウォール規則](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
--   [SQL 脅威の検出](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
--   [Always Encrypted の列](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されることはありません。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
--   [SQL Database 動的データ マスク](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
+-   [AD 認証と承認](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用すると、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
+-   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
+-   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
+-   [SQL の脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
+-   [Always Encrypted の列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されることはありません。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
+-   [SQL Database 動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
 
 **Azure Disk Encryption**: 暗号化された Windows IaaS 仮想マシン ディスクに対して Azure Disk Encryption が使用されます。 [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows の BitLocker 機能を活用して、OS とデータ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
 
@@ -144,7 +144,7 @@ ms.locfileid: "33941937"
 
 **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
-**クラウド監視**: [クラウド監視](https://docs.microsoft.com/en-us/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)は、判別ポイントとして Azure を利用する、Windows Server 2016 内のフェールオーバー クラスター クォーラム監視の一種です。 他のクォーラム監視と同様、クラウド監視は、投票権を取得し、クォーラムの計算に参加することができますが、パブリックで使用可能な標準の Azure Blob Storage を使用します。 これにより、パブリック クラウドでホストされている VM のメンテナンスの余分なオーバーヘッドを排除できます。
+**クラウド監視**: [クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)は、Windows Server 2016 内のフェールオーバー クラスター クォーラム監視の一種であり、Azure をアービトレーション ポイントとして活用します。 他のクォーラム監視と同様、クラウド監視は、投票権を取得し、クォーラムの計算に参加することができますが、パブリックで使用可能な標準の Azure Blob Storage を使用します。 これにより、パブリック クラウドでホストされている VM のメンテナンスの余分なオーバーヘッドを排除できます。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
@@ -156,20 +156,20 @@ OMS は、システムの正常性だけではなく、システムとユーザ�
 
 さらに、このアーキテクチャの一部として、次の OMS ソリューションがインストールされます。 これらのソリューションは、FedRAMP セキュリティ統制に適合するよう、お客様の責任で設定してください。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory 正常性チェックのソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
--   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): マルウェア対策のソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは Runbook の格納、実行、および管理を行います。
--   [Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威インテリジェンス、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ状態に対する高度な知見を提供します。
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
--   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムの状態や必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムをお客様が管理できるようにします。
+-   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
+-   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
+-   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+-   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムの状態や必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムを管理できるようにします。
 -   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
--   [Azure アクティビティ ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Activity Log Analytics ソリューションは、お客様のすべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
--   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Change Tracking ソリューションは、お客様が環境の変更点を簡単に識別できるようにします。
+-   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
+-   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Change Tracking ソリューションは、環境の変更を簡単に識別できるようにします。
 
 **Azure Monitor**
-[Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/) は、お客様の Azure リソース内の API 呼び出しを追跡を含め、組織での監査、アラートの作成、データのアーカイブを可能にすることにより、ユーザーによるパフォーマンスの追跡、セキュリティの維持、傾向の特定に役立ちます。
+: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、監査、アラートの作成、データのアーカイブ、および Azure リソース内の API 呼び出しの追跡を実行できるようにすることで、パフォーマンスの追跡、セキュリティの維持、および傾向の識別を実行できるようにします。
 
 ## <a name="threat-model"></a>脅威モデル
-この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/fedrampWAdfd)するか、または下記を参照してください。 このモデルは、システム インフラストラクチャ内の潜在的なリスク箇所を把握する上で役立ちます。
+この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/fedrampWAdfd)するか、下記を参照してください。 このモデルは、システム インフラストラクチャ内の潜在的なリスク箇所を把握する上で役立ちます。
 
 ![FedRAMP 脅威モデルのための IaaS Web アプリケーション](images/fedramp-iaaswa-threat-model.png?raw=true "FedRAMP 脅威モデルのための IaaS Web アプリケーション")
 
@@ -195,14 +195,14 @@ OMS は、システムの正常性だけではなく、システムとユーザ�
     [![Azure へのデプロイ](http://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
-### <a name="vpn-and-expressroute"></a>VPN および ExpressRoute
-[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルは、デプロイされるリソースへの接続を安全に確立するために、この IaaS Web アプリケーションの参照アーキテクチャの一部として構成される必要があります。 ExpressRoute または VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
+### <a name="vpn-and-expressroute"></a>VPN と ExpressRoute
+この IaaS Web アプリケーションの参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、転送中のデータに対して保護のレイヤーを追加できます。
 
-Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
+Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
 
-VPN トンネル内のトラフィックはサイト対サイト VPN を使用してインターネット上を転送されるため、マイクロソフトは、さらに高いセキュリティで保護されたもう 1 つの接続オプションを提供します。 Azure ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーと Azure の間に確立される専用 WAN リンクです。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 また、これはお客様の通信プロバイダーの直接接続であって、データがインターネット上を移動しないため、インターネットに公開されません。
+VPN トンネル内のトラフィックはサイト間 VPN を使用してインターネット上を転送されるため、Microsoft は、さらに高いセキュリティで保護されたもう 1 つの接続オプションを提供します。 Azure ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーと Azure の間に確立される専用 WAN リンクです。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 さらに、これはお客様の通信プロバイダーの直接接続であり、データがインターネット上を移動しないため、インターネットに公開されることはありません。
 
-オンプレミス ネットワークを Azure に拡張するセキュアなハイブリッド ネットワークを実装するためのベスト プラクティスが[提供されています](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)。
+オンプレミス ネットワークを Azure に拡張するセキュアなハイブリッド ネットワークを実装するためのベスト プラクティスが[提供されています](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)。
 
 ## <a name="disclaimer"></a>免責事項
 

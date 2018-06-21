@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795562"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Eclipse で Java 用に Application Insights を使う
 Application Insights SDK は、利用状況とパフォーマンスを分析できるようにするために、Java Web アプリケーションからテレメトリを送信します。 Application Insights 用 Eclipse プラグインは、プロジェクトに SDK を自動的にインストールします。これにより、すぐに使用可能なテレメトリに加えて、カスタムのテレメトリの作成に使用できる API が提供されます。   
@@ -32,6 +33,8 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 * [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
+
+Spring フレームワークの方がよければ、[Spring Boot 初期化子アプリを構成して Application Insights ガイドを使用](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)してみてください
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Eclipse に SDK をインストールする (1 回限り)
 この操作は、コンピューターごとに 1 回行う必要があります。 この手順では、SDK を各動的 Web プロジェクトに追加できるツールキットをインストールします。

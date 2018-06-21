@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c7e9807e7195be47bf7874837ff9428c90abbcee
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5e67c60828467cce7c3b40ba17f15f44ad045920
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735672"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
@@ -128,11 +129,11 @@ ms.lasthandoff: 05/20/2018
 
 テンプレート例をデプロイするには、Azure PowerShell 4.0.0 以降、または Azure CLI 2.0.0 以降を使用します。
 
-## <a name="use-the-resourcegroup-function"></a>resourceGroup() 関数の使用
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>ResourceGroup() および subscription() 関数の使用
 
-リソース グループ間のデプロイの場合、[resourceGroup() 関数](resource-group-template-functions-resource.md#resourcegroup)は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
+リソース グループ間のデプロイの場合、[resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) および [subscription()](resource-group-template-functions-resource.md#subscription) 関数は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
 
-あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の resourceGroup() は親リソース グループに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
+あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の関数は親リソース グループおよびサブスクリプションに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -143,12 +144,12 @@ ms.lasthandoff: 05/20/2018
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers to parent resource group
+        resourceGroup() and subscription() refer to parent resource group/subscription
     }
 }
 ```
 
-別のテンプレートにリンクする場合、リンクされたテンプレート内の resourceGroup() は入れ子になったリソース グループに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
+別のテンプレートにリンクする場合、リンクされたテンプレート内の関数は入れ子になったリソース グループおよびサブスクリプションに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -159,7 +160,7 @@ ms.lasthandoff: 05/20/2018
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers to linked resource group
+        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
     }
 }
 ```
@@ -168,7 +169,7 @@ ms.lasthandoff: 05/20/2018
 
 以下のテンプレートは、複数のリソース グループのデプロイを示しています。 テンプレートをデプロイするスクリプトは、表の後に示されています。
 
-|テンプレート  |[説明]  |
+|テンプレート  |説明  |
 |---------|---------|
 |[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |1 つのストレージ アカウントを 1 つのリソース グループに、また 1 つのストレージ アカウントを 2 番目のリソース グループにデプロイします。 2 番目のリソース グループが別のサブスクリプションにある場合は、サブスクリプション ID の値が含まれます。 |
 |[クロス リソース グループ プロパティ テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |`resourceGroup()` 関数の解決方法を示します。 このテンプレートではリソースはデプロイされません。 |

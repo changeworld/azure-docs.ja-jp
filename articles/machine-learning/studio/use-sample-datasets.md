@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836302"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -47,7 +49,7 @@ Azure Machine Learning で新しいワークスペースを作成する場合、
 <p></p>
 <b>使用法:</b> 人口統計データを使用して対象の人々を分類し、個人が 1 年間に 50,000 ドル以上の年収を得られるかどうかを予測します。
 <p></p>
-<b>関連の研究:</b> Kohavi, R.、Becker, B. (1996 年)。 UCI Machine Learning リポジトリ (<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>)。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
+<b>関連の研究:</b> Kohavi, R.、Becker, B. (1996 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部 </td>
 </tr>
 
 <tr>
@@ -203,7 +205,7 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
 <p></p>
 <b>関連の研究:</b> Cortez, P.、Morais, A.(2008 年)。 UCI Machine Learning リポジトリ <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
-[Cortez and Morais、2007 年] P. Cortez、A. Morais. 「A Data Mining Approach to Predict Forest Fires using Meteorological Data」 J. Neves、M. F. Santos、J. Machado Eds. 著、New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence, December, Guimarães, Portugal, pp. 512-523, 2007。 APPIA,、SBN-13 978-989-95618-0-9。 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> で入手可能。
+[Cortez and Morais、2007 年] P. Cortez、A. Morais. 「A Data Mining Approach to Predict Forest Fires using Meteorological Data」 J. Neves、M. F. Santos and J. Machado Eds.、「New Trends in Artificial Intelligence」(第 13 回 EPIA 2007 - Portuguese Conference on Artificial Intelligence 議事録、512 から 523 ページ) 開催地: ギマランエス (ポルトガル)。2007 年。 APPIA,、SBN-13 978-989-95618-0-9。 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> で入手可能。
   </td>
 </tr>
 

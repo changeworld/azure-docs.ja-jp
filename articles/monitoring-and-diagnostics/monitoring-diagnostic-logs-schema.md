@@ -1,24 +1,19 @@
 ---
-title: Azure 診断ログでサポートされているサービスとスキーマ | Microsoft Docs
+title: Azure 診断ログでサポートされているサービスとスキーマ
 description: Azure 診断ログでサポートされているサービスとイベント スキーマについて説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 4/12/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
+ms.date: 6/08/2018
 ms.author: johnkem
-ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: logs
+ms.openlocfilehash: 45595893a199b845c8b010bc1e2545b89aa688cd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264981"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -29,30 +24,34 @@ ms.lasthandoff: 04/16/2018
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
-| Analysis Services | スキーマは使用できません。 |
+| Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 診断ログ](../batch/batch-diagnostics.md) |
-| Customer Insights | スキーマは使用できません。 |
-| Content Delivery Network | スキーマは使用できません。 |
+| Content Delivery Network | [CDN の Azure 診断ログ](../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../cosmos-db/logging.md) |
+| Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| DB for PostgreSQL |  スキーマは使用できません。 |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
+| ExpressRoute | スキーマは使用できません。 |
 | IoT Hub | [IoT Hub 操作](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS Protection | スキーマは使用できません。 |
+| DDOS Protection | [Azure DDoS Protection Standard を管理する](../virtual-network/manage-ddos-protection.md) |
+| PowerBI 専用 | スキーマは使用できません。 |
 | 復旧サービス | [Azure Backup のデータ モデル](../backup/backup-azure-reports-data-model.md)|
 | Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
-| Server Management | スキーマは使用できません。 |
 | Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database 診断ログ](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[ジョブの診断ログ](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Traffic Manager | スキーマは使用できません。 |
 | 仮想ネットワーク | スキーマは使用できません。 |
+| 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|カテゴリ|カテゴリの表示名|
@@ -74,6 +73,7 @@ ms.lasthandoff: 04/16/2018
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL のバックアップ イベント|
 |Microsoft.Devices/IotHubs|接続|接続|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
@@ -90,6 +90,7 @@ ms.lasthandoff: 04/16/2018
 |Microsoft.Devices/provisioningServices|ServiceOperations|サービス操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自動スケール ログ|
@@ -112,6 +113,7 @@ ms.lasthandoff: 04/16/2018
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
+|Microsoft.PowerBIDedicated/capacities|エンジン|エンジン|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|

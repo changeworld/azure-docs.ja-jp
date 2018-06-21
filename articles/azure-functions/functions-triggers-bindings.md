@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 56b0f8e24dfc38b542f4bbfc7975f1704d70f22c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725345"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -45,38 +46,39 @@ Visual Studio を使用してクラス ライブラリを作成して関数を�
 
 ## <a name="register-binding-extensions"></a>バインディング拡張機能を登録する
 
-Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用する[バインディング拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)を明示的に登録する必要があります。 
+Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用するバインディング拡張機能 (バインディングの種類) を明示的に登録する必要があります。 
 
-拡張機能は、パッケージ名が通常 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) で始まる NuGet パッケージとして配信されます。  バインディング拡張機能をインストールおよび登録する方法は、次に示す関数の開発方法によって異なります。 
+Functions ランタイムのバージョン 2.x は現在、プレビューの段階です。 Functions ランタイムのバージョン 2.x を使用するように関数アプリを設定する方法については、[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)に関するページを参照してください。
+
+バージョン 2.x には自動的に登録されているバインディングのコア セットがあるので、明示的に登録する必要はありません: HTTP、タイマー、Azure Storage (Blob、キュー、テーブル)。 
+
+拡張機能は、パッケージ名が通常 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) で始まる NuGet パッケージとして配信されます。  バインディング拡張機能を登録する方法は、次に示す関数の開発方法によって異なります。 
 
 + [Visual Studio または VS Code を使用して C# でローカルに](#local-c-development-using-visual-studio-or-vs-code)
 + [Azure Functions Core Tools を使用してローカルに](#local-development-azure-functions-core-tools)
 + [Azure Portal で](#azure-portal-development) 
 
-バージョン 2.x には、拡張機能としては提供されない一連のコア バインディングがあります。 HTTP、タイマ、および Azure Storage のトリガーとバインディングでは拡張機能を登録する必要はありません。 
-
-Functions ランタイムのバージョン 2.x を使用するように関数アプリを設定する方法については、[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)に関するページを参照してください。 Functions ランタイムのバージョン 2.x は現在、プレビューの段階です。 
-
 このセクションで示されているパッケージ バージョンは、例としてのみ提供されています。 関数アプリの他の依存関係に特定の拡張機能のどのバージョンが必要かを特定するには、[NuGet.org のサイト](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions)を確認してください。    
 
-###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>Visual Studio または VS Code を使用したローカルでの C# 開発 
+### <a name="local-csharp"></a>Visual Studio または VS Code を使用したローカルでの C# 開発
 
-Visual Studio または Visual Studio Code を使用して C# で関数をローカルに開発する場合は、単純に拡張機能のための NuGet パッケージを追加する必要があります。 
+Visual Studio または Visual Studio Code を使用して C# で関数をローカルに開発する場合は、拡張機能のための NuGet パッケージをインストールします。 
 
 + **Visual Studio**: NuGet Package Manager ツールを使用します。 次の [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) コマンドは、パッケージ マネージャー コンソールから Azure Cosmos DB 拡張機能をインストールします。
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
     ```
+
 + **Visual Studio Code**: .NET CLI で、次のように [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用してコマンド プロンプトからパッケージをインストールできます。
 
-    ```
+    ```terminal
     dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
     ```
 
 ### <a name="local-development-azure-functions-core-tools"></a>ローカル開発の Azure Functions Core Tools
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 ### <a name="azure-portal-development"></a>Azure Portal 開発
 

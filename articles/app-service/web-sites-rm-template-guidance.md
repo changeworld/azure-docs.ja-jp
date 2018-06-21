@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc816bb6e95d2800d79124dfac60b55e88eaa500
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8c29cf5a65e9587b281a6000b5b4eff47f11da91
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807324"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -58,19 +59,20 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 
 通常、ソリューションにはこれらのリソースとレベルの一部しか含まれていません。 ないレベルについては、下位のリソースを次に高いレベルにマップします。
 
-次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。
+次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。 
 
 ```json
 {
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Web/sites",
+    "name": "[parameters('appName')]",
+    "type": "Microsoft.Web/Sites",
+    ...
     "resources": [
       {
           "name": "MSDeploy",
           "type": "Extensions",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'))]",
-            "[concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'))]",
+            "[concat('Microsoft.Sql/servers/', parameters('dbServerName'), '/databases/', parameters('dbName'))]",
           ],
           ...
       },
@@ -78,13 +80,15 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
           "name": "connectionstrings",
           "type": "config",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'), '/Extensions/MSDeploy')]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'), '/Extensions/MSDeploy')]"
           ],
           ...
       }
     ]
 }
 ```
+
+上記のコードを使用するすぐに実行できるサンプルについては、「[Template: Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)」(テンプレート: 簡単な Umbraco Web アプリを作成する) をご覧ください。
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy エラーについての情報を見つける
 

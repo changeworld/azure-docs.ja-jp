@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836091"
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Machine Learning REST API のエラー コード
  
@@ -35,33 +37,33 @@ Azure Machine Learning Web サービスに対する操作では、次のエラ�
 | ---------- |--------------|
 | BadParameterValue | 指定されたパラメーター値がパラメーターの規則に従っていません。 |
 | BadSubscriptionId | スコア付けに使用されるサブスクリプション ID がリソースに存在する ID と異なります。 |
-| BadVersionCall | API の呼び出し時に無効なバージョン パラメーターが渡されました: {0}。 API のヘルプ ページで正しいバージョンを渡す方法を確認してから、やり直してください。 |
+| BadVersionCall | API 呼び出し中に無効なバージョン パラメーターが渡されました: {0}。 API のヘルプ ページで正しいバージョンを渡す方法を確認してから、やり直してください。 |
 | BatchJobInputsNotSpecified | 次の必須の入力が要求に指定されていませんでした: {0}。 すべての入力データを指定してから、やり直してください。 |
 | BatchJobInputsTooManySpecified | サービスで定義されているよりも多くの入力が要求に指定されました。 許容される入力の一覧: {0}。 すべての入力データを正しく指定してから、やり直してください。 |
 | BlobNameTooLong | 診断出力に指定された Azure Blob Storage のパスが長すぎます: {0}。 パスを短くしてから、やり直してください。 |
-| BlobNotFound | 指定された Azure BLOB - {0} にアクセスできません。  Azure のエラー メッセージ: {1}。 |
+| BlobNotFound | 指定された Azure Blob にアクセスできません: {0}。  Azure のエラー メッセージ: {1}。 |
 | ContainerIsEmpty | Azure Storage コンテナー名が指定されませんでした。 有効なコンテナー名を指定してから、やり直してください。 |
 | ContainerSegmentInvalid | コンテナーの名前が無効です。 有効なコンテナー名を指定してから、やり直してください。 |
-| ContainerValidationFailed | 次のエラーで Blob コンテナーの検証に失敗しました: {0}。 |
+| ContainerValidationFailed | 次のエラーで Blob コンテナーの検証が失敗しました: {0}。 |
 | DataTypeNotSupported | 指定されたデータ型はサポートされていません。 有効なデータ型を指定してから、やり直してください。 |
 | DuplicateInputInBatchCall | バッチ要求が無効です。 単一の入力と複数の入力の両方を同時に指定することはできません。 要求からどちらかの項目を削除してから、やり直してください。 |
 | ExpiryTimeInThePast | 指定された有効期限が過去の時点になっています: {0}。 UTC で未来の有効期限を指定してから、やり直してください。 期限切れにならないようにするには、有効期限を NULL に設定してください。 |
 | IncompleteSettings | 診断設定が不完全です。 |
 | InputBlobRelativeLocationInvalid | Azure Storage BLOB 名が指定されていません。 有効な BLOB 名を指定してから、やり直してください。 |
-| InvalidBlob | Blob {0} の指定が無効です。 接続文字列と相対パスまたは SAS トークンの仕様が正しいことを確認してから、やり直してください。 |
+| InvalidBlob | Blob の指定が無効です: {0}。 接続文字列と相対パスまたは SAS トークンの仕様が正しいことを確認してから、やり直してください。 |
 | InvalidBlobConnectionString | 入出力 BLOB のいずれかに指定された接続文字列が無効です: {0}。 修正してから、やり直してください。 |
 | InvalidBlobExtension | Blob の参照: {0} のファイル拡張子が無効か、見つかりません。 この出力の種類でサポートされているファイル拡張子は "{1}" です。 |
 | InvalidInputNames | 要求で指定されたサービスの入力名が無効です: {0}。 入力データを正しいサービスの入力にマップしてから、やり直してください。 |
-| InvalidOutputOverrideName | 出力の上書きの名前が無効です: {0}。 サービスには、この名前の出力ノードがありません。 上書きする正しい出力ノード名を渡してください (大文字と小文字が区別されます)。 |
+| InvalidOutputOverrideName | 出力のオーバーライドの名前が無効です: {0}。 サービスには、この名前の出力ノードがありません。 オーバーライドする正しい出力ノード名を渡してください (大文字と小文字が区別されます)。 |
 | InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 {1} |
 | MissingInputBlobInformation | Azure Storage BLOB の情報が不足しています。 有効な接続文字列と相対パスまたは URI を指定してから、やり直してください。 |
 | MissingJobId | ジョブ ID が指定されていません。 初めてジョブを送信すると、ジョブ ID が返されます。 ジョブ ID が正しいことを確認してから、やり直してください。 |
 | MissingKeys | キーが指定されていないか、プライマリ キーとセカンダリ キーのいずれかが指定されていません。 |
 | MissingModelPackage | モデル パッケージ ID またはモデル パッケージが指定されていません。 有効なモデル パッケージ ID またはモデル パッケージを指定してから、やり直してください。 |
-| MissingOutputOverrideSpecification | 要求に出力の上書き {0} の BLOB の指定がありません。 要求で有効な BLOB の場所を指定するか、場所を上書きする必要がない場合は出力の指定を削除してください。 |
+| MissingOutputOverrideSpecification | 要求に出力のオーバーライド {0} の BLOB の指定がありません。 要求で有効な BLOB の場所を指定するか、場所をオーバーライドする必要がない場合は出力の指定を削除してください。 |
 | MissingRequestInput | Web サービスには入力が必要ですが、入力が指定されませんでした。 モデルの発行済みの入力ポートに基づいて有効な入力値が指定されていることを確認してから、やり直してください。 |
 | MissingRequiredGlobalParameters | Web サービスの必須パラメーターが一部指定されていません。 モジュールに必要なパラメーターが正しいことを確認してから、やり直してください。 |
-| MissingRequiredOutputOverrides | 暗号化されたサービス エンドポイントを呼び出す場合は、サービスのすべての出力に対して出力の上書きを渡すことが必須となります。 現時点では、次の出力の上書きがありません: {0} |
+| MissingRequiredOutputOverrides | 暗号化されたサービス エンドポイントを呼び出す場合は、サービスのすべての出力に対して出力のオーバーライドを渡すことが必須となります。 現時点では、次の出力のオーバーライドがありません: {0} |
 | MissingWebServiceGroupId | Web サービス グループ ID が指定されていません。 有効な Web サービス グループ ID を指定してから、やり直してください。 |
 | MissingWebServiceId | Web サービス ID が指定されていません。 有効な Web サービス ID を指定してから、やり直してください。 |
 | MissingWebServicePackage | Web サービス パッケージが指定されていません。 有効な Web サービス パッケージを指定してから、やり直してください。 |
@@ -178,12 +180,12 @@ Web サービス パッケージが無効です。 指定された Web サービ
 | ClusterConfigBlobMisconfigured |  |
 | ContainerProcessTerminatedWithSystemError | システム エラーでコンテナー プロセスがクラッシュしました |
 | ContainerProcessTerminatedWithUnknownError | 不明なエラーでコンテナー プロセスがクラッシュしました |
-| ContainerValidationFailed | 次のエラーで Blob コンテナーの検証に失敗しました: {0}。 |
+| ContainerValidationFailed | 次のエラーで Blob コンテナーの検証が失敗しました: {0}。 |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
 | FailedStoringWebService |  |
-| InvalidMemoryConfiguration | InvalidMemoryConfiguration、ConfigValue: {0} |
+| InvalidMemoryConfiguration | メモリの構成が無効です。構成値: {0} |
 | InvalidResourceCacheConfiguration |  |
 | InvalidResourceDownloadConfiguration |  |
 | InvalidWebServiceResources |  |
@@ -201,11 +203,11 @@ Web サービス パッケージが無効です。 指定された Web サービ
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | UnknownError |  |
-| UnknownJobStatusCode | 不明なジョブ状態コード {0}。 |
+| UnknownJobStatusCode | 不明なジョブ状態コード: {0}。 |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
-| WebServicePackageInvalid | InvalidWebServicePackage、詳細: {0} |
+| WebServicePackageInvalid | Web サービス パッケージが無効です。詳細: {0} |
 | WorkerAuthorizationFailed |  |
 | WorkerUnreachable |  |
  

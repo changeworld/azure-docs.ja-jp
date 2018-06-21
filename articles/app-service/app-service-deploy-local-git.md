@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233905"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/19/2018
 このハウツー ガイドの手順に従うには: 
 
 * [Git をインストールします](http://www.git-scm.com/downloads)。
-* デプロイするコードでローカル Git リポジトリのメンテナンスを管理します。
+* デプロイするコードを含むローカル Git リポジトリのメンテナンスを管理します。
 
 サンプル リポジトリを使用して手順に従うには、ローカルのターミナル ウィンドウで次のコマンドを実行します。
 
@@ -38,42 +39,27 @@ ms.lasthandoff: 04/19/2018
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-## <a name="prepare-your-repository"></a>リポジトリを準備する
-
-リポジトリのルートに、プロジェクトの適切なファイルがあることを確認してください。
-
-| ランタイム | ルート ディレクトリのファイル |
-|-|-|
-| ASP.NET (Windows のみ) | _*.sln_、_*.csproj_、または _default.aspx_ |
-| ASP.NET Core | _*.sln_ または _*.csproj_ |
-| PHP | _index.php_ |
-| Ruby (Linux のみ) | _Gemfile_ |
-| Node.js | _server.js_、_app.js_、または _package.json_ とスタート スクリプト |
-| Python (Windows のみ) | _\*.py_、_requirements.txt_、または _runtime.txt_ |
-| HTML | _default.htm_、_default.html_、_default.asp_、_index.htm_、_index.html_、または _iisstart.htm_ |
-| Web ジョブ | _App\_Data/jobs/continuous_ の _\<job_name>/run.\<extension>_ (継続的 WebJobs) または _App\_Data/jobs/triggered_ (トリガーされた WebJobs)。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください |
-| Functions | [Azure Functions の継続的なデプロイ](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements)に関するページをご覧ください。 |
-
-デプロイをカスタマイズするには、_.deployment_ ファイルをリポジトリのルートに配置します。 詳細については、「[Custom Deployment (カスタム デプロイ)](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)」および「[Custom deployment script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
-
-> [!NOTE]
-> デプロイするすべての変更に対して必ず `git commit` を実行します。
->
->
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
+## <a name="deploy-from-local-git-with-kudu-builds"></a>Kudu ビルドを使用して ローカル Git からデプロイする
 
-## <a name="enable-git-for-your-app"></a>アプリの Git を有効にする
+Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にする最も簡単な方法は、Cloud Shell を使用することです。
 
-既存の App Service アプリの Git デプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) を実行します。
+### <a name="create-a-deployment-user"></a>デプロイ ユーザーの作成
+
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="enable-local-git-with-kudu"></a>Kudu を使用するローカル Git を有効にする
+
+Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) を実行します。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Git 対応アプリを作成するには、Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) を実行するときに `--deployment-local-git` パラメーターを指定します。
+Git 対応アプリを作成するには、Cloud Shell で `--deployment-local-git` パラメーターを指定して [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) を実行します。
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
@@ -97,9 +83,9 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>プロジェクトのデプロイ
+### <a name="deploy-your-project"></a>プロジェクトをデプロイする
 
-"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[アプリの Git を有効にする](#enable-git-for-you-app)」で取得した Git リモートの URL に置き換えます。
+"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[アプリの Git を有効にする](#enable-git-for-you-app)」で取得した Git リモートの URL で置き換えます。
 
 ```bash
 git remote add azure <url>
@@ -111,17 +97,62 @@ git remote add azure <url>
 git push azure master
 ```
 
-出力には、MSBuild (ASP.NET の場合)、`npm install` (Node.js の場合)、`pip install` (Python の場合) など、ランタイム固有のオートメーションが表示される場合があります。 
-
-デプロイが完了すると、Azure Portal のアプリの **[デプロイ オプション]** ページに `git push` のレコードが表示されるはずです。
-
-![](./media/app-service-deploy-local-git/deployment_history.png)
+出力には、MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。 
 
 アプリに移動して、コンテンツがデプロイされていることを確認します。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="deploy-from-local-git-with-vsts-builds"></a>VSTS ビルドを使用してローカル Git からデプロイする
 
-Git を使用して Azure の App Service に発行するときの一般的なエラーまたは問題を以下に示します。
+> [!NOTE]
+> App Service で必要なビルドを作成して VSTS アカウントで定義をリリースするには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
+>
+
+Kudu ビルド サーバーを使用したアプリへの ローカルGit のデプロイを有効にするには、[Azure Portal](https://portal.azure.com) でアプリに移動します。
+
+アプリ ページの左側のナビゲーションで、**[デプロイ センター]** > **[ローカル Git]** > **[継続]** をクリックします。 
+
+![](media/app-service-deploy-local-git/portal-enable.png)
+
+**[VSTS で継続的デリバリー]** > **[続行]** をクリックします。
+
+![](media/app-service-deploy-local-git/vsts-build-server.png)
+
+**[構成]** ページで、新しい VSTS アカウントを構成するか、既存のアカウントを指定します。 完了したら、**[続行]** をクリックします。
+
+> [!NOTE]
+> 表示されない既存の VSTS アカウントを使用する場合は、[VSTS アカウントを Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
+
+**[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
+
+App Service プランの[価格レベル](/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 デプロイ スロットを有効にするかどうかを選択し、**[続行]** をクリックします。
+
+**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
+
+VSTS アカウントの準備ができるまでに数分かかります。 準備ができたら、デプロイ センターで Git リポジトリの URL をコピーします。
+
+![](media/app-service-deploy-local-git/vsts-repo-ready.png)
+
+"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、最後の手順で取得した URL に置き換えます。
+
+```bash
+git remote add vsts <url>
+```
+
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager のプロンプトが表示されたら、visualstudio.com ユーザーでサインインします。 追加の認証方法については、[VSTS 認証の概要](/vsts/git/auth-overview?view=vsts)に関する記事を参照してください。
+
+```bash
+git push vsts master
+```
+
+デプロイが完了したら、`https://<vsts_account>.visualstudio.com/<project_name>/_build` でビルドの進行状況を、`https://<vsts_account>.visualstudio.com/<project_name>/_release` でデプロイの進行状況を確認できます。
+
+アプリに移動して、コンテンツがデプロイされていることを確認します。
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
+
+## <a name="troubleshooting-kudu-deployment"></a>Kudu デプロイのトラブルシューティング
+
+Git を使用して Azure の App Service アプリに発行するときの一般的なエラーまたは問題を以下に示します。
 
 ---
 **症状**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
@@ -173,9 +204,9 @@ git config --global http.postBuffer 524288000
 ---
 **症状**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**原因**: このエラーは、必要な追加モジュールを指定する _package.json_ ファイルを含む Node.js アプリをデプロイする場合に発生する可能性があります。
+**原因**: このエラーは、追加の必須モジュールを指定する _package.json_ ファイルを含む Node.js アプリをデプロイする場合に発生する可能性があります。
 
-**解決策**: "npm ERR!" を含む追加のメッセージが、 このエラーの前にログに記録されます。このメッセージによって、このエラーに関する追加のコンテキストが提供される場合があります。 このエラーの既知の原因と、対応する "npm ERR!" メッセージを以下に示します。 メッセージ:
+**解決策**: "npm ERR!" を含む追加のメッセージが、 このエラーの前に、ログに記録されます。このメッセージによって、このエラーに関する追加のコンテキストが提供される場合があります。 このエラーの既知の原因と、対応する "npm ERR!" メッセージを以下に示します。 メッセージ:
 
 * **形式が正しくない package.json ファイル**: npm ERR! Couldn't read dependencies.
 * **Windows 用のバイナリ配布がないネイティブ モジュール**:

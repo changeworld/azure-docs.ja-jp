@@ -1,12 +1,12 @@
 ---
-title: "Azure App Service の PremiumV2 レベルの構成 |Microsoft ドキュメント"
-description: "新しい PremiumV2 価格レベルにスケーリングすることによって、Azure App Service で Web、モバイル、および API アプリのパフォーマンスを向上させる方法について説明します。"
-keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
+title: Azure App Service の PremiumV2 レベルの構成 |Microsoft ドキュメント
+description: 新しい PremiumV2 価格レベルにスケーリングすることによって、Azure App Service で Web、モバイル、および API アプリのパフォーマンスを向上させる方法について説明します。
+keywords: App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714563"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
 
@@ -51,16 +52,16 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>で App Service プランを構成する場合は、 **[価格レベル]** を選択します。 
 
-**PremiumV2** オプションのいずれかを選択し、 **[選択]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
 
-![](media/app-service-configure-premium-tier/pick-premium-tier.png)
+![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > **P1V2**、**P2V2**、および **P3V2** がオプションとして表示されない場合は、**PremiumV2** が選択したリージョンで利用できないか、**PremiumV2** をサポートしない Linux App Service プランを構成しているかのいずれかです。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>既存のアプリを PremiumV2 レベルにスケール アップする
 
-既存のアプリを **PremiumV2** レベルにスケーリングする前に、**PremiumV2** をリージョンで使用できることを確認してください。 詳細については、「[PremiumV2 の利用可能性](#availability)」を参照してください。 リージョンで使用できない場合は、「[サポートされていないリージョンからのスケール アップ](#unsupported)」を参照してください。
+既存のアプリを **PremiumV2** レベルにスケーリングする前に、**PremiumV2** をリージョンで使用できることを確認してください。 詳細については、「[PremiumV2 の利用可能性](#availability)」を参照してください。 です。 リージョンで使用できない場合は、「[サポートされていないリージョンからのスケール アップ](#unsupported)」を参照してください。
 
 ホスティング環境によっては、スケール アップに追加の手順が必要になる場合があります。 
 
@@ -70,7 +71,7 @@ App Service アプリ ページの左側のナビゲーションで、**[スケ�
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-**PremiumV2** サイズのいずれかを選択して、 **[選択]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 

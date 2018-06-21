@@ -1,24 +1,19 @@
 ---
-title: Azure の監視データの使用 | Microsoft Docs
+title: Azure で使用する監視データのソース
 description: 現在 Azure で使用できるすべての監視データ ソースについて説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: ''
+ms.openlocfilehash: 7b3cb869f3c220c20db53216c96449d01c16eaf6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263179"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
@@ -46,8 +41,8 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | Azure Monitor アクティビティ ログのアラート | 通知 | すべての Azure サービス | <ul><li>**Webhook:** Azure アクティビティ ログのアラート</li></ul> |
 | 自動スケールの通知 | 通知 | [この一覧をご覧ください](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [自動スケール通知の Webhook ペイロード スキーマ](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | ログ検索クエリのアラート | 通知 | Log Analytics | <ul><li>**Webhook:** [Log Analytics のアラート](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
-| Application Insights メトリックのアラート | 通知 | アプリケーション インサイト | <ul><li>**Webhook:** [Application Insights のアラート](../application-insights/app-insights-alerts.md)</li></ul> |
-| Application Insights の Web テスト | 通知 | アプリケーション インサイト | <ul><li>**Webhook:** [Application Insights のアラート](../application-insights/app-insights-alerts.md)</li></ul> |
+| Application Insights メトリックのアラート | 通知 | Application Insights | <ul><li>**Webhook:** [Application Insights のアラート](../application-insights/app-insights-alerts.md)</li></ul> |
+| Application Insights の Web テスト | 通知 | Application Insights | <ul><li>**Webhook:** [Application Insights のアラート](../application-insights/app-insights-alerts.md)</li></ul> |
 
 ## <a name="next-steps"></a>次の手順
 

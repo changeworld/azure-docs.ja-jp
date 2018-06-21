@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: b8ddd43fb19b3800840180c458268301b5ec26f6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: edefb6637dae2ff00144f0b7c07ad974430d096b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794549"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
-
 
 J2EE サーバーで既に実行されている Web アプリケーションがある場合、 [Application Insights](app-insights-overview.md) を使用すると、コードの変更やプロジェクトの再コンパイルなしで監視を開始できます。 この方法では、サーバーに送信される HTTP 要求、未処理の例外、パフォーマンス カウンターに関する情報が取得されます。
 
@@ -136,4 +136,4 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 * [Web テストを設定](app-insights-monitor-web-app-availability.md) して、アプリケーションが動作していて応答できることを確認します。
 * [ログ トレースをキャプチャする](app-insights-java-trace-logs.md)
 * [イベントおよびログを検索](app-insights-diagnostic-search.md) します。
-
+* [Spring Boot Initializer アプリを構成する](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012919"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726416"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデルとサブスクリプション
 
@@ -107,7 +107,7 @@ ms.locfileid: "34012919"
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. 以降の手順は、Azure CLI 2.0.4 以降が[インストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)されている Bash シェル、またはAzure Cloud Shell を使用して実行する必要があります。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[Try it]\(試してみる\)** をクリックして、Cloud Shell を開きます。ここで、Azure アカウントへのログイン処理が行われます。 Bash CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 
+5. 以降の手順は、Azure CLI 2.0.4 以降が[インストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)されている Bash シェル、またはAzure Cloud Shell を使用して実行する必要があります。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[Try it]\(試してみる\)** をクリックして、Cloud Shell を開きます。ここで、Azure アカウントへのログイン処理が行われます。 bash CLI スクリプトを Windows クライアントで実行する方法については、「[Windows での Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli-windows)」をご覧ください。 
 6. PC で次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionB-Id>` は、サブスクリプション ID で置き換えてください。 サブスクリプション ID がわからない場合は、`az account show` コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。変更後のスクリプトをコピーし、CLI 2.0 セッションに貼り付けて、`Enter` キーを押します。 
 
     ```azurecli-interactive

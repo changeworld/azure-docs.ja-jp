@@ -1,24 +1,19 @@
 ---
-title: Azure 診断ログの概要 | Microsoft Docs
+title: Azure 診断ログの概要
 description: Azure 診断ログの概要と、診断ログを使用して Azure リソース内で発生するイベントを把握する方法について説明します。
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2018
-ms.author: johnkem; magoedte
-ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/07/2018
+ms.author: johnkem
+ms.component: logs
+ms.openlocfilehash: e361259bc5ce2dd946d3ea8bc1e69f743a40c6df
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264403"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -45,6 +40,9 @@ ms.lasthandoff: 04/18/2018
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは Event Hubs 名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
+> [!NOTE]
+>  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
+
 ## <a name="resource-diagnostic-settings"></a>リソース診断設定
 
 非コンピューティング リソースのリソース診断ログは、リソース診断設定を使用して構成します。 リソースの**リソース診断設定**では、以下を制御します。
@@ -52,9 +50,9 @@ ms.lasthandoff: 04/18/2018
 * リソース診断ログおよびメトリックの送信先 (ストレージ アカウント、Event Hubs、Log Analytics)。
 * 送信されるログ カテゴリ、メトリック データが送信されるかどうか。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
-    - 保有期間が 0 日の場合、ログは永続的に保有されます。または、1 日から 2147483647 日の間で値を指定することができます。
+    - リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
     - リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または Log Analytics オプションだけが選択されている場合)、リテンション ポリシーは無効になります。
-    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。
 
 これらの設定は、Azure Portal 内のリソースの診断設定、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 

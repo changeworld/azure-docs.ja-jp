@@ -4,21 +4,22 @@ description: Azure ファイル同期のストレージ同期サービスへの 
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738294"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Azure File Sync (プレビュー) に登録されたサーバーの管理
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -113,14 +114,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>ストレージ同期サービスからサーバーの登録を解除する
 ストレージ同期サービスからサービスの登録を解除するために必要な手順がいくつかあります。 サーバーの登録を適切に解除する方法を見てみましょう。
 
-#### <a name="optional-recall-all-tiered-data"></a>(省略可能) すべての階層型データを回収する
-サーバー エンドポイントでクラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 その結果、オンプレミスのファイル共有は、データセットの完全なコピーでなくキャッシュとして動作するので、ファイル サーバー上の領域を効率的に使用できるようになります。 ただし、階層化されたファイルがサーバーのローカルにまだある状態でサーバー エンドポイントを削除すると、それらのファイルにアクセスできなくなります。 そのため、ファイルのアクセスを継続するには、Azure Files から階層化されたファイルをすべて回収してから、登録解除を進める必要があります。 
+> [!Warning]  
+> Microsoft のエンジニアによってはっきりと指示された場合を除き、サーバーを登録解除してから再登録することにより、またはサーバー エンドポイントを削除してから再作成することにより、同期、クラウドの階層化、または Azure File Sync のその他の側面に関する問題のトラブルシューティングを試みないでください。 サーバーの登録解除およびサーバー エンドポイントの削除は破壊的な操作であり、登録されたサーバーやサーバー エンドポイントが再作成された後で、サーバー エンドポイントがあるボリューム上の階層化されたファイルは Azure ファイル共有上の場所に "再接続" されず、同期エラーが発生します。 また、サーバー エンドポイントの名前空間の外部に存在する階層化されたファイルは完全に失われる可能性があることにも注意してください。 クラウドの階層化が有効にされていなくても、階層化されたファイルがサーバー エンドポイント内に存在することがあります。
 
-この処理は、次のように PowerShell コマンドレットを使用して実行できます。
+#### <a name="optional-recall-all-tiered-data"></a>(省略可能) すべての階層型データを回収する
+現在階層化されているファイルを、Azure File Sync を削除した後でも使用できるようにしたい場合は (つまり、これがテスト環境ではなく運用環境の場合)、サーバー エンドポイントを含む各ボリュームのすべてのファイルを呼び戻します。 すべてのサーバー エンドポイントのクラウド階層化を無効にした後、次の PowerShell コマンドレットを実行します。
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  

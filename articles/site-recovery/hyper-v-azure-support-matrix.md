@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011375"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266963"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -45,7 +45,7 @@ Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016
  **コンポーネント** | **詳細**
 --- | ---
 VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#failed-over-azure-vm-requirements)を満たしている必要があります。
-ゲスト オペレーティング システム | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
+ゲスト オペレーティング システム | Azure がサポートする任意のゲスト OS。<br/><br/> Windows Server 2016 の Nano Server はサポートされていません。
 
 
 

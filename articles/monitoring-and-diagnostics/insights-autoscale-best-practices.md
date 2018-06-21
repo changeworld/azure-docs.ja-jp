@@ -1,24 +1,19 @@
 ---
-title: "自動スケールのベスト プラクティス | Microsoft Docs"
-description: "Azure での Web Apps、Virtual Machine Scale Sets、および Cloud Services の自動スケール パターン"
+title: 自動スケールのベスト プラクティス
+description: Azure での Web Apps、Virtual Machine Scale Sets、および Cloud Services の自動スケール パターン
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 9fa2b94b-dfa5-4106-96ff-74fd1fba4657
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: autoscale
+ms.openlocfilehash: e9fc5a4c5d2e23750493cc320dffa380724347fb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262445"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、および [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
@@ -152,6 +147,6 @@ ms.lasthandoff: 12/14/2017
 
 アクティビティ ログ アラートを使用する以外に、正常なスケール操作が行われたときに通知されるように、自動スケール設定の通知タブで、電子メールまたは webhook の通知を構成することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)

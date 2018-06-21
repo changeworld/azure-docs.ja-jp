@@ -1,11 +1,11 @@
 ---
-title: "NSG に関する操作、イベント、カウンターの監視 | Microsoft Docs"
-description: "NGS に関するカウンター、イベント、操作のログ記録を有効にする方法について説明します。"
+title: ネットワーク セキュリティ グループ イベントとルール カウンター Azure 診断ログ | Microsoft Docs
+description: Azure ネットワーク セキュリティ グループのイベントとルール カウンター診断ログを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
 ms.service: virtual-network
@@ -13,81 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2017
+ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3f4a64c9e11d17899987bbe818506f61c415e3f
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757061"
 ---
-# <a name="log-analytics-for-network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG) のためのログ分析
+# <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 
-NSG に対して、以下の診断ログ カテゴリを有効にできます。
+ネットワーク セキュリティ グループ (NSG) には、仮想ネットワーク サブネットとネットワーク インターフェイスのどちらか一方または両方へのトラフィックを許可または拒否するルールが含まれています。 NSG の診断ログを有効にすると、次のカテゴリの情報をログに記録できます。
 
-* **イベント:** MAC アドレスに基づいて VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+* **イベント:** MAC アドレスに基づいて、VM に適用される NSG ルールに関するエントリがログに記録されます。 これらのルールの状態は 60 秒ごとに収集されます。
 * **ルール カウンター:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-> [!NOTE]
-> 診断ログは、Azure Resource Manager デプロイメント モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイメント モデルでデプロイされた NSG については診断ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイメント モデルの理解](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+診断ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG については診断ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
-どちらの Azure デプロイメント モデルで作成された NSG に対しても、アクティビティ ログ (以前の監査ログまたは操作ログ) が既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。 
+診断ログは、診断データを収集する "*個々の*" NSG に対して個別に有効にします。 操作ログまたはアクティビティ ログに関心がある場合は、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
-- Microsoft.ClassicNetwork/networkSecurityGroups 
-- Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
-- Microsoft.Network/networkSecurityGroups
-- Microsoft.Network/networkSecurityGroups/securityRules 
+## <a name="enable-logging"></a>ログの有効化
 
-アクティビティ ログの詳細については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。 
+[Azure portal](#azure-portal) または [PowerShell](#powershell) を使って、診断ログを有効にできます。
 
-## <a name="enable-diagnostic-logging"></a>診断ログの有効化
+### <a name="azure-portal"></a>Azure Portal
 
-診断ログは、データを収集する*各* NSG に対して有効にする必要があります。 診断ログに対して指定できる送信先は、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」で説明しています。 既存の NSG がない場合は、[ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事の手順に従って NSG を作成します。 NSG の診断ログは、次のいずれかの方法で有効にできます。
+1. [ポータル](https://portal.azure.com)にログインします。
+2. **[すべてのサービス]** を選び、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選びます。
+3. ログを有効にする NSG を選択します。
+4. 次の図に示すように、**[監視]** で **[診断ログ]** を選び、**[診断をオンにする]** を選びます。
+ 
+    ![診断の有効化](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-### <a name="azure-portal"></a>Azure ポータル
+5. **[診断設定]** で、次の情報を入力するか選んだ後、**[保存]** を選びます。
 
-ポータルを使用してログを有効にするには、[ポータル](https://portal.azure.com)にログインします。 **[All services]\(すべてのサービス\)** をクリックし、"*ネットワーク セキュリティ グループ*"を入力します。 ログを有効にする NSG を選択します。 コンピューティング以外のリソースに対する手順については、[ポータルでの診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事をご覧ください。 **[NetworkSecurityGroupEvent]** と **[NetworkSecurityGroupRuleCounter]** のいずれかまたは両方のログ カテゴリを選択します。
+    | Setting                                                                                     | 値                                                          |
+    | ---------                                                                                   |---------                                                       |
+    | Name                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
+    | **ストレージ アカウントへのアーカイブ**、**イベント ハブへのストリーム**、**Log Analytics への送信** | 必要なだけいくつでも保存先を選択できます。 それぞれについて詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。                                                                                                                                           |
+    | ログ                                                                                         | いずれか一方または両方のログ カテゴリを選びます。 各カテゴリでログに記録されるデータについて詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。                                                                                                                                             |
+6. ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell を使用してログを有効にするには、[PowerShell での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはお使いのコンピューターから PowerShell を実行することで、実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.1.1 以降が必要です。 インストールされているバージョンを確認するには、コンピューターで `Get-Module -ListAvailable AzureRM` を実行してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
 
-- `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` を入力して調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
-- ログ カテゴリのデータのみを収集する場合は、記事のコマンドの末尾に `-Categories [category]` を追加し、カテゴリには *NetworkSecurityGroupEvent* または *NetworkSecurityGroupRuleCounter* のいずれかを指定します。 `-Categories` パラメーターを使用しない場合、両方のログ カテゴリに対してデータ収集が有効になります。
+診断ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を実行して作成できます。
 
-### <a name="azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI)
+[Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup) を使用して、診断ログを有効にするネットワーク セキュリティ グループを取得します。 たとえば、*myResourceGroup* という名前のリソース グループに存在する *myNsg* という名前の NSG を取得するには、次のコマンドを入力します。
 
-CLI を使用してログを有効にするには、[CLI での診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事の手順に従います。 この記事のコマンドを入力する前に、次の情報を評価してください。
+```azurepowershell-interactive
+$Nsg=Get-AzureRmNetworkSecurityGroup `
+  -Name myNsg `
+  -ResourceGroupName myResourceGroup
+```
 
-- `-ResourceId` パラメーターに使用する値は、次の [テキスト] を適切な値に置き換えてからコマンド `azure network nsg show [resource-group-name] [nsg-name]` を入力して調べることができます。 このコマンドからの ID の出力は、*/subscriptions/[Subscription Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG name]* のようになります。
-- ログ カテゴリのデータのみを収集する場合は、記事のコマンドの末尾に `-Categories [category]` を追加し、カテゴリには *NetworkSecurityGroupEvent* または *NetworkSecurityGroupRuleCounter* のいずれかを指定します。 `-Categories` パラメーターを使用しない場合、データ収集は両方のログ カテゴリに対して有効になります。
+3 種類の保存先に診断ログを書き込むことができます。 詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。 この記事では、例として *Log Analytics* の保存先にログを送信します。 [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) を使用して、既存の Log Analytics ワークスペースを取得します。 たとえば、*LaWorkspaces* という名前のリソース グループに存在する *myLaWorkspace* という名前の既存のワークスペースを取得するには、次のコマンドを入力します。
 
-## <a name="logged-data"></a>ログ記録されるデータ
+```azurepowershell-interactive
+$Oms=Get-AzureRmOperationalInsightsWorkspace `
+  -ResourceGroupName LaWorkspaces `
+  -Name myLaWorkspace
+```
 
-どちらのログでも、JSON 形式のデータが書き込まれます。 各ログ タイプで書き込まれる固有のデータを以下のセクションに示します。
+既存のワークスペースがない場合は、[New-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) を使用して作成できます。
 
-### <a name="event-log"></a>イベント ログ
-このログには、MAC アドレスに基づいて VM とクラウド サービス ロール インスタンスに適用される NSG ルールに関する情報が含まれます。 各イベントについて次の例のようなデータがログ記録されます。
+2 つのカテゴリのログを有効にすることができます。 詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。 [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) を使用して、NSG に対する診断ログを有効にします。 次の例では、NSG の ID と前に取得したワークスペース を使って、NSG のイベントとカウンター カテゴリ データの両方をワークスペースに記録します。
+
+```azurepowershell-interactive
+Set-AzureRmDiagnosticSetting `
+  -ResourceId $Nsg.Id `
+  -WorkspaceId $Oms.ResourceId `
+  -Enabled $true
+```
+
+両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Event Hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切なパラメーターを使います。
+
+ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
+
+## <a name="log-destinations"></a>ログの保存先
+
+診断データは次のようにすることができます。
+- 監査や手動での検査に使用するために、[Azure ストレージ アカウントに書き込みます](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
+- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[Event ハブにストリーミングします](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- [Azure Log Analytics に書き込みます](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics)。
+
+## <a name="log-categories"></a>ログのカテゴリ
+
+次のログ カテゴリの JSON 形式データが書き込まれます。
+
+### <a name="event"></a>Event
+
+イベント ログには、MAC アドレスに基づいて、VM に適用される NSG ルールに関する情報が含まれます。 各イベントについて次の例のようなデータがログ記録されます。
 
 ```json
 {
     "time": "[DATE-TIME]",
-    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "systemId": "[ID]",
     "category": "NetworkSecurityGroupEvent",
     "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION-ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
     "operationName": "NetworkSecurityGroupEvents",
     "properties": {
-        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-B791E1DBC2F4}",
+        "vnetResourceGuid":"[ID]",
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"UserRule_default-allow-rdp",
+        "ruleName":"[SECURITY RULE NAME]",
         "direction":"In",
         "priority":1000,
         "type":"allow",
         "conditions":{
             "protocols":"6",
-            "destinationPortRange":"3389-3389",
+            "destinationPortRange":"[PORT RANGE]",
             "sourcePortRange":"0-65535",
             "sourceIP":"0.0.0.0/0",
             "destinationIP":"0.0.0.0/0"
@@ -96,23 +134,23 @@ CLI を使用してログを有効にするには、[CLI での診断ログの�
 }
 ```
 
-### <a name="rule-counter-log"></a>ルール カウンター ログ
+### <a name="rule-counter"></a>ルール カウンター
 
-このログには、リソースに適用される各ルールに関する情報が含まれます。 ルールが適用されるたびに、次の例のようなデータがログ記録されます。
+ルール カウンター ログには、リソースに適用される各ルールに関する情報が含まれます。 ルールが適用されるたびに、次の例のようなデータがログ記録されます。
 
 ```json
 {
     "time": "[DATE-TIME]",
-    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "systemId": "[ID]",
     "category": "NetworkSecurityGroupRuleCounter",
-    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]TESTRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
+    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
     "operationName": "NetworkSecurityGroupCounters",
     "properties": {
-        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-791E1DBC2F4}",
+        "vnetResourceGuid":"[ID]",
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"UserRule_default-allow-rdp",
+        "ruleName":"[SECURITY RULE NAME]",
         "direction":"In",
         "type":"allow",
         "matchedConnections":125
@@ -120,6 +158,23 @@ CLI を使用してログを有効にするには、[CLI での診断ログの�
 }
 ```
 
+> [!NOTE]
+> 通信の送信元 IP アドレスは記録されません。 ただし、NSG の [NSG フロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md)を有効にすることができます。このログでは、すべてのルール カウンター情報だけでなく、通信を開始した送信元 IP アドレスも記録されます。 NSG フロー ログ データは Azure Storage アカウントに書き込まれます。 Azure Network Watcher の [トラフィック分析](../network-watcher/traffic-analytics.md)機能を使って、データを分析することができます。
+
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
-アクティビティ ログ データの表示方法については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断データを Log Analytics に送信すると、[Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) (プレビュー) 管理ソリューションを使用してより深い洞察を得ることができます。 
+診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 診断データの送信先に応じて、次のようになります。
+- **Log Analytics**: [ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+)ソリューションを使って、詳細な分析情報を取得できます。 このソリューションは、仮想マシン内のネットワーク インターフェイスのトラフィックを MAC アドレスに従って許可または拒否する NSG ルールの視覚化を提供します。
+- **Azure ストレージ アカウント**: データは PT1H.json ファイルに書き込まれます。 各ログは次のパスで見つかります。
+    - イベント ログ: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+    - ルール カウンター ログ: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+
+## <a name="next-steps"></a>次の手順
+
+- 以前は監査ログまたは操作ログと呼ばれていた[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について詳しく学習します。 どちらの Azure デプロイ モデルで作成された NSG に対しても、アクティビティ ログが既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。
+    - Microsoft.ClassicNetwork/networkSecurityGroups
+    - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+    - Microsoft.Network/networkSecurityGroups
+    - Microsoft.Network/networkSecurityGroups/securityRules
+- 診断情報に各フローの送信元 IP アドレスを含める方法については、[NSG フロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。

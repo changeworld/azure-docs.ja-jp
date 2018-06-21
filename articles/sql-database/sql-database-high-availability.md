@@ -5,16 +5,16 @@ services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 27f0c49913b424a6bd77b7cb6f7d6e97598c2157
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777020"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839811"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 マイクロソフトは、Azure SQL Database PaaS サービスの開発当初から、お客様が操作したり、特別なロジックを追加したり、高可用性に関する意思決定をしなくても実現できる高可用性 (HA) をサービスに組み込むことをお約束してきました。 マイクロソフトは、お客様に SLA を提供し、HA システム構成および運用を完全に制御します。 HA SLA は、領域内の SQL データベースに適用され、マイクロソフトの妥当な制御の及ばない事象 (自然災害、戦争、テロ行為、暴動、政府の行為、または、お客様の施設、またはお客様の施設とマイクロソフトのデータ センターの間を含む、マイクロソフトのデータ センター外のネットワークまたはデバイスの障害など) に起因する、領域全体の障害の場合の保護は提供できません。
@@ -79,7 +79,7 @@ SQL Database の高可用性ソリューションは、SQL Server の [Always ON
 ゾーン冗長クォーラムセットは、離れた距離に位置するさまざまなデータセンターにレプリカがあるため、ネットワーク待機時間が長くなるとコミット時間が延長され、一部の OLTP ワークロードのパフォーマンスに影響する可能性があります。 いつでもゾーン冗長設定を無効にして単一ゾーン構成に戻ることができます。 このプロセスはデータ操作のサイズであり、通常のサービス レベル目標 (SLO) 更新プログラムと似ています。 プロセスの最後に、データベースまたはプールがゾーン冗長リングから単一ゾーン リングに (または逆方向に) 移行されます。
 
 > [!IMPORTANT]
-> ゾーン冗長データベースとエラスティック プールは Premium および Business Critical (プレビュー) サービス レベルでのみサポートされます。 パブリック プレビューでは、バックアップおよび監査レコードは RA-GRS ストレージに格納され、ゾーン全体の障害時に自動的に利用できない可能性があります。 
+> ゾーン冗長データベースとエラスティック プールは、現時点では Premium サービス レベルでのみサポートされています。 パブリック プレビューでは、バックアップおよび監査レコードは RA-GRS ストレージに格納され、ゾーン全体の障害時に自動的に利用できない可能性があります。 
 
 ゾーン冗長による高可用性アーキテクチャを、次の図に示します。
  

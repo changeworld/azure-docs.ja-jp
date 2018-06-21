@@ -3,17 +3,18 @@ title: Azure SQL データ同期 (プレビュー) のトラブルシューテ�
 description: Azure SQL データ同期 (プレビュー) における一般的な問題のトラブルシューティングの方法について説明します。
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757538"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) に関する問題のトラブルシューティング
 
@@ -240,9 +241,8 @@ SQL Server をホストしているコンピューターで、エージェント
 
 -   SQL データ同期 (プレビュー) Windows サービスが実行されている。  
 -   [SQL Data Sync (Preview) Preview]\(SQL データ同期 (プレビュー) プレビュー\) Windows サービスのサービス アカウントがネットワークにアクセスできる。    
--   クライアント エージェントがロケーター サービスに接続できる。 次のレジストリキーの値が https://locator.sync.azure.com/LocatorServiceApi.svc: であることを確認します。  
-    -   x86 コンピューターの場合: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   x64 コンピューターの場合: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   送信 1433 ポートがローカル ファイアウォール規則で開かれている。
+-   ローカル IP アドレスが、同期メタデータ データベースのサーバーまたはデータベース ファイアウォール規則に追加されている。
 
 #### <a name="cause"></a>原因
 
@@ -265,7 +265,7 @@ SQL Server をホストしているコンピューターで、エージェント
 3. SqlAzureDataSyncAgent アプリケーションを開きます。
 4. **[Submit Agent Key]\(エージェント キーの送信\)** を選択します。
 5. 表示されたスペースにクリップボードからキーを貼り付けます。
-6. **[OK]**を選択します。
+6. **[OK]** を選択します。
 7. プログラムを閉じます。
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a>関連付けられているオンプレミス データベースにアクセスできない場合、クライアント エージェントをポータルから削除できない

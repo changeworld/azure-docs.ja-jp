@@ -1,22 +1,19 @@
 ---
-title: Azure アクティビティ ログのイベント スキーマ | Microsoft Docs
+title: Azure アクティビティ ログのイベント スキーマ
 description: アクティビティ ログに出力されるデータのイベント スキーマを理解する
 author: johnkemnetz
-manager: robb
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.openlocfilehash: 4264bfd733f586dcdabdee8f29494bfffd9a7a76
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: activitylog
+ms.openlocfilehash: f6f6c59195fdc79959a1964c1f2770c3b6a68b22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264553"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。
@@ -113,14 +110,14 @@ ms.lasthandoff: 04/16/2018
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
 | channels |値として、"Admin" または "Operation" を指定します。 |
 | claims |Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| 説明 |イベントを説明する静的テキスト。 |
+| description  |イベントを説明する静的テキスト。 |
 | eventDataId |イベントの一意の識別子。 |
 | httpRequest |Http 要求を記述する BLOB。 通常、"clientRequestId"、"clientIpAddress"、"method" (HTTP メソッド、 たとえば PUT) が含まれます。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
@@ -261,13 +258,13 @@ ms.lasthandoff: 04/16/2018
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | caller | 常に Microsoft.Insights/alertRules |
 | channels | 常に "Admin, Operation" |
 | claims | アラート エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| 説明 |アラート イベントを説明する静的テキスト。 |
+| description  |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
@@ -286,7 +283,7 @@ ms.lasthandoff: 04/16/2018
 アラート イベントのソースに応じて、プロパティ フィールドには異なる値が格納されます。 アラート イベントの一般的なプロバイダーは、アクティビティ ログ アラートとメトリック アラートの 2 つです。
 
 #### <a name="properties-for-activity-log-alerts"></a>アクティビティ ログ アラートのプロパティ
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | properties.subscriptionId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのサブスクリプション ID。 |
 | properties.eventDataId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのイベント データ ID。 |
@@ -297,7 +294,7 @@ ms.lasthandoff: 04/16/2018
 | properties.status | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントの状態。|
 
 #### <a name="properties-for-metric-alerts"></a>メトリック アラートのプロパティ
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | properties.RuleUri | メトリック アラート ルール自体のリソース ID。 |
 | properties.RuleName | メトリック アラート ルールの名前。 |
@@ -370,13 +367,13 @@ ms.lasthandoff: 04/16/2018
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | caller | 常に Microsoft.Insights/autoscaleSettings |
 | channels | 常に "Admin, Operation" |
 | claims | 自動スケール エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| 説明 |自動スケール イベントを説明する静的テキスト。 |
+| description  |自動スケール イベントを説明する静的テキスト。 |
 | eventDataId |自動スケール イベントの一意識別子。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
@@ -460,11 +457,11 @@ ms.lasthandoff: 04/16/2018
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | [説明] |
+| 要素名 | 説明 |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
-| 説明 |セキュリティ イベントを説明する静的テキスト。 |
+| description  |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
 | id |セキュリティ イベントの一意リソース識別子。 |
@@ -482,6 +479,88 @@ ms.lasthandoff: 04/16/2018
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
+
+## <a name="recommendation"></a>推奨
+このカテゴリには、サービスに対して生成されている新しい推奨のすべてのレコードが含まれています。 推奨の例として、「フォールト トレランスの改善のための可用性セットの使用」が挙げられます。 生成できる推奨イベントの種類は、高可用性、パフォーマンス、セキュリティ、コスト最適化の 4 種類です。 
+
+### <a name="sample-event"></a>サンプル イベント
+```json
+{
+    "channels": "Operation",
+    "correlationId": "92481dfd-c5bf-4752-b0d6-0ecddaa64776",
+    "description": "The action was successful.",
+    "eventDataId": "06cb0e44-111b-47c7-a4f2-aa3ee320c9c5",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Recommendation",
+        "localizedValue": "Recommendation"
+    },
+    "eventTimestamp": "2018-06-07T21:30:42.976919Z",
+    "id": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM/events/06cb0e44-111b-47c7-a4f2-aa3ee320c9c5/ticks/636640038429769190",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Advisor/generateRecommendations/action",
+        "localizedValue": "Microsoft.Advisor/generateRecommendations/action"
+    },
+    "resourceGroupName": "MYRESOURCEGROUP",
+    "resourceProviderName": {
+        "value": "MICROSOFT.COMPUTE",
+        "localizedValue": "MICROSOFT.COMPUTE"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.COMPUTE/virtualmachines",
+        "localizedValue": "MICROSOFT.COMPUTE/virtualmachines"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-06-07T21:30:42.976919Z",
+    "subscriptionId": "<Subscription ID>",
+    "properties": {
+        "recommendationSchemaVersion": "1.0",
+        "recommendationCategory": "Security",
+        "recommendationImpact": "High",
+        "recommendationRisk": "None"
+    },
+    "relatedEvents": []
+}
+
+```
+### <a name="property-descriptions"></a>プロパティの説明
+| 要素名 | 説明 |
+| --- | --- |
+| channels | 常に "Operation" |
+| correlationId | 文字列形式の GUID。 |
+| description  |推奨イベントを説明する静的テキスト |
+| eventDataId | 推奨イベントの一意の識別子。 |
+| カテゴリ | 常に "Recommendation" |
+| id |推奨イベントの一意のリソース ID。 |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
+| operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
+| resourceGroupName |リソースのリソース グループの名前。 |
+| resourceProviderName |この推奨が適用されるリソースのリソース プロバイダーの名前 ("MICROSOFT.COMPUTE" など) |
+| resourceType |この推奨が適用されるリソースのリソース タイプの名前 ("MICROSOFT.COMPUTE/virtualmachines" など) |
+| ResourceId |推奨が適用されるリソースのリソース ID |
+| status | 常に "Active" |
+| submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
+| subscriptionId |Azure サブスクリプション ID。 |
+| プロパティ |推奨の詳細を示す `<Key, Value>` ペアのセット (辞書)。|
+| properties.recommendationSchemaVersion| アクティビティ ログ エントリに公開される推奨プロパティのスキーマ バージョン |
+| properties.recommendationCategory | 推奨のカテゴリ。 指定できる値は "High Availability"、"Performance"、"Security"、"Cost" です。 |
+| properties.recommendationImpact| 推奨の影響。 指定できる値は "High"、"Medium"、"Low" です。 |
+| properties.recommendationRisk| 推奨のリスク。 指定できる値は "Error"、"Warning"、"None" です。 |
+
+
 
 ## <a name="next-steps"></a>次の手順
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](monitoring-overview-activity-logs.md)

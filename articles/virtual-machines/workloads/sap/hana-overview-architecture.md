@@ -4,22 +4,22 @@ description: SAP HANA on Azure (L インスタンス) をデプロイする方�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077625"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763784"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -68,8 +68,8 @@ HANA L インスタンス ガイダンスの別のドキュメントでは、次
    オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳細については、[Azure VPN ゲートウェイの計画と設計](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 - **テナント**: HANA L インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、HANA L インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
 - **SKU カテゴリ**: HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
-    - **Type I クラス**: S72、S72m、S144、S144m、S192、S192m
-    - **Type II クラス**: S384、S384m、S384xm、S576m、S768m、S960m
+    - **Type I クラス**: S72、S72m、S144、S144m、S192、S192m、S192xm
+    - **Type II クラス**: S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 、S960m
 
 
 クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で詳細を確認してください。 
@@ -148,7 +148,10 @@ Azure Virtual Machines でさまざまな VM の種類の中から選択でき�
 |---| SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | 使用可能 |
 |---| SAP HANA on Azure S768m<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB |  36 TB | 使用可能 |
 |---| SAP HANA on Azure S960m<br /> – 20 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 480 CPU コアと 960 CPU スレッド |  20.0 TB |  46 TB | 使用可能 |
-
+| OLTP **TDIv5** 用に最適化: SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S192xm<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド |  6.0 TB |  16 TB | 使用可能 |
+|---| SAP HANA on Azure S384xxm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  12.0 TB |  28 TB | 使用可能 |
+|---| SAP HANA on Azure S576xm<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  18.0 TB |  41 TB | 使用可能 |
+|---| SAP HANA on Azure S768xm<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  24.0 TB |  56 TB | 使用可能 |
 - CPU コア = サーバー ユニットのプロセッサの合計の、非ハイパースレッド CPU コアの合計。
 - CPU スレッド = サーバー ユニットのプロセッサの合計の、ハイパースレッド CPU コアによって提供されるコンピューティング スレッドの合計。 すべてのユニットは、ハイパースレッディング テクノロジを使用するように既定で構成されます。
 
@@ -157,8 +160,8 @@ Azure Virtual Machines でさまざまな VM の種類の中から選択でき�
 
 すべてのプランのハードウェア ベースは、SAP HANA TDI 認定を受けています。 ハードウェアの 2 種類のクラスでは、SKU を次のように分けています。
 
-- S72、S72m、S144、S144m、S192、S192m - "Type I クラス" の SKU と呼びます。
-- S384、S384m、S384xm、S576m、S768m、S960m - "Type II クラス" の SKU と呼びます。
+- S72、S72m、S144、S144m、S192、S192m、S192xm は、"Type I クラス" の SKU と呼ばれます。
+- S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m は、"Type II クラス" の SKU と呼ばれます。
 
 完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
 
@@ -338,17 +341,21 @@ Type I クラスの HANA L インスタンスは、ストレージ ボリュー�
 
 記憶域割り当てに関しては、次の表を参照してください。 この表は、各種 HANA L インスタンス ユニットで提供されるさまざまなボリュームのおおよその容量を示しています。
 
-| HANA L インスタンス SKU | hana/data | hana/log | hana/shared | hana/log/backup |
+| HANA L インスタンス SKU | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
+| S192xm |  12,000 GB |  2,050 GB |  2,050 GB |  2.040 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
+| S384xxm |  20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S576m | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4,096 GB | 2,048 GB | 4,096 GB |
 | S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S768xm | 40,960 GB | 6,144 GB | 4,096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
 
 

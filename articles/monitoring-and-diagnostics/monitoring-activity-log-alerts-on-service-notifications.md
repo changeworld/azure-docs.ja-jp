@@ -1,22 +1,19 @@
 ---
-title: Azure サービスの通知でアクティビティ ログ アラートを受け取る | Microsoft Docs
+title: Azure サービスの通知でアクティビティ ログ アラートを受け取る
 description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/09/2018
 ms.author: johnkem
-ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: alerts
+ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263118"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -51,17 +48,22 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
     ![[サービス正常性アラートの作成] コマンド](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. **[アクティビティ ログ アラート名]** ボックスに名前を入力し、**[説明]** を入力します。
+4. アラートを受け取る **[サブスクリプション]**、**[サービス]**、**[リージョン]** を選択します。
 
-    ![[アクティビティ ログ アラートの追加] ダイアログ ボックス](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-service-notification-new-action-group-sh.png)
+    ![[アクティビティ ログ アラートの追加] ダイアログ ボックス](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
-5. **[サブスクリプション]** ボックスには、現在のサブスクリプションが自動入力されます。 このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
+> [!NOTE]
+> このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
 
-6. アラート リソースを作成する **[リソース グループ]** を選択します。 これは、アラートによって監視されているリソース グループではありません。 そうではなく、アラート リソースが配置されているリソース グループです。
+5. アラートを受け取る **[イベント タイプ]** ("*サービスの問題*"、"*計画済みメンテナンス*"、"*正常性の勧告*") を選択します。 
 
-7. **[イベント カテゴリ]** ボックスは自動的に **[サービス正常性]** に設定されます。 必要に応じて、受信するサービス正常性通知の **[サービス]**、**[リージョン]**、および **[種類]** を選択します。
+6. **[アラート ルール名]** と **[説明]** を入力してアラートの詳細を定義します。
 
-8. **[通知手段]** で、**[新規]** アクション グループ ボタンを選択します。 **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、このアラートが発生したときに送信される通知で参照されます。
+7. アラートを保存する **[リソース グループ]** を選択します。
+
+8. **[新しいアクション グループ]** を選択して新しいアクション グループを作成します。 **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、このアラートが発生したときに送信される通知で参照されます。
+
+    ![新しいアクション グループを作成する](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
 9. 受信者についての次の情報を入力して、受信者の一覧を定義します。
 
@@ -71,7 +73,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
     c. **詳細:** 選択したアクションの種類に基づいて、電話番号、メール アドレス、webhook の URI などを入力します。
 
-10. **[OK]** を選択してアラートを作成します。
+10. **[OK]** を選択してアクション グループを選択し、**[アラート ルールの作成]** を選択してアラートを完成させます。
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
@@ -86,9 +88,9 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 1. 前のセクションの手順 1. から 7. に従って、サービス正常性通知を作成します。 
 
-2. **[通知手段]** で、**[既存]** アクション グループ ボタンを選択します。 適切なアクション グループを選択します。
+2. **[Define action group]\(アクション グループの定義\)** で、**[アクション グループの選択]** ボタンをクリックします。 適切なアクション グループを選択します。
 
-3. **[OK]** を選択してアラートを作成します。
+3. **[追加]** を選択してアクション グループを追加し、**[アラート ルールの作成]** を選択してアラートを完成させます。
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 

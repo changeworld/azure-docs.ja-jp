@@ -3,9 +3,9 @@ title: Linux での Azure Files に関する問題のトラブルシューティ
 description: Linux での Azure Files に関する問題のトラブルシューティング
 services: storage
 documentationcenter: ''
-author: genlin
-manager: willchen
-editor: na
+author: wmgries
+manager: aungoo
+editor: tamram
 tags: storage
 ms.service: storage
 ms.workload: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: wgries
+ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738366"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -86,7 +87,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="solution"></a>解決策
 
-Linux 用 SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
+Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している

@@ -11,45 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/30/2018
+ms.date: 06/05/2018
 ms.author: jlian
-ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: df66ba1ec2c855a24731387210b0127892f5796f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234786"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
-[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を契約されているお客様の場合、EA (MS-AZR-0017P) および EA Dev/Test (MS-AZR-0148P) サブスクリプションをプログラミングによって作成できます。 別のユーザーまたはサービス プリンシパルが、お客様のアカウントに課金されるサブスクリプションを作成することを許可するには、お客様の登録アカウントへの[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) アクセス権限を付与します。 
+[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を契約されているお客様の場合、EA (MS-AZR-0017P) および EA Dev/Test (MS-AZR-0148P) サブスクリプションをプログラミングによって作成できます。 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 
-> [!IMPORTANT]
-> この API を使用して作成された Azure サブスクリプションには、お客様が Microsoft または正規の販売代理店と締結した Microsoft Azure サービス契約が適用されます。 詳細については、「[Microsoft Azure の法的情報](https://azure.microsoft.com/support/legal/)」を参照してください。
+この API から Azure サブスクリプションを作成した場合は、お客様が Microsoft または正規の販売代理店と締結した Microsoft Azure サービスの契約によって、サブスクリプションが統制されます。 詳細については、「[Microsoft Azure の法的情報](https://azure.microsoft.com/support/legal/)」を参照してください。
 
-この記事では、次のことについて説明します。
+## <a name="prerequisites"></a>前提条件
 
-> [!div class="checklist"]
-> * Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
-> * EA アカウントに課金されるサブスクリプションを作成する機能を、RBAC を使用して共有する方法について説明します。
+* お使いのアカウントは、Azure EA 登録でアカウント所有者になっている必要があります。 なっていない場合は、登録管理者に依頼して、[EA ポータルを使用する (ログインが必要) アカウント所有者として自分を追加してもらいます](https://ea.azure.com/helpdocs/addNewAccount)。 受信した登録手続きのメールに記載されている指示に従って、初期サブスクリプションを手動で作成します。 次の手順に進む前に、アカウント所有権を確認し、初期 EA サブスクリプションを手動で作成します。 登録にアカウントを追加するだけでは不十分です。
 
-[GitHub の .NET サンプル コード](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)もあわせてご覧ください。
-
-## <a name="ask-your-ea-enrollment-admin-to-add-you-as-account-owner"></a>アカウント所有者として追加してもらうよう EA 登録管理者に依頼する
-
-まず、登録管理者に依頼して、[EA ポータルを使用する (ログインが必要) アカウントの所有者として自分を追加してもらいます](https://ea.azure.com/helpdocs/addNewAccount)。 受信した登録手続きのメールに記載されている指示に従って、初期サブスクリプションを手動で作成します。
-
-> [!IMPORTANT]
-> 次の手順に進む前に、アカウント所有権を確認し、初期 EA サブスクリプションを手動で作成する必要があります。 登録にアカウントを追加するだけでは不十分です。
+* サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与](grant-access-to-create-subscription.md)する必要があります。
 
 ## <a name="find-accounts-you-have-access-to"></a>アクセスできるアカウントを検索します。
 
-アカウント所有者として Azure EA 登録に追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 サブスクリプションを作成するには、まず、自分がアクセスできる登録アカウントを検索します。 現時点で EA アカウント所有者であるユーザーが、この API を使用しようとすると、次の条件が照合されます。
+アカウント所有者として Azure EA 登録に追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。 サブスクリプションを作成するには、サブスクリプションを所有するための登録アカウントおよびユーザー プリンシパルに関する値を受け渡す必要があります。 
 
-- EA 登録にアカウントが追加されている。
-- 1 つ以上の EA または EA Dev/Test サブスクリプションがある。つまり、最低 1 回は手動でサインアップされた。
-- サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の*ホーム ディレクトリ*にログインしている。
-
-上記の 3 つの条件を満たしている場合、`enrollmentAccount` リソースは返却され、そのアカウント内でサブスクリプションの作成操作を始めることができます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。
+次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の*ホーム ディレクトリ*にログインしている必要があります。
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
@@ -86,8 +73,6 @@ GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
 [Get-AzureRmEnrollmentAccount command](/powershell/module/azurerm.billing/get-azurermenrollmentaccount)を使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
 ```azurepowershell-interactive
@@ -104,13 +89,12 @@ ObjectId                               | PrincipalName
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
 ```azurecli-interactive 
 az billing enrollment-account list
 ```
+
 アカウントのオブジェクト ID とメール アドレスの一覧が Azure から返されます。
 
 ```json
@@ -142,7 +126,7 @@ az billing enrollment-account list
 
 ## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>特定の登録アカウントの中にサブスクリプションを作成する 
 
-次の例では、*開発チーム サブスクリプション*という名前で、サブスクリプション プラン *MS-AZR-0017P* (正規 EA) のサブスクリプションを作成する要求を作成します。 登録アカウントは `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (プレースホルダーの値、これは GUID です) で、これは SignUpEngineering@contoso.com の登録アカウントです。また、必要に応じて RBAC 所有者として 2 人のユーザーをサブスクリプションに追加することもできます。
+次の例では、*開発チーム サブスクリプション*という名前で、サブスクリプション プラン *MS-AZR-0017P* (正規 EA) のサブスクリプションを作成する要求を作成します。 登録アカウントは `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (プレースホルダーの値、この値は GUID です) で、これは SignUpEngineering@contoso.com の登録アカウントです。 また、必要に応じて RBAC 所有者として 2 人のユーザーをサブスクリプションに追加することもできます。
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
@@ -165,7 +149,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 要素名  | 必須 | type   | [説明]                                                                                               |
+| 要素名  | 必須 | type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | いいえ       | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `offerType`   | [はい]      | String | サブスクリプションのプランです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -175,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-このプレビュー モジュールを使用するには、まず `Install-Module AzureRM.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/psget/get_psget_module) から最新バージョンの PowerShellGet をインストールします。
+このプレビュー モジュールを使用するには、まず `Install-Module AzureRM.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
 
 新しいサブスクリプションを作成するには、`enrollmentAccount` オブジェクト ID を パラメーター `EnrollmentAccountObjectId` に設定し、[New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) を使用します。 
 
@@ -183,11 +167,11 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
-| 要素名  | 必須 | type   | [説明]                                                                                               |
+| 要素名  | 必須 | type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | いいえ       | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `OfferType`   | [はい]      | String | サブスクリプションのプランです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
-| `EnrollmentAccountObjectId`      | [はい]       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 これは、`Get-AzureRmEnrollmentAccount` から取得する GUID 値です。 |
+| `EnrollmentAccountObjectId`      | [はい]       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzureRmEnrollmentAccount` から取得する GUID です。 |
 | `OwnerObjectId`      | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `OwnerSignInName`    | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
 | `OwnerApplicationId` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。| 
@@ -204,11 +188,11 @@ New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -E
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 要素名  | 必須 | type   | [説明]                                                                                               |
+| 要素名  | 必須 | type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | いいえ       | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `offer-type`   | [はい]      | String | サブスクリプションのプランです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
-| `enrollment-account-object-id`      | [はい]       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 これは、`az billing enrollment-account list` から取得する GUID 値です。 |
+| `enrollment-account-object-id`      | [はい]       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`az billing enrollment-account list` から取得する GUID です。 |
 | `owner-object-id`      | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `owner-upn`    | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するユーザーの、メール アドレス。 `owner-object-id` の代わりにこのパラメーターを使用することができます。|
 | `owner-spn` | いいえ        | String | サブスクリプションの作成時にサブスクリプションに RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。| 
@@ -216,75 +200,6 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) を参照してください。
 
 ----
-
-## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>RBAC を使用して登録アカウントへのアクセスを委任する
-
-特定のアカウントに対してサブスクリプションを作成する権限を別のユーザーまたはサービス プリンシパルに付与するには、[登録アカウントのスコープで RBAC 所有者のロールを付与](../active-directory/role-based-access-control-manage-access-rest.md)します。 次の例では、`<userObjectId>` の `principalId` (SignUpEngineering@contoso.com の) のテナントであるユーザーに 登録アカウントの所有者ロールを付与します。 
-
-# <a name="resttabrest"></a>[REST](#tab/rest)
-
-```json
-PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
-
-{
-  "properties": {
-    "roleDefinitionId": "/providers/Microsoft.Billing/enrollmentAccounts/providers/Microsoft.Authorization/roleDefinitions/<ownerRoleDefinitionId>",
-    "principalId": "<userObjectId>"
-  }
-}
-```
-登録アカウントのスコープで所有者ロールが付与されると、ロール割り当ての情報が Azure から返されます。
-
-```json
-{
-  "properties": {
-    "roleDefinitionId": "/providers/Microsoft.Billing/enrollmentAccounts/providers/Microsoft.Authorization/roleDefinitions/<ownerRoleDefinitionId>",
-    "principalId": "<userObjectId>",
-    "scope": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "createdOn": "2018-03-05T08:36:26.4014813Z",
-    "updatedOn": "2018-03-05T08:36:26.4014813Z",
-    "createdBy": "<assignerObjectId>",
-    "updatedBy": "<assignerObjectId>"
-  },
-  "id": "/providers/Microsoft.Billing/enrollmentAccounts/providers/Microsoft.Authorization/roleDefinitions/<ownerRoleDefinitionId>",
-  "type": "Microsoft.Authorization/roleAssignments",
-  "name": "<roleAssignmentGuid>"
-}
-```
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-
-登録アカウントへの所有者アクセス権限を他のユーザーに付与するには、[New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) を使用します。
-
-```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
-
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-登録アカウントへの所有者アクセス権限を他のユーザーに付与するには、[az role assignment create](../active-directory/role-based-access-control-manage-access-azure-cli.md) を使用します。
-
-```azurecli-interactive 
-az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
-
-----
-
-ユーザーが、登録アカウントの RBAC 所有者になると、そのアカウント内にサブスクリプションをプログラミングによって作成できます。 委任されたユーザーによって作成されたサブスクリプションには、元のアカウント所有者がサービス管理者として設定されたままになりますが、既定で委任されたユーザーも所有者として設定されています。 
-
-## <a name="audit-who-created-subscriptions-using-activity-logs"></a>アクティビティ ログを使用してサブスクリプションを作成した監査
-
-この API を使用して作成されたサブスクリプションを追跡するには、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を使用します。 現時点では、PowerShell、CLI、または Azure Portal を使用してサブスクリプションの作成を追跡することはできません。
-
-1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../active-directory/role-based-access-control-tenant-admin-access.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
-1. 監査ユーザーは、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を呼び出して、サブスクリプションの作成活動を確認します。 例:
-
-```
-GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Subscription'" 
-```
-
-> [!NOTE]
-> コマンドラインからこの API を簡単に呼び出すには、[ARMClient](https://github.com/projectkudu/ARMClient) を使用します。
 
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
@@ -297,6 +212,5 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 ## <a name="next-steps"></a>次の手順
 
 * .NET を使用してサブスクリプションを作成する例については、[GitHub のサンプル コード](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)を参照してください。
-* Azure Resource Manager とその API については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+* サブスクリプションを作成し終えたら、他のユーザーおよびサービス プリンシパルでその機能を利用できるようになります。 詳細については、「[Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)](grant-access-to-create-subscription.md)」を参照してください。
 * 管理グループを使用して大量のサブスクリプションを管理する方法については、「[Azure 管理グループのリソースを整理する](management-groups-overview.md)」を参照してください。
-* 大規模組織でのサブスクリプション管理に関する包括的なベスト プラクティス ガイダンスについては、「[Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス](resource-manager-subscription-governance.md)」を参照してください。

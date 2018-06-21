@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365663"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824712"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
 
@@ -292,18 +292,9 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 この参照アーキテクチャについて詳しくは、「[Azure Virtual Network を使用した Azure HDInsight の拡張](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
-### <a name="azure-api-management"></a>Azure API Management
-
-この参照アーキテクチャは、組織の外部にいる顧客に API を公開する [Azure API Management](../api-management/api-management-key-concepts.md) リソースのパブリック エンドポイントを保護するのに役立ちます。 DDoS 保護 を有効にするには、外部仮想ネットワークに API Management をデプロイしてください。
-
-![API Management の参照アーキテクチャの図](media/azure-ddos-best-practices/image15.png)
-
-外部仮想ネットワークを構成すると、API Management のゲートウェイと開発者ポータルに、パブリック インターネットからパブリック ロード バランサー経由でアクセスできるようになります。 このアーキテクチャでは、API Management の外部仮想ネットワークに対して DDoS Protection Standard を有効にしています。 トラフィックはインターネットから API Management のパブリック IP アドレスにルーティングされ、パブリック IP アドレスはレイヤー 3/レイヤー 4 のネットワーク攻撃から保護されます。 レイヤー 7 の HTTP/HTTPS 攻撃から保護するには、WAF モードで Application Gateway を構成できます。
-
-仮想ネットワークにデプロイされ、DDoS Protection Standard 用に構成できるその他のサービスの一覧については、[こちらの記事](../virtual-network/virtual-network-for-azure-services.md)をご覧ください。 DDoS Protection Standard は、Azure Resource Manager のリソースのみをサポートします。 
 
 > [!NOTE]
-> パブリック IP を使用して PowerApps 用の App Service Environment を仮想ネットワーク内に挿入デプロイすることは、ネイティブ サポートされていません。 App Service Environment の保護について詳しくは、こちらのセクションをご覧ください。
+> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 
