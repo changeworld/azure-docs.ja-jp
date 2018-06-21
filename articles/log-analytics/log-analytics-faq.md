@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637176"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -96,7 +97,7 @@ A. いいえ。Azure ストレージ内の任意のテーブルまたはコン�
 
 A. Log Analytics サービスは、Azure に基づいて構築されています。 Log Analytics の IP アドレスは、[Microsoft Azure データセンターの IP 範囲](http://www.microsoft.com/download/details.aspx?id=41653)内にあります。
 
-サービスのデプロイが行われると、Log Analytics サービスの実際の IP アドレスは変更されます。 ファイアウォールの通過を許可する DNS 名については、「[システム要件](log-analytics-concept-hybrid.md#prerequisites)」をご覧ください。
+サービスのデプロイが行われると、Log Analytics サービスの実際の IP アドレスは変更されます。 ファイアウォールの通過を許可する DNS 名については、[ネットワーク要件](log-analytics-concept-hybrid.md#network-firewall-requirements)に関するセクションをご覧ください。
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. Azure への接続に ExpressRoute を使用しています。 Log Analytics トラフィックは、この ExpressRoute 接続を使用しますか?
 
@@ -130,7 +131,7 @@ A: エージェントが OMS と通信できることを確認するには、[�
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Q: エージェントの Log Analytics との通信を停止するにはどうすればよいですか?
 
 A: System Center Operations Manager では、OMS で管理されたコンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、エージェントの通信を停止できます。
-**[Azure Log Analytics (OMS)]**に表示されているすべてのワークスペースを削除します。
+**[Azure Log Analytics (OMS)]** に表示されているすべてのワークスペースを削除します。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Q: ワークスペースを Azure サブスクリプション間で移動しようとするとエラーが表示されるのはなぜですか?
 

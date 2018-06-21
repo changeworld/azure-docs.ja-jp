@@ -7,15 +7,16 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: eb7e87934269a5e1ba453e20f6f409a10dfbda5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 319195ceb98b5b760d4d92055faa6e09c8fb0e3d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644350"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>テナント単位データベース SaaS アプリケーションで、シングル テナントを復元します。
 

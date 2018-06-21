@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9a8e4e95f2f4de6475243de196519d94e87a9297
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85919ccdc13ab363b32e593159abe54498ca98c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366547"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702035"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -116,6 +116,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
     - 仮想ネットワークは、任意の Azure パブリック クラウド リージョンに存在できますが、Azure ナショナル クラウドには存在できません。
     - ある仮想ネットワーク内のリソースは、ピアリングされた仮想ネットワークの Azure 内部ロード バランサーの IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じ仮想ネットワーク内に存在する必要があります。
     - リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングの両方の仮想ネットワークが同じリージョンに存在する必要があります。 
+    - [ハイ パフォーマンス コンピューティング](../virtual-machines/windows/sizes-hpc.md)および [GPU](../virtual-machines/windows/sizes-gpu.md) VM タイプを使用してグローバルにピアリングされた仮想ネットワーク間通信はサポートされていません。 これには、H、NC、NV、NCv2、NCv3、および ND シリーズ VM が含まれます。
 - 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 仮想ネットワークが異なるサブスクリプションに属している場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 別々の Active Directory テナントに関連付けられた異なるサブスクリプション内の 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使って接続することができます。
 - ピアリングする仮想ネットワークの IP アドレス空間が重複していてはいけません。
 - 仮想ネットワークを別の仮想ネットワークとピアリングした後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 アドレス範囲を追加または削除するには、ピアリングを削除し、アドレス範囲を追加または削除してからピアリングを再作成します。 仮想ネットワークに対してアドレス範囲を追加または削除するには、[仮想ネットワークの管理](manage-virtual-network.md)に関するページを参照してください。
@@ -155,13 +156,13 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 * 仮想ネットワーク ピアリングは、同じまたは異なるサブスクリプションに存在する同じまたは異なるデプロイメント モデルを使って作成された仮想ネットワーク間に作成されます。 次のいずれかのシナリオのチュートリアルを完了します。
 
-    |Azure デプロイメント モデル             | [サブスクリプション]  |
+    |Azure デプロイメント モデル             | サブスクリプション  |
     |---------                          |---------|
     |両方が Resource Manager              |[同じ](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[異なる](create-peering-different-subscriptions.md)|
     |一方が Resource Manager、もう一方がクラシック  |[同じ](create-peering-different-deployment-models.md)|
     |                                   |[異なる](create-peering-different-deployment-models-subscriptions.md)|
 
-* [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)を作成する方法を学習します
+* [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成する方法を学習します
 * [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、仮想ネットワーク ピアリングを作成します
 * [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

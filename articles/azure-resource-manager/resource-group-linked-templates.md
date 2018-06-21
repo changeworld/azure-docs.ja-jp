@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: b01df5d89784c9982ebbf2351ae61a5d9f79aee8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359443"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602817"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
-ソリューションをデプロイするには、1 つのテンプレートを使用するか、複数の関連するテンプレートがあるメイン テンプレートのいずれかを使用できます。 関連するテンプレートは、メイン テンプレートからリンクされる個別のファイルの場合も、メイン テンプレート内で入れ子になっているテンプレートの場合もあります。
+ソリューションをデプロイするには、1 つのテンプレートを使用するか、多数の関連するテンプレートがあるメイン テンプレートのいずれかを使用できます。 関連するテンプレートは、メイン テンプレートからリンクされる個別のファイルの場合も、メイン テンプレート内で入れ子になっているテンプレートの場合もあります。
 
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割し、テンプレートを再利用できます。
 
@@ -86,6 +86,8 @@ ms.locfileid: "34359443"
 >
 > 入れ子になったテンプレートの出力セクションでは `reference` 関数を使用できません。 入れ子になったテンプレート内のデプロイされたリソースの値を返すには、入れ子になったテンプレートをリンク済みテンプレートに変換します。
 
+入れ子になったテンプレートでは、標準のテンプレートと[同じプロパティ](resource-group-authoring-templates.md)が必要です。
+
 ### <a name="external-template-and-external-parameters"></a>外部テンプレートと外部パラメーター
 
 外部のテンプレートおよびパラメーター ファイルにリンクするには、**templateLink** と **parametersLink** を使用します。 テンプレートにリンクするには、Resource Manager サービスからそのテンプレートにアクセスできる必要があります。 ローカル ファイルや、ローカル ネットワークだけで使用可能なファイルは指定できません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
@@ -110,6 +112,8 @@ ms.locfileid: "34359443"
   }
 ]
 ```
+
+テンプレートまたはパラメーターには、`contentVersion` プロパティを指定する必要はありません。 コンテンツのバージョン値を指定しない場合、テンプレートの現在のバージョンがデプロイされます。 コンテンツのバージョン値を指定する場合、リンクされているテンプレートのバージョンと一致している必要があります。それ以外の場合、デプロイはエラーで失敗します。
 
 ### <a name="external-template-and-inline-parameters"></a>外部テンプレートとインライン パラメーター
 
@@ -149,7 +153,7 @@ ms.locfileid: "34359443"
 }
 ```
 
-[deployment()](resource-group-template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合 (バージョン管理などのため) や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 templateLink プロパティは、URL を含むリモート テンプレートにリンクした場合にのみ返されます。 ローカル テンプレートを使用している場合、そのプロパティは使用できません。
+[deployment()](resource-group-template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 templateLink プロパティは、URL を含むリモート テンプレートにリンクした場合にのみ返されます。 ローカル テンプレートを使用している場合、そのプロパティは使用できません。
 
 ```json
 "variables": {
@@ -483,11 +487,11 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 次の例は、リンク済みテンプレートの一般的な使い方を示します。
 
-|Main template  |リンク済みテンプレート |[説明]  |
+|Main template  |リンク済みテンプレート |説明  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | リンク済みテンプレートから文字列を返します。 |
 |[パブリック IP アドレスを使用する Azure Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |リンク済みテンプレートからパブリック IP アドレスを返し、ロード バランサーでその値を設定します。 |
-|[複数の IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |リンク済みテンプレートに複数のパブリック IP アドレスを作成します。  |
+|[複数の IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |リンク済みテンプレートにいくつかのパブリック IP アドレスを作成します。  |
 
 ## <a name="next-steps"></a>次の手順
 

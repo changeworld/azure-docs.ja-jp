@@ -7,15 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 8fd25e13f6796b8be99ad3efd425bcde7bca3905
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193973"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645336"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 
@@ -78,7 +78,7 @@ geo リストアは、Azure SQL Database 向けの最もコストが低いディ
 ## <a name="review-the-healthy-state-of-the-application"></a>アプリケーションの正常性状態を確認する
 復旧プロセスを始める前に、アプリケーションの通常の正常な状態を確認します。
 
-1. Web ブラウザーで、Wingtip Tickets イベント ハブ (http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net - &lt;ユーザー&gt; は実際の展開でのユーザーの値に置き換えます) を開きます。
+1. Web ブラウザーで、Wingtip Tickets イベント ハブ (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net、&lt;user&gt; は実際のデプロイでのユーザーの値に置き換えます) を開きます。
     
    ページの下部までスクロールし、フッターでカタログ サーバー名と場所を確認します。 場所は、アプリを展開したリージョンです。    
 
@@ -198,7 +198,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
  
     ![復旧プロセス](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * テナントがオフラインの間にテナントのイベント ページを直接開いた場合は、テナントがオフラインであることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall を開いてみます。
+    * テナントがオフラインの間にテナントのイベント ページを直接開いた場合は、テナントがオフラインであることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall を開いてみます。
 
     ![復旧プロセス](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -264,7 +264,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 3. F5 キーを選択して、スクリプトを実行します。
 
-4. Contoso Concert Hall のイベント ページ (http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall) を更新し、イベント Seriously Strauss がないことを確認します。
+4. Contoso Concert Hall のイベント ページ (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall) を更新し、イベント Seriously Strauss がないことを確認します。
 
 チュートリアルのこの時点で、アプリケーションを復旧し、復旧リージョン内で実行しています。 新しいテナントは復旧リージョン内にプロビジョニングし、復元されたテナントのいずれかのデータを変更しています。  
 
@@ -328,7 +328,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
     F5 キーを選択して、新しい PowerShell ウィンドウで復旧スクリプトを実行します。 復帰には数分かかり、PowerShell ウィンドウで監視できます。
 
-3. スクリプトが実行している間に、イベント ハブのページ (http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net) を更新します。
+3. スクリプトが実行している間に、イベント ハブのページ (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net) を更新します。
 
     すべてのテナントがオンラインであり、このプロセス全体を通じてアクセスできることを確認します。
 

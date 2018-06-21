@@ -1,26 +1,20 @@
 ---
-title: 'Azure Backup の失敗のトラブルシューティング: ゲスト エージェントの状態を確認できない | Microsoft Docs'
+title: 'Azure Backup の失敗のトラブルシューティング: ゲスト エージェントの状態を確認できない'
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Azure Backup; VM エージェント; ネットワーク接続;
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196765"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606360"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -64,7 +58,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>VM エージェントが応答しないためにバックアップに失敗する
 
-エラー メッセージ: "VM エージェントが応答していないため、この操作を実行できません" <br>
+エラー メッセージ: "スナップショットの状態について VM エージェントと通信できませんでした" <br>
 エラー コード: "GuestAgentSnapshotTaskStatusError"
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
@@ -92,6 +86,16 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 バックアップ拡張機能が正常に機能するには、Azure のパブリック IP アドレスへの接続が必要です。 この拡張機能が、VM のスナップショットを管理するコマンドを、Azure Storage エンドポイント (HTTP URL) に送信するためです。 拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
 
+VM トラフィックのルーティングに、プロキシ サーバーをデプロイすることもできます。
+##### <a name="create-a-path-for-http-traffic"></a>HTTP トラフィック用のパスを作成する
+
+1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
+2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加しましす (ネットワーク セキュリティ グループがある場合)。
+
+VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
+
+バックアップ VM またはトラフィックがルーティングされるプロキシ サーバーのいずれかに、Azure のパブリック IP アドレスへのアクセスが必要です。
+
 ####  <a name="solution"></a>解決策
 この問題を解決するには、次の方法のいずれかを試してください。
 
@@ -105,13 +109,6 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 > [!WARNING]
 > ストレージ サービスのタグはプレビュー版であり、 特定のリージョンでのみ利用できます。 リージョンの一覧については、[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)に関するページを参照してください。
-
-##### <a name="create-a-path-for-http-traffic"></a>HTTP トラフィック用のパスを作成する
-
-1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
-2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加しましす (ネットワーク セキュリティ グループがある場合)。
-
-VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
 Azure Managed Disks を使用する場合、ファイアウォールで別途ポート (ポート 8443) が開放されている必要があります。
 
@@ -195,6 +192,19 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 #### <a name="solution"></a>解決策
 
-この問題を解決するには、リソース グループからロックを削除し、Azure Backup サービスに、復旧ポイントのコレクションと、次のバックアップの基になっているスナップショットをクリアさせます。
-完了したら、VM リソース グループでロックをもう一度元に戻せます。 
+この問題を解決するには、リソース グループからロックを削除し、次の手順を使用して復元ポイント コレクションを削除します。 
+ 
+1. VM が存在するリソース グループのロックを解除します 
+2. Chocolatey を使用して ARMClient をインストールします。 <br>
+   https://github.com/projectkudu/ARMClient
+3. ARMClient にログインします。 <br>
+    `.\armclient.exe login`
+4. VM に対応する復元ポイント コレクションを取得します。 <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    例: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. 復元ポイント コレクションを削除します。 <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. 次のスケジュールされたバックアップで、復元ポイント コレクションと新しい復元ポイントが自動的に作成されます。
+
+完了したら、VM リソース グループでロックをもう一度元に戻せます。 

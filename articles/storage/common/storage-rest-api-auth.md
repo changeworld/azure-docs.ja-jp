@@ -1,23 +1,19 @@
 ---
-title: "認証を含む Azure ストレージ サービス REST API 操作の呼び出し | Microsoft Docs"
-description: "認証を含む Azure ストレージ サービス REST API 操作の呼び出し"
+title: 認証を含む Azure ストレージ サービス REST API 操作の呼び出し | Microsoft Docs
+description: 認証を含む Azure ストレージ サービス REST API 操作の呼び出し
 services: storage
-documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
+author: tamram
+manager: twooley
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 11/27/2017
-ms.author: robinsh
-ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.date: 05/22/2018
+ms.author: tamram
+ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650453"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -48,19 +44,17 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、storage-dotnet-rest-api-with-auth フォルダーを探して開き、StorageRestApiAuth.sln をダブルクリックします。 
 
-## <a name="why-do-i-need-to-know-rest"></a>REST を知る必要がある理由
-
-REST の使い方の知識は、役に立つスキルです。 Azure 製品チームは、新しい機能を頻繁にリリースします。 多くの場合、新しい機能は、REST インターフェイスを使ってアクセスすることはできますが、**すべての**ストレージ クライアント ライブラリまたは UI (Azure Portal など) で公開されるようにはまだなっていません。 常に最新かつ最高の機能を使いたい場合は、REST を学習する必要があります。 また、独自のライブラリを作成して Azure Storage を操作したい場合や、SDK またはストレージ クライアント ライブラリがないプログラミング言語で Azure Storage にアクセスしたい場合は、REST API を使うことができます。
-
 ## <a name="what-is-rest"></a>REST とは
 
 REST は *Representational State Transfer* の頭文字です。 具体的な定義は、[Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer) で確認してください。
 
 基本的には、REST とは、API を呼び出すとき、または API を呼び出すことができるようにするときに、利用できるアーキテクチャです。 両側で行われていること、および REST 呼び出しを送受信するときに使われている他のソフトウェアからは、独立しています。 Mac、Windows、Linux、Android の携帯電話やタブレット、iPhone、iPod、Web サイトで動作するアプリケーションを作成でき、すべてのプラットフォームで同じ REST API を使うことができます。 REST API を呼び出すときは、データを受け渡すことができます。 REST API では、どのようなプラットフォームから呼び出されたかということは大事ではありません。重要なのは、要求で渡される情報と、応答で提供されるデータです。
 
-## <a name="heres-the-plan"></a>これからの予定
+REST の使い方の知識は、役に立つスキルです。 Azure 製品チームは、新しい機能を頻繁にリリースします。 多くの場合、新しい機能は、REST インターフェイスを使ってアクセスすることはできますが、**すべての**ストレージ クライアント ライブラリまたは UI (Azure Portal など) で公開されるようにはまだなっていません。 常に最新かつ最高の機能を使いたい場合は、REST を学習する必要があります。 また、独自のライブラリを作成して Azure Storage を操作したい場合や、SDK またはストレージ クライアント ライブラリがないプログラミング言語で Azure Storage にアクセスしたい場合は、REST API を使うことができます。
 
-この例のプロジェクトでは、ストレージ アカウント内のコンテナーを一覧表示します。 REST API ドキュメント内の情報と実際のコードがどのように関連付けられているかを理解すると、他の REST 呼び出しがわかりやすくなります。 
+## <a name="about-the-sample-application"></a>サンプル アプリケーションについて
+
+このサンプル アプリケーションは、ストレージ アカウントのコンテナーを一覧表示します。 REST API ドキュメント内の情報と実際のコードがどのように関連付けられているかを理解すると、他の REST 呼び出しがわかりやすくなります。 
 
 「[Blob Service REST API](/rest/api/storageservices/fileservices/Blob-Service-REST-API)」(Blob service REST API) を見ると、Blob Storage に対して実行できるすべての操作がわかります。 ストレージ クライアント ライブラリは REST API のラッパーであり、REST API を直接使わずにストレージに簡単にアクセスできます。 ただし、前述のように、ストレージ クライアント ライブラリではなく REST API を使うことが必要な場合があります。
 
@@ -70,7 +64,7 @@ REST は *Representational State Transfer* の頭文字です。 具体的な定
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list。これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 
@@ -112,7 +106,7 @@ HttpRequestMessage オブジェクトである要求を作成するには、Prog
 *  URI は、そのストレージ アカウントの Blob サービス エンドポイントを作成してリソースを連結することにより、作成されます。 **要求の URI** の最終的な値は、`http://contosorest.blob.core.windows.net/?comp=list` です。
 *  ListContainers の場合、**要求本文**は null であり、余分な**ヘッダー**はありません。
 
-他の API では、*ifMatch* などの他のパラメーターを渡すことがあります。 IfMatch を使う場合の例は、PutBlob を呼び出すときです。 この場合、ifMatch には eTag を設定し、指定した eTag が BLOB の現在の eTag と一致する場合にのみ、BLOB を更新します。 eTag を取得した後で他のユーザーが BLOB を更新している場合、変更は上書きされません。 
+他の API では、*ifMatch* などの他のパラメーターを渡すことがあります。 IfMatch を使う場合の例は、PutBlob を呼び出すときです。 この場合、ifMatch には eTag を設定し、指定した eTag が BLOB の現在の eTag と一致する場合にのみ、BLOB を更新します。 eTag を取得した後で他のユーザーが BLOB を更新している場合、変更はオーバーライドされません。 
 
 最初に、`uri` と `payload` を設定します。 
 
@@ -141,7 +135,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
     // Add the request headers for x-ms-date and x-ms-version.
     DateTime now = DateTime.UtcNow;
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-04-17");
+    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
     //   the authorization header. 
 ```
@@ -205,7 +199,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 3e889876-001e-0039-6a3a-5f4396000000
-x-ms-version: 04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
@@ -271,6 +265,9 @@ Content-Length: 1511
 
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
+> [!TIP]
+> Azure Storage で、BLOB およびキュー サービス (プレビュー) のために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証 (プレビュー)) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー)) を参照してください。
+
 [Azure ストレージ サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
 その記事から本当に必要な部分を取り出し、コードを示します。
 
@@ -312,7 +309,7 @@ CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。
 この値を作成するには、"x-ms-" で始まるヘッダーを取得して並べ替えてから、`[key:value\n]` インスタンスの文字列に書式設定して、1 つの文字列に連結します。 この例では、正規化されたヘッダーは次のようになります。 
 
 ```
-x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 この出力を作成するために使われるコードを次に示します。
@@ -417,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 このコードを実行したときの結果の MessageSignature は次のようになります。
 
 ```
-GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-04-17\n/contosorest/\ncomp:list
+GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
 Authorization ヘッダーの最終的な値を次に示します。
@@ -463,7 +460,7 @@ foreach (XElement container in x.Element("Blobs").Elements("Blob"))
 **正規化されたヘッダー:**
 
 ```
-x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 **正規化されたリソース:**
@@ -476,7 +473,7 @@ x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
-  \nx-ms-version:2017-04-17\n/contosorest/container-1\ncomp:list\nrestype:container
+  \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
 **Authorization ヘッダー:**
@@ -497,7 +494,7 @@ GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=
 
 ```
 x-ms-date: Fri, 17 Nov 2017 05:16:48 GMT
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Authorization: SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
@@ -510,7 +507,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 7e9316da-001e-0037-4063-5faf9d000000
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```

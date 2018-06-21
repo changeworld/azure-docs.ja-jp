@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 2780438e715b6f6cb04d820c02d09f14e14b480f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638502"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする
 
@@ -27,7 +28,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Azure Portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
+[Azure portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -184,4 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>次の手順
 
-[イベントへの応答](reacting-to-media-services-events.md)
+[イベントへの応答](reacting-to-media-services-events.md)## 関連項目
+
+## <a name="see-also"></a>関連項目
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

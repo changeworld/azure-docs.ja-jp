@@ -2,23 +2,20 @@
 title: Azure Cosmos DB で地理空間データを扱う | Microsoft Docs
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 858d6c2154a74a6e5fe16c9392827cc8a6354f9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611369"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
@@ -98,7 +95,7 @@ GeoJSON は、Point に加え、LineString と Polygon をサポートしてい�
 GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間位置をグループ化したり、位置情報を持った任意のプロパティを **Feature**として関連付けたりする場合の表現方法も規定されています。 これらのオブジェクトは有効な JSON であるため、いずれも Azure Cosmos DB で保存および処理できます。 ただし、Azure Cosmos DB では、ポイントのインデックス自動作成のみがサポートされています。
 
 ### <a name="coordinate-reference-systems"></a>座標参照系
-地球の形状は不規則であるため、地理空間データの座標は多く座標参照系 (CRS) で表され、それぞれ独自の基準系と測定単位が存在します。 たとえば、"National Grid of Britain" は、英国ではきわめて精度の高い座標系ですが、英国外では精度が下がります。 
+地球の形状は不規則であるため、地理空間データの座標は多く座標参照系 (CRS) で表され、それぞれ独自の基準系と測定単位が存在します。 たとえば、"National Grid of Britain" は、イギリスでは精度の高い座標系ですが、イギリス外では精度が下がります。 
 
 今日使われている最も一般的な CRS は、世界測地系の [WGS-84](http://earth-info.nga.mil/GandG/wgs84/) です。 WGS-84 は、GPS 装置や、多くの地図サービス (Google マップ、Bing マップの API など) で使用されています。 Azure Cosmos DB でサポートされるのは、WGS-84 CRS を使用した地理空間データのインデックスとクエリだけです。 
 
@@ -391,7 +388,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 > 
 
 ## <a name="next-steps"></a>次の手順
-Azure Cosmos DB の地理空間機能の基本的な使い方を身に付けたら、次の段階に進みましょう。
+Azure Cosmos DB の地理空間機能の基本的な使い方を学んだら、次の段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する

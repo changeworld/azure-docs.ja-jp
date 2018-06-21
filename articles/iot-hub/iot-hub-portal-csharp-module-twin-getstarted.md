@@ -1,26 +1,20 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (ポータルと .NET) の概要 | Microsoft Docs
 description: モジュール ID を作成し、ポータルと .NET を使用してモジュール ツインを更新する方法について説明します。
-services: iot-hub
-documentationcenter: .net
-author: chrissie926
+author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30a53620a640b0122286a6ac69c0f98cd0bbde40
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b4502dfc8f856516989326c8d748a5d13fdba02b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361690"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634592"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -74,7 +68,7 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
     ![Visual Studio プロジェクトの作成][13]
 
-2. **Azure IoT Hub .NET device SDK V1.16.0-preview-005 をインストールする** - 現在、モジュール ID とモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 V1.16.0-preview-005 バージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
+2. **最新の Azure IoT Hub .NET デバイス SDK をインストールする** - 現在、モジュール ID とモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 最新のバージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
 
     ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする][14]
 

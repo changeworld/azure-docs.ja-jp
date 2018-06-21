@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5c37a693e1594f9afe40effba45d7b05a68fd49c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 152cf0c8504205e09b075714a58811d240ab431c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598302"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。

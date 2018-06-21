@@ -1,18 +1,17 @@
 ---
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery で Azure への VMware ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 06/04/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 64f5f2105a9048d649503b0790231676182a4c4f
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737505"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287407"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware VM 用の構成サーバーの管理
 

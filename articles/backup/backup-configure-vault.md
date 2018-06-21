@@ -1,28 +1,23 @@
 ---
-title: Azure Backup エージェントを使用したファイルとフォルダーのバックアップ | Microsoft Docs
+title: Azure Backup エージェントを使用したファイルとフォルダーのバックアップ
 description: Microsoft Azure Backup エージェントを使用して、Windows のファイルとフォルダーを Azure にバックアップします。 Recovery Services コンテナーの作成、Backup エージェントのインストール、バックアップ ポリシーの定義、ファイルとフォルダーの初回バックアップを行います。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;
-ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/5/2018
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 38f98a29edc2a0bfb0141a0a6fabad2727175f29
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: markgal
+ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606259"
 ---
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする
-この記事では、Resource Manager デプロイメント モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
+# <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルで Windows Server または Windows クライアントを Azure にバックアップする
+この記事では、Resource Manager デプロイ モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
 
 ![バックアップ プロセスの手順](./media/backup-configure-vault/initial-backup-process.png)
 
@@ -48,7 +43,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
     ![Recovery Services コンテナーの作成手順 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
 5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
@@ -219,8 +214,8 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。 **[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
 
     ネットワーク経由で自動的にバックアップことも、オフラインでバックアップすることもできます。 この記事の残りの部分では、自動バックアップのプロセスについて説明します。 オフライン バックアップを実行する場合は、「 [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md) 」で詳細を確認してください。
-10. [確認] ページで情報を確認し、 **[完了]**をクリックします。
-11. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]**をクリックします。
+10. [確認] ページで情報を確認し、 **[完了]** をクリックします。
+11. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
 
 ### <a name="enable-network-throttling"></a>ネットワーク調整の有効化
 Microsoft Azure Backup エージェントは、ネットワーク調整を提供します。 調整では、データ転送中にネットワーク帯域幅をどのように使用するかを制御します。 データのバックアップを業務時間中に行う必要があり、バックアップ処理が他のインターネット トラフィックに影響を与えないようにする場合などに、この制御は便利です。 調整はバックアップと復元のアクティビティに適用されます。
@@ -240,14 +235,14 @@ Microsoft Azure Backup エージェントは、ネットワーク調整を提供
     ![Network throttling](./media/backup-configure-vault/throttling-dialog.png)
 3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
 
-    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]**の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外の時間は、作業時間外と見なされます。
+    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]** の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外の時間は、作業時間外と見なされます。
 4. Click **OK**.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>初回のファイルとフォルダーをバックアップするには
 1. Backup エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
 
     ![Windows Server を今すぐバックアップする](./media/backup-configure-vault/backup-now.png)
-2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]**をクリックします。
+2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 3. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 
 初回バックアップが完了すると、 **[ジョブは完了しました]** 状態が Backup コンソールに表示されます。

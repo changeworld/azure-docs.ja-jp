@@ -5,16 +5,16 @@ services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/09/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6e282291a6e6e219bb275dd4da91f3815590adc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 075e04db27006719ec7d6e08eb2696436d1010f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32196005"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648651"
 ---
 # <a name="dtu-based-purchasing-model-for-azure-sql-database"></a>Azure SQL Database の DTU ベースの購入モデル 
 
@@ -38,7 +38,7 @@ ms.locfileid: "32196005"
 データベース スループット ユニット (DTU) は、CPU、メモリ、読み取り、書き込みの測定値を組み合わせて算出されます。 DTU ベースの購入モデルは、事前構成済みコンピューティング リソースと付属ストレージのバンドル セットを提供することで、さまざまなレベルのアプリケーション パフォーマンスを実現します。 事前構成済みバンドルと毎月支払う料金が決まっているというシンプルさを好むお客様については、この DTU ベースのモデルがニーズに適している可能性があります。 DTU ベースの購入モデルでは、[単一データベース](sql-database-single-database-resources.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が **Basic**、**Standard**、**Premium** のいずれかのサービス レベルを選択できます。 サービス レベルは、固定の付属ストレージ容量、固定のバックアップ リテンション期間、および固定の価格を持つさまざまなパフォーマンス レベルによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでパフォーマンス レベルを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルおよびパフォーマンス レベルに基づいて、時間単位で課金されます。
 
 > [!IMPORTANT]
-> SQL Database マネージ インスタンスは、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database マネージ インスタンスに関するページ](sql-database-managed-instance.md)を参照してください。 
+> SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。 
 
 ## <a name="choosing-a-service-tier-in-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルでのサービス レベルの選択
 
@@ -81,9 +81,9 @@ ms.locfileid: "32196005"
 ||||||
 
 > [!IMPORTANT]
-> -  付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
-> -  Premium レベルでは、1 TB を超えるストレージは、現時点では次のリージョンで利用できます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
-
+> - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
+> - 英国北部、米国中西部、英国南部 2、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 利用可能なリージョンは今後拡大予定です。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 
 エラスティック プールに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels)に関するページをご覧ください。
 
 

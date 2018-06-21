@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: a558a5f4f1e19be7b15721c8f99dc5a2d7b396bc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b9bdc3f4a0f7eb20b1c0cbc33fb257577da08c26
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598489"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>Azure リソース マネージャーを使用した内部ロード バランサー (ILB) での Application Gateway の作成
-
-> [!div class="op_single_selector"]
-> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ilb.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-ilb-arm.md)
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>内部ロード バランサー (ILB) を使用した Application Gateway の作成
 
 Azure Application Gateway は、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。 ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。 また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または Secure Sockets Layer (SSL) ターミネーションが必要です。
 

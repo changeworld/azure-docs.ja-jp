@@ -1,25 +1,20 @@
 ---
-title: Azure における VM バックアップ インフラストラクチャの計画を立てる | Microsoft Docs
+title: Azure における VM バックアップ インフラストラクチャの計画を立てる
 description: Azure で仮想マシンをバックアップする計画を立てる際の重要な考慮事項
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: VM のバックアップ、仮想マシンのバックアップ
-ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk;sogup
-ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: markgal
+ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606088"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Azure における VM バックアップ インフラストラクチャの計画を立てる
 この記事では、パフォーマンスとリソースに関する提案を行い、VM のバックアップ インフラストラクチャを計画するお手伝いをします。 さらに、Backup サービスの主要な側面を定義します。これらの側面は、アーキテクチャの決定、容量計画、スケジューリングの際の重要な要素になることがあります。 [必要な環境の準備](backup-azure-arm-vms-prepare.md)が済んだら、[VM のバックアップ](backup-azure-arm-vms.md)を開始する前に行う次の手順は計画の作成です。 Azure 仮想マシンについて詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。
@@ -119,7 +114,7 @@ Azure で VM をバックアップする場合、オンプレミスにデプロ�
 * VM バックアップを非ピーク時にスケジュールします。 こうすれば、バックアップ サービスは IOPS を、ユーザーのストレージ アカウントからコンテナーへデータを転送するために使用します。
 * ポリシーが、異なるストレージ アカウントに分散されている VM にも適用されることを確認します。 1 つのストレージ アカウント内で同じバックアップ スケジュールによって保護されるディスクは、20 個以下がお勧めです。 1 つのストレージ アカウント内に 20 を超えるディスクがある場合は、それらの VM を複数のポリシーに分散させることで、必要な IOPS をバックアップ プロセスの転送フェーズ中に実現できます。
 * Premium ストレージで実行されている VM を同じストレージ アカウントに復元しないでください。 復元操作のプロセスがバックアップ操作と重なった場合は、バックアップ用の IOPS が減ります。
-* Premium VM バックアップでは、バックアップが成功するために、Premium ディスクをホストするストレージ アカウントにスナップショットをステージングするための空き領域が 50% 以上あることを確認してください。 
+* VM バックアップ スタック V1 の Premium VM バックアップには、Microsoft Azure Backup がスナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送できるように、ストレージ アカウントの合計領域の 50% のみを割り当てることをお勧めします。
 * バックアップ用に有効になっている Linux VM の該当の Python のバージョンが 2.7 であることを確認してください。
 
 ## <a name="data-encryption"></a>データの暗号化

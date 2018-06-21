@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 16757af0bab7cfd43488118f62300fb167c193a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cd3f947bfc44055bfec4198a1e7c6a9bb2fab5d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642626"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
 ソフトウェア開発者にとって、アプリケーションを構成要素化することは新しい手法ではありません。 これは、オブジェクト指向、ソフトウェア抽象化、コンポーネント化の中心的なパラダイムです。 今日、この手法では、共有ライブラリとテクノロジ層間のクラスやインターフェイスという形態が取られる傾向にあります。 通常、バックエンド ストア、ミドル層ビジネス ロジック、フロントエンド ユーザー インターフェイス (UI) による階層型のアプローチで行われています。 ここ数年で変化*した*ことは、開発者がビジネス主導のクラウドのために分散アプリケーションを構築しているということです。

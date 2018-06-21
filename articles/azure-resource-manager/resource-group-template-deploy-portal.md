@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: c2232e1ce92eb6198b22bad22b8c3e10bab6bf12
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603728"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
 このトピックでは、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 1. 空のリソース グループを作成するには、**[リソース グループ]** を選択します。
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 05/20/2018
 
 1. 選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。 すべての種類で、対象リソース グループを選択する必要があります。 次の画像は、Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
 
-   ![Create resource group](./media/resource-group-template-deploy-portal/select-existing-group.png)
+   ![リソース グループの作成](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
    また、リソースをデプロイするときにリソース グループを作成することもできます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
 
@@ -113,7 +114,7 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>アカウントに保存されたテンプレートからリソースをデプロイする
 
-ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。 保存したテンプレートの操作の詳細については、「 [Azure ポータルでプライベート テンプレートを使ってみる](../marketplace-consumer/mytemplates-getstarted.md)」を参照してください。
+ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。 テンプレートの詳細については、「[初めての Azure Resource Manager テンプレートを作成およびデプロイする](resource-manager-create-first-template.md)」を参照してください。
 
 1. 保存したテンプレートを検索するには、**[その他のサービス]** を選択します。
 
@@ -135,4 +136,4 @@ ms.lasthandoff: 05/20/2018
 * 監査ログの表示については、「 [Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 * デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * デプロイまたはリソース グループからテンプレートを取得するには、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
-* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
+* 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。

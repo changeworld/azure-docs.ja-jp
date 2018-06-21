@@ -6,15 +6,16 @@ ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
-author: douglaslMS
-ms.author: douglasl
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: dc61d9d5e1a2f2ccae09f77d80aca08ebfb59047
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e0bbd504b47a3b599022049c984c6dd59a6d0a0b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299650"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266772"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 

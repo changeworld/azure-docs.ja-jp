@@ -1,25 +1,20 @@
 ---
-title: Windows ファイルとフォルダ―を Azure にバックアップする (Resource Manager) | Microsoft Docs
+title: Windows ファイルとフォルダーを Azure にバックアップする (Resource Manager)
 description: Resource Manager デプロイで Windows のファイルとフォルダーを Azure にバックアップする方法について説明します。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: バックアップ方法; バックアップ方法; ファイルとフォルダーのバックアップ
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 8/15/2017
-ms.author: markgal;
-ms.openlocfilehash: 55f83bda1a9de9274194ec220fa9a4a5c8b7f0fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: markgal
+ms.openlocfilehash: 7abdf06d1b5a4361da9ddb75cec01d6fd1630d08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606972"
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>最初に: Resource Manager デプロイメントでのファイルとフォルダーのバックアップ
 この記事では、Resource Manager デプロイメントを使用して、Windows Server (または Windows コンピューター) のファイルとフォルダーを Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。 この記事は、Azure Backup を始めて使用する場合に適しています。
@@ -46,7 +41,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
     ![Recovery Services コンテナーの作成手順 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
 5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
@@ -184,12 +179,12 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 1. Microsoft Azure Recovery Services エージェントを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
 
     ![Launch the Azure Recovery Services agent](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
-2. Recovery Services エージェントで、 **[バックアップのスケジュール]**をクリックします。
+2. Recovery Services エージェントで、 **[バックアップのスケジュール]** をクリックします。
 
     ![Windows Server のバックアップのスケジュール](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
-3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
-4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
-5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
+3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]** をクリックします。
+4. [バックアップする項目の選択] 画面で、 **[項目の追加]** をクリックします。
+5. バックアップするファイルとフォルダーを選択し、 **[OK]** をクリックします。
 6. **[次へ]** をクリックします。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
@@ -207,14 +202,14 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。 **[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
 
     ネットワーク経由で自動的にバックアップことも、オフラインでバックアップすることもできます。 この記事の残りの部分では、自動バックアップのプロセスについて説明します。 オフライン バックアップを実行する場合は、「 [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md) 」で詳細を確認してください。
-10. [確認] ページで情報を確認し、 **[完了]**をクリックします。
-11. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]**をクリックします。
+10. [確認] ページで情報を確認し、 **[完了]** をクリックします。
+11. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>初回のファイルとフォルダーをバックアップするには
 1. Recovery Services エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
-2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]**をクリックします。
+2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 3. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 
 初回バックアップが完了すると、 **[ジョブは完了しました]** 状態が Backup コンソールに表示されます。

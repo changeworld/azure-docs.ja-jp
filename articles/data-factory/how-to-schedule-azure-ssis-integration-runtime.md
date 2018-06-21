@@ -3,22 +3,22 @@ title: Azure SSIS 統合ランタイムをスケジュール設定する方法 |
 description: この記事では、Azure Automation とデータ ファクトリを使用して、Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/01/2018
-ms.author: douglasl
-ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297796"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266823"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Azure SSIS 統合ランタイムをスケジュールに従って起動および停止する方法
 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には関連したコストがかかります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。

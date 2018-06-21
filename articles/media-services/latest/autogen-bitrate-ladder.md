@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 5d13c711d7d71df7469e6408ce78cf0df611632b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e447c04f4a94f2fb534ecb0605595a90816431e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638298"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>自動生成されたビットレート ラダーでエンコードする
 
@@ -27,13 +28,13 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="encoding-for-streaming"></a>ストリーミングのエンコード
 
-エンコード Transform を作成するときに **AdaptiveStreaming** プリセットを使用すると、その名前が示唆するように、HLS、DASH、CMAF などのストリーミング プロトコルでの配信に適した出力を取得します。**AdaptiveStreaming** プリセットを使用すると、エンコーダーによって、どのビット レートと解像度で何層のビデオ レイヤーを生成するかがインテリジェントに決定されます。 出力資産には、AAC でエンコードされたオーディオと H.264 でエンコードされたビデオがインターリーブされていない MP4 ファイルが含まれます。
+**Transform** の **AdaptiveStreaming** プリセットを使用すると、HLS、DASH などのストリーミング プロトコルでの配信に適した出力を取得します。 このプリセットを使用すると、どのビット レートと解像度で何層のビデオ レイヤーを生成するかが、サービスによりインテリジェントに決定されます。 出力コンテンツには、AAC でエンコードされたオーディオと H.264 でエンコードされたビデオがインターリーブされていない MP4 ファイルが含まれます。
 
 このプリセットの使用方法の例については、[ファイルのストリーミング](stream-files-dotnet-quickstart.md)に関する記事を参照してください。
 
 ## <a name="output"></a>出力
 
-このセクションでは、**AdaptiveStreaming** プリセットによるエンコードの結果として Media Services エンコーダーによって生成される出力レイヤーの 3 つの例を示します。 どの場合でも、出力には、128 kbps でエンコードされたステレオ 音声を含む音声のみの MP4 ファイルが含まれます。
+このセクションでは、**AdaptiveStreaming** プリセットによるエンコードの結果として Media Services エンコーダーによって生成される出力レイヤーの 3 つの例を示します。 どの場合でも、出力には、128 kbps でエンコードされたステレオ音声を含む音声のみの MP4 ファイルが含まれます。
 
 ### <a name="example-1"></a>例 1
 高さが "1080" でフレーム レートが "29.970" のソースからは、6 層のビデオ レイヤーが生成されます。

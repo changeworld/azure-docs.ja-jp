@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4fa610f144277b73bb6d555d46e63a01c413e07e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603078"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
@@ -38,17 +39,17 @@ ms.lasthandoff: 05/20/2018
 }
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | $schema |[はい] |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 前の例に示されている URL を使用します。 |
-| contentVersion |[はい] |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
+| contentVersion |[はい] |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | parameters |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
 | variables |いいえ  |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
 | functions |いいえ  |テンプレート内で使用できるユーザー定義関数。 |
 | resources |[はい] |リソース グループ内でデプロイまたは更新されるリソースの種類。 |
 | outputs |いいえ  |デプロイ後に返される値。 |
 
-各要素には、設定できるプロパティが含まれています。 次の例には、テンプレートの完全な構文が含まれています。
+各要素には、設定できるプロパティがあります。 次の例には、テンプレートの完全な構文があります。
 
 ```json
 {

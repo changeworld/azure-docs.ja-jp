@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/03/2018
 ms.author: glenga
-ms.openlocfilehash: 523ef25fe0d3227d526acbdee2c7cf2660fc4f25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5613b6b30d97b88bdfa6b00f90e334f1756ad614
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294496"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -63,9 +64,9 @@ npm install -g azure-functions-core-tools
 
 3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
-  ```bash
-  npm install -g azure-functions-core-tools@core
-  ```
+    ```bash
+    npm install -g azure-functions-core-tools@core
+    ```
 
 #### <a name="brew"></a>Homebrew による MacOS
 
@@ -73,9 +74,9 @@ npm install -g azure-functions-core-tools
 
 1. [macOS 用 .NET Core 2.0 ](https://www.microsoft.com/net/download/macos)をインストールします。
 
-1. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
+2. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
 
-2. 次のコマンドを使って、Core Tools のパッケージをインストールします。
+3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
     ```bash
     brew tap azure/functions
@@ -88,42 +89,43 @@ npm install -g azure-functions-core-tools
 
 1. [Linux 用 .NET Core 2.0 ](https://www.microsoft.com/net/download/linux)をインストールします。
 
-1. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
+2. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
 
-  ```bash
-  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-  ```
+    ```bash
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    ```
 
-2.  次のコマンドの `<version>` を以下の表の適切なバージョン名に変更して、パッケージ フィードを設定します。
+3. Ubuntu サーバーで、次の表の該当するバージョンのいずれかが実行されていることを確認します。 apt ソースを追加するには、次のコマンドを実行します。
 
-  ```bash
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
-  sudo apt-get update
-  ```
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo apt-get update
+    ```
 
-  | Linux ディストリビューション | `<version>` |
-  | --------------- | ----------- |
-  | Ubuntu 17.10    | `artful`    |
-  | Ubuntu 17.04    | `zesty`     |
-  | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+    | Linux ディストリビューション | バージョン |
+    | --------------- | ----------- |
+    | Ubuntu 17.10    | `artful`    |
+    | Ubuntu 17.04    | `zesty`     |
+    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
-3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
+4. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
-  ```bash
-  sudo apt-get install azure-functions-core-tools
-  ```
+    ```bash
+    sudo apt-get install azure-functions-core-tools
+    ```
 
 ## <a name="run-azure-functions-core-tools"></a>Azure Functions Core Tools の実行
- 
+
 Azure Functions Core Tools で追加されるコマンドのエイリアスを次に示します。
-* **func**
-* **azfun**
-* **azurefunctions**
+
++ **func**
++ **azfun**
++ **azurefunctions**
 
 これらすべてのエイリアスは、`func` が例に示されている場所で使用できます。
 
-```
+```bash
 func init MyFunctionProj
 ```
 
@@ -133,13 +135,13 @@ func init MyFunctionProj
 
 ターミナル ウィンドウまたはコマンド プロンプトで、次のコマンドを実行してプロジェクトおよびローカルの Git リポジトリを作成します。
 
-```
+```bash
 func init MyFunctionProj
 ```
 
 出力は次のテキストのようになります。
 
-```
+```output
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
@@ -151,7 +153,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 ## <a name="register-extensions"></a>拡張機能を登録する
 
-Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用する[バインディング拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)を明示的に登録する必要があります。 
+Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用するバインディング拡張機能 (バインディングの種類) を明示的に登録する必要があります。
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
@@ -165,8 +167,9 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 {
   "IsEncrypted": false,   
   "Values": {
-    "AzureWebJobsStorage": "<connection string>", 
-    "AzureWebJobsDashboard": "<connection string>" 
+    "AzureWebJobsStorage": "<connection-string>", 
+    "AzureWebJobsDashboard": "<connection-string>",
+    "MyBindingConnection": "<binding-connection-string>"
   },
   "Host": {
     "LocalHttpPort": 7071, 
@@ -177,16 +180,17 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
   }
 }
 ```
-| Setting      | [説明]                            |
+
+| Setting      | 説明                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
-| **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。 多くのトリガーおよびバインドには、BLOB Storage トリガーの **Connection** など、アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 また、このことは、`%AppSettingName%` のようにパーセント記号で値をラッピングしてアプリ設定名に設定される、任意のバインド プロパティにも該当します。 |
-| **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 | 
+| **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらは、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
+| **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
 | **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
 | **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
-| **ConnectionStrings** | 関数のデータベース接続文字列が含まれています。 このオブジェクト内の接続文字列は、**System.Data.SqlClient** のプロバイダーの種類と共に、環境に追加されます。  | 
+| **ConnectionStrings** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得する必要があるフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 関数アプリの**アプリケーション設定**の**接続文字列**セクションに、これらの値を明示的に追加する必要があります。 |
 
-この設定は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
+関数アプリの設定値は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
 
 + [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
 + [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
@@ -194,26 +198,37 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-local.settings.json ファイル内の設定は、ローカルで実行されている Functions ツールでのみ使用されます。 既定では、プロジェクトが Azure に発行されても、これらの設定は自動的に移行されません。 [発行する際](#publish)に `--publish-local-settings` スイッチを使用して、これらの設定が Azure 内の関数アプリに追加されていることを確認してください。
+local.settings.json ファイル内の設定は、ローカルで実行されている Functions ツールでのみ使用されます。 既定では、プロジェクトが Azure に発行されても、これらの設定は自動的に移行されません。 [発行する際](#publish)に `--publish-local-settings` スイッチを使用して、これらの設定が Azure 内の関数アプリに追加されていることを確認してください。 **ConnectionStrings** 内の値は発行されません。
 
-有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されていない場合は、次のエラー メッセージが表示されます。  
+有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されておらず、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。  
 
 >local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings <functionAppName>" を実行するか、local.settings.json で接続文字列を指定することができます。
-  
-[!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
 
-### <a name="configure-app-settings"></a>アプリケーションの設定の構成
+### <a name="get-your-storage-connection-strings"></a>ストレージ接続文字列の取得
 
-接続文字列の値を設定するには、次のいずれかのオプションを構成します。
-* [Azure Storage Explorer](http://storageexplorer.com/) で、接続文字列を入力します。
-* 次のコマンドのいずれかを使用します。
+開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
-    ```
++ [Azure Portal]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
+
+  ![Azure Portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
+
++ [Azure Storage Explorer](http://storageexplorer.com/) を使用して、Azure アカウントに接続します。 **Explorer** でサブスクリプションを展開し、ストレージ アカウントを選択して、プライマリまたはセカンダリの接続文字列をコピーします。 
+
+  ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
+
++ Core Tools を使用して、次のコマンドのいずれで Azure から接続文字列をダウンロードします。
+
+    + 既存の関数アプリからすべての設定をダウンロードします。
+
+    ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    ```
+    + 特定のストレージ アカウントの接続文字列を取得します。
+
+    ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
+    
     どちらのコマンドも、最初に Azure にサインインする必要があります。
 
 <a name="create-func"></a>
@@ -221,12 +236,12 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
 
 関数を作成するには、次のコマンドを実行します。
 
-```
+```bash
 func new
 ``` 
 `func new` では、次の省略可能な引数がサポートされています。
 
-| 引数     | [説明]                            |
+| 引数     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--language -l`** | テンプレート プログラミング言語。C#、F#、JavaScript など。 |
 | **`--template -t`** | テンプレート名。 |
@@ -234,27 +249,27 @@ func new
 
 たとえば、JavaScript HTTP トリガーを作成するには、次を実行します。
 
-```
+```bash
 func new --language JavaScript --template "Http Trigger" --name MyHttpTrigger
 ```
 
 キューによってトリガーされる関数を作成するには、次を実行します。
 
-```
+```bash
 func new --language JavaScript --template "Queue Trigger" --name QueueTriggerJS
-```
+```bash
 <a name="start"></a>
-## <a name="run-functions-locally"></a>関数をローカルで実行する
+## Run functions locally
 
-Functions プロジェクトを実行するには、Functions ホストを実行します。 ホストによって、プロジェクトのすべての関数に対するトリガーが有効になります。
+To run a Functions project, run the Functions host. The host enables triggers for all functions in the project:
 
-```
+```bash
 func host start
 ```
 
 `func host start` では、次のオプションがサポートされています。
 
-| オプション     | [説明]                            |
+| オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
 | **`--debug <type>`** | オプションは `VSCode` と `VS` です。 |
@@ -267,7 +282,7 @@ func host start
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
 
-```
+```bash
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
@@ -275,7 +290,7 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="debug-in-vs-code-or-visual-studio"></a>VS Code または Visual Studio でのデバッグ
+### <a name="vs-debug"></a>VS Code または Visual Studio でのデバッグ
 
 デバッガーをアタッチするには、`--debug` 引数を渡します。 JavaScript 関数をデバッグするには、Visual Studio Code を使用します。 C# 関数については、Visual Studio を使用します。
 
@@ -283,7 +298,7 @@ C# 関数をデバッグするには、`--debug vs` を使用します。 また
 
 ホストを起動して、JavaScript のデバッグを設定するには、次を実行します。
 
-```
+```bash
 func host start --debug vscode
 ```
 
@@ -313,12 +328,12 @@ Functions ホストがリッスンしているのと同じサーバー名とポ�
 
 次の cURL コマンドは、`MyHttpTrigger` クイックスタート関数を、クエリ文字列で渡された _name_ パラメーターを使用して、GET 要求からトリガーします。 
 
-```
+```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 次の例は、要求本文で _name_ を渡す POST 要求から呼び出される同じ関数です。
 
-```
+```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
@@ -340,7 +355,7 @@ HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、
 ```` 
 `<trigger_input>` 値には、関数が必要とする形式でデータが含まれています。 次の cURL の例は、`QueueTriggerJS` 関数に対する POST です。 この場合、入力は、キューにあることが期待されるメッセージに相当する文字列です。      
 
-```
+```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
@@ -353,7 +368,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` では、次のオプションがサポートされています。
 
-| オプション     | [説明]                            |
+| オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | インライン コンテンツ。 |
 | **`--debug -d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
@@ -363,7 +378,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 たとえば、HTTP によってトリガーされる関数を呼び出して、コンテンツ本文を渡すには、次のコマンドを実行します。
 
-```
+```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
@@ -375,15 +390,15 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Azure で Functions プロジェクトを関数アプリに発行するには、`publish` コマンドを使用します。
 
-```
+```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
 以下のオプションを使用できます。
 
-| オプション     | [説明]                            |
+| オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。|
+| **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。 ストレージ エミュレーターを使用している場合は、アプリ設定を[実際のストレージ接続](#get-your-storage-connection-strings)に変更します。 |
 | **`--overwrite-settings -y`** | `-i` で使用する必要があります。 値が異なる場合は、Azure の AppSettings をローカル値で上書きします。 既定値は prompt です。|
 
 このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。

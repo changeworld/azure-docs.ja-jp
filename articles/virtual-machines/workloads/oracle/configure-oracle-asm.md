@@ -1,13 +1,13 @@
 ---
-title: "Azure Linux 仮想マシンで Oracle ASM をセットアップする | Microsoft Docs"
-description: "Azure 環境で Oracle ASM をすばやく稼動させます。"
+title: Azure Linux 仮想マシンで Oracle ASM をセットアップする | Microsoft Docs
+description: Azure 環境で Oracle ASM をすばやく稼動させます。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656111"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 

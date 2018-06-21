@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248811"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231612"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
@@ -39,7 +39,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [自動バックアップ](sql-database-automated-backups.md) | [はい] | [はい] |
 | [自動チューニング (プランの強制)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| [はい](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [自動チューニング (インデックス)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| いいえ  |
-| [BACPAC ファイル (エクスポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | ○ - [SQL Database のエクスポート](sql-database-export.md)に関する記事を参照してください | [はい] |
+| [BACPAC ファイル (エクスポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | ○ - [SQL Database のエクスポート](sql-database-export.md)に関する記事を参照してください | いいえ  |
 | [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | ○ - [SQL Database のインポート](sql-database-import.md)に関する記事を参照してください | いいえ  |
 | [BACKUP コマンド](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | いいえ、システムによって開始された自動バックアップのみ - [自動バックアップ](sql-database-automated-backups.md)に関するページを参照してください | システムによって開始された自動バックアップと、ユーザーによって開始されたコピー専用バックアップ - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)に関するページを参照してください |
 | [組み込み関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
@@ -71,8 +71,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [DML トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  [はい] |
 | [DMV](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 |[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[はい](sql-database-dynamic-data-masking-get-started.md)| [はい](sql-database-dynamic-data-masking-get-started.md) |
-| 
-  [エラスティック プール](sql-database-elastic-pool.md) | [はい] | 組み込み - 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます |
+| [エラスティック プール](sql-database-elastic-pool.md) | [はい] | 組み込み - 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます |
 | [イベント通知](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | × - [アラート](sql-database-insights-alerts-portal.md)に関する記事を参照してください | [はい] |
 | [式](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |[はい] | [はい] |
 | [拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md)」を参照してください | はい - [拡張イベントの相違点](sql-database-managed-instance-transact-sql-information.md#extended-events)を参照してください |

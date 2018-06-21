@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643034"
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors のバックアップよび復元
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -153,7 +154,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 > 
 
 ## <a name="deleted-or-lost-service"></a>サービスの削除または損失
-サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` を使用することです。  
+サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。  データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。  サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の `OnDataLossAsync`) を呼び出す必要があります。 その方法の 1 つは、すべてのパーティションで [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) を使用することです。  
 
 この点から、実装は上記のシナリオと同じになります。 各パーティションで、外部ストアから最新の関連バックアップを復元する必要があります。 ここで注意する点は、ランタイムが動的にパーティション ID を作成するため、パーティション ID が変更されている可能性があることです。 そのため、各パーティションで復元する正しい最新のバックアップを識別するために、サービスでパーティション情報とサービス名を保存する必要があります。
 

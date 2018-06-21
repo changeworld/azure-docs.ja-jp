@@ -1,11 +1,11 @@
 ---
-title: "Azure 内の Linux 上にある Cassandra クラスターを Node.js から実行する"
-description: "Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
+title: Azure 内の Linux 上にある Cassandra クラスターを Node.js から実行する
+description: Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5d800daa2589effe342cb2bf8b1d59d7bfce6d8c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652840"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -355,7 +356,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -498,7 +499,7 @@ Azure の仮想ネットワークのローカル ネットワークは、プラ�
 ### <a name="step-3-map-local-network-to-the-respective-vnets"></a>手順 3. "ローカル" ネットワークを各 VNET にマップ
 Azure Portal から、各 VNET を選択し、[構成] をクリックして、[ローカル ネットワークに接続する] をチェックして、次の情報にしたがってローカル ネットワークを選択します。
 
-| 仮想ネットワーク | ローカル ネットワーク |
+| Virtual Network | ローカル ネットワーク |
 | --- | --- |
 | hk-vnet-west-us |hk-lnet-map-to-east-us |
 | hk-vnet-east-us |hk-lnet-map-to-west-us |

@@ -9,16 +9,16 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 6d107b9264a80c7b280ffed9a50b7bb0ffe354be
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365527"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809262"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
 
-この記事は、組織が完全な Azure Active Directory (Azure AD) ハイブリッド ID ソリューションを実装するのに役立つ一連の記事の、最初のものです。 このソリューションは、ハイブリッド ID デジタル変換フレームワークとして大枠が決められています。 堅牢かつ安全なハイブリッド ID ソリューションを実装するために組織が注力できる、ビジネスに関する成果と目標が扱われます。 
+この記事は、組織が完全な Azure Active Directory (Azure AD) ハイブリッド ID ソリューションを実装するのに役立つ一連の記事の、最初のものです。 このソリューションは、[ハイブリッド ID デジタル変換フレームワーク](https://aka.ms/aadframework)として大枠が決められています。 堅牢かつ安全なハイブリッド ID ソリューションを実装するために組織が注力できる、ビジネスに関する成果と目標が扱われます。 
 
 フレームワークの最初のビジネス成果では、ユーザーがクラウド アプリにアクセスするときに組織が認証プロセスをセキュリティで保護するための要件が詳しく説明されています。 認証でセキュリティ保護されたビジネス成果の最初のビジネス目標は、ユーザーがオンプレミスのユーザー名とパスワードを使用してクラウド アプリにサインインできるようにすることです。 このサインイン プロセスとユーザー認証方法により、クラウド内でのすべてのことが可能になります。
 
@@ -167,7 +167,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |多要素認証のオプション|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Azure MFA サーバー](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[サード パーティの MFA](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
 |サポートされるユーザー アカウントの状態|無効なアカウント<br>(最大 30 分の遅延)|無効なアカウント<br><br>アカウントのロックアウト<br><br>パスワード期限切れ<br><br>サインイン時間|無効なアカウント<br><br>アカウントのロックアウト<br><br>パスワード期限切れ<br><br>サインイン時間|
 |条件付きアクセスのオプション|[Azure AD 条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件付きアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS の要求規則](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|サポートされる従来のプロトコルのブロック|いいえ |いいえ |[はい](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|サポートされる従来のプロトコルのブロック|[はい](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[はい](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[はい](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |サインイン ページのロゴ、イメージ、説明のカスタマイズ可能性|[Azure AD Premium を使用して可能](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Azure AD Premium を使用して可能](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[はい](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |サポートされる高度なシナリオ|[Smart Password Lockout](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[漏洩した資格情報レポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[Smart Password Lockout](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|複数サイトの低待機時間の認証システム<br><br>[AD FS エクストラネットのロックアウト](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[サード パーティの ID システムとの統合](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

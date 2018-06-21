@@ -1,30 +1,25 @@
 ---
-title: "Azure Backup Server からデータを復元する | Microsoft Docs"
-description: "Recovery Services コンテナーに保護しているデータを、そのコンテナーに登録されている任意の Azure Backup Server から回復します。"
+title: Azure Backup Server からデータを回復する
+description: Recovery Services コンテナーに保護しているデータを、そのコンテナーに登録されている任意の Azure Backup Server から回復します。
 services: backup
-documentationcenter: 
 author: nkolli1
 manager: shreeshd
-editor: 
-ms.assetid: a55f8c6b-3627-42e1-9d25-ed3e4ab17b1f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: adigan;giridham;trinadhk;markgal
-ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 8559532f873e8073e736f881374fec1c080d08c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604405"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。
 
 > [!NOTE]
-> この記事は、[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 と UR7 以降] (https://support.microsoft.com/ja-jp/kb/3065246) に適用されます。
+> この記事は、[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 と UR7 以降] (https://support.microsoft.com/en-us/kb/3065246)) に該当します。
 >
 >
 
@@ -50,13 +45,13 @@ Azure Backup Server からデータを回復するには:
     ファイルとフォルダーの一覧が下のページに表示されるので、任意の場所を参照し、そこに回復できます。
 
     ![外部 DPM サーバーの回復ポイント](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. 該当する項目を右クリックし、 **[回復]**をクリックします。
+5. 該当する項目を右クリックし、 **[回復]** をクリックします。
 
     ![外部 DPM 回復](./media/backup-azure-alternate-dpm-server/recover.png)
-6. **[回復の選択]**を確認します。 回復するバックアップ コピーの日時とバックアップ コピーの作成元を確認します。 選択が間違っている場合、 **[キャンセル]** をクリックして [回復] タブに戻り、適切な回復ポイントを選択します。 選択が正しければ、 **[次へ]**をクリックします。
+6. **[回復の選択]** を確認します。 回復するバックアップ コピーの日時とバックアップ コピーの作成元を確認します。 選択が間違っている場合、 **[キャンセル]** をクリックして [回復] タブに戻り、適切な回復ポイントを選択します。 選択が正しければ、 **[次へ]** をクリックします。
 
     ![外部 DPM 回復の概要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. **[別の場所に回復する]**を選択します。 **[参照]** で適切な回復場所を開きます。
+7. **[別の場所に回復する]** を選択します。 **[参照]** で適切な回復場所を開きます。
 
     ![外部の DPM 回復の別場所](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 8. **[コピーの作成]**、**[スキップ]**、**[上書き]** に関連付けられているオプションを選択します。
@@ -65,7 +60,7 @@ Azure Backup Server からデータを回復するには:
    * **スキップ** - 名前の競合がある場合、ファイルを回復せず、元のファイルを残します。
    * **上書き** - 名前の競合がある場合、ファイルの既存のコピーを上書きします。
 
-     **[セキュリティの復元]**のオプションを選択します。 データを復元する復元先コンピューターのセキュリティ設定または回復ポイントが作成された時点で生成物に適用されたセキュリティを適用できます。
+     **[セキュリティの復元]** のオプションを選択します。 データを復元する復元先コンピューターのセキュリティ設定または回復ポイントが作成された時点で生成物に適用されたセキュリティを適用できます。
 
      回復が正常に完了したら**通知**を送信するかどうかを確認します。
 
@@ -89,7 +84,7 @@ Azure Backup Server からデータを回復するには:
 |:---:|:--- |:--- |
 | 1. |このサーバーは資格情報コンテナーが指定するコンテナーに登録されていません。 |**原因:** 選択したコンテナー資格情報ファイルが回復対象の Azure Backup Server に関連付けられている Recovery Services コンテナーに属さないとき、このエラーが表示されます。 <br> **解決策:** Azure Backup Server が登録されている Recovery Services コンテナーからコンテナー資格情報ファイルをダウンロードします。 |
 | 2. |回復可能なデータがないか、選択したサーバーが DPM サーバーではありません。 |**原因:** 他の Azure Backup Server が Recovery Services コンテナーに登録されていないか、サーバーがまだメタデータをアップロードしていないか、選択したサーバーが Azure Backup Server (別名、Windows Server または Windows Client) ではありません。 <br> **解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。 <br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 クラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。 このデータを回復に利用できます。 |
-| 3. |このコンテナーには他の DPM サーバーが登録されていません。 |**原因:** 他の Azure Backup Server が回復元のコンテナーに登録されていません。<br>**解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。<br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 保護されたすべてのバックアップのメタデータを夜間ジョブがクラウドにアップロードします。 このデータを回復に利用できます。 |
+| 手順 3. |このコンテナーには他の DPM サーバーが登録されていません。 |**原因:** 他の Azure Backup Server が回復元のコンテナーに登録されていません。<br>**解決策:** 他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、最新の Azure Backup エージェントがインストールされていることを確認します。<br>他の Azure Backup Server が Recovery Services コンテナーに登録されている場合、インストール後 1 日待ってから、回復プロセスを開始します。 保護されたすべてのバックアップのメタデータを夜間ジョブがクラウドにアップロードします。 このデータを回復に利用できます。 |
 | 4. |指定した暗号化パスフレーズが次のサーバーに関連付けられているパスフレーズと一致しません。**<server name>** |**原因:** 回復対象の Azure Backup Server のデータからデータを暗号化する過程で使用された暗号化パスフレーズが指定した暗号化パスフレーズに一致しません。 エージェントはデータを復号できません。 そのため、回復に失敗します。<br>**解決策:** データを回復する Azure Backup Server に関連付けられている暗号化パスフレーズとまったく同じものを指定してください。 |
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

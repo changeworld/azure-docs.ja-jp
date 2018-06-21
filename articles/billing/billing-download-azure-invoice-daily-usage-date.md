@@ -2,13 +2,12 @@
 title: Azure の請求書と毎日の使用状況データをダウンロードする | Microsoft Docs
 description: Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。
 keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況
-services: ''
+services: billing
 documentationcenter: ''
 author: genlin
 manager: tonguyen
 editor: ''
 tags: billing
-ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 59ee992518b5e529f486415f962c6f26881875f1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607414"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 請求書を [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 毎日の使用状況をダウンロードするには、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスします。 請求書と使用状況データを取得するアクセス許可を持つのは、アカウント管理者などの特定のロールのみです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
 この記事は、Enterprise Agreement (EA) のお客様には適用されません。 EA のお客様でない場合、請求書が登録管理者に直接送信されます。
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>メールで請求書を入手する (.pdf)
 オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 この機能は、サポート プラン、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。
@@ -39,13 +38,18 @@ ms.lasthandoff: 05/20/2018
     
 2. **[オプトイン]** をクリックして、条項に同意します。
 
-    ![オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![手順 2 オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. 契約書に同意したら、追加の受信者を構成できます。
+3. 契約書に同意したら、追加の受信者を構成できます。 受信者を削除すると、その電子メール アドレスも削除されます。 変更する場合には、再度追加する必要があります。
 
-    ![オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![手順 3 オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
 以上の手順を実行してもメールが届かない場合は、[プロファイルの通信設定](https://account.windowsazure.com/profile)のメール アドレスが正しいことを確認してください。
+
+### <a name="opt-out-from-getting-your-invoice-in-email"></a>メールで請求書を受け取ることをオプトアウトする
+メールで請求書を受け取らないようにするには、メールの請求書に対して [オプトアウト] をクリックします。 これにより、メールで請求書を受信するよう設定されているすべてのメール アドレスが削除されます。 オプトアウトを解除する場合、受信者を再構成する必要があります。
+
+ ![オプトアウト フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Azure Portal から請求書をダウンロードする (.pdf)
 

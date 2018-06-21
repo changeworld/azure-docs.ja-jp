@@ -3,22 +3,19 @@ title: Azure Cosmos DB でのオンライン バックアップと復元 | Micro
 description: Azure Cosmos DB データベースで自動バックアップと復元を実行する方法について説明します。
 keywords: バックアップと復元、オンライン バックアップ
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 98eade4a-7ef4-4667-b167-6603ecd80b79
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dddb3311ff5db964494697d76967f74c863d84e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615038"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Azure Cosmos DB での自動オンライン バックアップと復元
 Azure Cosmos DB は、すべてのデータのバックアップを、一定の間隔で自動的に取得します。 自動バックアップは、データベース操作のパフォーマンスにも可用性にも影響を与えずに取得されます。 すべてのバックアップは別のストレージ サービスに保存され、これらのバックアップは、局地的な障害の発生時に回復機能を提供するためにグローバルにレプリケートされます。 自動バックアップは、Cosmos DB コンテナーを誤って削除した後のデータの回復やディザスター リカバリー ソリューションを必要とするシナリオを想定しています。  
@@ -57,7 +54,7 @@ SQL API では、独自のスナップショットを保持する場合、Azure 
 
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>オンライン バックアップからのデータベースの復元
-データベースまたはコレクションを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最新の自動バックアップからデータを復元できます。 データ破損の問題が原因でデータベースを復元する必要がある場合は (コレクション内のドキュメントが削除された場合も含む)、「[データ破損の処理](#handling-data-corruption)」を参照し、破損したデータによって既存のバックアップが上書きされるのを防ぐために追加の手順を実行する必要があります。 バックアップの特定のスナップショットを復元するには、復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。
+データベースまたはコレクションを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最新の自動バックアップからデータを復元できます。 Azure のサポートは、Standard、Developer などの特定のプランでのみ利用可能であり、Basic プランではご利用いただけません。 さまざまなサポート プランについては、「[Azure のサポート プラン](https://azure.microsoft.com/en-us/support/plans/)」ページを参照してください。 データ破損の問題が原因でデータベースを復元する必要がある場合は (コレクション内のドキュメントが削除された場合も含む)、「[データ破損の処理](#handling-data-corruption)」を参照し、破損したデータによって既存のバックアップが上書きされるのを防ぐために追加の手順を実行する必要があります。 バックアップの特定のスナップショットを復元するには、復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。
 
 ## <a name="handling-data-corruption"></a>データ破損の処理
 Azure Cosmos DB では、データベース アカウント内のすべてのパーティションの、最新の 2 つのバックアップが保持されます。 このモデルは、コンテナー (ドキュメントのコレクション、グラフ、テーブル)、またはデータベースが誤って削除された場合に最新のいずれかのバージョンを復元できるため優れています。 ただし、ユーザーがデータの破損の問題を招いた場合、Azure Cosmos DB がデータの破損を認識しないことがあるため、破損によって既存のバックアップが上書きされている可能性があります。 破損が検出されたらすぐに破損したコンテナー (コレクション/グラフ/テーブル) を削除し、破損したデータでバックアップが上書きされないように保護してください。

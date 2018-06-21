@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366530"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643211"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -29,14 +29,21 @@ ms.locfileid: "34366530"
 既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 ## <a name="prerequisites"></a>前提条件
-次のものを実行している開発コンピューター。
-* Visual Studio 2015 または Visual Studio 2017。
-* [Service Fabric SDK およびツール](service-fabric-get-started.md)。
-*  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
+* 次のものを実行している開発コンピューター。
+  * Visual Studio 2015 または Visual Studio 2017。
+  * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
+  *  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
 
-Windows Server 2016 上で実行されている 3 つ以上のノードがあり、コンテナーを含む Windows クラスター。[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、[無料で Service Fabric を試してください](https://aka.ms/tryservicefabric)。
+* Windows Server with Containers 上で 3 つ以上のノードを実行している Windows クラスター。 
 
-Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
+  この記事では、クラスター ノードで実行されている Windows Server with Containers のバージョン (ビルド) を、お使いの開発コンピューターのバージョンと一致させる必要があります。 これは、お使いの開発用コンピューターで Docker イメージをビルドしており、コンテナー OS のバージョンとデプロイ先のホスト OS のバージョンとの間に互換性の制約があるからです。 詳細については、「[Windows Server コンテナーの OS とホスト OS の互換性](#windows-server-container-os-and-host-os-compatibility)」を参照してください。 
+  
+  クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
+
+  * バージョンに *x.x.14323.x* が含まれている場合は、オペレーティング システムに必ず *WindowsServer 2016-Datacenter-with-Containers* を選択して[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、パーティ クラスターで [Service Fabric の無料試用版を試します](https://aka.ms/tryservicefabric)。
+  * バージョンに *x.x.16299.x* が含まれていない場合は、オペレーティング システムに必ず *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択して[クラスターを作成](service-fabric-cluster-creation-via-portal.md)します。 パーティ クラスターを使用することはできません。
+
+* Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
 > [!NOTE]
 > Windows 10 での Service Fabric クラスターまたは Docker CE がインストールされたクラスターへのコンテナーのデプロイは、サポートされていません。 このチュートリアルでは、Windows 10 で Docker エンジンを使用してローカルでテストし、最後に、Docker EE を実行する Azure で Windows Server クラスターにコンテナー サービスをデプロイします。 
@@ -203,7 +210,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 サービスは、特定のポートでリッスンしています (この例では 8081)。 Azure でアプリケーションがクラスターにデプロイされると、クラスターとアプリケーションの両方が Azure ロード バランサーの背後で実行します。 受信トラフィックがサービスを通過できるように、Azure ロード バランサーでアプリケーション ポートが開かれている必要があります。  [PowerShell スクリプト](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)または [Azure portal](https://portal.azure.com) を使用して、Azure Load Balancer でこのポートを開くことができます。
 
 ## <a name="configure-and-set-environment-variables"></a>環境変数の構成と設定
-環境変数は、サービス マニフェストのコード パッケージごとに指定できます。 この機能は、コンテナー、プロセス、またはゲスト実行可能ファイルとしてデプロイされているかどうかに関係なく、すべてのサービスで使用できます。 環境変数の値は、アプリケーション マニフェスト内で上書きすることも、デプロイ中にアプリケーションのパラメーターとして指定することもできます。
+環境変数は、サービス マニフェストのコード パッケージごとに指定できます。 この機能は、コンテナー、プロセス、またはゲスト実行可能ファイルとしてデプロイされているかどうかに関係なく、すべてのサービスで使用できます。 環境変数の値は、アプリケーション マニフェスト内でオーバーライドすることも、デプロイ中にアプリケーションのパラメーターとして指定することもできます。
 
 次のサービス マニフェストの XML スニペットは、コード パッケージ用の環境変数を指定する方法の例です。
 ```xml
@@ -215,7 +222,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 </CodePackage>
 ```
 
-これらの環境変数は、アプリケーション マニフェスト内で上書きできます。
+これらの環境変数は、アプリケーション マニフェスト内でオーバーライドできます。
 
 ```xml
 <ServiceManifestImport>
@@ -316,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
-Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 プロセス分離モードでは、同じホスト コンピューターで実行されているすべてのコンテナーがホストとカーネルを共有します。 Hyper-V 分離モードでは、各 Hyper-V コンテナーとコンテナー ホスト間でカーネルが分離されます。 分離モードは、アプリケーション マニフェスト ファイルの `ContainerHostPolicies` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 分離モードを default にした場合、Windows Server ホストでは `process` に、Windows 10 ホストでは `hyperv` にそれぞれ既定で設定されます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 プロセス分離モードでは、同じホスト コンピューターで実行されているすべてのコンテナーがホストとカーネルを共有します。 Hyper-V 分離モードでは、各 Hyper-V コンテナーとコンテナー ホスト間でカーネルが分離されます。 分離モードは、アプリケーション マニフェスト ファイルの `ContainerHostPolicies` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 Windows Server ホスト上での既定値は、プロセス分離モードです。 Windows 10 ホストでサポートされているのは、HYPER-V 分離モードのみなので、コンテナーはその分離モードの設定に関係なく、HYPER-V 分離モードで実行されます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -387,19 +394,44 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server コンテナーの OS とホスト OS の互換性
+
+Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 例: 
+ 
+- Windows Server バージョン 1709 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 2016 を実行しているホスト上では機能しません。 
+- Windows Server バージョン 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で HYPER-V 分離モードでのみ機能します。 
+- Windows Server 2016 を使用してビルドされた Windows Server コンテナーでは、Windows Server 2016 で実行されているホスト上でプロセス分離モードで実行しているときに、コンテナーの OS とホスト OS のリビジョンが同じであることを確認する必要がある場合があります。
+ 
+詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
+
+コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 例: 
+
+- クラスター ノード上の OS と互換性のある OS のコンテナーを確実にデプロイする。
+- コンテナー アプリに指定された分離モードが、デプロイ先のノードのコンテナーの OS のサポートと一致していることを確認する。
+- クラスター ノードまたはコンテナーの OS のアップグレードが、互換性に及ぼす影響を検討する。 
+
+次のプラクティスに従って、コンテナーが自分の Service Fabric クラスター上に正しくデプロイされていることを確認することをお勧めします。
+
+- 自分の Docker イメージをタグ付けする明示的なイメージを使用して、コンテナーをビルドする Windows Server OS のバージョンを指定します。 
+- 自分のアプリケーション マニフェスト ファイル内で [OS のタグ付け](#specify-os-build-specific-container-images)を使用して、アプリケーションがさまざまな Windows Server のバージョンとアップグレード間で互換性があることを確認します。
+
+> [!NOTE]
+> Service Fabric バージョン 6.2 以降では、Windows Server 2016 に基づいて Windows 10 ホストにコンテナーをローカルでデプロイすることができます。 Windows 10 では、アプリケーション マニフェストで設定されている分離モードに関係なく、コンテナーは HYPER-V 分離モードで実行されます。 詳細については、「[分離モードの構成](#configure-isolation-mode)」を参照してください。   
+>
+ 
 ## <a name="specify-os-build-specific-container-images"></a>OS ビルド固有のコンテナー イメージを指定する 
 
-Windows Server コンテナー (プロセス分離モード) は、新しいバージョンの OS と互換性がない可能性があります。 たとえば、Windows Server 2016 を使用して構築した Windows Server コンテナーは、Windows Server バージョン 1709 では機能しません。 そのため、クラスター ノードが最新バージョンに更新されていると、以前のバージョンの OS を使用して構築したコンテナー サービスは失敗します。 ランタイムのバージョン 6.1 以降でこれを回避するには、Service Fabric で、コンテナーごとに複数の OS イメージを指定できるようにして、(Windows コマンド プロンプトで `winver` を実行して取得した) OS のビルド バージョンでこれらにタグを付けます。 ノードの OS を更新する前に、アプリケーション マニフェストを更新し、OS のバージョンごとにイメージの上書きを指定してください。 次のスニペットは、アプリケーション マニフェスト **ApplicationManifest.xml** で複数のコンテナー イメージを指定する方法を示しています。
+Windows Server コンテナーは、OS の異なるバージョン間では互換性がない場合があります。 たとえば、Windows Server 2016 を使用してビルドした Windows Server コンテナーは、Windows Server バージョン 1709 ではプロセス分離モードで機能しません。 そのため、クラスター ノードが最新バージョンに更新されていると、以前のバージョンの OS を使用してビルドしたコンテナー サービスは失敗します。 ランタイムのバージョン 6.1 以降でこれを回避するため、Service Fabric では、コンテナーごとに複数の OS イメージを指定して、それらをアプリケーション マニフェストで OS のビルド バージョンにタグ付けできるようにしています。 OS のビルド バージョンを取得するには、Windows コマンド プロンプトで `winver` を実行します。 ノードの OS を更新する前に、アプリケーション マニフェストを更新し、OS のバージョンごとにイメージのオーバーライドを指定してください。 次のスニペットは、アプリケーション マニフェスト **ApplicationManifest.xml** で複数のコンテナー イメージを指定する方法を示しています。
 
 
 ```xml
-<ContainerHostPolicies> 
+      <ContainerHostPolicies> 
          <ImageOverrides> 
            <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
-     </ContainerHostPolicies> 
+      </ContainerHostPolicies> 
 ```
 WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Server バージョン 1709 のビルド バージョンは 16299 です。 サービス マニフェストは、引き続き、次に示すようにコンテナー サービスごとに 1 つのイメージのみを指定します。
 
@@ -415,7 +447,7 @@ WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Se
 
 VM 上の基になる OS がビルド 16299 (バージョン 1709) である場合、Service Fabric はその Windows Server バージョンに対応するコンテナー イメージを取得します。 アプリケーション マニフェストで、タグが付けられたコンテナー イメージと共にタグなしのコンテナー イメージも指定されている場合、Service Fabric は、タグなしのイメージを複数のバージョン間で動作するものとして扱います。 アップグレード中に問題が発生しないよう、コンテナー イメージには明示的にタグ付けしてください。
 
-タグなしのコンテナー イメージは、ServiceManifest に指定されているイメージのオーバーライドとして機能します。 つまり "myregistry.azurecr.io/samples/helloworldappDefault" イメージは、ServiceManifest の ImageName に指定されている "myregistry.azurecr.io/samples/helloworldapp" よりも優先されます。
+タグなしのコンテナー イメージは、ServiceManifest に指定されているイメージのオーバーライドとして機能します。 つまり "myregistry.azurecr.io/samples/helloworldappDefault" イメージは、ServiceManifest の ImageName に指定されている "myregistry.azurecr.io/samples/helloworldapp" をオーバーライドします。
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェストの完全な例
 この記事で使用される完全なサービス マニフェストとアプリケーション マニフェストは次のとおりです。

@@ -1,25 +1,19 @@
 ---
-title: Azure Backup のバックアップ コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs
+title: Azure Backup のバックアップ コンテナーを Recovery Services コンテナーにアップグレードする
 description: バックアップ コンテナーを Recovery Services コンテナーにアップグレードすることによって、Resource Manager VM のバックアップ、強化されたセキュリティ、VMware VM のバックアップ、Windows Server のシステム状態バックアップなど、新しい機能が利用できます。
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: ''
-keyword: backup vault; upgrade vault; recovery services vault
-ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/10/2017
-ms.author: trinadhk, sogup
-ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: trinadhk
+ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606861"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>バックアップ コンテナーを Recovery Services コンテナーにアップグレードする
 この記事では、Recovery Services コンテナーの機能や、既にあるバックアップ コンテナーを Recovery Services コンテナーにアップグレードすることに関してよく寄せられる質問、アップグレード後の手順について取り上げます。 Recovery Services コンテナーは、バックアップ データを格納するバックアップ コンテナーの Azure Resource Manager 版に相当します。 オンプレミスにあるか、Azure 内にあるかに関係なく、データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。
@@ -71,7 +65,8 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
-既存のオートメーションまたはツールがアップグレード後も正常に機能するためには、Resource Manager デプロイメント モデルへの更新が必要となります。 [Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
+既存のオートメーションまたはツールがアップグレード後も正常に機能するためには、Resource Manager デプロイ モデルへの更新が必要となります。 
+  [Resource Manager デプロイ モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 **アップグレード後にロールバックすることはできますか。**</br>
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。

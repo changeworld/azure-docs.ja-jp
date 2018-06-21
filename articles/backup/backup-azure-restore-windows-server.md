@@ -1,26 +1,21 @@
 ---
-title: "Windows Server または Windows コンピューターへの Azure のデータの復元 | Microsoft Docs"
-description: "Azure に格納されているデータを Windows Server または Windows コンピューターに復元する方法について説明します。"
+title: Windows Server または Windows コンピューターへの Azure のデータの復元
+description: Azure に格納されているデータを Windows Server または Windows コンピューターに復元する方法について説明します。
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 742f4b9e-c0ab-4eeb-8e22-ee29b83c22c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/4/2018
-ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: saurse
+ms.openlocfilehash: 16f0460dea75b0dc52c3852d9947db0ad15f8fbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606326"
 ---
-# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
+# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 
 この記事では、バックアップ コンテナーからデータを復元する方法について説明します。 データを復元するには、Microsoft Azure Recovery Services (MARS) エージェントのデータの回復ウィザードを使用します。 データを復元するときには以下を行うことができます。
 
@@ -117,13 +112,13 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
     コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure Portal の *サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。 有効なコンテナー資格情報を指定すると、対応する Backup Vault の名前が表示されます。
 
 
-6. **[バックアップ サーバーの選択]** ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択し、パスフレーズを入力します。 その後、 **[次へ]**をクリックします。
+6. **[バックアップ サーバーの選択]** ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択し、パスフレーズを入力します。 その後、 **[次へ]** をクリックします。
 
     ![List of machines](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
 7. **[回復モードの選択]** ウィンドウで、**[個々のファイルおよびフォルダー]** を選択して、**[次へ]** をクリックします。
 
-    ![検索](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
+    ![Search](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
 8. **[ボリュームと日付の選択]** ウィンドウで、復元するファイルやフォルダーが格納されているボリュームを選択します。
 

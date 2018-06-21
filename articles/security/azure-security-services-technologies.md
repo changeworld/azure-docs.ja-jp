@@ -9,73 +9,82 @@ editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 56d69297e9b52144f1ff4880983da0128115f4a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e52cee2cb642de6e54270c597e6ed99f7162d0ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641460"
 ---
-# <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
+# <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
-現在と将来の Azure の顧客との話し合いで、“Azure で提供する必要のあるすべてのセキュリティ関連のサービスとテクノロジを一覧したリストはありますか?” という質問を受けることがよくあります。
+現在の、そしてこの先も含めた Azure のお客様との話し合いで、“Azure で提供する必要があるすべてのセキュリティ関連のサービスとテクノロジのリストはありますか?” という質問を受けることがよくあります。
 
-クラウド サービス プロバイダーのオプションを評価している場合、この情報があると便利です。
+クラウド サービス プロバイダーのオプションを評価している場合、この情報があると便利です。 そのために、開始時にお使いいただけるリストをご用意しました。
 
-手始めとして、次のリストを用意しました。 時間の経過と共に、このリストは Azure と同様に変更および増加します。 リストは分類されています。カテゴリのリストも徐々に増えていきます。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
+時間の経過と共に、このリストは Azure と同様に変更および増加します。 セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
-## <a name="azure-security---general"></a>Azure セキュリティ- 全般
+## <a name="general-azure-security"></a>Azure の全般的なセキュリティ
+|サービス|説明|
+|--------|--------|
+|[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| ハイブリッド クラウド ワークロード全体でセキュリティ管理と高度な脅威保護を実現するクラウドのワークロードを保護するソリューションです。|
+|[Azure Key Vault](../key-vault/key-vault-overview.md)| パスワード、接続文字列およびアプリの動作に必要なその他の情報を格納するセキュリティで保護された機密データ ストアです。 |
+|[Log Analytics](../log-analytics/log-analytics-overview.md)|アプリとリソースの操作の分析情報を提供する、製品利用統計情報およびその他のデータを収集する、クエリ言語および分析エンジンを提供する監視サービスです。 単独で使用することも、Security Center などのその他のサービスと共に使用することもできます。 |
+|[Azure Dev/Test Lab](../devtest-lab/devtest-lab-overview.md)|無駄を最小限に抑え、コストを管理しつつ、Azure で迅速に環境を作成するためのサポートを開発者とテスト担当者に提供するサービスです。  |
 
-* [[Azure Security Center] (Azure Security Center)](https://azure.microsoft.com/documentation/services/security-center/)
-* [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/)
-* [Azure Disk Encryption](azure-security-disk-encryption.md)
-* [Log Analytics](../log-analytics/log-analytics-overview.md)
-* [Azure Dev/Test Lab](https://azure.microsoft.com/documentation/services/devtest-lab/)
+<!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
-## <a name="azure-storage-security"></a>Azure Storage セキュリティ
+## <a name="storage-security"></a>ストレージのセキュリティ
+|サービス|説明|
+|------|--------|
+| [Azure&nbsp;Storage&nbsp;Service&nbsp;Encryption](../storage/common/storage-service-encryption.md)|Azure ストレージのデータを自動的に暗号化するセキュリティ機能です。   |
+|[StorSimple のハイブリッド ストレージの暗号化](../storsimple/storsimple-ova-overview.md)| オンプレミスのデバイスと Azure クラウド ストレージ間のストレージ タスクを管理する統合ストレージ ソリューションです。|
+|[Azure のクライアント側の暗号化](../storage/common/storage-client-side-encryption.md)| Microsoft Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化するクライアント側の暗号化ソリューションです。ダウンロード中には、データを復号化します。 |
+| [Azure Storage Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。  |
+|[Azure ストレージ アカウント キー](../storage/common/storage-create-storage-account.md)| ストレージ アカウントへのアクセス時に、Azure ストレージの認証で使用されるアクセス制御メソッドです。 |
+|[SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/files/storage-files-introduction.md)|ネットワークで、サーバー メッセージ ブロック (SMB) ファイル共有プロトコルの自動的な暗号化を有効にするネットワーク セキュリティ テクノロジです。 |
+|[Azure Storage Analytics](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| ストレージ アカウントのデータのログとメトリックを生成するテクノロジです。 |
 
-* [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)
-* [StorSimple のハイブリッド ストレージの暗号化](https://azure.microsoft.com/documentation/services/storsimple/)
-* [Azure のクライアント側の暗号化](../storage/common/storage-client-side-encryption.md)
-* [Azure Storage Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [Azure ストレージ アカウント キー](../storage/common/storage-create-storage-account.md)
-* [SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/files/storage-dotnet-how-to-use-files.md)
-* [Azure Storage Analytics](https://msdn.microsoft.com/library/hh343270.aspx)
+<!------>
 
-## <a name="azure-database-security"></a>Azure Database Security
+## <a name="database-security"></a>データベースのセキュリティ
+|サービス|説明|
+|------|--------|
+| [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
+|[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
+| [Azure&nbsp;SQL&nbsp;接続暗号化](../sql-database/sql-database-control-access.md)|SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 |
+| [Azure SQL Always Encryption (Azure SQL の常時暗号化)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機密データを保護することを目的とした機能です。  |
+| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| データベース全体のストレージを暗号化するデータベース セキュリティ機能です。 |
+| [Azure SQL Database 監査](../sql-database/sql-database-auditing.md)|データベース イベントを追跡し、それを Azure Storage アカウントの監査ログに書き込むデータベース監査機能です。  |
 
-* [Azure SQL ファイアウォール](../sql-database/sql-database-firewall-configure.md)
-* [Azure SQL Cell Level Encryption (Azure SQL セル レベルの暗号化)](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
-* [Azure SQL 接続の暗号化](../sql-database/sql-database-control-access.md)
-* [Azure の SQL 認証](../sql-database/sql-database-control-access.md)
-* [Azure SQL Always Encryption (Azure SQL の常時暗号化)](https://msdn.microsoft.com/library/mt163865.aspx)
-* [Azure SQL の列レベルの暗号化](https://msdn.microsoft.com/library/ms179331.aspx)
-* [Azure SQL の Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096.aspx)
-* [Azure SQL Database 監査](../sql-database/sql-database-auditing.md)
 
-## <a name="azure-identity-and-access-management"></a>Azure の ID 管理とアクセス管理
-
-* [Azure のロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
-* [Azure Active Directory](../active-directory/active-directory-whatis.md)
-* [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
-* [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
+## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
+|サービス|説明|
+|------|--------|
+| [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](../active-directory/role-based-access-control-configure.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
+| [Azure Active Directory](../active-directory/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
+| [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Azure ベースのアプリケーションの使用時に、顧客のサインアップ、サインイン、プロファイル管理を制御する ID 管理サービスです。   |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Active Directory Domain Services のクラウドベースのマネージド バージョンです。 |
+| [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| セキュリティで保護された情報へのアクセスを許可する前に、いくつかの異なる認証および検証形式が使用されるセキュリティ対応の機能です。 |
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
+|サービス|説明|
+|------|--------|
+| [Azure&nbsp;Backup](../backup/backup-introduction-to-azure-backup.md)| Azure クラウドのデータをバックアップおよび復元するために使用される Azure ベースのサービスです。 |
+| [Azure&nbsp;Site&nbsp;Recovery](../site-recovery/site-recovery-overview.md)|物理マシンと仮想マシン (VM) で実行中のワークロードでエラーが発生した場合にその復旧を可能にする、プライマリ サイトからセカンダリ ロケーションにワークロードをレプリケートするオンライン サービスです。 |
 
-* [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)
-* [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery/)
-
-## <a name="azure-networking"></a>Azure のネットワーク
-
-* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
-* [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)
-* [Azure Load Balancer](../load-balancer/load-balancer-overview.md)
-* [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
-* [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-* [Azure アプリケーション プロキシ](../active-directory/manage-apps/application-proxy-enable.md)
+## <a name="networking"></a>ネットワーク
+|サービス|説明|
+|------|--------|
+| [Network&nbsp;Security&nbsp;Groups](../virtual-network/virtual-networks-nsg.md)| タプルが 5 つ使用された、意思決定を許可または拒否することができるネットワーク ベースのアクセス制御機能です。  |
+| [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Azure Virtual Network へのクロスプレミス アクセスを許可する VPN エンドポイントとして使用されるネットワーク デバイスです。  |
+| [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)|URL に基づいてルーティングし、SSL オフロードを実行できる、高度な Web アプリケーション ロード バランサーです。 |
+| [Azure Load Balancer](../load-balancer/load-balancer-overview.md)|TCP/UDP アプリケーション ネットワーク ロード バランサーです。 |
+| [Azure ExpressRoute](../expressroute/expressroute-introduction.md)| オンプレミス ネットワークと Azure Virtual Network 間の専用 WAN リンクです。 |
+| [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)| グローバルな DNS ロード バランサーです。|
+| [Azure アプリケーション プロキシ](../active-directory/active-directory-application-proxy-get-started.md)| オンプレミスでホストされている Web アプリケーションのリモート アクセスをセキュリティで保護するための認証フロントエンドです。 |

@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212672"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642225"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル Reliable Services アプリケーションを作成する
 
@@ -68,12 +68,15 @@ Windows に初めての .NET 対応 Azure Service Fabric アプリケーショ�
 
 アプリケーションができたので、今度は次の手順に従って実行、デプロイ、デバッグを行います。
 
-1. Visual Studio で F5 キーを押して、デバッグ用にアプリケーションをデプロイします。
+1. Visual Studio で **F5** キーを押して、デバッグ用にアプリケーションをデプロイします。  'ServiceFabricAllowedUsers' グループに Visual Studio プロジェクト ディレクトリの読み取りおよび実行アクセス許可を付与するように求めるメッセージ ボックスが表示された場合は、**[はい]** をクリックします。
 
     >[!NOTE]
     >初めてアプリケーションをローカルで実行してデプロイすると、Visual Studio によってデバッグ用にローカル クラスターが作成されます。 これには時間がかかる場合があります。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
-
-    クラスターの準備が整うと、SDK に含まれているローカル クラスター システム トレイ マネージャー アプリケーションから通知が表示されます。
+    
+     クラスターの準備が整うと、SDK に含まれているローカル クラスター システム トレイ マネージャー アプリケーションから通知が表示されます。
+     
+    >[!NOTE]
+    >この演習では、5 ノード (1 ノードに対して) クラスターが必要です。 これは次の手順で検証できます。**[Service Fabric ローカル クラスター マネージャー]** システム トレイ アプリケーションを右クリックし、**[クラスター モードを切り替える]** をクリックして、Service Fabric Explorer ツールを起動します。 1 ノードが現在選択されている場合は、**[5 ノード]** をクリックします。
     
     ![ローカル クラスター システム トレイ通知][4]
 
@@ -107,7 +110,7 @@ Windows に初めての .NET 対応 Azure Service Fabric アプリケーショ�
 
     ![ステートフル サービスの RunAsync メソッド内のブレークポイント][7]
 
-7. Service Fabric Explorer ツールを起動するために、**[ローカル クラスター マネージャー]** システム トレイ アプリケーションを右クリックし、**[ローカル クラスターの管理]** を選択します。
+7. **[Service Fabric ローカル クラスター マネージャー]** システム トレイ アプリケーションを右クリックし、**[ローカル クラスターの管理]** を選択して、Service Fabric Explorer ツールを起動します。
 
     ![ローカル クラスター マネージャーから Service Fabric Explorer を起動する][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ Windows に初めての .NET 対応 Azure Service Fabric アプリケーショ�
 
     ![Service Fabric Explorer でノードを停止する][sfx-stop-node]
 
-    すぐに、Visual Studio にブレークポイント ヒットが表示されます。これは、1 つのノードで行っていた計算が別のノードにシームレスにフェールオーバーするためです。
+    すぐに、Visual Studio にブレークポイント ヒットが表示されます。これは、1 つのノードで行っていた計算が別のノードにシームレスにフェールオーバーするためです。 **F5** キーを押して続行します。
 
 9. 次に、診断イベント ビューアーに戻り、メッセージを確認します。 イベントが実際には別のノードから取得されている場合でも、カウンターが継続的にインクリメントされています。
 

@@ -1,31 +1,25 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (.NET) の概要 | Microsoft Docs
 description: モジュール ID を作成し、IoT SDK を使用して .NET のモジュール ツインを更新する方法を説明します。
-services: iot-hub
-documentationcenter: .net
 author: chrissie926
-manager: timlt
-editor: ''
-ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
+manager: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f71ac333aeb73df00856dde279b56f94464127b5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5855396fc87b7d8de17be65a66af40963c59fc71
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361122"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633480"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-backup-and-net-device"></a>.NET バックアップおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>.NET バックエンドおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
 > [!NOTE]
-> [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID およびデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用した場合、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID とモジュール ツインでは、デバイスの各コンポーネントごとにこれらの機能を実現できます。 複数のコンポーネントで構成され、この機能をサポートしているデバイス (オペレーティング システム ベースのデバイスやファームウェア デバイスなど) であれば、各コンポーネントの状態を可視化し、個別に構成することができます。
+> [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID とデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用した場合、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID とモジュール ツインでは、デバイスの各コンポーネントごとにこれらの機能を実現できます。 複数のコンポーネントで構成され、この機能をサポートしているデバイス (オペレーティング システム ベースのデバイスやファームウェア デバイスなど) であれば、各コンポーネントの状態を可視化し、個別に構成することができます。
 
 このチュートリアルの最後には、次の 2 つの .NET コンソール アプリが完成します。
 
@@ -57,7 +51,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     ![Visual Studio プロジェクトを作成する][13]
 
-2. **Azure IoT Hub .NET device SDK V1.16.0-preview-005 をインストールする** - モジュール ID およびモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 V1.16.0-preview-005 バージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
+2. **最新の Azure IoT Hub .NET デバイス SDK をインストールする** - 現在、モジュール ID とモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 最新のバージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
 
     ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする][14]
 
@@ -119,7 +113,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
             var twinTask = Client.GetTwinAsync();
             twinTask.Wait();
             var twin = twinTask.Result;
-            Console.WriteLine(JsonConvert.SerializeObject(twin));
+            Console.WriteLine(JsonConvert.SerializeObject(twin.Properties)); 
 
             Console.WriteLine("Sending app start time as reported property");
             TwinCollection reportedProperties = new TwinCollection();
@@ -138,7 +132,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     }
     ```
 
-    このコード サンプルは、モジュール ツインを取得し、報告されたプロパティを AMQP プロトコルを使って更新する方法を示したものです。 パブリック プレビューでは、AMQP 用のモジュール ツイン操作のみがサポートされています。
+    このコード サンプルは、モジュール ツインを取得し、報告されたプロパティを AMQP プロトコルを使って更新する方法を示したものです。 パブリック プレビューでは、AMQP はモジュール ツインの操作用にのみサポートされています。
 
 5. 上記の **Main** メソッドの他に、下記のコード ブロックを追加して、モジュールから IoT Hub にイベントを送信できます。
     ```csharp

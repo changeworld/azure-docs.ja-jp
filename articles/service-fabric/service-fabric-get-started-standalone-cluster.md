@@ -1,24 +1,25 @@
 ---
-title: "スタンドアロン Azure Service Fabric クラスターのセットアップ | Microsoft Docs"
-description: "同じコンピューター上で動作する 3 つのノードで開発用のスタンドアロン クラスターを作成します。 このセットアップを終えれば、いつでも複数マシンのクラスターを作成することができます。"
+title: スタンドアロン Azure Service Fabric クラスターのセットアップ | Microsoft Docs
+description: 同じコンピューター上で動作する 3 つのノードで開発用のスタンドアロン クラスターを作成します。 このセットアップを終えれば、いつでも複数マシンのクラスターを作成することができます。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 93c921e54c69693ed02c122a2491b0942f550126
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643466"
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>初めての Service Fabric スタンドアロン クラスターの作成
 Service Fabric スタンドアロン クラスターは、Windows Server 2012 R2 または Windows Server 2016 が実行されていれば、どの仮想マシンまたはコンピューターにでも作成できます。場所は、オンプレミスでもクラウドでもかまいません。 このクイック スタートを読むと、開発用のスタンドアロン クラスターを数分で作成することができます。  最後まで読み進めていけば、1 台のコンピューター上で動作する 3 ノード クラスターが完成します。開発したアプリをそこにデプロイすることができます。
@@ -87,7 +88,7 @@ Service Fabric ランタイムをコンピューターから削除するには�
 .\CleanFabric.ps1
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 開発用のスタンドアロン クラスターをセットアップできたので、以下の作業に挑戦してみてください。
 * [複数マシンのスタンドアロン クラスターをセットアップ](service-fabric-cluster-creation-for-windows-server.md)してセキュリティを確保します。
 * [PowerShell を使ってアプリをデプロイ](service-fabric-deploy-remove-applications.md)します。

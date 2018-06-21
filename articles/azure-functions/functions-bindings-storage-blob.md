@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85cdce312e141bee9da3b633c45dc770e503abfe
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356411"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724800"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -35,13 +35,17 @@ ms.locfileid: "34356411"
 > [!NOTE]
 > BLOB 専用ストレージ アカウントの場合、高スケールの場合、またはコールド スタート遅延を回避する場合は、Blob ストレージ トリガーではなく、Event Grid トリガーを使用してください。 詳しくは、「[トリガー](#trigger)」セクションをご覧ください。 
 
-## <a name="packages"></a>パッケージ
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Blob バインディングは [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub リポジトリにあります。
+Blob バインディングは [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージのバージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+
+Blob バインディングは [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージのバージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -264,6 +268,8 @@ C# と C# スクリプトでは、トリガーする BLOB に次のパラメー�
 
 <sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
+Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+
 `string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して入力 BLOB データにアクセスします。
@@ -313,7 +319,7 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-|プロパティ  |type  |[説明]  |
+|プロパティ  |type  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -564,6 +570,8 @@ C# とC# スクリプトでは、BLOB 入力バインドに次のパラメータ
 
 <sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
+Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+
 `string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
@@ -777,6 +785,8 @@ C# と C# スクリプトでは、次の型にバインドして、BLOB を書�
 <sup>1</sup> *function.json* には "in" バインド `direction`、C# クラス ライブラリには `FileAccess.Read` が必要です。 ただし、コンテナーへの BLOB のアップロードなどの書き込み操作をおこなうためにランタイムが提供するコンテナー オブジェクトを使うことができます。
 
 <sup>2</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+
+Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
 非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 

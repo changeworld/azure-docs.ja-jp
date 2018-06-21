@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5aa6f629b04a4c187a43b13c929a122a6304c575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639437"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -332,7 +333,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 * チャネルが **実行中** 状態のときにのみ課金されます。 詳しくは、 [こちら](media-services-manage-live-encoder-enabled-channels.md#states) のセクションを参照してください。
 * 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 * コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
-* エンコードのプリセットでは、「最大フレーム レート」 30 fps の概念が使用されます。 したがって、入力が 60fps/59.97i の場合、入力フレームは 30/29.97 fps にドロップ/インターレース解除されます。 入力が 50fps/50i の場合は、入力フレームは 25 fps にドロップ/インターレース解除されます。 入力が 25 fps の場合は、出力は 25 fps のままです。
+* エンコードのプリセットでは、「最大フレーム レート」 30 fps の概念が使用されます。 したがって、入力が 60fps/59.94i の場合、入力フレームは 30/29.97 fps にドロップ/インターレース解除されます。 入力が 50fps/50i の場合は、入力フレームは 25 fps にドロップ/インターレース解除されます。 入力が 25 fps の場合は、出力は 25 fps のままです。
 * 終了したら、忘れずにチャネルを停止してください。 そうしないと、課金が続行されます。
 
 ## <a name="known-issues"></a>既知の問題

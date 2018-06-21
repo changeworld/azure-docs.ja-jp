@@ -4,7 +4,7 @@ description: 基本的な C# や Java トポロジなど、HDInsight で Apache 
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: f9b1bdff-5928-4705-a76d-52fd200917cb
@@ -12,19 +12,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/30/2018
 ms.author: larryfr
-ms.openlocfilehash: f633797147b2090680ebb5ea11f60271addc7f52
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 429373a27ad9be23b986116182a4eda80bace7f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626889"
 ---
 # <a name="example-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Storm トポロジとコンポーネントの例
 
 HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。 これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、Cosmos DB、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。 また一部の例には、Azure 以外のテクノロジや、さらには SignalR や Socket.IO などのマイクロソフト以外のテクノロジを使用する方法についても示されています。
 
-| [説明] | 対象 | 言語/フレームワーク |
+| 説明 | 対象 | 言語/フレームワーク |
 |:--- |:--- |:--- |
 | [Apache Storm から Azure Data Lake Store への書き込み](apache-storm-write-data-lake-store.md) |Azure Data Lake Store への書き込み |Java |
 | [Event Hub のスパウトとボルトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Event Hub のスパウトとボルトのソース |Java |
@@ -38,6 +39,11 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 | [HDInsight の Storm を使用して Azure Event Hubs から読み取る場合の拡張性ベンチマーク][d6c540e3] |メッセージ スループット、Event Hubs、SQL Database |C#、Java |
 | [HDInsight の Storm での Python の使用](apache-storm-develop-python-topology.md) |Flux トポロジを使用する Python コンポーネント |Python |
 | [HDInsight の Storm での Kafka の使用](../hdinsight-apache-storm-with-kafka.md) | Apache Storm を使用した Apache Kafka の読み取りと書き込み | Java |
+
+> [!WARNING]
+> この一覧の C# の例は、当初、Windows ベースの HDInsight で作成されたので、Linux ベースの HDInsight クラスターでは正しく動作しない可能性があります。 Linux ベースのクラスターでは、Mono を使用して .NET コードを実行するため、この例で使用されているフレームワークとパッケージでは互換性の問題がある場合があります。
+>
+> Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。
 
 ### <a name="next-steps"></a>次の手順
 

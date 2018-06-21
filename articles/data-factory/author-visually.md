@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725144"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265290"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -63,11 +63,11 @@ Azure Data Factory で **[始めましょう]** ページに移動します。 *
 |:--- |:--- |:--- |
 | **リポジトリの種類** | VSTS コード リポジトリの種類。<br/>**注**: GitHub は現在サポートされていません。 | Visual Studio Team Services Git |
 | **Azure Active Directory** | Azure AD テナントの名前。 | <your tenant name> |
-| **Visual Studio Team Services アカウント** | VSTS アカウント名。 VSTS アカウント名は以下に見つかります。`https://{account name}.visualstudio.com` [VSTS アカウントにサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | \<アカウント名> |
-| **ProjectName** | VSTS プロジェクト名。 VSTS プロジェクト名は以下に見つかります。`https://{account name}.visualstudio.com/{project name}` | \<VSTS プロジェクト名> |
-| **RepositoryName** | VSTS コード リポジトリ名。 VSTS プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | \<VSTS コード リポジトリ名> |
-| **コラボレーション ブランチ** | 発行に使用される VSTS コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、これを変更します。 | \<コラボレーション ブランチ名> |
-| **ルート フォルダー** | VSTS コラボレーション ブランチのルート フォルダー。 | \<ルート フォルダー名> |
+| **Visual Studio Team Services アカウント** | VSTS アカウント名。 VSTS アカウント名は以下に見つかります。`https://{account name}.visualstudio.com` [VSTS アカウントにサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | <your account name> |
+| **ProjectName** | VSTS プロジェクト名。 VSTS プロジェクト名は以下に見つかります。`https://{account name}.visualstudio.com/{project name}` | <your VSTS project name> |
+| **RepositoryName** | VSTS コード リポジトリ名。 VSTS プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | <your VSTS code repository name> |
+| **コラボレーション ブランチ** | 発行に使用される VSTS コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、これを変更します。 | <your collaboration branch name> |
+| **ルート フォルダー** | VSTS コラボレーション ブランチのルート フォルダー。 | <your root folder name> |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを VSTS Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>構成方法 2: UX 作成キャンバス

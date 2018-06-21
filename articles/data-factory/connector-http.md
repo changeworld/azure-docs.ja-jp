@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3aca66d6922273e78b5100948f1b868c6c9b56af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f7c82b3aa88e874328452aae46dc14972d63192f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616945"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,11 +55,11 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 HTTP のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **HttpServer** に設定する必要があります。 | [はい] |
 | url | Web サーバーへのベース URL | [はい] |
-| enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
+| enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名の証明書を使用している場合、これを false に設定します。 | いいえ。既定値は true です。 |
 | authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -66,7 +67,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 "authenticationType" プロパティを **Basic**、**Digest**、または **Windows** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | userName | HTTP エンドポイントにアクセスするためのユーザー名。 | [はい] |
 | password | ユーザー (userName) のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
@@ -99,7 +100,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 ClientCertificate 認証を使用するには、"authenticationType" プロパティを **ClientCertificate** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 でエンコードされた証明書データ。 | `embeddedCertData` または `certThumbprint` を指定します。 |
 | certThumbprint | セルフホステッド統合ランタイム コンピューターの証明書ストアにインストールされている証明書の拇印。 セルフホステッド統合ランタイムが connectVia で指定されている場合にのみ適用されます。 | `embeddedCertData` または `certThumbprint` を指定します。 |
@@ -162,7 +163,7 @@ ClientCertificate 認証を使用するには、"authenticationType" プロパ�
 
 HTTP からデータをコピーするには、データセットの type プロパティを **HttpFile** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティを **HttpFile** に設定する必要があります。 | [はい] |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていないとき、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
@@ -219,7 +220,7 @@ HTTP からデータをコピーするには、データセットの type プロ
 
 HTTP からデータをコピーするは、コピー アクティビティでソースの種類を **HttpSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **HttpSource** に設定する必要があります。 | [はい] |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。<br/> 既定値は 00:01:40 です。  | いいえ  |

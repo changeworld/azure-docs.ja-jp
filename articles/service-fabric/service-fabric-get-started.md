@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 05/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd70636a40ac08fb4b47c6ea53ae3c702d271ea8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f128947cf3ac0a2afab23d41f101c1b0d7624397
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204901"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641953"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -64,8 +64,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.1.274
-* Service Fabric ランタイム 6.2.274
+* Service Fabric SDK および Tools 3.1.283
+* Service Fabric ランタイム 6.2.283
 * Service Fabric Tools for Visual Studio 2015 2.1.20180510.2
 * Visual Studio 2017 15.7 には、Service Fabric Tools for Visual Studio 2.1.20180423.1 が含まれています 
 

@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Azure での Oracle ソリューション | Microsoft Docs"
-description: "Microsoft Azure でサポートされている Oracle ソリューションの構成と制限事項について説明します。"
+title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
+description: Microsoft Azure でサポートされている Oracle ソリューションの構成と制限事項について説明します。
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656348"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle ソリューションとそのデプロイ
 この記事では、Microsoft Azure でさまざまな Oracle ソリューションを適切にデプロイするために必要な情報を取り上げます。 これらのソリューションは、Azure Marketplace で Oracle によって発行された仮想マシン イメージに基づいています。 現在利用可能なイメージの一覧を取得するには、次のコマンドを実行します。
@@ -102,6 +103,6 @@ Azure で高可用性と災害復旧ソリューションが設計されてい�
    この JDK 6 および JDK 7 のイメージで利用可能な JDK と、そこから派生した仮想マシンおよびイメージは、Azure 内でのみ使用できます。
 * **64-bit JDK.** Azure によって提供される Oracle WebLogic Server 仮想マシンおよび Oracle JDK 仮想マシンのイメージには、Windows Server と JDK 両方の 64 ビット版が含まれています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Microsoft Azure での現在の Oracle ソリューションの概要を理解しました。 次の手順では、Azure で最初の Oracle データベースをデプロイします。
 - 手始めに、[Azure での Oracle データベースの作成](oracle-database-quick-create.md)に関するチュートリアルを試してください。

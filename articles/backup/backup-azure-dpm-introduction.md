@@ -1,25 +1,20 @@
-﻿---
-title: DPM を使用してワークロードを Azure Portal にバックアップする | Microsoft Docs
+---
+title: DPM を使用してワークロードを Azure Portal にバックアップする
 description: Azure Backup サービスを使用した DPM サーバーのバックアップの概要
 services: backup
-documentationcenter: ''
 author: adigan
 manager: nkolli
-editor: ''
 keywords: System Center Data Protection Manager, Data Protection Manager, DPM バックアップ
-ms.assetid: c8c322cf-f5eb-422c-a34c-04a4801bfec7
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/15/2017
-ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 05917705264965afda873fb32a28b70e4da87aa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: adigan
+ms.openlocfilehash: ffb3a5a5729e97e1a9b00072624d7e51842f61f8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605051"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
@@ -74,7 +69,7 @@ DPM 用の Azure へのバックアップに関する重要な定義を次に示
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**をクリックします。
+2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
 
@@ -86,7 +81,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     [Recovery Services コンテナー] メニューが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
 
     ![Create Recovery Services vault step 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
-4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織アカウントが複数の Azure サブスクリプションに関連付けられている場合にのみ、複数の選択肢が表示されます。
 6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。 リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。

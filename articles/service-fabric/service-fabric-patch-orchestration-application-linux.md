@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643126"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
@@ -61,9 +62,9 @@ ms.lasthandoff: 05/16/2018
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Azure VM で、Ubuntu 16.04 が実行されていることを確認する
 このドキュメントの執筆時点では、サポートされているバージョンは Ubuntu 16.04 (`Xenial Xerus`) のみです。
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Service Fabric Linux クラスターがバージョン 6.1.x 以降であることを確認する
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Service Fabric Linux クラスターがバージョン 6.2.x 以降であることを確認する
 
-パッチ オーケストレーション アプリケーション Linux では、Service Fabric ランタイム バージョン 6.1.x 以降でのみ使用できる特定のランタイム機能を使用します。
+パッチ オーケストレーション アプリケーション Linux では、Service Fabric ランタイム バージョン 6.2.x 以降でのみ使用できる特定のランタイム機能を使用します。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
 
@@ -120,11 +121,13 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 
 ## <a name="download-the-app-package"></a>アプリ パッケージのダウンロード
 
-このアプリケーションは、[こちらのダウンロード リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロードできます。
+インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロード可能です。
+
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
-パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値を上書きします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
+パッチ オーケストレーション アプリケーションの動作はニーズに合わせて構成できます。 アプリケーションの作成時または更新時にアプリケーション パラメーターを渡して既定値をオーバーライドします。 アプリケーション パラメーターを渡すには、`Start-ServiceFabricApplicationUpgrade` コマンドレットまたは `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定します。
 
 |**パラメーター**        |**種類**                          | **詳細**|
 |:-|-|-|
@@ -321,6 +324,10 @@ Q. **アップグレード後に、オーケストレーション アプリケ�
 
 A. はい、クリーンアップはインストール後の手順の一部として行われます。 
 
+Q. **パッチ オーケストレーション アプリを、自分の開発クラスター (1 ノード クラスター) にパッチを適用するために使用できますか?**
+
+A. いいえ、パッチ オーケストレーション アプリは、1 ノード クラスターへのパッチ適用には使用できません。 この制限は設計によるものです。パッチ適用の修復ジョブは、[Service Fabric のシステム サービス](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services)または任意の顧客アプリにダウンタイムが発生するため、いずれも修復マネージャーからの承認が得られないからです。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>ノードが稼働状態に戻らない
@@ -362,5 +369,8 @@ A. はい、クリーンアップはインストール後の手順の一部と�
 ### <a name="version-010"></a>バージョン 0.1.0
 - プライベート プレビュー リリース
 
-### <a name="version-200-latest"></a>バージョン 2.0.0 (最新)
+### <a name="version-200"></a>バージョン 2.0.0
 - 公開リリース
+
+### <a name="version-201-latest"></a>バージョン 2.0.1 (最新)
+- 最新の Service Fabric SDK を使用してアプリを再コンパイル

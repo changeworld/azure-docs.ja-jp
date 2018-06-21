@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: load & move data
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.topic: article
-ms.openlocfilehash: bd9554a18775cf98f4415ebd5d4b0d52edc53718
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.openlocfilehash: d22c9a05d1fe56d71eb901c0a4bf22c179dfe937
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894193"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646917"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>BACPAC ファイルを新しい Azure SQL Database にインポートする
 
@@ -34,7 +34,8 @@ Azure Portal を使用してデータベースをインポートするには、�
 インポート操作の進行状況を監視するには、インポートされるデータベースが含まれる論理サーバーのページを開きます。 **[操作]** までスクロールして、**[インポート/エクスポート]** 履歴をクリックします。
 
 > [!NOTE]
-> [Azure SQL Database マネージド インスタンス](sql-database-managed-instance.md)では、この記事の他の方法で BACPAC ファイルをインポートできますが、現在のところ、Azure Portal を利用した移行には対応していません。
+> 
+  [Azure SQL Database Managed Instance](sql-database-managed-instance.md) では、この記事の他の方法で BACPAC ファイルをインポートできますが、現在のところ、Azure Portal を利用した移行には対応していません。
 
 ### <a name="monitor-the-progress-of-an-import-operation"></a>インポート操作の進行状況の監視
 
@@ -102,6 +103,9 @@ $importStatus
 
 > [!TIP]
 別のスクリプト例については、「[データベースを BACPAC ファイルからインポートする](scripts/sql-database-import-from-bacpac-powershell.md)」を参照してください。
+
+## <a name="limitations"></a>制限事項
+- エラスティック プール内のデータベースへのインポートはサポートされていません。 データをシングルトン データベースにインポートしてから、そのデータベースをプールに移動することはできます。
 
 ## <a name="import-using-other-methods"></a>他の方法によるインポート
 

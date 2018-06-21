@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/04/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: carlrab
-ms.openlocfilehash: fb5c2e16e696ba9eecf4346a0c4e7bc05aacf39f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a6d347b707f9b58c5667c5d03d6374288e74267
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194756"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645125"
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Azure SQL Database の DTU ベースのリソース モデル制限
 
@@ -73,9 +73,8 @@ ms.locfileid: "32194756"
 > [!IMPORTANT]
 > - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
 >
-> - Premium レベルでは、1 TB を超えるストレージは、現時点では次のリージョンで利用できます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
-> 
-
+> - 英国北部、米国中西部、英国南部 2、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 利用可能なリージョンは今後拡大予定です。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+>
 
 ## <a name="single-database-change-storage-size"></a>単一データベース: ストレージ サイズを変更する
 
@@ -204,9 +203,9 @@ ms.locfileid: "32194756"
 ||||||||
 
 > [!IMPORTANT]
-> -  付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
+> - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 >
-> -  Premium レベルでは、1 TB を超えるストレージは、現時点では次のリージョンで利用できます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> - 英国北部、米国中西部、英国南部 2、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 利用可能なリージョンは今後拡大予定です。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
 >
 
 エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。 SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
@@ -215,7 +214,7 @@ ms.locfileid: "32194756"
 
 次の表では、プールされたデータベースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | データベースあたりの最大 eDTU 数 |プール内の他のデータベースによる使用状況に基づいて使用可能な場合にプール内の任意のデータベースが使用できる eDTU の最大数。 データベースごとの最大 eDTU は、データベースに対して保証されたリソースではありません。 これは、プール内のすべてのデータベースに適用されるグローバル設定です。 データベースのピーク使用率を処理するのに十分高いデータベースあたり最大 eDTU 数を設定します。 プールでは通常、ホットとコールドのデータベース使用パターンがあり、すべてのデータベースが同時に最大に使用されることはないため、ある程度高めに上限が設定されています。 たとえば、データベースごとの最大使用量が 20 eDTU で、プールの 100 データベースの 20% のみが同時に最大で使用されるものとします。 データベースあたりの eDTU 上限が 20 eDTU に設定されている場合は、プールを 5 倍に設定し、プールあたりの eDTU 数を 400 に設定しておいても問題はありません。 |
 | データベースあたりの最小 eDTU 数 |プール内の任意のデータベースで保証される eDTU の最小数。 これは、プール内のすべてのデータベースに適用されるグローバル設定です。 データベースあたりの最小 eDTU は 0 に設定でき、これが既定値です。 このプロパティは、0 とデータベースあたりの平均 eDTU 使用率の間に設定されます。 プール内のデータベースの数とデータベースごとの最小 eDTU の積がプールごとの eDTU の値を超えることはできません。 たとえば、プールに 20 のデータベースがあり、データベースあたりの最小 eDTU を 10 に設定する場合は、プールあたりの eDTU 数を少なくとも 200 eDTU にする必要があります。 |
@@ -230,7 +229,8 @@ ms.locfileid: "32194756"
 
 ## <a name="elastic-pool-change-edtus"></a>エラスティック プール: eDTU を変更する
 
-[Azure Portal](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)、[Azure CLI](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)、または [REST API](/rest/api/sql/elasticpools/update) を使って、リソースのニーズに基づいてエラスティック プールに使用可能なリソースを増減できます。
+
+  [Azure Portal](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)、[Azure CLI](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)、または [REST API](/rest/api/sql/elasticpools/update) を使って、リソースのニーズに基づいてエラスティック プールに使用可能なリソースを増減できます。
 
 - プールの eDTU を再スケーリングするときは、データベースの接続が短時間失われます。 これは、(プールではなく) 単一データベースの DTU を再スケーリングするときと同じ動作です。 再スケーリング操作中にデータベース接続が失われる時間とその影響について詳しくは、「[単一データベース: DTU を変更する](#single-database-change-storage-size)」をご覧ください。 
 - プールの eDTU の再スケーリングに要する時間は、プール内のすべてのデータベースで使われているストレージの総量よって異なる場合があります。 一般に、再スケーリングの待機時間の平均は 100 GB あたり 90 分以下です。 たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールの再スケーリングにかかる想定待機時間は、3 時間以下になります。 Standard または Basic レベルでは場合により、使われている容量に関係なく、再スケーリングの待機時間が 5 分未満になることがあります。
@@ -258,7 +258,7 @@ ms.locfileid: "32194756"
 (DTU および eDTU によって測定された) データベース コンピューティングの使用率が高くなると、クエリの待機時間が増加し、タイムアウトすることさえあります。このような状況下では、クエリはサービスによってキューに格納されることがあり、リソースが空くと実行用のリソースを提供されます。
 高いコンピューティング使用率が発生する場合、次のような軽減オプションがあります。
 
-- データベースまたエラスティック プールのパフォーマンス レベルを上げて、より多くの DTU または eDTU をデータベースに提供します。 「[単一データベース: DTU を変更する](#single-database-change-dtus)」および「[エラスティック プール: eDTU を変更する](#elastic-pool-change-edtus)」をご覧ください。
+- データベースまたはエラスティック プールのパフォーマンス レベルを上げて、より多くの DTU または eDTU をデータベースに提供します。 「[単一データベース: DTU を変更する](#single-database-change-dtus)」および「[エラスティック プール: eDTU を変更する](#elastic-pool-change-edtus)」をご覧ください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
 ### <a name="storage"></a>Storage

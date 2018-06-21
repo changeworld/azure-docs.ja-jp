@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 66d3ee76308573bb5672ffa8eeedcc4aca4c0cc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638349"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -528,7 +529,7 @@ Windows でコンテナー監視ソリューションが正しく設定されて
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
-Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
+OMS ポータルから *[ソリューション ギャラリー]* に移動し、**[コンテナー監視ソリューション]** を追加します。 Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
 
 - *ContainerManagement.xxx* は、C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs にインストールされます。
 
@@ -563,6 +564,7 @@ Windows エージェントを使用している場合、このソリューショ
 
 ## <a name="monitor-containers"></a>コンテナーの監視
 Log Analytics ポータルでソリューションを有効にすると、コンテナー ホストと、ホストで実行されているコンテナーに関する概要情報が **[コンテナー]** タイルに表示されます。
+
 
 ![[コンテナー] タイル](./media/log-analytics-containers/containers-title.png)
 

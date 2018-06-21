@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 2de7c06f2e03432021eaf6d81d166aadd392a4bf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 25193232263d55cb56c6ca35a8d1a074ce6bb157
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637992"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]
@@ -69,7 +70,7 @@ ms.lasthandoff: 05/07/2018
 >
 >
 
-## <a id=configure_wirecast_rtmp></a>Telestream Wirecast エンコーダーを構成する
+## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" /a>Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:

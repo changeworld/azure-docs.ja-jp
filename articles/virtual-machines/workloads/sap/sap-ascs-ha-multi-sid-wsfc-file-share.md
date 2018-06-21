@@ -1,13 +1,13 @@
 ---
-title: "Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性 | Microsoft Docs"
-description: "Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性について説明します"
+title: Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性 | Microsoft Docs
+description: Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性について説明します
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657215"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -206,7 +207,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 > [!NOTE]
 >
-> この機能は、Azure Resource Manager デプロイメント モデルでのみ使用できます。
+> この機能は、Azure Resource Manager デプロイ モデルでのみ使用できます。
 >
 >Azure 内部ロード バランサーごとにプライベート フロントエンド IP の数に制限があります。
 >
@@ -447,7 +448,7 @@ _**図 13:** sapglobal2 ホストと Volume2 にバインドされた 2 つ目�
 ### <a name="install-dbms-and-sap-application-servers"></a>DBMS および SAP アプリケーション サーバーをインストールする
 DBMS と SAP アプリケーション サーバーを、既に説明したとおりにインストールします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]: HA ファイル共有向け公式 SAP ガイドライン
 

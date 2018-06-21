@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: da81d1455649f1e3f3ab43016df49953ce90e0ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637618"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -98,7 +99,7 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 
     > [!NOTE]
 
-    > 既定では、ITSMC は、接続の構成データを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続のデータをすぐに更新するには、接続の横に表示される [更新] ボタンをクリックします。
+    > 既定では、ITSMC は、接続の構成データを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続データをすぐに更新するには、接続のブレードに表示される **[同期]** ボタンをクリックします。
 
     ![接続の更新](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +138,6 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 >[!NOTE]
 
 > ITSM アクションの価格については、アクション グループの[価格ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>Log Analytics アラートから ITSM 作業項目を作成する
-
-次の手順を使用して、ITSM ツールで作業項目が作成されるように、Azure Log Analytics ポータルで警告ルールを構成できます。
-
-1. **[ログ検索]** ウィンドウで、ログ検索クエリを実行しデータを表示します。 クエリ結果は、作業項目のソースです。
-2. **[ログ検索]** ウィンドウで、**[アラート]** をクリックし、**[アラート ルールの追加]** ページを開きます。
-
-    ![Log Analytics 画面](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. **[アラート ルールの追加]** ウィンドウで、**[名前]**、**[重大度]**、**[検索クエリ]**、**[アラートの条件]** ([時間枠] や [メトリック測定]) などの必要な情報を確認できます。
-4. **[ITSM 操作]** で **[はい]** を選択します。
-5. **[接続を選択]** リストで、お使いの ITSM 接続を選択します。
-6. 必要に応じてその他の情報も入力します。
-7. このアラートについて各ログ エントリに個別の作業項目を作成するには、**[各ログ エントリに対して、個々の作業項目を作成します]** チェックボックスをオンします。
-
-    または
-
-    このアラートについてログ エントリの数に関係なく 1 つの作業項目を作成するには、このチェックボックスをオフのままにしておきます。
-
-7. **[Save]** をクリックします。
-
-作成した Log Analytics アラートは、**[設定] > [アラート]** で確認できます。 指定したアラートの条件が満たされた場合は、それに対応する ITSM 接続の作業項目が作成されます。
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>Log Analytics ログ レコードから ITSM 作業項目を作成する
-
-ログ レコードから直接接続された ITSM ソースで作業項目を作成することもできます。 これは、接続が正常に動作しているかどうかをテストするときに使用できます。
-
-
-1. **[ログ検索]** で、必要なデータを検索し、詳細を選択して **[作業項目の作成]** をクリックします。
-
-    **[ITSM 作業項目の作成]** ウィンドウが表示されます。
-
-    ![Log Analytics 画面](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   次の情報を追加します。
-
-  - **[作業項目のタイトル]**: 作業項目のタイトル。
-  - **[作業項目の説明]**: 新しい作業項目についての説明。
-  - **[影響を受けるコンピューター]**: このログ データが見つかったコンピューターの名前。
-  - **[接続を選択]**: この作業項目を作成する ITSM 接続。
-  - **[作業項目]**: 作業項目の種類。
-
-3. インシデントの既存の作業項目テンプレートを使用するには、**[テンプレートに基づいて作業項目を生成する]** オプションで **[はい]** を選択し、**[作成]** をクリックします。
-
-    または、
-
-    カスタムした値を入力する場合は **[いいえ]** をクリックします。
-
-4. **[連絡先の種類]**、**[影響]**、**[緊急度]**、**[カテゴリ]**、**[サブ カテゴリ]** のテキスト ボックスに適切な値を入力し、**[作成]** をクリックします。
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
@@ -242,7 +191,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 割当先
 - カテゴリ
 - タイトル
-- [説明]
+- 説明
 - 作成日
 - 終了日
 - 解決日
@@ -280,7 +229,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 終了予定日
 - 作業開始日
 - 作業終了日
-- [説明]
+- 説明
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow インシデントの出力データ
@@ -327,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | [説明] |
+| Description_s | 説明 |
 | Computer  | 構成項目 |
 
 

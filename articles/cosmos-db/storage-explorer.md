@@ -3,25 +3,22 @@ title: Azure Cosmos DB を Azure Storage Explorer で管理する
 description: Azure Cosmos DB を Azure Storage Explorer で管理する方法を説明します。
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
-documentationcenter: ''
 author: Jejiang
 manager: omafnan
 editor: ''
 tags: Azure Cosmos DB
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB active
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3b870ed638656ee3b1b0e46fe9bac44e4436f154
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612845"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB を Azure Storage Explorer で管理する
 
@@ -222,7 +219,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 このエラーが表示されるにはいくつかの理由があります。最も一般的な理由は次の 2 つです。
 
-+ "透過型プロキシ" の内側にいる。この場合、(IT 部門などの) 他のユーザーが、HTTPS トラフィックを遮断してその暗号化を解除し、自己署名証明書を使ってそれを暗号化しています。
++ *透過型プロキシ* の内側にいる。この場合、(IT 部門などの) 他のユーザーが、HTTPS トラフィックを遮断してその暗号化を解除し、自己署名証明書を使ってそれを暗号化しています。
 
 + 受信した HTTPS メッセージに自己署名 SSL 証明書を挿入するソフトウェアが実行されている (ウイルス対策ソフトウェアなど)。
 

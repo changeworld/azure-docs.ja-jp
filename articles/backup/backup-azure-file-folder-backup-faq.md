@@ -1,25 +1,20 @@
 ---
-title: Azure Backup エージェントの FAQ | Microsoft Docs
+title: Azure Backup エージェントの FAQ
 description: '一般的な質問への回答: Azure Backup エージェントの動作、バックアップとリテンション期間の制限。'
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
 keywords: バックアップと障害復旧; バックアップ サービス
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: trinadhk
+ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605533"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -71,7 +66,8 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Windows Server 2012 の重複除去を使用するサーバーでは、Azure Backup エージェントは動作しますか。 <br/>
 はい。 エージェント サービスは、バックアップ操作を準備するときに、重複除去されたデータを通常のデータに変換します。 そのデータをバックアップ用に最適化し、暗号化してから、オンライン バックアップ サービスに送信します。
 
-## <a name="backup"></a>バックアップ
+## <a name="backup"></a>Backup
+
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Azure Backup エージェント用に指定されたキャッシュの場所を変更する方法を教えてください。<br/>
 キャッシュの場所は、以下の手順で変更します。
 

@@ -6,16 +6,16 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 608551090ce10e08ba517def644c72186a6f25e1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887244"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611162"
 ---
 # <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>BulkExecutor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 

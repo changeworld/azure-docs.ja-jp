@@ -1,25 +1,20 @@
 ---
-title: 'Azure Backup: Azure Portal を使用して仮想マシンを復元する | Microsoft Docs'
+title: 'Azure Backup: Azure Portal を使用して仮想マシンを復元する'
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: バックアップの復元, 復元する方法, 回復ポイント
-ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2017
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: markgal
+ms.openlocfilehash: 52ca7cf4a04ace2a43f15433c05a2db26bde3602
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605595"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。

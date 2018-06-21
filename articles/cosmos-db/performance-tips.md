@@ -5,21 +5,17 @@ keywords: データベースのパフォーマンスを向上させる方法
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360208"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715022"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -41,27 +37,28 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と[接続 "*プロトコル*"](#connection-protocol) があります。  次の 2 つのモードが用意されています。
 
-   1. ゲートウェイ モード (既定値)
+   * ゲートウェイ モード (既定値)
       
-      ゲートウェイ モードは構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、Gateway モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
+     ゲートウェイ モードは構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、Gateway モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
 
-   2. 直接モード
+   * 直接モード
 
-     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 現在、直接モードは Windows プラットフォームの .NET Standard 2.0 においてのみサポートされています。
-      
-<a id="use-tcp"></a>
-2. **接続ポリシー: TCP プロトコルを使用する**
+     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 現在、直接モードは Windows プラットフォームの .NET Standard 2.0 においてのみサポートされています。 直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
 
-    直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
+    * TCP
+    * HTTPS
 
-   * TCP
-   * HTTPS
+    ゲートウェイ モードを使用している場合、Azure Cosmos DB はポート 443 を使用し、MongoDB API は 10250、10255、および 10256 ポートを使用します。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
 
-     Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
+    |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
+    |---------|---------|---------|---------|
+    |ゲートウェイ  |   HTTPS    |  すべての SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |直接    |    HTTPS     |  .Net と Java SDK    |    SQL(443)   |
+    |直接    |     TCP    |  .Net SDK    | 10,000 ～ 20,000 の範囲内のポート |
 
-     ゲートウェイ モードで TCP を使用している場合、TCP ポート 443 は Azure Cosmos DB ポートであり、10255 は MongoDB API ポートです。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。
+    Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
 
-     接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
+    接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
 
     ```csharp
     var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -78,19 +75,19 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     ![Azure Cosmos DB 接続ポリシーの図](./media/performance-tips/connection-policy.png)
 
-3. **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
+2. **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 
     既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 最初の要求でこの開始時の待機時間を回避するには、次のように初期化中に OpenAsync() を 1 回呼び出します。
 
         await client.OpenAsync();
    <a id="same-region"></a>
-4. **パフォーマンスを確保するために同じ Azure リージョン内にクライアントを併置する**
+3. **パフォーマンスを確保するために同じ Azure リージョン内にクライアントを併置する**
 
     可能であれば、Azure Cosmos DB を呼び出すアプリケーションを Azure Cosmos DB データベースと同じリージョンに配置します。 大ざっぱな比較ですが、Azure Cosmos DB の呼び出しは、同じリージョン内であれば 1 ～ 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。 要求がクライアントから Azure データセンターの境界まで流れるときに使用されるルートに応じて、この待機時間が要求ごとに異なる可能性があります。 最短の待機時間は、プロビジョニングされた Azure Cosmos DB エンドポイントと同じ Azure リージョン内に呼び出し元アプリケーションを配置することによって実現されます。 使用可能なリージョンの一覧については、「 [Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
     ![Azure Cosmos DB 接続ポリシーの図](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
-5. **スレッド/タスクの数を増やす**
+4. **スレッド/タスクの数を増やす**
 
     Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待機時間をできるだけ短くするために、要求の並列処理の次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
 

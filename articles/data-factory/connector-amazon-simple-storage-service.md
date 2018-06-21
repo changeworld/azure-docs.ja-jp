@@ -7,29 +7,29 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 18276b5706caad854c0160044b7e0efff10bc280
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011249"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616170"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [バージョン 2 - プレビュー](connector-amazon-simple-storage-service.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Blob Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon S3 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 のAmazon S3 コネクタ](v1/data-factory-amazon-simple-storage-service-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-サポートされている任意のソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Azure Data Lake Store のデータをサポートされている任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Amazon S3 から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。
 
@@ -52,7 +52,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 Amazon S3 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
 | accessKeyId | シークレット アクセス キーの ID。 |[はい] |
@@ -91,7 +91,7 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 Amazon S3 からデータをコピーするには、データセットの type プロパティを **AmazonS3Object** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
 | bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |[はい] |
@@ -163,13 +163,13 @@ Amazon S3 からデータをコピーするには、データセットの type �
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure Data Lake のソースとシンクでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Amazon S3 ソースでサポートされるプロパティの一覧を示します。
 
 ### <a name="amazon-s3-as-source"></a>ソースとしての Amazon S3
 
 Amazon S3 からデータをコピーするには、コピー アクティビティのソースの種類を **FileSystemSource** (Amazon S3 が含まれます) に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637414"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -33,7 +34,7 @@ Log Analytics を使用して、ローカル データ センターやその他�
 * PowerShell スクリプト。
 * Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレートです。  
 
-Windows エージェントをデプロイするためのネットワークとシステムの要件を理解するには、[Windows コンピューターの前提条件](log-analytics-concept-hybrid.md#prerequisites)を参照してください。
+サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-concept-hybrid.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-concept-hybrid.md#network-firewall-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  

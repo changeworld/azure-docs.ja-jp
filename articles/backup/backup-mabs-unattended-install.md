@@ -1,22 +1,19 @@
 ---
-title: "Azure Backup Server v2 のサイレント インストール |Microsoft Docs"
-description: "Azure Backup Server v2 をサイレント インストールするのに、PowerShell スクリプトを使用します。 この種類のインストールは無人インストールとも呼ばれます。"
+title: Azure Backup Server v2 のサイレント インストール
+description: Azure Backup Server v2 をサイレント インストールするのに、PowerShell スクリプトを使用します。 この種類のインストールは無人インストールとも呼ばれます。
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 05/30/2017
-ms.author: markgal;masaran
-ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606411"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Azure Backup Server v2 の無人インストールの実行
 
@@ -63,7 +60,7 @@ Azure Backup Server v2 の無人インストールの実行について説明し
 **/i**: インストール パス</br>
 **/x**: アンインストール パス</br>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。
 
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)

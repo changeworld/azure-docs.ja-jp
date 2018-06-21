@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637771"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>OMS Agent for Linux の Log Analytics で Nagios と Zabbix からのアラートを収集する 
 [Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
@@ -56,7 +57,7 @@ OMS エージェント for Linux は、Nagios バージョン 4.2.x までと Za
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Zabbix のアラート収集の構成
-Zabbix サーバーからのアラートを収集するには、ユーザーとパスワードを*クリア テキスト*で指定する必要があります。  これは最適ではありませんが、ユーザーを作成し、監視のみのアクセス許可を付与することをお勧めします。
+Zabbix サーバーからのアラートを収集するには、ユーザーとパスワードを*クリア テキスト*で指定する必要があります。  理想的ではありませんが、読み取り専用のアクセス許可が付与されている Zabbix ユーザーを作成し、関連するアラームをキャッチできるようにすることをお勧めします。
 
 アラートを収集するには、Nagios サーバー上で次の手順を実行します。
 
@@ -73,7 +74,7 @@ Zabbix サーバーからのアラートを収集するには、ユーザーと�
 
 2. omsagent デーモンを再起動します
 
-    sudo sh /opt/microsoft/omsagent/bin/service_control restart
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>アラート レコード
@@ -83,7 +84,7 @@ Log Analytics で[ログ検索](log-analytics-log-searches.md)を使用して、
 
 Nagios によって収集されたアラート レコードには、**アラート**の**種類**と **Nagios** の **SourceSystem** があります。  これらのレコードには、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | type |*アラート:* |
 | SourceSystem |*Nagios* |
@@ -99,7 +100,7 @@ Nagios によって収集されたアラート レコードには、**アラー�
 ### <a name="zabbix-alert-records"></a>Zabbix のアラート レコード
 Zabbix によって収集されたアラート レコードには、**アラート**の**種類**と **Zabbix** の **SourceSystem** があります。  これらのレコードには、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | type |*アラート:* |
 | SourceSystem |*Zabbix* |

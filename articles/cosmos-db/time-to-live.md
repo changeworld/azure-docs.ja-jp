@@ -2,30 +2,27 @@
 title: Azure Cosmos DB で TTL を使ってデータを期限切れにする | Microsoft Docs
 description: Microsoft Azure Cosmos DB では TTL を使って、一定期間経過後にシステムからドキュメントを自動的に消去することができます。
 services: cosmos-db
-documentationcenter: ''
 keywords: 有効期限
 author: SnehaGunda
 manager: kfile
-ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615123"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
 
 Microsoft Azure Cosmos DB では TTL を使って、一定期間経過後にデータベースからドキュメントを自動的に消去することができます。 既定の TTL はコレクション レベルで設定し、ドキュメントごとにオーバーライドすることができます。 TTL をコレクションの既定値として、またはドキュメント レベルで設定すると、Cosmos DB は、最後に変更されてから一定期間 (秒単位) 経過後に存在するドキュメントを自動的に削除します。
 
-Cosmos DB の TTL では、ドキュメントの最終変更時に対してオフセットを使用します。 そのために、すべてのドキュメントに存在する `_ts` フィールドを使用します。 _ts フィールドは、日付と時刻を表す UNIX 形式のエポック タイムスタンプです。 この `_ts` フィールドは、ドキュメントが変更されるたびに更新されます。 
+Azure Cosmos DB の TTL では、ドキュメントの最終変更時に対してオフセットを使用します。 そのために、すべてのドキュメントに存在する `_ts` フィールドを使用します。 _ts フィールドは、日付と時刻を表す UNIX 形式のエポック タイムスタンプです。 この `_ts` フィールドは、ドキュメントが変更されるたびに更新されます。 
 
 ## <a name="ttl-behavior"></a>TTL の動作
 TTL 機能は、コレクション レベルとドキュメント レベルの 2 つのレベルで TTL プロパティによって制御されます。 値は秒単位で設定され、ドキュメントが最後に変更された `_ts` との差分として扱われます。
@@ -33,8 +30,8 @@ TTL 機能は、コレクション レベルとドキュメント レベルの 2
 1. コレクションの DefaultTTL
    
    * 設定されていない (または null に設定されている) 場合、ドキュメントは自動的に削除されません。
-   * 設定されており、値が "-1" (無限) の場合、ドキュメントは既定で期限切れになりません。
-   * 設定されており、値がいずれかの数 ("n") の場合、ドキュメントは最後に変更されてから "n" 秒後に期限切れになります。
+   * 設定されており、値が "-1" (無限) に設定されている場合、ドキュメントは既定で期限切れになりません。
+   * 設定されており、値がいずれかの数 ("n") に設定されている場合、ドキュメントは最後に変更されてから "n" 秒後に期限切れになります。
 2. ドキュメントの TTL: 
    
    * プロパティは、親コレクションの DefaultTTL が存在する場合にのみ適用されます。

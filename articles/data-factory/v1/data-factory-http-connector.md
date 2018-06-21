@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9820ed9b4c0abbb79c6f92e62f294fb7fbd4c87e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 16b181631d8d91ad8137e57564792789903bccf2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621619"
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,12 +48,12 @@ ms.lasthandoff: 03/23/2018
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、HTTP のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | 型 | type プロパティを `Http` に設定する必要があります。 | [はい] |
 | url | Web サーバーへのベース URL | [はい] |
 | authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
-| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
+| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名の証明書を使用している場合、これを false に設定します。 | いいえ。既定値は true です。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するための Data Management Gateway の名前。 | はい (オンプレミスの HTTP ソースからデータをコピーする場合)。 |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
 
@@ -62,7 +63,7 @@ ms.lasthandoff: 03/23/2018
 
 `authenticationType` を `Basic`、`Digest`、または `Windows` として設定し、上で紹介した HTTP コネクタの一般的なプロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | HTTP エンドポイントにアクセスするためのユーザー名。 | [はい] |
 | password | ユーザー (username) のパスワード。 | [はい] |
@@ -90,7 +91,7 @@ ms.lasthandoff: 03/23/2018
 
 基本認証を使用するには、`authenticationType` を `ClientCertificate` として設定し、上で紹介した HTTP コネクタの一般的なプロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | embeddedCertData | Personal Information Exchange (PFX) ファイルのバイナリ データの Base64 でエンコードされたコンテンツ。 | `embeddedCertData` または `certThumbprint` を指定します。 |
 | certThumbprint | ゲートウェイ コンピューターの証明書ストアにインストールされた証明書の拇印。 オンプレミスの HTTP ソースからデータをコピーする場合にのみ適用します。 | `embeddedCertData` または `certThumbprint` を指定します。 |
@@ -149,7 +150,7 @@ ms.lasthandoff: 03/23/2018
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **Http** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの型を指定します。 `Http` に設定する必要があります。 | [はい] |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)" です。 | いいえ  |
@@ -209,7 +210,7 @@ ms.lasthandoff: 03/23/2018
 
 現時点では、コピー アクティビティのソースが **HttpSource** 型の場合、次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | いいえ。 既定値: 00:01:40 |
 

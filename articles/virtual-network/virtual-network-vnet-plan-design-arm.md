@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365044"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656909"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -27,7 +27,7 @@ ms.locfileid: "34365044"
 
 ## <a name="naming"></a>名前を付ける
 
-Azure のすべてのリソースには名前があります。 名前はスコープ内で一意でなければならず、スコープはリソースの種類によって異なる場合があります。 たとえば、仮想ネットワークの名前は、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内では一意である必要がありますが、[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内または Azure [リージョン](https://azure.microsoft.com/regions/#services)内では重複していてもかまいません。 リソースの名前を付けるときに一貫して使用できる名前付け規則を定義することは、複数のネットワーク リソースの管理が長期間に及ぶときは有効なことです。 推奨事項については、「[名前付け規則](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+Azure のすべてのリソースには名前があります。 名前はスコープ内で一意でなければならず、スコープはリソースの種類によって異なる場合があります。 たとえば、仮想ネットワークの名前は、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内では一意である必要がありますが、[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内または Azure [リージョン](https://azure.microsoft.com/regions/#services)内では重複していてもかまいません。 リソースの名前を付けるときに一貫して使用できる名前付け規則を定義することは、複数のネットワーク リソースの管理が長期間に及ぶときは有効なことです。 推奨事項については、「[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking)」を参照してください。
 
 ## <a name="regions"></a>リージョン
 
@@ -39,7 +39,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 
 ## <a name="subscriptions"></a>サブスクリプション
 
-[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の範囲内であれば、各サブスクリプション内に必要なだけいくつでも仮想ネットワークをデプロイできます。 たとえば、部門ごとに異なるサブスクリプションを使用している組織もあります。 サブスクリプションに関する詳細と考慮事項については、[サブスクリプションのガバナンス](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy)に関するページをご覧ください。
+[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の範囲内であれば、各サブスクリプション内に必要なだけいくつでも仮想ネットワークをデプロイできます。 たとえば、部門ごとに異なるサブスクリプションを使用している組織もあります。 サブスクリプションに関する詳細と考慮事項については、[サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)に関するページをご覧ください。
 
 ## <a name="segmentation"></a>セグメント化
 
@@ -93,7 +93,7 @@ Azure では、サブネットからの送信トラフィックに対して複�
 
 ### <a name="peering"></a>ピアリング
 
-[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)で接続される仮想ネットワークが存在するサポートされる Azure リージョンは、同じであっても、異なっていてもかまいません。 仮想ネットワークが含まれるサブスクリプションは同じでも異なるっていてもかまいませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに割り当てられている必要があります。 ピアを作成する前に、ピアリングのすべての[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。 ピアリングされた仮想ネットワーク内のリソース間の帯域幅は、リソースが同じ仮想ネットワーク内にある場合と同じです。
+[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)で接続される仮想ネットワークが存在するサポートされる Azure リージョンは、同じであっても、異なっていてもかまいません。 仮想ネットワークが含まれるサブスクリプションは同じでも異なるっていてもかまいませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに割り当てられている必要があります。 ピアを作成する前に、ピアリングのすべての[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。 同じリージョン内でピアリングされる仮想ネットワーク内のリソース間の帯域幅は、リソースが同じ仮想ネットワーク内にある場合と同じです。
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 
@@ -107,10 +107,14 @@ Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、サブスクリプション、管理グループ、リソース グループ、個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance)に対して割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
+Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、サブスクリプション、管理グループ、リソース グループ、個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に対して割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
 
 ## <a name="policy"></a>ポリシー
 
-Azure Policy を使って、ポリシーの定義の作成、割り当て、管理を行うことができます。 ポリシー定義は、リソースにさまざまな規則と効果を適用し、組織の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 Azure Policy によって、リソースの評価が実行され、ユーザーのポリシー定義に準拠していないリソースがスキャンされます。 たとえば、特定のリソース グループ内でのみ仮想ネットワークの作成を許可するようなポリシーを作成できます。 または、すべてのサブネットにネットワーク セキュリティ グループが関連付けられていることを要求するポリシーを作成できます。 ポリシーは、リソースを作成および更新するときに評価されます。
+Azure Policy を使って、ポリシーの定義の作成、割り当て、管理を行うことができます。 ポリシー定義は、リソースにさまざまな規則を適用し、組織の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 Azure Policy によって、リソースの評価が実行され、ユーザーのポリシー定義に準拠していないリソースがスキャンされます。 たとえば、特定のリソース グループまたはリージョン内でのみ仮想ネットワークの作成を許可するようなポリシーを定義して適用することができます。 または、すべてのサブネットにネットワーク セキュリティ グループが関連付けられていることを要求するポリシーを作成できます。 ポリシーは、リソースを作成および更新するときに評価されます。
 
 ポリシーは、サブスクリプション、管理グループ、リソース グループの階層に対して適用されます。 詳しくは、[Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワーク [ポリシー テンプレート](policy-samples.md)のサンプルをデプロイしてください。
+
+## <a name="next-steps"></a>次の手順
+
+[仮想ネットワーク](manage-virtual-network.md)、[サブネットおよびサービス エンドポイント](virtual-network-manage-subnet.md)、[ネットワーク インターフェイス](virtual-network-network-interface.md)、[ピアリング](virtual-network-manage-peering.md)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md)、[ルート テーブル](manage-route-table.md)のすべてのタスク、設定、およびオプションについて説明します。

@@ -1,23 +1,19 @@
 ---
-title: "Azure Backup Server を使用した VMware サーバーのバックアップ | Microsoft Docs"
-description: "Azure Backup Server を使用して、Azure またはディスクに VMware vCenter/ESXi サーバーをバックアップします。 この記事では、VMware のワークロードをバックアップ (または保護) するための詳細な手順を説明します。"
+title: Azure Backup Server を使用した VMware サーバーのバックアップ
+description: Azure Backup Server を使用して、Azure またはディスクに VMware vCenter/ESXi サーバーをバックアップします。 この記事では、VMware のワークロードをバックアップ (または保護) するための詳細な手順を説明します。
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605425"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Azure への VMware サーバーのバックアップ
 
@@ -133,7 +129,7 @@ Azure Backup Server では、ユーザー名とパスワードを使用して、
 
 バックアップ管理者の vCenter Server のロールと権限を追加するには:
 
-1. VCenter Server にサインインし、vCenter Server の **[ナビゲーター]**パネルで **[管理]** をクリックします。
+1. VCenter Server にサインインし、vCenter Server の **[ナビゲーター]** パネルで **[管理]** をクリックします。
 
     ![VCenter Server の [ナビゲーター] パネルの [管理] オプション](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
@@ -380,7 +376,7 @@ vCenter Server を Azure Backup Server に追加したら、次は保護グル�
 
     ![保護グループのメンバーと設定の概要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Backup Server を使用して、VMware ワークロードを保護する場合は、Azure Backup Server を使用した [Microsoft Exchange Server](./backup-azure-exchange-mabs.md)、[Microsoft SharePoint ファーム](./backup-azure-backup-sharepoint-mabs.md)、または [SQL Server データベース](./backup-azure-sql-mabs.md)の保護も参考にしてください。
 
 エージェントの登録、保護グループの構成、およびジョブのバックアップに関する問題については、「[Azure Backup Server のトラブルシューティング](./backup-azure-mabs-troubleshoot.md)」をご覧ください。

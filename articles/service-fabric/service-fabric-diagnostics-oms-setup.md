@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/03/2018
 ms.author: srrengar
-ms.openlocfilehash: af94e3270493f6967c4f8c484170751c098bf181
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 25db5075e2099dee354c4c5ef999b26c8e0c50c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642667"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -50,7 +51,7 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics ワークスペースをクラスターに接続する 
 
-1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ポータルへのアクセスを変更できます。
+1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ワークスペースへのアクセスを変更できます。
 
 2. 左側のナビゲーション メニューの **[ワークスペースのデータ ソース]** の下にある **[ストレージ アカウント ログ]** を選択します。
 

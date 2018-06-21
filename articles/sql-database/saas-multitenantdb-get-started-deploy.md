@@ -8,14 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646458"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 
@@ -123,7 +124,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 中心となる **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
 
 1. Web ブラウザーで **Events Hub** を開きます。
-    - http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net &nbsp; *(&lt;ユーザー&gt; は実際のデプロイのユーザー値に置き換えてください)。*
+    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(&lt;user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,7 +136,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
 Wingtip アプリは、受信要求の配布を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
-- http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. イベント アプリによって、URL からテナント名が解析されます。 前の URL の例では、テナント名は *fabrikamjazzclub* です。
 2. アプリはテナント名をハッシュして、[シャード マップ管理](sql-database-elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。
@@ -247,7 +248,8 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。
 
 - エラスティック プールの詳細については、以下をご覧ください。
-    - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
+    - 
+  [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
     - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>次の手順

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190681"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654285"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -31,7 +31,7 @@ N シリーズ VM の仕様、ストレージの容量、およびディスク�
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>NC、NCv2、NCv3、ND シリーズ VM 用の CUDA ドライバーのインストール
+## <a name="install-cuda-drivers-on-n-series-vms"></a>N シリーズ VM への CUDA ドライバーのインストール
 
 NVIDIA CUDA Toolkit から N シリーズ VM に CUDA ドライバーをインストールする手順は次のとおりです。 
 
@@ -156,7 +156,7 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
 
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
-RDMA ネットワーク接続は、同じ可用性セットまたは VM スケール セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
+RDMA ネットワーク接続は、同じ可用性セット内にデプロイまたは VM スケール セット内の単一の配置グループにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
 
 ### <a name="distributions"></a>ディストリビューション
 
@@ -168,7 +168,7 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>NV シリーズ VM 用の GRID ドライバーのインストール
+## <a name="install-grid-drivers-on-nv-series-vms"></a>NV シリーズ VM への GRID ドライバーのインストール
 
 NV シリーズ VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 

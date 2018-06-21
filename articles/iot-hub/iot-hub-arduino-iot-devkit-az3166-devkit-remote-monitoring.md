@@ -1,24 +1,20 @@
 ---
-title: 'IoT DevKit をクラウドへ: IoT MXChip DevKit を Azure IoT Hub に接続する | Microsoft Docs'
+title: IoT DevKit をクラウドへ -- IoT MXChip DevKit を Azure IoT Hub に接続する | Microsoft Docs
 description: このチュートリアルでは、IoT DevKit AZ3166 でのセンサーの状態を Azure IoT リモート監視ソリューション アクセラレータに送信する方法を説明します。
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d3de8241b42aff63faaf04477a58c5564407ac8b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6c5c12ffeacad9a3dd56ac561d9b4fe1a6e67eea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631498"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -40,7 +36,7 @@ ms.lasthandoff: 05/10/2018
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Azure IoT リモート監視ソリューション アクセラレータを作成する
 
-1. [Azure IoT ソリューション アクセラレータのサイト](https://www.azureiotsuite.com/)に移動して、**[新しいソリューションの作成]** をクリックします。
+1. [Azure IoT ソリューション アクセラレータのサイト](https://www.azureiotsolutions.com/)に移動して、**[新しいソリューションの作成]** をクリックします。
   ![Azure IoT ソリューション アクセラレータの種類の選択](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
   > 既定では、このサンプルでは、1 つの IoT リモート監視ソリューション アクセラレータが作成された後、S2 IoT Hub が作成されます。 この IoT ハブを膨大な数のデバイスと共に使用しない場合、S2 から S1 にダウングレードして IoT リモート監視ソリューション アクセラレータを削除することを強くお勧めします。これにより、必要なくなった際に関連の IoT Hub も削除できます。 

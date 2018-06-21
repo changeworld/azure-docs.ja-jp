@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807535"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -43,12 +44,12 @@ App Service プランの階層間で拡大縮小して、さまざまな量の�
 
 ## <a name="consumption-plan"></a>従量課金プラン
 
-従量課金プランを使用する場合、Azure Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。 このプランではスケーリングが自動的に行われ、関数の実行中にのみコンピューティング リソースに対して料金が発生します。 従量課金プランでは、関数を最大で 10 分間実行できます。 
+従量課金プランを使用する場合、Azure Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。 このプランではスケーリングが自動的に行われ、関数の実行中にのみコンピューティング リソースに対して料金が発生します。 従量課金プランでは、構成可能な期間が経過すると関数の実行はタイムアウトします。 
 
 > [!NOTE]
-> 従量課金プランの関数に対する既定のタイムアウトは 5 分です。 Function App に対してこの値を 10 分まで増やすには、[host.json](functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティを変更します。
+> 従量課金プランの関数に対する既定のタイムアウトは 5 分です。 [host.json](functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティを変更することにより、Function App に対するこの値を最大 10 分まで増やすことができます。
 
-課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格]に関するページを参照してください。
+課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ]に関するページを参照してください。
 
 従量課金プランは既定のホスティング プランであり、次の利点があります。
 - 関数の実行中にのみ課金されます。
@@ -90,7 +91,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ## <a name="how-the-consumption-plan-works"></a>従量課金プランの仕組み
 
-従量課金プランでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、スケール コントローラーによって CPU とメモリのリソースが自動的に拡大縮小されます。 Functions ホストの各インスタンスのメモリは、1.5 GB に制限されています。  ホストのインスタンスは Function App です。つまり、関数アプリ内のすべての関数がインスタンス内のリソースを共有し、同時にスケールされます。
+従量課金プランでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、スケール コントローラーによって CPU とメモリのリソースが自動的に拡大縮小されます。 Functions ホストの各インスタンスのメモリは、1.5 GB に制限されています。  ホストのインスタンスは関数アプリです。つまり、関数アプリ内のすべての関数がインスタンス内のリソースを共有し、同時にスケールされます。 同じ従量課金プランを共有する関数アプリは、個別にスケーリングされます。  
 
 従量課金ホスティング プランを使用する場合は、関数コード ファイルが、関数のメイン ストレージ アカウントの Azure Files 共有に保存されます。 関数アプリのメイン ストレージ アカウントを削除すると、関数コード ファイルは削除され、復元できません。
 
@@ -121,8 +122,8 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 
 ### <a name="billing-model"></a>課金モデル
 
-従量課金プランの課金の詳細については、[Azure Functions の価格]に関するページをご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
+従量課金プランの課金の詳細については、[Azure Functions の価格に関するページ]に関するページをご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
 * **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
 * **実行回数**。 イベント トリガーに応じて関数が実行されるたびにカウントされます。
 
-[Azure Functions の価格]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions の価格に関するページ]: https://azure.microsoft.com/pricing/details/functions

@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8b11d4ab7188141b36b998e16429329c33f09cee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599570"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -116,7 +117,8 @@ hosts ファイルの設定は、アプリ内のすべての関数 (関数の "*
 他のホスト構成オプションについては、[ホスト構成に関するドキュメント](functions-host-json.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
 詳細については、次のリソースを参照してください。
 
-Azure Functions は Azure App Service を使用するため、App Service のガイドラインも認識しておく必要があります。
-* [パターンとプラクティスによる HTTP パフォーマンスの最適化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
+* [Azure Functions で接続を管理する方法](manage-connections.md)
+* [Azure App Service のベスト プラクティス](../app-service/app-service-best-practices.md)

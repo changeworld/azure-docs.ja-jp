@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: e3b6ccd1e7066ed86b3d6d2d85228688b06931c4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619084"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 
@@ -26,7 +27,7 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 バージョン 1 では、次の例に示すように、partitionedBy プロパティと SliceStart システム変数を使用できました。 
 
 ```json
-"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/yearno={Year}/monthno={Month}/dayno={Day}/",
+"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
 "partitionedBy": [
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "%M" } },
@@ -38,25 +39,31 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 
 バージョン 2 では、この動作を実現する方法は、次のアクションを行うことです。 
 
-1. 文字列型の**パイプライン パラメーター**を定義します。 次の例では、パイプライン パラメーターの名前は **scheduledRunTime** です。 
-2. データセット定義内の **folderPath** に、パイプライン パラメーターの値を設定します。 
-3. パイプラインを実行する前に、パラメーター用のハードコードされた値を渡します。 または、実行時にトリガーの開始時刻またはスケジュールされた時刻を動的に渡します。 
+1. 文字列型の**パイプライン パラメーター**を定義します。 次の例では、パイプライン パラメーターの名前は **windowStartTime** です。 
+2. パイプライン パラメーターの値を参照するために、データセット定義内に **folderPath** を設定します。 
+3. オンデマンドでパイプラインを呼び出すときに、パラメーターの実際の値を渡すか、実行時にトリガーの開始時刻またはスケジュール時刻を動的に渡します。 
 
 ```json
 "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
 },
 ```
 
 ## <a name="pass-in-value-from-a-trigger"></a>トリガーから値を渡す
-次のトリガー定義では、トリガーのスケジュールされた時刻が **scheduledRunTime** パイプライン パラメーターの値として渡されます。 
+次のタンブリング ウィンドウ トリガー定義では、トリガーの開始時間が **windowStartTime** パイプライン パラメーターの値として渡されます。 
 
 ```json
 {
     "name": "MyTrigger",
     "properties": {
-       ...
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "Hour",
+            "interval": "1",
+            "startTime": "2018-05-15T00:00:00Z",
+            "delay": "00:10:00",
+            "maxConcurrency": 10
         },
         "pipeline": {
             "pipelineReference": {
@@ -64,7 +71,7 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
                 "referenceName": "MyPipeline"
             },
             "parameters": {
-                "scheduledRunTime": "@trigger().scheduledTime"
+                "windowStartTime": "@trigger().outputs.windowStartTime"
             }
         }
     }
@@ -73,14 +80,15 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 
 ## <a name="example"></a>例
 
-サンプルのデータセット定義を次に示します (`date` という名前のパラメーターを使用します)。
+データセット定義の例を次に示します。
 
 ```json
 {
+  "name": "SampleBlobDataset",
   "type": "AzureBlob",
   "typeProperties": {
     "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
     },
     "format": {
@@ -129,20 +137,16 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
                         "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/', pipeline().parameters.inputRawLogsFolder, '/')",
                         "type": "Expression"
                     },
-                    "PARTITIONEDOUTPUT": {
-                        "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/partitionedgameevents/')",
-                        "type": "Expression"
-                    },
                     "Year": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'yyyy')",
                         "type": "Expression"
                     },
                     "Month": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%M')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'MM')",
                         "type": "Expression"
                     },
                     "Day": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%d')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'dd')",
                         "type": "Expression"
                     }
                 }
@@ -154,7 +158,7 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
             "name": "HivePartitionGameLogs"
         }],
         "parameters": {
-            "scheduledRunTime": {
+            "windowStartTime": {
                 "type": "String"
             },
             "blobStorageAccount": {
@@ -164,9 +168,6 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
                 "type": "String"
             },
             "inputRawLogsFolder": {
-                "type": "String"
-            },
-            "partitionHiveScriptFile": {
                 "type": "String"
             }
         }

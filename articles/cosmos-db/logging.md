@@ -2,23 +2,20 @@
 title: Azure Cosmos DB 診断ログ | Microsoft Docs
 description: このチュートリアルを使用すると、Azure Cosmos DB のログ記録を簡単に始めることができます。
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612216"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -47,7 +44,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
 
 アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("_コントロール プレーン_")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作には、コレクションの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("_データ プレーン_")。 診断ログでのデータ プレーン操作の例としては、Delete、Insert、ReadFeed などがあります。
 
-アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。 アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。 ただし、診断ログでは、多くの場合 PII データがこれらのログから削除されるため、実際は限定的である可能性があります。 呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
+アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。 アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。 ただし、診断ログでは、多くの場合、個人データがこれらのログから削除されるため、実際は限定的である可能性があります。 呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
 
 ### <a name="azure-metrics"></a>Azure メトリック
 
@@ -175,7 +172,7 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 ```
 
 > [!NOTE]
-> 既存のストレージ アカウントを使う場合は、アカウントは Azure Cosmos DB サブスクリプションと同じサブスクリプションを使う必要があります。 アカウントでは、クラシック デプロイメント モデルではなく Resource Manager デプロイメント モデルが使われている必要があります。
+> 既存のストレージ アカウントを使う場合は、アカウントは Azure Cosmos DB サブスクリプションと同じサブスクリプションを使う必要があります。 アカウントでは、クラシック デプロイ モデルではなく Resource Manager デプロイ モデルが使われている必要があります。
 >
 >
 
@@ -440,7 +437,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 次の表は、各ログ エントリの内容をまとめた一覧です。
 
-| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | [説明] |
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | 説明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|

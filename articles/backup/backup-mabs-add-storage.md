@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup Server v2 で Modern Backup Storage を使用する |Microsoft ドキュメント"
-description: "Azure Backup Server v2 の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。"
+title: Azure Backup Server v2 で Modern Backup Storage を使用する
+description: Azure Backup Server v2 の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: 751b9b495fd368dff1f72429707f5f33a0ccb569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 7c583ea048ed1837c662869c62039165aaa3c024
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606756"
 ---
 # <a name="add-storage-to-azure-backup-server-v2"></a>Azure Backup Server v2 へのストレージの追加
 
@@ -96,7 +91,7 @@ PowerShell を使用して行った変更は Backup Server 管理者コンソー
 
 ![管理者コンソール内のディスクとボリューム](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。
 
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)

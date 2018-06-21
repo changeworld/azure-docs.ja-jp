@@ -1,24 +1,19 @@
 ---
-title: Azure Recovery Services コンテナーとサーバーの管理 | Microsoft Docs
+title: Azure Recovery Services コンテナーとサーバーの管理
 description: この記事では、Azure Recovery Services のコンテナーとサーバーを管理する方法について説明します。
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: tysonn
-ms.assetid: 4eea984b-7ed6-4600-ac60-99d2e9cb6d8a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: markgal
-ms.openlocfilehash: 18ab960c3d86f4154f7cbbaa3dd4909b9b16b697
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3d0404654631520909e63853d47b7de2b6cb4361
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606530"
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
 
@@ -169,7 +164,7 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 * コンテナーに関連付けられているクラウド GRS ストレージの利用状況
 
 ## <a name="manage-your-production-servers"></a>実稼働サーバーの管理
-実稼働サーバーを管理するには、 **[設定]**をクリックします。
+実稼働サーバーを管理するには、 **[設定]** をクリックします。
 
 [管理] で、**[バックアップ インフラストラクチャ]、[実稼働サーバー]** の順にクリックします。
 
@@ -200,7 +195,7 @@ Backup エージェント コンソールの右側にある **[アクション]*
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="modify-the-backup-schedule"></a>バックアップのスケジュールの変更
-1. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]**をクリックします。
+1. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/schedule-backup.png)
 2. **バックアップのスケジュール ウィザード**で、**[バックアップ項目または時刻を変更する]** を選択した状態のまま、**[次へ]** をクリックします。
@@ -209,7 +204,7 @@ Backup エージェント コンソールの右側にある **[アクション]*
 3. 項目を追加または変更する場合は、**[バックアップする項目の選択]** 画面で **[項目の追加]** をクリックします。
 
     ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#manage-exclusion-settings)を追加する手順をご覧ください。
-4. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
+4. バックアップするファイルとフォルダーを選択し、 **[OK]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-items-modify.png)
 5. **バックアップのスケジュール**を指定し、**[次へ]** をクリックします。
@@ -243,26 +238,26 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 
     スロットルを有効にしたら、**[作業時間]** と **[作業時間外]** で、バックアップ データの転送時に使用できる帯域幅を指定します。
 
-    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]**の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外は、作業時間外と見なされます。
+    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]** の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外は、作業時間外と見なされます。
 3. Click **OK**.
 
 ## <a name="manage-exclusion-settings"></a>除外の設定の管理
 1. **Microsoft Azure Backup エージェント** を開きます (コンピューターで " *Microsoft Azure Backup*" を検索すると見つかります)。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/snap-in-search.png)
-2. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]**をクリックします。
+2. Microsoft Azure Backup エージェントで、 **[バックアップのスケジュール]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/schedule-backup.png)
 3. バックアップのスケジュール ウィザードで、**[バックアップ項目または時刻を変更する]** を選択した状態のまま、**[次へ]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
-4. **[除外の設定]**をクリックします。
+4. **[除外の設定]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclusion-settings.png)
-5. **[除外の追加]**をクリックします。
+5. **[除外の追加]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-exclusion.png)
-6. 場所を選択し、 **[OK]**をクリックします。
+6. 場所を選択し、 **[OK]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclusion-location.png)
 7. **[ファイルの種類]** フィールドにファイル拡張子を追加します。
@@ -276,7 +271,7 @@ Azure Backup エージェントには、データ転送時のネットワーク�
     別の拡張子を追加するには、 **[除外の追加]** をクリックし、別の種類のファイル拡張子を入力します (.jpeg 拡張子を追加)。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/exclude-jpg.png)
-8. すべての拡張子を追加したら、 **[OK]**をクリックします。
+8. すべての拡張子を追加したら、 **[OK]** をクリックします。
 9. **[確認] ページ**が表示されるまで **[次へ]** をクリックしてバックアップのスケジュール ウィザードを続行し、**[完了]** をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/finish-exclusions.png)

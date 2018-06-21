@@ -1,24 +1,20 @@
 ---
-title: "Azure Backup Server でシステム状態を保護してベア メタルに回復する | Microsoft Docs"
-description: "Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。"
+title: Azure Backup Server でシステム状態を保護してベア メタルに回復する
+description: Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607210"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに回復する
 
@@ -33,12 +29,13 @@ Azure Backup Server は、システム状態をバックアップし、ベア �
 
 次の表は、バックアップと復旧を実行できる項目のまとめです。 システム状態および BMR を使用して保護できるアプリのバージョンの詳細については、「[What does Azure Backup Server back up?](backup-mabs-protection-matrix.md)」(Azure Backup Server がバックアップするもの) を参照してください。
 
-|Backup|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
+|Backup
+|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**ファイル データ**<br /><br />通常のデータのバックアップ<br /><br />BMR/システム状態のバックアップ|ファイル データの損失|Y|N|N|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームは正常)|N|N|Y|
-|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームも損失)|Y|いいえ|はい (BMR、この後にバックアップ ファイル データの通常回復を実行)|
+|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームも損失)|Y|いいえ |はい (BMR、この後にバックアップ ファイル データの通常回復を実行)|
 |**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サイト、リスト、リスト アイテム、ドキュメントの損失|Y|N|N|
 |**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
 |**SharePoint データ**:<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|ディザスター リカバリー|N|N|N|

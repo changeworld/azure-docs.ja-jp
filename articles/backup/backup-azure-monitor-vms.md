@@ -1,24 +1,19 @@
 ---
-title: Azure 仮想マシンのバックアップ アラートを監視する | Microsoft Docs
+title: Azure 仮想マシンのバックアップ アラートを監視する
 description: Azure 仮想マシンのバックアップ ジョブからのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。
 services: backup
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: fed32015-2db2-44f8-b204-d89f6fd1bea2
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: markgal
+ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606309"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
@@ -34,7 +29,7 @@ ms.lasthandoff: 03/09/2018
 
 [アラートとイベント] セクションから [バックアップ アラート] ブレードを開くには:
 
-1. コンテナーのダッシュボードから、 **[すべての設定]**をクリックします。 ![[すべての設定] ボタン](./media/backup-azure-monitor-vms/all-settings-button.png)
+1. コンテナーのダッシュボードから、 **[すべての設定]** をクリックします。 ![[すべての設定] ボタン](./media/backup-azure-monitor-vms/all-settings-button.png)
 2. **[設定]** ブレードで **[アラートとイベント]** をクリックします。 ![[アラートとイベント] ボタン](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 3. **[アラートとイベント]** ブレードで、**[バックアップ アラート]** をクリックします。 ![[バックアップ アラート] ボタン](./media/backup-azure-monitor-vms/backup-alerts.png)
 
@@ -62,7 +57,7 @@ ms.lasthandoff: 03/09/2018
 2. [通知の構成] セクションで、電子メール通知に対して **[オン]** をクリックします。
 
     受信者と重大度は必須情報であるため、そのダイアログの横には星マークが付いています。 1 つ以上の電子メール アドレスを指定し、1 つ以上の重大度を選択します。
-3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、 username@domainname.com の形式で入力します。複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
+3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、 username@domainname.com の形式で入力します。 複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
 4. 指定したアラートの発生時に通知を送信するには、**[通知]** 領域で **[アラートごと]** を選択します。過去 1 時間の概要を送信するには、**[1 時間ごとのダイジェスト]** を選択します。
 5. **[重大度]** ダイアログ ボックスで、電子メール通知をトリガーする 1 つ以上のレベルを選択します。
 6. **[Save]** をクリックします。

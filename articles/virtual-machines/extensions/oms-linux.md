@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/16/2018
+ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: dcc5637b159341fc4b6cc8130b1807c8a2f604fc
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261827"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652857"
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux 用の OMS 仮想マシン拡張機能
 
@@ -39,7 +39,7 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 | CentOS Linux | 5、6、および 7 (x86/x64) |
 | Oracle Linux | 5、6、および 7 (x86/x64) |
 | Red Hat Enterprise Linux Server | 5、6、および 7 (x86/x64) |
-| Debian GNU/Linux | 6、7、および 8 (x86/x64) |
+| Debian GNU/Linux | 6、7、8、および 9 (x86/x64) |
 | Ubuntu | 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64) |
 | SUSE Linux Enterprise Server | 11 および 12 (x86/x64) |
 
@@ -48,7 +48,7 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 
 | OMS Linux VM 拡張機能のバージョン | OMS エージェント バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.6.42.0 | [1.6.42.0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
+| 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
 | 1.4.58.7 | [14.2-125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
@@ -84,7 +84,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.6",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -102,7 +102,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | 型 | OmsAgentForLinux |
-| typeHandlerVersion | 1.4 |
+| typeHandlerVersion | 1.6 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -127,7 +127,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.6",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -152,7 +152,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.4",
+    "typeHandlerVersion": "1.6",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +173,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.4 --protected-settings '{"workspaceKey": "omskey"}' \
+  --version 1.6 --protected-settings '{"workspaceKey": "omskey"}' \
   --settings '{"workspaceId": "omsid"}'
 ```
 

@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 95d4fc1886e16785b6de8f3a395b218b66d193ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645363"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -82,7 +83,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプトと DLL) が Windows によってブロックされる場合があります。 スクリプトを展開する前に、手順に従って .zip ファイルのブロックを解除してください。 ブロック解除により、スクリプトの実行が許可されます。
 
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
-2. **[複製またはダウンロード]**を選択します。
+2. **[複製またはダウンロード]** を選択します。
 3. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
 4. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、**[プロパティ]** を選択します。
 5. **[全般]** タブで **[ブロックの解除]** > **[適用]** と選択します。
@@ -124,7 +125,7 @@ Wingtip アプリケーションでは、[*Azure Traffic Manager*](../traffic-ma
 
     上記の形式の各部分の説明を次の表に示します。
 
-    | URL の部分        | [説明]       |
+    | URL の部分        | 説明       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*スタンドアロン* " アプリ (*-sa*) の実装や "*マルチテナント データベース*" (*-mt*) の実装です。 |
     | .*&lt;ユーザー&gt;* | この例では *af1*。 |

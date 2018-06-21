@@ -6,15 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d52838aa65ade8e2dfac75089ee82b4b1bae5257
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364354"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644197"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -36,7 +36,7 @@ Azure Portal でパフォーマンスに関する推奨事項を調べるには�
 
 推奨事項は、パフォーマンスへの潜在的な影響ごとに、次のカテゴリの順に表示されます。
 
-| 影響 | [説明] |
+| 影響 | 説明 |
 |:--- |:--- |
 | 高 |高い影響を及ぼすお勧め候補は、パフォーマンスに最も重要な影響を与えます。 |
 | Medium |中程度の影響を及ぼすおすすめ候補は、パフォーマンスを向上しますが、それほど著しい向上ではありません。 |
@@ -105,6 +105,8 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 > **DROP_INDEX** オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。
 >
 
+目的の構成を選択したら、[適用] をクリックします。
+
 ### <a name="manually-run-the-recommended-t-sql-script"></a>推奨される T-SQL スクリプトを手動で実行する
 任意の推奨インデックスを選択し、 **[スクリプトの表示]** をクリックします。 データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
 
@@ -119,7 +121,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 ## <a name="monitoring-operations"></a>操作の監視
 推奨インデックスの適用は、瞬時に行われない場合があります。 ポータルには、推奨事項の状態に関する詳細情報が表示されます。 インデックスは次のいずれかの状態になります。
 
-| 状態 | [説明] |
+| 状態 | 説明 |
 |:--- |:--- |
 | Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨インデックスは適用中です。 |

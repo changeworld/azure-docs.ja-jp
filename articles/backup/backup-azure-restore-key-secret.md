@@ -1,25 +1,20 @@
 ---
-title: "Azure Backup を使用して暗号化された VM の Key Vault キーとシークレットを復元 | Microsoft Docs"
-description: "Azure Backup で PowerShell を使用して Key Vault のキーとシークレットを復元する方法を説明します。"
+title: Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
+description: Azure Backup で PowerShell を使用して Key Vault のキーとシークレットを復元する方法を説明します。
 services: backup
-documentationcenter: 
 author: JPallavi
 manager: vijayts
-editor: 
-ms.assetid: 45214083-d5fc-4eb3-a367-0239dc59e0f6
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2db3449187d655248b13198b268841052570626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b703b4511f9fefb48546b23feaa33ca7da34da1f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606105"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
 この記事では、キーとシークレットが Key Vault に存在しない場合に、暗号化された Azure VM の復元を Azure VM Backup を使用して実行する方法を説明します。 次に示す手順は、復元した VM のキー (Key 暗号化キー) とシークレット (BitLocker 暗号化キー) の個別のコピーを保持する場合にも使用できます。
@@ -116,11 +111,11 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 ```
 
 > [!NOTE]
-> 1. $rp1.KeyAndSecretDetails.SecretUrl の出力を参照し、secrets/ の後に続くテキスト (output secret URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 and secret name is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA など) を使用して、$secretname の値を取得できます。
+> 1. $rp1.KeyAndSecretDetails.SecretUrl の出力を参照し、secrets/ の後に続くテキスト (output secret URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 and secret name is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA など) を使って、$secretname の値を取得できます。
 > 2. タグ DiskEncryptionKeyFileName の名前は、シークレットの名前と同じです。
 > 3. DiskEncryptionKeyEncryptionKeyURL の名前は、キーを復元した後で、[Get-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868053.aspx) コマンドレットを使用して、Key Vault から取得できます。
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 キーとシークレットを Key Vault に復元した後で、復元したディスク、キー、およびシークレットから暗号化された VM を作成するには、[PowerShell を使用した Azure VM のバックアップと復元の管理](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)に関する記事をご覧ください。
