@@ -12,21 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/20/2018
-ms.author: TomSh
+ms.date: 06/07/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aab890340fcdd87e1b3788d8bcca903c43da1da
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235748"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
 
-Azure Log Integration は、セキュリティ情報イベント管理 (SIEM) ベンダーから [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) コネクタを入手できないユーザーにとっての代替手段になります。 Azure Log Integration により Azure のログが SIEM で使用可能になり、統合されたセキュリティ ダッシュボードを作成してすべてのアセットを管理できます。
 
-> [!NOTE]
-> Azure Monitor の詳細については、「[Azure Monitor の使用](../monitoring-and-diagnostics/monitoring-get-started.md)」を参照してください。 Azure Monitor コネクタの状態に関する情報については、SIEM のベンダーにお問い合わせください。
+>[!IMPORTANT]
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+
+セキュリティ情報イベント管理 (SIEM) ベンダーから [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) コネクタを入手できない場合は、Azure Log Integration しか使用できません。
+
+Azure Log Integration により Azure のログが SIEM で使用可能になり、統合されたセキュリティ ダッシュボードを作成してすべてのアセットを管理できます。
+Azure Monitor コネクタの状態に関する情報については、SIEM のベンダーにお問い合わせください。
 
 > [!IMPORTANT]
 > 主な関心が仮想マシン ログの収集である場合、ほとんどの SIEM ベンダーのソリューションにこのオプションが含まれています。 代替として SIEM ベンダーのコネクタを使用することは常に推奨されます。
@@ -118,7 +123,7 @@ Azure Log Integration サービスは、インストール先のマシンから�
   > [!NOTE]
   > コマンドが成功するとフィードバックを受信しません。 
 
-4. システムを監視するには、Azure 診断に使用されているストレージ アカウントの名前が必要です。 Azure Portal で **[仮想マシン]** に移動します。 監視する仮想マシンを探します。 **[プロパティ]** セクションで、**[診断設定]** を選択します。  次に、**[エージェント]** を選択します。 指定されたストレージ アカウント名をメモします。 このアカウント名は、後の手順で必要になります。
+4. システムを監視するには、Azure 診断に使用されているストレージ アカウントの名前が必要です。 Azure Portal で **[仮想マシン]** に移動します。 監視する Windows 仮想マシンを検索します。 **[プロパティ]** セクションで、**[診断設定]** を選択します。  次に、**[エージェント]** を選択します。 指定されたストレージ アカウント名をメモします。 このアカウント名は、後の手順で必要になります。
 
   ![Azure の [診断設定] ウィンドウのスクリーンショット](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -134,14 +139,14 @@ Azure Log Integration サービスは、インストール先のマシンから�
   4. Azure にサインインします。
   5. Azure 診断用に構成したストレージ アカウントが表示されることを確認します。 
 
-    ![Storage Explorer のストレージ アカウントのスクリーンショット](./media/security-azure-log-integration-get-started/storage-explorer.png)
+   ![Storage Explorer のストレージ アカウントのスクリーンショット](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
   6. ストレージ アカウントの下に、オプションがいくつか表示されます。 **[テーブル]** の下に、**WADWindowsEventLogsTable** というテーブルが表示されます。
 
   仮想マシンが作成されたときに監視が有効になっていなかった場合、前に説明したように有効にできます。
 
 
-## <a name="integrate-azure-diagnostics-logging"></a>Azure 診断ログの統合
+## <a name="integrate-windows-vm-logs"></a>Windows VM のログを統合する
 
 この手順では、Azure Log Integration サービスを実行しているコンピューターを構成し、ログ ファイルを含むストレージ アカウントに接続します。
 
@@ -178,7 +183,7 @@ Azure Log Integration サービスは、インストール先のマシンから�
 
   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  例: 
+  例:
   
   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
@@ -207,8 +212,37 @@ Azure Log Integration サービスは、インストール先のマシンから�
 
 別のオプションとして、[Azure Log Integration の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration)も利用可能です。 MSDN フォーラムで、コミュニティは質問に回答し、Azure Log Integration を最大限活用するためのヒントやコツを共有することでサポートを提供します。 このフォーラムは Azure Log Integration チームも監視しています。 サポートを提供できるときはいつでも提供します。
 
+## <a name="integrate-azure-activity-logs"></a>Azure Activity Logs を統合する
+
+Azure アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 Azure Security Center アラートは、このログにも含まれます。
+> [!NOTE]
+> [作業の開始](security-azure-log-integration-get-started.md)に関する記事を読み、手順を完了してから、この記事の手順を試してください。
+
+### <a name="steps-to-integrate-azure-activity-logs"></a>Azure Activity Logs を統合する手順
+
+1. コマンド プロンプトを開き、コマンド ```cd c:\Program Files\Microsoft Azure Log Integration``` を実行します。
+2. コマンド ```azlog createazureid``` を実行します。
+
+    このコマンドは Azure ログインを要求します。 このコマンドは、管理者、共同管理者、または所有者としてログインし、Azure サブスクリプションをホストする Azure AD テナントに、Azure Active Directory サービス プリンシパルを作成します。 単なる Guest ユーザーとして Azure AD テナントにログインしている場合、コマンドは失敗します。 Azure への認証は、Azure AD によって行われます。 Azure ログ統合のサービス プリンシパルを作成すると、Azure AD の ID が作成され、Azure サブスクリプションからの読み取りアクセス許可が付与されます。
+3.  前の手順で作成した Azure Log Integration サービス プリンシパルを承認するために次のコマンドを実行してアクセスし、サブスクリプションの Activity Log を読み取ります。 コマンドを実行するには、サブスクリプションの所有者である必要があります。
+
+    ```Azlog.exe authorize subscriptionId``` 例:
+
+```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+4.  次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。
+    - C:\Users\azlog\AzureResourceManagerJson
+    - C:\Users\azlog\AzureResourceManagerJsonLD
+
+> [!NOTE]
+> JSON ファイルの情報を Security Information and Event Management (SIEM) システムに移行する具体的な手順については、お使いの SIEM のベンダーに問い合わせてください。
+
+[Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムで、Azure ログ統合コミュニティのメンバーは、質問、回答、ヒント、コツなどによって相互にサポートを提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
+
+[サポート要求](../azure-supportability/how-to-create-azure-support-request.md)を出すこともできます。 サポートを依頼しようとしているサービスとして [ログ統合] を選択します。
+
 ## <a name="next-steps"></a>次の手順
-Azure Log Integration の詳細については、次の記事を参照してください。
+
+Azure Log Integration の詳細については、次の記事を参照してください。「作業の開始」に関する記事を読み、手順を完了してから、この記事の手順を試してください。
 
 * [Azure ログ用の Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324)。 このダウンロード センターでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
 * [Azure Log Integration の概要](security-azure-log-integration-overview.md)。 この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。
