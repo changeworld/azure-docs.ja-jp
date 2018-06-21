@@ -1,9 +1,11 @@
-``*.accesscontrol.windows.net`` アクセス制御と ID 管理に使用。 (ACS ベースの認証は、2017 年 12 月で廃止されます) <br/>
+``*.accesscontrol.windows.net`` . アクセス制御と ID 管理に使用。 (ACS ベースの認証は、2017 年 12 月で非推奨となります) <br/>
 ``https://login.microsoftonline.com`` AAD を使ったアクセス制御と ID 管理に使用
 
-``*.backup.windowsazure.com`` レプリケーション データの転送と調整に使用。 <br/> ``*.blob.core.windows.net`` レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用。<br/> ``*.hypervrecoverymanager.windowsazure.com`` レプリケーション管理操作と調整に使用。<br/>
+``*.backup.windowsazure.com`` . レプリケーション データの転送と調整に使用。 <br/> ``*.blob.core.windows.net`` レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用。<br/> ``*.hypervrecoverymanager.windowsazure.com`` . レプリケーション管理操作と調整に使用。<br/>
 ``dc.services.visualstudio.com`` - テレメトリに使用。 <br>
 ``time.nist.gov`` および ``time.windows.com``。 システム時刻とグローバル時刻間の時刻同期の確認に使用。
 <br/><br/>
-Azure Government クラウドの URL:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>- https://login-us.microsoftonline.com<br/>- https://login.microsoftonline.us<br/>- https://login.microsoftonline.com<br/>
+Azure Government クラウドの URL:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>-
+https://login.microsoftonline.us<br/>-
+https://login.microsoftonline.com<br/>
 

@@ -1,24 +1,19 @@
 ---
-title: "Azure の自動スケール設定について | Microsoft Docs"
-description: "自動スケール設定とそのしくみについて詳しく説明します。"
+title: Azure Monitor での自動スケール設定について
+description: 自動スケール設定とそのしくみについて詳しく説明します。 Virtual Machines、Cloud Services、Web Apps に当てはまります
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: 73c79ec4ee1beb5220e088421c78ffffd932eef1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: autoscale
+ms.openlocfilehash: 982bc43fd86a808da07833d77bde17e17789b2d6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264998"
 ---
 # <a name="understand-autoscale-settings"></a>自動スケール設定について
 自動スケール設定を使用すると、アプリケーションの変動する負荷に対応するために適切な量のリソースを確実に実行できます。 負荷やパフォーマンスを示すメトリック、またはスケジュールされた日時にトリガーするメトリックに基づいてトリガーされるように自動スケール設定を構成できます。 この記事では、自動スケール設定の構造について詳しく説明します。 まず、設定のスキーマとプロパティについて取り上げ、構成可能なさまざまなプロファイルの種類についてわかりやすく説明します。 最後に、そのときどきで実行されるプロファイルが、Azure の自動スケール機能によって、どのように評価されるかを説明します。
@@ -94,11 +89,11 @@ ms.lasthandoff: 02/03/2018
 }
 ```
 
-| セクション | 要素名 | [説明] |
+| セクション | 要素名 | 説明 |
 | --- | --- | --- |
-| 設定 | ID | 自動スケール設定のリソース ID。 自動スケール設定は、Azure Resource Manager リソースです。 |
-| 設定 | name | 自動スケール設定の名前。 |
-| 設定 | location | 自動スケール設定の場所。 この場所は、スケールするリソースの場所とは異なる場合があります。 |
+| Setting | ID | 自動スケール設定のリソース ID。 自動スケール設定は、Azure Resource Manager リソースです。 |
+| Setting | name | 自動スケール設定の名前。 |
+| Setting | location | 自動スケール設定の場所。 この場所は、スケールするリソースの場所とは異なる場合があります。 |
 | プロパティ | targetResourceUri | スケールするリソースのリソース ID。 リソースごとに適用できる自動スケール設定は 1 つに限られます。 |
 | プロパティ | profiles | 自動スケール設定は、1 つ以上のプロファイルで構成されます。 自動スケール エンジンが実行されるたびに、1 つのプロファイルが実行されます。 |
 | [プロファイル] | name | プロファイルの名前。 プロファイルを識別できる任意の名前を選択できます。 |

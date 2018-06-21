@@ -7,16 +7,16 @@ ms.author: haining
 manager: cgronlun
 ms.reviewer: garyericson, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: d3cb1a9f10d82eb1df585ae03adf4130888bd84c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 20fd51f8906861e725b80202235e1684c31fd562
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832902"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268401"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Microsoft が提供するその他の機械学習製品とサービス
 

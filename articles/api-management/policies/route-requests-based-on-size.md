@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: da21a7c83a61b618646c4c4d2f422756b04dc300
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a93e1d9fecea59ebb68c512b96c8381b5b1a9346
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934150"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284762"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>要求を本文のサイズに基づいてルーティングする
 
@@ -28,7 +28,7 @@ ms.locfileid: "33934150"
 
 コードを **inbound** ブロックに貼り付けます。
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Route requests based on size.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Route requests based on size.policy.xml)]
 
 ## <a name="next-steps"></a>次の手順
 

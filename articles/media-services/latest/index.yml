@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03-20-2018
   ms.author: juliako
-  ms.openlocfilehash: 2aa16fb222c6a58d8e98a7399d1e3fd3cd9044f6
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 7e250b59ae9ea370b2c019c012d1e2a0e6be3cb4
+  ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33940712"
+  ms.lasthandoff: 06/19/2018
+  ms.locfileid: "36217614"
 abstract:
   description: Media Services を使用してビデオをオンデマンドでストリーミングし、ライブ データをブロードキャストし、ビデオを分析する方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 sections:
@@ -31,25 +31,39 @@ sections:
     style: icon48
     items:
     - image:
-        src: media/index/media-services.svg
+        src: media/index/AMSIcons-encoding.svg
       text: ビデオ ファイルのストリーミング
       href: /azure/media-services/latest/stream-files-dotnet-quickstart
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: ファイルをストリーム配信して、Media Services を使用してビデオを分析する方法を説明します。
+    text: Media Services を使用して、オンデマンドでのファイルのストリーミング、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
   - type: list
-    style: ordered
+    style: icon48
     items:
-    - html: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">ビデオのアップロード、エンコード、およびストリーミング</a>
-    - html: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">ビデオの分析</a>
+    - image:
+        src: media/index/AMSIcons-encoding.svg
+      text: ビデオのアップロード、エンコード、ストリーミング
+      href: /azure/media-services/latest/stream-files-tutorial-with-api
+    - image:
+        src: media/index/AMSIcons-live.svg
+      text: ライブ ブロードキャスト
+      href: /azure/media-services/latest/stream-live-tutorial-with-api
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: ビデオの分析
+      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
 - title: リファレンス
   items:
+  - type: paragraph
+    text: ''
   - type: list
-    style: cards
-    className: cardsD
+    style: unordered
     items:
-    - title: コマンド ライン
-      html: <p><a href="https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest">Azure CLI</a></p>
-    - title: REST ()
-      html: <p><a href="https://go.microsoft.com/fwlink/p/?linkid=873030">REST API</a></p>
+    - html: <a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview">OpenAPI の仕様 (Swagger)</a>
+    - html: <a href="https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest">Azure CLI</a>
+    - html: <a href="https://go.microsoft.com/fwlink/p/?linkid=873030">REST</a>
+    - html: <a href="https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet">.NET</a>
+    - html: <a href="https://docs.microsoft.com/java/api/overview/azure/mediaservices">Java</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python">Python</a>
+    - html: <a href="https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest">Node .js</a>

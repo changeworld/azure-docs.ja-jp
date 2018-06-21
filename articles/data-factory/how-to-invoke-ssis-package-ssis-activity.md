@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory で SSIS アクティビティを使用して SSIS パッケージを実行する | Microsoft Docs
-description: この記事では、SSIS アクティビティを使用して SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインから実行する方法について説明します。
+title: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行 - Azure | Microsoft Docs
+description: この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,31 +9,32 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 04/17/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 6c8bbe7ef7f74638b978cdad5b59a89fd81d12a5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ce041813d52e645c336869ef04c9522962c80cf5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297157"
 ---
-# <a name="run-an-ssis-package-using-the-ssis-activity-in-azure-data-factory"></a>Azure Data Factory で SSIS アクティビティを使用して SSIS パッケージを実行する
-この記事では、SSIS アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから実行する方法について説明します。 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
+この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 SSIS アクティビティは、一般公開 (GA) されている Data Factory サービスのバージョン 1 では使用できません。 Data Factory サービスのバージョン 1 で SSIS パッケージを実行する代替方法については、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)方法に関するページを参照してください。
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 SSIS パッケージの実行アクティビティは、一般公開 (GA) されている Data Factory サービスのバージョン 1 では使用できません。 Data Factory サービスのバージョン 1 で SSIS パッケージを実行する代替方法については、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージ インスタンス (プレビュー) を使うこともできます。
+この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージド インスタンス (プレビュー) を使うこともできます。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
 Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
 
 ## <a name="data-factory-ui-azure-portal"></a>データ ファクトリ UI (Azure Portal)
-このセクションでは、データ ファクトリ UI を使用して、SSIS パッケージを実行する SSIS プロシージャ アクティビティを含む Data Factory パイプラインを作成します。
+このセクションでは、データ ファクトリ UI を使用して、SSIS パッケージを実行する SSIS パッケージの実行アクティビティを含む Data Factory パイプラインを作成します。
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
 最初の手順として、Azure Portal を使用してデータ ファクトリを作成します。 
@@ -69,8 +70,8 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。 
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する
-この手順では、データ ファクトリ UI を使用してパイプラインを作成します。 パイプラインに SSIS アクティビティを追加し、SSIS パッケージを実行するように構成します。 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>SSIS パッケージの実行アクティビティでパイプラインを作成する
+この手順では、データ ファクトリ UI を使用してパイプラインを作成します。 パイプラインに SSIS パッケージの実行アクティビティを追加し、SSIS パッケージを実行するように構成します。 
 
 1. 開始ページで **[Create Pipeline]\(パイプラインの作成\)** をクリックします。 
 
@@ -79,17 +80,23 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
    ![SSIS アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-3. SSIS アクティビティのプロパティの **[一般]** タブで、アクティビティの名前と説明を入力します。 オプションのタイムアウト値と再試行値を設定します。
+3. SSIS パッケージの実行アクティビティのプロパティの **[一般]** タブで、アクティビティの名前と説明を入力します。 オプションのタイムアウト値と再試行値を設定します。
 
     ![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. SSIS アクティビティのプロパティの **[設定]** タブで、パッケージが展開される `SSISDB` データベースに関連付けられている Azure-SSIS Integration Runtime を選択します。 `<folder name>/<project name>/<package name>.dtsx` という形式で `SSISDB` データベースのパッケージ パスを指定します。 必要に応じて、32 ビットの実行と、事前定義されたログ レベルまたはカスタム ログ レベルを指定し、`<folder name>/<environment name>` という形式で環境パスを指定します。
+4. SSIS パッケージの実行アクティビティのプロパティの **[設定]** タブで、パッケージが展開される `SSISDB` データベースに関連付けられている Azure-SSIS Integration Runtime を選択します。 `<folder name>/<project name>/<package name>.dtsx` という形式で `SSISDB` データベースのパッケージ パスを指定します。 必要に応じて、32 ビットの実行と、事前定義されたログ レベルまたはカスタム ログ レベルを指定し、`<folder name>/<environment name>` という形式で環境パスを指定します。
 
     ![[設定] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
 5. パイプラインの構成を検証するために、ツール バーの **[検証]** をクリックします。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
 6. **[Publish All]\(すべて発行\)** ボタンをクリックして、データ ファクトリにパイプラインを発行します。 
+
+### <a name="optionally-parameterize-the-activity"></a>必要に応じてアクティビティをパラメーター化する
+
+必要に応じて、**[詳細]** タブで、JSON 形式のプロジェクトまたはパッケージ パラメーターに、Data Factory システム変数を参照できる値、式、または関数を割り当てます。たとえば、次のスクリーン ショットに示すように、Data Factory パイプライン パラメーターを、SSIS プロジェクトまたはパッケージ パラメーターに割り当てることができます。
+
+![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>パイプラインを実行して監視する
 このセクションでは、パイプラインの実行をトリガーして監視します。 
@@ -99,15 +106,16 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     ![[Trigger Now]\(今すぐトリガー\)](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
+
 3. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、**[Refresh]\(最新の情報に更新\)** をクリックします。
 
     ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (SSIS アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
+4. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (SSIS パッケージの実行アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
 
     ![アクティビティの実行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-4. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+5. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
 
     ```sql
     select * from catalog.executions
@@ -115,6 +123,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
+6. パイプラインのアクティビティ実行の出力から SSISDB 実行 ID を取得し、その ID を使用して SSMS 内でより包括的な実行ログとエラー メッセージを確認することもできます。
+
+    ![実行 ID を取得します。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
 > [!NOTE]
 > また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
@@ -300,6 +311,8 @@ while ($True) {
 }   
 ```
 
+Azure Portal を使用してパイプラインを監視することもできます。 具体的な手順については、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」を参照してください。
+
 ### <a name="create-a-trigger"></a>トリガーを作成する
 前の手順ではオンデマンドでパイプラインを実行しました。 スケジュール トリガーを作成して、スケジュール (毎時、毎日など) によってパイプラインをトリガーすることもできます。
 
@@ -369,4 +382,5 @@ while ($True) {
 
 
 ## <a name="next-steps"></a>次の手順
-Azure Portal を使用してパイプラインを監視することもできます。 具体的な手順については、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」を参照してください。
+次のブログ記事を参照してください。
+-   [ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)

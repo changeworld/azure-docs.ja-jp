@@ -3,7 +3,7 @@ title: Azure Time Series Insights 環境の規模を計画する | Microsoft Doc
 description: この記事では、ストレージ容量、データ リテンション期間、イングレス容量、監視など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
-author: jasonwhowell
+author: ashannon7
 ms.author: jasonh
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 45f081c4e1dbd32b46c8a69f32b0b205b948f9b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652323"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293266"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 
@@ -87,7 +87,7 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 調整と待機時間が発生しないようにする方法については、[待機時間と調整の緩和](time-series-insights-environment-mitigate-latency.md)に関する記事をご覧ください。 
 
 ## <a name="shaping-your-events"></a>イベントの整形
-イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに環境のサイズをマッピングできます)。  同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。  以上の事柄を念頭に置き、Microsoft の*イベント送信* [に関する文書] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events) の JSON 整形セクションをご覧になることをお勧めします。  ページの下のほうにあります。  
+イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに環境のサイズをマッピングできます)。  同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。  以上の事柄を念頭に置き、Microsoft の*イベント送信* [に関する文書] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)の JSON 整形セクションをご覧になることをお勧めします。  ページの下のほうにあります。  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>参照データの配置確認
 参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。

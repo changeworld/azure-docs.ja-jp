@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: a173b77d969697f85eab0d5976e5bc0a1796fe75
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 8d771fb17019e39da93995d0244c8089ea4a08b7
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808572"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286547"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Node.js)
 
@@ -131,9 +131,8 @@ node --version
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルに進む場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含むリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

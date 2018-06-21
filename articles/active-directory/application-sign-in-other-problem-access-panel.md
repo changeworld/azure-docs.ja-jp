@@ -67,7 +67,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Internet Explorer 8、9、10、11 - Windows 7 以降
 
--   Edge - Windows 10 Anniversary Edition 以降
+-   Microsoft Edge - Windows 10 Anniversary Edition 以降
 
 -   Chrome - Windows 7 以降、MacOS X 以降
 
@@ -91,7 +91,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 7.  アクセス パネルにサインインし、パスワード SSO アプリケーションを**起動**できるかどうかを確認します。
 
-以下のダイレクト リンクから、Chrome および Edge 対応の拡張機能をダウンロードすることもできます。
+以下のダイレクト リンクから、Chrome および Microsoft Edge 対応の拡張機能をダウンロードすることもできます。
 
 -   [Chrome アクセス パネル拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 

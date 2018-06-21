@@ -184,6 +184,8 @@
 ### [概要](manage-apps/what-is-application-management.md)
 ### [使用の開始](manage-apps/plan-an-application-integration.md)
 ### [SaaS アプリの統合に関するチュートリアル](saas-apps/tutorial-list.md)
+
+
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [スナップショット レポートの作成](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
@@ -255,27 +257,110 @@
 #### [テナント制限](manage-apps/tenant-restrictions.md)
 #### [ユーザーのプロビジョニングに SCIM を使用する](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [トラブルシューティング](active-directory-application-troubleshoot-content-map.md)
-#### [アプリケーション開発](active-directory-application-dev-troubleshoot-content-map.md)
-##### [構成と登録](active-directory-application-dev-config-content-map.md)
-##### [開発](active-directory-application-dev-development-content-map.md)
-#### [アプリケーション管理](active-directory-application-management-troubleshoot-content-map.md)
-##### [構成](active-directory-application-config-content-map.md)
-##### [サインイン](active-directory-application-sign-in-content-map.md)
-##### [プロビジョニング](active-directory-application-provisioning-content-map.md)
 
-###### [ユーザーがプロビジョニングされたことの確認](application-provisioning-when-will-provisioning-finish-specific-user.md) 
-###### [プロビジョニングに時間がかかっている](application-provisioning-when-will-provisioning-finish.md) 
-###### [ユーザー プロビジョニングを構成する方法](application-provisioning-config-how-to.md) 
-###### [プロビジョニングの構成に関する問題](application-provisioning-config-problem.md) 
-###### [管理者の資格情報の保存に関する問題](application-provisioning-config-problem-storage-limit.md) 
-###### [ユーザーがプロビジョニングされていない](application-provisioning-config-problem-no-users-provisioned.md) 
-###### [間違ったユーザーがプロビジョニングされている](application-provisioning-config-problem-wrong-users-provisioned.md) 
+### トラブルシューティング
 
-##### [アクセスの管理](active-directory-application-access-content-map.md)
-##### [アクセス パネル](active-directory-application-access-panel-content-map.md)
-##### [アプリケーション プロキシ](active-directory-application-proxy-content-map.md)
-##### [条件付きアクセス](active-directory-application-conditional-access-content-map.md)
+
+
+#### アクセス パネル
+##### [アプリが表示されない](application-access-panel-unexpected-application-not-appearing.md)
+##### [予期しないアプリが表示される](application-access-panel-unexpected-application-appears.md)
+##### [サインインできない](application-access-panel-web-sign-in-problem.md)
+##### [ブラウザー拡張機能のインストール時のエラー](application-access-panel-extension-problem-installing.md)
+##### [セルフサービス アプリ アクセスの使用方法](application-access-panel-self-service-applications-how-to.md)
+##### [セルフサービス アプリ アクセスの使用時のエラー](application-access-panel-self-service-applications-problem.md)
+
+#### アプリの追加
+##### [アプリの種類の選択](application-config-add-app-problem-how-to-choose-application-type.md)
+##### [一般的な問題 - ギャラリー アプリ](application-config-add-app-problem-problem-adding-gallery-app.md)
+##### [一般的な問題 - ギャラリー以外のアプリ](application-config-add-app-problem-problem-adding-non-gallery-app.md)
+
+#### アプリケーション プロキシ
+##### [アプリ ページを表示できない](application-proxy-page-appearance-broken-problem.md)
+##### [アプリケーション読み込みに時間がかかりすぎる](application-proxy-page-load-speed-problem.md)
+##### [アプリケーション ページ上のリンクが動作しない](application-proxy-page-links-broken-problem.md)
+##### [アプリに対して開く必要のあるポート](application-proxy-connectivity-ports-how-to.md)
+##### [アプリのコネクタ グループに動作するコネクタがない](application-proxy-connectivity-no-working-connector.md)
+##### [管理ポータルでの構成](application-proxy-config-how-to.md)
+##### [アプリに対するシングル サインオンの構成](application-proxy-config-sso-how-to.md)
+##### [管理ポータルでのアプリの作成に関する問題](application-proxy-config-problem.md)
+##### [Kerberos の制約付き委任を構成する](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+##### [PingAccess を使用した構成](application-proxy-back-end-ping-access-how-to.md)
+##### ["この企業アプリケーションにアクセスできない" というエラー](application-proxy-sign-in-bad-gateway-timeout-error.md)
+##### [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
+
+
+#### アプリケーションの登録
+##### [アプリケーション オブジェクトのフィールドの入力](application-dev-registration-config-specific-application-property-how-to.md)
+##### [トークン有効期間の既定値の変更](application-dev-registration-config-change-token-lifetime-how-to.md)
+
+#### 認証
+##### [エンドポイントの構成](application-dev-registration-config-how-to.md)
+
+#### 条件付きアクセス
+##### [顧客がデバイス登録の前提条件を満たしていない](active-directory-conditional-access.md)
+##### [条件付きアクセス ポリシーが正しく設定されていないことが原因でテナントがブロックされる](active-directory-conditional-access-device-remediation.md)
+##### [企業ネットワークのルールを無効にする方法とタイミング](https://aka.ms/calocation)
+##### [Azure AD でユーザーが登録できるデバイス数を増やす方法](active-directory-azureadjoin-setup.md)
+##### [Exchange Online の条件付きアクセスの設定方法](https://aka.ms/csforexchange)
+##### [Windows 7 デバイスの条件付きアクセスの設定方法](active-directory-conditional-access.md#device-based-conditional-access)
+##### [条件付きアクセスでサポートされるアプリケーション](active-directory-conditional-access-supported-apps.md)
+
+#### API の検索
+##### [API の検索](application-dev-api-find-an-api-how-to.md)
+
+#### アクセスの管理
+##### [アプリへのユーザーとグループの割り当て](application-access-assignment-how-to-add-assignment.md)
+##### [アプリへのユーザー アクセスの削除](application-access-assignment-how-to-remove-assignment.md)
+##### [セルフサービス アプリの割り当ての構成](application-access-self-service-how-to.md)
+##### [予期しないユーザーが割り当てられる](application-access-unexpected-user-assignment.md)
+##### [アプリケーション リストの予期しないアプリ](application-access-unexpected-application.md)
+
+#### マルチテナント アプリ
+##### [新しいアプリの構成](application-dev-setup-multi-tenant-app.md)
+##### [アプリ ギャラリーへの追加](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+
+#### アクセス許可
+##### [API のアクセス許可の選択](application-dev-perms-for-given-api.md)
+##### [アプリへのアクセス許可の付与](application-dev-registration-config-grant-permissions-how-to.md)
+##### [委任されたアクセス許可とアプリケーションのアクセス許可](application-dev-delegated-and-app-perms.md)
+##### [アプリケーションへの同意](application-dev-consent-framework.md)
+
+#### プロビジョニング
+##### [所要時間](application-provisioning-when-will-provisioning-finish-specific-user.md)
+##### [長時間かかる - ギャラリー アプリ](application-provisioning-when-will-provisioning-finish.md)
+##### [ユーザー プロビジョニングの構成 - ギャラリー アプリ](application-provisioning-config-how-to.md)
+##### [ユーザー プロビジョニングの構成に関する問題 - ギャラリー アプリ](application-provisioning-config-problem.md)
+##### [ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題](application-provisioning-config-problem-storage-limit.md)
+##### [ユーザーがプロビジョニングされない - ギャラリー アプリ](application-provisioning-config-problem-no-users-provisioned.md)
+##### [間違ったユーザーがプロビジョニングされている - ギャラリー アプリ](application-provisioning-config-problem-wrong-users-provisioned.md)
+
+#### シングル サインオン
+##### [方法の選択](application-config-sso-how-to-choose-sign-on-method.md)
+##### [構成](application-dev-registration-config-sso-how-to.md)
+##### [フェデレーションの構成 - ギャラリー アプリ](application-config-sso-how-to-configure-federated-sso-gallery.md)
+##### [フェデレーションの構成の一般的な問題 - ギャラリー アプリ](application-config-sso-problem-configure-federated-sso-gallery.md)
+##### [フェデレーションの構成 - ギャラリー以外のアプリ](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+##### [フェデレーションの構成の一般的な問題 - ギャラリー以外のアプリ](application-config-sso-problem-configure-federated-sso-non-gallery.md)
+##### [パスワードの構成 - ギャラリー アプリ](application-config-sso-how-to-configure-password-sso-gallery.md)
+##### [パスワードの構成の一般的な問題 - ギャラリー アプリ](application-config-sso-problem-configure-password-sso-gallery.md)
+##### [パスワードの構成 - ギャラリー以外のアプリ](application-config-sso-how-to-configure-password-sso-non-gallery.md)
+##### [パスワードの構成の一般的な問題 - ギャラリー以外のアプリ](application-config-sso-problem-configure-password-sso-non-gallery.md)
+
+#### ユーザー サインインに関する問題
+##### [予期しない同意プロンプト](application-sign-in-unexpected-user-consent-prompt.md)
+##### [ユーザーの同意エラー](application-sign-in-unexpected-user-consent-error.md)
+##### [カスタム ポータルからのサインインに関する問題](application-sign-in-other-problem-deeplink.md)
+##### [アクセス パネルからのサインインに関する問題](application-sign-in-other-problem-access-panel.md)
+##### [アプリケーションのサインイン ページでのエラー](application-sign-in-problem-application-error.md)
+##### [パスワード シングル サインオンに関する問題 - ギャラリー以外のアプリ](application-sign-in-problem-password-sso-non-gallery.md)
+##### [パスワード シングル サインオンに関する問題 - ギャラリー アプリ](application-sign-in-problem-password-sso-gallery.md)
+##### [Microsoft アプリへのサインインに関する問題](application-sign-in-problem-first-party-microsoft.md)
+##### [フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ](application-sign-in-problem-federated-sso-non-gallery.md)
+##### [フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ](application-sign-in-problem-federated-sso-gallery.md)
+##### [カスタム開発されたアプリに関する問題](application-sign-in-problem-custom-dev.md)
+##### [オンプレミス アプリに関する問題 - アプリケーション プロキシの問題](application-sign-in-problem-on-premises-application-proxy.md)
+
 ### [アプリの開発](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [ドキュメント ライブラリ](active-directory-apps-index.md)
 
@@ -325,7 +410,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
@@ -353,7 +438,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
+#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

@@ -169,7 +169,7 @@ finally
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
-この例では、アメリカの州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
+この例では、アメリカ合衆国の州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };

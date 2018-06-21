@@ -3,22 +3,19 @@ title: Azure Cosmos DB インデックス作成ポリシー | Microsoft Docs
 description: Azure Cosmos DB のインデックス作成のしくみを説明します。 インデックス作成の自動化とパフォーマンス向上のために、インデックス作成ポリシーを構成および変更する方法について説明します。
 keywords: インデックス作成のしくみ, 自動インデックス作成, インデックス作成データベース
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d867079b9a5546dc9555697a9066472e4e470977
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298299"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
 
@@ -79,9 +76,9 @@ Azure Cosmos DB は、Azure Cosmos DB コレクションのインデックス作
 
 同期 (Consistent) インデックス作成では、書き込みスループットの短縮によって、整合性のあるクエリがサポートされます。 この短縮は、インデックスを作成する必要がある一意のパスの機能と "整合性レベル" によるものです。 同期 (Consistent) インデックス作成モードは、"すばやく書き込み、即座にクエリ" するワークロード向けです。
 
-**非同期 (Lazy)**: このインデックスは、Azure Cosmos DB コレクションが休止 (コレクションのスループット容量がユーザー要求の処理に完全に利用されていない) 状態の間は非同期的に更新されます。 非同期 (Lazy) インデックス作成モードは、ドキュメントを取り込む必要のある、"今すぐ取り込み、後でクエリ する" ワークロードに適しています。 データの取り込みとインデックス作成が遅いため、整合性のない結果が得られる可能性があることに注意してください。 これは、COUNT 個のクエリまたは特定のクエリ結果が、特定の時点で整合性または反復性がない可能性があることを意味します。 
+**非同期 (Lazy)**: このインデックスは、Azure Cosmos DB コレクションが休止 (コレクションのスループット容量がユーザー要求の処理に完全に利用されていない) 状態の間は非同期的に更新されます。  データの取り込みとインデックス作成が遅いため、整合性のない結果が得られる可能性があることに注意してください。 これは、COUNT 個のクエリまたは特定のクエリ結果が、特定の時点で整合性または反復性がない可能性があることを意味します。 
 
-通常、取り込んだデータのインデックスはキャッチアップ モードです。 非同期 (Lazy) インデックスを使用すると、TTL (Time to Live) の変更によってインデックスが削除され、再作成されます。 これにより、一定期間、COUNT とクエリ結果が一致しなくなります。 このため、ほとんどの Azure Cosmos DB アカウントでは、同期 (Consistent) インデックス モードを使用する必要があります。
+通常、取り込んだデータのインデックスはキャッチアップ モードです。 非同期 (Lazy) インデックスを使用すると、TTL (Time to Live) の変更によってインデックスが削除され、再作成されます。 これにより、一定期間、COUNT とクエリ結果が一致しなくなります。 ほとんどの Azure Cosmos DB アカウントでは、同期 (Consistent) インデックス モードを使用する必要があります。
 
 **なし (None)**: なし (None) インデックス モードを含むコンテナー レジストリには、インデックスが関連付けられていません。 これは、キー値のストレージとして Azure Cosmos DB が使用され、ドキュメントがそれぞれの ID プロパティによってのみアクセスされる場合によく使用されます。 
 
@@ -229,11 +226,11 @@ Azure Cosmos DB では、Point、Polygon、または LineString データ型に�
 
 同様に、パスをインデックス作成から完全に除外することもできます。 次の例では、\* ワイルドカード演算子を使用して、ドキュメントのセクション全体 (*サブツリー*) をインデックス作成から除外する方法を示します。
 
-    var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*" });
+    var excluded = new DocumentCollection { Id = "excludedPathCollection" };
+    excluded.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+    excluded.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*" });
 
-    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
 
 
 

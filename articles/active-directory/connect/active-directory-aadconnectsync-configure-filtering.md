@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59bc6652a61e0c61188bbfd09251161411923628
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594229"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287579"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -40,7 +40,7 @@ ms.locfileid: "34594229"
 ## <a name="basics-and-important-notes"></a>基本事項と注意事項
 Azure AD Connect Sync では、いつでもフィルター処理を有効にできます。 最初に既定の構成でディレクトリ同期を実行した後、フィルター処理を構成した場合、フィルター処理により除外されるオブジェクトは、Azure AD に対する同期の対象外になります。 この変更により、以前同期されてからフィルター処理された Azure AD のオブジェクトは、すべて Azure AD から削除されます。
 
-フィルター処理に変更を加える際は、未検証の変更が意図せずエクスポートされてしまうことのないよう、あらかじめ[タスクのスケジューリングを無効に](#disable-scheduled-task)しておいてください。
+フィルター処理に変更を加える際は、未検証の変更が意図せずエクスポートされてしまうことのないよう、あらかじめ[タスクのスケジューリングを無効に](#disable-the-scheduled-task)しておいてください。
 
 フィルター処理によって多くのオブジェクトが同時に削除される可能性があります。フィルター処理に変更を加えたら、必ず検証したうえで、Azure AD に変更をエクスポートするようにしてください。 構成作業を終えたら、変更内容を Azure AD にエクスポートして反映する前に[検証作業](#apply-and-verify-changes)を実行することを強くお勧めします。
 

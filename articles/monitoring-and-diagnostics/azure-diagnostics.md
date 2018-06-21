@@ -1,25 +1,20 @@
 ---
-title: Azure 診断拡張機能の概要 | Microsoft Docs
+title: Azure 診断拡張機能の概要
 description: Azure 診断は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。
-services: multiple
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: ''
-editor: ''
-ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886397"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267681"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
 Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
@@ -30,7 +25,7 @@ Linux を実行する仮想マシンには、[Linux 版の拡張機能](../virtu
 ## <a name="data-you-can-collect"></a>収集可能なデータ
 Azure 診断拡張機能では、次の種類のデータを収集できます。
 
-| [データ ソース] | [説明] |
+| [データ ソース] | 説明 |
 | --- | --- |
 | パフォーマンス カウンター |オペレーティング システムとカスタム パフォーマンス カウンター |
 | Application Logs |アプリケーションによって書き込まれたメッセージをトレースする |

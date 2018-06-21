@@ -346,6 +346,14 @@
           href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: データの同期
           href: sql-database-get-started-sql-data-sync.md
+        - name: SQL データ同期のスキーマ変更のレプリケート
+          href: sql-database-update-sync-schema.md
+        - name: OMS Log Analytics による SQL データ同期の監視
+          href: sql-database-sync-monitor-oms.md
+        - name: SQL データ同期のベスト プラクティス
+          href: sql-database-best-practices-data-sync.md
+        - name: SQL データ同期のトラブルシューティング
+          href: sql-database-troubleshoot-data-sync.md
     - name: 監視とチューニング
       items:
         - name: パフォーマンスの監視と向上
@@ -374,12 +382,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-        - name: OMS Log Analytics による SQL データ同期の監視
-          href: sql-database-sync-monitor-oms.md
-        - name: SQL データ同期のベスト プラクティス
-          href: sql-database-best-practices-data-sync.md
-        - name: SQL データ同期のトラブルシューティング
-          href: sql-database-troubleshoot-data-sync.md
     - name: スケールアウト
       items:
         - name: シャード化されたアプリの作成

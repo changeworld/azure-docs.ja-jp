@@ -11,14 +11,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 12/08/2017
+  ms.date: 06/18/2018
   ms.author: tamram
-  ms.openlocfilehash: de0672c3f4f06dd20081e401121f1cbbe2d77c9f
-  ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
+  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/05/2018
-  ms.locfileid: "34763172"
+  ms.lasthandoff: 06/19/2018
+  ms.locfileid: "36266673"
 abstract:
   description: Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage は、Blob Storage、File Storage、Queue Storage で構成されます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、アプリケーションで Azure Storage を活用する方法を確認してください。
 sections:
@@ -126,6 +126,6 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
     - title: 言語
-      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
     - title: REST ()
-      html: <p><a href="/rest/api/storageservices">BLOB、キュー、テーブル、ファイル</a></p><p><a href="/rest/api/storagerp">リソース プロバイダー</a></p><p><a href="/rest/api/storageimportexport">Import/Export</a></p>
+      html: <p><a href="/rest/api/storageservices">BLOB、キュー、テーブル、ファイルの API</a></p><p><a href="/rest/api/storagerp">ストレージ リソース プロバイダー API</a></p><p><a href="/rest/api/storageimportexport">インポート/エクスポート サービス API</a></p>

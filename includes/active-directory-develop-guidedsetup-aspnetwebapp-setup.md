@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/08/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 5d3af1800e18e3686e69d4a25131c68d3bdc805b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9c7daf7bc947b08835148f6d09c58b47c9e0186b
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33949449"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36204922"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 

@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824170"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291917"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -57,7 +57,7 @@ ms.locfileid: "34824170"
 >
 
 ## <a name="define-content-management-options"></a>コンテンツ管理オプションの定義
-Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。 ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。 このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。 ユーザーの [グループ](active-directory-manage-groups.md#getting-started-with-access-management) に権限を付与し、特定の共通アクションを実行できるようにすることもできます。
+Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。 ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。 このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。 ユーザーの [グループ](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management) に権限を付与し、特定の共通アクションを実行できるようにすることもできます。
 
 データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。 現在のオンプレミス インフラストラクチャで既にデータ分類を使っている場合は、ユーザー ID の主要リポジトリとして Azure AD を使うことができます。 オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) for Windows Server 2012 R2 です。 このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。 Windows Server 2012 の[自動ファイル分類](https://technet.microsoft.com/library/hh831672.aspx)を使ってこのタスクを実現することもできます。
 
@@ -131,12 +131,12 @@ Azure AD を使ってユーザーが認証されたら、そのユーザーが�
 
   3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠しているデバイスからサービスへのアクセスを許可できます。 詳細については、「 [Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
-  4. Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+  4. Saas アプリの条件付きアクセス: [この機能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。 必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 
 ## <a name="define-incident-response-options"></a>インシデント対応オプションの定義
-Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。 IT 部門は、Azure AD のアクセスおよび使用状況レポートを使うことで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。 IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。  [Azure AD Premium サブスクリプション](active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。 [Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
+Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。 IT 部門は、Azure AD のアクセスおよび使用状況レポートを使うことで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。 IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。  [Azure AD Premium サブスクリプション](fundamentals/active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。 [Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
 
 * **異常レポート**: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 * **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。 Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
@@ -145,9 +145,9 @@ Azure AD は、ユーザーのアクティビティを監視することによ�
 * **アクティビティ ログ**: 過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
 > [!TIP]
-> ケースに対処するインシデント対応チームにも役立つもう 1 つのレポートが、 [資格情報が漏洩したユーザー](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) レポートです。 このレポートでは、これらの漏洩した資格情報の一覧とテナントの間で一致した結果を表示します。
+> ケースに対処するインシデント対応チームにも役立つもう 1 つのレポートが、 [資格情報が漏洩したユーザー](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) レポートです。 このレポートでは、これらの漏洩した資格情報の一覧とテナントの間で一致した結果を表示します。
 >
->
+
 
 インシデント対応調査中に使うことができるその他の Azure AD の主要な組み込みレポートは、次のとおりです。
 

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648127"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215526"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージド インスタンス (プレビュー) とは?
 
@@ -39,9 +39,8 @@ Managed Instance では一般提供までに段階的リリース計画に基づ
 
 | | 使用シナリオ | 
 | --- | --- | 
-|SQL Database Managed Instance |顧客が多数のオンプレミスまたは IaaS のアプリ、自社ビルドのアプリ、または ISV 提供のアプリをできるだけ少ない移行作業でる移行することを模索している場合、Managed Instance をご提案します。 Azure で完全に自動化された[データ移行サービス (DMS)](/sql/dma/dma-overview) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNET のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージド インスタンスでは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database Managed Instance はクラウド内の最適な移行先です。 |
-|Azure SQL Database (単一またはプール) |
-  **エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
+|SQL Database Managed Instance |顧客が多数のオンプレミスまたは IaaS のアプリ、自社ビルドのアプリ、または ISV 提供のアプリをできるだけ少ない移行作業でる移行することを模索している場合、Managed Instance をご提案します。 Azure で完全に自動化された[データ移行サービス (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) を使用することにより、顧客はオンプレミスの SQL Server をマネージド インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNET のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージド インスタンスでは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database Managed Instance はクラウド内の最適な移行先です。 |
+|Azure SQL Database (単一またはプール) |**エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
 |SQL IaaS 仮想マシン|オペレーティング システムまたはデータベース サーバーをカスタマイズする必要があると共に、SQL Server とサード パーティ アプリの並列実行 (同じ VM 上で) に関して特定の要件を持つ顧客については、最適なソリューションとして SQL VM / IaaS をご提案します。|
 |||
 
@@ -141,8 +140,7 @@ Managed Instance では、Azure のクラウド内での他のテナントから
 
 ### <a name="auditing-for-compliance-and-security"></a>コンプライアンスとセキュリティの監査 
 
-
-  [Managed Instance の監査](sql-database-managed-instance-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 
+[Managed Instance の監査](sql-database-managed-instance-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 
 
 ### <a name="data-encryption-in-motion"></a>移動中のデータの暗号化 
 
@@ -160,8 +158,7 @@ SQL Database [動的データ マスク](/sql/relational-databases/security/dyna
 
 ### <a name="threat-detection"></a>脅威の検出 
 
-
-  [Managed Instance の脅威の検出](sql-database-managed-instance-threat-detection.md)では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[Managed Instance の監査](sql-database-managed-instance-auditing.md)を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。  
+[Managed Instance の脅威の検出](sql-database-managed-instance-threat-detection.md)では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[Managed Instance の監査](sql-database-managed-instance-auditing.md)を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。  
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証 
 
@@ -183,18 +180,16 @@ Managed Instance のターゲットは、オンプレミスまたは IaaS デー
 
 ### <a name="data-migration-service"></a>データ移行サービス
 
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、Managed Instance、および Azure VM 内の SQL Server があります。 
-  [DMS を使用してオンプレミスのデータベースを Managed Instance に移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。 
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、Managed Instance、および Azure VM 内の SQL Server があります。 [DMS を使用してオンプレミスのデータベースを Managed Instance に移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。 
 
 ### <a name="backup-and-restore"></a>バックアップと復元  
 
 移行方法では、Azure BLOB ストレージへの SQL バックアップが活用されます。 Azure BLOB ストレージに格納されたバックアップは、Managed Instance に直接復元できます。 既存の SQL データベースをマネージド インスタンスに復元するには、次の方法があります。
 
-- [Database Migration Service (DMS)](/sql/dma/dma-overview) を使用します。 データベースのバックアップ ファイルから復元するチュートリアルについては、[Azure Database Migration Service (DMS) を使用してマネージド インスタンスに移行する](../dms/tutorial-sql-server-to-managed-instance.md)方法に関するページを参照してください。
+- [Database Migration Service (DMS)](../dms/dms-overview.md) を使用します。 データベースのバックアップ ファイルから復元するチュートリアルについては、[Azure Database Migration Service (DMS) を使用してマネージド インスタンスに移行する](../dms/tutorial-sql-server-to-managed-instance.md)方法に関するページを参照してください。
 - [T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)を使用します。 
   - Wide World Importers - Standard データベース のバックアップ ファイルを復元する方法を説明したチュートリアルについては、[バックアップ ファイルをマネージド インスタンスに復元する](sql-database-managed-instance-restore-from-backup-tutorial.md)方法に関するページを参照してください。 このチュートリアルでは、バックアップ ファイルを Azure ブログ ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
   - URL からの復元については、「[URL からのネイティブ復元](sql-database-managed-instance-migrate.md#native-restore-from-url)」を参照してください。
-- [BACPAC ファイルからインポートします](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>サポートされている SQL 機能 
 

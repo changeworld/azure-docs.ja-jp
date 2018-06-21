@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 158a0f6d948172ec7d986703e9fa95dd19bdde6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 351f3e34f5050d922655a633ec89f51d191b946e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592264"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291967"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
 Azure AD Connect は、世界中の Azure AD と Office 365 のインスタンスで最もよく使われています。 ただし、それ以外のインスタンスも存在し、URL の要件が異なるだけでなく、その他の特別な考慮事項があります。
@@ -38,8 +38,6 @@ Azure AD テナントにサインインするときは、onmicrosoft.de ドメ�
 
 Microsoft Cloud Germany に現在ない機能:
 
-* **Azure AD Connect Health** は使用できません。
-* **自動更新**は使用できません。
 * **パスワード ライトバック**は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
 * その他の Azure AD Premium サービスは使用できません。
 
@@ -61,8 +59,6 @@ Microsoft Cloud Germany に現在ない機能:
 
 Microsoft Azure Government クラウドに現在ない機能:
 
-* **Azure AD Connect Health** は使用できません。
-* **自動更新**は使用できません。
 * **パスワード ライトバック**は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
 * その他の Azure AD Premium サービスは使用できません。
 

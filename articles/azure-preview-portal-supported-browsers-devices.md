@@ -3,8 +3,7 @@ title: Azure Portal でサポートされるブラウザーとデバイス | Mic
 description: Azure ポータルを利用できるブラウザーとデバイスについて説明します。
 services: azure-portal
 documentationcenter: ''
-author: flanakin
-writer: flanakin
+author: adamabmsft
 manager: lwelicki
 editor: ''
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
@@ -14,14 +13,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: micflan
+ms.author: adamab
 ms.custom: accessibility
-ms.openlocfilehash: d3964bcfc78fccbd949b30ebb09db44ec5fd5bde
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ac1c4f4adaa1cb48ce632d36d408e112ba882cab
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165113"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292446"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure Portal でサポートされるブラウザーとデバイス
 [Azure Portal](https://portal.azure.com) は、最新の主要なデスクトップ デバイス、タブレット デバイス、ブラウザーで実行できます。

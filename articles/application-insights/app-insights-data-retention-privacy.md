@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights でのデータ保持と保存 | Microsoft Docs"
-description: "データ保持およびプライバシー ポリシー ステートメント"
+title: Azure Application Insights でのデータ保持と保存 | Microsoft Docs
+description: データ保持およびプライバシー ポリシー ステートメント
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294068"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -103,8 +104,7 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
-* 
-いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
+* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](http://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。

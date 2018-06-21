@@ -93,19 +93,19 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **デバイス**: 接続済みの共有プリンター |○ |○ |その他 |
 | **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
 | **Edge ブラウザー**: お気に入り |sync |sync |内部 |
-| **Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **ハイ コントラスト**: オン/オフ |sync |○ |簡単操作 |
 | **ハイ コントラスト**: テーマの設定 |sync |○ |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |

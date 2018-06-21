@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069863"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -240,4 +241,4 @@ WordPress 用のセキュリティのベスト プラクティスについては
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>PHPMyadmin を使用して、MySQL アプリ内データベースをインポートまたはエクスポートしようとすると、HTTP 403 エラーが表示されます。 解決するにはどうすればよいですか?
 
-以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Edge などの別のブラウザーを使用を試してください。
+以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Microsoft Edge などの別のブラウザーを使用を試してください。

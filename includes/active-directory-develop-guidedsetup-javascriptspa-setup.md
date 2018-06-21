@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 794fd51c38f66b24193c7da7a145d58f7a225b30
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 24a5baade2168df603f5505baeaaf8e1c3ea2411
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32202538"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36205229"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 

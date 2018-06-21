@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 40c2cd4ae808ad3f82028f1ddb7a8e0006676e6e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619288"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284482"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 

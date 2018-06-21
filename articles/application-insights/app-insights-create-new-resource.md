@@ -1,8 +1,8 @@
 ---
-title: "新しい Azure Application Insights リソースの作成 | Microsoft Docs"
-description: "新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。"
+title: 新しい Azure Application Insights リソースの作成 | Microsoft Docs
+description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294719"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
@@ -29,7 +30,7 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 
 [Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金対象となるのは、使用した分だけです。 既定の Basic プランでは、試験段階の一定量を無料で使用できます。
 
-サブスクリプションへのアクセスを取得したら、Application Insights ( [http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
+サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 [portal.azure.com](https://portal.azure.com)で、Application Insights リソースを追加します。
@@ -68,7 +69,7 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 ## <a name="creating-a-resource-automatically"></a>リソースの自動作成
 [PowerShell スクリプト](app-insights-powershell.md) を作成して、リソースを自動で作成できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ダッシュボードを作成する](app-insights-dashboards.md)
 * [診断検索](app-insights-diagnostic-search.md)
 * [メトリックを探索する](app-insights-metrics-explorer.md)

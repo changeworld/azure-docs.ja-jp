@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/04/2017
+ms.topic: conceptual
+ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010466"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293641"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定: 依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -191,6 +191,8 @@ ms.locfileid: "34010466"
             {
                 timer.Stop();
                 telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+                // The call above has been made obsolete in the latest SDK. The updated call follows this format:
+                // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
             }
 ```
 
@@ -201,12 +203,13 @@ ms.locfileid: "34010466"
 
 *SQL クエリが完全に表示されません。*
 
-* Application Insights SDK の最新の安定バージョンにアップグレードします。
+次の表を参照して、アプリケーションの依存関係の監視が可能なように正しい構成を選択したことを確認します。
 
- .NET バージョンが 4.6 未満の場合は、次のようにします。
-
-* IIS ホスト: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)をホスト サーバーにインストールします。
-* Azure Web アプリ: Web アプリのコントロール パネルで [Application Insights] タブを開き、Application Insights をインストールします。
+| プラットフォーム | Install |
+| --- | --- |
+| IIS サーバー |[Status Monitor をサーバーにインストールします](app-insights-monitor-performance-live-website-now.md)。 または、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して、[Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
+| Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](app-insights-azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
+| Azure Cloud Services |[スタートアップ タスクを使用](app-insights-cloudservices.md)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)します。 |
 
 ## <a name="video"></a>ビデオ
 

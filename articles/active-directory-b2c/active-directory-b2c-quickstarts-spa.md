@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ea6b85803fdc5c768a23bf770b3646cc6add36b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711894"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293283"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -104,4 +104,4 @@ Web ブラウザーでアプリの URL (`http://localhost:6420`) にアクセス
 次のステップでは、独自の Azure AD B2C テナントを作成し、そのテナントを使用して実行するようにサンプルを構成します。 
 
 > [!div class="nextstepaction"]
-> [Azure Portal で Azure Active Directory B2C テナントを作成する](active-directory-b2c-get-started.md)
+> [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)

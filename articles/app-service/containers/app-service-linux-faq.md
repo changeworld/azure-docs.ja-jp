@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/25/2018
+ms.author: msangapu
+ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294013"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -35,7 +36,7 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。**
 
-Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイルを指定します。 .NET Core の場合は、コンパイル済みの DLL 名を指定します。 Ruby の場合は、アプリの初期化に使用する Ruby スクリプトを指定できます。
+Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイルを指定します。 .NET Core の場合は、コンパイル済みの DLL 名を `dotnet <myapp>.dll` として指定します。 Ruby の場合は、アプリの初期化に使用する Ruby スクリプトを指定できます。
 
 ## <a name="management"></a>管理
 
@@ -47,8 +48,8 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 はい、ソース管理 (SCM) サイトからご利用いただけます。
 
-> [!NOTE] 
-> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリの場合) を使用して、ローカル開発マシンからアプリ コンテナーに直接接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://aka.ms/linux-debug) に関するページをご覧ください。
+> [!NOTE]
+> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリ用) を使用して、ローカル開発用コンピューターから直接アプリ コンテナーに接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://aka.ms/linux-debug) に関するページをご覧ください。
 >
 
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**
@@ -113,7 +114,7 @@ var io = require('socket.io')(server,{
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 
-プラットフォームがコンテナーを再起動する前の待機時間を構成できます。 これを行うには、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を目的の値に設定します。 既定値は 230 秒であり、最大値は 600 秒です。
+プラットフォームがコンテナーを再起動する前の待機時間を構成できます。 これを行うには、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を目的の値に設定します。 既定値は 230 秒であり、最大値は 1800 秒です。
 
 **プライベート レジストリ サーバーの URL の形式は何ですか。**
 

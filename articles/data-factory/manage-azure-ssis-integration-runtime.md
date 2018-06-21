@@ -10,17 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 9932ee862a9cdc7591c62c016e888d9e5d593cf7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bb33f2f5062749510906957fda5c8b0eeecdee60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297772"
 ---
-# <a name="manage-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを管理する
-[Azure-SSIS 統合ランタイムの作成](create-azure-ssis-integration-runtime.md)に関する記事には、Azure Data Factory を使用して Azure-SSIS 統合ランタイム (IR) を作成する方法が示されています。 この記事では、既存の Azure-SSIS 統合ランタイムの再構成に関する情報を提供します。  
+# <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの再構成
+この記事では、既存の Azure-SSIS 統合ランタイムを再構成する方法について説明します。 Azure Data Factory で Azure-SSIS 統合ランタイム (IR) を作成する場合は、[Azure-SSIS 統合ランタイムの作成](create-azure-ssis-integration-runtime.md)に関する記事を参照してください。  
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
@@ -32,7 +33,7 @@ Data Factory UI を使用して、Azure-SSIS IR を停止、編集/再構成、�
 1. **Data Factory の UI** で、**[編集]** タブに切り替えます。データ ファクトリの UI を起動するには、データ ファクトリのホーム ページの **[作成と監視]** をクリックします。
 2. 左側のウィンドウで、**[接続]** をクリックします。
 3. 右側のウィンドウで **[統合ランタイム]** に切り替えます。 
-4. [アクション] 列のボタンを使用して、統合ランタイムを**停止**、**編集**、または**削除**します。 **[アクション]** 列の**[コード]** ボタンを使用すると、統合ランタイムに関連付けられている JSON 定義を表示できます。  
+4. [アクション] 列のボタンを使用して、統合ランタイムを**停止**、**編集**、または**削除**します。 **[アクション]** 列の **[コード]** ボタンを使用すると、統合ランタイムに関連付けられている JSON 定義を表示できます。  
     
     ![Azure SSIS IR のアクション](./media/manage-azure-ssis-integration-runtime/actions-for-azure-ssis-ir.png)
 
@@ -96,7 +97,7 @@ Azure-SSIS 統合ランタイムについて詳しくは、以下のトピック
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
-- [Azure-SSIS IR を VNet に参加させる](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワーク (VNet) への Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が VNet に参加できるように Azure Portal を使って VNet を構成する手順も説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL Managed Instance (プレビュー) の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
+- [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
  

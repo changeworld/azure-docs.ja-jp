@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 53ff14e00b88f6d182579ba0d9df630fae9b3d78
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9d54d3481176b36a0d13a9b8af2fad03349b81be
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771135"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229255"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -80,12 +80,7 @@ $destContainerName = "adfgetstarted" # don't change this value.
 ####################################
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-<<<<<<< HEAD
 Login-AzureRmAccount
-=======
-try{Get-AzureRmContext}
-catch{Connect-AzureRmAccount}
->>>>>>> refs/remotes/MicrosoftDocs/release-build-hdinsight-2018
 #endregion
 
 ####################################
@@ -186,7 +181,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     次の値を入力または選択します。
     
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
     |**名前** |  データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |**サブスクリプション**     |  Azure サブスクリプションを選択します。 |
@@ -244,7 +239,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     次の値を入力し、残りは既定値のままにしておきます。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name | HDInsight のリンクされたサービスの名前を入力します。 |
     | type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |

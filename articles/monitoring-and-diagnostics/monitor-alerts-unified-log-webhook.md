@@ -1,24 +1,19 @@
 ---
-title: Azure アラートでのログ アラートの webhook アクション | Microsoft Docs
+title: Azure Alerts でのログ アラートのための webhook アクション | Microsoft Docs
 description: この記事では、Log Analytics または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: alerts
+ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264257"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -30,7 +25,7 @@ Webhook アクションは、1 つの HTTP POST 要求を使用して外部の�
 
 webhook アクションには、次の表に示すプロパティが必要です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Webhook URL |Webhook の URL。 |
 | Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[Azure アラートを使用したアラートの管理](monitor-alerts-unified-usage.md)に関するページを参照してください。 |
@@ -41,17 +36,17 @@ webhook アクションには、次の表に示すプロパティが必要です
 Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表の値が含まれます。このペイロードを独自のカスタム値で置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
 
 
-| パラメーター | 変数 | [説明] |
+| パラメーター | 変数 | 説明 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |アラート ルールの名前。 |
 | 重大度 |#severity |起動されたログ アラートに設定されている重大度。 |
 | AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
 | AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
-| LinkToSearchResults |#linktosearchresults |アラートを作成したクエリに基づいてレコードを返す Log Analytics ログ検索へのリンク。 |
+| LinkToSearchResults |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
 | ResultCount |#searchresultcount |検索結果に含まれるレコードの数。 |
-| Search Interval End time |#searchintervalendtimeutc |UTC 形式で記述したクエリの終了時刻。 |
-| Search Interval |#searchinterval |アラート ルールの時間枠。 |
-| Search Interval StartTime |#searchintervalstarttimeutc |UTC 形式で記述したクエリの開始時刻。 
+| Search Interval End time |#searchintervalendtimeutc |UTC でのクエリの終了時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 |
+| Search Interval |#searchinterval |アラート ルールの時間枠。フォーマットは HH:mm:ss です。 |
+| Search Interval StartTime |#searchintervalstarttimeutc |UTC でのクエリの開始時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 
 | SearchQuery |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | SearchResults |"IncludeSearchResults": true|クエリで JSON テーブルとして返されるレコード。上限は最初の 1,000 レコード。"IncludeSearchResults":true がカスタム JSON webhook 定義に最上位レベルのプロパティとして追加されている場合。 |
 | WorkspaceID |#workspaceid |Log Analytics ワークスペースの ID |
@@ -74,6 +69,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+カスタム webhook 内のすべての変数は、"#searchinterval" のように JSON エンクロージャ内で指定する必要があるため、結果の webhook にも、エンクロージャ内に "00:05:00" のような変数データが含まれることになります。
 
 カスタム ペイロードに検索結果を含めるには、**IncudeSearchResults** が JSON ペイロードの最上位レベルのプロパティとして設定されていることを確認します。 
 

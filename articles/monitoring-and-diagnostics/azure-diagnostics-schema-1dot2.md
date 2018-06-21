@@ -1,24 +1,20 @@
 ---
-title: Azure 診断 1.2 構成スキーマ | Microsoft Docs
+title: Azure 診断拡張機能 1.2 の構成スキーマ
 description: この記事は、Azure SDK 2.5 を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: 32fcd3171f1adcfd565c38ca1191342e7afaf5a9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267698"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 診断 1.2 構成スキーマ
 > [!NOTE]
@@ -100,7 +96,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="publicconfig-element"></a>PublicConfig 要素  
  診断構成ファイルの最上位要素。 構成ファイルの要素を次の表に示します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**WadCfg**|必須。 収集するテレメトリ データの構成設定。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
@@ -109,7 +105,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="wadcfg-element"></a>WadCFG 要素  
 収集するテレメトリ データの構成設定を定義します。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
 |**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure 診断を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
@@ -123,7 +119,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
  クラッシュ ダンプの収集を有効にします。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
 |**crashDumpType**|Azure 診断を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
@@ -132,7 +128,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directories-element"></a>Directories 要素  
  ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DataSources**|監視するディレクトリの一覧。|  
 |**FailedRequestLogs**|この要素を構成に含めることで、IIS サイトまたはアプリケーションへの失敗要求に関するログの収集を有効にします。 また、**Web.config** の **system.WebServer** でトレース オプションを有効にする必要もあります。|  
@@ -141,14 +137,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>DataSources 要素  
  監視するディレクトリの一覧。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DirectoryConfiguration**|必須。 必須属性: <br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 要素  
  **DirectoryConfiguration** には、**Absolute** 要素または **LocalResource** 要素のいずれかを含めることができます。ただし、両方を含めることができません。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**Absolute**|監視するディレクトリの絶対パス。 次の属性は必須です。<br /><br /> -                     **Path** - 監視するディレクトリの絶対パス。<br /><br /> -                      **expandEnvironment** - Path で環境変数を展開するかどうかを構成します。|  
 |**LocalResource**|監視するローカル リソースの相対パス。 必須属性は次のとおりです。<br /><br /> -                     **Name** - 監視するディレクトリを含むローカル リソース<br /><br /> -                     **relativePath** - 監視するディレクトリを含む名前の相対パス|  
@@ -156,7 +152,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwproviders-element"></a>EtwProviders 要素  
  EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|[EventSource クラス](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。|  
 |**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。|  
@@ -164,7 +160,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  [EventSource クラス](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 |**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
@@ -172,7 +168,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 要素  
  次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 |**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
@@ -180,27 +176,27 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="metrics-element"></a>Metrics 要素  
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  パフォーマンス カウンターの収集を有効にします。 次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> -                     **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「`\Processor(_Total)\% Processor Time`」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> -                     **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 要素  
  次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**annotation**|必須属性: <br /><br /> **displayName** - カウンターの表示名<br /><br /> オプションの属性:<br /><br /> **locale** - カウンター名を表示するときに使用するロケール|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素  
  次の表で、子要素について説明します。  
 
-|要素名|[説明]|  
+|要素名|説明|  
 |------------------|-----------------|  
 |**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例: <br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|

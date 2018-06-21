@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 68f963b7f3107bad58edb183ec104777903b20d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6a4e25dd3f819ad4f0fee7846e87df2202f5227f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588524"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210620"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services で管理されているドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスで管理されているドメインを管理する方法について説明します。

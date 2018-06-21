@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: ec74ac2823532b6eef7bf88b4dbf21487d509217
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc3bcaa5702cc5338e8ea1b7f350e58a98a4a013
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586989"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213252"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD ドメイン サービス - お問い合わせ
 ## <a name="contact-the-product-team"></a>製品チームへのお問い合わせ

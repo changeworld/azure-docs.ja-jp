@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 956bd89a993a019d7a5a4dd28efec4116b174334
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297259"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -40,17 +41,17 @@ Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -Resou
 ## <a name="azure-integration-runtime"></a>Azure 統合ランタイム
 Azure 統合ランタイムのコンピューティング リソースは、Azure で完全かつ柔軟に管理されます。 次の表では、**Get-AzureRmDataFactoryV2IntegrationRuntime** コマンドによって返されるプロパティについて説明します。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 次の表では、Azure 統合ランタイム用のコマンドレットによって返されるプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 -------- | ------------- | 
 | Name | Azure 統合ランタイムの名前です。 |  
 | State | Azure 統合ランタイムの状態です。 | 
-| 場所 | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
+| リージョン | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
 | DataFactoryName | Azure 統合ランタイムが属しているデータ ファクトリの名前です。 | 
 | ResourceGroupName | データ ファクトリが属しているリソース グループの名前です。  |
-| [説明] | 統合ランタイムの説明です。  |
+| 説明 | 統合ランタイムの説明です。  |
 
 ### <a name="status"></a>状態
 次の表では、Azure 統合ランタイムの状態を示します。
@@ -66,11 +67,11 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 > [!NOTE] 
 > 返されるプロパティと状態には、セルフホステッド統合ランタイム全体と、ランタイム内の各ノードに関する情報が含まれます。  
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
 次の表では、**各ノード**の監視プロパティについて説明します。
 
-| プロパティ | [説明] | 
+| プロパティ | 説明 | 
 | -------- | ----------- | 
 | Name | セルフホステッド統合ランタイムおよびそれに関連付けられているノードの名前です。 ノードとは、セルフホステッド統合ランタイムがインストールされているオンプレミスの Windows コンピューターです。 |  
 | 状態 | セルフホステッド統合ランタイム全体および各ノードの状態です。 (たとえば、オンライン/オフライン/制限/ など)。これらの状態については、次のセクションをご覧ください。 | 
@@ -86,7 +87,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 ### <a name="status-per-node"></a>状態 (ノードごと)
 次の表では、セルフホステッド統合ランタイムのノードの状態を示します。
 
-| 状態 | [説明] |
+| 状態 | 説明 |
 | ------ | ------------------ | 
 | オンライン | ノードはデータ ファクトリ サービスに接続されています。 |
 | オフライン | ノードはオフラインです。 |
@@ -99,7 +100,7 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状態 (セルフホステッド統合ランタイム全体)
 次の表では、セルフホステッド統合ランタイムの状態を示します。 この状態は、ランタイムに属しているすべてのノードの状態によって決まります。 
 
-| 状態 | [説明] |
+| 状態 | 説明 |
 | ------ | ----------- | 
 | Need Registration | このセルフホステッド統合ランタイムにはノードがまだ登録されていません。 |
 | オンライン | すべてのノードがオンラインです。 |
@@ -149,36 +150,36 @@ Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイム
 Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 仮想マシン (ノード) の、完全に管理されたクラスターです。 Azure Data Factory の他の活動は実行しません。 プロビジョニングが済むと、そのプロパティを照会し、全体/ノード固有の状態を監視できます。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
-| プロパティ/状態 | [説明] |
+| プロパティ/状態 | 説明 |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 統合ランタイムが作成された UTC 時刻です。 |
 | Nodes | Azure-SSIS 統合ランタイムで割り当て済み/使用可能のノードと、ノード固有の状態 (開始中/使用可能/リサイクル中/使用不可) および対処が必要なエラーです。 |
 | OtherErrors | Azure-SSIS 統合ランタイムのノード固有ではない対処が必要なエラーです。 |
 | LastOperation | 対処が必要なエラーが発生した Azure-SSIS 統合ランタイムでの前回の開始/停止操作が失敗した場合の結果です。 |
 | State | Azure-SSIS 統合ランタイムの全体的な状態 (初期/開始中/開始済み/停止中/停止済み) です。 |
-| 場所 | Azure-SSIS 統合ランタイムの場所です。 |
+| リージョン | Azure-SSIS 統合ランタイムの場所です。 |
 | NodeSize | Azure-SSIS 統合ランタイムの各ノードのサイズです。 |
 | NodeCount | Azure-SSIS 統合ランタイムのノードの数です。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 統合ランタイムのノードごとの並列実行の数です。 |
-| CatalogServerEndpoint | SSISDB をホストするための既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーのエンドポイントです。 |
-| CatalogAdminUserName | 既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの管理者のユーザー名です。 データ ファクトリ サービスはこの情報を使って、自動的に SSISDB を準備および管理します。 |
-| CatalogAdminPassword | 既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの管理者のパスワードです。 |
-| CatalogPricingTier | 既存の Azure SQL Database サーバーによってホストされている SSISDB の価格レベルです。  Azure SQL マネージ インスタンス (プレビュー) がホストする SSISDB には適用されません。 |
-| VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワーク (VNet) のリソース ID です。 |
+| CatalogServerEndpoint | SSISDB をホストするための既存の Azure SQL Database/Managed Instance (プレビュー) サーバーのエンドポイントです。 |
+| CatalogAdminUserName | 既存の Azure SQL Database/Managed Instance (プレビュー) サーバーの管理者のユーザー名です。 データ ファクトリ サービスはこの情報を使って、自動的に SSISDB を準備および管理します。 |
+| CatalogAdminPassword | 既存の Azure SQL Database/Managed Instance (プレビュー) サーバーの管理者のパスワードです。 |
+| CatalogPricingTier | 既存の Azure SQL Database サーバーによってホストされている SSISDB の価格レベルです。  Azure SQL Managed Instance (プレビュー) がホストする SSISDB には適用されません。 |
+| VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワークのリソース ID です。 |
 | サブネット | Azure-SSIS 統合ランタイムが参加するサブネット名です。 |
 | ID | Azure-SSIS 統合ランタイムのリソース ID です。 |
 | type | Azure-SSIS 統合ランタイムの種類 (マネージ/セルフホステッド) です。 |
 | ResourceGroupName | データ ファクトリおよび Azure-SSIS 統合ランタイムが作成された Azure リソース グループの名前です。 |
 | DataFactoryName | Azure データ ファクトリの名前です。 |
 | Name | Azure-SSIS 統合ランタイムの名前です。 |
-| [説明] | Azure-SSIS 統合ランタイムの説明です。 |
+| 説明 | Azure-SSIS 統合ランタイムの説明です。 |
 
   
 ### <a name="status-per-node"></a>状態 (ノードごと)
 
-| 状態 | [説明] |
+| 状態 | 説明 |
 | ------ | ----------- | 
 | 開始中 | このノードは準備中です。 |
 | 使用可能 | このノードは、SSIS パッケージをデプロイ/実行できる状態です。 |
@@ -187,7 +188,7 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状態 (Azure-SSIS 統合ランタイム全体)
 
-| 全体的な状態 | [説明] | 
+| 全体的な状態 | 説明 | 
 | -------------- | ----------- | 
 | Initial | Azure-SSIS 統合ランタイムのノードは、割り当て/準備が行われていません。 | 
 | 開始中 | Azure-SSIS 統合ランタイムのノードは、割り当て/準備が行われている最中であり、課金が開始されています。 |
@@ -199,9 +200,9 @@ Azure-SSIS 統合ランタイムについて詳しくは、以下の記事をご
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL Managed Instance (プレビュー) の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
-- [Azure-SSIS IR を VNet に参加させる](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワーク (VNet) への Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が VNet に参加できるように Azure Portal を使って VNet を構成する手順も説明されています。 
+- [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
 
 ## <a name="next-steps"></a>次の手順
 パイプラインを監視するさまざまな方法について、次の記事をご覧ください。 

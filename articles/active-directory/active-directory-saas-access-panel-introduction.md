@@ -71,7 +71,7 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 
 
 現在、アクセス パネルの拡張機能は次で使用できます。
-- **Edge**: Windows 10 Anniversary Edition 以降。 
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 - **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
@@ -85,7 +85,7 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 - 遠くにいる場合、[アプリケーション プロキシ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を利用できます。
 
 > [!NOTE]
-> その他の機能は、Edge、Chrome、および Firefox でのみ使用できます。
+> その他の機能は、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
 >
 拡張は次のサイトから直接ダウンロードできます。
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)

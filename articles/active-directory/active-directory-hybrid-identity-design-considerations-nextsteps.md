@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4ac8e517e68f7cbba3019fa27065468b387c1b65
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801492"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284672"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
 要件を定義し、モバイル デバイスのすべての選択肢を検討したので、次の段階ではユーザーと組織に最適なサポート インフラストラクチャをデプロイします。
@@ -42,7 +42,7 @@ ms.locfileid: "34801492"
 ## <a name="hybrid-identity-resources"></a>ハイブリッド ID リソース
 次のリソースには、モバイル デバイス管理ソリューションに関する最新ニュースと更新が頻繁に掲載されます。
 
-* [Microsoft Enterprise Mobility ブログ](http://blogs.technet.com/b/enterprisemobility/)
+* [Microsoft Enterprise Mobility ブログ](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
 * [Microsoft In The Cloud ブログ](http://blogs.technet.com/b/in_the_cloud/)
 * [Microsoft Intune ブログ](http://blogs.technet.com/b/microsoftintune/)
 * [Microsoft System Center Configuration Manager ブログ](http://blogs.technet.com/b/configurationmgr/)

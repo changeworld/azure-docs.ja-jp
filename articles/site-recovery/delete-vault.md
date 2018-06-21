@@ -7,17 +7,18 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 06/11/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1c069e8b09f71ac46017974dfd94945c404b16ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 80c479aa23da2a8471af3fd83879a2dbfc5d6195
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209894"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300573"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する
-依存関係により、Azure Site Recovery コンテナーが削除できない場合があります。 実行する必要のあるアクションは、サイトの回復シナリオ (VMware から Azure、Hyper-v (System Center Virtual Machine Manager あり/なし) から Azure と Azure Backup) によって異なります。 Azure Backup で使用されているコンテナーを削除するには、「[Azure のバックアップ コンテナーを削除する](../backup/backup-azure-delete-vault.md)」を参照してください。
+
+依存関係により、Azure Site Recovery コンテナーが削除できない場合があります。 実行する必要のあるアクションは、サイトの回復シナリオによって異なります。 Azure Backup で使用されているコンテナーを削除するには、「[Azure のバックアップ コンテナーを削除する](../backup/backup-azure-delete-vault.md)」を参照してください。
 
 
 
@@ -37,12 +38,12 @@ ms.locfileid: "34209894"
 5. コンテナーを削除します。
 
 
-### <a name="hyper-v-vms-with-virtual-machine-manager-to-azure"></a>Hyper-V VM (Virtual Machine Manager あり) から Azure へ
-1. 「[System Center VMM から Azure へのシナリオを使用して Azure にレプリケートしている Hyper-V 仮想マシンの保護の無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario)」の手順に従って、保護されているすべての VM を削除します。
+### <a name="hyper-v-vms-with-vmm-to-azure"></a>Hyper-V VM (VMM を使用) を Azure に
+1. 保護されている VM をすべて削除するには、[Hyper-V VM (VMM 使用) の保護の無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario)に関する記事の手順に従います。
 
 2. コンテナー -> **[Site Recovery Infrastracture]\(Site Recovery インフラストラクチャ\)** - > **[For System Center VMM]\(System Center VMM\)** -> **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
 
-3.  Virtual Machine Manager サーバーへの関連付けを削除するには、「[接続されている VMM サーバーの登録解除](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server)」の手順に従います。
+3.  VMM サーバーへの関連付けを削除するには、「[接続されている VMM サーバーの登録解除](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server)」の手順に従います。
 
 4.  コンテナーを削除します。
 
@@ -51,7 +52,7 @@ ms.locfileid: "34209894"
 
 2. コンテナー -> **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** - > **[For Hyper-V Sites]\(Hyper-V サイト\)** -> **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
 
-3. HYPER-V サーバーへの関連付けを削除するには、「[HYPER-V ホストの登録を解除](/site-recovery-manage-registration-and-protection.md##unregister-a-hyper-v-host-in-a-hyper-v-site)」の手順に従います。
+3. HYPER-V サーバーへの関連付けを削除するには、「[HYPER-V ホストの登録を解除](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)」の手順に従います。
 
 4. Hyper-V サイトを削除します。
 

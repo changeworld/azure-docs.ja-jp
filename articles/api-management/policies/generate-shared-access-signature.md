@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: fadad6f83f1a855f3ca1509a6a5e02c822db512d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c8a4d25211a0030c013628e69865406bb6e8899e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933959"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286290"
 ---
 # <a name="generate-shared-access-signature"></a>Shared Access Signature の生成
 
@@ -28,7 +28,7 @@ ms.locfileid: "33933959"
 
 コードを **inbound** ブロックに貼り付けます。
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Generate Shared Access Signature and forward request to Azure storage.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Generate Shared Access Signature and forward request to Azure storage.policy.xml)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: d407b015699925a6a3ce6ef9108ace1e9900303f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5e933406b266b8371019abf0f62365184d8900b3
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32200628"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36205246"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 

@@ -1,0 +1,26 @@
+- name: Virtual Machines のドキュメント
+  href: index.md
+- name: Azure の Linux Virtual Machines
+  href: linux/overview.md
+- name: Azure の Windows Virtual Machines
+  href: windows/overview.md
+- name: VM 拡張機能のドキュメント
+  href: extensions/overview.md
+- name: ワークロード
+  items:
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+- name: クラシック デプロイ
+  items:
+    - name: クラシック デプロイメントを使用した Linux VM
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: クラシック デプロイメントを使用した Windows VM
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'

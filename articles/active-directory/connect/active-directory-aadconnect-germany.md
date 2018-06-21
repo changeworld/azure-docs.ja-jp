@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5771d3319194ff4952f4c93140594db2d93bb7f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 46d4d095ef71870c7f5b3eabaf66e26797b7331e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593556"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286321"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
 ## <a name="introduction"></a>はじめに
@@ -34,9 +34,7 @@ Azure AD Connect は、オンプレミス Active Directory と Azure Active Dire
   * *.windows.net
   * * 証明書の失効リスト
 * Azure AD ディレクトリにサインインするときは、onmicrosoft.de ドメインのアカウントを使用する必要があります。
-* 以下の機能は使用できません。
-  * Azure AD Connect Health
-  * 自動更新
+
  
 ## <a name="download"></a>[ダウンロード]
 Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。  Azure AD Connect ブレードを表示するには、次の手順に従います。

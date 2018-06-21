@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: f363c52093e0ae8314e07e750eb4362f71e9a4b1
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: b2561f4b1b5ef27f389114c85f0646b968f7765e
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826516"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269563"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの管理ディスクの使用
 
@@ -256,4 +256,4 @@ REST API の仕様の詳細については、[管理ディスク作成の REST A
 * 管理ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」のドキュメントを参照してください。
 * 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
 * ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/azure/templates/microsoft.compute/disks) ドキュメントを参照してください。
-* Azure VM Scale Sets で管理ディスクを使う方法については、[スケール セットでデータ ディスクを使用する](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md)方法に関する文書を参照してください。
+* Azure VM Scale Sets で管理ディスクを使う方法については、[スケール セットでデータ ディスクを使用する](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks)方法に関する文書を参照してください。

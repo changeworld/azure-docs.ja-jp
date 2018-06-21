@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: node
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: 572ecbfee6a3c361a2940d74b560910fd85b344b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17afdd4c57f58770ae82093c5e23e469d1109f6a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635867"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284654"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Node.js) でハブから利用統計情報を読み取る
 
@@ -120,9 +120,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-次のクイック スタートを行う場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
-
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **qs-iot-hub-rg** リソース グループを選び、**[削除]** をクリックします。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

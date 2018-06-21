@@ -35,7 +35,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 パスワードベースの SSO には、次のブラウザーを使用できます。
 
-- **Edge**: Windows 10 Anniversary Edition 以降。 
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 
@@ -58,7 +58,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 7.  アクセス パネルにサインインし、パスワードベースの SSO アプリケーションを起動できるかどうかを確認します。
 
-次のサイトから Chrome と Edge 対応の拡張機能を直接ダウンロードすることもできます。
+次のサイトから Chrome と Microsoft Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
@@ -92,7 +92,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
     4. これで、リモート時にも社内 URL を参照できる
 
 > [!NOTE]
-> こうしたオプションは、Edge、Chrome、および Firefox でのみ使用できます。
+> こうしたオプションは、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Internet Explorer のグループ ポリシーの設定
 

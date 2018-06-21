@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: babf7776547ff61794039104df9a2b2d8a0ea546
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7e7786ac36485a792e9c77b10925f01790f95ab1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586670"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218199"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services 管理対象ドメインでのディレクトリの不一致エラーを解決する
 既存の Azure AD Domain Services 管理対象ドメインがあります。 Azure Portal にアクセスしてこの管理対象ドメインを表示すると、次のエラー メッセージが表示されます。

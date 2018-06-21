@@ -2,18 +2,18 @@
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
 description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/06/2018
+ms.author: raynew
+ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188482"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267511"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -21,11 +21,19 @@ Azure への VMware 仮想マシンと物理サーバーのディザスター �
 
 ## <a name="prerequisites"></a>前提条件
 
-高可用性の VMware VM として構成サーバーを展開することをお勧めします。 最小限のハードウェア要件を次の表に示します。
+高可用性の VMware VM として構成サーバーを展開することをお勧めします。 構成サーバーの要件を次の表に示します。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+
+### <a name="prepare-for-mysql-installation"></a>MySQL をインストールする準備
+
+構成サーバーには MySQL がインストールされている必要があります。 これは、次のいずれか方法で実行できます:
+
+- 構成サーバー管理ウィザードの実行時に Site Recovery にダウンロードとインストールを行わせます。 ユーザーが特定のアクションを実行する必要はありません。
+- 手動で MySQL をダウンロードして C:\Temp\ASRSetup フォルダーに配置します。 その上でインストールを実行します。 Site Recovery は、ウィザードの実行時にインストール済みであることを認識します。
+- 手動で MySQL をダウンロードして C:\Temp\ASRSetup フォルダーに配置します。 ウィザードを実行すると、セットアップ ファイルが検出され、その場所からインストールが行われます。 
 
 
 ## <a name="capacity-planning"></a>容量計画
@@ -101,7 +109,7 @@ Site Recovery では、高可用性の VMware VM として構成サーバーを�
 
 1. 構成サーバー管理ウィザードで、**[接続の設定]** を選びます。 レプリケーション トラフィックを受信する NIC を選び、**[保存]** を選びます。 構成後、この設定を変更することはできません。
 2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
-3. **[サードパーティ製ソフトウェアのインストール]** でライセンス契約に同意します。 **[ダウンロードしてインストール]** を選択して MySQL サーバーをインストールします。
+3. **[サードパーティ製ソフトウェアのインストール]** でライセンス契約に同意します。 [MySQL のインストール方法](#prepare-for-mysql-installation)に従って MySQL をインストールします。
 4. **[VMware PowerCLI のインストール]** を選択します。 このステップを行う前に、すべてのブラウザー ウィンドウを閉じてください。 その後 **[続行]** を選択します。
 5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
 6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンしているポートと、コンテナーでの VMware サーバーのフレンドリ名を入力します。

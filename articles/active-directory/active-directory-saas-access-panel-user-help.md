@@ -53,7 +53,7 @@ ms.locfileid: "34260511"
 マイ アプリ ポータルには、JavaScript をサポートする CSS 対応のブラウザーが必要です。 パスワードベースのシングル サインオン アプリを使用する場合は、付属の拡張機能もインストールする必要があります。 この拡張機能は、パスワード ベースのシングル サインオン アプリ向けに構成されているアプリケーションを起動すると自動的にダウンロードされます。
 
 次のブラウザーの要件を満たしていることを確認します。
-- **Edge**: Windows 10 Anniversary Edition 以降。
+- **Microsoft Edge**: Windows 10 Anniversary Edition 以降。
 - **Chrome**: Windows 7 以降、Mac OS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 - **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
@@ -94,7 +94,7 @@ ms.locfileid: "34260511"
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
 
 > [!NOTE]
-> こうしたオプションは、Edge、Chrome、および Firefox でのみ使用できます。
+> こうしたオプションは、Microsoft Edge、Chrome、および Firefox でのみ使用できます。
 
 ## <a name="how-do-i-add-a-new-app"></a>新しいアプリの追加方法
 

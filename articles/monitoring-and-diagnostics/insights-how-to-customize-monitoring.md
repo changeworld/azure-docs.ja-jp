@@ -1,24 +1,19 @@
 ---
-title: "Microsoft Azure のメトリックの概要 | Microsoft Docs"
-description: "Azure でグラフの監視をカスタマイズする方法について説明します。"
+title: Azure Monitor のメトリックの概要
+description: Azure でグラフの監視をカスタマイズする方法について説明します。
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c36031eb-4df5-4cd5-9479-311d493a40d2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
-ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262258"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。 Azure Portal でこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
@@ -28,7 +23,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="using-monitoring-charts"></a>監視グラフの使用
 選択した任意の期間における任意のメトリックのグラフを作成できます。
 
-1. [Azure Portal](https://portal.azure.com/) で、**[参照]**をクリックし、監視するリソースをクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[参照]** をクリックし、監視するリソースをクリックします。
 2. **[監視]** セクションには、各 Azure リソースにとって最も重要なメトリックが含まれています。 たとえば、Web アプリには "**要求とエラー**" があるのに対し、仮想マシンには "**CPU の割合**" と "**ディスクの読み取りと書き込み**" があります。![監視レンズ](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 3. いずれかのグラフをクリックすると、 **[メトリック]** ブレードが表示されます。 ブレードには、グラフに加えて、メトリック (選択した時間範囲の平均、最小値、最大値など) の集計を示すテーブルが表示されます。 その下には、リソースのアラート ルールが示されます。
     ![[メトリック] ブレード](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
@@ -60,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 メトリックと同様に、[REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) または [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) を使用して、すべての使用量クォータにプログラムでアクセスできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アラート通知を受信](insights-receive-alert-notifications.md) します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md) にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * [インスタンス数を自動的にスケール変更](insights-how-to-scale.md) して、サービスの可用性と応答性を確実にします。

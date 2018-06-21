@@ -4,7 +4,7 @@ description: SAP NetWeaver のための Azure Virtual Machines DBMS のデプロ
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366360"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656195"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -540,9 +540,10 @@ SAP は現在、Premium Managed Disks のみをサポートします。 詳し�
 Managed Disks を使用する場合、次のようにして Premium Storage に移行できます。
 
 1. 仮想マシンの割り当て解除
-2. 必要に応じて、仮想マシンのサイズを Premium Storage (DS、GS など) をサポートするサイズに変更します。
-3. Managed Disks のアカウントの種類を Premium (SSD) に変更する
-4. 仮想マシンを開始する
+1. 必要に応じて、仮想マシンのサイズを Premium Storage (DS、GS など) をサポートするサイズに変更します。
+1. Managed Disks のアカウントの種類を Premium (SSD) に変更する
+1. 「[VM とデータ ディスクのキャッシュ][dbms-guide-2.1]」の章で推奨されているように、データ ディスクのキャッシュを変更する
+1. 仮想マシンを開始する
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Azure で SAP 用 VM をデプロイする
 Microsoft Azure では、VM および関連付けられているディスクをデプロイする方法が複数用意されています。 したがって、VM の準備はデプロイの方法によって異なる場合があるため、その違いを理解しておくことが重要です。 一般に、私たちは、次の章で説明されているシナリオを検討します。

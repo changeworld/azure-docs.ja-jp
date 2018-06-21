@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使って Azure に移行するため�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 06/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 71d4bc0aa1ea2658c4cd40834a769eaaac649bc3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236146"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228375"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 

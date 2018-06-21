@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895488"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301373"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境
 
@@ -44,7 +44,7 @@ ms.locfileid: "33895488"
 - **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
 - **自動化されたデプロイ スクリプト**:  これらのスクリプトを使用して、エンド ツー エンド ソリューションをデプロイします。 次のスクリプトが含まれます。
     - モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。
-    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[Blueprint のコード リポジトリ][code-repo]でレビュー用に入手できます。 
+    - インストール PowerShell スクリプト。[SQL データベース サンプル](https://github.com/Microsoft/azure-sql-security-sample)のコンテンツを使用して事前に構築されたデモ Web アプリケーションを含む、.zip ファイル 1 個と .bacpac ファイル 1 個を通じて提供されるエンド ツー エンドのソリューションをデプロイするために使用します。 このソリューションのソース コードは [GitHub](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms) でレビュー用に入手できます。 
 
 ## <a name="architectural-diagram"></a>アーキテクチャ図
 
@@ -169,8 +169,6 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - ファイアウォールおよび Application Gateway WAF 用の DMZ ネットワーク セキュリティ グループ
 - ジャンプボックス (要塞ホスト) 管理用の NSG
 - App Service Environment 用の NSG
-
-各 NSG には、ソリューションの安全かつ適切な操作のために開かれる固有のポートとプロトコルがあります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループに関する説明](#network-security-groups)をご覧ください。
 
 各 NSG には、ソリューションの安全かつ適切な操作のために開かれる固有のポートとプロトコルがあります。 さらに、各 NSG で次の構成を使用できます。
 - [診断ログとイベント](/azure/virtual-network/virtual-network-nsg-manage-log)の有効化 (ストレージ アカウントに格納されます) 

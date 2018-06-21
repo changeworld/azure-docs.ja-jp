@@ -1,31 +1,25 @@
 ---
-title: Azure Portal でのアクション グループの作成および管理 | Microsoft Docs
+title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/20/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: alerts
+ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170378"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263067"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
-この記事では、Azure Portal でアクション グループを作成および管理する方法について説明します。
+アクション グループは、ユーザーによって定義された通知設定のコレクションです。 Azure Monitor と Service Health のアラートは、アラートがトリガーされたときに特定のアクション グループを使用するように構成されます。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。
 
-アクション グループを使用して、アクションのリストを構成できます。 これらのグループは、定義する各アラートで使用できるため、アラートがトリガーされるときに特定のアクション グループが必ず呼び出されるようにすることができます。
+この記事では、Azure Portal でアクション グループを作成および管理する方法について説明します。
 
 各アクションは次のプロパティで構成されます。
 
@@ -70,7 +64,14 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 <dd>現時点では Azure アプリのアクションは ServiceHealth アラートのみをサポートします。 その他のアラート日時は無視されます。 [サービスの正常性通知が投稿されるたびにアラートを設定](monitoring-activity-log-alerts-on-service-notifications.md)する方法を見る。</dd>
 
 <dt>電子メール</dt>
-<dd>アクション グループには、最大 50 個の電子メールのアクションがあります。</dd>
+<dd>電子メールは、次の電子メール アドレスから送信されます。 電子メールのフィルタリングが適切に構成されていることを確認してください
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>1 つのアクション グループには、電子メールに関するアクションが最大 1,000 個あります</dd>
 <dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
 
 <dt>ITSM</dt>

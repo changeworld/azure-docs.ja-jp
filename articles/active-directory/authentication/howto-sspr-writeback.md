@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868827"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296889"
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
-パスワード ライトバックを使うと、オンプレミスの Active Directory にパスワードを書き戻すように Azure Active Directory (Azure AD) を構成できます。 パスワード ライトバックにより、複雑なオンプレミスのセルフサービスによるパスワードのリセット (SSPR) ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。 パスワード ライトバックは、[Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) のコンポーネントです。Premium の [Azure Active Directory のエディション](../active-directory-whatis.md)の現在のサブスクライバーは、この機能を有効にして使うことができます。
+パスワード ライトバックを使うと、オンプレミスの Active Directory にパスワードを書き戻すように Azure Active Directory (Azure AD) を構成できます。 パスワード ライトバックにより、複雑なオンプレミスのセルフサービスによるパスワードのリセット (SSPR) ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。 パスワード ライトバックは、[Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) のコンポーネントです。Premium の [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)の現在のサブスクライバーは、この機能を有効にして使うことができます。
 
 パスワード ライトバックには、次の機能が用意されています。
 
@@ -129,7 +129,7 @@ SSPR の範囲内に入るには、Azure AD Connect ユーティリティで指�
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
 
-ライセンスについて詳しくは、「[パスワード ライトバックで必要なライセンス](concept-sspr-licensing.md#licenses-required-for-password-writeback)」または次のサイトをご覧ください。
+ライセンスについて詳しくは、「[パスワード ライトバックで必要なライセンス](concept-sspr-licensing.md)」または次のサイトをご覧ください。
 
 * [Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

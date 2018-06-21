@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4caa4dfcfdc468c69241c5cf61d3c520609a088a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710265"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292788"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用した ASP.NET アプリケーションのサインインの設定
 
@@ -124,4 +124,4 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 引き続き、独自の Azure AD B2C テナントを使用するための構成をサンプル ASP.NET に対して行う方法のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーを認証する](active-directory-b2c-tutorials-web-app.md)
+> [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)

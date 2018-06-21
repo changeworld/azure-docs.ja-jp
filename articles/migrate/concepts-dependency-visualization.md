@@ -4,14 +4,14 @@ description: Azure Migrate サービスにおけるアセスメントの計算�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 2b6b3e78436a215e64894b1102c4e109f72c896d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 94d4db078175309444db5113506020eae54dda70
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203069"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218406"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 

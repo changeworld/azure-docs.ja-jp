@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aa2278e7d32147d75b8ca0241a39a9fed6df41c8
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187693"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266884"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -49,11 +49,13 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | OS とデータ ディスク |
 | Ubuntu | 14.04.5-DAILY-LTS | OS とデータ ディスク |
+| RHEL | 7.5 | データ ディスク* |
 | RHEL | 7.4 | データ ディスク* |
 | RHEL | 7.3 | データ ディスク* |
 | RHEL | 7.2 | データ ディスク* |
 | RHEL | 6.8 | データ ディスク* |
 | RHEL | 6.7 | データ ディスク* |
+| CentOS | 7.4 | OS とデータ ディスク |
 | CentOS | 7.3 | OS とデータ ディスク |
 | CentOS | 7.2n | OS とデータ ディスク |
 | CentOS | 6.8 | OS とデータ ディスク |
@@ -104,7 +106,7 @@ Azure Disk Encryption では、オンプレミスのキー管理サービスま�
 Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では*サポートされていません*。
 
 > [!NOTE]
-> Linux 用 Azure Disk Encryption プレビューの拡張機能は推奨されていません。 詳細については、「[Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/)」(Linux IaaS VM 用 Azure Disk Encryption プレビューの拡張機能の非推奨化) を参照してください。
+> Linux 用 Azure Disk Encryption プレビューの拡張機能は非推奨となっています。 詳細については、「[Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/)」(Linux IaaS VM 用 Azure Disk Encryption プレビューの拡張機能の非推奨化) を参照してください。
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>カスタム Linux イメージに対して Azure Disk Encryption を適用できますか。
 

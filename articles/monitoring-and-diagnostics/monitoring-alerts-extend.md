@@ -1,74 +1,64 @@
 ---
-title: OMS ポータルから Azure にアラートを拡張 (コピー) する - 概要 | Microsoft Docs
-description: アラートを OMS ポータルから Azure Alerts にコピーするプロセスの概要と、お客様の一般的な懸念に関する詳細について説明します。
+title: Log Analytics のアラートを Azure Alerts に拡張 (コピー) する - 概要
+description: アラートを OMS ポータル内の Log Analytics から Azure Alerts にコピーするプロセスの概要について説明し、お客様の一般的な懸念に対応する詳細を示します。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/14/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/24/2018
 ms.author: vinagara
-ms.openlocfilehash: 25dcbad8607a651a7dd4b79f4f418cc473a2bf0e
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.component: alerts
+ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166500"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301152"
 ---
-# <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>OMS ポータルから Azure にアラートを拡張 (コピー) する
-Operations Management Suite (OMS) ポータルには、Log Analytics のアラートのみが表示されます。  新しいアラートのエクスペリエンスにより、Microsoft Azure にさまざまなサービスを超えたアラート エクスペリエンスが統合されました。 Azure Portal の Azure Monitor の **[アラート]**  で使用可能なこの新しいエクスペリエンスには、Log Analytics と Application Insights 両方のアクティビティ ログ アラート、メトリック アラート、ログ アラートが含まれます。 
-
-
-ただし、ユーザーによっては Log Analytics やアラートなどの類似の機能を、[Microsoft Operation Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) ポータルから使うことがあります。 したがって、Log Analytics を使いつつ Azure のその他のリソースを簡単に管理できるように、マイクロソフトは体系的に Azure Portal でも OMS ポータルの機能を使用できるよう進めています。 その点において、Azure のアラート機能ではすでに ユーザーに Log Analytics のクエリベースのアラートを管理することを許可しています。詳細については、[Azure Alerts のログ アラート](monitor-alerts-unified-log.md)に関するページを参照してください。 Azure Monitor のアラート機能には、OMS ポータルで作成したアラートが該当する Log Analytics ワークスペースの下にすでに列挙されています。 ただし、OMS ポータルで作成したこれらのアラートを編集または変更するには、Azure を離れて OMS ポータルで行う必要があります。その後、その他のサービスを管理する必要がある場合は、Azure に戻ります。 この手間を減らすために、マイクロソフトでは現在、ユーザーによる OMS ポータルのアラートの Azure への拡張を有効にするよう進めています。
+# <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Log Analytics アラートを Azure Alerts に拡張する
+最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 [Microsoft Operations Management Suite ポータル](../operations-management-suite/operations-management-suite-overview.md)でアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。 
 
 ## <a name="benefits-of-extending-your-alerts"></a>アラートを拡張するメリット
-アラートを OMS ポータルから Azure に拡張する利点は、Azure Portal から離れる必要がなくなる以外にもあります。
+Azure Portal でアラートの作成と管理を行うことには、以下のようにいくつかの利点があります。
 
-- 作成および表示できるアラートの数が 250 に限定されている OMS ポータルとは異なり、Azure のアラート機能にはこの制限がありません。
-- Azure のアラート機能では、すべての種類のアラートを管理、列挙、および表示できます。OMS ポータルのように Log Analytics のアラートには限定されません。
-- [Azure Monitor ロール](monitoring-roles-permissions-security.md)を使用してユーザーへのアクセスを監視とアラートに制限する
-- Azure のアラート機能では[アクション グループ](monitoring-action-groups.md)を使って、各アラートにSMS、音声通話、Automation Runbook、Webhook、ITSM Connector など、複数のアクションを設定できます。 
+- 作成や表示が可能なアラートが 250 件のみである Operations Management Suite ポータルとは異なり、Azure Alerts にこのような制限はありません。
+- Azure Alerts からは、すべての種類のアラートを管理、列挙、表示できます。 以前それが可能であったのは、Log Analytics のアラートについてのみでした。
+- [Azure Monitor ロール](monitoring-roles-permissions-security.md)を使用して、ユーザーのアクセスを監視とアラートのみに制限できます。
+- Azure Alerts では、[アクション グループ](monitoring-action-groups.md)を使用できます。 これにより、アラートごとに複数のアクションを指定できます。 SMS の使用、音声通話の送信、Azure Automation Runbook の呼び出し、webhook の呼び出し、および IT Service Management (ITSM) Connector の構成が可能です。 
 
 ## <a name="process-of-extending-your-alerts"></a>アラートを拡張するプロセス
-アラートを OMS ポータルから Azure に拡張するプロセスには、アラートの定義、クエリ、構成の変更は**伴いません**。 唯一必要な変更は、Azure では電子メールの通知、Webhook の呼び出し、Automation Runbook の実行、ITSM ツールへの接続などのアクションはすべてアクション グループを介して行います。 このため、適切なアクション グループがアラートに関連付けられている場合、それらは Azure に拡張されます。
-
-アラートを拡張するプロセスはアラートの破棄や中断を伴わないため、マイクロソフトでは **2018 年 5 月 14 日**より OMS ポータルで作成されたアラートを自動的に Azure のアラート機能に拡張します。 この日より、マイクロソフトでは Azure にアラートを拡張するスケジュールの設定を開始し、徐々に OMS ポータルに存在するすべてのアラートを Azure portal でも管理できるようにします。 
+Log Analytics のアラートを Azure Alerts に移すプロセスに、アラートの定義、クエリ、構成の変更は含まれません。 必要とされる唯一の変更として、Azure では、アクション グループを使用してすべてのアクションを実行します。 アクション グループが既にアラートに関連付けられている場合、それらは Azure に拡張されるときに含められます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日以降、Microsoft は Azure にアラートを自動拡張するプロセスを開始します。 この日にすべてのワークスペースとアラートが拡張されるわけではありません。今後数週間かけて段階的に自動的にアラートを拡張します。 そのため、2018 年 5 月 14 日にすぐに OMS ポータルのアラートが Azure に自動拡張されず、この間、ユーザーはまだ[アラートを手動拡張する](monitoring-alerts-extend-tool.md)場合があります。
+> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics で作成されたアラートを自動的に Azure Alerts に拡張します。 [アクション グループ](monitoring-action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](monitoring-alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2018 年 7 月 5日まで、これらの手順を使用できます。 
+> 
 
-Log Analytics ワークスペース内のアラートが Azure に拡張されるスケジュールが設定されても、それらのアラートは引き続き機能し、監視を邪魔することは**ありません**。 スケジュールが設定されると、アラートを一時的に変更/修正できなくなる場合があります。ただし、新しい Azure のアラートで短期間で作成できます。 この短い時間の間に OMS ポータルでアラートの編集や作成が行われた場合、Azure Log Analytics または Azure Alerts で続行するかを選択できます。
+Log Analytics ワークスペース内のアラートを Azure に拡張するスケジュールを設定しても、それらのアラートは引き続き機能し、構成を損なうことは決してありません。 スケジュールが設定されると、アラートを一時的に変更できなくなる場合がありますが、この期間中、引き続き新しい Azure Alerts を作成できます。 Operations Management Suite ポータルからアラートの編集や作成をしようとする場合は、Log Analytics ワークスペースから作成を続けるオプションが用意されています。 Azure Portal 内の Azure Alerts からそれらを作成することもできます。
 
- ![スケジュールが設定された期間に Azure にリダイレクトされたアラートのユーザー アクション](./media/monitor-alerts-extend/ScheduledDirection.png)
-
-> [!NOTE]
-> OMS ポータルから Azure へのアラートの拡張にコストは発生しません。また、クエリベースの Log Analytics のアラートでの Azure のアラート機能の使用は、[Azure Monitor の価格ポリシー](https://azure.microsoft.com/pricing/details/monitor/)に設定された制限や条件内の使用であれば、課金されません。  
-
-ユーザーはアラートを Azure で管理するよう自主的に切り替えることで、この日付の前でもアラートを拡張してそのメリットを享受できます。
-
-### <a name="how-to-voluntarily-extending-your-alerts"></a>アラートを自主的に拡張する方法
-OMS のユーザーが Azure のアラート機能に簡単に切り替えられるように、マイクロソフトではアラートの拡張に役立つツールを作成しています。 OMS ポータルのお客様は、OMS ポータルのウィザードを使うか、新しい API を使ってプログラムでアラートを Azure に拡張できます。 詳細については、[OMS ポータルおよび API を使用してアラートを Azure に拡張する方法](monitoring-alerts-extend-tool.md)に関するページを参照してください。
-
-
-## <a name="usage-after-extending-your-alerts"></a>アラート拡張後の使用について
-ここまでで述べたように、Microsoft Operation Management Suite で作成したアラートは Azure Alerts に拡張されます。その後、それらのアラートを Azure で管理できるようになります。 アラートは引き続き OMS ポータルの アラート設定セクションに表示されます。 以下の図に示します。
-
- ![Azure に拡張された後も OMS ポータルにアラートが表示される](./media/monitor-alerts-extend/PostExtendList.png)
-
-アラートの編集や作成などの操作を OMS ポータルで行うと、ユーザーは透過的に Azure Alerts に誘導されます。 
+ ![Log Analytics または Azure Alerts からアラートを作成するオプションのスクリーンショット](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> ユーザーが透過的に Azure にアクセスするときに、OMS でアラートのアクションを追加または編集する場合、[Azure Monitor およびアラートの使用に関して適切なアクセス許可](monitoring-roles-permissions-security.md)とユーザーが正しくマップされるようにします。
+> アラートを Log Analytics から Azure に拡張しても、アカウントに料金は発生しません。 クエリベースの Log Analytics アラートに対して Azure Alerts を使用しても、[Azure Monitor の価格ポリシー](https://azure.microsoft.com/pricing/details/monitor/)に記載されている制限や条件内の使用であれば課金されません。  
 
-アラートの作成は前と同じように引き続き既存の [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) および [Log Analytics リソース テンプレート](../monitoring/monitoring-solutions-resources-searches-alerts.md)から行います。ただし、Azure に拡張された後はスケジュールにアクション グループを関連付ける必要があります。
+
+### <a name="how-to-extend-your-alerts-voluntarily"></a>アラートを自主的に拡張する方法
+アラートを Azure Alerts に拡張するには、Operations Management Suite ポータルに用意されているウィザードを使用するか、API を使用してプログラムによって拡張します。 詳細については、[Operations Management Suite ポータルおよび API を使用してアラートを Azure に拡張する方法](monitoring-alerts-extend-tool.md)に関するページを参照してください。
+
+## <a name="experience-after-extending-your-alerts"></a>アラート拡張後のエクスペリエンス
+アラートは、Azure Alerts に拡張された後、前とまったく変わりなく、管理のために Operations Management Suite ポータルで引き続き使用できます。
+
+![アラートが一覧表示されている Operations Management Suite ポータルのスクリーンショット](./media/monitor-alerts-extend/PostExtendList.png)
+
+Operations Management Suite ポータルで、既存のアラートの編集や新しいアラートの作成を行おうとすると、自動的に Azure Alerts にリダイレクトされます。  
+
+> [!NOTE]
+> アラートを追加または編集する必要がある個人に割り当てられたアクセス許可が、Azure で正しく割り当てられていることを確認してください。 どのようなアクセス許可を付与する必要があるかを理解するには、[Azure Monitor と Azure Alerts を使用するためのアクセス許可](monitoring-roles-permissions-security.md)についての記事を参照してください。  
+> 
+
+アラートは引き続き、[Log Analytics API](../log-analytics/log-analytics-api-alerts.md) や [Log Analytics リソース テンプレート](../monitoring/monitoring-solutions-resources-searches-alerts.md)から作成できます。 これを行うときには、アクション グループを含める必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-* [OMS から Azure へのアラート拡張の開始する](monitoring-alerts-extend-tool.md)ためのツールについて学習する。
-* 新しい[Azure のアラート機能のエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
-* [Azure Alerts のログ アラート](monitor-alerts-unified-log.md)について学習する。
+* [Log Analytics から Azure へのアラート拡張の開始する](monitoring-alerts-extend-tool.md)ためのツールについて学習する。
+* [Azure Alerts のエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
+* [Azure Alerts でのログ アラート](monitor-alerts-unified-log.md)の作成方法について学習します。
