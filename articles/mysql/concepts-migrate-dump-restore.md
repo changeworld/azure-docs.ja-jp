@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/02/2018
+ms.openlocfilehash: c801426ad354a165ac749333ddd4671c13536edb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265845"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -44,13 +45,14 @@ MySQL Workbench、mysqldump、Toad、Navicat などの一般的なユーティ�
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 パフォーマンスを最適化するには、大規模なデータベースをダンプするときに、次の考慮事項に注意してください。
 -   データベースをダンプするときに、mysqldump で `exclude-triggers` オプションを使用します。 データの復元中にトリガー コマンドが実行されないように、ダンプ ファイルからトリガーを除外します。 
--   データをダンプする前に、トランザクション分離モードを REPEATABLE READ に設定し、START TRANSACTION SQL ステートメントをサーバーに送信するには `single-transaction` を使用します。 1 つのトランザクション内の多数のテーブルをダンプすると、復元中に余分なストレージが使用されます。 LOCK TABLES により、保留中のトランザクションが暗黙的にコミットされるため、`single-transaction` オプションと `lock-tables` オプションは相互に排他的です。大きなテーブルをダンプするには、`single-transaction` オプションと `quick` オプションを組み合わせてください。 
+-   データをダンプする前に、トランザクション分離モードを REPEATABLE READ に設定し、START TRANSACTION SQL ステートメントをサーバーに送信するには `single-transaction` を使用します。 1 つのトランザクション内の多数のテーブルをダンプすると、復元中に余分なストレージが使用されます。 LOCK TABLES により、保留中のトランザクションが暗黙的にコミットされるため、`single-transaction` オプションと `lock-tables` オプションは相互に排他的です。 大きなテーブルをダンプするには、`single-transaction` オプションと `quick` オプションを組み合わせてください。 
 -   複数の値リストを含む複数行の構文 `extended-insert` を使用します。 その結果、ダンプ ファイルが小さくなり、ファイルの再読み込み時に挿入が高速化されます。
 -  データベースをダンプするときに、mysqldump で `order-by-primary` オプションを使用します。このオプションを使用すると、主キー順にデータがスクリプト化されます。
 -   データをダンプするときに、mysqldump で `disable-keys` オプションを使用して、読み込み前に外部キー制約を無効にします。 外部キーのチェックを無効にすると、パフォーマンスが向上します。 読み込み後に制約を有効にし、データを検証して参照整合性を確認します。
 -   パーティション テーブルを適宜使用します。
 -   データを並列で読み込みます。 リソースの上限に達するような過剰な並列処理を避け、Azure Portal で使用可能なメトリックを使用してリソースを監視します。 
 -   データベースをダンプするときに、mysqlpump で `defer-table-indexes` オプションを使用します。このオプションを使用すると、テーブル データが読み込まれてからインデックスが作成されます。
+-   バックアップ ファイルを Azure blob/ストアにコピーし、そこから復元します。これは、インターネット経由で復元するよりもかなり高速であるはずです。
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>mysqldump を使用したコマンド ラインからのバックアップ ファイルの作成
 ローカルのオンプレミス サーバーまたは仮想マシンで既存の MySQL データベースをバックアップするには、次のコマンドを実行します。 
@@ -74,7 +76,6 @@ $ mysqldump -u root -p testdb > testdb_backup.sql
 ```bash
 $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 ```
-
 複数のデータベースを一度にバックアップするには、--database スイッチを使用して、データベース名をスペースで区切って指定します。 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
@@ -108,21 +109,22 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="export-using-phpmyadmin"></a>PHPMyAdmin を使用したエクスポート
 エクスポートには一般的なツールである phpMyAdmin を使用できます。このツールは、既にローカル環境にインストールされている可能性があります。 PHPMyAdmin を使用して MySQL データベースをエクスポートするには、次の操作を行います。
-- phpMyAdmin を開きます。
-- データベースを選択します。 左側の一覧でデータベース名をクリックします。 
-- **[エクスポート]** リンクをクリックします。 新しいページが表示され、データベースのダンプが表示されます。
-- [エクスポート] 領域で **[すべて選択]** リンクをクリックして、データベースのテーブルを選択します。 
-- [SQL options]\(SQL オプション\) 領域で、適切なオプションをクリックします。 
-- **[名前を付けて保存]** ファイル オプションと、対応する圧縮オプションをクリックし、**[実行]** をクリックします。 ファイルをローカルに保存するよう求めるダイアログ ボックスが表示されます。
+1. phpMyAdmin を開きます。
+2. データベースを選択します。 左側の一覧でデータベース名をクリックします。 
+3. **[エクスポート]** リンクをクリックします。 新しいページが表示され、データベースのダンプが表示されます。
+4. [エクスポート] 領域で **[すべて選択]** リンクをクリックして、データベースのテーブルを選択します。 
+5. [SQL options]\(SQL オプション\) 領域で、適切なオプションをクリックします。 
+6. **[名前を付けて保存]** ファイル オプションと、対応する圧縮オプションをクリックし、**[実行]** をクリックします。 ファイルをローカルに保存するよう求めるダイアログ ボックスが表示されます。
 
 ## <a name="import-using-phpmyadmin"></a>PHPMyAdmin を使用したインポート
 データベースのインポート操作は、エクスポートと似ています。 次の操作を実行してください。
-- phpMyAdmin を開きます。 
-- phpMyAdmin セットアップ ページで、**[追加]** をクリックして Azure Database for MySQL サーバーを追加します。 接続の詳細とログイン情報を入力します。
-- データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。**[ドロップ]** を選択して既存のテーブルを削除します。 
-- **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
-- **参照**ボタンを使用して、データベース ファイルを検索します。 
-- **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
+1. phpMyAdmin を開きます。 
+2. phpMyAdmin セットアップ ページで、**[追加]** をクリックして Azure Database for MySQL サーバーを追加します。 接続の詳細とログイン情報を入力します。
+3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。**[ドロップ]** を選択して既存のテーブルを削除します。 
+4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
+5. **参照**ボタンを使用して、データベース ファイルを検索します。 
+6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Database for MySQL にアプリケーションを接続する](./howto-connection-string.md)
+- [Azure Database for MySQL にアプリケーションを接続します](./howto-connection-string.md)。
+- Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](http://aka.ms/datamigration)」をご覧ください。

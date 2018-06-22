@@ -1,20 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: 監査ログのサンプルと定義'
-description: Azure AD B2C 監査ログへのアクセスに関するガイドとサンプル
+title: Azure Active Directory B2C の監査ログのサンプルと定義 | Microsoft Docs
+description: Azure AD B2C 監査ログへのアクセスに関するガイドとサンプル。
 services: active-directory-b2c
-author: sromeroz
-manager: sasubram
-ms.author: sezambra
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
-ms.openlocfilehash: 8cc48853b0677230c4e19df4f0ecd93ce88b119d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 4828bf2f0faa596c8222c3a36dc3d38ec1b3bd1a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206453"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709820"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -25,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 ##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>監査ログの B2C カテゴリで使用できるアクティビティの概要
 監査ログの **B2C** カテゴリには、以下の種類のアクティビティが含まれています。
-|アクティビティの種類 |[説明]  |
+|アクティビティの種類 |説明  |
 |---------|---------|
 |承認 |B2C リソースにアクセスするユーザー (例: B2C ポリシーの一覧にアクセスする管理者) の承認に関するアクティビティ         |
 |Directory |管理者が Azure Portal を使用してサインインするときに取得されるディレクトリ属性に関連するアクティビティ |

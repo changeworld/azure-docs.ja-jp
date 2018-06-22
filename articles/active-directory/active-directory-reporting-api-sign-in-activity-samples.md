@@ -3,25 +3,25 @@ title: Azure Active Directory サインイン アクティビティ レポート
 description: Azure Active Directory Reporting API の概要について説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 466755d7d1cc7fbf4006826ac849b74ba306bae9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 52d49770014a5fb6a5eec644868e702c8a8d9ef3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698579"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224900"
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory サインイン アクティビティ レポート API のサンプル
 この記事は Azure Active Directory のレポート API に関する記事のコレクションの一部です。  

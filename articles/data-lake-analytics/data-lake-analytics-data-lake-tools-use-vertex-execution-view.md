@@ -1,31 +1,25 @@
 ---
-title: "Data Lake Tools for Visual Studio での頂点実行ビューの使用 | Microsoft Docs"
-description: "頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。"
+title: Data Lake Tools for Visual Studio での頂点実行ビューの使用
+description: この記事では、頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/13/2016
+author: mumian
 ms.author: jgao
-ms.openlocfilehash: b788e7bc8ded86ebd49cc0be73e5b4e1bcbeaba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
+ms.topic: conceptual
+ms.date: 10/13/2016
+ms.openlocfilehash: af15bb9fd1131f598dc87f13c4af481b63d023e3
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735443"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
 頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-Data Lake Tools for Visual Studio を使用した U-SQL スクリプトの開発に関する基本的な知識が必要です。  「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 
 ## <a name="open-the-vertex-execution-view"></a>頂点実行ビューを開く
 Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下の **[頂点実行ビュー]** をクリックします。 最初にプロファイルを読み込むよう求められる場合があります。ネットワーク接続によっては、この処理に時間がかかることがあります。
@@ -57,7 +51,7 @@ Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下�
 * [Version Created Time (バージョンの作成時刻)]。
 * [Process Create Start Time (プロセスの作成開始時刻)]/[Process Queued Time (プロセスがキューに挿入された時刻)]/[Process Start Time (プロセス開始時刻)]/[Process Complete Time (プロセス完了時刻)]: 頂点プロセスの作成が開始された時刻、頂点プロセスのキューへの挿入が開始された時刻、特定の頂点プロセスが開始された時刻、および特定の頂点が完了した時刻。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。

@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 06/11/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 4c3b88d9f522e28189bcb746905d35dced9d31cc
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292543"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -49,6 +50,8 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 - [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-enable.md)必要があります。
 
 - このシナリオでは、エンド ユーザーが、RD Web ページを通じて接続する Windows 7 または Windows 10 上の Internet Explorer にアクセスすることを前提としています。 その他のオペレーティング システムに対応する必要がある場合は、「[その他のクライアント構成のサポート](#support-for-other-client-configurations)」をご覧ください。
+
+- RD Web を発行するときは、内部 FQDN と外部 FQDN を同じにすることをお勧めします。 内部 FQDN と外部 FQDN が異なる場合は、クライアントが無効なリンクを受け取るのを避けるため、要求ヘッダー変換を無効にする必要があります。 
 
 - Internet Explorer で RDS ActiveX アドオンを有効にしてください。
 

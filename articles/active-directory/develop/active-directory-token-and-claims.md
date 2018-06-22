@@ -17,12 +17,12 @@ ms.date: 05/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157923"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801866"
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。 
@@ -53,10 +53,10 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 #### <a name="claims-in-idtokens"></a>id_token 内の要求
 > [!div class="mx-codeBreakAll"]
-| JWT の要求 | Name | [説明] |
+| JWT の要求 | Name | 説明 |
 | --- | --- | --- |
 | `aud` |対象ユーザー |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 <br><br> **SAML 値の例**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 値の例**: <br> `"aud":"https://contoso.com"` |
-| `appidacr` |アプリケーションの認証コンテキスト クラスの参照 |クライアントが認証された方法を示します。 パブリック クライアントの場合、値は 0 です。 クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。 <br><br> **JWT 値の例**: <br> `"appidacr": "0"` |
+| `appidacr` |アプリケーションの認証コンテキスト クラスの参照 |クライアントが認証された方法を示します。 パブリック クライアントの場合、値は 0 です。 クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。 クライアント証明書が認証に使用される場合、値は 2 です。 <br><br> **JWT 値の例**: <br> `"appidacr": "0"` |
 | `acr` |認証コンテキスト クラスの参照 |アプリケーションの認証コンテキスト クラスの参照要求のクライアントとは異なり、サブジェクトが認証された方法を示します。 値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。 <br><br> **JWT 値の例**: <br> `"acr": "0"` |
 | 認証のインスタント |認証が行われた日時を記録します。 <br><br> **SAML 値の例**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |認証方法 |トークンのサブジェクトが認証された方法を示します。 <br><br> **SAML 値の例**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT 値の例**: `“amr”: ["pwd"]` |
@@ -153,21 +153,31 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ## <a name="token-revocation"></a>トークンの失効
 
 更新トークンは、いつでもさまざまな理由で無効になる可能性があります。 これらはタイムアウトと失効の 2 つに大きく分けることができます。 
-* トークンのタイムアウト
-  * MaxInactiveTime: 更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
-  * MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定された場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。 
-  * 次に例を示します。
-    * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。 ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。 
-    * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。 ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。 
-* 無効化
-  * 自発的なパスワードの変更: ユーザーが自分のパスワードを変更した場合、トークンの取得方法に応じて、いくつかのアプリケーションで再認証が必要になります。 例外については下の「注意」をご覧ください。 
-  * 不本意なパスワードの変更: 管理者がユーザーのパスワード変更を強制した場合、またはパスワードをリセットした場合、そのパスワードを使用して取得されたユーザーのトークンは無効になります。 例外については下の「注意」をご覧ください。 
-  * セキュリティ違反: セキュリティ違反 (たとえば、パスワードのオンプレミス ストアの侵害) が発生した場合、管理者は現在発行されている更新トークンすべてを無効化できます。 これによりすべてのユーザーが強制的に再認証することになります。 
+
+**トークンのタイムアウト**
+
+* MaxInactiveTime: 更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
+* MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定された場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。 
+* 次に例を示します。
+  * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。 ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。 
+  * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。 ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。 
+
+**取り消し**
+
+|   | パスワードに基づくクッキー | パスワードに基づくトークン | パスワードに基づかないクッキー | パスワードに基づかないトークン | 機密のクライアントのトークン| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|パスワードが期限切れ| 存続|存続|存続|存続|存続|
+|ユーザーによるパスワードの変更| 取り消し | 取り消し | 存続|存続|存続|
+|ユーザーがSSPRである|取り消し | 取り消し | 存続|存続|存続|
+|管理者によるパスワードのリセット|取り消し | 取り消し | 存続|存続|存続|
+|ユーザーが [PowerShellによって、](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken)更新トークンを無効にする | 取り消し | 取り消し |取り消し | 取り消し |取り消し | 取り消し |
+|管理者が [PowerShellによって、](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken)テナントのすべての更新トークンを無効にする | 取り消し | 取り消し |取り消し | 取り消し |取り消し | 取り消し |
+|Web 上の[シングル サインアウト](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) | 取り消し | 存続 |取り消し | 存続 |存続 |存続 |
 
 > [!NOTE]
->トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。 これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
+> ｢パスワード基づかない｣ログインは、ユーザーがそれを得るために、パスワードをタイプしなかった場合です。  たとえば、Windows Hello FIDO key または PIN を使用して、顔を用いる場合です。 
 >
-> 社外秘のクライアントはパスワード変更取り消しの影響を受けません。 パスワード変更前に更新トークンが発行された社外秘のクライアントは、その更新トークンを引き続き使用して他のトークンを取得できます。 
+> 既知の問題は、Windows Primary 更新トークンに存在します。  PRT が、パスワードを使用して取得され、ユーザーが Hello を介して、ログインする場合、この PRT の発信元は変更されません。ユーザーが自分のパスワードが変更した場合、は取り消されます。 
 
 ## <a name="sample-tokens"></a>トークンのサンプル
 

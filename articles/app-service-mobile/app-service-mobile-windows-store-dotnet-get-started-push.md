@@ -1,11 +1,11 @@
 ---
-title: "ユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を追加する | Microsoft Docs"
-description: "Azure App Service Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。"
+title: ユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を追加する | Microsoft Docs
+description: Azure App Service Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: d51fa215ace8b33acb5d36b98e9a1a86e3296a65
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9e3ed6d19b0f830923745ad0263c5c4f920c0f51
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597860"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -32,18 +33,18 @@ ms.lasthandoff: 01/04/2018
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>アプリケーションをプッシュ通知に登録する
-Windows ストアにアプリを送信した後、サーバー プロジェクトを Windows Notification Services (WNS) と統合してプッシュ通知を送信するように構成します。
+Microsoft ストアにアプリケーションを出する必要があります。その後、サーバープロジェクトを Windows Notification Services (WNS) に統合させて、プッシュを送ります。
 
 1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**  >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
 
-    ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
-3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。  
+3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
 4. [[Windows デベロッパー センター]](https://dev.windows.com/en-us/overview) に移動し、Microsoft アカウントでサインインして、**[マイ アプリ]** で新しいアプリ登録をクリックします。次に、**[サービス]**  >  **[プッシュ通知]** の順に展開します。
 5. **[プッシュ通知]** ページで、**[Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
 6. 登録ページで、**[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
 
-    ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。 **[アプリケーション ID]** は、Microsoft アカウント認証を構成するためにシークレットと共に使用されます。
@@ -185,17 +186,13 @@ Windows ストアにアプリを送信した後、サーバー プロジェク�
 ## <a id="more"></a>次のステップ
 プッシュ通知についてさらに学習します。
 
-* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
-  テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。 この記事ではテンプレートの登録方法について説明しています。
-* [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。 このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
+* [Azure モーバイルアプリのために管理対象クライアントを利用する方法](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)テンプレートは、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できるようにします。 この記事ではテンプレートの登録方法について説明しています。
+* [プッシュ通知の発行の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。 このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
 
 次のチュートリアルのいずれかに進むことを検討してください。
 
-* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
-* [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
+* [アプリに認証を追加する](app-service-mobile-windows-store-dotnet-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法を学習します。
+* [アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md): Mobile App バックエンドを使用して、アプリにオフライン サポートを追加する方法について学びます。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 
 <!-- Anchors. -->
 
