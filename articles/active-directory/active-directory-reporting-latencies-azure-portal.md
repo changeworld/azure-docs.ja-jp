@@ -3,25 +3,25 @@ title: Azure Active Directory レポートの待機時間 | Microsoft ドキュ�
 description: Azure Portal にレポート イベントが表示されるのにかかる時間について学習します
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 12/15/2017
-ms.author: rolyon;dhanyahk
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f27efab05dc8580735c58eed20e9b48d8003dd17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eda894216c624956aab6efa74057e15ce9a1b3ff
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589782"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230524"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 

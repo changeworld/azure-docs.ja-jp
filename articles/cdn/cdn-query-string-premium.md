@@ -4,7 +4,7 @@ description: Azure CDN クエリ文字列のキャッシュにより、Web 要�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
 ms.service: cdn
@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mazha
-ms.openlocfilehash: a1ef5f3e502b5383343dbec2c427d36054a3edc4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 3777689af72f580645826a1ca4e31ca84bd65dab
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260836"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル
 > [!div class="op_single_selector"]
 > * [Standard レベル](cdn-query-string.md)
 > * [Premium レベル](cdn-query-string-premium.md)
-> 
 > 
 
 ## <a name="overview"></a>概要
@@ -63,6 +63,6 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
 3. クエリ文字列モードを選択し、**[更新]** をクリックします。
 
 > [!IMPORTANT]
-> 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。 **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。
+> 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。 通常、反映は 10 分で完了します。
  
 

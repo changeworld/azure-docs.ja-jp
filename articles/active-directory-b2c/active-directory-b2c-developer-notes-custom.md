@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーの使用に関する開発者向けのメモ | Microsoft Docs'
-description: カスタム ポリシーで Azure AD B2C を構成および管理する開発者向けのメモ
+title: Azure Active Directory B2C でのカスタム ポリシーの使用に関する開発者向けのメモ | Microsoft Docs
+description: カスタム ポリシーで Azure AD B2C を構成および管理する開発者向けのメモ。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: davidmu
-ms.openlocfilehash: cf76f158d7e87a2f2f902551fdc751b295b6915b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ce323972dcdbf673311b407f427bc452fbe6dc3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709728"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C カスタム ポリシー パブリック プレビューのリリース ノート
 カスタム ポリシー機能セットは、すべての Azure Active Directory B2C (Azure AD B2C) のユーザーがパブリック プレビューで評価できるようになりました。 この機能セットは、最も複雑な ID ソリューションを構築する上級 ID 開発者を対象としています。  
@@ -111,7 +111,7 @@ ms.lasthandoff: 03/23/2018
 | クエリ文字列パラメーター id_token_hint | ○ |  |  |  |
 | クエリ文字列パラメーター domain_hint |  | ○ |  | 要求として使用可能、IDP に渡すことができる |
 | クエリ文字列パラメーター login_hint |  | ○ |  | 要求として使用可能、IDP に渡すことができる |
-| client_assertion で JSON を UserJourney に挿入する | ○ |  |  | 非推奨になる予定です |
+| client_assertion で JSON を UserJourney に挿入する | ○ |  |  | 非推奨となる予定です |
 | id_token_hint として JSON を UserJourney に挿入する | ○ |  |  | JSON を渡す順方向の転送方法 |
 
 

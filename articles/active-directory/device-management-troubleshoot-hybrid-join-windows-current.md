@@ -1,12 +1,13 @@
 ---
-title: "Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング | Microsoft Docs"
-description: "Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング。"
+title: Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング | Microsoft Docs
+description: Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,22 +15,23 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3b98d31efcdbd61cf12e2c905f200c1e54f68f69
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40303d72f4facc6cd8c762f2542c48df3e370c0a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713730"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
-このトピックは、次のクライアントに適用されます。
+この記事は、次のクライアントに適用されます。
 
 -   Windows 10
 -   Windows Server 2016
 
 その他の Windows クライアントについては、「[ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-legacy.md)」を参照してください。
 
-このトピックは、[ハイブリッド Azure Active Directory 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md)が済んでいて、次のシナリオに対応していることが前提となります。
+この記事は、[ハイブリッド Azure Active Directory 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md)が済んでいて、次のシナリオに対応していることが前提となります。
 
 - デバイス ベースの条件付きアクセス
 
@@ -123,6 +125,6 @@ Windows 10 および Windows Server 2016 でハイブリッド Azure Active Dire
 
 - HTTP プロキシが見つからない
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ご不明な点がある場合は、[デバイス管理の FAQ](device-management-faq.md) をご覧ください。 

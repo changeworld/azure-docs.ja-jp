@@ -8,41 +8,33 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757418"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
 次のセクションでは、データベース サービス容量と機能の制限について説明します。
 
-## <a name="pricing-tier-maximums"></a>価格レベルの上限
-Azure Database for PostgreSQL では、サーバーを作成するときに複数の価格レベルから選ぶことができます。 詳しくは、「[Azure Database for PostgreSQL の価格レベル](concepts-pricing-tiers.md)」をご覧ください。  
+## <a name="maximum-connections"></a>最大接続数
+価格レベルと仮想コアごとの最大接続数は次のとおりです。 
 
-各価格レベルの接続数、コンピューティング ユニット数、およびストレージ数の最大値は次のとおりです。 
-
-|価格レベル| コンピューティング世代| 仮想コア数| 最大接続数 |
-|---|---|---|---|
-|Basic| Gen 4| 1| 50 |
-|Basic| Gen 4| 2| 100 |
-|Basic| Gen 5| 1| 50 |
-|Basic| Gen 5| 2| 100 |
-|汎用| Gen 4| 2| 150|
-|汎用| Gen 4| 4| 250|
-|汎用| Gen 4| 8| 480|
-|汎用| Gen 4| 16| 950|
-|汎用| Gen 4| 32| 1500|
-|汎用| Gen 5| 2| 150|
-|汎用| Gen 5| 4| 250|
-|汎用| Gen 5| 8| 480|
-|汎用| Gen 5| 16| 950|
-|汎用| Gen 5| 32| 1500|
-|メモリ最適化| Gen 5| 2| 150|
-|メモリ最適化| Gen 5| 4| 250|
-|メモリ最適化| Gen 5| 8| 480|
-|メモリ最適化| Gen 5| 16| 950|
+|**価格レベル**| **仮想コア数**| **最大接続数** |
+|---|---|---|
+|Basic| 1| 50 |
+|Basic| 2| 100 |
+|汎用| 2| 150|
+|汎用| 4| 250|
+|汎用| 8| 480|
+|汎用| 16| 950|
+|汎用| 32| 1500|
+|メモリ最適化| 2| 150|
+|メモリ最適化| 4| 250|
+|メモリ最適化| 8| 480|
+|メモリ最適化| 16| 950|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already

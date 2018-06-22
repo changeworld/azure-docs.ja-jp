@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 74bc28619996b7cd52d2280d4d8b6288aa7c904f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 280b1340c094a89ad5980178947045b707128807
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304309"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595021"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>チュートリアル: Linux VM マネージド サービス ID (MSI) を使用して Azure Key Vault にアクセスする 
 
@@ -135,12 +135,12 @@ MSI を使用すると、Azure Active Directory 認証をサポートするリ�
     
 Key Vault からシークレットを取得した後は、名前とパスワードを必要とするサービスへの認証にそのシークレットを使用できます。
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="related-content"></a>関連コンテンツ
+このチュートリアルでは、Linux 仮想マシン上のマネージド サービス ID を使用し、Azure Key Vault にアクセスする方法について説明します。  Azure Key Vault の詳細については、以下を参照してください。
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
+> [!div class="nextstepaction"]
+>[Azure Key Vault](/azure/key-vault/key-vault-whatis)
 
 
 

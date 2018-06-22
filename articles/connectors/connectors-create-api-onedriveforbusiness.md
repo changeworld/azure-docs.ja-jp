@@ -1,25 +1,22 @@
 ---
-title: OneDrive for Business | Microsoft Docs
-description: Azure App Service を使用してロジック アプリを作成します。 OneDrive for Business に接続してファイルを管理します。 ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: OneDrive for Business に接続する - Azure Logic Apps | Microsoft Docs
+description: OneDrive for Business REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: cf9484e9-7a20-4de0-93c8-0fa132221f2b
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: a572d3d858bcaed817198420db7f2e09732b2366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 63cb02c52b5def12675ccca4f2cd292a8ad4bb66
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295644"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business コネクタの使用
 OneDrive for Business に接続してファイルを管理します。 ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
@@ -29,7 +26,7 @@ OneDrive for Business に接続してファイルを管理します。 ファイ
 ## <a name="create-a-connection-to-onedrive-for-business"></a>OneDrive for Business への接続の作成
 OneDrive for Business を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-| プロパティ | 必須 | [説明] |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | トークン |[はい] |OneDrive for Business の資格情報を提供します |
 

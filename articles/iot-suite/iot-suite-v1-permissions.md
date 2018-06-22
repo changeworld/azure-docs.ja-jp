@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite と Azure Active Directory | Microsoft Docs"
-description: "Azure IoT Suite が Azure Active Directory を使用してアクセス許可を管理する方法を説明します。"
-services: 
+title: Azure IoT Suite と Azure Active Directory | Microsoft Docs
+description: Azure IoT Suite が Azure Active Directory を使用してアクセス許可を管理する方法を説明します。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: a032fc4332c697748e658ad2615ed5b0915c56c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35302803"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com サイトでのアクセス許可
 
@@ -92,7 +93,7 @@ Azure 管理者ロールの詳細については、[Azure 共同管理者、サ�
 ユーザーのロールを変更できるのは、AAD グローバル管理者だけです。
 
 1. [Azure Portal][lnk-portal] にアクセスします。
-2. **[Azure Active Directory]**を選択します。
+2. **[Azure Active Directory]** を選択します。
 3. ソリューションをプロビジョニングしたときに azureiotsuite.com で選択したディレクトリを必ず使用します。 サブスクリプションに複数のディレクトリが関連付けられている場合は、ポータルの右上にあるアカウント名をクリックすることで、ディレクトリを切り替えることができます。
 4. **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]** の順にクリックします。
 4. **任意の**状態の**すべてのアプリケーション**を表示します。 構成済みのソリューションの名前でアプリケーションを検索します。
@@ -113,10 +114,10 @@ Azure 管理者ロールの詳細については、[Azure 共同管理者、サ�
 
 ### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>リモート監視構成済みソリューションおよびアプリケーションが割り当てられている AAD テナントを切り替えるにはどうすればよいですか
 
-<https://github.com/Azure/azure-iot-remote-monitoring> からクラウドのデプロイを実行し、新しく作成された AAD テナントで再デプロイできます。 新しい AAD テナントを作成したユーザーは既定でグローバル管理者になるので、ユーザーを追加し、ユーザーにロールを割り当てることができます。
+<https://github.com/Azure/azure-iot-remote-monitoring> からクラウドのデプロイを実行でき、新しく作成した AAD テナントで再デプロイできます。 新しい AAD テナントを作成したユーザーは既定でグローバル管理者になるので、ユーザーを追加し、ユーザーにロールを割り当てることができます。
 
 1. [Azure ポータル][lnk-portal]で AAD ディレクトリを作成します。
-2. <https://github.com/Azure/azure-iot-remote-monitoring> に移動します。
+2. <https://github.com/Azure/azure-iot-remote-monitoring> にアクセスします。
 3. `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` を実行します (例: `build.cmd cloud debug myRMSolution`)
 4. プロンプトが表示されたら、古いテナントの代わりに新しく作成したテナントの **tenantid** を設定します。
 
@@ -149,7 +150,7 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

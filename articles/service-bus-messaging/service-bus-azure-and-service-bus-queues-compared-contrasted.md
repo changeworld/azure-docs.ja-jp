@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0b9a79919a63056bbc17e44ef0da3697001d227f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421707"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802358"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -48,7 +48,6 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 * キューをポーリングせずにメッセージを受信できる必要がある場合。 Service Bus では、Service Bus でサポートする TCP ベースのプロトコルを使用し、長いポーリングの受信操作を使用することによってこれを実現できます。
 * キューによるメッセージの配信が先入れ先出し (FIFO) の順序で行われることが保証される必要がある場合。
-* Azure と Windows Server (プライベート クラウド) 上で対称的なエクスペリエンスが必要な場合。 詳細については、「[Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx)」をご覧ください。
 * 自動重複検出をサポートする必要がある場合。
 * アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、自身の [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
 * 複数のメッセージをキューに送信したりキューから受信したりする際にトランザクション動作と原子性が必要な場合。
@@ -139,7 +138,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 ### <a name="additional-information"></a>追加情報
 * Service Bus では、キューのサイズが制限されます。 キューの最大サイズは、キューの作成時に 1 ～ 80 GB の値を指定できます。 キューの作成時に設定したキュー サイズの値に達すると、その後の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 Service Bus でのクォータの詳細情報については、「[Service Bus のクォータ](service-bus-quotas.md)」をご覧ください。
-* [Standard レベル](service-bus-premium-messaging.md)では、Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 Premium レベルでは、サイズが最大 80 GB のキューを作成できます。 Standard レベルでは、パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたり 16 個のパーティションを作成できます。 そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] の各エントリで確認できます。 Premium レベルでは、キューごとにパーティションが 2 つだけ作成されます。
+* パーティション分割は [Premium レベル](service-bus-premium-messaging.md)ではサポートされていません。 Standard レベルでは、Service Bus キューを 1 GB、2 GB、3 GB、4 GB、5 GB のサイズで作成できます (既定値は 1 GB)。 Standard レベルでは、パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたり 16 個のパーティションを作成できます。 そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] の各エントリで確認できます。
 * Storage キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。 メッセージを **Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
 * Service Bus キューでは、キューに格納される各メッセージはヘッダーと本文の 2 つの部分で構成されます。 メッセージの合計サイズが、サービス レベルでサポートされる最大メッセージ サイズを超えることはできません。
 * クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対する同時接続の最大数が 100 に制限されます。 この数は送信側と受信側で共有されます。 このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。 この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central アプリケーションでデバイス セットを使用する | Microsoft Docs
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイス セットを使用する方法。
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932c8315b5af22c3adf18de50cf03deaf6b2a53e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpfr
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201151"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261680"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイス セットを使用する
 
@@ -86,10 +86,40 @@ ms.locfileid: "34201151"
 
     > [!NOTE]
     > 複数のイメージ、リンク、およびグリッドを追加することができます。
-
-1. **[Design Mode] (デザイン モード)** をオフにします。
+  
+    1. **[Design Mode] (デザイン モード)** をオフにします。
 
     ![[Design Mode] (デザイン モード) オフ](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>デバイス セット ダッシュボードでの場所マップの構成 
+場所マップを追加して、マップでデバイス セットの場所を視覚化することができます。 
+
+デバイス セット ダッシュボードに場所マップを追加するには、デバイス テンプレートで場所プロパティを構成している必要があります (「[Create a Location Property powered by Azure Maps](howto-set-up-template.md)」 (Azure Maps を利用する場所プロパティを作成する) を参照)。
+
+
+1. デバイス セット ダッシュボードで、ライブラリからマップを選択します。 
+
+    ![デバイス セット ダッシュボードのマップ](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. タイトルを付け、以前にデバイス プロパティの一部として構成した場所プロパティを選択します。
+
+    ![ダッシュボード マップの構成](media/howto-use-device-sets/LocationMaps2.png)
+
+3. 保存すると、デバイス セットにデバイスの場所を示すマップ タイルが表示されます。
+
+    ![ダッシュボード マップの保存](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。
+
+    ![ダッシュボード マップのオペレーター ビュー](media/howto-use-device-sets/LocationMaps4.png)
+
+    マップは任意のサイズに変更することができます。
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>デバイス セットのリストの構成
 

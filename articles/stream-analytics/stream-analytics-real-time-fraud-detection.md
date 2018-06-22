@@ -9,13 +9,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 1ebbdb22698ec1eab76b6b6b504fe27a6f0b28bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824763"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用: リアルタイムの不正行為の検出
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
 
 このチュートリアルでは、Azure Stream Analytics の使い方について詳しく説明します。 学習内容は次のとおりです。 
 
@@ -131,12 +132,12 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 1.  コマンド ウィンドウを開き、TelcoGenerator アプリを解凍したフォルダーに移動します。
 2.  次のコマンドを入力します。
 
-        telcodatagen.exe 1000 .2 2
+        telcodatagen.exe 1000 0.2 2
 
     パラメーターは、次のとおりです。 
 
     * 1 時間あたりの CDR の数。 
-    * SIM カード不正の確率: アプリが不正な呼び出しをシミュレートする頻度 (すべての呼び出しに対するパーセンテージ)。 値 .2 は、呼び出しレコードの約 20% が不正に見えることを意味します。
+    * SIM カード不正の確率: アプリが不正な呼び出しをシミュレートする頻度 (すべての呼び出しに対するパーセンテージ)。 値 0.2 は、呼び出しレコードの約 20% が不正に見えることを意味します。
     * 継続時間。 アプリを実行する時間数。 コマンドラインで Ctrl + C キーを押して、いつでもアプリを停止できます。
 
     数秒後に、アプリはイベント ハブに送信する呼び出しレコードを画面に表示し始めます。
@@ -241,7 +242,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
     このクエリで、`CallStream` は入力を作成するときに指定した別名です。 別の別名を使った場合は、代わりにその名前を使います。
 
-2. **[Test]**をクリックします。
+2. **[Test]** をクリックします。
 
     Stream Analytics ジョブは、サンプル データに対してクエリを実行し、ウィンドウの下部に出力を表示します。 これは、イベント ハブと Streaming Analytics ジョブが正しく構成されていることを示します  (前述のように、クエリがデータを書き込むことができる出力シンクを後で作成します)。
 
@@ -365,7 +366,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 3. **[ジョブの開始]** ウィンドウの [ジョブ出力の開始時刻] で、**[現在]** を選択します。 
 
-4. **[開始]**をクリックします。 
+4. **[開始]** をクリックします。 
 
     ![Stream Analytics ジョブの [ジョブの開始] ウィンドウ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
 

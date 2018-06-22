@@ -356,6 +356,8 @@
           href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
+        - name: OMS で監視する
+          href: data-factory-monitor-oms.md
         - name: SDK を使用した監視
           href: monitor-programmatically.md
         - name: 統合ランタイムの監視

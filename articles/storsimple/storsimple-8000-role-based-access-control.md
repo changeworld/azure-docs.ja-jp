@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 412098ad6b8a6620b165b6cecaa0d0b3ee05f63e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652071"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/19/2018
 
 RBAC は、ロールに基づいて割り当てることができます。 ロールは、環境内で利用できるリソースに基づく特定のアクセス許可レベルを保証します。 StorSimple ユーザーが選択できるロールには、組み込みまたはカスタムの 2 種類があります。
 
-* **組み込みのロール** - 組み込みのロールは、所有者、共同作成者、閲覧者、またはユーザー アクセス管理者が可能です。 詳細については、「[Azure ロールベースのアクセス制御の組み込みのロール](../role-based-access-control/overview.md#built-in-roles)」を参照してください。
+* **組み込みのロール** - 組み込みのロールは、所有者、共同作成者、閲覧者、またはユーザー アクセス管理者が可能です。 詳細については、「[Azure ロールベースのアクセス制御の組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 * **カスタム ロール** - 組み込みのロールがニーズに適合しない場合は、StorSimple 用のカスタム RBAC ロールを作成できます。 カスタム RBAC ロールを作成するには、組み込みのロールから始めてそれを編集した後、環境にインポートします。 ロールのダウンロードとアップロードは Azure PowerShell または Azure CLI を使用して管理されます。 詳細については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md)」を参照してください。
 
@@ -108,7 +109,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 ![RBAC ロールの表示](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-詳細については、[PowerShell を使用したカスタム RBAC ロールの作成](../role-based-access-control/role-assignments-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)に関する記事を参照してください。
+詳しくは、[カスタム ロール](../role-based-access-control/custom-roles.md)に関するページをご覧ください。
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Powershell によるカスタム ロールの作成のサンプル出力
 
@@ -153,7 +154,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>カスタム ロールにユーザーを追加する
 
-アクセス権は、リソース内、リソース グループ内、またはサブスクリプション内から付与します。これは、ロール割り当てのスコープになります。 アクセス権を付与するときは、親ノードに付与されたアクセス権は子ノードに継承されることを忘れないでください。 詳細については、「[リソースの階層とアクセスの継承](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance)」を参照してください。
+アクセス権は、リソース内、リソース グループ内、またはサブスクリプション内から付与します。これは、ロール割り当てのスコープになります。 アクセス権を付与するときは、親ノードに付与されたアクセス権は子ノードに継承されることを忘れないでください。 詳細については、[ロールベースのアクセス制御](../role-based-access-control/overview.md)に関するページを参照してください。
 
 1. **[アクセス制御 (IAM)]** を選択します。 アクセス制御ブレードで **[+追加]** を選択します。
 

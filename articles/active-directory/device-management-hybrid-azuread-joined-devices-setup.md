@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258314"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261187"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
-オンプレミスの Active Directory 環境があるときに、ドメイン参加済みデバイスを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加済みデバイスを構成することによってこれを実現できます。 このトピックでは、その関連手順を示します。 
+オンプレミスの Active Directory 環境があるときに、ドメイン参加済みデバイスを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加済みデバイスを構成することによってこれを実現できます。 この記事では、その関連手順を示します。 
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -37,7 +38,7 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 
 Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、以下の構成手順が完了したら、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 **この自動登録の動作が優先されない場合、または制御されたロールアウトが必要な場合**は、もう一方の構成手順に従う前に、以下の「手順 4: デプロイとロールアウトの制御」セクションの手順に従って、自動ロールアウトを選択的に有効または無効にしてください。  
 
-説明を読みやすくするために、このトピックでは以下の用語を使用します。 
+説明を読みやすくするために、この記事では以下の用語を使用します。 
 
 - **最新の Windows デバイス** - この用語は、Windows 10 または Windows Server 2016 が実行されているドメイン参加済みデバイスを指します。
 - **ダウンレベルの Windows デバイス** - この用語は、Windows 10 も Windows Server 2016 も実行されていない、**サポートされていて**ドメインに参加している全 Windows デバイスを指します。  
@@ -56,7 +57,8 @@ Windows 10 Anniversary Update および Windows Server 2016 が実行されて�
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://aka.ms/hybrid/sso)のシームレス シングル サインオンを介してサポート**されます**。
+- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://aka.ms/hybrid/sso)のシームレス シングル サインオンを介してサポート**されます**。 
+- Azure AD パススルー認証を使用する場合、ダウンレベルの Windows デバイスの登録はサポート**されません**。
 - ダウンレベルの Windows デバイスの登録は、ローミング プロファイルを使用するデバイスではサポート**されません**。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
 
 
@@ -81,7 +83,6 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 - https://enterpriseregistration.windows.net
 
 - https://login.microsoftonline.com
-
 - https://device.login.microsoftonline.com
 
 - 組織の STS (フェデレーション ドメイン)
@@ -94,7 +95,7 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 
 - https://aadg.windows.net.nsatc.net
 
-- また、ユーザーのイントラネット ゾーンで "スクリプトを介したステータス バーの更新を許可する" という設定を有効にしてください。
+- また、ユーザーのイントラネット ゾーンで [スクリプトを介したステータス バーの更新を許可する] という設定を有効にしてください。
 
 組織がオンプレミス AI に (フェデレーションではない) 管理セットアップを使用しており、Azure AD とのフェデレーションに ADFS を使用しない場合、Windows 10 のハイブリッド Azure AD 参加は、AD のコンピューター オブジェクトを利用して Azure AD と同期します。 Azure AD Connect 同期構成の同期に対して、ハイブリッド Azure AD に参加する必要があるコンピューター オブジェクトが含まれる組織単位 (OU) が有効になっていることを確認します。
 

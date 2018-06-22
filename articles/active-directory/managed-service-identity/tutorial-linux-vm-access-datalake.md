@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 70dd61758b30c1c7a89374e708fe37c1443d3a2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4489f194329727160d770ab72d9cd36115f2e64d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303149"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594759"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>チュートリアル: Linux VM のマネージド サービス ID を使用して Azure Data Lake Store にアクセスする
 
@@ -182,12 +182,9 @@ Data Lake Store ファイルシステムには、他にもさまざまな API �
 
 お疲れさまでした。 Linux VM の MSI を使用して、Data Lake Store ファイルシステムに対する認証を行うことができました。
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="next-steps"></a>次の手順
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-- Data Lake Store の管理操作には、Azure Resource Manager を使用します。  Resource Manager に対する認証を MSI で行う方法の詳細については、[Linux VM での管理対象サービス ID を使用した Resource Manager へのアクセス](https://docs.microsoft.com/azure/active-directory/msi-tutorial-linux-vm-access-arm)に関するページをご覧ください。
-- 詳細については、[Data Lake Store での Azure Active Directory を使用した認証](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)に関するページをご覧ください。
-- 詳細については、「[REST API を使用した Azure Data Lake Store に対するファイルシステム操作](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-operations-rest-api)」または「[WebHDFS FileSystem APIs (WebHDFS ファイルシステム API)](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis)」をご覧ください。
-- 詳細については、「[Azure Data Lake Store のアクセス制御](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)」をご覧ください。
+このチュートリアルでは、Linux 仮想マシンのマネージド サービス ID を使用して、Azure Data Lake Store にアクセスする方法について説明します。 Azure Data Lake Store の詳細については、以下を参照してください。
 
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
+> [!div class="nextstepaction"]
+>[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

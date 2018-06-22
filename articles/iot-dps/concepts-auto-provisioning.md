@@ -1,22 +1,19 @@
 ---
 title: IoT Hub Device Provisioning Service - 自動プロビジョニングの概念
 description: この記事では、IoT Device Provisioning Service、IoT Hub、およびクライアント SDK を使用した、デバイスの自動プロビジョニングのフェーズの概要について説明します。
-services: iot-dps
-keywords: ''
 author: BryanLa
 ms.author: bryanla
-ms.date: 03/27/2018
+ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736408"
 ---
 # <a name="auto-provisioning-concepts"></a>自動プロビジョニングの概念
 
@@ -33,7 +30,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 
 2. **デバイスの加入** - 後で登録するデバイスを Device Provisioning Service インスタンスに知らせるプロセス。 [加入](concepts-service.md#enrollment)するには、プロビジョニング サービスでデバイス ID 情報を構成します。単一デバイスの場合は "個別加入"、複数デバイスの場合は "グループ加入" にします。 ID は、デバイスが使用するように設計されている、以下の[構成証明メカニズム](concepts-security.md#attestation-mechanism)に基づきます。このメカニズムにより、プロビジョニング サービスは登録時にデバイスの信頼性を証明できます。
 
-   - **TPM**: "個別加入" として構成されます。デバイス ID は、TPM 登録 ID と公開保証キーに基づきます。 TPM が[仕様]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/))である場合、サービスは TPM の実装 (ハードウェアまたはソフトウェア) に関係なく、仕様ごとの証明だけを想定します。 TPM ベースの証明の詳細については、「[Device provisioning: Identity attestation with TPM (デバイス プロビジョニング: TPM による ID 証明)](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)」を参照してください。 
+   - **TPM**: "個別加入" として構成されます。デバイス ID は、TPM 登録 ID と公開保証キーに基づきます。 TPM が[仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)である場合、サービスは TPM の実装 (ハードウェアまたはソフトウェア) に関係なく、仕様ごとの証明だけを想定します。 TPM ベースの証明の詳細については、「[Device provisioning: Identity attestation with TPM (デバイス プロビジョニング: TPM による ID 証明)](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)」を参照してください。 
 
    - **X509**: "個別加入" または "グループ加入" として構成されます。デバイス ID は X.509 デジタル証明書に基づき、この証明書は .pem または .cer ファイルとして加入時にアップロードされます。
 
@@ -50,7 +47,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 
 一連のクイック スタートが左側の目次に用意されており、ハンズオン エクスペリエンスによる自動プロビジョニングの説明に役立ちます。 学習プロセスを簡易にする目的で、物理デバイスの加入および登録をシミュレートするために、ソフトウェアが使用されます。 一部のクイック スタートでは、クイック スタートのシミュレーションとしての性質のために、複数の役割に対する操作を、存在しない役割に対する操作も含めて、実行する必要があります。
 
-| 役割 | 操作 | [説明] | 
+| 役割 | 操作 | 説明 | 
 |------| --------- | ------------| 
 | Manufacturer | ID と登録 URL をエンコードする | 使用される構成証明メカニズムに基づいて、製造元は、デバイスの ID 情報と Device Provisioning Service の登録 URL をエンコードします。<br><br>**クイック スタート**: デバイスがシミュレートされるため、製造元の役割はありません。 この情報の取得方法の詳細については、開発者の役割を参照してください。この情報は、サンプル登録アプリケーションのコーディングで使用されます。 |  
 | | デバイス ID を指定する | 製造元は、デバイス ID 情報の作成者として、情報をオペレーター (または指定されたエージェント) に通知するか、API を通じて Device Provisioning Service への加入操作を直接行う責任があります。<br><br>**クイック スタート**: デバイスがシミュレートされるため、製造元の役割はありません。 デバイス ID を取得する方法の詳細については、オペレーターの役割を参照してください。デバイス ID は、シミュレートされているデバイスを Device Provisioning Service インスタンスに加入させるために使用されます。 | 
@@ -62,7 +59,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 
 次の図は、デバイスの自動プロビジョニング中の役割と操作の流れをまとめたものです。
 <br><br>
-![デバイスの自動プロビジョニングの流れ](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png) 
+[![デバイスの自動プロビジョニングの流れ](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > 必要に応じて、製造元も Device Provisioning Service API を使用して (オペレーター経由ではなく)、"デバイス ID の加入" 操作を実行することができます。 この流れなどの詳細については、ビデオ「[Zero touch device registration with Azure IoT (ゼロ タッチでの Azure IoT へのデバイスの登録)](https://myignite.microsoft.com/sessions/55087)」(41:00 のマーカーから) を参照してください。

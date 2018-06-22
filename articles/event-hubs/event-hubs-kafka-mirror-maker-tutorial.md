@@ -10,19 +10,19 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 05/07/2018
 ms.author: bahariri
-ms.openlocfilehash: 819071321d5609728e7c62abb5b25bf354107850
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 0693fc2fff5735fb2b3c0a9b8f1d3d256746f40d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941240"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298323"
 ---
 # <a name="using-kafka-mirrormaker-with-event-hubs-for-kafka-ecosystems"></a>Kafka エコシステム用の Event Hubs での Kafka MirrorMaker の使用
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs) で入手できます。
 
-最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、Kafka が有効になっているイベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hub サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
+最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、Kafka が有効になっているイベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
 
 Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Kafka 対応のイベント ハブは、現在、Kafka バージョン 1.0 以降をサポートしています。
 
@@ -116,3 +116,4 @@ MirrorMaker が実行していると、ミラー元の Kafka クラスターに�
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
 * [Kafka エコシステム用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
 * オンプレミスの Kafka からクラウドの Kafka が有効なイベント ハブにイベントをストリーム配信するための [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) について確認する。
+* [ネイティブの Kafka アプリケーション](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md)、または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 6fcf0e9cf91354cacb2940faf30a9496919ed3d7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165453"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796305"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
@@ -67,7 +67,7 @@ Azure Instance Metadata Service (IMDS) エンドポイントを使用するサ�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | インスタンス メタデータ サービスの MSI エンドポイント。 |
@@ -82,7 +82,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
@@ -106,7 +106,7 @@ Content-Type: application/json
 }
 ```
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `access_token` | 要求されたアクセス トークン。 セキュリティで保護された REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 | 
 | `refresh_token` | MSI では使用されません。 |
@@ -291,7 +291,7 @@ echo The MSI access token is $access_token
 
 エラーが発生すると、対応する HTTP 応答本文に、JSON とエラーの詳細が含まれます。
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | ------- | ----------- |
 | error   | エラー識別子。 |
 | error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|
@@ -313,6 +313,8 @@ echo The MSI access token is $access_token
 | 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | VM で MSI が有効化されていることを確認します。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
+
+404、429、または 5xx のエラー コードが表示される場合、再試行することをお勧めします (前の 「[エラー処理](#error-handling)」を参照)。
 
 スロットル制限は、IMDS エンドポイントに対して行われる呼び出し回数に適用されます。 スロットルのしきい値を超えた場合、IMDS エンドポイントは、スロットルが有効な状態にあっても、それ以降の要求を制限します。 この期間中、IMDS エンドポイントは HTTP 状態コード 429 ("要求が多すぎます") を返し、要求は失敗します。 
 

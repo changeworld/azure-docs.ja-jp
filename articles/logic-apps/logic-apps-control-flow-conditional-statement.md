@@ -1,29 +1,25 @@
 ---
-title: "条件付きステートメント - 条件に基づいてステップを実行する - Azure Logic Apps | Microsoft Docs"
-description: "条件を満たした後にのみロジック アプリのステップを実行します。 指定された条件に基づいてワークフローを実行するデシジョン ツリーを作成します。"
+title: 条件付きステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps のワークフロー内のアクションを制御する条件を作成する方法です
 services: logic-apps
-keywords: "条件付きステートメント、デシジョン ツリー"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298170"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>条件付きステートメント: ロジック アプリで条件に基づいてステップを実行する
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
-指定された条件を満たした後でのみステップを実行するには、"*条件付きステートメント*" を使用します。 この構造体は、ワークフローのデータを特定の値またはフィールドと比較します。 その後、データが条件を満たしたかどうかによって実行するさまざまなステップを定義できます。 条件は入れ子にすることができます。
+指定した条件が満たされた後でのみロジック アプリ内の特定のアクションを実行するには、"*条件付きステートメント*" を追加します。 この構造体は、ワークフローのデータを特定の値またはフィールドと比較します。 その後、データが条件を満たしたかどうかによって実行するさまざまなアクションを定義できます。 条件は入れ子にすることができます。
 
 たとえば、Web サイトの RSS フィードに新しい項目が出現したときに送信される電子メールが多すぎるロジック アプリがあるとします。 条件付きステートメントを追加して、新しい項目に特定の文字列が含まれる場合のみ電子メールを送信することができます。 
 

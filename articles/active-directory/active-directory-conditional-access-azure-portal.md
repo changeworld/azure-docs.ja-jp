@@ -9,19 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 06/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0730fbd2df6c2a0a8b8d0930c86709c0e3012002
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257735"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248722"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -31,6 +32,7 @@ ms.locfileid: "34257735"
 ![コントロール](./media/active-directory-conditional-access-azure-portal/81.png)
 
 この記事では、Azure AD の条件付きアクセスの概念的な概要について説明します。
+
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
@@ -82,32 +84,8 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ポリシー ベースのアプローチを使用してクラウド アプリへのアクセスを保護する利点の 1 つは、技術的な実装について心配することなく、この記事で概説している構造を使用して環境のポリシー要件の下書き作成を開始できることです。 
 
-## <a name="what-you-need-to-know"></a>知っておくべきこと
 
-### <a name="general-requirements-for-using-conditional-access"></a>条件付きアクセスを使用するための一般的な要件
-
-以下のいずれかから認証が試行された場合には、クラウド アプリの保護に Azure AD の条件付きアクセスを使用できます:
-
-- Web ブラウザー
-
-- 先進認証を使用するクライアント アプリ
-
-- Exchange ActiveSync
-
-詳しくは、[クライアント アプリ](active-directory-conditional-access-conditions.md#client-apps)に関するページをご覧ください。
-
-一部の[クラウド アプリ](active-directory-conditional-access-conditions.md#cloud-apps)では、レガシ認証プロトコルもサポートされています。 たとえば、SharePoint Online や Exchange Online がこれに該当します。 クライアント アプリでクラウド アプリへのアクセスにレガシ認証プロトコルを利用できる場合、そのようなアクセスの試行に対しては Azure AD の条件付きアクセス ポリシーを適用できません。 クライアント アプリがポリシーの適用を回避する事態を防ぐため、該当するクラウド アプリで先進認証のみを有効にできるかどうかを確認する必要があります。
-
-条件付きアクセスが適用されないクライアント アプリの例を以下に示します:
-
-- Office 2010 およびそれ以前
-
-- 先進認証を有効にしていない場合の Office 2013
-
-詳しくは、「[SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する」](active-directory-conditional-access-no-modern-authentication.md)をご覧ください。
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>条件付きアクセスを使用するためのライセンス要件
+## <a name="license-requirements-for-using-conditional-access"></a>条件付きアクセスを使用するためのライセンス要件
 
 条件付きアクセスを使用するには、Azure AD Premium ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
 

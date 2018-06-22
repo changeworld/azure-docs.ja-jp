@@ -11,37 +11,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2017
+ms.date: 05/23/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48ea2293c186bbc337f9d70464df374d64b5e61
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 03961de233861baf923402cc96ab8174b3233bd0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203905"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266658"
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>ロールベースのアクセス制御の変更のアクティビティ ログを表示する
 
-サブスクリプション内のロール定義またはロール割り当てに変更が加えられたときは常に、変更が管理カテゴリの [Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)に記録されます。 アクティビティ ログを確認すると、過去 90 日間のロールベースのアクセス制御 (RBAC) のすべての変更を確認できます。
+監査やトラブルシューティングなどの目的で、ロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
 
 ## <a name="operations-that-are-logged"></a>ログに記録される操作
 
 アクティビティ ログに記録される RBAC 関連の操作を次に示します。
 
-- カスタムのロール定義の作成または更新
-- カスタムのロール定義の削除
 - ロール割り当ての作成
 - ロール割り当ての削除
+- カスタムのロール定義の作成または更新
+- カスタムのロール定義の削除
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-作業を開始する最も簡単な方法は、Azure Portal でアクティビティ ログを表示することです。 次のスクリーンショットは、**管理**カテゴリとロール定義およびロール割り当て操作を表示するようにフィルター処理されたアクティビティ ログの例を示しています。 また、ログを CSV ファイルとしてダウンロードするためのリンクも含まれています。
+作業を開始する最も簡単な方法は、Azure Portal でアクティビティ ログを表示することです。 次のスクリーンショットでは、ロール割り当て操作とロール定義操作だけを表示するようにフィルター処理されたアクティビティ ログの例を示します。 また、ログを CSV ファイルとしてダウンロードするためのリンクも含まれています。
 
 ![Portal を使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/activity-log-portal.png)
 
-詳細については、[アクティビティ ログのイベントの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)に関するページを参照してください。
+ポータルのアクティビティ ログには複数のフィルターがあります。 RBAC 関連のフィルターを次に示します。
+
+|filter  |値  |
+|---------|---------|
+|イベント カテゴリ     | <ul><li>管理</li></ul>         |
+|操作     | <ul><li>ロール割り当ての作成</li> <li>ロール割り当ての削除</li> <li>カスタムのロール定義の作成または更新</li> <li>カスタムのロール定義の削除</li></ul>      |
+
+
+アクティビティ ログについて詳しくは、「[アクティビティ ログでのイベントの表示](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」をご覧ください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -100,7 +108,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) は、Azure のすべてのリソースのロールベースのアクセス制御の変更の収集および分析に使用できる、もう 1 つのツールです。 Log Analytics には、次のような利点があります。
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) は、Azure のすべてのリソースの RBAC の変更の収集および分析に使用できる、もう 1 つのツールです。 Log Analytics には、次のような利点があります。
 
 - 複雑なクエリとロジックを記述する
 - アラート、Power BI、およびその他のツールと統合する

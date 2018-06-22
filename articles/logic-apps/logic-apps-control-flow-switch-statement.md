@@ -1,29 +1,25 @@
 ---
-title: "switch ステートメント - 特定の値に基づいてステップを実行する - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリでオブジェクト、式、トークンの値に基づいてさまざまなステップを実行します。"
+title: switch ステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps の特定の値に基づいてワークフロー アクションを制御する switch ステートメントを作成する方法です
 services: logic-apps
-keywords: "Switch ステートメント"
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299618"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>switch ステートメント: ロジック アプリで特定の値に基づいてさまざまなステップを実行する
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
 
-オブジェクト、式、トークンの値に基づいてさまざまなステップを実行するには、*switch* ステートメントを使用します。 この構造体は、オブジェクト、式、トークンを評価し、その結果と一致するケースを選択し、そのケース専用のステップを実行します。 switch ステートメントが実行されるときは、1 つのケースのみが結果と一致する必要があります。
+オブジェクト、式、またはトークンの値に基づいて特定のアクションを実行するには、*switch* ステートメントを追加します。 この構造は、オブジェクト、式、トークンを評価し、その結果と一致するケースを選択して、そのケースだけの特定のアクションを実行します。 switch ステートメントが実行されるときは、1 つのケースのみが結果と一致する必要があります。
 
 たとえば、電子メールで選択されたオプションに基づいてさまざまなステップを実行するロジック アプリが必要な場合があります。 この例では、ロジック アプリは Web サイトの RSS フィードで新しいコンテンツをチェックします。 RSS フィードに新しい項目が出現すると、ロジック アプリは電子メールを承認者に送信します。 承認者が選択する "承認" または "拒否" に基づいて、ロジック アプリが異なるステップを実行します。
 
@@ -113,7 +109,7 @@ switch ステートメントを使用してロジック アプリを作成しま
 }
 ```
 
-| ラベル              | [説明] |
+| ラベル              | 説明 |
 | :----------------- | :---------- |
 | `"Switch"`         | switch ステートメントの名前です。わかりやすいように変更することができます。 |
 | `"type": "Switch"` | アクションが switch ステートメントであることを指定します。 |

@@ -1,24 +1,21 @@
 ---
-title: "Azure Service Bus を使用する .NET 多層アプリケーション | Microsoft Docs"
-description: "Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つ .NET チュートリアルです。"
+title: Azure Service Bus を使用する .NET 多層アプリケーション | Microsoft Docs
+description: Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つ .NET チュートリアルです。
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809456"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 
@@ -58,35 +55,29 @@ Service Bus には、ブローカー メッセージングをサポートする�
 
 以降のセクションでは、このアーキテクチャを実装するコードについて説明します。
 
-## <a name="set-up-the-development-environment"></a>開発環境を設定する
-Azure アプリケーションの開発を開始する前に、ツールを入手して、開発環境を設定します。
-
-1. SDK の[ダウンロード ページ](https://azure.microsoft.com/downloads/)から、Azure SDK for .NET をインストールします。
-2. **[.NET]** 列で、使用している [Visual Studio](http://www.visualstudio.com) のバージョンをクリックします。 このチュートリアルの手順では Visual Studio 2015 を使っていますが、Visual Studio 2017 でも正しく動作します。
-3. インストーラーの実行や保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
-4. **Web Platform Installer** の **[インストール]** をクリックし、インストールの手順を進めます。
-5. インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。 SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。
-
 ## <a name="create-a-namespace"></a>名前空間の作成
-次の手順では、"*名前空間*" を作成して、その [Shared Access Signature (SAS) キー](service-bus-sas.md)を取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間名と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+
+最初の手順では、*名前空間* を作成して、その [Shared Access Signature (SAS)](service-bus-sas.md) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間名と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Web ロールを作成する
+
 このセクションでは、アプリケーションのフロントエンドを作成します。 最初に、アプリケーションで表示するページを作成します。
 その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
+
 1. 管理者特権で Visual Studio を起動します。**Visual Studio** のプログラム アイコンを右クリックし、**[管理者として実行]** をクリックしてください。 Azure コンピューティング エミュレーター (後ほどこの記事で解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
    
    Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
-2. **[インストールされたテンプレート]** の **[Visual C#]** で **[クラウド]** をクリックし、**[Azure クラウド サービス]** をクリックします。 プロジェクトの名前を "**MultiTierApp**" にします。 次に、 **[OK]**をクリックします
+2. **[インストールされたテンプレート]** の **[Visual C#]** で **[クラウド]** をクリックし、**[Azure クラウド サービス]** をクリックします。 プロジェクトの名前を "**MultiTierApp**" にします。 次に、 **[OK]** をクリックします
    
    ![][9]
 3. **[ロール]** ウィンドウで **[ASP.NET Web ロール]** をダブルクリックします。
    
    ![][10]
-4. **[Azure のクラウド サービス ソリューション]** の **[WebRole1]** をポイントし、鉛筆のアイコンをクリックして、Web ロールの名前を "**FrontendWebRole**" に変更します。 次に、 **[OK]**をクリックします (「FrontEnd」ではなく「Frontend」と入力してください。小文字の "e" です)。
+4. **[Azure のクラウド サービス ソリューション]** の **[WebRole1]** をポイントし、鉛筆のアイコンをクリックして、Web ロールの名前を "**FrontendWebRole**" に変更します。 次に、 **[OK]** をクリックします (「FrontEnd」ではなく「Frontend」と入力してください。小文字の "e" です)。
    
    ![][11]
 5. **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスで、**[テンプレートの選択]** ボックスの一覧の **[MVC]** をクリックします。
@@ -102,7 +93,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
    ![][13]
    
    これで、必要なクライアント アセンブリを参照できるようになり、新しいコード ファイルがいくつか追加されました。
-10. **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに「**OnlineOrder.cs**」と入力します。 **[追加]**をクリックします。
+10. **ソリューション エクスプローラー**で **[Models]** を右クリックし、**[追加]**、**[クラス]** の順にクリックします。 **[名前]** ボックスに「**OnlineOrder.cs**」と入力します。 **[追加]** をクリックします。
 
 ### <a name="write-the-code-for-your-web-role"></a>Web ロール用のコードの作成
 このセクションでは、アプリケーションで表示するさまざまなページを作成します。
@@ -185,7 +176,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 6. ビューを作成するためのダイアログ ボックスが表示されます。 **[テンプレート]** ボックスの一覧から **[作成]** を選択します。 **[モデル クラス]** ボックスの一覧で **OnlineOrder** クラスを選択します。
    
    ![][15]
-7. **[追加]**をクリックします。
+7. **[追加]** をクリックします。
 8. 次に、アプリケーションの表示名を変更します。 **ソリューション エクスプローラー**で、**Views\Shared\\_Layout.cshtml** ファイルをダブルクリックして Visual Studio エディターで開きます。
 9. **My ASP.NET Application** となっている箇所をすべて **Northwind Traders Products** に置き換えます。
 10. **Home**、**About**、および **Contact** の各リンクを削除します。 以下の強調表示されたコードを削除してください。
@@ -324,7 +315,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 4. **[新しいロール プロジェクトの追加]** ダイアログ ボックスの **[Worker Role with Service Bus Queue]** をクリックします。
    
    ![][23]
-5. **[名前]** ボックスに、プロジェクト名として「**OrderProcessingRole**」を入力します。 **[追加]**をクリックします。
+5. **[名前]** ボックスに、プロジェクト名として「**OrderProcessingRole**」を入力します。 **[追加]** をクリックします。
 6. 「Service Bus 名前空間の作成」セクションの手順 9. で取得した接続文字列をクリップボードにコピーします。
 7. **ソリューション エクスプローラー**で、手順 5. で作成した **OrderProcessingRole** を右クリックします (右クリックするのは、**[ロール]** の **OrderProcessingRole** です。クラスではありません)。 次に **[プロパティ]** をクリックします。
 8. **[プロパティ]** ダイアログ ボックスの **[設定]** タブで、**Microsoft.ServiceBus.ConnectionString** の **[値]** ボックス内をクリックし、手順 6. でコピーしたエンドポイントの値を貼り付けます。

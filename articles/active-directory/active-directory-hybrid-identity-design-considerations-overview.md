@@ -1,29 +1,31 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項の概要 | Microsoft Docs"
-description: "ハイブリッド ID の設計上の考慮事項のガイドの概要とコンテンツ マップ"
-documentationcenter: 
+title: Azure Active Directory ハイブリッド ID の設計上の考慮事項の概要 | Microsoft Docs
+description: ハイブリッド ID の設計上の考慮事項のガイドの概要とコンテンツ マップ
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 94e67c5ea0028419e9bf74420e2bb46709b3df01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e81908e3fd77b8fde706b27c3bed305ad0436677
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801638"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。 結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。  
 
-Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Microsoft ソリューションによるハイブリッド ID にはさまざまな設計と構成の選択肢があり、組織のニーズに最適な組み合わせを判断することが難しい場合もあります。 
+Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 この概念は、ハイブリッド ID と呼ばれています。 Microsoft ソリューションによるハイブリッド ID にはさまざまな設計と構成の選択肢があり、組織のニーズに最適な組み合わせを判断することが難しい場合もあります。 
 
 ハイブリッド ID の設計に関するこの考慮事項ガイドは、組織のビジネス ニーズと技術ニーズに最適なハイブリッド ID ソリューションを設計する方法を理解するために役立ちます。  このガイドでは、組織の固有要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業について詳述します。 このガイドでは、機能面とサービス面における品質 (可用性、拡張性、パフォーマンス、管理容易性、セキュリティ) レベル要件を満たすために組織が利用できる技術と機能の選択肢を手順と作業を通して提示します。 
 
@@ -43,7 +45,7 @@ Microsoft の ID ソリューションでは、オンプレミスとクラウド
 
 ![](./media/hybrid-id-design-considerations/hybridID-example.png)
 
-上の図はハイブリッド ID ソリューションの一例ですが、クラウド サービスを活用してオンプレミスの機能と統合し、エンド ユーザーの認証プロセスを統一し、IT リソースの管理を楽にしています。 これは非常に一般的なシナリオであり、多くの場合、要件が異なれば、組織のハイブリッド ID 設計は図 1 と異なるものになります。 
+上の図はハイブリッド ID ソリューションの一例ですが、クラウド サービスを活用してオンプレミスの機能と統合し、エンド ユーザーの認証プロセスを統一し、IT リソースの管理を楽にしています。 この例は一般的なシナリオであり、多くの場合、要件が異なれば、組織のハイブリッド ID 設計は図 1 と異なるものになります。 
 
 このガイドでは、組織の固有要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業を紹介します。 次の手順と作業を通して、機能面とサービス面における組織の品質レベル要件を満たすために利用できる技術と機能の選択肢を提示します。
 

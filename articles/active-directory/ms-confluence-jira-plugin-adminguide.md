@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: d34ff6021816c73fb064a3ce73b7fcf3ae22dbd1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7cbe0d0ea3bbbd60b7cd2dc88ef249c4380083a7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699412"
 ---
 # <a name="admin-guide-for-the-azure-active-directory-sso-plug-in"></a>Azure Active Directory SSO プラグイン管理者ガイド
 
@@ -67,7 +68,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 このプラグインは、次のバージョンの Jira と Confluence をサポートしています。
 
-* Jira Core と Jira Software: 6.0 から 7.2.0
+* Jira Core と Jira Software: 6.0 から 7.8
 * Jira Service Desk: 3.0 から 3.2
 * Confluence: 5.0 ～ 5.10
 
@@ -76,51 +77,51 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 このプラグインをインストールするには、次の手順を実行します。
 
 1. 管理者として、Jira または Confluence のインスタンスにサインインします。
-    
+
 2. Jira/Confluence の管理コンソールに移動し、**[アドオン]** を選択します。
-    
+
 3. Atlassian Marketplace で **Microsoft SAML SSO Plugin** を検索します。
- 
+
    適切なバージョンのプラグインが検索結果に表示されます。
- 
-5. プラグインを選択すると、Universal Plug-in Manager (UPM) によりプラグインがインストールされます。
- 
+
+4. プラグインを選択すると、Universal Plug-in Manager (UPM) によりプラグインがインストールされます。
+
 プラグインがインストールされると、**[アドオンの管理]** の **[User Installed add-ons]\(ユーザーがインストールしたアドオン\)** セクションに表示されます。
-    
+
 ## <a name="plug-in-configuration"></a>プラグイン構成
 
 プラグインの使用を開始する前に、プラグインを構成する必要があります。 プラグインを選択して、**[構成]** ボタンを選択し、構成の詳細を入力します。
 
 次の図は、Jira と Confluence 両方の構成画面です。
-    
+
 ![プラグインの構成画面](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
 *   **[メタデータ URL]**: Azure AD からフェデレーション メタデータを取得するための URL です。
- 
+
 *   **[識別子]**: Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/ として自動的に派生させます。
- 
+
 *   **[応答 URL]**: SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
- 
+
 *   **[サインオン URL]**: SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
- 
+
 *   **[IdP Entity ID]\(IdP エンティティ ID\)**: IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
- 
+
 *   **[ログイン URL]**: IdP からのサインイン URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
- 
+
 *   **[ログアウト URL]**: IdP からのログアウト URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
- 
+
 *   **[X.509 署名書]**: IdP の X.509 証明書です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
- 
+
 *   **[Login Button Name]\(ログイン ボタン名\)**: 組織がサインイン ページでユーザーに表示するサインイン ボタンの名前です。
- 
+
 *   **[SAML User ID Locations]\(SAML ユーザー ID の場所\)**: SAML の応答で Jira または Confluence のユーザー ID が必要となる場所です。 **NameID** またはカスタム属性名を使用できます。
- 
+
 *   **[属性名]**: ユーザー ID が格納されている属性の名前です。
- 
+
 *   **[Enable Home Realm Discovery]\(ホーム領域の検出を有効にする\)**: Active Directory フェデレーション サービス (AD FS) ベースのサインインを使用する場合に選択します。
- 
+
 *   **[ドメイン名]**: サインインが AD FS ベースの場合のドメイン名です。
- 
+
 *   **[Enable Single Signout]\(シングル サインアウトを有効にする\)**: ユーザーが Jira または Confluence からサインアウトしたときに Azure AD からサインアウトする場合に選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -130,15 +131,15 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 * **Azure AD で証明書の有効期限が近づいている**: このアドオンは証明書の自動ロールオーバーに対応しています。 証明書の有効期限が近づいたら、新しい証明書はアクティブとしてマークし、使われていない証明書を削除する必要があります。 この状況でユーザーが Jira にサインインしようとすると、プラグインは新しい証明書を取得して保存します。
 
 * **WebSudo を無効にしたい (セキュリティで保護された管理者セッションを無効にする)**:
-    
+
   * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します: `ira.websudo.is.disabled = true`
-    
+
   * Confluence の場合は、[Confluence のサポート サイト](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)の手順に従います。
 
 * **メタデータ URL で設定されることになっているフィールドが設定されない**:
-    
+
   * URL が正しいことを確認します。 正しいテナントとアプリ ID をマップしていることを確認します。
-    
+
   * ブラウザーに URL を入力し、フェデレーション メタデータ XML を受け取ることを確認します。
 
 * **内部サーバー エラーが発生する**: インストールのログ ディレクトリにあるログを確認します。 ユーザーが Azure AD の SSO を使ってサインインしようとするとエラーが発生する場合は、サポート チームにログを提供します。
@@ -148,5 +149,5 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 * **Azure AD で "アプリが見つからない" というエラーが発生する**: Azure AD で適切な URL がアプリにマップされているかどうかを確認します。
 
 * **サポートが必要な場合**: [Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)までお問い合わせください。 チームが 24 から 48 営業時間以内に応答します。
-    
+
   Azure Portal チャネルを通じて Microsoft にサポート チケットを提出することもできます。

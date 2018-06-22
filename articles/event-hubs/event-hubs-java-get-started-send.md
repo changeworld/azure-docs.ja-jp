@@ -2,23 +2,19 @@
 title: Java を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
 description: Java を使用して Event Hubs への送信を開始する
 services: event-hubs
-documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.workload: core
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/30/2018
 ms.author: sethm
-ms.openlocfilehash: 5dd0c88dab9ff4b7073a9acf6872b4c3ff085586
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d3bf0b8ac5c5bdc7bf3deda21e800fe3cc6be2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626413"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs にイベントを送信する
 
@@ -28,12 +24,14 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルでは、Java のコンソール アプリケーションを使用して、イベント ハブへのイベントを送信する方法について説明します。 Java のイベント プロセッサ ホスト ライブラリを使用してイベントを受信するには、[この記事](event-hubs-java-get-started-receive-eph.md)を参照するか、左側の目次で適切な受信側の言語をクリックしてください。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
-* Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
+このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+
+* Java 開発環境。 このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を使用します。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成してください。
 
-このチュートリアルのコードは [GitHub の送信サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/Send)に基づくものであり、完全に動作するアプリケーションを表示する場合に確認することができます。
+このチュートリアルのコードは [SimpleSend GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend)に基づくものであり、完全に動作するアプリケーションを表示する場合に確認することができます。
 
 ## <a name="send-events-to-event-hubs"></a>イベントを Event Hubs に送信する
 
@@ -94,7 +92,7 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
 
 ### <a name="send-events"></a>送信イベント
 
-次に、文字列を UTF-8 バイト エンコードに変換して単数のイベントを作成します。 その後、接続文字列から新しい Event Hubs クライアント インスタンスを作成し、メッセージを送信します。   
+文字列を UTF-8 バイト エンコードに変換して単数のイベントを作成します。 その後、接続文字列から新しい Event Hubs クライアント インスタンスを作成し、メッセージを送信します。   
 
 ```java 
 byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");

@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713696"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -38,16 +40,16 @@ Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 の�
 
 ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。多要素認証は、Identity Protection で使用可能なリスクに基づく条件付きアクセス ポリシーにおいて重要な役割を果たします。
 
-詳しくは、「 [Azure Multi-Factor Authentication とは](authentication/multi-factor-authentication.md)
+詳細については、「[Azure Multi-Factor Authentication とは](authentication/multi-factor-authentication.md)」を参照してください
 
 ## <a name="unmanaged-cloud-apps"></a>管理されていないクラウド アプリ
 この脆弱性は、組織内にある管理されていないクラウド アプリの識別に役立ちます。
 
 現代の企業では、IT 部門が、組織のユーザーが作業のために使用しているクラウド アプリケーションを部分的にしか認識できていないことがよくあります。 管理者が企業データへの不正アクセスを心配している理由は容易に理解できます。データの漏洩やその他のセキュリティ リスクが発生するおそれがあるからです。 
 
-組織に Cloud App Discovery をデプロイして管理されていないクラウド アプリケーションを検出し、Azure Active Directory を使用してこれらのアプリケーションを管理することをお勧めします。
+Cloud App Discovery をデプロイしてアンマネージド クラウド アプリケーションを検出し、Azure Active Directory を使用してこれらのアプリケーションを管理することをお勧めします。
 
-詳細については、「 [管理されていないクラウド アプリケーションを Cloud App Discovery で検出する](manage-apps/cloud-app-discovery.md)」を参照してください。
+詳細については、[アンマネージド クラウド アプリケーションの Cloud App Discovery による検出](manage-apps/cloud-app-discovery.md)に関するページを参照してください。
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Privileged Identity Management からのセキュリティ アラート
 この脆弱性は、組織内の特権 ID に関するアラートを検出して解決するのに役立ちます。  
@@ -56,7 +58,7 @@ Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 の�
 
 Azure AD Privileged Identity Management を使用して、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視することをお勧めします。
 
-詳細については、「 [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md)」を参照してください。 
+詳しくは、[Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) に関するページを参照してください。 
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

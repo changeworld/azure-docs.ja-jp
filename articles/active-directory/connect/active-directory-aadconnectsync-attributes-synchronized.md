@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 973b11cd7bcb46bfb113998ff4a4e0b9c6317042
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160057"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261765"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -61,7 +62,7 @@ ms.locfileid: "32160057"
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| description  |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -183,7 +184,7 @@ ms.locfileid: "32160057"
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| description  |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -263,7 +264,7 @@ ms.locfileid: "32160057"
 | co |○ |○ | | |
 | company |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| description  |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ |○ | |
 | givenName |○ |○ | | |
@@ -325,7 +326,7 @@ ms.locfileid: "32160057"
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | c |○ |○ | | |
 | cn |○ | |○ | |
-| description |○ |○ |○ | |
+| description  |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | mail |○ |○ |○ | |
 | mailNickname |○ |○ |○ | |
@@ -347,7 +348,7 @@ ms.locfileid: "32160057"
 | co |○ |○ | | |
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
-| description |○ |○ |○ | |
+| description  |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ | | |
 | givenName |○ |○ | | |
@@ -418,6 +419,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | --- |:---:| --- |
 | domainFQDN |○ |dnsDomainName とも呼ばれます。 たとえば、contoso.com です。 |
 | domainNetBios |○ |netBiosName とも呼ばれます。 たとえば、CONTOSO です。 |
+| msDS-KeyCredentialLink |○ |ユーザーが Windows Hello for Business に登録された後。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。

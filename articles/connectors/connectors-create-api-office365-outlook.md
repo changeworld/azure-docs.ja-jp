@@ -1,25 +1,22 @@
 ---
-title: ロジック アプリに Office 365 Outlook コネクタを追加する | Microsoft Docs
-description: Office 365 コネクタを含むロジック アプリを作成して Office 365 を操作できるようにします。 たとえば、連絡先や予定表項目の作成、編集、更新を行うことができます。
-services: ''
-documentationcenter: ''
+title: Office 365 Outlook に接続する - Azure Logic Apps | Microsoft Docs
+description: Office 365 REST API と Azure Logic Apps を使用して、メール、連絡先、予定表を管理します
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: b2f6cc2c-bba2-493a-b0ba-841785462a80
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: estfan
 ms.date: 10/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: aa900a486b9b0bd0f570da866f3d0ab78c31bc6e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296154"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook コネクタの使用
 Office 365 Outlook コネクタを使用すると、Office 365 Outlook の操作が可能になります。 このコネクタを使用すると、連絡先と予定表アイテムの作成、編集、更新に加え、電子メールの取得、送信、返信を行うことができます。
@@ -74,7 +71,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. **[アクションの追加]**を選択します。
+2. **[アクションの追加]** を選択します。
 3. テキスト ボックスに「office 365」と入力して、使用可能なすべてのアクションの一覧を取得します。
    
     ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 

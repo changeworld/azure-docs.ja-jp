@@ -1,13 +1,14 @@
 ---
-title: "最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる | Microsoft Docs"
-description: "最初の実行エクスペリエンスで Azure AD 参加を設定する方法について説明するトピック。"
+title: 最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる | Microsoft Docs
+description: 最初の実行エクスペリエンスで Azure AD 参加を設定する方法について説明するトピック。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0e71df2333dee9c4eb9935d3397d343be246be65
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0341c5b65816cf1c54fe3f2f7781dde46bf084ad
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757394"
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
 
@@ -37,6 +39,8 @@ Windows の *out-of-box experience* では、オンプレミス Active Directory
 ## <a name="before-you-begin"></a>開始する前に
 
 Windows 10 デバイスを参加させるには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに参加させるアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳細については、「[デバイスの設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
+
+また、テナントがフェデレーションされている場合、ID プロバイダーで必ず WS-Fed および WS-Trust ユーザー名/パスワード エンドポイントがサポートされている必要があります。 これは、バージョン 1.3 または 2005 です。 このプロトコルのサポートは、デバイスの Azure AD への参加と、パスワードを使用したデバイスのログオンの両方で必要です。
 
 ## <a name="joining-a-device"></a>デバイスを参加させる
 

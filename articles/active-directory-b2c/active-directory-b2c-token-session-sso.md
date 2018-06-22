@@ -1,21 +1,21 @@
 ---
-title: トークン、セッション、シングル サインオンの構成 - Azure AD B2C | Microsoft Docs
-description: Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成
+title: Azure Active Directory B2C のトークン、セッション、シングル サインオンの構成 | Microsoft Docs
+description: Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 925313b6f2a00826f2ec8086457315c60f70b007
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0ee39f4b6f80d13cc0f71c77ae87b2a4ee74e390
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710636"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 組み込みポリシーでは、この機能を次のように Azure AD B2C ディレクトリで使用できます。
 
 1. この手順に従って、Azure Portal で [B2C 機能メニューに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-2. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]**をクリックします。 *注: この機能は **[サインアップまたはサインイン ポリシー]** に限らず、あらゆるポリシー タイプで使用できます*。
+2. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]** をクリックします。 *注: この機能は **[サインアップまたはサインイン ポリシー]** に限らず、あらゆるポリシー タイプで使用できます*。
 3. ポリシーをクリックして開きます。 たとえば、**[B2C_1_SiUpIn]** をクリックします。
 4. メニューの上部にある **[編集]** をクリックします。
 5. **[トークン、セッション、シングル サインオンの構成]** をクリックします。
@@ -49,7 +49,7 @@ Azure AD B2C は保護されたリソースへの安全なアクセスを実現�
   * 既定値 = 14 日。
   * 最小値 (この値を含む) = 1 日。
   * 最大値 (この値を含む) = 90 日。
-* **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]**: この期間の経過後は、アプリケーションが取得した最新の更新トークンの有効期間にかかわらず、強制的にユーザーを再認証します。 スイッチが **[制限あり]**の場合にのみ、この設定が可能です。 **[Refresh token lifetime (days) (更新トークン有効期間 (日))]** の値以上であることが必要です。 スイッチが **[制限なし]**の場合は、特定の値を設定できません。
+* **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]**: この期間の経過後は、アプリケーションが取得した最新の更新トークンの有効期間にかかわらず、強制的にユーザーを再認証します。 スイッチが **[制限あり]** の場合にのみ、この設定が可能です。 **[Refresh token lifetime (days) (更新トークン有効期間 (日))]** の値以上であることが必要です。 スイッチが **[制限なし]** の場合は、特定の値を設定できません。
   * 既定値 = 90 日。
   * 最小値 (この値を含む) = 1 日。
   * 最大値 (この値を含む) = 365 日。

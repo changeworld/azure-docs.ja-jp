@@ -4,21 +4,21 @@ description: Azure Automation に含まれる Update Management、Change Trackin
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193096"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830563"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure Virtual Machine から Update Management、Change Tracking、および Inventory ソリューションの使用準備を行う
 
-Azure Automation には、オペレーティング システムのセキュリティ更新プログラム、変更の追跡、およびご使用のコンピューターにインストールされている内容のインベントリを管理するソリューションが用意されています。 マシンの使用準備を行う方法は複数あります。仮想マシンや [Automation アカウント](automation-onboard-solutions-from-automation-account.md)から、または [Runbook](automation-onboard-solutions.md) を使用して、ソリューションの使用準備を行うことができます。 この記事では、Azure Virtual Machine からこれらのソリューションの使用準備を行う方法について説明します。
+Azure Automation には、オペレーティング システムのセキュリティ更新プログラム、変更の追跡、およびご使用のコンピューターにインストールされている内容のインベントリを管理するソリューションが用意されています。 マシンをオンボードする方法は複数あり、ソリューションのオンボードは、仮想マシンから、[Automation アカウントから](automation-onboard-solutions-from-automation-account.md)、また、[複数のマシンを参照する](automation-onboard-solutions-from-browse.md)か、[Runbook](automation-onboard-solutions.md) を使用して行うことができます。 この記事では、Azure Virtual Machine からこれらのソリューションの使用準備を行う方法について説明します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -28,13 +28,13 @@ Azure にサインインします (https://portal.azure.com)。
 
 既存の仮想マシンに移動し、**[操作]** の下の **[更新プログラムの管理]**、**[インベントリ]**、または **[変更追跡]** を選択します。
 
+VM のみでソリューションを有効にする場合は、**[Enable for this VM]\(この VM で有効にする)** ラジオ ボタンが選択されていることを確認します。ソリューションに複数のマシンをオンボードする場合は、**[Enable for VMs in this subscription]\(このサブスクリプションの VM で有効にする\)** を選択し、**[Click to select machines to enable]\(クリックして有効にするマシンを選択\)** をクリックします。 一度に複数のマシンをオンボードする手順については、「[Update Management、Change Tracking、および Inventory ソリューションの配布準備](automation-onboard-solutions-from-automation-account.md)」を参照してください。
+
 Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効化]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![Update ソリューションの配布準備](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 他のソリューションに移動し、**[有効化]** をクリックします。Log analytics と Automation アカウントのドロップダウン ボックスは、前に有効にしたソリューションと同じワークスペースおよび Automation アカウントを使用するため、選択不可になっています。
-
-![Update ソリューションの配布準備](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **[変更追跡]** と **[インベントリ]** は、同じソリューションを使用します。一方が有効であれば、もう一方も有効です。

@@ -8,25 +8,27 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714002"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Azure Portal によるデバイスの管理
 
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 
 
-このトピックの内容と前提条件:
+この記事の内容は次のとおりです。
 
 - [Azure Active Directory でのデバイス管理の概要](device-management-introduction.md)を理解していることを前提とします
 
@@ -74,7 +76,7 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 - **[ユーザーはデバイスを Azure AD に登録できます]** - デバイスを Azure AD に[登録](device-management-introduction.md#azure-ad-registered-devices)できるようにするには、この設定を構成する必要があります。 **[なし]** を選択すると、デバイスは Azure AD 参加済みかハイブリッド Azure AD 参加済みでない場合に、登録を許可されません。 Microsoft Intune または Mobile Device Management (MDM) for Office 365 への登録には、この登録が必要です。 これらのサービスのいずれかを構成した場合は、**[すべて]** が選択され、**[なし]** は選択できなくなります。
 
-- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](device-management-introduction.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]**です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
+- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](device-management-introduction.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
 
 - **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができるデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 デバイス クォータには、現時点で Azure AD 参加済みまたは Azure AD 登録済みのすべてのデバイスがカウントされます。 既定値は **20** です。
 
@@ -185,10 +187,17 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
 ### <a name="view-or-copy-bitlocker-keys"></a>BitLocker キーを表示またはコピーする
 
-管理者は、暗号化されたドライブのユーザーによる復旧を支援するため、BitLocker キーを表示またはコピーできます。 これらのキーを使用できるのは、暗号化され、キーが Azure AD に格納されている Windows デバイスだけです。 デバイスの詳細にアクセスする場合は、これらのキーをコピーすることができます。
+暗号化されたドライブのユーザーによる復旧を支援するため、BitLocker キーを表示またはコピーできます。 これらのキーを使用できるのは、暗号化され、キーが Azure AD に格納されている Windows デバイスだけです。 デバイスの詳細にアクセスする場合は、これらのキーをコピーすることができます。
  
 ![BitLocker キーの表示](./media/device-management-azure-portal/36.png)
 
+BitLocker キーを表示またはコピーするには、デバイスの所有者であるか、次のロールが 1 つ以上割り当てられているユーザーである必要があります。
+
+- グローバル管理者
+- ヘルプデスク管理者
+- セキュリティ管理者
+- セキュリティ閲覧者
+- Intune サービス管理者
 
 
 ## <a name="audit-logs"></a>監査ログ

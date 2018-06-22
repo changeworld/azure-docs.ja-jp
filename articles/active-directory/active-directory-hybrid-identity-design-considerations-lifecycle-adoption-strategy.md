@@ -1,25 +1,27 @@
 ---
-title: "ハイブリッド ID 設計 - ライフサイクル導入戦略 - Azure | Microsoft Docs"
-description: "ライフサイクルの各フェーズで使用できるオプションに従って、ハイブリッド ID の管理タスクを定義します。"
-documentationcenter: 
+title: ハイブリッド ID 設計 - ライフサイクル導入戦略 - Azure | Microsoft Docs
+description: ライフサイクルの各フェーズで使用できるオプションに従って、ハイブリッド ID の管理タスクを定義します。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801832"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
 このタスクでは、「 [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)」で定義したビジネス要件を満たすために、ハイブリッド ID ソリューションの ID 管理戦略を定義します。
@@ -35,11 +37,11 @@ ms.lasthandoff: 01/18/2018
 
 | ライフサイクル管理のフェーズ | オンプレミス | クラウド | ハイブリッド |
 | --- | --- | --- | --- |
-| アカウント管理とプロビジョニング |Active Directory® ドメイン サービス (AD DS) のサーバー ロールを使用すると、ユーザーやリソースを管理するための、スケーラブルで安全な、管理しやすいインフラストラクチャを作成できます。また、Microsoft® Exchange Server などのディレクトリ対応アプリケーションをサポートできます。 <br><br> [Identity Manager から AD DS でグループをプロビジョニングできます](https://technet.microsoft.com/library/ff686261.aspx) <br>[AD DS でユーザーをプロビジョニングできます](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 管理者は、セキュリティ保護のためにアクセス制御を使用して、共有リソースへのユーザー アクセスを管理できます。 Active Directory では、フル コントロール、書き込み、読み取り、アクセス権なしなど、オブジェクトに対するアクセス (アクセス許可) をさまざまなレベルで設定することにより、オブジェクト レベルでアクセス制御を管理します。 Active Directory のアクセス制御では、さまざまなユーザーに Active Directory オブジェクトの使用をどのように許可するかを定義します。 既定では、Active Directory 内のオブジェクトに対するアクセス許可は、最も安全なものに設定されます。 |Microsoft クラウド サービスにアクセスするユーザーごとにアカウントを作成する必要があります。 また、ユーザー アカウントは変更したり、不要になった場合は削除したりできます。 既定では、ユーザーには管理者のアクセス許可はありませんが、必要に応じて割り当てることができます。 詳細については、[Azure AD でのユーザー管理](active-directory-create-users.md)に関するページをご覧ください。 <br><br> Azure Active Directory の主な機能の 1 つが、リソースへのアクセスを管理する機能です。 こういったリソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のケースのように、ディレクトリに含まれる場合と、SaaS アプリケーション、Azure サービス、SharePoint サイト、オンプレミスのリソースなどのように、ディレクトリの外部のリソースという場合があります。 <br><br> Azure Active Directory のアクセス管理ソリューションの核となる機能は、セキュリティ グループです。 リソース所有者 (またはディレクトリの管理者) は、所有するリソースへの特定のアクセス権を提供するようにグループを割り当てることができます。 グループのメンバーにはアクセス権が提供され、リソースの所有者は、部門のマネージャーやヘルプ デスクの管理者などの他のユーザーに、グループのメンバー リストを管理する権限を委任することができます<br> <br> Azure AD でのグループ管理に関するトピックでは、グループを使用したアクセス管理に関する情報を提供します。 |同期とフェデレーションを使用して、Active Directory の ID をクラウドに拡張します。 |
+| アカウント管理とプロビジョニング |Active Directory® ドメイン サービス (AD DS) のサーバー ロールを使用すると、ユーザーやリソースを管理するための、スケーラブルで安全な、管理しやすいインフラストラクチャを作成できます。また、Microsoft® Exchange Server などのディレクトリ対応アプリケーションをサポートできます。 <br><br> [Identity Manager から AD DS でグループをプロビジョニングできます](https://technet.microsoft.com/library/ff686261.aspx) <br>[AD DS でユーザーをプロビジョニングできます](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 管理者は、セキュリティ保護のためにアクセス制御を使用して、共有リソースへのユーザー アクセスを管理できます。 Active Directory では、フル コントロール、書き込み、読み取り、アクセス権なしなど、オブジェクトに対するアクセス (アクセス許可) をさまざまなレベルで設定することにより、オブジェクト レベルでアクセス制御を管理します。 Active Directory のアクセス制御では、さまざまなユーザーに Active Directory オブジェクトの使用をどのように許可するかを定義します。 既定では、Active Directory 内のオブジェクトに対するアクセス許可は、最も安全なものに設定されます。 |Microsoft クラウド サービスにアクセスするユーザーごとにアカウントを作成する必要があります。 また、ユーザー アカウントは変更したり、不要になった場合は削除したりできます。 既定では、ユーザーには管理者のアクセス許可はありませんが、必要に応じて割り当てることができます。 詳細については、[Azure AD でのユーザー管理](active-directory-create-users.md)に関するページをご覧ください。 <br><br> Azure Active Directory の主な機能の 1 つが、リソースへのアクセスを管理する機能です。 こういったリソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のケースのように、ディレクトリに含まれる場合と、SaaS アプリケーション、Azure サービス、SharePoint サイト、オンプレミスのリソースなどのように、ディレクトリの外部のリソースという場合があります。 <br><br> Azure Active Directory のアクセス管理ソリューションの核となる機能は、セキュリティ グループです。 リソース所有者 (またはディレクトリの管理者) は、所有するリソースへの特定のアクセス権を提供するようにグループを割り当てることができます。 グループのメンバーにはアクセス権が提供され、リソースの所有者は、部門のマネージャーやヘルプ デスクの管理者などの他のユーザーに、グループのメンバー リストを管理する権限を委任することができます<br> <br> Azure AD でのグループ管理に関するセクションでは、グループを使用したアクセス管理に関する情報を提供します。 |同期とフェデレーションを使用して、Active Directory の ID をクラウドに拡張します。 |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 ロールベースのアクセス制御 (RBAC) では、ロールとプロビジョニングのポリシーを使用して、ビジネス プロセスとルールを評価してテストした上で適用し、ユーザーにアクセスを許可します。 キーの管理者は、プロビジョニングのポリシーを作成し、ユーザーにロールを割り当てて、これらのロールのリソースに対する権限のセットを定義します。 RBAC では、ID 管理ソリューションを拡張してソフトウェアベースのプロセスを使用することにより、プロビジョニング中のユーザーによる手動操作を削減します。
-Azure AD の RBAC により、ユーザーが Microsoft Azure 管理ポータルにアクセスした時点で実行できる操作の量を企業が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
+Azure AD の RBAC により、ユーザーが Azure portal にアクセスした時点で実行できる操作数を企業が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
 * **グループベースのロールの割り当て**: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。 これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。 また、Azure AD Premium の委任されたグループ管理機能も使用できます。
 * **Azure の組み込みロールの活用**: 所有者、共同作業者、閲覧者の 3 つのロールを使用して、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。
@@ -67,10 +69,11 @@ Azure AD のグループベースのライセンス管理では、管理者が�
 > 
 > 
 
-ライセンス ベース (資格ベース) の Azure AD サービスは、Azure AD ディレクトリ/サービスのテナントのサブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は、ディレクトリ管理者またはサービス管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 詳細については、Azure AD ライセンスのしくみと
-他のサードパーティ プロバイダーとの統合に関する記事を参照してください。
+ライセンス ベース (資格ベース) の Azure AD サービスは、Azure AD ディレクトリ/サービスのテナントのサブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は、ディレクトリ管理者またはサービス管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 
 
-Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供しています。 サポートされている SaaS アプリケーションの Azure Active Directory アプリケーション ギャラリーの詳細な一覧については、Azure Active Directory フェデレーションの互換性リストのシングル サインオンの実装に使用できるサード パーティ ID プロバイダーに関する記事をお読みください。
+## <a name="integration-with-other-3rd-party-providers"></a>他のサードパーティ プロバイダーとの統合に関する記事を参照してください。
+
+Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供しています。 詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」をご覧ください。
 
 ## <a name="define-synchronization-management"></a>同期管理の定義
 オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。 この統合によって、ユーザーや組織には次の利点があります。

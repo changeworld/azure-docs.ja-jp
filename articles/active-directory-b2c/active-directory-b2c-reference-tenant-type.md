@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: 利用可能なリージョンとデータの保存場所 | Microsoft Docs'
-description: Azure Active Directory B2C テナントの種類に関するトピック
+title: Azure Active Directory B2C で利用可能なリージョンとデータの保存場所 | Microsoft Docs
+description: Azure Active Directory B2C テナントの種類に関するトピック。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: davidmu
-ms.openlocfilehash: b982a6b6e0068370ef7b5cb30ea689829e90d494
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: add7c49d8efaec0fddf057c454b4f01aec5df1ce
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709599"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: 利用可能なリージョンとデータの保存場所
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、2 つの概念の違いについて説明するとともに、Azure AD B2C とそれ以外の Azure サービスに対するそれらの概念の意味合いを比較します。
@@ -45,7 +45,7 @@ Azure AD B2C では、ユーザー データが米国またはヨーロッパに
 
 次の国/地域の場合、データはヨーロッパに保存されます。
 
-> アルジェリア、オーストリア、アゼルバイジャン、バーレーン、ベラルーシ、ベルギー、ブルガリア、クロアチア、キプロス、チェコ共和国、デンマーク、エジプト、エストニア、フィンランド、フランス、ドイツ、ギリシャ、ハンガリー、アイスランド、アイルランド、イスラエル、イタリア、ヨルダン、カザフスタン、ケニア、クウェート、ラトビア、レバノン、リヒテンシュタイン、リトアニア、ルクセンブルク、マケドニア (旧ユーゴスラビア共和国)、マルタ、モンテネグロ、モロッコ、オランダ、ナイジェリア、ノルウェー、オマーン、パキスタン、ポーランド、ポルトガル、カタール、ルーマニア、ロシア、サウジアラビア、セルビア、スロバキア、スロベニア、南アフリカ、スペイン、スウェーデン、スイス、チュニジア、トルコ、ウクライナ、アラブ首長国連邦、英国
+> アルジェリア、オーストリア、アゼルバイジャン、バーレーン、ベラルーシ、ベルギー、ブルガリア、クロアチア、キプロス、チェコ共和国、デンマーク、エジプト、エストニア、フィンランド、フランス、ドイツ、ギリシャ、ハンガリー、アイスランド、アイルランド、イスラエル、イタリア、ヨルダン、カザフスタン、ケニア、クウェート、ラトビア、レバノン、リヒテンシュタイン、リトアニア、ルクセンブルク、マケドニア (旧ユーゴスラビア共和国)、マルタ、モンテネグロ、モロッコ、オランダ、ナイジェリア、ノルウェー、オマーン、パキスタン、ポーランド、ポルトガル、カタール、ルーマニア、ロシア、サウジアラビア、セルビア、スロバキア、スロベニア、南アフリカ、スペイン、スウェーデン、スイス、チュニジア、トルコ、ウクライナ、アラブ首長国連邦、イギリス
 
 その他の国/地域については今後追加されていく予定です。  差し当たって、上記のいずれかの国/地域を選ぶことによって Azure AD B2C を使用することができます。
 

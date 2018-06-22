@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C:カスタム ポリシーでの言語カスタマイズ | Microsoft Docs
-description: カスタム ポリシー内でローカライズ コンテンツを使用して、複数の言語に対応する方法について学習します
+title: Azure Active Directory B2C カスタム ポリシーでの言語カスタマイズ | Microsoft Docs
+description: カスタム ポリシー内でローカライズ コンテンツを使用して、複数の言語に対応する方法について学習します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 45cfa152615da1447cc695e0dd201e5b8d046cf4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711758"
 ---
 # <a name="language-customization-in-custom-policies"></a>カスタム ポリシーでの言語のカスタマイズ
 
@@ -69,7 +69,7 @@ ui-locales が指定されなかった場合は、ユーザーのブラウザー
 
 ### <a name="create-the-localizedresources"></a>LocalizedResources を作成する
 
-上書きは `<BuildingBlocks>` 内に含まれ、各ページの `<ContentDefinition>` で指定したページと言語のごとに、`<LocalizedResources>` が存在します。  各上書きは、次のサンプルに示すように、`<LocalizedString>` として指定されます。
+オーバーライドは `<BuildingBlocks>` 内に含まれ、各ページの `<ContentDefinition>` で指定したページと言語のごとに、`<LocalizedResources>` が存在します。  各オーバーライドは、次のサンプルに示すように、`<LocalizedString>` として指定されます。
 
 ```XML
 <BuildingBlocks>
@@ -92,4 +92,4 @@ ui-locales が指定されなかった場合は、ユーザーのブラウザー
 
 **ClaimsProvider** - ID プロバイダー (Facebook、Google、Azure AD など) のラベル**ClaimType** - 属性とそれに対応するヘルプ テキスト、またはフィールド検証エラーのラベル **UxElement** - ページに既定で存在するその他の文字列要素 (ボタン、リンク、テキストなど) **ErrorMessage** - フォーム検証エラー メッセージ
 
-これらの上書きを使用するページに対して、`StringId` が一致していることを確認してください。一致していないと、アップロード時にポリシー検証によってブロックされます。  
+これらのオーバーライドを使用するページに対して、`StringId` が一致していることを確認してください。一致していないと、アップロード時にポリシー検証によってブロックされます。  

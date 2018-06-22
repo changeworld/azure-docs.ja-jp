@@ -11,27 +11,27 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/06/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203507"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267375"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
-[ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールを変更することはできませんが、組織の特定のニーズに合わせて[カスタム ロール](custom-roles.md)を独自に作成することができます。
+[ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
 
 組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
 
 ## <a name="built-in-role-descriptions"></a>組み込みのロールの説明
-次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `actions` と `notActions` の一覧を表示することができます。
+次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `actions`、`notActions`、`dataActions`、`notDataActions` の一覧が表示されます。
 
 
-| 組み込みのロール | [説明] |
+| 組み込みのロール | 説明 |
 | --- | --- |
 | [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
 | [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
@@ -84,6 +84,7 @@ ms.locfileid: "34203507"
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
 | [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
+| [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
@@ -97,6 +98,10 @@ ms.locfileid: "34203507"
 | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 |
 | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント キー オペレーターは、ストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
+| [ストレージ BLOB データ共同作成者 (プレビュー)](#storage-blob-data-contributor-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+| [ストレージ BLOB データ閲覧者 (プレビュー)](#storage-blob-data-reader-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
+| [ストレージ キュー データ共同作成者 (プレビュー)](#storage-queue-data-contributor-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+| [ストレージ キュー データ閲覧者 (プレビュー)](#storage-queue-data-reader-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
 | [Support Request Contributor](#support-request-contributor) | Support request を作成して管理できます |
 | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 |
@@ -128,6 +133,8 @@ ms.locfileid: "34203507"
 > | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 > | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
+> | Microsoft.Blueprint/blueprintAssignments/write |  |
+> | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
 ## <a name="reader"></a>Reader
 > [!div class="mx-tableFixed"]
@@ -704,7 +711,7 @@ ms.locfileid: "34203507"
 > | **Id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **アクション** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action |  |
+> | Microsoft.Insights/components/purge/action | Application Insights からデータを削除します |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | ワークスペースから指定されたデータを削除します。 |
 
@@ -1034,6 +1041,20 @@ ms.locfileid: "34203507"
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="resource-policy-contributor-preview"></a>リソース ポリシーの共同作成者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
+> | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **アクション** |  |
+> | */read | 機密データを除くあらゆる種類のリソースの読み取り |
+> | Microsoft.Authorization/policyassignments/* | ポリシーの割り当ての作成と管理 |
+> | Microsoft.Authorization/policydefinitions/* | ポリシー定義の作成と管理 |
+> | Microsoft.Authorization/policysetdefinitions/* | ポリシー セットの作成と管理 |
+> | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="scheduler-job-collections-contributor"></a>Scheduler Job Collections Contributor
@@ -1389,6 +1410,58 @@ ms.locfileid: "34203507"
 > | Microsoft.Storage/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | 指定されたストレージ アカウントのアクセス キーを再生成します。 |
 
+## <a name="storage-blob-data-contributor-preview"></a>ストレージ BLOB データ共同作成者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+> | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します |
+
+## <a name="storage-blob-data-reader-preview"></a>ストレージ BLOB データ閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
+> | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+
+## <a name="storage-queue-data-contributor-preview"></a>ストレージ キュー データ共同作成者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+> | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | キューを削除した結果を返します。 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/write | キューの書き込みの結果を返します。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | メッセージを削除した結果を返します |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | メッセージの書き込みの結果を返します |
+
+## <a name="storage-queue-data-reader-preview"></a>ストレージ キュー データ閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
+> | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **アクション** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します |
+
 ## <a name="support-request-contributor"></a>Support Request Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1438,6 +1511,9 @@ ms.locfileid: "34203507"
 > | Microsoft.Network/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | Microsoft.Network/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows 管理者または Linux のルート ユーザーの権限で仮想マシンにログインします |
 
 ## <a name="virtual-machine-contributor"></a>Virtual Machine Contributor
 > [!div class="mx-tableFixed"]
@@ -1496,6 +1572,8 @@ ms.locfileid: "34203507"
 > | Microsoft.Network/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | Microsoft.Network/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします |
 
 ## <a name="web-plan-contributor"></a>Web Plan Contributor
 > [!div class="mx-tableFixed"]

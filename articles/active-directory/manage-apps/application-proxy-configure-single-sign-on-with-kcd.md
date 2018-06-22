@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 506ff0bce0b68b1477f27f913bd3fe119e36cca1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8e3cc261576e38cc304dc740f89582f7fd857e1a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293036"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -77,14 +78,30 @@ Sharepointserviceaccount には、SPS コンピューター アカウントか�
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
 2. アプリケーションがエンタープライズ アプリケーションの一覧に表示されたら、アプリケーションを選択して **[シングル サインオン]** をクリックします。
 3. シングル サインオン モードを **[統合 Windows 認証]** に設定します。  
-4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
+4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。 この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
 5. ユーザーの代わりに使うコネクタに**委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#Working-with-different-on-premises-and-cloud-identities)」をご覧ください。
 
    ![高度なアプリケーションの構成](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
 
 ## <a name="sso-for-non-windows-apps"></a>Windows 以外のアプリの SSO
-Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 このような要求を送信する方法を定義するプロトコルはいくつかあります。 ほとんどの Windows 以外のサーバーは Negotiate/SPNego を予期しています。これは Azure AD アプリケーション プロキシでサポートされるようになっています。
+
+Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 
+
+このような要求を送信する方法を定義するプロトコルはいくつかあります。 ほとんどの非 Windows サーバーは、SPNEGO でのネゴシエートを予期します。 このプロトコルは Azure AD アプリケーション プロキシでサポートされていますが、既定で無効になっています。 サーバーは、SPNEGO または標準 KCD のどちらかに構成できますが、両方に構成することはできません。
+
+SPNEGO 用にコネクタ マシンを構成する場合は、そのコネクタ グループ内の他のすべてのコネクタも SPNEGO で構成されていることを確認してください。 標準 KCD を使用するアプリケーションは、SPNEGO 用に構成されていない他のコネクタを介してルーティングする必要があります。
+ 
+
+SPNEGO を有効にするには:
+
+1. 管理者として実行しているコマンド プロンプトを開きます。
+2. コマンド プロンプトから、SPNEGO が必要なコネクタ サーバーに対して次のコマンドを実行します。
+
+    ```
+    REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
+    net stop WAPCSvc & net start WAPCSvc
+    ```
 
 Kerberos について詳しくは、「[All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)」(Kerberos の制約付き委任 (KCD) のすべて) をご覧ください。
 
@@ -124,7 +141,7 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 ## <a name="next-steps"></a>次の手順
 
 * [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](../active-directory-application-proxy-troubleshoot.md)
+* [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
 
 
 最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)

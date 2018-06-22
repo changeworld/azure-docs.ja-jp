@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069895"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293298"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>SaaS アプリへのユーザー プロビジョニングの自動化とは
 Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **以下に、この機能を使用して行うことができる例をいくつか示します。**
 
@@ -69,7 +71,7 @@ Azure AD は、一般に普及しているさまざまな SaaS アプリや人�
 
 Azure AD が事前統合プロビジョニング コネクタをサポートするすべてのアプリケーションの一覧については、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](active-directory-saas-tutorial-list.md)に関するページを参照してください。
 
-Azure AD ユーザー プロビジョニングのサポートをアプリケーションに追加する方法については、[SCIM を使用した Azure Active Directory からアプリケーションへのユーザーおよびグループの自動プロビジョニング](active-directory-scim-provisioning.md)に関するページをご覧ください。
+Azure AD ユーザー プロビジョニングのサポートをアプリケーションに追加する方法については、[SCIM を使用した Azure Active Directory からアプリケーションへのユーザーおよびアプリケーションの自動プロビジョニング](manage-apps/use-scim-to-provision-users-and-groups.md)に関するページをご覧ください。
 
 他のアプリのプロビジョニングのサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)からメッセージを送信してください。    
 
@@ -78,6 +80,8 @@ Azure AD ユーザー プロビジョニングのサポートをアプリケー�
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>アプリケーションへの自動プロビジョニングを設定する方法
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 選択したアプリケーション用の Azure AD プロビジョニング サービスの構成は、**[Azure Portal](https://portal.azure.com)** から開始します。 **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで **[追加]** を選択し、**[すべて]** を選択した後、実際のシナリオに応じて次のいずれかを追加します。
 
@@ -102,7 +106,7 @@ Azure AD ユーザー プロビジョニングのサポートをアプリケー�
 
     * **属性の値に基づくフィルター** - 属性マッピングの [ソース オブジェクト スコープ] メニューで、特定の属性値に基づいてフィルター処理できます。 たとえば、"Department" 属性が "Sales" であるユーザーのみをプロビジョニングの対象として指定することができます。 詳細については、[スコープ フィルターの使用](active-directory-saas-scoping-filters.md)に関するページをご覧ください。
 
-    * **割り当てに基づくフィルター** - "割り当て済み" のユーザーとグループだけをプロビジョニングの対象とするか、Azure AD ディレクトリ内のすべてのユーザーをプロビジョニングの対象とするかを、ポータルの [プロビジョニング] の [設定] セクションにある [スコープ] メニューで指定できます。 ユーザーとグループの "割り当て" の詳細については、「[Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)」を参照してください。
+    * **割り当てに基づくフィルター** - "割り当て済み" のユーザーとグループだけをプロビジョニングの対象とするか、Azure AD ディレクトリ内のすべてのユーザーをプロビジョニングの対象とするかを、ポータルの [プロビジョニング] の [設定] セクションにある [スコープ] メニューで指定できます。 ユーザーとグループの "割り当て" の詳細については、「[Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
     
 * 実行中であるかどうかを含め、アプリケーションのプロビジョニング サービスの動作は、**[設定]** で制御します。
 
@@ -122,7 +126,7 @@ Azure AD がソース システムである場合、プロビジョニング サ
 プロビジョニング サービスが開始されたときに行われる最初の同期では、次の処理が実行されます。
 
 1. ソース システムのすべてのユーザーとグループにクエリを実行し、[属性マッピング](active-directory-saas-customizing-attribute-mappings.md)で定義されているすべての属性を取得します。
-2. 返されたユーザーおよびグループを、構成済み[割り当て](active-directory-coreapps-assign-user-azure-portal.md)または[属性ベースのスコープ フィルター](active-directory-saas-scoping-filters.md)を使用してフィルター処理します。
+2. 返されたユーザーおよびグループを、構成済み[割り当て](manage-apps/assign-user-or-group-access-portal.md)または[属性ベースのスコープ フィルター](active-directory-saas-scoping-filters.md)を使用してフィルター処理します。
 3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[照合属性](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。 たとえば、ソース システムの userPrincipal 名が一致属性であり、ターゲット システムの userName にマップされる場合、プロビジョニング サービスは、ターゲット システムにクエリを実行し、ソース システムの userPrincipal 名の値と一致する userName がないかどうかを確認します。
 4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。
 5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。
@@ -135,7 +139,7 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 初期同期後に行われるすべての同期で、次の処理が実行されます。
 
 1. ソース システムにクエリを実行し、前回の基準値が保存された後に更新されたユーザーおよびグループがないかどうかを確認します。
-2. 返されたユーザーおよびグループを、構成済み[割り当て](active-directory-coreapps-assign-user-azure-portal.md)または[属性ベースのスコープ フィルター](active-directory-saas-scoping-filters.md)を使用してフィルター処理します。
+2. 返されたユーザーおよびグループを、構成済み[割り当て](manage-apps/assign-user-or-group-access-portal.md)または[属性ベースのスコープ フィルター](active-directory-saas-scoping-filters.md)を使用してフィルター処理します。
 3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[照合属性](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。
 4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。
 5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。
@@ -171,31 +175,50 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始します。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。
+
+前のセクションで説明したように、プロビジョニング ジョブで実行されているのが初期同期か増分同期かによって、パフォーマンスが異なります。
+
+**初期同期**では、ジョブ時間は、プロビジョニングのスコープ内のユーザーおよびグループの数、ソース システム内のユーザーおよびグループの合計数などさまざまな要因によって異なります。 初期同期のパフォーマンスに影響する要因の包括的な一覧はこのセクションで後程まとめます。
+
+**増分同期**では、ジョブ時間は、その同期サイクルで検出される変更の数によって異なります。 ユーザーまたはグループのメンバーシップの変更が 5,000 未満の場合、ジョブは 1 増分同期サイクル内で終了できます。 
+
+次の表は、一般的なプロビジョニング シナリオの同期時間のまとめです。 これらのシナリオでは、ソース システムが Azure AD、ターゲット システムが SaaS アプリです。 同期時間は、SaaS アプリである ServiceNow、Workplace、Salesforce、および Google Apps の同期ジョブの統計分析から導かれています。
+
+
+| スコープ構成 | スコープ内のユーザー、グループ、およびメンバー | 初期同期時間 | 増分同期時間 |
+| -------- | -------- | -------- | -------- |
+| 割り当てられたユーザーとグループのみを同期する |  1,000 未満 |  30 分未満 | 30 分未満 |
+| 割り当てられたユーザーとグループのみを同期する |  1,000 ～ 10,000 | 142 ～ 708 分 | 30 分未満 |
+| 割り当てられたユーザーとグループのみを同期する |   10,000 ～ 100,000 | 1,170 ～ 2,340 分 | 30 分未満 |
+| Azure AD のすべてのユーザーとグループを同期する |  1,000 未満 | 30 分未満  | 30 分未満 |
+| Azure AD のすべてのユーザーとグループを同期する |  1,000 ～ 10,000 | 30 分未満 ～ 120 分 | 30 分未満 |
+| Azure AD のすべてのユーザーとグループを同期する |  10,000 ～ 100,000  | 713 ～ 1,425 分 | 30 分未満 |
+| Azure AD のすべてのユーザーを同期する|  1,000 未満  | 30 分未満 | 30 分未満 |
+| Azure AD のすべてのユーザーを同期する | 1,000 ～ 10,000  | 43 ～ 86 分 | 30 分未満 |
+
+
+**割り当てられたユーザーとグループのみを同期する**の構成では、次の式を使用して**初期同期**のおよその最小予測時間と最大予測時間を確認できます。
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+**初期同期**の完了に要する時間に影響する要因のまとめ
+
+* プロビジョニングのスコープ内のユーザーとグループの合計数
+
+* ソース システム (Azure AD) に存在するユーザー、グループ、およびグループのメンバーの合計数
+
+* プロビジョニングのスコープ内のユーザーがターゲット アプリケーション内の既存のユーザーと一致するかどうか、または新たに作成する必要があるかどうか。 すべてのユーザーを初めて作成する同期ジョブはすべてのユーザーが既存ユーザーと一致する同期ジョブの約 *2 倍*の時間がかかります。
+
+* [監査ログ](active-directory-saas-provisioning-reporting.md)内のエラー数。 多くのエラーが発生し、プロビジョニング サービスが検疫状態に移行した場合、パフォーマンスは低下します   
+
+* ターゲット システムによって実装される要求レートの制限および調整。 ターゲット システムによって、要求レートの制限および調整が実装される場合があり、大規模な同期動作中にパフォーマンスに影響する可能性があります。 このような条件下では、高速で大量の要求を受信するアプリは応答レートが遅くなったり、接続が閉じたりする場合があります。 パフォーマンスを向上するために、アプリが処理できるよりも速くアプリ要求を送信しないようにコネクタによって調整する必要があります。 Microsoft がビルドしたプロビジョニング コネクタはこの調整を行います。 
+
+* 割り当てられたグループの数とサイズ。 割り当てられたグループの同期はユーザーの同期よりも時間がかかります。 割り当てられたグループの数とサイズの両方がパフォーマンスに影響します。 [グループ オブジェクト同期用に有効にされたマッピング](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings)がアプリにある場合、グループ名やメンバーシップなどのグループ プロパティがユーザーの他に同期されます。 これらの追加の同期はユーザー オブジェクトの同期のみの場合よりも時間がかかります。
+ 
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-**自分のユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。**
-
-プロビジョニング ジョブで実行されているのが初期同期か増分同期かによって、パフォーマンスが異なります。
-
-初期同期については、完了するまでの所要時間は、ソース システムのユーザー数、グループ数、およびグループ メンバー数に直接左右されます。 オブジェクトが数百の非常に小さなソース システムの場合、初期同期はわずか数分で完了します。 しかし、数十万または数百万もの結合されたオブジェクトがソース システムに含まれる場合は、さらに長い時間がかかります。
-
-増分同期の所要時間は、その同期サイクルで検出された変更の数によって異なります。 検出されたユーザーまたはグループ メンバーシップの変更数が 5,000 未満であれば、多くの場合、40 分のサイクル内で同期できます。 
-
-全体的なパフォーマンスは、ソース システムとターゲット システムの両方に依存することに注意してください。 ターゲット システムの中には、要求率の制限と調整が実装されているものがあり、これが大規模な同期処理中のパフォーマンスに影響することがあります。このようなシステム向けの既成の Azure AD プロビジョニング コネクタでは、この点が考慮されています。
-
-また、多くのエラーが発生し ([監査ログ](active-directory-saas-provisioning-reporting.md)に記録されています)、プロビジョニング サービスが "検疫" 状態に移行した場合、パフォーマンスは低下します。
-
-**同期のパフォーマンスを向上させるにはどうすればよいですか。**
-
-パフォーマンスの問題のほとんどが、大量のグループおよびグループ メンバーが存在するシステムの初期同期中に発生します。
-
-グループまたはグループ メンバーシップの同期が必要ない場合は、次の操作を行うことで同期のパフォーマンスが大幅に向上します。
-
-1. **[プロビジョニング] > [設定] > [スコープ]** メニューを、割り当てられたユーザーとグループの同期ではなく、**[Sync all]\(すべて同期\)** に設定します。
-2. 割り当てではなく[スコープ フィルター](active-directory-saas-scoping-filters.md)を使用して、プロビジョニングされるユーザーの一覧をフィルター処理します。
-
-> [!NOTE]
-> グループ名とグループ プロパティ (ServiceNow、Google Apps など) のプロビジョニングをサポートするアプリケーションについては、これを無効にして、初期同期の所要時間を短縮することもできます。 グループ名やグループ メンバーシップをアプリケーションにプロビジョニングする必要がない場合は、プロビジョニング構成の[属性マッピング](active-directory-saas-customizing-attribute-mappings.md)でその機能を無効にすることができます。
 
 **現在のプロビジョニング ジョブの進行状況を追跡する方法はありますか。**
 
@@ -219,7 +242,7 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
 * [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
-* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+* [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 * [アプリケーションの送信ユーザー プロビジョニング用のステップ バイ ステップ デプロイ計画](https://aka.ms/userprovisioningdeploymentplan) 
 

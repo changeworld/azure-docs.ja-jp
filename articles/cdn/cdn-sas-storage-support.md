@@ -4,7 +4,7 @@ description: Azure CDN では、Shared Access Signature (SAS) を使用した、
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261170"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -70,7 +71,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
  
 このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
  
-1. [ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 90 分かかります。
+1. [ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 10 分かかります。
 
    ![CDN の [管理] ボタン](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -112,7 +113,7 @@ Azure CDN セキュリティ トークン認証を使用するには、**Azure C
        
    セキュリティ トークン認証のためのパラメーター オプションは、SAS トークンのパラメーター オプションとは異なります。 セキュリティ トークンを作成する際に有効期限を使用する場合は、SAS トークンの有効期限と同じ値に設定する必要があります。 これにより、有効期限が予測可能になります。 
  
-2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 90 分かかります。
+2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 10 分かかります。
 
    次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*storagedemo* という名前のエンドポイントを使用します。
    
@@ -132,7 +133,7 @@ Azure CDN セキュリティ トークン認証を使用するには、**Azure C
 
 SAS パラメーターは Azure CDN からは認識できないため、Azure CDN は、SAS パラメーターに基づいた配信動作を変更できません。 定義されたパラメーター制約は、Azure CDN から配信元サーバーに対する要求のみに適用され、クライアントから Azure CDN への要求には適用されません。 この差は、SAS パラメーターを設定する際に重要になります。 これらの高度の機能が必要で、[オプション 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule) を使用している場合は、Azure CDN セキュリティ トークンに適切な制限を設定します。
 
-| SAS パラメーター名 | [説明] |
+| SAS パラメーター名 | 説明 |
 | --- | --- |
 | 開始 | Azure CDN が BLOB ファイルにアクセスを開始できる時刻。 クロックのずれ (クロック シグナルが各コンポーネントで受信された時刻が異なる) のため、アセットをすぐ使用する必要がある場合は、15 分早い時刻を選択してください。 |
 | End | Azure CDN が BLOB ファイルにアクセスできなくなる時刻。 これより以前に Azure CDN にキャッシュされたファイルは引き続きアクセスできます。 ファイルの有効期限を制御するためには、Azure CDN のセキュリティ トークンに適切な有効期限を設定するか、アセットを削除します。 |

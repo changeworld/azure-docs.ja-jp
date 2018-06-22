@@ -4,16 +4,16 @@ description: この記事では、Azure Policy のポリシーをプログラム
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5405566b5254c553eac584acc1653449b51ddffc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a83402316854b23fe85bff813dc9f5665bccd1fb
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195881"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794812"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -116,12 +116,16 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
 2. 次の呼び出しを使用して、ポリシー定義を作成します。
 
   ```
-  armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+  # For defining a policy in a subscription
+  armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+
+  # For defining a policy in a management group
+  armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
   ```
 
-  前の &lt;subscriptionId&gt; を対象のサブスクリプションの ID に置き換えます。
+  前の {subscriptionId} をサブスクリプションの ID と置き換えるか、{managementGroupId} を[管理部グループ](../azure-resource-manager/management-groups-overview.md)の ID と置き換えます。
 
-クエリの構造の詳細については、「[Policy Definitions – Create or Update (ポリシー定義 - 作成または更新)](/rest/api/resources/policydefinitions/createorupdate)」をご覧ください。
+  クエリの構造の詳細については、「[Policy Definitions – Create or Update](/rest/api/resources/policydefinitions/createorupdate)」 (ポリシー定義 - 作成または更新) および「[Policy Definitions – Create or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)」 (ポリシー定義 - 管理グループでの作成または更新) をご覧ください。
 
 次の手順を使用してポリシー割り当てを作成し、ポリシー定義をリソース グループ レベルに割り当てます。
 
@@ -200,99 +204,6 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 
 Azure CLI を使用してリソース ポリシーを管理する方法の詳細については、[Azure CLI リソース ポリシー](/cli/azure/policy?view=azure-cli-latest)に関する記事をご覧ください。
 
-## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
-
-割り当てのリソースがポリシーや統括ルールに従っていない場合、そのリソースは非準拠になります。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
-
-| リソースの状態 | 効果 | ポリシーの評価 | コンプライアンスの状態 |
-| --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 非準拠 |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 対応 |
-| 新規 | Audit、AuditIfNotExist\* | True | 非準拠 |
-| 新規 | Audit、AuditIfNotExist\* | False | 対応 |
-
-\* Append、DeployIfNotExist、AuditIfNotExist の各効果では、IF ステートメントが TRUE である必要があります。 また、非準拠となるには、既存の条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
-
-リソースがどのようにして非準拠としてフラグされるかについて理解を深めるために、前に作成したポリシー割り当ての例を見てみましょう。
-
-たとえば、ContosoRG というリソース グループがあり、このリソース グループの一部のストレージ アカウント (赤で強調表示されているアカウント) がパブリック ネットワークに公開されているとします。
-
-![パブリック ネットワークに公開されているストレージ アカウント](media/policy-insights/resource-group01.png)
-
-この例では、セキュリティ リスクに注意する必要があります。 これで作成されたポリシー割り当てが ContosoRG リソース グループ内のすべてのストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
-
-![監査された非準拠のストレージ アカウント](media/policy-insights/resource-group03.png)
-
-次の手順を使用して、ポリシー割り当てに準拠していないリソース グループ内のリソースを特定します。 この例では、リソースは ContosoRG リソース グループ内のストレージ アカウントです。
-
-1. 次のコマンドを実行して、ポリシー割り当て ID を入手します。
-
-  ```azurepowershell-interactive
-  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks' }
-  $policyAssignment.PolicyAssignmentId
-  ```
-
-  ポリシー割り当て ID の入手方法について詳しくは、「[Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment)」をご覧ください。
-
-2. 次のコマンドを実行して、非準拠リソースの ID を JSON ファイルにコピーします。
-
-  ```
-  armclient POST "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
-  ```
-
-3. 結果は次の例のようになります。
-
-  ```json
-  {
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-      "@odata.count": 3,
-      "value": [{
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount1Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount2Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount3ID>"
-          }
-      ]
-  }
-  ```
-
-結果は、普段 [Azure Portal ビュー](assign-policy-definition.md#identify-non-compliant-resources)の **[準拠していないリソース]** に一覧表示される内容と同じです。
-
-現時点では、非準拠のリソースは Azure Portal および HTTP 要求を使用してのみ特定できます。 ポリシーの状態についてクエリを実行する方法の詳細については、[ポリシーの状態](/rest/api/policy-insights/policystates)に関する API リファレンスの記事を参照してください。
-
-## <a name="view-policy-events"></a>ポリシー イベントを表示する
-
-リソースを作成または更新すると、ポリシーの評価結果が生成されます。 これらの結果は "_ポリシー イベント_" と呼ばれます。 次のクエリを実行して、ポリシー割り当てに関連付けられているすべてのポリシー イベントを表示します。
-
-```
-armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2017-12-12-preview"
-```
-
-次のような結果が返されます。
-
-```json
-{
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default",
-    "@odata.count": 1,
-    "value": [{
-        "@odata.id": null,
-        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity",
-        "NumAuditEvents": 3
-    }]
-}
-```
-
-ポリシーの状態と同様に、ポリシー イベントも HTTP 要求でのみ表示できます。 ポリシー イベントについてクエリを実行する方法の詳細については、[ポリシー イベント](/rest/api/policy-insights/policyevents)に関する API リファレンスの記事を参照してください。
-
 ## <a name="next-steps"></a>次の手順
 
 この記事のコマンドとクエリの詳細については、次の記事をご覧ください。
@@ -301,3 +212,4 @@ armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorizatio
 - [Azure RM PowerShell モジュール](/powershell/module/azurerm.resources/#policies)
 - [Azure CLI Policy コマンド](/cli/azure/policy?view=azure-cli-latest)
 - [Policy Insights Resource Provider REST API リファレンス](/rest/api/policy-insights)
+- [Azure 管理グループでリソースを整理する](../azure-resource-manager/management-groups-overview.md)

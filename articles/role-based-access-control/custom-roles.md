@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/12/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3baf616e448f1f6d5292161ae125502d72141940
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161058"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266596"
 ---
 # <a name="create-custom-roles-in-azure"></a>Azure でカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が特定のアクセス ニーズを満たしていない場合、独自のカスタム ロールを作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) テナントに保存され、サブスクリプション間で共有することができます。 カスタム ロールは、Azure PowerShell、Azure CLI、REST API で作成することができます。 この記事では、PowerShell と Azure CLI を使用して、カスタム ロールの作成を開始する方法の例について説明します。
+[組み込みロール](built-in-roles.md)が特定のアクセス ニーズを満たしていない場合、独自のカスタム ロールを作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) テナントに保存され、サブスクリプション間で共有することができます。 各テナントは、最大 2,000 個のカスタム ロールを持つことができます。 カスタム ロールは、Azure PowerShell、Azure CLI、REST API で作成することができます。
+
+この記事では、PowerShell と Azure CLI を使用して、カスタム ロールの作成を開始する方法の例について説明します。
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>サポート要求を開くためのカスタム ロールを PowerShell を使用して作成する
 

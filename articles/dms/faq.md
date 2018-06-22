@@ -10,12 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/08/2018
+ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850074"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
@@ -27,13 +28,16 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 - スムーズな移行を実現するための継続的な投資。
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Q. Azure Database Migration Service では、現在、どのソースとターゲットのペアがサポートされていますか。
-パブリック プレビューのサービスでは、現在、SQL Server から Azure SQL Database への移行がサポートされています。このシナリオであれば、今すぐ Azure Portal にアクセスして、Azure Database Migration Service を使い始めることができます。 SQL Server から Azure SQL Database マネージ インスタンスへの移行や、Oracle から Azure SQL Database への移行など、他のソースとターゲットのペアは、限定的なプライベート プレビューを通じて使用できます。 これらのシナリオの限定的なプライベート プレビューに参加する機会を得るには、[こちら](https://sqldatabase-migrationpreview.azurewebsites.net/)で登録してください。
+パブリック プレビューのサービスでは、現在、SQL Server から Azure SQL Database への移行がサポートされています。このシナリオであれば、今すぐ Azure Portal にアクセスして、Azure Database Migration Service を使い始めることができます。 SQL Server から Azure SQL Database Managed Instance への移行や、Oracle から Azure SQL Database への移行など、他のソースとターゲットのペアは、限定的なプライベート プレビューを通じて使用できます。 これらのシナリオの限定的なプライベート プレビューに参加する機会を得るには、[こちら](https://sqldatabase-migrationpreview.azurewebsites.net/)で登録してください。
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Q. Azure Database Migration Service は、他の Microsoft データベース移行ツール (Database Migration Assistant (DMA)、SQL Server Migration Assistant (SSMA) など) とどのような点が違いますか。
 Azure Database Migration Service は、Microsoft Azure への大規模なデータベース移行に適しています。 Azure Database Migration Service と他の Microsoft データベース移行ツールとの比較や、さまざまなシナリオでサービスを使用する際の推奨事項については、ブログ投稿の「[Differentiating Microsoft’s Database Migration Tools and Services (Microsoft の各データベース移行ツールおよびサービスの差異)](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)」を参照してください。
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-the-azure-migrate-offering"></a>Q. Azure Database Migration Service と Azure Migrate サービスはどのような点が違いますか。
-Azure Migrate サービスは、オンプレミスの仮想マシンから Azure IaaS への移行を支援します。 このサービスは、移行の適合性を評価し、パフォーマンスに基づくサイズを評価して、オンプレミスの仮想マシンを Azure で実行するためのコストを見積もることができます。 Azure Migrate は、オンプレミスの VM ベースのワークロードを Azure IaaS VM にリフトアンドシフト移行する場合に便利です。 ただし、Azure Database Migration Service とは異なり、Azure Migrate は、Azure PaaS リレーショナル データベース プラットフォーム (Azure SQL Database、SQL Azure、Azure SQL Database マネージ インスタンスなど) 用に特化したデータベース移行サービスではありません。
+Azure Migrate サービスは、オンプレミスの仮想マシンから Azure IaaS への移行を支援します。 このサービスは、移行の適合性を評価し、パフォーマンスに基づくサイズを評価して、オンプレミスの仮想マシンを Azure で実行するためのコストを見積もることができます。 Azure Migrate は、オンプレミスの VM ベースのワークロードを Azure IaaS VM にリフトアンドシフト移行する場合に便利です。 ただし、Azure Database Migration Service とは異なり、Azure Migrate は、Azure PaaS リレーショナル データベース プラットフォーム (Azure SQL Database、SQL Azure、Azure SQL Database Managed Instance など) 用に特化したデータベース移行サービスではありません。
+
+### <a name="q-what-versions-of-sql-server-does-the-azure-database-migration-service-support-as-a-source"></a>Q. Azure Database Migration Service でソースとしてサポートされるのは、どのバージョンの SQL Server ですか。
+SQL Server から移行する場合、Azure Database Migration Service では SQL Server 2005 から SQL Server 2017 までがサポートされます。
 
 ### <a name="q-what-is-a-summary-of-the-steps-required-to-use-the-azure-database-migration-service-to-perform-a-database-migration"></a>Q. Azure Database Migration Service を使用してデータベースを移行するために必要な手順の概要は、どのようなものですか。
 一般的な単純なデータベース移行では、以下の作業を行います。

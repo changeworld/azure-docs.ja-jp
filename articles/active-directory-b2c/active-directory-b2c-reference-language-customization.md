@@ -1,22 +1,21 @@
 ---
-title: Azure AD B2C での言語のカスタマイズ | Microsoft Docs
+title: Azure Active Directory B2C での言語のカスタマイズ | Microsoft Docs
 description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 72a2bd20d08cd12cc1965bd06090d2cd705fc111
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200554"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711938"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -75,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 5. ファイルを保存し、変更内容をアップロードします。 (アップロード コントロールは、JSON ファイルをダウンロードした場所にあります) 
 
 >[!IMPORTANT]
->文字列を上書きする必要がある場合は、必ず `Override` の値を `true` に設定してください。  値が変更されていない場合、そのエントリは無視されます。 
+>文字列をオーバーライドする必要がある場合は、必ず `Override` の値を `true` に設定してください。  値が変更されていない場合、そのエントリは無視されます。 
 >
 
 ### <a name="change-extension-attributes"></a>拡張属性を変更する
@@ -163,7 +162,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 7. 言語を保存します。
 
 >[!IMPORTANT]
->カスタム言語を有効にするか、保存する前の上書きをアップロードする必要があります。
+>カスタム言語を有効にするか、保存する前のオーバーライドをアップロードする必要があります。
 >
 
 ## <a name="additional-information"></a>追加情報

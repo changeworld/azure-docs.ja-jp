@@ -1,28 +1,24 @@
 ---
-title: Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする | Microsoft Docs
-description: Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのローカル実行のスケーリングと、ローカル ワークステーションでのコマンド ラインとプログラミング インターフェイスを使用したテストの実行方法について説明します。
+title: Azure Data Lake U-SQL SDK を使用して U-SQL ジョブをローカルで実行およびテストする
+description: U-SQL ジョブを、ローカル ワークステーションでコマンド ラインとプログラミング インターフェイスを使用して実行およびテストする方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737073"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
 
-U-SQL スクリプトを開発するとき、通常は、クラウドに送信する前に、U-SQL スクリプトをローカルで実行してテストします。 このシナリオのために、Azure Data Lake には、Azure Data Lake U-SQL SDK と呼ばれる Nuget パッケージが用意されています。このパッケージを使用して、U-SQL のローカル実行のスケーリングとテストを簡単に行うことができます。 この U-SQL テストを CI (継続的インテグレーション) システムと統合して、コンパイルとテストを自動化することもできます。
+U-SQL スクリプトを開発するとき、通常は、クラウドに送信する前に、U-SQL スクリプトをローカルで実行してテストします。 このシナリオのために、Azure Data Lake には、Azure Data Lake U-SQL SDK と呼ばれる Nuget パッケージが用意されています。このパッケージを使用して、U-SQL の実行のスケーリングとテストを簡単に行うことができます。 この U-SQL テストを CI (継続的インテグレーション) システムと統合して、コンパイルとテストを自動化することもできます。
 
 GUI ツールを使用した U-SQL スクリプトの手動でのローカル実行とデバッグに関心がある場合は、Azure Data Lake Tools for Visual Studio を使用できます。 詳細については、[こちら](data-lake-analytics-data-lake-tools-local-run.md)を参照してください。
 
@@ -68,7 +64,7 @@ U-SQL スクリプトでは、相対パスとローカル絶対パスの両方�
 
 U-SQL スクリプトをローカルで実行すると、コンパイル時に、現在実行中のディレクトリの下に作業ディレクトリが作成されます。 この作業ディレクトリには、コンパイル出力だけでなく、ローカル実行に必要なランタイム ファイルがシャドウ コピーされます。 作業ディレクトリのルート フォルダーは "ScopeWorkDir" と呼ばれ、作業ディレクトリには次のファイルが含まれます。
 
-|ディレクトリ/ファイル|ディレクトリ/ファイル|ディレクトリ/ファイル|定義|[説明]|
+|ディレクトリ/ファイル|ディレクトリ/ファイル|ディレクトリ/ファイル|定義|説明|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |ランタイム バージョンのハッシュ文字列|ローカル実行に必要なランタイム ファイルのシャドウ コピー|
 | |Script_66AE4909AA0ED06C| |スクリプト名 + スクリプト パスのハッシュ文字列|コンパイル出力と実行ステップのログ記録|
@@ -142,7 +138,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **run** の省略可能な引数を次に示します。
 
 
-|引数|既定値|[説明]|
+|引数|既定値|説明|
 |--------|-------------|-----------|
 |-分離コード|False|スクリプトには .cs 分離コードがあります|
 |-CppSDK| |CppSDK ディレクトリ|
@@ -174,7 +170,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **compile**の省略可能な引数を次に示します。
 
 
-|引数|[説明]|
+|引数|説明|
 |--------|-----------|
 | -CodeBehind (既定値 "False")|スクリプトには .cs 分離コードがあります|
 | -CppSDK (既定値 "")|CppSDK ディレクトリ|
@@ -212,12 +208,12 @@ U-SQL スクリプトをコンパイルし、作業ディレクトリ、参照�
 
 **execute** の省略可能な引数を次に示します。
 
-|引数|[説明]|
-|--------|-----------|
-|-DataRoot (既定値 "")|メタデータ実行のデータ ルート。 既定値は **LOCALRUN_DATAROOT** 環境変数です。|
-|-MessageOut (既定値 "")|ファイルにダンプされるコンソール上のメッセージ。|
-|-Parallel (既定値 "1")|生成されたローカル実行ステップが、指定された並列処理レベルで実行されることを示します。|
-|-Verbose (既定値 "False")|ランタイムから詳細な出力が表示されることを示します。|
+|引数|既定値|説明|
+|--------|-------------|-----------|
+|-DataRoot | '' |メタデータ実行のデータ ルート。 既定値は **LOCALRUN_DATAROOT** 環境変数です。|
+|-MessageOut | '' |ファイルにダンプされるコンソール上のメッセージ。|
+|-Parallel | '1' |生成されたローカル実行ステップが、指定された並列処理レベルで実行されることを示します。|
+|-Verbose | "False" |ランタイムから詳細な出力が表示されることを示します。|
 
 使用例を次に示します。
 
@@ -337,13 +333,13 @@ LocalRunHelper.exe は、U-SQL のローカル コンパイルや実行などの
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|パラメーター|type|[説明]|
+|パラメーター|type|説明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
 **Properties**
 
-|プロパティ|type|[説明]|
+|プロパティ|type|説明|
 |--------|----|-----------|
 |AlgebraPath|文字列|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
 |CodeBehindReferences|文字列|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
@@ -369,7 +365,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 **メソッド**
 
-|方法|[説明]|戻り値|パラメーター|
+|方法|説明|戻り値|パラメーター|
 |------|-----------|------|---------|
 |public bool DoCompile()|U-SQL スクリプトをコンパイルします|成功時に True| |
 |public bool DoExec()|コンパイル結果を実行します|成功時に True| |

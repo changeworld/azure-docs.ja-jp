@@ -12,17 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/04/2018
+ms.date: 05/31/2018
 ms.author: maghan
-ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d68a950438a332cdf8ddd8d4f13a316c87aa0a5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715923"
 ---
-# <a name="about-power-bi-embedded"></a>Power BI Embedded の概要
+# <a name="what-is-power-bi-embedded"></a>Power BI Embedded とは
 
-Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。 Power BI Embedded により、魅力的なビジュアル、レポート、ダッシュ ボードをアプリケーションにすばやく追加できるようになります。 Microsoft Azure 上にビルドされたアプリケーションと同様に、Machine Learning や IoT などのサービスを使用できます。 アプリケーションでのデータ探索を容易にすることで、ISV の顧客は情報に基づく的確な意思決定をすばやく行えるようになります。
+Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。 Power BI Embedded は、魅力的なビジュアル、レポート、ダッシュボードをアプリにすばやく追加できるようにすることで、Power BI の機能が簡素化されます。 Microsoft Azure 上にビルドされたアプリケーションと同様に、Machine Learning や IoT などのサービスを使用できます。 アプリケーションでのデータ探索を容易にすることで、ISV の顧客は情報に基づく的確な意思決定をすばやく行えるようになります。
 
 > [!VIDEO https://www.youtube.com/embed/iEHfUuoZseo]
 

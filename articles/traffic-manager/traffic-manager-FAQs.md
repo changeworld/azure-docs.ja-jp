@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942358"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301067"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -86,10 +86,18 @@ Traffic Manager が DNS クエリを受信すると、応答に Time to Live (TT
 
 DNS TTL は、プロファイル レベルで 0 ～ 2,147,483,647 秒に設定できます (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) に準拠しています)。 TTL を 0 にすると、ダウンストリームの DNS リゾルバーはクエリの応答をキャッシュしないので、すべてのクエリが解決のために Traffic Manager の DNS サーバーに送信されることになります。
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>マイ プロファイルへのクエリの量を把握する方法を教えてください。 
+Traffic Manager が提供しているメトリックの 1 つにプロファイルが応答するクエリ数があります。 プロファイル レベルの集計でこの情報を取得できます。または、これをさらに分割して、特定のエンドポイントが返されたクエリの量を確認できます。 また、アラートを設定して、クエリ応答量が設定した条件を超えた場合に通知できます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager の地理的トラフィック ルーティング方法
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>地理的ルーティングが役立つ例を教えてください。 
 地理的ルーティング タイプは、Azure をご利用のお客様が地理的リージョンに基づいてユーザーを識別する必要がある場合に使用できます。 たとえば、地理的トラフィック ルーティング方法を使用して、特定のリージョンのユーザーに、他のリージョンとは異なるユーザー エクスペリエンスを提供できます。 また別の例として、ローカル データの主権性に関する (特定の地域のユーザーに対し、その地域のエンドポイントからのみサービスを提供する) 義務への準拠が挙げられます。
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>パフォーマンス ルーティング方法を使用するか、地理的ルーティング方法を使用するかを判断する方法を教えてください。 
+これら 2 つの一般的なルーティング方法の主な違いは、パフォーマンス ルーティング方法の主な目標が呼び出し元の待ち時間を最小にできるエンドポイントにトラフックを送信することであるのに対して、地理的ルーティング方法の主な目標が呼び出し元にジオ フェンスを適用して故意に呼び出し元を特定のエンドポイントにルーティングすることであることです。 地理的な近さと短い待ち時間には相関があるため重複が発生しますが、必ず重複するわけではありません。 異なる地域に呼び出し元の待ち時間を最小にできるエンドポイントがある場合があり、その場合パフォーマンス ルーティングはユーザーをそのエンドポイントにルーティングしますが、地理的ルーティングでは常にユーザーの地域にマップされたエンドポイントにユーザーをルーティングします。 わかりやすくするために、次の例について考えてみます。地理的ルーティングでは、アジアからのすべてのトラフィックを米国内のエンドポイントに送信し、米国のすべてのトラフィックをアジアのエンドポイントに送信するというような一般的ではないマッピングを作成できます。 この場合、地理的ルーティングは構成した内容を正確に実行し、パフォーマンスの最適化は考慮されません。 
+>[!NOTE]
+>パフォーマンス ルーティングと地理的ルーティングの両方の機能を必要とするシナリオがあるかもしれません。このようなシナリオの場合、入れ子になったプロファイルの選択が最適な場合があります。 たとえば、北米からのすべてのトラフィックを米国内にエンドポイントがある入れ子になったプロファイルに送信する地理的ルーティングを使用して親プロファイルを設定し、パフォーマンス ルーティングを使用してその設定内の最適なエンドポイントにこれらのトラフィックを送信できます。 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Traffic Manager の地理的ルーティングがサポートされる地域を教えてください。 
 Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新の状態に保たれ、変更があれば反映されます。また、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、同じ情報をプログラムで取得することもできます。 
@@ -331,6 +339,9 @@ Traffic Manager の監視設定は、プロファイル レベルで行われま
 エンドポイントに対して実行される Traffic Manager の正常性チェックの回数は以下によって異なります。
 - 監視間隔に設定した値 (間隔が短いほど、特定の期間にエンドポイントに到達する要求の数が増えます)。
 - 正常性チェックの実行元である場所の数 (正常性チェックの実行元になる IP アドレスは、前の FAQ に記載されています)。
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>いずれかのエンドポイントがダウンした場合に通知を受ける方法を教えてください。 
+Traffic Manager が提供しているメトリックの 1 つにプロファイルのエンドポイントの正常性状態があります。 プロファイル内のすべてのエンドポイントの集計として (たとえば、お使いのエンドポイントの 75% が正常) またはエンドポイントごとに正常性を確認できます。 Traffic Manager のメトリックは Azure Monitor で公開されていて、[アラート機能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を使用して、お使いのエンドポイントの正常性状態に変化があった場合に通知を受けることができます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager の入れ子になったプロファイル
 

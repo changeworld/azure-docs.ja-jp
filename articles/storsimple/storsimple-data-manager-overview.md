@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/26/2018
+ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271906"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652010"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -82,10 +82,9 @@ Data Manager のリージョンがジョブ定義のリージョンと異なる�
 
 ![異なるリージョンのサービスとジョブ定義](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
 
-## <a name="gdpr-compliance"></a>GDPR コンプライアンス
+## <a name="managing-personal-information"></a>個人情報の管理
 
-[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR には、個人情報を収集、格納、および使用する方法に関する多くの要件が含まれています。 GDPR の規則は、EU で運営され、EU の居住者に関係するデータを収集して分析する企業、政府機関、およびその他の組織に課されます。 StorSimple Data Manager は GDPR に準拠しています。 Data Manager サービスでは、個人データは収集されません。
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+StorSimple データ マネージャーは、個人情報の収集も表示もしません。 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

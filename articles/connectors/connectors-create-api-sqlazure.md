@@ -1,32 +1,28 @@
 ---
 title: SQL Server または Azure SQL Database に接続する - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps からオンプレミスの SQL Server クラウド内の Azure SQL Databaseへの接続を作成します
-services: logic-apps
-documentationcenter: ''
+description: Azure Logic Apps を使用してワークフローを自動化することにより、オンプレミスまたはクラウド内の SQL データベースにアクセスしてそれを管理する方法です
 author: ecfan
-manager: cfowler
-editor: ''
-tags: connectors
-ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 05/15/2018
+manager: jeconnoc
 ms.author: estfan
-ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.date: 05/15/2018
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164800"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296290"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>SQL Server または Azure SQL Database に接続する - Azure Logic Apps
 
-この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 その方法で、データを管理するためのタスクとワークフローを自動化するロジック アプリを作成できます。 コネクタは、[オンプレミスの SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と[クラウド内の Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)の両方で動作します。 
+この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 ロジック アプリを作成することによって、SQL データとリソースを管理するタスク、プロセス、ワークフローを自動化できます。 コネクタは、[オンプレミスの SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と[クラウド内の Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)の両方で動作します。 
 
-SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリをビルドできます。 ロジック アプリは、データの取得、挿入、または削除も実行でき、さらに SQL クエリまたはストアド プロシージャも実行できます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、電子メール アラートを送信するロジック アプリをビルドできます。
+SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリを作成できます。 ロジック アプリは、データの取得、挿入、削除のほか、SQL クエリやストアド プロシージャを実行することもできます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、電子メール アラートを送信するロジック アプリをビルドできます。
 
 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。 コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server コネクタ リファレンス</a>に関する記事を参照してください。
 

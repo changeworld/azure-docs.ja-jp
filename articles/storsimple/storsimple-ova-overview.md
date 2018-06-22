@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651207"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -86,7 +87,7 @@ StorSimple Virtual Array は、アクセス頻度の低いデータに最適で�
 
 StorSimple Virtual Array は、高可用性を必要とするワークロードには適していません。 仮想アレイは、ソフトウェア更新プログラムがインストールされるときに、ダウンタイムが発生する単一ノードのデバイスです。 管理者は、30 分のメンテナンス時間を 1 年あたり 3 ～ 4 回計画する必要があります。
 
-## <a name="workflows"></a>ワークフロー
+## <a name="workflows"></a>Workflows
 
 StorSimple Virtual Array は、次のワークフローに特に適してします。
 
@@ -206,10 +207,9 @@ StorSimple では、重複除去とデータ圧縮を使用して、クラウド
 
 StorSimple のデータ保護機能を使用すると、オンデマンド バックアップを作成できます。 また、既定のバックアップ スケジュールにより、データが毎日バックアップされます。 バックアップは増分スナップショットの形で作成され、クラウドに保存されます。 前回のバックアップ以降の変更だけを記録するスナップショットを作成し、すばやく復元できます。 これらのスナップショットは、セカンダリ ストレージ システム (テープ バックアップなど) に代わるものであり、必要に応じてデータセンターまたは代替サイトにデータを復元することが可能となるため、ディザスター リカバリー シナリオで非常に重要になります。
 
-## <a name="gdpr-compliance"></a>GDPR コンプライアンス
-[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR には、個人情報を収集、格納、および使用する方法に関する多くの要件が含まれています。 GDPR の規則は、EU で運営され、EU の居住者に関係するデータを収集して分析する企業、政府機関、およびその他の組織に課されます。
+## <a name="managing-personal-information"></a>個人情報の管理
 
-仮想シリーズの StorSimple デバイス マネージャーは GDPR に準拠しています。 個人情報が収集され、サービスで表示される 2 つのキー インスタンスが存在します。
+仮想シリーズの StorSimple デバイス マネージャーは、2 つのキー インスタンスに個人情報を収集します。
  - ユーザーのメール アドレスが構成されているアラート ユーザー設定。 この情報は、管理者がクリアできます。 
  - 共有に存在するデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、エクスポートできるようになります。 共有が削除されると、この一覧も削除されます。
 

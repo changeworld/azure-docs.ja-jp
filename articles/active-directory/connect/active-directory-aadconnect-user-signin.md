@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 968636848b9cba9c0976aa366952e56838623cc4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055088"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698817"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -48,6 +49,8 @@ Office 365、SaaS アプリケーション、およびその他の Azure AD ベ�
 オンプレミスの Multi-factor Authentication ソリューションを有効化する。|||○|
 
 * 軽量エージェント経由。
+
+認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/azure-ad-choose-authn.md)」を参照してください。
 
 ### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
 パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービスのパスワード リセットを有効にできます。
@@ -122,7 +125,7 @@ Azure AD のサインイン エクスペリエンスは、同期するユーザ�
 Azure AD Connect は、ドメインに対して定義されているUPN サフィックスをリストし、それらを Azure AD 内のカスタム ドメインと照合しようとします。 その後、ユーザーが実行するべき適切な操作を支援します。
 Azure AD のサインイン ページには、オンプレミスの Active Directory に対して定義されている UPN サフィックスの一覧と、各サフィックスの状態が表示されます。 状態値は、次のいずれかになります。
 
-| State | [説明] | 必要な対処 |
+| State | 説明 | 必要な対処 |
 |:--- |:--- |:--- |
 | Verified |Azure AD Connect が、Azure AD で一致する確認済みのドメインを検出しました。 このドメインのすべてのユーザーは、オンプレミスの資格情報を使用してサインインできます。 |対処は必要ありません。 |
 | 未確認 |Azure AD Connect が Azure AD 内の一致するカスタム ドメインを検出しましたが、そのドメインはまだ確認されていません。 ドメインが確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、同期後に既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [Azure AD でカスタム ドメインを確認します。](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303945"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831637"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -73,7 +73,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 次に、Azure AD 内のアプリケーション ロールを使って Blockchain Workbench 管理者を指定するように、アプリケーション マニフェストを変更する必要があります。  アプリケーション マニフェストについて詳しくは、「[Azure Active Directory アプリケーション マニフェスト](../active-directory/develop/active-directory-application-manifest.md)」をご覧ください。
 
 1. 登録したアプリケーションの詳細ウィンドウで **[マニフェスト]** を選びます。
-2. GUID を生成します。 PowerShell コマンド `[guid]::NewGuid()` またはオンライン ツールを使って、GUID を生成できます。 
+2. GUID を生成します。 PowerShell コマンド [guid] :: NewGuid () または New-GUID コマンドレットを使用して、GUID を生成することができます。 GUID ジェネレーター Web サイトを使用することもできます。
 3. マニフェストの **appRoles** セクションを更新します。 [マニフェストの編集] ウィンドウで、**[編集]** を選び、`"appRoles": []` を提供された JSON に置き換えます。 忘れずに、**id** フィールドの値を、生成した GUID に置き換えてください。 
 
     ``` json
@@ -133,7 +133,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     |Setting  | 値  |
     |---------|---------|
-    | [説明] | `Service` |
+    | 説明 | `Service` |
     | Expires | 有効期限を選びます |
 
 4. **[保存]** を選択します。 
@@ -182,7 +182,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure Blockchain Workbench を作成する](media/blockchain-workbench-deploy/blockchain-workbench-settings-basic.png)
 
-    | Setting | [説明]  |
+    | Setting | 説明  |
     |---------|--------------|
     | Resource prefix (リソース プレフィックス) | この展開の短い一意識別子です。 この値は、リソースの名前付けのベースとして使われます。 |
     | VM ユーザー名 | このユーザー名は、すべての仮想マシン (VM) の管理者として使われます。 |
@@ -191,9 +191,9 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
     | Database password (データベース パスワード) / Confirm database password (データベース パスワードの確認) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 |
     | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、**[場所]** 設定と一致させる必要があります。 |
-    | [サブスクリプション] | 展開に使う Azure サブスクリプションを指定します。 |
+    | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
-    | 場所 | フレームワークを展開するリージョンを指定します。 |
+    | リージョン | フレームワークを展開するリージョンを指定します。 |
 
 6.  **[OK]** を選んで、基本設定の構成セクションを完了します。
 
@@ -201,7 +201,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure AD のセットアップ](media/blockchain-workbench-deploy/blockchain-workbench-settings-aad.png)
 
-    | Setting | [説明]  |
+    | Setting | 説明  |
     |---------|--------------|
     | ドメイン名 | 前提条件の「[テナントのドメイン名を取得する](#get-tenant-domain-name)」セクションで収集した Azure AD テナントを使います。 |
     | アプリケーション ID | 前提条件の「[アプリケーション ID を取得する](#get-application-id)」セクションで収集した Blockchain クライアント アプリの登録のアプリケーション ID を使います。 |
@@ -214,7 +214,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![ネットワークとパフォーマンスの設定](media/blockchain-workbench-deploy/blockchain-workbench-settings-network.png)
 
-    | Setting | [説明]  |
+    | Setting | 説明  |
     |---------|--------------|
     | Number of blockchain nodes (Blockchain ノードの数) | ネットワークに展開する Ethereum PoA バリデーター ノードの数を選びます。 |
     | Storage performance (ストレージのパフォーマンス) | Blockchain ネットワークの望ましい VM ストレージ パフォーマンスを選びます。 |
@@ -226,7 +226,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure Monitor](media/blockchain-workbench-deploy/blockchain-workbench-settings-oms.png)
 
-    | Setting | [説明]  |
+    | Setting | 説明  |
     |---------|--------------|
     | 監視 | Blockchain ネットワークを監視するために Azure Monitor を有効にするかどうかを選択します。 |
     | Connect to existing Log Analytics instance (既存の Log Analytics インスタンスに接続する) | 既存の Log Analytics インスタンスを使用するか、新しいインスタンスを作成するかを選択します。 既存のインスタンスを使用する場合は、ワークスペース ID とプライマリ キーを入力します。 |

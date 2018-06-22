@@ -1,13 +1,14 @@
 ---
-title: "Azure Active Directory 参加済みデバイスの設定 | Microsoft Docs"
-description: "Azure Active Directory 参加済みデバイスの設定方法について説明します。"
+title: Azure Active Directory 参加済みデバイスの設定 | Microsoft Docs
+description: Azure Active Directory 参加済みデバイスの設定方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260931"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Azure Active Directory 参加済みデバイスの設定
 
@@ -47,10 +49,14 @@ Windows 10 デバイスを参加させるには、デバイスを登録できる
 
 - フェデレーション ユーザーの場合は、資格情報を使用してサインインする必要があります。
 
+- フェデレーションされている場合、ID プロバイダーで必ず WS-Fed および WS-Trust ユーザー名/パスワード エンドポイントがサポートされている必要があります。 これは、バージョン 1.3 または 2005 です。 このプロトコルのサポートは、デバイスの Azure AD への参加と、パスワードを使用したデバイスのログオンの両方で必要です。 
+
+
+
 
 ## <a name="joining-a-device"></a>デバイスを参加させる
 
-このセクションでは、Windows 10 デバイスを Azure AD に参加させる手順を示します。 Azure AD にデバイスが正常に参加すると、**[職場または学校にアクセスする]** ダイアログの **[Connected to \<your Azure AD\>]\(<ユーザーの Azure AD> に接続中\)** エントリで、そのことが示されます。
+このセクションでは、Windows 10 デバイスを Azure AD に参加させる手順を示します。 正常に参加したデバイスは、**[\<ご利用の Azure AD\> に接続されています]** で表示されます。
 
 ![接続中](./media/device-management-azuread-joined-devices-setup/13.png)
 
@@ -59,7 +65,7 @@ Windows 10 デバイスを参加させるには、デバイスを登録できる
 
 1. **[スタート]** メニューの **[設定]** をクリックします。
 
-    ![[設定]](./media/device-management-azuread-joined-devices-setup/01.png)
+    ![設定](./media/device-management-azuread-joined-devices-setup/01.png)
 
 2. **[アカウント]** をクリックします。
 
@@ -119,7 +125,7 @@ Azure AD ポータルでデバイスの設定を確認することもできま�
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、「 
+詳細については、次を参照してください。 
 
 - [Azure Active Directory のデバイス管理の概要](device-management-introduction.md)
 - [Azure Portal によるデバイスの管理](device-management-azure-portal.md)

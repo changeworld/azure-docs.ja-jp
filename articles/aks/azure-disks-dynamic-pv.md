@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3841222d08b23f43f69e77fa43c469793b70ce63
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801383"
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Azure ディスクを含む永続ボリューム
 
@@ -37,11 +38,14 @@ default (default)   kubernetes.io/azure-disk   1h
 managed-premium     kubernetes.io/azure-disk   1h
 ```
 
+> [!NOTE]
+> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S50 または P50 ディスクの 4 TiB までです。 さらに、Premium 管理ディスクのスループットおよび IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+
 ## <a name="create-persistent-volume-claim"></a>永続ボリューム要求の作成
 
 永続ボリューム要求 (PVC) を使用して、ストレージ クラスに基づいてストレージを自動的にプロビジョニングします。 この場合、PVC は、事前作成されているストレージ クラスのいずれかを使用して、標準のまたはプレミアムな Azure 管理ディスクを作成できます。
 
-`azure-premimum.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
+`azure-premium.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
 注釈に `managed-premium` ストレージ クラスが指定されていることと、要求ではサイズ `5GB` のディスクを `ReadWriteOnce` アクセスで要求していることを書き留めておきます。
 
@@ -63,7 +67,7 @@ spec:
 [kubectl apply][kubectl-apply] コマンドを使用して、永続ボリューム要求を作成します。
 
 ```azurecli-interactive
-kubectl apply -f azure-premimum.yaml
+kubectl apply -f azure-premium.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>永続ボリュームの使用
@@ -103,16 +107,17 @@ kubectl apply -f azure-pvc-disk.yaml
 Azure ディスクを使った Kubernetes 永続ボリュームについて、さらに詳しい情報を確認します。
 
 > [!div class="nextstepaction"]
-> [Azure ディスク対応の Kubernetes プラグイン][kubernetes-disk]
+> [Azure ディスク対応の Kubernetes プラグイン][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
+[azure-disk-volume]: azure-disk-volume.md 
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

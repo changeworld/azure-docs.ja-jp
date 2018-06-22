@@ -1,21 +1,21 @@
 ---
-title: カスタム ポリシーでのパスワードの複雑さ - Azure AD B2C | Microsoft Docs
-description: カスタム ポリシーでパスワードの複雑さの要件を構成する方法
+title: Azure Active Directory B2C のカスタム ポリシーのパスワードの複雑さ | Microsoft Docs
+description: カスタム ポリシーでパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 9f8d576cbc5c2bb2fe4109086b04711422911390
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: B2C
+ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712166"
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
 
@@ -76,7 +76,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ### <a name="defining-an-inputvalidation-element"></a>InputValidation 要素を定義する
 
-`InputValidation` は `PredicateReferences` の集計です。 `InputValidation` が成功するためには各 `PredicateReferences` が true である必要があります。  ただし、`PredicateReferences` 要素の内部では、`MatchAtLeast` と呼ばれる属性を使って、true を返す必要のある `PredicateReference` チェックの数を指定します。  必要に応じて、`HelpText` 属性を定義して、参照する `Predicate` 要素で定義されたエラー メッセージを上書きします。
+`InputValidation` は `PredicateReferences` の集計です。 `InputValidation` が成功するためには各 `PredicateReferences` が true である必要があります。  ただし、`PredicateReferences` 要素の内部では、`MatchAtLeast` と呼ばれる属性を使って、true を返す必要のある `PredicateReference` チェックの数を指定します。  必要に応じて、`HelpText` 属性を定義して、参照する `Predicate` 要素で定義されたエラー メッセージをオーバーライドします。
 
 ```XML
       <InputValidation Id="PasswordValidation">
@@ -94,7 +94,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ### <a name="defining-a-claimsschema-element"></a>ClaimsSchema 要素を定義する
 
-要求の種類 `newPassword` と `reenterPassword` は特別な要求と見なされるため、名前を変更しないでください。  UI は、これらの `ClaimType` 要素に基づいて、アカウントの作成時にユーザーが自分のパスワードを正しく再入力したことを検証します。  同じ `ClaimType` 要素を探すには、スターター パックで TrustFrameworkBase.xml を参照します。  この例の新しい点は、これらの要素を上書きして `InputValidationReference` を定義していることです。 この新しい要素の `ID` 属性は、定義した `InputValidation` 要素をポイントしています。
+要求の種類 `newPassword` と `reenterPassword` は特別な要求と見なされるため、名前を変更しないでください。  UI は、これらの `ClaimType` 要素に基づいて、アカウントの作成時にユーザーが自分のパスワードを正しく再入力したことを検証します。  同じ `ClaimType` 要素を探すには、スターター パックで TrustFrameworkBase.xml を参照します。  この例の新しい点は、これらの要素をオーバーライドして `InputValidationReference` を定義していることです。 この新しい要素の `ID` 属性は、定義した `InputValidation` 要素をポイントしています。
 
 ```XML
     <ClaimsSchema>

@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770742"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714114"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -54,7 +55,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 - デバイスの初回登録/参加は、ログオンまたはロック/ロック解除のいずれかのタイミングで試行するように構成されています。 タスク スケジューラのタスクによってトリガーされる 5 分間の待ち時間が生じる場合があります。 
 
-- オペレーティング システムの再インストールまたは手動での再登録により、Azure AD に新しい登録が作成されることがあります。この場合、Azure Portal の [ユーザー情報] タブに複数のエントリが表示されます。 
+- オペレーティング システムの再インストールまたは手動での再登録により、Azure AD に新しい登録が作成されることがあります。この場合、Azure portal の [ユーザー情報] タブに複数のエントリが表示されます。 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>手順 1: 登録状態を取得する 
 
@@ -89,7 +90,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
     
     - サインインしているユーザーがドメイン ユーザーでない場合 (ローカル ユーザーなど)。 ダウンレベルのデバイスでのハイブリッド Azure AD 参加は、ドメイン ユーザーに対してのみサポートされています。
     
-    - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、Azure AD URL への送信ネットワーク接続の問題が原因である可能性があります (前提条件を確認してください)。 また、多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMUTLIAUTHN がフェデレーション サーバーで構成されていない可能性があります (構成手順を確認してください)。 また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、Aut**oworkplace.exe** では、自動的にトークンを取得できなくなっていることも考えられます。
+    - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、Azure AD URL への送信ネットワーク接続の問題が原因である可能性があります。 また、多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMUTLIAUTHN がフェデレーション サーバーで構成されていない可能性があります。 また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、Aut**oworkplace.exe** では、自動的にトークンを取得できなくなっていることも考えられます。
     
     - 組織は Azure AD シームレス シングル サインオンを使用しており、デバイスの IE イントラネット設定には `https://autologon.microsoftazuread-sso.com` または `https://aadg.windows.net.nsatc.net` が存在せず、イントラネット ゾーンについて **[スクリプトを介したステータス バーの更新を許可する]** が有効にされていません。
 

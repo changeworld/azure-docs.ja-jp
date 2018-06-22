@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL のサーバーの概念"
-description: "この記事では、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。"
+title: Azure Database for PostgreSQL のサーバーの概念
+description: この記事では、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/22/2018
+ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640015"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
 この記事では、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -45,13 +46,22 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |
 | **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、使用中のサーバーおよびそのデータベースへのすべてのアクセスを遮断します。 「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」を参照してください。 |
 
-## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
+## <a name="managing-your-server"></a>サーバーの管理
 Azure Database for PostgreSQL サーバーを管理するには、[Azure Portal](https://portal.azure.com) または [Azure CLI](/cli/azure/postgres) を使用します。
+
+サーバーを作成しているときに、管理者ユーザーの資格情報を設定します。 管理者ユーザーは、サーバー上の最上位の特権ユーザーです。 これは、ロール azure_pg_admin に属します。 このロールには、完全なスーパー ユーザーのアクセス許可がありません。 
+
+PostgreSQL スーパー ユーザー属性は、管理対象サービスに属している azure_superuser に割り当てられます。 このロールへのアクセス権がありません。
+
+Azure Database for PostgreSQL サーバーには 2 つの既定のデータベースがあります。 
+- **postgres** - サーバーが作成された後で接続できる既定のデータベース。
+- **azure_maintenance** - このデータベースは、ユーザーの操作から管理対象サービスを提供するプロセスを分離するために使用します。 このデータベースへのアクセス権がありません。
+
 
 ## <a name="server-parameters"></a>サーバー パラメーター
 PostgreSQL サーバー パラメーターは、サーバーの構成を決定します。 Azure Database for PostgreSQL では、Azure Portal または Azure CLI を使用してパラメーターの一覧を表示および編集できます。 
 
-Postgres の管理対象サービスとして、Azure Database for PostgreSQL 内の構成可能なパラメーターはローカル Postgres インスタンス内のパラメーターのサブセットです (Postgres パラメーターについて詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/runtime-config.html)をご覧ください)。 Azure Database for PostgreSQL サーバーは、作成時に各パラメーターに対して既定値で有効化されます。 変更を反映するためにサーバーの再起動やスーパー ユーザーのアクセス権が必要なパラメーターは、ユーザーが構成することはできません。
+Postgres の管理対象サービスとして、Azure Database for PostgreSQL 内の構成可能なパラメーターはローカル Postgres インスタンス内のパラメーターのサブセットです (Postgres パラメーターについて詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/runtime-config.html)をご覧ください)。 Azure Database for PostgreSQL サーバーは、作成時に各パラメーターに対して既定値で有効化されます。 変更を反映するためにサーバーの再起動やスーパー ユーザーのアクセス権が必要な一部のパラメーターは、ユーザーが構成することはできません。
 
 
 ## <a name="next-steps"></a>次の手順

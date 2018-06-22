@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: d04bfe601760dcbf832aeec0cc66d8e1eda51178
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ed225206e512ff64835d4d90b35bd44800e0a559
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304343"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595378"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM MSI を使用して Azure Cosmos DB にアクセスする
 
@@ -210,4 +210,9 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 
 ## <a name="next-steps"></a>次の手順
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
+このチュートリアルでは、Cosmos DB にアクセスするための Windows マネージド サービス ID の作成方法について説明します。  Cosmos DB の詳細については、以下を参照してください。
+
+> [!div class="nextstepaction"]
+>[Azure Cosmos DB の概要](/azure/cosmos-db/introduction)
+
+

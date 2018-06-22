@@ -1,22 +1,19 @@
 ---
 title: リモート監視ソリューションでのデバイス管理 - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューションに接続されているデバイスを管理する方法を示します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3ad6de2a0ebcd257ca90ea3c5c69988d4c1afd7a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 0f177c3a8746f801e52cdac6cb2189e9cc28e1e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627281"
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -50,7 +47,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ![シミュレートされたエンジン デバイスのプロビジョニング](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine.png)
 
-*物理*デバイスをプロビジョニングする方法については、「[Connect your device to the remote monitoring solution accelerator](iot-accelerators-connecting-devices-node.md)」 (デバイスをリモート監視ソリューション アクセラレータに接続する) を参照してください。
+*物理*デバイスをプロビジョニングする方法については、「[お使いのデバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)](iot-accelerators-connecting-devices-node.md)」を参照してください。
 
 ## <a name="test-the-simulated-device"></a>シミュレートされたデバイスのテスト
 
@@ -113,6 +110,6 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 * [デバイスの問題をトラブルシューティングして修復する](iot-accelerators-remote-monitoring-maintain.md)。
 * [シミュレートされたデバイスを使用してソリューションをテストする](iot-accelerators-remote-monitoring-test.md)。
-* [デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices-node.md)。
+* [お使いのデバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)](iot-accelerators-connecting-devices-node.md)
 
 <!-- Next tutorials in the sequence -->

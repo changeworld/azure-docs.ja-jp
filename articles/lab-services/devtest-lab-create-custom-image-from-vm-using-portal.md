@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c98918dcd08c2e8ec72cc995c633b8320da8057
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635918"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM からカスタム イメージを作成する
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 05/07/2018
 
     ![カスタム イメージのメニュー項目の作成](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. **[カスタム イメージ]** ウィンドウで、カスタム イメージの名前と説明を入力します。 この情報は、VM を作成する際にベースの一覧に表示されます。
+1. **[カスタム イメージ]** ウィンドウで、カスタム イメージの名前と説明を入力します。 この情報は、VM を作成する際にベースの一覧に表示されます。 カスタム イメージには、仮想マシンに接続された OS ディスクとすべてのデータ ディスクが含まれます。
 
     ![[カスタム イメージの作成] ウィンドウ](./media/devtest-lab-create-template/create-custom-image-blade.png)
 

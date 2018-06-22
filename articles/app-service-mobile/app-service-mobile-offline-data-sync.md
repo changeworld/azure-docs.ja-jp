@@ -1,10 +1,10 @@
 ---
-title: "Azure モバイル アプリでのオフライン データ同期 | Microsoft Docs"
-description: "Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
+title: Azure モバイル アプリでのオフライン データ同期 | Microsoft Docs
+description: Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597979"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure モバイル アプリでのオフライン データ同期
 ## <a name="what-is-offline-data-sync"></a>オフライン データ同期について
@@ -42,7 +43,7 @@ ms.lasthandoff: 01/04/2018
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
 * [Xamarin.Forms: オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [ユニバーサル Windows プラットフォームでオフライン同期を有効にする]
+* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
 
 ## <a name="what-is-a-sync-table"></a>同期テーブルについて
 Azure Mobile クライアント SDK では、"/tables" エンドポイントにアクセスするために `IMobileServiceTable` (.NET クライアント SDK) や `MSTable` (iOS クライアント) などのインターフェイスを提供しています。 これらの API は直接 Azure モバイル アプリ バックエンドに接続しているため、クライアント デバイスのネットワーク接続がなくなると機能しなくなります。
@@ -52,7 +53,7 @@ Azure Mobile クライアント SDK では、"/tables" エンドポイントに�
 ## <a name="what-is-a-local-store"></a>ローカル ストアについて
 ローカル ストアは、クライアント デバイス上のデータ永続化レイヤーです。 Azure モバイル アプリ クライアントの SDK では、既定のローカル ストアの実装を提供します。 ローカル ストアのベースは、Windows、Xamarin、および Android では SQLite です。 iOS では Core Data です。
 
-Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。 詳細については、[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]方法に関するページを参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
+Windows Phone または Microsoft Store で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。 詳細については、[ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]方法に関するページを参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
 
 開発者は、独自のローカル ストアを実装することもできます。 たとえば、データを暗号化された形式でモバイル クライアント上に保存する必要がある場合は、SQLCipher を使用して暗号化を行うローカル ストアを定義できます。
 
@@ -92,7 +93,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 * [iOS: オフライン同期を有効にする]
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
-* [ユニバーサル Windows プラットフォームでオフライン同期を有効にする]
+* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
 
 <!-- Links -->
 [.NET クライアント SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
@@ -100,4 +101,4 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [iOS: オフライン同期を有効にする]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

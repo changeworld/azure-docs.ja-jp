@@ -1,33 +1,29 @@
 ---
-title: "グループ化されたアクションの状態に基づいてステップを実行する - Azure Logic Apps | Microsoft Docs"
-description: "アクションをスコープにグループ化し、グループの状態に基づいてステップを実行します"
+title: グループの状態に基づいてアクションを実行するスコープを追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps のグループ アクションの状態に基づいてワークフロー アクションを実行するスコープを作成する方法です
 services: logic-apps
-keywords: "ブランチ、並列処理"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 052af45962f442e96ca28f05ffaa1b9814b2588b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 1258175eb3d28d39be8be08498ba8d2e0998aa43
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298816"
 ---
-# <a name="scopes-run-steps-based-on-group-status-in-logic-apps"></a>スコープ: グループの状態に基づいてロジック アプリでステップを実行する
+# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Azure Logic Apps のグループの状態に基づいてワークフロー アクションを実行するスコープを作成する
 
-別のアクションのグループが成功または失敗した後にのみステップを実行するには、そのグループを "*スコープ*" の中に配置します。 この構造は、アクションを論理グループとして整理し、そのグループの状態を評価して、そのスコープの状態に基づいてアクションを実行するときに便利です。 そのスコープ内のすべてのアクションの実行が完了すると、スコープも独自の状態を取得します。 たとえば、[例外とエラー処理](../logic-apps/logic-apps-exception-handling.md#scopes)を実装するときにスコープを使用できます。 
+別のアクションのグループが成功または失敗した後にのみアクションを実行するには、そのアクションを "*スコープ*" の中にグループ化します。 この構造は、アクションを論理グループとして整理し、そのグループの状態を評価して、そのスコープの状態に基づいてアクションを実行するときに便利です。 そのスコープ内のすべてのアクションの実行が完了すると、スコープも独自の状態を取得します。 たとえば、[例外とエラー処理](../logic-apps/logic-apps-exception-handling.md#scopes)を実装するときにスコープを使用できます。 
 
-スコープの状態を調べるには、ロジック アプリの実行状態を判定するのと同じ基準 ("Succeeded (成功)"、"Failed (失敗)"、"Cancelled (キャンセル)" など) を使用できます。 既定では、スコープのすべてのアクションが成功すると、そのスコープの状態は "Succeeded (成功)" とマークされます。 ただし、スコープ内のいずれかのアクションが失敗するかキャンセルされると、そのスコープの状態は "Failed (失敗)" とマークされます。 スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
+スコープの状態を調べるには、ロジック アプリの実行状態を判定するのと同じ基準 ("成功"、"失敗"、"取り消し済み" など) を使用できます。 既定では、スコープのすべてのアクションが成功すると、そのスコープの状態は "成功" とマークされます。 ただし、スコープ内のいずれかのアクションが失敗するかキャンセルされると、そのスコープの状態は "失敗" とマークされます。 スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
-一例として、特定のアクションを実行するスコープと、そのスコープの状態をチェックする条件を使用する、基本のロジック アプリを紹介します。 スコープ内のいずれかのアクションが失敗または予期せず終了した場合、そのスコープはそれぞれ "Failed (失敗)" または "Aborted (中止)" とマークされ、ロジック アプリが [Scope failed]\(スコープが失敗した場合\) のメッセージを送信します。 スコープ内のすべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。
+一例として、特定のアクションを実行するスコープと、そのスコープの状態をチェックする条件を使用する、基本のロジック アプリを紹介します。 スコープ内のいずれかのアクションが失敗または予期せず終了した場合、そのスコープはそれぞれ "失敗" または "Aborted (中止)" とマークされ、ロジック アプリが [Scope failed]\(スコープが失敗した場合\) のメッセージを送信します。 スコープ内のすべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。
 
 ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -37,7 +33,7 @@ ms.lasthandoff: 03/05/2018
 
 * Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
-* Logic Apps でサポートされる任意の電子メール プロバイダーの電子メール アカウント。 この例では、Outlook.com を使用します。別のプロバイダーを使用する場合、フロー全般は変わりませんが、UI の表示が異なります。
+* Logic Apps でサポートされる任意の電子メール プロバイダーの電子メール アカウント。 この例では、Outlook.com を使用します。 別のプロバイダーを使用する場合、フロー全般は変わりませんが、UI の表示が異なります。
 
 * Bing 地図のキー。 このキーを取得するには、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing 地図のキーの取得</a>に関する記事をご覧ください。
 
@@ -63,7 +59,7 @@ ms.lasthandoff: 03/05/2018
    ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
    > [!TIP]
-   > これらのステップを進め、ビューを視覚的に簡略化し、デザイナーで各アクションの詳細を非表示にするには、各アクションのシェイプを折りたたみます。
+   > ビューを視覚的に簡略化し、デザイナーで各アクションの詳細を非表示にするには、これらのステップを進むにつれ各アクションのシェイプを折りたたみます。
 
 3. **[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)** アクションを追加します。 
 
@@ -89,8 +85,8 @@ ms.lasthandoff: 03/05/2018
       | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通情報を加味した移動時間など) を選択します。 この例では、値 "timeWithTraffic" を使用します。 | 
       | **距離単位** | <*your-preference*> | ルートを計算する距離の単位を入力します。 この例では、値 "Mile (マイル)" を使用します。 | 
       | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
-      | **Transit Date-Time (交通機関の日時)** | なし | 移動手段が交通機関の場合のみ適用されます。 | 
-      | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 移動手段が交通機関の場合のみ適用されます。 | 
+      | **Transit Date-Time (交通機関の日時)** | なし | 乗り換えモードの場合のみ適用されます。 | 
+      | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 乗り換えモードの場合のみ適用されます。 | 
       ||||  
 
 4. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする条件を追加します。 この例では、この画像の下の手順に従います。

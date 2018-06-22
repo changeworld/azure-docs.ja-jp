@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 2c7dd89d9c2e5d50f2533101499a6e50e52047b3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636608"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。
@@ -327,7 +328,7 @@ Key Vault 証明書が作成されると、アドレス指定可能なキーと�
 
 Key Vault 証明書には次の属性があります。  
 
--   *enabled*: boolean、省略可能、既定値は **true**。 この属性を指定して、証明書のデータをシークレットとして取得できるか、またはキーとして操作可能かを示すことができます。 この属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と exp の間で操作が発生する場合、enabled が true に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外側の操作は、自動的に禁止されます。  
+-   *enabled*: boolean、省略可能、既定値は **true**。 この属性を指定して、証明書のデータをシークレットとして取得できるか、またはキーとして操作可能かを示すことができます。 この属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、enabled が true に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外側の操作は、自動的に禁止されます。  
 
 応答に含まれる追加の読み取り専用属性があります。
 

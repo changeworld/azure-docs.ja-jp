@@ -4,7 +4,7 @@ description: 顧客は、Azure CDN のログ分析を有効にすることがで
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: rli
-ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/06/2018
+ms.author: v-deasim
+ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261306"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -36,7 +37,7 @@ Azure 診断ログにより、基本的な使用メトリックを CDN エンド
 - イベント ハブへのデータのエクスポートと、他の Azure サービスのデータとの関連付け。
 - ログ分析へのデータのエクスポートと、自分の Log Analytics ワークスペースでのデータ表示
 
-次の図は、データの一般的な CDN コア分析ビューを示しています。
+以下の図は、データの通常の CDN コア分析ビューを示します。
 
 ![ポータル - 診断ログ](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
@@ -44,60 +45,87 @@ Azure 診断ログにより、基本的な使用メトリックを CDN エンド
 
 診断ログの詳細については、[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)に関するページを参照してください。
 
-## <a name="enable-logging-with-azure-portal"></a>Azure ポータルを使用したログの有効化
+## <a name="enable-logging-with-the-azure-portal"></a>Azure Portal を使用したログの有効化
 
 CDN コア分析を使用してログ記録を有効にするには、次の手順に従います。
 
-[Azure ポータル](http://portal.azure.com)にサインインします。 ワークフローで CDN をまだ有効にしていない場合は、続行する前に [Azure CDN を有効にしてください](cdn-create-new-endpoint.md)。
+[Azure ポータル](http://portal.azure.com)にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
 
-1. ポータルの、**CDN プロファイル**に移動します。
-2. CDN プロファイルを選択して、**診断ログ**を有効にする CDN エンドポイントを選択します。
+1. Azure Portal で、**CDN プロファイル** に移動してください。
+
+2. Azure Portal で、CDN プロファイルを探すかダッシュボードから選択します。 次に、診断ログを有効にする CDN エンドポイントを選択します。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. **[監視]** セクションで **[診断ログ]** を選択します。
+3. [監視] セクションで **[診断ログ]** を選択します。
+
+   **診断ログ** ページが表示されます。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
 ### <a name="enable-logging-with-azure-storage"></a>Azure Storage でログ記録を有効化する
+
+ストレージ アカウントを使ってログを保存するには、次の手順に従ってください。
     
-1. Azure Storage を使用してログを保存するには、**[ストレージ アカウントへのアーカイブ]** を選択し、**[CoreAnalytics]** を選択し、**[リテンション期間 (日数)]** で保持日数を選択します。 リテンション期間を 0 にすると、ログが無期限に保存されます。 
-2. 設定の名前を入力し、**[ストレージ アカウント]** をクリックします。 ストレージ アカウントを選択したら、**[保存]** をクリックします。
+1. **Name** には、診断ログ設定の名前を入力します。
+ 
+2. **ストレージ アカウントへのアーカイブ** を選択し、**CoreAnalytics** を選択します。 
 
-![ポータル - 診断ログ](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png)
+2. **データの保存期間 (日)** には、保存する日数を選択します。 リテンション期間を 0 にすると、ログが無期限に保存されます。 
 
-*図 2 - Azure Storage のログ記録*
+    ![ポータル - 診断ログ](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+
+3. **ストレージ アカウント**を選択します。
+
+    **ストレージ アカウントの選択**ページが表示されます。
+
+4. ドロップダウン リストから任意のストレージ アカウントを選択し、**OK**を選択します。
+
+    ![ポータル - 診断ログ](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+
+5. 診断ログの設定が終わったら、**保存**を選択します。
 
 ### <a name="logging-with-log-analytics"></a>Log Analytics によるログ記録
 
 Log Analytics を使用してログを保存するには、次の手順に従います。
 
-1. **[診断ログ]** ブレードで、**[Log Analytics への送信]** を選択します。 
+1. **診断ログ**ページで、**Log Analytics** への送信を選択します。 
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. **[構成]** をクリックしてログ分析のログ記録を構成します。 [OMS ワークスペース] ダイアログ ボックスで、前のワークスペースを選択するか、新しいワークスペースを作成します。
+2. **構成**を選択して Log Analytics ログ記録を構成します。 
+
+   **OMS ワークスペース** ページが表示されます。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. **[新しいワークスペースの作成]** をクリックします。
+3. **新しいワークスペースの作成**を選択します。
+
+    **OMS ワークスペース**ページが表示されます。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 新しい Log Analytics ワークスペース名を入力します。 Log Analytics ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
-5. 次に、既存のサブスクリプション、リソース グループ (新規または既存)、場所、および価格レベルを選択します。 また、この構成をダッシュボードにピン留めするオプションもあります。 **[OK]** をクリックして、構成を完了します。
+4. **OMS ワークスペース**に、OMS ワークスペースの名前を入力します。 OMS ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
+
+5. **サブスクリプション**には、ドロップダウン リストから既存のサブスクリプション名を選択します。 
+
+6. **リソース グループ**には、新しいリソース グループ名を作成するか既存の名前を選択します。
+
+7. **場所**には、リストから任意の場所を選択します。
+
+8. ログ構成をダッシュボードに保存する場合は、**ダッシュボードにピン留め**を選択します。 
+
+9. 構成を終了するには、**OK** をクリックします。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/08_Workspace-resource.png)
 
-5.  ワークスペースを作成した後は、[診断ログ] ウィンドウに戻ります。 新しいログ分析ワークスペースの名前を確認します。
+10. ワークスペースを作成したら、**診断ログ**ページに戻ります。 新しい Log Analytics ワークスペースの名前を確認します。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-    ログ分析の構成を設定したら、**[CoreAnalytics]** が選択されていることを確認します。
+11. **CoreAnalytics** を選択し**保存**をクリックします。
 
-6. **[Save]** をクリックします。
-
-7. 新しい Log Analytics ワークスペースを確認するには、Azure Portal のダッシュボードに移動し、Log Analytics ワークスペースの名前をクリックします。 Log Analytics ワークスペースを表示するには、[OMS Portal] タイルをクリックします。 
+12. 新しい Log Analytics ワークスペースを表示するには、CDN エンドポイント ページから**コア分析**を選択します。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
@@ -107,44 +135,42 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 ## <a name="enable-logging-with-powershell"></a>PowerShell を使用したログの有効化
 
-次の例は、Azure PowerShell コマンドレットを使用して診断ログを有効にする方法を示しています。
+以下の例は、Azure PowerShell コマンドレットによる診断ログを有効にする方法を示しています。
 
-### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントでの診断ログの有効化
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントの診断ログを有効にする
 
-まずログインしてサブスクリプションを選択します。
+1. ログインしてサブスクリプションを選択します。
 
     Connect-AzureRmAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
+2. ストレージ アカウントの診断ログを有効にするには、次のコマンドを入力します。
 
-ストレージ アカウントで診断ログを有効にするには、次のコマンドを使用します。
-
-```powershell
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
-```
-Log Analytics ワークスペースで診断ログを有効にするには、次のコマンドを使用します。
+    ```
 
-```powershell
+3. Log Analytics ワークスペースの診断ログを有効にするには、次のコマンドを入力します。
+
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
-```
-
-
+    ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Azure Storage からの診断ログの使用
 このセクションでは、CDN コア分析のスキーマと、これが Microsoft Azure Storage アカウントの内部でどのように編成されているかについて説明し、ログを CSV ファイルにダウンロードするためのサンプル コードを提供します。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーの使用
-Azure ストレージ アカウントからコア分析データにアクセスするには、最初にストレージ アカウントの内容にアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure ストレージ エクスプローラーです。 ツールをダウンロードするには、「[Azure Storage Explorer](http://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
+Azure ストレージ アカウントからコア分析データにアクセスするには、ストレージ アカウント内のコンテンツにアクセスするためのツールが必要です。 市場にはいくつかのツールがありますが、お勧めするツールは Microsoft Azure ストレージ エクスプローラーです。 ツールをダウンロードするには、「[Azure Storage Explorer](http://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
 
 1.  **Microsoft Azure ストレージ エクスプローラー**を開きます
 2.  ストレージ アカウントを見つけます
-3.  このストレージ アカウントの下にある **“BLOB コンテナー”** ノードに移動して、ノードを展開します
-4.  **“insights-logs-coreanalytics”** という名前のコンテナーを選択してダブルクリックします。
-5.  最初のレベルが **“resourceId=”** などで始まる結果が右側のウィンドウに表示されます。 **PT1H.json** というファイルが表示されるまでクリックを続けます。 パスの説明については、次のメモを参照してください。
-6.  BLOB の **PT1H.json** はそれぞれ特定の CDN エンドポイントまたはそのカスタム ドメインの 1 時間分の分析ログを表します。
-7.  この JSON ファイルの内容のスキーマについては、「コア分析ログのスキーマ」のセクションで説明しています
+3.  このストレージ アカウントで **Blob Containers** ノードを展開します。
+4.  *Insights-logs-coreanalytics* というコンテナーを選択します。
+5.  右側のページに結果が表示されます。まず第1レベルが *resourceId=* で表示されます。 *PT1H.json* ファイルにたどり着くまで各レベルを選択していきます。 パスの説明については、次の*Blob パス形式*メモを参照してください。
+6.  各 Blob *PT1H.json* ファイルは、特定の CDN エンドポイントまたはカスタム ドメインについての 1 時間の分析ログを表します。
+7.  この JSON ファイルのコンテンツのスキーマは、コア分析ログのセクション スキーマに説明されています。
 
 
 > [!NOTE]
@@ -156,7 +182,7 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 **フィールドの説明:**
 
-|値|[説明]|
+|値|説明|
 |-------|---------|
 |サブスクリプション ID    |GUID 形式の Azure サブスクリプションの ID。|
 |リソース グループ名 |CDN のリソースが属するリソース グループの名前。|
@@ -169,18 +195,18 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>CSV ファイルへのコア分析データのエクスポート
 
-コア分析に簡単にアクセスできるように、ツールのサンプル コードが用意されています。 このツールを使用すると、JSON ファイルをコンマ区切り形式のフラット ファイルにダウンロードし、それを使用してグラフやその他の集計を簡単に作成できます。
+コア分析に簡単にアクセスできるように、ツールのサンプル コードが用意されています。 このツールでは、JSON ファイルをプレーンなカンマ区切りファイル形式にダウンロードして、図や凝集の作成に使用できます。
 
 このツールを使用する方法を次に示します。
 
-1.  次の GitHub リンクを参照してください: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  次の GitHub リンクを参照してください: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  コードをダウンロードします。
 3.  指示に従ってコンパイルして構成します。
 4.  ツールを実行します。
 5.  生成される CSV ファイルには単純なフラット階層の分析データが示されています。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースからの診断ログの使用
-Log Analytics は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
+Log Analytics は、クラウドやオンプレミスの環境を監視する Azure サービスであり、可用性やパフォーマンスを維持できます。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
 
 Log Analytics を使用するには、Azure Log Analytics ワークスペースに対する[ログ記録を有効にする](#enable-logging-with-azure-storage)必要があります。これについては、この記事の前半で説明しています。
 
@@ -194,36 +220,36 @@ Log Analytics を使用するには、Azure Log Analytics ワークスペース�
 
 管理ソリューションを使用して、さまざまな方法でデータを表示できます。 管理ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)から取得できます。
 
-Azure Marketplace から各ソリューションの下にある **[Get it now (今すぐ入手する)]** リンクをクリックして管理ソリューションをインストールすることができます。
+各ソリューション下部の**今すぐ入手する**リンクを選択し、Azure マーケットプレースから管理ソリューションをインストールできます。
 
-### <a name="adding-a-log-analytics-cdn-management-solution"></a>Log Analytics CDN 管理ソリューションの追加
+### <a name="add-a-log-analytics-cdn-management-solution"></a>Log Analytics CDN 管理ソリューションを追加する
 
-管理ソリューションを追加するには、次の手順に従います。
+Log Analytics 管理ソリューションを追加するには、次の手順に従います。
 
-1.   まだ Azure ポータルにサインインしていない場合は Azure サブスクリプションを使用してサインインし、ダッシュボードに移動します。
+1.   Azure サブスクリプションで Azure Portal にサインインし、ダッシュボードに移動します。
     ![Azure ダッシュボード](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. **[新規]** ブレードの **[Marketplace]** で、**[監視 + 管理]** を選択します。
+2. **マーケットプレース** の**新規作成**ページで、**監視 + 管理**を選択します。
 
     ![マーケットプレース](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. **[監視 + 管理]** ブレードで、**[すべて表示]** をクリックします。
+3. **監視 + 管理**ページで、**すべて表示**を選択します。
 
     ![すべて表示](./media/cdn-diagnostics-log/15_See-all.png)
 
-4.  検索ボックスで CDN を検索します。
+4. 検索ボックスで CDN を検索します。
 
     ![すべて表示](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5.  **[Azure CDN Core Analytics]** を選択します。 
+5. **[Azure CDN Core Analytics]** を選択します。 
 
     ![すべて表示](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  **[作成]** をクリックすると、新しい Log Analytics ワークスペースを作成するか既存のものを使用するかを質問されます。 
+6. **作成**を選択すると、Log Analytics ワークスペースを新規作成するか、既存のものを使用するかを質問されます。 
 
     ![すべて表示](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7.  前に作成したワークスペースを選択します。 次に、オートメーション アカウントを追加する必要があります。
+7. 前に作成したワークスペースを選択します。 次に、オートメーション アカウントを追加する必要があります。
 
     ![すべて表示](./media/cdn-diagnostics-log/19_Add-automation.png)
 
@@ -231,7 +257,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
     ![すべて表示](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. オートメーション アカウントを作成した後、ソリューションを追加できます。 **[作成]** ボタンをクリックします。
+9. オートメーション アカウントを作成した後、ソリューションを追加できます。 **[作成]** ボタンを選択します。
 
     ![すべて表示](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -239,9 +265,9 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
     ![すべて表示](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    ワークスペースに移動するために作成した Log Analytics ワークスペースをクリックします。 
+    ワークスペースに移動するために作成した Log Analytics ワークスペースを選択します。 
 
-11. 新しいソリューションを確認するには、**[OMS Portal]** タイルをクリックします。
+11. **OMS ポータル**タイルを選択して、新しいソリューションを表示します。
 
     ![すべて表示](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -249,13 +275,13 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
     ![すべて表示](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    データのさまざまなビューを表示するには、いずれかのタイルをクリックします。
+    データに複数のビューを表示するにはタイルを 1 つ選択します。
 
     ![すべて表示](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     左右にスクロールすることで、データの個々のビューを表すその他のタイルを確認できます。 
 
-    いずれかのタイルをクリックすると、データの詳細が表示されます。
+    データに関する詳細を表示するにはタイルを 1 つ選択します。
 
      ![すべて表示](./media/cdn-diagnostics-log/26_Further-detail.png)
 
@@ -265,11 +291,11 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 
-**ビュー デザイナー**を使用して、データのビューをカスタマイズできます。 デザインを開始するには、Log Analytics ワークスペースに移動し、**[ビュー デザイナー]** タイルをクリックします。
+**ビュー デザイナー**を使用して、データのビューをカスタマイズできます。 デザインを開始するには、 Log Analytics　ワークスペースに移動し、**ビュー デザイナー**タイルを選択します。
 
 ![ビュー デザイナー](./media/cdn-diagnostics-log/27_Designer.png)
 
-グラフの種類をドラッグ アンド ドロップし、分析するデータの詳細を入力できます。
+グラフの種類をドラッグ アンド ドロップし、分析するデータの詳細を入力します。
 
 ![ビュー デザイナー](./media/cdn-diagnostics-log/28_Designer.png)
 
@@ -284,14 +310,14 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN コア分析での診断ログの種類
 
-現在のところ、CDN の POP/エッジから見た HTTP 応答の統計とエグレスの統計を示すメトリックを含むコア分析ログのみ提供されています。
+現在のところ、コア分析ログのみが提供されています。これには、CDN POPや CDN エッジから見た HTTP 応答の統計とエグレスの統計を示すメトリックが含まれます。
 
 ### <a name="core-analytics-metrics-details"></a>コア分析メトリックの詳細
-次の表は、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard/Premium from Verizon** のコア分析のログで使用できるメトリックの一覧を示しています。 プロバイダーによっては使用できないメトリックがありますが、違いはほとんどありません。 この表には、指定したメトリックがプロバイダーで使用できるかどうかも示しています。 メトリックを使用できるのは、トラフィックが存在する CDN エンドポイントに対してのみであることに注意してください。
+次の表は、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard/Premium from Verizon** のコア分析のログで使用できるメトリックの一覧を示しています。 プロバイダーによっては使用できないメトリックがありますが、違いはほとんどありません。 この表には、指定したメトリックがプロバイダーで使用できるかどうかも示しています。 メトリックを使用できるのは、トラフィックが存在する CDN エンドポイントに対してのみである。
 
 
-|メトリック                     | [説明] | Microsoft | Verizon | Akamai |
-|---------------------------|-------------|----------|---------|--------|
+|メトリック                     | 説明 | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | この期間中にヒットした要求の合計数。 | [はい] | はい |[はい] |
 | RequestCountHttpStatus2xx | 2xx の HTTP コード (200、202 など) になった要求の合計数。 | [はい] | はい |[はい] |
 | RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数。 | [はい] | はい |[はい] |
@@ -304,10 +330,10 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 | RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | [はい] | いいえ   |[はい] |
 | RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | [はい] | いいえ   |[はい] |
 | RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | [はい] | [はい] | いいえ   |
-| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 これは、クライアントに最も近い POP でアセットが見つからなかったため、配信元から取得されたことを意味します。 | [はい] | [はい] | いいえ  |
+| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 キャッシュ ミスとは、クライアントに最も近い POP でアセットが見つからず、元のドメインから取得されたことを意味します。 | [はい] | [はい] | いいえ  |
 | RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | [はい] | [はい] | いいえ  |
 | RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
-| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ  | [はい] | いいえ   |
+| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ  | はい | いいえ   |
 | EgressTotal | 送信データ転送 (GB) | [はい] |はい |[はい] |
 | EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | [はい] | [はい] | いいえ   |
 | EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
@@ -318,7 +344,7 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 | EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | [はい] | [はい] | いいえ  |
 | EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | [はい] | [はい] | いいえ  |
 | EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
-| EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ  | [はい] | いいえ  |
+| EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ  | はい | いいえ  |
 
 * 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
 

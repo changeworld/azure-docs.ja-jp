@@ -13,14 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/06/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30763f88a7d78678411abd7fe7cc6375e00cb6f6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158994"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824270"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
@@ -119,7 +120,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 ### <a name="azure-ad-connect-sync-service-account"></a>Azure AD Connect 同期サービス アカウント
 同期サービスは、複数のアカウントで実行できます。 これは、**仮想サービス アカウント** (VSA)、**グループの管理されたサービス アカウント** (gMSA/sMSA)、または通常のユーザー アカウントで実行できます。 サポートされるオプションは、新規インストールを実行した場合、Connect の 2017 年 4 月のリリースで変更されます。 Azure AD Connect の以前のリリースからアップグレードする場合は、これらの追加のオプションは利用できません。
 
-| アカウントの種類 | インストール オプション | [説明] |
+| アカウントの種類 | インストール オプション | 説明 |
 | --- | --- | --- |
 | [仮想サービス アカウント](#virtual-service-account) | 高速およびカスタム、2017 年 4 月以降 | これは、ドメイン コントローラーでのインストールを除くすべての高速インストールに使用されるオプションです。 カスタムでは、別のオプションが使われていない限り、これが既定のオプションです。 |
 | [グループの管理されたサービス アカウント](#group-managed-service-account) | カスタム、2017 年 4 月以降 | リモートの SQL サーバーを使用した場合、グループの管理されたサービス アカウントを使用することをお勧めします。 |
@@ -186,9 +187,9 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 ### <a name="azure-ad-service-account"></a>Azure AD サービス アカウント
 Azure AD のアカウントは、同期サービスで使用するために作成されます。 このアカウントは、その表示名で識別できます。
 
-![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
+![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount2.png)
 
-アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は FABRIKAMCON です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
+アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は DC1 です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
 
 サービス アカウントの作成時には、有効期限のない長く複雑なパスワードが設定されます。 このアカウントには、ディレクトリ同期タスクの実行権限のみを持つ特別なロール **ディレクトリ同期アカウント** が付与されます。 この特別な組み込みロールを Azure AD Connect ウィザードの外部で付与することはできません。 Azure Portal ではこのアカウントには**ユーザー** ロールが表示されます。
 

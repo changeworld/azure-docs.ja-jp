@@ -8,19 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202135"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850010"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
 
@@ -31,7 +32,7 @@ ms.locfileid: "33202135"
 
 ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。 
 
-デバイス管理は、[デバイスに基づく条件付きアクセス](active-directory-conditional-access-policy-connected-applications.md)の基礎でもあります。 デバイスベースの条件付きアクセスによって、環境内のリソースへのアクセスは、信頼されているデバイスだけで実行できるようにすることができます。   
+デバイス管理は、[デバイスに基づく条件付きアクセス](active-directory-conditional-access-policy-connected-applications.md)の基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。   
 
 このトピックでは、Azure Active Directory でのデバイス管理のしくみについて説明します。
 
@@ -69,12 +70,16 @@ Azure AD 参加済みデバイスの目的は、次の操作を単純化する�
 
 - 職場所有のデバイスの Windows でのデプロイ 
 - 任意の Windows デバイスからの組織のアプリとリソースへのアクセス
+- 作業が所有するデバイスの、クラウド ベースの管理
 
 ![Azure AD 登録済みデバイス](./media/device-management-introduction/02.png)
 
+Azure AD Join は、次の方法のいずれかを使用して展開できます： 
+ - [Windows Auto pilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Bulk の展開](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [セルフ サービス エクスペリエンス](device-management-azuread-joined-devices-frx.md) 
 
-これらの目標は、ユーザーが職場所有のデバイスを Azure AD の管理下におくためのセルフサービス エクスペリエンスを用意することによって実現されます。  
-**Azure AD 参加**は、クラウド ファースト/クラウド オンリーを希望する組織を対象にしています。 Azure AD 参加が配置できる組織の規模または種類に制限はありません。 Azure AD 参加は、ハイブリッド環境でも動作し、オンプレミス アプリやリソースへもアクセスできます。
+**Azure AD Join**は、クラウド優先 (つまり、主にクラウド サービスを利用して、オンプレミスのインフラストラクチャの使用を削減することを目的とする) またはクラウド専用 (オンプレミスのインフラストラクチャがない)を望む企業のために意図されています。 Azure AD Join をデプロイできる組織の規模または種類に制限はありません。 Azure AD は、ハイブリッド環境 でも動作し、オンプレミス アプリやリソース Join へもアクセスできます。
 
 Azure AD 参加済みデバイスを実装すると、次のメリットを得ることができます。
 
@@ -88,10 +93,12 @@ Azure AD 参加済みデバイスを実装すると、次のメリットを得�
 
 - コンプライアンス ポリシーを満たしているデバイスのみにアプリへのアクセスを許可する**アクセスの制限**。
 
-- デバイスがオンプレミスのドメイン コントローラーにアクセスできる場合の**オンプレミス リソースへのシームレスなアクセス**。
+- デバイスがオンプレミスのドメイン コントローラーにアクセスできる場合の**オンプレミス リソースへのシームレスなアクセス**。 
 
 
-Azure AD への参加は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けですが、次のようなシナリオでも確実に使用できます。
+Azure AD join は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けです。次のようなシナリオでも確実に使用できます： Azure AD および Intune のような MDM を使用して、クラウドベースのインフラストラクチャに移行したい場合です。
+
+- You want to transition to cloud-based infrastructure using Azure AD and MDM like Intune.
 
 - たとえばタブレットや電話などのモバイル デバイスを管理する必要があるが、オンプレミスのドメインへの参加を使用できない。
 
@@ -121,9 +128,9 @@ Windows 10 デバイスで Azure AD 参加済みデバイスを構成できま�
 
 以下に該当する場合は、ハイブリッド Azure AD 参加済みデバイスを使用する必要があります。
 
-- NTLM または Kerberos を使用するデバイスに Win32 アプリをデプロイする。
+- Active Directory コンピューター認証に依存しているこれらのデバイスに展開される Win32 アプリがあります。
 
-- デバイスの管理に、GP または SCCM/DCM が必要である。
+- デバイスの管理に、GP が必要です。
 
 - 今後も社員のデバイスの構成にイメージング ソリューションを使用したい。
 

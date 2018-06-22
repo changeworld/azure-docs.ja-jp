@@ -1,22 +1,19 @@
 ---
 title: リモート監視ソリューションのデバイス スキーマ - Azure | Microsoft Docs
 description: この記事では、リモート監視ソリューションのシミュレートされたデバイスを定義する JSON スキーマについて説明します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 186eaee952435573a861d144195c3165e4940cc1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 1ba73d24aaa113a9124e17ea91946c205b21fba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627435"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
 
@@ -26,7 +23,7 @@ ms.lasthandoff: 05/20/2018
 
 次の記事は、現在の記事に関連しています。
 
-* 「[デバイス モデルの動作の実装](../iot-suite/iot-suite-remote-monitoring-device-behavior.md)」では、シミュレートされたデバイスの動作を実装するために使用する JavaScript ファイルについて説明します。
+* 「[デバイス モデルの動作の実装](iot-accelerators-remote-monitoring-device-behavior.md)」では、シミュレートされたデバイスの動作を実装するために使用する JavaScript ファイルについて説明します。
 * 「[新しいシミュレートされたデバイスの作成](iot-accelerators-remote-monitoring-test.md)」では、すべてをうまくまとめて、新しいシミュレートされたデバイスの種類をソリューションにデプロイする方法を示しています。
 
 この記事では、次のことについて説明します:
@@ -68,7 +65,7 @@ ms.lasthandoff: 05/20/2018
 
 次の表では、上位スキーマのエントリを説明します。
 
-| スキーマのエントリ | [説明] |
+| スキーマのエントリ | 説明 |
 | -- | --- |
 | `SchemaVersion` | スキーマ バージョンは常に `1.0.0` となり、このファイルの形式に固有です。 |
 | `Id` | このデバイス モデルの一意の ID。 |
@@ -114,7 +111,7 @@ ms.lasthandoff: 05/20/2018
 
 シミュレーション サービスは、デバイスの状態を更新するために **chiller-01-state.js** ファイルを 5 秒ごとに実行します。 既定のシミュレートされたデバイスの JavaScript ファイルは、GitHub 上の [scripts フォルダー](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts)に表示されます。 慣例により、これらの JavaScript ファイルには、メソッドの動作を実装するファイルから区別するために **-state** というサフィックスが付いています。
 
-## <a name="properties"></a>[プロパティ]
+## <a name="properties"></a>Properties
 
 スキーマの `Properties` セクションでは、デバイスがソリューションに報告するプロパティ値を定義します。 例: 
 

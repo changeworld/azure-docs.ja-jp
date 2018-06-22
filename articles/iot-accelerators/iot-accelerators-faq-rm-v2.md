@@ -1,25 +1,19 @@
 ---
 title: リモート監視ソリューション アクセラレータについてよく寄せられる質問 | Microsoft Docs
 description: リモート監視ソリューション アクセラレータについてよく寄せられる質問
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: a65f2a90aedf5aa50016a6c5e5019094f202bf55
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 094bb4b781bb554d340580377ec343f33579299e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627656"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータについてよく寄せられる質問
 
@@ -49,6 +43,6 @@ ms.lasthandoff: 05/20/2018
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
 * [リモート監視ソリューション アクセラレータの機能について知る](iot-accelerators-remote-monitoring-explore.md)
-* [予測メンテナンスのソリューション アクセラレータの概要](../iot-suite/iot-suite-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
 * [接続済みファクトリ ソリューション アクセラレータの概要](iot-accelerators-connected-factory-overview.md)
-* [徹底的な IoT セキュリティ](../iot-suite/securing-iot-ground-up.md)
+* [徹底的な IoT セキュリティ](securing-iot-ground-up.md)

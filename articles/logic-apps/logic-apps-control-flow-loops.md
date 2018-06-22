@@ -1,34 +1,30 @@
 ---
-title: ループ - 配列または繰り返しアクションの処理 - Azure Logic Apps | Microsoft Docs
-description: "\"for each\" ループ、または繰り返しアクションが指定された配列を、ロジック アプリで特定の条件が満たされるまで処理します"
+title: アクションを繰り返す、または配列を処理するループを追加する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps 内のワークフロー アクションを繰り返したり、配列を処理したりするループを作成する方法です
 services: logic-apps
-keywords: for each ループ
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 87595eeb0330a2d8210258c097c29b205b628cf4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298187"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>ループ: 条件が満たされるまで配列または繰り返しアクションを処理する
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
-ロジック アプリで配列を反復処理するには、["Foreach" ループ](#foreach-loop)を使用するか、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を使用します。 標準の "Foreach" ループのサイクルは並列で実行され、シーケンシャル "Foreach" ループは 1 回ずつ実行されます。 "Foreach" ループ が 1 つのロジック アプリ実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
+ロジック アプリで配列を反復処理するには、["Foreach" ループ](#foreach-loop)を使用するか、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を使用します。 標準の "Foreach" ループのイテレーションが並列に実行されるのに対し、シーケンシャル "Foreach" ループのイテレーションは 1 回ずつ実行されます。 "Foreach" ループ が単独ロジック アプリの 1 回の実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
 > [!TIP] 
-> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*デタッチ*" できます。 
+> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*バッチ解除*" できます。 
   
-条件を満たすまたは一部の状態が変更されるまでアクションを繰り返し実行するには、["Until" ループ](#until-loop)を使用します。 ロジック アプリは、まずループ内ですべてのアクションを実行し、最後の手順で状態をチェックします。 条件が満たされると、ループが停止します。 満たされないと、ループが繰り返されます。 1 つのロジック アプリ実行で処理できる "Until" ループの最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
+条件を満たすまたは一部の状態が変更されるまでアクションを繰り返し実行するには、["Until" ループ](#until-loop)を使用します。 ロジック アプリは、まずループ内ですべてのアクションを実行し、最後の手順で状態をチェックします。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 単独ロジック アプリの 1 回の実行で処理できる "Until" ループの最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 

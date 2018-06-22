@@ -1,25 +1,27 @@
 ---
-title: "ハイブリッド ID 設計 - アクセス制御要件 - Azure | Microsoft Docs"
-description: "ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。"
-documentationcenter: 
+title: ハイブリッド ID 設計 - アクセス制御要件 - Azure | Microsoft Docs
+description: ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 161820e69b0c9d0dc376a62cecceb9cc5e83c8ce
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3a61e7ab4c738f6cba17bcc74c3bfd335378ab83
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801220"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
@@ -41,13 +43,13 @@ ms.lasthandoff: 01/18/2018
 
 * 組織は、ID 管理システム内にあるユーザーのみを認証および承認しますか。
   * B2B シナリオの計画は何かありますか。
-  * 「はい」の場合、両者の接続に使用するプロトコル (SAML、OAuth、Kerberos、トークン、または証明書) を既に把握していますか。
+  * 「はい」の場合、両者の接続に使用するプロトコル (SAML、OAuth、Kerberos、または証明書) を既に把握していますか。
 * 採用する予定のハイブリッド ID ソリューションは、それらのプロトコルをサポートしていますか。
 
 考慮すべきもう 1 つの重要な点は、ユーザーとパートナーが使用する認証リポジトリがある場所と、使用する管理モデルです。 次の 2 つの主要な選択肢を検討してください。
 
-* 一元: このモデルでは、ユーザーの資格情報、ポリシー、および管理を、オンプレミスまたはクラウドで一元管理できます。
-* ハイブリッド: このモデルでは、ユーザーの資格情報、ポリシー、および管理がオンプレミスで一元管理され、クラウドにレプリケートされます。
+* 一元: このモデルでは、ユーザーの資格情報、ポリシー、管理を、オンプレミスまたはクラウドで一元管理できます。
+* ハイブリッド: このモデルでは、ユーザーの資格情報、ポリシー、管理がオンプレミスで一元管理され、クラウドにレプリケートされます。
 
 組織が採用するモデルは、ビジネスの要件によって変わります。次のチェック項目に回答して、ID 管理システムを配置する場所と使用する管理モデルを特定してください。
 

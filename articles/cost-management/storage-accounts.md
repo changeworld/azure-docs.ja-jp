@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 76a9fc586a1932b8b5e664b6c964f0c7d3eac4d4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297837"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Cost Management 用にストレージ アカウントを構成する
 
@@ -34,12 +35,12 @@ AWS Simple Storage Service (S3) バケットを持っていない場合は、作
 
 Cost Management で使用するための Azure ストレージ アカウントの構成は簡単です。 ストレージ アカウントに関する詳細情報を収集し、Cloudyn ポータルにコピーします。
 
-1. Azure Portal (http://portal.azure.com) にログインします。
+1. Azure Portal (http://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択して、使用するストレージ アカウントまでスクロールしたら、そのアカウントを選択します。
 3. [ストレージ アカウント] ページの **[設定]** で **[アクセス キー]** をクリックします。
 4. [key1] の**ストレージ アカウント名**と**接続文字列**をコピーします。  
 ![Azure ストレージ アクセス キー](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してログインします。
+5. Azure portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してサインインします。
 6. 歯車記号をクリックし、**[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 7. **[新規追加 +]** をクリックし、Microsoft Azure が選択されていることを確認します。 使用する Azure ストレージ アカウント名を **[名前]** ボックスに貼り付けます。 使用する**接続文字列**を対応するボックスに貼り付けます。 コンテナー名を入力し、**[保存]** をクリックします。  
 ![Azure 用に構成された Cloudyn ストレージ](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +148,7 @@ Cloudyn のロールまたはユーザーには、バケットに対する PutOb
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>AWS レポート ストレージを Cloudyn に追加する
 
-1. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してサインインします。
 2. 歯車記号をクリックし、**[Reports Storage Management]\(レポートのストレージ管理\)** を選択します。
 3. **[新規追加 +]** をクリックし、AWS が選択されていることを確認します。
 4. アカウントとストレージ バケットを選択します。 AWS ストレージ バケットの名前は自動的に設定されます。  

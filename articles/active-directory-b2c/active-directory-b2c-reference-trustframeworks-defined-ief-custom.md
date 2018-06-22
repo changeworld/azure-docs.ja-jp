@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: リファレンス - 信頼フレームワーク | Microsoft Docs'
-description: Azure Active Directory B2C のカスタム ポリシーと Identity Experience Framework に関するトピック
+title: リファレンス - Azure Active Directory B2C の信頼フレームワーク | Microsoft Docs
+description: Azure Active Directory B2C のカスタム ポリシーと Identity Experience Framework に関するトピック。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 0cd64e90ac1b6c87008b2a16ca3afa273b9c9d56
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: b75efe7464c32863781353549f73048b4e127ddf
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710221"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する
 

@@ -6,31 +6,39 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
+ms.date: 06/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850571"
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 
 Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-このドキュメントでは、Azure Resource Manager テンプレートをデプロイして、シンプルな複数コンテナー サイドカー構成を実行します。
+Azure CLI を使用して複数コンテナー グループをデプロイする方法は 2 つあります。
+
+* Resource Manager テンプレートのデプロイ (この記事)
+* [YAML ファイルのデプロイ](container-instances-multi-container-yaml.md)
+
+コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース (Azure Files 共有など) をデプロイする必要がある場合は、Resource Manager テンプレートでのデプロイをお勧めします。 YAML フォーマットは簡潔であるため、コンテナー インスタンス*のみ*を含むデプロイには YAML ファイルを使用したデプロイをお勧めします。
 
 > [!NOTE]
 > 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
 
 ## <a name="configure-the-template"></a>テンプレートの構成
 
-`azuredeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。
+この記事のセクションでは、Azure Resource Manager テンプレートをデプロイして、シンプルな複数コンテナー サイドカー構成を実行します。
 
-このサンプルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備えるコンテナー グループが定義されています。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
+まず、`azuredeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。
 
-```json
+この Resource Manager テンプレートでは、2 つのコンテナー、パブリック IP アドレス、公開された 2 つのポートを備えるコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ Azure Container Instances では、[コンテナー グループ](container-inst
 
 プライベート コンテナー イメージ レジストリを使用するには、次の形式でオブジェクトを JSON ドキュメントに追加します。 この構成の実装例については、[ACI Resource Manager テンプレートのリファレンス][template-reference]に関するドキュメントを参照してください。
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ az group deployment create --resource-group myResourceGroup --template-file azur
 
 ## <a name="view-deployment-state"></a>デプロイ状態の表示
 
-デプロイの状態を表示するには、[az container show][az-container-show] コマンドを使用します。 これにより、プロビジョニングされたパブリック IP アドレスが返されます。このアドレスを使用して、アプリケーションにアクセスできます。
+デプロイの状態を表示するには、次の [az container show][az-container-show] コマンドを使用します。
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-出力:
+実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

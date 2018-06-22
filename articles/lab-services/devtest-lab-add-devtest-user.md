@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736189"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -30,9 +31,9 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 ## <a name="actions-that-can-be-performed-in-each-role"></a>各ロールで実行できるアクション
 次の 3 つの主なロールをユーザーを割り当てることができます。
 
-* 所有者
-* DevTest Labs ユーザー
-* 共同作成者
+* Owner
+* DevTest Labs User
+* の共同作成者
 
 次の表は、これらの各ロールのユーザーが実行できるアクションを示しています。
 
@@ -40,19 +41,19 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 | --- | --- | --- | --- |
 | **ラボのタスク** | | | |
 | ラボへのユーザーの追加 |いいえ  |はい |いいえ  |
-| コストの設定の更新 |いいえ  |はい |はい |
+| コストの設定の更新 |いいえ  |可能  |[はい] |
 | **VM ベースのタスク** | | | |
-| カスタム イメージの追加と削除 |いいえ  |はい  |はい |
-| 数式の追加、更新、および削除 |はい |はい |はい |
-| Azure Marketplace のイメージのホワイトリスト |いいえ  |はい |はい |
+| カスタム イメージの追加と削除 |いいえ  |可能  |[はい] |
+| 数式の追加、更新、および削除 |[はい] |はい |[はい] |
+| Azure Marketplace のイメージのホワイトリスト |いいえ  |可能  |[はい] |
 | **VM タスク** | | | |
-| VM の作成 |はい |はい |はい |
-| VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |はい |はい |
-| VM のポリシーの更新 |いいえ  |はい |はい |
-| データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |はい |はい |
+| VM の作成 |[はい] |はい |[はい] |
+| VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
+| VM のポリシーの更新 |いいえ  |可能  |[はい] |
+| データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
 | **アーティファクトのタスク** | | | |
-| アーティファクトのリポジトリの追加と削除 |いいえ  |はい |はい |
-| アーティファクトの適用 |はい |はい |はい |
+| アーティファクトのリポジトリの追加と削除 |いいえ  |可能  |[はい] |
+| アーティファクトの適用 |[はい] |はい |[はい] |
 
 > [!NOTE]
 > ユーザーが VM を作成すると、そのユーザーは作成された VM の **所有者** ロールに自動的に割り当てられます。
@@ -60,25 +61,27 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>ラボ レベルでの所有者またはユーザーの追加
-所有者とユーザーは Azure Portal 経由で、ラボレベルで追加できます。 これには、有効な [Microsoft アカウント (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)の外部ユーザーも含まれます。
+所有者とユーザーは Azure Portal 経由で、ラボレベルで追加できます。 ユーザーには、有効な [Microsoft アカウント (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)を持つ外部ユーザーも可能です。
 次のステップでは、Azure DevTest Labs で所有者またはユーザーをラボに追加するプロセスについて説明します。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。
-4. ラボのブレードで、 **[構成]** を選択します。 
-5. ラボの **[構成]** ブレードで、**[ユーザー]** を選択します。
-6. **[ユーザー]** ブレードで、**[+ 追加]** を選択します。
-   
+4. ラボのブレードで、**[構成とポリシー]** を選択します。 
+5. **[構成とポリシー]** ページで、**[アクセス制御 (IAM)]** を左側のメニューから選択します。 
+6. ツールバーで **[追加]** を選択し、ロールにユーザーを追加します。
+
     ![ユーザーの追加](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. **[ロールの選択]** ブレードで、任意のロールを選択します。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
-8. **[ユーザーの追加]** ブレードで、指定したロールに追加するユーザーの電子メール アドレスまたは名前を入力します。 ユーザーが見つからない場合は、問題を示すエラー メッセージが表示されます。 ユーザーが見つかった場合は、ユーザーが表示され、選択されます。 
-9. **[選択]** を選択します。
-10. **[OK]** を選択して、**[Add access (アクセスの追加)]** ブレードを閉じます。
+1. **[アクセス許可の追加]** ウィンドウで、次のようにします。 
+    1. ロールを選択します (例: DevTest ラボ ユーザー)。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
+    2. ロールに追加するユーザーを選択します。 
+    3. **[保存]** を選択します。 
+
+        ![ユーザーのロールへの追加](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. **[ユーザー]** ブレードに戻ると、このユーザーが追加されています。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>PowerShell を使用して、ラボに外部ユーザーを追加します。
-Azure Portal にユーザーを追加するだけでなく、PowerShell スクリプトを使用して、ラボに外部ユーザーを追加することもできます。 次の例の **Values to change** コメントの下のパラメーター値を変更するだけです。
+Azure Portal にユーザーを追加するだけでなく、PowerShell スクリプトを使用して、ラボに外部ユーザーを追加することもできます。 次の例で、**Values to change** コメントの下のパラメーター値を変更してください。
 `subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
 
 > [!NOTE]

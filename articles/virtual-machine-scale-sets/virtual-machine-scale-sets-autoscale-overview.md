@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 05/29/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03053f8427fbd20b0a7288d930dca258ee3070b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 49ef3821ba5dd10d745649c6b4546ec04282714f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652306"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
-Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容された最小限のパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
+Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容されたパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
 
 
 ## <a name="benefits-of-autoscale"></a>自動スケールの利点
@@ -56,7 +57,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 | 現在のスケール セット    | 追加のエージェントをインストールおよび構成する必要がないホストベースのメトリックの場合。                                  |
 | ストレージ アカウント      | Azure 診断拡張機能が Azure ストレージにパフォーマンス メトリックを書き込み、それを使用して自動スケール ルールがトリガーされます。 |
 | Service Bus キュー    | アプリケーションまたはその他のコンポーネントが Azure Service Bus キューのメッセージを送信し、ルールをトリガーできます。                   |
-| アプリケーション インサイト | アプリケーションにインストールされた、アプリからメトリックを直接ストリームするインストルメンテーション パッケージ。                         |
+| Application Insights | アプリケーションにインストールされた、アプリからメトリックを直接ストリームするインストルメンテーション パッケージ。                         |
 
 
 ### <a name="autoscale-rule-criteria"></a>自動スケール ルールの条件
@@ -115,7 +116,7 @@ Azure 診断拡張機能は、VM インスタンス内部で実行されるエ�
 
 Azure 診断拡張機能を使用するには、VM インスタンスで使用する Azure のストレージ アカウントを作成し、Azure 診断エージェントをインストールしてから、特定のパフォーマンス カウンターをそのストレージ アカウントにストリームするように VM を構成します。
 
-詳しくは、[Linux VM](../virtual-machines/linux/diagnostic-extension.md) または [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
+詳しくは、[Linux VM](../virtual-machines/extensions/diagnostics-linux.md) または [Windows VM](../virtual-machines/extensions/diagnostics-windows.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
 
 
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights におけるアプリケーションレベルのメトリック

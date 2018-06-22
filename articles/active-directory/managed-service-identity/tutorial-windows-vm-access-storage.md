@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7bdbee064e6acdd3d1ef95879b98daa43fdb230
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9bfaf7f4fa4b7778650638b3b4670e29906838a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301752"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594783"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Windows VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -196,15 +196,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="related-content"></a>関連コンテンツ
+このチュートリアルでは、アクセス キーを使用して Azure Storage にアクセスするためのマネージド サービス ID の作成方法について説明します。  Azure Storage アクセス キーの詳細については、以下を参照してください。
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-- これと同じチュートリアルをストレージ SAS 資格情報を使用して実行する方法については、「[Use a Windows VM Managed Service Identity to access Azure Storage via a SAS credential](tutorial-windows-vm-access-storage-sas.md)」 (Windows VM 管理対象サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする) を参照してください。
-- Azure Storage アカウントの SAS 機能の詳細については、以下を参照してください。
-  - [Shared Access Signatures (SAS) の使用](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS (サービス SAS の構築)](/rest/api/storageservices/Constructing-a-Service-SAS.md)
-
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
-
+> [!div class="nextstepaction"]
+>[ストレージ アクセス キーの管理](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
 

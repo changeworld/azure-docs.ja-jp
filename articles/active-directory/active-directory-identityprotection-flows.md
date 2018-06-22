@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164205"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713410"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
@@ -28,9 +29,9 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 * 多要素認証での登録をユーザーに要求する
 * リスクの高いサインインと侵害されたユーザーを処理する
 
-ユーザー名とパスワードだけを入力して直接サインインすることは不可能になるため、こうした問題に対するシステムの応答はユーザーのサインイン操作に影響を及ぼします。 ユーザーが安全に業務に戻ることができるようにする追加のステップが必須になります。
+ユーザー名とパスワードを入力して直接サインインすることは不可能になるため、こうした問題に対するシステムの応答はユーザーのサインイン操作に影響を及ぼします。 ユーザーが安全に業務に戻ることができるようにする追加のステップが必須になります。
 
-このトピックでは、発生する可能性があるすべてのケースについて、ユーザーのサインイン エクスペリエンスの概要を示します。
+この記事では、発生する可能性があるすべてのケースについて、ユーザーのサインイン エクスペリエンスの概要を示します。
 
 **多要素認証**
 

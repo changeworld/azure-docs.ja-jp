@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central アプリケーションでデバイス テンプレートを設定する | Microsoft Docs
 description: 測定値、設定、プロパティ、ルール、およびダッシュボードを含むデバイス テンプレートを設定する方法を説明します。
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201511"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261986"
 ---
 # <a name="set-up-a-device-template"></a>デバイス テンプレートを設定する
 
@@ -138,7 +138,7 @@ ms.locfileid: "34201511"
 
 ![設定のタイル](./media/howto-set-up-template/settingstile.png)
 
-## <a name="properties"></a>[プロパティ]
+## <a name="properties"></a>Properties
 
 プロパティは、デバイスの場所やシリアル番号など、デバイスに関連付けられているデバイスのメタデータです。 デバイス テンプレートには複数のプロパティを追加できます。それらは **[プロパティ]** タブのタイルとして表示されます。オペレーターは、新しいデバイスを作成するときにプロパティの値を指定でき、これらの値をいつでも編集できます。 追加できるプロパティには 6 つの種類があります。数値、テキスト、日付、トグル、デバイス プロパティ、およびラベルです。
 
@@ -161,6 +161,59 @@ ms.locfileid: "34201511"
 > [!NOTE]
 > 新しいタイルの作成後、プロパティの値を変更できます。 最初に、画面の右上でデザイン モードをオフにします。
 
+### <a name="create-a-location-property-powered-by-azure-maps"></a>Azure Maps 基盤で場所プロパティを作成する
+Azure IoT Central 内で場所データに地理的コンテキストを追加し、番地の緯度と経度の座標をマッピングするか、単に緯度と経度の座標を渡すことができます。 Azure IoT Central のこの機能は、Azure Maps に基づいています。
+
+追加できる場所プロパティのタイプは 2 つあります。
+- **アプリケーション プロパティとしての場所**は、シンプルにアプリケーション内に保存されます。 デバイスには、アプリケーションのプロパティに関する情報はありません。
+- **デバイス プロパティとしての場所** は、デバイスにより報告されます。
+
+####<a name="adding-location-as-an-application-property"></a>場所をアプリケーションプロパティとして追加する 
+Azure IoT Central アプリケーション内で Azure マップを使って、場所プロパティを Application Azure IoT Centralｔとして作成することができます。 たとえば、デバイスの設置先アドレスを追加できます。 
+
+1. ［Device Property］ タブに移動し、[Design Mode] がオンになっていることを確認します。
+
+![場所プロパティ](./media/howto-set-up-template/locationcloudproperty1.png)
+
+2. [Property ] タブで、[Location] をクリックします。
+3. オプションとして、表示名、フィールド名、および場所の初期値を設定できます。 
+
+![場所プロパティのフォーム](./media/howto-set-up-template/locationcloudproperty2.png)
+
+場所を追加する形式は 2 つあります。
+- **住所としての場所**
+- **座標としての場所** 
+
+4. [保存] をクリックします。 
+
+![[Location Property] フィールド](./media/howto-set-up-template/locationcloudproperty3.png)
+
+場所フィールドのフォームで場所の値を更新できるようになります。 
+
+####<a name="adding-location-as-a-device-property"></a>デバイス プロパティとしての場所を追加する 
+
+場所プロパティは、デバイスが報告するデバイス プロパティとして作成できます。
+たとえば､デバイスの場所を追跡する場合です。
+
+1.  ［Device Property］ タブに移動し、[Design Mode] がオンになっていることを確認します。
+2.  ライブラリで [Device Property] をクリックします。
+
+![[Location Property] フィールド](./media/howto-set-up-template/locationdeviceproperty1.png)
+
+3.  表示名、フィールド名を設定し、データ タイプに “場所” を選択します。 
+
+> [!NOTE]
+フィールド名は、デバイスが報告するプロパティの名前と完全に一致する必要があります。 
+
+![[Location Property] フィールド](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+![場所プロパティのオペレーター ビュー](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+場所プロパティを設定したので、デバイスのダッシュボードでマップを追加して場所を可視化できます。 [ダッシュボードで Azure マップに場所を追加する](howto-set-up-template.md)方法 を参照してください。
+
+
+
+
 ## <a name="rules"></a>ルール
 
 オペレーターはルールによって、ほぼリアルタイムにデバイスを監視できます。 ルールは、ルールがトリガーされたときに電子メールを送信するなどの**アクション**を自動的に呼び出します。 現在使用できるルールの種類は 1 つです。
@@ -178,6 +231,31 @@ ms.locfileid: "34201511"
 これでオペレーターがダッシュボードを表示すると、デバイスの設定とプロパティを表示するこのタイルを確認できます。
 
 ![ダッシュボード タイル](./media/howto-set-up-template/dashboardtile.png)
+
+### <a name="add-location-azure-map-in-dashboard"></a>ダッシュボードで Azure マップに場所を追加する
+
+［Azure Maps 基盤で場所プロパティを作成する］ (howto-set-up-template.md) ステップで場所プロパティを設定すると､デバイスのダッシュボードのマップを使って場所を可視化でるようになります。
+
+1.  ［Device Dashboard］ タブに移動し、[Design Mode] がオンになっていることを確認してください。
+2.  ［Device Dashboard］ のライブラリからマップを選択します。 
+
+![ダッシュボードの場所 Azure Map が選択されます。](./media/howto-set-up-template/locationcloudproperty4map.png)
+
+3.  タイトルを付けて、以前にデバイス プロパティの一部として構成した場所プロパティを選択します。
+
+![ダッシュボードの場所 Azure Map を構成します。](./media/howto-set-up-template/locationcloudproperty5map.png)
+
+4.  保存すると、マップのタイトルに選択した場所が表示されるようになります。 
+
+![ダッシュボードの場所 Azure Map を可視化します。](./media/howto-set-up-template/locationcloudproperty6map.png) 
+
+マップは任意のサイズに変更することができます。
+
+オペレーターがダッシュボードを表示すると、場所マップを含め、構成したすべてのダッシュボード タイルを見ることができるようになります。
+
+![ダッシュボードの場所 Azure Map のダッシュボード](./media/howto-set-up-template/locationcloudproperty7map.png) 
+
+
 
 ## <a name="next-steps"></a>次の手順
 

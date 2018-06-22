@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261457"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637380"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -63,7 +63,7 @@ ms.locfileid: "34261457"
 
 仮想ネットワーク内の各 VM に、次のようにセカンダリ NIC の IP 構成を追加します。  
 
-1. Azure Portal にアクセスします: http://portal.azure.comAzure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: http://portal.azure.com Azure のアカウントを使用してサインインします。
 
 2. 画面の左上にある **[リソース グループ]** を選択します。 次に、VM が配置されているリソース グループ (たとえば、**contosofabrikam**) を選択します。 すべてのリソースと VM の NIC の一覧が表示される **[リソース グループ]** ウィンドウが表示されます。
 
@@ -87,7 +87,7 @@ ms.locfileid: "34261457"
 
 次のように構成のロード バランサーを作成します。
 
-1. Azure Portal にアクセスします: http://portal.azure.comAzure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: http://portal.azure.com Azure のアカウントを使用してサインインします。
 
 2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
 
@@ -173,7 +173,7 @@ ms.locfileid: "34261457"
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、負荷分散規則を構成します。
     
-1. <a name="step6-1"></a> **[設定]** で、**[負荷分散規則]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
+1. <a name="step6-1"></a>**[設定]** で、**[負荷分散規則]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
 2. **[名前]** に、負荷分散規則の名前 (たとえば、contoso.com には **HTTPc**、fabrikam.com には **HTTPf**) を入力します。
 

@@ -3,17 +3,18 @@ title: Azure Kubernetes Service (AKS) での OpenFaaS の使用
 description: Azure Kubernetes Service (AKS) での OpenFaaS のデプロイと使用
 services: container-service
 author: justindavies
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 778fa5ddcdf8006d28c092746e4ac17a497baa5f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b5484233c7d3d32e51098baad8c22ec51df8f0d8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260619"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -107,7 +108,7 @@ OpenFaaS システムをテストするには、ポート 8080、上の外部 IP
 
 ![OpenFaaS の UI](media/container-service-serverless/openfaas.png)
 
-最後に、OpenFaaS CLI をインストールします。 この例では、brew を使用しました (その他のオプションについては、[OpenFaaS CLI のドキュメント][open-faas-cli]をご覧ください)。
+最後に、OpenFaaS CLI をインストールします。 この例では、brew を使用しました (その他のオプションについては、[OpenFaaS CLI のドキュメント][open-faas-cli]を参照してください)。
 
 ```console
 brew install faas-cli

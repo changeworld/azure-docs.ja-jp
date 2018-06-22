@@ -6,45 +6,37 @@ author: kamathsun
 ms.author: sukamat
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/04/2018
+ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264886"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
 
-## <a name="service-tier-maximums"></a>サービス レベルの最大値
-Azure Database for MySQL では、サーバーを作成するときに複数のサービス レベルから選択します。 詳しくは、[Azure Database for MySQL の価格レベル](concepts-pricing-tiers.md)に関する記事をご覧ください。  
+## <a name="maximum-connections"></a>最大接続数
+価格レベルと仮想コアごとの最大接続数は次のとおりです。 
 
-各サービス レベルの接続数、コンピューティング ユニット数、およびストレージ数の最大値は次のとおりです。 
+|**価格レベル**|**仮想コア数**| **最大接続数**|
+|---|---|---|
+|Basic| 1| 50|
+|Basic| 2| 100|
+|汎用| 2| 300|
+|汎用| 4| 625|
+|汎用| 8| 1250|
+|汎用| 16| 2500|
+|汎用| 32| 5000|
+|メモリ最適化| 2| 600|
+|メモリ最適化| 4| 1250|
+|メモリ最適化| 8| 2500|
+|メモリ最適化| 16| 5000|
 
-|**価格レベル**| **コンピューティング世代**|**仮想コア数**| **最大接続数**|
-|---|---|---|---|
-|Basic| Gen 4| 1| 50|
-|Basic| Gen 4| 2| 100|
-|Basic| Gen 5| 1| 50|
-|Basic| Gen 5| 2| 100|
-|汎用| Gen 4| 2| 300|
-|汎用| Gen 4| 4| 625|
-|汎用| Gen 4| 8| 1250|
-|汎用| Gen 4| 16| 2500|
-|汎用| Gen 4| 32| 5000|
-|汎用| Gen 5| 2| 300|
-|汎用| Gen 5| 4| 625|
-|汎用| Gen 5| 8| 1250|
-|汎用| Gen 5| 16| 2500|
-|汎用| Gen 5| 32| 5000|
-|メモリ最適化| Gen 5| 2| 600|
-|メモリ最適化| Gen 5| 4| 1250|
-|メモリ最適化| Gen 5| 8| 2500|
-|メモリ最適化| Gen 5| 16| 5000|
-
-接続数が多すぎると、次のエラーが発生する可能性があります。
+接続数が制限を超えると、次のエラーが表示される場合があります。
 > ERROR 1040 (08004): Too many connections
 
 ## <a name="storage-engine-support"></a>ストレージ エンジンのサポート
@@ -85,8 +77,6 @@ Azure Database for MySQL では、サーバーを作成するときに複数の�
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 - 別のサービス レベルやコンピューティング ユニットおよびストレージ サイズに復元することはできません。
 - 削除されたサーバーへの復元はサポートされていません。
-
-## <a name="functional-limitations"></a>機能制限
 
 ### <a name="subscription-management"></a>サブスクリプション管理
 - サブスクリプションとリソース グループ間での事前作成されたサーバーの動的な移動は現在サポートされていません。

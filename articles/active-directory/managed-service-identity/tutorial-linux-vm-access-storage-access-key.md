@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: af0ddebc79100cbe0ea55e46b825c35ab8a775b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: be350ad153bfcc51eb1198a97eeba01593ccb34e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303758"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594246"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -227,10 +227,7 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 
 ## <a name="next-steps"></a>次の手順
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-- これと同じチュートリアルをストレージ SAS 資格情報を使用して実行する方法については、「[Use a Linux VM Managed Service Identity to access Azure Storage via a SAS credential](tutorial-linux-vm-access-storage-sas.md)」 (Linux VM 管理対象サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする) を参照してください。
-- Azure Storage アカウントの SAS 機能の詳細については、以下を参照してください。
-  - [Shared Access Signatures (SAS) の使用](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS (サービス SAS の構築)](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+このチュートリアルでは、Linux 仮想マシンのマネージド サービス ID を使用し、アクセス キーを使用して Azure Storage にアクセスする方法について説明します。  Azure Storage アクセス キーの詳細については、以下を参照してください。
 
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
+> [!div class="nextstepaction"]
+>[ストレージ アクセス キーの管理](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)

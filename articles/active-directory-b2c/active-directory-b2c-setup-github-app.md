@@ -1,21 +1,21 @@
 ---
-title: GitHub ID プロバイダーの構成 - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C の GitHub ID プロバイダーの構成 | Microsoft Docs
 description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、GitHub アカウントを使用する顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: ''
-author: davidmu
+author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 17ec4ebd8406f56c431666340ca8834c5ccf9670
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 16c7f34c00bbd5bd0c2be53df2b781a1852b84ff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712210"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C: GitHub アカウントでコンシューマーにサインアップおよびサインインを提供する
 
@@ -37,13 +37,13 @@ Azure AD B2C で GitHub を ID プロバイダーとして使用するには、G
     >[!NOTE]
     >**[Sign-on URL]\(サインイン URL\)** の "tenant" の値は、すべて小文字にする必要があります。
 
-1. **[Register application (アプリケーションを登録する)]**をクリックします。
+1. **[Register application (アプリケーションを登録する)]** をクリックします。
 1. **[Client ID]\(クライアント ID\)** と **[Client Secret]\(クライアント シークレット\)** の値を保存します。 どちらも次のセクションで必要になります。
 
 ## <a name="configure-github-as-an-identity-provider-in-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントで GitHub を ID プロバイダーとして構成する
 
 1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-1. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
+1. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
 1. ブレードの上部にある **[+追加]** をクリックします。
 1. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「GitHub」と入力します。
 1. **[ID プロバイダーの種類]** をクリックし、**[GitHub]** を選択して、**[OK]** をクリックします。

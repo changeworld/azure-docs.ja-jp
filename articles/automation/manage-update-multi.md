@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194021"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833721"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -37,29 +37,14 @@ ms.locfileid: "34194021"
 
 更新管理は、次のオペレーティング システムでサポートされています。
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 以降、および Windows Server 2008 R2 SP1 以降に対する更新プログラムの展開。 Nano Server はサポートされていません。
-
-  Windows Server 2008 R2 SP1 への更新プログラムのデプロイをサポートするには、.NET Framework 4.5 および Windows Management Framework 5.0 以降が必要です。
-
-- Windows クライアント オペレーティング システムはサポートされていません。
-
-Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。
-
-> [!NOTE]
-> System Center Configuration Manager は、Windows エージェントを同時に管理することはできません。
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) および 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) および 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)
-
-- Ubuntu 12.04 LTS 以降 (x86/x64)
+|オペレーティング システム  |メモ  |
+|---------|---------|
+|Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします         |
+|Windows Server 2008 R2 SP1 以上     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 をダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> 確実な Windows PowerShell 5.1 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616)) をお勧めします。         |
+|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
+|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
+|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
+|Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
 
 > [!NOTE]
 > Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 詳細については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)を参照してください。
@@ -116,7 +101,7 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
 
 次の表では、このソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | Windows エージェント |[はい] |更新管理は、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |[はい] |更新管理は、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
@@ -152,6 +137,9 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
   - 定義の更新
   - ツール
   - 更新プログラム
+
+- **除外する更新プログラム** - これにより、**[除外]** ページが開きます。 除外する KB またはパッケージ名を入力します。
+
 - **[スケジュール設定]**: 既定の日時 (現在の時刻から 30 分後) をそのまま使用できます。 または、別の時刻を指定することもできます。
    展開を 1 回だけ行うか、定期的なスケジュールで行うかを指定することもできます。 定期的なスケジュールを設定するには、**[繰り返し]** の下の **[繰り返し]** オプションを選択します。
 

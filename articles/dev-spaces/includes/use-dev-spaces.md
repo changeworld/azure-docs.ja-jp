@@ -10,19 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2563f7c36283521541562bcd88f973d86a6f672a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 44ce986fcfdf079d3077c007a378f3467073d00d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198988"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823182"
 ---
-## <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Azure Dev Spaces を使用するように AKS クラスターを構成する
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Azure Dev Spaces を使用するように AKS クラスターを構成する
 
-コマンド ウィンドウを開き、次の Azure CLI コマンドを入力します。このとき、AKS クラスターと AKS クラスター名を含むリソース グループを使用します。
+コマンド ウィンドウを開き、次の Azure CLI コマンドを入力します。このとき、AKS クラスターを含む含むリソース グループと、AKS クラスター名を使用します。 このコマンドでは、Azure Dev Spaces のサポートを使用してクラスターが構成されます。
 
    ```cmd
-   az extension add --name dev-spaces-preview 
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
-最初のコマンドで、Azure CLI に拡張機能をインストールして Azure Dev Spaces のサポートを追加し、2 つ目で、Azure Dev Spaces のサポートを使用してクラスターを構成します。
+

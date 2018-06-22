@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: 2b7620611c4587d00612f98c86b5792984ff548b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10ce9058fca0ec56640e9bedabcc82683046fe9f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598455"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -61,7 +62,7 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Easy Tables]設定を使用することもできます。
+Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Azure Portal]設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
@@ -85,7 +86,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Easy Tables]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
+上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure Portal]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
 
 ## <a name="work-with-tables"></a>テーブルの操作
 以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックについて説明します。
@@ -239,7 +240,7 @@ query = query.IncludeTotalCount();
 実際のアプリケーションでは、ページャー コントロールまたは同等の UI と共に前の例と同様のクエリを使用して、ページ間を移動することができます。
 
 > [!NOTE]
-> また、モバイル アプリ バックエンドの 50 行の制限を無効にするには、 [EnableQueryAttribute] をパブリック GET メソッドに適用し、ページング動作を指定する必要があります。 次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
+> また、モバイル アプリ バックエンドの 50 行の制限をオーバーライドするには、 [EnableQueryAttribute] をパブリック GET メソッドに適用し、ページング動作を指定する必要があります。 次のコードをメソッドに適用すると、返される最大行数が 1000 行に設定されます。
 >
 > `[EnableQuery(MaxTop=1000)]`
 
@@ -458,7 +459,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-詳細については、「 [Azure モバイル アプリでのオフライン データ同期] 」をご覧ください。
+詳細については、「 [Azure Mobile Apps でのオフライン データ同期] 」をご覧ください。
 
 ### <a name="binding"></a>方法: Mobile Apps のデータを Windows ユーザー インターフェイスにバインドする
 このセクションでは、Windows アプリで UI 要素を使用して、返されたデータ オブジェクトを表示する方法について説明します。  次のコード例では、不完全な項目のクエリによってリストのソースにバインドします。 [MobileServiceCollection] は、Mobile Apps 対応のバインディング コレクションを作成します。
@@ -647,11 +648,11 @@ Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 #### <a name="adal"></a>Active Directory Authentication Library を使用したユーザーの認証
 Active Directory Authentication Library (ADAL) を使うと、クライアントから Azure Active Directory 認証を使用してユーザー認証を開始できます。
 
-1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
+1. 「[Azure Active Directory ログインを使用するように App Service を構成する方法]」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。この値は、[Easy Tables] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
@@ -794,7 +795,7 @@ private async Task AuthenticateAsync()
 ```
 
 #### <a name="client-livesdk"></a>Microsoft アカウントと Live SDK を使用したシングル サインイン
-ユーザーを認証するには、Microsoft アカウント デベロッパー センターでアプリを登録する必要があります。 モバイル アプリ バックエンドで登録の詳細を構成します。 Microsoft アカウント登録を作成し、それを モバイル アプリ バックエンドに接続するには、 [Microsoft アカウント ログインを使用するためのアプリの登録]の手順を完了します。 Windows ストア と Windows Phone 8/Silverlight の両方のバージョンのアプリがある場合は、Windows ストア バージョンを最初に登録します。
+ユーザーを認証するには、Microsoft アカウント デベロッパー センターでアプリを登録する必要があります。 モバイル アプリ バックエンドで登録の詳細を構成します。 Microsoft アカウント登録を作成し、それを モバイル アプリ バックエンドに接続するには、 [Microsoft アカウント ログインを使用するためのアプリの登録]の手順を完了します。 Microsoft Store と Windows Phone 8/Silverlight の両方のバージョンのアプリがある場合は、Microsoft Store バージョンを最初に登録します。
 
 次のコードでは Live SDK を使用して認証し、返されたトークンを利用して Mobile App バックエンドにサインインします。
 
@@ -807,7 +808,7 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
     // Get the URL the Mobile App backend.
     var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
 
-    // Create the authentication client for Windows Store using the service URL.
+    // Create the authentication client for Microsoft Store using the service URL.
     LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
     //// Create the authentication client for Windows Phone using the client ID of the registration.
     //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
@@ -850,7 +851,7 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
 詳細については、 [Windows Live SDK] のドキュメントをご覧ください。
 
 ### <a name="serverflow"></a>サーバー側管理認証
-ID プロバイダーを登録したら、プロバイダーの [MobileServiceAuthenticationProvider] 値を指定して、[MobileServiceClient] で [LoginAsync] メソッドを呼び出します。 たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
+ID プロバイダーを登録したら、プロバイダーの [LoginAsync] 値を指定して、[MobileServiceClient] で [LoginAsync] メソッドを呼び出します。 たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
 ```
 private MobileServiceUser user;
@@ -878,12 +879,12 @@ private async System.Threading.Tasks.Task Authenticate()
 }
 ```
 
-Facebook 以外の ID プロバイダーを使用している場合は、[MobileServiceAuthenticationProvider] の値をプロバイダーに対応する値に変更してください。
+Facebook 以外の ID プロバイダーを使用している場合は、[LoginAsync] の値をプロバイダーに対応する値に変更してください。
 
 サーバー フローでは、Azure App Service は、選択したプロバイダーのサインイン ページを表示することで OAuth 認証フローを管理します。  ID プロバイダーから制御が戻ったら、Azure App Service は App Service 認証トークンを生成します。 [LoginAsync] メソッドは [MobileServiceUser] を返します。これにより、認証されたユーザーの [UserId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。 詳細については、「[認証トークンをキャッシュする](#caching)」を参照してください。
 
 ### <a name="caching"></a>認証トークンをキャッシュする
-最初の認証に成功した後、プロバイダーからの認証トークンを保存することによって、ログイン メソッドの呼び出しを回避できる場合があります。  Windows ストア アプリと UWP アプリでは、正常にサインインした後、次のように [PasswordVault] を使用して現在の認証トークンをキャッシュできます。
+最初の認証に成功した後、プロバイダーからの認証トークンを保存することによって、ログイン メソッドの呼び出しを回避できる場合があります。  Microsoft Storeアプリと UWP アプリでは、正常にサインインした後、次にように [PasswordVault] を使用して現在の認証トークンをキャッシュできます：
 
 ```
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -935,7 +936,7 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 以下のトピックでは、プッシュ通知について説明します。
 
 * [プッシュ通知に登録する](#register-for-push)
-* [Windows ストアのパッケージ SID を取得する](#package-sid)
+* [Microsoft Store のパッケージ SID を取得する](#package-sid)
 * [クロスプラットフォームのテンプレートで登録する](#register-xplat)
 
 ### <a name="register-for-push"></a>方法: プッシュ通知に登録する
@@ -952,17 +953,17 @@ private async void InitNotificationsAsync()
 }
 ```
 
-WNS に対するプッシュを行う場合は、[Windows ストア パッケージ SID を取得する](#package-sid)必要があります。  テンプレート登録に登録する方法を含む Windows アプリの詳細については、「 [アプリにプッシュ通知を追加する]」を参照してください。
+WNS に対するプッシュを行う場合は、[Microsoft Store パッケージ SID を取得する](#package-sid)必要があります。  テンプレート登録に登録する方法を含む Windows アプリの詳細については、「 [アプリにプッシュ通知を追加する]」を参照してください。
 
 クライアントからのタグ要求はサポートされていません。  タグ要求は、通告なく登録から削除されます。
 タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。  `RegisterNativeAsync()` メソッドの代わりに、[カスタム API を呼び出します](#customapi)。
 
-### <a name="package-sid"></a>方法: Windows ストアのパッケージ SID を取得する
-Windows ストア アプリでプッシュ通知を有効にするには、パッケージ SID が必要です。  パッケージ SID を受け取るには、Windows ストアにアプリケーションを登録します。
+### <a name="package-sid"></a>方法: Microsoft Store のパッケージ SID を取得する
+Microsoft Store アプリでプッシュ通知を有効にするには、パッケージ SID が必要です。  パッケージ SID を受け取るには、Microsoft Store　にアプリケーションを登録します。
 
 この値を取得するには:
 
-1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、 > **[アプリケーションをストアと関連付ける]** の順にクリックします。
+1. Visual Studio ソリューション エクスプローラーで、Microsoft Store アプリプロジェクトを右クリックし、  **[ストア]**、 > **[アプリケーションをストアと関連付ける]** の順にクリックします。
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
 3. アプリの登録が正常に作成されたら、アプリ名を選択し、**[次へ]** をクリックして、**[関連付け]** をクリックします。
 4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]** で、作成したアプリ登録をクリックします。
@@ -1093,15 +1094,15 @@ public class MyHandler : DelegatingHandler
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [アプリケーションへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Azure モバイル アプリでのオフライン データ同期]: app-service-mobile-offline-data-sync.md
+[Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Microsoft アカウント ログインを使用するためのアプリの登録]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[Azure Active Directory ログインを使用するように App Service を構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
 [MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/library/azure/dn268408(v=azure.10).aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
+[LoginAsync]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
 [GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
@@ -1120,8 +1121,8 @@ public class MyHandler : DelegatingHandler
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Easy Tables]: https://portal.azure.com/
+[Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

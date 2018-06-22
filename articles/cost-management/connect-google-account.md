@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d4b906bd966da66659d23b935f7dbbd44b33899a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164416"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296443"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 
@@ -60,7 +60,7 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>Cost Management に Google Cloud アカウントを追加する
 
-1. Azure Portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com/) に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com/) に移動してサインインします。
 2. **[Settings]\(設定\)** (歯車記号) をクリックし、**[Cloud Accounts]\(クラウド アカウント\)** を選択します。
 3. **[Accounts Management]\(アカウント管理\)** で **[Google Accounts]\(Google アカウント\)** タブを選択し、**[Add new +]\(新規追加 +\)** をクリックします。
 4. **[Google Account Name]\(Google アカウント名\)** に請求先アカウントのメール アドレスを入力し、**[Next]\(次へ\)** をクリックします。

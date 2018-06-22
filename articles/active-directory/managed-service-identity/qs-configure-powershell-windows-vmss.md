@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 42fabb9a2ad05dbd6a449f3f9e6a729917750165
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930131"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700010"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>PowerShell を使用して、VMSS マネージド サービス ID (MSI) を構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "33930131"
 
 管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-この記事では、PowerShell を使用して、Azure 仮想マシン スケール セット (VMSS) においてマネージド サービス ID に対する次の操作を実行する方法を説明します。
+この記事では、PowerShell を使用して、仮想マシン スケール セット (VMSS) においてマネージド サービス ID 操作を実行する方法を説明します。
 - Azure VMSS においてシステム割り当ての ID を有効および無効にする
 - Azure VMSS においてユーザー割り当ての ID を追加および削除する
 
@@ -122,8 +122,7 @@ ms.locfileid: "33930131"
 
 2. 最初に、`Get-AzureRmVM` コマンドレットを使用して VM プロパティを取得します。 次に、ユーザー割り当て ID を Azure VMSS に割り当てるため、[Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) コマンドレットで `-IdentityType` および `-IdentityID` スイッチを使用します。 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` を、実際の値に置き換えます。
 
-   > [!IMPORTANT]
-   > ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さは 24 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳しくは、「[FAQ と既知の問題](known-issues.md)」をご覧ください。
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

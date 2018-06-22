@@ -1,29 +1,23 @@
 ---
 title: コネクテッド ファクトリ ソリューションの機能 - Azure | Microsoft Docs
 description: コネクテッド ファクトリ事前構成済みソリューションの機能の概要。
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: 7ee86a59e7c47406ea1a890f1a9d1eb2ed4ad772
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3478217771418ab31772d6a42a7ed8d8a2e8069a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626498"
 ---
-# <a name="what-is-azure-iot-suite-connected-factory"></a>Azure IoT Suite コネクテッド ファクトリとは
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 
-コネクテッド ファクトリは Microsoft の Azure Industrial IoT 参照アーキテクチャの実装で、オープンソース ソリューションとしてパッケージ化されています。 商用製品の開始点として使用できます。 コネクテッド ファクトリ ソリューションの事前構築済みバージョンを [Azure IoT Suite](https://www.azureiotsuite.com/#solutions/types/CF) から Azure サブスクリプションにデプロイできます。
+コネクテッド ファクトリは Microsoft の Azure Industrial IoT 参照アーキテクチャの実装で、オープンソース ソリューションとしてパッケージ化されています。 商用製品の開始点として使用できます。 コネクテッド ファクトリ ソリューションの事前構築済みバージョンを [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/#solutions/types/CF)から Azure サブスクリプションにデプロイできます。
 
 ![コネクテッド ファクトリ ソリューションのダッシュボード](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
@@ -64,7 +58,7 @@ ms.lasthandoff: 05/20/2018
 
 ## <a name="customizability"></a>カスタマイズ性
 
-- ソリューションを[カスタマイズ](../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)して、独自のビジネス要件を満たします。
+- ソリューションをカスタマイズして、独自のビジネス要件を満たします。
 - 完全なソリューション ソース コードは GitHub にあります。 [コネクテッド ファクトリ事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)のリポジトリをご覧ください。
 
 ## <a name="next-steps"></a>次の手順

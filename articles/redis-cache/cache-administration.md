@@ -1,6 +1,6 @@
 ---
-title: "Azure Redis Cache を管理する方法 | Microsoft Docs"
-description: "Azure Redis Cache の管理タスク (再起動、更新のスケジュールなど) を実行する方法について説明します"
+title: Azure Redis Cache を管理する方法 | Microsoft Docs
+description: Azure Redis Cache の管理タスク (再起動、更新のスケジュールなど) を実行する方法について説明します
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3b62b41fb7b9d7ff6f40191c48d00c1f0a941e48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639454"
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache を管理する方法
 このトピックでは、Azure Redis Cache インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -36,7 +37,7 @@ ms.lasthandoff: 01/19/2018
 
 ![Reboot](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]**をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動したいシャードを選択し、**[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
+キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]** をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動したいシャードを選択し、**[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
 
 クライアント アプリケーションへの影響は、再起動するノードによって異なります。
 
@@ -89,12 +90,10 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 
 ![更新のスケジュール](./media/cache-administration/redis-schedule-updates.png)
 
-メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]**をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
+メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
-> [!NOTE]
-> 更新の既定のメンテナンス時間は 5 時間です。 この値は、Azure ポータルからは構成できませんが、PowerShell で [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳しくは、「[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)」をご覧ください。
-> 
-> 
+更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure ポータルからは構成できませんが、PowerShell で [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳しくは、「[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)」をご覧ください。
+
 
 ## <a name="schedule-updates-faq"></a>更新のスケジュールに関する FAQ
 * [更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

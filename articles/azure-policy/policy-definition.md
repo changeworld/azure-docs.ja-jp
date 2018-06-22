@@ -4,16 +4,16 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194650"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260483"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -26,7 +26,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 - モード
 - parameters
 - 表示名
-- 説明
+- description 
 - ポリシー規則
   - 論理評価
   - 効果
@@ -64,7 +64,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 }
 ```
 
-すべての Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](json-samples.md)」をご覧ください。
+Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-samples.md)」にあります。
 
 ## <a name="mode"></a>Mode
 
@@ -192,7 +192,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-**like** 条件や **notLike** 条件を使用する場合は、値の中でワイルドカード (*) を指定できます。
+**like** 条件や **notLike** 条件を使用する場合は、値にワイルドカード (*) を指定できます。値に複数のワイルドカード (*) を含めることはできません。
 
 **match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](scripts/allow-multiple-name-patterns.md)」を参照してください。
 
@@ -204,7 +204,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 - `name`
 - `fullName`
-  - 親を含むリソースの完全な名前 ("myServer/myDatabase" など) を返します
+  - リソースのフル ネームを返します。 リソースのフル ネームは、親リソースの名前が付加されたリソース名です ("myServer/myDatabase" など)。
 - `kind`
 - `type`
 - `location`
@@ -251,6 +251,8 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 **AuditIfNotExists** および **DeployIfNotExists** を使用すると、関連するリソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md)に関するページを参照してください。
+
+各効果の詳細、評価の順序、プロパティ、例については、「[Policy の効果について](policy-effects.md)」を参照してください。
 
 ## <a name="aliases"></a>エイリアス
 
@@ -392,4 +394,4 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[Templates for Azure Policy (Azure Policy のテンプレート)](json-samples.md)」で、Azure Policy テンプレートのサンプルを確認する
+- 他の例については、「[Azure Policy のサンプル](json-samples.md)」をご確認ください。

@@ -8,15 +8,16 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/19/2017
-ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 05/22/2018
+ms.openlocfilehash: 94ed603990859d12f709e4a6121e3736221cf10a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651180"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
-Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサポートされるようになりました。 このドキュメントでは、ツールのインストールとアンインストールの方法を説明します。
+Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサポートされます。 この記事では、ツールのインストールとアンインストールの方法を説明します。
 
 ツールの使用について詳しくは、[Visual Studio の Azure Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)に関する記事をご覧ください。
 
@@ -27,11 +28,11 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 
 次のように **[データの保存と処理]** ワークロードを有効にします。
 
-![[データの保存と処理] ワークロード](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-01.png)
+![[データの保存と処理] ワークロードが選択される](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-01.png)
 
 次のように **[Azure の開発]** ワークロードを有効にします。
 
-![[Azure の開発] ワークロード](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-02.png)
+![[Azure の開発] ワークロードが選択される](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
 
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013、2015
@@ -39,14 +40,12 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 * [Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx) を使用して、Microsoft Azure SDK for .NET バージョン 2.7.1 以上をインストールします。
 * [Visual Studio の Azure Stream Analytics ツール](http://aka.ms/asatoolsvs)をインストールします。
 
-
-
-## <a name="update"></a>プライマリの
+## <a name="update"></a>アップデート
 
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 新しいバージョンの通知が Visual Studio の通知に表示されます。 
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013、2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 および Visual Studio 2015
 インストールされている Visual Studio の Stream Analytics ツールによって、新しいバージョンが自動的に確認されます。 最新バージョンをインストールするにはポップアップ ウィンドウの指示に従います。 
 
 
@@ -55,7 +54,7 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 Visual Studio インストーラーをダブルクリックし、**[変更]** を選択します。 **[データの保存と処理]** ワークロードまたは **[Azure の開発]** ワークロードから、**[Azure Data Lake および Stream Analytics ツール]** チェック ボックスをオフにします。
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013、2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 および Visual Studio 2015
 コントロール パネルに移動し、**Microsoft Azure Data Lake and Stream Analytics tools for Visual Studio** をアンインストールします。
 
 

@@ -3,16 +3,17 @@ title: Azure Kubernetes Service についてよく寄せられる質問
 description: Azure Kubernetes Service についてよく寄せられる質問にお答えします。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/14/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260797"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -28,9 +29,7 @@ ms.lasthandoff: 05/07/2018
 - カナダ東部
 - 米国中央部
 - 米国東部
-- 東南アジア
 - 西ヨーロッパ
-- 米国西部 2
 
 ## <a name="when-will-additional-regions-be-added"></a>その他のリージョンが追加されるのはいつ頃になりますか?
 
@@ -48,9 +47,9 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 
 AKS はプレビューに残っていますが、ACS Kubernetes または [acs-engine](https://github.com/azure/acs-engine) を使用して運用環境クラスターを作成することをお勧めします。 概念実証のデプロイや、開発/テスト環境では AKS を使用します。
 
-## <a name="when-will-acs-be-deprecated"></a>ACS が非推奨化される時期を教えてください。
+## <a name="when-will-acs-be-deprecated"></a>ACS が非推奨となる時期を教えてください。
 
-ACS は、AKS が GA になるころに非推奨化されます。 その日付から、クラスターを AKS に移行するための期間として 12 か月が設けられます。 この 12 か月間は、ACS のすべての操作を実行することができます。
+ACS は、AKS が GA になる頃に非推奨となります。 その日付から、クラスターを AKS に移行するための期間として 12 か月が設けられます。 この 12 か月間は、ACS のすべての操作を実行することができます。
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
 
@@ -62,7 +61,7 @@ ACS は、AKS が GA になるころに非推奨化されます。 その日付�
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>既存の仮想ネットワークに AKS をデプロイできますか?
 
-いいえ、これはまだありませんが、間もなく使用できるようになります。
+はい、これは[高度なネットワーク機能](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md)を通してサポートされています。
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
@@ -70,13 +69,17 @@ ACS は、AKS が GA になるころに非推奨化されます。 その日付�
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-いいえ、AKS は現在 Windows Server ベースのエージェント ノードを提供していないため、Windows Server コンテナーを実行することはできません。 Azure の Kubernetes で Windows Server コンテナーを実行する必要がある場合は、[acs-engine のドキュメント](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)をご覧ください。
+Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは現在で[プライベート プレビュー](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)段階にあります。 Azure の Kubernetes でプレビュー以外の Windows Server コンテナーを実行する必要がある場合は、[acs-engine のドキュメント](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)をご覧ください。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
-各 AKS デプロイは、2 つのリソース グループにまたがります。 1 つは自分が作成したリソース グループで、AKS リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGRoup_myAKSCluster_eastus* のような名前を持つ 2 つ目のリソース グループをデプロイ時に自動的に作成します。 2 つ目のリソース グループには、VM、ネットワーク、ストレージなど、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これはリソースのクリーンアップを簡略化するために作成されます。
+各 AKS デプロイは、2 つのリソース グループにまたがります。 1 つは自分が作成したリソース グループで、AKS リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような名前を持つ 2 つ目のリソース グループをデプロイ時に自動的に作成します。 2 つ目のリソース グループには、VM、ネットワーク、ストレージなど、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これはリソースのクリーンアップを簡略化するために作成されます。
 
 AKS クラスターで使用するストレージ アカウントや予約済みパブリック IP アドレスなどのリソースを作成する場合は、自動的に生成されたリソース グループにそれらを配置する必要があります。
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
+
+サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

@@ -1,28 +1,27 @@
 ---
-title: "Azure Event Hubs の機能の概要 | Microsoft Docs"
-description: "Azure Event Hubs の機能の概要と詳細"
+title: Azure Event Hubs の機能の概要 | Microsoft Docs
+description: Azure Event Hubs の機能の概要と詳細
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2018
+ms.date: 06/08/2018
 ms.author: sethm
-ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248743"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs の機能の概要
 
-Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 サービスの概要については、「[Event Hubs とは](event-hubs-what-is-event-hubs.md)」を参照してください。
+Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 概要については、「[Event Hubs とは](event-hubs-what-is-event-hubs.md)」を参照してください。
 
 [概要記事](event-hubs-what-is-event-hubs.md)内の情報に基づいて作成されたこの記事では、Event Hubs のコンポーネントと機能に関する実装の技術的な詳細を説明します。
 
@@ -44,7 +43,7 @@ Event Hubs によって、1 つのパーティション キー値を共有する
 
 Event Hubs では、 *発行元ポリシー*を介してイベント プロデューサーをきめ細かく制御できます。 発行元ポリシーは、多数の独立したイベント発行元を支援するために設計されたランタイム機能です。 発行元ポリシーでは、次のメカニズムを使用してイベント ハブにイベントを発行する際に、各発行元は独自の一意の識別子を使用します。
 
-```
+```http
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
@@ -123,7 +122,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 #### <a name="connect-to-a-partition"></a>パーティションに接続する
 
-パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが 1 つだけである可能性があります。 チェックポイント処理、リース、リーダー管理は、.NET クライアントの [EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) クラスを使用して簡略化されます。 イベント プロセッサ ホストはインテリジェントなコンシューマー エージェントです。
+パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが 1 つだけである可能性があります。 チェックポイント処理、リース、リーダー管理は、.NET クライアントの [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) クラスを使用して簡略化されます。 イベント プロセッサ ホストはインテリジェントなコンシューマー エージェントです。
 
 #### <a name="read-events"></a>イベントを読み取る
 
@@ -149,11 +148,11 @@ Event Hubs のスループット容量は、"*スループット ユニット*" 
 * イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
 * エグレス: 1 秒あたり最大で 2 MB
 
-購入済みのスループット ユニットの容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット ユニットの容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット ユニットの数を確認してください。 スループット ユニットは、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット ユニットを管理することもできます。
+購入済みのスループット ユニットの容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット ユニットの容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット ユニットの数を確認してください。 スループット ユニットは、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット ユニットを管理することもできます。
 
-スループット ユニットは 1 時間ごとに課金され、事前に購入します。 スループット ユニットを購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット ユニットを購入でき、名前空間内のすべての Event Hubs で共有できます。
+スループット ユニットは事前に購入し、1 時間ごとに課金されます。 スループット ユニットを購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット ユニットを購入でき、その名前空間内のすべてのイベント ハブで共有されます。
 
-Azure サポートに連絡すれば、20 ブロック単位で最大 100 までスループット ユニットを購入できます。 100 を超えて必要な場合、100 ブロック単位でスループット ユニットを購入することもできます。
+Azure サポートに連絡すれば、20 ブロック単位で最大 100 までスループット ユニットを購入できます。 さらに、100 ブロック単位でスループット ユニットを購入することができます。
 
 最適なスケールを実現するために、スループット ユニットとパーティションのバランスを保つことをお勧めします。 単一のパーティションの最大スケールは 1 つのスループット ユニットです。 スループット ユニットの数は、イベント ハブ内のパーティション数以下とする必要があります。
 

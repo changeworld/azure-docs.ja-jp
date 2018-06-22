@@ -1,27 +1,26 @@
 ---
-title: Azure AD B2C で年齢制限を使用する | Microsoft Docs
+title: Azure Active Directory B2C での年齢制限の使用 | Microsoft Docs
 description: アプリケーションを使用している未成年者を特定する方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: B2C
+ms.openlocfilehash: bbf885fbcca22e42b2ec0ad7ff4e7a70aa5f5828
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261284"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711972"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Azure AD B2C で年齢制限を使用する
 
 >[!IMPORTANT]
->この機能はプライベート プレビュー段階にあります。  これが利用可能になった時点で[サービス ブログ](https://blogs.msdn.microsoft.com/azureadb2c/)で詳細を確認するか、AADB2CFeedback@microsoft.com までお問い合わせください。これは運用環境のディレクトリでは使用しないでください。これらの新機能を使用すると、データが失われる可能性があります。また、一般公開されるまでは、動作に予期しない変更が生じる可能性もあります。  
+>この機能はプライベート プレビュー段階にあります。  これが利用可能になった時点で[サービス ブログ](https://blogs.msdn.microsoft.com/azureadb2c/)で詳細を確認するか、AADB2CFeedback@microsoft.com までお問い合わせください。  これは運用環境のディレクトリでは使用しないでください。これらの新機能を使用すると、データが失われる可能性があります。また、一般公開されるまでは、動作に予期しない変更が生じる可能性もあります。  
 >
 
 ##<a name="age-gating"></a>年齢制限

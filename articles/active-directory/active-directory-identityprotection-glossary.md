@@ -1,13 +1,14 @@
 ---
-title: "Azure Active Directory Identity Protection 用語集 | Microsoft Docs"
-description: "Azure Active Directory Identity Protection 用語集"
+title: Azure Active Directory Identity Protection 用語集 | Microsoft Docs
+description: Azure Active Directory Identity Protection 用語集
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9cc4a914091c91f4b2ae1c152644fe8e01747e8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713393"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 ### <a name="at-risk-user"></a>危険 (ユーザー)
@@ -80,7 +82,7 @@ ID またはデバイスを安全な状態に復元せずに、侵害された I
 侵害の疑いがある、または侵害が検知された ID またはデバイスの不正使用によって、組織の被害を防ぐためのアクション。 防止アクションでは、デバイスまたは ID を保護しません。また、以前のリスク イベントを解決することもありません。
 
 ### <a name="privileged-user"></a>特権 (ユーザー)
-Azure Active Directory に 1 つ以上のリソースへの永続的または一時的な管理者アクセス許可を所有するリスク イベント時のユーザーです。全体管理者、課金管理者、サービス管理者,ユーザー管理者、パスワード管理者など。 
+Azure Active Directory に 1 つ以上のリソースへの永続的または一時的な管理者アクセス許可を所有するリスク イベント時のユーザーです。全体管理者、課金管理者、サービス管理者、ユーザー管理者、パスワード管理者など。 
 
 ### <a name="real-time"></a>リアルタイム
 リアルタイムの検出を参照してください。
@@ -137,7 +139,7 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 短期間に複数のユーザー アカウントで大量のログイン試行の失敗が見られる IP アドレスから正常にサインインされた後にトリガーされるリスク イベントです。
 
 ### <a name="sign-in-from-unfamiliar-location"></a>不明な場所からのサインイン
-ユーザーが新しい場所 (IP、緯度と経度、および ASN) から正常にサインインしたときにトリガーされるリスク イベントです。
+ユーザーが新しい場所 (IP、緯度/経度、ASN) から正常にサインインしたときにトリガーされるリスク イベントです。
 
 ### <a name="sign-in-risk"></a>サインイン リスク
 リスク レベル (サインイン) を参照してください

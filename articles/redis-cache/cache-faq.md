@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640474"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache の FAQ
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
@@ -183,7 +184,7 @@ Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany �
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 構成オプションについて
 StackExchange.Redis には多くのオプションが用意されています。 ここでは、いくつかの一般的な設定について説明します。 StackExchange.Redis オプションの詳細については、 [StackExchange.Redis の構成](https://stackexchange.github.io/StackExchange.Redis/Configuration)に関するページを参照してください。
 
-| 構成オプション | [説明] | 推奨 |
+| 構成オプション | 説明 | 推奨 |
 | --- | --- | --- |
 | AbortOnConnectFail |true の場合、ネットワーク障害の後に再接続が行われません。 |StackExchange.Redis が自動的に再接続するように、false に設定します。 |
 | ConnectRetry |初期接続中に接続試行を繰り返す回数。 |次の注意事項を参考にしてください。 |
@@ -385,7 +386,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定]["minIoThreads" configuration setting]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、この設定は global.asax.cs の Application_Start メソッドからプログラムで構成できるはずです (下記を参照)。
+* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" または "minWorkerThreads" 構成設定]["minIoThreads" configuration setting]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、この設定は global.asax.cs の Application_Start メソッドからプログラムで構成できるはずです (下記を参照)。
 
   > [!NOTE] 
   > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。

@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/13/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801934"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
-このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
+このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
 
 ## <a name="sourceanchor"></a>sourceAnchor
 sourceAnchor 属性は、 *オブジェクトの有効期間中に変更できない属性*として定義されています。 この属性により、オブジェクトは、オンプレミスと Azure AD で同じオブジェクトとして一意に識別されます。 また、この属性は、 **immutableId** とも呼ばれており、この 2 つの名前のどちらを使ってもかまいません。
 
-"immutable" (変更できない) という単語は、このトピックで大きな意味を持ちます。 この属性の値は、一度設定すると変更できないため、シナリオに対応する設計を選ぶことが重要です。
+"immutable" (変更できない) という単語は、このドキュメントで大きな意味を持ちます。 この属性の値は、一度設定すると変更できないため、シナリオに対応する設計を選ぶことが重要です。
 
 この属性は、次のシナリオで使用されます。
 
@@ -45,7 +47,7 @@ sourceAnchor 属性は、 *オブジェクトの有効期間中に変更でき�
 * 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * グローバルに一意であること
 * 文字列、整数、バイナリのいずれかであること
-* ユーザーの名前に基づかないこと (変更されるため)
+* 変更される可能性があるためユーザーの名前に基づかないこと
 * 大文字と小文字の区別がないこと、および大文字と小文字で異なる可能性がある値は避けること
 * オブジェクトの作成時に割り当てること
 
@@ -117,7 +119,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![カスタム インストール - sourceAnchor 構成](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -186,10 +188,10 @@ Azure で使用する UPN の値を指定するための属性を選択する場
 ### <a name="custom-domain-state-and-upn"></a>カスタム ドメインの状態と UPN
 確認済みのドメインを UPN のサフィックスとして使用することが重要です。
 
-John は、contoso.com に属するユーザーです。Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にサインインする必要があるとします。この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
+John は、contoso.com に属するユーザーです。 Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にサインインする必要があるとします。 この場合は、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。 John の UPN サフィックス (この例では contoso.com) が Azure AD で確認済みのドメインと一致しない場合、UPN サフィックスは azurecontoso.onmicrosoft.com に置き換えられます。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
-組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
+組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。 そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
 
 ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md) 」を参照してください。
 

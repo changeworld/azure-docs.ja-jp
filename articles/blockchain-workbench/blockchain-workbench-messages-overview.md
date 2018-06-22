@@ -1,5 +1,5 @@
 ---
-title: Azure Blockchain Workbench のメッセージの概要
+title: Azure Blockchain Workbench のメッセージ統合の概要
 description: Azure Blockchain Workbench でのメッセージの使用の概要。
 services: azure-blockchain
 keywords: ''
@@ -10,23 +10,22 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302094"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607602"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Azure Blockchain Workbench のメッセージの概要
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
 Azure Blockchain Workbench は、REST API を提供するだけでなく、メッセージング ベースの統合も提供します。 Workbench は Azure Event Grid を介して台帳中心のイベントを発行し、ダウンストリームの消費者がこれらのイベントに基づいてデータを取り込んだり、行動を起こしたりすることができるようにします。 信頼性の高いメッセージングを必要とするクライアントの場合、Azure Blockchain Workbench は Azure Service Bus エンドポイントにもメッセージを送信します。
 
 開発者は、ユーザーの作成、契約の作成、および台帳の契約の更新のために外部システム通信が取引を開始できるようにする機能にも関心を示しています。 現在、この機能はパブリック プレビューでは公開されていませんが、この機能を提供するサンプルが [http://aka.ms/blockchain-workbench-integration-sample](http://aka.ms/blockchain-workbench-integration-sample) にあります。
 
-
 ## <a name="event-notifications"></a>イベント通知
 
-イベント通知を使用すると、Workbench およびそれが接続されているブロックチェーン ネットワークで発生するイベントをユーザーおよびダウンストリーム システムに通知することができます。 イベント通知は、コードで直接使用するか、Logic Apps や Flow などのツールでダウンストリーム システムへのデータのフローをトリガーするために使用されます。
+イベント通知を使用すると、Blockchain Workbench およびそれが接続されているブロックチェーン ネットワークで発生するイベントをユーザーとダウンストリーム システムに通知することができます。 イベント通知は、コードで直接使用するか、Logic Apps や Flow などのツールでダウンストリーム システムへのデータのフローをトリガーするために使用されます。
 
 受け取ることができるさまざまなメッセージの詳細については、「[通知メッセージのリファレンス](#notification-message-reference)」を参照してください。
 
@@ -61,23 +60,23 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Logic Apps による Service Bus メッセージの使用
 
 1. Azure Portal で新しい **Azure Logic App** を作成します。
-2.  ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、**[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
+2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、**[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
 3. ワークフロー デザイナーが表示されたら、Service Bus の接続情報を指定します。
 4. サブスクリプションを選択し、**workbench-external** のトピックを指定します。
 5. このトリガーからのメッセージを利用するアプリケーションのロジックを開発します。
 
 ## <a name="notification-message-reference"></a>通知メッセージのリファレンス
 
-OperationName に応じて、通知メッセージは次のいずれかの種類になります。
+**OperationName** に応じて、通知メッセージは次のいずれかの種類になります。
 
 ### <a name="accountcreated"></a>AccountCreated
 
 新しいアカウントが、指定されたチェーンに追加されるように要求されたことを示します。
 
-| Name    | [説明]  |
+| Name    | 説明  |
 |----------|--------------|
 | UserId  | 作成されたユーザーの ID |
-| ChainIdentifier | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、ユーザーの "オン チェーン" アドレスです。 |
+| ChainIdentifier | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、ユーザーの **オン チェーン** アドレスです。 |
 
 ``` csharp
 public class NewAccountRequest : MessageModelBase
@@ -91,18 +90,18 @@ public class NewAccountRequest : MessageModelBase
 
 分散型台帳で契約を挿入または更新する要求が行われたことを示します。
 
-| Name | [説明] |
+| Name | 説明 |
 |-----|--------------|
 | ChainID | 要求に関連付けられているチェーンの一意の識別子。|
-  BlockId | 台帳のブロックの一意の識別子。|
-  ContractId | 契約の一意の識別子。|
-  ContractAddress |       台帳の契約のアドレス。|
-  TransactionHash  |     台帳の取引のハッシュ。|
-  OriginatingAddress |   取引の発信者のアドレス。|
-  ActionName       |     アクションの名前。|
-  IsUpdate        |      これが更新であるかどうかを示します。|
-  parameters       |     アクションに送信されるパラメーターの名前、値、およびデータ型を識別するオブジェクトの一覧。|
-  TopLevelInputParams |  契約が 1 つ以上の他の契約に接続されているシナリオでは、これらは最上位の契約のパラメーターです。 |
+| BlockId | 台帳のブロックの一意の識別子。|
+| ContractId | 契約の一意の識別子。|
+| ContractAddress |       台帳の契約のアドレス。|
+| TransactionHash  |     台帳の取引のハッシュ。|
+| OriginatingAddress |   取引の発信者のアドレス。|
+| ActionName       |     アクションの名前。|
+| IsUpdate        |      これが更新であるかどうかを示します。|
+| parameters       |     アクションに送信されるパラメーターの名前、値、およびデータ型を識別するオブジェクトの一覧。|
+| TopLevelInputParams |  契約が 1 つ以上の他の契約に接続されているシナリオでは、これらは最上位の契約のパラメーターです。 |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -125,7 +124,7 @@ public class ContractInsertOrUpdateRequest : MessageModelBase
 
 分散型台帳の特定の契約に対するアクションを実行する要求が行われたことを示します。
 
-| Name                     | [説明]                                                                                                                                                                   |
+| Name                     | 説明                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ContractActionId         | この契約アクションの一意の識別子                                                                                                                                |
 | ChainIdentifier          | チェーンの一意の識別子                                                                                                                                           |
@@ -164,7 +163,7 @@ public class ContractActionRequest : MessageModelBase
 > このメッセージは、口座の資金調達を必要とする台帳のみに生成されます。
 > 
 
-| Name    | [説明]                              |
+| Name    | 説明                              |
 |---------|------------------------------------------|
 | Address | 資金調達されたユーザーのアドレス。 |
 | Balance | ユーザー残高の残高。         |
@@ -184,7 +183,7 @@ public class UpdateUserBalanceRequest : MessageModelBase
 
 メッセージは、分散型台帳でブロックを追加する要求が行われたことを示します。
 
-| Name           | [説明]                                                            |
+| Name           | 説明                                                            |
 |----------------|------------------------------------------------------------------------|
 | ChainId        | ブロックが追加されたチェーンの一意の識別子。             |
 | BlockId        | Azure Blockchain Workbench 内のブロックの一意の識別子。 |
@@ -205,7 +204,7 @@ public class InsertBlockRequest : MessageModelBase
 
 メッセージは、分散型台帳で取引を追加するために要求の詳細を提供します。
 
-| Name            | [説明]                                                            |
+| Name            | 説明                                                            |
 |-----------------|------------------------------------------------------------------------|
 | ChainId         | ブロックが追加されたチェーンの一意の識別子。             |
 | BlockId         | Azure Blockchain Workbench 内のブロックの一意の識別子。 |
@@ -232,7 +231,7 @@ public class InsertTransactionRequest : MessageModelBase
 
 契約に対するチェーン識別子の割り当てについての詳細を提供します。 たとえば、Ethereum ブロックチェーンでは、台帳の契約のアドレス。
 
-| Name            | [説明]                                                                       |
+| Name            | 説明                                                                       |
 |-----------------|-----------------------------------------------------------------------------------|
 | ContractId      | Azure Blockchain Workbench 内の契約の一意の識別子。 |
 | ChainIdentifier | これは、チェーン上の契約の識別子です。                             |
@@ -242,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>メッセージの種類で使用されるクラス
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+すべてのメッセージの基本モデル。
+
+| Name          | 説明                          |
+|---------------|--------------------------------------|
+| OperationName | 操作の名前。           |
+| RequestId     | 要求の一意の識別子。 |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+名前、値、パラメーターの型が含まれています。
+
+| Name  | 説明                 |
+|-------|-----------------------------|
+| Name  | パラメーターの名前。  |
+| 値 | パラメーターの値。 |
+| type  | パラメーターの型。  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+ID、名前、値、パラメーターの型が含まれています。
+
+| Name  | 説明                |
+|-------|----------------------------|
+| ID    | プロパティの ID。    |
+| Name  | プロパティの名前。  |
+| 値 | プロパティの値。 |
+| type  | プロパティの型。  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

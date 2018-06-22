@@ -1,21 +1,21 @@
 ---
-title: Application Insights を使用したカスタム ポリシーのトラブルシューティング - Azure AD B2C | Microsoft Docs
-description: カスタム ポリシーの実行を追跡するための Application Insights の設定方法
+title: Azure Active Directory B2C で Application Insights を使用したカスタム ポリシーのトラブルシューティング | Microsoft Docs
+description: カスタム ポリシーの実行を追跡するための Application Insights の設定方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 3e27976b02ee75083b07ca2e4f0c06e19502d1f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ef39ea51fb7d12e27ce689d01517c520ab6d8684
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710602"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: ログの収集
 
@@ -91,7 +91,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 1. Application Insights で新しいタブを開きます。
 1. 次に示すのは、ログを確認するために使用できるクエリの一覧です
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |---------------------|--------------------|
 traces | Azure AD B2C によって生成されたすべてのログを確認します |
 traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します

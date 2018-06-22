@@ -8,19 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/07/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 07957d5ec843c414813d69b7084915bcd70a5a61
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930859"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849527"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory のデバイス ベースの条件付きアクセスポリシーを構成する
 
@@ -67,7 +68,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 ![デバイス ベースの条件](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-この設定は、オンプレミス Azure AD に参加している Windows 10 デバイスにのみ適用されます。 ハイブリッド Azure AD 参加を使用する方法でのみ、これらのデバイスを Azure AD に登録することができ、これは Windows 10 デバイスを登録するための[自動プロセス](device-management-hybrid-azuread-joined-devices-setup.md)です。 
+この設定は、オンプレミスの AD に参加している Windows 10 デバイスにのみ適用されます。 ハイブリッド Azure AD 参加を使用する方法でのみ、これらのデバイスを Azure AD に登録することができ、これは Windows 10 デバイスを登録するための[自動プロセス](device-management-hybrid-azuread-joined-devices-setup.md)です。 
 
 ![デバイス ベースの条件](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

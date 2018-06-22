@@ -1,22 +1,19 @@
 ---
 title: マイクロサービスを変更して再展開する | Microsoft Docs
 description: このチュートリアルでは、リモート監視のマイクロサービスを変更して再展開する方法を示します
-services: ''
-suite: iot-suite
 author: giyeh
 manager: hegate
 ms.author: giyeh
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 04/19/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3d79c085d10515183a5ddcc12ecac503915eb2e2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: de42e68116c147d81ed0211426bfa813d070b121
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627996"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
 
@@ -38,7 +35,7 @@ ms.lasthandoff: 05/20/2018
 このチュートリアルを実行するには、次が必要です。
 
 >[!div class="checklist"]
-> * [リモート監視構成済みソリューションをローカルに展開します](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [リモート監視ソリューション アクセラレータをローカルでデプロイする](iot-accelerators-remote-monitoring-deploy-local.md)
 > * [Docker アカウント](https://hub.docker.com/)
 > * [Postman](https://www.getpostman.com/) - API の応答を表示するために必要です
 

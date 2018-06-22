@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011766"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643432"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 内のテーブルに関する統計の作成と更新
 Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
@@ -50,11 +50,14 @@ SET AUTO_CREATE_STATISTICS ON
 > 統計の作成は､各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) にログ記録されます｡
 > 
 
-自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます｡ 作成済みの統計は次のコマンドで表示できます｡
+自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます｡ 作成済みの統計は、[DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) コマンドを実行して表示できます。
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
+最初の引数は、表示する統計情報を含むテーブルです。 外部テーブルは使用できません。 2 番目の引数は、ターゲットのインデックス、統計、または統計情報を表示する列の名前です。
+
+
 
 ## <a name="updating-statistics"></a>統計の更新
 
@@ -382,7 +385,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
 次のシステム ビューは、統計に関する情報を提供します。
 
-| カタログ ビュー | [説明] |
+| カタログ ビュー | 説明 |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |列ごとに 1 行。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |データベース内のオブジェクトごとに 1 行。 |
@@ -395,7 +398,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="system-functions-for-statistics"></a>統計のシステム関数
 次のシステム関数は統計の操作に役立ちます。
 
-| システム関数 | [説明] |
+| システム関数 | 説明 |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |統計オブジェクトの最終更新日。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報。 |

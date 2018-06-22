@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2c7ea043d2da41442829321ac663325f30ff066
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297330"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>アマゾン ウェブ サービス アカウントの接続
 
@@ -33,7 +34,7 @@ AWS IAM の ID の詳細については、「[ID (ユーザー、グループ、
 
 最初に、Azure Cost Management ポータルから一意の接続パスフレーズを取得します。 これは、**外部 ID** として AWS で使用されます。
 
-1. Azure Portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com) に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、[https://azure.cloudyn.com](https://azure.cloudyn.com) に移動してサインインします。
 2. 歯車記号をクリックし、**[Cloud Accounts]\(クラウド アカウント\)** を選択します。
 3. [Accounts Management]\(アカウント管理\) で **[AWS Accounts]\(AWS アカウント\)** タブを選択し、**[Add new +]\(新規追加 +\)** をクリックします。
 4. **[Add AWS Account]\(AWS アカウントの追加\)** ダイアログで、**[External ID]\(外部 ID\)** をコピーし、次のセクションにある AWS ロール作成の手順のためにこの値を保存します。 外部 ID はアカウントに一意です。 次の画像では、_Contoso_ に続く数字がサンプルの外部 ID です。 ID は異なります。  
@@ -54,7 +55,7 @@ AWS IAM の ID の詳細については、「[ID (ユーザー、グループ、
 
 ### <a name="configure-aws-iam-role-access-in-cost-management"></a>Cost Management で AWS IAM ロール アクセスを構成する
 
-1. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com/ に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com/ に移動してサインインします。
 2. 歯車記号をクリックし、**[Cloud Accounts]\(クラウド アカウント\)** を選択します。
 3. [Accounts Management]\(アカウント管理\) で **[AWS Accounts]\(AWS アカウント\)** タブを選択し、**[Add new +]\(新規追加 +\)** をクリックします。
 4. **[Account Name]\(アカウント名\)** に、アカウントの名前を入力します。
@@ -91,7 +92,7 @@ Cost Management は、データの収集とレポートの作成を開始しま�
 
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Cost Management で AWS IAM ユーザーベースのアクセスを構成する
 
-1. Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com/ に移動してログインします。
+1. Azure portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com/ に移動してサインインします。
 2. 歯車記号をクリックし、**[Cloud Accounts]\(クラウド アカウント\)** を選択します。
 3. [Accounts Management]\(アカウント管理\) で **[AWS Accounts]\(AWS アカウント\)** タブを選択し、**[Add new +]\(新規追加 +\)** をクリックします。
 4. **[Account Name]\(アカウント名\)** では、アカウント名を入力します。
@@ -107,7 +108,7 @@ Cost Management は、データの収集とレポートの作成を開始しま�
 
 AWS ロール ARN を取得するには、次の手順を実行します。 ロール ARN を使用して、請求バケットに読み取りアクセス許可を与えます。
 
-1. https://console.aws.amazon.com から AWS コンソールにログインし、**[Services]\(サービス\)** を選択します。
+1. https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*IAM*」と入力し、そのオプションを選択します。
 3. 左手のメニューから **[Roles]\(ロール\)** を選択します。
 4. ロールの一覧で、Cloudyn アクセス用に作成したロールを選択します。
@@ -117,7 +118,7 @@ AWS ロール ARN を取得するには、次の手順を実行します。 ロ�
 
 課金の詳細情報を格納する S3 バケットを作成します。
 
-1. https://console.aws.amazon.com から AWS コンソールにログインし、**[Services]\(サービス\)** を選択します。
+1. https://console.aws.amazon.com から AWS コンソールにサインインし、**[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*S3*」と入力し、**[S3]** を選択します。
 3. [Amazon S3] ページで、**[Create bucket]\(バケットの作成\)** をクリックします。
 4. バケットの作成ウィザードで、バケットの名前と地域を選択し、**[次へ]** をクリックします。  

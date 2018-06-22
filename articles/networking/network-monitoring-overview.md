@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850139"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -56,12 +57,13 @@ Performance Monitor は NPM の一部であり、クラウド、ハイブリッ�
 
 ## <a name="expressroute-monitor"></a>ExpressRoute モニター
 
-ExpressRoute 用の NPM は、プライベート ピアリング接続の包括的な ExpressRoute 監視を提供します。 ExpressRoute 経由のブランチ オフィスと Azure 間の E2E 接続性とパフォーマンスを監視できます。 主な機能は次のとおりです。
+ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft ピアリング接続の包括的な ExpressRoute 監視を提供します。 ExpressRoute 経由のブランチ オフィスと Azure 間の E2E 接続性とパフォーマンスを監視できます。 主な機能は次のとおりです。
 
 * サブスクリプションに関連付けられている ER 回線の自動検出
 * オンプレミスからクラウド アプリケーションへのネットワーク トポロジの検出
-* Virtual Network ごとの容量計画、使用率の分析、帯域幅使用率
+* 容量計画、帯域幅の使用率分析
 * プライマリ パスとセカンダリ パス両方の監視とアラート
+* ExpressRoute を介した Office 365 や Dynamics 365 などの Azure サービスへの接続の監視
 * VNet への接続性の低下の検出
 
 ![リージョン間のトラフィックを示すマップ](./media/network-monitoring-overview/expressroute-topology-map.png) 

@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: db7663623ada5d7799c46018be9e3b66afd004ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1a2067228629b04f1ef2cc407a28f379acc75f60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297517"
 ---
 # <a name="use-cost-management-reports"></a>Cost Management レポートの使用
 
@@ -23,6 +24,8 @@ ms.lasthandoff: 04/28/2018
 ## <a name="cost-analysis-reports"></a>コスト分析レポート
 
 コスト分析レポートには、クラウド プロバイダーからの課金データが表示されます。 レポートを使用して、課金ファイルの明細行になっているさまざまなデータ セグメントのグループ化やドリルダウンが可能です。 レポートでは、クラウド ベンダーの生の課金データに対して詳細なコスト移動が可能です。
+
+グラフとして表示された分析レポートでは、Y 軸は "*コスト*"、X 軸は選択した "*カテゴリまたはタグ*" です。 グラフには範囲がありますが (過去 30 日間など)、範囲はフィルターとして使用されます。 分析レポートはカテゴリの比較に適しています。 たとえば、過去 30 日間の各サブスクリプションのコストなどです。 または、特定の期間のストレージや計算などのサービスのコストです。
 
 コスト分析レポートでは、タグ別にコストをグループ化しません。 タグに基づくレポートは、Cost Allocation 360 を使用したコスト モデルの作成後に設定される、原価配賦レポートのみで利用可能です。
 
@@ -50,6 +53,8 @@ ms.lasthandoff: 04/28/2018
 ### <a name="actual-cost-over-time"></a>実績経過コスト
 
 実績経過コスト レポートは、定義された期間の精度でコストを分配する標準的なコスト分析レポートです。 レポートでは、傾向を観察して支出の不均衡を検出できるように、時間の経過に沿って支出を表示します。 このレポートは、継続的なコストや 1 回限りの予約インスタンスの料金など、選択された時間枠内に使用された主なコスト要因を表示します。
+
+グラフとして表示した時間経過コスト レポートでは、Y 軸が "*コスト*"、X 軸が "*期間*" です。 これらのレポートでは、一定期間のコストの変化が示されます。
 
 実績経過コスト レポートは、次の目的に使用します。
 

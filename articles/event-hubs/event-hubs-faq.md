@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235313"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -30,7 +26,7 @@ Azure Event Hubs の Standard レベルは、Basic レベルでは使用でき�
 * 長いイベント保有期間
 * 追加の仲介型接続。提供される数を超える場合は超過料金が適用されます
 * 複数のコンシューマー グループ
-* [キャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [キャプチャ](event-hubs-capture-overview.md)
 
 専用の Event Hubs を含む価格レベルの詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -58,9 +54,10 @@ Event Hubs のスループット ユニットは、特定の時間に選択さ�
 はい。すべてのイベント ハブが同じ名前空間にある限り可能です。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
-Event Hubs Standard レベルでは、現在最大 7 日間の保有期間をサポートしています。 イベント ハブは永続的なデータ ストアになることを目的としていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) を有効にするとイベント ハブから任意の Storage アカウントまたは Azure Data Lake Service アカウントにデータをプルできます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
+Event Hubs Standard レベルでは、現在最大 7 日間の保有期間をサポートしています。 イベント ハブは永続的なデータ ストアになることを目的としていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にするとイベント ハブから任意の Storage アカウントまたは Azure Data Lake Service アカウントにデータをプルできます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
+
 Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
 
 ## <a name="best-practices"></a>ベスト プラクティス
@@ -101,22 +98,27 @@ Event Hub で有効にされた場合、Capture はお客様の指定したス�
 ## <a name="quotas"></a>Quotas (クォータ)
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Event Hubs に関連付けられているクォータはありますか。
+
 Event Hubs のすべてのクォータの一覧については、[クォータ](event-hubs-quotas.md)に関するページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Event Hubs によって生成される例外とその推奨されるアクションをいくつか教えてください。
+
 発生する可能性がある Event Hubs 例外の一覧については、[例外の概要](event-hubs-messaging-exceptions.md)に関するページを参照してください。
 
 ### <a name="diagnostic-logs"></a>診断ログ
+
 Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
 
 ### <a name="support-and-sla"></a>サポートと SLA
+
 Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

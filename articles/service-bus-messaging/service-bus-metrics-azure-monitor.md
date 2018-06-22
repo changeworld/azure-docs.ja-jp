@@ -3,22 +3,18 @@ title: Azure Monitor での Azure Service Bus メトリック (プレビュー) 
 description: Azure 監視を使用した Service Bus エンティティの監視
 services: service-bus-messaging
 documentationcenter: .NET
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/05/2018
+ms.date: 05/31/2018
 ms.author: sethm
-ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bb0c9fcc33d6f5b54a8c2c8ad3e356a485d6ccbb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701296"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -59,24 +55,32 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 データおよび管理操作要求の数をカウントします。
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | 受信要求 (プレビュー) | 指定された期間にわたって Service Bus サービスに対して実行された要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |成功した要求 (プレビュー)|指定された期間にわたって Service Bus サービスに対して実行された成功した要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |サーバー エラー (プレビュー)|指定された期間にわたって Service Bus サービスでエラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ユーザー エラー (プレビュー)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+|ユーザー エラー (プレビュー - 次のサブセクションを参照)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |調整された要求 (プレビュー)|使用量を超えたため調整された要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+
+### <a name="user-errors"></a>ユーザー エラー
+
+次の 2 種類のエラーは、ユーザー エラーとして分類されます。
+
+1. クライアント側のエラー (HTTP では 400 エラー)。
+2. [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) など、メッセージの処理中に発生するエラー。
+
 
 ## <a name="message-metrics"></a>メッセージのメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |受信メッセージ (プレビュー)|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |送信メッセージ (プレビュー)|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |ActiveConnections (プレビュー)|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |開かれた接続 (プレビュー)|開かれている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
@@ -84,7 +88,7 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 ## <a name="resource-usage-metrics"></a>リソース使用状況のメトリック
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |名前空間あたりの CPU 使用率 (プレビュー)|名前空間の CPU 使用率 (%)。<br/><br/> 単位: パーセント <br/> 集計の種類: 最大 <br/> ディメンション: EntityName|
 |名前空間あたりのメモリ サイズ使用率 (プレビュー)|名前空間のメモリ使用率 (%)。<br/><br/> 単位: パーセント <br/> 集計の種類: 最大 <br/> ディメンション: EntityName|
@@ -93,7 +97,7 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 
 Azure Service Bus は、Azure Monitor でのメトリックの次のディメンションをサポートします。 メトリックへのディメンションの追加は省略可能です。 ディメンションを追加しない場合、メトリックは名前空間レベルで指定されます。 
 
-|ディメンション名|[説明]|
+|ディメンション名|説明|
 | ------------------- | ----------------- |
 |EntityName| Service Bus は、名前空間の下のメッセージング エンティティをサポートします。|
 

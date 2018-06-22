@@ -1,26 +1,19 @@
 ---
 title: Azure IoT ソリューション アクセラレータの概要 | Microsoft Docs
 description: Azure IoT のソリューション アクセラレータとそのアーキテクチャ (追加リソースのリンクを含む) について説明します。
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 17/01/2018
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 80192b115f4c6c8f6961fdd4d9fb7f3876fda898
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b961217317cea65b05cd58d66e64f0e4f012131e
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362126"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808555"
 ---
 # <a name="what-are-the-iot-solution-accelerators"></a>IoT ソリューション アクセラレータとは
 
@@ -54,7 +47,7 @@ Azure IoT の "_ソリューション アクセラレータ_" は、次のよう
 現在、次の 3 つのソリューション アクセラレータを使用できます。
 
 * [リモート監視](iot-accelerators-remote-monitoring-explore.md)
-* [予測メンテナンス](../iot-suite/iot-suite-predictive-overview.md)
+* [予測メンテナンス](iot-accelerators-predictive-overview.md)
 * [接続済みファクトリ](iot-accelerators-connected-factory-overview.md)
 
 次の表は、ソリューションが特定の IoT 機能にどのようにマップされるかを示しています。
@@ -62,7 +55,7 @@ Azure IoT の "_ソリューション アクセラレータ_" は、次のよう
 | 解決策 | データの取り込み | デバイス ID | デバイス管理 | エッジ処理 | コマンドと制御 | ルールとアクション | 予測分析 |
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [リモート監視](iot-accelerators-remote-monitoring-explore.md)  |[はい] |はい |はい |-   |はい |[はい] |-   |
-| [予測メンテナンス](../iot-suite/iot-suite-predictive-overview.md)   |[はい] |はい |-   |-   |はい |はい |[はい] |
+| [予測メンテナンス](iot-accelerators-predictive-overview.md)   |[はい] |はい |-   |-   |はい |はい |[はい] |
 | [接続済みファクトリ](iot-accelerators-connected-factory-overview.md) |[はい] |- |- |はい |はい |[はい] |-   |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
@@ -73,7 +66,7 @@ Azure IoT の "_ソリューション アクセラレータ_" は、次のよう
 * "*予測分析*": ソリューション バックエンドはデバイスからクラウドへのデータを分析して、特定のアクションを実行するタイミングを予測します。 たとえば、航空機エンジンのテレメトリを分析して、エンジンのメンテナンス時期を判断できます。
 
 > [!NOTE]
-> ソリューション アクセラレータを展開したり、カスタマイズ方法の詳細を確認したりするには、[Microsoft Azure IoT solution accelerators](https://www.azureiotsuite.com/) にアクセスしてください。
+> ソリューション アクセラレータを展開したり、カスタマイズ方法の詳細を確認したりするには、[Microsoft Azure IoT solution accelerators](https://www.azureiotsolutions.com/) にアクセスしてください。
 
 ## <a name="azure-services"></a>Azure サービス
 
@@ -85,20 +78,20 @@ Azure IoT の "_ソリューション アクセラレータ_" は、次のよう
 | Event Hubs           |                    | [はい]                    |                   |
 | Time Series Insights |                    |                        | [はい]               |
 | コンテナー サービス   | [はい]                |                        |                   |
-| Stream Analytics     |                    | [はい]                    |                   |
+| Stream Analytics     | [はい]                | [はい]                    |                   |
 | Web Apps             | [はい]                | はい                    | [はい]               |
 | Cosmos DB            | [はい]                | [はい]                    |                    |
 | Azure Storage         |                    | [はい]                    | [はい]               |
 
 > [!NOTE]
-> リモート監視ソリューション アクセラレータに展開されるリソースについて詳しくは、GitHub のこちらの[記事](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments)をご覧ください。
+> リモート監視ソリューション アクセラレータにデプロイされるリソースの詳細については、「[リモート監視のアーキテクチャの選択](iot-accelerators-remote-monitoring-architectural-choices.md)」を参照してください。
 
 * [Azure IoT Hub](../iot-hub/index.yml)。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要なソリューション アクセラレータ サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、サービスを使用すると[デバイスを管理](../iot-hub/iot-hub-device-management-overview.md)することもできます。 たとえば、ハブに接続されている 1 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
-* [Azure Event Hubs](../active-directory-domain-services/index.md)。 このサービスは、クラウドに大量のイベント インジェストを提供します。 「[Azure IoT Hub と Azure Event Hubs の比較](../iot-hub/iot-hub-compare-event-hubs.md)」を参照してください。
+* [Azure Event Hubs](../active-directory-domain-services/index.yml)。 このサービスは、クラウドに大量のイベント インジェストを提供します。 「[Azure IoT Hub と Azure Event Hubs の比較](../iot-hub/iot-hub-compare-event-hubs.md)」を参照してください。
 * [Azure Time Series Insights](../time-series-insights/index.yml)。 ソリューション アクセラレータは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
 * [Azure Container Service](../container-service/index.yml)。 このサービスは、ソリューション アクセラレータにおいてマイクロサービスをホストおよび管理します。
 * データ ストレージ用の [Azure Cosmos DB](../cosmos-db/index.yml) および [Azure Storage](../storage/index.yml)。
-* [Azure Stream Analytics](../stream-analytics/index.yml)。 予測メンテナンス構成済みソリューションは、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
+* [Azure Stream Analytics](../stream-analytics/index.yml)。 予測メンテナンス ソリューション アクセラレータではこのサービスを利用して、受信テレメトリを処理し、集計を実行して、イベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
 * [Azure Web Apps](../app-service/index.yml)。構成済みソリューションにおいてカスタム アプリケーション コードをホストします。
 
 一般的な IoT ソリューションのアーキテクチャの概要については、[Microsoft Azure とモノのインターネット (IoT)](iot-accelerators-what-is-azure-iot.md) に関するページをご覧ください。
@@ -152,7 +145,7 @@ UI は、[React](https://facebook.github.io/react/) JavaScript ライブラリ�
 これで IoT ソリューション アクセラレータの概要を確認できました。各ソリューション アクセラレータで推奨される次の手順は以下のとおりです。
 
 * [リモート監視ソリューションについての詳しい情報を入手する](iot-accelerators-remote-monitoring-explore.md)。
-* [予測メンテナンスのソリューション アクセラレータの概要](../iot-suite/iot-suite-predictive-overview.md)。
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)。
 * [コネクテッド ファクトリ ソリューション アクセラレータの概要](iot-accelerators-connected-factory-overview.md)。
 
-IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf)」を参照してください。
+IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](https://aka.ms/iotrefarchitecture)」を参照してください。

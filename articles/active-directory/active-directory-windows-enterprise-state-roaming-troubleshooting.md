@@ -17,11 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261153"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -79,7 +80,7 @@ Azure Multi-Factor Authentication が構成されている場合、特定の条�
 **潜在的な問題**: 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
 
 ### <a name="event-viewer"></a>イベント ビューアー
-高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] >**[Microsoft]** > **[Windows]** > **[SettingSync]** でイベントを表示します。同期の ID 関連の問題については、**[Microsoft]** > **[Windows]** > **[Azure AD]** に移動します。
+高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] >**[Microsoft]** > **[Windows]** > **[SettingSync]** でイベントを表示します。同期の ID 関連の問題については、**[Microsoft]** > **[Windows]** > **[AAD]** に移動します。
 
 
 ## <a name="known-issues"></a>既知の問題
@@ -115,7 +116,7 @@ Windows 10 バージョン 1511 のクライアントに、2016 年 7 月にリ�
 
 ### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>日付、時刻、地域の設定が、ドメインに参加したデバイスで同期されません 
   
-ドメインに参加したデバイスでは、日付、時刻、地域の設定は同期されず、自動時刻が適用されます。 自動時刻を使用すると、他の日付、時刻、地域の設定が上書きされ、これらの設定が同期されない場合があります。 
+ドメインに参加したデバイスでは、日付、時刻、地域の設定は同期されず、自動時刻が適用されます。 自動時刻を使用すると、他の日付、時刻、地域の設定がオーバーライドされ、これらの設定が同期されない場合があります。 
 
 **推奨される操作**  
 なし。 
