@@ -3,7 +3,7 @@ title: Azure Stack 使用状況データの Azure への報告 | Microsoft Docs
 description: Azure Stack で使用状況データ レポートを設定する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603704"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
@@ -42,7 +43,7 @@ ms.lasthandoff: 04/28/2018
 - **数量** – リソース使用状況の量。
 - **場所** – 現在の Azure Stack リソースがデプロイされている場所。
 - **リソース URI** – 使用状況が報告されているリソースの完全修飾 URI。
-- **サブスクリプション ID** – Azure Stack ユーザーのサブスクリプション ID。 これは、ローカル (Azure Stack) サブスクリプションです。
+- **サブスクリプション ID** – ローカルの (Azure Stack) サブスクリプションである、Azure Stack ユーザーのサブスクリプション ID。
 - **時間** – 使用状況データの開始および終了時間。 これらのリソースが Azure Stack で使用された時間と、使用状況データがコマースに報告された時間の間にはある程度の遅延が存在します。 Azure Stack は 24 時間ごとに使用状況データを集計し、その使用状況データを Azure のコマース パイプラインに報告するにはさらに数時間かかります。 そのため、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。
 
 ## <a name="generate-usage-data-reporting"></a>使用状況データ レポートの生成
@@ -68,7 +69,7 @@ Azure Stack をその他のサブスクリプションの種類 (従量課金制
 
    ![課金のフロー](media/azure-stack-usage-reporting/pricing-details.png)
 
-Azure Stack Development Kit の場合、Azure Stack リソースは課金されないため、価格は $0.00 として示されます。 Azure Stack マルチノードが一般公開された場合は、これらの各リソースの実際のコストを確認できます。
+Azure Stack Development Kit の場合、Azure Stack リソースは課金されないため、価格は $0.00 として示されます。
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>どの Azure Stack デプロイが課金されますか?
 
@@ -82,7 +83,7 @@ Azure Stack Development Kit の場合、Azure Stack リソースは課金され�
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Windows Server ライセンスを持っています。Azure Stack で使用したいのですが、どうすればよいですか。
 
-既存のライセンスを使用すると、使用状況メーターの生成を回避できます。 既存の Windows Server ライセンスを Azure Stack で使用できます。「[Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)(Azure Stack ライセンス ガイド) の「Using existing software with Azure Stack」(Azure Stack で既存のソフトウェアを使用する) を参照してください。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)」トピックに記載されているように、Windows Server 仮想マシンをデプロイする必要があります。
+既存のライセンスを使用すると、使用状況メーターの生成を回避できます。 既存の Windows Server ライセンスを Azure Stack で使用できます。「[Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)(Azure Stack ライセンス ガイド) の「Using existing software with Azure Stack」(Azure Stack で既存のソフトウェアを使用する) を参照してください。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)」の記事で説明されているように、Windows Server 仮想マシンをデプロイする必要があります。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>使用されたリソースに対してどのサブスクリプションが課金されますか?
 [Azure Stack を Azure に登録する](azure-stack-register.md)ときに指定されたサブスクリプションが課金されます。
@@ -101,7 +102,7 @@ Azure Stack Development Kit では、使用状況データ レポートにはグ
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Azure Stack で報告された使用状況が Azure アカウント センターから生成されたレポートと一致しないのはなぜですか?
 
-Azure Stack の Usage API を使用して使用状況データを報告する場合と、Azure アカウント センターを使用して使用状況データを報告する場合とでは常に時間差があります。 この遅延は、使用状況データを Azure Stack から Azure コマースにアップロードするために必要な時間です。 この遅延のために、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。 [Azure Stack 使用状況 API](azure-stack-provider-resource-api.md) を使用し、その結果を Azure 課金ポータルで報告された使用状況と比較すると、違いを確認できます。
+Azure Stack 使用状況 API を使用して使用状況データを報告する場合と、Azure アカウント センターを使用して使用状況データを報告する場合とでは常に時間差があります。 この遅延は、使用状況データを Azure Stack から Azure コマースにアップロードするために必要な時間です。 この遅延のために、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。 [Azure Stack 使用状況 API](azure-stack-provider-resource-api.md) を使用し、その結果を Azure 課金ポータルで報告された使用状況と比較すると、違いを確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

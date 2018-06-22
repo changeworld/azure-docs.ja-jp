@@ -1,6 +1,6 @@
 ---
 title: Windows VM MSI を使用して Azure SQL にアクセスする
-description: Windows VM 管理対象サービス ID (MSI) を使用して Azure SQL にアクセスするプロセスについて説明するチュートリアルです。
+description: Windows VM マネージド サービス ID (MSI) を使用して Azure SQL にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: 5805dbc0a4831f14a4f9a98943a7611fa49961eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303203"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594953"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>チュートリアル: Windows VM マネージド サービス ID (MSI) を使用して Azure SQL にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシン (VM) の管理対象サービス ID (MSI) を使用して、Azure SQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 学習内容は次のとおりです。
+このチュートリアルでは、Windows 仮想マシン (VM) のマネージド サービス ID (MSI) を使用して、Azure SQL サーバーにアクセスする方法について説明します。 マネージド サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Windows VM で MSI を有効にする 
@@ -57,11 +57,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする 
 
-VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、VM の管理対象 ID を作成するよう Azure に指示が出されます。 MSI を有効にすると、内部では VM が Azure Active Directory に登録されてそのマネージド ID が作成され、VM で ID が構成されます。
+VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、VM のマネージド ID を作成するよう Azure に指示が出されます。 MSI を有効にすると、内部では VM が Azure Active Directory に登録されてそのマネージド ID が作成され、VM で ID が構成されます。
 
 1.  MSI を有効にする**仮想マシン**を選択します。  
 2.  左側のナビゲーション バーで、**[構成]** をクリックします。 
-3.  **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
+3.  **マネージド サービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
 4.  **[保存]** をクリックして構成を保存します。  
     ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -270,11 +270,9 @@ if (accessToken != null) {
 
 `$DataSet.Tables[0]` の値を調べて、クエリの結果を確認します。  お疲れさまでした。VM MSI を使用して、資格情報の指定なしでデータベースに対するクエリを実行できました。
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="next-steps"></a>次の手順
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-- [Azure AD 認証に対する Azure SQL のサポート](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)に関する記事で詳細を確認します。
-- [Azure AD 認証に対する Azure SQL のサポートの構成](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)に関する記事で詳細を確認します。
-- [SQL サーバーでの認証とアクセス](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)に関する記事で詳細を確認します。
+このチュートリアルでは、Azure SQL Server にアクセスするためのマネージド サービス ID の作成方法について説明します。  Azure SQL Server の詳細については、以下を参照してください。
 
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
+> [!div class="nextstepaction"]
+>[Azure SQL Database サービス](/azure/sql-database/sql-database-technical-overview)

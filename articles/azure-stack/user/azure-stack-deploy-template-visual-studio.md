@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/24/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 4101567eff68789fe5d46a01de26f6a873b519fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6cd722fedc0483e37ce6ee491d74a7c985111353
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358185"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605125"
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Visual Studio を使用した Azure Stack でのテンプレートのデプロイ
 
@@ -28,7 +28,7 @@ ms.locfileid: "34358185"
 
 Visual Studio を使用して、Azure Resource Manager テンプレートを Azure Stack にデプロイできます。
 
-テンプレートをデプロイするには:
+## <a name="to-deploy-a-template"></a>テンプレートをデプロイするには
 
 1. Visual Studio で Azure Stack を[インストールして接続](azure-stack-install-visual-studio.md)します。
 2. Visual Studio を開きます。

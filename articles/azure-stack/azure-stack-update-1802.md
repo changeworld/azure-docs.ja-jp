@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af65ffc088c2beadf415b72ec284ef77f3e4f6d4
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196221"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757259"
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新プログラム
 
@@ -37,7 +37,7 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 ## <a name="before-you-begin"></a>開始する前に    
 > [!IMPORTANT]    
-> この更新プログラムのインストール中に仮想マシンを作成しようとしないでください。 更新プログラムの管理方法については、「[Azure Stack での更新プログラムの管理概要](/azure-stack-updates#plan-for-updates)」を参照してください。
+> この更新プログラムのインストール中に仮想マシンを作成しようとしないでください。 更新プログラムの管理方法については、「[Azure Stack での更新プログラムの管理概要](azure-stack-updates.md#plan-for-updates)」を参照してください。
 
 
 ### <a name="prerequisites"></a>前提条件
@@ -108,6 +108,9 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 ビルド **20180302.1** のインストール後について次の既知の問題があります。
 
 #### <a name="portal"></a>ポータル
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  回避策: この更新プログラムのインストール後にこの問題を解決するには、「[Azure Stack で自動化をトリガーしてクレーム プロバイダー信頼を構成する](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)」の手順 3 を使用して、既定のプロバイダー サブスクリプションの所有者をリセットします。   
+
 - 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack 統合システムの場合は、https://aka.ms/newsupportrequest を使用します。
 
@@ -138,7 +141,22 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 
 #### <a name="health-and-monitoring"></a>正常性と監視
-1802 に更新した後の既知の問題はありません。
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+  アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
+
 
 #### <a name="marketplace"></a>マーケットプレース
 - ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
@@ -156,7 +174,7 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 - ポータルで **[新規]** > **[コンピューティング]** > **[可用性セット]** に移動して可用性セットを作成した場合、障害ドメインと更新ドメインが 1 の可用性セットのみを作成できます。 回避策として、新しい仮想マシンを作成する場合は、PowerShell、CLI、またはポータル内から可用性セットを作成します。
 
-- Azure Stack ユーザー ポータルで仮想マシンを作成するとき、ポータルでは、DS シリーズ VM にアタッチできるデータ ディスクの数に誤った値が表示されます。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
+- Azure Stack ユーザー ポータルで仮想マシンを作成するときに、ポータルでは、D シリーズ VM に接続できるデータ ディスクの数に誤った値が表示されます。 サポートされているすべての D シリーズ VM は、Azure の構成と同数のデータ ディスクに対応できます。
 
 - VM イメージの作成に失敗した場合に、失敗したのに削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
 
@@ -278,6 +296,8 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 - PowerShell の *invoke-webrequest* コマンドレットを使用して Github から Azure Stack ツールをダウンロードすると、次のエラーが発生します。     

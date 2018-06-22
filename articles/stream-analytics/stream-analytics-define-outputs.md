@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211373"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701719"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
@@ -29,6 +29,8 @@ Stream Analytics ジョブの出力を作成、編集、テストするには、
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。
 
+Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中国 (21Vianet) および Azure ドイツ (T-Systems International) リージョンでは利用できません。
+
 ### <a name="authorize-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントの承認
 
 1. Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
@@ -41,11 +43,11 @@ Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/service
 
    ![Data Lake Store の承認](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
-| プロパティ名 | [説明] | 
+| プロパティ名 | 説明 | 
 | --- | --- |
 | 出力エイリアス | クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。 | 
 | アカウント名 | 出力を送信する Data Lake Storage アカウントの名前。 サブスクリプションで利用できる Data Lake Store アカウントのドロップダウン リストが表示されます。 |
-| パスのプレフィックス パターン | 指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。 {date} および {time} 変数のインスタンスを 1 つ以上指定できます。</br><ul><li>例 1: folder1/logs/{date}/{time}</li><li>例 2: folder1/logs/{date}</li></ul>ファイル パス パターンの末尾に "/" が含まれていない場合、ファイル パスの最後のパターンがファイル名のプレフィックスとして扱われます。 </br></br>次の状況では新しいファイルが作成されます。<ul><li>出力スキーマの変更</li><li>ジョブの外部または内部再起動</li></ul> |
+| パスのプレフィックス パターン | 指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。 {date} および {time} 変数のインスタンスを 1 つ以上指定できます。</br><ul><li>例 1: folder1/logs/{date}/{time}</li><li>例 2: folder1/logs/{date}</li></ul><br>作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。</br><br>ファイル パス パターンの末尾に "/" が含まれていない場合、ファイル パスの最後のパターンがファイル名のプレフィックスとして扱われます。 </br></br>次の状況では新しいファイルが作成されます。<ul><li>出力スキーマの変更</li><li>ジョブの外部または内部再起動</li></ul> |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例: YYYY/MM/DD |
 |時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro がサポートされています。| 
@@ -63,7 +65,7 @@ Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/service
 ## <a name="sql-database"></a>SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型にぴったり一致する必要があります。 また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | データベース | 出力を送信するデータベースの名前です。 |
@@ -81,13 +83,13 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 次の表に、BLOB 出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] | 
+| プロパティ名 | 説明 | 
 | --- | --- |
 | 出力のエイリアス | クエリの出力をこの BLOB ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
 | ストレージ アカウント | 出力を送信するストレージ アカウントの名前。 |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。 |
 | ストレージ コンテナー | コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 </br></br> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 </br> {date}、{time} </br> </br>また、[プレビュー](https://aka.ms/ASAPreview)にサインアップすると、BLOB をパーティション分割するためのカスタム {field} 名を 1 つ指定できます。field 名は英数字で、スペース、ハイフン、アンダースコアを使用できます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と 列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できない</li></ul>次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;)</li></ul><BR> ファイルの名前付けは、次の規則に従います。 </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> 出力ファイル例: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 </br></br> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 </br> {date}、{time} </br> </br>また、[プレビュー](https://aka.ms/ASAPreview)にサインアップすると、BLOB をパーティション分割するためのカスタム {field} 名を 1 つ指定できます。field 名は英数字で、スペース、ハイフン、アンダースコアを使用できます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できない</li></ul>次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;)</li></ul><br>作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。</br><BR> ファイルの名前付けは、次の規則に従います。 </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> 出力ファイル例: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例: YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。
@@ -104,17 +106,17 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 * ストレージ アカウントのファイルまたはコンテナーがユーザーによって削除された場合。  
 * 出力がパス プレフィックス パターンを使用して時間でパーティション分割されている場合は、クエリが次の時間に移動するときに、新しい BLOB が使用されます。
 * カスタム フィールドで出力をパーティション分割する場合、BLOB が存在しない場合はパーティション キーごとに新しい BLOB が作成されます。
-*   パーティション キーのカーディナリティが 8,000 を超えるカスタム フィールドによって出力がパーティション分割される場合、パーティション キーごとに新しい BLOB が作成される場合があります。
+* パーティション キーのカーディナリティが 8,000 を超えるカスタム フィールドによって出力がパーティション分割される場合、パーティション キーごとに新しい BLOB が作成される場合があります。
 
 ## <a name="event-hub"></a>イベント ハブ
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) サービスは、スケーラブルな発行-サブスクライブ型イベント インジェスターです。 1 秒あたり数百万のイベントを収集できます。 イベント ハブを出力として使用するのは、たとえば、Stream Analytics ジョブの出力が別のストリーミング ジョブの入力になるときです。
 
 イベント ハブのデータ ストリームを出力として構成するために必要なパラメーターがいくつかあります。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力エイリアス | クエリの出力をこのイベント ハブに出力するためにクエリで使用されるわかりやすい名前です。 |
-| Event Hub 名前空間 |[イベント ハブの名前空間] は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成すると、イベント ハブの名前空間も作成されます。 |
+| Event Hub 名前空間 |イベント ハブの名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成すると、イベント ハブの名前空間も作成されます。 |
 | イベント ハブ名 | イベント ハブ出力の名前です。 |
 | イベント ハブ ポリシー名 | [イベント ハブの構成] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
 | イベント ハブ ポリシー キー | イベント ハブの名前空間へのアクセスを認証するために使用する共有アクセス キーです。 |
@@ -126,6 +128,8 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。 この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
+
+Stream Analytics からの Power BI 出力は、現在、Azure 中国 (21Vianet) および Azure ドイツ (T-Systems International) リージョンでは利用できません。
 
 ### <a name="authorize-a-power-bi-account"></a>Power BI アカウントを承認する
 1. [Power BI] を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
@@ -141,7 +145,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 ### <a name="configure-the-power-bi-output-properties"></a>Power BI 出力プロパティを構成する
 Power BI アカウントを認証すると、Power BI 出力のプロパティを構成できます。 次の表は、Power BI 出力を構成するためのプロパティ名とその説明の一覧です。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | description  |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこの PowerBI 出力に出力するためにクエリで使用されるわかりやすい名前です。 |
 | グループ ワークスペース |他の Power BI ユーザーとのデータの共有を有効にするには、Power BI アカウント内のグループを選択できます。グループに書き込む必要がない場合は、[個人用ワークスペース] を選択します。  既存のグループを更新するには、Power BI の認証を更新する必要があります。 |
@@ -198,7 +202,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | description  |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこのテーブル ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
 | ストレージ アカウント |出力を送信するストレージ アカウントの名前。 |
@@ -213,7 +217,7 @@ Stream Analytics ジョブが作成されてから、または前回の認証以
 
 次の表に、キュー出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | description  |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこの Service Bus キューに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 |
@@ -232,7 +236,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力エイリアス |クエリの出力をこの Service Bus トピックに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
@@ -248,12 +252,14 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。 Stream Analytics の Cosmos DB コレクション オプションについては、[Cosmos DB への Stream Analytics の出力](stream-analytics-documentdb-output.md)に関する記事を参照してください。
 
+Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure 中国 (21Vianet) および Azure ドイツ (T-Systems International) リージョンでは利用できません。
+
 > [!Note]
 > 現時点では、Azure Stream Analytics は、**SQL API** を使用した CosmosDB への接続のみをサポートしています。
 > その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。 
 
 次の表では、Azure Cosmos DB の出力を作成するプロパティについて説明します。
-| プロパティ名 | 説明 |
+| プロパティ名 | description  |
 | --- | --- |
 | 出力エイリアス | Stream Analytics クエリ内でこの出力を意味するエイリアス。 |
 | シンク | Cosmos DB |
@@ -268,9 +274,11 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。  このトリガーに応答する Azure Functions の機能によって、Azure Stream Analytics の自然な出力になります。 この出力アダプターを使用すると、ユーザーは Stream Analytics を Azure Functions に接続し、さまざまなイベントに応じてスクリプトまたはコードの一部を実行することができます。
 
+Stream Analytics からの Azure Functions 出力は、現在、Azure 中国 (21Vianet) および Azure ドイツ (T-Systems International) リージョンでは利用できません。
+
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 新しい Azure 関数出力アダプターは、次の構成可能なプロパティで使用できます。
 
-| プロパティ名 | 説明 |
+| プロパティ名 | description  |
 | --- | --- |
 | 関数アプリ |Azure Functions アプリの名前 |
 | 関数 |Azure Functions アプリ内の関数の名前 |

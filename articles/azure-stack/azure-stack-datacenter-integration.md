@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769694"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261221"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムのデータ センター統合に関する考慮事項
 Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画のいくつかの主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
@@ -77,7 +77,7 @@ Azure Stack の Graph サービスを既存の Active Directory と統合する�
 
 ## <a name="naming-decisions"></a>名前付けの決定事項
 
-Azure Stack の名前空間 (特にリージョン名と外部のドメイン名) を計画する方法について検討する必要があります。 Azure Stack のデプロイで公開されたエンドポイントの外部完全修飾ドメイン名 (FQDN) は、&lt;*region*&gt;.&lt;*fqdn*&gt; という 2 つの名前の組み合わせです。 たとえば、*east.cloud.fabrikam.com* となります。この例で Azure Stack ポータルは、次の URL で使用可能になります。
+Azure Stack の名前空間 (特にリージョン名と外部のドメイン名) を計画する方法について検討する必要があります。 Azure Stack のデプロイで公開されたエンドポイントの外部完全修飾ドメイン名 (FQDN) は、&lt;*region*&gt;.&lt;*fqdn*&gt; という 2 つの名前の組み合わせです。 たとえば、*east.cloud.fabrikam.com* となります。 この例で Azure Stack ポータルは、次の URL で使用可能になります。
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
@@ -87,7 +87,7 @@ Azure Stack の名前空間 (特にリージョン名と外部のドメイン名
 
 次の表は、これらのドメイン名前付けの決定事項をまとめたものです。
 
-| Name | [説明] | 
+| Name | 説明 | 
 | -------- | ------------- | 
 |リージョン名 | 最初の Azure Stack リージョンの名前。 この名前は、Azure Stack によって管理されるパブリック仮想 IP アドレス (VIP) の FQDN の一部として使用されます。 通常、リージョン名は、データセンターの場所などの物理的な場所の識別子になります。 | 
 | 外部ドメイン名 | 外部接続 VIP を持つエンドポイントのドメイン ネーム システム (DNS) ゾーンの名前。 パブリック VIP の FQDN に使用します。 | 
@@ -135,9 +135,9 @@ Azure Stack を同期するために使用される特定のタイム サーバ�
 
 | シナリオ | 接続方法 | 長所 | 短所 | 適した用途 |
 | -- | -- | --| -- | --|
-| シングル テナントの Azure Stack、イントラネット デプロイ | 送信 NAT | 帯域幅向上による転送の高速化。 実装が簡単。ゲートウェイは必要ありません。 | トラフィックは暗号化されません。TOR より先の分離や暗号化が行われません。 | すべてのテナントが平等に信頼されているエンタープライズ デプロイ。<br><br>Azure への Azure ExpressRoute 回線を所有している企業。 |
+| シングル テナントの Azure Stack、イントラネット デプロイ | 送信 NAT | 帯域幅向上による転送の高速化。 実装が簡単。ゲートウェイは必要ありません。 | トラフィックは暗号化されません。スタックの外部の分離や暗号化は行われません。 | すべてのテナントが平等に信頼されているエンタープライズ デプロイ。<br><br>Azure への Azure ExpressRoute 回線を所有している企業。 |
 | マルチテナントの Azure Stack、イントラネット デプロイ | サイト間 VPN | テナント VNet から送信先へのトラフィックはセキュリティで保護されます。 | 帯域幅がサイト間 VPN トンネルによって制限されます。<br><br>仮想ネットワークにゲートウェイが、また接続先ネットワークに VPN デバイスが必要です。 | 一部のテナント トラフィックを他のテナントから分離して保護する必要があるエンタープライズ デプロイ。 |
-| シングル テナントの Azure Stack、インターネット デプロイ | 送信 NAT | 帯域幅向上による転送の高速化。 | トラフィックは暗号化されません。TOR より先の分離や暗号化が行われません。 | テナント専用に Azure Stack をデプロイし、Azure Stack 環境への専用回線を使用するホスティングのシナリオ。 例として、ExpressRoute とマルチプロトコル ラベル スイッチング (MPLS) があります。
+| シングル テナントの Azure Stack、インターネット デプロイ | 送信 NAT | 帯域幅向上による転送の高速化。 | トラフィックは暗号化されません。スタックの外部の分離や暗号化は行われません。 | テナント専用に Azure Stack をデプロイし、Azure Stack 環境への専用回線を使用するホスティングのシナリオ。 例として、ExpressRoute とマルチプロトコル ラベル スイッチング (MPLS) があります。
 | マルチテナントの Azure Stack、インターネット デプロイ | サイト間 VPN | テナント VNet から送信先へのトラフィックはセキュリティで保護されます。 | 帯域幅がサイト間 VPN トンネルによって制限されます。<br><br>仮想ネットワークにゲートウェイが、また接続先ネットワークに VPN デバイスが必要です。 | プロバイダーがマルチテナント クラウドを提供する必要があるホスティング シナリオ。テナント相互の信頼関係がないため、トラフィックを暗号化する必要があります。
 |  |  |  |  |  |
 

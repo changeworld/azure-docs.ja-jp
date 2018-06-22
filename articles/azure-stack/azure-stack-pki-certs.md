@@ -3,7 +3,7 @@ title: Azure Stack 統合システムの Azure Stack 公開キー インフラ�
 description: Azure Stack 統合システムの Azure Stack PKI 証明書のデプロイ要件について説明します。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
-ms.author: jeffgilb
+ms.date: 06/07/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935644"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234843"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -30,7 +30,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - これらの仕様に一致する証明書を取得するプロセス
 - デプロイ中にこれらの証明書を準備、検証、および使用する方法
 
-> [!NOTE]
+> [!Note]  
 > デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。 
 
 ## <a name="certificate-requirements"></a>証明書の要件
@@ -47,12 +47,12 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - 証明書の "Issued to:" フィールドは "Issued by:" フィールドと同じにしないでください。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
 - 証明書 pfx に対するパスワードは、複雑なパスワードである必要があります。
-- デプロイの失敗を回避するために、すべての証明書のサブジェクト名とサブジェクトの別名がこの記事で説明されている仕様に一致していることを確認してください。
+- サブジェクト名と、サブジェクトの別名の拡張子 (x509v3_config) のサブジェクトの別名が一致するようにします。 サブジェクトの別名フィールドでは、単一の SSL 証明書によって保護される追加のホスト名 (Web サイト、IP アドレス、共通名) を指定できます。
 
-> [!NOTE]
+> [!NOTE]  
 > 自己署名証明書は使用できません。
 
-> [!NOTE]
+> [!NOTE]  
 > 証明書の信頼チェーン内での中間証明機関の存在がサポートされています。 
 
 ## <a name="mandatory-certificates"></a>必須の証明書
@@ -60,7 +60,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 
 各 Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ証明書が必要です。 各エンドポイントの DNS 名は、*&lt;prefix>.&lt;region>.&lt;fqdn>* の形式で表されます。 
 
-デプロイでは、[region] と [externalfqdn] の値が Azure Stack システム用に選択したリージョン名と外部ドメイン名に一致している必要があります。 例として、リージョン名が *Redmond* で、外部ドメイン名が *contoso.com* である場合、DNS 名は *&lt;prefix>.redmond.contoso.com* の形式になります。*&lt;prefix>* 値は、その証明書によってセキュリティ保護されるエンドポイントを指定するようにマイクロソフトによって事前に設計されています。 さらに、外部インフラストラクチャ エンドポイントの *&lt;prefix>* 値は、特定のエンドポイントを使用する Azure Stack サービスによって異なります。 
+デプロイでは、[region] と [externalfqdn] の値が Azure Stack システム用に選択したリージョン名と外部ドメイン名に一致している必要があります。 例として、リージョン名が *Redmond* で、外部ドメイン名が *contoso.com* である場合、DNS 名は *&lt;prefix>.redmond.contoso.com* の形式になります。 *&lt;prefix>* 値は、その証明書によってセキュリティ保護されるエンドポイントを指定するようにマイクロソフトによって事前に設計されています。 さらに、外部インフラストラクチャ エンドポイントの *&lt;prefix>* 値は、特定のエンドポイントを使用する Azure Stack サービスによって異なります。 
 
 > [!note]  
 > 証明書は、すべてのディレクトリにコピーされるサブジェクト フィールドおよびサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つのワイルドカード証明書として、または対応するディレクトリにコピーされるエンドポイントごとの個別の証明書として、提供することができます。 どちらのオプションでも、証明書を必要とする **acs** や Key Vault などのエンドポイントにはワイルドカード証明書を使う必要があることに注意してください。 

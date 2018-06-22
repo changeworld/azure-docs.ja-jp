@@ -11,13 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: ppacent
+ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801417"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -41,11 +43,11 @@ ms.lasthandoff: 05/12/2018
  
 ここでは、次の情報を表示できます。
 
-- リージョン名
+- リージョン名。 リージョン名は、PowerShell モジュールの **-Location** で参照されます。
 - システムの種類
 - 論理コアの合計
 - メモリの合計
-- 各々のノードとその状態 (実行中または停止) の一覧。
+- 個々のノードとその状態 (**実行中**または**停止**) の一覧。
 
 ![各ノードの実行中の状態を示すスケール ユニットのタイル](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -87,7 +89,7 @@ ms.lasthandoff: 05/12/2018
 PowerShell で電源オフ操作を実行するには、以下のようにします。
 
 ````PowerShell
-  Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
 可能性は低いですが、電源オフ操作が動作しない場合には、代わりに BMC Web インターフェイスを使用します。
@@ -102,7 +104,7 @@ PowerShell で電源オフ操作を実行するには、以下のようにしま
 PowerShell で電源オン操作を実行するには、以下のようにします。
 
 ````PowerShell
-  Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
 可能性は低いですが、電源オン操作が動作しない場合には、代わりに BMC Web インターフェイスを使用します。
@@ -113,13 +115,13 @@ PowerShell で電源オン操作を実行するには、以下のようにしま
 
 この操作は通常、ノード全体の交換などの、パーツのフィールド交換中に使用されます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > ノードのドレインは、ユーザーに通知済みの計画されたメンテナンス期間中にのみ行うように注意してください。 状況によっては、アクティブなワークロードが中断されることがあります。
 
 PowerShell でドレイン操作を実行するには、以下のようにします。
 
   ````PowerShell
-  Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="resume"></a>再開
@@ -129,7 +131,7 @@ PowerShell でドレイン操作を実行するには、以下のようにしま
 PowerShell で再開操作を実行するには、以下のようにします。
 
   ````PowerShell
-  Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="repair"></a>修復
@@ -139,7 +141,7 @@ PowerShell で再開操作を実行するには、以下のようにします。
 - ノードの完全交換 (新しいデータ ディスクあり、またはなし)
 - ハードウェア コンポーネントの障害と交換の後 (フィールド交換可能装置 (FRU) ドキュメントで推奨されている場合)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > ノードまたは個々のハードウェア コンポーネントを置き換える必要がある場合の正確な手順については、OEM ハードウェア ベンダーの FRU ドキュメントを参照してください。 FRU ドキュメントでは、ハードウェア コンポーネントを交換した後、修復操作を実行する必要があるかどうかを指定します。  
 
 修復操作を実行する場合、BMC の IP アドレスを指定する必要があります。 
@@ -147,7 +149,9 @@ PowerShell で再開操作を実行するには、以下のようにします。
 PowerShell で修復操作を実行するには、以下のようにします。
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
   ````
 
+## <a name="next-steps"></a>次の手順
 
+Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0)」を参照してください。

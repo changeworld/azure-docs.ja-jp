@@ -11,67 +11,76 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eb1f939f76c3528f05a9002b6365359fb6599aa2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357726"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757469"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
 Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
 
 自分の ASDK を登録しない場合、Azure Stack Development Kit を登録するように勧める警告アラート "**アクティブ化が必要**" が表示されます。 これは正しい動作です。
 
-## <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録 
+## <a name="prerequisites"></a>前提条件
+次の手順を使って Azure に ASDK を登録する前に、[デプロイ後の構成](asdk-post-deploy.md)の記事の説明に従って Azure Stack PowerShell をインストールし、Azure Stack ツールをダウンロードしたことを確認します。
+
+さらに、Azure に ASDK を登録するために使用されるコンピューター上で、PowerShell 言語モードを **FullLanguageMode** に設定する必要があります。 現在の言語モードが完全に設定されていることを確認するには、PowerShell ウィンドウを管理者特権で開き、次の PowerShell コマンドを実行します。
+
+```powershell
+$ExecutionContext.SessionState.LanguageMode
+```
+
+出力で **FullLanguageMode** が返されていることを確認します。 その他の言語モードが返されている場合は、別のコンピューター上で再登録を実行するか、言語モードを **FullLanguageMode** に設定してから作業を続行する必要があります。
+
+## <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 次の手順に従って、ASDK を Azure に登録します。
 
 > [!NOTE]
-> これらすべての手順は、特権エンドポイントにアクセスできるコンピューターから実行する必要があります。 ASDK の場合は、開発キットのホスト コンピューターです。 
-
-次の手順を使って Azure に ASDK を登録する前に、[デプロイ後の構成](asdk-post-deploy.md)の記事の説明に従って Azure Stack PowerShell をインストールし、Azure Stack ツールをダウンロードしたことを確認します。 
+> これらすべての手順は、特権エンドポイントにアクセスできるコンピューターから実行する必要があります。 ASDK の場合は、開発キットのホスト コンピューターです。
 
 1. 管理者として PowerShell コンソールを開きます。  
 
-2. 次の PowerShell コマンドを実行して ASDK インストールを Azure に登録します (Azure サブスクリプションとローカル ASDK インストールの両方にログインする必要があります)。
+2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure サブスクリプションとローカル ASDK インストールの両方にログインする必要があります。 Azure サブスクリプションをまだお持ちでない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。
 
-    ```PowerShell
-    # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
-    Add-AzureRmAccount -EnvironmentName "AzureCloud"
+  ```powershell
+  # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
+  Add-AzureRmAccount -EnvironmentName "AzureCloud"
 
-    # Register the Azure Stack resource provider in your Azure subscription
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+  # Register the Azure Stack resource provider in your Azure subscription
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
-    #Import the registration module that was downloaded with the GitHub tools
-    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
+  #Import the registration module that was downloaded with the GitHub tools
+  Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
-    #Register Azure Stack
-    $AzureContext = Get-AzureRmContext
-    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-    Set-AzsRegistration `
-        -PrivilegedEndpointCredential $CloudAdminCred `
-        -PrivilegedEndpoint AzS-ERCS01 `
-        -BillingModel Development
+  #Register Azure Stack
+  $AzureContext = Get-AzureRmContext
+  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  Set-AzsRegistration `
+      -PrivilegedEndpointCredential $CloudAdminCred `
+      -PrivilegedEndpoint AzS-ERCS01 `
+      -BillingModel Development
+  ```
+3. スクリプトが完了すると、"**Your environment is now registered and activated using the provided parameters** " (提供されたパラメーターを使用して環境が登録され、アクティブ化されました) というメッセージが表示されます。
 
-3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
+    ![](media/asdk-register/1.PNG)
 
-    ![](media/asdk-register/1.PNG) 
+## <a name="verify-the-registration-was-successful"></a>登録が成功したことを確認する
+次の手順に従って、Azure への ASDK の登録が成功したことを確認します。
 
-## Verify the registration was successful
-Follow these steps to verify that the ASDK registration with Azure was successful.
+1. [Azure Stack 管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-1. Sign in to the [Azure Stack administration portal](https://adminportal.local.azurestack.external).
+2. **[Marketplace Management]** > **[Azure から追加]** の順にクリックします。
 
-2. Click **Marketplace Management** > **Add from Azure**.
+    ![](media/asdk-register/2.PNG)
 
-    ![](media/asdk-register/2.PNG) 
+3. Azure から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。
 
-3. If you see a list of items available from Azure, your activation was successful.
+    ![](media/asdk-register/3.PNG)
 
-    ![](media/asdk-register/3.PNG) 
-
-## Next steps
-[Add an Azure Stack marketplace item](asdk-marketplace-item.md)
+## <a name="next-steps"></a>次の手順
+[Azure Stack マーケットプレース項目を追加する](asdk-marketplace-item.md)

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 05/23/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 7b1a6020fb8730aee7ed41d8c82358db0945e4ef
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 4ea23ed01e6432f24024d7e8cc07c2dfe42ac639
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257644"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605571"
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
@@ -29,6 +29,9 @@ ms.locfileid: "34257644"
 Marketplace は Azure Stack 向けにカスタマイズされたサービス、アプリケーション、リソースのコレクションです。 リソースには、ネットワーク、仮想マシン、ストレージなどが含まれます。 ユーザーはここで、新しいリソースを作成して、新しいアプリケーションをデプロイします。 ユーザーが使用する商品を参照し、選択できるショッピング カタログと考えてください。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるサービスにサブスクライブする必要があります。
 
 Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 公開すると、アイテムはすべてのユーザーに表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
+
+> [!Caution]  
+> Azure Stack Marketplace で利用できるようにした後、イメージや JSON ファイルと呼ばれるすべてのギャラリー アイテムのアーティファクトに、認証することなくアクセスできます。 Marketplace アイテムを発行するときの考慮事項については、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」を参照してください。
 
 Marketplace を開くには、管理者コンソールで **[新規]** を選択します。
 

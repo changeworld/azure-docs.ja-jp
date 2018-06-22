@@ -1,24 +1,19 @@
 ---
-title: "障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs"
-description: "発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。"
+title: 障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs
+description: 発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802308"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -34,7 +29,9 @@ Service Bus では、複数のメッセージング ストアを使用して、�
 Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。 Service Bus は、名前空間のレベルで、[*geo ディザスター リカバリー*と *geo レプリケーション*](service-bus-geo-dr.md)の両方をサポートするようになりました。
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>メッセージング ストアのエラーからキューおよびトピックを保護する
-パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。 一方、パーティション分割されたキューは複数のフラグメントで構成されます。 各フラグメントは異なるメッセージング ストアに格納されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対応するメッセージング ストアを使用できない場合は、可能であれば Service Bus はメッセージを別のフラグメントに書き込みます。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
+パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。 一方、パーティション分割されたキューは複数のフラグメントで構成されます。 各フラグメントは異なるメッセージング ストアに格納されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対応するメッセージング ストアを使用できない場合は、可能であれば Service Bus はメッセージを別のフラグメントに書き込みます。 パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
+
+パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>データセンターの障害や災害から保護する
 2 つのデータセンター間でのフェールオーバーを可能にするために、各データセンターに 1 つの Service Bus サービスの名前空間を作成できます。 たとえば、Service Bus サービスの名前空間 **contosoPrimary.servicebus.windows.net** を米国 (北/中央) リージョンに配置し、**contosoSecondary.servicebus.windows.net** を米国 (南部/中央) リージョンに配置することができます。 データセンターの障害発生時にも Service Bus メッセージング エンティティにアクセスできる状態を維持する必要がある場合、両方の名前空間内にそのエンティティを作成します。

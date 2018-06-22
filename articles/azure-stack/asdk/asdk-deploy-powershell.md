@@ -1,6 +1,6 @@
 ---
 title: Azure Stack をデプロイする - PowerShell | Microsoft Docs
-description: このチュートリアルでは、ASDK をコマンド ラインからインストールします。
+description: この記事では、PowerShell を使用してコマンド ラインから ASDK をインストールします。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,29 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849959"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>チュートリアル: ASDK をコマンド ラインからデプロイする
-このチュートリアルでは、非運用環境のコマンド ラインから Azure Stack Development Kit (ASDK) をデプロイします。 
-
+# <a name="deploy-the-asdk-from-the-command-line"></a>ASDK をコマンド ラインからデプロイする
 ASDK は、Azure Stack の機能やサービスを評価したり実演したりするためにデプロイできるテスト/開発環境です。 この環境を準備するには、環境ハードウェアを用意し、いくつかのスクリプトを実行する必要があります (これには数時間かかります)。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。
-
-このチュートリアルで学習する内容は次のとおりです。
-
-> [!div class="checklist"]
-> * デプロイ パッケージをダウンロードし、展開する
-> * 開発キットのホスト コンピューターを準備する 
-> * デプロイ後の構成を実行する
-> * Azure に登録する
 
 ## <a name="prerequisites"></a>前提条件 
 開発キットのホスト コンピューターを準備します。 ハードウェア、ソフトウェア、およびネットワークを計画します。 開発キットをホストするコンピューター (開発キット ホスト) は、ハードウェア、ソフトウェア、ネットワークの要件を満たす必要があります。 Azure Active Directory (Azure AD) と Active Directory フェデレーション サービス (AD FS) のどちらを使用するかを選択します。 インストール プロセスが滞りなく進行するように、デプロイの開始前に以上の前提条件を必ず満たしてください。 
@@ -144,7 +135,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 の省略可能なパラメーター
-|パラメーター|必須/省略可能|[説明]|
+|パラメーター|必須/省略可能|説明|
 |-----|-----|-----|
 |AdminPassword|必須|開発キットのデプロイの一環として作成されたすべての仮想マシンのローカル管理者アカウントと他のすべてのユーザー アカウントを設定します。 このパスワードは、ホスト上の現在のローカル管理者パスワードと一致する必要があります。|
 |InfraAzureDirectoryTenantName|必須|テナント ディレクトリを設定します。 このパラメーターを使用して、AAD アカウントに複数のディレクトリを管理するアクセス許可がある特定のディレクトリを指定します。 AAD ディレクトリ テナントのフル ネーム (.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名。|
@@ -176,16 +167,5 @@ Azure Stack に [Azure マーケットプレース項目をダウンロード](a
 ## <a name="next-steps"></a>次の手順
 お疲れさまでした。 これらの手順を完了すると、[管理者](https://adminportal.local.azurestack.external)ポータルと[ユーザー](https://portal.local.azurestack.external) ポータルの両方を開発キット環境で利用できるようになります。 
 
-このチュートリアルで学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * デプロイ パッケージをダウンロードし、展開する
-> * 開発キットのホスト コンピューターを準備する 
-> * デプロイ後の構成を実行する
-> * Azure に登録する
-
-次のチュートリアルに進み、Azure Stack マーケットプレース項目を追加する方法を学習してください。
-
-> [!div class="nextstepaction"]
-> [Azure Stack マーケットプレース項目を追加する](asdk-marketplace-item.md)
+[ASDK インストール後の構成タスク](asdk-post-deploy.md)
 

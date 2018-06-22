@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8643e75a24ff7840b71dfaceae9934cdda566d30
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198577"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604422"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 Azure Stack SQL Server リソースプロバイダーを使用して、SQL データベースを Azure Stack のサービスとして公開します。 SQL リソース プロバイダー サービスは、Windows Server コア仮想マシンである SQL リソース プロバイダー VM 上で動作します。
@@ -30,10 +30,14 @@ Azure Stack SQL リソース プロバイダーをデプロイする前に、い
 - まだ登録していない場合、Azure Marketplace 項目をダウンロードできるよう、Azure に [Azure Stack を登録](.\azure-stack-registration.md)します。
 - **Windows Server 2016 Server コア** イメージをダウンロードして、必要な Windows Server コア VM を Azure Stack Marketplace に追加します。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに .MSU パッケージを 1 つ配置できます。 複数の .MSU ファイルが見つかった場合、SQL リソース プロバイダーのインストールは失敗します。
 - SQL リソース プロバイダー バイナリをダウンロードした後、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。 リソース プロバイダーには、対応する最低限の Azure Stack ビルドがあります。 必ず、実行している Azure Stack のバージョンに適合する正しいバイナリをダウンロードしてください:
-    - Azure Stack バージョン 1802 (1.0.180302.1): [SQL RP バージョン 1.1.18.0](https://aka.ms/azurestacksqlrp1802)。
-    - Azure Stack バージョン 1712 (1.0.180102.3、1.0.180103.2 または 1.0.180106.1 (統合システム)): [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712)。
+
+    |Azure Stack バージョン|SQL RP バージョン|
+    |-----|-----|
+    |バージョン 1804 (1.0.180513.1)|[SQL RP バージョン 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
+    |バージョン 1802 (1.0.180302.1)|[SQL RP バージョン 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |バージョン 1712 (1.0.180102.3、1.0.180103.2 または 1.0.180106.1 (統合システム))|[SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712)|
+    |     |     |
 - 統合システムのインストールの場合に限り、「[Azure Stack deployment PKI requirements](.\azure-stack-pki-certs.md#optional-paas-certificates)(Azure Stack デプロイの PKI の要件)」の、省略可能な PaaS 証明書に関するセクションで説明されているように、**DependencyFilesLocalPath** パラメーターで指定された場所に .pfx ファイルを配置することによって、SQL PaaS PKI 証明書を提供する必要があります。
-- [Azure Stack PowerShell の最新バージョン](.\azure-stack-powershell-install.md) (v1.2.11) がインストールされていることを確認します。 
 
 ## <a name="deploy-the-sql-resource-provider"></a>SQL リソース プロバイダーをデプロイする
 すべての前提条件を満たすことによって、SQL リソース プロバイダーをインストールするための準備を正しく行った後、**DeploySqlProvider.ps1** スクリプトを実行して SQL リソース プロバイダーをデプロイできます。 Azure Stack のバージョンに対応する、ダウンロードした SQL リソース プロバイダーのバイナリの一部として DeploySqlProvider.ps1 スクリプトが抽出されます。 
@@ -61,7 +65,7 @@ SQL リソース プロバイダーのデプロイが開始し、system.local.sq
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
 これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | [説明] | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -82,10 +86,9 @@ SQL リソース プロバイダーのデプロイが開始し、system.local.sq
 DeploySqlProvider.ps1 スクリプトの実行時に必要な情報を手動で入力するのを回避するために、既定のアカウント情報とパスワードを必要に応じて変更することにより、次のスクリプト例をカスタマイズすることができます。
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
@@ -114,12 +117,13 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+$tempDir\DeploySQLProvider.ps1 `
+    -AzCredential $AdminCreds `
+    -VMLocalCredential $vmLocalAdminCreds `
+    -CloudAdminCredential $cloudAdminCreds `
+    -PrivilegedEndpoint $privilegedEndpoint `
+    -DefaultSSLCertificatePassword $PfxPass `
+    -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用してデプロイを確認する

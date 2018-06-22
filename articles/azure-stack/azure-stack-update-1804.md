@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a7ba5f1947da09177e7d2d9d0e9e926d858dff7e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302592"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700126"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新プログラム
 
@@ -41,10 +41,19 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
  
 - <!-- 1779474, 1779458 - IS --> **Use Av2 and F series virtual machines**. Azure Stack can now use virtual machines based on the Av2-series and F-series virtual machine sizes. For more information see [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). 
 
-- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available after the update installs:
-  - *既定のプロバイダー サブスクリプション*。 このサブスクリプションはコア インフラストラクチャにのみ使用します。 このサブスクリプションには、リソースまたはリソース プロバイダーをデプロイしないでください。
-  - *測定サブスクリプション*。 このサブスクリプションは、リソース プロバイダーのデプロイに使用します。 このサブスクリプションでデプロイされているリソースには課金されません。
-  - *消費サブスクリプション*。 このサブスクリプションは、デプロイするその他のワークロードに使用します。 ここでデプロイされたリソースは、通常の使用料で課金されます。
+- <!-- 1759172 - IS, ASDK --> **New administrative subscriptions**. With 1804 there are two new subscription types available in the portal. These new subscription types are in addition to the Default Provider subscription and visible with new Azure Stack installations beginning with version 1804. *Do not use these new subscription types with this version of Azure Stack*. We will announce the availability to use these subscription types in with a future update. 
+
+  Azure Stack をバージョン 1804 に更新すると、2 種類の新しいサブスクリプションが表示されなくなります。 ただし、Azure Stack 統合システムの新しいデプロイと、Azure Stack Development Kit バージョン 1804 以降のインストールでは、3 種類すべてのサブスクリプションにアクセスできます。  
+
+  これらの新しい種類のサブスクリプションは、Default Provider サブスクリプションを保護し、SQL Hosting サーバーなど、共有リソースのデプロイを簡易化するための大規模な変更の一環です。 Azure Stack の将来の更新でこの大規模な変更をさらに進めるとき、これらの新しい種類のサブスクリプションでデプロイされたリソースが失われることがあります。 
+
+  現在表示されている 3 種類のサブスクリプションは次のとおりです。  
+  - Default Provider サブスクリプション: 引き続き、この種類のサブスクリプションを使用してください。 
+  - Metering サブスクリプション: *この種類のサブスクリプションは使用しないでください。*
+  - Consumption サブスクリプション: *この種類のサブスクリプションは使用しないでください。*
+
+  
+
 
 
 ## <a name="fixed-issues"></a>修正された問題
@@ -59,7 +68,7 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 
 ## <a name="additional-releases-timed-with-this-update"></a>この更新に合わせた追加のリリース  
 次が利用できるようになりましたが、Azure Stack 更新プログラム 1804 は必要ありません。
-- **Microsoft Azure Stack System Center Operations Manager Monitoring Pack の更新プログラム**。 Microsoft System Center Operations Manager Monitoring Pack for Azure Stack の新しいバージョン (1.0.3.0) が[ダウンロード](https://www.microsoft.com/download/details.aspx?id=55184)できるようになりました。 このバージョンでは、接続済みの Azure Stack のデプロイを追加するときに、サービス プリンシパルを使用できます。 このバージョンでは、Operations Manager 内から直接修復アクションを実行できるようにする Update Management エクスペリエンスの機能もあります。 リソース プロバイダー、スケール単位、およびスケール ユニットのノードを表示する新しいダッシュボードもあります。
+- **Microsoft Azure Stack System Center Operations Manager Monitoring Pack の更新プログラム**。 Microsoft System Center Operations Manager Monitoring Pack for Azure Stack の新しいバージョン (1.0.3.0) が[ダウンロード](https://www.microsoft.com/download/details.aspx?id=55184)できるようになりました。 このバージョンでは、接続済みの Azure Stack のデプロイを追加するときに、サービス プリンシパルを使用できます。 このバージョンでは、Operations Manager 内から直接修復アクションを実行できるようにする Update Management エクスペリエンスの機能もあります。 リソース プロバイダー、スケール単位、スケール ユニットのノードを表示する新しいダッシュボードもあります。
 
 - **新しい Azure Stack 管理の PowerShell バージョン 1.3.0**。  Azure Stack PowerShell 1.3.0 がインストールに使用できるようになりました。 このバージョンでは、Azure Stack を管理するためにすべての管理リソース プロバイダーにコマンドを提供します。  このリリースにより、Azure Stack ツールの GitHub [リポジトリ](https://github.com/Azure/AzureStack-Tools)から一部のコンテンツが廃止される予定です。 
 
@@ -77,6 +86,8 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 - 1804 更新プログラムのインストール中に、"*エラー – FaultType UserAccounts.New のテンプレートが見つかりません*" というタイトルのアラートが表示される場合があります。  これらのアラートは無視してかまいません。 1804 への更新が完了すると、これらのアラートは自動的に閉じられます。   
  
 - <!-- TBD - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](azure-stack-updates.md#plan-for-updates).
+
+
 ### <a name="post-update-steps"></a>更新後の手順
 *更新プログラム 1804 には更新後の手順はありません。*
 
@@ -86,6 +97,15 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 ビルド **20180513.1** のインストール後について次の既知の問題があります。
 
 #### <a name="portal"></a>ポータル
+- <!-- 1272111 - IS --> After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
+  回避策: PowerShell を使用し、スケール ユニットに関する情報を表示します。 詳細については、Azure Stack Module 1.3.0 の[ヘルプ](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) コンテンツをご覧ください。 
+
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  回避策: この更新プログラムのインストール後にこの問題を解決するには、「[Azure Stack で自動化をトリガーしてクレーム プロバイダー信頼を構成する](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)」の手順 3 を使用して、既定のプロバイダー サブスクリプションの所有者をリセットします。   
+
+- <!-- TBD - IS ASDK --> Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
+
+
 - <!-- TBD -  IS ASDK -->The ability [to open a new support request from the dropdown](azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
     - Azure Stack 統合システムの場合は、https://aka.ms/newsupportrequest を使用します。
 
@@ -105,6 +125,24 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 
   このアラートは無視してかまいません。 
 
+
+#### <a name="health-and-monitoring"></a>正常性と監視
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
+ 
 
 #### <a name="compute"></a>コンピューティング
 - <!-- TBD - IS --> When selecting a virtual machine size for a virtual machine deployment, some F-Series VM sizes are not visible as part of the size selector when you create a VM. The following VM sizes do not appear in the selector: *F8s_v2*, *F16s_v2*, *F32s_v2*, and *F64s_v2*.  
@@ -127,7 +165,7 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 
 - <!-- TBD - IS --> When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
 
-- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a D series VM. All supported D series VMs can accommodate as many data disks as the Azure configuration.
 
 - <!-- TBD - IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
 
@@ -241,17 +279,17 @@ Azure Stack 1804 更新プログラムのビルド番号は **20180513.1** で�
 
 
 #### <a name="app-service"></a>App Service
-- <!-- TBD - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- 2352906 - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
 
 - <!-- TBD - IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
 
+- <!-- TBD - IS ASDK --> App Service can only be deployed into the **Default Provider Subscription** at this time.  In a future update App Service will deploy into the new Metering Subscription introduced in Azure Stack 1804 and all existing deployments will be migrated to this new subscription also.
 
 #### <a name="usage"></a>使用法  
 - <!-- TBD - IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
 
 
 <!-- #### Identity -->
-<!-- #### Health and monitoring --> 
 <!-- #### Marketplace --> 
 
 

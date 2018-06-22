@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/24/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 278f15271d3a5443102f5e387d3db1adb53fe7db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357386"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604235"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
 
@@ -28,7 +28,7 @@ ms.locfileid: "34357386"
 
 ポータルを使用して、Azure Resource Manager テンプレートを Azure Stack にデプロイできます。
 
-テンプレートをデプロイするには:
+## <a name="to-deploy-a-template"></a>テンプレートをデプロイするには
 
 1. ポータルにサインインし、**[新規]**、**[カスタム]** の順に選択します。
 2. **[テンプレートのデプロイ]** を選択します。
@@ -40,4 +40,4 @@ ms.locfileid: "34357386"
 
 ## <a name="next-steps"></a>次の手順
 
-[PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+* [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)

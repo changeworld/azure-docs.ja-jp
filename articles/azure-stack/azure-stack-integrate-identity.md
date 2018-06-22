@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770521"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801475"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -66,7 +66,7 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 自動化パラメーターの入力として、次の情報が必要です。
 
 
-|パラメーター|[説明]|例|
+|パラメーター|説明|例|
 |---------|---------|---------|
 |CustomADGlobalCatalog|統合する対象の Active Directory<br>フォレストの FQDN|Contoso.com|
 |CustomADAdminCredentials|LDAP の読み取りアクセス許可を持つユーザー|YOURDOMAIN\graphservice|
@@ -87,14 +87,14 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 2. 管理者特権での Windows PowerShell セッション (管理者として実行) を開き、特権エンドポイントの IP アドレスに接続します。 **CloudAdmin** の資格情報を使用して認証します。
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 3. これで特権エンドポイントに接続されました。次のコマンドを実行します。 
 
-   ```powershell
+   ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
@@ -120,7 +120,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 自動化パラメーターの入力として、次の情報が必要です。
 
-|パラメーター|[説明]|例|
+|パラメーター|説明|例|
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。<cr>AD FS のランディング ページにそのように表示されます。|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|フェデレーション メタデータのリンク|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
@@ -132,20 +132,20 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、特権エンドポイントに接続します。
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. これで特権エンドポイントに接続されました。お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
 3. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -159,7 +159,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 自動化パラメーターの入力として、次の情報が必要です。
 
 
-|パラメーター|[説明]|例|
+|パラメーター|説明|例|
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。 AD FS のランディング ページにそのように表示されます。|Contoso|
 |CustomADFSFederationMetadataFile|フェデレーション メタデータ ファイル|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
@@ -170,7 +170,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
 
    $Metadata.outerxml|out-file c:\metadata.xml
@@ -185,20 +185,20 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、特権エンドポイントに接続します。
 
-   ```powershell
+   ```PowerShell  
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. これで特権エンドポイントに接続されました。お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
    ```
 
 3. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -245,7 +245,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 2. Windows フォーム ベースの認証を有効にするには、Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
    ```
 
@@ -253,13 +253,13 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
    **AD FS 2016 の場合**
 
-   ```powershell
+   ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
    ```
 
    **AD FS 2012/2012 R2 の場合**
 
-   ```powershell
+   ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
    ```
 
@@ -271,13 +271,13 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    > [!note]  
    > Windows Server 2012 または 2012 R2 AD FS を使用するとき、この手順は該当しません。 このコマンドをスキップして統合を続けても問題ありません。
 
-   ```powershell
+   ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
-5. トークンの更新を有効にするには、Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
+5. Azure Stack ポータルとツール (Visual Studio) には更新トークンが必要です。 これらは、証明書利用者信頼によって構成される必要があります。 Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
@@ -291,6 +291,9 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 - 各種アプリケーション
 - 非対話型ログオンを要求する
 
+> [!Important]  
+> AD FS は、対話型ログオン セッションにのみ対応しています。 自動化シナリオに対話型ではないログオンを必要とする場合、SPN を使用する必要があります。
+
 SPN の作成について詳しくは、「[AD FS のサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)」をご覧ください。
 
 
@@ -302,14 +305,14 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. その後次のコマンドレットを実行します。
 
-   ```powershell
+   ```PowerShell  
    Reset-DatacenterIntegationConfiguration
    ```
 
@@ -318,7 +321,7 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
    > [!IMPORTANT]
    > 既定のプロバイダー サブスクリプションの元の所有者を構成する必要があります
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
    ```
 
@@ -328,14 +331,14 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. その後次のコマンドレットを実行します。
 
-   ```powershell
+   ```PowerShell  
    Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
    ```
 

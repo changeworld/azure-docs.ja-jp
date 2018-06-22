@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cd917165804314f6ee4ee006e3f29263d8d4b4c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605612"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
@@ -44,6 +45,8 @@ ms.lasthandoff: 04/16/2018
     他の証明書の順序を確認して、順序が正しいことを検証します。
 - **他の証明書**  
     関連するリーフ証明書とそのチェーン以外の他の証明書が PFX にパッケージ化されていないことを確認します。
+- **プロファイルなし**  
+    証明書サービスの間に gMSA アカウントの動作を模倣して、ユーザー プロファイルが読み込まれていなくても新しいユーザーが PFX データを読み込めることを確認します。
 
 > [!IMPORTANT]  
 > PKI 証明書が PFX ファイルです。パスワードは機密情報として扱われる必要があります。
@@ -57,43 +60,46 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 - DeploymentData.json
 - Windows 10 または Windows Server 2016
 
-## <a name="perform-certificate-validation"></a>証明書の検証を実行する
+## <a name="perform-core-services-certificate-validation"></a>コア サービス証明書の検証を実行する
 
-次の手順を使って、Azure Stack PKI 証明書を準備し、検証します。
+次の手順を使って、デプロイとシークレット ローテーションに使用する Azure Stack PKI 証明書を準備し、検証します。
 
-1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から AzsReadinessChecker をインストールします。
+1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
 
     ````PowerShell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker 
+        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
 2. 証明書ディレクトリ構造を作成します。 次の例では、`<c:\certificates>` を、選択した新規ディレクトリ パスに変更できます。
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
-
-    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal' 
-
-    $destination = 'c:\certificates' 
-
-    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
+    
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal'
+    
+    $destination = 'c:\certificates'
+    
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
     ````
+    
+    > [!Note]  
+    > AD FS を ID システムとして使用している場合は、AD FS と Graph が必要です。
+    
+     - 前の手順で作成された適切なディレクトリに証明書を配置します。 例:   
+        - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
- - 前の手順で作成された適切なディレクトリに証明書を配置します。 例:   
-    - c:\certificates\ACSBlob\CustomerCertificate.pfx 
-    - c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx 
-    - c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx 
-    - など 
-
-3. PowerShell ウィンドウで、次を実行します。
+3. PowerShell ウィンドウで、Azure Stack 環境に合わせて **RegionName** および **FQDN** の値を変更し、次を実行します。
 
     ````PowerShell  
-    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+
     ````
 
-4. 出力ですべての証明書がテストに合格したことを確認します。 例: 
+4. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。 例: 
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -125,7 +131,8 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
     Finished Certificate Validation
 
     AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessReport.json
+    AzsReadinessChecker Report location: 
+    C:\AzsReadinessChecker\AzsReadinessReport.json
     AzsReadinessChecker Completed
     ````
 
@@ -162,12 +169,87 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 
 **解決策**: ツール ガイダンスの詳細セクションにある各証明書テスト設定に従います。
 
+## <a name="perform-platform-as-a-service-certificate-validation"></a>サービスとしてのプラットフォーム (PaaS) 証明書の検証を実行する
+
+SQL/MySQL または App Services のデプロイを計画している場合は、次の手順を使って、サービスとしてのプラットフォーム (PaaS) 証明書用に Azure Stack PKI 証明書を準備し、検証します。
+
+1.  次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
+
+    ````PowerShell  
+      Install-Module Microsoft.AzureStack.ReadinessChecker -force
+    ````
+
+2.  検証が必要な PaaS 証明書ごとに、パスとパスワードを含む入れ子になったハッシュ テーブルを作成します。 PowerShell ウィンドウで、次を実行します。
+
+    ```PowerShell
+        $PaaSCertificates = @{
+        'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSAPICert' = @{'pfxPath' = '<Path to API PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        }
+    ```
+
+3.  Azure Stack 環境に合わせて **RegionName** と **FQDN** の値を変更し、検証を開始します。 次に、以下を実行します。
+
+    ```PowerShell
+    Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
+    ```
+4.  出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。
+
+    ```PowerShell
+    AzsReadinessChecker v1.1805.425.2 started
+    Starting PaaS Certificate Validation
+    
+    Starting Azure Stack Certificate Validation 1.0 
+    Testing: PaaSCerts\wildcard.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\api.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\wildcard.dbadapter.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\sso.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+    ```
+
 ## <a name="using-validated-certificates"></a>検証済み証明書の使用
 
 証明書が AzsReadinessChecker によって検証されたら、Azure Stack デプロイまたは Azure Stack シークレット ローテーションで使用できます。 
 
  - デプロイの場合、[Azure Stack PKI の要件ドキュメント](azure-stack-pki-certs.md)で指定されているように、デプロイメント エンジニアが証明書を配置ホストにコピーできるように、セキュリティを保護して証明書をデプロイメント エンジニアに送付します。
  - シークレット ローテーションの場合、[Azure Stack シークレット ローテーションのドキュメント](azure-stack-rotate-secrets.md)の説明に従い、この証明書を使用して、お使いの Azure Stack 環境のパブリック インフラストラクチャ エンドポイントの古い証明書を更新できます。
+ - PaaS サービスの場合、「[Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)」の説明に従い、この証明書を使用して、Azure Stack に SQL、MySQL、App Services リソース プロバイダーをインストールできます。
 
 ## <a name="next-steps"></a>次の手順
 

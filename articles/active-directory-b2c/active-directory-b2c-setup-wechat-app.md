@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: WeChat の構成 | Microsoft Docs'
+title: Azure Active Directory B2C の WeChat の構成 | Microsoft Docs
 description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、WeChat アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ca12c84042f92dafff67dc10ce6b56b77c0456eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: bbdeccbdd0d6786fdf32fc2f547344b379bd0d7c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712489"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C: WeChat アカウントを使用するコンシューマーにサインアップとサインインを提供する
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして WeChat 
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして WeChat を構成する
 1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
+2. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「WeChat」と入力します。
 5. **[ID プロバイダーの種類]** をクリックし、**[WeChat]** を選択して、**[OK]** をクリックします。

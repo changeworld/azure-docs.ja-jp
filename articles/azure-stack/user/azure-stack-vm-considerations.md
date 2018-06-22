@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076164"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605390"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
@@ -36,9 +36,9 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシンのクォータ | [クォータ制限](../../azure-subscription-service-limits.md#service-specific-limits)は Microsoft によって設定されます | Azure Stack のクラウド管理者は、仮想マシンをユーザーに提供する前にクォータを割り当てる必要があります。 |
 | 仮想マシン拡張機能 |Azure では、幅広い仮想マシン拡張機能がサポートされます。 使用可能な拡張機能については、「[Windows 用の仮想マシン拡張機能とその機能](../../virtual-machines/windows/extensions-features.md)」をご覧ください。| Azure Stack は、Azure で使用できる拡張機能のサブセットをサポートしており、拡張機能それぞれに特定のバージョンがあります。 Azure Stack のクラウド管理者は、ユーザーにどの拡張機能を提供するかを選択することができます。 サポートされている拡張機能の一覧を参照するには、この記事の[仮想マシンの拡張機能](#virtual-machine-extensions)についてのセクションを参照してください。 |
 | 仮想マシンのネットワーク | テナントの仮想マシンに割り当てられたパブリック IP アドレスは、インターネット経由でアクセスできます。<br><br><br>Azure の仮想マシンには固定の DNS 名がある | テナントの仮想マシンに割り当てられたパブリック IP アドレスにアクセスできるのは、Azure Stack Development Kit 環境内のみです。 ユーザーは、Azure Stack で作成される仮想マシンに接続するためには、[RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で Azure Stack Development Kit にアクセスできる必要があります。<br><br>特定の Azure Stack インスタンス内に作成された仮想マシンには、クラウド管理者が構成した値に基づく DNS 名があります。 |
-| 仮想マシンのストレージ | [管理ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | Azure Stack では、管理ディスクはまだサポートされていません。 |
+| 仮想マシンのストレージ | [マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | Azure Stack では、マネージド ディスクはまだサポートされていません。 |
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
-|仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>管理ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>管理ディスクのサポートなし|
+|仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
@@ -103,7 +103,7 @@ Get-AzureRmResourceProvider | `
 Windows の製品は、製品使用権利およびマイクロソフのライセンス条項に従って使用する必要があります。 Azure Stack は [VM の自動ライセンス認証](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) を使用して Windows Server 仮想マシン (VM) をアクティブ化します。
 
 - Azure Stack のホストは、Windows Server 2016 の AVMA キーを使用して Windows をアクティブ化します。 Windows Server 2012 またはそれ以降を実行する VM は、自動的にアクティブ化されます。
-- Windows Server 2008 R2 を実行する VM は、自動的にアクティブ化されないので、[MAK ライセンス認証](https://technet.microsoft.com/library/ff793438.aspx)を使用してアクティブ化する必要があります。
+- Windows Server 2008 R2 を実行する VM は、自動的にアクティブ化されないので、[MAK ライセンス認証](https://technet.microsoft.com/library/ff793438.aspx)を使用してアクティブ化する必要があります。 MAK ライセンス認証を使用するには、自分のプロダクト キーを指定する必要があります。
 
 Microsoft Azure では、KMS ライセンス認証を使用して、Windows VM をアクティブ化します。 Azure Stack から Azure に VM を移行して、アクティブ化の問題があった場合は、[Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems)を参照してください。 追加の情報は、Azure サポート チームのブログ投稿、[Azure VM での Windows のライセンス認証の失敗をトラブルシューティングする](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)を参照してください。
 

@@ -10,17 +10,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/01/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 2ebafc4249f8455bdbe45a07a5bf88aa8984d67a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7ca29ee359349f69c3d5ff21bd9db3f93358206a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358967"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724314"
 ---
-# <a name="using-the-azure-stack-portal"></a>Azure Stack ポータルの使用
+# <a name="use-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
@@ -33,19 +33,19 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
 - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
 
-![Azure Stack ユーザー ポータルのスクリーンショット](media/azure-stack-use-portal/UserPortal.png)
+![Azure Stack ユーザー ポータルの画面キャプチャ](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
 
-ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** をクリックして既定のダッシュボードを変更したり、**[新しいダッシュボード]** をクリックしてカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、コンピューティング タイルを追加するには、**[新規]** をクリックします。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** をクリックします。
+ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、コンピューティング タイルを追加するには、**[新規]** を選択します。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** を選択します。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>サブスクリプションの作成と使用可能リソースの参照
- 
+
 まだサブスクリプションがない場合、まずオファーをサブスクライブする必要があります。 その後、利用可能なリソースを参照することができます。 リソースを参照したり作成したりするには、次のいずれかの方法を使用します。
 
-- ダッシュボードで **[Marketplace] (マーケットプレース)** タイルをクリックします。
-- **[All resources] (すべてのリソース)** タイルで、**[Create resources] (リソースの作成)** をクリックします。
-- 左側のナビゲーション ウィンドウで、 **[New] (新規)** をクリックします。
+- ダッシュボードで **[Marketplace]** タイルを選択します。
+- **[すべてのリソース]** タイルで、**[リソースの作成]** を選択します。
+- 左側のナビゲーション ウィンドウで、**[新規]** を選択します。
 
 ## <a name="learn-how-to-use-available-services"></a>使用可能なサービスの使用方法を学ぶ
 
@@ -53,15 +53,15 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
 - 組織またはサービス プロバイダーによって独自のドキュメントが提供されることがあります。これは通常、カスタマイズされたサービスまたはアプリが提供される場合です。
 - サード パーティのアプリには、独自のドキュメントがあります。
-- Azure 互換サービスについては、まず Azure Stack のドキュメントを確認することを強くお勧めします。 Azure Stack ユーザー ドキュメントにアクセスするには、[Help] (ヘルプ) アイコンをクリックしてから、**[Help + support] (ヘルプとサポート)** をクリックします。
- 
-    ![UI の [Help and support] (ヘルプとサポート) オプションのスクリーンショット](media/azure-stack-use-portal/HelpAndSupport.png)
+- Azure 互換サービスについては、まず Azure Stack のドキュメントを確認することを強くお勧めします。 Azure Stack ユーザー ドキュメントにアクセスするには、ヘルプ アイコン、**[ヘルプとサポート]** の順に選択します。
+
+    ![UI の [ヘルプとサポート] オプション](media/azure-stack-use-portal/HelpAndSupport.png)
 
     特に、作業を開始するにあたって次の記事を確認することをお勧めします。
 
     - [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)
     - ドキュメントの**サービスの使用**に関するセクションには、サービスごとの考慮事項の記事があります。 考慮事項に関するページでは、Azure で提供されるサービスと Azure Stack で提供される同じサービス間の相違点を説明しています。 例については、「[VM に関する考慮事項](azure-stack-vm-considerations.md)」を参照してください。 **サービスの使用**に関するセクションには、Azure Stack に固有であるその他の情報が含まれている場合があります。
-     
+
       サービスの一般的なリファレンスとして Azure のドキュメントを使用できますが、これらの相違点を把握しておく必要があります。 **[Quickstart tutorials] (クイックスタート チュートリアル)** タイル上のドキュメント リンクが Azure のドキュメントを指していることを理解します。
 
 ## <a name="get-support"></a>サポートを受ける

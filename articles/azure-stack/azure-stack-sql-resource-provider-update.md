@@ -1,6 +1,6 @@
 ---
-title: Azure Stack での SQL データベースの使用 | Microsoft Docs
-description: SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します。
+title: Azure Stack SQL リソース プロバイダーの更新 | Microsoft Docs
+description: Azure Stack SQL リソース プロバイダーの更新方法について説明します。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 9154f509f9019c28515970869678aa6633d16163
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206173"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294862"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>SQL リソース プロバイダー アダプターの更新
-Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 更新プログラムは指定された順序でインストールする必要があります: バージョンを省略することはできません ([リソース プロバイダーのデプロイの前提条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)のバージョン リストを参照してください)。
+# <a name="update-the-sql-resource-provider"></a>SQL リソース プロバイダーの更新
+Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダーがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 更新プログラムは指定された順序でインストールする必要があります: バージョンを省略することはできません ([リソース プロバイダーのデプロイの前提条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)のバージョン リストを参照してください)。
 
 リソース プロバイダーの更新には *UpdateSQLProvider.ps1* スクリプトを使用します。 プロセスは、[リソース プロバイダーをデプロイする](.\azure-stack-sql-resource-provider-deploy.md)の記事に記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。
 
@@ -38,10 +38,9 @@ Marketplace の管理から最新の Windows Server 2016 Core のイメージを
 > 更新プロセスは、統合システムにのみに適用されます。
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
@@ -81,7 +80,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ## <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 パラメーター
 これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | [説明] | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |

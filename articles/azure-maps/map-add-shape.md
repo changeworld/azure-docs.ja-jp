@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使ってシェイプを追加する | Microsoft Docs
 description: Javascript マップにシェイプを追加する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fb9ec0713d3db465cf835346465e70c4455b38ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dec9b7289927365faa9c58522df2571db99f0494
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599373"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
@@ -59,3 +57,10 @@ ms.lasthandoff: 05/07/2018
 コードの 2 つ目のブロックでは、多角形が作成されます。 多角形は、Feature プロパティに [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonproperties?view=azure-iot-typescript-latest) を使った、[Polygon](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygon?view=azure-iot-typescript-latest) の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest)です。 多角形を作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.Polygon())` を使います。 多角形のコンストラクターでは、多角形のパスを、順序付けられた座標で指定します。
 
 多角形レイヤーは、多角形の配列です。 コードの最後のブロックでは、マップ クラスの [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpolygons) 関数を使用して、マップに多角形レイヤーを追加し、プロパティを定義しています。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 
+
+## <a name="next-steps"></a>次の手順
+マップに追加するコード例の詳細については、次の記事を参照してください。
+* [カスタム HTML を追加する](./map-add-custom-html.md)
+* [検索結果を表示する](./map-search-location.md)
+
+

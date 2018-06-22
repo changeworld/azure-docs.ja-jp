@@ -5,53 +5,88 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3eaefbe011c4d98fe9a76d4f277a76a2f167b191
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.reviewer: unknown
+ms.openlocfilehash: cbd5e5dbcdd2565e8066b0721f45863569bfd90a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301895"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295032"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Visual Studio を使用して、Azure Resource Manager [テンプレート](azure-stack-arm-templates.md)を作成し、それを Azure Stack にデプロイします。 この記事の手順に従って、[Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) を使用するか、[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で接続している場合は Windows ベースの外部クライアントを使用して、Visual Studio をインストールできます。 この記事のこれらの手順を実行すると、Visual Studio 2015 Community Edition が新規にインストールされます。 他の Visual Studio バージョンとの[共存](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事も参照してください。
+Visual Studio を使用して Azure Resource Manager [テンプレート](azure-stack-arm-templates.md)を作成し、Azure Stack にデプロイできます。 この記事では、Visual Studio を [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) にインストールする手順、または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) を介して Azure Stack を使用する予定の場合に外部コンピューターにインストールする手順について説明します。
 
 ## <a name="install-visual-studio"></a>Visual Studio のインストール
 
-1. [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) をダウンロードして実行します。
-2. **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6** を探して **[追加]**、**[インストール]** の順に選択します。
+1. [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) をダウンロードして実行します。  
 
-    ![WebPI のインストール手順を示すスクリーン キャプチャ](./media/azure-stack-install-visual-studio/image1.png)
+2. **Microsoft Web Platform Installer** を開きます。
 
-3. Azure SDK の一部としてインストールされている **Microsoft Azure PowerShell** をアンインストールします。
+3. **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6** を検索します。 **[追加]**、**[インストール]** の順にクリックします。
 
-    ![Azure PowerShell のプログラムの追加と削除のインターフェイスのスクリーン キャプチャ](./media/azure-stack-install-visual-studio/image2.png)
+4. Azure SDK の一部としてインストールされている **Microsoft Azure PowerShell** をアンインストールします。
 
-4. [PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)
+    ![WebPI のインストール手順を示すスクリーンショット](./media/azure-stack-install-visual-studio/image1.png) 
 
-5. インストールが完了したら、オペレーティング システムを再起動します。
+5. [PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)
 
-## <a name="connect-to-azure-stack"></a>Azure Stack への接続
+6. インストールが完了したら、オペレーティング システムを再起動します。
+
+## <a name="connect-to-azure-stack-with-azure-ad"></a>Azure AD を使用して Azure Stack に接続する
 
 1. Visual Studio を起動します。
 
 2. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
-3. 新しいウィンドウで **[アカウントの追加]** を選択し、Azure Active Directory の資格情報を使ってサインインします。
-    ![サインインして Azure Stack に接続した後の Cloud Explorer のスクリーン キャプチャ](./media/azure-stack-install-visual-studio/image6.png)
+3. 新しいウィンドウで **[アカウントの追加]** を選択し、Azure Active Directory (Azure AD) の資格情報を使ってサインインします。  
 
-ログインしたら、[テンプレートをデプロイ](azure-stack-deploy-template-visual-studio.md)するか、使用可能なリソースの種類やリソース グループを参照して独自のテンプレートを作成することができます。
+    ![ログインして Azure Stack に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image2.png)
+
+ログインしたら、[テンプレートをデプロイ](azure-stack-deploy-template-visual-studio.md)するか、使用可能なリソースの種類やリソース グループを参照して独自のテンプレートを作成することができます。  
+
+## <a name="connect-to-azure-stack-with-ad-fs"></a>AD FS を使用して Azure Stack に接続する
+
+1. Visual Studio を起動します。
+
+2. **[ツール]** から **[オプション]** を選択します。
+
+3. **ナビゲーション ウィンドウ**の **[環境]** を展開し、**[アカウント]** を選択します。
+
+4. **[追加]** を選択し、User Azure Resource Manger エンドポイントを入力します。  
+  Azure Stack Development Kit の URL は `https://management.local.azurestack/external` です。  
+  Azure Stack 統合システムの URL は `https://management.[Region}.[External FQDN]` です。
+
+    ![○](./media/azure-stack-install-visual-studio/image5.png)
+
+5. **[追加]** を選択します。  
+
+    Visual Studio は Azure Resource Manger を呼び出し、Azure Directory Federated Services (AD FS) の認証エンドポイントを含むエンドポイントを検出します。
+
+    ![ログインして Azure Stack に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image6.png)
+
+6. **[表示]** メニューの **[Cloud Explorer]** を選択します。
+7. **[アカウントの追加]** を選択し、AD FS の資格情報でサインインします。  
+
+    ![○](./media/azure-stack-install-visual-studio/image7.png)
+
+    Cloud Explorer は使用できるサブスクリプションのクエリを実行します。 使用できるサブスクリプションを 1 つ選択して管理できます。
+
+    ![○](./media/azure-stack-install-visual-studio/image8.png)
+
+8. 既存のリソース、リソース グループ、またはデプロイ テンプレートを参照します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
+ - 他の Visual Studio バージョンとの[共存](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事も参照してください。
+ - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)

@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796425"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 この記事では、Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持する必要があることについて説明します。 
@@ -37,10 +38,9 @@ ms.lasthandoff: 04/19/2018
 Microsoft は、毎月ソフトウェア更新プログラム パッケージをリリースします。 ただし、1 か月に複数の更新プログラムをリリースすることや、1 つも更新プログラムをリリースしないこともあります。 OEM ハードウェア ベンダーは、必要に応じて随時更新プログラムをリリースします。 
 
 更新を計画し、更新プログラムを管理する方法と、現在のバージョンを確認する方法については、[更新プログラムの管理の概要](azure-stack-updates.md)にあるドキュメントをご確認ください。 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。 
+- [Azure Stack 1805 更新プログラム](azure-stack-update-1805.md)
+- [Azure Stack 1804 更新プログラム](azure-stack-update-1804.md)
 - [Azure Stack 1803 更新プログラム](azure-stack-update-1803.md)
-- [Azure Stack 1802 更新プログラム](azure-stack-update-1802.md)
-- [Azure Stack 1712 更新プログラム](azure-stack-update-1712.md)
-
 
 
 ## <a name="hotfixes"></a>修正プログラム

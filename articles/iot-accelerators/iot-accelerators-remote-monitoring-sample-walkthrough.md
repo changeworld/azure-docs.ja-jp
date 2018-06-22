@@ -1,25 +1,19 @@
 ---
 title: リモート監視ソリューションのアーキテクチャ - Azure | Microsoft Docs
 description: リモート監視ソリューション アクセラレータのアーキテクチャのチュートリアルです。
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757435"
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>リモート監視ソリューション アクセラレータのアーキテクチャ
 
@@ -97,13 +91,13 @@ ms.lasthandoff: 05/20/2018
 
 [telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) マイクロサービス。
 
-* Cosmos DB に利用統計情報を格納します。
+* Azure Cosmos DB に利用統計情報を格納します。
 * デバイスからの利用統計情報ストリームを分析します。
 * 定義された規則に従ってアラームを生成します。
 
-アラームは Cosmos DB に格納されます。
+アラームは Azure Cosmos DB に格納されます。
 
-`telemetry-agent`マイクロサービスを使用することにより、ソリューション ポータルは、デバイスから送信された利用統計情報を読み取ることができます。 ソリューション ポータルは、以下の目的でもこのサービスを使用します。
+[telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) マイクロサービスを使用することにより、ソリューション ポータルで、デバイスから送信された利用統計情報を読み取ることができます。 ソリューション ポータルは、以下の目的でもこのサービスを使用します。
 
 * アラームをトリガーするしきい値などの監視ルールを定義する
 * 過去のアラームの一覧を取得する
@@ -114,9 +108,9 @@ ms.lasthandoff: 05/20/2018
 
 [storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) マイクロサービスは、ソリューション アクセラレータに使用されるメイン ストレージ サービスの前にあるアダプターです。 単純なコレクションおよびキー値のためのストレージを提供します。
 
-ソリューション アクセラレータの標準的な展開では、メイン ストレージ サービスとして Cosmos DB が使用されます。
+ソリューション アクセラレータの標準的な展開では、メイン ストレージ サービスとして Azure Cosmos DB が使用されます。
 
-Cosmos DB データベースでは、ソリューション アクセラレータにデータを格納します。 **storage-adapter** マイクロサービスは、ソリューション内の他のマイクロサービスがストレージ サービスにアクセスするためのアダプターとして機能します。
+Azure Cosmos DB データベースでは、ソリューション アクセラレータにデータを格納します。 **storage-adapter** マイクロサービスは、ソリューション内の他のマイクロサービスがストレージ サービスにアクセスするためのアダプターとして機能します。
 
 ## <a name="presentation"></a>プレゼンテーション
 
@@ -139,8 +133,10 @@ Cosmos DB データベースでは、ソリューション アクセラレータ
 
 ソース コードと開発者のマニュアルを参照する場合は、次の 2 つのメイン GitHub リポジトリのいずれかを参照してください。
 
-* [Azure IoT を使用してリモート監視するためのソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
-* [Azure IoT を使用してリモート監視するためのソリューション アクセラレータ (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
-* [リモート監視アクセラレータのソリューション アーキテクチャ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
+* [Azure IoT を使用するリモート監視のソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
+* [Azure IoT を使用するリモート監視のソリューション アクセラレータ (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
 
-リモート監視ソリューション アクセラレータの概念の詳細については、[ソリューション アクセラレータのカスタマイズ](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)に関するページをご覧ください。
+詳細なソリューションのアーキテクチャ図:
+* [リモート監視ソリューション アクセラレータのアーキテクチャ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
+
+リモート監視ソリューション アクセラレータの概念の詳細については、[ソリューション アクセラレータのカスタマイズ](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)に関するページを参照してください。

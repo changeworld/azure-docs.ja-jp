@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2808847642639069e60102b195ac97957c8593f0
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b9f92b4d85e17bc848d82be413df1d0dad7c8548
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203461"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294940"
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
-セルフサービス データベースは、ユーザー ポータル エクスペリエンスを通じて提供されます。 ユーザーはデータベース サービスを含むプランのサブスクリプションが必要です。
+セルフサービス データベースは、ユーザー ポータルを介して提供されます。 Azure Stack ユーザーは、SQL データベース サービスを含むオファーがあるサブスクリプションが必要です。
 
 1. [Azure Stack](azure-stack-poc.md) のユーザー ポータルにサインインします (サービス管理者は管理者ポータルも使用できます)。
 

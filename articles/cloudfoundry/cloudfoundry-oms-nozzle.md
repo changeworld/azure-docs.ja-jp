@@ -4,7 +4,7 @@ description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609003"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -55,9 +56,9 @@ UAA コマンドライン クライアントをセットアップする前に、
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
 
-Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 Nozzle のデプロイを完了した後に、構成済みの OMS ビューとアラートを読み込みます。
+Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 このテンプレートでは、OMS コンソールの事前に構成された OMS KPI ビューおよびアラートのセットアップをデプロイします。 
 
-ワークスペースを手動で作成するには:
+#### <a name="to-create-the-workspace-manually"></a>ワークスペースを手動で作成するには:
 
 1. Azure Portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] を選択します。
 2. **[作成]** を選択し、次の項目について選択します。
@@ -70,7 +71,22 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 
 詳細については、「[Log Analytics の起動と開始](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)」を参照してください。
 
-または、Log Analytics のテンプレートを使って OMS ワークスペースを作成することができます。 この方法では、テンプレートで構成済みの OMS ビューとアラートを自動的に読み込みます。 詳細については、「[Azure Log Analytics Solution for Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)」を参照してください。
+#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Azure Marketplace の OMS 監視テンプレートを使用して OMS ワークスペースを作成するには:
+
+1. Azure portal を開きます。
+2. [+] 記号をクリックするか、左上隅の [リソースの作成] をクリックします。
+3. 検索ウィンドウに「Cloud Foundry」と入力し、[OMS Cloud Foundry Monitoring Solution]\(OMS Cloud Foundry 監視ソリューション\) を選択します。
+4. OMS Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
+5. 必要なパラメーターを入力します。
+    * **サブスクリプション**: OMS ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
+    * **リソース グループ**: 既存のリソース グループを選択するか、OMS ワークスペース用の新しいグループを作成します。
+    * **リソース グループの場所**: リソース グループの場所を選択します。
+    * **OMS_Workspace_Name**: ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
+    * **OMS_Workspace_Region**: ワークスペースの場所を選択します。
+    * **OMS_Workspace_Pricing_Tier**: OMS ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
+    * **法律条項**: [法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
+- すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
+
 
 ## <a name="deploy-the-nozzle"></a>Nozzle のデプロイ
 
@@ -78,9 +94,9 @@ Nozzle は、PCF タイルとして、または CF アプリケーションと�
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>PCF Operations Manager タイルとして Nozzle をデプロイする
 
-Operations Manager を使用して PCF をデプロイした場合は、[Nozzle for PCF のインストールと構成](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html)の手順に従います。 Nozzle は Operations Manager でタイルとしてインストールされます。
+[PCF 用 Azure Log Analytics Nozzle のインストールと構成](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html)の手順に従います。これは簡素化された方法であり、PCF Operations Manager タイルによって Nozzle が自動的に構成され、プッシュされます。 
 
-### <a name="deploy-the-nozzle-as-a-cf-application"></a>CF アプリケーションとして Nozzle をデプロイする
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>CF アプリケーションとして Nozzle を手動でデプロイする
 
 PCF Operations Manager を使用していない場合は、アプリケーションとして Nozzle をデプロイします。 以下のセクションでは、このプロセスについて説明します。
 
@@ -163,6 +179,10 @@ OMS Nozzle アプリケーションが実行中であることを確認します
 
 ## <a name="view-the-data-in-the-oms-portal"></a>OMS ポータルでデータを表示する
 
+Marketplace テンプレートを使用して OMS 監視ソリューションをデプロイした場合は、Azure portal に移動して OMS ソリューションを見つけます。 ソリューションは、テンプレートで指定したリソース グループにあります。 ソリューションをクリックし、OMS コンソールを参照すると、事前に構成されたビューが一覧表示され、Cloud Foundry システムの上位 KPI、アプリケーション データ、アラート、VM の正常性メトリックが表示されます。 
+
+OMS ワークスペースを手動で作成した場合は、次の手順に従ってビューとアラートを作成します。
+
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
 OMS ポータルから **[ビュー デザイナー]** > **[インポート]** > **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
@@ -175,7 +195,7 @@ OMS ポータルから **[ビュー デザイナー]** > **[インポート]** >
 
 [アラートを作成](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)して、必要に応じてクエリとしきい値をカスタマイズできます。 次のアラートが推奨されます。
 
-| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | [説明]                                                                       |
+| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | 説明                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 結果の数: 1 より小さい   | **bbs.Domain.cf-apps** は、cf-apps ドメインが最新の状態かどうかを示します。 つまり、Cloud Controller からの CF App 要求が、実行に備えて bbs.LRPsDesired (Diego-desired AIs) に同期されていることを意味します。 データが受信されない場合、指定された時間枠内で cf-apps ドメインが最新ではないことを示します。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 結果の数: 0 より大きい   | Diego セルの場合、0 は正常、1 は問題があることを意味します。 指定された時間枠内で問題がある Diego セルが複数検出される場合にアラートを設定します。 |
@@ -201,7 +221,7 @@ Nozzle をスケールアップするには、Apps Manager または CF CLI を�
 loggregator は、ログのプロセスに関する問題を示す **LGR** ログ メッセージを送信します。 アラートを監視して、Loggregator のスケールアップが必要かどうかを決定できます。
 loggregator をスケール アップするには、CF マニフェストで Doppler のバッファー サイズを増やすか、Doppler サーバー インスタンスを追加します。 詳細については、[loggregator のスケーリングに関するガイダンス](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)を参照してください。
 
-## <a name="update"></a>プライマリの
+## <a name="update"></a>アップデート
 
 Nozzle を新しいバージョンに更新するには、Nozzle の新しいリリースをダウンロードし、前述の「Nozzle のデプロイ」セクションの手順に従ってアプリケーションをもう一度プッシュします。
 
@@ -226,6 +246,6 @@ Azure Log Analytics Nozzle はオープン ソース化されています。 質
 
 ## <a name="next-step"></a>次のステップ
 
-OMS エージェントを使用すると、Nozzle の対象となる Cloud Foundry メトリックだけでなく、VM レベルの運用データ (Syslog、パフォーマンス、アラート、在庫) に関する情報も入手できます。 OMS エージェントは、Bosh アドオンとして CF VM にインストールされています。
+PCF 2.0 から、VM のパフォーマンス メトリックは System Metrics Forwarder によって Azure Log Analytics Nozzle に転送され、OMS ワークスペースに統合されます。 VM のパフォーマンス メトリックに OMS エージェントは不要になりました。 ただし、OMS エージェントを引き続き使用して、Syslog 情報を収集できます。 OMS エージェントは、Bosh アドオンとして CF VM にインストールされています。 
 
 詳細については、[Cloud Foundry デプロイへの OMS エージェントのデプロイ](https://github.com/Azure/oms-agent-for-linux-boshrelease)に関するページを参照してください。

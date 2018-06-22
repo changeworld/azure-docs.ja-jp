@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/07/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 5b117a9b174f5d2419ff596cc90436e4b9d21645
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 042e65cfe350cb61124ed8920ae3616502e6553d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248845"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Azure Stack でのサービスの提供の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 [Microsoft Azure Stack](azure-stack-poc.md) は、データセンターからのサービスの提供を可能にするハイブリッド クラウド プラットフォームです。 サービス プロバイダーの場合は、テナントにサービスを提供できます。 企業や政府機関では、従業員にオンプレミスのサービスを提供できます。 提供できるサービスとして次のようなものが挙げられます。
 
@@ -44,5 +45,5 @@ ms.lasthandoff: 03/08/2018
 **委任されたプロバイダー**: 他のユーザーにご利用の環境でオファーを作成する権限を与えることができます。 たとえば、サービス プロバイダーの場合は、この権限を再販業者に[委任](azure-stack-delegated-provider.md)できます。 また、組織の場合は、他の部門/子会社に委任できます。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Stack でのオファーの作成](azure-stack-create-offer.md)
 
+[Azure Stack でのオファーの作成](azure-stack-create-offer.md)

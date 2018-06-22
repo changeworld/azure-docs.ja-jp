@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使ってピンを追加する | Microsoft Docs
 description: Javascript のマップにピンを追加する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 189b30ff0b5c47d0a4bd3181c8eb2143213ad6cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 094abe08c0c88c7561185675ceb8529be2c87a0a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294650"
 ---
 # <a name="add-pins-to-the-map"></a>マップにピンを追加する
 
@@ -33,6 +31,11 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>次の手順
 
-この記事で使われているクラスとメソッドについてさらに詳しく知る。 
-* [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
+この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+    
+マップに追加するコード例の詳細については、次の記事を参照してください。 
+* [ポップアップを追加する](./map-add-popup.md)
+* [図形を追加する](./map-add-shape.md)
+

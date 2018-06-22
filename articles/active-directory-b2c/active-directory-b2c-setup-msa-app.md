@@ -1,34 +1,34 @@
 ---
-title: 'Azure Active Directory B2C: Microsoft アカウントの構成 | Microsoft Docs'
+title: Azure Active Directory B2C の Microsoft アカウントの構成 | Microsoft Docs
 description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Microsoft アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: e167c8737bc600f52759f33456fec3bc6e0a3678
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: be8c691835d2e89d5d305e01f9717e55e3741baf
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712421"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
 Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Microsoft アカウントが必要です。 アカウントがない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
 
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動し、Microsoft アカウントの資格情報でサインインします。
-2. **[アプリの追加]**をクリックします。
+2. **[アプリの追加]** をクリックします。
    
     ![Microsoft アカウント - 新しいアプリケーションの追加](./media/active-directory-b2c-setup-msa-app/msa-add-new-app.png)
 3. アプリケーションの**名前**を入力し、**[アプリケーションの作成]** をクリックします。
    
     ![Microsoft アカウント - アプリケーション名](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
-4. **[アプリケーション ID]**の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
+4. **[アプリケーション ID]** の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
    
     ![Microsoft account - Application Id](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
 5. **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 
 ## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Microsoft アカウントを構成する
 1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
+2. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「MSA」と入力します。
 5. **[ID プロバイダーの種類]** をクリックし、**[Microsoft アカウント]** を選択して、**[OK]** をクリックします。

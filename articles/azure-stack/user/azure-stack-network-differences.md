@@ -1,28 +1,29 @@
 ---
-title: 'Azure Stack ネットワーク: 違いと考慮事項'
+title: Azure Stack ネットワークの相違点と考慮事項 | Microsoft Docs
 description: Azure Stack でネットワークを操作する際の違いと考慮事項について説明します。
 services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 2a4c5bce072970f158a89763ebdf4132eafe9cbe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: faff52ba5b5e2f0d573a67633d3a8411b2d7de74
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196255"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606428"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack のネットワークは、Azure のネットワークで提供される機能の多くを備えています。 ただし、Azure Stack ネットワークをデプロイする前に理解しておくべき大きな違いがいくつか存在します。
+Azure Stack ネットワークは、Azure ネットワークで提供される機能の多くを備えています。 ただし、Azure Stack ネットワークをデプロイする前に理解しておくべき大きな違いがいくつか存在します。
 
-この記事では、Azure Stack のネットワークとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
+この記事では、Azure Stack ネットワークとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
 
 ## <a name="cheat-sheet-networking-differences"></a>チート シート: ネットワークの違い
 

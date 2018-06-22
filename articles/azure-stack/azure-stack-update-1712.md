@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604150"
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack 1712 更新プログラム
 
@@ -116,7 +117,25 @@ Azure Stack 1712 更新プログラムのビルド番号は **180106.1** です�
 
 #### <a name="health-and-monitoring"></a>正常性と監視
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
+
 - インフラストラクチャのロール インスタンスを再起動すると、再起動が失敗したことを示すメッセージを受け取る場合があります。 ただし、再起動は実際には成功しています。
+
+
 
 #### <a name="marketplace"></a>マーケットプレース
 - 一部のマーケットプレース項目は、互換性の問題のために、このリリースで削除されています。 これらは、さらに検証された後、再度有効にされます。

@@ -1,28 +1,29 @@
 ---
-title: "ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、ローカル ワークステーション上の U-SQL ジョブをテストおよびデバッグする方法について説明します。"
+title: Azure Data Lake U-SQL SDK を使用して U-SQL スクリプトをローカルで実行する
+description: この記事では、Azure Data Lake Tools for Visual Studio を使用して、ローカル ワークステーション上の U-SQL ジョブをテストおよびデバッグする方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/15/2016
+author: mumian
 ms.author: yanacai
-ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+ms.topic: conceptual
+ms.date: 11/15/2016
+ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736005"
 ---
-# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ
+# <a name="runing-u-sql-scripts-locally"></a>ローカルでの U-SQL スクリプトの実行
 
-Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この 2 つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。
+Azure で U-SQL を実行するのではなく、ご利用のコンピューター上で U-SQL を実行することができます。 これを "ローカル実行" といいます。 
+
+U-SQL ローカル実行は、次のツールで使用できます。
+* Azure Data Lake Tools for Visual Studio
+* Azure Data Lake U-SQL SDK
 
 ## <a name="understand-the-data-root-folder-and-the-file-path"></a>データルート フォルダーとファイル パスについて
 
@@ -104,7 +105,7 @@ Visual Studio を使用してローカルで U-SQL スクリプトを実行す�
 詳細については、「[Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * より複雑なクエリを表示する場合は、[Azure Data Lake Analytics を使用した Web サイトのログの分析](data-lake-analytics-analyze-weblogs.md)に関するページをご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。

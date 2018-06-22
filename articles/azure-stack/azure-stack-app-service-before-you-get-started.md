@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359881"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796735"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -62,7 +62,7 @@ Azure Stack 統合システムまたは Azure Stack Development Kit ホスト上
     Get-AzureStackRootCert.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | [説明] |
+| パラメーター | 必須または省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | 必須 | AzS-ERCS01 | 特権エンドポイント |
 | CloudAdminCredential | 必須 | AzureStack\CloudAdmin | Azure Stack クラウド管理者のドメイン アカウントの資格情報 |
@@ -89,7 +89,7 @@ Azure Stack 統合システムまたは Azure Stack Development Kit ホスト上
     Create-AppServiceCerts.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | [説明] |
+| パラメーター | 必須または省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | pfxPassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード |
 | DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス |
@@ -325,13 +325,13 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
     Create-AADIdentityApp.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | [説明] |
+| パラメーター | 必須または省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | DirectoryTenantName | 必須 | Null | Azure AD テナント ID。 GUID または文字列を指定します。 例として、myazureaaddirectory.onmicrosoft.com があります。 |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
 | TenantARMEndpoint | 必須 | Null | テナントの Azure Resource Manager エンドポイント。 例として、management.local.azurestack.external があります。 |
 | AzureStackAdminCredential | 必須 | Null | Azure AD サービス管理者の資格情報。 |
-| CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへのパス。 |
+| CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへの**完全なパス**。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード。 |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory フェデレーション サービス アプリケーションを作成する
@@ -360,12 +360,12 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
     Create-ADFSIdentityApp.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | [説明] |
+| パラメーター | 必須または省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
 | PrivilegedEndpoint | 必須 | Null | 特権エンドポイント。 例として、AzS-ERCS01 があります。 |
 | CloudAdminCredential | 必須 | Null | Azure Stack クラウド管理者のドメイン アカウントの資格情報。 例として、Azurestack\CloudAdmin があります。 |
-| CertificateFilePath | 必須 | Null | ID アプリケーションの証明書 PFX ファイルへのパス。 |
+| CertificateFilePath | 必須 | Null | ID アプリケーションの証明書 PFX ファイルへの**完全なパス**。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード。 |
 
 ## <a name="next-steps"></a>次の手順

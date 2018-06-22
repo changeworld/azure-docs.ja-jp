@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Development Kit (ASDK) の再デプロイ | Microsoft Docs
-description: このチュートリアルでは、ASDK を再インストールする方法について説明します。
+description: この記事では、ASDK を再インストールする方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850322"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>チュートリアル: ASDK の再デプロイ
-このチュートリアルでは、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
+# <a name="redeploy-the-asdk"></a>ASDK の再デプロイ
+この記事では、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
 
 > [!IMPORTANT]
 > 新しいバージョンへの ASDK のアップグレードはサポートされていません。 Azure Stack のより新しいバージョンを評価するたびに、開発キットのホスト コンピューターに ASDK を再デプロイする必要があります。
-
-このチュートリアルで学習する内容は次のとおりです。
-
-> [!div class="checklist"]
-> * Azure の登録の削除 
-> * ASDK の再デプロイ
 
 ## <a name="remove-azure-registration"></a>Azure の登録の削除 
 以前に ASDK インストールを Azure に登録したことがある場合は、ASDK を再デプロイする前に、登録リソースを削除する必要があります。 ASDK を再デプロイするときに、マーケットプレースのシンジケーションを有効にするために、ASDK を再登録します。 以前に ASDK を Azure サブスクリプションに登録していない場合は、このセクションをスキップできます。
@@ -55,7 +50,7 @@ ms.lasthandoff: 04/28/2018
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ ms.lasthandoff: 04/28/2018
 
 これで、Azure Stack の登録が Azure サブスクリプションから正常に解除されました。 さらに、ASDK を Azure に登録したときに作成された azurestack リソース グループも削除する必要があります。
 
-## <a name="redeploy-the-asdk"></a>ASDK の再デプロイ
+## <a name="deploy-the-asdk"></a>ASDK のデプロイ
 Azure Stack を再デプロイするには、次に説明するように、最初から開始する必要があります。 ASDK のインストールに Azure Stack インストーラー (asdk-installer.ps1) スクリプトを使用したかどうかによって、手順が異なります。
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>インストーラー スクリプトを使用して ASDK を再デプロイする
@@ -85,7 +80,7 @@ Azure Stack を再デプロイするには、次に説明するように、最�
 
 3. 開発キットのホストがベース オペレーティング システムで再起動したら、ローカル管理者としてログインします。 以前のデプロイの一部として使用されていた **C:\CloudBuilder.vhdx** ファイルを探して削除します。 
 
-4. 最初に [ASDK をデプロイ](asdk-deploy.md)したときと同じ手順を繰り返します。
+4. 最初に [ASDK をデプロイ](asdk-install.md)したときと同じ手順を繰り返します。
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>インストーラーを使用せずに ASDK を再デプロイする
 ASDK をインストールするために asdk-installer.ps1 スクリプトを使用しなかった場合は、ASDK を再デプロイする前に、開発キットのホスト コンピューターを手動で再構成する必要があります。
@@ -100,16 +95,7 @@ ASDK をインストールするために asdk-installer.ps1 スクリプトを�
 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * Azure の登録の削除 
-> * ASDK の再デプロイ
-
-次のチュートリアルに進み、Azure Stack マーケットプレース項目を追加する方法を学習してください。
-
-> [!div class="nextstepaction"]
-> [Azure Stack マーケットプレース項目を追加する](asdk-marketplace-item.md)
+[ASDK インストール後の構成タスク](asdk-post-deploy.md)
 
 
 

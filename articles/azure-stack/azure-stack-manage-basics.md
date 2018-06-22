@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850305"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
@@ -31,7 +32,7 @@ Azure Stack 統合システムを使用している場合、Azure Stack の更�
  
 ### <a name="development-kit"></a>開発キット
 
-Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](.\asdk\asdk-deploy.md) のデプロイ チュートリアルを参照してください。)
+Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit のデプロイ](.\asdk\asdk-install.md)に関する記事を参照してください。)
 
 Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](.\asdk\asdk-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
 

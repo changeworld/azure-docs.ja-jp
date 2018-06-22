@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Facebook の構成 | Microsoft Docs'
+title: Azure Active Directory B2C の Facebook の構成 | Microsoft Docs
 description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Facebook アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 8/7/2017
 ms.author: davidmu
-ms.openlocfilehash: 899677500b0d33b5f98807a341449199b6b3dcac
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ceab8df79337796bed314e04bacc37bf2ebe1d00
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712319"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
    
     ![Facebook - サイトの URL](./media/active-directory-b2c-setup-fb-app/fb-site-url.png)
 
-10. **[App ID]**の値をコピーします。 **[Show (表示)]** をクリックし、**[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、両方の値が必要です。 **[App Secret]** は、重要なセキュリティ資格情報です。
+10. **[App ID]** の値をコピーします。 **[Show (表示)]** をクリックし、**[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、両方の値が必要です。 **[App Secret]** は、重要なセキュリティ資格情報です。
    
     ![Facebook - アプリ ID とアプリケーション シークレット](./media/active-directory-b2c-setup-fb-app/fb-app-id-app-secret.png)
 11. 左のナビゲーションで **[+ 製品の追加]** をクリックし、**[Facebook Login]\(Facebook ログイン\)** の **[セット]** をクリックします。
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 
 ## <a name="configure-facebook-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Facebook を構成する
 1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-2. B2C 機能ブレードで、 **[ID プロバイダー]**をクリックします。
+2. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「Facebook」などと入力します。
 5. **[Identity provider type (ID プロバイダーの種類)]** をクリックし、**[Facebook]** を選択して、**[OK]** をクリックします。

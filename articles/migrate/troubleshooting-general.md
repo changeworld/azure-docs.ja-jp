@@ -4,13 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
-ms.openlocfilehash: a878bab2bef31ff853dbad503a706e1a8d5803fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c717cfdac83ec8d85b1fa0a874e5573a40dd4611
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235629"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -18,8 +19,29 @@ ms.lasthandoff: 05/16/2018
 
 [Azure Migrate](migrate-overview.md) は、オンプレミスのワークロードを評価することによって、Azure への移行を支援します。 この記事では、Azure Migrate をデプロイして使用する際に発生する問題のトラブルシューティングを説明します。
 
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
-**コレクターがインターネットに接続できない**
+この問題は、組織の Azure Active Directory (Azure AD) テナントへのアクセス権を持たないユーザーに発生することがあります。 Azure AD テナントに初めて追加されたユーザーは、テナントへの参加を求める招待メールを受信します。 ユーザーは、テナントに正しく追加されるために、メールを開いて招待を承諾する必要があります。 メールを表示することができない場合は、既にテナントへのアクセス権を持つユーザーに連絡して、[こちら](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)の手順を使用してご自身への招待を再送信するように依頼してもらいます。
+
+招待メールを受信したら開き、メール内のリンクをクリックして招待を承諾する必要があります。 これを行ったら、Azure portal からサインアウトし、再度サインインする必要があります。ブラウザーの更新は機能しません。 これで、移行プロジェクトの作成を試行できます。
+
+### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>ディスクとネットワーク アダプターのパフォーマンス データが 0 と表示されています
+
+これは、vCenter サーバーの統計設定レベルを 3 よりも低いレベルに設定した場合に発生することがあります。 レベルが 3 以上の場合、vCenter はコンピューティング、ストレージ、ネットワークの VM パフォーマンス履歴を保存します。 レベルが 3 よりも小さい場合、vCenter はストレージとネットワーク データは保存せずに、CPU とメモリのデータのみを保存します。 このシナリオでは、Azure Migrate でパフォーマンス データが 0 と表示され、Azure Migrate はオンプレミスのマシンから収集したメタデータに基づいて、ディスクとネットワークの推奨サイズを提供します。
+
+ディスクおよびネットワーク パフォーマンス データの収集を有効にするには、統計レベルの設定を 3 に変更します。 その後、ご利用の環境が検出され評価されるまで、少なくとも 1 日待ちます。
+
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>エージェントをインストールし、依存関係の視覚エフェクトを使用してグループを作成しました。 現在、フェールオーバー後にマシンで [依存関係の表示] ではなく [エージェントのインストール] アクションが表示されます
+* 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Log Analytics トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+
+## <a name="collector-errors"></a>コレクターのエラー
+
+### <a name="deployment-of-collector-ova-failed"></a>コレクター OVA のデプロイに失敗しました
+
+これは、OVA が部分的にダウンロードされている場合、または OVA のデプロイに vSphere Web Client を使用している場合にブラウザーが原因で発生する可能性があります。 ダウンロードが完了していることを確認して、別のブラウザーで OVA のデプロイを試行してください。
+
+### <a name="collector-is-not-able-to-connect-to-the-internet"></a>コレクターがインターネットに接続できない
 
 これは、使用しているマシンがプロキシの内側にある場合に発生することがあります。 プロキシに承認資格情報が必要な場合は、これを提供してください。
 URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、次の必須の URL を必ずホワイトリストに登録してください。
@@ -42,7 +64,7 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 7. エージェントがプロジェクトに接続できることを確認します。 できない場合は、設定を確認します。 エージェントは接続できるがコレクターは接続できないという場合は、サポートにお問い合わせください。
 
 
-**エラー 802: 日付と時刻の同期エラーが表示されます。**
+### <a name="error-802-date-and-time-synchronization-error"></a>エラー 802: 日付と時刻の同期エラー
 
 サーバー クロックが現在の時刻と同期しておらず、5 分以上ずれている可能性があります。 コレクター VM のクロックの時刻を変更して現在の時刻と一致させるには、次の手順に従います。
 
@@ -50,20 +72,32 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 2. タイム ゾーンを確認するには、w32tm /tz を実行します。
 3. 時刻を同期するには、w32tm /resync を実行します。
 
-**自分のプロジェクト キーの末尾には “==” という記号がついています。これらはコレクターによって他の英数字にエンコードされます。これは期待される動作ですか?**
+### <a name="vmware-powercli-installation-failed"></a>VMware PowerCLI をインストールできませんでした
 
-はい。すべてのプロジェクト キーは末尾に “==” がついています。 コレクターは、これを処理する前にプロジェクト キーを暗号化します。
+PowerCLI は、Azure Migrate Collector によってダウンロードされ、アプライアンスにインストールされます。 PowerCLI のインストールが失敗するのは、PowerCLI リポジトリのエンドポイントに到達できないことが原因である可能性があります。 トラブルシューティングするには、次の手順を使用して、手動で PowerCLI をコレクター VM にインストールしてみてください。
 
-**ディスクとネットワーク アダプターのパフォーマンス データが 0 と表示されています。**
+1. 管理者モードで Windows PowerShell を開きます
+2. C:\ProgramFiles\ProfilerService\VMWare\Scripts\ ディレクトリに移動します
+3. InstallPowerCLI.ps1 スクリプトを実行します
 
-これは、vCenter サーバーの統計設定レベルを 3 よりも低いレベルに設定した場合に発生することがあります。 レベルが 3 以上の場合、vCenter はコンピューティング、ストレージ、ネットワークの VM パフォーマンス履歴を保存します。 レベルが 3 よりも小さい場合、vCenter はストレージとネットワーク データは保存せずに、CPU とメモリのデータのみを保存します。 このシナリオでは、Azure Migrate でパフォーマンス データが 0 と表示され、Azure Migrate はオンプレミスのマシンから収集したメタデータに基づいて、ディスクとネットワークの推奨サイズを提供します。
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
 
-ディスクおよびネットワーク パフォーマンス データの収集を有効にするには、統計レベルの設定を 3 に変更します。 その後、ご利用の環境が検出され評価されるまで、少なくとも 1 日待ちます。
+これは、コレクター バージョン 1.0.9.5 未満で見られる問題です。 コレクター バージョン 1.0.9.2、または 1.0.8.59 などの GA 前バージョンをご使用の場合は、この問題が発生します。 [詳細な回答については、フォーラムへのこちらのリンク](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)に従ってください。
 
-**エージェントをインストールし、依存関係の視覚エフェクトを使用してグループを作成しました。現在、フェールオーバー後にマシンで [依存関係の表示] ではなく [エージェントのインストール] アクションが表示されます。**
-* 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
-* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Log Analytics トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+[コレクターをアップグレードして問題を解決](https://aka.ms/migrate/col/checkforupdates)します。
 
+### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
+
+vCenter Server "Servername.com:9443" に接続できません。原因となったエラー: メッセージを受信できる https://Servername.com:9443/sdk でリッスンしているエンドポイントがありませんでした。
+
+コレクター アプライアンスの最新バージョンが実行されているかどうかを確認します。そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)にアップグレードしてください。
+
+最新バージョンでも引き続き問題が発生する場合は、指定された vCenter Server 名をコレクター マシンで解決できないか、または指定されたポートが間違っている可能性があります。 ポートが指定されていない場合、コレクターは既定でポート番号 443 に接続を試みます。
+
+1. コレクター マシンから Servername.com に ping を実行してみてください。
+2. 手順 1. が失敗した場合は、IP アドレスで vCenter サーバーへの接続を再試行してください。
+3. 正しいポート番号を識別して vCenter に接続します。
+4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
 
 ## <a name="troubleshoot-readiness-issues"></a>準備に関する問題のトラブルシューティング
 
@@ -125,43 +159,23 @@ Windows イベント トレーシング を収集するには、次の操作を�
  - Edge/IE では、エラーを右クリックして **[すべてコピー]** を選択します。
 7. 開発者ツールを閉じます。
 
-
-## <a name="vcenter-errors"></a>vCenter のエラー
-
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
-
-これは、コレクター バージョン 1.0.9.5 未満で見られる問題です。 コレクター バージョン 1.0.9.2、または 1.0.8.59 などの GA 前バージョンをご使用の場合は、この問題が発生します。 [詳細な回答については、フォーラムへのこちらのリンク](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)に従ってください。
-
-[コレクターをアップグレードして問題を解決](https://aka.ms/migrate/col/checkforupdates)します。
-
-### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
-
-vCenter Server "Servername.com:9443" に接続できません。原因となったエラー: メッセージを受信できる https://Servername.com:9443/sdk でリッスンしているエンドポイントがありませんでした。
-
-これは、コレクター マシンが、指定された vCenter サーバー名を解決できないか、指定されたポートが間違っている場合に発生します。 既定では、ポートが指定されていない場合、コレクターはポート番号 443 への接続を試みます。
-
-1. コレクターのマシンから Servername.com に ping を実行してみてください。
-2. 手順 1. が失敗した場合は、IP アドレスで vCenter サーバーへの接続を再試行してください。
-3. 正しいポート番号を識別して vCenter に接続します。
-4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
-
 ## <a name="collector-error-codes-and-recommended-actions"></a>コレクターのエラー コードと推奨されるアクション
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            | 
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------| 
-| エラー コード | エラー名                      | メッセージ                                                                       | 考えられる原因                                                                                        | 推奨される操作                                                                                                                          | 
-| 601       | CollectorExpired               | コレクターの有効期限が切れています。                                                        | コレクターの有効期限が切れました。                                                                                    | 新しいバージョンのコレクターをダウンロードし、再試行してください。                                                                                      | 
-| 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           | 
-| 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   | 
-| 753       | InvalidLoginCredentials        | 次のエラーが原因で vCenter Server '%Name;' に接続できません: %ErrorMessage; | ログイン資格情報が無効であるため、vCenter Server への接続に失敗しました。                             | 指定されたログイン資格情報が正しいことを確認してください。                                                                                    | 
-| 754       | NoPerfDataAvaialable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   | 
-| 756       | NullInstanceUUID               | InstanceUUID が null のマシンを検出しました                                  | vCenter Server に不適切なオブジェクトがある可能性があります。                                                      | 問題を解決してから、操作をやり直してください。                                                                                                           | 
-| 757       | VMNotFound                     | 仮想マシンが見つかりません                                                  | 仮想マシンが削除されている可能性があります: %VMID;                                                                | 検出中に、vCenter のインベントリのスコーピングで選択した仮想マシンが存在することを確認してください                                      | 
-| 758       | GetPerfDataTimeout             | VCenter の要求がタイムアウトしました。メッセージ %Message;                                  | vCenter Server の資格情報が正しくありません                                                              | VCenter Server の資格情報をチェックし、その vCenter Server が到達可能であることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。 | 
-| 759       | VmwareDllNotFound              | VMWare.Vim DLL が見つかりません。                                                     | PowerCLI が正しくインストールされていません。                                                                   | PowerCLI が正しくインストールされていることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。                               | 
-| 800       | ServiceError                   | Azure Migrate Collector サービスが実行されていません。                               | Azure Migrate Collector サービスが実行されていません。                                                       | services.msc を使用してサービスを開始し、操作をやり直してください。                                                                             | 
-| 801       | PowerCLIError                  | VMware PowerCLI をインストールできませんでした。                                          | VMware PowerCLI をインストールできませんでした。                                                                  | 操作をやり直してください。 問題が解決しない場合は、手動でインストールしてやり直してください。                                                   | 
-| 802       | TimeSyncError                  | 時刻がインターネット時刻サーバーと同期していません。                            | 時刻がインターネット時刻サーバーと同期していません。                                                    | マシンの時間がマシンのタイム ゾーンに合わせて正しく設定されていることを確認し、操作をやり直してください。                                 | 
-| 702       | OMSInvalidProjectKey           | 無効なプロジェクト キーが指定されました。                                                | 無効なプロジェクト キーが指定されました。                                                                        | 正しいプロジェクト キーを指定してから、操作をやり直してください。                                                                                              | 
-| 703       | OMSHttpRequestException        | 要求の送信中にエラーが発生しました。 メッセージ %Message;                                | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     | 
-| 704       | OMSHttpRequestTimeoutException | HTTP 要求がタイムアウトしました。メッセージ %Message;                                     | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     | 
+|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
+|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| エラー コード | エラー名                      | メッセージ                                                                       | 考えられる原因                                                                                        | 推奨される操作                                                                                                                          |
+| 601       | CollectorExpired               | コレクターの有効期限が切れています。                                                        | コレクターの有効期限が切れました。                                                                                    | 新しいバージョンのコレクターをダウンロードし、再試行してください。                                                                                      |
+| 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           |
+| 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   |
+| 753       | InvalidLoginCredentials        | 次のエラーが原因で vCenter Server '%Name;' に接続できません: %ErrorMessage; | ログイン資格情報が無効であるため、vCenter Server への接続に失敗しました。                             | 指定されたログイン資格情報が正しいことを確認してください。                                                                                    |
+| 754       | NoPerfDataAvaialable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
+| 756       | NullInstanceUUID               | InstanceUUID が null のマシンを検出しました                                  | vCenter Server に不適切なオブジェクトがある可能性があります。                                                      | 問題を解決してから、操作をやり直してください。                                                                                                           |
+| 757       | VMNotFound                     | 仮想マシンが見つかりません                                                  | 仮想マシンが削除されている可能性があります: %VMID;                                                                | 検出中に、vCenter のインベントリのスコーピングで選択した仮想マシンが存在することを確認してください                                      |
+| 758       | GetPerfDataTimeout             | VCenter の要求がタイムアウトしました。メッセージ %Message;                                  | vCenter Server の資格情報が正しくありません                                                              | VCenter Server の資格情報をチェックし、その vCenter Server が到達可能であることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。 |
+| 759       | VmwareDllNotFound              | VMWare.Vim DLL が見つかりません。                                                     | PowerCLI が正しくインストールされていません。                                                                   | PowerCLI が正しくインストールされていることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。                               |
+| 800       | ServiceError                   | Azure Migrate Collector サービスが実行されていません。                               | Azure Migrate Collector サービスが実行されていません。                                                       | services.msc を使用してサービスを開始し、操作をやり直してください。                                                                             |
+| 801       | PowerCLIError                  | VMware PowerCLI をインストールできませんでした。                                          | VMware PowerCLI をインストールできませんでした。                                                                  | 操作をやり直してください。 問題が解決しない場合は、手動でインストールしてやり直してください。                                                   |
+| 802       | TimeSyncError                  | 時刻がインターネット時刻サーバーと同期していません。                            | 時刻がインターネット時刻サーバーと同期していません。                                                    | マシンの時間がマシンのタイム ゾーンに合わせて正しく設定されていることを確認し、操作をやり直してください。                                 |
+| 702       | OMSInvalidProjectKey           | 無効なプロジェクト キーが指定されました。                                                | 無効なプロジェクト キーが指定されました。                                                                        | 正しいプロジェクト キーを指定してから、操作をやり直してください。                                                                                              |
+| 703       | OMSHttpRequestException        | 要求の送信中にエラーが発生しました。 メッセージ %Message;                                | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     |
+| 704       | OMSHttpRequestTimeoutException | HTTP 要求がタイムアウトしました。メッセージ %Message;                                     | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     |

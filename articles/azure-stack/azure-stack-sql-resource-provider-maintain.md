@@ -1,6 +1,6 @@
 ---
-title: Azure Stack での SQL データベースの使用 | Microsoft Docs
-description: SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します。
+title: Azure Stack 上の SQL リソース プロバイダーの保守 | Microsoft Docs
+description: Azure Stack 上の SQL リソース プロバイダー サービスを保守する方法について説明します。
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 53436d131672622ae1a72a1bb84d5aa83fdbdc0c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e7ddbe1235b3957a1e0cb7693ee728bfdbf9db6b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207936"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295661"
 ---
 # <a name="maintenance-operations"></a>メンテナンス操作 
 SQL リソース プロバイダーは、ロック ダウンされた仮想マシンです。 リソース プロバイダー仮想マシンのセキュリティの更新は、PowerShell Just Enough Administration (JEA) エンドポイント _DBAdapterMaintenance_ から実行できます。 これらの操作のためのスクリプトが、RP のインストール パッケージで提供されています。
@@ -40,10 +40,78 @@ SQL リソース プロバイダーはアドオン コンポーネントであ�
 
 ![管理パスワードの更新](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
+## <a name="secrets-rotation"></a>シークレットのローテーション 
+*この記事の説明は、Azure Stack 統合システム バージョン 1804 以降に対してのみ適用されます。1804 より前のバージョンの Azure Stack ではシークレットのローテーションを試みないでください。*
+
+Azure Stack 統合システムと共に SQL および MySQL リソース プロバイダーを使用する場合、次のインフラストラクチャ (デプロイ) のシークレットをローテーションすることができます。
+- [デプロイ時に提供](azure-stack-pki-certs.md)された外部 SSL 証明書。
+- デプロイ時に提供されたリソース プロバイダー VM のローカル管理者アカウントのパスワード。
+- リソース プロバイダーの診断ユーザー (dbadapterdiag) のパスワード。
+
+### <a name="powershell-examples-for-rotating-secrets"></a>PowerShell のシークレットのローテーション例
+
+**すべてのシークレットを同時に変更する**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword $passwd `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd  `
+    -VMLocalCredential $localCreds
+```
+
+**診断ユーザーのパスワードのみを変更する**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword  $passwd 
+```
+
+**VM ローカル管理者アカウントのパスワードを変更する**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -VMLocalCredential $localCreds
+```
+
+**SSL 証明書を変更する**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd 
+```
+
+### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 のパラメーター
+
+|パラメーター|説明|
+|-----|-----|
+|AzCredential|Azure Stack サービス管理者アカウントの資格情報。|
+|CloudAdminCredential|Azure Stack クラウド管理者ドメイン アカウントの資格情報。|
+|PrivilegedEndpoint|Get-AzureStackStampInformation にアクセスするための特権エンドポイント。|
+|DiagnosticsUserPassword|診断ユーザーのパスワード。|
+|VMLocalCredential|MySQLAdapter VM のローカル管理者アカウント。|
+|DefaultSSLCertificatePassword|既定の SSL 証明書 (* pfx) のパスワード。|
+|DependencyFilesLocalPath|依存関係ファイルのローカル パス。|
+|     |     |
+
+### <a name="known-issues"></a>既知の問題
+**問題**: シークレット ローテーションのカスタム スクリプトが実行され、失敗した場合、シークレット ローテーションのログは自動的に収集されません。
+
+**回避策**: Get-AzsDBAdapterLogs コマンドレットを使用して、C:\Logs 以下にあるすべてのリソース プロバイダーのログ (AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log など) を収集します。
+
 ## <a name="update-the-virtual-machine-operating-system"></a>仮想マシンのオペレーティング システムの更新
 Windows Server VM を更新するには、いくつかの方法があります。
-* 現在パッチが適用された Windows Server 2016 Core イメージを使用して最新のリソース プロバイダーのパッケージをインストールする
-* RP の更新またはインストール中に Windows 更新プログラム パッケージをインストールする
+- 現在パッチが適用された Windows Server 2016 Core イメージを使用して最新のリソース プロバイダーのパッケージをインストールする
+- RP の更新またはインストール中に Windows 更新プログラム パッケージをインストールする
 
 ## <a name="update-the-virtual-machine-windows-defender-definitions"></a>仮想マシンの Windows Defender の定義を更新する
 これらの手順に従って Defender の定義を更新します。
@@ -52,7 +120,7 @@ Windows Server VM を更新するには、いくつかの方法があります�
 
     そのページの [Manually download and install the definitions]\(定義を手動でダウンロードしてインストールする\) から "Windows Defender Antivirus for Windows 10 および Windows 8.1" 64 ビット ファイルをダウンロードします。 
     
-    直接リンク: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    直接リンク: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64。
 
 2. SQL RP アダプター仮想マシンのメンテナンス エンドポイントに対し PowerShell セッションを作成します。
 3. メンテナンス エンドポイントのセッションを使用して DB アダプター コンピューターに、定義更新ファイルをコピーします。
@@ -63,42 +131,43 @@ Windows Server VM を更新するには、いくつかの方法があります�
 Defender の定義を更新するサンプル スクリプトを次に示します (仮想マシンのアドレスまたは名前を実際の値に置き換えてください)。
 
 ```powershell
-# Set credentials for the diagnostic user
-$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$diagCreds = New-Object System.Management.Automation.PSCredential `
-    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+# Set credentials for the RP VM local admin user
+$vmLocalAdminPass = ConvertTo-SecureString "<local admin user password>" -AsPlainText -Force
+$vmLocalAdminUser = "<local admin user name>"
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
+    ($vmLocalAdminUser, $vmLocalAdminPass)
 
 # Public IP Address of the DB adapter machine
-$databaseRPMachine  = "XX.XX.XX.XX"
+$databaseRPMachine  = "<RP VM IP address>"
 $localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
- 
+
 # Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
-Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64' `
     -Outfile $localPathToDefenderUpdate 
 
 # Create session to the maintenance endpoint
 $session = New-PSSession -ComputerName $databaseRPMachine `
-    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+    -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
 # Copy defender update file to the db adapter machine
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
-     -Destination "User:\mpam-fe.exe"
+     -Destination "User:\"
 # Install the update file
 Invoke-Command -Session $session -ScriptBlock `
-    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+    {Update-AzSDBAdapterWindowsDefenderDefinition -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
 # Cleanup the definitions package file and session
 Invoke-Command -Session $session -ScriptBlock `
     {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
-$session | Remove-PSSession
+$session | Remove-PSSession 
 ```
 
 
 ## <a name="collect-diagnostic-logs"></a>診断ログの収集
 SQL リソース プロバイダーは、ロック ダウンされた仮想マシンです。 仮想マシンからログを収集することが必要になった場合は、、そのために PowerShell Just Enough Administration (JEA) エンドポイント _DBAdapterDiagnostics_ が提供されています。 このエンドポイントで使用できる 2 つのコマンドが 2 つあります。
 
-* Get-AzsDBAdapterLog - RP 診断ログを含む zip パッケージを準備し、セッション ユーザー ドライブに配置します。 このコマンドは、パラメーターなしで呼び出すことができます。過去 4 時間分のログが収集されます。
-* Remove-AzsDBAdapterLog - リソース プロバイダー VM 上の既存のログ パッケージを削除します。
+- **Get-AzsDBAdapterLog**。 RP 診断ログを含む zip パッケージを準備し、セッション ユーザー ドライブに配置します。 このコマンドは、パラメーターなしで呼び出すことができます。過去 4 時間分のログが収集されます。
+- **Remove-AzsDBAdapterLog**。 リソース プロバイダー VM 上の既存のログ パッケージを削除します。
 
-RP ログを抽出する診断エンドポイントに接続するために、RP 展開中または更新中に _dbadapterdiag_ というユーザー アカウントが作成されます。 このアカウントのパスワードは、展開/更新中に指定したローカル管理者アカウントのパスワードと同じです。
+RP ログを抽出する診断エンドポイントに接続するために、RP 展開中または更新中に **dbadapterdiag** というユーザー アカウントが作成されます。 このアカウントのパスワードは、展開/更新中に指定したローカル管理者アカウントのパスワードと同じです。
 
 これらのコマンドを使用するには、リソース プロバイダーの仮想マシンにリモート PowerShell セッションを作成し、コマンドを呼び出す必要があります。 必要に応じて、FromDate および ToDate パラメーターを指定できます。 これらの一方または両方を指定しない場合、FromDate は現在の時刻より 4 時間前になり、ToDate は現在の時刻になります。
 
@@ -106,12 +175,12 @@ RP ログを抽出する診断エンドポイントに接続するために、RP
 
 ```powershell
 # Create a new diagnostics endpoint session.
-$databaseRPMachineIP = '<RP VM IP>'
+$databaseRPMachineIP = '<RP VM IP address>'
 $diagnosticsUserName = 'dbadapterdiag'
-$diagnosticsUserPassword = '<see above>'
+$diagnosticsUserPassword = '<Enter Diagnostic password>'
 
 $diagCreds = New-Object System.Management.Automation.PSCredential `
-        ($diagnosticsUserName, $diagnosticsUserPassword)
+        ($diagnosticsUserName, (ConvertTo-SecureString -String $diagnosticsUserPassword -AsPlainText -Force))
 $session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
         -ConfigurationName DBAdapterDiagnostics
 

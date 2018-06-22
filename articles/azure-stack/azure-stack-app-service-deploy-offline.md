@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359902"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604286"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
@@ -74,7 +74,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 5. サード パーティのライセンス条項を確認して同意し、**[次へ]** をクリックします。
 
-6. App Service クラウド構成情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合、または統合システムにデプロイしている場合は、それを反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス mycloud.com を使用する場合は、Azure Stack テナントの Azure Resource Manager エンドポイントを management.<region>.mycloud.com に変更する必要があります。自分の情報を確認したら、**[次へ]** をクリックします。
+6. App Service クラウド構成情報が正しいことを確認します。 Azure Stack Development Kit の展開中に既定の設定を使用した場合は、ここで既定値を受け入れることができます。 ただし、Azure Stack のデプロイ時にオプションをカスタマイズした場合、または統合システムにデプロイしている場合は、それを反映するように、このウィンドウで値を編集する必要があります。 たとえば、ドメイン サフィックス mycloud.com を使用する場合は、Azure Stack テナントの Azure Resource Manager エンドポイントを management.<region>.mycloud.com に変更する必要があります。 自分の情報を確認したら、**[次へ]** をクリックします。
 
     ![App Service インストーラー][3]
 
@@ -82,6 +82,12 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         - 管理者アカウントを指定します。 たとえば、「cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
     2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選びます。
+    
+    > [!NOTE]
+    > 現在、App Service は、**既定のプロバイダー サブスクリプション**にのみデプロイできます。  今後の更新プログラムで、App Service は Azure Stack 1804 で導入された新しい Metering サブスクリプションにデプロイされ、既存のデプロイもすべてこの新しいサブスクリプションに統合されます。
+    >
+    >
+    
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
     4. **[次へ]** をクリックします。
 
@@ -99,10 +105,10 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 9. ファイル共有の情報を入力してから、**[次へ]** をクリックします。 ファイル共有のアドレスには、ファイル サーバーの完全修飾ドメイン名、または IP アドレスを使用する必要があります。 たとえば、\\\appservicefileserver.local.cloudapp.azurestack.external\websites、または \\\10.0.0.1\websites を使用します。
 
-> [!NOTE]
-> インストーラーは、続行する前にファイル共有への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーはファイル共有に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  ファイル共有情報を確認し、正しい場合は続行します。
->
->
+    > [!NOTE]
+    > インストーラーは、続行する前にファイル共有への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーはファイル共有に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  ファイル共有情報を確認し、正しい場合は続行します。
+    >
+    >
 
    ![App Service インストーラー][8]
 
@@ -129,10 +135,10 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 12. App Service リソースプロバイダー データベースをホストするために使うサーバー インスタンスについて、SQL Server の詳細を入力してから、**[次へ]** をクリックします。 インストーラーにより、SQL 接続のプロパティが検証されます。 内部 IP または SQL Server 名の完全修飾ドメイン名を入力する**必要**があります。
 
-> [!NOTE]
-> インストーラーは、続行する前に SQL Server への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーは SQL Server に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  SQL Server 情報を確認し、正しい場合は続行します。
->
->
+    > [!NOTE]
+    > インストーラーは、続行する前に SQL Server への接続性をテストしようとします。  ただし、既存の仮想ネットワークにデプロイすることを選んだ場合、インストーラーは SQL Server に接続できない可能性があり、続行するかどうかを確認する警告が表示されます。  SQL Server 情報を確認し、正しい場合は続行します。
+    >
+    >
    
    ![App Service インストーラー][12]
 

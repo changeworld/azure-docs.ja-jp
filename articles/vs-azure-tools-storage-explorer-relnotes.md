@@ -14,18 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779007"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657572"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
 この記事には、Azure Storage Explorer 1.0.0 リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+
+## <a name="version-110"></a>バージョン 1.1.0
+2018/05/09
+
+### <a name="download-azure-storage-explorer-110"></a>Azure Storage Explorer 1.1.0 をダウンロードする
+- [Windows 用 Azure Storage Explorer 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.1.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.1.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新規
+* Storage Explorer で Azurite を使用できるようになりました。 注: Azurite への接続は、既定の開発エンドポイントにハードコードされています。
+* Storage Explorer で、BLOB 専用のストレージ アカウントと GPV2 ストレージ アカウントのアクセス レベルがサポートされるようになりました。 アクセス レベルの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)をご覧ください。
+* SAS を生成するときに、開始時刻が不要になりました。
+
+### <a name="fixes"></a>修正
+* 米国政府機関のアカウントのサブスクリプションを取得できませんでした。 この問題は修正されています。 [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* アクセス ポリシーの有効期限が正しく保存されていませんでした。 この問題は修正されています。 [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* コンテナー内の項目の SAS URL を生成したときに、項目の名前が URL に追加されていませんでした。 この問題は修正されています。 [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* SAS の作成時に、過去の有効期限が既定値になることがありました。 これは、Storage Explorer で、前回使用された開始時刻と有効期限が既定値として使用されていたことが原因です。 現在は、SAS ダイアログを開くたびに、一連の新しい既定値が生成されます。 [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* ストレージ アカウント間でコピーを実行すると、24 時間の SAS が生成されます。 コピーが 24 時間以上続いた場合、コピーは失敗します。 期限切れの SAS が原因でコピーが失敗する可能性を低減するために、SAS の期間を 1 週間に延長しました。 [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* 一部のアクティビティで、[キャンセル] のクリックが機能しないことがありました。 この問題は修正されています。 [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* 一部のアクティビティで、転送速度が間違っていました。 この問題は修正されています。 [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* [View] メニューの [Previous] のスペルが間違っていました。 現在は正しいスペルになっています。 [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Windows インストーラーの最後のページに [次へ] ボタンがありました。 これが [完了] ボタンに変更されました。 [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* HC Black テーマの使用時に、ダイアログのボタンのタブ フォーカスが表示されませんでした。 現在は表示されます。[#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* アクティビティ ログでアクションの "Auto-Resolve" の大文字小文字の表記が間違っていました。 現在は正しい表記になっています。 [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* テーブルからエンティティを削除するときに、確認を求めるダイアログにエラー アイコンが表示されていました。 このダイアログで警告アイコンが使用されるようになりました。 [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>既知の問題
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。 
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 1.0.0](#version-100)
+* [バージョン 0.9.6](#version-096)
+* [バージョン 0.9.5](#version-095)
+* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
+* [バージョン 0.9.2](#version-092)
+* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
+* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-100"></a>バージョン 1.0.0
 2018/04/16
@@ -96,31 +181,6 @@ ms.locfileid: "32779007"
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 0.9.6](#version-096)
-* [バージョン 0.9.5](#version-095)
-* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
-* [バージョン 0.9.2](#version-092)
-* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
-* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>バージョン 0.9.6
 2018/02/28

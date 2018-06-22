@@ -6,22 +6,23 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b7af709c4175ecd6100de6d638ac9862488a7190
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266348"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは - 
 Azure Database for MySQL は、Microsoft クラウドにおける、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジンをベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
 
 - 追加コストなしの組み込みの高可用性。
-- 包括的な従量課金料金を使用した、予測可能なパフォーマンス。
-- 数秒以内のすばやいスケール。
+- 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス。
+- 必要に応じて数秒以内にスケーリング。
 - 保存中や転送中の機密データのセキュリティ保護。
 - 自動バックアップと最大 35 日間のポイントインタイム リストア。
 - エンタープライズグレードのセキュリティとコンプライアンス。
@@ -51,7 +52,15 @@ Azure データベース サービスは、アクセスの制限、保存デー�
 
 Azure Database for MySQL サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
-Azure Database for MySQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。  クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
+Azure Database for MySQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
+
+## <a name="contacts"></a>連絡先
+Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 これはテクニカル サポートの別名ではないことに注意してください。
+
+さらに、適切な連絡先について次の点を考慮してください。
+- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
+- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
 
 ## <a name="next-steps"></a>次の手順
 ここでは、Azure Database for MySQL の概要を紹介し、"Azure Database for MySQL とは何か" という問いに対する答えを示したので、次のステップに進むことができます。
