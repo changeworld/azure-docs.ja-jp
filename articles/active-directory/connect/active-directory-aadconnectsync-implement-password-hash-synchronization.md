@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c223091e423d0f342f14424c58d6b7447cda50e8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593454"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -81,9 +83,9 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 2. DC は、送信する前に、RPC セッション キーの [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) ハッシュであるキーと salt を使用して MD4 パスワード ハッシュを暗号化します。 次に、この結果を RPC 経由でパスワード ハッシュ同期エージェントに送信します。 DC は、DC のレプリケーション プロトコルを使用して同期エージェントにも salt を渡すので、エージェントはエンベロープの暗号化を解除できます。
 3.  パスワード ハッシュ同期エージェントは、暗号化されたエンベロープを受け取ると、[MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) と salt を使用して、受信したデータの暗号化を解除し元の MD4 形式に戻すためのキーを生成します。 パスワード ハッシュ同期エージェントがクリア テキストのパスワードにアクセスすることはありません。 パスワード ハッシュ同期エージェントによる MD5 の使用は、DC とレプリケーション プロトコルとの互換性の維持に限定されており、DC とパスワード ハッシュ同期エージェントの間でオンプレミスでのみ使用されます。
 4.  パスワード ハッシュ同期エージェントは、最初にハッシュを 32 バイトの 16 進数文字列に変換し、次にこの文字列を UTF-16 エンコーディングでバイナリに変換することで、16 バイトのバイナリ パスワード ハッシュを 64 バイトに拡張します。
-5.  パスワード ハッシュ同期エージェントは、10 バイト長の salt で構成される salt を 64 バイトのバイナリに追加して、元のハッシュの保護を強化します。
-6.  パスワード ハッシュ同期エージェントは、MD4 ハッシュと salt を結合し、それを [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 関数に入力します。 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) キー付きハッシュ アルゴリズムの 1000 のイテレーションが使用されます。 
-7.  パスワード ハッシュ同期エージェントでは、返された 32 バイトのハッシュを受け取り、(Azure AD で使用するために) salt と SHA256 のイテレーションの数の両方を連結し、SSL 経由で Azure AD Connect から Azure AD にこの文字列を送信します。</br> 
+5.  パスワード ハッシュ同期エージェントは、10 バイト長の salt で構成されるユーザーごとの salt を、64 バイトの バイナリに追加し、 元のハッシュの保護を強化します。
+6.  それから、パスワード ハッシュ同期エージェントは、MD4 ハッシュとユーザーごとのsalt を結合し、それを [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 関数に入力します。 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) キー付きハッシュ アルゴリズムの 1000 のイテレーションが使用されます。 
+7.  パスワードハッシュ同期エージェントは、返された 32 バイトのハッシュを受け取り、(Azure AD で使用するために) ユーザーごとの salt と SHA256 のイテレーションの数の両方を連結し、SSL 経由で Azure AD Connect から Azure AD にこの文字列を送信します。</br> 
 8.  ユーザーが Azure AD にサインインしようとして自分のパスワードを入力すると、パスワードは同じ MD4 + salt + PBKDF2 + HMAC - SHA256 のプロセスを通じて処理されます。 返されたハッシュが Azure AD に格納されたハッシュに一致する場合、ユーザーは正しいパスワードを入力しており、認証も済んでいます。 
 
 >[!Note] 
@@ -108,7 +110,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 * パスワードの有効期限のポリシー
 
 #### <a name="password-complexity-policy"></a>パスワードの複雑性のポリシー  
-パスワード ハッシュ同期が有効になっている場合、オンプレミスの Active Directory インスタンスでのパスワードの複雑性ポリシーによって、同期済みユーザーに対するクラウドでの複雑性ポリシーが上書きされます。 オンプレミスの Active Directory インスタンスからの有効なパスワードすべてを、Azure AD サービスへのアクセスに使用することができます。
+パスワード ハッシュ同期が有効になっている場合、オンプレミスの Active Directory インスタンスでのパスワードの複雑性ポリシーによって、同期済みユーザーに対するクラウドでの複雑性ポリシーがオーバーライドされます。 オンプレミスの Active Directory インスタンスからの有効なパスワードすべてを、Azure AD サービスへのアクセスに使用することができます。
 
 > [!NOTE]
 > クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
@@ -124,9 +126,9 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 ### <a name="overwrite-synchronized-passwords"></a>同期されたパスワードの上書き
 管理者は Windows PowerShell を使用してパスワードを手動でリセットできます。
 
-この場合、新しいパスワードによって同期されたパスワードは上書きされ、クラウドで定義されているすべてのパスワード ポリシーが新しいパスワードに適用されます。
+この場合、新しいパスワードによって同期されたパスワードはオーバーライドされ、クラウドで定義されているすべてのパスワード ポリシーが新しいパスワードに適用されます。
 
-オンプレミスのパスワードを再び変更した場合、新しいパスワードはクラウドに同期され、手動で更新したパスワードを上書きします。
+オンプレミスのパスワードを再び変更した場合、新しいパスワードはクラウドに同期され、手動で更新したパスワードをオーバーライドします。
 
 パスワードの同期によって、サインイン中の Azure ユーザーが影響を受けることはありません。 クラウド サービスにログインしている間、パスワード変更が同期された場合、現在のクラウド サービス セッションがその影響をすぐに受けることはありません。 KMSI を使用すると、この差異のある期間が長くなります。 クラウド サービスで認証が再び要求された場合は、新しいパスワードを指定する必要があります。
 

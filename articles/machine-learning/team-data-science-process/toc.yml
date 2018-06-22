@@ -54,15 +54,17 @@
     - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
-        - name: センチメント分類
+        - name: Keras & Scikit Learn を使用したセンチメント分類
           href: predict-twitter-sentiment.md
+        - name: AML テキスト分析パッケージを使用したセンチメント分類
+          href: predict-twitter-sentiment-amltextpackage.md
         - name: 米国の所得の分類
           href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: 生体エンティティの認識
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
-        - name: 皮膚がん画像の分類
+        - name: AML ビジョン パッケージを使用した皮膚がんの画像分類
           href: isic-image-classification.md
           maintainContext: true
     - name: PySpark と Scala を使用した Spark

@@ -1,22 +1,19 @@
 ---
 title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
 description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズした視覚エフェクトに統合します。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627792"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -105,7 +102,7 @@ ms.lasthandoff: 05/20/2018
 
 この記事では、Power BI を使ってリモート監視データを視覚化する方法について学習しました
 
-リモート監視ソリューションのカスタマイズの詳細については次をご覧ください。
+リモート監視ソリューションのカスタマイズの詳細については次を参照してください。
 
 * [リモート監視ソリューションの UI のカスタマイズ](iot-accelerators-remote-monitoring-customize.md)。
 * [開発者向けリファレンス ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)

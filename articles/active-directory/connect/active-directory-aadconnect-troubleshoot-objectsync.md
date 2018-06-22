@@ -12,19 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f65e84bff63bbdb781991ff6648b0fb98ca5208f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193765"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592315"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
-このドキュメントでは、トラブルシューティング タスクを使用してオブジェクト同期の問題のトラブルシューティングを行う手順を示します。
+この条項では、トラブルシューティングタスクを使用し、オブジェクト同期の問題のトラブルシューティングを行う手順を示します。 Azure Active Directory (Azure AD) Connect でどのようにトラブルシューティングが行われるか確認するには、[ このショートビデオ ](https://aka.ms/AADCTSVideo) をご覧ください。
 
 ## <a name="troubleshooting-task"></a>トラブルシューティング タスク
-Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードのトラブルシューティング タスクを使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 以前のバージョンについては、[こちら](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)の説明に従って、手動でトラブルシューティングを行ってください。
+Azure AD Connect のバージョン 1.1.749.0 以上のデプロイについては、ウィザードのトラブルシューティング タスクを使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 以前のバージョンについては、[こちら](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)の説明に従って、手動でトラブルシューティングを行ってください。
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>ウィザードでトラブルシューティング タスクを実行する
 トラブルシューティング タスクをウィザードで実行するには、次の手順を実行します。
@@ -81,7 +82,7 @@ Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無�
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>オブジェクトが OU フィルタリングによってフィルター処理されている
-OU フィルタリング構成によって、オブジェクトは同期スコープ外となります。 下記の例では、オブジェクトは OU=NoSync,DC=bvtadwbackdc,DC=com に属しています。この OU は同期スコープに含まれません。</br>
+OU フィルタリング構成によって、オブジェクトは同期スコープ外となります。 下記の例では、オブジェクトは OU=NoSync,DC=bvtadwbackdc,DC=com に属しています。  この OU は同期スコープに含まれません。</br>
 
 ![OU](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
 

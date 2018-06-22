@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e3f81a6480e9de55c8f803e2266c4ac6e33c316
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149391"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590540"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 
@@ -27,7 +28,7 @@ ms.locfileid: "32149391"
 >[!NOTE] 
 >この記事では、Azure AD Connect とユーザー プライバシーについて説明します。  Azure AD Connect Health とユーザー プライバシーについては、[こちら](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)の記事をご覧ください。
 
-次の 2 つの方法で Azure AD Connect のユーザー プライバシーのコンプライアンスを達成できます。
+2つの方法で、Azure AD Connect をインストールするためのユーザープライバシーを改善します。
 
 1.  要請を受けた際、個人のデータを抽出し、その個人のデータを環境から削除する
 2.  すべてのデータが 48 時間しか保持されないようにする。

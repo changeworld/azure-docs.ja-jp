@@ -1,25 +1,19 @@
 ---
 title: 接続済みファクトリ ソリューションの FAQ - Azure | Microsoft Docs
 description: 接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627503"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -67,7 +61,7 @@ IP アドレスを削除するには次の 2 つのオプションがありま�
 
 シミュレーション VM へのサインインは、[リポジトリ](https://github.com/Azure/azure-iot-connected-factory)の `build.ps1` PowerShell スクリプトを使用してソリューションをデプロイしている場合にのみサポートされます。
 
-www.azureiotsuite.com からソリューションをデプロイした場合は、VM にサインインすることはできません。 パスワードはランダムに生成され、リセットはできないため、サインインできません。
+www.azureiotsolutions.com からソリューションをデプロイした場合は、VM にサインインすることはできません。 パスワードはランダムに生成され、リセットはできないため、サインインできません。
 
 1. VM にパブリック IP アドレスを追加します。 「[パブリック IP アドレスをシミュレーション VM に追加するにはどうすればいいですか](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)」をご覧ください。
 1. VM の IP アドレスを使用して VM への SSH セッションを作成します。
@@ -148,11 +142,11 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 接続済みファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。
 
-[www.azureiotsuite.com](http://www.azureiotsuite.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、接続済みファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
+[www.azureiotsolutions.com](http://www.azureiotsolutions.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、接続済みファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
 
 接続済みファクトリの GitHub リポジトリの `build.ps1` スクリプトを使ってデプロイを行い、Bing Maps API for Enterprise プランがある場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` をプランのクエリ キーに設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
-Bing Maps API for Enterprise プランがない場合は、[www.azureiotsuite.com](http://www.azureiotsuite.com) から、または `build.ps1` スクリプトを使って、接続済みファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
+Bing Maps API for Enterprise プランがない場合は、[www.azureiotsolutions.com](http://www.azureiotsolutions.com) から、または `build.ps1` スクリプトを使って、接続済みファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか
 
@@ -212,6 +206,6 @@ OPC UA 非対応デバイスから接続済みファクトリに利用統計情�
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [予測メンテナンスのソリューション アクセラレータの概要](../iot-suite/iot-suite-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
 * [接続済みファクトリ ソリューション アクセラレータの概要](iot-accelerators-connected-factory-overview.md)
-* [徹底的な IoT セキュリティ](../iot-suite/securing-iot-ground-up.md)
+* [徹底的な IoT セキュリティ](securing-iot-ground-up.md)

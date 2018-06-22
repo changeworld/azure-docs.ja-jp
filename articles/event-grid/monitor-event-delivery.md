@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626991"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 
@@ -41,9 +42,15 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 ## <a name="event-subscription-status"></a>イベント サブスクリプションの状態
 
-イベント サブスクリプションのメトリックを表示するには、使用可能なサービスの **[Event Grid サブスクリプション]** を検索して選択します。
+イベント サブスクリプションのメトリックを表示するには、サブスクリプションの種類または特定のリソースのサブスクリプションによって検索できます。
 
-![イベント サブスクリプションの検索](./media/monitor-event-delivery/select-event-subscriptions.png)
+イベント サブスクリプションの種類による検索は、**[すべてのサービス]** を選択します。
+
+![[すべてのサービス] を選択する](./media/monitor-event-delivery/all-services.png)
+
+**イベント グリッド** を検索し、利用可能なオプションから **[Event Grid サブスクリプション]** を選択します。
+
+![イベント サブスクリプションの検索](./media/monitor-event-delivery/search-and-select.png)
 
 イベントの種類、サブスクリプション、および場所別にフィルター処理します。 表示するサブスクリプションの **[メトリック]** を選択します。
 
@@ -52,6 +59,12 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 イベント トピックおよびサブスクリプションのメトリックを表示します。
 
 ![イベント メトリックの表示](./media/monitor-event-delivery/subscription-metrics.png)
+
+特定のリソースのメトリックを検索するには、そのリソースを選択します。 次に**イベント** を選択します。
+
+![リソースのイベントを選択します](./media/monitor-event-delivery/select-events.png)
+
+サブスクリプションのリソースのメトリックが表示されます。
 
 ## <a name="custom-event-status"></a>イベントの状態のカスタマイズ
 

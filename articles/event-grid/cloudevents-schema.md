@@ -6,13 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 05/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 23187fbc230e384984085d330bfbfbc90cc9f945
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625595"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
@@ -57,7 +58,7 @@ CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通
 
 CloudEvents v0.1 では、次のプロパティが使えます。
 
-| CloudEvents        | type     | JSON 値の例             | [説明]                                                        | Event Grid のマッピング
+| CloudEvents        | type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
@@ -123,7 +124,7 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。
+CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

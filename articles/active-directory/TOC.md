@@ -410,13 +410,14 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
 #### チュートリアル
 ##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
 #### 概念
+##### [ベースラインの保護](active-directory-conditional-access-baseline-protection.md)
 ##### [条件](active-directory-conditional-access-conditions.md)
 ##### [場所の条件](active-directory-conditional-access-locations.md)
 ##### [コントロール](active-directory-conditional-access-controls.md)
@@ -438,7 +439,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

@@ -3,7 +3,7 @@ title: Apache Spark と Azure Event Hubs の統合 | Microsoft Docs
 description: Apache Spark と統合して、Event Hubs での構造化ストリームを有効にします
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: sethmanheim
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -11,31 +11,31 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: shvija
-ms.openlocfilehash: 09790852d28f2f68e854b37256ca1c8edba992e6
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.date: 05/21/2018
+ms.author: sethm
+ms.openlocfilehash: 9f1cf75fdea1dd7f5842c2efdaeca663d611065c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311296"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626923"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark と Event Hubs の統合
 
-Azure Event Hubs と [Apache Spark](https://spark.apache.org/) をシームレスに統合すると、分散ストリーミング のアプリケーションを構築できます。 この統合では、[Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)がサポートされています。 Apache Spark 用の Event Hubs コネクタは [GitHub](https://github.com/Azure/azure-event-hubs-spark) で入手できます。 このライブラリは、[Maven Central Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C) の Maven プロジェクトで使用することもできます
+Azure Event Hubs と [Apache Spark](https://spark.apache.org/) をシームレスに統合すると、分散ストリーミング のアプリケーションを構築できます。 この統合では、[Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) がサポートされています。 Apache Spark 用の Event Hubs コネクタは [GitHub](https://github.com/Azure/azure-event-hubs-spark) で入手できます。 このライブラリは、[Maven Central Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C) の Maven プロジェクトで使用することもできます
 
-この記事では、[Azure Databrick](https://azure.microsoft.com/services/databricks/) で継続的なアプリケーションを作成する方法について説明します。 この記事では [Azure Databricks](https://azure.microsoft.com/services/databricks/) を使用しますが、Spark クラスターも [HDInsight](../hdinsight/spark/apache-spark-overview.md) で使用できます。
+この記事には、[Azure Databrick](https://azure.microsoft.com/services/databricks/) で継続的なアプリケーションを作成する方法について記載します。 この記事では Azure Databricks を使用しますが、Spark クラスターも [HDInsight](../hdinsight/spark/apache-spark-overview.md) で使用できます。
 
-次の例では、2 つの Scala ノートブックを使用します。1 つはイベント ハブからのイベントのストリーミング、もう 1 つはイベント ハブへのイベントの返送に使用します。
+この記事の例では、2 つの Scala ノートブックを使用します。1 つはイベント ハブからのイベントのストリーミング、もう 1 つはイベント ハブへのイベントの返送に使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 ない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)します
-* Event Hubs インスタンス。 ない場合は[作成](event-hubs-create.md)します
-* [Azure Databricks](https://azure.microsoft.com/services/databricks/) インスタンス。 ない場合は[作成](../azure-databricks/quickstart-create-databricks-workspace-portal.md)します
-* [Maven コーディネートを使用してライブラリを作成](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`
+* Azure サブスクリプション。 ない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) します。
+* Event Hubs インスタンス。 ない場合は、[作成](event-hubs-create.md) します。
+* [Azure Databricks](https://azure.microsoft.com/services/databricks/) インスタンス。 ない場合は、[作成](../azure-databricks/quickstart-create-databricks-workspace-portal.md) します。
+* [Maven コーディネートを使用してライブラリを作成 ](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`。
 
-次のコードを使用し、Event Hub からイベントをストリーム配信します。
+次のコードを使用し、イベント ハブからイベントをストリーム配信します。
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -61,7 +61,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-次のサンプル コードは、Spark バッチ API を使用してイベントハブにイベントを送信します。 ストリーミング クエリを記述して、イベントをイベント ハブに送信することもできます。
+次のサンプル コードは、Spark バッチ API を使用してイベントハブにイベントを送信します。 ストリーミング クエリを書き込んで、イベントをイベント ハブに送信することもできます。
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -81,7 +81,7 @@ val bodyColumn = concat(lit("random nunmber: "), rand()).as("body")
 val df = spark.range(200).select(bodyColumn)
 df.write
   .format("eventhubs")
-  .options(eventHubsConf.toMap)
+  .options(ehConf.toMap)
   .save() 
 ```
 

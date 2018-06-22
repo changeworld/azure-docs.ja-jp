@@ -7,24 +7,26 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: aab6e893a6da1c5b877498f2bf6cbeaa6d0a5c2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587785"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
-Azure AD Domain Services を構成または管理する際に生じる一般的な問題の解決策については、「[トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)」を参照してください。
+Azure ADドメイン サービスを 構成するか、または管理する際に生じる、一般的な問題の解決策については、｢[トラブルシューティングガイド](active-directory-ds-troubleshooting.md)｣を参照してください。
 
 ## <a name="configuration"></a>構成
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数の管理対象ドメインを作成することはできますか。
@@ -48,14 +50,14 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD ドメイン サービスを有効にできますか。
 はい。 [PowerShell を使って Azure AD Domain Services を有効にする方法](active-directory-ds-enable-using-powershell.md)に関する記事をご覧ください。
 
-### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか。
+### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか？
 はい。 [PowerShell を使って Azure AD Domain Services を有効にする方法](active-directory-ds-enable-using-powershell.md)に関する記事をご覧ください。
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインにドメイン コント ローラーを追加することはできますか。
 いいえ。 管理対象ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。 そのため、管理対象ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
-いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待したゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに保存されません。 そのため、Azure AD Domain Services で、これらのユーザーの NTLM と Kerberos のハッシュを管理対象ドメインに同期できません。 その結果、このようなユーザーは、管理対象ドメインにログインすることや、コンピューターを管理対象ドメインに参加させることができません。
+いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象　ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに保存されません。 そのため、Azure AD Domain Services で、これらのユーザーの NTLM と Kerberos のハッシュを管理対象ドメインに同期できません。 その結果、当該ユーザーは、管理対象ドメインにログインすることや、コンピューターを管理対象ドメインに参加させることができません。
 
 ## <a name="administration-and-operations"></a>管理と操作
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>リモート デスクトップを使用して管理対象ドメインのドメイン コントローラーに接続できますか。
@@ -65,13 +67,13 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 管理グループのメンバー ("AAD DC 管理者" など) は、ドメインに参加しているコンピューターで使用できます。 さらに、このグループのメンバーには、ドメインに参加しているコンピューターへのリモート デスクトップ アクセス権が付与されます。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services によって提供される管理対象ドメインにドメイン管理者特権はありますか。
-いいえ。 管理対象ドメイン上に管理者特権は付与されません。 "ドメイン管理者" 特権と "エンタープライズ管理者" 特権はどちらも、ドメインでは利用できません。 Azure AD ディレクトリ内の既存のドメイン管理者グループまたはエンタープライズ管理者グループにも、ドメインに関するドメイン/エンタープライズ管理者特権は付与されません。
+いいえ。 管理対象ドメイン上に管理者特権は付与されません。 "ドメイン管理者" 特権と "エンタープライズ管理者" 特権はどちらも、ドメインでは利用できません。 オンプレミスのアクティブディレクトリ内のドメイン管理者またはエンタープライズ管理者グループのメンバーには、管理対象ドメインのドメイン/エンタープライズ管理者特権は付与されません。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>管理対象ドメインで LDAP または他の AD 管理ツールを使用してグループ メンバーシップを変更できますか。
 いいえ。 Azure AD Domain Services によってサービスされるドメインのグループ メンバーシップは変更できません。 ユーザー属性に対しても同様です。 ただし、Azure AD またはオンプレミスのドメインのいずれかで、グループ メンバーシップまたはユーザー属性を変更できます。 このような変更は、Azure AD Domain Services に自動的に同期されます。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更が管理対象ドメインに反映されるまで、どのくらいの時間がかかりますか。
-Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、管理対象ドメインに同期されます。 この同期プロセスはバック グラウンドで実行されます。 1 回のみ実行されるディレクトリの初期同期が完了した後は、Azure AD で行われた変更が管理対象ドメインに反映されるまで、通常は約 20 分かかります。
+Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、管理対象ドメインに同期されます。 この同期プロセスはバック グラウンドで実行されます。 1度、初期同期が完了されると、Azure AD で行われた変更が　管理対象　ドメインに反映されるまで、通常は約 20 分かかります。
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services によって提供される管理対象ドメインのスキーマは拡張できますか。
 いいえ。 スキーマは、Microsoft が管理対象ドメインを管理することで管理されます。 Azure AD ドメイン サービスでは、スキーマの拡張機能はサポートされていません。
@@ -81,6 +83,9 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>管理対象ドメインのパスワード有効期間ポリシーとはどのようなものですか。
 Azure AD Domain Services の管理対象ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、管理対象ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードが管理対象ドメインに同期されます。 また、ユーザー アカウントの "password-does-not-expire" 属性と "user-must-change-password-at-next-logon" 属性は、管理対象ドメインに同期されません。
+
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから　保護する機能を提供しますか?
+はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 管理対象ドメインでの無効なパスワードの試行は、 Azure AD のユーザー アカウントをロックしません。 ユーザー アカウントは、Azure AD Domain Services の管理対象　ドメイン内でだけ、ロックアウトされます。
 
 ## <a name="billing-and-availability"></a>課金と可用性
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD Domain Services は有料のサービスですか。
@@ -93,7 +98,7 @@ Azure AD Domain Services の管理対象ドメインの既定のパスワード�
 いいえ。 Azure AD Domain Services 管理対象ドメインを有効にすると、管理対象ドメインを無効化/削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、管理対象ドメインを削除するまで、1 時間ごとに続行されます。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
-いいえ。 Azure AD Domain Services は従量課金の Azure サービスであり、EMS には含まれていません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free、Basic、および Premium) で使用できます 。 使用状況に応じて、時間単位で課金されます。
+いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS には含まれていません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free、Basic、および Premium) で使用できます 。 使用状況に応じて、時間単位で課金されます。
 
 ### <a name="what-azure-regions-is-the-service-available-in"></a>このサービスは、どの Azure のリージョンで利用できますか。
 Azure AD Domain Services を使用できる Azure リージョンの一覧については、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。

@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory レポートの待機時間 | Microsoft ドキュメント"
-description: "Azure Portal にレポート イベントが表示されるのにかかる時間について学習します"
+title: Azure Active Directory レポートの待機時間 | Microsoft ドキュメント
+description: Azure Portal にレポート イベントが表示されるのにかかる時間について学習します
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/15/2017
-ms.author: markvi;dhanyahk
+ms.author: rolyon;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ec41817fede495b8262e28d2d614a480d98ff3b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f27efab05dc8580735c58eed20e9b48d8003dd17
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589782"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -37,10 +39,10 @@ Azure Active Directory の[レポート](active-directory-preview-explainer.md)�
 
 次の表に、アクティビティ レポートの待機時間情報を一覧表示します。
 
-| レポート | 最小値 | 平均 | 解説 |
-| :-- | --- | --- | :-- |
-| 監査ログ | 30 分  | 1 時間  |場合によっては、監査アクティビティ データが表示されるまでに最大で 2 時間かかることがあります。|
-| サインイン | 約 15 分  | 2 時間 |場合によっては、サインイン アクティビティ データが表示されるまでに最大で 24 時間かかることがあります。 これには、従来のオフィス アプリケーションから送られてくるサインイン アクティビティ データも含まれます。 |
+| レポート | 待ち時間 (P95) |待ち時間 (P99)|
+| :-- | --- | --- | 
+| 監査ログ | 2 分  | 5 分  |
+| サインイン | 2 分  | 5 分 |
 
 
 

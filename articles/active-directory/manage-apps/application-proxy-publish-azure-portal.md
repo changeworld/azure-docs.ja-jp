@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eb629396629a92503907439a64cca9d70747010
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594124"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
@@ -29,6 +30,9 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 
 アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](application-proxy.md)」で、この機能の詳細を確認してください。
 
+## <a name="before-you-begin"></a>開始する前に
+
+この記事は、コネクタを既にインストールし、登録した状態を想定しています。 これらの手順をまだ実行する必要がある場合は、[アプリケーション プロキシの概要とコネクタのインストール](application-proxy-enable.md) を参照してください。
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>リモート アクセスを行うためのオンプレミス アプリの発行
 

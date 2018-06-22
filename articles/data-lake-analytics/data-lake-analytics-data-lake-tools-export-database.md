@@ -1,24 +1,21 @@
 ---
-title: "Azure Data Lake Tools for Visual Studio を使用して U-SQL データベースをエクスポートする | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio を使用して、U-SQL データベースをエクスポートし、ローカル アカウントに自動的にインポートする方法を説明します。"
+title: Azure Data Lake Tools for Visual Studio を使用して U-SQL データベースをエクスポートする
+description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL データベースをエクスポートし、ローカル アカウントに自動的にインポートする方法を説明します。
 services: data-lake-analytics
-documentationcenter: 
 author: yanancai
-manager: 
-editor: 
+ms.author: yanacai
+manager: kfile
+editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: yanacai
-ms.openlocfilehash: 441606258f9541c9552925e7c0cbc9b3a9effb4d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623412"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 
@@ -86,7 +83,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 現時点では、ステップ 3. で **[スキーマとデータ]** を選択した場合は、テーブルに格納されているデータをエクスポートするために U-SQL ジョブが実行されます。 このため、データのエクスポート プロセスが低速になり、コストが増加する可能性があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [U-SQL データベースの詳細](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
 * [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)

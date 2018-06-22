@@ -1,25 +1,21 @@
 ---
-title: Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する | Microsoft Docs
-description: 'Azure Portal を使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。 '
+title: Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する
+description: この記事では、Azure Portal を使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+manager: kfile
+editor: jasonwhowell
+ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 8c61b8736dfb13f0c2c2520f22979ac51646e05f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33884781"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623657"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Portal を使用して Azure Data Lake Analytics でジョブを監視する
 

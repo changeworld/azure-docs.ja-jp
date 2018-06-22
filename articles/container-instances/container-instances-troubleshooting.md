@@ -9,155 +9,30 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a4067db9955b804f126e889fa73641f69fef56ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700232"
 ---
-# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Azure Container Instances でのコンテナーとデプロイに関する問題をトラブルシューティングする
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
-この記事では、Azure Container Instances にコンテナーをデプロイする際の問題をトラブルシューティングする方法を示します。 また、発生する可能性があるいくつかの一般的な問題についても説明します。
+この記事では、Azure Container Instances を管理し、またはこれ にコンテナーをデプロイする際の、一般的問題をトラブルシューティングする方法を示します。
 
-## <a name="view-logs-and-stream-output"></a>ログの表示と出力のストリーミング
+## <a name="naming-conventions"></a>名前付け規則
 
-コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認することから始めます。次に、[az container attach][az-container-attach] でその標準出力と標準エラーをストリーミングします。
+コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。
+Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)を参照してください。
 
-### <a name="view-logs"></a>ログを表示する。
-
-アプリケーション コードからコンテナー内のログを表示するには、[az container logs][az-container-logs] コマンドを使用できます。
-
-「[Azure Container Instances でコンテナー化タスクを実行する](container-instances-restart-policy.md)」で説明されるタスク ベースのコンテナーの例に、処理する無効な URL を指定した後の、コンテナーからのログ出力を次に示します。
-
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
-Traceback (most recent call last):
-  File "wordcount.py", line 11, in <module>
-    urllib.request.urlretrieve (sys.argv[1], "foo.txt")
-  File "/usr/local/lib/python3.6/urllib/request.py", line 248, in urlretrieve
-    with contextlib.closing(urlopen(url, data)) as fp:
-  File "/usr/local/lib/python3.6/urllib/request.py", line 223, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 532, in open
-    response = meth(req, response)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 642, in http_response
-    'http', request, response, code, msg, hdrs)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 570, in error
-    return self._call_chain(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 504, in _call_chain
-    result = func(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 650, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 404: Not Found
-```
-
-### <a name="attach-output-streams"></a>出力ストリームのアタッチ
-
-[az container attach][az-container-attach] コマンドによって、コンテナーの起動中の診断情報が提供されます。 コンテナーが起動すると、ローカルのコンソールにコンテナーの STDOUT と STDERR がストリーミングされます。
-
-例として、「[Azure Container Instances でコンテナー化タスクを実行する](container-instances-restart-policy.md)」のタスク ベースのコンテナーに、処理する大きなテキスト ファイルの有効な URL を指定した後の、コンテナーからの出力を次に示します。
-
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
-Container 'mycontainer' is in state 'Unknown'...
-Container 'mycontainer' is in state 'Waiting'...
-Container 'mycontainer' is in state 'Running'...
-(count: 1) (last timestamp: 2018-03-09 23:21:33+00:00) pulling image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Successfully pulled image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Created container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Started container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-
-Start streaming logs:
-[('the', 22979),
- ('I', 20003),
- ('and', 18373),
- ('to', 15651),
- ('of', 15558),
- ('a', 12500),
- ('you', 11818),
- ('my', 10651),
- ('in', 9707),
- ('is', 8195)]
-```
-
-## <a name="get-diagnostic-events"></a>診断イベントの取得
-
-コンテナーが正常にデプロイされない場合は、Azure Container Instances のリソース プロバイダーによって提供される診断情報を見直す必要があります。 コンテナーのイベントを表示するには、[az container show][az-container-show] コマンドを実行します。
-
-```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
-```
-
-出力には、コンテナーの主要プロパティとデプロイ イベント (抜粋) が含まれます。
-
-```JSON
-{
-  "containers": [
-    {
-      "command": null,
-      "environmentVariables": [],
-      "image": "microsoft/aci-helloworld",
-      ...
-        "events": [
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:49+00:00",
-            "lastTimestamp": "2017-12-21T22:50:49+00:00",
-            "message": "pulling image \"microsoft/aci-helloworld\"",
-            "name": "Pulling",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Successfully pulled image \"microsoft/aci-helloworld\"",
-            "name": "Pulled",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Created container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Created",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Started container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Started",
-            "type": "Normal"
-          }
-        ],
-        "previousState": null,
-        "restartCount": 0
-      },
-      "name": "mycontainer",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": null
-        }
-      ],
-      ...
-    }
-  ],
-  ...
-}
-```
-
-## <a name="common-deployment-issues"></a>一般的なデプロイ問題
-
-以下のセクションでは、コンテナーをデプロイする際に発生するほとんどのエラーの原因となっている、一般的な問題について説明します。
-
-* [イメージ バージョンがサポートされない](#image-version-not-supported)
-* [イメージをプルできない](#unable-to-pull-image)
-* [コンテナーが絶えず終了して再起動する](#container-continually-exits-and-restarts)
-* [コンテナーの起動に時間がかかる](#container-takes-a-long-time-to-start)
-* ["リソース使用不可" エラー](#resource-not-available-error)
+| スコープ | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
+| --- | --- | --- | --- | --- | --- | --- |
+| コンテナーグループ名 | 1 ～ 64 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| コンテナーポート | 1 ～ 65535 の範囲 |整数 |1 ～ 65535 の整数 |`<port-number>` |`443` |
+| DNS 名ラベル | 5-63 |大文字と小文字は区別されない |英数字とハイフン最初と最後の文字を除く任意の場所 |`<name>` |`frontend-site1` |
+| 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン文字 |`<name>` |`MY_VARIABLE` |
+| ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除き任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
 
 ## <a name="image-version-not-supported"></a>イメージ バージョンがサポートされない
 
@@ -252,7 +127,7 @@ Azure Container Instances のコンテナーの起動時間に関係する 2 つ
 * [イメージ サイズ](#image-size)
 * [イメージの場所](#image-location)
 
-Windows イメージには、[追加の考慮事項](#use-recent-windows-images)があります。
+Windows イメージには、[追加の考慮事項](#cached-windows-images)があります。
 
 ### <a name="image-size"></a>イメージ サイズ
 
@@ -272,7 +147,7 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 コンテナーの起動時に発生するイメージ プルの影響を軽減する別の方法は、コンテナー インスタンスをデプロイする予定のリージョンと同じリージョン内の [Azure Container Registry](/azure/container-registry/) で、コンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
 
-### <a name="use-recent-windows-images"></a>最新の Windows イメージの使用
+### <a name="cached-windows-images"></a>キャッシュされた Windows イメージ
 
 Azure Container Instances では、キャッシュ メカニズムを使用して、特定の Windows イメージに基づくイメージに対するコンテナーの起動時間を高速化します。
 
@@ -280,6 +155,10 @@ Windows コンテナーの起動時間を最速にするには、次の **2 つ�
 
 * [Windows Server 2016][docker-hub-windows-core] (LTS のみ)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+
+### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
+
+接続の初期作成時に、最大で 5 秒間、Windows コンテナーに受信または送信の接続ができない場合があります。 初期セットアップ後に、コンテナーのネットワークが適切に再開する必要があります。
 
 ## <a name="resource-not-available-error"></a>リソース使用不可エラー
 
@@ -294,12 +173,13 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 * 別の Azure リージョンにデプロイする
 * 後でデプロイする
 
+## <a name="next-steps"></a>次の手順
+コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学びました。
+
 <!-- LINKS - External -->
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show

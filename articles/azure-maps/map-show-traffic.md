@@ -1,22 +1,20 @@
 ---
 title: Azure Maps でのトラフィックの表示 | Microsoft Docs
 description: Javascript マップ上にトラフィック データを表示する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a90304de1fbdb4550d0789aa71b66eebece8a02e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6ff7a0270509c244fc97bd04d8ba648fd262dc58
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600121"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
@@ -33,6 +31,12 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>次の手順
 
-この記事で使われているクラスとメソッドについてさらに詳しく知る。 
+この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 * [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic)
+
+マップに追加するコード例の詳細については、次の記事を参照してください。 
+* [マップの連動 – マウス イベント](./map-events.md)
+* [アクセス可能なマップをビルド](./map-accessibility.md)
+
+より多くのマッピング シナリオの [サンプルのコード ページ](http://aka.ms/AzureMapsSamples) をチェック アウトします。

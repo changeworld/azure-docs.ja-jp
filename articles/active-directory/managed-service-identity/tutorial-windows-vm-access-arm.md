@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 1b23101de9a84da487e73558366cc574a22e849d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8abd4f0f597cf255be3c1bc2fdd78a121cfb6517
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594987"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Windows VM 管理対象サービスID (MSI) を使用してリソース マネージャーにアクセスする
 
@@ -117,9 +118,10 @@ MSI を使用すると、Azure AD 認証をサポートするリソースに対�
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}}
     ```
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="next-steps"></a>次の手順
 
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
+このチュートリアルでは、Azure Resource Manager API にアクセスするために、ユーザー割り当て ID を作成して、それを Azure Virtual Machine に添付する方法について学習しました。  Azure Resource Manager の詳細については、以下を参照してください。
 
-Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
 

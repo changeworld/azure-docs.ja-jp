@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同期: 関数参照 | Microsoft Docs"
-description: "Azure AD Connect Sync での宣言型のプロビジョニングの式の参照"
+title: 'Azure AD Connect 同期: 関数参照 | Microsoft Docs'
+description: Azure AD Connect Sync での宣言型のプロビジョニングの式の参照
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4814d53a86b0d90cf16f76e75c7044448cf791eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595157"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: 関数リファレンス
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -1108,7 +1110,7 @@ ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての�
 * この関数は定義した source の見つかった位置を受け取り、target と置き換えます。
 * source は、厳密に 1 文字 (unicode) である必要があります。
 * source は、空にすることも 2 文字以上にすることもできません (解析エラー)。
-* target には、ö:oe、β:ss などの複数の文字を指定できます。
+* target は、ö:oe、 β:ss などの複数の文字を持つことができます。
 * target を空にして、文字を削除する必要があることを指定できます。
 * source は、大文字と小文字を区別し、完全に一致する必要があります。
 * 「,」(コンマ) と「:」(コロン) は予約文字であり、この関数を使用して置き換えることはできません。

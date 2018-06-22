@@ -1,11 +1,11 @@
 ---
-title: "Azure ゲスト OS のサポートと提供終了のポリシーのガイド | Microsoft Docs"
-description: "Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。"
+title: Azure ゲスト OS のサポートと提供終了のポリシーのガイド | Microsoft Docs
+description: Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608564"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure ゲスト OS のサポートと提供終了のポリシー
 このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。 このページの情報は、Virtual Machines (IaaS) には適用されません。
@@ -33,9 +34,7 @@ Microsoft では、 [ゲスト OS のサポート ポリシー](http://support.m
 
 ときには 3 つ以上のファミリやリリースがサポートされる場合もあります。 ゲスト OS のサポートに関する公式の情報については、 [Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)を参照してください。
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>ゲスト OS ファミリまたはバージョンの提供が終了するタイミング
-Windows Server オペレーティング システムの新しい製品バージョンがリリースされてからしばらくすると、新しいゲスト OS **ファミリ** が導入されます。 新しいゲスト OS ファミリが導入されるたびに、最も古いゲスト OS ファミリが提供終了になります。
-
+## <a name="when-a-guest-os-version-is-retired"></a>ゲストOSバージョンが削除されている場合
 新しいゲスト OS **バージョン** は、最新の MSRC 更新プログラムを組み込むようにほぼ毎月導入されます。 月単位の定期的な更新により、ゲスト OS バージョンは通常、リリースから約 60 日後に無効になります。 この結果、各ファミリで少なくとも 2 つのバージョンのゲスト OS が使用できる状態が維持されます。
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>ゲスト OS ファミリの提供終了処理中のプロセス
@@ -77,5 +76,5 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 Web アプリケーションのアーキテクチャが、オペレーティング システムの基になる機能に依存する場合は、[スタートアップ タスク](cloud-services-startup-tasks.md)のような機能や、他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。 または、[Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central アプリケーションでデバイス を管理する | Microsoft Docs
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303581"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807477"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -77,8 +77,33 @@ CSV ファイルの要件:
 
     [![一括インポート完了](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-デバイスのインポート操作が失敗した場合は、デバイス グリッドにエラーが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成され、エラー メッセージをクリックするとダウンロードできます。
+デバイスのインポート操作が失敗した場合は、デバイス グリッドにエラー メッセージが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成され、エラー メッセージをクリックするとダウンロードできます。
 
+## <a name="export-devices"></a>デバイスのエクスポート
+
+IoT Central に接続するデバイスをプロビジョニングするには、IoT Central によって生成されるデバイスの接続文字列が必要です。 エクスポート機能を使用すると、アプリケーションからの接続文字列と、デバイスの他のプロパティを一括で取得します。 エクスポートでは、選択したすべてのデバイスのデバイス ID、デバイス名、およびプライマリ接続文字列を CSV ファイルを作成します。
+
+アプリからデバイスを一括でエクスポートするには:
+1. 左側のナビゲーション メニューで **[エクスプローラー]** を選択します。
+
+1. 左側のパネルでエクスポートするデバイスのデバイス テンプレートを選択します。
+
+1. エクスポートするデバイスを選択して、**エクスポート** アクションをクリックします。
+
+    [![エクスポート](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. エクスポート プロセスが起動し、グリッドの上部で状態を追跡できます。 
+
+1. エクスポートが完了すると、生成されたファイルをダウンロードするリンクと共に成功メッセージが表示されます。
+
+1. **成功メッセージ** をクリックし、ディスク上のローカル フォルダーにファイルをダウンロードします。
+
+    [![エクスポート - 成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. エクスポートされた CSV ファイルでは、次の情報が得られます。
+    1. Name
+    1. Device ID
+    1. プライマリ接続文字列
 
 
 ## <a name="delete-a-device"></a>デバイスを削除する

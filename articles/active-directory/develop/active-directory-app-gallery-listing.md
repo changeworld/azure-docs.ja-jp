@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 22833851b85427dd8e9583f9c783fd55b9d31414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354454"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594089"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -34,20 +35,19 @@ Azure Active Directory (Azure AD) は、クラウド ベースの ID サービ�
 
 *  顧客は考えられる最良のシングル サインオン エクスペリエンスを探しています。
 
-*  アプリケーションの構成は簡単で最小限です。 
+*  アプリケーションの構成は簡単で最小限です。
 
 *  クイック検索でギャラリー内のアプリケーションが検索されます。
 
-*  Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。 
+*  Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。
 
-*  共通の顧客向けの詳細な構成手順チュートリアルがあります。 
+*  共通の顧客向けの詳細な構成手順チュートリアルがあります。
 
 *  SCIM を使っているユーザーは、同じアプリのプロビジョニングを使うことができます。
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>前提条件: フェデレーション プロトコルを実装する
 
-Azure AD アプリ ギャラリーにアプリケーションを公開するには、まず、Azure AD でサポートされている以下のフェデレーション プロトコルのいずれかを実装する必要があります。 ここから、Azure AD アプリケーション ギャラリーの使用条件をご覧ください。 
+Azure AD アプリケーション ギャラリーにアプリケーションを一覧表示するには、まず、AzureAD でサポートされている、次のフェデレーション プロトコルのいずれかを実装し、Azure AD アプリケーション　ギャラリーの条件に同意する必要があります。 [こちら](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/)から、Azure AD アプリケーション ギャラリーの使用条件を読み取ります。
 
 *   **OpenID Connect**: Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。
 

@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150625"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591176"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>ユーザー プライバシーと Azure Active Directory パススルー認証
 
@@ -29,13 +30,13 @@ ms.locfileid: "32150625"
 
 ## <a name="overview"></a>概要
 
-Azure AD パススルー認証では、EUII を含めることができる次の種類のログが作成されます。
+Azure AD パススルー認証では、個人データを含めることができる次の種類のログが作成されます:
 
 - Azure AD Connect トレース ログ ファイル。
 - 認証エージェント トレース ログ ファイル。
 - Windows イベント ログ ファイル。
 
-パススルー認証のユーザー プライバシーには、次の 2 つの方法で準拠できます。
+次の 2 つの方法でパススルー認証のユーザー プライバシーを強化します:
 
 1.  要請を受けた際、個人のデータを抽出し、その個人のデータを環境から削除する
 2.  すべてのデータが 48 時間しか保持されないようにする。

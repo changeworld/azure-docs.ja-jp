@@ -1,22 +1,19 @@
 ---
 title: リモート監視ソリューションをローカルにデプロイする - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 03/07/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: a11df1dc17b4dcbacece85526eeac39502cbbe34
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 3f723d716a652e64527310a499d6b06a6cf6bc6f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627233"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする
 
@@ -137,6 +134,6 @@ Docker イメージを削除し、ローカル コンピューター上の領域
 > * ソリューション アクセラレータのデプロイ
 > * ソリューション アクセラレータへのサインイン
 
-これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](iot-accelerators-remote-monitoring-deploy.md)することです。
+これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](iot-accelerators-remote-monitoring-deploy.md) することです。
 
 <!-- Next tutorials in the sequence -->

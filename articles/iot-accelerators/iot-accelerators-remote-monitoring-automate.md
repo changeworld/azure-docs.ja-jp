@@ -1,22 +1,19 @@
 ---
 title: リモート監視ソリューションでのデバイス検出に関する問題 - Azure | Microsoft Docs
 description: このチュートリアルでは、ルールとアクションを使用して、リモート監視ソリューションでしきい値に基づくデバイスの問題を自動的に検出する方法を示します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-suite
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: f3583b27b2fb9959e65a9c66a75c1174ebf3e238
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: df1ba7909c64e8ccc24bcf3584bd28b2629f49ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627315"
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>しきい値に基づくルールを使用して問題を検出する
 
@@ -70,7 +67,7 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 | Setting          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 規則の名前        | Chiller 警告                       |
-| [説明]      | Chiller の圧力が 150 PSI を超えました |
+| 説明      | Chiller の圧力が 150 PSI を超えました |
 | デバイス グループ     | **Chillers** デバイス グループ             |
 | 計算      | すぐに                               |
 | 条件 1 フィールド| pressure                              |
@@ -93,7 +90,7 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 | Setting          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 規則の名前        | Chiller の湿度と温度が危険    |
-| [説明]      | 湿度と温度が危険です |
+| 説明      | 湿度と温度が危険です |
 | デバイス グループ     | **Chillers** デバイス グループ             |
 | 計算      | 平均                               |
 | 期間      | 5                                     |

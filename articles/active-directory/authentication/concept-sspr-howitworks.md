@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868606"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593593"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -153,6 +153,8 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 カスタムのセキュリティの質問は、ロケールごとにはローカライズされていません。 カスタムの質問はすべて、管理用のユーザー インターフェイスに入力したときの言語で表示されます。ユーザーのブラウザーのロケールが異なる場合でもそのように表示されます。 ローカライズされた質問が必要な場合は、定義済みの質問を使う必要があります。
 
 カスタムのセキュリティの質問の最大長は、200 文字です。
+
+異なるローカライズされた言語のパスワードのリセットポータルと質問を表示するには、パスワードのリセット URL の末尾に「?mkt=<Locale>」を添えます。この URL には、スペイン語へのローカライズに準じる例があります [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)。
 
 ### <a name="security-question-requirements"></a>セキュリティの質問の要件
 

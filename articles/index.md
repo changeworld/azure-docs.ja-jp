@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 19f9bd1385766ab52613cd8dd191a92329f44616
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6b6b2c902cf64eab74533a4c581156e49375a407
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299214"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295547"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -269,6 +269,11 @@ Terraform </a>
                                                         <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
 Visual Studio Team Services </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Azure での DevOps </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1463,6 +1468,12 @@ Visual Studio Team Services </a>
                                                 <p>VPN Gateway</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/role-based-access-control/">
+                                                <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                <p>ロールベースのアクセス制御</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>ID</h3>
                                     <ul>
@@ -1508,8 +1519,7 @@ Visual Studio Team Services </a>
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup
-</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3179,8 +3189,7 @@ Visual Studio Team Services </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#ai">AI + 機械学習
-</a>
+                        <a href="#ai">AI + 機械学習</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
                                 <h2>人工知能</h2>
@@ -4295,6 +4304,25 @@ Visual Studio Team Services </a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/role-based-access-control/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>ロールベースのアクセス制御</h3>
+                                                    <p>Azure のリソースへのアクセスの管理</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -4587,8 +4615,7 @@ Visual Studio Team Services </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup
-</h3>
+                                                    <h3>Backup</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>

@@ -1,10 +1,10 @@
 ---
-title: "Azure App Service の Mobile Apps 機能を使用した Apache Cordova アプリへのプッシュ通知の追加 | Microsoft Docs"
-description: "Mobile Apps を使用して Apache Cordova アプリにプッシュ通知を送信する方法について説明します。"
+title: Azure App Service の Mobile Apps 機能を使用した Apache Cordova アプリへのプッシュ通知の追加 | Microsoft Docs
+description: Mobile Apps を使用して Apache Cordova アプリにプッシュ通知を送信する方法について説明します。
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597996"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -33,13 +34,13 @@ ms.lasthandoff: 02/21/2018
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* [Visual Studio Community 2015][2] 以降がインストールされた PC 
+* [Visual Studio Community 2015][2] 以降がインストールされた PC
 * [Visual Studio Tools for Apache Cordova][4]
 * [アクティブな Azure アカウント][3]
 * 完了した [[Apache Cordova クイック スタート]][5] プロジェクト
 * (Android) 確認済みのメール アドレスがある [Google アカウント][6]
 * (iOS) [Apple Developer Program メンバーシップ][7]と iOS デバイス (iOS シミュレーターはプッシュ通知をサポートしていません)
-* (Windows) [Windows ストア開発者アカウント][8]と Windows 10 デバイス
+* (Windows) A [Microsoft Store Developer Account][8]　およびと Windows 10 デバイス
 
 ## <a name="configure-hub"></a>通知ハブを構成する
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
@@ -85,7 +86,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
     >[!NOTE]
     >バージョン 2.0.0 の時点では、送信者 ID を構成するには、プロジェクトのルート フォルダーに google-services.json をインストールする必要があります。 詳細については、[インストール ドキュメント](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)を参照してください。
-5. **[追加]**を選択します。
+5. **[追加]** を選択します。
 
 これでプッシュ プラグインがインストールされました。
 

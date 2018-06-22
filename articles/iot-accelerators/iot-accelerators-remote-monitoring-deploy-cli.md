@@ -1,26 +1,23 @@
 ---
 title: Java リモート監視ソリューションのデプロイ - Azure | Microsoft Docs
 description: このチュートリアルでは、CLI を使用してリモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628125"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、「[リモート監視ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)」をご覧ください。
+このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、「[リモート監視ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +49,7 @@ pcs login
 
 ソリューション アクセラレータをデプロイするときに、デプロイ プロセスを構成するいくつかのオプションがあります。
 
-| オプション | 値 | [説明] |
+| オプション | 値 | 説明 |
 | ------ | ------ | ----------- |
 | SKU    | `basic`、`standard`、`local` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、クラウドで Azure サービス (ストレージや Cosmos DB など) を使用します。 |
 | ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |
@@ -138,6 +135,6 @@ CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pc
 > * ソリューション アクセラレータのデプロイ
 > * ソリューション アクセラレータへのサインイン
 
-これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](./iot-accelerators-remote-monitoring-deploy.md)することです。
+これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](./iot-accelerators-remote-monitoring-deploy.md) することです。
 
 <!-- Next tutorials in the sequence -->

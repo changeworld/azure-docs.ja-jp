@@ -16,8 +16,8 @@
       href: active-directory-b2c-quickstarts-spa.md
 - name: チュートリアル
   items:
-    - name: 1 - アプリケーションの登録
-      href: tutorial-register-applications.md
+    - name: 1 - B2C テナントの作成
+      href: tutorial-create-tenant.md
     - name: 2 - アカウントの認証
       items:
         - name: ASP.NET

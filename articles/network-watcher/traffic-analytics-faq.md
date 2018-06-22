@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236401"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
 
@@ -29,7 +30,14 @@ ms.lasthandoff: 04/18/2018
     - 監視対象の NSG に対して有効になっている NSG フロー ログ
     - 未処理フロー ログを格納するための Azure Storage アカウント
     - 読み取りと書き込みのアクセスがある Log Analytics (OMS) ワークスペース
-    - 自分のアカウントには、Microsoft.Network プロバイダーで次の操作を割り当てる必要があります。
+    - ユーザーは、サブスクリプション レベルで、次のいずれかのロールに割り当てられる必要があります。
+    
+            All permissions *
+            All Read permissions */read
+            All network permissions Microsoft.Network/*
+            All network read permissions Microsoft.Network/*/read
+
+    またはユーザーは、サブスクリプション レベルで、次のすべてのロールを割り当てられる必要があります。 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -41,6 +49,19 @@ ms.lasthandoff: 04/18/2018
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+サブスクリプションのユーザーに割り当てられているロールを確認するには、以下の手順に従ってください。
+
+Login-AzureRmAccount を使用して Azure にログインします 
+
+Select-AzureRmSubscription を使用して、必要なサブスクリプションを選択します 
+
+指定したユーザーに割り当てられているすべてのロールを一覧表示するには、Get-AzureRmRoleAssignment-SignInName<user email> -IncludeClassicAdministrators を使用します 
+
+コマンド実行後なにも表示されない場合は、コマンドを実行するアクセス権を取得するため、担当サブスクリプション管理者にお問い合わせください。  
+
+詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理 ](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell) を参照してください
+
 
 2.  トラフィック分析が使用可能な Azure リージョンはどこですか?
 
@@ -106,11 +127,11 @@ ms.lasthandoff: 04/18/2018
 
 14. PowerShell または Azure Resource Manager テンプレートを使用してトラフィック分析を構成できますか?
 
-    いいえ、トラフィック分析は Azure Portal を使用して構成することしかできません。
+はい、windows powershell を使用したトラフィック分析の構成は、バージョン 6.2.1 以降 でサポートされます。ただし、Azure Resource Manager テンプレートは現在ご利用いただけません。 PowerShell を使用したトラフィック分析の構成方法についての詳細は、以下の [ ドキュメント ](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0) を参照してください。 
 
 15.  トラフィック分析はどのように課金されますか?
 
-        トラフィック分析は、削減されたログを拡張することと、拡張ログを Log Analytics ワークスペースに格納することについて測定されます。 プレビュー中、トラフィック分析は削減されたログの拡張については課金されませんが、ワークスペースでのデータの保持は、通常料金での課金の対象となります。 この回答は、トラフィック分析の価格が発表されたときに更新されます。
+トラフィック分析は、サービスによる処理済みフロー ログ データ、及び発生した拡張ログを Log Analytics ワークスペースに保管することにより従量課金されます。 料金プランの詳細については、[ こちら ](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) をクリックしてください 
 
 16.  geo マップ ビューでキーボードを使用してどのようにナビゲートできますか?
 

@@ -206,7 +206,7 @@
 ### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)
 ## 実在のデバイスの使用
-### [使ってみる](iot-hub-get-started.md)
+### [作業開始](iot-hub-get-started.md)
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -259,6 +259,7 @@
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [顧客データ要求](iot-hub-customer-data-requests.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
+## [Azure IoT ツールキット](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 ## [DeviceExplorer ツール](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics ツール](https://github.com/Azure/iothub-diagnostics)
 ## [iothub-explorer ツール](https://github.com/Azure/iothub-explorer)

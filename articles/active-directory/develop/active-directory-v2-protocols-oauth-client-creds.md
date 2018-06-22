@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157336"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594280"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー
 RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](http://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*デーモン*または*サービス アカウント*と呼ばれます。
@@ -63,7 +63,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)でアプリケーションに移動するか、アプリを作成していない場合は[アプリを作成](active-directory-v2-app-registration.md)します。 アプリを作成するときに、少なくとも 1 つのアプリケーション シークレットを使用する必要があります。
-2. **Microsoft Graph のアクセス許可**セクションを検索し、アプリに必要な**アプリケーション アクセス許可**を追加します。
+2. **Microsoft Graph のアクセス許可**セクションを検索し、その後、アプリに必要な**アプリケーション許可**を追加します。
 3. アプリの登録を**保存**します。
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨: アプリへのユーザーのサインイン
@@ -91,7 +91,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| パラメーター | 条件 | [説明] |
+| パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | テナント |必須 |アクセス許可を要求するディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
 | client_id |必須 |[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
@@ -107,7 +107,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- | --- |
 | テナント |アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | state |要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
@@ -120,7 +120,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- | --- |
 | error |エラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | error_description |エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -147,7 +147,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
 ```
 
-| パラメーター | 条件 | [説明] |
+| パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | テナント |必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | client_id |必須 |[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
@@ -169,7 +169,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| パラメーター | 条件 | [説明] |
+| パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | テナント |必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | client_id |必須 |[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
@@ -191,7 +191,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、認証することができます。 |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは `bearer` のみです。 |
@@ -213,7 +213,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |

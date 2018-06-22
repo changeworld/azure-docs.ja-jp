@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598472"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて
 API をインポートするときに、制限や ID の問題が発生し、修正しないと正常にインポートできない場合があります。 この記事ではこうした内容について、API のインポート形式別に説明します。
 
-## <a name="open-api"> </a>Open API/Swagger
-Open API ドキュメントのインポートでエラーが発生した場合は、Azure Portal のデザイナー ([Design]\(設計\) - [フロント エンド] - [Open API Specification Editor]\(Open API 仕様エディター\))、または <a href="http://www.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
+## <a name="open-api"> </a>API を開く/Swagger
+Open API ドキュメントのインポートでエラーが発生した場合は、Azure Portal のデザイナー (デザイン - フロント エンド - Open API 仕様エディター)、または <a href="http://www.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
 
 * OpenAPI 用の JSON 形式のみがサポートされています。
+* パスとクエリの両方の間で必要なパラメーターは、一意の名前が必要です。 ( OpenAPI では、 パラメーター名が、パス、クエリ、ヘッダーなどの場所内で一意であることだけが必要です。  しかし、 API Management では、パスとクエリの両方のパラメーターで判別する操作を許可します ( OpenAPI はサポートしません)。 したがって、 URL テンプレート　全体の中で、一意であるパラメーターの名前が必要です。)
 * **$ref** プロパティを使用して参照されるスキーマには、他の **$ref** プロパティを含めることができません。
 * **$ref** ポインターは、外部ファイルを参照できません。
 * サポートされている拡張子は、**x-ms-paths** と **x-servers** のみです。

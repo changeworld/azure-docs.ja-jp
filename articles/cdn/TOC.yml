@@ -36,6 +36,8 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 のサポート
       href: cdn-http2.md
+    - name: Standard Verizon から Premium Verizon への移行
+      href: cdn-migrate.md
 - name: ハウツー ガイド
   items:
     - name: コンテンツの最適化

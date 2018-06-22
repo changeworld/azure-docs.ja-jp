@@ -1,22 +1,19 @@
 ---
 title: Azure Maps のレンダリング範囲 | Microsoft Docs
 description: Azure Maps のレンダリング範囲について説明します
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: ab05277c4541ae859f79b1108c4cf8a7beb29271
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600580"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -70,7 +67,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | マリ                             | ✓ | ✓ |
 | モーリタニア                       | ✓ | ✓ |
 | モーリシャス                        | ✓ | ✓ |
-| マイヨット                          | ✓ | ✓ |
+| マヨット                          | ✓ | ✓ |
 | モロッコ                          | ✓ | ✓ |
 | モザンビーク                       | ✓ | ✓ |
 | ナミビア                          | ✓ | ✓ |
@@ -121,7 +118,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | ドミニカ共和国        | ✓ | ✓ |
 | エクアドル                   |   | ✓ |
 | フォークランド諸島 |   | ✓ |
-| フランス領ギアナ             | ✓ | ✓ |
+| 仏領ギアナ             | ✓ | ✓ |
 | グリーンランド                 |   | Ø |
 | グレナダ                   | ✓ | ✓ |
 | グアドループ                | ✓ | ✓ |
@@ -143,9 +140,9 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | サン バルテルミー島          | ✓ | ✓ |
 | セントクリストファー・ネイビス     | ✓ | ✓ |
 | セントルシア               | ✓ | ✓ |
-| サンマルタン島 (フランス領)     | ✓ | ✓ |
+| サン・マルタン (フランス領)     | ✓ | ✓ |
 | サンピエール島・ミクロン島 |   | ✓ |
-| セントビンセント・グレナディーン | ✓ | ✓ |
+| セントビンセント及びグレナディーン諸島 | ✓ | ✓ |
 | シント・マールテン島 (オランダ領)      | ✓ | ✓ |
 | サウスジョージア・サウスサンドウィッチ諸島 |   | ✓ |
 | スリナム                  |   | ✓ |
@@ -219,7 +216,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | オーストラリア                 | ✓ | ✓ |
 | クック諸島              |   | Ø |
 | フィジー                      |   | Ø |
-| フランス領ポリネシア          |   | Ø |
+| 仏領ポリネシア          |   | Ø |
 | グアム                      | ✓ | ✓ |
 | キリバス                  |   | Ø |
 | マーシャル諸島          |   | Ø |
@@ -300,7 +297,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | スイス               | ✓ | ✓ |
 | トルコ                    | ✓ | ✓ |
 | ウクライナ                   | ✓ | ✓ |
-| 英国            | ✓ | ✓ |
+| イギリス            | ✓ | ✓ |
 | バチカン              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>次の手順

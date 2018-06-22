@@ -1,25 +1,19 @@
 ---
 title: Node.js でリモート監視するために Raspberry Pi をプロビジョニング - Azure | Microsoft Docs
 description: Node.js で記述されたアプリケーションを使用して、Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する方法について説明します。
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: a47cc34e6791ae03f4da968e3d44660b47e1214d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 78647612fc747ec328279536d82fb31bb4858688
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626872"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 

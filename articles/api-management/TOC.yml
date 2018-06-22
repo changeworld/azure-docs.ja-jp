@@ -77,6 +77,8 @@
           href: edit-api.md
     - name: プロビジョニングとスケーリング
       items:
+        - name: 容量メトリック
+          href: api-management-capacity.md
         - name: アップグレードとスケーリング
           href: upgrade-and-scale.md
         - name: カスタム ドメインを構成する

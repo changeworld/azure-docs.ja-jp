@@ -1,11 +1,11 @@
 ---
-title: "ID 同期と重複属性の回復性 | Microsoft Docs"
-description: "Azure AD Connect によるディレクトリ同期中に UPN または ProxyAddress が競合しているオブジェクトを処理する方法の新しい動作です。"
+title: ID 同期と重複属性の回復性 | Microsoft Docs
+description: Azure AD Connect によるディレクトリ同期中に UPN または ProxyAddress が競合しているオブジェクトを処理する方法の新しい動作です。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi
-ms.openlocfilehash: 975abed469a78573553c0879b33181d2a58ec48c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: cfed9d32e919cc3c1b7b9c2a6ea5ddb31f2a8fb9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593210"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -166,7 +168,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 *この問題を解決する方法の手順*のリンクが正しくありません。  
     ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")  
 
-これが [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) を指すようにする必要があります。
+指している必要があります[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
 
 ## <a name="see-also"></a>関連項目
 * [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)

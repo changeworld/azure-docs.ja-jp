@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect - AD FS の管理とカスタマイズ | Microsoft Docs"
-description: "Azure AD Connect を使用した AD FS の管理と、Azure AD Connect および PowerShell を使用したユーザー AD FS サインイン エクスペリエンスのカスタマイズ。"
-keywords: "AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, O365, フェデレーション, 証明書利用者"
+title: Azure AD Connect - AD FS の管理とカスタマイズ | Microsoft Docs
+description: Azure AD Connect を使用した AD FS の管理と、Azure AD Connect および PowerShell を使用したユーザー AD FS サインイン エクスペリエンスのカスタマイズ。
+keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, O365, フェデレーション, 証明書利用者
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590856"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
 
-| Topic | 内容 |
+| トピック | 内容 |
 |:--- |:--- |
 | **AD FS の管理** | |
 | [信頼を修復する](#repairthetrust) |Office 365 とのフェデレーション信頼を修復する方法 |
@@ -155,7 +157,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 Azure AD Connect を使用すると、Azure AD とのフェデレーションを設定するドメインを簡単に追加できます。 Azure AD Connect によりフェデレーション用のドメインが追加され、Azure AD とのフェデレーションを設定したドメインが複数ある場合に発行者を正しく反映するように要求規則が変更されます。
 
-1. フェデレーション ドメインを追加するには、 **[Azure AD ドメインを追加します]**タスクを選択します。
+1. フェデレーション ドメインを追加するには、 **[Azure AD ドメインを追加します]** タスクを選択します。
 
    ![Additional Azure AD domain](media/active-directory-aadconnect-federation-management/AdditionalDomain1.PNG)
 
@@ -223,7 +225,7 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 したがって、規則 1 に要求 http://contoso.com/ws/2016/02/identity/claims/objectguid と http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid を追加した場合、最終的に **msdsconsistencyguid** 要求が発行されるのは、ユーザーにこの値が設定されている場合のみです。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
+この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 http://contoso.com/ws/2016/02/identity/claims/objectguidクレームを追加するとき、http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguidルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
 
 **規則 3: ms-ds-consistencyguid が存在する場合にそれを不変 ID として発行する**
 
@@ -262,7 +264,7 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
 
-**要求の値:** http://sub.contoso.com/adfs/services/trust/
+**要求値：**http://sub.contoso.com/adfs/services/trust/
 
 発行者の要求値にルート ドメインのみが含まれるようにするには、次のように要求規則を変更します。
 

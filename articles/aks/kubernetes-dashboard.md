@@ -1,19 +1,20 @@
-﻿---
+---
 title: Web UI を使用した Azure Kubernetes クラスターの管理
 description: AKS での Kubernetes ダッシュボードの使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 66843a5dda9f7b31b2b4c79df895eaff904513e6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595582"
 ---
 # <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes ダッシュボード
 
@@ -37,7 +38,7 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="run-an-application"></a>アプリケーションの実行
 
-Kubernetes ダッシュボードで、右上のウィンドウにある **[作成]** ボタンをクリックします。 デプロイに `nginx` という名前を付け、イメージの名前として `nginx:latest` を入力します。 **[サービス]** で、**[外部]** を選択し、ポートとターゲット ポートの両方に `80` を入力します。
+Kubernetes ダッシュボードで、右上のウィンドウにある **[作成]** ボタンをクリックします。 デプロイに名前`nginx`をつけて、コンテナーイメージ名に`nginx:latest`を入力します。 **[サービス]** で、**[外部]** を選択し、ポートとターゲット ポートの両方に `80` を入力します。
 
 準備ができたら、**[デプロイ]** をクリックしてデプロイを作成します。
 
@@ -49,7 +50,7 @@ Kubernetes ダッシュボードで、右上のウィンドウにある **[作�
 
 ![Kubernetes ポッド](./media/container-service-kubernetes-ui/complete-deployment.png)
 
-アプリケーション ポッドに関するより詳細な情報を表示するには、左側のメニューにある **[ポッド]** をクリックしてから、**NGINX** ポッドを選択します。 ここでは、リソース使用量などのポッド固有の情報を確認できます。
+アプリケーション ポッドに関するより詳細な情報を表示するには、左側のメニューにある **ポッド** をクリックしてから、**NGINX** ポッドを選択します。 ここでは、リソース使用量などのポッド固有の情報を確認できます。
 
 ![Kubernetes リソース](./media/container-service-kubernetes-ui/running-pods.png)
 

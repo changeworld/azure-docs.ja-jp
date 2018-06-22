@@ -1,29 +1,23 @@
 ---
 title: Azure IoT ソリューション アクセラレータに関する FAQ | Microsoft Docs
 description: IoT ソリューション アクセラレータに関してよく寄せられる質問
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 6c8c87dc4f7bb91ce227bbfbaf1cabf0c44d2e0b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: decae2fee0d040d0857950bec507df173e2820b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627161"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
-[接続済みファクトリ固有の FAQ](iot-accelerators-faq-cf.md) および[リモート監視固有の FAQ](iot-accelerators-faq-rm-v2.md) もご覧ください。
+[接続済みファクトリ固有の FAQ](iot-accelerators-faq-cf.md) および [リモート監視に固有の FAQ](iot-accelerators-faq-rm-v2.md) も参照してください。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>ソリューション アクセラレータのソース コードはどこで入手できますか。
 
@@ -54,7 +48,7 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Azure Portal 上でのリソース グループの削除と、azureiotsuite.com の ソリューション アクセラレータで削除をクリックすることの違いは何ですか?
 
-* [azureiotsuite.com](https://www.azureiotsuite.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にプロビジョニングしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
+* [azureiotsuite.com](https://www.azureiotsolutions.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にプロビジョニングしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
 * [Azure Portal](https://portal.azure.com) でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、ソリューション アクセラレータに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータで既存の投資の活用を続行できますか?
@@ -93,6 +87,6 @@ DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.co
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
 * [リモート監視ソリューション アクセラレータの機能について知る](iot-accelerators-remote-monitoring-explore.md)
-* [予測メンテナンスのソリューション アクセラレータの概要](../iot-suite/iot-suite-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
 * [接続済みファクトリ ソリューション アクセラレータの概要](iot-accelerators-connected-factory-overview.md)
-* [徹底的な IoT セキュリティ](../iot-suite/securing-iot-ground-up.md)
+* [徹底的な IoT セキュリティ](securing-iot-ground-up.md)

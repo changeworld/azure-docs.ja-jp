@@ -1,26 +1,23 @@
 ---
-title: U-SQL カタログの概要 | Microsoft Docs
+title: Azure Data Lake Analytics の U-SQL カタログを使用する
 description: U-SQL カタログを使用して、コードとデータを共有する方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/09/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: b39b5250cc042c393216784128ffc4e2f1288f04
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+manager: saveenr
+editor: jasonwhowell
+ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
+ms.topic: conceptual
+ms.date: 05/09/2017
+ms.openlocfilehash: 35a39733987eba7060049db7005c1f6bc0058e63
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624354"
 ---
-# <a name="get-started-with-the-u-sql-catalog"></a>U-SQL カタログの概要
+# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL カタログを使用する
 
 ## <a name="create-a-tvf"></a>TVF の作成
 

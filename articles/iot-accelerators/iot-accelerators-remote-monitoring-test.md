@@ -1,22 +1,19 @@
 ---
 title: リモート監視ソリューションでのデバイス シミュレーション - Azure | Microsoft Docs
 description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用したデバイス シミュレーターの使用方法について説明します。
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628261"
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
@@ -106,7 +103,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Azure でソリューション仮想マシンへの SSH アクセスを構成する
 
-[www.azureiotsuite.com](https://www.azureiotsuite.com) でリモート監視ソリューションを作成したときに、ソリューション名を選択しました。 そのソリューション名が、ソリューションで使用されるさまざまなデプロイ済みリソースを含む Azure リソース グループの名前になります。 次のコマンドは、**Contoso-01** という名前のリソース グループを使用しています。この **Contoso-01** は、ご自身のリソース グループの名前で置き換える必要があります。
+[www.azureiotsolutions.com](https://www.azureiotsolutions.com) でリモート監視ソリューションを作成したときに、ソリューション名を選択しました。 そのソリューション名が、ソリューションで使用されるさまざまなデプロイ済みリソースを含む Azure リソース グループの名前になります。 次のコマンドは、**Contoso-01** という名前のリソース グループを使用しています。この **Contoso-01** は、ご自身のリソース グループの名前で置き換える必要があります。
 
 次のコマンドでは、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) の `az` コマンドを使用します。 Azure CLI 2.0 は開発用コンピューターにインストールできます。または、[Azure Portal](http://portal.azure.com) で [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Cloud Shell には、Azure CLI 2.0 が事前にインストールされています。
 
@@ -484,7 +481,7 @@ ms.lasthandoff: 05/20/2018
 
     ![接続されているデバイスの数](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. お使いのブラウザーで、リモート監視ソリューションの**ダッシュボード**に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 すべてのシミュレートされたデバイスの温度がグラフで表示されます。
+1. お使いのブラウザーで、リモート監視ソリューションの **ダッシュボード** に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 すべてのシミュレートされたデバイスの温度がグラフで表示されます。
 
     ![温度テレメトリ](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -584,7 +581,7 @@ ms.lasthandoff: 05/20/2018
 
 これで、デバイス シミュレーション サービスの更新バージョンを、自分のリモート監視ソリューションにデプロイする手順は完了しました。
 
-お使いのブラウザーで、リモート監視ソリューションの**ダッシュボード**に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 2 つのシミュレートされたデバイスの温度がグラフで表示されます。
+お使いのブラウザーで、リモート監視ソリューションの **ダッシュボード** に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 2 つのシミュレートされたデバイスの温度がグラフで表示されます。
 
 ![温度テレメトリ](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
@@ -701,7 +698,7 @@ ms.lasthandoff: 05/20/2018
 > * 新しいデバイスの種類をダッシュ ボードに追加する
 > * 既存のデバイスの種類からカスタム テレメトリを送信する
 
-ここではデバイス シミュレーション サービスをカスタマイズする方法を学習しました。 次は、[物理デバイスをご利用のリモート監視ソリューションに接続する](iot-accelerators-connecting-devices-node.md)方法について学習することをお勧めします。
+ここではデバイス シミュレーション サービスをカスタマイズする方法を学習しました。 次は、[ 物理デバイスをご利用のリモート監視ソリューションに接続する ](iot-accelerators-connecting-devices-node.md) 方法について学習することをお勧めします。
 
 リモート監視ソリューションに関する開発者向け情報の詳細については、以下をご覧ください。
 

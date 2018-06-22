@@ -1,6 +1,6 @@
 ---
-title: "Managed Cache Service アプリケーションの Redis への移行 - Azure | Microsoft Docs"
-description: "Managed Cache Service アプリケーションおよび In-Role Cache アプリケーションを Azure Redis Cache に移行する方法の説明"
+title: Managed Cache Service アプリケーションの Redis への移行 - Azure | Microsoft Docs
+description: Managed Cache Service アプリケーションおよび In-Role Cache アプリケーションを Azure Redis Cache に移行する方法の説明
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 0d52454ae1c2159814d4601d07259aba319e8598
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f499925ecea8ca127c90691f7d92e74e8df68cf9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639488"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Managed Cache Service から Azure Redis Cache への移行
-Azure Managed Cache Service を使用するアプリケーションの Azure Redis Cache への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 このトピックでは、Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するために必要な構成とアプリケーションの変更を行う方法、および Azure Redis Cache の機能を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
+Azure Managed Cache Service を使用するアプリケーションの Azure Redis Cache への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 この記事では、Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するのに必要な構成と、アプリケーションの変更を行う方法、および Azure Redis Cache の機能を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
 
 >[!NOTE]
 >Managed Cache Service および In-Role Cache は、2016 年 11 月 30 日に[廃止](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)されました。 Azure Redis Cache に移行する In-Role Cache デプロイメントがある場合は、この記事の手順に従って実行できます。
@@ -51,7 +52,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 | 通知 |名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。 |クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) を使用して、同様の通知機能を実現できます。 |
 | ローカル キャッシュ |特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。 |クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。 |
 | 削除ポリシー |None または LRU。 既定のポリシーは LRU です。 |Azure Redis Cache は、volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction の各削除ポリシーをサポートします。 既定のポリシーは volatile-lru です。 詳細については、「 [既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
-| 有効期限ポリシー |既定の有効期限ポリシーは絶対であり、既定の有効期限は 10 分です。 スライド式ポリシーおよび期限なしポリシーも使用できます。 |既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。 詳細については、「 [オブジェクトをキャッシュに追加する、キャッシュから削除する](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)」を参照してください。 |
+| 有効期限ポリシー |既定の有効期限ポリシーは絶対であり、既定の有効期限は 10 分です。 スライド式ポリシーおよび期限なしポリシーも使用できます。 |既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。 |
 | リージョンとタグ付け |リージョンは、キャッシュされるアイテムのサブグループです。 また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。 リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。 リージョン内のすべてのアイテムは、キャッシュ クラスターの 1 つのノードに格納されます。 |Redis キャッシュは 1 つのノードで構成され (Redis クラスターが有効になっていない場合)、Managed Cache Service のリージョンの概念は適用されません。 Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。 Redis を使用したタグ付けソリューションの実装の例については、 [Redis でのキャッシュタグの実装](http://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。 |
 | シリアル化 |Managed Cache は、NetDataContractSerializer、BinaryFormatter、およびカスタム シリアライザーの使用をサポートします。 既定値は NetDataContractSerializer です。 |キャッシュに格納する前の .NET オブジェクトのシリアル化は、クライアント アプリケーションで行う必要があります。使用するシリアライザーはクライアント アプリケーションの開発者が選択します。 詳細とサンプル コードについては、「 [キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。 |
 | キャッシュ エミュレーター |Managed Cache には、ローカル キャッシュ エミュレーターが用意されています。 |Azure Redis Cache にはエミュレーターはありませんが、 [redis-server.exe の MSOpenTech ビルドをローカルに実行する](cache-faq.md#cache-emulator) ことで、エミュレーターを体験できます。 |
@@ -65,13 +66,13 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 各レベルは、機能と価格ごとに異なります。 機能については、このガイドで後述します。価格の詳細については、[キャッシュ価格の詳細](https://azure.microsoft.com/pricing/details/cache/)ページをご覧ください。
 
-移行では最初に、前の Managed Cache Service キャッシュのサイズに合ったサイズを選択し、アプリケーションの要件に応じてスケールアップまたはスケールダウンします。 Azure Redis Cache の適切なプランの選択に関する詳細なガイダンスについては、「 [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
+移行では最初に、前の Managed Cache Service キャッシュのサイズに合ったサイズを選択し、アプリケーションの要件に応じてスケールアップまたはスケールダウンします。 Azure Redis Cache のサービスの選択に関する詳細については、「 [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
 ## <a name="create-a-cache"></a>キャッシュを作成する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 ## <a name="configure-the-cache-clients"></a>キャッシュ クライアントを構成する
-キャッシュを作成して構成した後は、Managed Cache Service の構成を削除し、Azure Redis Cache の構成と参照を追加して、キャッシュ クライアントがキャッシュにアクセスできるようにします。
+キャッシュを作成し、構成したら、次のステップは Managed Cache Service を削除し、Azure Redis Cache 構成と参照を追加し、キャッシュ クライアントがキャッシュにアクセスできるようにすることです。
 
 * Managed Cache Service の構成を削除する
 * StackExchange.Redis NuGet パッケージを使用してキャッシュ クライアントを構成する
@@ -83,7 +84,7 @@ Managed Cache Service の NuGet パッケージをアンインストールする
 
 ![Azure Managed Cache Service NuGet パッケージのアンインストール](./media/cache-migrate-to-redis/IC757666.jpg)
 
-Managed Cache Service の NuGet パッケージをアンインストールすると、クライアント アプリケーションの app.config または web.config の Managed Cache Service アセンブリおよび Managed Cache Service エントリが削除されます。 NuGet パッケージをアンインストールしてもカスタマイズした設定は削除されない場合があるので、web.config または app.config を開き、次の要素が完全に削除されていることを確認します。
+Managed Cache Service の NuGet パッケージをアンインストールすると、クライアント アプリケーションの app.config または web.config の Managed Cache Service アセンブリおよび Managed Cache Service エントリが削除されます。 NuGet パッケージのアンインストール時に、カスタマイズした設定の一部が削除されない場合があるため、web.config または app.config を開き、次の要素が削除されていることを確認します。
 
 `dataCacheClients` エントリが `configSections` 要素から削除されていることを確認します。 `configSections` 要素全体を削除しないようにしてください。`dataCacheClients` エントリが存在する場合、それだけを削除します。
 
@@ -129,14 +130,14 @@ Managed Cache Service では、キャッシュへの接続は `DataCacheFactory`
 using StackExchange.Redis
 ```
 
-この名前空間が解決しない場合は、「 [キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」で説明されているように StackExchange.Redis NuGet パッケージを追加したことを確認してください。
+この名前空間が解決しない場合は、「 [クイック スタート: .NET アプリケーションで Azure Redis Cache を使用](cache-dotnet-how-to-use-azure-redis-cache.md)」で説明されているように StackExchange.Redis NuGet パッケージを追加したことを確認してください。
 
 > [!NOTE]
 > StackExchange.Redis クライアントでは .NET Framework 4 以降が必要であることに注意してください。
 > 
 > 
 
-Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 これにより、接続された 1 つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。 この例では、 `abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
+Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 この手法は、単一の接続 `ConnectionMultiplexer`　インスタンスを初期化するスレッドセーフな方法を提供します。 この例では、 `abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -170,11 +171,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-StackExchange.Redis クライアントは、キャッシュ内のアイテムのアクセスと保存に `RedisKey` および `RedisValue` 型を使用します。 これらの型は文字列などのほとんどのプリミティブ言語型にマップし、多くの場合、直接は使用されません。 Redis String は最も基本的な Redis 値の種類であり、シリアル化されたバイナリ ストリームなどの多くの種類のデータを格納でき、この型を直接使用することはできませんが、名前に `String` を含むメソッドを使用します。 コレクションまたは他の Redis データ型をキャッシュに格納していない場合、ほとんどのプリミティブ データ型について、キャッシュのアイテムの格納と取得には `StringSet` および `StringGet` メソッドを使用します。 
+StackExchange.Redis クライアントは、キャッシュ内のアイテムのアクセスと保存に `RedisKey` および `RedisValue` 型を使用します。 これらの型は文字列などのほとんどのプリミティブ言語型にマップし、多くの場合、直接は使用されません。 Redis String は最も基本的な Redis 値の種類であり、シリアル化されたバイナリ ストリームなどの多くの種類のデータを格納でき、この型を直接使用することはできませんが、名前に `String` を含むメソッドを使用します。 ほとんどのプリミティブ データ型について、コレクションまたはキャッシュ内の他の Redis を格納する場合を除き、 データ型、`StringSet`と`StringGet`メソッドを使用してキャッシュから項目を格納及び取得します。 
 
-`StringSet` および `StringGet` は Managed Cache Service の `Put` および `Get` メソッドととてもよく似ていますが、大きな違いの 1 つは、キャッシュの .NET オブジェクトを設定および取得する前にシリアル化する必要があることです。 
+`StringSet` 及び `StringGet` は、Managed Cache Service の `Put` 及び `Get` メソッドに似ていますが、.NET オブジェクトを設定し、キャッシュの中に取得する前にまずシリアル化しなければならないという大きな違いがあります。 
 
-`StringGet` を呼び出すと、オブジェクトが存在する場合はそのオブジェクトが返され、存在しない場合は null が返されます。 その場合、目的のデータ ソースから値を取得してキャッシュに格納しておき、後で使用することができます。 これを "キャッシュ アサイド パターン" といいます。
+`StringGet` を呼び出すと、オブジェクトが存在する場合はそのオブジェクトが返され、存在しない場合は null が返されます。 この場合、必要なデータソースから値を取得してキャッシュ内に格納しておき後で使用することができます。 このパターンは "キャッシュ アサイド パターン" といいます。
 
 キャッシュ内の項目の有効期限を指定するには、`StringSet` の `TimeSpan` パラメーターを使用します。
 
@@ -182,7 +183,7 @@ StackExchange.Redis クライアントは、キャッシュ内のアイテムの
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Azure Redis Cache はプリミティブ データ型に加え、.NET オブジェクトに対応していますが、.NET オブジェクトをキャッシュするためには、あらかじめシリアル化しておく必要があります。 これは、アプリケーション開発者が行う必要があります。 これにより、開発者はシリアライザーを柔軟に選択できます。 詳細とサンプル コードについては、「 [キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。
+Azure Redis Cache はプリミティブ データ型に加え、.NET オブジェクトに対応していますが、.NET オブジェクトをキャッシュするためには、あらかじめシリアル化しておく必要があります。 このシリアル化はアプリケーション開発者が行わなければなりません。逆にそのことでシリアライザーの選択に幅が生まれ、開発者にとってのメリットとなっています。 詳細とサンプル コードについては、「 [キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。
 
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-redis-cache"></a>ASP.NET のセッション状態と出力キャッシュを Azure Redis Cache に移行する
 Azure Redis Cache には、ASP.NET セッション状態とページ出力キャッシュの両方に対するプロバイダーがあります。 これらのプロバイダーの Managed Cache Service バージョンを使用するアプリケーションを移行するには、まず web.config から既存のセクションを削除した後、Azure Redis Cache バージョンのプロバイダーを構成します。 Azure Redis Cache ASP.NET プロバイダーの使用方法については、「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」および「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。

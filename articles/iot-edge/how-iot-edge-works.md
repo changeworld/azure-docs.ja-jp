@@ -1,25 +1,20 @@
 ---
 title: Azure IoT Edge とは | Microsoft Docs
 description: Azure IoT Edge サービスの概要
-services: iot-Edge
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: chipalost
-ms.assetid: ''
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.reviewer: chipalost
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: ''
-ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 52956e9888d67e0502a9ea82657acb9728216111
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630699"
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Azure IoT Edge とは - プレビュー
 
@@ -69,7 +64,7 @@ Azure IoT Edge ランタイムは、多数の IoT デバイス上で動作する
 
 エンタープライズ デバイスのソフトウェア ライフサイクルは管理が複雑です。 種類の異なる何百万という IoT デバイスのソフトウェア ライフサイクルを管理するとなれば、なおさら困難が伴います。 ワークロードは、特定の種類のデバイスを想定して作成、構成しなけれなりません。実際のソリューションで存在する何百万台というデバイスに対して大規模にワークロードをデプロイして監視し、デバイスの動作に異常があれば検出する必要があるのです。 これらのアクティビティをデバイス単位で行うことはできないので、一定の規模で実施する必要があります。
 
-Azure IoT Edge は、Azure IoT Suite とシームレスに連携し、実際のソリューションのニーズに合った一元的なコントロール プレーンを提供します。 ユーザーは Cloud Services を通じて次のことを実行できます。
+Azure IoT Edge は、Azure IoT ソリューション アクセラレータ とシームレスに連携し、実際のソリューションのニーズに合った一元的なコントロール プレーンを提供します。 ユーザーは Cloud Services を通じて次のことを実行できます。
 
 * 特定の種類のデバイス上で動作するワークロードを作成して構成する。
 * まとまったデバイスに対してワークロードを送信する。

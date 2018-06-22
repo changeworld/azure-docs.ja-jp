@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell スクリプト: Azure Lab Services のカスタム ラボにカスタム ロールを作成する | Microsoft Docs'
-description: この PowerShell スクリプトは、Azure Lab Services のカスタム ラボに外部ユーザーを追加します。
+title: 'PowerShell スクリプト: Azure DevTest Labs のラボにカスタム ロールを作成する | Microsoft Docs'
+description: この PowerShell スクリプトは、Azure DevTest Labs でラボに外部ユーザーを追加します。
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: df91c9f842d338e1725fec2734129f2f1f3d3721
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 295f742342fba7d77b556724c8005f3ac4816482
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636717"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-custom-lab-in-azure-lab-services"></a>PowerShell を使用して Azure Lab Services のカスタム ラボにカスタム ロールを作成する
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して Azure DevTest Labs のラボにカスタム ロールを作成する
 
-この PowerShell のサンプル スクリプトは、Azure Lab Services のカスタム ラボで使用するカスタム ロールを作成します。 
+この PowerShell のサンプル スクリプトは、Azure DevTest Labs のラボで使用するカスタム ロールを作成します。 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>前提条件
-* **カスタム ラボ**。 スクリプトを実行するには、既存のカスタム ラボが必要です。 
+* **ラボ** 。 スクリプトを実行するには、既存のラボが必要です。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a lab")]
 
 ## <a name="script-explanation"></a>スクリプトの説明
 

@@ -1,30 +1,27 @@
 ---
-title: Azure Portal を使用した Azure Data Lake Analytics の管理 | Microsoft Docs
-description: Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブの管理方法について説明します。
+title: Azure Portal を使用した Azure Data Lake Analytics の管理
+description: このアーティクルでは、Data Lake Analytics アカウント、データ ソース、ユーザー、およびジョブを管理するために Azure portal を使用する方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 99b638279b38ce3b583208ec0b80617f9046a6d7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+manager: kfile
+editor: jasonwhowell
+ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 1ccd4dd6b8d4ee15b7d9f14e7436ccd87392121e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771383"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623708"
 ---
-# <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Data Lake Analytics の管理
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure Portal を使用して、Azure Data Lake Analytics のアカウント、アカウント データ ソース、ユーザー、ジョブを管理する方法について説明します。 他のツールを使用した管理のトピックを表示する場合は、ページの上部にあるタブをクリックしてください。
+このアーティクルでは、Azure portal を使用して、Azure Data Lake Analytics アカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。
+
 
 <!-- ################################ -->
 <!-- ################################ -->

@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 2449c8178f726eacad089debeae6cf1db56cc67a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 463113731d1c4b4d7dfb5b81d429a8b7ffb74b1b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698443"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218862"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインでの同期
 次の図は、Azure AD ドメイン サービスの管理対象ドメインにおける同期のしくみを示しています。

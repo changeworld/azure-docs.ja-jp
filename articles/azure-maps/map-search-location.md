@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使った検索結果の表示 | Microsoft Docs
 description: Azure Maps を使って検索要求を実行し、Javascrip マップに結果を表示する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f66b1f93d7bc4c2e7c511c10d7091760e8f6d023
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b77737b16b23ed00c8f12f84e6a8558a665a7d15
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599883"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
 
@@ -38,8 +36,12 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>次の手順
 
-この記事で使われているクラスとメソッドについてさらに詳しく知る。 
+この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 
 * [Azure Maps Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 * [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+    
+マップに追加するコード例の詳細については、次の記事を参照してください。 
+* [座標から情報を取得する](./map-get-information-from-coordinate.md)
+* [A から B までのルートを表示する ](./map-route.md)

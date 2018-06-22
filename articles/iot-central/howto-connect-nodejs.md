@@ -1,19 +1,19 @@
 ---
 title: 汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する | Microsoft Docs
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 8666a2db051cbd4a93c3e587aeaef3e1722b1b83
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199597"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628540"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -49,7 +49,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 | 表示名 | フィールド名  | 値 1 | 表示名 | 値 2 | 表示名 |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| ファン モード     | fanmode     | 1       | 実行中      | 0       | 停止済み      |
+| Fan Mode     | fanmode     | 1       | 実行中      | 0       | 停止済み      |
 
 > [!NOTE]
   状態測定のデータ型は文字列です。
@@ -85,7 +85,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 | 表示名    | フィールド名     | Units | 10 進数 | Min | max  | Initial |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | ファン速度       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
-| 設定温度 | setTemperature | F     | 0        | 20  | 200  | 80      |
+| Set Temperature | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が一致しない場合は、デバイスで設定値を受信できません。
 

@@ -1,29 +1,25 @@
 ---
 title: リモート監視ソリューションに SIM データを統合する - Azure| Microsoft Docs
 description: この記事では、Telefónica SIM データをリモート監視ソリューションに統合する方法について説明します。
-services: iot-suite
-suite: iot-suite
 author: hegate
-manager: timlt
+manager: ''
 ms.author: hegate
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 590a24113d66edacc6edcfe988330f643f1aa57a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: ae8751f429cb4b11199bd8da9d8c2e08c0b98b35
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367554"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628285"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
 IoT デバイスは、どこからでもデータ ストリームを送信できるようにする SIM カードを使用してクラウドに接続することがよくあります。 Azure IoT リモート監視ソリューションによって IoT 管理接続データの統合が可能になるため、オペレーターは、IoT SIM が提供するデータによってデバイスの正常性を追跡することもできます。
 
-リモート監視は、追加設定なしで Telefónica IoT Connectivity との統合を可能にするため、IoT Connectivity Platform を使用しているユーザーは、デバイスの SIM 接続データを使用中のソリューションと同期できるようになります。 このソリューションは、GitHub [リポジトリ](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)を介して他の IoT Connectivity プロバイダーをサポートするように拡張することができます。
+リモート監視は、追加設定なしで Telefónica IoT Connectivity との統合を可能にするため、IoT Connectivity Platform を使用しているユーザーはデバイスの SIM 接続性データをソリューションと同期できるようになります。 このソリューションは、GitHub [リポジトリ](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)を介して他の IoT Connectivity プロバイダーをサポートするように拡張することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -37,14 +33,14 @@ IoT デバイスは、どこからでもデータ ストリームを送信でき
 
 この追加のリモート監視機能は、現在プレビューの段階です。 接続データを Azure リモート監視ソリューションに同期するには、次の手順に従います。
 
-1. [Telefónica のサイト](https://iot.Telefónica.com/contact)で要求を入力し、連絡先データなど、**[Azure Remote Monitoring]\(Azure リモート監視\)** オプションを選択します。
-2. Telefónica によってアカウントがアクティブにされます。
-3. まだ Telefónica クライアントではなく、この IoT Connectivity Cloud Ready サービスまたはその他の IoT Connectivity Cloud Ready サービスを利用したい場合は、[Telefónica のサイト](https://iot.Telefónica.com/contact)にアクセスし、**[Connectivity]\(接続性\)** オプションを選択します。
+1. [Telefónica のサイト](https://iot.Telefónica.com/contact) で要求を入力し、連絡先データなど、**[Azure Remote Monitoring]\ (Azure リモート監視\)** オプションを選択します。
+2. Telefónica が、あなたのアカウントをアクティブにします。
+3. あなたがまだ Telefónica のクライアントではなく、このサービス、または他の IoT Connectivity Cloud Ready サービスを利用したい場合は、[Telefónica のサイト](https://iot.Telefónica.com/contact) にアクセスし、オプション **Connectivity** を選択してください。
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM の設定
-Telefónica SIM と Azure Twin デバイス ID の関連付けは、Telefónica IoT SIM の "alias" プロパティに基づきます。 
+Telefónica SIM & Azure Twin デバイス ID の関連付けは、Telefónica IoT SIM「エイリアス」プロパティに基づいています。 
 
-[Telefónica IoT Connectivity Platform Portal](https://m2m-movistar-es.telefonica.com/)、[SIM Inventory]\(SIM インベントリ\) の順に移動し、SIM を選択して、各 SIM の "alias" を目的の Twin デバイス ID で更新します。 このタスクは、一括モードで実行することもできます (Telefónica IoT Connectivity Platform のユーザー マニュアルを参照してください)。
+[Telefónica IoT Connectivity Platform Portal](https://m2m-movistar-es.telefonica.com/) > SIM インベントリ > あなたの SIM を選択へ移動し、目的の Twin デバイス ID で各 SIM「エイリアス」を更新します。 このタスクは、一括モードで実行することもできます (Telefónica IoT Connectivity Platform のユーザー マニュアルを参照してください)。
 
 このタスクは、一括モードで実行することもできます (Telefónica IoT Connectivity Platform のユーザー マニュアルを参照してください)
 

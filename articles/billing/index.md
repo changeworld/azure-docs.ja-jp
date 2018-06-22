@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 313d6cfd69fbf63066add46c7a467c5090604067
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e696f3829ce710ef38957a5f538c1a43f4ba33f5
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807256"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285850"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure の課金とコスト管理に関するドキュメント
 
@@ -133,7 +133,7 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
                     <div class="cardText">
                         <h3>Reserved VM Instances による節約</h3>
                         <p>
-                        <a href="/azure/billing/billing-save-compute-costs-reservations">予約インスタンスとは</a><br/>
+                        <a href="/azure/billing/billing-save-compute-costs-reservations">予約インスタンスとは</a> <br/>
                         <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">予約インスタンスを購入する</a><br/>
                         <a href="/azure/billing/billing-understand-vm-reservation-charges">割り引きの適用方法</a><br/>
                         <a href="/azure/billing/billing-reserved-instance-windows-software-costs">含まれないソフトウェアのコスト</a>
@@ -165,12 +165,18 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>トラブルシューティング</h3>
+                        <h3>エンタープライズ サブスクリプション: EA ポータルへのアクセスが必要</h3>
+                        <style>.p-test:after { font-family: docons; content: "\E9D0";}</style>
                         <p>
-                        <a href="/azure/billing/billing-no-subscriptions-found">サブスクリプションが見つからない</a><br/>
-                        <a href="https://support.microsoft.com/help/4042960/troubleshoot-why-your-debit-card-or-credit-card-is-declined-at-azure-s">拒否されたカード</a><br/>
-                        <a href="https://support.microsoft.com/help/4042959/troubleshoot-why-you-can-t-sign-up-for-azure">サインアップの問題</a><br/>
-                        <a href="https://support.microsoft.com/help/4042961/troubleshoot-why-you-can-t-sign-in-to-manage-your-azure-subscription">サインインの問題</a>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/createADepartment" data-linktype="external">部署の管理<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/addNewAccount" data-linktype="external">アカウントの管理<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/createANewSubscription" data-linktype="external">サブスクリプションの作成<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/viewPriceSheet" data-linktype="external">価格シートの表示<span class="docon docon-navigate-external"></span></a>
+                        <br>
+                        <a class="p-test" href="https://ea.azure.com/helpdocs/usageDetailReport" data-linktype="external">利用状況の詳細の表示<span class="docon docon-navigate-external"></span></a>
                         </p>
                     </div>
                 </div>

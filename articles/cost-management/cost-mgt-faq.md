@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302741"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298411"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -72,16 +72,20 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>中断またはロックアウトされたユーザーを有効にするにはどうすればよいですか
 
+最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
+
+> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cost Management の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、 Cost Management サービスを登録し、Cloudyn ポータルにサインインする人として、*プライマリ管理者*になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2　に Cost Management で登録し、Cloudyn ポータルにサインインするよう通知します。
+
+> Admin2 は Azure portal を使用して登録します。 しかし、 Cloudyn ポータルにサインインしようとした時、彼はアカウントの**中断**を示すエラーを受け取ります。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
+
+
 ユーザーのアクセスの許可を要求するアラートを受け取った場合、そのユーザーのアカウントをアクティブにする必要があります。
 
 ユーザー アカウントをアクティブにするには:
 
 1. Cloudyn の設定に使用した Azure の管理ユーザーのアカウントを使用して Cloudyn にサインインします。 または、管理者アクセスが付与されたユーザー アカウントでサインインします。
-
 2. 右上にある歯車記号を選択し、**[ユーザー管理]** を選択します。
-
 3. ユーザーを検索し、鉛筆記号を選択してユーザーを編集します。
-
 4. **[ユーザーの状態]** で、状態を **[中断]** から **[アクティブ]** に変更します。
 
 Cloudyn のユーザー アカウントが Azure のシングル サインオンを使用して接続されます。 パスワードの入力を間違えると、Azure にはアクセスできても、Cloudyn からロックアウトされることがあります。

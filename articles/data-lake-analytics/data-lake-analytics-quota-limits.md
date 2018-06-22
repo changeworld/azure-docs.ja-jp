@@ -1,27 +1,25 @@
 ---
-title: Azure Data Lake Analytics のクォータ制限
-description: Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法について説明します。
+title: Azure Data Lake Analytics のクォータと 制限を調整します
+description: Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法を説明します。
 services: data-lake-analytics
-keywords: Azure Data Lake Analytics
-documentationcenter: ''
-author: omidm1
-editor: omidm1
-ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.service: data-lake-analytics
-ms.topic: article
-ms.workload: big-data
-ms.date: 03/15/2018
+author: omidm1
 ms.author: omidm
-ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+editor: jasonwhowell
+manager: kfile
+ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
+ms.topic: conceptual
+ms.date: 03/15/2018
+ms.openlocfilehash: e493c45ef49d370bbf7d007e039b4102aaa3cdf0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199026"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623980"
 ---
-# <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics のクォータ制限
+# <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のクォータと 制限を調整します
 
-Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法について説明します。 これらの制限について把握すれば、U-SQL ジョブの動作の理解に役立つ可能性があります。 すべてのクォータ制限は固定ではないため、Azure サポートに連絡して上限を引き上げることができます。
+Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法を説明します。 これらの制限について把握すれば、U-SQL ジョブの動作の理解に役立つ可能性があります。 すべてのクォータ制限は固定ではないため、Azure サポートに連絡して上限を引き上げることができます。
 
 ## <a name="azure-subscriptions-limits"></a>Azure サブスクリプションの制限
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同期: ディレクトリ拡張機能 | Microsoft Docs"
-description: "このトピックでは、Azure AD Connect のディレクトリ拡張機能について説明します。"
+title: 'Azure AD Connect 同期: ディレクトリ拡張機能 | Microsoft Docs'
+description: このトピックでは、Azure AD Connect のディレクトリ拡張機能について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4430f445a836f4baa90511c71bb734eda8674249
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dda35e63c209951547a667c46639dc0f37c87b43
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593634"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[Azure AD Graph API ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 使用可能な属性を表示するには、それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) を使用します。
@@ -56,7 +58,7 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 または、[Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer#) を使用して、Microsoft Graph API で属性にクエリを実行します。
 
 >[!NOTE]
-> 属性が返されるように要求する必要があります。 https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division のような属性を明示的に選択します。 
+> 属性が返されるように要求する必要があります。 このように、明白に属性を選びます：https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
 > 詳細については、[Microsoft Graph: クエリ パラメーターの使用](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter)に関するトピックをご覧ください。
 
