@@ -169,5 +169,7 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: パートナー
+      href: partners-migration-postgresql.md
     - name: データベース移行ガイド
       href: 'https://datamigration.microsoft.com/'
