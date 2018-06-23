@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/30/2017
   ms.author: v-jansko
-  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.openlocfilehash: 1995f8d58c47b8e098022ca672c7889195dd5328
+  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36286910"
+  ms.lasthandoff: 06/22/2018
+  ms.locfileid: "36319182"
 abstract:
   description: Microsoft Translator Text API は、クラウドベースの機械翻訳サービスです。 この API を使用すると、単純な REST API 呼び出しを通じて、アプリまたはサービスからテキストをほぼリアルタイムで翻訳できます。 この API では、最新のニューラル機械翻訳テクノロジが使用されるほか、統計的機械翻訳テクノロジが提供されます。 ニューラル MT と統計的 MT のどちらに関しても、サポートされている言語の一覧については、<a href="languages.md">サポートされている言語</a>に関するページを参照してください。
 sections:
@@ -46,26 +46,26 @@ sections:
       values:
       - href: quickstart-csharp-translate
       - href: quickstart-java-translate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-translate
+      - href: quickstart-python-translate
     - title: 1 つのスクリプトから別のスクリプトにテキストを変換する
       values:
       - href: quickstart-csharp-transliterate
       - href: quickstart-java-transliterate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-transliterate
+      - href: quickstart-python-transliterate
     - title: テキストの言語を特定する
       values:
       - href: quickstart-csharp-detect
       - href: quickstart-java-detect
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-detect
+      - href: quickstart-python-detect
     - title: 別の翻訳と用法を取得する
       values:
       - href: quickstart-csharp-dictionary
       - href: quickstart-java-dictionary
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-dictionary
+      - href: quickstart-python-dictionary
 - title: リファレンス
   items:
   - type: paragraph

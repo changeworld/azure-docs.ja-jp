@@ -27,8 +27,6 @@
       href: role-definitions.md
     - name: 組み込みのロール
       href: built-in-roles.md
-    - name: カスタム ロール
-      href: custom-roles.md
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: RBAC のための Privileged Identity Management (PIM)
@@ -42,12 +40,21 @@
       items:
         - name: ポータル
           href: role-assignments-portal.md
-        - name: Azure CLI
-          href: role-assignments-cli.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: REST ()
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: REST API
           href: role-assignments-rest.md
+    - name: カスタム ロール
+      href: custom-roles.md
+      items:
+        - name: PowerShell
+          href: custom-roles-powershell.md
+        - name: Azure CLI
+          href: custom-roles-cli.md
+        - name: REST API
+          href: custom-roles-rest.md
     - name: アクティビティ ログを表示する
       href: change-history-report.md
     - name: 全体管理者のアクセス権の昇格

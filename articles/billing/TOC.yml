@@ -117,6 +117,22 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: サポートにお問い合せください
       href: ../azure-supportability/how-to-create-azure-support-request.md
+- name: サンプル
+  items:
+    - name: REST API
+      items:
+        - name: エンタープライズのコストの確認
+          href: billing-review-enterprise-billing.md
+        - name: サブスクリプションの用途の確認
+          href: billing-review-subscription-billing.md
+    - name: .NET のサンプル
+      items:
+        - name: Invoice API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Usage API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API のコード サンプル
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: リファレンス
   items:
     - name: 課金自動化のシナリオ
@@ -142,11 +158,3 @@
       items:
         - name: Enterprise Reporting REST API
           href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-    - name: Billing のコード サンプル
-      items:
-        - name: Invoice API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Usage API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API のコード サンプル
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'

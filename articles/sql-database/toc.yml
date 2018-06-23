@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: 単一 DB リソースのスケーリング
           href: sql-database-single-database-scale.md
-        - name: エラスティック プールとプールされた DB
-          items:
-            - name: エラスティック プールとプールされた DB
-              href: sql-database-elastic-pool.md
-            - name: プールとプールされた DB の管理
-              href: sql-database-elastic-pool-manage.md
-            - name: 仮想コアベースのリソース制限
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU ベースのリソース制限
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: エラスティック プール リソースのスケーリング
-          href: sql-database-elastic-pool-scale.md
         - name: 接続のアーキテクチャ
           href: sql-database-connectivity-architecture.md
         - name: T-SQL の相違点
           href: sql-database-transact-sql-information.md
+    - name: エラスティック プールとプールされた DB
+      items:
+        - name: エラスティック プールとプールされた DB
+          href: sql-database-elastic-pool.md
+        - name: プールとプールされた DB の管理
+          href: sql-database-elastic-pool-manage.md
+        - name: 仮想コアベースのリソース制限
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: DTU ベースのリソース制限
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: エラスティック プール リソースのスケーリング
+          href: sql-database-elastic-pool-scale.md
     - name: Managed Instance
       items:
         - name: Managed Instance
