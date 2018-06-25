@@ -4,18 +4,18 @@ description: Azure Migrate サービスを使用して、多数のオンプレ�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: raynew
-ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 89c9cfd4bdc1c483764983c886ba9f96cc75c69e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365333"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736832"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
-この記事では、[Azure Migrate](migrate-overview.md) を使用して、多数のオンプレミスの仮想マシン (VM) を評価する方法について説明します。 Azure Migrate  を使用すると、コンピューターが Azure への移行に適しているかどうかを確認できます。 このサービスで、Azure でコンピューターを実行する場合の規模とコストの見積もりがわかります。
+Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に制限されていますが、この記事では、[Azure Migrate](migrate-overview.md) を使用して、多数のオンプレミスの仮想マシン (VM) を評価する方法について説明します。   
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +24,9 @@ ms.locfileid: "34365333"
 - **アクセス許可**: vCenter Server で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 - **統計情報の設定**: デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 レベルが 3 未満の場合、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合の推奨サイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づきます。
 
-## <a name="plan-azure-migrate-projects"></a>Azure Migrate プロジェクトの計画
+## <a name="plan-your-migration-projects-and-discoveries"></a>移行プロジェクトと検出を計画する
+
+1 つの Azure Migrate コレクターは、複数の vCenter Server からの検出をサポートし (1 つずつ)、さらに複数の移行プロジェクトへの検出もサポートします (1 つずつ)。 コレクターはファイア アンド フォーゲット モデルで動作し、検出が完了すると、同じコレクターを使用して別の vCenter Server からデータを収集するか、別の移行プロジェクトにデータを送信できます。
 
 以下の制限に基づいて、検出と評価を計画します。
 
@@ -34,25 +36,35 @@ ms.locfileid: "34365333"
 | 探索  | 1,500             |
 | 評価 | 1,500             |
 
-<!--
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
-- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
-- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
-- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
-    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
-      -->
-
-## <a name="plan-multiple-discoveries"></a>複数の検出を計画する
-
-同じ Azure Migrate コレクターを使用して、1 つ以上のプロジェクトに対して複数の検出を行うことができます。 このような計画の場合は、以下の事項を考慮してください。
+このような計画の場合は、以下の事項を考慮してください。
 
 - Azure Migrate コレクターを使用して検出を行う場合、検出範囲を vCenter Server フォルダー、データセンター、クラスター、またはホストに設定できます。
 - 2 つ以上の検出を行うには、検出を行う VM が、マシンの数が 1500 台という制限に対応しているフォルダー、データセンター、クラスター、またはホスト内にあることを、vCenter Server で確認します。
 - 評価を目的としている場合は、複数のマシンを同じプロジェクトと同じ評価内にまとめ、相互に依存関係にある状態にすることをお勧めします。 そして vCenter Server で、依存関係にあるマシンが評価のために同じフォルダー、データセンター、またはクラスター内にあることを確認してください。
 
+シナリオに応じて、以下に示すように検出を分割することができます。
 
-## <a name="create-a-project"></a>プロジェクトの作成
+### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>VM 数が 1,500 未満の複数の vCenter Server
+
+ご使用の環境内に複数の vCenter Server があり、仮想マシンの合計数が 1,500 未満の場合は、1 つのコレクターと 1 つの移行プロジェクトを使用して、すべての vCenter Server 間ですべての仮想マシンを検出することができます。 コレクターは、一度に 1 つの vCenter Server を検出するため、すべての vCenter Server に対して同じコレクターを 1 つずつ実行し、そのコレクターを同じ移行プロジェクトにポイントできます。 すべての検出が完了すると、マシンの評価を作成できます。
+
+### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>VM 数が 1,500 を超える複数の vCenter Server
+
+複数の vCenter Server がある場合、1 つの vCenter Server あたりの仮想マシン数は 1,500 未満であるが、すべての vCenter Serve では 1,500 を超えるときは、複数の移行プロジェクトを作成する必要があります (1 つの移行プロジェクトでは 1,500 台の VM しか保持できません)。 これを実現するには、vCenter Server ごとに移行プロジェクトを作成し、検出を分割します。 1 つのコレクターを使用して、各 vCenter Server を (1 つずつ) 検出できます。 検出を同時に開始する場合は、複数のアプライアンスをデプロイし、検出を並行して実行することもできます。
+
+### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>1 つの vCenter Server に 1,500 を超えるマシンがある場合
+
+1 つの vCenter Server に 1,500 を超える仮想マシンがある場合は、検出を複数の移行プロジェクトに分割する必要があります。 検出を分割するには、アプライアンスのスコープ フィールドを活用し、検出したいホスト、クラスター、フォルダーまたはデータセンターを指定することができます。 たとえば、vCenter Server に 2 つのフォルダーがあり、1 つに 1,000 の VM (Folder1) があり、もう 1 つに 800 の VM (Folder2) がある場合は、1 つのコレクターを使用して 2 つの検出を実行できます。 最初の検出では、スコープとして Folder1 を指定し、最初の移行プロジェクトにポイントすることができ、最初の検出が完了したら、同じコレクターを使用して、スコープを Folder2 に、また移行プロジェクトの詳細を 2 番目の移行プロジェクトに変更し、2 番目の検出を実行できます。
+
+### <a name="multi-tenant-environment"></a>マルチテナント環境
+
+テナント間で共有されている環境があり、別のテナントのサブスクリプションで 1 つのテナントの VM を検出したくない場合は、コレクター アプライアンスのスコープ フィールドを使用して、検出範囲を指定することができます。 テナントがホストを共有している場合は、特定のテナントに属する VM のみに読み取り専用アクセス権を持つ資格情報を作成してから、コレクター アプライアンスでこの資格情報を使用し、スコープをホストとして指定して検出を実行します。 または、vCenter Server で共有ホストの下にフォルダー (tenant1 の場合は folder1、tenant2 の場合は folder2 とします) を作成し、tenant1 の VM を folder1 に、tenant2 の VM を folder2 に移動してから、適切なフォルダーを指定して、適宜、コレクターの検出範囲を指定することもできます。
+
+## <a name="discover-on-premises-environment"></a>オンプレミス環境の検出
+
+計画が準備できたら、オンプレミス仮想マシンの検出を開始できます。
+
+### <a name="create-a-project"></a>プロジェクトの作成
 
 要件に従って Azure Migrate プロジェクトを作成します。
 
@@ -62,11 +74,11 @@ ms.locfileid: "34365333"
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成する場所を指定し、**[作成]** を選択します。 別のターゲット場所の場合でも VM を評価することができます。 プロジェクト用に指定された場所は、オンプレミスの VM から収集されたメタデータを格納するために使用します。
 
-## <a name="set-up-the-collector-appliance"></a>コレクター アプライアンスの設定
+### <a name="set-up-the-collector-appliance"></a>コレクター アプライアンスの設定
 
 Azure Migrate は、コレクター アプライアンスと呼ばれるオンプレミスの VM を作成します。 この VM はオンプレミスの VMware VM を検出し、それについてのメタデータを Azure Migrate サービスに送信します。 コレクター アプライアンスをセットアップするには、.OVA ファイルをダウンロードしてオンプレミスの vCenter Server インスタンスにインポートします。
 
-### <a name="download-the-collector-appliance"></a>コレクター アプライアンスをダウンロードする
+#### <a name="download-the-collector-appliance"></a>コレクター アプライアンスをダウンロードする
 
 複数のプロジェクトがある場合でも、コレクター アプライアンスをダウンロードして vCenter Server にインポートするのは 1 度だけでかまいません。 アプライアンスをダウンロードしてセットアップした後、それを各プロジェクトで実行し、一意のプロジェクト ID とキーを指定します。
 
@@ -75,7 +87,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 3. **[プロジェクトの資格情報をコピーします]** で、プロジェクトの ID とキーをコピーします。 これらの情報はコレクターを構成するときに必要になります。
 
 
-### <a name="verify-the-collector-appliance"></a>コレクター アプライアンスを確認する
+#### <a name="verify-the-collector-appliance"></a>コレクター アプライアンスを確認する
 
 OVA ファイルをデプロイする前に、そのファイルが安全であることを確認します。
 
@@ -121,7 +133,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-## <a name="create-the-collector-vm"></a>コレクター VM を作成する
+### <a name="create-the-collector-vm"></a>コレクター VM を作成する
 
 ダウンロードしたファイルを vCenter Server にインポートします。
 
@@ -137,7 +149,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 7. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。
 8. 設定を確認し、**[Finish]\(完了\)** を選択します。
 
-## <a name="identify-the-id-and-key-for-each-project"></a>各プロジェクトの ID とキーの特定
+### <a name="identify-the-id-and-key-for-each-project"></a>各プロジェクトの ID とキーの特定
 
 プロジェクトが複数ある場合は、各プロジェクトの ID とキーを特定する必要があります。 キーは、コレクターを実行して VM を検出するときに必要になります。
 
@@ -145,7 +157,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 2. **[プロジェクトの資格情報をコピーします]** で、プロジェクトの ID とキーをコピーします。
     ![[プロジェクトの資格情報をコピーします]](./media/how-to-scale-assessment/copy-project-credentials.png)
 
-## <a name="set-the-vcenter-statistics-level"></a>vCenter の統計レベルを設定する
+### <a name="set-the-vcenter-statistics-level"></a>vCenter の統計レベルを設定する
 次の表は、検出中に収集されるパフォーマンス カウンターの一覧です。 カウンターは、既定では vCenter Server のさまざまなレベルで使用可能です。
 
 すべてのカウンターが正しく収集されるように、統計レベルを一般の最高レベル (3) に設定することをお勧めします。 vCenter を低いレベルに設定した場合、完全な形で収集できるカウンターがわずかになり、残りのカウンターがレベル 0 に設定したのと同じ結果になってしまう可能性があります。 その結果、評価が不完全なデータを示す場合があります。
@@ -166,7 +178,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 > [!WARNING]
 > 統計レベルを高く設定した場合は、パフォーマンス カウンターを生成するのに最大 1 日かかります。 そのため、1 日経ってから検出を実行することをお勧めします。
 
-## <a name="run-the-collector-to-discover-vms"></a>コレクターを実行して VM を検出する
+### <a name="run-the-collector-to-discover-vms"></a>コレクターを実行して VM を検出する
 
 実行する必要があるそれぞれの検出について、コレクターを実行して指定のスコープの VM を検出します。 1 つずつ検出を実行します。 検出の同時実行はサポートされておらず、各検出は異なるスコープである必要があります。
 
@@ -194,7 +206,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 7.  **[View collection progress]** で検出プロセスを監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
 
 
-### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
+#### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
 
 検出時間は検出している VM の数によって異なります。 通常、VM が 100 台の場合、コレクターが実行を終了した後、検出が完了するまで約 1 時間かかります。
 

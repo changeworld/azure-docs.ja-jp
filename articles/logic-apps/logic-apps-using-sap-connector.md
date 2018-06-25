@@ -1,92 +1,203 @@
 ---
-title: "Azure Logic Apps によるオンプレミスの SAP システムへの接続 | Microsoft ドキュメント"
-description: "オンプレミスのデータ ゲートウェイを使用して、ロジック アプリ ワークフローからオンプレミスの SAP システムに接続します"
-services: logic-apps
-author: padmavc
-manager: anneta
-documentationcenter: 
-ms.assetid: 
-ms.service: logic-apps
-ms.devlang: na
+title: SAP システムに接続する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps を使用してワークフローを自動化することにより、SAP のリソースにアクセスしてそれを管理する方法について説明します。
+author: ecfan
+manager: jeconnoc
+ms.author: estfan
+ms.date: 05/31/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/01/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, divswa, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: a9346092e0a24709a9888937effdf802bf1b09fb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300217"
 ---
-# <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>SAP コネクタを使用した、Logic Apps からオンプレミスの SAP システムへの接続 
+# <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
-オンプレミス データ ゲートウェイを使用すると、データを管理し、オンプレミスのリソースに安全にアクセスできます。 このトピックでは、オンプレミスの SAP システムに Logic Apps を接続する方法を説明します。 この例では、ロジック アプリは HTTP 経由で IDOC を要求し、応答を返信します。    
+この記事では、SAP アプリケーション サーバー コネクタと SAP メッセージ サーバー コネクタを使用して、ロジック アプリ内から SAP のリソースにアクセスする方法を紹介します。 これにより、SAP のデータやリソースを管理するタスク、プロセス、ワークフローを自動化することができます。
 
-> [!NOTE]
-> 現時点での制限事項: 
-> - 応答に必要なすべての手順が[要求タイムアウト制限](./logic-apps-limits-and-config.md)内に完了しない場合、ロジック アプリがタイムアウトします。 このシナリオでは、要求がブロックされる可能性があります。 
-> - 利用可能なフィールドの一部がファイル ピッカーに表示されません。 このシナリオでは、手動でパスを追加することができます。
+この例では、HTTP 要求でトリガーすることのできるロジック アプリを使用します。 このロジック アプリは、SAP サーバーに IDoc (Intermediate Document) を送信し、そのロジック アプリを呼び出した要求元に応答を返します。
+現在の SAP コネクタには、アクションはありますが、トリガーがありません。そこで、この例では、ロジック アプリのワークフローにおける最初のステップとして、[HTTP 要求トリガー](../connectors/connectors-native-reqres.md)を使用しています。 SAP コネクタに固有の技術情報については、次のリファレンス記事を参照してください。 
+
+* <a href="https://docs.microsoft.com/connectors/sapapplicationserver/" target="blank">SAP アプリケーション サーバー コネクタ</a>
+* <a href="https://docs.microsoft.com/connectors/sapmessageserver/" target="blank">SAP メッセージ サーバー コネクタ</a>
+
+Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127) バージョン 1.15.6150.1 以降をインストールして構成します。 [ロジック アプリでのオンプレミス データ ゲートウェイへの接続](http://aka.ms/logicapps-gateway)に関するページに、この手順が記載されています。 続行する前に、オンプレミスのコンピューターにゲートウェイをインストールする必要があります。
+この記事に沿って作業を行うには、次の要件を満たす必要があります。
 
-- データ ゲートウェイをインストールしたのと同じコンピューターに、最新の SAP クライアント ライブラリをダウンロードし、インストールします。 次のいずれかの SAP バージョンを使用してください。 
-    - SAP サーバー
-        - .NET Connector (NCo) 3.0 をサポートする任意の SAP サーバー
- 
-    - SAP クライアント
-        - SAP .NET Connector (NCo) 3.0
+* SAP システムへのアクセスに使用するロジック アプリとそのロジック アプリのワークフローを開始するトリガー。 現在 SAP コネクタに用意されているのはアクションだけです。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
 
-## <a name="add-triggers-and-actions-for-connecting-to-your-sap-system"></a>SAP システムに接続するためのトリガーとアクションの追加
+* <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP アプリケーション サーバー</a>または <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP メッセージ サーバー</a>。
 
-SAP コネクタにはアクションがありますが、トリガーはありません。 そのため、ワークフローの開始時には別のトリガーを使用します。 
+* オンプレミスの任意のコンピューターに最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127)をダウンロードしてインストールします。 事前に Azure portal でゲートウェイをセットアップしておいてください。 ゲートウェイを使用することで、オンプレミスのデータやリソースに安全にアクセスすることができます。 詳細については、「[Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする](../logic-apps/logic-apps-gateway-install.md)」を参照してください。
 
-1. 要求/応答のトリガーを追加して、**[新しいステップ]** を選択します。
+* オンプレミス データ ゲートウェイと同じコンピューターに最新の SAP クライアント ライブラリをダウンロードしてインストールします。現時点では、<a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">SAP Connector (NCo) 3.0.20.0 for Microsoft .NET Framework 4.0 and Windows 64bit (x64)</a> が最新となります。 このバージョン以降をインストールしてください。これには次の理由があります。
 
-2. **[アクションの追加]** を選択し、検索フィールドに「`SAP`」と入力して SAP コネクタを選択します。    
+  * 以前のバージョンの SAP NCo は、複数の IDoc メッセージが同時に送信されるとデッドロック状態に陥ることがあります。 
+  この状態になると、以後、SAP ターゲットに送信されたすべてのメッセージがブロックされ、メッセージがタイムアウトになります。
 
-     ![SAP アプリケーション サーバーまたは SAP メッセージ サーバーの選択](media/logic-apps-using-sap-connector/sap-action.png)
+  * オンプレミス データ ゲートウェイは 64 ビット システムでのみ動作します。 
+  データ ゲートウェイ ホスト サービスは 32 ビットのアセンブリをサポートしないので、それ以外の場合、"イメージが無効" であることを示すエラーが発生します。
 
-3. SAP のセットアップに応じて、[**SAP アプリケーション サーバー**](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)か [**SAP メッセージ サーバー**](http://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)を選択します。 既存の接続がない場合は、作成するよう求めるメッセージが表示されます。
+  * データ ゲートウェイ ホスト サービスと Microsoft SAP アダプターでは、どちらも .NET Framework 4.5 が使用されます。 SAP NCo for .NET Framework 4.0 は、.NET ランタイム 4.0 から 4.7.1 を使用するプロセスとの組み合わせで正しく動作します。 
+  SAP NCo for .NET Framework 2.0 が正しく動作するのは、.NET ランタイム 2.0 から 3.5 を使用するプロセスとの組み合わせにおいてであり、最新のオンプレミス データ ゲートウェイとの組み合わせはサポートされません。
 
-   1. **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続)]** を選択し、SAP システムの詳細を入力します。   
+* SAP サーバーに送信できるメッセージの内容 (サンプル IDoc ファイルなど)。 この内容は XML 形式とし、使用する SAP アクションの名前空間を含んでいる必要があります。
 
-       ![SAP への接続文字列を追加する](media/logic-apps-using-sap-connector/picture2.png)  
+<a name="add-trigger"></a>
 
-   2. **[ゲートウェイ]** で、既存のゲートウェイを選択するか、**[ゲートウェイのインストール]** を選択して、新しいゲートウェイをインストールします。
+## <a name="add-http-request-trigger"></a>HTTP 要求トリガーの追加
 
-        ![新しいゲートウェイのインストール](media/logic-apps-using-sap-connector/install-gateway.png)
-  
-   3. すべての詳細を入力したら、**[作成]** を選択します。 
-   Logic Apps により、接続の構成とテストが行われ、適切に機能していることが確認されます。
+Azure Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 トリガーが発生するたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成され、アプリのワークフローが開始されます。
 
-4. SAP 接続の名前を入力します。
+この例では、ロジック アプリに "*HTTP POST 要求*" を送信できるよう、Azure にエンドポイントを持つロジック アプリを作成します。 ロジック アプリがこれらの HTTP 要求を受信すると、トリガーが作動してワークフロー内の次のステップが実行されます。
 
-5. いくつかオプションがあるので、 IDOC カテゴリを検索するには、一覧から選択選択するか、 パスを手動で入力して、**body** フィールドの HTTP 応答を選択します。
+1. Azure portal で空のロジック アプリを作成して、ロジック アプリ デザイナーを開きます。 
 
-     ![SAP アクション](media/logic-apps-using-sap-connector/picture3.png)
+2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** というトリガーを選択します。
 
-6. アクションを追加して、**HTTP 応答**を作成します。 応答メッセージは、SAP の出力結果からのものにする必要があります。
+   ![HTTP 要求トリガーの追加](./media/logic-apps-using-sap-connector/add-trigger.png)
 
-7. ロジック アプリを保存し、 HTTP トリガー URL を通じて IDOC を送信してテストします。 IDOC が送信されたら、ロジック アプリからの応答を待ちます。   
+3. ロジック アプリに使用するエンドポイントの URL を生成するために、ここでロジック アプリを保存します。
+デザイナーのツール バーで、**[保存]** を選択します。 
 
-     > [!TIP]
-     > [Logic Apps を監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)方法を確認してください。
+   次のように、エンドポイントの URL がトリガーに表示されます。
 
-SAP コネクタがロジック アプリに追加されたので、他の機能も見てみましょう。
+   ![エンドポイントの URL の生成](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
 
-- BAPI
-- RFC
+<a name="add-action"></a>
 
-## <a name="get-help"></a>問い合わせ
+## <a name="add-sap-action"></a>SAP アクションの追加
 
-[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)では、質問の投稿や質問への回答を行うことができるほか、他の Azure Logic Apps ユーザーがどのようなことを行っているかがわかります。
+Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、トリガーまたは別のアクションに続くワークフロー内のステップです。 この例に沿って作業を進める場合、まだロジック アプリにトリガーを追加していない方は、[こちらのセクションで説明されているトリガーを追加](#add-trigger)してください。
 
-[Azure Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
+1. ロジック アプリ デザイナーで、トリガーの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
 
-## <a name="next-steps"></a>次のステップ
+   ![アクションを追加する](./media/logic-apps-using-sap-connector/add-action.png) 
 
-- [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) で検証、変換、および BizTalk に似たその他の機能を使用する。 
-- ロジック アプリから[オンプレミスのデータへの接続](../logic-apps/logic-apps-gateway-connection.md)
+2. 検索ボックスに、フィルターとして「SAP サーバー」と入力します。 アクションの一覧から、目的の SAP サーバーのアクションを選択します。 
+
+   * **[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
+   * **[SAP Message Server - Send to SAP]\(SAP メッセージ サーバー - SAP に送信\)**
+
+   この例では、**[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)** アクションを使用しています。
+
+   !["SAP アプリケーション サーバー" または "SAP メッセージ サーバー" を選択](media/logic-apps-using-sap-connector/select-sap-action.png)
+
+3. 接続の詳細の入力を求められたら、SAP 接続を今すぐ作成します。 それ以外の場合、接続が既に存在する場合は、次の手順に進んで SAP アクションを設定してください。 
+
+   **オンプレミス SAP 接続の作成**
+
+   1. オンプレミス接続のプロパティを表示するために、**[ゲートウェイ]** の **[オンプレミスのデータ ゲートウェイ経由で接続]** をオンにします。
+
+   2. SAP サーバーの接続情報を指定します。 
+   **gateway** プロパティには、ゲートウェイのインストール用に Azure portal で作成したデータ ゲートウェイを選択してください (次の例を参照)。
+
+      **SAP アプリケーション サーバー**
+
+      ![SAP アプリケーション サーバー接続を作成](./media/logic-apps-using-sap-connector/create-SAP-app-server-connection.png)  
+
+      **SAP メッセージ サーバー**
+
+      ![SAP メッセージ サーバー接続を作成](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
+
+   2. 操作が完了したら、**[作成]** を選択します。
+
+      Logic Apps により、接続のセットアップとテストが行われ、適切に機能していることが確認されます。
+
+4. 次に、SAP サーバーのアクションを検索して選択します。 
+
+   1. **[SAP アクション]** ボックスのフォルダー アイコンを選択します。 
+   フォルダー一覧から、使用するアクションを検索して選択します。 
+
+      この例では、IDoc アクションの **[IDOC]** カテゴリを選択しています。 
+
+      ![IDoc アクションを検索して選択](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
+
+      目的のアクションが見つからない場合は、パスを手動で入力してください。その例を次に示します。
+
+      ![IDoc アクションのパスを手動で入力](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
+
+      IDoc の操作の詳細については、「[IDOC 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
+
+   2. **[入力メッセージ]** ボックス内をクリックして、動的コンテンツ リストを表示します。 
+   このリストの **[HTTP 要求の受信時]** で、**[本文]** フィールドを選択します。 
+
+      このステップで、HTTP 要求トリガーから本文コンテンツが取り込まれ、その出力が SAP サーバーに送信されます。
+
+      ![[本文] フィールドを選択](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+
+      完成した SAP アクションは次の例のようになります。
+
+      ![SAP アクションの完成](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+
+6. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
+
+<a name="add-response"></a>
+
+## <a name="add-http-response-action"></a>HTTP 応答アクションの追加
+
+ロジック アプリのワークフローに応答アクションを追加し、SAP アクションからの出力を取り込みます。 こうして SAP サーバーから受け取った結果が、ロジック アプリから要求元に返されます。 
+
+1. ロジック アプリ デザイナーで、SAP アクションの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
+
+2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、**[要求 - 応答]** アクションを選択します。
+
+3. **[本文]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[Send to SAP]\(SAP に送信\)** で、**[本文]** フィールドを選択します。 
+
+   ![SAP アクションの完成](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
+
+4. ロジック アプリを保存し、 
+
+## <a name="test-your-logic-app"></a>ロジック アプリをテストする
+
+1. まだロジック アプリが有効になっていない場合は、ロジック アプリのメニューで **[概要]** を選択します。 ツール バーで、**[有効]** を選択します。 
+
+2. ロジック アプリ デザイナーのツール バーの **[実行]** を選択します。 この手順では、ロジック アプリを手動で起動します。
+
+3. HTTP 要求トリガーの URL に HTTP POST 要求を送信してロジック アプリをトリガーし、要求にメッセージの内容を追加します。 要求は、[Postman](https://www.getpostman.com/apps) などのツールを使用して送信することができます。 
+
+   この記事の要求で送信するのは IDoc ファイルです。このファイルは XML 形式であること、また、使用する SAP アクションの名前空間を含んでいる必要があります。その例を次に示します。 
+
+   ``` xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//620/Send">
+      <idocData>
+         <...>
+      </idocData>
+   </Send>
+   ```
+
+4. HTTP 要求を送信したら、ロジック アプリからの応答を待機します。
+
+> [!NOTE]
+> 応答に必要なすべての手順が[要求タイムアウト制限](./logic-apps-limits-and-config.md)内に完了しない場合、ロジック アプリがタイムアウトします。 この状況に陥ると、要求がブロック状態になります。 問題の診断については、[ロジック アプリをチェックしたり監視したりする方法](../logic-apps/logic-apps-monitor-your-logic-apps.md)に関するページを参照してください。
+
+お疲れさまでした。SAP サーバーとやり取りすることのできるロジック アプリは、これで完成です。 ロジック アプリに使用する SAP 接続をセットアップしたら、BAPI や RFC など、他に利用できる SAP アクションを探してみましょう。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタに関して、その Swagger ファイルで記述される技術的詳細については、次のリファレンス記事を参照してください。 
+
+* [SAP アプリケーション サーバー](/connectors/sapapplicationserver/)
+* [SAP メッセージ サーバー](/connectors/sapmessageserver/)
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+
+## <a name="next-steps"></a>次の手順
+
+* [ロジック アプリからオンプレミスのシステムに接続](../logic-apps/logic-apps-gateway-connection.md)します。
+* [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) を使用して、検証や変換など、各種のメッセージ操作を実行する方法を確認します。
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
