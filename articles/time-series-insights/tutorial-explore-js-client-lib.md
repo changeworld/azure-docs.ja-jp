@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: bryanla
 ms.openlocfilehash: 70e29b1a6b8a4443ae6545ec7960f1d2370218e3
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "36295394"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル: Azure Time Series Insights JavaScript クライアント ライブラリを調べる

@@ -10,12 +10,12 @@ ms.service: multi-factor-authentication
 ms.workload: identity
 ms.topic: article
 ms.date: 05/01/2018
-ms.openlocfilehash: d28bb4b8e171ef6189f81acc337088b3c5499ccf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608270"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264370"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -151,39 +151,39 @@ MFA Server のコマンド ラインから次のコマンドを実行して、�
 
 ## <a name="gather-data-from-nps-extension"></a>NPS 拡張機能からのデータの収集
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用して、エクスポートを要求します。
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用して、エクスポートを要求します。
 
 - MFA 情報はエクスポートに含まれます。この操作が完了するまでに数時間または数日かかることがあります。
 - AzureMfa/AuthN/AuthNOptCh、AzureMfa/AuthZ/AuthZAdminCh、および AzureMfa/AuthZ/AuthZOptCh イベント ログ内に出現するユーザー名は運用データと見なされ、エクスポートで提供される情報と重複していると見なされます。
 
 ## <a name="delete-data-from-nps-extension"></a>NPS 拡張機能からのデータの削除
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
 ## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS アダプターからのデータの収集
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用して、エクスポートを要求します。 
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用して、エクスポートを要求します。 
 
 - MFA 情報はエクスポートに含まれます。この操作が完了するまでに数時間または数日かかることがあります。
 - AD FS Tracing/Debug イベント ログ (有効な場合) 内に出現するユーザー名は運用データと見なされ、エクスポートで提供される情報と重複していると見なされます。
 
 ## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS アダプターからのデータの削除
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
 ## <a name="gather-data-for-azure-mfa"></a>Azure MFA のデータの収集
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用して、エクスポートを要求します。
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用して、エクスポートを要求します。
 
 - MFA 情報はエクスポートに含まれます。この操作が完了するまでに数時間または数日かかることがあります。
 
 ## <a name="delete-data-for-azure-mfa"></a>Azure MFA のデータの削除
 
-[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
+[Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
