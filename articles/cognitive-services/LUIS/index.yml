@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Language Understanding (LUIS) のドキュメント
+metadata:
+  document_id: 
+  title: Language Understanding (LUIS) - チュートリアル、クイック スタート、API リファレンス
+  description: Language Understanding サービスを使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
+  author: Kaiqb
+  manager: carolz
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/25/2018
+  ms.author: kamrani
+  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
+  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/08/2018
+  ms.locfileid: "35358289"
+abstract:
+  description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="luis-get-started-create-app.md">事前構築済みドメインのアプリを作成する</a>
+    - html: <a href="luis-quickstart-intents-only.md">カスタム ドメインのアプリを作成する</a>
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="luis-quickstart-primary-and-secondary-data">単純なエンティティを使用して、音声からメッセージ データを抽出する</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">正規表現エンティティを使用して、音声から KB 記事番号を抽出する</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">リスト エンティティを使用して、音声から飲み物の注文情報を抽出する</a>
+    - html: <a href="luis-tutorial-pattern">パターンを使用して、意図とエンティティの予測の精度を向上させる</a>
+    - html: <a href="luis-tutorial-interchangeable-phrase-list">フレーズ リストで単語の重要性を高める</a>
+    - html: <a href="luis-get-started-cs-get-intent">音声を LUIS に送り、エンドポイント予測応答を受け取る - C#</a>
+    - html: <a href="luis-get-started-cs-add-utterance">サンプルの音声を意図に追加して LUIS アプリをトレーニングする - C#</a>
+- title: ビデオ
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Build 2018 での Azure Friday - Cognitive Services - Language (LUIS)</a>
+    - html: <a href="https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player" > Build 2018 の AI ショー - Language Understanding Intelligent Service (LUIS) の新機能</a>
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 のセッション - ボット インテリジェンス、音声機能、NLU のベスト プラクティス</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST API v2
+      html: <p><a href="https://aka.ms/luis-endpoint-apis"> エンドポイント API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> 作成 API</a></p>
+    - title: SDK
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 作成 SDK</a></p>
+    - title: コード サンプル
+      html: <p><a href="https://aka.ms/luis-code-samples"> コード サンプル</a></p>

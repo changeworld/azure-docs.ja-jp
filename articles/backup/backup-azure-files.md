@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 40c57a00363d3952f85a053724ab7dbec257670d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606462"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287662"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -28,17 +28,21 @@ ms.locfileid: "34606462"
 > * バックアップ データを削除する
 
 ## <a name="prerequisites"></a>前提条件
-Azure ファイル共有をバックアップする前に、[サポートされているストレージ アカウントの種類](troubleshoot-azure-files.md#preview-boundaries)のいずれかにそれが存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
+Azure ファイル共有をバックアップする前に、[サポートされているストレージ アカウントの種類](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)のいずれかにそれが存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
-Azure ファイル共有のバックアップはプレビュー段階です。 プレビュー期間は、次の制限に注意してください。
-- [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy-zrs.md) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy-grs.md) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。
-- 仮想ネットワークが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
-- Azure Files の保護を目的とした PowerShell と CLI は提供されていません。
+Azure ファイル共有のバックアップはプレビュー段階です。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
+- [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。*
+- 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
+- Azure Backup を使用して Azure Files を保護することを目的とした PowerShell と CLI は提供されていません。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。
 - オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
-- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。 
+- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
+
+\* [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有
+
+[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS) および米国東部 2 (EUS2) でのみ使用できます
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップの構成
 すべてのバックアップ データは、Recovery Services コンテナーに格納されます。 このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:
@@ -55,7 +59,7 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/set-backup-goal.png)
 
-    コンテナーが Azure ファイル共有に関連付けられると、[バックアップ] メニューが開き、ストレージ アカウントを選択するように求められます。 このメニューには、コンテナーが存在するリージョン内にある、まだ Recovery Services コンテナーに関連付けられていないサポートされているストレージ アカウントがすべて表示されます。
+    コンテナーが Azure ファイル共有に関連付けられると、[バックアップ] メニューが開き、ストレージ アカウントを選択するように求められます。 このメニューには、コンテナーが存在するリージョン内にある、まだ Recovery Services コンテナーに関連付けられていない、サポートされているストレージ アカウントがすべて表示されます。
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/list-of-storage-accounts.png)
 
@@ -175,7 +179,7 @@ Azure ファイル共有の保護を停止するには:
 
 ### <a name="resume-protection-for-azure-file-share"></a>Azure ファイル共有の保護の再開
 
-ファイル共有の保護を停止するときに [バックアップデータの保持] オプションを選択した場合は、保護を再開することができます。 **[バックアップ データの削除]** オプションを選択した場合は、ファイル共有の保護を再開できません。
+ファイル共有の保護を停止するときに [バックアップ データの保持] オプションを選択した場合は、保護を再開することができます。 **[バックアップ データの削除]** オプションを選択した場合は、ファイル共有の保護を再開できません。
 
 ファイル共有の保護を再開するには、[Backup Items]\(バックアップ項目\) に移動し、[バックアップの再開] をクリックします。 [バックアップ ポリシー] が開き、任意のポリシーを選択してバックアップを再開できます。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のトピックとサブスクリプションを Node.js で使用する方法 | Microsoft Docs"
-description: "Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。"
+title: Azure Service Bus のトピックとサブスクリプションを Node.js で使用する方法 | Microsoft Docs
+description: Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,29 +14,39 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641307"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。 トピックとサブスクリプションの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
+このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。 紹介するシナリオは次のとおりです。
+
+- キュー、トピック、およびサブスクリプションを作成する 
+- サブスクリプション フィルターを作成する 
+- メッセージをトピックに送信する 
+- サブスクリプションからメッセージを受信する
+- トピックとサブスクリプションを削除する 
+
+トピックとサブスクリプションの詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Node.js Azure パッケージをダウンロードします。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
-1. **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
-2. コマンド ウィンドウに「**npm install azure**」と入力します。次のような出力が生成されます。
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを開きます。
+2. サンプル アプリケーションを作成したフォルダーに移動します。
+3. コマンド ウィンドウに「**npm install azure**」と入力します。次のような出力が生成されます。
 
    ```
        azure@0.7.5 node_modules\azure
@@ -65,7 +75,7 @@ Azure モジュールは、前の手順の「資格情報の取得」から取�
 
 Azure Cloud Service の環境変数を設定する例については、[Storage を使用する Node.js Cloud Service][Node.js Cloud Service with Storage] に関する記事をご覧ください。
 
-Azure Web サイトの環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]に関する記事をご覧ください。
+
 
 ## <a name="create-a-topic"></a>トピックを作成する
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -74,7 +84,7 @@ Azure Web サイトの環境変数を設定する例については、[ストレ
 var serviceBusService = azure.createServiceBusService();
 ```
 
-**ServiceBusService** オブジェクトで `createTopicIfNotExists` を呼び出すことによって、指定されたトピックが返されるか (存在する場合)、指定された名前で新しいトピックが作成されます。 次のコードでは、`createTopicIfNotExists` を使用して、`MyTopic` という名前のトピックを作成、またはキューに接続します。
+**ServiceBusService** オブジェクトの `createTopicIfNotExists` を呼び出すと、指定されたトピックが返されるか (存在する場合)、指定された名前で新しいトピックが作成されます。 次のコードでは、`createTopicIfNotExists` を使用して、`MyTopic` という名前のトピックを作成、またはキューに接続します。
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -85,7 +95,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 次の例では、最大トピック サイズを 5 GB に、有効期間を 1 分に設定します。
+`createServiceBusService` メソッドは追加のオプションもサポートしています。これにより、メッセージの有効期間や最大トピック サイズなどの既定のトピックの設定をオーバーライドできます。 
+
+次の例では、最大トピック サイズを 5 GB に、有効期間を 1 分に設定します。
 
 ```javascript
 var topicOptions = {
@@ -113,7 +125,7 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-このコールバックで、`returnObject` (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、`finalCallback` を呼び出す必要があります (サービス呼び出しを終了する場合)。
+このコールバックで、`returnObject` (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出して (存在する場合) 他のフィルターの処理を続けるか、`finalCallback` を呼び出してサービス呼び出しを終了する必要があります。
 
 再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **ServiceBusService** オブジェクトを作成します。
 
@@ -126,12 +138,12 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 トピック サブスクリプションも **ServiceBusService** オブジェクトで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定できます。
 
 > [!NOTE]
-> サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に `getSubscription` メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+> サブスクリプションは、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで保持されます。 アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に `getSubscription` メソッドを使用して、サブスクリプションが存在しているかどうかを確認する必要があります。
 >
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
-**MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
+**MatchAll** フィルターは、サブスクリプションの作成時に使用される既定のフィルターです。 **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -223,14 +235,14 @@ var rule={
 }
 ```
 
-メッセージが `MyTopic` に送信されると、そのメッセージは `AllMessages` トピック サブスクリプションにサブスクライブしている受信者に必ず配信され、さらにメッセージのコンテンツに応じて、`HighMessages` と `LowMessages` トピック サブスクリプションにサブスクライブしている受信者に対して選択的に配信されます。
+メッセージが `MyTopic` に送信されると、そのメッセージは `AllMessages` トピック サブスクリプションにサブスクライブしている受信者に配信され、さらにメッセージのコンテンツに応じて、`HighMessages` と `LowMessages` トピック サブスクリプションにサブスクライブしている受信者に対して選択的に配信されます。
 
 ## <a name="how-to-send-messages-to-a-topic"></a>メッセージをトピックに送信する方法
 メッセージを Service Bus トピックに送信するには、アプリケーションで **ServiceBusService** オブジェクトの `sendTopicMessage` メソッドを使用する必要があります。
 Service Bus トピックに送信されたメッセージは **BrokeredMessage** オブジェクトです。
 **BrokeredMessage** オブジェクトには、(`Label` や `TimeToLive` などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が備わっています。 アプリケーションでは、文字列値を `sendTopicMessage` に渡すことによってメッセージの本文を設定できます。必須の標準プロパティは既定値に設定されます。
 
-次の例では、`MyTopic` トピックに 5 件のテスト メッセージを送信する方法を示しています。 各メッセージの `messagenumber` プロパティの値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
+次の例では、`MyTopic` トピックに 5 件のテスト メッセージを送信する方法を示しています。 各メッセージの `messagenumber` プロパティの値がループの反復回数に応じて変化します (これによってメッセージを受信するサブスクリプションが決定されます)。
 
 ```javascript
 var message = {
@@ -254,12 +266,12 @@ for (i = 0;i < 5;i++) {
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveSubscriptionMessage` メソッドを使用します。 既定では、メッセージは読み取られるときにサブスクリプションから削除されますが、省略可能な `isPeekLock` パラメーターを **true** に設定することによって、サブスクリプションからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックすることができます。
+サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveSubscriptionMessage` メソッドを使用します。 既定では、読み取られたメッセージはサブスクリプションから削除されます。 ただし、省略可能な `isPeekLock` パラメーターを **true** に設定すると、メッセージを読み取って (ピークして) ロックすることで、サブスクリプションにメッセージを残すことができます。
 
-受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-`isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
-アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**deleteMessage** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 **deleteMessage** メソッドによって、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
+`isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージの紛失が許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取るメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
+アプリケーションによってメッセージが処理された後 (または後で処理するために確実に保存され後)、**deleteMessage** メソッドが呼び出され、受信処理の第 2 段階が完了し、その後、削除するメッセージがパラメーターとして渡されます。 **deleteMessage** メソッドによって、メッセージが読み取り済みとしてマークされ、サブスクリプションから削除されます。
 
 次の例では、`receiveSubscriptionMessage` を使用したメッセージの受信および処理の方法を示しています。 この例では、最初に "LowMessages" サブスクリプションからメッセージを受信して削除し、次に true に設定した `isPeekLock` を使用して "HighMessages" サブスクリプションからメッセージを受信します。 次に、`deleteMessage` を使用してメッセージを削除します。
 
@@ -285,11 +297,11 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によりサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。 このインスタンスでは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
 
-サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
+サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。 アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態になります。
 
-メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般に、この動作は "*1 回以上の処理*" と呼ばれます。 つまり、各メッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合は、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 メッセージの **MessageId** プロパティを使用できます。このプロパティには、配信が試行された後も同じ値が保持されます。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
 トピックおよびサブスクリプションは永続的であり、[Azure ポータル][Azure portal]またはプログラムによって明示的に削除する必要があります。
@@ -313,7 +325,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]。
@@ -326,6 +338,6 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service/app-service-web-get-started-nodejs.md
+[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
+

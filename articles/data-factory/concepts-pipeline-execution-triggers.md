@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/29/2018
+ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715039"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293481"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -142,6 +142,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - タンブリング ウィンドウ トリガー: 状態を保持しながら定期的に実行されるトリガー。 Azure Data Factory では、現在、イベントベースのトリガーがサポートされていません。 たとえば、ファイル到着イベントに対応するパイプライン実行のトリガーはサポートされていません。
 
+- イベントベースのトリガー: イベントに応答するトリガー。
+
 パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガー定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストを参照します。 プロパティ定義には、パイプライン パラメーターの値が含まれています。
 
 ### <a name="basic-trigger-definition"></a>基本的なトリガー定義
@@ -175,11 +177,6 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 スケジュール トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的および高度な予定表のオプションをサポートしています。 たとえば、トリガーでは、"毎週" または "月曜日午後 5 時と木曜日午後 9 時" のような間隔がサポートされています。 スケジュール トリガーは、時系列データと非時系列データを区別せず、データセット パターンに依存しないため、柔軟性があります。
 
 スケジュール トリガーの詳細と例については、[スケジュール トリガーの作成](how-to-create-schedule-trigger.md)に関するページを参照してください。
-
-## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
-タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
-
-タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
 ## <a name="schedule-trigger-definition"></a>スケジュール トリガーの定義
 スケジュール トリガーを作成する場合、JSON 定義を使用してスケジュール設定と繰り返しを指定します。 
@@ -322,6 +319,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **weekDays** | トリガーを実行する曜日。 この値を指定できるのは、頻度が週単位の場合のみです。|<br />- Monday<br />- Tuesday<br />- Wednesday<br />- Thursday<br />- Friday<br />- Saturday<br />- Sunday<br />- 曜日の値の配列 (配列の最大サイズは 7)<br /><br />曜日の値の大文字小文字は区別されません|
 | **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 |- **monthlyOccurence** オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`<br />- **day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。<br />- **occurrence** 属性は、月内の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。|
 | **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 |- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値<br />- 値の配列|
+
+## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
+タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
+
+タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
+
+## <a name="event-based-trigger"></a>イベントベースのトリガー
+
+イベントベースのトリガーは、ファイルの到着、ファイルの削除などのイベントに応答して、Azure Blob Storage 内でパイプラインを実行します。
+
+イベントベースのトリガーの詳細については、「[Create a trigger that runs a pipeline in response to an event (イベントに応答してパイプラインを実行するトリガーの作成)](how-to-create-event-trigger.md)」を参照してください。
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>トリガーの繰り返しのスケジュールの例
 このセクションでは、繰り返しのスケジュールの例を示します。 **schedule** オブジェクトとその要素に焦点を当てています。

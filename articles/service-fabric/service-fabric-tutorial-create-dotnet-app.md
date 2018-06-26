@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: a1197277b97c14e95bdab67f7c3d00b75a841f22
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312697"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267576"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
@@ -74,9 +74,21 @@ ms.locfileid: "32312697"
    ![アプリケーションと ASP.NET Core Web API サービスの作成後に表示されるソリューション エクスプローラー]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
 ### <a name="add-angularjs-to-the-votingweb-service"></a>VotingWeb サービスに AngularJS を追加する
-[Bower サポート](/aspnet/core/client-side/bower)を使用して、[AngularJS](http://angularjs.org/) をサービスに追加します。 最初に、Bower 構成ファイルをプロジェクトに追加します。  ソリューション エクスプローラーで **[VotingWeb]** を右クリックし、**[追加]->[新しいアイテム]** の順に選択します。 **[Web]**、**[Bower 構成ファイル]** の順に選択します。  *bower.json* ファイルが作成されます。
+[Bower サポート](/aspnet/core/client-side/bower)を使用して、[AngularJS](http://angularjs.org/) をサービスに追加します。 最初に、*.bowerrc* 構成ファイルをプロジェクトに追加します。  ソリューション エクスプローラーで **[VotingWeb]** を右クリックし、**[追加]->[新しいアイテム]** の順に選択します。 **[C#]**、**[JSON ファイル]** の順に選択します。  *[名前]* フィールドに「**.bowerrc**」と入力し、**[追加]** をクリックします。
 
-*bower.json* を開き、angular と angular-bootstrap のエントリを追加し、変更を保存します。
+*.bowerrc* を開き、以下の内容に置き換えます。これは、Bower がパッケージ資産を *wwwroot/lib* ディレクトリにインストールすることを示しています。
+
+```json
+{
+ "directory": "wwwroot/lib"
+}
+```
+
+*.bowerrc* の変更内容を保存します。  これにより、プロジェクトに *.bowerrc* ファイルが作成されます。  
+
+次に、Bower 構成ファイルをプロジェクトに追加します。  ソリューション エクスプローラーで **[VotingWeb]** を右クリックし、**[追加]->[新しいアイテム]** の順に選択します。 **[C#]**、**[JSON ファイル]** の順に選択します。  *[名前]* フィールドに「**bower.json**」と入力し、**[追加]** をクリックします。
+
+*bower.json* を開き、内容を次の angular と angular-bootstrap のエントリに置き換え、変更を保存します。
 
 ```json
 {
@@ -92,7 +104,8 @@ ms.locfileid: "32312697"
   }
 }
 ```
-*bower.json* ファイルを保存すると、Angular がプロジェクトの *wwwroot/lib* フォルダーにインストールされます。 また、*Dependencies/Bower* フォルダー内に表示されます。
+
+*bower.json* ファイルを保存すると、Visual Studio の bower サポートにより、Angular がプロジェクトの *wwwroot/lib* フォルダーにインストールされます。 また、*Dependencies/Bower* フォルダー内に表示されます。
 
 ### <a name="update-the-sitejs-file"></a>site.js ファイルを更新する
 *wwwroot/js/site.js* ファイルを開きます。  ホーム ビューに使用されるコンテンツを JavaScript で置き換えます。

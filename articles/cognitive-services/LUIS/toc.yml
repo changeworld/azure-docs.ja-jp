@@ -1,0 +1,303 @@
+- name: LUIS のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Language Understanding の詳細
+      href: Home.md
+    - name: サポートされている言語
+      href: luis-supported-languages.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: アプリ モデルの構築
+      items:
+        - name: 事前構築済みのドメインの使用
+          href: luis-get-started-create-app.md
+        - name: カスタム ドメインの使用
+          href: luis-quickstart-intents-only.md
+- name: チュートリアル
+  items:
+    - name: 事前構築済みの意図とエンティティの追加
+      href: luis-tutorial-prebuilt-intents-entities.md
+    - name: エンティティからのデータの取得
+      items:
+        - name: シンプルなエンティティ
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 階層構造エンティティ
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: リスト エンティティ
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 正規表現エンティティ
+          href: luis-quickstart-intents-regex-entity.md
+        - name: keyPhrase エンティティ
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: センチメント分析
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 予測の改善
+      items:
+        - name: パターンの利用
+          href: luis-tutorial-pattern.md
+        - name: フレーズ リストの利用
+          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: API の利用
+      items:
+        - name: エンドポイント クエリによる発言予測の取得
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-get-intent.md
+            - name: Java
+              href: luis-get-started-java-get-intent.md
+            - name: JavaScript
+              href: luis-get-started-js-get-intent.md
+            - name: Node.js
+              href: luis-get-started-node-get-intent.md
+            - name: Python
+              href: luis-get-started-python-get-intent.md
+            - name: PHP
+              href: luis-get-started-php-get-intent.md
+            - name: Ruby
+              href: luis-get-started-ruby-get-intent.md
+        - name: 発言意図の追加およびアプリのトレーニング
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-add-utterance.md
+            - name: Java
+              href: luis-get-started-java-add-utterance.md
+            - name: JavaScript
+              href: luis-get-started-javascript-add-utterance.md
+            - name: Node.js
+              href: luis-get-started-node-add-utterance.md
+            - name: Python
+              href: luis-get-started-python-add-utterance.md
+            - name: PHP
+              href: luis-get-started-php-add-utterance.md
+            - name: Ruby
+              href: luis-get-started-ruby-add-utterance.md
+- name: サンプル
+  items:
+    - name: コード サンプル
+      href: 'https://github.com/Microsoft/LUIS-Samples'
+- name: 概念
+  items:
+    - name: ベスト プラクティス
+      href: luis-concept-best-practices.md
+    - name: アプリの作成
+      items:
+        - name: 作成サイクル
+          href: luis-concept-app-iteration.md
+        - name: コラボレーション
+          href: luis-concept-collaborator.md
+        - name: バージョン管理
+          href: luis-concept-version.md
+    - name: 設計モデル
+      items:
+        - name: 意図
+          href: luis-concept-intent.md
+        - name: エンティティ
+          href: luis-concept-entity-types.md
+        - name: 発話
+          href: luis-concept-utterance.md
+        - name: ロール
+          href: luis-concept-roles.md
+    - name: アプリのパフォーマンス向上
+      items:
+        - name: 予測スコア
+          href: luis-concept-prediction-score.md
+        - name: エンドポイントの発言の確認
+          href: luis-concept-review-endpoint-utterances.md
+        - name: フレーズ リスト
+          href: luis-concept-feature.md
+        - name: パターン
+          href: luis-concept-patterns.md
+    - name: '[データ管理]'
+      items:
+        - name: データの変更
+          href: luis-concept-data-alteration.md
+        - name: データの変換
+          href: luis-concept-data-conversion.md
+        - name: データの抽出
+          href: luis-concept-data-extraction.md
+        - name: データ ストレージ
+          href: luis-concept-data-storage.md
+    - name: テスト
+      items:
+        - name: 対話型テスト
+          href: luis-concept-test.md
+        - name: バッチ テスト
+          href: luis-concept-batch-test.md
+    - name: Enterprise
+      items:
+        - name: 設計戦略
+          href: luis-concept-enterprise.md
+    - name: セキュリティ
+      items:
+        - name: アプリのアクセス
+          href: luis-concept-security.md
+        - name: オーサリング キーとエンドポイント キー
+          href: luis-concept-keys.md
+- name: ハウツー ガイド
+  items:
+    - name: アプリの計画
+      href: Plan-your-app.md
+    - name: 新しいアプリの開始
+      href: Create-new-app.md
+    - name: モデルの構築
+      items:
+        - name: 意図の追加
+          href: luis-how-to-add-intents.md
+        - name: 発話の追加
+          href: luis-how-to-add-example-utterances.md
+        - name: 複数エンティティの追加
+          href: luis-how-to-add-entities.md
+        - name: グループ化されたデータを複合エンティティにより抽出する
+          href: luis-tutorial-composite-entity.md
+        - name: リスト エンティティを使って正確に一致するテキストを特定する (Node.js)
+          href: luis-tutorial-list-entity.md
+        - name: Node.js を使ってプログラムによりアプリをビルドする
+          href: luis-tutorial-node-import-utterances-csv.md
+    - name: 統合
+      items:
+        - name: Bing Spell Check API v7 によるスペルの訂正
+          href: luis-tutorial-bing-spellcheck.md
+        - name: Speech Service との統合
+          href: luis-tutorial-speech-to-intent.md
+        - name: ボットとの統合
+          items:
+            - name: Web アプリ ボットとの統合
+              items:
+                - name: Node.js
+                  href: luis-nodejs-tutorial-build-bot-framework-sample.md
+                - name: 'C#'
+                  href: luis-csharp-tutorial-build-bot-framework-sample.md
+            - name: Application Insights
+              items:
+                - name: Node.js
+                  href: luis-tutorial-function-appinsights.md
+                - name: 'C#'
+                  href: luis-tutorial-bot-csharp-appinsights.md
+    - name: 予測精度の改善
+      items:
+        - name: エンドポイントの発言の確認
+          href: Label-Suggested-Utterances.md
+        - name: フレーズ リストの追加
+          href: luis-how-to-add-features.md
+        - name: パターンの追加
+          href: luis-how-to-model-intent-pattern.md
+    - name: トレーニング
+      href: luis-how-to-train.md
+    - name: テスト
+      items:
+        - name: 対話型テスト
+          href: interactive-test.md
+        - name: バッチ テスト
+          href: luis-how-to-batch-test.md
+        - name: バッチ テストによる精度向上
+          href: luis-tutorial-batch-testing.md
+    - name: アプリケーションの発行
+      href: PublishApp.md
+    - name: 事前構築済みのモデルの使用
+      items:
+        - name: 事前構築済みのエンティティの使用
+          href: Pre-builtEntities.md
+        - name: 事前構築済みのドメインの使用
+          href: luis-how-to-use-prebuilt-domains.md
+        - name: 事前構築済みの Cortana アプリの使用
+          href: Cortana-Prebuilt-App.md
+    - name: LUIS アプリの管理
+      items:
+        - name: ダッシュボードの利用
+          href: luis-how-to-use-dashboard.md
+        - name: キーの作成
+          href: luis-how-to-azure-subscription.md
+        - name: LUIS でのキーの追加
+          href: Manage-Keys.md
+        - name: PowerShell を使ったエンドポイントの使用状況の表示
+          href: luis-how-to-manage-from-cloud-shell.md
+        - name: バージョンの管理
+          href: luis-how-to-manage-versions.md
+        - name: 他の作成者との共同作業
+          href: luis-how-to-collaborate.md
+        - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
+          href: traffic-manager.md
+    - name: LUIS アカウントの管理
+      href: luis-how-to-account-settings.md
+    - name: V2 API への移行
+      href: migration-v1-to-v2.md
+    - name: プログラムを使ったリージョン検索
+      items:
+        - name: 'C# の使用'
+          href: find-region-csharp.md
+        - name: Node.js の使用
+          href: find-region-nodejs.md
+- name: リファレンス
+  items:
+    - name: ユーザーのプライバシー
+      href: luis-reference-gdpr.md
+    - name: リージョン
+      href: luis-reference-regions.md
+    - name: 境界
+      href: luis-boundaries.md
+    - name: 事前構築済みのエンティティのリファレンス
+      href: luis-reference-prebuilt-entities.md
+    - name: 事前構築済みのドメインのリファレンス
+      href: luis-reference-prebuilt-domains.md
+    - name: 事前構築済みの Cortana アプリのリファレンス
+      href: luis-reference-cortana-prebuilt.md
+    - name: V2 API の作成
+      href: 'https://aka.ms/luis-authoring-apis'
+    - name: エンドポイント V2 API
+      href: 'https://aka.ms/luis-endpoint-apis'
+    - name: HTTP コード
+      href: luis-reference-response-codes.md
+    - name: Azure CLI 2.0
+      href: 'https://aka.ms/az-cli-cognitiveservices'
+    - name: Azure RM PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: SDK
+      items:
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
+        - name: Node.js
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Python
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
+        - name: .NET エンドポイント
+          href: 'https://aka.ms/luis-endpoint-sdk'
+        - name: .NET 作成
+          href: 'https://aka.ms/luis-authoring-sdk'
+- name: 関連項目
+  items:
+    - name: Bot Framework
+      href: 'https://dev.botframework.com/'
+    - name: 'Bot Builder 3.x SDK C#'
+      href: 'https://github.com/Microsoft/BotBuilder'
+    - name: 'Bot Builder 4.x SDK C#'
+      href: 'https://github.com/Microsoft/botbuilder-dotnet'
+    - name: QnA Maker
+      href: 'https://qnamaker.ai/'
+    - name: Bing Speech API
+      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+    - name: Bing Spell Check API
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: Text Analytics
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://aka.ms/luis-roadmap'
+    - name: 用語集
+      href: luis-glossary.md
+    - name: FAQ
+      href: luis-resources-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/LUIS'
+    - name: UserVoice
+      href: 'https://aka.ms/luis-uservoice-forum'
+    - name: Search
+      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+    - name: ブログ
+      href: 'https://blog.botframework.com/category/luis/'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'

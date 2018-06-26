@@ -8,31 +8,29 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: bdb35cf47b339ff2089b3849283a71aa9d8fbc3d
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807416"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287330"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップに関する問題のトラブルシューティング
 次の表に示す情報を使って、Azure ファイル共有のバックアップを使用中に発生した問題やエラーのトラブルシューティングを行うことができます。
 
-## <a name="preview-boundaries"></a>プレビュー境界
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
 Azure ファイル共有のバックアップはプレビュー段階です。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
-- [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護する。*
-- 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護する。
-- PowerShell または CLI を使用して Azure ファイル共有をバックアップする。
+- [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。*
+- 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
+- Azure Backup を使用して Azure Files を保護することを目的とした PowerShell と CLI は提供されていません。
+- スケジュール バックアップの数は、1 日につき 1 個が上限となります。
+- オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
+- ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
+- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
 
 \* [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有
 
 [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS) および米国東部 2 (EUS2) でのみ使用できます
-
-### <a name="limitations"></a>制限事項
-- 1 日あたりのスケジュールされたバックアップの最大数は 1 です。
-- 1 日あたりのオンデマンド バックアップの最大数は 4 です。
-- ストレージ アカウントに対するリソース ロックを使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
-- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
 
 ## <a name="configuring-backup"></a>バックアップの構成
 次の表は、バックアップの構成に関連しています。

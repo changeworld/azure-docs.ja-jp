@@ -1,0 +1,111 @@
+- name: Translator Text API のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Translator Text API とは
+      href: translator-info-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 'C#'
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-csharp-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-csharp-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-csharp-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-csharp-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-csharp-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-csharp-sentences.md
+    - name: Java
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-java-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-java-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-java-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-java-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-java-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-java-sentences.md
+- name: 概念
+  items:
+    - name: サポートされている言語
+      href: languages.md
+    - name: テキストの翻訳をカスタマイズおよび改善する
+      href: customization.md
+    - name: API が文字数をカウントする方法
+      href: character-counts.md
+- name: ハウツー ガイド
+  items:
+    - name: Translator Text API にサインアップする
+      href: translator-text-how-to-signup.md
+    - name: V3 Text API に移行する
+      href: migrate-to-v3.md
+    - name: 不適切な表現のフィルターを追加する
+      href: profanity-filtering.md
+    - name: 単語アラインメント情報を受信する
+      href: word-alignment.md
+    - name: 動的ディクショナリ機能を使用する
+      href: dynamic-dictionary.md
+    - name: Translator Text API を使用する
+      items:
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+        - name: WPF を使ったテキスト翻訳アプリを作成する
+          href: tutorial-wpf-translation-csharp.md
+- name: リファレンス
+  items:
+    - name: v3 Translator Text API のリファレンス
+      href: reference/v3-0-reference.md
+      items:
+        - name: 言語
+          href: reference/v3-0-languages.md
+        - name: 翻訳
+          href: reference/v3-0-translate.md
+        - name: 音訳
+          href: reference/v3-0-transliterate.md
+        - name: 検出
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: 辞書検索
+          href: reference/v3-0-dictionary-lookup.md
+        - name: 辞書の例
+          href: reference/v3-0-dictionary-examples.md
+    - name: v2 Translator Text API のリファレンス (非推奨)
+      href: reference/v2-0-reference.md
+      items:
+        - name: テキストの変換
+          href: transform-text.md
+        - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
+          href: ctf-reporting.md
+        - name: N-Best の翻訳結果を返す
+          href: return-n-best-translations.md
+- name: リソース
+  items:
+    - name: FAQ
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: コード サンプル (GitHub)
+      href: 'https://aka.ms/TranslatorGitHub'

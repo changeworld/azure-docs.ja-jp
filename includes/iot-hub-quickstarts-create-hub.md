@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 7987ee8c9a127c7a41ec2cd1f726450c771d527f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34666968"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36288049"
 ---
 最初の手順では、Azure Portal を使用して、サブスクリプションに IoT Hub を作成します。 IoT Hub を使用すると、多くのデバイスからクラウドに大量の利用統計情報を取り込むことができます。 ハブにより、クラウド内で実行されている 1 つまたは複数のバックエンド サービスがその利用統計情報を読み取って処理することが可能になります。
 
@@ -27,7 +27,7 @@ ms.locfileid: "34666968"
 
    * **[サブスクリプション]**: この IoT ハブを作成するために使用するサブスクリプションを選択します。
 
-   * **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
+   * **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 関連するすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのグループに含まれているすべてのリソースが削除されます。 詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
 
    * **[リージョン]**: 最も近い場所を選択します。
 

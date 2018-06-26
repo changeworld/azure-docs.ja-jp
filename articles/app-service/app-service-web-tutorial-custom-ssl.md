@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 06/19/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9ba8eae0fe9e68e4931bcdda989e59c59fd65edd
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714580"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293331"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
 
@@ -32,9 +32,11 @@ Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホ
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする
-> * カスタム SSL 証明書を App Service にバインドする
-> * アプリに HTTPS を適用する
-> * スクリプトで SSL 証明書のバインドを自動化する
+> * カスタム証明書を App Service にバインドする
+> * 証明書の更新
+> * HTTPS の適用
+> * TLS 1.1/1.2 の適用
+> * スクリプトを使って TLS 管理を自動化する
 
 > [!NOTE]
 > カスタム SSL 証明書を取得する必要がある場合、Azure Portal から直接取得して Web アプリにバインドすることができます。 [App Service 証明書のチュートリアル](web-sites-purchase-ssl-web-site.md)に従ってください。
@@ -92,7 +94,7 @@ Web アプリが **F1** レベルまたは **D1** レベルに含まれていな
 
 ### <a name="scale-up-your-app-service-plan"></a>App Service プランのスケール アップ
 
-非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、**[その他のオプションを参照する]** をご覧ください。
+非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、**[See additional options]\(その他のオプションを参照する\)** をクリックします。
 
 **[Apply]** をクリックします。
 
@@ -213,6 +215,14 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>証明書の更新
+
+バインディングを削除すると、着信 IP アドレスが変化する場合があります。そのバインディングが IP ベースであっても同様です。 IP ベースのバインディングに既に存在する証明書を更新するときには、このことが特に重要となります。 アプリの IP アドレスに変更が生じないようにするには、次の手順に従います。
+
+1. 新しい証明書をアップロードします。
+2. 古い証明書を削除せずに、新しい証明書を目的のカスタム ドメインにバインドします。 これは、古い証明書を削除する代わりに、バインディングを置き換える操作となります。
+3. 古い証明書を削除します。 
+
 ## <a name="enforce-https"></a>HTTPS の適用
 
 既定では、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
@@ -236,14 +246,6 @@ Web アプリ ページで、左側のナビゲーションにある **[SSL 設�
 ![TLS 1.1/1.2 の適用](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
-
-## <a name="renew-certificates"></a>証明書の更新
-
-バインディングを削除すると、着信 IP アドレスが変化する場合があります。そのバインディングが IP ベースであっても同様です。 IP ベースのバインディングに既に存在する証明書を更新するときには、このことが特に重要となります。 アプリの IP アドレスに変更が生じないようにするには、次の手順に従います。
-
-1. 新しい証明書をアップロードします。
-2. 古い証明書を削除せずに、新しい証明書を目的のカスタム ドメインにバインドします。 これは、古い証明書を削除する代わりに、バインディングを置き換える操作となります。
-3. 古い証明書を削除します。 
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
@@ -273,6 +275,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+次のコマンドを実行すると、TLS の最低バージョンが強制的に 1.2 になります。
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
@@ -297,9 +308,11 @@ New-AzureRmWebAppSSLBinding `
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする
-> * カスタム SSL 証明書を App Service にバインドする
-> * アプリに HTTPS を適用する
-> * スクリプトで SSL 証明書のバインドを自動化する
+> * カスタム証明書を App Service にバインドする
+> * 証明書の更新
+> * HTTPS の適用
+> * TLS 1.1/1.2 の適用
+> * スクリプトを使って TLS 管理を自動化する
 
 次のチュートリアルに進み、Azure Content Delivery Network の使用方法を学習してください。
 

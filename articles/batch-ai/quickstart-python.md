@@ -13,14 +13,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: Python
 ms.topic: quickstart
-ms.date: 10/06/2017
-ms.author: lili
-ms.openlocfilehash: da5c1181f9c4d311bdeabe837435ae4e0eb3dc1a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 06/18/2018
+ms.author: danlep
+ms.openlocfilehash: 6e80996cb0359e88d2a6d5fae231523a5c69c8ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31513250"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295263"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>Azure Python SDK を使って CNTK トレーニング ジョブを実行する
 
@@ -32,7 +32,7 @@ ms.locfileid: "31513250"
 
 * Azure サブスクリプション - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* Azure Python SDK -[インストール手順](/python/azure/python-sdk-azure-install)をご覧ください。
+* Azure Python SDK - [インストール手順](/python/azure/python-sdk-azure-install)をご覧ください。 この記事では、バージョン 2.0.0 以降の azure-mgmt-batchai パッケージが必要です。
 
 * Azure Storage アカウント - [Azure Storage アカウントの作成方法](../storage/common/storage-create-storage-account.md)に関するページをご覧ください。
 
@@ -61,6 +61,9 @@ storage_account_key = 'FILL-IN-HERE'
 # specify the credentials used to remote login your GPU node
 admin_user_name = 'FILL-IN-HERE'
 admin_user_password = 'FILL-IN-HERE'
+
+# specify the location in which to create Batch AI resources
+mylocation = 'eastus'
 ```
 
 ソースコードに資格情報を含めるのは良いやり方ではありませんが、ここではクイック スタートを簡単にする目的でこのようにしていることに注意してください。
@@ -93,14 +96,14 @@ resource_group_name = 'myresourcegroup'
 resource_management_client = ResourceManagementClient(
         credentials=creds, subscription_id=subscription_id)
 resource = resource_management_client.resource_groups.create_or_update(
-        resource_group_name, {'location': 'eastus'})
+        resource_group_name, {'location': mylocation})
 ```
 
 
 ## <a name="prepare-azure-file-share"></a>Azure ファイル共有の準備
 このクイック スタートでは、説明上、Azure Files 共有を使用して、トレーニング ジョブのトレーニング データとスクリプトをホストしています。
 
-1. `batchaiquickstart` という名前のファイル共有を作成します。
+`batchaiquickstart` という名前のファイル共有を作成します。
 
 ```Python
 from azure.storage.file import FileService
@@ -109,20 +112,28 @@ service = FileService(storage_account_name, storage_account_key)
 service.create_share(azure_file_share_name, fail_on_exist=False)
 ```
 
-2. 共有内に `mnistcntksample` という名前のディレクトリを作成します
+共有内に `mnistcntksample` という名前のディレクトリを作成します。
 
 ```Python
 mnist_dataset_directory = 'mnistcntksample'
-service.create_directory(azure_file_share_name, mnist_dataset_directory,
-                         fail_on_exist=False)
+service.create_directory(azure_file_share_name, mnist_dataset_directory, fail_on_exist=False)
 ```
-3. [サンプル パッケージ](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D)をダウンロードし、現在のディレクトリに解凍します。 次のコードを実行すると、必要なファイルが Azure Files 共有にアップロードされます。
+[サンプル パッケージ](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D)をダウンロードし、現在のディレクトリに解凍します。 次のコードを実行すると、必要なファイルが Azure Files 共有にアップロードされます。
 
 ```Python
 for f in ['Train-28x28_cntk_text.txt', 'Test-28x28_cntk_text.txt',
           'ConvNet_MNIST.py']:
      service.create_file_from_path(
              azure_file_share_name, mnist_dataset_directory, f, f)
+```
+
+## <a name="create-batch-ai-workspace"></a>Batch AI ワークスペースの作成
+
+ワークスペースは、全種類の Batch AI リソースの最上位のコレクションとなります。 Batch AI のクラスターと実験は、どちらもワークスペースに作成します。
+
+```Python
+workspace_name='myworkspace'
+batchai_client.workspaces.create(resource_group_name, workspace_name, mylocation)
 ```
 
 ## <a name="create-gpu-cluster"></a>GPU クラスターの作成
@@ -135,9 +146,7 @@ cluster_name = 'mycluster'
 relative_mount_point = 'azurefileshare'
 
 parameters = models.ClusterCreateParameters(
-    # Location where the cluster will physically be deployed
-    location='eastus',
-    # VM size. Use NC or NV series for GPU
+    # VM size. Use N-series for GPU
     vm_size='STANDARD_NC6',
     # Configure the ssh users
     user_account_settings=models.UserAccountSettings(
@@ -171,7 +180,7 @@ batchai_client.clusters.create(resource_group_name, cluster_name,
 次のコマンドを使って、クラスターの状態を監視します。
 
 ```Python
-cluster = batchai_client.clusters.get(resource_group_name, cluster_name)
+cluster = batchai_client.clusters.get(resource_group_name, workspace_name, cluster_name)
 print('Cluster state: {0} Target: {1}; Allocated: {2}; Idle: {3}; '
       'Unusable: {4}; Running: {5}; Preparing: {6}; Leaving: {7}'.format(
     cluster.allocation_state,
@@ -192,16 +201,18 @@ Cluster state: AllocationState.steady Target: 1; Allocated: 1; Idle: 0; Unusable
 
 ノードの割り当てが済んで準備が完了したら (`nodeStateCounts` 属性を参照)、クラスターの準備は完了です。 何か問題がある場合、`errors` 属性にエラーの説明が格納されます。
 
-## <a name="create-training-job"></a>トレーニング ジョブの作成
+## <a name="create-experiment-and-training-job"></a>実験とトレーニング ジョブの作成
 
-クラスターが作成されたら、学習ジョブを構成して送信します。
+クラスターを作成したら、実験 (相互に関連するジョブのグループを格納する論理コンテナー) を作成します。 その後、実験内で学習ジョブを構成して送信します。
 
 ```Python
+experiment_name='myexperiment'
+
+batchai_client.experiments.create(resource_group_name, workspace_name, experiment_name)
+
 job_name = 'myjob'
 
-parameters = models.job_create_parameters.JobCreateParameters(
-    # The job and cluster must be created in the same location
-    location=cluster.location,
+parameters = models.JobCreateParameters(
     # The cluster this job will run on
     cluster=models.ResourceId(id=cluster.id),
     # The number of VMs in the cluster to use
@@ -230,16 +241,16 @@ parameters = models.job_create_parameters.JobCreateParameters(
 )
 
 # Create the job
-batchai_client.jobs.create(resource_group_name, job_name, parameters).result()
+batchai_client.jobs.create(resource_group_name, workspace_name, experiment_name, job_name, parameters).result()
 ```
 
 ## <a name="monitor-job"></a>ジョブの監視
 ジョブの状態は、次のコードを使用して確認できます。
 
 ```Python
-job = batchai_client.jobs.get(resource_group_name, job_name)
+job = batchai_client.jobs.get(resource_group_name, workspace_name, experiment_name, job_name)
 
-print('Job state: {0} '.format(job.execution_state.name))
+print('Job state: {0} '.format(job.execution_state))
 ```
 
 `Job state: running` のような出力が返されます。
@@ -254,7 +265,7 @@ print('Job state: {0} '.format(job.execution_state.name))
 
 ```Python
 files = batchai_client.jobs.list_output_files(
-    resource_group_name, job_name,
+    resource_group_name, workspace_name, experiment_name, job_name,
     models.JobsListOutputFilesOptions(outputdirectoryid="stdouterr"))
 
 for file in (f for f in files if f.download_url):
@@ -265,7 +276,7 @@ for file in (f for f in files if f.download_url):
 生成されたモデル ファイルを一覧表示するには、次のコードを使用します。
 ```Python
 files = batchai_client.jobs.list_output_files(
-    resource_group_name, job_name,
+    resource_group_name, workspace_name, experiment_name,job_name,
     models.JobsListOutputFilesOptions(outputdirectoryid="MODEL"))
 
 for file in (f for f in files if f.download_url):
@@ -276,12 +287,12 @@ for file in (f for f in files if f.download_url):
 
 ジョブを削除するには、次のコードを使用します。
 ```Python
-batchai_client.jobs.delete(resource_group_name, job_name)
+batchai_client.jobs.delete(resource_group_name, workspace_name, experiment_name, job_name)
 ```
 
 クラスターを削除するには、次のコードを使用します。
 ```Python
-batchai_client.clusters.delete(resource_group_name, cluster_name)
+batchai_client.clusters.delete(resource_group_name, workspace_name, cluster_name)
 ```
 
 割り当てられているすべてのリソースを削除するには、次のコードを使用します。

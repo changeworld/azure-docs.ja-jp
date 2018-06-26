@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 02/01/2018
+ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea70d6053f12c33d9c3ff4c69f22a41130c783e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171079"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285901"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -70,7 +70,7 @@ ms.locfileid: "30171079"
 9. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
-10. **[Let's get started]\(始めましょう\)** ページで、左側のパネルで **[編集]** タブに切り替えます。 
+10. **[始めましょう]** ページの左側のパネルで **[作成者]** タブに切り替えます。 
 
     ![[Let's get started]\(始めましょう\) ページ](./media/quickstart-create-data-factory-portal/get-started-page.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "30171079"
    ![新しい接続を作成するためのボタン](./media/quickstart-create-data-factory-portal/new-connection-button.png)    
 2. **[New Linked Service]\(新しいリンクされたサービス\)** ページで **[Azure Blob Storage]** を選択し、**[続行]** を選択します。 
 
-   ![[Azure Blob Storage] タイルの選択](./media/quickstart-create-data-factory-portal/select-azure-storage.png)
+   ![[Azure Blob Storage] タイルの選択](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. 次の手順を完了します。 
 
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureStorageLinkedService**」と入力します。
@@ -94,9 +94,6 @@ ms.locfileid: "30171079"
    d. **[保存]** を選択して、リンクされたサービスを保存します。 
 
    ![Azure Storage のリンクされたサービスの設定](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
-4. リンクされたサービスの一覧に **AzureStorageLinkedService** が表示されていることを確認します。 
-
-   ![一覧内の Azure Storage のリンクされたサービス](./media/quickstart-create-data-factory-portal/azure-storage-linked-service-in-list.png)
 
 ## <a name="create-datasets"></a>データセットを作成する
 この手順では、**InputDataset** と **OutputDataset** という 2 つのデータセットを作成します。 これらのデータセットの種類は、**AzureBlob** です。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。 
@@ -112,19 +109,18 @@ ms.locfileid: "30171079"
    ![データセットを作成するためのメニュー](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 2. **[新しいデータセット]** ページで **[Azure Blob Storage]** を選択し、**[完了]** を選択します。 
 
-   ![[Azure Blob Storage] の選択](./media/quickstart-create-data-factory-portal/select-azure-blob-storage.png)
-3. データセットの **[プロパティ]** ウィンドウで、**[名前]** に「**InputDataset**」と入力します。 
+   ![[Azure Blob Storage] の選択](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
+3. データセットの **[全般]** タブで、**[名前]** に「**InputDataset**」と入力します。 
 
-   ![データセットの全般設定](./media/quickstart-create-data-factory-portal/dataset-general-page.png)
 4. **[接続]** タブに切り替えて、次の手順を実行します。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
 
-   b. **[ファイル パス]** で、**[参照]** ボタンを選択します。
+    b. **[ファイル パス]** で、**[参照]** ボタンを選択します。
 
-      ![[接続] タブと [参照] ボタン](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. **[Choose a file or folder]\(ファイルまたはフォルダーの選択\)** ウィンドウで、**adftutorial** コンテナーの **input** フォルダーを参照し、**emp.txt** ファイルを選択して、**[完了]** をクリックします。
+    ![[接続] タブと [参照] ボタン](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. **[Choose a file or folder]\(ファイルまたはフォルダーの選択\)** ウィンドウで、**adftutorial** コンテナーの **input** フォルダーを参照し、**emp.txt** ファイルを選択して、**[完了]** をクリックします。
 
-      ![入力ファイルを参照する](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
+    ![入力ファイルを参照する](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
    d. (省略可能) **[データのプレビュー]** を選択して、emp.txt ファイル内のデータをプレビューします。     
 5. この手順を繰り返して、出力データセットを作成します。  
@@ -133,15 +129,9 @@ ms.locfileid: "30171079"
 
    b. **[新しいデータセット]** ページで **[Azure Blob Storage]** を選択し、**[完了]** を選択します。
 
-   c. 名前として「**OutputDataset**」と指定します。
+   c. **[全般]** テーブルで、名前として「**OutputDataset**」と指定します。
 
-   d. フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
-
-   e. ファイル名に「`@CONCAT(pipeline().RunId, '.txt')`」と入力します。 
-   
-      パイプラインを実行するたびに、パイプラインの実行に一意の ID が関連付けられます。 式はパイプラインの実行 ID と **.txt** を連結して、出力ファイル名を評価します。 サポートされているシステム変数および式の一覧については、[システム変数](control-flow-system-variables.md)に関するページと[式言語](control-flow-expression-language-functions.md)に関するページを参照してください。
-
-   ![出力データセットの設定](./media/quickstart-create-data-factory-portal/output-dataset-settings.png)
+   d. **[接続]** タブで、リンクされたサービスとして **[AzureStorageLinkedService]** を選択し、フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 
@@ -149,45 +139,33 @@ ms.locfileid: "30171079"
 1. **+** (正符号) ボタンを選択し、**[パイプライン]** を選択します。 
 
    ![新しいパイプラインを作成するためのメニュー](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
-2. **[プロパティ]** ウィンドウの **[名前]** に「**CopyPipeline**」と指定します。 
+2. **[全般]** タブで、**[名前]** に「**CopyPipeline**」と指定します。 
 
-   ![パイプラインの全般設定](./media/quickstart-create-data-factory-portal/pipeline-general-settings.png)
 3. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[コピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
 
    ![コピー アクティビティの全般設定](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 4. コピー アクティビティの設定で **[ソース]** タブに切り替えて、**[Source Dataset]\(ソース データセット\)** で **[InputDataset]** を選択します。
 
-   ![コピー アクティビティのソースの設定](./media/quickstart-create-data-factory-portal/copy-activity-source-settings.png)    
 5. コピー アクティビティの設定で **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** で **[OutputDataset]** を選択します。
 
-   ![コピー アクティビティのシンクの設定](./media/quickstart-create-data-factory-portal/copy-activity-sink-settings.png)    
-7. **[検証]** を選択して、パイプラインの設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証出力を閉じるには、**>>** (右矢印) ボタンを選択します。 
+6. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証出力を閉じるには、**>>** (右矢印) ボタンを選択します。 
 
-   ![パイプラインを検証する](./media/quickstart-create-data-factory-portal/pipeline-validate-button.png)
+## <a name="debug-the-pipeline"></a>パイプラインのデバッグ
+この手順では、パイプラインを Data Factory にデプロイする前にデバッグします。 
 
-## <a name="test-run-the-pipeline"></a>パイプラインをテスト実行する
-この手順では、パイプラインを Data Factory にデプロイする前にテスト実行します。 
-
-1. パイプラインのツール バーで、**[テストの実行]** を選択します。 
+1. キャンバスの上にあるパイプライン ツール バーの **[デバッグ]** をクリックして、テスト実行をトリガーします。 
     
-   ![パイプラインのテスト実行](./media/quickstart-create-data-factory-portal/pipeline-test-run.png)
-2. パイプラインの設定の **[出力]** タブに、パイプラインの実行の状態が表示されることを確認します。 
+2. 一番下にあるパイプラインの設定の **[出力]** タブにパイプラインの実行の状態が表示されることを確認します。 
 
-   ![テスト実行の出力](./media/quickstart-create-data-factory-portal/test-run-output.png)    
 3. **adftutorial** コンテナーの **output** フォルダーに出力ファイルがあることを確認します。 output フォルダーが存在しない場合は、Data Factory サービスによって自動的に作成されます。 
-    
-   ![出力の確認](./media/quickstart-create-data-factory-portal/verify-output.png)
-
 
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 この手順では、Azure Data Factory にエンティティ (リンクされたサービス、データセット、パイプライン) をデプロイします。 次に、パイプラインの実行を手動でトリガーします。 エンティティを自分の Visual Studio Team Services Git リポジトリに発行することもできます。これについては、[別のチュートリアル](tutorial-copy-data-portal.md?#configure-code-repository)で説明します。
 
-1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、左側のウィンドウで **[すべて発行]** を選択します。 
+1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、上部にある **[すべて発行]** を選択します。 
 
    ![[発行] ボタン](./media/quickstart-create-data-factory-portal/publish-button.png)
-2. パイプラインを手動でトリガーするには、ツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。 
-    
-   ![[Trigger Now]\(今すぐトリガー\) コマンド](./media/quickstart-create-data-factory-portal/pipeline-trigger-now.png)
+2. パイプラインを手動でトリガーするには、パイプライン ツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。 
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
@@ -206,15 +184,12 @@ ms.locfileid: "30171079"
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>スケジュールに基づいてパイプラインをトリガーする
 この手順は、このチュートリアルでは省略できます。 "*スケジューラ トリガー*" を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールすることができます。 この手順では、指定した終了日時まで毎分実行するようにトリガーを作成します。 
 
-1. **[編集]** タブに切り替えます。 
+1. **[作成者]** タブに切り替えます。 
 
-   ![[編集] ボタン](./media/quickstart-create-data-factory-portal/switch-edit-tab.png)
-1. メニューの **[トリガー]** を選択し、**[New/Edit]\(新規作成/編集\)** を選択します。 
+2. パイプラインに移動し、パイプライン ツール バーの **[トリガー]** を選択し、**[New/Edit]\(新規作成/編集\)** を選択します。 
 
-   ![新しいトリガーのメニュー](./media/quickstart-create-data-factory-portal/new-trigger-menu.png)
 2. **[Add Triggers]\(トリガーの追加\)** ページで、**[Choose trigger]\(トリガーの選択\)** を選択し、**[新規]** を選択します。 
 
-   ![新しいトリガーを追加するための選択](./media/quickstart-create-data-factory-portal/add-trigger-new-button.png)
 3. **[新しいトリガー]** ページの **[終了]** で **[指定日]** を選択し、終了時刻として現在から数分後を指定して、**[適用]** を選択します。 
 
    各パイプラインの実行にはコストがかかります。そのため、開始時刻からほんの数分後の終了時刻を指定してください。 同じ日であることを確認します。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。 
@@ -228,7 +203,6 @@ ms.locfileid: "30171079"
    ![警告と [完了] ボタン](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
 6. **[すべて発行]** をクリックして、変更を Data Factory に発行します。 
 
-   ![[発行] ボタン](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** を選択して、一覧を更新します。 発行時刻から終了時刻まで、毎分 1 回パイプラインが実行されることがわかります。 
 
    **[トリガー元]** 列の値に注意してください。 手動のトリガー実行は、前に行った手順 (**[Trigger Now]\(今すぐトリガー\)**) によるものでした。 

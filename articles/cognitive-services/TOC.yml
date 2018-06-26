@@ -1,0 +1,41 @@
+- name: Azure Cognitive Services のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Cognitive Services とは
+      href: Welcome.md
+- name: クイック スタート
+  items:
+    - name: アカウントの作成
+      href: cognitive-services-apis-create-account.md
+    - name: 画像分類子の構築
+      href: ./custom-vision-service/getting-started-build-a-classifier.md
+    - name: 自宅自動化アプリの構築
+      href: ./luis/luis-get-started-create-app.md
+    - name: .NET テキスト分析アプリの作成
+      href: ./text-analytics/quickstarts/csharp.md
+- name: チュートリアル
+  items:
+    - name: カスタム検索 Web ページ
+      href: ./bing-custom-search/tutorials/custom-search-web-page.md
+    - name: Language Understanding アプリ
+      href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
+    - name: コマンドの意図の精度を向上させる
+      href: ./luis/luis-tutorial-batch-testing.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 倫理規定
+      href: 'http://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase'

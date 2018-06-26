@@ -1,0 +1,99 @@
+- name: 音声サービス API のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: 音声サービスとは
+      href: overview.md
+      expanded: true
+- name: クイック スタート
+  items:
+    - name: 音声サービスを無料で試す
+      href: get-started.md
+    - name: 'C# で音声を認識する'
+      href: quickstart-csharp-windows.md
+    - name: C++ で音声を認識する (Windows)
+      href: cpp-windows.md
+    - name: C++ で音声を認識する (Linux)
+      href: cpp-linux.md
+    - name: Speech Devices SDK を使ってみる
+      href: speech-devices-sdk-qsg.md
+- name: ハウツー ガイド
+  items:
+    - name: 音声を認識する
+      href: how-to-speech-to-text.md
+    - name: 音声モデルをカスタマイズする
+      href: how-to-customize-speech-models.md
+    - name: 音声を合成する
+      href: how-to-text-to-speech.md
+    - name: 音声フォントをカスタマイズする
+      href: how-to-customize-voice-font.md
+    - name: 音声を翻訳する
+      href: how-to-translate-speech.md
+    - name: トランスクリプトを準備する
+      href: prepare-transcription.md
+    - name: カスタム オーディオ ストリームを使用する
+      href: how-to-use-audio-input-streams.md
+    - name: Speech Devices SDK を取得する
+      href: get-speech-devices-sdk.md
+    - name: デバイスのウェイク ワードをカスタマイズする
+      href: speech-devices-sdk-create-kws.md
+    - name: 一括文字起こし (コール センター)
+      href: batch-transcription.md
+- name: サンプル
+  items:
+    - name: サンプルをダウンロードする
+      href: samples.md
+    - name: 音声認識
+      href: speech-to-text-sample.md
+    - name: 意図認識
+      href: intent.md
+    - name: 翻訳
+      href: translation.md
+- name: 概念
+  items:
+    - name: 音声テキスト変換
+      href: speech-to-text.md
+    - name: テキストから音声へ
+      href: text-to-speech.md
+    - name: 音声翻訳
+      href: speech-translation.md
+    - name: Speech SDK
+      href: speech-sdk.md
+    - name: Speech Devices SDK
+      href: speech-devices-sdk.md
+- name: リファレンス
+  items:
+    - name: サポートされている言語
+      href: supported-languages.md
+    - name: REST API
+      href: rest-apis.md
+    - name: Speech SDK API
+      href: speech-sdk-reference.md
+    - name: 音声合成マークアップ
+      href: speech-synthesis-markup.md
+- name: リソース
+  items:
+    - name: 音声テキスト変換に関する FAQ
+      href: faq-stt.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/912208-speech-service'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: プライバシーと Cookie
+      href: 'https://privacy.microsoft.com/privacystatement'
+    - name: トラブルシューティング
+      href: troubleshooting.md
+    - name: アプリケーションの配布
+      href: ship-application.md
+    - name: リリース ノート
+      href: releasenotes.md
+    - name: Speech SDK ライセンス
+      href: license.md
+    - name: Speech Devices SDK ライセンス
+      href: speech-devices-sdk-license.md
+    - name: サード パーティに関する通知
+      href: third-party-notices.md

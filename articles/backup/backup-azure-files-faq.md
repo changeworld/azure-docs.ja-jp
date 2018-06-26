@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f6dcaee1ac328a9bafce0561f421b772b7e1d119
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605170"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286402"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -23,7 +23,7 @@ ms.locfileid: "34605170"
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Azure Files のバックアップ ジョブの構成
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>有効な Azure ファイル共有を含む、保護したいストレージ アカウントの一部が表示されないのはなぜですか。 <br/>
-プレビュー期間中は、Azure ファイル共有のバックアップであらゆる種類のストレージ アカウントがサポートされるわけではありません。 サポートされるストレージ アカウントの一覧は、[こちら](troubleshoot-azure-files.md#preview-boundaries)を参照してください。 探しているストレージ アカウントが既に保護されているか、別のコンテナーに登録されている可能性もあります。 コンテナーから[登録を解除](troubleshoot-azure-files.md#configuring-backup)して、保護のために他のコンテナー内のストレージ アカウントを検出します。
+プレビュー期間中は、Azure ファイル共有のバックアップであらゆる種類のストレージ アカウントがサポートされるわけではありません。 サポートされるストレージ アカウントの一覧は、[こちら](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview)を参照してください。 探しているストレージ アカウントが既に保護されているか、別のコンテナーに登録されている可能性もあります。 コンテナーから[登録を解除](troubleshoot-azure-files.md#configuring-backup)して、保護のために他のコンテナー内のストレージ アカウントを検出します。
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>バックアップを構成しようとしているときに、ストレージ アカウントに Azure ファイル共有の一部が表示されないのはなぜですか。 <br/>
 その Azure ファイル共有が既に同じ Recovery Services コンテナー内で保護されているかどうかと、その Azure ファイル共有を最近削除したかどうかを確認してください。
@@ -39,13 +39,13 @@ ms.locfileid: "34605170"
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>どの geo に Azure ファイル共有をバックアップできますか <br/>
 Azure ファイル共有のバックアップは現在プレビュー段階であり、次の geo でのみ利用できます。 
--   オーストラリア南東部 (ASE) 
+-   オーストラリア東部 (AE) 
+- オーストラリア南東部 (ASE) 
 - ブラジル南部 (BRS)
 - カナダ中部 (CNC)
 -   カナダ東部 (CE)
 -   米国中部 (CUS)
 -   東アジア (EA)
--   オーストラリア東部 (AE) 
 -   米国東部 (EUS)
 -   米国東部 2 (EUS2)
 - 東日本 (JPE)
@@ -74,7 +74,6 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 いいえ。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
 
 ## <a name="backup"></a>Backup
-
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>ファイル共有につき、いくつのオンデマンド バックアップを作成できますか? <br/>
 どの時点でも、ファイル共有のスナップショットを 200 個まで作成することができます。 この制限には、ポリシーの定義に従って Azure Backup により作成されたスナップショットの数も含まれます。 この制限に達した後でバックアップが失敗するようになったら、将来のバックアップを正常に実行できるよう、オンデマンドの復元ポイントを削除してください。

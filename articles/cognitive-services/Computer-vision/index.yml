@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/29/2018
+  ms.date: 06/22/2018
   ms.author: nolachar
-  ms.openlocfilehash: e19407db53c9964bcdeb5bd0d36814f52eaacad1
-  ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+  ms.openlocfilehash: 72adfaf478596e5f3153cee6eee9d70f1c02c31f
+  ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/07/2018
-  ms.locfileid: "35358273"
+  ms.lasthandoff: 06/25/2018
+  ms.locfileid: "36751964"
 abstract:
   description: クラウドベースの Computer Vision API を使用すると、開発者は画像を処理し、情報を返すための高度なアルゴリズムにアクセスできます。 画像をアップロードするか、画像の URL を指定すると、Microsoft Computer Vision のアルゴリズムによって、入力とユーザーの選択に基づいてさまざまな方法でビジュアル コンテンツが分析されます。 クイック スタート、チュートリアル、サンプルを使用して、さまざまな方法でビジュアル コンテンツを分析する方法をご確認ください。
 sections:
@@ -35,6 +35,10 @@ sections:
       text: C&#35;
       href: QuickStarts/CSharp-analyze
     - image:
+        src: media/index/logo_go.svg
+      text: Go
+      href: QuickStarts/go-analyze
+    - image:
         src: media/index/logo_java.svg
       text: Java
       href: QuickStarts/java-analyze
@@ -46,10 +50,6 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: QuickStarts/python-analyze
-    - image:
-        src: media/index/logo_ruby.svg
-      text: Ruby
-      href: QuickStarts/ruby-analyze
 - title: リファレンス
   items:
   - type: list
@@ -57,6 +57,6 @@ sections:
     className: cardsD
     items:
     - title: API
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API v2.0</a></p><p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API v1.0</a></p>
+      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API v2.0</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API v1.0</a></p>
     - title: SDK
-      html: <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p><p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p><p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p>
+      html: <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>

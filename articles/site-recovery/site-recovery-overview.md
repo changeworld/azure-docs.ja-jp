@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d3cda9bdc75709d46f952309375e82098b6ae0d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 86a6a5aed731390dd27ecc329db2c687bb6ca9a3
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894417"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287645"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 

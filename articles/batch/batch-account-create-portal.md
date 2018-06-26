@@ -12,23 +12,17 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83d97d9ed9c51d59500115c4ee3896d471024999
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8e179e2af3ee7a19c39a2f2c688e0eb25a0c02ca
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359759"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287536"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](batch-account-create-portal.md)
-> * [Batch Management .NET](batch-management-dotnet.md)
->
->
 
 [Azure Portal][azure_portal] で Azure Batch アカウントを作成し、自分のコンピューティング シナリオに適したアカウント プロパティを選ぶ方法について説明します。 アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所を紹介します。
 
@@ -40,7 +34,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 1. [Azure Portal][azure_portal] にサインインします。
 
-2. **[新規]**  >  **[Compute]**  >  **[Batch サービス]** の順にクリックします。
+2. **[リソースの作成]** > **[Compute]** > **[Batch サービス]** の順に選択します。
 
     ![Marketplace での Batch][marketplace_portal]
 
@@ -62,24 +56,24 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     f. **プール割り当てモード**: ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
 
-4. **[作成]** をクリックしてアカウントを作成します。
+4. **[作成]** を選択して、アカウントを作成します。
 
 
 
 ## <a name="view-batch-account-properties"></a>Batch アカウントのプロパティを表示する
-アカウントが作成されたら、そのアカウントをクリックして設定とプロパティにアクセスします。 左側のメニューを使用すると、アカウントの設定およびプロパティすべてにアクセスできます。
+アカウントが作成されたら、そのアカウントを選択して設定とプロパティにアクセスします。 左側のメニューを使用すると、アカウントの設定およびプロパティすべてにアクセスできます。
 
 ![Azure Portal の [Batch アカウント] ブレード][account_blade]
 
 * **Batch アカウントの名前、URL、およびキー**: [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウント URL およびキーが必要になります  (Batch では Azure Active Directory 認証もサポートされます)。
 
-    Batch アカウント アクセス情報を表示するには、**[キー]** をクリックします。
+    Batch アカウント アクセス情報を表示するには、**[キー]** を選択します。
 
     ![Batch account keys in Azure portal][account_keys]
 
-* Batch アカウントに関連付けられているストレージ アカウントの名前とキーを表示するには、**[ストレージ アカウント]** をクリックします。
+* Batch アカウントに関連付けられているストレージ アカウントの名前とキーを表示するには、**[ストレージ アカウント]** を選択します。
 
-* Batch アカウントに適用されるリソース クォータを表示するには、**[クォータ]** をクリックします。 詳細については、「[Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+* Batch アカウントに適用されるリソース クォータを表示するには、**[クォータ]** を選択します。 詳細については、「[Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 
 ## <a name="additional-configuration-for-user-subscription-mode"></a>ユーザー サブスクリプション モードのための追加構成
@@ -91,9 +85,13 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 1. [Azure Portal][azure_portal] にサインインします。
 
-2. **[その他のサービス]** > **[サブスクリプション]** の順にクリックし、Batch アカウントに使用するサブスクリプションをクリックします。
+2. **[すべてのサービス]** > **[サブスクリプション]** の順に選択し、Batch アカウントに使用するサブスクリプションを選択します。
 
-3. **[サブスクリプション]** ページで、**[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
+3. **[サブスクリプション]** ページで、**[リソース プロバイダー]** を選択し、**[Microsoft.Batch]** を検索します。 **Microsoft.Batch** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、**[登録]** リンクを選択します。
+
+    ![Microsoft.Batch プロバイダーの登録][register_provider]
+
+3. **[サブスクリプション]** ページで、**[アクセス制御 (IAM)]** > **[追加]** の順に選択します。
 
     ![サブスクリプションのアクセスの制御][subscription_access]
 
@@ -102,16 +100,16 @@ Batch アカウントとシナリオの背景情報については、[機能の�
     2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
 
-5. Batch API を見つけたら選択して、**[保存]** をクリックします。
+5. Batch API を見つけたら、それを選択して **[保存]** を選択します。
 
     ![Batch のアクセス許可を追加する][add_permission]
 
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
 ユーザー サブスクリプション モードでは、作成する Batch アカウントと同じリソース グループに属する Azure キー コンテナーが必要です。 Batch を[利用でき](https://azure.microsoft.com/regions/services/)、お使いのサブスクリプションでサポートされているリージョンにそのリソース グループが属していることを確認してください。
 
-1. [Azure portal][azure_portal] で、**[新規]** > **[セキュリティ]** > **[Key Vault]** の順にクリックします。
+1. [Azure portal][azure_portal] で、**[新規]** > **[セキュリティ]** > **[Key Vault]** の順に選択します。
 
-2. **[Key Vault の作成]** ページで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、**[作成]** をクリックします。
+2. **[Key Vault の作成]** ページで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、**[作成]** を選択します。
 
 ユーザー サブスクリプション モードで Batch アカウントを作成しているときに、キー コンテナーのリソース グループを使用して、**ユーザー サブスクリプション**をプール割り当てモードとして指定し、キー コンテナーを選択します。
 
@@ -137,4 +135,5 @@ Azure portal を利用する方法に加えて、次のようなツールを使�
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
+[register_provider]: ./media/batch-account-create-portal/register_provider.png
 
