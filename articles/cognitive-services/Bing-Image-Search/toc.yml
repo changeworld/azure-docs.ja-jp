@@ -1,0 +1,95 @@
+- name: Bing Image Search のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Bing Image Search とは
+      href: overview.md
+- name: REST API のクイック スタート
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK のクイック スタート
+  items:
+    - name: SDK のサンプルの概要
+      href: sdk.md
+    - name: 'Image Search SDK C# のクイック スタート'
+      href: image-search-sdk-quickstart.md
+    - name: Image Search SDK Node.js のクイック スタート
+      href: image-search-sdk-node-quickstart.md
+    - name: Image Search SDK Python のクイック スタート
+      href: image-sdk-python-quickstart.md
+    - name: Image Search SDK Java のクイック スタート
+      href: image-sdk-java-quickstart.md
+- name: チュートリアル
+  items:
+    - name: 単一ページの Web アプリ
+      href: tutorial-bing-image-search-single-page-app.md
+    - name: 単一ページの Web アプリ (ソース コード)
+      href: tutorial-bing-image-search-single-page-app-source.md
+    - name: Bing 画像をアップロードして分析情報を取得する
+      href: tutorial-image-post.md
+    - name: Bing 画像をアップロードして分析情報を取得する (ソース コード)
+      href: tutorial-image-post-source.md
+- name: サンプル
+  items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
+- name: ハウツー ガイド
+  items:
+    - name: 使用と表示結果
+      href: UseAndDisplayRequirements.md
+    - name: 画像の分析情報の取得
+      href: image-insights.md
+    - name: .gif イメージの取得
+      href: gif-images.md
+    - name: 注目の画像の取得
+      href: trending-images.md
+    - name: 画像のページング
+      href: paging-images.md
+    - name: サムネイルのサイズ変更とトリミング
+      href: resize-and-crop-thumbnails.md
+    - name: v5 から v7 へのアップグレード
+      href: bing-image-upgrade-guide-v5-to-v7.md
+- name: リファレンス
+  items:
+    - name: Bing Image Search API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+    - name: Bing Image Search API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+- name: リソース
+  items:
+    - name: FAQ
+      href: bing-image-search-resource-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: サポート技術情報
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API キーを取得する
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
+    - name: 試してみる
+      href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
+    - name: Bing Image Search エンドポイント
+      href: image-search-endpoint.md
+    - name: サポートされている国と市場
+      href: supported-countries-markets.md
+    - name: Bing Image Search API 用の分析
+      href: bing-image-stats.md

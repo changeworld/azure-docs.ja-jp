@@ -1,0 +1,63 @@
+- name: Bing Spell Check API のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Bing Spell Check API とは
+      href: proof-text.md
+- name: REST API のクイック スタート
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK のクイック スタート
+  items:
+    - name: 'SDK C# のクイック スタート'
+      href: sdk-quickstart-spell-check.md
+    - name: SDK のサンプルの概要
+      href: sdk.md
+- name: チュートリアル
+  items:
+    - name: スペル チェック Web アプリの構築
+      href: tutorials/spellcheck.md
+    - name: 'ソース コード: スペル チェック Web アプリ'
+      href: tutorials/spellcheck-source.md
+- name: ハウツー ガイド
+  items:
+    - name: 使用と表示の要件
+      href: UseAndDisplayRequirements.md
+    - name: v5 から v7 へのアップグレード
+      href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: リファレンス
+  items:
+    - name: Bing Spell Check API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference'
+    - name: Bing Spell Check API v5 (旧バージョン)
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
+- name: リソース
+  items:
+    - name: FAQ
+      href: bing-spell-check-resource-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/bing-api'
+    - name: サポートされている言語
+      href: bing-spell-check-supported-languages.md
+    - name: Bing Spell Check API 用の分析
+      href: bing-spell-check-stats.md
+    - name: Subscription key
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: 試してみる
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'

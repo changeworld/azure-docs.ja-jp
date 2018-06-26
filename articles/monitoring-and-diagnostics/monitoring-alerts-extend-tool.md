@@ -1,76 +1,64 @@
 ---
-title: OMS ポータルから Azure にアラートを拡張 (コピー) する方法 | Microsoft Docs
-description: OMS から Azure アラートへのアラートの拡張をユーザーが自主的に行うことのできるツールと API について説明します。
+title: Log Analytics から Azure にアラートを拡張する
+description: この記事では、アラートを Log Analytics から Azure アラートに拡張するためのツールと API について説明します。
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/14/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/04/2018
 ms.author: vinagara
-ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.component: alerts
+ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166184"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301033"
 ---
-# <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>OMS から Azure にアラートを拡張 (コピー) する方法
-**2018 年 5 月 14 日**以降、[Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で構成されているアラートを使っているすべてのユーザーは、Azure に拡張される予定です。 Azure に拡張されたアラートは、OMS と同じように動作します。 監視機能も変わりません。 OMS で作成したアラートを Azure に拡張すると、多くのメリットがあります。 OMS から Azure へのアラートの拡張の利点とプロセスについて詳しくは、「[OMS から Azure にアラートを拡張する](monitoring-alerts-extend.md)」をご覧ください。
+# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
+Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
+
+- Operations Management Suite ポータルから手動で開始する。 
+- AlertsVersion API を使ってプログラムによって開始する。  
 
 > [!NOTE]
-> 2018 年 5 月 14 日以降、Microsoft は Azure にアラートを自動拡張するプロセスを開始します。 この日にすべてのワークスペースとアラートが拡張されるわけではありません。今後数週間かけて段階的に自動的にアラートを拡張します。 そのため、2018 年 5 月 14 日にすぐに OMS ポータルのアラートが Azure に自動拡張されず、まだ以下のオプションを使ってアラートを手動拡張する場合があります。
+> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics で作成されたアラートを自動的に Azure アラートに拡張します。 Microsoft では Azure へのアラートの移行を予定しており、この移行中、アラートは Operations Management Suite ポータルと Azure portal の両方から管理できます。 このプロセスは破棄や中断を伴いません。  
 
-OMS から Azure にアラートをすぐに移行することを希望するユーザーは、以下で説明するオプションのいずれかを使って実行できます。
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>オプション 1: Operations Management Suite ポータルから開始する
+次の手順では、Operations Management Suite ポータルからワークスペースのアラートを拡張する方法について説明します。  
 
-## <a name="option-1---using-oms-portal"></a>オプション 1 - OMS ポータルを使用する
-OMS ポータルから Azure へのアラートの拡張を自主的に開始するには、次の手順のようにします。
+1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルを選択します。
+![[OMS ポータル] タイルが強調表示されている Log Analytics サブスクリプション ウィンドウのスクリーンショット](./media/monitor-alerts-extend/azure-portal-01.png) 
+3. Operations Management Suite ポータルにリダイレクトされたら、**[設定]** アイコンを選択します。
+![[設定] アイコンが強調表示されている Operations Management Suite ポータルのスクリーンショット](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+4. **[設定]** ページで **[アラート]** を選択します。  
+5. **[Azure に拡張]** を選択します。
+![[Azure に拡張] が強調表示されている Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ExtendInto.png)
+6. **[アラート]** ウィンドウに 3 つのステップで構成されるウィザードが表示されます。 概要を読み、**[次へ]** を選択します。
+![ウィザードのステップ 1 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. 2 番目のステップでは、アラートに対して提案される変更の概要が、適切な[アクション グループ](monitoring-action-groups.md)の一覧により示されます。 複数のアラートに同様のアクションがある場合は、それらのすべてに 1 つのアクション グループを関連付けることが提案されます。  名前付け規則は *WorkspaceName_AG_#Number* です。 続行するには、**[次へ]** を選択します。
+![ウィザードのステップ 2 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. ウィザードの最後のステップで、**[完了]** を選択し、プロセスを開始するよう求められたら確認します。 必要に応じて、メールアドレスを指定できます。これにより、プロセスが完了し、すべてのアラートが適切に Azure アラートに移動された時点で通知を受け取ることができます。
+![ウィザードのステップ 3 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep3.png)
 
-1. OMS ポータルの [概要] ページで、[設定]、[アラート] セクションの順に移動します。 下図で強調表示されている [Azure に拡張] ボタンをクリックします。
-
-    ![拡張オプションが含まれる OMS ポータルのアラート設定ページ](./media/monitor-alerts-extend/ExtendInto.png)
-
-2. ボタンをクリックすると、3 ステップのウィザードが表示され、最初のステップではプロセスの詳細が示されます。 [次へ] をクリックして続行します。
-
-    ![OMS ポータルから Azure にアラートを拡張する - ステップ 1](./media/monitor-alerts-extend/ExtendStep1.png)
-
-3. 2 番目のステップでは、OMS ポータルのアラートに対して提案される変更の概要が、適切な[アクション グループ](monitoring-action-groups.md)の一覧により示されます。 複数のアラートに同様のアクションがある場合は、それらのすべてを 1 つのアクション グループに関連付けることが提案されます。  提案されるアクション グループの名前は、*WorkspaceName_AG_#Number* という名前付け規則に従います。 続行するには、[次へ] をクリックします。
-画面の例を次に示します。
-
-    ![OMS ポータルから Azure にアラートを拡張する - ステップ 2](./media/monitor-alerts-extend/ExtendStep2.png)
-
-
-4. ウィザードの最後のステップでは、前の画面で示したように、新しいアクション グループを作成し、それをアラートと関連付けることによって、Azure へのすべてのアラートの拡張をスケジュールするよう OMS ポータルに指示できます。 続行するには、[完了] をクリックし、プロンプトでプロセスの開始を確認します。 必要に応じて、ユーザーは処理終了時に OMS ポータルがレポートを送信するメール アドレスを指定することもできます。
-
-    ![OMS ポータルから Azure にアラートを拡張する - ステップ 3](./media/monitor-alerts-extend/ExtendStep3.png)
-
-5. ウィザードが終了すると、[アラートの設定] ページに制御が戻り、[Azure に拡張] オプションは表示されなくなります。 バックグラウンドで、OMS ポータルは Log Analytics のアラートを Azure に拡張するスケジュールを設定します。これには少し時間がかかることがあり、操作が始まると、しばらくの間、OMS ポータルのアラートを変更できなくなります。 現在の状態がバナーに表示され、ステップ 4 でメール アドレスを指定した場合は、バックグラウンド プロセスがすべてのアラートを Azure に正常に拡張すると、ユーザーは通知を受け取ります。 
-
-6. Azure に正常に拡張された後でも、アラートは引き続き OMS ポータルに表示されます。
-
-    ![OMS ポータルのアラートを Azure に拡張した後](./media/monitor-alerts-extend/PostExtendList.png)
+ウィザードが終了すると、**[アラートの設定]** ページから、Azure にアラートを拡張するためのオプションが削除されます。 対象のアラートはバックグラウンドで Azure に移動されますが、これには少し時間がかかることがあります。 処理中、Operations Management Suite ポータルからアラートを変更することはできません。 現在の状態は、ポータル上部のバナーで確認できます。 前にメールアドレスを指定した場合は、プロセスが適切に完了した時点でメールが届きます。  
 
 
-## <a name="option-2---using-api"></a>オプション 2 - API を使用する
-OMS ポータルのアラートを Azure に拡張するプロセスをプログラムで制御または自動化したいユーザーのため、新しい AlertsVersion API が Log Analytics で提供されています。
+アラートは、Azure に適切に移動された後も、引き続き Operation Management Suite ポータルに表示されます。
+![Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/PostExtendList.png)
 
-Log Analytics の AlertsVersion API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンド ライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 API には、ARMClient や PowerShell を使う以外にもさまざまな方法でアクセスできます。 API の結果は JSON 形式で出力されるため、結果をプログラムによりさまざまな方法で使うことができます。
 
-API で GET を使うことにより、結果に含まれる変更提案の要約を、OMS ポータルのアラートに対する適切な[アクション グループ](monitoring-action-groups.md)のリストとして、JSON 形式で取得できます。 複数のアラートに同様のアクションがある場合は、それらのすべてを 1 つのアクション グループに関連付けを作成することが提案されます。  提案されるアクション グループの名前は、*WorkspaceName_AG_#Number* という名前付け規則に従います。
+## <a name="option-2-use-the-alertsversion-api"></a>オプション 2: AlertsVersion API を使用する
+Log Analytics AlertsVersion API を使用して、REST API を呼び出すことができる任意のクライアントから、アラートを Log Analytics から Azure アラートに拡張できます。 PowerShell から API にアクセスするには、オープンソースのコマンドライン ツール [ARMClient](https://github.com/projectkudu/ARMClient) を使用します。 結果は JSON に出力できます。  
+
+API を使用するには、最初に GET 要求を作成します。 これにより、POST 要求を使用して実際に拡張を試みる前に、評価が実施され、変更提案の概要が返されます。 この結果には、対象のアラートと、提案された[アクション グループ](monitoring-action-groups.md)の一覧が JSON 形式で表示されます。 複数のアラートに同様のアクションがある場合は、それらのすべてに 1 つのアクション グループを関連付けることが提案されます。 名前付け規則は *WorkspaceName_AG_#Number* です。
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-> [!NOTE]
-> API に対して GET を呼び出しても、OMS ポータルのアラートは Azure に拡張されません。 提案される変更の要約が応答として提供されるだけです。 これらの変更を確認して Azure にアラートを拡張するには、API に対して POST 呼び出しを実行する必要があります。
-
-API への GET 呼び出しが成功すると、200 OK の応答と共に、アラートの JSON 一覧と提案されたアクション グループが提供されます。 応答のサンプルは次のとおりです。
+GET 要求が成功すると、HTTP 状態コード 200 と、アラートおよび提案されたアクション グループの一覧が JSON データで返されます。 応答の例を次に示します。
 
 ```json
 {
@@ -127,7 +115,7 @@ API への GET 呼び出しが成功すると、200 OK の応答と共に、ア�
 }
 
 ```
-指定したワークスペースにアラートがない場合は、GET 操作に対する 200 OK の応答と共に、次のような JSON が返ります。
+指定したワークスペースに警告ルールが定義されていない場合は、JSON データにより次が返されます。
 
 ```json
 {
@@ -136,14 +124,15 @@ API への GET 呼び出しが成功すると、200 OK の応答と共に、ア�
 }
 ```
 
-指定したワークスペースのすべてのアラートが Azure に既に拡張されている場合は、GET 呼び出しの応答は次のようになります。
+指定したワークスペース内のすべての警告ルールが Azure に既に拡張されている場合は、GET 要求に対する応答は次のようになります。
+
 ```json
 {
     "version": 2
 }
 ```
 
-OMS ポータルのアラートを Azure に拡張するスケジューリングを開始するには、API に対して POST を実行します。 この呼び出し/コマンドを行うと、ユーザーの意図が確認され、OMS ポータルのアラートを Azure に拡張することが承認されて、API への GET 呼び出しの応答で示されている変更が実行されます。 必要に応じて、ユーザーは、OMS ポータルから Azure にアラートを拡張するスケジュールされたバックグラウンド処理が正常に完了したら、OMS ポータルがレポートをメールするメール アドレスの一覧を指定できます。
+Azure へのアラートの移行を開始するには、POST 応答を開始します。 この POST 応答によって、アラートを Log Analytics から Azure アラートに拡張することについて、ユーザーの意図と同意が確認されます。 アクティビティのスケジュール設定とアラートの処理は、前に GET 応答を実行したときの結果に基づいて指定の通りに行われます。 必要に応じて、スケジュールされたアラート移行のバックグラウンド プロセスが正常に完了したときに Log Analytics によるレポート送信先となるメールアドレスを指定できます。 次のような要求の例を使用できます。
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -151,17 +140,17 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> システムで行われた変更によっては、Azure への OMS ポータル アラートの拡張の結果が、GET によって提供される要約と異なる場合があります。 スケジューリングされると、OMS ポータルのアラートは一時的に編集/変更できなくなり、その間に新しいアラートを作成できます。 
+> Azure アラートへのアラートの移行の結果は、GET 応答で提供された概要によって異なる場合があります。 スケジュールされている場合、Log Analytics のアラートは、一時的に Operation Management Suite ポータルで変更できなくなります。 ただし、新しいアラートを作成することはできます。 
 
-POST が成功した場合は、200 OK の応答と共に次の結果が返ります。
+POST 要求が成功すると、HTTP 200 OK 状態と次の応答が返されます。
+
 ```json
 {
     "version": 2
 }
 ```
-これは、バージョン 2 で示される Azure にアラートが拡張されたことを示します。 このバージョンは、アラートが Azure に拡張されて、[Log Analytics Search API](../log-analytics/log-analytics-api-alerts.md) での使用に影響がないかどうかを確認するためだけのものです。 アラートが Azure に正常に拡張されると、GET の間に指定されたすべてのメール アドレスに、行われた変更の詳細を含むレポートが送信されます。
 
-また、指定したワークスペースのすべてのアラートが、Azure への拡張を既にスケジューリングされている場合は、POST に対する応答が 403 Forbidden になります。 エラー メッセージを表示したり、拡張プロセスが停止しているかどうかを確認したりするには、GET の呼び出しを実行し、概要と共に返されるエラー メッセージを確認します。
+この応答は、アラートが Azure アラートに適切に拡張されたことを示します。 version プロパティは、アラートが Azure に拡張されたかどうかを確認するためだけのもので、[Log Analytics Search API](../log-analytics/log-analytics-api-alerts.md) とは無関係です。 アラートが Azure に正常に拡張されると、POST 要求で指定したすべてのメール アドレスにレポートが送信されます。 指定したワークスペースのすべてのアラートの拡張が既にスケジュールされている場合、POST 要求に対して "禁止" の応答が返されます (403 状態コード)。 エラー メッセージを表示したり、プロセスが停止しているかどうかを確認したりするために、GET 要求を送信できます。 エラー メッセージがある場合は、そのメッセージが概要情報と共に返されます。
 
 ```json
 {
@@ -224,35 +213,271 @@ POST が成功した場合は、200 OK の応答と共に次の結果が返り�
 
 ```
 
+
+## <a name="option-3-use-a-custom-powershell-script"></a>オプション 3: カスタム PowerShell スクリプトを使用する
+ Microsoft によって対象のアラートが Operation Management Suite ポータルから Azure にまだ拡張されていない場合、2018 年 7 月 5日まではご自身で手動で拡張できます。 2 つの手動拡張オプションについては、前の 2 つのセクションで説明しました。
+
+2018 年 7 月 5日を過ぎると、すべてのアラートが Operations Management Suite ポータルから Azure に拡張されます。 [提案された必要な修復手順](#troubleshooting)をまだ実行していないユーザーのアラートは、関連付けられた[アクション グループ](monitoring-action-groups.md)がないため、アクションまたは通知なしで実行されます。 
+
+Log Analytics でアラートの[アクション グループ](monitoring-action-groups.md)を手動で作成するには、次のサンプル スクリプトを使用します。
+```PowerShell
+########## Input Parameters Begin ###########
+
+
+$subscriptionId = ""
+$resourceGroup = ""
+$workspaceName = "" 
+
+
+########## Input Parameters End ###########
+
+armclient login
+
+try
+{
+    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
+    $workspaceId = $workspace.properties.customerId
+    $resourceLocation = $workspace.location
+}
+catch
+{
+    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
+    exit
+}
+
+# Get Extend Summary of the Alerts
+"`nGetting Extend Summary of Alerts for the workspace...`n"
+try
+{
+
+    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
+
+    "Extend preview summary"
+    "=========================`n"
+
+    $value
+
+    $result = $value | ConvertFrom-Json
+}
+catch
+{
+
+    $ErrorMessage = $_.Exception.Message
+    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    exit 
+}
+
+if ($result.version -eq 2)
+{
+    "`nThe alerts in this workspace have already been extended to Azure."
+    exit
+}
+
+$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
+
+if ($in.ToLower() -ne "y")
+{
+    exit
+} 
+
+
+# Check for resource provider registration
+try
+{
+    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
+    if ($val.registrationState -eq "NotRegistered")
+    {
+        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
+    }
+}
+catch
+{
+    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
+    exit
+}
+
+$actionGroupsMap = @{}
+try
+{
+    "`nCreating new action groups for alerts extension...`n"
+    foreach ($actionGroup in $result.migrationSummary.actionGroups)
+    {
+        $actionGroupName = $actionGroup.actionGroupName
+        $actions = $actionGroup.actions
+        if ($actionGroupsMap.ContainsKey($actionGroupName))
+        {
+            continue
+        } 
+        
+        # Create action group payload
+        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
+        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
+        $emailReceivers = New-Object Object[] $actions.emailIds.Count
+        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
+        
+        $count = 0
+        foreach ($email in $actions.emailIds)
+        {
+            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
+            $count++
+        }
+
+        $count = 0
+        foreach ($webhook in $actions.webhookActions)
+        {
+            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
+            $count++
+        }
+
+        $itsmAction = $actions.itsmAction
+        if ($itsmAction.connectionId -ne $null)
+        {
+            $val = @{
+            "name" = "ITSM"
+            "workspaceId" = "$subscriptionId|$workspaceId"
+            "connectionId" = "$($itsmAction.connectionId)"
+            "ticketConfiguration" = $itsmAction.templateInfo
+            "region" = "$resourceLocation"
+            }
+            $properties["itsmReceivers"] = @($val)  
+        }
+
+        $properties["emailReceivers"] = @($emailReceivers)
+        $properties["webhookReceivers"] = @($webhookReceivers)
+        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
+
+    
+        # Azure Resource Manager call to create action group
+        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
+
+        "Created Action Group with name $actionGroupName" 
+        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
+        $index++
+    }
+
+    "`nSuccessfully created all action groups!!"
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message
+
+    #Delete all action groups in case of failure
+    "`nDeleting newly created action groups if any as some error happened..."
+    
+    foreach ($actionGroup in $actionGroupsMap.Keys)
+    {
+        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+    }
+
+    "`nError: $ErrorMessage"
+    "`nExiting..."
+    exit
+}
+
+# Update all alerts configuration to the new version
+"`nExtending OMS alerts to Azure...`n"
+
+try
+{
+    $index = 1
+    foreach ($alert in $result.migrationSummary.alerts)
+    {
+        $uri = $alert.alertId + "?api-version=2015-03-20"
+        $config = armclient get $uri | ConvertFrom-Json
+        $aznsNotification = @{
+            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
+        }
+        if ($alert.customWebhookPayload)
+        {
+            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
+        }
+        if ($alert.customEmailSubject)
+        {
+            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
+        }      
+
+        # Update alert version
+        $config.properties.Version = 2
+
+        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
+        $payload = $config | ConvertTo-Json -Depth 4
+        $response = $payload | armclient put $uri
+    
+        "Extended alert with name $($alert.alertName)"
+        $index++
+    }
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message   
+    if ($index -eq 1)
+    {
+        "`nDeleting all newly created action groups as no alerts got extended..."
+        foreach ($actionGroup in $actionGroupsMap.Keys)
+        {
+            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+        }
+        "`nDeleted all action groups."  
+    }
+    
+    "`nError: $ErrorMessage"
+    "`nPlease resolve the issue and try extending again!!"
+    "`nExiting..."
+    exit
+}
+
+"`nSuccessfully extended all OMS alerts to Azure!!" 
+
+# Update version of workspace to indicate extension
+"`nUpdating alert version information in OMS workspace..." 
+
+$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
+
+"`nExtension complete!!"
+```
+
+
+### <a name="about-the-custom-powershell-script"></a>カスタム PowerShell スクリプトについて 
+スクリプトの使用に関する重要な情報を次に示します。
+- 前提条件として、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールである [ARMclient](https://github.com/projectkudu/ARMClient) をインストールする必要があります。
+- スクリプトを実行するには、Azure サブスクリプションの共同作成者または所有者のロールが必要です。
+- 次のパラメーターを指定する必要があります。
+    - $subscriptionId: Operations Management Suite Log Analytics ワークスペースに関連付けられている Azure サブスクリプション ID。
+    - $resourceGroup: Operations Management Suite Log Analytics ワークスペースの Azure リソース グループ。
+    - $workspaceName: Operations Management Suite Log Analytics ワークスペースの名前。
+
+### <a name="output-of-the-custom-powershell-script"></a>カスタム PowerShell スクリプトの出力
+スクリプトには詳細な情報が示されており、実行中に手順が出力されます。 
+- 概要が表示されます。この概要には、ワークスペース内の既存の Operations Management Suite Log Analytics アラートに関する情報が含まれます。 また、概要には、アクションに対して作成され、そのアクションに関連付けられた Azure アクション グループに関する情報も含まれます。 
+- 拡張を続行するように求められます。概要の表示後に処理を終了することもできます。
+- 拡張を続行すると、新しい Azure アクション グループが作成され、既存のアラートすべてがそのアクション グループに関連付けられます。 
+- スクリプトが完了すると、"拡張が完了" したことを示すメッセージが表示されます。 途中で障害が発生した場合は、その後にスクリプトによってエラーが表示されます。
+
 ## <a name="troubleshooting"></a>トラブルシューティング 
-OMS から Azure にアラートを拡張するプロセスでは、システムが必要な[アクション グループ](monitoring-action-groups.md)を作成できないことがあります。 このような場合、エラー メッセージは、アラート セクションのバナーを介して OMS ポータルに表示されます。また、API に対する GET の呼び出しの完了時に表示されます。
+アラートを拡張するプロセスの途中で問題が発生し、必要な[アクション グループ](monitoring-action-groups.md)を作成できないことがあります。 このような場合は、エラー メッセージが Operation Management Suite ポータルの **[アラート]** セクションのバナーに表示されます。または、API に対する GET 呼び出しの完了時に表示されます。
 
-次に各エラーの修復手順を説明します。
-1. **エラー: サブスクリプションが名前空間 'microsoft.insights' を使用するように登録されていません**。![登録エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+> [!IMPORTANT]
+> 2018 年 7 月 5日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を取得するには、[アクション グループ](monitoring-action-groups.md)を手動で編集して追加するか、前述の[カスタム PowerShell スクリプト](#option-3---using-custom-powershell-script)を使用する必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 OMS ワークスペースに関連付けられたサブスクリプションは Azure Monitor (microsoft.insights) 機能を使用できるように登録されていません。そのため OMS は Azure Monitor および Azure アラートにアラートを拡張できません。
-    
-    b. 解決するには、Powershell、Azure CLI、または Azure Portal を使用して、サブスクリプションに microsoft.insights (Azure Monitor および Azure アラート) の使用を登録します。 詳細については、[リソース プロバイダー登録時のエラーの解決](../azure-resource-manager/resource-manager-register-provider-errors.md)に関する記事を参照してください
-    
-    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
-2. **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**。![ScopeLock エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorScopeLock.png)
+各エラーの修復手順を次に示します。
+- **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**:   ![スコープ ロックのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 スコープ ロックを有効にすると、Log Analytics (OMS) ワークスペースを含むサブスクリプションまたはリソース グループの新しい変更がすべて制限されます。システムはアラートを Azure に拡張 (コピー) することができず、必要なアクション グループを作成することができません。
+    スコープ ロックが有効になっている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループ内での新しい変更がすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
     
-    b. 解決するには、Azure Portal、Powershell、Azure CLI、または API を使用して、ワークスペースを含むサブスクリプションまたはリソース グループの *ReadOnly* ロックを削除します。 詳細については、[リソース ロックの使用方法](../azure-resource-manager/resource-group-lock-resources.md)に関する記事を参照してください。 
+    解決するには、ワークスペースを含むサブスクリプションまたはリソース グループの *ReadOnly* ロックを削除します。 この操作は Azure portal、PowerShell、Azure CLI、または API から実行できます。 詳細については、[リソース ロックの使用](../azure-resource-manager/resource-group-lock-resources.md)に関するページをご覧ください。 
     
-    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
+    この記事で説明されている手順を使用して問題を解決すると、スケジュールされている翌日の実行が行われている間に、Operation Management Suite によって対象のアラートが Azure に拡張されます。 他の操作を行ったり、何かを開始したりする必要はありません。
 
-3. **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**。![ポリシー エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**:   ![ポリシーのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ErrorPolicy.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure Policy](../azure-policy/azure-policy-introduction.md) が適用されると、Log Analytics (OMS) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。システムはアラートを Azure に拡張 (コピー) することができず、必要なアクション グループを作成することができません。
+    [Azure Policy](../azure-policy/azure-policy-introduction.md) が適用されている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
     
-    b. これを解決するには、ワークスペースを含むサブスクリプションまたはリソース グループでの新しいリソースの作成を妨げている *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* エラーの原因であるポリシーを編集します。 Azure portal、Powershell、Azure CLI、または API を使って、障害の原因になっている適切なポリシーを検索するアクションを監査できます。 詳しくは、[アクティビティ ログを見てアクションを監査する](../azure-resource-manager/resource-group-audit.md)方法についての記事をご覧ください。 
+    これを解決するには、ワークスペースを含むサブスクリプションまたはリソース グループでの新しいリソースの作成を妨げている *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* エラーの原因であるポリシーを編集します。 この操作は Azure portal、PowerShell、Azure CLI、または API から実行できます。 アクションを監査して、障害の原因になっている適切なポリシーを見つけることができます。 詳細については、[アクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)に関するページをご覧ください。 
     
-    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
+    この記事で説明されている手順を使用して問題を解決すると、スケジュールされている翌日の実行が行われている間に、Operation Management Suite によって対象のアラートが Azure に拡張されます。 他の操作を行ったり、何かを開始したりする必要はありません。
 
 
 ## <a name="next-steps"></a>次の手順
 
-* 新しい[Azure のアラート機能のエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
+* 新しい [Azure アラートのエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
 * [Azure Alerts のログ アラート](monitor-alerts-unified-log.md)について学習する。

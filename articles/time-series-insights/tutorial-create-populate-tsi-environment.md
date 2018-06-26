@@ -2,17 +2,17 @@
 title: Azure Time Series Insights 環境を作成する
 description: シミュレートされたデバイスからのデータが入力された Time Series Insights 環境を作成する方法について説明します。
 services: time-series-insights
-author: BryanLa
+author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: bryanla
-ms.openlocfilehash: 434f9f7890b909746fd1a0f72a2dea5d7bb27e92
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301356"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295849"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル: Azure Time Series Insights 環境を作成する
 
@@ -230,9 +230,9 @@ Azure Portal の左側のメニューで、次のように操作します。
 > * デバイス シミュレーションを実行して TSI 環境にデータをストリーミングする
 > * シミュレートされたテレメトリ データを確認する
 
-独自の TSI 環境を作成する方法について理解したところで、次の記事に進めてプロセスの計画について学習してください。
+独自の TSI 環境を作成する方法はわかったので、次は、TSI 環境のデータを使用する Web アプリケーションを構築する方法について確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)
+> [Azure Time Series Insights のシングルページ Web アプリを作成する](tutorial-create-tsi-sample-spa.md)
 
 

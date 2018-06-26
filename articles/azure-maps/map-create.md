@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使用してマップを作成する | Microsoft Docs
 description: JavaScript マップを作成する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9a7c611860a6d32f82d6714d945c62e6c562f91f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ec85854e5d9b7ee0d5e2c54881a417ba6cbb366e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599815"
 ---
 # <a name="create-a-map"></a>マップを作成する
 
@@ -56,4 +54,9 @@ ms.lasthandoff: 05/07/2018
 * [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamera)
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
+    
+マップに追加するコード例の詳細については、次の記事を参照してください。 
+* [ピンを追加する](./map-add-pin.md)
+* [ポップアップを追加する](map-add-popup.md)
+    
 

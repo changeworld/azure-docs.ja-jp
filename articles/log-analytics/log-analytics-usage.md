@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802053"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209818"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データの送信元、送信されたさまざまな種類のデータに関する情報が含まれます。  データ使用状況を確認して分析するには、**[ログ分析の利用状況]** ダッシュボードを使用します。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -59,7 +59,9 @@ Log Analytics には、収集されたデータの量、データの送信元、
 - データ量が指定された量を超えた。
 - データ量が指定された量を超えると予測された。
 
-Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索クエリを使用します。 次のクエリでは、過去 24 時間で 100 GB を超えるデータが収集された場合に結果が返されます。
+Azure アラートでは、検索クエリを使用する[ログ アラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)をサポートしています。 
+
+次のクエリでは、過去 24 時間で 100 GB を超えるデータが収集された場合に結果が返されます。
 
 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
@@ -69,27 +71,35 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 
 別のデータ量でアラートを生成するには、クエリの 100 をアラートを生成する GB 数に変更します。
 
-「[アラート ルールを作成する](log-analytics-alerts-creating.md#create-an-alert-rule)」で説明されている手順を使用して、収集したデータの量が予測を超えた場合に通知するようにします。
+[新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関するページで説明されている手順を使用して、収集したデータの量が予測を超えた場合に通知されるようにします。
 
 最初のクエリ (24 時間でデータが 100 GB を超えた場合) のアラートを作成するには、次のように設定します。  
-- **[名前]**: "*24 時間でデータ量が 100 GB を超えた場合*"  
-- **[重大度]**: *[警告]*  
-- **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
-- **[時間枠]**: "*24 時間*"
-- **[アラートの頻度]**: 使用量データは 1 時間に 1 回しか更新されないため、1 時間に設定します。
-- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
-- **[結果の数]** を *[Greater than 0] \(0 を超える)* に
 
-[アラート ルールへのアクションの追加](log-analytics-alerts-actions.md)に関する記事に記載されている手順で、アラート ルールの電子メール、webhook、または Runbook アクションを設定します。
+- **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
+- **[アラートの条件]** では、以下を指定します。
+   - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
+   - **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です。
+   - **[期間]** を *1440* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、**[アラートの頻度]** を *60* 分ごとにします。
+- **[アラートの詳細を定義します]** では、以下を指定します。
+   - **[名前]**: "*24 時間でデータ量が 100 GB を超えた場合*"
+   - **[重大度]**: *[警告]*
+
+ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を指定するか、アクション グループを新たに作成します。
 
 2 つ目のクエリ (24 時間でデータが 100 GB を超えると予測される場合) のアラートを作成するには、次のように設定します。
-- **[名前]**: "*24 時間でデータ量が 100 GB を超えると予想される場合*"
-- **[重大度]**: *[警告]*
-- **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-- **[時間枠]**: "*3 時間*"
-- **[アラートの頻度]**: 使用量データは 1 時間に 1 回しか更新されないため、1 時間に設定します。
-- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
-- **[結果の数]**: "*0 より大きい*"
+
+- **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
+- **[アラートの条件]** では、以下を指定します。
+   - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
+   - **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です。
+   - **[期間]** を *180* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、**[アラートの頻度]** を *60* 分ごとにします。
+- **[アラートの詳細を定義します]** では、以下を指定します。
+   - **[名前]**: "*24 時間でデータ量が 100 GB を超えると予想される場合*"
+   - **[重大度]**: *[警告]*
+
+ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を指定するか、アクション グループを新たに作成します。
 
 アラートを受け取ったら、次のセクションの手順を使用して、使用量が予想よりも多い理由のトラブルシューティングを行います。
 
@@ -155,10 +165,9 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 
 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 
-
 ## <a name="next-steps"></a>次の手順
 * 検索言語の使用方法については、[Log Analytics のログ検索](log-analytics-log-searches.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。
-* 「[アラート ルールを作成する](log-analytics-alerts-creating.md#create-an-alert-rule)」で説明されている手順を使用して、検索条件が満たされた場合に通知するようにします。
+* [新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関するページで説明されている手順を使用して、検索条件が満たされた場合に通知されるようにします。
 * [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 * 効果的なセキュリティ イベント収集ポリシーを構成するには、[Azure Security Center のフィルタリング ポリシー](../security-center/security-center-enable-data-collection.md)に関するページを参照してください。
 * [パフォーマンス カウンターの構成](log-analytics-data-sources-performance-counters.md)を変更します。

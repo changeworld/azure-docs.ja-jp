@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 9e01d3a69fe8814d4864bccf94c0d65ea573ada8
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272184"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756638"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16 |
-| 仮想コアあたりのメモリ | ベースライン | 2x Basic | 2x 汎用 |
+| 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 2 TB | 5 GB ～ 2 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | データベース バックアップのリテンション期間 | 7 ～ 35 日間 | 7 ～ 35 日間 | 7 ～ 35 日間 |
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 サーバーを作成したら、数秒間で仮想コア数を増やしたり減らしたりできます (同じ価格レベル内)。 また、アプリケーションのダウンタイムなしでストレージ (増量のみ) とバックアップのリテンション期間 (増減) を個別に調整できます。 価格レベルまたはバックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 詳細については、「[リソースのスケール](#scale-resources)」セクションを参照してください。
 
 
-## <a name="compute-generations-vcores-and-memory"></a>コンピューティング世代、仮想コア、およびメモリ
+## <a name="compute-generations-and-vcores"></a>コンピューティング世代と仮想コア
 
 コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 現在、Gen 4 と Gen 5 の 2 つの計算世代から選択できます。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。 Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。 Gen 4 と Gen 5 は、次のリージョンで使用できます ("○" は使用可能であることを表します)。 
 
@@ -64,14 +64,12 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | 東南アジア | ○ | ○ |
 | オーストラリア東部 |  | ○ |
 | オーストラリア南東部 |  | ○ |
-| インド中部 | ○ |  |
-| インド西部 | ○ |  |
+| インド中部 | ○ | ○ |
+| インド西部 | ○ | ○ |
 | インド南部 |  | ○ |
 | 東日本 | ○ | ○ |
 | 西日本 | ○ | ○ |
 | 韓国南部 |  | ○ |
-
-価格レベルに応じて、特定のメモリ量で各仮想コアがプロビジョニングされます。 使用しているサーバーの仮想コア数を増やしたり減らしたりすると、それに合わせてメモリが増減します。 汎用レベルで提供される仮想コアあたりのメモリ量は、Basic レベルの 2 倍です。 メモリ最適化レベルで提供されるメモリ量は、汎用レベルの 2 倍です。
 
 ## <a name="storage"></a>Storage
 

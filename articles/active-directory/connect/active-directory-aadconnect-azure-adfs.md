@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595201"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212674"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -305,7 +305,7 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 1. AD FS サーバーで PowerShell から以下のコマンドレットを実行し、このプロパティを有効にします。
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. 外部のコンピューターから https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx にアクセスします。  
+2. 外部のコンピューターから https:\//adfs-server.contoso.com/adfs/ls/IdpInitiatedSignon.aspx にアクセスします。  
 3. 以下の AD FS ページが表示されたら成功です。
 
 ![Test login page](./media/active-directory-aadconnect-azure-adfs/test1.png)

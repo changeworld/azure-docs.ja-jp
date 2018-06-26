@@ -1,0 +1,157 @@
+- name: Computer Vision のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Computer Vision とは
+      href: Home.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: まとめ
+      href: QuickStarts/quickstart-summary.md
+    - name: 'C#'
+      items:
+        - name: 画像の分析
+          href: QuickStarts/CSharp-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/CSharp-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/CSharp-print-text.md
+        - name: 手書きのテキストの抽出
+          href: QuickStarts/CSharp-hand-text.md
+    - name: cURL
+      items:
+        - name: リモート画像の分析
+          href: QuickStarts/curl-analyze.md
+        - name: ローカル画像の分析
+          href: QuickStarts/curl-disk.md
+        - name: サムネイルの生成
+          href: QuickStarts/curl-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/curl-print-text.md
+    - name: Go
+      items:
+        - name: 画像の分析
+          href: QuickStarts/go-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/go-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/go-print-text.md
+    - name: Java
+      items:
+        - name: 画像の分析
+          href: QuickStarts/java-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/java-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/java-print-text.md
+        - name: 手書きのテキストの抽出
+          href: QuickStarts/java-hand-text.md
+    - name: JavaScript
+      items:
+        - name: 画像の分析
+          href: QuickStarts/javascript-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/javascript-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/javascript-print-text.md
+        - name: 手書きのテキストの抽出
+          href: QuickStarts/javascript-hand-text.md
+    - name: Node.js
+      items:
+        - name: 画像の分析
+          href: QuickStarts/node-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/node-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/node-print-text.md
+    - name: PHP
+      items:
+        - name: 画像の分析
+          href: QuickStarts/php-analyze.md
+        - name: ドメイン モデルの使用
+          href: QuickStarts/php-domain.md
+        - name: サムネイルの生成
+          href: QuickStarts/php-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/php-print-text.md
+    - name: Python
+      items:
+        - name: リモート画像の分析
+          href: QuickStarts/python-analyze.md
+        - name: ローカル画像の分析
+          href: QuickStarts/python-disk.md
+        - name: ドメイン モデルの使用
+          href: QuickStarts/python-domain.md
+        - name: サムネイルの生成
+          href: QuickStarts/python-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/python-print-text.md
+        - name: 手書きのテキストの抽出
+          href: QuickStarts/python-hand-text.md
+    - name: Ruby
+      items:
+        - name: 画像の分析
+          href: QuickStarts/ruby-analyze.md
+        - name: サムネイルの生成
+          href: QuickStarts/ruby-thumb.md
+        - name: 印刷されたテキストの抽出
+          href: QuickStarts/ruby-print-text.md
+- name: ハウツー ガイド
+  items:
+    - name: 最初の Computer Vision アプリ
+      items:
+        - name: 'C#'
+          href: Tutorials/CSharpTutorial.md
+        - name: Java
+          href: Tutorials/java-tutorial.md
+        - name: JavaScript
+          href: Tutorials/javascript-tutorial.md
+        - name: Python
+          href: Tutorials/PythonTutorial.md
+    - name: サブスクリプション キーを取得する
+      href: Vision-API-How-to-Topics/HowToSubscribe.md
+    - name: Computer Vision API を呼び出す
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+    - name: リアルタイムでビデオを分析する
+      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: Visual Studio を使用する
+      items:
+        - name: Computer Vision Connected Service の使用
+          href: vs-computer-vision-connected-service.md
+- name: リファレンス
+  items:
+    - name: Computer Vision API v2.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
+    - name: Computer Vision API v1.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: SDK
+      items:
+        - name: Go
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Windows
+          href: 'https://github.com/Microsoft/Cognitive-vision-windows'
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-vision-android'
+        - name: Swift
+          href: 'https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK'
+- name: リソース
+  items:
+    - name: サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: FAQ
+      href: FAQ.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: カテゴリの分類
+      href: Category-Taxonomy.md

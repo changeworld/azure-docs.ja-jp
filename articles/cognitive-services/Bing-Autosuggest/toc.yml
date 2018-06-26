@@ -1,0 +1,65 @@
+- name: Bing Autosuggest のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Bing Autosuggest とは
+      href: get-suggested-search-terms.md
+- name: REST API のクイック スタート
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: チュートリアル
+  items:
+    - name: 単一ページの Web アプリ
+      href: tutorials/autosuggest.md
+    - name: 単一ページの Web アプリ (ソース コード)
+      href: tutorials/autosuggest-source.md
+- name: ハウツー ガイド
+  items:
+    - name: 使用と表示の要件
+      href: UseAndDisplayRequirements.md
+    - name: v5 から v7 へのアップグレード
+      href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: リファレンス
+  items:
+    - name: Bing Autosuggest API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+    - name: Bing Autosuggest API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+- name: リソース
+  items:
+    - name: FAQ
+      href: bing-autosuggest-resource-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=bing+autosuggest'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: サポート技術情報
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API キーを取得する
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+    - name: 試してみる
+      href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
+    - name: Bing Autosuggest エンドポイント
+      href: autosuggest-endpoint.md
+    - name: サポートされている言語
+      href: bing-autosuggest-supported-languages.md
+    - name: Bing Autosuggest API 用の分析
+      href: bing-autosuggest-stats.md

@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: bd9f01e76c68fa41616818251b5b54553059cbcc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637737"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Azure Machine Learning で画像分類モデルを構築して配置する
 
@@ -114,7 +115,7 @@ Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_p
 依存関係をインポートし、ストレージ コンテキストを設定した後、データセット オブジェクトを作成できます。
 
 Azure Machine Learning Package for Computer Vision でそのオブジェクトを作成するには、ローカル ディスク上の画像のルート ディレクトリを指定します。 このディレクトリは、テーブルウェア データセットと同じ一般的な構造に従う必要があります。つまり、実際の画像が格納されたサブディレクトリを含める必要があります。
-- ルート
+- root
     - ラベル 1
     - ラベル 2
     - ...
@@ -145,7 +146,7 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
 + 通常のテキスト クエリ
 + 画像 URL クエリ
 
-これらのクエリとクラス ラベルを、JSON でエンコードされたテキスト ファイル内に指定する必要があります。 以下に例を示します。
+これらのクエリとクラス ラベルを、JSON でエンコードされたテキスト ファイル内に指定する必要があります。 例: 
 
 ```json
 {
@@ -227,7 +228,6 @@ else:
 ## <a name="define-dnn-models"></a>DNN モデルを定義する
 
 このパッケージでは、次のトレーニング済みのディープ ニューラル ネットワーク モデルがサポートされています。 
-+ AlexNet
 + Resnet-18
 + Resnet-34
 + Resnet-50
@@ -444,13 +444,9 @@ display(pr_ui.ui)
 + 現在のモデル管理アカウントを表示するには、次のコマンドを使用します。
   <br>`az ml account modelmanagement show`
 
-**配置環境を作成してセットアップする**
+**クラスター デプロイ環境を作成してセットアップする**
 
 配置環境のセットアップは 1 度だけ行う必要があります。 配置環境がまだない場合は、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)を使用してセットアップします。 
-
-ニーズに基づいて、ローカルまたはクラスター配置のセットアップ手順のいずれかを適切に実行します。
-+ ローカル配置は、Linux と Windows 10 のコンピューターでサポートされますが、Windows データ サイエンス VM とディープ ラーニング VM ではサポートされません。 
-+ クラスター環境への配置は、Linux と Windows の両方でサポートされます。 
 
 アクティブな配置環境を表示するには、するには、次の CLI コマンドを使用します。
 <br>`az ml env show`

@@ -1,6 +1,6 @@
 ---
-title: Visual Studio を使用した Azure 関数の開発 | Microsoft Docs
-description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure 関数を開発およびテストする方法を説明します。
+title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
+description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: a38729c266a4dd214c3de97c6b9d92df6ed2dd96
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 93d5883071a012842106bdd946e4f09a0d7aa751
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735121"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260456"
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -89,9 +89,7 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
-Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 
-
-[!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
+Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイの前に実際のストレージ接続に変更する必要があります。
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
@@ -111,7 +109,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
     ![キューによってトリガーされる関数の作成](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    このトリガーの例では、**QueueStorage** という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、local.settings.json ファイルで定義する必要があります。
+    このトリガーの例では、**QueueStorage** という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、[local.settings.json ファイル](functions-run-local.md#local-settings-file)で定義する必要があります。
 
 3. 新しく追加されたクラスを確認します。 **FunctionName** 属性に関連付けられている、静的な **Run** メソッドが表示されています。 この属性は、メソッドが関数のエントリ ポイントであることを示します。
 

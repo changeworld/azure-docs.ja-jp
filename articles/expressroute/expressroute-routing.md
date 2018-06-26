@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9542eedecaf8dc6d689bf6192f74eee15287ae99
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178757"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295428"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -67,6 +67,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>Microsoft ピアリングに使用する IP アドレス
 ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。
 
+* ポータルの、Microsoft ピアリング用にアドバタイズされたパブリック プレフィックスの一覧に表示されている IP アドレスによって、これらの IP から送信される受信トラフィックを許可する Microsoft コア ルーターの ACL が作成されます。 
 * ユーザーは、一意のサブネット (IPv4 の場合は /29、IPv6 の場合は /125) または 2 つのサブネット (IPv4 の場合は /30、IPv6 の場合は /126) サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。
 * /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。
 * 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
