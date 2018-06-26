@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30196849"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/20/2018
 
 | **SKU**| **機能**|
 | ---    | ---         |
-|**Basic** (**)   | **ルート ベースの VPN**: 10 個のトンネルと P2S、RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシーベース VPN**: (IKEv1): 1 トンネル。P2S なし|
+|**Basic** (\*\*)   | **ルート ベースの VPN**: 10 個のトンネルと P2S、RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシーベース VPN**: (IKEv1): 1 トンネル。P2S なし|
 | **VpnGw1、VpnGw2、および VpnGw3** | **ルートベース VPN**: 最大 30 トンネル ( * )、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
 
@@ -43,9 +44,9 @@ SLA と機能セットに違いがあるため、運用環境と開発テスト�
 | **ワークロード**                       | **SKU**               |
 | ---                                | ---                    |
 | **運用環境での重要なワークロード** | VpnGw1、VpnGw2、VpnGw3 |
-| **開発テストまたは概念実証**   | Basic (**)                 |
+| **開発テストまたは概念実証**   | Basic (\*\*)                 |
 |                                    |                        |
 
-(**) Basic SKU はレガシ SKU と見なされていて、機能制限があります。 Basic SKU を使用する前に、必要としている機能がサポートされていることを確認してください。
+(\*\*) Basic SKU はレガシ SKU と見なされていて、機能制限があります。 Basic SKU を使用する前に、必要としている機能がサポートされていることを確認してください。
 
 古い SKU (レガシ) を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU の情報や指示事項については、[ゲートウェイ SKU (レガシ)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。

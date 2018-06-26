@@ -35,6 +35,62 @@
           href: quickstart-java-languages.md
         - name: テキスト内の文の長さを取得する
           href: quickstart-java-sentences.md
+    - name: Node.js
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-nodejs-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-nodejs-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-nodejs-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-nodejs-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-nodejs-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-nodejs-sentences.md
+    - name: PHP
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-php-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-php-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-php-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-php-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-php-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-php-sentences.md
+    - name: Python
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-python-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-python-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-python-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-python-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-python-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-python-sentences.md
+    - name: Ruby
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-ruby-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-ruby-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-ruby-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-ruby-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-ruby-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-ruby-sentences.md
 - name: 概念
   items:
     - name: サポートされている言語
@@ -55,18 +111,8 @@
       href: word-alignment.md
     - name: 動的ディクショナリ機能を使用する
       href: dynamic-dictionary.md
-    - name: Translator Text API を使用する
-      items:
-        - name: Node.js
-          href: quickstarts/nodejs.md
-        - name: PHP
-          href: quickstarts/php.md
-        - name: Python
-          href: quickstarts/python.md
-        - name: Ruby
-          href: quickstarts/ruby.md
-        - name: WPF を使ったテキスト翻訳アプリを作成する
-          href: tutorial-wpf-translation-csharp.md
+    - name: WPF を使ったテキスト翻訳アプリを作成する
+      href: tutorial-wpf-translation-csharp.md
 - name: リファレンス
   items:
     - name: v3 Translator Text API のリファレンス

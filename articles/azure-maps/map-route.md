@@ -1,22 +1,20 @@
 ---
 title: Azure Maps を使った道順の表示 | Microsoft Docs
 description: 2 つの場所の間の道順を Javascript マップ上に表示する方法
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: codepen
-ms.openlocfilehash: 9007afd1bc4d2361addc2a554fab1330174e88e7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5e9ab73ddc16517e17894cddd9bc102f3941f00c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "35778801"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する 
 
@@ -39,9 +37,13 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="next-steps"></a>次の手順
 
-この記事で使われているクラスとメソッドについてさらに詳しく知る。 
+この記事で使われているクラスとメソッドの詳細については、次を参照してください。 
 
 * [マップ](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
     * [addLinestrings](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addlinestrings)
     * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+
+マップに追加するコード例の詳細については、次の記事を参照してください。 
+* [マップ上にトラフィックを表示する](./map-show-traffic.md)
+* [マップの連動 – マウス イベント](./map-events.md)

@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
+        - name: Azure Application Insights でログを要求する
+          href: api-management-howto-app-insights.md
         - name: バックアップ/復元を使用して DR を設定する
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: ユーザー アカウントを管理する
