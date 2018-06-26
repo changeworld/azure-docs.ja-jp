@@ -1,7 +1,7 @@
 - name: Data Factory V1 のドキュメント
   href: null
 - name: 現在のバージョンのドキュメントに切り替える
-  href: ../index.yml
+  href: ../introduction.md
 - name: 概要
   items:
     - name: Azure Data Factory の概要

@@ -65,6 +65,8 @@
       items:
         - name: Azure AD 認証の選択
           href: azure-ad-choose-authn.md
+        - name: セキュリティ チェックリスト
+          href: azure-ad-secure-steps.md
         - name: ベスト プラクティス
           href: azure-security-identity-management-best-practices.md
         - name: サブスクリプション管理者に対する MFA の適用
