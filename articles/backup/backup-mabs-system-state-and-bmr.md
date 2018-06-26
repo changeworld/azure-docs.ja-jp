@@ -29,8 +29,7 @@ Azure Backup Server は、システム状態をバックアップし、ベア �
 
 次の表は、バックアップと復旧を実行できる項目のまとめです。 システム状態および BMR を使用して保護できるアプリのバージョンの詳細については、「[What does Azure Backup Server back up?](backup-mabs-protection-matrix.md)」(Azure Backup Server がバックアップするもの) を参照してください。
 
-|Backup
-|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
+|Backup|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**ファイル データ**<br /><br />通常のデータのバックアップ<br /><br />BMR/システム状態のバックアップ|ファイル データの損失|Y|N|N|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
