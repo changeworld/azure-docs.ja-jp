@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a3b14bd8409226772d210f60dadd525960f7890
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0094362ee083511b05027f22b37ed62d56d68d41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192664"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217135"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Log Analytics アラートから Azure Automation Runbook を呼び出す
 
@@ -33,7 +33,7 @@ Azure Log Analytics で、結果が条件と一致する場合にアラート �
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>webhook を使用して Runbook を呼び出す
 
-Webhook を使用して、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#alert-rules)を構成する前に、この方法で呼び出される Runbook 用に [webhook を作成する](automation-webhooks.md#creating-a-webhook)必要があります。 アラート ルールの構成時に参照できるように webhook URL を忘れずにメモしておいてください。   
+Webhook を使用して、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 アラート アクションとして webhook を使用して Runbook を呼び出すように[ログ アラートの webhook アクション](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)を構成する前に、この方法で呼び出される Runbook 用に [webhook を作成する](automation-webhooks.md#creating-a-webhook)必要があります。 アラート ルールの構成時に参照できるように webhook URL を忘れずにメモしておいてください。   
 
 ## <a name="calling-a-runbook-directly"></a>直接 Runbook を呼び出す
 
@@ -99,6 +99,6 @@ $SearchResult.SvcDisplayName_CF
 
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics のアラートの詳細とアラートの作成方法については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。
+* ログ検索を使用した Azure アラートの作成について詳しくは、[Azure でのログ アラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)に関する記事をご覧ください。
 
 * webhook を使用して Runbook をトリガーする方法を理解するには、「[Azure Automation Webhook](automation-webhooks.md)」を参照してください。

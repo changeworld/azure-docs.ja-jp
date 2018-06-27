@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831637"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294851"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -48,7 +48,10 @@ Azure Blockchain Workbench の展開にはいくつかの前提条件があり�
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench API アプリの登録
 
-Blockchain Workbench の展開には、Azure AD アプリケーションの登録が必要です。 アプリを登録するには Azure Active Directory (Azure AD) テナントが必要です。 既存のテナントを使うか、新しいテナントを作成することができます。 既存の Azure AD テナントを使う場合は、Azure AD テナント内でアプリケーションを登録するための十分なアクセス許可が必要です。 アプリケーションの登録は、Workbench を展開するサブスクリプションのサブスクリプション管理者のテナントで行う必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../active-directory/develop/active-directory-howto-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」をご覧ください。
+Blockchain Workbench の展開には、Azure AD アプリケーションの登録が必要です。 アプリを登録するには Azure Active Directory (Azure AD) テナントが必要です。 既存のテナントを使うか、新しいテナントを作成することができます。 既存の Azure AD テナントを使う場合は、Azure AD テナントにアプリケーションを登録し、Graph API のアクセス許可を付与するための十分なアクセス許可が必要です。 既存の Azure AD テナントに十分なアクセス許可がない場合は、新しいテナントを作成します。 
+
+> [!IMPORTANT]
+> Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../active-directory/develop/active-directory-howto-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」をご覧ください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 右上隅でお使いのアカウントを選び、目的の Azure AD テナントに切り替えます。 テナントは、Workbench を展開するサブスクリプションのサブスクリプション管理者のテナントでなければならず、アプリケーションを登録するための十分なアクセス許可が必要です。
@@ -60,11 +63,11 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
     ![アプリの登録を作成する](media/blockchain-workbench-deploy/app-registration-create.png)
 
-    |Setting  | 値  |
+    |設定  | 値  |
     |---------|---------|
-    |Name | `Blockchain API` |
+    |名前 | `Blockchain API` |
     |アプリケーションの種類 |Web アプリ/API|
-    |[サインオン URL] | `https://blockchainapi` |
+    |サインオン URL | `https://blockchainapi` |
 
 5. **[作成]** を選んで、Azure AD アプリケーションを登録します。
 
@@ -131,10 +134,10 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![キーを作成する](media/blockchain-workbench-deploy/app-key-create.png)
 
-    |Setting  | 値  |
+    |設定  | 値  |
     |---------|---------|
     | 説明 | `Service` |
-    | Expires | 有効期限を選びます |
+    | 有効期限 | 有効期限を選びます |
 
 4. **[保存]** を選択します。 
 5. 後で使うので、キーの値をコピーして保存します。 展開を行うときに必要です。
@@ -182,14 +185,14 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure Blockchain Workbench を作成する](media/blockchain-workbench-deploy/blockchain-workbench-settings-basic.png)
 
-    | Setting | 説明  |
+    | 設定 | 説明  |
     |---------|--------------|
-    | Resource prefix (リソース プレフィックス) | この展開の短い一意識別子です。 この値は、リソースの名前付けのベースとして使われます。 |
+    | リソース プレフィックス | この展開の短い一意識別子です。 この値は、リソースの名前付けのベースとして使われます。 |
     | VM ユーザー名 | このユーザー名は、すべての仮想マシン (VM) の管理者として使われます。 |
     | 認証の種類 | VM への接続にパスワードまたはキーを使うかどうかを選びます。 |
     | パスワード | このパスワードは、VM に接続するために使われます。 |
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
-    | Database password (データベース パスワード) / Confirm database password (データベース パスワードの確認) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 |
+    | データベース パスワード/データベース パスワードの確認 | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 |
     | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、**[場所]** 設定と一致させる必要があります。 |
     | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
@@ -201,7 +204,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure AD のセットアップ](media/blockchain-workbench-deploy/blockchain-workbench-settings-aad.png)
 
-    | Setting | 説明  |
+    | 設定 | 説明  |
     |---------|--------------|
     | ドメイン名 | 前提条件の「[テナントのドメイン名を取得する](#get-tenant-domain-name)」セクションで収集した Azure AD テナントを使います。 |
     | アプリケーション ID | 前提条件の「[アプリケーション ID を取得する](#get-application-id)」セクションで収集した Blockchain クライアント アプリの登録のアプリケーション ID を使います。 |
@@ -214,7 +217,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![ネットワークとパフォーマンスの設定](media/blockchain-workbench-deploy/blockchain-workbench-settings-network.png)
 
-    | Setting | 説明  |
+    | 設定 | 説明  |
     |---------|--------------|
     | Number of blockchain nodes (Blockchain ノードの数) | ネットワークに展開する Ethereum PoA バリデーター ノードの数を選びます。 |
     | Storage performance (ストレージのパフォーマンス) | Blockchain ネットワークの望ましい VM ストレージ パフォーマンスを選びます。 |
@@ -226,7 +229,7 @@ Blockchain Workbench は、ブロックチェーン アプリケーションと�
 
     ![Azure Monitor](media/blockchain-workbench-deploy/blockchain-workbench-settings-oms.png)
 
-    | Setting | 説明  |
+    | 設定 | 説明  |
     |---------|--------------|
     | 監視 | Blockchain ネットワークを監視するために Azure Monitor を有効にするかどうかを選択します。 |
     | Connect to existing Log Analytics instance (既存の Log Analytics インスタンスに接続する) | 既存の Log Analytics インスタンスを使用するか、新しいインスタンスを作成するかを選択します。 既存のインスタンスを使用する場合は、ワークスペース ID とプライマリ キーを入力します。 |

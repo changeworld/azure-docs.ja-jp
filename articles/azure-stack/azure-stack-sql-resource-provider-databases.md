@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 上で SQL アダプター RP によって指定されたデータベースを使用する | Microsoft Docs
-description: SQL アダプター リソースプロバイダーを使用してプロビジョニングした SQL データベースを作成し管理する方法
+title: Azure Stack 上で SQL アダプター リソース プロバイダーによって提供されたデータベースを使用する | Microsoft Docs
+description: SQL アダプター リソース プロバイダーを使用してプロビジョニングした SQL データベースを作成して管理する方法
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,49 +11,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b9f92b4d85e17bc848d82be413df1d0dad7c8548
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a82db16f2012672f6e2669f2fd8198b177f501f3
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294940"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264184"
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
-セルフサービス データベースは、ユーザー ポータルを介して提供されます。 Azure Stack ユーザーは、SQL データベース サービスを含むオファーがあるサブスクリプションが必要です。
 
-1. [Azure Stack](azure-stack-poc.md) のユーザー ポータルにサインインします (サービス管理者は管理者ポータルも使用できます)。
+ユーザー ポータルで、セルフサービス データベースを作成して管理できます。 Azure Stack ユーザーは、SQL データベース サービスを含むオファーがあるサブスクリプションが必要です。
 
-2. **[+新規]** &gt;**[データ + ストレージ]** &gt; **[SQL Server データベース]** &gt; **[追加]** をクリックします。
+1. [Azure Stack](azure-stack-poc.md) ユーザー ポータルにサインインします。
 
-3. **[データベース名]**、**[最大サイズ]** などのデータベースの詳細をフォームに入力し、必要に応じて他のパラメーターを変更します。 データベースの SKU の選択を求められます。 ホスト サーバーが追加されると、SKU が割り当てられます。 データベースは SKU を構成するホスト サーバーのプールに作成されます。
+2. **[+新規]** &gt;**[データ + ストレージ]** &gt; **[SQL Server データベース]** &gt; **[追加]** を選択します。
 
-  ![New database](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+3. **[データベースの作成]** で、**[データベース名]**、**[最大サイズ (MB)]** などの必要な情報を入力します。
 
-  >[!NOTE]
-  > データベースのサイズは 64 MB 以上である必要があります。 サイズは設定で増やすことができます。
+   >[!NOTE]
+   >データベースのサイズは少なくとも 64 MB 必要であり、データベースの配置後に増やすことができます。
 
-4. ログイン設定: **[データベース ログイン]** と **[パスワード]** を入力します。 次の設定は、このデータベースにアクセスするためにだけ作成する SQL 認証の資格情報です。 ログイン ユーザー名はグローバルに一意である必要があります。 新しいログイン設定を作成するか、既存の設定を選択します。 同じ SKU を使用して他のデータベースのログイン設定を再利用することができます。
+   必要に応じて、環境に合うように他の設定を構成します。
 
-    ![新しいデータベース ログインの作成](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+4. **[データベースの作成]** で、**[SKU]** を選択します。 **[SKU の選択]** で、データベースの SKU を選択します。
 
+   ![データベースの作成](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
-5. フォームを送信し、デプロイが完了するまで待ちます。
+   >[!NOTE]
+   >ホスティング サーバーは、Azure Stack に追加されるときに SKU が割り当てられます。 データベースは、ホスティング サーバー プールの SKU 内に作成されます。
 
-    結果のブレードで、[接続文字列] フィールドに注目してください。 Azure Stack で SQL Server アクセスを必要とする任意のアプリケーション (たとえば、Web アプリ) でその文字列を使用できます。
+5. **[ログイン]** を選択します。
+6. **[ログインの選択]** で、既存のログインを選択するか、**[+ 新しいログインの作成]** を選択します。
+7. **[新しいログイン]** で、**データベースのログイン名**と**パスワード** を入力します。
 
-    ![接続文字列の取得](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+   >[!NOTE]
+   >これらの設定は、このデータベースにアクセスするためにのみ作成する SQL 認証資格情報です。 ログイン ユーザー名はグローバルに一意である必要があります。 同じ SKU を使用する他のデータベースのログイン設定を再利用できます。
 
-## <a name="delete-sql-alwayson-databases"></a>SQL AlwaysOn データベースの削除
-SQL AlwaysOn データベースは、リソース プロバイダーから削除されるとプライマリ グループと AlwaysOn 可用性グループから正常に削除されますが、SQL 可用性グループ は削除したデータベースをすべてのレプリカで復元中の状態とし、トリガーが発生しない限りはデータベースを削除しないようになっています。 データベースが削除されない場合、セカンダリ レプリカは非同期状態になります。 同じリソースプロバイダーを通した可用性グループへの新しいデータベースの再追加は、引き続き機能します。
+   ![新しいデータベース ログインの作成](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
-## <a name="verify-sql-alwayson-databases"></a>SQL AlwaysOn データベースの確認
-AlwaysOn データベースは同期済みと表示され、すべてのインスタンスと可用性グループで使用できます。 フェールオーバー後は、データベースはシームレスに接続されます。 データベースが同期中であることを確認するには SQL Server Management Studio を使用できます。
+8. **[OK]** を選択して、データベースの配置を完了します。
 
-![AlwaysOn の確認](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+データベースの配置後に表示される **[要点]** で、**[接続文字列]** の情報を書き留めます。 この文字列は、SQL Server データベースにアクセスする必要があるすべてのアプリケーションで使用できます。
 
+![接続文字列の取得](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+
+## <a name="sql-always-on-databases"></a>SQL AlwaysOn データベース
+
+設計により、AlwaysOn データベースの処理は、スタンドアロン サーバー環境とは異なる方法で処理されます。 詳細については、[Azure 仮想マシンの SQL Server AlwaysOn 可用性グループの概要](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)に関する記事を参照してください。
+
+### <a name="verify-sql-always-on-databases"></a>SQL AlwaysOn データベースの確認
+
+次の画面キャプチャは、SQL Server Management Studio を使用して、SQL AlwaysOn データベースの状態を確認する方法を示しています。
+
+![AlwaysOn データベースの状態](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+
+AlwaysOn データベースは同期済みと表示され、すべての SQL インスタンスで使用でき、可用性グループ内に表示されます。 前の画面キャプチャでは、データベースの例は newdb1 であり、その状態は **newdb1 (同期済み)** です。
+
+### <a name="delete-an-alwayson-database"></a>AlwaysOn データベースの削除
+
+リソース プロバイダーから SQL AlwaysOn データベースを削除すると、データベースは SQL によってプライマリ レプリカと可用性グループから削除されます。
+
+データベースは他のレプリカに復元中状態で配置され、トリガーされない限り、削除されることはありません。 データベースが削除されない場合、セカンダリ レプリカは非同期状態になります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a2a1c916543da07f25b2b9727e309709632afe00
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267273"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284966"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -33,16 +33,17 @@ ms.locfileid: "35267273"
 * スクリプトを実行するための最小時間は約 20 秒
 * スクリプトは Windows 上で System として実行される
 * 同時に実行できるスクリプトは 1 つ
+* 情報の入力を求めるスクリプト (対話モード) はサポートされていません。
 * スクリプトの実行を取り消すことはできない
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
 
 ## <a name="run-a-command"></a>コマンドの実行
 
-[Azure](https://portal.azure.com) で VM に移動し、**[操作]** で **[実行コマンド]** を選択します。 VM で実行できるコマンドの一覧が表示されます。
+[Azure](https://portal.azure.com) で VM に移動し、**[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
-![実行コマンド一覧](./media/run-command/run-command-list.png)
+![実行コマンドの一覧](./media/run-command/run-command-list.png)
 
-実行するコマンドを選択します。 一部のコマンドには、省略可能または必須の入力パラメーターがあります。 これらのコマンドのパラメーターは入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開して実行されているスクリプトを表示できます。 **RunPowerShellScript** は他のコマンドと異なり、独自のカスタム スクリプトを指定することができます。
+実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開して実行されているスクリプトを表示できます。 **RunPowerShellScript** は他のコマンドと異なり、独自のカスタム スクリプトを指定することができます。
 
 > [!NOTE]
 > 組み込みコマンドは編集できません。
@@ -76,11 +77,11 @@ Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMNa
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 
-実行コマンドの一覧表示またはコマンドの詳細表示には、組み込み[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のロールが持っている `Microsoft.Compute/locations/runCommands/read` 権限が必要です。
+実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上が持っている `Microsoft.Compute/locations/runCommands/read` アクセス許可が必要です。
 
-コマンドを実行するには、[共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のロールが持っている `Microsoft.Compute/virtualMachines/runCommand/action` 権限が必要です。
+コマンドを実行するには、[共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上が持っている `Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要です。
 
-実行コマンドを使用するには、いずれかの[組み込み](../../role-based-access-control/built-in-roles.md)ロールを使用することも、[カスタム](../../role-based-access-control/custom-roles.md) ロールを作成することもできます。
+実行コマンドを使用するには、いずれかの[組み込み](../../role-based-access-control/built-in-roles.md)ロールを使用するか、または[カスタム](../../role-based-access-control/custom-roles.md) ロールを作成することができます。
 
 ## <a name="next-steps"></a>次の手順
 

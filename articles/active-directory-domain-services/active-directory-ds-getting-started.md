@@ -1,27 +1,41 @@
 ---
-title: "Azure Active Directory Domain Services: 概要 | Microsoft Docs"
-description: "Azure Portal を使用して Azure Active Directory Domain Services を有効にする"
+title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
+description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 340193f191bbdbe658769f9265f9e63844481c32
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265271"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
+
+
+## <a name="before-you-begin"></a>開始する前に
+この記事のタスク一覧を完了するには、以下が必要です。
+
+* 有効な **Azure サブスクリプション**。
+* オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
+* **Azure サブスクリプションが Azure AD ディレクトリと関連付けられている必要があります**。
+* Azure AD Domain Services を有効にするには、Azure AD ディレクトリでの**全体管理者**特権が必要です。
+
+
+## <a name="enable-azure-ad-domain-services"></a>Azure AD Domain Services を有効にする
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
@@ -39,7 +53,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="task-1-configure-basic-settings"></a>タスク 1: 基本設定を構成する
-ウィザードの **[基本]** ページで、管理対象ドメインの DNS ドメイン名を指定できます。 管理対象ドメインのデプロイ先となるリソース グループと Azure の場所も選択することができます。
+ウィザードの **[基本]** ページで、管理対象ドメインの DNS ドメイン名を指定します。 管理対象ドメインのデプロイ先となるリソース グループと Azure の場所も選択することができます。
 
 ![基本を構成する](./media/getting-started/domain-services-blade-basics.png)
 
@@ -59,11 +73,11 @@ ms.lasthandoff: 02/21/2018
 
 2. 管理対象ドメインを作成する Azure **サブスクリプション**を選択します。
 
-3. 管理対象ドメインが属する**リソース グループ**を選択します。 **[新規作成]** または **[既存のものを使用]** オプションを選択して、リソース グループを選択できます。
+3. 管理対象ドメインが属する**リソース グループ**を選択します。 **[新規作成]** または **[既存のものを使用]** オプションを選択して、リソース グループを選択します。
 
 4. 管理対象ドメインを作成する Azure の**場所**を選択します。 ウィザードの **[ネットワーク]** ページに、選択した場所に属する仮想ネットワークのみが表示されます。
 
-5. 完了したら、**[OK]** をクリックして、ウィザードの **[ネットワーク]** ページに移動します。
+5. **[OK]** をクリックして、ウィザードの **[ネットワーク]** ページに移動します。
 
 
 ## <a name="next-step"></a>次のステップ

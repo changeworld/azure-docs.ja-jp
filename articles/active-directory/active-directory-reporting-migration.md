@@ -3,34 +3,28 @@ title: Azure Portal で Azure Active Directory のユーザー アクティビ�
 description: Azure Portal で Azure Active Directory のアクティビティ レポートがある場所について説明します。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 12/06/2017
-ms.author: curtand
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f22219a0e2ff342e25a2efdeb319f389250ecfef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231323"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
 この記事では、Azure Portal で Azure Active Directory のユーザー アクティビティ レポートを見つける方法について説明します。
 
-## <a name="whats-new"></a>新機能
-
-Azure クラシック ポータルでは、レポートは次のカテゴリに分けられていました。
-* セキュリティ レポート
-* アクティビティ レポート
-* 統合アプリケーション レポート
-
-### <a name="activity-and-integrated-app-reports"></a>アクティビティ レポートと統合アプリケーション レポート
+## <a name="activity-and-integrated-app-reports"></a>アクティビティ レポートと統合アプリケーション レポート
 
 Azure Portal のコンテキストに基づくレポートでは、既存のレポートは 1 つのビューに統合されています。 このビューのデータは、単一の API によって提供されます。
 
@@ -87,7 +81,7 @@ Azure Portal では単一のビューが用意されていますが、特定の�
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD 異常アクティビティ レポート
 
-Azure クラシック ポータルでの Azure AD の異常なアクティビティに関するセキュリティレポートは、1 つの中心となるビューに統合されています。 このビューには、Azure AD が検出して報告できるセキュリティ関連のリスク イベントがすべて表示されます。
+Azure AD の異常なアクティビティに関するセキュリティレポートは、1 つの中心となるビューに統合されています。 このビューには、Azure AD が検出して報告できるセキュリティ関連のリスク イベントがすべて表示されます。
 
 次の表は、Azure AD 異常アクティビティ セキュリティ レポートと、各レポートに対応する Azure Portal のリスク イベントの種類を示しています。
 
@@ -104,8 +98,6 @@ Azure クラシック ポータルでの Azure AD の異常なアクティビテ
 
 * 複数のエラー後のサインイン
 * 複数の地域からのサインイン
-
-これらのレポートは、Azure クラシック ポータルで引き続き使用できますが、今後廃止される予定です。
 
 詳細については、「[Azure Active Directory リスク イベント](active-directory-identity-protection-risk-events.md)」を参照してください。  
 
@@ -125,29 +117,10 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 - [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Azure クラシック ポータルと Azure Portal のアクティビティ レポートの違い
-
-このセクションの表は、Azure クラシック ポータルの既存のレポートを示しています。 同じ情報を Azure Portal で取得する方法も説明されています。
-
-すべての監査データを表示するには、**[Azure Active Directory]** ブレードで、**[アクティビティ]** の下の **[監査ログ]** を選択します。
-
-![監査ログ](./media/active-directory-reporting-migration/61.png "監査ログ")
-
-| Azure クラシック ポータル                 | Azure Potal で見つける方法                                                         |
-| ---                                  | ---                                                                        |
-| 監査ログ                           | **アクティビティのカテゴリ**として **[コア ディレクトリ]** を選択します。                       |
-| パスワード リセット アクティビティ              | **アクティビティのカテゴリ**として **[Self-service Password Management] \(セルフサービスによるパスワード管理)** を選択します。 |
-| パスワード リセット登録アクティビティ | **アクティビティのカテゴリ**として **[Self-service Password Management] \(セルフサービスによるパスワード管理)** を選択します。     |
-| セルフ サービス グループ アクティビティ         | **アクティビティのカテゴリ**として **[セルフサービスによるグループ管理]** を選択します。        |
-| アカウント プロビジョニングのアクティビティ        | **アクティビティのカテゴリ**として **[Account User Provisioning (アカウント ユーザーのプロビジョニング)]** を選択します。         |
-| パスワード ロールオーバーの状態             | **アクティビティのカテゴリ**として、**[Automatic App Password Rollover (アプリ パスワードの自動ロールオーバー)]**  を選択します。      |
-| アカウント プロビジョニング エラー          | **アクティビティのカテゴリ**として **[Account User Provisioning (アカウント ユーザーのプロビジョニング)]** を選択します。        |
-| Office 365 グループ名の変更         | **アクティビティのカテゴリ**として **[Self-service Password Management] \(セルフサービスによるパスワード管理)** を選択します。 **アクティビティのリソースの種類**として **[グループ]** を選択します。 **アクティビティのソース**として **[O365 グループ]** を選択します。|
-
 **アプリケーションの使用状況**レポートに表示するには、**[Azure Active Directory]** ブレードで、**[管理]** の下の **[エンタープライズ アプリケーション]** を選択し、**[サインイン]** を選択します。
 
 
-![[エンタープライズ アプリケーション]、[サインイン]、レポート](./media/active-directory-reporting-migration/199.png "[エンタープライズ アプリケーション]、[サインイン]、レポート")
+![エンタープライズ アプリケーションのサインイン レポート](./media/active-directory-reporting-migration/199.png)
 
 ## <a name="next-steps"></a>次の手順
 

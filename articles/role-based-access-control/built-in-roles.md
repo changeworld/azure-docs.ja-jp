@@ -1,6 +1,6 @@
 ---
-title: Azure でのロールベースのアクセス制御 (RBAC) の組み込みロール | Microsoft Docs
-description: Azure でのロール ベースのアクセス制御 (RBAC) の組み込みロールについて説明します。 actions と notActions を一覧表示します。
+title: Azure の組み込みロール | Microsoft Docs
+description: Azure でのロール ベースのアクセス制御 (RBAC) の組み込みロールについて説明します。 アクション、notActions、dataActions、および notDataActions を一覧表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267375"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294498"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
+# <a name="built-in-roles-in-azure"></a>Azure の組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
 
 組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。

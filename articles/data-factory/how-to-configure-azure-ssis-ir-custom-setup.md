@@ -1,27 +1,28 @@
 ---
-title: Azure SSIS 統合ランタイムのカスタム セットアップ | Microsoft Docs
-description: この記事では、Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスの使用方法について説明します。
+title: Azure SSIS 統合ランタイムのセットアップのカスタマイズ | Microsoft Docs
+description: この記事では、Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスを使用して、追加のコンポーネントをインストールしたり、設定を変更したりする方法について説明します
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: douglasl
-ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885440"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267874"
 ---
-# <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムのカスタム セットアップ
+# <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
-Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスでは、既定の動作の構成または環境を変更したり (たとえば、追加の Windows サービスを開始する)、Azure SSIS IR の各ノードに追加のコンポーネントをインストールしたり (アセンブリ、ドライバー、または拡張機能など) することが可能です。 一般的に、お使いの Azure SSIS IR のプロビジョニングまたは再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供しています。
+Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスは、お使いの Azure SSIS IR のプロビジョニングや再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供します。 カスタム セットアップでは、既定の動作の構成または環境を変更したり (たとえば、追加の Windows サービスを開始する)、Azure SSIS IR の各ノードに追加のコンポーネントをインストールしたり (アセンブリ、ドライバー、または拡張機能など) することが可能です。
 
 スクリプトとその関連ファイルを準備して、それらを Azure Storage アカウントの BLOB コンテナーにアップロードすることで、カスタム セットアップを構成します。 お使いの Azure SSIS IR をプロビジョニングまたは再構成するとき、コンテナーに対して Shared Access Signature (SAS) の Uniform Resource Identifier (URI) を提供します。 Azure SSIS IR の各ノードは、その後、スクリプトとその関連ファイルをコンテナーからダウンロードし、昇格された特権を使用してカスタム セットアップを実行します。 カスタム セットアップが完了すると、各ノードは、実行の標準出力およびその他のログをコンテナーにアップロードします。
 
@@ -30,13 +31,13 @@ Azure SSIS 統合ランタイムのカスタム セットアップ インター�
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
--   `gacutil.exe` を使用してアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールする場合は、カスタム セットアップの一部として指定するか、パブリック プレビュー コンテナー内に提供されているコピーを使用する必要があります。
+-   `gacutil.exe` を使用してアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールする場合は、カスタム セットアップの一部として `gacutil.exe` を指定するか、パブリック プレビュー コンテナー内に提供されているコピーを使用する必要があります。
 
--   カスタム セットアップを備えた Azure SSIS IR を VNet に参加させる必要がある場合、Azure Resource Manager の VNet のみがサポートされます。 従来の VNet はサポートされません。
+-   スクリプト内でサブフォルダーを参照する場合、`msiexec.exe` はルート フォルダーを参照するための `.\` 表記をサポートしていません。 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` の代わりに `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` のようなコマンドを使います。
+
+-   カスタム セットアップを備えた Azure SSIS IR を仮想ネットワークに参加させる必要がある場合は、Azure Resource Manager 仮想ネットワークのみがサポートされます。 クラシック仮想ネットワークはサポートされません。
 
 -   Azure-SSIS IR では現在のところ、管理共有をご利用いただけません。
-
--   カスタム設定でファイル共有をドライブにマッピングする場合、`net use` コマンドは現在、ご利用いただけません。 結果的に、`net use d: \\fileshareserver\sharename` のようなコマンドを使用できません。 代わりに `cmdkey /add:fileshareserver /user:yyy /pass:zzz` のような `cmdkey` コマンドを使用し、パッケージで直接、`\\fileshareserver\folder` にアクセスします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +45,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 -   [Azure サブスクリプション](https://azure.microsoft.com/)
 
--   [Azure SQL Database またはマネージド インスタンス サーバー](https://ms.portal.azure.com/#create/Microsoft.SQLServer)
+-   [Azure SQL Database または Managed Instance サーバー](https://ms.portal.azure.com/#create/Microsoft.SQLServer)
 
 -   [お使いの Azure SSIS IR のプロビジョニング](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)
 
@@ -58,8 +59,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
     1.  カスタム セットアップのエントリ ポイントである `main.cmd` という名前のスクリプト ファイルを保持している必要があります。
 
-    2.  他のツール (`msiexec.exe` など) で生成された追加ログをコンテナーにアップロードする場合は、事前定義された環境変数 `CUSTOM_SETUP_SCRIPT_LOG_DIR` をお使いのスクリプトのログ フォルダー として指定します (たとえば、`msiexec /i xxx.msi /quiet
-        /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`)。
+    2.  他のツール (`msiexec.exe` など) で生成された追加ログをコンテナーにアップロードする場合は、事前定義された環境変数 `CUSTOM_SETUP_SCRIPT_LOG_DIR` をお使いのスクリプトのログ フォルダー として指定します (たとえば、`msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`)。
 
 4.  [Azure Storage Explorer](http://storageexplorer.com/)をダウンロードし、インストールして、起動します。
 

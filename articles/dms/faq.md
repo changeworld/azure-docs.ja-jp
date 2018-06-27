@@ -10,25 +10,25 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 06/19/2018
+ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850074"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214105"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
 
 ### <a name="q-what-is-azure-database-migration-service"></a>Q. Azure Database Migration Service とは何ですか。
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは現在、パブリック プレビューとして提供されており、次の点に重点を置いて開発が進められています。
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、現在一般公開されていますが、以下に重点を置いた開発が進行中です。
 - 信頼性とパフォーマンス。
 - ソースとターゲットのペアの反復的追加。
 - スムーズな移行を実現するための継続的な投資。
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Q. Azure Database Migration Service では、現在、どのソースとターゲットのペアがサポートされていますか。
-パブリック プレビューのサービスでは、現在、SQL Server から Azure SQL Database への移行がサポートされています。このシナリオであれば、今すぐ Azure Portal にアクセスして、Azure Database Migration Service を使い始めることができます。 SQL Server から Azure SQL Database Managed Instance への移行や、Oracle から Azure SQL Database への移行など、他のソースとターゲットのペアは、限定的なプライベート プレビューを通じて使用できます。 これらのシナリオの限定的なプライベート プレビューに参加する機会を得るには、[こちら](https://sqldatabase-migrationpreview.azurewebsites.net/)で登録してください。
+サービスは、現在、SQL Server から Azure SQL Database への移行をサポートしています。このシナリオであれば、今すぐ Azure Portal にアクセスして、Azure Database Migration Service を使い始めることができます。 Oracle から Azure SQL Database への移行など、他のソースとターゲットのペアの移行は、限定的なプライベート プレビューで実行できます。 これらのシナリオの限定的なプライベート プレビューに参加する機会を得るには、[こちら](https://aka.ms/dms-preview/)で登録してください。
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Q. Azure Database Migration Service は、他の Microsoft データベース移行ツール (Database Migration Assistant (DMA)、SQL Server Migration Assistant (SSMA) など) とどのような点が違いますか。
 Azure Database Migration Service は、Microsoft Azure への大規模なデータベース移行に適しています。 Azure Database Migration Service と他の Microsoft データベース移行ツールとの比較や、さまざまなシナリオでサービスを使用する際の推奨事項については、ブログ投稿の「[Differentiating Microsoft’s Database Migration Tools and Services (Microsoft の各データベース移行ツールおよびサービスの差異)](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)」を参照してください。
@@ -93,4 +93,4 @@ Azure VNET のセットアップ手順を説明する複数の Microsoft チュ�
 ユーザーからのご意見をお待ちしています。 Azure Database Migration Service に関するフィードバックやご要望は、[こちら](https://feedback.azure.com/forums/906100-azure-database-migration-service)から送信してください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Database Migration Service の概要と、パブリック プレビュー期間中のリージョンごとの利用可能性については、「[Azure Database Migration Service プレビューとは何ですか](dms-overview.md)」という記事を参照してください。 
+Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」を参照してください。 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618591"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267924"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
@@ -89,42 +89,9 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 4.  環境の名前を入力します。
 
-5.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf\_publish`を選択します。
+5.  Git 成果物を追加し、Data Factory で構成したのと同じリポジトリを選択します。 最新の既定のバージョンを使用する既定のブランチとして `adf_publish`を選択します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  Azure Key Vault からシークレットを取得します。 シークレットを処理する方法は 2 つあります。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  シークレットをパラメーター ファイルに追加する:
-
-       -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
-
-       -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
-
-    b.  [Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加する:
-
-       -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
-
-       -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Azure Resource Manager デプロイ タスクを追加します。
 
@@ -134,7 +101,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
     c.  **[リソース グループの作成または更新]** アクションを選択します。
 
-    d.  **[…]** を選択します  (**[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 このファイルは、`adf\_publish` ブランチのルート フォルダーで探します。
+    d.  **[…]** を選択します  (**[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
 
     e.  パラメーター ファイルに対して同じことを行います。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
 
@@ -147,6 +114,43 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 9.  このリリース定義から新しいリリースを作成します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>省略可能 - Azure Key Vault からシークレットを取得する
+
+Azure Resource Manager テンプレートに渡すシークレットがある場合は、VSTS リリースで Azure Key Vault を使うことをお勧めします。
+
+シークレットを処理する方法は 2 つあります。
+
+1.  シークレットをパラメーター ファイルに追加します。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)」をご覧ください。
+
+    -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
+
+    -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
+
+2.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加します。
+
+    -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
+
+    -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>VSTS エージェントへのアクセス許可を与える
 Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、VSTS エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
@@ -161,14 +165,9 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 3.  スクリプトの種類として **[インライン スクリプト]** を選択し、コードを入力します。 次の例は、トリガーを停止します。
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d01042a02f2339f039f23d4f6e021de503dc3815
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195966"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218957"
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Log Analytics への Azure Automation DSC レポート データの転送
 
@@ -86,14 +86,14 @@ DSC のログを検索するには、次のクエリを入力します。`Type=A
 
 お客様からの要望として多いのは、DSC 構成に問題が発生したときに電子メールまたはテキストを送信する機能です。   
 
-アラート ルールを作成するには、まずアラートを呼び出す DSC レポートのレコードに対するログ検索を作成します。  **[アラート]** ボタンをクリックし、アラート ルールを作成して構成します。
+アラート ルールを作成するには、まずアラートを呼び出す DSC レポートのレコードに対するログ検索を作成します。  **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックし、アラート ルールを作成して構成します。
 
 1. Log Analytics の [Overview (概要)] ページで、**[Log Search (ログ検索)]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。  
   Automation アカウント名は DscNodeStatusData の検索のリソース フィールドから派生していることもあります。  
-1. **[アラート ルールの追加]** 画面を開くには、ページの上部にある **[アラート]** をクリックします。 アラートの構成オプションについて詳しくは、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md#alert-rules)」をご覧ください。
+1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、[アラート ルールの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関する記事をご覧ください。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>すべてのノードで失敗した DSC リソースを検索する
 
@@ -118,7 +118,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscNodeStatusData |
@@ -149,7 +149,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscResourceStatusData|

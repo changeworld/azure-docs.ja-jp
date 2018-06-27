@@ -14,15 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4555bc85489f557cf6b6b744df7063fc14b0602a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7147b282d9bcbf48391d60466c77d28eca396832
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590380"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294277"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。
+
+## <a name="june-2018"></a>2018 年 6 月 
+**新しいプレビュー機能:** 
+* Azure AD Connect Health for Sync - ポータルから重複する属性の同期エラーを診断して修復します。 
+
+**エージェントの更新:** 
+*   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.2.0)  
+   1. アラートのバグの修正と機能強化 
+
 
 ## <a name="may-2018"></a>2018 年 5 月
 **エージェントの更新:**
@@ -35,7 +44,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
  2. エージェントのプライバシーの向上  
  3. バグの修正と一般的な機能強化
 
-* Sync 用 Azure AD Connect Health エージェント (バージョン 3.0.244.0)
+* Azure AD Connect バージョン 1.1.819.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.0.164.0)
  1. エージェントのプライバシーの向上  
  2. バグの修正と一般的な機能強化
 
@@ -98,7 +107,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 ## <a name="october-2016"></a>2016 年 10 月
 **エージェントの更新:**
 
-* AD FS 用 Azure AD Connect Health エージェント \(バージョン 2.6.408.0\)
+* AD FS 用 Azure AD Connect Health エージェント (バージョン 2.6.408.0)
 1. 認証要求でクライアント IP アドレスを検出する機能の強化
 2. アラートに関連するバグの修正
 * AD DS 用 Azure AD Connect Health エージェント (バージョン 2.6.408.0)

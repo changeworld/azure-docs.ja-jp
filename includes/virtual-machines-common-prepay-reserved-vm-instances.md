@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 8e710bebf979b60f61552593ae550e95a8340d2b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307568"
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35683051"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
 
@@ -16,7 +16,14 @@ Azure Reserved Instances は [Azure portal](https://portal.azure.com) で購入�
 -   Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で予約インスタンスを有効にする必要があります。
 -   クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エーエージェントのみが予約インスタンスを購入できます。
 
-## <a name="buy-a-reserved-instance"></a>予約インスタンスを購入する
+[!IMPORTANT]
+以下に説明する方法のいずれかを使用して、予約購入の VM サイズを正しく識別する必要があります。
+
+## <a name="determine-the-right-vm-size-before-purchase"></a>購入する前に適切な VM サイズを決定する
+1. 使用状況ファイルの AdditionalInfo フィールドまたは使用状況 API を参照して、予約購入の適切な VM サイズを確認します。 測定サブカテゴリ フィールドと製品フィールドは S バージョンと S 以外のバージョンの VM を区別しないので、これらのフィールドの値は使用しないでください。
+2. Powershell または Azure Resource Manager を使用するか、Azure portal の VM 詳細から、正確な VM サイズ情報を取得することもできます。
+
+## <a name="buy-a-reserved-virtual-machine-instance"></a>予約仮想マシン インスタンスの購入
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. **[すべてのサービス]** > **[予約]** を選択します。
 3. **[追加]** を選択して、新しい予約インスタンスを購入します。
@@ -29,7 +36,7 @@ Azure Reserved Instances は [Azure portal](https://portal.azure.com) で購入�
     |スコープ       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約インスタンスのスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約インスタンス割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約インスタンス割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |リージョン    |予約インスタンスの対象となる Azure リージョン。|    
     |VM サイズ     |VM インスタンスのサイズ|
-    |契約期間        |1 年間または 3 年間。|
+    |用語        |1 年間または 3 年間。|
     |数量    |予約インスタンス内で購入しているインスタンス数。 数量は、課金の割引を受けられる実行中の VM インスタンス数です。 たとえば、米国東部で Standard_D2 VM を 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
 5. **[コストの計算]** を選択すると、予約インスタンスのコストを表示できます。
 
@@ -50,8 +57,7 @@ Azure Reserved Instances について詳しくは、次の記事をご覧くだ�
 - [Reserved Instances で仮想マシンのコストを削減する](../articles/billing/billing-save-compute-costs-reservations.md)
 - [Azure Reserved Instances を管理する](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [予約インスタンスの割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
-- 
-  [従量課金制サブスクリプションの予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [従量課金制サブスクリプションの予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)
 - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムで予約済みのインスタンス](https://docs.microsoft.com/partner-center/azure-reservations)

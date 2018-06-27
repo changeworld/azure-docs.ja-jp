@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 398b69769cebb9d54121e357faed06294499bd61
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e666d23cec4ec6d987084bf5dc33bdb7c3db0f66
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723781"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231198"
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 
@@ -88,7 +88,7 @@ Exchange ActiveSync から Exchange Online へのアクセスを効果的に保�
 
 - 以下の手順に従って、サポートされている条件付きアクセス ポリシーを構成します:
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラウド アプリとして **Office 365 Exchange Online** のみを選択します。  
+    a. クラウド アプリとして **Office 365 Exchange Online** のみを選択します。  
 
     ![条件付きアクセス](./media/active-directory-conditional-access-no-modern-authentication/04.png)
 

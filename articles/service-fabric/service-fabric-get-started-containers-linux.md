@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: a38eb1f291d00d942ff0a1579b20bca7e012991a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642939"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213126"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -171,26 +171,12 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 インスタンス数を "1" に指定します。
 
+適切な形式でポート マッピングを指定します。 この記事では、```80:4000``` をポート マッピングとして提供する必要があります。 そうすることで、ホスト コンピューター上のポート 4000 に到着した受信要求がコンテナー上のポート 80 にリダイレクトされるように構成しています。
+
 ![コンテナー用 Service Fabric Yeoman ジェネレーター][sf-yeoman]
 
-## <a name="configure-port-mapping-and-container-repository-authentication"></a>ポート マッピングとコンテナー リポジトリの認証を構成する
-コンテナー化されたサービスには、通信用のエンドポイントが必要です。 'Resources' タグの下の ServiceManifest.xml ファイル内の `Endpoint` にプロトコル、ポート、タイプを追加しましょう。 この記事では、コンテナー化されたサービスがポート 4000 でリッスンします。 
-
-```xml
-
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="myServiceTypeEndpoint" UriScheme="http" Port="4000" Protocol="http"/>
-    </Endpoints>
-  </Resources>
- ```
- 
-`UriScheme` を指定すると、Service Fabric ネーム サービスを使用したコンテナー エンドポイントが自動的に登録され、検出可能性が確保されます。 ServiceManifest.xml の完全なサンプル ファイルは、この記事の最後にあります。 
-
-ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `PortBinding` ポリシーを指定して、コンテナーのポートからホストへのポート マッピングを構成します。 この記事では、`ContainerPort` は 80 で (コンテナーは Dockerfile で指定されたとおりにポート 80 を公開します)、`EndpointRef` は "myServiceTypeEndpoint" です (サービス マニフェストで定義されているエンドポイントです)。 ポート 4000 で受信するサービスへの要求は、コンテナーのポート 80 にマッピングされています。 コンテナーでプライベート リポジトリを使用した認証が必要な場合は、`RepositoryCredentials` を追加します。 この記事では、myregistry.azurecr.io コンテナー レジストリのアカウント名とパスワードを追加します。 適切なサービス パッケージに対応する 'ServiceManifestImport' タグにポリシーが追加されていることを確認します。
+## <a name="configure-container-repository-authentication"></a>コンテナー リポジトリの認証を構成する
+ コンテナーでプライベート リポジトリを使用した認証が必要な場合は、`RepositoryCredentials` を追加します。 この記事では、myregistry.azurecr.io コンテナー レジストリのアカウント名とパスワードを追加します。 適切なサービス パッケージに対応する 'ServiceManifestImport' タグにポリシーが追加されていることを確認します。
 
 ```xml
    <ServiceManifestImport>
@@ -227,14 +213,6 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 既定では、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定されています。 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
-
-## <a name="build-and-package-the-service-fabric-application"></a>Service Fabric アプリケーションのビルドとパッケージ化
-Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。 アプリケーションをビルドしてパッケージ化するには、次のコマンドを実行します。
-
-```bash
-cd mycontainer
-gradle
-```
 
 ## <a name="deploy-the-application"></a>アプリケーションのデプロイ
 アプリケーションがビルドされたら、Service Fabric CLI を使用してローカル クラスターにデプロイできます。
