@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: サービス レベルとリソース
+    - name: モデルとリソースの購入
       items:
-        - name: サービス階層
+        - name: モデルの購入
           href: sql-database-service-tiers.md
         - name: 仮想コアベースのモデル
           href: sql-database-service-tiers-vcore.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737811"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294092"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -91,7 +91,7 @@ ms.locfileid: "34737811"
 
 * <a id="afs-region-availability"></a>
 **Azure File Sync (プレビュー) は、どのリージョンでサポートされていますか。**  
-    現在、Azure File Sync はオーストラリア東部、カナダ中部、米国東部、東南アジア、英国南部、西ヨーロッパ、米国西部で使用できます。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
+    現在、Azure File Sync は、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、米国中部、アジア太平洋、米国東部、米国東部 2、北ヨーロッパ、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部で利用できます。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
 
 * <a id="cross-domain-sync"></a>
 **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
@@ -239,7 +239,6 @@ ms.locfileid: "34737811"
     ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.0 プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
 
 ## <a name="backup"></a>Backup
-
 * <a id="backup-share"></a>
 **Azure ファイル共有をバックアップする方法を教えてください。**  
     誤って削除した場合のために、定期的に[共有スナップショット](storage-snapshots-files.md)を使用して保護できます。 AzCopy、RoboCopy、またはマウントされているファイル共有をバックアップできるサードパーティ製のバックアップ ツールを使用することもできます。 Azure Backup では、Azure Files をバックアップできます。 詳細については、[Azure Backup で Azure ファイル共有をバックアップする](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files)方法に関するページを参照してください。

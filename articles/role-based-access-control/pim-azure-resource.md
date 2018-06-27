@@ -1,6 +1,6 @@
 ---
 title: Privileged Identity Management (PIM) で Azure リソースへのアクセスを管理する
-description: PIM のロール ベース アクセス管理を使用して、Azure リソースにアクセスする方法について説明します。
+description: Privileged Identity Management (PIM) とロールベースのアクセス制御 (RBAC) を使用して Azure リソースへのアクセスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: fb0a1ff3821efd7114b509b72e143d5240b61b4c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 838c889f2dc099b4a4c5d84521871c64eb989163
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204211"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293752"
 ---
 # <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Privileged Identity Management で Azure リソースへのアクセスを管理する
 
@@ -31,6 +31,6 @@ Azure ロール ベースのアクセス制御 (RBAC) で PIM を使用して、
 - Azure リソースへのオンデマンドの "Just-In-Time" アクセスを可能にする
 - 割り当てられたユーザーとグループのリソースへのアクセス期限を自動的に終了させる
 - 急ぎのタスクまたは緊急対応が必要なスケジュールのために Azure リソースに一時的なアクセス権を割り当てる
-- 新しいユーザーまたはグループにリソースへのアクセスを割り当てたときや、それらのユーザーやグループがふさわしい割り当てをアクティブにするときにアラートを受け取る
+- 新しいユーザーまたはグループがリソース アクセスの割り当てを受けたときや、そのようなユーザーまたはグループが資格のある割り当てをアクティブ化するときにアラートを取得する
 
-詳細については、[Azure PIM におけるロールベースのアクセス制御の概要](../active-directory/privileged-identity-management/azure-pim-resource-rbac.md)に関する記事をご覧ください。
+詳細については、[Azure PIM におけるロールベースのアクセス制御の概要](../active-directory/privileged-identity-management/azure-pim-resource-rbac.md)に関する記事を参照してください。

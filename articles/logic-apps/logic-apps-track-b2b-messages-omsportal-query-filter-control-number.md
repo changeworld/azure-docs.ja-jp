@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 520a1212eaccc48f8b8b423f7dede9c16409220b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300329"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294311"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Log Analytics で AS2、X12、および EDIFACT メッセージのクエリを行う
 
@@ -53,41 +53,33 @@ ms.locfileid: "35300329"
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+3. **[管理]** で、**[ログ検索]** を選択します。
 
-   ![OMS ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![[ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. ホーム ページで **[ログ検索]** を選択します。
-
-   ![ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   または
-
-   ![メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. 検索ボックスに、検索するフィールドを入力し、**Enter**キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+4. 検索ボックスに、検索するフィールドを入力し、**Enter**キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
    この例では、**Type=AzureDiagnostics** のイベントを検索します。
 
    ![クエリ文字列の入力を開始する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. 左側のバーで、表示する期間を選択します。 クエリにフィルターを追加するには、**[+追加]** を選択します。
+5. 左側のバーで、表示する期間を選択します。 クエリにフィルターを追加するには、**[+追加]** を選択します。
 
    ![クエリにフィルターを追加する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. **[フィルターの追加]** にフィルター名を入力して、目的のフィルターを検索できるようにします。 フィルターを選択し、**[+追加]** を選択します。
+6. **[フィルターの追加]** にフィルター名を入力して、目的のフィルターを検索できるようにします。 フィルターを選択し、**[+追加]** を選択します。
 
    インターチェンジ制御番号を検索するため、この例では、「インターチェンジ」という単語を検索し、フィルターとして **[event_record_messageProperties_interchangeControlNumber_s]** を選択しています。
 
    ![フィルターを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
+7. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
 
    この例では、目的のメッセージのインターチェンジ制御番号を選択します。
 
    ![フィルター値を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. これで、バインドされているクエリに戻ります。 選択したフィルター イベントと値によってクエリが更新されています。 前の結果もフィルター処理されています。
+8. これで、バインドされているクエリに戻ります。 選択したフィルター イベントと値によってクエリが更新されています。 前の結果もフィルター処理されています。
 
     ![フィルター処理された結果を持つクエリに戻る](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

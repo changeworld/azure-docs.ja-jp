@@ -1,6 +1,6 @@
 ---
-title: REST を使用したロールベースのアクセス制御 - Azure AD | Microsoft Docs
-description: REST API を使用したロールベースの Access Control の管理
+title: RBAC と REST API を使用してアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,21 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267477"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294464"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用してアクセスを管理する
 
-ロールベースのアクセス制御 (RBAC) を使用して特定の範囲にロールを割り当てることにより、ユーザー、グループ、およびサービス プリンシパルのアクセスを定義します。 この記事では、REST API を使用してアクセスを管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と REST API を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
 
 ## <a name="list-all-role-assignments"></a>ロールの割り当てをすべて一覧表示する
 指定されたスコープとサブスコープにあるロールの割り当てをすべて一覧表示します。
 
-ロールの割り当てを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールの割り当てを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **GET** メソッドを使用します。
@@ -83,7 +79,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="get-information-about-a-role-assignment"></a>ロールの割り当てに関する情報を取得する
 ロール割り当て ID によって指定された単一のロールの割り当てに関する情報を取得します。
 
-ロールの割り当てに関する情報を取得するには、 `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールの割り当てに関する情報を取得するには、 `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **GET** メソッドを使用します。
@@ -121,10 +117,10 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-## <a name="create-a-role-assignment"></a>ロールの割り当てを作成する
+## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 対象となるプリンシパルとスコープを指定してロールの割り当てを作成し、指定したロールを付与します。
 
-ロールの割り当てを作成するには、 `Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールの割り当てを作成するには、 `Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **PUT** メソッドを使用します。
@@ -182,7 +178,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="delete-a-role-assignment"></a>ロールの割り当てを削除する
 指定したスコープにおけるロールの割り当てを削除します。
 
-ロールの割り当てを削除するには、 `Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールの割り当てを削除するには、 `Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **DELETE** メソッドを使用します。
@@ -223,7 +219,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="list-all-roles"></a>すべてのロールを一覧表示する
 指定したスコープでの割り当てに使用できるすべてのロールを一覧表示します。
 
-ロールを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **GET** メソッドを使用します。
@@ -306,7 +302,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="get-information-about-a-role"></a>ロールに関する情報を取得する
 ロール定義識別子によって指定された単一のロールに関する情報を取得します。 単一のロールに関する情報をその表示名を使って取得する方法については、「 [すべてのロールを一覧表示する](role-assignments-rest.md#list-all-roles)」を参照してください。
 
-ロールに関する情報を取得するには、 `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+ロールに関する情報を取得するには、 `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。 この操作のアクセス権はすべての組み込みロールに付与されています。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **GET** メソッドを使用します。
@@ -386,7 +382,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 カスタム ロールを作成します。
 
-カスタム ロールを作成するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+カスタム ロールを作成するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **PUT** メソッドを使用します。
@@ -489,7 +485,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="update-a-custom-role"></a>カスタム ロールの更新
 カスタム ロールに変更を加えます。
 
-カスタム ロールに変更を加えるには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+カスタム ロールに変更を加えるには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **PUT** メソッドを使用します。
@@ -592,7 +588,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
 カスタム ロールを削除します。
 
-カスタム ロールを削除するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
+カスタム ロールを削除するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。 Azure のリソースに対するアクセス管理とロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-assignments-portal.md)」を参照してください。
 
 ### <a name="request"></a>要求
 次の URI で **DELETE** メソッドを使用します。

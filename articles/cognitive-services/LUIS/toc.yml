@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Language Understanding の詳細
+    - name: Language Understanding とは
       href: Home.md
     - name: サポートされている言語
       href: luis-supported-languages.md
@@ -25,10 +25,10 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: 階層構造エンティティ
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: リスト エンティティ
-          href: luis-quickstart-intent-and-list-entity.md
         - name: 正規表現エンティティ
           href: luis-quickstart-intents-regex-entity.md
+        - name: リスト エンティティ
+          href: luis-quickstart-intent-and-list-entity.md
         - name: keyPhrase エンティティ
           href: luis-quickstart-intent-and-key-phrase.md
         - name: センチメント分析
@@ -238,7 +238,33 @@
     - name: 境界
       href: luis-boundaries.md
     - name: 事前構築済みのエンティティのリファレンス
-      href: luis-reference-prebuilt-entities.md
+      items:
+        - name: カルチャごとのエンティティ
+          href: luis-reference-prebuilt-entities.md
+        - name: 年齢エンティティ
+          href: luis-reference-prebuilt-age.md
+        - name: 通貨エンティティ
+          href: luis-reference-prebuilt-currency.md
+        - name: datetimeV2 エンティティ
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: ディメンション エンティティ
+          href: luis-reference-prebuilt-dimension.md
+        - name: 非推奨のエンティティ
+          href: luis-reference-prebuilt-deprecated.md
+        - name: 電子メール エンティティ
+          href: luis-reference-prebuilt-email.md
+        - name: 数値エンティティ
+          href: luis-reference-prebuilt-number.md
+        - name: 序数エンティティ
+          href: luis-reference-prebuilt-ordinal.md
+        - name: 割合エンティティ
+          href: luis-reference-prebuilt-percentage.md
+        - name: 電話番号エンティティ
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: 温度エンティティ
+          href: luis-reference-prebuilt-temperature.md
+        - name: URL エンティティ
+          href: luis-reference-prebuilt-url.md
     - name: 事前構築済みのドメインのリファレンス
       href: luis-reference-prebuilt-domains.md
     - name: 事前構築済みの Cortana アプリのリファレンス

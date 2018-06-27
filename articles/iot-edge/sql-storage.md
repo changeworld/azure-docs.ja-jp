@@ -9,12 +9,12 @@ ms.date: 02/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c90cc28956e4dd7730cc7ba09a173f505f056fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30dc833edabfe3d13769bafc9fa0eb6bdd51bb23
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632402"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287209"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server データベースを使用したエッジでのデータの格納
 
@@ -33,7 +33,7 @@ Azure IoT Edge デバイスを使用して、エッジで生成されるデー�
 * [Visual Studio Code を使用して Azure IoT Edge で Azure Functions を開発およびデプロイする](how-to-vscode-develop-azure-function.md)
 
 必要なチュートリアルを完了すると、すべての必要な前提条件がコンピューター上に整います。 
-* アクティブな Azure IoT Hub
+* 少なくとも 1 つの IoT Edge デバイスを含むアクティブな Azure IoT ハブ。
 * 最低 2 GB の RAM と 2 GB のディスク ドライブを持つ IoT Edge デバイス
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)  
@@ -43,7 +43,6 @@ Azure IoT Edge デバイスを使用して、エッジで生成されるデー�
 * [Python 2.7](https://www.python.org/downloads/)
 * [IoT Edge コントロール スクリプト](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 * AzureIoTEdgeFunction テンプレート (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
-* 少なくとも 1 つの IoT Edge デバイスを含むアクティブな IoT ハブ
 
 x64 プロセッサ アーキテクチャでは Windows と Linux の両方のコンテナーがこのチュートリアルで有効です。 SQL Server は、ARM プロセッサをサポートしていません。
 

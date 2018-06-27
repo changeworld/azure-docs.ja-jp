@@ -1,8 +1,9 @@
 # 概要
-## [使ってみる](get-started.md)
+## [作業開始](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## [概要とアーキテクチャ](hana-overview-architecture.md)
+### [HLI でサポートされるシナリオ](hana-supported-scenario.md)
 ## [インフラストラクチャと接続](hana-overview-infrastructure-connectivity.md)
 ## [SAP HANA のインストール](hana-installation.md)
 ## [高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)

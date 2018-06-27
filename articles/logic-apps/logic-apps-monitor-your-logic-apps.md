@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301220"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293525"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -118,19 +118,11 @@ ms.locfileid: "35301220"
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+3. **[管理]** で、**[ログ検索]** を選択します。
 
-   ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![[ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. ホーム ページで **[ログ検索]** を選択します。
-
-   ![ホーム ページで [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   または
-
-   ![メニューの [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
+4. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
 
    たとえば、発生した上位 10 件のイベントを検索するには、**search Category == "WorkflowRuntime" | limit 10** という検索クエリを入力して選択します。
 
@@ -138,27 +130,27 @@ ms.locfileid: "35301220"
 
    詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
-6. 結果ページの左側のバーで、表示する期間を選択します。
+5. 結果ページの左側のバーで、表示する期間を選択します。
 フィルターを追加してクエリを絞り込むには、**[+ 追加]** を選択します。
 
    ![クエリ結果の期間を選択する](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. **[フィルターの追加]** で、フィルター名を入力すると、目的のフィルターを見つけることができます。 そのフィルターを選択し、**[+追加]** を選択します。
+6. **[フィルターの追加]** で、フィルター名を入力すると、目的のフィルターを見つけることができます。 そのフィルターを選択し、**[+追加]** を選択します。
 
    この例では、"status" という単語を使用して、**AzureDiagnostics** で失敗したイベントを検索します。
    ここでは、**status_s** のフィルターが既に選択されています。
 
    ![フィルターを選択する](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
+7. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
 
    ![フィルター値を選択して [適用] を選択する](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. ここで、作成しているクエリに戻ります。 このクエリは、選択したフィルターと値によって更新されます。 以前の結果もフィルター処理されています。
+8. ここで、作成しているクエリに戻ります。 このクエリは、選択したフィルターと値によって更新されます。 以前の結果もフィルター処理されています。
 
    ![フィルター処理された結果が表示されているクエリに戻る](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. クエリを将来使用するために保存するには、**[保存]** を選択します。 [クエリの保存方法](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)を確認してください。
+9. クエリを将来使用するために保存するには、**[保存]** を選択します。 [クエリの保存方法](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query)を確認してください。
 
 <a name="extend-diagnostic-data"></a>
 

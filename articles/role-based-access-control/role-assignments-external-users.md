@@ -1,6 +1,6 @@
 ---
-title: Azure で外部ユーザーに対するロールの割り当てを管理する | Microsoft Docs
-description: 組織外のユーザーのために Azure でロールベースのアクセス制御 (RBAC) を管理します。
+title: Azure で RBAC を使用して外部ユーザーのアクセスを管理する | Microsoft Docs
+description: Azure でロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーのアクセスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203888"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296969"
 ---
-# <a name="manage-role-assignments-for-external-users"></a>外部ユーザーに対するロールの割り当てを管理する
+# <a name="manage-access-for-external-users-using-rbac"></a>RBAC を使用して外部ユーザーのアクセスを管理する
 
 ロールベースのアクセス制御 (RBAC) では、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や SMB 向けの、優れたセキュリティ管理を実現できます。 RBAC では、管理者アカウント (サブスクリプション レベルでのサービス管理者ロール) によって管理される 1 つの Azure サブスクリプションの所有者を柔軟に設定できるほか、管理者権限を付与することなく、複数のユーザーを同じサブスクリプションでの業務に招待することができます。
 
@@ -44,10 +44,10 @@ RBAC ロールは、サブスクリプションの**所有者**のみが付与�
 管理者としてサインインした後、Azure Portal で [サブスクリプション] を選択し、目的のサブスクリプションを選択します。
 ![Azure Portal のサブスクリプション ブレード](./media/role-assignments-external-users/0.png) 既定では、管理者ユーザーが Azure サブスクリプションを購入している場合、そのユーザーが **[アカウント管理者]** として表示され、これがサブスクリプション ロールとなります。 Azure サブスクリプション ロールの詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
-この例では、ユーザー "alflanigan@outlook.com" が AAD テナント "Default tenant Azure" の "無料試用版" サブスクリプションの**所有者**です。 このユーザーは初期 Microsoft アカウントが "Outlook" (Microsoft アカウント = Outlook、Live など) である Azure サブスクリプションの作成者なので、このテナントに追加される他のすべてのユーザーの既定のドメイン名は **"@alflaniganuoutlook.onmicrosoft.com"** となります。 仕様により、新しいドメインの構文は、テナントを作成したユーザーのユーザー名とドメイン名を組み合わせ、拡張子 **".onmicrosoft.com"** を追加することで構成されます。
+この例では、ユーザー "alflanigan@outlook.com" が AAD テナント "Default tenant Azure" の "無料試用版" サブスクリプションの**所有者**です。 このユーザーは初期 Microsoft アカウントが "Outlook" (Microsoft アカウント = Outlook、Live など) である Azure サブスクリプションの作成者なので、このテナントに追加される他のすべてのユーザーの既定のドメイン名は **"\@alflaniganuoutlook.onmicrosoft.com"** となります。 仕様により、新しいドメインの構文は、テナントを作成したユーザーのユーザー名とドメイン名を組み合わせ、拡張子 **".onmicrosoft.com"** を追加することで構成されます。
 さらに、新しいテナント用にカスタム ドメイン名を追加して確認すると、ユーザーはそのカスタム ドメイン名でサインインできます。 Azure Active Directory テナントのカスタム ドメイン名を確認する方法の詳細については、[ディレクトリへのカスタム ドメイン名の追加](/active-directory/active-directory-add-domain)に関する記事を参照してください。
 
-この例では、"Default tenant Azure" ディレクトリに "@alflanigan.onmicrosoft.com" というドメイン名のユーザーのみが含まれています。
+この例では、"Default tenant Azure" ディレクトリに "\@alflanigan.onmicrosoft.com" というドメイン名のユーザーのみが含まれています。
 
 サブスクリプションの選択後、管理者ユーザーは **[アクセス制御 (IAM)]**、**[新しいロールの追加]** の順にクリックする必要があります。
 
@@ -55,7 +55,7 @@ RBAC ロールは、サブスクリプションの**所有者**のみが付与�
 
 ![Azure Portal の [アクセス制御 (IAM)] 機能で新しいユーザーを追加する](./media/role-assignments-external-users/2.png)
 
-次の手順では、割り当てるロールと RBAC ロールの割り当て先のユーザーを選択します。 管理者ユーザーの場合、**[ロール]** ドロップダウン メニューには Azure で利用できる組み込み RBAC ロールのみが表示されます。 各ロールとその割り当て可能なスコープの詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](built-in-roles.md)」を参照してください。
+次の手順では、割り当てるロールと RBAC ロールの割り当て先のユーザーを選択します。 管理者ユーザーの場合、**[ロール]** ドロップダウン メニューには Azure で利用できる組み込み RBAC ロールのみが表示されます。 各ロールとその割り当て可能なスコープの詳細については、[組み込みロール](built-in-roles.md)に関するページを参照してください。
 
 次に、管理者ユーザーは外部ユーザーのメール アドレスを追加する必要があります。 想定される動作として、既存のテナントに外部ユーザーが表示されません。 外部ユーザーを招待すると、そのユーザーは、**[サブスクリプション] の [アクセス制御 (IAM)]** 内に、現在サブスクリプション スコープで RBAC ロールが割り当てられているすべてのユーザーと共に表示されます。
 

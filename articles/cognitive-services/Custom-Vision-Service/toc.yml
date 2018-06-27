@@ -17,6 +17,8 @@
           href: use-prediction-api.md
         - name: モバイルへのモデルのエクスポート
           href: export-your-model.md
+        - name: Windows ML での ONNX モデルの使用
+          href: custom-vision-onnx-windows-ml.md
         - name: Python での TensorFlow モデルの実行
           href: export-model-python.md
     - name: アプリの構築

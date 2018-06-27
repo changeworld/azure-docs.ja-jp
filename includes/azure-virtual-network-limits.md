@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568128"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297968"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -25,7 +25,7 @@ ms.locfileid: "35568128"
 | 仮想ネットワークごとのプライベート IP アドレス |4096 |4096 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |500K |500K |
 | ネットワーク セキュリティ グループ (NSG) |100 |200 |
-| NSG あたりの NSG ルール数 |200 |400 |
+| NSG あたりの NSG ルール数 |200 |1,000 |
 | ユーザー定義ルート テーブル |100 |200 |
 | ルート テーブルあたりのユーザー定義ルート |100 |400 |
 | パブリック IP アドレス (動的) |5 |サポートにお問い合わせください |
@@ -50,7 +50,7 @@ ms.locfileid: "35568128"
 | ネットワーク セキュリティ グループ (NSG) |100 |5000 |
 | NSG あたりの NSG ルール数 |1000** |1,000 |
 | セキュリティ グループで送信元または送信先に指定された IP アドレスおよび IP アドレス範囲 |2000 |4000 |
-| アプリケーション セキュリティ グループ |200 |500 |
+| アプリケーション セキュリティ グループ |500 |3000 |
 | IP 構成ごと、NIC ごとのアプリケーション セキュリティ グループ |10 |20 |
 | アプリケーション セキュリティ グループごとのIP 構成 |1,000 |4000 |
 | ネットワーク セキュリティ グループのすべてのセキュリティ規則内で指定できるアプリケーション セキュリティ グループ |50 |100 |
@@ -64,6 +64,7 @@ ms.locfileid: "35568128"
 **これらの既定の制限は、制限がまだ引き上げられていないサブスクリプションに対してサポートにより適用されます。
 
 #### <a name="load-balancer"></a>Load Balancer の制限
+次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |

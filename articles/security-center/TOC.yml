@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: Azure Policy を使用するセキュリティ ポリシー
           href: security-center-azure-policy.md
+        - name: テナント全体の可視性
+          href: security-center-management-groups.md
     - name: セキュリティの推奨事項を実装する
       href: security-center-recommendations.md
     - name: セキュリティ正常性を監視する

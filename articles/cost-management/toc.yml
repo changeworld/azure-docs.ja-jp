@@ -45,6 +45,8 @@
       href: use-reports.md
     - name: ダッシュボードの使用
       href: dashboards.md
+    - name: 予算の管理
+      href: manage-budgets.md
 - name: リソース
   items:
     - name: コスト管理のビデオ

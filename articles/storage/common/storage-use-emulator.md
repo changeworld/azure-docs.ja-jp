@@ -1,6 +1,6 @@
 ---
 title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
-description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
+description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の承認方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305108"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291937"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -81,14 +81,14 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 > [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使用して、LocalDB のインストールを含め、SQL Server インスタンスを管理できます。 SMSS の **[サーバーへの接続]** ダイアログで、**[サーバー名:]** フィールドに `(localdb)\MSSQLLocalDb` を指定して LocalDB インスタンスに接続します。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>ストレージ エミュレーターに対する要求の認証
-ストレージ エミュレーターをインストールして起動すると、コードをテストできます。 クラウドの Azure Storage の場合と同様に、ストレージ エミュレーターに対する各要求は、匿名である場合を除いて認証される必要があります。 ストレージ エミュレーターに対する要求の認証には、共有キー認証を使用するか、共有アクセス署名 (SAS) を使用することができます。
+ストレージ エミュレーターをインストールして起動すると、コードをテストできます。 クラウドの Azure Storage の場合と同様に、ストレージ エミュレーターに対する各要求は、匿名である場合を除いて承認される必要があります。 ストレージ エミュレーターに対する要求の承認には、共有キー認証を使用するか、共有アクセス署名 (SAS) を使用することができます。
 
-### <a name="authenticate-with-shared-key-credentials"></a>共有キー資格情報を使用して認証する
+### <a name="authorize-with-shared-key-credentials"></a>共有キー資格情報を使用して承認する
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 接続文字列の詳細については、「[Azure Storage の接続文字列を構成する](../storage-configure-connection-string.md)」を参照してください。
 
-### <a name="authenticate-with-a-shared-access-signature"></a>共有アクセス署名を使用して認証する
+### <a name="authorize-with-a-shared-access-signature"></a>共有アクセス署名を使用して承認する
 Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。 この SAS トークンは、[ストレージ エクスプローラー](http://storageexplorer.com/)などのツールや、共有キー認証をサポートしている別のアプリケーションを使用して作成することができます。
 
 また、Azure PowerShell を使用して SAS トークンを生成することもできます。 次の例では、BLOB コンテナーに対するフル アクセス許可を持つ SAS トークンが生成されます。
@@ -165,7 +165,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 ### <a name="options"></a>オプション
 オプションの一覧を表示するには、コマンド プロンプトで「 `/help` 」と入力します。
 
-| オプション | [説明] | コマンド | 引数 |
+| オプション | 説明 | コマンド | 引数 |
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
@@ -204,12 +204,23 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 エミュレーターのキュー ストレージに固有の違いはありません。
 
 ## <a name="storage-emulator-release-notes"></a>ストレージ エミュレーター リリース ノート
+
+### <a name="version-55"></a>バージョン 5.5
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-11-09 がサポートされるようになりました。
+* BLOB の作成時刻を返す BLOB の **Created** プロパティのサポートが追加されました。
+
+### <a name="version-54"></a>バージョン 5.4
+インストールの安定性を向上させるために、エミュレーターでインストール時にポートの予約を試行しなくなりました。 ポートの予約が必要な場合は、**init** コマンドの *-reserveports* オプションを使用して指定します。
+
+### <a name="version-53"></a>バージョン 5.3
+ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-07-29 がサポートされるようになりました。
+
 ### <a name="version-52"></a>バージョン 5.2
 * ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-04-17 がサポートされるようになりました。
 * テーブルのプロパティ値が適切にエンコードされないバグを修正しました。
 
 ### <a name="version-51"></a>バージョン 5.1
-* 一部の応答でサービスが返していなかった `DataServiceVersion` ヘッダーをストレージ エミュレーターが返していたバグを修正しました。
+一部の応答でサービスが返していなかった `DataServiceVersion` ヘッダーをストレージ エミュレーターが返していたバグを修正しました。
 
 ### <a name="version-50"></a>バージョン 5.0
 * ストレージ エミュレーターのインストーラーが既存の MSSQL や .NET Framework のインストールをチェックしなくなりました。

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e25c8d97698d7a61501094a457174202322d146f
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32202674"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297951"
 ---
-# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Android アプリからのユーザーとすべての Microsoft Graph API をサインインする
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 このガイドでは、ネイティブの Android アプリケーションがアクセス トークンを取得し、Azure Active Directory v2 エンドポイントからのアクセス トークンを必要とする Microsoft Graph API や他の API を 呼び出す方法について説明します。
 
@@ -53,6 +53,6 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|[説明]|
+|ライブラリ|説明|
 |---|---|
 |[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|

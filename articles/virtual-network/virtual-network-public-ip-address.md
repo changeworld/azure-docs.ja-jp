@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 30b4a7ea0d3f68e48d02e5cb72e70de74dc2addf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4345199ed952b6d0e044d4ac99c29c47c477780d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658691"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287070"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>パブリック IP アドレスの作成、変更、削除
 
@@ -90,7 +90,17 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) (パブリック IP アドレスの一覧表示)、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) (設定の表示)、[az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) (更新)、[az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) (削除)|
-|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress) (設定の更新)、[Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) (削除)|
+|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzureRmPublicIpAddress](/powershell/module/azurerm.network/set-azurermpublicipaddress) (設定の更新)、[Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) (削除)|
+
+## <a name="assign-a-public-ip-address"></a>パブリック IP アドレスを割り当てる
+
+パブリック IP アドレスを割り当てる方法については、次のリソースを参照してください。
+
+- [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM (作成時)、または[既存の VM](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [インターネットに接続するロード バランサー](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure VPN Gateway を使用したサイト間接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -107,4 +117,3 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 - [PowerShell](powershell-samples.md) か [Azure CLI](cli-samples.md) のサンプル スクリプト、または Azure [Resource Manager テンプレート](template-samples.md)を利用したパブリック IP アドレスの作成
 - パブリック IP アドレスに対する [Azure ポリシー](policy-samples.md) の作成と適用
-- [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)/[Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure 仮想マシン､[インターネットに接続する Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)､[Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)､[Azure VPN Gateway を利用したサイト対サイト接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)､または[Azure 仮想マシンのスケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)作成時のパブリック IP アドレスの割り当て

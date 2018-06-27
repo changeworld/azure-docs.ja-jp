@@ -20,9 +20,158 @@
     - name: Azure Policy の探索 (ハンズオン ラボ)
       href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: サンプル
+  href: json-samples.md
   items:
-    - name: Azure Policy のサンプル
-      href: json-samples.md
+    - name: 全般
+      items:
+        - name: 名前を付ける
+          items:
+            - name: 複数の名前パターンを許可する
+              href: scripts/allow-multiple-name-patterns.md
+            - name: 類似パターンを要求する
+              href: scripts/enforce-like-pattern.md
+            - name: 一致パターンを要求する
+              href: scripts/enforce-match-pattern.md
+            - name: タグ一致パターンを要求する
+              href: scripts/enforce-tag-match-pattern.md
+        - name: タグ
+          items:
+            - name: タグとその既定値の適用
+              href: scripts/apply-tag-def-val.md
+            - name: 課金タグ ポリシーのイニシアティブ
+              href: scripts/billing-tags-policy-init.md
+            - name: タグとその値を強制
+              href: scripts/enforce-tag-val.md
+            - name: リソース グループへのタグと値の強制
+              href: scripts/enforce-tag-rg.md
+        - name: 場所
+          items:
+            - name: 許可される場所
+              href: scripts/allowed-locs.md
+        - name: リソースの種類
+          items:
+            - name: 許可されるリソースの種類
+              href: scripts/allowed-res-types.md
+            - name: 許可されないリソースの種類
+              href: scripts/not-allowed-res-type.md
+    - name: コンピューティング
+      items:
+        - name: 仮想マシン
+          items:
+            - name: リソース グループのカスタム VM イメージの許可
+              href: scripts/allow-custom-vm-image.md
+            - name: ストレージ アカウントおよび仮想マシンに対して許可されている SKU
+              href: scripts/allowed-skus-storage.md
+            - name: 承認された VM イメージ
+              href: scripts/allowed-custom-images.md
+            - name: 拡張機能が存在しない場合の監査
+              href: scripts/audit-ext-not-exist.md
+            - name: 許可されていない VM 拡張機能
+              href: scripts/not-allowed-vm-ext.md
+        - name: 仮想マシン スケール セット
+          items:
+            - name: VM が管理ディスクを使用していない場合の監査
+              href: scripts/create-vm-managed-disk.md
+            - name: 管理ディスクを使用して VM を作成する
+              href: scripts/use-managed-disk-vm.md
+            - name: Azure Hybrid Use Benefit の拒否
+              href: scripts/deny-hybrid-use.md
+            - name: 特定の VM プラットフォーム イメージのみの許可
+              href: scripts/allow-certain-vm-image.md
+    - name: Data Lake
+      items:
+        - name: Data Lake Store での暗号化の適用
+          href: scripts/enforce-datalakestore-encryption.md
+    - name: 監視
+      items:
+        - name: 診断設定の監査
+          href: scripts/audit-diag-setting.md
+    - name: ネットワーク
+      items:
+        - name: ネットワーク インターフェイス
+          items:
+            - name: すべての NIC 上の NSG X
+              href: scripts/nsg-on-nic.md
+            - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
+              href: scripts/use-approved-subnet-vm-nics.md
+            - name: VM ネットワーク インターフェイスでの承認された vNet の使用
+              href: scripts/use-approved-vnet-vm-nics.md
+        - name: 仮想ネットワーク
+          items:
+            - name: 許可されているアプリケーション ゲートウェイ SKU
+              href: scripts/allowed-app-gate-sku.md
+            - name: ER ネットワークへのネットワーク ピアリングがない
+              href: scripts/no-peering-er-net.md
+            - name: ユーザー定義ルート テーブルがない
+              href: scripts/no-user-def-route-table.md
+            - name: すべてのサブネット上の NSG X
+              href: scripts/nsg-on-subnet.md
+            - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
+              href: scripts/use-approved-subnet-vm-nics.md
+            - name: VM ネットワーク インターフェイスでの承認された vNet の使用
+              href: scripts/use-approved-vnet-vm-nics.md
+        - name: ネットワーク セキュリティ グループ
+          items:
+            - name: すべての NIC 上の NSG X
+              href: scripts/nsg-on-nic.md
+            - name: すべてのサブネット上の NSG X
+              href: scripts/nsg-on-subnet.md
+        - name: Express Route
+          items:
+            - name: 許可されている Express Route の帯域幅
+              href: scripts/allowed-er-band.md
+            - name: 許可されている Express Route の SKU
+              href: scripts/allowed-er-skus.md
+            - name: Express Route に対して許可されているピアリングの場所
+              href: scripts/allowed-peering-er.md
+        - name: Network Watcher
+          items:
+            - name: リージョンで Network Watcher が有効になっていない場合の監査
+              href: scripts/net-watch-not-enabled.md
+        - name: アプリケーション ゲートウェイ
+          items:
+            - name: 許可されているアプリケーション ゲートウェイ SKU
+              href: scripts/allowed-app-gate-sku.md
+    - name: SQL
+      items:
+        - name: SQL Server
+          items:
+            - name: Azure Active Directory 管理者不在時の監査
+              href: scripts/audit-no-aad-admin.md
+            - name: サーバー レベルの脅威検出設定の監査
+              href: scripts/audit-sql-ser-threat-det-setting.md
+            - name: SQL Server の監査設定の監査
+              href: scripts/sql-server-audit.md
+            - name: SQL Server レベルの監査設定の監査
+              href: scripts/audit-sql-ser-leve-audit-setting.md
+            - name: SQL Server バージョン 12.0 が必要
+              href: scripts/req-sql-12.md
+        - name: '[SQL データベース]'
+          items:
+            - name: 許可されている SQL DB の SKU
+              href: scripts/allowed-sql-db-skus.md
+            - name: SQL DB レベルの脅威検出設定の監査
+              href: scripts/audit-db-threat-det-setting.md
+            - name: SQL DB の暗号化の監査
+              href: scripts/sql-database-encryption-audit.md
+            - name: SQL DB レベルの監査設定の監査
+              href: scripts/audit-sql-db-audit-setting.md
+            - name: Transparent Data Encryption の状態の監査
+              href: scripts/audit-trans-data-enc-status.md
+    - name: Storage
+      items:
+        - name: ストレージ アカウントと VM に対して許可された SKU
+          href: scripts/allowed-skus-storage.md
+        - name: 許可されるストレージ アカウントの SKU
+          href: scripts/allowed-stor-acct-skus.md
+        - name: ストレージ アカウントのクール アクセス層の拒否
+          href: scripts/deny-cool-access-tiering.md
+        - name: ストレージ アカウントのみに対する HTTPS トラフィックの確認
+          href: scripts/ensure-https-stor-acct.md
+        - name: ストレージ ファイルの暗号化の確認
+          href: scripts/ensure-store-file-enc.md
+        - name: ストレージ アカウントの暗号化が必要
+          href: scripts/req-store-acct-enc.md
 - name: 概念
   items:
     - name: Azure Policy の定義の構造

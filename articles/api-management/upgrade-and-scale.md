@@ -9,58 +9,41 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6ae977344101c02222fd9930e26a083bf5e3f800
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: ca32c72b1582b2a09f9f1754ad778cf1b682a1c2
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26658638"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293314"
 ---
-# <a name="upgrade-and-scale-an-api-management-instance"></a>API Management インスタンスのアップグレードとスケーリングを行う 
+# <a name="upgrade-and-scale-an-api-management-instance"></a>API Management インスタンスのアップグレードとスケーリングを行う  
 
 API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、同時接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
 
-各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。 
+各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。
 
 各ユニットの価格と利用可能な機能 (複数リージョンへのデプロイなど) は、APIM インスタンス用に選択したレベルによって異なります。 [価格の詳細](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)に関する記事で、ユニットあたりの価格と各レベルで利用できる機能が説明されています。 
 
 >[!NOTE]
->[価格の詳細](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)に関する記事では、各レベルにおけるユニットの容量の概算の数値が示されています。 正確な数値を取得するには、API の現実的なシナリオを検討する必要があります。 この後の「容量を計画する方法」セクションを参照してください。
+>[価格の詳細](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)に関する記事では、各レベルにおけるユニットの容量の概算の数値が示されています。 正確な数値を取得するには、API の現実的なシナリオを検討する必要があります。 [「Capacity of an Azure API Management instance」](api-management-capacity.md)(Azure API Management インスタンスの容量) の記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事で説明されている手順を実行するには、以下が必要です。
+この記事の手順を実行するには、以下が必要です。
 
-+ 有効な Azure サブスクリプション
++ 有効な Azure サブスクリプションを持っている。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ APIM インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
++ APIM インスタンスを持っている。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 
-## <a name="how-to-plan-for-capacity"></a>容量を計画する方法
++ [Azure API Management インスタンスの容量] (api-management-capacity.md) の概念を理解している。
 
-トラフィックを処理するための十分なユニットがあるかどうかを確認するには、予想されるワークロードでテストを実行します。 
+## <a name="upgrade-and-scale"></a>アップグレードとスケーリング  
 
-前述のように、APIM ユニットが秒あたりで処理できる要求の数は、多数の変数によって異なります。 変数には、接続パターン、要求と応答のサイズ、各 API で構成されているポリシー、要求を送信するクライアントの数などがあります。
-
-特定の時点で使用されている容量を理解するには、**メトリック** を使用します (Azure Monitor の機能を使用します)。
-
-### <a name="use-the-azure-portal-to-examine-metrics"></a>Azure ポータルを使用してメトリックを調べる 
-
-1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
-2. **[メトリック]** を選びます。
-3. **[使用可能なメトリック]** から **[容量]** メトリックを選択します。 
-
-    容量メトリックは、テナントでどの程度の利用可能なコンピューティング能力が使用されているのかを示します。 その値は、メモリ、CPU、ネットワーク キューの長さなど、テナントで使用されるコンピューティング リソースから取得されます。 処理されている要求の数を直接測定したものではありません。 テストするには、テナントに対する要求負荷を増やし、ピーク負荷に対応する容量メトリックの値を監視します。 メトリック アラートを設定して、予想外の出来事が発生したときに通知されるようにすることができます。 たとえば、APIM インスタンスが予想ピーク容量を 10 分以上超えている場合などです。
-
-    >[!TIP]
-    > サービスの容量が少なくなったときに通知を受けるようにアラートを構成したり、ロジック アプリを呼び出してユニットの追加による自動的なスケーリングが行われるようにしたりすることができます。
-
-## <a name="upgrade-and-scale"></a>アップグレードとスケーリング 
-
-前述のように、4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 **Developer** レベルは、サービスを評価するために使用する必要があります。運用環境では使用しないでください。 **Developer** レベルには SLA がなく、このレベルをスケーリング (ユニットの追加/削除) することはできません。 
+4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 **Developer** レベルは、サービスを評価するために使用する必要があります。運用環境では使用しないでください。 **Developer** レベルには SLA がなく、このレベルをスケーリング (ユニットの追加/削除) することはできません。 
 
 **Basic**、**Standard**、**Premium** は運用レベルであり、SLA があり、スケーリングできます。 **Basic**  レベルは SLA がある最も安価なレベルで、最大 2 ユニットにスケールアップできます。**Standard** レベルは最大 4 ユニットにスケールアップできます。 **Premium** レベルでは、任意の数のユニットを追加できます。
 
@@ -71,16 +54,17 @@ API Management (APIM) インスタンスは、ユニットを追加するか削�
 >[!NOTE]
 >アップグレードまたはスケーリング プロセスは、適用されるまでに 15 ～ 45 分かかる場合があります。 終了すると、通知を受け取ります。
 
-### <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Azure ポータルを使用してアップグレードとスケーリングを行う
+## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Azure ポータルを使用してアップグレードとスケーリングを行う
+
+![Azure portal で APIM をスケーリングする](./media/upgrade-and-scale/portal-scale.png)
 
 1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
 2. **[スケールと料金]** を選択します。
 3. 目的のレベルを選択します。
-4. 追加する**ユニット**の数を指定します。 スライダーを使用するか、ユニットの数を入力できます。<br/>
+4. 追加する**ユニット**の数を指定します。 スライダーを使用するか、ユニットの数を入力できます。  
     **Premium** レベルを選択した場合は、最初にリージョンを選択する必要があります。
 5. **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
-

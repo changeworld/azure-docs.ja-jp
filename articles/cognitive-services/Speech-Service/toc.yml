@@ -12,31 +12,33 @@
     - name: 'C# で音声を認識する'
       href: quickstart-csharp-windows.md
     - name: C++ で音声を認識する (Windows)
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: C++ で音声を認識する (Linux)
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: Speech Devices SDK を使ってみる
       href: speech-devices-sdk-qsg.md
-- name: ハウツー ガイド
+- name: カスタマイズ
   items:
-    - name: 音声を認識する
-      href: how-to-speech-to-text.md
     - name: 音声モデルをカスタマイズする
       href: how-to-customize-speech-models.md
-    - name: 音声を合成する
-      href: how-to-text-to-speech.md
     - name: 音声フォントをカスタマイズする
       href: how-to-customize-voice-font.md
-    - name: 音声を翻訳する
-      href: how-to-translate-speech.md
     - name: トランスクリプトを準備する
       href: prepare-transcription.md
     - name: カスタム オーディオ ストリームを使用する
       href: how-to-use-audio-input-streams.md
+    - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
+      href: speech-devices-sdk-create-kws.md
+- name: ハウツー ガイド
+  items:
+    - name: 音声を認識する
+      href: how-to-speech-to-text.md
+    - name: 音声を合成する
+      href: how-to-text-to-speech.md
+    - name: 音声を翻訳する
+      href: how-to-translate-speech.md
     - name: Speech Devices SDK を取得する
       href: get-speech-devices-sdk.md
-    - name: デバイスのウェイク ワードをカスタマイズする
-      href: speech-devices-sdk-create-kws.md
     - name: 一括文字起こし (コール センター)
       href: batch-transcription.md
 - name: サンプル
@@ -73,8 +75,14 @@
       href: speech-synthesis-markup.md
 - name: リソース
   items:
-    - name: 音声テキスト変換に関する FAQ
-      href: faq-stt.md
+    - name: FAQ
+      items:
+        - name: 音声テキスト変換に関する FAQ
+          href: faq-stt.md
+        - name: テキスト読み上げに関する FAQ
+          href: faq-text-to-speech.md
+        - name: Translator に関する FAQ
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103933"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285918"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -51,7 +51,7 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 
   - **[CCEID]**: 規則の一意の CCE 識別子。 Security Center では、Common Configuration Enumeration (CCE) を使用して構成規則に一意の識別子を割り当てます。
   - **[名前]**: 失敗した規則の名前。
-  - **[規則の種類]**: "*レジストリ キー*"、"*セキュリティ ポリシー*"、または "*監査ポリシー*" の規則の種類。
+  - **[規則の種類]**: "*レジストリ キー*"、"*セキュリティ ポリシー*"、"*監査ポリシー*"、または "*IIS*" の規則の種類。
   - **[VM とコンピューターの数]**: 失敗した規則が適用されている VM とコンピューターの総数。
   - **[規則の重要度]**: CCE の値 ("*重大*"、"*重要*"、または "*警告*")。
   - **[状態]**: 推奨事項の現在の状態。
@@ -100,10 +100,10 @@ Azure Security Center では、仮想マシン (VM) とコンピューターの�
 
 Security Center の詳細については、次のリソースを参照してください。
 
-* サポートされている Windows VM と Linux VM の一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」をご覧ください。 
-* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」をご覧ください。 
-* Azure リソースの保護に推奨事項がいかに役立つかについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。 
-* Azure リソースの正常性を監視する方法については、「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」をご覧ください。 
+* サポートされている Windows VM と Linux VM の一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」をご覧ください。
+* Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」をご覧ください。
+* Azure リソースの保護に推奨事項がいかに役立つかについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
+* Azure リソースの正常性を監視する方法については、「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」をご覧ください。
 * セキュリティの警告の管理と対応の方法については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」をご覧ください。
 * パートナー ソリューションの正常性状態を監視する方法については、[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)に関するページをご覧ください。
 * このサービスの使用に関してよく寄せられる質問に対する回答については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」をご覧ください。

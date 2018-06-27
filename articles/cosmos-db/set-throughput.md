@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: 777655d8976990396b2c78a5b6d977a92b1a2335
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8b7ed593fcd307e6709c17bafbcb5a22661dc83
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34614079"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285775"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
@@ -177,7 +177,7 @@ await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollectio
 
 Azure Cosmos DB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、"*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の数を簡単にスケールアップしたりスケールダウンしたりできます。
 
-各コンテナーまたは一連のコンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。
+各コンテナーまたは一連のコンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。 スループットを変更した後は、変更されたスループットが表示されるように既存の Azure portal ウィンドウを更新する必要があります。 
 
 ```csharp
 // Fetch the resource to be updated

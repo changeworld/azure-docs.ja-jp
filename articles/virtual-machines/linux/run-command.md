@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7e828aa79d3a7fba53c0ef9f683ed16afc9a3e6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267460"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285758"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -33,6 +33,7 @@ ms.locfileid: "35267460"
 * スクリプトを実行するための最小時間は約 20 秒
 * スクリプトは Linux 上で既定では管理者特権で実行される
 * 同時に実行できるスクリプトは 1 つ
+* 情報の入力を求めるスクリプト (対話モード) はサポートされていません。
 * スクリプトの実行を取り消すことはできない
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
 

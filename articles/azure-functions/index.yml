@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01-23-2017
   ms.author: carolz
-  ms.openlocfilehash: dd4d795e7740cb991c37969f148df8e0a08fa96e
-  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+  ms.openlocfilehash: 02d6d65653c7fa77c3f1cb2be0e59caf74ca79f1
+  ms.sourcegitcommit: d2bf34f0f2e603ff7491a8614f0d3da3cca64374
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/08/2018
-  ms.locfileid: "33868077"
+  ms.lasthandoff: 06/26/2018
+  ms.locfileid: "36963838"
 abstract:
   description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できる<a href="https://azure.microsoft.com/overview/serverless-computing/">サーバーレス</a> コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。
   aside:
@@ -83,7 +83,7 @@ sections:
     - html: <a href="/azure/azure-functions/functions-create-serverless-api">Azure Functions を使用してサーバーレス API を作成する</a>
     - html: <a href="/azure/azure-functions/functions-openapi-definition">関数の OpenAPI 定義を作成する</a>
     - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する</a>
-    - html: <a href="https://docs.microsoft.com/learn/build-serverless-app/index">Cosmos DB で画像をホストするサーバーレス Web アプリケーションを作成する</a>
+    - html: <a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">画像をメタデータと共に格納するサーバーレス Web アプリを作成する</a>
 - title: サンプル
   items:
   - type: list

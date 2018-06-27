@@ -428,6 +428,8 @@
               href: service-fabric-securing-containers.md
             - name: Windows コンテナーの gMSA を設定する
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: Linux 上の証明書を構成する
+              href: service-fabric-configure-certificates-linux.md
         - name: 定期的なバックアップを構成する (Azure 上のクラスター)
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: 定期的なバックアップを構成する (スタンドアロン クラスター)

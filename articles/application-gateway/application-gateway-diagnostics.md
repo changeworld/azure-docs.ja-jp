@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/2/2018
+ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314050"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293623"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -36,7 +36,7 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 バックエンドの正常性レポートには、バックエンドのインスタンスへの Application Gateway の正常性プローブの出力が反映されます。 プローブが正常に完了し、バックエンドがトラフィックを受信できる場合は、正常と見なされます。 それ以外の場合は異常と見なされます。
 
 > [!IMPORTANT]
-> Application Gateway サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いてください。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
+> Application Gateway サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いてください。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>ポータルを介したバックエンドの正常性の表示
@@ -103,7 +103,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 * **ファイアウォール ログ**: このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!NOTE]
-> ログは、Azure Resource Manager デプロイメント モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイメント モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
+> ログは、Azure Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 ログを保存するための 3 つのオプションがあります。
 
@@ -167,7 +167,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
 
 
-|値  |[説明]  |
+|値  |説明  |
 |---------|---------|
 |instanceId     | 要求を処理した Application Gateway のインスタンス。        |
 |clientIP     | 要求の送信元 IP。        |
@@ -211,7 +211,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 パフォーマンス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 パフォーマンス ログ データは、1 分間隔で生成されます。 次のデータがログに記録されます。
 
 
-|値  |[説明]  |
+|値  |説明  |
 |---------|---------|
 |instanceId     |  パフォーマンス データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。        |
 |healthyHostCount     | バックエンド プール内の正常なホストの数。        |
@@ -248,7 +248,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 ファイアウォール ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 このログを使用するには、Application Gateway で Web アプリケーション ファイアウォールを構成する必要もあります。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次のデータがログに記録されます。
 
 
-|値  |[説明]  |
+|値  |説明  |
 |---------|---------|
 |instanceId     | ファイアウォール データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。         |
 |clientIp     |   要求の送信元 IP。      |

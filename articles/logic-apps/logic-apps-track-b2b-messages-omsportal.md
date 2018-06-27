@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299979"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293206"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Azure Log Analytics で B2B 通信を追跡する
 
@@ -56,39 +56,31 @@ Log Analytics でロジック アプリの B2B メッセージを追跡するに
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+3. **[管理]** で、**[概要]** を選択します。
 
-   ![OMS ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Log Analytics ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. ホーム ページが開いた後、**[ソリューション ギャラリー]** を選択します。    
+4. ホーム ページが開いたら、**[追加]** を選択して Logic Apps B2B ソリューションをインストールします。    
+   ![[ソリューション ギャラリー] を選択する](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ![[ソリューション ギャラリー] を選択する](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
-
-5. **[All solutions] \(すべてのソリューション)** で、**[Logic Apps B2B]** を見つけて選択します。     
-
-   ![[Logic Apps B2B] を選択する](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
-
-6. **[Logic Apps B2B]** で、**[追加]** を選択します。
-
-   ![[追加] の選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+5. **[管理ソリューション]** で、**Logic Apps B2B** ソリューションを検索して作成します。     
+   ![[Logic Apps B2B] を選択する](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    ホーム ページに、**[Logic Apps B2B メッセージ]** のタイルが表示されるようになります。 
    このタイルは、B2B メッセージが処理されたらメッセージ カウントを更新します。
-
-   ![ホーム ページの [Logic Apps B2B メッセージ] タイル](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
 ## <a name="track-message-status-and-details-in-log-analytics"></a>Log Analytics でのメッセージの状態と詳細の追跡
 
-1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 ホーム ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
+1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 [概要] ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
 
-   ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+   ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
    > 既定では、**[Logic Apps B2B メッセージ]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
    > 
-   > ![データの範囲を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
+   > ![データの範囲を変更する](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
 2. メッセージの状態ダッシュボードが表示された後、特定のメッセージの種類の詳細を表示できます。ここには、1 日に基づいたデータが表示されます。 **AS2**、**X12**、または **EDIFACT** のタイルを選択します。

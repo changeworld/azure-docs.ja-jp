@@ -106,6 +106,8 @@
       items:
         - name: Azure PowerShell
           href: vpn-gateway-activeactive-rm-powershell.md
+    - name: Azure Availabilty Zones でのゾーン冗長 VNet ゲートウェイの作成
+      href: create-zone-redundant-vnet-gateway.md
     - name: ルーティング、BGP、VNET ピアリング
       items:
         - name: VPN ゲートウェイ用の BGP の構成

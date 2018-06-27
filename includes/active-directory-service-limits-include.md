@@ -1,8 +1,26 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+author: curtand
+ms.service: active-directory
+ms.topic: include
+ms.date: 06/20/2018
+ms.author: curtand
+ms.custom: include file
+ms.openlocfilehash: 10b5fbe0a03d3ea712edc9df603bbcea5e188a02
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296534"
+---
 ここでは、Azure Active Directory サービスの使用上の制約およびその他のサービスの制限を説明します。
 
 | カテゴリ | 制限 |
 | --- | --- |
-| ディレクトリ |1 人のユーザーに関連付けできるのは最大 20 個の Azure Active Directory ディレクトリです。<br />考えられる組み合わせの例を次に示します。 <ul> <li>1 人のユーザーが 20 個のディレクトリを作成する。</li><li>1 人のユーザーがメンバーとして 20 個のディレクトリに追加される。</li><li>1 人のユーザーが 10 個のディレクトリを作成し、後で他のユーザーによって別の 10 個のディレクトリに追加される。</li></ul> |
+| ディレクトリ |1 人のユーザーには、最大 20 個の Azure Active Directory ディレクトリを関連付けることができます。<br />考えられる組み合わせの例を次に示します。 <ul> <li>1 人のユーザーが 20 個のディレクトリを作成する。</li><li>1 人のユーザーがメンバーとして 20 個のディレクトリに追加される。</li><li>1 人のユーザーが 10 個のディレクトリを作成し、後で他のユーザーによって別の 10 個のディレクトリに追加される。</li></ul> |
+| ドメイン | 追加できるマネージド ドメイン名は 900 個以下です。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに設定する場合、各ディレクトリに追加できるドメイン名は 450 個以下です。 |
 | オブジェクト |<ul><li>Azure Active Directory の Free エディションのユーザーは、1 つのディレクトリに最大 500,000 個のオブジェクトを作成できます。</li><li>管理者以外のユーザーは、最大 250 個のオブジェクトを作成できます。</li></ul> |
 | スキーマの拡張機能 |<ul><li>文字列型の拡張の最大文字数は 256 文字です。 </li><li>バイナリ型の拡張の最大バイト数は 256 バイトです。</li><li>1 つのオブジェクトに対して、(すべての型とすべてのアプリケーションで合計) 100 個の拡張値を書き込むことができます。</li><li>"文字列" 型または "バイナリ" 型の単一値の属性を使用して拡張できるのは、"User"、"Group"、"TenantDetail"、"Device"、"Application"、および "ServicePrincipal" エンティティのみです。</li><li>スキーマ拡張は、Graph API-version 1.21-preview でのみ使用できます。 拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
 | [アプリケーション] |最大 100 人のユーザーが 1 つのアプリケーションの所有者になれます。 |

@@ -1,6 +1,6 @@
 ---
 title: 最小限のダウンタイムでの Azure Database for PostgreSQL への移行
-description: この記事では、PostgreSQL データベースをダンプ ファイルに抽出し、Azure Database for PostgreSQL で pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元し、Attunity Replicate for Microsoft Migrations を使用してソース データベースからターゲット データベースへの初期読み込みと継続的なデータ同期を設定することで、最小限のダウンタイムでの移行を実行する方法を説明します。
+description: この記事では、Azure Database Migration Service を使用して、PostgreSQL データベースを Azure Database for PostgreSQL に最小限のダウンタイムで移行する方法について説明します。
 services: postgresql
 author: HJToland3
 ms.author: jtoland
@@ -8,32 +8,24 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 48cf460405ae3985553f9bff29f4fd7abb008196
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 06/21/2018
+ms.openlocfilehash: 9ab5d4615a8baf763d0b7ee47bf0890124f8665c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692091"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292544"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>最小限のダウンタイムでの Azure Database for PostgreSQL への移行
-Attunity Replicate for Microsoft Migrations を使用して、既存の PostgreSQL データベースを Azure Database for PostgreSQL に移行できます。 Attunity Replicate は、Attunity と Microsoft の共同製品です。 これは、Azure Database Migration Service と共に、Microsoft のお客様には追加コストなしで含まれています。 
+[Azure Database Migration Service](https://aka.ms/get-dms) (DMS) に新たに導入された**継続的同期機能**を使用すると、最小限のダウンタイムで PostgreSQL を Azure Database for PostgreSQL に移行できます。 この機能で、アプリケーションによって発生するダウンタイムの長さが短くなります。
 
-Attunity Replicate は、データベース移行中のダウンタイムを最小限に抑えるのに役立ち、プロセス全体を通してソース データベースを動作状態に維持します。
+## <a name="overview"></a>概要
+DMS は、オンプレミスから Azure Database for PostgreSQL への初期読み込みを実行してから、アプリケーションは実行中のままで、新しいトランザクションを Azure に継続的に同期します。 データがターゲットの Azure 側に追いついた後、アプリケーションを短時間停止し (最小限のダウンタイム)、データの最後のバッチがターゲットに追いつくまで (アプリケーションを停止してから、アプリケーションが事実上新しいトラフィックを受け取ることができなくなるまで) 待ってから、Azure を指すように接続文字列を更新します。 完了すると、アプリケーションは Azure 上で動作します。
 
-Attunity Replicate は、さまざまなソースとターゲットの間のデータ同期を可能にするデータ レプリケーション ツールです。 これは、各データベース テーブルに関連付けられたスキーマ作成スクリプトおよびデータを伝播します。 Attunity Replicate が他のアーティファクト (SP、トリガー、関数など) を伝播したり、たとえば、このようなアーティファクトでホストされている PL/SQL コードを T-SQL に変換したりすることはありません。
+![Azure Database Migration Service での継続的同期](./media/howto-migrate-online/ContinuousSync.png)
 
-> [!NOTE]
-> Attunity Replicate は幅広い一連の移行シナリオをサポートしていますが、ソースとターゲットのペアの特定のサブセットのサポートに重点を置いています。
+PostgreSQL ソースの DMS 移行は現在プレビュー段階です。 PostgreSQL のワークロードを移行するサービスを試したい場合は、Azure DMS の[プレビュー ページ](https://aka.ms/dms-preview)でサインアップして、興味を持っていることをお伝えください。 お客様のフィードバックは、サービスをさらに改善するために大切です。
 
-最小限のダウンタイムでの移行を実行するためのプロセスの概要を次に示します。
-
-* -n パラメーターを指定した [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) コマンドを使用してから、[pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) コマンドを使用して、Azure Database for PostgreSQL データベースに **PostgreSQL ソース スキーマを移行**します。
-
-* Attunity Replicate for Microsoft Migrations を使用して、**ソース データベースからターゲット データベースへの初期読み込みと継続的なデータ同期を設定**します。 これにより、アプリケーションを Azure 上のターゲット PostgreSQL データベースに切り替える準備をするときに、ソース データベースを読み取り専用として設定する必要のある時間が最小限に抑えられます。
-
-Attunity Replicate for Microsoft Migrations 製品の詳細については、次のリソースを参照してください。
- - [Attunity Replicate for Microsoft Migrations](https://aka.ms/attunity-replicate) の Web ページに移動します。
- - [Attunity Replicate for Microsoft Migrations](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) をダウンロードします。
- - クイック スタート ガイド、チュートリアル、およびサポートについては、[Attunity Replicate コミュニティ](https://aka.ms/attunity-community/)にアクセスしてください。
- - Attunity Replicate を使用して PostgreSQL から Azure Database for PostgreSQL に移行する方法に関するステップ バイ ステップ ガイダンスについては、「[データベース移行ガイド](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql)」を参照してください。
+## <a name="next-steps"></a>次の手順
+- [Microsoft Azure でのアプリケーションの最新化](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)のビデオをご覧ください。PostgreSQL アプリを Azure Database for PostgreSQL に移行する方法のデモが含まれています。
+- Azure DMS の[プレビュー ページ](https://aka.ms/dms-preview)を使用して、最小限のダウンタイムで PostgreSQL を Azure Database for PostgreSQL に移行する限定プレビューにサインアップしてください。

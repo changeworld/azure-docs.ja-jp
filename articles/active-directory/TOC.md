@@ -250,7 +250,7 @@
 #### [SAML アプリの詳細な証明書署名](manage-apps/certificate-signing-options.md)
 #### [ユーザーのエクスペリエンスからアプリケーションを非表示にする](manage-apps/hide-application-from-user-portal.md)
 ### [HRD ポリシーを使用してサインイン自動アクセラレーションを構成する](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [AD FS アプリを Azure AD に移行する](migrate-adfs-apps-to-azure.md) 
+### [AD FS アプリを Azure AD に移行する](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [アプリへのアクセスを管理する](manage-apps/what-is-access-management.md)
 #### [SSO アクセス](manage-apps/what-is-single-sign-on.md)
 #### [SSO の証明書](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## リソースへのアクセスを委任する
 ### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
-#### [ユーザーに管理者ロールを割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md) 
-### [特権アクセスのセキュリティ保護](admin-roles-best-practices.md)  
-### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [既定のユーザー アクセス許可](fundamentals/users-default-permissions.md)
+#### [ユーザーに管理者ロールを割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md)
+### [管理者ロールのセキュリティ保護](admin-roles-best-practices.md)  
+#### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 ### [特権ロールのセキュリティ保護](admin-roles-best-practices.md)

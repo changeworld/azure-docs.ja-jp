@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 5/21/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699905"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295530"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -115,7 +115,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますが、次の制約があります。
 
-* 着信トラフィックの例外は、バックエンドのヘルスが正しく動作するように、65503 ~ 65534 のポートに配置する必要があります。
+* ポート 65503 から 65534 への着信トラフィックに対して例外を設定する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
 
 * 送信インターネット接続はブロックできません。
 
@@ -159,13 +159,17 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 * ソース IP と IP 範囲からの着信トラフィックを許可します。
 
-* [バックエンド ヘルス通信](application-gateway-diagnostics.md)用にポート 65503 ~ 65534 のすべてのソースからの着信要求を許可します。
+* [バックエンド ヘルス通信](application-gateway-diagnostics.md)用にポート 65503 ~ 65534 のすべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
 
 * [NSG](../virtual-network/security-overview.md)で着信 Azure Load Balancer プローブ (AzureLoadBalancer タグ) と受信仮想ネットワーク トラフィック (VirtualNetwork タグ) を許可します。
 
 * すべて拒否ルールを使用して、その他すべての着信トラフィックをブロックします。
 
 * インターネットのすべての宛先への送信トラフィックを許可します。
+
+**Q.パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用できますか。**
+
+いいえ、これはサポートされていません。
 
 ## <a name="performance"></a>[パフォーマンス]
 

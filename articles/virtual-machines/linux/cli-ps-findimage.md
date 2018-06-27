@@ -16,15 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c65ebbc8a61c13b96364dadde45bd4bca828e337
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53e5100023fb76b4daf468d3f2027f2b5c7f31d7
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29740885"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292961"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける方法
 このトピックでは、Azure CLI 2.0 を使用して Azure Marketplace で VM イメージを見つける方法を説明します。 これらの情報は、CLI、Resource Manager テンプレート、またはその他のツールを使用して、VM をプログラムによって作成する際、Marketplace イメージを指定するために使用できます。
+
+また、[Azure Marketplace](https://azuremarketplace.microsoft.com/) のストアフロント、[Azure portal](https://portal.azure.com)、または [Azure PowerShell](../windows/cli-ps-findimage.md) を使用して、使用できるイメージとオファーを参照することもできます。 
 
 [Azure CLI 2.0 ](/cli/azure/install-az-cli2)の最新版がインストール済みであることと、Azure アカウントにログインしていること (`az login`) を確認してください。
 

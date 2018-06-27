@@ -3,7 +3,7 @@ title: プログラムによる Azure ダッシュボードの作成 | Microsoft
 description: この記事では、プログラムで Azure ダッシュボードを作成する方法について説明します。
 services: azure-portal
 documentationcenter: ''
-author: adamab
+author: adamabmsft
 manager: dougeby
 editor: tysonn
 ms.service: azure-portal
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 8670d25e10b58c40b9d0807de1db88c3296b193d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: dafada5cecbc6345da46bc3a32fc3b91eb72313a
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164386"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295513"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -89,11 +89,11 @@ Azure では、複数のリソースの配置を調整するための機能が�
 この方法を使用する場合は、テンプレートのパラメーター構文を使用してパラメーター化する必要があります。  次のように、上記で特定したリソース ID のすべてのインスタンスを置換します。
 
 ### <a name="example-json-property-with-hard-coded-resource-id"></a>ハード コーディングされたリソース ID を使用した JSON プロパティの例
-`id: “/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1”`
+`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
 ### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>テンプレート パラメーターに基づいてパラメーター化されたバージョンに変換されたサンプルの JSON プロパティ
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), ‘Microsoft.Compute/virtualMachines’, parameters('virtualMachineName'))]"`
+`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
 また、必要なテンプレート メタデータとパラメーターを、次のように、JSON テンプレートの上部で宣言する必要があります。
 

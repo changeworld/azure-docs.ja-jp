@@ -5,15 +5,16 @@ services: cosmos-db
 author: kanshiG
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: b07a159e69a11656555a8550b807cce0b2c9ef6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293997"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Azure Virtual Network サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティで保護する
 
@@ -48,7 +49,7 @@ Azure Cosmos DB アカウントは、仮想ネットワーク サービス エ�
    ![仮想ネットワークとサブネットを選択する](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > Azure Cosmos DB のサービス エンドポイントが、選択した Azure 仮想ネットワークとサブネットに対してまだ構成されていない場合は、この操作の一部として構成することができます。 アクセスが有効になるまでに、最大で 15 分かかることがあります。 
+   > Azure Cosmos DB のサービス エンドポイントが、選択した Azure 仮想ネットワークとサブネットに対してまだ構成されていない場合は、この操作の一部として構成することができます。 アクセスが有効になるまでに、最大で 15 分かかることがあります。 後で再び有効にするために、IP ファイアウォールの ACL の内容を書き留めた後に、IP ファイアウォールを無効にすることが重要です。 
 
    ![正常に構成された仮想ネットワークとサブネット](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -57,6 +58,9 @@ Azure Cosmos DB アカウントは、仮想ネットワーク サービス エ�
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>新しい Azure 仮想ネットワークとサブネット用のサービス エンドポイントを構成する
 
 1. **[すべてのリソース]** ブレードで、セキュリティで保護する Azure Cosmos DB アカウントを見つけます。  
+
+> [!NOTE]
+> Azure Cosmos DB アカウント用に既存の IP ファイアウォールが構成されている場合は、ファイアウォールの構成を書き留め、IP ファイアウォールを削除してから、サービス エンドポイントを有効にしてください。 ファイアウォールを無効にせずにサービス エンドポイントを有効にすると、その IP 範囲からのトラフィックは仮想 IP ID を失い、IP フィルター エラー メッセージでドロップされます。 そのため、このエラーを防ぐには、ファイアウォール ルールを無効にしてコピーし、サブネットからサービス エンドポイントを有効にし、最後に Cosmos DB からサブネットの ACL を実行する必要があります。 サービス エンドポイントを構成して ACL を追加した後、必要な場合は IP ファイアウォールを再度有効にすることができます。
 
 2. 仮想ネットワーク サービス エンドポイントを有効にする前に、将来使用できるように、Azure Cosmos DB アカウントに関連付けられている IP ファイアウォール情報をコピーしておいてください。 サービス エンドポイントを構成した後、IP ファイアウォールを再度有効にすることができます。  
 
@@ -76,7 +80,7 @@ Azure Virtual Network サービス エンドポイントが Azure Cosmos DB デ�
 
 Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されたり、Stream Analytics または Power BI からアクセスされる場合は、**[Azure サービスへのアクセスを許可]** をオンにしてアクセスを許可します。
 
-ポータルから Azure Cosmos DB メトリックにアクセスできるようにするには、**[Azure Portal へのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、「[Azure Portal からの接続](firewall-support.md#connections-from-the-azure-portal)」と「[他の Azure PaaS サービスからの接続](firewall-support.md#connections-from-other-azure-paas-services)」のセクションを参照してください。 アクセスを選択した後、**[保存]** を選択して、設定を保存します。
+ポータルから Azure Cosmos DB メトリックにアクセスできるようにするには、**[Azure Portal へのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、「[Azure Portal からの接続](firewall-support.md#connections-from-the-azure-portal)」と「[他の Azure PaaS サービスからの接続](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services)」のセクションを参照してください。 アクセスを選択した後、**[保存]** を選択して、設定を保存します。
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>仮想ネットワークまたはサブネットを削除する 
 
@@ -95,6 +99,10 @@ Azure Cosmos DB アカウントが Azure Search のような他の Azure サー�
 Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサービス エンドポイントを構成するには、次の手順を実行します。  
 
 1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をインストールして[ログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。  アカウントのサービス エンドポイントを有効にする前に、IP ファイアウォールの設定を書き留め、IP ファイアウォールを完全に削除してください。
+
+
+> [!NOTE]
+> Azure Cosmos DB アカウント用に既存の IP ファイアウォールが構成されている場合は、ファイアウォールの構成を書き留め、IP ファイアウォールを削除してから、サービス エンドポイントを有効にしてください。 ファイアウォールを無効にせずにサービス エンドポイントを有効にすると、その IP 範囲からのトラフィックは仮想 IP ID を失い、IP フィルター エラー メッセージでドロップされます。 そのため、このエラーを防ぐには、ファイアウォール ルールを無効にしてコピーし、サブネットからサービス エンドポイントを有効にし、最後に Cosmos DB からサブネットの ACL を実行する必要があります。 サービス エンドポイントを構成して ACL を追加した後、必要な場合は IP ファイアウォールを再度有効にすることができます。
 
 2. 仮想ネットワーク サービス エンドポイントを有効にする前に、将来使用できるように、Azure Cosmos DB アカウントに関連付けられている IP ファイアウォール情報をコピーしておいてください。 サービス エンドポイントを構成した後、IP ファイアウォールを再度有効にします。  
 
@@ -219,9 +227,13 @@ HTTP 404 エラーが返されます。
 
 Azure Cosmos DB アカウントには、64 個の仮想ネットワーク サービス エンドポイントが許可されています。
 
-### <a name="what-is-the-relationship-of-service-endpoint-with-respect-to-network-security-group-nsg-rules"></a>サービス エンドポイントは、ネットワーク セキュリティ グループ (NSG) ルールとはどのような関係がありますか。  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>サービス エンドポイントとネットワーク セキュリティ グループ (NSG) ルールの間にはどのような関係がありますか。  
 
-NSG の Azure Cosmos DB ルールでは、Azure Cosmos DB の IP アドレス範囲へのアクセスのみを制限できます。
+Azure Cosmos DB で NSG ルールを使用すると、特定の Azure Cosmos DB IP アドレス範囲に対するアクセスを制限できます。 特定の[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に存在する Azure Cosmos DB インスタンスに対するアクセスを許可する場合は、次の形式でリージョンを指定します。 
+
+    AzureCosmosDB.<region name>
+
+NSG タグの詳細については、[仮想ネットワークのサービス タグ](../virtual-network/security-overview.md#service-tags)に関する記事を参照してください。 
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>IP ファイアウォールと Virtual Network サービス エンドポイント機能とはどのような関係ですか。  
 

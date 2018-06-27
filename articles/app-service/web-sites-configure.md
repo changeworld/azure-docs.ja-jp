@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234525"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293718"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
 
@@ -46,7 +46,7 @@ ms.locfileid: "35234525"
 技術的な理由で、Web アプリで Java を有効にすると、.NET、PHP、Python オプションが無効になります。
 
 <a name="platform"></a>
-**プラットフォーム**。 Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。 Free モードと Shared モードは常に 32 ビット環境で実行されます。
+**プラットフォーム**。 Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic レベルまたは Standard レベルを使用する必要があります。 Free レベルと Shared レベルは常に 32 ビット環境で実行されます。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -56,6 +56,13 @@ ms.locfileid: "35234525"
 **常時接続**。 既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合や CRON 式を使ってトリガーされた Web ジョブを実行する場合、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
 **マネージ パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
+
+**HTTP バージョン**。 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) プロトコルのサポートを有効にするには、**[2.0]** に設定します。 
+
+> [!NOTE]
+> 最新のブラウザーのほとんどは、TLS 上でのみ HTTP/2 プロトコルをサポートし、暗号化されていないトラフィックには引き続き HTTP/1.1 を使用しています。 クライアント ブラウザーが HTTP/2 を使用してアプリに接続するようにするには、アプリのカスタム ドメイン用に [App Service 証明書を購入する](web-sites-purchase-ssl-web-site.md)か、[サードパーティの証明書をバインド](app-service-web-tutorial-custom-ssl.md)します。
+
+**ARR アフィニティ**。 複数の VM インスタンスにスケールアウトされたアプリケーションでは、ARR アフィニティの Cookie によって、セッションが有効な間、クライアントが同じインスタンスにルーティングされることが保証されます。 ステートレス アプリケーションのパフォーマンスを向上するには、このオプションを **[オフ]** に設定します。   
 
 **自動スワップ**。 デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。 詳細については、 [Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
@@ -70,7 +77,7 @@ ms.locfileid: "35234525"
 
 アプリの設定は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
-### <a name="connection-strings"></a>接続文字列
+### <a name="connection-strings"></a>Connection strings
 リンク済みリソースの接続文字列です。 
 
 .NET アプリの場合、これらの接続文字列は、実行時に .NET 構成の `connectionStrings` 設定に挿入され、キーがリンクされたデータベース名である既存のエントリがオーバーライドされます。 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658674"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292037"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -39,7 +39,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 ## <a name="work-with-network-security-groups"></a>ネットワーク セキュリティ グループを操作する
 
-ネットワーク セキュリティ グループは、作成、[すべて表示](#view-all-network-security-groups)、[詳細の表示](#view-details-of-a-network-security-group)、[変更](#change-a-network-security-group)、および[削除](#delete-a-network-security-group)できます。 ネットワーク インターフェイスまたはサブネットに対して、ネットワーク セキュリティ グループを[関連付けるか、関連付けを解除する](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)こともできます。
+ネットワーク セキュリティ グループは、作成、[すべて表示](#view-all-network-security-groups)、[詳細の表示](#view-details-of-a-network-security-group)、[変更](#change-a-network-security-group)、および[削除](#delete-a-network-security-group)できます。 ネットワーク インターフェイスまたはサブネットに対して、ネットワーク セキュリティ グループを[関連付けるか、関連付けを解除する](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface)こともできます。
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -121,9 +121,9 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
     
     |Setting  |値  |詳細  |
     |---------|---------|---------|
-    |ソース     | **[任意]**、**[IP アドレス]**、または **[サービス タグ]** を選択します。        | **[IP アドレス]** 選択した場合は、**[発信元 IP アドレス/CIDR 範囲]** を指定する必要があります。 単一の値またはコンマで区切った複数の値の一覧を指定できます。 複数の値の例は、10.0.0.0/16, 192.188.1.1 です。 指定できる値の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 **[サービス タグ]** を選択した場合は、1 つのサービス タグを選択する必要があります。 サービス タグは、IP アドレスのカテゴリに対する定義済みの識別子です。 利用可能なサービス タグと各タグが表していることの詳細については、「[サービス タグ](security-overview.md#service-tags)」を参照してください。        |
+    |ソース     | **[任意]**、**[IP アドレス]**、または **[サービス タグ]** を選択します。        | **[IP アドレス]** 選択した場合は、**[発信元 IP アドレス/CIDR 範囲]** を指定する必要があります。 単一の値またはコンマで区切った複数の値の一覧を指定できます。 複数の値の例は、10.0.0.0/16, 192.188.1.1 です。 指定できる値の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 **[サービス タグ]** を選択した場合は、1 つのサービス タグを選択する必要があります。 サービス タグは、IP アドレスのカテゴリに対する定義済みの識別子です。 利用可能なサービス タグと各タグが表していることの詳細については、「[サービス タグ](security-overview.md#service-tags)」を参照してください。 指定した IP アドレスが Azure 仮想マシンに割り当てられていて、パブリック IP アドレスが仮想マシンに割り当てられている場合は、パブリック IP アドレスではなくプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
     |ソース ポート範囲     | 単一のポート (例: 80)、ポートの範囲 (例: 1024-65535)、コンマで区切った単一のポートとポートの範囲の一覧 (例: 80, 1024-65535) を指定します。 任意のポートでトラフィックを許可する場合は、アスタリスクを入力します。 | ポートと範囲は、規則によってトラフィックが許可または拒否されるポートを指定します。 指定できるポートの数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。  |
-    |変換先     | **[任意]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。        | **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定する必要があります。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。        |
+    |変換先     | **[任意]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。        | **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定する必要があります。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。 指定した IP アドレスが Azure 仮想マシンに割り当てられていて、パブリック IP アドレスが仮想マシンに割り当てられている場合は、パブリック IP アドレスではなくプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
     |宛先ポート範囲     | 単一の値またはコンマで区切った値の一覧を指定します。 | **[ソース ポート範囲]** と同じように、単一のポート、複数のポート、または範囲を指定できます。指定できる数には制限があります。 |
     |プロトコル     | **[任意]**、**[TCP]**、または **[UDP]** を選択します。        |         |
     |アクションを表示します。     | **[許可]** または **[拒否]** を選択します。        |         |

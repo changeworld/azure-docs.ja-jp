@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/22/2018
+ms.date: 06/12/2018
 ms.author: juliako
-ms.openlocfilehash: 4e644db12a74d6ef132a0c8d64ef517a0c2253cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660095"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292047"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行
 
@@ -50,6 +50,10 @@ ms.locfileid: "34660095"
 
 ## <a name="changes-from-v2"></a>v2 からの変更点
 
+* Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。 つまり、v3 は、既存のストレージの暗号化済み資産では動作しますが、そのような資産を新規作成することはできません。
+
+    v3 で作成された資産の場合、Media Services は [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) サーバー側のストレージ暗号化をサポートします。
+    
 * Media Services SDK は Storage SDK から分離され、使用される Storage SDK をより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
 * v3 では、エンコード ビット レートはすべてビット/秒単位です。 これは REST v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 と指定されていますが、v3 では 128,000 です。 
 * v3 には AssetFiles、AccessPolicies、IngestManifests が存在しません。
@@ -141,7 +145,7 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. コンテンツ キー ポリシーを作成します
 2. 資産を作成します
 3. コンテンツをアップロードするか、資産を JobOutput として使用します
-4. ロケーターを作成します
+4. StreamingLocator を作成する
 
 ## <a name="next-steps"></a>次の手順
 

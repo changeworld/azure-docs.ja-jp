@@ -1,6 +1,6 @@
 ---
-title: ロールベースのアクセス制御 Azure RBAC のトラブルシューティング | Microsoft Docs
-description: ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。
+title: Azure での RBAC のトラブルシューティング | Microsoft Docs
+description: Azure ロールベースのアクセス制御 (RBAC) に関する問題を解決します。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,22 +15,22 @@ ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5ca43fe3a8ff27ff4a811aeb26abf4a6f26d8b35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267172"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295401"
 ---
-# <a name="troubleshooting-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のトラブルシューティング 
+# <a name="troubleshooting-rbac-in-azure"></a>Azure での RBAC のトラブルシューティング
 
-この記事では、ロールで付与される特定のアクセス権に関する一般的な質問に答えて、Azure Portal でロールを使ったときに予想されることをユーザーが理解し、アクセスの問題をトラブルシューティングできるようにします。 次の 3 つのロールは、すべてのリソースの種類に対応しています。
+この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、ロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。 次の 3 つのロールは、すべてのリソースの種類に対応しています。
 
 * Owner  
 * Contributor  
 * Reader  
 
-所有者と共同作成者には管理操作に対するフル アクセス許可がありますが、共同作成者は、他のユーザーやグループにアクセス権を付与できません。 閲覧者のロールはさらに興味深いので、以下で詳しく考慮します。 アクセス権を付与する方法の詳細については、「 [Azure のロールベースのアクセス制御](role-assignments-portal.md) 」をご覧ください。
+所有者と共同作成者には管理操作に対するフル アクセス許可がありますが、共同作成者は、他のユーザーやグループにアクセス権を付与できません。 閲覧者ロールはさらに興味深いので、詳しく説明します。 アクセス権の付与方法については、「[RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)」を参照してください。
 
 ## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>書き込みアクセス機能
@@ -97,9 +97,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 これらのタイルのいずれにもアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を入手してください。
 
-## <a name="see-more"></a>関連項目
-* [ロールベースのアクセス制御](role-assignments-portal.md): Azure ポータルでの RBAC の基本について説明します。
-* [組み込みのロール](built-in-roles.md): RBAC の標準ロールの詳細について説明します。
-* [Azure RBAC のカスタム ロール](custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
-* [アクセス変更履歴レポートの作成](change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
+## <a name="next-steps"></a>次の手順
+* [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
+* [RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
 

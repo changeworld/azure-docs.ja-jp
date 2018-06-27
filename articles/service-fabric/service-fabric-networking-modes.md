@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f831c046bcf8f633841f9dc4a0fce6d1e419e6c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205656"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287630"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -231,7 +231,23 @@ ms.locfileid: "34205656"
      </Endpoints>
    </Resources>
    ```
+   
+6. Windows の場合、VM を再起動すると、開いているネットワークが再作成されます。 これは、ネットワーキング スタックの根本的な問題を軽減するためです。 既定の動作は、ネットワークの再作成です。 この動作を無効にする必要がある場合は、次の構成を使用してから、構成をアップグレードします。
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>次の手順
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [Service Fabric サービス マニフェスト リソースについて詳しく学習する](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

@@ -10,30 +10,32 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33864666"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292561"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
-Azure Active Directory (Azure AD) のパスワード リセットを機能させるには、*ご自分の組織に少なくとも 1 つライセンスが割り当てられている必要があります*。 パスワード リセット エクスペリエンスに関して、ユーザーごとのライセンスは強制していません。 ユーザーがこのライセンスで提供される機能を直接的または間接的を問わず利用するには、適切なライセンスが必要になります。
+Azure Active Directory (Azure AD) のパスワード リセットを機能させるには、そのユーザーに対して*組織内で少なくとも 1 つのライセンスが割り当てられている必要があります*。 ユーザーがこのライセンスで提供される機能を直接的または間接的を問わず利用するには、適切なライセンスが必要になります。
 
 * **クラウドのみのユーザー**: Office 365 のすべての有料 SKU、または Azure AD Basic
 * **クラウド**または**オンプレミス ユーザー**: Azure AD Premium P1 または P2、Enterprise Mobility + Security (EMS)、または Microsoft 365
 
-## <a name="licenses-required-for-password-writeback"></a>パスワード ライトバックで必要なライセンス
+## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
+
+**オンプレミスの書き戻しによるセルフサービスのパスワードのリセット/変更/ロック解除は、Azure AD の Premium 機能です**。 ライセンスの詳細については、[Azure Active Directory の価格サイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 パスワード ライトバックを使用するには、次のいずれかのライセンスがご自分のテナントに割り当てられている必要があります。
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3
-* Enterprise Mobility + Security E5
-* Microsoft 365 E3
-* Microsoft 365 E5
+* Enterprise Mobility + Security E3 または A3
+* Enterprise Mobility + Security E5 または A5
+* Microsoft 365 E3 または A3
+* Microsoft 365 E5 または A5
 * Microsoft 365 F1
 
 > [!WARNING]

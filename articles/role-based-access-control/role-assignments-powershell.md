@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用したロールベースのアクセス制御 (RBAC) の管理 | Microsoft Docs
-description: Azure PowerShell を使用して RBAC を管理する方法 (ロールの表示、ロールの割り当て、ロール割り当ての削除など)。
+title: RBAC と PowerShell を使用してアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,27 +14,23 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 00646187da1f93c01c3a57b50905239afd5e2bc8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 231f7b915c324a5af91564c80d17bbad335d658d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266800"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294773"
 ---
-# <a name="manage-role-based-access-control-with-azure-powershell"></a>Azure PowerShell を使用したロールベースのアクセス制御の管理
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-azure-powershell"></a>RBAC と Azure PowerShell を使用してアクセスを管理する
 
-ロールベースのアクセス制御 (RBAC) を使用して特定の範囲にロールを割り当てることにより、ユーザー、グループ、およびサービス プリンシパルのアクセスを定義します。 この記事では、Azure PowerShell を使用してアクセスを管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と Azure PowerShell を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 PowerShell を使って RBAC を管理するには、次のいずれかが必要です。
 
 * [Azure Cloud Shell の PowerShell](/azure/cloud-shell/overview)
-* [Azure PowerShell 5.1.0 以降](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
 ## <a name="list-roles"></a>ロールの一覧表示
 
@@ -146,9 +142,9 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="see-who-has-access"></a>アクセスできるユーザーの確認
+## <a name="list-access"></a>アクセス権の表示
 
-RBAC アクセスの割り当てを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
+RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。
 
 ### <a name="list-role-assignments-at-a-specific-scope"></a>特定のスコープでのロールの割り当ての表示
 
@@ -174,7 +170,7 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-### <a name="list-roles-assigned-to-a-user"></a>ユーザーに割り当てられたロールの表示
+### <a name="list-role-assignments-for-a-user"></a>ユーザーのロールの割り当ての表示
 
 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
 
@@ -200,15 +196,17 @@ Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
 Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-classic-service-administrator-and-coadmin-role-assignments"></a>従来のサービス管理者ロールと共同管理者ロールの割り当ての表示
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>従来のサービス管理者と共同管理者のロールの割り当てを一覧表示する
 
-従来のサブスクリプション管理者と共同管理者のアクセス権の割り当てを表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
+従来のサブスクリプション管理者と共同管理者のロールの割り当てを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) を使用します。
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 ```
 
 ## <a name="grant-access"></a>アクセス権の付与
+
+RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
 
 ### <a name="search-for-object-ids"></a>オブジェクト ID の検索
 
@@ -228,7 +226,7 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 ```
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>サブスクリプションのスコープでのアプリケーションへのロールの割り当て
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>サブスクリプションをスコープするアプリケーションのロールの割り当てを作成する
 
 サブスクリプションのスコープでアプリケーションにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用します。
 
@@ -250,7 +248,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>リソース グループのスコープでのユーザーへのロールの割り当て
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>リソース グループをスコープとするユーザーのロールの割り当てを作成する
 
 リソース グループのスコープでユーザーにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用します。
 
@@ -274,7 +272,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>リソースのスコープでのグループへのロールの割り当て
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>リソースをスコープとするグループのロールの割り当てを作成する
 
 リソースのスコープでグループにアクセス権を付与するには、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用します。
 
@@ -307,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>アクセス権の削除
 
-ユーザー、グループ、アプリケーションのアクセス権を削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) を使用します。
+RBAC でアクセス権を削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) を使用してロールの割り当てを削除します。
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -581,7 +579,7 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 * [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 

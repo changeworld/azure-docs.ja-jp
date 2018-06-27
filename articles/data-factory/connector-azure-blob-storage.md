@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 1d5b73657a00968ce073e1cb1ea72a716e6a2703
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4749e79b79cec7172ddd764593939d6f82f5f5ab
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615966"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291947"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Storage のリンクされたサービスは、アカウント キーを使用�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -83,11 +83,11 @@ Shared Access Signature を使用して、Storage のリンクされたサービ
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 Shared Access Signature を使用して、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間を指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature の詳細については、[Shared Access Signature モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
-> [!IMPORTANT]
-> Data Factory で新たにサポートされるのは、サービスの Shared Access Signature だけです。アカウントの Shared Access Signature はサポートされません。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 Azure Portal または Azure Storage Explorer から生成される Shared Access Signature の URL はアカウントの Shared Access Signature であり、サポートの対象外となります。
+> [!NOTE]
+> Data Factory で、サービスの Shared Access Signature とアカウントの Shared Access Signature がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 
 
 > [!TIP]
-> ストレージ アカウントに使用するサービスの Shared Access Signature は、次の PowerShell コマンドを実行して生成できます。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
+> ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
@@ -95,7 +95,7 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
 | sasUri | BLOB、コンテナー、テーブルなどの Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -134,9 +134,9 @@ Blob Storage をコピー先またはコピー元としてデータをコピー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**AzureBlob** に設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは、**AzureBlob** に設定する必要があります。 |[はい] |
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。 ワイルドカード フィルターはサポートされていません。 (例: myblobcontainer/myblobfolder/)。 |[はい] |
-| fileName | 指定された "folderPath" の下にある BLOB の**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべての BLOB をポイントします。 <br/><br/>フィルターの場合、使用可能なワイルドカードは `*` (複数の文字) および `?` (単一の文字) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンで BLOB 名を自動的に生成します。 たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" などです。 |いいえ  |
+| fileName | 指定された "folderPath" の下にある BLOB の**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべての BLOB をポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンで BLOB 名を自動的に生成します。 たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" などです。 |いいえ  |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
@@ -181,7 +181,7 @@ Blob Storage からデータをコピーするには、コピー アクティビ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **BlobSource** に設定する必要があります |[はい] |
+| type | コピー アクティビティのソースの type プロパティを **BlobSource** に設定する必要があります |[はい] |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。<br/>使用可能な値: **true** (既定値) および **false**。 | いいえ  |
 
 **例:**
@@ -222,7 +222,7 @@ Blob Storage からデータをコピーするには、コピー アクティビ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **BlobSink** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのシンクの type プロパティは **BlobSink** に設定する必要があります。 |[はい] |
 | copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ  |
 
 **例:**

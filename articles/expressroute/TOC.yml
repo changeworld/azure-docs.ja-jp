@@ -89,6 +89,8 @@
       href: expressroute-howto-move-arm.md
     - name: 仮想ネットワークをクラシックから Resource Manager に移行する
       href: expressroute-migration-classic-resource-manager.md
+    - name: Azure Availabilty Zones でのゾーン冗長 VNet ゲートウェイの作成
+      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: ExpressRoute のルーターの構成
       items:
         - name: ルーターの構成

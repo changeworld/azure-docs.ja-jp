@@ -11,20 +11,177 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 06/20/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 9a396c51e8eb6262726b7590498500bfb4528924
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: bbd9bb0d56dd61fd0a32531ac425a1dbc1aa8923
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258406"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295416"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
+# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート  
 以下のリリース ノートでは、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
 
 > [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [フィード](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
+
+## <a name="build-11805147"></a>ビルド 1.1805.1.47
+
+> [!TIP]  
+> お客様のフィードバックに基づき、Microsoft Azure Stack に使用されているバージョン スキーマが更新されています。 今回の更新プログラム 1805 以降、新しいスキーマは現在のクラウド バージョンをより適切に表します。  
+> 
+> バージョン スキーマは *Version.YearYearMonthMonth.MinorVersion.BuildNumber* になりました。この 2 番目と 3 番目のセットはバージョンとリリースを示しています。 たとえば、1805.1 は、1805 の*開発完了* (RTM) バージョンを示しています。  
+
+
+### <a name="new-features"></a>新機能 
+このビルドには、Azure Stack に対する次の機能強化と修正が含まれています。  
+
+- <!-- 2297790 - IS, ASDK --> **Azure Stack には、*プレビュー機能*として *Syslog* クライアント**が追加されました。 このクライアントを使用すると、Azure Stack インフラストラクチャに関連する監査ログとセキュリティログを、Azure Stack の外部にある Syslog サーバーまたはセキュリティ情報イベント管理 (SIEM) ソフトウェアに転送できます。 現在、Syslog クライアントは、既定のポート 514 を介した認証されていない UDP 接続のみをサポートしています。 各 Syslog メッセージのペイロードは、共通イベント形式 (CEF) です。 
+
+  Syslog クライアントを構成するには、特権エンドポイントで公開されている **Set-SyslogServer** コマンドレットを使用します。 
+
+  このプレビューでは、次の 3 つのアラートが表示されることがあります。 Azure Stack でこれらのアラートが表示される場合、アラートには*説明*と*修復*のガイダンスが記載されます。 
+  - タイトル: コードの整合性のオフ  
+  - タイトル: 監査モードのコードの整合性 
+  - タイトル: ユーザー アカウントの作成
+
+  この機能はプレビュー段階ですが、運用環境では使用しないでください。   
+
+
+### <a name="fixed-issues"></a>修正された問題
+- 管理ポータル内の[ドロップダウンから新しいサポート リクエストを開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)ことができない問題を修正しました。 このオプションは意図したとおりに機能するようになりました。 
+
+- **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
+
+
+<!-- ### Changes  --> 
+
+
+<!--   ### Additional releases timed with this update  -->
+
+
+### <a name="known-issues"></a>既知の問題
+ 
+#### <a name="portal"></a>ポータル
+- <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントの **[概要]** を選択すると、*[基本]* ウィンドウの情報が表示されません。  [基本] ウィンドウには、*リソース グループ*、*リージョン*、*サブスクリプション ID* などのアカウントに関する情報が表示されます。  [概要] のその他のオプションにアクセスできます。たとえば、*[サービス]*、*[監視]*、*[Explorer で開く]*、*[ストレージ アカウントの削除]* のオプションです。  
+
+  利用不可の情報を表示するには、[Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。 
+
+- <!-- 2551834 - IS, ASDK --> 管理ポータルまたはユーザー ポータルでストレージ アカウントに **[タグ]** を選択すると、情報は読み込まれず、表示されません。  
+
+  利用不可の情報を表示するには、[Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) PowerShell コマンドレットを使用します。
+
+- <!-- TBD - IS ASDK --> 新しい管理サブスクリプションの種類である *Metering サブスクリプション*と *Consumption サブスクリプション*は使用しないでください。 これらの新しいサブスクリプションの種類は、バージョン 1804 で導入されましたが、まだ使用できる状態ではありません。 *既定のプロバイダー* サブスクリプションの種類を引き続き使用する必要があります。  
+
+- <!-- 2403291 - IS ASDK --> 管理ポータルとユーザー ポータルの下部に水平スクロールバーが表示されない可能性があります。 水平スクロールバーにアクセスできない場合は、ポータルの左上にある階層リンク リストから表示するブレードの名前を選択して、階層リンクを使用してポータル内の前のブレードに移動します。
+  ![階層リンク](media/asdk-release-notes/breadcrumb.png)
+
+- <!-- TBD -  IS ASDK --> ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
+
+- <!-- TBD -  IS ASDK --> Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、PowerShell を使用してアクセス許可を確認します。
+
+
+#### <a name="health-and-monitoring"></a>正常性と監視
+- <!-- 1264761 - IS ASDK --> 以下の詳細情報の*正常性コントローラー* コンポーネントのアラートが表示されることがあります:  
+
+   アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  どちらのアラートも無視しても問題ありません。時間が経過すると、自動的に閉じられます。  
+
+- <!-- 2392907 – ASDK --> **メモリ容量不足** の場合、*重大*アラートが表示されることがあります。 このアラートには、*このリージョンは、使用可能なメモリの 95.00% を超えるメモリを消費しています。大量のメモリを使用する仮想マシンを作成すると失敗することがあります*、のような説明が表示されます。
+
+  このアラートは、Azure Stack が Azure Stack 開発キットに対するメモリの使用を誤って占有した場合に生成されます。  
+
+  このアラートは無視することができます。この問題は仮想マシンの配置には影響しません。 
+
+- <!-- 2368581 - IS. ASDK --> Azure Stack オペレーターで、メモリ不足のアラートを受信し、テナント仮想マシンが*ファブリック VM の作成エラー*でデプロイできなかった場合、Azure Stack スタンプに使用できるメモリが不足している可能性があります。 ワークロードに使用できる容量の詳細については、[Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) に関するページを参照してください。 
+
+
+#### <a name="compute"></a>コンピューティング
+- <!-- TBD - IS, ASDK --> 仮想マシンの展開用に仮想マシンのサイズを選択すると、VM の作成するときに F シリーズの VM のサイズはサイズ セレクターの一部として表示されません。 セレクターに *F8s_v2*、*F16s_v2*、*F32s_v2*、および *F64s_v2* の VM サイズが表示されません。  
+  この問題を回避するには、次のいずれかの方法を使用して VM をデプロイします。 どの方法でも、使用する VM のサイズを指定する必要があります。
+
+  - **Azure Resource Manager テンプレート:** テンプレートを使用する際に、テンプレートの *vmSize* を使用する VM サイズと同じに設定します。 たとえば、*F32s_v2* サイズを使用する VM をデプロイするには、次のように入力します。  
+
+    ```
+        "properties": {
+        "hardwareProfile": {
+                "vmSize": "Standard_F32s_v2"
+        },
+    ```  
+  - **Azure CLI:** [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) コマンドを使用して、`--size "Standard_F32s_v2"` と同様に VM サイズをパラメーターとして指定できます。
+
+  - **PowerShell:** Powershell では、`-VMSize "Standard_F32s_v2"` と同様に VM サイズを指定するパラメーターとともに [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) を使用することができます。
+
+
+- <!-- TBD -  IS ASDK --> 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
+
+- <!-- TBD -  IS ASDK --> Azure Stack ユーザー ポータルで仮想マシンを作成するときに、ポータルでは、D シリーズ VM に接続できるデータ ディスクの数に誤った値が表示されます。 サポートされているすべての D シリーズ VM は、Azure の構成と同数のデータ ディスクに対応できます。
+
+- <!-- TBD -  IS ASDK --> VM イメージの作成に失敗した場合に、失敗したのに削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
+
+  この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、失敗した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成してから 15 分経つと、正常に削除できます。
+
+  次に、前に失敗した VM イメージの再ダウンロードを試行できます。
+
+- <!-- TBD -  IS ASDK --> VM の展開で拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
+
+- <!-- 1662991 - IS ASDK --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。 
+
+#### <a name="networking"></a>ネットワーク
+- <!-- TBD - IS ASDK --> 管理ポータルまたはユーザー ポータルで、ユーザー定義のルートを作成できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell) を使用します。
+
+- <!-- 1766332 - IS, ASDK --> **[ネットワーク]** で、**[Create VPN Gateway]\(VPN ゲートウェイの作成\)** をクリックして VPN 接続を設定する場合、VPN の種類として **[ポリシー ベース]** が表示されます。 このオプションを選択しないでください。 Azure Stack では **[ルート ベース]** オプションのみがサポートされています。
+
+- <!-- 2388980 -  IS ASDK --> VM を作成してパブリック IP アドレスに関連付けた後は、IP アドレスからその VM の関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。
+
+  現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
+
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
+
+
+- <!-- 2292271 - IS ASDK --> テナントのサブスクリプションに関連付けられているオファーとプランの一部であるネットワーク リソースのクォータ制限を引き上げた場合、新しい制限がそのサブスクリプションに適用されません。 ただし、クォータを増加した後に作成した新しいサブスクリプションには新しい制限が適用されます。 
+
+  この問題を回避するには、プランがサブスクリプションに既に関連付けられている場合は、アドオン プランを使用して、ネットワーク クォータを増やします。 詳細については、[アドオン プランを利用できるようにする方法](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)を参照してください。
+
+- <!-- 2304134 IS ASDK --> DNS ゾーン リソースまたはそれに関連付けられたルート テーブル リソースがあるサブスクリプションを削除することができません。 サブスクリプションを正常に削除するには、まずテナント サブスクリプションから DNS ゾーンとルート テーブルのリソースを削除する必要があります。 
+
+
+- <!-- 1902460 -  IS ASDK --> Azure Stack では、IP アドレスごとに 1 つの "*ローカル ネットワーク ゲートウェイ*" がサポートされます。 これは、テナントのすべてのサブスクリプションに当てはまります。 最初のローカル ネットワーク ゲートウェイ接続を作成した後に、続いて同じ IP アドレスでローカル ネットワーク ゲートウェイ リソースを作成しようとすると、ブロックされます。
+
+- <!-- 16309153 -  IS ASDK --> "*自動*" の DNS サーバー設定を使用して作成した Virtual Network で、カスタム DNS サーバーに変更すると失敗します。 更新した設定は、その Vnet 内の VM にプッシュされません。
+ 
+- <!-- TBD -  IS ASDK --> Azure Stack では、VM を展開した後に、VM インスタンスにネットワーク インターフェイスをさらに追加することはできません。 VM に複数のネットワーク インターフェイスが必要な場合は、展開時に定義する必要があります。
+
+
+#### <a name="sql-and-mysql"></a>SQL および MySQL 
+- <!-- TBD - ASDK --> データベースをホストするサーバーは、リソース プロバイダーとユーザーのワークロード専用にする必要があります。 他のコンシューマー (App Services など) が使用中のインスタンスは使用できません。
+
+- <!-- IS, ASDK --> SQL と MySQL リソース プロバイダーの SKU を作成する場合、**[ファミリ]** 名では、スペースやピリオドなどの特殊文字はサポートされていません。 
+
+#### <a name="app-service"></a>App Service
+- <!-- 2352906 - IS ASDK --> ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
+
+- <!-- TBD - IS ASDK --> インフラストラクチャ (worker、管理、フロントエンド ロール) をスケールアウトするには、コンピューティングのリリース ノートの説明に従って PowerShell を使用する必要があります。  
+
+- <!-- TBD - IS ASDK --> 現在、App Service は、*既定のプロバイダー サブスクリプション*にのみデプロイできます。 今後の更新プログラムでは、Azure Stack 1804 で導入された新しい *Metering サブスクリプション*に App Service がデプロイされます。 Metering の使用がサポートされている場合、既存のすべてのデプロイがこの新しいサブスクリプションの種類に移行されます。
+
+#### <a name="usage"></a>使用法  
+- <!-- TBD -  IS ASDK --> パブリック IP アドレス使用量メーターのデータは、レコードが作成された日時を示す *TimeDate* スタンプではなく、各レコードに対して同じ *EventDateTime* 値を示します。 現在、このデータを使用して、パブリック IP アドレスの使用を正確に算出することはできません。
+
+<!-- #### Identity -->
+
 
 
 ## <a name="build-201805131"></a>ビルド 20180513.1
@@ -32,18 +189,21 @@ ms.locfileid: "34258406"
 ### <a name="new-features"></a>新機能 
 このビルドには、Azure Stack に対する次の機能強化と修正が含まれています。  
 
-- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available:
-  - *既定のプロバイダー サブスクリプション*。 このサブスクリプションはコア インフラストラクチャにのみ使用します。 このサブスクリプションには、リソースまたはリソース プロバイダーをデプロイしないでください。
-  - *測定サブスクリプション*。 このサブスクリプションは、リソース プロバイダーのデプロイに使用します。 このサブスクリプションでデプロイされているリソースには課金されません。
-  - *消費サブスクリプション*。 このサブスクリプションは、デプロイするその他のワークロードに使用します。 ここでデプロイされたリソースは、通常の使用料で課金されます。
+- <!-- 1759172 - IS, ASDK --> **新しい管理サブスクリプション**。 1804 では、ポータルで新しいサブスクリプションの種類 2 つを利用できるようになりました。 これらの新しいサブスクリプションの種類は、既定のプロバイダー サブスクリプションに追加され、バージョン 1804 以降の新しい Azure Stack インストールで表示されます。 *このバージョンの Azure Stack ではこれらの新しいサブスクリプションの種類を使用しないでください*。 今後の更新プログラムでこれらのサブスクリプションの種類を使用できるようになった場合はお知らせします。 
 
+  これらの新しい種類のサブスクリプションは表示されますが、Default Provider サブスクリプションを保護し、SQL Hosting サーバーなど、共有リソースのデプロイを簡易化するための大規模な変更の一部です。 
+
+  現在使用できる 3 つのサブスクリプションの種類は次のとおりです。  
+  - Default Provider サブスクリプション: 引き続き、この種類のサブスクリプションを使用してください。 
+  - Metering サブスクリプション: *この種類のサブスクリプションは使用しないでください。*
+  - Consumption サブスクリプション: *この種類のサブスクリプションは使用しないでください。*
 
 ### <a name="fixed-issues"></a>修正された問題
-- <!-- IS, ASDK -->  In the admin portal, you no longer have to refresh the Update tile before it displays information. 
+- <!-- IS, ASDK --> 管理ポータルで、情報を表示する前に [更新] タイルを更新する必要がなくなりました。 
 
-- <!-- 2050709 - IS, ASDK -->  You can now use the admin portal to edit storage metrics for Blob service, Table service, and Queue service.
+- <!-- 2050709 - IS, ASDK --> 管理ポータルを使用して、Blob service、Table service、および Queue サービスのストレージ メトリックを編集できるようになりました。
 
-- <!-- IS, ASDK --> Under **Networking**, when you click **Connection** to set up a VPN connection, **Site-to-site (IPsec)** is now the only available option. 
+- <!-- IS, ASDK --> **[ネットワーク]** で **[接続]** をクリックして VPN 接続を設定するときに、**[サイト対サイト (IPsec)]** オプションを使用できるようになりました。 
 
 - **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
 
@@ -61,80 +221,109 @@ ms.locfileid: "34258406"
 ### <a name="known-issues"></a>既知の問題
  
 #### <a name="portal"></a>ポータル
-- <!-- TBD - IS ASDK --> The ability [to open a new support request from the dropdown](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
+- <!-- TBD - IS ASDK --> 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
 
-- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+- <!-- 2403291 - IS ASDK --> 管理ポータルとユーザー ポータルの下部に水平スクロールバーが表示されない可能性があります。 水平スクロールバーにアクセスできない場合は、ポータルの左上にある階層リンク リストから表示するブレードの名前を選択して、階層リンクを使用してポータル内の前のブレードに移動します。
   ![階層リンク](media/asdk-release-notes/breadcrumb.png)
 
-- <!-- TBD -  IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+- <!-- TBD -  IS ASDK --> ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
 
-- <!-- TBD -  IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+- <!-- TBD -  IS ASDK --> Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、PowerShell を使用してアクセス許可を確認します。
 
--   <!-- TBD -  IS ASDK --> In the admin portal, you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+-   <!-- TBD -  IS ASDK --> 管理ポータルに、Microsoft.Update.Admin コンポーネントに関する重大なアラートが表示される場合があります。 アラート名、説明、解決策が、次のようにすべて表示されます。  
     - *エラー - FaultType ResourceProviderTimeout 用のテンプレートが見つかりません。*
 
     このアラートは無視してかまいません。 
 
+#### <a name="health-and-monitoring"></a>正常性と監視
+- <!-- 1264761 - IS ASDK --> 以下の詳細情報の*正常性コントローラー* コンポーネントのアラートが表示されることがあります:  
+
+   アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
+
+#### <a name="marketplace"></a>マーケットプレース
+- ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
+ 
 #### <a name="compute"></a>コンピューティング
-- <!-- TBD -  IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+- <!-- TBD -  IS ASDK --> 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
 
-- <!-- TBD -  IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD -  IS ASDK --> Azure Stack ユーザー ポータルで仮想マシンを作成するとき、ポータルでは、DS シリーズ VM にアタッチできるデータ ディスクの数に誤った値が表示されます。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
 
-- <!-- TBD -  IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+- <!-- TBD -  IS ASDK --> VM イメージの作成に失敗した場合に、失敗したのに削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
 
   この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、失敗した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成してから 15 分経つと、正常に削除できます。
 
   次に、前に失敗した VM イメージの再ダウンロードを試行できます。
 
-- <!-- TBD -  IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+- <!-- TBD -  IS ASDK --> VM の展開で拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
 
-- <!-- 1662991 - IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+- <!-- 1662991 - IS ASDK --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。 
 
 #### <a name="networking"></a>ネットワーク
-- <!-- 1766332 - IS, ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+- <!-- 1766332 - IS, ASDK --> **[ネットワーク]** で、**[Create VPN Gateway]\(VPN ゲートウェイの作成\)** をクリックして VPN 接続を設定する場合、VPN の種類として **[ポリシー ベース]** が表示されます。 このオプションを選択しないでください。 Azure Stack では **[ルート ベース]** オプションのみがサポートされています。
 
-- <!-- 2388980 -  IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+- <!-- 2388980 -  IS ASDK --> VM を作成してパブリック IP アドレスに関連付けた後は、IP アドレスからその VM の関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。
 
   現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
 
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
 
-- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
+- <!-- 2292271 - IS ASDK --> テナントのサブスクリプションに関連付けられているオファーとプランの一部であるネットワーク リソースのクォータ制限を引き上げた場合、新しい制限がそのサブスクリプションに適用されません。 ただし、クォータを増加した後に作成した新しいサブスクリプションには新しい制限が適用されます。 
 
   この問題を回避するには、プランがサブスクリプションに既に関連付けられている場合は、アドオン プランを使用して、ネットワーク クォータを増やします。 詳細については、[アドオン プランを利用できるようにする方法](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)を参照してください。
 
-- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
+- <!-- 2304134 IS ASDK --> DNS ゾーン リソースまたはそれに関連付けられたルート テーブル リソースがあるサブスクリプションを削除することができません。 サブスクリプションを正常に削除するには、まずテナント サブスクリプションから DNS ゾーンとルート テーブルのリソースを削除する必要があります。 
 
 
-- <!-- 1902460 -  IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+- <!-- 1902460 -  IS ASDK --> Azure Stack では、IP アドレスごとに 1 つの "*ローカル ネットワーク ゲートウェイ*" がサポートされます。 これは、テナントのすべてのサブスクリプションに当てはまります。 最初のローカル ネットワーク ゲートウェイ接続を作成した後に、続いて同じ IP アドレスでローカル ネットワーク ゲートウェイ リソースを作成しようとすると、ブロックされます。
 
-- <!-- 16309153 -  IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+- <!-- 16309153 -  IS ASDK --> "*自動*" の DNS サーバー設定を使用して作成した Virtual Network で、カスタム DNS サーバーに変更すると失敗します。 更新した設定は、その Vnet 内の VM にプッシュされません。
  
-- <!-- TBD -  IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+- <!-- TBD -  IS ASDK --> Azure Stack では、VM を展開した後に、VM インスタンスにネットワーク インターフェイスをさらに追加することはできません。 VM に複数のネットワーク インターフェイスが必要な場合は、展開時に定義する必要があります。
 
 
 #### <a name="sql-and-mysql"></a>SQL および MySQL 
-- <!-- TBD - ASDK --> The database hosting servers must be dedicated for use by the resource provider and user workloads. You cannot use an instance that is being used by any other consumer, including App Services.
+- <!-- TBD - ASDK --> データベースをホストするサーバーは、リソース プロバイダーとユーザーのワークロード専用にする必要があります。 他のコンシューマー (App Services など) が使用中のインスタンスは使用できません。
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers. 
+- <!-- IS, ASDK --> SQL と MySQL リソース プロバイダーの SKU を作成する場合、**[ファミリ]** 名では、スペースやピリオドなどの特殊文字はサポートされていません。 
 
 #### <a name="app-service"></a>App Service
-- <!-- TBD -  IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- TBD -  IS ASDK --> ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
 
-- <!-- TBD -  IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+- <!-- TBD -  IS ASDK --> インフラストラクチャ (worker、管理、フロントエンド ロール) をスケールアウトするには、コンピューティングのリリース ノートの説明に従って PowerShell を使用する必要があります。
  
 #### <a name="usage"></a>使用法  
-- <!-- TBD -  IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+- <!-- TBD -  IS ASDK --> パブリック IP アドレス使用量メーターのデータは、レコードが作成された日時を示す *TimeDate* スタンプではなく、各レコードに対して同じ *EventDateTime* 値を示します。 現在、このデータを使用して、パブリック IP アドレスの使用を正確に算出することはできません。
+
+<!--
+#### Identity
+-->
+
+
+
+#### <a name="downloading-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
+- PowerShell の *invoke-webrequest* コマンドレットを使用して Github から Azure Stack ツールをダウンロードすると、次のエラーが発生します。     
+    -  "*invoke-webrequest : 要求は中止されました: SSL/TLS のセキュリティで保護されたチャネルを作成できませんでした。*"     
+
+  このエラーは、GitHub で、Tlsv1 および Tlsv1.1 の暗号化標準 (PowerShell の既定) のサポートが最近廃止されたために発生します。 詳細については、[脆弱な暗号化標準の削除の通知](https://githubengineering.com/crypto-removal-notice/)に関するページを参照してください。
 
 <!-- #### Identity -->
 
 
 
-
-
-
-## <a name="build-201803291"></a>ビルド 20180329.1
+## <a name="build-201803021"></a>ビルド 20180302.1
 
 ### <a name="new-features-and-fixes"></a>新機能と修正
 Azure Stack 統合システム バージョン 1803 に対してリリースされた新機能と修正は、Azure Stack Development Kit に適用されます。 詳しくは、Azure Stack 1803 更新プログラム リリース ノートの「[新機能](.\.\azure-stack-update-1803.md#new-features)」および「[修正された問題](.\.\azure-stack-update-1803.md#fixed-issues)」セクションをご覧ください。  
@@ -151,108 +340,7 @@ Azure Stack 統合システム バージョン 1803 に対してリリースさ�
 - 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
-
-- Azure Stack Development Kit を登録するように勧める**アクティブ化が必要**という警告アラートが表示されます。 これは正しい動作です。
-
-- ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
-
-- Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、PowerShell を使用してアクセス許可を確認します。
-
-- 管理ポータルのダッシュボードの [更新] タイルで、更新プログラムに関する情報を表示できません。 この問題を解決するには、そのタイルをクリックして更新してください。
-
--   管理ポータルに、Microsoft.Update.Admin コンポーネントに関する重大なアラートが表示される場合があります。 アラート名、説明、解決策が、次のようにすべて表示されます。  
-    - *エラー - FaultType ResourceProviderTimeout 用のテンプレートが見つかりません。*
-
-    このアラートは無視してかまいません。 
-
-
-
-#### <a name="marketplace"></a>マーケットプレース
-- ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
- 
-#### <a name="compute"></a>コンピューティング
-- 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
-
-- Azure Stack ユーザー ポータルで仮想マシンを作成するとき、ポータルでは、DS シリーズ VM にアタッチできるデータ ディスクの数に誤った値が表示されます。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
-
-- VM イメージの作成に失敗した場合に、失敗したのに削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
-
-  この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、失敗した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成してから 15 分経つと、正常に削除できます。
-
-  次に、前に失敗した VM イメージの再ダウンロードを試行できます。
-
--  VM のデプロイで拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
-
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
-
-
-#### <a name="networking"></a>ネットワーク
-- **[ネットワーク]** で **[接続]** をクリックして VPN 接続を設定した場合は、可能な接続の種類として **[VNet 対 VNet]** が一覧に表示されます。 このオプションを選択しないでください。 現時点でサポートされているのは、**[サイト対サイト (IPsec)]** オプションのみです。
-
-- VM を作成してパブリック IP アドレスに関連付けた後は、IP アドレスからその VM の関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。
-
-  現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
-
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
-
-
-
-- Azure Stack では、IP アドレスごとに 1 つの "*ローカル ネットワーク ゲートウェイ*" がサポートされます。 これは、テナントのすべてのサブスクリプションに当てはまります。 最初のローカル ネットワーク ゲートウェイ接続を作成した後に、続いて同じ IP アドレスでローカル ネットワーク ゲートウェイ リソースを作成しようとすると、ブロックされます。
-
-- "*自動*" の DNS サーバー設定を使用して作成した仮想ネットワークで、カスタム DNS サーバーに変更すると失敗します。 更新した設定は、その Vnet 内の VM にプッシュされません。
- 
-- Azure Stack では、VM を展開した後に、VM インスタンスにネットワーク インターフェイスをさらに追加することはできません。 VM に複数のネットワーク インターフェイスが必要な場合は、展開時に定義する必要があります。
-
-
-
-#### <a name="sql-and-mysql"></a>SQL および MySQL 
-- ユーザーが新しい SQL SKU または MySQL SKU でデータベースを作成できるまでに、最大で 1 時間かかる場合があります。
-
-- データベースをホストするサーバーは、リソース プロバイダーとユーザーのワークロード専用にする必要があります。 他のコンシューマー (App Services など) が使用中のインスタンスは使用できません。
-
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
-
-#### <a name="app-service"></a>App Service
-- ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
-
-- インフラストラクチャ (worker、管理、フロントエンド ロール) をスケールアウトするには、コンピューティングのリリース ノートの説明に従って PowerShell を使用する必要があります。
- 
-#### <a name="usage"></a>使用法  
-- パブリック IP アドレス使用量メーターのデータは、レコードが作成された日時を示す *TimeDate* スタンプではなく、各レコードに対して同じ *EventDateTime* 値を示します。 現在、このデータを使用して、パブリック IP アドレスの使用を正確に算出することはできません。
-<!--
-#### Identity
--->
-
-#### <a name="downloading-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
-- PowerShell の *invoke-webrequest* コマンドレットを使用して Github から Azure Stack ツールをダウンロードすると、次のエラーが発生します。     
-    -  "*invoke-webrequest : 要求は中止されました: SSL/TLS のセキュリティで保護されたチャネルを作成できませんでした。*"     
-
-  このエラーは、GitHub で、Tlsv1 および Tlsv1.1 の暗号化標準 (PowerShell の既定) のサポートが最近廃止されたために発生します。 詳細については、[脆弱な暗号化標準の削除の通知](https://githubengineering.com/crypto-removal-notice/)に関するページを参照してください。
-
-  この問題を解決するには、スクリプトの先頭に `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` を追加して、GitHub リポジトリからダウンロードするときに TLSv1.2 を使用するよう PowerShell コンソールに強制します。
-
-
-
-
-
-
-## <a name="build-201803021"></a>ビルド 20180302.1
-
-### <a name="new-features-and-fixes"></a>新機能と修正
-Azure Stack 統合システムの Azure Stack 1802 更新プログラム リリース ノートの「[新機能と修正](.\.\azure-stack-update-1802.md#new-features-and-fixes)」セクションを参照してください。
-
-> [!IMPORTANT]    
-> 「**新機能と修正**」セクションに記載されている項目の一部は、Azure Stack 統合システムにのみ関連します。
-
-
-### <a name="known-issues"></a>既知の問題
- 
-#### <a name="portal"></a>ポータル
-- 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
-    - Azure Stack Development Kit の場合は、https://aka.ms/azurestackforum を使います。    
-
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
+- <!-- 2050709 --> 管理ポータルで、Blob service、Table service、および Queue サービスのストレージ メトリックを編集できません。 [ストレージ] に移動し、Blob、Table、または Queue サービスのタイルを選択すると、新しいブレードが開き、そのサービスのメトリック グラフが表示されます。 メトリック グラフ タイルの上部にある [編集] を選択すると、[グラフの編集] ブレードが開きますが、メトリックを編集するオプションは表示されません。  
 
 - Azure Stack Development Kit を登録するように勧める**アクティブ化が必要**という警告アラートが表示されます。 これは正しい動作です。
 
@@ -273,8 +361,25 @@ Azure Stack 統合システムの Azure Stack 1802 更新プログラム リリ�
 
 - **[サービス正常性]** ブレードの読み込みに失敗します。 管理ポータルまたはユーザー ポータルで [サービス正常性] ブレードを開くと、Azure Stack にエラーが表示され、情報は読み込まれません。 これは正しい動作です。 [サービス正常性] を選択して開けますが、この機能はまだ利用できません。Azure Stack の今後のバージョンに実装されます。
 
+
 #### <a name="health-and-monitoring"></a>正常性と監視
-Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限**という重大なアラートが表示される場合があります。  このアラートは無視してかまいませんが、Azure Stack Development Kit の操作に影響を与えます。 
+- <!-- 1264761 - IS ASDK --> 以下の詳細情報の*正常性コントローラー* コンポーネントのアラートが表示されることがあります:  
+
+   アラート #1:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+
+  アラート #2:
+   - 名前: インフラストラクチャ ロールの異常
+   - 重大度: 警告
+   - コンポーネント: 正常性コントローラー
+   - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+
+  いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
+
+- Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限**という重大なアラートが表示される場合があります。  このアラートは無視してかまいませんが、Azure Stack Development Kit の操作に影響を与えます。 
 
 
 #### <a name="marketplace"></a>マーケットプレース
@@ -282,10 +387,6 @@ Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限
  
 #### <a name="compute"></a>コンピューティング
 - 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
-
-- Azure Stack では、固定タイプ VHD の使用のみがサポートされます。 Azure Stack のマーケットプレースで提供されていた一部のイメージはダイナミック VHD を使用しますが、これらは削除されました。 ダイナミック ディスクがアタッチされている仮想マシン (VM) のサイズを変更すると、VM は失敗した状態のままになります。
-
-  この問題を軽減するには、VM のディスク、つまりストレージ アカウントの VHD BLOB を削除せずに VM を削除します。 次に、VHD をダイナミック ディスクから固定ディスクに変換した後、仮想マシンを再作成します。
 
 - Azure Stack ユーザー ポータルで仮想マシンを作成するとき、ポータルでは、DS シリーズ VM にアタッチできるデータ ディスクの数に誤った値が表示されます。 DS シリーズ VM は Azure の構成と同数のデータ ディスクをアタッチできます。
 
@@ -295,9 +396,9 @@ Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限
 
   次に、前に失敗した VM イメージの再ダウンロードを試行できます。
 
--  VM のデプロイで拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
+-  VM の展開で拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+- <!-- 1662991 --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。 
 
 
 #### <a name="networking"></a>ネットワーク
@@ -307,9 +408,9 @@ Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限
 
   現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
 
-  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元の VM に接続する結果になります。
 
--   IP 転送機能がポータルに表示されますが、IP 転送を有効にしても何も起こりません。 この機能は、まだサポートされていません。
+
 
 - Azure Stack では、IP アドレスごとに 1 つの "*ローカル ネットワーク ゲートウェイ*" がサポートされます。 これは、テナントのすべてのサブスクリプションに当てはまります。 最初のローカル ネットワーク ゲートウェイ接続を作成した後に、続いて同じ IP アドレスでローカル ネットワーク ゲートウェイ リソースを作成しようとすると、ブロックされます。
 
@@ -324,7 +425,7 @@ Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限
 
 - データベースをホストするサーバーは、リソース プロバイダーとユーザーのワークロード専用にする必要があります。 他のコンシューマー (App Services など) が使用中のインスタンスは使用できません。
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> SQL と MySQL リソース プロバイダーの SKU を作成する場合、**[ファミリ]** または **[層]** 名では、スペースやピリオドなどの特殊文字はサポートされていません。
 
 #### <a name="app-service"></a>App Service
 - ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
@@ -344,4 +445,8 @@ Azure Stack 管理ポータルに、**保留中の外部証明書の有効期限
   このエラーは、GitHub で、Tlsv1 および Tlsv1.1 の暗号化標準 (PowerShell の既定) のサポートが最近廃止されたために発生します。 詳細については、[脆弱な暗号化標準の削除の通知](https://githubengineering.com/crypto-removal-notice/)に関するページを参照してください。
 
   この問題を解決するには、スクリプトの先頭に `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` を追加して、GitHub リポジトリからダウンロードするときに TLSv1.2 を使用するように PowerShell コンソールに強制します。
+
+
+
+
 

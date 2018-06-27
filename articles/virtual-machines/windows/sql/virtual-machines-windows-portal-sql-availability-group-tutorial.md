@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716722"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287805"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -56,7 +56,7 @@ ms.locfileid: "34716722"
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-## クラスターを作成する
+## <a name="create-the-cluster"></a>クラスターを作成する
 
 前提条件が完了した後は、最初に、2 つの SQL Sever と監視サーバーを含む Windows Server フェールオーバー クラスターを作成します。
 
@@ -413,8 +413,8 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
    | **名前** | テキスト | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
-   | **ポート** | SQL Server インスタンスのポートを使います | 1433 |
-   | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 1433 |
+   | **ポート** | 可用性グループ リスナーのポートを使用する | 1435 |
+   | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 1435 |
    | **プローブ** |プローブに指定した名前 | SQLAlwaysOnEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |

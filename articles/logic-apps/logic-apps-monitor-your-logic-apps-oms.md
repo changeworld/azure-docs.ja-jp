@@ -12,20 +12,20 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/9/2017
+ms.date: 06/19/2018
 ms.author: LADocs; divswa
-ms.openlocfilehash: 493d82f59600d83a083bb13cdd0a21b872d77a43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299945"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294576"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 
 監視と豊富なデバッグ情報の獲得のために、ロジック アプリの作成と同時に Log Analytics をオンにできます。 Log Analytics では、Azure Portal を通じて、ロジック アプリの実行を監視して診断ログを収集できます。 Logic Apps の管理ソリューションを追加すると、ロジック アプリの実行の状態の集計や、その状態、実行時間、再送信の状態、および相関関係 ID などの詳細情報を取得できます。
 
-このトピックでは、Log Analytics をオンにして、ロジック アプリの実行のランタイム イベントやデータを確認できます。
+この記事では、Log Analytics をオンにして、ロジック アプリの実行のランタイム イベントやデータを確認できます。
 
  > [!TIP]
  > 既存のロジック アプリを監視するには、これらの手順に従って[診断ログの記録をオンにしてロジック アプリのランタイム データを Log Analytics に送信](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)します。
@@ -67,17 +67,17 @@ ms.locfileid: "35299945"
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. **[管理]** で、**[OMS ポータル]** を選択します。
+3. **[管理]** で、**[概要]** を選択します。
 
-   ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
+   ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
-4. **[すべてのソリューション]** で、**[Logic Apps Management]\(Logic Apps 管理\)** ソリューションのタイルを検索して選択します。
+4. [概要] ページで、**[追加]** を選択して [管理ソリューション] タイルを開きます。 
 
-   ![[Logic Apps Management]\(Logic Apps 管理\) を選択する](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
+   ![[Logic Apps Management]\(Logic Apps 管理\) を選択する](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. ソリューションを Log Analytics ワークスペースにインストールするには、**[追加]** を選択します。
+5. **[管理ソリューション]** のリストをスクロールして **[Logic Apps 管理]** ソリューションを選択し、**[作成]** を選択して [概要] ページにインストールします。
 
-   ![[Logic Apps Management]\(Logic Apps 管理\) の [追加] を選択する](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![[Logic Apps Management]\(Logic Apps 管理\) の [追加] を選択する](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 

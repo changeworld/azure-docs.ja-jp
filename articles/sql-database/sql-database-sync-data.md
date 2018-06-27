@@ -1,22 +1,23 @@
 ---
-title: Azure SQL データ同期 (プレビュー) | Microsoft Docs
-description: この概要では、Azure SQL データ同期 (プレビュー) について説明します。
+title: Azure SQL データ同期 | Microsoft Docs
+description: この概要では、Azure SQL データ同期について説明します。
 services: sql-database
 author: douglaslms
 manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c31735719e559a25b53acf0bfcf1efff0cee4d5e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296919"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
@@ -52,15 +53,15 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   **グローバル分散アプリケーション:** 多くの企業は、複数のリージョン、さらには複数の国にわたって展開しています。 ネットワーク待ち時間を最小限にするには、データは最寄りのリージョンに配置するのが一番です。 データ同期では、世界中のリージョンのデータベースを簡単に同期させることができます。
 
-データ同期は次のシナリオには適していません。
+データ同期は、次のシナリオに適したソリューションではありません。
 
--   ディザスター リカバリー
-
--   読み取りスケール
-
--   ETL (OLTP から OLAP へ)
-
--   オンプレミス SQL Server から Azure SQL Database への移行
+| シナリオ | 推奨されるソリューション例 |
+|----------|----------------------------|
+| ディザスター リカバリー | [Azure 地理冗長のバックアップ](sql-database-automated-backups.md) |
+| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](sql-database-read-scale-out.md) |
+| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| オンプレミス SQL Server から Azure SQL Database への移行 | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>データ同期のしくみ 
 
@@ -81,6 +82,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 #### <a name="performance-impact"></a>パフォーマンスへの影響
 データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
+
+同期グループの作成、更新、および削除中のプロビジョニングとプロビジョニング解除は、データベースのパフォーマンスにも影響を与える可能性があります。 
 
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -124,13 +127,13 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ## <a name="faq-about-sql-data-sync"></a>SQL データ同期に関する FAQ
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>SQL データ同期 (プレビュー) サービスのコストはどれくらいですか?
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL データ同期サービスのコストはどのくらいですか?
 
-プレビュー中は、SQL データ同期 (プレビュー) サービス自体に料金はかかりません。  ただし、SQL Database インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+SQL データ同期サービスそのものに対しては課金されません。  ただし、SQL Database インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
 
-SQL データ同期 (プレビュー) は、すべてのパブリック クラウド リージョンで利用できます。
+SQL データ同期は、すべてのパブリック クラウド リージョンで利用できます。
 
 ### <a name="is-a-sql-database-account-required"></a>SQL Database アカウントは必要ですか? 
 
@@ -149,7 +152,7 @@ SQL データ同期 (プレビュー) は、すべてのパブリック クラ�
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>データベースをバックアップおよび復元するには、SQL データ同期を使う必要がありますか?
 
-SQL データ同期 (プレビュー) を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期 (プレビュー) の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期 (プレビュー) では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
+SQL データ同期を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
 
 お勧めするバックアップ方法の 1 つについては、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
 
@@ -169,7 +172,7 @@ SQL データ同期 (プレビュー) を使ってデータのバックアップ
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>SQL データ同期ではフェデレーションはサポートされていますか?
 
-フェデレーション ルート データベースは、SQL データ同期 (プレビュー) サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期 (プレビュー) には、フェデレーション データベースのエンドポイントを追加できません。
+フェデレーション ルート データベースは、SQL データ同期サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期には、フェデレーション データベースのエンドポイントを追加できません。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: barclayn
-ms.openlocfilehash: 0d34a19658ae67a9c98d6f31aaca35e67add5beb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 5f7cccfe0288b547f84d5642c46c21ab4095a7bf
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26345113"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287723"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 ## <a name="introduction"></a>はじめに
@@ -183,7 +183,14 @@ KeyVault-BYOK-Tools-India.zip
 49EDCEB3091CF1DF7B156D5B495A4ADE1CFBA77641134F61B0E0940121C436C8
 
 - - -
-**英国:**
+**フランス:**
+
+KeyVault-BYOK-Tools-France.zip
+
+5C9D1F3E4125B0C09E9F60897C9AE3A8B4CB0E7D13A14F3EDBD280128F8FE7DF
+
+- - -
+**イギリス:**
 
 KeyVault-BYOK-Tools-UnitedKingdom.zip
 
@@ -304,7 +311,10 @@ Thales nShield Edge を使用している場合、モードを変更するには
    * インドの場合:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
-   * 英国の場合:
+   * フランスの場合:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-FRANCE-1 -w BYOK-SecurityWorld-pkg-FRANCE-1
+   * イギリスの場合:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
@@ -385,7 +395,10 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 * インドの場合:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
-* 英国の場合:
+* フランスの場合:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-FRANCE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-FRANCE-1
+* イギリスの場合:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
@@ -444,7 +457,10 @@ Thales ユーティリティを使用すると、次のコマンドで ACL を�
 * インドの場合:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* 英国の場合:
+* フランスの場合:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-France-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-France-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* イギリスの場合:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
@@ -468,5 +484,5 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 アップロードされると、追加したキーのプロパティが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでこの HSM 保護キーを Key Vault で使用できます。 詳細については、 **Azure Key Vault の概要** のチュートリアルの「 [ハードウェア セキュリティ モジュール (HSM) を使用する場合](key-vault-get-started.md) 」セクションを参照してください。

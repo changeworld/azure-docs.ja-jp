@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用したロールベースの Access Control (RBAC) の管理 | Microsoft Docs
-description: Azure コマンド ライン インターフェイスを使用して、ロールとロールのアクションの表示、サブスクリプションとアプリケーションのスコープへのロールの割り当てなどを行って、ロールベースの Access Control (RBAC) を管理する方法について説明します。
+title: RBAC と Azure CLI を使用してアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure CLI を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266739"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294406"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理
+# <a name="manage-access-using-rbac-and-azure-cli"></a>RBAC と Azure CLI を使用してアクセスを管理する
 
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
-
-
-ロールベースのアクセス制御 (RBAC) を使用して特定の範囲にロールを割り当てることにより、ユーザー、グループ、およびサービス プリンシパルのアクセスを定義します。 この記事では、Azure コマンド ライン インターフェイス (CLI) を使用してロールの割り当てを管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と Azure CLI を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure CLI を使用してロールの割り当てを管理するには、以下の前提条件が整っている必要があります。
 
-* [Azure CLI 2.0](/cli/azure)。 ブラウザーの [Azure Cloud Shell](../cloud-shell/overview.md) で使用できるほか、macOS、Linux、Windows に[インストール](/cli/azure/install-azure-cli)してコマンド ラインで実行することもできます。
+* [Azure CLI](/cli/azure)。 ブラウザーの [Azure Cloud Shell](../cloud-shell/overview.md) で使用できるほか、macOS、Linux、Windows に[インストール](/cli/azure/install-azure-cli)してコマンド ラインで実行することもできます。
 
-## <a name="list-role-definitions"></a>ロール定義の一覧表示
+## <a name="list-roles"></a>ロールの一覧表示
 
 使用可能なすべてのロール定義を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>ロール定義の動作の一覧表示
+### <a name="list-actions-of-a-role"></a>ロールのアクションの表示
 
 ロール定義の動作を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>ロールの割り当ての一覧表示
+## <a name="list-access"></a>アクセス権の表示
+
+RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。
 
 ### <a name="list-role-assignments-for-a-user"></a>ユーザーのロールの割り当ての表示
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>ロールの割り当ての作成
+## <a name="grant-access"></a>アクセス権の付与
+
+RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
 
 ### <a name="create-a-role-assignment-for-a-user"></a>ユーザーのロールの割り当てを作成する
 
@@ -290,9 +288,9 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
+## <a name="remove-access"></a>アクセス権の削除
 
-ロールの割り当てを削除するには、[az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) を使用します。
+RBAC でアクセス権を削除するには、[az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) を使用してロールの割り当てを削除します。
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

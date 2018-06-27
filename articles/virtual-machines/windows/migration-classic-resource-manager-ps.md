@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: a57337acadafe40839e16d6a31861ff7c892c071
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9cfdd6828a6d7ec699501a485519f843c59d0422
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602503"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291927"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
-以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。
+以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。
 
 必要に応じて、 [Azure コマンド ライン インターフェイス (Azure CLI)](../linux/migration-classic-resource-manager-cli.md)を使用してリソースを移行することもできます。
 
@@ -45,9 +45,7 @@ ms.locfileid: "31602503"
 > [!IMPORTANT]
 > 現在、Application Gateway は、クラシックから Resource Manager への移行には対応していません。 Application Gateway が設定された従来の仮想ネットワークを移行するには、準備操作を実行してネットワークを移動する前に、まずそのゲートウェイを削除する必要があります。 移行が完了した後、Azure Resource Manager でゲートウェイに再接続します。
 >
->別のサブスクリプションの ExpressRoute 回線に接続する ExpressRoute ゲートウェイは自動移行できません。 そのような場合は、ExpressRoute ゲートウェイを削除し、仮想ネットワークを移行してゲートウェイを再作成します。 詳細については、「[クラシックから Resource Manager デプロイメント モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)」を参照してください。
->
->
+>別のサブスクリプションの ExpressRoute 回線に接続する ExpressRoute ゲートウェイは自動移行できません。 そのような場合は、ExpressRoute ゲートウェイを削除し、仮想ネットワークを移行してゲートウェイを再作成します。 詳細については、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)」を参照してください。
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>手順 2: Azure PowerShell の最新バージョンをインストールする
 Azure PowerShell のインストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) という 2 つの主なオプションがあります。 WebPI は月次の更新プログラムを受け取ります。 PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。 この記事は、Azure PowerShell バージョン 2.1.0 に基づいています。
@@ -90,8 +88,6 @@ Resource Manager モデルの自分のアカウントにサインインします
 > 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます。
 >
 > "*BadRequest : 移行の対象サブスクリプションが登録されていません。*"
->
->
 
 次のコマンドを使用して、移行リソース プロバイダーに登録します。
 
@@ -137,12 +133,15 @@ Get-AzureRmVMUsage -Location "West US"
 ```
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>手順 6: IaaS リソースを移行するコマンドを実行する
+* [クラウド サービス内 (仮想ネットワーク外) で VM を移行する](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [仮想ネットワーク内で VM を移行する](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [ストレージ アカウントを移行する](#step-62-migrate-a-storage-account)
+
 > [!NOTE]
 > ここで説明するすべての操作がべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。 これによりプラットフォームでアクションが再試行されます。
->
->
 
-## <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>手順 6.1: オプション 1 - クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
+
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>手順 6.1: オプション 1 - クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
 次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。 クラウド サービスの VM が仮想ネットワーク内にある場合、または Web ロールか worker ロールを持つ場合は、コマンドではエラー メッセージが返されます。
 
 ```powershell
@@ -169,13 +168,13 @@ Get-AzureRmVMUsage -Location "West US"
     $validate.ValidationMessages
     ```
 
-    このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、**準備**手順に進むことができます。
+    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、**準備**手順に進むことができます。
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **オプション 2: Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する**
+* **オプション 2: Resource Manager デプロイ モデルの既存の仮想ネットワークに移行する**
 
     この例では、リソース グループ名を **myResourceGroup**、仮想ネットワーク名を **myVirtualNetwork**、サブネット名を **mySubNet** に設定します。 例の名前を対象のリソースの名前に置き換えてください。
 
@@ -193,7 +192,7 @@ Get-AzureRmVMUsage -Location "West US"
     $validate.ValidationMessages
     ```
 
-    このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、次の準備手順に進むことができます。
+    次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、次の準備手順に進むことができます。
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -223,7 +222,7 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-## <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>手順 6.1 オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>手順 6.1 オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 
 仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。 仮想マシンは、仮想ネットワークとともに自動的に移行されます。 移行する仮想ネットワークを選択します。
 > [!NOTE]
@@ -241,8 +240,6 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
 
 > [!NOTE]
 > 仮想ネットワークに Web ロールか worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
->
->
 
 最初に、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
 
@@ -250,7 +247,7 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、次の準備手順に進むことができます。
+次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、次の準備手順に進むことができます。
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
@@ -268,78 +265,81 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-## <a name="step-62-migrate-a-storage-account"></a>手順 6.2: ストレージ アカウントを移行する
-仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+### <a name="step-62-migrate-a-storage-account"></a>手順 6.2: ストレージ アカウントを移行する
+仮想マシンの移行が完了したら、ストレージ アカウントを移行する前に、次の前提条件チェックを実行することをお勧めします。
 
-ストレージ アカウントを移行する前に、上記の前提条件の確認を実行してください。
+> [!NOTE]
+> ストレージ アカウントに関連付けられたディスクまたは VM データがない場合は、「**ストレージ アカウントを検証して移行を開始する**」セクションに進むことができます。
 
-* **ディスクがストレージ アカウントに格納されている従来の仮想マシンを移行する**
+* **VM を移行したか、ストレージ アカウントにディスク リソースがあるかどうかの前提条件チェック**
+    * **ディスクがストレージ アカウントに格納されている従来の仮想マシンを移行する**
 
-    上記のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 上記のコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
+        次のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 このコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
+        ```powershell
+         $storageAccountName = 'yourStorageAccountName'
+          Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+          DiskName | Format-List -Property RoleName, DiskName
+
+        ```
+    * **ストレージ アカウントに格納されている接続されていないクラシック VM ディスクを削除する**
+
+        次のコマンドを使用して、ストレージ アカウントの接続されていないクラシック VM ディスクを見つけます。
+
+        ```powershell
+            $storageAccountName = 'yourStorageAccountName'
+            Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
+
+        ```
+        上のコマンドでディスクが返された場合、次のコマンドを使用してこれらのディスクを削除します。
+
+        ```powershell
+           Remove-AzureDisk -DiskName 'yourDiskName'
+        ```
+    * **ストレージ アカウントに格納されている VM イメージを削除する**
+
+        次のコマンドは、ストレージ アカウントに格納されたすべての VM イメージと OS ディスクを返します。
+         ```powershell
+            Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                    } | Select-Object -Property ImageName, ImageLabel
+         ```
+         次のコマンドは、ストレージ アカウントに格納されたすべての VM イメージとデータ ディスクを返します。
+         ```powershell
+
+            Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                             -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                            } | Select-Object -Property ImageName, ImageLabel
+         ```
+        次のコマンドを使用して、上のコマンドによって返されるすべての VM イメージを削除します。
+        ```powershell
+        Remove-AzureVMImage -ImageName 'yourImageName'
+        ```
+* **ストレージ アカウントを検証して移行を開始する**
+
+    次のコマンドを使用して、各ストレージ アカウントの移行の検証をします。 この例では、**myStorageAccount** というストレージ アカウント名を使用しています。 例の名前を対象のストレージ アカウントの名前に置き換えてください。
+
     ```powershell
-     $storageAccountName = 'yourStorageAccountName'
-      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
-      DiskName | Format-List -Property RoleName, DiskName
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
-* **ストレージ アカウントに格納されている接続されていないクラシック VM ディスクを削除する**
 
-    次のコマンドを使用して、ストレージ アカウントの接続されていないクラシック VM ディスクを見つけます。
+    次の手順は、ストレージ アカウントの移行の準備です
 
     ```powershell
-        $storageAccountName = 'yourStorageAccountName'
-        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
-    上のコマンドでディスクが返された場合、次のコマンドを使用してこれらのディスクを削除します。
+
+    Azure PowerShell または Azure Portal のどちらかを使用して、準備したストレージ アカウントの構成を確認します。 移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
     ```powershell
-       Remove-AzureDisk -DiskName 'yourDiskName'
+        Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
-* **ストレージ アカウントに格納されている VM イメージを削除する**
 
-    上記のコマンドは、ストレージ アカウントに格納されたすべての VM イメージと OS ディスクを返します。
-     ```powershell
-        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
-                                } | Select-Object -Property ImageName, ImageLabel
-     ```
-     上記のコマンドは、ストレージ アカウントに格納されたすべての VM イメージとデータ ディスクを返します。
-     ```powershell
+    準備した構成が正しい場合は、次に進み、以下のコマンドを使用してリソースをコミットできます。
 
-        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
-                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
-                                        } | Select-Object -Property ImageName, ImageLabel
-     ```
-    上記のコマンドを使用して、上のコマンドによって返されるすべての VM イメージを削除します。
     ```powershell
-    Remove-AzureVMImage -ImageName 'yourImageName'
+        Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
-
-次のコマンドを使用して、各ストレージ アカウントの移行の検証をします。 この例では、**myStorageAccount** というストレージ アカウント名を使用しています。 例の名前を対象のストレージ アカウントの名前に置き換えてください。
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
-```
-
-次の手順は、ストレージ アカウントの移行の準備です
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
-```
-
-Azure PowerShell または Azure Portal のどちらかを使用して、準備したストレージ アカウントの構成を確認します。 移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
-
-```powershell
-    Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
-```
-
-準備した構成が正しい場合は、次に進み、以下のコマンドを使用してリソースをコミットできます。
-
-```powershell
-    Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
-```
 
 ## <a name="next-steps"></a>次の手順
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

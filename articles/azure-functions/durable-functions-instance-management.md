@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764657"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287750"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -98,6 +98,24 @@ public static async Task Run(
 {
     var status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
+}
+```
+## <a name="querying-all-instances"></a>すべてのインスタンスのクエリを実行する
+
+`GetStatusAsync` メソッドを使用して、すべてのオーケストレーション インスタンスの状態のクエリを実行することができます。 このメソッドはパラメーターを受け取りません。キャンセルする場合は、`CancellationToken` オブジェクトを渡すことができます。 このメソッドは、`GetStatusAsync` メソッドと同じプロパティを持つオブジェクトをパラメーターと共に返します。ただし、履歴は返しません。 
+
+```csharp
+[FunctionName("GetAllStatus")]
+public static async Task Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    TraceWriter log)
+{
+    IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(); // You can pass CancellationToken as a parameter.
+    foreach (var instance in instances)
+    {
+        log.Info(JsonConvert.SerializeObject(instance));
+    };
 }
 ```
 
@@ -198,6 +216,41 @@ public static Task Run(
 
 > [!NOTE]
 > webhook URL の形式は、実行している Azure Functions ホストのバージョンによって異なる場合があります。 上記の例は、Azure Functions 2.0 ホスト用の形式です。
+
+## <a name="retrieving-http-management-webhook-urls"></a>HTTP 管理 webhook URL の取得
+
+外部システムは、[HTTP API URL の検出](durable-functions-http-api.md)に関するページで説明されている既定の応答の一部である webhook URL を介して、Durable Functions と通信できます。 ただし、webhook URL には、オーケストレーション クライアント、またはアクティビティ関数で [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスの [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) メソッドを使用して、プログラムでアクセスすることもできます。 
+
+[CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) には 1 つのパラメーターがあります。
+
+* **instanceId**: インスタンスの一意の ID。
+
+このメソッドは、[HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) のインスタンスと次の文字列プロパティを返します。
+
+* **Id**: オーケストレーションのインスタンス ID (`InstanceId` 入力と同じにする必要があります)。
+* **StatusQueryGetUri**: オーケストレーション インスタンスの状態の URL。
+* **SendEventPostUri**: オーケストレーション インスタンスの "イベント発生" URL。
+* **TerminatePostUri**: オーケストレーション インスタンスの "終了" URL。
+
+アクティビティ関数は、[HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) のインスタンスを外部システムに送信して、イベントを監視したり、オーケストレーションに対するイベントを発生させたりすることができます。
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static void SendInstanceInfo(
+    [ActivityTrigger] DurableActivityContext ctx,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [DocumentDB(
+        databaseName: "MonitorDB",
+        collectionName: "HttpManagementPayloads",
+        ConnectionStringSetting = "CosmosDBConnection")]out dynamic document)
+{
+    HttpManagementPayload payload = client.CreateHttpManagementPayload(ctx.InstanceId);
+
+    // send the payload to Cosmos DB
+    document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 
