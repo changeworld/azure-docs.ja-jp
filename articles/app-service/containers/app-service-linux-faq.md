@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/18/2018
 ms.author: msangapu
-ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294013"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222979"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
 App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
 
-ご質問がある場合は、この記事の最後にあるコメント欄をご利用ください。できるだけ早く回答いたします。
+ご不明な点がある場合は、この記事についてのコメントをお寄せください。
 
 ## <a name="built-in-images"></a>組み込まれているイメージ
 
@@ -60,7 +60,7 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 **自分の Web アプリでは、Docker Hub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。カスタム コンテナーの継続的な統合およびデプロイをサポートしていますか。**
 
-Azure Container Registry または DockerHub イメージの継続的インテグレーションと継続的デプロイをセットアップするには、「[Azure Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)」をご覧ください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
+はい、Azure Container Registry または DockerHub の継続的インテグレーションと継続的デプロイをセットアップするには、「[Azure Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)」をご覧ください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
 
 **ステージング環境はサポートしていますか。**
 
@@ -72,13 +72,13 @@ Azure Container Registry または DockerHub イメージの継続的インテ�
 
 **Linux Web アプリを使用すると、アプリケーションの Git デプロイが失敗します。この問題を回避する方法はありますか。**
 
-Linux Web アプリに対して Git デプロイが失敗する場合は、以下の代替オプションを選択してアプリケーション コードをデプロイできます。
+Linux Web アプリに対して Git デプロイが失敗する場合は、以下のいずれかのオプションを選択してアプリケーション コードをデプロイします。
 
-- 継続的配信 (プレビュー) 機能を使用する: アプリのソース コードを、Team Services の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的配信を使用できます。 詳細については、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
+- 継続的配信 (プレビュー) 機能を使用する: アプリのソース コードを、Team Services の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的配信を使用できます。 詳しくは、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
 
-- [ZIP デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) を使用する: この API を使用するには、[Web アプリに SSH で接続](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)し、コードをデプロイするフォルダーに移動します。 次のコマンドレットを実行します。
+- [ZIP デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) を使用する: この API を使用するには、[Web アプリに SSH で接続](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)し、コードをデプロイするフォルダーに移動します。 次のコードを実行します。
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -86,10 +86,11 @@ Linux Web アプリに対して Git デプロイが失敗する場合は、以�
 
 ## <a name="language-support"></a>言語のサポート
 
-**WebSocket を Node.js アプリケーションで使用したいと考えています。特別な設定や構成が必要でしょうか。**
+**Web ソケットを Node.js アプリケーションで使用したいと考えています。特別な設定や構成が必要でしょうか。**
 
-はい、サーバー側の Node.js コードで `perMessageDeflate` を無効にします。 たとえば、socket.io を使用している場合、次の操作を行います。
-```
+はい、サーバー側の Node.js コードで `perMessageDeflate` を無効にします。 たとえば、socket.io を使用している場合、次のコードを使います。
+
+```nodejs
 var io = require('socket.io')(server,{
   perMessageDeflate :false
 });
@@ -101,16 +102,16 @@ var io = require('socket.io')(server,{
 
 **PHP アプリの依存関係マネージャーとして Composer はサポートされていますか。**
 
-はい。 Git のデプロイ中に、Kudu は (composer.lock ファイルの存在により) PHP アプリケーションをデプロイしていることを検出し、その後 Kudu は Composer のインストールを自動的にトリガーします。
+はい、Git のデプロイ中に、Kudu は (composer.lock ファイルの存在により) PHP アプリケーションをデプロイしていることを検出し、その後 Kudu は Composer のインストールをトリガーします。
 
 ## <a name="custom-containers"></a>カスタム コンテナー
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定するか、またはアプリ設定を完全に削除することで、マウントできます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。 
+これは、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定することで実現できます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。
 
 >[!NOTE]
->`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が *false* の場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
+>`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が指定されていない場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 
@@ -162,6 +163,6 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure App Service on Linux とは](app-service-linux-intro.md)
-* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)
+- [Azure App Service on Linux とは](app-service-linux-intro.md)
+- [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)

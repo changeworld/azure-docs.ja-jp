@@ -5,21 +5,16 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: a306ced4-74e9-47c6-990a-d9c47efa31d5
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/07/2017
+ms.date: 06/18/2018
 ms.author: sethm
-ms.openlocfilehash: 5bea3b56cea81362b25e696a672bf2a00e26d3ef
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 424004a2a39bd0d05bce515dc17685e60f7a0c9b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
-ms.locfileid: "24029509"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231578"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 
@@ -29,140 +24,56 @@ Service Bus のメッセージング機能の中核を形成するメッセー�
 
 ## <a name="queues"></a>キュー
 
-キューでは、コンシューマーが競合している場合のメッセージ配信に*先入れ先出し法 (FIFO)* を使用します。 つまり、通常、メッセージは、キューに追加された順番で受信され、処理されると予想されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。 キューを使用する主な利点は、アプリケーション コンポーネントの "一時的な切り離し" を達成することです。 言い換えると、メッセージはキューに永続的に格納されるため、プロデューサー (送信者) とコンシューマー (受信者) が同時にメッセージを送受信する必要はありません。 さらに、プロデューサーは、メッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。
+キューでは、コンシューマーが競合している場合のメッセージ配信に*先入れ先出し法 (FIFO)* を使用します。 つまり、受信者は、通常はキューに追加された順序でメッセージを受信して処理します。このとき、1 つのメッセージ コンシューマーだけが、各メッセージを受信して処理します。 キューを使用する主な利点は、アプリケーション コンポーネントの "一時的な切り離し" を達成することです。 言い換えると、メッセージはキューに永続的に格納されるため、プロデューサー (送信者) とコンシューマー (受信者) が同時にメッセージを送受信する必要はありません。 さらに、プロデューサーは、メッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。
 
-関連する利点として "負荷平準化" があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。 仲介のメッセージ プロデューサーとコンシューマーでキューを使用する場合、コンシューマー側アプリケーションに必要なのは、ピーク時の負荷ではなく平均的な負荷を処理できるようにプロビジョニングしておくことだけです。 キューの深さは、受信の負荷の変化に応じて増減します。 このため、アプリケーション負荷への対応に必要なインフラストラクチャに関して直接費用を節約できます。 負荷の増大に合わせて、キューからの読み取りのためにワーカー プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 さらに、このプルベースの負荷分散では、各ワーカー コンピューターがそれぞれ独自の最大レートでメッセージをプルするため、それらのコンピューターの処理能力が異なる場合であっても使用を最適化できます。 このパターンは、"競合コンシューマー" パターンと呼ばれることもあります。
+関連する利点として "負荷平準化" があります。これにより、プロデューサーとコンシューマーは異なるレートでメッセージを送受信できます。 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。 仲介のメッセージ プロデューサーとコンシューマーでキューを使用する場合、コンシューマー側アプリケーションに必要なのは、ピーク時の負荷ではなく平均的な負荷を処理できるようにプロビジョニングしておくことだけです。 キューの深さは、受信の負荷の変化に応じて増減します。 この機能は、アプリケーション負荷への対応に必要なインフラストラクチャに関する費用を直接節約できます。 負荷の増大に合わせて、キューからの読み取りのためにワーカー プロセスを追加できます。 各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。 さらに、このプルベースの負荷分散では、各ワーカー コンピューターがそれぞれ独自の最大レートでメッセージをプルするため、それらのコンピューターの処理能力が異なる場合であっても使用を最適化できます。 このパターンは、"競合コンシューマー" パターンと呼ばれることもあります。
 
 キューを使用してメッセージ プロデューサーとメッセージ コンシューマーの間を仲介すると、必然的にコンポーネント間の結び付きは緩くなります。 プロデューサーとコンシューマーは相互に認識しないため、プロデューサーに影響することなく、コンシューマーをアップグレードできます。
 
-キューの作成は、複数の手順から成るプロセスです。 Service Bus メッセージング エンティティ (キューとトピックの両方) の管理操作は、[Microsoft.ServiceBus.NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) クラスで実行されます。このクラスは、Service Bus の名前空間とユーザー資格情報のベース アドレスを指定して作成します。 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) クラスには、メッセージング エンティティの作成、列挙、削除を実行するためのメソッドが用意されています。 SAS の名前とキーから [Microsoft.ServiceBus.TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) オブジェクトを作成し、サービスの名前空間管理オブジェクトを作成した後、[Microsoft.ServiceBus.NamespaceManager.CreateQueue](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateQueue_System_String_) メソッドを使用してキューを作成できます。 次に例を示します。
+### <a name="create-queues"></a>キューの作成
 
-```csharp
-// Create management credentials
-TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName,sasKeyValue);
-// Create namespace client
-NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
-```
+キューは、[Azure Portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成します。 その後、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトを使用して、メッセージの送信と受信を行います。 
 
-その後、Service Bus の URI を引数として使用して、キュー オブジェクトとメッセージング ファクトリを作成できます。 次に例を示します。
+キューの簡単な作成方法と、キューに対するメッセージの送信と受信を行う方法については、各メソッドの[クイック スタート](service-bus-quickstart-portal.md)を参照してください。 キューの使用方法の詳細なチュートリアルについては、「[Service Bus のキューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。 
 
-```csharp
-QueueDescription myQueue;
-myQueue = namespaceClient.CreateQueue("TestQueue");
-MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials); 
-QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
-```
+作業用サンプルについては、GitHub の [BasicSendReceiveUsingQueueClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)を参照してください。
 
-その後は、キューにメッセージを送信できます。 たとえば、`MessageList` という名前のブローカー メッセージの一覧がある場合、コードは次の例のようになります。
+### <a name="receive-modes"></a>受信モード
 
-```csharp
-for (int count = 0; count < 6; count++)
-{
-    var issue = MessageList[count];
-    issue.Label = issue.Properties["IssueTitle"].ToString();
-    myQueueClient.Send(issue);
-}
-```
+Service Bus がメッセージを受信する 2 つの異なるモードを指定できます (*ReceiveAndDelete* または *PeekLock*)。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
 
-その後、次のように、キューからメッセージを受信します。
+[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、メッセージの受信処理は 2 段階になります。これにより、メッセージが失われることを許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにそのメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出して受信処理の第 2 段階を完了します。 Service Bus は、**CompleteAsync** の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
 
-```csharp
-while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, seconds: 5))) != null)
-    {
-        Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
-        message.Complete();
+アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) の代わりに) [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。 第二に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります (基本的に既定で [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 操作を実行します)。
 
-        Console.WriteLine("Processing message (sleeping...)");
-        Thread.Sleep(1000);
-    }
-```
-
-[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
-
-[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードでは、メッセージの受信処理は 2 段階になります。これにより、メッセージが失われることを許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにそのメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) を呼び出して受信処理の第 2 段階を完了します。 Service Bus は、**Complete** の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
-
-アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) の代わりに) [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。 第二に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります (基本的に既定で [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) 操作を実行します)。
-
-メッセージが処理された後、**Complete** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は "*1 回以上*" の処理と呼ばれます。つまり、各メッセージは 1 回以上処理されますが、 特定の状況では、同じメッセージが再配信される可能性があります。 重複した処理を許容できないシナリオでは、メッセージの **MessageId** プロパティに基づいて実現可能な重複を検出するための追加のロジックがアプリケーションで必要になります。このプロパティはメッセージが再配信されても変わりません。 これは "*厳密に 1 回*" の処理と呼ばれます。
+メッセージが処理された後、**CompleteAsync** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 多くの場合、このプロセスは "*少なくとも 1 回*" の処理と呼ばれます。つまり、各メッセージは少なくとも 1 回は処理されますが、 特定の状況では、同じメッセージが再配信される可能性があります。 重複した処理を許容できないシナリオでは、メッセージの [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティに基づいて実現可能な重複を検出するための追加のロジックがアプリケーションで必要になります。このプロパティはメッセージが再配信されても変わりません。 この機能は "*厳密に 1 回*" の処理と呼ばれます。
 
 ## <a name="topics-and-subscriptions"></a>トピックとサブスクリプション
-各メッセージが 1 つのコンシューマーによって処理されるキューとは異なり、"*トピック*" と "*サブスクリプション*" では、"*パブリッシュ/サブスクライブ*" パターンを使用した 1 対多形式の通信が行われます。 パブリッシュされた各メッセージは、これは非常に多くの受信者を対象とする場合に便利であり、トピックに登録している各サブスクリプションで使用できます。 メッセージは、トピックに送信された後、サブスクリプションごとに設定できるフィルター規則に基づいて、関連付けられている 1 つ以上のサブスクリプションに配信されます。 サブスクリプションでは、追加のフィルターを使用して、受信するメッセージを限定できます。 メッセージは、キューに送信される場合と同じようにトピックに送信されますが、トピックからメッセージを直接受信することはありません。 代わりに、メッセージはサブスクリプションから受信します。 トピック サブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。 メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
 
-比較として、キューのメッセージ送信機能はそのままトピックに相当し、メッセージ受信機能はサブスクリプションに相当します。 特に、これは、サブスクリプションでは、競合コンシューマー、一時的な切り離し、負荷平滑化、負荷分散など、キューに関してこのセクションで既に説明したのと同じパターンがサポートされることを意味します。
+各メッセージが 1 つのコンシューマーによって処理されるキューとは異なり、"*トピック*" と "*サブスクリプション*" では、"*パブリッシュ/サブスクライブ*" パターンを使用した 1 対多形式の通信が行われます。 パブリッシュされた各メッセージは、これは多数の受信者を対象とする場合に便利であり、トピックに登録している各サブスクリプションで使用できます。 メッセージは、トピックに送信された後、サブスクリプションごとに設定できるフィルター規則に基づいて、関連付けられている 1 つ以上のサブスクリプションに配信されます。 サブスクリプションでは、追加のフィルターを使用して、受信するメッセージを限定できます。 メッセージは、キューに送信される場合と同じようにトピックに送信されますが、トピックからメッセージを直接受信することはありません。 代わりに、メッセージはサブスクリプションから受信します。 トピック サブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。 メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
 
-トピックの作成は、前のセクションの例で示したキューの作成と似ています。 サービス URI を作成してから、[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) クラスを使用して名前空間クライアントを作成します。 その後、[CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) メソッドを使用してトピックを作成します。 次に例を示します。
+比較として、キューのメッセージ送信機能はそのままトピックに相当し、メッセージ受信機能はサブスクリプションに相当します。 特に、この機能は、サブスクリプションでは、競合コンシューマー、一時的な切り離し、負荷平滑化、負荷分散など、キューに関してこのセクションで既に説明したのと同じパターンがサポートされることを意味します。
 
-```csharp
-TopicDescription dataCollectionTopic = namespaceClient.CreateTopic("DataCollectionTopic");
-```
+### <a name="create-topics-and-subscriptions"></a>トピックとサブスクリプションを作成する
 
-次に、必要に応じてサブスクリプションを追加します。
+トピックの作成は、前のセクションで説明したキューの作成と似ています。 メッセージの送信は、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) クラスを使用して行います。 メッセージを受信するには、トピックに対して 1 つまたは複数のサブスクリプションを作成します。 キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。 
 
-```csharp
-SubscriptionDescription myAgentSubscription = namespaceClient.CreateSubscription(myTopic.Path, "Inventory");
-SubscriptionDescription myAuditSubscription = namespaceClient.CreateSubscription(myTopic.Path, "Dashboard");
-```
-
-その後、トピック クライアントを作成できます。 次に例を示します。
-
-```csharp
-MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider);
-TopicClient myTopicClient = factory.CreateTopicClient(myTopic.Path)
-```
-
-前のセクションで示したように、メッセージの送信者を使用すると、トピックとの間でメッセージを送受信できます。 次に例を示します。
-
-```csharp
-foreach (BrokeredMessage message in messageList)
-{
-    myTopicClient.Send(message);
-    Console.WriteLine(
-    string.Format("Message sent: Id = {0}, Body = {1}", message.MessageId, message.GetBody<string>()));
-}
-```
-
-キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。 たとえば、**Inventory** サブスクリプションでは、次のようになります。
-
-```csharp
-// Create the subscription client
-MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider); 
-
-SubscriptionClient agentSubscriptionClient = factory.CreateSubscriptionClient("IssueTrackingTopic", "Inventory", ReceiveMode.PeekLock);
-SubscriptionClient auditSubscriptionClient = factory.CreateSubscriptionClient("IssueTrackingTopic", "Dashboard", ReceiveMode.ReceiveAndDelete); 
-
-while ((message = agentSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != null)
-{
-    Console.WriteLine("\nReceiving message from Inventory...");
-    Console.WriteLine(string.Format("Message received: Id = {0}, Body = {1}", message.MessageId, message.GetBody<string>()));
-    message.Complete();
-}          
-
-// Create a receiver using ReceiveAndDelete mode
-while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != null)
-{
-    Console.WriteLine("\nReceiving message from Dashboard...");
-    Console.WriteLine(string.Format("Message received: Id = {0}, Body = {1}", message.MessageId, message.GetBody<string>()));
-}
-```
+完全な作業用サンプルについては、Github の [BasicSendReceiveUsingTopicSubscriptionClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)を参照してください。
 
 ### <a name="rules-and-actions"></a>ルールとアクション
-多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 これを実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 これを行うには、サブスクリプション フィルターを使用します。 このような変更は、"*フィルター アクション*" と呼ばれます。 サブスクリプションを作成する場合、メッセージのシステム プロパティ (**Label** など) とカスタム アプリケーション プロパティ (**StoreName** など) の両方で機能するフィルター式を指定できます。この場合、SQL フィルター式は省略可能です。SQL フィルター式を指定しない場合は、サブスクリプションで定義されている任意のフィルター アクションが、そのサブスクリプションのすべてのメッセージに対して実行されます。
 
-前の例を使用して、**Store1** からの受信メッセージだけを取り出すようにフィルターするには、Dashboard サブスクリプションを次のように作成します。
+多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。 この処理を実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。 Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。 このフィルター処理を行うには、サブスクリプション フィルターを使用します。 このような変更は、"*フィルター アクション*" と呼ばれます。 サブスクリプションを作成する場合、メッセージのシステム プロパティ (**Label** など) とカスタム アプリケーション プロパティ (**StoreName** など) の両方で機能するフィルター式を指定できます。この場合、SQL フィルター式は省略可能です。SQL フィルター式を指定しない場合は、サブスクリプションで定義されている任意のフィルター アクションが、そのサブスクリプションのすべてのメッセージに対して実行されます。
 
-```csharp
-namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
-```
+完全な作業用サンプルについては、GitHub の [TopicSubscriptionWithRuleOperationsSample サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)を参照してください。
 
-このサブスクリプション フィルターを適用すると、`StoreName` プロパティが `Store1` に設定されているメッセージだけが、`Dashboard` サブスクリプションの仮想キューにコピーされます。
+使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) クラスのドキュメントを参照してください。 
 
-使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのドキュメントを参照してください。 また、[「ブローカー メッセージング: 高度なフィルター」](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)と [トピック フィルター](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters) に関するページのサンプルも参照してください。
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
-Service Bus のメッセージングの使用の詳細と例については、次の高度なトピックをご覧ください。
+Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus ブローカー メッセージングに関する .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
-* [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
-* [ブローカー メッセージング: 高度なフィルターのサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
+* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+
 

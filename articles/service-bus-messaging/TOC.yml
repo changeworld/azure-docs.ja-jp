@@ -6,6 +6,7 @@
       href: service-bus-messaging-overview.md
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
 - name: クイック スタート
   items:
     - name: メッセージを送信する - PowerShell

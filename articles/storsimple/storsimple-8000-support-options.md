@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 9137e52af16f63efe7f0b8169f2693a354564968
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32191548"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264440"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 

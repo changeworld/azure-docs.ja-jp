@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory の条件付きアクセスの what if ツール - プレビュー | Microsoft Docs
-description: Azure Active Directory の条件付きアクセス ポリシーの構成をテストする方法について説明します。
+title: Azure Active Directory 条件付きアクセスの what if ツールの概要 (プレビュー) | Microsoft Docs
+description: お使いの環境で条件付きアクセス ポリシーの影響を把握する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723832"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232073"
 ---
-# <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory の条件付きアクセスの what if ツール - プレビュー
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Azure Active Directory 条件付きアクセスの what if ツールの概要 (プレビュー)
 
 [条件付きアクセス](active-directory-conditional-access-azure-portal.md)は、承認されたユーザーがクラウド アプリにアクセスする方法を制御できるようにする Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいか。 この質問に答えるために、**条件付きアクセスの what-if ツール**を使用できます。
 
@@ -121,7 +121,7 @@ IP アドレスは、[場所の条件](active-directory-conditional-access-locat
 
 ## <a name="next-steps"></a>次の手順
 
-- 条件付きアクセスポリシーの構成方法については、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」を参照してください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
 
