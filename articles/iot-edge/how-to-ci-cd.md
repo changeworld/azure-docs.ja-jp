@@ -452,7 +452,7 @@ ms.locfileid: "34631022"
 このチュートリアルでは、VSTS または TFS の継続的インテグレーションと継続的配置の機能を使用する方法について説明します。 
 
 * 「[1 台のデバイスまたは一群のデバイスを対象とした IoT Edge デプロイについて](module-deployment-monitoring.md)」で IoT Edge デプロイについて理解します。
-* 「大規模な IoT Edge モジュールの展開と監視」[how-to-deploy-monitor.md] で、デプロイを作成、更新、または削除するための手順を学習します。
+* [大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md) で、デプロイを作成、更新、または削除するための手順を学習します。
 
 
 
