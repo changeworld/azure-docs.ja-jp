@@ -38,7 +38,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
     SendGrid を使用して電子メールを送信するには、API キーを指定する必要があります。
 
 ### <a name="to-find-your-sendgrid-api-key"></a>SendGrid API キーを確認するには
-1. **[Manage]** をクリックします。
+1. **Manage**をクリックします。
 
     ![manage][manage]
 2. SendGrid のダッシュボードの左側のメニューで、**[設定]**、**[API キー]** の順に選択します。
