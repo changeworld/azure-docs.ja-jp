@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637176"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221545"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -75,18 +75,21 @@ Log Analytics は UTC 時間を使用し、各日は UTC 午前 0 時に開始�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. データ収集が停止したときに通知を受けるにはどうすればよいですか?
 
-A: データ収集が停止したときに通知を受けるには、「[アラート ルールを作成する](log-analytics-alerts-creating.md#create-an-alert-rule)」で説明されている手順を使用します。
+A: データ収集が停止したときに通知を受けるには、[新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関する記事で説明されている手順を使用します。
 
 データ収集が停止したときのアラートを作成する場合は、次のように設定します。
-- **[名前]** を *[Data collection stopped] \(データ収集が停止した)* に
-- **[重大度]** を *[警告]* に
-- **[検索クエリ]**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- **[時間枠]** を *[30 分]* に。
-- **[アラートの頻度]** を *[10]* 分ごとに。
-- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
-- **[結果の数]** を *[Greater than 0] \(0 を超える)* に
 
-このアラートは、15 分を超えてハートビートがない場合にのみ、クエリが結果を返すと起動されます。  [アラート ルールへのアクションの追加](log-analytics-alerts-actions.md)に関する記事に記載されている手順で、アラート ルールの電子メール、webhook、または Runbook アクションを設定します。
+- **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
+- **[アラートの条件]** では、以下を指定します。
+   - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
+   - **[検索クエリ]**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です
+   - **[期間]** は *30* 分、**[アラートの頻度]** は *10* 分間隔に設定します
+- **[アラートの詳細を定義します]** では、以下を指定します。
+   - **[名前]** を *[Data collection stopped] \(データ収集が停止した)* に
+   - **[重大度]**: *[警告]*
+
+既存の[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を指定するか、アクション グループを新たに作成して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
 
 ## <a name="configuration"></a>構成
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure 診断 (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?

@@ -41,12 +41,6 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: 予約インスタンスの管理
           href: billing-manage-reserved-vm-instance.md
-    - name: REST の例
-      items:
-        - name: エンタープライズのコストの確認
-          href: billing-review-enterprise-billing.md
-        - name: サブスクリプションの用途の確認
-          href: billing-review-subscription-billing.md
 - name: アカウントを管理する
   items:
     - name: 無料アカウント

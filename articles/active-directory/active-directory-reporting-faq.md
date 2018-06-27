@@ -3,24 +3,24 @@ title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
 description: Azure Active Directory レポートに関する FAQ。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588592"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232144"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
 
@@ -72,7 +72,7 @@ ms.locfileid: "34588592"
 
 **Q: Azure Portal からレコードをいくつまでダウンロードすることができますか。**
 
-**A:** レコードは Azure Portal で 12 万個までダウンロードできます。 レコードは*最新の順*に並べ替えられており、既定では最新の 12 万個のレコードを取得します。 
+**A:** レコードは Azure Portal から 5000 個までダウンロードできます。 レコードは*最新の順*に並べ替えられており、既定では最新の 5000 個のレコードを取得します。 レコード数が 5000 よりも大きくなる場合、Azure Portal でフィルター条件を選択して、*[スクリプト]* ボタンをクリックします。 これにより、PowerShell スクリプトがダウンロードされます。このスクリプトを実行して、フィルター条件と一致するすべてのレコードを含む CSV ファイルを生成できます。 PowerShell スクリプトは、*管理者モード*で実行する必要があります。 詳細については、「[サインイン アクティビティのダウンロード](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities)」を参照してください。
 
 ---
 
@@ -84,7 +84,7 @@ ms.locfileid: "34588592"
 
 **Q: Premium ライセンスはどうすれば取得できますか。**
 
-**A:** この質問の回答については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。
+**A:** この質問の回答については、「[Azure Active Directory Premium の概要](fundamentals/active-directory-get-started-premium.md)」を参照してください。
 
 ---
 

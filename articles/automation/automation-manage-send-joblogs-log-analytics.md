@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 562b1f1371133a1da8d24ebbb9c588f0597dda7f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c51c79b85f5277496a3b8f80fe2487136a9fcbc1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194402"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228616"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
 Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。
@@ -83,7 +83,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 Azure Automation の診断から、Log Analytics に 2 種類のレコードが作成され、タグ **AzureDiagnostics** が付けられます。 次のクエリでは、Log Analytics にアップグレードされたクエリ言語が使用されています。 従来のクエリ言語と新しい Azure Log Analytics クエリ言語でよく使用されるクエリの比較については、「[Legacy to new Azure Log Analytics Query Language cheat sheet (従来のクエリ言語と新しい Azure Log Analytics クエリ言語の比較チート シート)](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)」を参照してください。
 
 ### <a name="job-logs"></a>ジョブ ログ
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
@@ -105,7 +105,7 @@ Azure Automation の診断から、Log Analytics に 2 種類のレコードが�
 
 
 ### <a name="job-streams"></a>ジョブ ストリーム
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
@@ -140,7 +140,7 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`次の内容を使用して、Runbook 名でグループ化することもできます。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は JobLogs の検索のリソース フィールドで確認できます。
-1. **[アラート ルールの追加]** 画面を開くには、ページの上部にある **[アラート]** をクリックします。 アラートの構成オプションについて詳しくは、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md#alert-rules)」をご覧ください。
+1. **[ルールの作成]** 画面を開くには、ページの上部にある **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックします。 アラートの構成オプションについて詳しくは、「[Azure Monitor でのログ アラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)」をご覧ください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 エラーに関するアラートだけでなく、Runbook ジョブが終了しないときにもエラーが表示されます。 このような場合、PowerShell ではエラー ストリームが生成されますが、ジョブが終了しないエラーでは、ジョブの中断や失敗は起こりません。    

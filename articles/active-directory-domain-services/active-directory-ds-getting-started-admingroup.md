@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: 概要 | Microsoft Docs"
-description: "Azure Portal を使用して Azure Active Directory Domain Services を有効にする"
+title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
+description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263977"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
@@ -40,16 +42,19 @@ ms.lasthandoff: 12/11/2017
 
 3. 完了したら、**[OK]** をクリックしてウィザードの **[概要]** ページに移動します。
 
-4. ウィザードの **[概要]** ページで、管理対象ドメインの構成設定を確認します。 必要に応じて、ウィザードの任意の手順に戻り、変更を加えることができます。 完了したら、**[OK]** をクリックして、新しい管理対象ドメインを作成します。
 
-    ![概要](./media/getting-started/domain-services-blade-summary.png)
+## <a name="deploy-your-managed-domain"></a>マネージド ドメインのデプロイ
 
-5. Azure AD Domain Services のデプロイの進行状況を示す通知が表示されます。 デプロイの進行状況を詳しく表示するには、通知をクリックします。
+1. ウィザードの **[概要]** ページで、管理対象ドメインの構成設定を確認します。 必要に応じて、ウィザードの任意の手順に戻り、変更を加えることができます。 完了したら、**[OK]** をクリックして、新しい管理対象ドメインを作成します。
+
+    ![まとめ](./media/getting-started/domain-services-blade-summary.png)
+
+2. Azure AD Domain Services のデプロイの進行状況を示す通知が表示されます。 デプロイの進行状況を詳しく表示するには、通知をクリックします。
 
     ![通知 - 進行中のデプロイ](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>管理対象ドメインをプロビジョニングする
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>マネージド ドメインのデプロイ ステータスの確認
 管理対象ドメインのプロビジョニングのプロセスは、最大で 1 時間かかることがあります。
 
 1. デプロイが進行中は、**[リソースの検索]** 検索ボックスで "Domain Services" を検索できます。 検索結果から **[Azure AD Domain Services]** を選択します。 **[Azure AD Domain Services]** ブレードには、プロビジョニング中の管理対象ドメインが一覧表示されます。
@@ -67,6 +72,9 @@ ms.lasthandoff: 12/11/2017
 4. 管理対象ドメインが完全にプロビジョニングされると、**[概要]** タブには、ドメインの状態が **[実行中]** であることが示されます。
 
     ![Domain Services - 完全にプロビジョニングされた後の [概要] タブ](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >プロビジョニング プロセスの間に、Azure AD Domain Services は、お使いのディレクトリ内に "Domain Controller Services" と "AzureActiveDirectoryDomainControllerServices" というエンタープライズ アプリケーションを作成します。 これらのエンタープライズ アプリケーションは、マネージド ドメインのサービスを提供するために使用されます。 どのような場合にも、これらが削除されないことが不可欠です。
+    >
 
 5. **[プロパティ]** タブに、仮想ネットワークでドメイン コント ローラーを使用できる 2 つの IP アドレスが表示されます。
 

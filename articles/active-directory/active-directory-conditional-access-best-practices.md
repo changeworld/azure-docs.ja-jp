@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c155e18ddc4f1713aa9c62a991f4e849e024c5da
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 88e6b1a64d4ceff64c1ee74a297e7af0c5a27379
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723662"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232238"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -31,7 +31,7 @@ ms.locfileid: "34723662"
 - 知っておくべきこと 
 - 条件付きアクセス ポリシーを構成するときに避けるべきこと 
 
-この記事は、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」で説明されている概念と用語について理解していることを前提としています
+この記事は、「[Azure Active Directory の条件付きアクセスの概要](active-directory-conditional-access-azure-portal.md)」で説明されている概念と用語について理解していることを前提としています
 
 
 
@@ -154,4 +154,4 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 
-条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
+条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。

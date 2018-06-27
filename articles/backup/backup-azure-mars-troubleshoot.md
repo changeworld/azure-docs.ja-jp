@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/4/2017
 ms.author: saurse
-ms.openlocfilehash: aee0a3044ea4d1b9b867e795e94a37f8835ad212
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89a39f6189367f91248b3868b1e1cb9f6abf0407
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605758"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228392"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Azure Backup エージェントの構成および登録の問題のトラブルシューティング
 ## <a name="recommended-steps"></a>推奨される手順
@@ -36,13 +36,19 @@ Azure Backup エージェントの構成または登録中に発生する可能�
 
 | エラーの詳細 | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |      
-| **エラー** </br>*セキュリティで保護されたバックアップ用に暗号化キーを設定できませんでした。現在の操作は、内部エラー "無効な入力エラー" が原因で失敗しました。しばらくしてから、操作を再試行してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください*。 |サーバーは既に別のコンテナーに登録されています。| コンテナーからサーバーを登録解除してから、再び登録します。
+| **エラー** </br>*セキュリティで保護されたバックアップ用に暗号化キーを設定できませんでした。ライセンス認証は完全には成功しませんでしたが、暗号化パスフレーズが次のファイルに保存されました*。 |<li>サーバーは既に別のコンテナーに登録されています。<li>構成時に、パスフレーズが破損しました| コンテナーからサーバーの登録を解除した後、新しいパスフレーズを使ってもう一度登録します。
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>ライセンス認証は正常に完了しませんでした。 サービスの内部エラー [0x1FC07] が発生したため、現在の操作を実行できませんでした
 
 | エラーの詳細 | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |          
-| **エラー** </br><ol><li>*ライセンス認証は正常に完了しませんでした。サービスの内部エラー [0x1FC07] が発生したため、現在の操作を実行できませんでした。しばらくしてから、操作を再試行してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください* <li>*エラー 34506。このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません*。 | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って別の場所に移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。 | <li>バックアップ データの合計サイズの 5 ～ 10% に相当する空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[Azure Backup エージェントに関する質問](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。
+| **エラー** </br><ol><li>*ライセンス認証は正常に完了しませんでした。サービスの内部エラー [0x1FC07] が発生したため、現在の操作を実行できませんでした。しばらくしてから、操作を再試行してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください*| <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って別の場所に移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。 | <li>[最新バージョン](http://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5 ～ 10% に相当する空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[Azure Backup エージェントに関する質問](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。
+  
+## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>エラー 34506。 このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません
+
+| エラーの詳細 | 考えられる原因 | 推奨アクション |
+| ---     | ---     | ---    |          
+| **エラー** </br><ol><li>*エラー 34506。このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません*。 | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って別の場所に移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。 | <li>[最新バージョン](http://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5 ～ 10% に相当する空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[Azure Backup エージェントに関する質問](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。  
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

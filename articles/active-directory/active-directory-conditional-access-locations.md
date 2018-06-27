@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の条件付きアクセスの場所の条件 | Microsoft Docs
+title: Azure Active Directory 条件付きアクセスの場所の条件の概要 | Microsoft Docs
 description: ユーザーのネットワークの場所に基づき、場所の条件を使用してクラウド アプリへのアクセスを制御する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
@@ -9,20 +9,22 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 842fe8c194f1c88c7dabb073e0fa7b7806d92d44
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e5924262d9965c4e6732f8c23031cd575dc7958d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232188"
 ---
-# <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの場所の条件 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 
 [Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーの場所の条件によって、アクセス制御設定をユーザーのネットワークの場所に関連付けることができます。
 
@@ -164,6 +166,6 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ## <a name="next-steps"></a>次の手順
 
-- 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 

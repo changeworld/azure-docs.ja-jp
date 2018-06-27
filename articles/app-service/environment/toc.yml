@@ -64,8 +64,6 @@
           href: app-service-app-service-environment-network-architecture-overview.md
         - name: ASEv1 での Web アプリの作成
           href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: 高密度ホスティング
-          href: app-service-high-density-hosting.md
         - name: バックエンドへの接続
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: ExpressRoute の構成

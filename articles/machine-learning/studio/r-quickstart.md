@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836377"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227242"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
 
@@ -41,7 +41,7 @@ Microsoft Azure Machine Learning には、多くの強力なマシン ラーニ�
 
 このクイック スタート ガイドでは、カリフォルニアでの酪農生産と価格データを扱います。 このデータには、いくつかの酪農製品の生産、乳脂の価格、ベンチマーク商品に関する月単位の情報が含まれます。
 
-この記事で使用されているデータと R スクリプトは、[こちらからダウンロード][download]できます。 このデータは、最初はウィスコンシン大学 (http://future.aae.wisc.edu/tab/production.html) から入手可能な情報から合成されました。
+この記事で使用されているデータと R スクリプトは、[こちらからダウンロード](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv)できます。 このデータは、最初はウィスコンシン大学 (https://dairymarkets.com) から入手可能な情報から合成されました。
 
 ### <a name="organization"></a>Organization
 Azure Machine Learning 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。  
@@ -123,7 +123,7 @@ Azure Machine Learning には、350 を超える R 言語パッケージがプ�
 今のところ、このコードの最終行が理解できないかもしれませんが、読んでみてください。 これ以降このドキュメントでは、Azure Machine Learning 環境での R の使用について幅広く説明します。
 
 ### <a name="introduction-to-rstudio"></a>RStudio の概要
-RStudio は、広く使用されている R 向けの IDE です。このクイック スタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けます。  
+RStudio は、広く使用されている R 向けの IDE です。このクイックスタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けることができます。  
 
 デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、すぐにインストールすることをお勧めします。 オープンソースの R 言語の無料ダウンロードが、包括的な R アーカイブ ネットワーク (CRAN) ([http://www.r-project.org/](http://www.r-project.org/)) で入手できます。 Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、便利な分析とデータ操作のパッケージが豊富に用意されています。
 

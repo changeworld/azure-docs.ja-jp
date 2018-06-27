@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0be34d3a0e9bccd6658b5285ddfe6da1e96ef19a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 239ece0f126e1c92c2e94206baa7026ac04d604f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724926"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227991"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -125,13 +125,13 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 | OS                     | ブラウザー                            | サポート     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer、Edge、Chrome     | ![○][1] |
+| Windows 10             | Internet Explorer、Microsoft Edge、Chrome     | ![○][1] |
 | Windows 8 / 8.1        | Internet Explorer、Chrome           | ![○][1] |
 | Windows 7              | Internet Explorer、Chrome           | ![○][1] |
 | iOS                    | Safari、Intune Managed Browser      | ![○][1] |
 | Android                | Chrome、Intune Managed Browser      | ![○][1] |
-| Windows Phone          | Internet Explorer、Edge             | ![○][1] |
-| Windows Server 2016    | Internet Explorer、Edge             | ![○][1] |
+| Windows Phone          | Internet Explorer、Microsoft Edge             | ![○][1] |
+| Windows Server 2016    | Internet Explorer、Microsoft Edge             | ![○][1] |
 | Windows Server 2016    | Chrome                              | 近日対応予定 |
 | Windows Server 2012 R2 | Internet Explorer、Chrome           | ![○][1] |
 | Windows Server 2008 R2 | Internet Explorer、Chrome           | ![○][1] |

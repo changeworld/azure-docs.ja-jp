@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3fcbcbe5d5f8dab956f40cde112f3536e1ae668c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34356173"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263994"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -141,8 +141,8 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 1. **[ルール]**、**[パス ベース]** の順にクリックします。
 2. 名前として「*rule2*」を入力します。
-3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/**」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
-4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/**」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
+3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/*\*」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
+4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/*\*」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
 
     ![パス ベース ルールの作成](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 

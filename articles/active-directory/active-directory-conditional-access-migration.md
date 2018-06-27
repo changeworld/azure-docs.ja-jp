@@ -1,5 +1,5 @@
 ---
-title: Azure Portal でクラシック ポリシーを移行する | Microsoft Docs
+title: Azure Active Directory 条件付きアクセスのポリシー移行の概要 | Microsoft Docs
 description: Azure Portal でクラシック ポリシーを移行するために知っておく必要があることについて説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723730"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232104"
 ---
-# <a name="migrate-classic-policies-in-the-azure-portal"></a>Azure Portal でクラシック ポリシーを移行する 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのポリシー移行の概要 
 
 
 [条件付きアクセス](active-directory-conditional-access-azure-portal.md)は、Azure Active Directory (Azure AD) の 1 つの機能で、使用すると、承認されたユーザーがクラウド アプリにアクセスする方法を制御できます。 目的は変わりませんが、新しい Azure Portal のリリースにより、条件付きアクセスのしくみが大幅に改善されました。
@@ -85,11 +85,11 @@ Azure Portal の条件付きアクセスでは、すべてのポリシーを一�
 
 参照:
 
-- 「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」では、基本的な概念と用語について確認します。
+- 「[Azure Active Directory の条件付きアクセスの概要](active-directory-conditional-access-azure-portal.md)」では、基本的な概念と用語について確認します。
 
 - 「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」では、組織内での条件付きアクセスの展開に関するガイダンスを取得します。
 
-- 「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」では、Azure Portal のユーザー インターフェイスについて理解を深めます。
+- 「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」では、Azure Portal のユーザー インターフェイスについて理解を深めます。
 
 
  
@@ -170,6 +170,6 @@ Azure Portal の条件付きアクセスでは、すべてのポリシーを一�
 
 ## <a name="next-steps"></a>次の手順
 
-- 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 

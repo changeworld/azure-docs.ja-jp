@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 299e0d4fa53f9b8a2aef2fc881b136aa41aacfe4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5d7f0d1fc32f18991be6614bb7661b63570a8700
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157777"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264924"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Azure Active Directory のコード サンプル (V1 エンドポイント)
 
@@ -70,7 +70,7 @@ PHP | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php
 
 次のサンプルでは、Web アプリケーションの特定機能のアクセス許可を特定のユーザーに制限するために使用する、ロールベースのアクセス制御の実装方法を示します。 ユーザーには、Azure AD のグループまたはロールに属しているかどうかに応じて権限が与えられます。
 
-プラットフォーム | サンプル | [説明]
+プラットフォーム | サンプル | 説明
  -------- | ------------------- | ---------------------
 ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) | Azure AD の**グループ**を承認に使用する .NET 4.5 MVC Web アプリ
 ASP.NET 4.5 | [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD の**ロール**を承認に使用する .NET 4.5 MVC Web アプリ
@@ -92,7 +92,7 @@ ASP.NET Web アプリ  | .NET/C# | クライアントの資格情報 |    | [dot
 
 次のサンプルは、Azure AD で node.js Web API を保護する方法を示しています。
 
-プラットフォーム | サンプル | [説明]
+プラットフォーム | サンプル | 説明
  -------- | ------------------- | ---------------------
 Node.js | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |  Azure AD と OAuth 2.0 のアクセス トークンをセキュリティに使用した NodeJS Web API。
 
@@ -109,9 +109,11 @@ ASP.NET 4.5 | [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/act
 
 このサンプルでは、Azure AD を使用してセキュリティ保護されているシングル ページ アプリケーションの作成方法を示します。
 
- プラットフォーム |  Microsoft Graph の呼び出し | 独自 API の呼び出し
- -------- |  --------------------- | -------------------------
-JavaScript (Angular) / ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)
+ プラットフォーム |  Microsoft Graph の呼び出し | 独自 API の呼び出し | 別の Web API の呼び出し
+ -------- |  --------------------- | ------------------ | ----------------
+JavaScript / ASP.NET 4.x |  | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+JavaScript (AngularJS) / ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |
+JavaScript (AngularJS) / ASP.NET 4.x |  |  | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
 ## <a name="other-microsoft-graph-samples"></a>Microsoft Graph のその他のサンプル
 

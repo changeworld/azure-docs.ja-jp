@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32309982"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264887"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -194,6 +194,81 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 ```
 
 **HTTP 202** の応答には、前述の `statusQueryGetUri` フィールドと同じ URL を参照する **Location** 応答ヘッダーも含まれています。
+
+### <a name="get-all-instances-status"></a>すべてのインスタンス ステータスを取得する
+
+すべてのインスタンス ステータスを照会することも可能です。 'Get instance status' 要求から `instanceId` を削除します。 パラメーターは、'Get instance status' と同じです。 
+
+#### <a name="request"></a>要求
+
+Functions 1.0 の場合、要求形式は次のようになります。
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
+
+```http
+GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="response"></a>Response
+
+次に、オーケストレーション ステータスを含む応答ペイロードの例を示します (読みやすくなるように、形式を整えています)。
+
+```json
+[
+    {
+        "instanceId": "7af46ff000564c65aafbfe99d07c32a5",
+        "runtimeStatus": "Completed",
+        "input": null,
+        "customStatus": null,
+        "output": [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ],
+        "createdTime": "2018-06-04T10:46:39Z",
+        "lastUpdatedTime": "2018-06-04T10:46:47Z"
+    },
+    {
+        "instanceId": "80eb7dd5c22f4eeba9f42b062794321e",
+        "runtimeStatus": "Running",
+        "input": null,
+        "customStatus": null,
+        "output": null,
+        "createdTime": "2018-06-04T15:18:28Z",
+        "lastUpdatedTime": "2018-06-04T15:18:38Z"
+    },
+    {
+        "instanceId": "9124518926db408ab8dfe84822aba2b1",
+        "runtimeStatus": "Completed",
+        "input": null,
+        "customStatus": null,
+        "output": [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ],
+        "createdTime": "2018-06-04T10:46:54Z",
+        "lastUpdatedTime": "2018-06-04T10:47:03Z"
+    },
+    {
+        "instanceId": "d100b90b903c4009ba1a90868331b11b",
+        "runtimeStatus": "Pending",
+        "input": null,
+        "customStatus": null,
+        "output": null,
+        "createdTime": "2018-06-04T15:18:39Z",
+        "lastUpdatedTime": "2018-06-04T15:18:39Z"
+    }
+]
+```
+
+> [!NOTE]
+> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale#instances-table)」のドキュメントを参照してください。
+> 
 
 ### <a name="raise-event"></a>イベントを発生させる
 

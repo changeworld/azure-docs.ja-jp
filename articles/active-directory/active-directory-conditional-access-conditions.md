@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory の条件付きアクセスの条件 | Microsoft Docs
-description: Azure Active Directory の条件付きアクセスで割り当てを使用してポリシーをトリガーする方法について学習します。
+title: Azure Active Directory 条件付きアクセスの条件の概要 | Microsoft Docs
+description: Azure Active Directory の条件付きアクセスで条件を使用してポリシーをトリガーする方法について学習します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735143"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232178"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの条件 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要 
 
 [Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "34735143"
 
 この記事では、条件の概要と、条件付きアクセス ポリシーでの使用方法について説明します。 
 
-## <a name="users-and-groups"></a>ユーザーとグループ
+## <a name="users-and-groups"></a>[概要]
 
 ユーザーとグループの条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのユーザー]** を選択するか、特定のユーザーとグループを選択することができます。
 
@@ -140,7 +140,7 @@ ms.locfileid: "34735143"
 
 - ユーザーが特定の国や地域からサービスにアクセスする場合にアクセスをブロックする。 
 
-詳細については、「[Azure Active Directory の条件付きアクセスの場所の条件](active-directory-conditional-access-locations.md)」をご覧ください。
+詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](active-directory-conditional-access-locations.md)」を参照してください。
 
 
 ## <a name="client-apps"></a>クライアント アプリ
@@ -241,7 +241,7 @@ EWS が使用している認証プロトコルによります。 EWS アプリ�
 
 ## <a name="next-steps"></a>次の手順
 
-- 条件付きアクセスポリシーの構成方法については、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」を参照してください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
 

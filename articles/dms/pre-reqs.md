@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/22/2018
-ms.openlocfilehash: b3fe97343d844eb5c030cf0aaa9da2a6f54a2472
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/19/2018
+ms.openlocfilehash: 3dc449724e405f83ce976b9f8b01a89c25d693fe
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168209"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221252"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用するための前提条件の概要
 データベースを移行するときに Azure Database Migration Service を円滑に動作させるには、いくつかの前提条件があります。 いくつかの前提条件は、サービスでサポートされているすべてのシナリオ (ソースとターゲットのペア) に適用されますが、その他の前提条件は特定のシナリオに固有のものです。
@@ -48,19 +48,19 @@ Azure Database Migration Service を使用して SQL Server から Azure SQL Dat
    > Azure Database Migration Service を使用して SQL Server から Azure SQL Database への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database に移行する](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)」を参照してください。
    > 
 
-## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database-managed-instance"></a>SQL Server から Azure SQL Database マネージ インスタンスへの移行の前提条件
-- Azure SQL Database マネージ インスタンスを作成します。手順の詳細については、「[Azure ポータルで Azure SQL Database マネージ インスタンスを作成する](https://aka.ms/sqldbmi)」を参照してください。
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database-managed-instance"></a>SQL Server から Azure SQL Database Managed Instance への移行の前提条件
+- Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、「[Azure ポータルで Azure SQL Database マネージド インスタンスを作成する](https://aka.ms/sqldbmi)」を参照してください。
 - Azure Database Migration Service の IP アドレスまたはサブネット範囲でポート 445 の SMB トラフィックを許可するようにファイアウォールを開きます。
 - Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
-- ソース SQL Server への接続と、ターゲットのマネージ インスタンスに使用するログインが sysadmin サーバー ロールのメンバーであることを確認してください。
+- ソース SQL Server への接続と、ターゲットのマネージド インスタンスに使用するログインが sysadmin サーバー ロールのメンバーであることを確認してください。
 - Azure Database Migration Service がソース データベースのバックアップに使用できるネットワーク共有を作成します。
-- ソース SQL Server インスタンスを実行しているサービス アカウントが作成したネットワーク共有に対する書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが同じ共有への読み取り/書き込みアクセス権を持っていることを確認します。
-- 前に作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
+- 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。
+- 作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
 - Blob コンテナーを作成し、「[ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)」の記事に記載されている手順を使用して、その SAS URI を取得します。 SAS URI を作成するときには、必ず、[ポリシー] ウィンドウですべての権限 (読み取り、書き込み、削除、一覧表示) を選択してください。
 
    > [!NOTE]
-   > Azure Database Migration Service を使用して SQL Server から Azure SQL Database マネージ インスタンスへの移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database マネージ インスタンスに移行する](https://aka.ms/migratetomiusingdms)」を参照してください。
+   > Azure Database Migration Service を使用して SQL Server から Azure SQL Database Managed Instance への移行を行うために必要な前提条件の完全な一覧については、チュートリアルの「[SQL Server を Azure SQL Database Managed Instance に移行する](https://aka.ms/migratetomiusingdms)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Database Migration Service の概要と、パブリック プレビュー期間中のリージョンごとの利用可能性については、「[Azure Database Migration Service プレビューとは何ですか](dms-overview.md)」という記事を参照してください。 
+Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事をご覧ください。 

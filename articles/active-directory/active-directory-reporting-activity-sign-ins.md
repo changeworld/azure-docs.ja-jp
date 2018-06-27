@@ -3,25 +3,25 @@ title: Azure Active Directory ポータルのサインイン アクティビテ�
 description: Azure Active Directory ポータルのサインイン アクティビティ レポートの概要
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588609"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232136"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -153,7 +153,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 ![ダウンロード](./media/active-directory-reporting-activity-sign-ins/71.png "ダウンロード")
 
-**[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。 さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含むスクリプトが作成されます。 ダウンロードできるレコードの数は、技術的な実装だけでなく、[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)によっても制限されます。  
+**[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。 さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含む PowerShell が作成されます。 **管理者モード**でこのスクリプトをダウンロードして実行し、CSV ファイルを生成します。 ダウンロードできるレコードの数は、技術的な実装だけでなく、[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)によっても制限されます。  
 
 
 
