@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151010"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030055"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -44,7 +44,7 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 
 [Azure セキュリティ ブログ](https://azure.microsoft.com/blog/topics/security/)を確認して、Azure のセキュリティに関する重大なお知らせを常にチェックしてください。 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>サポートされる言語ランタイムの更新、追加、廃止の時期
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>サポートされる言語ランタイムの更新、追加、非推奨の時期
 
 サポートされる言語ランタイムの新しい安定バージョン (メジャー、マイナー、またはパッチ) は、App Service インスタンスに定期的に追加されます。 一部の更新プログラムでは既存のインストールが上書きされますが、その他の更新プログラムは既存のバージョンとサイド バイ サイドでインストールされます。 上書きインストールでは、アプリは更新されたランタイムで自動的に実行されます。 サイドバイサイド インストールでは、新しいバージョンのランタイムを利用するにはアプリを手動で移行する必要があります。 詳細については、いずれかのサブセクションを参照してください。
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>廃止されたバージョン
+### <a name="deprecated-versions"></a>非推奨のバージョン  
 
-以前のバージョンが廃止される場合、それに応じてランタイム バージョンのアップグレードを計画できるように、削除日が発表されます。 
+以前のバージョンが非推奨となる場合、それに応じてランタイム バージョンのアップグレードを計画できるように、削除日が発表されます。 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>インスタンスの OS とランタイムの更新状態を照会する方法
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>インスタンスの OS とランタイムの更新状態を照会する方法  
 
 OS の重要な情報へのアクセスはロックダウンされていますが (「[Azure App Service におけるオペレーティング システムの機能](web-sites-available-operating-system-functionality.md)」を参照)、[Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) コンソールでは、App Service インスタンスの OS バージョンとランタイム バージョンを照会できます。 
 
 次の表では、アプリを実行している Windows と言語ランタイムのバージョンを見つける方法を示します。
 
-| 情報 | 参照先 |
+| 情報 | 参照先 | 
 |-|-|
 | Windows のバージョン | `https://<appname>.scm.azurewebsites.net/Env.cshtml` を参照します (システム情報の下) |
 | .NET バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | .NET Core バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `dotnet --version` |
 | PHP バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `php --version` |
 | 既定の Node.js バージョン | [Cloud Shell](../cloud-shell/overview.md) で次のコマンドを実行します。 <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `python --version` |
+| Python バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins))に関する情報が格納され、ロックダウンされています。
 >
 >
 
 ## <a name="more-resources"></a>その他のリソース
 
-[トラスト センター: セキュリティ](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[トラスト センター: セキュリティ](https://www.microsoft.com/en-us/trustcenter/security)  
 [Azure App Service 上の 64 ビット ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

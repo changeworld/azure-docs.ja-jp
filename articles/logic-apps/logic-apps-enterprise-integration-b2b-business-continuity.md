@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 65c7262916219a74dcd6bdab487306b5bd5f709f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299098"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045604"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B のリージョン間ディザスター リカバリー
 
@@ -85,7 +85,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 EDI X12 ドキュメントのビジネス継続性は、制御番号に基づいています。
 
 > [!TIP]
-> [X12 クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは 2 つのロジック アプリを作成するのに役立ちます。1 つは受信した制御番号用、もう 1 つは生成された制御番号用です。 ロジック アプリでそれぞれのトリガーとアクションが作成されます。トリガーはプライマリ統合アカウントに、アクションはセカンダリ統合アカウントに接続します。
+> [X12 クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは 2 つのロジック アプリを作成するのに役立ちます。1 つは受信した制御番号用、もう 1 つは生成された制御番号用です。 ロジック アプリでそれぞれのトリガーとアクションが作成されます。トリガーはプライマリ統合アカウントに、アクションはセカンダリ統合アカウントに接続します。
 
 **前提条件**
 

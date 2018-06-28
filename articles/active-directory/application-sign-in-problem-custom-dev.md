@@ -3,22 +3,24 @@ title: カスタム開発されたアプリケーションへのサインイン�
 description: Azure AD で開発したアプリケーションにサインインできなくなる一般的なエラー
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 57b620f45d1985351064020e122c088584bcdcf5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 3cbc9f981ab528efe2d739022c674cef48dfeb51
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614140"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330888"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>カスタム開発されたアプリケーションへのサインインに関する問題
 
@@ -32,7 +34,7 @@ ms.locfileid: "26614140"
 
 * 類似したエラーや問題については、[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure AD 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 

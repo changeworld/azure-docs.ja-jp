@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521145"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025530"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントは、[Azure セキュリティ センター](../security/security-microsoft-trust-center.md)に関する情報を補完する Azure Log Analytics 固有の情報を提供することを目的としています。  
@@ -68,7 +68,7 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 | State |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理的なセキュリティ
-Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む OMS サービスへの責任がなくなったユーザに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx)を参照してください。
+Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む OMS サービスへの責任がなくなったユーザに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/en-us/global-infrastructure/)を参照してください。
 
 ## <a name="incident-management"></a>インシデント管理
 OMS には、すべての Microsoft サービスが準拠するインシデント管理プロセスがあります。 まとめると次のようになります。
@@ -92,10 +92,10 @@ OMS には、すべての Microsoft サービスが準拠するインシデン�
 
 顧客のデータの損失が発生した場合、1 日以内に顧客に通知します。 ただし、サービスで顧客データの損失が発生したことはありません。 
 
-Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
+Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
@@ -113,10 +113,10 @@ Azure Log Analytics は、次の要件を満たしています。
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * PCI Security Standards Council による [Payment Card Industry (PCI 準拠) データ セキュリティ基準 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [Service Organization Controls (SOC) 1 Type 1 および SOC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) に準拠している
-* [HIPAA および HITECH](https://www.microsoft.com/TrustCenter/Compliance/HIPAA) (HIPAA Business Associate Agreement を締結している企業向け)
+* [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) (HIPAA Business Associate Agreement を締結している企業向け)
 * Windows の一般的なエンジニアリング条件
 * Microsoft の信頼できるコンピューティング
-* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)を参照してください。
+* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
 
 > [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。
@@ -131,8 +131,8 @@ Azure Log Analytics は、次の要件を満たしています。
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.Log Analytics にサインアップし、データを収集する
 組織が Log Analytics にデータを送信できるようにするには、Azure 仮想マシン、または自身の環境や他のクラウド プロバイダーの仮想または物理コンピューターで実行される Windows または Linux エージェントを構成します。  Operations Manager を使用する場合は、管理グループから Operations Manager エージェントを構成します。 ユーザー (あなた、他のユーザー、または複数ユーザーのグループの場合があります) は、次のアカウントのいずれかを使用して 1 つ以上の Log Analytics ワークスペースを作成し、エージェントを登録します。
 
-* [組織 ID](../active-directory/sign-up-organization.md)
-* [Microsoft アカウント - Outlook、Office Live、MSN](http://www.microsoft.com/account/default.aspx)
+* [組織 ID](../active-directory/fundamentals/sign-up-organization.md)
+* [Microsoft アカウント - Outlook、Office Live、MSN](https://account.microsoft.com/account)
 
 Log Analytics ワークスペースは、データが収集、集計、分析、表示される場所になります。 ワークスペースは、主にデータをパーティション分割するための手段として使用されます。各ワークスペースは一意になります。 たとえば、実稼働データをワークスペースの 1 つで管理し、テスト データを別のワークスペースで管理する場合があります。 ワークスペースは、ユーザーのデータへのアクセスを管理者が制御する際にも役立ちます。 ワークスペースごとに複数のユーザー アカウントを関連付けることができます。また、各ユーザー アカウントは複数の Log Analytics ワークスペースにアクセスできます。 データ センターのリージョンに基づいてワークスペースを作成します。 各ワークスペースは、主に Log Analytics サービスの可用性のために、リージョン内の他のデータセンターにレプリケートされます。
 
