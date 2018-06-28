@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: e923167ef0b7cdb300fa5ad1421cc18489393ce2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ecb8a46c57d31c8a19f3a7b75306e42a7d3981bd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265180"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335739"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -155,7 +155,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://http://40.121.222.19 など。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://40.121.222.19 など。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-url-route-portal/application-gateway-iistest.png)
 

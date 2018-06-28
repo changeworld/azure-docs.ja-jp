@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826042"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307487"
 ---
 # <a name="guidelines"></a>ガイドライン  
 
@@ -35,7 +35,7 @@ Marketplace アカウントを作成するために使用される同じ Microso
 
 >[!IMPORTANT]
 >複数のユーザーに Microsoft Developer Center (デベロッパー センター) アカウントへのアクセスを承認するには、Microsoft では Azure Active Directory (Azure AD) を使用して、個々のユーザーにロールを割り当てることをお勧めしています。 各ユーザーは、個人の Azure AD 資格情報を使ってサインインすることで、アカウントにアクセスできます。 会社に登録されているドメインのメール アドレスを使用して Microsoft ID を作成します。Microsoft では、メールを個人に割り当てないことを提案しています。 例: `windowsapps@fabrikam.com`。  
->*   詳細については、「[問題: Azure AD フェデレーション ドメインでの Microsoft ID](#issue:-microsoft-id-in-an-azure-ad-federated-domain)」セクションを参照してください。  
+>*   詳細については、「[問題: Azure AD フェデレーション ドメインでの Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain)」セクションを参照してください。  
 
 *   Microsoft ID へのアクセスは、最小限の数の開発者に制限してください。 
 *   デベロッパー センター アカウントにアクセスする必要があるすべての従業員が含まれる会社のメール配布リスト (DL) を設定します。 DL メール アドレスをセキュリティ情報に追加します。 DL により、リストに登録されたすべての従業員が、要求に応じてセキュリティ コードを受信し、Microsoft ID のセキュリティ情報を管理できるようになります。 配布リストの設定が適していない場合は、求められたときに、個々の電子メール アカウントの所有者がセキュリティ コードにアクセスして共有できる状態になっている必要があります。  

@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbb14854f00fb133c3604a1dd529d42120371fd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826098"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309318"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
 1. ネットショップの要件:  
-    *   [AppSource](#storefront-requirements:-appSource)  
-    *   [Azure Marketplace](#storefront-requirements:-azure-marketplace)  
+    *   [AppSource](#storefront-requirements-appSource)  
+    *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. 登録リストの種類とオファーの種類に関する要件:  
     *   登録リストの種類とオファーの種類について詳しくは、「ソリューションの登録リストの種類を選定する」([docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md)) を参照してください。  
 
@@ -62,10 +62,10 @@ ms.locfileid: "34826098"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| コンサルティング サービス | AppSource | [要件: AppSource: リスト: コンサルティング サービス](#requirements:-appsource:-list:-consulting-services) |  
-| コンサルティング サービス | Azure Marketplace | [要件: Azure Marketplace: リスト: コンサルティング サービス](#requirements:-azure-marketplace:-list:-consulting-services) |  
+| コンサルティング サービス | AppSource | [要件: AppSource: リスト: コンサルティング サービス](#requirements-appsource-list-consulting-services) |  
+| コンサルティング サービス | Azure Marketplace | [要件: Azure Marketplace: リスト: コンサルティング サービス](#requirements-azure-marketplace-list-consulting-services) |  
 | 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | [要件: AppSource: リスト: 連絡する](#requirements:-azure-marketplace:-list:-contact-me) |  
+| 連絡する | Azure Marketplace | [要件: AppSource: リスト: 連絡する](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要件: AppSource: リスト: コンサルティング サービス  
 
@@ -89,12 +89,12 @@ ms.locfileid: "34826098"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements:-trial) |  
-| 無料/SaaS 試用版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| 対話型デモ | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements:-trial) |  
-| 対話型デモ | Azure Marketplace | [要件: Azure Marketplace: 試用版: 対話型デモ](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| 体験版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements:-trial) |  
-| 体験版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 体験版](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 無料/SaaS 試用版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| 対話型デモ | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 対話型デモ | Azure Marketplace | [要件: Azure Marketplace: 試用版: 対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
+| 体験版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 体験版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 体験版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要件: Azure Marketplace: 試用版  
 
@@ -131,11 +131,11 @@ ms.locfileid: "34826098"
 
 | プランの種類 | ネットショップ | 詳細 |   
 |:---        |:---        | :--- |  
-| Azure アプリ: マネージド アプリ | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  
-| Azure アプリ: ソリューション テンプレート | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: ソリューション テンプレート](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  
-| Containers | Azure Marketplace | [要件: Azure Marketplace: トランザクション: コンテナー](#requirements:-azure-marketplace:-transact:-container) |  
-| SaaS アプリ  | Azure Marketplace | [要件: Azure Marketplace: トランザクション: SaaS アプリ](#requirements:-azure-marketplace:-transact:-saas-app) |  
-| 仮想マシン | Azure Marketplace | [要件: Azure Marketplace: トランザクション: 仮想マシン](#requirements:-azure-marketplace:-transact:-virtual-machine) |  
+| Azure アプリ: マネージド アプリ | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure アプリ: ソリューション テンプレート | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [要件: Azure Marketplace: トランザクション: コンテナー](#requirements-azure-marketplace-transact-container) |  
+| SaaS アプリ  | Azure Marketplace | [要件: Azure Marketplace: トランザクション: SaaS アプリ](#requirements-azure-marketplace-transact-saas-app) |  
+| 仮想マシン | Azure Marketplace | [要件: Azure Marketplace: トランザクション: 仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 

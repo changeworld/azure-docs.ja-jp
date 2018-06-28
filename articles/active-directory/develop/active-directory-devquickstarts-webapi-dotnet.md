@@ -15,14 +15,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: aa527f66035ce8ea95ecdf405ef307c1202a92a6
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e2537ab677527555fab9801b3dc5143f749a8b57
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158290"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318760"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET Web API の概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019417"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031806"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -410,7 +410,7 @@ Allow screen capture
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **手順** | 暗号化されていないチャネルを介してプレーン テキスト パスワードで UsernameToken を使うと、攻撃者にパスワードが暴露され、SOAP メッセージを傍受できます。 UsernameToken を使うサービス プロバイダーは、プレーン テキストで送信されるパスワードを受け付ける場合があります。 暗号化されていないチャネル経由でプレーン テキスト パスワードを送信すると、資格情報が攻撃者に暴露されて SOAP メッセージを傍受できるようになります。 | 
 
 ### <a name="example"></a>例
@@ -429,7 +429,7 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
 | **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例

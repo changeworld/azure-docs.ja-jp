@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2017
 ms.author: kumud
-ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: a4093926ea2ea2bb0e477372a1ceb2dfbf22e8f0
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30264474"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330970"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Azure CLI 2.0 を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -47,7 +47,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ```azurecli-interactive
   az network vnet create \
-    --name myVnet
+    --name myVnet \
     --resource-group myResourceGroupILB \
     --location eastus \
     --subnet-name mySubnet
@@ -131,7 +131,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --source-address-prefix '*' \
     --source-port-range '*' \
     --destination-address-prefix '*' \
-    --destination-port-range 22 \
+    --destination-port-range 80 \
     --access allow \
     --priority 300
 ```
@@ -249,7 +249,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb show \
-    --name myLoadBalancer
+    --name myLoadBalancer \
     --resource-group myResourceGroupILB
 ``` 
 ![ロード バランサーをテストする](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)

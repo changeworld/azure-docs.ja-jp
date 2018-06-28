@@ -13,19 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: fc4e738e95799838c5761e8b1ee5973aefea7dc6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c6e25972b47edf67dac8557e1925bb44463f4d6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213841"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331031"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する
 多くのアプリケーションは、ユーザーのコンテキストでリソースにアクセスする必要があります。 Active Directory では、このユース ケースを可能にする、Kerberos の委任というメカニズムをサポートしています。 さらに、特定のリソースのみにユーザーのコンテキストでアクセスできるように、委任を制限できます。 Azure AD Domain Services の管理対象ドメインは、従来の Active Directory ドメインとは異なっており、より安全にロックダウンされています。
 
 この記事では、Azure AD Domain Services の管理対象ドメインで Kerberos の制約付き委任を構成する方法について説明します。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="kerberos-constrained-delegation-kcd"></a>Kerberos の制約付き委任 (KCD)
 Kerberos の委任は、あるアカウントが別のセキュリティ プリンシパル (ユーザーなど) に偽装してリソースにアクセスできるようにします。 たとえば、ユーザーのコンテキストでバックエンド Web API にアクセスする Web アプリケーションがあるとします。 この例では、この Web アプリケーション (サービス アカウントまたはコンピューター/マシン アカウントのコンテキストで実行中) がリソース (バックエンド Web API) にアクセスする際に、ユーザーに偽装します。 Kerberos の委任は、偽装する側のアカウントがユーザーのコンテキストでアクセスできるリソースを制限しないため、安全ではありません。

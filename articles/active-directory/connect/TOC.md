@@ -47,7 +47,6 @@
 ##### [現時点での制限事項](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [それはどのように機能しますか?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
 ##### [プレビュー エージェントのアップグレード](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
-##### [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019672"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031109"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 | 製品/サービス | 記事 |
@@ -306,7 +306,7 @@ ms.locfileid: "28019672"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーへのアクセスが許可されます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、メッセージ clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例
@@ -322,7 +322,7 @@ ms.locfileid: "28019672"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーがその機能にアクセスできます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、トランスポート clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例

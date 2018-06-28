@@ -10,23 +10,23 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 78dca327a470394d19e6befc6578abf2d499850c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247587"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936399"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 
-1. F5 キーを押して (またはターミナル ウィンドウで「`azds up`」と入力して)、サービスを実行します。 新たに選択した `scott` 空間で、サービスが自動的に実行されます。 
-1. `azds space list` をもう一度実行すると、サービスが独自の空間で実行されていることを確認できます。 まず、`mywebapi` のインスタンスが `scott` 空間で実行されていることがわかります (`default` で実行されているバージョンもまだ実行されていますが、リストされていません)。 次に、`webfrontend` のアクセス ポイント URL に、"scott.s." というプレフィックスが付いていることがわかります。 この URL は `scott` 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、`scott` 空間内のサービスへのルーティングが試行され、失敗した場合は、`default` 空間内のサービスにフォールバックされることを示します。
+1. F5 キーを押して (またはターミナル ウィンドウで「`azds up`」と入力して)、サービスを実行します。 新たに選択した `default/scott` 空間で、サービスが自動的に実行されます。 
+1. `azds list` をもう一度実行すると、サービスが独自の空間で実行されていることを確認できます。 まず、`mywebapi` のインスタンスが `default/scott` 空間で実行されていることがわかります (`default` で実行されているバージョンもまだ実行されていますが、リストされていません)。 次に、`webfrontend` のアクセス ポイント URL に、"scott.s." というプレフィックスが付いていることがわかります。 この URL は `default/scott` 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、`default/scott` 空間内のサービスへのルーティングが試行され、失敗した場合は、`default` 空間内のサービスにフォールバックされることを示します。
 
 ```
-Name         Space     Chart              Ports   Updated     Access Points
------------  --------  -----------------  ------  ----------  -------------
-mywebapi     scott     mywebapi-0.1.0     80/TCP  15s ago     http://localhost:61466
-webfrontend  default  webfrontend-0.1.0  80/TCP  5h ago      http://scott.s.webfrontend-contosodev.1234abcdef.eastus.aksapp.io
+Name         Space          Chart              Ports   Updated     Access Points
+-----------  --------       -----------------  ------  ----------  -------------
+mywebapi     default/scott  mywebapi-0.1.0     80/TCP  15s ago     http://localhost:61466
+webfrontend  default        webfrontend-0.1.0  80/TCP  5h ago      http://scott.s.webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
 ![](../media/common/space-routing.png)

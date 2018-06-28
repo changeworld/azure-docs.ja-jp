@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2255c8fd7cd873ae9b6511e1a7b9e2ac13f9fb66
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423240"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936770"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
-この記事では、Azure CLI 2.0 で SMB マウントを使用して、Linux VM で Azure File Storage サービスを利用する方法を説明します。 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 これらの手順は、[Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md) を使用して実行することもできます。 要件は次のとおりです。
+この記事では、Azure CLI 2.0 で SMB マウントを使用して、Linux VM で Azure File Storage サービスを利用する方法を説明します。 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 要件は次のとおりです。
 
 - [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 - [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md)

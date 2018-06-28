@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234843"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030157"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -76,20 +76,6 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) |  内部 Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
-
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>1803 より前のバージョンの Azure Stack 環境の場合
-
-|デプロイ フォルダー|必要な証明書のサブジェクト名とサブジェクトの別名 (SAN)|スコープ (リージョンごと)|サブドメインの名前空間|
-|-----|-----|-----|-----|
-|パブリック ポータル|portal.*&lt;region>.&lt;fqdn>*|ポータル|*&lt;region>.&lt;fqdn>*|
-|管理ポータル|adminportal.*&lt;region>.&lt;fqdn>*|ポータル|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager パブリック|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager 管理|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|次のサブジェクトの別名を持つ 1 つのマルチサブドメイン ワイルドカード証明書<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Storage|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(ワイルドカード SSL 証明書)|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(ワイルドカード SSL 証明書)|内部 Keyvault|adminvault.*&lt;region>.&lt;fqdn>*|
-|
-<sup>1</sup> ACS 証明書では、1 つの証明書に 3 つのワイルドカード SAN が必要です。 1 つの証明書での複数のワイルドカード SAN は、公的証明機関によってはサポートされない可能性があります。 
 
 Azure AD デプロイ モードを使用して Azure Stack をデプロイする場合は、前の表に一覧表示されている証明書を要求するだけで済みます。 ただし、AD FS デプロイ モードを使用して Azure Stack をデプロイする場合は、次の表で説明されている証明書も要求する必要があります。
 

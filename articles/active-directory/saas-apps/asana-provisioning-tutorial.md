@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 2abd10f90d2e6d86d7f82aa43016a31bfdbd324b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8c3224a392e7e130b62e36019a1d180c6826d0ed
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231425"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332213"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>チュートリアル: Asana を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "36231425"
 *   Admin アクセス許可がある Asana のユーザー アカウント 
 
 > [!NOTE] 
-> Azure AD プロビジョニング統合では、Asana で使用できる [Asana API](https://app.asana.com/api/1.0/scim/Users) が必要です。
+> Azure AD プロビジョニング統合では、Asana で使用できる [Asana API](https://asana.com/developers/api-reference/users) が必要です。
 
 ## <a name="assign-users-to-asana"></a>ユーザーを Asana に割り当てる
 
