@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67603c04cf7b5f45517d16620e5b79241aaae94d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7810027e4ab9df6742b4431d12daf9ba2b678bf6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057963"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061811"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイス Update 1.2 リリース ノート
 
@@ -54,7 +54,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
   * **ビジネス継続性**。5000/7000 シリーズ アプライアンスから 8000 シリーズ アプライアンスへの既存データの移行を可能にすることで実現します。
   * **8000 シリーズ アプライアンスの機能強化**。StorSimple Manager サービスを通じた複数のアプライアンスの効率的な一元管理、高性能のハードウェアと最新のファームウェア、仮想アプライアンス、データ モビリティ、将来的なロードマップの機能などがあります。
     
-    StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](http://www.microsoft.com/download/details.aspx?id=47322) を参照してください。 
+    StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) を参照してください。 
 * **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。 [Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページをご覧ください。
 * **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
 * **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に記載のとおり、これらの API は 2016 年 8 月 1 日で非推奨となります。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。

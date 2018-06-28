@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
-ms.openlocfilehash: 0ec6aa9d226231802cd753c7216e9988b85ae5bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b3b26869a84b8519ced19a4c93a6d39d6ed20f9b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617462"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050354"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -44,7 +41,7 @@ ms.locfileid: "34617462"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | `Filter` アクティビティの名前。 | String | [はい]
-型 | **filter** に設定する必要があります。 | String | [はい]
+type | **filter** に設定する必要があります。 | String | [はい]
 condition | 入力のフィルター処理に使用する条件。 | 式 | [はい]
 items | フィルターを適用する必要がある入力配列。 | 式 | [はい]
 
