@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dcfb43003e81bb51574b401c21202925b16305f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 458d01d61872d13cee735c7098cce5dcc905c31c
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614415"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960408"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>AD DS での Azure AD Connect Health の使用
 次のドキュメントは、Azure AD Connect Health を使用した Active Directory Domain Services の監視について記述しています。 AD DS のサポートされているバージョンは、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 です。
 
 Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「[AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。
 
-![Azure AD Connect Health for AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
+![Azure AD Connect Health for AD DS](./media/active-directory-aadconnect-health-adds/domainservicesnapshot.PNG)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>Azure AD Connect Health for AD DS のアラート
 Azure AD Connect Health for AD DS 内の [アラート] セクションには、ドメイン コントローラーに関してアクティブなアラートと解決済みのアラートが一覧表示されます。 アクティブなアラートまたは解決済みのアラートを選択すると、新しいブレードが開き、解決手順や関連文書へのリンクと共に詳細な情報が表示されます。 それぞれのアラート タイプには少なくとも 1 つのインスタンスが存在し、そのアラートに該当する各ドメイン コントローラーに対応しています。 アラート ブレードの下の方で、該当するドメイン コントローラーをダブルクリックすると、追加のブレードが開かれ、そのアラート インスタンスについての詳細が表示されます。

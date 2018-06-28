@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6933d9f9951925888c92e35f6b1e2962cc29b0ce
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 74051ae8ad4ca7065561607feb13a2b98094fffc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801781"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333184"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -47,7 +47,7 @@ Microsoft では、適切に構成された SAML 2.0 プロファイル ベー�
 
 SAML 2.0 ID プロバイダーの出力メッセージが、用意されているサンプル トレースのメッセージとできるだけ類似していることを確認することをお勧めします。 また、可能であれば、提供されている Azure AD メタデータの特定の属性値を使用してください。 出力メッセージに問題がなければ、後で説明する Microsoft 接続アナライザーでテストできます。
 
-Azure AD メタデータは、この URL [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) からダウンロードできます。
+Azure AD メタデータは、この URL [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) からダウンロードできます。
 Office 365 の中国固有のインスタンスを使用している中国国内のお客様は、次のフェデレーション エンドポイントを使用する必要があります: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
 
 ## <a name="saml-protocol-requirements"></a>SAML プロトコル要件

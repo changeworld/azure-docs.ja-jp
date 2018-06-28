@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292842"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335477"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (.NET)
 
@@ -67,7 +67,7 @@ dotnet --version
 
     デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
 
-1. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\simulated-device-2** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
+2. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
-    `connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** ファイルに保存します。
+    `s_connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
+3. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
+4. ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 その後、**iot-hub\Quickstarts\back-end-application** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **BackEndApplication.cs** ファイルを開きます。
+2. 適当なテキスト エディターで **BackEndApplication.cs** ファイルを開きます。
 
-    `connectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 変更を **BackEndApplication.cs** ファイルに保存します。
+    `s_connectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 変更を **BackEndApplication.cs** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
+3. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行し、バックエンド アプリケーションをビルドして実行します。
+4. ターミナル ウィンドウで次のコマンドを実行し、バックエンド アプリケーションをビルドして実行します。
 
     ```cmd/sh
     dotnet run

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: bb69c217c1038a66333e65629023357e5854d242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265045"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300997"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -107,7 +107,7 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 
 ![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
-**詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+**詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md)
 
 
 ## <a name="network-connectivity"></a>ネットワーク接続
@@ -145,4 +145,4 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
-* [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md)

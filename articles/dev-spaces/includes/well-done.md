@@ -10,18 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 5aee9a96270b4bcafb4ee696c0cbf6a424515cb1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: abb7b3bbdbf16760db8595261ea8e543b6ed05f2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825538"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939198"
 ---
 ## <a name="well-done"></a>お疲れさまでした。
 ファースト ステップ ガイドを修了しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
-> * 開発用に最適化された Kubernetes ベースの環境 (_開発空間_) を Azure に作成する。
+> * Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。
 > * VS Code とコマンド ラインを使用して、コンテナー内のコードを繰り返し開発する。
 > * 2 つのサービスを個別に開発し、Kubernetes の DNS サービス検索を使用して別のサービスを呼び出す。
 > * チーム環境でコードを生産的に開発してテストする。

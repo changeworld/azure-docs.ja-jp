@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 6df97a40be7bf1c437c5228006d114ace768f8ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b9ef150a86a754d4ed328184eb02c1937008b7b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157375"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028865"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 
@@ -50,7 +50,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
 | 管理者向けエクスペリエンス |フロー環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡 ([https://admin.flow.microsoft.com](https://admin.flow.microsoft.com)) |リソース グループの管理、接続、アクセス管理、ログ ([https://portal.azure.com](https://portal.azure.com)) |
-| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps の比較
 

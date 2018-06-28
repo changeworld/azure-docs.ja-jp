@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024731"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -49,7 +51,7 @@ Machine Learning API サービスを使用すると、Machine Learning Studio �
 
 **クラシック Web サービスの一覧はどこで確認できますか?新しい Azure Resource Manager ベースの Web サービスの一覧はどこで確認できますか?**
 
-クラシック デプロイメント モデルを使用して作成された Web サービスと新しい Azure Resource Manager デプロイメント モデルを使用して作成された Web サービスは、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。
+クラシック デプロイ モデルを使用して作成された Web サービスと新しい Azure Resource Manager デプロイ モデルを使用して作成された Web サービスは、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルに一覧表示されます。
 
 クラシック Web サービスは、[Machine Learning Studio](http://studio.azureml.net) の **[Web サービス]** タブにも一覧表示されます。
 
@@ -73,7 +75,7 @@ REST API を使用して Web サービスにアクセスするには、いくつ
 
 **Azure Machine Learning の主な更新内容を教えてください。**
 
-最新の更新内容については、「[Azure Machine Learning の新機能](whats-new.md)」をご覧ください。
+最新の更新内容については、「[Azure Machine Learning の新機能](../../active-directory/fundamentals/whats-new.md)」をご覧ください。
 
 ## <a name="machine-learning-studio-questions"></a>Machine Learning Studio に関する質問
 ### <a name="import-and-export-data-for-machine-learning"></a>Machine Learning 用データのインポートとエクスポート
@@ -472,7 +474,7 @@ BES ワークロードの場合も、同じ方法で課金されます。 ただ
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning の Free および Standard レベル
 **Azure Machine Learning の Free レベルには何が含まれますか?**
 
-Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
+Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://account.microsoft.com/account)1 つにつき 1 つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
 
 Free レベルのワークスペースには次の制限事項があります。
 
