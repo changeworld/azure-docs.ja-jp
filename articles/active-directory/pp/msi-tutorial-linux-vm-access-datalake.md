@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 358827722e8d77cd91410fae842ad2ba99967d98
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153746"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028899"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Data Lake Store へのアクセス
 
@@ -190,7 +190,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 - MSI の概要については、[管理対象サービス ID の概要](msi-overview.md)に関する記事をご覧ください。
 - Data Lake Store の管理操作には、Azure Resource Manager を使用します。  VM の MSI を使用して、Resource Manager に認証する方法の詳細については、[Linux VM での管理対象サービス ID を使用した Resource Manager へのアクセス](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md)に関するページをご覧ください。
 - 詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」をご覧ください。
-- 詳細については、「[REST API を使用した Azure Data Lake Store に対するファイルシステム操作](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md)」または「[WebHDFS FileSystem APIs (WebHDFS ファイルシステム API)](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md)」をご覧ください。
+- 詳細については、「[REST API を使用した Azure Data Lake Store に対するファイルシステム操作](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md)」または「[WebHDFS FileSystem APIs (WebHDFS ファイルシステム API)](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis)」をご覧ください。
 - 詳細については、「[Azure Data Lake Store のアクセス制御](~/articles/data-lake-store/data-lake-store-access-control.md)」をご覧ください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。

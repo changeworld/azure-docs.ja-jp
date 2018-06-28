@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 700569684888428032997dd81c10023c6fd5a7d8
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823307"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "35761999"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>リモート デスクトップ接続から Pig ジョブを実行する
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -78,6 +78,7 @@ ms.locfileid: "34823307"
     <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>数が多い順にログ レベルを並べ替えて、RESULT に格納します。</td>
     </tr>
 </table>
+
 6. 変換の結果は `STORE` ステートメントで保存することもできます。 たとえば、次のコマンドでは `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
         STORE RESULT into 'wasb:///example/data/pigout'
@@ -86,6 +87,7 @@ ms.locfileid: "34823307"
    > データは、 **part-nnnnn**という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラー メッセージが表示します。
    >
    >
+   
 7. エラーを解決するには、次のステートメントを入力します。
 
         QUIT;

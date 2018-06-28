@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 688f8da809a40f333aeb7b4ef959deb69ff94121
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 02ce774f30cd03b7520f482196629bf4b7ec9ae5
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808381"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318570"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -73,7 +73,7 @@ ASE は、パブリック IP アドレスでインターネットに接続する
 
 [ネットワーク セキュリティ グループ][NSGs]を使用して、受信ネットワーク通信を、ASE が存在するサブネットに制限できます。 NSG を使用することで、WAF やネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
 
-また、アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。 オンプレミス ネットワークへの VPN 接続が備わった仮想ネットワークに ASE をデプロイした場合、その ASE 内のアプリはオンプレミス リソースにアクセスすることができます。 この機能は、VPN が[サイト対サイト](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/)か [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN かに関係なく当てはまります。
+また、アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。 オンプレミス ネットワークへの VPN 接続が備わった仮想ネットワークに ASE をデプロイした場合、その ASE 内のアプリはオンプレミス リソースにアクセスすることができます。 この機能は、VPN が[サイト対サイト](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site)か [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN かに関係なく当てはまります。
 
 ASE と仮想ネットワークおよびオンプレミス ネットワークとの連携方法の詳細については、[App Service Environment のネットワークの考慮事項][ASENetwork]に関するページを参照してください。
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 7b7f8e1805850861b30eb2a54991e5ab7fa96335
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808181"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331559"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (iOS)
 
@@ -135,9 +135,7 @@ iothub-explorer コマンドを実行したときにエラーが発生した場�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-他の記事に従って IoT Hub のテストを続行する場合は、リソース グループと IoT ハブを残して、後でそれらを再利用してください。
-
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含むリソース グループを選択し、**[削除]** をクリックします。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

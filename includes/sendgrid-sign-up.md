@@ -1,7 +1,7 @@
 Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
-1. [Azure Portal][Azure portal] にログインします。
+1. [Azure Portal][Azure portal] にサインインします。
 2. 左側のメニューで、**[リソースの作成]** をクリックします。
 
     ![command-bar-new][command-bar-new]

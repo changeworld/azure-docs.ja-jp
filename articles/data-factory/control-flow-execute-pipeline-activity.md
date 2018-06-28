@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 3a858e3e901f300ce5f0dbc44437106905078375
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2aa25004fb9c2e914cd8c669095953e174686197
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617717"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051765"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
 パイプラインの実行アクティビティを使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -66,7 +63,7 @@ ms.locfileid: "34617717"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | パイプラインの実行アクティビティの名前。 | String | [はい]
-型 | **ExecutePipeline** に設定する必要があります。 | String | [はい]
+type | **ExecutePipeline** に設定する必要があります。 | String | [はい]
 pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | [はい]
 parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | いいえ 
 waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 | 既定値は false です。 | ブール | いいえ 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 3f1d6b00652270d143f7df48b0f690c5f33433e9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ce70641d9ccb3c86d1360a0aaf21a4817e2b3c5d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866065"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317863"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 組織が Azure Active Directory を使用している場合には、Azure Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って、Azure AD がアクセスするリソースをセキュリティで保護できます。 以下では、Azure Multi-factor Authentication または Active Directory フェデレーション サービス (AD FS) を使って Azure Active Directory リソースのセキュリティを確保する方法を紹介します。
@@ -80,7 +80,7 @@ ms.locfileid: "33866065"
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
 これで要求が準備できたので、信頼できる IP を構成できます。
 
-1. [Azure Portal](https://portal.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** > **[条件付きアクセス]** > **[名前付きの場所]** を選択します。
 3. **[条件付きアクセス - 名前付きの場所]** ブレードから **[MFA の信頼できる IP の構成]** を選択します。
 

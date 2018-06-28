@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 3f49e4ac0073c81a6e55e6653acc7c6531989379
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ea7aa6c9dbde9a161567a815870b05da06cc82c8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212242"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331713"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services によって管理されるドメインのグループ ポリシーの管理
 Azure Active Directory Domain Services には、"AADDC Users" コンテナーと "AADDC Computers" コンテナー用の組み込みのグループ ポリシー オブジェクト (GPO) が含まれています。 これらの組み込みの GPO を、管理対象ドメインのグループ ポリシーを構成するようにカスタマイズできます。 さらに、"AAD DC Administrators" グループのメンバーは、管理対象ドメイン内に、独自のカスタム OU を作成できます。 カスタム GPO を作成してカスタム OU にリンクすることもできます。 "AAD DC Administrators" グループに属するユーザーには、管理対象ドメインのグループ ポリシー管理者権限が付与されます。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 この記事に記載されているタスクを実行するには、次が必要です。

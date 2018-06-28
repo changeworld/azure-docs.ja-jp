@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 3d85208096b1300904e1cc1f59c45dd4dd5713a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684423"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313882"
 ---
 ## <a name="deleting-personal-information"></a>個人情報の削除
 
@@ -25,9 +25,9 @@ ms.locfileid: "34684423"
 - 電話番号
 - 電子メール
 - 番地
-- 市区町村
+- City
 - 郵便番号
-- 都道府県
+- State
 - 国/地方/地域
 - ドライブ ID
 - 運送業者のアカウント番号
@@ -40,7 +40,7 @@ ms.locfileid: "34684423"
 - ジョブと共に保存されているデータは、ジョブが削除されると削除されます。 ユーザーは手動でジョブを削除できます。また、完了したジョブは 90 日後に自動的に削除されます。 REST API または Azure Portal を使用して手動でジョブを削除できます。 Azure Portal でジョブを削除するには、インポート/エクスポート ジョブに移動し、コマンド バーから *[削除]* をクリックします。 REST API を介してインポート/エクスポート ジョブを削除する方法については、[インポート/エクスポート ジョブの削除](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)に関する記事を参照してください。
 
 - ポータル設定に保存されている連絡先情報は、ポータル設定を削除して削除することができます。 ポータル設定を削除するには、次の手順を実行します。
-  - [Azure Portal](https://portal.azure.com) にログインします。
+  - [Azure Portal](https://portal.azure.com) にサインインします。
   - *[設定]* アイコン ![Azure の [設定] アイコン](media/storage-import-export-delete-personal-info/azure-settings-icon.png) をクリックします
   - *[すべての設定をエクスポートする]* をクリックします (現在の設定が `.json` ファイルに保存されます)。
   - *[すべての設定とプライベート ダッシュボードを削除]* をクリックして、保存した連絡先情報を含むすべての設定を削除します。

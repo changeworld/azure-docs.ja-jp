@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0794ebd953160c8569502db5d58c6d2b9ad892a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895278"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061498"
 ---
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
@@ -344,7 +344,7 @@ Azure Virtual Networks の機能を次に示します。
 
 - **トラフィック フィルタリング**: VM ロール インスタンスと Cloud Services ロール インスタンスのネットワーク トラフィックは、着信、送信方向ともに、送信元の IP アドレスとポート、送信先の IP アドレスとポート、およびプロトコルでフィルター処理できます。
 
-- **ルーティング**: 必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングを上書きできます。
+- **ルーティング**: 必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングをオーバーライドできます。
 
 ## <a name="network-access-controls"></a>ネットワーク アクセス制御
 
@@ -413,7 +413,7 @@ Azure Security Center は、次の Azure リソースを監視します。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティと[ガバナンスのプログラム](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)は、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティと[ガバナンスのプログラム](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)は、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://microsoft.com/en-us/trustcenter/compliance)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 Log Analytics 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 

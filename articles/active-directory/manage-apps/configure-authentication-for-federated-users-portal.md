@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: it-pro
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 86b7d8aa9d1c0d770f7b145377f49c5dc2c694a2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f2ab0a4458c83aa9e5c9cee4875e41c24f615018
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302574"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301201"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -185,7 +185,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFe
 以下のポリシーは、テナント内にフェデレーション ドメインが複数あるときに、AD FS サインイン画面への移動を自動高速化します。 アプリケーションのユーザーを認証するフェデレーション ドメインが複数ある場合は、自動高速化するドメインを指定する必要があります。
 
 ``` powershell
-New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, "PreferredDomain":"federated.example.edu"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 特定のアプリケーション用の Azure Active Directory に対し、ユーザー名とパスワードを使用してフェデレーション ユーザーを直接認証できるようにするポリシーを作成するには、以下のコマンドを実行します。

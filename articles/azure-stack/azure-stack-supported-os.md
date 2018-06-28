@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074832"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060449"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
@@ -30,7 +30,7 @@ ms.locfileid: "34074832"
 
 Azure Stack は、次の表に示す Windows ゲスト オペレーティング システムをサポートしています。
 
-| オペレーティング システム | [説明] | Marketplace で利用可能 |
+| オペレーティング システム | 説明 | Marketplace で利用可能 |
 | --- | --- | --- | --- | --- | --- |
 | Windows Server、バージョン 1709 | 64 ビット | コンテナー付き Core |
 | Windows Server 2016 | 64 ビット |  Datacenter、Datacenter Core、Datacenter with Containers |
@@ -40,7 +40,7 @@ Azure Stack は、次の表に示す Windows ゲスト オペレーティング 
 | Windows Server 2008 SP2 | 64 ビット |  Bring your own image |
 | Windows 10 *(注 1 をご覧ください)* | 64 ビット、Pro、および Enterprise | Bring your own image |
 
-***注 1:*** *Azure Stack で Windows 10 クライアント オペレーティング システムをデプロイするには、[Windows per User Licensing](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。*
+***注 1:*** *Azure Stack で Windows 10 クライアント オペレーティング システムをデプロイするには、[Windows per User Licensing](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。*
 
 Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセンスで利用できます。 1 つの Azure Stack インスタンスで両方を使うことはサポートされていません。 デプロイ時に、Azure Stack により、適切なバージョンのゲスト エージェントがイメージに挿入されます。
 
@@ -55,7 +55,7 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 >
 > 現在、[cloud-init](https://cloud-init.io/) は Azure Stack ではサポートされていません。
 
-| ディストリビューション | [説明] | 発行元 | マーケットプレース |
+| ディストリビューション | 説明 | 発行元 | マーケットプレース |
 | --- | --- | --- | --- | --- | --- |
 | CentOS-based 6.9 | 64 ビット | Rogue Wave | [はい] |
 | CentOS-based 7.4 | 64 ビット | Rogue Wave | [はい] |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895638"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061543"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -27,7 +27,7 @@ ms.locfileid: "33895638"
 
 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。 この記事「Azure Security の概要」は、Microsoft Azure に実装されている多数のネットワーク セキュリティ コントロールについて、お客様側の観点から理解を深めるために作成されました。この記事では、Microsoft Azure で使用できるネットワーク セキュリティ コントロールについて総合的に説明します。
 
-この記事は、Azure にデプロイするソリューションのセキュリティを強化するために構成できる幅広いネットワーク コントロールに関する情報を提供します。 Azure プラットフォーム自体のネットワーク ファブリックのセキュリティを確保するマイクロソフトの対策について詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/azure-security) の Azure セキュリティのセクションをご覧ください。
+この記事は、Azure にデプロイするソリューションのセキュリティを強化するために構成できる幅広いネットワーク コントロールに関する情報を提供します。 Azure プラットフォーム自体のネットワーク ファブリックのセキュリティを確保するマイクロソフトの対策について詳しくは、[Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure) の Azure セキュリティのセクションをご覧ください。
 
 ## <a name="azure-platform"></a>Azure プラットフォーム
 
@@ -179,9 +179,9 @@ VM ロール インスタンスと Cloud Services ロール インスタンス�
 
 **ルーティング**
 
-必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングを上書きできます。
+必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートを使用することで、Azure の既定のルーティングをオーバーライドできます。
 
-Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
+Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートをオーバーライドできます。
 
 - **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
 

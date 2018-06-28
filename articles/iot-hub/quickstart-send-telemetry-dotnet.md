@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 501a8f2dad0537f0288dfd6a6d7bedcac054ab86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293171"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332288"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (C#) でハブから利用統計情報を読み取る
 
@@ -88,7 +88,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 2. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
-    `connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** ファイルに保存します。
+    `s_connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** ファイルに保存します。
 
 3. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
 
@@ -114,11 +114,11 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    | 変数 | 値 |
+    | 可変 | 値 |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
-    | `eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
+    | `s_eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
+    | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
+    | `s_iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
 
 3. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
 

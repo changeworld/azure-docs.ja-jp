@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 71b12b848b1be309823bac46a219c0bb25e26092
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin
+ms.openlocfilehash: f591898dbe40d2756d5797636ca529c359959f92
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156519"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317077"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Azure Active Directory の認証プロトコル
 Azure Active Directory (Azure AD) では、最も広く使用されている認証および承認のプロトコルを複数サポートしています。 このセクションの各トピックでは、Azure AD でサポートされているプロトコルとその実装について説明します。 これらのトピックには、サポートされている要求の種類の確認、フェデレーション メタデータの使用の概要、OAuth 2.0  および SAML 2.0 プロトコルの詳細なリファレンス ドキュメント、トラブルシューティング セクションが含まれます。

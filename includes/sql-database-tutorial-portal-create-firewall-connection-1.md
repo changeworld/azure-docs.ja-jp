@@ -1,6 +1,6 @@
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure Portal](https://portal.azure.com/) にログインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
@@ -16,7 +16,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -25,7 +25,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | Setting       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -47,7 +47,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > [!IMPORTANT]
    > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
    >
-   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: カナダ中部、カナダ東部、フランス中部、ドイツ中部、東日本、韓国中部、米国中南部、東南アジア、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](../articles/sql-database/sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: カナダ中部、カナダ東部、フランス中部、ドイツ中部、東日本、韓国中部、米国中南部、東南アジア、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](../articles/sql-database/sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    > 
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
@@ -94,7 +94,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
 

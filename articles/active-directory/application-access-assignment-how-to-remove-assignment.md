@@ -3,22 +3,23 @@ title: アプリケーションへのユーザー アクセスの削除方法 | 
 description: アプリケーションへのユーザー アクセスの削除方法について理解します。
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 3731049d2bc42c7fac492f7609f54b5d4a1443b6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.openlocfilehash: e227f46db05c108c27322e8dd76177cf9849c937
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292322"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330334"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 
