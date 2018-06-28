@@ -88,7 +88,7 @@ Slack で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Slack で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Slack のテスト ユーザーの作成](#creating-a-slack-test-user)** - Slack で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -112,7 +112,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/slack-tutorial/tutorial_slack_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.slack.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.slack.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://slack.com`
 
@@ -135,11 +135,11 @@ Slack で Azure AD のシングル サインオンを構成してテストする
     | User.Email | User.mail |  
     | User.Username | user.userprincipalname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性]** をクリックして **[属性の編集]** ダイアログ ボックスを開き、次の手順を実行します。
+    a. **[属性]** をクリックして **[属性の編集]** ダイアログ ボックスを開き、次の手順を実行します。
 
     ![[Configure Single Sign-On]](./media/slack-tutorial/tutorial_slack_attribute1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    a. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     b. **[値]** 一覧から、その行に対して表示される属性値を選択します。
 
@@ -173,7 +173,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_003.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[SAML 2.0 エンドポイント (HTTP)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[SAML 2.0 エンドポイント (HTTP)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b.  **[ID プロバイダーの発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -206,7 +206,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     ![Azure AD のテスト ユーザーの作成](./media/slack-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
