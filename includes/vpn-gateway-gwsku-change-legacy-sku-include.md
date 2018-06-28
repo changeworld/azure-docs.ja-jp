@@ -9,12 +9,13 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2c1a4a1931bc2e38b0bee5f90518b01fdf4767a1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "30196832"
 ---
-Resource Manager デプロイメント モデルを使用している場合は、新しいゲートウェイ SKU に変更することができます。 従来のゲートウェイ SKU から新しい SKU に変更するときに、既存の VPN ゲートウェイを削除し、新しい VPN ゲートウェイを作成します。
+Resource Manager デプロイ モデルを使用している場合は、新しいゲートウェイ SKU に変更することができます。 従来のゲートウェイ SKU から新しい SKU に変更するときに、既存の VPN ゲートウェイを削除し、新しい VPN ゲートウェイを作成します。
 
 ワークフロー:
 
@@ -28,7 +29,7 @@ Resource Manager デプロイメント モデルを使用している場合は�
 
 考慮事項:
 
-* 新しい SKU に移行するには、ご使用の VPN ゲートウェイが Resource Manager デプロイメント モデルでなければなりません。
+* 新しい SKU に移行するには、ご使用の VPN ゲートウェイが Resource Manager デプロイ モデルでなければなりません。
 * クラシック VPN ゲートウェイを使用している場合は、引き続きそのゲートウェイ用の古いレガシ SKU を使用する必要がありますが、レガシ SKU の間でサイズ変更することはできます。 新しい SKU に変更することはできません。
 * レガシ SKU から新しい SKU に変更した場合は、接続のダウンタイムが発生します。
 * 新しいゲートウェイ SKU に変更すると、使用している VPN ゲートウェイのパブリック IP アドレスが変わります。 これは、以前に使用したのと同じパブリック IP アドレス オブジェクトを指定した場合でも発生します。

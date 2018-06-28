@@ -9,13 +9,14 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f135665b6fa7eb640526be513d2757c8e17ab8df
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "30196833"
 ---
 > [!NOTE]
-> 新しい VPN ゲートウェイ SKU (VpnGw1、VpnGw2、VpnGw3) のサポートは、Resource Manager デプロイメント モデル限定です。 クラシック仮想ネットワークには、引き続き以前の (従来の) SKU をご利用ください。
+> 新しい VPN ゲートウェイ SKU (VpnGw1、VpnGw2、VpnGw3) のサポートは、Resource Manager デプロイ モデル限定です。 クラシック仮想ネットワークには、引き続き以前の (従来の) SKU をご利用ください。
 >  * 従来のゲートウェイ SKU (Basic、Standard、HighPerformance) の使用については、「[仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)」を参照してください。
 >  * ExpressRoute ゲートウェイ SKU については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../articles/expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください。
 >
