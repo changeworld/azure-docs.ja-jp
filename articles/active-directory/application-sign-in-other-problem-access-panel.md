@@ -3,23 +3,24 @@ title: アクセス パネルからアプリケーションへのサインイン
 description: myapps.microsoft.com の Microsoft Azure AD アクセス パネルからアプリケーションへのアクセスに関する問題をトラブルシューティングする方法
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
+ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 5765d64fccba69edd0ebe91a6c34694763e6c539
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 28076dc0234b91d80f8aac44a96b00001b96f2a0
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070281"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331873"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>アクセス パネルからアプリケーションへのサインインに関する問題
 
@@ -67,7 +68,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Internet Explorer 8、9、10、11 - Windows 7 以降
 
--   Microsoft Edge - Windows 10 Anniversary Edition 以降
+-   Edge - Windows 10 Anniversary Edition 以降
 
 -   Chrome - Windows 7 以降、MacOS X 以降
 
@@ -91,7 +92,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 7.  アクセス パネルにサインインし、パスワード SSO アプリケーションを**起動**できるかどうかを確認します。
 
-以下のダイレクト リンクから、Chrome および Microsoft Edge 対応の拡張機能をダウンロードすることもできます。
+以下のダイレクト リンクから、Chrome および Edge 対応の拡張機能をダウンロードすることもできます。
 
 -   [Chrome アクセス パネル拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 

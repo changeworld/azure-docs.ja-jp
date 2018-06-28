@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 5e9ab73ddc16517e17894cddd9bc102f3941f00c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
+ms.lasthandoff: 06/27/2018
 ms.locfileid: "35778801"
 ---
 # <a name="show-directions-from-a-to-b"></a>A から B までのルートを表示する 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ccd0048eb2f1ab32e9fbf403b65f68b07ada480
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227379"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
@@ -116,7 +116,7 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
      **[サインオン URL]** ボックスに、ユーザーが ZScaler ZSCloud アプリケーションへのサインオンに使用する URL を入力します。
     
     > [!NOTE] 
-    > この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[Zscaler ZSCloud クライアント サポート チーム](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint)に問い合わせてください。 
+    > この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[Zscaler ZSCloud クライアント サポート チーム](https://help.zscaler.com/zia)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 

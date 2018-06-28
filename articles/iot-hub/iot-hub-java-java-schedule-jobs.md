@@ -1,23 +1,20 @@
 ---
 title: Azure IoT Hub を使用してジョブのスケジュールを設定する (Java) | Microsoft Docs
 description: 複数のデバイスでダイレクト メソッドを呼び出して、必要なプロパティを設定するように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Java を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ジョブを実行するサービス アプリを実装します。
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: b8b0742054b0348ded39b6357d00f6eac3449f99
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cb25ae0e90189f0c808f561b20e45f08b49df0d6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34633759"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 
@@ -66,7 +63,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使って、デバイスを IoT Hub に追加することもできます。
 
-## <a name="create-the-service-app"></a>サービス アプリを作成する
+## <a name="create-the-service-app"></a>デバイス アプリを作成する
 
 このセクションでは、ジョブを使用する Java コンソール アプリを作成して、次の操作を行います。
 

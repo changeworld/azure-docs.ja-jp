@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
-ms.openlocfilehash: 9f73f31c7afd7ca13107653d097e1ac11ef94f0d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol, sureshja
+ms.openlocfilehash: 7448a6c37df2c0bbffbebf23d211e3ace8d12edc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157077"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317397"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Azure Active Directory アプリケーション マニフェスト
 Azure AD と統合するアプリは、Azure AD テナントに登録する必要があります。 このアプリは、[Azure Portal](https://portal.azure.com) で (Azure AD ブレードの下の) アプリ マニフェストを使用して構成できます。
@@ -31,7 +31,7 @@ Azure AD と統合するアプリは、Azure AD テナントに登録する必�
 
 >[!div class="mx-tdBreakAll"]
 >[!div class="mx-tdCol2BreakAll"]
-|キー  |値の型 |値の例  |[説明]  |
+|キー  |値の型 |値の例  |説明  |
 |---------|---------|---------|---------|
 |appID     |  識別子の文字列       |""|  Azure AD によってアプリに割り当てられたアプリケーションの一意識別子。|
 |appRoles     |    配列の型     |<code>[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description":"Read-only access to device information",<br>&emsp;"displayName":"Read Only",<br>&emsp;"id":guid,<br>&emsp;"isEnabled":true,<br>&emsp;"value":"ReadOnly"<br>}]</code>|アプリケーションが宣言する可能性のあるロールのコレクション。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。|

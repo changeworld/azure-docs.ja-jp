@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: d7328ba8403f2415705d049d1fc7947b52aeb5c1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156393"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319561"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 Azure Active Directory と統合するアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすか判断する必要があります。 Azure Active Directory の元のエンドポイントは引き続き完全にサポートされ、いくつかの点においては v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
@@ -76,13 +76,13 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 
 `https://new.login.contoso.com`
 
-この場合、login.contoso.com の DNS サブドメインを参照しています。リダイレクト URI として login-east.contoso.com と login-west.contoso.com を持つアプリが必要な場合は、これらのリダイレクト URI を以下の順番で追加する必要があります。
+この場合、login.contoso.com の DNS サブドメインを参照しています。 リダイレクト URI として login-east.contoso.com と login-west.contoso.com を持つアプリが必要な場合は、これらのリダイレクト URI を以下の順番で追加する必要があります。
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-後の 2 つのリダイレクト URI を追加できるのは、それらが 1 つ目の contoso.com というリダイレクト URI のサブドメインであるためです。この制限は、今後のリリースで解消される予定です。
+後の 2 つのリダイレクト URI を追加できるのは、それらが 1 つ目の contoso.com というリダイレクト URI のサブドメインであるためです。 この制限は、今後のリリースで解消される予定です。
 
 また、特定のアプリケーションが持つことのできる返信 URL は 20 個だけであることに注意してください。
 

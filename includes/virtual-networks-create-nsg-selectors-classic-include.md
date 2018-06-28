@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 454156e934ef57776587c1fbaaac719eb85e0804
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 987ac064432dc823dad3b8df9d3b59e71b4c2ee9
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805220"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313498"
 ---
 > [!div class="op_single_selector"]
-> * [ポータル](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+> * [ポータル](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md)
 > * [PowerShell (クラシック)](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)

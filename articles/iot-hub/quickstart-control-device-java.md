@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808208"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330545"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Java)
 
@@ -75,7 +75,7 @@ mvn --version
 
     デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
 
-1. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -99,17 +99,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\simulated-device-2** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
+2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
 
     `connString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.java** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
+3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
+4. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
@@ -125,17 +125,17 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 その後、**iot-hub\Quickstarts\back-end-application** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** ファイルを開きます。
+2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** ファイルを開きます。
 
     `iotHubConnectionString` 変数の値を、前にメモしたサービス接続文字列に置き換えます。 変更を **BackEndApplication.java** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
+3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
+4. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -151,9 +151,7 @@ az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルに進む場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
-
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含むリソース グループを選択し、**[削除]** をクリックします。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 
