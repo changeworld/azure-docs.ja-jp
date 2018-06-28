@@ -67,6 +67,8 @@
   items:
     - name: サポートされている言語
       href: supported-languages.md
+    - name: リージョン
+      href: regions.md
     - name: REST API
       href: rest-apis.md
     - name: Speech SDK API

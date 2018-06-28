@@ -11,10 +11,10 @@ ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/27/2018
 ms.locfileid: "34709310"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス

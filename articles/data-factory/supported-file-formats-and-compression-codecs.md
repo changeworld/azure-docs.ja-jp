@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: c96d8b273a0e74ced5b121d19e1c3e5343a754b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621821"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052292"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -27,9 +27,6 @@ ms.locfileid: "34621821"
 * [Avro 形式](#avro-format)
 * [ORC 形式](#orc-format)
 * [Parquet 形式](#parquet-format)
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 でサポートされているファイルと圧縮の形式](v1//data-factory-supported-file-and-compression-formats.md)に関する記事をご覧ください。
 
 > [!TIP]
 > コピー アクティビティがソース データをシンクにマッピングする方法を「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」で説明します。ここには、メタデータがファイル形式の設定に基づいて決定される仕組みと、[データセット `structure`](concepts-datasets-linked-services.md#dataset-structure) セクションを指定するときのヒントも含まれています。

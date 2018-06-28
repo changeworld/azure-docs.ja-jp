@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: db7f1f85601cfcf4531bb11176a21126625ce7f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c5819d39bf3ab7c0f4af32171aadea56e4f6a241
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31422013"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063529"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
 この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。
@@ -67,14 +67,14 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 * **Azure PowerShell を実行できるワークステーション**。
 
     > [!IMPORTANT]
-    > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**廃止**される予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**非推奨**となる予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
 * **HDInsight クラスター**。 HDInsight クラスターの作成については、[HDInsight クラスターの作成][hdinsight-provision]または [HDInsight の概要][hdinsight-get-started]に関するページを参照してください。 このチュートリアルを読み進めるには、次のデータが必要です。
 
     <table border = "1">
-    <tr><th>クラスター プロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>[説明]</th></tr>
+    <tr><th>クラスター プロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
     <tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>このチュートリアルを実行する HDInsight クラスター。</td></tr>
     <tr><td>HDInsight クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>HDInsight クラスターのユーザー名。 </td></tr>
     <tr><td>HDInsight クラスター ユーザー パスワード </td><td>$clusterPassword</td><td></td><td>HDInsight クラスター ユーザーのパスワード。</td></tr>
@@ -85,7 +85,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 * **Azure SQL データベース**。 コンピューターから SQL Database サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL Database を作成して、ファイアウォールを構成する手順については、[Azure SQL Database の概要][sqldatabase-get-started]に関する記事を参照してください。 この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
 
     <table border = "1">
-    <tr><th>SQL データベースのプロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>[説明]</th></tr>
+    <tr><th>SQL データベースのプロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
     <tr><td>SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先となる SQL データベース サーバー。 </td></tr>
     <tr><td>SQL データベース ログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>SQL データベースのログイン名。</td></tr>
     <tr><td>SQL データベース ログイン パスワード</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL データベースのログイン パスワード。</td></tr>
@@ -196,7 +196,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     ワークフローの変数
 
     <table border = "1">
-    <tr><th>ワークフローの変数</th><th>[説明]</th></tr>
+    <tr><th>ワークフローの変数</th><th>説明</th></tr>
     <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight クラスター バージョン 3.0 および 2.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
     <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムの wasb:// アドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
     <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
@@ -205,7 +205,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     Hive アクションの変数
 
     <table border = "1">
-    <tr><th>Hive アクションの変数</th><th>[説明]</th></tr>
+    <tr><th>Hive アクションの変数</th><th>説明</th></tr>
     <tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリ。</td></tr>
     <tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダー。</td></tr>
     <tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前。</td></tr>
@@ -214,7 +214,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     Sqoop アクションの変数
 
     <table border = "1">
-    <tr><th>Sqoop アクションの変数</th><th>[説明]</th></tr>
+    <tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
     <tr><td>${sqlDatabaseConnectionString}</td><td>SQL データベース接続文字列。</td></tr>
     <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブル。</td></tr>
     <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
@@ -240,7 +240,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
     定義ファイルでは 5 つの変数が使用されています。
 
-   | 変数 | [説明] |
+   | 変数 | 説明 |
    | --- | --- |
    | ${coordFrequency} |ジョブの一時停止時間。 頻度は、常に分単位で表現します。 |
    | ${coordStart} |ジョブの開始時刻。 |
@@ -443,7 +443,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
     変数の詳細については、このチュートリアルの「 [前提条件](#prerequisites) 」セクションを参照してください。
 
-    $coordstart と $coordend は、ワークフローの開始時刻と終了時刻です。 UTC 時刻と GMT 時刻については、bing.com で "utc 時刻" を検索してください。$coordFrequency は、ワークフローを実行する頻度であり、単位は分です。
+    $coordstart と $coordend は、ワークフローの開始時刻と終了時刻です。 UTC 時刻と GMT 時刻については、bing.com で "utc 時刻" を検索してください。 $coordFrequency は、ワークフローを実行する頻度であり、単位は分です。
 3. スクリプトの末尾に次のコードを追加します。 この部分は、Oozie ペイロードを定義します。
 
     ```powershell
@@ -752,7 +752,7 @@ $conn.close()
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

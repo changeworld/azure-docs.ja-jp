@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7422c84851c766b608bc5951ec0472c8976e7ec0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 19657030c69d9d62fbbe0a8058e50238b2afa67f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624269"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750118"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Azure Storage BLOB から Data Lake Store へのデータのコピー
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ AdlCopy ツールは 2 つの異なるモードで使用できます。
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy ツールの構文
 AdlCopy ツールを操作するには、次の構文を使用します。
 
-    AdlCopy /Source <Blob or Data Lake Store source> /Dest <Data Lake Store destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Unit <Number of Analytics units> /Pattern
+    AdlCopy /Source <Blob or Data Lake Store source> /Dest <Data Lake Store destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
 
 構文のパラメーターを次に示します。
 
@@ -137,7 +137,7 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 
 次のコマンドを実行して、 Data Lake Analytics アカウントを使用して、Azure Storage Blob から Data Lake Store アカウントにコピーします。
 
-    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Unit <number_of_data_lake_analytics_units_to_be_used>
+    AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
 
 例: 
 

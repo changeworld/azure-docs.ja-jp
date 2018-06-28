@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7d31a434d4ead6dd8f8a13a08d368389904b5b4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364235"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061301"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 Azure Virtual Machines を使うと、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 このサービスは、Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、および Azure BizTalk Services をサポートします。 したがって、ほぼすべてのオペレーティング システム上に任意のワークロードと言語を展開できます。
@@ -142,5 +142,5 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 
 詳細情報:
 
-* [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+* [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [信頼されるクラウド: Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293997"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333914"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Azure Virtual Network サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティで保護する
 
@@ -80,7 +80,7 @@ Azure Virtual Network サービス エンドポイントが Azure Cosmos DB デ�
 
 Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されたり、Stream Analytics または Power BI からアクセスされる場合は、**[Azure サービスへのアクセスを許可]** をオンにしてアクセスを許可します。
 
-ポータルから Azure Cosmos DB メトリックにアクセスできるようにするには、**[Azure Portal へのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、「[Azure Portal からの接続](firewall-support.md#connections-from-the-azure-portal)」と「[他の Azure PaaS サービスからの接続](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services)」のセクションを参照してください。 アクセスを選択した後、**[保存]** を選択して、設定を保存します。
+ポータルから Azure Cosmos DB メトリックにアクセスできるようにするには、**[Azure Portal へのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、「[Azure Portal からの接続](firewall-support.md#connections-from-the-azure-portal)」と「[他の Azure PaaS サービスからの接続](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services)」のセクションを参照してください。 アクセスを選択した後、**[保存]** を選択して、設定を保存します。
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>仮想ネットワークまたはサブネットを削除する 
 
@@ -125,15 +125,16 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
 4. 仮想ネットワークとサブネットでサービス エンドポイントが Azure Cosmos DB に対して有効になっていることを確認して、CosmosDB アカウントの ACL の有効化を準備します。
 
    ```powershell
-   $subnet = Get-AzureRmVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName  | Get-AzureRmVirtualNetworkSubnetConfig -Name $sname
-   $vnProp = Get-AzureRmVirtualNetwork `-Name $vnName  -ResourceGroupName $rgName
+   $vnProp = Get-AzureRmVirtualNetwork `
+     -Name $vnName  -ResourceGroupName $rgName
    ```
 
 5. 次のコマンドレットを実行して、Azure Cosmos DB アカウントのプロパティを取得します。  
 
    ```powershell
+   $apiVersion = "2015-04-08"
+   $acctName = "<Azure Cosmos DB account name>"
+
    $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -144,15 +145,24 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True
-   $subnetID = $vnProp.Id+"/subnets/" + $subnetName  
+   $subnetID = $vnProp.Id+"/subnets/" + $sname  
    $virtualNetworkRules = @(@{"id"=$subnetID})
    $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
    ```
@@ -166,7 +176,7 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
    $cosmosDBProperties['virtualNetworkRules'] = $virtualNetworkRules
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
-   Set-AzureRmResource ``
+   Set-AzureRmResource `
      -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `

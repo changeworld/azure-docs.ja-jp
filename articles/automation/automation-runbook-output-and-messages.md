@@ -9,19 +9,19 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 04fae653c72c127b22f994e89b050477dac6495d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dc1a4bc1de3560338e1734e73ad04910535be5b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194252"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751304"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure Portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
 
-| ストリーム | [説明] | 公開先 | テスト |
+| ストリーム | 説明 | 公開先 | テスト |
 |:--- |:--- |:--- |:--- |
 | 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
@@ -31,7 +31,7 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 | デバッグ |対話型ユーザー向けのメッセージ。 Runbook では使用しないでください。 |ジョブ履歴には書き込まれません。 |[テスト出力] ペインには書き込まれません。 |
 
 ## <a name="output-stream"></a>出力ストリーム
-出力ストリームはスクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクト出力のためのものです。 Azure Automation では、このストリームは、 [現在の Runbook を呼び出す親 Runbook](automation-child-runbooks.md)が使用するオブジェクトに主に使用されます。 親 Runbook から [Runbook をインラインで呼び出す](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution)と、出力ストリームのデータが親に返されます。 ユーザーに一般情報を返すときは、その Runbook が別の Runbook から呼び出されないことがわかっている場合にのみ、出力ストリームを使用してください。 ただし通常は、ベストプラクティスとして、 [詳細ストリーム](#Verbose) を使用してユーザーに一般情報を伝えてください。
+出力ストリームはスクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクト出力のためのものです。 Azure Automation では、このストリームは、 [現在の Runbook を呼び出す親 Runbook](automation-child-runbooks.md)が使用するオブジェクトに主に使用されます。 親 Runbook から [Runbook をインラインで呼び出す](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution)と、出力ストリームのデータが親に返されます。 ユーザーに一般情報を返すときは、その Runbook が別の Runbook から呼び出されないことがわかっている場合にのみ、出力ストリームを使用してください。 ただし通常は、ベストプラクティスとして、 [詳細ストリーム](#verbose-stream) を使用してユーザーに一般情報を伝えてください。
 
 出力ストリームへのデータの書き込みは、 [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) を使用するか、Runbook の行にオブジェクトを配置することで実行できます。
 
@@ -118,7 +118,7 @@ Workflow Test-Runbook
 出力ストリームとは異なり、メッセージ ストリームはユーザーに情報を伝えるためのものです。 さまざまな種類の情報向けに複数のメッセージ ストリームがあり、それぞれが異なる方法で Azure Automation で処理されます。
 
 ### <a name="warning-and-error-streams"></a>警告およびエラー ストリーム
-警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#PreferenceVariables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
+警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#preference-variables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
 
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
 
@@ -156,7 +156,7 @@ Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.co
 
 次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれています。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 
-| 変数 | 既定値 | 有効な値 |
+| 可変 | 既定値 | 有効な値 |
 |:--- |:--- |:--- |
 | WarningPreference |Continue |Stop<br>Continue<br>SilentlyContinue |
 | ErrorActionPreference |Continue |Stop<br>Continue<br>SilentlyContinue |
@@ -172,7 +172,7 @@ Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.co
 
 ## <a name="retrieving-runbook-output-and-messages"></a>Runbook の出力とメッセージの取得
 ### <a name="azure-portal"></a>Azure ポータル
-Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#Output)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
+Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#output-stream)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#verbose-stream)と[進捗状況レコード](#progress-records)だけでなく、[出力ストリーム](#output-stream)と[警告およびエラー ストリーム](#warning-and-error-streams)からのメッセージも含まれます。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 **[Any]** を指定して、ジョブのすべてのストリームを返すことができます。

@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 28bb900a3281becc7bb243e6bd7bf2beedf1a5c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 49558f5a4777818478ee11b96636d87b70e1e156
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261633"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335368"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -44,7 +44,7 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | いいえ、OS に組み込まれている           | [はい]                       |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 拡張機能を介して                | [はい]                       |
-| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | 拡張機能を介して                | [はい]                       |
+| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | いいえ                            | [はい]                       |
 | Symantec v12.1.1100 以降              | Windows Server ファミリ                 | いいえ                            | [はい]                       |
 | McAfee v10 以降                       | Windows Server ファミリ                 | いいえ                            | [はい]                       |
 | Kaspersky                         | Windows Server ファミリ                 | いいえ                            | いいえ                         |
