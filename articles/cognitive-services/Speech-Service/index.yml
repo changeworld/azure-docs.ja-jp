@@ -15,12 +15,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: nolachar
-  ms.openlocfilehash: 98e254d3a993c5d02091be9535eb685ecd987a09
-  ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+  ms.openlocfilehash: 21f67f7fcce505e18792a3be830524d64dd8045e
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/25/2018
-  ms.locfileid: "36937858"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37045305"
 abstract:
   description: Microsoft 音声サービスでは、<a href="rest-apis">REST API</a> または <a href="speech-sdk">C#、C++、Java の SDK</a> を使用して、音声コマンド制御、文字起こし、ディクテーションなどの強力な音声認識機能をアプリケーションに追加する簡単な手段が開発者に提供されます。<p>音声サービスを利用すると、<a href="how-to-customize-speech-models">音声テキスト変換</a>モデルをカスタマイズして、特殊なボキャブラリ、騒がしい環境、さまざまな話し方に対応できます。 また、カスタマイズされた<a href="https://cris.ai/Home/customvoice">テキスト読み上げ</a>と<a href="https://www.microsoft.com/translator/customization.aspx">音声翻訳</a>も利用できます。<p>詳細については、<a href="overview">音声サービスの概要</a>に関するページをご覧ください。
 sections:
