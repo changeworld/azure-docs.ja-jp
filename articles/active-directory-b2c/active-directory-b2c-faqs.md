@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710734"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939937"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -56,7 +56,7 @@ Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/azure/
 Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前に、管理するディレクトリに切り替える必要があります。  Azure ポータルの右上にある自分の ID をクリックしてディレクトリを切り替えた後、表示されるドロップダウンからディレクトリを選択します。  図を使用した詳細な手順については、「[Azure AD B2C の設定に移動する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)」を参照してください。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
-検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/customize-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
+検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/fundamentals/customize-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
 
 * **バナー ロゴ**: 右下に表示されます。
 * **背景色**: 上部に表示されます。
@@ -89,7 +89,7 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 Microsoft Dynamics 365 ポータルとの統合を使用できます。  [Azure AD B2C を使用して認証するための Dynamics 365 ポータルの構成](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c)に関する記事を参照してください。
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
-Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。
+Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) に関する記事を参照してください。
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
 外部 ID のシナリオに適した機能を使用する方法の詳細については、 [外部 ID](../active-directory/active-directory-b2b-compare-external-identities.md) に関するこの記事を参照してください。

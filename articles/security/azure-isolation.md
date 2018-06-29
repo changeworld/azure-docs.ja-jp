@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010882"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018415"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -121,7 +121,7 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 
 お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。 対象サービスでは、この削除はリテンション期間終了後 90 日以内に行われます (対象サービスは、[オンライン サービス条件](http://aka.ms/Online-Services-Terms)の「データ処理条件」セクションで定義されています)。
 
-格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
+格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
 
 ## <a name="compute-isolation"></a>コンピューティングの分離
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fcadac344e2e05c3f6cdd9003b87b819d7933fba
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599324"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937436"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure PowerShell を使用した Azure Redis Cache の管理
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "31599324"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-クラシック デプロイメント モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
+クラシック デプロイ モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell をインストール済みである場合、Azure PowerShell Version 1.0.0 以降であることが必要です。 インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
@@ -123,24 +123,24 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Azure Redis Cache 用の PowerShell で使用されるプロパティ
 次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
-| パラメーター | [説明] | 既定値 |
+| パラメーター | 説明 | 既定値 |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
-| 場所 |キャッシュの場所 | |
+| リージョン |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
 | サイズ |キャッシュのサイズ。 有効な値: P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250 MB、1 GB、2.5 GB、6 GB、13 GB、26 GB、53 GB |1GB |
 | ShardCount |クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。 有効な値: 1、2、3、4、5、6、7、8、9、10 | |
 | SKU |キャッシュの SKU を指定します。 有効な値: Basic、Standard、Premium |標準 |
 | RedisConfiguration |Redis 構成の設定を指定します。 各設定の詳細については、次の「 [RedisConfiguration プロパティ](#redisconfiguration-properties) 」の表をご覧ください。 | |
 | EnableNonSslPort |非 SSL ポートが有効になっているかどうかを示します。 |False |
-| MaxMemoryPolicy |このパラメーターは廃止されました。代わりに、RedisConfiguration を使用します。 | |
+| MaxMemoryPolicy |このパラメーターは非推奨となりました。代わりに、RedisConfiguration を使用します。 | |
 | StaticIP |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
 | サブネット |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 | |
 | VirtualNetwork |VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値: Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration プロパティ
-| プロパティ | [説明] | 価格レベル |
+| プロパティ | 説明 | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
 | rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
@@ -783,7 +783,7 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 * [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 * [Azure Resource Manager コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
-* [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
+* [Azure blog (Azure のブログ)](https://azure.microsoft.com/en-us/blog/): Azure の新機能について説明します。
 * [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 * ["Hey, Scripting Guy!"ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 

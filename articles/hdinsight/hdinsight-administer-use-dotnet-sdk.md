@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0feb1e344d70207d48e4ef07f5b45790425727ad
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 08c9d16570a923c79c81cebb8669a43488129d9a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200318"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017939"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight クラスターを管理する方法について説明します。
+[HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を使用して、HDInsight クラスターを管理する方法について説明します。
 
 **前提条件**
 
@@ -271,7 +271,7 @@ foreach (var key in results.Configuration.Keys)
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight .NET SDK リファレンス ドキュメント](https://msdn.microsoft.com/library/mt271028.aspx)
+* [HDInsight .NET SDK リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]

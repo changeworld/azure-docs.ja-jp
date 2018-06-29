@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 1372dab2685d62a12d0d1fb186c803f8906156b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 41c568191ab47faba8f67e855f0a52d5d97ffc6b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200675"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020649"
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -145,7 +145,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * [Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight で Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure Portal を使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md)
-* [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)
+* [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での Sqoop の使用](apache-hadoop-use-sqoop-mac-linux.md)
 * [非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

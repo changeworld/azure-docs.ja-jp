@@ -1,6 +1,6 @@
 ---
 title: Azure Linux 仮想マシンにタグを付ける方法 | Microsoft Docs
-description: Resource Manager のデプロイメント モデルを使用して Azure で作成した Azure Linux 仮想マシンのタグ付けについて説明します。
+description: Resource Manager デプロイ モデルを使用して Azure で作成した Azure Linux 仮想マシンのタグ付けについて説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: mmccrory
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 19e8c11a0051f9d13ef4be3d77fe828a272c3c77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c26019bad63a904f8ebd1241d2b58923d786e181
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423872"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937892"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンにタグを付ける方法
 この記事では、Azure で Resource Manager デプロイ モデルを通して Linux 仮想マシンにタグを付けるさまざまな方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。 タグは、Resource Manager デプロイ モデル経由で作成されたリソースでのみサポートされます。
@@ -29,8 +29,6 @@ ms.locfileid: "31423872"
 
 ## <a name="tagging-with-azure-cli"></a>Azure CLI を使用してタグを付ける
 開始するには、最新の [Azure CLI 2.0](/cli/azure/install-azure-cli) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにログインしている必要があります。
-
-これらの手順は、[Azure CLI 1.0](tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 

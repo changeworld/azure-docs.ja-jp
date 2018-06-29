@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293111"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754420"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -100,10 +100,10 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Azure AD 管理ポータルに移動します。 | [Azure AD 管理ポータル - 会社のブランド](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](customize-branding.md) |
+| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](fundamentals/customize-branding.md) |
 | 変更が完全に反映されるまで数分待ちます。 |  |
 | POC ユーザー資格情報で https://myapps.microsoft.com にログインします。 |  |
-| ブラウザーで外観を確認します。 | [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](customize-branding.md) |
+| ブラウザーで外観を確認します。 | [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](fundamentals/customize-branding.md) |
 | 必要に応じて、他のデバイスで外観を確認します。 |  |
 
 ### <a name="considerations"></a>考慮事項
@@ -118,7 +118,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| すべての POC ユーザーがセキュリティ グループに属していること (クラウドまたはオンプレミス) | [Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
+| すべての POC ユーザーがセキュリティ グループに属していること (クラウドまたはオンプレミス) | [Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>手順
 
@@ -140,16 +140,16 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | SaaS アプリケーションのテスト環境が利用できること。 このガイドでは、ServiceNow を例として使用します。<br/>既存データの品質とマッピングをナビゲートする際の負荷を最小限に抑えるために、テスト インスタンスの使用を強くお勧めします。 | https://developer.servicenow.com/app.do#!/home に移動して、テスト インスタンスの取得プロセスを開始します。 |
-| ServiceNow 管理コンソールへの管理者アクセス | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
+| ServiceNow 管理コンソールへの管理者アクセス | [チュートリアル: Azure Active Directory と ServiceNow の統合](saas-apps/servicenow-tutorial.md) |
 | アプリケーションの割り当て先となる一連の対象ユーザー。 PoC ユーザーを含むセキュリティ グループをお勧めします。 <br/>このグループの作成が現実的に難しい場合は、PoC のアプリケーションに直接ユーザーを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>手順
 
 | 手順 | リソース |
 | --- | --- |
-| すべてのアクターに Microsoft ドキュメントのチュートリアルを共有します。  | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
-| 作業ミーティングを設定し、各アクターと共にチュートリアルの手順を実行します。 | [チュートリアル: Azure Active Directory と ServiceNow の統合](active-directory-saas-servicenow-tutorial.md) |
-| 「前提条件」に示されているグループにアプリを割り当てます。 POC の範囲に条件付きアクセスが含まれている場合は、後から再度アクセスして MFA などを追加してください。 <br/>これにより、プロビジョニング プロセスが開始されることに注意してください (構成されている場合)。 |  [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
+| すべてのアクターに Microsoft ドキュメントのチュートリアルを共有します。  | [チュートリアル: Azure Active Directory と ServiceNow の統合](saas-apps/servicenow-tutorial.md) |
+| 作業ミーティングを設定し、各アクターと共にチュートリアルの手順を実行します。 | [チュートリアル: Azure Active Directory と ServiceNow の統合](saas-apps/servicenow-tutorial.md) |
+| 「前提条件」に示されているグループにアプリを割り当てます。 POC の範囲に条件付きアクセスが含まれている場合は、後から再度アクセスして MFA などを追加してください。 <br/>これにより、プロビジョニング プロセスが開始されることに注意してください (構成されている場合)。 |  [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Azure AD 管理ポータルを使用してギャラリーから ServiceNow アプリケーションを追加します。| [Azure AD 管理ポータル: エンタープライズ アプリケーション](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Azure Active Directory でのエンタープライズ アプリケーション管理の新機能](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | ServiceNow アプリの [シングル サインオン] ブレードで [SAML ベースのサインオン] を有効にします。 |  |
 | [サインオン URL] と [識別子] フィールドに実際の ServiceNow URL を入力します。<br/>[新しい証明書をアクティブにする] チェック ボックスをオンにし、<br/>設定を保存します。 |  |
@@ -163,7 +163,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 ### <a name="considerations"></a>考慮事項
 
-1. 上記の[チュートリアル](active-directory-saas-servicenow-tutorial.md)では、以前の Azure AD の管理環境が使用されています。 一方 PoC は、[クイック スタート](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)に基づいています。
+1. 上記の[チュートリアル](saas-apps/servicenow-tutorial.md)では、以前の Azure AD の管理環境が使用されています。 一方 PoC は、[クイック スタート](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)に基づいています。
 2. ギャラリーにターゲット アプリケーションが存在しない場合は、"独自のアプリの持ち込み" を使用できます。 詳細情報: [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 1 つの場所からカスタム アプリケーションを追加する](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS パスワード SSO 構成
@@ -242,7 +242,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| Microsoft Azure AD の Basic または Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリ。 | [Azure Active Directory のエディション](active-directory-whatis.md) |
+| Microsoft Azure AD の Basic または Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリ。 | [Azure Active Directory のエディション](fundamentals/active-directory-whatis.md) |
 | リモート アクセスの構成対象となる、オンプレミスでホストされている Web アプリケーション。 |  |
 | アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。 | [Azure AD アプリケーション プロキシ コネクタについて](manage-apps/application-proxy-connectors.md) |
 | 経路上にファイアウォールがある場合、コネクタからアプリケーション プロキシに HTTPS (TCP) 要求を送信できるように、ファイアウォールを開放する必要があります。 | [Azure Portal でアプリケーション プロキシを有効にする: アプリケーション プロキシの前提条件](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -306,8 +306,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | SaaS アプリケーション (フェデレーション SSO またはパスワード SSO) が既に構成されていること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) |
-| 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
-| グループ所有者の資格情報が利用可能であること。 | [Azure Active Directory のグループによるリソースへのアクセス管理](active-directory-manage-groups.md) |
+| 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
+| グループ所有者の資格情報が利用可能であること。 | [Azure Active Directory のグループによるリソースへのアクセス管理](fundamentals/active-directory-manage-groups.md) |
 | アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -315,8 +315,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 手順 | リソース |
 | --- | --- |
-| アプリケーションへのアクセスが許可されているグループを特定し、そのグループの所有者を構成します。| [Azure Active Directory でグループのメンバーを管理する](active-directory-groups-settings-azure-portal.md) |
-| グループ所有者としてログインし、アクセス パネルの [グループ] タブでグループのメンバーシップを確認します。 | [Azure Active Directory グループ管理ページ](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| アプリケーションへのアクセスが許可されているグループを特定し、そのグループの所有者を構成します。| [Azure Active Directory でグループのメンバーを管理する](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| グループ所有者としてログインし、アクセス パネルの [グループ] タブでグループのメンバーシップを確認します。 | [Azure Active Directory グループ管理ページ](https://account.activedirectory.windowsazure.com/r#/groups) |
 | テストするインフォメーション ワーカーを追加します。 |  |
 | インフォメーション ワーカーとしてログインし、タイルが利用可能であることを確認します。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
 
@@ -331,7 +331,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | SaaS アプリケーション (フェデレーション SSO またはパスワード SSO) が既に構成されていること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) |
-| 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md) |
+| 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
 | アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -339,7 +339,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 手順 | リソース |
 | --- | --- |
-| アプリが割り当てられているグループからユーザーを削除します。 | [Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する](active-directory-groups-members-azure-portal.md) |
+| アプリが割り当てられているグループからユーザーを削除します。 | [Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する](fundamentals/active-directory-groups-members-azure-portal.md) |
 | プロビジョニングが解除されるまで数分待ちます。 | [Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化: 自動プロビジョニングのしくみ](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | 別のブラウザー セッションで、インフォメーション ワーカーとして MyApps ポータルにログインし、そのタイルがなくなっていることを確認します。 | http://myapps.microsoft.com |
 

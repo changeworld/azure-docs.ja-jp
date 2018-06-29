@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737471"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936991"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Azure Storage での Azure CLI 1.0 の使用
 
@@ -43,7 +43,7 @@ Azure CLI は、Azure Platform で使用できるオープン ソース、クロ
 
 **Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。 Azure の購入オプションについて詳しくは、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
 
-Azure サブスクリプションの詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](https://msdn.microsoft.com/library/azure/hh531793.aspx) 」をご覧ください。
+Azure サブスクリプションの詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) 」をご覧ください。
 
 **Microsoft Azure アカウントとサブスクリプションを作成済みである場合:**
 

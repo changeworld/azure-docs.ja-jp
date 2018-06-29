@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7b60c086896506e5883607db48a64d2a2efbd967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28561f5f94044d19cfd07e99d7f7a736ec470cf1
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659898"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960357"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric シングル メンバー ネットワーク
 
@@ -70,26 +70,26 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 パラメーター名| 説明| 使用できる値|既定値
 ---|---|---|---
 **[リソース プレフィックス]**| デプロイされたリソースの命名規則の基礎として使用される文字列。|6 文字以下|該当なし
-**[VM ユーザー名]**| このメンバーに対してデプロイされている各仮想マシンの管理者のユーザー名。|1 - 64 文字|azureuser
-**認証の種類**| 仮想マシンに認証する方法。|パスワードまたは SSH 公開キー|パスワード
-**[パスワード] ([認証の種類] = [パスワード])**|デプロイされた各仮想マシンの管理者アカウントのパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|該当なし
+**[VM ユーザー名]**| このメンバーに対してデプロイされている各仮想マシンの管理者のユーザー名。|1 から 64 文字|azureuser
+**認証の種類**| 仮想マシンに対して認証する方法。|[パスワード] または [SSH 公開キー]|パスワード
+**[パスワード] ([認証の種類] = [パスワード])**|デプロイされた各仮想マシンの管理者アカウントのパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 から 72 文字|該当なし
 **[SSH キー] ([認証の種類] = [公開キー])**|リモート ログインに使用される Secure Shell キー。||該当なし
 **[Restrict access by IP address]\(IP アドレスごとにアクセスを制限する\)**|クライアント エンドポイント アクセスが制限されるかどうかを決定する設定。|はい/いいえ| いいえ 
 **[Allowed IP address or subnet]\(許可される IP アドレスまたはサブネット\) ([Restrict access by IP address]\(IP アドレスごとにアクセスを制限する\) = [はい])**|アクセス制御が有効になっているとき、クライアント エンドポイントへのアクセスが許可される IP アドレスまたは一連の IP アドレス。||該当なし
 **サブスクリプション** |デプロイ対象のサブスクリプション。
-**リソース グループ** |コンソーシアム ネットワークをデプロイするリソース グループ。||該当なし
+**リソース グループ** |コンソーシアム ネットワークをデプロイするリソース グループ||該当なし
 **場所** |最初のメンバー**のネットワーク フットプリントをデプロイする Azure リージョン。
 
 ### <a name="network-size-and-performance"></a>ネットワーク サイズとパフォーマンス
 
 次に、**[Network Size and Performance]\(ネットワークのサイズとパフォーマンス\)** で、Membership ノード、Orderer ノード、Peer ノードの数など、コンソーシアム ネットワークのサイズに対する入力を指定します。 インフラストラクチャ オプションと仮想マシンのサイズを選択します。
 
-![ネットワーク サイズとパフォーマンス](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
+![Network size and performance (ネットワークのサイズとパフォーマンス)](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 
 パラメーター名| 説明| 使用できる値|既定値
 ---|---|---|---
 **[Number of Membership Nodes]\(Membership ノードの数\)**|メンバーシップ サービスを実行するノードの数。 メンバーシップ サービスの詳細については、[Hyperledger 文書](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf)の「Security & Membership Services」(セキュリティ & メンバーシップ サービス) をご覧ください。<br /><br />現在のところ、この値は 1 ノードに制限されていますが、次の見直しでクラスタリングを利用した拡張に対応する予定です。|1| 1
-**[Number of Orderer Nodes]\(Orderer ノードの数\)** |トランザクションを整理してブロックにするノードの数。--> この一文は冗漫であり、わかりにくいです。 ordering サービスの詳細については、[Hyperledge 文書](http://hyperledger-fabric.readthedocs.io/en/latest/orderingservice.html)をご覧ください。<br /><br />現在のところ、この値は 1 ノードに制限されています。 |1 |1
+**[Number of Orderer Nodes]\(Orderer ノードの数\)** |トランザクションを整理してブロックにするノードの数。--> この一文は冗漫であり、わかりにくいです。 ordering サービスの詳細については、[Hyperledge 文書](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html)をご覧ください。<br /><br />現在のところ、この値は 1 ノードに制限されています。 |1 |1
 **[Number of Peer Nodes]\(Peer ノードの数\)**| トランザクションを実行し、台帳の状態とコピーを保守管理するノード。コンソーシアム メンバーが所有しています。<br /><br />ordering サービスの詳細については、[Hyperledge 文書](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)をご覧ください。|3| 3 - 9
 **[ストレージのパフォーマンス]**|デプロイされた各ノードをバックアップするストレージの種類。 ストレージの詳細については、[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)ページと [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) に関するページを参照してください。|Standard または Premium|標準
 **[仮想マシンのサイズ]** |ネットワークの全ノードで使用される仮想マシンのサイズ|Standard A、<br />Standard D、<br />Standard D-v2、<br />Standard F シリーズ、<br />Standard DS、<br />Standard FS|Standard D1_v2

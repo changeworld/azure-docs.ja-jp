@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248539"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938011"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -434,7 +434,7 @@ Microsoft Azure では、一般的な AI の概念や実践に関するコンテ
 |:-------------------|--------------|
 | [Azure の AI 開発者](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | パブリック |
 | [Microsoft AI スクール](http://aischool.microsoft.com/learning-paths) | パブリック |
-| [GitHub からの Azure AI ラーニング](http://azure.github.io/learnanalytics/public) | パブリック |
+| [GitHub からの Azure AI ラーニング](https://github.com/Azure/connectthedots/blob/master/readme.md) | パブリック |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | パブリック |
 | [Microsoft AI YouTube ウェビナー](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | パブリック |
 | [Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | パブリック |

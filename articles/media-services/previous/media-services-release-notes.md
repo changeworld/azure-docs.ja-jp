@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 62f5ae4a9152d3f1b1641cc69136bf472527ba2a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942413"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018540"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -32,7 +32,7 @@ ms.locfileid: "33942413"
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>現在の既知の問題
 ### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services の全般的な問題
 
-| 問題 | [説明] |
+| 問題 | 説明 |
 | --- | --- |
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
 | パーセント エンコーディングが利用できない。 |Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。 このため、パーセント エンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。 |
@@ -170,7 +170,6 @@ Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for
 
 詳細については、次を参照してください。
 
-* [Media Services SDK for PHP](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/) ブログ。
 * 次の[コード サンプル](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)は、すぐに使い始めるときに役立ちます。
   * **vodworkflow_aes.php**: この PHP ファイルは、AES-128 動的暗号化とキー配信サービスの使用方法を示します。 これは、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」で説明されている .NET サンプルに基づきます。
   * **vodworkflow_aes.php**: この PHP ファイルは、PlayReady 動的暗号化とライセンス配信サービスの使用方法を示します。 これは、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」で説明されている .NET サンプルに基づきます。
@@ -209,9 +208,7 @@ Media Services で、Widevine Modular DRM テクノロジを使用してビデ�
 
 ## <a id="august_changes_15"></a>2015 年 8 月のリリース
 * Media Services SDK for Java バージョン 0.8.0 リリースと新しいサンプルを利用できるようになりました。 詳細については、次を参照してください。
-  
-  * [こちらのブログ記事](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
-  * [Java サンプルのリポジトリ](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+    
 * Azure Media Player が複数のオーディオ ストリームに対応するよう更新されました。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)を参照してください。
 
 ## <a id="july_changes_15"></a>2015 年 7 月のリリース

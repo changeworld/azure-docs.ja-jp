@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8545b092adf939520e15d8118e60f906b59bf92f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 826daae9c5d9cf5cd169651ab8603cef938e6482
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231813"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030038"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -30,7 +30,7 @@ ms.locfileid: "36231813"
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 ご使用の仮想マシン (VM) の拡張機能の更新プログラムがあるときは、必ずダウンロードする必要があります。 製品に付属している拡張機能は、通常の修正プログラムや更新プロセスでは更新されません。更新プログラムは頻繁に確認するようにしてください。 他の拡張機能は、Marketplace Management からのみ入手できます。
 
-|  | 項目名 | 説明 | 発行元 | OS の種類 |
+|  | 項目名 | 説明 | 発行元 | [OS Type]\(OS の種類\) |
 | --- | --- | --- | --- | --- |
 |![SQL IaaS 拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>この拡張機能は、Windows Marketplace アイテムに任意の SQL Server をデプロイするためにダウンロードします (この拡張機能は必須です)。</b> | Microsoft | Windows |
 |![カスタム スクリプト拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ カスタム スクリプト拡張機能 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| この更新プログラムは、<b>Windows でのカスタムのスクリプト拡張機能のインボックス バージョンにダウンロードします。</b> | Microsoft | Windows |
@@ -68,13 +68,13 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![Ubuntu Server 16.04 LTS の SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
 | ![無料ライセンス: Ubuntu Server 16.04 LTS の SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料ライセンス: Ubuntu Server 16.04 LTS の SQL Server 2017 Developer](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2017 の無償 Developer バージョン。 | Microsoft + Canonical |
 | ![無料ライセンス: Ubuntu Server 16.04 LTS の SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料ライセンス: Ubuntu Server 16.04 LTS の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) | SQL Server 2017 の無償 Express バージョン。 | Microsoft + Canonical |
-| ![Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017EnterpriseUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
+| ![Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
 | ![Ubuntu Server 16.04 LTS の SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017WebonUbuntuServer1604LTS) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + Canonical |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017StandardonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
-| ![無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2017 の無償 Developer バージョン。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Standard](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017StandardonSLES12SP2?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
+| ![無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Developer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2?tab=Overview) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2017 の無償 Developer バージョン。 | Microsoft + SUSE |
 | ![無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [無料ライセンス: SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | SQL Server 2017 の無償 Express バージョン。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017EnterpriseonSLES12SP2?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
+| ![SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQLServer2017WebonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
 | ![Windows Server 2016 の Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 の Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016) | Windows Server 2016 の Microsoft Machine Learning Server 9.3.0。 | Microsoft |
 | ![Ubuntu 16.04 の Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 の Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Ubuntu 16.04 の Microsoft Machine Learning Server 9.3.0。 | Microsoft + Canonical |
 | ![CentOS Linux 7.2 の Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 の Microsoft Machine Learning Server 9.3.0 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | CentOS Linux 7.2 の Microsoft Machine Learning Server 9.3.0。 | Microsoft + Rogue Wave |
@@ -91,8 +91,8 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![CentOS-based 6.9](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 6.9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic)  |
 | ![CentOS-based 7.4](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![CentOS-based 7.4-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4-LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74LVM) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
-| ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer11SP4BringYourOwnSubscription) | SUSE Linux Enterprise Server 11 SP4。 | SUSE |
-| ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
+| ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES?tab=PlansAndPrice) | SUSE Linux Enterprise Server 11 SP4。 | SUSE |
+| ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES?tab=PlansAndPrice) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 
 ## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>サードパーティの BYOL、無料、および試用版のイメージとソリューション テンプレート
 

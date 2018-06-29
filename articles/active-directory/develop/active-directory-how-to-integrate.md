@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: be7dec07597b0a82633d330a72274a94dbb9bf67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156046"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937140"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,7 +44,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 **Azure AD を使用して、アプリケーションにアクセスできるユーザーを制御します。**  Azure AD の管理者およびアプリケーション所有者は、特定のユーザーおよびグループにアプリケーションへのアクセスを割り当てることができます。 Graph API を使用すると、このリストを読み取ったり、リストを使用してアプリケーション内のリソースやアクセスのプロビジョニングとプロビジョニング解除を制御したりできます。
 
-**ロール ベースの Access Control に Azure AD を使用します。**  管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。 ロール情報はサインイン トークンでアプリケーションに送信され、Graph API を使用して読み取ることができます。 [承認への Azure AD の使用](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx)に関する詳細を参照してください。
+**ロール ベースの Access Control に Azure AD を使用します。**  管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。 ロール情報はサインイン トークンでアプリケーションに送信され、Graph API を使用して読み取ることができます。 [承認への Azure AD の使用](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)に関する詳細を参照してください。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他へのアクセスの取得
 **Azure AD は、Office 365 やその他の Microsoft ビジネス サービスに対する承認サーバーです。**  アプリケーションへのサインイン用に Azure AD をサポートしている場合、または OAuth 2.0 による Azure AD ユーザー アカウントへの現在のユーザー アカウントのリンクをサポートしている場合は、ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他の情報への読み書きアクセスを要求できます。 ユーザーの予定表にシームレスにイベントを書き込んだり、OneDrive のファイルを読み書きしたりできます。 [Office 365 API のアクセス](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)に関する詳細を参照してください。

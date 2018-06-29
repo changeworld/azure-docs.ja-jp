@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907760"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030694"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
@@ -101,7 +101,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>ジョブを Azure に送信する
 
-1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]**  > を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
+1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、**[Azure に送信]** を選択します。  
 
@@ -113,7 +113,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 > **[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
@@ -123,6 +123,6 @@ FROM EdgeInput
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure IoT Edge の詳細](../iot-edge/how-iot-edge-works.md)
+* [Azure IoT Edge の詳細](../iot-edge/about-iot-edge.md)
 * [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [このアンケートを使用してフィードバックをチームに送信する](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

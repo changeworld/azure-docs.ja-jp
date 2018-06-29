@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/08/2017
+ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: cad7719eb077d7aca9c1db5741a5fe1e0ca910a2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 38ff1ee4c525d41e2a7446d5adc792c746504491
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191317"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754183"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -54,7 +54,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 4.  インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
 5.  (VM、ゲートウェイ、ISP) * 0.8 の最小の帯域幅の予想されるスループットを計算します。
 
-計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/virtual-machines-windows-resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合、ISP に問い合わせる必要がある場合があります。
+計算したスループットが、アプリケーションのベースライン スループット要件を満たしていない場合は、ボトルネックとして識別されるリソースの帯域幅を増加する必要があります。 Azure VPN Gateway のサイズを変更するには、「[ゲートウェイの SKU を変更する](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。 仮想マシンのサイズを変更するには、「[VM のサイズを変更する](../virtual-machines/virtual-machines-windows-resize-vm.md)」を参照してください。 予想されるインターネット帯域幅が得られない場合、ISP に問い合わせる必要がある場合があります。
 
 ## <a name="validate-network-throughput-by-using-performance-tools"></a>パフォーマンス ツールを使用したネットワーク スループットの検証
 

@@ -5,16 +5,16 @@ services: sql-database
 ms.date: 06/20/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 43d230b013f95c56fb162be3e361a6b68d1b26fe
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: daa4ecd3ddf0e770049a81c771a8da52bac5be7f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296829"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021393"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
