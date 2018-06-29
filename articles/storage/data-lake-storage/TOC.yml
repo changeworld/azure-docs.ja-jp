@@ -1,0 +1,72 @@
+- name: Azure Storage のドキュメント
+  href: /azure/storage/
+- name: Azure Data Lake Storage Gen1 のドキュメントに切り替え
+  href: /azure/data-lake-store/
+- name: 概要
+  items:
+    - name: はじめに
+      href: introduction.md
+- name: クイック スタート
+  items:
+    - name: Data Lake Storage Gen2 対応のストレージ アカウントの作成
+      href: quickstart-create-account.md
+    - name: Databricks アカウントの作成/接続
+      href: quickstart-create-databricks-account.md
+    - name: HDInsight クラスターの作成
+      href: quickstart-create-connect-hdi-cluster.md
+- name: チュートリアル
+  items:
+    - name: Azure Databricks を使ったデータの抽出、変換、読み込み
+      href: handle-data-using-databricks.md
+    - name: Spark を使用した DataBricks での Data Lake Storage のデータへのアクセス
+      href: using-databricks-spark.md
+    - name: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
+      href: tutorial-extract-transform-load-hive.md
+- name: 概念
+  items:
+    - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
+      href: abfs-driver.md
+    - name: Azure BLOB ファイル システム URI の概要
+      href: introduction-abfs-uri.md
+    - name: 階層構造の名前空間サービス
+      href: namespace.md
+    - name: セキュリティ
+      items:
+        - name: 保存データの暗号化
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+        - name: カスタマー キーを使用した保存データの暗号化
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Data Lake Storage Gen2 の評価
+      href: evaluation.md
+- name: ハウツー ガイド
+  items:
+    - name: Azure HDInsight クラスターで Data Lake Storage Gen2 を使用する
+      href: use-hdi-cluster.md
+    - name: Data Lake Storage Gen2 で Hadoop ファイル システム CLI を使用する
+      href: use-hdfs-data-lake-storage.md
+    - name: データの取り込み
+      items:
+        - name: Distcp を使用して Data Lake Storage Gen2 にデータをコピーする
+          href: use-distcp.md
+        - name: Azure Data Factory を使用して Data Lake Storage Gen2 にデータをコピーする
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+    - name: Azure Databricks への接続
+      href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure Storage クライアント ツール
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: フォーラム
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/data-lake/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

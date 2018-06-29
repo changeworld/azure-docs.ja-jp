@@ -104,8 +104,7 @@
     - name: サポート
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: |
-        Backup
+    - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -272,7 +271,7 @@
     - name: Data Lake Analytics
       tocHref: /azure/data-lake-analytics/
       topicHref: /azure/data-lake-analytics/
-    - name: Data Lake Store
+    - name: Data Lake Storage Gen1
       tocHref: /azure/data-lake-store/
       topicHref: /azure/data-lake-store/
     - name: Devtest ラボ
@@ -312,7 +311,7 @@
         - name: エンタープライズ セキュリティ
           tocHref: /azure/hdinsight/domain-joined
           topicHref: /azure/hdinsight/domain-joined/apache-domain-joined-introduction
-        - name: R Server
+        - name: ML サービス
           tocHref: /azure/hdinsight/r-server
           topicHref: /azure/hdinsight/r-server-overview
         - name: Spark
@@ -519,6 +518,9 @@
         - name: BLOB
           tocHref: /azure/storage/blobs/
           topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: Data Lake Storage Gen2
+          tocHref: /azure/storage/data-lake-storage-gen2/
+          topicHref: /azure/storage/data-lake-storage/introduction
         - name: ファイル
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction

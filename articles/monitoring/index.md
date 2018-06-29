@@ -1,6 +1,6 @@
 ---
-title: Azure の管理 - 監視 | Microsoft Docs
-description: Azure には多数のサービスとツールがあり、Azure だけでなく、他のクラウドやオンプレミスで実行されているアプリケーションも完全に管理できるよう連携しています。  この記事では、管理のさまざまな領域について概要を説明するほか、クラウド アプリケーションとリソースを管理するための Azure ツールに関するコンテンツへのリンクを紹介します。
+title: Azure の管理と Operations Management Suite (OMS) | Microsoft Docs
+description: Operations Management Suite (OMS) として以前バンドルされていた Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要。
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8598e3528aa0a9fb171853e5f6554346ace937ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410296"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059952"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 

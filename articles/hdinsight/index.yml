@@ -13,14 +13,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: nitinme
-  ms.openlocfilehash: e3a366cd933b8667b39df146d80d07d5548138bc
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 4d10acb6d3597b5f5007098775b9bd7751ed4b2a
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2018
-  ms.locfileid: "33778666"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37053621"
 abstract:
-  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントで、Hadoop、Spark、Hive、LLAP、Kafka、Storm、R といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
+  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントで、Hadoop、Spark、Hive、LLAP、Kafka、Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:
     image:
       alt: 
@@ -63,8 +63,8 @@ sections:
       text: Storm
       href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
     - image:
-        src: media/index/r-server_r.svg
-      text: R Server
+        src: media/index/ml-server_r.svg
+      text: ML サービス
       href: /azure/hdinsight/r-server/r-server-get-started
 - title: ステップバイステップのチュートリアル
   items:
@@ -79,7 +79,7 @@ sections:
     - html: HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>
     - html: 対話型クエリ&#58;<a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">直接クエリを使用して Power BI に接続する</a>
     - html: Storm &#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Java で Storm のトポロジを作成する</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">HDInsight 上に Storm のトポロジをデプロイする</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Storm から Data Lake Store に書き込む</a>
-    - html: R Server &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">R Tools for Visual Studio を使用する</a>
+    - html: ML サービス &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">R Tools for Visual Studio を使用する</a>
 - title: リファレンス
   items:
   - type: list

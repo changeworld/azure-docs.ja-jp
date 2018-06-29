@@ -1,26 +1,28 @@
 ---
-title: Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+title: Azure Data Lake Storage Gen1 のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
 description: あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
 ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033435"
 ---
-# <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Azure Data Lake Storage Gen1 のドキュメント
 
-あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Data Lake Store を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
+あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Azure Data Lake Storage Gen1 (以前の Azure Data Lake Store) を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
+
+Data Lake Storage Gen2 のプレビューの習得に関心がある場合は、[製品ページ](https://aka.ms/adlsgen2-product)をご覧ください。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Store について</h3>
+                        <h3>Data Lake Storage Gen1 の概要</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Store のビデオ ライブラリ</h3>
+                        <h3>Data Lake Storage Gen1 のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Azure portal で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>PowerShell で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>PowerShell で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure CLI で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Azure CLI で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>.NET で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>.NET で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Java で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Java で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ ms.lasthandoff: 05/10/2018
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Node.js で Azure Data Lake Store の使用を開始する</h3>
+                        <h3>Node.js で Data Lake Storage Gen1 の使用を開始する</h3>
                     </div>
                 </div>
             </div>

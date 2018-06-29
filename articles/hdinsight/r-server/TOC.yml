@@ -1,6 +1,6 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight での R Server
+- name: HDInsight の ML サービス
   items:
     - name: 概要
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: 作業開始
   items:
-    - name: R Server の開始
+    - name: ML サービスで開始する
       href: r-server-get-started.md
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: 方法
   items:
-    - name: R Server の使用
+    - name: ML サービスの使用
       items:
-        - name: R Server クラスターの管理
+        - name: ML サービス クラスターの管理
           href: r-server-hdinsight-manage.md
-        - name: R Server クラスターの運用化
+        - name: ML サービス クラスターの運用化
           href: r-server-operationalize.md
         - name: ストレージ オプション
           href: r-server-storage.md

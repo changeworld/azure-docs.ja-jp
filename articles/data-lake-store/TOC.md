@@ -1,11 +1,11 @@
-# [Data Lake Store のドキュメント](index.md)
+# [Data Lake Storage Gen1 のドキュメント](index.md)
 
 # 概要
-## [Azure Data Lake Store の概要](data-lake-store-overview.md)
-## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
-## [Azure Data Lake Store によるビッグ データの処理](data-lake-store-data-scenarios.md)
-## [Azure Data Lake Store で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-## [Data Lake Store を使用するためのベスト プラクティス](data-lake-store-best-practices.md)
+## [Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
+## [Data Lake Storage Gen1 と Azure Storage の比較](data-lake-store-comparison-with-blob-storage.md)
+## [Data Lake Storage Gen1 によるビッグ データの処理](data-lake-store-data-scenarios.md)
+## [Data Lake Storage Gen1 で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
+## [Data Lake Storage Gen1 を使用するためのベスト プラクティス](data-lake-store-best-practices.md)
 
 # 作業開始
 ## [ポータルの使用](data-lake-store-get-started-portal.md)
@@ -21,15 +21,15 @@
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
 ### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
-### [リージョン間で Azure Data Lake Store を移行する](data-lake-store-migration-cross-region.md)
+### [リージョン間での Data Lake Store の移行](data-lake-store-migration-cross-region.md)
 
 ## データのセキュリティ保護
 ### [セキュリティの概要](data-lake-store-security-overview.md)
-### [Data Lake Store のアクセス制御](data-lake-store-access-control.md)
-### [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
+### [Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)
+### [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 ### [暗号化](data-lake-store-encryption.md)
 
-## Data Lake Store での認証
+## Data Lake Storage Gen1 での認証
 ### [認証オプション](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [Java の使用](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +42,7 @@
 #### [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
 
-## Data Lake Store の操作
+## Data Lake Storage Gen1 の操作
 ### アカウント管理操作
 #### [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
 #### [REST API の使用](data-lake-store-get-started-rest-api.md)
@@ -54,12 +54,12 @@
 #### [Python の使用](data-lake-store-data-operations-python.md)
 
 ## [パフォーマンス]
-### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
-### [Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
-### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
-### [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
-### [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)
-### [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
+### [Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
+### [Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
+### [HDInsight の Spark と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
+### [HDInsight の Hive と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
+### [HDInsight の MapReduce と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)
+### [HDInsight の Storm と Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
 
 ## Azure サービスと統合する
 ### HDInsight を使用

@@ -38,6 +38,7 @@
 #### [タスク 3: Azure Portal を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [管理されたドメインで OU を作成する](active-directory-ds-admin-guide-create-ou.md)
+### [マネージド ドメインでグループの管理されたサービス アカウントを作成する](active-directory-ds-create-gmsa.md)
 ### [管理対象ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [仮想ネットワークを選択する](active-directory-ds-networking.md)
 ## アプリケーションをデプロイする

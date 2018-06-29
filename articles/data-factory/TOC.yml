@@ -1,4 +1,4 @@
-- name: Data Factory V2 のドキュメント
+- name: Data Factory のドキュメント
   href: index.yml
 - name: バージョン 1 のドキュメントに切り替える
   href: v1/data-factory-introduction.md
@@ -6,7 +6,7 @@
   items:
     - name: Data Factory の概要
       href: introduction.md
-    - name: バージョン 1 と 2 の比較
+    - name: 現在のバージョンとバージョン 1 の比較
       href: compare-versions.md
 - name: クイック スタート
   expanded: true
@@ -138,6 +138,8 @@
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB
           href: connector-azure-cosmos-db.md
+        - name: Azure Data Lake Storage
+          href: connector-azure-data-lake-storage.md
         - name: Azure Data Lake Store
           href: connector-azure-data-lake-store.md
         - name: Azure Database for MySQL
@@ -275,6 +277,8 @@
         - name: データのコピー ツール
           href: copy-data-tool.md
           items: null
+        - name: Data Lake Storage の読み込み
+          href: load-azure-data-lake-storage-gen2.md
         - name: SQL Data Warehouse の読み込み
           href: load-azure-sql-data-warehouse.md
         - name: Data Lake Store の読み込み

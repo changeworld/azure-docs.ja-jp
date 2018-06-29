@@ -151,6 +151,7 @@
 ### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
 ### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR のレポート](authentication/howto-sspr-reporting.md)
+### [スマート ロックアウト](authentication/howto-password-smart-lockout.md)
 ### [脆弱なパスワードを排除する](authentication/concept-password-ban-bad.md)
 ### [禁止パスワード リストを構成する](authentication/howto-password-ban-bad.md)
 ### [オンプレミスの統合](authentication/concept-password-ban-bad-on-premises.md)

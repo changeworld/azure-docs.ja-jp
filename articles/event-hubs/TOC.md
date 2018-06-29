@@ -36,6 +36,8 @@
 ### [Kafka エコシステム用の Event Hubs での Apache Flink の使用](event-hubs-kafka-flink-tutorial.md)
 ### [Kafka エコシステム用の Event Hubs での Akka Streams の使用](event-hubs-kafka-akka-streams-tutorial.md)
 ## 開発
+### [IP 接続フィルター](event-hubs-ip-filtering.md)
+### [仮想ネットワーク サービス エンドポイント](event-hubs-service-endpoints.md)
 ### [.NET Framework を使用したイベントの送信](event-hubs-dotnet-framework-getstarted-send.md)
 ### [.NET Framework を使用したイベントの受信](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [利用可能な API](event-hubs-api-overview.md)
