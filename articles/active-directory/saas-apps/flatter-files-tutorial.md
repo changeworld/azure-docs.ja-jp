@@ -134,7 +134,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use SAML 2.0 for Authentication]** を選択します。
+    a. **[Use SAML 2.0 for Authentication]** を選択します。
     
     b. **[Configure SAML]** をクリックします。
 
@@ -142,7 +142,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ドメイン]** ボックスに、登録済みのドメインを入力します。
+    a. **[ドメイン]** ボックスに、登録済みのドメインを入力します。
    
     >[!NOTE]
     >登録済みのドメインがない場合は、Flatter Files のサポート チーム ( [support@flatterfiles.com](mailto:support@flatterfiles.com)」を参照してください。 
@@ -180,7 +180,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/flatter-files-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,7 +206,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     ![Flatter Files ユーザーの作成](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。
+    a. **[名]** ボックスに「**Britta**」と入力します。
    
     b. **[姓]** ボックスに「**Simon**」と入力します。 
    

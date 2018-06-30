@@ -113,7 +113,7 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/sap-netweaver-tutorial/tutorial_sapnetweaver_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<your company instance of SAP NetWeaver>` の形式で URL を入力します。
 
@@ -163,7 +163,7 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/sap-netweaver-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに「**Britta Simon**」と入力します。
+    a. **[Name]** ボックスに「**Britta Simon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

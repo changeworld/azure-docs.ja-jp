@@ -108,7 +108,7 @@ Zscaler Private Access Administrator で Azure AD のシングル サインオ�
 
     ![Zscaler Private Access Administrator のドメインと URL のシングル サインオン情報](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.private.zscaler.com/auth/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.private.zscaler.com/auth/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.private.zscaler.com/auth/sso` のパターンを使用して URL を入力します。
 
@@ -145,7 +145,7 @@ Zscaler Private Access Administrator で Azure AD のシングル サインオ�
  
     ![Zscaler Private Access Administrator の idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IdP Metadata File Upload]** フィールドの **[Select File]** をクリックして、Azure AD からダウンロードしたメタデータ ファイルをアップロードします。
+    a. **[IdP Metadata File Upload]** フィールドの **[Select File]** をクリックして、Azure AD からダウンロードしたメタデータ ファイルをアップロードします。
 
     b. Azure AD から **IdP メタデータ** が読み取られ、以下に示すようにすべてのフィールド情報が設定されます。
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが Zscaler Private Access Administrator にログインで
 
     ![Zscaler Private Access Administrator のユーザー管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]** ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
+    a. **[Username]** ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
 
     b. **[Password]** ボックスに、ユーザーのパスワードを入力します。
 

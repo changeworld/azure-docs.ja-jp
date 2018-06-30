@@ -110,7 +110,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
 
     ![[SmartRecruiters のドメインと URL] のシングル サインオン情報](./media/smartrecruiters-tutorial/tutorial_smartrecruiters_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback` のパターンを使用して URL を入力します。
 
@@ -153,7 +153,7 @@ SmartRecruiters で Azure AD のシングル サインオンを構成してテ�
 
     ![SmartRecruiters の構成](./media/smartrecruiters-tutorial/configure4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. Azure Portal からダウンロードした **certificate(Base64)** を開き、その値を **[Identity Provider certificate]\(ID プロバイダー証明書\)** テキストボックスに貼り付けます。
 

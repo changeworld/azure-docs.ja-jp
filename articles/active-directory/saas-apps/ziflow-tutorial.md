@@ -108,7 +108,7 @@ Ziflow で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Ziflow Domain and URLs (Ziflow ドメインと URL)] のシングル サインオン情報](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`urn:auth0:ziflow-production:<Unique ID>` の形式で URL を入力します。
 
@@ -142,7 +142,7 @@ Ziflow で Azure AD のシングル サインオンを構成してテストす�
 
     ![Ziflow の構成 - シングル](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML2.0]** として **[種類]** を選択します。
+    a. **[SAML2.0]** として **[種類]** を選択します。
 
     b. **[サインイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -204,7 +204,7 @@ Azure AD ユーザーが Ziflow にログインできるようにするには、
 
     ![Ziflow の構成 - ユーザーの追加](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: brittasimon@contoso.com)。
+    a. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: brittasimon@contoso.com)。
 
     b. **[名]** ボックスに、ユーザーの名を入力します (例: Britta)。
 

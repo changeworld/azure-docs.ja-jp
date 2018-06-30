@@ -112,7 +112,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/fieldglass-tutorial/tutorial_fieldglass_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、「`https://www.fieldglass.com`」と入力するか、`https://<company name>.fgvms.com` 形式の URL を入力します。
+    a. **[識別子]** ボックスに、「`https://www.fieldglass.com`」と入力するか、`https://<company name>.fgvms.com` 形式の URL を入力します。
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     | |
@@ -163,7 +163,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/fieldglass-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

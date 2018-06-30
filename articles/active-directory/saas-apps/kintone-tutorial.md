@@ -112,7 +112,7 @@ Kintone で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/kintone-tutorial/tutorial_kintone_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.kintone.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.kintone.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -157,7 +157,7 @@ Kintone で Azure AD のシングル サインオンを構成してテストす�
     
     ![SAML Authentication](./media/kintone-tutorial/ic785883.png "SAML Authentication")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
     
@@ -192,7 +192,7 @@ Kintone で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/kintone-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -229,7 +229,7 @@ Kintone の場合、プロビジョニングは手動で行います。
    
     ![New Users](./media/kintone-tutorial/ic785890.png "New Users")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの **[Display Name]\(表示名\)**、**[Login Name]\(ログイン名\)**、**[New Password]\(新しいパスワード\)**、**[Confirm Password]\(確認パスワード\)**、**[E-mail Address]\(メール アドレス\)**、その他の詳細を該当するボックスに入力します。
+    a. プロビジョニングする有効な AAD アカウントの **[Display Name]\(表示名\)**、**[Login Name]\(ログイン名\)**、**[New Password]\(新しいパスワード\)**、**[Confirm Password]\(確認パスワード\)**、**[E-mail Address]\(メール アドレス\)**、その他の詳細を該当するボックスに入力します。
  
     b. **[Save]** をクリックします。
 

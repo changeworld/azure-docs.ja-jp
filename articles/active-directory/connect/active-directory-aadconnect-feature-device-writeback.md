@@ -57,7 +57,7 @@ ms.locfileid: "34590591"
 
 4. **[デバイス コンテナー]** ページでは、使用可能な 2 つのオプションのどちらかを使って、Active Directory を準備できます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **エンタープライズ管理者の資格情報を提供する**: デバイスをライトバックする必要があるフォレストのエンタープライズ管理者の資格情報を提供すると、Azure AD Connect はデバイス ライトバックの構成の間にフォレストを自動的に準備します。
+    a. **エンタープライズ管理者の資格情報を提供する**: デバイスをライトバックする必要があるフォレストのエンタープライズ管理者の資格情報を提供すると、Azure AD Connect はデバイス ライトバックの構成の間にフォレストを自動的に準備します。
 
     b. **PowerShell スクリプトをダウンロードする**: Azure AD Connect は、デバイス ライトバック用に Active Directory を準備できる PowerShell スクリプトを自動生成します。 Azure AD Connect にエンタープライズ管理者の資格情報を提供できない場合、PowerShell スクリプトをダウンロードすることをお勧めします。 ダウンロードした PowerShell スクリプト **CreateDeviceContainer.psq** を、デバイスがライトバックされるフォレストのエンタープライズ管理者に提供します。
     ![Active Directory フォレストの準備](./media/active-directory-aadconnect-feature-device-writeback/devicecontainercreds.png)

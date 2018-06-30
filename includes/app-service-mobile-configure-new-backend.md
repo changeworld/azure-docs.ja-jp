@@ -23,7 +23,7 @@ ms.locfileid: "34664010"
 
     ![Azure Portal (Mobile Apps をデータベースに接続)][connect]
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい SQL データベースとサーバーを作成します。
+    a. 新しい SQL データベースとサーバーを作成します。
 
     ![Azure Portal (Mobile Apps の新しいデータベースとサーバーを作成)][server]
 

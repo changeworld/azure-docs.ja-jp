@@ -134,7 +134,7 @@ Lucidchart で Azure AD のシングル サインオンを構成してテスト�
 
 9. **[SAML Authentication Settings]** ダイアログ ページで、次の手順に従います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 認証を有効にする]** を選んで、**[オプション]** をクリックします。
+    a. **[SAML 認証を有効にする]** を選んで、**[オプション]** をクリックします。
 
     ![SAML Authentication Settings](./media/lucidchart-tutorial/ic791192.png "SAML Authentication Settings")
  
@@ -176,7 +176,7 @@ Lucidchart で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/lucidchart-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -110,7 +110,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     ![[SAML SSO for Bamboo by resolution GmbH のドメインと URL] のシングル サインオン情報](./media/bamboo-tutorial/tutorial_bamboo_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
 
@@ -149,7 +149,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 
     ![ID プロバイダー](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Idp Type]\(IDP の種類\)** として **[AZURE AD]** を選択します。
+    a. **[Idp Type]\(IDP の種類\)** として **[AZURE AD]** を選択します。
 
     b. **[Name]\(名前\)** ボックスに、名前を入力します。
 

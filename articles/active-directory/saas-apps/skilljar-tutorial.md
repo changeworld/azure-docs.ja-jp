@@ -112,7 +112,7 @@ Skilljar で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/skilljar-tutorial/tutorial_skilljar_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.skilljar.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.skilljar.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.skilljar.com/` の形式で URL を入力します。
 
@@ -156,7 +156,7 @@ Skilljar で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/skilljar-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

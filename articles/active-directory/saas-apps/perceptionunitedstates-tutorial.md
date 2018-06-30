@@ -110,7 +110,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![[Perception United States (非 UltiPro) のドメインと URL] のシングル サインオン情報](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://perception.kanjoya.com/sp`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://perception.kanjoya.com/sp`
 
     b. **[応答 URL]** ボックスに、`https://perception.kanjoya.com/sso?idp=<entity_id>` のパターンを使用して URL を入力します。
 
@@ -127,7 +127,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
 6. **[Perception United States (非 UltiPro) 構成]** セクションで、**[Perception United States (非 UltiPro) の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **Perception United States (非 UltiPro)** アプリケーションでは、先ほどコピーした **SAML エンティティ ID** 値を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、**http://www.url-encode-decode.com/** リンクを使用してください。
+    a. **Perception United States (非 UltiPro)** アプリケーションでは、先ほどコピーした **SAML エンティティ ID** 値を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、**http://www.url-encode-decode.com/** リンクを使用してください。
 
     b. URI でエンコードされた値を取得した後に、次の説明に従って、その値を**応答 URL** と結合します。
 
@@ -147,7 +147,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![Perception United States (非 UltiPro) ユーザー](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Company Name]** ボックスに、**会社**の名前を入力します。
+    a. **[Company Name]** ボックスに、**会社**の名前を入力します。
     
     b. **[Account Name]** ボックスに、**アカウント**の名前を入力します。
 
@@ -159,7 +159,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![Perception United States (非 UltiPro) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML NameID Type]** として **[EMAIL]** を選択します。
+    a. **[SAML NameID Type]** として **[EMAIL]** を選択します。
 
     b. **[SSO Configuration Name]** ボックスに**構成**の名前を入力します。
     

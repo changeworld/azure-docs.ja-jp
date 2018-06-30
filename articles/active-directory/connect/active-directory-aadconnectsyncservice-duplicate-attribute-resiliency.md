@@ -143,7 +143,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 1. 特定の属性構成を持つオブジェクトは、検疫されている重複属性ではなく、エクスポート エラーを受信し続けます。  
    例: 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AD で、UPN を **Joe@contoso.com**、ProxyAddress を **smtp:Joe@contoso.com** として新しいユーザーが作成されました。
+    a. AD で、UPN を **Joe@contoso.com**、ProxyAddress を **smtp:Joe@contoso.com** として新しいユーザーが作成されました。
    
     b. このオブジェクトのプロパティが、ProxyAddress が **SMTP:Joe@contoso.com** である既存の Group と競合します。
    
@@ -155,7 +155,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 1. UPN 競合セットの 2 つのオブジェクトの詳細なエラー メッセージは、同一です。 つまり、両方で UPN が変更/検疫されたと示されますが、実際には一方だけでデータが変更されています。
 2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 例: 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ユーザー A** が最初に **UPN = User@contoso.com** で同期を実行します。
+    a. **ユーザー A** が最初に **UPN = User@contoso.com** で同期を実行します。
    
     b. **ユーザー B** が次に **UPN = User@contoso.com** で同期を試行します。
    

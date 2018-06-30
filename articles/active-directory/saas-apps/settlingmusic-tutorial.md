@@ -108,7 +108,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     ![[楽楽精算のドメインと URL] のシングル サインオン情報](./media/settlingmusic-tutorial/tutorial_settlingmusic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     ![楽楽精算手順 5](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[有効にする]** をクリックします。
+    a. **[有効にする]** をクリックします。
 
     b. **[ID プロバイダーのログイン URL]** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 

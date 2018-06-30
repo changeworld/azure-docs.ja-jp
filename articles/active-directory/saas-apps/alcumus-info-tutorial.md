@@ -112,7 +112,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 
     ![[Configure Single Sign-On]](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.info-exchange.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.info-exchange.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.info-exchange.com/Auth/` のパターンを使用して URL を入力します。
 
@@ -156,7 +156,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
  
     ![Azure AD のテスト ユーザーの作成](./media/alcumus-info-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

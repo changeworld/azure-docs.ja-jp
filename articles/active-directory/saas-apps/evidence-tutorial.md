@@ -110,7 +110,7 @@ Evidence.com で Azure AD のシングル サインオンを構成してテス�
 
     ![[Evidence.com のドメインと URL] のシングル サインオン情報](./media/evidence-tutorial/tutorial_evidence.com_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<yourtenant>.evidence.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<yourtenant>.evidence.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<yourtenant>.evidence.com` の形式で URL を入力します。
 

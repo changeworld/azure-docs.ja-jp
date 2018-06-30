@@ -110,7 +110,7 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 
     ![[Proofpoint on Demand のドメインと URL] のシングル サインオン情報](./media/proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp` の形式で URL を入力します。
 

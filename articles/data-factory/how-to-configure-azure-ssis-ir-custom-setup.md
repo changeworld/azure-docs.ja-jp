@@ -112,7 +112,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 2.  他のカスタム セットアップの例を確認するには、Azure Storage Explorer を使ってパブリック プレビュー コンテナーに接続します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、**[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、**[次へ]** を選択します。
+    a.  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、**[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、**[次へ]** を選択します。
 
        ![Shared Access Signature を使って Azure Storage に接続する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 

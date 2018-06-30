@@ -112,7 +112,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/promapp-tutorial/tutorial_promapp_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://go.promapp.com/TENANTNAME/`|
@@ -161,7 +161,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
    
     ![Azure AD Single Sign-On][14]
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[SSO-Login URL]** ボックスに貼り付けます。
+    a. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[SSO-Login URL]** ボックスに貼り付けます。
     
     b. **[SSO - Single Sign-on Mode]** として **[Optional]** を選択し、**[Save]** をクリックします。
 
@@ -197,7 +197,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/promapp-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

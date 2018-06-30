@@ -112,7 +112,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     ![[Configure Single Sign-On]](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://platform.rescale.com/saml2/<company id>/` の形式で値を入力します。
+    a. **[識別子]** ボックスに、`https://platform.rescale.com/saml2/<company id>/` の形式で値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://platform.rescale.com/saml2/<company id>/acs/` のパターンを使用して URL を入力します。
 
@@ -129,7 +129,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     ![[Configure Single Sign-On]](./media/scalexenterprise-tutorial/scalex_attributes.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **name**  属性を右クリックし、[削除] をクリックします。
+    a. **name**  属性を右クリックし、[削除] をクリックします。
 
     ![[Configure Single Sign-On]](./media/scalexenterprise-tutorial/delete_attribute_name.png)
 
@@ -166,7 +166,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     ![[Configure Single Sign-On]](./media/scalexenterprise-tutorial/scalex_admin_save.png) 
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create any user who can authenticate with SSO (SSO で認証できるユーザーを作成する)]** を選択します。
+    a. **[Create any user who can authenticate with SSO (SSO で認証できるユーザーを作成する)]** を選択します。
 
     b. **[Service Provider saml (サービス プロバイダー SAML)]**: 値 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** を貼り付けます。
 
@@ -209,7 +209,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
  
     ![Azure AD のテスト ユーザーの作成](./media/scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

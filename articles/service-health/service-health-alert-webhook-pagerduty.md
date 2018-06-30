@@ -36,7 +36,7 @@ ms.locfileid: "30178914"
 
 4.  **[Integration Settings]** で、次のように選択します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Integration Type]**: Microsoft Azure
+    a. **[Integration Type]**: Microsoft Azure
 
     b. **[Integration Name]**:\<名前\>
 
@@ -54,7 +54,7 @@ ms.locfileid: "30178914"
 
 2. **[アクション]** の一覧で以下を定義します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **アクションの種類:** *webhook*
+    a. **アクションの種類:** *webhook*
 
     b. **詳細:** 先ほど保存した PagerDuty の **Integration URL**。
 
@@ -71,7 +71,7 @@ ms.locfileid: "30178914"
 
 4. **[アクション]** の一覧に以下を追加します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **アクションの種類:** *webhook*
+    a. **アクションの種類:** *webhook*
 
     b. **詳細:** 先ほど保存した PagerDuty の **Integration URL**。
 

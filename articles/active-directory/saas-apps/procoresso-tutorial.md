@@ -134,7 +134,7 @@ Procore SSO で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Single Sign On Issuer URL] \(シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
+    a. **[Single Sign On Issuer URL] \(シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
 
     b. **[SAML Sign On Target URL] \(SAML サインオンのターゲット URL)** ボックスに、Azure Portal でコピーした SAML シングル サインオン サービスの URL を貼り付けます。
 
@@ -180,7 +180,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
  
     ![Azure AD のテスト ユーザーの作成](./media/procoresso-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -202,7 +202,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![[Configure Single Sign-On]](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
+    a. **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
 
     b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
 

@@ -113,7 +113,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/scclifecycle-tutorial/tutorial_scclifecycle_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -164,7 +164,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/scclifecycle-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

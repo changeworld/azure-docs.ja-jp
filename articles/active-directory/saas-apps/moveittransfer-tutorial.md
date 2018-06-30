@@ -110,7 +110,7 @@ MOVEit Transfer - Azure AD integration で Azure AD のシングル サインオ
 
     ![[Configure Single Sign-On]](./media/moveittransfer-tutorial/tutorial_moveittransfer_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://contoso.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://contoso.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://contoso.com/<tenatid>` の形式で URL を入力します。
 
@@ -162,7 +162,7 @@ MOVEit Transfer - Azure AD integration で Azure AD のシングル サインオ
     
     ![フェデレーション ID プロバイダーの設定の編集](./media/moveittransfer-tutorial/tutorial_moveittransfer_006.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
+    a. **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
     
     b. **[Full name]\(フル ネーム\)** として **[Other]\(その他\)** を選び、**[Attribute name]\(属性名\)** ボックスに値「`http://schemas.microsoft.com/identity/claims/displayname`」を入力します。
     

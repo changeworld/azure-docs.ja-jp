@@ -112,7 +112,7 @@ Wikispaces で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_wikispaces_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.wikispaces.net` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.wikispaces.net` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://session.wikispaces.net/<instancename>` の形式で URL を入力します。
 
@@ -155,7 +155,7 @@ Wikispaces で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/wikispaces-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -182,7 +182,7 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
    
     ![ユーザーの招待](./media/wikispaces-tutorial/ic787208.png "ユーザーの招待")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、 **名前または電子メール アドレス** を入力します。
+    a. プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、 **名前または電子メール アドレス** を入力します。
    
     b. **[送信]** をクリックします。  
       

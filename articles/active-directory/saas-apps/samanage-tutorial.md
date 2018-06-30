@@ -112,7 +112,7 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/samanage-tutorial/tutorial_samanage_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<Company Name>.samanage.com/saml_login/<Company Name>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<Company Name>.samanage.com/saml_login/<Company Name>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<Company Name>.samanage.com` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
    
     ![SAML でログイン](./media/samanage-tutorial/tutorial_samanage_003.png "Login using SAML")
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable Single Sign-On with SAML (SAML でのシングル サインオンを有効にする)]** をクリックします。  
+    a. **[Enable Single Sign-On with SAML (SAML でのシングル サインオンを有効にする)]** をクリックします。  
  
     b. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。    
  
@@ -187,7 +187,7 @@ Samanage で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/samanage-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

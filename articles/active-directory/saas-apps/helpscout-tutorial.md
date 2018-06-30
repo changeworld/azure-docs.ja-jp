@@ -107,7 +107,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](./media/helpscout-tutorial/tutorial_helpscout_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **識別子**は、Help Scout の "**対象ユーザー URI (サービス プロバイダーのエンティティ ID)**" で、先頭は `urn:` です
+    a. **識別子**は、Help Scout の "**対象ユーザー URI (サービス プロバイダーのエンティティ ID)**" で、先頭は `urn:` です
 
     b. **応答 URL** は、Help Scout の "**ポスト バック URL (Assertion Consumer Service URL)**" で、先頭は `https://` です 
 
@@ -147,7 +147,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/helpscout-tutorial/settings3.png) 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Post-back URL (Assertion Consumer Service URL)]\(ポスト バック URL (Assertion Consumer Service URL)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    a. **[Post-back URL (Assertion Consumer Service URL)]\(ポスト バック URL (Assertion Consumer Service URL)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
     b. **[Audience URI (Service Provider Entity ID)]\(対象ユーザー URI (サービス プロバイダーのエンティティ ID)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
@@ -155,7 +155,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/helpscout-tutorial/settings4.png) 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
     
     b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 

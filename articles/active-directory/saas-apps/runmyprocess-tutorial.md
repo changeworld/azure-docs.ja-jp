@@ -139,7 +139,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
    
     ![アプリ側でのシングル サインオンの構成](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Method]** として、**[SSO with Samlv2]** を選択します。 
+    a. **[Method]** として、**[SSO with Samlv2]** を選択します。 
 
     b. **[SSO redirect (SSO リダイレクト)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -178,7 +178,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -202,7 +202,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
    
     ![プロファイル](./media/runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profile") 
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。 
+    a. プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。 
 
     b. **[IDE 言語]**、**[言語]**、**[プロファイル]** を選択します。 
 

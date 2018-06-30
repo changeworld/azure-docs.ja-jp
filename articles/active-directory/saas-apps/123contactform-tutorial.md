@@ -112,7 +112,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
     ![[Configure Single Sign-On]](./media/123contactform-tutorial/url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs` のパターンを使用して URL を入力します。
 
@@ -120,7 +120,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
     ![[Configure Single Sign-On]](./media/123contactform-tutorial/url2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、URL として「`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`」と入力します。
 
@@ -139,7 +139,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
     ![[Configure Single Sign-On]](./media/123contactform-tutorial/submit.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email]\(電子メール\)** ボックスに、ユーザーの電子メールを入力します。例:  **BrittaSimon@Contoso.com**。
+    a. **[Email]\(電子メール\)** ボックスに、ユーザーの電子メールを入力します。例:  **BrittaSimon@Contoso.com**。
 
     b. **[Upload]\(アップロード\)** をクリックし、Azure Portal からダウンロードしたメタデータ XML ファイルを参照します。
 
@@ -149,7 +149,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
     
     ![[Configure Single Sign-On]](./media/123contactform-tutorial/url3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[IDENTIFIER]\(識別子\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
+    a. アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[IDENTIFIER]\(識別子\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
     
     b. アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[REPLY URL]\(応答 URL\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
@@ -182,7 +182,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
  
     ![Azure AD のテスト ユーザーの作成](./media/123contactform-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

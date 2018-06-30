@@ -110,7 +110,7 @@ Clear Review で Azure AD のシングル サインオンを構成してテス�
 
     ![[Clear Review のドメインと URL] のシングル サインオン情報](./media/clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<customer name>.clearreview.com/sso/metadata/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<customer name>.clearreview.com/sso/metadata/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<customer name>.clearreview.com/sso/acs/` のパターンを使用して URL を入力します。
 
@@ -154,7 +154,7 @@ Clear Review で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Issuer URL]\(発行者 URL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[Issuer URL]\(発行者 URL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[SAML Endpoint]\(SAML エンドポイント\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。    
 

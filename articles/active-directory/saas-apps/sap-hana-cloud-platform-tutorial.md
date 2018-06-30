@@ -113,7 +113,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
 
     ![[SAP Cloud Platform のドメインと URL] のシングル サインオン情報](./media/sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが **SAP Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。 これは、SAP Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。 URL は次のパターンに基づいています。`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. **[サインオン URL]** ボックスに、ユーザーが **SAP Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。 これは、SAP Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。 URL は次のパターンに基づいています。`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
      >これは、ユーザーが認証を必要とする SAP Cloud Platform アプリケーションの URL です。
@@ -167,7 +167,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
 
     ![Trust Management](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Trust Management")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[編集]** をクリックします。
+    a. **[編集]** をクリックします。
 
     b. **[構成の種類]** として **[カスタム]** を選択します。
 
@@ -185,7 +185,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
    
     ![Get Metadata](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Get Metadata")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Get Metadata]\(メタデータの取得\)** をクリックして、SAP Cloud Platform メタデータ ファイルをダウンロードします。
+    a. **[Get Metadata]\(メタデータの取得\)** をクリックして、SAP Cloud Platform メタデータ ファイルをダウンロードします。
 
     b. ダウンロードした SAP Cloud Platform のメタデータ XML ファイルを開き、**ns3:AssertionConsumerService** タグを見つけます。
  
@@ -214,7 +214,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
     
     ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attributes") 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Add Assertion-Based Attribute (アサーション ベースの属性の追加)]** をクリックして、次のアサーション ベースの属性を追加します。
+    a. **[Add Assertion-Based Attribute (アサーション ベースの属性の追加)]** をクリックして、次のアサーション ベースの属性を追加します。
        
     | アサーション属性 | プリンシパル属性 |
     | --- | --- |
@@ -288,7 +288,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
    
     ![Authorizations](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Authorizations")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Authorization]** をクリックします。
+    a. **[Authorization]** をクリックします。
 
     b. **[Users]** タブをクリックします。
 

@@ -112,7 +112,7 @@ O.C.  Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
 
     ![[Configure Single Sign-On]](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[応答 URL]** ボックスに、`https://<companyname>.octanner.net/sp/ACS.saml2` のパターンを使用して URL を入力します。
+    a. **[応答 URL]** ボックスに、`https://<companyname>.octanner.net/sp/ACS.saml2` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 [O.C.Tanner - AppreciateHub サポート チーム](mailto:sso@octanner.com)に問い合わせて、この値を入手してください。
@@ -164,7 +164,7 @@ O.C.  Tanner - AppreciateHub で Azure AD のシングル サインオンを構�
  
     ![Azure AD のテスト ユーザーの作成](./media/oc-tanner-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -108,7 +108,7 @@ Adobe Creative Cloud での Azure AD シングル サインオンを構成して
 
     ![[Adobe Creative Cloud のドメインと URL] のシングル サインオン情報](./media/adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<token>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<token>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company name>.okta.com/auth/saml20/accauthlinktest` のパターンを使用して URL を入力します。
 
@@ -137,7 +137,7 @@ Adobe Creative Cloud での Azure AD シングル サインオンを構成して
     | LastName |User.surname |
     | 電子メール |User.mail |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
 
@@ -166,7 +166,7 @@ Adobe Creative Cloud での Azure AD シングル サインオンを構成して
 
     ![設定](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Settings")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Browse (参照)]** をクリックして、Azure AD からダウンロードした証明書を **[IDP Certificate (IDP 証明書)]** にアップロードします。
+    a. **[Browse (参照)]** をクリックして、Azure AD からダウンロードした証明書を **[IDP Certificate (IDP 証明書)]** にアップロードします。
 
     b. **[IDP issuer (IDP 発行者)]** ボックスで、Azure ポータルの **[サインオンの構成]** セクションからコピーした **SAML エンティティ ID** の値を入力します。
 
@@ -182,7 +182,7 @@ Adobe Creative Cloud での Azure AD シングル サインオンを構成して
 
     ![アプリ側でのシングル サインオンの構成](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリケーション設定の構成]** ダイアログの**識別子**として、アドビによって提供された EntityDescriptor 値を使用します。
+    a. **[アプリケーション設定の構成]** ダイアログの**識別子**として、アドビによって提供された EntityDescriptor 値を使用します。
 
     b. **[アプリケーション設定の構成]** ダイアログの **[応答 URL]** として、アドビによって提供された AssertionConsumerService 値を使用します。
 

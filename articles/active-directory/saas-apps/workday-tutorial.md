@@ -110,7 +110,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Workday のドメインと URL] のシングル サインオン情報](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.htmld` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.htmld` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`http://www.workday.com`
 
@@ -145,7 +145,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![リダイレクト URL](./media/workday-tutorial/IC7829581.png "Redirection URLs")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[行の追加]** をクリックします。
+    a. **[行の追加]** をクリックします。
    
     b. **[Login Redirect URL]\(ログイン リダイレクト URL\)** ボックスと **[Mobile Redirect URL]\(モバイル リダイレクト URL\)** ボックスに、Azure Portal の **[Workday のドメインと URL]** セクションで入力した**サインオン URL** を入力します。
    
@@ -162,7 +162,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![SAML のセットアップ](./media/workday-tutorial/IC782926.png "SAML Setup")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Enable SAML Authentication]** を選択します。
+    a.  **[Enable SAML Authentication]** を選択します。
    
     b.  **[行の追加]** をクリックします。
 
@@ -170,7 +170,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![SAML ID プロバイダー](./media/workday-tutorial/IC7829271.png "SAML Identity Providers")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
+    a. **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
    
     b. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML エンティティ ID]** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
 
@@ -194,7 +194,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![x509 公開鍵の表示](./media/workday-tutorial/IC782930.png "x509 公開鍵の表示") 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
+    a. **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
    
     b. **[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
    
@@ -215,7 +215,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![SSO 構成](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO configuration")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
+    a.  **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
    
     b. **[SP によって開始された認証要求を圧縮しない]** を選択します。
    

@@ -158,7 +158,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 6. SSMS を使って Azure SQL Database に接続し、`dbo.hvactable` がそこにあることを確認します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SSMS を開始し、次のスクリーンショットに示すように、接続の詳細を指定して Azure SQL Database に接続します。
+    a. SSMS を開始し、次のスクリーンショットに示すように、接続の詳細を指定して Azure SQL Database に接続します。
 
     ![SSMS を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS を使って SQL Database に接続する")
 

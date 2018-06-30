@@ -119,7 +119,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 Recovery Services コンテナーを開いていない場合は、[Azure Portal](https://portal.azure.com/) を開きます。 **[ハブ]** メニューで **[その他のサービス]** を選択します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力を開始すると、リストが絞り込まれます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
+   a. リソース ボックスに「 **Recovery Services**」と入力します。 入力を開始すると、リストが絞り込まれます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
       ![ボックスに入力し、結果の [Recovery Services コンテナー] を選択します](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 

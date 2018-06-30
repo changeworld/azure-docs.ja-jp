@@ -121,7 +121,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
     
     ![[Configure Single Sign-On]](./media/hightail-tutorial/tutorial_hightail_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、URL として「`https://www.hightail.com/loginSSO`」と入力します。
 
@@ -142,7 +142,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
     | 電子メール | User.mail |    
     | UserIdentity | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/hightail-tutorial/tutorial_officespace_04.png)
 
@@ -170,7 +170,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
 9. アプリケーションに合わせて SSO を構成するには、管理者として Hightail テナントにサインオンする必要があります。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上部にあるメニューの **[アカウント]** タブをクリックし、**[Configure SAML]** を選択します。
+    a. 上部にあるメニューの **[アカウント]** タブをクリックし、**[Configure SAML]** を選択します。
  
     ![[Configure Single Sign-On]](./media/hightail-tutorial/tutorial_hightail_001.png) 
 
@@ -221,7 +221,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/hightail-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

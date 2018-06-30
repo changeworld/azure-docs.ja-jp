@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![[Azure HDInsight] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
 2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を完了します。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureHDInsightLinkedService**」と入力します。
+   a. **[名前]** に「**AzureHDInsightLinkedService**」と入力します。
    
    b. **[Type]\(タイプ\)** で **[On-demand HDInsight]\(オンデマンド HDInsight\)** が選択されていることを確認します。
    
@@ -181,14 +181,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![Spark アクティビティのドラッグ](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
 3. 下部の **Spark** アクティビティ ウィンドウのプロパティで、次の手順を完了します。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDI Cluster]\(HDI クラスター\)** タブに切り替えます。
+   a. **[HDI Cluster]\(HDI クラスター\)** タブに切り替えます。
    
    b. (前の手順で作成した) **AzureHDInsightLinkedService** を選択します。 
         
    ![HDInsight のリンクされたサービスの指定](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 4. **[Script/Jar]\(スクリプト/Jar\)** タブに切り替えて、次の手順を実行します。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureStorage1]** を選択します。
+   a. **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureStorage1]** を選択します。
    
    b. **[ストレージを参照]** を選択します。
 

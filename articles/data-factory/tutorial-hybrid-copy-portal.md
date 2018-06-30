@@ -198,7 +198,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     ![統合ランタイムのセットアップ](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
 14. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**SqlServerLinkedService**」と入力します。
+    a. **[名前]** に「**SqlServerLinkedService**」と入力します。
 
     b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で、先ほど作成したセルフホステッド統合ランタイムが表示されることを確認します。
 
@@ -217,7 +217,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
        ![新しいリンクされたサービスの設定](./media/tutorial-hybrid-copy-portal/sql-server-linked-service-settings.png)
 15. ソース データセットが開かれているウィンドウに戻ります。 **[プロパティ]** ウィンドウの **[接続]** タブで、以下の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** に **SqlServerLinkedService** が表示されていることを確認します。
+    a. **[リンクされたサービス]** に **SqlServerLinkedService** が表示されていることを確認します。
 
     b. **[テーブル]** で **[dbo].[emp]** を選択します。
 
@@ -239,7 +239,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     ![新しいリンクされたサービスのボタン](./media/tutorial-hybrid-copy-portal/new-storage-linked-service-button.png)
 21. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureStorageLinkedService**」と入力します。
+    a. **[名前]** に「**AzureStorageLinkedService**」と入力します。
 
     b. **[ストレージ アカウント名]** で、使用するストレージ アカウントを選択します。
 
@@ -250,7 +250,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     ![Storage のリンクされたサービスの設定](./media/tutorial-hybrid-copy-portal/azure-storage-linked-service-settings.png) 
 22.  シンク データセットが開かれているウィンドウに戻ります。 **[接続]** タブで、次の手順を実行します。 
 
-        a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
+        a. **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
 
         b. **[ファイル パス]** の**フォルダー**部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
 

@@ -108,7 +108,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Amplitude のドメインと URL] のシングル サインオン情報](./media/amplitude-tutorial/tutorial_amplitude_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://amplitude.com/saml/sso/metadata`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://amplitude.com/saml/sso/metadata`
 
     b. **[応答 URL]** ボックスに、`https://analytics.amplitude.com/saml/sso/<uniqueid>` のパターンを使用して URL を入力します。
 
@@ -143,7 +143,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/amplitude-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
+    a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
     b. **[Reply URL (ACS)]\(応答 URL (ACS)\)** の値をコピーして Azure Portal の [Amplitude のドメインと URL] セクションの **[応答 URL]** ボックスに貼り付けます。
 

@@ -77,7 +77,7 @@ ms.locfileid: "30171807"
 
 2. Azure サービスに SQL Server へのアクセスを許可します。 SQL Server が実行されているサーバーの **[Azure サービスへのアクセスを許可]** 設定が有効になっていることを確認します。 この設定により、Data Factory が SQL Server インスタンスにデータを書き込むことができます。 この設定を確認して有効にするには、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 画面の左側にある **[その他のサービス]** を選択し、**[SQL Server]** を選択します。
+    a. 画面の左側にある **[その他のサービス]** を選択し、**[SQL Server]** を選択します。
 
     b. 目的のサーバーを選択し、**[設定]** > **[ファイアウォール]** を選択します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "30171807"
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
@@ -131,7 +131,7 @@ ms.locfileid: "30171807"
     ![[ソース データ ストア] ページ](./media/tutorial-copy-data-tool/source-data-store-page.png)
 4. **[Specify the Azure Blob storage account]\(Azure Blob Storage アカウントの指定\)** ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[接続名]** に「**AzureStorageLinkedService**」と入力します。
+    a. **[接続名]** に「**AzureStorageLinkedService**」と入力します。
 
     b. **[ストレージ アカウント名]** ボックスの一覧から目的のストレージ アカウント名を選択します。
 
@@ -143,7 +143,7 @@ ms.locfileid: "30171807"
 
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を行います。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **adfv2tutorial/input** フォルダーに移動します。
+    a. **adfv2tutorial/input** フォルダーに移動します。
 
     b. **inputEmp.txt** ファイルを選択します。
 
@@ -161,7 +161,7 @@ ms.locfileid: "30171807"
     ![コピー先データ ストア](./media/tutorial-copy-data-tool/destination-data-storage-page.png)
 8. **[Specify the Azure SQL database]\(Azure SQL データベースの指定\)** ページで、次の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[接続名]** に「**AzureSqlDatabaseLinkedService**」と入力します。
+    a. **[接続名]** に「**AzureSqlDatabaseLinkedService**」と入力します。
 
     b. **[サーバー名]** で、使用する SQL Server インスタンスを選択します。
 

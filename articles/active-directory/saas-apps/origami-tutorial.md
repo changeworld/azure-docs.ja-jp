@@ -139,7 +139,7 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
    
     ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_531.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
+    a. **[シングル サインオンを有効にする]** を選択します。
 
     b. **[Identity Provider's Sign-in Page URL (ID プロバイダー シングル サインイン ページ URL)]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -176,7 +176,7 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/origami-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,7 +206,7 @@ Origami で Azure AD のシングル サインオンを構成してテストす�
    
     ![[Configure Single Sign-On]](./media/origami-tutorial/tutorial_origami_56.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー名]** ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
+    a. **[ユーザー名]** ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
 
     b. **[パスワード]** ボックスに、パスワードを入力します。
 

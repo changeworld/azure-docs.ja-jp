@@ -36,7 +36,7 @@ ms.locfileid: "34165198"
 
 1. IntelliJ IDEA を起動し、プロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDInsight]** を選択します。 
+   a. **[HDInsight]** を選択します。 
 
    b. 設定に基づいて Java または Scala テンプレートを選択します。 以下のオプションから選択してください。
 
@@ -62,7 +62,7 @@ ms.locfileid: "34165198"
 
    ![Spark SDK を選択する](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロジェクト名とプロジェクトの場所を入力します。
+   a. プロジェクト名とプロジェクトの場所を入力します。
 
    b. **[Project SDK]\(プロジェクトのSDK\)** ボックスの一覧で、**Spark 2.x** クラスターの場合は **Java 1.8** を選択し、**Spark 1.x** クラスターの場合は **Java 1.7** を選択します。
 

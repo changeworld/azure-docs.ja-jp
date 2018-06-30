@@ -141,7 +141,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
    
     ![シングル サインオンの構成][56]
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name (名前)]** ボックスに、構成の一意の名前を入力します。 スペースは使用しないでください。
+    a. **[Name (名前)]** ボックスに、構成の一意の名前を入力します。 スペースは使用しないでください。
 
     b. **SAML エンティティ ID** を **[ID プロバイダーの発行者]** ボックスに貼り付けます。
 
@@ -176,7 +176,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
    
     ![シングル サインオンの構成][60]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Service Provider Issuer URL]\(サービス プロバイダー発行者 URL\)** をコピーし、Azure Portal の **[DocuSign のドメインと URL]** セクションの **[識別子]** ボックスに、`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>` のパターンで貼り付けます。
+    a. **[Service Provider Issuer URL]\(サービス プロバイダー発行者 URL\)** をコピーし、Azure Portal の **[DocuSign のドメインと URL]** セクションの **[識別子]** ボックスに、`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/login/sp/<uniqueID>` のパターンで貼り付けます。
    
     b. **[Service Provider Login URL]\(サービス プロバイダー ログイン URL\)** をコピーし、Azure Portal の **[DocuSign のドメインと URL]** セクションの **[サインオン URL]** ボックスに、`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/` のパターンで貼り付けます。
 
@@ -214,7 +214,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/docusign-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

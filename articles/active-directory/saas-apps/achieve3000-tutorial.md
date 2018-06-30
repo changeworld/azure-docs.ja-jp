@@ -110,7 +110,7 @@ Achieve3000 で Azure AD のシングル サインオンを構成してテスト
 
     ![[Achieve3000 のドメインと URL] のシングル サインオン情報](./media/achieve3000-tutorial/tutorial_achieve3000_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://saml.achieve3000.com/district/<District Identifier>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://saml.achieve3000.com/district/<District Identifier>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`achieve3000-saml`」を入力します。
 
@@ -131,7 +131,7 @@ Achieve3000 で Azure AD のシングル サインオンを構成してテスト
     | ------------------- | -------------------- |    
     | studentID               | User.mail |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/achieve3000-tutorial/tutorial_officespace_04.png)
 

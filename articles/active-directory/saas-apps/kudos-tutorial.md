@@ -141,7 +141,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
    
     ![SSO](./media/kudos-tutorial/ic787807.png "SSO")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sign on URL]\(サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
+    a. **[Sign on URL]\(サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
 
     b. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 証明書]** テキストボックスに貼り付けます。
    
@@ -178,7 +178,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/kudos-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -210,7 +210,7 @@ Kudos の場合、プロビジョニングは手動で行います。
    
     ![Add a User](./media/kudos-tutorial/ic787810.png "Add a User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure Active Directory アカウントの **[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
+    a. プロビジョニングする有効な Azure Active Directory アカウントの **[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
    
     b. **[Create User]** をクリックします。
 

@@ -110,7 +110,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     ![[XaitPorter のドメインと URL] のシングル サインオン情報](./media/xaitporter-tutorial/tutorial_xaitporter_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.xaitporter.com/saml/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.xaitporter.com/saml/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.xaitporter.com` の形式で URL を入力します。
 
@@ -141,7 +141,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/xaitporter-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
+    a. **[シングル サインオンを有効にする]** を選択します。
 
     b. **[ID プロバイダーの設定]** ボックスで、Azure Portal からコピーした**アプリのフェデレーション メタデータ URL** を貼り付けて、**[フェッチ]** をクリックします。
 

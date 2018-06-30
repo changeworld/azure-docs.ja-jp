@@ -112,7 +112,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<tenantname>.mypolicies.com/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<tenantname>.mypolicies.com/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<tenantname>.mypolicies.com/users/auth/saml/callback` のパターンを使用して URL を入力します。
 
@@ -132,7 +132,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
     | emailaddress | User.mail |
     | name | user.userprincipalname |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 属性をクリックして、**[属性の編集]** ダイアログを開きます。
+    a. 属性をクリックして、**[属性の編集]** ダイアログを開きます。
     
     ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_attribute_05.png)
     
@@ -181,7 +181,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/mypolicies-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -140,7 +140,7 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
     | LastName   | User.surname |
     | 電子メール   | User.mail |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ebsco-tutorial/tutorial_officespace_04.png)
 

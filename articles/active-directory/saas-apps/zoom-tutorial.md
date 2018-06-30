@@ -110,7 +110,7 @@ Zoom で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Zoom のドメインと URL] のシングル サインオン情報](./media/zoom-tutorial/tutorial_zoom_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.zoom.us` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.zoom.us` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<companyname>.zoom.us` の形式で URL を入力します。
 
@@ -131,7 +131,7 @@ Zoom で Azure AD のシングル サインオンを構成してテストする�
     | 電話番号 | user.telephonenumber | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone`|
     | 部署 | user.department | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department`|
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/zoom-tutorial/tutorial_attribute_04.png)
 
@@ -169,7 +169,7 @@ Zoom で Azure AD のシングル サインオンを構成してテストする�
    
     ![[Single sign-on] \(シングル サインオン\) セクション](./media/zoom-tutorial/IC784701.png "シングル サインオン")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインイン ページの URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[サインイン ページの URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[サインアウト ページの URL]** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
      
@@ -236,7 +236,7 @@ Azure AD ユーザーが Zoom にログインできるようにするには、�
    
     ![Add users](./media/zoom-tutorial/IC784704.png "Add users")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー タイプ]** として、**[基本]** を選択します。
+    a. **[ユーザー タイプ]** として、**[基本]** を選択します。
 
     b. **[Emails]\(電子メール\)** ボックスに、プロビジョニングする有効な Azure AD アカウントの電子メール アドレスを入力します。
 

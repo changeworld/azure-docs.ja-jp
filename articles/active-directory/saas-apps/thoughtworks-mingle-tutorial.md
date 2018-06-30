@@ -132,7 +132,7 @@ Thoughtworks Mingle で Azure AD のシングル サインオンを構成して�
    
     ![SSO Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 メタデータ ファイルをアップロードするには、 **[Choose file]** をクリックします。 
+    a. メタデータ ファイルをアップロードするには、 **[Choose file]** をクリックします。 
 
     b. **[変更を保存]** をクリックします。
 
@@ -163,7 +163,7 @@ Thoughtworks Mingle で Azure AD のシングル サインオンを構成して�
  
     ![[ユーザー] ダイアログ ボックス](./media/thoughtworks-mingle-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -195,7 +195,7 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
    
     ![[New User] ダイアログ](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure AD アカウントの**サインイン名**、**表示名**、**パスワードの選択**、**パスワードの確認**を該当するボックスに入力します。 
+    a. プロビジョニングする有効な Azure AD アカウントの**サインイン名**、**表示名**、**パスワードの選択**、**パスワードの確認**を該当するボックスに入力します。 
 
     b. **[User type]** として、**[Full user]** を選択します。
 

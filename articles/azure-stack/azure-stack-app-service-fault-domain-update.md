@@ -54,7 +54,7 @@ App Service リソース プロバイダー向けに展開されたスケール 
     ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
 
 2. 次に、各セットをスケールアウトします。  たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメイン間でプロビジョニングされるように、6 にスケールアウトする必要があります。
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [PowerShell で Azure Stack 管理環境を設定します](azure-stack-powershell-configure-admin.md)。b. この例を使用して、スケール セットをスケールアウトします。
+    a. [PowerShell で Azure Stack 管理環境を設定します](azure-stack-powershell-configure-admin.md)。b. この例を使用して、スケール セットをスケールアウトします。
         ```powershell
                 Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 

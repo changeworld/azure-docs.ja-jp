@@ -110,7 +110,7 @@ Nomadic で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Nomadic のドメインと URL] のシングル サインオン情報](./media/nomadic-tutorial/tutorial_nomadic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.nomadic.fm/signin` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.nomadic.fm/signin` のパターンを使用して URL を入力します。
 
     b. **[Identifier]\(識別子\)** ボックスに、`https://<company name>.nomadic.fm/auth/saml2/sp`、`https://<company name>.staging.nomadic.fm/auth/saml2/sp` のパターンで URL を入力します。
 

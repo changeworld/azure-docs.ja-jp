@@ -109,7 +109,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/upload.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータ ファイルをアップロードします]** をクリックします。
+    a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/tutorial_foreseen_uploadconfig.png)
 
@@ -123,7 +123,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://cxsuite.foresee.com/`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://cxsuite.foresee.com/`」を入力します。
 
     b. **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<UniqueID>` の形式で URL を入力します。
 

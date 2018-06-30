@@ -108,7 +108,7 @@ LoginRadius で Azure AD のシングル サインオンを構成してテスト
 
     ![[LoginRadius Domain and URLs]\(LoginRadius のドメインと URL\) のシングル サインオン情報](./media/lr-tutorial/tutorial_LoginRadius_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サインオン URL]** ボックスに、「`https://secure.loginradius.com/login`」と入力します。
+    a.  **[サインオン URL]** ボックスに、「`https://secure.loginradius.com/login`」と入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://LoginRadius.hub.loginradius.com/`
      

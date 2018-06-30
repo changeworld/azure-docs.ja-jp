@@ -112,7 +112,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
 
     ![[Configure Single Sign-On]](./media/igloo-software-tutorial/tutorial_igloosoftware_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.igloocommmunities.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.igloocommmunities.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<company name>.igloocommmunities.com/saml.digest` の形式で URL を入力します。
 
@@ -151,7 +151,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
    
     ![全般構成](./media/igloo-software-tutorial/ic783970.png "全般構成")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[接続名]** テキストボックスに、構成のカスタム名を入力します。
+    a. **[接続名]** テキストボックスに、構成のカスタム名を入力します。
    
     b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
@@ -165,7 +165,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
     
     ![応答および認証の構成](./media/igloo-software-tutorial/IC783971.png "応答および認証の構成")
   
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider (ID プロバイダー)]** として **[Microsoft ADFS]** を選択します。
+      a. **[Identity Provider (ID プロバイダー)]** として **[Microsoft ADFS]** を選択します。
       
       b. **[Identifier Type (識別子の種類)]** として **[Email Address (メール アドレス)]** を選択します。 
 
@@ -179,7 +179,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
     
     ![サインインでユーザー作成](./media/igloo-software-tutorial/IC783972.png "サインインでユーザー作成") 
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User creation on Sign in (サインイン時のユーザー作成)]** で **[Create a new user in your site when they sign in (サインイン時に新しいユーザーをサイトに作成する)]** を選択します。
+     a. **[User creation on Sign in (サインイン時のユーザー作成)]** で **[Create a new user in your site when they sign in (サインイン時に新しいユーザーをサイトに作成する)]** を選択します。
 
      b. **[Sign in Settings (サインインの設定)]** で、**[Use SAML button on "Sign in" screen ([サインイン] 画面で SAML ボタンを使用する)]** を選択します。
 
@@ -211,7 +211,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
  
     ![Azure AD のテスト ユーザーの作成](./media/igloo-software-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

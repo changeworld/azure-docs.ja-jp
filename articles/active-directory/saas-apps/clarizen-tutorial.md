@@ -98,7 +98,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
     ![識別子と応答 URL のボックス](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「**Clarizen**」と入力します。
+    a. **[識別子]** ボックスに、値として「**Clarizen**」と入力します。
 
     b. **[応答 URL]** ボックスに、**https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx** というパターンを使用して URL を入力します。
 
@@ -145,7 +145,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
     ![[Federated Authentication (フェデレーション認証)] ダイアログ ボックス](./media/clarizen-tutorial/tutorial_clarizen_003.png "フェデレーション認証")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable Federated Authentication (フェデレーション認証を有効にする)]** をオンにします。
+    a. **[Enable Federated Authentication (フェデレーション認証を有効にする)]** をオンにします。
 
     b. **[アップロード]** をクリックして、ダウンロードした証明書をアップロードします。
 
@@ -178,7 +178,7 @@ Azure Portal で Britta Simon というテスト ユーザーを作成します�
 
     ![名前、電子メール アドレス、パスワードが入力済みの [ユーザー] ダイアログ ボックス](./media/clarizen-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
@@ -208,7 +208,7 @@ Clarizen への Azure AD ユーザーのサインインを有効にするには�
 
     ![[Invite People (ユーザーの招待)] ダイアログ ボックス](./media/clarizen-tutorial/create_aaduser_003.png "ユーザーの招待")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    a. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
     b. **[招待]** をクリックします。
 

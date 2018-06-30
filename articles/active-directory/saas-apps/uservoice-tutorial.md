@@ -110,7 +110,7 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
     ![[UserVoice のドメインと URL] のシングル サインオン情報](./media/uservoice-tutorial/tutorial_uservoice_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.UserVoice.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenantname>.UserVoice.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenantname>.UserVoice.com` の形式で URL を入力します。
 
@@ -143,7 +143,7 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
    
     ![ユーザー認証の編集](./media/uservoice-tutorial/ic777521.png "Edit user authentication")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン]** をクリックします。
+    a. **[シングル サインオン]** をクリックします。
  
     b. Azure Portal からコピーした **[SAML シングル サインオン サービスの URL]** の値を **[SSO Remote Sign-In]\(SSO リモート サインイン\)** ボックスに貼り付けます。
 
@@ -214,7 +214,7 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
    
     ![管理者の招待](./media/uservoice-tutorial/ic777814.png "Invite admins")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
+    a. [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
    
     b. **[招待]** をクリックします。
 

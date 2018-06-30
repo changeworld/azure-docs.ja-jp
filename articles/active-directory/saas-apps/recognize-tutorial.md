@@ -112,7 +112,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://recognizeapp.com/<your-domain>/saml/sso` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://recognizeapp.com/<your-domain>/saml/sso` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://recognizeapp.com/<your-domain>` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
    
     ![アプリ側でのシングル サインオンの構成](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SSO (SSO を有効にする)]** を **[ON]** にします。
+    a. **[Enable SSO (SSO を有効にする)]** を **[ON]** にします。
 
     b. **[IDP Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     
@@ -192,7 +192,7 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/recognize-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -218,7 +218,7 @@ Azure AD ユーザーが Recognize にログインできるようにするには
    
    ![New User](./media/recognize-tutorial/tutorial_recognize_005.png "New User")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sync Enabled (同期の有効化)]** で **[ON]** を選択します。
+   a. **[Sync Enabled (同期の有効化)]** で **[ON]** を選択します。
    
    b. **[Choose sync provider (同期プロバイダーの選択)]** で、**[Microsoft / Office 365]** を選択します。
    

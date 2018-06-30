@@ -112,7 +112,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` のパターンを使用して URL を入力します。
 
@@ -171,7 +171,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bitbucket のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
+    a. **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bitbucket のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
 
     b. **[次へ]** をクリックします。
 
@@ -179,7 +179,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
     b. **[次へ]** をクリックします。
 
@@ -187,7 +187,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
+    a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
     b. **[次へ]** をクリックします。
 
@@ -199,7 +199,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create users in Bitbucket's internal Directory if needed]\(必要に応じて Bitbucket の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
+    a. **[Create users in Bitbucket's internal Directory if needed]\(必要に応じて Bitbucket の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
     b. **[次へ]** をクリックします。
 
@@ -211,7 +211,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
+    a. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
 
     b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
@@ -244,7 +244,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforbitbucket-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -276,7 +276,7 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
 
     ![従業員の追加](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
+    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
     
     b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
     

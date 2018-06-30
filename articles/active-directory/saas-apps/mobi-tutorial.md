@@ -110,7 +110,7 @@ MOBI で Azure AD のシングル サインオンを構成してテストする�
 
     ![[MOBI のドメインと URL] のシングル サインオン情報](./media/mobi-tutorial/tutorial_mobi_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.thefutureis.mobi` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.thefutureis.mobi` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.thefutureis.mobi/saml_consume` のパターンを使用して URL を入力します。
 

@@ -112,7 +112,7 @@ SimpleNexus で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/simplenexus-tutorial/tutorial_simplenexus_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://simplenexus.com/<companyname>_login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://simplenexus.com/<companyname>_login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://simplenexus.com/<companyname>` の形式で URL を入力します。
 
@@ -156,7 +156,7 @@ SimpleNexus で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/simplenexus-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

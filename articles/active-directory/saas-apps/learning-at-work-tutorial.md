@@ -112,7 +112,7 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.sabacloud.com/Saba/Web/<company code>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.sabacloud.com/Saba/Web/<company code>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>` の形式で URL を入力します。
 
@@ -159,7 +159,7 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/learning-at-work-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

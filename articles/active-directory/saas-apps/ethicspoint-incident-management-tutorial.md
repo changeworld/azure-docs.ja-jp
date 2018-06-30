@@ -112,7 +112,7 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
 
     ![[Configure Single Sign-On]](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.navexglobal.com`|
@@ -162,7 +162,7 @@ EthicsPoint Incident Management (EPIM) で Azure AD のシングル サインオ
  
     ![Azure AD のテスト ユーザーの作成](./media/ethicspoint-incident-management-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

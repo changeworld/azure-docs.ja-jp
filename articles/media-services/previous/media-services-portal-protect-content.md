@@ -100,7 +100,7 @@ AES クリア キーによる暗号化はすべてのストリーミング プ�
 #### <a name="drm"></a>DRM
 1. **[DRM]** を選択すると、さまざまなコンテンツ保護ポリシー (この時点までに構成しておく必要があります) と一連のストリーミング プロトコルが表示されます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **MPEG-DASH との PlayReady および Widevine**: PlayReady および Widevine DRM により MPEG-DASH ストリームが動的に暗号化されます。
+    a. **MPEG-DASH との PlayReady および Widevine**: PlayReady および Widevine DRM により MPEG-DASH ストリームが動的に暗号化されます。
 
     b. **MPEG-DASH との PlayReady および Widevine + HLS との FairPlay**: PlayReady および Widevine DRM により MPEG-DASH ストリームが動的に暗号化されます。 このオプションを選択すると、FairPlay で HLS ストリームも暗号化されます。
 

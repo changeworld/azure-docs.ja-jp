@@ -121,7 +121,7 @@ zypper install mdadm
 
 2. 新しい RAID デバイスにファイル システムを作成します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
+    a. **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127

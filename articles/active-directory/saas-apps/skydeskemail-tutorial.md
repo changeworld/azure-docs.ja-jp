@@ -131,7 +131,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
 7. **SkyDesk Email** で SSO を有効にするには、次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者として SkyDesk Email アカウントにサインオンします。
+    a. 管理者として SkyDesk Email アカウントにサインオンします。
 
     b. 上部のメニューで、**[設定]** をクリックし、**[組織]** を選択します。 
     
@@ -164,7 +164,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
    
     ![[Configure Single Sign-On]](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[ログアウト]** URL ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
@@ -203,7 +203,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/skydeskemail-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

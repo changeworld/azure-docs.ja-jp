@@ -110,7 +110,7 @@ Central Desktop で Azure AD のシングル サインオンを構成してテ�
 
     ![[Central Desktop のドメインと URL] のシングル サインオン情報](./media/central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.centraldesktop.com` というパターンで URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.centraldesktop.com` というパターンで URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
@@ -145,7 +145,7 @@ Central Desktop で Azure AD のシングル サインオンを構成してテ�
 
     ![シングル サインオンの設定](./media/central-desktop-tutorial/ic769564.png "シングル サインオンの設定")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML v2 Single Sign On]** チェック ボックスをオンにします。
+    a. **[Enable SAML v2 Single Sign On]** チェック ボックスをオンにします。
     
     b. **[SSO URL]\(SSO URL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     

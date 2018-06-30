@@ -112,7 +112,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/sumologic-tutorial/tutorial_sumologic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.SumoLogic.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenantname>.SumoLogic.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -156,7 +156,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
    
     ![Configure SAML 2.0](./media/sumologic-tutorial/ic778559.png "Configure SAML 2.0")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。 
+    a. **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。 
 
     b. **[Debug Mode]** を選択します。
 
@@ -199,7 +199,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/sumologic-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -229,7 +229,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
    
     ![New User](./media/sumologic-tutorial/ic778563.png "New User") 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]\(名\)**、**[Last Name]\(姓\)**、および **[Email]\(電子メール\)** ボックスに入力します。
+    a. プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]\(名\)**、**[Last Name]\(姓\)**、および **[Email]\(電子メール\)** ボックスに入力します。
   
     b. ロールを選択します。
   

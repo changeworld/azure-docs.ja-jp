@@ -110,7 +110,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 
     ![[Insignia SAML SSO のドメインと URL] のシングル サインオン情報](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |

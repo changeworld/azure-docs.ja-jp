@@ -132,7 +132,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
 
 9. **[Single Sign On Settings (シングル サインオン設定)]** フォームで、次の手順を実行します。
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Issuer Name (発行者名)]** として [Azure AD] を選択します。
+    a. **[Issuer Name (発行者名)]** として [Azure AD] を選択します。
     
     b. [Issuer URL (発行者 URL)] ボックスに、Azure ポータルからコピーした **SAML エンティティ ID** を 貼り付けます。
     
@@ -170,7 +170,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD のシング
  
     ![Azure AD のテスト ユーザーの作成](./media/sensoscientific-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

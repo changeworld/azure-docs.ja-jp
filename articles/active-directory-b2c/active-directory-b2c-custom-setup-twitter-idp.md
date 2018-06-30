@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Twi
 
 2. **[Create an application]** ウィンドウで、次の操作を行います。
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しいアプリの **[Name]** と **[Description]** を入力します。 
+    a. 新しいアプリの **[Name]** と **[Description]** を入力します。 
 
     b. **[Web サイト]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。 
 

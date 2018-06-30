@@ -112,7 +112,7 @@ Aha! で Azure AD のシングル サインオンを構成およびテストす�
 
     ![[Configure Single Sign-On]](./media/aha-tutorial/tutorial_aha_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.aha.io/session/new` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.aha.io/session/new` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.aha.io` の形式で URL を入力します。
 
@@ -149,7 +149,7 @@ Aha! で Azure AD のシングル サインオンを構成およびテストす�
     
     ![シングル サインオン](./media/aha-tutorial/IC798954.png "Single Sign-On")
     
-       a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに、構成の名前を入力します。
+       a. **[名前]** テキスト ボックスに、構成の名前を入力します。
 
        b. **[Configure using]** には **[メタデータ ファイル]** を選択します。
    
@@ -184,7 +184,7 @@ Aha! で Azure AD のシングル サインオンを構成およびテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/aha-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -62,7 +62,7 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 3. Spark-Gremlin プラグインをインストールします。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プラグインのインストールは Grape によって処理されます。 Grape がプラグインとその依存関係をダウンロードできるように、Grape のレポジトリ情報を入力します。 
+    a. プラグインのインストールは Grape によって処理されます。 Grape がプラグインとその依存関係をダウンロードできるように、Grape のレポジトリ情報を入力します。 
 
       grape 構成ファイルが `~/.groovy/grapeConfig.xml` に存在しない場合は、構成ファイルを作成します。 次の設定を使用します。
 
@@ -177,7 +177,7 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 2. または、ローカルでビルドしてもかまいません。 最新バージョンの Spark-Gremlin は Spark 1.6.1 でビルドされており、現在 Azure Cosmos DB Spark コネクタで使われている Spark 2.0.2 とは互換性がないため、手動で最新の TinkerPop3 のコードをビルドして jar をインストールできます。 以下の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Cosmos DB Spark コネクタを複製します。
+    a. Azure Cosmos DB Spark コネクタを複製します。
 
     b. TinkerPop3 をビルドします (先ほど手順で既に実行済み)。 TinkerPop 3.3.0-SNAPSHOT のすべての jar をローカルにインストールします。
 
@@ -215,7 +215,7 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 2. 次の手順に従って、前述の Gremlin の依存関係、CosmosDB Spark コネクタの jar、および CosmosDB Java SDK をワーカー ノードにコピーします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 すべての jar を `~/azure-documentdb-spark` にコピーします。
+    a. すべての jar を `~/azure-documentdb-spark` にコピーします。
 
     ```bash
     $ /home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone:
@@ -238,7 +238,7 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 2. すべてのノードの hdp.version を設定します。 Ambari Dashboard で、**YARN セクション** > **[Configs\(構成\)]** > **[Advanced\(詳細\)]** に移動し、次の操作を行います。 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `Custom yarn-site` に新しいプロパティ `hdp.version` を追加し、マスター ノードの HDP バージョンの値を指定します。 
+    a. `Custom yarn-site` に新しいプロパティ `hdp.version` を追加し、マスター ノードの HDP バージョンの値を指定します。 
      
     b. 構成を保存します。 警告が表示されますが、無視してかまいません。 
      
@@ -324,7 +324,7 @@ Azure Cosmos DB にグラフを保存する方法を示すため、この例で�
 
 3. Gremlin コンソールを起動し、構成済みの Azure Cosmos DB コレクションにデータを永続化する次の計算処理手順を作成します。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 グラフを作成します。`graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`
+    a. グラフを作成します。`graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`
 
     b. 書き込みには SparkGraphComputer を使用します。`graph.compute(SparkGraphComputer.class).result(GraphComputer.ResultGraph.NEW).persist(GraphComputer.Persist.EDGES).program(TraversalVertexProgram.build().traversal(graph.traversal().withComputer(Computer.compute(SparkGraphComputer.class)),"gremlin-groovy","g.V()").create(graph)).submit().get()`
 
@@ -355,7 +355,7 @@ Azure Cosmos DB にグラフを保存する方法を示すため、この例で�
 
 2. 次の手順に従って、グラフを読み込んでデータを走査し、Gremlin クエリを実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Gremlin コンソールを起動します。`bin/gremlin.sh`
+    a. Gremlin コンソールを起動します。`bin/gremlin.sh`
 
     b. 必要な構成でグラフを作成します。`graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')`
 

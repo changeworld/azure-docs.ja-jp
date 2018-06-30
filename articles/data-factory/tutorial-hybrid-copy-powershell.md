@@ -301,7 +301,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
     ![[診断] タブ](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[構成マネージャー]** ウィンドウで、**[診断]** タブに切り替えます。
+    a. **[構成マネージャー]** ウィンドウで、**[診断]** タブに切り替えます。
 
     b. **[データ ソースの種類]** ボックスで **[SqlServer]** を選択します。
 

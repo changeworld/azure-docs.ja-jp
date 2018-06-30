@@ -156,7 +156,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     ![SAML 有効](./media/work-com-tutorial/ic781026.png "SAML Enabled")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Enabled]** を選択します。
+    a. **[SAML Enabled]** を選択します。
     
     b. **[新規]** をクリックします。
 
@@ -164,7 +164,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     ![SAML Single Sign-On Setting](./media/work-com-tutorial/ic794114.png "SAML Single Sign-On Setting")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに、構成の名前を入力します。  
+    a. **[名前]** テキスト ボックスに、構成の名前を入力します。  
        
     > [!NOTE]
     > **[名前]** の値を指定すると、**[API 名]** ボックスが自動的に入力されます。
@@ -226,7 +226,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
  
     ![[ユーザー] ダイアログ ページ](./media/work-com-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -255,7 +255,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
    
     ![User Edit](./media/work-com-tutorial/ic794118.png "User Edit")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの**名** (**Britta**) を入力します。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの**名** (**Britta**) を入力します。
     
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの**姓** (**Simon**) を入力します。
     

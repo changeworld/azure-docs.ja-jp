@@ -143,7 +143,7 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードした **Certificate(Bas64)** をメモ帳で開き、証明書の値をコピーします。 コピーした値を **[X.509 Certificate]** ボックスに貼り付けます。
+    a. Azure Portal からダウンロードした **Certificate(Bas64)** をメモ帳で開き、証明書の値をコピーします。 コピーした値を **[X.509 Certificate]** ボックスに貼り付けます。
 
     b. **[Idp Issuer URL]** ボックスに、Azure Portal でコピーした **SAML エンティティ ID** を貼り付けます。
 
@@ -180,7 +180,7 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/purelyhr-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

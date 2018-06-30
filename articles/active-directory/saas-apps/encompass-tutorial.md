@@ -110,7 +110,7 @@ Encompass で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Encompass のドメインと URL] のシングル サインオン情報](./media/encompass-tutorial/tutorial_encompass_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに顧客固有の値を入力します。
+    a. **[識別子]** ボックスに顧客固有の値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.voxmobile.com/voxportal/ws/saml/consume` のパターンを使用して URL を入力します。
 

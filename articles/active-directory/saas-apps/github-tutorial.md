@@ -108,7 +108,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
     ![GitHubドメインと URL シングル サインオンの情報](./media/github-tutorial/tutorial_github_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://github.com/orgs/<entity-id>/sso` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://github.com/orgs/<entity-id>/sso` のパターンを使用して URL を入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://github.com/orgs/<entity-id>`
 
@@ -143,7 +143,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
 11. 次のフィールドを構成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン URL]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[シングル サインオン URL]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. **[発行者]** テキストボックスに、Azure Portal からコピーした、**SAML エンティティ ID** の値を貼り付けます。
 
@@ -207,7 +207,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[メンバーの招待]** ダイアログ ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    a. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
     ![ユーザーの招待](./media/github-tutorial/tutorial_github_config_github_10.png "ユーザーの招待")
 

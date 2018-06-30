@@ -132,7 +132,7 @@ Druva で Azure AD のシングル サインオンを構成してテストする
     | ------------------- | -------------------- |
     | insync\_auth\_token |トークン生成値を入力します |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
     ![[Configure Single Sign-On]](./media/druva-tutorial/tutorial_attribute_04.png)
     
@@ -162,7 +162,7 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![Single Sign-On Settings](./media/druva-tutorial/ic795092.png "Single Sign-On Settings")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
         
     b. **[ID Provider Logout URL]\(ID プロバイダー ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
         
@@ -178,7 +178,7 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![SSO Token](./media/druva-tutorial/ic795094.png "SSO Token")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Copy]\(コピー\)** をクリックし、Azure Portal の **[Add Attribute]\(属性の追加\)** セクションの **[Value]\(値\)** ボックスにコピーした値を貼り付けます。
+    a. **[Copy]\(コピー\)** をクリックし、Azure Portal の **[Add Attribute]\(属性の追加\)** セクションの **[Value]\(値\)** ボックスにコピーした値を貼り付けます。
     
     b. **[閉じる]** をクリックします。
 
@@ -238,7 +238,7 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
    
    ![Create NewUser](./media/druva-tutorial/ic795099.png "Create NewUser")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+   a. **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
    
    b. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
    

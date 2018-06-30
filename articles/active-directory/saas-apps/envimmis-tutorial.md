@@ -108,7 +108,7 @@ Envi MMIS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Envi MMIS のドメインと URL] のシングル サインオン情報](./media/envimmis-tutorial/tutorial_envimmis_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account/Acs` のパターンを使用して URL を入力します。
 
@@ -151,7 +151,7 @@ Envi MMIS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure5.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Upload From]\(アップロード元\)** ドロップダウンから **[File]\(ファイル\)** オプションを選びます。
+    a. **[Upload From]\(アップロード元\)** ドロップダウンから **[File]\(ファイル\)** オプションを選びます。
 
     b. **ファイル選択アイコン**を選ぶことにより、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
 
@@ -214,7 +214,7 @@ Envi MMIS の場合、プロビジョニングは手動で行います。
 
     ![従業員の追加](./media/envimmis-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User Name]\(ユーザー名)** テキストボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon@contoso.com**)。
+    a. **[User Name]\(ユーザー名)** テキストボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon@contoso.com**)。
     
     b. **[First Name]\(名\)** テキスト ボックスに、Britta Simon の名を入力します (**Britta**)。
 

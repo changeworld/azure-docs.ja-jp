@@ -113,7 +113,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Configure Single Sign-On]](./media/jive-tutorial/tutorial_jive_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instance name>.jivecustom.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<instance name>.jivecustom.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<instance name>.jiveon.com` の形式で URL を入力します。
 
@@ -134,13 +134,13 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_002.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[General]\(全般\)** タブで **[Enabled]\(有効\)** を選択します。b. **[Save all saml settings (すべての SAML 設定を保存)]** ボタンをクリックします。
+    a. **[General]\(全般\)** タブで **[Enabled]\(有効\)** を選択します。b. **[Save all saml settings (すべての SAML 設定を保存)]** ボタンをクリックします。
 
 8. **[Idp Metadata (IDP メタデータ)]** タブに移動します。
 
     ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_003.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ダウンロードしたメタデータ XML ファイルの内容をコピーし、**[Identity Provider (IDP) Metadata (ID プロバイダー (IDP) のメタデータ)]** ボックスに貼り付けます。
+    a. ダウンロードしたメタデータ XML ファイルの内容をコピーし、**[Identity Provider (IDP) Metadata (ID プロバイダー (IDP) のメタデータ)]** ボックスに貼り付けます。
 
     b. **[Save all saml settings (すべての SAML 設定を保存)]** ボタンをクリックします。
 
@@ -148,7 +148,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_004.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email (電子メール)]** ボックスに、**mail** 値の属性名をコピーして貼り付けます。
+    a. **[Email (電子メール)]** ボックスに、**mail** 値の属性名をコピーして貼り付けます。
 
     b. **[First Name (名)]** ボックスに、**givenname** 値の属性名をコピーして貼り付けます。
 
@@ -177,7 +177,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     ![Azure AD のテスト ユーザーの作成](./media/jive-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

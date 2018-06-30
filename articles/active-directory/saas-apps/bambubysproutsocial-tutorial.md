@@ -166,7 +166,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
  
     ![Azure AD のテスト ユーザーの作成](./media/bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに「**Britta Simon**」と入力します。
+    a. **[Name]** ボックスに「**Britta Simon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

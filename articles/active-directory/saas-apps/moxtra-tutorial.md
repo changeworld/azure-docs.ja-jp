@@ -129,7 +129,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
     > [!Note]
     > 属性 **idpid** の値は、実際のものではありません。 実際の値は、**[Moxtra Configuration]\(Moxtra 構成\)** の **[クイック リファレンス]** セクションから取得できます。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/moxtra-tutorial/tutorial_attribute_04.png)
 
@@ -163,7 +163,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
    
     ![[Configure Single Sign-On]](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name (名前)]** ボックスに、構成の名前を入力します (例: *SAML*)。 
+    a. **[Name (名前)]** ボックスに、構成の名前を入力します (例: *SAML*)。 
   
     b. **[IdP Entity ID]\(IdP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
  
@@ -208,7 +208,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/moxtra-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -230,7 +230,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
 3. **[Add User]** ダイアログで、次の手順を実行します。
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。
+    a. **[名]** ボックスに「**Britta**」と入力します。
   
     b. **[姓]** ボックスに「**Simon**」と入力します。
   

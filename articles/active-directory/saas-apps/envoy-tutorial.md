@@ -148,7 +148,7 @@ Envoy で Azure AD のシングル サインオンを構成してテストする
     >[!NOTE]
     >[HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Fingerprint]\(フィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **Thumbprint (拇印)** 値を貼り付けます。
+    a. **[Fingerprint]\(フィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **Thumbprint (拇印)** 値を貼り付けます。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービスの URL** を **[IDENTITY PROVIDER HTTP SAML URL]\(ID プロバイダーのHTTP SAML URL\)** ボックスに貼り付けます。
     

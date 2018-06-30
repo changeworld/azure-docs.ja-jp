@@ -112,7 +112,7 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
 
     ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.instructure.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.instructure.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.instructure.com/saml2` の形式で値を入力します。
 
@@ -145,7 +145,7 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
    
     ![Current Integration](./media/canvas-lms-tutorial/IC775992.png "Current Integration")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IdP Entity ID] \(IdP エンティティ ID)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[IdP Entity ID] \(IdP エンティティ ID)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[Log On URL] \(ログオン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -187,7 +187,7 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/canvas-lms-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -221,7 +221,7 @@ Canvas の場合、ユーザー プロビジョニングは手動のタスクで
    
    ![ユーザーの追加](./media/canvas-lms-tutorial/IC775997.png "Add User")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
+   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
    b. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
 

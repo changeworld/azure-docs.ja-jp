@@ -110,7 +110,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![Salesforce Sandbox Domain のドメインと URL のシングル サインオン情報](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>--Sandbox.<entityid>.my.salesforce.com` のパターンを使用して値を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<instancename>--Sandbox.<entityid>.my.salesforce.com` のパターンを使用して値を入力します。
 
     b. **[識別子]** ボックスに、`https://<instancename>--Sandbox.<entityid>.my.salesforce.com` の形式で値を入力します。
     
@@ -151,7 +151,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![[Configure Single Sign-On]](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに、構成の名前を入力します (例: *SPSSOWAAD_Test*)。 
+    a. **[名前]** テキストボックスに、構成の名前を入力します (例: *SPSSOWAAD_Test*)。 
 
     b. **[発行者]** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます
 

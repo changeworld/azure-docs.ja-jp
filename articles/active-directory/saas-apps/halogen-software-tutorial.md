@@ -114,7 +114,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
     ![[Configure Single Sign-On]](./media/halogen-software-tutorial/tutorial_halogensoftware_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://global.hgncloud.com/<companyname>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://global.hgncloud.com/<companyname>` のパターンを使用して URL を入力します。
 
     b. **[Identifier]\(識別子\)** ボックスに、`https://global.halogensoftware.com/<companyname>`、`https://global.hgncloud.com/<companyname>` のパターンで URL を入力します。
 
@@ -145,7 +145,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
     ![What is Azure AD Connect][14]
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Unique Identifier]** で **[NameID]** を選択します。
+     a. **[Unique Identifier]** で **[NameID]** を選択します。
 
      b. **[Unique Identifier Maps To]** で **[Username]** を選択します。
   
@@ -188,7 +188,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
  
     ![Azure AD のテスト ユーザーの作成](./media/halogen-software-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -212,7 +212,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
    
     ![What is Azure AD Connect][301]
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
     
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。 
 

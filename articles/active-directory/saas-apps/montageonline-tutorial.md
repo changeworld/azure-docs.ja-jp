@@ -108,7 +108,7 @@ Montage Online で Azure AD のシングル サインオンを構成してテス
 
     ![[Montage Online のドメインと URL] のシングル サインオン情報](./media/montageonline-tutorial/tutorial_montageonline_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
     運用環境: `https://<subdomain>.montageonline.co.nz/`
 

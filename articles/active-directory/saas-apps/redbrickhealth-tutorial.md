@@ -110,7 +110,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
 
     ![[RedBrick Health のドメインと URL] のシングル サインオン情報](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`http://www.redbrickhealth.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`http://www.redbrickhealth.com`
     
     b. **[応答 URL]** ボックスに、次の URL を入力します。`https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -140,7 +140,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
     > [!NOTE]
     > これらの値はあくまで参考のためのものです。 組織の要件に従って属性を定義する必要があります。 必要な要求について詳しくは、[RedBrick Health のサポート チーム](https://home.redbrickhealth.com/contact/)にお問い合わせください。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
     ![[Configure Single Sign-On]](./media/redbrickhealth-tutorial/tutorial_attribute_04.png)
     

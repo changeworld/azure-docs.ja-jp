@@ -112,7 +112,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/shiftplanning-tutorial/tutorial_humanity_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://company.humanity.com/includes/saml/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://company.humanity.com/includes/saml/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://company.humanity.com/app/` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
    
     ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Enabled]** を選択します。
+    a. **[SAML Enabled]** を選択します。
 
     b. **[Allow Password Login]** を選択します。
 
@@ -184,7 +184,7 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/shiftplanning-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
    
     ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール アドレス**を、対応するボックスに入力します。
+    a. プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール アドレス**を、対応するボックスに入力します。
 
     b. **[Save Employees]** をクリックします。
 

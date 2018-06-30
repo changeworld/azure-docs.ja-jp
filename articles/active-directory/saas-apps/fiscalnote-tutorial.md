@@ -108,7 +108,7 @@ FiscalNote で Azure AD のシングル サインオンを構成してテスト�
 
     ![[FiscalNote のドメインと URL] のシングル サインオン情報](./media/fiscalnote-tutorial/tutorial_fiscalnote_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<InstanceName>.fiscalnote.com/login?client=<ClientID>&redirect_uri=https://app.fiscalnote.com/saml-login.html&audience=https://api.fiscalnote.com/&connection=<CONNECTION_NAME>&response_type=id_token%20token` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<InstanceName>.fiscalnote.com/login?client=<ClientID>&redirect_uri=https://app.fiscalnote.com/saml-login.html&audience=https://api.fiscalnote.com/&connection=<CONNECTION_NAME>&response_type=id_token%20token` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`urn:auth0:fiscalnote:<CONNECTIONNAME>` の形式で URL を入力します。
 
@@ -132,7 +132,7 @@ FiscalNote で Azure AD のシングル サインオンを構成してテスト�
     | familyName| User.surname|
     | email| User.mail|
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 既存の属性を削除し、新しい属性を追加します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. 既存の属性を削除し、新しい属性を追加します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/fiscalnote-tutorial/tutorial_attribute_04.png)
     

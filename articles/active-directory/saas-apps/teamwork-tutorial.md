@@ -110,7 +110,7 @@ Teamwork.com で Azure AD のシングル サインオンを構成してテス�
 
     ![[Teamwork.com のドメインと URL] のシングル サインオン情報](./media/teamwork-tutorial/tutorial_teamwork_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.teamwork.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.teamwork.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。
 

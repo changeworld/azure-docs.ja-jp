@@ -151,7 +151,7 @@ Sugar CRM で Azure AD のシングル サインオンを構成してテスト�
    
     ![SAML Authentication](./media/sugarcrm-tutorial/ic795891.png "SAML Authentication")  
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
   
     b. **[SLO URL]\(SLO URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
   
@@ -186,7 +186,7 @@ Sugar CRM で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/sugarcrm-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -220,7 +220,7 @@ Sugar CRM の場合、プロビジョニングは手動で行います。
    
     ![New User](./media/sugarcrm-tutorial/ic795895.png "New User")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**姓**、および**メール アドレス**を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**姓**、および**メール アドレス**を入力します。
   
 6. **[Status]** として、**[Active]** を選択します。
 
@@ -228,7 +228,7 @@ Sugar CRM の場合、プロビジョニングは手動で行います。
    
     ![New User](./media/sugarcrm-tutorial/ic795896.png "New User")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 該当するテキスト ボックスにパスワードを入力します。
+    a. 該当するテキスト ボックスにパスワードを入力します。
 
     b. **[Save]** をクリックします。
 

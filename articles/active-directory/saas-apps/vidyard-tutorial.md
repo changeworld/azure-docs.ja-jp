@@ -108,7 +108,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Vidyard のドメインと URL] のシングル サインオン情報](./media/vidyard-tutorial/tutorial_vidyard_url2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://secure.vidyard.com/sso/saml/<unique id>/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://secure.vidyard.com/sso/saml/<unique id>/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://secure.vidyard.com/sso/saml/<unique id>/consume` のパターンを使用して URL を入力します。
 
@@ -147,7 +147,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 
     ![Vidyard 構成](./media/vidyard-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Profile Name]\(プロファイル名\)** ボックスに一般的なプロファイル名を入力してください。
+    a. **[Profile Name]\(プロファイル名\)** ボックスに一般的なプロファイル名を入力してください。
 
     b. **[SSO User Login Page]\(SSO ユーザー ログイン ページ\)** の値をコピーして、Azure portal の **[Vidyard のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
 

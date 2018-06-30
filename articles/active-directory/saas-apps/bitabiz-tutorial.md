@@ -147,7 +147,7 @@ BitaBIZ で Azure AD のシングル サインオンを構成してテストす�
 
     ![BitaBIZ 構成](./media/bitabiz-tutorial/settings3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[エンティティ ID (Azure AD では "識別子")]** ボックスの値をコピーし、Azure Portal の **[BitaBIZ のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。 
+    a. **[エンティティ ID (Azure AD では "識別子")]** ボックスの値をコピーし、Azure Portal の **[BitaBIZ のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。 
     
     b. **[Azure AD Single Sign-On Service URL]\(Azure AD シングル サインオン サービス URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
     
@@ -221,7 +221,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
     ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
+    a. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
     b. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 

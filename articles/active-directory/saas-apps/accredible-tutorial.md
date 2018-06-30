@@ -110,7 +110,7 @@ Accredible で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Accredible のドメインと URL] のシングル サインオン情報](./media/accredible-tutorial/tutorial_accredible_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。
+    a. **[識別子]** ボックスに次の URL を入力します。
     | |
     |--|
     |  `https://api.accredible.com/sp/admin/accredible` |

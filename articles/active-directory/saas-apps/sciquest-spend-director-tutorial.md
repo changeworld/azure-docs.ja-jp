@@ -110,7 +110,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
     ![[SciQuest Spend Director のドメインと URL] のシングル サインオン情報](./media/sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.sciquest.com` の形式で URL を入力します。
 

@@ -67,7 +67,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     ![Ambari で IP アドレスを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address.png)
 5. ヘッド ノードの IP アドレスとホスト名を、Spark ジョブの実行とリモート デバッグに使用するコンピューターの **hosts** ファイルに追加します。 これで、ホスト名と IP アドレスのどちらを使用してもヘッド ノードと通信できるようになります。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者特権のアクセス許可を使用してメモ帳のファイルを開きます。 **[ファイル]** メニューから **[開く]** を選択し、hosts ファイルの場所を見つけます。 Windows コンピューター上での場所は **C:\Windows\System32\Drivers\etc\hosts** です。
+   a. 管理者特権のアクセス許可を使用してメモ帳のファイルを開きます。 **[ファイル]** メニューから **[開く]** を選択し、hosts ファイルの場所を見つけます。 Windows コンピューター上での場所は **C:\Windows\System32\Drivers\etc\hosts** です。
 
    b. 以下の情報を **hosts** ファイルに追加します。
 
@@ -91,7 +91,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
     ![IntelliJ IDEA で新しいプロジェクト テンプレートを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
+    a. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
     b. **[次へ]** を選択します。
 2. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
@@ -106,7 +106,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
   
 3. Spark プロジェクトでは、アーティファクトが自動的に作成されます。 次の操作を実行して、アーティファクトを表示します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
+    a. **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
 
     b. **[Project Structure]\(プロジェクトの構造)** ダイアログ ボックスで、**[Artifacts]\(アーティファクト)** を選択すると、作成された既定のアーティファクトが表示されます。 プラス記号 (**+**) をクリックして、独自のアーティファクトを作成することもできます。
 
@@ -115,7 +115,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
 4. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
+    a. プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
 
     b. **[Project Structure]\(プロジェクトの構造\)** ダイアログ ボックスで、**[Libraries]\(ライブラリ\)**、(**+**) 記号、**[From Maven]\(Maven から\)** の順に選択します。
 
@@ -137,7 +137,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     これらのファイルをプロジェクトに追加するには、プロジェクト ツリー内の **/src** フォルダー (例: `<your project directory>\src`) の下にこれらのファイルをコピーします。
 6. 以下の変更を行うために `core-site.xml` ファイルを更新します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+   a. 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

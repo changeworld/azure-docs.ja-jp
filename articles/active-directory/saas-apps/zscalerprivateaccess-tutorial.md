@@ -117,7 +117,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
     
     ![[Configure Single Sign-On]](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、「`https://samlsp.private.zscaler.com/auth/metadata`」と入力します。
 
@@ -158,7 +158,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     ![アプリ側でのシングル サインオンの構成](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Select File]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
+    a. **[Select File]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
 
     b. **[保存]** ボタンをクリックします。
     
@@ -187,7 +187,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
  
     ![Azure AD のテスト ユーザーの作成](./media/zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

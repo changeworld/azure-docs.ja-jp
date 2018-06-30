@@ -81,7 +81,7 @@ ms.locfileid: "32191953"
 
 2. RAID サポートをインストールします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 mdadm をインストールします。
+    a. mdadm をインストールします。
 
               yum install mdadm
 
@@ -108,7 +108,7 @@ ms.locfileid: "32191953"
 
 3. MariaDB をインストールします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MariaDB.repo ファイルを作成します。
+    a. MariaDB.repo ファイルを作成します。
 
                 vi /etc/yum.repos.d/MariaDB.repo
 
@@ -128,7 +128,7 @@ ms.locfileid: "32191953"
 
 4. MySQL のデータ ディレクトリを、RAID ブロック デバイスに移動します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい場所に現在の MySQL のディレクトリをコピーし、古いディレクトリを削除します。
+    a. 新しい場所に現在の MySQL のディレクトリをコピーし、古いディレクトリを削除します。
 
            cp -avr /var/lib/mysql /mnt/data  
            rm -rf /var/lib/mysql
@@ -147,7 +147,7 @@ ms.locfileid: "32191953"
             then editing `/etc/selinux/config` to set `SELINUX=permissive`
 6. MySQL の実行を検証します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MySQL を開始します。
+   a. MySQL を開始します。
 
            service mysql start
    b. MySQL のインストールをセキュリティで保護し、ルート パスワードを設定、匿名ユーザーを削除してリモート ルート ログインを無効にし、テスト データベースを削除します。
@@ -164,7 +164,7 @@ ms.locfileid: "32191953"
             service mysql stop
 7. 構成プレースホルダーを作成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MySQL の構成を編集して、クラスター設定のプレースホルダーを作成します。 ここでは、 **`<Variables>`** を置き換えたり、コメントを解除したりしないでください。 それらの処理は、このテンプレートから VM を作成した後で行います。
+   a. MySQL の構成を編集して、クラスター設定のプレースホルダーを作成します。 ここでは、 **`<Variables>`** を置き換えたり、コメントを解除したりしないでください。 それらの処理は、このテンプレートから VM を作成した後で行います。
 
             vi /etc/my.cnf.d/server.cnf
    b. **[[galera]]** セクションを編集して空にします。
@@ -193,7 +193,7 @@ ms.locfileid: "32191953"
 
 9. パフォーマンスにシステムを最適化します。 詳細については、[パフォーマンス チューニング戦略に関するページ](optimize-mysql.md)をご覧ください。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 再度、MySQL の構成ファイルを編集します。
+   a. 再度、MySQL の構成ファイルを編集します。
 
             vi /etc/my.cnf.d/server.cnf
    b. **[mariadb]** セクションを編集し、次の内容を追加します。
@@ -217,7 +217,7 @@ ms.locfileid: "32191953"
         waagent -deprovision
 11. ポータルで VM をキャプチャします。 (現在、 [Azure CLI ツールの issue #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) には、Azure CLI ツールでキャプチャしたイメージで、接続されているデータ ディスクがキャプチャされていないという問題が記載されています。)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ポータル経由でコンピューターをシャット ダウンします。
+    a. ポータル経由でコンピューターをシャット ダウンします。
 
     b. **[取り込み]** をクリックして、イメージの名前を **mariadb-galera-image** として指定します。 説明を入力して、[waagent を実行しました] をオンにします。
       

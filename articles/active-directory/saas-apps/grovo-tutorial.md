@@ -110,7 +110,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](./media/grovo-tutorial/tutorial_grovo_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/saml-assertion` のパターンを使用して URL を入力します。
 
@@ -118,7 +118,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](./media/grovo-tutorial/tutorial_grovo_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
+    a. **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
 
     b. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -142,7 +142,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
     | 電子メール アドレス       | User.mail    |
     | employeeID          | user.employeeid |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/grovo-tutorial/tutorial_attribute_04.png)
 
@@ -183,7 +183,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![Grovo 構成](./media/grovo-tutorial/tutorial_grovo_saml.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[エンティティ ID]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[エンティティ ID]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[Single sign on service endpoint]\(シングル サインオン サービス エンドポイント\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 

@@ -112,7 +112,7 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
 
     ![[Configure Single Sign-On]](./media/menlosecurity-tutorial/tutorial_menlosecurity_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.menlosecurity.com/account/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.menlosecurity.com/account/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.menlosecurity.com/safeview-auth-server/saml/metadata` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
     
     ![[Configure Single Sign-On]](./media/menlosecurity-tutorial/menlo_user_setup.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable user authentication using SAML (SAML を使用してユーザー認証を有効にする)]** チェックボックスをオンにします。
+    a. **[Enable user authentication using SAML (SAML を使用してユーザー認証を有効にする)]** チェックボックスをオンにします。
 
     b. **[Allow External Access (外部アクセスを許可する)]** で **[Yes (はい)]** を選択します。
 
@@ -178,7 +178,7 @@ Menlo Security で Azure AD のシングル サインオンを構成してテス
  
     ![Azure AD のテスト ユーザーの作成](./media/menlosecurity-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

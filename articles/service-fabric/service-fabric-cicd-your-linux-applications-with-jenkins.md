@@ -220,7 +220,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 5. **[Source Code Management (ソース コードの管理)]** タブで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: `https://github.com/{your-github-account}/service-fabric-java-getting-started`)。 ビルドする分岐を指定することもできます (例: `/master`)。
 6. Jenkins と対話するように *GitHub* リポジトリを構成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
+   a. GitHub リポジトリのページで **[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
 
    b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、**[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
 

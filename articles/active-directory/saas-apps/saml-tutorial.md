@@ -108,7 +108,7 @@ SAML 1.1 Token enabled LOB App で Azure AD のシングル サインオンを�
 
     ![[SAML 1.1 Token enabled LOB App のドメインと URL] のシングル サインオン情報](./media/saml-tutorial/tutorial_saml_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://your-app-url` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://your-app-url` のパターンを使用して URL を入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://your-app-url`
      

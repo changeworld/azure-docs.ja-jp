@@ -112,7 +112,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
     ![[Configure Single Sign-On]](./media/keylight-tutorial/tutorial_keylight_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.keylightgrc.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.keylightgrc.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<company name>.keylightgrc.com` の形式で URL を入力します。
 
@@ -135,7 +135,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
 7. LockPath Keylight で SSO を有効にするには、次の手順に従います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者として LockPath Keylight アカウントにサインオンします。
+    a. 管理者として LockPath Keylight アカウントにサインオンします。
     
     b. 上部のメニューで **[人]** をクリックして **[Keylight セットアップ]** を選択します。
    
@@ -153,7 +153,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
    
     ![[Configure Single Sign-On]](./media/keylight-tutorial/405.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 認証]** を **[アクティブ]** に設定します。
+    a. **[SAML 認証]** を **[アクティブ]** に設定します。
 
     b. Azure Portal からコピーした **SAML シングル サインオン サービスの URL** を **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** ボックスに貼り付けます。
 
@@ -207,7 +207,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
  
     ![Azure AD のテスト ユーザーの作成](./media/keylight-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

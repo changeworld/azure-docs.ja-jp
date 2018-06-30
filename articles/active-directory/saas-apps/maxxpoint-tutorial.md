@@ -117,7 +117,7 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
     
     ![[Configure Single Sign-On]](./media/maxxpoint-tutorial/tutorial_maxxpoint_03.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** オプションをクリックします。
+    a. **[詳細な URL 設定の表示]** オプションをクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure` のパターンを使用して URL を入力します。
 
@@ -160,7 +160,7 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/maxxpoint-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

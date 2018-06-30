@@ -133,7 +133,7 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
+    a. **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
     b. **[Display name attribute]\(表示名属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
     
@@ -174,7 +174,7 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザー] ダイアログ ボックス](./media/openathens-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon のメール アドレスを入力します。
 

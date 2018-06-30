@@ -110,7 +110,7 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
 
     ![[TimeLive のドメインと URL] のシングル サインオン情報](./media/timelive-tutorial/tutorial_timelive_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://domainname.livetecs.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://domainname.livetecs.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://domainname.livetecs.com/` の形式で URL を入力します。
 
@@ -139,7 +139,7 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
     
     ![TimeLive 構成](./media/timelive-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[セキュリティ]** タブを選びます。
+    a. **[セキュリティ]** タブを選びます。
 
     b. **[Enable Single Sign On (SSO)]\(シングル サインオン (SSO) を有効にする\)** チェック ボックスをオンにします。
 

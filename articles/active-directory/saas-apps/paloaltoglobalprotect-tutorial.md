@@ -110,7 +110,7 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
 
     ![[Palo Alto Networks - GlobalProtect のドメインと URL] のシングル サインオン情報](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<Customer Firewall URL>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<Customer Firewall URL>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<Customer Firewall URL>/SAML20/SP` の形式で URL を入力します。
 
@@ -127,7 +127,7 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
     | --- | --- |    
     | username | user.userprincipalname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_04.png)
 
@@ -162,7 +162,7 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
 
     ![Palo Alto シングル サインオンの構成](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD GlobalProtect」など) を入力します。
+    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD GlobalProtect」など) を入力します。
     
     b. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした metadata.xml ファイルを選択します。
     

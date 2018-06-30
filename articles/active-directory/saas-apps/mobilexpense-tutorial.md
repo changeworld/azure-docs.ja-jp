@@ -110,7 +110,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 
     ![[Mobile Xpense のドメインと URL] のシングル サインオン情報](./media/mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://mobilexpense.com/ServiceProvider`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://mobilexpense.com/ServiceProvider`
 
     b. **[応答 URL]** ボックスに、`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します。
 

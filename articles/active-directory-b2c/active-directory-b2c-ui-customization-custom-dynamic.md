@@ -319,7 +319,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 サインイン ページの **[今すぐサインアップ]** リンクを選択すると、ブラウザーには、定義したイメージではなく、既定の背景イメージが表示されます。 このような動作になるのは、サインアップまたはサインイン ページのみを変更したためです。 残りの自己アサート コンテンツ定義を変更するには、次のようにします。
 1. "手順 2" に戻り、次の操作を行います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *selfasserted* ファイルをダウンロードします。
+    a. *selfasserted* ファイルをダウンロードします。
 
     b. ファイル コンテンツをコピーします。
 
@@ -329,7 +329,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 2. "手順 4" に戻り、次の操作を行います。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 拡張機能ポリシーで、`Id="api.selfasserted"`、`Id="api.localaccountsignup"`、および `Id="api.localaccountpasswordreset"` を含む `<ContentDefinition>` ノードを見つけます。
+    a. 拡張機能ポリシーで、`Id="api.selfasserted"`、`Id="api.localaccountsignup"`、および `Id="api.localaccountpasswordreset"` を含む `<ContentDefinition>` ノードを見つけます。
 
     b. `LoadUri` 属性を *selfasserted* URI に設定します。
 

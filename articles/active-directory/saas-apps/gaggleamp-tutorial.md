@@ -141,7 +141,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
    
     ![GaggleAMP シングル サインオン](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity provider]\(ID プロバイダー\)** ドロップダウン メニューから **[Other]\(その他\)** を選択します。
+    a. **[Identity provider]\(ID プロバイダー\)** ドロップダウン メニューから **[Other]\(その他\)** を選択します。
     
     b. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure Portal からコピーした**発行者の URL** の値を貼り付けます。
     
@@ -174,7 +174,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/gaggleamp-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

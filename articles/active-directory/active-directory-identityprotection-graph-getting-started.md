@@ -72,7 +72,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/44.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスにアプリケーションの名前 (例: AADIP Risk Event API Application) を入力します。
+    a. **[名前]** ボックスにアプリケーションの名前 (例: AADIP Risk Event API Application) を入力します。
    
     b. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
    
@@ -131,7 +131,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     ![Creating an application](./media/active-directory-identityprotection-graph-getting-started/24.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[キーの説明]** テキスト ボックスに、説明を入力します (例: "*AADIP リスク イベント*")。
+    a. **[キーの説明]** テキスト ボックスに、説明を入力します (例: "*AADIP リスク イベント*")。
     
     b. **[期間]** として、**[1 年]** を選びます。
 

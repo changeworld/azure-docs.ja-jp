@@ -112,7 +112,7 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
 
     ![[Configure Single Sign-On]](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp` の形式で URL を入力します。
 
@@ -162,7 +162,7 @@ Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構
  
     ![Azure AD のテスト ユーザーの作成](./media/blackboard-learn-shibboleth-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

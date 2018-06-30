@@ -110,7 +110,7 @@ SumTotalCentral で Azure AD のシングル サインオンを構成してテ�
 
     ![[SumTotalCentral Domain and URLs]\(SumTotalCentral のドメインと URL\) のシングル サインオン情報](./media/sumtotalcentral-tutorial/tutorial_sumtotalcentral_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.sumtotalsystems.com/sites/default` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.sumtotalsystems.com/sites/default` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値 `SumTotalFederationGateway` を入力します。
 

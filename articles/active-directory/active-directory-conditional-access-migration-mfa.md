@@ -89,7 +89,7 @@ ms.locfileid: "34723689"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/05.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
+    a. クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/35.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "34723689"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/08.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリを選択]** をクリックします。
+    a. **[アプリを選択]** をクリックします。
 
     b. **[選択]** をクリックします。
 
@@ -123,7 +123,7 @@ ms.locfileid: "34723689"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/26.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アクセス制御]** セクションで、**[許可]** をクリックします。
+    a. **[アクセス制御]** セクションで、**[許可]** をクリックします。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/27.png)
 

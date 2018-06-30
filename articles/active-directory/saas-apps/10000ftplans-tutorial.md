@@ -112,7 +112,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
     ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://app.10000ft.com`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://app.10000ft.com`」を入力します。
 
     b. **[識別子]** ボックスに、URL として「`https://app.10000ft.com/saml/metadata`」を入力します。
 
@@ -159,7 +159,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
  
     ![Azure AD のテスト ユーザーの作成](./media/10000ftplans-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

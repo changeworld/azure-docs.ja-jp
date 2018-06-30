@@ -110,7 +110,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[LINE WORKS のドメインと URL] のシングル サインオン情報](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`worksmobile.com`」を入力します。
 

@@ -110,7 +110,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     ![[Cezanne HR Software のドメインと URL] のシングル サインオン情報](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`」を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://w3.cezanneondemand.com/CezanneOnDemand/`
 
@@ -153,7 +153,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Display Name (表示名)]** に ID プロバイダー名を入力します。
+    a. **[Display Name (表示名)]** に ID プロバイダー名を入力します。
 
     b. **[エンティティ ID]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     ![New User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Internal User (内部ユーザー)]** をオフに設定します。
+    a. **[Internal User (内部ユーザー)]** をオフに設定します。
     
     b. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta**)。  
  
@@ -235,7 +235,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     ![New User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
+    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
     
     b. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
     

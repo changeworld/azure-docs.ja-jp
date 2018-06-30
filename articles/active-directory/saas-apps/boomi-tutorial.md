@@ -110,7 +110,7 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
 
     ![[Boomi のドメインと URL] のシングル サインオン情報](./media/boomi-tutorial/tutorial_boomi_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://platform.boomi.com/`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://platform.boomi.com/`
 
     b. **[応答 URL]** ボックスに、`https://platform.boomi.com/sso/<boomi-tenant>/saml` のパターンを使用して URL を入力します。
 
@@ -127,7 +127,7 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
     | -------------- | --------------- |
     | FEDERATION_ID | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
     ![[Configure Single Sign-On]](./media/boomi-tutorial/tutorial_officespace_04.png)
     
@@ -159,7 +159,7 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
 
     ![アプリ側でのシングル サインオンの構成](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML Single Sign-On]\(SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
+    a. **[Enable SAML Single Sign-On]\(SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
 
     b. **[インポート]** をクリックして、Azure AD からダウンロードした証明書を **ID プロバイダー証明書** にアップロードします。
     
@@ -222,7 +222,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
     ![ユーザー](./media/boomi-tutorial/tutorial_boomi_003.png "Users")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーのメール アドレス]** ボックスに、ユーザーのメール アドレスを入力します (この例では BrittaSimon@contoso.com)。
+    a. **[ユーザーのメール アドレス]** ボックスに、ユーザーのメール アドレスを入力します (この例では BrittaSimon@contoso.com)。
     
     b. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 

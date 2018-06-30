@@ -114,7 +114,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_showpad_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<comapany-name>.showpad.biz/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<comapany-name>.showpad.biz/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<company-name>.showpad.biz` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
    
     ![アプリ側でのシングル サインオンの構成](./media/showpad-tutorial/tutorial_showpad_003.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、ID プロバイダーの名前 (自分の会社名など) を入力します。
+    a. **[名前]** ボックスに、ID プロバイダーの名前 (自分の会社名など) を入力します。
    
     b. **[Metadata Source]** として、**[XML]** を選択します。
    
@@ -182,7 +182,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/showpad-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

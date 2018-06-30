@@ -110,7 +110,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     ![[OfficeSpace Software のドメインと URL] のシングル サインオン情報](./media/officespace-tutorial/tutorial_officespace_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.officespacesoftware.com/users/sign_in/saml` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.officespacesoftware.com/users/sign_in/saml` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<company name>.officespacesoftware.com` の形式で URL を入力します。
 
@@ -130,7 +130,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
     | first_name | User.givenname |
     | last_name | User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![構成の追加 ](./media/officespace-tutorial/tutorial_attribute_04.png)
 
@@ -168,7 +168,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     ![アプリ側でのシングル サインオンの構成](./media/officespace-tutorial/tutorial_officespace_004.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Logout provider url]\(ログアウト プロバイダー URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    a. **[Logout provider url]\(ログアウト プロバイダー URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
     b. **[Client idp target url]\(クライアント idp ターゲット URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 

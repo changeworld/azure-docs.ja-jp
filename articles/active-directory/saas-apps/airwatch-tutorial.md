@@ -113,7 +113,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値として「`AirWatch`」と入力します。
 
@@ -154,7 +154,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
     
     ![アップロード](./media/airwatch-tutorial/ic791924.png "Upload")   
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Directory Type]** として **[None]** を選択します。
+    a. **[Directory Type]** として **[None]** を選択します。
 
     b. **[Use SAML For Authentication]** を選択します。
 
@@ -164,7 +164,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
     
     ![要求](./media/airwatch-tutorial/ic791925.png "Request")  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Request Binding Type]** として **[POST]** を選択します。
+    a. **[Request Binding Type]** として **[POST]** を選択します。
 
     b. Azure Portal の **[Airwatch でのシングル サインオンの構成]** ダイアログ ページで、**SAML シングル サインオン サービス URL** の値をコピーし、**[ID プロバイダー シングル サインオン URL]** テキスト ボックスに貼り付けます。
 
@@ -180,7 +180,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
     
     ![属性](./media/airwatch-tutorial/ic791927.png "Attribute")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Object Identifier]\(識別子\)** ボックスに、「**http://schemas.microsoft.com/identity/claims/objectidentifier**」と入力します。
+    a. **[Object Identifier]\(識別子\)** ボックスに、「**http://schemas.microsoft.com/identity/claims/objectidentifier**」と入力します。
 
     b. **[Username]\(ユーザー名前\)** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
@@ -219,7 +219,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/airwatch-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

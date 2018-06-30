@@ -82,7 +82,7 @@ ms.locfileid: "34589333"
 
     ![[新規] ブレード](./media/active-directory-named-locations/61.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、名前付きの場所の名前を入力します。
+    a. **[名前]** ボックスに、名前付きの場所の名前を入力します。
 
     b. **[IP 範囲]** ボックスに、IP 範囲を入力します。 IP 範囲は *Classless Inter-Domain Routing* (CIDR) 形式である必要があります。  
 

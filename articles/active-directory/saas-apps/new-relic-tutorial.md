@@ -110,7 +110,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
 
     ![[New Relic のドメインと URL] のシングル サインオン情報](./media/new-relic-tutorial/tutorial_new-relic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** テキスト ボックスに、`https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` のパターンを使用して URL を入力します。必ずご自身の新しい Relic アカウント ID に置き換えてください。
+    a. **[サインオン URL]** テキスト ボックスに、`https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` のパターンを使用して URL を入力します。必ずご自身の新しい Relic アカウント ID に置き換えてください。
 
     b. **[識別子]** テキストボックスに、値として「`rpm.newrelic.com`」を入力します。
 
@@ -140,7 +140,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
    
     ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ファイルの選択]** をクリックして、ダウンロードした Azure Active Directory 証明書をアップロードします。
+   a. **[ファイルの選択]** をクリックして、ダウンロードした Azure Active Directory 証明書をアップロードします。
 
    b. **[リモート ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
@@ -204,7 +204,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
    
     ![アクティブ ユーザー](./media/new-relic-tutorial/ic797042.png "アクティブ ユーザー")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
+    a. **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 
     b. **[ロール]** として **[ユーザー]** を選びます。
 

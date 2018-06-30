@@ -112,7 +112,7 @@ In 15Five, assign the value of the で Azure AD のシングル サインオン�
 
     ![[Configure Single Sign-On]](./media/15five-tutorial/tutorial_15five_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.15five.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.15five.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.15five.com/saml2/metadata/` の形式で URL を入力します。
 
@@ -155,7 +155,7 @@ In 15Five, assign the value of the で Azure AD のシングル サインオン�
  
     ![Azure AD のテスト ユーザーの作成](./media/15five-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -182,7 +182,7 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
    
     ![新しいユーザーの追加](./media/15five-tutorial/IC784677.png "Add New Person")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**役職**、**電子メール アドレス**を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**役職**、**電子メール アドレス**を入力します。
 
     b. **[Done]** をクリックします。
    

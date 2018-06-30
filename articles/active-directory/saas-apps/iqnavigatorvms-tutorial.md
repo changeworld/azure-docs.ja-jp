@@ -112,7 +112,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、URL として「`iqn.com`」と入力します。
+    a. **[識別子]** ボックスに、URL として「`iqn.com`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>` のパターンを使用して URL を入力します。
 
@@ -166,7 +166,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/iqnavigatorvms-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

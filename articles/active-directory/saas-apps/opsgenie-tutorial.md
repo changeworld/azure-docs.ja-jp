@@ -144,7 +144,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
     ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 2.0 エンドポイント]** テキストボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** を貼り付けます。
+    a. **[SAML 2.0 エンドポイント]** テキストボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** を貼り付けます。
     
     b. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
     
@@ -173,7 +173,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/opsgenie-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -197,7 +197,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキストボックスに、Azure Active Directory の BrittaSimon の電子メール アドレスを入力します。
+   a. **[電子メール]** テキストボックスに、Azure Active Directory の BrittaSimon の電子メール アドレスを入力します。
    
    b. **[フル ネーム]** ボックスに「**Britta Simon**」と入力します。
    

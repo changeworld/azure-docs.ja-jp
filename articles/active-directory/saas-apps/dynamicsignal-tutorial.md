@@ -108,7 +108,7 @@ Dynamic Signal で Azure AD のシングル サインオンを構成してテス
  
     ![[Dynamic Signal Domain and URLs]\(Dynamic Signal のドメインと URL\) のシングル サインオン情報](./media/dynamicsignal-tutorial/tutorial_dynamicsignal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.voicestorm.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.voicestorm.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.voicestorm.com` の形式で URL を入力します。
 

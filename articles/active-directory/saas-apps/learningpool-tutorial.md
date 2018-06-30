@@ -112,7 +112,7 @@ Learningpool Act で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/learningpool-tutorial/tutorial_Learningpoolact_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`」を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -140,7 +140,7 @@ Learningpool Act で Azure AD のシングル サインオンを構成してテ�
     | urn:oid:0.9.2342.19200300.100.1.3 | User.mail |    
     | urn:oid:2.5.4.4 | User.surname |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/learningpool-tutorial/tutorial_attribute_04.png)
 
@@ -187,7 +187,7 @@ Learningpool Act で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/learningpool-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

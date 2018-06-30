@@ -110,7 +110,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![IDP の場合の [Voyance のドメインと URL] のシングル サインオン情報](./media/voyance-tutorial/tutorial_voyance_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.nyansa.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<companyname>.nyansa.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.nyansa.com/saml/create/` のパターンを使用して URL を入力します。
 
@@ -157,7 +157,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![アプリ側でのシングル サインオンの構成: SAML V2](./media/voyance-tutorial/tutorial_voyance_005.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enabled]** を選択します。
+    a. **[Enabled]** を選択します。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[IdP Login URL]\(IdP ログイン URL\)** ボックスに貼り付けます。
 
@@ -193,7 +193,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
  
     ![[ユーザー] ダイアログ ボックス](./media/voyance-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

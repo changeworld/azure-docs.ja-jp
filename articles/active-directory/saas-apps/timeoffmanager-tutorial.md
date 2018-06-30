@@ -130,7 +130,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     | Lastname |User.surname |
     | 電子メール |User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  上記の表の各データ行で、 **[ユーザー属性の追加]** をクリックします。
+    a.  上記の表の各データ行で、 **[ユーザー属性の追加]** をクリックします。
     
     ![saml token attributes](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "saml token attributes")
     
@@ -159,7 +159,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
    
    ![Single Sign-On Settings](./media/timeoffmanager-tutorial/ic795918.png "Single Sign-On Settings")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
+   a. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
    
    b. **[IdP Issuer]\(IdP 発行者\)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
    
@@ -204,7 +204,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
  
     ![[ユーザー] ダイアログ ページ](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

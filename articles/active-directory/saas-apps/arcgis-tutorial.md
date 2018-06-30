@@ -110,7 +110,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
     ![[ArcGIS Online Domain and URLs] \(ArcGIS Online のドメインと URL\) のシングル サインオン情報](./media/arcgis-tutorial/tutorial_arcgisonline_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.maps.arcgis.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.maps.arcgis.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<companyname>.maps.arcgis.com` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
    
     ![Set Identity Provider (ID プロバイダーの設定)](./media/arcgis-tutorial/ic784745.png "Set Identity Provider")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに組織の名前を入力します。
+    a. **[名前]** テキスト ボックスに組織の名前を入力します。
 
     b. **[Metadata for the Enterprise Identity Provider will be supplied using]** で、**[A File]** を選択します。
 
@@ -210,7 +210,7 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
    
      ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "Add and review")
     
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの **[電子メール]**、**[名]**、および **[姓]** を入力します。
+     a. プロビジョニングする有効な AAD アカウントの **[電子メール]**、**[名]**、および **[姓]** を入力します。
   
      b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
 5. 入力したデータを確認してから、**[ADD MEMBERS] \(メンバーの追加)** をクリックします。

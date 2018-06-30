@@ -122,7 +122,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
     | ------------------- | -------------------- |
     | accountid | UXXXXXXXXXXXXX |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックします。
+    a. **[ユーザー属性の追加]** をクリックします。
     
     ![属性の追加](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "属性")
     
@@ -156,7 +156,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
    
     ![シングル サインオン](./media/tinfoil-security-tutorial/ic798973.png "Single Sign-On")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** を選択します。
+    a. **[Enable SAML]** を選択します。
    
     b. **[Manual Configuration]** をクリックします。
    
@@ -195,7 +195,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

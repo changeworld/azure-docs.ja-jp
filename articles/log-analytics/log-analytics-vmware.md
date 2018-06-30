@@ -196,7 +196,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
   1. Log Analytics は、ポート 1514 をリッスンします。 このポートが開いていることを確認するには、`netstat -a | grep 1514` コマンドを実行します。
   2. ポート `1514/tcp` が開いていることがわかります。 この情報が表示されない場合は、omsagent が正しくインストールされていることを確認します。 ポート情報が表示されない場合、VM で syslog ポートが開いていません。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
+    a. `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
 
     b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` ファイルを開きます。
 

@@ -113,7 +113,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Configure Single Sign-On]](./media/itrp-tutorial/tutorial_itrp_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.itrp.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.itrp.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.itrp.com` の形式で URL を入力します。
 
@@ -148,7 +148,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
     
     ![シングル サインオン](./media/itrp-tutorial/ic775573.png "Single Sign-On")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[有効]** をクリックします。
+    a. **[有効]** をクリックします。
 
     b. **[Remote Log Out URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -185,7 +185,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/itrp-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -219,7 +219,7 @@ ITRP の場合、プロビジョニングは手動で行います。
    
     ![ユーザー](./media/itrp-tutorial/ic775577.png "User") 
       
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
+    a. プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
 
     b. **[Save]** をクリックします。
 

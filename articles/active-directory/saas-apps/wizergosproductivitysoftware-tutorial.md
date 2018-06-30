@@ -138,7 +138,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
     ![アプリ側でのシングル サインオンの構成](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[UPLOAD (アップロード)]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
+    a. **[UPLOAD (アップロード)]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
     
     b. **[発行者の URL]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     

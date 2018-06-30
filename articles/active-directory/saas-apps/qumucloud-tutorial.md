@@ -108,7 +108,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
     ![[Qumu Cloud のドメインと URL] のシングル サインオン情報](./media/qumucloud-tutorial/tutorial_qumucloud_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.qumucloud.com/saml/SSO` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.qumucloud.com/saml/SSO` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.qumucloud.com/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -134,7 +134,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
     | urn:oid:0.9.2342.19200300.100.1.3 | User.mail |
     | urn:oid:0.9.2342.19200300.100.1.1 | user.userprincipalname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
     ![[Configure Single Sign-On]](./media/qumucloud-tutorial/tutorial_attribute_04.png)
 
