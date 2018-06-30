@@ -29,7 +29,7 @@ ms.locfileid: "37029001"
 このチュートリアルでは、通知ハブの作成と、[Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) を使用したサンプルの Google Chrome アプリへのプッシュ通知の送信について説明します。 Chrome アプリは Google Chrome ブラウザーのコンテキストで実行され、通知ハブに登録されます。 
 
 > [!NOTE]
-> Chrome アプリケーションのプッシュ通知は汎用的なブラウザー内通知ではなく、Chrome ブラウザーの拡張モデルに固有の機能となっています (「 [Chrome Apps Overview (Chrome アプリケーションの概要) (Chrome アプリケーションの概要)] 」を参照)。 Chrome アプリケーションは、デスクトップ ブラウザーだけでなく、Apache Cordova を通じてモバイル (Android および iOS) でも動作します。 詳細については、[モバイルでの Chrome アプリケーションの実行]に関するページを参照してください。
+> Chrome アプリケーションのプッシュ通知は汎用的なブラウザー内通知ではなく、Chrome ブラウザーの拡張モデルに固有の機能となっています (「 [Chrome Apps Overview (Chrome アプリケーションの概要)] 」を参照)。 Chrome アプリケーションは、デスクトップ ブラウザーだけでなく、Apache Cordova を通じてモバイル (Android および iOS) でも動作します。 詳細については、[モバイルでの Chrome アプリケーションの実行]に関するページを参照してください。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -464,7 +464,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 <!-- URLs. -->
 [Chrome アプリケーションの Notification Hub サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Notification Hubs Overview]: notification-hubs-push-notification-overview.md
-[Chrome Apps Overview (Chrome アプリケーションの概要) (Chrome アプリケーションの概要)]: https://developer.chrome.com/apps/about_apps
+[Chrome Apps Overview (Chrome アプリケーションの概要)]: https://developer.chrome.com/apps/about_apps
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [モバイルでの Chrome アプリケーションの実行]: https://developer.chrome.com/apps/chrome_apps_on_mobile
