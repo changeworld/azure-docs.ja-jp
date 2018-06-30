@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: ghogen
 ms.openlocfilehash: 0160ac6db2b92d5a30a19dd444d01a8558b3eed3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "31792993"
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>Visual Studio での Azure プライベート クラウドへのアクセス
