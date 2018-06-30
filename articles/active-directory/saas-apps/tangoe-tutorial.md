@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218896"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合
 
@@ -114,7 +114,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
     b. **[応答 URL]** ボックスに、`https://sso.tangoe.com/sp/ACS.saml2` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 [Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-2/)に問い合わせてこれらの値を入手します。 
+    > これらは実際の値ではありません。 実際の応答 URL とサインオン URL でこれらの値を更新します。 [Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-us/)に問い合わせてこれらの値を入手します。 
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -128,7 +128,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
     ![[Tangoe Command Premium Mobile の構成] セクション](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. アプリケーション用に構成された SSO を入手するには、[Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-2/)に連絡し、次のものを情報として提供してください。
+7. アプリケーション用に構成された SSO を入手するには、[Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-us/)に連絡し、次のものを情報として提供してください。
 
    - ダウンロードしたメタデータ ファイル
    - **SAML エンティティ ID**
@@ -174,7 +174,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
 このセクションでは、Tangoe Command Premium Mobile で Britta Simon というユーザーを作成します。 
 
-Tangoe Command Premium Mobile アプリケーションでは、シングル サインオンを行う前に、すべてのユーザーをアプリケーションにプロビジョニングする必要があります。 [Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-2/)と協力して、すべてのユーザーをアプリケーションにプロビジョニングします。 
+Tangoe Command Premium Mobile アプリケーションでは、シングル サインオンを行う前に、すべてのユーザーをアプリケーションにプロビジョニングする必要があります。 [Tangoe Command Premium Mobile クライアント サポート チーム](https://www.tangoe.com/contact-us/)と協力して、すべてのユーザーをアプリケーションにプロビジョニングします。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

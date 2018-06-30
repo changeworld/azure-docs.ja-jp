@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0544daf310d40ea419cb6a46cbbf308ebc924715
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 889264dc06d1a6f10713ff5fcd7ff644c113bb45
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709327"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752318"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "34709327"
 「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」記事の手順を完了します。
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>手順 1: LinkedIn アカウント アプリケーションを作成する
-Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成し、適切なパラメーターを提供する必要があります。 LinkedIn アプリケーションは、[LinkedIn のサインアップ ページ](https://LinkedIn.com/signup)に移動して登録することができます。
+Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成し、適切なパラメーターを提供する必要があります。 LinkedIn アプリケーションは、[LinkedIn のサインアップ ページ](https://www.linkedin.com/start/join)に移動して登録することができます。
 
 1. [LinkedIn アプリケーション管理](https://www.linkedin.com/secure/developer?newapp=) Web サイトに移動し、LinkedIn アカウント資格情報でサインインし、**[アプリケーションの作成]** を選択します。
 

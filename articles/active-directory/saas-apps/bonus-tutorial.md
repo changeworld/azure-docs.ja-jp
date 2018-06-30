@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: adde08f7981e6e23ba5bf2601d2f019702d1d33c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d06f8e148e382c44b8858cc2f149f5851198d0d5
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231646"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
@@ -112,7 +112,7 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
     **[応答 URL]** ボックスに、`https://Bonus.ly/saml/<tenant-name>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Bonusly サポート チーム](https://Bonusly/contact)に連絡してください。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Bonusly サポート チーム](https://bonus.ly/contact)に連絡してください。
  
 4. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 

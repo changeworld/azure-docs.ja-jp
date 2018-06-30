@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a29ef6535d1d4e64df7b97fc7519e55f511df222
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 759052a073103304f89096a43f0cbef88e0a1624
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212174"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>チュートリアル: Azure Active Directory と SimpleNexus の統合
 
@@ -117,7 +117,7 @@ SimpleNexus で Azure AD のシングル サインオンを構成してテスト
     b. **[識別子]** ボックスに、`https://simplenexus.com/<companyname>` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[SimpleNexus クライアント サポート チーム](https://simplenexus.com/site/contact)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[SimpleNexus クライアント サポート チーム](https://simplenexus.com/sn/contact-us/)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -127,7 +127,7 @@ SimpleNexus で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/simplenexus-tutorial/tutorial_general_400.png)
 
-6. **SimpleNexus** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SimpleNexus サポート チーム](https://simplenexus.com/site/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+6. **SimpleNexus** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SimpleNexus サポート チーム](https://simplenexus.com/sn/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。

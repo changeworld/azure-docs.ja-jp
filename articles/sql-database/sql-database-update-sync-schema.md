@@ -6,16 +6,16 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
-ms.author: Xiaochen.Wu
+ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6dbbd5c76953b23225951ffb655ac4f5b71fc1e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a39e060708514fdca11a5d89858486b442a18309
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232128"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019589"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 
