@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b620ff7d49b3e2712393de6124e31ff417220db2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 20c205d62809680ed118f768bdaa75f5504d4222
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317040"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333314"
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Python 向け Batch SDK の概要
 
@@ -673,9 +673,9 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
 [py_batch_docs]: http://azure-sdk-for-python.readthedocs.org/en/latest/ref/azure.batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_batchserviceclient]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html#azure.batch.BatchServiceClient
+[py_batchserviceclient]: https://docs.microsoft.com/en-us/python/api/azure.batch.batchserviceclient?view=azure-python
 [py_blockblobservice]: http://azure.github.io/azure-storage-python/ref/azure.storage.blob.blockblobservice.html#azure.storage.blob.blockblobservice.BlockBlobService
-[py_cloudtask]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.CloudTask
+[py_cloudtask]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.CloudTask?view=azure-python
 [py_computenodeuser]: http://azure-sdk-for-python.readthedocs.org/en/latest/ref/azure.batch.models.html#azure.batch.models.ComputeNodeUser
 [py_cs_config]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.CloudServiceConfiguration
 [py_delete_container]: http://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html#azure.storage.blob.baseblobservice.BaseBlobService.delete_container
@@ -683,21 +683,21 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [py_gen_container_sas]: http://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html#azure.storage.blob.baseblobservice.BaseBlobService.generate_container_shared_access_signature
 [py_image_ref]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.ImageReference
 [py_imagereference]: http://azure-sdk-for-python.readthedocs.org/en/latest/ref/azure.batch.models.html#azure.batch.models.ImageReference
-[py_job]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html#azure.batch.operations.JobOperations
-[py_jobpreptask]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.JobPreparationTask
-[py_jobreltask]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.JobReleaseTask
+[py_job]: https://docs.microsoft.com/en-us/python/api/azure.batch.operations.JobOperations?view=azure-python
+[py_jobpreptask]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.JobPreparationTask?view=azure-python
+[py_jobreltask]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.JobReleaseTask?view=azure-python
 [py_list_skus]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations.list_node_agent_skus
 [py_make_blob_url]: http://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html#azure.storage.blob.baseblobservice.BaseBlobService.make_blob_url
-[py_pool]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html#azure.batch.operations.PoolOperations
-[py_pooladdparam]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.PoolAddParameter
-[py_poolinfo]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.PoolInformation
-[py_resource_file]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.ResourceFile
+[py_pool]: https://docs.microsoft.com/en-us/python/api/azure.batch.operations.PoolOperations?view=azure-python
+[py_pooladdparam]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.PoolAddParameter?view=azure-python
+[py_poolinfo]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.PoolInformation?view=azure-python
+[py_resource_file]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.ResourceFile?view=azure-python
 [py_samples_github]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch/
-[py_starttask]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.StartTask
-[py_starttask]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.StartTask
-[py_task]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.CloudTask
-[py_taskstate]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.TaskState
-[py_vm_config]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.VirtualMachineConfiguration
+[py_starttask]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.StartTask?view=azure-python
+[py_starttask]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.StartTask?view=azure-python
+[py_task]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.CloudTask?view=azure-python
+[py_taskstate]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.TaskState?view=azure-python
+[py_vm_config]: https://docs.microsoft.com/en-us/python/api/azure.batch.models.VirtualMachineConfiguration?view=azure-python
 [pypi_batch]: https://pypi.python.org/pypi/azure-batch
 [pypi_storage]: https://pypi.python.org/pypi/azure-storage
 [pypi_install]: https://packaging.python.org/installing/

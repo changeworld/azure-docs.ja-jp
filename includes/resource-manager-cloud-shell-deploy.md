@@ -2,7 +2,7 @@
 
 テンプレートは、[Cloud Shell](../articles/cloud-shell/overview.md) を使ってデプロイすることができます。 ただし、最初に Cloud Shell のストレージ アカウントにテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../articles/cloud-shell/overview.md)に関するページを参照してください。
 
-1. [Azure Portal](https://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
 

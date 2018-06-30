@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 05/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e4cc8b399a3d3b1db1c52aafc8a73edb784d13b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: fe6be773988d1889336cdddb54f7886aeb8d4f5f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32309914"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051826"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center および HockeyApp と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -140,7 +140,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:
-  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
+  * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * ブログ:
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 

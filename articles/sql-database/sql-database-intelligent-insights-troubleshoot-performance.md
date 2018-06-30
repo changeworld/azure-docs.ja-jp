@@ -10,12 +10,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 68ccf6f64f90200359322f35ca081aa6b53493f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bcc33eb7e5050c991c89b7f0998eec3707f62ebb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648270"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751345"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -41,8 +41,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 | [新しいクエリ](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | 検出された新しいクエリが、SQL Database の全体的なパフォーマンスに影響を与えています。 |
 | [異常な待機の統計](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | SQL Database のパフォーマンスに影響を与える、データベースの異常な待機時間が検出されました。 |
 | [TempDB の競合](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | 複数のスレッドが同じ tempDB リソースにアクセスしようとして、SQL Database のパフォーマンスに影響を与えるボトルネックが発生しています。 |
-| 
-  [エラスティック プールの DTU の不足](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | エラスティック プールで使用できる eDTU が不足し、SQL Database のパフォーマンスに影響を与えています。 |
+| [エラスティック プールの DTU の不足](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | エラスティック プールで使用できる eDTU が不足し、SQL Database のパフォーマンスに影響を与えています。 |
 | [プランの回帰](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | 検出された新しいプランまたは既存プランのワークロードの変更が、SQL Database のパフォーマンスに影響を与えています。 |
 | [データベース スコープの構成値の変更](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | データベースの構成の変更が、SQL Database のパフォーマンスに影響を与えています。 |
 | [処理速度が遅いクライアント](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | SQL Database からの出力を十分な速度で処理できない、処理速度が遅いアプリケーション クライアントが検出され、それが SQL Database のパフォーマンスに影響を与えています。 |
@@ -236,8 +235,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 この検出可能なパフォーマンス パターンは、過去 7 日間のベースラインとの比較により、現在のデータベースのワークロード パフォーマンスが低下していることを示します。 原因は、サブスクリプションのエラスティック プールで使用可能な DTU の不足です。 
 
-SQL Database のリソースは通常 [DTU リソース](sql-database-what-is-a-dtu.md)と呼ばれ、CPU と IO (データおよびトランザクション ログ IO) リソースを組み合わせたメジャーで構成されます。 
-  [Azure エラスティック プールのリソース](sql-database-elastic-pool.md)は、複数のデータベース間でスケーリングのために共有される、使用可能な eDTU リソースのプールとして使用されます。 エラスティック プールで使用可能な eDTU リソースが、プール内のすべてのデータベースのサポートには足りない場合、エラスティック プールの DTU の不足というパフォーマンスの問題がシステムで検出されます。
+SQL Database のリソースは通常 [DTU リソース](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)と呼ばれ、CPU と IO (データおよびトランザクション ログ IO) リソースを組み合わせたメジャーで構成されます。 [Azure エラスティック プールのリソース](sql-database-elastic-pool.md)は、複数のデータベース間でスケーリングのために共有される、使用可能な eDTU リソースのプールとして使用されます。 エラスティック プールで使用可能な eDTU リソースが、プール内のすべてのデータベースのサポートには足りない場合、エラスティック プールの DTU の不足というパフォーマンスの問題がシステムで検出されます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 

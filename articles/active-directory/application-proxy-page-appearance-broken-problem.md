@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: d30f836dd729ea5aaf9cb8e502ab65d2521cf6ab
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: asteen
+ms.openlocfilehash: ee06018cd500937c69824f796c137e3972c55f6c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591536"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334702"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションでアプリケーション ページが正しく表示されない
 

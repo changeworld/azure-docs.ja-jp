@@ -5,62 +5,38 @@
 - name: 概要
   items:
     - name: Azure IoT Edge について
-      href: how-iot-edge-works.md
+      href: about-iot-edge.md
 - name: クイック スタート
   expanded: true
   items:
-    - name: エッジへのデプロイ - Linux/Mac
+    - name: Linux デバイスへのコードのデプロイ
       href: quickstart-linux.md
-    - name: エッジへのデプロイ - Windows
+    - name: Windows デバイスへのコードのデプロイ
       href: quickstart.md
 - name: チュートリアル
   items:
-    - name: Edge デバイスのシミュレート - Linux/Mac
-      href: tutorial-simulate-device-linux.md
-    - name: Edge デバイスのシミュレート - Windows
-      href: tutorial-simulate-device-windows.md
-    - name: モジュール内でのコードのデプロイ
+    - name: エッジでの分析情報の検索
       items:
-        - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-    - name: Azure Stream Analytics のデプロイ
-      href: tutorial-deploy-stream-analytics.md
-    - name: Azure Machine Learning のデプロイ
-      href: tutorial-deploy-machine-learning.md
-    - name: Azure Functions のデプロイ
-      href: tutorial-deploy-function.md
-- name: ハウツー ガイド
-  items:
-    - name: ゲートウェイの作成
-      items:
-        - name: 透過的なゲートウェイの作成
-          href: how-to-create-transparent-gateway.md
-        - name: Modbus ゲートウェイ
-          href: deploy-modbus-gateway.md
-    - name: Azure CLI 2.0 向け IoT 拡張機能の使用
-      href: tutorial-create-deployment-with-cli-iot-extension.md
-    - name: 大規模なデプロイと監視
-      href: how-to-deploy-monitor.md
-    - name: IoT Core デバイスのプロビジョニング
-      href: how-to-install-iot-core.md
-    - name: VS Code を使用した IoT Edge ソリューションの開発
-      items:
-        - name: 複数のモジュールの処理
-          href: tutorial-multiple-modules-in-vscode.md
-        - name: 'C# モジュールのデバッグ'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Azure 関数のデバッグ
-          href: how-to-vscode-debug-azure-function.md
-    - name: VSTS における CI/CD
-      href: how-to-ci-cd.md
-    - name: エッジでのデータの格納
-      href: sql-storage.md
-    - name: トラブルシューティング
-      href: troubleshoot.md
+        - name: Azure Functions を使用したデータのフィルター処理
+          href: tutorial-deploy-function.md
+        - name: ASA を使用した平均値の検索
+          href: tutorial-deploy-stream-analytics.md
+        - name: Azure ML を使用したデータへのスコア付け
+          href: tutorial-deploy-machine-learning.md
+        - name: カスタム コードを使用したデータのフィルター処理
+          items:
+            - name: 'C#'
+              href: tutorial-csharp-module.md
+            - name: Python
+              href: tutorial-python-module.md
+            - name: Node.js
+              href: tutorial-node-module.md
+    - name: SQL を使用したローカルへのデータの格納
+      href: tutorial-store-data-sql-server.md
 - name: 概念
   items:
+    - name: IoT Edge ランタイム
+      href: iot-edge-runtime.md
     - name: IoT Edge のモジュール
       href: iot-edge-modules.md
       items:
@@ -70,16 +46,76 @@
           href: module-composition.md
         - name: Edge エージェントとハブのプロパティ
           href: module-edgeagent-edgehub.md
-    - name: IoT Edge ランタイム
-      href: iot-edge-runtime.md
     - name: デプロイメント
       href: module-deployment-monitoring.md
     - name: ゲートウェイとしての IoT Edge デバイス
       href: iot-edge-as-gateway.md
     - name: セキュリティ
       href: security.md
+    - name: プラットフォームのサポート
+      href: support.md
     - name: IoT Edge の用語集
       href: iot-edge-glossary.md
+- name: ハウツー ガイド
+  items:
+    - name: Edge デバイスの登録
+      items:
+        - name: Azure ポータル
+          href: how-to-register-device-portal.md
+        - name: Azure CLI
+          href: how-to-register-device-cli.md
+        - name: Visual Studio Code
+          href: how-to-register-device-vscode.md
+    - name: IoT Edge ランタイムのインストール
+      items:
+        - name: Linux X64 デバイスの場合
+          href: how-to-install-iot-edge-linux.md
+        - name: Linux ARM32 デバイスの場合
+          href: how-to-install-iot-edge-linux-arm.md
+        - name: Windows コンテナーを使用した Windows の場合
+          href: how-to-install-iot-edge-windows-with-windows.md
+        - name: Linux コンテナーを使用した Windows の場合
+          href: how-to-install-iot-edge-windows-with-linux.md
+    - name: モジュールの開発とデバッグ
+      items:
+        - name: 'C#'
+          href: how-to-develop-csharp-module.md
+        - name: Node.js
+          href: how-to-develop-node-module.md
+        - name: Azure Functions
+          href: how-to-develop-csharp-function.md
+        - name: 複数のモジュールの開発
+          href: how-to-develop-multiple-modules-vscode.md
+        - name: 複数のモジュールのデバッグ
+          href: how-to-debug-multiple-modules-vscode.md
+    - name: モジュールのデプロイ
+      items:
+        - name: Azure ポータル
+          href: how-to-deploy-modules-portal.md
+        - name: Azure CLI
+          href: how-to-deploy-modules-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-modules-vscode.md
+    - name: 大規模なデプロイと監視
+      items:
+        - name: Azure ポータル
+          href: how-to-deploy-monitor.md
+        - name: Azure CLI
+          href: how-to-deploy-monitor-cli.md
+    - name: ゲートウェイとしての Edge デバイスの使用
+      items:
+        - name: 透過的なゲートウェイ (Linux)
+          href: how-to-create-transparent-gateway-linux.md
+        - name: 透過的なゲートウェイ (Windows)
+          href: how-to-create-transparent-gateway-windows.md
+        - name: Modbus プロトコル ゲートウェイ
+          href: deploy-modbus-gateway.md
+    - name: IoT Core デバイスのプロビジョニング
+      href: how-to-install-iot-core.md
+    - name: VSTS における CI/CD
+      href: how-to-ci-cd.md
+    - name: トラブルシューティング
+      href: troubleshoot.md
 - name: 関連項目
   items:
     - name: 解決方法
@@ -114,6 +150,10 @@
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Azure IoT Edge for VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
+    - name: Azure IoT Toolkit for VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
     - name: DeviceExplorer ツール
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics ツール

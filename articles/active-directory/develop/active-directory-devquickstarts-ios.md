@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 1ceae59cca5790d9d74f72ce644e31fb0949cd49
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: jmprieur
+ms.openlocfilehash: d8472ee85cf65d8006a64e6901cf8e87d66057d7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157828"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318213"
 ---
 # <a name="azure-ad-ios-getting-started"></a>Azure AD iOS の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]

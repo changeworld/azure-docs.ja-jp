@@ -5,20 +5,19 @@ metadata:
   title: Azure Monitor のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Monitor は、Microsoft Azure の全体監視ソリューションの一部です。 Azure Monitor は、パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、監査、アラートの作成、データのアーカイブの方法を確認してください。
   services: monitoring-and-diagnostics
-  author: czeumault
-  manager: carolz
+  author: rboucher
   ms.service: monitoring-and-diagnostics
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 44a32aae5b2e98e1f29ee56631e50c84dfe18902
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.author: robb
+  ms.openlocfilehash: af90087551b41a64b140a79ad527a713b5f1697e
+  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23070737"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37111907"
 abstract:
   description: Azure Monitor は、Microsoft Azure の全体監視ソリューションの一部です。 Azure Monitor は、パフォーマンスの追跡、セキュリティの維持、傾向の把握に役立ちます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、監査、アラートの作成、データのアーカイブの方法を確認してください。
 sections:
@@ -71,7 +70,7 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">Azure CLI</a></p><p><a href="/powershell/module/azurerm.insights">Azure PowerShell</a></p>
     - title: REST ()
-      html: <p><a href="/rest/api/monitor/">REST ()</a></p>
+      html: <p><a href="/rest/api/monitor/">REST</a></p>
     - title: 監視
       html: <p><a href="monitoring-supported-metrics">サポートされるメトリック</a></p><p><a href="monitoring-diagnostic-logs-schema">診断ログのサービス、カテゴリ、スキーマ</a></p><p><a href="monitoring-activity-log-schema">アクティビティ ログのイベント スキーマ</a></p>
     - title: 診断

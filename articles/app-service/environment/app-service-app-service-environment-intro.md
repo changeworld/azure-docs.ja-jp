@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b13f726ada6deba67d5ed484eca769fed354e400
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986697"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318165"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 
@@ -65,7 +65,7 @@ App Service 環境は、1 つのフロントエンド コンピューティン�
 App Service Environment でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、[App Service の料金][AppServicePricing]のページで、Premium 価格レベルの App Service Environment で使用できるオプションを確認してください。
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
-App Service Environment は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイメント モデルの仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
+App Service Environment は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイ モデルの仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
 
 App Service Environment は、パブリック IP アドレスでインターネットに接続することも、Azure 内部ロード バランサー (ILB) アドレスだけで内部接続することもできます。
 
@@ -93,7 +93,7 @@ ExpressRoute での App Service Environment の使用方法の詳細について
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
+[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

@@ -4,19 +4,19 @@ description: このシナリオでは、Azure Machine Learning Workbench を使�
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832749"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034860"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
@@ -157,7 +157,7 @@ Kaggle からデータをダウンロードするには、[データセット �
 
 使用しているインターネット接続によって変わりますが、ファイルのアップロードには数分かかります。 
 
-このコードでは、[Azure Storage SDK](https://azure-storage.readthedocs.io/en/latest/) を使用して、BLOB ストレージのデータセットを現在の実行環境にダウンロードしています。 ダウンロードは、load_data.py ファイルの load\_data() 関数で実行されます。 このコードを使用するには、<ACCOUNT_NAME> と <ACCOUNT_KEY> を、データセットをホストしているストレージ アカウントの名前とプライマリ キーで置き換える必要があります。 ストレージ アカウントの Azure ページの左上でアカウント名を確認できます。 アカウント キーを取得するには、ストレージ アカウントの Azure ページで [アクセス キー] を選択し (「データの取り込み」セクションの最初のスクリーンショットを参照してください)、キー列の最初の行の長い文字列をコピーします。
+このコードでは、[Azure Storage SDK](https://docs.microsoft.com/en-us/python/azure/) を使用して、BLOB ストレージのデータセットを現在の実行環境にダウンロードしています。 ダウンロードは、load_data.py ファイルの load\_data() 関数で実行されます。 このコードを使用するには、<ACCOUNT_NAME> と <ACCOUNT_KEY> を、データセットをホストしているストレージ アカウントの名前とプライマリ キーで置き換える必要があります。 ストレージ アカウントの Azure ページの左上でアカウント名を確認できます。 アカウント キーを取得するには、ストレージ アカウントの Azure ページで [アクセス キー] を選択し (「データの取り込み」セクションの最初のスクリーンショットを参照してください)、キー列の最初の行の長い文字列をコピーします。
  
 ![アクセス キー](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 

@@ -3,23 +3,24 @@ title: アクセス パネルの Web サイトにサインインできない問�
 description: サインインしてアクセス パネルを使用するときに発生する問題のトラブルシューティングに関するガイダンス
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.reviwer: japere
-ms.openlocfilehash: 1820ab1e2295e6e0c7795c9d014d001d294bb337
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.reviwer: japere,asteen
+ms.openlocfilehash: 84df32000892274c2b77b0bf5ce286bb94171494
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069614"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332577"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>アクセス パネルの Web サイトにサインインできない問題
 

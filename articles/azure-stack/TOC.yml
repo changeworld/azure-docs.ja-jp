@@ -294,15 +294,15 @@
             - name: Kubernetes クラスターの提供
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: 使用量と課金
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: 概要
-              href: azure-stack-billing-and-chargeback.md
             - name: 使用量と課金を CSP として管理する
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: 使用量と課金のためのテナントを追加する
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: テナントの登録を管理する
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: 使用量と課金のためのテナントを追加する
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: テナントの登録を管理する
+                  href: azure-stack-csp-ref-operations.md
             - name: 使用量と課金のリファレンス
               items:
                 - name: 使用量データ レポート

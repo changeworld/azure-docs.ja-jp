@@ -14,14 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: b7888a2bece1a9b601c3629deb1c1dd1fc5cbbe3
-  ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+  ms.openlocfilehash: 64c6bd7ee69f443f819676d1605aa679066e2e84
+  ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2018
-  ms.locfileid: "30922384"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37063351"
 abstract:
-  description: Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+  description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:
     image:
       alt: 
@@ -35,22 +35,55 @@ sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: SQL データベースの作成、SQL Management Studio を使用した SQL データベースの管理、C#、Java、Python、Node.js、Ruby での SQL データベースを使用した開発の方法について説明します。
-  - type: list
-    style: icon48
-    items:
+    text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
+  - type: table
+    style: dataMatrix
+    columns:
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Azure ポータル
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal
+        src: media/index/portal.svg
+      title: Azure ポータル
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-cli
+        src: media/index/cli.svg
+      title: Azure CLI
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: 1 つの SQL データベースの作成
+      values:
+      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-get-started-cli
+      - href: /azure/sql-database/sql-database-get-started-powershell
+    - title: SQL マネージド インスタンスの作成
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+    - title: SQL エラスティック プールの作成
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+    - title: 1 つの SQL データベースのスケーリング
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+    - title: SQL エラスティック プールのスケーリング
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+    - title: マネージド インスタンスのスケーリング
+      values:
+      - href: 
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+    - title: マネージド インスタンスの Azure ネットワークの構成
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph

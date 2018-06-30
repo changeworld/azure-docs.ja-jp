@@ -3,22 +3,24 @@ title: フェデレーション シングル サインオン用に構成され�
 description: Azure AD での SAML ベースのフェデレーション シングル サインオン用に構成されたアプリケーションにサインインするときに発生する特定のエラーのためのガイダンス
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: f8c17b8c14b63007c3b623e5ffb60c0a2567cb72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29384839"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333651"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -256,7 +258,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 9.  [有効期限] を選択します。 次に、**[保存]** をクリックします。
 
-10. **[新しい証明書をアクティブにする]** をオンにして、アクティブな証明書を上書きします。 次に、ウィンドウの上部にある **[保存]** をクリックし、ロールオーバー証明書をアクティブにすることを受け入れます。
+10. **[新しい証明書をアクティブにする]** をオンにして、アクティブな証明書をオーバーライドします。 次に、ウィンドウの上部にある **[保存]** をクリックし、ロールオーバー証明書をアクティブにすることを受け入れます。
 
 11. **[SAML 署名証明書]** セクションで、**[削除]** をクリックして、**未使用**の証明書を削除します。
 

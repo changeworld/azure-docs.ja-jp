@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371271"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313515"
 ---
 Azure 仮想マシン (VM) で実行されているアプリケーションを起動できなかったり、アプリケーションに接続できなかったりする理由はいろいろあります。 アプリケーションが適切なポートで実行されていない、適切なポートでリッスンしていない、リスニング ポートがブロックされている、ネットワーク ルールがトラフィックをアプリケーションに正しく渡していない、などの理由です。 この記事では、問題を検出して解決するための系統的アプローチについて説明します。
 
@@ -32,7 +32,7 @@ RDP または SSH を使用した VM への接続で問題が発生している�
 
 * 仮想マシンを再起動します。
 * Recreate the エンドポイント/ファイアウォール規則/ネットワーク セキュリティ グループ (NSG) 規則を再作成します。
-  * [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/manage-network-security-group.md)
   * [従来のモデル - Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * 別の Azure 仮想ネットワークなどの別の場所から接続します。
 * 仮想マシンを再デプロイします。
@@ -93,7 +93,7 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 * ターゲット VM で実行されている侵入検出ソフトウェアやネットワーク監視ソフトウェアで、トラフィックが許可されている。
 * Cloud Services エンドポイントまたはネットワーク セキュリティ グループでトラフィックが許可されている。
   * [従来のモデル - Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/manage-network-security-group.md)
 * テスト VM と VM 間のパスにある VM 内で実行されている別のコンポーネント (ロード バランサーやファイアウォールなど) で、トラフィックが許可されている。
 
 Windows ベースの仮想マシンについては、セキュリティ強化機能搭載 Windows ファイアウォールを使用して、ファイアウォール規則がアプリケーションの受信トラフィックと送信トラフィックを除外していないかどうかを確認してください。

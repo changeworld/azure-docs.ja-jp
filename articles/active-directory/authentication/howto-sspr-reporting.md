@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33869004"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751498"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -54,25 +54,6 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 6. パスワード リセット関連イベントのみが表示されるようにこのビューをフィルター処理するには、ウィンドウの上部にある **[フィルター]** ボタンを選択します。
 7. **[フィルター]** メニューから **[カテゴリ]** ボックスを選択し、カテゴリの種類を **[Self-service Password Management]\(セルフサービスのパスワード管理\)** に変更します。
 8. 必要な場合は、関心のある特定の **[アクティビティ]** を選択して、リストをさらにフィルター処理します。
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Azure AD レポートおよびイベント API からパスワード管理イベントを取得する方法
-
-Azure AD レポートおよびイベント API では、パスワード リセットとパスワード リセット登録のレポートに含まれるすべての情報の取得がサポートされています。 この API を使用すると、パスワード リセットとパスワード リセット登録の個々のイベントをダウンロードして任意のレポート テクノロジと統合できます。
-
-> [!IMPORTANT]
-> 現時点では、Azure AD レポートおよびイベント API で取得できるのは、[SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) タイプと [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) タイプの最大 *75,000 個のイベント*です。 この API は、過去 30 日間が対象となります。
-> 
-> この期間を超えてデータを取得および保存する必要がある場合は、この API を使用してデータを外部データベースに保存し、クエリを実行して差分を得ることをお勧めします。 ご自分の組織で初めて SSPR を使用するときに、このデータの取得を開始することをお勧めします。 それを外部に保存したら、その時点から差分を追跡します。
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>レポート API の使用を開始する方法
-
-このデータにアクセスするには、Microsoft のサーバーからそのデータを取得するための、小規模なアプリケーションまたはスクリプトを作成する必要があります。 詳細については、[Azure AD レポート API の概要](../active-directory-reporting-api-getting-started-azure-portal.md)に関する記事をご覧ください。
-
-使用できるスクリプトの準備ができたら、取得可能なパスワードのリセットおよび登録イベントがお客様のシナリオに合っているか確認するとよいでしょう。
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): パスワード リセット イベントで利用可能な列を一覧表示します。
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): パスワード リセット登録イベントで利用可能な列を一覧表示します。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure Portal でのレポートの列の説明
 

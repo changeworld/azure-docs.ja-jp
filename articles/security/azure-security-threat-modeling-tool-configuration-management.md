@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019825"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028984"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -107,7 +107,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-click-jacking-with-x-frame-options/) |
+| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **手順** | <p>クリックジャッキング (UI Redressing 攻撃) では、攻撃者は透明または不透明な複数のレイヤーを使用して、実際のページではなく、その上にある別のページのボタンやリンクをユーザーにクリックさせようとします。</p><p>このレイヤーは iframe で悪意のあるページを作成することで実現し、これにより攻撃対象のページが読み込まれます。 つまり、攻撃者は、攻撃対象ユーザーのページ クリックを "ハイジャック" して、そのユーザーを別のページ (ほとんどの場合、他のアプリケーションまたはドメイン、あるいはその両方が所有するページ) に誘導します。 クリックジャッキング攻撃を防ぐには、他のドメインからのフレーミングを許可しないようブラウザーに指示する、適切な X-Frame-Options HTTP 応答ヘッダーを設定します。</p>|
 
 ### <a name="example"></a>例

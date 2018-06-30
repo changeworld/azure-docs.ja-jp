@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: b0a73ea89bec67cbf644cce60913981a0533360a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 095205752b8432a741aab16983b175c21b02c0f4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179692"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017872"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
@@ -32,7 +32,7 @@ HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツー�
 ## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Azure CLI を Azure Resource Manager に移行する
 
 > [!IMPORTANT]
-> Azure CLI 2.0 では HDInsight クラスターを操作するためのコマンドは提供されていません。 Azure CLI 1.0 は推奨されませんが、Azure CLI 1.0 を使用して HDInsight を操作することはできます。
+> Azure CLI 2.0 では HDInsight クラスターを操作するためのコマンドは提供されていません。 Azure CLI 1.0 は非推奨となりますが、Azure CLI 1.0 を使用して HDInsight を操作することはできます。
 
 Azure CLI 1.0 を使用して HDInsight を操作するための基本的なコマンドを次に示します。
 
@@ -52,7 +52,7 @@ Azure Resource Manager では、次の新しいコマンドを使用できます
 * `azure hdinsight script-action` - クラスターに対するスクリプト アクションを作成または管理するコマンドを表示します
 * `azure hdinsight config` - `hdinsight cluster create` コマンドに使用して構成情報を提供することができる構成ファイルを作成するためのコマンドを表示します
 
-### <a name="deprecated-commands"></a>非推奨コマンド
+### <a name="deprecated-commands"></a>非推奨のコマンド
 `azure hdinsight job` コマンドを使用してジョブを HDInsight クラスターに送信する場合、これらのコマンドは Resource Manager コマンドからは使用できません。 プログラムでスクリプトから HDInsight にジョブを送信する必要がある場合は、代わりに HDInsight に用意されている REST API を使用してください。 REST API を使用したジョブの送信については、次のドキュメントを参照してください。
 
 * [Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行](hadoop/apache-hadoop-use-mapreduce-curl.md)
@@ -224,7 +224,7 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 * [Sqoop ジョブの送信](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>新しい HDInsight .NET SDK に移行する
-Azure Service Management ベース [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) は非推奨になりました。 Azure Resource Management ベースの [ HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx) を使用することが推奨されます。 次の ASM ベースの HDInsight パッケージは廃止される予定です。
+Azure Service Management ベース [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) は非推奨になりました。 Azure Resource Management ベースの [ HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用することが推奨されます。 次の ASM ベースの HDInsight パッケージは非推奨となっています。
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`

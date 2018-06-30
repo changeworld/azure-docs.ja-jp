@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6bc845e4ec329d308ed87770d0dec6a7d5e447c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299795"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030955"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>シナリオ: Azure Functions と Azure Service Bus でロジック アプリをトリガーする
 
@@ -39,7 +39,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 ## <a name="build-the-function"></a>関数を構築する
 次に、トリガーとして機能し、キューをリッスンする関数を作成する必要があります。
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin)で、**[新しい関数]** を選択し、次に **[ServiceBusQueueTrigger - C#]** テンプレートを選択します。
+1. [Azure Functions ポータル](https://functions.azure.com/)で、**[新しい関数]** を選択し、次に **[ServiceBusQueueTrigger - C#]** テンプレートを選択します。
    
     ![Azure Functions ポータル][2]
 2. Service Bus キューへの接続を構成します。Azure Service Bus SDK の `OnMessageReceive()` リスナーを使います。

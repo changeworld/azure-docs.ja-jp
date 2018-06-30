@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 239134e7665b80ef78b6a3df12c14156bff9ae29
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600063"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317060"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Azure Maps の概要
 Azure Maps は、Maps、Search、Routing、Traffic、Time Zones のサービス API を含む地理空間サービスのポートフォリオです。 サービスのポートフォリオにより、使い慣れたツールを使って、Azure ソリューションに場所情報を統合するソリューションを迅速に開発および拡張できます。 Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 Azure Maps は一連の REST API であり、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。 
@@ -77,27 +77,9 @@ Azure Maps API は、一部の国では現在利用できません。 現在の 
 * パキスタン
 * 韓国
 
-## <a name="relationship-with-bing-maps"></a>Bing 地図との関係
-このドキュメントで説明するマップは、Bing Maps で提供されるものとは異なることにご注意ください。 これらは多くの同じ機能を共有しますが、この 2 つのサービスは異なるものであり、関係していません。 この Azure サービスは、Bing Maps 製品のサービスやロードマップには影響しません。
-
-Microsoft の目標は、位置情報サービスの観点から開発者コミュニティに選択肢を提供することです。 次の表には、使用するサービスを決定する開発者向けのガイダンスが含まれています。 
-
-| シナリオ | Azure Maps を使用するタイミング | Bing 地図を使用するタイミング |
-| ------------- | ------------- | ------------- |
-| 開発環境 | 他の Azure サービスへの組み込みまたは調整 | サード パーティのクラウドまたはその他の開発環境の使用 |
-| 開発段階  | Azure Maps は、初期段階のテストと概念実証開発用に最適化されています | 運用環境にはエンタープライズ グレード SLA が必要です |
-| 価格オプション | 予備の開発者向けの価格オプションで十分です | カスタマイズされたエンタープライズ グレードの価格が必要です |
-| ユース ケース環境 | 車内での使用が必要です | 車内での使用は不要です |
-| 地理的範囲 | インド、中国、日本、および韓国は不要です | インド、中国、日本、および韓国のマップ カバレッジが必要です |
-| マッピングの内容 | 標準のサーフェス マップで十分です | 衛星画像、航空写真、および道路画像が必要です |
-| 元になっているマップ ソース | TomTom マッピング データが推奨されます | HERE マッピング データが推奨されます |
-
-[Azure Maps アカウントに今すぐ](http://aka.ms/azurelbsportal)サインアップしてください。
-
 ## <a name="next-steps"></a>次の手順
 
 これで、Azure Maps の概要の説明が終わりました。 次の手順では、サービスを示すサンプル アプリを試します。
 
 > [!div class="nextstepaction"]
 > [デモの対話形式の検索マップを起動する](quick-demo-map-app.md)
-

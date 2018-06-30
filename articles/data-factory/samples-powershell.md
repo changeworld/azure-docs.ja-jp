@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 659005bb01672ea6e63d965f89af23024ba53544
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6daa9288da20c7def04242419fab20efeca52f09
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619492"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052530"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory の Azure PowerShell サンプル
 
 次の表には、Azure Data Factory の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のサンプル](v1/data-factory-samples.md)に関する記事をご覧ください。
 
 | |  |
 |---|---|

@@ -115,7 +115,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 2. [Operations Management Suite] を展開し、 **[接続]** をクリックします。
 3. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]** をクリックします。
-4. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80)、**[完了]** をクリックします。
+4. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、**[完了]** をクリックします。
 
 プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の OMS への報告を行う管理されたコンピューターに伝達される必要がある設定と資格情報を構成します。
 

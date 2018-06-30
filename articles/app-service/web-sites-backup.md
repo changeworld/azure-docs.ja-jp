@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153584"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751515"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](app-service-web-overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -38,7 +38,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 次のデータベース ソリューションがバックアップ機能でサポートされています。 
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
    - [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/services/mysql)
-   - [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/services/postgres)
+   - [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/services/postgresql)
    - [アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

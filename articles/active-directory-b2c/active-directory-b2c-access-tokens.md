@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92c4544a0dee4c875b1c802a8c4d77d48bfb94ef
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2da5d05767dddfe653e0a0ba65a21b7e755b3828
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711063"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330720"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 
@@ -79,7 +79,7 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 > 現在、カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenantName.onmicrosoft.com ドメインを使用する必要があります。
 
 ```
-https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://login.microsoftonline.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 

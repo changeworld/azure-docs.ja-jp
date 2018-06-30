@@ -1,5 +1,5 @@
 ---
-title: Azure の詳細な使用状況を理解する
+title: Azure の詳細な使用状況を理解する | Microsoft Docs
 description: Azure サブスクリプションの詳細な使用状況 CSV の各セクションを読み、理解する方法について説明します
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 0f698bff1506484e1dd4afe22f7c14e0a710937c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 723e42d2bb2af09eb2236c3cbefeee33987ea45b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771140"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060802"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
 
@@ -40,7 +40,7 @@ ms.locfileid: "32771140"
 
 詳細な使用状況 CSV ファイルの最上部のセクションには、月の請求期間で使用したサービスが表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | [説明] |
+| 用語 | 説明 |
 | --- | --- |
 |請求期間 |メーターが使用された請求期間 |
 |測定カテゴリ |使用状況の最上位レベルのサービスを示します |
@@ -63,7 +63,7 @@ ms.locfileid: "32771140"
 
 CSV ファイルの毎日の使用状況セクションには、請求金額に影響する使用状況の詳細が表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | [説明] |
+| 用語 | 説明 |
 | --- | --- |
 |使用日 |メーターが使用された日付 |
 |測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します |

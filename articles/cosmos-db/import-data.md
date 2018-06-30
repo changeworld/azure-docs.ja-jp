@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 07c41bb02863cc32372722cbcbac4be2c5071860
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611468"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029606"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 
@@ -222,7 +222,7 @@ Azure テーブル ストレージの接続文字列の形式は次のとおり�
 > 
 > 
 
-データのインポート元となる Azure テーブルの名前を入力します。 必要に応じて、 [フィルター](https://msdn.microsoft.com/library/azure/ff683669.aspx)を指定することもできます。
+データのインポート元となる Azure テーブルの名前を入力します。 必要に応じて、 [フィルター](../vs-azure-tools-table-designer-construct-filter-strings.md)を指定することもできます。
 
 Azure テーブル ストレージ ソース インポーター オプションには、次の追加オプションがあります。
 

@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b5ade0f3a6590832b6717bbb5f91a4d62cdc9e0c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261153"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309045"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -178,7 +178,7 @@ AAD/操作ログのイベント ビューアーに、イベント 1104 ととも
 
 ## <a name="next-steps"></a>次の手順
 
-- [フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming)では、Enterprise State Roaming の改善方法について、フィードバックの提供や提案を行うことができます。
+- [フィードバック フォーラム](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming)では、Enterprise State Roaming の改善方法について、フィードバックの提供や提案を行うことができます。
 
 - 詳細については、「[Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)」を参照してください。 
 

@@ -3,22 +3,24 @@ title: アプリケーションに同意すると、予期しないエラーが�
 description: アプリケーションに同意する処理の最中に発生する可能性があるエラーとそれらに対処する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 4fc71432707c981c0f3f12e74ad7c499d36a17d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: bad508c59983f463aaa3247fa653064dfa03ab20
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231340"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331079"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
@@ -26,7 +28,7 @@ ms.locfileid: "36231340"
 
 Azure Active Directory と統合する多くのアプリケーションが機能するためには、他のリソースへのアクセス許可が必要です。 これらのリソースを Azure Active Directory に統合する際にも、共通同意フレームワークを使用してリソースへのアクセス許可がしばしば要求されます。 同意プロンプトが表示されます。これは、通常は、アプリケーションを初めて使用するときに発生しますが、その後のアプリケーションの使用時にも発生する可能性があります。
 
-アプリケーションが求めるアクセス許可にユーザーが同意する場合は、特定の条件を満たしている必要があります。 これらの条件が満たされていない場合は、以下のエラーが発生する可能性があります。
+アプリケーションが求めるアクセス許可にユーザーが同意する場合は、特定の条件が true でなければなりません。 これらの条件が満たされていない場合は、以下のエラーが発生する可能性があります。
 
 ## <a name="requesting-not-authorized-permissions-error"></a>許可されていないアクセス許可を要求するエラー
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; が、付与するように許可されていない 1 つまたは複数のアクセス許可を要求しています。 あなたの代わりにこのアプリケーションに同意できる管理者に問い合わせてください。

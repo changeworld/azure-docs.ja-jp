@@ -13,12 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29800739"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332373"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft ハイブリッド ID ソリューション
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、同期済み ID を使用するかフェデレーション済み ID を使用するかです。 同期済み ID (およびオプションでパスワード ハッシュ) を使用すると、ユーザーは、オンプレミスとクラウドベースの両方の組織リソースへのアクセスに同じパスワードを使用できます。 シングル サインオン (SSO) やオンプレミスの MFA などのより高度なシナリオ要件では、Active Directory フェデレーション サービス (AD FS) をフェデレーション済み ID にデプロイする必要があります。 
@@ -53,7 +53,7 @@ ms.locfileid: "29800739"
 - ユーザーの検証が行われるフォレスト内のドメインに参加済みであること
 
 ## <a name="federated-identity-ad-fs"></a>フェデレーション ID (AD FS)
-Office 365 やその他のクラウド サービスにユーザーがアクセスする方法をさらに制御するために、[Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016) を使用して、シングル サイン オン (SSO) でディレクトリの同期をセットアップできます。 AD FS でユーザーのサインインのフェデレーション処理を行うと、ユーザーの資格情報を検証するオンプレミスのサーバーに認証が委任されます。 このモデルでは、オンプレミスの Active Directory の資格情報が Azure AD に渡されることはありません。
+Office 365 やその他のクラウド サービスにユーザーがアクセスする方法をさらに制御するために、[Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server) を使用して、シングル サイン オン (SSO) でディレクトリの同期をセットアップできます。 AD FS でユーザーのサインインのフェデレーション処理を行うと、ユーザーの資格情報を検証するオンプレミスのサーバーに認証が委任されます。 このモデルでは、オンプレミスの Active Directory の資格情報が Azure AD に渡されることはありません。
 
 ![フェデレーション ID](./media/choose-hybrid-identity-solution/federated-identity.png)
 

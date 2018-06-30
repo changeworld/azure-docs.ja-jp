@@ -2,7 +2,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 
 名前空間を作成するには:
 
-1. [Azure Portal][Azure portal] にログオンします。
+1. [Azure Portal][Azure portal] にサインインします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[+ リソースの作成]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
 3. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
 4. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic、Standard、Premium) を選択します。

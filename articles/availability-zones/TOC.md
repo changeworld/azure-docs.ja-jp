@@ -43,6 +43,18 @@
 ### Storage
 #### [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md)
 
+### Event Hubs
+#### [Event Hubs の geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
 # ディザスター リカバリー
 ## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)
 

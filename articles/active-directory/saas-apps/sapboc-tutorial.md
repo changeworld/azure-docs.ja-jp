@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220636"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -129,7 +129,7 @@ SAP Business Object Cloud アプリケーションで Azure AD シングル サ�
     ![[SAP Business Object Cloud のドメインと URL] ページの URL](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > これらの URL の値は、単なる例です。 実際のサインオン URL と識別子 URLでこれらの値を更新してください。 サインオン URL を取得するには、[SAP Business Object Cloud クライアント サポート チーム](https://www.sap.com/product/analytics/cloud-analytics.support.html)に問い合わせてください。 識別子 URL は、管理コンソールから SAP Business Object Cloud のメタデータをダウンロードすることで取得できます。 これについては、このチュートリアルの後半で説明します。 
+    > これらの URL の値は、単なる例です。 実際のサインオン URL と識別子 URLでこれらの値を更新してください。 サインオン URL を取得するには、[SAP Business Object Cloud クライアント サポート チーム](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US)に問い合わせてください。 識別子 URL は、管理コンソールから SAP Business Object Cloud のメタデータをダウンロードすることで取得できます。 これについては、このチュートリアルの後半で説明します。 
 
 4. **[SAML 署名証明書]** で、**[メタデータ XML]** を選択します。 次に、コンピューターにメタデータ ファイルを保存します。
 

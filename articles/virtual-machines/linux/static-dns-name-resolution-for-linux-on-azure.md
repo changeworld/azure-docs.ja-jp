@@ -15,15 +15,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 8df9035cf4a5e62102353c701625526e211b7282
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c1ca250d7255877cc811bf7c03034ecbb8f1f372
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915329"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936906"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
-この記事では、仮想ネットワーク インターフェイス カード (vNIC) と DNS ラベル名を Azure CLI 2.0 と共に使用して Linux VM の静的な内部 DNS 名を設定する方法を説明します。 これらの手順は、[Azure CLI 1.0](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。 静的 DNS 名は、このドキュメントで使用している Jenkins ビルド サーバーや、Git サーバーなどの永続的なインフラストラクチャ サービスに使用されます。
+この記事では、仮想ネットワーク インターフェイス カード (vNIC) と DNS ラベル名を Azure CLI 2.0 と共に使用して Linux VM の静的な内部 DNS 名を設定する方法を説明します。 静的 DNS 名は、このドキュメントで使用している Jenkins ビルド サーバーや、Git サーバーなどの永続的なインフラストラクチャ サービスに使用されます。
 
 要件は次のとおりです。
 

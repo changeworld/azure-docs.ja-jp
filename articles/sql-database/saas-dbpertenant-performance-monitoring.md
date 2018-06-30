@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bc24465fa0efc9c473a78503d18200ea5b361920
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644608"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752273"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
 このチュートリアルでは、SaaS アプリケーションで使用されるいくつかの主要なパフォーマンス管理シナリオを説明します。 ロード ジェネレーターを使用して、すべてのテナント データベース間でのアクティビティをシミュレートし、SQL Database およびエラスティック プールに組み込まれている監視機能およびアラート機能を示します。
 
-Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント) ごとに独自のデータベースを持つシングル テナント データ モデルが採用されています。 多くの SaaS アプリケーションと同様、テナントのワークロード パターンは予測不能で、かつ散発的であることが予想されます。 つまり、チケット販売は常に発生する可能性があります。 この一般的なデータベース使用パターンを利用するには、テナント データベースをエラスティック データベース プールにデプロイします。 エラスティック プールでは、多くのデータベース間でリソースを共有することで、ソリューションのコストが最適化されます。 このタイプのパターンでは、データベースとプールのリソース使用を監視して、プール全体で負荷を適切かつ確実に分散させることが重要です。 また、各データベースに十分なリソースがあることと、プールが [eDTU](sql-database-what-is-a-dtu.md) 制限に達していないことを確認する必要もあります。 このチュートリアルでは、データベースとプールを監視および管理し、ワークロードの変化に応じて是正措置を講じる方法について説明します。
+Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント) ごとに独自のデータベースを持つシングル テナント データ モデルが採用されています。 多くの SaaS アプリケーションと同様、テナントのワークロード パターンは予測不能で、かつ散発的であることが予想されます。 つまり、チケット販売は常に発生する可能性があります。 この一般的なデータベース使用パターンを利用するには、テナント データベースをエラスティック データベース プールにデプロイします。 エラスティック プールでは、多くのデータベース間でリソースを共有することで、ソリューションのコストが最適化されます。 このタイプのパターンでは、データベースとプールのリソース使用を監視して、プール全体で負荷を適切かつ確実に分散させることが重要です。 また、各データベースに十分なリソースがあることと、プールが [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) 制限に達していないことを確認する必要もあります。 このチュートリアルでは、データベースとプールを監視および管理し、ワークロードの変化に応じて是正措置を講じる方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -105,8 +105,7 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 1. [Azure Portal](https://portal.azure.com) を開いて、*tenants1-dpt-&lt;USER&gt;* サーバーを参照します。
 1. 下にスクロールし、エラスティック プールを検索して、**[Pool1]** をクリックします。 このプールには、これまでに作成されたすべてのテナント データベースが含まれています。
 
-
-  **エラスティック プールの監視**と**エラスティック データベースの監視**のグラフを確認します。
+**エラスティック プールの監視**と**エラスティック データベースの監視**のグラフを確認します。
 
 プールのリソース使用は、プール内のすべてのデータベースのデータベース使用の集計を示しています。 データベースのグラフは、5 つの最新のデータベースを示しています。
 
@@ -204,8 +203,7 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 1. **contosoconcerthall** データベースをクリックします。
 1. **contosoconcerthall** が含まれるプールをクリックします。 **[エラスティック データベース プール]** セクションでプールを検索します。
 
-1. 
-  **エラスティック プールの監視**グラフを検査し、プールの eDTU 使用の増加を探します。 数分後にさらに高い負荷が発生し、プール使用率がすぐに 100% に達します。
+1. **エラスティック プールの監視**グラフを検査し、プールの eDTU 使用の増加を探します。 数分後にさらに高い負荷が発生し、プール使用率がすぐに 100% に達します。
 2. **[弾力性データベースの監視]** を検査します。これは、過去 1 時間で最も使用率が高いデータベースを示しています。 すぐに *contosoconcerthall* データベースが最も使用率が高い 5 つのデータベースの 1 つとして表示されます。
 3. **[弾力性データベースの監視]** **グラフ**をクリックすると、**[データベース リソースの使用率]** ページが開きます。このページでは、データベースを監視できます。 これにより、*contosoconcerthall* データベースの表示を切り離すことができます。
 4. データベースの一覧から **contosoconcerthall** をクリックします。
@@ -245,7 +243,6 @@ contosoconcerthall データベースの高い負荷が落ち着いたら、コ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* 
-  [SQL エラスティック プール](sql-database-elastic-pool.md)
+* [SQL エラスティック プール](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](saas-dbpertenant-log-analytics.md) - Log Analytics の設定および使用チュートリアル

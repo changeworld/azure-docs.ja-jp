@@ -11,12 +11,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: edfe6cc608a74b61777ce54eba3aa42c239b6090
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 8743905d6e415049a563bcd6b4736d6569f59b7f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684684"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333259"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomics とは
 Microsoft Genomics は、二次的な分析のために Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を提供します。 このサービスは ISO の認定を受け、HIPAA の法規に準拠しており、ゲノム シーケンシングのニーズに対する価格の予測を可能にします。 クイックスタート、チュートリアル、ドキュメントを読んで、Microsoft Genomics サービスの使用方法および API との統合方法を学習しましょう。
@@ -30,12 +30,12 @@ Microsoft Genomics では、ワークフロー要求の受信に関して 99.99%
 
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
-Microsoft Genomics サービスは ISO 27001、ISO 27018、ISO 9001 の認定を受け、HIPAA の規制に準拠しています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)をご覧ください。
+Microsoft Genomics サービスは ISO 27001、ISO 27018、ISO 9001 の認定を受け、HIPAA の規制に準拠しています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで Microsoft Genomics の概要を学習したので、次のことを実行できます。
 - コストの比較と計算については、価格のページを参照してください。 [料金](https://azure.microsoft.com/pricing/details/genomics/)
-- Microsoft Genomics サービス経由で最初のワークフローを実行して作業を開始する。 [Microsoft Genomics サービス経由でワークフローを実行する](quickstart-run-genomics-workflow-portal.md)
+- Microsoft Genomics サービス経由で最初のワークフローを実行して使用を開始します。 [Microsoft Genomics サービス経由でワークフローを実行する](quickstart-run-genomics-workflow-portal.md)
 - Microsoft Genomics サービスで処理する独自のデータを送信する。[ペアリングされた FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) 
 

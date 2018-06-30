@@ -1,6 +1,6 @@
 [こちら][namespace-how-to]の説明に従って、Service Bus 名前空間を既に作成していることを確認してください。
 
-1. [Azure Portal][azure-portal] にログオンします。
+1. [Azure Portal][azure-portal] にサインインします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[すべてのサービス]** をクリックします)。
 3. キューを作成する名前空間をクリックします。 この例では、**sbnstest1** です。
    

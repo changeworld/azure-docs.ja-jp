@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: f628f393f1ff5922d9d2c82b30d4fdbf4b5caf23
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ea401099ce90248be0ecb99109b845ff9a91f70d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738175"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029327"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure ファイル共有の管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 この記事では、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure Storage Explorer は、Windows、macOS、および Linux で使用できる、広く使用されているクライアント ツールです。 Storage Explorer を使用すると、Azure ファイル共有やその他のストレージ リソースを管理することができます。
@@ -97,7 +97,7 @@ Azure ファイル共有を作成したところで、SMB でファイル共有�
 
 ## <a name="create-and-modify-share-snapshots"></a>共有スナップショットの作成と変更
 スナップショットでは、Azure ファイル共有の特定時点のコピーが保存されます。 ファイル共有スナップショットは、場合によっては既に使い慣れている、次のような他のテクノロジに類似しています。
-- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636)
+- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/en-us/windows/desktop/VSS/volume-shadow-copy-service-portal)
 - Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット
 - macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット
 

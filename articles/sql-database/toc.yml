@@ -50,7 +50,7 @@
       href: sql-database-design-first-database.md
     - name: 2 - .NET を使用して DB を設計する
       href: sql-database-design-first-database-csharp.md
-    - name: 3 - DMS を使用して SQL Server DB に移行する
+    - name: 3 - DMA を使用して SQL Server DB に移行する
       href: sql-database-migrate-your-sql-server-database.md
     - name: 4 - SQL DB をセキュリティ保護する
       href: sql-database-security-tutorial.md

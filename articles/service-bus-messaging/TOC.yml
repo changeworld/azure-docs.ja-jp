@@ -126,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: 高度な機能
           items:
+            - name: IP 接続フィルター
+              href: service-bus-ip-filtering.md
+            - name: Virtual Network サービスのエンドポイント
+              href: service-bus-service-endpoints.md
             - name: 配達不能キュー
               href: service-bus-dead-letter-queues.md
             - name: メッセージのプリフェッチ

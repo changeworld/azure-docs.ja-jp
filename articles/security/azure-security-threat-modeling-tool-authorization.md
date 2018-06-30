@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019519"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029494"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -312,7 +312,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>脆弱なクラス参照が使用されているため、攻撃者が未承認コードを実行できる可能性があります。 プログラムが参照するのは、一意に識別されていないユーザー定義のクラスです。 この厳密に識別されていないクラスが .NET によって読み込まれると、CLR 型ローダーは、指定した順序で次の場所にあるクラスを検索します。</p><ol><li>アセンブリの種類がわかっている場合、ローダーは構成ファイルのリダイレクト場所、GAC、構成ファイルを使用している現在のアセンブリ、およびアプリケーション ベース ディレクトリを検索します</li><li>アセンブリがわからない場合、ローダーは現在のアセンブリ、mscorlib、および TypeResolve イベント ハンドラーによって返される場所を検索します</li><li>この CLR 検索順序は、Type Forwarding メカニズム、AppDomain.TypeResolve イベントなどのフックで変更できます</li></ol><p>攻撃者が、同じ名前のクラスを別に作成して、CLR が最初に読み込む代替場所に配置することにより CLR 検索順序を悪用すると、攻撃者によって提供されたコードが CLR によって意図せずに実行されます</p>|
 
 ### <a name="example"></a>例
@@ -349,7 +349,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
 | **手順** | <p>このサービスでは、承認コントロールが使用されません。 クライアントが特定の WCF サービスを呼び出すと、WCF は、呼び出し元に、サーバーでサービス メソッドを実行する権限が付与されていることを確認するさまざまな承認スキームを提供します。 承認コントロールが WCF サービスに対して有効でない場合は、認証されたユーザーが、権限の昇格を実行できます。</p>|
 
 ### <a name="example"></a>例

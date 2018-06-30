@@ -17,12 +17,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 485e4c52751b390ebd440718e7a55de7b5b5ffd7
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156910"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318422"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 現在 Azure Active Directory では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
@@ -58,7 +58,7 @@ SAML トークンで発行された要求を編集する必要がある理由は
 
 ![ユーザー属性の編集][5]
 
-ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。次の例を参照してください。
+ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。 次の例を参照してください。
 
 ![ユーザー属性の編集][6]
 
@@ -129,7 +129,7 @@ SAML には制限付きの要求がいくつかあります。 これらの要�
     | http://schemas.microsoft.com/identity/claims/scope |
 
 ## <a name="next-steps"></a>次の手順
-* [Article Index for Application Management in Azure Active Directory](../active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
 * [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 

@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297871"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331174"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Azure Functions を使用したロジック アプリのカスタム コードの追加と実行
 
@@ -62,7 +62,7 @@ function start(req, res){
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Logic App デザイナーから関数を作成する
 
-Node.js webhook 関数は、デザイナーから作成することもできます。 最初に、 **[自分のリージョンの Azure Functions]** を選択し、関数用にコンテナーを選択します。 コンテナーがまだない場合は、 [Azure Functions ポータル](https://functions.azure.com/signin)から作成する必要があります。 **[新規作成]** を選択します。  
+Node.js webhook 関数は、デザイナーから作成することもできます。 最初に、 **[自分のリージョンの Azure Functions]** を選択し、関数用にコンテナーを選択します。 コンテナーがまだない場合は、 [Azure Functions ポータル](https://functions.azure.com/)から作成する必要があります。 **[新規作成]** を選択します。  
 
 計算するデータに基づいてテンプレートを生成するには、関数に渡すコンテキスト オブジェクトを指定します。 このオブジェクトは JSON オブジェクトである必要があります。 たとえば、FTP アクションからファイル コンテンツを渡す場合、コンテキストのペイロードは次の例のようになります。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 37239a45cffe18478b8302ccf1ee95c8edd0423a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592162"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031772"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - *セキュリティ保護*
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
   - エージェントは、ネットワーク内からの送信接続のみを行います。 そのため、DMZ とも呼ばれる、境界ネットワークにエージェントをインストールする必要がありません。
-  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[フィルター処理によるブルート フォース パスワード攻撃の除外](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
+  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
 - *高可用性*
   - 追加のエージェントを複数のオンプレミス サーバーにインストールすることで、サインイン要求の高可用性を実現できます。
 
@@ -64,12 +64,12 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - これは、[Azure AD Connect](active-directory-aadconnect.md) を使用して有効にすることができます。
 - これでは、パスワード検証要求を待ち受けて応答する、軽量オンプレミス エージェントを使用します。
 - 複数のエージェントをインストールすることにより、サインイン要求の高可用性が実現されます。
-- これにより、オンプレミス アカウントがクラウドへのブルート フォース パスワード攻撃から[保護](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)されます。
+- これにより、オンプレミス アカウントがクラウドへのブルート フォース パスワード攻撃から[保護](../authentication/howto-password-smart-lockout.md)されます。
 
 ## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
-- [**スマート ロックアウト**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [**スマート ロックアウト**](../authentication/howto-password-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。

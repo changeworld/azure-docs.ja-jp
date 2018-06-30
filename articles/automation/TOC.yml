@@ -29,6 +29,8 @@
   items:
     - name: オンボード
       items:
+        - name: 複数の VM のポータルからのオンボード
+          href: automation-onboard-solutions-from-browse.md
         - name: Azure VM からのオンボード
           href: automation-onboard-solutions-from-vm.md
         - name: Automation アカウントからのオンボード
@@ -193,10 +195,16 @@
           href: automation-migrate-account-subscription.md
     - name: トラブルシューティング
       items:
-        - name: 一般的なエラーのトラブルシューティング
-          href: automation-troubleshooting-automation-errors.md
-        - name: Hybrid Runbook Worker のトラブルシューティング
-          href: automation-troubleshooting-hybrid-runbook-worker.md
+        - name: オンボード
+          href: troubleshoot/onboarding.md
+        - name: Runbooks
+          href: troubleshoot/runbooks.md
+        - name: Desired State Configuration (DSC)
+          href: troubleshoot/desired-state-configuration.md
+        - name: Hybrid Runbook Worker
+          href: troubleshoot/hybrid-runbook-worker.md
+        - name: 更新管理
+          href: troubleshoot/update-management.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

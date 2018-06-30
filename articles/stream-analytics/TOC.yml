@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: ジョブの作成 - PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: ジョブの作成 - Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: チュートリアル
   items:
     - name: 1 - ジョブの作成/管理
@@ -125,8 +127,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: 診断ログ
           href: stream-analytics-job-diagnostic-logs.md
-        - name: リソース正常性の確認
-          href: stream-analytics-resource-health.md
         - name: SELECT INTO ステートメント
           href: stream-analytics-select-into.md
         - name: イベント ハブ レシーバー

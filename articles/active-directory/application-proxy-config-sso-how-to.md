@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: 3d7711ac62ebc870b98e2f2696a74f236c2d6a88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: asteen
+ms.openlocfilehash: 977f8af1f625548cb37c7deba7d368d45bded6ef
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591482"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332662"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 

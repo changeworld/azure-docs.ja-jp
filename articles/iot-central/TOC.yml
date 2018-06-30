@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: チュートリアル
   items:
-    - name: 開発者
-      items:
-        - name: 1 - 新しいデバイスの種類を定義する
-          href: tutorial-define-device-type.md
-        - name: 2 - ルールを構成する
-          href: tutorial-configure-rules.md
-        - name: 3 - オペレーターのビューをカスタマイズする
-          href: tutorial-customize-operator.md
-    - name: 演算子
-      items:
-        - name: 4 - デバイスを監視する
-          href: tutorial-monitor-devices.md
-        - name: 5 - デバイスを追加する
-          href: tutorial-add-device.md
+    - name: 1 - 新しいデバイスの種類を定義する
+      href: tutorial-define-device-type.md
+    - name: 2 - ルールを構成する
+      href: tutorial-configure-rules.md
+    - name: 3 - オペレーターのビューをカスタマイズする
+      href: tutorial-customize-operator.md
+    - name: 4 - デバイスを監視する
+      href: tutorial-monitor-devices.md
+    - name: 5 - デバイスを追加する
+      href: tutorial-add-device.md
 - name: 概念
   items:
     - name: アーキテクチャ

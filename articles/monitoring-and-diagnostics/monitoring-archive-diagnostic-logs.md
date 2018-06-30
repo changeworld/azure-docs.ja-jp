@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: d1282fa005d609394dacc818c2cb729f580bc3fc
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d48828c8d2ec439f389fe4eddabb59599cc1680b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263492"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752828"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -100,7 +100,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>REST API を使用して診断ログをアーカイブする
 
-Azure Monitor REST API を使用した診断設定のセットアップ方法については、[こちらのドキュメント](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings)を参照してください。
+Azure Monitor REST API を使用した診断設定のセットアップ方法については、[こちらのドキュメント](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)を参照してください。
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>ストレージ アカウントにおける診断ログのスキーマ
 

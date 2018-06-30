@@ -20,6 +20,10 @@
   items:
     - name: SDK のサンプルの概要
       href: sdk.md
+    - name: 'C# での SDK'
+      href: visual-search-sdk-c-sharp.md
+    - name: Node での SDK
+      href: visual-search-sdk-node.md
     - name: Python での SDK
       href: visual-search-sdk-python.md
 - name: チュートリアル

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: bd59e740803f8f0e6f5f542805d615772efba913
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 56b7bfe02ddb0f2c909b2f363c37308527ec8db1
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630342"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029097"
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -32,7 +32,7 @@ IoT Edge を成り立たせているコンポーネントについて詳しく�
 これまで Azure IoT Hub を使用したことがない場合は、[Azure IoT Hub サービスの概要][lnk-iot-hub]に関するページからご覧になることをお勧めします。
 
 [lnk-deployment]: module-deployment-monitoring.md
-[lnk-overview]: how-iot-edge-works.md
+[lnk-overview]: about-iot-edge.md
 [lnk-iot-hub]: ../iot-hub/iot-hub-what-is-iot-hub.md
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/

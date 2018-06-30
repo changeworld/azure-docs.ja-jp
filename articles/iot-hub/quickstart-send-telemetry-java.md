@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: fd610af3d1b29b78ef89b8f523ef880696031bf2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9cd23b0930accd23ba88be03bfed099aa3fc672e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637652"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333994"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Java) でハブから利用統計情報を読み取る
 
@@ -68,7 +68,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
     デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
 
-1. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -76,7 +76,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
     `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
 
-1. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -94,17 +94,17 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
+2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
 
     `connString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.java** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
+3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
+4. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/simulated-device-1.0.0-with-deps.jar
@@ -120,21 +120,22 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
-1. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** ファイルを開きます。
+2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    `eventHubsCompatibleEndpoint` 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。
+    | 可変 | 値 |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
+    | `eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
+    | `iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
 
-    `eventHubsCompatiblePath` 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。
 
-    `iotHubSasKey` 変数の値を、前にメモした iothubowner 主キーに置き換えます。 **ReadDeviceToCloudMessages.java** ファイルに変更を保存します。
-
-1. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
+3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
+4. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/read-d2c-messages-1.0.0-with-deps.jar
@@ -146,9 +147,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-次のクイック スタートを行う場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
-
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **qs-iot-hub-rg** リソース グループを選び、**[削除]** をクリックします。
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

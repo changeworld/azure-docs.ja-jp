@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: b2b55c550a75be977b040070926953308c387639
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834568"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062099"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで業界に特化したソリューションを発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>業界に特化した Cortana Intelligence ソリューション
-ギャラリーの **[業界](https://gallery.cortanaintelligence.com/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています。
+ギャラリーの **[業界](https://gallery.azure.ai/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています。
 
-* [小売](https://gallery.cortanaintelligence-int.com/industries/retail): 売上予測、顧客離れの予測、および価格モデルの開発などの小売り業向けソリューションを検索します。
-* [製造](https://gallery.cortanaintelligence-int.com/industries/manufacturing): 機器のメンテナンスの予測やエネルギー価格の予測などの製造ソリューションを検索します。
-* [銀行業務](https://gallery.cortanaintelligence-int.com/industries/banking): 信用リスクの予測やオンライン詐欺の監視などの銀行業務ソリューションを検索します。
-* [医療](https://gallery.cortanaintelligence-int.com/industries/healthcare): 疾患の検出や病院への再入院の予測などの医療ソリューションを検索します。
+* [小売](https://gallery.azure.ai/industries/retail): 売上予測、顧客離れの予測、および価格モデルの開発などの小売り業向けソリューションを検索します。
+* [製造](https://gallery.azure.ai/industries/manufacturing): 機器のメンテナンスの予測やエネルギー価格の予測などの製造ソリューションを検索します。
+* [銀行業務](https://gallery.azure.ai/industries/banking): 信用リスクの予測やオンライン詐欺の監視などの銀行業務ソリューションを検索します。
+* [医療](https://gallery.azure.ai/industries/healthcare): 疾患の検出や病院への再入院の予測などの医療ソリューションを検索します。
 
 これらのリソースには、実験、カスタム モジュール、API、コレクション、および作業中の業界に固有のソリューションの開発に役立つその他のギャラリー項目が含まれます。
 

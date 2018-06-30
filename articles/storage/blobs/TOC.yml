@@ -190,6 +190,8 @@
           href: storage-https-custom-domain-cdn.md
         - name: Azure Blob Storage の不変ストレージ機能 (プレビュー)
           href: storage-blob-immutable-storage.md
+        - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
+          href: ../common/storage-security-tls.md
     - name: 監視とトラブルシューティング
       items:
         - name: トラブルシューティングのチュートリアル

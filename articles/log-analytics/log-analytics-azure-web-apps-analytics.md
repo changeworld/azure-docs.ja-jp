@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5426c9c5727d76d401c00b6e7338688b8f064ad0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261370"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021239"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
@@ -42,7 +42,7 @@ Azure Web Apps Analytics (プレビュー) ソリューションでは、すべ�
 
 他のほとんどの Log Analytics ソリューションとは異なり、Azure Web Apps のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
@@ -57,8 +57,7 @@ Azure Web Apps Analytics (プレビュー) ソリューションでは、すべ�
 
 ワークスペースの Azure Web Apps Analytics ソリューションを構成するには、次の手順を実行します。
 
-1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
-2. [PowerShell を使用して Log Analytics への Azure リソース メトリックのログ記録を有効にします](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)。
+1. [PowerShell を使用して Log Analytics への Azure リソース メトリックのログ記録を有効にします](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)。
 
 Azure Web Apps Analytics ソリューションでは Azure から以下の 2 つのメトリック セットを収集します。
 
@@ -92,7 +91,7 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 **[Azure Web Apps Analytics]** タイルをクリックして、**[Azure Web Apps Analytics]** ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
 
 
-| 分割 | [説明] |
+| 分割 | 説明 |
 | --- | --- |
 | Azure Webapps |   |
 | Web Apps の要求傾向 | 選択した日付範囲の Web Apps の要求傾向の折れ線グラフが表示され、上位 10 個の Web 要求のリストが表示されます。 折れ線グラフをクリックすると、<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "Requests" or MetricName startswith_cs "Http") &#124; summarize AggregatedValue = avg(Average) by MetricName, bin(TimeGenerated, 1h)</code> のログ検索が実行されます。 <br>Web 要求の項目をクリックすると、要求する Web 要求メトリック傾向のログ検索が実行されます。 |

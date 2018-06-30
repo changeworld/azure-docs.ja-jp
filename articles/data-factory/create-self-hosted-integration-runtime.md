@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 6f3259170a1b3fe0bbd33899a74863f5e71a49f6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618455"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048790"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 自己ホスト型統合ランタイムでは、クラウド データストアとプライベート ネットワーク内のデータストアとの間でコピー アクティビティを実行し、変換アクティビティをオンプレミスのコンピューティング リソース、または Azure Virtual Network 上のコンピューティング リソースにディスパッチすることができます。 自己ホスト型統合ランタイムのインストールには、オンプレミスのマシン、またはプライベート ネットワーク内の仮想マシンが必要です。  
 

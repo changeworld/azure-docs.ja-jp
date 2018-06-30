@@ -253,7 +253,7 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
 
 ![Service Fabric Explorer][sfx]
 
-実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80)。 Web UI に Voting アプリケーションが表示されます。
+実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
 
 ![Voting アプリケーション][votingapp]
 

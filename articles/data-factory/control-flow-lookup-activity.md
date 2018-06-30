@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618659"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055650"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -26,9 +26,6 @@ ms.locfileid: "34618659"
 - オブジェクト名をハード コーディングする代わりに、後続のアクティビティで操作するオブジェクト (ファイル、テーブルなど) を動的に決定する
 
 ルックアップ アクティビティでは、構成ファイルの内容、構成テーブル、あるいはクエリまたはストアド プロシージャの実行結果を読み取り、返すことができます。  ルックアップ アクティビティからの出力は、シングルトン値である場合、後続のコピーや変換アクティビティで使用することができ、属性の配列である場合は ForEach アクティビティで使用できます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 

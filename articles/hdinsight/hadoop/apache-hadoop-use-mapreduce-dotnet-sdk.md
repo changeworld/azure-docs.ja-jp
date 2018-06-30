@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 068d63b7c96dd6729ebc46fb92a136be43b84385
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2b5c265827c30ec9f62cc902aa348e050aec7ba1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200862"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019606"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -179,6 +179,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Hive ジョブの送信については、「[HDInsight .NET SDK を使用した Hive クエリの実行](apache-hadoop-use-hive-dotnet-sdk.md)」を参照してください。
 * HDInsight クラスターの作成については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 * HDInsight クラスターの管理については、[HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
-* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を参照してください。
+* HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。
 

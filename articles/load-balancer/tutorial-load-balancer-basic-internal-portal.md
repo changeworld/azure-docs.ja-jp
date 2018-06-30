@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a16e9ad5b72d87614f5d3630e24e6aa36def8c51
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779549"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061847"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>チュートリアル: 内部トラフィックを Basic Load Balancer によって、Azure Portal を使用する VM に負荷分散する
 
@@ -43,6 +43,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     - *myBackendSubnet* - サブネット名。
 2. **[作成]** をクリックして、仮想ネットワークを作成します。
 
+![ロード バランサーの作成](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
+
 ## <a name="create-a-basic-load-balancer"></a>Basic Load Balancer を作成する
 ポータルを使用して内部 Basic Load Balancer を作成します。
 
@@ -57,10 +59,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     - *myResourceGroupILB* - 作成する新しいリソース グループの名前。
 3. **[作成]** をクリックして、ロード バランサーを作成します。
    
-    ![ロード バランサーの作成](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
-
-
-## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+    ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、Basic Load Balancer のバックエンド プール用に 2 つの仮想マシンを作成してから、ロード バランサーをテストするために仮想マシンに IIS をインストールします。
 

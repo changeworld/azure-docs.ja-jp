@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 23c9056bbfa6ae0be0f7c73a34250a2fff77f4d2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266008"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319090"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -32,32 +32,6 @@ Azure Database for MySQL サーバーは、復元機能が有効になるよう�
 
 > [!IMPORTANT]
 > このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
-
-## <a name="add-the-extension"></a>拡張機能の追加
-次のコマンドを使用して最新の Azure Database for MySQL 管理拡張機能を追加します。
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-正しいバージョンの拡張機能がインストールされていることを確認します。 
-```azurecli-interactive
-az extension list
-```
-
-返される JSON には、次の内容が含まれている必要があります。 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-バージョン 0.0.5 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>バックアップ構成の設定
 

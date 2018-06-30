@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: f30b749d40cd2628ca6539d962d5a1153cd3e7c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618526"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046168"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
-
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -72,7 +68,7 @@ If Condition アクティビティは、プログラミング言語における 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | if-condition アクティビティの名前。 | String | [はい]
-型 | **IfCondition** に設定する必要があります。 | String | [はい]
+type | **IfCondition** に設定する必要があります。 | String | [はい]
 expression | true または false に評価される式であることが必要です | [はい]
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | [はい]
 ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | [はい]

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8363c49c4a52785fb5deacb3ac4998d38aca1430
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee467769b9653a9952b6e41e66a8777a4bac5e56
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593882"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028882"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -66,7 +66,7 @@ ms.locfileid: "34593882"
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>パススルー認証を使用することで、どのようにブルート フォース パスワード攻撃から保護できますか。
 
-詳細は、「[Azure Active Directory パススルー認証: スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)」をご覧ください。
+詳細は、「[Azure Active Directory パススルー認証: スマート ロックアウト](../authentication/howto-password-smart-lockout.md)」をご覧ください。
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>パススルー認証エージェントはポート 80 およびポート 443 で何をやり取りしますか。
 
@@ -133,7 +133,7 @@ Azure AD Connect ウィザードを再実行し、ユーザーのサインイン
 ## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
-- [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
 - [技術的な詳細](active-directory-aadconnect-pass-through-authentication-how-it-works.md): パススルー認証機能のしくみを理解します。
 - [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。
 - [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。

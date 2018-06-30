@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [メッセージのルーティング](tutorial-routing.md)
 ## [デバイスの構成](tutorial-device-twins.md)
+## [ファームウェアの更新の管理](tutorial-firmware-update.md)
 ## [デバイス接続のテスト](tutorial-connectivity.md)
 ## C2D メッセージの送信
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [Azure Functions で磁気センサーを監視してメール通知を送信する](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [デバイス構成のベスト プラクティス](iot-hub-configuration-best-practices.md)
+
 # ハウツー ガイド
 ## プラン
 ### [IoT Hub と Event Hubs の比較](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### モジュール ツインを使ってみる
 #### [ポータル](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -206,7 +212,7 @@
 ### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)
 ## 実在のデバイスの使用
-### [作業開始](iot-hub-get-started.md)
+### [はじめに](iot-hub-get-started.md)
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -221,7 +227,9 @@
 ## [IoT Hub のアップグレード](iot-hub-upgrade.md)
 ## [使用状況のメトリック](iot-hub-metrics.md)
 ## [IP フィルター処理を構成する](iot-hub-ip-filtering.md)
-## [大規模なデバイス構成](iot-hub-auto-device-config.md)
+## 大規模なデバイス構成
+### [Azure Portal の使用](iot-hub-auto-device-config.md)
+### [Azure CLI の使用](iot-hub-auto-device-config-cli.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=iot-hub)

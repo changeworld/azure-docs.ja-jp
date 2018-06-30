@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117539"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938310"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -147,7 +147,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| 項目 | [説明] |
+| 項目 | 説明 |
 | --- | --- |
 | api-management ルート フォルダー |サービス インスタンスの最上位の構成が含まれています |
 | apis フォルダー |サービス インスタンス内の API の構成が含まれています |
@@ -173,7 +173,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 > 
 > * ユーザー
 > * サブスクリプション
-> * [プロパティ]
+> * Properties
 > * スタイル以外の開発者ポータルのエンティティ
 > 
 
@@ -219,9 +219,9 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="apis-folder"></a>apis フォルダー
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
-* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
-* `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)の `description` プロパティに対応します。
-* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
+* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
+* `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property)の `description` プロパティに対応します。
+* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties)の `description` プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。

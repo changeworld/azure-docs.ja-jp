@@ -2,24 +2,22 @@
 title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する | Microsoft Docs
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8a25507ab076c4eecccea4e8a503d68ff1441ae5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/26/2018
+ms.author: omidm
+ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179080"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019281"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -37,8 +35,6 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 > [!NOTE]
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
 
-> [!IMPORTANT]
-> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: 1c6c6f56f8e4d8d1d7a10bd07679732d64b86e23
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: asteen
+ms.openlocfilehash: 1e13fe6a9a2e5251d167bb56a05721e613300e83
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292305"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334832"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 

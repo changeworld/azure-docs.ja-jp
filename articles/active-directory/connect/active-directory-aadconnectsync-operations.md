@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6e35dc0ad8493d2f92b7e81fc66f444048482bd9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 363b76c3a28b15bc612a34531ceb162b76621672
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592944"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050466"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: 操作タスクおよび考慮事項
 このトピックでは、Azure AD Connect Sync の操作タスクについて説明します。
@@ -240,7 +240,7 @@ do
     {
         Write-Host Hit the maximum users processed without completion... -ForegroundColor Yellow
 
-        #export the collection of users as as CSV
+        #export the collection of users as a CSV
         Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
         $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 

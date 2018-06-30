@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 848b571dd2664d4910d669faa4dce1aad16cd528
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e2c7e7d5a8f359eb811f67a7502f5fc11c05baba
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808429"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047328"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 または Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用する場合は、[バージョン 1 でのコピー アクティビティ](v1/data-factory-data-movement-activities.md)に関する記事をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -50,7 +47,7 @@ Dynamics 365 (Common Data Service) または Dynamics CRM から、サポート�
 
 ## <a name="get-started"></a>作業開始
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Dynamics に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -62,7 +59,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
+| type | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
 | deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | [はい] |
 | serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | [はい] |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | [はい] |
@@ -108,7 +105,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
+| type | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
 | deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| [はい] |
 | hostName | オンプレミス Dynamics サーバーのホスト名。 | [はい] |
 | ポート | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
@@ -157,7 +154,7 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |[はい] |
 | entityName | 取得するエンティティの論理名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、シンクの場合ははい |
 
 > [!IMPORTANT]
@@ -210,7 +207,7 @@ Dynamics からデータをコピーするは、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | [はい] |
 | クエリ | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
 
 **例:**
@@ -271,7 +268,7 @@ Dynamics にデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | [はい] |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"**。 | [はい] |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ (既定値は 10) |
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**: upsert /更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**: upsert/更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |

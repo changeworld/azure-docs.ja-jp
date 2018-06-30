@@ -3,7 +3,7 @@ title: PowerShell サンプル - SQL Database と SQL Server オンプレミス�
 description: Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行うための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
-author: jognanay
+author: allenwux
 manager: craigg
 editor: ''
 tags: ''
@@ -15,23 +15,24 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: jognanay
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: bef2e3088bf3f3d32f59b382792608fbf3a03a60
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51624e162d4c3304e51ab69923f54213f317e42b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024718"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して SQL Database と SQL Server オンプレミス データベースの間で同期を行う
 
-この PowerShell サンプルは、Azure SQL Database とオンプレミスの SQL Server データベースを同期するデータ同期 (プレビュー) を構成します。 
+この PowerShell サンプルは、Azure SQL Database とオンプレミスの SQL Server データベースのデータ同期を構成します。 
 
 このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
  
 `Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
 
-SQL データ同期の概要については、[Azure SQL データ同期 (プレビュー) を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事をご覧ください。
+SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

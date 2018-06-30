@@ -3,22 +3,24 @@ title: Azure AD ギャラリー アプリケーションへのユーザー プ�
 description: 既に Azure AD アプリケーション ギャラリーに一覧表示されているアプリケーションにユーザー プロビジョニングを構成するときの一般的な問題をトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: asmalser
-ms.openlocfilehash: 8b23ea72a898dc5725c1c82ee2a5cbc06730b5aa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: 1146df364a08128b5cd191ed1120198ae31b763e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292992"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337090"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題 
 
@@ -38,7 +40,7 @@ SAML ベースのシングル サインオンが構成されている場合、SA
 
 現在、この問題を回避できる方法が 2 つあります。
 
-1. **シングル サインオン用とユーザー プロビジョニング用に、2 つのギャラリー アプリケーション インスタンスを使う** - ギャラリー アプリケーション [LinkedIn Elevate](active-directory-saas-linkedinelevate-tutorial.md) を例にすると、ギャラリーから LinkedIn Elevate を追加して、シングル サインオン用に構成することができます。 プロビジョニング用には、Azure AD アプリ ギャラリーから LinkedIn Elevate の別のインスタンスを追加し、名前を "LinkedIn Elevate (Provisioning)" に設定します。 この 2 番目のインスタンスについては、[プロビジョニング](active-directory-saas-linkedinelevate-provisioning-tutorial.md)は構成しますが、シングル サインオンは構成しません。 この回避策を使うときは、同じユーザーとグループを両方のアプリケーションに[割り当てる](manage-apps/assign-user-or-group-access-portal.md)必要があります。 
+1. **シングル サインオン用とユーザー プロビジョニング用に、2 つのギャラリー アプリケーション インスタンスを使う** - ギャラリー アプリケーション [LinkedIn Elevate](saas-apps/linkedinelevate-tutorial.md) を例にすると、ギャラリーから LinkedIn Elevate を追加して、シングル サインオン用に構成することができます。 プロビジョニング用には、Azure AD アプリ ギャラリーから LinkedIn Elevate の別のインスタンスを追加し、名前を "LinkedIn Elevate (Provisioning)" に設定します。 この 2 番目のインスタンスについては、[プロビジョニング](saas-apps/linkedinelevate-provisioning-tutorial.md)は構成しますが、シングル サインオンは構成しません。 この回避策を使うときは、同じユーザーとグループを両方のアプリケーションに[割り当てる](manage-apps/assign-user-or-group-access-portal.md)必要があります。 
 
 2. **格納される構成データの量を減らす** - [プロビジョニング] タブの [[管理者資格情報]](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) セクションに入力したすべてのデータは、SAML 証明書と同じ場所に格納されます。 このすべてのデータの長さを短くすることはできない可能性がありますが、一部の省略可能な構成フィールド (**[通知用電子メール]** など) は削除できます。
 

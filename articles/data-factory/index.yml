@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Data Factory V2 プレビューのドキュメント
+title: Azure Data Factory のドキュメント
 metadata:
   title: Azure Data Factory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: 分析用のデータを移動して処理するために、Data Factory を使用してオンプレミスやクラウドのソースとの間で自動化データ パイプラインを設定する方法について説明します。
@@ -13,21 +13,21 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/08/2017
   ms.author: douglasl
-  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
-  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+  ms.openlocfilehash: 624b2f0968776115f35698710cdc930a9a824922
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/23/2018
-  ms.locfileid: "30166744"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37047202"
 abstract:
-  description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理に加え、分析用のデータの移動と変換の方法を紹介します。 <p>現在、Data Factory のバージョン V2 はプレビュー段階です。 バージョン V1 は一般公開されています。 Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
+  description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理に加え、分析用のデータの移動と変換の方法を紹介します。 <p>Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: Azure Data Factory V2 でパイプラインを視覚的に構築する (19 分 31 秒)
+    title: Azure Data Factory でパイプラインを視覚的に構築する (19 分 31 秒)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:

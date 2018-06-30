@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777476"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029001"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Chrome アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "33777476"
 このチュートリアルでは、通知ハブの作成と、[Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) を使用したサンプルの Google Chrome アプリへのプッシュ通知の送信について説明します。 Chrome アプリは Google Chrome ブラウザーのコンテキストで実行され、通知ハブに登録されます。 
 
 > [!NOTE]
-> Chrome アプリケーションのプッシュ通知は汎用的なブラウザー内通知ではなく、Chrome ブラウザーの拡張モデルに固有の機能となっています (「 [Chrome Apps Overview (Chrome アプリケーションの概要)] 」を参照)。 Chrome アプリケーションは、デスクトップ ブラウザーだけでなく、Apache Cordova を通じてモバイル (Android および iOS) でも動作します。 詳細については、[モバイルでの Chrome アプリケーションの実行]に関するページを参照してください。
+> Chrome アプリケーションのプッシュ通知は汎用的なブラウザー内通知ではなく、Chrome ブラウザーの拡張モデルに固有の機能となっています (「 [Chrome Apps Overview (Chrome アプリケーションの概要) (Chrome アプリケーションの概要)] 」を参照)。 Chrome アプリケーションは、デスクトップ ブラウザーだけでなく、Apache Cordova を通じてモバイル (Android および iOS) でも動作します。 詳細については、[モバイルでの Chrome アプリケーションの実行]に関するページを参照してください。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -400,7 +400,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-   Azure Service Bus SDK への参照が、<a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージと共に自動的にプロジェクトに追加されます。</a>
+   Azure Service Bus SDK への参照が、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージと共に自動的にプロジェクトに追加されます。</a>
 4. `Program.cs` を開いて、次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.NotificationHubs;
@@ -464,7 +464,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 <!-- URLs. -->
 [Chrome アプリケーションの Notification Hub サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Notification Hubs Overview]: notification-hubs-push-notification-overview.md
-[Chrome Apps Overview (Chrome アプリケーションの概要)]: https://developer.chrome.com/apps/about_apps
+[Chrome Apps Overview (Chrome アプリケーションの概要) (Chrome アプリケーションの概要)]: https://developer.chrome.com/apps/about_apps
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [モバイルでの Chrome アプリケーションの実行]: https://developer.chrome.com/apps/chrome_apps_on_mobile

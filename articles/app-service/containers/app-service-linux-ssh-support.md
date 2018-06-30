@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: c2beb67a27b667d31402b903f38dbf116e9425d0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bace90021d5a786f0b014e617bd0ae8e6043bb36
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301077"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060129"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -113,13 +113,13 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) を実行して、最新の App Service 拡張機能を追加します。
 
 ```azurecli-interactive
-az extension add -–name webapp
+az extension add --name webapp
 ```
 
 `az extension add` を以前に実行した場合は、代わりに [az extension update](/cli/azure/extension?view=azure-cli-latest#az-extension-update) を実行します。
 
 ```azurecli-interactive
-az extension update -–name webapp
+az extension update --name webapp
 ```
 
 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<group\_name>_ と \_<app\_name>_ を指定し、\<port> をローカル ポート番号で置き換えます。

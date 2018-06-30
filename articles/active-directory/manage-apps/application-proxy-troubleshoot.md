@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f3c767da249d10896ef1792ce4a5ed72ba3fa418
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8740557471d1cc528e8b7440984c7a3c624ee693
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302568"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017666"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -40,8 +40,6 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
 
 ## <a name="connector-errors"></a>コネクタのエラー
-
-[Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使用して、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。 
 
 コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 

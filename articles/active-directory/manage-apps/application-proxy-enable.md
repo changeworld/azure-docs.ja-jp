@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0ac14f792c63ea06a484eb5b522c4d33958538ed
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158423"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025514"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>アプリケーション プロキシの概要とコネクタのインストール
 この記事では、Microsoft Azure AD アプリケーション プロキシを Azure AD のクラウド ディレクトリに対して有効にする手順について説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "34158423"
 ## <a name="application-proxy-prerequisites"></a>アプリケーション プロキシの前提条件
 アプリケーション プロキシ サービスを有効にして使用するためには、次の条件を満たしておく必要があります。
 
-* [Microsoft Azure AD の Basic または Premium サブスクリプション](../active-directory-whatis.md) に加え、自分が全体管理者となっている Azure AD ディレクトリ。
+* [Microsoft Azure AD の Basic または Premium サブスクリプション](../fundamentals/active-directory-whatis.md) に加え、自分が全体管理者となっている Azure AD ディレクトリ。
 * アプリケーション プロキシ コネクタをインストールできる、Windows Server 2012 R2 または 2016 が実行されているサーバー。 このサーバーは、クラウド内のアプリケーション プロキシ サービスと公開するオンプレミス アプリケーションに接続できなければなりません。
   * Kerberos 制約付き委任を利用し、発行したアプリケーションへのシングル サインオンを実行するには、そのアプリケーションと同じ AD ドメインにこのコンピューターが参加済みであることが必要です。 詳細については、「[KCD for single sign-on with Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)」 (アプリケーション プロキシを使用したシングル サインオンのための KCD) を参照してください。
 
@@ -64,7 +64,6 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 4. コネクタは登録プロセスのために login.windows.net と login.microsoftonline.com にアクセスする必要があります。
 
-5. [Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使った、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 さらに、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。

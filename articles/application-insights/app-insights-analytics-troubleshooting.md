@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eeda0fa6ad8faa05baf0a9344e958d298fb80d8e
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294161"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936685"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Application Insights の Analytics のトラブルシューティング
 [Application Insights Analytics](app-insights-analytics.md)で問題が発生しましたか? ここから開始します。 Analytics は、Azure Application Insights の強力な検索ツールです。
@@ -57,7 +57,7 @@ ms.locfileid: "35294161"
 4. 別の (通常の) ブラウザー ウィンドウを開いて [Azure](https://portal.azure.com)に移動します。 サインアウトします。次に、リンクを開き、適切な資格情報を使用してサインインします。
 5. Microsoft Edge および Internet Explorerのユーザーも、信頼済みゾーンの設定がサポートされていないと、このエラーが表示される場合があります。
    
-    [Analytics ポータル](https://analytics.applicationinsights.io)と [Azure Active Directory ポータル](https://portal.azure.com)の両方が同じセキュリティ ゾーン内にあることを確認します。
+    [Analytics ポータル](https://portal.azure.com)と [Azure Active Directory ポータル](https://portal.azure.com)の両方が同じセキュリティ ゾーン内にあることを確認します。
    
    * Internet Explorer で、**[インターネット オプション]**、**[セキュリティ]**、**[信頼済みサイト]**、**[サイト]** の順に開きます。
      

@@ -151,6 +151,7 @@
 ### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
 ### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR のレポート](authentication/howto-sspr-reporting.md)
+### [スマート ロックアウト](authentication/howto-password-smart-lockout.md)
 ### [脆弱なパスワードを排除する](authentication/concept-password-ban-bad.md)
 ### [禁止パスワード リストを構成する](authentication/howto-password-ban-bad.md)
 ### [オンプレミスの統合](authentication/concept-password-ban-bad-on-premises.md)
@@ -388,11 +389,10 @@
 ### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
 #### [ユーザーに管理者ロールを割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md)
-### [管理者ロールのセキュリティ保護](admin-roles-best-practices.md)  
+### [管理者ロールのセキュリティ強化](admin-roles-best-practices.md)  
 #### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
-### [特権ロールのセキュリティ保護](admin-roles-best-practices.md)
 
 ## アクセス レビュー
 ### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)
@@ -407,7 +407,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
@@ -436,7 +436,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
+#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

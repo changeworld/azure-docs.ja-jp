@@ -42,7 +42,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/keyvault/client?view=azure-dotnet)
-## [Java](/java/api/overview/azure/keyvault/client)
+## [Java](/java/api/overview/azure/keyvault?view=azure-java-stable)
 ## Node.js
 ### [コンテナーの管理](https://docs.microsoft.com/en-us/javascript/api/overview/azure/keyvault/client?view=azure-node-latest)
 ### [コンテナーの内容の管理](https://docs.microsoft.com/en-us/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)

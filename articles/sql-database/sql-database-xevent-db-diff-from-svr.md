@@ -10,12 +10,12 @@ ms.workload: On Demand
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 446c1f3af3f00fb70a230dfec5f5c533b45a285f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c0115254fc3368868584e76ead8da812656e4d1
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650045"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028848"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -190,7 +190,7 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 ## <a name="related-links"></a>関連リンク
 
 - [Azure Storage における Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)。
-- [Azure Storage コマンドレット](http://msdn.microsoft.com/library/dn806401.aspx)
+- [Azure Storage コマンドレット](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
 - [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)

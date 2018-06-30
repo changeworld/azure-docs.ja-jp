@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040297"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753321"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 監視製品の比較
 この記事では、アーキテクチャ、リソースの監視方法のロジック、収集したデータの分析方法の観点から、System Center Operations Manager (SCOM) と Operations Management Suite (OMS) の Log Analytics の比較について説明します。  両者の相違点と相対的なメリットについて基本的な理解を得ることを目的としています。  
 
 ## <a name="basic-architecture"></a>基本のアーキテクチャ
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-SCOM のコンポーネントはすべてデータセンターにインストールされます。  [エージェントがインストールされます](http://technet.microsoft.com/library/hh551142.aspx) 。  エージェントは、SCOM データベースおよびデータ ウェアハウスと通信する [管理サーバー](https://technet.microsoft.com/library/hh301922.aspx) に接続します。  エージェントと管理サーバーの接続には、ドメイン認証が使用されます。  管理サーバーが信頼されたドメインの外部にある場合は、証明書認証を実行するか、 [ゲートウェイ サーバー](https://technet.microsoft.com/library/hh212823.aspx)に接続できます。
+SCOM のコンポーネントはすべてデータセンターにインストールされます。  [エージェントがインストールされます](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console) 。  エージェントは、SCOM データベースおよびデータ ウェアハウスと通信する [管理サーバー](https://technet.microsoft.com/library/hh301922.aspx) に接続します。  エージェントと管理サーバーの接続には、ドメイン認証が使用されます。  管理サーバーが信頼されたドメインの外部にある場合は、証明書認証を実行するか、 [ゲートウェイ サーバー](https://technet.microsoft.com/library/hh212823.aspx)に接続できます。
 
 SCOM には、2 つの SQL データベースが必要です。1 つは運用データ用、もう 1 つはレポート作成とデータ分析をサポートするデータ ウェアハウスです。  [レポート サーバー](https://technet.microsoft.com/library/hh298611.aspx)は、SQL Reporting Services を実行して、データ ウェアハウスのデータに関するレポートを作成します。 
 
@@ -65,7 +65,7 @@ SCOM の監視ロジックは、[管理パック](https://technet.microsoft.com/
 
 管理パックには複数のワークフローが含まれており、パフォーマンス カウンターのサンプリング、サービスの状態の確認、スクリプトの実行など、それぞれが異なる監視機能を実行します。  各ワークフローは個別に実行され、書き込み先のデータベースや、アラートを生成するかどうかなど、結果についても個別に定義されています。 
 
-実行する頻度、エラーと判断するしきい値、生成するアラートの重要度などのワークフローの詳細は管理者が上書きできます。  また、独自のワークフローを追加することで機能を追加できます。
+実行する頻度、エラーと判断するしきい値、生成するアラートの重要度などのワークフローの詳細は管理者がオーバーライドできます。  また、独自のワークフローを追加することで機能を追加できます。
 
 ![Overrides](media/operations-management-suite-monitoring-product-comparison/scom-overrides.png)
 
@@ -169,7 +169,7 @@ Log Analytics のクエリは、アド ホック分析を実行できるだけ�
 
 ![OMS のダッシュボード](media/operations-management-suite-monitoring-product-comparison/log-analytics-dashboard.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx)をデプロイする。
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics)にサインアップする。  
 

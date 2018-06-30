@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23452401"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937559"
 ---
 # <a name="optimizing-your-azure-code"></a>Azure コードの最適化
 Microsoft Azure を使用するアプリケーションをプログラミングする場合、クラウド環境でのアプリケーションのスケーラビリティ、動作、パフォーマンスに関する問題の回避に役立つコーディングの手法がいくつかあります。 Microsoft では、このような一般的に発生する問題の一部を認識および特定し、その解決を支援する Azure コード分析ツールを提供しています。 このツールは、NuGet を使用して Visual Studio でダウンロードできます。
@@ -31,7 +31,7 @@ Azure コード分析ツールでは、パフォーマンスに影響する既�
 ### <a name="id"></a>ID
 AP0000
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 クラウド アプリケーションの既定 (インプロセス) のセッション状態モードを使用すると、セッション状態が失われる可能性があります。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -93,13 +93,13 @@ public async Task RunAsync()
 ### <a name="id"></a>ID
 AP2000
 
-### <a name="description"></a>Description
-認証に Shared Access Signature (SAS) を使用します。 Service Bus の認証に、Access Control Service (ACS) は使用されなくなります。
+### <a name="description"></a>説明
+認証に Shared Access Signature (SAS) を使用します。 Service Bus の認証に、Access Control Service (ACS) は非推奨となっています。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
 
 ### <a name="reason"></a>理由
-セキュリティを強化するために、Azure Active Directory では、ACS 認証に代わって SAS 認証が使用されるようになります。 移行計画については、「 [Azure Active Directory is the future of ACS (Azure Active Directory が ACS の将来)](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) 」をご覧ください。
+セキュリティを強化するために、Azure Active Directory では、ACS 認証に代わって SAS 認証が使用されるようになります。 移行計画については、「 [Azure Active Directory is the future of ACS (Azure Active Directory が ACS の将来)](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) 」をご覧ください。
 
 ### <a name="solution"></a>解決策
 アプリで SAS 認証を使用します。 次の例は、既存の SAS トークンを使用して Service Bus の名前空間またはエンティティにアクセスする方法を示しています。
@@ -223,7 +223,7 @@ while (true)
 ### <a name="id"></a>ID
 AP2003
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 仲介型メッセージングでパフォーマンスを向上させるには、Service Bus の非同期メソッドを使用します。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -240,7 +240,7 @@ Azure メッセージング インフラストラクチャのパフォーマン�
 ### <a name="id"></a>ID
 AP2004
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 Service Bus メッセージングでパフォーマンスを向上させるには、Service Bus のキューとトピックをパーティション分割します。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -265,7 +265,7 @@ ns.CreateTopic(td);
 ### <a name="id"></a>ID
 AP3001
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 共有アクセス ポリシーを即座に開始するために、現在の時刻に設定された SharedAccessStartTime を使用しないようにします。 このプロパティを設定する必要があるのは、共有アクセス ポリシーを後で開始する場合だけです。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -297,7 +297,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 ### <a name="id"></a>ID
 AP3002
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 "時刻のずれ" と呼ばれる状態により、さまざまな場所にあるデータセンター間でクロックの時間差が 5 分になる場合があります。 SAS ポリシー トークンが予定よりも早く期限切れになるのを防ぐには、5 分より長い有効期限を設定します。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -384,7 +384,7 @@ App.config ファイルまたは Web.config ファイルに構成設定を保存
 ### <a name="id"></a>ID
 AP4001
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ハードコーディングされた接続文字列を使用しており、それらを後で更新する必要がある場合、ソース コードを変更し、アプリケーションを再コンパイルする必要があります。 ただし、構成ファイルに接続文字列を保存すると、構成ファイルを更新するだけで、接続文字列を後で変更できます。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -405,7 +405,7 @@ web.config や app.config などの構成ファイルの使用方法について
 ### <a name="id"></a>ID
 AP5000
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 Microsoft.WindowsAzure.Diagnostics プログラミング API を使用するなどして、コードで診断設定を構成するのではなく、diagnostics.wadcfg ファイル  (Azure SDK 2.5 を使用する場合は diagnostics.wadcfgx) で診断設定を構成します。 これにより、コードを再コンパイルしなくても診断設定を変更できます。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -430,7 +430,7 @@ WAD 1.3 (Azure SDK 2.5 に付属) 以降では、コードを使用して診断�
 ### <a name="id"></a>ID
 AP6000
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 メモリを節約するために、DBContext オブジェクトを静的として宣言しないようにします。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
@@ -465,5 +465,5 @@ public class BlogsController : Controller
     }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](app-service/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。

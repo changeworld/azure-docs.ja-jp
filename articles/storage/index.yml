@@ -3,24 +3,24 @@ documentType: LandingData
 title: Azure Storage のドキュメント
 metadata:
   title: Azure Storage のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage は、Blob Storage、File Storage、Queue Storage で構成されます。
+  description: Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage には、Azure BLOB、Azure Data Lake Storage Gen2、Azure Files、Azure キュー、Azure テーブルが含まれます。
   services: storage
   author: tamram
-  manager: jeconnoc
+  manager: twooley
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/18/2018
+  ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266673"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37030293"
 abstract:
-  description: Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage は、Blob Storage、File Storage、Queue Storage で構成されます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、アプリケーションで Azure Storage を活用する方法を確認してください。
+  description: Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたクラウド ストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage には、Azure BLOB (オブジェクト)、Azure Data Lake Storage Gen2、Azure Files、Azure キュー、Azure テーブルが含まれます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、アプリケーションで Azure Storage を活用する方法を確認してください。
 sections:
 - title: 5 分間のクイック スタート
   items:
@@ -65,30 +65,25 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-java
       - href: /azure/storage/blobs/storage-quickstart-blobs-python
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+    - title: Data Lake Storage Gen2
+      values:
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: 
+      - href: 
+      - href: 
+      - href: 
 - title: ステップバイステップのチュートリアル
   items:
-  - type: paragraph
-    text: クライドに画像データをアップロードして処理する方法を説明します。
   - type: list
-    style: unordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a>
-    - html: <a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a>
-    - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a>
-  - type: paragraph
-    text: Azure Storage で高可用性を実現するようにアプリケーションを設計する方法を説明します。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-create-geo-redundant-storage">アプリケーション データの可用性を高める</a>
-    - html: <a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする</a>
-  - type: paragraph
-    text: Azure Storage で非構造化データを検索する方法を説明します。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-unstructured-search">クラウド ストレージで非構造化データを検索する</a>
+    - title: BLOB
+      html: <p>クライドに画像データをアップロードして処理する</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a></li></ul><p>高可用性を実現するようにアプリケーションを設計する</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">アプリケーション データの可用性を高める</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Azure Storage で非構造化データを検索する</a></p>
+    - title: Data Lake Storage Gen2
+      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">Azure Databricks を使ったデータの抽出、変換、読み込み</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">Spark を使用した DataBricks で Azure Data Lake Storage Gen2 のデータにアクセスする</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う</a></p>
 - title: サンプル
   items:
   - type: paragraph

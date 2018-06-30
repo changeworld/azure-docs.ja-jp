@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/14/2018
 ms.author: celested
-ms.reviewer: bryanla
+ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 22833851b85427dd8e9583f9c783fd55b9d31414
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b369cdeb3a58db0336d4f6e343599aaa46643b32
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594089"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316786"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 

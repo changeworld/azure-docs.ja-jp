@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件付きアクセスの what if ツールの概要 (プレビュー) | Microsoft Docs
+title: Azure Active Directory 条件付きアクセスの what if ツールの概要
 description: お使いの環境で条件付きアクセス ポリシーの影響を把握する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232073"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750084"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Azure Active Directory 条件付きアクセスの what if ツールの概要 (プレビュー)
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの what if ツールの概要
 
 [条件付きアクセス](active-directory-conditional-access-azure-portal.md)は、承認されたユーザーがクラウド アプリにアクセスする方法を制御できるようにする Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいか。 この質問に答えるために、**条件付きアクセスの what-if ツール**を使用できます。
 
