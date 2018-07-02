@@ -25,16 +25,11 @@
   items:
     - name: ロール定義について
       href: role-definitions.md
-    - name: 組み込みのロール
-      href: built-in-roles.md
-    - name: リソース プロバイダー操作
-      href: resource-provider-operations.md
     - name: RBAC のための Privileged Identity Management (PIM)
       href: pim-azure-resource.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
 - name: ハウツー ガイド
-  expanded: true
   items:
     - name: アクセスを管理する
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: トラブルシューティング
       href: troubleshooting.md
+- name: リファレンス
+  items:
+    - name: 組み込みのロール
+      href: built-in-roles.md
+    - name: リソース プロバイダー操作
+      href: resource-provider-operations.md
+    - name: RBAC の制限
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: REST API
+      href: /rest/api/authorization/

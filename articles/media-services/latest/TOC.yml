@@ -35,6 +35,10 @@
   items:
     - name: 資産
       href: assets-concept.md
+    - name: コンテンツ保護
+      items:
+        - name: 概要
+          href: content-protection-overview.md
     - name: エンコード
       items:
         - name: 概要
@@ -69,6 +73,10 @@
           href: job-input-from-http-how-to.md
         - name: ローカル ファイルから - .NET
           href: job-input-from-local-file-how-to.md
+    - name: コンテンツの保護
+      items:
+        - name: AES-128 の使用 - .NET
+          href: protect-with-aes128.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)
@@ -87,6 +95,12 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: イベント スキーマ
       href: media-services-event-schemas.md
+    - name: DRM ライセンス スキーマ
+      items:
+        - name: PlayReady ライセンス テンプレート
+          href: playready-license-template-overview.md
+        - name: Widevine ライセンス テンプレート
+          href: widevine-license-template-overview.md
 - name: リソース
   items:
     - name: Azure のロードマップ

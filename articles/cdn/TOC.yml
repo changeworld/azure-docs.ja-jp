@@ -91,6 +91,8 @@
           href: cdn-resource-health.md
         - name: 規則に従って動作をオーバーライドする
           href: cdn-rules-engine.md
+        - name: Traffic Manager の使用
+          href: cdn-traffic-manager.md
     - name: 分析
       href: cdn-log-analysis.md
       items:

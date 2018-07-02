@@ -178,8 +178,8 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Batch フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch'
+    - name: Batch コミュニティ
+      href: 'https://github.com/Azure/Batch'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ

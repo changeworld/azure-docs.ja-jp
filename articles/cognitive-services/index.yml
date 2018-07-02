@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/29/2018
   ms.author: cgronlun
-  ms.openlocfilehash: 90f677fae4cf741e99ba6bdf488b33c57aae61a3
-  ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+  ms.openlocfilehash: 69e3643f132cbc6c428608cb1c92c22f51765b81
+  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37020131"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37130813"
 abstract:
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
 sections:
@@ -52,13 +52,6 @@ sections:
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/node-analyze
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/python-analyze
       - href: 
-    - title: Custom Vision - 画像分類子を構築する
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: /azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier
     - title: Speech Service - 音声を認識する
       values:
       - href: /azure/cognitive-services/speech-service/quickstart-csharp-windows
@@ -66,13 +59,6 @@ sections:
       - href: 
       - href: 
       - href: /azure/cognitive-services/speech-service/get-started
-    - title: Translator Speech - 音声を変換する
-      values:
-      - href: /azure/cognitive-services/translator-speech/quickstarts/csharp
-      - href: /azure/cognitive-services/translator-speech/quickstarts/java
-      - href: /azure/cognitive-services/translator-speech/quickstarts/nodejs
-      - href: /azure/cognitive-services/translator-speech/quickstarts/python
-      - href: 
     - title: LUIS - 事前構築済みのホーム オートメーションを使用する
       values:
       - href: 
@@ -80,12 +66,12 @@ sections:
       - href: 
       - href: 
       - href: /azure/cognitive-services/luis/luis-get-started-create-app
-    - title: Translator Text - ある言語から別の言語に翻訳する
+    - title: Text Analytics - 言語を検出し、センチメントを分析する
       values:
-      - href: Translator/quickstart-csharp-translate
-      - href: Translator/quickstart-java-translate
-      - href: Translator/quickstart-nodejs-translate
-      - href: Translator/quickstart-python-translate
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/csharp
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/java
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/nodejs
+      - href: /azure/cognitive-services/Text-Analytics/quickstarts/python
       - href: 
     - title: Bing Web Search - 関連する Web クエリを取得する
       values:

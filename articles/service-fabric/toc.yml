@@ -460,6 +460,13 @@
           href: service-fabric-debugging-your-application-java.md
         - name: ローカルでの監視と診断
           href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: VS Code 環境での作業
+      href: service-fabric-get-started-vs-code.md
+      items:
+        - name: 'VS Code を使用した C# Service Fabric アプリケーションの開発'
+          href: service-fabric-develop-csharp-applications-with-vs-code.md
+        - name: VS Code を使用した Java Service Fabric アプリケーションの開発
+          href: service-fabric-develop-java-applications-with-vs-code.md
     - name: Cloud Services から移行する
       items:
         - name: Cloud Services と Service Fabric を比較する
@@ -534,10 +541,6 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: 証明書共通名を使用したクラスター
                   href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Windows でのディスク暗号化の有効化
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Linux でのディスク暗号化の有効化
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: スケール
               items:
                 - name: 手動によるスケールアウト
