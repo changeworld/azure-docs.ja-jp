@@ -112,7 +112,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** テキストボックスに、「`https://<sub-domain>.velpicsaml.net`」と入力します。
+    a. **[サインオン URL]** テキストボックスに、「`https://<sub-domain>.velpicsaml.net`」と入力します。
 
     b. **[識別子]** テキストボックスに、"**シングル サインオン URL**" の値 (`https://auth.velpic.com/saml/v2/<entity-id>/login`) を貼り付けます。
     
@@ -151,7 +151,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     ![プラグイン](./media/velpicsaml-tutorial/velpic_5.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに、SAML プラグインの名前を入力します。
+    a. **[名前]** テキストボックスに、SAML プラグインの名前を入力します。
 
     b. **[発行者の URL]** テキストボックスに、Azure Portal の **[サインオンの構成]** ウィンドウからコピーした **SAML エンティティ ID** を貼り付けます。
 
@@ -186,7 +186,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/velpicsaml-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,7 +208,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     ![ユーザー](./media/velpicsaml-tutorial/velpic_8.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name] \(名)** テキストボックスに、Britta Simon の名を入力します。
+    a. **[First Name] \(名)** テキストボックスに、Britta Simon の名を入力します。
 
     b. **[Last Name] \(姓)** テキストボックスに、Britta Simon の姓を入力します。
 

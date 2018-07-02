@@ -110,7 +110,7 @@ KnowBe4 Security Awareness Training で Azure AD のシングル サインオン
 
     ![[KnowBe4 Security Awareness Training のドメインと URL] のシングル サインオン情報](./media/knowbe4-tutorial/tutorial_knowbe4_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.KnowBe4.com/auth/saml/<instancename>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.KnowBe4.com/auth/saml/<instancename>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[KnowBe4 Security Awareness Training Client サポート チーム](mailto:support@KnowBe4.com)に問い合わせてください。 

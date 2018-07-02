@@ -108,7 +108,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Skytap のドメインと URL] のシングル サインオン情報](./media/skytap-tutorial/tutorial_skytap_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`http://pingone.com/<custom EntityID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`http://pingone.com/<custom EntityID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、次の URL を入力します。`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 

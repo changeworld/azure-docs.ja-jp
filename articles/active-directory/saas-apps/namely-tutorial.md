@@ -112,7 +112,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/namely-tutorial/tutorial_namely_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.namely.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.namely.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.namely.com/saml/metadata` の形式で URL を入力します。
 
@@ -149,7 +149,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
    
     ![[Configure Single Sign-On]](./media/namely-tutorial/tutorial_namely_09.png)
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** をクリックします。 
+    a. **[Enable SAML]** をクリックします。 
 
     b. **[Identity provider SSO url]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
@@ -184,7 +184,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/namely-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -214,7 +214,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 5. **[Add New Person]** ダイアログで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name (名)]** ボックスに「**Britta**」と入力します。
+    a. **[First Name (名)]** ボックスに「**Britta**」と入力します。
 
     b. **[Last Name (姓)]** ボックスに「**Simon**」と入力します。
 

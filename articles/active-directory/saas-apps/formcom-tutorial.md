@@ -110,7 +110,7 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
 
     ![[Form.com のドメインと URL] のシングル サインオン情報](./media/formcom-tutorial/tutorial_form.com_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.wa-form.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.wa-form.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.form.com` の形式で URL を入力します。
 
@@ -127,7 +127,7 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
     
     ![[Configure Single Sign-On]](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+    a. コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
      

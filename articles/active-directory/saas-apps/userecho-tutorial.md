@@ -112,7 +112,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/userecho-tutorial/tutorial_userecho_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.userecho.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.userecho.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.userecho.com/saml/metadata/` の形式で URL を入力します。
 
@@ -149,7 +149,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
    
     ![[Configure Single Sign-On]](./media/userecho-tutorial/tutorial_userecho_09.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML-enabled]** で **[Yes]** を選択します。
+    a. **[SAML-enabled]** で **[Yes]** を選択します。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[SAML SSO URL]** ボックスに貼り付けます。
     
@@ -186,7 +186,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/userecho-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -222,7 +222,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
    
     ![[Configure Single Sign-On]](./media/userecho-tutorial/tutorial_userecho_13.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
+    a. **[名前]** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
     
     b.  **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
     

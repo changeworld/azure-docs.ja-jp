@@ -111,7 +111,7 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Onit のドメインと URL] のシングル サインオン情報](./media/onit-tutorial/tutorial_onit_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<sub-domain>.onit.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<sub-domain>.onit.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<sub-domain>.onit.com` の形式で URL を入力します。
 
@@ -132,7 +132,7 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
     | ------------------- | -------------------- |
     | email | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/onit-tutorial/tutorial_attribute_04.png)
 
@@ -171,7 +171,7 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
 
     ![シングル サインオン](./media/onit-tutorial/IC791177.png "Single Sign-On")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[認証方式]** として **[シングル サインオンとパスワード]** を選びます。
+    a. **[認証方式]** として **[シングル サインオンとパスワード]** を選びます。
     
     b. **[Idp Target URL]\(Idp ターゲット URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 

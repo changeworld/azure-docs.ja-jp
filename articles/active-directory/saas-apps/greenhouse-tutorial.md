@@ -110,7 +110,7 @@ Greenhouse で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Greenhouse のドメインと URL] のシングル サインオン情報](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.greenhouse.io` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.greenhouse.io` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.greenhouse.io` の形式で URL を入力します。
 
@@ -188,7 +188,7 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
    
    ![Add New User](./media/greenhouse-tutorial/ic790793.png "Add New User")
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
+   a. **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
 
    b. **[Save]** をクリックします。    
    

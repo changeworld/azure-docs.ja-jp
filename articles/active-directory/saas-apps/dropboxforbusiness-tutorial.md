@@ -110,7 +110,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
     ![[Dropbox for Business のドメインと URL] のシングル サインオン情報](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://www.dropbox.com/sso/<id>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://www.dropbox.com/sso/<id>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値 `Dropbox` を入力します。
 
@@ -132,7 +132,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
 7. **Dropbox for Business** 側のシングル サインオンを構成するには、Dropbox for Business テナントに移動します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Dropbox for Business テナントにサインオンします。 
+    a. Dropbox for Business テナントにサインオンします。 
    
     ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
    
@@ -156,7 +156,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
    
     ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[必須項目です]** をクリックします。
+    a. **[必須項目です]** をクリックします。
    
     b. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 

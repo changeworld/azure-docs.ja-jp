@@ -108,7 +108,7 @@ Cisco Cloudlock で Azure AD のシングル サインオンを構成してテ�
 
     ![[Cisco Cloudlock のドメインと URL] のシングル サインオン情報](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の URL を入力します。
     | |
     |--|
     | `https://platform.cloudlock.com` |

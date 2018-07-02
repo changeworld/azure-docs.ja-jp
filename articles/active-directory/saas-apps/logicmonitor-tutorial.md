@@ -112,7 +112,7 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/logicmonitor-tutorial/tutorial_logicmonitor_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.logicmonitor.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.logicmonitor.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.logicmonitor.com` の形式で URL を入力します。
 
@@ -143,7 +143,7 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
    
    ![Single Sign-On Settings](./media/logicmonitor-tutorial/ic790054.png "Single Sign-On Settings")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
+   a. **[シングル サインオンを有効にする]** を選択します。
 
    b. **[Default Role Assignment (既定のロールの割り当て)]** で、**[読み取り専用]** を選択します。
    
@@ -178,7 +178,7 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/logicmonitor-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -204,7 +204,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
    
    ![Add an account](./media/logicmonitor-tutorial/ic790057.png "Add an account")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの**ユーザー名**、**メール**、**パスワード**、**パスワードの再入力**の値を入力します。
+   a. 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの**ユーザー名**、**メール**、**パスワード**、**パスワードの再入力**の値を入力します。
    
    b. **[ロール]**、**[アクセス許可の表示]**、**[状態]** の順に選択します。
    

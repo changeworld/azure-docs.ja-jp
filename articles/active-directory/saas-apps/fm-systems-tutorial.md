@@ -153,7 +153,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/fm-systems-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -177,7 +177,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
    
     ![Create User](./media/fm-systems-tutorial/ic795907.png "Create User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**パスワード**、**確認パスワード**、**電子メール**、**従業員 ID** を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**パスワード**、**確認パスワード**、**電子メール**、**従業員 ID** を入力します。
    
     b. **[次へ]** をクリックします。
 

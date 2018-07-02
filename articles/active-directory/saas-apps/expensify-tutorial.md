@@ -110,7 +110,7 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Expensify のドメインと URL] のシングル サインオン情報](./media/expensify-tutorial/tutorial_expensify_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
 
     b. **[識別子]** ボックスに、`https://www.<companyname>.expensify.com` の形式で URL を入力します。
 
@@ -129,7 +129,7 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
    
     ![[Configure Single Sign-On]](./media/expensify-tutorial/tutorial_expensify_51.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Expensify アプリケーションにサインオンします。
+    a. Expensify アプリケーションにサインオンします。
     
     b. 上部のツールバーの **[Admin]** をクリックします。
     

@@ -110,7 +110,7 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Zendesk のドメインと URL] のシングル サインオン情報](./media/zendesk-tutorial/tutorial_zendesk_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.zendesk.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.zendesk.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<subdomain>.zendesk.com` の形式で値を入力します。
 
@@ -125,7 +125,7 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
      ![[Configure Single Sign-On]](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/zendesk-tutorial/tutorial_attribute_04.png)
 
@@ -160,7 +160,7 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
     ![シングル サインオン](./media/zendesk-tutorial/ic773090.png "シングル サインオン")
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Admin & Agents]\(管理者とエージェント\)** タブをクリックします。
+     a. **[Admin & Agents]\(管理者とエージェント\)** タブをクリックします。
 
      b. **[シングルサインオン (SSO) と SAML]** を選択し、**[SAML]** を選択します。
 

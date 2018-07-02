@@ -108,7 +108,7 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Spacio のドメインと URL] のシングル サインオン情報](./media/spacio-tutorial/tutorial_spacio_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://sso.spac.io/<brokerageID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://sso.spac.io/<brokerageID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://sso.spac.io/<brokerageID>` の形式で URL を入力します。
 

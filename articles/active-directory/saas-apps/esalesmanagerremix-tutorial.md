@@ -100,7 +100,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[E Sales Manager Remix のドメインと URL] のシングル サインオン情報](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/esales-pc*
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/esales-pc*
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/*
 
@@ -153,7 +153,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[SAML authentication setting]\(SAML 認証設定\)](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[PC version]\(PC バージョン\)** チェック ボックスをオンにします。
+    a. **[PC version]\(PC バージョン\)** チェック ボックスをオンにします。
     
     b. **[Collaboration item]\(コラボレーション項目\)** セクションで、ドロップダウン リストから **[email]\(電子メール\)** を選択します。
 
@@ -221,7 +221,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     
     ![[New employee registration]\(従業員の新規登録) セクション](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta**) を入力します。
+    a. **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta**) を入力します。
 
     b. その他の必須フィールドに入力します。
     

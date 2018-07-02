@@ -146,7 +146,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/unifi-tutorial/app3.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[プロバイダー名]** テキストボックスに、ID プロバイダーの名前を入力します。
+    a. **[プロバイダー名]** テキストボックスに、ID プロバイダーの名前を入力します。
 
     b. **[プロバイダー URL]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -181,7 +181,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/unifi-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -285,7 +285,7 @@ Azure AD との接続がありますか。
 
 2. パスワードが Active Directory で正しく表示されたら、同期エンジンのユーザーをフォローします。 オンプレミスの Active Directory から Azure AD までユーザーをフォローすると、オブジェクトに記述的なエラーが発生しているかどうかを確認できます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
+    a. [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
 
     b. **[コネクタ]** をクリックします。
 

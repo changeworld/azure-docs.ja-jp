@@ -112,7 +112,7 @@ BGS Online で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/bgsonline-tutorial/tutorial_bgsonline_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     運用環境の場合は、次の形式を使用します。`https://<company name>.millwardbrown.report` 
 
@@ -169,7 +169,7 @@ BGS Online で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/bgsonline-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

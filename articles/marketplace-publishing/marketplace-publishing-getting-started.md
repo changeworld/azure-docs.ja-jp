@@ -60,7 +60,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 ソリューションを Marketplace に公開するには、次の手順に従います。
 1. 技術面以外の前提条件を満たします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
+    a. [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
 
     b. [VM の技術面の前提条件](marketplace-publishing-vm-image-creation-prerequisites.md)を満たします。
 
@@ -68,7 +68,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 2. プランを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
+    a. [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
 
     b. [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
 
@@ -76,7 +76,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 4. ステージング環境でプランをテストします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
+    a. VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
 
     b. ソリューション テンプレート プランを[ステージング環境](marketplace-publishing-solution-template-test-in-staging.md)でテストします。
 

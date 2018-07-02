@@ -113,7 +113,7 @@ Trakstar で Azure AD のシングル サインオンを構成およびテスト
 
     ![[Configure Single Sign-On]](./media/trakstar-tutorial/tutorial_trakstar_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** テキストボックスに、Trakstar 内の **ACS (Consumer) URL** ([Settings](\設定\) > [Authentication & SSO]\(認証 & SSO\)) の値 (`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>` の形式) をコピーします。
+    a. **[サインオン URL]** テキストボックスに、Trakstar 内の **ACS (Consumer) URL** ([Settings](\設定\) > [Authentication & SSO]\(認証 & SSO\)) の値 (`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>` の形式) をコピーします。
 
     b. **[識別子]** テキストボックスは、既定値 `https://app.trakstar.com` のままにします。
 
@@ -162,7 +162,7 @@ Trakstar で Azure AD のシングル サインオンを構成およびテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/trakstar-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

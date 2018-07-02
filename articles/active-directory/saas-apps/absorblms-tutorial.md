@@ -104,7 +104,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Absorb LMS のドメインと URL] のシングル サインオン情報](./media/absorblms-tutorial/tutorial_absorblms_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
      
@@ -141,7 +141,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] ページ](./media/absorblms-tutorial/4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    a. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     b. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
     
@@ -218,7 +218,7 @@ Absorb LMS の場合、設定は手動で行います。
 
     ![[ユーザーの追加] ページ](./media/absorblms-tutorial/user.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
+    a. **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
 
     b. **[姓]** ボックスに、ユーザーの姓 (たとえば、**Simon**) を入力します。
     

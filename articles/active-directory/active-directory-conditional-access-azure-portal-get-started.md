@@ -80,7 +80,7 @@ ms.locfileid: "34723706"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/06.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーとグループの選択]** をクリックします。
+    a. **[ユーザーとグループの選択]** をクリックします。
 
     b. **[選択]** をクリックします。
 
@@ -96,7 +96,7 @@ ms.locfileid: "34723706"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/08.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリを選択]** をクリックします。
+    a. **[アプリを選択]** をクリックします。
 
     b. **[選択]** をクリックします。
 
@@ -116,7 +116,7 @@ ms.locfileid: "34723706"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/11.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[構成]** で、**[はい]** をクリックします。
+    a. **[構成]** で、**[はい]** をクリックします。
 
     b. **[含む]** で **[All locations (すべての場所)]** をクリックします。
 
@@ -136,7 +136,7 @@ ms.locfileid: "34723706"
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/14.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[多要素認証が必要です]** を選択します。
+    a. **[多要素認証が必要です]** を選択します。
 
     b. **[選択]** をクリックします。
 

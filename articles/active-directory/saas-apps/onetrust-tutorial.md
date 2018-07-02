@@ -110,7 +110,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 
     ![[OneTrust Privacy Management Software のドメインと URL] のシングル サインオン情報](./media/onetrust-tutorial/tutorial_onetrust_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://www.onetrust.com/saml2`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://www.onetrust.com/saml2`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.onetrust.com/auth/consumerservice` のパターンを使用して URL を入力します。
 

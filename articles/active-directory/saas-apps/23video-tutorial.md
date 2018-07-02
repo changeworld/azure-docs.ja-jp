@@ -112,7 +112,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
     ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.23video.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.23video.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://www.23video.com/saml/trust/<uniqueid>` の形式で URL を入力します。
 
@@ -160,7 +160,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
  
     ![Azure AD のテスト ユーザーの作成](./media/23video-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -190,7 +190,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
    
     ![ユーザーの割り当て][402]
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[E-mail addresses (メール アドレス)]** ボックスに、Azure AD の Britta Simon の電子メール アドレスを入力します。  
+    a. **[E-mail addresses (メール アドレス)]** ボックスに、Azure AD の Britta Simon の電子メール アドレスを入力します。  
  
     b. **[Add the user (ユーザーの追加)]** をクリックします。   
 

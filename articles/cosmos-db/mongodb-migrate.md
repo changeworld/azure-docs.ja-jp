@@ -104,7 +104,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
 
 2. 1 回のドキュメントの書き込みに対するおおよその RU 請求金額を計算します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MongoDB シェルを使用して Azure Cosmos DB MongoDB データベースに接続します。 手順については、「[Connect a MongoDB application to Azure Cosmos DB (Azure Cosmos DB への MongoDB アプリケーションの接続)](connect-mongodb-account.md)」を参照してください。
+    a. MongoDB シェルを使用して Azure Cosmos DB MongoDB データベースに接続します。 手順については、「[Connect a MongoDB application to Azure Cosmos DB (Azure Cosmos DB への MongoDB アプリケーションの接続)](connect-mongodb-account.md)」を参照してください。
     
     b. MongoDB シェルからサンプル ドキュメントの 1 つを使用して、サンプルの挿入コマンドを実行します。
     
@@ -127,7 +127,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
 3. マシンから Azure Cosmos DB クラウド サービスまでの待ち時間を決定します。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MongoDB シェルで ```setVerboseShell(true)``` コマンドを使用して、詳細ログ記録を有効にします。
+    a. MongoDB シェルで ```setVerboseShell(true)``` コマンドを使用して、詳細ログ記録を有効にします。
     
     b. ```db.coll.find().limit(1)``` を使用して、データベースに対して単純なクエリを実行します。 次のような応答が返されます。
 

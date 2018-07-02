@@ -112,7 +112,7 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.blackboard.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.blackboard.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.blackboard.com/auth-saml/saml/SSO/entity-id/SAML_AD` の形式で URL を入力します。
     
@@ -130,7 +130,7 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
     | ---------------| ----------------|
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 |user.userprincipalname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
     
@@ -182,7 +182,7 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/blackboard-learn-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

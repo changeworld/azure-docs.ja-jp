@@ -112,7 +112,7 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     |  |
     | ----|
     | `https://<subdomain>.<region>.au.deputy.com` |
@@ -182,7 +182,7 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ソーシャル ログイン**を有効にします。
+    a. **ソーシャル ログイン**を有効にします。
    
     b. Azure Portal からダウンロードした Base64 エンコードの証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[OpenSSL Certificate]\(OpenSSL 証明書\)** ボックスに貼り付けます。
    
@@ -221,7 +221,7 @@ Deputy で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/deputy-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -248,7 +248,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
    
    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに、ユーザーの名を入力します (この例では **BrittaSimon**)。
+   a. **[名前]** テキストボックスに、ユーザーの名を入力します (この例では **BrittaSimon**)。
    
    b. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの電子メール アドレスを入力します。
    

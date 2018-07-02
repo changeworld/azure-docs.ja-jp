@@ -117,7 +117,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[応答 URL]** ボックスに、`https://<company name>.filesanywhere.com/saml20.aspx?c=215` のパターンを使用して URL を入力します。
+    a. **[応答 URL]** ボックスに、`https://<company name>.filesanywhere.com/saml20.aspx?c=215` のパターンを使用して URL を入力します。
 > [!NOTE]
 > **215** は **clientid** の値であり、ほんの一例です。 実際の clientid 値と置き換える必要があります。
 
@@ -125,7 +125,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     
     ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://<sub domain>.filesanywhere.com/` のパターンを使用して URL を入力します。
 
@@ -147,7 +147,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
     | ---------------| --------------- |    
     | clientid | *"uniquevalue"* |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
@@ -198,7 +198,7 @@ FilesAnywhere で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/filesanywhere-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -110,7 +110,7 @@ MobileIron で Azure AD のシングル サインオンを構成してテスト�
 
     ![[MobileIron のドメインと URL] のシングル サインオン情報](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します。
 
@@ -199,7 +199,7 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
     ![[シングル サインオン ユーザー追加の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
+    a. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
 
     b. **[名]** ボックスに、ユーザーの名を入力します (例: Britta)。
 

@@ -110,7 +110,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/front-tutorial/tutorial_front_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.frontapp.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<companyname>.frontapp.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.frontapp.com/sso/saml/callback` のパターンを使用して URL を入力します。
      
@@ -155,7 +155,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
     ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_005.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **Entity ID** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
+    a. **Entity ID** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
     b. **ACS URL** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     

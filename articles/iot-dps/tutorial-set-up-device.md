@@ -39,7 +39,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
 1. 必要なツールをインストールし、プロビジョニング サービス Client SDK for C が含まれている GitHub リポジトリを複製します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 マシンに Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/) がインストールされていることを確認します。 Visual Studio のインストールで [[C++ によるデスクトップ開発]](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にしておく必要があります。
+   a. マシンに Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/) がインストールされていることを確認します。 Visual Studio のインストールで [[C++ によるデスクトップ開発]](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にしておく必要があります。
 
    b. [CMake ビルド システム](https://cmake.org/download/)をダウンロードしてインストールします。 CMake のインストールより**前に**、[C++ によるデスクトップ開発] ワークロードが有効な Visual Studio がマシンにインストールされていることが重要です。
 

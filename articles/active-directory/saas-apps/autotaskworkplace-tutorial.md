@@ -113,7 +113,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![IDP の場合の [Autotask Workplace のドメインと URL] のシングル サインオン情報](./media/autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -144,7 +144,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![Autotask のシングル サインオンの構成](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[XML Metadata File]\(XML メタデータ ファイル\)** オプションを選び、Azure Portal からダウンロードした**メタデータ XML** をアップロードします。
+    a. **[XML Metadata File]\(XML メタデータ ファイル\)** オプションを選び、Azure Portal からダウンロードした**メタデータ XML** をアップロードします。
 
     b. **[Enable SSO]\(SSO を有効にする\)** をクリックします。
     

@@ -112,7 +112,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、URL として「`https://www.rfpio.com`」と入力します。
+    a. **[識別子]** テキストボックスに、URL として「`https://www.rfpio.com`」と入力します。
 
     ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_url1.png)
 
@@ -156,7 +156,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/rfpio-tutorial/app5.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ダウンロードしたメタデータ XML** の内容をコピーし、**[ID 構成]** フィールドに貼り付けます。
+    a. **ダウンロードしたメタデータ XML** の内容をコピーし、**[ID 構成]** フィールドに貼り付けます。
 
     > [!NOTE]
     >ダウンロードした**メタデータ XML** の内容をコピーするには、**Notepad++** または適切な **XML エディター**を使用します。 
@@ -194,7 +194,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/rfpio-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -231,7 +231,7 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
     ![[Configure Single Sign-On]](./media/rfpio-tutorial/app8.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
+    a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
 
     b. 要件に応じて **[ロール]** を選択します。
 

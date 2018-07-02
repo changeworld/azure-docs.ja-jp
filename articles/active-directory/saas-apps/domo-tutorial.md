@@ -112,7 +112,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Configure Single Sign-On]](./media/domo-tutorial/tutorial_domo_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.domo.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.domo.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンで URL を入力します。     
 
@@ -144,7 +144,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
     | name | user.displayname |
     | 電子メール | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/domo-tutorial/tutorial_attribute_04.png)
 
@@ -197,7 +197,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/domo-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

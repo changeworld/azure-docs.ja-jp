@@ -110,7 +110,7 @@ IBM OpenPages で Azure AD のシングル サインオンを構成してテス�
 
     ![[IBM OpenPages のドメインと URL] のシングル サインオン情報](./media/ibmopenpages-tutorial/tutorial_ibmopenpage_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`http://<subdomain>.ibm.com:<ID>/openpages` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`http://<subdomain>.ibm.com:<ID>/openpages` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.ibm.com:<ID>/samlsps/op` のパターンを使用して URL を入力します。
 

@@ -146,7 +146,7 @@ HPC Pack IaaS デプロイ スクリプトは、XML 構成ファイルを入力�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上記のコマンドには **AdminPassword** が指定されていないため、ユーザー *MyAdminName* のパスワードを入力するよう求められます。
+    a. 上記のコマンドには **AdminPassword** が指定されていないため、ユーザー *MyAdminName* のパスワードを入力するよう求められます。
    
     b. スクリプトにより構成ファイルの検証が開始されます。 ネットワーク接続の状態にもよりますが、最大で数分かかることがあります。
    

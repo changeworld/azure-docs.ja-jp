@@ -177,7 +177,7 @@ ms.locfileid: "35248454"
 
 3. **ページ レベル フィルター** を追加して、メンテナンスが必要な車両についてデータを表示するには、次の手順に従います。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[MaintenanceLabel]** フィールドを **[ページ レベル フィルター]** にドラッグします。
+   a. **[MaintenanceLabel]** フィールドを **[ページ レベル フィルター]** にドラッグします。
   
       ![[ページ レベル フィルター]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "35248454"
 
 8. **[書式]** セクションで、視覚エフェクトの **[データの色]** を変更します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[最小値]** の色を **F2C812** に変更します。
+    a. **[最小値]** の色を **F2C812** に変更します。
 
     b. **[最大値]** の色を **FF6300** に変更します。
 
@@ -419,7 +419,7 @@ ms.locfileid: "35248454"
 
 7. **ページ 3 から**、以下の内容をピン留めします。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]**  
+    a. **[Count of vin]**  
 
    ![ページ 3 の [Count of vin]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
 
@@ -429,7 +429,7 @@ ms.locfileid: "35248454"
 
 8. **ページ 5** から、以下の内容をピン留めします。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]**
+    a. **[Count of vin]**
 
    ![ページ 5 のグラフ 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
 
@@ -439,7 +439,7 @@ ms.locfileid: "35248454"
 
 9. **ページ 4 から**、以下の内容をピン留めします。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]** 
+    a. **[Count of vin]** 
 
    ![ページ 4 のグラフ 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 

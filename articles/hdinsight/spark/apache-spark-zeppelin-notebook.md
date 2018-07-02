@@ -128,7 +128,7 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
     **[保存]** をクリックし、Livy インタープリターを再起動します。
 4. **ヒント**: 上記で入力したキーの値に到達する方法を理解する場合は、次のようにします。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Maven リポジトリから目的のパッケージを探します。 このチュートリアルでは [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) を使用しました。
+    a. Maven リポジトリから目的のパッケージを探します。 このチュートリアルでは [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) を使用しました。
    
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。
    

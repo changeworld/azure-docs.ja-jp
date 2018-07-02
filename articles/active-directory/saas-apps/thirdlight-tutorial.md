@@ -112,7 +112,7 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_thirdlight_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.thirdlight.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.thirdlight.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.thirdlight.com/saml/sp` の形式で URL を入力します。
 
@@ -171,7 +171,7 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/thirdlight-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

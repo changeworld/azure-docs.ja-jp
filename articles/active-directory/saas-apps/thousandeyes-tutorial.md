@@ -144,7 +144,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![シングル サインオンの設定](./media/thousandeyes-tutorial/ic790069.png "Setup Single Sign-On")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
+    a. **[シングル サインオンを有効にする]** を選択します。
 
     b. **[Login Page URL]\(ログイン ページ URL\)** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
@@ -179,7 +179,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure AD のテスト ユーザーの作成](./media/thousandeyes-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -211,7 +211,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザー アカウントの追加](./media/thousandeyes-tutorial/IC790074.png "Add User Accounts")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
+    a. **[Name]\(名前\)** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
     b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 

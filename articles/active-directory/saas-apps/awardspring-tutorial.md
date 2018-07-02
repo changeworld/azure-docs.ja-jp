@@ -108,7 +108,7 @@ AwardSpring で Azure AD のシングル サインオンを構成してテスト
 
     ![[AwardSpring Domain and URLs](AwardSpring のドメインと URL) のシングル サインオン情報](./media/awardspring-tutorial/tutorial_awardspring_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.awardspring.com/SignIn/SamlMetaData` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.awardspring.com/SignIn/SamlMetaData` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.awardspring.com/SignIn/SamlAcs` のパターンを使用して URL を入力します。
 
@@ -138,7 +138,7 @@ AwardSpring で Azure AD のシングル サインオンを構成してテスト
     > [!NOTE]
     > StudentID 属性は、要求に渡す必要がある実際の学生 ID にマッピングされます。 この値を取得するには、[AwardSpring クライアント サポート チーム](mailto:support@awardspring.com)にお問い合わせください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 既存の属性を削除し、新しい属性を追加します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. 既存の属性を削除し、新しい属性を追加します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/awardspring-tutorial/tutorial_attribute_04.png)
 

@@ -118,7 +118,7 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
     
     ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_url1.png)
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。 
+     a. **[詳細な URL 設定の表示]** をクリックします。 
 
      b. **[サインオン URL]** ボックスに、`https://<instancename>.convercent.com/` というパターンで値を入力します。
 
@@ -163,7 +163,7 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/convercent-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

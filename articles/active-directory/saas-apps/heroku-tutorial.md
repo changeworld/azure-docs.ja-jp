@@ -113,7 +113,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/heroku-tutorial/tutorial_heroku_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。    
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。    
     `https://sso.heroku.com/saml/<company-name>/init`
 
     b. **[Identifier URL]\(ID URL\)** ボックスに、次の形式で URL を入力します。            
@@ -132,7 +132,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
 6. Heroku で SSO を有効にするには、次の手順に従います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Heroku アカウントに管理者としてログインします。
+    a. Heroku アカウントに管理者としてログインします。
 
     b. **[設定]** タブをクリックします。
 
@@ -176,7 +176,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/heroku-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

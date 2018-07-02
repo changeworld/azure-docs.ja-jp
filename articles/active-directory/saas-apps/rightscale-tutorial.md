@@ -116,7 +116,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
     
     ![[Configure Single Sign-On]](./media/rightscale-tutorial/tutorial_rightscale_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** テキストボックスに、URL として「`https://login.rightscale.com/`」と入力します。
 
@@ -134,7 +134,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
 <CS>
 8. アプリケーションに合わせて SSO を構成するには、管理者として RightScale テナントにサインオンする必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
+    a. 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
    
     ![[Configure Single Sign-On]](./media/rightscale-tutorial/tutorial_rightscale_001.png) 
 
@@ -191,7 +191,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/rightscale-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

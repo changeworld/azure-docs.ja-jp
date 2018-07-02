@@ -112,7 +112,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/betterworks-tutorial/tutorial_betterworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://app.betterworks.com/saml2/metadata/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://app.betterworks.com/saml2/metadata/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://app.betterworks.com/saml2/acs/` のパターンを使用して URL を入力します。
 
@@ -120,7 +120,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
     
     ![[Configure Single Sign-On]](./media/betterworks-tutorial/tutorial_betterworks_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://app.betterworks.com` のパターンを使用して URL を入力します。
 
@@ -141,7 +141,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
    | -------------- |  ------------ |
    | saml_token     | bd189cf6-1701-11e6-8f90-d26992eca2a5 |
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+   a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/betterworks-tutorial/tutorial_officespace_04.png)
 
@@ -187,7 +187,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/betterworks-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

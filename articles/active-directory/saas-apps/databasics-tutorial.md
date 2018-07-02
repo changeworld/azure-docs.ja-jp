@@ -110,7 +110,7 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[DATABASICS のドメインと URL] のシングル サインオン情報](./media/databasics-tutorial/tutorial_databasics_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、値として「`DATA-BASICS_SP`」を入力します。
+    a. **[識別子]** テキストボックスに、値として「`DATA-BASICS_SP`」を入力します。
     
     b. **[サインオン URL]** ボックスに、`https://<sitenumber>.data-basics.net/<clientname>/saml_sso.jsp` のパターンを使用して URL を入力します。
 

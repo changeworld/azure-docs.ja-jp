@@ -122,7 +122,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
+    a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
     b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
 
@@ -147,7 +147,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
     
     ![Azure AD のテスト ユーザーの作成](./media/linkedinsalesnavigator-tutorial/userattribute.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
+    a. **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
     
     ![Azure AD のテスト ユーザーの作成](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
     
@@ -161,7 +161,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 10. **name** 属性で以下の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
     ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
@@ -213,7 +213,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
  
     ![Azure AD のテスト ユーザーの作成](./media/linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -112,7 +112,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
     ![[Configure Single Sign-On]](./media/performancecentre-tutorial/tutorial_performancecentre_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://companyname.performancecentre.com/saml/SSO` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`http://companyname.performancecentre.com/saml/SSO` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`http://companyname.performancecentre.com` の形式で URL を入力します。
 
@@ -180,7 +180,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
  
     ![Azure AD のテスト ユーザーの作成](./media/performancecentre-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -204,7 +204,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
    
     ![[Create User]][401]
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに Britta Simon の必要な属性を入力します。
+    a. 関連するテキスト ボックスに Britta Simon の必要な属性を入力します。
     
     >[!IMPORTANT]
     >PerformanceCentre での Britta の User Name 属性は、Azure AD でのユーザー名と同じにする必要があります。

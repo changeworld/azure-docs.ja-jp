@@ -110,7 +110,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 
     ![Adobe Experience Manager のドメインと URL のシングル サインオン情報](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、AEM のサーバーにも定義する一意の値を入力します。 
+    a. **[識別子]** ボックスに、AEM のサーバーにも定義する一意の値を入力します。 
 
     b. **[応答 URL]** ボックスに、`https://<AEM Server Url>/saml_login` の形式で URL を入力します。
 
@@ -181,7 +181,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[パス]** ボックスに、「**/**」と入力します。
+    a. **[パス]** ボックスに、「**/**」と入力します。
 
     b. **[IDP URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を入力します。
 

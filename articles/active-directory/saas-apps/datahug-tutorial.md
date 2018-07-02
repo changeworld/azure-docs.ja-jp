@@ -112,7 +112,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>/acs` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[署名オプション]** で **[SAML アサーションへの署名]** を選択します。
+    a. **[署名オプション]** で **[SAML アサーションへの署名]** を選択します。
     
     b. **[署名アルゴリズム]** で **[SHA-1]** を選択します。
  
@@ -174,7 +174,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/datahug-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

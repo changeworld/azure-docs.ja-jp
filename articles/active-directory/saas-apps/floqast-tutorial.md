@@ -128,7 +128,7 @@ FloQast で Azure AD のシングル サインオンを構成してテストす�
     | LastName        | User.surname |
     | 電子メール       | User.mail    |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/floqast-tutorial/tutorial_attribute_04.png)
 
@@ -146,7 +146,7 @@ FloQast で Azure AD のシングル サインオンを構成してテストす�
 
     ![証明書のダウンロードのリンク](./media/floqast-tutorial/tutorial_floqast_certificate.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[証明書署名の詳細設定を表示する]** チェック ボックスをオンにします。
+    a. **[証明書署名の詳細設定を表示する]** チェック ボックスをオンにします。
 
     ![証明書アサーション](./media/floqast-tutorial/tutorial_floqast_certificateassertion.png)
 

@@ -116,7 +116,7 @@ Workplace by Facebook で Azure AD のシングル サインオンを構成し�
 
     ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>.facebook.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<instancename>.facebook.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://www.facebook.com/company/<instanceID>` の形式で URL を入力します。
 
@@ -198,7 +198,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
  
     ![Azure AD のテスト ユーザーの作成](./media/workplacebyfacebook-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

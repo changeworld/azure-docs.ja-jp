@@ -110,7 +110,7 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
 
     ![[YouEarnedIt のドメインと URL] のシングル サインオン情報](./media/youearnedit-tutorial/tutorial_youearnedit_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 
     | 環境  | パターン  |
     |:--- |:--- |
     | Production | `https://<company name>.youearnedit.com/users/sign_in` |

@@ -110,7 +110,7 @@ Coupa で Azure AD のシングル サインオンを構成してテストする
 
     ![[Coupa のドメインと URL] のシングル サインオン情報](./media/coupa-tutorial/tutorial_coupa_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.Coupa.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`http://<companyname>.Coupa.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<companyname>.coupahost.com` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ Coupa で Azure AD のシングル サインオンを構成してテストする
 
     ![Coupa SP metadata](./media/coupa-tutorial/ic791901.png "Coupa SP metadata")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML を使用してログイン]** を選択します。
+    a. **[SAML を使用してログイン]** を選択します。
     
     b. コンピューターに Coupa のメタデータ ファイルをダウンロードするには、 **[SP メタデータのダウンロードとインポート]** をクリックします。 メタデータを開き、**[AssertionConsumerService index/URL]\(AssertionConsumerService インデックス/URL\)** の値をコピーして、**[Coupa のドメインと URL]** セクションの **[応答 URL]** ボックスにこの値を貼り付けます。 
     
@@ -203,7 +203,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
    
    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "User Details")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
+   a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
 
    b. **Create** をクリックしてください。   
    

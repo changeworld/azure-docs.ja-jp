@@ -110,7 +110,7 @@ IMAGE WORKS で Azure AD のシングル サインオンを構成してテスト
 
     ![[IMAGE WORKS のドメインと URL] のシングル サインオン情報](./media/imageworks-tutorial/tutorial_imageworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://sp.i-imageworks.jp/iw/<tenantName>/postResponse` の形式で URL を入力します。
 

@@ -84,7 +84,7 @@ Azure AD への LinkedIn Learning の統合を構成するには、ギャラリ�
 
 LinkedIn Learning で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[LinkedIn Learning のテスト ユーザーの作成](#creating-a-linkedin-learning-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -110,7 +110,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
     ![[Configure Single Sign-On]](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします。
+5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url]** をコピーします。
 
     ![[Configure Single Sign-On]](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -118,7 +118,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
     ![[Configure Single Sign-On]](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
+    a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
     b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
 
@@ -143,7 +143,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
     
     ![Azure AD のテスト ユーザーの作成](./media/linkedinlearning-tutorial/userattribute.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
+    a. **[属性の追加]** をクリックして [属性の追加] ダイアログを開きます。
 
     ![Azure AD のテスト ユーザーの作成](./media/linkedinlearning-tutorial/tutorial_attribute_04.png)
 
@@ -157,7 +157,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
 10. **name** 属性で以下の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
     ![[Configure Single Sign-On]](./media/linkedinlearning-tutorial/url_update.png)
 
@@ -204,7 +204,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
  
     ![Azure AD のテスト ユーザーの作成](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

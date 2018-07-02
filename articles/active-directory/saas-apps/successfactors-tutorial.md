@@ -110,7 +110,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
 
     ![[SuccessFactors のドメインと URL] のシングル サインオン情報](./media/successfactors-tutorial/tutorial_successfactors_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -175,7 +175,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     ![Configuring single sign-on on app side][12]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML v2 SSO]** オプションをクリックします。
+    a. **[SAML v2 SSO]** オプションをクリックします。
    
     b. **[SAML Asserting Party Name]\(SAML アサーティング パーティ名\)** を設定します (例: SAML 発行者 + 会社名)。
    
@@ -200,7 +200,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     ![Configuring single sign-on on app side][13]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Support SP-initiated Global Logout (SP によって開始されたグローバル ログアウトのサポート)]** で **[Yes (はい)]** を選択します。
+    a. **[Support SP-initiated Global Logout (SP によって開始されたグローバル ログアウトのサポート)]** で **[Yes (はい)]** を選択します。
    
     b. **[Global Logout Service URL (LogoutRequest destination)]\(グローバル ログアウト サービスの URL (LogoutRequest の送信先)\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
    
@@ -216,7 +216,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     ![[Configure Single Sign-On]][29]
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 下部の **[Company Settings (会社設定)]** に移動します。
+    a. 下部の **[Company Settings (会社設定)]** に移動します。
    
     b. **[Enable Non-Case-Sensitive Username (大文字と小文字を区別しないユーザー名)]** の横のチェック ボックスをオンにします。
    

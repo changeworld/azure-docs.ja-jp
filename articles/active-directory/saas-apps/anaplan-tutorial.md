@@ -112,7 +112,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://sdp.anaplan.com/frontdoor/saml/<tenant name>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://sdp.anaplan.com/frontdoor/saml/<tenant name>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.anaplan.com` の形式で URL を入力します。
 
@@ -159,7 +159,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/anaplan-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

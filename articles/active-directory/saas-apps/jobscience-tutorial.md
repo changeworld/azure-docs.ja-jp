@@ -151,7 +151,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
     
     ![Single Sign-On Settings](./media/jobscience-tutorial/ic781026.png "Single Sign-On Settings")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Enabled]** を選択します。
+    a. **[SAML Enabled]** を選択します。
 
     b. **[新規]** をクリックします。
 
@@ -159,7 +159,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
     
     ![SAML Single Sign-On Setting](./media/jobscience-tutorial/ic784365.png "SAML Single Sign-On Setting")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに、構成の名前を入力します。
+    a. **[名前]** テキスト ボックスに、構成の名前を入力します。
 
     b. **[Issuer]\(発行者\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -222,7 +222,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -255,7 +255,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
    
    ![User Edit](./media/jobscience-tutorial/ic784371.png "User Edit")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では Britta)。
+   a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では Britta)。
    
    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
    

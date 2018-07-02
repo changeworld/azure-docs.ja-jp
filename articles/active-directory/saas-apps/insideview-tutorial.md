@@ -139,7 +139,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
 
     ![Add a New SAML](./media/insideview-tutorial/ic794136.png "Add a New SAML")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[STS 名]** テキストボックスに、構成の名前を入力します。
+    a. **[STS 名]** テキストボックスに、構成の名前を入力します。
 
     b. **[SamlP/WS-Fed Unsolicited EndPoint]\(SamlP/WS-Fed 未承諾エンドポイント\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
@@ -182,7 +182,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/insideview-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

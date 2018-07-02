@@ -110,7 +110,7 @@ Zoho で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Zoho のドメインと URL] のシングル サインオン情報](./media/zoho-mail-tutorial/tutorial_zoho_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.zohomail.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company name>.zohomail.com` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zoho クライアント サポート チーム](https://www.zoho.com/mail/contact.html)にお問い合わせください。 
@@ -141,7 +141,7 @@ Zoho で Azure AD のシングル サインオンを構成してテストする�
    
     ![SAML 認証の詳細](./media/zoho-mail-tutorial/ic789609.png "SAML Authentication Details")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
    
     b. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
    
@@ -209,7 +209,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
    
     ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "Add User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 

@@ -128,7 +128,7 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
     > [!Note]
     > 属性 **company** の値は実数ではありません。 この値を実際の企業コードで更新します。 **company** 属性の値を取得するには、[DigiCert サポート チーム](mailto:support@digicert.com)に問い合わせてください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_attribute_04.png)
 
@@ -173,7 +173,7 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/digicert-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

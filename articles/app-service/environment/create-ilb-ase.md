@@ -177,7 +177,7 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 6. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 

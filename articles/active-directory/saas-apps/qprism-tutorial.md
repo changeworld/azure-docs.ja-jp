@@ -105,7 +105,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
     ![[QPrism のドメインと URL] のシングル サインオン情報](./media/qprism-tutorial/tutorial_qprism_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<customer domain>.qmyzone.com/login` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<customer domain>.qmyzone.com/login` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<customer domain>.qmyzone.com/metadata.php` という形式で URL を入力します。
          

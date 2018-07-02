@@ -110,7 +110,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
     ![[Rally Software のドメインと URL] のシングル サインオン情報](./media/rally-software-tutorial/tutorial_rallysoftware_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.rally.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.rally.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.rally.com` の形式で URL を入力します。
 
@@ -143,7 +143,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
    
     ![Authentication](./media/rally-software-tutorial/ic769542.png "Authentication")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選択します。
+    a. Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選択します。
 
     b. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
@@ -203,7 +203,7 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
    
     ![Create User](./media/rally-software-tutorial/ic781040.png "Create User")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 (**BrittSimon** など) を入力します。
+    a. **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 (**BrittSimon** など) を入力します。
    
     b. **[E-mail address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
 

@@ -110,7 +110,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
     ![[Infor Retail – Information Management のドメインと URL] のシングル サインオン情報 IDP](./media/inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。 
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 
     |   |
     | -- |
     | `https://<company name>.mingle.infor.com` |

@@ -110,7 +110,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     ![[PingBoard のドメインと URL] のシングル サインオン情報 IDP](./media/pingboard-tutorial/tutorial_pingboard_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`http://app.pingboard.com/sp`」と入力します。
+    a. **[識別子]** ボックスに、値として「`http://app.pingboard.com/sp`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<entity-id>.pingboard.com/auth/saml/consume` のパターンを使用して URL を入力します。
 
@@ -175,7 +175,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザー] ダイアログ ボックス](./media/pingboard-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -199,7 +199,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザーの招待]](./media/pingboard-tutorial/create_testuser_name.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
+    a. **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
     b. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 

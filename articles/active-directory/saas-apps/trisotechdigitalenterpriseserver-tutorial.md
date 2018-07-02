@@ -108,7 +108,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![[Trisotech Digital Enterprise Server のドメインと URL] のシングル サインオン情報](./media/trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.trisotech.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.trisotech.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.trisotech.com` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![[Configure Single Sign-On]](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[認証方法]** のドロップダウン リストから **[Secured Assertion Markup Language 2 (SAML 2)]** を選択します。
+    a. **[認証方法]** のドロップダウン リストから **[Secured Assertion Markup Language 2 (SAML 2)]** を選択します。
 
     b. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
 

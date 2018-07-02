@@ -108,7 +108,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
 
     ![[mindWireless のドメインと URL] のシングル サインオン情報](./media/mindwireless-tutorial/tutorial_mindwireless_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.mwsmart.com/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.mwsmart.com/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します。
 
@@ -127,7 +127,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
     | -------------- | --------------- | ----------------|
     | 従業員 ID | user.employeeid | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/mindwireless-tutorial/tutorial_attribute_04.png)
 

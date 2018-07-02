@@ -149,7 +149,7 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
 
     ![Authentication Profile](./media/mimecast-admin-console-tutorial/ic795015.png "Authentication Profile")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[説明]** テキストボックスに、構成の名前を入力します。
+    a. **[説明]** テキストボックスに、構成の名前を入力します。
     
     b. **[Mimecast Admin Console に SAML 認証を適用]** を選択します。
     
@@ -227,7 +227,7 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
    
    ![保存](./media/mimecast-admin-console-tutorial/ic795006.png "保存")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 該当するテキストボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]**、**[グローバル名]**、**[パスワード]**、**[パスワードの確認]** 属性を入力します。
+   a. 該当するテキストボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]**、**[グローバル名]**、**[パスワード]**、**[パスワードの確認]** 属性を入力します。
 
    b. **[Save]** をクリックします。
 

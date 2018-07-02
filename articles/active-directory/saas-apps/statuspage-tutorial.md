@@ -112,7 +112,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
@@ -127,7 +127,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE]
     > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
     >
-    >a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
+    >a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
     >
     >b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
@@ -159,7 +159,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
 
@@ -192,7 +192,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

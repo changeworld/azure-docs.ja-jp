@@ -110,7 +110,7 @@ TurboRater で Azure AD のシングル サインオンを構成してテスト�
 
     ![[TurboRater のドメインと URL] のシングル サインオン情報](./media/turborater-tutorial/tutorial_turborater_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`https://www.itcdataservices.com`」と入力します。
+    a. **[識別子]** ボックスに、値として「`https://www.itcdataservices.com`」と入力します。
  
     b. **[応答 URL]** ボックスに、値を次のように入力します。
     

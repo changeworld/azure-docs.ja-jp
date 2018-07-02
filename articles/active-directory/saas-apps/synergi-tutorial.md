@@ -110,7 +110,7 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Synergi のドメインと URL] のシングル サインオン情報](./media/synergi-tutorial/tutorial_synergi_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.irmsecurity.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<company name>.irmsecurity.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company name>.irmsecurity.com/sso/<organization id>` のパターンを使用して URL を入力します。
 

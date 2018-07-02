@@ -112,7 +112,7 @@ Optimizely で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/optimizely-tutorial/tutorial_optimizely_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://app.optimizely.net/<instance name>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://app.optimizely.net/<instance name>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`urn:auth0:optimizely:contoso` のパターンで URL を入力します。
 
@@ -135,7 +135,7 @@ Optimizely で Azure AD のシングル サインオンを構成してテスト�
 
 8. 電子メールに応じて、Optimizely では、[サインオン URL] \(SP によって開始された SSO) と [識別子] \(サービス プロバイダーのエンティティ ID) の値が提供されます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Optimizely によって提供された **SP 開始 SSO URL** をコピーし、Azure Portal の **[Optimizely のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます 
+    a. Optimizely によって提供された **SP 開始 SSO URL** をコピーし、Azure Portal の **[Optimizely のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます 
 
     b. Optimizely によって提供された **サービス プロバイダー エンティティ ID** をコピーし、Azure Portal の **[Optimizely のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます 
 
@@ -178,7 +178,7 @@ Optimizely で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/optimizely-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 

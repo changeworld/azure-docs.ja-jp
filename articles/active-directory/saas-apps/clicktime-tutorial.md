@@ -110,7 +110,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ClickTime のドメインと URL] のシングル サインオン情報](./media/clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://app.clicktime.com/sp/` のように URL を入力します。
+    a. **[識別子]** ボックスに、`https://app.clicktime.com/sp/` のように URL を入力します。
     
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
 
@@ -139,7 +139,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
    
     ![Security Settings](./media/clicktime-tutorial/tic777280.png "Security Settings")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
+    a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
    
     b. **[ID プロバイダー エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
    
@@ -173,7 +173,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/clicktime-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -201,7 +201,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
    
     ![ユーザー](./media/clicktime-tutorial/tic777284.png "People")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
+    a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
   
     b.  **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
        

@@ -112,7 +112,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.force.com/<instancename>` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenantname>.force.com/<instancename>` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、`https://hr2day.force.com/<companyname>` という形式で URL を入力します。
 
@@ -140,7 +140,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
     | ------------------- | -------------------- |    
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** ダイアログを開くには、**[属性の追加]** を選びます。
+      a. **[属性の追加]** ダイアログを開くには、**[属性の追加]** を選びます。
 
     ![Configure single sign-on](./media/hr2day-tutorial/tutorial_attribute_04.png)
 
@@ -198,7 +198,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/hr2day-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**メール アドレス**を入力します。
 

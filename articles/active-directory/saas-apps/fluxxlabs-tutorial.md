@@ -110,7 +110,7 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Fluxx Labs のドメインと URL] のシングル サインオン情報](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     | 環境 | URL パターン|
     |-------------|------------|
@@ -153,7 +153,7 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
     
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML SSO]** チェックボックスをオンにします。
+    a. **[SAML SSO]** チェックボックスをオンにします。
 
     b. **[Request Path]\(要求パス\)** ボックスに、「**/auth/saml**」と入力します。
 
@@ -224,7 +224,7 @@ Azure AD ユーザーが Fluxx Labs にログインできるようにするに�
     
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config5.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Fluxx Labs では、SSO ログインの一意識別子として電子メールを使用します。 **[SSO UID]** フィールドにユーザーの電子メール アドレスを入力します。これは、SSO でのログインとして使用される電子メールアドレスと一致する電子メール アドレスです。
+    a. Fluxx Labs では、SSO ログインの一意識別子として電子メールを使用します。 **[SSO UID]** フィールドにユーザーの電子メール アドレスを入力します。これは、SSO でのログインとして使用される電子メールアドレスと一致する電子メール アドレスです。
 
     b. **[Save]** をクリックします。
 

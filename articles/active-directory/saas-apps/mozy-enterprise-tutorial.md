@@ -139,7 +139,7 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
    
    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777315.png "認証ポリシー")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
+   a. **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
    
    b. **[Use LDAP Push (LDAP プッシュを使用)]** を選択します。
    
@@ -182,7 +182,7 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
  
     ![Azure AD のテスト ユーザーの作成](./media/mozy-enterprise-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -212,7 +212,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
    
    ![ユーザーの追加](./media/mozy-enterprise-tutorial/ic777318.png "ユーザーの追加")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Choose a Group (グループを選択)]** の一覧で、グループを選択します。
+   a. **[Choose a Group (グループを選択)]** の一覧で、グループを選択します。
    
    b. **[What type of user (ユーザーのタイプ)]** の一覧で、タイプを選択します。
    

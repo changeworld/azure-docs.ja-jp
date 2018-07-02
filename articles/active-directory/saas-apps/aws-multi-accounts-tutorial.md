@@ -125,7 +125,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     >[!TIP]
     >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順をご覧ください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
 
@@ -165,7 +165,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
    
     ![シングル サインオンの構成ダイアログ][14]
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Provider Type]** として **[SAML]** を選択します。
+    a. **[Provider Type]** として **[SAML]** を選択します。
 
     b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
@@ -185,7 +185,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの信頼の構成][19] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
+    a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
     b. **[Choose a SAML 2.0 Provider section]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
 
@@ -201,11 +201,11 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの構成の確認][34] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role name]** テキストボックスに自分のロール名を入力します。
+    a. **[Role name]** テキストボックスに自分のロール名を入力します。
 
     b. **[Role description]** ボックスに説明を入力します
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create Role]** をクリックします。
+    a. **[Create Role]** をクリックします。
 
     b. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
@@ -227,7 +227,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 24. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 テナントのグローバル管理者/共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
+    a. テナントのグローバル管理者/共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
     b. ロールを作成するための十分なアクセス許可が必要です。 **[アクセス許可の変更]** をクリックして、必要なアクセス許可を取得します。 
 

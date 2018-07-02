@@ -71,7 +71,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
     
 5. **[管理者資格情報]** セクションで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
+    a. **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
 
     b. 管理者アカウントを使用して [Pingboard](https://pingboard.com/) にサインインします。
 

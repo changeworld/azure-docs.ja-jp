@@ -127,7 +127,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a. **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
     b. **[Mail] \(メール)** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
@@ -170,7 +170,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

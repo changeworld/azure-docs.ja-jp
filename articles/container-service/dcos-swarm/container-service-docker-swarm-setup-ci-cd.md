@@ -160,7 +160,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 
 4. 5 つの各イメージのビルド ステップとプッシュ ステップを構成したら、ビルド ワークフローにステップをもう 2 つ追加します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *BuildNumber* を現在のビルド ID に置き換えるコマンド ライン タスク。詳細については、次の画面を参照してください。
+    a. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *BuildNumber* を現在のビルド ID に置き換えるコマンド ライン タスク。詳細については、次の画面を参照してください。
 
     ![Visual Studio Team Services - compose ファイルの更新](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 

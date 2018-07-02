@@ -132,7 +132,7 @@ SAP Cloud Platform Identity Authentication で Azure AD のシングル サイ�
 
     ![[SAP Cloud Platform Identity Authentication] のシングル サインオン情報](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`<IAS-tenant-id>.accounts.ondemand.com` というパターンで URL を入力します。
+    a. **[識別子]** ボックスに、`<IAS-tenant-id>.accounts.ondemand.com` というパターンで URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com` の形式で URL を入力します。
 
@@ -158,7 +158,7 @@ SAP Cloud Platform Identity Authentication で Azure AD のシングル サイ�
 
 7. SAP アプリケーションに **firstName** などの属性が必要な場合は、**[ユーザー属性]** セクションに **firstName** 属性を追加します。 このオプションは、**[SAML トークン属性]** ダイアログ ボックスの **[シングル サインオン]** ダイアログ ボックスにあります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。 
+    a. **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。 
     
     ![Configure single sign-on](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_attribute_04.png)
     

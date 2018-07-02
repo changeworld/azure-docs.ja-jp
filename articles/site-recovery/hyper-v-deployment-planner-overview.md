@@ -98,7 +98,7 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 
 2.  プロファイルが必要な各 Hyper-V ホストには、以下が必要です。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 TrustedHosts リストに対する、ツールの実行先となる VM の追加。 Hyper-V ホストで管理特権の PowerShell セッションを使って次のコマンドを実行します。
+    a. TrustedHosts リストに対する、ツールの実行先となる VM の追加。 Hyper-V ホストで管理特権の PowerShell セッションを使って次のコマンドを実行します。
 
             set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
 

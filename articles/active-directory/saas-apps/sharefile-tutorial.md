@@ -110,7 +110,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 
     ![[Citrix ShareFile のドメインと URL] のシングル サインオン情報](./media/sharefile-tutorial/tutorial_sharefile_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` のパターンを使用して URL を入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
 
@@ -158,7 +158,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
    
     ![シングル サインオン](./media/sharefile-tutorial/ic773628.png "シングル サインオン")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** をクリックします。
+    a. **[Enable SAML]** をクリックします。
     
     b. **[Your IDP Issuer/ Entity ID]\(IDP 発行者/エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -218,7 +218,7 @@ Azure AD ユーザーが Citrix ShareFile にログインできるようにす�
    
    ![Basic Information](./media/sharefile-tutorial/IC799951.png "Basic Information")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email Address]\(電子メール アドレス\)** ボックスに、Britta Simon アカウントの電子メール アドレスを **brittasimon@contoso.com** と入力します。
+   a. **[Email Address]\(電子メール アドレス\)** ボックスに、Britta Simon アカウントの電子メール アドレスを **brittasimon@contoso.com** と入力します。
    
    b. **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
    

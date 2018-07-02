@@ -137,7 +137,7 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
    
     ![Bonusly SAML ダイアログ ページ](./media/bonus-tutorial/ic773687.png "Bonusly")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IdP SSO target URL]\(IdP SSO ターゲット URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[IdP SSO target URL]\(IdP SSO ターゲット URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[IdP Issuer]\(IdP 発行者\)** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
@@ -174,7 +174,7 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
  
     ![[ユーザー] ダイアログ ボックス](./media/bonus-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -214,7 +214,7 @@ Azure AD ユーザーが Bonusly にログインできるようにするには�
    
     ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "Add User")  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
  

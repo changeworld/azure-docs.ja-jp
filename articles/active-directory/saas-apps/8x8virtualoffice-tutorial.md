@@ -112,7 +112,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
     ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     | `https://sso.8x8.com/<companyname>` |
     | `https://www.8x8.com/<companyname>` |
@@ -195,7 +195,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
  
     ![Azure AD のテスト ユーザーの作成](./media/8x8virtualoffice-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

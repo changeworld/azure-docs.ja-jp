@@ -110,7 +110,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
 
     ![[SAP Business ByDesign のドメインと URL] のシングル サインオン情報](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<servername>.sapbydesign.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<servername>.sapbydesign.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<servername>.sapbydesign.com` の形式で URL を入力します。
 
@@ -121,7 +121,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
 
     ![SAP Business ByDesign 属性セクション](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_attribute.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー識別子]** リストで、**[ExtractMailPrefix()]** 関数を選択します。
+    a. **[ユーザー識別子]** リストで、**[ExtractMailPrefix()]** 関数を選択します。
     
     b. **[メール]** 一覧から、実装で使用するユーザー属性を選択します。 たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、[user.extensionattribute2] を選択します。     
 
@@ -139,7 +139,7 @@ SAP Business ByDesign で Azure AD のシングル サインオンを構成し�
 
 8. アプリケーション用に構成された SSO を取得するには、次の手順を実行します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAP Business ByDesign ポータルに管理者権限でサインオンします。
+    a. SAP Business ByDesign ポータルに管理者権限でサインオンします。
    
     b. **[Application and User Management Common Task (アプリケーションとユーザー管理の共通タスク)]** に移動し、**[ID プロバイダー]** タブをクリックします。
    

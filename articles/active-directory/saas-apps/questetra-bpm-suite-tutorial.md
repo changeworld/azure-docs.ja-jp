@@ -109,7 +109,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![[Questetra BPM Suite のドメインと URL] セクション](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.questetra.net/saml/SSO/alias/bpm` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.questetra.net/saml/SSO/alias/bpm` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.questetra.net/` の形式で URL を入力します。
 
@@ -140,7 +140,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 10. **Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションで、次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ACS URL]** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
+    a. **[ACS URL]** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
     
     b. **[Entity ID]\(エンティティ ID\)** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
 
@@ -148,7 +148,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
    
     ![[Configure Single Sign-On]][15]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
+    a. **[シングル サインオンを有効にする]** を選択します。
    
     b. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     
@@ -189,7 +189,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
  
     ![Azure AD のテスト ユーザーの作成](./media/questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -209,7 +209,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
    
     ![テスト ユーザーの作成][300] 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon@contoso.com**」と入力します。
+    a. **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon@contoso.com**」と入力します。
    
     b. **[Email]\(電子メール\)** ボックスに、ユーザーの**電子メール**を「**britta.simon@contoso.com**」と入力します。
    

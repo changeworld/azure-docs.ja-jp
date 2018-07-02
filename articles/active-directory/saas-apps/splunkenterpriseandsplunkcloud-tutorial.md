@@ -112,7 +112,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
 
     ![[Configure Single Sign-On]](./media/splunkenterpriseandsplunkcloud-tutorial/tutorial_splunkenterpriseandsplunkcloud_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<splunkserverUrl>/en-US/app/launcher/home` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<splunkserverUrl>/en-US/app/launcher/home` のパターンを使用して URL を入力します。
     
     b. **[識別子]** ボックスに、Splunk サーバーの URL を入力します。
 
@@ -158,7 +158,7 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
  
     ![Azure AD のテスト ユーザーの作成](./media/splunkenterpriseandsplunkcloud-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
       
 4. まだ Azure Active Directory にカスタム ドメイン名を追加していない場合は、次の手順に従います。
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure ポータル](https://portal.azure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** を選択します。 ディレクトリの一覧で、ディレクトリを選択します。 
+    a. [Azure ポータル](https://portal.azure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** を選択します。 ディレクトリの一覧で、ディレクトリを選択します。 
 
     b. 左のナビゲーション ウィンドウで **[ドメイン名]** を選択し、**[追加]** を選択します。
      
@@ -110,7 +110,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. すべてのドメインを Azure AD で確認したので、Google Apps でも確認する必要があります。 Google にまだ登録されていない各ドメインに対して、次の手順を実行します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
+    a. [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
      
      ![ドメインを選択する][20]
 

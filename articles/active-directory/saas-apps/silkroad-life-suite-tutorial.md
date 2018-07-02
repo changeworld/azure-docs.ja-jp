@@ -110,7 +110,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
     ![[SilkRoad Life Suite のドメインと URL] のシングル サインオン情報](./media/silkroad-life-suite-tutorial/tutorial_silkroadlifesuite_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.silkroad-eng.com/Authentication/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.silkroad-eng.com/Authentication/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
     | |
@@ -164,7 +164,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
    
     ![Azure AD Single Sign-On][14]
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Option 2 - Metadata File]\(オプション 2 - メタデータ ファイル\)** の下の **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    a. **[Option 2 - Metadata File]\(オプション 2 - メタデータ ファイル\)** の下の **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
   
     b. **[Create Identity Provider using File Data]** をクリックします。
 
@@ -176,7 +176,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
     
      ![Azure AD Single Sign-On][16] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enabled]** で **[Yes]** を選択します。
+    a. **[Enabled]** で **[Yes]** を選択します。
 
     b. **[Entity Id]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
    

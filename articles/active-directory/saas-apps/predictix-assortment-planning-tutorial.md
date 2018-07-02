@@ -110,7 +110,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     ![[Predictix Assortment Planning のドメインと URL] のシングル サインオン情報](./media/predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|--|
     | `https://<sub-domain>.ap.predictix.com/sso/request`|

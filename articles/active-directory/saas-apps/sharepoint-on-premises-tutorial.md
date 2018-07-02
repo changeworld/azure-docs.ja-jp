@@ -107,7 +107,7 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`urn:sharepoint:<YourSharePointServerURL>` の形式で URL を入力します。
 
@@ -153,7 +153,7 @@ SharePoint オンプレミスで Azure AD のシングル サインオンを構�
 
     次に、これらの手順を実行して、アプリケーションの信頼できる ID プロバイダーを有効にします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [サーバーの全体管理] で **[Web アプリケーションの管理]** に移動し、Azure AD を使用してセキュリティ保護する Web アプリケーションを選択します。
+    a. [サーバーの全体管理] で **[Web アプリケーションの管理]** に移動し、Azure AD を使用してセキュリティ保護する Web アプリケーションを選択します。
 
     b. リボンで、**[認証プロバイダー]** をクリックして、使用するゾーンを選択します。
 

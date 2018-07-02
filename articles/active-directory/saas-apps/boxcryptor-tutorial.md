@@ -108,7 +108,7 @@ Boxcryptor で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Boxcryptor のドメインと URL] のシングル サインオン情報](./media/boxcryptor-tutorial/tutorial_boxcryptor_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、「`https://www.boxcryptor.com/app`」と入力します。
+    a. **[サインオン URL]** ボックスに、「`https://www.boxcryptor.com/app`」と入力します。
 
     b. **[識別子]** ボックスに、値 `boxcryptor` を入力します。
 

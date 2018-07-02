@@ -102,7 +102,7 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
 
     ![[BambooHR のドメインと URL] セクション](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company>.bamboohr.com` 形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company>.bamboohr.com` 形式で URL を入力します。
 
     b. **[識別子]** ボックスに「`BambooHR-SAML`」と入力します。
 
@@ -127,7 +127,7 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
    
     ![BambooHR シングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "シングル サインオン")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリ]** を選択します。
+    a. **[アプリ]** を選択します。
    
     b. **[アプリ]** ウィンドウの **[シングル サインオン]** を選択します。
    
@@ -137,7 +137,7 @@ BambooHR で Azure AD SSO を構成してテストするには、次からの 5 
    
     ![[SAML シングル サインオン] ウィンドウ](./media/bamboo-hr-tutorial/IC796692.png "[SAML シングル サインオン]")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、手順 6. で Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    a. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、手順 6. で Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
       
     b. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[X.509 証明書]** ボックスに貼り付けます。
    

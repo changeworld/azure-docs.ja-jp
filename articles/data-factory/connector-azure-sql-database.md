@@ -153,7 +153,7 @@ MSI ベースの AAD アプリケーション トークン認証を使うには�
 
 1. **Azure AD にグループを作成し、ファクトリの MSI をそのグループのメンバーにします**。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの [プロパティ] で **[サービス ID]** をコピーします。
+    a. Azure Portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの [プロパティ] で **[サービス ID]** をコピーします。
 
     b. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールし、`Connect-AzureAD` コマンドを使ってサインインし、次のコマンドを実行してグループを作成し、データ ファクトリの MSI をメンバーとして追加します。
     ```powershell

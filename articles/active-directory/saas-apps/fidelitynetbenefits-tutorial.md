@@ -110,7 +110,7 @@ Fidelity NetBenefits で Azure AD のシングル サインオンを構成して
 
     ![[Fidelity NetBenefits のドメインと URL] のシングル サインオン情報](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。
+    a. **[識別子]** ボックスに次の URL を入力します。
 
     テスト環境: `urn:sp:fidelity:geninbndnbparts20:uat:xq1`
 

@@ -112,7 +112,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_ekincare_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<instancename>.ekincare.com/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<instancename>.ekincare.com/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<instancename>.ekincare.com/hul/saml` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
     | organizationid | *"uniquevalue"* |
     | organizationname | *user.companyname* |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ekincare-tutorial/04.png)
 
@@ -182,7 +182,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/ekincare-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

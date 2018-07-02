@@ -144,7 +144,7 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
 1.  VM 用の Recovery Services コンテナーを作成する:
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
+    a. [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
 
     b. **Recovery Services コンテナー** メニューで、**[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
 

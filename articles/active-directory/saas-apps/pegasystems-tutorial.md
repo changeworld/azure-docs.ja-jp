@@ -110,7 +110,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[Pega Systems のドメインと URL] のシングル サインオン情報](./media/pegasystems-tutorial/tutorial_pegasystems_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService` のパターンを使用して URL を入力します。
 
@@ -144,7 +144,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE]
     > これらは、お客様に固有な値です。 適切な値を指定してください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/pegasystems-tutorial/tutorial_attribute_04.png)
 
@@ -173,7 +173,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Type]\(種類\) で **[SAML 2.0]** を選択します
+    a. [Type]\(種類\) で **[SAML 2.0]** を選択します
 
     b. **[Name]\(名前\)** ボックスに名前を入力します (例: Azure AD SSO)
 
@@ -193,7 +193,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Entity Identification]\(エンティティの識別\)** の値をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
+    a. **[Entity Identification]\(エンティティの識別\)** の値をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
 
     b.  **[Assertion Consumer Service (ACS) location]\(Assertion Consumer Service (ACS) の場所\)** の値をコピーし、Azure Portal の **[応答 URL]** ボックスに貼り付けます。
 

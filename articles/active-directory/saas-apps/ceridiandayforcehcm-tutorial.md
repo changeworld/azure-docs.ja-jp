@@ -110,7 +110,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが Ceridian Dayforce HCM アプリケーションへのサインオンに使用する URL を入力します。
+    a. **[サインオン URL]** ボックスに、ユーザーが Ceridian Dayforce HCM アプリケーションへのサインオンに使用する URL を入力します。
     
     | 環境 | URL |
     | :-- | :-- |
@@ -148,7 +148,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
     | --------------- | -------------------- |    
     | name  | user.extensionattribute2 |    
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 

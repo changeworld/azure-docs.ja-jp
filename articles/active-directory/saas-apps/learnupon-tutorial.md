@@ -145,7 +145,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
    
     ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enabled]** を選択します。
+    a. **[Enabled]** を選択します。
 
     b. **[Version]\(バージョン\)** として **[2.0]** を選択します。
 
@@ -165,7 +165,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
    
      ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name Identifier Format]\(名識別子形式\)** ボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**)。
+    a. **[First Name Identifier Format]\(名識別子形式\)** ボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**)。
   
     b. **[Last Name Identifier Format]\(姓識別子形式\)** ボックスに、SAML アサーション内のユーザーの姓の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**)。
 
@@ -196,7 +196,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/learnupon-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

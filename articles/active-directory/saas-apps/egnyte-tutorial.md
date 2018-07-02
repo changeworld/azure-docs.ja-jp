@@ -147,7 +147,7 @@ Egnyte で Azure AD のシングル サインオンを構成してテストす�
 
     ![Single Sign On Authentication](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
+    a. **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
    
     b. **[ID プロバイダー]** として **[AzureAD]** を選択します。
    
@@ -190,7 +190,7 @@ Egnyte で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/egnyte-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
    
    ![New Standard User](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure Active Directory アカウントの、**メール**、**ユーザー名**などの詳細を入力します。
+   a. プロビジョニングする有効な Azure Active Directory アカウントの、**メール**、**ユーザー名**などの詳細を入力します。
    
    b. **[Save]** をクリックします。
     

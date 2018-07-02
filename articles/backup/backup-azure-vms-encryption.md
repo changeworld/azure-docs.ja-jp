@@ -45,7 +45,7 @@ ms.locfileid: "34607288"
 ### <a name="configure-backup"></a>バックアップの構成
 1. Recovery Services コンテナーが既に開かれている場合は、次の手順に進みます。 Recovery Services コンテナーを開いていなくても、Azure Portal にログイン済みの場合は、**[すべてのサービス]** を選択します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リソース ボックスに「 **Recovery Services**」と入力します。
+   a. リソース ボックスに「 **Recovery Services**」と入力します。
 
    b. 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 

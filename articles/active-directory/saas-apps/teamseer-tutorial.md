@@ -147,7 +147,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
    
     ![SAML Settings](./media/teamseer-tutorial/ic789637.png "SAML Settings")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **シングル サインオン サービス URL** 値を **[URL]** ボックスに貼り付けます。
+    a. **シングル サインオン サービス URL** 値を **[URL]** ボックスに貼り付けます。
           
     b. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[IdP Public Certificate]\(IdP パブリック証明書\)** ボックスに貼り付けます。
 
@@ -155,7 +155,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
     
     ![SAML Settings](./media/teamseer-tutorial/ic789638.png "SAML Settings") 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Test Email Addresses]** に、テスト ユーザーの電子メール アドレスを入力します。 
+    a. **[Test Email Addresses]** に、テスト ユーザーの電子メール アドレスを入力します。 
   
     b. **[Issuer]** テキスト ボックスに、サービス プロバイダーの発行元 URL を入力します。 
   
@@ -188,7 +188,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/teamseer-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,7 +208,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
    
     ![HR Admin](./media/teamseer-tutorial/ic789640.png "HR Admin")  
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HR Admin]\>[Users]** の順に選択します。
+    a. **[HR Admin]\>[Users]** の順に選択します。
   
     b. **[Run the New User wizard]** をクリックします。
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
    
     ![ユーザーの詳細](./media/teamseer-tutorial/ic789641.png "User Details")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの**名**、**姓**、**ユーザー名 (電子メール アドレス)** を、対応するボックスに入力します。
+    a. プロビジョニングする有効な AAD アカウントの**名**、**姓**、**ユーザー名 (電子メール アドレス)** を、対応するボックスに入力します。
   
     b. **[次へ]** をクリックします。
 

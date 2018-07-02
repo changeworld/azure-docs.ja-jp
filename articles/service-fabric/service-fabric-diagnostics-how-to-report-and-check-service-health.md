@@ -68,7 +68,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
 2. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 これが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
 3. 結果がなくてエラーになるときに正常性イベントを報告するには、さらに次の手順を実行します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
+    a. `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
    
     ```csharp
     using System.Fabric.Health;
@@ -96,7 +96,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     ```
 4. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
+    a. `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });

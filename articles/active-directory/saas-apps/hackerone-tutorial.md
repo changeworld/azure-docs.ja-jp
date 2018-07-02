@@ -113,7 +113,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/hackerone-tutorial/tutorial_hackerone_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://hackerone.com/<company name>/authentication` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://hackerone.com/<company name>/authentication` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://hackerone.com/users/saml/metadata` のように URL を入力します。
     
@@ -146,7 +146,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
    
     ![[Configure Single Sign-On]](./media/hackerone-tutorial/tutorial_hackerone_004.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 登録されているドメインを **[電子メール ドメイン]** ボックスに入力します。
+    a. 登録されているドメインを **[電子メール ドメイン]** ボックスに入力します。
 
     b. **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -158,7 +158,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
    
     ![[Configure Single Sign-On]](./media/hackerone-tutorial/tutorial_hackerone_005.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[テストの実行]** をクリックします。
+    a. **[テストの実行]** をクリックします。
 
     b. **[状態]** フィールドの値が **[Last test status: created]\(最後のテストの状態: 作成済み\)** と同じ場合は、[HackerOne サポート チーム](mailto:support@hackerone.com)にお使いの構成の確認をご依頼ください。
 
@@ -189,7 +189,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/hackerone-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

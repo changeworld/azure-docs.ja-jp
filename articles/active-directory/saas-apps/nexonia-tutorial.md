@@ -113,7 +113,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Nexonia のドメインと URL] のシングル サインオン情報](./media/nexonia-tutorial/tutorial_nexonia_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値 `Nexonia` を入力します。
+    a. **[識別子]** ボックスに、値 `Nexonia` を入力します。
 
     b. **[応答 URL]** ボックスに、`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>` のパターンを使用して URL を入力します。
 

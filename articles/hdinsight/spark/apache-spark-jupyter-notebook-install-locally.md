@@ -114,7 +114,7 @@ Spark マジック、PySpark カーネル、Spark カーネルのインストー
 
 7. Jupyter Notebook を使用してクラスターに接続できること、カーネルに備わっている Spark マジックを使用できることを確認します。 次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]** をクリックします。
+    a. 新しい Notebook を作成します。 右隅にある **[新規]** をクリックします。 既定のカーネル **Python2** に加え、新たにインストールする 2 つの新しいカーネル (**PySpark** と **Spark**) が確認できます。 **[PySpark]** をクリックします。
 
     ![Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter Notebook のカーネル")
 

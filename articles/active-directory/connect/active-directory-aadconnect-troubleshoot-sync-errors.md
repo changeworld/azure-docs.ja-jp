@@ -171,11 +171,11 @@ AttributeValueMustBeUnique エラーの最も一般的な理由は、2 つのオ
 Azure Active Directory は、データそのものにさまざまな制約を適用した上で、ディレクトリへのデータの書き込みを許可します。 これらの制限により、そのようなデータに依存するアプリケーションをエンド ユーザーが使用する際に、最適なエクスペリエンスを得ることができます。
 
 #### <a name="scenarios"></a>シナリオ
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 UserPrincipalName 属性値に無効な文字またはサポートされていない文字が含まれています。
+a. UserPrincipalName 属性値に無効な文字またはサポートされていない文字が含まれています。
 b. UserPrincipalName 属性が必要な形式ではありません。
 
 #### <a name="how-to-fix-identitydatavalidationfailed-error"></a>IdentityDataValidationFailed エラーを修正する方法
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 userPrincipalName 属性の文字がサポートされており、必要な形式であることを確認します。
+a. userPrincipalName 属性の文字がサポートされており、必要な形式であることを確認します。
 
 #### <a name="related-articles"></a>関連記事
 * [Office 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)

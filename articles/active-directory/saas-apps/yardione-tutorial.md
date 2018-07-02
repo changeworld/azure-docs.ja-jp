@@ -108,7 +108,7 @@ YardiOne で Azure AD シングル サインオンを構成してテストする
 
     ![[YardiOne Domain and URLs] (YardiOne のドメインと URL) のシングル サインオン情報](./media/yardione-tutorial/tutorial_yardione_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<y1-subdomain>.yardione.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<y1-subdomain>.yardione.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`http://<y1-subdomain>.yardione.com/yAuth2/trust` の形式で URL を入力します。
 

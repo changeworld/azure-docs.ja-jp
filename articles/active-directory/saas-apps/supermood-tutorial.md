@@ -108,7 +108,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Supermood のドメインと URL] のシングル サインオン情報](./media/supermood-tutorial/tutorial_supermood_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[IDP]** 開始モードでアプリケーションを構成する場合は、**[リレー状態]** テキストボックスに次の URL を入力します: `https://supermood.co/auth/sso/saml20`
 
@@ -125,7 +125,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
     | firstName | User.givenname |
     | lastName | User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/supermood-tutorial/tutorial_attribute_04.png)
 
@@ -160,7 +160,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 
     ![証明書 saml](./media/supermood-tutorial/tutorial_supermood_saml.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[email domain for this Identity provider]\(この ID プロバイダーの電子メール ドメイン\)** テキストボックスに、自分のドメインを入力します。
+    a. **[email domain for this Identity provider]\(この ID プロバイダーの電子メール ドメイン\)** テキストボックスに、自分のドメインを入力します。
 
     b. **[Use a metadata URL]\(メタデータ URL の使用\)** テキストボックスに、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** を貼り付けます。
 

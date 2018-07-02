@@ -111,7 +111,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     ![[Asana のドメインと URL] のシングル サインオン情報](./media/asana-tutorial/tutorial_asana_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://app.asana.com/`」と入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://app.asana.com/`」と入力します。
 
     b. **[識別子]** ボックスに、値として「`https://app.asana.com/`」と入力します。
 
@@ -135,7 +135,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     ![[組織の設定] のシングル サインオン構成](./media/asana-tutorial/tutorial_asana_10.png)  
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sign-in page URL (サインイン ページ URL)]** ボックスに、**SAML シングル サインオン サービス URL** を貼り付けます。
+     a. **[Sign-in page URL (サインイン ページ URL)]** ボックスに、**SAML シングル サインオン サービス URL** を貼り付けます。
 
      b. Azure Portal からダウンロードした証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーし、**[X.509 Certificate]** (X.509 証明書) ボックスに貼り付けます。
 
@@ -165,7 +165,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     ![[追加] ボタン](./media/asana-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

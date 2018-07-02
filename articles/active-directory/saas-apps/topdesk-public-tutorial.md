@@ -110,7 +110,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     ![[TOPdesk - Public のドメインと URL] のシングル サインオン情報](./media/topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.topdesk.net` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.topdesk.net` のパターンを使用して URL を入力します。
     
     b. **[識別子]** ボックスに、`https://<companyname>.topdesk.net/tas/public/login/verify` の形式で URL を入力します。
 
@@ -149,7 +149,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
    
     ![Technical Settings](./media/topdesk-public-tutorial/ic790601.png "Technical Settings")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
+    a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
    
     b. ダウンロードしたメタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
 
@@ -161,7 +161,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
     
     ![Certificate](./media/topdesk-public-tutorial/ic790606.png "Certificate")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードしたメタデータ ファイルを開きます。
+    a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
     
     b. **fed:ApplicationServiceType** の **xsi:type** を持つ **RoleDescriptor** ノードを展開します。
     
@@ -177,7 +177,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
     
     ![SAML Configuration Assistant](./media/topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
+    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
 
     b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
 
@@ -240,7 +240,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
    
     ![New Person](./media/topdesk-public-tutorial/ic790629.png "New Person")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [General] タブをクリックします。
+    a. [General] タブをクリックします。
 
     b. **[Surname]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
  

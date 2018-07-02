@@ -108,7 +108,7 @@ Flock で Azure AD のシングル サインオンを構成してテストする
 
     ![[Flock ドメインと URL] のシングル サインオン情報](./media/flock-tutorial/tutorial_flock_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.flock.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.flock.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.flock.com/` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ Flock で Azure AD のシングル サインオンを構成してテストする
 
     ![Flock 構成](./media/flock-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 

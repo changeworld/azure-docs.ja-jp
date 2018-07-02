@@ -116,7 +116,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![[Sequr のドメインと URL] のシングル サインオン情報](./media/sequr-tutorial/tutorial_sequr_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://login.sequr.io`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://login.sequr.io`」を入力します。
 
     b. **[リレー状態]** テキストボックスに、この値を取得します。これについてはチュートリアルの後半で説明しています。
      
@@ -146,7 +146,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![Sequr 構成](./media/sequr-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
+    a. **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
 
     b. Azure Portal からダウンロードした**証明書**ファイルをドラッグ アンド ドロップするか、証明書のコンテンツを手動で入力します。
 

@@ -127,7 +127,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<domain:port>/` の形式で URL を入力します。
 
@@ -165,7 +165,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、**[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
+    a. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、**[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
     b. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[Confluence SAML SSO by Microsoft のドメインと URL]** セクションにある **[識別子]、[応答 URL]、[サインオン URL]** ボックスにそれぞれ貼り付けます。
 
@@ -212,7 +212,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
  
     ![Azure AD のテスト ユーザーの作成](./media/confluencemicrosoft-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -236,7 +236,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![従業員の追加](./media/confluencemicrosoft-tutorial/user2.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]\(ユーザー名\)** ボックスに、ユーザーのメール (Britta Simon など) を入力します。
+    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーのメール (Britta Simon など) を入力します。
 
     b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
 

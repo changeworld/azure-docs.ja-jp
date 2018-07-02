@@ -110,7 +110,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 
     ![[Mercer BenefitsCentral (MBC) Domain and URLs]\(Mercer BenefitsCentral (MBC) のドメインと URL\) のシングル サインオン情報](./media/mercerhrs-tutorial/tutorial_mercerhrs_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`stg.mercerhrs.com/saml2.0` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`stg.mercerhrs.com/saml2.0` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx` のパターンを使用して URL を入力します。
 

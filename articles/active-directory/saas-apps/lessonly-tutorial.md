@@ -112,7 +112,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/lessonly-tutorial/tutorial_lesson.ly_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.lesson.ly/signin`|
@@ -147,7 +147,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
     | urn:oid:0.9.2342.19200300.100.1.3 |User.mail |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |user.objectid |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/lessonly-tutorial/tutorial_attribute_04.png)
 
@@ -195,7 +195,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/lessonly-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
