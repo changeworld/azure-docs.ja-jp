@@ -61,13 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: インストールまたはアップグレード
           items:
-            - name: Azure Portal での Azure Backup Server ワークロードの準備
+            - name: Azure Backup Server のインストール
               href: backup-azure-microsoft-azure-backup.md
-            - name: Azure Backup Server へのストレージの追加
+            - name: ストレージを追加する
               href: backup-mabs-add-storage.md
-            - name: Azure Backup Server の v.2 へのアップグレード
+            - name: v.2 にアップグレードする
               href: backup-mabs-upgrade-to-v2.md
-            - name: Azure Backup Server の無人インストール
+            - name: 無人インストール
               href: backup-mabs-unattended-install.md
         - name: ワークロードの保護
           items:

@@ -50,8 +50,12 @@
           href: use-distcp.md
         - name: Azure Data Factory を使用して Data Lake Storage Gen2 にデータをコピーする
           href: ../../data-factory/load-azure-data-lake-storage-gen2.md
-    - name: Azure Databricks への接続
+    - name: Azure Databricks に接続する
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: リファレンス
+  items:
+    - name: REST ()
+      href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
 - name: リソース
   items:
     - name: Azure のロードマップ

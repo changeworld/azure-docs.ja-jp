@@ -39,6 +39,8 @@
       href: log-analytics-data-security.md
     - name: アクセスを管理する
       href: log-analytics-manage-access.md
+    - name: エージェントの概要
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: ハイブリッド環境の監視
       href: log-analytics-concept-hybrid.md
     - name: サービス プロバイダー向け機能

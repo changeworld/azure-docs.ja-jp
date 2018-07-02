@@ -118,8 +118,6 @@ items:
                         href: sql-api-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
-                      - name: C++
-                        href: sql-api-cpp-get-started.md
                   - name: Web アプリを構築する
                     items:
                       - name: .NET
@@ -144,10 +142,6 @@ items:
                     href: local-emulator.md
                   - name: 証明書のエクスポート
                     href: local-emulator-export-ssl-certificates.md
-              - name: 6 - Functions との統合
-                items:
-                  - name: HTTP トリガー
-                    href: tutorial-functions-http-trigger.md
           - name: サンプル
             items:
               - name: Azure CLI
@@ -350,26 +344,14 @@ items:
                 href: gremlin-support.md
           - name: チュートリアル
             items:
-              - name: 1 - 作成
-                href: tutorial-develop-graph-dotnet.md
-              - name: 2 - クエリ
+              - name: 1 - クエリ
                 href: tutorial-query-graph.md
-              - name: 3 - グローバル分散
-                href: tutorial-global-distribution-graph.md
           - name: ハウツー ガイド
             items:
               - name: グラフのパーティション分割
                 href: graph-partitioning.md
               - name: ストレージ エクスプローラーを使用した管理
                 href: storage-explorer.md
-              - name: 統合
-                items:
-                  - name: Spark GraphX に接続する
-                    href: spark-connector-graph.md
-          - name: リファレンス
-            items:
-              - name: .NET
-                href: graph-sdk-dotnet.md
           - name: リソース
             items:
               - name: ストレージ エクスプローラーを使用した管理

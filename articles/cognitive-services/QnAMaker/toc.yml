@@ -1,7 +1,9 @@
-- name: QnA Maker とは
-  href: Overview/overview.md
+- name: QnA Maker のドキュメント
+  href: index.yml
 - name: 概要
   items:
+    - name: QnA Maker とは
+      href: Overview/overview.md
     - name: サポートされている言語
       href: Overview/languages-supported.md
 - name: クイック スタート

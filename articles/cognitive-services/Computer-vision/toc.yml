@@ -1,11 +1,11 @@
 - name: Computer Vision のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Computer Vision とは
       href: Home.md
-- name: クイック スタート
-  expanded: true
+- name: API のクイック スタート
   items:
     - name: まとめ
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: 印刷されたテキストの抽出
           href: QuickStarts/ruby-print-text.md
+- name: SDK のクイック スタート
+  items:
+    - name: 'C#'
+      items:
+        - name: 画像の分析
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: サムネイルの生成
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: 手書きのテキストの抽出
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: ハウツー ガイド
   items:
     - name: 最初の Computer Vision アプリ

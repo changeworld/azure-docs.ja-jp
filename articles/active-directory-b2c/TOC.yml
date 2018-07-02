@@ -157,6 +157,8 @@
           href: b2clogin.md
         - name: 年齢制限の使用
           href: basic-age-gating.md
+        - name: 直接サインイン
+          href: direct-signin.md
     - name: Identity Experience Framework
       items:
         - name: カスタム ポリシー

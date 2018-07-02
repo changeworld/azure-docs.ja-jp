@@ -51,6 +51,29 @@
       href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
 - name: プラットフォームとインフラストラクチャ
   items:
+    - name: インフラストラクチャのセキュリティ
+      href: azure-security-infrastructure.md
+      items:
+        - name: 物理的なセキュリティ
+          href: azure-physical-security.md
+        - name: 可用性
+          href: azure-infrastructure-availability.md
+        - name: コンポーネントと境界
+          href: azure-infrastructure-components.md
+        - name: ネットワーク アーキテクチャ
+          href: azure-infrastructure-network.md
+        - name: 運用ネットワーク
+          href: azure-production-network.md
+        - name: SQL Database
+          href: azure-infrastructure-sql.md
+        - name: '[操作]'
+          href: azure-infrastructure-operations.md
+        - name: 監視
+          href: azure-infrastructure-monitoring.md
+        - name: 整合性
+          href: azure-infrastructure-integrity.md
+        - name: データ保護
+          href: azure-protection-of-customer-data.md
     - name: Microsoft Antimalware
       href: azure-security-antimalware.md
     - name: IaaS セキュリティ

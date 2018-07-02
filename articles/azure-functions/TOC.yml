@@ -138,9 +138,11 @@
         - name: 関数のテスト
           href: functions-test-a-function.md
         - name: ローカルでの開発とデバッグ
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Visual Studio 開発
           href: functions-develop-vs.md
+        - name: コア ツールの開発
+          href: functions-run-local.md
         - name: 接続の管理
           href: manage-connections.md
         - name: エラー処理

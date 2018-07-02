@@ -186,12 +186,6 @@
 ### [使用の開始](manage-apps/plan-an-application-integration.md)
 ### [SaaS アプリの統合に関するチュートリアル](saas-apps/tutorial-list.md)
 
-
-### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-#### [スナップショット レポートの作成](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-
 ### [SaaS アプリへのユーザーのプロビジョニングとプロビジョニング解除](active-directory-saas-app-provisioning.md) 
 #### [アプリの統合に関するチュートリアル](saas-apps/tutorial-list.md) 
 #### [SCIM 対応アプリへのプロビジョニングの自動化](manage-apps/use-scim-to-provision-users-and-groups.md) 

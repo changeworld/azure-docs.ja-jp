@@ -9,36 +9,8 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: アプリ モデルの構築
-      items:
-        - name: 事前構築済みのドメインの使用
-          href: luis-get-started-create-app.md
-        - name: カスタム ドメインの使用
-          href: luis-quickstart-intents-only.md
-- name: チュートリアル
-  items:
-    - name: 事前構築済みの意図とエンティティの追加
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: エンティティからのデータの取得
-      items:
-        - name: シンプルなエンティティ
-          href: luis-quickstart-primary-and-secondary-data.md
-        - name: 階層構造エンティティ
-          href: luis-quickstart-intent-and-hier-entity.md
-        - name: 正規表現エンティティ
-          href: luis-quickstart-intents-regex-entity.md
-        - name: リスト エンティティ
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: keyPhrase エンティティ
-          href: luis-quickstart-intent-and-key-phrase.md
-        - name: センチメント分析
-          href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: 予測の改善
-      items:
-        - name: パターンの利用
-          href: luis-tutorial-pattern.md
-        - name: フレーズ リストの利用
-          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: 事前構築済みのドメイン アプリの構築
+      href: luis-get-started-create-app.md
     - name: API の利用
       items:
         - name: エンドポイント クエリによる発言予測の取得
@@ -73,6 +45,32 @@
               href: luis-get-started-php-add-utterance.md
             - name: Ruby
               href: luis-get-started-ruby-add-utterance.md
+- name: チュートリアル
+  items:
+    - name: アプリのビルド
+      items:
+        - name: 1. カスタム ドメインを利用する
+          href: luis-quickstart-intents-only.md
+        - name: 2. 事前構築済みの意図とエンティティの追加
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. 正規表現エンティティを追加する
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. リスト エンティティを追加する
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. 階層構造エンティティを追加する
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. シンプルなエンティティとフレーズ リストを追加する
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 7. keyPhrase エンティティを追加する
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 8. センチメント分析を追加する
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 予測の改善
+      items:
+        - name: パターンの利用
+          href: luis-tutorial-pattern.md
+        - name: フレーズ リストの利用
+          href: luis-tutorial-interchangeable-phrase-list.md
 - name: サンプル
   items:
     - name: コード サンプル

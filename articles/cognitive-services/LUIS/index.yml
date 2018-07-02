@@ -11,36 +11,68 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/25/2018
+  ms.date: 06/28/2018
   ms.author: kamrani
-  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
-  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.openlocfilehash: f3ccbb033354afc01fa840b3129d305f04942ffd
+  ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/08/2018
-  ms.locfileid: "35358289"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37095572"
 abstract:
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
 sections:
 - title: 5 分間のクイック スタート
   items:
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="luis-get-started-create-app.md">事前構築済みドメインのアプリを作成する</a>
-    - html: <a href="luis-quickstart-intents-only.md">カスタム ドメインのアプリを作成する</a>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_php.svg
+    - image:
+        src: media/index/logo_ruby.svg
+    rows:
+    - title: エンドポイント API
+      values:
+      - href: luis-get-started-cs-get-intent
+      - href: luis-get-started-java-get-intent
+      - href: luis-get-started-js-get-intent
+      - href: luis-get-started-node-get-intent
+      - href: luis-get-started-python-get-intent
+      - href: luis-get-started-php-get-intent
+      - href: luis-get-started-ruby-get-intent
+    - title: オーサリング API
+      values:
+      - href: luis-get-started-cs-add-utterance
+      - href: luis-get-started-java-add-utterance
+      - href: luis-get-started-javascript-add-utterance
+      - href: luis-get-started-node-add-utterance
+      - href: luis-get-started-python-add-utterance
+      - href: luis-get-started-php-add-utterance
+      - href: luis-get-started-ruby-add-utterance
 - title: ステップバイステップのチュートリアル
   items:
   - type: list
     style: ordered
     items:
-    - html: <a href="luis-quickstart-primary-and-secondary-data">単純なエンティティを使用して、音声からメッセージ データを抽出する</a>
-    - html: <a href="luis-quickstart-intents-regex-entity">正規表現エンティティを使用して、音声から KB 記事番号を抽出する</a>
-    - html: <a href="luis-quickstart-intent-and-list-entity">リスト エンティティを使用して、音声から飲み物の注文情報を抽出する</a>
-    - html: <a href="luis-tutorial-pattern">パターンを使用して、意図とエンティティの予測の精度を向上させる</a>
-    - html: <a href="luis-tutorial-interchangeable-phrase-list">フレーズ リストで単語の重要性を高める</a>
-    - html: <a href="luis-get-started-cs-get-intent">音声を LUIS に送り、エンドポイント予測応答を受け取る - C#</a>
-    - html: <a href="luis-get-started-cs-add-utterance">サンプルの音声を意図に追加して LUIS アプリをトレーニングする - C#</a>
+    - html: <a href="luis-quickstart-intents-only">人事 (HR) ドメインのアプリを作成する</a>
+    - html: <a href="luis-tutorial-prebuilt-intents-entities">事前構築済みの意図とエンティティを追加する</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">正規表現エンティティを追加する</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">リスト エンティティを追加する</a>
+    - html: <a href="luis-quickstart-intent-and-hier-entity">階層構造エンティティを追加する</a>
+    - html: <a href="luis-quickstart-primary-and-secondary-data">シンプルなエンティティとフレーズ リストを追加する</a>
+    - html: <a href="luis-quickstart-intent-and-key-phrase">keyPhrase エンティティを追加する</a>
+    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">センチメント分析を追加する</a>
 - title: ビデオ
   items:
   - type: list
