@@ -110,7 +110,7 @@ Qualtrics で Azure AD シングル サインオンを構成してテストす�
 
     ![[Qualtrics のドメインと URL] のシングル サインオン情報](./media/qualtrics-tutorial/tutorial_qualtrics_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.qualtrics.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.qualtrics.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |

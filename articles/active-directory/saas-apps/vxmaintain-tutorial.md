@@ -106,7 +106,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     ![[vxMaintain のドメインと URL] セクション](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.verisae.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<company name>.verisae.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true` の形式で URL を入力します。
 

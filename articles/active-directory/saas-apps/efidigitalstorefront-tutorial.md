@@ -110,7 +110,7 @@ EFI Digital StoreFront で Azure AD のシングル サインオンを構成し�
 
     ![[EFI Digital StoreFront のドメインと URL] のシングル サインオン情報](./media/efidigitalstorefront-tutorial/tutorial_efidigital_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.myprintdesk.net/DSF` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.myprintdesk.net/DSF` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.myprintdesk.net/DSF/asp4/` の形式で URL を入力します。
 

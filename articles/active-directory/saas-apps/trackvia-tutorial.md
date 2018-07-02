@@ -139,7 +139,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 
     ![TrackVia の構成](./media/trackvia-tutorial/configure1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[Choose File]\(ファイルの選択\)** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 

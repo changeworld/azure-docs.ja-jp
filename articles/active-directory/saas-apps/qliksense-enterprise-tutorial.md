@@ -110,7 +110,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
 
     ![[Qlik Sense Enterprise のドメインと URL] のシングル サインオン情報](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<Qlik Sense Fully Qualifed Hostname>:443//samlauthn/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<Qlik Sense Fully Qualifed Hostname>:443//samlauthn/` のパターンを使用して URL を入力します。
     
     > [!NOTE]
     > この URI 末尾のスラッシュに注意してください。 これは必須です。
@@ -139,7 +139,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     
     ![QlikSense][qs24]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードした FederationMetaData.xml ファイルを、テキスト エディターで開きます。
+    a. Azure Portal からダウンロードした FederationMetaData.xml ファイルを、テキスト エディターで開きます。
    
     b. **RoleDescriptor** を検索します。  エントリは 4 つあります (開始要素タグと終了要素タグのペアが 2 つあります)。
    
@@ -165,7 +165,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     
     ![QlikSense][qs8]  
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Description]** フィールドは、仮想プロキシ構成のフレンドリ名です。  値として説明を入力します。
+    a. **[Description]** フィールドは、仮想プロキシ構成のフレンドリ名です。  値として説明を入力します。
     
     b. **[Prefix]** フィールドでは、Azure AD シングル サインオンで Qlik Sense に接続するための仮想プロキシ エンドポイントを指定します。  この仮想プロキシに一意のプレフィックス名を入力します。
     
@@ -177,7 +177,7 @@ Qlik Sense Enterprise で Azure AD のシングル サインオンを構成し�
     
     ![QlikSense][qs10]
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Anonymous access mode]** ドロップ ダウンで、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。  既定のオプションは、[No anonymous user (匿名ユーザーを許可しない)] です。
+    a. **[Anonymous access mode]** ドロップ ダウンで、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。  既定のオプションは、[No anonymous user (匿名ユーザーを許可しない)] です。
     
     b. **[Authentication method]** ドロップ ダウンで、仮想プロキシで使用する認証スキームを設定します。  ドロップダウン リストから SAML を選択してください。  その結果、さらにオプションが表示されます。
     

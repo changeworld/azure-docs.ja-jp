@@ -108,7 +108,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
 
     ![[Adobe Captivate Prime のドメインと URL] のシングル サインオン情報](./media/adobecaptivateprime-tutorial/tutorial_adobecaptivateprime_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://captivateprime.adobe.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://captivateprime.adobe.com`
 
     b. **[応答 URL]** ボックスに、次の URL を入力します。`https://captivateprime.adobe.com/saml/SSO`
 

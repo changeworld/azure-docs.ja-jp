@@ -112,7 +112,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.saas.appdynamics.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.saas.appdynamics.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.saas.appdynamics.com/controller` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
    
     ![SAML の構成](./media/appdynamics-tutorial/ic790225.png "SAML の構成")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Authentication Provider]** として、**[SAML]** を選択します。
+    a. **[Authentication Provider]** として、**[SAML]** を選択します。
 
     b. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -183,7 +183,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/appdynamics-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
    
     ![Create User](./media/appdynamics-tutorial/ic790230.png "Create User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[Username]**、**[Name]**、**[Email]**、**[New Password]**、**[Repeat New Password]** を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[Username]**、**[Name]**、**[Email]**、**[New Password]**、**[Repeat New Password]** を入力します。
 
     b. **[Save]** をクリックします。
 

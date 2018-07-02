@@ -108,7 +108,7 @@ LaunchDarkly で Azure AD のシングル サインオンを構成してテス�
 
     ![[LaunchDarkly のドメインと URL] のシングル サインオン情報](./media/launchdarkly-tutorial/tutorial_launchdarkly_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに `app.launchdarkly.com` という URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに `app.launchdarkly.com` という URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>` のパターンを使用して URL を入力します。
     
@@ -151,7 +151,7 @@ LaunchDarkly で Azure AD のシングル サインオンを構成してテス�
 
     ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 インスタンスの **SAML コンシューマー サービス URL** をコピーし、Azure Portal で、**[LaunchDarkly ドメインと URL]** セクションの [応答 URL] ボックスに貼り付けます。
+    a. インスタンスの **SAML コンシューマー サービス URL** をコピーし、Azure Portal で、**[LaunchDarkly ドメインと URL]** セクションの [応答 URL] ボックスに貼り付けます。
 
     b. **[サインオン URL]** テキストボックスに、Azure Portal からコピーした **シングル サインオン サービス URL** の値を貼り付けます。
 

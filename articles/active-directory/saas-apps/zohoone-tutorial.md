@@ -108,7 +108,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     ![[Zoho One ドメインと URL] のシングル サインオン情報](./media/zohoone-tutorial/tutorial_zohoone_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、URL を入力します。`one.zoho.com`
+    a. **[識別子 (エンティティ ID)]** ボックスに、URL を入力します。`one.zoho.com`
 
     b. **[応答 URL]** ボックスに、`https://accounts.zoho.com/samlresponse/<saml-identifier>` のパターンを使用して URL を入力します。
 
@@ -145,7 +145,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     ![Zoho One、sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sign-in URL]\(サインイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Sign-in URL]\(サインイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -165,7 +165,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     ![Zoho One、ドメインの追加](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Domain Name]\(ドメイン名\)** ボックスに、ドメインを入力します (例: **contoso.com**)。
+    a. **[Domain Name]\(ドメイン名\)** ボックスに、ドメインを入力します (例: **contoso.com**)。
 
     b. **[追加]** をクリックします。
 
@@ -220,7 +220,7 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
 
     ![Zoho One、ユーザーの追加](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、ユーザーの氏名を入力します (例: **Britta Simon**)。
+    a. **[Name]\(名前\)** ボックスに、ユーザーの氏名を入力します (例: **Britta Simon**)。
     
     b. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
 

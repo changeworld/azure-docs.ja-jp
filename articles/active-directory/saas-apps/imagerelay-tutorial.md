@@ -112,7 +112,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.imagerelay.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.imagerelay.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.imagerelay.com/sso/metadata` の形式で URL を入力します。
 
@@ -159,7 +159,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
     
     ![[Configure Single Sign-On]](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
 
     b. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした**シングル サインアウト サービス URL** の値を貼り付けます。
 
@@ -212,7 +212,7 @@ Image Relay で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/imagerelay-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

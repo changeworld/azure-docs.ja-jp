@@ -110,7 +110,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Merchlogix のドメインと URL] のシングル サインオン情報](./media/merchlogix-tutorial/tutorial_merchlogix_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<DOMAIN>/login.php?saml=true` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<DOMAIN>/login.php?saml=true` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>` の形式で URL を入力します。
     

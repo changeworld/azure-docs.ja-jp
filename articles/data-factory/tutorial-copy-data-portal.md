@@ -76,7 +76,7 @@ ms.locfileid: "30173340"
 
 2. Azure サービスに SQL Server へのアクセスを許可します。 Data Factory から SQL Server にデータを書き込むことができるように、SQL Server で **[Azure サービスへのアクセスを許可]** が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側の **[その他のサービス]** > **[SQL Server]** を選択します。
+    a. 左側の **[その他のサービス]** > **[SQL Server]** を選択します。
 
     b. サーバーを選択し、**[設定]** の **[ファイアウォール]** を選択します。
 
@@ -99,7 +99,7 @@ ms.locfileid: "30173340"
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
@@ -156,7 +156,7 @@ ms.locfileid: "30173340"
     ![新しいリンクされたサービスのボタン](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 10. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureStorageLinkedService**」と入力します。 
+    a. **[名前]** に「**AzureStorageLinkedService**」と入力します。 
 
     b. **[ストレージ アカウント名]** で、使用するストレージ アカウントを選択します。
 
@@ -197,7 +197,7 @@ ms.locfileid: "30173340"
     ![リンクされたサービス](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
 21. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
+    a. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
 
     b. **[サーバー名]** で、使用する SQL Server インスタンスを選択します。
 
@@ -313,7 +313,7 @@ Visual Studio Team Services コード リポジトリの作業が不要であれ
     ![コード リポジトリを構成する](./media/tutorial-copy-data-portal/configure-code-repository-button.png)
 2. **[Repository Settings]\(リポジトリ設定\)** ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リポジトリの種類]** で **[Visual Studio Team Services Git]** を選択します。
+    a. **[リポジトリの種類]** で **[Visual Studio Team Services Git]** を選択します。
 
     b. **[Visual Studio Team Services アカウント]** で、Visual Studio Team Services アカウントを選択します。
 
@@ -349,7 +349,7 @@ Visual Studio Team Services コード リポジトリの作業が不要であれ
     ![変更のコミットおよび同期](./media/tutorial-copy-data-portal/commit-and-sync.png)
 10. **[Sync your changes]\(変更の同期\)** ウィンドウで、次の操作を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 更新された**パイプライン**の一覧に **CopyPipeline** が表示されていることを確認します。
+    a. 更新された**パイプライン**の一覧に **CopyPipeline** が表示されていることを確認します。
 
     b. **[Publish changes after sync]\(同期後に変更を発行\)** がオンになっていることを確認します。 このチェック ボックスをオフにした場合、自分のブランチ内の変更が単に master ブランチと同期されます。 Data Factory には発行されません。 **[発行]** ボタンを使用すれば、後でそれらを発行できます。 このチェック ボックスがオンの場合、まず変更が master と同期され、次にそれらの変更が Data Factory に発行されます。
 
@@ -389,7 +389,7 @@ Visual Studio Team Services コード リポジトリの作業が不要であれ
     ![[新規] ボタン](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
 4. **[新しいトリガー]** ウィンドウで、次の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**RunEveryMinute**」と入力します。
+    a. **[名前]** に「**RunEveryMinute**」と入力します。
 
     b. **[終了]** で **[指定日]** を選択します。
 

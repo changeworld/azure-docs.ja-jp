@@ -112,7 +112,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
 
     ![[Cisco Webex のドメインと URL] のシングル サインオン情報](./media/cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.webex.com` というパターンで URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.webex.com` というパターンで URL を入力します。
 
     b. **[識別子]** ボックスに、URL `http://www.webex.com` を入力します。
 
@@ -147,7 +147,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
    
     ![Federated SSO Configuration](./media/cisco-webex-tutorial/ic777623.png "Federated SSO Configuration")  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Federation Protocol]** ボックスの一覧から、**[SAML 2.0]** を選択します。
+    a. **[Federation Protocol]** ボックスの一覧から、**[SAML 2.0]** を選択します。
 
     b. **[SSO profile]\(SSO プロファイル\)** で、**[SP Initiated]\(SP によって開始\)** を選択します。
 
@@ -218,7 +218,7 @@ Azure AD ユーザーが Cisco Webex にサインインできるようにする�
    
     ![ユーザーの追加](./media/cisco-webex-tutorial/ic777626.png "ユーザーの追加")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Account Type]** として **[Host]** を選択します。
+    a. **[Account Type]** として **[Host]** を選択します。
 
     b. **[First name]\(名\)** ボックスに、ユーザーの名 (この場合は **Britta**) を入力します。
 

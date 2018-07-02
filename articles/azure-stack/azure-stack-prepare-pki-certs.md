@@ -45,7 +45,7 @@ ms.locfileid: "33203478"
 
     ![証明書ストアの構成](.\media\prepare-pki-certs\3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 PFX をインポートする場合は、ダイアログがさらに表示されます。 **[秘密キーの保護]** ページで、証明書ファイルのパスワードを入力し、**[Mark this key as exportable. This allows you to back up or transport your keys at a later time]\(このキーをエクスポート可能としてマークします。これにより、後でキーをバックアップまたは転送できるようになります\)** オプションを有効にします。 **[次へ]** を選択します。
+    a. PFX をインポートする場合は、ダイアログがさらに表示されます。 **[秘密キーの保護]** ページで、証明書ファイルのパスワードを入力し、**[Mark this key as exportable. This allows you to back up or transport your keys at a later time]\(このキーをエクスポート可能としてマークします。これにより、後でキーをバックアップまたは転送できるようになります\)** オプションを有効にします。 **[次へ]** を選択します。
 
     ![キーをエクスポート可能としてマークする](.\media\prepare-pki-certs\2.png)
 

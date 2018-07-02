@@ -177,7 +177,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     ![統合ランタイムの選択](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 9. **[Specify the on-premises SQL Server database]\(オンプレミスの SQL Server データベースを指定\)** で、次の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[接続名]** に「**OnPremSqlLinkedService**」と入力します。
+    a. **[接続名]** に「**OnPremSqlLinkedService**」と入力します。
 
     b. **[サーバー名]** にオンプレミスの SQL Server インスタンスの名前を入力します。
 
@@ -196,7 +196,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     ![Blob Storage の選択](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 12. **[Specify the Azure Blob storage account]\(Azure Blob Storage アカウントの指定\)** ページで、次の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[接続名]** に「**AzureStorageLinkedService**」と入力します。
+    a. **[接続名]** に「**AzureStorageLinkedService**」と入力します。
 
     b. **[ストレージ アカウント名]** ボックスの一覧から、使用するストレージ アカウントを選択します。 
 

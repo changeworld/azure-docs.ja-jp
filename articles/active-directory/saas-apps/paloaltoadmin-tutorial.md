@@ -102,7 +102,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[Palo Alto Networks - Admin UI のドメインと URL] のシングル サインオン情報](./media/paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、*https://\<Customer Firewall FQDN>/php/login.php* の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、*https://\<Customer Firewall FQDN>/php/login.php* の形式で URL を入力します。
 
     b. **[識別子]** ボックスに、*https://\<Customer Firewall FQDN>:443/SAML20/SP* の形式で URL を入力します。
     
@@ -124,7 +124,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     | username | user.userprincipalname |
     | adminrole | customadmin |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** を選択します。  
+    a. **[属性の追加]** を選択します。  
     
     ![[属性の追加] ボタン](./media/paloaltoadmin-tutorial/tutorial_attribute_04.png)
 
@@ -164,7 +164,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[SAML Identify Provider Server Profile Import]\(SAML ID プロバイダー サーバー プロファイル インポート\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Profile Name]\(プロファイル名\)** ボックスに名前 (「**AzureAD Admin UI**」など) を入力します。
+    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「**AzureAD Admin UI**」など) を入力します。
     
     b. **[Identity Provider Metadata]\(ID プロバイダー メタデータ\)** の下で **[Browse]\(参照\)** を選択して、前の手順で Azure Portal からダウンロードした metadata.xml ファイルを選択ます。
     
@@ -182,7 +182,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[SAML Identify Provider Server Profile]\(SAML ID プロバイダー サーバー プロファイル\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider SLO URL]\(ID プロバイダー SLO URL\)** ボックスで、前の手順でインポートした SLO URL を **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** で置き換えます。
+    a. **[Identity Provider SLO URL]\(ID プロバイダー SLO URL\)** ボックスで、前の手順でインポートした SLO URL を **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** で置き換えます。
   
     b. **[OK]** を選択します。
 
@@ -203,7 +203,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     ![[Authentication Profile]\(認証プロファイル\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに名前 (「**AzureSAML_Admin_AuthProfile**」など) を入力します。
+    a. **[Name]\(名前\)** ボックスに名前 (「**AzureSAML_Admin_AuthProfile**」など) を入力します。
     
     b. **[Type]\(種類\)** ドロップダウン リストで、**[SAML]** を選択します。 
    

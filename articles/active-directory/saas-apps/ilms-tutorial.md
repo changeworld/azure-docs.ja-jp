@@ -112,7 +112,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Configure Single Sign-On]](./media/ilms-tutorial/tutorial_ilms_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした **[Identifier (識別子)]** の値を貼り付けます。
+    a. **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした **[Identifier (識別子)]** の値を貼り付けます。
 
     b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした次のパターンの **[Endpoint (URL) (エンドポイント (URL))]** の値を貼り付けます。`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
@@ -142,7 +142,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
     | region | user.state |
     | department | user.jobtitle |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ilms-tutorial/tutorial_ilms_04.png)
 
@@ -168,7 +168,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
     
     ![[Configure Single Sign-On]](./media/ilms-tutorial/1.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Service Provider (サービス プロバイダー)]** セクションを展開し、**[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
+    a. **[Service Provider (サービス プロバイダー)]** セクションを展開し、**[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
 
     ![[Configure Single Sign-On]](./media/ilms-tutorial/2.png) 
 
@@ -228,7 +228,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/ilms-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -252,7 +252,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     ![従業員の追加](./media/ilms-tutorial/create_testuser_add.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name (名)]** ボックスに、ユーザーの名 Britta を入力します。
+    a. **[First Name (名)]** ボックスに、ユーザーの名 Britta を入力します。
    
     b. **[Last Name (姓)]** ボックスに、ユーザーの姓 Simon を入力します。
 

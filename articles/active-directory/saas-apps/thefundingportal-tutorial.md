@@ -112,7 +112,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
 
     ![[Configure Single Sign-On]](./media/thefundingportal-tutorial/tutorial_thefundingportal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.regenteducation.net/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.regenteducation.net/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.regenteducation.net` の形式で URL を入力します。
 
@@ -129,7 +129,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
     | ------------------- | ---------------- |
     | externalId1 | user.extensionattribute1 |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/thefundingportal-tutorial/tutorial_attribute_04.png)
 
@@ -178,7 +178,7 @@ The Funding Portal で Azure AD のシングル サインオンを構成して�
  
     ![Azure AD のテスト ユーザーの作成](./media/thefundingportal-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

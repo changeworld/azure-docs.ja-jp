@@ -80,7 +80,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、「`Reporting API application`」と入力します。
+    a. **[名前]** ボックスに、「`Reporting API application`」と入力します。
 
     b. **アプリケーションの種類**として **[Web アプリ/API]** を選択します。
 
@@ -219,7 +219,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[説明]** ボックスに、「`Reporting API`」と入力します。
+    a. **[説明]** ボックスに、「`Reporting API`」と入力します。
 
     b. **[有効期限]** として、**[2 年]** を選択します。
 

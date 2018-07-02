@@ -112,7 +112,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
     ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.small-improvements.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.small-improvements.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.small-improvements.com` の形式で URL を入力します。
 
@@ -145,7 +145,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
    
     ![[Configure Single Sign-On]](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HTTP エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[HTTP エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[x509 証明書]** ボックスに貼り付けます。 
 
@@ -182,7 +182,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
  
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -212,7 +212,7 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
     ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 「**Britta**」のように、ユーザーの **[名]** を入力します。
+    a. 「**Britta**」のように、ユーザーの **[名]** を入力します。
 
     b. 「**Simon**」のように、ユーザーの **[姓]** を入力します。
 

@@ -110,7 +110,7 @@ EasyTerritory で Azure AD のシングル サインオンを構成してテス�
 
     ![[EasyTerritory のドメインと URL] のシングル サインオン情報](./media/easyterritory-tutorial/tutorial_easyterritory_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://apps.easyterritory.com/<tenant id>/dev/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://apps.easyterritory.com/<tenant id>/dev/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://apps.easyterritory.com/<tenant id>/dev/authservices/acs` のパターンを使用して URL を入力します。
 

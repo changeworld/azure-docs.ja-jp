@@ -52,7 +52,7 @@ ms.locfileid: "34626139"
     ![データ ソースへの接続](./media/data-lake-store-with-data-catalog/connect-to-source.png "データ ソースへの接続")
 7. 次のページは以下のセグメントに分けることができます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サーバー階層]** ボックスには、Data Lake Store アカウントのフォルダー構造が示されます。 **$Root** は Data Lake Store アカウントのルートを表し、**AmbulanceData** は Data Lake Store アカウントのルートに作成されているフォルダーを表します。
+    a. **[サーバー階層]** ボックスには、Data Lake Store アカウントのフォルダー構造が示されます。 **$Root** は Data Lake Store アカウントのルートを表し、**AmbulanceData** は Data Lake Store アカウントのルートに作成されているフォルダーを表します。
 
     b. **[使用可能なオブジェクト]** ボックスには、**AmbulanceData** フォルダーにあるファイルとフォルダーがリストされます。
 

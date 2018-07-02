@@ -101,7 +101,7 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Box のドメインと URL] のシングル サインオン情報](./media/box-tutorial/url3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、*https://\<subdomain>.box.com* の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、*https://\<subdomain>.box.com* の形式で URL を入力します。
 
     b. **[識別子]** ボックスに「**box.net**」を入力します。
      

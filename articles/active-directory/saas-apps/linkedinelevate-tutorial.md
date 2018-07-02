@@ -119,7 +119,7 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
+    a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
     b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
 
@@ -141,7 +141,7 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
       ![Azure AD のテスト ユーザーの作成](./media/linkedinelevate-tutorial/userattribute.png)
 
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
+      a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
 
       ![Azure AD のテスト ユーザーの作成](./media/linkedinelevate-tutorial/adduserattribute.png)
 
@@ -188,7 +188,7 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
     ![Azure AD のテスト ユーザーの作成](./media/linkedinelevate-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -169,7 +169,7 @@ Huddle で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -193,7 +193,7 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
    
    ![New Invitation](./media/huddle-tutorial/IC787839.png "New Invitation")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーを招待して参加させるチームの選択]** の一覧で **[チーム]** を選択します。
+   a. **[ユーザーを招待して参加させるチームの選択]** の一覧で **[チーム]** を選択します。
 
    b. **[Enter email address for people you'd like to invite]\(招待したい人の電子メール アドレスの入力\)** ボックスに、プロビジョニングを行う有効な Azure AD アカウントの**電子メール アドレス**を入力します。
 

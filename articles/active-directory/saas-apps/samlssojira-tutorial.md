@@ -112,7 +112,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     ![[Configure Single Sign-On]](./media/samlssojira-tutorial/tutorial_samlssojira_url_1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
 
@@ -169,7 +169,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     ![[Configure Single Sign-On]](./media/samlssojira-tutorial/addon5a.png)
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 IDP の種類として **[Azure AD]** を設定します。
+    a. IDP の種類として **[Azure AD]** を設定します。
     
     b. ID プロバイダーの**名前** (たとえば Azure AD) を追加します。
     
@@ -185,7 +185,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
     ![[Configure Single Sign-On]](./media/samlssojira-tutorial/addon5c.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
+    a. **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
 
     b. **[インポート]** ボタンをクリックします。
     
@@ -236,7 +236,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
  
     ![Azure AD のテスト ユーザーの作成](./media/samlssojira-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -269,7 +269,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 
     ![従業員の追加](./media/samlssojira-tutorial/user4.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
     b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
 

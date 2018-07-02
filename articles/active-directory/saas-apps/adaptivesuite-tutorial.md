@@ -106,7 +106,7 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     b. **[応答 URL]** ボックスに、`https://login.adaptiveinsights.com:443/samlsso/<unique-id>` のパターンを使用して URL を入力します。
 
@@ -139,7 +139,7 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     ![SAML SSO 設定](./media/adaptivesuite-tutorial/IC805646.png "SAML SSO Settings")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ID プロバイダー名]** テキスト ボックスに、構成の名前を入力します。
+    a. **[ID プロバイダー名]** テキスト ボックスに、構成の名前を入力します。
 
     b. Azure ポータルからコピーした **SAML エンティティ ID** を **[Identity provider entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに貼り付けます。
 
@@ -186,7 +186,7 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/create_aaduser_04.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -211,7 +211,7 @@ Azure AD ユーザーが Adaptive Insights にログインできるようにす�
 
    ![送信](./media/adaptivesuite-tutorial/IC805649.png "Submit")
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの **[名前]**、**[ログイン]**、**[電子メール]**、**[パスワード]** を入力します。
+   a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの **[名前]**、**[ログイン]**、**[電子メール]**、**[パスワード]** を入力します。
 
    b. **[ロール]** を選択します。
 

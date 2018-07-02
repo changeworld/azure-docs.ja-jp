@@ -110,7 +110,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 
     ![[Apex Portal のドメインと URL] のシングル サインオン情報](./media/apexportal-tutorial/tutorial_apexonline_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` のパターンを使用して URL を入力します。
 
@@ -129,7 +129,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
     | LASTNAME | User.surname |
     | MAIL | User.mail |    
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/apexportal-tutorial/tutorial_attribute_04.png)
 

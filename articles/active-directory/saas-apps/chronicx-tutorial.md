@@ -108,7 +108,7 @@ ChronicX® で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ChronicX® のドメインと URL] のシングル サインオン情報](./media/chronicx-tutorial/tutorial_chronicx_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`ups.chronicx.com`
 

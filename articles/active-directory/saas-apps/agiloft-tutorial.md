@@ -110,7 +110,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Agiloft のドメインと URL] のシングル サインオン情報](./media/agiloft-tutorial/tutorial_agiloft_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。 
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 
     | |
     |-|-|
     | `https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>` |
@@ -161,7 +161,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
     
     ![Agiloft の構成](./media/agiloft-tutorial/setup4.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IdP Entity Id / Issuer] \(IdP エンティティ ID / 発行者)** テキスト ボックスに、Azure ポータルからコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[IdP Entity Id / Issuer] \(IdP エンティティ ID / 発行者)** テキスト ボックスに、Azure ポータルからコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure ポータルからコピーした**シングル サインオン サービス URL** の値を貼り付けます。
 

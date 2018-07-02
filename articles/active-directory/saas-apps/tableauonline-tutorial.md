@@ -112,7 +112,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     ![[Configure Single Sign-On]](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
 
     b. **[識別子]** ボックスに、URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> ` を入力します。
 
@@ -138,7 +138,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
 9. **[Match assertions (アサーションの一致)]** セクションで、**メール アドレス**、**名**、**姓**に対応する ID プロバイダーのアサーション名を挿入します。 Azure AD から情報を取得するには、以下の手順に従います。 
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
+    a. Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
     
     b. 属性セクションで、**[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにします。 
     
@@ -186,7 +186,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
  
     ![Azure AD のテスト ユーザーの作成](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -142,7 +142,7 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
    
     ![Single Sign On](./media/freshdesk-tutorial/IC776770.png "Single Sign On")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン (SSO)]** で **[オン]** を選択します。
+    a. **[シングル サインオン (SSO)]** で **[オン]** を選択します。
 
     b. **[SAML SSO]** を選択します。
 
@@ -181,7 +181,7 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -213,7 +213,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
    
    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[フル ネーム]** ボックスに、プロビジョニングする Azure AD のアカウントの名前を入力します。
+   a. **[フル ネーム]** ボックスに、プロビジョニングする Azure AD のアカウントの名前を入力します。
 
    b. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
 

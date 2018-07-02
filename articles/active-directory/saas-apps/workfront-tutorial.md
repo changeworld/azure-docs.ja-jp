@@ -112,7 +112,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.attask-ondemand.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.attask-ondemand.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.attasksandbox.com/SAML2` の形式で URL を入力します。
 
@@ -139,7 +139,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
     
     ![[Configure Single Sign-On]][23]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Type]** で **[SAML 2.0]** を選択します。
+    a. **[Type]** で **[SAML 2.0]** を選択します。
    
     b. **サービス プロバイダー ID** を選択します。
    
@@ -177,7 +177,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/workfront-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -198,7 +198,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
    
     ![Workfront テスト ユーザーを作成する][21] 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに「Britta」と入力します。
+    a. **[First Name]\(名\)** ボックスに「Britta」と入力します。
    
     b. **[Last Name]\(姓\)** ボックスに「Simon」と入力します。
    

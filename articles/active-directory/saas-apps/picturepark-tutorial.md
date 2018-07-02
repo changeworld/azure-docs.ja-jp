@@ -112,7 +112,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/picturepark-tutorial/tutorial_picturepark_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.picturepark.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.picturepark.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。 
     
@@ -152,7 +152,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
    
     ![ID プロバイダーの構成](./media/picturepark-tutorial/ic795064.png "ID プロバイダーの構成")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** をクリックします。
+    a. **[追加]** をクリックします。
   
     b. 構成の名前を入力します。
    
@@ -195,7 +195,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
    
     ![Create User](./media/picturepark-tutorial/ic795069.png "Create User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。  
+    a. **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。  
    
     b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の**パスワード**を入力します。 
    

@@ -112,7 +112,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_cloudpassage_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://portal.cloudpassage.com/saml/init/accountid` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://portal.cloudpassage.com/saml/init/accountid` のパターンを使用して URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://portal.cloudpassage.com/saml/consume/accountid` のパターンを使用して URL を入力します。 この属性の値は、CloudPassage ポータルの **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで **[SSO Setup documentation (SSO セットアップのドキュメント)]** をクリックすることで取得できます。
 
@@ -137,7 +137,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
     | lastname |User.surname |
     | email |User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/cloudpassage-tutorial/tutorial_attribute_04.png)
     
@@ -171,7 +171,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
    
     ![[Configure Single Sign-On]][14]
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable Single sign-on(SSO)(SSO Setup Documentation)]\(シングル サインオン (SSO)(SSO セットアップ ドキュメント) を有効にする\)** チェックボックスをオンにします。
+    a. **[Enable Single sign-on(SSO)(SSO Setup Documentation)]\(シングル サインオン (SSO)(SSO セットアップ ドキュメント) を有効にする\)** チェックボックスをオンにします。
     
     b. **SAML エンティティ ID** を **[SAML issuer URL]\(SAML 発行者 URL\)** に貼り付けます。
   
@@ -209,7 +209,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/cloudpassage-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -237,7 +237,7 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
    
    ![CloudPassage テスト ユーザーの作成][24]
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「Britta」と入力します。 
+    a. **[名]** ボックスに「Britta」と入力します。 
   
     b. **[姓]** ボックスに「Simon」と入力します。
   

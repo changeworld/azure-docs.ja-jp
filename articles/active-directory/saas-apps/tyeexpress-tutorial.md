@@ -112,7 +112,7 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`https://<domain>.tyeexpress.com`」と入力します。
+    a. **[識別子]** ボックスに、値として「`https://<domain>.tyeexpress.com`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx` のパターンを使用して URL を入力します。
 
@@ -163,7 +163,7 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/tyeexpress-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

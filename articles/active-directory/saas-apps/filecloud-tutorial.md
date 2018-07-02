@@ -110,7 +110,7 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 
     ![[FileCloud のドメインと URL] のシングル サインオン情報](./media/filecloud-tutorial/tutorial_filecloud_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.filecloudonline.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.filecloudonline.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.filecloudonline.com/simplesaml/module.php/saml/sp/metadata.php/default-sp` の形式で URL を入力します。
 

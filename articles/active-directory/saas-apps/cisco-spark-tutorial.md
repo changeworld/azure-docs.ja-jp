@@ -112,7 +112,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/cisco-spark-tutorial/tutorial_ciscospark_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
+    a. **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
 
     b. **[識別子]** ボックスに、`https://idbroker.webex.com/<companyname>` の形式で URL を入力します。
 
@@ -133,7 +133,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
     | --------------- | -------------------- |    
     |   uid    | user.userprincipalname |   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/cisco-spark-tutorial/tutorial_attribute_04.png)
 
@@ -192,7 +192,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/cisco-spark-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -216,7 +216,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
    
     ![[Configure Single Sign-On]](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。 
+    a. **[名]** ボックスに「**Britta**」と入力します。 
     
     b. **[姓]** ボックスに「**Simon**」と入力します。
     

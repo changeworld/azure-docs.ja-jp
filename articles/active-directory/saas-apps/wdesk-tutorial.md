@@ -112,7 +112,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/wdesk-tutorial/tutorial_wdesk_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>` のパターンを使用して URL を入力します。
 
@@ -151,7 +151,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** をコピーし、Azure Portal の **[サインオン URL]** ボックスに貼り付けます。
+      a. **[Login URL]\(ログイン URL\)** をコピーし、Azure Portal の **[サインオン URL]** ボックスに貼り付けます。
    
       b. **[Metadata Url]\(メタデータ URL\)** をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
        
@@ -193,7 +193,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -226,7 +226,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
   
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser4.png)
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[E-mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    a. **[E-mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 

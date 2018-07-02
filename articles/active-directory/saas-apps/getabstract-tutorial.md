@@ -110,7 +110,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 
     ![[Getabstract のドメインと URL] のシングル サインオン情報](./media/getabstract-tutorial/tutorial_getabstract_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。
+    a. **[識別子]** ボックスに次の URL を入力します。
 
     ステージ/pre_production の場合: `https://int.getabstract.com`
 

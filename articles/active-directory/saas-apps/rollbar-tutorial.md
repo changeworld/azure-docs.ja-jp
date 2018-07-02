@@ -110,7 +110,7 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Rollbar のドメインと URL] のシングル サインオン情報](./media/rollbar-tutorial/tutorial_rollbar_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://saml.rollbar.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://saml.rollbar.com`
 
     b. **[応答 URL]** ボックスに、`https://rollbar.com/<accountname>/saml/sso/azure/` のパターンを使用して URL を入力します。
 
@@ -145,7 +145,7 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
     
     ![構成](./media/rollbar-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Identity Provider]\(SAML ID プロバイダー\)** ドロップダウンから **[AZURE]** を選択します。
+    a. **[SAML Identity Provider]\(SAML ID プロバイダー\)** ドロップダウンから **[AZURE]** を選択します。
 
     b. メタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[SAML Metadata]\(SAML メタデータ\)** テキストボックスに貼りつけます。
 
@@ -156,7 +156,7 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
     ![構成](./media/rollbar-tutorial/configure3.png)
     > [!NOTE] 
     > 次の手順を行うには、最初に、Azure で自分自身を Rollbar アプリにユーザーとして追加する必要があります。
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure による認証をすべてのユーザーに要求する場合は、**[log in via your identity provider]\(ID プロバイダーを使用してログインする\)** をクリックして Azure で再認証します。  
+    a. Azure による認証をすべてのユーザーに要求する場合は、**[log in via your identity provider]\(ID プロバイダーを使用してログインする\)** をクリックして Azure で再認証します。  
 
     b.  画面に戻った後、**[Require login via SAML Identity Provider]\(SAML ID プロバイダーによるログインを要求する\)** チェック ボックスをオンにします。
 

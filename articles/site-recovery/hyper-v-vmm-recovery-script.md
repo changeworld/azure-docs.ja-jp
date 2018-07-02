@@ -56,7 +56,7 @@ ms.locfileid: "29402073"
 
   3. VMM サービス アカウントと同じレベルのユーザー権限を持つユーザー アカウントを使用して、スクリプトをテストします。 このようなユーザー権限を使用して、スタンドアロンのテスト済みスクリプトが、復旧計画で実行される場合と同じ方法で実行されることを検証します。 VMM サーバーで、次の手順を実行して、実行ポリシーを bypass に設定します。
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者として **64 ビット版 Windows PowerShell** コンソールを開きます。
+     a. 管理者として **64 ビット版 Windows PowerShell** コンソールを開きます。
      
      b. 「**Set-executionpolicy bypass**」と入力します。 詳細については、「[Set-ExecutionPolicy コマンドレットの使用](https://technet.microsoft.com/library/ee176961.aspx)」を参照してください。
 

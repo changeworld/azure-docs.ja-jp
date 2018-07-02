@@ -108,7 +108,7 @@ CylancePROTECT で Azure AD のシングル サインオンを構成してテス
 
     ![[CylancePROTECT Domain and URLs]\(CylancePROTECT のドメインと URL\) のシングル サインオン情報](./media/cylanceprotect-tutorial/tutorial_cylanceprotect_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。
+    a. **[識別子]** ボックスに次の URL を入力します。
     
     | リージョン | URL の値 |
     |----------|---------|

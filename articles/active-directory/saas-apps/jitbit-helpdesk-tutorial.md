@@ -112,7 +112,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。 
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -154,7 +154,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
    
     ![Authentication settings](./media/jitbit-helpdesk-tutorial/ic777683.png "Authentication settings")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML 2.0 single sign on]\(SAML 2.0 シングル サインオンを有効にする\)** を選択して、**OneLogin** でシングル サインオン (SSO) を使用してサインインします。
+    a. **[Enable SAML 2.0 single sign on]\(SAML 2.0 シングル サインオンを有効にする\)** を選択して、**OneLogin** でシングル サインオン (SSO) を使用してサインインします。
 
     b. **[エンドポイント URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -189,7 +189,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/jitbit-helpdesk-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -221,7 +221,7 @@ Azure AD ユーザーが Jitbit Helpdesk にログインできるようにする
 
     ![作成](./media/jitbit-helpdesk-tutorial/ic777686.png "作成")
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー名]** ボックスに、Azure Portal でのユーザー名「**BrittaSimon**」を入力します。
+   a. **[ユーザー名]** ボックスに、Azure Portal でのユーザー名「**BrittaSimon**」を入力します。
 
    b. **[電子メール]** ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
 

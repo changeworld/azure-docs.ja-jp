@@ -127,7 +127,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
     | mail | User.mail |
     | displayName | user.displayname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/contractworks-tutorial/tutorial_attribute_04.png)
 

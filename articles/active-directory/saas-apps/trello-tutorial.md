@@ -114,7 +114,7 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Trello のドメインと URL] のシングル サインオン情報](./media/trello-tutorial/tutorial_trello_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の URL を入力します。`https://trello.com/auth/saml/metadata`
+    a. **[識別子]** ボックスに、次の URL を入力します。`https://trello.com/auth/saml/metadata`
     
     b. **[応答 URL]** ボックスに、`https://trello.com/auth/saml/consume/<enterprise>` のパターンを使用して URL を入力します。
 
@@ -122,7 +122,7 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Trello のドメインと URL] のシングル サインオン情報](./media/trello-tutorial/tutorial_trello_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://trello.com/auth/saml/login/<enterprise>` のパターンを使用して URL を入力します。 
 
@@ -138,7 +138,7 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
     | User.FirstName | User.givenname |
     | User.LastName | User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/trello-tutorial/tutorial_officespace_04.png)
 

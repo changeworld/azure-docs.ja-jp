@@ -112,7 +112,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。 
+    a. **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。 
        
      テスト環境の場合 - `https://na2standby.allocadia.com`
     
@@ -139,7 +139,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
     | lastname | User.surname |
     | email | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_attribute_04.png)
 
@@ -191,7 +191,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/allocadia-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -108,7 +108,7 @@ Zwayam で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Zwayam のドメインと URL] のシングル サインオン情報](./media/zwayam-tutorial/tutorial_Zwayam_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://sso.zwayam.com/zwayam-saml/zwayam-saml/saml/login?idp=<SAML Entity ID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://sso.zwayam.com/zwayam-saml/zwayam-saml/saml/login?idp=<SAML Entity ID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://sso.zwayam.com/zwayam-saml/saml/metadata`
 

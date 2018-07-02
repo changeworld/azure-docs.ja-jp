@@ -132,7 +132,7 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
    
     ![External Authorization](./media/smarteru-tutorial/IC777327.png "External Authorization") 
  
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable External Authorization]** を選択します。
+      a. **[Enable External Authorization]** を選択します。
   
       b. **[Master Login Control]** セクションで、**[SmarterU]** タブを選択します。
   
@@ -171,7 +171,7 @@ SmarterU で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/smarteru-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -195,7 +195,7 @@ SmarterU の場合、プロビジョニングは手動で行います。
    
     ![New User](./media/smarteru-tutorial/IC777329.png "New User")  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+User]** をクリックします。
+    a. **[+User]** をクリックします。
     
     b. 次のテキスト ボックスに、Azure AD のユーザー アカウントの関連する属性の値を入力します。**[Primary Email]**、**[Employee ID]**、**[Password]**、**[Verify Password]**、**[Given Name]**、**[Surname]**。
     

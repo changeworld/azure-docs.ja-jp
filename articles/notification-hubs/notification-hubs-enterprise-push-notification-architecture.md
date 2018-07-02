@@ -63,7 +63,7 @@ ms.locfileid: "33778064"
 
 1. **EnterprisePushBackendSystem**
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 このプロジェクトは *WindowsAzure.ServiceBus* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
+    a. このプロジェクトは *WindowsAzure.ServiceBus* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
    
     b. このアプリケーションは、LoB システムをシミュレートする単純な C# コンソール アプリであり、メッセージのモバイル アプリへの配信を開始します。
    
@@ -126,7 +126,7 @@ ms.locfileid: "33778064"
         }
 2. **ReceiveAndSendNotification**
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 このプロジェクトは *WindowsAzure.ServiceBus* および *Microsoft.Web.WebJobs.Publish* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
+    a. このプロジェクトは *WindowsAzure.ServiceBus* および *Microsoft.Web.WebJobs.Publish* NuGet パッケージを使用し、「[Service Bus パブリッシュ/サブスクライブ プログラミング]」に基づいています。
    
     b. 次のコンソール アプリは、LoB/バックエンド システム メッセージをリッスンするために継続的に実行する必要があるため、[Azure WebJob] として実行されます。 このアプリケーションは、モバイル バックエンドの一部です。
    
@@ -219,7 +219,7 @@ ms.locfileid: "33778064"
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 このアプリケーションは、モバイル バックエンドの一部として実行されている WebJob からトースト通知を受信して表示する Windows ストア アプリケーションです。 このコードは、「[Notification Hubs - Windows ユニバーサル チュートリアル]」に基づいています。  
+    a. このアプリケーションは、モバイル バックエンドの一部として実行されている WebJob からトースト通知を受信して表示する Windows ストア アプリケーションです。 このコードは、「[Notification Hubs - Windows ユニバーサル チュートリアル]」に基づいています。  
    
     b. アプリケーションでトースト通知の受信が有効になっていることを確認します。
    

@@ -112,7 +112,7 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/ideascale-tutorial/tutorial_ideascale_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.ideascale.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.ideascale.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -153,7 +153,7 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
    
     ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. Azure Portal からダウンロードしたメタデータ ファイルの内容をコピーし、 **[SAML IdP Metadata]\(SAML IdP メタデータ\)** ボックスに貼り付けます。
 
@@ -188,7 +188,7 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/ideascale-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -218,7 +218,7 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
    
     ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール アドレス]** ボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
+    a. **[電子メール アドレス]** ボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
    
     b. **[変更を保存]** をクリックします。 
    

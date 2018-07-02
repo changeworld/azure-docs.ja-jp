@@ -142,7 +142,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     ![[Configure Single Sign-On]](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **表示名**: 管理者ページでのプラグインの表示名を入力します。
+    a. **表示名**: 管理者ページでのプラグインの表示名を入力します。
 
     b. **ボタン名**: SSO を使用してログインするためのログイン ページに表示されるタブの名前。
 
@@ -175,7 +175,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/teamphoria-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -203,7 +203,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
     
     ![[ユーザーの招待]](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[EMAIL ADDRESS (電子メール アドレス)]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
+    a. **[EMAIL ADDRESS (電子メール アドレス)]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 
     b. **[名]** ボックスに「**Britta**」と入力します。
 

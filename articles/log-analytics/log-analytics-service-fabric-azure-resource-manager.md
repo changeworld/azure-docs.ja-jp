@@ -87,7 +87,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 - 左側のウィンドウの [設定] に移動して、[データ]、[Windows パフォーマンス カウンター] の順に選択して [選選択したパフォーマンス カウンターを追加する] で ![Service Fabric](./media/log-analytics-service-fabric/7.png) を選択します。
 - [ログ検索] で、次のクエリを使用してノードに関する主要なメトリックを詳しく調べます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
+    a. 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
 
     ```
     Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR.

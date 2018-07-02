@@ -156,7 +156,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
 ### <a name="use-service-fabric-explorer"></a>Service Fabric Explorer の使用
 1.  Web ブラウザーが管理用クライアント証明書にアクセスできること、また Service Fabric クラスターに対して認証を行えることを確認します。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Internet Explorer を開いて **[インターネット オプション]** > **[コンテンツ]** > **[証明書]** の順に移動します。
+    a. Internet Explorer を開いて **[インターネット オプション]** > **[コンテンツ]** > **[証明書]** の順に移動します。
   
     b. [証明書] の **[インポート]** を選択して "*証明書のインポート ウィザード*" を開始し、**[次へ]** をクリックします。 *[インポートするファイル]* ページの **[参照]** をクリックして、Azure Resource Manager テンプレートに指定した**管理用クライアント証明書**を選択します。
         
@@ -171,7 +171,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
        ![証明書ストア](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
 2. Service Fabric クラスターの FQDN を特定するには、次の手順を実行します。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Service Fabric クラスターに関連付けられているリソース グループに移動し、*[パブリック IP アドレス]* リソースを探します。 パブリック IP アドレスに関連付けられているオブジェクトを選択し、*[パブリック IP アドレス]* ブレードを開きます。  
+    a. Service Fabric クラスターに関連付けられているリソース グループに移動し、*[パブリック IP アドレス]* リソースを探します。 パブリック IP アドレスに関連付けられているオブジェクトを選択し、*[パブリック IP アドレス]* ブレードを開きます。  
 
       ![パブリック IP アドレス](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
 
@@ -196,7 +196,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
 
 2. インストールが完了したら、Service Fabric のコマンドレットに PowerShell から確実にアクセスできるようシステム環境変数を構成します。  
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[コントロール パネル]** > **[システムとセキュリティ]** > **[システム]** に移動し、**[システムの詳細設定]** を選択します。  
+    a. **[コントロール パネル]** > **[システムとセキュリティ]** > **[システム]** に移動し、**[システムの詳細設定]** を選択します。  
     
       ![コントロール パネル](media/azure-stack-solution-template-service-fabric-cluster/image15.png) 
 

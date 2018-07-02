@@ -112,7 +112,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
     ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<server name>.crm.ondemand.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<server name>.crm.ondemand.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<server name>.crm.ondemand.com` の形式で URL を入力します。
 
@@ -123,7 +123,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
     ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー識別子]** リストで、**[ExtractMailPrefix()]** 関数を選択します。
+    a. **[ユーザー識別子]** リストで、**[ExtractMailPrefix()]** 関数を選択します。
 
     b. **[メール]** 一覧から、実装で使用するユーザー属性を選択します。
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、[user.extensionattribute2] を選択します。  
@@ -142,7 +142,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 8. 構成された SSO を取得するには、次の手順を実行します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAP Cloud for Customer ポータルに管理者権限でログインします。
+    a. SAP Cloud for Customer ポータルに管理者権限でログインします。
    
     b. **[Application and User Management Common Task (アプリケーションとユーザー管理の共通タスク)]** に移動し、**[ID プロバイダー]** タブをクリックします。
    
@@ -210,7 +210,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
  
     ![Azure AD のテスト ユーザーの作成](./media/sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

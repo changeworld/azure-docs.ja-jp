@@ -140,7 +140,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
         }
 5. HDInsight Spark クラスターでアプリケーションを実行します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
+   a. Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
    b. **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** を選択します。
       
       * **[Cluster Name (クラスター名)]** で、アプリケーションを実行する HDInsight Spark クラスターを選択します。

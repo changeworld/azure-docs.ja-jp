@@ -108,7 +108,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
     ![[Elium のドメインと URL] のシングル サインオン情報](./media/elium-tutorial/tutorial_elium_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<platform-domain>.elium.com/login/saml2/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<platform-domain>.elium.com/login/saml2/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<platform-domain>.elium.com/login/saml2/acs` のパターンを使用して URL を入力します。
 
@@ -138,7 +138,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
     > [!NOTE]
     > これらは、既定の要求です。 **電子メール要求のみが必須です**。 JIT プロビジョニングの場合も、電子メール要求のみが必須です。 その他のカスタム要求は、顧客プラットフォームによって異なる場合があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/elium-tutorial/tutorial_attribute_04.png)
 
@@ -174,7 +174,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/elium-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Verify that SAML2 authentication works for your account]\(SAML2 認証がアカウントに対して動作することを確認する\)** の値をコピーし、Azure Portal の **[Elium のドメインと URL]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。
+    a. **[Verify that SAML2 authentication works for your account]\(SAML2 認証がアカウントに対して動作することを確認する\)** の値をコピーし、Azure Portal の **[Elium のドメインと URL]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。
 
     > [!NOTE]
     > SSO を構成した後で、次の URL で既定のリモート ログイン ページにいつでもアクセスできます: `https://<platform_domain>/login/regular/login` 

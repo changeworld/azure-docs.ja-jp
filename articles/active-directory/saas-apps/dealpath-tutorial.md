@@ -110,7 +110,7 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
 
     ![[Dealpath のドメインと URL] のシングル サインオン情報](./media/dealpath-tutorial/tutorial_dealpath_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://app.dealpath.com/account/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://app.dealpath.com/account/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://api.dealpath.com/saml/metadata/<ID>` の形式で URL を入力します。
 
@@ -139,7 +139,7 @@ Dealpath で Azure AD のシングル サインオンを構成してテストす
 
     ![Dealpath 構成](./media/dealpath-tutorial/tutorial_dealpath_saml.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. **[ID プロバイダーの発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 

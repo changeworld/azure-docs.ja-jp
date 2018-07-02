@@ -108,7 +108,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
 
     ![[Mimecast Personal Portal のドメインと URL] のシングル サインオン情報](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の URL を入力します。 
+    a. **[サインオン URL]** ボックスに、次の URL を入力します。 
 
     | リージョン  |  値 | 
     | --------------- | --------------- | 
@@ -171,7 +171,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
    
     ![Authentication Profile](./media/mimecast-personal-portal-tutorial/ic795001.png "Authentication Profile")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[説明]** テキストボックスに、構成の名前を入力します。
+    a. **[説明]** テキストボックスに、構成の名前を入力します。
    
     b. **[Mimecast Personal Portal に SAML 認証を適用]** を選択します。
    
@@ -247,7 +247,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。
+    a. **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。
     
     b. **[Global Name]\(グローバル名\)** ボックスに、**ユーザー名**を「**BrittaSimon**」と入力します。
 

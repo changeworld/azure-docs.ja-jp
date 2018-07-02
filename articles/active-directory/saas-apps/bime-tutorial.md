@@ -112,7 +112,7 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Configure Single Sign-On]](./media/bime-tutorial/tutorial_bime_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.Bimeapp.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.Bimeapp.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.Bimeapp.com` の形式で URL を入力します。
 
@@ -141,7 +141,7 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
    
     ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure Single Sign-On")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 認証を有効にする]** を選択します。
+    a. **[SAML 認証を有効にする]** を選択します。
 
     b. **[リモート ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -176,7 +176,7 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/bime-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -204,7 +204,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
    
     ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "User Details")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
  

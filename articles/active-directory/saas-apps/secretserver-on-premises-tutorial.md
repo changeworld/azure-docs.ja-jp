@@ -108,7 +108,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[Secret Server (On-Premises) のドメインと URL] のシングル サインオン情報](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。`https://secretserveronpremises.azure`
+    a. **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。`https://secretserveronpremises.azure`
 
     b. **[応答 URL]** ボックスに、`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx ` のパターンを使用して URL を入力します。
 

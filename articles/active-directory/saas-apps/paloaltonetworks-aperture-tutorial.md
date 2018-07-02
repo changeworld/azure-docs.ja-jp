@@ -108,7 +108,7 @@ Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構
 
     ![[Palo Alto Networks - Aperture のドメインと URL] のシングル サインオン情報](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth` のパターンを使用して URL を入力します。
 
@@ -148,7 +148,7 @@ Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構
     
     ![[認証] タブ](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン]** フィールドの **[Enable Single Sign-On(Supported SSP Providers are Okta, Onelogin)]\(シングル サインオンを有効にする (サポートされている SSP プロバイダーは Okta、Onelogin)\)** をオンにします。
+    a. **[シングル サインオン]** フィールドの **[Enable Single Sign-On(Supported SSP Providers are Okta, Onelogin)]\(シングル サインオンを有効にする (サポートされている SSP プロバイダーは Okta、Onelogin)\)** をオンにします。
 
     b. **[ID プロバイダー]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 

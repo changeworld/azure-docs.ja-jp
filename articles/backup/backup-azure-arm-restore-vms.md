@@ -104,7 +104,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 ## <a name="create-a-new-vm-from-a-restore-point"></a>復元ポイントから新しい VM を作成する
 1. 復元ポイントから新しい VM を作成する前に、[復元ポイントを選択](#restore-a vm-with-special-network-configurations)しておきます (まだ選択していない場合)。 復元ポイントを作成したら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **復元の種類**。 仮想マシンを作成します。
+    a. **復元の種類**。 仮想マシンを作成します。
 
     b. **仮想マシン名**。 VM の名前を指定します。 この名前は、リソース グループ (Azure Resource Manager でデプロイされた VM の場合) またはクラウド サービス (クラシック VM の場合) に対して一意である必要があります。 VM が既にサブスクリプションに存在する場合、それを置き換えることはできません。
 
@@ -235,7 +235,7 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成します。 その構成を使用して、目的の構成で VM を作成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
+   a. [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
 
    b. [インターネットに接続されているロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成します。
 

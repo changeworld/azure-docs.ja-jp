@@ -112,7 +112,7 @@ NetDocuments で Azure AD のシングル サインオンを構成してテス�
 
     ![[Configure Single Sign-On]](./media/netdocuments-tutorial/tutorial_netdocuments_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>` のパターンを使用して URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>` のパターンを使用して URL を入力します。
 
@@ -143,7 +143,7 @@ NetDocuments で Azure AD のシングル サインオンを構成してテス�
    
     ![フェデレーション ID](./media/netdocuments-tutorial/ic795049.png "フェデレーション ID")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[フェデレーション ID のサーバーの種類]** として、**[Active Directory フェデレーション サービス]** を選びます。
+    a. **[フェデレーション ID のサーバーの種類]** として、**[Active Directory フェデレーション サービス]** を選びます。
    
     b. **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
    
@@ -175,7 +175,7 @@ NetDocuments で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/netdocuments-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

@@ -108,7 +108,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     ![[iWellnessNow のドメインと URL] のシングル サインオンのアップロード](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータ ファイルをアップロードします]** をクリックします。
+    a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![[iWellnessNow のドメインと URL] のシングル サインオンの uploadconfig](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
@@ -122,7 +122,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     ![[iWellnessNow のドメインと URL] のシングル サインオン情報](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`http://<CustomerName>.iwellnessnow.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`http://<CustomerName>.iwellnessnow.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<CustomerName>.iwellnessnow.com/ssologin` のパターンを使用して URL を入力します。
 

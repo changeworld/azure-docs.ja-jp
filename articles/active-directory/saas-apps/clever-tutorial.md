@@ -110,7 +110,7 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Clever のドメインと URL] のシングル サインオン情報](./media/clever-tutorial/tutorial_clever_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://clever.com/in/<companyname>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://clever.com/in/<companyname>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://clever.com/oauth/saml/metadata.xml`
 
@@ -136,7 +136,7 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
     | Firstname  | User.givenname |
     | Lastname  | User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/clever-tutorial/tutorial_attribute_04.png)
     
@@ -167,7 +167,7 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
     
       ![Instant Login](./media/clever-tutorial/ic798985.png "Instant Login")
     
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ログイン URL**を入力します。
+      a. **ログイン URL**を入力します。
     
       >[!NOTE]
       >**ログイン URL** はカスタム値です。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。

@@ -110,7 +110,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     ![[iQualify LMS のドメインと URL] のシングル サインオン情報](./media/iqualify-tutorial/tutorial_iqualify_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。 
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 
     | |
     |--|--|
     | 運用環境: `https://<yourorg>.iqualify.com/`|
@@ -148,7 +148,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     | last_name | User.surname |
     | person_id | "あなたの属性" | 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/iqualify-tutorial/atb2.png)
 
@@ -194,7 +194,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     ![SAML 認証設定](./media/iqualify-tutorial/setting4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML SINGLE SIGN-ON SERVICE URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[SAML Single Sign-on Service URL]\(SAML シングル サインオン サービス URL\)** の値を貼り付けます。
+    a. **[SAML SINGLE SIGN-ON SERVICE URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[SAML Single Sign-on Service URL]\(SAML シングル サインオン サービス URL\)** の値を貼り付けます。
     
     b. **[SAML LOGOUT URL]\(SAML ログアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[Sign‑Out URL]\(サインアウト URL\)** の値を貼り付けます。
     

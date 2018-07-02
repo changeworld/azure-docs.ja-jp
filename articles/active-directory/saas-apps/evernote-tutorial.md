@@ -144,7 +144,7 @@ Evernote で Azure AD のシングル サインオンを構成してテストす
 
     ![Certificate-Setting](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **SSO の有効化** - SSO は既定で有効になっています (SSO の要件を削除する場合は、**[シングル サインオンを無効にする]** をクリックします)
+    a.  **SSO の有効化** - SSO は既定で有効になっています (SSO の要件を削除する場合は、**[シングル サインオンを無効にする]** をクリックします)
 
     b. Azure Portal からコピーした **SAML シングル サインオン サービスの URL**の値 を **[SAML HTTP Request URL]\(SAML HTTP 要求 URL\)** ボックスに貼り付けます。
 

@@ -112,7 +112,7 @@ Gigya で Azure AD のシングル サインオンを構成してテストする
 
     ![[Configure Single Sign-On]](./media/gigya-tutorial/tutorial_gigya_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.gigya.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`http://<companyname>.gigya.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://fidm.gigya.com/saml/v2.0/<companyname>` の形式で URL を入力します。
 
@@ -141,7 +141,7 @@ Gigya で Azure AD のシングル サインオンを構成してテストする
    
     ![SAML の構成](./media/gigya-tutorial/ic789533.png "SAML の構成")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに、構成の名前を入力します。
+    a. **[名前]** テキスト ボックスに、構成の名前を入力します。
    
     b. **[Issuer]\(発行者\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
    
@@ -181,7 +181,7 @@ Gigya で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/gigya-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,7 +206,7 @@ Gigya の場合、プロビジョニングは手動で行います。
    
     ![ユーザーの招待](./media/gigya-tutorial/ic789536.png "ユーザーの招待")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール エイリアスを入力します。
+    a. **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール エイリアスを入力します。
     
     b. **[ユーザーの招待]** をクリックします。
       

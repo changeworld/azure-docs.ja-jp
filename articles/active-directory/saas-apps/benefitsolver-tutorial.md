@@ -110,7 +110,7 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
 
     ![[Benefitsolver のドメインと URL] のシングル サインオン情報](./media/benefitsolver-tutorial/tutorial_benefitsolver_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.benefitsolver.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`http://<companyname>.benefitsolver.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.benefitsolver.com/saml20` の形式で URL を入力します。
 
@@ -132,7 +132,7 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
     | LogoutURL | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
     | EmployeeID | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [属性の追加] をクリックして [属性の追加] ダイアログを開きます。
+    a. [属性の追加] をクリックして [属性の追加] ダイアログを開きます。
 
     ![Benefitsolver の属性セクション](./media/benefitsolver-tutorial/tutorial_attribute_04.png)
     

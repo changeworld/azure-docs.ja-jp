@@ -110,7 +110,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Salesforce のドメインと URL] のシングル サインオン情報](./media/salesforce-tutorial/tutorial_salesforce_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
     
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
@@ -165,7 +165,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-saml-config.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
+    a. **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
 
     b. **[Issuer]\(発行者\)** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 

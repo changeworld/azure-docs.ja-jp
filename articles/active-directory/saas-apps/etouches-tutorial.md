@@ -109,7 +109,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![[etouches のドメインと URL] のシングル サインオン情報](./media/etouches-tutorial/tutorial_etouches_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://www.eiseverywhere.com/<instance name>` の形式で URL を入力します。
 
@@ -127,7 +127,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
     | ------------------- | -------------------- |
     | 電子メール | User.mail |    
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[属性の追加]](./media/etouches-tutorial/tutorial_attribute_04.png)
 
@@ -151,7 +151,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![etouches の構成](./media/etouches-tutorial/tutorial_etouches_06.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者権限を使用して **etouches** アプリケーションにログインします。
+    a. 管理者権限を使用して **etouches** アプリケーションにログインします。
    
     b. **[SAML 構成]** に移動します。
 
@@ -196,7 +196,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
  
     ![[ユーザー] ダイアログ ボックス](./media/etouches-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

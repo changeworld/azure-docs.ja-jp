@@ -110,7 +110,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Litmos のドメインと URL] のシングル サインオン情報](./media/litmos-tutorial/tutorial_litmos_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.litmos.com/account/Login` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<companyname>.litmos.com/account/Login` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.litmos.com/integration/samllogin` のパターンを使用して URL を入力します。
 
@@ -131,7 +131,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
     | LastName  |User.surname |
     | 電子メール |User.mail |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[属性の追加]](./media/litmos-tutorial/tutorial_attribute_04.png)
 
@@ -169,7 +169,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
     
      ![Litmos アプリケーション][25] 
      
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** をクリックします。
+     a. **[Enable SAML]** をクリックします。
     
      b. Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[SAML X.509 Certificate]** ボックスに貼り付けます。
      

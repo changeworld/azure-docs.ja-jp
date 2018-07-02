@@ -145,7 +145,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Create an authentication endpoint](./media/screensteps-tutorial/ic778526.png "Create an authentication endpoint")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Title]** テキスト ボックスに、タイトルを入力します。
+    a. **[Title]** テキスト ボックスに、タイトルを入力します。
     
     b. **[Mode]** 一覧から **[SAML]** を選択します。
     
@@ -159,7 +159,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Remote authentication endpoint](./media/screensteps-tutorial/ic778527.png "Remote authentication endpoint")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Upload new SAML Certificate file]\(新しい SAML 証明書のアップロード\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
+    a. **[Upload new SAML Certificate file]\(新しい SAML 証明書のアップロード\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービスの URL** を **[Remote Login URL]\(Remote ログイン URL\)** ボックスに貼り付けます。
     

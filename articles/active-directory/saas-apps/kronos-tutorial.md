@@ -112,7 +112,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/kronos-tutorial/tutorial_kronos_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.kronos.net/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<company name>.kronos.net/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company name>.kronos.net/wfc/navigator/logonWithUID` のパターンを使用して URL を入力します。
 
@@ -129,7 +129,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [ユーザー識別子] ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a. [ユーザー識別子] ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
     b. **[メール]** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
@@ -169,7 +169,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/kronos-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

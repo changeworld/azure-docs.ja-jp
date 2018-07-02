@@ -112,7 +112,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
     ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>.foundry.<companyname>.com/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<instancename>.foundry.<companyname>.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<instancename>.foundry.<companyname>.com` の形式で URL を入力します。
     
@@ -132,7 +132,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
     | emailaddress | user.userprincipalname |
     | name | user.userprincipalname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
+    a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
     ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/url_update.png)
 
@@ -177,7 +177,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
  
     ![Azure AD のテスト ユーザーの作成](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

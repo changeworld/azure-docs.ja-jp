@@ -110,7 +110,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![[Vodeclic のドメインと URL] のシングル サインオン情報](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` というパターンで URL を入力します。
+    a. **[識別子]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` というパターンで URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml/callback` の形式で URL を入力します。
 

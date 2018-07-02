@@ -1006,7 +1006,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 2.  Azure Enhanced Monitoring Extension の出力を確認します。
 
-  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
+  a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
 
    **予想される結果**: パフォーマンス カウンターのリストが返されます。 ファイルを空にすることはできません。
 
@@ -1022,7 +1022,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 1.  waagent がインストールされ、有効になっていることを確認します。
 
-  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `sudo ls -al /var/lib/waagent/` を実行します。
+  a.  `sudo ls -al /var/lib/waagent/` を実行します。
 
       **予想される結果**: waagent ディレクトリの内容が表示されます。
 
@@ -1032,7 +1032,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 3.   Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
 
-  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
+  a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
 
     **予想される結果**: Azure Enhanced Monitoring Extension ディレクトリの内容が表示されます。
 
@@ -1042,7 +1042,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 3. SAP Note [1031096] の説明に従って SAP Host Agent をインストールし、`saposcol` の出力を確認します。
 
-  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
+  a.  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
 
   b.  `dump ccm` を実行します。
 

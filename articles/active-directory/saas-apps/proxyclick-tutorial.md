@@ -108,7 +108,7 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Proxyclick のドメインと URL] のシングル サインオン情報](./media/proxyclick-tutorial/tutorial_proxyclick_url2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://saml.proxyclick.com/init/<companyId>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://saml.proxyclick.com/init/<companyId>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://saml.proxyclick.com/consume/<companyId>` のパターンを使用して URL を入力します。
 
@@ -147,7 +147,7 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     ![Proxyclick 構成](./media/proxyclick-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Consumer URL]\(SAML コンシューマー URL\)** の値をコピーし、Azure portal の **[Proxyclick のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    a. **[SAML Consumer URL]\(SAML コンシューマー URL\)** の値をコピーし、Azure portal の **[Proxyclick のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
     b. **[SAML SSO Redirect URL]\(SAML SSO リダイレクト URL\)** の値をコピーし、Azure portal の **[Proxyclick のドメインと URL]** セクションの **[サインオン URL]** ボックスと **[識別子]** ボックスに貼り付けます。
 
@@ -213,7 +213,7 @@ Azure AD ユーザーが Proxyclick にログインできるようにするに�
 
     ![従業員の追加](./media/proxyclick-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    a. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 
     b. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 

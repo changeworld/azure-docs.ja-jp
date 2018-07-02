@@ -110,7 +110,7 @@ OnTrack で Azure AD のシングル サインオンを構成してテストす�
 
     ![[OnTrack のドメインと URL] のシングル サインオン情報](./media/ontrack-tutorial/tutorial_ontrack_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のように入力します。
+    a. **[識別子]** ボックスに、次のように入力します。
     
     テスト環境の場合は、次の URL を入力します。`https://staging.insigniagroup.com/sso`
 
@@ -140,7 +140,7 @@ OnTrack で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE]
     > **User-Role** 属性と **Hyperion-Code** 属性は、それぞれ Autonation ユーザー ロールと Dealer コードにマップされます。 これらの値は例なので、統合するための正しいコードを使用してください。 これらの値は、[Autonation サポート](mailto:CustomerService@insigniagroup.com)に問い合わせることができます。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ontrack-tutorial/tutorial_attribute_04.png) 
 

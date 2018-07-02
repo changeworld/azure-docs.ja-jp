@@ -112,7 +112,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     ![[Configure Single Sign-On]](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -157,7 +157,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     ![SAML 構成](./media/xmatters-ondemand-tutorial/IC776796.png "SAML 構成")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** を選択します。
+    a. **[Enable SAML]** を選択します。
 
     b. **[Identity Provider ID]\(ID プロバイダー ID\)** テキストボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -192,7 +192,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     ![Azure AD のテスト ユーザーの作成](./media/xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -216,7 +216,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     ![Add a User](./media/xmatters-ondemand-tutorial/IC781049.png "Add a User")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アクティブ]** を選択します。
+    a. **[アクティブ]** を選択します。
 
     b. **[User ID]\(ユーザー ID\)** ボックスに、ユーザーの ID を入力します (この例では Brittasimon@contoso.com)。
 

@@ -110,7 +110,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![[SpaceIQ のドメインと URL] のシングル サインオン情報](./media/spaceiq-tutorial/tutorial_spaceiq_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://api.spaceiq.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://api.spaceiq.com`
 
     b. **[応答 URL]** ボックスに、`https://api.spaceiq.com/saml/<instanceid>/callback` のパターンを使用して URL を入力します。
 
@@ -143,7 +143,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![SAML 認証設定](./media/spaceiq-tutorial/setting3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Issuer URL]\(SAML 発行者 URL\)** ボックスに、Azure AD のアプリケーション構成ウィンドウからコピーした **[SAML エンティティ ID]** の値を貼り付けます。
+    a. **[SAML Issuer URL]\(SAML 発行者 URL\)** ボックスに、Azure AD のアプリケーション構成ウィンドウからコピーした **[SAML エンティティ ID]** の値を貼り付けます。
     
     b. **[SAML CallBack Endpoint URL (read-only)]\(SAML コールバック エンドポイント URL (読み取り専用)\)** の値をコピーし、Azure ポータルの **[SpaceIQ のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     

@@ -112,7 +112,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/liquidfiles-tutorial/tutorial_liquidfiles_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<YOUR_SERVER_URL>/saml/init` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<YOUR_SERVER_URL>/saml/init` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<YOUR_SERVER_URL>` の形式で URL を入力します。
 
@@ -141,7 +141,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/liquidfiles-tutorial/tutorial_single_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Single Sign On Method]\(シングル サインオンの方法\)** として、**[SAML 2]** を選びます。
+    a. **[Single Sign On Method]\(シングル サインオンの方法\)** として、**[SAML 2]** を選びます。
 
     b. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -182,7 +182,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/liquidfiles-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

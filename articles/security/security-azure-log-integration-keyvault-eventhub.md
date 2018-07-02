@@ -58,7 +58,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
 
 3. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
+   a. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
    b. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。   
    c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。   
    d. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
@@ -71,7 +71,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
 
    PowerShell 5.0 以上がインストールされていれば、最新バージョンのインストールに進むことができます。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
+   a. PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
    b. ```Install-Module AzureRM``` コマンドを入力します。 インストール手順を完了します。
 
    詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
@@ -121,7 +121,7 @@ Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Mo
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
 11. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```$locationObjects = Get-AzureRMLocation```    
+    a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
     この時点で「`$locations`」と入力すると、場所の名前が表示されますが、Get-AzureRmLocation によって返される追加情報は表示されません。
@@ -161,7 +161,7 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 4. シークレットを設定して読み取り、追加のログ エントリを生成します。
     
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返されるシークレット](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 

@@ -128,7 +128,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
     | lastname |User.surname |
     | email |User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上記の表の各データ行で、 **[ユーザー属性の追加]** をクリックします。
+    a. 上記の表の各データ行で、 **[ユーザー属性の追加]** をクリックします。
     
     ![属性](./media/veracode-tutorial/tutorial_veracode_addattr.png "Attributes")
     
@@ -160,7 +160,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
    
     ![Administration](./media/veracode-tutorial/ic802912.png "Administration")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a.  **[発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     
     b. Azure Portal からダウンロードした証明書をアップロードするには、**[ファイルの選択]** をクリックします。
    
@@ -170,7 +170,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
    
     ![Administration](./media/veracode-tutorial/ic802913.png "Administration")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
+    a. **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
    
     b. **[ユーザー データの更新]** として **[優先 Veracode ユーザー データ]** を選択します。
    

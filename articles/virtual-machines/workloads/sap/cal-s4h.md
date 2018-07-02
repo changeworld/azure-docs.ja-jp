@@ -43,7 +43,7 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 ### <a name="create-an-account-in-the-sap-cal"></a>SAP CAL にアカウントを作成する
 1. 初めて SAP CAL にサインインするには、SAP S-User または SAP に登録された他のユーザーを使用します。 次に、SAP CAL で使用される SAP CAL アカウントを定義し、アプライアンスを Azure にデプロイします。 アカウントの定義では、次を行う必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
+    a. Azure のデプロイメント モデルを選択します (Resource Manager またはクラシック)。
 
     b. Azure サブスクリプションを入力します。 SAP CAL アカウントは 1 つのサブスクリプションにのみ割り当てることができます。 複数のサブスクリプションが必要な場合は、別の SAP CAL アカウントを作成する必要があります。
 
@@ -54,7 +54,7 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 
 2. 新しい SAP CAL アカウントを作成します。 **[Accounts]\(アカウント\)** ページには、Azure の 3 つの選択肢が用意されています。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 
+    a. 
   **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイ モデルで、推奨されなくなりました。
 
     b. 
@@ -115,7 +115,7 @@ SAP CAL の **[Solutions]\(ソリューション\)** ページからソリュー
 
 1. **[Account Details]\(アカウントの詳細\)** ページで、次のことを行う必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAP CAL アカウントを選択します  (Resource Manager デプロイ モデルを使用したデプロイに関連付けられているアカウントを使用します)。
+    a. SAP CAL アカウントを選択します  (Resource Manager デプロイ モデルを使用したデプロイに関連付けられているアカウントを使用します)。
 
     b. インスタンスの**名前**を入力します。
 

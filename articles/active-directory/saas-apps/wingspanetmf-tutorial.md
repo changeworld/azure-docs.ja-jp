@@ -112,7 +112,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
 
     ![[Configure Single Sign-On]](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<customer name>.<instance name>.mywingspan.com/saml` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<customer name>.<instance name>.mywingspan.com/saml` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`http://saml.<instance name>.wingspan.com/shibboleth` の形式で URL を入力します。
 
@@ -158,7 +158,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成およびテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/wingspanetmf-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

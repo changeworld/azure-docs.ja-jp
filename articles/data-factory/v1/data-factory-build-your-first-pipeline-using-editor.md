@@ -157,7 +157,7 @@ ms.locfileid: "31406560"
 
     以下の点に注意してください。
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 データ ファクトリは、JSON プロパティで Linux ベースの HDInsight クラスターを自動的に作成します。 詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
+     a. データ ファクトリは、JSON プロパティで Linux ベースの HDInsight クラスターを自動的に作成します。 詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
      b. オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
 
@@ -335,7 +335,7 @@ ms.locfileid: "31406560"
    >
 3. 次のことを確認します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 BLOB ストレージの **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
+   a. BLOB ストレージの **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
 
    b. BLOB ストレージの **adfgetstarted** コンテナーの **script** フォルダーに **partitionweblogs.hql** ファイルが存在すること。 これらのファイルがない場合は、[チュートリアルの概要](data-factory-build-your-first-pipeline.md)に関するページの「前提条件」の手順を実行してください。
 

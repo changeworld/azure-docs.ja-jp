@@ -112,7 +112,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/tutorial_kantegassoforfisheyecrucible_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` のパターンを使用して URL を入力します。
 
@@ -175,7 +175,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリケーション ID/URI]** の値をコピーして、Azure Portal の **[Kantega SSO for FishEye/Crucible のドメインと URL]** セクションで**識別子、応答 URL、サインオン URL** として使用します。
+    a. **[アプリケーション ID/URI]** の値をコピーして、Azure Portal の **[Kantega SSO for FishEye/Crucible のドメインと URL]** セクションで**識別子、応答 URL、サインオン URL** として使用します。
 
     b. **[次へ]** をクリックします。
 
@@ -183,7 +183,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+    a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
     b. **[次へ]** をクリックします。
 
@@ -191,7 +191,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
+    a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
     b. **[次へ]** をクリックします。
 
@@ -203,7 +203,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create users in FishEye's internal Directory if needed]\(必要に応じて FishEye の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
+    a. **[Create users in FishEye's internal Directory if needed]\(必要に応じて FishEye の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
     b. **[次へ]** をクリックします。
 
@@ -215,7 +215,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
 
     ![[Configure Single Sign-On]](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
+    a. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
 
     b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
@@ -247,7 +247,7 @@ Kantega SSO for FishEye/Crucible で Azure AD のシングル サインオンを
  
     ![Azure AD のテスト ユーザーの作成](./media/kantegassoforfisheyecrucible-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -275,7 +275,7 @@ Azure AD ユーザーが FishEye/Crucible にログインできるようにす�
 
     ![従業員の追加](./media/kantegassoforfisheyecrucible-tutorial/user3.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
+    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
     
     b. **[表示名]** ボックスに、ユーザーの表示名を入力します (この例では Britta Simon)。
     

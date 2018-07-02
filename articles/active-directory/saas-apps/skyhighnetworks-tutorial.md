@@ -108,7 +108,7 @@ Skyhigh Networks で Azure AD のシングル サインオンを構成してテ�
 
     ![[Skyhigh Networks のドメインと URL] のシングル サインオン情報](./media/skyhighnetworks-tutorial/tutorial_skyhighnetworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     b. **[応答 URL]** ボックスに、`https://<ENV>.myshn.net/shndash/response/saml-postlogin` のパターンを使用して URL を入力します。
 

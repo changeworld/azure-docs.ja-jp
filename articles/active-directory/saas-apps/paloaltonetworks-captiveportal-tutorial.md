@@ -110,7 +110,7 @@ Palo Alto Networks - Captive Portal で Azure AD のシングル サインオン
 
     ![[Palo Alto Networks - Captive Portal のドメインと URL] のシングル サインオン情報](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP/ACS` のパターンを使用して URL を入力します。
 
@@ -139,7 +139,7 @@ Palo Alto Networks - Captive Portal で Azure AD のシングル サインオン
 
     ![Palo Alto シングル サインオンの構成](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD Admin UI」など) を入力します。
+    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD Admin UI」など) を入力します。
     
     b. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした metadata.xml ファイルを選択します。
     

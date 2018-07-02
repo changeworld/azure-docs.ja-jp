@@ -48,13 +48,13 @@ Log Analytics のワークスペースと分析ソリューションは、Azure 
 1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行することがあるため、開いたままにしておいてください。
 2. まだ行っていない場合は、テナントのバッチをプロビジョニングすることで、監視コンテキストの関連性が高まります。 このプロセスには数分かかります。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
+   a. **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
 
    b. F5 キーを押してスクリプトを実行し、追加の 17 テナントをデプロイします。
 
 3. ロード ジェネレーターを開始して、すべてのテナントで疑似ロードを実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **$DemoScenario = 2** _(標準強度負荷の生成 (およそ 30 DTU))_ を設定します。
+    a. **$DemoScenario = 2** _(標準強度負荷の生成 (およそ 30 DTU))_ を設定します。
 
     b. F5 キーを押してスクリプトを実行します。
 

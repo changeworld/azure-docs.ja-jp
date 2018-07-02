@@ -112,7 +112,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.sprinklr.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.sprinklr.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.sprinklr.com` の形式で URL を入力します。
 
@@ -147,7 +147,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
    
     ![Single Sign-Ons](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
+    a. **[Name]\(名前\)** ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
 
     b. **[Enabled]** を選択します。
 
@@ -195,7 +195,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -223,7 +223,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
    
     ![Edit user](./media/sprinklr-tutorial/ic782916.png "Edit user") 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email]**、**[First Name]**、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
+    a. **[Email]**、**[First Name]**、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
 
     b. **[Password Disabled]** を選択します。
 
@@ -240,7 +240,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
    
     ![Partner Roles](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Global]** ボックスの一覧から、**[ALL\_Permissions]** を選択します。  
+    a. **[Global]** ボックスの一覧から、**[ALL\_Permissions]** を選択します。  
 
     b. **[Update]** をクリックします。
 

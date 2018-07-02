@@ -108,7 +108,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
 
     ![[Infogix Data3Sixty Govern Domain and URLs](Infogix Data3Sixty Govern のドメインと URL) のシングル サインオン情報](./media/infogix-tutorial/tutorial_infogix_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://data3sixty.com/ui`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://data3sixty.com/ui`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.data3sixty.com/sso/acs` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ Infogix Data3Sixty Govern で Azure AD のシングル サインオンを構成�
     | lastname        | User.surname |
     | username       | User.mail    |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/infogix-tutorial/tutorial_attribute_04.png)
 

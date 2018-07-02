@@ -112,7 +112,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/bluejeans-tutorial/tutorial_bluejeans_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.BlueJeans.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.BlueJeans.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.BlueJeans.com` の形式で URL を入力します。
 
@@ -141,7 +141,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
    ![SAML シングル サインオン](./media/bluejeans-tutorial/IC785869.png "SAML Single Sign On")
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML シングル サインオン]** を選択します。
+   a. **[SAML シングル サインオン]** を選択します。
 
    b. **[自動プロビジョニングの有効化]** を選択します。
 
@@ -149,7 +149,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
     ![証明書パス](./media/bluejeans-tutorial/IC785870.png "Certificate Path")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ファイルの選択]** をクリックし、ダウンロードした証明書をアップロードします。
+    a. **[ファイルの選択]** をクリックし、ダウンロードした証明書をアップロードします。
 
     b. **SAML シングル サインオン サービス URL** を **[Login URL]** (ログイン URL) ボックスに貼り付けます。
 
@@ -161,7 +161,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
     ![変更を保存](./media/bluejeans-tutorial/IC785874.png "Save Changes")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User id]** (ユーザー ID) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    a. **[User id]** (ユーザー ID) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     b. **[Email]** (電子メール) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
@@ -190,7 +190,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure AD のテスト ユーザーの作成](./media/bluejeans-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -217,7 +217,7 @@ BlueJeans で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの追加](./media/bluejeans-tutorial/IC785886.png "Add User")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 対応するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
+    a. 対応するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
 
     b. **[ユーザーの追加]** をクリックします。
 

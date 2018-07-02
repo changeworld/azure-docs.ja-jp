@@ -102,7 +102,7 @@ ms.locfileid: "36295832"
 
 4. アプリケーションを発行する前に、**index.html** で JavaScript コードの一部を更新する必要があります。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 最初に、`<head>` 要素にある、JavaScript ファイルとスタイル シート ファイルの参照のパスを変更します。 Visual Studio ソリューションの **index.html** ファイルを開いて、JavaScript コードの次の行を見つけます。 "PROD RESOURCE LINKS" の下の 3 行をコメント解除して、"DEV RESOURCE LINKS" の下の 3 行をコメントアウトします。
+   a. 最初に、`<head>` 要素にある、JavaScript ファイルとスタイル シート ファイルの参照のパスを変更します。 Visual Studio ソリューションの **index.html** ファイルを開いて、JavaScript コードの次の行を見つけます。 "PROD RESOURCE LINKS" の下の 3 行をコメント解除して、"DEV RESOURCE LINKS" の下の 3 行をコメントアウトします。
    
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
@@ -138,7 +138,7 @@ ms.locfileid: "36295832"
    > [!NOTE]
    > 次のダイアログ ボックスにあるフィールドのいくつかには、お客様の Azure サブスクリプションからデータが入力されます。 そのため、続行できるようになる前に、各ダイアログの読み込みの完了に数秒かかる場合があります。  
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ソリューション エクスプローラー**の Web サイト プロジェクト ノードを右クリックして、**[Web アプリの発行]** を選択します。  
+   a. **ソリューション エクスプローラー**の Web サイト プロジェクト ノードを右クリックして、**[Web アプリの発行]** を選択します。  
 
       ![VS - ソリューション エクスプローラーの [Web アプリの発行]](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)
 

@@ -109,7 +109,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     ![[Springer Link のドメインと URL] のシングル サインオン情報](./media/springerlink-tutorial/tutorial_springerlink_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://fsso.springer.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://fsso.springer.com`
 
     b. **[応答 URL]** ボックスに、URL として「`https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。    
 

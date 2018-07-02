@@ -113,7 +113,7 @@ Symantec Web Security Service (WSS) での Azure AD シングル サインオン
 
     ![Symantec Web Security Service (WSS) ドメインおよび URL シングル サインオン情報](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://saml.threatpulse.net:8443/saml/saml_realm`
 
     b. **[応答 URL]** ボックスに、URL として「`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`」と入力します。
 

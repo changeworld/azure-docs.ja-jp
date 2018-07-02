@@ -110,7 +110,7 @@ Workstars で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Workstars のドメインと URL] のシングル サインオン情報](./media/workstars-tutorial/tutorial_workstars_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://workstars.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://workstars.com`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.workstars.com/saml/login_check` のパターンを使用して URL を入力します。
 
@@ -145,7 +145,7 @@ Workstars で Azure AD のシングル サインオンを構成してテスト�
     
     ![Workstars の SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Name]\(ID プロバイダー名\)** ボックスに「**Office 365**」と入力します。
+    a. **[Identity Provider Name]\(ID プロバイダー名\)** ボックスに「**Office 365**」と入力します。
 
     b. **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 

@@ -112,7 +112,7 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
     |--|
     | `https://<companyname>.tenants.brightspace.com/samlLogin`|
@@ -162,7 +162,7 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
  
     ![Azure AD のテスト ユーザーの作成](./media/brightspace-desire2learn-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

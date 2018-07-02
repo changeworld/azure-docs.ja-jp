@@ -108,7 +108,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     ![[Attendance Management Services のドメインと URL] のシングル サインオン情報](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://id.obc.jp/<tenant information >/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://id.obc.jp/<tenant information >/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://id.obc.jp/<tenant information >/` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     ![Attendance Management Services の構成](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 認証を利用する]** を選択します。
+    a. **[SAML 認証を利用する]** を選択します。
 
     b. **[識別子]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
@@ -205,7 +205,7 @@ Azure AD ユーザーが Attendance Management Services にログインできる
 
     ![従業員の追加](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[OBCiD]** テキスト ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
+    a. **[OBCiD]** テキスト ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
 
     b. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 

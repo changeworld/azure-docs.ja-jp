@@ -110,7 +110,7 @@ Predictix Ordering で Azure AD のシングル サインオンを構成して�
 
     ![[Predictix Ordering のドメインと URL] のシングル サインオン情報](./media/predictixordering-tutorial/tutorial_predictixordering_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname-pricing>.ordering.predictix.com/sso/request` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname-pricing>.ordering.predictix.com/sso/request` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。 
     | |

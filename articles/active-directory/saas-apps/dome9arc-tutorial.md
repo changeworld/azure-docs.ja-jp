@@ -110,7 +110,7 @@ Dome9 Arc で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Dome9 Arc Domain and URLs] (Dome9 Arc のドメインと URL) のシングル サインオン情報](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://secure.dome9.com/`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://secure.dome9.com/`
 
     b. **[応答 URL]** ボックスに、`https://secure.dome9.com/sso/saml/yourcompanyname` のパターンを使用して URL を入力します。
 
@@ -136,7 +136,7 @@ Dome9 Arc で Azure AD のシングル サインオンを構成してテスト�
     | --------------- | --------------- | 
     | memberof | user.assignedroles | 
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の属性の追加](./media/dome9arc-tutorial/tutorial_dome9_04.png)
 
@@ -174,7 +174,7 @@ Dome9 Arc で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Dome9 Arc Configuration] (Dome9 Arc 構成)](./media/dome9arc-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アカウント ID]** テキスト ボックスに会社名を入力します。 この値は、Azure Portal の URL のセクションで説明されている応答 URL で使用されます。
+    a. **[アカウント ID]** テキスト ボックスに会社名を入力します。 この値は、Azure Portal の URL のセクションで説明されている応答 URL で使用されます。
 
     b. **[発行者]** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -242,7 +242,7 @@ Azure AD ユーザーが Dome9 Arc にログインできるようにするには
     
     ![従業員の追加](./media/dome9arc-tutorial/user3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキスト ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
+    a. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では Britta)。
 

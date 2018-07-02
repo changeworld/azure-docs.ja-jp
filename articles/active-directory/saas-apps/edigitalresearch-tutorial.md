@@ -110,7 +110,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
     ![[eDigitalResearch のドメインと URL] のシングル サインオン情報](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company-name>.edigitalresearch.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<company-name>.edigitalresearch.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company-name>.edigitalresearch.com/login/consume` のパターンを使用して URL を入力します。
 

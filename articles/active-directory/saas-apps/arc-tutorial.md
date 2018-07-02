@@ -108,7 +108,7 @@ Arc Publishing - SSO で Azure AD のシングル サインオンを構成およ
 
     ![[Arc Publishing - SSO のドメインと URL] のシングル サインオン情報](./media/arc-tutorial/tutorial_arc_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<Unique ID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<Unique ID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>` のパターンを使用して URL を入力します。
 
@@ -134,7 +134,7 @@ Arc Publishing - SSO で Azure AD のシングル サインオンを構成およ
     | email | User.mail |
     | groups | user.assignedroles |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
      ![[Configure Single Sign-On]](./media/arc-tutorial/tutorial_attribute_04.png)
 

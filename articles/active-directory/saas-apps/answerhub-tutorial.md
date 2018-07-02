@@ -112,7 +112,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
     ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company>.answerhub.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company>.answerhub.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<company>.answerhub.com` の形式で URL を入力します。
 
@@ -148,7 +148,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
      ![SAML のセットアップ](./media/answerhub-tutorial/ic785172.png "SAML Setup")  
   
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IDP Login URL] \(IDP ログイン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+     a. **[IDP Login URL] \(IDP ログイン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
      b. **[IDP Logout URL] \(IDP ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** 値を貼り付けます。
      
@@ -160,7 +160,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
     
      ![Keys and Certificates (キーと証明書)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
  
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IDP Public Key (x509 Format)] \(IDP 公開キー (x509 形式))** テキスト ボックスに貼り付けます。
+     a. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IDP Public Key (x509 Format)] \(IDP 公開キー (x509 形式))** テキスト ボックスに貼り付けます。
   
      b. **[Save]** をクリックします。
 
@@ -192,7 +192,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

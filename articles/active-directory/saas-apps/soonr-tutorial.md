@@ -112,7 +112,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 
     ![[Configure Single Sign-On]](./media/soonr-tutorial/tutorial_soonr_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -120,7 +120,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
     
     ![[Configure Single Sign-On]](./media/soonr-tutorial/tutorial_soonr_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -171,7 +171,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/soonr-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

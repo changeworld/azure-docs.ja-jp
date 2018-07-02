@@ -112,7 +112,7 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/mindflash-tutorial/tutorial_mindflash_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.mindflash.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.mindflash.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.mindflash.com` の形式で URL を入力します。
 
@@ -158,7 +158,7 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/mindflash-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -184,7 +184,7 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
    
     ![Add New Users](./media/mindflash-tutorial/ic787141.png "Add New Users")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
+    a. **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
 
     b. **[姓]** ボックスに、ユーザーの**姓**を、「**Simon**」と入力します。
     

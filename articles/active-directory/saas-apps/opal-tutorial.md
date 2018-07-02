@@ -110,7 +110,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Opal のドメインと URL] のシングル サインオン情報](./media/opal-tutorial/tutorial_opal_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値 `Opal` を入力します。
+    a. **[識別子]** ボックスに、値 `Opal` を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.ouropal.com/auth/saml/callback` のパターンを使用して URL を入力します。
 
@@ -128,7 +128,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
     | firstname           | User.givenname |
     | lastname        | User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/opal-tutorial/tutorial_attribute_04.png)
 

@@ -110,7 +110,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
     ![[Pluralsight のドメインと URL] のシングル サインオン情報](./media/pluralsight-tutorial/tutorial_pluralsight_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>.pluralsight.com/sso/<companyname>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<instancename>.pluralsight.com/sso/<companyname>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`www.pluralsight.com`
 
@@ -140,7 +140,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
    | 姓 |User.surname |
    | 電子メール |User.mail |
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+   a. **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
     
      ![[Configure Single Sign-On]](./media/pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
   

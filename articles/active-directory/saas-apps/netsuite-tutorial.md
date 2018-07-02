@@ -145,7 +145,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
 11. **[SAML Setup]** ページで、次の手順を実行します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオンの構成]** の **[クイック リファレンス]** セクションから **SAML シングル サインオン サービス URL** の値をコピーし、Netsuite の **[Identity Provider Login Page]\(ID プロバイダー ログイン ページ\)** フィールドに貼り付けます。
+    a. **[サインオンの構成]** の **[クイック リファレンス]** セクションから **SAML シングル サインオン サービス URL** の値をコピーし、Netsuite の **[Identity Provider Login Page]\(ID プロバイダー ログイン ページ\)** フィールドに貼り付けます。
 
     ![[Configure Single Sign-On]](./media/netsuite-tutorial/ns-saml-setup.png)
   
@@ -165,7 +165,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
       ![[Configure Single Sign-On]](./media/netsuite-tutorial/ns-add-attribute.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Netsuite で、上部のナビゲーション メニューから **[Setup]\(セットアップ\)** をクリックします。
+    a. Netsuite で、上部のナビゲーション メニューから **[Setup]\(セットアップ\)** をクリックします。
 
     b. 左側のナビゲーション メニューの **[Setup Tasks]\(セットアップ タスク\)** セクションで、**[Integration]\(統合\)** セクションを選択し、**[Web Services Preferences]\(Web サービスの設定\)** をクリックします。
 
@@ -175,7 +175,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
 14. ユーザーは Netsuite にシングル サインオンする前に、まず、Netsuite で適切なアクセス許可が割り当てられている必要があります。 次の手順に従って、アクセス許可を割り当てます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
+    a. 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
       
       ![[Configure Single Sign-On]](./media/netsuite-tutorial/ns-setup.png)
 
@@ -240,7 +240,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/netsuite-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

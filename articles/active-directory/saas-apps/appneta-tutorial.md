@@ -108,7 +108,7 @@ AppNeta Performance Monitor で Azure AD のシングル サインオンを構�
 
     ![AppNeta Performance Monitor and URLs(AppNeta Performance Monitor のドメインと URL) のシングル サインオン情報](./media/appneta-tutorial/tutorial_appneta_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.pm.appneta.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<subdomain>.pm.appneta.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`PingConnect`」を入力します。
 
@@ -134,7 +134,7 @@ AppNeta Performance Monitor で Azure AD のシングル サインオンを構�
     > [!NOTE]
     > "groups"は、Azure AD で 'Role' にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)ドキュメントを参照してください。
         
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/appneta-tutorial/tutorial_attribute_04.png)
     

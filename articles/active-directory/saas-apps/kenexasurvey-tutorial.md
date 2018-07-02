@@ -104,7 +104,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、URL を次のパターンで入力します。`https://surveys.kenexa.com/<companycode>`
+    a. **[識別子]** ボックスに、URL を次のパターンで入力します。`https://surveys.kenexa.com/<companycode>`
 
     b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` の形式で URL を入力します。
 

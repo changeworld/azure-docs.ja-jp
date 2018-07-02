@@ -112,7 +112,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_url1.png)
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、「`urn:benefithub:passport`」と入力します。
+    a. **[識別子]** ボックスに、「`urn:benefithub:passport`」と入力します。
     
     b. **[応答 URL]** ボックスに、「`https://passport.benefithub.info/saml/post/ac`」と入力します。
 
@@ -129,7 +129,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE]
     > この属性値は実数ではありません。 この値を実際の組織 ID で更新します。 実際の組織 ID を取得するには、[BenefitHub サポート チーム](https://www.benefithub.com/Home/ContactUs)に問い合わせてください。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_attribute_04.png)
 
@@ -180,7 +180,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/benefithub-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

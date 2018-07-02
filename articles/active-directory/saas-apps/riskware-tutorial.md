@@ -108,7 +108,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     ![[Riskware ドメインと URL] のシングル サインオン情報](./media/riskware-tutorial/tutorial_riskware_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     | 環境| URL パターン|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -153,7 +153,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     ![Riskware 構成、authenconfig](./media/riskware-tutorial/tutorial_riskware_config.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 認証の **[Type]\(種類\)** として **[SAML]** を選択します。
+    a. 認証の **[Type]\(種類\)** として **[SAML]** を選択します。
 
     b. **[Code]\(コード\)** ボックスにコードを入力します (例: AZURE_UAT)。
 
@@ -234,7 +234,7 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
     
     ![Riskware 構成、詳細](./media/riskware-tutorial/tutorial_riskware_details.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Person Type]\(ユーザーの種類\)** で、ユーザーの種類を選択します (例: [Employee]\(従業員\))。
+    a. **[Person Type]\(ユーザーの種類\)** で、ユーザーの種類を選択します (例: [Employee]\(従業員\))。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名前を入力します (例: **Britta**)。
 
@@ -244,7 +244,7 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
     ![Riskware 構成、セキュリティ](./media/riskware-tutorial/tutorial_riskware_security.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Authentication]\(認証\)** セクションで、既に設定済みの**認証**モードを選択します (例:SSO 用 AZURE 構成)。
+    a. **[Authentication]\(認証\)** セクションで、既に設定済みの**認証**モードを選択します (例:SSO 用 AZURE 構成)。
 
     b. **[Logon Details]\(ログオンの詳細\)** セクションの **[User ID]\(ユーザー ID\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
 
@@ -254,7 +254,7 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
     ![Riskware 構成、組織](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Organisation]\(組織\)** セクションで、**[Level1]\(レベル 1\)** の組織として選択します。
+    a. **[Organisation]\(組織\)** セクションで、**[Level1]\(レベル 1\)** の組織として選択します。
     
     b. **[Person's Primary Workplace]\(ユーザーのプライマリ ワークプレース\)** セクションで、**[Location]\(場所\)** ボックスに場所を入力します。
 

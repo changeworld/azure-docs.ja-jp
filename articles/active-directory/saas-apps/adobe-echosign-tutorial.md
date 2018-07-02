@@ -105,7 +105,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Adobe Sign のドメインと URL] セクションのスクリーンショット](./media/adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.echosign.com/` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.echosign.com/` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.echosign.com` という形式で URL を入力します。
 
@@ -126,7 +126,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
 
 7. Adobe Sign で自分のドメインをホワイトリストに登録するには、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡してください。 ドメインの追加方法は次のとおりです。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)からランダムに生成されたトークンが送信されます。 ドメインの場合、トークンは **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx** のようになります。
+    a. [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)からランダムに生成されたトークンが送信されます。 ドメインの場合、トークンは **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx** のようになります。
 
     b. DNS テキスト レコードで検証トークンを発行し、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に通知します。
     
@@ -153,7 +153,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
   
     ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789521.png "[SAML 設定]") のスクリーンショット
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML モード]** で **[SAML Mandatory]** を選択します。
+    a. **[SAML モード]** で **[SAML Mandatory]** を選択します。
    
     b. **[Echosign 資格情報を使用して、Echosign アカウント管理者のログインを許可する]** を選択します。
    
@@ -190,7 +190,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックスのスクリーンショット](./media/adobe-echosign-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の電子メール アドレスを入力します。
 
@@ -215,7 +215,7 @@ Azure AD ユーザーが Adobe Sign にサインインできるようにする�
    
     ![[新規ユーザーを作成] セクションのスクリーンショット](./media/adobe-echosign-tutorial/ic789525.png "ユーザーの作成")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]**、**[名]**、**[姓]** を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]**、**[名]**、**[姓]** を入力します。
    
     b. **[ユーザーを作成]** を選択します。
 

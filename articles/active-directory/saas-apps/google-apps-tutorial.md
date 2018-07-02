@@ -133,7 +133,7 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
 
     ![[G Suite のドメインと URL] のシングル サインオン情報](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。 
     | |
@@ -150,7 +150,7 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
 
     ![[G Suite のドメインと URL] のシングル サインオン情報](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。 
     | |
@@ -189,7 +189,7 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure SSO][12]
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Setup SSO with third-party identity provider]\(サード パーティの ID プロバイダーで SSO を設定する\)** を選択します。
+    a. **[Setup SSO with third-party identity provider]\(サード パーティの ID プロバイダーで SSO を設定する\)** を選択します。
 
     b. G Suite の **[サインイン ページの URL]** フィールドに、Azure Portal からコピーした **[シングル サインオン サービス URL]** の値を貼り付けます。
 

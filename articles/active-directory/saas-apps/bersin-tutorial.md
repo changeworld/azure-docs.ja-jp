@@ -108,7 +108,7 @@ Bersin で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Bersin のドメインと URL] のシングル サインオン情報](./media/bersin-tutorial/tutorial_bersin_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://www.bersin.com/shibboleth`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://www.bersin.com/shibboleth`
 
     b. **[詳細な URL 設定の表示]** をクリックし、**[リレー状態]** テキストボックスに URL `https://www.bersin.com/secure/` を入力します。
 

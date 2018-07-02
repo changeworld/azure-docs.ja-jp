@@ -108,7 +108,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
     ![[KnowledgeOwl のドメインと URL] のシングル サインオン情報](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -154,7 +154,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     | ------------------- | -------------------- | -----|
     | ssoid | User.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
     ![[Configure Single Sign-On]](./media/knowledgeowl-tutorial/tutorial_attribute_04.png)
 
@@ -190,7 +190,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     
     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
+    a. **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
 
     b. **[SP Entity ID]\(SP エンティティ ID\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[識別子 (エンティティ ID)]** に貼り付けます。
 

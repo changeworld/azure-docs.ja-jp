@@ -112,7 +112,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     ![[Configure Single Sign-On]](./media/sd-elements-tutorial/tutorial_sdelements_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<tenantname>.sdelements.com/sso/saml2/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<tenantname>.sdelements.com/sso/saml2/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<tenantname>.sdelements.com/sso/saml2/acs/` のパターンを使用して URL を入力します。
 
@@ -131,7 +131,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
     | firstname |User.givenname |
     | lastname |User.surname |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/sd-elements-tutorial/tutorial_officespace_04.png)
 
@@ -167,7 +167,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     ![[Configure Single Sign-On]](./media/sd-elements-tutorial/tutorial_sd-elements_10.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **SSO 型** として **SAML** を選びます。
+    a. **SSO 型** として **SAML** を選びます。
    
     b. **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
    
@@ -202,7 +202,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/sd-elements-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -230,7 +230,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     ![SD Elements テスト ユーザーの作成](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
+    a. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
    
     b. **[名]** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
    

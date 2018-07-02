@@ -33,7 +33,7 @@ ms.locfileid: "35300081"
    ![Screenshot of trigger to select](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 3. 次の手順でフラット ファイルのエンコード アクションを追加します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **プラス記号**を選択します。
+    a. **プラス記号**を選択します。
    
     b. プラス記号を選択すると表示される **[アクションの追加]** リンクを選択します。
    
@@ -63,7 +63,7 @@ ms.locfileid: "35300081"
    ![Screenshot of trigger to select](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 2. 次の手順でフラット ファイルのデコード アクションを追加します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **プラス記号**を選択します。
+    a. **プラス記号**を選択します。
    
     b. プラス記号を選択すると表示される **[アクションの追加]** リンクを選択します。
    

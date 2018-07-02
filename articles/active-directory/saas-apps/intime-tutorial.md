@@ -110,7 +110,7 @@ InTime で Azure AD のシングル サインオンを構成してテストす�
 
     ![[InTime のドメインと URL] のシングル サインオン情報](./media/intime-tutorial/tutorial_intime_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://intime6.intimesoft.com/mytime/login/login.xhtml`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://intime6.intimesoft.com/mytime/login/login.xhtml`」を入力します。
 
     b. **[識別子]** ボックスに、URL: `https://auth.intimesoft.com/auth/realms/master` を入力します。
 

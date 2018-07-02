@@ -113,7 +113,7 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、「`https://dashboard.panorama9.com/saml/access/3262`」と入力します。
+    a. **[サインオン URL]** ボックスに、「`https://dashboard.panorama9.com/saml/access/3262`」と入力します。
 
     b. **[識別子]** ボックスに、`http://www.panorama9.com/saml20/<tenant-name>` の形式で URL を入力します。
 
@@ -144,7 +144,7 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
    
    ![設定](./media/panorama9-tutorial/ic790025.png "Settings")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。    
          
@@ -177,7 +177,7 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/panorama9-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

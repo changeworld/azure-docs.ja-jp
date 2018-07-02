@@ -112,7 +112,7 @@ Insperity ExpensAble で Azure AD のシングル サインオンを構成し、
 
     ![[Configure Single Sign-On]](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://server.expensable.com/esapp/Authenticate?companyId=<company ID>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Insperity ExpensAble サポート チーム](http://expensable.com/support/support-overview)に問い合わせてください。 
@@ -158,7 +158,7 @@ Insperity ExpensAble で Azure AD のシングル サインオンを構成し、
  
     ![Azure AD のテスト ユーザーの作成](./media/insperityexpensable-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

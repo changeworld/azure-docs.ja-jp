@@ -122,7 +122,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 HDInsight Spark クラスターの URI を指定します。 たとえば、「 `https://<sparkclustername>.azurehdinsight.net/`」のように入力します。
+    a. HDInsight Spark クラスターの URI を指定します。 たとえば、「 `https://<sparkclustername>.azurehdinsight.net/`」のように入力します。
 
     b. Spark クラスターにアクセスするユーザーの名前を指定します。
 
@@ -219,7 +219,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     ```
     以下の点に注意してください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **type** プロパティは **HDInsightSpark** に設定されます。
+    a. **type** プロパティは **HDInsightSpark** に設定されます。
 
     b. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 

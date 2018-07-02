@@ -212,7 +212,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 2. [IIS](https://www.microsoft.com/web/platform/server.aspx) 経由で目的のアプリケーションが実行されている場合は、次の操作を実行して `IIS Http Tracing` Windows 機能を有効にします。  
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
+   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All

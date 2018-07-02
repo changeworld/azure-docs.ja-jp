@@ -112,7 +112,7 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/policystat-tutorial/tutorial_policystat_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.policystat.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.policystat.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.policystat.com/saml2/metadata/` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/policystat-tutorial/tutorial_policystat_04.png)
 
@@ -169,7 +169,7 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
    
     ![シングル サインオンの構成](./media/policystat-tutorial/ic808635.png "シングル サインオンの構成")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username Attribute]** ボックスに、「**uid**」と入力します。
+    a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
 
     b. **[First Name Attribute]\(名属性\)** ボックスにユーザー "**Britta**" の**名**を入力します。
 
@@ -183,7 +183,7 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
    
     ![シングル サインオンの構成](./media/policystat-tutorial/ic808636.png "シングル サインオンの構成")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ダウンロードしたメタデータ ファイルの内容をコピーし、**[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
+    a. ダウンロードしたメタデータ ファイルの内容をコピーし、**[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
 
     b. **[変更を保存]** をクリックします。
 
@@ -214,7 +214,7 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/policystat-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

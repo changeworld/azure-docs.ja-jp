@@ -96,7 +96,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 4. ショートカット メニューを開くには、新しいリリース定義で、環境名の横にある省略記号 (...) を選択し、**[変数の構成]** を選択します。 
 5. リリース定義タスクで使用する変数用の **[構成 - 環境]** ウィンドウで、次の値を入力します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[VM 名]** には、Azure Portal で Resource Manager テンプレートを作成したときに VM に割り当てた名前を入力します。
+   a. **[VM 名]** には、Azure Portal で Resource Manager テンプレートを作成したときに VM に割り当てた名前を入力します。
 
    b. **[ユーザー名]** には、Azure Portal で Resource Manager テンプレートを作成したときに VM に割り当てたユーザー名を入力します。
 
@@ -112,7 +112,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
    > [!NOTE]
    > 以降の展開で使用する VM を作成するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
+   a. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
 
    b. **[ラボ名]** で、先ほど作成したインスタンスの名前を選択します。
 
@@ -140,7 +140,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
    > [!NOTE]
    > DevTest Labs VM の詳細情報を収集するには、[展開: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell)に関する記事を参照してスクリプトを実行します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
+   a. **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
 
    b. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
 
@@ -169,7 +169,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
    > [!NOTE]
    > イメージを作成するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ接続を Azure サブスクリプションに作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
+   a. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ接続を Azure サブスクリプションに作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
 
    b. **[ラボ名]** で、先ほど作成したインスタンスの名前を選択します。
 
@@ -190,7 +190,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
       > [!NOTE]
       > VM を削除するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
+   a. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
  
    b. **[Lab VM ID]\(Lab VM の ID\)** で、前のタスクによって Lab VM の ID が自動的に設定された環境変数の既定の名前を変更した場合は、ここでそれを編集します。 既定値は **$(labVMId)** です。
 

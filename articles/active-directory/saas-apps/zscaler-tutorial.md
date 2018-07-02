@@ -144,7 +144,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
                 
     ![Authentication](./media/zscaler-tutorial/ic800208.png "Authentication")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML シングル サインオンを使用した認証]** を選択します。
+    a. **[SAML シングル サインオンを使用した認証]** を選択します。
 
     b. **[SAML シングル サインオン パラメーターの構成]** をクリックします。
 
@@ -152,7 +152,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     ![シングル サインオン](./media/zscaler-tutorial/ic800209.png "Single Sign-On")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を、**[URL of the SAML Portal to which users are sent for authentication]\(ユーザーが認証に送られる SAML ポータルの URL\)** ボックスに貼り付けます。
+    a. Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を、**[URL of the SAML Portal to which users are sent for authentication]\(ユーザーが認証に送られる SAML ポータルの URL\)** ボックスに貼り付けます。
     
     b. **[ログイン名を含む属性]** ボックスに「**NameID**」と入力します。
     
@@ -164,7 +164,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     ![Administration](./media/zscaler-tutorial/ic800210.png "Administration")
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Save]** をクリックします。
+    a. **[Save]** をクリックします。
 
     b. **[今すぐ認証する]** をクリックします。
 
@@ -187,7 +187,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
    
     ![プロキシ サーバー](./media/zscaler-tutorial/ic769494.png "Proxy server")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[LAN にプロキシ サーバーを使用する]** をオンにします。
+    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
     b. [アドレス] ボックスに「**gateway.zscaler.net**」と入力します。
 
@@ -226,7 +226,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/zscaler-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -259,7 +259,7 @@ Zscaler の場合、プロビジョニングは手動で行います。
         
     ![ユーザーの追加](./media/zscaler-tutorial/ic781038.png "Add User")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
+    a. プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
 
     b. **[Save]** をクリックします。
 

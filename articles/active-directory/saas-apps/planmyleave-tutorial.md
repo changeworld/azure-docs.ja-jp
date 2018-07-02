@@ -110,7 +110,7 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     ![[PlanMyLeave のドメインと URL] のシングル サインオン情報](./media/planmyleave-tutorial/tutorial_planmyleave_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company-name>.planmyleave.com/Login.aspx` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<company-name>.planmyleave.com/Login.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<company-name>.planmyleave.com` の形式で URL を入力します。
 
@@ -142,7 +142,7 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 
     ![アプリ側でのシングル サインオンの構成](./media/planmyleave-tutorial/tutorial_planmyleave_004.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    a.  **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
     b.  ダウンロードしたメタデータを開き、**X509Certificate** 値をコピーして、**[証明書]** ボックスに貼り付けます。
 

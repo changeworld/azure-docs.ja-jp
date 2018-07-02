@@ -109,7 +109,7 @@ Autotask Endpoint Backup で Azure AD のシングル サインオンを構成�
 
     ![[Autotask Endpoint Backup のドメインと URL] のシングル サインオン情報](./media/autotaskendpointbackup-tutorial/tutorial_autotaskendpointbackup_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 

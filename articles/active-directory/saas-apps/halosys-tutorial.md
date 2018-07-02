@@ -110,7 +110,7 @@ Halosys で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Halosys のドメインと URL] のシングル サインオン情報](./media/halosys-tutorial/tutorial_halosys_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company-name>.halosys.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<company-name>.halosys.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company-name>.halosys.com/<instance name>` のパターンを使用して URL を入力します。
 
