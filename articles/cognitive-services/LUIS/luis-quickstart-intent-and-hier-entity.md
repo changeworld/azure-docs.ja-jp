@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266500"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335562"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>チュートリアル: 階層エンティティを使用するアプリを作成する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索する方法を示すアプリを作成します。 
@@ -22,140 +22,111 @@ ms.locfileid: "36266500"
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * 階層エンティティおよびコンテキストから学習された子とは 
-> * Bookflight 意図の旅行ドメイン用の新しい LUIS アプリを作成する
-> * _None_ 意図を追加し、発話の例を追加する
+> * 人事 (HR) ドメインで LUIS アプリを使用する 
 > * 出発地と到着地を子として持つ場所階層エンティティを追加する
 > * アプリをトレーニングして公開する
 > * アプリのエンドポイントのクエリを行って、階層の子を含む LUIS JSON の応答を確認する 
 
 この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
 
+## <a name="before-you-begin"></a>開始する前に
+[リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) GitHub リポジトリにあります。
+
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`hier` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>このエンティティでのアプリの目的
-このアプリは、ユーザーがフライトを予約したいかどうかを判断します。 階層エンティティを使用して、ユーザーのテキスト内の場所、出発都市、到着都市を決定します。 
+このアプリは、従業員の移動の出発地 (建物とオフィス) と目的地 (建物とオフィス) を判断します。 発話内での場所の判断には、階層エンティティが使用されます。 
 
 階層エンティティは、2 つのデータが次のようなものであるため、この種のデータに適しています。
 
-* 両方とも場所であり、通常は都市または空港コードで表されます。
-* 通常は、出発地と到着地を特定できる一意の単語を選択できます。 このような単語としては、to、headed toward、from、leaving (まで、行き、から、発) などがあります。
+* 発話のコンテキストで相互に関連する。
+* 特定の単語を使用して、それぞれの場所を表す  ("から/への"、"を出て/に向かう"、"から/に" などの単語)。
 * どちらの場所も同じ発話内に頻出します。 
 
 **階層**エンティティの目的は、コンテキストに基づいて発話内から関連データを検索することです。 次のような発話について考えます。
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-この発話では 2 つの場所が指定されています。 1 つは出発地の都市 Seattle で、もう 1 つは到着地の都市 Cairo です。 どちらの都市もフライトの予約に重要です。 シンプル エンティティを使って検出することもできますが、これらは相互に関連しており、同じ発話内で頻繁に見つかります。 したがって、両方を階層エンティティ **"場所"** の子としてグループ化することには必然性があります。 
-
-機械学習されるエンティティなので、アプリには出発都市と到着都市のラベルが付いた発話の例が必要です。 これにより、発話内でエンティティがある場所、エンティティの長さ、周囲の単語を、LUIS に学習させます。 
-
-## <a name="app-intents"></a>アプリの意図
-意図は、ユーザーが望むカテゴリです。 このアプリには、BookFlight と None の 2 つの意図があります。 [None](luis-concept-intent.md#none-intent-is-fallback-for-app) 意図には、アプリの外部のすべてのものを示す目的があります。  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>階層エンティティはコンテキストによって学習されます。 
-エンティティの目的は、発話内のテキストの一部分を検索して分類することです。 [階層](luis-concept-entity-types.md)エンティティは、使用コンテキストに基づく親子エンティティです。 人は、`to` (まで) と `from` (から) の使われ方に基づいて、発話に含まれる出発都市と到着都市を判断できますです。 これらは、コンテキストによって決まる使用方法の例です。  
-
-この Travel アプリでは、LUIS は、標準的な予約を作成して入力できる方法で、出発地と到着地を抽出します。 LUIS では、発話のバリエーション、省略形、俗語に含まれていてもかまいません。 
-
-ユーザーからの簡単な発話の例を次に示します。
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-発話の省略形または俗語バージョンを次に示します。
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+この発話では、`a-2349` と `b-1298` の 2 つの場所が指定されています。 アルファベットの文字は建物の名前を、数字は建物内のオフィスを表すとします。 この両方が階層エンティティ `Locations` の子としてグループ化されることには必然性があります。両方のデータを発話から抽出する必要があり、2 つは相互に関連しているためです。 
  
-階層エンティティは、出発地と到着地に一致します。 階層エンティティに 1 つの子 (出発地または到着地) しか存在しない場合でも、やはり抽出されます。 1 つだけまたは一部を抽出するために、すべての子が見つかる必要はありません。 
+階層エンティティに 1 つの子 (出発地または到着地) しか存在しない場合でも、やはり抽出されます。 1 つだけまたは一部を抽出するために、すべての子が見つかる必要はありません。 
 
-## <a name="what-luis-does"></a>LUIS の機能
-発話の意図とエンティティが識別され、[抽出](luis-concept-data-extraction.md#list-entity-data)されて、[エンドポイント](https://aka.ms/luis-endpoint-apis)から JSON で返されると、LUIS は終了します。 呼び出し元のアプリケーションやチャットボットは、その JSON 応答を受け取って、それぞれの設計された方法で要求を満たします。 
+## <a name="remove-prebuilt-number-entity-from-app"></a>事前構築済みの番号エンティティをアプリから削除する
+発話全体を表示して、階層の子をマークするには、事前構築済みの番号エンティティを一時的に削除します。
 
-## <a name="create-a-new-app"></a>新しいアプリの作成
-1. [LUIS][LUIS] Web サイトにログインします。 LUIS エンドポイントを公開する必要がある[リージョン][LUIS-regions]にログインします。
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
 
-2. [LUIS][LUIS] Web サイトで **[新しいアプリの作成]** を選びます。  
+    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "アプリ リスト ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
-3. ポップアップ ダイアログで、名前に「`MyTravelApp`」と入力します。 
+    [ ![左側のメニューで [エンティティ] ボタンが強調表示されている LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "[新しいアプリの作成] ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. 終了が処理すると、アプリの **[Intents]\(意図\)** ページに **None** 意図が表示されます。 
+3. 一覧で番号エンティティの右側にある 3 つのドット (...) を選択します。 **[削除]** を選択します。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "None 意図だけの意図一覧のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![事前構築済みの番号エンティティの削除ボタンが強調表示されているエンティティ リスト ページの LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>新しい意図を作成する
 
-1. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。 
+## <a name="add-utterances-to-findform-intent"></a>発話を FindForm 意図に追加する
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "[Create new intent]\(意図の新規作成\) ボタンが強調表示されてい [Intents]\(意図\) リストのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. 左側のメニューから **[Intents]\(意図\)** を選びます。
 
-2. 新しい意図の名前として「`BookFlight`」と入力します。 ユーザーがフライトを予約したいときは常に、この意図が選択される必要があります。
+    [ ![左側のメニューで意図が強調表示されている LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    意図を作成すると、識別する情報の主なカテゴリが作成されます。 カテゴリに名前を付けると、LUIS クエリ結果を使用する他のアプリケーションが、そのカテゴリ名を使用して、適切な回答を見つけたり、適切なアクションを実行したりできます。 LUIS はこれらの質問に回答しません。どのような種類の情報が自然言語で質問されたかを明らかにするだけです。 
+2. 意図の一覧から **[MoveEmployee]** を選択します。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "[Create new intent]\(意図の新規作成\) ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [ ![左側のメニューで MoveEmployee 意図が強調表示されている LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. ユーザーの質問として予想される複数の発話を `BookFlight` 意図に追加します。次はその例です。
+3. 次の発話の例を追加します。
 
-    | 発話の例|
+    |発話の例|
     |--|
-    |次の月曜日にシアトルからカイロまで 2 フライト予約する|
-    |明日ロンドンまでのチケットを予約する|
-    |4 月 1 日にパリからロンドンまで 4 席をスケジュールする|
+    |W. John Smith を a-2345 **に**移動する|
+    |Jill Jones を b-3499 **に**向かわせる|
+    |hh-2345 **から** e-0234 **への** x23456 の移動を整理する|
+    |a-3459 **を出て** f-34567 **に向かう** x12345 を設定する事務処理を開始する|
+    |g-2323 **から** hh-2345 **に** 425-555-0000 を移動させる|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "BookFlight 意図ページでの発話入力のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルでは、従業員の指定は、名前、メール アドレス、電話の内線番号、携帯電話番号、または米国連邦政府の社会保障番号によって行うことができます。 これらの従業員番号は発話で使用されます。 前の発話の例では、さまざまな言葉で出発地と目的地が表されており、その言葉は太字で示されています。 目的地のみの発話も 2 つあります。 これは、出発地が指定されていないときに、これらの場所が発話の中でどのように配置されているかを LUIS に認識させるうえで役立ちます。
 
-## <a name="add-utterances-to-none-intent"></a>None 意図に発話を追加する
+    [ ![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-現在、この LUIS アプリの **None** 意図には発話はありません。 アプリに応答させたくない発話が必要なので、**None** 意図に発話を追加します。 空白のままにしないでください。 
+## <a name="create-a-location-entity"></a>場所エンティティを作成する
+発話で出発地と目的地にラベルを付けて、LUIS に場所を認識させる必要があります。 トークン (未加工) のビューで発話を表示する必要がある場合は、発話の上にあるバーで、**[Entities view]\(エンティティ ビュー\)** というラベルが付いた切り替えコントロールを選択します。 スイッチを切り替えると、コントロールのラベルは **[Tokens View]\(トークン ビュー)** になります。
 
-1. 左側のパネルから **[Intents]\(意図\)** を選びます。 
+1. 発話 `Displace 425-555-0000 away from g-2323 toward hh-2345` において、単語 `g-2323` を選びます。 上部にテキスト ボックスがあるドロップダウン メニューが表示されます。 テキスト ボックスにエンティティ名「`Locations`」を入力し、を選択し、ドロップダウン メニューで **[Create new entity]\(新しいエンティティの作成\)** を選択します。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "[Intents]\(意図\) ボタンが強調表示された BookFlight 意図ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "意図ページでの新しいエンティティ作成のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. **None** 意図を選択します。 ユーザーが入力する可能性があるがアプリには関係のない 3 つの発話を追加します。
+2. ポップアップ ウィンドウで、**[Hierarchical]\(階層\)** エンティティ タイプを選択し、子エンティティとして `Origin` と `Destination` を選択します。 **[完了]** を選択します。
 
-    | 発話の例|
-    |--|
-    |キャンセル|
-    |さようなら|
-    |どうなっているの|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "新しい場所エンティティのエンティティ作成ポップアップ ダイアログのスクリーンショット")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>None 意図の発話が予想されるとき
-LUIS 呼び出し元アプリケーション (チャットボットなど) では、LUIS が発話に対して **None** 意図を返したら、ユーザーが会話の終了を望んでいるかどうかを確認できます。 また、ユーザーが終了を望んでいない場合は、会話を続けるよう指示することもできます。 
+3. LUIS には用語が出発地か、到着地か、どちらでもないかわからないので、`g-2323` のラベルは `Locations` とマークされています。 `g-2323`、**[場所]** の順に選択し、右側のメニューに従って `Origin` を選択します。
 
-エンティティは **None** 意図で動作します。 最もスコアの高い意図が **None** であり、しかしチャットボットにとって意味のあるエンティティが抽出された場合、チャットボットはさらに質問して客の意図を絞り込むことができます。 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "場所エンティティの子を変更するためのエンティティ ラベル付けポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>意図ページから場所エンティティを作成する
-2 つの意図に発話を追加したので、LUIS は場所が何かを理解する必要があります。 `BookFlight` 意図に戻り、以下の手順に従って発話内の都市名にラベル (マーク) を付けます。
+5. 他のすべての発話で他の場所にラベルを付けます。それには、発話で建物とオフィスを選択し、[場所] を選択します。次に、右側のメニューに従って `Origin` または `Destination` を選択します。 すべての場所にラベルが付いたら、**[Tokens View]\(トークン ビュー\)** の発話は次のように表示されます。 
 
-1. 左側のパネルで **[Intents]\(意図\)** を選択して `BookFlight` 意図に戻ります。
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "場所エンティティがラベル付けされている発話のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. 意図の一覧から `BookFlight` を選びます。
+## <a name="add-prebuilt-number-entity-to-app"></a>事前構築済みの番号エンティティをアプリに追加する
+事前構築済みの番号エンティティをアプリケーションに再度追加します。
 
-3. 発話 `Book 2 flights from Seattle to Cairo next Monday` において、単語 `Seattle` を選びます。 ドロップダウン メニューが表示され、上部にあるテキスト ボックスで新しいエンティティを作成できます。 テキスト ボックスにエンティティ名「`Location`」を入力し、を選択し、ドロップダウン メニューで **[Create new entity]\(新しいエンティティの作成\)** を選択します。 
+1. 左側のナビゲーション メニューから **[エンティティ]** を選択します。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "選択したテキストから新しいエンティティを作成する BookFlight 意図ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [ ![[エンティティ] ボタンが強調表示されている、左側のナビゲーションのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. ポップアップ ウィンドウで、**[Hierarchical]\(階層\)** エンティティ タイプを選択し、子エンティティとして `Origin` と `Destination` を選択します。 **[完了]** を選択します。
+2. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "新しい場所エンティティのエンティティ作成ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [ ![[Manage prebuilt entities]\(事前構築済みエンティティの管理\) が強調表示されているエンティティの一覧のスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    LUIS には用語が出発地か、到着地か、どちらでもないかわからないので、`Seattle` のラベルは `Location` とマークされています。 `Seattle` を選択し、[Location]\(場所\) を選択した後、右側のメニューに従って `Origin` を選択します。
+3. 事前構築済みエンティティの一覧から **[number]\(番号\)** を選択し、**[完了]** を選択します。
 
-5. エンティティを作成し、1 つの発話にラベルを付けたので、他の都市にラベルを付けます。都市名を選択し、[Location]\(場所\) を選択した後、右側のメニューに従って `Origin` または `Destination` を選択します。
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "エンティティ選択のために発話テキストが選択された BookFlight エンティティのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![[number]\(番号\) が選択されている事前構築済エンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
@@ -173,8 +144,6 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 1. LUIS Web サイトの右上にある **[Publish]\(公開\)** ボタンを選択します。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "[Publish]\(公開\) ボタンが強調表示された BookFlight 意図のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
-
 2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
@@ -186,41 +155,114 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. アドレスの URL の末尾に移動し、「`1 ticket to Portland on Friday`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`BookFlight` 意図と階層エンティティが抽出されて返される必要があります。
+2. アドレス バーの URL の末尾に移動し、「`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`MoveEmployee` 意図と階層エンティティが抽出されて返される必要があります。
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-2 つだけの意図と階層エンティティで構成されるこのアプリは、自然言語クエリの意図を識別し、抽出されたデータを返しました。 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>それぞれの場所で正規表現を使用できますか。
+はい。出発地および目的地のロールを含む正規表現を作成し、それをパターンで使用します。
 
-チャットボットは、主要なアクション `BookFlight` を決定するのに十分な情報と、発話で見つかった場所情報を取得します。 
+この例の場所 (`a-1234` など) は、特定の形式に従っています。つまり、1 文字または 2 文字のアルファベット、ハイフン、4 桁または 5 桁の数字が順番に使用されています。 このデータは、場所ごとのロールを含む正規表現エンティティとして記述できます。 ロールはパターンで使用できます。 これらの発話に基づいてパターンを作成した後、場所の形式に対して正規表現を作成し、それをパターンに追加できます。 <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
+いくつかの意図と階層エンティティで構成されるこのアプリは、自然言語クエリの意図を識別し、抽出されたデータを返しました。 
+
+チャットボットは、主要なアクション `MoveEmployee` を決定するのに十分な情報と、発話で見つかった場所情報を取得します。 
 
 ## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、エンティティから topScoringIntent の結果とデータを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
@@ -231,11 +273,6 @@ LUIS はこの要求の処理を完了しています。 チャットボット�
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
 > [リスト エンティティの追加方法を確認する](luis-quickstart-intent-and-list-entity.md) 
-
-数値を抽出するための **number** [事前構築済みエンティティ](luis-how-to-add-entities.md#add-prebuilt-entity)を追加する。 
-
-日付情報を抽出するための **datetimeV2** [事前構築済みエンティティ](luis-how-to-add-entities.md#add-prebuilt-entity)を追加する。
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

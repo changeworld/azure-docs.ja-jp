@@ -4,21 +4,23 @@ description: Azure Machine Learning をモジュールとしてエッジ デバ�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/12/2018
+ms.date: 06/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 248bc97c214c013d10f1839201ce2f572cb854ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631175"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062043"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データに基づいて、デバイスが故障するタイミングを予測する Azure Machine Learning モジュールを展開します。この IoT Edge デバイスは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成しています。
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 
+
+このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -28,16 +30,57 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 > * Azure Machine Learning モジュールを IoT Edge デバイスに展開する
 > * 生成されたデータを表示する
 
-このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
+>[!NOTE]
+>Azure IoT Edge 上の Azure Machine Learning モジュールはパブリック プレビュー段階にあります。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* クイック スタートまたは最初のチュートリアルで作成した Azure IoT Edge デバイス。
-* IoT Edge デバイスの接続先 IoT ハブに対する IoT ハブ接続文字列。
-* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
-* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。
+このチュートリアルで作成する Machine Learning モジュールをテストするには、IoT Edge デバイスが必要です。 [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートで構成したデバイスを使用できます。 
 
 Azure Machine Learning モジュールでは、ARM プロセッサをサポートしていません。
+
+開発マシンの前提条件を次に示します。 
+* Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。
+
+### <a name="disable-process-identification"></a>プロセス ID を無効にする
+
+>[!NOTE]
+>
+> プレビュー段階の Azure Machine Learning では、IoT Edge で既定で有効になっているプロセス ID セキュリティ機能はサポートされていません。 
+> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。
+
+プロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
+
+最初に、IP アドレスを取得します。 コマンド ラインで `ifconfig` を入力し、**docker0** インターフェイスの IP アドレスをコピーします。
+
+IoT Edge デーモン構成ファイルを編集します。
+
+```cmd/sh
+sudo nano /etc/iotedge/config.yaml
+```
+
+構成の **connect** セクションを更新します。 例: 
+```yaml
+connect:
+  management_uri: "http://172.17.0.1.1:15580"
+  workload_uri: "http://172.17.0.1:15581"
+```
+
+構成の **listen** セクションに同じアドレスを入力します。 例: 
+
+```yaml
+listen:
+  management_uri: "http://172.17.0.1.1:15580"
+  workload_uri: "http://172.17.0.1:15581"
+```
+
+management_uri アドレスで環境変数 IOTEDGE_HOST を作成します (永続的に設定するには、それを `/etc/environment` に追加します)。次に例を示します。
+
+```cmd/sh
+export IOTEDGE_HOST="http://172.17.0.1:15580"
+```
+
 
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
 このセクションでは、トレーニング済みのモデル ファイルをダウンロードして、Azure ML コンテナーに変換します。
@@ -57,7 +100,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 
 ### <a name="view-the-container-repository"></a>コンテナー リポジトリを表示する
 
-コンテナー イメージが正常に作成され、機械学習環境に関連付けられている Azure のコンテナー リポジトリに格納されたことを確認してください。
+コンテナー イメージが正常に作成され、ご自身の機械学習環境に関連付けられている Azure コンテナー レジストリに格納されたことを確認してください。
 
 1. [Azure Portal](https://portal.azure.com) の **[すべてのサービス]** に移動し、**[コンテナー レジストリ]** を選択します。
 2. お使いのレジストリを選択します。 名前の先頭に **mlcr** と付くはずで、モジュール管理のセットアップで使用したリソース グループ、場所、サブスクリプションに属します。
@@ -67,36 +110,34 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 6. **machinelearningmodule** を選択します。
 7. これでコンテナー イメージの完全なパスが取得できました。 次のセクションで使用するために、イメージのパスを書き留めておきます。 これは次のようになります: **< registry_name >.azureacr.io/machinelearningmodule:1**
 
-## <a name="add-registry-credentials-to-your-edge-device"></a>レジストリ資格情報を Edge デバイスに追加する
-
-Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 このコマンドにより、コンテナーを取得するためのアクセス権がランタイムに付与されます。
-
-Linux:
-   ```cmd
-   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
-   ```
-
-Windows:
-   ```cmd
-   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
-   ```
-
-## <a name="run-the-solution"></a>ソリューションを実行する
+## <a name="deploy-to-your-device"></a>デバイスに展開する
 
 1. [Azure Portal](https://portal.azure.com) で、IoT ハブに移動します。
-1. **IoT Edge (プレビュー)** に移動し、IoT Edge デバイスを選択します。
+
+1. **[IoT Edge]** に移動し、IoT Edge デバイスを選びます。
+
 1. **[Set modules]\(モジュールの設定\)** を選びます。
+
+1. **[レジストリ設定]** セクションで、Azure コンテナー レジストリからコピーした資格情報を追加します。 
+
+   ![レジストリ資格情報を追加する](./media/tutorial-deploy-machine-learning/registry-settings.png)
+
 1. 以前 IoT Edge デバイスに tempSensor モジュールを展開したことがある場合は、自動で入力されていることがあります。 モジュールの一覧にない場合は追加します。
-    1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
-    2. **[名前]** フィールドに「`tempSensor`」と入力します。
-    3. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。
+
+    1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
+    2. **[名前]** フィールドに「`tempsensor`」と入力します。
+    3. **[イメージの URI]** フィールドに「`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`」と入力します。
     4. **[保存]** を選択します。
+
 1. 作成済みの機械学習モジュールを追加します。
-    1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
+
+    1. **[追加]** をクリックし、**[Azure Machine Learning Module]\(Azure Machine Learning モジュール\)** を選択します。
     1. **[名前]** フィールドに「`machinelearningmodule`」と入力します。
     1. **[イメージ]** フィールドに、イメージ アドレスを入力します (`<registry_name>.azurecr.io/machinelearningmodule:1` など)。
     1. **[保存]** を選択します。
+
 1. **[モジュールの追加]** 手順に戻り、**[次へ]** を選択します。
+
 1. **[Specify Routes] \(ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 1 つ目のルートは、すべての Azure Machine Learning モジュールが使用する "amlInput" エンドポイント経由で、温度センサーから機械学習モジュールにメッセージを転送します。 2 つ目のルートは、機械学習モジュールから IoT ハブにメッセージを転送します。 このルートでは、"amlOutput" はエンドポイントであり、すべての Azure Machine Learning モジュールでデータの出力に使用されます。"$upstream" は IoT Hub を指します。
 
     ```json
@@ -109,31 +150,92 @@ Windows:
     ```
 
 1. **[次へ]** を選択します。
-1. **[Review template]\(テンプレートのレビュー\)** ステップで、**[送信]** を選びます。
+
+1. **[Review Deployment]\(展開のレビュー\)** ステップで、**[送信]** を選びます。
+
 1. デバイスの詳細ページに戻り、**[更新]** を選びます。  新しい **machinelearningmodule** が、**tempSensor** モジュールおよび IoT Edge ランタイム モジュールと共に実行されていることがわかります。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-[IoT Hub エクスプローラー](https://github.com/azure/iothub-explorer)または Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT Edge デバイスから送信される device-to-cloud メッセージを表示できます。
+各 IoT Edge モジュールによって生成されているメッセージ、およびご自身の IoT ハブに配信されたメッセージを表示することができます。
+
+### <a name="view-data-on-your-iot-edge-device"></a>IoT Edge デバイスのデータを表示する
+
+IoT Edge デバイスでは、すべてのモジュールそれぞれから送信されているメッセージを表示できます。 
+
+Linux デバイスでこれらのコマンドを実行する場合、管理者特権のアクセス許可には `sudo` の使用が必要になることがあります。
+
+1. IoT Edge デバイス上のすべてのモジュールを確認します。
+
+   ```cmd/sh
+   iotedge list
+   ```
+
+2. 特定のデバイスから送信されているメッセージを確認します。 前のコマンド出力のモジュール名を使用します。
+
+   ```cmd/sh
+   iotedge logs <module_name> -f
+   ```
+
+### <a name="view-data-arriving-at-your-iot-hub"></a>IoT ハブに届くデータを表示する
+
+[IoT Hub エクスプローラー](https://github.com/azure/iothub-explorer)または [Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、IoT ハブが受け取る device-to-cloud メッセージを表示できます。
+
+次の手順は、IoT ハブに届く device-to-cloud メッセージを監視するように Visual Studio Code を設定する方法を示しています。 
 
 1. Visual Studio Code で、**[IoT Hub Devices]\(IoT Hub デバイス\)** を選択します。
+
 2. **[...]** を選択した後、メニューで **[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。
 
    ![IoT Hub デバイスのその他のメニュー](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. ページの上部に表示されるテキスト ボックスに、IoT Hub の iothubowner の接続文字列を入力します。 IoT Hub デバイスの一覧に、お使いの IoT Edge デバイスが表示されます。
+
 4. もう一度 **[...]** を選択した後で、**[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。
+
 5. 5 秒ごとに tempSensor から送られるメッセージを確認します。 メッセージ本文には、machinelearningmodule によって true または false 値が提供される **anomaly** というプロパティが含まれています。 **AzureMLResponse** プロパティには、モジュールの実行に成功した場合、"OK" という値が含まれます。
 
    ![メッセージ本文の Azure ML の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+次の推奨記事に進む場合は、既に作成したリソースおよび構成を維持して、再利用することができます。
+
+それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で作成した Azure リソースを削除してもかまいません。 
+
+> [!IMPORTANT]
+> Azure リソースとリソース グループは、削除すると元に戻すことができません。 いったん削除すると、リソース グループとそこに含まれるすべてのリソースが完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT ハブを、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT Hub リソースだけを削除してください。
+>
+
+IoT ハブだけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+名前でリソース グループ全体を削除するには、以下の手順を実行します。
+
+1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+
+2. **[名前でフィルター処理してください]** ボックスに、IoT ハブが含まれているリソース グループの名前を入力します。 
+
+3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+
+<!--
+   ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
+-->
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Machine Learning を使用する IoT Edge モジュールを展開しました。 引き続き他のチュートリアルを実行し、Azure IoT Edge が、エッジでデータをビジネス上の洞察に変えるうえで、どのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
-> [Azure 関数をモジュールとして展開する](tutorial-deploy-function.md)
+> [C# コードを使用してセンサー データをフィルター処理する](tutorial-csharp-module.md)
 
 <!--Links-->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-tutorial1-win]: quickstart.md
+[lnk-tutorial1-lin]: quickstart-linux.md

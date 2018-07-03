@@ -1,6 +1,6 @@
 ---
-title: HDInsight の R Server 概要 - Azure | Microsoft Docs
-description: R Server を含む HDInsight クラスターで Apache Spark を作成し、クラスターで R スクリプトを送信する方法について説明します。
+title: HDInsight の ML サービスの概要 - Azure | Microsoft Docs
+description: ML サービスを含む HDInsight クラスターで Apache Spark を作成し、そのクラスターで R スクリプトを送信する方法について説明します。
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,19 +13,18 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d6910ab257312626ca25126721410edeed6cdeae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053434"
 ---
-# <a name="get-started-with-r-server-cluster-on-azure-hdinsight"></a>Azure HDInsight での R Server クラスターの使用開始
+# <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML サービスの概要
 
-Azure HDInsight には、HDInsight クラスターに R Server を統合するオプションが含まれています。 このオプションにより、R スクリプトで Spark と MapReduce を使用して、分散計算を実行できます。 この記事では、HDInsight クラスター上に R Server を作成する方法を説明します。 さらに、分散 R 計算に Spark を使用するための R スクリプトの実行方法についても説明します。
-
+Azure HDInsight を使用すると、ML サービス クラスターを作成できます。 このオプションにより、R スクリプトで Spark と MapReduce を使用して、分散計算を実行できます。 この記事では、HDInsight 上で ML サービス クラスターを作成する方法と、分散 R 計算での Spark の使用方法を示す R スクリプトを実行する方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,13 +52,13 @@ Azure HDInsight には、HDInsight クラスターに R Server を統合する�
 
 4. **[クラスターの種類]** を選択し、**[クラスターの構成]** セクションで次の値を設定します。
 
-    * **[クラスターの種類]**: R Server
+    * **[クラスターの種類]**: ML サービス
 
     * **[オペレーティング システム]**: Linux
 
-    * **[バージョン]**: R Server 9.1 (HDI 3.6)。 使用可能な R Server のバージョンのリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) で入手できます。
+    * **[バージョン]**: ML Server 9.3 (HDI 3.6)。 ML Server 9.3 のリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) でご確認いただけます。
 
-    * **[R Studio community edition for R Server]\(R Server の R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェック ボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターのアプリケーション ブレードに RStudio Server へのアクセス用の URL が提供されます。
+    * **[R Studio community edition for ML Server]\(ML Server の R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェック ボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターのアプリケーション ブレードに RStudio Server へのアクセス用の URL が提供されます。
 
         ![クラスターの基本情報](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -81,11 +80,11 @@ Azure HDInsight には、HDInsight クラスターに R Server を統合する�
 
 HDInsight クラスターの一部として RStudio Server Community Edition をインストールすることを選択した場合は、次の 2 とおりの方法で RStudio ログインにアクセスできます。
 
-* **方法 1** - 次の URL に移動します (**CLUSTERNAME** は、自分が作成した R Server クラスターの名前)。
+* **方法 1** - 次の URL に移動します (**CLUSTERNAME** は、自分が作成した ML サービス クラスターの名前)。
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **方法 2** - Azure Portal で R Server クラスターを開き、**[クイック リンク]** の **[R Server ダッシュボード]** をクリックします。
+* **方法 2** - Azure Portal で ML サービス クラスターを開き、**[クイック リンク]** の **[ML Services Dashboards]\(ML サービス ダッシュボード\)** をクリックします。
 
      ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/dashboard-quick-links.png)
 
@@ -175,9 +174,9 @@ ScaleR 関数を使用してジョブを送信できます。 ジョブの実行
 <a name="connect-to-edge-node"></a>
 ## <a name="connect-to-the-cluster-edge-node"></a>クラスターのエッジ ノードに接続する
 
-このセクションでは、SSH を使って R Server HDInsight クラスターのエッジ ノードに接続する方法について説明します。 SSH の使用方法については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+このセクションでは、SSH を使って ML サービス HDInsight クラスターのエッジ ノードに接続する方法について説明します。 SSH の使用方法については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
-R Server クラスターのエッジ ノードに接続するための SSH コマンドは次のとおりです。
+ML サービス クラスターのエッジ ノードに接続するための SSH コマンドは次のとおりです。
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
@@ -194,15 +193,15 @@ SSH ユーザー アカウントを保護するためにパスワードを使用
     sshuser@ed00-myrclu:~$
 
 <a name="use-r-console"></a>
-## <a name="use-the-r-server-console"></a>R Server コンソールを使用する
+## <a name="use-the-r-console"></a>R コンソールを使用する
 
 1. SSH セッションから、次のコマンドを使用して R コンソールを起動します。  
 
         R
 
-2. 出力画面に R Server のバージョンが、その他の情報と共に表示されます。
+2. 出力画面に ML Server のバージョンが、その他の情報と共に表示されます。
     
-3. `>` プロンプトから R コードを入力できます。 HDInsight の R Server には、Hadoop との対話を容易にし、分散計算を実行するためのパッケージが含まれています。 たとえば、次のコマンドを使用して、HDInsight クラスターの既定のファイル システムのルートを表示します。
+3. `>` プロンプトから R コードを入力できます。 HDInsight の ML サービスには、Hadoop との対話を容易にし、分散計算を実行するためのパッケージが含まれています。 たとえば、次のコマンドを使用して、HDInsight クラスターの既定のファイル システムのルートを表示します。
 
         rxHadoopListFiles("/")
 
@@ -216,11 +215,11 @@ SSH ユーザー アカウントを保護するためにパスワードを使用
 
 ## <a name="automated-cluster-creation"></a>自動クラスター作成
 
-HDInsight の R Server クラスターの作成操作は、Azure Resource Manager テンプレート、SDK、および PowerShell を使用して自動化できます。
+HDInsight の ML サービス クラスターの作成操作は、SDK および PowerShell を使用して自動化できます。
 
-* Azure Resource Manager テンプレートを使って R Server クラスターを作成する方法については、[R Server for HDInsight クラスターのデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)に関するページをご覧ください。
-* .NET SDK テンプレートを使用して R Server クラスターを作成するには、「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)」を参照してください。
-* PowerShell を使って R Server クラスターを作成する方法については、[Azure PowerShell を使用した HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関する記事を参照してください。
+<!---* To create an ML Server cluster using an Azure Resource Management template, see [Deploy an R Server for HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).--->
+* .NET SDK テンプレートを使用して ML サービス クラスターを作成するには、「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)」を参照してください。
+* PowerShell を使って ML サービス クラスターを作成する方法については、[Azure PowerShell を使用した HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関する記事を参照してください。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
@@ -232,10 +231,10 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure HDInsight で新しい R Server クラスターを作成する方法のほか、SSH セッションからの R コンソールの基本的な使い方について説明しました。 以下の記事では、HDInsight 上の R Server を管理および使用する他の方法について説明します。
+この記事では、Azure HDInsight で新しい ML サービス クラスターを作成する方法のほか、SSH セッションからの R コンソールの基本的な使い方について説明しました。 以下の記事では、HDInsight 上の ML サービスを管理および使用する他の方法について説明します。
 
 * [R Tools for Visual Studio からのジョブの送信](r-server-submit-jobs-r-tools-vs.md)
-* [HDInsight で R Server クラスターを管理する](r-server-hdinsight-manage.md)
-* [HDInsight での R Server クラスターの運用化](r-server-operationalize.md)
-* [HDInsight の R Server クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-* [HDInsight の R Server クラスター向けの Azure Storage オプション](r-server-storage.md)
+* [HDInsight 上の ML サービス クラスターの管理](r-server-hdinsight-manage.md)
+* [HDInsight 上の ML サービス クラスターの運用化](r-server-operationalize.md)
+* [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML サービス クラスター向けの Azure Storage オプション](r-server-storage.md)

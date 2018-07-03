@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e21c08d418022430400ff14baedc1759d2d16069
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 27e7d6f22678bf33ffd81fb34472fe4add3f9a15
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171565"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045468"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用する場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
-> 
 > この記事では、Data Factory の概要については詳しく取り上げません。 詳細については、[Data Factory の概要](introduction.md)に関するページをご覧ください。 
 
 このチュートリアルでは、以下の手順を実行します。
@@ -128,21 +126,21 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
    
    ![新しいデータ ファクトリの作成](./media/tutorial-hybrid-copy-portal/new-azure-data-factory-menu.png)
 3. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
-      
+   
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-hybrid-copy-portal/new-azure-data-factory.png)
- 
-   データ ファクトリの名前は "*グローバルに一意*" にする必要があります。 名前フィールドで次のエラー メッセージが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
-  
+
+データ ファクトリの名前は "*グローバルに一意*" にする必要があります。 名前フィールドで次のエラー メッセージが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+
    ![新しいデータ ファクトリ名](./media/tutorial-hybrid-copy-portal/name-not-available-error.png)
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
-     
+   
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
       - **[新規作成]** を選択し、リソース グループの名前を入力します。
-         
+        
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
-6. **[バージョン]** で、**[V2 (プレビュー)]** を選択します。
+6. **[バージョン]** で、**[V2]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 8. **[ダッシュボードにピン留めする]** をオンにします。 
 9. **[作成]** を選択します。
@@ -160,45 +158,58 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。 
 
    ![[Let's get started]\(始めましょう\) ページ](./media/tutorial-hybrid-copy-portal/get-started-page.png)
+
 2. **[プロパティ]** ウィンドウの下部にある **[General]\(一般\)** タブで、**[名前]** に「**SQLServerToBlobPipeline**」と入力します。
 
    ![パイプライン名](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
+
 3. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開します。 パイプライン デザイン サーフェイスに **[コピー]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**CopySqlServerToAzureBlobActivity**」に設定します。
 
    ![アクティビティ名](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
+
 4. **[プロパティ]** ウィンドウの **[ソース]** タブに移動し、**[+ 新規]** を選択します。
 
    ![[ソース] タブ](./media/tutorial-hybrid-copy-portal/source-dataset-new-button.png)
+
 5. **[新しいデータセット]** ウィンドウで **SQL Server** を検索します。 **[SQL Server]** を選択し、**[完了]** を選択します。 **[SqlServerTable1]** という新しいタブが表示されます。 左側のツリービューにも **SqlServerTable1** データセットが表示されます。 
 
    ![SQL Server の選択](./media/tutorial-hybrid-copy-portal/select-sql-server.png)
+
 6. **[プロパティ]** ウィンドウの下部にある **[General]\(一般\)** タブで、**[名前]** に「**SqlServerDataset**」と入力します。
-    
+
    ![ソース データセット名](./media/tutorial-hybrid-copy-portal/source-dataset-name.png)
+
 7. **[接続]** タブに移動して、**[+ 新規]** を選択します。 この手順でソース データ ストア (SQL Server データベース) への接続を作成します。 
 
    ![ソース データセットへの接続](./media/tutorial-hybrid-copy-portal/source-connection-new-button.png)
-8. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[新規統合ランタイム]** を選択します。 このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server データベースから Blob Storage にデータをコピーするコンポーネントです。 
+
+8. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[名前]** に 「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[新規]** を選択します。 このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server データベースから Blob Storage にデータをコピーするコンポーネントです。 
 
    ![新規統合ランタイム](./media/tutorial-hybrid-copy-portal/new-integration-runtime-button.png)
+
 9. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ウィンドウで、**[プライベート ネットワーク]** を選択して **[次へ]** を選択します。 
 
    ![プライベート ネットワークの選択](./media/tutorial-hybrid-copy-portal/select-private-network.png)
+
 10. 統合ランタイムの名前を入力して、**[次へ]** を選択します。
-    
+
     ![統合ランタイムの名前](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
+
 11. **[Option 1: Express setup]\(オプション 1: 高速セットアップ\)** の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 
 
     ![高速セットアップのリンク](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+
 12. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、**[閉じる]** を選択します。 
 
     ![Integration Runtime (セルフホステッド) 高速セットアップ](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-13. Web ブラウザーで、**[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ウィンドウの **[完了]** を選択します。 
 
-    ![統合ランタイムのセットアップ](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
+13. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、上記で作成した**統合ランタイム**が **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で選択されていることを確認します。 
+
+    ![](./media/tutorial-hybrid-copy-portal/select-integration-runtime.png)
+
 14. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    a. **[名前]** に「**SqlServerLinkedService**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**SqlServerLinkedService**」と入力します。
 
     b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で、先ほど作成したセルフホステッド統合ランタイムが表示されることを確認します。
 
@@ -212,34 +223,41 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     g. **[接続テスト]** を選択します。 この手順は、作成したセルフホステッド統合ランタイムを使用して Data Factory が SQL Server データベースに接続できることを確認するために行います。
 
-    h. リンクされたサービスを保存するには、**[保存]** を選択します。
+    h. リンクされたサービスを保存するには、**[完了]** を選択します。
 
-       ![新しいリンクされたサービスの設定](./media/tutorial-hybrid-copy-portal/sql-server-linked-service-settings.png)
+       
+
 15. ソース データセットが開かれているウィンドウに戻ります。 **[プロパティ]** ウィンドウの **[接続]** タブで、以下の手順を実行します。 
 
-    a. **[リンクされたサービス]** に **SqlServerLinkedService** が表示されていることを確認します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** に **SqlServerLinkedService** が表示されていることを確認します。
 
     b. **[テーブル]** で **[dbo].[emp]** を選択します。
 
     ![ソース データセット接続情報](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
+
 16. **SQLServerToBlobPipeline** のタブに移動するか、またはツリービューの **SQLServerToBlobPipeline** を選択します。 
 
     ![パイプラインのタブ](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+
 17. **[プロパティ]** ウィンドウの一番下にある **[シンク]** タブに移動し、**[+ 新規]** を選択します。 
 
     ![[シンク] タブ](./media/tutorial-hybrid-copy-portal/sink-dataset-new-button.png)
+
 18. **[新しいデータセット]** ウィンドウで **[Azure BLOB ストレージ]** を選択します。 続けて、**[完了]** を選択します。 データセット用の新しいタブが開かれます。 ツリー ビューにもデータセットが表示されます。 
 
     ![Blob Storage の選択](./media/tutorial-hybrid-copy-portal/select-azure-blob-storage.png)
+
 19. **[名前]** に「**AzureBlobDataset**」と入力します。
 
     ![シンク データセットの名前](./media/tutorial-hybrid-copy-portal/sink-dataset-name.png)
+
 20. **[プロパティ]** ウィンドウの一番下にある **[接続]** タブに移動します。 **[リンクされたサービス]** の横にある **[+ 新規]** を選択します。 
 
     ![新しいリンクされたサービスのボタン](./media/tutorial-hybrid-copy-portal/new-storage-linked-service-button.png)
+
 21. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
-    a. **[名前]** に「**AzureStorageLinkedService**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureStorageLinkedService**」と入力します。
 
     b. **[ストレージ アカウント名]** で、使用するストレージ アカウントを選択します。
 
@@ -248,28 +266,39 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     d. **[保存]** を選択します。
 
     ![Storage のリンクされたサービスの設定](./media/tutorial-hybrid-copy-portal/azure-storage-linked-service-settings.png) 
-22.  シンク データセットが開かれているウィンドウに戻ります。 **[接続]** タブで、次の手順を実行します。 
 
-        a. **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
+22. シンク データセットが開かれているウィンドウに戻ります。 **[接続]** タブで、次の手順を実行します。 
 
-        b. **[ファイル パス]** の**フォルダー**部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
+       a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **AzureStorageLinkedService** が選択されていることを確認します。
 
-        c. **[ファイル パス]** の**ファイル名**部分に「`@CONCAT(pipeline().RunId, '.txt')`」と入力します。
+       b. **[ファイル パス]** の**フォルダー**/ **ディレクトリ**部分に「**adftutorial/fromonprem**」と入力します。 adftutorial コンテナーに出力フォルダーが存在しない場合、Data Factory によって自動的に出力フォルダーが作成されます。
 
-     ![シンク データセットへの接続](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+       c. **[ファイル パス]** の**ファイル名**部分で、**[動的なコンテンツの追加]** を選択します。   
+
+    ![動的なファイル名の値](./media/tutorial-hybrid-copy-portal/file-name.png)
+
+       d. `@CONCAT(pipeline().RunId, '.txt')` を追加し、**[完了]** を選択します。 これにより、ファイルの名前が PipelineRunID.txt に変更されます。 
+
+    ![ファイル名を解決するための動的な式](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
+
+    ![シンク データセットへの接続](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+
 23. パイプラインが開かれているタブに移動するか、ツリー ビューでパイプラインを選択します。 **[Sink Dataset]\(シンク データセット\)** で **AzureBlobDataset** が選択されていることを確認します。 
 
     ![シンク データセットの選択](./media/tutorial-hybrid-copy-portal/sink-dataset-selected.png)
+
 24. パイプライン設定を検証するには、パイプラインのツール バーにある **[検証]** を選択します。 **パイプラインの検証レポート**を閉じるには、**[閉じる]** を選択します。 
 
     ![パイプラインの検証](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+
 25. 作成したエンティティを Data Factory に発行するには、**[すべて公開]** を選択します。
 
     ![[発行] ボタン](./media/tutorial-hybrid-copy-portal/publish-button.png)
+
 26. **[発行は成功しました]** ポップアップが表示されるまで待ちます。 発行の状態を確認するには、左側にある **[通知の表示]** リンクを選択します。 通知ウィンドウを閉じるには、**[閉じる]** を選択します。 
 
     ![発行は成功しました](./media/tutorial-hybrid-copy-portal/publishing-succeeded.png)
-    
+
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 パイプラインのツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。
@@ -286,15 +315,9 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     ![アクティビティの実行を監視する](./media/tutorial-hybrid-copy-portal/activity-runs.png)
 
 ## <a name="verify-the-output"></a>出力を検証する
-このパイプラインは、`adftutorial` BLOB コンテナーに対して *fromonprem* という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *dbo.emp.txt* ファイルがあることを確認してください。 
+このパイプラインは、`adftutorial` BLOB コンテナーに対して *fromonprem* という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *[pipeline().RunId].txt* ファイルがあることを確認してください。 
 
-1. Azure Portal の **adftutorial** コンテナー ウィンドウで **[最新の情報に更新]** を選択して出力フォルダーを表示します。
-
-    ![作成された出力フォルダー](media/tutorial-hybrid-copy-portal/fromonprem-folder.png)
-2. フォルダーの一覧で、`fromonprem` を選択します。 
-3. `dbo.emp.txt` という名前のファイルが表示されていることを確認します。
-
-    ![出力ファイル](media/tutorial-hybrid-copy-portal/fromonprem-file.png)
+![出力ファイル名を確認する](./media/tutorial-hybrid-copy-portal/sink-output.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c8f96ffa44cb584cef3c3a5f785c20469aac38bd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6b1b060a2f47bc30cb7b7862fb738aa478238033
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594156"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052047"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "31594156"
 > 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して Azure データ ファクトリを作成する方法を説明します。 このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
@@ -54,7 +54,7 @@ ms.locfileid: "31594156"
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 このチュートリアルでは、次の Data Factory エンティティを含むデータ ファクトリを作成します。
 
-| エンティティ | [説明] |
+| エンティティ | 説明 |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL Database がシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
 | Azure SQL Database のリンクされたサービス |Azure SQL Database をデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL Database を指定します。 |

@@ -14,20 +14,20 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179601"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049799"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-introduction.md)
-> * [バージョン 2 - プレビュー](../introduction.md)
+> * [Version 1](data-factory-introduction.md)
+> * [バージョン 2 (現在のバージョン)](../introduction.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory V2 の概要](../introduction.md)を参照してください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory V2 の概要](../introduction.md)に関するページを参照してください。
 
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
@@ -143,7 +143,7 @@ Azure Data Factory には、次のいずれかのツールまたは API でデ�
 
 データ パイプラインでデータ ファクトリを構築する方法については、以下のチュートリアルで紹介されている具体的な手順に従ってください。
 
-| チュートリアル | [説明] |
+| チュートリアル | 説明 |
 | --- | --- |
 | [2 つのクラウド データ ストア間でのデータの移動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob Storage から SQL データベースにデータを移動するパイプラインを備えたデータ ファクトリを作成します。 |
 | [Hadoop クラスターを使用したデータの変換](data-factory-build-your-first-pipeline.md) |Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行してデータを処理するデータ パイプラインを備えた最初の Azure データ ファクトリを構築します。 |

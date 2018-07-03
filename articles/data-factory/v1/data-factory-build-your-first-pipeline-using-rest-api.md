@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7b24d4b15d83d746c5a514725bcd474828c62001
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 25667051fa0a1484204f672c78fb94136ac84469
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594020"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054706"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "31594020"
 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-rest-api.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンのData Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-rest-api.md)のページを参照してください。
 
 この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
@@ -121,7 +121,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | ClusterSize |HDInsight クラスターのサイズ。 |
 | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -167,12 +167,12 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
-| 既定のコンテナー |前に作成した StorageLinkedService を参照します。 |
+| type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
+| linkedServiceName |前に作成した StorageLinkedService を参照します。 |
 | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-| 型 |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+| type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
 | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
 | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
 | external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
@@ -488,7 +488,7 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |

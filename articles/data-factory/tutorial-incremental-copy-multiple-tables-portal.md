@@ -3,7 +3,7 @@ title: Azure Data Factory を使って複数のテーブルを増分コピーす
 description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052846"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -37,9 +38,6 @@ ms.lasthandoff: 03/23/2018
 > * パイプラインを再実行して監視します。
 > * 最終結果を確認します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開されている Data Factory サービスのバージョン 1 を使用する場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
-
 ## <a name="overview"></a>概要
 このソリューションを作成するための重要な手順を次に示します。 
 
@@ -53,7 +51,7 @@ ms.lasthandoff: 03/23/2018
 
 3. **次のアクティビティを含んだパイプラインを作成する**。 
     
-    a. パイプラインにパラメーターとして渡された一連のソース テーブル名を反復処理する ForEach アクティビティを作成する。 このアクティビティが、ソース テーブルごとに次のアクティビティを呼び出して各テーブルの差分読み込みを実行します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 パイプラインにパラメーターとして渡された一連のソース テーブル名を反復処理する ForEach アクティビティを作成する。 このアクティビティが、ソース テーブルごとに次のアクティビティを呼び出して各テーブルの差分読み込みを実行します。
 
     b. 2 つのルックアップ アクティビティを作成する。 1 つ目のルックアップ アクティビティは、前回の基準値を取得するために使用します。 2 つ目のルックアップ アクティビティは、新しい基準値を取得するために使用します。 これらの基準値は、コピー アクティビティに渡されます。
 
@@ -242,8 +240,8 @@ END
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。
@@ -369,16 +367,25 @@ END
 3. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリービューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、**[名前]** に「**SinkDataset**」と入力します。
 
    ![シンク データセット - 全般](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. プロパティ ウィンドウの **[接続]** タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlLinkedService]** を選択します。 
-
-   ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. プロパティ ウィンドウの **[ソース]** タブに切り替え、以下の手順を実行します。 
+4. プロパティ ウィンドウの **[ソース]** タブに切り替え、以下の手順を実行します。 
 
     1. **[Create/update parameters]\(パラメーターの作成/更新\)** セクションで、**[新規]** をクリックします。 
     2. **[名前]** に「**SinkTableName**」と入力し、**[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、**SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
-    3. **[Parameterized properties]\(パラメーター化されたプロパティ\)** セクションで、**[tableName]** プロパティに「`@{dataset().SinkTableName}`」と入力します。 **SinkTableName** パラメーターに渡された値を使用して、データセットの **tableName** プロパティを初期化します。 
-
+   
        ![シンク データセット - プロパティ](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. プロパティ ウィンドウの **[接続]** タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlLinkedService]** を選択します。 **[テーブル]** プロパティで、**[動的なコンテンツの追加]** をクリックします。 
+
+   ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. **[パラメーター]** セクションで **[SinkTableName]** をクリックします
+   
+   ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. **[完了]** をクリックした後、テーブル名として **@dataset().SinkTableName** が表示されます。
+   
+   ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>基準値用のデータセットを作成する
 この手順では、高基準値を格納するためのデータセットを作成します。 
@@ -420,7 +427,7 @@ END
 
     1. **[+ 新規]** をクリックします。 
     2. **[名前]** に、パラメーター名として「**tableList**」と入力します。 
-    3. パラメーターの**[型]** として **[オブジェクト]** を選択します。
+    3. パラメーターの **[型]** として **[オブジェクト]** を選択します。
 
     ![パイプラインのパラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>パイプラインの監視
+## <a name="monitor-the-pipeline-again"></a>パイプラインを再度監視する
 
 1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、**[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
 

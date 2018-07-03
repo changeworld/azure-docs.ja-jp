@@ -1,88 +1,51 @@
 ---
-title: Azure IoT Edge + Linux クイック スタート | Microsoft Docs
+title: Azure IoT Edge on Linux のシミュレート | Microsoft Docs
 description: このクイック スタートでは、事前作成されたコードを IoT Edge デバイスにリモートで展開する方法について説明します。
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 06/27/2018
-ms.topic: quickstart
+ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 86bf28249321a705e8855de35121611b05009854
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 6b63c10a8c092d6568f8caf9842f007a5dc9c027
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063495"
+ms.locfileid: "37049164"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux または x64 デバイスに展開する
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
-Azure IoT Edge は、クラウドの機能をご使用のモノのインターネット (IoT) デバイスでも利用できるようにします。 このクイック スタートでは、クラウド インターフェイスを使用して、事前作成されたコードを IoT Edge デバイスにリモートで展開する方法について説明します。
+Azure IoT Edge を使用すると、すべてのデータをクラウドにプッシュしなくても、デバイスで分析とデータ処理を実行することができます。 IoT Edge チュートリアルでは、さまざまな種類のモジュールを展開する方法について説明しますが、まずテストするデバイスが必要になります。 
 
 このクイック スタートでは、次の方法について説明します。
 
 1. IoT Hub を作成します。
-2. IoT Edge デバイスをご自身の IoT ハブに登録する。
-3. IoT Edge ランタイムをご自身のデバイスにインストールして開始する。
+2. IoT Edge デバイスを IoT ハブに登録する。
+3. IoT Edge ランタイムを開始する。
 4. モジュールを IoT Edge デバイスにリモートで展開する。
 
-![クイック スタートのアーキテクチャ][2]
+![チュートリアル アーキテクチャ][2]
 
-このクイック スタートでは、Linux コンピューターまたは仮想マシンを IoT Edge デバイスに変えます。 その後、Azure portal からモジュールをご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。 
+このクイック スタートでは、Linux コンピューターまたは仮想マシンを IoT Edge デバイスに変えます。 その後、モジュールを Azure portal からご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。 
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][lnk-account]を作成してください。
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-このクイック スタートの多くの手順は、Azure CLI を使用して実行します。Azure IoT には、追加機能を有効にする拡張機能が用意されています。 
-
-Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
-
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 このクイック スタートでは、最初に Azure portal で IoT ハブを作成します。
 ![IoT Hub を作成する][3]
 
-このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用することができます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
-
-1. Azure Cloud Shell で、リソース グループを作成します。 次のコードにより、**TestResources** というリソース グループが**米国西部**リージョンに作成されます。 このクイック スタートとチュートリアルのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 
-
-   ```azurecli-interactive
-   az group create --name TestResources --location westus
-   ```
-
-1. IoT ハブを新しいリソース グループに作成します。 次のコードにより、無料の **F1** ハブがリソース グループ **TestResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
-
-   ```azurecli-interactive
-   az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
-   ```
+[!INCLUDE [iot-hub-create-hub](../../includes/iot-hub-create-hub.md)]
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
 新しく作成された IoT Hub に IoT Edge デバイスを登録します。
 ![デバイスを登録する][4]
 
-お使いの IoT ハブと通信できるようにシミュレートされたデバイスのデバイス ID を作成します。 IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作をし、別に管理できるため、IoT Edge デバイスであることを最初から宣言します。 
-
-1. Azure Cloud Shell で、次のコマンドを入力して、**myEdgeDevice** という名前のデバイスをハブに作成します。
-
-   ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
-   ```
-
-1. デバイスの接続文字列を取得します。この接続文字列により、IoT Hub 内で物理デバイスとその ID をリンクさせます。 
-
-   ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
-   ```
-
-1. 接続文字列をコピーして保存します。 次のセクションで、IoT Edge ランタイムを構成するときにこの値を使用します。 
+[!INCLUDE [iot-edge-register-device](../../includes/iot-edge-register-device.md)]
 
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールして開始する
@@ -96,7 +59,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 IoT Edge ランタイムの実行に必要なパッケージは、ソフトウェア リポジトリで管理されます。 このリポジトリにアクセスできるようにご自身の IoT Edge デバイスを構成します。 
 
-このセクションの手順は、**Ubuntu 16.04** が実行されているデバイスを対象としています。 その他のバージョンで Linux でソフトウェア リポジトリにアクセスするには、「[Install the Azure IoT Edge runtime on Linux (x64) (Linux (x64) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux.md)」または「[Install Azure IoT Edge runtime on Linux (ARM32v7/armhf) (Linux (ARM32v7/armhf) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux-arm.md)」を参照してください。
+このセクションの手順は、**Ubuntu 16.04** が実行されているデバイスを対象としています。 その他のバージョンの Linux でソフトウェア リポジトリにアクセスするには、「[Install the Azure IoT Edge runtime on Linux (x64) (Linux (x64) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux.md)」または「[Install Azure IoT Edge runtime on Linux (ARM32v7/armhf) (Linux (ARM32v7/armhf) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux-arm.md)」を参照してください。
 
 1. IoT Edge デバイスとして使用しているマシンで、リポジトリの構成をインストールします。
 
@@ -114,7 +77,7 @@ IoT Edge ランタイムの実行に必要なパッケージは、ソフトウ�
 
 ### <a name="install-a-container-runtime"></a>コンテナー ランタイムをインストールする
 
-IoT Edge ランタイムは一連のコンテナーで、ご自身の IoT Edge デバイスに展開するロジックは、コンテナーとしてパッケージ化されています。 これらのコンポーネント用にデバイスを準備するには、コンテナー ランタイムをインストールします。
+IoT Edge ランタイムは一連のコンテナーであり、ご自身の IoT Edge デバイスに展開するロジックは、コンテナーとしてパッケージ化されています。 これらのコンポーネント用にデバイスを準備するには、コンテナー ランタイムをインストールします。
 
 **apt-get** を更新します。
 
@@ -140,7 +103,7 @@ Moby、コンテナー ランタイム、およびその CLI コマンドをイ�
    sudo apt-get install iotedge
    ```
 
-2. IoT Edge 構成ファイルを開きます。 このファイルは保護されているため、アクセスするには昇格された特権の使用が必要になる場合があります。
+2. IoT Edge 構成ファイルを開きます。 このファイルは保護されているため、アクセスするには昇格された特権を使用する必要があります。
    
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -174,7 +137,7 @@ Moby、コンテナー ランタイム、およびその CLI コマンドをイ�
    iotedge list
    ```
 
-   ![ご自身のデバイスの 1 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-1.png)
+   ![ご自身のデバイス上の 1 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-1.png)
 
 ## <a name="deploy-a-module"></a>モジュールを展開する
 
@@ -182,6 +145,7 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 ![デバイスを登録する][6]
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
@@ -198,16 +162,14 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 tempSensor モジュールから送信されているメッセージを確認します。
 
    ```bash
-   sudo iotedge logs tempSensor -f 
+   iotedge logs tempSensor -f 
    ```
-一度ログオフしてからログインすると、上記のコマンドで *sudo* は不要になります。
 
 ![モジュールからのデータを表示する](./media/quickstart-linux/iotedge-logs.png)
 
-表示されているログの最後の行が `Using transport Mqtt_Tcp_Only` の場合、温度センサー モジュールは、Edge ハブに接続されるのを待っている可能性があります。 モジュールを中止し、Edge エージェントの再起動を試みてください。 中止するには、`sudo docker stop tempSensor` コマンドを使用します。
+ログに表示されている最後の行が `Using transport Mqtt_Tcp_Only` の場合、温度センサー モジュールは、Edge ハブに接続されるのを待っている可能性があります。 モジュールを中止し、Edge エージェントによる再起動を試みてください。 中止するには、`sudo docker stop tempSensor` コマンドを使用します。
 
 [IoT Hub エクスプローラー ツール][lnk-iothub-explorer]または [Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、デバイスが送信している利用統計情報を表示することもできます。 
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -231,23 +193,19 @@ IoT Edge ランタイムを削除します。
    sudo apt-get remove --purge moby
    ```
 
-作成した Azure リソースが不要になった場合は、次のコマンドを使用して、作成したリソース グループと、それに関連付けられているすべてのリソースを削除できます。
-
-   ```azurecli-interactive
-   az group delete --name TestResources
-   ```
+このクイック スタートで作成した Azure IoT ハブまたは IoT Edge デバイスが不要になった場合は、Azure portal で削除できます。 ご自身の IoT ハブの概要ページに移動し、**[削除]** を選択します。 
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートは、すべての IoT Edge チュートリアルの前提条件です。 引き続き他のチュートリアルを実行し、Azure IoT Edge が、エッジでこのデータをビジネス上の洞察に変えるうえで、どのように役立つかを確認できます。
+このクイック スタートでは、新しい IoT Edge デバイスを作成し、Azure IoT Edge クラウド インターフェイスを使用してコードをデバイスに展開しました。 その環境に関する生データを生成するシミュレートされたデバイスができあがりました。 
+
+このクイック スタートは、すべての IoT Edge チュートリアルの前提条件です。 引き続きいずれかのチュートリアルを実行し、Azure IoT Edge が、エッジでこのデータをビジネス上の分析情報に変えるうえで、どのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
 > [Azure Function を使用してセンサー データをフィルター処理する](tutorial-deploy-function.md)
 
 
-
 <!-- Images -->
-[0]: ./media/quickstart-linux/cloud-shell.png
 [1]: ./media/quickstart-linux/view-module.png
 [2]: ./media/quickstart-linux/install-edge-full.png
 [3]: ./media/quickstart-linux/create-iot-hub.png
@@ -258,13 +216,6 @@ IoT Edge ランタイムを削除します。
 [8]: ./media/tutorial-simulate-device-linux/running-modules.png
 [9]: ./media/tutorial-simulate-device-linux/sensor-data.png
 
-
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
-[lnk-account]: https://azure.microsoft.com/free
-[lnk-portal]: https://portal.azure.com
-[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
-
-<!-- Anchor links -->
-[anchor-register]: #register-an-iot-edge-device

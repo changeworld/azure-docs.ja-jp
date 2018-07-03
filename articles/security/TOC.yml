@@ -10,6 +10,8 @@
       href: azure-log-audit.md
     - name: Azure のネットワーク セキュリティ
       href: azure-network-security.md
+    - name: Azure のサーバーレス プラットフォームのセキュリティ
+      href: abstract-serverless-platform-security.md
     - name: 運用上のセキュリティの有効化
       href: azure-operational-security.md
     - name: Azure でのガバナンス

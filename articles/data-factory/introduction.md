@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047277"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-introduction.md)
-> * [バージョン 2 - プレビュー](introduction.md)
+> * [Version 1](v1/data-factory-introduction.md)
+> * [現在のバージョン](introduction.md)
 
 ビッグ データの世界では、未整理の生データは、多くの場合、リレーショナル、非リレーショナル、その他のストレージ システム内に格納されます。 ただし、生データ自体には、アナリストや、データ サイエンティスト、管理職意思決定者に有用な分析を提供するのに必要となる正しいコンテキストや意味はありません。 
 
@@ -40,9 +40,6 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 さらに、ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに出力データを公開することもできます。 Azure Data Factory を使うと、最終的に、生データを意味のあるデータ ストアとデータ レイクに整理し、より的確な意思決定に活用できます。
 
 ![Data Factory の最上位ビュー](media/introduction/big-picture.png)
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の概要](v1/data-factory-introduction.md)に関する記事をご覧ください。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 通常、Azure Data Factory のパイプライン (データドリブン ワークフロー) では次の 4 つのステップが実行されます。
@@ -92,7 +89,7 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
 
 ### <a name="triggers"></a>トリガー
-トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 さまざまな種類のイベントに合わせて、さまざまな種類のトリガーがあります。 Data Factory は、プレビューで、実時間のスケジューラ トリガーをサポートしています。 
+トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 さまざまな種類のイベントに合わせて、さまざまな種類のトリガーがあります。
 
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 引数は、手動で渡すか、トリガー定義内で渡すことができます。
@@ -124,8 +121,8 @@ Data Factory を利用できるリージョンが米国東部、米国東部 2�
 
 たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 米国東部または米国東部 2 に Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
 
-## <a name="compare-with-version-2"></a>バージョン 2 との比較
-Data Factory サービスのバージョン 1 とバージョン 2 の相違点の一覧については、[バージョン 1 との比較](compare-versions.md)に関するページを参照してください。 
+## <a name="compare-with-version-1"></a>バージョン 1 との比較
+Data Factory サービスのバージョン 1 と現在のバージョンの相違点の一覧については、「[バージョン 1 との比較](compare-versions.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 次のツールおよび SDK のいずれかを使用して、Data Factory パイプラインの作成を開始します。 

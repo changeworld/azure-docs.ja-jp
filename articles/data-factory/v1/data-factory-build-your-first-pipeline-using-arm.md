@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d3297cc1dbbbfb99272a1374f060adaf59024810
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 172de59561892f0f17fc1f90016cc95495ceb2cb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594088"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051309"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "31594088"
 > 
  
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンのData Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 この記事では、Azure Resource Manager テンプレートを使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "31594088"
 * Azure Resource Manager テンプレートについては、「 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md) 」を参照してください。 
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
-| エンティティ | [説明] |
+| エンティティ | 説明 |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。 |
 | HDInsight のオンデマンドのリンクされたサービス |オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 クラスターは、データ処理のために自動的に作成され、処理が終了すると削除されます。 |
@@ -619,7 +619,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 このテンプレートでは、GatewayUsingARM という名前のゲートウェイで GatewayUsingArmDF という名前のデータ ファクトリを作成しています。 
 
 ## <a name="see-also"></a>関連項目
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

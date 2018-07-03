@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: 0004db332ec13e23ed49f2c19e3454a516ca6a40
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29531674"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059856"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
@@ -46,7 +46,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 Security Center を初めて起動してから数分以内に、以下の項目が表示されます。
 
 - Azure サブスクリプションのセキュリティを向上させる方法についての**推奨事項**。 **[推奨事項]** タイルをクリックすると優先順位が付けられた一覧が起動します。
-- Security Center によって現在評価されている **[計算]**、**[ネットワーク]**、**[ストレージおよびデータ]**、**[アプリケーション]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
+- Security Center によって現在評価されている **[計算とアプリ]**、**[ネットワーク]**、**[データのセキュリティ]**、**[ID およびアクセス]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
 
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
 

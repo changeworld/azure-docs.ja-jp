@@ -1,21 +1,44 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-edge
+author: kgremban
+ms.service: iot-edge
+ms.topic: include
+ms.date: 06/27/2018
+ms.author: kgremban
+ms.custom: include file
+ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055032"
+---
 Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デバイスにモジュールをデプロイできることです。 IoT Edge モジュールは、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、シミュレートされたデバイスのテレメトリを生成するモジュールをデプロイします。 
 
 1. Azure Portal で、お使いの IoT ハブに移動します。
-1. **[IoT Edge (preview)]\(IoT Edge \(プレビュー\)\)** に移動し、IoT Edge デバイスを選びます。
+1. **[IoT Edge]** に移動し、IoT Edge デバイスを選びます。
 1. **[Set Modules] \(モジュールの設定)** を選択します。
-1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
-1. **[名前]** フィールドに「`tempSensor`」と入力します。 
-1. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。 
+1. このページの **[Deployment Modules]\(展開モジュール\)** セクションで、**[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
+1. **[名前]** フィールドに「`tempsensor`」と入力します。 
+1. **[イメージの URI]** フィールドに「`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`」と入力します。 
 1. 他の設定はそのままにして、**[保存]** を選びます。
 
    ![名前とイメージの URI を入力した後に IoT Edge モジュールを保存します](./media/iot-edge-deploy-module/name-image.png)
 
 1. **[Add modules]\(モジュールの追加\)** ステップに戻り、**[次へ]** を選びます。
-1. **[Specify routes]\(ルートの指定\)** ステップで、**[次へ]** を選びます。
-1. **[Review template]\(テンプレートのレビュー\)** ステップで、**[Submit]\(送信\)** を選びます。
-1. デバイスの詳細ページに戻り、**[更新]** を選びます。 新しい tempSensor モジュールが IoT Edge ランタイムと一緒に実行されていることが表示されます。 
+1. **[ルートの指定]** ステップで、すべてのモジュールから IoT Hub にすべてのメッセージを送信する既定のルートを用意しておく必要があります。 そうしていない場合は、次のコードを追加し、**[次へ]** を選択します。
 
-   ![デプロイ済みモジュールのリストに表示された tempSensor][1]
+   ```json
+   {
+       "routes": {
+           "route": "FROM /* INTO $upstream"
+       }
+   }
+   ```
 
-<!-- Images -->
-[1]: ../articles/iot-edge/media/tutorial-simulate-device-windows/view-module.png
+1. **[Review Deployment]\(展開のレビュー\)** ステップで、**[送信]** を選びます。
+1. デバイスの詳細ページに戻り、**[更新]** を選びます。 最初にサービスを開始したときに作成された edgeAgent モジュールに加えて、**edgeHub** と呼ばれる別のランタイム モジュールと **tempSensor** モジュールが一覧表示されます。 
+
+   ![デプロイ済みモジュールのリストに表示された tempSensor](./media/iot-edge-deploy-module/deployed-modules.png)

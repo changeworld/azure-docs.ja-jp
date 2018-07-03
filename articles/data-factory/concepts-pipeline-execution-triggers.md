@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293481"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048640"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-scheduling-and-execution.md)
-> * [バージョン 2 - プレビュー](concepts-pipeline-execution-triggers.md)
+> * [Version 1](v1/data-factory-scheduling-and-execution.md)
+> * [現在のバージョン](concepts-pipeline-execution-triggers.md)
 
-Azure Data Factory バージョン 2 の "_パイプライン実行_" は、パイプラインの実行のインスタンスを定義します。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。 
+Azure Data Factory の "_パイプライン実行_" により、パイプラインの実行のインスタンスが定義されます。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。 
 
 パイプライン実行は、通常、パイプラインで定義したパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行するには、手動で行う方法と "_トリガー_" を使用する方法があります。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory サービス バージョン 1 を使用している場合は、[ バージョン 1 でのスケジュールと実行](v1/data-factory-scheduling-and-execution.md)に関する記事を参照してください。
 
 ## <a name="manual-execution-on-demand"></a>手動での実行 (オンデマンド)
 パイプラインの手動での実行は、"_オンデマンド_" 実行とも呼ばれます。
@@ -136,7 +133,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > .NET SDK を使用すると、Azure Functions や独自の Web サービスなどから Data Factory パイプラインを呼び出すことができます。
 
 <h2 id="triggers">トリガー実行</h2>
-トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 2 種類のトリガーをサポートしています。
+トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 3 種類のトリガーがサポートされています。
 
 - スケジュール トリガー: 実時間のスケジュールによってパイプラインを起動するトリガー。
 

@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: v-geberr
-ms.openlocfilehash: c31e7d130d02ab6b0fad7577026e557692c2b60e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 317d5b37b90f6c436e3cecf0486d587f54960598
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285952"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316544"
 ---
 # <a name="tutorial-use-regular-expression-entity"></a>チュートリアル: 正規表現のエンティティを使用する
 このチュートリアルでは、**正規表現**のエンティティを使用して、発話から一貫した書式のデータを抽出する方法を示すアプリを作成します。
@@ -28,10 +28,10 @@ ms.locfileid: "36285952"
 > * アプリをトレーニングして、公開する
 > * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
 
-この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
+この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
 
 ## <a name="before-you-begin"></a>開始する前に
-事前構築済みエンティティの[カスタム ドメイン](luis-tutorial-prebuilt-intents-entities.md) チュートリアルからの人事アプリを保持していない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) Github リポジトリから JSON を [LUIS][LUIS] Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。
+事前構築済みエンティティの[カスタム ドメイン](luis-tutorial-prebuilt-intents-entities.md) チュートリアルからの人事アプリを保持していない場合は、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) GitHub リポジトリから JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。
 
 元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`regex` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
 
@@ -244,6 +244,3 @@ LUIS はこの要求の処理を完了しています。 チャットボット�
 > [!div class="nextstepaction"]
 > [KeyPhrase エンティティについて確認する](luis-quickstart-intent-and-key-phrase.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

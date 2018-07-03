@@ -7,104 +7,98 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: d000637312619fc493e2f7bad8e8edf0d8d0d94b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265336"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958431"
 ---
 # <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>チュートリアル: 意図の予測と共に感情を返すアプリを作成する
 このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 階層エンティティおよびコンテキストから学習された子とは 
-> * Bookflight 意図の旅行ドメイン用の新しい LUIS アプリを作成する
-> * _None_ 意図を追加し、発話の例を追加する
-> * 出発地と目的地の子を持つ場所階層エンティティを追加する
+> * センチメント分析を理解する
+> * 人事 (HR) ドメインで LUIS アプリを使用する 
+> * センチメント分析を追加する
 > * アプリをトレーニングして公開する
-> * アプリのエンドポイントのクエリを行って、階層の子を含む LUIS JSON の応答を確認する 
+> * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する 
 
 この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS][LUIS] アカウントが必要です。
+
+## <a name="before-you-begin"></a>開始する前に
+[keyPhrase エンティティ](luis-quickstart-intent-and-key-phrase.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) GitHub リポジトリにあります。
+
+元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`sentiment` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 感情分析は、ユーザーの発話がポジティブ、ネガティブ、またはニュートラルかを判断する機能です。 
 
 以下の発話は、感情の例を示しています。
 
-|感情とスコア|発話|
-|:--|--|
-|ポジティブ - 0.89 |スープとサラダ コンボが美味しかった。|
-|ネガティブ - 0.07 |ディナー サービスの前菜が好きじゃなかった。|
+|センチメント|Score|発話|
+|:--|:--|:--|
+|ポジティブ|0.91 |John W. Smith はパリのプレゼンテーションで大活躍だった。|
+|ポジティブ|0.84 |jill-jones@mycompany.com は Parker への売り込みですばらしい働きをした。|
 
-感情分析は、どの発話にも適用されるアプリ設定として用意されています。 発話の中に感情を示す単語を見つけて、ラベル付けする必要はありません。 LUIS がユーザーに代わってこれを行います。
+センチメント分析は、どの発話にも適用されるアプリ設定です。 発話の中にセンチメントを表す単語を見つけて、ラベル付けする必要はありません。発話全体にセンチメント分析が適用されるためです。 
 
-## <a name="create-a-new-app"></a>新しいアプリの作成
-1. [LUIS][LUIS] Web サイトにログインします。 LUIS エンドポイントを公開する必要がある[リージョン][LUIS-regions]にログインします。
+## <a name="add-employeefeedback-intent"></a>EmployeeFeedback 意図を追加する 
+新しい意図を追加して、会社のメンバーから従業員のフィードバックをキャプチャします。 
 
-2. [LUIS][LUIS] Web サイトで **[新しいアプリの作成]** を選びます。 
+1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーにある **[ビルド]** を選択すると、このセクションに変更できます。 
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png "アプリ リスト ページのスクリーンショット")](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png#lightbox)
+    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
 
-3. **[新しいアプリの作成]** ダイアログ ボックスで、アプリに `Restaurant Reservations With Sentiment` という名前を付けて、**[完了]** をクリックします。 
+2. **[Create new intent]\(意図の新規作成\)** を選択します。
 
-    ![[新しいアプリの作成] ダイアログ ボックスの画像](./media/luis-quickstart-intent-and-sentiment-analysis/create-app-ddl.png)
+    [ ![右上のナビゲーション バーにある [ビルド] が強調表示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
-    アプリの作成プロセスが完了すると、LUIS に None 意図を含む意図リストが表示されます。
+3. 新しい意図の名前として「`EmployeeFeedback`」と入力します。
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png "[Intents lists]\(意図リスト\) ページのスクリーンショット")](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png#lightbox)
+    ![名前として EmployeeFeedback が指定された [Create new intent]\(意図の新規作成\) ダイアログ ボックス](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
-## <a name="add-a-prebuilt-domain"></a>事前構築済みのドメインの追加
-意図、エンティティ、およびラベル付けされた発話を迅速に追加できるように、事前構築済みのドメインを追加します。
+4. 良い仕事をした従業員や改善が必要な領域を示す発話をいくつか追加します。
 
-1. 左側のメニューから **[Prebuilt Domains]** \(事前構築済みドメイン\) を選択します。
+    この人事アプリでは、従業員がリスト エンティティ `Employee` で、名前、メール、電話の内線番号、携帯電話番号、および米国連邦政府の社会保障番号によって定義されていることに注意してください。 
 
-    [ ![[Prebuilt Domains]\(事前構築済みドメイン\) ボタンのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-expanded.png#lightbox)
+    |発話|
+    |--|
+    |425-555-1212 は産休から復帰した同僚を迎えるときに良い仕事をした|
+    |234-56-7891 は、悲しみにくれている同僚を上手く慰めた。|
+    |jill-jones@mycompany.com は、事務処理に必要な請求書の一部を用意できていなかった。|
+    |john.w.smith@mycompany.com は、必要なフォームの提出が 1 か月遅れたうえ、そのフォームには署名がなかった|
+    |x23456 は、重要なマーケティング オフサイト ミーティングに参加しなかった。|
+    |x12345 は、6 月レビュー会議に出席しなかった。|
+    |Jill Jones はハーバードでの売り込みを上手くこなした|
+    |John W. Smith はスタンフォードのプレゼンテーションで大活躍だった|
 
-2. **RestaurantReservation** 事前構築ドメインの **[ドメインの追加]** を選択します。 ドメインが追加されるまで待機します。
-
-    [ ![[Prebuilt Domains]\(事前構築済みドメイン\) リストのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-expanded.png#lightbox)
-
-3. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。 この事前構築ドメインには 1 つの意図があります。
-
-    [ ![左側のナビゲーションの [Intents]\(意図\) が強調表示された事前構築済みドメインのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png#lightbox)
-
-4.  **RestaurantReservation.Reserve** 意図を選択します。 
-
-    [ ![RestaurantReservation.Reserve が強調表示された [Intents lists]\(意図リスト\) のスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png#lightbox)
-
-5. **[エンティティの表示]** を切り替えると、ラベル付けされたドメイン固有のエンティティを示した多数の発話が表示されます。
-
-    [ ![[トークン] ビューに切り替えられた [エンティティの表示] が強調表示された RestaurantReservation.Reserve 意図のスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-expanded.png#lightbox)
+    [ ![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
-LUIS は、意図やエンティティ (モデル) に対する変更を、トレーニングされるまで認識しません。 
+LUIS は、トレーニングされるまで、新しい意図やその発話の例を認識しません。 
 
 1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。
 
-    ![強調表示されている [Train]\(トレーニング\) のスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/train-button-expanded.png)
+    ![強調表示されている [Train]\(トレーニング\) のスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
 
 2. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、トレーニングは完了しています。
 
-    ![トレーニングの成功を示す通知バーのスクリーンショット ](./media/luis-quickstart-intent-and-sentiment-analysis/trained-expanded.png)
+    ![トレーニングの成功を示す通知バーのスクリーンショット ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-trained-inline.png)
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>感情分析を含むアプリを構成する
-**[Publish]\(公開\)** ページで、感情分析が有効になっています。 
+**[Publish]\(公開\)** ページで、センチメント分析を構成します。 
 
 1. 右上のナビゲーションで **[Publish]\(公開\)** を選択します。
 
-    ![[Publish]\(公開\) ボタンが展開された [Intents]\(意図\) ページのスクリーンショット ](./media/luis-quickstart-intent-and-sentiment-analysis/publish-expanded.png)
+    ![[Publish]\(公開\) ボタンが展開された [Intents]\(意図\) ページのスクリーンショット ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. **[Enable Sentiment Analysis]\(感情分析を有効にする\)** を選択します。
+2. **[Enable Sentiment Analysis]\(感情分析を有効にする\)** を選択します。 [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
-    ![[Enable Sentiment Analysis]\(感情分析を有効にする\) が強調表示された [Publish]\(公開\) ページのスクリーンショット ](./media/luis-quickstart-intent-and-sentiment-analysis/enable-sentiment-expanded.png)
-
-3. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
-
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-inline.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
 
 4. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
@@ -112,34 +106,102 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
 
-    ![エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット](media/luis-quickstart-intent-and-sentiment-analysis/endpoint-url-inline.png)
+    ![エンドポイントの URL が強調表示された [Publish]\(公開\) ページのスクリーンショット](media/luis-quickstart-intent-and-sentiment-analysis/hr-endpoint-url-inline.png)
 
-2. アドレスの URL の末尾に移動し、「`Reserve table for  10 on upper level away from kitchen`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `RestaurantReservation.Reserve` 意図を返す必要があります。
+2. アドレスの URL の末尾に移動し、「`Jill Jones work with the media team on the public portal was amazing`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
 
 ```
 {
-  "query": "Reserve table for 10 on upper level away from kitchen",
+  "query": "Jill Jones work with the media team on the public portal was amazing",
   "topScoringIntent": {
-    "intent": "RestaurantReservation.Reserve",
-    "score": 0.9926384
+    "intent": "EmployeeFeedback",
+    "score": 0.4983256
   },
   "intents": [
     {
-      "intent": "RestaurantReservation.Reserve",
-      "score": 0.9926384
+      "intent": "EmployeeFeedback",
+      "score": 0.4983256
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.06617523
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.04631853
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0103248553
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.007531875
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00344597152
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00337914471
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0026357458
     },
     {
       "intent": "None",
-      "score": 0.00961109251
+      "score": 0.00214573368
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00157622492
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 7.379545E-05
     }
   ],
-  "entities": [],
+  "entities": [
+    {
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 0,
+      "endIndex": 9,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "media team",
+      "type": "builtin.keyPhrase",
+      "startIndex": 25,
+      "endIndex": 34
+    },
+    {
+      "entity": "public portal",
+      "type": "builtin.keyPhrase",
+      "startIndex": 43,
+      "endIndex": 55
+    },
+    {
+      "entity": "jill jones",
+      "type": "builtin.keyPhrase",
+      "startIndex": 0,
+      "endIndex": 9
+    }
+  ],
   "sentimentAnalysis": {
-    "label": "neutral",
-    "score": 0.5
+    "label": "positive",
+    "score": 0.8694164
   }
 }
 ```
+
+sentimentAnalysis はポジティブで、スコアは 0.86 です。 
 
 ## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
 感情分析が有効になったこのアプリでは、、自然言語クエリの意図を識別し、感情全体をスコアとして含むデータを抽出しました。 

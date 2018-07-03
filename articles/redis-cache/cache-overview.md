@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195874"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062761"
 ---
 # <a name="what-is-azure-redis-cache"></a>Azure Redis Cache とは
 
@@ -33,7 +33,7 @@ Azure Redis Cache を使用すると、セキュリティで保護された専�
 
 アプリケーションのアーキテクチャをサポートするため、またはアプリケーションのパフォーマンスを向上させるために、Redis Cache が使用される多数の共通パターンがあります。 次に、最も一般的なものをいくつか示します。
 
-| パターン      | [説明]                                        |
+| パターン      | 説明                                        |
 | ------------ | -------------------------------------------------- |
 | [キャッシュ アサイド](cache-web-app-cache-aside-leaderboard.md) | データベースが大規模になる場合があるため、データベース全体をキャッシュに読み込む方法は、推奨されません。 [キャッシュ アサイド](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) パターンを使用して、必要な場合にだけデータ項目をキャッシュに読み込むのが一般的です。 システムでバックエンド データへの変更が行われた場合、その時点で、他のクライアントと共に配布されるキャッシュも更新できます。 さらに、システムでは、データ項目の有効期限を設定したり、削除ポリシーを使用してデータを更新し、キャッシュへの再読み込みを行ったりすることが可能です。|
 | [コンテンツ キャッシュ](cache-aspnet-output-cache-provider.md) | ほとんどの Web ページは、ヘッダー、フッター、ツールバー、メニューなどを含むテンプレートから生成されます。テンプレートは、実際には頻繁に変更されることはなく、動的に生成されるものではありません。 Azure Redis Cache などのメモリ内キャッシュを使用すると、バックエンド データストアと比較して、Web サーバーからこの種類の静的コンテンツに迅速にアクセスできます。 このパターンでは、コンテンツを動的に生成するために必要な処理時間とサーバー負荷を軽減します。 これにより、Web サーバーの応答性が高まり、負荷に対処するために必要なサーバー数を減らすことができます。 Azure Redis Cache は、このパターンをサポートするための Redis Output Cache Provider を ASP.NET に提供しています。|
@@ -45,7 +45,7 @@ Azure Redis Cache を使用すると、セキュリティで保護された専�
 
 Azure Redis Cache は以下のレベルでご利用いただけます。
 
-| レベル | [説明] |
+| レベル | 説明 |
 |---|---|
 Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB ～ 53 GB) をサポートします。 これは、開発/テスト、およびクリティカルではない負荷に最適なレベルです。 Basic レベルには、サービス レベル アグリーメント (SLA) はありません。 |
 | 標準 | Microsoft が管理しているプライマリとセカンダリの 2 つのノード構成にレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%)。 |
@@ -77,6 +77,7 @@ Basic | 単一ノード キャッシュ。 このレベルでは、複数のメ�
 
 * [ASP.NET Web アプリ クイックスタート](cache-web-app-howto.md)Azure Redis Cache を使用する単純な ASP.NET Web アプリを作成する
 * [.NET クイックスタート](cache-dotnet-how-to-use-azure-redis-cache.md)Azure Redis Cache を使用する .NET Web アプリを作成する
+* [.NET Core クイック スタート](cache-dotnet-core-quickstart.md)Azure Redis Cache を使用する .NET Core アプリを作成する
 * [Node.js クイックスタート](cache-nodejs-get-started.md)Azure Redis Cache を使用する単純な Node.js アプリを作成する
 * [Java クイックスタート](cache-java-get-started.md)Azure Redis Cache を使用する単純な Java アプリを作成する
 * [Python クイックスタート](cache-python-get-started.md)Azure Redis Cache を使用する Python アプリを作成する

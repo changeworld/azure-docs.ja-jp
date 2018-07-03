@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e32fa771595fdc4bf5fe54ec14630961d467d40f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c9cc94cbfb7575181a65cf21fdd8d19d2fd818f7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176876"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049782"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -29,9 +29,6 @@ ms.locfileid: "32176876"
 > * Spark アクティビティを使用するパイプラインを作成します。
 > * パイプラインの実行をトリガーする。
 > * パイプラインの実行を監視します。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -98,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-5. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
+5. **[バージョン]** で、**[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 
 
    現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
@@ -142,7 +139,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![[Azure HDInsight] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
 2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を完了します。 
 
-   a. **[名前]** に「**AzureHDInsightLinkedService**」と入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureHDInsightLinkedService**」と入力します。
    
    b. **[Type]\(タイプ\)** で **[On-demand HDInsight]\(オンデマンド HDInsight\)** が選択されていることを確認します。
    
@@ -181,14 +178,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![Spark アクティビティのドラッグ](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
 3. 下部の **Spark** アクティビティ ウィンドウのプロパティで、次の手順を完了します。 
 
-   a. **[HDI Cluster]\(HDI クラスター\)** タブに切り替えます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDI Cluster]\(HDI クラスター\)** タブに切り替えます。
    
    b. (前の手順で作成した) **AzureHDInsightLinkedService** を選択します。 
         
    ![HDInsight のリンクされたサービスの指定](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 4. **[Script/Jar]\(スクリプト/Jar\)** タブに切り替えて、次の手順を実行します。 
 
-   a. **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureStorage1]** を選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Job Linked Service]\(ジョブのリンクされたサービス\)** で **[AzureStorage1]** を選択します。
    
    b. **[ストレージを参照]** を選択します。
 

@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284576"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048028"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [バージョン 2 - プレビュー](quickstart-create-data-factory-copy-data-tool.md)
+> * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [現在のバージョン](quickstart-create-data-factory-copy-data-tool.md)
 
 このクイック スタートでは、Azure Portal を使用してデータ ファクトリを作成します。 次に、データのコピー ツールを使用して、Azure Blob Storage 内のフォルダーから別のフォルダーにデータをコピーするパイプラインを作成します。 
 
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。 
->
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されているサービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事を参照してください。
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,7 +49,7 @@ ms.locfileid: "36284576"
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
+4. **[バージョン]** で、**[V2]** を選択します。
 5. **[場所]** で、データ ファクトリの場所を選択します。 
 
    このリストに表示されるのは、サポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所/リージョンに配置できます。
@@ -77,7 +74,7 @@ ms.locfileid: "36284576"
    ![[プロパティ] ページ](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
 3. **[ソース データ ストア]** ページで、次の手順を実行します。
 
-    a. **[+ 新しい接続の作成]** をクリックして、接続を追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+ 新しい接続の作成]** をクリックして、接続を追加します。
 
     ![[ソース データ ストア] ページ](./media/quickstart-create-data-factory-copy-data-tool/new-source-linked-service.png)
 
@@ -85,7 +82,7 @@ ms.locfileid: "36284576"
 
     ![ギャラリーからの Blob Storage の選択](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. **[Specify the Azure Blob storage account]\(Azure BLOB ストレージ アカウントの指定\)** ページで、**[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、**[次へ]** をクリックします。 
+    c. **[Specify the Azure Blob storage account]\(Azure BLOB ストレージ アカウントの指定\)** ページで、**[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、**[完了]** をクリックします。 
 
    ![Azure BLOB ストレージ アカウントの構成](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
@@ -96,7 +93,7 @@ ms.locfileid: "36284576"
 
 4. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
 
-   a. **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、**[選択]** をクリックします。 
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、**[選択]** をクリックします。 
 
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
 

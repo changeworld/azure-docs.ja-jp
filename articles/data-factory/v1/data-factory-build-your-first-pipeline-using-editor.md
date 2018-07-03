@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 75139e39c3391a7662e3d02ee8d56463ac9fcc7a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e57a2e72479d36908ef1e9f537506bb67ae311fe
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406560"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048409"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "31406560"
 
 
 > [!NOTE]
-> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用する場合は、[Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイックスタート](../quickstart-create-data-factory-dot-net.md)を参照してください。
+> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用する場合は、[Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 
@@ -149,15 +149,15 @@ ms.locfileid: "31406560"
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    |:--- |:--- |
    | clusterSize |HDInsight クラスターのサイズを指定します。 |
    | timeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
-   | 既定のコンテナー | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
+   | linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
 
     以下の点に注意してください。
 
-     a. データ ファクトリは、JSON プロパティで Linux ベースの HDInsight クラスターを自動的に作成します。 詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
+     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 データ ファクトリは、JSON プロパティで Linux ベースの HDInsight クラスターを自動的に作成します。 詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
      b. オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
 
@@ -210,13 +210,13 @@ ms.locfileid: "31406560"
     ```
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    |:--- |:--- |
-   | 型 |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
-   | 既定のコンテナー |前に作成した AzureStorageLinkedService を参照します。 |
+   | type |データは BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
+   | linkedServiceName |前に作成した AzureStorageLinkedService を参照します。 |
    | folderPath | BLOB コンテナーと、入力 BLOB を格納するフォルダーを指定します。 | 
    | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log ファイルのみが処理されます。 |
-   | 型 |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
+   | type |ログ ファイルはテキスト形式です。そのため、**TextFormat** を使用します。 |
    | columnDelimiter |ログ ファイル内の列はコンマ (`,`) で区切られています。 |
    | frequency/interval |frequency を **Month** に設定し、interval を **1** に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
    | external | このパイプラインによって入力データが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルでは、input.log ファイルはこのパイプラインで生成されないため、プロパティを **true** に設定します。 |
@@ -335,7 +335,7 @@ ms.locfileid: "31406560"
    >
 3. 次のことを確認します。
 
-   a. BLOB ストレージの **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 BLOB ストレージの **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
 
    b. BLOB ストレージの **adfgetstarted** コンテナーの **script** フォルダーに **partitionweblogs.hql** ファイルが存在すること。 これらのファイルがない場合は、[チュートリアルの概要](data-factory-build-your-first-pipeline.md)に関するページの「前提条件」の手順を実行してください。
 
@@ -437,7 +437,7 @@ ms.locfileid: "31406560"
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL Database にデータをコピーする方法については、[から SQL Database にデータをコピーする操作のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)のページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事は、Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法について理解するのに役立ちます。 |
 | [データセット](data-factory-create-datasets.md) |この記事は、Data Factory のデータセットについて理解するのに役立ちます。 |

@@ -3,7 +3,7 @@ title: Azure Data Factory を使ってテーブルを増分コピーする | Mic
 description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,21 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: 75d291c10f732f2d18fb78b0262c42052acc713e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: yexu
+ms.openlocfilehash: 6d63a443da0fd331d02039ed3a3715dbc59f273b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406492"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051469"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
-
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開されている Data Factory サービスのバージョン 1 を使用する場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
-
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -173,7 +168,7 @@ END
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。      
@@ -303,7 +298,7 @@ END
 24. パイプライン デザイナーで **[ストアド プロシージャ アクティビティ]** を選択し、その名前を **StoredProceduretoWriteWatermarkActivity** に変更します。 
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]* \* を選択します。 
+25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]* を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 

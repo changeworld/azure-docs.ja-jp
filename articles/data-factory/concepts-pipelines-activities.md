@@ -11,29 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 564ed357a838e5e0c3e6db869eefafb7925e155b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 001fefef900a0dd468f8deb8d705c308d8149f71
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261502"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055181"
 ---
-# <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ 
+# <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-create-pipelines.md)
-> * [バージョン 2 - プレビュー](concepts-pipelines-activities.md)
+> * [Version 1](v1/data-factory-create-pipelines.md)
+> * [現在のバージョン](concepts-pipelines-activities.md)
 
 この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して、データ移動シナリオやデータ処理シナリオ用のエンド ツー エンドのデータ主導ワークフローを作成する方法について説明します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプライン](v1/data-factory-create-pipelines.md)に関する記事をご覧ください。
-> 
-> この記事では、「[Introduction to Azure Data Factory (Azure Data Factory の概要)](introduction.md)」と[クイック スタート チュートリアル](quickstart-create-data-factory-powershell.md)に関する記事が確認済みであることを前提としています。
-
 ## <a name="overview"></a>概要
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 たとえば、ログ データを取り込んでクリーニングしてから、HDInsight クラスター上で Spark ジョブを開始してそのログ データを分析するアクティビティのセットをパイプラインに組み込むこともできます。 パイプラインの長所は、アクティビティを個別にではなく、セットとして管理できることです。 たとえば、デプロイとスケジュール設定を、アクティビティごとではなく、パイプライン単位で行うことができます。  
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 たとえば、ログ データを取り込んでクリーニングしてから、HDInsight クラスター上で Spark ジョブを開始してそのログ データを分析するアクティビティのセットをパイプラインに組み込むこともできます。 パイプラインの長所は、アクティビティを個別にではなく、セットとして管理できることです。 たとえば、デプロイとスケジュール設定を、アクティビティごとではなく、パイプライン単位で行うことができます。
 
 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミス SQL Server から Azure Blob Storage にデータをコピーできます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、2 番目のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーします。
 
@@ -64,7 +59,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 
-詳細については、[データ変換アクティビティ](transform-data.md)に関する記事を参照してください。 
+詳細については、[データ変換アクティビティ](transform-data.md)に関する記事を参照してください。
 
 ## <a name="control-activities"></a>制御アクティビティ
 次の制御フロー アクティビティがサポートされています。
@@ -73,20 +68,20 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 ---------------- | -----------
 [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
 [ForEachActivity](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
-[WebActivity](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
-[ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
-[メタデータの取得アクティビティ](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 
+[WebActivity](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
+[ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。
+[メタデータの取得アクティビティ](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。
 [Until アクティビティ](control-flow-until-activity.md) | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。
 [If Condition アクティビティ](control-flow-if-condition-activity.md) | If Condition は、true または false として評価される条件に基づき分岐を行うために使用できます。 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。
-[Wait アクティビティ](control-flow-wait-activity.md) | パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
+[Wait アクティビティ](control-flow-wait-activity.md) | パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。
 
 ## <a name="pipeline-json"></a>パイプライン JSON
-パイプラインを JSON 形式で定義する方法を示します。 
+パイプラインを JSON 形式で定義する方法を示します。
 
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description": "pipeline description",
         "activities":
@@ -114,7 +109,7 @@ parameters | **parameters** セクションでは、パイプライン内に 1 �
 ```json
 {
     "name": "Execution Activity Name",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
     "typeProperties":
     {
@@ -142,7 +137,7 @@ policy | アクティビティの実行時の動作に影響するポリシー�
 dependsOn | このプロパティを使用して、アクティビティの依存関係と、後続のアクティビティが前のアクティビティにどのように依存するかを定義します。 詳細については、「[アクティビティの依存関係](#activity-dependency)」を参照してください | いいえ 
 
 ### <a name="activity-policy"></a>アクティビティ ポリシー
-ポリシーはアクティビティの実行時の動作に影響します。これによって、構成機能のオプションが得られます。 アクティビティ ポリシーは実行アクティビティ専用です。 
+ポリシーはアクティビティの実行時の動作に影響します。これによって、構成機能のオプションが得られます。 アクティビティ ポリシーは実行アクティビティ専用です。
 
 ### <a name="activity-policy-json-definition"></a>アクティビティ ポリシー JSON 定義
 
@@ -160,7 +155,8 @@ dependsOn | このプロパティを使用して、アクティビティの依�
          "policy": {
             "timeout": "00:10:00",
             "retry": 1,
-            "retryIntervalInSeconds": 60
+            "retryIntervalInSeconds": 60,
+            "secureOutput": true
          }
         }
       ],
@@ -175,6 +171,7 @@ JSON での名前 | 説明 | 使用できる値 | 必須
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
 retry | 最大再試行回数 | 整数 | いいえ。 既定値は 0 です
 retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 20 秒です
+secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、ログが監視に記録されません。 | ブール | いいえ。 既定値は false です。
 
 ### <a name="control-activity"></a>制御アクティビティ
 制御アクティビティには、次のような最上位構造があります。
@@ -182,7 +179,7 @@ retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いい�
 ```json
 {
     "name": "Control Activity Name",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
     "typeProperties":
     {
@@ -195,14 +192,14 @@ retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いい�
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\" | はい</li><ul> 
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\" | はい</li><ul>
 description  | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ 
 dependsOn | このプロパティを使用して、アクティビティの依存関係と、後続のアクティビティが前のアクティビティにどのように依存するかを定義します。 詳細については、「[アクティビティの依存関係](#activity-dependency)」を参照してください。 | いいえ 
 
 ### <a name="activity-dependency"></a>アクティビティの依存関係
-アクティビティの依存関係では、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。 
+アクティビティの依存関係では、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。
 
 さまざまな依存関係の条件には、Succeeded、Failed、Skipped、Completed があります。
 
@@ -218,7 +215,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description": "pipeline description",
         "activities": [
@@ -293,7 +290,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
       }
     ]
   }
-} 
+}
 ```
 以下の点に注意してください。
 
@@ -350,17 +347,17 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 
 **typeProperties** セクションは、変換アクティビティごとに異なります。 変換アクティビティでサポートされる typeProperties については、「[データ変換アクティビティ](#data-transformation-activities)」で変換アクティビティをクリックしてください。
 
-このパイプライン作成の完全なチュートリアルについては、「[Tutorial: transform data using Spark (チュートリアル: Spark を使用してデータを変換する)](tutorial-transform-data-spark-powershell.md)」を参照してください。 
+このパイプライン作成の完全なチュートリアルについては、「[Tutorial: transform data using Spark (チュートリアル: Spark を使用してデータを変換する)](tutorial-transform-data-spark-powershell.md)」を参照してください。
 
 ## <a name="multiple-activities-in-a-pipeline"></a>パイプライン内の複数アクティビティ
-前の 2 つのサンプル パプラインには 1 つのアクティビティしか含まれていません。 パイプラインに複数のアクティビティを含めることができます。 1 つのパイプラインに複数のアクティビティがあり、後続のアクティビティが前のアクティビティに依存していない場合、これらのアクティビティは並列に実行されることもあります。 
+前の 2 つのサンプル パプラインには 1 つのアクティビティしか含まれていません。 パイプラインに複数のアクティビティを含めることができます。 1 つのパイプラインに複数のアクティビティがあり、後続のアクティビティが前のアクティビティに依存していない場合、これらのアクティビティは並列に実行されることもあります。
 
-[アクティビティの依存関係](#activity-dependency)を使用して、2 つのアクティビティを連鎖させることができます。アクティビティの依存関係は、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。 
+[アクティビティの依存関係](#activity-dependency)を使用して、2 つのアクティビティを連鎖させることができます。アクティビティの依存関係は、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。
 
 ## <a name="scheduling-pipelines"></a>パイプラインのスケジュール設定
-パイプラインは、トリガーによってスケジュール設定されます。 さまざまな種類のトリガーがあります。スケジューラ トリガーを使用すると、パイプラインを実時間のスケジュールでトリガーできます。手動トリガーを使用すると、パイプラインはオンデマンドでトリガーされます。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。 
+パイプラインは、トリガーによってスケジュール設定されます。 さまざまな種類のトリガーがあります。スケジューラ トリガーを使用すると、パイプラインを実時間のスケジュールでトリガーできます。手動トリガーを使用すると、パイプラインはオンデマンドでトリガーされます。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
 
-トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込む必要があります。 パイプラインとトリガーには n-m の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 トリガーを定義し終えたらそのトリガーを開始して、パイプラインのトリガーを開始させる必要があります。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。 
+トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込む必要があります。 パイプラインとトリガーには n-m の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 トリガーを定義し終えたらそのトリガーを開始して、パイプラインのトリガーを開始させる必要があります。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
 
 たとえば、スケジューラ トリガー “Trigger A” があり、それによってパイプライン “MyCopyPipeline” を開始させるとします。 次の例のようにこのトリガーを定義します。
 
@@ -391,7 +388,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 
 
 ## <a name="next-steps"></a>次の手順
-アクティビティを使用してパイプラインを作成する詳しい手順については、次のチュートリアルを参照してください。 
+アクティビティを使用してパイプラインを作成する詳しい手順については、次のチュートリアルを参照してください。
 
 - [Build a pipeline with a copy activity (コピー アクティビティを含むパイプラインの作成)](quickstart-create-data-factory-powershell.md)
 - [データ変換アクティビティを含むパイプラインの作成](tutorial-transform-data-spark-powershell.md)

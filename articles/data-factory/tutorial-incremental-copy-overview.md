@@ -3,7 +3,7 @@ title: Azure Data Factory を使用してデータを増分コピーする | Mic
 description: これらのチュートリアルでは、ソース データ ストアからターゲット データ ストアにデータを増分コピーする方法について説明します。 1 つ目は、単一のテーブルからデータをコピーするものです。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: shlo
-ms.openlocfilehash: 7265e20bf89cc9dbc1c44e568e779f2d13f87685
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: bb6cfc6575bdbe83aeb258069a9c239147d30bca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30174731"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049181"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 
-データ統合ソリューションでは、初回のフル データ読み込みの後、増分 (または差分) データを読み込む手法が広く利用されています。 このセクションの各チュートリアルでは、Azure Data Factory バージョン 2 を使用して、データを増分読み込みするさまざまな方法を紹介しています。
+データ統合ソリューションでは、初回のフル データ読み込みの後、増分 (または差分) データを読み込む手法が広く利用されています。 このセクションの各チュートリアルでは、Azure Data Factory を使用して、データを増分読み込みするさまざまな方法を紹介しています。
 
 ## <a name="delta-data-loading-by-using-a-watermark"></a>基準値を使用した差分データの読み込み
 このケースでは、ソース データベースにおける基準値を定義します。 基準値とは、最終更新タイムスタンプやインクリメントされるキーを格納する列のことです。 差分読み込みソリューションでは、古い基準値から新しい基準値までの間に生じた変更済みのデータが読み込まれます。 このアプローチのワークフローを表したのが次の図です。 
@@ -34,7 +34,6 @@ ms.locfileid: "30174731"
 - [Azure SQL Database 内の 1 つのテーブルから Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-powershell.md)
 - [オンプレミスの SQL Server にある複数のテーブルから Azure SQL Database にデータを増分コピーする](tutorial-incremental-copy-multiple-tables-powershell.md)
 
-
 ## <a name="delta-data-loading-by-using-the-change-tracking-technology"></a>Change Tracking テクノロジを使用した差分データの読み込み
 Change Tracking テクノロジは、SQL Server と Azure SQL Database において、アプリケーションのための効率的な変更追跡メカニズムとなる軽量ソリューションです。 挿入、更新、削除されたデータをアプリケーションから簡単に特定することができます。 
 
@@ -44,7 +43,6 @@ Change Tracking テクノロジは、SQL Server と Azure SQL Database におい
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 [Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
-
 
 ## <a name="next-steps"></a>次の手順
 次のチュートリアルに進みます。 

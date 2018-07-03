@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge Python チュートリアル | Microsoft Docs
-description: このチュートリアルでは、Python コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します
+title: Azure IoT Edge Node.js チュートリアル | Microsoft Docs
+description: このチュートリアルでは、Node.js コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します
 services: iot-edge
 author: shizn
 manager: timlt
@@ -9,19 +9,19 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
+ms.openlocfilehash: cdcd30ea29c5c7066a6ae05f64b5bf0720572599
 ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063124"
+ms.locfileid: "37061266"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Python IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Node.js IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows][lnk-quickstart-win] または [Linux][lnk-quickstart-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルで学習する内容は次のとおりです。    
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルで学習する内容は次のとおりです。    
 
 > [!div class="checklist"]
-> * Visual Studio Code を使用して IoT Edge Python モジュールを作成する
+> * Visual Studio Code を使用して IoT Edge Node.js モジュールを作成する
 > * Visual Studio Code と Docker を使用して Docker イメージを作成し、レジストリに発行する 
 > * モジュールを IoT Edge デバイスにデプロイする
 > * 生成されたデータを表示する
@@ -31,16 +31,13 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 * [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートで作成した Azure IoT Edge デバイス。
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [Visual Studio Code 用 の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。 
 * [Docker](https://docs.docker.com/engine/installation/)。Visual Studio Code が含まれるコンピューターに必要です。 このチュートリアルには、Community Edition (CE) で十分です。 
-* [Python](https://www.python.org/downloads/)。
-* Python パッケージをインストールするための [Pip](https://pip.pypa.io/en/stable/installing/#installation) (通常は、Python のインストールに含まれています)。
+* [Node.js および npm](https://nodejs.org)。 npm は、Node.js を使用して配布されます。つまり、Node.js をダウンロードすると、お使いのコンピューターに npm が自動的にインストールされます。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 このチュートリアルでは、VS Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
@@ -55,33 +52,33 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値を、このチュートリアルで後ほど使用します。 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
-以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、IoT Edge Python モジュールを作成する方法を示します。
+以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、IoT Edge Node.js モジュールを作成する方法を示します。
 
 ### <a name="create-a-new-solution"></a>新しいソリューションの作成
 
-Python パッケージ **cookiecutter** を使用して、ソリューションのベースにする Python ソリューション テンプレートを作成します。 
+**npm** を使用して、ソリューションのベースにする Node.js ソリューション テンプレートを作成します。 
 
 1. Visual Studio Code で、**[表示]** > **[統合ターミナル]** を選択し、VS Code 統合ターミナルを開きます。
 
-2. 統合ターミナルで、次のコマンドを入力して、**cookiecutter** をインストール (または更新) します。これは、VS Code で Edge ソリューション テンプレートを作成するときに使用します。
+2. 統合ターミナルで、次のコマンドを入力して、**yeoman** および Node.js Azure IoT Edge モジュールのジェネレーターをインストールします。 
 
     ```cmd/sh
-    pip install --upgrade --user cookiecutter
+    npm install -g yo generator-azure-iot-edge-module
     ```
 
 3. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
-4. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、指示に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
+3. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、指示に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 
-5. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
+4. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
    1. ソリューションの作成先フォルダーを選択します。 
    2. ソリューションの名前を指定するか、既定の **EdgeSolution** をそのまま使用します。
-   3. モジュール テンプレートとして **Python Module** を選択します。 
-   4. ご自身のモジュール **PythonModule** に名前を付けます。 
-   5. 前のセクションでご自身の最初のモジュールのイメージ リポジトリとして作成した Azure コンテナー レジストリを指定します。 **localhost:5000** を、コピーしたログイン サーバーの値に置き換えます。 最終的には、**\<registry name\>.azurecr.io/pythonmodule** のような文字列になります。
+   3. モジュール テンプレートとして **Node.js Module** を選択します。 
+   4. ご自身のモジュール **NodeModule** に名前を付けます。 
+   5. 前のセクションでご自身の最初のモジュールのイメージ リポジトリとして作成した Azure コンテナー レジストリを指定します。 **localhost:5000** を、コピーしたログイン サーバーの値に置き換えます。 最終的には、**\<registry name\>.azurecr.io/nodemodule** のような文字列になります。
  
-VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 **modules** フォルダー、配置マニフェスト テンプレート ファイル、および **.env** ファイルがあります。 
+VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 **.vscode** フォルダー、**modules** フォルダー、**.env** ファイル、および配置マニフェスト テンプレート ファイルがあります
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 
@@ -93,78 +90,66 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-各テンプレートにはサンプル コードが付属しており、シミュレートされたセンサー データが **tempSensor** モジュールから取得され、IoT ハブにルーティングされます。 このセクションでは、メッセージを送信する前に、pythonModule を展開してそのメッセージを分析するコードを追加します。 
+各テンプレートにはサンプル コードが付属しており、シミュレートされたセンサー データが **tempSensor** モジュールから取得され、IoT ハブにルーティングされます。 このセクションでは、メッセージを送信する前に、そのメッセージが NodeModule で分析されるようにするコードを追加します。 
 
-1. VS Code エクスプローラーで、**[モジュール]** > **[PythonModule]** > **[main.py]** を開きます。
+1. VS Code エクスプローラーで、**[モジュール]** > **[NodeModule]** > **[app.js]** を開きます。
 
-2. **main.py** の上部で、`json` ライブラリをインポートします。
+5. 温度のしきい値の変数を、必要な Node モジュールの下に追加します。 温度のしきい値により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。
 
-    ```python
-    import json
+    ```javascript
+    var temperatureThreshold = 30;
     ```
 
-3. グローバル カウンターで `TEMPERATURE_THRESHOLD` および `TWIN_CALLBACKS` 変数を追加します。 温度のしきい値により、データが IoT Hub に送信される基準値が設定されます。データは、マシンの測定温度がこの値を超えると送信されます。
+6. `PipeMessage` 関数全体を `FilterMessage` 関数に置き換えます。
+    
+    ```javascript
+    // This function filters out messages that report temperatures below the temperature threshold.
+    // It also adds the MessageType property to the message with the value set to Alert.
+    function filterMessage(client, inputName, msg) {
+        client.complete(msg, printResultFor('Receiving message'));
+        if (inputName === 'input1') {
+            var message = msg.getBytes().toString('utf8');
+            var messageBody = JSON.parse(message);
+            if (messageBody && messageBody.machine && messageBody.machine.temperature && messageBody.machine.temperature > temperatureThreshold) {
+                console.log(`Machine temperature ${messageBody.machine.temperature} exceeds threshold ${temperatureThreshold}`);
+                var outputMsg = new Message(message);
+                outputMsg.properties.add('MessageType', 'Alert');
+                client.sendOutputEvent('output1', outputMsg, printResultFor('Sending received message'));
+            }
+        }
+    }
 
-    ```python
-    TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = 0
     ```
 
-4. `receive_message_callback` 関数を次のコードに置き換えます。
+7. `client.on()` 関数で関数名 `pipeMessage` を `filterMessage` に置き換えます。
 
-    ```python
-    # receive_message_callback is invoked when an incoming message arrives on the specified 
-    # input queue (in the case of this sample, "input1").  Because this is a filter module, 
-    # we will forward this message onto the "output1" queue.
-    def receive_message_callback(message, hubManager):
-        global RECEIVE_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        data = json.loads(message_text)
-        if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
-            map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
-        hubManager.forward_event_to_output("output1", message, 0)
-        return IoTHubMessageDispositionResult.ACCEPTED
+    ```javascript
+    client.on('inputMessage', function (inputName, msg) {
+        filterMessage(client, inputName, msg);
+        });
     ```
 
-5. `module_twin_callback` という新しい関数を追加します。 この関数は、必要なプロパティが更新されたときに呼び出されます。
+8. 次のコード スニペットを、`client.on()` の後、`else` ステートメント内にある `client.open()` 関数コールバックにコピーします。 この関数は、必要なプロパティが更新されたときに呼び出されます。
 
-    ```python
-    # module_twin_callback is invoked when twin's desired properties are updated.
-    def module_twin_callback(update_state, payload, user_context):
-        global TWIN_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
-        data = json.loads(payload)
-        if "desired" in data and "TemperatureThreshold" in data["desired"]:
-            TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
-        if "TemperatureThreshold" in data:
-            TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
-        TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+    ```javascript
+    client.getTwin(function (err, twin) {
+        if (err) {
+            console.error('Error getting twin: ' + err.message);
+        } else {
+            twin.on('properties.desired', function(delta) {
+                if (delta.TemperatureThreshold) {
+                    temperatureThreshold = delta.TemperatureThreshold;
+                }
+            });
+        }
+    });
     ```
 
-6. `HubManager` クラスで、新しい行を `__init__` メソッドに追加して、先ほど追加した `module_twin_callback` 関数を初期化します。
-
-    ```python
-    # sets the callback when a twin's desired properties are updated.
-    self.client.set_module_twin_callback(module_twin_callback, self)
-    ```
-
-7. このファイルを保存します。
+9. このファイルを保存します。
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドする
 
-前のセクションでは、IoT Edge ソリューションを作成し、PythonModule にコードを追加しました。これにより、許容されるしきい値をマシンの温度が下回ることを報告するメッセージが除外されます。 次は、ソリューションをコンテナー イメージとしてビルドし、ご自身のコンテナー レジストリにプッシュする必要があります。 
+前のセクションでは、IoT Edge ソリューションを作成し、NodeModule にコードを追加しました。これにより、許容されるしきい値をマシンの温度が下回ることを報告するメッセージが除外されます。 次は、ソリューションをコンテナー イメージとしてビルドし、ご自身のコンテナー レジストリにプッシュする必要があります。 
 
 1. Visual Studio Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。これにより、ご自身のモジュール イメージを ACR にプッシュできます。 
      
@@ -175,30 +160,28 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 2. VS Code エクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 
 
-   このファイルは、デバイス データをシミュレートする **tempSensor** と、**PythonModule** の 2 つのモジュールを配置するよう `$edgeAgent` に指示します。 `PythonModule.image` 値は、Linux amd64 バージョンのイメージに設定されます。 配置マニフェストの詳細については、[IoT Edge モジュールを使用、構成、および再利用する方法](module-composition.md)に関するページをご覧ください。
+   このファイルは、デバイス データをシミュレートする **tempSensor** と、**NodeModule** の 2 つのモジュールを配置するよう `$edgeAgent` に指示します。 `NodeModule.image` 値は、Linux amd64 バージョンのイメージに設定されます。 配置マニフェストの詳細については、[IoT Edge モジュールを使用、構成、および再利用する方法](module-composition.md)に関するページをご覧ください。
 
    このファイルには、ご自身のレジストリの資格情報も含まれています。 テンプレート ファイルには、プレースホルダーにご自身のユーザー名とパスワードが入力されています。 配置マニフェストを生成すると、フィールドは、**.env** に追加した値で更新されます。 
 
-3. PythonModule モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを `moduleContent` セクションの下部、`$edgeHub` モジュール ツインの後に挿入します。 
+4. NodeModule モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを `moduleContent` セクションの下部、`$edgeHub` モジュール ツインの後に挿入します。 
     ```json
-        "PythonModule": {
+        "NodeModule": {
             "properties.desired":{
                 "TemperatureThreshold":25
             }
         }
     ```
+5. このファイルを保存します。
+6. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
 
-4. このファイルを保存します。
+ソリューションをビルドするように Visual Studio Code に指示すると、まず、配置テンプレートの情報が Visual Studio Code に提供され、`deployment.json` ファイルが新しい **config** フォルダーに生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Node.js コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
 
-5. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
-
-ソリューションをビルドするように Visual Studio Code に指示すると、まず、配置テンプレートの情報が Visual Studio Code に提供され、`deployment.json` ファイルが新しい **config** フォルダーに生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Python コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
-
-タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで実行される `docker build` コマンドで確認できます。 イメージ アドレスは、**\<repository\>:\<version\>-\<platform\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/pythonmodule:0.0.1-amd64** になります。
+タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで実行される `docker build` コマンドで確認できます。 イメージ アドレスは、**\<repository\>:\<version\>-\<platform\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/nodemodule:0.0.1-amd64** になります。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションを配置して実行する
 
-クイック スタートで行ったように、Azure portal を使用して Python モジュールを IoT Edge デバイスに展開できますが、Visual Studio Code 内からモジュールを配置して、監視することもできます。 以降のセクションでは、前提条件で示されている VS Code の Azure IoT Edge 拡張機能が使用されます。 まだインストールしていない場合は、ここでインストールしてください。 
+クイック スタートで行ったように、Azure portal を使用して Node.ms モジュールを IoT Edge デバイスに展開できますが、Visual Studio Code 内からモジュールを配置して、監視することもできます。 以降のセクションでは、前提条件で示されている VS Code の Azure IoT Edge 拡張機能が使用されます。 まだインストールしていない場合は、ここでインストールしてください。 
 
 1. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
@@ -212,9 +195,10 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 6. ご自身の IoT Edge デバイスの名前を右クリックし、**[Create Deployment for IoT Edge device]\(IoT Edge デバイスの展開の作成\)** を選択します。 
 
-7. PythonModule を含むソリューション フォルダーに移動します。 **config** フォルダーを開いて、**deployment.json** ファイルを選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。
+7. NodeModuleを含むソリューション フォルダーに移動します。 **config** フォルダーを開いて、**deployment.json** ファイルを選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。
 
-8. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **PythonModule** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。 
+8. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **NodeModule** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。 
+
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
@@ -263,8 +247,8 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 
 <!-- Links -->
-[lnk-quickstart-win]: quickstart.md
-[lnk-quickstart-lin]: quickstart-linux.md
+[lnk-tutorial1-win]: quickstart.md
+[lnk-tutorial1-lin]: quickstart-linux.md
 
 <!-- Images -->
 [1]: ./media/tutorial-csharp-module/programcs.png

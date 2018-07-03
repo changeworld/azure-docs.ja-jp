@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ca8d5a26205e65668d46be6b558d596ab066c5f8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 02c9d3715d8c4632bf19512cd9ffee64e4a22e8a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404873"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047022"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -32,7 +32,7 @@ ms.locfileid: "31404873"
 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンのData Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 このチュートリアルでは、Visual Studio を使用して Azure データ ファクトリを作成する方法について説明します。 Data Factory プロジェクト テンプレートを使用して Visual Studio プロジェクトを作成し、JSON 形式で Data Factory のエンティティ (リンクされたサービス、データセット、パイプライン) を定義し、これらのエンティティをクラウドに発行またはデプロイできます。 
 
@@ -119,11 +119,11 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | [説明]
+    プロパティ | 説明
     -------- | ----------- 
     ClusterSize | HDInsight Hadoop クラスターのサイズを指定します。
     TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
-    既定のコンテナー | HDInsight Hadoop クラスターによって生成されるログを保存するために使用されるストレージ アカウントを指定します。 
+    linkedServiceName | HDInsight Hadoop クラスターによって生成されるログを保存するために使用されるストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
     > HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
@@ -168,12 +168,12 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-    プロパティ | [説明] |
+    プロパティ | 説明 |
     -------- | ----------- |
-    型 |データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。
-    既定のコンテナー | 前に作成した AzureStorageLinkedService1 を参照します。
+    type |データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。
+    linkedServiceName | 前に作成した AzureStorageLinkedService1 を参照します。
     fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。
-    型 | ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+    type | ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
     columnDelimiter | ログ ファイル内の列はコンマ (`,`) で区切られています。
     frequency/interval | frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。
     external | パイプラインによってアクティビティの入力データが生成されない場合は、このプロパティを true に設定します。 このプロパティは、入力データセットにのみ指定されます。 最初のアクティビティの入力データセットには、常に true を設定します。
@@ -562,7 +562,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 
 ## <a name="see-also"></a>関連項目
-| トピック | [説明] |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

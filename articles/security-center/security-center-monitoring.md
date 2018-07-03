@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティの監視 | Microsoft Docs
 description: この記事は、Azure Security Center の監視機能の使用を開始する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2018
-ms.author: yurid
-ms.openlocfilehash: 330a12f851ef0191adc4dc46102b798f1b752589
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/26/2018
+ms.author: terrylan
+ms.openlocfilehash: dc362306e20b4d39aa73a552e47cbcbd3037edbd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777715"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063393"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティ ヘルスの監視
 この記事は、Azure Security Center で監視機能を使用してポリシーに対するコンプライアンスを監視するうえで役立ちます。
@@ -32,107 +32,13 @@ ms.locfileid: "32777715"
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
-**[Prevention]\(防止\)** セクションでは、ご利用のリソースに関するセキュリティの状態を監視できます。 以下の例のように、各リソースのタイル (コンピューティング、ネットワーク、ストレージとデータ、アプリケーション) で、特定された問題の総数を確認できます。
+**[リソース正常性の監視]** では、リソースのセキュリティの状態を監視できます。 以下の例のように、各リソースのタイル (計算とアプリ、ネットワーク、データのセキュリティ、ID およびアクセス) で、特定された問題の総数を確認できます。
 
 ![[Resources security health (リソース セキュリティの正常性)] タイル](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
 
-### <a name="monitor-compute"></a>コンピューティングの監視
-**[コンピューティング]** タイルをクリックすると、次の 3 つのタブが表示されます。
-
-- **[概要]**: 監視と推奨事項です。
-- **[VM およびコンピューター]**: すべての仮想マシンとコンピューター、およびその現在のセキュリティ状態が一覧表示されます。
-- **[クラウド サービス]**: Security Center によって監視されているすべての Web および worker ロールの一覧です。
-
-![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
-
-各タブには複数のセクションを表示できます。各セクションでは、個別のオプションを選択して、特定の問題に対処するために推奨される手順の詳細を確認できます。
-
-#### <a name="monitoring-recommendations"></a>監視に関する推奨事項
-このセクションには、自動プロビジョニング用に初期化された仮想マシンとコンピューターの総数と、その現在の状態が表示されます。 この例では、**[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** という推奨事項が 1 つ存在します。  この推奨事項を選択します。
-
-![Monitoring agent health issues (エージェントの正常性の問題の監視)](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
-
-**[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** が表示されます。 Security Center で正常に監視できない VM とコンピューターが一覧表示されます。 詳細については、VM またはコンピューターを選択します。 Security Center で監視できない理由が **[監視の状態]** に表示されます。 **[監視の状態]** の値、説明、解決手順を紹介した一覧については、[Security Center トラブルシューティング ガイド](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)を参照してください。
-
-#### <a name="recommendations"></a>Recommendations
-このセクションには、Azure Security Center で監視される[各仮想マシンとコンピューターについての推奨事項](security-center-virtual-machine-recommendations.md)が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 番目の列は、その推奨事項の影響を受ける仮想マシンとコンピューターの合計数を表しています。 3 番目の列は、以下のスクリーンショットに示したように、問題の重大度を表します。
-
-![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
-
-> [!NOTE]
-> **ネットワーク トポロジ**の一覧の **[Networking Health]\(ネットワークの正常性\)** に表示されるのは、少なくとも 1 つのパブリック エンドポイントを備えた仮想マシンだけです。
->
-
-各推奨事項にはいくつかのアクションが示されており、クリックして実行できます。 たとえば、**[システムの更新プログラムがありません]** をクリックすると、パッチが適用されていない仮想マシンとコンピューター、および不足している更新プログラムの重大度が、以下のスクリーンショットのように一覧表示されます。
-
-![仮想マシンで不足しているシステム更新プログラム](./media/security-center-monitoring/security-center-monitoring-fig9-sep2017.png)
-
-**[システムの更新プログラムがありません]** には、Windows と Linux についてそれぞれ、重大な更新プログラムの概要がグラフ形式で表示されます。 2 つ目の領域には、次の情報を含んだ表が表示されます。
-
-* **[名前]**: 不足している更新プログラムの名前。
-* **[VM とコンピューターの数]**: この更新プログラムが適用されていない VM とコンピューターの合計台数です。
-* **[状態]**: 推奨事項の現在の状態。
-  * **[オープン]**: 推奨事項への対処がまだ行われていない。
-  * **[処理中]**: 現在、リソースへの推奨事項の適用を進めており、ユーザーのアクションは不要。
-  * **解決**: 推奨事項が既に完了済み  (問題が解決されていると、エントリが灰色表示になります)。
-* **[重大度]**: 特定の推奨事項の重大度を示します。
-  * **[高]**: 重要なリソース (アプリケーション、仮想マシン、ネットワーク セキュリティ グループ) に脆弱性が存在しており、注意が必要。
-  * **[中]**: プロセスを完了または脆弱性を排除するために重大ではないまたは追加の手順が必要。
-  * **[低]**: 対処する必要はあるものの、直ちに注意する必要はない脆弱性が存在する  (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。
-
-推奨事項の詳細を表示するには、不足している更新プログラムの名前を一覧内でクリックします。
-
-![特定の仮想マシンに足りないシステム更新プログラム](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
-
-> [!NOTE]
-> ここに示したセキュリティの推奨事項は、**[推奨事項]** オプションに表示されているものと同じです。 推奨事項の解決方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」の記事を参照してください。 これは仮想マシンとコンピューターだけでなく、**[リソース正常性]** タイルで利用できるすべてのリソースにも適用されます。
->
-
-#### <a name="unmonitored-vms"></a>監視対象外の VM
-Security Center では、Microsoft Monitoring Agent 拡張機能が実行されていない VM は監視されません。 VM には、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、SCOM エージェントなど)。 これらのエージェントがインストールされている VM は、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Microsoft Monitoring Agent 拡張機能が必要です。
-
-監視対象外の VM には、あらかじめインストールされているローカル エージェントに加えて、この拡張機能をインストールすることができます。 両方のエージェントを同じように構成し、同じワークスペースに接続してください。 そうすることで、Security Center が Microsoft Monitoring Agent 拡張機能と対話してデータを収集できる状態になります。  Microsoft Monitoring Agent 拡張機能をインストールする手順については、[VM 拡張機能の有効化](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)に関するページを参照してください。
-
-自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由について詳しくは、「[Monitoring agent health issues (エージェントの正常性の問題の監視)](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)」を参照してください。
-
-#### <a name="vms--computers-section"></a>[VM とコンピューター] セクション
-[VM とコンピューター] セクションには、すべての仮想マシンとコンピューターを対象とした推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の 1 つのセットを表します。
-
-![すべての仮想マシンと推奨事項の概要](./media/security-center-monitoring/security-center-monitoring-fig5-sep2017.png)
-
-この一覧には、4 種類のアイコンが使用されます。それぞれのアイコンの意味は次のとおりです。
-
-![アイコン 1](./media/security-center-monitoring/security-center-monitoring-icon1.png) Azure 以外のコンピューター。
-
-![アイコン 2](./media/security-center-monitoring/security-center-monitoring-icon2.png) Azure Resource Manager VM。
-
-![アイコン 3](./media/security-center-monitoring/security-center-monitoring-icon3.png) Azure クラシック VM。
-
-![アイコン 4](./media/security-center-monitoring/security-center-monitoring-icon4.png) 表示されているサブスクリプションに属しているワークスペースからのみ確認できる VM。 たとえば、このサブスクリプションのワークスペースの管理下にある他のサブスクリプションの VM や、SCOM ダイレクト エージェントがインストールされた VM のうちリソース ID のないものが該当します。
-
-各推奨事項の下に表示されるアイコンにより、注意が必要な仮想マシンとコンピューター、その推奨事項の種類をすばやく把握できます。 この画面に表示されるオプションは、**[フィルター]** オプションを使用して選択することもできます。
-
-![filter](./media/security-center-monitoring/security-center-monitoring-fig6-sep2017.png)
-
-前の例には、1 つの仮想マシンにエンドポイント保護に関する重大な推奨事項があります。 その仮想マシンに関する情報を表示する場合には、クリックしてください。
-
-![仮想マシンのセキュリティの詳細](./media/security-center-monitoring/security-center-monitoring-fig7-sep2017.png)
-
-ここには仮想マシンまたはコンピューターのセキュリティに関する詳細が表示されます。 一番下には、推奨されるアクションと、各問題の重大度が表示されます。
-
-#### <a name="cloud-services-section"></a>[クラウド サービス] セクション
-クラウド サービスについては、オペレーティング システムのバージョンが最新でないときに、次のスクリーンショットに示したような推奨事項が作成されます。
-
-![クラウド サービスの正常性状態](./media/security-center-monitoring/security-center-monitoring-fig1-new006-2017.png)
-
-シナリオで推奨事項が発生した場合 (前の例には該当しません)、推奨事項の手順に従ってオペレーティング システムのバージョンを更新する必要があります。 更新プログラムが利用できる場合はアラートが表示されます (問題の重大度により、赤またはオレンジになります)。 WebRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) または WorkerRole1 (IIS に自動的にデプロイされた Web アプリで Windows Server を実行) の行でこのアラートをクリックすると、次のスクリーンショットに示すとおり、推奨事項に関する詳細が表示されます。
-
-![クラウド サービスの詳細](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
-
-この推奨事項に関するより正確な説明を確認する場合は、**[説明]** 列の **[OS バージョンの更新]** をクリックしてください。
-
-![クラウド サービスの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
+### <a name="monitor-compute--apps"></a>計算とアプリの監視
+詳細については、「[Protecting your machines and applications in Azure Security Center (Azure Security Center でのマシンとアプリケーションの保護)](security-center-virtual-machine-recommendations.md)」を参照してください。
 
 ### <a name="monitor-virtual-networks"></a>仮想ネットワークの監視
 **[ネットワーク]** タイルをクリックすると、**[ネットワーク]** ブレードが開き、以下のスクリーンショットに示すような詳細が表示されます。
@@ -184,9 +90,9 @@ Security Center では、Microsoft Monitoring Agent 拡張機能が実行され�
 
 このブレードの下部には、この仮想マシンに対する推奨事項が表示されます。推奨事項の内容は、前に説明したものとほぼ同じです。 ここでは、推奨事項をクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
-### <a name="monitor-storage--data"></a>ストレージとデータの監視
+### <a name="monitor-data-security"></a>データのセキュリティの監視
 
-**[防止]** セクションの **[Storage & data]\(ストレージとデータ\)** をクリックすると、**[データ リソース]** が開き、SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
+**[防止]** セクションの **[データのセキュリティ]** をクリックすると、**[データ リソース]** が開き、SQL とストレージの推奨事項が表示されます。 また、データベースの全般的な正常性状態に関する [推奨事項](security-center-sql-service-recommendations.md) も示されます。 ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
 
 ![データ リソース](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
@@ -208,19 +114,9 @@ Security Center では、Microsoft Monitoring Agent 拡張機能が実行され�
 
 監査を有効にするには、**[監査]** オプションの **[オン]** を選択します。
 
-### <a name="monitor-applications"></a>アプリケーションの監視
+### <a name="monitor-identity--access"></a>ID およびアクセスの監視
 
-Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想マシン](../azure-resource-manager/resource-manager-deployment-model.md)に配置されたアプリケーションがあり、Web ポート (TCP ポート 80 および 443) が公開されている場合、Security Center ではこれらを監視して、潜在的なセキュリティ問題を特定し、修復手順を推奨することができます。 **[アプリケーション]** タイルをクリックすると、**[アプリケーション]** が開き、**アプリケーションの推奨事項**のセクションに一連の推奨事項が示されます。 さらに、ホスト (IP/ドメイン) ごとのアプリケーションの内訳および WAF ソリューションがインストールされているかどうかの状態も表示されます。
-
-![アプリケーションのセキュリティのヘルス](./media/security-center-monitoring/security-center-monitoring-fig8-sep2017.png)
-
-他の推奨事項の場合と同様に、推奨事項をクリックすると、問題と修復方法の詳細を確認できます。 以下の図の例は、安全でないと判定された Web アプリケーションを示したものです。 安全でないと判定されたアプリケーションを選択すると、次のオプションが利用できるようになります。
-
-![詳細](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
-
-ここには、このアプリケーションのすべての推奨事項が一覧表示されます。 **[Web アプリケーション ファイアウォールを追加する]** をクリックすると、以下のスクリーンショットに示すように **[Web アプリケーション ファイアウォールの追加]** が開き、パートナーの Web アプリケーション ファイアウォール (WAF) をインストールするためのオプションが表示されます。
-
-![[Web アプリケーション ファイアウォールの追加] ダイアログ ボックス](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
+詳細については、[Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。

@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 78954e2dd00e425d2dfdd81d2c3e386f199f4f8f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 438aeda39c6ba9246f75f96214bb0ffa1d4d31e9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311048"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047810"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)に関するページを参照してください。
 
-1.  **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
+1.  **[バージョン]** では、**[V2]** を選択します。
 
 2.  **[場所]** で、データ ファクトリの場所を選択します。
 
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4.  下部の **Databricks** **Notebook** アクティビティ ウィンドウのプロパティで、次の手順を完了します。
 
-    a. **[設定]** タブに切り替えます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[設定]** タブに切り替えます。
 
     b. **myAzureDatabricks\_LinkedService** (前の手順で作成したもの) を選択します。
 
@@ -178,7 +178,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5.  **Data Factory UI 作成ツール**に戻ります。 **Notebook1 アクティビティ**の **[設定]** タブに移動します。 
     
-    a.  Notebook アクティビティに**パラメーターを追加**します。 前に**パイプライン**に追加したのと同じパラメーターを使用します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  Notebook アクティビティに**パラメーターを追加**します。 前に**パイプライン**に追加したのと同じパラメーターを使用します。
 
        ![パラメーターを追加する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image17.png)
 

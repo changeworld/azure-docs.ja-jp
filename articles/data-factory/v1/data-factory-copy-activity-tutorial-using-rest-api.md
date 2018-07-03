@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7576589e7be1668d94e80bbe63453a41fe6b85fc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 019a5a041d5581ee49eab7e1644f081aa7a52f2d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594697"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049716"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "31594697"
 > 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-rest-api.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-rest-api.md)に関するページを参照してください。 
 
 この記事では、REST API を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを備えたデータ ファクトリを作成します。 Azure Data Factory の使用経験がない場合は、このチュートリアルを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。   
 
@@ -177,10 +177,10 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
-| 既定のコンテナー | 前に作成した **AzureStorageLinkedService** を参照します。 |
+| type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+| linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
 | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
 | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
 | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
@@ -220,10 +220,10 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 ```
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
-| 既定のコンテナー | 前に作成した **AzureSqlLinkedService** を参照します。 |
+| type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+| linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
 | tableName | データのコピー先となる**テーブル**を指定します。 | 
 | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 

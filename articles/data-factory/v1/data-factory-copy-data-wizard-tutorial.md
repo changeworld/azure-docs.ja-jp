@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8407249ed56059f278f8e4f84a4466ab286a0c24
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178091"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054493"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "30178091"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 
 このチュートリアルでは、**コピー ウィザード**を使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーする方法を示します。 
@@ -75,7 +75,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
-1. [Data Factory] ブレードで **[データのコピー (プレビュー)]** タイルをクリックして、**コピー ウィザード**を起動します。 
+1. [Data Factory] ブレードで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
    
    > [!NOTE]
    > 承認の処理が進行中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、ブラウザーで**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
@@ -107,7 +107,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。 **[Binary copy (バイナリ コピー)]** は選択しないでください。 
    
     ![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
-7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (上書き) することもできます。 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。 
+7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 区切り記号を手動で入力することで、コピー ウィザードによる自動検出を防止 (オーバーライド) することもできます。 区切り記号を確認し、データをプレビューしたら、**[次へ]** をクリックします。 
    
     ![Copy Tool - File format settings](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
 8. [Destination data store (ターゲット データ ストア)] ページで **[Azure SQL Database]** を選択し、**[次へ]** をクリックします。
