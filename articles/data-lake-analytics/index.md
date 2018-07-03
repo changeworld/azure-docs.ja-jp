@@ -9,12 +9,12 @@ manager: kfile
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.openlocfilehash: 6dc7b85e5a5f6173572e390c1073971d927aa7df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74ffc5f6a80ca21f679e6a345e9a482cd83a027e
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624218"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340449"
 ---
 # <a name="azure-data-lake-analytics-documentation"></a>Azure Data Lake Analytics のドキュメント
 
@@ -124,7 +124,7 @@ Azure Data Lake Analytics を使用して、大規模なデータ セットに�
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datalake.analytics">.NET</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-analytics">Node.js</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html">Python</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.analytics.account">Python</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/mt591959">U-SQL</a></p>
                     </div>
                 </div>

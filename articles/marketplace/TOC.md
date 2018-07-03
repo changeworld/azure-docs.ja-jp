@@ -4,10 +4,10 @@
 ### 概要とメリット  
 ### ネットショップ  
 #### [AppSource と Azure Marketplace の比較](./comparing-appsource-azure-marketplace.md)  
-#### [AppSource によるビジネスの成長](./grow-your-business-with-appsource.md)  
+#### [AppSource によるビジネスの成長](./grow-your-business-with-appsource.md) 
+#### [推奨されるソリューション](./preferred-solutions.md)
 ##### [ランディング ページの作成](./build-your-landing-page.md)  
 ##### [リードの共有の有効化](./enable-lead-sharing.md)  
-##### [推奨されるソリューション](./preferred-solutions.md)
 ##### [マーケットプレースの GTM 特典](./gtm-benefits.md)  
 ##### [Microsoft を利用したビジネスのプロモーション](./promote-your-business-with-microsoft.md)  
 #### [Azure Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  

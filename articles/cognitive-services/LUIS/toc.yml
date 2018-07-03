@@ -192,11 +192,11 @@
         - name: バッチ テストによる精度向上
           href: luis-tutorial-batch-testing.md
     - name: アプリケーションの発行
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: 事前構築済みのモデルの使用
       items:
         - name: 事前構築済みのエンティティの使用
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: 事前構築済みのドメインの使用
           href: luis-how-to-use-prebuilt-domains.md
         - name: 事前構築済みの Cortana アプリの使用
@@ -208,7 +208,7 @@
         - name: キーの作成
           href: luis-how-to-azure-subscription.md
         - name: LUIS でのキーの追加
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: PowerShell を使ったエンドポイントの使用状況の表示
           href: luis-how-to-manage-from-cloud-shell.md
         - name: バージョンの管理
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Go
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: .NET エンドポイント

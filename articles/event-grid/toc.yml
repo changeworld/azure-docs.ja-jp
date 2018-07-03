@@ -89,6 +89,12 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST ()
       href: /rest/api/eventgrid
+    - name: Template resources
+      items:
+        - name: イベントのサブスクリプション
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: トピック
+          href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK
       href: sdk-overview.md
     - name: サブスクリプション スキーマ

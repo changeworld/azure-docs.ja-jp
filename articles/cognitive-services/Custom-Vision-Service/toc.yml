@@ -41,18 +41,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Custom Vision Prediction API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: 制限とクォータ
-      href: limits-and-quotas.md
     - name: 用語集
       href: glossary-of-terms.md
     - name: SDK
       items:
-        - name: Go
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
         - name: Windows
           href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Go
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
 - name: リソース
   items:
     - name: サンプル
@@ -67,3 +65,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 制限とクォータ
+      href: limits-and-quotas.md

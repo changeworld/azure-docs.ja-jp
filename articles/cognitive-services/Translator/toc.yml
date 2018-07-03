@@ -21,6 +21,20 @@
           href: quickstart-csharp-languages.md
         - name: テキスト内の文の長さを取得する
           href: quickstart-csharp-sentences.md
+    - name: Go
+      items:
+        - name: テキストを翻訳する
+          href: quickstart-go-translate.md
+        - name: テキストのスクリプトを変換する
+          href: quickstart-go-transliterate.md
+        - name: テキストから言語を特定する
+          href: quickstart-go-detect.md
+        - name: 別の翻訳を取得する
+          href: quickstart-go-dictionary.md
+        - name: サポートされている言語を取得する
+          href: quickstart-go-languages.md
+        - name: テキスト内の文の長さを取得する
+          href: quickstart-go-sentences.md
     - name: Java
       items:
         - name: テキストを翻訳する
