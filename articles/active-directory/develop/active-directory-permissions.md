@@ -1,6 +1,6 @@
 ---
-title: Azure AD におけるアクセス許可 | Microsoft Docs
-description: Azure Active Directory におけるスコープとアクセス許可、およびそれらの使用方法について説明します。
+title: Azure Active Directory のアクセス許可 | Microsoft Docs
+description: Azure Active Directory におけるアクセス許可と、その使用方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,23 +13,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/20/2017
+ms.date: 06/25/2018
 ms.author: celested
-ms.reviewer: justhu
+ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 749253d6a082bcdc2b80c5984f20c4b8c4039ad0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156893"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936957"
 ---
-# <a name="permissions-in-azure-ad"></a>Azure AD におけるアクセス許可
-Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OIDC) フローの両方でアクセス許可を広く利用します。 アプリが Azure AD から受け取るアクセス トークンには、特定のリソースに関してアプリに付与されたアクセス許可 (スコープとも呼ばれます) を示す要求が含まれています。 呼び出す API に適したアクセス許可がトークンに含まれていることを確認するだけで済むため、リソースに対する承認が容易になります。 
+# <a name="permissions-in-azure-active-directory"></a>Azure Active Directory のアクセス許可
+
+Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OIDC) フローの両方でアクセス許可を広く利用します。 アプリが Azure AD から受け取るアクセス トークンには、特定のリソースに関してアプリに付与されたアクセス許可を示す要求が含まれています。 スコープとも呼ばれるアクセス許可を使用すると、リソースに対する承認が容易になります。リソースはアプリが呼び出すどの API に対しても適切なアクセス許可がトークンに含まれていることを確認するだけで済むためです。 
 
 ## <a name="types-of-permissions"></a>アクセス許可の種類
+
 Azure AD では、次の 2 種類のアクセス許可が定義されています。 
-* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者が、アプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインインしているユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)になります。
+* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)になります。
 * **アプリケーションのアクセス許可** - サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。 通常、アプリケーションのアクセス許可は非常に強力であり、ユーザー境界を越えるデータや管理者に限定されたデータへのアクセスを許可するため、これらのアクセス許可には[管理者だけが同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)できます。 
 
 有効なアクセス許可は、アプリが API に要求を行うときに付与されるアクセス許可です。 
@@ -53,16 +55,16 @@ Azure AD のアクセス許可には、ユーザー、管理者、またはア�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| プロパティ名 | [説明] | 例 | 
+| プロパティ名 | 説明 | 例 | 
 | --- | --- | --- |
-| ID | このアクセス許可を一意に識別する GUID 値です。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| IsEnabled | このスコープが使用可能かどうかを示します。 | true | 
-| type | このアクセス許可にユーザーの同意と管理者の同意のどちらが必要かを示します。 | User | 
-| AdminConsentDescription | 管理者の同意エクスペリエンスで管理者に表示される説明です。 | ユーザーのメールボックスのメールを読み取ることをアプリに許可します。 | 
-| AdminConsentDisplayName | 管理者の同意エクスペリエンスで管理者に表示されるフレンドリ名です。 | ユーザーのメールの読み取り | 
-| UserConsentDescription | ユーザーの同意エクスペリエンスでユーザーに表示される説明です。 |  ユーザーが自分のメールボックスのメールを読み取ることをアプリに許可します。 | 
-| UserConsentDisplayName | ユーザーの同意エクスペリエンスでユーザーに表示されるフレンドリ名です。 | メールの読み取り | 
-| 値 | OAuth 2.0 認可フローにおいて、アクセス許可の識別に使用される文字列です。 完全修飾アクセス許可名を形成するために、アプリ ID URI 文字列と組み合わせることもできます。 | `Mail.Read` | 
+| `ID` | このアクセス許可を一意に識別する GUID 値です。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
+| `IsEnabled` | このアクセス許可が使用可能かどうかを示します。 | true | 
+| `Type` | このアクセス許可にユーザーの同意と管理者の同意のどちらが必要かを示します。 | User | 
+| `AdminConsentDescription` | 管理者の同意エクスペリエンスで管理者に表示される説明です。 | ユーザーのメールボックスのメールを読み取ることをアプリに許可します。 | 
+| `AdminConsentDisplayName` | 管理者の同意エクスペリエンスで管理者に表示されるフレンドリ名です。 | ユーザーのメールの読み取り | 
+| `UserConsentDescription` | ユーザーの同意エクスペリエンスでユーザーに表示される説明です。 |  ユーザーが自分のメールボックスのメールを読み取ることをアプリに許可します。 | 
+| `UserConsentDisplayName` | ユーザーの同意エクスペリエンスでユーザーに表示されるフレンドリ名です。 | メールの読み取り | 
+| `Value` | OAuth 2.0 認可フローにおいて、アクセス許可の識別に使用される文字列です。 `Value` は、完全修飾アクセス許可名を形成するために、アプリ ID URI 文字列と組み合わせることもできます。 | `Mail.Read` | 
 
 ## <a name="types-of-consent"></a>同意の種類
 Azure AD のアプリケーションでは、必要なリソースや API へのアクセス権を取得するために同意を利用します。 成功を収めるために、アプリが認識しておく必要があると考えられる多くの種類の同意があります。 アクセス許可を定義する場合は、ユーザーがアプリや API へのアクセス権を取得する方法も理解しておく必要があります。
@@ -70,31 +72,38 @@ Azure AD のアプリケーションでは、必要なリソースや API への
 * **静的なユーザーの同意** - アプリが対話する必要があるリソースを指定すると、[OAuth 2.0 認可フロー](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code)で自動的に発生します。 静的なユーザーの同意シナリオでは、Azure portal のアプリの構成で、アプリに必要なすべてのアクセス許可が既に指定されている必要があります。 ユーザー (または、必要に応じて管理者) がこのアプリに同意していなかった場合、Azure AD によって、現時点でユーザーに同意を求めるメッセージが表示されます。 
 
     API の静的セットへのアクセスを要求する Azure AD アプリの登録の詳細をご覧ください。
-* **動的なユーザーの同意** - v2 Azure AD アプリ モデルの機能です。 このシナリオでは、アプリは、[v2 アプリの OAuth 2.0 認可フロー](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)で必要な一連のスコープを要求します。 ユーザーがまだ同意していなかった場合、現時点で同意を求められます。 動的な同意の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent)をご覧ください。
+* **動的なユーザーの同意** - v2 Azure AD アプリ モデルの機能です。 このシナリオでは、アプリは、[v2 アプリの OAuth 2.0 認可フロー](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent)で必要な一連のアクセス許可を要求します。 ユーザーがまだ同意していなかった場合、現時点で同意を求められます。 動的な同意の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent)をご覧ください。
 
     > [!NOTE]
-    > 動的な同意は便利な場合もありますが、管理者の同意を必要とするアクセス許可の場合、管理者の同意エクスペリエンスで同意する時点でこれらのアクセス許可を把握できないため、大きな問題が生じます。 管理特権のスコープが必要な場合は、アプリでそれらのスコープを Azure portal に登録する必要があります。
+    > 動的な同意は便利な場合もありますが、管理者の同意を必要とするアクセス許可の場合、管理者の同意エクスペリエンスで同意する時点でこれらのアクセス許可を把握できないため、大きな問題が生じます。 管理特権のアクセス許可が必要な場合は、アプリは Azure portal でそれらのアクセス許可を登録する必要があります。
   
-* **管理者の同意** - 特定の高い権限のアクセス許可がアプリに必要な場合に必要となります。 これにより、管理者は、組織の高い権限が必要なデータにアプリやユーザーがアクセスすることを承認する前に制御を強化できます。 管理者の同意を付与する方法の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)をご覧ください。
+* **管理者の同意** - 特定の高い権限のアクセス許可がアプリに必要な場合に必要となります。 管理者の同意により、管理者は、組織の高い権限が必要なデータにアプリやユーザーがアクセスすることを承認する前に制御を強化できます。 管理者の同意を付与する方法の詳細については、[こちら](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)をご覧ください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-### <a name="resource-best-practices"></a>リソースのベスト プラクティス
-API を公開するリソースでは、保護するデータまたはアクションに固有のアクセス許可を定義します。 これにより、クライアントには不要なデータへのアクセス許可が付与されなくなり、ユーザーには同意対象のデータに関する十分な情報が提供されるようになります。
-
-リソースでは、`Read` アクセス許可と `ReadWrite` アクセス許可をそれぞれ明示的に定義します。 
-
-リソースでは、ユーザー境界を越えるデータへのアクセスを許可するすべてのアクセス許可を `Admin` アクセス許可としてマークします。 
-
-リソースは、`Subject.Permission[.Modifier]` という名前付けパターンに従います。`Subject` は使用可能なデータの種類に対応し、`Permission` はそのデータに対してユーザーが実行できるアクションに対応します。`Modifier` は、別のアクセス許可の特殊化を記述するために必要に応じて使用します。 例:  
-* Mail.Read - ユーザーにメールの読み取りを許可します。 
-* Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
-* Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。
-
 ### <a name="client-best-practices"></a>クライアントのベスト プラクティス
-アプリに必要なスコープのアクセス許可だけを要求します。 アプリに付与されているアクセス許可が多すぎると、アプリが侵害された場合に、ユーザー データが公開される危険性があります。
 
-クライアントは、同じアプリからアプリケーションのアクセス許可と委任されたアクセス許可を要求しないようにする必要があります。 これを行うと、特権が昇格され、ユーザーは自分のアクセス許可では許可されないデータにアクセスできるようになる可能性があります。 
+- アプリに必要なアクセス許可だけを要求します。 アプリに付与されているアクセス許可が多すぎると、アプリが侵害された場合に、ユーザー データが公開される危険性があります。
+- アプリがサポートするシナリオに基づいて、委任されたアクセス許可とアプリケーション アクセス許可のいずれかを選択します。 
+    - 呼び出しがユーザーに代わって行われる場合は、常に委任されたアクセス許可を使用します。
+    - アプリが非対話型で、特定のユーザーに代わって呼び出しを行わない場合にのみ、アプリケーション アクセス許可を使用します。 アプリケーション アクセス許可は高度な特権を持つため、絶対に必要な場合にのみ使用します。
+- v2.0 エンドポイントに基づくアプリを使用する場合は、常に静的アクセス許可 (アプリケーション登録で指定されるもの) が実行時に要求する動的アクセス許可 (コードで指定され、承認要求のクエリ パラメーターとして送信されるもの) のスーパーセットになるように設定して、管理者の同意などのシナリオが正しく機能するようにします。
+
+### <a name="resourceapi-best-practices"></a>リソース/API のベスト プラクティス
+
+- API を公開するリソースでは、保護するデータまたはアクションに固有のアクセス許可を定義します。 このベスト プラクティスに従うと、クライアントには不要なデータへのアクセス許可が付与されなくなり、ユーザーには同意対象のデータに関する十分な情報が提供されるようになります。
+- リソースでは、`Read` アクセス許可と `ReadWrite` アクセス許可をそれぞれ明示的に定義します。
+- リソースでは、ユーザー境界を越えるデータへのアクセスを許可するすべてのアクセス許可を `Admin` アクセス許可としてマークします。
+- リソースは `Subject.Permission[.Modifier]` という名前付けパターンに従う必要があります。このパターンで、
+    - `Subject` は利用可能なデータの種類に対応し、
+    - `Permission` はユーザーがそのデータに対して行うアクションに対応し、 
+    - `Modifier` は別のアクセス許可の特殊化を記述するためにオプションで使用されます。 
+    
+    例:  
+    * Mail.Read - ユーザーにメールの読み取りを許可します。
+    * Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
+    * Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。
+
 
 
 

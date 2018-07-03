@@ -1,7 +1,7 @@
 ---
-title: Azure Web App for Containers を使用してマルチコンテナー (プレビュー) アプリを作成する
+title: Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 description: Azure 上で Docker Compose と Kubernetes の構成ファイル、WordPress および MySQL アプリと共に複数のコンテナーを使用する方法について説明します。
-keywords: azure app aervice、web アプリ、linux、docker、作成、マルチコンテナー、コンテナー、kubernetes
+keywords: Azure App Service, Web アプリ, Linux, Docker, 作成, マルチコンテナー, コンテナー, Kubernetes
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651512"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751916"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル: Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>チュートリアル: Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
 [Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このチュートリアルでは、WordPress と MySQL を使用してマルチコンテナー アプリを作成する方法について説明します。
 
@@ -145,7 +145,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose アプリを作成する
 
-ローカルのコマンド プロンプト端末で、[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して `myAppServicePlan`App Service プランにマルチコンテナー [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
+ローカルのコマンド プロンプト端末で、[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して `myAppServicePlan` App Service プランにマルチコンテナー [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -174,7 +174,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 ![Web App for Containers のサンプル マルチコンテナー アプリ][1]
 
-**おめでとうございます**。Web App for Containers にマルチコンテナー アプリを作成しました。 次に、Azure Database for MySQL を使用するようにアプリを構成します。 この時点で WordPress をインストールしないでください。
+**これで終了です**。Web App for Containers にマルチコンテナー アプリが作成されました。 次に、Azure Database for MySQL を使用するようにアプリを構成します。 この時点で WordPress をインストールしないでください。
 
 ## <a name="connect-to-production-database"></a>運用データベースに接続する
 
@@ -336,7 +336,7 @@ az webapp config container set --resource-group myResourceGroup --name <app_name
 
 ## <a name="add-persistent-storage"></a>永続的ストレージを追加する
 
-マルチコンテナーは Web App for Containers で実行されています。 ただし、すぐに WordPress をインストールして後でアプリを再起動すると、WordPress のインストールがなくなっていることがわかります。 これは、現在、Docker Compose の構成がコンテナー内のストレージの場所を指しているために発生します。 コンテナーにインストールされたファイルは、アプリの再起動後に残りません。 このセクションでは、永続的なストレージを WordPress コンテナーに追加します。
+現在、マルチコンテナーは、Web App for Containers で実行されています。 ただし、すぐに WordPress をインストールして後でアプリを再起動すると、WordPress のインストールがなくなっていることがわかります。 これは、現在、Docker Compose の構成がコンテナー内のストレージの場所を指しているために発生します。 コンテナーにインストールされたファイルは、アプリの再起動後に残りません。 このセクションでは、永続的なストレージを WordPress コンテナーに追加します。
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
@@ -511,7 +511,7 @@ WordPress が Redis サーバーに接続されます。 同じページに接�
 
 このセクションでは、Kubernetes 構成を使用して複数のコンテナーを展開する方法について説明します。 前の手順に従って、[リソース グループ](#create-a-resource-group)と [App Service プラン](#create-an-azure-app-service-plan)を作成します。 手順の大部分は作成セクションの手順と似ているので、構成ファイルは結合されています。
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>マルチコンテナーにサポートされている Kubernetes オプション
+### <a name="supported-kubernetes-options-for-multicontainer"></a>マルチコンテナー用にサポートされている Kubernetes オプション
 
 * args
 * コマンド
@@ -627,7 +627,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="add-persistent-storage"></a>永続的ストレージを追加する
 
-マルチコンテナーは Web App for Containers で実行されています。 ファイルは保持されないので、再起動時にデータは消去されます。 このセクションでは、永続的なストレージを WordPress コンテナーに追加します。
+現在、マルチコンテナーは、Web App for Containers で実行されています。 ファイルは保持されないので、再起動時にデータは消去されます。 このセクションでは、永続的なストレージを WordPress コンテナーに追加します。
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
@@ -649,7 +649,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>マルチコンテナー アプリを作成する (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>マルチコンテナー アプリを作成する (Kubernetes)
 
 ローカルのコマンドプロンプト端末で、[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して `myResourceGroup` リソース グループと `myAppServicePlan` App Service プランにマルチコンテナー [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app_name>_ は忘れずに固有のアプリ名に置き換えてください。
 
@@ -681,7 +681,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 ![Web App for Containers のサンプル マルチコンテナー アプリ][1]
 
-**おめでとうございます**。Web App for Containers にマルチコンテナー アプリを作成しました。
+**これで終了です**。Web App for Containers にマルチコンテナー アプリが作成されました。
 
 Redis を使用するには、[WordPress を Redis に接続する](#connect-wordpress-to-redis)手順に従ってください。
 

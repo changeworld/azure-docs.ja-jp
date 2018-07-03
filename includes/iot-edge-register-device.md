@@ -1,7 +1,24 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-edge
+author: kgremban
+ms.service: iot-edge
+ms.topic: include
+ms.date: 06/25/2018
+ms.author: kgremban
+ms.custom: include file
+ms.openlocfilehash: bacafdc8f7fd8e206335f3be0a086df1c54f1081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37032114"
+---
 お使いの IoT ハブと通信できるようにシミュレートされたデバイスのデバイス ID を作成します。 IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作をし、別に管理できるため、IoT Edge デバイスであることを最初から宣言します。 
 
 1. Azure Portal で、お使いの IoT ハブに移動します。
-1. **[IoT Edge (preview)]\(IoT Edge (プレビュー)\)** を選択してから **[Add IoT Edge Device]\(IoT Edge デバイスの追加\)** を選択します。
+1. **[IoT Edge]** を選択してから **[IoT Edge デバイスの追加]** を選択します。
 
    ![IoT Edge デバイスの追加](./media/iot-edge-register-device/add-device.png)
 

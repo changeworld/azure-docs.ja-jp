@@ -13,19 +13,19 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/01/2017
+ms.date: 06/26/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d2efd0891cb0010aac6135ce190ad77667f78efd
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7d3fc71bc53e85fa7555dbee5ee79b3f06f27fe8
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843988"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960340"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
-このサンプル スクリプトでは、Function App を関連リソースと共に作成し、`www.<yourdomain>` にマップします。 カスタム ドメインにマップするには、Function App を従量課金プランではなく、App Service プランで作成する必要があります。 Azure Functions は、A レコードを使用したカスタム ドメインのマッピングのみをサポートします。
+このサンプル スクリプトでは、Function App を関連リソースと共に作成し、`www.<yourdomain>` にマップします。 関数アプリが [App Service プラン](../functions-scale.md#app-service-plan)でホストされている場合、CNAME レコードまたは A レコードを使用してカスタム ドメインをマップできます。 [従量課金プラン](../functions-scale.md#consumption-plan)の関数アプリの場合、CNAME オプションのみがサポートされます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

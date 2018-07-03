@@ -1,10 +1,10 @@
 ---
 title: SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs
-description: Azure で動作し、SQL データベースに接続する ASP.NET アプリの入手方法を説明します。
+description: C# ASP.NET アプリを SQL Server データベースと共に Azure にデプロイする方法について説明します。
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/09/2017
+ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789250"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021325"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -44,21 +44,17 @@ ms.locfileid: "31789250"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
-  - **ASP.NET と Web 開発**
-  - **Azure 開発**
-
-  ![ASP.NET および Web 開発と Azure 開発 ([Web & Cloud\(Webとクラウド\)] 下)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+**ASP.NET および Web 開発**のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> をインストールする。
 
 既に Visual Studio をインストールしている場合は、**[ツール]** > **[Get Tools and Features]\(ツールと機能の取得\)** の順にクリックして、Visual Studio 内でワークロードを追加します。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-[サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
+<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>- [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
+-
+- *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
 
-*dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
-
-このサンプル プロジェクトには、[Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) を使用した基本的な [ASP.NET MVC](https://www.asp.net/mvc) CRUD (作成、読み取り、更新、削除) アプリが含まれています。
+このサンプル プロジェクトには、[Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) を使用した基本的な [ASP.NET MVC](https://www.asp.net/mvc) "作成、読み取り、更新、削除" (CRUD) アプリが含まれています。
 
 ### <a name="run-the-app"></a>アプリの実行
 
@@ -86,20 +82,20 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[App Service の作成]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
+**[App Service の作成]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。 
+
+> [!NOTE]
+> 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
+>
+>
    
 ![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
-
-サインインしたら、このダイアログ ボックスで、Azure Web アプリに必要なすべてのリソースの作成を開始できます。
 
 ### <a name="configure-the-web-app-name"></a>Web アプリ名を構成する
 
 生成された Web アプリ名をそのまま使用するか、別の一意の名前に変更することができます (有効な文字は `a-z`、`0-9`、および `-` です)。 この Web アプリ名は、アプリの既定の URL の一部として使用されます (既定の URL は `<app_name>.azurewebsites.net` で、`<app_name>` が Web アプリ名です)。 この Web アプリ名は、Azure のすべてのアプリで一意である必要があります。 
 
 ![[App Service の作成] ダイアログ](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
-
-> [!NOTE]
-> **[作成]** はクリックしないでください。 まず、後述の手順で SQL Database をセットアップする必要があります。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -131,13 +127,9 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 データベースを作成する前に、[Azure SQL Database 論理サーバー](../sql-database/sql-database-features.md)が必要です。 論理サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。
 
-**[他の Azure サービスの探索]** を選択します。
+**[SQL Database の作成]** をクリックします。
 
-![Web アプリ名を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
-
-**[サービス]** タブで、**[SQL Database]** の隣にある **[+]** アイコンをクリックします。 
-
-![[サービス] タブで、[SQL Database] の隣にある [+] アイコンをクリックする](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![SQL Database の作成](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 **[SQL Database の構成]** ダイアログで、**[SQL Server]** の隣にある **[New (新規)]** をクリックします。 
 
@@ -164,7 +156,7 @@ Click **OK**. **[SQL Database の構成]** ダイアログはまだ閉じない�
 
 ![SQL Database を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-作成したリソースが **[App Service の作成]** ダイアログに表示されます。 **Create** をクリックしてください。 
+構成したリソースが **[App Service の作成]** ダイアログに表示されます。 **Create** をクリックしてください。 
 
 ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -314,7 +306,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 
 前と同じように、プロジェクトを右クリックし、**[発行]** を選択します。
 
-**[設定]** をクリックし、発行ウィザードを開きます。
+**[構成]** をクリックして発行設定を開きます。
 
 ![発行の設定を開く](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 

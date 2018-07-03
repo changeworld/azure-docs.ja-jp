@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4b2294d7816a92dccb14caaadc09a2797edeafe6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fdff52a1fa34fa2033db19690d20a1c2f417e646
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237435"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307793"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,7 +104,7 @@ Azure Kubernetes Service (AKS) は、Kubernetes 準拠として CNCF 認定さ�
 
 ## <a name="regulatory-compliance"></a>規制に対するコンプライアンス
 
-Azure Kubernetes Service (AKS) は、SOC と ISO/HIPPA/HITRUST に準拠しています。
+Azure Kubernetes Service (AKS) は、SOC と ISO/HIPAA/HITRUST に準拠しています。
 
 ## <a name="next-steps"></a>次の手順
 

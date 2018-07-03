@@ -8,12 +8,12 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 334cea710d185a6774e28ea3459b3ca1ad9f846f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287330"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959799"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップに関する問題のトラブルシューティング
 次の表に示す情報を使って、Azure ファイル共有のバックアップを使用中に発生した問題やエラーのトラブルシューティングを行うことができます。
@@ -28,9 +28,9 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
 - Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
 
-\* [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有
+\*[読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有。
 
-[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS) および米国東部 2 (EUS2) でのみ使用できます
+[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、および西ヨーロッパ (WE) でのみ使用できます。
 
 ## <a name="configuring-backup"></a>バックアップの構成
 次の表は、バックアップの構成に関連しています。

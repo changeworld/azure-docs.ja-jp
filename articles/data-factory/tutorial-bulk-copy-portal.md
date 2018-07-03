@@ -11,21 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 440b07b494b34db7ff3fcdf5d5ac830b165c339d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c42f7257b4b4077cc719c57e3136505f766e654c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173285"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046835"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
 
 > [!NOTE]
 > - Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
-> - この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 このチュートリアルは大まかに次の手順で構成されます。
 
@@ -93,7 +92,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
@@ -163,9 +162,9 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 ## <a name="create-datasets"></a>データセットを作成する
 このチュートリアルでは、データの格納場所を指定するための、ソースとシンクのデータセットを作成します。 
 
-入力データセット AzureSqlDatabaseDataset は、AzureSqlDatabaseLinkedService を参照します。 このリンクされたサービスには、データベースに接続するための接続文字列が指定されています。 データセットには、ソース データが含まれているデータベースとテーブルの名前を指定します。 
+入力データセット **AzureSqlDatabaseDataset** は、**AzureSqlDatabaseLinkedService** を参照します。 このリンクされたサービスには、データベースに接続するための接続文字列が指定されています。 データセットには、ソース データが含まれているデータベースとテーブルの名前を指定します。 
 
-出力データセット AzureSqlDWDataset は、AzureSqlDWLinkedService を参照します。 このリンクされたサービスには、データ ウェアハウスに接続するための接続文字列が指定されています。 データセットには、データのコピー先となるデータベースとテーブルを指定します。 
+出力データセット **AzureSqlDWDataset** は、**AzureSqlDWLinkedService** を参照します。 このリンクされたサービスには、データ ウェアハウスに接続するための接続文字列が指定されています。 データセットには、データのコピー先となるデータベースとテーブルを指定します。 
 
 このチュートリアルでは、データセットの定義にソースとコピー先の SQL テーブルをハード コーディングしません。 代わりに、実行時に ForEach アクティビティで、テーブルの名前をコピー アクティビティに渡します。 
 
@@ -179,7 +178,6 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ![Azure SQL Database の選択](./media/tutorial-bulk-copy-portal/select-azure-sql-database-dataset.png)
 3. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDatabaseDataset**」と入力します。
 
-    ![ソース データセット名](./media/tutorial-bulk-copy-portal/source-dataset-general.png)
 4. **[接続]** タブに切り替えて、次の手順を実行します。 
 
     1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
@@ -193,14 +191,21 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
 2. **[新しいデータセット]** ウィンドウで **[Azure SQL Data Warehouse]** を選択し、**[完了]** をクリックします。 **[AzureSqlDWTable1]** という新しいタブが表示されます。 
 3. 下部にあるプロパティ ウィンドウで、**[名前]** に「**AzureSqlDWDataset**」と入力します。
-4. **[接続]** タブに切り替えて、**[リンクされたサービス]** で「**AzureSqlDatabaseLinkedService**」を選択します。
-5. **[パラメーター]** タブに切り替えて、**[+ 新規]** をクリックします。
+5. **[パラメーター]** タブに切り替えて **[+ 新規]** をクリックし、パラメーター名として「**DWTableName**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、**DWTableName** の末尾に**末尾空白文字**がないことを確認してください。 
 
-    ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter-button.png)
-6. パラメーター名として「**DWTableName**」と入力します。 ページからこの名前をコピーして貼り付ける場合は、**DWTableName** の末尾に**末尾空白文字**がないことを確認してください。 
-7. **[Parameterized properties]\(パラメーター化されたプロパティ\)** セクションで、**[tableName]** プロパティに「`@{dataset().DWTableName}`」と入力します。 データセットの **[tableName]** プロパティに設定される値は、**DWTableName** パラメーターの引数として渡されます。 ForEach アクティビティによってテーブルのリストが反復処理され、コピー アクティビティに 1 つずつ渡されます。 
-   
-    ![パラメーター名](./media/tutorial-bulk-copy-portal/dwtablename-tablename.png)
+    ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter.png)
+
+6. **[接続]** タブに切り替えます。 
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
+
+    b. **[テーブル]** で **[編集]** オプションをオンにし、テーブル名入力ボックスをクリックしてから、下の **[動的なコンテンツの追加]** リンクをクリックします。 
+    
+    ![パラメーター名](./media/tutorial-bulk-copy-portal/table-name-parameter.png)
+
+    c. **[動的なコンテンツの追加]** ページで、**[パラメーター]** の **DWTAbleName** をクリックします。これで、自動的に上部の式テキストボックスに `@dataset().DWTableName` が入力されます。次に、**[完了]** をクリックします。 データセットの **[tableName]** プロパティに設定される値は、**DWTableName** パラメーターの引数として渡されます。 ForEach アクティビティによってテーブルのリストが反復処理され、コピー アクティビティに 1 つずつ渡されます。 
+
+    ![データセット パラメーター ビルダー](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>パイプラインを作成する
 このチュートリアルでは、2 つのパイプライン **IterateAndCopySQLTables** と **GetTableListAndTriggerCopyData** を作成します。 
@@ -217,63 +222,65 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。
 
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-2. プロパティ ウィンドウで、パイプラインの名前を「**IterateAndCopySQLTables**」に変更します。 
+2. **[全般]** タブで、名前に「**IterateAndCopySQLTables**」と指定します。 
 
-    ![パイプライン名](./media/tutorial-bulk-copy-portal/first-pipeline-name.png)
 3. **[パラメーター]** タブに切り替えて、次の手順を実行します。 
 
     1. **[+ 新規]** をクリックします。 
     2. **[名前]** に、パラメーター名として「**tableList**」と入力します。
-    3. **[型]** で **[オブジェクト]** を選択します。
+    3. **[種類]** に **[配列]** を選択します。
 
         ![パイプライン パラメーター](./media/tutorial-bulk-copy-portal/first-pipeline-parameter.png)
-4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditions]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 下部にある**プロパティ** ウィンドウで、**[名前]** に「**IterateSQLTables**」と入力します。 
+4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditions]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 
 
-    ![ForEach アクティビティの名前](./media/tutorial-bulk-copy-portal/for-each-activity-name.png)
-5. **[設定]** タブに切り替えて、**[項目]** に「`@pipeline().parameters.tableList`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 下部にある **[全般]** タブで、**[名前]** に「**IterateSQLTables**」と入力します。 
+
+    b. **[設定]** タブに切り替えて、**[項目]** の入力ボックスをクリックしてから、下の **[動的なコンテンツの追加]** リンクをクリックします。 
 
     ![ForEach アクティビティの設定](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
-6. **ForEach** アクティビティに子アクティビティを追加するには、[ForEach] アクティビティを**ダブルクリック**するか、**[編集]\(鉛筆アイコン\)** をクリックします。 アクティビティのアクション リンクは、アクティビティを選択した場合にのみ表示されます。 
 
-    ![ForEach アクティビティの名前](./media/tutorial-bulk-copy-portal/edit-for-each-activity.png)
-7. **[アクティビティ]** ツール ボックスで **[データ フロー]** を展開し、パイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップして、プロパティ ウィンドウで名前を「**CopyData**」に変更します。 ウィンドウの上部に階層リンク メニューがあります。 IterateAndCopySQLTable はパイプライン名で、IterateSQLTables は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach アクティビティからパイプラインにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックします。 
+    c. **[動的なコンテンツの追加]** ページで、[システム変数] と [関数] のセクションを折りたたんで、**[パラメーター]** の **tableList** をクリックします。これで、自動的に上部の式テキスト ボックスに `@pipeline().parameter.tableList` が入力されます。次に、**[完了]** をクリックします。 
+
+    ![ForEach パラメーター ビルダー](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    
+    d. **[アクティビティ]** タブに切り替えて **[アクティビティの追加]** をクリックし、子アクティビティを **ForEach** アクティビティに追加します。
+
+5. **[アクティビティ]** ツール ボックスで **[データ フロー]** を展開し、**[コピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 ウィンドウの上部に階層リンク メニューがあります。 IterateAndCopySQLTable はパイプライン名で、IterateSQLTables は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach アクティビティからパイプラインにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックします。 
 
     ![ForEach アクティビティ内のコピー](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
-8. **[ソース]** タブに切り替えて、次の手順を実行します。
+6. **[ソース]** タブに切り替えて、次の手順を実行します。
 
     1. **[Source Dataset]\(ソース データセット\)** で「**AzureSqlDatabaseDataset**」を選択します。 
     2. **[ユーザー クエリ]** で **[クエリ]** オプションを選択します。 
-    3. **[クエリ]** に次の SQL クエリを入力します。
+    3. **[クエリ]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、**[クエリ]** に次の式を入力して、**[完了]** を選択します。
 
         ```sql
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
         ![コピー ソースの設定](./media/tutorial-bulk-copy-portal/copy-source-settings.png)
-9. **[シンク]** タブに切り替えて、次の手順を実行します。 
+7. **[シンク]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Sink Dataset]\(シンク データセット\)** で「**AzureSqlDWDataset**」を選択します。
+    2. DWTableName パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 式をスクリプトとして入力して、**[完了]** を選択します。
     2. **[Polybase Settings]\(Polybase 設定\)** を展開し、**[Allow polybase]\(Polybase を許可する\)** をオンにします。 
     3. **[使用型の既定]** オプションをオフにします。 
-    4. **[後処理用スクリプト]** に次の SQL スクリプトを入力します。 
+    4. **[後処理用スクリプト]** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、**[完了]** を選択します。 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![コピー シンクの設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
-10. **[パラメーター]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** セクションの **DWTableName** パラメーターが見えるまで下へスクロールします。 このパラメーターの値を「`[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]`」に設定します。
 
-    ![コピー シンクのパラメーター](./media/tutorial-bulk-copy-portal/copy-sink-parameters.png)
-11. **[設定]** タブに切り替えて、次の手順を実行します。 
+8. **[設定]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Enable Staging]\(ステージングの有効化\)** で **[True]\(はい\)** を選択します。
     2. **[Store Account Linked Service]\(ストア アカウントのリンクされたサービス\)** で **[AzureStorageLinkedService]** を選択します。
 
         ![ステージングの有効化](./media/tutorial-bulk-copy-portal/copy-sink-staging-settings.png)
-12. パイプライン設定を検証するために、**[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
-    ![パイプライン検証レポート](./media/tutorial-bulk-copy-portal/first-pipeline-validation-report.png)
+9. パイプライン設定を検証するには、上部のパイプライン ツール バーにある **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>パイプライン GetTableListAndTriggerCopyData を作成する
 
@@ -287,7 +294,6 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ![新しいパイプライン メニュー](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
 2. プロパティ ウィンドウで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
 
-    ![パイプライン名](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
 3. **[アクティビティ]** ツール ボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
 
     1. **[名前]** に「**LookupTableList**」と入力します。 
@@ -315,7 +321,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     2. **[詳細設定]** セクションを展開します。 
     3. **[パラメーター]** セクションで **[+ 新規]** をクリックします。 
     4. **[名前]** に、パラメーター名として「**tableList**」と入力します。
-    5. **[値]** にパラメーター値として「`@activity('LookupTableList').output.value`」と入力します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
+    5. [値] 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、テーブル名の値として「`@activity('LookupTableList').output.value`」と入力し、**[完了]** を選択します。 これで、2 つ目のパイプラインへの入力として検索アクティビティの結果一覧が設定されます。 結果一覧には、コピー先にコピーする必要があるデータが格納されたテーブルの一覧が含まれています。 
 
         ![パイプラインの実行アクティビティ - [設定] ページ](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 7. **[検索]** アクティビティを **[パイプラインの実行]** アクティビティに**接続**するために、[検索] アクティビティの横に付いている**緑の四角**を [パイプラインの実行] アクティビティの左へドラッグします。
@@ -323,17 +329,13 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ![検索アクティビティとパイプラインの実行アクティビティの接続](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
 8. パイプラインを検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
-    ![2 つ目のパイプライン - 検証レポート](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[すべて公開]** をクリックします。 発行が成功するまで待機します。 
-
-    ![[発行] ボタン](./media/tutorial-bulk-copy-portal/publish.png)
+9. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、ウィンドウの上部にある **[すべて公開]** をクリックします。 発行が成功するまで待機します。 
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 
-1. **[GetTableListAndTriggerCopyData]** タブがアクティブであることを確認します。 
-2. **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+パイプライン **GetTableListAndTriggerCopyData** に移動して、**[トリガー]**、**[Trigger Now]\(今すぐトリガー\)** の順にクリックします。 
 
-    ![[Trigger Now]\(今すぐトリガー\)](./media/tutorial-bulk-copy-portal/trigger-now.png)
+![[Trigger Now]\(今すぐトリガー\)](./media/tutorial-bulk-copy-portal/trigger-now.png)
 
 ## <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 

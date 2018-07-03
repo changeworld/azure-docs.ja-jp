@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: fcedba0a5b8a9684216f181a6d16f86044edb961
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 10b2e77a89e2b8d7481559396d102177cf70161c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651373"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307369"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル: サーバー管理者とユーザーのロールを構成する
 
@@ -67,7 +67,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>サーバー管理者ロールにユーザー アカウントを追加する
 
-このタスクでは、Azure AD のユーザーまたはグループ アカウントをサーバー管理者ロールに追加します。
+このタスクでは、Azure AD のユーザーまたはグループ アカウントをサーバー管理者ロールに追加します。 セキュリティ グループを追加する場合、その `MailEnabled` プロパティが `True` に設定されている必要があります。
 
 1. **オブジェクト エクスプローラー**でサーバー名を右クリックし、**[プロパティ]** をクリックします。 
 2. **[分析サーバーのプロパティ]** ウィンドウで、**[セキュリティ]** > **[追加]** の順にクリックします。

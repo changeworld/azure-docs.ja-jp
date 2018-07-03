@@ -3,7 +3,7 @@
 
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
-1. Microsoft アカウントの資格情報を使用して、[Azure Portal](https://portal.azure.com/) にログオンします。
+1. Microsoft アカウントの資格情報を使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Portal で **[リソースの作成]** をクリックし、Marketplace で **[すべて表示]** をクリックします。
 

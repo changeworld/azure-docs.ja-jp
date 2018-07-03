@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285901"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046818"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [バージョン 2 - プレビュー](quickstart-create-data-factory-portal.md)
+> * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [現在のバージョン](quickstart-create-data-factory-portal.md)
 
 このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。 
 
-
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。 
->
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されているサービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のチュートリアル](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -58,7 +55,7 @@ ms.locfileid: "36285901"
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
+4. **[バージョン]** で、**[V2]** を選択します。
 5. **[場所]** で、データ ファクトリの場所を選択します。
 
    この一覧に表示されるのは、Data Factory でサポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所に配置できます。
@@ -85,7 +82,7 @@ ms.locfileid: "36285901"
    ![[Azure Blob Storage] タイルの選択](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. 次の手順を完了します。 
 
-   a. **[名前]** に「**AzureStorageLinkedService**」と入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureStorageLinkedService**」と入力します。
 
    b. **[ストレージ アカウント名]** で Azure ストレージ アカウントの名前を選択します。
 
@@ -114,7 +111,7 @@ ms.locfileid: "36285901"
 
 4. **[接続]** タブに切り替えて、次の手順を実行します。 
 
-    a. **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
 
     b. **[ファイル パス]** で、**[参照]** ボタンを選択します。
 
@@ -125,7 +122,7 @@ ms.locfileid: "36285901"
    d. (省略可能) **[データのプレビュー]** を選択して、emp.txt ファイル内のデータをプレビューします。     
 5. この手順を繰り返して、出力データセットを作成します。  
 
-   a. **+** (正符号) ボタンを選択し、**[データセット]** を選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **+** (正符号) ボタンを選択し、**[データセット]** を選択します。
 
    b. **[新しいデータセット]** ページで **[Azure Blob Storage]** を選択し、**[完了]** を選択します。
 
@@ -160,7 +157,7 @@ ms.locfileid: "36285901"
 3. **adftutorial** コンテナーの **output** フォルダーに出力ファイルがあることを確認します。 output フォルダーが存在しない場合は、Data Factory サービスによって自動的に作成されます。 
 
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
-この手順では、Azure Data Factory にエンティティ (リンクされたサービス、データセット、パイプライン) をデプロイします。 次に、パイプラインの実行を手動でトリガーします。 エンティティを自分の Visual Studio Team Services Git リポジトリに発行することもできます。これについては、[別のチュートリアル](tutorial-copy-data-portal.md?#configure-code-repository)で説明します。
+この手順では、Azure Data Factory にエンティティ (リンクされたサービス、データセット、パイプライン) をデプロイします。 次に、パイプラインの実行を手動でトリガーします。 
 
 1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、上部にある **[すべて発行]** を選択します。 
 

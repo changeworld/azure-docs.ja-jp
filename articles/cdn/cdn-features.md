@@ -15,16 +15,18 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 6c93d995d7270a194bf654e69183807ba1422c10
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dee6a77fb85b2ac882103ba58a19ac4fce59c188
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608036"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301446"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 
 Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft** (プレビュー)、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、および **Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 
+
+**Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Migrate an Azure CDN profile from Standard Verizon to Premium Verizon (Azure CDN プロファイルを Standard Verizon から Premium Verizon に移行する)](cdn-migrate.md)」を参照してください。
 
 次の表では、各製品で使用できる機能を比較しています。
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651728"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031432"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -40,7 +40,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
      "hmdt": 44
    }
    ```
-2. Azure ポータルにサインインします。  
+2. [Azure Portal](https://portal.azure.com/) にサインインします。  
 
 3. Azure Portal の左上隅で、**[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。 ストレージ アカウント ジョブのページで、**[名前]** を「asaquickstartstorage」に、**[場所]** を「米国西部 2」に、**[リソース グループ]** を「asaquickstart-resourcegroup」に設定するよう入力します (パフォーマンスを高めるために、ストリーミング ジョブと同じリソース グループ内のストレージ アカウントをホストします)。 その他の設定は既定値のままにします。  
 
@@ -116,7 +116,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
    |---------|---------|---------|
    |出力エイリアス |   BlobOutput   |   ジョブの出力を識別する名前を入力します。 |
    |サブスクリプション  |  \<該当するサブスクリプション\>  |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
-   |ストレージ アカウント |  myasastorageaccount |   ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。       |
+   |ストレージ アカウント |  asaquickstartstorage |   ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。       |
    |コンテナー |   container1  |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |
    |パスのパターン |   output  |  出力用の既存のコンテナー内のパスとして使用する名前を入力します。   |
 

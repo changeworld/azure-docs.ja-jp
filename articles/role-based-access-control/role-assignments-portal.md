@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8f2c77a366c96455016894c042868d080551bc6a
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0aec1f50225bea25d5f68289c22ccc7b69703f7a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295866"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317948"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用してアクセスを管理する
 
@@ -92,7 +92,7 @@ ms.locfileid: "36295866"
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-RBAC では、アクセス権を付与するにはロールの割り当てを作成する必要があります。
+RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
 
 ### <a name="create-a-role-assignment-at-a-subscription-scope"></a>サブスクリプションをスコープとするロールの割り当ての作成
 

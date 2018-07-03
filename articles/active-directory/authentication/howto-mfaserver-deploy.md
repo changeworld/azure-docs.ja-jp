@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868298"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031688"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -45,7 +45,7 @@ Azure Multi-Factor Authentication Server をダウンロードする前に、負
 
 Azure Multi-factor Authentication に使用しているサーバーが次の要件を満たしていることを確認します。
 
-| Azure Multi-Factor Authentication Server の要件 | [説明] |
+| Azure Multi-Factor Authentication Server の要件 | 説明 |
 |:--- |:--- |
 | ハードウェア |<li>200 MB のハード ディスク容量</li><li>x32 または x64 対応のプロセッサ</li><li>1 GB 以上の RAM</li> |
 | ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション</li><li>Windows Vista 全エディション、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
@@ -103,8 +103,8 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 1. 実行可能ファイルをダブルクリックします。
 2. [インストール フォルダーの選択] 画面で、フォルダーが正しいことを確認し、**[次へ]** をクリックします。
-3. インストールが完了したら、**[Finish (終了)]** をクリックします。  構成ウィザードが起動します。
-4. 構成ウィザードの [ようこそ] 画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。  ウィザードを閉じると、サーバーが起動します。
+3. インストールが完了したら、**[Finish (終了)]** をクリックします。 構成ウィザードが起動します。
+4. 構成ウィザードの [ようこそ] 画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。 ウィザードを閉じると、サーバーが起動します。
 
    ![クラウド](./media/howto-mfaserver-deploy/skip2.png)
 
@@ -116,7 +116,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 送信する電子メールは、ユーザーの 2 段階認証の構成方法に応じて決定してください。 たとえば、会社のディレクトリから電話番号をインポートできる場合は、ユーザーが行う操作がわかるように、電子メールに既定の電話番号を記載する必要があります。 電話番号をインポートしない場合、またはユーザーがモバイル アプリを使用する場合は、アカウント登録を完了するよう指示する電子メールを送信します。 この電子メールには、Azure Multi-Factor Authentication ユーザー ポータルへのハイパーリンクを含めます。
 
-電子メールの内容は、ユーザーに対して設定されている認証方法 (電話、SMS、モバイル アプリ) によっても異なります。  たとえば、認証に PIN が要求される場合は、PIN の初期設定を電子メールで通知します。  ユーザーは最初の認証時に PIN の変更を要求されます。
+電子メールの内容は、ユーザーに対して設定されている認証方法 (電話、SMS、モバイル アプリ) によっても異なります。 たとえば、認証に PIN が要求される場合は、PIN の初期設定を電子メールで通知します。 ユーザーは最初の認証時に PIN の変更を要求されます。
 
 ### <a name="configure-email-and-email-templates"></a>電子メールと電子メール テンプレートの構成
 
@@ -136,8 +136,8 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 1. Azure MFA Server の左側で **[ユーザー]** を選択します。
 2. 下部で **[Active Directory からインポート]** を選択します。
-3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。  ここではユーザー OU を指定します。
-4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。  成功したことを通知するポップアップが表示されます。  インポート ウィンドウを閉じます。
+3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。 ここではユーザー OU を指定します。
+4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。 成功したことを通知するポップアップが表示されます。 インポート ウィンドウを閉じます。
 
    ![MFA Server ユーザーのインポート](./media/howto-mfaserver-deploy/import2.png)
 
@@ -181,6 +181,10 @@ Azure MFA Server をバックアップするには、**PhoneFactor.pfdata** フ�
 5. **MultiFactorAuth** サービスを開始します。
 
 新しいサーバーが、あらかじめバックアップしておいた構成とユーザー データで稼働します。
+
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
+
+MFA Server バージョン 8.x 以降にアップグレードした後またはこのバージョンをインストールした後は、組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

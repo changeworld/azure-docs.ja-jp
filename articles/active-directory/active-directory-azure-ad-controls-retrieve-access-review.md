@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: c30d166335e31cdbf03283371da42fa6b7cda162
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a2d356afd33ddd2e641c6f9bc028f235623b448b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233116"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024724"
 ---
 # <a name="retrieve-access-review-results"></a>アクセス レビュー結果の取得
 
-管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](active-directory-azure-ad-controls-create-access-review.md)することができます。  **全体管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**の各役割に属するユーザーは、アクセス レビューの結果を閲覧することができます。  そのいずれかの役割にユーザーを割り当てるには、特権ロール管理者が Azure AD PIM を使用して、その役割をアクティブにする資格がある人物としてユーザーを設定するか、全体管理者が永続的に[ユーザーを役割に割り当て](active-directory-users-assign-role-azure-portal.md)ます。
+管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](active-directory-azure-ad-controls-create-access-review.md)することができます。  **全体管理者**、**ユーザー アカウント管理者**、**セキュリティ管理者**、または**セキュリティ閲覧者**の各役割に属するユーザーは、アクセス レビューの結果を閲覧することができます。  そのいずれかの役割にユーザーを割り当てるには、特権ロール管理者が Azure AD PIM を使用して、その役割をアクティブにする資格がある人物としてユーザーを設定するか、全体管理者が永続的に[ユーザーを役割に割り当て](fundamentals/active-directory-users-assign-role-azure-portal.md)ます。
 
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>アクセス レビューの検索
 
@@ -46,7 +46,7 @@ ms.locfileid: "35233116"
 
 ## <a name="removing-users-from-an-access-review"></a>アクセス レビューからユーザーを削除する
 
-既定では、削除されたユーザーが Azure AD に 30 日間、削除状態で維持されます。その間は、管理者が必要に応じて復元することができます。  30 日後、そのユーザーは完全に削除されます。  その期間に達していなくても、全体管理者は、Azure Active Directory ポータルを使用して明示的に、[最近削除したユーザーを完全に削除](active-directory-users-restore.md)することができます。  ユーザーが完全に削除されると、以降そのユーザーに関するデータは、アクティブなアクセス レビューから削除されます。  監査ログには、削除済みユーザーに関する監査情報が維持されます。
+既定では、削除されたユーザーが Azure AD に 30 日間、削除状態で維持されます。その間は、管理者が必要に応じて復元することができます。  30 日後、そのユーザーは完全に削除されます。  その期間に達していなくても、全体管理者は、Azure Active Directory ポータルを使用して明示的に、[最近削除したユーザーを完全に削除](fundamentals/active-directory-users-restore.md)することができます。  ユーザーが完全に削除されると、以降そのユーザーに関するデータは、アクティブなアクセス レビューから削除されます。  監査ログには、削除済みユーザーに関する監査情報が維持されます。
 
 ## <a name="next-steps"></a>次の手順
 

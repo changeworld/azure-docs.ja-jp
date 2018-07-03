@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築 | Microsoft Docs'
 description: Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します
 services: cosmos-db
-author: Durgaprasad-Budhwani
+author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c02d85546a50b197639929158dc97b3d9bf7ff90
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d1a45389e95dbd7f5f762b6dee0edc3897d0c3b8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795773"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029849"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 
@@ -210,7 +210,7 @@ if err != nil {
 ## <a name="run-the-app"></a>アプリの実行
 
 1. Goglang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が GOPATH (**[File]\(ファイル\)**、**[Settings]\(設定\)**、**[Go]**、**[GOPATH]** にあります) に含まれていることを確認します。 
-2. ドキュメントを削除する行 (91 ～ 96 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
+2. ドキュメントを削除する行 (103 から 107 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
 3. Goglang で **[Run]\(実行\)** をクリックし、**[Run 'Build main.go and run']\('main.go をビルドして実行' を実行\)** をクリックします。
 
     アプリが終了し、「[ドキュメントの作成](#create-document)」で作成したドキュメントの説明が表示されます。

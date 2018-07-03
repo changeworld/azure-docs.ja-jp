@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/23/2018
 ms.author: larryfr
-ms.openlocfilehash: d0917894250c8cf907d721749be506d2c247111a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17f7bc4d9325dd8040036e218c43e418f3c51b68
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626319"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021210"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>クイック スタート: HDInsight クラスターに Kafka を作成する
 
@@ -76,7 +76,7 @@ HDInsight クラスターで Kafka を作成するには、次の手順に従い
     | Setting | 値 |
     | --- | --- |
     | クラスターの種類 | Kafka |
-    | バージョン | Kafka 0.10.0 (HDI 3.6) |
+    | バージョン | Kafka 1.0.0 (HDI 3.6) |
 
     **[選択]** ボタンを使用して、クラスターの種類の設定を保存し、__[基本]__ に戻ります。
 

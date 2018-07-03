@@ -1,6 +1,6 @@
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
 
 ```powershell
 Connect-AzureRmAccount

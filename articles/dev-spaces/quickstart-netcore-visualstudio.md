@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 16ec493708f85e9b3819943e131b9f9c3649f27e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3b0e03d47a03411e3e6dc2d073d5087bcb42e03e
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824640"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960425"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および Visual Studio)
 
@@ -51,9 +51,9 @@ Visual Studio 2017 で、新しいプロジェクトを作成します。 現時
 
 **[Web アプリケーション (モデル ビュー コントローラー)]** テンプレートを選択し、**.NET Core** と **ASP.NET Core 2.0** が対象になっていることを確認します。
 
-### <a name="create-a-dev-space-in-azure"></a>Azure に Dev Space を作成する
+### <a name="enable-dev-spaces-for-an-aks-cluster"></a>AKS クラスターの開発空間を有効にする
 
-先ほど作成したプロジェクトを開いた状態で、次の図のように、起動設定のドロップダウンから **[Azure Dev Spaces]** を選択します。
+先ほど作成したプロジェクトに対し、次の図のように、起動設定のドロップダウンから **[Azure Dev Spaces]** を選択します。
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
@@ -78,16 +78,41 @@ Azure Dev Spaces と共に動作するように構成されていないクラス
 
 - `charts` という名前のフォルダーが追加されています。このフォルダー内にアプリケーションの [Helm チャート](https://docs.helm.sh)がスキャフォールディングされています。 これらのファイルは、アプリケーションを開発空間に展開するために使用されます。
 - `Dockerfile` には、標準の Docker 形式でアプリケーションをパッケージ化するために必要な情報が含まれています。
-- `azds.yaml` には、開発空間で必要な構成情報 (パブリック エンドポイント経由でアプリケーションにアクセス可能かどうかなど) が含まれています。
+- `azds.yaml` には、開発空間で必要となる開発時の構成が含まれています。
 
 ![](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Kubernetes でコンテナーをデバッグする
 開発空間が正常に作成されたら、アプリケーションをデバッグすることができます。 コードにブレークポイントを設定します。たとえば、`HomeController.cs` ファイルの 20 行目 (`Message` 変数が設定されている行) に設定します。 **F5** キーを押してデバッグを開始します。 
 
-Visual Studio は開発空間と通信してアプリケーションをビルドして展開した後、ブラウザーを開いて Web アプリを実行します。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。 localhost アドレスであるのは、Azure Dev Spaces では Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されるためです。
+Visual Studio は開発空間と通信してアプリケーションをビルドして展開した後、ブラウザーを開いて Web アプリを実行します。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。 localhost アドレスであるのは、Azure Dev Spaces では AKS で実行されているコンテナーへの一時的な SSH トンネルが作成されるためです。
 
 ページの上部にある **[About]\(バージョン情報\)** リンクをクリックすると、ブレークポイントがトリガーされます。 コードがローカルで実行されている場合と同様に、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
+
+
+## <a name="iteratively-develop-code"></a>反復的にコードを開発する
+
+Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
+
+### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
+1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を `<h2>Hello k8s in Azure!</h2>` のように変更します。
+1. ファイルを保存します。
+1. ブラウザーに移動し、ページを更新します。 Web ページに更新された HTML が表示されます。
+
+なぜでしょうか? HTML や CSS などのコンテンツ ファイルを編集しても、.NET Core Web アプリで再コンパイルする必要はありません。アクティブな F5 セッションによって、変更されたコンテンツ ファイルが AKS で実行中のコンテナーに自動的に同期されるので、編集後のコンテンツをすぐに確認できます。
+
+### <a name="update-a-code-file"></a>コード ファイルを更新する
+コード ファイルを更新するには、.NET Core アプリを再ビルドし、更新されたアプリケーション バイナリを生成する必要があるため、もう少し作業が必要です。
+
+1. Visual Studio のデバッガーを停止します。
+1. `Controllers/HomeController.cs` という名前のコード ファイルを開き、About ページに表示されるメッセージ (`ViewData["Message"] = "Your application description page.";`) を編集します。
+1. ファイルを保存します。
+1. **F5** キーを押して再度デバッグを開始します。 
+
+コードを編集するたびに新しいコンテナー イメージを再構築して再展開すると、多くの場合、かなりの時間がかかります。Azure Dev Spaces では、代わりに既存のコンテナー内でコードの増分再コンパイルを実行することで、編集/デバッグ ループを高速化します。
+
+ブラウザーで Web アプリを更新し、About ページに移動します。 UI にカスタム メッセージが表示されます。
+
 
 ## <a name="next-steps"></a>次の手順
 

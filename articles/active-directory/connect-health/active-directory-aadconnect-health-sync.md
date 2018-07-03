@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229950"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961640"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
 
-![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Azure AD Connect Health for Sync のアラート
 Azure AD Connect Health for Sync アラート セクションには、アクティブなアラートの一覧が表示されます。 各アラートには、関連情報、解決の手順、関連ドキュメントのリンクが含まれます。 アクティブまたは解決済みのアラートを選択すると、新しいブレードが開き、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。 過去に解決されたアラートの履歴データも表示できます。
@@ -79,7 +79,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 ### <a name="categorization-of-errors"></a>エラー カテゴリの分類
 レポートでは、既存の同期エラーが次のカテゴリで分類されます。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 | --- | --- |
 | 重複する属性 |Azure AD において本来テナントごとに一意であるべき属性 (proxyAddresses、UserPrincipalName など) の値に重複があるオブジェクトを Azure AD Connect が作成または更新しようとしたときに発生するエラー。 |
 | 一致しないデータ |あいまいな一致の処理で、同期エラーを引き起こしたオブジェクトの突き合わせに失敗したときのエラー。 |
@@ -98,15 +98,18 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 ### <a name="error-details"></a>Error Details
 エラーごとの詳しい画面で以下のデータを確認できます。
 
+* 強調表示されている競合する属性
 * 関連する "*AD オブジェクト*" の識別子
 * 関連する "*Azure AD オブジェクト*" の識別子 (該当する場合)
 * エラーの説明と解決方法
-* 関連記事
 
-![同期エラー レポートの詳細](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+![同期エラー レポートの詳細](./media/active-directory-aadconnect-health-sync/duplicateAttributeSyncError.png)
 
 ### <a name="download-the-error-report-as-csv"></a>エラー レポートを CSV としてダウンロード
 [エクスポート] ボタンを選択すると、すべてのエラーに関する詳細情報を含んだ CSV ファイルをダウンロードできます。
+
+### <a name="diagnose-and-remediate-sync-errors"></a>同期エラーを診断して修正する 
+ユーザーのソース アンカーの更新を伴う特定の重複属性同期エラー シナリオでは、同期エラーをポータルから直接修正できます。 「[重複属性同期エラーを診断して修正する](active-directory-aadconnect-health-diagnose-sync-errors.md)」を参照してください
 
 ## <a name="related-links"></a>関連リンク
 * [同期中のエラーのトラブルシューティング](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

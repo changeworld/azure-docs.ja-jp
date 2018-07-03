@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dc67de00abb2eac2eeb6e2b6bf3798e3aa210152
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b512ba91d1df7ec0432bdf9048268714e570fe6b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949890"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958678"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成およびデプロイする
-このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存する投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。
+このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。
 
 ![ローカルの投票アプリ](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "29949890"
 | PublishProfiles | ローカルおよび Azure Service Fabric クラスターのプロファイルの詳細が記述された JSON ファイルが含まれています。 アプリケーションをデプロイするときに、これらのファイルの内容がプラグインによって使用されます。 |
 | スクリプト | アプリケーションとクラスターをコマンド ラインから迅速に管理するためのヘルパー スクリプトが含まれています。 |
 | VotingApplication | Service Fabric クラスターにプッシュされる Service Fabric アプリケーションが含まれています。 |
-| VotingWeb | フロントエンド ステートレス サービスのソース ファイルと、関連する gradle ビルド ファイルが含まれています。 |
+| VotingWeb | フロントエンド ステートレス サービスのソース ファイルが、関連する gradle ビルド ファイルと共に含まれています |
 | build.gradle | プロジェクトを管理するために使用される Gradle ファイルです。 |
 | settings.gradle | このフォルダー内の Gradle プロジェクトの名前が含まれています。 |
 
@@ -379,7 +379,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 ```
 
 ### <a name="configure-the-listening-port"></a>リスニング ポートを構成する
-VotingWebService フロントエンド サービスが作成されると、Service Fabric によって、サービスがリッスンするポートが選択されます。  VotingWebService は、このアプリケーションのフロントエンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定の既知のポートにバインドしましょう。 Package Explorer で、*VotingWebService/VotingWebServicePkg/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 8080、または別のポートに変更します。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。 次のコード スニペットを **ServiceManifest** タグの下に貼り付けます。
+VotingWebService フロントエンド サービスが作成されると、Service Fabric によって、サービスがリッスンするポートが選択されます。  VotingWebService は、このアプリケーションのフロントエンドとして機能して外部のトラフィックを受け付けるため、このサービスをよく知られた固定ポートにバインドしましょう。 Package Explorer で、*VotingWebService/VotingWebServicePkg/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 8080、または別のポートに変更します。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。 次のコード スニペットを **ServiceManifest** タグの下に貼り付けます。
 
 ```xml
 <Resources>
@@ -395,7 +395,7 @@ VotingWebService フロントエンド サービスが作成されると、Servi
 ## <a name="add-a-stateful-back-end-service-to-your-application"></a>アプリケーションにステートフルなバックエンド サービスを追加する
 これで、Java Web API サービスのスケルトンが完成しました。次に進み、ステートフル バックエンド サービスを完成させましょう。
 
-Service Fabric では、Reliable Collection によってデータがサービス内に一貫して確実に格納されます。 Reliable Collection は、可用性が高く信頼できる一連のコレクション クラスです。 Java コレクションを使用したことがある方にとっては、これらのクラスの使用は一般的です。
+Service Fabric では、Reliable Collection によってデータがサービス内に一貫して確実に格納されます。 Reliable Collection は、可用性が高く信頼できる一連のコレクション クラスです。 Java コレクションを使用したことがある方は、これらのクラスの使用法をもうよくご存じでしょう。
 
 1. Package Explorer で、アプリケーション プロジェクト内の **Voting** を右クリックし、**[Service Fabric] > [Add Service Fabric Service]\(Service Fabric サービスの追加\)** の順に選択します。
    
@@ -596,7 +596,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     }
     
     dependencies {
-        compile ('com.microsoft.servicefabric:sf-actors:1.0.0-preview1')
+        compile ('com.microsoft.servicefabric:sf-actors:1.0.0')
     }
     
     jar {

@@ -2,10 +2,11 @@
 | --- | :--- |
 | クラスターごとの最大ノード数 | 100 |
 | ノードごとの最大ポッド数 ([Kubenet を使用した基本的なネットワーク][basic-networking]) | 110 |
-| ノードごとの最大ポッド数 ([Azure CNI を使用した高度なネットワーク][advanced-networking]) | 30 |
-| サブスクリプションあたりの最大クラスター数 | 20<sup>1</sup> |
+| ノードごとの最大ポッド数 ([Azure CNI を使用した高度なネットワーク][advanced-networking]) | 30<sup>1</sup> |
+| サブスクリプションあたりの最大クラスター数 | 20<sup>2</sup> |
 
-<sup>1</sup> 制限値の拡大を要求するには、[Azure Support request][azure-support] を作成してください。<br />
+<sup>1</sup> この値は、ARM テンプレートのデプロイによってカスタマイズすることができます。 [こちら][arm-deployment-example]の例を参照してください。<br />
+<sup>2</sup> 制限値の引き上げを要求するには、[Azure サポート要求][azure-support]を作成してください。<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/networking-overview.md#basic-networking
@@ -13,3 +14,4 @@
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
+[arm-deployment-example]: https://github.com/Azure/AKS/blob/master/examples/vnet/02-aks-custom-vnet.json#L64-L69

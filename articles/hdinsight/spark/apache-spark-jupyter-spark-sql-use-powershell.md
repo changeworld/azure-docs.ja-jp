@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
 ms.custom: mvc
-ms.openlocfilehash: 321f84e0d56a2bda57e1fbfa2cc562b65c6e1d30
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e3f1d5edf12980cb0324bb130725ec2588aa220
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779159"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36957982"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-powershell"></a>クイック スタート: PowerShell を使用して HDInsight に Spark クラスターを作成する
 Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)」を参照してください。
@@ -34,14 +34,14 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
 
 - Azure リソース グループ。 Azure リソース グループは、Azure リソースのコンテナーです。 
 - Azure ストレージ アカウントまたは Azure Data Lake Store。  各 HDInsight クラスターには、依存データ ストレージが必要です。 このクイック スタートでは、ストレージ アカウントを作成します。
-- 異なるクラスターの種類の HDInsight クラスター。  このクイック スタートでは、Spark 2.2 クラスターを作成します。
+- 異なるクラスターの種類の HDInsight クラスター。  このクイック スタートでは、Spark 2.3 クラスターを作成します。
 
 リソースを作成するには、PowerShell スクリプトを使います。  スクリプトを実行すると、次の値の入力を求められます。
 
 |パラメーター|値|
 |------|------|
 |Azure リソース グループ名 | リソース グループの一意名を指定します。|
-|場所| Azure リージョンを指定します (例: "米国中部")。 |
+|リージョン| Azure リージョンを指定します (例: "米国中部")。 |
 |既定のストレージ アカウント名 | ストレージ アカウントに一意の名前を指定してください。 |
 |クラスター名 | HDInsight Spark クラスターの一意名を指定します。|
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|
@@ -53,7 +53,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
 2. 次の PowerShell スクリプトをコピーして Cloud Shell に貼り付けます。 
 
     ```azurepowershell-interactive
-    ### Create a Spark 2.2 cluster in Azure HDInsight
+    ### Create a Spark 2.3 cluster in Azure HDInsight
         
     # Create the resource group
     $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -75,7 +75,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
                                     -StorageAccountName $defaultStorageAccountName `
                                     -StorageAccountKey $defaultStorageAccountKey
     
-    # Create a Spark 2.2 cluster
+    # Create a Spark 2.3 cluster
     $clusterName = Read-Host -Prompt "Enter the name of the HDInsight cluster"
     # Cluster login is used to secure HTTPS services hosted on the cluster
     $httpCredential = Get-Credential -Message "Enter Cluster login credentials" -UserName "admin"
@@ -96,7 +96,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
         -Name $clusterName -Context $defaultStorageContext 
     
     $sparkConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-    $sparkConfig.Add("spark", "2.2")
+    $sparkConfig.Add("spark", "2.3")
     
     # Create the HDInsight cluster
     New-AzureRmHDInsightCluster `

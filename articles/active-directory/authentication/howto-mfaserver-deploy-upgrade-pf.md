@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866235"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335630"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
 
@@ -66,11 +66,8 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
   3. ユーザー ポータルのインストール先 (C:\inetpub\wwwroot\MultiFactorAuth など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
 
-  4. モバイル アプリ Web サービスを Web サーバーにインストールするには、コマンド プロンプトを管理者として開き、MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi を実行します。
-
-    既定の仮想ディレクトリ名は、**PhoneFactorPhoneAppWebService** ではなく **MultiFactorAuthMobileAppWebService** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 エンドユーザーがモバイル デバイスに簡単に入力できるように、短い名前を選択できます。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [モバイル アプリ] アイコンをクリックし、モバイル アプリ Web サービス URL を更新する必要があります。
-
-  5. モバイル アプリ Web サービスのインストール先 (C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
+> [!NOTE]
+> 8.0 よりも前のバージョンから Azure MFA Server 8.0 以降にアップグレードするときは、アップグレード後にモバイル アプリ Web サービスをアンインストールできます。
 
 ## <a name="next-steps"></a>次の手順
 

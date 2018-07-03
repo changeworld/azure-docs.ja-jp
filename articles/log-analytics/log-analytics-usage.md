@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9a9c898cf0f2e0b1387bbc2ac18b5009838d138b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209818"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317305"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データの送信元、送信されたさまざまな種類のデータに関する情報が含まれます。  データ使用状況を確認して分析するには、**[ログ分析の利用状況]** ダッシュボードを使用します。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -79,7 +79,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
    - **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
-   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です。
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です
    - **[期間]** を *1440* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、**[アラートの頻度]** を *60* 分ごとにします。
 - **[アラートの詳細を定義します]** では、以下を指定します。
    - **[名前]**: "*24 時間でデータ量が 100 GB を超えた場合*"
@@ -93,7 +93,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
    - **[検索クエリ]**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です。
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、****[条件]** は**しきい値**の *0* "*より大きい*" です
    - **[期間]** を *180* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、**[アラートの頻度]** を *60* 分ごとにします。
 - **[アラートの詳細を定義します]** では、以下を指定します。
    - **[名前]**: "*24 時間でデータ量が 100 GB を超えると予想される場合*"
@@ -151,7 +151,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 
 | データ量の多いソース | データ量を削減する方法 |
 | -------------------------- | ------------------------- |
-| セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [レジストリの監査](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [ファイル システムの監査](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [カーネル オブジェクトの監査](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [ハンドル操作の監査](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [リムーバブル記憶域の監査](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [レジストリの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](log-analytics-data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
 | イベント ログ                 | [イベント ログの構成](log-analytics-data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
 | syslog                     | [syslog の構成](log-analytics-data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |

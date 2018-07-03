@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248243"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300858"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric で Windows コンテナーを監視する
 
@@ -31,7 +31,7 @@ ms.locfileid: "35248243"
 > [!div class="checklist"]
 > * Service Fabric クラスターの Log Analytics を構成する
 > * コンテナーとノードのログの表示とクエリに Log Analytics ワークスペースを使用する
-> * OMS エージェントを構成してコンテナーとノード メトリックを選択する
+> * Log Analytics エージェントを構成してコンテナーとノード メトリックを選択する
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを始める前に、次の準備が必要です。
@@ -81,7 +81,7 @@ ms.locfileid: "35248243"
     "omsSolution": "ServiceFabric"
     ```
 
-3. 仮想マシン拡張機能として OMS Microsoft Monitoring Agent を追加します。 仮想マシン スケール セット リソース *resources* > *"apiVersion": "[variables('vmssApiVersion')]"* を見つけます。 *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* 以下の *ServiceFabricNode* 拡張機能以下に次の拡張機能の説明を追加します。 
+3. 仮想マシン拡張機能として Microsoft Monitoring Agent を追加します。 仮想マシン スケール セット リソース *resources* > *"apiVersion": "[variables('vmssApiVersion')]"* を見つけます。 *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* 以下の *ServiceFabricNode* 拡張機能以下に次の拡張機能の説明を追加します。 
     
     ```json
     {
@@ -181,7 +181,7 @@ ms.locfileid: "35248243"
     },
     ```
 
-サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 OMS エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
+サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 Log Analytics エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
 
 新しい変更を加えたテンプレートをデプロイして、現在のクラスターをアップグレードします。 処理が完了すると、リソース グループに Log Analytics リソースが表示されます。 クラスターの準備ができたら、コンテナー化されたアプリケーションをデプロイします。 次の手順では、コンテナーの監視を設定します。
 
@@ -191,7 +191,7 @@ ms.locfileid: "35248243"
 
 ![コンテナー ソリューションの追加](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-"*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、**[作成]** をクリックします。 *コンテナー監視ソリューション*がワークスペースに追加され、テンプレートによって OMS エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
+"*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、**[作成]** をクリックします。 "*コンテナー監視ソリューション*" がワークスペースに追加され、テンプレートによって Log Analytics エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
 
 *リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 ソリューションをクリックすると、ランディング ページに実行中のコンテナー イメージ数が表示されます。 
 
@@ -211,11 +211,11 @@ ms.locfileid: "35248243"
 
 ![コンテナーのクエリ](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
-## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>パフォーマンス カウンターを選択するように OMS エージェントを構成する
+## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>パフォーマンス カウンターを選択するように Log Analytics エージェントを構成する
 
-OMS エージェントを使用するもう 1 つの利点として、Azure 診断エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、OMS UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
+Log Analytics エージェントを使用するもう 1 つの利点として、Azure 診断エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、Log Analytics UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
 
-OMS ワークスペースに移動します。ここでは、ソリューションの確認、カスタム ダッシュボードの作成、OMS エージェントの構成を行うことができます。 
+Log Analytics ワークスペースに移動します。ここでは、ソリューションの確認、カスタム ダッシュボードの作成、Log Analytics エージェントの構成を行うことができます。 
 * [詳細設定] メニューを開くには、**[詳細設定]** をクリックします。
 * **[接続されたソース]** > **[Windows Server]** の順にクリックし、*"5 台の Windows コンピューターが接続されています"* と表示されることを確認します。
 * **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Log Analytics のレコメンデーション一覧と、他のカウンターを検索するオプションが表示されます。 **Processor(_Total)\% Processor Time** カウンターと **Memory(*)\Available MBytes** カウンターが収集されていることを確認します。

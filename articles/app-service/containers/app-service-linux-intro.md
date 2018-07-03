@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: dab9e7b4ee62624ba32b7b6b41d0dee5ac01af09
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e40283abd418552f296f7539e554e0ad5232e49a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598319"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031691"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -76,7 +76,7 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-App Service on Linux は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。現在、同じリソース グループでの Windows アプリと Linux アプリの混在についても制限事項があります。
+App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 [ASE の Linux (分離レベル)](https://blogs.msdn.microsoft.com/appserviceteam/2018/05/07/announcing-the-linux-on-app-service-environment-public-preview/) はプレビュー モードで、現時点では運用環境のワークロードでサポートされていません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。 Windows アプリと Linux アプリを同じリソース グループ内でも混在させないという点において、現在の制限があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

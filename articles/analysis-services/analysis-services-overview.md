@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234558"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937939"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -31,7 +31,7 @@ Azure Portal から数分で[サーバーを作成する](analysis-services-crea
 
 **ビデオ:** [デプロイの自動化](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してださい。
 
-Azure Analysis Services とさまざまな Azure サービスを統合することにより、高度な分析ソリューションを構築できます。 [Azure Active Directory](../active-directory/active-directory-whatis.md) との統合によって、重要なデータのセキュリティをロールベースのアクセスによって確保することができます。 [Azure Data Factory](../data-factory/introduction.md) パイプラインには、モデルにデータを読み込むアクティビティを含めることによって統合します。 [Azure Automation](../automation/automation-intro.md) や [Azure Functions](../azure-functions/functions-overview.md) を使用すると、カスタム コードによるモデルの軽量オーケストレーションを行うことができます。 
+Azure Analysis Services とさまざまな Azure サービスを統合することにより、高度な分析ソリューションを構築できます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) との統合によって、重要なデータのセキュリティをロールベースのアクセスによって確保することができます。 [Azure Data Factory](../data-factory/introduction.md) パイプラインには、モデルにデータを読み込むアクティビティを含めることによって統合します。 [Azure Automation](../automation/automation-intro.md) や [Azure Functions](../azure-functions/functions-overview.md) を使用すると、カスタム コードによるモデルの軽量オーケストレーションを行うことができます。 
 
 ## <a name="the-right-tier-when-you-need-it"></a>必要に応じたレベルを選ぶ
 
@@ -72,39 +72,41 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ## <a name="availability-by-region"></a>リージョンごとの可用性
 
-Azure Analysis Services は、世界中のリージョンでサポートされています。 複数のリージョンの冗長サーバーにモデルをデプロイすることで[高可用性](analysis-services-bcdr.md)が確保されます。 サポートされるレベルとクエリ レプリカは、選択されたリージョンによって異なります。 
+Azure Analysis Services は、世界中のリージョンでサポートされています。 サポートされているプランとクエリ レプリカの可用性は、選択したリージョンによって異なります。 プランとクエリ レプリカの可用性は、ニーズや各リージョンの利用可能なリソースに応じて変更することができます。 
 
 ### <a name="americas"></a>アメリカ合衆国
 
-|リージョン  | サポートされるレベル | クエリ レプリカ |
+|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|米国東部 2     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |    7     |
+|米国東部 2     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    7     |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
-|米国中央部     |    B1、B2、S0、S1、S2、S4、D1     |    3     |
+|米国中央部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
-|米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    7     |
-|米国西部     |    B1、B2、S0、S1、S2、S4、S8、S9、D1     |    7     |
-|米国西部 2    |    B1、B2、S0、S1、S2、S4、S8、S9、D1     |    1     |
+|米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
+|米国西部     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    7     |
+|米国西部 2    |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |    3     |
 
 ### <a name="europe"></a>ヨーロッパ
 
-|リージョン  | サポートされるレベル | クエリ レプリカ |
+|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
-|北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    1     |
+|北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
 |英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、S8、S9、D1      |    7     |
+|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、S8\*、S9\*D1      |    7     |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
-|リージョン  | サポートされるレベル | クエリ レプリカ |
+|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   3      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8\*、S9\*D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+
+Standard レベルの\* S8、S9 プランでは、1 つのクエリ レプリカがサポートされています。
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
 
@@ -116,7 +118,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 スケールアウトにより、クライアント クエリは、クエリ プール内の複数の "*クエリ レプリカ*" に分散されます。 クエリ レプリカには、表形式モデルの同期コピーが格納されます。 クエリのワークロードを分散することによって、高クエリ ワークロード下における応答時間を短縮することができます。 モデルの処理操作をクエリ プールから切り離すことができるので、クライアントのクエリに処理操作による悪影響が及ぶことはありません。 
 
-クエリ プールは、追加分として最大 7 つのクエリ レプリカ (ご使用のサーバーを含めて合計 8 つ) で作成することができます。 プール内に作成できるクエリ レプリカの数は、選択したリージョンによって異なります。 クエリ レプリカをサーバーのリージョンの外部に分散させることはできません。 クエリ レプリカは、お使いのサーバーと同じ料金で課金されます。
+クエリ プールは、追加分として最大 7 つのクエリ レプリカ (ご使用のサーバーを含めて合計 8 つ) で作成することができます。 プール内に作成できるクエリ レプリカの数は、選択したプランとリージョンによって異なります。 クエリ レプリカをサーバーのリージョンの外部に分散させることはできません。 クエリ レプリカは、お使いのサーバーと同じ料金で課金されます。
 
 レベルの変更と同じように、必要に応じてクエリ レプリカをスケールアウトできます。 スケールアウトの構成は、ポータルまたは REST API を使用して行います。 詳しくは、「[Azure Analysis Services のスケールアウト](analysis-services-scale-out.md)」をご覧ください。
 
@@ -148,7 +150,7 @@ Azure Analysis Services ファイアウォールは、ルールに指定され�
 
 ### <a name="authentication"></a>認証
 
-ユーザー認証は、[Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) によって処理されます。 ログインするとき、ユーザーは、データベースへのロール ベースのアクセスに基づく組織のアカウント ID を使用します。 ユーザー ID は、サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
+ユーザー認証は、[Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) によって処理されます。 ログインするとき、ユーザーは、データベースへのロール ベースのアクセスに基づく組織のアカウント ID を使用します。 ユーザー ID は、サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
 ### <a name="data-security"></a>データのセキュリティ
 

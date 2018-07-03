@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93698df0e1684b469b6e2a03e6681499949aab6d
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414605"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36338324"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -23,6 +23,9 @@ ms.locfileid: "35414605"
 
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>プライベート ASN (自律システム番号) は使用できますか。
 はい、オンプレミスのネットワークと Azure 仮想ネットワークの両方に対して独自のパブリック ASN またはプライベート ASN を使用できます。
+
+### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>32 ビットの ASN (自律システム番号) は使用できますか。
+いいえ。現時点で Azure VPN Gateway がサポートしているのは 16 ビットの ASN となります。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Azure によって予約済みの ASN はありますか。
 はい、次の ASN は、内外両方のピアリング用に Azure によって予約されています。
