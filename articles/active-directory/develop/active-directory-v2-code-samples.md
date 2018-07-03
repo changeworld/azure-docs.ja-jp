@@ -84,7 +84,7 @@ JavaScript (hello.js + Angular 4) | [angular4-connect-sample](https://github.com
 
 ## <a name="web-apis"></a>Web API
 
-### <a name="web-api-protected-by-azure-ad"></a>Azure AD によって保護されてる Web API
+### <a name="web-api-protected-by-azure-ad"></a>Azure AD によって保護されている Web API
 
 次のサンプルは、Azure AD V2 エンドポイントで Web API を保護する方法を示しています。
 
