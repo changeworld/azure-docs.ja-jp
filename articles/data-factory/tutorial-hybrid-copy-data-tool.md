@@ -190,7 +190,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 11. **[Specify the on-premises SQL Server database]\(オンプレミスの SQL Server データベースを指定\)** で、次の手順を実行します。 
 
-      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**SqlServerLinkedService**」と入力します。
+      a. **[名前]** に「**SqlServerLinkedService**」と入力します。
 
       b. **[サーバー名]** にオンプレミスの SQL Server インスタンスの名前を入力します。
 
@@ -222,7 +222,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 16. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログで、次の手順を実行します。 
 
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]**** に「**AzureStorageLinkedService**」と入力します。
+     a. **[名前]**** に「**AzureStorageLinkedService**」と入力します。
 
      b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)**  で **[TutorialIntegrationRuntime]** を選択します
 

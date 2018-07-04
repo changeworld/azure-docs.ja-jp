@@ -107,7 +107,7 @@ Insight4GRC で Azure AD のシングル サインオンを構成してテスト
 
     ![[Insight4GRC Domain and URLs](Insight4GRC のドメインと URL) のシングル サインオン情報](./media/insight4grc-tutorial/tutorial_insight_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.Insight4GRC.com/SAML` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<subdomain>.Insight4GRC.com/SAML` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx` のパターンを使用して URL を入力します。
 

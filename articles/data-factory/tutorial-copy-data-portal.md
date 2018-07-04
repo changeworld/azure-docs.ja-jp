@@ -74,7 +74,7 @@ ms.locfileid: "37048439"
 
 2. Azure サービスに SQL Server へのアクセスを許可します。 Data Factory から SQL Server にデータを書き込むことができるように、SQL Server で **[Azure サービスへのアクセスを許可]** が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側の **[その他のサービス]** > **[SQL Server]** を選択します。
+    a. 左側の **[その他のサービス]** > **[SQL Server]** を選択します。
 
     b. サーバーを選択し、**[設定]** の **[ファイアウォール]** を選択します。
 
@@ -97,7 +97,7 @@ ms.locfileid: "37048439"
 4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
@@ -188,7 +188,7 @@ ms.locfileid: "37048439"
     ![リンクされたサービス](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
 5. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
+    a. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
 
     b. **[サーバー名]** で、使用する SQL Server インスタンスを選択します。
 
@@ -264,7 +264,7 @@ Data Factory または独自の Visual Studio Team Services Git リポジトリ�
     ![[新規] ボタン](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
 4. **[新しいトリガー]** ウィンドウで、次の手順を実行します。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に「**RunEveryMinute**」と入力します。
+    a. **[名前]** に「**RunEveryMinute**」と入力します。
 
     b. **[終了]** で **[指定日]** を選択します。
 
