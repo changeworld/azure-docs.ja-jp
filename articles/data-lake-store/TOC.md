@@ -1,4 +1,5 @@
 # [Data Lake Storage Gen1 のドキュメント](index.md)
+# [Data Lake Storage Gen2 (プレビュー) のドキュメントに切り替え](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # 概要
 ## [Data Lake Storage Gen1 の概要](data-lake-store-overview.md)

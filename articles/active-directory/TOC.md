@@ -83,8 +83,8 @@
 ## [グループとメンバーの管理](fundamentals/active-directory-manage-groups.md)
 ### グループの管理
 #### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell for Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [グループ メンバーを管理する](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [グループ メンバーシップを管理する](fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -99,13 +99,13 @@
 ### [Office 365 グループの有効期限を設定する](active-directory-groups-lifecycle-azure-portal.md)
 ### [グループの名前付けポリシーの適用](groups-naming-policy.md)
 ### [グループをすべて表示する](fundamentals/active-directory-groups-view-azure-portal.md)
-### [SaaS アプリへのグループ アクセスの追加](active-directory-accessmanagement-group-saasapps.md)
+### [SaaS アプリへのグループ アクセスの追加](users-groups-roles/groups-saasapps.md)
 ### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### 高度なルールの作成
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
-### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
+### [セルフサービス グループのセットアップ](users-groups-roles/groups-self-service-management.md)
+### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
 
 ## [レポートの管理](active-directory-reporting-azure-portal.md)
 ### [サインイン アクティビティ](active-directory-reporting-activity-sign-ins.md)
@@ -363,7 +363,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### カスタム ドメイン名
 #### [クイックスタート](fundamentals/add-custom-domain.md)
-#### [カスタム ドメイン名を追加する](active-directory-domains-manage-azure-portal.md)
+#### [カスタム ドメイン名を追加する](users-groups-roles/domains-manage.md)
 ### [ディレクトリを管理する](fundamentals/active-directory-administer.md)
 ### [ディレクトリを削除する](directory-delete-howto.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
@@ -381,12 +381,12 @@
 
 ## リソースへのアクセスを委任する
 ### [管理者ロールのメンバーを表示する](directory-manage-roles-portal.md)
-### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
+### [管理者ロール](users-groups-roles/directory-assign-admin-roles.md)
 #### [ユーザーに管理者ロールを割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md)
 ### [管理者ロールのセキュリティ強化](admin-roles-best-practices.md)  
-#### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md)
-### [管理単位](active-directory-administrative-units-management.md)
+#### [緊急アクセス用管理者アカウントの作成](users-groups-roles/directory-emergency-access.md)
+### [管理単位](users-groups-roles/directory-administrative-units.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
 ## アクセス レビュー
@@ -406,6 +406,7 @@
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
+##### [セッションのリスクが検出されたときにアクセスをブロックする](active-directory-conditional-access-app-sign-in-risk.md)
 #### チュートリアル
 ##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
 #### 概念

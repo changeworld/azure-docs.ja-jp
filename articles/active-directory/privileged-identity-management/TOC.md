@@ -1,12 +1,9 @@
 # 概要
-## [特権アクセスのセキュリティ保護](active-directory-securing-privileged-access.md)
 ## [Azure AD PIMとは](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [特権アクセスのセキュリティ保護](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM のディレクトリ ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Azure リソース向けの PIM](azure-pim-resource-rbac.md)
 ## [PIM の承認ワークフロー](azure-ad-pim-approval-workflow.md)
-## [ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-
-
 
 # 作業開始
 ## [サブスクリプションの要件](subscription-requirements.md)
@@ -46,16 +43,8 @@
 ### [アクセス レビューを終了する](pim-resource-roles-complete-access-review.md)
 
 # FAQ
-## ディレクトリ ロール用の PIM
 ## リソース ロール用の PIM
 ### [割り当ての種類](pim-resource-roles-eligible-visibility.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
-
-# 関連項目
-## [Azure Active Directory](/azure/active-directory/)
-## [ロールベースのアクセス制御](../../role-based-access-control/overview.md)
-# リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

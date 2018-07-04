@@ -136,7 +136,7 @@
 - name: ハウツー ガイド
   items:
     - name: アプリの計画
-      href: Plan-your-app.md
+      href: luis-how-plan-your-app.md
     - name: 新しいアプリの開始
       href: Create-new-app.md
     - name: モデルの構築
@@ -200,7 +200,7 @@
         - name: 事前構築済みのドメインの使用
           href: luis-how-to-use-prebuilt-domains.md
         - name: 事前構築済みの Cortana アプリの使用
-          href: Cortana-Prebuilt-App.md
+          href: luis-how-to-cortana-prebuilt-app.md
     - name: LUIS アプリの管理
       items:
         - name: ダッシュボードの利用
@@ -309,6 +309,8 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: Text Analytics
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: Recognizers-Text
+      href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: リソース
   items:
     - name: Azure のロードマップ

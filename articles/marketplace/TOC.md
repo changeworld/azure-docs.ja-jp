@@ -5,7 +5,6 @@
 ### ネットショップ  
 #### [AppSource と Azure Marketplace の比較](./comparing-appsource-azure-marketplace.md)  
 #### [AppSource によるビジネスの成長](./grow-your-business-with-appsource.md) 
-#### [推奨されるソリューション](./preferred-solutions.md)
 ##### [ランディング ページの作成](./build-your-landing-page.md)  
 ##### [リードの共有の有効化](./enable-lead-sharing.md)  
 ##### [マーケットプレースの GTM 特典](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### マーケットプレースのネットショップに公開する方法  
 #### [ソリューションの登録リストの種類を選定する](./determine-your-listing-type.md)  
 #### [マーケットプレースのネットショップで公開元になる](./become-publisher.md)  
-#### [登録リストの種類別の要件](./listing-type-requirements.md)  
+#### [登録リストの種類別の要件](./listing-type-requirements.md) 
+#### [推奨されるソリューション](./preferred-solutions.md) 
 
 ### 公開のためのチェックリスト  
 #### [公開のためのチェックリスト (AppSource)](./publishing-checklist-appsource.md)  
 #### [公開のためのチェックリスト (Azure Marketplace)](./publishing-checklist-azure-marketplace.md)  
 
 ### サポート  
-#### [サポート (AppSource)](./support-appsource.md)  
-#### [サポート (Azure Marketplace)](./support-azure-marketplace.md)  
+#### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 
-### ガイド  
+### 発行ガイド  
 #### [Azure Marketplace コンサルティング サービス](consulting-services.md)  
 #### [Azure Marketplace SaaS アプリの技術的な発行ガイド](marketplace-saas-applications-technical-publishing-guide.md) 
 

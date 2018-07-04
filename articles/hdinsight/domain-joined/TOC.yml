@@ -20,6 +20,8 @@
       href: ../spark/apache-spark-intellij-tool-plugin.md
     - name: Eclipse を使用してドメイン参加済みクラスターにリンクする
       href: ../spark/apache-spark-eclipse-tool-plugin.md
+    - name: ドメイン参加済みクラスターでの Oozie の使用
+      href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: データのセキュリティ保護
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true
@@ -69,6 +71,10 @@
     - name: リリース ノート
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: アーカイブされたリリース ノート
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: フォーラムで質問する

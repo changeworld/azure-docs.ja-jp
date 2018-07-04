@@ -2,15 +2,17 @@
 
 # 概要
 ## [Azure Resource Manager とは](resource-group-overview.md)
-## [リソース プロバイダーと種類](resource-manager-supported-services.md)
 ## [Resource Manager デプロイとクラシック デプロイ](resource-manager-deployment-model.md)
-## [サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [管理グループを使用してリソースを整理する](management-groups-overview.md)
 
 # 作業開始
 ## [テンプレートを作成してデプロイする](resource-manager-create-first-template.md)
 ## [テンプレート用の VS Code 拡張機能](resource-manager-vscode-extension.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+
+# 概念
+## [リソース プロバイダーと種類](resource-manager-supported-services.md)
+## [管理グループ](management-groups-overview.md)
+## [サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # 方法
 ## テンプレートの作成

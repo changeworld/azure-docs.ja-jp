@@ -423,6 +423,10 @@
     - name: リリース ノート
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: アーカイブされたリリース ノート
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: フォーラムで質問する
