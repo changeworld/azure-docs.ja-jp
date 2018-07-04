@@ -278,3 +278,11 @@
               href: app-service-web-open-source-technologies-faq.md
             - name: 構成と管理に関する FAQ
               href: app-service-web-configuration-and-management-faq.md
+    - name: IP アドレスの変更
+      items:
+        - name: 受信 IP アドレス
+          href: ip-address-change-inbound.md
+        - name: 発信 IP アドレス
+          href: ip-address-change-outbound.md
+        - name: SSL アドレス
+          href: ip-address-change-ssl.md

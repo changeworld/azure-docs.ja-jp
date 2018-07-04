@@ -5,6 +5,8 @@
     - name: 音声サービスとは
       href: overview.md
       expanded: true
+    - name: 音声のシナリオ
+      href: speech-scenarios.md
 - name: クイック スタート
   items:
     - name: 音声サービスを無料で試す
@@ -25,16 +27,18 @@
       href: how-to-text-to-speech.md
     - name: 音声を翻訳する
       href: how-to-translate-speech.md
-    - name: Speech Devices SDK を取得する
-      href: get-speech-devices-sdk.md
     - name: バッチ文字起こし
       href: batch-transcription.md
+    - name: Speech Devices SDK を取得する
+      href: get-speech-devices-sdk.md
 - name: カスタマイズ
   items:
     - name: 音響モデルをカスタマイズする
       href: how-to-customize-acoustic-models.md
     - name: 言語モデルをカスタマイズする
       href: how-to-customize-language-model.md
+    - name: 発音をカスタマイズする
+      href: how-to-customize-pronunciation.md
     - name: 音声フォントをカスタマイズする (ボット ブランド音声)
       href: how-to-customize-voice-font.md
     - name: トランスクリプトを準備する

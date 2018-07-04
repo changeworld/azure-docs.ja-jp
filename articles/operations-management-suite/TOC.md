@@ -1,6 +1,5 @@
 # 概要
-## [Operations Management Suite とは](operations-management-suite-overview.md)
-## [OMS アーキテクチャ](operations-management-suite-architecture.md)
+## [エージェントの監視](../monitoring/index.md)
 
 # 作業開始
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
@@ -13,13 +12,10 @@
 
 ## 分析
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [監視製品の比較](operations-management-suite-monitoring-product-comparison.md)
-### [アラートの管理](operations-management-suite-monitoring-alerts.md)
 ## 自動化
 ### [Azure Automation の概要](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Backup
-
 ### [Backup の概要](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Site Recovery の概要](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -69,12 +65,7 @@
 ### [ベスト プラクティス](../monitoring/monitoring-solutions-best-practices.md)
 
 ## 管理のシナリオ
-### [Runbook からの分析データの収集](operations-management-suite-runbook-datacollect.md)
-
-## [OMS との統合](operations-management-suite-integration.md)
-
-# リファレンス
-## [SDK](operations-management-suite-sdk.md)
+### [Runbook からの分析データの収集](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
