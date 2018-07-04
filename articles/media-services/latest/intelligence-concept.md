@@ -47,11 +47,11 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="transcript"></a>transcript
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|行 ID。|
-|テキスト|トランスクリプトそのもの。|
-|言語|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
+|text|トランスクリプトそのもの。|
+|language|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
 |instances|この行が出現する時間範囲の一覧。 インスタンスが transcript の場合、instances は 1 つだけあります。|
 
 例:
@@ -85,12 +85,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="ocr"></a>ocr
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|OCR 行 ID。|
-|テキスト|OCR テキスト。|
+|text|OCR テキスト。|
 |confidence|認識の信頼度。|
-|言語|OCR 言語。|
+|language|OCR 言語。|
 |instances|この OCR が出現する時間範囲の一覧 (同じ OCR が複数回出現する可能性があります)。|
 
 ```json
@@ -128,12 +128,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="keywords"></a>keywords
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|キーワード ID。|
-|テキスト|キーワードのテキスト。|
+|text|キーワードのテキスト。|
 |confidence|キーワード認識の信頼度。|
-|言語|キーワードの言語 (翻訳時)。|
+|language|キーワードの言語 (翻訳時)。|
 |instances|このキーワードが出現する時間範囲の一覧 (1 つのキーワードが複数回出現する可能性があります)。|
 
 ```json
@@ -176,7 +176,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="faces"></a>faces
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|顔 ID。|
 |name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
@@ -219,13 +219,13 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 }]
 ```
 
-### <a name="labels"></a>ラベル
+### <a name="labels"></a>labels
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ラベル ID。|
 |name|ラベル名 (例: "Computer"、"TV")。|
-|言語|ラベル名の言語 (翻訳時)。 BCP-47|
+|language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
 
@@ -280,7 +280,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="shots"></a>shots
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。|
@@ -336,7 +336,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
