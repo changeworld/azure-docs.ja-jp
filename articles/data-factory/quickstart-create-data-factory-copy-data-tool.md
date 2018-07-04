@@ -74,7 +74,7 @@ ms.locfileid: "37048028"
    ![[プロパティ] ページ](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
 3. **[ソース データ ストア]** ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+ 新しい接続の作成]** をクリックして、接続を追加します。
+    a. **[+ 新しい接続の作成]** をクリックして、接続を追加します。
 
     ![[ソース データ ストア] ページ](./media/quickstart-create-data-factory-copy-data-tool/new-source-linked-service.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "37048028"
 
 4. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、**[選択]** をクリックします。 
+   a. **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、**[選択]** をクリックします。 
 
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
 

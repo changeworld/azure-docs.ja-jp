@@ -107,7 +107,7 @@ Certain Admin SSO で Azure AD のシングル サインオンを構成および
 
     ![[Certain Admin SSO Domain and URLs]\(Certain Admin SSO のドメインと URL\) のシングル サインオン情報](./media/certainadminsso-tutorial/tutorial_certainadminsso_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<SUBDOMAIN>.certain.com` の形式で URL を入力します。
 

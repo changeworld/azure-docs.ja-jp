@@ -109,7 +109,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![[PagerDuty のドメインと URL] のシングル サインオン情報](./media/pagerduty-tutorial/tutorial_pagerduty_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.pagerduty.com` の形式で URL を入力します。
 
@@ -142,7 +142,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの有効化](./media/pagerduty-tutorial/ic778537.png "シングル サインオンの有効化")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
+    a. Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
   
     b. **[Login URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
@@ -178,7 +178,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/pagerduty-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,7 +208,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
    
     ![チームの招待](./media/pagerduty-tutorial/ic778540.png "チームの招待")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの**氏名** (**Britta Simon** など) を入力します。 
+    a. ユーザーの**氏名** (**Britta Simon** など) を入力します。 
    
     b. ユーザーの**電子メール** アドレス (**brittasimon@contoso.com** など) を入力します。
    

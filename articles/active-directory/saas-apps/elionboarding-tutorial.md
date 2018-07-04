@@ -107,7 +107,7 @@ Eli Onboarding で Azure AD のシングル サインオンを構成してテス
 
     ![[Eli Onboarding Domain and URLs](Eli Onboarding のドメインと URL) のシングル サインオン情報](./media/elionboarding-tutorial/tutorial_elionboarding_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<YOUR DOMAIN URL>/sso/saml/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<YOUR DOMAIN URL>/sso/saml/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<YOUR DOMAIN URL>` の形式で URL を入力します。
 
