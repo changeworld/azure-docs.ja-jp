@@ -15,12 +15,12 @@ ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2f96f9c70d6a12aeddd51602bccd7f03f89ec7d1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b53ae66d927dfacd1048a6bd0fa9abdb6f2a7862
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260870"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751154"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>アクセス レビューを実行するためのリソース ダッシュボードの使用
 
@@ -32,7 +32,7 @@ Azure リソース向けの Privileged Identity Management (PIM) でアクセス
 
 ![グラフが表示された [管理者ビュー] のスクリーンショット](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-![データの一覧が表示された [管理者ビュー] のスクリーンショット](media/azure-pim-resource-rbac/role-settings.png)
+![データの一覧が表示された [管理者ビュー] ダッシュボードのスクリーンショット](media/azure-pim-resource-rbac/role-settings.png)
 
 過去 7 日間のリソース ロールのアクティブ化がグラフィカルに表示されています。 このデータは、選択したリソースが対象となっていて、特に一般的なロール (所有者、共同作成者、ユーザー アクセス管理者) と、組み合わせられたすべてのロールのアクティブ化を表示しています。
 

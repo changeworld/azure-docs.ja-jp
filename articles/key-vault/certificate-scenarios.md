@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 5f3b8a7b9c7bf582ebc2fac2be8ff55134fbc6f2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333515"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -82,8 +83,9 @@ ms.lasthandoff: 05/10/2018
       -   更新情報 - > 例: 有効期限まで 90 日  
 
   - 証明書の作成プロセスは、通常は非同期プロセスで、キー コンテナーへの証明書の作成操作の状態のポーリングが含まれます。  
-[証明書の取得操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation) - 状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
-            - 作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
+[証明書の取得操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+      -   状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
+      -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
 
 ## <a name="import-a-certificate"></a>証明書のインポート  
  代わりに、証明書を Key Vault にインポートできます (PFX または PEM)。  

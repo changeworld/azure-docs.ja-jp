@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851207"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333634"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -39,7 +39,7 @@ Azure portal でワークスペースの一覧から、ワークスペースの�
 ![[概要] ページ](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>概要ページはどこにあるのですか?
-OMS ポータルのメイン画面には、ワークスペースにインストールされているすべての管理ソリューションのタイルのほか、自分で作成したカスタム ビューが表示されます。 Azure portal では、これを **[概要]** ページと呼んでいます。 Azure portal 内のワークスペースから、メニューの **[概要]** を選択するか、メイン ページの **[概要]** ボタンをクリックしてください。
+OMS ポータルのメイン画面には、ワークスペースにインストールされているすべての管理ソリューションのタイルのほか、自分で作成したカスタム ビューが表示されます。 Azure Portal でこの同じビューを利用できます。 ワークスペースから、**[Workspace Summary]**(ワークスペースの概要) を選択します。
 
 ![[概要] ページ](media/log-analytics-new-portal/overview.png)
 

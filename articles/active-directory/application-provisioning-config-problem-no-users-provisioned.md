@@ -3,22 +3,24 @@ title: Azure AD ギャラリー アプリケーションにユーザーがプロ
 description: Azure AD でユーザーをプロビジョニングできるように構成した Azure AD ギャラリー アプリケーションにユーザーが表示されないときの一般的な問題をトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: asteen
-ms.openlocfilehash: a36d60b8915ae0b46226bb2127829a8f1767daba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 394e8642c177312c8990ea211f77fb802d4228fd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26616294"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332411"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 
@@ -56,7 +58,7 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 
 監査ログでユーザーが "スキップ" されていると表示される場合、ログ メッセージで詳細を確認して原因を判断することが非常に重要です。 一般的な原因と解決策を次に示します。
 
--   **属性値に基づいてユーザーをフィルター処理する****スコープ フィルターが構成されています**。 スコープ フィルターの詳細については、<https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters> を参照してください。
+-   **属性値に基づいてユーザーをフィルター処理する****スコープ フィルターが構成されています**。 スコープ フィルターの詳細については、「<https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>」を参照してください。
 
 -   **ユーザーが "実質的に有効でない" 状態です**。 この特定のエラー メッセージが表示された場合、その原因は、Azure AD に格納されているユーザー割り当てレコードの問題です。 この問題を解決するには、ユーザー (またはグループ) の割り当てをアプリから解除し、再割り当てを行います。 割り当ての詳細については、<https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal> を参照してください。
 
@@ -64,6 +66,6 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 
   * **グループの属性マッピング:** 一部のアプリケーションでサポートされている場合は、メンバーだけでなくグループの名前と詳細もプロビジョニングします。 **[プロビジョニング]** タブに表示されるグループ オブジェクトの **[マッピング]** を有効または無効にして、この機能を有効または無効にすることができます。グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 照合プロパティが空か、Azure AD のグループ用に設定されていない場合は、グループとそのメンバーがプロビジョニングされないので、これが表示名または電子メール エイリアスとなる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect 同期: 宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
 

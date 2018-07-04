@@ -51,19 +51,21 @@
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
 - name: リソース
   items:
+    - name: 外部とコミュニティのコンテンツ
+      href: text-analytics-resource-external-community.md
     - name: FAQ
       href: text-analytics-resource-faq.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: サポートされている言語
-      href: text-analytics-supported-languages.md
     - name: Subscription key
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
-    - name: 外部とコミュニティのコンテンツ
-      href: text-analytics-resource-external-community.md
+    - name: サポートされている言語
+      href: text-analytics-supported-languages.md
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

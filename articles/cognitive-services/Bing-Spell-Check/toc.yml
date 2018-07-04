@@ -45,19 +45,21 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
 - name: リソース
   items:
+    - name: Bing Spell Check API 用の分析
+      href: bing-spell-check-stats.md
     - name: FAQ
       href: bing-spell-check-resource-faq.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
-    - name: サポートされている言語
-      href: bing-spell-check-supported-languages.md
-    - name: Bing Spell Check API 用の分析
-      href: bing-spell-check-stats.md
     - name: Subscription key
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: サポートされている言語
+      href: bing-spell-check-supported-languages.md
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'

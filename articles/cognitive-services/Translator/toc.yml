@@ -157,15 +157,17 @@
           href: return-n-best-translations.md
 - name: リソース
   items:
-    - name: FAQ
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: ナレッジ ベース
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
     - name: コード サンプル (GitHub)
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: FAQ
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'

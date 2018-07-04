@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301152"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750274"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Log Analytics アラートを Azure Alerts に拡張する
-最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 [Microsoft Operations Management Suite ポータル](../operations-management-suite/operations-management-suite-overview.md)でアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。 
+最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 Microsoft Operations Management Suite ポータルでアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。 
 
 ## <a name="benefits-of-extending-your-alerts"></a>アラートを拡張するメリット
 Azure Portal でアラートの作成と管理を行うことには、以下のようにいくつかの利点があります。

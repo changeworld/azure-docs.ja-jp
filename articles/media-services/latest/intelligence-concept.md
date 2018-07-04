@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783551"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331522"
 ---
 # <a name="media-intelligence"></a>メディア インテリジェンス
 
@@ -47,11 +47,11 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="transcript"></a>transcript
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|行 ID。|
-|text|トランスクリプトそのもの。|
-|language|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
+|テキスト|トランスクリプトそのもの。|
+|言語|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
 |instances|この行が出現する時間範囲の一覧。 インスタンスが transcript の場合、instances は 1 つだけあります。|
 
 例:
@@ -85,12 +85,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="ocr"></a>ocr
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|OCR 行 ID。|
-|text|OCR テキスト。|
+|テキスト|OCR テキスト。|
 |confidence|認識の信頼度。|
-|language|OCR 言語。|
+|言語|OCR 言語。|
 |instances|この OCR が出現する時間範囲の一覧 (同じ OCR が複数回出現する可能性があります)。|
 
 ```json
@@ -128,12 +128,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="keywords"></a>keywords
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|キーワード ID。|
-|text|キーワードのテキスト。|
+|テキスト|キーワードのテキスト。|
 |confidence|キーワード認識の信頼度。|
-|language|キーワードの言語 (翻訳時)。|
+|言語|キーワードの言語 (翻訳時)。|
 |instances|このキーワードが出現する時間範囲の一覧 (1 つのキーワードが複数回出現する可能性があります)。|
 
 ```json
@@ -176,12 +176,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="faces"></a>faces
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|顔 ID。|
 |name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
-|description|著名人の場合は、その人物の説明 ("Satya Nadella was born at..")。 |
+|description |著名人の場合は、その説明。 |
 |thumbnalId|顔のサムネイル ID。|
 |knownPersonId|既知の人物の場合は、その内部 ID。|
 |referenceId|Bing に登録されている著名人の場合は、その Bing ID。|
@@ -219,13 +219,13 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 }]
 ```
 
-### <a name="labels"></a>labels
+### <a name="labels"></a>ラベル
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|ラベル ID。|
 |name|ラベル名 (例: "Computer"、"TV")。|
-|language|ラベル名の言語 (翻訳時)。 BCP-47|
+|言語|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
 
@@ -280,7 +280,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 
 ### <a name="shots"></a>shots
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。|
@@ -331,39 +331,12 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
   ]
 ```
 
-### <a name="audioeffects"></a>audioEffects
-
-|名前|説明|
-|---|---|
-|id|オーディオ エフェクト ID。|
-|type|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
-|instances|このオーディオ エフェクトが出現する時間範囲の一覧。|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
-```
-
 
 ### <a name="sentiments"></a>sentiments
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264992"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333396"
 ---
 # <a name="traffic-analytics"></a>トラフィック分析
 
@@ -267,9 +267,9 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 
 **調査項目**
 
-- サブネットごとのトラフィック分布、トポロジ、サブネットへのトラフィックの上位の送信元、サブネットと会話している上位の承認されていないネットワーク、上位の会話しているアプリケーション プロトコル。
+- サブネットごとのトラフィック分布、トポロジ、サブネットへのトラフィックの上位の送信元、サブネットと会話している上位の非承認ネットワーク、上位の会話しているアプリケーション プロトコル。
     - どのサブネットがどのサブネットと会話しているかを把握します。 想定外の会話がある場合は、構成を修正できます。
-    - 承認されていないネットワークがサブネットと会話している場合は、承認されていないネットワークをブロックするように NSG ルールを構成することで修正できます。
+    - 非承認ネットワークがサブネットと会話している場合は、非承認ネットワークをブロックするように NSG ルールを構成することで修正できます。
 - サブネット トポロジの上部には、アクティブ/非アクティブなサブネット、サブネットの外部接続、アクティブなフロー、悪意のあるフローなどのパラメーターを選択できるリボンが表示されます。
 - サブネット トポロジには、フロー (許可された/ブロックされた/受信/送信/問題のない/悪意のあるフロー)、アプリケーション プロトコル、NSG などについて、仮想ネットワークへのトラフィック分布が表示されます。
 
@@ -277,10 +277,10 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 
 **調査項目**
 
-Application Gateway および Load Balancer ごとのトラフィック分布、トポロジ、トラフィックの上位の送信元、Application Gateway および Load Balancer と会話している上位の承認されていないネットワーク、および上位の会話しているアプリケーション プロトコル。 
+Application Gateway および Load Balancer ごとのトラフィック分布、トポロジ、トラフィックの上位の送信元、Application Gateway および Load Balancer と会話している上位の非承認ネットワーク、および上位の会話しているアプリケーション プロトコル。 
     
  - どのサブネットがどの Application Gateway または Load Balancer と会話しているかを把握します。 想定外の会話を見つけた場合は、構成を修正できます。
- - 承認されていないネットワークが、Application Gateway または Load Balancer と会話している場合、承認されていないネットワークをブロックするように NSG ルールを構成することで修正できます。 
+ - 非承認ネットワークが、Application Gateway または Load Balancer と会話している場合、非承認ネットワークをブロックするように NSG ルールを構成することで修正できます。 
 
     ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 

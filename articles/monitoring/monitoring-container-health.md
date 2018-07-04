@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 06/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285992"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335756"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Azure Kubernetes Service (AKS) の正常性を監視する (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "36285992"
 ## <a name="requirements"></a>必要条件 
 手順を開始する前に、次の詳細を確認して、サポートされている前提条件を理解してください。
 
-- 次のバージョンの AKS クラスターがサポートされている: 1.7.7 ～ 1.9.6。
+- 新規または既存の AKS クラスター
 - microsoft/oms:ciprod04202018 バージョン以上の、コンテナー化された OMS エージェント for Linux。 このエージェントは、コンテナーの正常性の監視を有効化すると自動的にインストールされます。  
 - Log Analytics ワークスペース。  新しい AKS クラスターの監視を有効にしたときに作成できます。あるいは [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、または [Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md) から作成できます。
 - コンテナーの監視を有効にするための Log Analytics 共同作成者ロールのメンバー。  Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../log-analytics/log-analytics-manage-access.md)」を参照してください。
@@ -244,7 +244,7 @@ Azure CLI を使用する場合は、まず CLI をインストールしロー�
 監視を有効にした後、クラスターの運用データが表示されるまで、15 分ほどかかります。  
 
 ## <a name="verify-agent-deployed-successfully"></a>エージェントが正常に展開されていることを確認する
-OMS エージェントが適切に展開されていることを確認するには、次のコマンドを実行します: ` kubectl get ds omsagent --namespace=kube-system`。
+OMS エージェントが適切に展開されていることを確認するには、次のコマンドを実行します: `kubectl get ds omsagent --namespace=kube-system`。
 
 適切に展開されている場合は、次のような出力になります。
 

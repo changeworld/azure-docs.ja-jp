@@ -13,20 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 6a4e25dd3f819ad4f0fee7846e87df2202f5227f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2ee5250147a82199057a3bf6f043627616e7443d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210620"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333688"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services で管理されているドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスで管理されているドメインを管理する方法について説明します。
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="before-you-begin"></a>開始する前に
-この記事に記載されているタスクを実行するには、次が必要です。
+この記事のタスク一覧を完了するには、以下が必要です。
 
 1. 有効な **Azure サブスクリプション**。
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
@@ -46,15 +48,15 @@ ms.locfileid: "36210620"
 * 管理対象ドメインに参加しているコンピューターへの管理アクセスを取得する。
 
 ## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>管理対象ドメインに対して付与されていない管理者特権
-ドメインは、修正プログラムの適用、監視、バックアップの実行などのアクティビティを含め、Microsoft によって管理されます。 そのため、ドメインはロックされており、ユーザーには特定の管理タスクをドメインで実行する権限がありません。 例として、以下のようなタスクを実行できません。
+ドメインは、修正プログラムの適用、監視、バックアップの作成などのアクティビティを含め、Microsoft によって管理されます。 ドメインはロックされており、ユーザーには特定の管理タスクをドメインで実行する権限がありません。 例として、以下のようなタスクは行えません。
 
-* 管理対象ドメインのドメイン管理者特権またはエンタープライズ管理者権限は付与されません。
+* 管理対象ドメインのドメイン管理者特権やエンタープライズ管理者権限ありません。
 * 管理対象ドメインのスキーマを拡張することはできません。
 * リモート デスクトップを使用して管理対象ドメインのドメイン コントローラーに接続することはできません。
 * 管理対象ドメインにドメイン コントローラーを追加することはできません。
 
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>タスク 1 - ドメインに参加している Windows Server 仮想マシンをプロビジョニングして、管理対象ドメインをリモートで管理する
-Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールで管理することができます。 テナント管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。 そのため、"AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、AD 管理ツールを使用して、リモートで管理対象ドメインを管理できます。 AD 管理ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>タスク 1 - ドメインに参加している Windows Server 仮想マシンを作成して、管理対象ドメインをリモートで管理する
+Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールで管理することができます。 テナント管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。 "AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、AD 管理ツールを使用して、リモートで管理対象ドメインを管理できます。 AD 管理ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
 
 最初の手順では、管理対象ドメインに参加している Windows Server 仮想マシンを設定します。 手順については、 [Azure AD Domain Services の管理対象ドメインへの Windows Server 仮想マシンの参加](active-directory-ds-admin-guide-join-windows-vm.md)に関するページを参照してください。
 
@@ -64,13 +66,13 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 TechNet の 手順に従って、Windows クライアントの仮想マシンで [リモート サーバー管理ツール (RSAT) をインストール](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) できます。
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>タスク 2 - 仮想マシンに Active Directory 管理ツールをインストールする
-ドメインに参加している仮想マシンに Active Directory 管理ツールをインストールするには、次の手順を実行します。 [リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
+ドメインに参加している仮想マシンに Active Directory 管理ツールをインストールするには、次の手順を完了します。 [リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
 
 1. Azure Portal に移動します。 左側のパネルの **[すべてのリソース]** をクリックします。 タスク 1 で作成した仮想マシンを見つけてクリックします。
 2. [概要] タブの **[接続]** ボタンをクリックします。リモート デスクトップ プロトコル (.rdp) ファイルが作成されてダウンロードされます。
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
+3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、「bob@domainservicespreview.onmicrosoft.com」のように入力します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
 4. スタート画面で、 **[サーバー マネージャー]** を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -83,7 +85,7 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 7. **[サーバーの選択]** ページで、サーバー プールから現在の仮想マシンを選択して **[次へ]** をクリックします。
 
     ![サーバー選択ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. **[サーバーの役割]** ページで、**[次へ]** をクリックします。 サーバーに役割をインストールしないため、このページはスキップします。
+8. **[サーバーの役割]** ページで、**[次へ]** をクリックします。
 9. **[機能]** ページで、**[リモート サーバー管理ツール]** ノードをクリックして展開し、次に **[役割管理ツール]** ノードをクリックして展開します。 役割管理ツールの一覧から、 **[AD DS および AD LDS ツール]** 機能を選択します。
 
     ![機能ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
@@ -92,7 +94,7 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
     ![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>タスク 3 - 管理対象ドメインへの接続と確認
-ドメインに参加している仮想マシンに AD 管理ツールがインストールされたら、その管理ツールを使って管理対象ドメインを確認し、管理することができます。
+これで、Windows Server AD 管理ツールを使用して、管理対象ドメインを確認し、管理することができます。
 
 > [!NOTE]
 > 管理対象ドメインを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。

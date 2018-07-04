@@ -31,13 +31,15 @@
       href: custom-decision-service-log-downloader-reference.md
 - name: リソース
   items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: 価格 (無料)
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: サポート技術情報
+    - name: ナレッジ ベース
       href: 'https://cognitive.uservoice.com/knowledgebase'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32178238"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335093"
 ---
 # <a name="what-is-appsource"></a>AppSource とは
 Microsoft パートナーは AppSource を使用し、Microsoft がサポートするオンライン ストアフロントを介して、顧客が自社のテクノロジとサービスを検索できるようにすることができます。 AppSource の公開元の場合、AppSource 上でビジネス ユーザーが、業績を推進し、価値を得るまでの時間を短縮する基幹業務 SaaS アプリケーションと実装サービスを検索、試用、購入できるようにすることができます。 
@@ -76,7 +76,7 @@ Enterprise Edition 向けに開発する場合は、[公開プロセスとガイ
 | SaaS Apps (旧称 Web Apps) | 推奨 | Azure AD は、シームレスな顧客エクスペリエンスを確保し、最高品質の潜在顧客を推進するベスト プラクティスです |
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>表: Azure Active Directory との統合が必要な AppSource プラン
 
-まず、**Azure Marketplace の公開の専用サブスクリプションを設定し***、作業を他の計画から分離できるようにすることをお勧めします。 さらに、次のツールをまだインストールしていない場合は、開発環境に追加することをお勧めします。 
+まず、**Azure Marketplace の公開の専用サブスクリプションを設定し**\*、作業を他の計画から分離できるようにすることをお勧めします。 さらに、次のツールをまだインストールしていない場合は、開発環境に追加することをお勧めします。 
 *   [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure - CLI")
 *   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell - Azure")
 *   使用できるツールについては、「[Azure 開発者ツール](https://azure.microsoft.com/tools/ "Azure - 開発者ツール")」ページを参照してください。

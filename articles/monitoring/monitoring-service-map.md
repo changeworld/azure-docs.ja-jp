@@ -3,8 +3,8 @@ title: Azure での Service Map ソリューションの使用 | Microsoft Docs
 description: Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,20 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887492"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751430"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
-この記事では、サービス マップの使い方を詳しく説明します。 Service Map の構成とエージェントのオンボードについては、[Azure での Service Map ソリューションの構成]( monitoring-service-map-configure.md)に関するページをご覧ください。
+この記事では、オンボードと、Service Map の使い方を詳しく説明します。 Service Map の構成とエージェントのオンボードについては、[Azure での Service Map ソリューションの構成]( monitoring-service-map-configure.md)に関するページをご覧ください。
 
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+
+## <a name="enable-service-map"></a>Service Map を有効にする
+1. Azure portal で、**[+リソースの作成]** をクリックします。
+2. 検索バーに「**Service Map**」と入力し、**Enter** キーを押します。
+3. マーケットプレースの検索結果ページで、一覧から **[Service Map]** を選択します。<br><br> ![Azure Marketplace の検索結果から Service Map ソリューションを選択する](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. **Service Map** の概要ウィンドウで、ソリューションの詳細を確認してから、**[作成]** をクリックして Log Analytics ワークスペースへのオンボード プロセスを開始します。<br><br> ![Service Map ソリューションにオンボード](./media/monitoring-service-map/service-map-onboard.png)します。
+5. **[Configure a solution]**(ソリューションの構成) ウィンドウで、Log Analytics ワークスペースの既存のものを選択するか、新しいものを作成します。  新しいワークスペースを作成する方法の詳細については、「[Azure Portal で Log Analytics ワークスペースを作成する](../log-analytics/log-analytics-quick-create-workspace.md)」を参照してください。 必要な情報を指定したら、**[作成]** をクリックします。  
+
+情報が検証され、ソリューションがデプロイされている間、メニューの **[通知]** でその進行状況を追跡することができます。 
+
+Log Analytics ワークスペースから Azure Portal 内の Service Map にアクセスして、左側のウィンドウから **[ソリューション]** オプションを選択します。<br><br> ![ワークスペースで [ソリューション] オプションを選択します](./media/monitoring-service-map/select-solution-from-workspace.png)。<br> ソリューションの一覧から **[ServiceMap(workspaceName)]** を選択し、Service Map ソリューションの概要ページで、Service Map の概要タイルをクリックします。<br><br> ![Service Map の概要タイル](./media/monitoring-service-map/service-map-summary-tile.png)。
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>使用例: IT プロセスの依存関係を明確にする
 
@@ -44,9 +57,10 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 ### <a name="patch-management"></a>更新プログラムの管理
 Service Map は、システム更新評価の使用を強化します。他のどのチームとサーバーがサービスに依存しているかが示されるため、更新プログラム適用のためにシステムを停止する前に事前通知することができます。 また、Service Map は、更新プログラムを適用して再起動した後にそのサービスが使用可能で正常に接続されているかを示すことにより、更新プログラム管理を強化します。
 
-
 ## <a name="mapping-overview"></a>マッピングの概要
-サービス マップ エージェントは、それらがインストールされているサーバー上のすべての TCP 接続プロセスに関する情報に加え、各プロセスの受信および送信接続の詳細も収集します。 左側のウィンドウの一覧では、Service Map エージェントがインストールされているマシンまたはグループを選択し、指定の時間範囲でその依存関係を視覚化できます。 マシンの依存関係マップは、特定のマシンに焦点を当て、そのマシンの直接 TCP クライアントまたはサーバーであるすべてのマシンを表示します。  マシン グループのマップでは、一連のサーバーとその依存関係が示されます。
+サービス マップ エージェントは、それらがインストールされているサーバー上のすべての TCP 接続プロセスに関する情報に加え、各プロセスの受信および送信接続の詳細も収集します。
+
+左側のウィンドウの一覧から、Service Map エージェントがインストールされているマシンまたはグループを選択し、指定の時間範囲でその依存関係を視覚化できます。 マシンの依存関係マップは、特定のマシンに焦点を当て、そのマシンの直接 TCP クライアントまたはサーバーであるすべてのマシンを表示します。  マシン グループのマップでは、一連のサーバーとその依存関係が示されます。
 
 ![サービス マップの概要](media/monitoring-service-map/service-map-overview.png)
 
@@ -125,7 +139,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 ## <a name="role-icons"></a>ロール アイコン
 特定のプロセスは、マシンで特定のロール (Web サーバー、アプリケーション サーバー、データベースなど) を担います。 サービス マップでは、プロセスとマシン ボックスにロール アイコンで注釈を付け、プロセスまたはサーバーが担っているロールがひとめでわかるようにします。
 
-| ロール アイコン | [説明] |
+| ロール アイコン | 説明 |
 |:--|:--|
 | ![Web サーバー](media/monitoring-service-map/role-web-server.png) | Web サーバー |
 | ![アプリ サーバー](media/monitoring-service-map/role-application-server.png) | アプリケーション サーバー |
@@ -187,16 +201,13 @@ Service Map マップを見ている間、マシンとプロセスを選択し�
 ![[Process Summary]\(プロセスの概要\) ウィンドウ](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>アラートの統合
-Service Map は、選択されたサーバーで選択された時間範囲中に発生したアラートを表示するために、Log Analytics のアラートと統合されます。 進行中のアラートがある場合はサーバーにアイコンが表示され、**[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
+Service Map は Azure アラートと統合されて、選択された時間範囲中に、選択されたサーバーで発生したアラートを表示します。 進行中のアラートがある場合はサーバーにアイコンが表示され、**[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
 
 ![[Machine Alerts]\(マシンのアラート\) ウィンドウ](media/monitoring-service-map/machine-alerts.png)
 
 Service Map で関連するアラートを表示できるようにするには、特定のコンピューターに対して動作するアラート ルールを作成します。 適切なアラートを作成するには:
-- コンピューター別にグループ化する句を含めます (例: **by Computer interval 1minute**)。
+- コンピューター別にグループ化する句を含めます (例: **by Computer interval 1 minute**)。
 - メトリックの測定に基づいてアラートを生成することを選択します。
-
-![アラートの構成](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>ログ イベントの統合
 サービス マップは、ログ検索と統合して、選択したサーバーで選択した時間の範囲中に発生したすべてのログ イベントの数を表示します。 イベント数の一覧の任意の行をクリックしてログ検索に移動し、個別のログ イベントを表示することができます。
@@ -224,7 +235,7 @@ Service Map と Change Tracking との統合は、両方のソリューション
 
 次の図は、**[Show in Log Analytics]\(Log Analytics で表示\)** を選択すると表示される ConfigurationChange イベントの詳細なビューです。
 
-![ConfigurationChange イベント](media/monitoring-service-map/configuration-change-event.png)
+![ConfigurationChange イベント](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>パフォーマンスの統合
@@ -255,7 +266,6 @@ Service Map と Security and Audit との統合は、両方のソリューショ
 
 ![[Machine Security]\(マシンのセキュリティ\) ウィンドウ](media/monitoring-service-map/machine-security.png)
 
-
 ## <a name="updates-integration"></a>更新の統合
 Service Map と Update Management との統合は、両方のソリューションが有効であり、Log Anlaytics ワークスペースに構成されているときは自動的に行われます。
 
@@ -281,7 +291,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--|:--|
 | type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
@@ -308,7 +318,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--|:--|
 | type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |

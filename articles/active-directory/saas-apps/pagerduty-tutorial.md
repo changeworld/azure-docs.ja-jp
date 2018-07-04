@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215394"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル: Azure Active Directory と PagerDuty の統合
 
@@ -60,14 +59,14 @@ Azure AD への PagerDuty の統合を構成するには、ギャラリーから
 
 **ギャラリーから PagerDuty を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -102,24 +101,24 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+
     ![[シングル サインオン] ダイアログ ボックス](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. **[PagerDuty のドメインと URL]** セクションで、次の手順に従います。
 
     ![[PagerDuty のドメインと URL] のシングル サインオン情報](./media/pagerduty-tutorial/tutorial_pagerduty_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.pagerduty.com` の形式で URL を入力します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PagerDuty クライアント サポート チーム](https://www.pagerduty.com/support/)に問い合わせてください。 
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PagerDuty クライアント サポート チーム](https://www.pagerduty.com/support/)に問い合わせてください。
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
@@ -127,34 +126,33 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[PagerDuty 構成]** セクションで、**[PagerDuty の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![PagerDuty 構成](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![PagerDuty 構成](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. 別の Web ブラウザーのウィンドウで、PagerDuty 企業サイトに管理者としてログインします。
 
 8. 上部のメニューで **[アカウント設定]** をクリックします。
-   
+
     ![Account Settings](./media/pagerduty-tutorial/ic778535.png "Account Settings")
 
 9. **[Single Sign-on]** をクリックします。
-   
+
     ![シングル サインオン](./media/pagerduty-tutorial/ic778536.png "シングル サインオン")
 
 10. **[シングル サインオンの有効化 (SSO)]** ページで、次の手順に従います。
-   
+
     ![シングル サインオンの有効化](./media/pagerduty-tutorial/ic778537.png "シングル サインオンの有効化")
-   
-    a. Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
   
     b. **[Login URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
     c. **[Logout URL]** ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
- 
-    d. **[シングル サインオンを有効にする]** を選びます。
- 
-    e. **[変更を保存]** をクリックします。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+    d. **[Allow username/password login]**(ユーザー名/パスワードによるログインを許可) を選択します。
+
+    e. **[Require EXACT authentication context comparison]**(認証コンテキストの正確な比較を要求する) チェック ボックスを選択します。
+
+    f. **[変更を保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -180,7 +178,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/pagerduty-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -210,7 +208,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
    
     ![チームの招待](./media/pagerduty-tutorial/ic778540.png "チームの招待")
 
-    a. ユーザーの**氏名** (**Britta Simon** など) を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの**氏名** (**Britta Simon** など) を入力します。 
    
     b. ユーザーの**電子メール** アドレス (**brittasimon@contoso.com** など) を入力します。
    
@@ -262,8 +260,6 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213143"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334328"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,6 +60,8 @@ Azure AD のユーザー プロビジョニング サービスでサポートさ
 * 1 つ以上の Active Directory フォレスト、ドメイン、および OU と同期するために、Workday HCM モジュールで検出された変更情報のみに基づいてユーザーの登録、移動、削除を行う必要がある組織 ([Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) を参照してください)
 
 * 電子メールに Office 365 を使用している組織
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>ソリューションの設計
 
@@ -543,14 +545,13 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
 
 このセクションでは、クラウドのみのユーザー データが Workday から Azure Active Directory に移動する方法を構成します。
 
-1.  **[マッピング]** の [プロビジョニング] タブで、**[Synchronize Workers to Azure AD (Workers を Azure AD に同期する)]** をクリックします。
+1. **[マッピング]** の [プロビジョニング] タブで、**[Synchronize Workers to Azure AD]**(Workers を Azure AD に同期する) をクリックします。
 
-2.   **[ソース オブジェクト スコープ]** フィールドでは、属性ベースのフィルター セットを定義して、Azure AD へのプロビジョニングの対象にするWorkday のユーザー セットを選択できます。 既定のスコープは、"Workday のすべてのユーザー" です。 フィルターの例:
+2. **[ソース オブジェクト スコープ]** フィールドでは、属性ベースのフィルター セットを定義して、Azure AD へのプロビジョニングの対象にするWorkday のユーザー セットを選択できます。 既定のスコープは、"Workday のすべてのユーザー" です。 フィルターの例:
 
    * 例: 1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
 
@@ -566,9 +567,9 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
       * 演算子: IS NOT NULL
 
-3.  **[対象オブジェクトのアクション]** フィールドでは、Azure AD で実行可能なアクションをグローバルにフィルタリングできます。 **作成**と**更新**が最も一般的です。
+3. **[対象オブジェクトのアクション]** フィールドでは、Azure AD で実行可能なアクションをグローバルにフィルタリングできます。 **作成**と**更新**が最も一般的です。
 
-4.  **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。
+4. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。
 
 5. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
 
@@ -602,7 +603,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 ### <a name="part-3-start-the-service"></a>パート 3: サービスの開始
 パート 1 ～ 2 の部分が完了したら、プロビジョニング サービスを開始できます。
 
-1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
+1. **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
 2. **[Save]** をクリックします。
 
@@ -612,7 +613,6 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 5. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>メール アドレスを Workday に書き戻す構成
 ユーザーのメールアドレスを Azure Active Directory から Workday に書き戻すように構成するには、次の手順に従ってください。
 
@@ -620,21 +620,21 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 **Workday を Active Directory プロビジョニングに構成するには、**
 
-1.  <https://portal.azure.com> に移動します
+1. <https://portal.azure.com> に移動します
 
-2.  左のナビゲーション バーで、**[Azure Active Directory]** を選択します
+2. 左のナビゲーション バーで、**[Azure Active Directory]** を選択します
 
-3.  **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]** の順に選択します。
+3. **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]** の順に選択します。
 
-4.  **[アプリケーションの追加]** を選択し、**[すべて]** のカテゴリを選択します。
+4. **[アプリケーションの追加]** を選択し、**[すべて]** のカテゴリを選択します。
 
-5.  **Workday Writeback** を検索し、ギャラリーからそのアプリを追加します。
+5. **Workday Writeback** を検索し、ギャラリーからそのアプリを追加します。
 
-6.  アプリが追加され、アプリの詳細画面が表示されたら、**[プロビジョニング]** を選択します
+6. アプリが追加され、アプリの詳細画面が表示されたら、**[プロビジョニング]** を選択します
 
-7.  **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に設定します
 
-8.  以下のように **[管理者の資格情報]** セクションを完了します。
+8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
    * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 次のように表示されます: username@contoso4
 
@@ -646,24 +646,22 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
-
 
 このセクションでは、ユーザー データが Workday から Active Directory に移動する方法を構成します。
 
-1.  **[マッピング]** の [プロビジョニング] タブで、**[Synchronize Azure AD Users to Workday (Azure AD ユーザーを Workday に同期する)]** をクリックします。
+1. **[マッピング]** の [プロビジョニング] タブで、**[Synchronize Azure AD Users to Workday]**(Azure AD ユーザーを Workday に同期する) をクリックします。
 
-2.  **ソース オブジェクト スコープ** フィールドでは、必要があれば、メール アドレスを Workday に書き戻す対象を Azure Active Directory のユーザー セットからフィルタリングできます。 既定のスコープは、"Azure AD のすべてのユーザー" です。 
+2. **ソース オブジェクト スコープ** フィールドでは、必要があれば、メール アドレスを Workday に書き戻す対象を Azure Active Directory のユーザー セットからフィルタリングできます。 既定のスコープは、"Azure AD のすべてのユーザー" です。 
 
-3.  **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。 既定では、メール アドレスのマッピングがあります。 ただし、Azure AD のユーザーと Workday の対応するエントリを一致させるには、一致する ID を更新する必要があります。 一般的なマッチング メソッドは、Workday の Worker ID または従業員 ID を Azure AD の extensionAttribute1-15 に同期してから、この Azure AD の属性を使用して、Workday に戻ってユーザーを照合します。
+3. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。 既定では、メール アドレスのマッピングがあります。 ただし、Azure AD のユーザーと Workday の対応するエントリを一致させるには、一致する ID を更新する必要があります。 一般的なマッチング メソッドは、Workday の Worker ID または従業員 ID を Azure AD の extensionAttribute1-15 に同期してから、この Azure AD の属性を使用して、Workday に戻ってユーザーを照合します。
 
-4.  マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
+4. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
 ### <a name="part-3-start-the-service"></a>パート 3: サービスの開始
 パート 1 ～ 2 の部分が完了したら、プロビジョニング サービスを開始できます。
 
-1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
+1. **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
 2. **[Save]** をクリックします。
 
@@ -672,7 +670,6 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 4. **[監査ログ]** タブで、個々の同期イベントを表示できます。**[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](../active-directory-saas-provisioning-reporting.md)**
 
 5. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>Workday のユーザー属性リストをカスタマイズする
 Active Directory と Azure AD の Workday プロビジョニング アプリにはどちらも、Workday のユーザー属性の選択元となる既定のリストが含まれています。 ただしこれらのリストは、必要な情報をすべてカバーしているわけではありません。 Workday は、想定されるさまざまなユーザー属性を数多くサポートしていますが、それらのユーザー属性には、標準の属性と特定の Workday テナントに固有の属性とがあります。 
@@ -799,15 +796,9 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 * EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
-
 ## <a name="managing-personal-data"></a>個人データの管理
 
 Active Directory のための Workday プロビジョニング ソリューションには、ドメインに参加しているサーバーに同期エージェントがインストールされている必要があります。このエージェントは、個人を特定できる情報が含まれている可能性のあるログを Windows イベント ログ内に作成します。
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]  ここで、../ は記事の階層構造との一致を参照します
-
-> [!NOTE]
-> 個人データの表示または削除に関心がある場合は、「[GDPR の Windows データ主体要求](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows)」サイトの Microsoft のガイドを参照してください。 GDPR に関する全般情報については、[Service Trust Portal の GDPR に関するセクション](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

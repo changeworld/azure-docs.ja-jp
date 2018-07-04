@@ -1,6 +1,6 @@
 ---
 title: Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
-description: この記事では、ストレージ容量、データ リテンション期間、イングレス容量、監視など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
+description: この記事では、ストレージ容量、データ保有期間、イングレス容量、監視、ビジネスのディザスター リカバリー (BCDR) など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293266"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751171"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 
@@ -94,8 +94,18 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 
 参照データは遡及的に結合されないことにご注意ください。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。  大量の履歴データを TSI に送信する予定のとき、TSI で最初に参照データをアップロードまたは作成しない場合、作業をやり直す必要があるかもしれません (それは楽しい作業ではないかもしれません)。  
 
-TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ* [に関する文書] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set) をご覧ください。
+TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ*に関する文書 ([文書](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)) をご覧ください。
 
+## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
+Time Series Insights は、Azure サービスとして、Azure リージョン レベルでの冗長性を利用して高可用性 (HA) を提供します。その際、ソリューションによる追加操作は必要ありません。 さらに、Microsoft Azure Platform には、ディザスター リカバリー (DR) 機能または複数のリージョンにわたる可用性を備えたソリューションを構築するのに役立つ機能が用意されています。 複数のリージョンにわたるグローバルな高可用性をデバイスまたはユーザーに提供する場合は、これらの Azure DR 機能を利用してください。 ビジネス継続性および障害復旧のための Azure の組み込み機能については、[Azure のビジネス継続性テクニカル ガイダンス](../resiliency/resiliency-technical-guidance.md)に関する記事を参照してください。 [Azure アプリケーションのディザスター リカバリーと高可用性][Azure アプリケーションのディザスター リカバリー] に関するページでは、HA と DR を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+
+Time Series Insights には、ビジネスのディザスター リカバリー (BCDR) は組み込まれていません。  ただし、BCDR を必要とするお客様は、復旧戦略を実装することもできます。 バックアップの Azure リージョン内に 2 番目の Time Series Insights 環境を作成し、プライマリ イベント ソースからこのセカンダリ環境にイベントを送信して、2 番目の専用のコンシューマー グループとそのイベント ソースの BCDR ガイドラインを活用します。  
+
+1.  2 番目のリージョン内に環境を作成します。  Time Series Insights 環境の作成について詳しくは、[ここ](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started)を参照してください。
+2.  イベント ソースのために 2 番目の専用コンシューマー グループを作成し、そのイベント ソースを新しい環境に接続します。  必ず 2 番目の専用コンシューマー グループを指定してください。  これに関する詳細については、[IoT Hub のドキュメント](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)または[イベント ハブのドキュメント](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access)を参照してください。
+3.  障害インシデントの発生時にプライマリ リージョンが停止した場合は、運用をバックアップの Time Series Insights 環境に切り換えます。  
+
+IoT Hub の BCDR ポリシーの詳細については、[ここ](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr)を参照してください。  イベント ハブの BCDR ポリシーの詳細については、[ここ](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr)を参照してください。  
 
 ## <a name="next-steps"></a>次の手順
 - [イベント ハブ イベント ソースを追加する方法](time-series-insights-how-to-add-an-event-source-eventhub.md)

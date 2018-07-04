@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2018
+ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: de5712fd7b48a759b366f5b9808bbbefc6e305cd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.reviewer: thoroet
+ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010496"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36322640"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
@@ -62,7 +63,7 @@ Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Por
 
 アプリケーションのサービス プリンシパルを作成するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) で Azure アカウントにログインします。
+1. [Azure Portal](https://portal.azure.com) で Azure アカウントにサインインします。
 2. **[Azure Active Directory]** > **[アプリの登録]** > **[追加]** の順に選択します。
 3. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、**[Web アプリ/API]** または **[ネイティブ]** を選択します。 値を設定したら、**[作成]** をクリックします。
 
@@ -94,54 +95,7 @@ AD FS を ID ストアとして使用して Azure Stack をデプロイした場
 * サービス プリンシパルをロールに割り当てる。
 * サービス プリンシパルの ID を使ってサインインする。
 
-### <a name="before-you-begin"></a>開始する前に
-
-[必要な Azure Stack ツールをローカル コンピューターにダウンロードします。](azure-stack-powershell-download.md)
-
-### <a name="import-the-identity-powershell-module"></a>Identity PowerShell モジュールのインポート
-
-Azure Stack ツールのダウンロード フォルダーに移動し、次のコマンドを使用して Identity PowerShell モジュールをインポートします。
-
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
-
-Identity モジュールをインポートするときに、"AzureStack.Connect.psm1 はデジタル署名されていません。 このスクリプトはシステムで実行されません" という内容のエラーが表示されることがあります。
-
-この問題を解決するには、実行ポリシーを構成してスクリプトの実行を許可する必要があります。 実行ポリシーを設定するには、管理者特権の PowerShell セッションで次のコマンドを実行します。
-
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
-
-### <a name="create-the-service-principal"></a>サービス プリンシパルを作成する
-
-**DisplayName** パラメーターが更新されていることを確認し、次のコマンドを実行してサービス プリンシパルを作成できます。
-
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-
-```
-
-### <a name="assign-a-role"></a>ロールの割り当て
-
-サービス プリンシパルを作成したら、[ロールに割り当てる](azure-stack-create-service-principals.md#assign-role-to-service-principal)必要があります。
-
-### <a name="sign-in-using-powershell"></a>PowerShell を使用したサインイン
-
-次のコマンドを実行することで Azure Stack に署名できます。**EnvironmentName** パラメーターは必ず、お使いのアプリ名で更新してください。
-
-```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
- -ServicePrincipal `
- -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId `
- -TenantId $directoryTenantId
-```
+サービス プリンシパルを作成する方法の詳細については、「[AD FS のサービス プリンシパルを作成する](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)」を参照してください。
 
 ## <a name="assign-the-service-principal-to-a-role"></a>サービス プリンシパルをロールに割り当てる
 

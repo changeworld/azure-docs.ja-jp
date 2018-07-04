@@ -118,6 +118,8 @@
       href: glossary.md
 - name: リソース
   items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
