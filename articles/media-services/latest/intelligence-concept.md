@@ -179,7 +179,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 |名前|説明|
 |---|---|
 |id|顔 ID。|
-|name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
+|名前|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description |著名人の場合は、その説明。 |
 |thumbnalId|顔のサムネイル ID。|
@@ -224,7 +224,7 @@ Azure Media Services REST v3 API を使用して、音声と画像のコンテ�
 |名前|説明|
 |---|---|
 |id|ラベル ID。|
-|name|ラベル名 (例: "Computer"、"TV")。|
+|名前|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
