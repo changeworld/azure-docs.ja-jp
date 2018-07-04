@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2018
+ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 5fce1a3b8370ce49a522f41749795362e1bf1f9b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757279"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749720"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -53,7 +53,7 @@ Data Factory MSI について詳しくは、「[Azure Data Factory サービス 
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」に従って、サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc) を取得できます。
+3.  Data Factory MSI をグループに追加します。 「[Azure Data Factory サービス ID](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity)」に従って、プリンシパル サービス ID (例: 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc。ただしこの目的ではサービス ID アプリケーション ID を使用しないでください) を取得できます。。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
