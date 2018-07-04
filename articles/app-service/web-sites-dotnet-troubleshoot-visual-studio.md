@@ -1,4 +1,4 @@
----
+﻿---
 title: Visual Studio を使用した Azure App Service のトラブルシューティング
 description: Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。
 services: app-service
@@ -138,7 +138,7 @@ public ActionResult About()
 
 5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
 
-6. **[プロファイル]** ドロップダウン リストで、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
+6. **[プロファイル]** ドロップダウン リストで、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で使用したものと同じプロファイルを選択します。 次に、[設定] をクリックします。
 
 7. **[発行]** ダイアログ ボックスで、**[設定]** タブをクリックし、**[構成]** を **[デバッグ]** に変更し、**[保存]** をクリックします。
 
