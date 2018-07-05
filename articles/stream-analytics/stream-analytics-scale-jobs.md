@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34652544"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
@@ -25,8 +26,7 @@ ms.lasthandoff: 05/04/2018
 入力のパーティション間でクエリが本質的に完全並列化可能な場合は、次の手順に従うことができます。
 1.  **PARTITION BY** キーワードを使用して、クエリを驚異的並列として作成します。 詳しくは、[このページ](stream-analytics-parallelization.md)の驚異並列ジョブのセクションをご覧ください。
 2.  クエリで使用される出力の種類に応じて、一部の出力は並列化できない可能性や、驚異的並列とするためにさらに構成が必要な場合があります。 たとえば、SQL、SQL DW、PowerBI の出力は並列化できません。 出力は、出力シンクに送信する前に常にマージされます。 BLOB、Table、ADLS、Service Bus、Azure 関数は自動的に並列化されます。 CosmosDB とイベント ハブでは、PartitionKey 構成を **PARTITION BY** フィールド (通常は PartitionId) と一致するように設定する必要があります。 イベント ハブの場合は、パーティション間でのクロスオーバーを回避するために、すべての入力とすべての出力でパーティション数が一致することにも注意してください。 
-3.  
-  **6 SU** (1 つのコンピューティング ノードの全容量) でクエリを実行して達成可能な最大スループットを測定し、**GROUP BY** を使用する場合は、ジョブで処理できるグループ数 (カーディナリティ) を測定します。 ジョブがシステム リソース制限に達した場合の一般的な症状は次のとおりです。
+3.  **6 SU** (1 つのコンピューティング ノードの全容量) でクエリを実行して達成可能な最大スループットを測定し、**GROUP BY** を使用する場合は、ジョブで処理できるグループ数 (カーディナリティ) を測定します。 ジョブがシステム リソース制限に達した場合の一般的な症状は次のとおりです。
     - SU % 使用率のメトリックが 80% を超えている。 これは、メモリ使用率が高いことを示します。 このメトリックの増加に影響する要因については、[こちら](stream-analytics-streaming-unit-consumption.md)をご覧ください。 
     -   出力タイムスタンプが実時間よりも遅れている。 クエリ ロジックによっては、出力タイムスタンプに、実時間からの論理オフセットがある場合があります。 ただし、それらはほぼ同じ速度で進行します。 出力タイムスタンプの遅れが徐々に増加している場合は、システムが過負荷になっていることを示しています。 ダウンストリーム出力のシンク調整、または高 CPU 使用率の結果である可能性があります。 現時点では CPU 使用率のメトリックを提供していないため、2 つを区別するのは困難な可能性があります。
         - 問題の原因がシンク調整の場合は、出力パーティション (また、ジョブを完全並列化可能に保つには入力パーティションも) の数を増やすか、シンクのリソースの量 (CosmosDB の要求ユニット数など) を増やすことが必要な場合があります。
@@ -77,72 +77,6 @@ ms.lasthandoff: 05/04/2018
 > このクエリ パターンでは、多くの場合、サブクエリの数が多くなり、非常に大規模で複雑なトポロジになることがあります。 ジョブのコントローラーは、このような大規模トポロジを処理できないことがあります。 原則として、1 SU ジョブでは 40 テナント未満、3 SU および 6 SU ジョブでは 60 テナント未満にします。 コントローラーの容量を超過すると、ジョブは正常に開始しません。
 
 
-## <a name="an-example-of-stream-analytics-throughput-at-scale"></a>大規模な Stream Analytics スループットの例
-Stream Analytics ジョブのスケールのしくみを理解できるように、Raspberry Pi デバイスからの入力に基づく実験を行いました。 この実験により、複数のストリーミング ユニットとパーティションのスループットへの影響がわかります。
-
-このシナリオでは、デバイスがセンサー データ (クライアント) をイベント ハブに送信します。 Streaming Analytics がそのデータを処理し、出力としてアラートまたは統計を別のイベント ハブに送信します。 
-
-クライアントは、センサー データを JSON 形式で送信します。 データ出力も JSON 形式です。 データは次のようになります。
-
-    {"devicetime":"2014-12-11T02:24:56.8850110Z","hmdt":42.7,"temp":72.6,"prss":98187.75,"lght":0.38,"dspl":"R-PI Olivier's Office"}
-
-次のクエリを使用して、ライトがオフになったときにアラートを送信します。
-
-    SELECT AVG(lght), "LightOff" as AlertText
-    FROM input TIMESTAMP BY devicetime 
-    PARTITION BY PartitionID
-    WHERE lght< 0.05 GROUP BY TumblingWindow(second, 1)
-
-### <a name="measure-throughput"></a>スループットを測定する
-
-このコンテキストでは、スループットは一定時間内に Stream Analytics によって処理された入力データの量です  (ここでは 10 分間測定)。入力データの最適な処理スループットを実現するために、データ ストリーム入力とクエリの両方をパーティション分割しました。 また、処理された入力イベントの数を測定するために、クエリに **COUNT()** を含めました。 ジョブが入力イベントの発生を待機しているだけにならないように、入力イベント ハブの各パーティションには、約 300 MB の入力データが事前に読み込まれています。
-
-イベント ハブでストリーミング ユニット数と対応するパーティション数を増やしたときの結果を次の表に示します。  
-
-<table border="1">
-<tr><th>入力パーティション数</th><th>出力パーティション数</th><th>ストリーミング ユニット数</th><th>持続スループット
-</th></td>
-
-<tr><td>12</td>
-<td>12</td>
-<td>6</td>
-<td>4.06 MB/秒</td>
-</tr>
-
-<tr><td>12</td>
-<td>12</td>
-<td>12</td>
-<td>8.06 MB/秒</td>
-</tr>
-
-<tr><td>48</td>
-<td>48</td>
-<td>48</td>
-<td>38.32 MB/秒</td>
-</tr>
-
-<tr><td>192</td>
-<td>192</td>
-<td>192</td>
-<td>172.67 MB/秒</td>
-</tr>
-
-<tr><td>480</td>
-<td>480</td>
-<td>480</td>
-<td>454.27 MB/秒</td>
-</tr>
-
-<tr><td>720</td>
-<td>720</td>
-<td>720</td>
-<td>609.69 MB/秒</td>
-</tr>
-</table>
-
-次のグラフは、SU 数とスループットの関係を視覚的に示しています。
-
-![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。

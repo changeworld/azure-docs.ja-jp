@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 910a5c85d16cb46465598a77d5321cc0eed99744
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933775"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319250"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
-内部負荷分散により、Kubernetes サービスが Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションにアクセスできるようになります。 このドキュメントでは、Azure Kubernetes Service (AKS) で内部ロード バランサーを作成する方法について説明します。
+内部負荷分散により、Kubernetes サービスが Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションにアクセスできるようになります。 このドキュメントでは、Azure Kubernetes Service (AKS) で内部ロード バランサーを作成する方法について説明します。 Azure Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 AKS は、基本的な SKU を使用します。
 
 ## <a name="create-internal-load-balancer"></a>内部ロード バランサーを作成する
 

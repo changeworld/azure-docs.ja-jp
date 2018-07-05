@@ -10,21 +10,21 @@ editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: de41120a3a9d399dafecde4225d56767efcd9f38
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 850b13becb2137c9e881b2d6a657bbd06216e96e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624831"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317148"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL を実行し、Visual Studio Code のローカルでデバッグする
 このアーティクルは、ローカルの開発コンピューター上で U-SQL ジョブを実行して、初期のコーディング フェーズを迅速化したり、Visual Studio Code でローカルにコードをデバッグしたりする方法について説明します。 Azure Data Lake Tools for Visual Studio Code に関する手順については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」をご覧ください。 
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>U-SQL ローカル実行環境の設定
 
-1. Ctrl + Shift + P キーを押してコマンド パレットを開き、「**ADL: Download LocalRun Dependency**」と入力してパッケージをダウンロードします。  
+1. Ctrl + Shift + P キーを押してコマンド パレットを開き、「**ADL: Download Local Run Package**」と入力してパッケージをダウンロードします。  
 
-   ![ADL LocalRun Dependency パッケージのダウンロード](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![ADL LocalRun Dependency パッケージのダウンロード](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
 2. **[出力]** ウィンドウに表示されるパスから依存関係パッケージを探し、BuildTools をインストールして Win10SDK 10240 をインストールします。 パスの例を次に示します。  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
@@ -44,7 +44,7 @@ ms.locfileid: "34624831"
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>ローカル実行サービスを開始してローカル アカウントに U-SQL ジョブを送信する 
-初めてのユーザーで、[U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Dependency** を使用して、ローカルの実行パッケージをダウンロ－ドします。
+初めてのユーザーで、[U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Package** を使用して、ローカルの実行パッケージをダウンロードします。
 
 1. Ctrl + Shift + P キーを押してコマンド パレットを選択し、「**ADL: Start Local Run Service**」と入力します。   
 2. 初回使用時は、**[同意する]** を選択し、マイクロソフト ソフトウェア ライセンス条項に同意します。 
@@ -65,7 +65,7 @@ ms.locfileid: "34624831"
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>U-SQL ジョブのローカル デバッグを開始する  
 初めてのユーザーは、次の手順を実行します。
 
-1. [U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Dependency** を使用して、ローカルの実行パッケージをダウンロ－ドします。
+1. [U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Package** を使用して、ローカルの実行パッケージをダウンロードします。
 2. .NET Core SDK 2.0 をまだインストールしていない場合は、メッセージ ボックスの提示に従ってインストールします。
  
   ![リマインダーが Dotnet をインストールする](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)

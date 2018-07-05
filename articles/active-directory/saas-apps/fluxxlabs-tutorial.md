@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b5fb84f8d8fbed7e1d4112e96b00af3e460661a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218167"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>チュートリアル: Azure Active Directory と Fluxx Labs の統合
 
@@ -67,7 +66,7 @@ Azure AD への Fluxx Labs の統合を構成するには、ギャラリーか�
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -103,14 +102,14 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
 3. **[Fluxx Labs のドメインと URL]** セクションで、次の手順に従います。
 
     ![[Fluxx Labs のドメインと URL] のシングル サインオン情報](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_url.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
 
     | 環境 | URL パターン|
     |-------------|------------|
@@ -123,8 +122,8 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
     |-------------|------------|
     | Production | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | 運用前 | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-        
-    > [!NOTE] 
+
+    > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Fluxx Labs サポート チーム](mailto:travis@fluxxlabs.com)に連絡してください。
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -135,7 +134,7 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. **[Fluxx Labs 構成]** セクションで、**[Fluxx Labs の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+6. **[Fluxx Labs 構成]** セクションで、**[Fluxx Labs の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
@@ -148,26 +147,28 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
 9. 管理パネルで、**[Plug-ins]\(プラグイン\)** > **[Integrations]\(インテグレーション\)** の順に選択し、**[SAML SSO-(Disabled)]\(SAML SSO (無効)\)** を選択します。
 
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config2.png)
-    
+
 10. [Attribute]\(属性\) セクションで、次の手順に従います。
-    
+
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config3.png)
 
-    a. **[SAML SSO]** チェックボックスをオンにします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML SSO]** チェックボックスをオンにします。
 
     b. **[Request Path]\(要求パス\)** ボックスに、「**/auth/saml**」と入力します。
 
     c. **[Callback Path]\(コールバック パス\)** ボックスに、「**/auth/saml/callback**」と入力します。
 
-    d. **[Assertion Consumer Service Url (Single Sign-On URL)]\(アサーション サービス URL (シングル サインオン URL)\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[Assertion Consumer Service Url(Single Sign-On URL)]\(Assertion Consumer Service URL (シングル サインオン URL)\)** テキストボックスに、Azure portal で入力した **[応答 URL]** の値を入力します。
 
-    e. **[Audience (SP Entity ID)]\(オーディエンス (SP エンティティ ID)\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    e. **[Audience(SP Entity ID)]\(対象 (SP エンティティ ID)\)** テキストボックスに、Azure portal で入力した **[ID]** の値を入力します。
 
-    f. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
+    f. **[Identity Provider SSO Target URL]\(ID プロバイダーの SSO ターゲット URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
 
-    g. **[Name identifier Format]\(名前識別子の形式\)** ボックスに、次の値を入力します。`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
+    g. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
 
-    h. **[Save]** をクリックします。
+    h. **[Name identifier Format]\(名前識別子の形式\)** ボックスに、次の値を入力します。`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
+
+    i. **[Save]** をクリックします。
 
     > [!NOTE]
     > 内容が保存されると、フィールドはセキュリティのために空白で表示されますが、値は構成内に保存されています。
@@ -221,10 +222,10 @@ Azure AD ユーザーが Fluxx Labs にログインできるようにするに�
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config4.png)
 
 4. **[NEW PEOPLE]\(新規ユーザー\)** セクションで、次の手順を実行します。
-    
+
     ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config5.png)
 
-    a. Fluxx Labs では、SSO ログインの一意識別子として電子メールを使用します。 **[SSO UID]** フィールドにユーザーの電子メール アドレスを入力します。これは、SSO でのログインとして使用される電子メールアドレスと一致する電子メール アドレスです。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Fluxx Labs では、SSO ログインの一意識別子として電子メールを使用します。 **[SSO UID]** フィールドにユーザーの電子メール アドレスを入力します。これは、SSO でのログインとして使用される電子メールアドレスと一致する電子メール アドレスです。
 
     b. **[Save]** をクリックします。
 
@@ -232,7 +233,7 @@ Azure AD ユーザーが Fluxx Labs にログインできるようにするに�
 
 このセクションでは、Britta Simon に Fluxx Labs へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+![ユーザー ロールを割り当てる][200]
 
 **Fluxx Labs に Britta Simon を割り当てるには、次の手順に従います。**
 
@@ -257,7 +258,7 @@ Azure AD ユーザーが Fluxx Labs にログインできるようにするに�
 6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。

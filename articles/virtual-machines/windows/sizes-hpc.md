@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: e402fd3ac95cac4816b9442f7c08aeaf7c108886
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d8ab1531c4e1fa33fbdba12a4ecbeb8908dd6a94
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34654353"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 04/06/2018
   Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
   
-  詳しくは、[仮想マシン拡張機能とその機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 [クラシック デプロイメント モデル](classic/manage-extensions.md)にデプロイされている VM にも拡張機能を使用できます。
+  詳しくは、[仮想マシン拡張機能とその機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 [クラシック デプロイ モデル](classic/manage-extensions.md)にデプロイされている VM にも拡張機能を使用できます。
 
 
 ## <a name="using-hpc-pack"></a>HPC Pack の使用
@@ -62,6 +63,7 @@ ms.lasthandoff: 04/06/2018
 - [メモリの最適化](../virtual-machines-windows-sizes-memory.md)
 - [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)
 - [GPU の最適化](sizes-gpu.md)
+- [旧世代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -119,7 +119,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="exchange-powershell-issue"></a>Exchange PowerShell の問題
 
-"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません。\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
+"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
 
 ### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync が機能していない
 

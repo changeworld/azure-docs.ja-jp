@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
-1.  Microsoft アカウントの資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にログオンします。 Government ポータルにデバイスをデプロイする場合は、<https://portal.azure.us/> にログインします
+1.  Microsoft アカウントの資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にサインインします。 Government ポータルでデバイスをデプロイする場合、<https://portal.azure.us/> でサインインします。
 
 2.  Azure Portal で、**[+ リソースの作成]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
 

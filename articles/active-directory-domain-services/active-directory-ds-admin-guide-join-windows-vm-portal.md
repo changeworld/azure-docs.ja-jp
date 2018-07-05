@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 06/21/2018
 ms.author: maheshu
-ms.openlocfilehash: 408d86d2d79e827da654ad71f66972fe76fc2431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2929f85b738171f7fb7f5b66af90e4e2ab54f5d0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212497"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317172"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server 仮想マシンの管理対象ドメインへの参加
 この記事では、Azure Portal を使用して Windows Server 仮想マシンをデプロイする方法を示します。 その後、仮想マシンを Azure Active Directory Domain Services (Azure AD DS) の管理対象ドメインに参加させる方法を示します。
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>ステップ 1: Windows Server 仮想マシンを作成する
 Azure AD DS を有効にした仮想ネットワークに参加する Windows 仮想マシンを作成するには、次の手順を実行します。
@@ -68,29 +70,29 @@ Azure AD DS を有効にした仮想ネットワークに参加する Windows �
 ## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>ステップ 2: ローカル管理者アカウントを使用して Windows Server 仮想マシンに接続する
 次に、新たに作成された Windows Server 仮想マシンをドメインに参加させるため、その仮想マシンに接続します。 仮想マシンの作成時に指定したローカル管理者の資格情報を使用します。
 
-仮想マシンに接続するには、次の操作を行います。
+仮想マシンに接続するには、次の手順を実行します。
 
 1. **[概要]** ウィンドウで、**[接続]** を選択します。  
     リモート デスクトップ プロトコル (.rdp) ファイルが作成されてダウンロードされます。
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
-2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** を選択します。
-3. ログオンのダイアログで、仮想マシンを作成したときに指定した**ローカル管理者の資格情報** (たとえば、*localhost\mahesh*) を入力します。
-4. サインインの処理中に証明書に関する警告が表示された場合は、**[はい]** または **[続行]** を選択して接続を続けます。
+2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。
+3. 仮想マシンを作成したときに指定した**ローカル管理者の資格情報** (たとえば、*localhost\mahesh*) を入力します。
+4. サインイン プロセス中に証明書警告が表示された場合、**[はい]** または **[続行]** を選択して接続します。
 
 この時点で、ローカル管理者の資格情報を使用して、新しく作成した Windows 仮想マシンにログオンしている必要があります。 次のステップでは、仮想マシンをドメインに参加させます。
 
 
 ## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>ステップ 3: Windows Server 仮想マシンを Azure AD DS 管理対象ドメインに参加させる
-Windows Server 仮想マシンを Azure AD DS の管理対象ドメインに参加させるには、次の手順を実行します。
+Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに参加させるには、次の手順を実行します。
 
 1. ステップ 2 で示したように、Windows Server VM に接続します。 **スタート**画面で、**サーバー マネージャー**を開きます。
 2. **[サーバー マネージャー]** ウィンドウの左側のウィンドウで、**[ローカル サーバー]** を選択します。
 
     ![仮想マシンの [サーバー マネージャー] ウィンドウ](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-3. **[プロパティ]** で **[ワークグループ]** を選択します。 
+3. **[プロパティ]** で **[ワークグループ]** を選択します。
 4. **[システム プロパティ]** ウィンドウで **[変更]** を選択し、ドメインに参加します。
 
     ![[システム プロパティ] ウィンドウ](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
@@ -99,7 +101,7 @@ Windows Server 仮想マシンを Azure AD DS の管理対象ドメインに参�
 
     ![参加するドメインの指定](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-6. ドメインに参加するために、資格情報を入力するように求められます。 "*Azure AD DC 管理者グループに属しているユーザー*" の資格情報を指定します。 このグループのメンバーだけが、マシンを管理対象のドメインに参加させる権限を有します。
+6. ドメインに参加するために、資格情報を入力するように求められます。 "*Azure AD DC 管理者グループに属しているユーザー*" の資格情報を使用します。 このグループのメンバーだけが、マシンを管理対象のドメインに参加させる権限を有します。
 
     ![資格情報を指定するための [Windows セキュリティ] ウィンドウ](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
@@ -123,28 +125,28 @@ Windows Server 仮想マシンを Azure AD DS の管理対象ドメインに参�
 
 ## <a name="troubleshoot-joining-a-domain"></a>ドメインへの参加のトラブルシューティング
 ### <a name="connectivity-issues"></a>接続に関する問題
-仮想マシンがドメインを見つけられない場合は、次の方法を試してください。
+仮想マシンでドメインを検索できない場合は、次のトラブルシューティング手順をお試しください。
 
-* Azure AD DS を有効にしているのと同じ仮想ネットワークに仮想マシンが接続されていることを確認します。 接続されていない場合は、仮想マシンがドメインに接続できず、ドメインに参加することができません。
+* Azure AD DS を有効にしているのと同じ仮想ネットワークに仮想マシンが接続されていることを確認します。 接続されていない場合、仮想マシンはドメインに接続することも参加することもできません。
 
 * 仮想マシンが、Azure AD DS を有効にした仮想ネットワークに接続されている仮想ネットワーク上に存在していることを確認します。
 
-* 管理対象ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: *ping contoso100.com*)。 これを実行できない場合は、Azure AD DS を有効にしたページに表示されているドメインの IP アドレスに対して ping を試行してください (例: *ping 10.0.0.4*)。 IP アドレスは ping できても、ドメインは ping できない場合は、DNS が正しく構成されていない可能性があります。 ドメインの IP アドレスが仮想ネットワークの DNS サーバーとして構成されているかどうかを確認します。
+* マネージド ドメインの DNS ドメイン名でドメインの ping をお試しください (例: "*ping contoso100.com*")。 これを実行できない場合は、Azure AD DS を有効にしたページに表示されているドメインの IP アドレスに対して ping を試行してください (例: *ping 10.0.0.4*)。 ドメインではなく IP アドレスを ping できた場合、DNS が正しく構成されていない可能性があります。 ドメインの IP アドレスが仮想ネットワークの DNS サーバーとして構成されているかどうかを確認します。
 
 * 仮想マシンの DNS リゾルバー キャッシュのフラッシュを試行します (*ipconfig/flushdns*)。
 
 ドメインに参加するための資格情報の入力を求めるウィンドウが表示される場合、接続の問題はありません。
 
 ### <a name="credentials-related-issues"></a>資格情報に関連した問題
-資格情報で問題があり、ドメインに参加することができない場合は、次の方法を試してください。
+資格情報で問題があり、ドメインに参加できない場合は、次のトラブルシューティング手順をお試しください。
 
-* UPN 形式を使用して資格情報を指定します。 複数のユーザーがテナントで同じ UPN プレフィックスを使用していたり、UPN プレフィックスが最大文字数を超えている場合、アカウントの SAMAccountName は自動生成される可能性があります。 そのため、アカウントの SAMAccountName 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
+* UPN 形式を使用して資格情報を指定します。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用しているか、UPN プレフィックスが最大文字数を超えている場合、アカウントの SAMAccountName は自動生成される可能性があります。 そのような場合、アカウントの SAMAccountName 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
 
 * "*AAD DC 管理者*" グループに属しているユーザー アカウントの資格情報を使用します。
 
-* ファースト ステップ ガイドで説明されている手順に従って[パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md)ことを確認します。
+* マネージド ドメインとの[パスワード同期を有効にしている](active-directory-ds-getting-started-password-sync.md)ことを確認します。
 
-* サインインするために、Azure AD で構成されているユーザーの UPN (例: *bob@domainservicespreview.onmicrosoft.com*) を使用します。
+* Azure AD で構成されているユーザーの UPN (例: *bob@domainservicespreview.onmicrosoft.com*) をサインインに使用したことを確認します。
 
 * ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。
 

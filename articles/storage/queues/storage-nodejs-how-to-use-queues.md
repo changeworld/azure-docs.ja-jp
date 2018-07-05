@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: cshoe
-ms.openlocfilehash: 2565f56324a070368c499a62ab54bb98830d8c20
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c19ac5f45504e3c19b0b300dbc3ea157861d05ed
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34653027"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -66,8 +67,6 @@ var azure = require('azure-storage');
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 Azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT と AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **createQueueService**を呼び出すときにアカウント情報を指定する必要があります。
-
-Azure Web サイトの [Azure Portal](https://portal.azure.com) で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ](../../cosmos-db/table-storage-cloud-service-nodejs.md)」をご覧ください。
 
 ## <a name="how-to-create-a-queue"></a>方法: キューを作成する
 次のコードは、 **QueueService** オブジェクトを作成し、これによってキューを操作できるようにします。

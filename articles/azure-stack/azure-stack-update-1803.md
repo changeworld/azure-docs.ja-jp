@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/22/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: f7f459404b5a759bef9eb8f37141bbd4c9eae3e5
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849626"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318811"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新プログラム
 
@@ -54,45 +54,40 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
   
   Azure Stack の更新プログラムとは異なり、この更新プログラムをインストールしても Azure Stack のバージョンは変更されません。 この更新プログラムがインストールされているかどうかは、**[インストール済み更新プログラム]** の一覧を確認します。
 
-### <a name="post-update-steps"></a>更新後の手順
-- 1803 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。
 
-  - [KB 4294441 - テナント リソースに対する操作が失敗して、同じテナントまたはインフラストラクチャ ボリュームに予期しない共有が作成されました](https://support.microsoft.com/en-us/help/4294441)
-
-- この更新プログラムをインストールしたら、ファイアウォールの設定で[必要なポート](azure-stack-integrate-endpoints.md)が開いていることを確認します。 たとえば、この更新プログラムには、監査ログをアクティビティ ログに変更することを含む Azure Monitor が入っています。 この変更によりポート 13012 が使用されるようになったため、開いている必要があります。  
 
 ### <a name="new-features"></a>新機能 
 この更新プログラムには、Azure Stack に対する次の機能強化と修正が含まれています。
 
 - **Azure Stack シークレットの更新** - (アカウントおよび証明書)。 シークレットの管理に関する詳細については、「[Azure Stack でシークレットをローテーションする](azure-stack-rotate-secrets.md)」をご覧ください。 
 
-- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
+- <!-- 1914853 --> HTTP を使用して管理者ポータルとユーザー ポータルにアクセスする場合の、**HTTPS への自動ダイレクト**。 この機能強化は、Azure Stack の [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) フィードバックに基づいて行われたものです。 
 
-- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+- <!-- 2202621  --> **Marketplace へのアクセス** – Azure portal の場合と同じ方法で、管理者ポータルとユーザー ポータル内から [[+新規]](https://ms.portal.azure.com/#create/hub) オプションを使用して、Azure Stack Marketplace を開けるようになりました。
  
-- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Azure Monitor** - Azure Stack では、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) が管理者ポータルとユーザー ポータルに追加されます。 これには、メトリックおよびアクティビティ ログ用の新しいエクスプローラーが含まれます。 外部ネットワークからこの Azure Monitor にアクセスするには、ファイアウォール構成でポート **13012** を開く必要があります。 Azure Stack で必要なポートの詳細については、「[Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md)」を参照してください。
 
    この変更の一環として、**[More services]\(その他のサービス\)** 下では、*[監査ログ]* が *[アクティビティ ログ]* と表示されるようになります。 Azure Portal との機能の一貫性が確保できました。 
 
-- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+- <!-- 1664791 --> **スパース ファイル** - Azure Stack に新しいイメージを追加する場合や、マーケットプレース シンジケーションを介してイメージを追加する場合は、イメージがスパース ファイルに変換されます。 Azure Stack バージョン 1803 を使用する前に追加されたイメージを変換することはできません。 この機能を利用するには、代わりにマーケットプレース シンジケーションを使用して、それらのイメージを再送信する必要があります。 
  
    スパース ファイルは、記憶域スペースの使用を減らして I/O を改善するために使用される、効率的なファイル形式です。  詳細については、Windows Server の「[Fsutil sparse](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse)」 (fsutil sparse) をご覧ください。 
 
 ### <a name="fixed-issues"></a>修正された問題
 
-- <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+- <!-- 1739988 --> 内部負荷分散 (ILB) でバックエンド VM の MAC アドレスが正しく処理されるようになりました。これにより、バックエンド ネットワークで Linux インスタンスを使用した場合は、ILB でバックエンド ネットワークへのパケットが破棄されるようになります。 ILB は、バックエンド ネットワーク上の Windows インスタンスでは問題なく動作します。 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure. The values for SALifetime (Time) and SALiftetime (Bytes) were not compatible with Azure and have changed in 1803 to match the Azure settings. The value for SALifetime (Seconds) prior to 1803 was 14,400 and now changes to 27,000 in 1803. The value for SALifetime (Bytes) prior to 1803 was 819,200 and changes to 33,553,408 in 1803.
+- <!-- 1805496 --> Azure Stack では、Azure とは異なる IKE ポリシーの設定を使用するため、Azure Stack 間の VPN 接続が切断されるという問題。 SALifetime (時間) と SALiftetime (バイト) の値が Azure と互換性がなかったため、Azure の設定と一致するように 1803 で変更されました。 1803 より前の SALifetime (秒) の値は 14,400 でしたが、1803 では 27,000 に変更されました。 1803 より前の SALifetime (バイト) の値は 819,200 でしたが、1803 では 33,553,408 に変更されました。
 
-- <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+- <!-- 2209262 --> ポータルに以前は VPN 接続が表示されていたが、IP 転送を有効にしたり、切り替えたりすることができないという IP の問題。 この機能は既定で有効でになりますが、これを変更する機能はまだサポートされていません。  コントロールはポータルから削除されました。 
 
-- <!-- 1766332 --> Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+- <!-- 1766332 --> Azure Stack では、ポータルにオプションが表示される場合でも、ポリシー ベースの VPN ゲートウェイはサポートされません。  オプションはポータルから削除されました。 
 
-- <!-- 1868283 --> Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+- <!-- 1868283 --> Azure Stack では、ダイナミック ディスクで作成される仮想マシンのサイズ変更が行われないようになりました。 
 
-- <!-- 1756324 --> Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+- <!-- 1756324 --> 仮想マシンの利用状況データが、1 時間間隔で分割されるようになりました。 これは Azure と一致しています。 
 
-- <!--  2253274 --> The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+- <!--  2253274 --> 管理者ポータルとユーザー ポータルで、vNet サブネットの [設定] ブレードを読み込めない問題。 回避策として、PowerShell と [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) コマンドレットを使用して、この情報を表示および管理します。
 
 - 仮想マシンを作成する際、VM サイズ用のサイズを選択したときのメッセージ "*価格を表示できません*" は表示されなくなりました。
 
@@ -104,20 +99,29 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題    
-<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
+<!-- 2328416 --> 1803 更新プログラムのインストール時に、Blob service と Blob service を使用する内部サービスのダウンタイムが発生する場合があります。 これには、一部の仮想マシンの操作が含まれます。 このダウン タイムにより、テナントの操作が失敗したり、データにアクセスできないサービスからのアラートが表示されたりする可能性があります。 この問題は、更新プログラムのインストールの完了時に自動的に解決します。 
+
+
+
+### <a name="post-update-steps"></a>更新後の手順
+- 1803 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。
+
+  - [KB 4341390 - Azure Stack 修正プログラム 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390)。
+
+- この更新プログラムをインストールしたら、ファイアウォールの設定で[必要なポート](azure-stack-integrate-endpoints.md)が開いていることを確認します。 たとえば、この更新プログラムには、監査ログをアクティビティ ログに変更することを含む *Azure Monitor* が入っています。 この変更によりポート 13012 が使用されるようになったため、開いている必要があります。  
 
 
 ### <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 ビルド **20180323.2** のインストール後について次の既知の問題があります。
 
 #### <a name="portal"></a>ポータル
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+- <!-- 2332636 - IS --> Azure Stack ID システムに AD FS を使用し、このバージョンの Azure Stack に更新すると、既定のプロバイダー サブスクリプションの既定の所有者は、組み込みの **CloudAdmin** ユーザーにリセットされます。  
   回避策: この更新プログラムのインストール後にこの問題を解決するには、「[Azure Stack で自動化をトリガーしてクレーム プロバイダー信頼を構成する](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1)」の手順 3 を使用して、既定のプロバイダー サブスクリプションの所有者をリセットします。   
 
 - 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
     - Azure Stack 統合システムの場合は、https://aka.ms/newsupportrequest を使用します。
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
+- <!-- 2050709 --> 管理ポータルで、Blob service、Table service、および Queue サービスのストレージ メトリックを編集できません。 [ストレージ] に移動し、Blob、Table、または Queue サービスのタイルを選択すると、新しいブレードが開き、そのサービスのメトリック グラフが表示されます。 メトリック グラフ タイルの上部にある [編集] を選択すると、[グラフの編集] ブレードが開きますが、メトリックを編集するオプションは表示されません。
 
 - 管理ポータルでコンピューティング リソースやストレージ リソースを表示できない場合があります。 この問題の原因は、更新プログラムのインストール中にエラーが発生し、更新が正常に行われたことが誤って報告されたためです。 この問題が発生した場合は、Microsoft カスタマー サポート サービスにお問い合わせください。
 
@@ -136,7 +140,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
 
 #### <a name="health-and-monitoring"></a>正常性と監視
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK --> 以下の詳細情報の*正常性コントローラー* コンポーネントのアラートが表示されることがあります:  
 
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
@@ -171,9 +175,9 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
   次に、前に失敗した VM イメージの再ダウンロードを試行できます。
 
--  VM のデプロイで拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
+-  VM の展開で拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 --> Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。  
 
 
 #### <a name="networking"></a>ネットワーク
@@ -191,7 +195,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
 - Azure Stack では、VM を展開した後に、VM インスタンスにネットワーク インターフェイスをさらに追加することはできません。 VM に複数のネットワーク インターフェイスが必要な場合は、展開時に定義する必要があります。
 
-- <!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 --> 管理ポータルを使用してネットワーク セキュリティ グループのルールを更新することができません。 
 
     App Service の回避策: コントローラー インスタンスへのリモート デスクトップ接続が必要な場合は、PowerShell を使用してネットワーク セキュリティ グループ内のセキュリティ規則を変更します。  "*許可*" する方法と、次にこの構成を復元して "*拒否*" する方法の例を次に示します。  
     
@@ -262,7 +266,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
 - SQL または MySQL をホストするサーバー上に項目を作成できるのは、リソース プロバイダーのみです。 リソース プロバイダー以外がホスト サーバー上に項目を作成すると、不一致状態になる可能性があります。  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> SQL と MySQL リソース プロバイダーの SKU を作成する場合、**[ファミリ]** 名では、スペースやピリオドなどの特殊文字はサポートされていません。
 
 > [!NOTE]  
 > Azure Stack 1803 に更新した後も、以前にデプロイした SQL および MySQL リソース プロバイダーを引き続き使用できます。  新しいリリースが公開されたら、SQL と MySQL を更新することをお勧めします。 Azure Stack と同様に、SQL と MySQL リソース プロバイダーに順番に更新プログラムを適用します。  たとえば、バージョン 1711 を使用している場合は、最初にバージョン 1712、次に 1802 を適用してから、1803 に更新します。      

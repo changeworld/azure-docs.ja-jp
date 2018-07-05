@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2209a06921ffd6a8efb6fc38dacfa88fc87fa05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 840d3737efe4314359ba3a3bf0f5c4f888f92567
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958726"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329571"
 ---
 ストレージ最適化済み VM サイズは高いディスク スループットと IO を実現し、ビッグ データ、SQL、NoSQL データベースに最適です。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
@@ -31,7 +31,7 @@ ACU: 180 ～ 240
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000/1,000     | 8 / 20,000 | 
  
 
-Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されているディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。 
+Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。 Ls シリーズの VM は、ローカル ストレージの使用量が多いワークロードを対象とし、通常は初期読み込みとログの場合にのみ接続されたディスクを使用します。これは、接続されたディスクのホスト キャッシュが Ls シリーズでサポートされず、キャッシュを無効化したモードでディスクを接続する必要がある場合、キャッシュは効果がないためです。 
 
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
