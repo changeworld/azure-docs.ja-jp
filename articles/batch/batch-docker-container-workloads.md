@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801117"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060519"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -229,7 +229,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
 
-コンテナー設定を構成するとき、コンテナーには `AZ_BATCH_NODE_ROOT_DIR` (ノード上の Azure Batch ディレクトリのルート) の下にあるすべてのディレクトリが再帰的にマップされるほか、すべてのタスク環境変数がマップされます。また、タスクのコマンド ラインがコンテナー内で実行されます。
+Azure Batch のコンテナー タスク用のコマンド ラインは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定する環境によく似ています。
+
+* `AZ_BATCH_NODE_ROOT_DIR` (ノード上の Azure Batch ディレクトリのルート) の下のすべてのディレクトリが、コンテナー内に再帰的にマップされます。
+* タスクの環境変数がすべて、コンテナー内にマップされます。
+* アプリケーションの作業ディレクトリは、通常のタスクの場合と同様に設定されます。そのため、 アプリケーション パッケージやリソース ファイルなどの機能が使用可能です。
+
+Batch は、コンテナー内の既定の作業ディレクトリを変更します。そのため、タスクは、通常のコンテナー エントリ ポイント (例えば、Windows コンテナーの場合は、既定で `c:\`、Linux の場合は `/`) とは別の場所で実行されます。 タスクのコマンド ラインまたはコンテナー エントリ ポイントでは、絶対パスが指定されるようにしてください (まだそのように構成されていない場合)。
 
 次の Python スニペットは、Docker Hub からプルされた Ubuntu コンテナーで実行されている基本的なコマンド ラインを示しています。 コンテナーの実行オプションは、タスクが実行する `docker create` コマンドの追加引数です。 ここでは、タスクの終了後に `--rm` オプションがコンテナーを削除します。
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ task = batch.models.TaskAddParameter(
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

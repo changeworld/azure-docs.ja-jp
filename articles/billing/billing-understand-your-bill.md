@@ -1,5 +1,5 @@
 ---
-title: Azure の課金内容の確認
+title: Azure の課金内容を確認する | Microsoft Docs
 description: Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します
 services: ''
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204893"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064625"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -101,6 +101,40 @@ Azure Portal で料金を確認することもできます。Azure Portal は、
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>クレジット カードによる支払い状況を確認するにはどうすればよいですか。
 
 [サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)して、支払い状況の確認に関するサポートを要求してください。 
+
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>Azure の顧客にはさまざまなタイプがありますか。 自分の顧客タイプはどうすればわかりますか。
+Azure の顧客にはさまざまなタイプがあります。 価格設定や請求書をよく理解するために、次の顧客タイプの説明をお読みください。
+
+- **Enterprise**: Enterprise 顧客は、Azure と Enterprise Agreement を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
+- **Web Direct**: Web Direct 顧客は、Azure とカスタム契約を締結していません。 このような顧客は azure.com から Azure に新規登録し、すべての Azure リソースについて一般向け価格が提示されます。
+- **クラウド サービス プロバイダー**: クラウド サービス プロバイダーとは、通常、Azure 上にソリューションを構築するようにエンド ユーザーから依頼される企業です。
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>作成したリソースのコストが請求書に表示されないのはなぜですか。
+Azure は、リソースのコストに直接基づいて課金するわけではありません。 課金は、リソースの有効期間における使用状況を追跡するために使用する 1 つ以上の測定に基づいています。 これらの測定が課金の計算に使用されます。 Azure の測定については以下をご覧ください。
+
+## <a name="how-does-azure-charge-metering-work"></a>Azure の料金測定はどのようなしくみですか。
+仮想マシンなど 1 つの Azure リソースを使用すると、1 つ以上の測定インスタンスが作成されます。 これらの測定は、時間経過に伴ってリソースの使用状況を追跡するために使用されます。 各測定によって出力された使用状況レコードが、コスト測定システムで Azure によって課金の計算に使用されます。 
+
+たとえば、Azure に作成された 1 つの仮想マシンに対して、使用状況を追跡するために次の測定が作成される場合があります。
+
+- コンピューティング時間
+- IP アドレス時間
+- データ転送 (受信)
+- データ転送 (送信)
+- Standard マネージド ディスク
+- Standard マネージド ディスク操作
+- Standard IO - ディスク
+- Standard IO - ブロック BLOB (読み取り)
+- Standard IO - ブロック BLOB (書き込み)
+- Standard IO - ブロック BLOB (削除)
+
+VM が作成されると、上記の測定それぞれが使用状況レコードを出力し始めます。 後から Azure の測定システムで、この使用状況と測定の価格を組み合わせて、顧客に対する請求額が決定されます。
+
+> [!Note]
+> 上記の測定の例は、作成される VM に対して作成される測定のごく一部です。
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Azure ファースト パーティ料金と Azure Marketplace 料金の違いは何ですか。
+Azure ファースト パーティ料金は、Azure が直接開発して提供しているリソースのものです。 Azure Marketplace 料金は、サード パーティ ソフトウェア ベンダーによって作成され、Azure Marketplace で入手できるリソースのものです。 たとえば、Barracuda Firewall はサード パーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、マーケットプレース料金として表示されます。 
 
 ## <a name="tips-for-cost-management"></a>コスト管理に関するヒント
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/pricing/)を取得します。

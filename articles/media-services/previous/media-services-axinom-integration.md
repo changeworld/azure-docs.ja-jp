@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 0aaf0eea0414d234c9a24f707df5eed491a61c08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783611"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061156"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Axinom の Widevine ライセンス サーバーの STS として Azure Active D
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player の準備
 AMP v1.4.0 では、PlayReady DRM と Widevine DRM の両方で動的にパッケージ化されている AMS コンテンツの再生がサポートされています。
-Widevine ライセンス サーバーでトークン認証が必要ない場合は、Widevine で保護されている DASH コンテンツをテストするために追加で必要となる操作はありません。 たとえば、AMP チームが提供している単純な [サンプル](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)では、Edge と IE11 の場合は PlayReady と動作し、Chrome の場合は Widevine と動作しています。
+Widevine ライセンス サーバーでトークン認証が必要ない場合は、Widevine で保護されている DASH コンテンツをテストするために追加で必要となる操作はありません。 たとえば、AMP チームが提供している単純な [サンプル](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html)では、Edge と IE11 の場合は PlayReady と動作し、Chrome の場合は Widevine と動作しています。
 Axinom が提供する Widevine ライセンス サーバーでは、JWT トークン認証が必要です。 JWT トークンは、HTTP ヘッダー "X-AxDRM-Message" を使用してライセンス要求と共に送信する必要があります。 そのため、ソースを設定する前に、AMP をホストする Web ページに次の JavaScript を追加する必要があります。
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
@@ -200,5 +200,5 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>謝辞
-この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
+この文書の作成に協力してくれた Kristjan Jõgi (Axinom)、Mingfei Yan、Amit Rajput に感謝します。
 

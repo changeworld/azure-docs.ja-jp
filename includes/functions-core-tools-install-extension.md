@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6fb497a5b6da00dece43c7f41ea3c411f385a2ba
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: d166a77a0636efea3b63660fde2187e3f2ec15c0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726889"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063750"
 ---
 ローカルで関数を開発するときは、ターミナルまたはコマンド プロンプトから Azure Functions Core Tools を使って、必要な拡張機能をインストールできます。 
 
@@ -22,7 +22,7 @@ ms.locfileid: "34726889"
 特定のバージョンのパッケージをインストールする場合、または *function.json* ファイルを編集する前にパッケージをインストールする場合は、次の例のように `func extensions install` コマンドと共にパッケージ名を指定します。
 
 ```
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version <target_version>
+func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
 ```
 
-`<target_version>` をパッケージの特定のバージョンに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。
+`<target_version>` をパッケージの特定のバージョン (`3.0.0-beta5`など) に置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。

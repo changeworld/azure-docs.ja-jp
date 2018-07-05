@@ -1,5 +1,5 @@
 ---
-title: 従量課金制サブスクリプションの Azure 予約インスタンスの使用量について - Azure Billing | Microsoft Docs
+title: 従量課金制サブスクリプションの Azure 予約インスタンス使用量について | Microsoft Docs
 description: 従量課金制サブスクリプションに Azure 予約 VM インスタンスがどのように適用されているかを把握するための使用状況の読み方について説明します。
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 7bf4aea86d4d430c15d60a8d73365705ace18b5a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e303f3e5ce0e618d941be4190f6fadb40f2e09d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301854"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064492"
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションの予約インスタンス使用量について
 
@@ -43,7 +43,7 @@ Azure の予約 VM インスタンスの使用状況は、[予約ページ](http
 デプロイされている VM が予約インスタンスの属性と合致していることで特典が適用されるのは、VM のハードウェア部分です。 予約インスタンスによって充当されない Windows ソフトウェアについては、「[Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。
 
 ### <a name="statement-section-of-csv"></a>CSV の [明細書] セクション
-CSV のこのセクションには、予約インスタンスの合計使用量が表示されます。 [測定サブカテゴリ] フィールドで、"予約-" を含んだフィルターを適用すると、次のスクリーンショットのようにデータが表示されます。![フィルターが適用された予約インスタンスの使用状況の詳細と料金](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
+CSV のこのセクションには、予約インスタンスの合計使用量が表示されます。 "予約-" を含む [測定サブカテゴリ] フィールドに対してフィルターを適用すると、次のスクリーンショットのようにデータが表示されます。![フィルターが適用された予約インスタンスの使用状況の詳細と料金](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
 [占有 - ベース VM] 行には、予約インスタンスによって充当される合計時間が表示されます。 予約インスタンスの購入分が充当されるため、この行は $0.00 です。 [占有 - Windows Svr (1 コア)] 行は、Windows ソフトウェアのコストに充当されます。
 
@@ -61,9 +61,9 @@ CSV のこのセクションには、予約インスタンスの合計使用量�
 ## <a name="next-steps"></a>次の手順
 予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Azure Reserved Instances で仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
-- [予約インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [Azure Reserved VM Instances とは](billing-save-compute-costs-reservations.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure での予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
 - [予約インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)

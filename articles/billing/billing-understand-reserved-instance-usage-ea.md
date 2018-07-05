@@ -1,5 +1,5 @@
 ---
-title: エンタープライズ向けの Azure 予約インスタンス使用量 - Azure Billing | Microsoft Docs
+title: エンタープライズ向けの Azure 予約インスタンス使用量について | Microsoft Docs
 description: エンタープライズ加入契約に Azure 予約 VM インスタンスがどのように適用されているかを把握するための使用状況の読み方について説明します。
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: a92fce33b194c5cb7b763930e7fd11135f9fbd4f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d6e8b2544f919abeb7fde0e37fc12bd29f0171ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301316"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064646"
 ---
 # <a name="understand-azure-reserved-instance-usage-for-your-enterprise-enrollment"></a>エンタープライズ加入契約の Azure 予約インスタンス使用量について
 予約インスタンスの使用状況は、[[予約] ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)から **ReservationId** を使用するか、[EA ポータル](https://ea.azure.com)から使用状況ファイルを使用して把握することができます。 予約インスタンスの使用状況は、[EA ポータル](https://ea.azure.com)の使用状況の概要セクションで確認することもできます。
@@ -59,14 +59,13 @@ EA の使用状況の CSV は EA ポータルからダウンロードできま�
 2. Windows ソフトウェアは、Azure ハイブリッド特典が使用されていないため、料金が発生します。 
 
 ## <a name="next-steps"></a>次の手順
-Azure 予約インスタンスについて詳しくは、次の記事をご覧ください。
+Azure 予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Azure Reserved Instances で仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
-- [予約インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [Azure Reserved VM Instances とは](billing-save-compute-costs-reservations.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure での予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
 - [予約インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- 
-  [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください

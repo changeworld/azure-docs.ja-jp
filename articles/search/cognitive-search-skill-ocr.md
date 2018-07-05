@@ -4,8 +4,6 @@ description: Azure Search のエンリッチメント パイプラインのイ�
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640372"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055685"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
@@ -38,7 +36,7 @@ ms.locfileid: "34640372"
 | パラメーター名     | 説明 |
 |--------------------|-------------|
 | detectOrientation | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
-|defaultLanguageCode |  入力テキストの言語コード｡ 以下の言語がサポートされています。`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`｡  言語コードが指定されないか null の場合､言語は自動検出されます｡|
+|defaultLanguageCode | <p>  入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体字中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は自動検出されます｡ </p> |
 | textExtractionAlgorithm | "printed" または "handwritten"｡ "handwritten" テキスト認識の OCR アルゴリズムは現在プレビュー段階であり､英語でのみサポートされます｡ |
 
 ## <a name="skill-inputs"></a>スキルの入力

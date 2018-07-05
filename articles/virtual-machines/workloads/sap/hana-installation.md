@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763453"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064512"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -44,7 +44,7 @@ SAP HANA はお客様がインストールする必要があります。アク�
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>HANA L インスタンス ユニットを入手した後で最初に行うこと
 
-**手順 1**: HANA L インスタンスを入手し、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 たとえば、SUSE SMT のインスタンス (Azure の VM にデプロイしておく必要があります) の SUSE Linux OS を登録します。 HANA L インスタンス ユニットは、この SMT インスタンスに接続できます (このドキュメントで後述します)。 または RedHat OS を、接続先となる Red Hat Subscription Manager に登録する必要があります。 [こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の備考も参照してください。 OS にパッチを適用できるようにするためにも、この手順が必要となります。 これはお客様が各自で行う作業です。 SUSE については、SMT のインストールと構成に関するドキュメントを[ここから](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)参照してください。
+**手順 1**: HANA L インスタンスを入手し、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 たとえば、SUSE SMT のインスタンス (Azure の VM にデプロイしておく必要があります) の SUSE Linux OS を登録します。 HANA L インスタンス ユニットは、この SMT インスタンスに接続できます (このドキュメントで後述します)。 または Red Hat OS を、接続先となる Red Hat Subscription Manager に登録する必要があります。 [こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の備考も参照してください。 OS にパッチを適用できるようにするためにも、この手順が必要となります。 これはお客様が各自で行う作業です。 SUSE については、SMT のインストールと構成に関するドキュメントを[ここから](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)参照してください。
 
 **手順 2**: 特定の OS リリース/バージョンに関する新しいパッチと修正プログラムの有無をチェックします。 HANA L インスタンスのパッチ レベルが最新の状態になっているかどうかを確認してください。 OS のパッチ/リリースや Microsoft がデプロイ可能なイメージの変更のタイミングによっては、最新のパッチが含まれていない場合があります。 そのため、HANA L インスタンス ユニットの引き渡しが終わったら、セキュリティ、機能、可用性、パフォーマンスに関連する最新のパッチが特定の Linux ベンダーからリリースされているかどうか、また適用する必要があるかどうかを確認することが必須となります。
 
@@ -80,18 +80,7 @@ SLES12 SP1 および RHEL 7.2 以降では、これらのパラメーターを /
 
 個々の装置のネットワークに関して、いくつかの注意点があります。 すべての HANA L インスタンス ユニットに 2 ～ 3 個の IP アドレスが備わっており、それがそのユニットの 2 ～ 3 個の NIC ポートに割り当てられています。 HANA スケールアウト構成と HANA システム レプリケーション シナリオでは、3 つの IP アドレスが使用されます。 ユニットの NIC に割り当てられている IP アドレスの 1 つは、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」で説明されているサーバー IP プールから割り当てられたものです。
 
-2 つの IP アドレスが割り当てられているユニットの区分は次にようになっています。
-
-- eth0.xx には、お客様が Microsoft に提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 OS の /etc/hosts には、この IP アドレスが記述されます。
-- eth1.xx には、NFS との通信用の IP アドレスが割り当てられます。 そのため、テナント内のインスタンスどうしがトラフィックをやり取りするために、これらのアドレスが etc/hosts に記述されている必要は**ありません**。
-
-HANA システム レプリケーションまたは HANA スケールアウトのデプロイの場合、2 つの IP アドレスが割り当てられたブレード構成は適していません。 IP アドレスを 2 つだけ割り当てたうえで、そのような構成をデプロイする場合は、SAP HANA on Azure サービス管理に連絡して、3 つ目の VLAN で 3 つ目の IP アドレスを割り当ててください。 3 つの NIC ポートに 3 つの IP アドレスが割り当てられている HANA L インスタンス ユニットでは、次の使用規則が適用されます。
-
-- eth0.xx には、お客様が Microsoft に提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 したがって OS の /etc/hosts には、この IP アドレスが記述されません。
-- eth1.xx には、NFS ストレージとの通信用の IP アドレスが割り当てられます。 そのため、このタイプのアドレスは etc/hosts には記述されません。
-- eth2.xx だけが etc/hosts に記述され、さまざまなインスタンス間の通信に使用されます。 これらのアドレスは、HANA がノード間の構成に使用する IP アドレスとして、スケールアウト HANA 構成で保持する必要がある IP アドレスでもあります。
-
-
+ご使用のアーキテクチャのイーサネットの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 
 ## <a name="storage"></a>Storage
 
@@ -111,7 +100,7 @@ SID は、HANA インスタンスのシステム ID です。
 
 tenant は、テナントの配置時の操作の内部列挙です。
 
-ご覧のように、HANA 共有と usr/sap は同じボリュームを共有しています。 マウント ポイントの命名には、HANA インスタンスのシステム ID とマウント番号が含まれます。 スケールアップ配置には、mnt00001 のように、マウントは 1 つしか存在しません。 これに対して、スケールアウト配置には、使用している worker ノードおよびマスター ノードと同じ数のマウントが存在します。 スケールアウト環境では、データ、ログ、ログ バックアップの各ボリュームが共有され、スケールアウト構成の各ノードに接続されます。 複数の SAP インスタンスを実行する構成では、異なるボリューム セットが作成され、HANA L インスタンス ユニットに接続されます。
+ご覧のように、HANA 共有と usr/sap は同じボリュームを共有しています。 マウント ポイントの命名には、HANA インスタンスのシステム ID とマウント番号が含まれます。 スケールアップ配置には、mnt00001 のように、マウントは 1 つしか存在しません。 これに対して、スケールアウト配置には、使用している worker ノードおよびマスター ノードと同じ数のマウントが存在します。 スケールアウト環境では、データ、ログ、ログ バックアップの各ボリュームが共有され、スケールアウト構成の各ノードに接続されます。 複数の SAP インスタンスを実行する構成では、異なるボリューム セットが作成され、HANA L インスタンス ユニットに接続されます。 ご使用のシナリオの記憶域レイアウトの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 
 前述のホワイト ペーパーを読み、HANA L インスタンス ユニットを確認すると、HANA/data 用にかなり大きなディスク ボリュームを備えていること、また HANA/log/backup というボリュームがあることがわかります。 HANA/data が非常に大きなサイズに設定されているのは、お客様に提供されるストレージ スナップショットで同じディスク ボリュームが使用されるためです。 つまり、実行するストレージ スナップショットの増加に伴って、割り当てられたストレージ ボリュームでスナップショットに使用される領域が増加します。 HANA/log/backup ボリュームは、データベースのバックアップを格納するためのボリュームとして想定されているわけではありません。 HANA トランザクション ログ バックアップ用のバックアップ ボリュームとして使用するようにサイズ設定されています。 ストレージ スナップショット セルフサービスの今後のバージョンでは、このボリュームに格納するスナップショットの頻度を増やすことを目標としています。 また、ディザスター リカバリー サイトへのレプリケーションの頻度も増やす予定です (HANA L インスタンス インフラストラクチャで提供されるディザスター リカバリー機能をお客様が希望する場合)。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
 
@@ -150,6 +139,7 @@ SAP HANA データベースのインストール後に、hdbparam フレーム�
 
 SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりました。 パラメーターの設定には SQL コマンドを使ってください。 詳しくは、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
 
+ご使用のアーキテクチャの記憶域レイアウトについては、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 
 ## <a name="operating-system"></a>オペレーティング システム
 

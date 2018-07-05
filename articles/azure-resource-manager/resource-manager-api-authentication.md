@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
 ms.author: dugill
-ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359864"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018648"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -324,7 +324,7 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
 
 この要求では、次の値が使用されています。
 
-| Guid | [説明] |
+| Guid | 説明 |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |サブスクリプションの ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |アプリケーションのサービス プリンシパルのオブジェクト ID |

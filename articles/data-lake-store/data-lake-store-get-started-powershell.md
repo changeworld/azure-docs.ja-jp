@@ -1,26 +1,23 @@
 ---
-title: PowerShell で Azure Data Lake Store の使用を開始する | Microsoft Docs
+title: PowerShell で Azure Data Lake Storage Gen1 の使用を開始する | Microsoft Docs
 description: Azure PowerShell を使用して、Data Lake Store アカウントを作成し、基本的な操作を実行する
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: bf85f369-f9aa-4ca1-9ae7-e03a78eb7290
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 57b7755bda499cd7113f84d9950b1b06175e11b7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f208722d768e2bccf2e5b4d7b4543f8cbba4f185
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035539"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Storage Gen1 の使用を開始する
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 04/19/2018
 >
 >
 
-Azure PowerShell を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Azure PowerShell を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Storage Gen1 の概要](data-lake-store-overview.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

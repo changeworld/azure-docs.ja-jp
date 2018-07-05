@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619322"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055698"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-functions-variables.md)
-> * [バージョン 2 - プレビュー](control-flow-expression-language-functions.md)
+> * [Version 1](v1/data-factory-functions-variables.md)
+> * [現在のバージョン](control-flow-expression-language-functions.md)
 
-この記事では、Azure Data Factory (バージョン 2) によってサポートされている式と関数に関する詳細情報を提供します。 
+この記事では、Azure Data Factory によってサポートされている式と関数に関する詳細情報を提供します。 
 
 ## <a name="introduction"></a>はじめに
 定義内の JSON 値には、実行時に評価されるリテラルまたは式を指定できます。 例:   
@@ -40,20 +40,15 @@ ms.locfileid: "34619322"
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Functions and variables in Data Factory V1 (Data Factory V1 の関数と変数)](v1/data-factory-functions-variables.md)」を参照してください。
-
-
 ## <a name="expressions"></a>式  
-式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (\@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
-|\" \@\"|" \@\" を含む 2 文字の文字列が返されます。|  
+|"\@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
+|" \@"|" \@\" を含む 2 文字の文字列が返されます。|  
   
  また、式が `@{ ... }` にラップされる*文字列補間*と呼ばれる機能を使用して、式を文字列の内部に指定することもできます。 次に例を示します。`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -61,13 +56,13 @@ ms.locfileid: "34619322"
   
 |JSON 値|結果|  
 |----------------|------------|  
-|"@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
-|"@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
-|"@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
-|"@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
+|"\@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
+|"\@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
+|"\@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
+|"\@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
 |"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
-|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
-|"Answer is: @@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
+|"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
+|"Answer is: \@@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
 ### <a name="examples"></a>例
 

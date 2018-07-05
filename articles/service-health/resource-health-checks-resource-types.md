@@ -14,15 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 35eedb170e1c79f4d282f71608b456a271c4d59b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795947"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018225"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|実行されるチェック|
+|---|
+|<ul><li>サーバーが稼働しているか</li><li>サーバーのメモリが不足しているか</li><li>サーバーが起動しているか</li><li>サーバーが復旧しているか</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |実行されるチェック|
@@ -57,13 +62,13 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |実行されるチェック|
 |---|
-|<ul><li>ユーザーがリージョンの Data Lake Analytics にジョブを送信できるか</li><li>基本的なジョブがリージョンで実行され正常に完了するか</li><li>ユーザーがリージョンのカタログ項目を一覧表示できるか</li>|
+|<ul><li>ユーザーに Data Lake Analytics ジョブの送信またはリストに関する問題が発生しているか</li><li>Data Lake Analytics ジョブを完了できず、システム エラーが発生しているか</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |実行されるチェック|
 |---|
-|<ul><li>ユーザーがリージョンの Data Lake Store にデータをアップロードできるか</li><li>ユーザーがリージョンの Data Lake Store にデータをダウンロードできるか</li></ul>|
+|<ul><li>ユーザーに Data Lake Store へのデータのアップロードに関する問題が発生しているか</li><li>ユーザーに Data Lake Store からのデータのダウンロードに関する問題が発生しているか</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
@@ -75,6 +80,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>Azure Cosmos DB サービスが利用できないために処理されていないデータベースまたはコレクションの要求があるか</li><li>Azure Cosmos DB サービスが利用できないために処理されていないドキュメントの要求があるか</li></ul>|
+
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+|実行されるチェック|
+|---|
+|<ul><li>Azure KeyVault プラットフォームの問題が原因でキー コンテナーへの要求が失敗するか</li><li>顧客によって行われた要求が多すぎるためにキー コンテナーへの要求がスロットルされているか</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|
@@ -105,6 +115,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li> データベースにログインしたことがあるか</li></ul>|
+
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|実行されるチェック|
+|---|
+|<ul><li>Azure Storage プラットフォームの問題が原因で、Storage アカウントからのデータの読み取り要求が失敗しているか</li><li>Azure Storage プラットフォームの問題が原因で、Storage アカウントへのデータの書き込み要求が失敗しているか</li><li>Storage アカウントが存在する Storage クラスターが利用不可になっているか</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |実行されるチェック|

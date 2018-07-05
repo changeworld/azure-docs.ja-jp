@@ -9,49 +9,49 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 270990d5dea53c2467bf2d7df4695a14b3dbec8c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be79f0111cb569509cb05b24c99f86d4ca9534b0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194623"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064502"
 ---
-# <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
+# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
-Azure Automation の Runbook は Azure クラウドで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできないことがあります。 Azure Automation の Hybrid Runbook Worker 機能を使用すると、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。
+Azure Automation の Runbook は Azure クラウド プラットフォームで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできないことがあります。 Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。
 
 次の図にこの機能を示します。
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/automation.png)
 
-## <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker のグループ
-
 各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。
 
-Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達したワーカーがこれを実行します。 特定のワーカーを指定することはできません。
+Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 特定の worker を指定することはできません。
 
-## <a name="installing-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker をインストールする
+## <a name="install-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker をインストールする
 
-Hybrid Runbook worker をインストールするプロセスは OS によって異なります。 次の表には、Hybrid Runbook Worker のインストールに使用できるさまざまな方法へのリンクが含まれています。 Windows Hybrid Runbook Worker は、以下の 2 つの方法でインストール、構成できます。 Automation Runbook を使用して、Windows コンピューターの構成に必要なプロセスを完全に自動化する方法をお勧めします。 2 番目の方法は、ロールを手動でインストールして構成する手順を段階的に追うものです。 Linux マシンでは、コンピューターにエージェントをインストールする Python スクリプトを実行します。
+Hybrid Runbook worker をインストールするプロセスは OS によって異なります。 次の表には、インストールで使用できる方法のリンクが含まれています。 
+
+Windows Hybrid Runbook Worker をインストールして構成するには、2 つの方法を使用できます。 Automation Runbook を使用して、Windows コンピューターを構成するプロセスを完全に自動化する方法をお勧めします。 2 番目の方法は、ロールを手動でインストールして構成する手順を段階的に追うものです。 Linux マシンでは、コンピューターにエージェントをインストールする Python スクリプトを実行します。
 
 |OS  |デプロイのタイプ  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [Python](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker)        |
+|Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
 > Hybrid Runbook Worker ロールをサポートするサーバーの構成を Desired State Configuration (DSC) を使用して管理するには、サーバーを DSC ノードとして追加する必要があります。 DSC による管理のためのサーバーのオンボードの詳細については、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
 >
->[[更新管理ソリューション]](automation-update-management.md) を有効にすると、このソリューションに含まれている Runbook をサポートするために、Log Analytics ワークスペースに接続されたコンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このコンピューターは、Automation アカウントで既に定義した可能性のあるハイブリッド worker グループには登録されません。 このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用していれば、このコンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートできます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
+>[[更新管理ソリューション]](automation-update-management.md) を有効にすると、このソリューションに含まれている Runbook をサポートするために、Azure Log Analytics ワークスペースに接続されたコンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このコンピューターは、Automation アカウントで既に定義した可能性のあるハイブリッド worker グループには登録されません。 このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用していれば、このコンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートできます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 
-Hybrid Runbook Worker のデプロイを開始する前に、[ネットワークの計画に関する情報](#network-planning)を確認してください。 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
+Hybrid Runbook Worker のデプロイを開始する前に、[ネットワークの計画に関する情報](#network-planning)を確認してください。 worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
-## <a name="removing-hybrid-runbook-worker"></a>Hybrid Runbook Worker の削除
+## <a name="remove-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker を削除する
 
 要件に応じて、グループから 1 つ以上の Hybrid Runbook Worker を削除したり、グループを削除することができます。 オンプレミス コンピューターから Hybrid Runbook Worker を削除するには、次の手順を実行します。
 
 1. Azure Portal で、Automation アカウントに移動します。
-2. **[設定]** ブレードから、**[キー]** を選択し、フィールドの **[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
+2. **[設定]** で、**[キー]** を選択し、**[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
 
 ### <a name="windows"></a>Windows
 
@@ -74,28 +74,28 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> これによってコンピューターから Microsoft Monitoring Agent が削除されることはありません。Hybrid Runbook Worker ロールの機能と構成のみが削除されます。
+> このコードによってコンピューターから Microsoft Monitoring Agent が削除されることはありません。Hybrid Runbook Worker ロールの機能と構成のみが削除されます。
 
-## <a name="remove-hybrid-worker-groups"></a>Hybrid Worker グループを削除する
+## <a name="remove-a-hybrid-worker-group"></a>ハイブリッド worker グループを削除する
 
-グループを削除するには、まず、先ほどの手順を使用して、グループのメンバーであるすべてのコンピューターから Hybrid Runbook Worker を削除する必要があります。その後、次の手順を実行してグループを削除します。
+グループを削除するには、まず、先ほどの手順を使用して、グループのメンバーであるすべてのコンピューターから Hybrid Runbook Worker を削除する必要があります。 その後、次の手順を実行してグループを削除します。
 
 1. Azure ポータルで Automation アカウントを開きます。
-1. **[プロセス オートメーション]** で **[ハイブリッド Worker グループ]** を選択します。 削除するグループを選択します。 特定のグループを選択すると、**[ハイブリッド worker グループ]** プロパティ ページが表示されます。
+1. **[プロセス オートメーション]** で **[ハイブリッド Worker グループ]** を選択します。 削除するグループを選択します。 そのグループの [プロパティ] ページが表示されます。
 
-   ![Hybrid Runbook Worker グループ ページ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+   ![[プロパティ] ページ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. 選択したグループのプロパティ ページで、**[削除]** をクリックします。 このアクションの確認を求めるメッセージが表示されるので、続行する場合は **[はい]** をクリックします。
+1. 選択したグループの [プロパティ] ページで、**[削除]** を選択します。 メッセージによって、この操作の確認が求められます。 操作を続行する場合は、**[はい]** を選択します。
 
-   ![グループの削除の確認ダイアログ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+   ![Confirmation message](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
+   このプロセスが完了するまでに数秒かかる場合があります。 進行状況は、メニューの **[通知]** で追跡できます。
 
 ## <a name="network-planning"></a>ネットワークを構成する
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker ロール
 
-Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 これは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-agent-windows.md) に加えて必要です。
+Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-agent-windows.md) に加えて必要です。
 
 エージェントと Log Analytics サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
@@ -130,7 +130,7 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 >
 >更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。
 >
-> 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域のボーダー ゲートウェイ プロトコル (BGP) アドバタイズを更新するために使用されることに注意してください。
+> 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
 
 ### <a name="update-management"></a>更新管理
 
@@ -142,22 +142,10 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshoot"></a>トラブルシューティング
 
-Hybrid Runbook Worker は、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、および状態の報告を行うためにエージェントに依存しています。 Windows では、このエージェントは Microsoft Monitoring Agent です。 Linux では OMS Agent for Linux です。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
-
-### <a name="the-hybrid-worker-is-behind-a-proxy-or-firewall"></a>Hybrid Worker がプロキシまたはファイアウォールの内側にある
-
-コンピューターがポート 443 で *.azure-automation.net に発信アクセスできることを確認します。
-
-### <a name="the-computer-the-hybrid-worker-is-running-on-has-less-than-the-minimum-hardware-requirements"></a>Hybrid Worker を実行しているコンピューターが、ハードウェアの最小要件を満たしていない
-
-Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするよう指定する前に、ハードウェアの最小要件を満たしている必要があります。 満たしていない場合、他のバックグラウンド プロセスのリソース使用状況および実行中の Runbook による競合によっては、コンピューターが過負荷になり、Runbook ジョブが遅延またはタイムアウトします。
-
-Hybrid Runbook Worker の機能を実行するように指定されているコンピューターがハードウェアの最小要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用状況を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU に負荷がかかる場合は、リソースのボトルネックを解消してエラーを解決するには、アップグレード、プロセッサの追加、またはメモリの増設が必要である可能性があります。 または、最小要件を満たす異なるコンピューティング リソースを選択し、ワークロードがさらに多くのリソースを必要とすることを示したときは拡張します。
-
-特定の OS でのトラブルシューティングの詳細については、[Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#troubleshooting) または [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#troubleshooting) を参照してください。
+Hybrid Runbook Worker をトラブルシューティングする方法については、[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
+オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。

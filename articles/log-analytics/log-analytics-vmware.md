@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775113"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019291"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
@@ -72,7 +72,7 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
 
 9. Azure Portal で、`VMware_CL` のログ検索を実行します。 Log Analytics が syslog データを収集するときは、syslog 形式が維持されます。 ポータルでは、*Hostname* や *ProcessName*など、いくつかの特定のフィールドがキャプチャされます。  
 
-    ![型](./media/log-analytics-vmware/type.png)  
+    ![type](./media/log-analytics-vmware/type.png)  
 
     上の図のようなログ検索結果が表示される場合は、VMware Monitoring ソリューション ダッシュボードを使うように設定されています。  
 
@@ -87,7 +87,7 @@ VMware の監視ソリューションは、有効にしている OMS Agents for 
 
 次の表は、VMware の監視ソリューションによって収集されるデータ フィールドの例を示しています。
 
-| フィールド名 | 説明 |
+| フィールド名 | description  |
 | --- | --- |
 | Device_s |VMware ストレージ デバイス |
 | ESXIFailure_s |エラーのタイプ |
@@ -196,7 +196,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
   1. Log Analytics は、ポート 1514 をリッスンします。 このポートが開いていることを確認するには、`netstat -a | grep 1514` コマンドを実行します。
   2. ポート `1514/tcp` が開いていることがわかります。 この情報が表示されない場合は、omsagent が正しくインストールされていることを確認します。 ポート情報が表示されない場合、VM で syslog ポートが開いていません。
 
-    a. `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
 
     b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` ファイルを開きます。
 

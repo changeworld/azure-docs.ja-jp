@@ -1,20 +1,20 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683051"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063699"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
 
-Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの料金を前払いして、コストを節約しましょう。 詳しくは、[Azure Reserved Instances のオファー](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページをご覧ください。
+Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの料金を前払いして、コストを節約しましょう。 詳しくは、[Azure Reserved VM Instances のオファー](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページをご覧ください。
 
-Azure Reserved Instances は [Azure portal](https://portal.azure.com) で購入できます。 予約インスタンスを購入するには:
+Azure 予約インスタンスは [Azure Portal](https://portal.azure.com) で購入できます。 予約インスタンスを購入するには:
 -   少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールである必要があります。
 -   Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で予約インスタンスを有効にする必要があります。
--   クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エーエージェントのみが予約インスタンスを購入できます。
+-   クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エージェントのみが予約インスタンスを購入できます。
 
 [!IMPORTANT]
 以下に説明する方法のいずれかを使用して、予約購入の VM サイズを正しく識別する必要があります。
@@ -24,7 +24,7 @@ Azure Reserved Instances は [Azure portal](https://portal.azure.com) で購入�
 2. Powershell または Azure Resource Manager を使用するか、Azure portal の VM 詳細から、正確な VM サイズ情報を取得することもできます。
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>予約仮想マシン インスタンスの購入
-1. [Azure Portal](https://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** > **[予約]** を選択します。
 3. **[追加]** を選択して、新しい予約インスタンスを購入します。
 4. 必須フィールドに必要事項を入力します。 選択した属性と一致する VM インスタンスを実行することで、予約インスタンスの割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
@@ -50,12 +50,12 @@ Azure Reserved Instances は [Azure portal](https://portal.azure.com) で購入�
 ## <a name="next-steps"></a>次の手順 
 予約インスタンス割引は、予約インスタンス スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 予約インスタンスのスコープは、[Azure portal](https://portal.azure.com)、PowerShell、CLI、または API で更新できます。 
 
-予約インスタンスを管理する方法については、[Azure Reserved Instances の管理](../articles/billing/billing-manage-reserved-vm-instance.md)に関するページを参照してください。
+予約インスタンスを管理する方法については、[Azure での予約インスタンスの管理](../articles/billing/billing-manage-reserved-vm-instance.md)に関するページを参照してください。
 
-Azure Reserved Instances について詳しくは、次の記事をご覧ください。
+Azure 予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Reserved Instances で仮想マシンのコストを削減する](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Azure Reserved Instances を管理する](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Azure Reserved VM Instances とは](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Azure での予約インスタンスの管理](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [予約インスタンスの割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)

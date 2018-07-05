@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2017
+ms.date: 06/25/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 493fb0295c1d760bb7de13ae1b703b3636750612
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29180038"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018716"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -162,19 +162,19 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 1. Operations Manager Operations コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
 2. 検索結果で、"*タイプ: 管理サーバー*" というテキストが含まれているルールを選択します。
-3. ルールを右クリックし、**[上書き]** > **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
+3. ルールを右クリックし、**[オーバーライド]** > **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
 4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。  前述の手順で実行アカウントを関連付けるために構成したものと同じ管理サーバーを選択する必要があります。
-5.  **[Enabled (有効)]** パラメーター値の [上書き値] を **[True]** に変更します。<br><br> ![パラメーターの上書き](./media/log-analytics-scom-assessment/rule.png)
+5.  **[Enabled (有効)]** パラメーター値の [オーバーライド値] を **[True]** に変更します。<br><br> ![パラメーターのオーバーライド](./media/log-analytics-scom-assessment/rule.png)
 
     引き続きこのウィンドウで次の手順を使用して、実行の頻度を構成します。
 
 #### <a name="configure-the-run-frequency"></a>実行頻度を構成する
 
-評価は、既定の間隔で 10,080 分 (7 日間) ごとに実行されるように構成されます。 この値は、最小値の 1,440 分 (1 日) までの値に上書きすることができます。 この値は、評価を連続して実行する際に必要な最小の時間間隔を表します。 間隔を上書きするには、次の手順を使用します。
+評価は、既定の間隔で 10,080 分 (7 日間) ごとに実行されるように構成されます。 この値は、最小値の 1,440 分 (1 日) までの値にオーバーライドすることができます。 この値は、評価を連続して実行する際に必要な最小の時間間隔を表します。 間隔をオーバーライドするには、次の手順を使用します。
 
 1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** セクションで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
 2. 検索結果で、"*タイプ: 管理サーバー*" というテキストが含まれているルールを選択します。
-3. ルールを右クリックし、**[Override the Rule (ルールを上書きする)]** > **[クラス "管理サーバー" のすべてのオブジェクト]** の順にクリックします。
+3. ルールを右クリックし、**[Override the Rule (ルールをオーバーライドする)]** > **[クラス "管理サーバー" のすべてのオブジェクト]** の順にクリックします。
 4. **[間隔]** パラメーター値を目的の間隔値に変更します。 次の例では、値を 1,440 分 (1 日) に設定しています。<br><br> ![間隔パラメーター](./media/log-analytics-scom-assessment/interval.png)<br>  
 
     1,440 分未満の値を設定した場合、ルールは 1 日間隔で実行されます。 この例では、ルールは、間隔値を無視して 1 日の頻度で実行されます。
@@ -212,14 +212,14 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 ## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
 
-Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 インストール後は、OMS ポータルの [概要] ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
+Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、[管理ソリューションのインストール](log-analytics-add-solutions.md)に関する記事を参照してください。 インストール後は、Azure portal でワークスペースの **[概要]** ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
+3. Log Analytics サブスクリプション ウィンドウでワークスペースを選択し、**[ワークスペースの概要]** メニュー項目をクリックします。  
 4. **[概要]** ページの **[System Center Operations Manager Health Check]** タイルをクリックします。
 5. **[System Center Operations Manager Health Check]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![対象領域](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -232,7 +232,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>無視する推奨事項を識別するには
-1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
+1. Azure portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** メニュー項目をクリックします。
 2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
     ```
@@ -289,7 +289,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 "*データの収集にはどれくらいの時間がかかりますか。*" サーバー上でのデータ収集には約 1 時間かかります。 多数の Operations Manager インスタンスまたはデータベースが存在する環境では、それよりも長く時間がかかる場合があります。
 
-"*評価の間隔を 1,440 分未満に設定するとどうなりますか。*" 評価は、最大で 1 日に 1 回実行するように事前構成されています。 間隔値を 1,440 分未満の値に上書きすると、1,440 分が評価の間隔値として使用されます。
+"*評価の間隔を 1,440 分未満に設定するとどうなりますか。*" 評価は、最大で 1 日に 1 回実行するように事前構成されています。 間隔値を 1,440 分未満の値にオーバーライドすると、1,440 分が評価の間隔値として使用されます。
 
 *前提条件に障害が発生しているかどうかを調べる方法はありますか?* 正常性チェックを実行したのに結果が表示されない場合は、チェックの前提条件のいくつかが失敗している可能性があります。 ログ検索で `Operation Solution=SCOMAssessment` と `SCOMAssessmentRecommendation FocusArea=Prerequisites` のクエリを実行すると、失敗した前提条件を確認できます。
 

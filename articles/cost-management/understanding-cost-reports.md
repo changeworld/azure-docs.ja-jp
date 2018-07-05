@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167896"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064628"
 ---
 # <a name="understanding-cost-management-reports"></a>コスト管理レポートについて
 
@@ -176,6 +176,10 @@ ms.locfileid: "32167896"
 
     [アクション] を使用して、レポートを保存、エクスポート、またはスケジュールします。
 
+15. **ポリシー**
+
+    表示されていませんが、一部のレポートには、予測されるコスト計算ポリシーが含まれます。 そのようなレポートでは、**[Consolidated]\(統合\)** ポリシーに、Microsoft 加入契約または AWS 支払人など、現在のエンティティのすべてのアカウントとサブスクリプションのレコメンデーションが表示されます。 **[スタンドアロン]** ポリシーには、他のサブスクリプションが存在しないかのように、1 つのアカウントまたはサブスクリプションのレコメンデーションが表示されます。 選択するポリシーは、組織で使用されている最適化ポリシーによって異なります。 コストのプロジェクションは、過去 30 日間の使用状況に基づいています。
+
 ## <a name="save-and-schedule-reports"></a>レポートの保存とスケジュール
 
 レポートを作成したら、今後の使用のためにレポートを保存できます。 保存したレポートは、**[My Tools]\(マイ ツール\)** > **[個人用レポート]** から使用できます。 既存のレポートに変更を加えて保存した場合、レポートは新しいバージョンとして保存されます。 なお、新規のレポートとして保存することもできます。
@@ -199,4 +203,5 @@ ms.locfileid: "32167896"
 
 ## <a name="next-steps"></a>次の手順
 
-- Cost Management の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」をご覧ください。
+- Cloudyn に含まれるレポートについて、「[Cost Management レポートの使用](use-reports.md)」を参照してください。
+- レポートを使用して[ダッシュボード](dashboards.md)を作成する方法について学びます。

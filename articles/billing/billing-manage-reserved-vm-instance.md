@@ -1,5 +1,5 @@
 ---
-title: Azure 予約インスタンスを管理する - Azure Billing | Microsoft Docs
+title: Azure Reserved VM Instances の管理 | Microsoft Docs
 description: サブスクリプション スコープを変更したり、Azure Reserved VM Instances のアクセス権を管理したりする方法について説明します。
 services: billing
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: vikdesai
-ms.openlocfilehash: fc473906be9c572e6d6549c85f9faa8fe7566b86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ddb9d46dc2689b0dbcd8734e276916f7cd9d2728
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303064"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064643"
 ---
-# <a name="manage-reserved-instances"></a>予約インスタンスを管理する
+# <a name="manage-reserved-instances-in-azure"></a>Azure での予約インスタンスの管理
 
 Azure 予約 VM インスタンスの購入後、購入時に指定したものとは別のサブスクリプションに予約インスタンスを適用することができます。 また、条件に合致する仮想マシンが複数のサブスクリプションで実行されている場合は、その予約インスタンスのスコープを "共有" に変更することもできます。 予約インスタンスの割引効果を最大限に高めるために、実行する仮想マシンの属性と数に合ったインスタンス数を購入するようにしてください。 Azure 予約インスタンスの詳細については、[前払いで Azure 仮想マシンのコストを節約する方法](https://go.microsoft.com/fwlink/?linkid=862121)に関するページを参照してください。
 
@@ -43,7 +43,7 @@ Azure 予約 VM インスタンスの購入後、購入時に指定したもの�
 1. 次のコマンドを実行して予約インスタンスの発注 ID を取得します。
 
     ```powershell
-    # Get the Reserved Instance orders you have access to
+    # Get the reserved instance orders you have access to
     Get-AzureRmReservationOrder
     ```
 2. 予約インスタンスの詳細を取得します。
@@ -54,7 +54,7 @@ Azure 予約 VM インスタンスの購入後、購入時に指定したもの�
 3. 予約インスタンスを 2 つに分割してインスタンスを配分します。
 
     ```powershell
-    # Split the Reserved Instance. The sum of the Reserved Instances, the quantity, must equal the total number of instances in the Reserved Instance that you're splitting.
+    # Split the reserved instance. The sum of the reserved instances, the quantity, must equal the total number of instances in the reserved instance that you're splitting.
     Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 1. 次のコマンドを実行してスコープを更新することができます。
@@ -80,11 +80,10 @@ Azure 予約 VM インスタンスの購入後、購入時に指定したもの�
 ## <a name="next-steps"></a>次の手順
 Azure 予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Azure Reserved Instances で仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
-- [予約インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances とは](billing-save-compute-costs-reservations.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [予約インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- 
-  [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 

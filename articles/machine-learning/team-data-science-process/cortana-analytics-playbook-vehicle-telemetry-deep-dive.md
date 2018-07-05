@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836485"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055708"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細
 このメニューは、このプレイブック内の各セクションにリンクされています。 
@@ -35,7 +35,7 @@ ms.locfileid: "34836485"
 * シミュレートされた車両信号と診断データセット
 * 車両カタログ
 
-次のスクリーンショットで示されているように、車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。 診断情報と、特定の時点での車両の状態と運転パターンに対応する信号を出力します。 車両テレマティックス シミュレーター Visual Studio ソリューションをダウンロードし、要件に基づいてカスタマイズするには、[車両テレマティックス シミュレーター](http://go.microsoft.com/fwlink/?LinkId=717075)に関する Web ページをご覧ください。 車両カタログには、車両識別番号 (VIN) をモデルにマップする参照データ セットが含まれています。
+次のスクリーンショットで示されているように、車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。 診断情報と、特定の時点での車両の状態と運転パターンに対応する信号を出力します。  車両カタログには、車両識別番号 (VIN) をモデルにマップする参照データ セットが含まれています。 注: 現在、車両テレマティックス シミュレーター Visual Studio ソリューションのデータ セットは、提供されていません。 
 
 ![車両テレマティックス シミュレーター](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
@@ -363,7 +363,7 @@ Stream Analytics のウィンドウ化機能の詳細については、「[Windo
 
 このパターンは、基幹業務アプリケーションをリアルタイム分析フローと統合するシナリオにも適用できます。 これらのシナリオには、アラート、通知、メッセージングがあります。
 
-RealtimeDashboardApp Visual Studio ソリューションをダウンロードし、カスタマイズするには、[RealtimeDashboardApp のダウンロード](http://go.microsoft.com/fwlink/?LinkId=717078)に関する Web ページをご覧ください。 
+注: 現在、RealtimeDashboardApp Visual Studio ソリューションのデータは、提供されていません。
 
 #### <a name="execute-the-real-time-dashboard-application"></a>**リアルタイム ダッシュボード アプリケーションを実行する**
 1. RealtimeDashboardApp を展開し、ローカルに保存します。
@@ -669,10 +669,9 @@ Power BI は、このソリューションに機能豊富なダッシュボー�
 
 ### <a name="references"></a>参照
 
-* [Vehicle Telematics Simulator Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075) 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 * [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 * [ストリームの挿入に関する Azure Event Hubs SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [Azure Data Factory のデータ移動機能](../../data-factory/v1/data-factory-data-movement-activities.md)
-* [Azure Data Factory .NET アクティビティ](../../data-factory/v1/data-factory-use-custom-activities.md)
+* [Azure Data Factory のデータ移動機能](../../data-factory/copy-activity-overview.md)
+* [Azure Data Factory .NET アクティビティ](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [サンプル データを準備するための Azure Data Factory .NET アクティビティ Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077) 

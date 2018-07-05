@@ -1,26 +1,23 @@
 ---
-title: "Azure コマンド ライン 2.0 インターフェイスで Azure Data Lake Store の使用を開始する | Microsoft Docs"
-description: "Azure クロスプラットフォーム コマンド ライン 2.0 を使用して、Data Lake Store アカウントを作成し、基本的な操作を実行します"
+title: Azure コマンド ライン 2.0 インターフェイスで Azure Data Lake Storage Gen1 の使用を開始する | Microsoft Docs
+description: Azure クロスプラットフォーム コマンド ライン 2.0 を使用して、Data Lake Store アカウントを作成し、基本的な操作を実行します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035491"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Store の使用を開始する
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Storage Gen1 の使用を開始する
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-Azure CLI 2.0 を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Azure CLI 2.0 を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Storage Gen1 の概要](data-lake-store-overview.md)に関する記事をご覧ください。
 
 Azure CLI 2.0 は、Azure リソースを管理するための、Azure の新しいコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 詳細については、[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure)に関するページを参照してください。 コマンドと構文の完全な一覧については、[Azure Data Lake Store CLI 2.0 リファレンス](https://docs.microsoft.com/cli/azure/dls)を参照することもできます。
 
@@ -53,7 +52,7 @@ Azure CLI 2.0 は、Azure リソースを管理するための、Azure の新し
     az login
     ```
 
-    使用するコードは次の手順で示します。 Web ブラウザーを使用してページ https://aka.ms/devicelogin を開き、認証のためのコードを入力します。 資格情報を使用してログインするように求めるメッセージが表示されます。
+    使用するコードは次の手順で示します。 Web ブラウザーを使用して https://aka.ms/devicelogin ページを開き、コードを入力して認証を行います。 資格情報を使用してログインするように求めるメッセージが表示されます。
 
 2. ログインすると、アカウントに関連付けられているすべての Azure サブスクリプションの一覧がウィンドウに表示されます。 次のコマンドを使用して、特定のサブスクリプションを使用します。
    

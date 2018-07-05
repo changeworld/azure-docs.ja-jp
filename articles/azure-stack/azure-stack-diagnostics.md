@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801655"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064174"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -46,9 +46,38 @@ PowerShell コマンドレット **Get-AzureStackLog** を使用して、Azure S
 *   **ETW ログ**
 
 これらのファイルは、トレース コレクターによって収集され、共有に保存されます。 必要に応じて、**Get-AzureStackLog** PowerShell コマンドレットを使用して、それらを収集できます。
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>Azure Stack 統合システムで Get-AzureStackLog を実行するには 
+統合システムでログ収集ツールを実行するには、特権エンド ポイント (PEP) へのアクセス権が必要です。 PEP を使用して統合システムでログを収集するのに実行できるスクリプト例を次に示します。
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、外部の共有フォルダーにログをアップロードするときに使用されます。
+- 前の例で示したように、**FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これは、統合システムへの更新パッケージ適用後のログ収集などのシナリオに役立ちます。
+
+
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Azure Stack Development Kit (ASDK) システムで Get-AzureStackLog を実行するには
-1. ホストに **AzureStack\CloudAdmin** でログインします。
+1. ホストに **AzureStack\CloudAdmin** でサインインします。
 2. 管理者として PowerShell ウィンドウを開きます。
 3. **Get-AzureStackLog** PowerShell コマンドレットを実行します。
 
@@ -77,65 +106,6 @@ PowerShell コマンドレット **Get-AzureStackLog** を使用して、Azure S
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Azure Stack 統合システムバージョン 1804 以降で Get-AzureStackLog を実行するには
-
-統合システムでログ収集ツールを実行するには、特権エンド ポイント (PEP) へのアクセス権が必要です。 PEP を使用して統合システムでログを収集するのに実行できるスクリプト例を次に示します。
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、外部の共有フォルダーにログをアップロードするときに使用されます。
-- 前の例で示したように、**FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これは、統合システムへの更新パッケージ適用後のログ収集などのシナリオに役立ちます。
-
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Azure Stack 統合システムバージョン 1803 以前で Get-AzureStackLog を実行するには
-
-統合システムでログ収集ツールを実行するには、特権エンド ポイント (PEP) へのアクセス権が必要です。 PEP を使用して統合システムでログを収集するのに実行できるスクリプト例を次に示します。
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDRESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- PEP からログを収集する場合は、ハードウェア ライフサイクル ホスト (HLH) マシン上の保存先になる **OutputPath** パラメーターを指定します。 また、場所が暗号化されていることを確認します。
-- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターはオプションであり、外部の共有フォルダーにログをアップロードするときに使用されます。 これらのパラメーターは、**OutputPath** に "*追加して*" 使用します。 **OutputPath** が指定されていない場合、ログ収集ツールはストレージの PEP VM のシステム ドライブを使用します。 この場合、ドライブ容量が限られているためにスクリプトが失敗する可能性があります。
-- 前の例で示したように、**FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これは、統合システムへの更新パッケージ適用後のログ収集などのシナリオに役立ちます。
-
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK および統合システムの両方に関するパラメーターの考慮事項
 

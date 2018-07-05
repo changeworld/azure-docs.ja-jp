@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c7e31f9da2b2f9fe7a3a7c64cd6927224cb9fa1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213114"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017897"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
@@ -68,6 +68,10 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 ## <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
 レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
+
+> [!IMPORTANT]
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成の詳細については、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事を参照してください。 
+> 
 
 ### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208262"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017649"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。
@@ -33,7 +33,11 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 
 ## <a name="replicator-security-configuration"></a>レプリケーターのセキュリティ構成
 レプリケーション時に使用される通信チャネルをセキュリティで保護するには、レプリケーターのセキュリティ構成を使用します。 これは、サービスは互いのレプリケーション トラフィックを確認できないため、高可用性データもセキュリティで保護されることを意味します。
-既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効にはなりません。
+既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
+
+> [!IMPORTANT]
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成の詳細については、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事を参照してください。 
+> 
 
 ### <a name="section-name"></a>セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

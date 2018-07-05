@@ -4,17 +4,17 @@ description: 次のドキュメントでは、UserPrincipalName 属性がどの�
 author: billmath
 ms.component: hybrid
 ms.author: billmath
-ms.date: 02/02/2018
+ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 73238b1f79e639f832499eed15ac1e4499eb6e84
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b3fddcdf6ff9c35d5932b9b83da02f60f9e081e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593401"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064495"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -30,14 +30,14 @@ UserPrincipalName 属性には、該当するユーザー アカウントの Azu
 |Microsoft Online Email Routing Address (MOERA)|MOERA は、Azure AD の MailNickName 属性と Azure AD の初期ドメインから &lt;MailNickName&gt;&#64;&lt;initial domain&gt; として、Azure AD によって計算されます。|
 |オンプレミスの mailNickName 属性|Active Directory 内の属性。Exchange 組織におけるユーザーの別名は、この属性の値によって表されます。|
 |オンプレミスの mail 属性|Active Directory 内の属性。ユーザーのメール アドレスは、この属性の値によって表されます。|
-|プライマリ SMTP アドレス|Exchange 受信者オブジェクトの通常のメール アドレス。 たとえば、「SMTP:user@contoso.com」のように入力します。|
+|プライマリ SMTP アドレス|Exchange 受信者オブジェクトの通常のメール アドレス。 たとえば、SMTP:user\@contoso.com。|
 |代替ログイン ID|UserPrincipalName 以外でサインインに使用されるオンプレミスの属性 (mail 属性など)。|
 
 ## <a name="what-is-userprincipalname"></a>UserPrincipalName とは
 UserPrincipalName は、インターネット標準 [RFC 822](http://www.ietf.org/rfc/rfc0822.txt) に基づく属性で、ユーザーのインターネット形式のログイン名となります。 
 
 ### <a name="upn-format"></a>UPN の形式
-UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"@" 記号を使用して結合されます  (例: "someone@example.com")。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
+UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"\@" 記号を使用して結合されます。 たとえば、"someone\@example.com" です。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
 
 ## <a name="upn-in-azure-ad"></a>Azure AD における UPN 
 Azure AD では、ユーザーにサインインを許可するために UPN が使用されます。  ユーザーが使用できる UPN は、ドメインが検証済みであるかどうかによって異なります。  ドメインが検証済みである場合、そのサフィックスを含んだユーザーは、Azure AD にサインインすることができます。  
@@ -47,7 +47,7 @@ Azure AD では、ユーザーにサインインを許可するために UPN が
    ![未検証のドメイン](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png) 
 
 ## <a name="alternate-login-id"></a>代替ログイン ID
-一部の環境では、企業のポリシーやオンプレミスの基幹業務アプリケーションの依存関係により、エンド ユーザーが自分のメール アドレスしか知らず、UPN を把握していない場合があります。
+環境によっては、エンド ユーザーは電子メール アドレスのみを認識し、UPN を認識していない場合があります。  電子メール アドレスの使用は、企業のポリシーまたはオンプレミス基幹業務アプリの依存関係によって求められることがあります。
 
 代替ログイン ID を使用すると、ユーザーがメールなどの UPN 以外の属性でサインイン可能になるサインイン エクスペリエンスを構成できます。
 
@@ -86,6 +86,8 @@ Azure AD の UserPrincipalName 属性の値が MOERA に設定される可能性
 
 ### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>シナリオ 1: 未検証の UPN サフィックス - 初期同期
 
+![Scenario1](media/active-directory-aadconnect-userprincipalname/example1.png)
+
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : &lt;未設定&gt;
 - proxyAddresses        : {SMTP:us1@contoso.com}
@@ -104,6 +106,8 @@ Azure AD テナントのユーザー オブジェクト:
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>シナリオ 2: 未検証の UPN サフィックス - オンプレミスの mailNickName 属性を設定
 
+![Scenario2](media/active-directory-aadconnect-userprincipalname/example2.png)
+
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
 - proxyAddresses        : {SMTP:us1@contoso.com}
@@ -119,6 +123,8 @@ Azure AD テナントのユーザー オブジェクト:
 - UserPrincipalName : us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>シナリオ 3: 未検証の UPN サフィックス - オンプレミスの userPrincipalName 属性を更新
+
+![Scenario3](media/active-directory-aadconnect-userprincipalname/example3.png)
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
@@ -137,6 +143,8 @@ Azure AD テナントのユーザー オブジェクト:
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>シナリオ 4: 未検証の UPN サフィックス - プライマリ SMTP アドレスとオンプレミスの mail 属性を更新
 
+![Scenario4](media/active-directory-aadconnect-userprincipalname/example4.png)
+
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
 - proxyAddresses        : {SMTP:us6@contoso.com}
@@ -151,6 +159,8 @@ Azure AD テナントのユーザー オブジェクト:
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>シナリオ 5: 検証済みの UPN サフィックス - オンプレミスの userPrincipalName 属性のサフィックスを更新
+
+![Scenario5](media/active-directory-aadconnect-userprincipalname/example5.png)
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4

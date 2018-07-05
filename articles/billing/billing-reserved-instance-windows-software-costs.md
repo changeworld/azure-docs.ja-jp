@@ -1,5 +1,5 @@
 ---
-title: Azure 予約インスタンスの Windows ソフトウェアのコスト - Azure Billing | Microsoft Docs
+title: Azure 予約インスタンスにおける Windows ソフトウェアのコスト | Microsoft Docs
 description: Azure 予約 VM インスタンスのコストに含まれない Windows ソフトウェア メーターについて説明します。
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303353"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064465"
 ---
 # <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト
 
@@ -55,12 +55,11 @@ ms.locfileid: "34303353"
 ## <a name="next-steps"></a>次の手順
 Azure 予約インスタンスの詳細については、次の記事を参照してください。
 
-- [Azure Reserved Instances で仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
-- [予約インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [Azure Reserved VM Instances とは](billing-save-compute-costs-reservations.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure での予約インスタンスの管理](billing-manage-reserved-vm-instance.md)
 - [予約インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- 
-  [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください

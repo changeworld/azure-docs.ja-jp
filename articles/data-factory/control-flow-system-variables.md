@@ -11,40 +11,45 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 498ca342976888ab4ae67826689bb5e21325b94d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43ea8703bdbfc23511c831a5f91c9461948cc254
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618251"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055668"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
-この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。 
+この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Functions and variables in Data Factory V1](v1/data-factory-functions-variables.md)」(Data Factory V1 の関数と変数)を参照してください。
-
-
-## <a name="pipeline-scope"></a>パイプラインのスコープ:
+## <a name="pipeline-scope"></a>パイプラインのスコープ
+これらのシステム変数は、パイプライン JSON 内の任意の場所で参照できます。
 
 | 変数名 | 説明 |
 | --- | --- |
-| @pipeline().DataFactory |パイプライン実行が実行されているデータ ファクトリの名前 | 
+| @pipeline().DataFactory |パイプライン実行が実行されているデータ ファクトリの名前 |
 | @pipeline().Pipeline |パイプラインの名前 |
-| @pipeline().RunId | 特定のパイプライン実行の ID | 
-| @pipeline().TriggerType | パイプラインを呼び出したトリガーの種類 (手動、Scheduler) | 
+| @pipeline().RunId | 特定のパイプライン実行の ID |
+| @pipeline().TriggerType | パイプラインを呼び出したトリガーの種類 (手動、Scheduler) |
 | @pipeline（）.TriggerId| パイプラインを呼び出すトリガーの ID |
 | @pipeline（）.TriggerName| パイプラインを呼び出すトリガーの名前 |
 | @pipeline（）.TriggerTime| トリガーがパイプラインを呼び出した時間。 トリガーの時間は、実際の起動時間であり、スケジュールされた時間ではありません。 たとえば、`13:20:00.00Z` ではなく、`13:20:08.0149599Z` が返されます |
 
-## <a name="trigger-scope"></a>トリガーのスコープ:
+## <a name="schedule-trigger-scope"></a>スケジュール トリガーのスコープ
+トリガーのタイプが "ScheduleTrigger" の場合、これらのシステム変数は、トリガー JSON 内の任意の場所で参照できます。
 
 | 変数名 | 説明 |
 | --- | --- |
-| trigger().scheduledTime |トリガーがパイプライン実行を呼び出すようにスケジュールされた時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:29:00Z` を返します。|
-| trigger().startTime |トリガーが**実際に**パイプライン実行を呼び出すために起動した時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ、`2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:29:00.9935483Z` のような値を返します。|
+| @trigger().scheduledTime |トリガーがパイプライン実行を呼び出すようにスケジュールされた時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:29:00Z` を返します。|
+| @trigger().startTime |トリガーが**実際に**パイプライン実行を呼び出すために起動した時間。 たとえば、5 分ごとに起動されるトリガーの場合、この変数はそれぞれ、`2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:29:00.9935483Z` のような値を返します。|
 
+## <a name="tumbling-window-trigger-scope"></a>タンブリング ウィンドウ トリガーのスコープ
+トリガーのタイプが "TumblingWindowTrigger" の場合、これらのシステム変数は、トリガー JSON 内の任意の場所で参照できます。
+
+| 変数名 | 説明 |
+| --- | --- |
+| @trigger().outputs.windowStartTime |トリガーがパイプライン実行を呼び出すようにスケジュールされたウィンドウの開始時間。 タンブリング ウィンドウ トリガーの頻度が [毎時間] の場合、この時間は、1 時間の開始時点となります。|
+| @trigger().outputs.windowEndTime |トリガーがパイプライン実行を呼び出すようにスケジュールされたウィンドウの終了時間。 タンブリング ウィンドウ トリガーの頻度が [毎時間] の場合、この時間は、1 時間の終了時点となります。|
 ## <a name="next-steps"></a>次の手順
-これらの変数を式で使用する方法については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
+これらの変数を式で使用する方法については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。

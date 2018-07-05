@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628125"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017511"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -68,7 +68,7 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 | Count | リソース                       | type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Basic 階層 | デバイス管理との通信 |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |  
 | 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 標準        | VM およびストリーミング チェックポイントのストレージ |
 | 1     | [Web アプリケーション](https://azure.microsoft.com/services/app-service/web/)        |                 | フロント エンド Web アプリケーションのホスト |
@@ -82,7 +82,7 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux virtual machines](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 冗長性を備えたマイクロサービスをホストするための 1 つのマスターと 3 つのエージェント |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) オーケストレーター |
-| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S1 – Basic 階層 | デバイス管理、コマンドとコントロール |
+| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |
 | 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | SSL 経由のアプリケーション ゲートウェイ |

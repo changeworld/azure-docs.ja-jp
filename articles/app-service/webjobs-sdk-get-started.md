@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234522"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018457"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -66,6 +66,9 @@ public static void Run(
 2. **[Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** を選択します。
 
    3.x プロジェクトを作成するには、**[.NET Core] > [コンソール アプリ (.NET Core)]** を選択します。
+   
+   > [!NOTE]
+   > 3.x はまだプレビュー中であり、開発中です。 この記事に示した 3.x の手順は不完全です。最新の情報については、ページの一番下にある GitHub の問題を参照してください。
 
 3. プロジェクトに *WebJobsSDKSample* という名前を付け、**[OK]** を選択します。
 
@@ -487,13 +490,13 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 3. ストレージ アカウントで BLOB コンテナーを作成します。
 
-   a. **サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、**[OK]** をクリックします。
 
 4. BLOB コンテナーに *Program.cs* ファイルをアップロードします  (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
-   a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
 
    b. **[コンテナー]** ウィンドウで **アップロード** ボタンをクリックします。
 
