@@ -8,21 +8,21 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 5541a2fff6bb54f5d62518e7edf54fb9150e3109
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248974"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751799"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack での SQL Server のバックアップ
+# <a name="back-up-sql-server-on-stack"></a>Stack 上の SQL Server のバックアップ
 この記事では、Azure Stack 上の SQL Server データベースを保護するための Microsoft Azure Backup Server (MABS) の構成について説明します。
 
 SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の 3 つの手順が含まれます。
 
-1. SQL Server データベースを保護するための Azure へのバックアップ ポリシーを作成します。
-2. オンデマンドでのバックアップ コピーを Azure に作成します。
-3. Azure からデータベースを回復します。
+1. SQL Server データベースを保護するためのバックアップ ポリシーを作成する
+2. オンデマンドでのバックアップ コピーを作成する
+3. ディスクおよび Azure からデータベースを回復する
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -63,12 +63,6 @@ SQL Server データベースの Azure へのバックアップと Azure から�
    >
 
 7. **[ディスク割り当ての確認]** 画面では、使用可能なストレージ領域全体と、考えられるディスク領域を確認します。 **[次へ]** をクリックします。
-
-    ![Disk allocation](./media/backup-azure-backup-sql/pg-storage.png)
-
-    既定では、Azure Backup Server はデータ ソース (SQL Server データベース) ごとに 1 つのボリュームを作成し、これが初回バックアップに使用されます。 この方法では、Azure Backup の保護は論理ディスク マネージャー (LDM) によって 300 データ ソース (SQL Server データベース) に制限されます。 この制限を避けるには、**[DPM 記憶域プールにデータを併置する]** を選択します。 併置する場合、Azure Backup Server は単一ボリュームを複数のデータ ソース用に使用し、最大で 2,000 の SQL Server データベースを保護できます。
-
-    **[ボリュームを自動的に拡大する]** を選択した場合、Azure Backup Server は運用データの増大に応じてバックアップ ボリュームを増大させることができます。 このオプションを選択しない場合、Azure Backup Server は保護グループ内でデータ ソース用に使用されるバックアップ ストレージを制限します。
 
 8. **[レプリカの作成方法の選択]** では、最初の回復ポイントの作成方法を選択します。 初回バックアップの転送は、帯域幅の輻輳を避けるために手動 (オフライン) で行うか、ネットワーク経由で行うことができます。 最初のバックアップを直ちに転送しない場合は、初回の転送時刻を指定できます。 **[次へ]** をクリックします。
 
@@ -111,12 +105,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     * 土曜日の午後 12 時 00 分のバックアップは、 104 週間保有されます。
     * 先週土曜日の午後 12 時 00 分のバックアップは、 60 か月間保有されます。
     * 3 月の最終土曜日の午後 12 時 00 分のバックアップは、 10 年間保有されます。
-13. **[次へ]** をクリックし、初期バックアップのコピーを Azure に転送するための適切なオプションを選択します。 **[自動 (ネットワーク経由)]** または **[オフライン バックアップ]** を選択できます。
-
-    * **[自動 (ネットワーク経由)]** の場合は、バックアップ用に選択されたスケジュールに従って、バックアップ データが Azure に転送されます。
-    * **[オフライン バックアップ]** については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。
-
-    初期バックアップのコピーを Azure に転送するための適切な転送メカニズムを選択し、 **[次へ]** をクリックします。
+13. **[次へ]** をクリックし、初期バックアップのコピーを Azure に転送するための適切なオプションを選択します。 **[自動でネットワーク経由]** を選択できます
 
 14. **[概要]** 画面でポリシーの詳細を確認したら、**[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックすると、[監視] ワークスペースでジョブの進行状況を監視できます。
 
@@ -147,11 +136,11 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 2. データベース名を右クリックし、**[回復]** をクリックします。
 
     ![Recover from Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM に回復ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]** を選択します。 **[次へ]** をクリックします。
+3. MABS に復旧ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]** を選択します。 **[次へ]** をクリックします。
 
     ![Recover to Original Location](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    この例では、DPM はデータベースを別の SQL Server インスタンスまたはスタンドアロンのネットワーク フォルダーに回復します。
+    この例では、MABS は、データベースを別の SQL Server インスタンスまたはスタンドアロンのネットワーク フォルダーに回復します。
 
 4. **[回復オプションの指定]** 画面で、[ネットワークの使用帯域幅の調整] を選択して回復で使用される帯域幅を調整するなど、回復のオプションを選択できます。 **[次へ]** をクリックします。
 
@@ -165,5 +154,5 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 ## <a name="next-steps"></a>次の手順
 
-[ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事を参照してください。
+[ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事をご覧ください。
 [Azure Stack での SharePoint のバックアップ](backup-mabs-sharepoint-azure-stack.md)に関する記事を参照してください。

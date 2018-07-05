@@ -2,11 +2,11 @@
 Mobile Apps によってアプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。 その後、Azure App Service 内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。
 詳細については、チュートリアル「 [アプリへの認証の追加](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)」を参照してください。
 
-ID プロバイダーを登録したら、プロバイダーの名前を指定して `.login()` メソッドを呼び出します。 たとえば、Facebook にログインするには、次のコードを使用します。
+ID プロバイダーを登録したら、プロバイダーの名前を指定して `.login()` メソッドを呼び出します。 たとえば、Facebook にサインインするには、次のコードを使用します。
 
 ```
 client.login("facebook").done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -17,7 +17,7 @@ client.login("facebook").done(function (results) {
 > [!NOTE]
 > 現在、サーバー フローでは Google 認証が正しく機能しません。  Google の認証には、[クライアント フロー](#client-auth)を使用する必要があります。
 
-この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
+この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
 
 ###<a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
 
@@ -32,7 +32,7 @@ client.login(
      "facebook",
      {"access_token": token})
 .done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -50,7 +50,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             "microsoftaccount",
             {"authenticationToken": result.session.authentication_token})
       .done(function(results){
-            alert("You are now logged in as: " + results.userId);
+            alert("You are now signed in as: " + results.userId);
       },
       function(error){
             alert("Error: " + err);

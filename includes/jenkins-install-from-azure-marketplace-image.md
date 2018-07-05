@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957551"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943472"
 ---
 1. ブラウザーで、[Jenkins 用の Azure Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)を開きます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "29957551"
 
 1. **[基本]** タブで、次の値を指定します。
 
-    - **名前** - 「`Jenkins`」と入力します。
+    - **[Name]\(名前\)** - 「`Jenkins`」と入力します。
     - **ユーザー名** - Jenkins が実行される仮想マシンへのサインイン時に使用するユーザー名を入力します。 ユーザー名は、[特定の要件](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしている必要があります。
     - **認証の種類** - **[SSH 公開キー]** を選択します。
     - **SSH 公開キー** - RSA 公開キーをコピーして、1 行形式 (`ssh-rsa` で始まります) または複数行の PEM 形式で貼り付けます。 SSH キーは、Linux と macOS では ssh-keygen を、Windows では PuTTYGen を使用して生成できます。 SSH キーと Azure の詳細については、「[Azure 上の Windows で SSH キーを使用する方法](/azure/virtual-machines/linux/ssh-from-windows)」を参照してください。

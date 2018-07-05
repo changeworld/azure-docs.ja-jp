@@ -20,7 +20,7 @@ Azure の仮想ディスクを暗号化するための料金はかかりませ�
 
 キー コンテナー アクセス ポリシーでは、キー、シークレット、証明書へのアクセス許可を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、[キー コンテナー アクセス ポリシー](../articles/key-vault/key-vault-secure-your-key-vault.md)では、オブジェクト レベルのアクセス許可がサポートされません。
 
-VM に接続するときは、公開キー暗号化を使用して、より安全な方法で VM にログインできるようにする必要があります。 このプロセスでは、ユーザー名とパスワードを使用する代わりに、SSH (Secure Shell) コマンドを使用して公開キーと秘密キーを交換して、自分を認証します。 パスワードは、ブルートフォース攻撃に対して脆弱です。これは、特に Web サーバーなどのインターネットに接続された仮想マシンに当てはまります。 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md) を作成でき、ログインするためのパスワードが不要になります。 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) から SSH キーを使って Linux VM に接続することもできます。
+VM に接続するときは、公開キー暗号化を使用して、より安全な方法で VM にサインインできるようにする必要があります。 このプロセスでは、ユーザー名とパスワードを使用する代わりに、SSH (Secure Shell) コマンドを使用して公開キーと秘密キーを交換して、自分を認証します。 パスワードは、ブルートフォース攻撃に対して脆弱です。これは、特に Web サーバーなどのインターネットに接続された仮想マシンに当てはまります。 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md) を作成でき、ログインするためのパスワードが不要になります。 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) から SSH キーを使って Linux VM に接続することもできます。
 
 ## <a name="policies"></a>ポリシー
 

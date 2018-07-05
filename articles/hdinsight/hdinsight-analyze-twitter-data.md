@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593714"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960129"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
@@ -47,7 +47,7 @@ ms.locfileid: "31593714"
     ```
 
     > [!IMPORTANT]
-    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**非推奨**となり、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
@@ -55,7 +55,7 @@ ms.locfileid: "31593714"
 
 このチュートリアルで使用するファイルを次の表に示します。
 
-| ファイル | [説明] |
+| ファイル | 説明 |
 | --- | --- |
 | /tutorials/twitter/data/tweets.txt |Hive ジョブのソース データです。 |
 | /tutorials/twitter/output |Hive ジョブの出力フォルダーです。 既定の Hive ジョブ出力ファイル名は **000000_0** です。 |
@@ -68,7 +68,7 @@ ms.locfileid: "31593714"
 > [!NOTE]
 > 10,000 のツイートを含むファイルと Hive スクリプト ファイルは (次のセクションで説明) は、パブリック BLOB コンテナーにアップロードされています。 このセクションは、アップロードしたファイルを使用する場合は省略できます。
 
-[ツイート データ](https://dev.twitter.com/docs/platform-objects/tweets) は、複雑なネスト構造の JavaScript Object Notation (JSON) 形式で格納されます。 従来のプログラミング言語を使用して多数のコード行を記述する代わりに、このネスト構造を Hive テーブルに変換し、構造化照会言語 (SQL) によく似た HiveQL という言語で照会するようにできます。
+ツイート データは、複雑なネスト構造の JavaScript Object Notation (JSON) 形式で格納されます。 従来のプログラミング言語を使用して多数のコード行を記述する代わりに、このネスト構造を Hive テーブルに変換し、構造化照会言語 (SQL) によく似た HiveQL という言語で照会するようにできます。
 
 Twitter は OAuth を使用して、API への承認されたアクセスを提供します。 OAuth は、パスワードを共有せずに代理でアプリケーションが動作することをユーザーが承認できるようにする認証プロトコルです。 詳細については、[oauth.net](http://oauth.net/)、または Hueniverse の便利な「[Beginner's Guide to OAuth (OAuth 初心者向けガイド)](http://hueniverse.com/oauth/)」で確認できます。
 
@@ -83,7 +83,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
    | フィールド | 値 |
    | --- | --- |
    |  Name |MyHDInsightApp |
-   |  [説明] |MyHDInsightApp |
+   |  説明 |MyHDInsightApp |
    |  Web サイト |http://www.myhdinsightapp.com |
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
@@ -230,7 +230,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
-    変数|[説明]
+    可変|説明
     ---|---
     $clusterName|アプリケーションを実行する HDInsight クラスターの名前です。
     $oauth_consumer_key|Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの **コンシューマー キー** です。
@@ -439,7 +439,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 3. スクリプトの最初の 2 個の変数を設定します。
 
-   | 変数 | [説明] |
+   | 可変 | 説明 |
    | --- | --- |
    |  $clusterName |アプリケーションを実行する HDInsight クラスター名を入力します。 |
    |  $subscriptionID |Azure サブスクリプション ID を入力します。 |

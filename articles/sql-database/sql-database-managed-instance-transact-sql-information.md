@@ -1,35 +1,36 @@
 ---
-title: Azure SQL Database マネージ インスタンスの T-SQL の違い | Microsoft Docs
-description: この記事では、Azure SQL Database マネージ インスタンスと SQL Server の T-SQL の相違点について説明します。
+title: Azure SQL Database Managed Instance の T-SQL の違い | Microsoft Docs
+description: この記事では、Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点について説明します。
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337300"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database マネージ インスタンスと SQL Server の T-SQL の相違点 
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点 
 
-Azure SQL Database マネージ インスタンス (プレビュー) は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージ インスタンスでサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
+Azure SQL Database Managed Instance (プレビュー) は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能が Managed Instance でサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
  - [T-SQL の相違点とサポートされていない機能](#Differences)
- - [マネージ インスタンスで動作が異なる機能](#Changes)
+ - [Managed Instance で動作が異なる機能](#Changes)
  - [一時的な制限事項と既知の問題](#Issues)
 
 ## <a name="Differences"></a>SQL Server の T-SQL との相違点 
 
-このセクションでは、マネージ インスタンスとオンプレミスの SQL Server データベース エンジンの T-SQL の構文および動作の主な相違点と、サポートされていない機能について簡単に説明します。
+このセクションでは、Managed Instance とオンプレミスの SQL Server データベース エンジンの T-SQL の構文および動作の主な相違点と、サポートされていない機能について簡単に説明します。
 
 ### <a name="always-on-availability"></a>Always-on 可用性
 
-[高可用性](sql-database-high-availability.md)はマネージ インスタンスに組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
+[高可用性](sql-database-high-availability.md)は Managed Instance に組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
  - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
  - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
  - [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
@@ -38,26 +39,26 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、オ�
 
 ### <a name="auditing"></a>監査 
  
-マネージ インスタンス、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
-- マネージ インスタンスでは、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ファイルが保存されます。  
+Managed Instance、Azure SQL Database、オンプレミスの SQL Server の SQL 監査の主な相違点は次のとおりです。
+- Managed Instance では、SQL 監査はサーバー レベルで機能し、Azure BLOB ストレージ アカウントに `.xel` ファイルが保存されます。  
 - Azure SQL Database では、SQL 監査はデータベース レベルで機能します。
 - オンプレミス/仮想マシンの SQL Server では、SQL 監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。  
   
-マネージ インスタンスの XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログはサポートされていません。    
+Managed Instance の XEvent 監査では、対象として Azure Blob Storage をサポートしています。 ファイル ログと Windows ログはサポートされていません。    
  
 Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 - 新しい `TO URL` 構文が用意されています。この構文を使用して、`.xel` ファイルを配置する Azure blob Storage コンテナーの URL を指定できます。 
-- マネージ インスタンスは Windows ファイル共有にアクセスできないため、`TO FILE` 構文はサポートされていません。 
+- Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文はサポートされていません。 
  
 詳細については、次を参照してください。  
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql) 
 - [監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)     
 
-### <a name="backup"></a>バックアップ 
+### <a name="backup"></a>Backup 
 
-マネージ インスタンスには自動バックアップがあり、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。  
-- マネージ インスタンスでは、Azure BLOB ストレージ アカウントにのみデータベースをバックアップできます。 
+Managed Instance には自動バックアップがあり、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。  
+- Managed Instance では、Azure BLOB ストレージ アカウントにのみデータベースをバックアップできます。 
  - `BACKUP TO URL` だけがサポートされています。 
  - `FILE`、`TAPE`、バックアップ デバイスはサポートされていません。  
 - ほとんどの一般的な `WITH` オプションがサポートされています。 
@@ -67,7 +68,7 @@ Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次の
  - ログ固有のオプション: `NORECOVERY`、`STANDBY`、`NO_TRUNCATE` はサポートされていません。 
  
 制限事項:   
-- マネージ インスタンスでは、最大 32 個のストライプを使用するバックアップにデータベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
+- Managed Instance では、最大 32 個のストライプを使用するバックアップにデータベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - 最大バックアップ ストライプ サイズは 195 GB (最大 BLOB サイズ) です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。 
 
 > [!TIP]
@@ -82,13 +83,13 @@ T-SQL を使用したバックアップについては、[BACKUP](https://docs.m
  
 ### <a name="bulk-insert--openrowset"></a>一括挿入/openrowset
 
-マネージ インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。
+Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。
 - Azure Blob Storage からファイルをインポートするときは、`BULK INSERT` コマンドで `DATASOURCE` が必須になります。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
 - Azure Blob Storage からファイルの内容を読み取るときは、`OPENROWSET` 関数で `DATASOURCE` が必須になります。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
  
 ### <a name="certificates"></a>証明書 
 
-マネージ インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
+Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
 - ファイルからの作成/ファイルへのバックアップ (`CREATE FROM`/`BACKUP TO`) は、証明書ではサポートされていません。
 - ファイル/アセンブリ (`FILE`/`ASSEMBLY`) からの証明書の作成/バックアップ (`CREATE`/`BACKUP`) はサポートされていません。 秘密キー ファイルは使用できません。  
  
@@ -105,7 +106,7 @@ WITH PRIVATE KEY ( <private_key_options> )
  
 ### <a name="clr"></a>CLR 
 
-マネージ インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
+Managed Instance はファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。 
 - `CREATE ASSEMBLY FROM BINARY` だけがサポートされています。 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。  
 - `CREATE ASSEMBLY FROM FILE` はサポートされていません。 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
@@ -126,7 +127,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
  
 ### <a name="cryptographic-providers"></a>暗号化プロバイダー
 
-マネージ インスタンスはファイルにアクセスできないため、暗号化プロバイダーは作成できません。
+Managed Instance はファイルにアクセスできないため、暗号化プロバイダーは作成できません。
 - `CREATE CRYPTOGRAPHIC PROVIDER` はサポートされていません。 [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql) に関する記事をご覧ください。
 - `ALTER CRYPTOGRAPHIC PROVIDER` はサポートされていません。 [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql) に関する記事をご覧ください。 
 
@@ -159,7 +160,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 #### <a name="alter-database-statement"></a>ALTER DATABASE ステートメント
 
 ファイルの一部のプロパティは設定または変更できません。
-- `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL ステートメントでは、ファイル パスは指定できません。 ファイルはマネージ インスタンスによって自動的に配置されるため、スクリプトから `FILENAME` を削除します。  
+- `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL ステートメントでは、ファイル パスは指定できません。 ファイルは Managed Instance によって自動的に配置されるため、スクリプトから `FILENAME` を削除します。  
 - `ALTER DATABASE` ステートメントを使用してファイル名を変更することはできません。
 
 次のオプションは既定で設定されており、変更することはできません。 
@@ -202,10 +203,14 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 ### <a name="dbcc"></a>DBCC 
  
-SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、マネージ インスタンスではサポートされていません。
+SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、Managed Instance ではサポートされていません。
 - `Trace Flags` はサポートされていません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
 - `DBCC TRACEOFF` はサポートされていません。 [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) に関する記事をご覧ください。
 - `DBCC TRACEON` はサポートされていません。 [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) に関する記事をご覧ください。
+
+### <a name="distributed-transactions"></a>分散トランザクション
+
+MSDTC も[エラスティック トランザクション](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview)も現在、Managed Instance ではサポートされていません。
 
 ### <a name="extended-events"></a>拡張イベント 
 
@@ -238,7 +243,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 
 ### <a name="linked-servers"></a>リンク サーバー
  
-マネージ インスタンスのリンク サーバーがサポートするターゲットの数は限られています。 
+Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。 
 - サポートされるターゲット: SQL Server と SQL Database
 - サポートされていないターゲット: Analysis Services、他の RDBMS
 
@@ -332,7 +337,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント 
  
-- SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージ インスタンスではサポートされていません。  
+- SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、Managed Instance ではサポートされていません。  
 - ジョブ - 現在サポートされているのは、T-SQL ジョブ ステップだけです (パブリック プレビュー期間に、さらに多くのステップが追加される予定です)。
  - SSIS はまだサポートされていません。 
  - レプリケーションはまだサポートされていません。  
@@ -342,7 +347,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
   - マージはサポートされていません。  
   - キュー リーダーはサポートされていません。  
  - コマンド シェルはまだサポートされていません。 
-  - マネージ インスタンスは、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
+  - Managed Instance は、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
  - PowerShell はまだサポートされていません。
  - Analysis Services はサポートされていません。  
 - 通知は部分的にサポートされています。
@@ -374,13 +379,11 @@ SQL Server エージェントについては、「[SQL Server エージェント
 ## <a name="Changes"></a>動作の変更 
  
 次の変数、関数、ビューは異なる結果を返します。  
-- `SERVERPROPERTY('EngineEdition')` は 8 を返します。 このプロパティは、マネージ インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
-- `SERVERPROPERTY('InstanceName')` は、短いインスタンス名を返します (例： "myserver")。 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する説明をご覧ください。
+- `SERVERPROPERTY('EngineEdition')` は 8 を返します。 このプロパティは、マネージド インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
+- `SERVERPROPERTY('InstanceName')` は NULL を返します。これは SQL Server に関して存在するインスタンスの概念が、マネージド インスタンスには該当しないためです。 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する説明をご覧ください。
 - `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。  
 - `SYS.SERVERS` - "name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。 
-- `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: `my-managed-instance.wcus17662feb9ce98.database.windows.net`)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。  
-- `SYS.SERVERS` - "name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。 
-- `@@SERVICENAME` は、マネージ インスタンス環境では意味がないため、NULL を返します。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。   
+- `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、マネージド インスタンスには該当しないためです。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。   
 - `SUSER_ID` がサポートされています。 AAD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。  
 - `SUSER_SID` はサポートされていません。 間違ったデータを返します (一時的な既知の問題)。 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。 
 - `GETDATE()` と他の組み込みの日付/時刻関数は、常に UTC タイム ゾーンの時刻を返します。 [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) に関する記事をご覧ください。
@@ -393,9 +396,9 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
-それぞれのマネージ インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。 
+それぞれのマネージド インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。 
 
-たとえば、4 TB のディスクを使用するマネージ インスタンスに、サイズが 1.2 TB のファイルが 1 つあり、サイズが 128 GB の 248 個のディスクに、それぞれが 1 GB の 248 個のファイルが配置される可能性があります。 この例では、ディスク記憶域の合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。 ただし、データベースのために予約される合計インスタンス サイズは、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。 これは、特定の状況下では、非常に特殊なファイルの配分のために、マネージ インスタンスが、想定していなかった Azure Premium ディスクの記憶域の上限に到達する可能性があることを示しています。 
+たとえば、4 TB のディスクを使用するマネージド インスタンスに、サイズが 1.2 TB のファイルが 1 つあり、サイズが 128 GB の 248 個のディスクに、それぞれが 1 GB の 248 個のファイルが配置される可能性があります。 この例では、ディスク記憶域の合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。 ただし、データベースのために予約される合計インスタンス サイズは、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。 これは、特定の状況下では、非常に特殊なファイルの配分のために、マネージド インスタンスが、想定していなかった Azure Premium ディスクの記憶域の上限に到達する可能性があることを示しています。 
 
 既存のデータベースではエラーが発生せず、新しいファイルが追加されなければ問題なくデータベースの拡大が可能です。しかし、すべてのデータベースの合計サイズがインスタンスのサイズ制限に到達しない場合でも、新しいディスク ドライブ用に十分な領域がないため、新しいデータベースの作成や復元を行うことができません。 その場合に返されるエラーは明確ではありません。
 
@@ -406,17 +409,17 @@ Azure Portal を使用して生成された SAS キーから、先頭の `?` を
 
 ### <a name="tooling"></a>ツール
 
-SQL Server Management Studio と SQL Server Data Tools には、マネージ インスタンスにアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
+SQL Server Management Studio と SQL Server Data Tools には、Managed Instance にアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
 
 ### <a name="incorrect-database-names"></a>データベース名が正しくない
 
-マネージ インスタンスでは、復元中または一部のエラー メッセージにデータベース名の代わりに GUID 値が表示されることがあります。 一般公開の前に、これらの問題を解決する予定です。
+Managed Instance では、復元中または一部のエラー メッセージにデータベース名の代わりに GUID 値が表示されることがあります。 一般公開の前に、これらの問題を解決する予定です。
 
 ### <a name="database-mail-profile"></a>データベース メール プロファイル
 データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 これは間もなく削除される一時的な制限です。
 
 ## <a name="next-steps"></a>次の手順
 
-- マネージ インスタンスの詳細については、[マネージ インスタンスの概要](sql-database-managed-instance.md)に関する記事をご覧ください。
+- マネージド インスタンスの詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md)に関する記事をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
 - 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。

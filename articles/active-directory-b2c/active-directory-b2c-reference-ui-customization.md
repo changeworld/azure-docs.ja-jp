@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711146"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754201"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
 
 顧客向けのアプリケーションでは、ユーザー エクスペリエンスが最も重要です。  ブランド イメージを用いてユーザー エクスペリエンスを洗練させることによって、顧客基盤を拡大します。 Azure Active Directory B2C (Azure AD B2C) では、サインアップ ページ、サインイン ページ、プロファイルの編集ページ、およびパスワード リセット ページをピクセル単位で正確に制御してカスタマイズすることができます。
 
 > [!NOTE]
-> この記事で説明しているページ UI カスタマイズ機能は、サインインのみポリシー、それに付随するパスワード リセット ページ、および確認メールには適用されません。  これらの機能では、[会社のブランド化機能](../active-directory/customize-branding.md)を使用します。
+> この記事で説明しているページ UI カスタマイズ機能は、サインインのみポリシー、それに付随するパスワード リセット ページ、および確認メールには適用されません。  これらの機能では、[会社のブランド化機能](../active-directory/fundamentals/customize-branding.md)を使用します。
 >
-> 同様に、ユーザーがサインインの "*前に*" プロファイル ポリシーの編集を開始すると、ユーザーは[会社のブランド化機能](../active-directory/customize-branding.md)を使ってカスタマイズできるページにリダイレクトされます。
+> 同様に、ユーザーがサインインの "*前に*" プロファイル ポリシーの編集を開始すると、ユーザーは[会社のブランド化機能](../active-directory/fundamentals/customize-branding.md)を使ってカスタマイズできるページにリダイレクトされます。
 
 この記事では、次のトピックについて説明します。
 

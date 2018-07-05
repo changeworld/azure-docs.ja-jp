@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212378"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>チュートリアル: Azure Active Directory と Manabi Pocket の統合
 
@@ -101,35 +100,29 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. アプリケーションを **IDP** 開始モードで構成する場合は、**[Manabi Pocket のドメインと URL]** セクションで次の手順を実行します。
+3. **[Manabi Pocket のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Manabi Pocket のドメインと URL] のシングル サインオン情報](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. **[識別子]** ボックスに、`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider` の形式で URL を入力します。
-    
-    b. **[応答 URL]** ボックスに、`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://ed-cl.com/`」を入力します。
+
+    b. **[識別子]** ボックスに、`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider` の形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Manabi Pocket クライアント サポート チーム](mailto:info-ed-cl@ntt.com)に問い合わせてください。
+    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Manabi Pocket クライアント サポート チーム](mailto:info-ed-cl@ntt.com)に問い合わせてください。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
-
-    ![[Manabi Pocket のドメインと URL] のシングル サインオン情報](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    **[サインオン URL]** ボックスに、URL として「`https://ed-cl.com/`」を入力します。
-
-5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. **Manabi Pocket** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Manabi Pocket サポート チーム](mailto:info-ed-cl@ntt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+6. **Manabi Pocket** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Manabi Pocket サポート チーム](mailto:info-ed-cl@ntt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -196,7 +189,7 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
@@ -222,4 +215,3 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

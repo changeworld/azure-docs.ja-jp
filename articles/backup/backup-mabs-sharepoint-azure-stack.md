@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 上の SharePoint ファームの Azure へのバックアップ
+title: Azure Stack 上の SharePoint ファームのバックアップ
 description: Azure Backup Server を使用して、Azure Stack 上の SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248984"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751899"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>Azure Stack 上の SharePoint ファームの Azure へのバックアップ
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して Azure Stack 上の SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint のサポートされるバージョンと関連する保護シナリオ
-DPM 用 Azure Backup は、次のシナリオをサポートします。
+MABS 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | バージョン | SharePoint のデプロイ | 保護と回復 |
 | --- | --- | --- | --- | --- | --- |
@@ -41,9 +41,6 @@ MABS フォルダーが存在するボリュームには、ファーム内の 1,
 Azure Backup Server は、LocalSystem アカウントとして実行されます。 SQL Server データベースをバックアップする場合、MABS はそのアカウントに SQL Server を実行しているサーバーに対する sysadmin 権限を必要とします。 バックアップする前に、SQL Server を実行しているサーバーで NT AUTHORITY\SYSTEM を *sysadmin* に設定します。
 
 SharePoint ファームの SQL Server データベースが SQL Server エイリアスで構成されている場合は、MABS によって保護されるフロント エンド Web サーバーに SQL Server クライアント コンポーネントをインストールします。
-
-### <a name="sharepoint-server"></a>SharePoint Server
-パフォーマンスは SharePoint ファームのサイズなどのさまざまな要因に依存しますが、一般的なガイダンスとしては、1 つの MABS で 25 TB の SharePoint ファームを保護できます。
 
 ### <a name="whats-not-supported"></a>サポートされていないもの
 * SharePoint ファームを保護する MABS では、検索インデックスまたはアプリケーション サービス データベースは保護されません。 これらのデータベースの保護は別に構成する必要があります。

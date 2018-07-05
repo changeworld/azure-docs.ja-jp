@@ -3,7 +3,7 @@
 まず、最新の [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) をインストールして実行する必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 > [!NOTE]
-> このトピックの例では、[Azure Resource Manager デプロイメント モデル](../articles/azure-resource-manager/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
+> このトピックの例では、[Azure Resource Manager デプロイ モデル](../articles/azure-resource-manager/resource-group-overview.md)を使用するため、例では [Azure Resource Manager コマンドレット](http://msdn.microsoft.com/library/azure/mt125356.aspx)を使用します。 
 > 
 > 
 

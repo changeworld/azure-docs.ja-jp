@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260483"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937334"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -192,7 +192,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](json-s
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-**like** 条件や **notLike** 条件を使用する場合は、値にワイルドカード (*) を指定できます。値に複数のワイルドカード (*) を含めることはできません。
+**like** 条件や **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
+値に複数のワイルドカード (`*`) を含めることはできません。
 
 **match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](scripts/allow-multiple-name-patterns.md)」を参照してください。
 

@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
-1. Microsoft アカウントの資格情報を使用して、 [Microsoft Azure Government ポータル](https://portal.azure.us/)にログオンします。
+1. Microsoft アカウントの資格情報を使用し、[Microsoft Azure Government ポータル](https://portal.azure.us/)にサインインします。
 2. Government ポータルで **+** をクリックし、Marketplace で **[すべて表示]** をクリックします。 "_StorSimple 物理_" を検索します。 **[StorSimple 物理デバイス シリーズ]** を選択してクリックし、**[作成]** をクリックします。 または、Government ポータルで **+** をクリックし、**[ストレージ]** で **[StorSimple 物理デバイス シリーズ]** をクリックします。
 3. **[StorSimple デバイス マネージャー]** ブレードで、次の操作を実行します。
    

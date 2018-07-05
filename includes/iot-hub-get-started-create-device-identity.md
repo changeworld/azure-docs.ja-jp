@@ -6,7 +6,7 @@
 
     `npm install -g iothub-explorer@latest`
 
-1. その後、次のコマンドを実行してハブにログインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
+1. その後、次のコマンドを実行してハブにサインインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
 
     `iothub-explorer login "{iot hub connection string}"`
 

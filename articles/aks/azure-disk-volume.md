@@ -3,17 +3,18 @@ title: AKS での Azure ディスクの使用
 description: AKS での Azure ディスクの使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597069"
 ---
 # <a name="volumes-with-azure-disks"></a>Azure ディスクを使用するボリューム
 
@@ -23,34 +24,27 @@ Kubernetes ボリュームの詳細については、[Kubernetes ボリューム
 
 ## <a name="create-an-azure-disk"></a>Azure ディスクを作成する
 
-Azure 管理ディスクを Kubernetes ボリュームとしてマウントする前に、ディスクが AKS クラスター リソースと同じリソース グループに存在する必要があります。 このリソース グループを検索するには、[az group list][az-group-list] を使用します。
+Azure 管理ディスクを Kubernetes ボリュームとしてマウントする前に、ディスクが AKS **ノード** リソース グループに存在する必要があります。 [az resource show][az-resource-show] コマンドを使用して、リソース グループの名前を取得します。
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-`MC_clustername_clustername_locaton` のような名前のリソース グループを検索します。clustername は AKS クラスターの名前、location はクラスターが展開されている Azure リージョンです。
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Azure ディスクを作成するには、[az disk create][az-disk-create] コマンドを使用します。
 
-この例を参考にして、`--resource-group` をリソース グループの名前に、`--name` を任意の名前に更新します。
+最後の手順で収集したリソース グループの名前を使用して `--resource-group` を更新し、`--name` を任意の名前に更新します。
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-コマンドが完了すると、次のような出力が表示されます。 この値はディスク ID です。この ID は Kubernetes ポッドにディスクをマウントするときに使用されます。
+コマンドが完了すると、次のような出力が表示されます。 この値はディスク ID です。この ID はディスクをマウントするときに使用されます。
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -105,3 +99,4 @@ Azure ディスクを使用した Kubernetes ボリュームについて、さ�
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

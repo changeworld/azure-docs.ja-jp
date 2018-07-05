@@ -3,7 +3,7 @@
 
 この記事では、クラシック デプロイ モデルで作成された Azure Virtual Machines についてユーザーからよく寄せられる質問に回答します。
 
-## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>クラシック デプロイメント モデルで作成した VM を新しい Resource Manager モデルに移行できますか。
+## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>クラシック デプロイ モデルで作成した VM を新しい Resource Manager モデルに移行できますか。
 はい。 移行手順については、以下を参照してください。
 
 * [Azure PowerShell を使用するクラシックから Azure Resource Manager への移行に関するページ](../articles/virtual-machines/windows/migration-classic-resource-manager-ps.md)。
@@ -18,12 +18,12 @@
 
 Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。 詳細については、「 [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
 
-## <a name="why-are-affinity-groups-being-deprecated"></a>アフィニティ グループが廃止されるのなぜですか。
+## <a name="why-are-affinity-groups-being-deprecated"></a>アフィニティ グループが非推奨となるのはなぜですか。
 アフィニティ グループは、お客様のクラウド サービスのデプロイとストレージ アカウントを Azure 内で地理的にグループ化するために使用されていた概念です。 もともとは、初期の Azure ネットワーク設計の中で VM 間ネットワークのパフォーマンスを向上させるために用意されていました。 アフィニティ グループは、仮想ネットワーク (VNet) の最初のリリースもサポートしていましたが、サポートはリージョン内の少数のハードウェアに限定されていました。
 
 リージョン内の現在の Azure ネットワークは、アフィニティ グループが不要になるように設計されています。 仮想ネットワークもリージョン スコープであるため、仮想ネットワークを使用するときにアフィニティ グループは不要になっています。 これらの改善により、一部のシナリオで制限を受ける可能性があるため、アフィニティ グループの使用は推奨されなくなりました。 アフィニティ グループを使用すると、VM が特定のハードウェアに不必要に関連付けられ、使用できる VM サイズの選択肢が制限されます。 また、アフィニティ グループに関連付けられている特定のハードウェアの容量がほぼいっぱいになった場合に新しい VM を追加しようとすると、容量に関連するエラーが発生する場合もあります。
 
-Azure Resource Manager デプロイメント モデルと Azure Portal では、アフィニティ グループの機能は既に使用されなくなっています。 クラシック Azure Portal でのアフィニティ グループの作成とアフィニティ グループに固定されたストレージ リソースの作成はサポートされなくなります。 アフィニティ グループを使用する既存のクラウド サービスを変更する必要はありませんが、 Azure サポート担当者が推奨する場合を除き、新しいクラウド サービスではアフィニティ グループを使用しないでください。
+Azure Resource Manager デプロイメント モデルと Azure Portal では、アフィニティ グループの機能は既に非推奨になっています。 クラシック Azure Portal でのアフィニティ グループの作成とアフィニティ グループに固定されたストレージ リソースの作成はサポートされなくなります。 アフィニティ グループを使用する既存のクラウド サービスを変更する必要はありませんが、 Azure サポート担当者が推奨する場合を除き、新しいクラウド サービスではアフィニティ グループを使用しないでください。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
@@ -48,7 +48,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 仮想マシンを作成する際には、仮想マシンの参加先となるネットワークを指定する必要があります。 既存の仮想マシンを仮想ネットワークに参加させることはできません。 ただし、仮想ハードディスク (VHD) を既存の仮想マシンからデタッチし、それを使用して、目的のネットワーク構成で新しい仮想マシンを作成することにより、この問題を回避することは可能です。
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
-Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対するリモート デスクトップ接続を使用してリモート接続を確立し、仮想マシンにログオンする必要があります。 手順については、次の項目を参照してください。
+Windows VM の場合にはリモート デスクトップ接続、Linux VM の場合には Secure Shell (SSH) をそれぞれ使用してリモート接続を確立し、仮想マシンにサインインする必要があります。 手順については、次の項目を参照してください。
 
 * [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 * [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 SSH では、既定で最大 10 の同時接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
@@ -78,7 +78,7 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 Windows Server の移行に関するツールとプロセスの詳細については、「 [Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>仮想マシンでの既定のユーザー名とパスワードを教えてください。
-Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。 これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのログオンに使用するユーザー名とパスワードを指定する必要があります。
+Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。 これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのサインインに使用するユーザー名とパスワードを指定する必要があります。
 
 ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能をインストールして使用し、問題を解決することができます。
 

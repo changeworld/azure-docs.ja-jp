@@ -14,7 +14,7 @@ DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェン
 
 ## <a name="scale-with-the-azure-cli-20"></a>Azure CLI 2.0 を使ったスケーリング
 
-Azure CLI 2.0 の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+Azure CLI 2.0 の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにサインインしていること (`az login`) を確認してください。
 
 ### <a name="see-the-current-agent-count"></a>現在のエージェント数の表示
 クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `myResourceGroup` 内の `containerservice-myACSName` という名前のコンテナー サービスの構成を表示します。
@@ -50,7 +50,7 @@ Azure CLI 2.0 は、新しいエージェント数を含む、コンテナー �
 
 * 現時点では、コンテナー サービス クラスター内のエージェント ノードのスケーリングはサポートされていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Container Service での Azure CLI 2.0 のコマンドの[他の使用例](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を参照します。
 * Azure Container Service の [DC/OS エージェント プール](../articles/container-service/dcos-swarm/container-service-dcos-agents.md)の詳細を確認します。
 

@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248471"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752794"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
@@ -128,7 +128,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | パラメーター名 | パラメーターのタイプ | メモ |
 |----------------|----------------|-------|
 | Name           | String | ルール名には、英数字の任意の組み合わせを含めることができます。 ルール名は大文字と小文字が区別されます。 名前は、ポリシー内で一意にする必要があります。 |
-| 型           | 列挙型の値 | プレビューで有効な値は `Lifecycle` です |
+| type           | 列挙型の値 | プレビューで有効な値は `Lifecycle` です |
 | 定義     | ライフサイクル ルールを定義するオブジェクト | 各定義は、フィルター セットとアクション セットで構成されます。 |
 
 ## <a name="rules"></a>ルール
@@ -265,7 +265,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ### <a name="expire-data-based-on-age"></a>古さに基づいてデータを期限切れにする
 
-データの中には、コストの削減や政府の規制への準拠のために作成後数日または数か月後に失効することが想定されているものがあります。 データを古さに基づいて削除することで有効期限日を設定するように、ライフサイクル管理ポリシーを設定できます。 次の例は、365 日より古い (プレフィックスが指定されていない) のすべてのブロック BLOB を削除するポリシーを示しています。
+データの中には、コストの削減や政府の規制への準拠のために作成後数日または数か月後に失効することが想定されているものがあります。 データを古さに基づいて削除することでデータを期限切れに設定するように、ライフサイクル管理ポリシーを設定できます。 次の例は、365 日より古い (プレフィックスが指定されていない) のすべてのブロック BLOB を削除するポリシーを示しています。
 
 ```json
 {

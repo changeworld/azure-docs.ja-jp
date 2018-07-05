@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260415"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939974"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
@@ -29,12 +29,18 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのは全体管理者だけです。
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
-Azure Active Directory でユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。
+Azure Active Directory でユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
 ## <a name="available-roles"></a>使用可能なロール
 次の管理者ロールを使用できます。
 
+* **アプリケーション管理者**: このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+
+* **アプリケーション開発者**: このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
+
 * **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
+
+* **クラウド アプリケーション管理者**: このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
 * **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可を持ちます。 詳しくは、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
@@ -107,11 +113,29 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ## <a name="administrator-permissions"></a>管理者の権限
 
+### <a name="application-administrator"></a>アプリケーション管理者
+
+| できること | できないこと |
+| --- | --- |
+| すべてのディレクトリ情報の読み取り<br>アプリケーション登録の作成<br>アプリケーション登録プロパティの更新<br>エンタープライズ アプリケーションの取得<br>アプリケーション登録アクセス許可の管理<br>アプリケーション登録の削除<br>エンタープライズ アプリケーションのシングル サインオン設定の管理<br>エンタープライズ アプリケーションのプロビジョニング設定の管理<br>エンタープライズ アプリケーションのセルフサービス設定の管理<br>エンタープライズ アプリケーションのアクセス許可設定の管理<br>アプリケーション アクセスの管理<br>プロビジョニング設定の管理<br>エンタープライズ アプリケーションの削除<br>すべての委任されたアクセス許可の要求に対する、全ユーザーの代理としての同意<br>すべてのアプリケーション アクセス許可の要求に対する、全ユーザーの代理としての同意 (Azure AD Graph、Microsoft Graph を除く)<br>アプリケーション プロキシ設定の管理<br>サービス設定へのアクセス<br>サービス正常性の監視<br>サポート チケットの管理<br>非表示のグループ メンバーシップの読み取り | グループの作成、編集、削除<br>ユーザー ライセンスの管理<br>ディレクトリ同期の使用<br>サインイン レポートと監査ログの表示 | 
+
+### <a name="application-developer"></a>アプリケーション開発者
+
+| できること | できないこと |
+| --- | --- |
+| すべてのディレクトリ情報の読み取り<br>アプリケーション登録の作成<br>自己の代理としての同意 | サインイン ログと監査ログの表示<br>非表示のグループ メンバーシップの読み取り |
+
 ### <a name="billing-administrator"></a>課金管理者
 
 | できること | できないこと |
 | --- | --- |
-|<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p> |<p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p>|
+|<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p> |<p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p> |
+
+### <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
+
+| できること | できないこと |
+| --- | --- |
+| すべてのディレクトリ情報の読み取り<br>アプリケーション登録の作成<br>アプリケーション登録プロパティの更新<br>エンタープライズ アプリケーションの取得<br>アプリケーション登録アクセス許可の管理<br>アプリケーション登録の削除<br>エンタープライズ アプリケーションのシングル サインオン設定の管理<br>エンタープライズ アプリケーションのプロビジョニング設定の管理<br>エンタープライズ アプリケーションのセルフサービス設定の管理<br>エンタープライズ アプリケーションのアクセス許可設定の管理<br>アプリケーション アクセスの管理<br>プロビジョニング設定の管理<br>エンタープライズ アプリケーションの削除<br>すべての委任されたアクセス許可の要求に対する、全ユーザーの代理としての同意<br>すべてのアプリケーション アクセス許可の要求に対する、全ユーザーの代理としての同意 (Azure AD Graph、Microsoft Graph を除く)<br>サービス設定へのアクセス<br>サービス正常性の監視<br>サポート チケットの管理<br>非表示のグループ メンバーシップの読み取り | アプリケーション プロキシ設定の管理<br>グループの作成、編集、削除<br>ユーザー ライセンスの管理<br>ディレクトリ同期の使用<br>サインイン レポートと監査ログの表示 |
 
 ### <a name="conditional-access-administrator"></a>条件付きアクセス管理者
 
@@ -169,13 +193,15 @@ Azure AD サインイン レポートと監査ログの表示<br>会社情報と
 
    ![Azure AD 管理センターを開く](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. **[ユーザーとグループ] &gt; [すべてのユーザー]** の順に選択します。
+2. **[ユーザー]** > **[すべてのユーザー]** の順に選択します。
 
-3. 全体管理者として指定するユーザーを見つけ、そのユーザーのブレードを開きます。
+3. 全体管理者に指定したいユーザーのページを開きます。
 
-4. ユーザーのブレードで、**[ディレクトリ ロール]** を選択します。
- 
-5. [ディレクトリ ロール] ブレードで **[全体管理者]** ロールを選択し、保存します。
+4. コマンド バーで、**[ディレクトリ ロール]** を選択します。
+
+5. **[ロールの追加]** を選択します。
+
+6. [ディレクトリ ロール] ページで **[全体管理者]** ロールを選択し、**[選択]** をクリックして保存します。
 
 ## <a name="deprecated-roles"></a>非推奨のロール
 
@@ -190,9 +216,9 @@ Azure AD サインイン レポートと監査ログの表示<br>会社情報と
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)
+* Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../billing-add-change-azure-subscription-administrator.md)」を参照してください
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
+* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [ユーザーの管理](active-directory-create-users.md)
 * [パスワードの管理](active-directory-manage-passwords.md)
-* [グループの管理](active-directory-manage-groups.md)
+* [グループの管理](fundamentals/active-directory-manage-groups.md)

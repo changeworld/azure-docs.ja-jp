@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 上のファイルとアプリケーションのバックアップ
+title: Azure Stack VM のファイルのバックアップ
 description: Azure Backup を使用して、Azure Stack ファイルとアプリケーションを Azure Stack 環境にバックアップし、復元します。
 services: backup
 author: adiganmsft
@@ -8,26 +8,26 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 7baaa29d205c09daaeeebf44a4bad338913dcad9
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248862"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751706"
 ---
-# <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack 上のファイルとアプリケーションのバックアップ
-Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上で実行されているすべてのアプリケーションを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
+# <a name="back-up-files-on-azure-stack"></a>Azure Stack のファイルのバックアップ
+Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上のファイルを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
 
 > [!NOTE]
 > Azure Backup Server と System Center Data Protection Manager (DPM) は似ていますが、DPM は Azure Stack での使用がサポートされていません。
 >
 
-この記事では、Azure Stack 環境に Azure Backup Server をインストールする方法については説明しません。 Azure Stack に Azure Backup Server をインストールするには、[Azure Backup Server を使用してワークロードをバックアップするための準備](backup-mabs-install-azure-stack.md)に関する記事を参照してください。
+この記事では、Azure Stack 環境に Azure Backup Server をインストールする方法については説明しません。 Azure Stack に Azure Backup Server をインストールするには、[Azure Backup Server のインストール](backup-mabs-install-azure-stack.md)に関する記事を参照してください。
 
 
-## <a name="back-up-azure-stack-vm-file-data-to-azure"></a>Azure への Azure Stack VM ファイル データの バックアップ
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Azure Stack VM のファイルとフォルダーを Azure にバックアップする
 
-IaaS 仮想マシンを保護できるように Azure Backup Server を構成するには、Azure Backup Server コンソールを開きます。 このコンソールを使用して、保護グループを構成し、仮想マシン上のデータを保護します。
+Azure Stack VM 仮想マシンのファイルを保護できるように Azure Backup Server を構成するには、Azure Backup Server コンソールを開きます。 このコンソールを使用して、保護グループを構成し、仮想マシン上のデータを保護します。
 
 1. Azure Backup Server コンソールで **[保護]** をクリックし、ツール バーの **[新規]** をクリックして、**新しい保護グループの作成**ウィザードを開きます。
 
@@ -49,13 +49,13 @@ IaaS 仮想マシンを保護できるように Azure Backup Server を構成す
 
     ![新しい保護グループのウィザードが開いたところ](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft では、保護ポリシーを共有するすべての仮想マシンを 1 つの保護グループに配置することをお勧めしています。 保護グループの計画とデプロイの詳細については、System Center DPM の記事である「[保護グループの展開](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)」を参照してください。
+    Microsoft では、保護ポリシーを共有するすべてのデータを 1 つの保護グループに配置することをお勧めしています。 保護グループの計画とデプロイの詳細については、System Center DPM の記事である「[保護グループの展開](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)」を参照してください。
 
 4. **[データの保護方法の選択]** 画面で、保護グループの名前を入力します。 **[I want short-term protection using:]\(次のものを使用した短期的な保護を利用する:\)** と **[I want online protection]\(オンライン保護を利用する\)** のチェック ボックスをオンにします。 **[次へ]** をクリックします。
 
     ![新しい保護グループのウィザードが開いたところ](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    **[I want online protection]\(オンライン保護を利用する\)** をオンにするには、最初に **[I want short-term protection using:]\(次のものを使用した短期的な保護を利用する:\)** で [ディスク] を選択する必要があります。 Azure Backup Server ではテープを保護できないため、短期的な保護にはディスクを選ぶ必要があります。
+    **[I want online protection]\(オンライン保護を利用する\)** をオンにするには、最初に **[I want short-term protection using:]\(次のものを使用した短期的な保護を利用する:\)** で [ディスク] を選択する必要があります。 Azure Backup Server はテープを使用する保護に対応していないため、短期的な保護の選択肢はディスクのみです。
 
 5. **[短期的な目標値の指定]** 画面で、ディスクに保存された回復ポイントの保持期間と、増分バックアップを保存するタイミングを選択します。 **[次へ]** をクリックします。
 
@@ -73,7 +73,7 @@ IaaS 仮想マシンを保護できるように Azure Backup Server を構成す
 
     **[合計データ サイズ]** は、バックアップするデータのサイズです。Azure Backup Server 上の **[Disk space to be provisioned]/(プロビジョニングされるディスク領域/)** は、保護グループ用に推奨されている領域です。 Azure Backup Server は、設定に基づいて理想的なバックアップ ボリュームを選択します。 ただし、ディスク割り当ての詳細でバックアップ ボリュームの選択を編集できます。 ワークロードの場合、ドロップダウン メニューで、優先ストレージを選択します。 編集すると、[利用可能なディスク記憶域] ペインの [ストレージの合計] と [空き記憶域] の値が変わります。 過小にプロビジョニングされた領域とは、今後もスムーズなバックアップを確実に行うためにボリュームに追加することを Azure Backup Server から提案されるストレージの量です。
 
-7. **[レプリカの作成方法の選択]** で、最初の全データのレプリケーションを処理する方法を選択します。 ネットワーク経由でレプリケートする場合、Azure では、ピーク時以外を選択することをお勧めします。 データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してオフラインでデータをレプリケートすることを検討してください。
+7. **[レプリカの作成方法の選択]** で、最初の全データのレプリケーションを処理する方法を選択します。 ネットワーク経由でレプリケートする場合、Azure では、ピーク時以外を選択することをお勧めします。 データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してデータをレプリケートすることを検討してください。
 
 8. **[整合性チェック オプションの選択]** で、整合性チェックを自動化する方法を選択します。 整合性チェックは、データのレプリケーションに不整合が生じたときや、スケジュールに従ってレプリケーションを行う場合にのみ実行されるようにしてください。 自動整合性チェックを構成しない場合は、次の方法で、いつでも手動でチェックを実行できます。
     * Azure Backup Server コンソールの **[保護]** 領域で保護グループを右クリックし、**[整合性チェックの実行]** を選択します。
@@ -87,8 +87,6 @@ IaaS 仮想マシンを保護できるように Azure Backup Server を構成す
 11. **[オンライン保持ポリシーの指定]** で、毎日、毎週、、毎月、毎年のバックアップから作成される回復ポイントを Azure に保持する方法を指定します。
 
 12. **[オンライン レプリケーションの選択]** で、最初の全データのレプリケーションを実行する方法を指定します。 
-
-    ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップでは、[Azure Import 機能](./backup-azure-backup-import-export.md)が使用されます。
 
 13. **[概要]** で設定を確認します。 **[グループの作成]** をクリックすると、最初のデータ レプリケーションが実行されます。 データのレプリケーションが終了すると、**[ステータス]** ページで、保護グループの状態が **[OK]** と表示されます。 保護グループの設定に応じて最初のバックアップ ジョブが実行されます。
 
@@ -116,7 +114,6 @@ IaaS 仮想マシンを保護できるように Azure Backup Server を構成す
     * **[既存のバージョンの回復の動作]** で、**[コピーの作成]**、**[スキップ]**、または **[上書き]** を選択します。 上書きは、元の場所に回復するときにのみ使用できます。
     * **[セキュリティの復元]** で、**[Apply settings of the destination computer]\(対象のコンピューターの設定を適用する\)** または **[Apply the security settings of the recovery point version]\(回復ポイントのバージョンのセキュリティ設定を適用する\)** を選択します。
     * **[ネットワークの使用帯域幅の調整]** で **[変更]** をクリックし、ネットワークの使用帯域幅の調整を有効にします。
-    * **[ハードウェア スナップショットを使用した SAN ベースの回復を有効にする]** を選択して、回復をより迅速に行うために SAN ベースのハードウェア スナップショットが使用されるようにします。 このオプションは、ハードウェア スナップショット機能が有効になっている SAN がある場合にのみ有効です。 回復ポイントを書き込み可能にするには、SAN でクローンの作成と分割が可能である必要があります。 保護された VM と Azure Backup Server は、同じ SAN に接続されている必要があります。
     * **[通知]** **[Send an e-mail when the recovery completes]\(回復が完了したらメールを送信する\)** をクリックして、通知を受け取る受信者を指定します。 複数のメール アドレスはコンマで区切ります。
     * 必要な選択を行ったら、**[次へ]** をクリックします。
 
@@ -132,16 +129,13 @@ Modern Backup Storage (MBS) を使用している場合、ファイル サーバ
 
 2. **[プロパティ]** メニューで **[以前のバージョン]** をクリックし、回復するバージョンを選択します。
 
-
-
-## <a name="register-azure-backup-server-with-a-vault"></a>コンテナーへの Azure Backup Server の登録
-次の方法を説明する手順を示します。
-
+## <a name="view-azure-backup-server-with-a-vault"></a>コンテナーを含む Azure Backup Server の表示
+Azure portal で Azure Backup Server エンティティを表示するには、次の手順に従います。
 1. Recovery Services コンテナーを開きます。
 2. バックアップ インフラストラクチャをクリックします。
 3. バックアップ管理サーバーを表示します。
 
 ## <a name="see-also"></a>関連項目
 Azure Backup Server を使用して他のワークロードを保護する方法については、次のいずれかの記事を参照してください。
-- [SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
-- [SQL Server のバックアップ](backup-azure-sql-mabs.md)
+- [SharePoint ファームのバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server のバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)

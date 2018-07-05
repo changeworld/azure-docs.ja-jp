@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 06/21/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267874"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750487"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
-Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスは、お使いの Azure SSIS IR のプロビジョニングや再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供します。 カスタム セットアップでは、既定の動作の構成または環境を変更したり (たとえば、追加の Windows サービスを開始する)、Azure SSIS IR の各ノードに追加のコンポーネントをインストールしたり (アセンブリ、ドライバー、または拡張機能など) することが可能です。
+Azure SSIS 統合ランタイムのカスタム セットアップ インターフェイスは、お使いの Azure SSIS IR のプロビジョニングや再構成の間に、独自のセットアップ手順を追加するためのインターフェイスを提供します。 カスタム セットアップでは、既定の動作の構成または環境を変更したり (追加の Windows サービスを開始する、ファイル共有のアクセス資格情報を永続化するなど)、Azure SSIS IR の各ノードに追加のコンポーネントをインストールしたり (アセンブリ、ドライバー、または拡張機能など) することが可能です。
 
 スクリプトとその関連ファイルを準備して、それらを Azure Storage アカウントの BLOB コンテナーにアップロードすることで、カスタム セットアップを構成します。 お使いの Azure SSIS IR をプロビジョニングまたは再構成するとき、コンテナーに対して Shared Access Signature (SAS) の Uniform Resource Identifier (URI) を提供します。 Azure SSIS IR の各ノードは、その後、スクリプトとその関連ファイルをコンテナーからダウンロードし、昇格された特権を使用してカスタム セットアップを実行します。 カスタム セットアップが完了すると、各ノードは、実行の標準出力およびその他のログをコンテナーにアップロードします。
 
@@ -87,7 +87,10 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
        ![コンテナーの Shared Access Signature を取得する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  十分に長い有効期間と [読み取り]、[書き込み]、および [リスト] のアクセス許可を備えたコンテナーの SAS URI を作成します。 お使いの Azure SSIS IR の任意のノードが再イメージ化される場合は常に、カスタム セットアップ スクリプトとその関連ファイルをダウンロードして実行するために SAS URI が必要になります。 セットアップ実行ログをアップロードするには、書き込みアクセス許可が必要です。
+    7.  十分に長い有効期間と [読み取り]、[書き込み]、および [リスト] のアクセス許可を備えたコンテナーの SAS URI を作成します。 お使いの Azure SSIS IR の任意のノードが再イメージ化/再開されるときは常に、カスタム セットアップ スクリプトとその関連ファイルをダウンロードして実行するために SAS URI が必要になります。 セットアップ実行ログをアップロードするには、書き込みアクセス許可が必要です。
+
+        > [!IMPORTANT]
+        > Azure-SSIS IR の作成から削除までそのライフサイクル全体を通して、SAS URI の有効期限切れを防止すると共に、カスタム セットアップ リソースが常に利用可能な状態となるように徹底してください。当該期間に Azure-SSIS IR を定期的に停止/開始する場合は特に注意が必要です。
 
        ![コンテナーの Shared Access Signature を生成する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -112,7 +115,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 2.  他のカスタム セットアップの例を確認するには、Azure Storage Explorer を使ってパブリック プレビュー コンテナーに接続します。
 
-    a.  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、**[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、**[次へ]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、**[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、**[次へ]** を選択します。
 
        ![Shared Access Signature を使って Azure Storage に接続する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -124,7 +127,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
     c. 接続されたパブリック プレビュー コンテナーを選択して、`CustomSetupScript` フォルダーをダブルクリックします。 このフォルダーには、次のアイテムが含まれています。
 
-       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 フォルダーには、`gacutil.exe` を含む `gacutil` フォルダーも含まれます。
+       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 フォルダーには、`gacutil.exe` を含む `gacutil` フォルダーも含まれます。 加えて、`main.cmd` には、ファイル共有のアクセス資格情報を永続化するためのコメントが含まれています。
 
        2. `UserScenarios` フォルダー。実際のユーザー シナリオに対応する複数のカスタム セットアップが格納されています。
 
@@ -138,7 +141,7 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
        3. `EXCEL` フォルダー。Azure SSIS IR の各ノード上にオープンソース アセンブリ (`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll`、および `ExcelDataReader.dll`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
-       4. `MSDTC` フォルダー。Azure SSIS IR の各ノード上の Microsoft 分散トランザクション コーディネーター (MSDTC) インスタンスのネットワークおよびセキュリティの構成を変更するためのカスタム セットアップが格納されています。
+       4. `MSDTC` フォルダー。Azure SSIS IR の各ノード上の Microsoft 分散トランザクション コーディネーター (MSDTC) サービスのネットワークおよびセキュリティの構成を変更するためのカスタム セットアップが格納されています。 MSDTC が確実に開始されるようにするため、パッケージ内の制御フローの開始時に、`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` というコマンドを実行するプロセス実行タスクを追加してください。 
 
        5. `ORACLE ENTERPRISE` フォルダー。Azure SSIS IR Enterprise Edition の各ノードに Oracle OCI ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) とサイレント インストールの構成ファイル (`client.rsp`) が格納されています。 このセットアップによって、Oracle 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) から最新の Oracle クライアントを、たとえば、`winx64_12102_client.zip` をダウンロードし、`main.cmd` と `client.rsp` と共にコンテナーにアップロードします。 TNS を使用して Oracle に接続する場合、`tnsnames.ora` をダウンロードし、編集し、コンテナーにアップロードする必要があります。そのため、セットアップ時にこのファイルを Oracle インストール フォルダーにコピーできます。
 

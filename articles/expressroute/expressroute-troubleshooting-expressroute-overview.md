@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185987"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753450"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -282,7 +282,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Microsoft とサービス プロバイダーの間の ARP を検証する
-このセクションでは、PowerShell (クラシック) コマンドを使用します。 PowerShell Azure Resource Manager コマンドを使用している場合は、サブスクリプションに対する管理者/共同管理者のアクセス権があることを確認してください。 Azure Resource Manager のコマンドを使用したトラブルシューティングについては、「[Resource Manager デプロイメント モデルでの ARP テーブルの取得][ARP]」のドキュメントをご覧ください。
+このセクションでは、PowerShell (クラシック) コマンドを使用します。 PowerShell Azure Resource Manager コマンドを使用している場合は、サブスクリプションに対する管理者/共同管理者のアクセス権があることを確認してください。 Azure Resource Manager のコマンドを使用したトラブルシューティングについては、「[Resource Manager デプロイ モデルでの ARP テーブルの取得][ARP]」のドキュメントをご覧ください。
 
 >[!NOTE]
 >ARP を取得するには、Azure Portal と Azure Resource Manager PowerShell コマンドの両方を使用できます。 Azure Resource Manager PowerShell コマンドでエラーが発生した場合、クラシック PowerShell コマンドも Azure Resource Manager ExpressRoute 回線で動作するため、クラシック PowerShell コマンドが動作するはずです。

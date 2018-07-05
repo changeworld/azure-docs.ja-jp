@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Azure Backup; VM エージェント; ネットワーク接続;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606360"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754202"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -87,10 +87,10 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 バックアップ拡張機能が正常に機能するには、Azure のパブリック IP アドレスへの接続が必要です。 この拡張機能が、VM のスナップショットを管理するコマンドを、Azure Storage エンドポイント (HTTP URL) に送信するためです。 拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
 
 VM トラフィックのルーティングに、プロキシ サーバーをデプロイすることもできます。
-##### <a name="create-a-path-for-http-traffic"></a>HTTP トラフィック用のパスを作成する
+##### <a name="create-a-path-for-https-traffic"></a>HTTP トラフィック用のパスを作成する
 
 1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
-2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加しましす (ネットワーク セキュリティ グループがある場合)。
+2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加します (ネットワーク セキュリティ グループがある場合)。
 
 VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
@@ -197,7 +197,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 1. VM が存在するリソース グループのロックを解除します 
 2. Chocolatey を使用して ARMClient をインストールします。 <br>
    https://github.com/projectkudu/ARMClient
-3. ARMClient にログインします。 <br>
+3. ARMClient にサインインします。 <br>
     `.\armclient.exe login`
 4. VM に対応する復元ポイント コレクションを取得します。 <br>
     `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771094"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754428"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -205,7 +205,7 @@ Azure を使用する利点の 1 つは、世界中のさまざまなデータ�
 
 可能性は低いのですが、自然災害やインターネット障害などの事象により、データ センター全体がオフラインになる可能性があります。 最大限の可用性を提供するため、重要なビジネス アプリケーションは複数のデータ センターでホストすることがベスト プラクティスです。 複数のリージョンを使用することで、ローカル ユーザーの待機時間が短縮され、アプリケーションの更新時に柔軟性が向上する可能性もあります。
 
-Virtual Machine や App Service など、一部のサービスでは、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用してリージョン間のフェールオーバーによるマルチリージョン サポートを可能にして、可用性の高いエンタープライズ アプリケーションをサポートできます。 例については、「[Azure の参照アーキテクチャ: 高可用性 Web アプリケーション](../../guidance/guidance-web-apps-multi-region.md)」を参照してください。
+Virtual Machine や App Service など、一部のサービスでは、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用してリージョン間のフェールオーバーによるマルチリージョン サポートを可能にして、可用性の高いエンタープライズ アプリケーションをサポートできます。 例については、[Azure リファレンス アーキテクチャの「Web アプリケーションを複数のリージョンで実行する」](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)を参照してください。
 
 >**使用する場合**: フェールオーバーとレプリケーションを利用するエンタープライズおよび高可用性アプリケーションがある場合。
 
@@ -263,9 +263,9 @@ Azure Resource Manager では、関連するリソースを論理的にグルー
 
 Azure サブスクリプションの作成または使用には、Azure アカウントを持っている必要があります。 Azure アカウントは、Azure AD、または Azure AD から信頼されているディレクトリ (職場、学校組織など) の単なる ID です。 このような組織に属していない場合でも、Azure AD から信頼されている Microsoft アカウントを使用して、常にサブスクリプションを作成できます。 オンプレミス Windows Server Active Directory を Azure AD と統合する方法については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/active-directory-aadconnect.md)」を参照してください。
 
-すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
+Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 

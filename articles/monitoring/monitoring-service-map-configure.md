@@ -3,8 +3,8 @@ title: Azure での Service Map の構成 | Microsoft Docs
 description: Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 872d5f05e4d607c9445d1af5cc9b9cb984c19e11
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204194"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752576"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -36,7 +36,7 @@ ms.locfileid: "34204194"
 ## <a name="connected-sources"></a>接続先ソース
 サービス マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して OMS エージェントに依存しています。 つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。 次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
 | Windows エージェント | [はい] | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
 | Linux エージェント | [はい] | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
@@ -49,7 +49,7 @@ Windows では、監視データの収集と送信のために System Center Ope
 
 Linux では、OMS エージェント for Linux が監視データを収集して Log Analytics に送信します。 Service Map は、OMS ダイレクト エージェントがインストールされているサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics にアタッチされているサーバーで使用できます。  
 
-Linux 用であるか Windows 用であるか、System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "OMS エージェント" と呼びます。 状況に応じて必要な場合にのみ、エージェントの特定のデプロイ名を使用します。
+Linux 用であるか Windows 用であるか、System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "*OMS エージェント*" と呼びます。 状況に応じて必要な場合にのみ、エージェントの特定のデプロイ名を使用します。
 
 サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map 内のデータは、常に OMS エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics に送信されます。
 
@@ -60,7 +60,7 @@ Log Analytics に管理グループが接続されている System Center Operat
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。  
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
   
-OMS のダイレクト エージェントを使用している場合は、OMS エージェント自体が Log Analytics または OMS ゲートウェイに接続するように構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
+OMS のダイレクト エージェントを使用している場合は、OMS エージェント自体が Log Analytics または OMS ゲートウェイに接続するように構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。 OMS ゲートウェイをデプロイおよび構成する方法の詳細については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください。  
 
 ### <a name="management-packs"></a>管理パック
 Service Map が Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに送信されます。 System Center Operations Manager エージェントを[接続された管理グループ](../log-analytics/log-analytics-om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 エージェントが直接接続されている場合、管理パックは Log Analytics によって配布されます。
@@ -75,7 +75,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 各 Windows コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1.  「[Windows コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-windows-agent.md)」の手順に従って、OMS エージェントをインストールします。
+1.  「[Azure Log Analytics を使用して環境内のコンピューターからデータを収集する](../log-analytics/log-analytics-concept-hybrid.md)」に説明されているいずれかの方法に従って、OMS エージェントをインストールします。
 2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>`InstallDependencyAgent-Windows.exe`
 3.  ウィザードに従ってエージェントをインストールします。
 4.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、%Programfiles%\Microsoft Dependency Agent\logs にあります。 
@@ -85,7 +85,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
     InstallDependencyAgent-Windows.exe /?
 
-| フラグ | [説明] |
+| フラグ | 説明 |
 |:--|:--|
 | /? | コマンド ライン オプションの一覧を取得します。 |
 | /S | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
@@ -99,7 +99,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
  
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1.  [Linux コンピューターからのデータの収集と管理](https://technet.microsoft.com/library/mt622052.aspx)に関するページで説明されている手順に従って、OMS エージェントをインストールします。
+1.  「[Azure Log Analytics を使用して環境内のコンピューターからデータを収集する](../log-analytics/log-analytics-concept-hybrid.md)」に説明されているいずれかの方法に従って、OMS エージェントをインストールします。
 2.  次のコマンドを使用して、Linux Dependency Agent を root としてインストールします。<br>`sh InstallDependencyAgent-Linux64.bin`
 3.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
 
@@ -107,7 +107,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
     InstallDependencyAgent-Linux64.bin -help
 
-| フラグ | [説明] |
+| フラグ | 説明 |
 |:--|:--|
 | -help | コマンド ライン オプションの一覧を取得します。 |
 | -s | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
@@ -115,7 +115,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| ファイル | 場所 |
+| ファイル | リージョン |
 |:--|:--|
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -143,6 +143,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 [Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能を使用することにより、PowerShell スクリプトを使用して、または、VM の Azure Resource Manager テンプレートから直接、VM に Dependency Agent を展開することができます。  Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の拡張機能が用意されています。  Azure VM 拡張機能を使用して展開した場合、エージェントは最新バージョンに自動的に更新されます。
 
 PowerShell を使用して Azure VM 拡張機能を展開するには、次の例を使用してください。
+
 ```PowerShell
 #
 # Deploy the Dependency Agent to every VM in a Resource Group
@@ -169,7 +170,8 @@ ForEach-Object {
 }
 ```
 
-Dependency Agent を各 VM で確実に展開する、さらに簡単な方法は、Azure Resource Manager テンプレートにエージェントを追加することです。  Dependency Agent は OMS Agent に依存し続けるため、[OMSAgent VM 拡張機能](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension)を最初に展開する必要があることに注意してください。  テンプレートの *resources* セクションに次の JSON スニペットを追加できます。
+Dependency Agent を各 VM で確実に展開する、さらに簡単な方法は、Azure Resource Manager テンプレートにエージェントを追加することです。  Dependency Agent は OMS Agent に依存し続けるため、[OMSAgent VM 拡張機能](../virtual-machines/extensions/oms-linux.md)を最初に展開する必要があることに注意してください。  テンプレートの *resources* セクションに次の JSON スニペットを追加できます。
+
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
 "name": "[concat(parameters('vmName'), '/DependencyAgent')]",
@@ -190,6 +192,7 @@ Dependency Agent を各 VM で確実に展開する、さらに簡単な方法�
 
 ## <a name="desired-state-configuration"></a>Desired State Configuration
 Desired State Configuration 経由で Dependency Agent をデプロイするには、次のように xPSDesiredStateConfiguration モジュールと簡単なコードを使用できます。
+
 ```
 configuration ServiceMap {
 
@@ -231,10 +234,13 @@ Node localhost
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>Linux で Dependency Agent をアンインストールする
 次のコマンドで、Linux から Dependency Agent をアンインストールすることができます。
 <br>RHEL、CentOs、または Oracle:
+
 ```
 sudo rpm -e dependency-agent
 ```
+
 Ubuntu:
+
 ```
 sudo apt -y purge dependency-agent
 ```
@@ -242,7 +248,7 @@ sudo apt -y purge dependency-agent
 Service Map のインストールまたは実行で問題が発生した場合は、こちらのセクションを参照してください。 それでも問題が解決しない場合は、Microsoft サポートにお問い合わせください。
 
 ### <a name="dependency-agent-installation-problems"></a>Dependency Agent のインストールに関する問題
-#### <a name="installer-asks-for-a-reboot"></a>インストーラーが再起動を要求する
+#### <a name="installer-prompts-for-a-reboot"></a>インストーラーが再起動を要求する
 *通常*、Dependency Agent がインストールまたはアンインストール時に再起動を要求することはありません。 ただし、まれに、インストールを続行するために Windows Server が再起動を要求することがあります。 これは、依存関係 (通常は Microsoft Visual C++ 再頒布可能ファイル) のあるファイルがロックされているため、再起動が要求される場合に生じます。
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>"Unable to install Dependency Agent: Visual Studio Runtime libraries failed to install (code = [code_number]) (Dependency Agent をインストールできません: Visual Studio ランタイム ライブラリが (code = [code_number]) をインストールできませんでした)" というメッセージが表示される
@@ -255,7 +261,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | [説明] | 解決策 |
+| コード | 説明 | 解決策 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>"Windows8.1-KB2999226-x64.msu" の次の行に "Error 0x80240017: Failed to execute MSU package (エラー 0x80240017: MSU パッケージを実行できませんでした)" と表示される場合は、KB2999226 のインストールに必要な前提条件が満たされていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関するページの前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 
@@ -272,7 +278,7 @@ Dependency Agent のインストールに成功しても、サービス マッ�
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  結果としてさまざまなイベントを取得しましたか?  そのデータは最近のものですか?  そうであれば、OMS エージェントは正しく動作しており、Log Analytics と通信しています。 そうでなければ、お使いのサーバーの OMS エージェントを確認してください ([Windows 用 OMS エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot- monitoring-onboarding-issues)または [Linux 用 OMS エージェントのトラブルシューティング](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)に関するページを参照)。
+  結果としてさまざまなイベントを取得しましたか?  そのデータは最近のものですか?  そうであれば、OMS エージェントは正しく動作しており、Log Analytics と通信しています。 そうでなければ、お使いのサーバーの OMS エージェントを確認してください ([Windows 用 OMS エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues)または [Linux 用 OMS エージェントのトラブルシューティング](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)に関するページを参照)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Service Map にサーバーは表示されるがプロセスが表示されない
 サービス マップにサーバーは表示されるがプロセスまたは接続データは表示されないという場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったということを意味しています。 

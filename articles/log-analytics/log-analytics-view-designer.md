@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91d4efcd7fabc2f284078d752ea68778a9bd8d86
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29939871"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752041"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Azure Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure Portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -37,7 +37,7 @@ ms.locfileid: "29939871"
 
 ビュー デザイナーで作成するビューには、次の表で説明する要素が含まれます。
 
-| パーツ | [説明] |
+| パーツ | 説明 |
 |:--- |:--- |
 | タイル | Log Analytics ワークスペースの **[概要]** ページに表示されます。 各タイルには、それが表しているカスタム ビューの視覚的な概要が表示されます。 各タイルの種類では、レコードのさまざまな視覚化が提供されます。 カスタム ビューを表示するにはタイルを選択します。 |
 | カスタム ビュー | タイルを選択すると表示されます。 各ビューには、1 つまたは複数の視覚化パーツが含まれます。 |
@@ -51,17 +51,18 @@ ms.locfileid: "29939871"
 
 各オプションについては次の表で説明します。
 
-| オプション | [説明] |
+| オプション | 説明 |
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
-| 分析 | ログ検索を使ってデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md#advanced-analytics-portal)が開きます。 |
-| filter    | ビューに含まれるデータの時間フィルターを設定します。 |
-| 編集      | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
-| 複製     | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
+| Analytics | ログ検索を使ってデータを分析するための[高度な分析ポータル](log-analytics-log-search-portals.md#advanced-analytics-portal)が開きます。 |
+| 編集       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
+| 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
+| 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 |
+| +          | ビューに定義されるカスタム フィルターを定義します。 |
 
 
 ## <a name="create-a-new-view"></a>新しいビューを作成する
-Log Analytics ワークスペースの **[概要]** ページにある **[ビュー デザイナー]** タイルを選択すると、ビュー デザイナーで新しいビューを作成できます。
+Log Analytics ワークスペースのメニューで **[ビュー デザイナー]** タイルを選択すると、ビュー デザイナーで新しいビューを作成できます。
 
 ![ビュー デザイナー タイル](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -96,7 +97,7 @@ Log Analytics ワークスペースの **[概要]** ページにある **[ビュ
 
 ![[編集] メニュー](media/log-analytics-view-designer/edit-menu.png)
 
-| オプション | [説明] |
+| オプション | 説明 |
 |:--|:--|
 | 保存        | 変更を保存し、ビューを閉じます。 |
 | キャンセル      | 変更を破棄し、ビューを閉じます。 |
@@ -104,7 +105,6 @@ Log Analytics ワークスペースの **[概要]** ページにある **[ビュ
 | エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
 | [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
-| [発行]     | [管理ソリューション](../operations-management-suite/operations-management-suite-solutions-resources-views.md)に挿入できる JSON ファイルにビューをエクスポートします。 ファイル名はビューの名前と同じですが、拡張子は *json* です。 もう 1 つのファイル (拡張子 *resjson*) が作成され、JSON ファイルで定義されているリソースの値が格納されます。
 
 ## <a name="next-steps"></a>次の手順
 * [タイル](log-analytics-view-designer-tiles.md)をカスタム ビューに追加します。

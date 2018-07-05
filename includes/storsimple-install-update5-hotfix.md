@@ -4,7 +4,7 @@
 
 次の手順を実行して、Microsoft Update カタログからソフトウェア更新プログラムをダウンロードします。
 
-1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) に移動します。
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
     ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -28,7 +28,7 @@
 通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。 Azure Portal を使用して既にインストールしてある場合は、[メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
 
 1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter**キーを押します。
-2. **[オプション 1]** を選択して、フル アクセスでデバイスにログオンします。 まず、パッシブ コントローラーに修正プログラムをインストールすることをお勧めします。
+2. オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。 まず、パッシブ コントローラーに修正プログラムをインストールすることをお勧めします。
 3. 修正プログラムをインストールするには、コマンド プロンプトで次のように入力します。
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -82,7 +82,7 @@
     > [!NOTE]
     > 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。 修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。 False の場合、修正プログラムは完了しています。
 
-7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 次のコマンドを入力します。
+7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 次のコマンドを入力します: 
    
     `Get-HcsSystem`
    
@@ -164,7 +164,7 @@ KB4037263 を使用して、ディスク ファームウェアの更新プログ
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。 更新が完了すると、`RunInProgress` が `False` に変わります。
-4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 フル アクセスを持つオプション 1 としてログインし、ディスク ファームウェアのバージョンを確認します。 次のコマンドを入力します。
+4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 次のコマンドを入力します: 
    
    `Get-HcsFirmwareVersion`
    

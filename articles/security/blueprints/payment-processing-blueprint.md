@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301373"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751840"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境
 
@@ -242,8 +242,7 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 - セキュリティ保護された Virtual Network 内でのホストと、ネットワーク セキュリティ規則
 - HTTPS 通信用の自己署名 ILB 証明書で構成された ASE
 - [内部負荷分散モード](/azure/app-service-web/app-service-environment-with-internal-load-balancer) (モード 3)
-- 
-  [TLS 1.0](/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化 - PCI DSS の観点から非推奨になった TLS プロトコル
+- [TLS 1.0](/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化 - PCI DSS の観点から非推奨になった TLS プロトコル
 - [TLS 暗号](/azure/app-service-web/app-service-app-service-environment-custom-settings)の変更
 - [受信トラフィック N/W ポート](/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)のコントロール 
 - [WAF – データの制限](/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -299,7 +298,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このソリューションをデプロイするためのコンポーネントは、[PCI Blueprint のコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
+このソリューションをデプロイするためのコンポーネントは、[PCI ブループリントのコード リポジトリ](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms)から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは、手順 2 のプライマリ デプロイ スクリプトのガイド付きユーザー プロンプトを通じて指定します。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
 
 スクリプトにより、指定した Azure AD テナントにドメイン ユーザーが追加されます。 テストとして使用する新しい Azure AD テナントを作成することをお勧めします。
 
@@ -324,19 +323,17 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    詳細な使用手順については、「[Script Instructions - Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)」(スクリプトの手順 - Azure リソースのデプロイと構成) をご覧ください。
+    詳細な使用手順については、「[Script Instructions - Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)」(スクリプトの手順 - Azure リソースのデプロイと構成) をご覧ください。 このスクリプトは、Contoso Web Store のデモをサポートするため、または PCI コンプライアンスをサポートするための環境をデプロイする初期ステップを試行するために使用できます。 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    Contoso Web Store のデモのデプロイをサポートするための詳細な使用方法については、[Contoso Web Store デモ Azure リソースのスクリプトの使用方法](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md)に関するページを参照してください。 このスクリプトは、Contoso Web Store デモ インフラストラクチャのデプロイに使用できます。 
+    
+    これらのスクリプトは、互いに独立して使用することが想定されています。 ソリューションを最もよく理解するには、ソリューションのサポートに必要な Azure リソースを特定するためのデモ デプロイを完了することをお勧めします。 
     
 3. ログ記録と監視。 ソリューションのデプロイ後は、Log Analytics ワークスペースを開くことができ、ソリューションのリポジトリで提供されているサンプル テンプレートを使用して、監視ダッシュボードをどのように構成できるかを示すことができます。 サンプル テンプレートについては、[omsDashboards フォルダー](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)を参照してください。 テンプレートが正しくデプロイされるために、データが Log Analytics に収集される必要があります。 これには、サイトの活動によっては、最大 1 時間かそれ以上かかる場合があります。
  

@@ -6,7 +6,7 @@
 3. デバイスに設定する言語を選択するように求められます。 言語を指定し、**Enter** キーを押します。
    
     ![StorSimple によるデバイスの構成および登録 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。
+4. 表示されるシリアル コンソール メニューで、オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。
    
     ![StorSimple によるデバイスの登録 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
 5. 次の手順を実行して、デバイスで必要な最小のネットワーク設定を構成します。

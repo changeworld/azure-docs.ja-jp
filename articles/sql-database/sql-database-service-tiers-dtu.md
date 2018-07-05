@@ -1,46 +1,29 @@
 ---
-title: Azure SQL Database サービス - DTU | Microsoft Docs
+title: Azure SQL Database サービス レベル - DTU | Microsoft Docs
 description: 単一のデータベースとプールされたデータベースに対してパフォーマンス レベルとストレージ サイズを提供するサービス レベルについて説明します。
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 075e04db27006719ec7d6e08eb2696436d1010f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cf17ec616819da94678f2ae4f0f0ca283f99f629
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648651"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750426"
 ---
-# <a name="dtu-based-purchasing-model-for-azure-sql-database"></a>Azure SQL Database の DTU ベースの購入モデル 
+# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>DTU ベースのサービス レベル、パフォーマンス レベル、ストレージ リソースの選択 
 
-
-[Azure SQL Database](sql-database-technical-overview.md) には、コンピューティング、ストレージ、および IO リソースに対して 2 つの購入モデルが用意されています。1 つは DTU ベースの購入モデルで、もう 1 つは仮想コアベースの購入モデル (プレビュー) です。 次の表とグラフは、この 2 つの購入モデルを比較しています。
-
-> [!IMPORTANT]
-> 仮想コア ベースの購入モデル (プレビュー) については、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
-
-
-|**購入モデル**|**説明**|**最適な用途**|
-|---|---|---|
-|DTU ベースのモデル|このモデルは、コンピューティング、ストレージ、および IO リソースのバンドルされた測定値に基づいています。 パフォーマンス レベルは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-what-is-a-dtu.md)に関する記事をご覧ください。|シンプルな構成済みリソースのオプションを希望するお客様に最適です。| 
-|仮想コアベースのモデル|このモデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングできます。 また、SQL Server 向けの Azure ハイブリッド特典を使用して、コストを削減することもできます。|柔軟性、制御、および透明性を重視するお客様に最適です。|
-||||  
-
-![価格モデル](./media/sql-database-service-tiers/pricing-model.png)
-
-## <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
-
-データベース スループット ユニット (DTU) は、CPU、メモリ、読み取り、書き込みの測定値を組み合わせて算出されます。 DTU ベースの購入モデルは、事前構成済みコンピューティング リソースと付属ストレージのバンドル セットを提供することで、さまざまなレベルのアプリケーション パフォーマンスを実現します。 事前構成済みバンドルと毎月支払う料金が決まっているというシンプルさを好むお客様については、この DTU ベースのモデルがニーズに適している可能性があります。 DTU ベースの購入モデルでは、[単一データベース](sql-database-single-database-resources.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方について、お客様が **Basic**、**Standard**、**Premium** のいずれかのサービス レベルを選択できます。 サービス レベルは、固定の付属ストレージ容量、固定のバックアップ リテンション期間、および固定の価格を持つさまざまなパフォーマンス レベルによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでパフォーマンス レベルを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルおよびパフォーマンス レベルに基づいて、時間単位で課金されます。
+サービス レベルは、固定の付属ストレージ容量、固定のバックアップ リテンション期間、および固定の価格を持つさまざまなパフォーマンス レベルによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでパフォーマンス レベルを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルおよびパフォーマンス レベルに基づいて、時間単位で課金されます。
 
 > [!IMPORTANT]
 > SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。 
 
-## <a name="choosing-a-service-tier-in-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルでのサービス レベルの選択
+## <a name="choosing-a-dtu-based-service-tier"></a>DTU ベースのサービス レベルの選択
 
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
 ||Basic|標準|Premium|
@@ -55,41 +38,31 @@ ms.locfileid: "34648651"
 |インメモリ OLTP|該当なし|該当なし|サポートされています|
 |||||
 
-## <a name="performance-level-and-storage-size-limits-in-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルのパフォーマンス レベルとストレージ サイズの制限
+## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
-パフォーマンス レベルは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-what-is-a-dtu.md)に関する記事をご覧ください。
-
-### <a name="single-databases"></a>Single Database
+パフォーマンス レベルは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)に関する記事をご覧ください。
 
 ||Basic|標準|Premium|
 | :-- | --: | --: | --: | --: |
-| 最大ストレージ サイズ* | 2 GB | 1 TB (テラバイト) | 4 TB  | 
+| 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  | 
 | 最大 DTU | 5 | 3000 | 4000 | |
 ||||||
 
-単一データベースに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[単一データベースに対する SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels)に関するページをご覧ください。
-
-### <a name="elastic-pools"></a>エラスティック プール
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされているデータベースの上限
 
 | | **Basic** | **Standard** | **Premium** | 
 | :-- | --: | --: | --: | --: |
-| データベースあたりの最大ストレージ サイズ*  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) | 
-| プールあたりの最大ストレージ サイズ* | 156 GB | 4 TB | 4 TB | 
+| データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) | 
+| プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB | 
 | データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 | 
 | プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 | 
 | プールあたりのデータベースの最大数 | 500  | 500 | 100 | 
 ||||||
 
 > [!IMPORTANT]
-> - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
-> - 英国北部、米国中西部、英国南部 2、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 利用可能なリージョンは今後拡大予定です。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
-> 
-エラスティック プールに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels)に関するページをご覧ください。
-
-
+> 現在、英国北部、米国中西部、英国南部 2、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、US Gov 中南部、ドイツ北東部、中国北部、US Gov 東部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次の手順
 
-- 選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits.md)および [SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits.md)に関するページをご覧ください。
-- よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
-- 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+- 単一データベースに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[単一データベースに対する SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)に関するページをご覧ください。
+- エラスティック プールに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels)に関するページをご覧ください。

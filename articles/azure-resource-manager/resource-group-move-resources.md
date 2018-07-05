@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602722"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36940163"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -57,7 +57,7 @@ ms.locfileid: "34602722"
   移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。
 
   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
-  * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)
+  * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. サービスでリソースの移動機能を有効にする必要があります。 この記事で、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
 3. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
@@ -93,6 +93,8 @@ ms.locfileid: "34602722"
    * ソース リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action**。
    * ターゲット リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/write**。
 
+5. リソースを移動する前に、リソースの移動先となるサブスクリプションのサブスクリプション クォータをチェックします。 リソースを移動することでサブスクリプションが制限を上回る場合、クォータの引き上げを要求できるかどうかを確認する必要があります。 制限の一覧と引き上げを要求する方法については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+
 5. 可能であれば、大規模な移動は個別の移動操作に分けます。 Resource Manager で単一の操作で 800 を超えるリソースを移動しようとすると、すぐに失敗します。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
 
 ## <a name="when-to-call-support"></a>サポートに問い合わせる場合
@@ -115,6 +117,7 @@ ms.locfileid: "34602722"
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書
 * Application Insights
+* Analysis Services
 * Automation
 * Azure Cosmos DB
 * Azure Relay
@@ -153,9 +156,10 @@ ms.locfileid: "34602722"
 * Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
-* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。 
+* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
+* Time Series Insights
 * Traffic Manager
-* Virtual Machines - 管理ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
+* Virtual Machines - マネージド ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Machine Scale Sets - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
@@ -174,7 +178,8 @@ ms.locfileid: "34602722"
 * Azure Migrate
 * BizTalk Services
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
-* DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
+* Container Service
+* DevTest Labs - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
@@ -189,7 +194,7 @@ ms.locfileid: "34602722"
 
 ## <a name="virtual-machines-limitations"></a>Virtual Machines の制限事項
 
-管理ディスクは移動をサポートしていません。 この制限は、いくつかの関連リソースも移動できないことを意味します。 次のものは移動できません。
+マネージド ディスクは移動をサポートしていません。 この制限は、いくつかの関連リソースも移動できないことを意味します。 以下を移動することはできません。
 
 * 管理ディスク
 * 管理ディスクを使用する仮想マシン
@@ -202,7 +207,7 @@ ms.locfileid: "34602722"
 * [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) または [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) で、マネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
 * [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) or [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)で既存のマネージド OS ディスクを使用して仮想マシンを作成する
 
-プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプション間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
+プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 
@@ -224,7 +229,7 @@ App Service のリソースを移動することに関しての制限事項は�
 
 ### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 
-Web アプリを_同じサブスクリプション内_で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。
+Web アプリを "_同じサブスクリプション内_" で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。
 
 SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
@@ -252,7 +257,7 @@ Web App を_サブスクリプション間_で移動する場合には、次の�
 
 リソースを同じサブスクリプション内のリソース グループ間で移動する場合は、次の制限が適用されます。
 
-* Virtual Networks (クラシック) を移動することはできません。
+* 仮想ネットワーク (クラシック) を移動することはできません。
 * Virtual Machines (クラシック) はクラウド サービスで移動する必要があります。
 * クラウド サービスは、移動にその仮想マシンがすべて含まれている場合にのみ移動できます。
 * 一度に移動できるクラウド サービスは 1 つだけです。
@@ -338,7 +343,7 @@ Azure Site Recovery では、ディザスター リカバリーの設定に使�
  1. バックアップを一時的に停止し、バックアップ データを保持します
  2. VM をターゲット リソース グループに移動します
  3. 同じコンテナーまたは新しいコンテナーで VM を再び保護します。ユーザーは、移動操作の前に作成された使用可能な復元ポイントから復元できます。
-バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。 Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
+バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。 Recovery Services コンテナーでは、異なるサブスクリプション間のバックアップはサポートされていません。
 
 ## <a name="hdinsight-limitations"></a>HDInsight の制限事項
 

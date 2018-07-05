@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: b970d01c586e016d47b0f0480d73f06211969814
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294882"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330596"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する方法
 この記事では、Azure Portal を使用して、IoT Hub からデータを読み取るイベント ソースを Time Series Insights 環境に追加する方法を説明します。
@@ -25,6 +25,22 @@ ms.locfileid: "36294882"
 - IoT Hub を作成します。 IoT Hub の詳細は、「[Azure Portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」をご覧ください。
 - IoT Hub には、アクティブなメッセージ イベントが送信される必要があります。
 - IoT Hub に Time Series Insight 環境で使用する専用コンシューマー グループを作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 詳細については、[IoT Hub 開発者ガイド](../iot-hub/iot-hub-devguide.md)をご覧ください。
+
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub へのコンシューマー グループの追加
+コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 IoT Hub から確実にデータを読み取るため、この Time Series Insights 環境でのみ使用する専用のコンシューマー グループを提供します。
+
+新しいコンシューマー グループを IoT Hub に追加するには、次の手順に従います。
+1. Azure Portal で、IoT Hub を見つけて開きます。
+
+2. **[メッセージング]** 見出しの下にある **[エンドポイント]** を選択します。 
+
+   ![コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. **[イベント]** エンドポイントを選択します。すると、**[プロパティ]** ページが開きます。
+
+4. **[コンシューマー グループ]** 見出しの下で、コンシューマー グループの新しい一意の名前を指定します。 Time Series Insights 環境で新しいイベント ソースを作成する場合に、これと同じ名前を使用します。
+
+5. **[保存]** を選択して新しいコンシューマー グループを保存します。
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 1. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -73,27 +89,13 @@ ms.locfileid: "36294882"
    | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
    | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
 
-10. **[作成]** を選択して、新しいイベント ソースを追加します。
+10. IoT Hub に追加した、専用の TSI コンシューマー グループ名を追加します。
+
+11. **[作成]** を選択して、新しいイベント ソースを追加します。
 
    ![Click Create](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub へのコンシューマー グループの追加
-コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 IoT Hub から確実にデータを読み取るため、この Time Series Insights 環境でのみ使用する専用のコンシューマー グループを提供します。
-
-新しいコンシューマー グループを IoT Hub に追加するには、次の手順に従います。
-1. Azure Portal で、IoT Hub を見つけて開きます。
-
-2. **[メッセージング]** 見出しの下にある **[エンドポイント]** を選択します。 
-
-   ![コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. **[イベント]** エンドポイントを選択します。すると、**[プロパティ]** ページが開きます。
-
-4. **[コンシューマー グループ]** 見出しの下で、コンシューマー グループの新しい一意の名前を指定します。 Time Series Insights 環境で新しいイベント ソースを作成する場合に、これと同じ名前を使用します。
-
-5. **[保存]** を選択して新しいコンシューマー グループを保存します。
 
 ## <a name="next-steps"></a>次の手順
 - [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。

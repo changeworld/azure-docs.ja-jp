@@ -9,55 +9,57 @@ ms.service: iot-hub
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: Kevin.Saye
-ms.openlocfilehash: 98a30155c73a937042b4bea6568543fb5152d748
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 08aed809184cbb65d632e1fb6f4b9bd25747e349
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726680"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751076"
 ---
-# <a name="query-avro-data-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
 
-この記事では、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明します。 ブログ投稿のお知らせ「[Azure IoT Hub メッセージのルーティング: メッセージ本文でルーティングできるようになりました]」(Azure IoT Hub メッセージのルーティング: メッセージ本文でルーティングできるようになりました) に従い、IoT Hub ではプロパティまたはメッセージ本文のいずれでもルーティングがサポートされます。 「[メッセージ本文でのルーティング][Routing on message bodies]」もご覧ください。 
+この記事では、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明します。 ブログ記事「[Azure IoT Hub メッセージのルーティング: メッセージ本文でルーティングできるようになりました]」(Azure IoT Hub メッセージのルーティング: メッセージ本文でルーティングできるようになりました) でお知らせしたように、IoT Hub ではプロパティまたはメッセージ本文のいずれでもルーティングがサポートされます。 詳細については、「[メッセージ本文でのルーティング][Routing on message bodies]」を参照してください。 
 
-Azure IoT Hub が BLOB ストレージにメッセージをルーティングするときに、IoT Hub ではメッセージ本文とメッセージ プロパティの両方を持つコンテンツが Avro 形式で書き込まれるという問題がありました。 IoT Hub では Avro データ形式の BLOB ストレージへのデータの書き込みのみがサポートされますが、この形式は他のエンドポイントでは使用されません。 「[Azure Storage コンテナーを使うとき][When using Azure storage containers]」をご覧ください。 Avro 形式は、データ/メッセージの保存に適していますが、データのクエリが困難です。 比較すると、JSON または CSV 形式はデータのクエリがはるかに簡単です。
+Azure IoT Hub が Azure Blob Storage にメッセージをルーティングするときに、IoT Hub ではメッセージ本文のプロパティとメッセージのプロパティの両方を持つコンテンツが Avro 形式で書き込まれるという問題がありました。 IoT Hub では Avro データ形式の BLOB ストレージへのデータの書き込みのみがサポートされますが、この形式は他のエンドポイントでは使用されません。 詳細については、「[Azure Storage コンテナーを使うとき][When using Azure storage containers]」を参照してください。 Avro はデータとメッセージの保存には最適な形式ですが、データのクエリ用途には使うのは容易ではありません。 比較すると、JSON または CSV 形式はデータのクエリがはるかに簡単です。
 
-これを解決するために、データの転送とスケーリングの両方にビッグ データ パターンの多くを使用して、非リレーショナル ビッグ データのニーズと形式に対応できます。 パターンの 1 つとして、"クエリごとの支払い" パターンである Azure Data Lake Analytics (ADLA) があります。 この記事ではこれに注目します。 Hadoop やその他のソリューションでクエリを簡単に実行できますが、多くの場合、ADLA の方がこの "クエリごとの支払い" アプローチに適しています。 U-SQL には Avro 用の "エクストラクター" があります。 「[U-SQL Avro の例]」(U-SQL Avro の例) をご覧ください。
+非リレーショナル ビッグデータのニーズと形式に対応し、この課題を克服するために、データの変換とスケーリングのいずれにおいても、ビッグデータ パターンの多くを使用することができます。 そのようなパターンの 1 つとして、"クエリごとの支払い" である Azure Data Lake Analytics があり、この記事では、この点について重点的に取り上げています。 クエリは Hadoop やその他のソリューションで簡単に実行できますが、多くの場合、Data Lake Analytics の方がこの "クエリごとの支払い" アプローチに適しています。 
+
+U-SQL には Avro 用の "エクストラクター" があります。 詳細については、[U-SQL Avro の例]を参照してください。
 
 ## <a name="query-and-export-avro-data-to-a-csv-file"></a>Avro データのクエリと CSV ファイルへのエクスポート
-このセクションでは、Azure Blob Storage での Avro データのクエリの実行と CSV ファイルへのエクスポートの手順について説明しますが、他のリポジトリまたはデータ ストアにデータを簡単に配置できます。
+このセクションでは、Avro データを照会して Azure Blob Storage 内の CSV ファイルにエクスポートしますが、他のリポジトリやデータ ストアに対してもデータを簡単に配置することができます。
 
 1. メッセージ本文のプロパティを使用して Azure Blob Storage エンドポイントにデータをルーティングし、メッセージを選択するように Azure IoT Hub を設定します。
 
-    ![手順 1a. の画面キャプチャ][img-query-avro-data-1a]
+    ![[カスタム エンドポイント] セクション][img-query-avro-data-1a]
 
-    ![手順 1b. の画面キャプチャ][img-query-avro-data-1b]
+    ![[ルート] コマンド][img-query-avro-data-1b]
 
-2. 製品ドキュメントで参照されているように、プロパティまたはメッセージ本文にデバイスのエンコード、コンテンツ タイプ、および必要なデータが含まれていることを確認します。 Device Explorer で表示すると (下記参照)、これらの属性が正しく設定されていることを確認できます。
+2. 製品ドキュメントで参照されているように、プロパティまたはメッセージ本文にデバイスのエンコード、コンテンツ タイプ、および必要なデータが含まれていることを確認します。 これらの属性を Device Explorer で見ると (下図参照)、それらが正しく設定されていることを確認できます。
 
-    ![手順 2. の画面キャプチャ][img-query-avro-data-2]
+    ![イベント ハブのデータ ペイン][img-query-avro-data-2]
 
-3. Azure Data Lake Store (ADLS) と Azure Data Lake Analytics インスタンスを設定します。 Azure IoT Hub は、Azure Data Lake Store にルーティングしませんが、ADLA はこれを必要とします。
+3. Azure Data Lake Store インスタンスと Data Lake Analytics インスタンスを設定します。 Data Lake Analytics インスタンスは、Data Lake Store インスタンスへのルーティングを必要としますが、Azure IoT Hub では、それが行われません。
 
-    ![手順 3. の画面キャプチャ][img-query-avro-data-3]
+    ![Data Lake Store インスタンスと Data Lake Analytics インスタンス][img-query-avro-data-3]
 
-4. ADLA で、Azure Blob Storage を追加のストア (Azure IoT Hub がデータをルーティングするのと同じ Blob Storage) として構成します。
+4. Data Lake Analytics で、Azure Blob Storage を追加のストア (Azure IoT Hub がデータをルーティングするのと同じ Blob Storage) として構成します。
 
-    ![手順 4. の画面キャプチャ][img-query-avro-data-4]
+    ![[データ ソース] ウィンドウ][img-query-avro-data-4]
  
-5. 「[U-SQL Avro の例]」(U-SQL Avro の例) で説明されているように、必要な DLL が 4 つあります。  ADLS 内の場所にこれらのファイルをアップロードします。
+5. [U-SQL Avro の例]にもあるように、4 つの DLL ファイルが必要となります。 これらのファイルを Data Lake Store インスタンス内の場所にアップロードします。
 
-    ![手順 5. の画面キャプチャ][img-query-avro-data-5] 
+    ![アップロードされた 4 つの DLL ファイル][img-query-avro-data-5] 
 
-6. Visual Studio で、U-SQL プロジェクトを作成します
+6. Visual Studio で、U-SQL プロジェクトを作成します。
  
-    ![手順 6. の画面キャプチャ][img-query-avro-data-6]
+    ![U-SQL プロジェクトの作成][img-query-avro-data-6]
 
-7. 次のスクリプトの内容をコピーし、新しく作成されたファイルに貼り付けます。 3 つの強調表示されたセクション (ADLA アカウント、関連する DLL のパス、ストレージ アカウントの正しいパス) を変更します。
+7. 次のスクリプトの内容を、新しく作成されたファイルに貼り付けます。 3 つの強調表示されたセクション (Data Lake Analytics アカウント、関連する DLL ファイルのパス、ストレージ アカウントの正しいパス) を変更します。
     
-    ![手順 7a. の画面キャプチャ][img-query-avro-data-7a]
+    ![修正する 3 つのセクション][img-query-avro-data-7a]
 
-    CSV に単純な出力を行う実際の U-SQL スクリプト:
+    CSV ファイルに単純な出力を行う実際の U-SQL スクリプト:
     
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -121,16 +123,15 @@ Azure IoT Hub が BLOB ストレージにメッセージをルーティングす
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```    
 
-    次に示すスクリプトを実行すると、限定された 10 個の分析単位で 177 ファイルを処理し、CSV ファイルに出力を要約するのに ADLA は 5 分を要しました。
+    Data Lake Analytics が次のスクリプトを実行するのにかかった時間は 5分です。その際、分析ユニットは 10 個に制限され、177 個のファイルが処理されました。 その結果は、次の画像に表示されている CSV ファイル出力に示されます。
     
-    ![手順 7b. の画面キャプチャ][img-query-avro-data-7b]
+    ![CSV ファイルへの出力の結果][img-query-avro-data-7b]
 
-    出力を表示すると、Avro コンテンツが CSV ファイルに変換されていることを確認できます。 JSON を解析する場合は、手順 8 に進みます。
-    
-    ![手順 7c. の画面キャプチャ][img-query-avro-data-7c]
+    ![CSV ファイルに変換された出力][img-query-avro-data-7c]
 
+    JSON を解析するには、手順 8. に進んでください。
     
-8. ほとんどの IoT メッセージは JSON 形式です。  次の行を追加すると、メッセージを JSON に解析できるので、WHERE 句を追加して必要なデータのみを出力することができます。
+8. ほとんどの IoT メッセージは JSON ファイル形式です。 次の行を追加すると、メッセージを解析して JSON ファイルに出力できます。WHERE 句を追加して必要なデータのみを出力することが可能です。
 
     ```sql
        @jsonify = SELECT Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(Encoding.UTF8.GetString(Body)) AS message FROM @rs;
@@ -154,9 +155,9 @@ Azure IoT Hub が BLOB ストレージにメッセージをルーティングす
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-9. 出力を表示すると、select コマンド内の各項目の列が表示されています。 
+    出力結果には、`SELECT` コマンドの項目ごとに 1 つの列が表示されます。 
     
-    ![手順 8. の画面キャプチャ][img-query-avro-data-8]
+    ![各項目に対応した列を示す出力][img-query-avro-data-8]
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明しました。

@@ -1,6 +1,6 @@
 ---
-title: Service Fabric でのサービスのリモート処理 | Microsoft Docs
-description: Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用してサービスと通信できるようにします。
+title: Service Fabric での C# を使用したサービスのリモート処理 | Microsoft Docs
+description: Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用して C# サービスと通信できるようにします。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,15 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 672bdd3ddb5b32b82d83322eadce2a594b13ce5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad56580e73c06acff95b3146f6dc2d83ab2ba3ae
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643534"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945974"
 ---
-# <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
-WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。
+# <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
+> [!div class="op_single_selector"]
+> * [Windows での C#](service-fabric-reliable-services-communication-remoting.md)
+> * [Linux での Java](service-fabric-reliable-services-communication-remoting-java.md)
+>
+>
+
+WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。 この記事では、C# で作成されたサービス向けにリモート プロシージャ コールを設定する方法について説明します。
 
 ## <a name="set-up-remoting-on-a-service"></a>サービスでのリモート処理の設定
 サービスのリモート処理の設定は、次の 2 つの簡単な手順で行われます。
@@ -83,7 +89,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 リモート処理フレームワークは、サービスでスローされた例外をクライアントに伝達します。 結果として、`ServiceProxy` を使うときは、サービスによってスローされた例外をクライアントが処理する必要があります。
 
 ## <a name="service-proxy-lifetime"></a>サービス プロキシの有効期間
-ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、ユーザーがそれを必要とする間、再利用することができます。 リモート プロシージャ呼び出しから例外がスローされても、ユーザーは同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが発生したときに、内部チェックが通信クライアントが有効かどうかが確認されます。 その結果に基づいて、必要に応じて通信クライアントが再作成されます。 この処理は透過的に行われるため、例外が発生してもユーザーは `ServiceProxy` の再作成を行う必要はありません。
+ServiceProxy の作成は負荷の低い処理であり、必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、それらが必要とされる間、再利用することができます。 リモート プロシージャ コールから例外がスローされても、同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが実行されると、通信クライアントが有効かどうかを調べる内部チェックが実行されます。 それらのチェックの結果に基づき、必要に応じて通信クライアントが再作成されます。 したがって例外が発生しても、`ServiceProxy` を自分で再作成する必要はありません。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 プロキシの作成に api `ServiceProxy.Create` を使用する場合、フレームワークによってシングルトン ServiceProxy が作成されます。
@@ -98,27 +104,32 @@ ServiceProxy は、それが作成されたサービス パーティションの
 一時的な例外が発生した場合、プロキシは呼び出しを再試行します。
 
 既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
+
 ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
-## <a name="how-to-use-remoting-v2-stack"></a>リモート処理 V2 スタックを使用する方法
-2.8 NuGet リモート処理パッケージを使用すると、リモート処理 V2 スタックを使用するオプションを選択できます。 リモート処理 V2 スタックは高性能で、カスタムのシリアル化などの機能と、より多くのプラグ可能な API を提供します。
-既定では、次の変更を行わない場合、リモート処理 V1 スタックが引き続き使用されます。
-リモート処理 V2 は V1 (以前のリモート処理スタック) と互換性がないため、サービスの可用性に影響を与えずに V1 から V2 にアップグレードする方法については次の記事に従ってください。
 
-### <a name="using-assembly-attribute-to-use-v2-stack"></a>V2 のスタックを使用するための Assembly 属性の使用
+## <a name="how-to-use-the-remoting-v2-stack"></a>リモート処理 V2 スタックを使用する方法
 
-V2 スタックへの変更に必要な手順は次のとおりです。
+NuGet リモート処理パッケージ バージョン 2.8 では、リモート処理 V2 スタックを使用するオプションを選択できます。 リモート処理 V2 スタックは高性能で、カスタムのシリアル化などの機能と、より多くのプラグ可能な API を提供します。
+テンプレート コードでは、引き続きリモート処理 V1 スタックが使用されます。
+リモート処理 V2 は V1 (以前のリモート処理スタック) と互換性がないため、サービスの可用性に影響を与えずに [V1 から V2 にアップグレードする方法](#how-to-upgrade-from-remoting-v1-to-remoting-v2)に関する下記の手順に従ってください。
 
-1. サービス マニフェストで "ServiceEndpointV2" という名前を持つエンドポイント リソースを追加します。
+V2 スタックを有効にするには、次の方法を使用できます。
+
+### <a name="using-an-assembly-attribute-to-use-the-v2-stack"></a>V2 スタックを使用するためのアセンブリ属性の使用
+
+これらの手順では、V2 スタックを使用するために、アセンブリ属性を使ってテンプレート コードを変更します。
+
+1. サービス マニフェストで `"ServiceEndpoint"` から `"ServiceEndpointV2"` にエンドポイント リソースを変更します。
 
   ```xml
   <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpointV2" />  
+      <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
   </Resources>
   ```
 
-2.  リモート処理リスナーを作成するには、リモート処理拡張メソッドを使用します。
+2. `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` 拡張メソッドを使用して、リモート処理リスナーを作成します (V1 と V2 の両方で同一)。
 
   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -127,27 +138,32 @@ V2 スタックへの変更に必要な手順は次のとおりです。
     }
   ```
 
-3.  リモート処理インターフェイスで Assembly 属性を追加します。
+3. `FabricTransportServiceRemotingProvider` 属性でリモート処理インターフェイスが含まれているアセンブリをマークします。
 
   ```csharp
   [assembly: FabricTransportServiceRemotingProvider(RemotingListener = RemotingListener.V2Listener, RemotingClient = RemotingClient.V2Client)]
   ```
-クライアント プロジェクトでは、変更は必要ありません。
-上記の Assembly 属性が確実に使用されるように、インターフェイス アセンブリを使用してクライアント アセンブリをビルドします。
 
-### <a name="using-explicit-v2-classes-to-create-listener-clientfactory"></a>明示的な V2 クラスを使用して Listener/ ClientFactory を作成する
-実行する手順は次のとおりです。
-1.  サービス マニフェストで "ServiceEndpointV2" という名前を持つエンドポイント リソースを追加します。
+クライアント プロジェクトでは、コードの変更は必要ありません。
+上記のアセンブリ属性が確実に使用されるように、インターフェイス アセンブリを使用してクライアント アセンブリをビルドします。
+
+### <a name="using-explicit-v2-classes-to-use-the-v2-stack"></a>V2 スタックを使用するための明示的な V2 クラスの使用
+
+アセンブリ属性を使用する代わりに、明示的な V2 クラスを使用して V2 スタックを有効にすることもできます。
+
+これらの手順では、V2 スタックを使用するために、明示的な V2 クラスを使ってテンプレート コードを変更します。
+
+1. サービス マニフェストで `"ServiceEndpoint"` から `"ServiceEndpointV2"` にエンドポイント リソースを変更します。
 
   ```xml
   <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpointV2" />  
+      <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
   </Resources>
   ```
 
-2. [リモート処理 V2 リスナー](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet)を使用します。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2" であり、サービス マニフェストで定義する必要があります。
+2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間から [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) を使用します。
 
   ```csharp
   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -163,7 +179,8 @@ V2 スタックへの変更に必要な手順は次のとおりです。
     }
   ```
 
-3. V2 [クライアント ファクトリ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)を使用します。
+3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間から [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) を使用して、クライアントを作成します。
+
   ```csharp
   var proxyFactory = new ServiceProxyFactory((c) =>
           {

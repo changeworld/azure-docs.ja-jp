@@ -2,19 +2,19 @@
 title: Azure SQL Database 監査の使用 | Microsoft Docs
 description: Azure SQL Database 監査を使用して、データベースイベントを追跡し、監査ログに書き込みます。
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 62c6e576a5ef7fa953618dcba4ddd158df131148
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644591"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751045"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -200,12 +200,17 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API - BLOB 監査**:
 
-* [データベース BLOB 監査ポリシーの作成または更新](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [サーバー BLOB 監査ポリシーの作成または更新](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [データベース BLOB 監査ポリシーの取得](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [サーバー BLOB 監査ポリシーの取得](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 * [サーバー BLOB 監査操作結果の取得](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
+WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
+* [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

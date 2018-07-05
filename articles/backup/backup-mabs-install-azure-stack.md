@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248896"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753355"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -42,18 +42,9 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 | SQL Server 2016 | データベース |
 | SQL Server 2014 | データベース |
 | SQL Server 2012 SP1 | データベース |
+| SharePoint 2016 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2013 | ファーム、データベース、フロントエンド、Web サーバー |
 | SharePoint 2010 | ファーム、データベース、フロントエンド、Web サーバー |
-
-
-### <a name="host-vs-guest-backup"></a>ホストとゲストのバックアップの比較
-
-Azure Backup Server は仮想マシンのホストまたはゲストレベルのバックアップを実行します。 ホスト レベルでは、Azure Backup エージェントは仮想マシンまたはクラスターにインストールされ、ホストで実行されている仮想マシン全体とデータ ファイルを保護できます。 ゲスト レベルでは、Azure Backup エージェントが各仮想マシンにインストールされ、そのコンピューター上のワークロードを保護します。
-
-どちらの方法も、次のような長所と短所があります。
-
-   * ホスト レベルのバックアップはゲスト マシンで実行されている OS に関係なく動作し、各 VM に Azure Backup エージェントがインストールされている必要はありません。 ホスト レベルのバックアップをデプロイすると、仮想マシン全体、またはファイルとフォルダー (項目レベルの回復) を回復します。
-   * ゲスト レベルのバックアップは、仮想マシンで実行されている特定のワークロードを保護するのに便利です。 ホスト レベルでは、VM 全体または特定のファイルを回復できますが、特定のアプリケーションのコンテキストではデータを回復しません。 たとえば、保護された仮想マシンから特定の SharePoint のファイルを回復するには、VM をゲストレベルで保護する必要があります。 パススルー ディスクの格納データを保護する場合は、ゲスト レベルのバックアップを使用する必要があります。 パススルーは、仮想マシンがストレージ デバイスに直接アクセスすることを許可し、仮想ボリューム データを VHD ファイル内に格納しません。
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Azure Backup Server 環境の前提条件
 
@@ -84,13 +75,10 @@ Azure Backup Server は、運用の復旧のために、仮想マシンに接続
 
 Azure にバックアップ データを保存するには、Recovery Services コンテナーを作成または使用します。 Azure Backup Server ワークロードのバックアップを準備するときに、[Recovery Services コンテナーを構成](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)します。 構成が完了した後は、バックアップ ジョブが実行されるたびに、コンテナーに復旧ポイントが作成されます。 各 Recovery Services コンテナーは、最大 9999 個の復旧ポイントを保持します。 作成された復旧ポイントの数と保持期間に応じて、バックアップ データを長年にわたって保持することができます。 たとえば、毎月の復旧ポイントを作成して 5 年間保持することができます。
  
-### <a name="using-sql-server"></a>SQL Server の使用
-Azure Backup Server データベースにリモート SQL Server を使用する場合は、SQL Server を実行する Azure Stack VM のみを選択します。
-
 ### <a name="scaling-deployment"></a>展開のスケーリング
 展開をスケーリングするには、次の選択肢があります。
   - スケールアップ - Azure Backup Server 仮想マシンのサイズを A シリーズから D シリーズに増やし、[Azure Stack 仮想マシンの手順に従って](../azure-stack/user/azure-stack-manage-vm-disks.md)ローカル記憶域を増やします。
-  - データをオフロードする - 古いデータを Azure Backup Server に送信し、Azure Backup Server に接続された記憶域に最新のデータのみを保持します。
+  - データをオフロードする - 古いデータを Azure に送信し、Azure Backup Server に接続された記憶域に最新のデータのみを保持します。
   - スケールアウト - Azure Backup Server をさらに追加してワークロードを保護します。
 
 ### <a name="net-framework"></a>.NET Framework
@@ -216,7 +204,7 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
 
 ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Server は Data Protection Manager とコードを共有します。 Azure Backup Server インストーラーに Data Protection Manager と DPM への参照が表示されます。 Azure Backup Server と Data Protection Manager の別個の製品ですが、密接に関連しています。 Azure Backup Server のドキュメントでは、Data Protection Manager と DPM への参照はすべて Azure Backup Server に適用されます。
+Azure Backup Server は Data Protection Manager とコードを共有します。 Azure Backup Server インストーラーに Data Protection Manager と DPM への参照が表示されます。 Azure Backup Server と Data Protection Manager の別個の製品ですが、密接に関連しています。
 
 1. セットアップ ウィザードを起動するには、**[Microsoft Azure Backup Server]** をクリックします。
 
@@ -322,7 +310,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
 ## <a name="add-backup-storage"></a>Backup ストレージの追加
 
-一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクを追加する方法の詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
+一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクの追加の詳細については、[Modern Backup Storage の追加](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801)に関するページを参照してください。
 
 > [!NOTE]
 > Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。 Azure Backup Server のアーキテクチャでは、Azure Backup コンテナーにはデータの " *2 番目の* " コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
@@ -372,10 +360,10 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 
 ## <a name="next-steps"></a>次の手順
 
-[DPM 環境の準備](https://technet.microsoft.com/library/hh758176.aspx)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
+[DPM 環境の準備](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)の関する記事には、サポートされている Azure Backup Server の構成についての情報が含まれています。
 
 次の記事を確認して、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 
-- [SQL Server のバックアップ](backup-azure-backup-sql.md)
-- [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
+- [SQL Server のバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint サーバーのバックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)

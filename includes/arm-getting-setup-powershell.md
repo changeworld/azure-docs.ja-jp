@@ -24,7 +24,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
+Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にサインインします。
 
     Connect-AzureRmAccount
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807477"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937620"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -49,7 +49,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 1. **[Real]\(実物\)** または **[シミュレート]** を選択します。 実物のデバイスとは、Azure IoT Central アプリケーションに接続する物理デバイスのことです。 シミュレートされたデバイスには、Azure IoT Central によって生成されたサンプル データが含まれています。 この例では、実物のデバイスを使用します。 **[Real]\(実物\)** を選択すると、新しいデバイスの **[デバイスの詳細]** ページに移動します。
 
 
-## <a name="bulk-import-devices"></a>デバイスの一括インポート
+## <a name="import-devices"></a>デバイスのインポート
 
 アプリケーションに多数のデバイスを接続するために、Azure IoT Central では、CSV ファイルを使用してデバイスを一括インポートする機能が提供されています。 
 
@@ -65,9 +65,12 @@ CSV ファイルの要件:
 
 1. 左側のパネルで一括作成するデバイスのデバイス テンプレートを選択します。
 
-1. **[新規]**、**[一括インポート]** の順に選択します。
+ >   [!NOTE] 
+    まだデバイス テンプレートがない場合は、**[Unassociated devices]\(関連付けられていないデバイス\)** の下にデバイスをインポートし、テンプレートなしでデバイスを登録できます。 デバイスをインポートしたら、後続の手順でテンプレートに関連付けることができます。
 
-    [![一括インポート操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. **[インポート]** をクリックします。
+
+    [![インポート アクション](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. インポートするデバイス ID の一覧を含む CSV ファイルを選択します。
 
@@ -75,9 +78,25 @@ CSV ファイルの要件:
 
 1. インポートが完了すると、デバイス グリッドに完了メッセージが表示されます。
 
-    [![一括インポート完了](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![インポート成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 デバイスのインポート操作が失敗した場合は、デバイス グリッドにエラー メッセージが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成され、エラー メッセージをクリックするとダウンロードできます。
+
+
+**デバイスをテンプレートに関連付ける**
+
+**[Unassociated devices]\(関連付けられていないデバイス\)** でインポートを開始してデバイスを登録すると、デバイス テンプレートが関連付けられていないデバイスが作成されます。 デバイスに関するデータやその他の詳細を調べるには、デバイスをテンプレートに関連付ける必要があります。 デバイスをテンプレートに関連付けるには、次の手順に従います。
+1. 左側のナビゲーション メニューで **[エクスプローラー]** を選択します。
+1. 左側のパネルで、**[Unassociated devices]\(関連付けられていないデバイス\)** を選択します。
+    [![[Unassociated devices]\(関連付けられていないデバイス\)](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. テンプレートに関連付けるデバイスを選択します。
+1. **[関連付け]** オプションをクリックします。
+    [![デバイスの関連付け](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. 使用可能なテンプレートの一覧からテンプレートを選択し、**[関連付け]** ボタンをクリックします。
+1. 選択したデバイスが、それぞれのデバイス テンプレートの下に移動されます。
+
+ >   [!NOTE] 
+    いったんデバイスをテンプレートに関連付けると、関連付けを解除したり、そのデバイスを別のテンプレートに関連付けたりすることはできません。
 
 ## <a name="export-devices"></a>デバイスのエクスポート
 
@@ -86,7 +105,7 @@ IoT Central に接続するデバイスをプロビジョニングするには�
 アプリからデバイスを一括でエクスポートするには:
 1. 左側のナビゲーション メニューで **[エクスプローラー]** を選択します。
 
-1. 左側のパネルでエクスポートするデバイスのデバイス テンプレートを選択します。
+1. 左側のパネルで、デバイスをエクスポートするデバイス テンプレートを選択します。
 
 1. エクスポートするデバイスを選択して、**エクスポート** アクションをクリックします。
 

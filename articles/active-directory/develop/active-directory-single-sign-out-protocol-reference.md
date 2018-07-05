@@ -3,7 +3,7 @@ title: Azure でのシングル サインアウトの SAML プロトコル | Mic
 description: この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
-author: priyamohanram
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
@@ -14,21 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: priyamo
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin
+ms.openlocfilehash: c8373df67adbb93e25ab5a31a254efe70581d32d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155499"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317679"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
+
 Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。
 
 次の図では、Azure AD のシングル サインアウト プロセスのワークフローを示します。
 
-![シングル サインアウトのワークフロー](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
+![Azure AD シングル サインアウトのワークフロー](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
 クラウド サービスは `LogoutRequest` メッセージを Azure AD に送信して、セッションが終了されたことを示します。 `LogoutRequest` 要素の例を次に示します。
@@ -43,9 +45,9 @@ Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シン�
 ### <a name="logoutrequest"></a>LogoutRequest
 Azure AD に送信される `LogoutRequest` 要素には、次の属性が必要です。
 
-* `ID` : サインアウト要求を示します。 `ID` の値は、数字以外で始まっている必要があります。 一般的な方法としては、GUID の文字列表現の前に **id** を付加します。
-* `Version` : この要素の値は **2.0**に設定します。 この値は必須です。
-* `IssueInstant` : 世界協定時刻 (UTC) の値と[ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx) を含む `DateTime` 文字列です。 Azure AD ではこの型の値が期待されますが、必須ではありません。
+* `ID` - サインアウト要求を示します。 `ID` の値は、数字以外で始まっている必要があります。 一般的な方法としては、GUID の文字列表現の前に **id** を付加します。
+* `Version` - この要素の値は **2.0**に設定します。 この値は必須です。
+* `IssueInstant` - 世界協定時刻 (UTC) の値と[ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx) を含む `DateTime` 文字列です。 Azure AD ではこの型の値が期待されますが、必須ではありません。
 
 ### <a name="issuer"></a>発行者
 `LogoutRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。

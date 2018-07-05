@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 23bbbe9cf86268f93ae1f8fcec9303efa8a673de
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796718"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751780"
 ---
 # <a name="understanding-policy-effects"></a>Policy の効果について
 
@@ -90,7 +90,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 "then": {
     "effect": "append",
     "details": [{
-        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
         "value": [{
             "action": "Allow",
             "value": "134.5.0.0/21"
@@ -304,7 +304,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="layering-policies"></a>階層化ポリシー
 
-リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当ては、同じスコープ (特定のリソース、リソース グループ、サブスクリプション、または管理グループ) である場合も異なるスコープである場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 しかしながら、(直接、またはイニシアチブの一環として割り当てられている) 各ポリシーの条件および効果は個別に評価されます。 たとえば、ポリシー 1 には Deny 効果でサブスクリプション A の場所が 'westus' に作成されるのを制限する条件があり、Audit 効果で (サブスクリプション A 内にある) リソース グループ B のリソースが 'eastus' に作成されるのを制限するポリシー 2 が両方割り当てられている場合、結果は次のようになります。
+リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当ては、同じスコープ (特定のリソース、リソース グループ、サブスクリプション、または管理グループ) である場合も異なるスコープである場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 しかしながら、(直接、またはイニシアチブの一環として割り当てられている) 各ポリシーの条件および効果は個別に評価されます。 たとえば、Deny 効果でサブスクリプション A のリソースの場所が "westus" にのみ作成されるよう制限する条件が設定されたポリシー 1 と、Audit 効果で (サブスクリプション A 内にある) リソース グループ B のリソースの場所が "eastus" のみに作成されるよう制限する条件が設定されたポリシー 2 の両方が割り当てられている場合、結果は次のようになります。
 
 - 'eastus' 内のリソース グループ B の既存のリソースは、ポリシー 2 に準拠しますが、ポリシー 1 に対しては非準拠とマークされます。
 - 'eastus' 内にないリソース グループ B の既存のリソースは、ポリシー 2 に対して非準拠とマークされ、'westus' でない場合はポリシー 1 にも非準拠とマークされます。

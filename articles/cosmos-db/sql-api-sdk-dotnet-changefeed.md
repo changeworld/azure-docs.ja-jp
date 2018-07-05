@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: a2770b9349dac8caa8e0611d77522ab56ca1bf07
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798865"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937419"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -74,6 +74,17 @@ ms.locfileid: "34798865"
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
 
 ### <a name="pre-release-builds"></a>プレリリース ビルド
+
+### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
+* 次の問題が修正されました。
+  * パーティション分割が発生すると、分割前に修正されたドキュメントの処理が重複する可能性があります。
+  * リース コレクションにリースが存在しない場合、GetEstimatedRemainingWork API は 0 を返しました。
+
+* 次の例外が公開されました。 IPartitionProcessor を実装する拡張機能では、次の例外をスローすることができます。
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException。 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException。 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException。
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException。 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
 * マイナーな API の変更:

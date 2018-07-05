@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dba5a094ce4dfd55efd892c268e903d89fff90a9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 15f21fd03b0373c189f3b6c4972280d128024217
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269597"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943523"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
@@ -145,7 +145,7 @@ ACU: 180 ～ 240
 <br>
 
 
-## <a name="dsv2-series"></a>DSv2 シリーズ 
+## <a name="dsv2-series-11-15"></a>DSv2 シリーズ 11 - 15
 
 ACU: 210 - 250 <sup>1</sup>
 
@@ -168,7 +168,7 @@ ACU: 210 - 250 <sup>1</sup>
 
 <br>
 
-## <a name="dv2-series"></a>Dv2 シリーズ
+## <a name="dv2-series-11-15"></a>Dv2 シリーズ 11 - 15
 
 ACU: 210 ～ 250
 

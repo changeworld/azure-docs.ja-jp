@@ -42,7 +42,7 @@ Azure Monitor の自動スケール機能では、実行する VM の数を[メ�
 
 ### <a name="horizontal"></a>水平
 
-スケール セットの容量を変更すると、VM を追加または削除できます。 Azure Portal では [スケーリング] 画面の [Override condition]\(上書き条件\) バーを左右に動かすことによって、スケール セットの VM の数 (表示は **[インスタンス数]**) を調節できます。
+スケール セットの容量を変更すると、VM を追加または削除できます。 Azure Portal では [スケーリング] 画面の [Override condition]\(オーバーライド条件\) バーを左右に動かすことによって、スケール セットの VM の数 (表示は **[インスタンス数]**) を調節できます。
 
 Azure PowerShell を使用する場合には、[Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) を使ってスケール セット オブジェクトを取得する必要があります。 オブジェクトを取得したら **sku.capacity** プロパティに必要な VM の数を設定し、[Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) を使ってスケール セットを更新します。 Azure CLI を使用する場合には、**--new-capacity** パラメーターを使用して [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) コマンドを実行すると、容量を変更できます。
 
@@ -50,7 +50,7 @@ Azure PowerShell を使用する場合には、[Get-AzureRmVmss](https://docs.mi
 
 Azure Portal では、スケール セットの [サイズ] 画面で VM のサイズを手動で変更できます。 Azure PowerShell の場合には、Get-AzureRmVmss を使用し、イメージ参照 SKU のプロパティを設定したうえで、[Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) と [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - スケール セットの詳細については、「[スケール セットの設計上の考慮事項](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview.md)」を参照してください。
 

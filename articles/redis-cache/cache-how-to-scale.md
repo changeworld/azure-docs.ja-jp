@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d88fcea4a41d8402cc25a1623727284afb0e9088
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240226"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959384"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache のスケーリング方法
 Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -154,7 +154,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 * 別のサイズにスケーリングする場合、**Basic** キャッシュはオフラインになります。 **Basic** から **Standard** にスケーリングする際は、Basic キャッシュを引き続き利用できますが、接続の中断がわずかに発生する可能性があります。 接続の中断が発生しても、Redis クライアントはすぐに接続を再確立できます。
 
 
-### <a name="scaling-limitations-with-geo-relication"></a>geo レプリケーションのスケーリング制限
+### <a name="scaling-limitations-with-geo-replication"></a>geo レプリケーションのスケーリング制限
 
 2 つのキャッシュ間で geo レプリケーションを追加すると、スケーリング操作を監視したり、クラスターのシャード数を変更したりできなくなります。 これらのコマンドを発行するには、キャッシュのリンクを解除する必要があります。 詳細については、「[geo レプリケーションの構成](cache-how-to-geo-replication.md)」を参照してください。
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885270"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752923"
 ---
 # <a name="management-solutions-in-azure"></a>Azure の管理ソリューション
 管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
@@ -52,21 +52,17 @@ ms.locfileid: "33885270"
 ![ソリューションのプロパティ](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>管理ソリューションの検索
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) で Microsoft およびパートナーから利用可能な管理ソリューションを参照してインストールできます。 ["*管理ソリューション*" の検索](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)を実行して、管理ソリューションのフィルター処理を行い、任意の項目をクリックして詳細を確認します。
-
-![マーケットプレース](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>管理ソリューションのインストール
+Microsoft およびパートナーの管理ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>Azure Marketplace から管理ソリューションをインストールする
-次のいずれかの方法を使用して、管理ソリューションのインストールを検索して開始できます。
+1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-management-solutions)で、**[追加]** をクリックします。 
+1. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 
+1. 目的の管理ソリューションを見つけ、その説明を読みます。
+1. **[作成]** をクリックして、インストール プロセスを開始します。
+1. インストール プロセスが開始されると、ソリューションごとに異なる必要な構成を提供するように求められます。 どの構成でも、ソリューションがインストールされる Log Analytics ワークスペースと、データが収集される場所を選択する必要があります。 
 
-- [Azure Marketplace](#find-management-solutions) の管理ソリューションにある **[Get it now]\(今すぐ入手\)** をクリックします。
-- [お使いのサブスクリプションのソリューションの一覧](#list-installed-management-solutions)で、**[追加]** をクリックします。 **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 目的の管理ソリューションを検索して、**[作成]** をクリックします。
-- Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** > **[See all] (すべてを表示)** を選択します。 **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 目的の管理ソリューションを検索して、**[作成]** をクリックします。
-
-インストール プロセスが開始されると、ソリューションごとに異なる必要な構成を提供するように求められます。 どの構成でも、ソリューションがインストールされる Log Analytics ワークスペースと、データが収集される場所を選択する必要があります。 また、ソリューションごとの要求に応じて、[Automation アカウントを指定](#log-analytics-workspace-and-automation-account)することが必要になる場合があります。
+![ソリューションをインストールする](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>コミュニティからソリューションをインストールする
 コミュニティのメンバーは、Azure クイック スタート テンプレートに管理ソリューションを提出できます。 これらのソリューションを直接インストールするか、または後でインストールするためにテンプレートにダウンロードできます。

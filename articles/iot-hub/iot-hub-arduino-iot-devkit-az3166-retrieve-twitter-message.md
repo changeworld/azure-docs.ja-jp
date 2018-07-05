@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 0c3df0642d36aa1c4471c433fe9c1d3fa3b0880d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a4605a1668d25d5a90dc7d7873efa83ddc767ff
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631763"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752685"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -36,7 +36,7 @@ ms.locfileid: "34631763"
 
 ### <a name="start-vs-code"></a>VS Code の起動
 
-- DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。
+- DevKit がお使いのコンピューターに接続されていることを確認します。
 - VS Code を起動します。
 - DevKit をコンピューターに接続します。
 
@@ -45,7 +45,10 @@ ms.locfileid: "34631763"
 
 ### <a name="open-arduino-examples-folder"></a>[Arduino Examples]\(Arduino の例\) フォルダーを開く
 
-左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[ShakeShake]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[ShakeShake]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。  
+
+> [!NOTE]
+> MXCHIP AZ3166 セクションが表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
