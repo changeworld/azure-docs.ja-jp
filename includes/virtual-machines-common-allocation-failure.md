@@ -19,7 +19,7 @@ ms.locfileid: "33901331"
 
 **エラー コード**: AllocationFailed または ZonalAllocationFailed
 
-**エラー メッセージ**:「Allocation failed. We do not have sufficient capacity for the requested VM size in this region. Read more about improving likelihood of allocation success at http://aka.ms/allocation-guidance」(割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、http://aka.ms/allocation-guidance をご覧ください)
+**エラー メッセージ**:「Allocation failed. We do not have sufficient capacity for the requested VM size in this region. Read more about improving likelihood of allocation success at http://aka.ms/allocation-guidance」 (割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、 http://aka.ms/allocation-guidance をご覧ください)
 
 この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な対処方法を提案します。
 

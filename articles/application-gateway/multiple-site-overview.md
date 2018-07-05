@@ -32,7 +32,7 @@ ms.locfileid: "32160513"
 
 http://contoso.com の要求は ContosoServerPool にルーティングされ、http://fabrikam.com は FabrikamServerPool にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる http://blog.contoso.com、http://app.contoso.com などがあります。
+同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる http://blog.contoso.com 、 http://app.contoso.com などがあります。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 
