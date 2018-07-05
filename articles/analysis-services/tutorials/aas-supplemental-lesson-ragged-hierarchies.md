@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9882b2b1855db72101a5a9cf75a309d05167b093
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9fdf332727c4d66af2d5394fb26e84f6ea9d963f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597486"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440767"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 

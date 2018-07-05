@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712166"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440793"
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32151945"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109462"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
@@ -175,7 +175,7 @@ var signature = digest.toString('base64');
 [Delegating product subscription]: #delegate-product-subscription
 [シングル サインオン (SSO) トークンを要求]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [ユーザーを作成]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[成果物のサブスクリプションのための REST API を呼び出して]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
+[成果物のサブスクリプションのための REST API を呼び出して]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [コードの例を次に示します]: #delegate-example-code
 

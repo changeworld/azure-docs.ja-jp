@@ -3,7 +3,7 @@ title: Log Analytics の VMware の監視ソリューション | Microsoft Docs
 description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: na
+ms.openlocfilehash: a538b23e829e309c10e745beef4fc8512c3294de
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019291"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131429"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
@@ -196,7 +197,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
   1. Log Analytics は、ポート 1514 をリッスンします。 このポートが開いていることを確認するには、`netstat -a | grep 1514` コマンドを実行します。
   2. ポート `1514/tcp` が開いていることがわかります。 この情報が表示されない場合は、omsagent が正しくインストールされていることを確認します。 ポート情報が表示されない場合、VM で syslog ポートが開いていません。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
+    a. `ps -ef | grep oms` を使用して、OMS エージェントが実行されていることを確認します。 実行されていない場合は、` sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
 
     b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` ファイルを開きます。
 

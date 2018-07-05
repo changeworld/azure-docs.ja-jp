@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4cb7b165311f57fadd63770646907ddfc0378844
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597129"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445022"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 

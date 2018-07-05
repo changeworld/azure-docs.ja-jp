@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service (AKS) クラスターの削除
 description: CLI または Azure Portal を使用して AKS クラスターを削除します。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 2/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6391e36eff60634e07a90c1e6b5f0f44ee60d46b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 66dcebb702695a6601f6ed17b85a04d5bb4e01f6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936447"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100045"
 ---
 # <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの削除
 
@@ -32,7 +32,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster
 
 `az aks delete` コマンドでは以下のオプションを使用できます。
 
-| 引数 | [説明] | 必須 |
+| 引数 | 説明 | 必須 |
 |---|---|:---:|
 | `--name` `-n` | 管理対象クラスターのリソース名。 | はい |
 | `--resource-group` `-g` | Azure Kubernetes Service リソース グループの名前。 | はい |

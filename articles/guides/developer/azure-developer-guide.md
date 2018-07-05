@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: f4dfc376e49ac26f0c054282994a29d9a7d2b54b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754428"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442173"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -80,7 +80,8 @@ VM の場合は細かいレベルで制御できるため、Azure 上で PaaS �
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (サーバーレス)
 
-アプリケーションまたはコードを実行するインフラストラクチャ全体を構築し、管理する心配は不要です。 コードを作成し、イベントやスケジュールに応答して実行させるだけでよいとしたらどうしますか。  [Azure Functions](../../azure-functions/functions-overview.md) は、必要なコードを作成するだけで済む "サーバーレス" スタイルのサービスです。 Functions を使用すると、コードの実行は HTTP 要求、webhook、クラウド サービス イベント、またはスケジュールに応じてトリガーされます。 C\#、F\#、Node.js、Python、PHP など、好きな言語でコードを開発することもできます。 使用量ベースの課金の場合、コードの実行時にのみ課金されます。また、必要に応じて Azure は拡大縮小されます。
+アプリケーションまたはコードを実行するインフラストラクチャ全体を構築し、管理する心配は不要です。 コードを作成し、イベントやスケジュールに応答して実行させるだけでよいとしたらどうしますか。  
+  [Azure Functions](../../azure-functions/functions-overview.md) は、必要なコードを作成するだけで済む "サーバーレス" スタイルのサービスです。 Functions を使用すると、コードの実行は HTTP 要求、webhook、クラウド サービス イベント、またはスケジュールに応じてトリガーされます。 C\#、F\#、Node.js、Python、PHP など、好きな言語でコードを開発することもできます。 使用量ベースの課金の場合、コードの実行時にのみ課金されます。また、必要に応じて Azure は拡大縮小されます。
 
 >**使用する場合**: 他の Azure サービス、Web ベースのイベント、またはスケジュールに応じてトリガーされるコードがある場合に、Azure Functions を使用します。 また、完全なホスト型プロジェクトのオーバーヘッドが必要ない場合、またはコードの実行時にのみ料金を支払いたい場合にも Functions を使用できます。 詳細については、「[Azure Functions の作業開始](../../azure-functions/functions-overview.md)」を参照してください。
 
@@ -111,7 +112,8 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 
     >**開始**: [Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-sql-api-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
 
--   **Azure Storage**: BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
+-   
+  **Azure Storage**: BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
 
     >**使用する場合**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
 
@@ -265,11 +267,11 @@ Azure サブスクリプションの作成または使用には、Azure アカ�
 
 すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
+Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ばれます) を定義できるだけでなく、*グループ*も定義できます。 ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション内のリソースへのアクセスを管理するには、ユーザー グループを作成することをお勧めします。 グループの作成の詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。 [PowerShell を使用](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)してグループの作成と管理を行うこともできます。
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスの論理ユニットです。 サブスクリプションには、関連付けられている各アカウントに 1 つのロールがあります。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション プランの種類別一覧については、「[Microsoft Azure プランの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスの論理ユニットです。 サブスクリプションには、関連付けられている各アカウントに 1 つのロールがあります。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。
 
 #### <a name="administrator-roles"></a>管理者ロール
 

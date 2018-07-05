@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9c589f8bf8189961f88a6ae1d66f1fd9e17e9bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ee8dab24d53c7f3563d741ff74e49b0b87cda6da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711112"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442503"
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Node.js Web アプリにサインインを追加する
 

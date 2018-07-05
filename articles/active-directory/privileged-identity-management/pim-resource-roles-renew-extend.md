@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: cd1524bf03256a2ed706d11a8702c7b5eff5dad4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0f4919fb11d50269f5d4f5956e956bae31c96dc7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260507"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442306"
 ---
 # <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのロールを延長してレビューします。
 

@@ -8,19 +8,19 @@ manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 074c305cb15bc1fb25dfa5cfc52dcce53b661a7e
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 446cb34f2de8d0de3ee52e23df6cd26644d31bba
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324187"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435972"
 ---
 # <a name="custom-roles-in-azure"></a>Azure のカスタム ロール
 

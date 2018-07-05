@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: ab24dc98ef4c767f04dc083ac6208e2c9d831935
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 15a4e2fa981617c538edf3731bf9457bf172213c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616806"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113121"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -51,7 +51,7 @@ IoT のユース ケースでは、データの取り込み、処理、および
 
 Azure Cosmos DB、EventHubs、および Storm を使用したサンプルの IoT ソリューションについては、「[hdinsight-storm-examples repository on GitHub (GitHub 上の hdinsight-storm-examples リポジトリ)](https://github.com/hdinsight/hdinsight-storm-examples/)」を参照してください。
 
-IoT に対する Azure サービスの詳細については、[モノのインターネットの作成](http://www.microsoft.com/server-cloud/internet-of-things.aspx)に関するページを参照してください。 
+IoT に対する Azure サービスの詳細については、 [モノのインターネットの作成](https://www.microsoft.com/en-us/internet-of-things)に関するページを参照してください。 
 
 ## <a name="retail-and-marketing"></a>小売とマーケティング
 Azure Cosmos DB は、Windows ストアおよび XBox Live を実行する Microsoft の独自の電子商取引プラットフォームで広く使用されています。 小売り業界ではカタログ データの格納や、順次処理パイプラインのイベント ソーシングにも使用できます。
@@ -110,7 +110,7 @@ Azure Cosmos DB の使用を開始するには、[クイック スタート](cre
 * [トヨタ](https://www.toyota.com/)。 トヨタ自動車は日本の自動車メーカーです。 トヨタでは、グローバル IoT アプリに Cosmos DB を活用しています。
 * [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix では、Azure Service Fabric および Azure Cosmos DB を使用してシングル サインオン ソリューションを開発しています。
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA の革新的な車両所有者向け IoT ソリューションは、時間、費用、ガソリンを節約し、ひいては生活全般の負担を軽減します。
-* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカ合衆国のピザ レストラン チェーンです。
+* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカのピザ レストラン チェーンです。
 * [Johnson Controls](http://www.johnsoncontrols.com)。 Johnson Controls は、150 か国以上で幅広い顧客にサービスを提供する、グローバルな総合テクノロジーおよび多業種のリーダーです。
 * [Microsoft Windows、ユニバーサル ストア、Azure IoT Hub、Xbox Live、その他のインターネット規模のサービス](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft が Azure Cosmos DB を使用して大規模でスケーラブルなサービスを構築する方法。
 * [Microsoft のデータと分析チーム](https://customers.microsoft.com/story/microsoftdataandanalytics)。 マイクロソフトのデータと分析チームは、Azure Cosmos DB を使用して、地球規模のビッグデータの収集を実現しました。

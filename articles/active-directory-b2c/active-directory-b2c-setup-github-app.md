@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16c7f34c00bbd5bd0c2be53df2b781a1852b84ff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3754a169b301bac97f3e12d10b754222e3cf325d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712210"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443343"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C: GitHub アカウントでコンシューマーにサインアップおよびサインインを提供する
 

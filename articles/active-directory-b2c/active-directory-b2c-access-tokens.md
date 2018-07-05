@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2da5d05767dddfe653e0a0ba65a21b7e755b3828
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 58a0a1e8be7ad5a119204b52b5263943dcef0192
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330720"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441228"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 

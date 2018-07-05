@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7c0a72e03eaa8d12c26b1bbbf6a05b4d94e72358
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 86ef621eccc7e6ba999318348f940a6a3931274e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709908"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442408"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Android アプリケーションを使用してサインインする
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1b6aea5152e9eb5152b400d74d834e31eb883458
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515351"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110235"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -40,7 +40,7 @@ ms.locfileid: "31515351"
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="True">  
+<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">  
     <value>Value1</value>  
     <value>Value2</value>  
 </check-header>  
@@ -56,14 +56,14 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |check-header|ルート要素。|[はい]|  
 |value|許可される HTTP ヘッダーの値。 複数の要素を指定した場合、いずれかの値に一致すればチェックは成功とみなされます。|いいえ |  
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|[はい]|該当なし|  
 |failed-check-httpcode|ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。|[はい]|該当なし|  
@@ -111,7 +111,7 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|[はい]|  
 |api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
@@ -119,7 +119,7 @@ ms.locfileid: "31515351"
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |name|レート制限の適用対象になる API の名前。|[はい]|該当なし|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|[はい]|該当なし|  
@@ -170,13 +170,13 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|[はい]|該当なし|  
 |counter-key|レート制限ポリシーに使用するキー。|[はい]|該当なし|  
@@ -213,7 +213,7 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |ip-filter|ルート要素。|[はい]|  
 |address|フィルターを適用する単一の IP アドレスを指定します。|`address` 要素または `address-range` 要素は少なくとも 1 つ必要です。|  
@@ -221,7 +221,7 @@ ms.locfileid: "31515351"
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |address-range from="address" to="address"|アクセスを許可または拒否する IP アドレスの範囲。|`address-range` 要素を使用する場合は必須です。|該当なし|  
 |ip-filter action="allow &#124; forbid"|指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。|[はい]|該当なし|  
@@ -266,7 +266,7 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |quota|ルート要素。|[はい]|  
 |api|製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。|いいえ |  
@@ -274,7 +274,7 @@ ms.locfileid: "31515351"
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |name|クォータを適用する API または操作の名前。|[はい]|該当なし|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
@@ -327,13 +327,13 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|Name|[説明]|必須|  
+|Name|説明|必須|  
 |----------|-----------------|--------------|  
 |quota|ルート要素。|[はい]|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |bandwidth|`renewal-period` で指定した期間中に許可する最大合計キロバイト数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
 |calls|`renewal-period` で指定した期間中に許容する最大呼び出し総数。|`calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。|該当なし|  
@@ -484,7 +484,7 @@ ms.locfileid: "31515351"
   
 ### <a name="elements"></a>要素  
   
-|要素|[説明]|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |validate-jwt|ルート要素。|[はい]|  
 |audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。|いいえ |  
@@ -496,7 +496,7 @@ ms.locfileid: "31515351"
   
 ### <a name="attributes"></a>属性  
   
-|Name|[説明]|必須|既定値|  
+|Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |clock-skew|期間。 トークンの発行者と API Management インスタンスのシステム クロックの間に予想される最大時間差を指定するために使用します。|いいえ |0 秒|  
 |failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|いいえ |既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  

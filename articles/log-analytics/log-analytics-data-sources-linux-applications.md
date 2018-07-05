@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168284"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127353"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する 
 この記事では、特定のアプリケーションのパフォーマンス カウンターを収集するように [OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
@@ -77,7 +78,7 @@ MySQL OMI プロバイダーのインストールには、MySQL OMI 認証ファ
 
 次の表は、mycimprovauth を使用するための構文に関する詳細を示しています。
 
-| 操作 | 例 | [説明]
+| 操作 | 例 | 説明
 |:--|:--|:--|
 | autoupdate *false または true* | mycimprovauth autoupdate false | 再起動または更新で認証ファイルが自動的に更新されるかどうかを設定します。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | MySQL OMI 認証ファイル内の既定のインスタンスを設定します。<br>パスワード フィールドは、プレーンテキストで入力してください。MySQL OMI 認証ファイル内のパスワードは Base 64 でエンコードされます。 |

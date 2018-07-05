@@ -9,12 +9,12 @@ ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 705f7bfa62154bff62b2357bd8f33c01e97404d1
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3dfb0fe0227fdd0ff1a43cb7b0a89eb9d3e066f4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035442"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097939"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -33,11 +33,11 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 * ご使用の環境内の [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
 * [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
-## <a name="configure-a-deployment-manifest"></a>配置マニフェストの構成
+## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
 配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
-Azure CLI 2.0 を使用してモジュールを展開するには、配置マニフェストを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときに、次のセクションのファイル パスを使用します。 
+Azure CLI 2.0 を使用してモジュールをデプロイするには、配置マニフェストを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、次のセクションのファイル パスを使用します。 
 
 例として、1 つのモジュールでの基本的な配置マニフェストを次に示します。
 
@@ -65,7 +65,7 @@ Azure CLI 2.0 を使用してモジュールを展開するには、配置マニ
                  "edgeAgent": {
                    "type": "docker",
                    "settings": {
-                     "image": "microsoft/azureiotedge-agent:1.0-preview",
+                     "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
                      "createOptions": "{}"
                    }
                  },
@@ -74,7 +74,7 @@ Azure CLI 2.0 を使用してモジュールを展開するには、配置マニ
                    "status": "running",
                    "restartPolicy": "always",
                    "settings": {
-                     "image": "microsoft/azureiotedge-hub:1.0-preview",
+                     "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
                      "createOptions": "{}"
                    }
                  }
@@ -191,7 +191,7 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 * **--set** - デプロイのプロパティを更新します。 次のプロパティを更新することができます。
     * targetCondition - `targetCondition=tags.location.state='Oregon'` など
-    * ラベル 
+    * labels 
     * priority
 
 

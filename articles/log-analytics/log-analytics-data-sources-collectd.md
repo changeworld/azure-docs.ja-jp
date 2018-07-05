@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23020857"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127698"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -111,7 +112,7 @@ Log Analytics での CollectD データの収集を構成するための基本�
 
 | CollectD メトリックのフィールド | Log Analytics のフィールド |
 |:--|:--|
-| host | コンピューター |
+| host | Computer |
 | プラグイン | なし |
 | plugin_instance | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
 | type | ObjectName |
@@ -120,7 +121,7 @@ Log Analytics での CollectD データの収集を構成するための基本�
 | dstypes | なし |
 | values[] | CounterValue |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 

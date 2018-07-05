@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 865959a5595de7b5ac65a9915e484182a820b5b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f72c1048a4bf2cb0a2f42db99bb35cf66563ae0f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598710"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442102"
 ---
 # <a name="create-perspectives"></a>パースペクティブを作成する
 

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: add7c49d8efaec0fddf057c454b4f01aec5df1ce
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7c0348dad507b118af542c1bbc47f6ceb88ae7be
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709599"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443054"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: 利用可能なリージョンとデータの保存場所
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、2 つの概念の違いについて説明するとともに、Azure AD B2C とそれ以外の Azure サービスに対するそれらの概念の意味合いを比較します。

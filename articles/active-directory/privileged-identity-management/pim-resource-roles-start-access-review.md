@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5c2f13386a996a6c7895bd4755b6cf609a5df72
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f963e63aa92e15205f20ecb3e502065b8dd2c58c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233256"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443071"
 ---
 # <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのアクセス レビューを実行する
 ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者はロールを定期的に確認する必要があります。 このドキュメントでは、Azure リソース向けの Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。

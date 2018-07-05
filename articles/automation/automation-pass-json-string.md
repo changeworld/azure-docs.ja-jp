@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: b0eaa13baa3e787db14e7a6f915018c3a4f280a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193052"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435765"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 
@@ -84,6 +84,10 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
    Connect-AzureRmAccount
    ```
     Azure 資格情報を入力するよう求められます。
+
+   > [!IMPORTANT]
+   > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
+
 1. JSON ファイルの内容を取得して文字列に変換:
     ```powershell
     $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string

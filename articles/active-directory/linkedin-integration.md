@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b3ff0b2481b42f516d28ac17f2616685730b7d5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762372"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109588"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft のアプリとサービスに対する LinkedIn アカウント接続
 この記事では、Azure Active Directory (Azure AD) 管理センターで、テナントに対する LinkedIn アカウント接続を管理する方法を説明します。 
 
 > [!IMPORTANT]
-> LinkedIn アカウント接続機能は、現在 Azure AD テナントにロールアウト中です。 テナントにロールアウトされると、既定で有効になります。 米国政府機関向けの顧客、およびオーストラリア、カナダ、中国、フランス、ドイツ、インド、韓国、英国、日本、および南アフリカでホストされている Exchange Online メールボックスを使用する組織は使用できません。 これらのメールボックスの場所に対するサポートは、近日対応予定です。  ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
+> LinkedIn アカウント接続機能は、現在 Azure AD テナントにロールアウト中です。 テナントにロールアウトされると、既定で有効になります。 米国政府機関向けの顧客、およびオーストラリア、カナダ、中国、フランス、ドイツ、インド、韓国、イギリス、日本、および南アフリカでホストされている Exchange Online メールボックスを使用する組織は使用できません。 これらのメールボックスの場所に対するサポートは、近日対応予定です。  ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
 
 ## <a name="benefit-to-users"></a>ユーザーにとっての利点
 ユーザーが自分の LinkedIn アカウントに接続すると、さまざまな Microsoft アプリまたはサービスで個人用に設定された情報と機能を表示するために LinkedIn 情報が使用されます。 ユーザーは、Microsoft プロファイル カードで、一緒に作業をしている人が組織外の人であっても、その人に関する詳細情報を確認できます。 時間の経過と共に、LinkedIn エクスペリエンスはユーザーの作業により関連性が高く、カスタマイズされるようになります。 たとえば、LinkedIn は、一緒に作業している人に基づいて、新しいつながりを提案したり、その日のその人の予定表でその人に関する詳細情報を明らかにすることができます。
@@ -53,7 +53,7 @@ LinkedIn アカウント接続機能は、既定ではテナント全体で有�
 4. **[LinkedIn アカウント接続]** で次の操作を行います。
   * テナント内のすべてのユーザーに対する LinkedIn アカウント接続を有効にするには、**[はい]** を選択します。
   * テナントの選択したユーザーのみに対する LinkedIn アカウント接続を有効にするには、**[選択済み]** を選択します。
-  * すべてのユーザーの LinkedIn アカウント接続を無効にするようには、**[いいえ]** を選択します。![LinkedIn アカウント接続の有効化](./media/linkedin-integration/LinkedIn-integration.png)
+  * すべてのユーザーの LinkedIn アカウント接続を無効にするようには、**[いいえ]** を選択します。![LinkedIn アカウント接続の有効化](./media/linkedin-integration/linkedin-integration.png)
 5. **[保存]** を選択して完了し、設定を保存する。
 
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>組織の Office 2016 アプリに対する LinkedIn アカウント接続をグループ ポリシーで有効または無効にする
@@ -64,7 +64,7 @@ LinkedIn アカウント接続機能は、既定ではテナント全体で有�
 4. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Microsoft Office 2016]** > **[その他]** > **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** の設定でグループ ポリシー オブジェクトを作成します。
 5. **[有効]** または **[無効]** を選択します。
   * このポリシーを **[有効]** にすると、Office 2016 の [オプション] ダイアログにある **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** 設定が有効になります。 これは同時に、組織内のユーザーが各自の Office アプリケーションで LinkedIn の機能を使用できることを意味します。
-  * このポリシーを **[無効]** にすると、Office 2016 の [オプション] ダイアログにある **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** 設定が無効の状態になります。エンド ユーザーがこの設定を変更することはできません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。 
+  * このポリシーを **[無効]** にすると、Office 2016 の [オプション] ダイアログにある **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** 設定が無効の状態になります。エンド ユーザーがこの設定を変更することはできません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。
 
 このグループ ポリシーが適用されるのは、ローカル コンピューターの Office 2016 アプリだけです。 ユーザーが各自の Office 2016 アプリで LinkedIn を無効にした場合でも、Office 365 全体でプロフィール カードに LinkedIn の機能が表示されます。 
 

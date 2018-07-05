@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 10c5394935c59b21139c0e141c348ce20a7c0800
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.component: na
+ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932683"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128015"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
 
@@ -153,7 +154,7 @@ Log Analytics でのパフォーマンス メトリックの詳細について�
 
 次の表は、Service Fabric のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 分 |
 

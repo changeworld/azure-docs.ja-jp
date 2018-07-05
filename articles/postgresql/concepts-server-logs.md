@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691095"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435492"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のサーバー ログ 
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 ただし、トランザクション ログへのアクセスはサポートされていません。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 詳細については、「[Error Reporting and Logging (エラー レポートとログ記録)](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)」を参照してください。
@@ -29,7 +29,7 @@ Azure PostgreSQL サーバーのエラー ログは、Azure Portal、[Azure CLI]
 ## <a name="configure-logging-for-azure-postgresql-server"></a>Azure Database for PostgreSQL サーバーのログ記録の構成
 サーバーに対してクエリとエラーのログ記録を有効にできます。 エラー ログには、自動バキューム、接続、チェックポイントなどの情報を含めることができます。
 
-PostgreSQL DB インスタンスのクエリのログ記録を有効にするには、`log\_statement` と `log\_min\_duration\_statement` の 2 つのサーバー パラメーターを設定します。
+PostgreSQL DB インスタンスのクエリのログ記録を有効にするには、`log_statement` と `log_min_duration_statement` の 2 つのサーバー パラメーターを設定します。
 
 **log\_statement** パラメーターは、どの SQL ステートメントをログに記録するかを制御します。 このパラメーターを ***all*** に設定して、すべてのステートメントを記録することをお勧めします。既定値は none です。
 

@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8267846fed30baf2c37dcddd453ae9ead9341da9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323397"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436064"
 ---
 # <a name="create-custom-roles-using-the-rest-api"></a>REST API を使用してカスタム ロールを作成する
 

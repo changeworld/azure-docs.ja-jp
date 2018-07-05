@@ -3,17 +3,17 @@ title: Azure Storage セキュリティ ガイド | Microsoft Docs
 description: RBAC、Storage Service Encryption、クライアント側の暗号化、SMB 3.0、Azure Disk Encryption など、Azure Storage をセキュリティで保護するさまざまな方法について、詳しく説明します。
 services: storage
 author: craigshoemaker
-manager: jeconnoc
+manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 3c45375a46ee7896509f061828720bcf465aded7
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304133"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342472"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -154,7 +154,6 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 * [Operations on storage accounts (ストレージ アカウントに対する操作)](https://msdn.microsoft.com/library/ee460790.aspx)
 
   Storage Service Manager REST API リファレンスのこの記事では、REST API を使用したストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。 注: クラシック ストレージ アカウント向けの記事です。
-* [Say goodbye to key management – manage access to Azure Storage data using Azure AD (キー管理にさよなら - Azure AD を使用して Azure Storage データへのアクセスを管理する)](http://www.dushyantgill.com/blog/2015/04/26/say-goodbye-to-key-management-manage-access-to-azure-storage-data-using-azure-ad/)
 
   この記事では、Active Directory を使用して、Azure Key Vault 内の Azure Storage キーへのアクセスを制限する方法について説明しています。 また、Azure Automation ジョブを使用して 1 時間ごとにキーを再生成する方法についても説明しています。
 

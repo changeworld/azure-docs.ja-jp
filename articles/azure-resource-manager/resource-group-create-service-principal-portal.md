@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: a8784a8e29e65d8abea566b5a2bf41a2ae6cadf0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359630"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441575"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "34359630"
 
    ![[アプリの登録] を表示する](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. アプリの登録設定が **[いいえ]** に設定されている場合は、[グローバル管理者](../active-directory/active-directory-assign-admin-roles-azure-portal.md)だけがアプリを登録できます。 お使いのアカウントが Azure AD テナントの管理者かどうかを確認します。 **[概要]** を選択し、ユーザー情報を確認します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、グローバル管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
+1. アプリの登録設定が **[いいえ]** に設定されている場合は、[グローバル管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)だけがアプリを登録できます。 お使いのアカウントが Azure AD テナントの管理者かどうかを確認します。 **[概要]** を選択し、ユーザー情報を確認します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、グローバル管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
 
    ![ユーザーを検索する](./media/resource-group-create-service-principal-portal/view-user-info.png)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ea45bef5e50c41d07ddfeb5fcd6dba4d7247c61
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6a0f18a47bb50144d0a4d428617e0dc5c7509196
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593763"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442248"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -138,7 +138,7 @@ Azure AD Connect では、"*ステージング モード*" でのセカンド �
 
 ## <a name="multiple-azure-ad-tenants"></a>複数の Azure AD テナント
 組織の Azure AD には 1 つのテナントを置くことをお勧めします。
-複数の Azure AD テナントの使用を計画する前に、[Azure AD の管理単位の管理](../active-directory-administrative-units-management.md)に関する記事を参照してください。 単一のテナントを使用できる一般的なシナリオを説明しています。
+複数の Azure AD テナントの使用を計画する前に、[Azure AD の管理単位の管理](../users-groups-roles/directory-administrative-units.md)に関する記事を参照してください。 単一のテナントを使用できる一般的なシナリオを説明しています。
 
 ![複数のフォレストと複数のテナントのトポロジ](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 

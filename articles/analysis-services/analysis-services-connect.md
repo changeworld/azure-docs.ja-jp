@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce95337c042d6acbdf6e7cff300eb643146e3d87
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 19f5fb7b779f538f46b1813f30795e01a75f065c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597370"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443258"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 

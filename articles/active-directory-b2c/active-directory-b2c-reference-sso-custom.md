@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e05b057f6d7bfe0d836bb31e3fc656c17d4f18e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 351b48f2e2766b4974a5a41b5e95acfbd63dbfc9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34710177"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443224"
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: シングル サインオン (SSO) セッション管理
 

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0a22731f5e047a29e1b9287c6e89b1dc37291f3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 26469d735d7165e8b21665df6c169bc4668d8a5a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712353"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440520"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタムポリシーを使用して、アプリケーションでコンシューマーのサインアップおよびサインインを実行する
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 737971551e4bfb81c4f5fd1b53987b7a52c12669
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 1698bae19ad8ec5c3076db1489ac513e304a4e13
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261073"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108741"
 ---
 # <a name="microsoftnetworkavailabilityzonedropdown-ui-element"></a>Microsoft.Network.AvailabilityZoneDropdown UI 要素
 可用性ゾーンを選択するためのコントロールです。

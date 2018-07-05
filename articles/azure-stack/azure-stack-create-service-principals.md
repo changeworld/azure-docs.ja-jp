@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: b505e0fa215b04a5b05ca1b4c3fa9548d8deb71f
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 0db3f19c99b786d7f32f126ad7bd70efc999a751
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322646"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444275"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -97,17 +97,45 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
    > [!NOTE]
    > この例では、自己署名証明書を作成します。 運用環境でこれらのコマンドを実行する場合、Get-Certificate を利用して、使用する証明書の証明書オブジェクトを取得します。
 
-   ```
-   $creds = Get-Credential
+   ```PowerShell  
+    # Credential for accessing the ERCS PrivilegedEndpoint typically domain\cloudadmin
+    $creds = Get-Credential
 
-   $session = New-PSSession -ComputerName <IP Address of ECRS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+    # Creating a PSSession to the ERCS PrivilegedEndpoint
+    $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=testspn2" -KeySpec KeyExchange
+    # This produces a self signed cert for testing purposes.  It is prefered to use a managed certificate for this.
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
-   Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name 'MyApp' -ClientCertificates $using:cert}
+    $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
+    $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
+    $session|remove-pssession
 
-   $session|remove-pssession
+    # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
 
+    # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
+
+    # TenantID for the stamp. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $TenantID = $AzureStackInfo.AADTenantID
+
+    # Register an AzureRM environment that targets your Azure Stack instance
+    Add-AzureRMEnvironment `
+    -Name "AzureStackUser" `
+    -ArmEndpoint $ArmEndpoint
+
+    # Set the GraphEndpointResourceId value
+    Set-AzureRmEnvironment `
+    -Name "AzureStackUser" `
+    -GraphAudience $GraphAudience `
+    -EnableAdfsAuthentication:$true
+
+    Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+    -ServicePrincipal `
+    -CertificateThumbprint $ServicePrincipal.Thumbprint `
+    -ApplicationId $ServicePrincipal.ClientId `
+    -TenantId $TenantID
    ```
 
 2. 自動化が完了すると、SPN を使用するために必要な詳細が表示されます。 
@@ -122,6 +150,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
    PSComputerName        : azs-ercs01
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
+
 ### <a name="assign-a-role"></a>ロールの割り当て
 サービス プリンシパルを作成したら、[ロールを割り当てる](azure-stack-create-service-principals.md#assign-role-to-service-principal)必要があります。
 

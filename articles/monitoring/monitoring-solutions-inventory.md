@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010253"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112196"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](monitoring-solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -65,9 +65,6 @@ ms.locfileid: "34010253"
 | [ネットワーク パフォーマンス監視](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
 | [Office 365 Analytics (プレビュー)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |通知時 |
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
-| [セキュリティと監査](../operations-management-suite/oms-security-getting-started.md) (Syslog) | Linux | &#8226; | | |  |  | 着信時 |
-| [セキュリティと監査](../operations-management-suite/oms-security-getting-started.md) (セキュリティ イベント ログ) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | 着信時 |
-| [セキュリティと監査](../operations-management-suite/oms-security-getting-started.md) (ファイアウォール ログ) |Windows |&#8226; |&#8226; |  |  |  |着信時 |
 | [Service Fabric Analytics (プレビュー)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 分 |
 | [サービス マップ](../operations-management-suite/operations-management-suite-service-map.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
 | [SQL の評価](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 日 |

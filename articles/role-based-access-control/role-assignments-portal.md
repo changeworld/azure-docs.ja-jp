@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0aec1f50225bea25d5f68289c22ccc7b69703f7a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317948"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435619"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用してアクセスを管理する
 

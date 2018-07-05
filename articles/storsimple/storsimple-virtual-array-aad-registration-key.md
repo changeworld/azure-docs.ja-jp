@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 06/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d033cc09de8e115324067d7bbdf052751730d63
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28031053"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109190"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 
 ## <a name="overview"></a>概要
 
-StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple Virtual Array に接続します。 これまで、StorSimple デバイス マネージャー サービスは、StorSimple デバイスへのサービスの認証に Access Control Service (ACS) を使用しました。 ACS メカニズムは間もなく廃止され、Azure Active Directory (AAD) 認証に置き換えられる予定です。
+StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple Virtual Array に接続します。 これまで、StorSimple デバイス マネージャー サービスは、StorSimple デバイスへのサービスの認証に Access Control Service (ACS) を使用しました。 ACS メカニズムは間もなく非推奨となり、Azure Active Directory (AAD) 認証に置き換えられる予定です。
 
 この記事に記載されている内容は、両方の StorSimple 1200 シリーズ Virtual Array にのみ適用されます。 この記事では、StorSimple デバイスに適用される AAD 認証と関連付けられている新しいサービス登録キー、およびファイアウォール規則の変更について詳しく説明します。
 
@@ -59,9 +59,9 @@ StorSimple Virtual Array を使用している場合は、次の表を使用し�
 
 | デバイスの状況  | 実行するアクション                                    |
 |----------------------------|--------------------------------------------------------------|
-| 更新プログラム 1.0 以降が実行中で、オフライン。 <br> URL がホワイトリストに登録されていないことを示すアラートが表示される。| 認証 URL を含めるようにファイアウォール規則を変更します。 [認証 URL](#url-changes-for-aad-authentication) に関するトピックをご覧ください。 |
+| 更新プログラム 1.0 以降が実行中で、オフライン。 <br> URL がホワイトリストに登録されていないことを示すアラートが表示される。| 1.認証 URL を含めるようにファイアウォール規則を変更します。 [認証 URL](#url-changes-for-aad-authentication) に関するセクションをご覧ください。 <br> 2.[サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。 <br> 手順 3.手順 1. ～ 5. を実行して、[仮想アレイの Windows PowerShell インターフェイスに接続します](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> 4.`Invoke-HcsReRegister` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
 | 更新プログラム 1.0 以降が実行中で、デバイスはオンライン。| 操作は必要ありません。                                       |
-| 更新プログラム 0.6 以前が実行中で、デバイスはオフライン。 | [カタログ サーバーを使用して更新プログラム 1.0 をダウンロードします](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>[ローカル Web UI を使用して更新プログラム 1.0 を適用します](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。 <br> [サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。 <br> 手順 1. ～ 5. を実行して、[仮想アレイの Windows PowerShell インターフェイスに接続します](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> `Invoke-HcsReRegister` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
+| 更新プログラム 0.6 以前が実行中で、デバイスはオフライン。 | 1.[カタログ サーバーを使用して更新プログラム 1.0 をダウンロードします](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>2.[ローカル Web UI を使用して更新プログラム 1.0 を適用します](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。<br>手順 3.[サービスから AAD 登録キーを取得します](#aad-based-registration-keys)。 <br>4.手順 1. ～ 5. を実行して、[仮想アレイの Windows PowerShell インターフェイスに接続します](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br>5.`Invoke-HcsReRegister` コマンドレットを使用して、Windows PowerShell でデバイスを登録します。 前の手順で取得したキーを指定します。|
 | 更新プログラム 0.6 以前が実行中で、デバイスはオンライン | 認証 URL を含めるようにファイアウォール規則を変更します。<br> Azure Portal を使用して Update 1.0 をインストールします。 |
 
 ## <a name="aad-based-registration-keys"></a>AAD ベースの登録キー

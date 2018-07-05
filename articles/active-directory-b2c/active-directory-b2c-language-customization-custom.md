@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6269ac65e5db20521346d5312bcbadd0905c36e2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711758"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440566"
 ---
 # <a name="language-customization-in-custom-policies"></a>カスタム ポリシーでの言語のカスタマイズ
 

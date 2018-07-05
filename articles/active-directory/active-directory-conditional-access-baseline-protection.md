@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2018
+ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 86b57a82573760ac73975e851b2bb4caf769845b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1e7eb3a0098dc27b6f3c47d8d4848b2b9b5f7e61
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308562"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447542"
 ---
 # <a name="what-is-baseline-protection---preview"></a>ベースラインの保護とは (プレビュー)  
 
@@ -51,7 +51,7 @@ ms.locfileid: "36308562"
 
 ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/01.png)
 
-このベースライン ポリシーを使用すると、ユーザーとグループを除外できるようになります。 テナントからロックアウトされないように、1 つの*[緊急アクセス管理アカウント](active-directory-admin-manage-emergency-access-accounts.md)* を除外することができます。
+このベースライン ポリシーを使用すると、ユーザーとグループを除外できるようになります。 テナントからロックアウトされないように、1 つの*[緊急アクセス管理アカウント](users-groups-roles/directory-emergency-access.md)* を除外することができます。
 
 
 ## <a name="enable-a-baseline-policy"></a>ベースライン ポリシーを有効にする 
@@ -67,9 +67,9 @@ ms.locfileid: "36308562"
 
     ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/02.png)
 
-3. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+3. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-baseline-protection/03.png)
+    ![条件付きアクセス](./media/active-directory-conditional-access-baseline-protection/05.png)
 
 4. ポリシーの一覧で、**ベースライン ポリシー**から始まるポリシーをクリックします。 
 

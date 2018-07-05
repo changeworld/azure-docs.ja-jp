@@ -3,22 +3,23 @@ title: サブスクリプションの Azure アクティビティ ログを Log 
 description: Event Hubs と Logic Apps を使用して、Azure のアクティビティ ログからデータを収集し、別のテナントにある Azure Log Analytics ワークスペースへ送信します。
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
-author: richrundmsft
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636972"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127443"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 

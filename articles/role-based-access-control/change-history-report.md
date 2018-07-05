@@ -8,19 +8,19 @@ manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c24c6d652a65f5ba851de66a1f2fe595a46a5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293389"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437651"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>RBAC の変更のアクティビティ ログを表示する
 
@@ -43,7 +43,7 @@ ms.locfileid: "36293389"
 
 ポータルのアクティビティ ログには複数のフィルターがあります。 RBAC 関連のフィルターを次に示します。
 
-|フィルター  |値  |
+|filter  |値  |
 |---------|---------|
 |イベント カテゴリ     | <ul><li>管理</li></ul>         |
 |操作     | <ul><li>ロール割り当ての作成</li> <li>ロール割り当ての削除</li> <li>カスタムのロール定義の作成または更新</li> <li>カスタムのロール定義の削除</li></ul>      |

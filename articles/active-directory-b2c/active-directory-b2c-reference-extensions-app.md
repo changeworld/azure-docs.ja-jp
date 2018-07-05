@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 9/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad908e7408c2d14a843af49bc091fea725bfba1d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad3d459b1211d2777f57169f3ee896d2ab5618bc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712285"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442826"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
 

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296969"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437037"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>RBAC を使用して外部ユーザーのアクセスを管理する
 
@@ -87,7 +87,8 @@ RBAC ロールは、サブスクリプションの**所有者**のみが付与�
 
 Azure Active Directory と Azure サブスクリプションには、他の Azure リソース (例: 仮想マシン、仮想ネットワーク、Web アプリ、ストレージなど) と Azure サブスクリプションとの間にあるような子と親の関係はありません。 後者はすべて Azure サブスクリプションの下で作成、管理、課金されますが、Azure ディレクトリへのアクセスの管理には Azure サブスクリプションが使用されます。 詳細については、[Azure サブスクリプションを Azure AD に関連付ける方法](/active-directory/active-directory-how-subscriptions-associated-directory)に関するページを参照してください。
 
-すべての組み込み RBAC ロールのうち、**所有者**と**共同作成者**は環境内の全リソースへの完全な管理アクセスが可能ですが、共同作成者は新しい RBAC ロールを作成および削除できないという違いがあります。 **仮想マシン共同作成者**のような他の組み込みロールは、リソースの作成先となっている**リソース グループ**に関係なく、名前によって示されるリソースのみへの完全な管理アクセスが可能です。
+すべての組み込み RBAC ロールのうち、**所有者**と**共同作成者**は環境内の全リソースへの完全な管理アクセスが可能ですが、共同作成者は新しい RBAC ロールを作成および削除できないという違いがあります。 
+  **仮想マシン共同作成者**のような他の組み込みロールは、リソースの作成先となっている**リソース グループ**に関係なく、名前によって示されるリソースのみへの完全な管理アクセスが可能です。
 
 **仮想マシン共同作成者**の組み込み RBAC ロールをサブスクリプション レベルで割り当てると、そのロールが割り当てられたユーザーは次のようになります。
 

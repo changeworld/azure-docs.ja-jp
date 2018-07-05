@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0a439a2bb485829b863d6aa666938ab58c90c61f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 7957fdf245090cbca3726cb1e4788ec34f63faca
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750779"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440421"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: 脅威の管理
 

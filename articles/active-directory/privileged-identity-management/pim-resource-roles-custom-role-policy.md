@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03904990d54db0dd39ed7059f57a0a13efe0aaca
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f086d8038e6d27990c49749438ee05e3e39a5aec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233381"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442911"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>カスタム ロールを使用して Privileged Identity Management 設定を対象にする
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 02a7533cf1c06142f564ed9fd6008a25be9fc603
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 98a4be02188f7e0462979792a6061d535a64a18d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034792"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095976"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure IoT Edge モジュールをデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "37034792"
 
 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
-この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor-cli.md)」をご覧ください
+この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor-cli.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "microsoft/azureiotedge-agent:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
                  "createOptions": "{}"
                }
              },
@@ -71,7 +71,7 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "microsoft/azureiotedge-hub:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
                  "createOptions": "{}"
                }
              }
@@ -83,7 +83,7 @@ Azure CLI 2.0 を使用してモジュールをデプロイするには、配置
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
+                 "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
                  "createOptions": "{}"
                }
              }

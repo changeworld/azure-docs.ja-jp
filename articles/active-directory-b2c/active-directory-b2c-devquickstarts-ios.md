@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1da0187fc4ffa139eb7b245dd20d708eb98e0cf5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: d9be99278797911ce7b49a176861ce6a39c28a1d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710309"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443751"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS アプリケーションを使用してサインインする
 

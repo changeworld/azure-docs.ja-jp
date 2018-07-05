@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443549b9456d8e7d29e807fb00a9f25be00e6faa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597843"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441677"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 

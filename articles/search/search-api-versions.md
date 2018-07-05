@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/04/2018
+ms.date: 06/28/2018
 ms.author: brjohnst
-ms.openlocfilehash: 7bbc26402b30c7796ba11fef159d5cedefa5d58d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8d1e30b0bca3c63fe4528c06e5389d8cbe27a7e6
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802471"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113607"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。

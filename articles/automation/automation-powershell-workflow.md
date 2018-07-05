@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9e9f3cc89dfc6dda18d40950207ea4523f5212c0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4b48400920176055e7eb166c7502c06e67b29185
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195252"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436363"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
 
@@ -285,6 +285,9 @@ workflow CreateTestVms
         }
 }
 ```
+
+> [!IMPORTANT]
+> これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
 
 これは、サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合には必要ありません。
 

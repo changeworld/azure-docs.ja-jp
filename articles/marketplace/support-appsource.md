@@ -3,8 +3,8 @@ title: サポート (AppSource) | Azure
 description: AppSource のサポート情報とリンクです。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: b2ca55456a735a19f4739b20d7c7530efc357621
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 447453abb59507e0f3a8505410ceb52640914f22
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826074"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436578"
 ---
 # <a name="support-for-appsource"></a>サポート (AppSource)  
 AppSource のサポート オプションです。  
@@ -32,6 +32,6 @@ AppSource のサポート オプションです。
 | StackOverflow: Azure Active Directory ([stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "stackoverflow の Azure AD")) | Azure Active Directory (Azure AD) に関連するあらゆることについての解決策を入手したり質問したりするための Stack Overflow 環境。 |  
 
 ## <a name="next-steps"></a>次の手順
-*   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページをご覧ください。  
+「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
  
 ---  

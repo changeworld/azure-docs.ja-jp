@@ -3,7 +3,7 @@ title: Azure IT オペレーター向けファースト ステップ ガイド |
 description: Azure IT オペレーター向けファースト ステップ ガイド
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361656"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099495"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
@@ -61,7 +61,7 @@ SaaS は、1 か所でまとめてホストし、管理するソフトウェア�
 
 SaaS サービスの最もわかりやすい例が Microsoft Office 365 です。 サブスクライバーは月間または年間サブスクリプションの利用料を支払い、Microsoft Exchange、Microsoft OneDrive、Microsoft Office スイートの残りのアプリケーションをサービスとして利用します。 サブスクライバーには常に最新版が与えられます。Exchange サーバーは自分で管理する必要がありません。 Office を毎年インストールしたり、アップグレードしたりする場合と比較し、安価で簡単です。
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: サービスとしてのプラットフォーム 
+#### <a name="paas-platform-as-a-service"></a>PaaS: サービスとしてのプラットフォーム
 
 PaaS を利用する場合、クラウド サービス ベンダーが提供する環境にアプリケーションをデプロイします。 ベンダーがインフラストラクチャ管理のすべてを行うので、利用者はアプリケーション開発に集中できます。
 
@@ -149,7 +149,7 @@ Azure を使用する利点の 1 つは、世界中のさまざまなデータ�
 ### <a name="azure-portal"></a>Azure ポータル
 
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
 
 ### <a name="resources"></a>リソース
 
@@ -196,8 +196,7 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 **BizSpark アカウント**: Microsoft BizSpark プログラムでは、ベンチャー企業にとってさまざまな特典が用意されています。 その 1 つに、開発環境とテスト環境を対象に、最大 5 つの MSDN アカウントですべての Microsoft ソフトウェアにアクセスできるというものがあります。 5 つの MSDN アカウントのそれぞれに、$150 の Azure クレジットが与えられます。仮想マシンなど、一部の Azure サービスに関して割り引きが受けられます。
 
-
-  **従量課金制**: このサブスクリプションでは、クレジット カードまたはデビット カードをアカウントに登録することで、使用した分だけ支払います。 契約者が組織の場合、請求承認を受けることもできます。
+**従量課金制**: このサブスクリプションでは、クレジット カードまたはデビット カードをアカウントに登録することで、使用した分だけ支払います。 契約者が組織の場合、請求承認を受けることもできます。
 
 **エンタープライズ契約**: エンタープライズ契約では、向こう 1 年、Azure の一定数のサービスを使用する契約を結び、料金を前払いします。 契約分はその年を通して使用します。 契約額を超えた場合、超過分は後払いできます。 契約額によっては、Azure のサービスで割り引きが受けられます。
 
@@ -382,11 +381,11 @@ Azure ストレージ アカウントはさまざまな冗長レベルで構成�
 
 -   **読み取りアクセス geo 冗長ストレージ**の場合、geo 冗長ストレージの機能に加え、セカンダリ リージョンのデータを読み込めます。 部分的なディザスター リカバリーに最適です。 プライマリ リージョンに問題がある場合、アプリケーションを変更し、ペアになっているリージョンへの読み取り専用アクセスを与えることができます。
 
-### <a name="use-cases"></a>ユース ケース 
+### <a name="use-cases"></a>ユース ケース
 
 各種類のストレージには異なるユース ケースがあります。
 
-**Blob Storage** 
+**Blob Storage**
 
 *blob* は *binary large object* (バイナリ ラージ オブジェクト) の略です。 BLOB は、コンピューターに保存するファイルのような、非構造化ファイルです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。 Azure Blob ストレージには、Azure Virtual Machines データ ディスクも保存されます。
 
@@ -446,7 +445,7 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 ### <a name="access-and-security-for-azure-storage"></a>Azure Storage のアクセスとセキュリティ
 
-Azure Storage にはさまざまな方法でアクセスできます。たとえば、Azure Portal や Storage クライアント ライブラリからアクセスしたり、VM の作成中や操作中にアクセスしたりできます。 
+Azure Storage にはさまざまな方法でアクセスできます。たとえば、Azure Portal や Storage クライアント ライブラリからアクセスしたり、VM の作成中や操作中にアクセスしたりできます。
 
 **仮想マシンのディスク**
 

@@ -3,7 +3,7 @@ title: Azure Log Analytics でワークスペースを作成する | Microsoft D
 description: Log Analytics ワークスペースを作成して管理ソリューションを有効にし、クラウド環境とオンプレミス環境からデータを収集できるようにします。
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptal
 ms.date: 04/02/2018
 ms.author: magoedte
-ms.openlocfilehash: e05d620a457edf427c946366a9caca471ac8531e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: na
+ms.openlocfilehash: eff79e8ccf0b878b4c083753f245aae993be72de
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833134"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127569"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure ポータルで Log Analytics ワークスペースを作成する
 Azure Portal で Log Analytics ワークスペースを設定できます。このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた Log Analytics 固有の環境です。  次のソースからデータを収集する場合は、この記事で説明する手順を実行する必要があります。

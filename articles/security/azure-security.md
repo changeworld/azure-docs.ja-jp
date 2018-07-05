@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a7b8c480291360cb50af1ce4ae36cd406f0ddc21
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895253"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437792"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -92,7 +92,8 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合は、サービスからメールが届きます。 Application Insights は、機密性、整合性、および可用性というセキュリティの 3 本柱の中の可用性に役立つ、貴重なセキュリティ ツールとなります。
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) と個々の Azure リソース ([診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
+
+  [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) と個々の Azure リソース ([診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
 ### <a name="log-analytics"></a>Log Analytics
 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) の一部) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
@@ -113,7 +114,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
-独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://security-forms.azure.com/penetration-testing/terms) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
+独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://msdn.microsoft.com/library/)と特定された脅威からの保護が事前に構成されています。
@@ -307,7 +308,7 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>コンピューティング
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 

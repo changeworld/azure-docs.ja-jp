@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aea6f3efcf3740527c43b75a30caadf6b2a8b623
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dd90fc862e64812c0ba17bef74818d18788f4b5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34601073"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440990"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Power BI Desktop ファイルをインポートする
 

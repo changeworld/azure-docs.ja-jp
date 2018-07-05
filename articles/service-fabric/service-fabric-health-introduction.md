@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207300"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114318"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
@@ -117,7 +117,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 [アプリケーションの正常性ポリシー](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。 これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml**ファイルで定義できます。 ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。
 構成可能なポリシーは、次のとおりです。
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。 このパーセンテージは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 サービスの種類ごとのサービス正常性ポリシーのマップを指定します。 指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーは、これらのポリシーに置き換えられます。 たとえば、アプリケーションにステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類がある場合は、異なる方法で評価されるように正常性ポリシーを構成できます。 サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。

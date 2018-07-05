@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238394"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127044"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
@@ -102,7 +103,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 Azure Key Vault ソリューションによって分析されるのは、Azure 診断の [AuditEvent ログ](../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |

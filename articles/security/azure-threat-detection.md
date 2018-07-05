@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0813e0f6b51c747d033ca2c44aed21cf94c32000
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895332"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113029"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威の検出
 ## <a name="introduction"></a>はじめに
@@ -420,7 +420,7 @@ Web アプリケーション ファイアウォールは、着信する Web ト�
 
 Azure Marketplace で利用可能な Web アプリケーション ファイアウォールの使用例を次に示します。
 
-[Barracuda Web アプリケーション ファイアウォール、Brocade 仮想 Web アプリケーション ファイアウォール (Brocade vWAF)、Imperva SecureSphere および ThreatSTOP IP ファイアウォールがあります。](https://azure.microsoft.com/marketplace/partners/brocade_communications/brocade-virtual-web-application-firewall-templatevtmcluster/)
+[Barracuda Web アプリケーション ファイアウォール、Brocade 仮想 Web アプリケーション ファイアウォール (Brocade vWAF)、Imperva SecureSphere および ThreatSTOP IP ファイアウォールがあります。](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)
 
 ## <a name="next-steps"></a>次の手順
 

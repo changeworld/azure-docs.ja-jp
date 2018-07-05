@@ -10,23 +10,23 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: b809097e50a17178da12fdb424eba08dc8e0c4cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866893"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099611"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>ユーザーまたはグループに 2 段階認証を要求する方法
 
 2 段階認証を要求する 2 つの方法のいずれかを実行します。 1 つ目は、個々のユーザーに Azure Multi-Factor Authentication (MFA) を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに 2 段階認証が実行されます (信頼済み IP アドレスからサインインするときや、_記憶されたデバイス_の機能が有効なときなど、一部例外があります)。 2 つ目は、特定の条件下で 2 段階認証を要求する条件付きアクセス ポリシーを設定する方法です。
 
 >[!TIP] 
->2 段階認証を要求するには、これらの方法のうちの 1 つを選択してください。両方は選択できません。 ユーザーを Azure Multi-Factor Authentication に対して有効にすると、すべての条件付きアクセス ポリシーが無効になります。
+>2 段階認証を要求するには、これらの方法のうちの 1 つを選択してください。両方は選択できません。 ユーザーを Azure Multi-Factor Authentication に対して有効にすると、すべての条件付きアクセス ポリシーがオーバーライドされます。
 
 ## <a name="which-option-is-right-for-you"></a>どちらのオプションが適しているか
 
-**ユーザーの状態を変更することで Azure Multi-Factor Authentication を有効にする方法**は、2 段階認証を要求するための従来のアプローチです。 これは、クラウド内の Azure MFA と Azure MFA Server の両方に対して機能します。 有効にしたすべてのユーザーがサインインするたびに 2 段階認証が実行されます。 ユーザーを有効にすると、そのユーザーに影響を与える可能性があるすべての条件付きアクセス ポリシーが無効になります。 
+**ユーザーの状態を変更することで Azure Multi-Factor Authentication を有効にする方法**は、2 段階認証を要求するための従来のアプローチです。 これは、クラウド内の Azure MFA と Azure MFA Server の両方に対して機能します。 有効にしたすべてのユーザーがサインインするたびに 2 段階認証が実行されます。 ユーザーを有効にすると、そのユーザーに影響を与える可能性があるすべての条件付きアクセス ポリシーがオーバーライドされます。 
 
 **条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にする方法**の方が、より柔軟に 2 段階認証を要求できます。 これは、クラウド内の Azure MFA に対してのみ機能します。ただし、_条件付きアクセス_は、[Azure Active Directory の有料機能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)です。 個々のユーザーだけでなくグループに適用する条件付きアクセス ポリシーを作成することができます。 危険度の高いグループには、危険度の低いグループよりも多くの制限を割り当てることや、危険度の高いクラウド アプリにのみ 2 段階認証を要求して、危険度の低いクラウド アプリではスキップすることができます。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "33866893"
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-| 状態 | [説明] | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
+| 状態 | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:|:---:|:---:|:--:|:--:|
 | 無効 |新しいユーザーの既定の状態は、Azure MFA に登録されていません。 |いいえ  |いいえ  |いいえ  |
 | 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
@@ -71,7 +71,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 5. 開いたポップアップ ウィンドウで選択内容を確認します。 
 
-ユーザーを有効にした後は、ユーザーにメールで通知します。 次回サインインしたときに登録を求められることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 ユーザーが参照できるように、[Azure MFA エンドユーザー ガイド](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)に関するページのリンクを含めることもできます。
+ユーザーを有効にした後は、ユーザーにメールで通知します。 次回サインインしたときに登録を求められることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 ユーザーが参照できるように、[Azure MFA エンドユーザー ガイド](end-user/current/multi-factor-authentication-end-user.md)に関するページのリンクを含めることもできます。
 
 ### <a name="use-powershell"></a>PowerShell の使用
 [Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、`$st.State` を変更します。 状態は 3 つあります。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: eac64a5b456eb040bcb1ac01c3c86dfde0847e57
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 526021ca238be7bc934e639c34d3e49879279a6a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944924"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127654"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 カスタム スクリプト拡張機能バージョン 1 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -34,7 +34,7 @@ ms.locfileid: "33944924"
 * バージョン 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 * バージョン 2 - Microsoft.Azure.Extensions.CustomScript
 
-代わりに新しいバージョン ([Microsoft.Azure.Extensions.CustomScript](\custom-script-linux.md)) を使うには、新規の展開と既存の展開を切り替えてください。 新しいバージョンはドロップイン置換用に設計されています。 したがって、名前とバージョンを変更するだけで簡単に移行でき、拡張機能の構成を変更する必要はありません。
+代わりに新しいバージョン ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)) を使うには、新規の展開と既存の展開を切り替えてください。 新しいバージョンはドロップイン置換用に設計されています。 したがって、名前とバージョンを変更するだけで簡単に移行でき、拡張機能の構成を変更する必要はありません。
 
  
 
@@ -52,7 +52,7 @@ ms.locfileid: "33944924"
 
 ### <a name="script-location"></a>スクリプトの場所
 
-拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob ストレージにアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
+拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob Storage にアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
@@ -120,7 +120,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | 文字列 |
-| 型 | CustomScriptForLinux | 文字列 |
+| type | CustomScriptForLinux | 文字列 |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |

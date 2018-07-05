@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: da44fb2982c76b849181683f308e414c3d3f0b7a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8eb12764cf5df539f61842ba3602c6265c1e2b86
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331208"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441211"
 ---
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法
 
@@ -85,4 +85,4 @@ ms.locfileid: "36331208"
 これらの承認は、単一の承認ワークフローでのみサポートされます。つまり、複数の承認者を指定しても、いずれか 1 人の承認者がアプリケーションへのアクセスを承認する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
-[セルフサービス グループ管理に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md)
+[セルフサービス グループ管理に必要な Azure Active Directory の設定](users-groups-roles/groups-self-service-management.md)

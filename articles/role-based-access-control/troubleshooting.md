@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295401"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437368"
 ---
 # <a name="troubleshooting-rbac-in-azure"></a>Azure での RBAC のトラブルシューティング
 

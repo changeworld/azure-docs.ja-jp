@@ -1,20 +1,16 @@
 ---
 title: Site Recovery コンテナーを削除する
 description: サイトの回復シナリオに基づいて、Azure Site Recovery コンテナーを削除する方法を説明します。
-service: site-recovery
 author: rajani-janaki-ram
-manager: rochakm
-ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/01/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 80c479aa23da2a8471af3fd83879a2dbfc5d6195
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f5f92b0dc064a992b93447f785db6c717f81e47b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300573"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436645"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する
 
@@ -52,7 +48,7 @@ ms.locfileid: "35300573"
 
 2. コンテナー -> **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** - > **[For Hyper-V Sites]\(Hyper-V サイト\)** -> **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
 
-3. HYPER-V サーバーへの関連付けを削除するには、「[HYPER-V ホストの登録を解除](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)」の手順に従います。
+3. HYPER-V サーバーへの関連付けを削除するには、「[HYPER-V ホストの登録を解除](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)」の手順に従います。
 
 4. Hyper-V サイトを削除します。
 

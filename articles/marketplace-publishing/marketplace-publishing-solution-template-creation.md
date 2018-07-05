@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 147b0b9b4a3fe789544457d17fed3d29badbe12c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29937310"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113954"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Azure Marketplace 向けソリューション テンプレートの作成ガイド
 手順 1 の[アカウントの作成と登録][link-acct-creation]に関するページの完了後、[ソリューション テンプレートを作成するための技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)のページで、Azure と互換性のあるソリューション テンプレートの作成について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で複数の VM を対象としたソリューション テンプレートを作成する手順を紹介します。
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>発行ポータルでソリューション テンプレート プランを作成する
-[https://publish.windowsazure.com](http://publish.windowsazure.com) に移動します。[発行ポータル](https://publish.windowsazure.com/)に初めてサインインする場合は、会社の販売者プロファイルが登録されているアカウントを使用します。 発行ポータルでは、他の従業員を共同管理者として後から追加できます。
+[https://publish.windowsazure.com](http://publish.windowsazure.com) に移動します。 [発行ポータル](https://publish.windowsazure.com/)に初めてサインインする場合は、会社の販売者プロファイルが登録されているアカウントを使用します。 発行ポータルでは、他の従業員を共同管理者として後から追加できます。
 
 ### <a name="1-select-solution-templates"></a>1.[ソリューション テンプレート] を選択する
   ![図][img-pubportal-menu-sol-templ]
@@ -60,7 +60,7 @@ ms.locfileid: "29937310"
 必要に応じて次の関連する記事も参照してください。
 
 * VM イメージ: [Azure の仮想マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)
 * Azure Resource Manager: [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)および[単純なテンプレートの例](https://github.com/rjmax/ArmExamples)
 * ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

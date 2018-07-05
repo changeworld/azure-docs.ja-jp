@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7c4afc2b48d097c67d69ef0cee8a45a1fdeb557
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 608323c467e0106af816c3432dec24090a9a9599
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596194"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442935"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 

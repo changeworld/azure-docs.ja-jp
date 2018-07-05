@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ed1a55c26ab1ef2aadb4906757205df0ca09d866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659967"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111478"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Time Series Insights を使用してリモート監視データを視覚化する
 
@@ -145,4 +145,4 @@ Time Series Insights エクスプローラーは、データの視覚化を作�
 
 ## <a name="next-steps"></a>次の手順
 
-Time Series Insights エクスプローラーでのデータの探索とクエリ方法の詳細については、「[Azure タイム シリーズ Insights エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-dashboard.png)」を参照してください。
+Time Series Insights エクスプローラーでのデータの探索とクエリ方法の詳細については、「[Azure タイム シリーズ Insights エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)」を参照してください。

@@ -3,7 +3,7 @@ title: Azure Log Analytics の DNS 分析ソリューション | Microsoft Docs
 description: Log Analytics の DNS 分析ソリューションをセットアップおよび使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30241947"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127593"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -65,7 +66,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
 
-- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Log Analytics に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。スクロールすると、既定のリスト全体を確認できます。
+- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Log Analytics に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
 
  このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
 

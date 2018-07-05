@@ -6,20 +6,20 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94fbc1cf0232eaf48bb0be3c6edc0542142e4681
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7958042ccb2f55e9b6021f7d804a0dcd090695c5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196051"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109319"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
-| type | [説明] |
+| type | 説明 |
 |:--- |:--- |
 | [グラフィカル](#graphical-runbooks) |Windows PowerShell に基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks) |Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
@@ -44,7 +44,7 @@ Azure Automation がサポートする数種類の Runbook について次の表
 * グラフィカル ワークフローによって作成された PowerShell コードを表示したり、直接編集したりすることはできません。 コード アクティビティで作成したコードは表示できます。
 
 ## <a name="powershell-runbooks"></a>PowerShell Runbook
-PowerShell Runbook は、Windows PowerShell に基づきます。  Azure ポータルのテキスト エディターを使用して、Runbook のコードを直接編集します。  また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx) したりすることもできます。
+PowerShell Runbook は、Windows PowerShell に基づきます。  Azure ポータルのテキスト エディターを使用して、Runbook のコードを直接編集します。  また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](automation-creating-importing-runbook.md) したりすることもできます。
 
 ### <a name="advantages"></a>長所
 * すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローに関する複雑さが加わることはありません。 
@@ -65,7 +65,7 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 * PowerShell Runbook は、非常に大量のデータを一度に出力ストリームに書き込もうとした場合、失敗する可能性があります。   通常は、大きいオブジェクトを使用する場合、必要な情報だけを出力することによってこの問題を回避できます。  たとえば、*Get-Process* などを出力するのではなく、*Get-Process | Select ProcessName, CPU* で必要なフィールドだけを出力できます。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell ワークフロー Runbook
-PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロー](automation-powershell-workflow.md)に基づくテキスト Runbook です。  Azure ポータルのテキスト エディターを使用して、Runbook のコードを直接編集します。  また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx) したりすることもできます。
+PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロー](automation-powershell-workflow.md)に基づくテキスト Runbook です。  Azure ポータルのテキスト エディターを使用して、Runbook のコードを直接編集します。  また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](automation-creating-importing-runbook.md) したりすることもできます。
 
 ### <a name="advantages"></a>長所
 * すべての複雑なロジックを PowerShell ワークフローのコードで実装できます。
@@ -80,7 +80,7 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 * PowerShell Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
 
 ## <a name="python-runbooks"></a>Python Runbook
-Python Runbook は Python 2 でコンパイルします。  Azure Portal でテキスト エディターを使用して Runbook のコードを直接編集したり、任意のオフライン テキスト エディターを使用して Azure Automation に [Runbook をインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx)したりできます。
+Python Runbook は Python 2 でコンパイルします。  Azure Portal でテキスト エディターを使用して Runbook のコードを直接編集したり、任意のオフライン テキスト エディターを使用して Azure Automation に [Runbook をインポート](automation-creating-importing-runbook.md)したりできます。
 
 ### <a name="advantages"></a>長所
 * Python の堅牢な標準ライブラリを利用します。

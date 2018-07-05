@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333515"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109486"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -121,5 +121,5 @@ ms.locfileid: "36333515"
   (5) - アプリケーションは、CA からの X509 証明書の合併で新しい証明書の作成を完了します。
 
 ## <a name="see-also"></a>関連項目
-- [証明書の操作](/rest/api/keyvault/certificate-operations.md)
+- [証明書の操作](/rest/api/keyvault/certificate-operations)
 - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)

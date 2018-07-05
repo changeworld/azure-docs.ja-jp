@@ -4,22 +4,23 @@ description: Power BI は、さまざまなデータのセットの分析のた�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 725828c2acc5ac4bb53c5e6af14d20578a3d3652
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: fb05ddabab3702299df0e81e8dda5af5cb676c1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30236150"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127511"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Power BI への Azure Log Analytics データのインポート
 

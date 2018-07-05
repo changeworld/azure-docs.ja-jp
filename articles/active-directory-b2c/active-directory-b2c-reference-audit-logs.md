@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4828bf2f0faa596c8222c3a36dc3d38ec1b3bd1a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0024f8ab914eba83effe8f5787cfb252775b5f0f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709820"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443387"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -57,7 +57,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
     ![監査ログ - カテゴリ](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 過去 7 日間にわたってログに記録されたアクティビティの一覧が表示されます。 
-- **[Activity Resource Type](アクティビティのリソースの種類)** ドロップダウン ボックスを使用して、前述したアクティビティの種類でフィルター処理します
+- **アクティビティのリソースの種類** ドロップダウン ボックスを使用して、前述したアクティビティの種類でフィルター処理します
 - **[日付の範囲]** ドロップダウン ボックスを使用して、表示されるアクティビティの日付の範囲をフィルター処理します
 - 一覧の特定の行をクリックすると、右側のコンテキスト ボックスに、そのアクティビティに関連付けられている追加の属性が表示されます
 - **[ダウンロード]** をクリックし、アクティビティを csv ファイルとしてダウンロードします

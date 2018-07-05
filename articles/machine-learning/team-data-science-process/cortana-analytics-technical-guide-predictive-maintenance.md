@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939967"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099665"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -54,7 +54,7 @@ ms.locfileid: "36939967"
 ### <a name="synthetic-data-source"></a>合成データソース
 このテンプレートでは、デプロイの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。
 
-このアプリケーションをダウンロードしてインストールする手順を確認するには、ソリューション テンプレート図の最初のノード (予測メンテナンス データ ジェネレーター) を選択します。 手順はプロパティ バーに表示されます。 このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。 このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) を使用して、[NASA データ リポジトリ](https://c3.nasa.gov/dashlink/resources/139/)で公開されているデータから得たものです。
+このアプリケーションをダウンロードしてインストールする手順を確認するには、ソリューション テンプレート図の最初のノード (予測メンテナンス データ ジェネレーター) を選択します。 手順はプロパティ バーに表示されます。 このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。 このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) を使用して、[NASA データ リポジトリ](https://c3.nasa.gov/dashlink/resources/139/)で公開されているデータから得たものです。
 
 イベント生成アプリケーションは、コンピューターで実行中の場合にのみ、Azure Event Hub にデータを入力します。  
 
@@ -82,7 +82,7 @@ HDInsight を使用して、(Azure Data Factory によって調整される) [Hi
 ## <a name="how-to-bring-in-your-own-data"></a>独自のデータを取り込む方法
 このセクションでは、Azure に独自のデータを取り込む方法と、このアーキテクチャに取り込むデータに応じて変更が必要になる領域について説明します。
 
-データセットが、このソリューション テンプレートで使用されている [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) によって使用されているデータセットに一致している可能性はほとんどありません。 自分のデータと要件を理解することは、独自のデータで動作するように、このテンプレートを変更する方法においてきわめて重要です。 
+データセットが、このソリューション テンプレートで使用されている [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) によって使用されているデータセットに一致している可能性はほとんどありません。 自分のデータと要件を理解することは、独自のデータで動作するように、このテンプレートを変更する方法においてきわめて重要です。 
 
 以降のセクションでは、新しいデータセットを導入したときに変更が必要となるテンプレートの部分について説明します。
 

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 85592275c13719fec0f40eb76a9bce48890a59d2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710194"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442710"
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
 Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) と直接統合しているので、コンシューマー向けアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 また、コードを 1 行も記述することなく、これを実現できます。 現時点では、電話かテキスト メッセージによる検証がサポートされています。 サインアップおよびサインイン ポリシーを既に作成していても、Multi-Factor Authentication を有効にできます。

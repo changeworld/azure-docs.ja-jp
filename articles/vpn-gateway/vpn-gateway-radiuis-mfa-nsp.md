@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c9985f6ad8721460e973d3c43f1f035506ae697c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793275"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100076"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -28,7 +28,7 @@ ms.locfileid: "31793275"
 
 ## <a name="prerequisite"></a>前提条件
 
-MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD) 内に存在し、それがオンプレミスかクラウド環境から同期されている必要があります。 また、ユーザーが MFA の自動登録プロセスを完了している必要もあります。  詳細については、「[アカウントへの 2 段階認証の設定](../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD) 内に存在し、それがオンプレミスかクラウド環境から同期されている必要があります。 また、ユーザーが MFA の自動登録プロセスを完了している必要もあります。  詳細については、「[アカウントへの 2 段階認証の設定](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
 ## <a name="detailed-steps"></a>詳細な手順
 

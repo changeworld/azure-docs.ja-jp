@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cfcb87fdff8105b25d4f7e63b775aaf9243d2a90
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317009"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435220"
 ---
 # <a name="manage-access-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用してアクセスを管理する
 

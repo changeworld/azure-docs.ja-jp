@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: d97e380f83cc4e5e5a2d9686a7ac8426967f4b93
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.component: na
+ms.openlocfilehash: 55308c2f144ea90636fb477f82c19fd3f8276af5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302201"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131130"
 ---
 # <a name="expressroute-manager"></a>ExpressRoute Manager
 
