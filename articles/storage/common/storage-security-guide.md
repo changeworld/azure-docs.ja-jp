@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ac301daca769f9cec0d3395e7bde32494dd8e3d1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735329"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304133"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -101,7 +101,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 * [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   この API リファレンスでは、ストレージ アカウントをプログラムで管理するときに使用できる API について説明します。
-* [Developer’s guide to auth with Azure Resource Manager API (Azure Resource Manager API を使用して認証するための開発者ガイド)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [サブスクリプションにアクセスするための Resource Manager 認証 API の使用](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   この記事では、 Resource Manager API を使用して認証する方法について説明しています。
 * [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -209,7 +209,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Azure Storage サービスで Shared Access Signature を認証する方法
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Azure Storage サービスで Shared Access Signature を承認する方法
 Storage サービスが要求を受け取ると、入力クエリ パラメーターを取得し、呼び出し元プログラムと同じ方法で署名を作成します。 次に、2 つの署名を比較します。 一致する場合、ストレージ サービスでは、ストレージ サービスのバージョンをチェックする、有効であることを確認する、現在の日時が指定した期間内であることを検証する、要求されたアクセス権が実行された要求に対応していることを確認するなどの処理を実行できます。
 
 たとえば、上記の URL で、URL が BLOB ではなくファイルを指していた場合、Shared Access Signature が BLOB 用と指定されているため、この要求は失敗します。 BLOB を更新する REST コマンドが呼び出された場合、Shared Access Signature は読み取りアクセス権のみを付与することを指定しているので、コマンドは失敗します。
@@ -404,11 +404,11 @@ Azure Storage に対するすべての要求がログに記録されます。 �
 
 ![ログ ファイル内のフィールドのスナップショット](./media/storage-security-guide/image3.png)
 
-ここでは、GetBlob のエントリとその認証方法を扱っているため、operation-type が "Get-Blob" であるエントリを探し、request-status (4</sup> 番目の列) と authorization-type (8</sup> 番目の列) をチェックする必要があります。
+ここでは、GetBlob のエントリとその承認方法を扱っているため、operation-type が "Get-Blob" であるエントリを探し、request-status (4</sup> 番目の列) と authorization-type (8</sup> 番目の列) をチェックする必要があります。
 
-たとえば、上の一覧の先頭数行では、request-status は "Success"、authorization-type は "authenticated" です。 つまり、要求はストレージ アカウント キーを使用して検証されています。
+たとえば、上の一覧の先頭数行では、request-status は "Success"、authorization-type は "authenticated" です。 つまり、要求はストレージ アカウント キーを使用して承認されています。
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>BLOB の承認方法
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>承認されている BLOB へのアクセス方法
 ここでは、3 つの事例について扱っています。
 
 1. BLOB がパブリックであり、Shared Access Signature を使用せずに、URL を使用してアクセスできます。 この場合、request-status は "AnonymousSuccess" であり、authorization-type は "anonymous" です。

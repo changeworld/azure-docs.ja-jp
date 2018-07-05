@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 25db5075e2099dee354c4c5ef999b26c8e0c50c9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642667"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301038"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -38,20 +38,20 @@ ms.locfileid: "34642667"
 
 3. **[作成]** を選択します。
 
-    ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Marketplace の Service Fabric Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
 4. Service Fabric Analytics 作成ウィンドウで **[OMS ワークスペース]** フィールドの **[ワークスペースを選択します]** と **[新しいワークスペースの作成]** を順に選択します。 必須項目を入力します。 ここでの要件は、Service Fabric クラスターとワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、ワークスペースはデプロイを開始します。 デプロイは数分しかかかりません。
 
 5. 完了したら、Service Fabric Analytics 作成ウィンドウの下部にある **[作成]** をもう一度選択します。 新しいワークスペースが **[OMS ワークスペース]** に表示されていることを確認します。 この操作では、作成したワークスペースにソリューションが追加されます。
 
-Windows を使っている場合は、次の手順に進み、クラスター イベントが格納されているストレージ アカウントに OMS を接続します。 
+Windows を使っている場合は、次の手順に進み、クラスター イベントが格納されているストレージ アカウントに Log Analytics を接続します。 
 
 >[!NOTE]
 >Linux クラスターではこのエクスペリエンスを有効にすることはまだできません。 
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics ワークスペースをクラスターに接続する 
 
-1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ワークスペースへのアクセスを変更できます。
+1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、Log Analytics ワークスペースへのアクセスを変更できます。
 
 2. 左側のナビゲーション メニューの **[ワークスペースのデータ ソース]** の下にある **[ストレージ アカウント ログ]** を選択します。
 
@@ -65,16 +65,16 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 
 7. **[OK]** を選択し、ワークスペースをクラスターのログに接続します。
 
-    ![OMS にストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Log Analytics にストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 現在、アカウントがワークスペースのデータ ソースのストレージ アカウント ログに表示されているはずです。
 
-これで、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている OMS Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
+これで、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
 
 
-## <a name="deploy-oms-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して OMS をデプロイする
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Log Analytics をデプロイする
 
-Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい OMS ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
+Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
 
 [このサンプル テンプレート](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms)を使用し、要件に合うように変更できます。
 
@@ -86,7 +86,7 @@ Resource Manager テンプレートを使用してクラスターをデプロイ
         "type": "string",
         "defaultValue": "sfomsworkspace",
         "metadata": {
-            "description": "Name of your OMS Log Analytics Workspace"
+            "description": "Name of your Log Analytics Workspace"
         }
     },
     "omsRegion": {
@@ -98,21 +98,21 @@ Resource Manager テンプレートを使用してクラスターをデプロイ
             "Southeast Asia"
         ],
         "metadata": {
-            "description": "Specify the Azure Region for your OMS workspace"
+            "description": "Specify the Azure Region for your Log Analytics workspace"
         }
     }
     ```
 
     `omsRegion` の値は、特定の一連の値に一致している必要があります。 お使いのクラスターのデプロイに最も近いものを選択してください。
 
-2. OMS に任意のアプリケーション ログを送信する場合は、`applicationDiagnosticsStorageAccountType` と `applicationDiagnosticsStorageAccountName` がテンプレートのパラメーターに含まれていることを最初に確認します。 含まれていない場合は、それらを変数のセクションに追加し、必要に応じてその値を編集します。 前の形式に従い、パラメーターとして含めることもできます。
+2. Log Analytics に任意のアプリケーション ログを送信する場合は、`applicationDiagnosticsStorageAccountType` と `applicationDiagnosticsStorageAccountName` がテンプレートのパラメーターに含まれていることを最初に確認します。 含まれていない場合は、それらを変数のセクションに追加し、必要に応じてその値を編集します。 前の形式に従い、パラメーターとして含めることもできます。
 
     ```json
     "applicationDiagnosticsStorageAccountType": "Standard_LRS",
     "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
     ```
 
-3. テンプレートの変数に Service Fabric OMS ソリューションを追加します。
+3. テンプレートの変数に Service Fabric ソリューションを追加します。
 
     ```json
     "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
@@ -188,16 +188,16 @@ Resource Manager テンプレートを使用してクラスターをデプロイ
 
     Azure Resource Manager は、このコマンドが既存のリソースに対する更新であると検出します。 既存のデプロイで使用されているテンプレートと、指定された新しいテンプレートの間の変更点だけを処理します。
 
-## <a name="deploy-oms-by-using-azure-powershell"></a>Azure PowerShell を使用して OMS をデプロイする
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
 
-`New-AzureRmOperationalInsightsWorkspace`コマンドを使い、PowerShell で OMS Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい OMS Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
+`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell で Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
 
 ```PowerShell
 
 $SubscriptionName = "<Name of your subscription>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
-$WorkspaceName = "<OMS Log Analytics workspace name>"
+$WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
@@ -216,11 +216,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-終了したら、前のセクションの手順に従い、OMS Log Analytics を適切なストレージ アカウントに接続します。
+終了したら、前のセクションの手順に従い、Log Analytics を適切なストレージ アカウントに接続します。
 
-PowerShell を使って、他のソリューションを追加したり、OMS ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../log-analytics/log-analytics-powershell-workspace-configuration.md)」をご覧ください。
+PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../log-analytics/log-analytics-powershell-workspace-configuration.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* お使いのノードに [OMS エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
+* お使いのノードに [Log Analytics Agent をデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)

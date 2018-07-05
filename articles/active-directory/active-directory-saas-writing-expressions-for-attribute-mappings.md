@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293162"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034907"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -37,7 +37,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "Company name: \"Contoso\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>追加
@@ -96,6 +96,18 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 - - -
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**関数:**<br> NormalizeDiacritics(source)
+
+**説明:**<br> 1 つの文字列引数が必要です。 文字列を返しますが、分音記号はそれ以外の同等の記号で置換されます。 通常、分音記号 (アクセント記号) を含む姓と名を、さまざまなユーザー識別子 (ユーザー プリンシパル名、SAM アカウント名、電子メール アドレスなど) で使用できる有効な値に変換するために使用します。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | type | メモ |
+| --- | --- | --- | --- |
+| **source セクション** |必須 |String | 通常は、名または姓の属性 |
+
+- - -
 ### <a name="not"></a>not
 **関数:**<br> Not(source)
 
@@ -129,7 +141,6 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
   * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
 
 **パラメーター:**<br> 
-
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
@@ -144,7 +155,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。
+**説明:**<br> 1 つの文字列引数が必要です。 文字列を返しますが、分音記号はそれ以外の同等の記号で置換されます。
 
 **パラメーター:**<br> 
 
@@ -215,16 +226,16 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 * **入力** (surname): "Doe"
 * **出力**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>文字列から分音記号を取り除いて小文字に変換する
-文字列から特殊文字を取り除いて、大文字を小文字に変換する必要があります。
+### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
+アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
 
 **Expression:** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **サンプル入力/出力:** <br>
 
 * **入力** (givenName): "Zoë"
-* **出力**:  "zoe"
+* **出力**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
 SaaS アプリケーションに特定の形式で日付を送信します。 <br>
@@ -259,5 +270,5 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 * [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](saas-apps/tutorial-list.md)
 

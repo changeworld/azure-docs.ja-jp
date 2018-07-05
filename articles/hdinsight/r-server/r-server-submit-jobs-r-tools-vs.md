@@ -11,14 +11,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 06/27/2018
 ms.author: maxluk
-ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb7b538737e54b2c3d8a32e2ba65f7e0762a302c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409324"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047158"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -37,7 +37,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 3. SSH 認証のための公開キーと秘密キーを用意します。
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. マシンに [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 Microsoft R Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
+4. お使いのコンピューターに [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
 
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](http://www.putty.org/) をインストールします。
 
@@ -53,7 +53,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 
-1. [Microsoft R Server HDInsight クラスター](r-server-get-started.md)を作成します。
+1. [HDInsight ML Services クラスター](r-server-get-started.md).
 2. [RTVS 拡張機能](https://docs.microsoft.com/visualstudio/rtvs/installation)をインストールします。
 3. [サンプル zip ファイル](https://github.com/Microsoft/RTVS-docs/archive/master.zip)をダウンロードします。
 4. `examples/Examples.sln` を開いて、Visual Studio でソリューションを起動します。
@@ -66,13 +66,13 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
     ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-r-cluster"></a>HDInsight R クラスターにジョブを送信する
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
-PuTTY が搭載された Windows コンピューターから Microsoft R Server/Microsoft R Client を使用して、ローカル クライアントから HDInsight クラスターに対して分散された `RevoScaleR` 関数を実行する計算コンテキストを作成できます。 `RxSpark` を使用して計算コンテキストを作成し、ユーザー名、Hadoop クラスターのエッジ ノード、SSH スイッチなどを指定します。
+PuTTY が搭載された Windows コンピューターから Microsoft ML Server/Microsoft R Client を使用して、ローカル クライアントから HDInsight クラスターに対して分散された `RevoScaleR` 関数を実行する計算コンテキストを作成できます。 `RxSpark` を使用して計算コンテキストを作成し、ユーザー名、Hadoop クラスターのエッジ ノード、SSH スイッチなどを指定します。
 
-1. エッジ ノードのホスト名を調べるには、Azure で HDInsight R クラスターのウィンドウを開き、[概要] ウィンドウの上部のメニューで **[SSH (Secure Shell)]** を選択します。
+1. エッジ ノードのホスト名を調べるには、Azure で HDInsight ML Services クラスターのウィンドウを開き、[概要] ウィンドウの上部のメニューで **[SSH (Secure Shell)]** を選択します。
 
-    ![[SSH (Secure Shell)]](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
+    ![[Secure Shell (SSH)]](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
 2. **[エッジ ノードのホスト名]** の値をコピーします。
 
@@ -122,7 +122,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft R Server/
 
 5. `rxHadoopCopy` によって、サンプル データ フォルダーの `people.json` ファイルが新しく作成された `/user/RevoShare/newUser` フォルダーに正常にコピーされたことを確認します。
 
-    1. Azure の HDInsight R クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
+    1. Azure の HDInsight ML Services クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
 
         ![ストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
@@ -144,6 +144,6 @@ PuTTY が搭載された Windows コンピューターから Microsoft R Server/
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * 「[HDInsight で ScaleR と SparkR を組み合わせる](../hdinsight-hadoop-r-scaler-sparkr.md)」では、航空会社のフライトの遅延を予測する例が示されています。
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

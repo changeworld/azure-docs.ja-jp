@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400675"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048473"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -61,7 +61,7 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 HDInsight には、次の高度な分析ワークフロー向けの、いくつかの機械学習オプションがあります。
 
 * [Machine Learning と Spark](#machine-learning-and-spark)
-* [R と R Server](#r-and-r-server)
+* [R および ML Services](#r-and-r-server)
 * [Azure Machine Learning と Hive](#azure-machine-learning-and-hive)
 * [Spark とディープ ラーニング](#spark-and-deep-learning)
 
@@ -75,9 +75,9 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 * [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML は、ML パイプラインを構築するために Spark DataFrame 上に構築された高度な API を提供する、比較的新しいパッケージです。
 * [**MMLSpark** ](https://github.com/Azure/mmlspark) - Microsoft Machine Learning library for Apache Spark (MMLSpark) は、データ サイエンティストの Spark 上での生産性を高めること、実験速度を向上させること、およびディープ ラーニングなどの非常に大規模なデータセットに対して、機械学習の最先端の手法を利用できることを目標に設計されています。 MMLSpark ライブラリは、PySpark でモデルを構築するための一般的なモデリング タスクを簡略化します。 
 
-### <a name="r-and-r-server"></a>R と R Server
+### <a name="r-and-ml-services"></a>R および ML Services
 
-大量のデータセットとモデルを扱えるよう準備された [R Server](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
+大量のデータセットとモデルを扱えるよう準備された [ML Services](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 

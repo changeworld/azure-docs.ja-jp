@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3ac3df7f7861b8a12778190072e5554927706e08
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271593"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061421"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
@@ -29,7 +29,7 @@ Microsoft Azure HDInsight の Apache Hadoop エコシステムのコンポーネ
 HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションです。
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Hadoop コンポーネント
-Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 各バージョンを選択すると、特定のバージョンの HDP ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。 2017 年 2 月 17 日現在、Azure HDInsight で使用される既定のクラスター バージョンは、HDP 2.5 を基盤とした 3.5 です。
+Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 各バージョンを選択すると、特定のバージョンの HDP ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは、HDP 2.6 を基盤とした 3.6 です。
 
 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。 
 
@@ -53,12 +53,13 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Storm |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.1.0、2.2.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
+| Apache Spark |2.3.0、2.2.0、2.1.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
 | Apache Livy |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.0、0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |3.2.8 |-|-|-|
+| Apache スライダー | 0.92.0 |-|-|-|-|-|-|
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>現在の Hadoop コンポーネントのバージョン情報の確認
 
@@ -234,7 +235,7 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
 
 * ブラジル南部と西日本を除くすべてのサポートされているリージョン:
 
-  | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | R Server |
+  | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 | D13、D14 |A3 |D12 v2 |D12 v2 |
   | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
@@ -246,7 +247,7 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
   | エッジ: 推奨される VM サイズ | | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
-  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | R Server |
+  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 |D3  | D13、D14 |A3 |D12 |D12 |
   | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12  | D13、D14 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |

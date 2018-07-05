@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub を使用してジョブのスケジュールを設定する (.NET/.NET) | Microsoft Docs
 description: 複数のデバイスでダイレクト メソッドを呼び出すように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリと、ジョブを実行するサービス アプリを実装します。
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 012/16/2018
-ms.author: v-masebo;dobett
-ms.openlocfilehash: 76c8d3739b2af3c010cd80585c93c097fc9eb466
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-hub
+ms.topic: conceptual
+ms.date: 03/06/2018
+ms.author: dobett
+ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308586"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>ジョブのスケジュールとブロードキャスト (.NET/.NET)
 
@@ -87,8 +82,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
+    ```
 
-1. Add the following to implement the direct method on the device:
+1. デバイスにダイレクト メソッドを実装するために以下を追加します。
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -100,8 +96,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
+    ```
 
-1. Add the following to implement the device twins listener on the device:
+1. デバイスにデバイス ツイン リスナーを実装するには、以下を追加します。
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -175,6 +172,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 1. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成したハブの IoT Hub 接続文字列とデバイスの名前に置き換えてください。
 
     ```csharp
+    static JobClient jobClient;
     static string connString = "<yourIotHubConnectionString>";
     static string deviceId = "<yourDeviceId>";
     ```

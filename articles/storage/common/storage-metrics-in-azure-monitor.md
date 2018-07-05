@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: b1d82f9b527a62109e0301907b87bd683f9912af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034744"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -38,7 +39,7 @@ Azure Portal ではメトリックを時間経過に沿って監視できます�
 
 ![Azure Portal でのメトリック アクセスのスクリーンショット](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-ディメンションをサポートするメトリックについては、目的のディメンション値でフィルター処理する必要があります。 次の例は、応答の種類が **Success** の **Transactions** をアカウント レベルで表示する方法を示しています。
+ディメンションをサポートするメトリックについては、目的のディメンション値でメトリックをフィルター処理できます。 次の例は、**[API 名]** ディメンションの値を選択することで特定の操作に対するアカウント レベルの**トランザクション**を表示する方法を示しています。
 
 ![Azure Portal におけるディメンションでのメトリック アクセスのスクリーンショット](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -317,7 +318,7 @@ Storage は、Azure Monitor を使用して、ストレージ アカウント �
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * File サービスのリソース ID `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Azure Monitor REST API のリソース ID
@@ -335,13 +336,13 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="account-level"></a>アカウント レベル
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 
 ### <a name="blob-storage"></a>BLOB ストレージ
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 <br/> ディメンション: BlobType ([定義](#metrics-dimensions)) |
@@ -349,7 +350,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="table-storage"></a>テーブル ストレージ
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | TableCapacity | ストレージ アカウントによって使用されている Table Storage の量。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 | TableCount   | ストレージ アカウントのテーブルの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
@@ -357,7 +358,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="queue-storage"></a>Queue Storage
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | QueueCapacity | ストレージ アカウントによって使用されている Queue ストレージの量。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 | QueueCount   | ストレージ アカウントのキューの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
@@ -365,7 +366,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ### <a name="file-storage"></a>File Storage
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | FileCapacity | ストレージ アカウントによって使用されている File ストレージの量。 <br/><br/> 単位: バイト <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
@@ -377,7 +378,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 Azure Storage は、Azure Monitor で次のトランザクション メトリックを提供します。
 
-| メトリックの名前 | [説明] |
+| メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 | トランザクション | ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: ResponseType、GeoType、ApiName ([定義](#metrics-dimensions))<br/> 値の例: 1024 |
 | イングレス | イングレス データの量。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。 <br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
@@ -390,7 +391,7 @@ Azure Storage は、Azure Monitor で次のトランザクション メトリッ
 
 Azure Storage では、Azure Monitor の次のメトリック ディメンションがサポートされます。
 
-| ディメンション名 | [説明] |
+| ディメンション名 | 説明 |
 | ------------------- | ----------------- |
 | BlobType | BLOB メトリックの BLOB の種類のみ。 サポートされる値は **BlockBlob** と **PageBlob** です。 BlockBlob には Append Blob が含まれます。 |
 | ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError: 記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError: HTTP 503 ステータス コードを返した認証済み要求  </li> <li> ServerTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError: データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError: ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError: クライアント側の調整エラー。 </li> <li> ClientTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError: 記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success: 成功した要求|
@@ -402,6 +403,12 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="service-continuity-of-legacy-metrics"></a>従来のメトリックのサービス継続性
 
 Azure Monitor 管理メトリックと並行して従来のメトリックを利用できます。 サポートは、Azure Storage が従来のメトリックのサービスを終了するまで引き続き提供されます。
+
+## <a name="faq"></a>FAQ
+
+**Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**
+
+いいえ、Azure Compute はディスク上のメトリックをサポートします。 詳しくは、[この記事](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

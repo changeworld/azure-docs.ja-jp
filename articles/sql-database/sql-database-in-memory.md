@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647869"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309301"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -72,7 +72,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 インメモリ OLTP には、ユーザー データの格納に使用されるメモリ最適化テーブルが含まれています。 これらのテーブルは、メモリに格納する必要があります。 メモリは SQL Database サービスで直接管理するため、ユーザー データについてクォータの概念があります。 この考え方は、"*インメモリ OLTP ストレージ*" と呼ばれます。
 
-サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 [DTU ベースのリソース制限](sql-database-dtu-resource-limits.md)および[仮想コアベースのリソース制限](sql-database-vcore-resource-limits.md)に関する記事をご覧ください。
+サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。
 
 インメモリ OLTP ストレージ上限では、以下が考慮されます。
 
@@ -135,8 +135,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 **クラスター化された**列ストア インデックスがある場合、ダウングレード後はテーブル全体が使用できなくなります。 そのため、サポートされていないレベルにデータベースをダウングレードする前に、*クラスター化された* 列ストア インデックスをすべて削除することをお勧めします。
 
-
-  *サポートされている下位レベルへのダウングレード*: データベース全体がターゲット価格レベルの最大データベース サイズ、またはエラスティック プールの使用可能なストレージに収まっている場合、このダウングレードは正常に行われます。 列ストア インデックスからの特定の影響はありません。
+*サポートされている下位レベルへのダウングレード*: データベース全体がターゲット価格レベルの最大データベース サイズ、またはエラスティック プールの使用可能なストレージに収まっている場合、このダウングレードは正常に行われます。 列ストア インデックスからの特定の影響はありません。
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22de973ae00c93f82b274c0b833149b9fe494a7f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a62a6b334fd58ce360d932cdc4a8f04f36e3232d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209852"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302031"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル: Azure Active Directory と ServiceChannel の統合
 
@@ -112,7 +112,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a. **[識別子]** ボックスに、値として「`http://adfs.<domain>.com/adfs/service/trust`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`http://adfs.<domain>.com/adfs/service/trust`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<customer domain>.servicechannel.com/saml/acs` のパターンを使用して URL を入力します。
 
@@ -126,7 +126,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 
-    > Azure AD で**役割**を構成する方法については、[ここ](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/)をクリックしてください
+    > Azure AD で**役割**を構成する方法については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 5. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。
 
@@ -134,7 +134,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     | --- | --- |    
     | 役割| user.assignedroles |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
 
@@ -181,7 +181,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
  
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

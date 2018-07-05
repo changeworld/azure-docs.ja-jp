@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149529"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34592410"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>ユーザー プライバシーと Azure AD シームレス シングル サインオン
 
@@ -28,11 +29,11 @@ ms.locfileid: "32149529"
 ## <a name="overview"></a>概要
 
 
-Azure AD シームレス SSO では、EUII を含めることができる次の種類のログが作成されます。
+Azure AD シームレス SSO では、個人データを含めることができる次の種類のログが作成されます。 
 
 - Azure AD Connect トレース ログ ファイル。
 
-シームレス SSO のユーザー プライバシー コンプライアンスには、次の 2 つの方法で準拠できます。
+次の 2 つの方法でシームレス SSO のユーザー プライバシーを強化します。
 
 1.  要請を受けた際、個人のデータを抽出し、その個人のデータを環境から削除する
 2.  すべてのデータが 48 時間しか保持されないようにする。

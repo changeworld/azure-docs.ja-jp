@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802546"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301803"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
 この記事では、ブローカー メッセージを交換する際のパフォーマンスを Azure Service Bus を使用して最適化する方法について説明しています。 この記事の前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
 
-このトピック全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックのサブスクリプションにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
+この記事全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックのサブスクリプションにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
 
 以下のセクションでは、パフォーマンスを向上するために Service Bus で利用される概念をいくつか紹介します。
 
@@ -37,7 +32,7 @@ Service Bus を使用すると、クライアントは次の 3 つのプロト�
 2. Service Bus メッセージング プロトコル (SBMP)
 3. HTTP
 
-AMQP と SBMP は、メッセージング ファクトリが存在する限り、Service Bus への接続を維持するため、より効率的です。 また、バッチとプリフェッチも実装されます。 明記されていない限り、このトピックのすべてのコンテンツで AMQP または SBMP を使用するものとします。
+AMQP と SBMP は、メッセージング ファクトリが存在する限り、Service Bus への接続を維持するため、より効率的です。 また、バッチとプリフェッチも実装されます。 明示的に示されていない限り、この記事のすべてのコンテンツで AMQP または SBMP を使用するものとします。
 
 ## <a name="reusing-factories-and-clients"></a>ファクトリとクライアントの再利用
 
@@ -45,13 +40,13 @@ AMQP と SBMP は、メッセージング ファクトリが存在する限り�
 
 ## <a name="concurrent-operations"></a>同時実行の操作
 
-操作 (送信、受信、削除など) には時間がかかります。 この時間には、要求と応答の待機時間だけでなく、Service Bus サービスによる操作の処理時間も含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。 この同時実行は、次に示すいくつかの異なる方法で実現できます。
+操作 (送信、受信、削除など) には時間がかかります。 この時間には、要求と応答の待機時間だけでなく、Service Bus サービスによる操作の処理時間も含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。 
 
-* **非同期操作**: クライアントは非同期操作を実行することによって操作のスケジュールを設定します。 前の要求が完了する前に次の要求が開始されます。 次のコード スニペットは、非同期送信操作の例です。
+クライアントは非同期操作を実行することによって、同時実行操作のスケジュールを設定します。 前の要求が完了する前に次の要求が開始されます。 次のコード スニペットは、非同期送信操作の例です。
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ AMQP と SBMP は、メッセージング ファクトリが存在する限り�
   Console.WriteLine("All messages sent");
   ```
   
-  次のコードは、非同期受信操作の例です。
+  次のコードは、非同期受信操作の例です。 完全なプログラムは[こちら](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues)を参照してください。
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* **マルチ ファクトリ**: 同じファクトリによって作成されるすべてのクライアント (送信側と受信側) が 1 つの TCP 接続を共有します。 最大メッセージ スループットはこの TCP 接続を通過できる操作の数によって制限されます。 1 つのファクトリで取得できるスループットは、TCP ラウンドトリップ時間とメッセージ サイズによって大幅に変わります。 より高いスループット レートを得るには、複数のメッセージ ファクトリを使用します。
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>受信モード
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-バッチ処理は課金対象のメッセージ操作数に影響を与えません。また、Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはバッチ処理をサポートしません。
+バッチ処理は課金対象のメッセージ操作数に影響を与えません。また、[Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリを使用する Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはバッチ処理をサポートしません。
 
 ## <a name="batching-store-access"></a>ストア アクセスのバッチ処理
 
@@ -135,7 +119,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 メッセージがプリフェッチされると、サービスはプリフェッチされたメッセージをロックします。 このロックにより、別の受信側はプリフェッチされたメッセージを受信できなくなります。 受信側がメッセージを完了できない状態でロックの有効期限が切れた場合、他の受信側がメッセージを受信できるようになります。 プリフェッチされたメッセージのコピーはキャッシュに残ります。 受信側が有効期限の切れたキャッシュのコピーを使用している場合、そのメッセージを完了しようとしたときに例外を受け取ります。 既定では、メッセージのロックは 60 秒後に期限切れになります。 この値は 5 分まで拡張できます。 期限切れのメッセージの使用を防ぐには、キャッシュ サイズを常に、ロックのタイムアウト間隔内にクライアントが使用できるメッセージの数より小さくする必要があります。
 
-60 秒間の既定のロック有効期限を使用する場合、[SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] の適切な値はファクトリの全受信側の最大処理レートの 20 倍になります。 たとえば、ファクトリが 3 つの受信側を作成すると、各受信側は 1 秒あたり最大 10 個のメッセージを処理できます。 プリフェッチ数が 20 X 3 X 10 = 600 を超えないようにしてください。 既定では、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] は 0 に設定されます。これはサービスから追加のメッセージがフェッチされないことを意味します。
+60 秒間の既定のロック有効期限を使用する場合、[PrefetchCount][SubscriptionClient.PrefetchCount] の適切な値はファクトリの全受信側の最大処理レートの 20 倍になります。 たとえば、ファクトリが 3 つの受信側を作成すると、各受信側は 1 秒あたり最大 10 個のメッセージを処理できます。 プリフェッチ数が 20 X 3 X 10 = 600 を超えないようにしてください。 既定では、[PrefetchCount][QueueClient.PrefetchCount] は 0 に設定されます。これはサービスから追加のメッセージがフェッチされないことを意味します。
 
 メッセージをプリフェッチすると、メッセージ操作全体の数、つまりラウンド トリップが減るため、キューまたはサブスクリプションの全体でのスループットが増えます。 ただし、最初のメッセージのフェッチには (メッセージ サイズの増加に起因して) 時間がかかります。 プリフェッチ済みのメッセージは、クライアントが既にダウンロードしているため、速く受信できます。
 
@@ -158,12 +142,12 @@ namespaceManager.CreateTopic(td);
 > [!NOTE]
 > エクスプレス エンティティはトランザクションをサポートしていません。
 
-## <a name="use-of-partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピックの使用
+## <a name="partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピック
 
 内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、[パーティション分割されたキューまたはトピック](service-bus-partitioning.md)は、複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 > [!NOTE]
-> パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
+> パーティション分割されたエンティティは、[Premium SKU](service-bus-premium-messaging.md) ではサポートされていません。 
 
 ```csharp
 // Create partitioned queue.
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>複数のキューの使用
+## <a name="multiple-queues"></a>複数のキュー
 
 パーティション分割されたキューまたはトピックを使用できない場合、または予想される負荷をパーティション分割された 1 つのキューまたはトピックで処理できない場合、複数のメッセージング エンティティを使用する必要があります。 複数のエンティティを使用するときは、すべてのエンティティに同じクライアントを使用するのではなく、エンティティごとに専用のクライアントを作成します。
 

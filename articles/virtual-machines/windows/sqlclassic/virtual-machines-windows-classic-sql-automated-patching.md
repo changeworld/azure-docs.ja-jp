@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: 1da89bbf88e9f1f2105e7afab5c3fdabcecdbc64
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852712"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061337"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動修正 (クラシック)
 > [!div class="op_single_selector"]
@@ -62,10 +62,10 @@ ms.locfileid: "29852712"
 
 * [SQL Server IaaS 拡張機能をインストールします](../classic/sql-server-agent-extension.md)。
 
-## <a name="settings"></a>[設定]
+## <a name="settings"></a>設定
 自動修正で構成できるオプションを次の表に示します。 クラシック VM の場合は、PowerShell を使用してこれらの設定を構成する必要があります。
 
-| Setting | 指定できる値 | [説明] |
+| Setting | 指定できる値 | 説明 |
 | --- | --- | --- |
 | **自動修正** |有効/無効 (無効) |Azure 仮想マシンの自動修正を有効または無効にします。 |
 | **メンテナンス スケジュール** |毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日 |仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。 |
@@ -86,7 +86,7 @@ ms.locfileid: "29852712"
 | --- | --- |
 | **DayOfWeek** |毎週木曜日に修正プログラムがインストールされます。 |
 | **MaintenanceWindowStartingHour** |午前 11 時に更新が開始されます。 |
-| **MaintenanceWindowsDuration** |修正プログラムを 120 分以内にインストールする必要があります。 開始時刻に基づき、修正プログラムのインストールは午後 1 時までに完了する必要があります。 |
+| **MaintenanceWindowDuration** |修正プログラムを 120 分以内にインストールする必要があります。 開始時刻に基づき、修正プログラムのインストールは午後 1 時までに完了する必要があります。 |
 | **PatchCategory** |このパラメーターに指定可能な設定は "Important" だけです。 |
 
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。

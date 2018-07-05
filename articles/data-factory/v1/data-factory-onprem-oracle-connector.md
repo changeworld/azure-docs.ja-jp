@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe1ca45b0f79781b2fa17bfb605df03d334cc8d1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046715"
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-oracle-connector.md)
-> * [バージョン 2 - プレビュー](../connector-oracle.md)
+> * [Version 1](data-factory-onprem-oracle-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-oracle.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Oracle コネクタ](../connector-oracle.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Oracle コネクタ](../connector-oracle.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -57,6 +58,9 @@ Oracle が Azure IaaS VM でホストされている場合でも、ゲートウ�
     - Oracle 10g R1、R2 (10.1、10.2)
     - Oracle 9i R1、R2 (9.0.1、9.2)
     - Oracle 8i R3 (8.1.7)
+
+> [!NOTE]
+> Oracle プロキシ サーバーはサポートされていません。
 
 > [!IMPORTANT]
 > 現在 Microsoft Driver for Oracle でサポートされているのは、Oracle からのデータ コピーだけです。Oracle への書き込みはサポートされていません。 また、Data Managemetn Gateway の [診断] タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
@@ -91,9 +95,9 @@ Oracle が Azure IaaS VM でホストされている場合でも、ゲートウ�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、Oracle のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesOracle** |[はい] |
+| type |type プロパティを **OnPremisesOracle** |[はい] |
 | driverType | Oracle Database との間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** または **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
 | connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | [はい] |
 | gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |[はい] |
@@ -136,7 +140,7 @@ User Id=<username>;Password=<password>;",
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 OracleTable 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 |いいえ (**OracleSource** の **oracleReaderQuery** が指定されている場合) |
 
@@ -151,14 +155,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 ### <a name="oraclesource"></a>oracleReaderQuery
 コピー アクティビティで、source の種類が **OracleSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 ### <a name="oraclesink"></a>パイプライン
 **OracleSink** では次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 使用できる値 | 必須 |
+| プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ  |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |

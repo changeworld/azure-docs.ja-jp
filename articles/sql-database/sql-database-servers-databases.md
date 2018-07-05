@@ -1,34 +1,22 @@
 ---
-title: Azure SQL のサーバーとデータベースを作成し、管理する | Microsoft Docs
-description: Azure SQL Database サーバーとデータベースの概念と、サーバーとデータベースの作成と管理について説明します。
+title: Azure SQL の論理サーバーと単一データベース |Microsoft Docs
+description: Azure SQL Database の論理サーバーと単一データベースの概念とそのリソースについて説明します。
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 2600e39dec91fc6916fa7bbd02e318d33cfa3c99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649059"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309182"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database のサーバーとデータベースを作成し、管理する
-
-SQL Database には、次の 3 つの種類のデータベースが用意されています。
-
-- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、[コンピューティング リソースとストレージ リソースの組み合わせ](sql-database-service-tiers-dtu.md)または[コンピューティング リソースとストレージ リソースの独立したスケール](sql-database-service-tiers-vcore.md)を使用して作成された単一のデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
-- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、プール内のすべてのデータベース間で共有された[コンピューティング リソースとストレージ リソースの独立したスケール (仮想コアベース)](sql-database-service-tiers-vcore.md) または[コンピューティング リソースとストレージ リソースの組み合わせ (DTU ベース)](sql-database-service-tiers-dtu.md) を使用して、[データベースのプール](sql-database-elastic-pool.md)の一部として作成されたデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
-- 
-  [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、そのサーバー インスタンス上のすべてのデータベースのためにコンピューティング リソースおよびストレージ リソースの定義済みセットを使って作成された [SQL Server のインスタンス](sql-database-managed-instance.md) (マネージド インスタンス)。 マネージド インスタンスには、システム データベースとユーザー データベースの両方が含まれています。 Managed Instance は、アプリケーションを再設計せずに、データベースを完全に管理された PaaS にリフトアンドシフトできるように設計されています。 Managed Instance は、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。  
-
-Microsoft Azure SQL Database では、表形式データ ストリーム (TDS) プロトコル クライアント バージョン 7.3 以降をサポートしており、暗号化された TCP/IP 接続のみを使用できます。
-
-> [!IMPORTANT]
-> Azure SQL Database Managed Instance は、現在、パブリック プレビューの最中で、単一の汎用サービス階層を提供しています。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください。 この記事の残りの部分は、Managed Instance には適用されません。
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Azure SQL Database の論理サーバー、単一データベース、よびそのリソース
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Azure SQL 論理サーバーとは何か
 
@@ -48,8 +36,7 @@ Azure SQL Database 論理サーバーは、
 - データベース、エラスティック プール、およびデータ ウェアハウスの親リソースです
 - データベース、エラスティック プール、データ ウェアハウスの名前空間を提供します
 - 強力な有効期間のセマンティクスが含まれる論理コンテナーです。サーバーを削除すると、包含データベース、エラスティック プール、データ ウェアハウスが削除されます
-- 
-  [Azure ロール ベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウスはサーバーからアクセス権を継承します
+- [Azure ロール ベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウスはサーバーからアクセス権を継承します
 - Azure のリソース管理目的での、データベース、エラスティック プール、データ ウェアハウスの上位要素です (データベースとプールの URL スキーマを参照してください)
 - 領域内にリソースを併置します
 - データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
@@ -61,6 +48,20 @@ Azure SQL Database 論理サーバーは、
 - サーバー レベルのプリンシパルのログインによってサーバー上のすべてのデータベースを管理できます
 - サーバー上の 1 つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
 - 論理サーバーで作成されたすべてのユーザー データベースの既定の照合順序は `SQL_LATIN1_GENERAL_CP1_CI_AS` で、ここで `LATIN1_GENERAL` は英語 (米国) で、`CP1` はコード ページ 1252、`CI` は大文字小文字を区別しない、`AS` はアクセントを区別する、です。
+
+## <a name="logical-servers-and-databases"></a>論理サーバーとデータベース
+
+論理サーバーでは次の内容を作成できます。
+
+- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、[コンピューティング リソースとストレージ リソースの組み合わせ](sql-database-service-tiers-dtu.md)または[コンピューティング リソースとストレージ リソースの独立したスケール](sql-database-service-tiers-vcore.md)を使用して作成された単一のデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
+- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、プール内のすべてのデータベース間で共有された[コンピューティング リソースとストレージ リソースの独立したスケール (仮想コアベース)](sql-database-service-tiers-vcore.md) または[コンピューティング リソースとストレージ リソースの組み合わせ (DTU ベース)](sql-database-service-tiers-dtu.md) を使用して、[データベースのプール](sql-database-elastic-pool.md)の一部として作成されたデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
+
+> [!IMPORTANT]
+> SQL Database マネージド インスタンスは、現在パブリック プレビューであり、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、そのサーバー インスタンス上のすべてのデータベースのためにコンピューティング リソースおよびストレージ リソースの定義済みセットを使って作成された [SQL Server のインスタンス](sql-database-managed-instance.md) (マネージド インスタンス)。 マネージド インスタンスには、システム データベースとユーザー データベースの両方が含まれています。 Managed Instance は、アプリケーションを再設計せずに、データベースを完全に管理された PaaS にリフトアンドシフトできるように設計されています。 Managed Instance は、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください。 この記事の残りの部分は、Managed Instance には適用されません。
+
+## <a name="tds-and-tcpip-connections"></a>TDS および TCP/IP 接続
+
+Microsoft Azure SQL Database では、表形式データ ストリーム (TDS) プロトコル クライアント バージョン 7.3 以降をサポートしており、暗号化された TCP/IP 接続のみを使用できます。
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>SQL Database ファイアウォールで保護される Azure SQL データベース
 
@@ -111,7 +112,7 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|1 つまたは複数のデータベースを取得します。|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|データベースのプロパティを設定するか、既存のデータベースをエラスティック プールに移動します。|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|データベースを削除します。|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|リソース グループを作成します。
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|リソース グループを作成します。|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|サーバーを作成します。|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|サーバーに関する情報を返します。|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|サーバーのプロパティを変更します。|
@@ -200,14 +201,10 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 |[サーバー - 更新](/rest/api/sql/servers/update)|既存のサーバーを更新します。|
 |[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
 |[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|
-  [データベース - エラスティック プールごとに取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
-|
-  [データベース - 推奨されるエラスティック プールごとに取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
-|
-  [データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|
-  [データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
+|[データベース - エラスティック プールごとに取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
+|[データベース - 推奨されるエラスティック プールごとに取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
 |[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 |[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620481"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046988"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-create-datasets.md)
-> * [バージョン 2 - プレビュー](../concepts-datasets-linked-services.md)
+> * [Version 1](data-factory-create-datasets.md)
+> * [バージョン 2 (現在のバージョン)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での データセット](../concepts-datasets-linked-services.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 のデータセット](../concepts-datasets-linked-services.md)に関するページを参照してください。
 
 この記事では、データセットの詳細、データセットを JSON 形式で定義する方法、Azure Data Factory パイプラインで使用する方法について説明します。 また、データセット JSON 定義の各セクション (構造、可用性、ポリシーなど) の詳細について説明します。 さらに、データセット JSON 定義で **offset**、**anchorDateTime**、**style** の各プロパティを使用する例も紹介します。
 
@@ -83,7 +83,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
 | name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |[はい] |該当なし |
-| 型 |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
+| type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ  |該当なし |
 | typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |該当なし |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ  |false |
@@ -196,7 +196,7 @@ structure の各列には次のプロパティが含まれます。
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |列の名前です。 |[はい] |
-| 型 |列のデータ型です。  |いいえ  |
+| type |列のデータ型です。  |いいえ  |
 | culture |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 |いいえ  |
 | format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ  |
 

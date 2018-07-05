@@ -9,24 +9,22 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153661"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061439"
 ---
-# <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>App Service および Azure Functions で Azure マネージド サービス ID を使用する方法
 
 > [!NOTE] 
-> 現在、App Service および Azure Functions のための管理対象のサービス ID はプレビュー段階です。 App Service on Linux と Web App for Containers は、現時点ではサポートされていません。
-
+> App Service on Linux と Web App for Containers は、現時点ではマネージド サービス ID をサポートしていません。
 
 > [!Important] 
-> アプリがサブスクリプションやテナント間で移行された場合、App Service および Azure Functions での管理対象のサービス ID は想定されたとおりに動作しません。 アプリは新しい ID を取得する必要があり、サイト自体を削除しないで既存の ID を正しく削除することはできません。 アプリは新しい ID で再作成する必要があり、ダウン ストリームのリソースが、新しい ID を使用するように更新されたアクセス ポリシーを持つ必要があります。
-
+> アプリがサブスクリプションやテナント間で移行された場合、App Service および Azure Functions での管理対象のサービス ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
 
 このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/managed-service-identity/overview.md)」(管理対象のサービス ID の概要) をご覧ください。
 
@@ -77,6 +75,31 @@ Azure CLI を使用して、管理対象のサービス ID を設定するには
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
+### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+
+次の手順では、Azure PowerShell を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+
+1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+
+2. Azure PowerShell を使用して Web アプリケーションを作成します。 App Service で Azure PowerShell を使用する方法の他の例については、[App Service の PowerShell のサンプル](../app-service/app-service-powershell-samples.md)に関するページを参照してください。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    
+    # Create an App Service plan in Free tier.
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    
+    # Create a web app.
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    ```
+
+3. `identity assign` コマンドを実行してこのアプリケーションの ID を作成します。
+
+    ```azurepowershell-interactive
+    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    ```
+
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
 Azure Resource Manager テンプレートを使って、Azure リソースのデプロイを自動化できます。 App Service および Functions へのデプロイについて詳しくは、「[Automating resource deployment in App Service](../app-service/app-service-deploy-complex-application-predictably.md)」(App Service でのリソースのデプロイの自動化) および「[Azure Functions の関数アプリのリソース デプロイを自動化](../azure-functions/functions-infrastructure-as-code.md)」をご覧ください。
@@ -121,7 +144,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-`<TENANTID>` と `<PRINCIPALID>` は GUID に置き換えられます。 tenantId プロパティは、アプリケーションが属している AAD テナントを示します。 principalId は、アプリケーションの新しい ID の一意識別子です。 AAD でのアプリケーションの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
+`<TENANTID>` と `<PRINCIPALID>` は GUID に置き換えられます。 tenantId プロパティは、ID が属している AAD テナントを示します。 principalId は、アプリケーションの新しい ID の一意識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Azure リソースのトークンの取得
 
@@ -161,7 +184,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
 > [!div class="mx-tdBreakAll"]
-> |パラメーター名|イン|[説明]|
+> |パラメーター名|イン|説明|
 > |-----|-----|-----|
 > |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。|
 > |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
@@ -171,7 +194,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 
 > [!div class="mx-tdBreakAll"]
-> |プロパティ名|[説明]|
+> |プロパティ名|説明|
 > |-------------|----------|
 > |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
 > |expires_on|アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。|
@@ -205,7 +228,7 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>コード例
-この要求を C# で行うには:
+<a name="token-csharp"></a>この要求を C# で行うには:
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -216,7 +239,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 > [!TIP]
 > .NET 言語では、この要求を自作する代わりに、[Microsoft.Azure.Services.AppAuthentication](#asal) を使うこともできます。
 
-Node.JS の例:
+<a name="token-js"></a>Node.JS の例:
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -231,7 +254,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-PowerShell では次のとおりです。
+<a name="token-powershell"></a>PowerShell の例:
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -239,6 +262,21 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+## <a name="remove"></a>ID の削除
+
+ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 REST/ARM テンプレート プロトコルでは、種類を "なし" に設定することで、この削除を実行します。
+
+```json
+"identity": {
+    "type": "None"
+}    
+```
+
+この方法で ID を削除すると、AAD からプリンシパルも削除されます。 システム割り当て ID は、アプリ リソースが削除されるときに、AAD から自動的に削除されます。
+
+> [!NOTE] 
+> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続き MSI が "オン" または "有効" と表示されます。 そのため、この設定の使用は推奨しません。
 
 ## <a name="next-steps"></a>次の手順
 

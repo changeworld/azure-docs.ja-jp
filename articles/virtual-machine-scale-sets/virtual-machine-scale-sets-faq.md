@@ -16,21 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895326"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656443"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
 Azure における仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
+
 **Q.** Scale Sets には何個の VM を設定できますか?
 
-**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。 
+**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。
 
 **Q.** Scale Sets 内でデータ ディスクはサポートされていますか?
 
@@ -48,7 +49,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
 
-**A.** カスタム イメージ VHD に基づいて管理ディスクを作成し、Scale Sets テンプレートで参照します。 [こちら](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)でサンプルをご覧ください。
+**A.** VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI 2.0](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
 
 **Q.** Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
 
@@ -120,7 +121,7 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)」を参照してください。
 
-仮想マシン スケール セットの TargetResourceId は次のような形式になっています。 
+仮想マシン スケール セットの TargetResourceId は次のような形式になっています。
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
@@ -128,8 +129,12 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 
-PowerShell を使って仮想マシン スケール セットに自動スケールを設定する方法については、[Azure 仮想マシン スケール セットに自動スケールを追加する方法](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/)に関するブログ記事を参照してください。
+PowerShell を使用して仮想マシン スケール セットに対する自動スケールを設定するには、[仮想マシン スケール セットを自動的にスケーリングする](tutorial-autoscale-powershell.md)に関するページを参照してください。 また、[Azure CLI 2.0](tutorial-autoscale-cli.md) および [Azure テンプレート](tutorial-autoscale-template.md)を使用して、自動スケールを構成することもできます。
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>VM が停止 (割り当て解除) されている場合、その VM は自動スケール操作の一環として起動されますか?
+
+いいえ。 自動スケール ルールによって、追加の VM インスタンスがスケール セットの一部として必要とされている場合は、新しい VM インスタンスが作成されます。 停止 (割り当て解除) されている VM インスタンスは、自動スケール イベントの一部としては起動されません。 ただし、そのような停止 (割り当て解除) された VM は、任意の VM インスタンスが VM インスタンス ID の順序に基づいて削除される場合があるのと同様に、インスタンスの数をスケールインする自動スケール イベントの一環として削除される場合があります。
 
 
 
@@ -261,7 +266,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
     }
 ```
  
-linuxConfiguration の要素名 | 必須 | type | [説明]
+linuxConfiguration の要素名 | 必須 | type | 説明
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
 パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。

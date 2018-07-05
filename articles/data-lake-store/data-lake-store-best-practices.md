@@ -1,24 +1,26 @@
 ---
-title: Azure Data Lake Store の使用に関するベスト プラクティス | Microsoft Docs
-description: データ インジェスト、データのセキュリティ、および Azure Data Lake Store の使用に関連するパフォーマンスに関するベスト プラクティスについて説明します
+title: Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス | Microsoft Docs
+description: データ インジェスト、データのセキュリティ、および Azure Data Lake Storage Gen1 (以前は Azure Data Lake Store と呼ばれていました) の使用に関連するパフォーマンスに関するベスト プラクティスについて説明します
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625340"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034803"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store を使用するためのベスト プラクティス
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 この記事では、Azure Data Lake Store の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Store のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Store が登場するまで、Azure HDInsight などのサービスで大規模なビッグデータを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Store では、サイズやパフォーマンスに関するほとんどのハード制限が取り除かれています。 ただし、Data Lake Store で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。 
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
@@ -114,7 +116,7 @@ Distcp (distributed copy の省略形) は Hadoop に付属の Linux のコマ�
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Azure Data Factory を使用してコピー ジョブのスケジュールを設定する 
 
-Azure Data Factory は**コピー アクティビティ**を使用してコピー ジョブのスケジュールを設定できるほか、**コピー ウィザード**で頻度を設定することもできます。 Azure Data Factory にはクラウド データ移動単位 (DMU) の制限があり、最終的に大規模なデータ ワークロードのスループット/計算に上限を設定します。 さらに、Azure Data Factory は現在、Data Lake Store アカウント間のデルタの更新は提供しておらず、Hive のテーブルなどのフォルダーをレプリケートするには、完全なコピーが必要になります。 Data Factory のコピーに関する詳細については、[コピー アクティビティのチューニング](../data-factory/v1/data-factory-copy-activity-performance.md)に関するガイドをご覧ください。 
+Azure Data Factory は**コピー アクティビティ**を使用してコピー ジョブのスケジュールを設定できるほか、**コピー ウィザード**で頻度を設定することもできます。 Azure Data Factory にはクラウド データ移動単位 (DMU) の制限があり、最終的に大規模なデータ ワークロードのスループット/計算に上限を設定します。 さらに、Azure Data Factory は現在、Data Lake Store アカウント間のデルタの更新は提供しておらず、Hive のテーブルなどのフォルダーをレプリケートするには、完全なコピーが必要になります。 Data Factory のコピーに関する詳細については、[コピー アクティビティのチューニング](../data-factory/copy-activity-performance.md)に関するガイドをご覧ください。 
 
 ### <a name="adlcopy"></a>AdlCopy
 

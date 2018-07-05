@@ -1,5 +1,5 @@
 ---
-title: 無料サービスの使用状況の監視および追跡 - Azure | Microsoft Docs
+title: Azure 無料サービスの使用状況の監視および追跡 | Microsoft Docs
 description: 無料サービスの使用状況を確認する方法を説明します。 Azure Portal と使用状況データの csv を使用します。
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 560137d92491da46fda950dec84a0a7caa3ed720
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205892"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061318"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する 
 

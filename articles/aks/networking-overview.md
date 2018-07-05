@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: d6f42a5f3ce907fdb759bef29ca25bdc7fe365d9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757010"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311096"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク構成
 
@@ -28,7 +28,7 @@ Azure Kubernetes Service (AKS) クラスターを作成する場合、**[基本]
 ## <a name="advanced-networking"></a>[高度] ネットワーク
 
 **[高度]** ネットワークは、構成した Azure Virtual Network (VNet) にポッドを配置し、VNet リソースに自動接続されます。また、VNets が提供する豊富な機能セットと統合されています。
-現在、AKS クラスターを [Azure Portal][portal] に展開する場合、または Resource Manager テンプレートを使用する場合にのみ [高度] ネットワークを使用できます。
+[Azure portal][portal]、Azure CLI、または Resource Manager テンプレートを使って AKS クラスターを展開するときは、[高度] ネットワークを使用できます。
 
 [高度] ネットワーク用に構成された AKS クラスターのノードは、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。
 
@@ -47,7 +47,7 @@ Azure Kubernetes Service (AKS) クラスターを作成する場合、**[基本]
 * ポッドはパブリック インターネット上のリソースにアクセスできます。 これは [基本] ネットワークの機能でもあります。
 
 > [!IMPORTANT]
-> [高度] ネットワーク用に構成された AKS クラスター内の各ノードは、最大 **30 個のポッド**をホストできます。 Azure CNI プラグインと共に使用するためにプロビジョニングされた各 VNet は、**4,096 個の構成済み IP アドレス**に制限されています。
+> Azure portal を使って構成すると、[高度] ネットワーク用に構成された AKS クラスター内の各ノードは、最大 **30 個のポッド**をホストできます。  最大値を変更するには、Resource Manager テンプレートを使用してクラスターを展開するときに maxPods プロパティを変更する必要があります。 Azure CNI プラグインと共に使用するためにプロビジョニングされた各 VNet は、**4,096 個の構成済み IP アドレス**に制限されています。
 
 ## <a name="advanced-networking-prerequisites"></a>[高度] ネットワークの前提条件
 
@@ -75,19 +75,47 @@ AKS クラスターの IP アドレス計画は、VNet、ノードとポッド�
 
 前述のように、Azure CNI プラグインと共に使用するためにプロビジョニングされた各 VNet は、**4,096 個の構成済み IP アドレス**に制限されています。 [高度] ネットワーク用に構成されたクラスター内の各ノードは、最大 **30 個のポッド**をホストできます。
 
-## <a name="configure-advanced-networking"></a>[高度] ネットワークを構成する
+## <a name="deployment-parameters"></a>展開のパラメーター
 
-Azure Portal で [AKS クラスターを作成](kubernetes-walkthrough-portal.md)するときに、[高度] ネットワーク用に以下のパラメーターを構成できます。
+AKS クラスターを作成するときに、高度なネットワーク用に以下のパラメーターを構成できます。
 
 **[仮想ネットワーク]**: Kubernetes クラスターを展開する VNet。 クラスターに新しい VNet を作成する場合は、*[新規作成]* を選択し、*[仮想ネットワークの作成]* セクションの手順に従います。
 
 **[サブネット]**: クラスターを展開する VNet 内のサブネット。 クラスターの VNet に新しいサブネットを作成する場合は、*[新規作成]* を選択し、*[サブネットの作成]* セクションの手順に従います。
 
-**[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)**: Kubernetes クラスターのサービス IP の IP アドレス範囲。 クラスターの VNet の IP アドレス範囲に含まれる範囲を指定することはできません。
+**[Kubernetes サービスのアドレス範囲]**: *[Kubernetes サービスのアドレス範囲]* は、クラスター内の Kubernetes サービスに割り当てられる IP アドレスの範囲です (Kubernetes サービスの詳細については、Kubernetes のマニュアルで[サービス][services]に関するページをご覧ください)。
+
+Kubernetes サービスの IP アドレス範囲:
+
+* クラスターの VNet の IP アドレス範囲に含まれていてはなりません。
+* クラスター VNet とピアになっている他のどの Vnet とも重複していてはなりません
+* オンプレミスのどの IP アドレスとも重複していてはなりません
+
+重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 たとえば、ポッドがクラスターの外部にある IP アドレスにアクセスしようとして、その IP アドレスがサービスの IP アドレスでもある場合は、予測しない動作が発生して失敗する可能性があります。
 
 **[Kubernetes DNS service IP address]\(Kubernetes DNS サービスの IP アドレス\)**: クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。
 
 **[Docker Bridge address]\(Docker ブリッジのアドレス\)**: Docker ブリッジに割り当てる IP アドレスとネットマスク。 クラスターの VNet の IP アドレス範囲に含まれる IP アドレスを指定することはできません。
+
+## <a name="configure-networking---cli"></a>ネットワークを構成する - CLI
+
+Azure CLI を使って AKS クラスターを作成するときも、高度なネットワークを構成できます。 高度なネットワーク機能を有効にして新しい AKS クラスターを作成するには、次のコマンドを使います。
+
+最初に、AKS クラスターを参加させる既存のサブネットのサブネット リソース ID を取得します。
+
+```console
+$ az network vnet subnet list --resource-group myVnet --vnet-name myVnet --query [].id --output tsv
+
+/subscriptions/d5b9d4b7-6fc1-46c5-bafe-38effaed19b2/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
+```
+
+[az aks create][az-aks-create] コマンドに `--network-plugin azure` 引数を指定して実行し、高度なネットワークでクラスターを作成します。 前の手順で収集したサブネット ID で、`--vnet-subnet-id` の値を更新します。
+
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin azure --vnet-subnet-id <subnet-id> --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24
+```
+
+## <a name="configure-networking---portal"></a>ネットワークを構成する - ポータル
 
 Azure Portal の次のスクリーン ショットは、AKS クラスターの作成時にこれらの設定を構成する場合の例を示しています。
 
@@ -143,7 +171,9 @@ ACS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 [acs-engine]: https://github.com/Azure/acs-engine
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 
 <!-- LINKS - Internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md

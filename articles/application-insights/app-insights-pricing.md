@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.reviewer: Dale.Koetke
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771400"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311106"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
@@ -89,7 +90,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
     日次上限を設定する場合はご注意ください。 意図は、"*日次上限に達しない*" ようにすることです。 日次上限に達した場合、その日の残りの時間についてデータが失われ、アプリケーションを監視することはできません。 日次上限を変更するには、**[日次ボリューム上限]** オプションを使用します。 このオプションには、**[使用量と推定コスト]** ウィンドウでアクセスできます (これについてはこの記事で後ほど詳しく説明します)。
     Application Insights には使用できなかったクレジットがある一部のサブスクリプションの種類の制限を除去しました。 これまでは、サブスクリプションに使用制限がある場合は、[日次上限] ダイアログに、使用制限を解除して日次上限を 32.3 MB/日から引き上げる方法が表示されました。
-* **スロットル:** スロットルにより、データ速度は 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。
+* **スロットル:** スロットルにより、データ速度は、インストルメンテーション キーごとに 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。
 
 *アプリがスロットル レートを超えるとどうなりますか。*
 

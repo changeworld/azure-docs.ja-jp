@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212277"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301582"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -57,8 +57,13 @@ Load Balancer で個々のサービスのポートを構成するのではなく
 ![外部通信][0]
 
 > [!WARNING]
-> Load Balancer でリバース プロキシのポートを構成すると、クラスター内の HTTP エンドポイントを公開するすべてのマイクロサービスをクラスターの外部からアドレス指定できるようになります。
+> Load Balancer でリバース プロキシのポートを構成すると、クラスター内の HTTP エンドポイントを公開するすべてのマイクロサービスをクラスターの外部からアドレス指定できるようになります。 つまり、内部的なものであるマイクロサービスを、悪意のあるユーザーが検出できる可能性があります。 これにより、次のような、悪用される可能性のある重大な脆弱性が潜在的に存在することになります。
 >
+> * 悪意のあるユーザーは、セキュリティで十分に保護されていない攻撃対象が存在する内部サービスを繰り返し呼び出すことによって、サービス拒否攻撃を加える場合があります。
+> * 悪意のあるユーザーは無効なパケットを内部サービスに送信し、予期しない動作を発生させる場合があります。
+> * 内部的なものであるサービスは公開することを意図していない個人情報または機密情報をクラスターの外部のサービスに返す場合があり、それによって機密情報が悪意のあるユーザーに晒される可能性があります。 
+>
+> リバース プロキシのポートをパブリックにする前に、クラスターおよびクラスター上で実行されているアプリに対する潜在的なセキュリティ上の影響を完全に理解し、それを軽減するようにしてください。 
 >
 
 
@@ -70,7 +75,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
 * **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
-* **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
+* **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。 既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
 * **Port:** リバース プロキシに指定されているポートです (例: 19081)。
 * **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
 

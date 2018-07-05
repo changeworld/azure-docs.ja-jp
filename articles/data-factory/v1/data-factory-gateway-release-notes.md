@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4530b11db7691f631f636021634cc5e9c8be8c86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620563"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048616"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[V2 におけるセルフホステッド IR ](../create-self-hosted-integration-runtime.md) に関するページを参照してください。
 
 最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合が実現されます。
 
@@ -127,12 +127,12 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
     *  コントロールの配置が見直され、簡素化されました。
 
-    *  [コーディング不要のコピー プレビュー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。 この機能全般の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
+    *  [コーディング不要のコピー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。 この機能全般の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
 *  Data Management Gateway を使用すると、オンプレミスの SQL Server データベースから Azure Machine Learning に直接データを取り込むことができます。
 
 *  パフォーマンスの向上
 
-    * コーディング不要のコピー プレビュー ツールで SQL Server に対するスキーマ/プレビューを表示する際のパフォーマンスが向上します。
+    * コーディング不要のコピー ツールで SQL Server に対するスキーマ/プレビューを表示する際のパフォーマンスが向上します。
 
 ## <a name="11259531"></a>1.12.5953.1
 

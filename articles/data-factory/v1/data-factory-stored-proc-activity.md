@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622501"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047390"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622501"
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)についてのページをご覧ください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換と Data Factory でサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
@@ -313,7 +313,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | --- | --- | --- |
 | name | アクティビティの名前 |[はい] |
 | description  |アクティビティの用途を説明するテキストです。 |いいえ  |
-| 型 | **SqlServerStoredProcedure** に設定する必要があります | [はい] |
+| type | **SqlServerStoredProcedure** に設定する必要があります | [はい] |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ  |
 | outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |[はい] |
 | storedProcedureName |出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 |[はい] |

@@ -12,35 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1c7fd3ac1a4cf62dd8f909acc26615ea5f96f32c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235809"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309100"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>ソリューションの登録リストの種類を選定する  
 ネットショップは、さまざまな公開方法 (登録リストの種類およびオファーの種類) をサポートしています。 ソリューションとサービスの内容を最もよく表すオファーの種類を選んでください。 潜在顧客の共有は、すべての公開方法でご利用いただけます。   
 
 | ネットショップ | 登録リストの種類 | アプリの種類 | 技術的なガイドライン |  
 |:--- |:--- |:--- |:--- |  
-| AppSource | [リスト](#list) | [コンサルティング サービス](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
-| Azure Marketplace | [リスト](#list) | [コンサルティング サービス](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| Azure Marketplace | [リスト](#list) | [連絡する](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| Azure Marketplace | [試用版](#trial) | [無料試用版/SaaS 試用版](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
+| AppSource | [リスト](#list) | [コンサルティング サービス](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| Azure Marketplace | [リスト](#list) | [コンサルティング サービス](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| Azure Marketplace | [リスト](#list) | [連絡する](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| Azure Marketplace | [試用版](#trial) | [無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
 | AppSource |  | Cortana Intelligence | [docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 | AppSource |  |Dynamics 365 for Customer Engagement | [docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 | AppSource |  | Dynamics 365 for Finance and Operations | [docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
-| Azure Marketplace | [試用版](#trial) | [対話型デモ](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| Azure Marketplace | [試用版](#trial) | [体験版](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
+| Azure Marketplace | [試用版](#trial) | [対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| Azure Marketplace | [試用版](#trial) | [体験版](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
 | AppSource |  | Office 365 | [docs.microsoft.com/office/dev/store/submit-to-the-office-store](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) |  
-| AppSource |  | Power BI | [docs.microsoft.com/power-bi/developer/office-store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [トランザクション](#transact) | [Azure アプリ: マネージド アプリ](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| Azure Marketplace | [トランザクション](#transact) | [Azure アプリ: ソリューション テンプレート](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| Azure Marketplace | [トランザクション](#transact) | [コンテナー](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| Azure Marketplace | [トランザクション](#transact) | [SaaS アプリ](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| Azure Marketplace | [トランザクション](#transact) | [仮想マシン](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |   
+| AppSource |  | Power BI | [docs.microsoft.com/power-bi/developer/office-store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [トランザクション](#transact) | [Azure アプリ: マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| Azure Marketplace | [トランザクション](#transact) | [Azure アプリ: ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| Azure Marketplace | [トランザクション](#transact) | [コンテナー](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| Azure Marketplace | [トランザクション](#transact) | [SaaS アプリ](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| Azure Marketplace | [トランザクション](#transact) | [仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |   
 
 ## <a name="azure-certified-program"></a>Azure 認定プログラム  
 Azure Marketplace で公開されるすべての仮想マシン (VM) は、Azure 認定プログラムに関してテストされます。  
@@ -58,7 +58,7 @@ Azure Marketplace で公開されるすべての仮想マシン (VM) は、Azure
 
 | 登録リストの種類 | アプリの種類 | 技術的なガイドライン |  
 |:--- |:--- |:--- |  
-| [リスト](#list) | [コンサルティング サービス](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| [リスト](#list) | [コンサルティング サービス](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
 |  | Cortana Intelligence | [docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 |  |Dynamics 365 for Customer Engagement | [docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 |  | Dynamics 365 for Finance and Operations | [docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
@@ -68,20 +68,23 @@ Azure Marketplace で公開されるすべての仮想マシン (VM) は、Azure
 ---   
 
 ## <a name="azure-marketplace-publishing-by-product"></a>Azure Marketplace での公開 (製品別)  
+
+![](./media/marketplace-publishers-guide/workflow-azure-marketplace.png)  
+
 次の表では、Azure Marketplace のオファーに関する具体的な要件について詳しく説明しています。  
 
 | 登録リストの種類 | プランの種類 |  技術的なガイドライン |  
 |:--- |:--- |:--- |  
-| [リスト](#list) | [コンサルティング サービス](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| [リスト](#list) | [連絡する](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| [試用版](#trial) | [無料試用版/SaaS 試用版](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
-| [試用版](#trial) | [対話型デモ](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| [試用版](#trial) | [体験版](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
-| [トランザクション](#transact) | [Azure アプリ: マネージド アプリ](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| [トランザクション](#transact) | [Azure アプリ: ソリューション テンプレート](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| [トランザクション](#transact) | [コンテナー](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| [トランザクション](#transact) | [SaaS アプリ](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| [トランザクション](#transact) | [仮想マシン](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |  
+| [リスト](#list) | [コンサルティング サービス](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| [リスト](#list) | [連絡する](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| [試用版](#trial) | [無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
+| [試用版](#trial) | [対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| [試用版](#trial) | [体験版](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
+| [トランザクション](#transact) | [Azure アプリ: マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/azure/managed-applications/overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| [トランザクション](#transact) | [Azure アプリ: ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| [トランザクション](#transact) | [コンテナー](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| [トランザクション](#transact) | [SaaS アプリ](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| [トランザクション](#transact) | [仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |  
 
 ---   
 
@@ -93,10 +96,10 @@ Azure Marketplace で公開されるすべての仮想マシン (VM) は、Azure
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| コンサルティング サービス | AppSource | [要件: AppSource: リスト: コンサルティング サービス](#requirements:-appsource:-list:-consulting-service) |  
-| コンサルティング サービス | Azure Marketplace | [要件: Azure Marketplace: リスト: コンサルティング サービス](#requirements:-azure-marketplace:-list:-consulting-service) |  
+| コンサルティング サービス | AppSource | [要件: AppSource: リスト: コンサルティング サービス](#requirements-appsource-list-consulting-service) |  
+| コンサルティング サービス | Azure Marketplace | [要件: Azure Marketplace: リスト: コンサルティング サービス](#requirements-azure-marketplace-list-consulting-service) |  
 | 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | [要件: AppSource: リスト: 連絡する](#requirements:-azure-marketplace:-list:-contact-me) |  
+| 連絡する | Azure Marketplace | [要件: AppSource: リスト: 連絡する](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要件: AppSource: リスト: コンサルティング サービス  
 製品が主にプロフェッショナル サービス (評価、実装、ワーク ショップなど) で構成される場合は、オファーの種類としてコンサルティング サービスを使います。  
@@ -130,12 +133,12 @@ Azure Marketplace で公開されるすべての仮想マシン (VM) は、Azure
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件: 試用版](#Listing-Type-Requirements:-trial) |  
-| 無料/SaaS 試用版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| 対話型デモ | AppSource | [登録リストの種類の要件: 試用版](#Listing-Type-Requirements:-trial) |  
-| 対話型デモ | Azure Marketplace | [要件: Azure Marketplace: 試用版: 対話型デモ](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| 体験版 | AppSource | [登録リストの種類の要件: 試用版](#Listing-Type-Requirements:-trial) |  
-| 体験版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 体験版](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 無料/SaaS 試用版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| 対話型デモ | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 対話型デモ | Azure Marketplace | [要件: Azure Marketplace: 試用版: 対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
+| 体験版 | AppSource | [登録リストの種類の要件: 試用版](#listing-type-requirements-trial) |  
+| 体験版 | Azure Marketplace | [要件: Azure Marketplace: 試用版: 体験版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要件: Azure Marketplace: 試用版  
 
@@ -177,11 +180,11 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 
 | プランの種類 | ネットショップ | 詳細 |   
 |:---        |:---        | :--- |  
-| Azure アプリ: マネージド アプリ | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ](#requirements:-azure-marketplace:-transact:-Azure-apps:-Managed-app) |  
-| Azure アプリ: ソリューション テンプレート | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: ソリューション テンプレート](#requirements:-azure-marketplace:-transact:-Azure-apps:-Solution-template) |  
-| Containers | Azure Marketplace | [要件: Azure Marketplace: トランザクション: コンテナー](#requirements:-azure-marketplace:-transact:-Container) |  
-| SaaS アプリ  | Azure Marketplace | [要件: Azure Marketplace: トランザクション: SaaS アプリ](#requirements:-azure-marketplace:-transact:-SaaS-app) |  
-| 仮想マシン | Azure Marketplace | [要件: Azure Marketplace: トランザクション: 仮想マシン](#requirements:-azure-marketplace:-transact:-Virtual-Machine) |  
+| Azure アプリ: マネージド アプリ | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure アプリ: ソリューション テンプレート | Azure Marketplace | [要件: Azure Marketplace: トランザクション: Azure アプリ: ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [要件: Azure Marketplace: トランザクション: コンテナー](#requirements-azure-marketplace-transact-container) |  
+| SaaS アプリ  | Azure Marketplace | [要件: Azure Marketplace: トランザクション: SaaS アプリ](#requirements-azure-marketplace-transact-saas-app) |  
+| 仮想マシン | Azure Marketplace | [要件: Azure Marketplace: トランザクション: 仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 #### <a name="requirements-azure-marketplace-transact-azure-apps-managed-app"></a>要件: Azure Marketplace: トランザクション: Azure アプリ: マネージド アプリ  
 次の条件が必須であるときは、オファーの種類として Azure アプリ (マネージド アプリ) を使用します。  
@@ -209,11 +212,10 @@ Microsoft は現在、無料およびライセンス持ち込み (BYOL) のラ�
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
-|請求/メータリング  |  コンテナーでは、無料またはライセンス持ち込み課金モデルがサポートされる必要があります。       |  
-|Dockerfile からビルドされたイメージ   |   コンテナー イメージは、Docker イメージの仕様に基づき、Dockerfile からビルドされる必要があります。 Docker イメージのビルドの詳細については、こちら (https://docs.docker.com/engine/reference/builder/#usage)) をご覧ください。
-|ACR でのホスティング   |   コンテナー イメージは、Azure Container Registry (ACR) リポジトリでホストされる必要があります。 ACR の使用の詳細については、こちら (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)) をご覧ください。     
-|イメージのタグ付け   |   コンテナー イメージには、少なくとも 1 つのタグを含める必要があります (タグの最大数: 16)。 イメージのタグ付けの詳細については、こちら (https://docs.docker.com/engine/reference/commandline/tag/)) を参照してください。     | 
-
+| 請求/メータリング | 無料または BYOL のどちらかの課金モデルをサポートします。 |  
+| Dockerfile からビルドされたイメージ | コンテナー イメージは、Docker イメージの仕様に基づき、Dockerfile からビルドされる必要があります。<ul> <li>Docker イメージの作成の詳細については、[docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage) にある使用方法のセクションを参照してください。</li> </ul> |  
+| ACR でのホスティング | コンテナー イメージは、Azure Container Registry (ACR) リポジトリでホストされる必要があります。<ul> <li>ACR の扱いの詳細については、[docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal) にある「クイック スタート: Azure Portal を使用したコンテナー レジストリの作成」を参照してください。</li> </ul> |  
+| イメージのタグ付け | コンテナー イメージには、少なくとも 1 つのタグを含める必要があります (タグの最大数: 16)。<ul> <li>画像のタグ付けの詳細については、[docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag) にある Docker タグのページを参照してください。</li> </ul> |  
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>要件: Azure Marketplace: トランザクション: SaaS アプリ  
@@ -225,12 +227,10 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
-|請求/メータリング   |   オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。      |  
-|解約  |   オファーは、いつでも顧客が解約できます。      |  
-|トランザクションのランディング ページ   |   Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。      |   
-|サブスクリプション API    |   SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。      | 
-
-
+|請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。 |  
+|解約 | オファーは、いつでも顧客が解約できます。 |  
+|トランザクションのランディング ページ | Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。 |   
+| サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>要件: Azure Marketplace: トランザクション: 仮想マシン  
 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 VM は、従量課金制またはライセンス持ち込み (BYOL) のライセンス モデルを使用して完全に販売可能です。 商用トランザクションは Microsoft がホストし、公開元に代わって顧客に請求します。 公開元にとっては、顧客と Microsoft との間で推奨される支払い関係 (Enterprise Agreement など) を利用できる利点があります。  

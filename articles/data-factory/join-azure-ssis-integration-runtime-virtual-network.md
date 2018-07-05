@@ -8,83 +8,85 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2018
+ms.date: 06/27/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: fa496271d949f131da53a4cdab0f3b9a15e82007
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: eae350f751788eb09271e70f71f79b12e27c4e16
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267894"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061403"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
 
-- Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
+- Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。 
 
-- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) で SQL Server Integration Services (SSIS) のカタログ データベースをホストしている。
+- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) で SQL Server Integration Services (SSIS) のカタログ データベースをホストしている。 
 
- Azure Data Factory バージョン 2 (プレビュー) では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使っている場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)をご覧ください。
+ Azure Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
 
 ## <a name="access-to-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
 SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、仮想ネットワークに Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させる必要があります。 
 
 注意すべき重要な点がいくつかあります。 
 
-- オンプレミスのネットワークに接続された既存の仮想ネットワークがない場合は、最初に、Azure-SSIS 統合ランタイムを参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)または[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、その仮想ネットワークからオンプレミス ネットワークへのサイト間 [VPN ゲートウェイ接続](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)または[ExpressRoute](../expressroute/expressroute-howto-linkvnet-classic.md) 接続を構成します。
-- Azure-SSIS IR と同じ場所にオンプレミス ネットワークに接続された既存の Azure Resource Manager またはクラシック仮想ネットワークがある場合は、その仮想ネットワークに IR を参加させることができます。
-- Azure-SSIS IR とは異なる場所にオンプレミス ネットワークに接続された既存のクラシック仮想ネットワークがある場合は、最初に、Azure-SSIS IR を参加させるための[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、[クラシック間の仮想ネットワーク](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md)接続を構成します。 または、Azure-SSIS 統合ランタイムを参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成します。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。
-- Azure-SSIS IR とは異なる場所にオンプレミス ネットワークに接続された既存の Azure Resource Manager 仮想ネットワークがある場合は、最初に、Azure-SSIS IR を参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md##create-a-virtual-network)を作成します。 次に、Azure Resource Manager 間の仮想ネットワーク接続を構成します。 または、Azure-SSIS IR を参加させるための[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。
+- オンプレミスのネットワークに接続された既存の仮想ネットワークがない場合は、最初に、Azure-SSIS 統合ランタイムを参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)または[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、その仮想ネットワークからオンプレミス ネットワークへのサイト間 [VPN ゲートウェイ接続](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)または[ExpressRoute](../expressroute/expressroute-howto-linkvnet-classic.md) 接続を構成します。 
+
+- Azure-SSIS IR と同じ場所にオンプレミス ネットワークに接続された既存の Azure Resource Manager またはクラシック仮想ネットワークがある場合は、その仮想ネットワークに IR を参加させることができます。 
+
+- Azure-SSIS IR とは異なる場所にオンプレミス ネットワークに接続された既存のクラシック仮想ネットワークがある場合は、最初に、Azure-SSIS IR を参加させるための[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、[クラシック間の仮想ネットワーク](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md)接続を構成します。 または、Azure-SSIS 統合ランタイムを参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成します。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。 
+ 
+- Azure-SSIS IR とは異なる場所にオンプレミス ネットワークに接続された既存の Azure Resource Manager 仮想ネットワークがある場合は、最初に、Azure-SSIS IR を参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md##create-a-virtual-network)を作成します。 次に、Azure Resource Manager 間の仮想ネットワーク接続を構成します。 または、Azure-SSIS IR を参加させるための[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。 
 
 ## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance-preview"></a>Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) で SSIS のカタログ データベースをホストする
-SSIS カタログが Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) でホストされている場合は、次のものに Azure-SSIS IR を参加させることができます。
+SSIS カタログが Azure SQL Database と仮想ネットワーク サービス エンドポイントまたはマネージド インスタンス (プレビュー) でホストされている場合は、次のものに Azure-SSIS IR を参加させることができます。 
 
-- 同じ仮想ネットワーク
-- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) に使用されているネットワークとの間にネットワーク間接続がある別の仮想ネットワーク
+- 同じ仮想ネットワーク 
+- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) に使用されているネットワークとの間にネットワーク間接続がある別の仮想ネットワーク 
 
-仮想ネットワークは、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルでデプロイできます。 Managed Instance (プレビュー) が既に参加しているものと "*同じ仮想ネットワーク*" に Azure-SSIS IR を参加させる場合は、Managed Instance (プレビュー) に使用されているものとは "*異なるサブネット*" に Azure-SSIS IR が存在することを確認します。   
+マネージド インスタンスと同じ仮想ネットワークに Azure-SSIS IR を参加させる場合、必ず Azure-SSIS IR をマネージド インスタンスとは異なるサブネットに配置します。 マネージド インスタンスとは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリング (同じリージョンに限定される) または仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
 
-以降のセクションではさらに詳しく説明します。
+仮想ネットワークは、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルでデプロイできます。
+
+以降のセクションではさらに詳しく説明します。 
 
 ## <a name="requirements-for-virtual-network-configuration"></a>仮想ネットワーク構成の要件
--   `Microsoft.Batch` が、Azure-SSIS IR をホストする仮想ネットワーク サブネットのサブスクリプションの登録済みプロバイダーであることを確認します。 Classic 仮想ネットワーク (従来の仮想ネットワーク) を使用している場合、その仮想ネットワークの Classic Virtual Machine Contributor (従来の仮想マシン共同作成者) ロールにも `MicrosoftAzureBatch` を参加させます。
+-   `Microsoft.Batch` が、Azure-SSIS IR をホストする仮想ネットワーク サブネットのサブスクリプションの登録済みプロバイダーであることを確認します。 Classic 仮想ネットワーク (従来の仮想ネットワーク) を使用している場合、その仮想ネットワークの Classic Virtual Machine Contributor (従来の仮想マシン共同作成者) ロールにも `MicrosoftAzureBatch` を参加させます。 
 
--   Azure-SSIS IR をホストするための適切なサブネットを選択します。 「[サブネットを選択する](#subnet)」をご覧ください。
+-   Azure-SSIS IR をホストするための適切なサブネットを選択します。 「[サブネットを選択する](#subnet)」をご覧ください。 
 
--   仮想ネットワークで独自のドメイン ネーム サービス (DNS) サーバーを使用している場合は、「[ドメイン ネーム サービス サーバー](#dns_server)」をご覧ください。
+-   仮想ネットワークで独自のドメイン ネーム サービス (DNS) サーバーを使用している場合は、「[ドメイン ネーム サービス サーバー](#dns_server)」をご覧ください。 
 
--   サブネットでネットワーク セキュリティ グループ (NSG) を使用している場合は、「[ネットワーク セキュリティ グループ](#nsg)」をご覧ください。
+-   サブネットでネットワーク セキュリティ グループ (NSG) を使用している場合は、「[ネットワーク セキュリティ グループ](#nsg)」をご覧ください。 
 
--   Azure Express Route を使用している場合、またはユーザー定義ルートを構成する場合は、「[Azure ExpressRoute またはユーザー定義ルートを使用する](#route)」をご覧ください。
+-   Azure Express Route を使用している場合、またはユーザー定義ルートを構成する場合は、「[Azure ExpressRoute またはユーザー定義ルートを使用する](#route)」をご覧ください。 
 
--   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。
+-   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。 
 
 ### <a name="subnet"></a> サブネットを選択する
--   仮想ネットワーク ゲートウェイ専用であるため、Azure SSIS Integration Runtime をデプロイするために GatewaySubnet を選択しないでください。
+-   仮想ネットワーク ゲートウェイ専用であるため、Azure SSIS Integration Runtime をデプロイするために GatewaySubnet を選択しないでください。 
 
--   選択したサブネットに、Azure SSIS IR が使用するための利用可能なアドレス領域が十分にあることを確認してください。 利用可能な IP アドレスで少なくとも 2 * の IR ノード番号をそのまま残しておきます。 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「[これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)」をご覧ください。
+-   選択したサブネットに、Azure SSIS IR が使用するための利用可能なアドレス領域が十分にあることを確認してください。 利用可能な IP アドレスで少なくとも 2 * の IR ノード番号をそのまま残しておきます。 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「[これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)」をご覧ください。 
 
--   他の Azure サービス (SQL Database Managed Instance (プレビュー)、App Service など) によって排他的に専有されているサブネットを使用しないでください。
+-   他の Azure サービス (SQL Database Managed Instance (プレビュー)、App Service など) によって排他的に専有されているサブネットを使用しないでください。 
 
 ### <a name="dns_server"></a> ドメイン ネーム サービス サーバー 
-Azure-SSIS 統合ランタイムによって参加した仮想ネットワークで、独自のドメイン ネーム サービス (DNS) サーバーを使用する必要がある場合、そのサーバーが、(Azure Storage BLOB 名、`<your storage account>.blob.core.windows.net` などの) パブリック Azure ホスト名を解決できることを確認してください。
+Azure-SSIS 統合ランタイムによって参加した仮想ネットワークで、独自のドメイン ネーム サービス (DNS) サーバーを使用する必要がある場合、そのサーバーが、(Azure Storage BLOB 名、`<your storage account>.blob.core.windows.net` などの) パブリック Azure ホスト名を解決できることを確認してください。 
 
-次の手順が推奨されます。
+次の手順が推奨されます。 
 
--   要求を Azure DNS に転送するようにカスタム DNS を構成します。 独自の DNS サーバー上で、未解決の DNS レコードを Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) に転送することができます。
+-   要求を Azure DNS に転送するようにカスタム DNS を構成します。 独自の DNS サーバー上で、未解決の DNS レコードを Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) に転送することができます。 
 
--   カスタム DNS を仮想ネットワークのプライマリとして、Azure DNS をセカンダリとして設定します。 独自の DNS サーバーが利用できない場合に備えて、Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) をセカンダリ DNS サーバーとして登録します。
+-   カスタム DNS を仮想ネットワークのプライマリとして、Azure DNS をセカンダリとして設定します。 独自の DNS サーバーが利用できない場合に備えて、Azure の再帰的リゾルバーの IP アドレス (168.63.129.16) をセカンダリ DNS サーバーとして登録します。 
 
-詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
+詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。 
 
 ### <a name="nsg"></a> ネットワーク セキュリティ グループ
-Azure-SSIS 統合ランタイムが参加する仮想ネットワークにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。
+Azure-SSIS 統合ランタイムが参加する仮想ネットワークにネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。 
 
 | 方向 | トランスポート プロトコル | ソース | 送信元ポート範囲 | 変換先 | 送信先ポート範囲 | 説明 |
 |---|---|---|---|---|---|---|
@@ -96,128 +98,160 @@ Azure-SSIS 統合ランタイムが参加する仮想ネットワークにネッ
 ### <a name="route"></a> Azure ExpressRoute またはユーザー定義ルートを使用する
 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回路を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミス ネットワークを Azure に拡張できます。 
 
-一般的な構成では、仮想ネットワーク フローからオンプレミス ネットワーク アプライアンスへの送信インターネット トラフィックを強制して調査とログ記録を行う、強制トネリング (BGP ルート、0.0.0.0/0 を仮想ネットワークにアドバタイズする) を使用します。 このトラフィック フローは、依存する Azure Data Factory サービスを備えた仮想ネットワークの Azure-SSIS IR 間の接続を中断させます。 解決策は、Azure SSIS IR を含むサブネット上で 1 つ (以上) の[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を定義することです。 UDR は、BGP ルートに優先するサブネット固有のルートを定義します。
+一般的な構成では、仮想ネットワーク フローからオンプレミス ネットワーク アプライアンスへの送信インターネット トラフィックを強制して調査とログ記録を行う、強制トネリング (BGP ルート、0.0.0.0/0 を仮想ネットワークにアドバタイズする) を使用します。 このトラフィック フローは、依存する Azure Data Factory サービスを備えた仮想ネットワークの Azure-SSIS IR 間の接続を中断させます。 解決策は、Azure SSIS IR を含むサブネット上で 1 つ (以上) の[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を定義することです。 UDR は、BGP ルートに優先するサブネット固有のルートを定義します。 
 
-または、ユーザー定義ルート (UDR) を定義して、Azure-SSIS IR をホストするサブネットから、検査とログ記録のためのファイアウォールまたは DMZ ホストとしての仮想ネットワーク アプライアンスをホストする別のサブネットへの送信インターネット トラフィックを強制することができます。
+または、ユーザー定義ルート (UDR) を定義して、Azure-SSIS IR をホストするサブネットから、検査とログ記録のためのファイアウォールまたは DMZ ホストとしての仮想ネットワーク アプライアンスをホストする別のサブネットへの送信インターネット トラフィックを強制することができます。 
 
 どちらの場合も、Data Factory サービスと Azure-SSIS IS IR 間の通信が成功できるように、Azure-SSIS IR をホストするサブネット上で **Internet** の次ホップ タイプで 0.0.0.0/0 のルートを適用します。 
 
 ![ルートを追加する](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
-該当のサブネットからの送信インターネット トラフィックを調査する機能を失うことが心配な場合は、そのサブネットで NSG ルールを追加して、送信先を [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に制限することもできます。
+該当のサブネットからの送信インターネット トラフィックを調査する機能を失うことが心配な場合は、そのサブネットで NSG ルールを追加して、送信先を [Azure データ センターの IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に制限することもできます。 
 
-例については、[こちらの PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c)をご覧ください。 スクリプトを週単位で実行して、Azure データ センター IP アドレスの一覧を最新に保つ必要があります。
+例については、[こちらの PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c)をご覧ください。 スクリプトを週単位で実行して、Azure データ センター IP アドレスの一覧を最新に保つ必要があります。 
 
 ### <a name="resource-group"></a> リソース グループの要件
-Azure-SSIS IR は、仮想ネットワークと同じリソース グループの下に特定のネットワーク リソースを作成する必要があります。これには Azure Load Balancer、Azure パブリック IP アドレス、およびネットワーク ワーク セキュリティ グループが含まれます。
+-   Azure SSIS IR では、仮想ネットワークと同じリソース グループ下に特定のネットワーク リソースを作成する必要があります。 これらのリソースとして、次が挙げられます。
+    -   Azure ロード バランサー。*<Guid>-azurebatch-cloudserviceloadbalancer* という名前で使用される。
+    -   Azure パブリック IP アドレス。*<Guid>-azurebatch-cloudservicepublicip* という名前で使用される。
+    -   ネットワーク ワーク セキュリティ グループ。*<Guid>-azurebatch-cloudservicenetworksecuritygroup* という名前で使用される。 
 
--   仮想ネットワークが属するリソース グループまたはサブスクリプションでリソース ロックがないことを確認します。 読み取り専用ロックまたは削除ロックのどちらかを構成した場合、IR の開始と停止は失敗またはハングする可能性があります。
+-   仮想ネットワークが属するリソース グループまたはサブスクリプションでリソース ロックがないことを確認します。 読み取り専用ロックまたは削除ロックのどちらかを構成した場合、IR の開始と停止は失敗またはハングする可能性があります。 
 
--   仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure ポリシーがないことを確認します。
-    -   Microsoft.Network/LoadBalancers
-    -   Microsoft.Network/NetworkSecurityGroups
-    -   Microsoft.Network/PublicIPAddresses
+-   仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure ポリシーがないことを確認します。 
+    -   Microsoft.Network/LoadBalancers 
+    -   Microsoft.Network/NetworkSecurityGroups 
+    -   Microsoft.Network/PublicIPAddresses 
 
 ## <a name="azure-portal-data-factory-ui"></a>Azure Portal (データ ファクトリ UI)
 このセクションでは、Azure Portal とデータ ファクトリ UI を使って、既存の Azure-SSIS ランタイムを仮想ネットワーク (クラシックまたは Azure Resource Manager) に参加させる方法について説明します。 Azure-SSIS IR を仮想ネットワークに参加させる前に、まず仮想ネットワークを適切に構成する必要があります。 仮想ネットワークの種類 (クラシックまたは Azure Resource Manager) に基づいて次の 2 つのセクションのいずれかを実行します。 次に 3 番目のセクションに進み、Azure-SSIS IR を仮想ネットワークに参加させます。 
 
 ### <a name="use-the-portal-to-configure-an-azure-resource-manager-virtual-network"></a>ポータルを使ってAzure Resource Manager 仮想ネットワークを構成する
-Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネットワークを構成する必要があります。
+Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネットワークを構成する必要があります。 
 
-1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。
-2. [Azure Portal](https://portal.azure.com) にサインインします。
-3. **[そのほかのサービス]** を選択します。 フィルターを適用して **[仮想ネットワーク]** を選択します。
+1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。 
+
+2. [Azure Portal](https://portal.azure.com) にサインインします。 
+
+3. **[そのほかのサービス]** を選択します。 フィルターを適用して **[仮想ネットワーク]** を選択します。 
+
 4. 一覧で目的の仮想ネットワークを選びます。 
-5. **[仮想ネットワーク]** ページで、**[プロパティ]** を選びます。 
-6. **[リソース ID]** のコピー ボタンを選び、仮想ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。
-7. 左側のメニューの **[サブネット]** を選びます。 **[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。
-8. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。)
 
-   a. Azure Portal で、左メニューの **[サブスクリプション]** を選びます。
+5. **[仮想ネットワーク]** ページで、**[プロパティ]** を選びます。 
+
+6. **[リソース ID]** のコピー ボタンを選び、仮想ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。 
+
+7. 左側のメニューの **[サブネット]** を選びます。 **[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。 
+
+8. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。) 
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で、左メニューの **[サブスクリプション]** を選びます。 
 
    b. サブスクリプションを選択します。 
-   
-   c. 左側の **[リソース プロバイダー]** を選び、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。
-      !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
-      
-   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。
+
+   c. 左側の **[リソース プロバイダー]** を選び、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+
+   !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
+
+   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
 
 ### <a name="use-the-portal-to-configure-a-classic-virtual-network"></a>ポータルを使ってクラシック仮想ネットワークを構成する
-Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネットワークを構成する必要があります。
+Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネットワークを構成する必要があります。 
 
-1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。
-2. [Azure Portal](https://portal.azure.com) にサインインします。
-3. **[そのほかのサービス]** を選択します。 **[仮想ネットワーク (クラシック)]** を選びます。
+1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。 
+
+2. [Azure Portal](https://portal.azure.com) にサインインします。 
+
+3. **[そのほかのサービス]** を選択します。 **[仮想ネットワーク (クラシック)]** を選びます。 
+
 4. 一覧で目的の仮想ネットワークを選びます。 
-5. **[仮想ネットワーク (クラシック)]** ページで、**[プロパティ]** を選びます。
-    ![クラシック仮想ネットワークのリソース ID](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
-    
-6. **[リソース ID]** のコピー ボタンを選び、クラシック ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。
-7. 左側のメニューの **[サブネット]** を選びます。 **[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。
-    ![仮想ネットワークで使用可能なアドレスの数](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
-    
-8. **MicrosoftAzureBatch** を仮想ネットワークの**従来の仮想マシン共同作成者**ロールに参加させます。
 
-    a. 左側メニューの **[アクセス制御 (IAM)]** を選び、ツール バーの **[追加]** を選びます。
-      ![[アクセス制御] ボタンと [追加] ボタン](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
-      
-    b. **[アクセス許可の追加]** ページで、**[ロール]** の **[従来の仮想マシン共同作成者]** を選びます。 **[選択]** ボックスに **ddbf3205-c6bd-46ae-8127-60eb93363864** を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選びます。
-      ![[アクセス許可の追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
-      
-    c. **[保存]** を選んで設定を保存し、ページを閉じます。
-      ![アクセス設定の保存](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
-      
-    d. 共同作成者の一覧に **Microsoft Azure Batch** があることを確認します。
-      ![Azure Batch アクセスの確認](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
-      
-9. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。)
+5. **[仮想ネットワーク (クラシック)]** ページで、**[プロパティ]** を選びます。 
 
-   a. Azure Portal で、左メニューの **[サブスクリプション]** を選びます。
+   ![クラシック仮想ネットワークのリソース ID](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 
-   b. サブスクリプションを選択します。
+6. **[リソース ID]** のコピー ボタンを選び、クラシック ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。 
 
-   c. 左側の **[リソース プロバイダー]** を選び、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。
-      !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
-      
+7. 左側のメニューの **[サブネット]** を選びます。 **[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。 
+
+   ![仮想ネットワークで使用可能なアドレスの数](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
+
+8. **MicrosoftAzureBatch** を仮想ネットワークの**従来の仮想マシン共同作成者**ロールに参加させます。 
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側メニューの **[アクセス制御 (IAM)]** を選び、ツール バーの **[追加]** を選びます。 
+
+    ![[アクセス制御] ボタンと [追加] ボタン](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+
+    b. **[アクセス許可の追加]** ページで、**[ロール]** の **[従来の仮想マシン共同作成者]** を選びます。 **[選択]** ボックスに **ddbf3205-c6bd-46ae-8127-60eb93363864** を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選びます。 
+
+    ![[アクセス許可の追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    c. **[保存]** を選んで設定を保存し、ページを閉じます。 
+
+    ![アクセス設定の保存](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+
+    d. 共同作成者の一覧に **Microsoft Azure Batch** があることを確認します。 
+
+    ![Azure Batch アクセスの確認](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+
+9. 仮想ネットワークが含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。 登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。 (Data Factory ポータルで Azure-SSIS IR を作成した場合、Azure Batch プロバイダーが自動的に登録されます。) 
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で、左メニューの **[サブスクリプション]** を選びます。 
+
+   b. サブスクリプションを選択します。 
+
+   c. 左側の **[リソース プロバイダー]** を選び、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+
+   !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
+
    **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。 
 
 ### <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Azure-SSIS IR を仮想ネットワークに参加させる
-1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。
+1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこれらの Web ブラウザーでのみサポートされています。 
+
 2. [Azure Portal](https://portal.azure.com) の左側のメニューで **[データ ファクトリ]** を選択します。 メニューに **[データ ファクトリ]** が表示されない場合は、**[その他のサービス]** を選び、**[インテリジェンス + 分析]** セクションで **[データ ファクトリ]** を選びます。 
-    
+
    ![データ ファクトリの一覧](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
-2. リストで Azure-SSIS 統合ランタイムを使うデータ ファクトリを選びます。 データ ファクトリのホーム ページが表示されます。 **[作成およびデプロイ]** タイルを選びます。 Data Factory の UI が別のタブに表示されます。 
+
+3. リストで Azure-SSIS 統合ランタイムを使うデータ ファクトリを選びます。 データ ファクトリのホーム ページが表示されます。 **[作成およびデプロイ]** タイルを選びます。 Data Factory の UI が別のタブに表示されます。 
 
    ![データ ファクトリのホーム ページ](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
-3. データ ファクトリの UI で、**[編集]** タブに切り替え、**[接続]** を選択し、**[統合ランタイム]** タブに切り替えます。 
+
+4. データ ファクトリの UI で、**[編集]** タブに切り替え、**[接続]** を選択し、**[統合ランタイム]** タブに切り替えます。 
 
    ![[統合ランタイム] タブ](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
-4. Azure-SSIS IR が実行されている場合、統合ランタイム リストで、Azure-SSIS IR の **[アクション]** 列の **[停止]** ボタンを選びます。 IR は、停止するまで編集できません。 
+
+5. Azure-SSIS IR が実行されている場合、統合ランタイム リストで、Azure-SSIS IR の **[アクション]** 列の **[停止]** ボタンを選びます。 IR は、停止するまで編集できません。 
 
    ![IR を停止する](media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png)
-1. 統合ランタイム リストで、Azure-SSIS IR の **[アクション]** 列の **[編集]** ボタンを選びます。
+
+6. 統合ランタイム リストで、Azure-SSIS IR の **[アクション]** 列の **[編集]** ボタンを選びます。 
 
    ![統合ランタイムを編集する](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
-5. **[Integration Runtime Setup]\(Integration Runtime のセットアップ\)** ウィンドウの **[全般設定]** ページで、**[次へ]** を選択します。 
+
+7. **[Integration Runtime Setup]\(Integration Runtime のセットアップ\)** ウィンドウの **[全般設定]** ページで、**[次へ]** を選択します。 
 
    ![IR セットアップの全般設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-general-settings.png)
-6. **[SQL 設定]** ページで管理者のパスワードを入力し、**[次へ]** を選びます。
+
+8. **[SQL 設定]** ページで管理者のパスワードを入力し、**[次へ]** を選びます。 
 
    ![IR セットアップの SQL Server 設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-sql-settings.png)
-7. **[詳細設定]** ページで、次の操作を実行します。 
 
-   a. **[Select a VNet for your Azure-SSIS Integration Runtime to join and allow Azure services to configure VNet permissions/settings]\(参加させる Azure-SSIS 統合ランタイム用の VNet を選択し、Azure サービスが VNet の権限/設定を構成することを許可する\)** チェック ボックスをオンにします。
+9. **[詳細設定]** ページで、次の操作を実行します。 
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Select a VNet for your Azure-SSIS Integration Runtime to join and allow Azure services to configure VNet permissions/settings]\(参加させる Azure-SSIS 統合ランタイム用の VNet を選択し、Azure サービスが VNet の権限/設定を構成することを許可する\)** チェック ボックスをオンにします。 
 
    b. **[種類]** で、仮想ネットワークがクラシック仮想ネットワークか、Azure Resource Manager 仮想ネットワークかを選択します。 
 
-   c. **[VNET 名]** で仮想ネットワークを選びます。
+   c. **[VNET 名]** で仮想ネットワークを選びます。 
 
-   d. **[サブネット名]** で、仮想ネットワークのサブネットを選びます。
+   d. **[サブネット名]** で、仮想ネットワークのサブネットを選びます。 
 
    e. **[VNet Validation]\(VNet の検証\)** をクリックし、成功した場合は、**[更新]** をクリックします。 
 
    ![IR セットアップの詳細設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-advanced-settings.png)
-8. これで、Azure-SSIS IR の **[アクション]** 列の **[開始]** ボタンを使って IR を開始できます。 Azure-SSIS IR の開始には約 20 ～ 30 分かかります。 
+
+10. これで、Azure-SSIS IR の **[アクション]** 列の **[開始]** ボタンを使って IR を開始できます。 Azure-SSIS IR の開始には約 20 ～ 30 分かかります。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -249,8 +283,7 @@ Azure-SSIS IR を作成し、作成と同時に仮想ネットワークに参加
 
 ### <a name="join-an-existing-azure-ssis-ir-to-a-virtual-network"></a>既存の Azure-SSIS IR を仮想ネットワークに参加させる
 [Azure-SSIS 統合ランタイムの作成](create-azure-ssis-integration-runtime.md)に関する記事に示されているスクリプトは、Azure-SSIS IR の作成と仮想ネットワークへの参加を同じスクリプトで実行する方法を示しています。 既存の Azure-SSIS IR がある場合に、それを仮想ネットワークに参加させるには、次の手順を実行します。 
-
-1. Azure-SSIS IR を停止します。
+1. Azure-SSIS IR を停止します。 
 2. 仮想ネットワークに参加するように Azure-SSIS IR を構成します。 
 3. Azure-SSIS IR を開始します。 
 
@@ -322,7 +355,6 @@ Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNa
 
 ## <a name="next-steps"></a>次の手順
 Azure-SSIS 統合ランタイムについて詳しくは、以下のトピックをご覧ください。 
-
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR の作成手順が示されています。 Azure SQL Database を使って SSIS カタログをホストします。 
 - [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance (プレビュー) を使って SSIS カタログをホストする方法と、IR を仮想ネットワークに参加させる方法が説明されています。 

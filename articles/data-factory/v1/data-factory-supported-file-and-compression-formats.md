@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 50204bac60a694779eafe15df7e8733007ba92a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5afc89e774595952adf860fc6bcdc0e2403c617a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622263"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047096"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
 *このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビューである Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でサポートされているファイル形式と圧縮コーデック](../supported-file-formats-and-compression-codecs.md)に関するページを参照してください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory でサポートされているファイル形式と圧縮コーデック](../supported-file-formats-and-compression-codecs.md)に関するページを参照してください。
 
 Azure Data Factory は次のファイル形式をサポートしています。
 

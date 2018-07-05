@@ -1,6 +1,6 @@
 ---
-title: Linux 用の OMS Azure 仮想マシン拡張機能 | Microsoft Docs
-description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに OMS エージェントをデプロイします。
+title: Linux 用の Azure Log Analytics 仮想マシン拡張機能 | Microsoft Docs
+description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652857"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301487"
 ---
-# <a name="oms-virtual-machine-extension-for-linux"></a>Linux 用の OMS 仮想マシン拡張機能
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
 ## <a name="overview"></a>概要
 
-Log Analytics は、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の OMS Agent 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能は、Azure 仮想マシンに OMS エージェントをインストールし、仮想マシンを既存の Log Analytics ワークスペースに登録します。 このドキュメントでは、Linux 用の OMS 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+Log Analytics は、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の Log Analytics Agent 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Linux 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-OMS Agent 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
+Log Analytics Agent 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
 | ディストリビューション | バージョン |
 |---|---|
@@ -44,9 +44,9 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 | SUSE Linux Enterprise Server | 11 および 12 (x86/x64) |
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
-次の表は、OMS VM 拡張機能と OMS エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 OMS エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
+次の表は、Log Analytics VM 拡張機能と Log Analytics Agent バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
-| OMS Linux VM 拡張機能のバージョン | OMS エージェント バンドルのバージョン | 
+| Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center は自動的に OMS エージェントをプロビジョニングし、これを、Azure サブスクリプションで ASC によって作成される既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
+Azure Security Center は自動的に Log Analytics エージェントをプロビジョニングし、これを、Azure サブスクリプションで ASC によって作成される既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
+Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、OMS Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -101,7 +101,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| 型 | OmsAgentForLinux |
+| type | OmsAgentForLinux |
 | typeHandlerVersion | 1.6 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
@@ -109,7 +109,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Log Analytics へのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 OMS Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Log Analytics へのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 Log Analytics Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
 
 仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources)に関する記事を参照してください。 
 
@@ -165,7 +165,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 *workspaceId* と *workspaceKey* を、ご使用の Log Analytics ワークスペースの値で置き換えます。 
+Azure CLI を使用して、Log Analytics Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 *workspaceId* と *workspaceKey* を、ご使用の Log Analytics ワークスペースの値で置き換えます。 
 
 ```azurecli
 az vm extension set \

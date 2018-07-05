@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 2600565493a334c7227e5c0d67a5808f30751108
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8475c79782730e989f9590566c31ccd50af9f144
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261070"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302048"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -219,138 +219,253 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 
 変更フィード プロセッサ NuGet パッケージをインストールする前に、まず以下をインストールします。 
 
-* Microsoft.Azure.DocumentDB バージョン 1.13.1 以上。 
-* Newtonsoft.Json バージョン 9.0.1 以上
+* Microsoft.Azure.DocumentDB、最新バージョン。
+* Newtonsoft.Json、最新バージョン
 
 次に [Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)をインストールし、参照に追加します。
 
 変更フィード プロセッサ ライブラリを実装するには、次の手順を実行する必要があります。
 
 1. **DocumentFeedObserver** オブジェクトを実装します。これで **IChangeFeedObserver** が実装されます。
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Documents;
+    using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+    using Microsoft.Azure.Documents.Client;
 
-2. **DocumentFeedObserverFactory** オブジェクトを実装します。これで **IChangeFeedObserverFactory** が実装されます。
-
-3. **DocumentFeedObserverFacory** の **CreateObserver** メソッドで、手順 1 で作成した **ChangeFeedObserver** をインスタンス化して返します。
-
-    ```
-    public IChangeFeedObserver CreateObserver()
+    /// <summary>
+    /// This class implements the IChangeFeedObserver interface and is used to observe 
+    /// changes on change feed. ChangeFeedEventHost will create as many instances of 
+    /// this class as needed. 
+    /// </summary>
+    public class DocumentFeedObserver : IChangeFeedObserver
     {
-              DocumentFeedObserver newObserver = new DocumentFeedObserver(this.client, this.collectionInfo);
-              return newObserver;
+    private static int totalDocs = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserver" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        /// <param name="client"> Client connected to destination collection </param>
+        /// <param name="destCollInfo"> Destination collection information </param>
+        public DocumentFeedObserver()
+        {
+            
+        }
+
+        /// <summary>
+        /// Called when change feed observer is opened; 
+        /// this function prints out observer partition key id. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task OpenAsync(IChangeFeedObserverContext context)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Observer opened for partition Key Range: {0}", context.PartitionKeyRangeId);
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Called when change feed observer is closed; 
+        /// this function prints out observer partition key id and reason for shut down. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <param name="reason">Specifies the reason the observer is closed.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task CloseAsync(IChangeFeedObserverContext context, ChangeFeedObserverCloseReason reason)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Observer closed, {0}", context.PartitionKeyRangeId);
+            Console.WriteLine("Reason for shutdown, {0}", reason);
+            return Task.CompletedTask;
+        }
+
+        public Task ProcessChangesAsync(IChangeFeedObserverContext context, IReadOnlyList<Document> docs, CancellationToken cancellationToken)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Change feed: PartitionId {0} total {1} doc(s)", context.PartitionKeyRangeId, Interlocked.Add(ref totalDocs, docs.Count));
+            foreach (Document doc in docs)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(doc.Id.ToString());
+            }
+
+            return Task.CompletedTask;
+        }
     }
     ```
 
-4. **DocumentObserverFactory** をインスタンス化します。
-
-5. **ChangeFeedEventHost** をインスタンス化します。
-
+2. **DocumentFeedObserverFactory** オブジェクトを実装します。これで **IChangeFeedObserverFactory** が実装されます。
     ```csharp
-    ChangeFeedEventHost host = new ChangeFeedEventHost(
-                     hostName,
-                     documentCollectionLocation,
-                     leaseCollectionLocation,
-                     feedOptions,
-                     feedHostOptions);
+     using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+
+    /// <summary>
+    /// Factory class to create instance of document feed observer. 
+    /// </summary>
+    public class DocumentFeedObserverFactory : IChangeFeedObserverFactory
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserverFactory" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        public DocumentFeedObserverFactory()
+        {
+        }
+
+        /// <summary>
+        /// Creates document observer instance with client and destination collection information
+        /// </summary>
+        /// <returns>DocumentFeedObserver with client and destination collection information</returns>
+        public IChangeFeedObserver CreateObserver()
+        {
+            DocumentFeedObserver newObserver = new DocumentFeedObserver();
+            return newObserver as IChangeFeedObserver;
+        }
+    }
     ```
 
-6. **DocumentFeedObserverFactory** をホストに登録します。
+3. *CancellationTokenSource* と *ChangeFeedProcessorBuilder* を定義します
 
-手順 4 ～ 6 のコードは次のとおりです。 
+    ```csharp
+    private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    private readonly ChangeFeedProcessorBuilder builder = new ChangeFeedProcessorBuilder();
+    ```
 
-```
-ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-feedOptions.StartFromBeginning = true;
+5. 関連オブジェクトを定義した後、**ChangeFeedProcessorBuilder** をビルドします 
 
-ChangeFeedHostOptions feedHostOptions = new ChangeFeedHostOptions();
- 
-// Customizing lease renewal interval to 15 seconds.
-// Can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay
-feedHostOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
- 
-using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destCollInfo.MasterKey))
-{
-        DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory(destClient, destCollInfo);
-        ChangeFeedEventHost host = new ChangeFeedEventHost(hostName, documentCollectionLocation, leaseCollectionLocation, feedOptions, feedHostOptions);
-        await host.RegisterObserverFactoryAsync(docObserverFactory);
-        await host.UnregisterObserversAsync();
-}
-```
+    ```csharp
+            string hostName = Guid.NewGuid().ToString();
+      
+            // monitored collection info 
+            DocumentCollectionInfo documentCollectionInfo = new DocumentCollectionInfo
+            {
+                Uri = new Uri(this.monitoredUri),
+                MasterKey = this.monitoredSecretKey,
+                DatabaseName = this.monitoredDbName,
+                CollectionName = this.monitoredCollectionName
+            };
+            
+            DocumentCollectionInfo leaseCollectionInfo = new DocumentCollectionInfo
+                {
+                    Uri = new Uri(this.leaseUri),
+                    MasterKey = this.leaseSecretKey,
+                    DatabaseName = this.leaseDbName,
+                    CollectionName = this.leaseCollectionName
+                };
+            DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
+            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
 
-これで完了です。 これらのいくつかの手順の後に、**DocumentFeedObserver ProcessChangesAsync** メソッドが実行されます。 上記コードは [GitHub リポジトリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)に用意されています。
+            /* ie customize StartFromBeginning so change feed reads from beginning
+                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
+            */
 
-## <a name="faq"></a>FAQ
+            feedOptions.StartFromBeginning = true;
+        
+            ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
-### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>変更フィードの読み取りには別の方法もありますか? それぞれの方法はいつ使用しますか?
+            // ie. customizing lease renewal interval to 15 seconds
+            // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
+            feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
 
-変更フィードの読み取りには 3 つのオプションがあります:
+            this.builder
+                .WithHostName(hostName)
+                .WithFeedCollection(documentCollectionInfo)
+                .WithLeaseCollection(leaseCollectionInfo)
+                .WithProcessorOptions (feedProcessorOptions)
+                .WithObserverFactory(new DocumentFeedObserverFactory());               
+                //.WithObserver<DocumentFeedObserver>();  If no factory then just pass an observer
 
-* **[ Azure Cosmos DB SQL API .NET SDK の使用](#sql-sdk)**
+            var result =  await this.builder.BuildAsync();
+            await result.StartAsync();
+            Console.Read();
+            await result.StopAsync();    
+            ```
+
+That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+
+Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+
+> [!NOTE]
+> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+
+
+## FAQ
+
+### What are the different ways you can read Change Feed? and when to use each method?
+
+There are three options for you to read change feed:
+
+* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
    
-   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 が必要です。
+   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
 
-* **[Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用](#change-feed-processor)**
+* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
 
-   変更フィード プロセッサ ライブラリを利用することで、変更フィードの複雑さの多くをアウトソースできます。 このライブラリは複雑さの多くを隠しますが、それでも変更フィードの完全なコントロールを得ることができます。 このライブラリは[オブザーバー パターン](https://en.wikipedia.org/wiki/Observer_pattern)に従い、処理関数は SDK によって呼び出されます。 
+   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
 
-   高スループットの変更フィードがあれば、変更フィードを読み取るための複数のクライアントをインスタンス化できます。 "変更フィード プロセッサ ライブラリ" を使用しているので、負荷は自動的に異なるクライアント間に分割されます。 ユーザーは何もする必要がありません。 複雑さはすべて SDK によって処理されます。 ただし、カスタム パーティション戦略用の IParitionLoadBalancingStrategy を実装すれば、独自のロード バランサーを使用できます。 パーティション上でカスタム処理を変更する場合は IPartitionProcessor を実装します。 ただし、SDK を使用する場合はパーティション範囲を処理できますが、特定のパーティション キーを処理する場合は SQL API 用の SDK を使用する必要があります。
+   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
 
-* **[Azure 関数の使用](#azure-functions)** 
+* **[Using Azure Functions](#azure-functions)** 
    
-   最後の Azure 関数は、最もシンプルなオプションです。 このオプションを使用することをお勧めします。 Azure Functions アプリケーションで Azure Cosmos DB トリガーを作成するときに、接続先の Azure Cosmos DB コレクションを選択します。これで、コレクションに変更が加えられるたびに関数がトリガーされます。 Azure 関数と変更フィードの使用方法を示す[スクリーン キャスト](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s)をご覧ください。
+   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
 
-   トリガーを作成するには、Azure Functions ポータル、Azure Cosmos DB ポータル、またはプログラムを使用します。 Visual Studio と VS Code は、Azure 関数を記述する上で大きな助けとなります。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](serverless-computing-database.md)」を参照してください。
+   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
 
-### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>変更フィード内のドキュメントはどのような並び順ですか?
+### What is the sort order of documents in change feed?
 
-変更フィード ドキュメントは変更時刻順です。 この並べ替え順序は、パーティション単位でのみ保証されます。
+Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
 
-### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>複数リージョン アカウントの場合、書き込みリージョンがフェールオーバーすると変更フィードはどうなりますか? 変更フィードもフェールオーバーしますか? フェールオーバー後も変更フィードは隣接として表示されますか、それともリセットされますか?
+### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
 
-はい、変更フィードは手動フェールオーバー操作にまたがって機能し、隣接します。
+Yes, change feed will work across the manual failover operation and it will be contiguous.
 
-### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>ドキュメントの TTL (Time to Live) プロパティを -1 に設定した場合、変更フィードは変更データをどれくらい維持しますか?
+### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
 
-変更フィードは永久に持続します。 データが削除されなければ、変更フィード内に保持されます。
+Change feed will persist forever. If data is not deleted, it will remain in change feed.
 
-### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>既定では、変更フィードはすべての読み取りリージョンで利用できますが、特定リージョンから読み取るための Azure 関数はどのように構成できますか?
+### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
 
-特定リージョンから読み取るための Azure 関数を構成することは、現時点ではできません。 Azure Functions リポジトリに GitHub の問題があり、Azure Cosmos DB バインディングおよびトリガーの優先領域を設定できません。
+Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
 
-Azure 関数は既定の接続ポリシーを使用します。 Azure Functions の接続モードは構成可能です。既定では、書き込みリージョンから読み取るため、同じリージョンに Azure 関数を併置させることをお勧めします。
+Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
 
-### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Azure 関数のバッチの既定サイズは何ですか?
+### What is the default size of batches in Azure Functions?
 
-Azure 関数の呼び出しごとに 100 ドキュメントです。 ただし、この値は function.json ファイルで構成できます。 こちらが[全構成オプションの一覧](../azure-functions/functions-run-local.md)です。 開発をローカルで行っている場合は、[local.settings.json](../azure-functions/functions-run-local.md) ファイルのアプリケーション設定を更新してください。
+100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
 
-### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>コレクションを監視し、その変更フィードを読み取っていますが、挿入されたすべてのドキュメントを取得できずに一部のドキュメントが欠落しています。 どうなっているのでしょうか?
+### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
 
-同一リース コレクションの同一コレクションを別の関数が読み取っていないことを確認してください。 個人的に経験したことがあります。欠落しているドキュメントが、同一リースを使用する自分の別の Azure 関数によって処理されていることに後になって気が付きました。
+Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
 
-したがって、同一変更フィードを読み取る複数の Azure 関数を作成するときは、それぞれに異なるリース コレクションを使用させるか、"leasePrefix" 構成を使って同一コレクションを共有させる必要があります。 ただし、変更フィード プロセッサ ライブラリを使用する場合は、関数の複数インスタンスを開始すれば、ドキュメントは SDK によって自動的にインスタンス間に分割されます。
+Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
 
-### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>私のドキュメント更新間隔は 1 秒ですが、変更フィードをリッスンしている Azure 関数ですべての変更を取得できていません。
+### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
 
-Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 “feedPollTime” を構成できます。詳しくは、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
+Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
 
-### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Mongo API コレクションにドキュメントを挿入しましたが、変更フィードでドキュメントを取得すると、別の ID 値が表示されます。 何がおかしいのでしょうか?
+### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
 
-ご利用のコレクションは Mongo API コレクションです。 変更フィードは SQL クライアントを使用して読み取られ、項目は JSON 形式でシリアル化されます。 JSON 形式なので、MongoDB クライアントでは BSON 形式のドキュメントと JSON 形式の変更フィード間で不一致が発生します。 表示されるのは、JSON 形式で表現された BSON ドキュメントとなります。 Mongo アカウントでバイナリ属性を使用していれば、JSON に変換されます。
+Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
 
-### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>変更フィードを更新のみ、挿入なしに制御する方法はありますか?
+### Is there a way to control change feed for updates only and not inserts?
 
-現時点ではできませんが、この機能の開発は予定されています。 現在は、ドキュメントに更新のソフト マーカーを追加できます。
+Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
 
-### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>変更フィード内の削除を取得する方法はありますか?
+### Is there a way to get deletes in change feed?
 
-現在、変更フィードは削除をログに記録していません。 変更フィードは継続的に改善されており、この機能の開発は予定されています。 現在は、ドキュメントに削除のソフト マーカーを追加できます。 ドキュメントに “deleted” という属性を追加して “true” に設定し、それが自動的に削除されるようにドキュメントの TTL を設定します。
+Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
 
-### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>古いドキュメント (たとえば、5 年前に追加されたドキュメント) の変更フィードを読み取ることは可能ですか?
+### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
 
-はい、ドキュメントが削除されていなければ、コレクションの配信元の範囲で変更フィードを読み取ることができます。
+Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
 
-### <a name="can-i-read-change-feed-using-javascript"></a>JavaScript を使って変更フィードを読み取ることは可能ですか?
+### Can I read change feed using JavaScript?
 
-はい、変更フィード向けの Node.js SDK の初期サポートが最近追加されました。 これは、次の例に示されるように使用できます。コードを実行する前に、documentdb モジュールを最新バージョンに更新してください。
+Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
 
 ```js
 
@@ -422,6 +537,7 @@ _lsn は変更フィードのみに追加されるバッチ ID であり、ス�
 
 コードの修正を続けていると、配達不能キュー内のドキュメントがすぐになくなることに気が付くはずです。
 Azure 関数は変更フィード システムによって自動的に呼び出され、チェックポイントなどは Azure 関数によって内部的に維持されます。 チェックポイントをロールバックしてすべての側面をコントロールするのであれば、変更フィード プロセッサ SDK の使用を検討してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

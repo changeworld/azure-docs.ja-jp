@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194670"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034859"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
@@ -35,7 +35,9 @@ AzCopy は、最適なパフォーマンスのためのシンプルなコマン�
 ### <a name="installation-on-linux"></a>Linux へのインストール
 
 > [!NOTE]
-> ディストリビューションに応じて、[.NET Core の前提条件に関する記事](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)に示されている .NET Core 2.1 の依存関係のインストールが必要な場合があります。 Ubuntu 16.04 や RHEL 7 などのメインストリーム ディストリビューションについては、これは通常必要ありません。
+> ディストリビューションに応じて、[.NET Core の前提条件に関する記事](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)に示されている .NET Core 2.1 の依存関係のインストールが必要な場合があります。 
+>
+> RHEL 7 ディストリビューションでは、ICU と libunwind の依存関係をインストールします: ```yum install -y libunwind icu```
 
 AzCopy on Linux (v7.2 以降) のインストールは簡単で、tar パッケージを抽出し、インストール スクリプトを実行するだけです。 
 
@@ -723,4 +725,3 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 * [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 705209becff7c8ad20e7d09f056aa1ae1577b7ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660039"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304123"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成と構成、すべてのクラスルーム ラボの表示、またはラボの削除を実行する方法を説明します。
+
+## <a name="prerequisites"></a>前提条件
+ラボ アカウントでクラスルーム ラボを設定するには、ラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボの作成者ロールには、ラボ所有者が「[ユーザーをラボの作成者ロールに追加する](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」の記事の手順に従ってユーザーを追加できます。
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
@@ -34,9 +37,9 @@ ms.locfileid: "34660039"
     7. **[保存]** を選択します。
 
         ![クラスルーム ラボを作成する](../media/how-to-manage-classroom-labs/new-lab-window.png)
-1. ラボの**ホーム ページ**が表示されます。 
+1. ラボの**ダッシュボード**が表示されます。 
     
-    ![クラスルーム ラボのホーム ページ](../media/how-to-manage-classroom-labs/classroom-lab-home-page.png)
+    ![クラスルーム ラボのダッシュボード](../media/how-to-manage-classroom-labs/classroom-lab-home-page.png)
 
 ## <a name="configure-usage-policy"></a>利用ポリシーを構成する
 
@@ -47,7 +50,7 @@ ms.locfileid: "34660039"
     ![利用ポリシー](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
 
 ## <a name="set-up-the-template"></a>テンプレートを設定する
-ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。 ラボ ユーザーに表示されるテンプレートの名前と説明を指定できます。 テンプレートの可視性を "パブリック" に設定して、対象のラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。  
+ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。 ラボ ユーザーに表示されるテンプレートの名前と説明を指定できます。 テンプレートを発行して、対象のラボ ユーザーがテンプレート VM のインスタンスを利用できるようにします。  
 
 ### <a name="set-template-title-and-description"></a>テンプレートのタイトルと説明を設定する
 1. **[テンプレート]** セクションで、テンプレート用の **[編集]**(鉛筆のアイコン) を選択します。 
@@ -57,24 +60,51 @@ ms.locfileid: "34660039"
 
     ![クラスルーム ラボの説明](../media/how-to-manage-classroom-labs/lab-description.png)
 
-### <a name="make-instances-of-the-template-public"></a>テンプレートのインスタンスをパブリックにする 
-テンプレートの可視性が **[パブリック]** に設定されると、Azure Lab Services は、テンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。  
+### <a name="set-up-the-template-vm"></a>テンプレート VM を設定する
+ テンプレート VM を学生に提供する前に、そのテンプレート VM に接続して必要なソフトウェアをインストールします。 
 
-1. **[テンプレート]** セクションで **[可視性]** を選択します。 
-2. **[可用性]** ページで、**[パブリック]** を選択します。
+1. テンプレート仮想マシンの準備が完了するまで待ちます。 準備が完了すると、**[開始]** ボタンが有効になります。 VM を起動するには、**[開始]** を選択します。
+
+    ![テンプレート VM を起動する](../media/tutorial-setup-classroom-lab/start-template-vm.png)
+1. VM に接続するには、**[接続]** を選択して指示に従います。 
+
+    ![テンプレート VM に接続する](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+1. 学生がラボの作業を行うために必要なソフトウェア (Visual Studio、Azure Storage Explorer など) をインストールします。 
+2. テンプレート VM から切断 (リモート デスクトップ セッションを終了) します。 
+3. **[停止]** を選択してテンプレート VM を**停止**します。 
+
+    ![テンプレート VM を停止する](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
+
+
+### <a name="publish-the-template"></a>テンプレートを発行する 
+テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。 
+
+1. **[テンプレート]** セクションの **[発行]** を選択します。 
+
+    ![テンプレート VM を発行する](../media/tutorial-setup-classroom-lab/public-access.png)
+1. **[発行]** ウィンドウの **[発行済み]** オプションを選択します。 
+2. 次に、**[発行]** ボタンをクリックします。 作成する VM の数 (ラボへのアクセスが許可されるユーザーと同数) によっては、このプロセスにしばらく時間がかかる場合があります。
     
     > [!IMPORTANT]
     > テンプレートがパブリックに利用できるようになった後で、そのアクセスをプライベートに変更することはできません。 
-3. **[保存]** を選択します。
+4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが 5 つ表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
 
-    ![可用性](../media/how-to-manage-classroom-labs/public-access.png)
+    ![仮想マシン](../media/tutorial-setup-classroom-lab/virtual-machines.png)
+5. VM が作成されるまで待ちます。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+
+    ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+
 
 ## <a name="send-registration-link-to-students"></a>登録リンクを学生に送信する
 
-1. **[User registration]\(ユーザー登録\)** タイルを選択します。
-2. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。 それを電子メール エディターに貼り付け、学生に電子メールを送信します。 
+1. **[ダッシュボード]** ビューに切り替えます。 
+2. **[User registration]\(ユーザー登録\)** タイルを選択します。
 
-    ![学生登録リンク](../media/how-to-manage-classroom-labs/registration-link.png)
+    ![学生登録リンク](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
+1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。 それを電子メール エディターに貼り付け、学生に電子メールを送信します。 
+
+    ![学生登録リンク](../media/tutorial-setup-classroom-lab/registration-link.png)
+2. **[User registration]\(ユーザー登録\)** ダイアログ ボックスの **[閉じる]** を選択します。 
 
 ## <a name="view-all-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 1. [Azure Lab Services ポータル](https://labs.azure.com)に移動します。
@@ -94,6 +124,17 @@ ms.locfileid: "34660039"
 
     ![[削除] ダイアログ ボックス](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
  
+## <a name="manage-student-vms"></a>学生の VM を管理する
+提供された登録リンクを使用して学生が Azure Lab Services に登録すると、**[仮想マシン]** タブに学生に割り当てられた VM が表示されます。 
+
+![学生に割り当てられた仮想マシン](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
+
+学生の VM 上では、次のタスクを実行できます。 
+
+- VM が実行中の場合は、VM を停止します。 
+- VM が停止している場合は、VM を起動します。 
+- VM に接続します。 
+- VM を削除します。 
 
 ## <a name="next-steps"></a>次の手順
 Azure Lab Services を使用してラボの設定を開始します。

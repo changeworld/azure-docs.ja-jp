@@ -1,6 +1,6 @@
 ---
-title: BulkExecutor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
-description: Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションに一括インポートし、一括更新します。
+title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
+description: Azure Cosmos DB の Bulk Executor Java ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションに一括インポートし、一括更新します。
 keywords: Java Bulk Executor
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 77135ec5f62636d1dd634361da345b00d98ad918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610244"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300715"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>BulkExecutor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 BulkExecutor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[BulkExecutor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コレクションに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
+このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コレクションに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -197,7 +197,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
 
 ## <a name="performance-tips"></a>パフォーマンスに関するヒント 
 
-BulkExecutor ライブラリを使用する場合は、パフォーマンスを向上させるために、次の点を考慮してください。
+Bulk Executor ライブラリを使用する場合は、パフォーマンスを向上させるために、次の点を考慮してください。
 
 * パフォーマンスを最大限に高めるには、Cosmos DB アカウントの書き込みリージョンと同じリージョンにある Azure VM からアプリケーションを実行します。  
 * 高いスループットを実現するには、次のようにします。  
@@ -211,6 +211,6 @@ BulkExecutor ライブラリを使用する場合は、パフォーマンスを�
 
     
 ## <a name="next-steps"></a>次の手順
-* Maven パッケージの詳細と BulkExecutor Java ライブラリのリリース ノートについては、[BulkExecutor SDK の詳細](sql-api-sdk-bulk-executor-java.md)に関するページをご覧ください。
+* Maven パッケージの詳細と Bulk Executor Java ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-java.md)に関するページをご覧ください。
 
 

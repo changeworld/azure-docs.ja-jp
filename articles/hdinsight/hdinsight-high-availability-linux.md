@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 974ed70fbda88dfcb775e021474583f7afb0576b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404962"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046681"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -63,9 +63,9 @@ Nimbus ノードは、Storm クラスターで使用できます。 Nimbus ノ�
 
 エッジ ノードは、クラスター内のデータの分析にはアクティブに関与しませんが、 開発者やデータ サイエンティストが Hadoop を操作するときに使用されます。 エッジ ノードは、クラスター内の他のノードと同じ Azure Virtual Network 内に存在し、他のすべてのノードに直接アクセスできます。 エッジ ノードは、重要な Hadoop サービスまたは分析ジョブからリソースを取り除く心配をせずに使用できます。
 
-現在、HDInsight では、R Server が既定でエッジ ノードを提供する唯一のクラスターの種類です。 HDInsight の R Server のエッジ ノードは、R コードを分散処理のためにクラスターに送信する前にローカルでテストするために使用されます。
+現在、HDInsight では、ML Services が既定でエッジ ノードを提供する唯一のクラスターの種類です。 HDInsight の ML Services のエッジ ノードは、R コードを分散処理のためにクラスターに送信する前にローカルでテストするために使用されます。
 
-R Server 以外のクラスターの種類とエッジ ノードを使用する方法の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md)に関するドキュメントを参照してください。
+他のクラスターの種類とエッジ ノードを使用する方法の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md)に関するドキュメントを参照してください。
 
 ## <a name="accessing-the-nodes"></a>ノードへのアクセス
 

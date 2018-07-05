@@ -11,32 +11,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/20/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 9f90201cad0f74923460c2f25eff4de98dc6690a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 150d1c40463aa04527bdd6e356a4c24ef68b02ef
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294782"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301900"
 ---
-# <a name="removing-the-mysql-resource-provider"></a>MySQL リソース プロバイダーの削除  
-SQL リソース プロバイダーを削除する前に、最初にすべての依存関係を削除する必要があります。
+# <a name="remove-the-sql-resource-provider"></a>SQL リソース プロバイダーの削除
 
-## <a name="remove-the-mysql-resource-provider"></a>MySQL リソースプロバイダーを削除する 
+SQL リソース プロバイダーを削除する前に、プロバイダーの依存関係をすべて削除する必要があります。 また、リソース プロバイダーのインストールに使用したデプロイ パッケージのコピーも必要になります。
 
-1. 既存の SQL リソース プロバイダーの依存関係が削除されていることを確認します。
+## <a name="to-remove-the-sql-resource-provider"></a>SQL リソース プロバイダーを削除するには
 
-  > [!NOTE]
-  > 依存リソースがリソース プロバイダーを現在使用している場合でも、SQL リソース プロバイダーのアンインストールは続行されます。 
+1. 既存の SQL リソース プロバイダーの依存関係がすべて削除されていることを確認します。
+
+   > [!NOTE]
+   > 依存リソースがリソース プロバイダーを現在使用している場合でも、SQL リソース プロバイダーのアンインストールは続行されます。
   
-2. このバージョンの SQL リソースプロバイダー アダプターに対してダウンロードした元のデプロイ パッケージがあることを確認します。
-3. 次のパラメーターを使用して、デプロイ スクリプトを再実行します。
-    - -Uninstall パラメーターを使用する
-    - 特権エンドポイントの IP アドレスまたは DNS 名。
-    - 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。
-    - Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。
+2. SQL リソース プロバイダー バイナリのコピーを入手し、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
+
+3. 新しい管理者特権の PowerShell コンソール ウィンドウを開き、SQL リソース プロバイダー バイナリ ファイルを抽出したディレクトリに変更します。
+
+4. 次のパラメーターを使用して、DeploySqlProvider.ps1 スクリプトを実行します。
+
+    - **Uninstall**。 リソース プロバイダーと関連付けられているすべてのリソースを削除します。
+    - **PrivilegedEndpoint**。 特権エンドポイントの IP アドレスまたは DNS 名。
+    - **CloudAdminCredential**。 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。
+    - **AzCredential**。 Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。
 
 ## <a name="next-steps"></a>次の手順
+
 [App Services を PaaS として提供する](azure-stack-app-service-overview.md)

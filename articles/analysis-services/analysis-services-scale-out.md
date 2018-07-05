@@ -3,16 +3,17 @@ title: Azure Analysis Services のスケールアウト | Microsoft Docs
 description: Azure Analysis Services サーバーをスケールアウトによってレプリケートします
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 05/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597129"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -33,6 +34,22 @@ ms.lasthandoff: 04/18/2018
 
 > [!NOTE]
 > スケールアウトでは、サーバーで使用可能なメモリの量は増えません。 メモリを増やすには、プランをアップグレードする必要があります。
+
+## <a name="region-limits"></a>リージョンの制限
+
+構成できるクエリ レプリカ数は、サーバーが存在しているリージョンによって制限されます。 次の制限が適用されます。
+
+|リージョン  |レプリカの最大数  |
+|---------|---------|
+|米国東部 2    |    7     |
+|米国中西部     |    7     |
+|西ヨーロッパ     |    7     |
+|米国西部     |     7    |
+|米国中央部     |     3    |
+|東南アジア    |     3    |
+|その他のすべてのリージョン  |   1    |
+
+
 
 ## <a name="monitor-qpu-usage"></a>QPU の使用状況を監視する
 

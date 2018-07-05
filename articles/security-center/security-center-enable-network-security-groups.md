@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364456"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301429"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Azure Security Center でネットワーク セキュリティ グループを有効にする
 Azure Security Center では、ネットワーク セキュリティ グループ (NSG) が有効になっていない場合、NSG を有効にするよう推奨されます。 NSG には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。 NSG の詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/security-overview.md)
@@ -43,7 +43,7 @@ NSG を有効にしていない場合、Security Center によって "サブネ�
 
    ![[ネットワーク セキュリティ グループの選択]][4]
 
-NSG を作成する場合は、「[Azure ポータルを使用して NSG を管理する方法](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)」の手順に従って NSG を作成し、セキュリティ規則を設定してください。
+NSG を作成する場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関するページに記載された手順に従って NSG を作成し、セキュリティ規則を設定してください。
 
 ## <a name="see-also"></a>関連項目
 この記事では、Security Center の推奨事項である、サブネットまたは仮想マシンの "ネットワーク セキュリティ グループを有効にする" を実装する方法について説明しました。 NSG の有効化の詳細については、以下の記事を参照してください。

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dddb29d2a796449d6a2c9b68e01e94f32d3022e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621991"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048289"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-salesforce-connector.md)
-> * [バージョン 2 - プレビュー](../connector-salesforce.md)
+> * [Version 1](data-factory-salesforce-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-salesforce.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Salesforce コネクタ](../connector-salesforce.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Salesforce コネクタ](../connector-salesforce.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する表のシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -71,7 +71,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **Salesforce**に設定する必要があります。 |[はい] |
+| type |type プロパティを **Salesforce**に設定する必要があります。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。 |[はい] |

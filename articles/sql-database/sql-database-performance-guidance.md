@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650470"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309216"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Azure SQL Database のパフォーマンスのチューニング
 
@@ -25,7 +25,7 @@ Azure SQL Database には、データベースのパフォーマンス向上に�
 - アプリケーションを調整し、パフォーマンスを向上させるベスト プラクティスを適用します。 
 - データをより効率的に処理するようにインデックスとクエリを変更して、データベースをチューニングします。
 
-ニーズを満たす [DTU ベースのモデル リソースの制限](sql-database-dtu-resource-limits.md)および[仮想コアベースのモデル リソースの制限 (プレビュー)](sql-database-vcore-resource-limits.md) を決定する必要があるので、これらは手動による方法です。 それ以外の場合、アプリケーションまたはデータベースのコードを書き換えて、変更をデプロイする必要があります。
+これらは、お客様がニーズを満たすリソースの量を決定する必要があるために、手動による方法で行います。 それ以外の場合、アプリケーションまたはデータベースのコードを書き換えて、変更をデプロイする必要があります。
 
 ## <a name="increasing-performance-tier-of-your-database"></a>データベースのパフォーマンス レベルを引き上げる
 
@@ -271,8 +271,8 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 一部のデータベース アプリケーションでは、ワークロードの大半が読み取りになります。 キャッシュ層を利用すれば、データベースの負荷を減らすことができます。また、Azure SQL Database を使用してデータベースをサポートするために必要なパフォーマンス レベルを下げられる可能性があります。 [Azure Redis Cache](https://azure.microsoft.com/services/cache/) を利用すると、読み取りが多いワークロードがある場合に、データを 1 回 (または、構成方法に応じてアプリケーション層コンピューターごとに 1 回) 読み込んでから、SQL データベースの外部にそのデータを格納することができます。 この方法は、データベースの負荷 (CPU と読み取り IO) を減らすことができるものの、トランザクションの整合性に影響があります。データがキャッシュから読み込まれると、データベースのデータとの同期が失われることがあるためです。 多くのアプリケーションではある程度の不整合が許容されますが、すべてのワークロードで許容されるとは限りません。 アプリケーション層のキャッシュ手法を実装する前に、あらゆるアプリケーション要件を完全に理解しておく必要があります。
 
 ## <a name="next-steps"></a>次の手順
-* DTU ベースのサービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[DTU ベースのモデル リソースの制限](sql-database-dtu-resource-limits.md)に関するページを参照してください。
-* 仮想コアベースのサービス レベルの詳細については、[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)および[仮想コアベースのリソース制限 (プレビュー)](sql-database-vcore-resource-limits.md) に関するページを参照してください。
+* DTU ベースのサービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)に関するページを参照してください。
+* 仮想コアベースのサービス レベルの詳細については、[仮想コアベースの購入モデル (プレビュー) ](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 * エラスティック プールの詳細については、「[Azure エラスティック プールの概要](sql-database-elastic-pool.md)」を参照してください。
 * パフォーマンスとエラスティック プールの詳細については、[エラスティック プールの使用を検討する場合](sql-database-elastic-pool-guidance.md)に関するページを参照してください。
 

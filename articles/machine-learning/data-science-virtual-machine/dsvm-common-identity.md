@@ -1,6 +1,6 @@
 ---
-title: データ サイエンス仮想マシンの共通の ID のセットアップ - Azure | Microsoft Docs
-description: エンタープライズ チームの DSVM 環境で共通の ID をセットアップします。
+title: Data Science Virtual Machine の共通 ID を設定する - Azure | Microsoft Docs
+description: エンタープライズ チームの DSVM 環境で共通 ID を設定します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
 documentationcenter: ''
@@ -15,68 +15,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 70c6b8cd147cefaa3128bc1e6a414a6fa61dba6d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830896"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311076"
 ---
-# <a name="setup-common-identity-on-the-data-science-vm"></a>データ サイエンス VM に共通の ID をセットアップする
+# <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
-既定で、データ サイエンス VM (DSVM) を含む Azure VM では、VM のプロビジョニング中にローカル ユーザー アカウントが作成され、ユーザーはこれらの資格情報で VM に対して認証します。 アクセスする必要のある複数の VM がある場合、このアプローチはすぐに資格情報の管理が面倒になりがちです。 共通のユーザー アカウントと標準ベースの ID プロバイダーを使用した管理により、単一の資格情報セットを使用して、複数の DSVM を含む Azure 上の複数のリソースにアクセスできます。 
+Data Science Virtual Machine (DSVM) などの Azure 仮想マシン (VM) で、VM をプロビジョニングするときにローカル ユーザー アカウントを作成します。 その後、ユーザーはこれらの資格情報を使って VM に対する認証を行います。 複数の VM にアクセスする必要がある場合、この方法では資格情報の管理がすぐに面倒になりがちです。 共通のユーザー アカウントと標準ベースの ID プロバイダーを使用した管理により、単一の資格情報セットを使用して、複数の DSVM を含む Azure 上の複数のリソースにアクセスできます。 
 
-Active Directory (AD) は、一般的な ID プロバイダーであり、オンプレミスと同様に、サービスとして Azure でもサポートされます。 AD または Azure AD を利用して、スタンドアロンのデータ サイエンス VM (DSVM) または Azure 仮想マシン スケール セットでの DSVM のクラスターのどちらでもユーザーを認証できます。 これを行うには、DSVM インスタンスを AD ドメインに結合します。 ID を管理する Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 AD がない場合は、[Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) というサービスを通じて Azure で管理された AD を実行できます。 
+Active Directory は一般的な ID プロバイダーであり、サービスとして Azure 上でも、オンプレミスでも、サポートされます。 Azure Active Directory (Azure AD) またはオンプレミスの Active Directory を使って、スタンドアロン DSVM 上で、または Azure 仮想マシン スケール セット内の DSVM のクラスター上で、ユーザーを認証できます。 これを行うには、DSVM インスタンスを Active Directory ドメインに参加させます。 
 
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/) のドキュメントで、Azure AD とオンプレミス ディレクトリ (ある場合) の接続など、Active Directory を管理するための詳細な[手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)を説明しています。 
+ID を管理する Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 Active Directory がない場合は、[Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) というサービスを使って、Azure 上で管理された Active Directory インスタンスを実行できます。 
 
-この記事の残りの部分では、Azure AD DS を使用して Azure 上に完全に管理された AD ドメイン サービスをセットアップし、DSVM を管理された AD ドメインに参加させ、ユーザーが共通のユーザー アカウントと資格情報を使用して、DSVM (およびその他の Azure リソース) のプールにアクセスできるようにする手順について説明します。 
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続など、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)が説明されています。 
 
-##  <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Azure 上に完全に管理された Active Directory ドメインをセットアップする
+この記事では、Azure AD DS を使って Azure 上に完全に管理された Active Directory ドメイン サービスを設定する手順について説明します。 その後、管理された Active Directory ドメインに DSVM を参加させて、ユーザーが共通のユーザー アカウントと資格情報を使って DSVM (および他の Azure リソース) のプールにアクセスできるようにすることができます。 
 
-Azure AD DS により、Azure 上で完全に管理されたサービスを提供して、ID を簡単に管理できます。 この Active directory ドメインで、ユーザーとグループが管理されます。  Azure でホストされる AD ドメインとユーザー アカウントをディレクトリにセットアップする手順は次のようになります。
+## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Azure 上に完全に管理された Active Directory ドメインをセットアップする
 
-1. ポータル上の Active Directory にユーザーを追加します 
+Azure AD DS により、Azure 上で完全に管理されたサービスを提供して、ID を簡単に管理できます。 この Active Directory ドメインで、ユーザーとグループを管理します。 Azure でホストされる Active Directory ドメインとユーザー アカウントをディレクトリに設定する手順は次のとおりです。
 
-    a. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
+1. Azure portal で、Active Directory にユーザーを追加します。 
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
     
-    b. **[Azure Active Directory]** を選択し、**[ユーザーとグループ]** を選択します。
+   b. **[Azure Active Directory]** を選択し、**[ユーザーとグループ]** を選択します。
     
-    c. **[ユーザーとグループ]** で、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
+   c. **[ユーザーとグループ]** で、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
    
-   ![[追加] をクリックする](./media/add-user.png)
+      **[ユーザー]** ウィンドウが開きます。
+      
+      ![[ユーザー] ウィンドウ](./media/add-user.png)
     
-    d. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "[ドメイン名].onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
+   d. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     
-    e. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
+   e. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
     
-    f. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 
+   f. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 
     
-    g. **[ユーザー]** で、**[作成]** を選択します。
+   g. **[ユーザー]** で、**[作成]** を選択します。
     
-    h. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
+   h. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 
-2.  Azure AD Domain Services を作成します
+2. Azure AD DS インスタンスを作成します。 記事「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)」の手順 (タスク 1 からタスク 5) に従います。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードを更新することが重要です。 また、記事のタスク 4 で説明されているように、DNS を Azure AD DS に追加することも重要です。 
 
-    Azure ADDS を作成するには、記事「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)」の手順 (タスク 1 からタスク 5) を参照してください。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードが更新されることが重要です。 さらに、上記の記事のタスク番号 4 に示されているように、DNS を Azure AD DS に追加することも重要です。 
+3. 前述の手順のタスク 2 で作成した仮想ネットワーク内に、別の DSVM サブネットを作成します
+4. DSVM サブネットに 1 つまたは複数の Data Science VM インスタンスを作成します。 
+5. [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を Active Directory に追加します。 
+6. ホームまたはノートブック ディレクトリをホストするための Azure ファイル共有をマウントし、任意のマシンにワークスペースをマウントできるようにします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM で NFS を実行する必要があります。)
 
-3.  先述の手順のタスク番号 2 で作成された仮想ネットワークに個別の DSVM サブネットを作成します
-4.  DSVM サブネットに 1 つまたは複数のデータ サイエンス VM インスタンスを作成します 
-5.  [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を AD に追加します。 
-6.  次に、ホームまたはノートブック ディレクトリをホストするための共有 Azure ファイルをマウントし、任意のマシンにワークスペースをマウントできるようにします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM で NFS を実行する必要があります)
-
-    a. [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)。
     
-    b. それを Linux DSVM にマウントします。 Azure Portal のストレージ アカウントで Azure ファイルの [接続] ボタンをクリックすると、Linux DSVM 上の bash シェルで実行するコマンドが表示されます。 コマンドは次のようになります。
-```
-sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
-```
-7.  /Data/workspace に Azure ファイルをマウントしたとします。 共有内に各ユーザーのディレクトリを作成します。 /data/workspace/user1、/data/workspace/user2 などです。 各ユーザーのワークスペースに、```notebooks``` ディレクトリを作成します。 
-8. ```$HOME/userx/notebooks/remote``` に ```notebooks``` のシンボリック リンクを作成します。   
+   b. それを Linux DSVM にマウントします。 Azure portal のストレージ アカウントで Azure ファイル共有の **[接続]** ボタンを選択すると、Linux DSVM 上の Bash シェルで実行するコマンドが表示されます。 次のようなコマンドです。
+   
+   ```
+   sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
+   ```
+7. たとえば、/data/workspace に Azure ファイル共有をマウントしたものとします。 共有内に各ユーザーのディレクトリを作成します (/data/workspace/user1、/data/workspace/user2 など)。 各ユーザーのワークスペースに、`notebooks` ディレクトリを作成します。 
+8. `$HOME/userx/notebooks/remote` に `notebooks` のシンボリック リンクを作成します。   
 
-これで、Azure でホストされる Active Directory 内にユーザーが作成され、AD 資格情報を使用して、Azure AD DS に参加している任意の DSVM (SSH、Jupyterhub の両方) にログインできます。 ユーザー ワークスペースが共有の Azure ファイル上にあるため、ユーザーは、Jupyterhub の使用時に、任意の DSVM から自分のノートブックやその他の作業にアクセスできます。 
+これで、Azure でホストされている Active Directory インスタンスでユーザーが設定されるようになります。 ユーザーは、Active Directory の資格情報を使って、Azure AD DS に参加している任意の DSVM (SSH または JupyterHub) にログインできます。 ユーザー ワークスペースが Azure ファイル共有上にあるため、ユーザーは、JupyterHub の使用時に、任意の DSVM から自分のノートブックやその他の作業にアクセスできます。 
 
-自動スケールの場合、仮想マシン スケール セットを使用して、この様式で、共有ディスクがマウントされているドメインにすべて参加している VM のプールを作成できます。 ユーザーは、仮想マシン スケール セット内の任意の使用可能なマシンにログインし、ノートブックが保存されている共有ディスクにアクセスできます。 
+自動スケーリングの場合、仮想マシン スケール セットを使用して、この様式で、共有ディスクがマウントされているドメインにすべて参加している VM のプールを作成できます。 ユーザーは、仮想マシン スケール セット内の任意の使用可能なマシンにログインし、ノートブックが保存されている共有ディスクにアクセスできます。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: ce8764e79d24d36eb3b162fb5f3f688b3e9fab3f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a8344388e9d31846770d5989d1ddd43fbe15336
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402004"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047481"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -114,5 +114,5 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Hadoop、Spark、Kafka、Interactive Hive、HBase、R Server、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。
+* [Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Hadoop、Spark、Kafka、Interactive Hive、HBase、ML Services、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。
 * [クラスターのパフォーマンスを監視する](hdinsight-key-scenarios-to-monitor.md): クラスターの容量に影響を及ぼす可能性のある、HDInsight クラスターの主な監視シナリオについて説明します。

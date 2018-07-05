@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198125"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300806"
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Store へのアクセス
 Azure Data Lake Store は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Store エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Store にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Store へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -42,7 +42,7 @@ Azure Data Lake Store は、パブリック インターネット IP アドレ�
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG を使用して制限されている VM からの接続を有効にする
-NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Store の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関するページを参照してください。 NSG を作成する方法については、[Azure Portal を使用した NSG の管理方法](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)に関するページを参照してください。
+NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Store の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関するページを参照してください。 NSG を作成する方法については、[ネットワーク セキュリティ グループを作成する方法](../virtual-network/tutorial-filter-network-traffic.md)に関するページを参照してください。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR または ExpressRoute を使用して制限されている VM からの接続を有効にする
 ルート (UDR または BGP 交換ルート) を使用してインターネットへのアクセスがブロックされている場合は、そのようなサブネット内の VM が Data Lake Store エンドポイントにアクセスできるように、特別なルートを構成する必要があります。 詳細については、[ユーザー定義のルートの概要](../virtual-network/virtual-networks-udr-overview.md)に関するページを参照してください。 UDR の作成方法の詳細については、[Resource Manager での UDR の作成](../virtual-network/tutorial-create-route-table-powershell.md)に関するページを参照してください。

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0192f65f394a3bb6d5cffc90639966b5f913b291
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
-ms.locfileid: "26745896"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302115"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs geo ディザスター リカバリー
 
@@ -101,10 +101,20 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
 
+## <a name="availability-zones-preview"></a>Availability Zones (プレビュー)
+
+Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) もサポートされています。 
+
+> [!NOTE]
+> Availability Zones プレビューは、**米国中部**、**米国東部 2**、および**フランス中部**リージョンのみでサポートされます。
+
+Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Event Hubs では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
+
+![3][]
+
 ## <a name="next-steps"></a>次の手順
 
-* 
-            [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
+* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
 * [REST API リファレンス](/rest/api/eventhub/disasterrecoveryconfigs)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
 
 Event Hubs の詳細については、次のリンクを参照してください。
@@ -115,3 +125,4 @@ Event Hubs の詳細については、次のリンクを参照してください
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
+[3]: ./media/event-hubs-geo-dr/eh-az.png

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: 12efeba68f30aa8723acc32449ae05ffac4c1ac4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d6c56f96c085de60b7cc05e4cc16b57867f6a7d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658759"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308362"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -42,7 +42,7 @@ ms.locfileid: "34658759"
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
-[suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[suse-ha-guide]:https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
@@ -75,8 +75,7 @@ ms.locfileid: "34658759"
 * [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA SR パフォーマンス最適化シナリオ)  
-  このガイドには、SAP HANA システム レプリケーションをオンプレミスでセットアップするときに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
+* [SUSE SAP HA Best Practice Guides (SUSE SAP HA ベスト プラクティス ガイド)][suse-ha-guide] このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
 * [Highly Available NFS Storage with DRBD and Pacemaker (DRBD と Pacemaker による高可用性 NFS ストレージ)][suse-drbd-guide]: このガイドには、高可用性 NFS サーバーのセットアップに必要なすべての情報が記載されています。 このガイドをベースラインとして使用します。
 
 

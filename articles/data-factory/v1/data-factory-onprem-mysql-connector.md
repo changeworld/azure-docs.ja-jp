@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 34de57188dffb7375889ed9ed89a759238b035ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808096"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046886"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-mysql-connector.md)
-> * [バージョン 2 - プレビュー](../connector-mysql.md)
+> * [Version 1](data-factory-onprem-mysql-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-mysql.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での MySQL コネクタ](../connector-mysql.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の MySQL コネクタ](../connector-mysql.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの MySQL データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。

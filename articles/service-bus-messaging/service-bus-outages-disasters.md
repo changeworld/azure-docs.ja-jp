@@ -6,18 +6,18 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802308"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301718"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
-ミッション クリティカルなアプリケーションは、予期しない障害や災害が発生した場合でも継続して稼働する必要があります。 このトピックでは、発生する可能性がある Service Bus の障害や災害からアプリケーションを保護するために使用できる手法について説明します。
+ミッション クリティカルなアプリケーションは、予期しない障害や災害が発生した場合でも継続して稼働する必要があります。 この記事では、発生する可能性がある Service Bus の障害や災害からアプリケーションを保護するために使用できる手法について説明します。
 
 障害とは、Azure Service Bus が一時的に利用できなくなることです。 障害によって、メッセージング ストアなどの Service Bus の一部のコンポーネント、さらにはデータセンター全体に影響が及ぶ場合があります。 問題が解決されると、Service Bus は再び利用可能になります。 通常、障害によってメッセージなどのデータが失われることはありません。 コンポーネントのエラーの例としては、特定のメッセージング ストアが利用できなくなることが挙げられます。 データセンター全体の障害の例としては、データセンターの電源障害や、データセンターのネットワーク スイッチの障害などがあります。 障害は、数分間から数日間続く場合があります。
 
@@ -78,6 +78,17 @@ Service Bus のメッセージング エンティティ (キュー、トピッ�
 
 Service Bus は、名前空間のレベルで、geo ディザスター リカバリーと geo レプリケーションをサポートします。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)」を参照してください。 [Premium SKU](service-bus-premium-messaging.md) でのみ利用できるディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。
 
+## <a name="availability-zones-preview"></a>Availability Zones (プレビュー)
+
+Service Bus Premium SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
+
+> [!NOTE]
+> Availability Zones プレビューは、**米国中部**、**米国東部 2**、および**フランス中部**リージョンのみでサポートされます。
+
+Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Service Bus では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
+
+![1][]
+
 ## <a name="next-steps"></a>次の手順
 ディザスター リカバリーの詳細については、次の記事を参照してください。
 
@@ -93,3 +104,5 @@ Service Bus は、名前空間のレベルで、geo ディザスター リカバ
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

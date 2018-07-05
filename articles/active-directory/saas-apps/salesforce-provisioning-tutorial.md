@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: be6e5fb83ea88ce30b64f5e1eb53422f0404410f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229655"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308318"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル: Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -75,7 +75,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce アカウント名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
@@ -95,7 +95,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
 
-11. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、https://your-instance.my.salesforce.com の形式で入力します。your-instance は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
+11. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、"https://\<your-instance\>.my.salesforce.com" 形式で入力します。\<your-instance\> は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
 
 12. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce アプリに接続できることを確認します。
 

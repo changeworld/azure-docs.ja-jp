@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight で ScaleR と SparkR を使用する | Microsoft Docs
-description: R Server と HDInsight で ScaleR と SparkR を使用する
+description: HDInsight 上で ML Services と共に ScaleR と SparkR を使用する
 services: hdinsight
 documentationcenter: ''
 author: bradsev
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399968"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061480"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
 このドキュメントは、**ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。
 
-どちらのパッケージも Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 R Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
+どちらのパッケージも Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
 この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
 
-これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する R Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。 
+これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する ML Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。
 
-本ドキュメントの以降の説明は、R と R Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
+本ドキュメントの以降の説明は、R と ML Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
 
 ## <a name="the-airline-and-weather-datasets"></a>航空データセットと気象データセット
 
@@ -200,7 +200,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Spark DataFrames への航空データと気象データのインポート
 
-今度は、SparkR の [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
+今度は、SparkR の [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -360,7 +360,7 @@ rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
 
-# set the Spark compute context for R Server 
+# set the Spark compute context for ML Services 
 rxSetComputeContext(sparkCC)
 rxGetComputeContext()
 
@@ -537,15 +537,15 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>まとめ
 
-この記事では、Hadoop Spark で SparkR を使ったデータ操作と ScaleR を使ったモデル開発を組み合わせて使う方法を紹介しました。 このシナリオでは、Spark セッションが互いにかち合わないよう、一度に 1 セッションずつ実行して、CSV ファイルを介してデータを交換する必要があります。 単純な方法ではありますが、このプロセスによって、新しい R Server が今後リリースされ、SparkR と ScaleR とで Spark セッション (ひいては Spark DataFrames) を共有できるようになったときの移行作業がはるかに楽になります。
+この記事では、Hadoop Spark で SparkR を使ったデータ操作と ScaleR を使ったモデル開発を組み合わせて使う方法を紹介しました。 このシナリオでは、Spark セッションが互いにかち合わないよう、一度に 1 セッションずつ実行して、CSV ファイルを介してデータを交換する必要があります。 単純な方法ではありますが、このプロセスによって、新しい ML Services が今後リリースされ、SparkR と ScaleR とで Spark セッション (ひいては Spark DataFrames) を共有できるようになったときの移行作業がはるかに楽になります。
 
 ## <a name="next-steps-and-more-information"></a>次のステップと詳細情報
 
-- Spark での R Server の使用について詳しくは、[MSDN のガイド](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)をご覧ください。
+- Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)をご覧ください。
 
-- R Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
+- ML Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
 
-- HDInsight における R Server については、[Azure HDInsight での R Server の概要](r-server/r-server-overview.md)と [Azure HDInsight での R Server](r-server/r-server-get-started.md) に関する各ページをご覧ください。
+- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)および[ Azure HDInsight での ML Services の基礎](r-server/r-server-get-started.md)に関するページをご覧ください。
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 

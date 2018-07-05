@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 203e12ddc220651653625fc596eafa2e8365e4c1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797745"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300756"
 ---
-# <a name="net-bulkexecutor-library-download-information"></a>.NET BulkExecutor ライブラリ: ダウンロード情報 
+# <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ: ダウンロード情報 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -31,12 +31,12 @@ ms.locfileid: "34797745"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
-<tr><td>**説明**</td><td>BulkExecutor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウントで一括操作を実行できます。 BulkExecutor ライブラリは、BulkImport および BulkUpdate 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールは、Azure Cosmos DB コンテナー内の既存のデータを、パッチとして一括更新できます。</td></tr>
+<tr><td>**説明**</td><td>Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウントで一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport および BulkUpdate 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールは、Azure Cosmos DB コンテナー内の既存のデータを、パッチとして一括更新できます。</td></tr>
 
 <tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
 
@@ -44,7 +44,7 @@ ms.locfileid: "34797745"
 
 <tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)</td></tr>
 
-<tr><td>**概要**</td><td>[BulkExecutor ライブラリ .NET SDK の概要](bulk-executor-dot-net.md)</td></tr>
+<tr><td>**はじめに**</td><td>[Bulk Executor ライブラリ .NET SDK の概要](bulk-executor-dot-net.md)</td></tr>
 
 <tr><td>**現在サポートされているフレームワーク**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) (バージョン 1.21.1 以降)</li><li>
 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) (バージョン 10.0.2 以降)

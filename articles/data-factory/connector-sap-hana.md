@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ded69225319e447ad210aed267741b2803889ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617999"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048086"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-sap-hana-connector.md)
-> * [バージョン 2 - プレビュー](connector-sap-hana.md)
+> * [Version 1](v1/data-factory-sap-hana-connector.md)
+> * [現在のバージョン](connector-sap-hana.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP HANA データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の SAP HANA コネクタ](v1/data-factory-sap-hana-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -62,7 +59,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **SapHana** に設定する必要があります。 | [はい] |
+| type | type プロパティを **SapHana** に設定する必要があります。 | [はい] |
 | [サーバー] | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | [はい] |
 | authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用可能な値: **Basic** および **Windows** | [はい] |
 | userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
@@ -125,7 +122,7 @@ SAP HANA からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | [はい] |
 
 **例:**

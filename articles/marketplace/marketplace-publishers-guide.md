@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823386"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309233"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド  
 
@@ -112,13 +112,13 @@ Microsoft は、Marketplace で 2 種類のネットショップを提供して�
 | 対象読者 | 基幹業務の意思決定者<table> <tr> <th>スペシャリストの役割 </th> </tr> <tr> <td>会計</td> </tr> <tr> <td>調達</td> </tr> <tr> <td>製造</td> </tr> </table> | IT プロフェッショナルと開発者<table> <tr> <th>スペシャリストの役割 </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>DBA</td> </tr> <tr> <td>SecOps</td> </tr> </table> |  
 | 構築環境または拡張対象 | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
 | ソリューションとサービスの種類 | 完成した基幹業務クラウド アプリ<br />Office 365 アドイン | インフラストラクチャ ソリューション<br />プロフェッショナル サービス |  
-| プランの種類 | コンサルティング サービス<br />お問い合わせ<br />無料試用版<br />はじめましょう<br />体験版 | Azure アプリ: マネージド アプリ<br />Azure アプリ: ソリューション テンプレート<br />コンサルティング サービス<br />お問い合わせ<br />試用版<br />仮想マシン |  
+| プランの種類 | コンサルティング サービス<br />連絡する<br />無料試用版<br />はじめましょう<br />体験版 | Azure アプリ: マネージド アプリ<br />Azure アプリ: ソリューション テンプレート<br />コンサルティング サービス<br />連絡する<br />試用版<br />仮想マシン |  
 | アプリのコンテキストでアプリとサービスへの<br />アクセスをユーザーに提供するアプリ内<br />エクスペリエンス | Dynamics 365<br />Office 365<br />Office クライアント アプリ<br />Power BI | Azure ポータル<br />Azure Resource Manager CLI |  
 
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>マーケットプレースのネットショップに公開する方法  
-以下のセクションでは、AppSource および Azure Marketplace で公開オプションに移動できます。  
+以下のページでは、AppSource および Azure Marketplace で公開オプションに移動できます。  
 
 簡単な 3 ステップで、Marketplace のネットショップのパブリッシャーになることができます。  
 1.  「[ソリューションの登録リストの種類を選定する](./determine-your-listing-type.md)」ページをご覧ください。  
@@ -135,7 +135,6 @@ Microsoft は、Marketplace で 2 種類のネットショップを提供して�
 ---  
 
 ## <a name="support"></a>サポート  
-
 *   「[サポート (AppSource)](./support-appsource.md)」ページをご覧ください。  
 *   「[サポート (Azure Marketplace)](./support-azure-marketplace.md)」ページをご覧ください。  
 
@@ -147,6 +146,7 @@ Microsoft は、Marketplace で 2 種類のネットショップを提供して�
 
 ## <a name="guidelines"></a>ガイドライン  
 *   「[ガイドライン](./guidelines.md)」ページをご覧ください。  
+    *   「[Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドライン](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)」セクションをご覧ください。  
 *   「[デベロッパー センターに登録する](./register-dev-center.md)」ページをご覧ください。  
 *   「[銀行口座および税の情報を追加する](./add-bank-tax-info.md)」ページをご覧ください。  
 *   「[Azure AD を使って使用版を有効にする](./enable-trial-using-azure-ad.md)」ページをご覧ください。  

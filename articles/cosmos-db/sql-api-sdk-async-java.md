@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/18/2018
+ms.date: 06/20/2018
 ms.author: sngun
-ms.openlocfilehash: 4b12652783c94d132a5c1f4d4aa352d4e2318edf
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4a3b3a482f56065c54525a4d9cd7971f50f5b2a
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797670"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300681"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -53,6 +53,16 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* パフォーマンス上の理由とライセンス上の理由により、org.json 依存関係を jackson に置き換えました ([github #29](https://github.com/Azure/azure-cosmosdb-java/issues/29))。
+* 非推奨の OfferV2 クラスを削除しました。
+* スループット コンテンツに対応するために Offer クラスにアクセサー メソッドを追加しました。
+* org.json 型を返すドキュメント/リソース内のメソッドが jackson オブジェクト型を返すように変更されました。
+* JsonSerializable を拡張するクラスの getObject(.) メソッドが jackson ObjectNode 型を返すように変更されました。
+* ObjectNode のコレクションを返すように getCollection(.) メソッドが変更されました。
+* org.json.JSONObject 引数を持つ、JsonSerializable サブクラスのコンストラクターを削除しました。
+* JsonSerializable.toJson (SerializationFormattingPolicy.Indented) では、インデントに 2 つのスペースを使用するようになりました。
+  
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
 * 一意なインデックス ポリシーのサポートが追加されました。
 * フィード オプションに、応答継続トークンのサイズを制限するためのサポートが追加されました。
@@ -89,6 +99,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |
 | [1.0.2](#1.0.2) |2018 年 5 月 18 日|--- |
 | [1.0.1](#1.0.1) |2018 年 4 月 20 日|--- |
 | [1.0.0](#1.0.0) |2018 年 2 月 27 日|--- |

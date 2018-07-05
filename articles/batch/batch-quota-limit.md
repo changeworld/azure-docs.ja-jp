@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310538"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304023"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -51,14 +51,10 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x 4 |
 | [アプリケーション](batch-application-packages.md) 数 |20 |
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
-| 各アプリケーション パッケージのサイズ |約 195 GB<sup>1</sup> |
-| 開始タスクの最大サイズ | 32768 文字<sup>2</sup> |
-| タスクの最長有効期間 | 7 日間<sup>3</sup> |
+| タスクの最長有効期間 | 7 日間<sup>1</sup> |
 | ノード間通信に対応するプール内のコンピューティング ノード | 100 |
 
-<sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限<br />
-<sup>2</sup> リソース ファイルと環境変数を含む<br />
-<sup>3</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
+<sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
 
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
@@ -81,7 +77,7 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 2. **[新しいサポート要求]** > **[基本]** の順にクリックします。
 3. **[基本]** で次のようにします。
    
-    a. **[問題の種類]** > **[クォータ]**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[問題の種類]** > **[クォータ]**
    
     b. サブスクリプションを選択します。
    
@@ -92,14 +88,14 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     **[次へ]** をクリックします。
 4. **[問題]** で次のようにします。
    
-    a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
     **[次へ]** をクリックします。
 5. **[連絡先情報]** で次のようにします。
    
-    a. **希望連絡方法**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **希望連絡方法**を選択します。
    
     b. 必要な連絡先情報を確認および入力します。
    

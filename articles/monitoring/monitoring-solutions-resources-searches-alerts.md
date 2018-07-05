@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887502"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304073"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -44,16 +44,13 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Log Analytics API バージョン
-Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)を使用するリソースで異なります。  
+Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。   
 
- 次の表では、レガシ ワークスペースとアップグレードされたワークスペースでの保存された検索条件に対する Log Analytics API のバージョンを指定します。 
+次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| ワークスペースのバージョン | API バージョン | クエリ |
+| リソースの種類 | API バージョン | クエリ |
 |:---|:---|:---|
-| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例: Type=Event EventLevelName = Error  |
-| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例: Type=Event EventLevelName = Error<br>変換後: Event &#124; where EventLevelName == "Error"  |
-| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例: Event &#124; where EventLevelName == "Error"  |
-
+| savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
 
 ## <a name="saved-searches"></a>保存された検索条件
@@ -80,7 +77,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、保存された検索条件の各プロパティについて説明しています。 
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | カテゴリ | 保存された検索条件のカテゴリです。  同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
 | displayname | ポータルでの保存された検索条件の表示名です。 |
@@ -90,7 +87,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。  たとえば、**Type: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **Type: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
 
 ## <a name="alerts"></a>アラート
-[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)は、定期的に保存された検索条件を実行するアラート ルールによって作成されます。  クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、1 つまたは複数のアクションが実行されます。  
+[Azure Log のアラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。  クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。  
 
 > [!NOTE]
 > 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートは Azure に自動的に拡張されるようになります。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
@@ -131,7 +128,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | 有効       | [はい] | 作成時点でアラートが有効かどうかを指定します。 |
 | interval      | [はい] | クエリを実行する間隔です (分単位)。 |
@@ -191,18 +188,18 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | type | [はい] | アクションの種類。  これは、アラート アクションの**アラート**です。 |
 | Name | [はい] | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
-| [説明] | いいえ  | アラートに関する省略可能な説明です。 |
-| Severity | [はい] | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **Critical**<br>**Warning**<br>**Informational**
+| 説明 | いいえ  | アラートに関する省略可能な説明です。 |
+| Severity | [はい] | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 
 #### <a name="threshold"></a>しきい値
 このセクションは必須です。  アラートのしきい値のプロパティを定義します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | 演算子 | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
 | 値 | [はい] | 結果を比較する値です。 |
@@ -213,7 +210,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > メトリック測定アラートは現在パブリック プレビュー中です。 
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | TriggerCondition | [はい] | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
 | 演算子 | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
@@ -223,7 +220,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 #### <a name="throttling"></a>調整
 このセクションは省略可能です。  同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
@@ -233,7 +230,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を作成するか、[アクション グループ リソース テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用できます。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | AzNsNotification | [はい] | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
 | CustomEmailSubject | いいえ  | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
@@ -250,7 +247,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 ##### <a name="emailnotification"></a>EmailNotification
  このセクションは省略可能です。アラートで 1 人以上の受信者にメールを送信する場合に指定します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | Recipients | [はい] | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | 件名 | [はい] | メールの件名です。 |
@@ -260,7 +257,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 ##### <a name="remediation"></a>修復
 このセクションは省略可能です。アラートに対して Runbook を開始する場合に指定します。 |
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | RunbookName | [はい] | 開始する Runbook の名前です。 |
 | WebhookUri | [はい] | Runbook に対する webhook の URI です。 |
@@ -290,9 +287,9 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 次の表では、Webhook アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| 型 | [はい] | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
+| type | [はい] | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
 | name | [はい] | アクションの表示名です。  コンソールには表示されません。 |
 | wehookUri | [はい] | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
@@ -338,11 +335,12 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-03-20",
-    
+          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+
           "MySearch": {
             "displayName": "Error records by hour",
-            "query": "Type=MyRecord_CL | measure avg(Rating_d) by Instance_s interval 60minutes",
+            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
             "category": "Samples",
             "name": "Samples-Count of data"
           },
@@ -350,7 +348,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
             "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
             "DisplayName": "My alert rule",
             "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "Critical",
+            "Severity": "critical",
             "ThresholdOperator": "gt",
             "ThresholdValue": 3,
             "Schedule": {
@@ -378,7 +376,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
             "location": "[parameters('workspaceRegionId')]",
             "tags": { },
             "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
@@ -406,7 +404,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [ ],
             "tags": { },
             "properties": {
@@ -419,7 +417,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
             ],
@@ -433,7 +431,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
             ],

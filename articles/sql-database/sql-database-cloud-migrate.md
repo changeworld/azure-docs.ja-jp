@@ -10,12 +10,12 @@ ms.custom: migrate
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 73f7c9ae9a3badd9d9dc3628145132238c8670d0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9acff6f2b3e668707a6ef4cc3c736ebd28b4d3a
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645924"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309383"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 

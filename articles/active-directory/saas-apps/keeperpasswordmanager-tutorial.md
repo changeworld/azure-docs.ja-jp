@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ef20cdb0f6a7b5afd624a7910495ee784140c48
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b61465e9f38a5a461802d4ab46a7221c557b4595
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219984"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル: Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -112,7 +112,7 @@ Keeper Password Manager & Digital Vault で Azure AD のシングル サイン�
 
     ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://{SSO CONNECT SERVER}/sso-connect/saml/login` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://{SSO CONNECT SERVER}/sso-connect/saml/login` のパターンを使用して URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://{SSO CONNECT SERVER}/sso-connect/saml/sso` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ Keeper Password Manager & Digital Vault で Azure AD のシングル サイン�
 
     ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
 
-7. **Keeper Password Manager & Digital Vault Configuration** 側でシングル サインオンを構成するには、『[Keeper Support Guide](https://keepersecurity.com/assets/pdf/SettingupAzurewithKeeperSSOConnect.pdf)』(Keeper サポート ガイド) のガイドラインに従ってください
+7. **Keeper Password Manager & Digital Vault Configuration** 側でシングル サインオンを構成するには、『[Keeper Support Guide](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)』(Keeper サポート ガイド) のガイドラインに従ってください。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -162,7 +162,7 @@ Keeper Password Manager & Digital Vault で Azure AD のシングル サイン�
  
     ![Azure AD のテスト ユーザーの作成](./media/keeperpasswordmanager-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

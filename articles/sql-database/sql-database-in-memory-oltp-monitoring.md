@@ -7,20 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: jodebrui
-ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647342"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308681"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
-[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルと Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[DTU ベースのリソース制限](sql-database-dtu-resource-limits.md)および[仮想コア ベースのリソース制限](sql-database-vcore-resource-limits.md)に関する記事をご覧ください。 この上限を超過すると、挿入操作や更新操作が、スタンドアロン データベースの場合はエラー 41823 で、エラスティック プールの場合はエラー 41840 で、失敗し始めることがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium および Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。
+
+この上限を超過すると、挿入操作や更新操作が、スタンドアロン データベースの場合はエラー 41823 で、エラスティック プールの場合はエラー 41840 で、失敗し始めることがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>データがインメモリ OLTP ストレージの上限に収まるかどうかを判断する
-さまざまなサービス レベルのストレージの上限を確認します。 [DTU ベースのリソース制限](sql-database-dtu-resource-limits.md)および[仮想コアベースのリソース制限](sql-database-vcore-resource-limits.md)に関する記事をご覧ください。
+さまざまなサービス レベルのストレージの上限を確認します。 [DTU ベースのリソース制限 - 単一データベース](sql-database-dtu-resource-limits-single-databases.md)、[DTU ベースのリソース制限 - エラスティック プール](sql-database-dtu-resource-limits-elastic-pools.md)、[仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)、および [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)に関する各ページを参照してください。
 
 メモリ最適化テーブルのメモリ必要量の推定は、Azure SQL Database で SQL Server の要件を推定する場合と同じように行います。 少し時間をとって、[MSDN](https://msdn.microsoft.com/library/dn282389.aspx) でメモリ最適化テーブルのメモリ必要量の推定について確認してください。
 

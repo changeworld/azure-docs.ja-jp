@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 958b495b2328a981c573447c44585bc7430c1095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d19cf6ecc9f2bedb6ceaf6312b247670d965b84
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621168"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048551"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 を使用してオンプレミスとクラウドとの間でデータをコピーする方法](../tutorial-hybrid-copy-powershell.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用したオンプレミスとクラウド間でのデータのコピー](../tutorial-hybrid-copy-powershell.md)に関するページを参照してください。
 
 この記事では、Data Factory を使用したオンプレミス データ ストアとクラウド データ ストア間でのデータ統合の概要について説明します。 この記事は、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事と、Data Factory の中核となる概念である[データセット](data-factory-create-datasets.md)と[パイプライン](data-factory-create-pipelines.md)に関する他の記事に基づいています。
 

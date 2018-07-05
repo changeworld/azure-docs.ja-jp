@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713866"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311116"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713866"
 **Q: 最近、デバイスを登録しました。Azure Portal のユーザー情報にデバイスが表示されないのはなぜですか?**
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、[ユーザー デバイス] には表示されません。
-すべてのデバイスを表示するには、PowerShell を使用する必要があります。 
+Azure portal で [すべてのデバイス] ビューを使用する必要があります。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
 
 [ユーザー デバイス] には、次のデバイスだけが表示されます。
 
@@ -52,25 +52,24 @@ ms.locfileid: "34713866"
 - Windows 10/Windows Server 2016 以外のすべてのデバイス
 - Windows 以外のすべてのデバイス 
 
----
-
-**Q: Azure Active Directory に登録されている一部のデバイスが Azure Portal に表示されないのはなぜですか?** 
-
-**A:** [Azure AD Directory] -> [すべてのデバイス] メニューで表示できるようになりました。 また、Azure PowerShell を使用して、すべてのデバイスを表示することもできます。 詳細については、[Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットのページをご覧ください。
-
 --- 
 
 **Q: クライアントのデバイスの登録状態はどうすればわかりますか?**
 
-**A:** Windows 10 および Windows Server 2016 以降のデバイスの場合は、"dsregcmd.exe/status" を実行します。
+**A:** Azure portal を使用して、[すべてのデバイス] に移動し、デバイス ID を入力してデバイスを検索することができます。 [結合の種類] 列の値を確認します。
 
-ダウンレベルの OS バージョンの場合は、"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" を実行します。
+登録デバイスからローカル デバイスの登録状態を確認するには:
+
+- Windows 10 および Windows Server 2016 以降のデバイスの場合は、"dsregcmd.exe/status" を実行します。
+- ダウンレベルの OS バージョンの場合は、"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" を実行します。
 
 ---
 
-**Q: Azure Portal または Windows PowerShell を使用して削除したデバイスが引き続き登録済みとして表示されるのはなぜですか?**
+**Q: Azure portal または Windows PowerShell を使用して削除しましたが、デバイスのローカル状態にはまだ登録済みと表示されます。**
 
-**A:** これは仕様です。 デバイスは、クラウドのリソースにアクセスできなくなります。 再登録する場合は、デバイスで手動操作を実行する必要があります。 
+**A:** これは仕様です。 デバイスは、クラウドのリソースにアクセスできなくなります。 
+
+再登録する場合は、デバイスで手動操作を実行する必要があります。 
 
 オンプレミスの AD ドメインに参加済みの Windows 10 および Windows Server 2016 の参加状態をクリアするには、次の手順を実行します。
 
@@ -85,6 +84,13 @@ ms.locfileid: "34713866"
 1.  管理者としてコマンド プロンプトを開きます。
 2.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
 3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
+
+---
+**Q: デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
+**A:** 
+- ハイブリッド Azure AD 参加済みデバイスの場合、スケジュールされたタスクによってデバイスが再登録されないように、自動登録をオフにます。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除することもできます。
+
+- 純粋な Azure AD 参加済みデバイスの場合、Azure AD ユーザーの資格情報ではサインインできなくなるので、オフラインのローカル管理者アカウントを持っている必要があります。 次に、**[設定]** > **[アカウント]** > **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、**[切断]** をクリックします。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して参加の解除プロセスを完了します。
 
 ---
 
@@ -119,7 +125,7 @@ ms.locfileid: "34713866"
 ---
 
 
-**Q: Azure Portal の [ユーザー情報] にデバイス レコードが表示され、クライアントに状態が登録済みとして表示されます。条件付きアクセスの使用は正しく設定されていますか?**
+**Q: Azure portal の [ユーザー情報] にデバイス レコードが表示され、デバイスに状態が登録済みと表示されます。条件付きアクセスの使用は正しく設定されていますか?**
 
 **A:** deviceID に反映されたデバイスの参加状態が Azure AD での状態と一致しており、条件付きアクセスの評価基準を満たしている必要があります。 詳細については、「[Azure Active Directory Device Registration の基本](active-directory-device-registration.md)」をご覧ください。
 
@@ -137,6 +143,8 @@ ms.locfileid: "34713866"
 
 - フェデレーション ログインでは、フェデレーション サーバーが WS-Trust のアクティブ エンドポイントをサポートしている必要があります。 
 
+- パス スルー認証を有効にしたため、ログオン時には変更する必要がある一時的なパスワードがユーザーに割り当てられています。
+
 ---
 
 **Q: PC を Azure AD に参加させようとしたときに、[申し訳ありません。エラーが発生しました] ダイアログが表示されるのはなぜですか?**
@@ -147,7 +155,7 @@ ms.locfileid: "34713866"
 
 **Q: エラー情報が表示されなかったにも関わらず、PC を参加させることができなかったのはなぜですか?**
 
-**A:** ユーザーが組み込みの管理者アカウントを使用してデバイスにログインしていることが原因と考えられます。 Azure Active Directory Join を使用してセットアップを完了する前に、別のローカル アカウントを作成してください。 
+**A:** ユーザーがローカルの組み込み管理者アカウントを使用してデバイスにログインしていることが原因と考えられます。 Azure Active Directory Join を使用してセットアップを完了する前に、別のローカル アカウントを作成してください。 
 
 ---
 

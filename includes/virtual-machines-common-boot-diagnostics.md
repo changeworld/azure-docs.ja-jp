@@ -38,7 +38,7 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
     ![VM を作成する](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
     > [!NOTE]
-    > ブート診断機能は、Premium ストレージ アカウントをサポートしていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に、StorageAccountTypeNotSupported エラーが表示されることがあります。
+    > ブート診断機能では、Premium ストレージ アカウントはサポートされていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に StorageAccountTypeNotSupported エラーが表示されることがあります。
     >
     > 
 
@@ -64,14 +64,14 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
         }
     ```
 
-ブート診断が有効な状態でサンプル仮想マシンをデプロイするには、こちらのリポジトリをチェックアウトしてください。
+ブート診断が有効な状態でサンプル仮想マシンをデプロイするには、ここでリポジトリをチェックアウトします。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>既存の仮想マシンでブート診断を有効にする 
 
-既存の仮想マシンでブート診断を有効にするには、次の手順を実行します。
+既存の仮想マシンでブート診断を有効にするには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にログインし、仮想マシンを選択します。
-2. **[サポート + トラブルシューティング]** で、**[ブート診断]** > **[設定]** を選択し、状態を **[オン]** に変更して、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com) にサインインし、仮想マシンを選択します。
+2. **[サポート + トラブルシューティング]** で、**[ブート診断]** > **[設定]** を選択し、状態を **[オン]** に変更して、ストレージ アカウントを選びます。 
 4. ブート診断オプションが選択されていることを確認し、変更を保存します。
 
     ![既存の VM の更新](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

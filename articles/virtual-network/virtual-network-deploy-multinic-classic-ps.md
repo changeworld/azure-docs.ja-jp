@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
+ms.date: 05/22/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09c85a9badaad45816a9160d09cb3c4a726426e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ca4e9e77d0e0ca62c04fbbfe132a41fb3e01df46
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34658776"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する
 
@@ -198,4 +199,10 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>手順 5 - VM オペレーティング システム内でのルーティングの構成
 
-Azure DHCP では、既定のゲートウェイが、仮想マシンに接続された最初の (プライマリ) ネットワーク インターフェイスに割り当てられます。 Azure では、既定のゲートウェイは、仮想マシンに接続された追加の (セカンダリ) ネットワーク インターフェイスに割り当てられません。 したがって、既定では、セカンダリ ネットワーク インターフェイスのサブネット外のリソースと通信することはできません。 しかし、セカンダリ ネットワーク インターフェイスは、そのサブネット外のリソースと通信できます。 セカンダリ ネットワーク インターフェイス用のルーティング構成については、「[Routing within a virtual machine operating system with multiple network interfaces (複数のネットワーク インターフェイスを持つ仮想マシンのオペレーティング システム内でのルーティング)](virtual-network-network-interface-vm.md)」を参照してください。
+Azure DHCP では、既定のゲートウェイが、仮想マシンに接続された最初の (プライマリ) ネットワーク インターフェイスに割り当てられます。 Azure では、既定のゲートウェイは、仮想マシンに接続された追加の (セカンダリ) ネットワーク インターフェイスに割り当てられません。 したがって、既定では、セカンダリ ネットワーク インターフェイスのサブネット外のリソースと通信することはできません。 しかし、セカンダリ ネットワーク インターフェイスは、そのサブネット外のリソースと通信できます。 セカンダリ ネットワーク インターフェイスへのルーティングを構成するには、次の記事を参照してください。
+
+- [複数の NIC 用に Windows VM を構成する](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+)
+
+- [複数の NIC 用に Linux VM を構成する](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+)

@@ -8,14 +8,14 @@ ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: aee8f8c830ac504b6688c02c2b262a0d87bc5278
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646628"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308868"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
@@ -33,9 +33,12 @@ ms.locfileid: "34646628"
 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。  また、Microsoft Azure 管理ポータル、PowerShell、および REST API も使用でき、生産性向上に役立ちます。
 
 ## <a name="resource-limitations"></a>リソースの制限事項
-Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
+Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。 詳細については、次を参照してください。
 
-* 詳細については、「[Azure SQL Database の DTU ベースのリソース モデル制限](sql-database-dtu-resource-limits.md)」および [Azure SQL Database 仮想コアのリソース モデルの制限 (プレビュー)](sql-database-vcore-resource-limits.md) に関するページを参照してください。
+- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-elastic-pools.md)
+- [DTU ベースのリソース モデル制限 - 単一データベース](sql-database-dtu-resource-limits-elastic-pools.md)
+- [仮想コアベースのリソース制限 - 単一データベース](sql-database-vcore-resource-limits-single-databases.md)
+- [仮想コアベースのリソース制限 - エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)
 
 ## <a name="security"></a>セキュリティ
 Azure SQL Database には、SQL Database に対するアクセスの制限、データの保護、およびアクティビティの監視を行うためのリソースが用意されています。

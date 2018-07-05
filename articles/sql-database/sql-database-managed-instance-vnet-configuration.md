@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 45b645fe556d1f9630ee15b1f2f605bbaf3f87f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648066"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309335"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の VNet を構成する
 
@@ -60,8 +60,7 @@ Azure SQL Database Managed Instance (プレビュー) は、Azure [仮想ネッ�
 - Azure では、独自のニーズに応じて、サブネット内で 5 個の IP アドレスを使用します。 
 - 汎用インスタンスにはそれぞれ 2 つのアドレスが必要です。 
 
-
-  **例**: 8 つのマネージド インスタンスを使用するとします。 これは、5 + 8 * 2 = 21 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。 
+**例**: 8 つのマネージド インスタンスを使用するとします。 これは、5 + 8 * 2 = 21 の IP アドレスが必要であることを意味します。 IP 範囲は 2 のべき乗で定義されているため、32 (2^5) の IP アドレスの IP 範囲が必要です。 したがって、/27 サブネット マスクのサブネットを予約する必要があります。 
 
 ## <a name="create-a-new-virtual-network-for-managed-instances"></a>マネージド インスタンスの新しい仮想ネットワークを作成する 
 
@@ -120,13 +119,11 @@ VNet が作成されたら、マネージド インスタンスを作成でき�
 
 このセクションの質問と回答では、既存の仮想ネットワークにマネージド インスタンスを追加する方法を示します。 
 
-
-  **既存の仮想ネットワークではクラシックまたは Resource Manager デプロイ モデルを使用していますか?** 
+**既存の仮想ネットワークではクラシックまたは Resource Manager デプロイ モデルを使用していますか?** 
 
 マネージド インスタンスを作成できるのは、Resource Manager 仮想ネットワークでのみです。 
 
-
-  **SQL Managed Instance の新しいサブネットを作成しますか? または、既存のサブネットを使用しますか?**
+**SQL Managed Instance の新しいサブネットを作成しますか? または、既存のサブネットを使用しますか?**
 
 新しいサブネットを作成する場合は、次のようにします。 
 

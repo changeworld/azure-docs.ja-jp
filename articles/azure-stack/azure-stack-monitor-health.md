@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26640380"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047243"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
@@ -32,6 +32,17 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
  ## <a name="understand-health-in-azure-stack"></a>Azure Stack の正常性について
 
  正常性とアラートは、正常性リソースプロバイダーによって管理されます。 Azure Stack のインフラストラクチャ コンポーネントは、Azure Stack のデプロイおよび構成時に正常性リソース プロバイダーに登録されます。 この登録により、各コンポーネントの正常性とアラートの表示が有効になります。 Azure Stack の正常性の概念は単純です。 コンポーネントの登録済みインスタンスのアラートが存在する場合、そのコンポーネントの正常性の状態は、アクティブなアラートの最大の重大度、つまり警告または重大を反映します。
+
+## <a name="alert-severity-definition"></a>アラートの重大度の定義
+
+Azure Stack では、アラートは **Warning** (警告) または **Critical** (重大)のどちらかの重大度でのみ生成されます。
+
+**Warning**  
+オペレーターは、予定された方法で警告アラートに対処できます。 アラートは通常、ユーザーのワークロードには影響を及ぼしません。
+
+**Critical**  
+オペレーターは、重大アラートには緊急で対応する必要があります。 これらは、現在または今後すぐに、Azure Stack ユーザーに影響を及ぼす問題です。 
+
  
  ## <a name="view-and-manage-component-health-state"></a>コンポーネントの正常性状態の表示および管理
  
@@ -71,8 +82,8 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
 
 インフラストラクチャ ロール インスタンスがオンラインに戻ると、このアラートは自動的に閉じます。 根本的な問題が解決されると、多くのアラートは自動的に閉じますが、すべてのアラートがそうなるわけではありません。 修復の手順を実行した後に、**[アラートを閉じる]** を選択することをお勧めします。 問題が解決しなかった場合は、Azure Stack で新しいアラートが生成されます。 問題が解決した場合は、アラートは閉じたままとなり、その他の操作は必要ありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack での更新の管理](azure-stack-updates.md)
 
-[Azure Stack でのリージョン管理](azure-stack-region-management.md)
+[Azure Stack でのリージョンの管理](azure-stack-region-management.md)

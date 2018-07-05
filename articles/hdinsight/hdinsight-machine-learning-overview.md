@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392172"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048504"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -33,13 +33,13 @@ Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](htt
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに成長しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された R Server を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
+[R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに成長しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された ML Services を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
 
 ![R Server での予測のためのトレーニング](./media/hdinsight-machine-learning-overview/r-training.png)
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。  また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間で R スクリプトを実行するオプションも提供されます。
 
-Spark を使用した HDInsight 上の R Server により、Spark コンピューティング コンテキストを使用して、クラスターのノード間でトレーニングを並列化できます。 必要に応じて、使用可能なすべてのコアを並列に使用して、エッジ ノード上で直接 R スクリプトを実行できます。 あるいは、クラスター内のすべてのノードにわたって分散された処理を開始するために、エッジ ノードからコードを実行できます。 Spark を使用した HDInsight 上の R Server ではまた、必要に応じて、オープンソースの R パッケージからの関数の並列化も可能になります。
+Spark を使用した HDInsight 上の ML Services により、Spark コンピューティング コンテキストを使用して、クラスターのノード間でトレーニングを並列化できます。 必要に応じて、使用可能なすべてのコアを並列に使用して、エッジ ノード上で直接 R スクリプトを実行できます。 あるいは、クラスター内のすべてのノードにわたって分散された処理を開始するために、エッジ ノードからコードを実行できます。 Spark を使用した HDInsight 上の ML Services ではまた、必要に応じて、オープンソースの R パッケージからの関数の並列化も可能になります。
 
 ## <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 

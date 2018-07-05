@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 66e6725dd4e23eeaf0c8d0dcff6e5d26e3743218
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624286"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047566"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページをご覧ください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory におけるセルフホステッド IR ](../create-self-hosted-integration-runtime.md) に関するページを参照してください。
 
 ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」を参照してください。 ゲートウェイを使用してオンプレミスの SQL Server データベースから Microsoft Azure Blob Storage にデータを移動する方法のチュートリアルについては、[オンプレミスとクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 

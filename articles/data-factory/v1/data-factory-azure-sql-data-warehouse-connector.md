@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: df8fe611c762421f3a963340b24df74a80a20160
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 678913796edafe86e19d8907e3a2e29ec15ffa90
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621736"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047079"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-azure-sql-data-warehouse-connector.md)
-> * [バージョン 2 - プレビュー](../connector-azure-sql-data-warehouse.md)
+> * [Version 1](data-factory-azure-sql-data-warehouse-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure SQL Data Warehouse コネクター](../connector-azure-sql-data-warehouse.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure SQL Data Warehouse コネクタ](../connector-azure-sql-data-warehouse.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って Azure SQL Data Warehouse との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。  
 
@@ -72,7 +72,7 @@ Azure SQL Data Warehouse との間でデータをコピーするパイプライ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **AzureSqlDW** |[はい] |
+| type |type プロパティを **AzureSqlDW** |[はい] |
 | connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |[はい] |
 
 > [!IMPORTANT]

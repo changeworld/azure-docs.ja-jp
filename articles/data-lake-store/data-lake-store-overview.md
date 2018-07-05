@@ -1,26 +1,26 @@
 ---
-title: Azure Data Lake Store の概要 | Microsoft Docs
-description: Azure Data Lake Store とは何か、Azure Data Lake Store が他のデータ ストアで提供する値はどのようなものか、を理解する
+title: Azure Data Lake Storage Gen1 の概要 | Microsoft Docs
+description: Data Lake Storage Gen1 (以前の Azure Data Lake Store) とは何か、Data Lake Storage Gen1 が他のデータ ストアで提供する値はどのようなものか、を理解する
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034884"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store の概要
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の概要
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。
 
 > [!TIP]
@@ -58,7 +58,7 @@ Azure Data Lake Store のデータ コンテナーは本質的にはフォルダ
 ## <a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
 Azure Data Lake Store では、Azure Active Directory を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
-| Feature | [説明] |
+| Feature | 説明 |
 | --- | --- |
 | 認証 |Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。 この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 [Data Lake Store の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
 | アクセス制御 |Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。 ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。 |
@@ -81,24 +81,8 @@ Hadoop 環境 (HDInsight クラスターで使用可能) では、新しいフ�
 
 Data Lake Store 内のデータには、 `adl://<data_lake_store_name>.azuredatalakestore.net`を使用してアクセスすることができます。 Data Lake Store 内のデータへのアクセス方法の詳細については、「 [格納されたデータのプロパティを表示する](data-lake-store-get-started-portal.md#properties)
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>Azure Data Lake Store の使用を開始するにはどうすればよいですか?
-Azure Portal を使用して Data Lake Store をプロビジョニングする方法については、「[Azure Portal を使用してData Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 Azure Data Lake をプロビジョニングしたら、ビッグ データ ソリューション (Azure Data Lake Analytics、または Azure HDInsight と Data Lake Store の組み合わせ) を使用する方法を確認できます。 Azure Data Lake Store のアカウントを作成し操作 (データのアップロードやデータのダウンロードなど) を実行するための .NET アプリケーションを作成することもできます。
+## <a name="next-steps"></a>次の手順
 
-* [Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Portal で Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Data Lake Store のビデオ
-Data Lake Store の一連の機能について紹介するビデオをご覧ください。
-
-* [Azure Data Lake Store アカウントを作成する](https://mix.office.com/watch/1k1cycy4l4gen)
-* [データ エクスプローラーを使用して Azure Data Lake Store のデータを管理する](https://mix.office.com/watch/icletrxrh6pc)
-* [Azure Data Lake Analytics を Azure Data Lake Store に接続する](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Azure Data Lake Store に Data Lake Analytics 経由でアクセスする](https://mix.office.com/watch/1n0s45up381a8)
-* [Azure HDInsight を Azure Data Lake Store に接続する](https://mix.office.com/watch/l93xri2yhtp2)
-* [Azure Data Lake Store に Hive や Pig 経由でアクセスする](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [DistCp (Hadoop Distributed Copy) を使用して Azure Data Lake Store にデータをコピーしたり Azure Data Lake Store からデータをコピーしたりする](https://mix.office.com/watch/1liuojvdx6sie)
-* [リレーショナル ソースと Azure Data Lake Store との間で Apache Sqoop を使用してデータを移動する](https://mix.office.com/watch/1butcdjxmu114)
-* [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

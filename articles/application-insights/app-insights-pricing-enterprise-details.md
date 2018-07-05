@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6df013506e4541fee7850850776d26e5c69a799d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311086"
 ---
 # <a name="enterprise-plan-details"></a>Enterprise プランの詳細
 
@@ -26,6 +27,9 @@ Azure Application Insights には、Basic と Enterprise の 2 つの価格プ�
 Enterprise プランはノードあたりの料金で、各ノードが 1 日あたりの無料データ利用分を受け取ります。 Enterprise 価格プランでは、含まれる無料利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Enterprise プランを選択する必要があります。 
 
 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+
+> [!NOTE]
+> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。
 
 ## <a name="how-the-enterprise-plan-works"></a>Enterprise プランのしくみ
 

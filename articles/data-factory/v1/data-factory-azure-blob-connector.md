@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2af093e4ce6284f4cee75543720d109fa71a9b66
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ec3c87c39cd8b8d1dafa8ad062776171c602135b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621396"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047062"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-azure-blob-connector.md)
-> * [バージョン 2 - プレビュー](../connector-azure-blob-storage.md)
+> * [Version 1](data-factory-azure-blob-connector.md)
+> * [バージョン 2 (現在のバージョン)](../connector-azure-blob-storage.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure Blob Storage コネクタ](../connector-azure-blob-storage.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Blob Storage コネクタ](../connector-azure-blob-storage.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -195,7 +195,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 3. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。![Data Factory のホーム ページ](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>コピー ウィザード
-1. Data Factory のホーム ページで **[データのコピー (プレビュー)]** タイルをクリックして、新しいタブで**データのコピー ウィザード**を起動します。    
+1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、新しいタブで**データのコピー ウィザード**を起動します。    
     
     > [!NOTE]
     >    承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。

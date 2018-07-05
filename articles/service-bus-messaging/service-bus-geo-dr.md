@@ -2,23 +2,18 @@
 title: Azure Service Bus の geo ディザスター リカバリー | Microsoft Docs
 description: フェールオーバーに地理上の地域を使用して、Azure Service Bus のディザスター リカバリーを実行する方法
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237347"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301521"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -89,7 +84,7 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 [GitHub のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/)には、フェールオーバーの設定と開始の方法が紹介されています。 サンプルで紹介されている概念は次のとおりです。
 
-- Azure Resource Manager と Service Bus を使用して geo ディザスター リカバリーを設定し、有効にするために Azure Active Directory で必要となる .Net のサンプルと設定。
+- Azure Resource Manager と Service Bus を使用して geo ディザスター リカバリーを設定し、有効にするために Azure Active Directory で必要となる .NET のサンプルと設定。
 - サンプル コードを実行するために必要な手順。
 - 既存の名前空間をエイリアスとして使用する方法。
 - 代替方法として PowerShell または CLI から geo ディザスター リカバリーを有効にするための手順。
@@ -107,6 +102,17 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。 サブスクリプションやルールもエンティティとしてカウントされます。 
 
+## <a name="availability-zones-preview"></a>Availability Zones (プレビュー)
+
+Service Bus Premium SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) もサポートされています。 
+
+> [!NOTE]
+> Availability Zones プレビューは、**米国中部**、**米国東部 2**、および**フランス中部**リージョンのみでサポートされます。
+
+Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Service Bus では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
+
+![3][]
+
 ## <a name="next-steps"></a>次の手順
 
 - geo ディザスター リカバリーの [REST API リファレンス](/rest/api/servicebus/disasterrecoveryconfigs)を確認する
@@ -123,3 +129,4 @@ Service Bus メッセージングの詳細については、次の記事をご�
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png
