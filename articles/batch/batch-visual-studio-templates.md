@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316751"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128862"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
@@ -191,7 +191,7 @@ Split() の実装コードからは次のデータにアクセスできます。
 
 ジョブ マネージャー テンプレートによって実装されたジョブ マネージャー タスクから返される可能性がある終了コードは次の 3 つです。
 
-| コード | [説明] |
+| コード | 説明 |
 | --- | --- |
 | 0 |ジョブ マネージャーは正常終了しました。 ジョブ スプリッター コードは最後まで実行され、すべてのタスクが Batch ジョブに追加されました。 |
 | 1 |"予期" されていた箇所のプログラム コードで例外が発生してジョブ マネージャー タスクが失敗しました。 この例外は JobManagerException に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
@@ -369,7 +369,7 @@ Run() の実装コードからは次のデータにアクセスできます。
 
 タスク プロセッサ テンプレートによって実装されたタスク プロセッサ タスクから返される可能性がある終了コードは次の 3 つです。
 
-| コード | [説明] |
+| コード | 説明 |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |タスク プロセッサは最後まで実行されました。 これは呼び出したプログラムの成功を必ずしも意味しないので注意してください。単に、そのプログラムがタスク プロセッサによって正常に呼び出され、例外が発生することなく後処理が実行されたことを意味するものです。 終了コードの意味は、呼び出したプログラムによって異なります。通常、終了コード 0 は、プログラムが正常に実行されたことを意味し、それ以外の終了コードはプログラムの実行に失敗したことを意味します。 |
 | 1 |"予期" されていた箇所のプログラム コードで例外が発生してタスク プロセッサが失敗しました。 この例外は `TaskProcessorException` に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
@@ -439,10 +439,7 @@ parameters.json というリソース ファイルを探し、見つかった場
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>ジョブやタスクからの出力を Azure Storage に保存する
 Batch ソリューション開発に有効活用できるもう 1 つのツールとして、[Azure Batch ファイル規則][nuget_package]があります。 Batch .NET アプリケーションにこの .NET クラス ライブラリ (現在はプレビュー段階) を使用することで、タスクからの出力を Azure Storage との間で簡単に保存したり取り出したりすることができます。 [Azure Batch のジョブとタスクの出力の保持](batch-task-output.md) 」をご覧ください。
 
-### <a name="batch-forum"></a>Batch フォーラム
-MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッションやサービスに関する質問を行うことができる優れた場所です。 役立つ "sticky" 投稿を参照したり、Batch ソリューションの構築中に湧いた質問を投稿したりできます。
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files

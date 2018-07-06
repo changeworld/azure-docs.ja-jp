@@ -3,7 +3,7 @@ title: Azure Log Analytics 管理ソリューションの追加 | Microsoft Docs
 description: Azure の管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 0cffdbcaa128dce52758e4b618b93dd763961361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29395464"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131477"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
 
@@ -88,7 +88,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 |[Backup](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>洞察と分析</li></ul>                                   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)                                                                       | 従来のバックアップ コンテナーが必要です。<br> Azure ポータル/Marketplace からの追加には使用できません。 |
 | [Capacity and Performance (プレビュー)](log-analytics-capacity.md)                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)   | |
 | [変更の追跡](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)                                                                         | Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 |
-| [コンテナー](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)   | |
+| [Containers](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)   | |
 | [IT Service Management Connector](log-analytics-itsmc-overview.md)                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)     | |
 | HDInsight HBase の監視 <br>(プレビュー)                                                  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)   | |
 | [Key Vault Analytics](log-analytics-azure-key-vault.md)                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | 無料<br> 標準<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)   | |
@@ -124,7 +124,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 
 ## <a name="data-collection-details"></a>データ収集の詳細
-次の表は、Log Analytics 管理ソリューションとデータ ソースにおけるデータの収集に関して、その手段と各種情報をまとめたものです。 この表は、[サブスクリプション価格レベル](https://go.microsoft.com/fwlink/?linkid=827926)に対応するソリューションのプラン別に分類されています。 アクティビティ ログ分析ソリューションは、すべての価格レベルで無料で使用できます。
+次の表は、Log Analytics 管理ソリューションとデータ ソースにおけるデータの収集に関して、その手段と各種情報をまとめたものです。 この表は、[サブスクリプション価格レベル](https://go.microsoft.com/fwlink/?linkid=827926)に対応するソリューションのオファー別に分類されています。 アクティビティ ログ分析ソリューションは、すべての価格レベルで無料で使用できます。
 
 Log Analytics Windows エージェントと System Center Operations Manager エージェントは基本的には同じものですが、 Windows エージェントには別途、Log Analytics ワークスペースに接続し、プロキシ経由でルーティングするための機能が備わっています。 Operations Manager エージェントを使用する場合、Log Analytics とやり取りするためには、その Operations Manager エージェントを OMS エージェントとしてターゲット指定する必要があります。 この表の Operations Manager エージェントは、Operations Manager に接続された OMS エージェントです。 既存の Operations Manager 環境を Log Analytics に接続する方法については、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
 
@@ -151,7 +151,7 @@ Log Analytics Windows エージェントと System Center Operations Manager エ
 | Azure ネットワーク セキュリティ グループ分析 | Azure |   |   |   |   |   | 通知時 |
 | Azure SQL Analytics (プレビュー) |Windows |  |  |  |  |  | 10 分 |
 | 容量管理 |Windows |&#8226; |&#8226; |  |  |&#8226; |着信時 |
-| コンテナー | Windows および Linux | &#8226; | &#8226; |   |   |   | 3 分 |
+| Containers | Windows および Linux | &#8226; | &#8226; |   |   |   | 3 分 |
 | Key Vault Analytics |Windows |  |  |  |  |  |通知時 |
 | ネットワーク パフォーマンス監視 | Windows | &#8226; | &#8226; |   |   |   | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
 | Office 365 分析 (プレビュー) |Windows |  |  |  |  |  |通知時 |

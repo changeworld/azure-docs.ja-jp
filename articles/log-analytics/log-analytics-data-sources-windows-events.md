@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26782032"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129355"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -45,7 +46,7 @@ Log Analytics は、監視対象のイベントが作成された時点で、選
 ## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ
 Windows イベント レコードの型は **Event** になり、次の表に示すプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Computer |イベント収集元のコンピューターの名前。 |
 | EventCategory |イベントのカテゴリ。 |
@@ -65,9 +66,9 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 ## <a name="log-searches-with-windows-events"></a>Windows イベントのログ検索
 次の表は、Windows イベント レコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |:---|:---|
-| イベント |すべての Windows イベント。 |
+| Event |すべての Windows イベント。 |
 | Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |
 | Event &#124; summarize count() by Source |ソース別の Windows イベントの数。 |
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |ソース別の Windows エラー イベントの数。 |

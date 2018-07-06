@@ -3,7 +3,7 @@ title: Azure Log Analytics に格納された個人データに関するガイ�
 description: この記事では、Azure Log Analytics に格納された個人データを管理する方法と、それを特定して削除する方法について説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 056779943d05ca743db63f1bc91be058cfae7b30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: 3692c83a4991fc67ec176687bd076ab14e4c640d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660042"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129372"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics"></a>Log Analytics に格納された個人データに関するガイダンス
 
@@ -76,7 +77,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 Azure Resource Manager ロールが割り当てられると、2 つの新しい API パスが利用できるようになります。 
 
 * [消去の POST] (https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します。 
-* 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 例: 
+* GET purge status - POST purge 呼び出しでは、実行した消去 API の状態を確認するために呼び出せる URL が含まれる、'x-ms-status-location' ヘッダーが返されます。 例: 
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20

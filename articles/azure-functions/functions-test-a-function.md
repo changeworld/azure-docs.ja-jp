@@ -3,7 +3,7 @@ title: Azure Functions のテスト | Microsoft Docs
 description: Postman、cURL、Node.js を使用して Azure 関数をテストします。
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22992197"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083259"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -139,7 +139,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
         "address" : "Seattle, WA 98101"
     }
     ```
-5. [ **送信**] をクリックします。
+5. **[送信]** をクリックします。
 
 次の図は、このチュートリアルの単純なサンプル echo 関数のテストを示しています。
 
@@ -186,7 +186,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して、BLOB トリガー関数をテストできます。
 
-1. 関数アプリの [Azure Portal] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 次に例を示します。
+1. 関数アプリの [Azure Portal] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 例: 
 
         files
 2. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]** をクリックします。
@@ -383,7 +383,7 @@ req.end(bodyString);
 コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
 
 * [app.config ファイルにストレージ接続文字列を構成します](../storage/queues/storage-dotnet-how-to-use-queues.md)。
-* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「 `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
+* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「`C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
 
 C# のコード例:
 

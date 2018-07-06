@@ -1,25 +1,24 @@
 ---
-title: "Azure Data Catalog の前提条件 | Microsoft Docs"
-description: "Azure Data Catalog を使用するために必要な前提条件について説明します。"
+title: Azure Data Catalog の前提条件 | Microsoft Docs
+description: Azure Data Catalog を使用するために必要な前提条件について説明します。
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: a7effaaaeb23661b9be96dcddc2c140ab8c8b92b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d34d9e49c3ad405a86e42ada9c86615a12adaa62
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449458"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure Data Catalog の前提条件
 
@@ -28,12 +27,12 @@ Azure Data Catalog をセットアップする前に、いくつかのことに�
 ## <a name="azure-subscription"></a>Azure サブスクリプション
 Data Catalog をセットアップするには、Azure サブスクリプションの所有者または共同所有者であることが必要です。
 
-Azure サブスクリプションは、Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。 さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。 サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションやプランを利用することができます。 すべてのクラウド サービスがサブスクリプションに属しているため、Data Catalog をセットアップする前に、サブスクリプションが必要です。 詳細については、 [アカウント、サブスクリプション、管理ロールの管理](../active-directory/active-directory-assign-admin-roles-azure-portal.md)に関するページを参照してください。
+Azure サブスクリプションは、Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。 さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。 サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションやプランを利用することができます。 すべてのクラウド サービスがサブスクリプションに属しているため、Data Catalog をセットアップする前に、サブスクリプションが必要です。 詳細については、 [アカウント、サブスクリプション、管理ロールの管理](../active-directory/users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Data Catalog をセットアップするには、Azure Active Directory (Azure AD) ユーザー アカウントでサインインする必要があります。
 
-Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。 ユーザーは、任意のクラウドおよびオンプレミス Web アプリケーションへのシングル サインインのために、1 つの職場または学校アカウントを使用できます。 Data Catalog は、Azure AD を使用してサインインを認証します。 詳細については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
+Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。 ユーザーは、任意のクラウドおよびオンプレミス Web アプリケーションへのシングル サインインのために、1 つの職場または学校アカウントを使用できます。 Data Catalog は、Azure AD を使用してサインインを認証します。 詳細については、「[Azure Active Directory とは](../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 > [!NOTE]
 > [Azure Portal](http://portal.azure.com/) を使用すると、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。 Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com) を使用して Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してサインインする必要があります。

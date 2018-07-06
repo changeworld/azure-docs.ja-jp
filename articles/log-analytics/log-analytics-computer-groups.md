@@ -4,22 +4,23 @@ description: Log Analytics では、コンピューター グループを使用�
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: na
+ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775266"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130677"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -28,7 +29,7 @@ Log Analytics では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Log Analytics のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 |:--- |:--- |
 | ログ検索 |コンピューターの一覧を返すログ検索を作成します。 |
 | Log Search API |ログ検索の結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -45,7 +46,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:---|:---|
 | 表示名   | ポータルに表示する検索の名前。 |
 | カテゴリ       | ポータル内で検索を整理するためのカテゴリ。 |
@@ -122,7 +123,7 @@ Configuration Manager のコレクションをインポートするには、[Log
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが Log Analytics ワークスペースに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |

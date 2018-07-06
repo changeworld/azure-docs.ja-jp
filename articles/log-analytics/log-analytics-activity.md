@@ -3,7 +3,7 @@ title: Log Analytics での Azure アクティビティ ログの収集と分析
 description: Azure アクティビティ ログ ソリューションを使用すると、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 0b05dc17fc7ba567bf633c25a080fbf56903935c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283386"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130328"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Log Analytics での Azure アクティビティ ログの収集と分析
 
@@ -27,7 +28,7 @@ ms.locfileid: "30283386"
 
 Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる [Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)の分析や検索に役立ちます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのイベントが報告されるため、以前は*監査ログ*または*操作ログ*と呼ばれていました。
 
-アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、*いつ*、*誰が*、*何を*行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック デプロイメント モデルを使用するリソースに対する操作は含まれません。
+アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、*いつ*、*誰が*、*何を*行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック デプロイ モデルを使用するリソースに対する操作は含まれません。
 
 Azure アクティビティ ログを Log Analytics に接続すると、次のことができます。
 
@@ -51,7 +52,7 @@ Free 価格レベルの場合は、アクティビティ ログに毎日のデ�
 
 他のほとんどのログ分析ソリューションとは異なり、アクティビティ ログのデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
@@ -89,7 +90,7 @@ Activity Log Analytics ソリューションをワークスペースに追加す
 
 アクティビティ ログ データは、ソリューションに接続するようにアクティビティ ログを構成した*後*はじめて表示されるので、その前にデータを表示することはできません。
 
-| ブレード | [説明] |
+| ブレード | 説明 |
 | --- | --- |
 | [Azure Activity Log Entries] \(Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、<code>AzureActivity</code> のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
 | [Activity Logs by Status] \(状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフが表示されます。 状態レコード上位 10 個のリストも表示されます。 グラフをクリックすると、<code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code> のログ検索が実行されます。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |

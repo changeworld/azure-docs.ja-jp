@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0baeca982cc19d327a58b7223555f2afcb4c35e7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d19e45710aca3e1e18be6c4529da6474a97bc59f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596721"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449337"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
@@ -57,7 +57,6 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 |操作の名前  |発生するタイミング  |
 |---------|---------|
-|CreateGateway     |   ユーザーがサーバー上にゲートウェイを構成するとき      |
 |ResumeServer     |    サーバーを再開するとき     |
 |SuspendServer    |   サーバーを一時停止するとき      |
 |DeleteServer     |    サーバーの削除     |

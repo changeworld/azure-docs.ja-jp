@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d4832807bb8ce3a854bee16eae5d0ced37fedcd8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 547c3785fa307838e9a86d38280b90fb31b040b3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215077"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル: Azure Active Directory と Sedgwick CMS の統合
 
@@ -123,7 +123,7 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
     | `https://claimlookup.com/Voe/sso` |
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[Sedgwick CMS サポート チーム](https://www.sedgwick.com/contact/Pages/contactform.aspx)にお問い合わせください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[Sedgwick CMS サポート チーム](https://www.sedgwick.com/help)にお問い合わせください。
  
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。

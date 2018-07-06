@@ -4,22 +4,23 @@ description: Log Analytics のビュー デザイナーを使用すると、Azur
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: fc5dc00a05486c1f781016df63877f40d21b0205
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29947318"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131272"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics のビュー デザイナー タイルへのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を提供するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。
@@ -32,7 +33,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 使用可能なビュー デザイナー タイルを次の表で説明します。  
 
-| タイル | [説明] |
+| タイル | 説明 |
 |:--- |:--- |
 | [数値](#number-tile) |クエリからのレコードの数。 |
 | [2 つの数値](#two-numbers-tile) |2 つの異なるクエリからのレコードの数。 |
@@ -48,10 +49,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![数値タイル](media/log-analytics-view-designer/tile-number.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | **タイル** | |
 | 凡例 |値の下に表示されるテキスト。 |
 | クエリ |実行されるクエリ。 クエリによって返されるレコードの数が表示されます。 |
@@ -66,10 +67,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![2 つの数値タイル](media/log-analytics-view-designer/tile-two-numbers.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | **最初のタイル** | |
 | 凡例 |値の下に表示されるテキスト。 |
 | クエリ |実行されるクエリ。 クエリによって返されるレコードの数が表示されます。 |
@@ -87,10 +88,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![ドーナツ タイル](media/log-analytics-view-designer/tile-donut.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | **ドーナツ** | |
 | クエリ |ドーナツに対して実行されるクエリ。 最初のプロパティはテキスト値であり、2 番目のプロパティは数値です。 このクエリは通常、*measure* キーワードを使用して結果を集計します。 |
 | **ドーナツ** |**> Center (中央)** |
@@ -111,10 +112,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer/tile-line-chart.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | **折れ線グラフ** | |
 | クエリ |折れ線グラフに対して実行されるクエリ。 最初のプロパティはテキスト値であり、2 番目のプロパティは数値です。 このクエリは通常、*measure* キーワードを使用して結果を集計します。 クエリが *interval* キーワードを使用している場合、X 軸はこの時間間隔を使用します。 クエリが *interval* キーワードを使用していない場合、X 軸は 1 時間ごとの間隔を使用します。 |
 | **折れ線グラフ** |**> Y 軸** |
@@ -132,10 +133,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer/tile-line-chart-callout.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | **折れ線グラフ** | |
 | クエリ |折れ線グラフに対して実行されるクエリ。 最初のプロパティはテキスト値であり、2 番目のプロパティは数値です。 このクエリは通常、*measure* キーワードを使用して結果を集計します。 クエリが *interval* キーワードを使用している場合、X 軸はこの時間間隔を使用します。 クエリが *interval* キーワードを使用していない場合、X 軸は 1 時間ごとの間隔を使用します。 |
 | **折れ線グラフ** |**> コールアウト** |
@@ -157,10 +158,10 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![2 つのタイムライン タイル](media/log-analytics-view-designer/tile-two-timelines.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Name |タイルの上部に表示されるテキスト。 |
-| [説明] |タイル名の下に表示されるテキスト。 |
+| 説明 |タイル名の下に表示されるテキスト。 |
 | 最初のグラフ | |
 | 凡例 |最初の系列のコールアウトの下に表示されるテキスト。 |
 | 色 |最初の系列の縦棒に使用される色。 |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b83f02c55d0aa7b2e122d7fc8c9ef5734cdd924
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ac6b90f2efc525cfb9767843c741f1e3cfc6de7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197037"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449409"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
@@ -36,10 +36,10 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
-AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
+AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 > [!NOTE] 
-> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)を使用します。
+> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)を使用します。
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -68,7 +68,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
     データ操作の場合、ユーザーが実行できる操作はファイル システムの個々のアクセス許可によって定義されます。 そのため、閲覧者ロールを持つユーザーはアカウントに関連付けられた管理設定しか表示できません。しかし、場合によっては、そのユーザーに割り当てられているファイル システムのアクセス許可に基づいて、データの読み取りおよび書き込みができます。 Data Lake Store ファイル システムのアクセス許可については、[セキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](#filepermissions)方法に関するページを参照してください。
 
     > [!IMPORTANT]
-    > ファイル システムへのアクセスが自動的に有効になるのは**所有者**ロールだけです。 **共同作成者**、**閲覧者**、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者**ロールでは、ACL によって上書きできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[RBAC を使用したアカウント管理](data-lake-store-security-overview.md#rbac-for-account-management)」をご覧ください。
+    > ファイル システムへのアクセスが自動的に有効になるのは**所有者**ロールだけです。 **共同作成者**、**閲覧者**、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者**ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[RBAC を使用したアカウント管理](data-lake-store-security-overview.md#rbac-for-account-management)」をご覧ください。
 
 4. **[アクセス許可の追加]** ブレードに表示されていないグループ/ユーザーを追加する場合は、**[選択]** ボックスにそのグループ/ユーザーの電子メール アドレスを入力し、一覧からグループ/ユーザーを選択することで招待できます。
    

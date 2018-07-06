@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ffd12d03dffb5deafc8605cc7352bd71d588d235
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: afcd39e6512ac7bcb46f56df157822efa463113e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866738"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449070"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -39,7 +39,7 @@ SSPR が有効になっていない場合でも、ユーザーにはパスワー
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
 
-さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 ### <a name="disable-contact-your-administrator-emails"></a>"管理者に問い合わせてください" メールを無効にする
 
@@ -69,7 +69,7 @@ AD FS サインイン ページにリンクを追加するには、AD FS サー�
     * パスワード リセット ページに *whr* パラメーターを渡した場合 (例:"https://login.microsoftonline.com/?whr=contoso.com")
     * パスワード リセット ページに *username* パラメーターを渡した場合 (例:"https://login.microsoftonline.com/?username=admin@contoso.com")
 
-会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](../customize-branding.md)に関する記事を参照してください。
+会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](../fundamentals/customize-branding.md)に関する記事を参照してください。
 
 ### <a name="directory-name"></a>ディレクトリ名
 

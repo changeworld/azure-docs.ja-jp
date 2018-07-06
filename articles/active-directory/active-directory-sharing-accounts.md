@@ -14,12 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 7a58fca716389f35db7312948674e86b3104fe62
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307998"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448545"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ Azure AD は、あらゆる種類のパスワード シングル サインオン
 
 * [パスワード シングル サインオン](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * パスワード シングル サインオン エージェント
-* [グループの割り当て](active-directory-accessmanagement-self-service-group-management.md)
+* [グループの割り当て](users-groups-roles/groups-self-service-management.md)
 * カスタム パスワード アプリケーション
 * [アプリケーションの使用状況に関するダッシュボード/レポート](active-directory-passwords-get-insights.md)
 * エンド ユーザー アクセス ポータル
@@ -65,13 +65,13 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 
 * アプリケーションを[アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/)または[カスタム アプリケーション](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に追加する
 * パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する
-* [グループ ベースの割り当て](active-directory-accessmanagement-group-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
+* [グループ ベースの割り当て](users-groups-roles/groups-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
 * オプション: Facebook、Twitter、LinkedIn などの一部のアプリケーションでは、 [Azure AD 自動パスワード ロール オーバー](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
-Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](active-directory-accessmanagement-self-service-group-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
+Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](users-groups-roles/groups-self-service-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access-azure-portal.md)
-* [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+* [セルフサービス グループの管理/SSAA](users-groups-roles/groups-self-service-management.md)
 

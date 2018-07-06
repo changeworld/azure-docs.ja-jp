@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bc05ff8c6961cd9389a12ff9c082867eecb79bca
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34347501"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449054"
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "34347501"
 
 - Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動する。 
 
-- グループを自己管理する。 管理者がセキュリティ グループを作成および管理し、Azure AD のセキュリティ グループのメンバーシップを要求できます。 詳細については、[Azure AD でのユーザーのセルフ サービス グループ管理](active-directory-accessmanagement-self-service-group-management.md)に関する記事および[グループの管理](active-directory-manage-groups.md)に関する記事をご覧ください。
+- グループを自己管理する。 管理者がセキュリティ グループを作成および管理し、Azure AD のセキュリティ グループのメンバーシップを要求できます。 詳細については、[Azure AD でのユーザーのセルフ サービス グループ管理](users-groups-roles/groups-self-service-management.md)に関する記事および[グループの管理](fundamentals/active-directory-manage-groups.md)に関する記事をご覧ください。
 
 
 
@@ -214,7 +214,7 @@ Azure Portal でアプリケーションの SSO を構成する場合、第 3 �
 
 - アプリケーション管理に関するトピックの一覧については、[Azure Active Directory でのアプリケーション管理に関する記事の索引](active-directory-apps-index.md)をご覧ください。
  
-- SaaS アプリを Azure AD に統合する方法については、[SaaS アプリの統合方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)をご覧ください。
+- SaaS アプリを Azure AD に統合する方法については、[SaaS アプリの統合方法に関するチュートリアルの一覧](saas-apps/tutorial-list.md)をご覧ください。
  
 - Azure AD でのアプリの管理について詳しくは、[Azure Active Directory でのシングル サインオンとアプリのアクセスの管理の概要](manage-apps/what-is-single-sign-on.md)に関する記事をご覧ください。
  

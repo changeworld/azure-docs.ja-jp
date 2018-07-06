@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660319"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082232"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>RBAC を使用して Azure Storage データへのアクセス権を管理する (プレビュー)
 
@@ -61,7 +61,7 @@ Azure Storage 操作を呼び出すために必要なアクセス許可の詳細
 
 ストレージ アカウント内のすべてのコンテナーまたはキューへのアクセスを許可する組み込みロールを Azure portal で割り当てるには:
 
-1. [Azure portal](https://azure.portal.com/) のストレージ アカウントに移動します。
+1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
 2. ストレージ アカウントを選択し、**[アクセス制御 (IAM)]** を選択してアカウントのアクセス制御設定を表示します。 **[追加]** ボタンをクリックして、新しいロールを追加します。
 
     ![ストレージのアクセス制御設定を示すスクリーン ショット](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ Azure Storage 操作を呼び出すために必要なアクセス許可の詳細
 
 コンテナーまたはキューに対してスコープが指定された組み込みロールを割り当てる場合も、手順は同様です。 ここに示す手順では、コンテナーに対してスコープが指定されたロールを割り当てます。しかし、同じ手順に従って、キューに対してスコープが指定されたロールを割り当てることができます。 
 
-1. [Azure portal](https://azure.portal.com/) でストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
+1. [Azure portal](https://portal.azure.com) でストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
 2. [Blob service] で **[BLOB の参照]** を選択します。 
 3. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。 
 4. **[アクセス制御 (IAM)]** を選択して、コンテナーのアクセス制御設定を表示します。

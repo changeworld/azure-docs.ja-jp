@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 47846af015bf02940da7a7b8a4154113aab57b08
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597632"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448976"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
-Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。
+Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/fundamentals/active-directory-administer.md)に有効なユーザー ID が必要です。
 
 Azure Analysis Services では、[Azure AD B2B コラボレーション](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)がサポートされます。 B2B では、組織外のユーザーを Azure AD ディレクトリにゲスト ユーザーとして招待することができます。 別の Azure AD テナント ディレクトリのユーザーまたは任意の有効なメール アドレスを持つユーザーをゲストにすることができます。 招待されたユーザーが、Azure から電子メールで送信される招待状を受け入れると、ユーザー ID がテナント ディレクトリに追加されます。 それらの ID をセキュリティ グループに、またはサーバー管理者またはデータベース ロールのメンバーとして追加できます。
 
@@ -76,7 +76,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/active-directory-manage-groups.md)   
+[Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [サーバー管理者の管理](analysis-services-server-admins.md)  
 [ロールベースのアクセス制御](../role-based-access-control/overview.md)  

@@ -4,23 +4,23 @@ description: Log Analytics のアラート REST API は、Operations Management 
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 9097ca13bf4f65db4b0924044a9c0f075e3703af
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178526"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128896"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -34,7 +34,7 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 保存した検索条件には、1 つ以上のスケジュールを設定できます。 スケジュールは、検索を実行する頻度と、条件を識別する時間間隔を定義します。
 スケジュールには、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 間隔 |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
@@ -93,7 +93,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
 | Name |アラートの表示名。 |
@@ -134,7 +134,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="alert-actions"></a>アラート アクション
 スケジュールには、アラート アクションを 1 つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが 1 つ以上含まれています。  それぞれについて、以下で詳しく説明します。
 
-| セクション | [説明] | 使用法 |
+| セクション | 説明 | 使用法 |
 |:--- |:--- |:--- |
 | しきい値 |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
 | 重大度 |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
@@ -152,7 +152,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 しきい値には、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 演算子 |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
 | 値 |しきい値の値。 |
@@ -326,7 +326,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 > 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
    
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Recipients |メール アドレスの一覧。 |
 | 件名 |メールの件名。 |
@@ -371,7 +371,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 
 修復には、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | RunbookName |Runbook の名前。 これは、OMS ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
 | WebhookUri |Webhook の URI。 |

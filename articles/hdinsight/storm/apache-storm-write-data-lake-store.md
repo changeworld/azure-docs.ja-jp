@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c870b0c8de648ac65bec6857bf850c2913e7aeb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412630"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131737"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
-Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
+Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
 
 > [!IMPORTANT]
 > このドキュメントで使用されているトポロジの例は、HDInsight 上の Storm に含まれているコンポーネントによって異なります。 他の Apache Storm クラスターと共に使用された場合、Azure Data Lake Store で動作するには、この例に変更が必要になる可能性があります。
@@ -65,7 +65,7 @@ HdfsBolt は、ユーザーが指定したファイル スキームを使用し�
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | クラスターに関連付けられている既定以外の (追加の) Azure Storage アカウント。 |
 | `adl://STORENAME/` | クラスターによって使用される Data Lake Store のルート。 このスキームを使用すると、クラスター ファイル システムを含むディレクトリの外部にあるデータにアクセスできます。 |
 
-詳細については、Apache.org にある [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) のリファレンスを参照してください。
+詳細については、Apache.org にある [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) のリファレンスを参照してください。
 
 ### <a name="example-configuration"></a>構成の例
 

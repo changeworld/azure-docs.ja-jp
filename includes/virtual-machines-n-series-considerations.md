@@ -5,21 +5,21 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 03/19/2018
+ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3267f649e360c512a5523ce1d5948719a1969934
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4bec8c8ea29c10b8c0d0351a41ebc9183bb45d4f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32297588"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449513"
 ---
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
 * N シリーズ VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
 
-* N シリーズ VM をデプロイするには、Resource Manager デプロイメント モデルを使用する必要があります。
+* N シリーズ VM をデプロイするには、Resource Manager デプロイ モデルを使用する必要があります。
 
 * N シリーズ VM は、それぞれのディスクに対してサポートされる Azure Storage の種類が異なります。 NC および NV の VM では、Standard Disk Storage (HDD) で提供される VM ディスクのみがサポートされます。 NCv2、ND、および NCv3 の VM では、Premium Disk Storage (SSD) で提供される VM ディスクのみがサポートされます。
 

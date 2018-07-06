@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0eaf1115dc6ed5a7dc9e7354340d5eb529116c88
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307551"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37780657"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>モノのインターネットの徹底的なセキュリティ
 
@@ -33,19 +33,20 @@ ms.locfileid: "34307551"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>最初からインフラストラクチャをセキュリティで保護する
 
-[Microsoft Cloud](https://www.microsoft.com/enterprise/microsoftcloud/default.aspx#fbid=WzBsRQi6aGk) インフラストラクチャは、127 か国で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
+[Microsoft Cloud](https://azure.microsoft.com) インフラストラクチャは、127 か国で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
 
 [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/) では、ソフトウェア ライフサイクル全体にセキュリティ要件を組み込む必須の全社的な開発プロセスが提供されます。 運用アクティビティが同じレベルのセキュリティ プラクティスに従うように、SDL では Microsoft の Operational Security Assurance (OSA) プロセスにおいて規定されている厳格なセキュリティ ガイドラインを使用します。 さらに、Microsoft では、順守義務を満たしていることを継続的に検証するためにサード パーティの監査法人と連携して、Microsoft Digital Crimes Unit、Microsoft Security Response Center、および Microsoft Malware Protection Center を含む、優れたセンターを作成して広範なセキュリティ活動に取り組みます。
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - 企業の IoT インフラストラクチャのセキュリティ保護
 
-Microsoft Azure は完全なクラウド ソリューションを提供します。このソリューションは、分析、機械学習、ストレージ、セキュリティ、ネットワーク、Web などを統合した、常に成長しているクラウド サービスのコレクションを、データの保護とプライバシーに関する業界最高水準のコミットメントと組み合わせたものです。 Microsoft の[侵害想定](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)戦略では、攻撃をシミュレートし、新たな脅威を検出し、その脅威から保護して侵害から回復するための Azure の機能をテストするソフトウェア セキュリティ エキスパートの専属の "*レッド チーム*" を使用します。 Microsoft の[グローバル インシデント対応](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity)チームは、攻撃や悪意のある活動の影響を軽減するために、常に対応できる状態を保っています。 このチームは、インシデント管理、通信、回復の確立された手順に従い、検出可能で予測可能なインターフェイスを使用して内外のパートナーと連絡を取ります。
+Microsoft Azure は完全なクラウド ソリューションを提供します。このソリューションは、分析、機械学習、ストレージ、セキュリティ、ネットワーク、Web などを統合した、常に成長しているクラウド サービスのコレクションを、データの保護とプライバシーに関する業界最高水準のコミットメントと組み合わせたものです。 Microsoft の[侵害想定](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)戦略では、攻撃をシミュレートし、新たな脅威を検出し、その脅威から保護して侵害から回復するための Azure の機能をテストするソフトウェア セキュリティ エキスパートの専属の "*レッド チーム*" を使用します。 Microsoft の[グローバル インシデント対応](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity)チームは、攻撃や悪意のある活動の影響を軽減するために、常に対応できる状態を保っています。 このチームは、インシデント管理、通信、回復の確立された手順に従い、検出可能で予測可能なインターフェイスを使用して内外のパートナーと連絡を取ります。
 
 Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入の検出と予防、サービス拒否攻撃の予防、定期的な侵入テスト、および科学捜査ツールが継続的に提供されます。 [多要素認証](../articles/active-directory/authentication/multi-factor-authentication.md) では、ネットワークにアクセスするエンドユーザーのために追加のセキュリティ レイヤーを提供します。 また、アプリケーションとホスト プロバイダーのために、アクセス制御、監視、マルウェア対策、脆弱性スキャン、修正プログラム、および構成管理を提供します。
 
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
-[IoT ソリューションアクセラレータ](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) 内の [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+
+  [IoT ソリューションアクセラレータ](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) 内の [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 
