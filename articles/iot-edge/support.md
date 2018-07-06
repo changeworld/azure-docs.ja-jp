@@ -8,17 +8,17 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6bf918428312c511505304bd23b68cd19e46471
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035611"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130711"
 ---
 # <a name="azure-iot-edge-support"></a>Azure IoT Edge のサポート
 Azure IoT Edge 製品のサポートを受ける方法は複数あります。
 
-**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iot-edge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
+**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure Portal]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) から直接サポート チケットを作成することで、Microsoft カスタマー サポート チームとやり取りをすることができます。
 
@@ -33,8 +33,8 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 * Microsoft がそれらのインストール パッケージを提供している
 
 一般公開
-* Ubuntu 18.04
-* Ubuntu 16.04
+* Ubuntu Server 18.04
+* Ubuntu Server 16.04
 * Raspbian-stretch
 
 パブリック プレビュー
@@ -47,9 +47,9 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 * Microsoft がそのプラットフォームに対してアドホック テストを実施している、またはそのプラットフォーム上で Azure IoT Edge をパートナーが正常に実行していることを把握している
 * 他のプラットフォーム用のインストール パッケージがそれらのプラットフォームで機能することがある
 
-Ubuntu Server 18.04
+Ubuntu 18.04
 
-Ubuntu Server 16.04
+Ubuntu 16.04
 
 Wind River 8
 

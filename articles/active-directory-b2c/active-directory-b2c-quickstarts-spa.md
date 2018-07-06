@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: quickstart
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293283"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447253"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e27d7f75dd3d0391f45805f4424248c8eac483c7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: df808078ffe6eedf8abaa32a94edaaf1355b7fc6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847619"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129906"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -157,7 +157,7 @@ az batch task list --job-id job001
 
 次の表では、Batch サービスでサポートされている OData 句について説明します。
 
-| 句 | [説明] |
+| 句 | 説明 |
 |---|---|
 | `--select-clause [select-clause]` | 各エンティティのプロパティのサブセットを返します。 |
 | `--filter-clause [filter-clause]` | 指定された OData 式に一致するエンティティのみを返します。 |
@@ -175,7 +175,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 * `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
 * `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、 `--json-file` で使用できます (この記事の前半で説明した [JSON ファイル](#json-files) の項目を参照してください)。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
-* [Batch フォーラム][batch_forum]は、Batch チーム メンバーによって監視されています。 問題が発生した場合や、特定の操作についてアドバイスが欲しい場合は、質問を投稿できます。
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -183,7 +183,6 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 * Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。
 * Batch テンプレートを使用してコードの記述なしでプール、ジョブ、およびタスクを作成する方法については、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
 
-[batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx

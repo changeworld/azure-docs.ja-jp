@@ -2,18 +2,18 @@
 title: Azure Container Instances のコンテナーを監視する
 description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細について説明します。
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2018
-ms.author: nepeters
-ms.openlocfilehash: 814346bd8021b996b64cd7f0311f31b13b32a8c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: iainfou
+ms.openlocfilehash: e6d44d35b7688190c009274d2674c48c276a224c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180404"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097031"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 

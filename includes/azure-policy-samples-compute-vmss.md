@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: e9f2f6eaab1b3504e549171ce6c60ecd9b3b5c7b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 725d37a6521c874d14291ea7e3c53ea94907eb17
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664521"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138101"
 ---
 ### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 

@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.custom: mvc,develop apps
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: e8928a69436cfa0fc601c4a0c544433f3b87a90f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e88c069bed40bcdf1eae9d356403cc772a11ea85
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790816"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346571"
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
 
@@ -52,7 +52,7 @@ database = 'your_database'
 username = 'your_username'
 password = 'your_password'
 driver= '{ODBC Driver 13 for SQL Server}'
-cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor = cnxn.cursor()
 cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
 row = cursor.fetchone()

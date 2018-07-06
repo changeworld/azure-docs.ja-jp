@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160023"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342295"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -291,7 +291,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
     ![[設定] 手順](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。 [詳細設定] タブの詳細については、「 [Microsoft Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/hh535756.aspx)」を参照してください。
+    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。 [詳細設定] タブの詳細については、「 [Microsoft Azure アプリケーションの発行ウィザード](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard)」を参照してください。
 4. **[概要]** 手順で、**[発行]** をクリックします。
 
     ![[概要] 手順](./media/cloud-services-dotnet-get-started/pubsummary.png)

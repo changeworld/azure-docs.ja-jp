@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - IIS | Microsoft Docs
 description: Azure PowerShell のサンプル スクリプト - IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 95cf4a958548227253ec8d1440c1ec007f55c846
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 657114463ffea0456e26ae133c6dd6882b6a29d0
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653979"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095718"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "34653979"
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-iis/create-windows-vm-iis.ps1 "Create VM IIS")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 

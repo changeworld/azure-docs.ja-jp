@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 36d65d7755b45f0da02776a90b09df3c6a3bcf02
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 11831ad6e80c86c3c276fea0524af522046f1a03
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796980"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083531"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -25,7 +25,6 @@ ms.locfileid: "34796980"
 > * [MongoDB 用 Node.js](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
-> * [C++](sql-api-cpp-get-started.md)
 >  
 > 
 

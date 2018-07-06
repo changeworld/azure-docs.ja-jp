@@ -2,25 +2,25 @@
 title: クイック スタート - Azure CLI を使用した Azure のプライベート Docker レジストリの作成
 description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ed5c2d0b925d92f318b36b36d060ebc923499ee5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 745cfbb6ee72ac69ab5452701e654306e9645eb7
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168046"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100709"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用したコンテナー レジストリの作成
 
 Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure CLI を使って Azure Container Registry インスタンスを作成し、そのレジストリにコンテナー イメージをプッシュして、最後に Azure Container Instances (ACI) に対してレジストリからコンテナーをデプロイする方法について詳しく説明します。
 
-このクイック スタートでは、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli]」をご覧ください。
+このクイック スタートでは、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 Docker もローカルにインストールする必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 

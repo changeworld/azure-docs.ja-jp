@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f54179329b521cc861e90f023ff0b010b7ce1f75
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 81f2302df5740b482f03a4a724d2899734579949
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164963"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096861"
 ---
 # <a name="update-an-application-in-kubernetes"></a>Kubernetes でアプリケーションを更新する
 
@@ -100,7 +100,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>更新したアプリケーションをデプロイする
 
-最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドでこの構成を確認します。
+最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドでこの構成を確認します。
 
 ```bash
 kubectl get pod
@@ -123,13 +123,13 @@ azure-vote-front イメージを複数のポッドで実行していない場合
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
+アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
+デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
 
 ```azurecli-interactive
 kubectl get pod

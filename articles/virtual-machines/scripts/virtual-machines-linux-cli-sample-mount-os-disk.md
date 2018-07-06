@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - オペレーティング シ�
 description: Azure CLI のサンプル スクリプト - オペレーティング システム ディスクのマウント
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 996fd1be24abea240d2c2a1a53769b663fef6bde
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c550e1366397fc08b2dc5f5132375a1ad874d103
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656043"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096065"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>VM オペレーティング システム ディスクのトラブルシューティング
 
-このスクリプトでは、障害が発生したかまたは問題のある仮想マシンのオペレーティング システム ディスクを、2 つ目の仮想マシンにデータ ディスクとしてマウントします。 これは、ディスクの問題のトラブルシューティングやデータの復元に役立ちます。 
+このスクリプトでは、障害が発生したかまたは問題のある仮想マシンのオペレーティング システム ディスクを、2 つ目の仮想マシンにデータ ディスクとしてマウントします。 これは、ディスクの問題のトラブルシューティングやデータの復元に役立ちます。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

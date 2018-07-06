@@ -3,7 +3,7 @@ title: Azure Log Analytics を使用してオンプレミスの Windows コン�
 description: Windows 用の Log Analytics エージェントを Azure の外部で実行中のコンピューターにデプロイし、Log Analytics を使用してデータを収集できるようにする方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -15,17 +15,18 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: ec85f2c473fa0c4ac4d69599a24b878278309577
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: b3c3e020a685147411fc784c41d9eca8b7dd8db0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637230"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130995"
 ---
 # <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>環境内でホストされている Windows コンピューターからデータを収集する
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、物理的または仮想的な Windows コンピューターおよびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Windows コンピューターを構成し、データを収集する方法を示します。  Azure Windows VM の場合は、「[Azure Virtual Machines に関するデータの収集](log-analytics-quick-collect-azurevm.md)」を参照してください。  
 
-サポートされている構成を確認するには、[サポートされている Windows オペレーティング システム](log-analytics-concept-hybrid.md#supported-windows-operating-systems)と[ネットワーク ファイアウォールの構成](log-analytics-concept-hybrid.md#network-firewall-requirements)に関するページをご覧ください。
+サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-concept-hybrid.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-concept-hybrid.md#network-firewall-requirements)」をご覧ください。
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

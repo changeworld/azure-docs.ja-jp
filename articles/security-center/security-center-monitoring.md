@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: dc362306e20b4d39aa73a552e47cbcbd3037edbd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 434b73d4625f86fab195dbda1fed9c841791f5b6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063393"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099461"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティ ヘルスの監視
 この記事は、Azure Security Center で監視機能を使用してポリシーに対するコンプライアンスを監視するうえで役立ちます。
@@ -84,7 +84,7 @@ ms.locfileid: "37063393"
 * オレンジ: 優先度は中程度で、できるだけ早く対処する必要があります
 * 緑 (最下位): 正常な状態です
 
-このトポロジ ビューでは、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](/vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md) が表示されます。 2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している仮想マシンが置かれます。 右側の列には、これらのリソースのネットワーク セキュリティ グループの現在の状態が表示されます。以下に例を示します。
+このトポロジ ビューでは、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が表示されます。 2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している仮想マシンが置かれます。 右側の列には、これらのリソースのネットワーク セキュリティ グループの現在の状態が表示されます。以下に例を示します。
 
 ![[ネットワーク トポロジ] セクションに表示されるネットワーク セキュリティ グループの状態](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 

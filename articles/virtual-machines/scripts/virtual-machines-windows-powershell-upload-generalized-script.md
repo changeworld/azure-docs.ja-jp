@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fc3017000f6c6417a3c3f1765907a77f2562b113
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: e0f9bcbda02bc3cdbb76c82595b4127bbee247fa
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295171"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448034"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>VHD を Azure にアップロードし新しい VM を作成するサンプル スクリプト
 
@@ -51,7 +51,6 @@ $ipName = 'myPip'
 $nicName = 'myNic'
 $nsgName = 'myNsg'
 $ruleName = 'myRdpRule'
-$vmName = 'myVM'
 $computerName = 'myComputerName'
 $vmSize = 'Standard_DS1_v2'
 

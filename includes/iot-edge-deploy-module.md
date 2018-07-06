@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055032"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37086213"
 ---
 Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デバイスにモジュールをデプロイできることです。 IoT Edge モジュールは、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、シミュレートされたデバイスのテレメトリを生成するモジュールをデプロイします。 
 
@@ -21,7 +21,7 @@ Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デ�
 1. **[IoT Edge]** に移動し、IoT Edge デバイスを選びます。
 1. **[Set Modules] \(モジュールの設定)** を選択します。
 1. このページの **[Deployment Modules]\(展開モジュール\)** セクションで、**[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
-1. **[名前]** フィールドに「`tempsensor`」と入力します。 
+1. **[名前]** フィールドに「`tempSensor`」と入力します。 
 1. **[イメージの URI]** フィールドに「`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`」と入力します。 
 1. 他の設定はそのままにして、**[保存]** を選びます。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f643c09f00b23cd14e85e83ed0cf7ab7a13c7646
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162825"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098534"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
 
@@ -39,7 +39,7 @@ ms.locfileid: "32162825"
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
-ここまでで、Azure Vote フロントエンドと Redis インスタンスをデプロイし、それぞれに 1 つのレプリカを作成しました。 これを確認するには、[kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを実行します。
+ここまでで、Azure Vote フロントエンドと Redis インスタンスをデプロイし、それぞれに 1 つのレプリカを作成しました。 これを確認するには、[kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを実行します。
 
 ```azurecli-interactive
 kubectl get pods
@@ -53,13 +53,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-[kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
+[kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
 
 ```azurecli-interactive
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-[kubectl get pods](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) を実行して、Kubernetes がポッドを作成していることを確認します。 しばらくすると、追加したポッドが実行するようになります。
+[kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) を実行して、Kubernetes がポッドを作成していることを確認します。 しばらくすると、追加したポッドが実行するようになります。
 
 ```azurecli-interactive
 kubectl get pods
@@ -91,7 +91,7 @@ resources:
      cpu: 500m
 ```
 
-次の例では、[kubectl autoscale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) コマンドを使って、`azure-vote-front` のデプロイメントのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
+次の例では、[kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) コマンドを使って、`azure-vote-front` のデプロイメントのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
 
 
 ```azurecli-interactive

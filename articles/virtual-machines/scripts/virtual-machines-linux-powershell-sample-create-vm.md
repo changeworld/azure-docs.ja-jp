@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - Linux VM の作成 | M
 description: Azure PowerShell のサンプル スクリプト - Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c2034a40add78e34873271c2a04c85249bc49a7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f37a4e1552d3e483524415a8451e5144ba6b674
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653877"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100099"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "34653877"
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-detailed/create-vm-detailed.ps1 "Create VM detailed")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 

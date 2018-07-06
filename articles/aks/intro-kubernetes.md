@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service の概要
 description: Azure Kubernetes Service では、Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理できます。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 06/13/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fdff52a1fa34fa2033db19690d20a1c2f417e646
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: cb38285a009d8dfba175de6e3037970e6111d929
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307793"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096129"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 

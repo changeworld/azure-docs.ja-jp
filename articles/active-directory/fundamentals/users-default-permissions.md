@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: 991feaa61a73d5ac96159fbd6a7dd1fdd420fd3c
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291414"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448154"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可
 
@@ -50,8 +50,8 @@ Directory | 会社のすべての情報を読み取る<br>すべてのドメイ�
 
 アクセス許可 | 設定の説明
 ---------- | ------------
-セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー アカウント管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../active-directory-accessmanagement-groups-settings-cmdlets.md)」をご覧ください。
-Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー アカウント管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../active-directory-accessmanagement-groups-settings-cmdlets.md)」をご覧ください。
+セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー アカウント管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
+Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー アカウント管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、ユーザーは Azure Active Directory ポータルにアクセスできません。
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 これを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、これを $false に設定することは推奨されません。
 

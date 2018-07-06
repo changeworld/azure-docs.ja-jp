@@ -3,7 +3,7 @@ title: Azure Virtual Machines に関するデータの収集 |Microsoft Azure
 description: OMS エージェントの VM 拡張機能を有効にし、Log Analytics で Azure VM からデータを収集できるようにする方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -15,12 +15,13 @@ ms.topic: quickstart
 ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 8c8e5dd04e74f0d2fa51f33089c5fc7b5f7726db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: na
+ms.openlocfilehash: a79679068b03103bd8ca63455dd2d1758751aa6f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017387"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131236"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  

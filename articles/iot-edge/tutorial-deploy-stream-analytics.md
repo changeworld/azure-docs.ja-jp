@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060197"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081389"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する - プレビュー
 
@@ -128,7 +128,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
    以前、このデバイスに tempSensor モジュールをデプロイしたことがある場合は、自動入力されている可能性があります。 そうでない場合は、次の手順でモジュールを追加します。
 
    1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
-   2. 名前として「**tempsensor**」と入力します。
+   2. 名前に「**tempSensor**」と入力します。
    3. イメージ URI として「**mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**」と入力します。 
    4. 他の設定はそのままにします。
    5. **[保存]** を選択します。

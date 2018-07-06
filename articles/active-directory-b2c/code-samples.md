@@ -7,15 +7,15 @@ manager: mtillman
 ms.author: davidmu
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.topic: tutorial
+ms.topic: sample
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 13615ac8ccfc15cc6675fafd09b8936870310e8c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ffb60ab07ef21a94a7ba978fe354948f18479a37
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709667"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446562"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 

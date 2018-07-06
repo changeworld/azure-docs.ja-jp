@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - NLB がインストールさ�
 description: Azure CLI のサンプル スクリプト - NLB がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9b4a6bbc97ea465bc2e845fd9b1468dea6abab12
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d1a6ef2955e1f24dc207ec3cbd11858527af293e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654421"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097293"
 ---
 # <a name="create-a-highly-available-vm"></a>高可用性 VM の作成
 
-このサンプル スクリプトでは、高可用性と負荷分散が設定された構成で、構成済みの複数の Ubuntu 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。 
+このサンプル スクリプトでは、高可用性と負荷分散が設定された構成で、構成済みの複数の Ubuntu 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,11 +35,11 @@ ms.locfileid: "34654421"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "Quick Create VM")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

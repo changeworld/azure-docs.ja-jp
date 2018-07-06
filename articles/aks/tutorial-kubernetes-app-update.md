@@ -2,33 +2,31 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションの更新
 description: AKS チュートリアル - アプリケーションの更新
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 97d8c4bd179edc59d97914f86e2aa139681e739a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934058"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101032"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
 Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。
 
-この 8 部構成の 6 番目のチュートリアルでは、サンプルの Azure Vote アプリを更新します。 以下のタスクを行います。
+この 7 部構成の 6 番目のチュートリアルでは、サンプルの Azure Vote アプリを更新します。 以下のタスクを行います。
 
 > [!div class="checklist"]
 > * フロントエンド アプリケーション コードの更新
 > * 更新後のコンテナー イメージの作成
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したコンテナー イメージのデプロイ
-
-この後のチュートリアルでは、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

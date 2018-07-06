@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425614"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031058"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ Microsoft Azure Virtual Machines の SQL Server のライセンスを取得す�
 1. ソフトウェア アシュアランスの一部であるライセンス モビリティを利用する。 詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 2. SQL Server がインストールされている Azure Virtual Machines の時間単位の料金を支払う。 「 [Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションをご覧ください。
 
-ライセンスと現在の料金の詳細については、「 [Virtual Machines Licensing FAQ (Virtual Machines のライセンスに関するFAQ)](https://azure.microsoft.com/pricing/licensing-faq/%20/)」 をご覧ください。
+ライセンスと現在の料金の詳細については、「 [Virtual Machines Licensing FAQ (Virtual Machines のライセンスに関するFAQ)](https://azure.microsoft.com/pricing/licensing-faq/)」 をご覧ください。
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>Azure 仮想マシン ギャラリーで提供される SQL Server イメージ
 Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。 仮想マシン イメージにインストールされているソフトウェアは、オペレーティング システムのバージョンや SQL Server のバージョンによって異なります。 Azure 仮想マシン ギャラリーで提供されるイメージのリストは頻繁に変更されます。
@@ -317,7 +317,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
   * アスタリスク (*) が付いているポートの仮想マシン エンドポイントを作成します。
 * 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。 ただし、VM 上のファイアウォールでポートを開いてください。
   
-  | ポート | type | [説明] |
+  | ポート | type | 説明 |
   | --- | --- | --- |
   | **80** |TCP |レポート サーバー リモート アクセス (*)。 |
   | **1433** |TCP |SQL Server Management Studio (*)。 |
@@ -351,5 +351,5 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 > [Microsoft SQL Server Connect を使用してフィードバックや連絡先情報を送信してください。](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### <a name="community-content"></a>コミュニティ コンテンツ
-* [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+* [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](https://azure.microsoft.com/blog/windows-azure-sql-database-management-with-powershell/)
 

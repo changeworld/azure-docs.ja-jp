@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - Windows VM の作成 |
 description: Azure PowerShell のサンプル スクリプト - Windows VM の作成
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b50751f5cdad18a0584032e1ef2dcd325b0c77ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b8b26123929c7c47203e7a0ecc7486d489fb9ab
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657807"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098425"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>PowerShell で仮想マシンを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "34657807"
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-detailed/create-windows-vm-quick.ps1 "Create VM")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
