@@ -4,15 +4,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 05/10/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 10b2e77a89e2b8d7481559396d102177cf70161c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 72d980a683503374ed778dc57726114ebecd929f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307369"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443536"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル: サーバー管理者とユーザーのロールを構成する
 

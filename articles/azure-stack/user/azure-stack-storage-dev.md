@@ -4,17 +4,17 @@ description: Azure Stack ストレージの開発ツールの使用方法の概�
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/21/2018
+ms.date: 07/03/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 40f256b7a2be5a5a1d642983fa6ce018ee602ac2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604479"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441714"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 

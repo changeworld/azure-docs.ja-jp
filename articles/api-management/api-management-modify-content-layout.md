@@ -3,7 +3,7 @@ title: Azure API Management での開発者ポータルのページ コンテン
 description: Azure API Management での開発者ポータルのページ コンテンツの編集方法について説明します。
 services: api-management
 documentationcenter: ''
-author: antonba
+author: vlvinogr
 manager: vlvinogr
 editor: ''
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: bcf48ab8dd3b57ace70fa713074b13a992940002
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: vlvinogr
+ms.openlocfilehash: 4a372b54ace87816b9e7cccbd38466331b5ebfc7
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29377801"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437598"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのコンテンツとレイアウトを変更する
 Azure API Management で開発者ポータルをカスタマイズする基本的な方法は 3 つあります。
@@ -34,7 +34,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![開発者ポータル ページの構造][api-management-customization-widget-structure]
 
-ウィジェットはすべて編集できます。 
+ウィジェットはすべて編集できます。
 * 各ページ固有の中心的なコンテンツは、"コンテンツ" ウィジェットに存在します。 ページを編集することは、このウィジェットの内容を編集することを意味します。
 * すべてのページ レイアウト要素は、残りのウィジェットに含まれます。 これらのウィジェットに加えられた変更は、すべてのページに適用されます。 これらは、"レイアウト ウィジェット" と呼ばれます。
 
@@ -42,12 +42,12 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ## <a name="modify-layout-widget"> </a>レイアウト ウィジェットの内容の変更
 
-開発者ポータルには、Azure Portal からアクセスすることができます。 
+開発者ポータルには、Azure Portal からアクセスすることができます。
 
 1. API Management インスタンスのツール バーの **[開発者ポータル]** をクリックします。
-2. ウィジェットの内容を編集するには、左側の **[開発者ポータル]** メニューにある 2 つのペイント ブラシのアイコンをクリックします。 
+2. ウィジェットの内容を編集するには、左側の **[開発者ポータル]** メニューにある 2 つのペイント ブラシのアイコンをクリックします。
 3. ヘッダーの内容を変更するには、左側の一覧で **[ヘッダー]** セクションまでスクロールします。
-    
+
     ウィジェットは、フィールド内から編集することができます。
 4. 変更を発行する準備ができたら、ページの下部の **[発行]** をクリックします。
 

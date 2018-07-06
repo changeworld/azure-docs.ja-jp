@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: overview
 ms.date: 04/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 878d4da715308abf6dbe536ea0d1df2a68225179
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6949ab89cf806818783c86199e6df334e263b046
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711316"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440883"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 

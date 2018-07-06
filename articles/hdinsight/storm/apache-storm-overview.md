@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 7defb860ab526824492ddeb1fddf8ce037ec39ae
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1179a1556d47c22d4f0055dff3e94ca1bc49e939
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29686525"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128372"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -149,7 +149,7 @@ Apache Storm では、さまざまなレベルでメッセージの処理が保�
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-入力タプルを読み込み、0 個以上のタプルを発行し、実行メソッドの終了直後に入力タプルを確認するというパターンが一般的です。 Storm には、このパターンを自動化する [IBasicBolt](https://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/topology/IBasicBolt.html) インターフェイスが用意されています。
+入力タプルを読み込み、0 個以上のタプルを発行し、実行メソッドの終了直後に入力タプルを確認するというパターンが一般的です。 Storm には、このパターンを自動化する [IBasicBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) インターフェイスが用意されています。
 
 ### <a name="joins"></a>結合
 

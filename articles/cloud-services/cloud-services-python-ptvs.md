@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: f6bd89c160387abbb2b0339a5a5f62d998c0c84e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7465d355b31c495049167c652a2a7e1512827d8d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765417"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111237"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -362,7 +362,7 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
-[Cloud Service Projects]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Cloud Service Projects]: https://docs.microsoft.com/visualstudio/python/python-azure-cloud-service-project-template
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=746482
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: http://go.microsoft.com/fwlink/?LinkId=746483

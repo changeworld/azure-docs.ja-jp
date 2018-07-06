@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a7a7a933a37994157e9d566802de007b3e4bccb1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c16a189e72edd94cf6fc60580d89dd4cfd1742e8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636044"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443445"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート: サーバーのファイアウォールの構成 - ポータル
 

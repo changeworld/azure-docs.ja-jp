@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: bd90b460-bacf-4345-ae31-26e155beac0e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: bwren
-ms.openlocfilehash: b951d41dab4d349a8d648e7eaa7e23b73ced2ced
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29939044"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127961"
 ---
 # <a name="what-is-azure-log-analytics"></a>Azure Log Analytics とは
 Log Analytics は、Azure の管理において中心的役割を果たします。たとえば、さまざまなソースからテレメトリなどのデータを収集します。また、アプリケーションやリソースの運用に欠かせない分析情報を得る手段としてクエリ言語や分析エンジンを備えていることも、そうした役割の 1 つです。  Log Analytics のデータは、ログの検索やビューを通じて直接、対話操作することができるほか、Log Analytics にデータを格納する他の Azure サービス (Application Insights、Azure Security Center など) の分析ツールを使用することもできます。  
@@ -87,7 +88,7 @@ Application Insights や Azure Security Center といったサービスは、そ
 
 たとえば、次に示したのは Application Insights のビューです。  右上のアイコンをクリックすると、そのグラフで使用されているクエリと共に Log Analytics の分析コンソールが起動します。
 
-![アプリケーション インサイト](media/log-analytics-overview/application-insights.png)
+![Application Insights](media/log-analytics-overview/application-insights.png)
 
 
 ## <a name="exporting-log-analytics-data"></a>Log Analytics データのエクスポート
