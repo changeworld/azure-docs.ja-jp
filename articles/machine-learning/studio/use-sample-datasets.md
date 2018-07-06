@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: acdc2ca6f0746f4495f6b3747b7fc303574f712c
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959104"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342550"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -147,7 +147,7 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
 <tr>
   <td>CRM データセットの共有</td>
   <td>
-このデータは、KDD Cup 2009 顧客関係の予測に関する課題から取得しています (<a href="http://www.sigkdd.org/kdd-cup-2009-customer-relationship-prediction - orange_small_train.data.zip">orange_small_train.data.zip</a>)。
+このデータは、KDD Cup 2009 顧客関係の予測に関する課題から取得しています (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>)。
 <p></p>
 データセットには、French Telecom company Orange の顧客 50,000 人のデータが含まれます。 各顧客には匿名化された特徴が 230 あり、その中の 190 が数値で、40 がカテゴリです。 特徴はきわめて疎です。
   </td>
@@ -403,7 +403,7 @@ RCV1-V2 Reuters ニュース データセット内のニュース記事のトピ
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-このデータは、KDD Cup 2010 学生の成績評価に関する課題 (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生の成績評価</a>) から取得しています。 使用されるデータは、Algebra_2008_2009 トレーニング セット (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、Koedinger, K.R. (2010)、 Algebra I 2008-2009 です。 KDD Cup 2010 データ マイニングの学習課題のデータセットは、 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> にあります。
+このデータは、KDD Cup 2010 学生の成績評価に関する課題 (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">学生の成績評価</a>) から取得しています。 使用されるデータは、Algebra_2008_2009 トレーニング セット (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、Koedinger, K.R. (2010)、 Algebra I 2008-2009 です。 KDD Cup 2010 データ マイニングの学習課題のデータセットは、 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> にあります。
 <p></p>
 データセットは、Azure Blob Storage にダウンロードされ、格納されています (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>)。データセットには、学生のチュータリング システムのログ ファイルが含まれます。 提供される特徴には、問題 ID とその簡潔な説明、学生 ID、タイムスタンプ、学生が問題を正しい方法で解くまでにかかった回数があります。 元のデータセットには、8,900,000 件のレコードが含まれますが、このデータセットは、最初の 100,000 行にダウンサンプリングされています。 このデータセットには、23 個のタブで区切られた、さまざまなタイプ (数値、カテゴリ、およびタイムスタンプ) の列が含まれます。
   </td>

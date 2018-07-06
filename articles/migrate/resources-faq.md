@@ -3,15 +3,15 @@ title: Azure Migrate - よく寄せられる質問 (FAQ) | Microsoft Docs
 description: Azure Migrate についてよく寄せられる質問に対応します
 author: snehaamicrosoft
 ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: b18d2cecfd7556ad3f05d0f63435d16bc29ebab1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826135"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285707"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -21,7 +21,7 @@ ms.locfileid: "34826135"
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Migrate と Azure Site Recovery の違いは何ですか。
 
-Azure Migrate は、オンプレミスのワークロードを検出し、Azure への移行の計画を支援するアセスメント サービスです。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) は、ディザスター リカバリー ソリューションであると同時に、オンプレミスのワークロードを Azure 内の IaaS VM に移行するのを支援します。 
+Azure Migrate は、オンプレミスのワークロードを検出し、Azure への移行の計画を支援するアセスメント サービスです。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) は、ディザスター リカバリー ソリューションであると同時に、オンプレミスのワークロードを Azure 内の IaaS VM に移行するのを支援します。
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Azure Migrate と Azure Site Recovery Deployment Planner の違いは何ですか。
 
@@ -36,6 +36,10 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure Migrate が VMware 環境を検出するために vCenter Server は必要ですか。
 
 はい、Azure Migrate が VMware 環境を検出するには vCenter Server が必要です。 vCenter Server で管理されていない ESXi ホストの検出はサポートされていません。
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされる Azure リージョンを教えてください。
+
+現在、Azure Migrate では、プロジェクトの場所として、米国東部、米国中西部がサポートされています。 米国中西部、米国東部でのみ移行プロジェクトを作成することができたとしても、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)のコンピューターにアクセスできることに注意してください。 プロジェクトの場所は、検出されたデータを格納するためにのみ使用されます。
 
 ## <a name="discovery"></a>探索
 

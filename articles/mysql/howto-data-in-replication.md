@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265753"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294423"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
-この記事では、プライマリ サーバーとレプリカ サーバーを構成することによって、Azure Database for MySQL サービスのデータイン レプリケーションをセットアップする方法について説明します。
+この記事では、プライマリ サーバーとレプリカ サーバーを構成することによって、Azure Database for MySQL サービスのデータイン レプリケーションをセットアップする方法について説明します。 データイン レプリケーションでは、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスで実行中の プライマリ MySQL サーバーから Azure Database for MySQL サービスのレプリカにデータを同期することができます。 
 
 この記事は、少なくとも MySQL サーバーと MySQL データベースに関して、ある程度の使用経験があることを前提としています。
 
@@ -29,7 +29,7 @@ ms.locfileid: "35265753"
    新しい MySQL サーバーを作成します (例:  "replica.mysql.database.azure.com")。 サーバーの作成については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。 このサーバーは、データイン レプリケーションにおける "レプリカ" サーバーになります。
 
    > [!IMPORTANT]
-   > このサーバーは、汎用とメモリ最適化のどちらかの価格レベルで作成する必要があります。
+   > Azure Database for MySQL サーバーは、汎用とメモリ最適化のどちらかの価格レベルで作成する必要があります。
    > 
 
 2. 同じユーザー アカウントとそれに対応する権限を作成する
@@ -37,6 +37,7 @@ ms.locfileid: "35265753"
    レプリカ サーバーにプライマリ サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに与えることを検討している場合、新しく作成した Azure Database for MySQL サーバーに、すべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
 
 ## <a name="configure-the-primary-server"></a>プライマリ サーバーの構成
+次の手順では、仮想マシンでオンプレミスでホストされる MySQL サーバーを準備して構成するか、データイン レプリケーションのために他のクラウド プロバイダーによってホストされるデータベース サービスを準備して構成します。 このサーバーは、データイン レプリケーションにおける "プライマリ" サーバーになります。 
 
 1. バイナリ ログを有効にする
 
@@ -226,3 +227,6 @@ CALL mysql.az_replication_remove_primary;
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>次の手順
+- Azure Database for MySQL の[データイン レプリケーション](concepts-data-in-replication.md)について確認します。 
