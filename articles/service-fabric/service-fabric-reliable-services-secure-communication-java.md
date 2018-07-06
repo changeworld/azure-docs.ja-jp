@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric のサービスで使用される通信のセキュリティ | Microsoft Docs
-description: Azure Service Fabric クラスターで実行されている Reliable Services の通信をセキュリティで保護する方法について簡単に説明します。
+title: Azure Service Fabric で Java を使ってサービス リモート処理通信をセキュリティで保護する | Microsoft Docs
+description: Azure Service Fabric クラスターで実行されている Java Reliable Services のサービス リモート処理ベースの通信をセキュリティで保護する方法について説明します。
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207997"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020815"
 ---
-# <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Azure Service Fabric のサービスで使用される通信のセキュリティ
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Java サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]
 > * [Windows での C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux での Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>リモート処理を使用している場合のサービスのセキュリティ確保
-Reliable Services のリモート処理の設定方法について説明した既存の [例](service-fabric-reliable-services-communication-remoting-java.md) で説明します。 リモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
+セキュリティは、通信の最も重要な側面の 1 つです。 Reliable Services アプリケーション フレームワークに最初から用意されている通信スタックとツールを利用してセキュリティを確保することができます。 この記事では、Java サービスでサービス リモート処理を使用している場合の、セキュリティの改善方法について説明します。 これは、Java で記述された Reliable Services のリモート処理の設定方法について説明した、既存の[例](service-fabric-reliable-services-communication-remoting-java.md)を基に構築されます。 
+
+Java サービスでリモート処理を使用している場合、サービスのセキュリティを確保するには、次の手順を実行します。
 
 1. サービスのリモート プロシージャ コールで使用できるメソッドを定義するインターフェイス ( `HelloWorldStateless`) を作成します。 実際のサービスでは、`microsoft.serviceFabric.services.remoting.fabricTransport.runtime` パッケージに宣言されている `FabricTransportServiceRemotingListener` を使用します。 これは、リモート処理機能を提供する `CommunicationListener` の実装です。
 
@@ -54,11 +55,13 @@ Reliable Services のリモート処理の設定方法について説明した�
     ```
 2. リスナー設定とセキュリティ資格情報を追加します。
 
-    サービスの通信のセキュリティ保護に使用する証明書が、クラスター内のすべてのノードにインストールされていることを確認します。 リスナー設定とセキュリティ資格情報は、次の 2 とおりの方法で指定できます。
+    サービスの通信のセキュリティ保護に使用する証明書が、クラスター内のすべてのノードにインストールされていることを確認します。 Linux 上で実行されているサービスの場合、証明書は PEM 形式のファイルとして提供される必要があります。つまり、証明書と秘密キーを格納した `.pem` ファイルを使用するか、証明書を格納した `.crt` ファイルと秘密キーを格納した `.key` ファイルを使用します。 詳しくは、「[Linux ノード上の X.509 証明書の場所と形式](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)」をご覧ください。
+    
+    リスナー設定とセキュリティ資格情報は、次の 2 とおりの方法で指定できます。
 
    1. [構成パッケージ](service-fabric-application-and-service-manifests.md)を使用して指定する。
 
-       settings.xml ファイルに `TransportSettings` セクションを追加します。
+       settings.xml ファイルに、名前付きの `TransportSettings` セクションを追加します。
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->

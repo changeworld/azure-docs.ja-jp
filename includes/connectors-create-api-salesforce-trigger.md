@@ -1,7 +1,7 @@
 このチュートリアルでは、Salesforce で新しい潜在顧客が作成される場合、ロジック アプリ ワークフローを開始するために、 **[Salesforce - When an object is created (Salesforce - オブジェクトが作成される場合)]** トリガーがどのように使用されるのかを学習します。
 
 > [!NOTE]
-> まだ Salesforce に *"接続"* を作成していない場合は、Salesforce アカウントにサインインするよう求められます。  
+> まだ Salesforce への "*接続*" を作成していない場合は、Salesforce アカウントにサインインするよう求められます。  
 > 
 > 
 

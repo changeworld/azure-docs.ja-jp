@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208303"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019697"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 このチュートリアルでは、`runAsync()` エントリ ポイント メソッドを取り上げます。 これは、コードの実行をすぐに開始できる場所です。
 
 ### <a name="runasync"></a>RunAsync
-プラットフォームは、サービスのインスタンスが配置され実行準備ができたときに、このメソッドを呼び出します。 ステートレス サービスの場合、これは単にサービス インスタンスが開いたことを意味します。 サービス インスタンスを終了する必要がある場合のために、キャンセル トークンが提供されています。 Service Fabric では、サービス インスタンスの開始から終了のサイクルは、サービスのライフタイムで何度も発生する可能性があります。 これは、さまざまな理由で発生する可能性があります。
+プラットフォームは、サービスのインスタンスが配置され実行準備ができたときに、このメソッドを呼び出します。 ステートレス サービスの場合、これはサービス インスタンスが開いたことを意味します。 サービス インスタンスを終了する必要がある場合のために、キャンセル トークンが提供されています。 Service Fabric では、サービス インスタンスの開始から終了のサイクルは、サービスのライフタイムで何度も発生する可能性があります。 これは、さまざまな理由で発生する可能性があります。
 
 * システムがリソース分散のためにサービス インスタンスを移動している。
 * コードでエラーが発生している。
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Hashmap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Hashmap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable HashMap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable HashMap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
 
-* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable Hashmap が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Hashmap で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 
-* Reliable Hashmap でトランザクションをコミットすると、可用性を高めるためにオブジェクトがレプリケートされます。 Reliable Hashmap に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
+* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable HashMap が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable HashMap で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 
+* Reliable HashMap でトランザクションをコミットすると、可用性を高めるためにオブジェクトがレプリケートされます。 Reliable HashMap に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
   
    トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。 オブジェクトのローカル インスタンスの変更は自動的にレプリケートされないためです。 オブジェクトをディクショナリに再挿入するか、ディクショナリで *update* メソッドのいずれかを使用する必要があります。
 
-Reliable Hashmap の管理は Reliable State Manager が行います。 サービス内のどの場所でも、Reliable Collection の名前を指定することで、Reliable State Manager に Reliable Collection をいつでも要求できます。 Reliable State Manager により、参照を確実に取得できます。 Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。 サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。 この作業は Reliable State Manager によって処理され、繰り返されるアクセスのために最適化されます。
+Reliable HashMap の管理は Reliable State Manager が行います。 サービス内のどの場所でも、Reliable Collection の名前を指定することで、Reliable State Manager に Reliable Collection をいつでも要求できます。 Reliable State Manager により、参照を確実に取得できます。 Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。 サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。 この作業は Reliable State Manager によって処理され、繰り返されるアクセスのために最適化されます。
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>トランザクション処理と非同期処理
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Reliable Hashmap での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
+Reliable HashMap での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
 
-Reliable Hashmap の操作は *トランザクション*であるため、複数の Reliable Hashmap と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で Reliable Dictionary から作業項目を取得し、その項目の操作を実行してから、結果を Reliable Hashmap に保存できます。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
+Reliable HashMap の操作は *トランザクション*であるため、複数の Reliable HashMap と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で、ある Reliable Dictionary から作業項目を取得し、その項目に対して操作を実行した後、結果を別の Reliable HashMap に保存することもできます。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
 
 
-## <a name="run-the-application"></a>アプリケーションの実行
+## <a name="build-the-application"></a>アプリケーションのビルド
 
 Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよび削除するための bash スクリプトが含まれています。 アプリケーションを実行するには、最初に gradle を使用してアプリケーションをビルドします。
 
@@ -246,13 +246,31 @@ $ gradle
 
 これにより、Service Fabric CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。
 
-### <a name="deploy-with-service-fabric-cli"></a>Service Fabric CLI を使用したデプロイ
+## <a name="deploy-the-application"></a>アプリケーションのデプロイ
 
-Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Service Fabric CLI コマンドが含まれています。 アプリケーションをデプロイするには、install.sh スクリプトを実行します。
+ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
-```bash
-$ ./install.sh
-```
+1. ローカルの Service Fabric クラスターに接続します。
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. テンプレートに用意されているインストール スクリプトを実行してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+
+    ```bash
+    ./install.sh
+    ```
+
+ビルドしたアプリケーションは、他のすべての Service Fabric アプリケーションと同じようにデプロイできます。 詳細な手順については、[Service Fabric CLI を使用した Service Fabric アプリケーションの管理](service-fabric-application-lifecycle-sfctl.md)についてのドキュメントを参照してください。
+
+これらのコマンドのパラメーターは、アプリケーション パッケージ内の生成されたマニフェストで確認できます。
+
+アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
+
+> [!IMPORTANT]
+> アプリケーションを Azure 内のセキュアな Linux クラスターにデプロイするには、Service Fabric ランタイムを使用してアプリケーションを検証するように証明書を構成する必要があります。 これにより、Reliable Services サービスが基盤の Service Fabric ランタイム API と通信できるようになります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。  
+>
 
 ## <a name="next-steps"></a>次の手順
 

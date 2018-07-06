@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d22829217209b7d0b1b5690d6a864b58bf102e3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e775798dbaaf93d5a9b497323a3b2fa365820550
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622280"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046466"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -37,7 +37,7 @@ ms.locfileid: "34622280"
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用する場合は、[Data Factory バージョン 2 での Apache Spark アクティビティを使用したデータの変換](../transform-data-using-spark.md)に関するページをご覧ください。
+> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Apache Spark アクティビティを使用したデータ変換](../transform-data-using-spark.md)に関するページをご覧ください。
 
 ## <a name="introduction"></a>はじめに
 Spark アクティビティは、Data Factory でサポートされる[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 1 つです。 このアクティビティでは、指定された Spark プログラムが Azure HDInsight の Spark クラスターで実行されます。 
@@ -122,7 +122,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
-    a. HDInsight Spark クラスターの URI を指定します。 たとえば、「 `https://<sparkclustername>.azurehdinsight.net/`」のように入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 HDInsight Spark クラスターの URI を指定します。 たとえば、「 `https://<sparkclustername>.azurehdinsight.net/`」のように入力します。
 
     b. Spark クラスターにアクセスするユーザーの名前を指定します。
 
@@ -219,7 +219,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     ```
     以下の点に注意してください。
 
-    a. **type** プロパティは **HDInsightSpark** に設定されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **type** プロパティは **HDInsightSpark** に設定されます。
 
     b. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
@@ -268,8 +268,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-詳細な手順については、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> 手順について詳しくは、[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページをご覧ください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 getDebugInfo を **Always** に設定しているため、BLOB コンテナー内の pyFiles フォルダーに log サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加情報を確認できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してください。
@@ -332,7 +331,7 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 | -------- | ----------- | -------- |
 | name | パイプラインのアクティビティの名前。 | [はい] |
 | description  | アクティビティの動作を説明するテキスト。 | いいえ  |
-| 型 | このプロパティは HDInsightSpark に設定する必要があります。 | [はい] |
+| type | このプロパティは HDInsightSpark に設定する必要があります。 | [はい] |
 | linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | [はい] |
 | rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | [はい] |
 | entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | [はい] |

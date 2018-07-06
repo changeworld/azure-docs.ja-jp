@@ -1,25 +1,24 @@
 ---
-title: "Azure Data Catalog の新機能 | Microsoft Docs"
-description: "この記事では、Azure Data Catalog に追加された新機能の概要を説明します。"
+title: Azure Data Catalog の新機能 | Microsoft Docs
+description: この記事では、Azure Data Catalog に追加された新機能の概要を説明します。
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025357"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
@@ -99,7 +98,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 ## <a name="whats-new-for-december-2016"></a>2016 年 12 月の新機能
 2016 年 12 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) および [EU Model Clauses](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) に準拠しています。
+*   Azure Data Catalog は [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) および [EU Model Clauses](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) に準拠しています。
 *   データ ソース接続情報の編集をサポート。 データ資産の所有者と Data Catalog の管理者は、登録済みのデータ ソースの接続情報を編集することができます。データ ソースを再登録する必要はありません。
 *   Salesforce.com のデータ ソースのサポート。 ユーザーは Salesforce オブジェクトの登録と検出ができるようになりました。
 
@@ -152,7 +151,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 ## <a name="whats-new-for-march-2016"></a>2016 年 3 月の新機能
 2016 年 3 月の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。 この検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止され、提供が終了します。 API のセマンティクスに対する変更はありません。 エンドポイント URI だけが変更されます。 詳細については、[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)のページを参照してください。 API サンプルについては、[Azure Data Catalog 開発者向けサンプル](data-catalog-samples.md)のページを参照してください。
+* Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。 この検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に非推奨となり、提供が終了します。 API のセマンティクスに対する変更はありません。 エンドポイント URI だけが変更されます。 詳細については、[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)のページを参照してください。 API サンプルについては、[Azure Data Catalog 開発者向けサンプル](data-catalog-samples.md)のページを参照してください。
 
 ## <a name="whats-new-for-february-2016"></a>2016 年 2 月の新機能
 2016 年 2 月の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -246,7 +245,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 * Azure Data Catalog ポータルでの新しい "概要" データ ソースの検出エクスペリエンス。 ユーザーが Azure Data Catalog ポータルの [検出] ページで検索語句を入力していない場合、最も頻繁に使用されるタグ、エキスパート、データ ソースの種類、およびオブジェクトの種類を含むカタログ コンテンツの概要が示されます。
 * Azure SQL Data Warehouse のオブジェクトおよびデータベースを登録して検出するためのサポート。 Azure SQL Data Warehouse の詳細については、「 [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)」を参照してください。
 * SQL Server Analysis Services モデルおよび SQL Server Reporting Services サーバーをコンテナーとして登録して検出するためのサポート。 SSAS および SSRS のオブジェクトの登録時に、Azure Data Catalog は、レポートや他のオブジェクトだけでなく、SSAS モデルと SSRS サーバーのエントリも作成します。 コンテナーは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、モデルまたはサーバーのコンテンツを検索し、フィルター処理することもできます。
-* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
+* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll) など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
 * HDInsight で Hive データ ソースをサポートします。 ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。 HDInsight での Hive の詳細については、 [HDInsight ドキュメント センター](../hdinsight/hadoop/hdinsight-use-hive.md)をご覧ください。
 * Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。 Oracle のテーブルとビューまたは HDFS の登録時に、Azure Data Catalog は、データベース、テーブル、およびビューのエントリを作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 * 不明なデータ ソースを手動で登録できるようになりました。 データ ソース登録ツールで明示的にサポートされていないデータ ソースに注釈を付け、検出できるように、Azure Data Catalog ポータルを使用してデータ ソース情報を手動で入力できます。

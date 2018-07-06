@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620342"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046549"
 ---
-# <a name="monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリを監視する  
+# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
-Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。 
+Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプラインの監視と管理](v1/data-factory-monitor-manage-pipelines.md)に関する記事をご覧ください。
+## <a name="persist-data-factory-data"></a>Data Factory のデータを保持する
+Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 パイプラインの実行データを 45 日以上保持する場合、Azure Monitor を使用して、診断ログを分析のためにのみルーティングできるだけでなく、それらをストレージ アカウント内に保持して、選択した期間のファクトリの情報を得ることができます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
@@ -101,15 +101,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
             ]
     },
     "location": ""
-} 
+}
 ```
 
 | プロパティ | type | 説明 |
 | --- | --- | --- |
 | storageAccountId |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
-| serviceBusRuleId |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、"{サービス バス リソース ID}/authorizationrules/{キー名}" です。|
+| serviceBusRuleId |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、"{サービス バス リソース ID}/authorizationrules/{キー名}"　です。|
 | workspaceId | 複合型 | メトリックの時間グレインと、その保有ポリシーの配列。 現時点では、このプロパティは空です。 |
-|metrics| 呼び出されたパイプラインに渡されるパイプライン実行のパラメーター値| 引数値に JSON オブジェクト マッピングするパラメーター名 | 
+|metrics| 呼び出されたパイプラインに渡されるパイプライン実行のパラメーター値| 引数値に JSON オブジェクト マッピングするパラメーター名 |
 | ログ| 複合型| リソースの種類に対応する診断ログ カテゴリの名前。 リソースの診断ログ カテゴリの一覧を取得するには、まず診断設定の取得操作を実行します。 |
 | カテゴリ| String| ログ カテゴリの配列とその保有ポリシー |
 | timeGrain | String | ISO 8601 期間形式でキャプチャされるメトリックの粒度。 PT1M (1 分) にする必要があります。|
@@ -231,14 +231,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[詳細情報はこちら](https://msdn.microsoft.com/library/azure/dn931932.aspx)
+[詳細情報はこちら](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>ログとイベントのスキーマ
 
 ### <a name="activity-run-logs-attributes"></a>アクティビティ実行ログ属性
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -252,7 +252,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "activityName":"",
    "start":"",
    "end":"",
-   "properties:" 
+   "properties:"
        {
           "Input": "{
               "source": {
@@ -294,7 +294,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="pipeline-run-logs-attributes"></a>パイプライン実行ログ属性
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -307,7 +307,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "start":"",
    "end":"",
    "status":"",
-   "properties": 
+   "properties":
     {
       "Parameters": {
         "<parameter1Name>": "<parameter1Value>"
@@ -340,7 +340,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="trigger-run-logs-attributes"></a>トリガー実行ログ属性
 
 ```json
-{ 
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -362,7 +362,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
       },
       "SystemParameters": {}
     }
-} 
+}
 
 ```
 
@@ -397,7 +397,7 @@ ADFV2 は、次のメトリックを出力します
 | TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | Count    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
-メトリックにアクセスするには、記事 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の手順に従います。 
+メトリックにアクセスするには、記事 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の手順に従います。
 
 ## <a name="alerts"></a>アラート
 
@@ -445,4 +445,4 @@ Azure Portal にログインし、**[監視] -&gt; [アラート]** をクリッ
     ![[Action group] (アクション グループ)、画面 4/4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>次の手順
-実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。 
+実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。

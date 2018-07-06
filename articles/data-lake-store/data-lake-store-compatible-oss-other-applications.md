@@ -1,25 +1,26 @@
 ---
-title: Data Lake Store と互換性のあるビッグ データ アプリケーション | Microsoft Docs
-description: Azure Data Lake Store で機能するオープン ソース アプリケーションの一覧
+title: Data Lake Storage Gen1 と互換性のあるビッグ データ アプリケーション| Microsoft Docs
+description: Azure Data Lake Storage Gen1 (旧称 Azure Data Lake Store) と互換性のあるオープン ソース アプリケーションの一覧
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 699e1805-cb76-4807-9ac1-8bd9d9bbb72b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fdeaf4d1d25d1669002b696219adfb6eaff4fd40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624706"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029640"
 ---
-# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Azure Data Lake Storeで機能するオープン ソースのビッグ データ アプリケーション
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 この記事では、Azure Data Lake Store で機能するオープン ソースのビッグ データ アプリケーションを示します。 次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。 これらのアプリケーションの HDInsight で利用できるバージョンについては、「 [HDInsight コンポーネントのバージョン](../hdinsight/hdinsight-component-versioning.md)」を参照してください。
 
 | オープン ソース ソフトウェア | ディストリビューション |
@@ -38,5 +39,5 @@ ms.locfileid: "34624706"
 
 
 ## <a name="see-also"></a>関連項目
-* [Azure Data Lake Store の概要](data-lake-store-overview.md)
+* [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 

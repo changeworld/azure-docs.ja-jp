@@ -1,6 +1,6 @@
 ---
-title: 既存の NPS サーバーを使用して Azure MFA 機能を提供する | Microsoft Docs
-description: クラウドベースの 2 段階検証機能を既存の認証インフラストラクチャに追加する
+title: Azure MFA 機能を提供するために既存の NPS サーバーを使用する
+description: クラウドベースの 2 段階認証機能を既存の認証インフラストラクチャに追加する
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 57bf8b81d8d7fee6eaee216b9a2e0c52aa625257
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ac2b0e2ba3eff83462ded91bcd0ac9a7309f73b4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868332"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031143"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -58,8 +58,8 @@ Windows Server 2008 R2 SP1 以上。
 
 これらのライブラリは拡張機能を含めて自動的にインストールされます。
 
--   [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
 
@@ -70,6 +70,13 @@ NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect
 拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、**[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
 
 ![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/howto-mfa-nps-extension/find-directory-id.png)
+
+### <a name="network-requirements"></a>ネットワークの要件
+
+NPS サーバーは、ポート 80 および 443 を使って次の URL と通信できる必要があります。
+
+* https://adnotifications.windowsazure.com  
+* https://login.microsoftonline.com
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -131,19 +138,19 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 
 ### <a name="download-and-install-the-nps-extension-for-azure-mfa"></a>Azure MFA の NPS 拡張機能をダウンロードしてインストールする
 
-1.  Microsoft ダウンロード センターから [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
-2.  構成するネットワーク ポリシー サーバーにバイナリをコピーします。
-3.  *setup.exe* を実行してインストールの指示に従います。 エラーが発生した場合は、前提条件のセクションの 2 つのライブラリが正常にインストールされていることを再確認します。
+1. Microsoft ダウンロード センターから [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
+2. 構成するネットワーク ポリシー サーバーにバイナリをコピーします。
+3. *setup.exe* を実行してインストールの指示に従います。 エラーが発生した場合は、前提条件のセクションの 2 つのライブラリが正常にインストールされていることを再確認します。
 
 ### <a name="run-the-powershell-script"></a>PowerShell スクリプトの実行
 
-インストーラーによって、`C:\Program Files\Microsoft\AzureMfa\Config` (C:\ はインストール先のドライブ) の場所に PowerShell スクリプトが作成されます。 この PowerShell スクリプトは、次のアクションを実行します。
+インストーラーによって、`C:\Program Files\Microsoft\AzureMfa\Config` (C:\ はインストール先のドライブ) の場所に PowerShell スクリプトが作成されます。 この PowerShell スクリプトは、実行されるたびに次のアクションを実行します。
 
--   自己署名証明書を作成します。
--   Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
--   ローカル コンピューターの証明書ストアに証明書を格納する。
--   ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
--   NPS を再起動する。
+- 自己署名証明書を作成します。
+- Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
+- ローカル コンピューターの証明書ストアに証明書を格納する。
+- ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
+- NPS を再起動する。
 
 (PowerShell スクリプトで生成される自己署名証明書ではなく) 独自の証明書を使用する場合を除き、PowerShell スクリプトを実行してインストールを完了します。 複数のサーバーに拡張機能をインストールする場合は、それぞれに独自の証明書が必要です。
 
@@ -162,8 +169,8 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 
 負荷分散用に設定するすべての追加 NPS サーバーで、この手順を繰り返します。
 
->[!NOTE]
->PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 
+> [!NOTE]
+> PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 
 
 ## <a name="configure-your-nps-extension"></a>NPS 拡張機能の構成
 
@@ -172,7 +179,7 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 ### <a name="configuration-limitations"></a>構成の制限
 
 - Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
-- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID や カスタム Active Directory フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成できます。 詳細については、[Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション](howto-mfaserver-nps-vpn.md)に関するページをご覧ください。
+- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID や カスタム Active Directory フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成できます。 詳細については、[Microsoft Multi-Factor Authentication のための NPS 拡張機能の詳細構成オプション](howto-mfa-nps-extension-advanced.md)に関するページをご覧ください。
 - すべての暗号化プロトコルで、すべての検証メソッドがサポートされるわけではありません。
    - **PAP** は、電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コードをサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
@@ -232,12 +239,15 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 AD Connect が実行していること、およびユーザーが Windows Active Directory と Azure Active Directory の両方に存在していることを確認します。
 
-------------------------------------------------------------
+-------------------------------------------------------------
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>すべての認証が失敗し、ログに HTTP 接続エラーが記録されるのはなぜですか。
 
 NPS 拡張機能を実行しているサーバーから https://adnotifications.windowsazure.com に到達可能であることを確認します。
 
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
+
+組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

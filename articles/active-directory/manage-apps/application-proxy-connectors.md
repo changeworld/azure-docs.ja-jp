@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293009"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025365"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -92,7 +92,6 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 送信トラフィックのファイアウォール規則を構成する方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。
 
-[Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使った、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 さらに、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。 
 
 ## <a name="performance-and-scalability"></a>パフォーマンスと拡張性
 
@@ -104,7 +103,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 これに対し、コネクタにとってメモリはあまり重要ではありません。 処理の大半はオンライン サービスによって行われ、すべての認証されていないトラフィックが処理されます。 クラウドでできることはすべてクラウドで実行しています。 
 
-負荷分散は、特定のコネクタ グループのコネクタ間で発生します。 ラウンド ロビンのバリエーションによって、グループのどのコネクタが、特定の要求を実行しているかを判断し、 コネクタの選択後、ユーザーとアプリケーションの間でセッション期間に対してセッション アフィニティを維持します。 何らかの理由でコネクタまたはマシンが利用できなくなったら、トラフィックはグループ内の他のコネクトに移動し始めます。 この回復性も、複数のコネクタを推奨する理由です。
+負荷分散は、特定のコネクタ グループのコネクタ間で発生します。 ラウンド ロビンのバリエーションによって、グループのどのコネクタが、特定の要求を実行しているかを判断し、 何らかの理由でコネクタまたはマシンが利用できなくなったら、トラフィックはグループ内の他のコネクトに移動し始めます。 この回復性も、複数のコネクタを推奨する理由です。
 
 パフォーマンスに関するその他の要因としては、コネクタと次の項目間のネットワークの品質が挙げられます。 
 

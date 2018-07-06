@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836302"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959104"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -403,7 +403,7 @@ RCV1-V2 Reuters ニュース データセット内のニュース記事のトピ
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-このデータは、KDD Cup 2010 学生の成績評価に関する課題 (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生の成績評価</a>) から取得しています。 使用されるデータは、Algebra_2008_2009 トレーニング セット (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、Koedinger, K.R. (2010)、 Algebra I 2008-2009 です。 KDD Cup 2010 データ マイニングの学習課題のデータセットは、 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> または <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a> にあります。
+このデータは、KDD Cup 2010 学生の成績評価に関する課題 (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生の成績評価</a>) から取得しています。 使用されるデータは、Algebra_2008_2009 トレーニング セット (Stamper, J.、Niculescu-Mizil, A.、Ritter, S.、Gordon, G.J.、Koedinger, K.R. (2010)、 Algebra I 2008-2009 です。 KDD Cup 2010 データ マイニングの学習課題のデータセットは、 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> にあります。
 <p></p>
 データセットは、Azure Blob Storage にダウンロードされ、格納されています (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>)。データセットには、学生のチュータリング システムのログ ファイルが含まれます。 提供される特徴には、問題 ID とその簡潔な説明、学生 ID、タイムスタンプ、学生が問題を正しい方法で解くまでにかかった回数があります。 元のデータセットには、8,900,000 件のレコードが含まれますが、このデータセットは、最初の 100,000 行にダウンサンプリングされています。 このデータセットには、23 個のタブで区切られた、さまざまなタイプ (数値、カテゴリ、およびタイムスタンプ) の列が含まれます。
   </td>

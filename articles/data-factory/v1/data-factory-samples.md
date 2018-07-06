@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c56501deaf4d30374690a112b1ba11eaa9344cdb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622365"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046090"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/resources/samples/?service=data-factory)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/resources/samples/?service=data-factory)をご覧ください。
 
 
 ## <a name="samples-on-github"></a>GitHub のサンプル

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 82a3ebcf4d208b550a792deddba5ce214105af13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632749"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030735"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
 
@@ -51,16 +51,16 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
 
 * **計画**: オペレーターは、デバイスのメタデータ体系を作成できます。これらのプロパティを使用することで、簡単かつ正確に一連のデバイスを照会して一括管理操作の対象にすることができます。 デバイス ツインを使用すると、このデバイスのメタデータをタグやプロパティの形式で保存できます。
   
-    "*参考資料*": [デバイス ツインの使用][lnk-twins-getstarted]、[デバイス ツインについて][lnk-twins-devguide]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]。
+    "*参考資料*": [デバイス ツインの使用][lnk-twins-getstarted]、[デバイス ツインについて][lnk-twins-devguide]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[IoT ソリューション内でデバイスを構成するためのベスト プラクティス][lnk-adm-best-practices]。
 * **プロビジョニング**: IoT Hub に対して新しいデバイスを安全にプロビジョニングし、デバイスの機能をオペレーターがすぐに検出できるようにします。  IoT Hub ID レジストリを使用して、柔軟性に優れたデバイス ID と資格情報を作成し、ジョブを使用してこの操作を一括で実行します。 デバイス ツインのデバイス プロパティを使ってその機能や状態を報告できるように、デバイスを構築します。
   
-    "*参考資料*": [デバイス ID の管理][lnk-identity-registry]、[デバイス ID の一括管理][lnk-bulk-identity]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[Azure IoT Hub Device Provisioning Service][lnk-dps]。
+    "*参考資料*": [デバイス ID の管理][lnk-identity-registry]、[デバイス ID の一括管理][lnk-bulk-identity]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[IoT ソリューション内でデバイスを構成するためのベスト プラクティス][lnk-adm-best-practices]、[Azure IoT Hub Device Provisioning Service][lnk-dps]。
 * **構成**: 正常性とセキュリティを維持すると共に、デバイスに対する一括構成変更とファームウェア更新を効率化します。 こうしたデバイス管理操作は、Desired プロパティ、またはダイレクト メソッドとブロードキャスト ジョブを使用して一括で実行します。
   
-    "*参考資料*": [ダイレクト メソッドの使用][lnk-c2d-methods]、[デバイスでダイレクト メソッドを呼び出す][lnk-methods-devguide]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[ジョブのスケジュールとブロードキャスト][lnk-jobs]、[複数デバイスでのジョブのスケジュール][lnk-jobs-devguide]。
+    "*参考資料*": [デバイス ツイン プロパティの使用方法][lnk-twin-properties]、[多数の IoT デバイスの構成と監視][lnk-adm-how-to]、[IoT ソリューション内でデバイスを構成するためのベスト プラクティス][lnk-adm-best-practices]。
 * **監視**: デバイス コレクション全体の正常性や、進行中の操作の状態を監視して、対処が必要な問題があればオペレーターに通知します。  デバイス ツインを適用して、デバイスが稼働状況と更新操作の状態をリアルタイムで報告できるようにします。 デバイス ツインのクエリを使用して緊急を要する問題を報告するための強力なダッシュボード レポートを作成します。
   
-    "*参考資料*": [デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query-language]。
+    *参考資料*:[デバイス ツイン プロパティの使用方法][lnk-twin-properties]、[デバイス ツイン、ジョブ、およびメッセージのルーティングのための IoT Hub クエリ言語][lnk-query-language]、[多数の IoT デバイスの構成と監視][lnk-adm-how-to]、[IoT ソリューション内のデバイスの構成に関するベスト プラクティス][lnk-adm-best-practices]。
 * **使用中止**: 故障後やアップグレード サイクルの終了後、またはサービス有効期間の経過後に、デバイスを交換またはデバイスの使用を停止します。  デバイス ツインを使用して、物理デバイスが交換されている場合は、デバイス情報を保持します。使用中止になっている場合はアーカイブされます。 IoT Hub ID レジストリを使用して、デバイス ID と資格情報を安全に失効します。
   
     "*参考資料*": [デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[デバイス ID の管理][lnk-identity-registry]。
@@ -77,7 +77,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
 * **構成** - バックエンド アプリが、必要なプロパティを使用して、デバイス上で実行されているソフトウェアを構成します。  デバイスは、報告されるプロパティを使用して、その構成状態を更新します。
   
     ![デバイス管理の構成パターンを示す図][img-config_pattern]
-* **ファームウェア更新** - バックエンド アプリが、ファームウェア更新を開始したことを、ダイレクト メソッドを通じてデバイスに伝えます。  デバイスは、複数のステップから成るプロセスを開始してファームウェア イメージをダウンロードし、それを適用して、最後に IoT Hub サービスに再接続します。  この複数のステップから成るプロセスの間、デバイスは、報告されるプロパティを使用して、デバイスの進行状況と状態を更新します。
+* **ファームウェアの更新プログラム** - バックエンド アプリケーションは、自動デバイス管理構成を使用して更新プログラムを受け取るデバイスを選択し、更新プログラムを受け取る場所をデバイスに通知し、更新プロセスを監視します。 デバイスは、複数のステップから成るプロセスを開始してファームウェア イメージをダウンロード、検証し、それを適用して、デバイスを再起動して IoT Hub サービスに再接続します。  この複数のステップから成るプロセスの間、デバイスは、報告されるプロパティを使用して、デバイスの進行状況と状態を更新します。
   
     ![デバイス管理のファームウェア更新パターンを示す図][img-fwupdate_pattern]
 * **進行状況とステータスの報告** - ソリューション バックエンドは、一連のデバイス対してデバイス ツイン クエリを実行し、デバイス上で実行されている操作のステータスと進行状況を報告します。
@@ -111,3 +111,5 @@ IoT Hub のデバイス管理機能についての学習を続けるには、[�
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+[lnk-adm-best-practices]: iot-hub-configuration-best-practices.md
+[lnk-adm-how-to]: iot-hub-auto-device-config.md

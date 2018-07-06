@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 6707610fc3410eab6eb2985c7d8a0ef821354689
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062081"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346588"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>クイック スタート: HDInsight のクラスターを設定する
 
@@ -55,7 +55,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 * [リソース グループ名](#resource-group-name)
 * [クラスターの種類と構成](#cluster-types) 
-* [クラスター ログインと SSH ユーザー名](#cluster-login-and-ssh-username)
+* [クラスター ログインと SSH ユーザー名](#cluster-login-and-ssh-user-name)
 * [場所](#location)
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 
 構成時に、既定のストレージ エンドポイント用に Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 それとは別に、クラスターからアクセスできるリンクされた Azure Data Lake Storage アカウントを必要に応じて指定することもできます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
 
-![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage-TEMP.png)
+![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > 必ず **Data Lake Store アクセスを無効にしてください**。 この設定は、以前の *Data Lake Store* 機能を参照しているので、*Data Lake Storage* 機能が正しく動作するためには無効にする必要があります。

@@ -7,14 +7,14 @@ manager: shreeshd
 keywords: バックアップと障害復旧; バックアップ サービス
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 6/25/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605533"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016490"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -58,7 +58,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップ ジョブは失敗します。また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>キャッシュ フォルダーの最小サイズ要件を教えてください。 <br/>
-キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
+キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーのボリュームは、バックアップ データの合計サイズと比較した場合に、空き領域を少なくとも 5 から 10% にする必要があります。 ボリュームの空き領域が 5% 未満の場合は、ボリュームのサイズを増やすか、[十分な空き領域があるボリュームにキャッシュ フォルダーを移動](backup-azure-file-folder-backup-faq.md#backup)します。
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>別のデータ センターにサーバーを登録する方法を教えてください。<br/>
 バックアップ データは登録されているコンテナーのデータセンターに送信されます。 データセンターを変更する最も簡単な方法は、エージェントをアンインストールしてから再インストールし、変更先のデータセンターに属している新しいコンテナーに登録する方法です。
@@ -67,7 +67,6 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 はい。 エージェント サービスは、バックアップ操作を準備するときに、重複除去されたデータを通常のデータに変換します。 そのデータをバックアップ用に最適化し、暗号化してから、オンライン バックアップ サービスに送信します。
 
 ## <a name="backup"></a>Backup
-
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Azure Backup エージェント用に指定されたキャッシュの場所を変更する方法を教えてください。<br/>
 キャッシュの場所は、以下の手順で変更します。
 

@@ -1,6 +1,6 @@
 ---
-title: HDInsight の R Server の運用化 - Azure | Microsoft Docs
-description: Azure HDInsight で R Server を運用化する方法について説明します。
+title: HDInsight の ML サービスの運用化 - Azure | Microsoft Docs
+description: Azure HDInsight で ML サービスを運用化する方法について説明します。
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -10,28 +10,31 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412843"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046141"
 ---
-# <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Azure HDInsight での R Server クラスターの運用化
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
-HDInsight で R Server クラスターを使用して、ご自身のデータ モデリングが完了したら、モデルを運用化して予測を行うことができます。 この記事では、このタスクを実行する方法について説明します。
+HDInsight で ML サービス クラスターを使用して、ご自身のデータ モデリングが完了したら、モデルを運用化して予測を行うことができます。 この記事では、このタスクを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight の R Server クラスター**: 手順については、「[HDInsight での R Server の使用](r-server-get-started.md)」を参照してください。
+* **HDInsight 上の ML サービス クラスター**: 方法については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」をご覧ください。
 
 * **Secure Shell (SSH) クライアント**: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-## <a name="operationalize-r-server-cluster-with-one-box-configuration"></a>R Server クラスターをワンボックス構成で運用化する
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML サービス クラスターをワンボックス構成で運用化する
 
-1. エッジ ノードに SSH 接続します。  
+> [!NOTE]
+> 以下の手順は、R Server 9.0 と ML Server 9.1 に適用されます。 ML Server 9.3 については、[運用化構成を管理するための管理ツールの使用](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)に関するページをご覧ください。
+
+1. エッジ ノードに SSH 接続します。
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -39,7 +42,7 @@ HDInsight で R Server クラスターを使用して、ご自身のデータ �
 
 2. 関連するバージョンのディレクトリに変更し、dot net dll を sudo します。 
 
-    - Microsoft R Server 9.1 の場合:
+    - Microsoft ML Server 9.1 の場合:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -49,11 +52,11 @@ HDInsight で R Server クラスターを使用して、ご自身のデータ �
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**R Server を運用化のために 構成**します。
+3. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
 
     ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. 次に表示されるオプションでは、R Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
+4. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
 
     ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -65,7 +68,7 @@ HDInsight で R Server クラスターを使用して、ご自身のデータ �
 
 7. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
-    a. メイン メニューから、**6** を選択して、診断テストを実行します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 メイン メニューから、**6** を選択して、診断テストを実行します。
 
     ![ワンボックス操作](./media/r-server-operationalize/diagnostic-1.png)
 
@@ -99,7 +102,7 @@ mrsdeploy の機能を使って作成された Web サービスを Spark コン�
 
 この段階で、運用化の構成が完了しました。 これで、ご自身の RClient の `mrsdeploy` パッケージを使用してエッジ ノードの運用化に接続し、[リモート実行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)や [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。 以降のセクションでは、このトンネルの設定方法について説明します。
 
-### <a name="r-server-cluster-on-virtual-network"></a>仮想ネットワーク上の R Server クラスター
+### <a name="ml-services-cluster-on-virtual-network"></a>仮想ネットワーク上の ML サービス クラスター
 
 ポート 12800 を介したエッジ ノードへのトラフィックを許可していることを確認します。 これで、運用化機能への接続にエッジ ノードを使用できます。
 
@@ -115,7 +118,7 @@ mrsdeploy の機能を使って作成された Web サービスを Spark コン�
 
 `remoteLogin()` でエッジ ノードに接続できなくても、エッジ ノードへの SSH 接続が可能な場合は、ポート 12800 でトラフィックを許可するルールが適切に設定されているかどうかを確認する必要があります。 問題が解決しない場合は、SSH 経由のポート転送トンネリングを設定することで問題を回避できます。 手順については、次のセクションを参照してください。
 
-### <a name="r-server-cluster-not-set-up-on-virtual-network"></a>仮想ネットワーク上に設定されていない R Server クラスター
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>仮想ネットワーク上に設定されていない ML サービス クラスター
 
 クラスターが VNet 上にセットアップされていない場合、または VNet 経由の接続で問題が発生している場合は、SSH ポート転送トンネリングを使用できます。
 
@@ -139,7 +142,7 @@ SSH セッションがアクティブになったら、マシンのポート 128
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>手順 1: worker ノードの使用を停止する
 
-R Server クラスターは YARN では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
+ML サービス クラスターは YARN では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 
 次の手順に従って、worker ノードの使用を停止します。
 
@@ -163,11 +166,11 @@ R Server クラスターは YARN では管理されていません。 worker ノ
 
 1. 使用停止されたワーカー ノードに SSH 接続します。
 
-2. ご自身の R Server クラスターの関連 DLL を使用して、管理ユーティリティを実行します。 R Server 9.1 の場合は、次の手順を実行します。
+2. ご自身の ML サービス クラスターの関連 DLL を使用して、管理ユーティリティを実行します。 ML Server 9.1 の場合は、次の手順を実行します。
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. 「**1**」を入力して、オプション **Configure R Server for Operationalization** を選択します。
+3. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
 
 4. 「**C**」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
 
@@ -175,7 +178,7 @@ R Server クラスターは YARN では管理されていません。 worker ノ
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3: Web ノードにコンピューティング ノードの詳細を追加する
 
-使用停止状態の worker ノードすべてがコンピューティング ノードを実行するように構成されたら、エッジ ノードに戻って、使用が停止された worker ノードの IP アドレスを R Server Web ノードの構成に追加します。
+使用停止状態の worker ノードすべてがコンピューティング ノードを実行するように構成されたら、エッジ ノードに戻って、使用が停止された worker ノードの IP アドレスを ML Server Web ノードの構成に追加します。
 
 1. エッジ ノードに SSH 接続します。
 
@@ -192,6 +195,6 @@ R Server クラスターは YARN では管理されていません。 worker ノ
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight で R Server クラスターを管理する](r-server-hdinsight-manage.md)
-* [HDInsight の R Server クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-* [HDInsight の R Server クラスター向けの Azure Storage オプション](r-server-storage.md)
+* [HDInsight 上の ML サービス クラスターの管理](r-server-hdinsight-manage.md)
+* [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML サービス クラスター向けの Azure Storage オプション](r-server-storage.md)

@@ -2,7 +2,7 @@
 
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールするには
 1. Web フロントエンド (WFE) サーバーにインストーラーをコピーします。このサーバーは、SharePoint サーバーの全体管理 Web アプリケーションを実行するように構成されています。 
-2. 管理者特権を持つアカウントを使用して WFE サーバーにログオンします。
+2. 管理者特権を持つアカウントを使用して WFE サーバーにサインインします。
 3. インストーラーをダブルクリックします。 SharePoint 用 StorSimple アダプターのセットアップ ウィザードが起動します。 **[次へ]** をクリックしてインストールを開始します。
    
     ![StorSimple adapter setup start page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)

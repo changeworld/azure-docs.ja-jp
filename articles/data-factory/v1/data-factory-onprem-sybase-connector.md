@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1c39443a187c5ba5e92b22d48914289bc410ec79
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 75fbfe1e682f0022385bb5c406d772bb217180fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622348"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045271"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-sybase-connector.md)
-> * [バージョン 2 - プレビュー](../connector-sybase.md)
+> * [Version 1](data-factory-onprem-sybase-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-sybase.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Sybase コネクタ](../connector-sybase.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Sybase コネクタ](../connector-sybase.md)に関するページをご覧ください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Sybase データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
@@ -67,7 +67,7 @@ SAP Sybase SQL Anywhere (ASA) バージョン 16 以降がサポートされま�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesSybase** |[はい] |
+| type |type プロパティを **OnPremisesSybase** |[はい] |
 | [サーバー] |Sybase サーバーの名前です。 |[はい] |
 | [データベース] |Sybase データベースの名前です。 |[はい] |
 | schema |データベース内のスキーマの名前です。 |いいえ  |

@@ -1,26 +1,24 @@
 ---
-title: Azure Portal で Data Lake Store の使用を開始する | Microsoft Docs
-description: Azure Portal を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します
+title: Azure Portal で Data Lake Storage Gen1 の使用を開始する | Microsoft Docs
+description: Azure Portal を使用して、Data Lake Store アカウントを作成し、データ レイク ストアで基本的な操作を実行します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: fea324d0-ad1a-4150-81f0-8682ddb4591c
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e23b2496ccb69bb530bd825a1feb99abcc4ab35b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035626"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Store の使用を開始する
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
+
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +26,9 @@ ms.lasthandoff: 03/28/2018
 >
 > 
 
-Azure Portal を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。詳細については、「[Azure Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Azure Portal を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。詳しくは、「[Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
@@ -88,7 +88,7 @@ Azure Key Vault のキーを使用して Data Lake Store アカウントの暗�
 Data Lake Store アカウントにフォルダーを作成し、データの管理と保存を行うことができます。
 
 1. 作成した Data Lake Store アカウントを開きます。 左側のウィンドウで **[すべてのリソース]** をクリックし、[すべてのリソース] ブレードで、フォルダーの作成先となるアカウント名をクリックします。 スタート画面にアカウントをピン留めした場合は、そのアカウントのタイルをクリックします。
-2. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
+2. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
     ![Data Lake Store アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Store アカウントでのフォルダーの作成")
 3. [データ エクスプローラー] ブレードで、**[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、**[OK]** をクリックします。
@@ -118,7 +118,7 @@ Data Lake Store アカウントにフォルダーを作成し、データの管�
 Azure Data Lake Store アカウントに保存したデータは、Azure Active Directory とアクセス制御 (ACL) を使用してセキュリティで保護することができます。 その方法の詳細については、「 [Azure Data Lake Store でのデータのセキュリティ保護](data-lake-store-secure-data.md)」を参照してください。
 
 ## <a name="delete-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントの削除
-Azure Data Lake Store アカウントを削除するには、Data Lake Store ブレードで **[削除]**をクリックします。 この操作を確認するために、削除するアカウントの名前を入力するよう求められます。 アカウントの名前を入力し、 **[削除]**をクリックします。
+Azure Data Lake Store アカウントを削除するには、Data Lake Store ブレードで **[削除]** をクリックします。 この操作を確認するために、削除するアカウントの名前を入力するよう求められます。 アカウントの名前を入力し、 **[削除]** をクリックします。
 
 ![Data Lake アカウントの削除](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake アカウントの削除")
 

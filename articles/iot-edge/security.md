@@ -8,23 +8,20 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631430"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030582"
 ---
-# <a name="securing-azure-iot-edge---preview"></a>Azure IoT Edge のセキュリティ保護 - プレビュー
+# <a name="securing-azure-iot-edge"></a>Azure IoT Edge のセキュリティ保護
 
 インテリジェント エッジのセキュリティ保護は、エンド ツー エンドの IoT ソリューションの操作で信頼性を確保する上で必要です。 Azure IoT Edge は、さまざまなリスク プロファイル、配置シナリオに拡張できるセキュリティのために設計されており、すべての Azure サービスで期待されるセキュリティと同じレベルの保護を提供します。
 
 Azure IoT Edge は異なるハードウェア上で実行でき、Linux と Windows の両方に対応し、さまざまな展開シナリオに適用できます。  リスクの評価は、ソリューションの所有権、展開の地理的条件、データの機密性、プライバシー、アプリケーションの業界、および規制の要件などのさまざまな考慮事項に依存します。  特定のシナリオに対し具体的な解決策を提供する代わりに、適切な根拠を基に拡張性のために設計された原則に基づいて拡張セキュリティ フレームワークを設計します。 
  
 この記事では、セキュリティ フレームワークの概要について説明します。 詳細については、[インテリジェント エッジのセキュリティ保護][lnk-edge-blog]に関する記事をご覧ください。
-
->[!NOTE]
->次に示すセキュリティ フレームワークは、現時点で製品に追加されており、Azure IoT Edge の一般公開リリースで提供される予定です。 製品は現在パブリック プレビュー段階にあり、リリースは、完全なセキュリティ フレームワークを必要とする完全な運用環境展開ではなく、エッジ ソリューションの開発およびプロトタイピング用に作られています。   
 
 ## <a name="standards"></a>標準
 

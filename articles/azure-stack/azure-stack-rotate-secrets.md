@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258683"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029018"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -84,11 +84,12 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
     > [!note]  
     > 次の手順は、Azure Stack 外部シークレットのローテーションに対してのみ適用されます。
 
-2.  代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
-3.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
-3.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
-4.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
-5.  **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
+2. シークレット ローテーションが過去 1 か月以内に環境内で正常に実行されていないことを確認します。 現在、Azure Stack でサポートされているシークレット ローテーションは、1 か月につき 1 回のみです。 
+3. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
+4.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
+5.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
+6.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
+7.  **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
 
 ## <a name="rotating-external-and-internal-secrets"></a>外部および内部シークレットのローテーション
 
@@ -149,13 +150,13 @@ Azure Stack システムのシークレットのローテーションを行い�
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
 ```
 
-### <a name="description"></a>[説明]
+### <a name="description"></a>説明
 
 Start-SecretRotation コマンドレットは、Azure Stack システムのインフラストラクチャ シークレットのローテーションを行います。 既定では内部インフラストラクチャ ネットワークに公開されているすべてのシークレットのローテーションが行われ、ユーザーが入力するとすべての外部ネットワーク インフラストラクチャ エンドポイントの証明書のローテーションも行われます。 外部ネットワーク インフラストラクチャ エンドポイントのローテーションを行う場合は、Invoke-Command スクリプト ブロックで Start-SecretRotation を実行し、Azure Stack 環境の特権エンドポイント セッションを session パラメーターで渡す必要があります。
  
 ### <a name="parameters"></a>parameters
 
-| パラメーター | type | 必須 | 位置 | 既定値 | [説明] |
+| パラメーター | type | 必須 | 位置 | 既定値 | 説明 |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 内部と外部のシークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
 | CertificatePassword | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 内部と外部両方のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |

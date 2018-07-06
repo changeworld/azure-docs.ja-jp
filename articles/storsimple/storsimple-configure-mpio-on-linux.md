@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27779093"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021755"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -56,7 +56,7 @@ Linux のマルチパスは、次の表のように、カーネル コンポー�
 
 multipath.conf には次の 5 つのセクションがあります。
 
-- **システム レベルの既定値** *(defaults)*: システム レベルの既定値を上書きすることができます。
+- **システム レベルの既定値***(defaults)*: システム レベルの既定値をオーバーライドすることができます。
 - **ブラックリストに載っているデバイス** *(blacklist)*: device-mapper で制御してはいけないデバイスの一覧を指定することができます。
 - **ブラックリストの例外** *(blacklist_exceptions)*: ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
 - **記憶域コントローラー固有の設定** *(devices)*: 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
@@ -262,7 +262,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-5-verify-multipathing"></a>手順 5. マルチパスを確認する
 1. まず、iSCSI 接続が、StorSimple デバイスで次のように確立されていることを確認します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 StorSimple デバイスを検出します。 次のコマンドを入力します: 
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 StorSimple デバイスを検出します。 次のコマンドを入力します: 
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
@@ -420,7 +420,7 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 詳細については、 [マルチパス用のトラブルシューティングのための対話型コマンドを使用する](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)方法を参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
-| 確認を求められたら、「 | コマンド | [説明] |
+| 確認を求められたら、「 | コマンド | 説明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |iSCSI サービスを開始する |
 | &nbsp; |`service iscsid stop` |iSCSI サービスを停止する |

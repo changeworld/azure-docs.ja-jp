@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: b65888ced67ba3c236c31678cf452d40489bf028
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ba2325272552a13d6e464797b1fb523415393100
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631780"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945940"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Function および Cognitive Services を使用してトランスレーターを作成する
 
@@ -38,13 +38,16 @@ ms.locfileid: "34631780"
 
 ### <a name="a-start-vs-code"></a>A. VS Code の起動
 
-- DevKit がお使いの PC に接続されていないことを確認します。
+- DevKit がお使いの PC に接続されていることを確認します。
 - VS Code の起動
 - DevKit をコンピューターに接続します。
 
 ### <a name="b-open-the-arduino-examples-folder"></a>B. [Arduino Examples]\(Arduino の例\) フォルダーを開く
 
-左側の **[Arduino Examples]\(Arduino の例\) > [Examples for MXCHIP AZ3166] > [AzureIoT]** を展開し、**[DevKitTranslator]** を選択します。 DEVKITTRANSLATOR プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+左側の **[Arduino Examples]\(Arduino の例\) > [Examples for MXCHIP AZ3166] > [AzureIoT]** を展開し、**[DevKitTranslator]** を選択します。 DEVKITTRANSLATOR プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。  
+
+> [!NOTE]
+> MXCHIP AZ3166 セクションの例が表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
 
 ![IoT DevKit のサンプル](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 

@@ -1,6 +1,6 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
 1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)に関するページを参照してください。
-2. ログインしたら、スタート画面で「 **WF.msc**」と入力し、Enter キーを押します。
+2. サインインしたら、スタート画面で「**WF.msc**」と入力し、Enter キーを押します。
    
     ![ファイアウォール プログラムを開始する](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. **[セキュリティが強化された Windows ファイアウォール]** の左ペインで、**[受信の規則]** を右クリックし、[操作] ペインの **[新しい規則]** をクリックします。
@@ -44,7 +44,7 @@
     初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。 これには数分かかることがあります。
 2. Management Studio では、 **[サーバーへの接続]** ダイアログ ボックスが表示されます。 **[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します (**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。 **[Windows 認証]** を選択し、**[ユーザー名]** ボックスで ***your_VM_name*\your_local_administrator** をそのまま使用します。 **[接続]** をクリックします。
    
-    ![[サーバーへの接続]](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
+    ![サーバーに接続する](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. SQL Server Management Studio のオブジェクト エクスプローラーで、SQL Server のインスタンス名 (仮想マシン名) を右クリックし、 **[プロパティ]** をクリックします。
    
     ![サーバー プロパティ](./media/virtual-machines-sql-server-connection-steps/20Server-Properties.png)

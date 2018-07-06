@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66d50c94f2aad15e0d4a1b7500e8a4aeb45b1742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214255"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946059"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -106,7 +106,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |はい |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
+| Windows エージェント |[はい] |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |はい |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
 | Operations Manager 管理グループ |はい |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
 | Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報は含まれません。 |
@@ -117,9 +117,9 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 管理対象のコンピューターの更新されたデータがダッシュボードに表示されるまでに、30 分～ 6 時間かかる場合があります。
 
-## <a name="schedule-an-update-deployment"></a>更新プログラムの展開をスケジュールする
+## <a name="schedule-an-update-deployment"></a>更新プログラムのデプロイをスケジュールする
 
-更新プログラムをインストールするには、リリース スケジュールとサービス期間と合致する展開をスケジュールします。 展開に含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
+更新プログラムをインストールするには、リリース スケジュールとサービス期間と合致する展開をスケジュールします。 デプロイに含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
 
 新しい更新プログラムの展開をスケジュールするには、**［Update Management］** で、**［更新プログラムの展開のスケジュール］** を選択します。
 

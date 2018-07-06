@@ -8,14 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632450"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030769"
 ---
-# <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>多数の IoT デバイスの構成と監視 - プレビュー
+# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Azure Portal を使って多数の IoT デバイスを構成および監視する
+
+[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
 Azure IoT Hub の自動デバイス管理では、大規模な数のデバイスをそのライフサイクル全体にわたって管理するための、複雑で反復的なタスクを大幅に自動化できます。 自動デバイス管理では、対象となるデバイスをプロパティに基づいて設定し、必要な構成を定義しておくと、デバイスがスコープに適合したときに、IoT Hub によってデバイスが更新されます。  これは、自動デバイス構成を使うことで実現されています。これにより管理者は、操作やコンプライアンスの概況を把握し、マージや競合に対処し、構成を段階的なアプローチで展開することができます。
 
@@ -28,9 +30,6 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 * **ターゲット コンテンツ**: ターゲットのデバイス ツイン内のどのプロパティを追加または更新するのかを定義します。 このコンテンツには、変更するプロパティのセクションへのパスが含まれます。
 
 * **メトリック**: 各種の構成状態 (**成功**、**進行中**、**エラー**など) の集計カウントを定義します。 カスタム メトリックは、デバイス ツインから報告されたプロパティに関するクエリとして指定されます。  システム メトリックは、ツインの更新状態を測定する既定のメトリックです (対象となるデバイス ツインの数や、正常に更新されたツインの数など)。 
-
-> [!Note]
-> プレビュー期間中、この機能は、米国東部、米国西部、北ヨーロッパ、および西ヨーロッパ地域の IoT Hub では使用できません。
 
 ## <a name="implement-device-twins-to-configure-devices"></a>デバイスを構成するためのデバイス ツインを実装する
 
@@ -52,7 +51,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 ## <a name="create-a-configuration"></a>構成を作成する
 
 1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration (preview)]\(IoT デバイス構成 (プレビュー)\)** を選択します。
+1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
 1. **[構成の追加]** を選択します。
 
 構成を作成するには、5 つの手順があります。 次のセクションで、手順ごとに説明します。 
@@ -96,7 +95,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 複数の構成で同じデバイスがターゲットになる場合があるため、各構成に優先順位番号を付ける必要があります。 競合した場合は、優先度の最も高い構成が適用されます。 
 
 1. 構成の**優先度**を、正の整数で入力します。 最大の数値が、最高の優先度と見なされます。 2 つの構成に同じ優先度が付けられている場合は、直近に作成された構成が優先されます。 
-1. **ターゲットの条件**を入力して、どのデバイスがこの構成の対象となるかを指定します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.chillerProperties.model='4000x'` です。 
+1. **ターゲットの条件**を入力して、どのデバイスがこの構成の対象となるかを指定します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.chillerProperties.model='4000x'` です。 `*` を指定するとすべてのデバイスがターゲットになります。
 1. **[次へ]** を選択して最後の手順に進みます。
 
 ### <a name="step-5-review-configuration"></a>手順 5: 構成の確認
@@ -108,8 +107,8 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 構成の詳細を確認し、それを実行しているデバイスを監視するには、次の手順を実行します。
 
 1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration (preview)]\(IoT デバイス構成 (プレビュー)\)** を選択します。
-1. 構成の一覧を確認します。 構成ごとに、次の詳細を表示できます。
+1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
+2. 構成の一覧を確認します。 構成ごとに、次の詳細を表示できます。
    * **ID** - 構成の名前。
    * **ターゲットの条件** - 対象となるデバイスを定義するためのクエリ。
    * **優先度** - 構成に割り当てられた優先順位番号。
@@ -136,25 +135,25 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 構成を変更するには、次の手順を実行します。 
 
 1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration (preview)]\(IoT デバイス構成 (プレビュー)\)** を選択します。 
-1. 変更する構成を選択します。 
-1. 次のフィールドに変更を加えます。 
+1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
+2. 変更する構成を選択します。 
+3. 次のフィールドに変更を加えます。 
    * ターゲット条件 
    * ラベル 
    * 優先順位 
    * メトリック
-1. **[保存]** を選択します。
-1. 「[構成の監視][anchor-monitor]」に記載された手順に従って、変更が適用されたことを確認します。 
+4. **[保存]** を選択します。
+5. 「[構成の監視][anchor-monitor]」に記載された手順に従って、変更が適用されたことを確認します。 
 
 ## <a name="delete-a-configuration"></a>構成を削除する
 
 構成を削除すると、対象となっていたすべてのデバイス ツインが、次に高い優先度の構成に移行されます。 デバイス ツインが他のいずれの構成のターゲット条件も満たさない場合は、他の設定は適用されません。 
 
 1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
-1. **[IoT device configuration (preview)]\(IoT デバイス構成 (プレビュー)\)** を選択します。 
-1. チェックボックスを使用して、削除する構成を選択します。 
-1. **[削除]** を選択します。
-1. 確認を求めるプロンプトが表示されます。
+1. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。 
+2. チェックボックスを使用して、削除する構成を選択します。 
+3. **[削除]** を選択します。
+4. 確認を求めるプロンプトが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、多数の IoT デバイスを構成および監視する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。

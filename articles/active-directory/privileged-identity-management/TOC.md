@@ -1,6 +1,6 @@
 # 概要
 ## [Azure AD PIMとは](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [特権アクセスのセキュリティ保護](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [特権アクセスのセキュリティ保護](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM のディレクトリ ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Azure リソース向けの PIM](azure-pim-resource-rbac.md)
 ## [PIM の承認ワークフロー](azure-ad-pim-approval-workflow.md)

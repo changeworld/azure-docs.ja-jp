@@ -1,7 +1,7 @@
 この例では、SharePoint Online の一覧で新しい項目が作成される場合、ロジック アプリ ワークフローを開始するために、 **[SharePoint Online - When a new item is created (SharePoint Online - 新しい項目が作成される場合)]** トリガーがどのように使用されるのかを示します。
 
 > [!NOTE]
-> まだ SharePoint Online に *"接続"* を作成していない場合は、SharePoint アカウントにサインインするよう求められます。  
+> まだ SharePoint Online への "*接続*" を作成していない場合は、SharePoint アカウントにサインインするよう求められます。  
 > 
 > 
 

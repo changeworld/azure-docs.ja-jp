@@ -1,26 +1,26 @@
 ---
-title: Log Analytics を使用した Azure SQL データ同期の監視 (プレビュー) | Microsoft Docs
-description: Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します (プレビュー)
+title: Log Analytics を使用した Azure SQL データ同期の監視 | Microsoft Docs
+description: Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650249"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025413"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Log Analytics を使用した SQL データ同期 (プレビュー) の監視 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>Log Analytics による SQL データ同期の監視 
 
 SQL データ同期アクティビティ ログをチェックし、エラーおよび警告を検出するには、以前に Azure Portal で SQL データ同期を手動でチェックするか、PowerShell または REST API を使用している必要があります。 データ同期の監視エクスペリエンスを向上させるカスタム ソリューションを構成するには、この記事の手順に従ってください。 このソリューションは、シナリオに合わせてカスタマイズできます。
 
-SQL データ同期の概要については、「[Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期 (プレビュー))](sql-database-sync-data.md)」を参照してください。
+SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>すべての同期グループのためのダッシュボードの監視 
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232179"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028950"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要 
 
@@ -77,7 +77,7 @@ ms.locfileid: "36232179"
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、[マネージド デバイス](active-directory-conditional-access-policy-connected-applications.md#managed-devices)のみに許可することです。 準拠しているデバイスの要求は、マネージド デバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、条件付きアクセス ポリシーは、Azure Active Directory に[登録](device-management-introduction.md)され、MDM ソリューションによって準拠としてマークされているデバイスで行われるアクセスの試行へのアクセスを許可します。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、[マネージド デバイス](active-directory-conditional-access-policy-connected-applications.md#managed-devices)のみに許可することです。 準拠しているデバイスの要求は、マネージド デバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、Azure Active Directory に[登録](device-management-introduction.md)されていうデバイスのうち、(デバイス OS の) Intune または Windows 10 デバイスのサードパーティ MDMシステムによって準拠としてマークされているデバイスで実行されたアクセス試行へのアクセスが、条件付きアクセス ポリシーによって許可されます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
 
 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 

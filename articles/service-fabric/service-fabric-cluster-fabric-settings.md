@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062281"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083194"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>各アップグレード ポリシーの説明
-
-- **Dynamic**: 動的構成を変更しても、Service Fabric プロセスまたはサービス ホスト プロセスのプロセス再起動は発生しません。 
-- **Static**: 静的構成を変更すると、変更を反映するために Service Fabric ノードが再起動されます。 ノード上のサービスは再起動されます。
-- **NotAllowed**: これらの設定は変更できません。 これらの設定を変更するには、クラスターを破棄して新しいクラスターを作成する必要があります。 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
 
 > [!NOTE]
 > ポータルで利用できるのは一部の設定のみです。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>各アップグレード ポリシーの説明
+
+- **Dynamic**: 動的構成を変更しても、Service Fabric プロセスまたはサービス ホスト プロセスのプロセス再起動は発生しません。 
+- **Static**: 静的構成を変更すると、変更を反映するために Service Fabric ノードが再起動されます。 ノード上のサービスは再起動されます。
+- **NotAllowed**: これらの設定は変更できません。 これらの設定を変更するには、クラスターを破棄して新しいクラスターを作成する必要があります。 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
 次の手順は、*MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示しています。

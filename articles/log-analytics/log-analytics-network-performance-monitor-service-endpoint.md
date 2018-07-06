@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215101"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030711"
 ---
-# <a name="service-endpoint-monitor"></a>サービス エンドポイント モニター
+# <a name="service-connectivity-monitor"></a>サービス接続モニター
 
-[Network Performance Monitor](log-analytics-network-performance-monitor.md) のサービス エンドポイント マネージャー機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視することができます。 対象となるエンドポイントには、Web サイト、SaaS アプリケーション、PaaS アプリケーション、および SQL データベースが含まれます。 
+[Network Performance Monitor](log-analytics-network-performance-monitor.md) のサービス接続モニター機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視することができます。 対象となるエンドポイントには、Web サイト、SaaS アプリケーション、PaaS アプリケーション、および SQL データベースが含まれます。 
 
-サービス エンドポイント モニターでは、次の機能を実行できます。 
+サービス接続モニターを使用して次の機能を実行できます。 
 
 - 複数のブランチ オフィスまたは場所からアプリケーションおよびネットワーク サービスへのネットワーク接続を監視します。 アプリケーションやネットワーク サービスには、Office 365、Dynamics CRM、内部の基幹業務アプリケーション、SQL データベースなどが含まれます。
 - 組み込みテストを使って、Office 365 および Dynamics365 エンドポイントへのネットワーク接続を監視します。 
@@ -34,7 +34,7 @@ ms.locfileid: "36215101"
 - トポロジ マップ上の各ホップの影響を受けている待機時間を表示することによって、アプリケーション パフォーマンスの低下の原因となっている可能性があるネットワーク上のホット スポットを特定します。
 
 
-![サービス エンドポイント モニター](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![サービス接続モニター](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>構成 
@@ -55,11 +55,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>サービス エンドポイント モニター テストの作成 
+### <a name="create-service-connectivity-monitor-tests"></a>サービス接続モニター テストを作成する 
 
 サービス エンドポイントへのネットワーク接続を監視するためのテストを作成します。
 
-1. **[サービス エンドポイント モニター]** タブを選びます。
+1. **[サービス接続モニター]** タブを選択します。
 2. **[テストの追加]** を選び、テストの名前と説明を入力します。 
 3. テストの種類を選択します。<br>
 
@@ -84,7 +84,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ## <a name="walkthrough"></a>チュートリアル 
 
-Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要を確認するには、**[サービス エンドポイントの監視]** ページを見ます。 
+Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要については、**[サービス接続の監視]** ページで確認できます。 
 
 ![[サービス エンドポイント モニター] ページ](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

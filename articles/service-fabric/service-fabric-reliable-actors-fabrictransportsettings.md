@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 5ba13aeb63a72b738aac435b63ebbcfd4eeb7fa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213216"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021414"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 
@@ -51,6 +51,10 @@ https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fa
 ## <a name="config-package"></a>構成パッケージ
 
 [構成パッケージ](service-fabric-application-and-service-manifests.md)を使用して既定の構成を変更できます。
+
+> [!IMPORTANT]
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成について詳しくは、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事をご覧ください。 
+> 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>アクター サービスの FabricTransport 設定を構成する
 

@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -119,10 +119,10 @@ function showError(endpoint, error, errorDesc) {
 
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-最初のサインインの後に、リソースにアクセスするためにトークンを要求されるたびにユーザーが再認証しなくて済むようにするには、トークンを取得する多くの場合に *acquireTokenSilent* を使用する必要があります。 しかし、以下のように、ユーザーが Azure Active Directory v2 エンドポイントとやり取りを行うことが必要になる場合もあります。
--   パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
--   ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している
--   2 要素認証が必須である
+最初のサインインの後に、リソースにアクセスするためにトークンを要求するたびにユーザーを再認証しなくてすむようにするには、トークンを取得する多くの場合に *acquireTokenSilent* を使用する必要があります。 ただし、次の例のように、ユーザーが Azure Active Directory v2 エンドポイントとやり取りを行う必要がある状況があります。
+- パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
+- ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している
+- 2 要素認証が必須である
 
 *acquireTokenRedirect(scope)* を呼び出すと、ユーザーは Azure Active Directory v2 エンドポイントにリダイレクトされ (または *acquireTokenPopup(scope)* を呼び出すと、ポップアップ ウィンドウが表示され)、ユーザーはここでやり取りをして、自分の資格情報の確認、要求されたリソースへの同意、または 2 要素認証の完了を行う必要があります。
 
@@ -204,7 +204,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign out the user
  */
 function signOut() {
     userAgentApplication.logout();

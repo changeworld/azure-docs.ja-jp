@@ -8,18 +8,18 @@ ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632909"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030565"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge エージェントと Edge ハブのモジュール ツインのプロパティ
 
 Edge エージェントと Edge ハブは、IoT Edge ランタイムを構成する 2 つのモジュールです。 各モジュールが実行する役割について詳しくは、「[Azure IoT Edge ランタイムとそのアーキテクチャについて](iot-edge-runtime.md)」をご覧ください。 
 
-この記事では、ランタイム モジュール ツインの必要なプロパティと報告されるプロパティを示します。 IoT Edge デバイスにモジュールをデプロイする方法の詳細については、「[Deployment and monitoring (デプロイおよび監視)][lnk-deploy]」を参照してください。
+この記事では、ランタイム モジュール ツインの必要なプロパティと報告されるプロパティを示します。 IoT Edge デバイスにモジュールをデプロイする方法の詳細については、[デプロイおよび監視][lnk-deploy]に関する記事を参照してください。
 
 ## <a name="edgeagent-desired-properties"></a>edgeAgent の必要なプロパティ
 
@@ -31,22 +31,25 @@ Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ
 | runtime.type | "docker" である必要がある | [はい] |
 | runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | [はい] |
 | runtime.settings.loggingOptions | Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション][lnk-docker-logging-options] | いいえ  |
+| runtime.settings.registryCredentials<br>.{registryId}.username | コンテナー レジストリのユーザー名です。 Azure Container Registry では、ユーザー名は通常、レジストリ名です。<br><br> 公開されていないモジュール イメージでは、レジストリの資格情報が必要です。 | いいえ  |
+| runtime.settings.registryCredentials<br>.{registryId}.password | コンテナー レジストリのパスワード。 | いいえ  |
+| runtime.settings.registryCredentials<br>.{registryId}.address | コンテナー レジストリのアドレス。 Azure Container Registry の場合、アドレスは通常 *{registryname}.azurecr.io* です。 | いいえ  |  
 | systemModules.edgeAgent.type | "docker" である必要がある | [はい] |
 | systemModules.edgeAgent.settings.image | Edge エージェントのイメージの URI。 現在、Edge エージェントは自身を更新できません。 | [はい] |
-| systemModules.edgeAgent.settings.createOptions | Edge エージェント コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
-| systemModules.edgeAgent.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
+| systemModules.edgeAgent.settings<br>.createOptions | Edge エージェント コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
+| systemModules.edgeAgent.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 | systemModules.edgeHub.type | "docker" である必要がある | [はい] |
 | systemModules.edgeHub.status | "running" である必要がある | [はい] |
 | systemModules.edgeHub.restartPolicy | "always" である必要がある | [はい] |
 | systemModules.edgeHub.settings.image | Edge ハブのイメージの URI。 | [はい] |
-| systemModules.edgeHub.settings.createOptions | Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
-| systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
+| systemModules.edgeHub.settings<br>.createOptions | Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
+| systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 | modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | [はい] |
 | modules.{moduleId}.type | "docker" である必要がある | [はい] |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | [はい] |
 | modules.{moduleId}.settings.image | モジュール イメージへの URI。 | [はい] |
 | modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
-| modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
+| modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 
 ## <a name="edgeagent-reported-properties"></a>edgeAgent の報告されるプロパティ
 
@@ -59,7 +62,7 @@ Edge エージェントの報告されるプロパティには、次の 3 つの
 この最後の情報は、最新の必要なプロパティがランタイムによって正常に適用されず、デバイスがまだ以前のデプロイ マニフェストを実行している場合に役立ちます。
 
 > [!NOTE]
-> Edge エージェントの報告されるプロパティは、デプロイの状態を大規模に調査するために [IoT Hub クエリ言語][lnk-iothub-query]でクエリできるため有効です。 この機能を使用する方法の詳細については、「[デプロイメント][lnk-deploy]」を参照してください。
+> Edge エージェントの報告されるプロパティは、デプロイの状態を大規模に調査するために [IoT Hub クエリ言語][lnk-iothub-query]でクエリできるため有効です。 状態のために Edge エージェント プロパティを使用する方法の詳細については、[1 台または多数のデバイスを対象とした IoT Edge デプロイ][lnk-deploy]に関する記事を参照してください。
 
 次の表には、必要なプロパティからコピーされる情報は含まれません。
 

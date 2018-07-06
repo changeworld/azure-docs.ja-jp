@@ -10,24 +10,21 @@ ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
+ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 6c5e32f0ed39ce2e8c1e412dcfc6c04fb0f8bd7a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715260"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019490"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要
 
 Azure HDInsight では、これまで単一ユーザーのローカル管理者のみをサポートしていました。これは、小規模なアプリケーション チームや部門に適していました。 Hadoop ベースのワークロードがエンタープライズ部門に普及するに伴い、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御などのエンタープライズ レベルの機能の必要性がますます重要になっています。 ドメイン参加済み HDInsight クラスターを使用すると、Active Directory ドメインに参加している HDInsight クラスターを作成し、Azure Active Directory で認証して HDInsight クラスターにログオンできる企業の従業員のリストを構成できます。 社外のユーザーは、HDInsight クラスターにログオンすることもアクセスすることもできません。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成できるため、データへのアクセスを必要に応じて制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。
 
 > [!NOTE]
-> この記事で説明する新機能のプレビュー版を使用できるクラスターの種類は、Hadoop、Spark、および対話型クエリのみです。
-
-> [!IMPORTANT]
-> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
+> この記事で説明する新機能のプレビュー版を使用できるクラスターの種類は、Hadoop、Spark、および対話型クエリのみです。 Oozie は、ドメイン参加済みのクラスターで使用できるようになりました。 Oozie Web UI にアクセスするには、[トンネリング](../hdinsight-linux-ambari-ssh-tunnel.md)を有効にする必要があります
 
 ## <a name="benefits"></a>メリット
 エンタープライズ セキュリティには、境界セキュリティ、認証、承認、暗号化の 4 つの大きな柱があります。

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee2440171b54e1279571ec4fcb0c5be7bec207a1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622562"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045740"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-teradata-connector.md)
-> * [バージョン 2 - プレビュー](../connector-teradata.md)
+> * [Version 1](data-factory-onprem-teradata-connector.md)
+> * [バージョン 2 (最新バージョン)](../connector-teradata.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Teradata コネクタ](../connector-teradata.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Teradata コネクタ](../connector-teradata.md)に関するページをご覧ください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Teradata データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
@@ -65,7 +65,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesTeradata** |[はい] |
+| type |type プロパティを **OnPremisesTeradata** |[はい] |
 | [サーバー] |Teradata のサーバーの名前です。 |[はい] |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |[はい] |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |

@@ -2,23 +2,24 @@
 title: アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを Azure AD で作成する | Microsoft Docs
 description: アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを作成する方法について説明します。
 services: active-directory
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.reviewer: mwahl
+ms.openlocfilehash: 853d8f09a94e46db218553500a50dc4ef1ec3d23
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234075"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448273"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>グループ メンバーまたはアプリケーション アクセスに対するアクセス レビューを Azure AD で作成する
 
@@ -26,7 +27,7 @@ ms.locfileid: "35234075"
 
 ## <a name="create-an-access-review"></a>アクセス レビューの作成
 
-1. グローバル管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、**[プログラム]** を選択します。
+1. グローバル管理者またはユーザー アカウント管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、**[プログラム]** を選択します。
 
 2. 作成するアクセス レビュー コントロールの従属先となるプログラムを選択します。 "**既定のプログラム**" が最初から存在するほか、別のプログラムを作成することもできます。 たとえば、コンプライアンスの取り組みやビジネス目標ごとにプログラムを 1 つ用意することができます。
 
@@ -38,7 +39,7 @@ ms.locfileid: "35234075"
 
 6. アクセス レビューを繰り返しにするには、頻度を [1 回] から [週 1 回]、[月 1 回]、[四半期に 1 回]、または [毎年] に変更し、スライダーまたはテキスト ボックスを使用して、繰り返しの系列の各レビューがレビュー担当者からの入力のために開かれる日数を定義します。 たとえば、レビューの重複を避けるために、月 1 回のレビューに設定できる最大期間は 27 日です。 
 
-7.  繰り返しのアクセス レビュー系列は 3 つの方法で終了できます。それは継続的に実行されて無期限にレビューを開始するか、特定の日付まで実行されるか、または定義された実行回数が完了した後まで実行されます。 グローバル管理者は、[設定] で日付を変更することによって作成後に系列を停止し、それがその日付に終了するようにできます。
+7.  繰り返しのアクセス レビュー系列は 3 つの方法で終了できます。それは継続的に実行されて無期限にレビューを開始するか、特定の日付まで実行されるか、または定義された実行回数が完了した後まで実行されます。 ユーザー アカウント管理者またはグローバル管理者は、[設定] で日付を変更することによって作成後に系列を停止し、それがその日付に終了するようにできます。
 
 8. アクセス レビューは、アプリケーションに割り当てられているグループのメンバーまたはユーザーを対象とすることができます。 また、アクセス レビューの範囲は限定することもでき、アプリケーションのメンバーになっているユーザー、つまりアプリケーションへのアクセス権を持つユーザー全員をレビューすることはせずに、メンバーとなっている (アプリケーションに割り当てられている) ゲスト ユーザーだけをレビュー対象にすることができます。
 

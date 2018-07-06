@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f5af46017dede0deac92ff5a7f35f17e083590d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9934e9757b5def444afb39d110e490aa6516521f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618608"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045077"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-sap-business-warehouse-connector.md)
-> * [バージョン 2 - プレビュー](connector-sap-business-warehouse.md)
+> * [Version 1](v1/data-factory-sap-business-warehouse-connector.md)
+> * [最新バージョン](connector-sap-business-warehouse.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP Business Warehouse (BW) からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の SAP BW コネクタ](v1/data-factory-sap-business-warehouse-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -62,7 +59,7 @@ SAP Business Warehouse (BW) のリンクされたサービスでは、次のプ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **SapBw** に設定する必要があります。 | [はい] |
+| type | type プロパティを **SapBw** に設定する必要があります。 | [はい] |
 | [サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | [はい] |
 | systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | [はい] |
 | clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | [はい] |
@@ -127,7 +124,7 @@ SAP BW からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | [はい] |
 
 **例:**

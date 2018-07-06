@@ -7,14 +7,14 @@ manager: carmonm
 keywords: バックアップ, バックアップする,
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606638"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960170"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 
@@ -34,11 +34,14 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 これらの条件が既に環境内で満たされている場合は、[VM のバックアップに関する記事](backup-azure-arm-vms.md)に進んでください。 これらの前提条件のいずれかをセットアップまたは確認する必要がある場合は、この記事の手順を参照してください。
 
 ## <a name="supported-operating-systems-for-backup"></a>バックアップでサポートされるオペレーティング システム
- * **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をサポートしています (Core OS Linux を除く)。 
- 
+
+ * **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をサポートしています (Core OS Linux を除く)。 復元ファイルをサポートする Linux オペレーティング システムの一覧については、[仮想マシンのバックアップからのファイルの復元](backup-azure-restore-files-from-vm.md#for-linux-os)に関する記事を参照してください。
+
     > [!NOTE] 
     > 他の個人所有の Linux ディストリビューションは、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。 ただし、それらのディストリビューションはサポートされません。
- * **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
+    >
+ * **Windows Server**、**Windows client**: Windows Server 2008 R2 または Windows 7 より前のバージョンはサポートされていません。
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>VM のバックアップと復元に関する制限
 環境を準備する前に、制限事項を把握してください。

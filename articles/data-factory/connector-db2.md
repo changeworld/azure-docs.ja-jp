@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 808405de3391912433919d21b59214831b024866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616398"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046243"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-db2-connector.md)
-> * [バージョン 2 - プレビュー](connector-db2.md)
+> * [Version 1](v1/data-factory-onprem-db2-connector.md)
+> * [最新バージョン](connector-db2.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、DB2 データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の DB2 コネクタ](v1/data-factory-onprem-db2-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -65,7 +62,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **Db2** に設定する必要があります。 | [はい] |
+| type | type プロパティは **Db2** に設定する必要があります。 | [はい] |
 | [サーバー] |DB2 サーバーの名前です。 |[はい] |
 | [データベース] |DB2 データベースの名前です。 |[はい] |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |[はい] |
@@ -106,7 +103,7 @@ DB2 からデータをコピーするには、データセットの type プロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | DB2 データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -136,7 +133,7 @@ DB2 からデータをコピーするには、コピー アクティビティの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

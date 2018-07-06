@@ -4,16 +4,16 @@ description: Azure IoT Edge での一般的な問題を解決し、トラブル�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ad22b0cd1457c1d4146a75047ff18e916c0c7ccd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633538"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128062"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -23,36 +23,135 @@ ms.locfileid: "34633538"
 
 問題が発生したときは、コンテナーのログと、デバイスとの間でやり取りされたメッセージを調べて、お使いの IoT Edge デバイスの状態を詳しく把握します。 情報を収集するには、このセクションのコマンドとツールを使います。 
 
-* Docker コンテナーのログを調べて、問題を検出します。 最初に展開済みのコンテナーを調べた後、IoT Edge ランタイムを構成するコンテナー (Edge エージェントと Edge ハブ) を調べます。 通常、Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。 
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Security Manager の状態とそのログを確認します。
 
-   ```cmd
-   docker logs <container name>
+Linux の場合:
+- IoT Edge Security Manager の状態を確認します。
+
+   ```bash
+   sudo systemctl status iotedge
    ```
 
-* Edge ハブを通過したメッセージを確認し、ランタイム コンテナーからの詳細なログでデバイスのプロパティの更新についての洞察を収集します。
+- IoT Edge Security Manager のログを確認します。
 
-   ```cmd
-   iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
-   ```
+    ```bash
+    sudo journalctl -u iotedge -f
+    ```
+
+- IoT Edge Security Manager のログの詳細を確認します。
+
+   - iotedge デーモンの設定を編集します。
+
+      ```bash
+      sudo systemctl edit iotedge.service
+      ```
    
-* iotedgectl コマンドからの詳細ログを確認します。
+   - 次の行を更新します。
+    
+      ```
+      [Service]
+      Environment=IOTEDGE_LOG=edgelet=debug
+      ```
+    
+   - IoT Edge セキュリティ デーモンを再起動します。
+    
+      ```bash
+      sudo systemctl cat iotedge.service
+      sudo systemctl daemon-reload
+      sudo systemctl restart iotedge
+      ```
 
-   ```cmd
-   iotedgectl --verbose DEBUG <command>
+Windows の場合:
+- IoT Edge Security Manager の状態を確認します。
+
+   ```powershell
+   Get-Service iotedge
    ```
 
-* 接続の問題が発生している場合は、デバイスの接続文字列など、Edge デバイスの環境変数を調べます。
+- IoT Edge Security Manager のログを確認します。
+
+   ```powershell
+   # Displays logs from today, newest at the bottom.
+ 
+   Get-WinEvent -ea SilentlyContinue `
+   -FilterHashtable @{ProviderName= "iotedged";
+     LogName = "application"; StartTime = [datetime]::Today} |
+   select TimeCreated, Message |
+   sort-object @{Expression="TimeCreated";Descending=$false}
+   ```
+
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Security Manager が実行されていない場合は、yaml 構成ファイルを確認してください。
+
+> [!WARNING]
+> YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。
+
+Linux の場合:
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+Windows の場合:
 
    ```cmd
-   docker exec edgeAgent printenv
+   notepad C:\ProgramData\iotedge\config.yaml
+   ```
+
+### <a name="check-container-logs-for-issues"></a>コンテナーのログで問題を確認する
+
+IoT Edge セキュリティ デーモンが実行されている場合は、コンテナーのログを参照して問題を検出します。 最初に展開済みのコンテナーを調べた後、IoT Edge ランタイムを構成するコンテナー (Edge エージェントと Edge ハブ) を調べます。 通常、Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。 
+
+   ```cmd
+   iotedge logs <container name>
+   ```
+
+### <a name="view-the-messages-going-through-the-edge-hub"></a>Edge ハブを経由するメッセージを確認します。
+
+Edge ハブを経由するメッセージを確認し、edgeAgent および edgeHubランタイム コンテナーからの詳細なログからデバイスのプロパティの更新についての洞察を収集します。 これらのコンテナーで詳細ログを有効にするには、環境変数 `RuntimeLogLevel` を設定します。 
+
+Linux の場合:
+    
+   ```cmd
+   export RuntimeLogLevel="debug"
+   ```
+    
+Windows の場合:
+    
+   ```powershell
+   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
    ```
 
 IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能を使ってメッセージを表示します。 詳しくは、「[Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)」(Azure IoT で開発するときの便利なツール) をご覧ください。
 
-ログとメッセージの情報を調べた後は、Azure IoT Edge ランタイムの再起動を試みることもできます。
+### <a name="restart-containers"></a>コンテナーを再起動する
+ログとメッセージの情報を調べた後は、コンテナーの再起動を試みることもできます。
+
+```
+iotedge restart <container name>
+```
+
+IoT Edge ランタイム コンテナーを再起動する:
+
+```
+iotedge restart edgeAgent && iotedge restart edgeHub
+```
+
+### <a name="restart-the-iot-edge-security-manager"></a>IoT Edge Security Manager を再起動する
+
+問題がまだ解決しない場合は、IoT Edge Security Manager を再起動することができます。
+
+Linux の場合:
 
    ```cmd
-   iotedgectl restart
+   sudo systemctl restart iotedge
+   ```
+
+Windows の場合:
+
+   ```powershell
+   Stop-Service iotedge -NoWait
+   sleep 5
+   Start-Service iotedge
    ```
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>約 1 分後に Edge エージェントが停止する
@@ -100,29 +199,11 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 Edge エージェントに、モジュールのイメージにアクセスするためのアクセス許可がありません。 
 
 ### <a name="resolution"></a>解決策
-`iotedgectl login` コマンドをもう一度実行してみます。
+配置マニフェストで、レジストリの資格情報が正しく指定されていることを確認します。
 
-## <a name="iotedgectl-cant-find-docker"></a>iotedgectl で Docker が検出されない
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge セキュリティ デーモンが無効なホスト名で失敗する
 
-コマンド `iotedgectl setup` または `iotedgectl start` が失敗して、ログに次のメッセージが出力されます。
-```output
-File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
-  info = self._client.info()
-File "/usr/local/lib/python2.7/dist-packages/docker/client.py", line 174, in info
-  return self.api.info(*args, **kwargs)
-File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in info
-  return self._result(self._get(self._url("/info")), True)
-```
-
-### <a name="root-cause"></a>根本原因
-前提条件である Docker を iotedgectl が検出できません。
-
-### <a name="resolution"></a>解決策
-Docker をインストールし、実行されていることを確認してから再試行してください。
-
-## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>無効な hostname のために iotedgectl セットアップが失敗する
-
-コマンド `iotedgectl setup` が失敗して、次のメッセージが出力されます。 
+コマンド `sudo journalctl -u iotedge` が失敗して、次のメッセージが出力されます。 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -143,9 +224,17 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 4. 新しい DNS 名をコピーします。名前は **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
 5. 仮想マシン内で、次のコマンドを使用して、実際の DNS 名によって IoT Edge ランタイムを設定します。
 
-   ```input
-   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
-   ```
+   - Linux の場合:
+
+      ```bash
+      sudo nano /etc/iotedge/config.yaml
+      ```
+
+   - Windows の場合:
+
+      ```cmd
+      notepad C:\ProgramData\iotedge\config.yaml
+      ```
 
 ## <a name="next-steps"></a>次の手順
-IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iot-edge/issues)してください。 
+IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 

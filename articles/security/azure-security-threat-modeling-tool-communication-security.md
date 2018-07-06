@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019485"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029800"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
@@ -135,7 +135,7 @@ ms.locfileid: "28019485"
   </system.webServer>
 </configuration>
 ```
-このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、HTTP://contoso.com は、HTTPS://contoso.com にリダイレクトされます。 
+このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。 301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。 たとえば、HTTP://contoso.com は HTTPS://contoso.com に制限されます。 
 
 ## <a id="http-hsts"></a>HTTP Strict Transport Security (HSTS) を有効にする
 
@@ -146,7 +146,7 @@ ms.locfileid: "28019485"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP HTTP Strict Transport Security チート シートを有効にする](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーが http://example.com をブックマークするか手動で入力し、man-in-the middle 攻撃を受けている: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>HTTPS のみを対象とする Web アプリケーションに不注意で HTTP リンクが含まれている、または HTTP 経由でコンテンツを提供している: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>man-in-the-middle 攻撃者が、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、そのユーザーが不正な証明書を受け入れることを期待している: HSTS は、ユーザーによる無効な証明書メッセージの上書きを許可しません</li></ul>|
+| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーが http://example.com をブックマークするか手動で入力し、man-in-the middle 攻撃を受けている: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>HTTPS のみを対象とする Web アプリケーションに不注意で HTTP リンクが含まれている、または HTTP 経由でコンテンツを提供している: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>man-in-the-middle 攻撃者が、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、そのユーザーが不正な証明書を受け入れることを期待している: HSTS は、ユーザーによる無効な証明書メッセージのオーバーライドを許可しません</li></ul>|
 
 ## <a id="sqlserver-validation"></a>SQL Server 接続の暗号化と証明書の検証を確認する
 
@@ -288,7 +288,7 @@ namespace CertificatePinningExample
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **手順** | アプリケーションは、機密情報へのすべてのアクセスに対して HTTPS が確実に使用されるよう構成されている必要があります。<ul><li>**説明:** アプリケーションが機密情報を処理しており、メッセージ レベルの暗号化が使用されていない場合は、暗号化されたトランスポート チャネル経由での通信のみを許可します。</li><li>**推奨:** HTTP トランスポートが無効になっていることを確認し、代わりに HTTPS トランスポートを有効にします。 たとえば、`<httpTransport/>` を `<httpsTransport/>` タグに置き換えます。 アプリケーションへのアクセス チャネルを確実にセキュリティで保護したい場合は、ネットワーク構成 (ファイアウォール) には依存しないでください。 論理的に言えば、アプリケーションのセキュリティをネットワークに依存するべきではありません。</li></ul><p>実際的な観点から言うと、ネットワーク セキュリティ担当者は、アプリケーションの進化に伴うアプリケーションのセキュリティ要件を常に把握しているわけではありません。</p>|
 
 ## <a id="message-protection"></a>WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する
