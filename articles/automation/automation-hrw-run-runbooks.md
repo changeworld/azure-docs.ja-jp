@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195711"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062576"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -157,13 +157,9 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 Hybrid Runbook Worker で実行されるジョブの処理は、Azure サンドボックスで実行される場合の処理と少し異なります。 主な違いの 1 つは、Hybrid Runbook Worker ではジョブ期間に制限がないことです。 実行時間の長い Runbook がある場合は、ハイブリッド worker をホストしているマシンが再起動された場合などに、再起動に対する回復性があることを確認します。 ハイブリッド worker のホスト マシンが再起動された場合、実行中の Runbook ジョブは最初から再起動されるか、PowerShell ワークフロー Runbook の最後のチェックポイントから再起動されます。 Runbook ジョブが 3 回以上再起動された場合、そのジョブは中断されます。
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook のトラブルシューティング
+## <a name="troubleshoot"></a>トラブルシューティング
 
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 また、ハイブリッド worker は、**Application and Services Logs\Microsoft-SMA\Operational** にある Windows イベント ログにエラーとイベントを記録します。 Worker で実行される Runbook に関連するイベントは、**Application and Services Logs\Microsoft-Automation\Operational** に書き込まれます。 **Microsoft SMA** ログには、Worker にプッシュされる Runbook ジョブと Runbook の処理に関連するイベントが他にも多く含まれています。 **Microsoft Automation** イベント ログには、Runbook の実行のトラブルシューティングに役立つ詳細情報があるイベントは多くありませんが、Runbook ジョブの結果が含まれています。
-
-[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md) は Hybrid Worker から Azure Automation に送られます。 他の Runbook と同じ方法で、Verbose および Progress ストリームも有効にできます。
-
-Runbook が正常に完了せず、ジョブの概要で状態が**中断**になっている場合は、トラブルシューティングの記事「[Hybrid Runbook Worker: Runbook ジョブが中断状態で終了する](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended)」を参照してください。
+Runbook が正常に完了せず、ジョブの概要で状態が**中断**になっている場合は、[Runbook の実行エラー](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)に関するトラブルシューティング ガイドを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

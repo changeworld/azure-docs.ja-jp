@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6826d87e5613ce4892e9fd839c66ec26282ad188
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e8d3b83c8508ae5913975edcbf89f4e70a8b08be
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622127"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050850"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622127"
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での Hive アクティビティを使用したデータ変換](../transform-data-using-hadoop-hive.md)についてのページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Hive アクティビティを使用したデータ変換](../transform-data-using-hadoop-hive.md)に関するページを参照してください。
 
 Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) または [オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) の Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
@@ -78,7 +78,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
 | --- | --- | --- |
 | name |アクティビティの名前 |[はい] |
 | description  |アクティビティの用途を説明するテキストです。 |いいえ  |
-| 型 |HDinsightHive |[はい] |
+| type |HDinsightHive |[はい] |
 | inputs |Hive アクティビティによって使用される入力 |いいえ  |
 | outputs |Hive アクティビティによって生成される出力 |[はい] |
 | linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |

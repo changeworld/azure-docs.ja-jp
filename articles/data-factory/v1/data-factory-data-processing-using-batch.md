@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ad883248097fd84e2fa064515b6c7a5232aaa3d3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621940"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050575"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
-> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのカスタム アクティビティ](../transform-data-using-dotnet-custom-activity.md)に関する記事を参照してください。
+> この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory でのカスタム アクティビティ](../transform-data-using-dotnet-custom-activity.md)に関する記事を参照してください。
 
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
 
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 4. **[プール]** ブレードで、ツールバーの **[追加]** ボタンを選択してプールを追加します。
 
-   a. プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
 
    b. **[オペレーティング システム ファミリ]** 設定には、**[Windows Server 2012 R2]** を指定します。
 
@@ -178,7 +178,7 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>手順: カスタム アクティビティの作成
 1. Visual Studio で .NET クラス ライブラリ プロジェクトを作成します。
 
-   a. Visual Studio 2012/2013/2015 を起動します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Visual Studio 2012/2013/2015 を起動します。
 
    b. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 
@@ -526,7 +526,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>手順 1: Data Factory を作成する
 1. [Azure Portal](https://portal.azure.com/) にサインインしてから、次の手順を実行します。
 
-   a. 左側のメニューの **[新規]** を選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側のメニューの **[新規]** を選択します。
 
    b. **[新規]** ブレードの **[データ + 分析]** を選択します。
 
@@ -569,7 +569,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 2. JSON スクリプト内では:
 
-   a. **account name** を Batch アカウントの名前に置き換えます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **account name** を Batch アカウントの名前に置き換えます。
 
    b. **access key** を Batch アカウントのアクセス キーに置き換えます。
 

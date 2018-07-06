@@ -4,21 +4,20 @@ description: Azure Portal の Microsoft.Compute.UserNameTextBox UI 要素につ�
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b65b62389fbb66c9461430d1dd2df42e71bf6cff
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9f07c5bf9ba1f1880fa142beb52455522425e68d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260724"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063303"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 要素
 Windows と Linux のユーザー名の検証が組み込まれているテキスト ボックス コントロールです。
@@ -45,16 +44,15 @@ Windows と Linux のユーザー名の検証が組み込まれているテキ�
 ```
 
 ## <a name="remarks"></a>解説
-- `constraints.required` が **true** に設定されている場合、テキスト ボックスには、正常に検証を完了できる値を含める必要があります。 既定値は **true**です。
+- `constraints.required` が **true** に設定されている場合、テキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true**です。
 - `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。
 - `constraints.regex` は JavaScript の正規表現パターンです。 指定する場合、テキスト ボックスの値は、正常に検証を完了できるパターンと一致する必要があります。 既定値は **null** です。
 - `constraints.validationMessage` はテキスト ボックスの値が `constraints.regex` で指定された検証に失敗したときに表示される文字列です。 指定しない場合、テキスト ボックスの組み込みの検証メッセージが使用されます。 既定値は **null** です。
-- この要素には、`osPlatform` で指定された値に基づく検証が組み込まれています。 この組み込みの検証では、カスタム正規表現も使用できます。
-`constraints.regex` の値が指定されている場合、組み込み検証とカスタム検証の両方がトリガーされます。
+- この要素には、`osPlatform` で指定された値に基づく検証が組み込まれています。 この組み込みの検証では、カスタム正規表現も使用できます。 `constraints.regex` の値が指定されている場合、組み込み検証とカスタム検証の両方がトリガーされます。
 
 ## <a name="sample-output"></a>サンプル出力
 ```json
-"tabrezm"
+"Example name"
 ```
 
 ## <a name="next-steps"></a>次の手順

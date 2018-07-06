@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: fdfb35b0e1c52ad2aad164a38ae308f9142880a6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619628"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055519"
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Store へのデータの読み込み
 
@@ -35,9 +35,6 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
 
 > [!NOTE]
 > 詳しくは、「[Copy data to or from Azure Data Lake Store by using Azure Data Factory](connector-azure-data-lake-store.md)」(Azure Data Factory を使用した Azure Data Lake Store のデータのコピー) をご覧ください。
->
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 でのコピー アクティビティ](v1/data-factory-data-movement-activities.md)に関する記事をご覧ください。
-
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -56,7 +53,7 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
     * **名前**: Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**: データ ファクトリを作成する Azure サブスクリプションを選択します。 
     * **リソース グループ**: ドロップダウン リストから既存のリソース グループを選択するか、**[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-    * **バージョン**: **[V2 (プレビュー)]** を選択します。
+    * **バージョン**: **[V2]** を選択します。
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
 3. **[作成]** を選択します。
@@ -74,35 +71,45 @@ Azure Data Factory には、Azure Data Lake Store にデータを読み込む際
 2. **[プロパティ]** ページで、**[タスク名]** フィールドに「**CopyFromAmazonS3ToADLS**」と指定し、**[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. **[ソース データ ストア]** ページで **[Amazon S3]** を選択し、**[次へ]** を選択します。
+3. **[ソース データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックします。
 
     ![[ソース データ ストア] ページ](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
+    
+    **[Amazon S3]** を選択し、**[続行]** を選択します。
+    
+    ![ソース データ ストアの S3 ページ](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    
 4. **[Amazon S3 接続の指定]** ページで、次の手順を実行します。 
    1. **[アクセス キー ID]** の値を指定します。
    2. **[シークレット アクセス キー]** の値を指定します。
-   3. **[次へ]** を選択します。
+   3. **[完了]** を選択します。
    
    ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+   
+   4. 新しい接続が表示されます。 **[次へ]** を選択します。
+   
+   ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、**[選択]**、**[次へ]** の順に選択します。
 
     ![入力ファイルまたはフォルダーの選択](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. **[配布先データ ストア]** ページで **[Azure Data Lake Store]** を選択し、**[次へ]** を選択します。
-
-    ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
-
-7. **[Copy files recursively]\(ファイルを再帰的にコピー\)** オプションと **[バイナリ コピー]** (ファイルをそのままコピー) オプションをオンにして、コピーの動作を選択します。 **[次へ]** を選択します。
+6. **[Copy files recursively]\(ファイルを再帰的にコピー\)** オプションと **[バイナリ コピー]** (ファイルをそのままコピー) オプションをオンにして、コピーの動作を選択します。 **[次へ]** を選択します。
 
     ![出力フォルダーの指定](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    
+7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Store]** を選択して、**[続行]** を選択します。
+
+    ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
 8. **[Data Lake Store 接続の指定]** ページで、次の手順を実行します。 
 
    1. **[Data Lake Store アカウント名]** で、Data Lake Store を選択します。
-   2. サービス プリンシパル情報として **[テナント]**、**[サービス プリンシパル ID]**、および **[サービス プリンシパル キー]** を指定します。
+   2. **[テナント]** を指定し、[完了] を選択します。
    3. **[次へ]** を選択します。
    
    > [!IMPORTANT]
-   > このチュートリアルでは、"_サービス プリンシパル_" を使用して、Data Lake Store を認証します。 [次の手順](connector-azure-data-lake-store.md#using-service-principal-authentication)に従って、サービス プリンシパルに Azure Data Lake Store のアクセス許可を適切に付与します。
+   > このチュートリアルでは、"_マネージド サービス ID_" を使用して、Data Lake Store を認証します。 [次の手順](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)に従って、サービス プリンシパルに Azure Data Lake Store のアクセス許可を適切に付与します。
    
    ![Azure Data Lake Store アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、**[次へ]** を選択します。 

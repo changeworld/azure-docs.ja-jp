@@ -8,16 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850173"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35640642"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
 
@@ -236,7 +236,8 @@ Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保�
 最初のスクリーンショットで、DNN の調整により、すべてのクラスの SVM トレーニングよりも精度が向上しています。 2 番目のスクリーン ショットでは、分類器が何かなど、追跡対象のすべてのメトリックを示しています。 この追跡は、スクリプト `5_evaluate.py` で Azure Machine Learning Workbench ロガーを呼び出すことによって行われます。 さらに、スクリプトは、ROC 曲線と混同行列を *outputs* フォルダーに保存します。 この *outputs* フォルダーは、その内容も、Workbench 履歴機能によって追跡される点で特別であり、そのためにローカル コピーが上書きされているかどうかに関係なく、出力ファイルにいつでもアクセスできます。
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>
+</p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>

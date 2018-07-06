@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory でのスクリプト アクティビティ | Microsoft Docs
-description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。
+description: スクリプト アクティビティを使用して Data Factory パイプラインからスクリプトを呼び出す方法を説明します。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,17 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: a6b5c6f4b74bb78bdfe737af21f689e4ab5980bf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47151fde09dd2a67c6a321e438d7b1b98ff1aca3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618999"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049908"
 ---
 # <a name="script-activity-in-azure-data-factory"></a>Azure Data Factory でのスクリプト アクティビティ
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 

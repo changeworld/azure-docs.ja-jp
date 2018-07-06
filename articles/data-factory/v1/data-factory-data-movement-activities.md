@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cdea020ad4c9c9e828d62fff8639acec2e3d6c74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621923"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054260"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-data-movement-activities.md)
-> * [バージョン 2 - プレビュー](../copy-activity-overview.md)
+> * [Version 1](data-factory-data-movement-activities.md)
+> * [Version 2 (現在のバージョン)](../copy-activity-overview.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 でのコピー アクティビティ](../copy-activity-overview.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 のコピー アクティビティ](../copy-activity-overview.md)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 Azure Data Factory では、コピー アクティビティを使用して、オンプレミスとクラウド データ ストア間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。

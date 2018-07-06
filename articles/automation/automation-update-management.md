@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8013a221f818b2aca8163e5f5195cae17c8a6a95
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232145"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063512"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -63,7 +63,7 @@ Linux コンピューターでは、対応スキャンは既定では 3 時間�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))<br/> より高い信頼性を保証するには Windows PowerShell 5.1 を使用することをお勧めします。  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。        |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための 'yum' が必要です。         |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -263,21 +263,217 @@ Hybrid Runbook Worker で必要なポートの詳細については、[ハイブ
 
 ## <a name="search-logs"></a>検索ログ
 
-Azure Portal で提供されている詳細情報に加え、ログに対する検索を実行できます。 **[変更の追跡]** ウィンドウで、**[Log Analytics]** を選択します。 **[ログ検索]** ウィンドウが開きます。
+Azure Portal で提供されている詳細情報に加え、ログに対する検索を実行できます。 ソリューション ページで **[Log Analytics]** を選択します。 **[ログ検索]** ウィンドウが開きます。
+
+また、[Log Analytics の検索 API のドキュメント](
+https://dev.loganalytics.io/)を参照して、クエリをカスタマイズし、さまざまなクライアントから使用する方法などを学ぶこともできます。
 
 ### <a name="sample-queries"></a>サンプル クエリ
 
-次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
+以下のセクションは、このソリューションによって収集された更新レコードのログ クエリの例です。
 
-| クエリ | 説明 |
-| --- | --- |
-|アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター</br>次のいずれかを追加して、OS を限定します。</br>OSType != "Linux"</br>OSType == "Linux" |
-| アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; where Computer == "ContosoVM1.contoso.com"</br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
-| Event</br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")</br>&#124; where UpdateState == "Needed" and Optional == false </br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
-| アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム |
-| UpdateRunProgress</br>&#124; where InstallationStatus == "failed" </br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター</br>次のいずれかを追加して、OS を限定します。</br>OSType = "Windows"</br>OSType == "Linux" |
-| アップデート</br>&#124; where OSType == "Linux"</br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")</br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 |
-| UpdateRunProgress</br>&#124; where UpdateRunName == "DeploymentName"</br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) |
+#### <a name="single-azure-vm-assessment-queries-windows"></a>単一の Azure VM 評価クエリ (Windows)
+
+VMUUID 値を、クエリの対象である仮想マシンの VM GUID に置き換えます。 Log Analytics で次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"b08d5afa-1471-4b52-bd95-a44fea6e4ca8"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="missing-updates-list"></a>不足している更新プログラム一覧
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"8bf1ccc6-b6d3-4a0b-a643-23f346dfdf82"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
+
+#### <a name="single-azure-vm-assessment-queries-linux"></a>単一の Azure VM 評価クエリ (Linux)
+
+Linux のディストリビューションによっては、Azure Resource Manager に由来する VMUUID 値と、Log Analytics に格納されている値との間で[エンディアン](https://en.wikipedia.org/wiki/Endianness)が一致しない場合があります。 次のクエリは、いずれかのエンディアンでの一致をチェックします。 結果を適切に返すために、VMUUID 値を GUID のビッグエンディアン形式とリトルエンディアン形式に置き換えます。 Log Analytics で次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>"
+| summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
+```
+
+##### <a name="missing-updates-list"></a>不足している更新プログラム一覧
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+
+```
+
+#### <a name="multi-vm-assessment-queries"></a>マルチ VM の評価クエリ
+
+##### <a name="computers-summary"></a>コンピューターの概要
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Approved, Optional, Classification) by SourceComputerId, UpdateID
+    | distinct SourceComputerId, Classification, UpdateState, Approved, Optional
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed" and (Optional==false or Classification has "Critical" or Classification has "Security") and Approved!=false, iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity
+| union (Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by SourceComputerId, Product, ProductArch
+    | distinct SourceComputerId, Classification, UpdateState
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed", iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
+| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
+| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeeedOtherUpdatesCount=sum(computersNeeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
+| extend allComputersCount=assessedComputersCount+notAssessedComputersCount
+
+
+```
+
+##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| union (Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification )
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="computers-list"></a>コンピューター一覧
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Product, Computer, ComputerEnvironment) by SourceComputerId, Product, ProductArch
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed"), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed"), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed"), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2)
+| union(Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, Optional, Approved, Computer, ComputerEnvironment) by Computer, SourceComputerId, UpdateID
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed" and Approved!=false), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed" and Approved!=false), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed" and Optional==false and Approved!=false), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2) )
+| order by ComplianceOrder asc, missingCriticalUpdatesCount desc, missingSecurityUpdatesCount desc, missingOtherUpdatesCount desc, displayName asc
+| project-away ComplianceOrder
+```
+
+##### <a name="missing-updates-list"></a>不足している更新プログラム一覧
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| union(Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2)
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 
@@ -309,39 +505,9 @@ Update Management は更新プログラムの強化をクラウドで実行す�
 
 更新プログラムの分類ごとの更新プログラムの展開は CentOS では既定では動作しません。 SUSE で '他の更新プログラム' *のみ*を分類として選択すると、zypper (パッケージ マネージャー) に関連するセキュリティ更新プログラムもインストールされるか、またはその依存関係がまず必要になる場合があります。 これは、zypper の制限です。 場合によっては、更新プログラムのログを確認するため、更新プログラムの展開を再実行する必要があります。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshoot"></a>トラブルシューティング
 
-このセクションでは、Update Management ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。
-
-### <a name="windows"></a>Windows
-
-ソリューションまたは仮想マシンを配布準備しようとして問題が発生した場合は、ローカル コンピューター上の**アプリケーションとサービス ログ\Operations Manager** イベント ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。 次の表に、具体的なエラー メッセージと、考えられる個別の解決策を示します。
-
-| メッセージ | 理由 | 解決策 |
-|----------|----------|----------|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br/>Registration Failed with Exception (登録は次の例外で失敗しました)<br/>System.InvalidOperationException: {"Message":"Machine is already<br/>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンが既に Update Management 用の別のワークスペースに配布準備されています。 | [Hybrid Runbook グループを削除する](automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)ことにより、古いアーティファクトのクリーンアップを実行します。|
-| Unable to Register Machine for Patch Management, Registration Failed with Exception (更新プログラムの管理用のマシンを登録できません。登録は次の例外で失敗しました。)<br/>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br/>System.Net.WebException: 基になる接続が<br/>閉じられました。受信時に予期しないエラーが<br/>発生しました。 ---> System.ComponentModel.Win32Exception:<br/>クライアントとサーバーは共通のアルゴリズムを保持していないため<br/>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br/>Registration Failed with Exception (登録は次の例外で失敗しました)<br/>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
-| サービス \<wsid\>.oms.opinsights.azure.com によって提示された証明書は、<br/>Microsoft サービスで使用する証明機関が<br/>発行したものではありませんでした。 連絡先<br/>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br/>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br/>Registration Failed with Exception (登録は次の例外で失敗しました)<br/>AgentService.HybridRegistration。<br/>PowerShell.Certificates.CertificateCreationException:<br/>自己署名証明書を作成できませんでした。 ---><br/>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br/>読み取りアクセスを持っていることを確認します。<br/>**C:\ProgramData\Microsoft\**<br/>** Crypto\RSA**|
-
-### <a name="linux"></a>Linux
-
-Linux コンピューターで更新プログラムの実行の開始が失敗した場合は、次のログ ファイルのコピーを作成し、トラブルシューティングのために保存します。
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/worker.log
-```
-
-Linux 上で正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けるマシンからの出力を確認します。 コンピューターのパッケージ マネージャーからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムを展開するには、パッケージ マネージャーが正常である必要があります。
-
-場合によっては、Update Management とパッケージの更新プログラムが干渉して、更新プログラムの展開が完了されていないことがあります。 この場合、これらのパッケージを今後の更新プログラムの実行から除外するか、それらを手動でインストールする必要があります。
-
-修正プログラムの問題を解決できない場合は、次のログ ファイルをコピーし、トラブルシューティングのために、次の更新プログラムの展開が開始される**前に**保存します。
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+Update Management のトラブルシューティング方法については、[Update Management のトラブルシューティング](troubleshoot/update-management.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

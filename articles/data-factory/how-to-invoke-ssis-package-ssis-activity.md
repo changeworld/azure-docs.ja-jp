@@ -13,18 +13,15 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ffe65260e73aa2daa4ab63840a00076000f8e6a8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264907"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054723"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 SSIS パッケージの実行アクティビティは、一般公開 (GA) されている Data Factory サービスのバージョン 1 では使用できません。 Data Factory サービスのバージョン 1 で SSIS パッケージを実行する代替方法については、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +56,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
@@ -177,7 +174,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパ、および東南アジアだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在、Data Factory でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパ、および東南アジアだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する 
 この手順では、SSIS アクティビティのあるパイプラインを作成します。 このアクティビティは SSIS パッケージを実行します。 

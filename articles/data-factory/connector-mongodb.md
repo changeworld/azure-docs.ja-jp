@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 24d641247ad9bb0b5e6199952cbde9cb56fcaea7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809296"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054060"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-on-premises-mongodb-connector.md)
-> * [バージョン 2 - プレビュー](connector-mongodb.md)
+> * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
+> * [現在のバージョン](connector-mongodb.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MongoDB コネクタ](v1/data-factory-on-premises-mongodb-connector.md)に関する記事を参照してください。
-
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -56,7 +52,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
+| type |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
 | [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
 | ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 27017) |
 | databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
@@ -101,7 +97,7 @@ MongoDB からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
 | collectionName |MongoDB データベースのコレクション名前。 |[はい] |
 
 **例:**
@@ -132,7 +128,7 @@ MongoDB からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム SQL-92 クエリを使用してデータを読み取ります。 例: Select * from MyTable。 |いいえ (データセットに "collectionName" が指定されている場合) |
 
 **例:**

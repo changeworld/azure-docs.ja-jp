@@ -11,29 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618489"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055655"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
 ## <a name="overview"></a>概要
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-data-movement-activities.md)
-> * [バージョン 2 - プレビュー](copy-activity-overview.md)
+> * [Version 1](v1/data-factory-data-movement-activities.md)
+> * [現在のバージョン](copy-activity-overview.md)
 
 Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
 ![コピー アクティビティの役割](media/copy-activity-overview/copy-activity.png)
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
 
 コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 異なるデータ コピーのシナリオでは、別の種類の統合ランタイムを利用できます。
 
@@ -114,7 +111,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
                 "type": "TabularTranslator",
                 "columnMappings": "<column mapping>"
             },
-            "cloudDataMovementUnits": <number>,
+            "dataIntegrationUnits": <number>,
             "parallelCopies": <number>,
             "enableStaging": true/false,
             "stagingSettings": {
@@ -133,14 +130,14 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティの type プロパティは、**Copy** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティの type プロパティは、**Copy** に設定する必要があります。 | [はい] |
 | inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | [はい] |
 | outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | [はい] |
 | typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | [はい] |
 | source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
 | sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
 | translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ  |
-| cloudDataMovementUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。<br/><br/>「[クラウド データ移動単位](copy-activity-performance.md)」で詳細を学習してください。 | いいえ  |
+| dataIntegrationUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。 以前はクラウド データ移動単位 (DMU) と呼ばれていました。 <br/><br/>詳しくは、[データ統合単位](copy-activity-performance.md#data-integration-units)に関するページをご覧ください。 | いいえ  |
 | parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ  |
 | enableStaging<br/>stagingSettings | ソースからシンクに直接データをコピーするのではなく、中間データを BLOB ストレージにステージングすることを選択します。<br/><br/>役立つシナリオや構成の詳細を「[ステージング コピー](copy-activity-performance.md#staged-copy)」で学習してください。 | いいえ  |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| ソースからシンクにデータをコピーするときに互換性のない行を処理する方法を選択します。<br/><br/>「[フォールト トレランス](copy-activity-fault-tolerance.md)」で詳細を学習してください。 | いいえ  |
@@ -185,7 +182,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | ブール |
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | ブール |
 | effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを `<IR name> (<region if it's Azure IR>)` の形式で示します。 | Text (文字列) |
-| usedCloudDataMovementUnits | コピー中の効率的なクラウド データ移動単位。 | Int32 値 |
+| usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
 | usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値|
 | redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
 | executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。 | Array |
@@ -200,7 +197,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
     "throughput": 467707.344,
     "errors": [],
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedCloudDataMovementUnits": 32,
+    "usedDataIntegrationUnits": 32,
     "usedParallelCopies": 8,
     "executionDetails": [
         {
@@ -213,7 +210,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
             "status": "Succeeded",
             "start": "2018-01-17T15:13:00.3515165Z",
             "duration": 221,
-            "usedCloudDataMovementUnits": 32,
+            "usedDataIntegrationUnits": 32,
             "usedParallelCopies": 8,
             "detailedDurations": {
                 "queuingDuration": 2,
@@ -237,10 +234,10 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
 ## <a name="incremental-copy"></a>増分コピー 
-Data Factory バージョン 2 では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
+Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
 
 ## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。
+Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 967184d9a7590dc0b8c88a49cf178bbd9eb83267
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595038"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063597"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -132,20 +132,21 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 1. ユーザーが [Outlook Web アプリ](https://outlook.office365.com/owa)などのアプリケーションへのアクセスを試みます。
 2. ユーザーがまだサインインしていない場合は、アプリケーションでブラウザーが Azure AD のサインイン ページにリダイレクトされます。
 3. Azure AD STS サービスが**ユーザー サインイン** ページで応答します。
-4. ユーザーが**ユーザー サインイン**ページにユーザー名とパスワードを入力し、**[サインイン]** ボタンを選択します。
-5. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
-6. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。 
+4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、**[次へ]** ボタンを選択します。
+5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、**[サインイン]** ボタンを選択します。
+6. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
+7. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。 
     - テナントで登録された "N" 個の認証エージェントに対し、"N" 個の暗号化されたパスワード値が生成されます。
-7. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
-8. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
-9. 認証エージェントが、ID を使用して、公開キーに固有の暗号化されたパスワード値を見つけ、その秘密キーを使用して暗号化解除します。
-10. 認証エージェントが、[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) (**dwLogonType** パラメーターは **LOGON32_LOGON_NETWORK** に設定) を使用して、オンプレミスの Active Directory に対してユーザー名とパスワードを検証します。 
+8. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
+9. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
+10. 認証エージェントが、ID を使用して、公開キーに固有の暗号化されたパスワード値を見つけ、その秘密キーを使用して暗号化解除します。
+11. 認証エージェントが、[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) (**dwLogonType** パラメーターは **LOGON32_LOGON_NETWORK** に設定) を使用して、オンプレミスの Active Directory に対してユーザー名とパスワードを検証します。 
     - この API は、フェデレーション サインイン シナリオでユーザーのサインイン時に Active Directory フェデレーション サービス (AD FS) によって使用されるものと同じ API です。
     - この API は、Windows Server の標準的な解決プロセスに従ってドメイン コントローラーを検索します。
-11. 認証エージェントが Active Directory から結果を受け取ります。成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れているなどです。
-12. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに対して以前に発行された証明書を使用します。
-13. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。
-14. Azure AD STS は、構成どおりにサインインの手順を続行します。 たとえば、パスワードの検証が成功した場合、ユーザーは Multi-Factor Authentication のためにチャレンジされるか、アプリケーションにリダイレクトされることがあります。
+12. 認証エージェントが Active Directory から結果を受け取ります。成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れているなどです。
+13. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに対して以前に発行された証明書を使用します。
+14. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。
+15. Azure AD STS は、構成どおりにサインインの手順を続行します。 たとえば、パスワードの検証が成功した場合、ユーザーは Multi-Factor Authentication のためにチャレンジされるか、アプリケーションにリダイレクトされることがあります。
 
 ## <a name="operational-security-of-the-authentication-agents"></a>認証エージェントの運用上のセキュリティ
 
@@ -208,7 +209,7 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 ## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
-- [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [しくみ](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Azure AD パススルー認証のしくみの基礎を確認します。
 - [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md): よく寄せられる質問とその回答です。
 - [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。

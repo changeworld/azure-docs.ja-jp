@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 16b181631d8d91ad8137e57564792789903bccf2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29281843dc1b375182eb3dafe95ad86c89217671
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621619"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052275"
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-http-connector.md)
-> * [バージョン 2 - プレビュー](../connector-http.md)
+> * [Version 1](data-factory-http-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-http.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での HTTP コネクタ](../connector-http.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の HTTP コネクタ](../connector-http.md)に関するページを参照してください。
 
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミス/クラウドの HTTP エンドポイントからサポートされたシンク データ ストアにデータを移動する方法について説明します。 この記事では、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要と、ソース/シンクとしてサポートされるデータ ストアの一覧を紹介します。
@@ -50,7 +50,7 @@ ms.locfileid: "34621619"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 | type プロパティを `Http` に設定する必要があります。 | [はい] |
+| type | type プロパティを `Http` に設定する必要があります。 | [はい] |
 | url | Web サーバーへのベース URL | [はい] |
 | authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名の証明書を使用している場合、これを false に設定します。 | いいえ。既定値は true です。 |
@@ -152,7 +152,7 @@ ms.locfileid: "34621619"
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの型を指定します。 `Http` に設定する必要があります。 | [はい] |
+| type | データセットの型を指定します。 `Http` に設定する必要があります。 | [はい] |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)" です。 | いいえ  |
 | requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |

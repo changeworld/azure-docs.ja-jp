@@ -1,6 +1,6 @@
 ---
-title: Hadoop、Spark、Kafka、HBase、R Server に使用するクラスターのセットアップ - Azure HDInsight | Microsoft Docs
-description: Hadoop、Kafka、Spark、HBase、R Server、Storm の HDInsight クラスターをブラウザーや Azure CLI、Azure PowerShell、REST、SDK からセットアップします。
+title: Hadoop、Spark、Kafka、HBase、ML Services に使用するクラスターのセットアップ - Azure HDInsight | Microsoft Docs
+description: Hadoop、Kafka、Spark、HBase、ML Services、Storm の HDInsight クラスターをブラウザーや Azure CLI、Azure PowerShell、REST、SDK からセットアップします。
 keywords: hadoop クラスターのセットアップ, kafka クラスターのセットアップ, spark クラスターのセットアップ, hadoop におけるクラスターとは
 services: hdinsight
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200199"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051595"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Hadoop、Spark、Kafka、Interactive Query、HBase、R Server、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。 クラスターをドメインに参加させて、クラスターをカスタマイズしたりセキュリティを強化したりする方法についても説明します。
+Hadoop、Spark、Kafka、Interactive Query、HBase、ML Services、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。 クラスターをドメインに参加させて、クラスターをカスタマイズしたりセキュリティを強化したりする方法についても説明します。
 
 Hadoop クラスターは、タスクの分散処理に使用される複数の仮想マシン (ノード) で構成されます。 各ノードのインストールと構成にかかわる細部の実装は Azure HDInsight が担うため、ユーザーは一般的な構成情報を指定するだけで済みます。 
 
@@ -81,7 +81,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 | [HBase](hbase/apache-hbase-overview.md) |大量のスキーマレス NoSQL データの処理 |
 | [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |対話型で高速な Hive クエリのメモリ内キャッシュ |
 | [Kafka](kafka/apache-kafka-introduction.md) | リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できる分散ストリーム プラットフォーム |
-| [R Server](r-server/r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
+| [ML サービス](r-server/r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
 | [Spark](spark/apache-spark-overview.md) |メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
 | [Storm](storm/apache-storm-overview.md) |リアルタイム イベント処理 |
 

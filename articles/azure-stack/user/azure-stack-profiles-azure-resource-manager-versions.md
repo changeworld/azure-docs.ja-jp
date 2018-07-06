@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010977"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054383"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack のプロファイルでサポートされているリソース プロバイダー API バージョン
 
@@ -144,11 +144,14 @@ Azure コンピューティング API によって、仮想マシンおよび仮
 
 | リソースの種類 | API のバージョン |
 |--------------------|--------------------|
-| アラート ルール | 2016-03-01 |
-| イベント カテゴリ | 2017-03-01-プレビュー |
-| イベントの種類 | 2017-03-01-プレビュー |
-| メトリック定義 | 2016-03-01 |
 | [操作] | 2015-04-01 |
+| イベントの種類 | 2015-04-01 |
+| イベント カテゴリ | 2015-04-01 |
+| メトリック定義 | 2018-01-01 |
+| メトリック | 2018-01-01 |
+| 診断設定 | 2017-05-01-preview |
+| 診断設定カテゴリ | 2017-05-01-preview |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 

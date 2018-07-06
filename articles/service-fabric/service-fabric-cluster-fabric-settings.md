@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 118a6d10eeba691fd0886967f90156a0ab8d9fae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642650"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062281"
 ---
+# <a name="description-of-the-different-upgrade-policies"></a>各アップグレード ポリシーの説明
+
+- **Dynamic**: 動的構成を変更しても、Service Fabric プロセスまたはサービス ホスト プロセスのプロセス再起動は発生しません。 
+- **Static**: 静的構成を変更すると、変更を反映するために Service Fabric ノードが再起動されます。 ノード上のサービスは再起動されます。
+- **NotAllowed**: これらの設定は変更できません。 これらの設定を変更するには、クラスターを破棄して新しいクラスターを作成する必要があります。 
+
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
 

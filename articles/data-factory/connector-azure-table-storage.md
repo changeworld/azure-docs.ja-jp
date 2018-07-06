@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 24954cfc128834313bf13a1917e67d5c1812cf66
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617180"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055529"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-azure-table-connector.md)
-> * [バージョン 2 - プレビュー](connector-azure-table-storage.md)
+> * [Version 1](v1/data-factory-azure-table-connector.md)
+> * [現在のバージョン](connector-azure-table-storage.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Table Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用している場合は、[バージョン 1 での Table Storage コネクタ](v1/data-factory-azure-table-connector.md)に関する記事をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -50,7 +47,7 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -81,11 +78,11 @@ Shared Access Signature を使用して、Storage のリンクされたサービ
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature の詳細については、[Shared Access Signature モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
-> [!IMPORTANT]
-> Data Factory で新たにサポートされるのは、サービスの Shared Access Signature だけです。アカウントの Shared Access Signature はサポートされません。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 Azure Portal または Azure Storage Explorer から生成される Shared Access Signature の URL はアカウントの Shared Access Signature であり、サポートの対象外となります。
+> [!NOTE]
+> Data Factory で、サービスの Shared Access Signature とアカウントの Shared Access Signature がサポートされるようになりました。 この 2 種類の SAS とその作成方法について詳しくは、「[共有アクセス署名の種類](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。 
 
 > [!TIP]
-> ストレージ アカウントに使用するサービスの Shared Access Signature は、次の PowerShell コマンドを実行して生成できます。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
+> ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
@@ -93,7 +90,7 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
+| type | type プロパティを **AzureStorage** に設定する必要があります。 |[はい] |
 | sasUri | BLOB、コンテナー、テーブルなどの Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -132,7 +129,7 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |[はい] |
+| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |[はい] |
 | tableName |リンクされたサービスが参照する Table Storage データベース インスタンスのテーブルの名前です。 |[はい] |
 
 **例:**
@@ -173,7 +170,7 @@ Azure Table からデータをコピーする場合は、コピー アクティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |[はい] |
 | AzureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ  |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ  |
 
@@ -199,7 +196,7 @@ Azure Table にデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |[はい] |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ  |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ  |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ  |

@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bb3179f1db077aacc7e36acf16486ee77a7f36e7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808725"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051265"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-mysql-connector.md)
-> * [バージョン 2 - プレビュー](connector-mysql.md)
+> * [Version 1](v1/data-factory-onprem-mysql-connector.md)
+> * [現在のバージョン](connector-mysql.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、MySQL データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MySQL コネクタ](v1/data-factory-onprem-mysql-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -38,13 +35,9 @@ MySQL データベースのデータを、サポートされているシンク �
 
 ## <a name="prerequisites"></a>前提条件
 
-この MySQL コネクタを使用するには、次の手順が必要です。
+お使いの MySQL データベースにパブリックにアクセスできない場合は、セルフホステッド Integration Runtime を設定する必要があります。 セルフホステッド統合ランタイムの詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事を参照してください。 Integration Runtime のバージョン 3.7 以降には MySQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
 
-- セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- 統合ランタイム コンピューターに、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) のバージョン 6.6.5 から 6.10.7 までをインストールします。 この 32 ビット ドライバーは 64 ビット IR と互換性があります。
-
-> [!TIP]
-> エラー "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" が発生した場合は、MySQL コネクタ/Net をより新しいバージョンにアップグレードすることを検討してください。
+バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[MySQL Connector/Net for Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) のバージョン 6.6.5 から 6.10.7 までをインストールします。 この 32 ビット ドライバーは 64 ビット IR と互換性があります。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -58,15 +51,41 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **MySql** に設定する必要があります。 | [はい] |
-| [サーバー] | MySQL サーバーの名前です。 | [はい] |
-| [データベース] | MySQL データベースの名前です。 | [はい] |
-| schema | データベース内のスキーマの名前です。 | いいえ  |
-| username | MySQL データベースに接続するユーザー名を指定します。 | [はい] |
-| password | 指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| type | type プロパティを **MySql** に設定する必要があります。 | [はい] |
+| connectionString | Azure Database for MySQL インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` です。 ケースごとにさらに多くのプロパティを設定できます。
+
+| プロパティ | 説明 | オプション | 必須 |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | このオプションは、MySQL を接続するときに、ドライバーで SSL 暗号化と検証を使用するかどうかを指定します。 例:  `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ  |
+| UseSystemTrustStore | このオプションは、システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 例:  `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(既定)** | いいえ  |
 
 **例:**
+
+```json
+{
+    "name": "MySQLLinkedService",
+    "properties": {
+        "type": "MySql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+以下のペイロードで MySQL のリンクされたサービスを使用していた場合、まだそのままサポートされていますが、今後は新しいものを使用することをお勧めします。
+
+**以前のペイロード:**
 
 ```json
 {
@@ -98,7 +117,7 @@ MySQL からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | MySQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -128,7 +147,7 @@ MySQL からデータをコピーするには、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -171,13 +190,14 @@ MySQL からデータをコピーするとき、次の MySQL のデータ型か�
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
-| `bit` |`Decimal` |
+| `bit(1)` |`Boolean` |
+| `bit(M), M>1`|`Byte[]`|
 | `blob` |`Byte[]` |
-| `bool` |`Boolean` |
+| `bool` |`Int16` |
 | `char` |`String` |
 | `date` |`Datetime` |
 | `datetime` |`Datetime` |
-| `decimal` |`Decimal` |
+| `decimal` |`Decimal, String` |
 | `double` |`Double` |
 | `double precision` |`Double` |
 | `enum` |`String` |

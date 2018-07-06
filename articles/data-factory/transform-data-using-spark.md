@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: abe2fabc505f94f19d4b15a406fc59bf6d6e7ac1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700538"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050337"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-spark.md)
-> * [バージョン 2 - プレビュー](transform-data-using-spark.md)
+> * [Version 1](v1/data-factory-spark.md)
+> * [現在のバージョン](transform-data-using-spark.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Spark アクティビティ](v1/data-factory-spark.md)を参照してください。
 
 > [!IMPORTANT]
 > Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
@@ -68,7 +65,7 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | パイプラインのアクティビティの名前。    | [はい]      |
 | description            | アクティビティの動作を説明するテキスト。  | いいえ        |
-| 型                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | [はい]      |
+| type                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | [はい]      |
 | linkedServiceName     | Spark プログラムが実行されている HDInsight Spark のリンクされたサービスの名前。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | SparkJobLinkedService | Spark ジョブ ファイル、依存関係、およびログが含まれる Azure Storage のリンクされたサービス。  指定しない場合は、HDInsight クラスターに関連付けられているストレージが使用されます。 このプロパティの値には、Azure Storage のリンクされたサービスのみを指定できます。 | いいえ        |
 | rootPath              | Azure BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名は大文字と小文字が区別されます。 このフォルダーの構造の詳細については、「フォルダー構造」(次のセクション) をご覧ください。 | [はい]      |

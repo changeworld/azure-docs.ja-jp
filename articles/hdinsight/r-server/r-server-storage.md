@@ -1,6 +1,6 @@
 ---
-title: HDInsight の R Server 向けの Azure Storage ソリューション - Azure | Microsoft Docs
-description: HDInsight の R Server で利用できるさまざまなストレージ オプションについて説明します
+title: HDInsight の ML Services 向けの Azure Storage ソリューション - Azure | Microsoft Docs
+description: HDInsight の ML Services で利用できるさまざまなストレージ オプションについて説明します
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,18 +11,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 23e32a913fb73d2207f7cf37ce6230e428fbe95c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f5b9b180f8a6f825e4d91850ee72af19e6d09a4c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409467"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052965"
 ---
-# <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>Azure HDInsight の R Server 向けの Azure Storage ソリューション
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
-HDInsight 上の R Server には、分析結果を含んだオブジェクトや、データ、コードを永続化するためのさまざまなストレージ ソリューションがあります。 その例を次に示します。
+HDInsight 上の ML Services には、分析結果を含んだオブジェクトや、データ、コードを永続化するためのさまざまなストレージ ソリューションがあります。 その例を次に示します。
 
 - [Azure BLOB](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
@@ -35,14 +35,14 @@ HDInsight で Hadoop クラスターを作成するときに、**Azure ストレ
 - [HDInsight での Azure Storage の使用](../hdinsight-hadoop-use-blob-storage.md)
 - [Azure HDInsight クラスターで Data Lake Store を使用する](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-r-server-cluster"></a>R Server でクラスターで Azure BLOB ストレージ アカウントを使用する
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>ML Services クラスターで Azure BLOB ストレージ アカウントを使用する
 
-次の手順は、ご自身の Microsoft R Server クラスターを作成するときに複数のストレージ アカウントを指定した場合に、Microsoft R Server クラスターでのデータ アクセスと操作に対して、どのようにセカンダリ アカウントを使用するかを説明します。 ここでは、ストレージ アカウント **storage1** と、**container1** と呼ばれる既定のコンテナー、および **storage2** と **container2** を想定しています。
+次の手順は、ML Services クラスターを作成するときに複数のストレージ アカウントを指定した場合に、ML Services クラスターでのデータ アクセスと操作に対して、どのようにセカンダリ アカウントを使用するかを説明します。 ここでは、ストレージ アカウント **storage1** と、**container1** と呼ばれる既定のコンテナー、および **storage2** と **container2** を想定しています。
 
 > [!WARNING]
 > パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。 HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
-### <a name="use-the-default-storage-with-r-server-on-hdinsight"></a>HDInsight で R Server を使って既定のストレージを使用する
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って既定のストレージを使用する
 
 1. SSH クライアントを使用して、使用しているクラスターのエッジ ノードに接続します。 SSH と HDInsight クラスターの使用については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
   
@@ -73,7 +73,7 @@ HDInsight で Hadoop クラスターを作成するときに、**Azure ストレ
 
 ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasb://container1@storage1.blob.core.windows.net` を指しています。 これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
 
-### <a name="use-the-additional-storage-with-r-server-on-hdinsight"></a>HDInsight で R Server を使って追加のストレージを使用する
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って追加のストレージを使用する
 
 ここで、**storage2** の **container2** の /private ディレクトリにある mysamplefile1.csv というファイルを処理するとします。
 
@@ -106,7 +106,7 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-r-server-cluster"></a>R Server で Azure Data Lake Store を使用する 
+## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>ML Services で Azure Data Lake Store を使用する 
 
 ご自身の HDInsight クラスターで Data Lake Store を使用するには、使用する各 Azure Data Lake Store にご自身のクラスター アクセスを付与する必要があります。 既定のストレージ (または追加のストア) として Azure Data Lake Store アカウントを使用する HDInsight クラスターを Azure Portal で作成する方法については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
 
@@ -123,9 +123,9 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 
 また、クラスター作成後に 1 つ以上の Data Lake Store アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Store の Azure Portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
-### <a name="how-to-access-the-data-lake-store-from-r-server-on-hdinsight"></a>HDInsight で R Server から Data Lake Store にアクセスする方法
+### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Store にアクセスする方法
 
-Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server クラスターで Store を使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
+Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターで Store を使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 
     # Point to the ADL store (e.g. ADLtest)
@@ -161,7 +161,7 @@ Data Lake Store へのアクセスを付与したら、Azure セカンダリ ス
     hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 
-## <a name="use-azure-file-storage-with-r-server-on-hdinsight"></a>HDInsight で R Server を使って Azure File Storage を使用する
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って Azure File Storage を使用する
 
 [Azure Files](https://azure.microsoft.com/services/storage/files/) という、エッジ ノード用として利便性の高いデータ ストレージを選択することもできます。 Azure Files を使用すると、Azure Storage ファイル共有を Linux ファイル システムにマウントできます。 このストレージは特に、HDFS ではなくエッジ ノード上でネイティブ ファイル システムを使用する方がよい場合に、後で必要となる可能性があるデータ ファイル、R スクリプト、結果オブジェクトを格納するのに便利です。 
 
@@ -173,7 +173,7 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight での R Server クラスターの概要](r-server-overview.md)
-* [Hadoop での R Server クラスターの使用開始](r-server-get-started.md)
-* [HDInsight での R Server クラスターの計算コンテキスト オプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML サービス クラスターの概要](r-server-overview.md)
+* [Hadoop での ML サービス クラスターの使用開始](r-server-get-started.md)
+* [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 

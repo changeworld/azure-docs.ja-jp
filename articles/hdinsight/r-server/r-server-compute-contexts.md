@@ -1,6 +1,6 @@
 ---
-title: HDInsight の R Server のコンピューティング コンテキストのオプション - Azure | Microsoft Docs
-description: HDInsight の R Server でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。
+title: HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション - Azure | Microsoft Docs
+description: HDInsight の ML Services でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,26 +11,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 2aa10e1eab6cabe058062519ecc023b88361d742
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 57480cef48182a56b315d7d6932883c485f5a7c8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409071"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050110"
 ---
-# <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション
 
-Azure HDInsight 上の Microsoft R Server は、コンピューティング コンテキストを設定することによって呼び出しの実行方法を制御します。 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明します。
+Azure HDInsight 上の ML Services は、コンピューティング コンテキストを設定することによって呼び出しの実行方法を制御します。 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明します。
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-## <a name="microsoft-r-server-on-azure-hdinsight"></a>Azure HDInsight での Microsoft R Server
-[Azure HDInsight の Microsoft R Server](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../../storage/common/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
+## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上の ML Services
+[Azure HDInsight の ML Services](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../../storage/common/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 ML Services はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML Services に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
-一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 RevoScaleR 関数を呼び出すステップは例外です。 RevoScaleR 呼び出しは、RevoScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
+一般に、エッジ ノードの ML Services で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 RevoScaleR 関数を呼び出すステップは例外です。 RevoScaleR 呼び出しは、RevoScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
 
 - local sequential (*local*)
 - local parallel (*localpar*)
@@ -78,9 +78,9 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明しました。 HDInsight クラスターで R Server を使用する方法の詳細については、次のトピックを参照してください。
+この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明しました。 HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
 
-* [R Server for Hadoop の概要](r-server-overview.md)
-* [R Server for Hadoop の使用](r-server-get-started.md)
-* [HDInsight の R Server 向けの Azure Storage オプション](r-server-storage.md)
+* [Hadoop 向け ML サービスの概要](r-server-overview.md)
+* [Hadoop 向け ML サービスの使用を開始する](r-server-get-started.md)
+* [HDInsight 上の ML サービス向けの Azure Storage オプション](r-server-storage.md)
 

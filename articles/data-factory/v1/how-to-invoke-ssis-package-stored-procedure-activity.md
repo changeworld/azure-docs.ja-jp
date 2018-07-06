@@ -13,26 +13,26 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9608af734d39627435a81e1d853c2546eabcdb0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf91b1cb1e764c1350cead0c5dfb109b73e9dad3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623436"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052717"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
 
 > [!NOTE]
-> この記事は、一般公開されている、Data Factory のバージョン 1 に適用されます。 パブリック プレビュー中の、Data Factory サービスのバージョン 2を使用している場合は、[バージョン 2 でストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す方法](../how-to-invoke-ssis-package-stored-procedure-activity.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し](../how-to-invoke-ssis-package-stored-procedure-activity.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージド インスタンス (プレビュー) を使うこともできます。
+この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database マネージド インスタンス (プレビュー) を使うこともできます。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
-Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](../tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。 Azure-SSIS 統合ランタイムを作成するには、バージョン 2 のデータ ファクトリを作成する必要があります。 
+Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](../tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。 Data Factory バージョン 1 を使用して Azure-SSIS 統合ランタイムを作成することはできません。 
 
 ## <a name="azure-portal"></a>Azure ポータル
 このセクションでは、Azure Portal を使用して、SSIS パッケージを呼び出すストアド プロシージャ アクティビティを含む Data Factory パイプラインを作成します。

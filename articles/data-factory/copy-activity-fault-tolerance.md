@@ -13,28 +13,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 8754e550f396c90504ed0fdaf1131173a10923ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c76820b39f31d92362295d54984069393fa0dec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619101"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055512"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-copy-activity-fault-tolerance.md)
-> * [バージョン 2 - プレビュー](copy-activity-fault-tolerance.md)
+> * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
+> * [現在のバージョン](copy-activity-fault-tolerance.md)
 
 Azure Data Factory のコピー アクティビティには、ソースとシンク データ ストアの間でデータをコピーするときに互換性のない行を処理するための 2 つの方法が用意されています。
 
 - 互換性のないデータが検出されたときに、コピー アクティビティを中止して停止させることができます (既定の動作)。
 - フォールト トレランスを追加して互換性のないデータ行をスキップすることで、すべてのデータのコピーを続行できます。 また、Azure Blob Storage または Azure Data Lake Store 内の互換性のない行をログに記録することもできます。 そうすることで、ログを調査して失敗の原因を確認し、データ ソースの問題のあるデータを修正してから、コピー アクティビティをもう一度実行できます。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[copy activity fault tolerance in V1 (V1 でのコピー アクティビティのフォールト トレランス)](v1/data-factory-copy-activity-fault-tolerance.md)」を参照してください。
-
-
- ## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-scenarios"></a>サポートされるシナリオ
 コピー アクティビティでは、検出、スキップ、および互換性のないデータのログ記録の 3 つのシナリオをサポートします。
 
 - **ソース データの型とシンクのネイティブ型の間の非互換性**。 

@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647664"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050129"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -28,11 +28,9 @@ SQL Database Managed Instance は、既存の SQL Database サービスの拡張
 
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- 
-  [Managed Instance の互換性の評価](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
+- [Managed Instance の互換性の評価](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
 - [アプリの接続性オプションの選択](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- 
-  [最適なサイズに設定された Managed Instance へのデプロイ](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
+- [最適なサイズに設定された Managed Instance へのデプロイ](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
 - [移行方法の選択と移行](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
 - [アプリケーションの監視](sql-database-managed-instance-migrate.md#monitor-applications)
 
@@ -80,18 +78,18 @@ Managed Instance では、次のデータベース移行オプションがサポ
 
 - Azure Database Migration Service - ほぼダウンタイムがない移行
 - URL からのネイティブ復元 - SQL Server のネイティブ バックアップを使用し、ある程度のダウンタイムが必要
-- BACPAC ファイルを使用した移行 - SQL Server または SQL Database の BACPAC ファイルを使用し、ある程度のダウンタイムが必要
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、Azure に既存のサード パーティ製データベースと SQL Server データベースを移行するために必要なタスクを合理化します。 パブリック プレビューのデプロイ オプションには、Azure Virtual Machine に Azure SQL Database、Managed Instance、SQL Server が含まれます。 DMS は、エンタープライズ ワークロードの移行に推奨される方法です。 
 
+オンプレミスの SQL Server で SQL Server Integration Services (SSIS) を使用している場合、DMS は SSIS パッケージを格納している SSIS カタログ (SSISDB) の移行をまだサポートしていません。ただし、Azure SQL Database/マネージド インスタンスに新しい SSISDB を作成する Azure Data Factory (ADF) 内に Azure-SSIS Integration Runtime (IR) をプロビジョニングした後、それにパッケージを再展開することができます。「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)」をご覧ください。
+
 このシナリオと DMS での構成手順について詳しくは、[DMS を使用したオンプレミスのデータベースの Managed Instance への移行](../dms/tutorial-sql-server-to-managed-instance.md)に関する記事をご覧ください。  
 
 ### <a name="native-restore-from-url"></a>URL からのネイティブ復元
 
-
-  [Azure Storage](https://azure.microsoft.com/services/storage/) で使用可能な、オンプレミスの SQL Server または [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) から取得されたネイティブ バックアップ (.bak ファイル) の復元は、SQL DB Managed Instance の主要機能の 1 つで、オフラインのデータベース移行を迅速かつ簡単に行うことができます。 
+[Azure Storage](https://azure.microsoft.com/services/storage/) で使用可能な、オンプレミスの SQL Server または [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) から取得されたネイティブ バックアップ (.bak ファイル) の復元は、SQL DB Managed Instance の主要機能の 1 つで、オフラインのデータベース移行を迅速かつ簡単に行うことができます。 
 
 次の図では、概要レベルのプロセスについて説明します。
 
@@ -110,10 +108,6 @@ Managed Instance では、次のデータベース移行オプションがサポ
 > システム データベースの復元はサポートされていません。 (マスターまたは msdb データベースに格納されている) インスタンス レベルのオブジェクトを移行するには、それらのスクリプトを作成し、移行先のインスタンスで T-SQL スクリプトを実行することをお勧めします。
 
 SAS 資格情報を使用したマネージド インスタンスへのデータベース バックアップの復元を含む詳しいチュートリアルについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-restore-from-backup-tutorial.md)に関する記事をご覧ください。
-
-### <a name="migrate-using-bacpac-file"></a>BACPAC ファイルを使用した移行
-
-Azure SQL Database と Managed Instance は、BACPAC ファイル内のデータと共に元のデータベースのコピーからインポートできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」を参照してください。
 
 ## <a name="monitor-applications"></a>アプリケーションの監視
 

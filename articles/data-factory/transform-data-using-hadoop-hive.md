@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ad5c2335af95f15faf8e4df20cc992186aee394e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc7c2c49de582a413b49d31c4b4e062d81e5e6ae
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620971"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051326"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-hive-activity.md)
-> * [バージョン 2 - プレビュー](transform-data-using-hadoop-hive.md)
+> * [Version 1](v1/data-factory-hive-activity.md)
+> * [現在のバージョン](transform-data-using-hadoop-hive.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight Hive アクティビティでは、[独自](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Hive アクティビティ](v1/data-factory-hive-activity.md)に関する記事をご覧ください。
 
 Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
 
@@ -63,7 +60,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | ------------------- | ---------------------------------------- | -------- |
 | name                | アクティビティの名前                     | [はい]      |
 | description          | アクティビティの用途を説明するテキストです。 | いいえ        |
-| 型                | Hive アクティビティの場合、アクティビティの種類は HDinsightHive です | [はい]      |
+| type                | Hive アクティビティの場合、アクティビティの種類は HDinsightHive です | [はい]      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | scriptLinkedService | 実行する Hiveスクリプトの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |
 | scriptPath          | scriptLinkedService で参照される Azure Storage に格納されているスクリプト ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | [はい]      |

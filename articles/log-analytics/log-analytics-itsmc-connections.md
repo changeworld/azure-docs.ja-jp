@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1c1c294a877a996dc0e6cb916b038dc0ca27ed5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061711"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -85,7 +86,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 - この Service Manager インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
 
-詳細情報: [Log Analytics アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[Log Analytics ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)、および [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報: [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Service Manager Web アプリ サービスを作成しデプロイする
 
@@ -103,7 +104,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 - Azure サブスクリプションの詳細
 - リソース グループ名
-- 場所
+- リージョン
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名とパスワード)
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。
@@ -190,7 +191,7 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 **ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
 - ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
 
-    - [Kingston の OAuth の設定](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
+    - [Kingston の OAuth の設定](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Jakarta の OAuth の設定](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Istanbul の OAuth の設定](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Helsinki の OAuth の設定](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -238,7 +239,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 - この ServiceNow インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報: [Log Analytics アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[Log Analytics ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)、および [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報: [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>ServiceNow アプリで統合ユーザー ロールを作成する
 
@@ -329,7 +330,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 - この Provance インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報: [Log Analytics アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[Log Analytics ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)、および [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報: [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Cherwell を Azure の IT Service Management Connector に接続する
 
@@ -381,7 +382,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 - この Cherwell インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報: [Log Analytics アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)、[Log Analytics ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)、および [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報: [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
 
 ### <a name="generate-client-id-for-cherwell"></a>Cherwell のクライアント ID を生成する
 
@@ -395,6 +396,4 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
 
 
 ## <a name="next-steps"></a>次の手順
- - [Log Analytics アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
- - [Log Analytics ログ レコードのログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

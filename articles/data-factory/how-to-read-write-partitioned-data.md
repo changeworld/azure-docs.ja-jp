@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法 | Microsoft Docs
-description: Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。
+description: Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619084"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053712"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
+Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンの Data Factory では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 
 
 ## <a name="use-a-pipeline-parameter"></a>パイプライン パラメーターを使用する 
 バージョン 1 では、次の例に示すように、partitionedBy プロパティと SliceStart システム変数を使用できました。 
@@ -37,7 +37,7 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 
 PartitonedBy プロパティの詳細については、[バージョン 1 での Azure Blob コネクタ](v1/data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。 
 
-バージョン 2 では、この動作を実現する方法は、次のアクションを行うことです。 
+現在のバージョンの Data Factory では、この動作を実現する方法は、次のアクションを行うことです。 
 
 1. 文字列型の**パイプライン パラメーター**を定義します。 次の例では、パイプライン パラメーターの名前は **windowStartTime** です。 
 2. パイプライン パラメーターの値を参照するために、データセット定義内に **folderPath** を設定します。 

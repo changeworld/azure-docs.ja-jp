@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619254"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049334"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-copy-activity-performance.md)
-> * [バージョン 2 - プレビュー](copy-activity-performance.md)
+> * [Version 1](v1/data-factory-copy-activity-performance.md)
+> * [現在のバージョン](copy-activity-performance.md)
 
 
 Azure Data Factory コピー アクティビティは、優れたセキュリティで保護された、信頼性とパフォーマンスに優れたデータ読み込みソリューションを提供します。 これにより、数十テラバイトのデータを、さまざまなクラウドおよびオンプレミスのデータ ストアの間で毎日コピーすることができます。 データ読み込みのパフォーマンスを劇的に高めることが、高度な分析ソリューションを構築してすべてのデータから深い洞察を得るという、"ビッグ データ" の中心的問題に集中するための鍵となります。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のコピー アクティビティのパフォーマンス](v1/data-factory-copy-activity-performance.md)に関するページを参照してください。
 
 Azure によりエンタープライズ クラスのデータ ストレージおよびデータ ウェアハウスのソリューション セットが提供されます。また、コピー アクティビティにより、構成とセットアップが簡単な、大幅に最適化されたデータ読み込み環境がもたらされます。 1 つのコピー アクティビティで次のことを実現できます。
 
@@ -40,7 +37,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 この記事では、次の内容について説明します。
 
 * [パフォーマンス参照番号](#performance-reference) 
-* [クラウド データ移動単位](#cloud-data-movement-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
+* [データ統合単位](#data-integration-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
 * [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
 
 > [!NOTE]
@@ -49,12 +46,12 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
 
-参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**Mbps 単位**) を次の表に示します。 比較のために、[クラウド データの移動単位](#cloud-data-movement-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
+参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**Mbps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
 
 ![パフォーマンス マトリックス](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->Azure Data Factory バージョン 2 では、コピー アクティビティが Azure Integration Runtime で実行される場合、クラウド データ移動単位で許可される最小値は 2 です。 指定しない場合、[クラウド データ移動単位](#cloud-data-movement-units)で使用されている既定のデータ移動単位を参照してください。
+> [!IMPORTANT]
+> コピー アクティビティが Azure Integration Runtime で実行される場合、許可される最小のデータ統合単位 (旧称: データ移動単位) は 2 です。 指定しない場合に使用される既定のデータ統合単位については、「[データ統合単位](#data-integration-units)」をご覧ください。
 
 注意する点:
 
@@ -79,25 +76,25 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 
 > [!TIP]
-> 既定の最大許容データ移動単位 (DMU) は、クラウド間のコピー アクティビティの実行では 32 ですが、これよりも大きい DMU を使用すると、より高いスループットを得ることができます。 たとえば、100 DMU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[クラウド データ移動単位](#cloud-data-movement-units)」セクションを参照してください。 DMU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
+> 既定の最大許容データ統合単位 (DIU) は、クラウド間のコピー アクティビティの実行では 32 ですが、これよりも大きい DIU を使用すると、より高いスループットを得ることができます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。 DIU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
 
-## <a name="cloud-data-movement-units"></a>クラウド データ移動単位
+## <a name="data-integration-units"></a>データ統合単位
 
-**クラウド データ移動単位 (DMU)** は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 **DMU は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)** にのみ適用され、[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。
+**データ統合単位 (DIU)** (旧称: クラウド データ移動単位 (DMU)) は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 **DIU は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)** にのみ適用され、[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。
 
-**コピー アクティビティの実行を強化する最小クラウドデータ移動単位は 2 です。** 指定しない場合、次の表に、さまざまなコピー シナリオで使用される既定の DMU を示します。
+**コピー アクティビティの実行を強化する最小データ統合単位は 2 です。** 指定しない場合、次の表に、さまざまなコピー シナリオで使用される既定の DIU を示します。
 
-| コピー シナリオ | サービスによって決定される既定の DMU |
+| コピー シナリオ | サービスによって決定される既定の DIU |
 |:--- |:--- |
 | ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 4 〜 32。 |
 | 他のすべてのコピー シナリオ | 4 |
 
-この既定の動作をオーバーライドするには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 **cloudDataMovementUnits** プロパティに**使用できる値**は、**最大で 256** です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
+この既定の動作をオーバーライドするには、**dataIntegrationUnits** プロパティに次のように値を指定します。 **dataIntegrationUnits** プロパティの**許容値**は**最大 256** です。 コピー操作が実行時に使用する **DIU の実際の数**は、データ パターンに応じて、構成されている値以下になります。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
 
-アクティビティの実行の監視中に、コピー アクティビティの出力で、各コピー実行に実際に使用されたクラウド データ移動単位を確認できます。 詳細については、[コピー アクティビティの監視](copy-activity-overview.md#monitoring)を参照してください。
+アクティビティの実行の監視中に、コピー アクティビティの出力で、各コピー実行に実際に使用されたデータ統合単位を確認できます。 詳細については、[コピー アクティビティの監視](copy-activity-overview.md#monitoring)を参照してください。
 
 > [!NOTE]
-> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアにコピーする**場合のみです。
+> スループットをより高めるためにさらに DIU が必要な場合は、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアにコピーする**場合のみです。
 >
 
 **例:**
@@ -116,15 +113,15 @@ Azure によりエンタープライズ クラスのデータ ストレージお
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>クラウド データ移動単位の課金への影響
+### <a name="data-integration-units-billing-impact"></a>データ統合単位の課金への影響
 
-**重要** なのは、コピー操作の合計時間に基づいて料金が請求されることです。 データ移動に対して課金される合計期間は、DMU 全体の期間の合計です。 これまで 1 回のコピー ジョブに 2 クラウド単位で 1 時間かかっていたのが、8 クラウド単位で 15 分かかるようになった場合、全体の請求金額はほぼ同じままです。
+**重要** なのは、コピー操作の合計時間に基づいて料金が請求されることです。 データ移動に対して課金される合計期間は、DIU 全体の期間の合計です。 これまで 1 回のコピー ジョブに 2 クラウド単位で 1 時間かかっていたのが、8 クラウド単位で 15 分かかるようになった場合、全体の請求金額はほぼ同じままです。
 
 ## <a name="parallel-copy"></a>並列コピー
 
@@ -134,7 +131,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 | コピー シナリオ | サービスによって決定される並列コピーの既定数 |
 | --- | --- |
-| ファイル ベースのストア間でのデータのコピー |ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるクラウド データ移動単位の数 (DMU) またはセルフホステッド統合ランタイム マシンの物理構成によって異なります。 |
+| ファイル ベースのストア間でのデータのコピー |ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるデータ統合単位 (DMU) の数またはセルフホステッド統合ランタイム マシンの物理構成によって異なります。 |
 | 任意のソース データ ストアから Azure Table Storage へのデータのコピー |4 |
 | 他のすべてのコピー シナリオ |1 |
 
@@ -168,7 +165,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 * ファイル ベースのストア間でデータをコピーする場合は、**parallelCopies** によってファイル レベルでの並列処理が決まります。 単一ファイル内でのチャンク化は裏で自動的かつ透過的に行われます。また、指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、parallelCopies とは独立に並行してデータを読み込むよう設計されています。 実行時にコピー操作でデータ移動サービスに使用される並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** の場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。
 * **parallelCopies** プロパティの値を指定する場合、ソースおよびシンク データ ストアへの負荷の増加、およびハイブリッド コピーの場合など、コピー アクティビティがセルフホステッド統合ランタイムで強化されている場合のそれに対する負荷の増加を考慮してください。 これは、特に複数のアクティビティがある場合や、同じデータ ストアに対して実行される同じアクティビティの同時実行がある場合によくあります。 データ ストアまたはセルフホステッド統合ランタイムの負荷の上限に達したことがわかった場合は、**parallelCopies** の値を減らし、負荷を軽減してください。
 * ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスは **parallelCopies** プロパティを無視します。 並列処理が指定されても、この場合は適用されません。
-* **parallelCopies** は **cloudDataMovementUnits** と無関係です。 前者はすべてのクラウド データ移動単位全体でカウントされます。
+* **parallelCopies** は **dataIntegrationUnits** と無関係です。 前者はすべてのデータ統合単位全体でカウントされます。
 
 ## <a name="staged-copy"></a>ステージング コピー
 
@@ -246,7 +243,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
    * パフォーマンス機能:
      * [並列コピー](#parallel-copy)
-     * [クラウド データ移動単位](#cloud-data-movement-units)
+     * [データ統合単位](#data-integration-units)
      * [ステージング コピー](#staged-copy)
      * [セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [セルフホステッド統合ランタイム](#considerations-for-self-hosted-integration-runtime)

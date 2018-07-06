@@ -13,18 +13,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: e84197e30ed5fe45ee74783eb899b93d3b900f9a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d1a6dd896f95f4a0efaa7d73fcc8e219493a3117
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266850"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050488"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 この記事では、ストアド プロシージャ アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す方法](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +56,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
@@ -190,7 +187,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在、Data Factory でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 リンクされたサービスを作成して、SSIS カタログをホストする Azure SQL データベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f7c82b3aa88e874328452aae46dc14972d63192f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a27d90006d31c83b5ebe6cfc4a8d97969743a91e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616945"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049860"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-http-connector.md)
-> * [バージョン 2 - プレビュー](connector-http.md)
+> * [Version 1](v1/data-factory-http-connector.md)
+> * [現在のバージョン](connector-http.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、HTTP エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の HTTPコネクタ](v1/data-factory-http-connector.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -57,7 +54,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **HttpServer** に設定する必要があります。 | [はい] |
+| type | type プロパティを **HttpServer** に設定する必要があります。 | [はい] |
 | url | Web サーバーへのベース URL | [はい] |
 | enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名の証明書を使用している場合、これを false に設定します。 | いいえ。既定値は true です。 |
 | authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
@@ -165,7 +162,7 @@ HTTP からデータをコピーするには、データセットの type プロ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティを **HttpFile** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティを **HttpFile** に設定する必要があります。 | [はい] |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていないとき、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
 | requestMethod | Http メソッド。<br/>使用できる値は、**Get** (既定値) または **Post** です。 | いいえ  |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
@@ -222,7 +219,7 @@ HTTP からデータをコピーするは、コピー アクティビティで�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **HttpSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **HttpSource** に設定する必要があります。 | [はい] |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。<br/> 既定値は 00:01:40 です。  | いいえ  |
 
 **例:**

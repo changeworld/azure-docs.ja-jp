@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658317"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062243"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure での SAP HANA L インスタンスの高可用性とディザスター リカバリー 
 
@@ -44,10 +44,12 @@ SAP HANA on Azure (L インスタンス) は、4 つの地政学的地域 (米�
 | HANA L インスタンスでサポートされるシナリオ | 高可用性オプション | ディザスター リカバリー オプション | 説明 |
 | --- | --- | --- | --- |
 | 単一ノード | 使用できません。 | 専用 DR セットアップ。<br /> 多目的 DR セットアップ。 | |
-| ホストの自動フェールオーバー: n + m<br /> (1 + 1 を含む) | アクティブ ロールを担うスタンバイで可能。<br /> HANA がロールの切り替えを制御。 | 専用 DR セットアップ。<br /> 多目的 DR セットアップ。<br /> ストレージ レプリケーションを使用した DR 同期。 | HANA ボリューム セットはすべてのノード (n + m) に接続。<br /> DR サイトに同じ数のノードが必要。 |
+| 自動フェールオーバーのホスト: スケールアウト (スタンバイの有無にかかわらず)<br /> (1 + 1 を含む) | アクティブ ロールを担うスタンバイで可能。<br /> HANA がロールの切り替えを制御。 | 専用 DR セットアップ。<br /> 多目的 DR セットアップ。<br /> ストレージ レプリケーションを使用した DR 同期。 | HANA ボリューム セットはすべてのノードに接続。<br /> DR サイトに同じ数のノードが必要。 |
 | HANA システム レプリケーション | プライマリまたはセカンダリ セットアップで可能。<br /> フェールオーバーが発生した場合にセカンダリがプライマリ ロールに移行。<br /> HANA システム レプリケーションと OS 制御のフェールオーバー。 | 専用 DR セットアップ。<br /> 多目的 DR セットアップ。<br /> ストレージ レプリケーションを使用した DR 同期。<br /> HANA システム レプリケーションを使用した DR はサード パーティのコンポーネントがないとまだ不可能。 | 各ノードに接続された個別のディスク ボリューム セット。<br /> DR の場所にレプリケートされるのは、実稼働サイトのセカンダリ レプリカのディスク ボリュームのみ。<br /> DR サイトにボリューム セットが 1 つ必要。 | 
 
 専用 DR セットアップは、DR サイトの HANA L インスタンス ユニットが他のワークロードや非実稼働システムの実行には使用されないセットアップです。 ユニットはパッシブであり、障害時のフェールオーバーが実行されたときにのみデプロイされます。 ただし、このセットアップは多くのお客様にお勧めする方法ではありません。
+
+ご使用のアーキテクチャのストレージ レイアウトとイーサネットの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 
 > [!NOTE]
 > オーバーレイ シナリオとしての [SAP HANA の MCOD デプロイ](https://launchpad.support.sap.com/#/notes/1681092) (1 つのユニットに複数の HANA Instances) は、表に一覧で示されている HA と DR の方法で機能します。 例外は、Pacemaker に基づく自動フェールオーバー クラスターを備えた HANA システム レプリケーションを使う場合です。 このような場合は、ユニットごとにサポートされる HANA インスタンスは 1 つのみです。 [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) デプロイでは、複数のテナントがデプロイされる場合、非ストレージ ベースの HA および DR の方法のみが機能します。 1 つのテナントがデプロイされる場合は、一覧のすべての方法が有効です。  
@@ -60,7 +62,7 @@ SAP HANA の高可用性の詳細については、SAP の次の記事を参照�
 - [SAP HANA の高可用性のホワイトペーパー](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [SAP HANA 管理ガイド](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [SAP HANA システム レプリケーションに関する SAP HANA Academy ビデオ](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [SAP サポート ノート #1999880 - SAP HANA システム レプリケーションに関する FAQ](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [SAP サポート ノート #1999880 - SAP HANA システム レプリケーションに関する FAQ](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP サポート ノート #2165547 - SAP HANA システム レプリケーション環境での SAP HANA のバックアップと復元](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [SAP サポート ノート #1984882 - 最小/ゼロ ダウンタイムでのハードウェア交換のための SAP HANA システム レプリケーションの使用](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 
@@ -940,7 +942,7 @@ DR サイトの HANA L インスタンス ユニットで、スクリプト **az
 
    オペレーション チーム側では、次の手順が発生します。
 
-   a. 実稼働ボリュームからディザスター リカバリー ボリュームへのスナップショットのレプリケーションが停止されます。 ディザスター リカバリー手順を実行することが必要になった理由が運用サイトの障害の場合、既にこの中断が発生している可能性があります。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 実稼働ボリュームからディザスター リカバリー ボリュームへのスナップショットのレプリケーションが停止されます。 ディザスター リカバリー手順を実行することが必要になった理由が運用サイトの障害の場合、既にこの中断が発生している可能性があります。
    
    b. お客様が選択したストレージ スナップショット名またはバックアップ ID が指定されたスナップショットが、ディザスター リカバリー ボリュームで復元されます。
    

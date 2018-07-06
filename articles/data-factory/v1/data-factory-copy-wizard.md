@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ef94f5cfa91422dddf9c684c2dc1b6eada754f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621294"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048722"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 
 Azure Data Factory コピー ウィザードを使用すると、通常エンド ツー エンドのデータ統合シナリオの最初の手順である、データの取り込みプロセスを容易に実行できます。 リンクされたサービス、データセット、およびパイプラインの JSON 定義を理解していなくても、Azure Data Factory コピー ウィザードを使用することができます。 このウィザードのすべての手順を完了すると、ウィザードによってパイプラインが自動的に作成され、選択したデータ ソースから選択した宛先にデータがコピーされます。 また、コピー ウィザードを使用すると、作成時に取り込まれるデータを検証できます。そのため、データ ソースから初めてデータを取り込むときに特に、時間を大幅に節約できます。 コピー ウィザードを起動するには、Data Factory のホーム ページで **[データをコピー]** タイルをクリックします。

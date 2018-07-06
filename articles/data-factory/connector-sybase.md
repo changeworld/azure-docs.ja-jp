@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: cccbf8d74af7cd15a834899110a19c5c2823cb9f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0eb74cee8fb1f4c5d301693a4d53e5d564e12a00
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618227"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053951"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-sybase-connector.md)
-> * [バージョン 2 - プレビュー](connector-sybase.md)
+> * [Version 1](v1/data-factory-onprem-sybase-connector.md)
+> * [現在のバージョン](connector-sybase.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Sybase connector in V1 (V1 の Sybase コネクタ)](v1/data-factory-onprem-sybase-connector.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -58,7 +55,7 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **Sybase** に設定する必要があります。 | [はい] |
+| type | type プロパティを **Sybase** に設定する必要があります。 | [はい] |
 | [サーバー] | Sybase サーバーの名前です。 |[はい] |
 | [データベース] | Sybase データベースの名前です。 |[はい] |
 | authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 |[はい] |
@@ -99,7 +96,7 @@ Sybase からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Sybase データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -128,7 +125,7 @@ Sybase からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

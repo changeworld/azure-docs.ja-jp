@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0826db686b7fdea8389944b4b56f549ea03f751
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621049"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052513"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-copy-activity-fault-tolerance.md)
-> * [バージョン 2 - プレビュー](../copy-activity-fault-tolerance.md)
+> * [Version 1](data-factory-copy-activity-fault-tolerance.md)
+> * [Version 2 (現在のバージョン)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 のコピー アクティビティのフォールト トレランス](../copy-activity-fault-tolerance.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory のコピー アクティビティでのフォールト トレランス](../copy-activity-fault-tolerance.md)に関するページを参照してください。
 
 Azure Data Factory の[コピー アクティビティ](data-factory-data-movement-activities.md)には、ソースとシンク データ ストアの間でデータをコピーするときの互換性のない行の取り扱いについて、2 つの方法が用意されています。
 

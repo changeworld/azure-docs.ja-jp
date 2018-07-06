@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f648bec7530260a6445f74b6d141140f728674ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aaec710dd6c12f96a479a1f41603351512da1df6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617163"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054672"
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-odata-connector.md)
-> * [バージョン 2 - プレビュー](connector-odata.md)
+> * [Version 1](v1/data-factory-odata-connector.md)
+> * [現在のバージョン](connector-odata.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、OData ソースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の OData コネクタ](v1/data-factory-odata-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -51,7 +48,7 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **OData** |[はい] |
+| type | type プロパティを **OData** |[はい] |
 | url | OData サービスの ルート URL。 |[はい] |
 | authenticationType | OData ソースへの接続に使用される認証の種類です。<br/>使用可能な値: **Anonymous**、**Basic**、**Windows**。 OAuth はサポートされません。 | [はい] |
 | userName | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ  |
@@ -133,7 +130,7 @@ OData からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **ODataResource** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **ODataResource** に設定する必要があります。 | [はい] |
 | パス | OData リソースへのパス。 | [はい] |
 
 **例**
@@ -166,7 +163,7 @@ OData からデータをコピーするには、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
 | クエリ | データをフィルター処理するための OData クエリ オプション。 例: "?$select=Name,Description&$top=5"。<br/><br/>最終的に、OData コネクタは、結合された URL からデータをコピーします: `[url specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
 
 **例:**

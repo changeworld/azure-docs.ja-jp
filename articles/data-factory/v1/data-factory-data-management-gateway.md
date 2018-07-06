@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621185"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048919"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[セルフホステッド IR](../create-self-hosted-integration-runtime.md) に関するページを参照してください。 
 
 > [!NOTE]
 > Data Management Gateway は、セルフホステッド Integration Runtime に名前が変わりました。  
@@ -208,7 +208,7 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config と diawp.exe.config のプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を次に示します。  
 
 1. ファイル エクスプ ローラーで、C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
-2. 管理者として Notepad.exe を起動し、テキスト ファイル C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config を開きます。次のコードに示されている system.net の既定のタグを確認します。
+2. 管理者として Notepad.exe を起動し、テキスト ファイル "C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config" を開きます。次のコードに示されている system.net の既定のタグを確認します。
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -237,8 +237,8 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因になっている可能性があります。構成が不適切だと、ゲートウェイが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションをご覧ください。
 
 1. ゲートウェイを登録しようとすると次のエラーが発生します。「ゲートウェイのキーを登録できませんでした。 ゲートウェイのキーの登録を再試行する前に、Data Management Gateway が接続済み状態であり、Data Management Gateway Host Service が開始済みであることを確認してください。」
-2. 構成マネージャーを開くと、状態は切断または接続中と表示されています。[イベント ビューアー]、[Application and Services Logs]\(アプリケーションおよびサービス ログ\)、[データ管理ゲートウェイ] の下の Windows イベント ログを参照すると、「`Unable to connect to the remote server`
-   `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`」などのエラー メッセージが表示されます。
+2. 構成マネージャーを開くと、ステータスとして "切断" または "接続中" と表示されます。 [イベント ビューアー] > [アプリケーションとサービス ログ] > [Data Management Gateway] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。`Unable to connect to the remote server`
+   `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>資格情報の暗号化のためにポート 8050 を開く
 Azure ポータルでオンプレミスのリンクされたサービスを設定するとき、**資格情報の設**定アプリケーションでは、受信ポート **8050** を使って、資格情報がゲートウェイにリレーされます。 既定では、ゲートウェイのセットアップ中に、データ管理ゲートウェイのインストールによってこのポートがゲートウェイ コンピューターで開きます。
@@ -288,12 +288,12 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[高可用性とスケーラビリティを備えたマルチノード ゲートウェイ (プレビュー)](data-factory-data-management-gateway-high-availability-scalability.md)
+[高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
 2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
-    高可用性機能を備えたゲートウェイ (プレビュー) については、別途 AuthKey パラメーターが必要となります。
+    高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
@@ -490,12 +490,12 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 3. **New-AzureRmDataFactoryGateway** コマンドレットを使用して、次のように論理ゲートウェイを作成します。
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **コマンドと出力の例**:
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
     Name              : MyGateway
     Description       : gateway for walkthrough

@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: e9d2140edc64daca4df0463dbfdcd5b06f072012
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cca9befb65abed3b6d07a52aa286c43725577121
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620410"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051748"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
 次の表に、Data Factory アーティファクトの名前付け規則を示します。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の名前付け規則](v1/data-factory-naming-rules.md)に関するページを参照してください。
 
 | Name | 名前の一意性 | 検証チェック |
 |:--- |:--- |:--- |
@@ -33,4 +30,4 @@ ms.locfileid: "34620410"
 | リソース グループ |Microsoft Azure 全体で一意です。 名前の大文字と小文字は区別されません。 | 詳細については、「[名前付け規則と制約事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)」を参照してください。 |
 
 ## <a name="next-steps"></a>次の手順
-[クイックスタート: データ ファクトリの作成](quickstart-create-data-factory-powershell.md)の手順に従ってデータ ファクトリを作成する方法を確認します。 
+[クイック スタート: データ ファクトリの作成](quickstart-create-data-factory-powershell.md)の手順に従ってデータ ファクトリを作成する方法を確認します。 

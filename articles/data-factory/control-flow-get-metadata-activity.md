@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617982"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049368"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
-GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、バージョン 2 の Data Factory でのみサポートされています。 これは、次のシナリオで使用できます。
+GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、次のシナリオで使用できます。
 
 - 任意のデータのメタデータ情報を検証する
 - データが準備完了/使用可能になったらパイプラインをトリガーする
@@ -31,9 +31,6 @@ GetMetadata アクティビティを使用すると、Azure Data Factory で任�
 
 - GetMetadata アクティビティからの出力を条件式で使用することによって検証を実行できます。
 - Do-Until ループによって条件が満たされたら、パイプラインをトリガーできます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -48,12 +45,16 @@ GetMetadata アクティビティは必須の入力としてデータセット�
 
 | コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<br/>(ファイル) | columnCount<br>(ファイル) | exists<br>(ファイル/フォルダー) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure BLOB | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | ○ | √ | √ | √/√* |
+| Azure BLOB | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
 | ファイル システム | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
+
+- Amazon S3 の場合、`lastModified` はバケットとキーには適用されますが、仮想フォルダーには適用されません。`exists` はバケットとキーには適用されますが、プレフィックスまたは仮想フォルダーには適用されません。
+- Azure Blob の場合、`lastModified` はコンテナーと BLOB には適用されますが、仮想フォルダーには適用されません。
 
 **リレーショナル データベース**
 

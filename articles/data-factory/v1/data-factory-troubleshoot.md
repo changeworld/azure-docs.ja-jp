@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cbd51c48ec5b1801062e7aaf0b77e7b347018b31
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051867"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 
 
 この記事では、Azure Data Factory を使用する場合の問題に対するトラブルシューティングのヒントを提供します。 ここでは、このサービスを使用する場合に発生する可能性があるすべての問題を取り上げているわけではなく、一部の問題と一般的なトラブルシューティングのヒントについて説明しています。   
 

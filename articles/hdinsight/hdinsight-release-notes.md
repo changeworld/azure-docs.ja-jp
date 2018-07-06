@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 17ba4af006587dd1d34f61a0f5f77cbcd768fcf8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a53bc6459e431d855ba09cda59680c5d8698c488
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410092"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063259"
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
@@ -28,6 +28,17 @@ ms.locfileid: "31410092"
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
+## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>2018 年 6 月 27 日のメモ: HDInsight 3.6 上の新しいオープン ソース バージョン (ADLS Gen2 など) のリリース
+HDInsight の 2018 年 6 月のリリースは、以下の概要のとおり、ユーザーに役立つ多数の新しい更新と機能を追加した重要なリリースです。 詳細については、こちらの[投稿](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/)を参照してください。
+
+主な特長は次のとおりです。 詳細なリリース ノート、バグの修正、既知の問題については、こちらの[ドキュメント](https://aka.ms/hdirelnotes)を参照してください。
+
+- **Hadoop と他のオープン ソース プロジェクトの更新**: この更新では、20 以上のオープン ソース プロジェクト全体で 1,000 個以上のバグが修正され、さらに新しいバージョンの Spark (2.3) と Kafka (1.0) も追加されました。
+- **Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新**: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
+- **Azure Data Lake Storage Gen2 のサポート**: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターのストアとして ADLS Gen2 アカウントを選択できるようになります。
+- **HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)**: (プレビュー) Virtual Network サービス エンドポイントは、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。 
+
+
 ## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>2018 年 3 月 20 日 - HDInsight 3.6 での Spark 2.2 のリリース
 
 - Spark 2.2.0 では、Spark Core、SQL、ML での安定性が向上し、Structured Streaming が GA 状態になります。 Spark 2.2.0 は現在 HDInsight 3.6 で利用可能です。
@@ -35,7 +46,7 @@ ms.locfileid: "31410092"
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight の 2017 年 8 月 1 日リリース
 
-| タイトル | [説明] | 影響を受ける領域  | クラスターの種類  | 
+| タイトル | 説明 | 影響を受ける領域  | クラスターの種類  | 
 | --- | --- | --- | --- | --- |
 | HDInsight での Microsoft R Server 9.1 の リリース |HDInsight では、HDInsight での Microsoft R Server 9.1 クラスターのプロビジョニングをサポートするようになりました。 Microsoft R Server 9.1 リリースの詳細については、[このブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)をご覧ください。 |サービス |R Server |
 | HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (現在 HDInsight 3.6 で利用可能) の間での破壊的変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) を参照してください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |サービス |すべて |該当なし |
@@ -64,7 +75,7 @@ ms.locfileid: "31410092"
 
 * **Hive の新機能**。 [Hortonworks のドキュメント](https://hortonworks.com/apache/hive/#section_4)をご覧ください。
 
-* **Hive CLI の廃止**: Hive CLI は廃止される予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hadoop/apache-hadoop-use-hive-beeline.md)を参照してください。
+* **Hive CLI の廃止**: Hive CLI は非推奨になる予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hadoop/apache-hadoop-use-hive-beeline.md)を参照してください。
 
 * **Apache Phoenix および HBase の新機能**。
     * ストレージ クォータのサポート: マルチ テナント環境でよく使用され、テーブルごとと名前空間レベルごとに限られたストレージ スペースを許可します。

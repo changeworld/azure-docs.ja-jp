@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Drill からデータをコピーする (Beta) | Microsoft Docs
+title: Azure Data Factory を使用して Drill からデータをコピーする | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Drill のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 74ff57818f4e78e50dafd58acdc2a1064d66a17d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 31dcae5dde53a9a3933c15dcf3b6869ec943cbea
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616425"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050286"
 ---
-# <a name="copy-data-from-drill-using-azure-data-factory-beta"></a>Azure Data Factory を使用して Drill からデータをコピーする (Beta)
+# <a name="copy-data-from-drill-using-azure-data-factory"></a>Azure Data Factory を使用して Drill からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Drill からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
-
 > [!IMPORTANT]
-> このコネクタは、現在ベータ版です。 実際にお試しいただき、フィードバックをお寄せください。 運用環境では使用しないでください。
+> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -38,7 +35,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Drill コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -48,7 +45,7 @@ Drill のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **Drill** に設定する必要があります | [はい] |
+| type | type プロパティは **Drill** に設定する必要があります | [はい] |
 | connectionString | Drill に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -104,7 +101,7 @@ Drill からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **DrillSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **DrillSource** に設定する必要があります。 | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**

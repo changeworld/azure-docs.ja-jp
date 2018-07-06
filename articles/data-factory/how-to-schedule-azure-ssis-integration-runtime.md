@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266823"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050609"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Azure SSIS 統合ランタイムをスケジュールに従って起動および停止する方法
 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には関連したコストがかかります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。
@@ -34,10 +34,6 @@ ms.locfileid: "36266823"
 3. **Runbook に対して 2 つの webhook を作成します。** 1 つは開始操作用、もう 1 つは停止操作用です。 データ ファクトリ パイプラインで Web アクティビティを構成するときは、これらの webhook の URL を使用します。 
 4. **データ ファクトリ パイプラインを作成します**。 作成するパイプラインは、3 つのアクティビティで構成されます。 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 次に、スケジュール トリガーを作成し、パイプラインが指定した間隔で実行するようにスケジュール設定します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す方法](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)に関するページを参照してください。
-
- 
 ## <a name="prerequisites"></a>前提条件
 Azure SSIS 統合ランタイムをまだプロビジョニングしていない場合は、[チュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従ってプロビジョニングします。 
 
@@ -254,7 +250,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 データ ファクトリの作成がサポートされている場所のみが一覧に表示されます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。

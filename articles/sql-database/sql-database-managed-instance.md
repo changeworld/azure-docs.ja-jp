@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215526"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054655"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージド インスタンス (プレビュー) とは?
 
@@ -210,7 +210,8 @@ Managed Instance はクラウド内で常に最新の状態が維持されるこ
 - Managed Instance では完全な物理パスを指定することができません。したがって、RESTORE DB は WITH MOVE をサポートしない、CREATE DB は物理パスを許可しない、BULK INSERT は Azure BLOB とのみ連携する、など、該当するすべてのシナリオを個別にサポートする必要があります。 
 - Managed Instance では、Windows 認証に代わるクラウドでの別の手段として、[Azure AD 認証](sql-database-aad-authentication.md)をサポートします。 
 - Managed Instance では、インメモリ OLTP オブジェクトを含むデータベース用の XTP ファイル グループおよびファイルを自動的に管理します。
- 
+- Managed Instance は SQL Server Integration Services (SSIS) をサポートし、SSIS パッケージを格納する SSIS カタログ (SSISDB) をホストできますが、パッケージは Azure Data Factory (ADF) 上のマネージド Azure-SSIS Integration Runtime (IR) で実行されます。[ADF での Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関するページをご覧ください。
+
 ### <a name="managed-instance-administration-features"></a>Managed Instance の管理機能  
 
 Managed Instance を使用することで、システム管理者はビジネスにとって最も重要な問題に集中することができます。 システム管理者/DBA のアクティビティの多くは必須ではないかシンプルなものです。 該当するアクティビティとして、OS/RDBMS のインストールおよび修正プログラムの適用、動的なインスタンスのサイズ変更および構成、バックアップ、データベース レプリケーション (システム データベースを含む)、高可用性の構成、正常性およびパフォーマンス監視データ ストリームの構成などが挙げられます。 

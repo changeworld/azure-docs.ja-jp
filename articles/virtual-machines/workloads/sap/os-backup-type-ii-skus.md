@@ -11,24 +11,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d5caf5836b96555e01b55d408e51f3df2407d35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657606"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063276"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>Type II SKU の OS のバックアップと復元
 
-このドキュメントでは、HANA L インスタンスの **Type II SKU** のオペレーティング システムのバックアップと復元を実行する手順について説明します。 
+このドキュメントでは、HANA L インスタンスの **Type II SKU** のオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 
 
 >[!NOTE]
 >OS バックアップ スクリプトは、サーバーにプレインストールされている ReaR ソフトウェアを使用します。  
 
-Microsoft サービス管理チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システム全体をバックアップするための 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
+Microsoft サービス管理チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムのファイル レベル バックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
 ```
 #crontab –l
 ```
@@ -38,7 +38,7 @@ Microsoft サービス管理チームによるプロビジョニングが完了�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
 
-オペレーティング システムのバックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのバックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
+オペレーティング システムのファイル システム バックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
 
 ```
 #rear -v mkbackup

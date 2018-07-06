@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b47dbf081d857d0c6eb5e1bd4eb9781c4c894698
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c1d9f7a4b64ea1e952b3edd9011f5dc197543d6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615939"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052683"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for PostgreSQL からデータをコピーする 
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Database for PostgreSQL からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[Copy Activity in V1 (V1 でのコピー アクティビティ)](v1/data-factory-data-movement-activities.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -45,11 +42,11 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **AzurePostgreSql** に設定する必要があります | [はい] |
+| type | type プロパティは **AzurePostgreSql** に設定する必要があります | [はい] |
 | connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
-一般的な接続文字列は `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。
+一般的な接続文字列は `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
 | プロパティ | 説明 | オプション | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
@@ -66,7 +63,7 @@ Azure Database for PostgreSQL のリンクされたサービスでは、次の�
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>"
+                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         }
     }
@@ -104,7 +101,7 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **AzurePostgreSqlSource** に設定する必要があります | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **AzurePostgreSqlSource** に設定する必要があります | [はい] |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
@@ -138,6 +135,58 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
     }
 ]
 ```
+
+## <a name="data-type-mapping-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のデータ型のマッピング
+
+Azure Database for PostgreSQL からデータをコピーするとき、次の PostgreSQL のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+
+| PostgreSQL データ型 | PostgreSQL エイリアス | Data Factory の中間データ型 |
+|:--- |:--- |:--- |
+| `abstime` |&nbsp; |`String` |
+| `bigint` | `int8` | `Int64` |
+| `bigserial` | `serial8` | `Int64` |
+| `bit [1]` |&nbsp; | `Boolean` |
+| `bit [(n)], n>1` |&nbsp; | `Byte[]` |
+| `bit varying [(n)]` | `varbit` |`Byte[]` |
+| `boolean` | `bool` | `Boolean` |
+| `box` |&nbsp; | `String` |
+| `bytea` |&nbsp; | `Byte[], String` |
+| `character [(n)]` | `char [(n)]` | `String` |
+| `character varying [(n)]` | `varchar [(n)]` | `String` |
+| `cid` |&nbsp; | `Int32` |
+| `cidr` |&nbsp; | `String` |
+| `circle` |&nbsp; |` String` |
+| `date` |&nbsp; |`Datetime` |
+| `daterange` |&nbsp; |`String` |
+| `double precision` |`float8` |`Double` |
+| `inet` |&nbsp; |`String` |
+| `intarray` |&nbsp; |`String` |
+| `int4range` |&nbsp; |`String` |
+| `int8range` |&nbsp; |`String` |
+| `integer` | `int, int4` |`Int32` |
+| `interval [fields] [(p)]` | | `String` |
+| `json` |&nbsp; | `String` |
+| `jsonb` |&nbsp; | `Byte[]` |
+| `line` |&nbsp; | `Byte[], String` |
+| `lseg` |&nbsp; | `String` |
+| `macaddr` |&nbsp; | `String` |
+| `money` |&nbsp; | `String` |
+| `numeric [(p, s)]`|`decimal [(p, s)]` |`String` |
+| `numrange` |&nbsp; |`String` |
+| `oid` |&nbsp; |`Int32` |
+| `path` |&nbsp; |`String` |
+| `pg_lsn` |&nbsp; |`Int64` |
+| `point` |&nbsp; |`String` |
+| `polygon` |&nbsp; |`String` |
+| `real` |`float4` |`Single` |
+| `smallint` |`int2` |`Int16` |
+| `smallserial` |`serial2` |`Int16` |
+| `serial` |`serial4` |`Int32` |
+| `text` |&nbsp; |`String` |
+| `timewithtimezone` |&nbsp; |`String` |
+| `timewithouttimezone` |&nbsp; |`String` |
+| `timestampwithtimezone` |&nbsp; |`String` |
+| `xid` |&nbsp; |`Int32` |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

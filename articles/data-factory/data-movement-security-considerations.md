@@ -11,28 +11,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 80cec0bc8136142f30ea7b957de819379b1bb139
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c0a07cb872ec87bbf39237b74990a1fc7a74e9e8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619135"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053257"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-data-movement-security-considerations.md)
-> * [バージョン 2 - プレビュー](data-movement-security-considerations.md)
+> * [Version 1](v1/data-factory-data-movement-security-considerations.md)
+> * [現在のバージョン](data-movement-security-considerations.md)
 
 この記事では、Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[データ移動のセキュリティに関する考慮事項 (バージョン 1)](v1/data-factory-data-movement-security-considerations.md) に関するページを参照してください。
-
 Data Factory ソリューションでは、1 つ以上のデータ [パイプライン](concepts-pipelines-activities.md)を作成します。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 これらのパイプラインは、データ ファクトリが作成されたリージョンに存在します。 
 
-データ ファクトリを利用できるリージョンは米国東部、米国東部 2、西ヨーロッパだけですが (バージョン 2 プレビュー)、データ移動サービスは[複数のリージョンでグローバルに](concepts-integration-runtime.md#azure-ir)利用できます。 Data Factory サービスでは、データ移動サービスがまだデプロイされていないリージョンを代替リージョンとして使用するようにサービスに明示的に指示しない限り、データが地域またはリージョンを離れないことが保証されます。 
+Data Factory を利用できるのは少数のリージョンだけですが、データ移動サービスはデータのコンプライアンス、効率性、ネットワーク送信コスト削減のために[グローバルに利用できます](concepts-integration-runtime.md#integration-runtime-location)。 
 
 Azure Data Factory は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
@@ -42,7 +39,7 @@ Data Factory を使用したデータ移動は、次の認定を取得してい�
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/trustcenter) にアクセスしてください。
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 

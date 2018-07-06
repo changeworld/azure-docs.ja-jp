@@ -1,5 +1,5 @@
 ---
-title: Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする | Microsoft Docs
 description: Data Factory を使用して、サポートされるソース ストアのデータを Azure SQL Data Warehouse にコピーしたり、Azure SQL Data Warehouse のデータをサポートされるシンク ストアにコピーしたりできます。
 services: data-factory
 documentationcenter: ''
@@ -13,44 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: c862f269a8e32814dfb6d311706e65b57d52d1bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42ffdbf117b3f522e27e6e46628231ddb8221018
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617078"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051629"
 ---
-# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-azure-sql-data-warehouse-connector.md)
-> * [バージョン 2 - プレビュー](connector-azure-sql-data-warehouse.md)
+#  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
+> * [バージョン 1](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> * [現在のバージョン](connector-azure-sql-data-warehouse.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Azure SQL Data Warehouse コネクタ](v1/data-factory-azure-sql-data-warehouse-connector.md)に関する記事を参照してください。
+この記事では、Azure Data Factory のコピー アクティビティを使って Azure SQL Data Warehouse との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure SQL Data Warehouse のデータを、サポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Azure SQL Data Warehouse にコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Azure SQL Data Warehouse のデータを、サポートされる任意のシンク データ ストアにコピーできます。 また、Azure SQL Data Warehouse には、サポートされているソース データ ストアからデータをコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表を参照してください。
 
-具体的には、この Azure SQL Data Warehouse コネクタは以下をサポートします。
+具体的には、この Azure SQL Data Warehouse コネクタは以下の機能をサポートします。
 
-- **SQL 認証**を使って、およびサービス プリンシパルまたは管理対象サービス ID (MSI) で **Azure Active Directory アプリケーション トークン認証**を使って、データをコピーする。
-- ソースとしての SQL クエリまたはストアド プロシージャを使用したデータの取得。
-- シンクとしての **PolyBase** または一括挿入を使用したデータの読み込み。 コピーのパフォーマンスを向上させるために前者を**推奨します**。
-
-> [!IMPORTANT]
-> PolyBase は SQL 認証のみをサポートし、Azure Active Directory 認証はサポートしないことに注意してください。
+- SQL 認証を使って、およびサービス プリンシパルまたはマネージド サービス ID (MSI) で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
+- ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
+- シンクとして、PolyBase または一括挿入を使用してデータを読み込む。 コピーのパフォーマンスがよいので、PolyBase をお勧めします。
 
 > [!IMPORTANT]
-> Azure Integration Runtime を使ってデータをコピーする場合は、[Azure サービスがサーバーにアクセスするのを許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。 セルフホステッド Integration Runtime を使用してデータをコピーする場合は、Azure SQL Database への接続に使われるコンピューターの IP アドレスを含む適切な IP 範囲を許可するように、Azure SQL Server ファイアウォールを構成します。
+> PolyBase は SQL 認証のみをサポートし、Azure AD 認証はサポートしないので注意してください。
 
-## <a name="getting-started"></a>使用の開始
+> [!IMPORTANT]
+> Azure Data Factory Integration Runtime を使ってデータをコピーする場合は、Azure サービスがサーバーにアクセスできるように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。
+> セルフホステッド IR を使用してデータをコピーする場合は、適切な IP 範囲を許可するように Azure SQL Server ファイアウォールを構成します。 この範囲には、Azure SQL Database への接続に使用されるコンピューターの IP アドレスが含まれています。
+
+## <a name="get-started"></a>作業開始
+
+> [!TIP]
+> 最高のパフォーマンスを実現するには、PolyBase を使用して、Azure SQL Data Warehouse にデータを読み込みます。 「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」セクションに詳細が記載されています。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](load-azure-sql-data-warehouse.md)に関するページを参照してください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure SQL Data Warehouse コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
+以下のセクションでは、Azure SQL Data Warehouse コネクタに固有の Data Factory エンティティを定義するプロパティの詳細を説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -58,22 +59,22 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **AzureSqlDW** | [はい] |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| type | type プロパティは **AzureSqlDW** に設定する必要があります。 | [はい] |
+| connectionString | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド IR を使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
-- [SQL 認証の使用](#using-sql-authentication)
-- [AAD アプリケーション トークン認証の使用 - サービス プリンシパル](#using-service-principal-authentication)
-- [AAD アプリケーション トークン認証の使用 - 管理対象サービス ID](#using-managed-service-identity-authentication)
+- [SQL 認証](#sql-authentication)
+- Azure AD アプリケーション トークン認証: [サービス プリンシパル](#service-principal-authentication)
+- Azure AD アプリケーション トークン認証: [マネージド サービス ID](#managed-service-identity-authentication)
 
-### <a name="using-sql-authentication"></a>SQL 認証の使用
+### <a name="sql-authentication"></a>SQL 認証
 
-**SQL 認証を使用するリンクされたサービスの例:**
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>SQL 認証を使用するリンクされたサービスの例
 
 ```json
 {
@@ -94,34 +95,34 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 }
 ```
 
-### <a name="using-service-principal-authentication"></a>サービス プリンシパル認証の使用
+### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
-サービス プリンシパル ベースの AAD アプリケーション トークン認証を使うには、以下の手順のようにします。
+サービス プリンシパル ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
 
-1. **[Azure Portal から Azure Active Directory アプリケーションを作成します](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。**  リンクされたサービスを定義するときに使うアプリケーション名と次の値を記録しておきます。
+1. Azure portal から **[Azure Active Directory アプリケーションを作成します](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**。 アプリケーション名と、リンクされたサービスを定義する次の値を記録しておきます。
 
     - アプリケーション ID
     - アプリケーション キー
     - テナント ID
 
-2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 AAD 管理者には、AAD ユーザーまたは AAD グループを指定できます。 グループに MSI と管理者ロールを付与する場合は、管理者は DB へのフル アクセス権を持っているので、以下のステップ 3 と 4 をスキップします。
+2. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 Azure AD 管理者には、Azure AD ユーザーまたは Azure AD グループを使用できます。 MSI を持つグループに管理者ロールを付与する場合は、手順 3 および 4 をスキップします。 管理者には、データベースへのフル アクセスがあります。
 
-3. SSMS などのツールを使ってデータをコピーするデータ ウェアハウスに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**サービス プリンシパルの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
+3. サービス プリンシパルの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータ ウェアハウスに接続します。 次の T-SQL を実行します。
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**サービス プリンシパルに必要なアクセス許可を付与**します。
+4. SQL ユーザーや他のユーザーに対する通常の方法で、**サービス プリンシパルに必要なアクセス許可を付与**します。 次のコードを実行します。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. ADF で、Azure SQL Data Warehouse のリンクされたサービスを構成します。
+5. Azure Data Factory で、**Azure SQL Data Warehouse のリンクされたサービスを構成します**。
 
 
-**サービス プリンシパル認証を使うリンクされたサービスの例:**
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>サービス プリンシパル認証を使うリンクされたサービスの例
 
 ```json
 {
@@ -148,42 +149,42 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>管理対象のサービス ID の認証の使用
+### <a name="managed-service-identity-authentication"></a>マネージド サービス ID 認証
 
-データ ファクトリは、この特定のデータ ファクトリを表す[管理対象のサービス ID (MSI)](data-factory-service-identity.md) に関連付けることができます。 Azure SQL Data Warehouse 認証にこのサービス ID を使ことができ、そうすると、この指定されたファクトリは、データ ウェアハウスとの間で双方向にアクセスしたりデータをコピーしたりできるようになります。
+データ ファクトリは、特定のファクトリを表す[マネージド サービス ID](data-factory-service-identity.md) に関連付けることができます。 このサービス ID を Azure SQL Data Warehouse 認証に使用できます。 指定されたファクトリは、この ID を使用してデータ ウェアハウスにアクセスし、データを双方向にコピーできます。
 
 > [!IMPORTANT]
-> PolyBase は現在、MSI 認証用にサポートされていないことに注意してください。
+> 現在、PolyBase は MSI 認証に対してサポートされていないことに注意してください。
 
-MSI ベースの AAD アプリケーション トークン認証を使うには、以下の手順のようにします。
+MSI ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
 
-1. **Azure AD にグループを作成し、ファクトリの MSI をそのグループのメンバーにします**。
+1. **Azure AD でグループを作成します。** ファクトリ MSI をグループのメンバーにします。
 
-    a. Azure Portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの [プロパティ] で **[サービス ID]** をコピーします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの **[プロパティ]** に移動します。 サービス ID をコピーします。
 
-    b. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールし、`Connect-AzureAD` コマンドを使ってサインインし、次のコマンドを実行してグループを作成し、データ ファクトリの MSI をメンバーとして追加します。
+    b. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールします。 `Connect-AzureAD` コマンドを使用してサインインします。 次のコマンドを実行してグループを作成し、データ ファクトリ MSI をメンバーとして追加します。
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。
+2. まだ行っていない場合は、Azure portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。
 
-3. SSMS などのツールを使ってデータをコピーするデータ ウェアハウスに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**AAD グループの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
+3. Azure AD グループの**[包含データベース ユーザーを作成します](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 SSMS のようなツールと、少なくとも ALTER ANY USER アクセス許可を持つ Azure AD ID を使用して、データをコピーするデータ ウェアハウスに接続します。 次の T-SQL を実行します。 
     
     ```sql
-    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**AAD グループに必要なアクセス許可を付与**します。
+4. SQL ユーザーや他のユーザーに対する通常の方法で、**Azure AD グループに必要なアクセス許可を付与します**。 たとえば、次のコードを実行します。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your AAD group name];
+    EXEC sp_addrolemember [role name], [your Azure AD group name];
     ```
 
-5. ADF で、Azure SQL Data Warehouse のリンクされたサービスを構成します。
+5. Azure Data Factory で、**Azure SQL Data Warehouse のリンクされたサービスを構成します**。
 
-**MSI 認証を使うリンクされたサービスの例:**
+#### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI 認証を使用するリンクされたサービスの例
 
 ```json
 {
@@ -206,16 +207,16 @@ MSI ベースの AAD アプリケーション トークン認証を使うには�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、Azure SQL Data Warehouse データセットでサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services)に関する記事をご覧ください。 このセクションでは、Azure SQL Data Warehouse データセットでサポートされるプロパティの一覧を示します。
 
-Azure SQL Data Warehouse をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **AzureSqlDWTable** に設定します。 次のプロパティがサポートされています。
+Azure SQL Data Warehouse をコピー元またはコピー先としてデータをコピーするには、データセットの **type** プロパティを **AzureSqlDWTable** に設定します。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**AzureSqlDWTable** を設定する必要があります。 | [はい] |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | [はい] |
+| type | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | [はい] |
+| tableName | リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | [はい] |
 
-**例:**
+#### <a name="dataset-properties-example"></a>データセットのプロパティの例
 
 ```json
 {
@@ -238,24 +239,24 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Azure SQL Data Warehouse のソースとシンクでサポートされるプロパティの一覧を示します。
 
-### <a name="azure-sql-data-warehouse-as-source"></a>ソースとしての Azure SQL Data Warehouse
+### <a name="azure-sql-data-warehouse-as-the-source"></a>ソースとしての Azure SQL Data Warehouse
 
-Azure SQL Data Warehouse からデータをコピーする場合は、コピー アクティビティのソースの種類を **SqlDWSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Azure SQL Data Warehouse からデータをコピーする場合は、コピー アクティビティのソースで **type** プロパティを **SqlDWSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **SqlDWSource** を設定する必要があります。 | [はい] |
-| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
+| type | コピー アクティビティのソースの **type** プロパティは **SqlDWSource** に設定する必要があります。 | [はい] |
+| SqlReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ  |
+| sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ  |
+| storedProcedureParameters | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ  |
 
-**注意する点:**
+### <a name="points-to-note"></a>注意する点
 
-- SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティは、Azure SQL Data Warehouse ソースに対してこのクエリを実行してデータを取得します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
-- "sqlReaderQuery" または "sqlReaderStoredProcedureName" を指定しない場合は、データセット JSON の "structure" セクションに定義された列を使用して、Azure SQL Data Warehouse に対して実行するクエリ (`select column1, column2 from mytable`) が作成されます。 データセット定義に "structure" がない場合は、テーブルのすべての列が選択されます。
+- **SqlSource** に **sqlReaderQuery** が指定されている場合、コピー アクティビティは、Azure SQL Data Warehouse ソースに対してこのクエリを実行してデータを取得します。 または、ストアド プロシージャを指定できます。 ストアド プロシージャがパラメーターを受け取る場合は、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定します。
+- **sqlReaderQuery** または **sqlReaderStoredProcedureName** を指定しない場合は、データセット JSON の **structure** セクションで定義されている列を使用して、クエリが作成されます。 `select column1, column2 from mytable` が Azure SQL Data Warehouse に対して実行されます。 データセット定義に **structure** がない場合は、すべての列がテーブルから選択されます。
 - **sqlReaderStoredProcedureName** を使用する場合でも、ダミーの **tableName** プロパティをデータセット JSON に指定する必要があります。
 
-**例: SQL クエリの使用**
+#### <a name="sql-query-example"></a>SQL クエリの例
 
 ```json
 "activities":[
@@ -287,7 +288,7 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 ]
 ```
 
-**例: ストアド プロシージャの使用**
+#### <a name="stored-procedure-example"></a>ストアド プロシージャの例
 
 ```json
 "activities":[
@@ -323,7 +324,7 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 ]
 ```
 
-**ストアド プロシージャの定義:**
+### <a name="stored-procedure-definition"></a>ストアド プロシージャの定義
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -342,24 +343,24 @@ END
 GO
 ```
 
-### <a name="azure-sql-data-warehouse-as-sink"></a>シンクとしての Azure SQL Data Warehouse
+### <a name="azure-sql-data-warehouse-as-sink"></a> シンクとしての Azure SQL Data Warehouse
 
 Azure SQL Data Warehouse にデータをコピーする場合は、コピー アクティビティのシンクの種類を **SqlDWSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **SqlDWSink** に設定する必要があります | [はい] |
-| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** 制約と詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。  |いいえ  |
-| polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |いいえ  |
-| rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 <br/><br/>使用可能な値: 0 (既定値)、1、2 … |いいえ  |
-| rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。<br/><br/>使用可能な値:**値**(既定値) および**割合**。 |いいえ  |
-| rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。<br/><br/>使用可能な値: 1、2 … |はい (**rejectType** が **percentage** の場合) |
-| useTypeDefault |PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。<br/><br/>使用可能な値: **True****False** (既定値)。 |いいえ  |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 PolyBase が使用されない場合にのみ適用されます。<br/><br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使用されない場合にのみ適用されます。<br/><br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
-| preCopyScript |コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |(#repeatability-during-copy)。 |クエリ ステートメント。 |いいえ  |
+| type | コピー アクティビティのシンクの **type** プロパティは、**SqlDWSink** に設定する必要があります。 | [はい] |
+| allowPolyBase | BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> SQL Data Warehouse へのデータの読み込みには、PolyBase を使うことをお勧めします。 制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。  | いいえ  |
+| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | いいえ  |
+| rejectValue | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションについて詳しくは、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「引数」セクションをご覧ください。 <br/><br/>使用可能な値は、0 (既定値)、1、2 などです。 |いいえ  |
+| rejectType | **rejectValue** オプションがリテラル値か割合かを指定します。<br/><br/>使用可能な値は、**Value** (既定値) と **Percentage** です。 | いいえ  |
+| rejectSampleValue | 拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。<br/><br/>使用可能な値は、1、2 などです。 | はい (**rejectType** が **percentage** の場合)。 |
+| useTypeDefault | PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ  |
+| writeBatchSize | バッファー サイズが **writeBatchSize** に達したら、SQL テーブルにデータを挿入します。 PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **integer** (行数) です。 | いいえ。 既定値は 10000 です。 |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例: "00:30:00" (30 分)。 | いいえ  |
+| preCopyScript | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ  | (#repeatability-during-copy)。 | クエリ ステートメント。 | いいえ  |
 
-**例:**
+#### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例
 
 ```json
 "sink": {
@@ -375,33 +376,33 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 }
 ```
 
-次のセクションで、PolyBase を使用して SQL Data Warehouse への読み込みを効率的に実行する方法について詳しく説明します。
+次のセクションでは、PolyBase を使用して SQL Data Warehouse への読み込みを効率的に実行する方法について詳しく説明します。
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む
 
-**[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 詳細な比較については、[コピー パフォーマンスの参考数値](copy-activity-performance.md#performance-reference)に関するページを参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](connector-azure-sql-data-warehouse.md)に関するページを参照してください。
+[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 詳細な比較については、「[パフォーマンス リファレンス](copy-activity-performance.md#performance-reference)」をご覧ください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure SQL Data Warehouse に読み込む方法](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-load-sql-data-warehouse)に関するページをご覧ください。
 
-* ソース データが **Azure Blob または Azure Data Lake Store** 内にあり、PolyBase と互換性のある形式の場合は、PolyBase を使用して Azure SQL Data Warehouse に直接コピーできます。 詳細については、「**[PolyBase を使用して直接コピーする](#direct-copy-using-polybase)**」を参照してください。
-* ソース データのストアと形式が、本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)** を使用できます。 これによりデータが自動的に PolyBase に対応する形式に変換されたうえで、Azure Blob Storage に格納されるため、スループットも向上します。 その後、データは SQL Data Warehouse に読み込まれます。
+* ソース データが Azure BLOB ストレージまたは Azure Data Lake Store 内にあり、PolyBase と互換性のある形式の場合は、PolyBase を使用して Azure SQL Data Warehouse に直接コピーします。 詳しくは、「**[PolyBase を使用して直接コピーする](#direct-copy-by-using-polybase)**」をご覧ください。
+* ソース データのストアと形式が、本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-by-using-polybase)** を使います。 ステージング コピー機能はスループットも優れています。 PolyBase と互換性のある形式にデータを自動的に変換します。 そして、Azure BLOB ストレージにデータを格納します。 その後、データは SQL Data Warehouse に読み込まれます。
 
 > [!IMPORTANT]
-> PolyBase は現在、マネージド サービス ID (MSI) ベースの AAD アプリケーション トークン認証用にサポートされていないことに注意してください。
+> 現在、PolyBase は MSI ベースの Azure AD アプリケーション トークン認証に対してサポートされていないことに注意してください。
 
-### <a name="direct-copy-using-polybase"></a>PolyBase を使用して直接コピーする
+### <a name="direct-copy-by-using-polybase"></a>PolyBase を使用して直接コピーする
 
-SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用して)、Azure Blob と Azure Data Lake Store をソースとして、特定のファイル形式の要件付きで直接サポートしています。 ソース データがこのセクションで説明する条件を満たす場合は、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーできます。 それ以外の場合は、 [PolyBase を使用したステージング コピー](#staged-copy-using-polybase)を利用できます。
+SQL Data Warehouse の PolyBase は、Azure BLOB と Azure Data Lake Store を直接サポートします。 ソースとしてサービス プリンシパルを使用し、特定のファイル形式の要件があります。 ソース データがこのセクションで説明する条件を満たす場合は、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーしてください。 それ以外の場合は、[PolyBase を使用したステージング コピー](#staged-copy-by-using-polybase)を使います。
 
 > [!TIP]
 > データを効率的に Data Lake Store から SQL Data Warehouse にコピーするには、「[Azure Data Factory makes it even easier and convenient to uncover insights from data when using Data Lake Store with SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)」(Azure Data Factory を利用すれば、SQL Data Warehouse と共に Data Lake Store を使用する場合にデータからさらに容易かつ便利に情報を引き出せるようになる) を参考にしてください。
 
 要件が満たされない場合は、Azure Data Factory が設定を確認し、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ります。
 
-1. **ソースのリンクされたサービス**の型が **AzureStorage** またはサービス プリンシパルの認証を使用する **AzureDataLakeStore** であること。
-2. **入力データセット**の型が **AzureBlob** または **AzureDataLakeStoreFile** で、`type` プロパティの形式が次の構成で **OrcFormat**、**ParquetFormat** または **TextFormat** であること。
+1. **ソースのリンクされたサービス**の type が、**AzureStorage** またはサービス プリンシパル認証を使用する **AzureDataLakeStore** であること。
+2. **入力データセット**の type が、**AzureBlob** または **AzureDataLakeStoreFile** であること。 `type` プロパティの形式の種類が、**OrcFormat**、**ParquetFormat**、または **TextFormat** であり、次のような構成であること。
 
    1. `rowDelimiter` が **\n** である。
    2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
-   3. `encodingName` が **utf-8** に設定されている。これは**既定値**です。
+   3. `encodingName` が **utf-8** に設定されている。これは既定値です。
    4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。
    5. `compression` が **圧縮なし**、**GZip**、または **Deflate**である。
 
@@ -422,8 +423,8 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
     },
     ```
 
-3. パイプラインのコピー アクティビティでは、**BlobSource** または **AzureDataLakeStore**の下に `skipHeaderLineCount` 設定がないこと。
-4. パイプラインのコピー アクティビティでは、**SqlDWSink** の下に `sliceIdentifierColumnName` 設定がないこと  (PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。 **再現性**を実現するには、`sqlWriterCleanupScript` を使用します)。
+3. パイプラインのコピー アクティビティでは、**BlobSource** または **AzureDataLakeStore** の下に `skipHeaderLineCount` の設定がないこと。
+4. パイプラインのコピー アクティビティでは、**SqlDWSink** の下に `sliceIdentifierColumnName` の設定がないこと。 PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。 **再現性**を実現するには、`sqlWriterCleanupScript` を使用します。
 
 ```json
 "activities":[
@@ -455,11 +456,11 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ]
 ```
 
-### <a name="staged-copy-using-polybase"></a>PolyBase を使用したステージング コピー
+### <a name="staged-copy-by-using-polybase"></a>PolyBase を使用したステージング コピー
 
-ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure Blob Storage 経由でのデータのコピーを有効にすることができます (Premium Storage にはできません)。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を自動的に実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込んだ後、BLOB ストレージから一時データをクリーンアップします。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](copy-activity-performance.md#staged-copy) 」をご覧ください。
+ソース データが前のセクションの条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ インスタンス経由でのデータのコピーを有効にします。 Azure Premium Storage は使用できません。 その場合、Azure Data Factory は、PolyBase のデータ形式要件を満たすように、データの変換を自動的に実行します。 その後、PolyBase を使用してデータを SQL Data Warehouse に読み込みます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージング Azure BLOB ストレージ インスタンス経由でのデータのコピーについて詳しくは、「[ステージング コピー](copy-activity-performance.md#staged-copy)」をご覧ください。
 
-この機能を使用するには、中間 Blob Storage がある Azure ストレージ アカウントを参照する [Azure Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成し、次のコードに示すように、コピー アクティビティの `enableStaging` および `stagingSettings` プロパティを指定します。
+この機能を使うには、中間 BLOB ストレージを含む Azure ストレージ アカウントを参照する [Azure Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成します。 その後、次のコードで示すように、コピー アクティビティの `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
 ```json
 "activities":[
@@ -498,36 +499,36 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ]
 ```
 
-## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
+## <a name="best-practices-for-using-polybase"></a>PolyBase の使用に関するベスト プラクティス
 
-次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
+次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されているもの以外のベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 
-PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
+PolyBase を使うには、データを SQL Data Warehouse に読み込むユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つは、ユーザーを **db_owner** ロールのメンバーとして追加することです。 方法については、[SQL Data Warehouse の概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に関するページをご覧ください。
 
-### <a name="row-size-and-data-type-limitation"></a>行のサイズとデータ型の制限
+### <a name="row-size-and-data-type-limits"></a>行のサイズとデータ型の制限
 
-Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
+PolyBase の読み込みは、1 MB 未満の行に制限されます。 VARCHR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) を読み込むことはできません。 詳しくは、[SQL Data Warehouse サービスの容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)に関するページをご覧ください。
 
-ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
+ソース データに 1 MB を超える行がある場合は、ソース テーブルを複数の小さいテーブルに垂直分割できます。 各行の最大サイズが制限を超えないことを確認します。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse リソース クラス
 
-可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。
+可能な限りスループットを最大化するには、PolyBase で SQL Data Warehouse にデータを読み込むユーザーに、より大きなリソース クラスを割り当てます。
 
-### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の tableName
+### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での **tableName**
 
-次の表では、スキーマとテーブル名のさまざまな組み合わせについて、データセットの JSON で **tableName** プロパティを指定する方法の例を示します。
+次の表は、JSON データセットで **tableName** プロパティを指定する方法の例です。 スキーマとテーブル名の複数の組み合わせを示します。
 
-| DB スキーマ | テーブル名 | tableName JSON プロパティ |
+| DB スキーマ | テーブル名 | **tableName** JSON プロパティ |
 | --- | --- | --- |
-| dbo |MyTable |MyTable、dbo.MyTable、または [dbo].[MyTable] |
-| dbo1 |MyTable |dbo1.MyTable または [dbo1].[MyTable] |
-| dbo |My.Table |[My.Table] または [dbo].[My.Table] |
-| dbo1 |My.Table |[dbo1].[My.Table] |
+| dbo | MyTable | MyTable、dbo.MyTable、または [dbo].[MyTable] |
+| dbo1 | MyTable | dbo1.MyTable または [dbo1].[MyTable] |
+| dbo | My.Table | [My.Table] または [dbo].[My.Table] |
+| dbo1 | My.Table | [dbo1].[My.Table] |
 
-次のエラーが表示される場合は、tableName プロパティに指定した値に問題がある可能性があります。 tableName JSON プロパティの値を指定する正しい方法については、上の表を参照してください。
+次のエラーが表示される場合は、**tableName** プロパティに指定した値に問題がある可能性があります。 **tableName** JSON プロパティの値を指定する正しい方法については、上の表を参照してください。
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
@@ -535,13 +536,13 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 
 ### <a name="columns-with-default-values"></a>既定値を持つ列
 
-現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているとします。 そのような場合にも、入力データには 4 つの列を含める必要があります。 3 列の入力データセットを指定すると、次のメッセージのようなエラーが発生します。
+現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているものとします。 それでも入力データには 4 つの列が必要です。 入力データセットが 3 列の場合は、次のメッセージのようなエラーが発生します。
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
-null 値は、特殊な形式の既定値です。 列が null 値を許容している場合は、その列の (BLOB 内の) 入力データが空である可能性があります (入力データセットからなくすことはできません)。 PolyBase は、その列の null 値を Azure SQL Data Warehouse に挿入します。
+null 値は、特殊な形式の既定値です。 列が null 許容の場合、その列に対する BLOB 内の入力データが空になる可能性があります。 ただし、入力データセットから欠落することはできません。 PolyBase は、欠落している値に対して null を Azure SQL Data Warehouse に挿入します。
 
 ## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のデータ型のマッピング
 
@@ -549,38 +550,38 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 
 | Azure SQL Data Warehouse のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| bigint |Int64 |
-| binary |Byte[] |
-| ビット |ブール |
-| char |String、Char[] |
-| date |Datetime |
-| DateTime |Datetime |
-| datetime2 |Datetime |
-| Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM 属性 (varbinary(max)) |Byte[] |
-| Float |Double |
-| image |Byte[] |
-| int |Int32 |
-| money |Decimal |
-| nchar |String、Char[] |
-| ntext |String、Char[] |
-| 数値 |Decimal |
-| nvarchar |String、Char[] |
-| real |Single |
-| rowversion |Byte[] |
-| smalldatetime |Datetime |
-| smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Object * |
-| テキスト |String、Char[] |
-| time |timespan |
-| timestamp |Byte[] |
-| tinyint |Byte |
-| uniqueidentifier |Guid |
-| varbinary |Byte[] |
-| varchar |String、Char[] |
-| xml |xml |
+| bigint | Int64 |
+| binary | Byte[] |
+| ビット | ブール |
+| char | String、Char[] |
+| date | Datetime |
+| DateTime | Datetime |
+| datetime2 | Datetime |
+| Datetimeoffset | DateTimeOffset |
+| Decimal | Decimal |
+| FILESTREAM 属性 (varbinary(max)) | Byte[] |
+| Float | Double |
+| image | Byte[] |
+| int | Int32 |
+| money | Decimal |
+| nchar | String、Char[] |
+| ntext | String、Char[] |
+| 数値 | Decimal |
+| nvarchar | String、Char[] |
+| real | Single |
+| rowversion | Byte[] |
+| smalldatetime | Datetime |
+| smallint | Int16 |
+| smallmoney | Decimal |
+| sql_variant | Object * |
+| テキスト | String、Char[] |
+| time | timespan |
+| timestamp | Byte[] |
+| tinyint | Byte |
+| uniqueidentifier | Guid |
+| varbinary | Byte[] |
+| varchar | String、Char[] |
+| xml | xml |
 
 ## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

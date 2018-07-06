@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e405f99388f699b3f1e88b9e84f52f9a4380228c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3d5832f63a3ebe7583d18fcd863c8cc60b9b045d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621974"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048766"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34621974"
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での Hadoop ストリーミング アクティビティを使用したデータ変換](../transform-data-using-hadoop-streaming.md)についてのページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換](../transform-data-using-hadoop-streaming.md)に関するページを参照してください。
 
 
 HDInsightStreamingActivity アクティビティを使用して、Azure Data Factory パイプラインから Hadoop ストリーミング ジョブを呼び出すことができます。 次の JSON スニペットは、パイプライン JSON ファイルで HDInsightStreamingActivity を使用する構文です。 

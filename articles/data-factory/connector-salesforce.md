@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 99429b8090eca6d8633abfb1309f02168f1d06fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618312"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051884"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-salesforce-connector.md)
-> * [バージョン 2 - プレビュー](connector-salesforce.md)
+> * [Version 1](v1/data-factory-salesforce-connector.md)
+> * [現在のバージョン](connector-salesforce.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、または Salesforce にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用している場合は、[バージョン 1 での Salesforce コネクタ](v1/data-factory-salesforce-connector.md)に関する記事をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -64,7 +61,7 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティを **Salesforce** に設定する必要があります。 |[はい] |
+| type |type プロパティを **Salesforce** に設定する必要があります。 |[はい] |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
@@ -142,7 +139,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **SalesforceObject** に設定する必要があります。  | [はい] |
+| type | type プロパティは **SalesforceObject** に設定する必要があります。  | [はい] |
 | objectApiName | データの取得元の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
 
 > [!IMPORTANT]
@@ -173,7 +170,7 @@ Salesforce をコピー元またはコピー先としてデータをコピーす
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Salesforce のテーブル名。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -186,7 +183,7 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリを使用できます。 例: `select * from MyTable__c`。 | いいえ (データセットの "tableName" が指定されている場合) |
 | readBehavior | 既存のレコード、または削除されたものを含むすべてのレコードの、どちらのクエリを行うかを示します。 指定しない場合の既定の動作は前者です。 <br>使用可能な値: **query** (既定値)、**queryAll**.  | いいえ  |
 
@@ -236,7 +233,7 @@ Salesforce にデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります。 | [はい] |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |
 | externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定するフィールドは、Salesforce オブジェクトに "External Id Field" として定義されている必要があります。 対応する入力データに NULL 値を持つことはできません。 | "Upsert" の場合ははい |
 | writeBatchSize | 各バッチで Salesforce に書き込まれたデータの行数。 | いいえ (既定値は 5,000) |

@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a0095ae4aa50845a24cabb981399ac4035afdebe
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235279"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051452"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-onprem-cassandra-connector.md)
-> * [バージョン 2 - プレビュー](connector-cassandra.md)
+> * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
+> * [現在のバージョン](connector-cassandra.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Cassandra データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Cassandra コネクタ](v1/data-factory-onprem-cassandra-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -59,7 +55,7 @@ Cassandra のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティは **Cassandra** に設定する必要があります。 |[はい] |
+| type |type プロパティは **Cassandra** に設定する必要があります。 |[はい] |
 | host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |[はい] |
 | ポート |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 9042) |
 | authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |[はい] |
@@ -102,7 +98,7 @@ Cassandra からデータをコピーするには、データセットの type �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、**CassandraTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは、**CassandraTable** に設定する必要があります。 | [はい] |
 | keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 | tableName |Cassandra データベースのテーブル名。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 
@@ -136,9 +132,9 @@ Cassandra からデータをコピーするには、コピー アクティビテ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **CassandraSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **CassandraSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの "tableName" と "keyspace" が指定されている場合)。 |
-| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 詳細については、「 [Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。<br/><br/>使用可能な値は、**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM**、および **LOCAL_ONE** です。 |いいえ (既定値は `ONE`) |
+| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。<br/><br/>使用可能な値は、**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM**、および **LOCAL_ONE** です。 |いいえ (既定値は `ONE`) |
 
 **例:**
 

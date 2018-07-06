@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6bddb3d5beca57852ef62361b278ec1fa8961f45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: edbef08eaa100248368d7f0b23171f15b52ec56a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621260"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050949"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34621260"
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での MapReduce アクティビティを使用したデータ変換](../transform-data-using-hadoop-map-reduce.md)についてのページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での MapReduce アクティビティを使用したデータ変換](../transform-data-using-hadoop-map-reduce.md)に関するページを参照してください。
 
 
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
@@ -185,7 +185,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 
 | プロパティ | メモ |
 |:--- |:--- |
-| 型 |type には、 **HDInsightMapReduce**を設定する必要があります。 |
+| type |type には、 **HDInsightMapReduce**を設定する必要があります。 |
 | className |クラスの名前は **wordcount** |
 | jarFilePath |クラスを含む jar ファイルのパス。 次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 |
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |

@@ -10,26 +10,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 457983021034d83e0eed05bd91eae1ac30c046da
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296879"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062123"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
 この記事では、Data Factory のパイプラインで作成できるイベントベースのトリガーについて説明します。
 
-イベントドリブン アーキテクチャ (EDA) は、イベントの運用、検出、使用、および応答を含む一般的なデータ統合パターンです。 多くの場合、データ統合シナリオでは、Data Factory ユーザーがイベントに基づいてパイプラインをトリガーする必要があります。
+イベントドリブン アーキテクチャ (EDA) は、イベントの運用、検出、使用、および応答を含む一般的なデータ統合パターンです。 多くの場合、データ統合シナリオでは、Data Factory ユーザーがイベントに基づいてパイプラインをトリガーする必要があります。 Data Factory は [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) と統合され、イベントに対してパイプラインをトリガーすることができるようになりました。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
 ### <a name="create-a-new-event-trigger"></a>新しいイベント トリガーを作成する
 
 一般的なイベントは、Azure Storage アカウントでのファイルの到着、またはファイルの削除です。 Data Factory のパイプラインでこのイベントに応答するトリガーを作成できます。
+
+> [!NOTE]
+> この統合では、バージョン 2 のストレージ アカウント (汎用) のみがサポートされます。
 
 ![新しいイベント トリガーを作成する](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
@@ -61,11 +64,20 @@ ms.locfileid: "36296879"
 このセクションでは、イベントベースのトリガー設定の例を示します。
 
 -   **[Blob path begins with]\(Blob パスの先頭\)**('/containername/'): コンテナー内のすべての BLOB のイベントを受け取ります。
--   **[Blob path begins with]\(Blob パスの先頭\)**('/containername/foldername'): containername コンテナーと foldername フォルダー内のすべての BLOB のイベントを受け取ります。
--   **[Blob path begins with]\(Blob パスの先頭\)**('/containername/foldername/file.txt'): containername コンテナー以下の foldername フォルダー内にある file.txt という BLOB のイベントを受け取ります。
+-   **[Blob path begins with]\(Blob パスの先頭\)**('/containername/blobs/foldername'): containername コンテナーと foldername フォルダー内のすべての BLOB のイベントを受け取ります。
+-   **[Blob path begins with]\(Blob パスの先頭\)**('/containername/blobs/foldername/file.txt'): containername コンテナー以下の foldername フォルダー内にある file.txt という BLOB のイベントを受け取ります。
 -   **[Blob path ends with]\(Blob パスの末尾\)**('file.txt'): 任意のパスにある file.txt という BLOB のイベントを受け取ります。
--   **[Blob path ends with]\(Blob パスの末尾\)**('/containername/file.txt'): containername コンテナー以下の file.txt という BLOB のイベントを受け取ります。
+-   **[Blob path ends with]\(Blob パスの末尾\)**('/containername/blobs/file.txt'): containername コンテナー以下の foldername フォルダー内にある file.txt という BLOB のイベントを受け取ります。
 -   **[Blob path ends with]\(Blob パスの末尾\)**('foldername/file.txt'): 任意のコンテナー以下の foldername フォルダー内にある file.txt という BLOB のイベントを受け取ります。
+
+> [!NOTE]
+> コンテナーとフォルダー、コンテナーとファイル、またはコンテナー、フォルダー、およびファイルを指定するたびに、パスの `/blobs/` セグメントを含める必要があります。
+
+## <a name="using-blob-events-trigger-properties"></a>BLOB イベント トリガー プロパティの使用
+
+BLOB イベント トリガーが発生すると、パイプラインに *folderPath* と *fileName* という 2 つの変数を使用できます。 これらの変数にアクセスするには、`@triggerBody().fileName` または `@triggerBody().folderPath` の式を使用します。
+
+たとえば、`blobPathEndsWith` の値として `.csv` を使用して BLOB が作成されたときに発生するように構成されたトリガーがあるとします。 .csv ファイルがストレージ アカウントにドロップされるときに、*folderPath* と *fileName* で .csv ファイルの場所を示します。 たとえば、*folderPath* の値は `/containername/foldername/nestedfoldername` で、*fileName* の値は `filename.csv` です。
 
 ## <a name="next-steps"></a>次の手順
 トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。

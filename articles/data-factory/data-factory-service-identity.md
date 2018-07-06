@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284482"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050867"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
 この記事は、データ ファクトリ　サービス ID についてとそのしくみを理解するために役立ちます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -39,7 +36,7 @@ ms.locfileid: "36284482"
 
 データ ファクトリ サービス ID は、次のように生成されます。
 
-- ADF V2 パブリック プレビュー以降は、**Azure Portal または PowerShell** を介してデータ ファクトリを作成すると、サービス ID が常に自動的に作成されます。
+- **Azure Portal または PowerShell** を介してデータ ファクトリを作成すると、サービス ID が常に自動的に作成されます。
 - **SDK** を介してデータ ファクトリを作成する場合、作成用のファクトリ オブジェクトで "Identity = new FactoryIdentity()" を指定したときのみサービス ID が作成されます。 [.NET のクイックスタート - データ ファクトリの作成](quickstart-create-data-factory-dot-net.md#create-a-data-factory)の例をご覧ください。
 - **REST API** を介してデータ ファクトリを作成する場合、要求本文で "Identity" セクションを指定したときのみサービス ID が作成されます。 [REST のクイックスタート - データ ファクトリの作成](quickstart-create-data-factory-rest-api.md#create-a-data-factory)の例をご覧ください。
 

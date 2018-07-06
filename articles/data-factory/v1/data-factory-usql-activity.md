@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622855"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050320"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-usql-activity.md)
-> * [バージョン 2 - プレビュー](../transform-data-using-data-lake-analytics.md)
+> * [Version 1](data-factory-usql-activity.md)
+> * [Version 2 (現在のバージョン)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の U-SQL アクティビティ](../transform-data-using-data-lake-analytics.md)に関するページを参照してください。
 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
 
@@ -209,7 +209,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 | プロパティ            | 説明                              | 必須                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| 型                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
+| type                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | [はい]                                      |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |

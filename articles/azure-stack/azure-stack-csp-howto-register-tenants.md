@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: e982fa2bec3cbc4845ecebb45db76f019e2178ff
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27473ce4057fdb06ab9faf0f46dede62b4ee2246
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157392"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048841"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 
@@ -64,15 +64,16 @@ ms.locfileid: "32157392"
 3. PowerShell セッションで、次のコマンドを実行します。
 
 ```powershell
-    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
+    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
 ```
 ### <a name="new-azurermresource-powershell-parameters"></a>PowerShell の New-AzureRmResource パラメーター
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- | 
 |registrationSubscriptionID | Azure Stack の初期登録に使用された Azure サブスクリプション。 |
 | customerSubscriptionID | 登録される顧客の Azure サブスクリプション (Azure Stack ではありません)。 CSP のサービス内で作成される必要があるので、実際にはパートナー センターを介して作成されます。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack へのログインに使用されるテナントでこのサブスクリプションを作成する必要があります。
 | resourceGroup | 登録が格納されている Azure 内のリソース グループ。 
 | registrationName | Azure Stack の登録名。 Azure にオブジェクトとして格納されています。 | 
+| Properties | リソースのプロパティを指定します。 このパラメーターを使用して、リソースの種類に固有のプロパティの値を指定します。
 
 
 > [!Note]  

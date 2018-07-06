@@ -9,23 +9,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 4749e79b79cec7172ddd764593939d6f82f5f5ab
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3fdece082401ca57beabe6334a0ea0ca292ba298
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291947"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052352"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-azure-blob-connector.md)
-> * [バージョン 2 - プレビュー](connector-azure-blob-storage.md)
+> * [Version 1](v1/data-factory-azure-blob-connector.md)
+> * [現在のバージョン](connector-azure-blob-storage.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Blob Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 Data Factory のバージョン 1 (一般公開版) を使用している場合は、[バージョン 1 での Blob Storage コネクタ](v1/data-factory-azure-blob-connector.md)に関する記事をご覧ください。
-
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 

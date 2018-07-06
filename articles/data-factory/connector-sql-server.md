@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cb68b00232edd79a7b9cf239c1576c88731812d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7fc4fc42893ec839f3ffbe667e9fcfad944115f5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617683"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053559"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-sqlserver-connector.md)
-> * [バージョン 2 - プレビュー](connector-sql-server.md)
+> * [Version 1](v1/data-factory-sqlserver-connector.md)
+> * [現在のバージョン](connector-sql-server.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SQL Server データベースをコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[SQL Server connector in V1 (V1 の SQL Server コネクタ)](v1/data-factory-sqlserver-connector.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -57,8 +54,8 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティを **SqlServer** に設定する必要があります | [はい] |
-| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| type | type プロパティを **SqlServer** に設定する必要があります | [はい] |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 AlwaysOn などのプロパティの追加については、以下のサンプルを参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -118,7 +115,7 @@ SQL Server データベースとの間でデータをコピーするには、デ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | [はい] |
+| type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | [はい] |
 | tableName |リンクされたサービスが参照する SQL Server Database インスタンスのテーブルまたはビューの名前です。 | [はい] |
 
 **例:**
@@ -150,7 +147,7 @@ SQL Server からデータをコピーするには、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | [はい] |
 | SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
 | sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
@@ -254,7 +251,7 @@ SQL Server にデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | [はい] |
+| type | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | [はい] |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値: 10000) |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
 | preCopyScript |コピー アクティビティでデータを SQL Server に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |

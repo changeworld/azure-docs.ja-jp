@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d04500e770bf43278b88c2f980a10693590c7d16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d636eb381710c5e8341e24af8cd157a627348ef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053838"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[セルフホステッド IR](../create-self-hosted-integration-runtime.md) に関するページを参照してください。 
 
 
 この記事を参照し、Data Management Gateway/Integration を使用して可用性と拡張性の高いソリューションを構成できます。    
@@ -113,7 +114,7 @@ ms.lasthandoff: 03/23/2018
     2. **ゲートウェイ**を選択して、**[ゲートウェイ]** ページを表示します。
     
         ![データ ファクトリのホーム ページ](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
-    4. 次のような**[ゲートウェイ]** ページが表示されます。   
+    4. 次のような **[ゲートウェイ]** ページが表示されます。   
 
         ![単一のノードを備えたゲートウェイのビュー](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
 7. ツール バーの **[ノードの追加]** をクリックして、論理ゲートウェイにノードを追加します。 高速セットアップを使用する計画の場合は、ゲートウェイにノードとして追加されるオンプレミス コンピューターから、この手順を実行します。 
@@ -134,7 +135,7 @@ ms.lasthandoff: 03/23/2018
 既存のゲートウェイをアップグレードして、高可用性とスケーラビリティの機能を使用することができます。 この機能は、バージョン 2.12.xxxx 以降のデータ管理ゲートウェイを備えたノードだけで動作します。 コンピューターにインストールされているデータ管理ゲートウェイのバージョンは、Data Management Gateway 構成マネージャーの **[ヘルプ]** タブで確認できます。 
 
 1. 手順に従い、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することで、オンプレミス コンピューターのゲートウェイを最新バージョンに更新します。 詳細については、[インストール](data-factory-data-management-gateway.md#installation)のセクションをご覧ください。  
-2. Azure Portal に移動します。 お使いのデータ ファクトリの**[データ ファクトリ] ページ**を起動します。 リンクされたサービス タイルをクリックして、**[リンクされたサービス] ページ**を起動します。 ゲートウェイを選択して、**[ゲートウェイ] ページ**を起動します。 次の画像に示すように、**[プレビュー機能]** を有効にします。 
+2. Azure Portal に移動します。 お使いのデータ ファクトリの **[データ ファクトリ] ページ**を起動します。 リンクされたサービス タイルをクリックして、**[リンクされたサービス] ページ**を起動します。 ゲートウェイを選択して、**[ゲートウェイ] ページ**を起動します。 次の画像に示すように、**[プレビュー機能]** を有効にします。 
 
     ![Data Management Gateway - プレビュー機能の有効化](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. ポータルでプレビュー機能を有効にしたら、すべてのページを閉じます。 **[ゲートウェイ] ページ**をもう一度開き、新しいプレビューのユーザー インターフェイス (UI) を表示します。
@@ -184,7 +185,7 @@ Azure Portal では、ゲートウェイ ノードの状態と共に、各ノー
 
 **[ゲートウェイ]** ページの **[高度な設定]** を有効にすると、**[ネットワーク]** (入力/出力)、**[ロールと資格情報のステータス]** (ゲートウェイの問題のデバッグに役立ちます)、および **[同時実行ジョブ]** (実行中/制限) (パフォーマンス調整時に、状況に応じて変更できます) などの高度なメトリックを確認できます。 次の表に、**ゲートウェイ ノード**一覧の列の説明を示します。  
 
-監視のプロパティ | [説明]
+監視のプロパティ | 説明
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。  
 状態 | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 

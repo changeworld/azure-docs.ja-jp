@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0c115cce7659fe1f10e8d3d9c988748151916ce0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 951756d57441d175ccf8bab44bf00c3cb542f1b9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620743"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050048"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "34620743"
 
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 このチュートリアルでは、データ パイプラインを備えた最初の Azure Data Factory を作成します。 パイプラインによって、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して出力データを生成することで、入力データを変換します。  
 

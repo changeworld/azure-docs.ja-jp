@@ -14,27 +14,27 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 01ac558ec032d2da8026ce48923d839bd05e85c1
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: c4ed3a22d3ad4e227178e8ac265cc97050e31ee6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235466"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054311"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-onprem-cassandra-connector.md)
-> * [バージョン 2 - プレビュー](../connector-cassandra.md)
+> * [Version 1](data-factory-onprem-cassandra-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-cassandra.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Cassandra コネクタ](../connector-cassandra.md)を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Cassandra コネクタ](../connector-cassandra.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Cassandra データベースからデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 オンプレミスの Cassandra データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory が現在サポートしているのは、Cassandra データ ストアから他のデータ ストアへのデータの移動だけで、他のデータ ストアから Cassandra データ ストアへの移動はサポートしていません。 
 
 ## <a name="supported-versions"></a>サポートされているバージョン
-Cassandra コネクタでは、Cassandra バージョン 2.x と 3.x がサポートされます。 セルフホステッド IR でアクティビティを実行する場合、IR バージョン 3.7 以降で Cassandra 3.x がサポートされています。
+Cassandra コネクタでは、Cassandra バージョン 2.x と 3.x がサポートされます。 セルフホステッド統合ランタイムでアクティビティを実行する場合、IR バージョン 3.7 以降で Cassandra 3.x がサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 Azure Data Factory サービスをオンプレミスの Cassandra データベースに接続できるようにするには、データベースとのリソースの競合を避けるため、データベースをホストするコンピューターと同じコンピューターまたは別のコンピューターに Data Management Gateway をインストールする必要があります。 Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースをクラウド サービスに接続するコンポーネントです。 Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。 データを移動するデータ パイプラインにゲートウェイをセットアップする手順については、[オンプレミスからクラウドへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
@@ -67,7 +67,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティを **OnPremisesCassandra** |[はい] |
+| type |type プロパティを **OnPremisesCassandra** |[はい] |
 | host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |[はい] |
 | ポート |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |[はい] |
@@ -99,7 +99,7 @@ Cassandra データベースが Azure IaaS VM などのクラウドでホスト�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
-| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
+| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON の使用例: Cassandra から Azure BLOB へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、オンプレミスの Cassandra データベースから Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。

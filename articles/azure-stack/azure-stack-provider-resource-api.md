@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877281"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052700"
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 *プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、図に示したように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
@@ -34,7 +34,7 @@ ms.locfileid: "29877281"
 
 | **メソッド** | **要求 URI** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
 ### <a name="arguments"></a>引数
 | **引数** | **説明** |
@@ -49,7 +49,7 @@ ms.locfileid: "29877281"
 | *continuationToken* |使用状況 API プロバイダーへの最後の呼び出しから取得されたトークン。 このトークンは、応答が 1,000 行より大きい場合に必要であり、進行状況のブックマークとして機能します。 トークンが存在しない場合、渡された単位に基づいて、日または時間の開始点から、データが取得されます。 |
 
 ### <a name="response"></a>Response
-GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
+GET /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json
 {
@@ -57,11 +57,11 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?r
 {
 
 "id":
-"/subscriptions/sub1.1/providers/Microsoft.Commerce/UsageAggregate/sub1.1-
+"/subscriptions/sub1.1/providers/Microsoft.Commerce.Admin/UsageAggregate/sub1.1-
 
 meterID1",
 "name": "sub1.1-meterID1",
-"type": "Microsoft.Commerce/UsageAggregate",
+"type": "Microsoft.Commerce.Admin/UsageAggregate",
 
 "properties": {
 "subscriptionId":"sub1.1",

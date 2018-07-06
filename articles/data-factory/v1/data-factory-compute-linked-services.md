@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621753"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053663"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコンピューティングのリンクされたサービス](../compute-linked-services.md)に関するページをご覧ください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コンピューティングのリンクされたサービス](../compute-linked-services.md)に関するページを参照してください。
 
 この記事では、データの処理または変換に利用できるコンピューティング環境について説明します。 また、こうしたコンピューティング環境を Azure データ ファクトリに関連付けるリンクされたサービスを構成するときに、Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own) に関する詳細も提供します。
 
@@ -66,7 +66,7 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 - オンデマンド HDInsight のリンクされたサービスを使用して、Data Factory バージョン 1 DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、[Data Factory パイプラインでのカスタム アクティビティの使用](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)に関する記事をご覧ください。 
 
 > [!Note]
-> Data Factory バージョン 1 で既存の Bring Your Own クラスター HDInsight のリンクされたデバイスを使用する場合、または Azure Data Factory バージョン 2 で Bring Your Own デバイスおよびオンデマンド HDInsight のリンクされたサービスを使用する場合、操作は不要です。 こうしたシナリオでは、HDInsight クラスターの最新バージョンのサポート ポリシーが既に強制されています。 
+> Data Factory バージョン 1 で既存の Bring Your Own クラスター HDInsight のリンクされたデバイスを使用する場合、または Azure Data Factory で Bring Your Own デバイスおよびオンデマンド HDInsight のリンクされたサービスを使用する場合、操作は不要です。 こうしたシナリオでは、HDInsight クラスターの最新バージョンのサポート ポリシーが既に強制されています。 
 >
 > 
 
@@ -123,7 +123,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 ### <a name="properties"></a>Properties
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
-| 型                         | type プロパティを **HDInsightOnDemand** に設定します。 | [はい]      |
+| type                         | type プロパティを **HDInsightOnDemand** に設定します。 | [はい]      |
 | clusterSize                  | クラスターの worker とデータ ノードの数です。 HDInsight クラスターは、このプロパティで指定した worker ノードの数に加え、2 つのヘッド ノードを使用して作成されます。 ノードのサイズは Standard_D3 (4 コア) です。 4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 | [はい]      |
 | timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | [はい]      |
 | version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions)が使用されます。 | いいえ        |
@@ -259,7 +259,7 @@ HDInsight のリンクされたサービスを作成し、独自の HDInsight �
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| 型              | type プロパティを **HDInsight** に設定します。 | [はい]      |
+| type              | type プロパティを **HDInsight** に設定します。 | [はい]      |
 | clusterUri        | HDInsight クラスターの URI です。        | [はい]      |
 | username          | 既存の HDInsight クラスターへの接続に使用するユーザー アカウントの名前です。 | [はい]      |
 | password          | ユーザー アカウントのパスワードです。   | [はい]      |
@@ -307,7 +307,7 @@ Batch サービスを初めて利用する場合:
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| 型              | type プロパティを **AzureBatch** に設定します。 | [はい]      |
+| type              | type プロパティを **AzureBatch** に設定します。 | [はい]      |
 | .<リージョン名       | Batch アカウントの名前。         | [はい]      |
 | accessKey         | Batch アカウントのアクセス キー。  | [はい]      |
 | poolName          | VM のプールの名前。    | [はい]      |
@@ -345,7 +345,7 @@ Data Lake Analytics のリンクされたサービスを作成して、Data Lake
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| 型                 | type プロパティを **AzureDataLakeAnalytics** に設定します。 | [はい]                                      |
+| type                 | type プロパティを **AzureDataLakeAnalytics** に設定します。 | [はい]                                      |
 | .<リージョン名          | Data Lake Analytics アカウント名です。  | [はい]                                      |
 | dataLakeAnalyticsUri | Data Lake Analytics URI です。           | いいえ                                        |
 | subscriptionId       | Azure サブスクリプション ID です。                    | いいえ <br /><br />(指定されていない場合は、データ ファクトリのサブスクリプションが使用されます)。 |

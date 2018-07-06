@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 92f83bb6656578792aea45efe62da75009c1391d
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3425558ac1ffa9e8d5146a5126f01c4ac55050dc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284949"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049632"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-sftp-connector.md)
-> * [バージョン 2 - プレビュー](connector-sftp.md)
+> * [Version 1](v1/data-factory-sftp-connector.md)
+> * [現在のバージョン](connector-sftp.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SFTP サーバーからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の SFTP コネクタ](v1/data-factory-sftp-connector.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 

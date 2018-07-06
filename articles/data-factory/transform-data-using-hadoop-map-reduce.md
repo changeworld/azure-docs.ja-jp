@@ -12,24 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: be925521178bba0ae4ae9820e78042509b2f1741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb7009d0e7f31b2f503ac51d378fd117fff9f9b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049953"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](v1/data-factory-map-reduce.md)
-> * [バージョン 2 - プレビュー](transform-data-using-hadoop-map-reduce.md)
-
+> * [Version 1](v1/data-factory-map-reduce.md)
+> * [現在のバージョン](transform-data-using-hadoop-map-reduce.md)
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight MapReduce アクティビティは、[独自](compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで MapReduce プログラムを起動します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MapReduce アクティビティ](v1/data-factory-map-reduce.md)に関する記事をご覧ください。
-
 
 Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照し、[データの変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
 
@@ -70,7 +65,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 | ----------------- | ---------------------------------------- | -------- |
 | name              | アクティビティの名前                     | [はい]      |
 | description        | アクティビティの用途を説明するテキストです。 | いいえ        |
-| 型              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | [はい]      |
+| type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | [はい]      |
 | linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
 | className         | 実行するクラスの名前         | [はい]      |
 | jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |

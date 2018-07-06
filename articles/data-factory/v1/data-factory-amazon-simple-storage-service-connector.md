@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f73643d25dbcb507e3660a726516d69b7151ecb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d895dcdf9eefac01790aab6dc3f36a3feb0a8b12
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619900"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051152"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - 一般公開](data-factory-amazon-simple-storage-service-connector.md)
-> * [バージョン 2 - プレビュー](../connector-amazon-simple-storage-service.md)
+> * [Version 1](data-factory-amazon-simple-storage-service-connector.md)
+> * [Version 2 (現在のバージョン)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、「[Amazon S3 connector in V2 (V2 での Amazon S3 のコネクター)](../connector-amazon-simple-storage-service.md)」を参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Amazon S3 コネクタ](../connector-amazon-simple-storage-service.md)に関するページを参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Simple Storage Service (S3) からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 882b9cbb3cdcba0b574385e6a7ae2c31c24f27a2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eb4579c2d94ae610d21b7221c0b410b07268d419
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622426"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051802"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の名前付け規則](../naming-rules.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory の名前付け規則](../naming-rules.md)に関するページを参照してください。
 
 次の表に、Data Factory アーティファクトの名前付け規則を示します。
 

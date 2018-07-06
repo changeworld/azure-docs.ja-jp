@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 62ee13c4e756e41558adcb5b98081e24d683e01a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 62712a201e8f9717f3e0215c4c29130d3bddcdf2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620376"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050213"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "34620376"
 
 ## <a name="introduction"></a>はじめに
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での機械学習を使用したデータ変換](../transform-data-using-machine-learning.md)についてのページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Machine Learning を使用したデータ変換](../transform-data-using-machine-learning.md)に関するページを参照してください。
 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning

@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618924"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054354"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
 
 スケジュール トリガーを作成するときは、トリガーのスケジュール (開始日、繰り返し、終了日など) を指定し、パイプラインと関連付けます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory バージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
 以下のセクションでは、さまざまな方法でスケジュール トリガーを作成する手順を説明します。 
 
@@ -249,7 +246,7 @@ Azure Portal でトリガー実行とパイプライン実行を監視するに�
 Azure Resource Manager テンプレートを使用してトリガーを作成できます。 詳しい手順については、[Resource Manager テンプレートを使用した Azure データ ファクトリの作成](quickstart-create-data-factory-resource-manager-template.md)に関する記事をご覧ください。  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
-Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd** の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします。 Azure Data Factory バージョン 2 では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
+Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd** の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします。 現在のバージョンの Azure Data Factory では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
 
 ```json
 "parameters": {

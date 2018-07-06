@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b6cfe6ba510f1e7ed1b448d99fb8a71bb94053e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0db357194aa4bd4d01b1d445cb407d983214b32b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620685"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054131"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "34620685"
 > * [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
 
 この記事では、Azure Portal と PowerShell を使用してパイプラインを監視、管理、デバッグする方法について説明します。
 
