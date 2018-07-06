@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 4. **[プール]** ブレードで、ツールバーの **[追加]** ボタンを選択してプールを追加します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
+   a. プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
 
    b. **[オペレーティング システム ファミリ]** 設定には、**[Windows Server 2012 R2]** を指定します。
 
@@ -178,7 +178,7 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>手順: カスタム アクティビティの作成
 1. Visual Studio で .NET クラス ライブラリ プロジェクトを作成します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Visual Studio 2012/2013/2015 を起動します。
+   a. Visual Studio 2012/2013/2015 を起動します。
 
    b. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 
@@ -526,7 +526,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>手順 1: Data Factory を作成する
 1. [Azure Portal](https://portal.azure.com/) にサインインしてから、次の手順を実行します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側のメニューの **[新規]** を選択します。
+   a. 左側のメニューの **[新規]** を選択します。
 
    b. **[新規]** ブレードの **[データ + 分析]** を選択します。
 
@@ -569,7 +569,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 2. JSON スクリプト内では:
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **account name** を Batch アカウントの名前に置き換えます。
+   a. **account name** を Batch アカウントの名前に置き換えます。
 
    b. **access key** を Batch アカウントのアクセス キーに置き換えます。
 

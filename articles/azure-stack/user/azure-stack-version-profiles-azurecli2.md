@@ -118,7 +118,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 1. `az cloud register` コマンドを実行して、Azure Stack 環境を登録します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *クラウド管理*環境を登録するには、次のコマンドを使用します。
+   a. *クラウド管理*環境を登録するには、次のコマンドを使用します。
 
       ```azurecli
       az cloud register \ 
@@ -142,7 +142,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 2. 次のコマンドを使用して、アクティブな環境を設定します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *クラウド管理*環境の場合は、次のコマンドを使用します。
+   a. *クラウド管理*環境の場合は、次のコマンドを使用します。
 
       ```azurecli
       az cloud set \

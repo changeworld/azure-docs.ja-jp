@@ -262,7 +262,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 ### <a name="step-5-verify-multipathing"></a>手順 5. マルチパスを確認する
 1. まず、iSCSI 接続が、StorSimple デバイスで次のように確立されていることを確認します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 StorSimple デバイスを検出します。 次のコマンドを入力します: 
+   a. StorSimple デバイスを検出します。 次のコマンドを入力します: 
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>

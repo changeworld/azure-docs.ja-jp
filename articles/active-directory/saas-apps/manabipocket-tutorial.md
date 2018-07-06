@@ -107,7 +107,7 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 
     ![[Manabi Pocket のドメインと URL] のシングル サインオン情報](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://ed-cl.com/`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://ed-cl.com/`」を入力します。
 
     b. **[識別子]** ボックスに、`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider` の形式で URL を入力します。
 

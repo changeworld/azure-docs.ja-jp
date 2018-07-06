@@ -139,7 +139,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
     | 電子メール | User.mail |    
     | UserIdentity | User.mail |
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/hightail-tutorial/tutorial_officespace_04.png)
 
@@ -178,7 +178,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
     ![[Configure Single Sign-On]](./media/hightail-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ログイン URL]** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[ログイン URL]** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
@@ -209,7 +209,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/hightail-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
