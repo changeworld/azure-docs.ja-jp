@@ -75,7 +75,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 3. **[ソース データ ストア]** ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+ 新しい接続の作成]** をクリックします。
+    a. **[+ 新しい接続の作成]** をクリックします。
 
     ![[ソース データ ストア] ページ](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
 
@@ -97,7 +97,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 6. **[配布先データ ストア]** ページで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[+ 新しい接続の作成]** をクリックして、接続を追加します
+    a. **[+ 新しい接続の作成]** をクリックして、接続を追加します
 
     ![シンク データ ストア ページ](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
 
@@ -126,7 +126,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 11. **[設定]** ページで、次の手順を完了します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Staging settings]\(ステージングの設定\)** セクションで、**[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Storage 内の暫定データは自動的にクリーンアップされます。 
+    a. **[Staging settings]\(ステージングの設定\)** セクションで、**[+ 新規]** をクリックしてステージング ストレージを新規作成します。 このストレージは、PolyBase を使用して SQL Data Warehouse に読み込む前に、データをステージングするために使用されます。 コピーの完了後、Azure Storage 内の暫定データは自動的にクリーンアップされます。 
 
     ![ステージングの構成](./media/load-azure-sql-data-warehouse/configure-staging.png)
 

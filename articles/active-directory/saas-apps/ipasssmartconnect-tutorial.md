@@ -126,7 +126,7 @@ iPass SmartConnect で Azure AD のシングル サインオンを構成して�
     | email | user.userprincipalname | |
     | username | user.userprincipalname | |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/ipasssmartconnect-tutorial/tutorial_attribute_04.png)
 
@@ -222,7 +222,7 @@ iPass SmartConnect で Azure AD のシングル サインオンを構成して�
 
 **SP によって開始されたフローでアプリケーションをテストするには、次の手順を実行します。**
 
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Windows の iPass SmartConnect クライアントを[こちら](https://om-activation.ipass.com/ClientActivation/ssolanding.go)からダウンロードします。
+a. Windows の iPass SmartConnect クライアントを[こちら](https://om-activation.ipass.com/ClientActivation/ssolanding.go)からダウンロードします。
 
 ![[アプリケーション] 一覧の iPass SmartConnect リンク](./media/ipasssmartconnect-tutorial/testing3.png)
 
@@ -240,7 +240,7 @@ e. 認証に成功すると、クライアントのアクティブ化が開始�
 
 **IdP によって開始されたフローでアプリケーションをテストするには、次の手順を実行します。**
 
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [https://myapps.microsoft.com](https://myapps.microsoft.com) にログインします。
+a. [https://myapps.microsoft.com](https://myapps.microsoft.com) にログインします。
 
 b. iPass SmartConnect アプリをクリックします。
 

@@ -124,7 +124,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     >[!TIP]
     >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順をご覧ください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/amazon-web-service-tutorial/tutorial_attribute_04.png)
 
@@ -164,7 +164,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
    
     ![シングル サインオンの構成ダイアログ][14]
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Provider Type]** として **[SAML]** を選択します。
+    a. **[Provider Type]** として **[SAML]** を選択します。
 
     b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
@@ -184,7 +184,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの信頼の構成][19] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
+    a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
     b. **[Choose a SAML 2.0 Provider section]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
 
@@ -200,7 +200,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの構成の確認][34] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role name]** テキストボックスに自分のロール名を入力します。
+    a. **[Role name]** テキストボックスに自分のロール名を入力します。
 
     b. **[Role description]** ボックスに説明を入力します
 
@@ -226,7 +226,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![新しいポリシーの作成](./media/amazon-web-service-tutorial/policy1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ポリシーの作成]** セクションで、**[JSON]** タブをクリックします。
+    a. **[ポリシーの作成]** セクションで、**[JSON]** タブをクリックします。
 
     b. ポリシー ドキュメントで、次の JSON を追加します。
     
@@ -266,7 +266,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![新しいポリシーの定義](./media/amazon-web-service-tutorial/policy2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Policy Name]** として **AzureAD_SSOUserRole_Policy** を指定します。
+    a. **[Policy Name]** として **AzureAD_SSOUserRole_Policy** を指定します。
 
     b. ポリシーの **[Description]** には、「**This policy will allow to fetch the roles from AWS accounts**」を指定できます。
     
@@ -274,7 +274,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 24. 次の手順を実行して、AWS IAM サービスで新しいユーザー アカウントを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS IAM コンソールで **[Users]** ナビゲーションをクリックします。
+    a. AWS IAM コンソールで **[Users]** ナビゲーションをクリックします。
 
     ![新しいポリシーの定義](./media/amazon-web-service-tutorial/policy3.png)
     
@@ -296,7 +296,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/amazon-web-service-tutorial/adduser2.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Attach existing policies directly]** をクリックします。
+    a. **[Attach existing policies directly]** をクリックします。
 
     b. [フィルター] セクションで、新しく作成されたポリシー **AzureAD_SSOUserRole_Policy** を検索します。
     
@@ -306,7 +306,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/amazon-web-service-tutorial/adduser3.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザー名、アクセスの種類、ユーザーにマップされているポリシーを確認します。
+    a. ユーザー名、アクセスの種類、ユーザーにマップされているポリシーを確認します。
     
     b. 右下隅にある **[Create user]** をクリックしてユーザーを作成します。
 
@@ -314,7 +314,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/amazon-web-service-tutorial/adduser4.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
+    a. ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
     
     b. これらの資格情報を Azure AD の [ユーザー プロビジョニング] セクションに入力して、AWS コンソールからロールをフェッチします。
     
@@ -328,7 +328,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/amazon-web-service-tutorial/provisioning1.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
+    a. AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
     
     b. AWS ユーザー シークレットを **[シークレット トークン]** フィールドに入力します。
     

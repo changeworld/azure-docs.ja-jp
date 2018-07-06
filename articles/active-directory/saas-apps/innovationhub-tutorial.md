@@ -107,7 +107,7 @@ Innovation Hub で Azure AD のシングル サインオンを構成してテス
 
     ![[Innovation Hub のドメインと URL] のシングル サインオン情報](./media/innovationhub-tutorial/tutorial_innovationhub_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<domainname>.innohb.com/auth/saml2/login` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<domainname>.innohb.com/auth/saml2/login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<domainname>.innohb.com` の形式で URL を入力します。
 
@@ -125,7 +125,7 @@ Innovation Hub で Azure AD のシングル サインオンを構成してテス
     | displayname | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/innovationhub-tutorial/tutorial_attribute_04.png)
 

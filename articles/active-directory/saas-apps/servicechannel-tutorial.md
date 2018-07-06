@@ -112,7 +112,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`http://adfs.<domain>.com/adfs/service/trust`」と入力します。
+    a. **[識別子]** ボックスに、値として「`http://adfs.<domain>.com/adfs/service/trust`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<customer domain>.servicechannel.com/saml/acs` のパターンを使用して URL を入力します。
 
@@ -134,7 +134,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     | --- | --- |    
     | 役割| user.assignedroles |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
 
@@ -181,7 +181,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
  
     ![Azure AD のテスト ユーザーの作成](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 

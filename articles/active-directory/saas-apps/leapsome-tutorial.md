@@ -107,7 +107,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 
     ![[Leapsome Domain and URLs]\(Leapsome のドメインと URL\) のシングル サインオン情報](./media/leapsome-tutorial/tutorial_leapsome_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://www.leapsome.com`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://www.leapsome.com`
 
     b. **[応答 URL]** ボックスに、`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert` のパターンを使用して URL を入力します。
 
@@ -136,7 +136,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
     > [!Note]
     > 属性 attribute の値は、実際のものではありません。 実際の画像 URL でこの値を更新してください。 この値を取得するには、[Leapsome クライアント サポート チーム](mailto:support@leapsome.com)にお問い合わせください。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
@@ -172,7 +172,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
     
     ![Leapsome SAML](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML-based single sign-on]\(SAML ベースのシングル サインオンを有効にする\)** を選択します。
+    a. **[Enable SAML-based single sign-on]\(SAML ベースのシングル サインオンを有効にする\)** を選択します。
 
     b. **[Login URL \(point your users here to start login\)]\(ログイン URL \(ログインをスタートする場所としてユーザーにここを案内する\)\)** の値をコピーし、Azure portal の **[Leapsome Domain and URLs]\(Leapsome のドメインと URL\)** セクションの **[サインオン URL]** ボックスに貼り付けます。
 

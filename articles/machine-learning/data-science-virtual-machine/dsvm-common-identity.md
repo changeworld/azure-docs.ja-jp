@@ -40,7 +40,7 @@ Azure AD DS により、Azure 上で完全に管理されたサービスを提�
 
 1. Azure portal で、Active Directory にユーザーを追加します。 
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
+   a. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
     
    b. **[Azure Active Directory]** を選択し、**[ユーザーとグループ]** を選択します。
     
@@ -67,7 +67,7 @@ Azure AD DS により、Azure 上で完全に管理されたサービスを提�
 5. [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を Active Directory に追加します。 
 6. ホームまたはノートブック ディレクトリをホストするための Azure ファイル共有をマウントし、任意のマシンにワークスペースをマウントできるようにします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM で NFS を実行する必要があります。)
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)。
+   a. [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)。
     
    b. それを Linux DSVM にマウントします。 Azure portal のストレージ アカウントで Azure ファイル共有の **[接続]** ボタンを選択すると、Linux DSVM 上の Bash シェルで実行するコマンドが表示されます。 次のようなコマンドです。
    
