@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bbdeccbdd0d6786fdf32fc2f547344b379bd0d7c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a18d41a4f45b147790a17664156659d282e710d4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712489"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445955"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C: WeChat アカウントを使用するコンシューマーにサインアップとサインインを提供する
 

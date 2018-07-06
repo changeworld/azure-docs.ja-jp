@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4325a7c87ac9975e819b22536838ec438fa1bcd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e5baf95cd2426c9753620cba7c5a67b4c1672788
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709565"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444227"
 ---
 # <a name="azure-active-directory-b2c-add-a-custom-openid-connect-identity-provider-in-built-in-policies"></a>Azure Active Directory B2C: カスタム OpenID Connect ID プロバイダーを組み込みのポリシーに追加する
 

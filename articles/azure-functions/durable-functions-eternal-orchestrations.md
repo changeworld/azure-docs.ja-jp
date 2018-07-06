@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f42526430599e47e673d359433e91b4687cbeb9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0af61ec3b22692402697df5331df80ca044759b5
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763752"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340663"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -61,32 +61,6 @@ public static async Task Run(
 ```
 
 この例と、タイマーによってトリガーされる関数の違いは、クリーンアップ トリガーのタイミングです。この例のタイミングはスケジュールに基づいていません。 たとえば、1 時間ごとに関数を実行する CRON スケジュールでは、1:00、2:00、3:00 といったタイミングで関数が実行され、重複の問題が発生する可能性があります。 この例では、クリーンアップ所要時間が 30 分の場合は、1:00、2:30、4:00 にスケジュールされるため、重複することはありません。
-
-## <a name="counter-example"></a>カウンターの例
-
-次の例は、"*インクリメント*" イベントと "*デクリメント*" イベントを永続的にリッスンする、簡単な "*カウンター*" 関数を示しています。
-
-```csharp
-[FunctionName("SimpleCounter")]
-public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
-{
-    int counterState = context.GetInput<int>();
-
-    string operation = await context.WaitForExternalEvent<string>("operation");
-
-    if (operation == "incr")
-    {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
-    }
-    
-    context.ContinueAsNew(counterState);
-}
-```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>永続的オーケストレーションの終了
 

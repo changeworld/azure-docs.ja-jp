@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae8751f429cb4b11199bd8da9d8c2e08c0b98b35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628285"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097082"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
@@ -33,9 +33,9 @@ IoT デバイスは、どこからでもデータ ストリームを送信でき
 
 この追加のリモート監視機能は、現在プレビューの段階です。 接続データを Azure リモート監視ソリューションに同期するには、次の手順に従います。
 
-1. [Telefónica のサイト](https://iot.Telefónica.com/contact) で要求を入力し、連絡先データなど、**[Azure Remote Monitoring]\ (Azure リモート監視\)** オプションを選択します。
+1. [Telefónica のサイト](https://iot.telefonica.com/contact) で要求を入力し、連絡先データなど、**[Azure Remote Monitoring]\ (Azure リモート監視\)** オプションを選択します。
 2. Telefónica が、あなたのアカウントをアクティブにします。
-3. あなたがまだ Telefónica のクライアントではなく、このサービス、または他の IoT Connectivity Cloud Ready サービスを利用したい場合は、[Telefónica のサイト](https://iot.Telefónica.com/contact) にアクセスし、オプション **Connectivity** を選択してください。
+3. あなたがまだ Telefónica のクライアントではなく、このサービス、または他の IoT Connectivity Cloud Ready サービスを利用したい場合は、[Telefónica のサイト](https://iot.telefonica.com/) にアクセスし、オプション **Connectivity** を選択してください。
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM の設定
 Telefónica SIM & Azure Twin デバイス ID の関連付けは、Telefónica IoT SIM「エイリアス」プロパティに基づいています。 

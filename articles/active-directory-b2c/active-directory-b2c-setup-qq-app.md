@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7a33a1b2a68b82b1d65b1187547695cccd7c395f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1f9a0f56158f08dd3b22078f111c9ec6911b726c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711673"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444431"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C: QQ アカウントを使用するコンシューマーにサインアップとサインインを提供する
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932100"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098007"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -95,7 +95,7 @@ NPS 拡張機能をインストールするには、Azure AD の GUID が必要�
 ### <a name="configure-accounts-for-two-step-verification"></a>2 段階認証用にアカウントを構成する
 アカウントの MFA を有効にすると、2 段階認証を使用して認証される 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
 
-「[Azure Multi-Factor Authentication とは何ですか](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)」に記載されている手順に従って、ユーザー アカウントで MFA 用のデバイスを正しく構成します。
+「[Azure Multi-Factor Authentication とは何ですか](end-user/current/multi-factor-authentication-end-user.md)」に記載されている手順に従って、ユーザー アカウントで MFA 用のデバイスを正しく構成します。
 
 ## <a name="install-and-configure-nps-extension"></a>NPS 拡張機能のインストールと構成
 このセクションでは、リモート デスクトップ ゲートウェイでのクライアント認証に Azure MFA を使用するように RDS インフラストラクチャを構成する手順について説明します。
@@ -109,7 +109,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 3. **[プロパティ]** を選択します。
 4. [プロパティ] ブレードで、次のように [ディレクトリ ID] の横の **[コピー]** アイコンをクリックして、ID をクリップボードにコピーします。
 
- ![[プロパティ]](./media/howto-mfa-nps-extension-rdg/image1.png)
+ ![Properties](./media/howto-mfa-nps-extension-rdg/image1.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 ネットワーク ポリシーとアクセス サービス (NPS) の役割がインストールされているサーバーに NPS 拡張機能をインストールします。 これが、設計で RADIUS サーバーとして機能します。 

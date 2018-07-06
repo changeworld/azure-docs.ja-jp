@@ -2,19 +2,19 @@
 title: Azure Backup のデータ モデル
 description: この記事では、Azure Backup レポートに使用する Power BI データ モデルの詳細について説明します。
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17e011452f9b87c1201cea12f394a9cdd18e54b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606224"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444305"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
 この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。 

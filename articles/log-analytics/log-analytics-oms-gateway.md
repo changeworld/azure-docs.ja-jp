@@ -3,7 +3,7 @@ title: OMS ゲートウェイを使ってコンピューターを接続する | 
 description: デバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使ってそれらを接続して Azure Automation および Log Analytics サービスにデータを送信します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271651"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129042"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  OMS ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
@@ -173,7 +174,7 @@ Log Analytics との統合を完了した後、`netsh winhttp reset proxy` を�
 3. **[完了]** をクリックします。 Operations Manager 管理グループは、Log Analytics サービスにゲートウェイ サーバー経由で通信するように構成されています。
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>Operations Manager を構成する (特定のエージェントがプロキシ サーバーを使用する)
-環境が大規模であるか、複雑な場合には、特定のサーバー (またはグループ) のみ OMS ゲートウェイ サーバーを使用する構成が必要になることも考えられます。  そのようなサーバーでは、Operations Manager エージェントを直接更新する方法は使えません。値が、管理グループ全体に適用されるグローバルな値で上書きされてしまうからです。  そこで、グローバルな値をプッシュするルールを上書きする必要があります。  
+環境が大規模であるか、複雑な場合には、特定のサーバー (またはグループ) のみ OMS ゲートウェイ サーバーを使用する構成が必要になることも考えられます。  そのようなサーバーでは、Operations Manager エージェントを直接更新する方法は使えません。値が、管理グループ全体に適用されるグローバルな値で上書きされてしまうからです。  そこで、グローバルな値をプッシュするルールをオーバーライドする必要があります。  
 
 > [!NOTE] 
 > 環境で複数の OMS ゲートウェイ サーバーを使用する場合にも、これと同じ構成のテクニックを流用できます。  たとえば、リージョンごとに固有の OMS ゲートウェイ サーバーの指定を必要とする場合が考えられます。
@@ -182,11 +183,11 @@ Log Analytics との統合を完了した後、`netsh winhttp reset proxy` を�
 1. Operations Manager コンソールを開き、**[作成]** ワークスペースを選択します。  
 2. [作成] ワークスペースで、**[ルール]** を選択し、Operations Manager ツールバーの **[スコープ]** ボタンをクリックします。 このボタンが利用できない場合には、[監視] ウィンドウでフォルダーではなくオブジェクトを選択していることを確認してください。 **[管理パック オブジェクトのスコープ設定]** ダイアログ ボックスには、ターゲットになることが多いクラス、グループ、またはオブジェクトが一覧表示されます。 
 3. **[検索]** フィールドに「**ヘルス サービス**」と入力し、一覧から選択します。  Click **OK**.  
-4. ルール **[Advisor Proxy Setting Rule (アドバイザーのプロキシ設定のルール)]** を検索し、オペレーション コンソール ツールバーで **[上書き]** をクリックしたら、**[Override the Rule\For a specific object of class: Health Service (ルールの上書き\クラスの特定のオブジェクト: ヘルス サービス)]** にカーソルを合わせ、一覧から特定のオブジェクトを選択します。  必要があれば、この上書きを適用するサーバーのヘルス サービス オブジェクトが含まれるカスタム グループを作成し、そのグループに対して上書きを適用することもできます。
-5. **[上書きのプロパティ]** ダイアログ ボックスで **WebProxyAddress** パラメーターの隣の **[上書き]** 列にチェック マークを付けます。  **[上書き値]** フィールドに、OMS ゲートウェイ サーバーの URL を入力します (URL にはプレフィックスとして `http://` を忘れずに付けてください)。  
+4. ルール **[Advisor Proxy Setting Rule (アドバイザーのプロキシ設定のルール)]** を検索し、オペレーション コンソール ツールバーで **[オーバーライド]** をクリックしたら、**[Override the Rule\For a specific object of class: Health Service (ルールのオーバーライド\クラスの特定のオブジェクト: ヘルス サービス)]** にカーソルを合わせ、一覧から特定のオブジェクトを選択します。  必要があれば、このオーバーライドを適用するサーバーのヘルス サービス オブジェクトが含まれるカスタム グループを作成し、そのグループに対してオーバーライドを適用することもできます。
+5. **[オーバーライドのプロパティ]** ダイアログ ボックスで **WebProxyAddress** パラメーターの隣の **[オーバーライド]** 列にチェック マークを付けます。  **[オーバーライド値]** フィールドに、OMS ゲートウェイ サーバーの URL を入力します (URL にはプレフィックスとして `http://` を忘れずに付けてください)。  
 
     >[!NOTE]
-    > 新しいルールを有効にする必要はありません。このルールは、Microsoft System Center Advisor 監視サーバー グループを対象とした Microsoft System Center Advisor Secure Reference Override 管理パックに含まれる上書きで既に自動で管理されています。
+    > 新しいルールを有効にする必要はありません。このルールは、Microsoft System Center Advisor 監視サーバー グループを対象とした Microsoft System Center Advisor Secure Reference Override 管理パックに含まれるオーバーライドで既に自動で管理されています。
     >   
 
 6. **[目的の管理パックの選択]** の一覧から管理パックを選択するか、**[新規]** をクリックして封印されていない管理パックを新規作成します。 

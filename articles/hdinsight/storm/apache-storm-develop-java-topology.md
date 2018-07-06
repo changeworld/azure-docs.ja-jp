@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 105c10423a9688300ba74874769b162e29572185
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418494"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128607"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -600,7 +600,7 @@ YAML ファイルは、トポロジと、これらの間のデータ フロー�
 Flux の詳細については、「[Flux フレームワーク (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)」に関するセクションを参照してください。
 
 > [!WARNING]
-> Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境のインストール](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)が必要になる場合があります。
+> Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境のインストール](http://storm.apache.org/releases/current/Setting-up-development-environment.html)が必要になる場合があります。
 
 1. `WordCountTopology.java` ファイルをプロジェクトの外部に移動します。 以前は、このファイルでトポロジを定義していましたが、Flux では不要です。
 
@@ -719,9 +719,9 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
     ```
 
     > [!WARNING]
-    > トポロジが Storm 1.0.1 ビットを使っている場合、このコマンドは失敗します。 このエラーは[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)が原因です。 代わりに、[開発環境に Storm をインストール](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)し、次の手順を使ってください。
+    > トポロジが Storm 1.0.1 ビットを使っている場合、このコマンドは失敗します。 このエラーは[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)が原因です。 代わりに、[開発環境に Storm をインストール](http://storm.apache.org/releases/current/Setting-up-development-environment.html)し、次の手順を使ってください。
     >
-    > [開発環境に Storm がインストールされている](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)場合、代わりに次のコマンドを使うことができます。
+    > [開発環境に Storm がインストールされている](http://storm.apache.org/releases/current/Setting-up-development-environment.html)場合、代わりに次のコマンドを使うことができます。
     >
     > ```bash
     > mvn compile package

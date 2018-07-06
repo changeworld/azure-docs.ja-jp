@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 93cd4b6c4264c5905746b85f9fa46ce31ebd9e9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937671"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098942"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -61,7 +61,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 
 **クラスター シード:** 新しいノードは、クラスターのトポロジを検出するためにシード ノードと通信するため、シードには最も可用性の高いノードを選択することが重要です。 単一障害点を回避するために、可用性セットごとに 1 つのノードをシード ノードとして指定します。
 
-**レプリケーション係数と一貫性レベル:** Cassandra に組み込まれた高い可用性とデータの持続性は、レプリケーション係数 (RF、クラスターに格納されている行ごとのコピーの数) と一貫性レベル (呼び出し元に結果を返すまでのレプリカの読み取り/書き込み数) で示されます。 レプリケーション係数は、KEYSPACE (リレーショナル データベースに似ています) の作成時に指定され、一貫性レベルは CRUD クエリの発行時に指定されます。 一貫性についての詳細とクォーラムの計算式については、Cassandra のマニュアルで、 [一貫性の設定](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) に関するページを参照してください。
+**レプリケーション係数と一貫性レベル:** Cassandra に組み込まれた高い可用性とデータの持続性は、レプリケーション係数 (RF、クラスターに格納されている行ごとのコピーの数) と一貫性レベル (呼び出し元に結果を返すまでのレプリカの読み取り/書き込み数) で示されます。 レプリケーション係数は、KEYSPACE (リレーショナル データベースに似ています) の作成時に指定され、一貫性レベルは CRUD クエリの発行時に指定されます。 一貫性についての詳細とクォーラムの計算式については、Cassandra のマニュアルで、 [一貫性の設定](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) に関するページを参照してください。
 
 Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデータ一貫性モデルがサポートされています。レプリケーション係数と一貫性レベルで、書き込み操作が完了してすぐに一貫性が確保されるのか、結果的に一貫性が確保されるのかが決まります。 たとえば、一貫性レベルに、QUORUM を指定すると、常に、データの一貫性が確保されます。一方、QUORUM を確保するために必要に応じて書き込まれるレプリカの数未満の一貫性レベル (たとえば、ONE) を指定すると、データの一貫性は結果的に確保されます。
 
@@ -75,8 +75,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | レプリケーション係数 (RF) |3 |行のレプリカの数 |
 | 一貫性レベル (書き込み) |QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) |呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
 | 一貫性レベル (読み取り) |QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) |呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
-| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
-| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Switches (スイッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
+| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
+| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Switches (スイッチ)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html)」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
 **Cassandra クラスターに関する Azure での考慮事項:** Microsoft Azure Virtual Machines では、ディスクの永続性を実現するために Azure Blob ストレージを使用してします。Azure Storage は、高い耐久性を確保するために、各ディスクのレプリカを 3 つ保存します。 つまり、Cassandra テーブルに挿入された各データ行は、既に 3 つのレプリカに格納されています。 そのため、レプリケーション係数 (RF) が 1 の場合でも、データの整合性は既に確保されています。 レプリケーション係数が 1 の場合の主な問題は、1 つの Cassandra ノードのみで障害が発生した場合でも、アプリケーションにダウンタイムが発生することです。 ただし、Azure ファブリック コントローラーによって認識される問題 (ハードウェア、システム ソフトウェアの障害など) によってノードがダウンした場合は、同じストレージ ドライブを使用して、代わりの新しいノードが準備されます。 古いノードを置き換えるための新しいノードのプロビジョニングには、数分間かかる場合があります。  同様に、ゲスト OS の変更、Cassandra のアップグレード、アプリケーションの変更といった計画済みのメンテナンス アクティビティの場合も、Azure ファブリック コントローラーは、クラスター内のノードのローリング アップグレードを実行します。  ローリング アップグレードの実行時にも、一度にいくつかのノードがダウンする場合があり、そのため、クラスターで、いくつかのパーティションのダウンタイムが短時間発生する可能性があります。 ただし、Azure Storage に冗長性が組み込まれているため、データは失われません。  
 
@@ -110,8 +110,8 @@ Azure にデプロイされたシステムのうち高い可用性(たとえば 
 | レプリケーション係数 (RF) |3 |行のレプリカの数 |
 | 一貫性レベル (書き込み) |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] \(数式の結果の小数点以下の値は、切り捨てられます) |2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
 | 一貫性レベル (読み取り) |LOCAL_QUORUM ((RF/2) +1) = 2 数式の結果の小数点以下の値は、切り捨てられます。 |1 つのリージョンのみで、読み取り要求に対応します。応答がクライアントに送信される前に、2 つのノードが読み取られます。 |
-| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
-| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「 [Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) 」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
+| レプリケーションの方法 |NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「 [Data Replication (データ レプリケーション)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) 」を参照してください) |デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
+| スニッチ |GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「 [Snitches (スニッチ)](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) 」を参照してください) |NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。 GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。 この場合、クラスターはゴシップを使用して情報を伝達します。 このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
 ## <a name="the-software-configuration"></a>ソフトウェア構成
 デプロイ時には、次のソフトウェア バージョンが使用されます。

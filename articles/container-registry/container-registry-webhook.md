@@ -2,18 +2,18 @@
 title: Azure Container Registry webhook
 description: レジストリ リポジトリで特定のアクションが発生したときに、webhook を使用してイベントをトリガーする方法について説明します。
 services: container-registry
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
-ms.author: nepeters
-ms.openlocfilehash: cf71deda9ec9053a91596c17e18fc797995754e2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: iainfou
+ms.openlocfilehash: 538548fa211b2159b190ff1b689033c50ad801fe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164372"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096310"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -34,7 +34,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 1. webhook ツールバーで **[追加]** を選択します。
 1. 次の情報を利用して、*[webhook の作成]* フォームを完成させます。
 
-| 値 | [説明] |
+| 値 | 説明 |
 |---|---|
 | Name | Webhook に付与する名前。 使用できる文字は英小文字と数字のみです。文字数は 5 ～ 50 文字にする必要があります。 |
 | サービス URI | Webhook が POST 通知を送信する URI。 |

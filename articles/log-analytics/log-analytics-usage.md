@@ -3,7 +3,7 @@ title: Log Analytics でのデータ使用状況の分析 | Microsoft Docs
 description: Log Analytics に送信されたデータの量を評価したり、予想外の増加を引き起こした原因を特定したりするには、Log Analytics の [使用量と推定コスト] ダッシュボードを使用します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a9c898cf0f2e0b1387bbc2ac18b5009838d138b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.component: na
+ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317305"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128566"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データの送信元、送信されたさまざまな種類のデータに関する情報が含まれます。  データ使用状況を確認して分析するには、**[ログ分析の利用状況]** ダッシュボードを使用します。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -161,7 +162,8 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>ノード数が予想を超えているかどうかの確認
 "*ノード単位 (OMS)*" の価格レベルを使用している場合は、使用するノードとソリューションの数に基づいて料金が発生します。 使用されている各プランのノード数は、使用量ダッシュボードの "*オファリング*" セクションで確認できます。<br><br> ![[使用量] ダッシュボード](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
-**[すべて表示]** をクリックすると、選択したプランでデータを送信しているコンピューターの完全な一覧が表示されます。
+
+  **[すべて表示]** をクリックすると、選択したプランでデータを送信しているコンピューターの完全な一覧が表示されます。
 
 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 

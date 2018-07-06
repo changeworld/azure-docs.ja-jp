@@ -3,23 +3,24 @@ title: Azure AD のアクセス レビューの結果を取得する | Microsoft
 description: Azure Active Directory アクセス レビューの結果を取得する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: a2d356afd33ddd2e641c6f9bc028f235623b448b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.reviewer: mwahl
+ms.openlocfilehash: 1c1488b2744c25e9b7a191d208cb3f81d336bd3a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024724"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446692"
 ---
 # <a name="retrieve-access-review-results"></a>アクセス レビュー結果の取得
 

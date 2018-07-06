@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 9365fd70036c8b489efaea42bda9c670182c496c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798646"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082276"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cosmos DB Table API 操作の実行 
 
@@ -45,7 +45,7 @@ Azure PowerShell をインストールまたは更新した後は、エンティ
 Install-Module AzureRmStorageTable
 ```
 
-これらの PowerShell コマンドレットを使用するためには、さらに Azure Cosmos DB のアセンブリをローカルにインストールします。 その方法については、[Cosmos DB テーブルの Azure RM Storage テーブル PowerShell モジュール](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/)に関するページを参照してください。
+これらの PowerShell コマンドレットを使用するためには、さらに Azure Cosmos DB のアセンブリをローカルにインストールします。 その方法については、[Cosmos DB テーブルの Azure RM Storage テーブル PowerShell モジュール](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)に関するページを参照してください。
 
 次の演習を試すには、Azure Cosmos DB データベース アカウントが必要です。 まだ持っていない場合は、[Azure Portal](https://portal.azure.com) を使用して新しい Azure Cosmos DB アカウントを作成します。 新しいデータベース アカウントの作成方法については、[Azure Cosmos DB のデータベース アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
 
@@ -88,7 +88,7 @@ PowerShell を使用して Azure Cosmos DB アカウント内のテーブルの�
 
 ## <a name="delete-a-table"></a>テーブルを削除する 
 
-PowerShell では、Azure Cosmos DB からのテーブルの削除はサポートされていません。 テーブルを削除するには、[Azure Portal](https://azure.portal.com) に移動し、使用している Azure Cosmos DB アカウントを見つけた後、テーブルを検索して削除します。 
+PowerShell では、Azure Cosmos DB からのテーブルの削除はサポートされていません。 テーブルを削除するには、[Azure Portal](https://portal.azure.com) に移動し、使用している Azure Cosmos DB アカウントを見つけた後、テーブルを検索して削除します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

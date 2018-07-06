@@ -3,7 +3,7 @@ title: Azure の IT Service Management Connector に接続する自動スクリ�
 description: Azure の IT Service Management Connector に接続する自動スクリプトを使用して Service Manager Web アプリを作成し、ITSM 作業項目を一元的に監視および管理します。
 services: log-analytics
 documentationcenter: ''
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: riyazp
 editor: ''
 ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 75c61894d5562f4bb0cb45fd8500bd9cf0f2bf8f
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: na
+ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772128"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128658"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
@@ -29,7 +30,7 @@ ms.locfileid: "32772128"
 
 - Azure サブスクリプションの詳細
 - リソース グループ名
-- 場所
+- リージョン
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名、パスワード)
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。

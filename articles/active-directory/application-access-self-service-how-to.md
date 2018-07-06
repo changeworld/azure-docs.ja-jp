@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 359640384891ebdf66345d3f5664db1cbefbde77
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 89eb80dbb749b2f50ca3f1fc097c205b62b6b4a4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333747"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445298"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
@@ -90,4 +90,4 @@ ms.locfileid: "36333747"
 これらの承認は、単一の承認ワークフローでのみサポートされます。つまり、複数の承認者を指定しても、いずれか 1 人の承認者がアプリケーションへのアクセスを承認する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
-[セルフサービス グループ管理に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md)
+[セルフサービス グループ管理に必要な Azure Active Directory の設定](users-groups-roles/groups-self-service-management.md)

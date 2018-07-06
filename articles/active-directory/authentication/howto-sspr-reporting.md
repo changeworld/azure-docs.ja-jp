@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751498"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444244"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -26,7 +26,7 @@ ms.locfileid: "36751498"
 次の質問に対する答えは、[Azure Portal] (https://portal.azure.com/):) に用意されているレポートから得られます。
 
 > [!NOTE]
-> ユーザーは[グローバル管理者](../active-directory-assign-admin-roles-azure-portal.md)であること、および組織の代表としてこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、**[レポート]** タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータが収集されることはありません。
+> ユーザーは[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)であること、および組織の代表としてこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、**[レポート]** タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータが収集されることはありません。
 >
 
 * パスワード リセットを登録した人数

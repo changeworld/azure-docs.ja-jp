@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: a2573eef3c90c1840c0d53b2f8aa2cfe2d3a7242
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949533"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129134"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics のビュー デザイナー 視覚化パーツのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペースからのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -32,7 +33,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 次の表で、使用可能なビュー デザイナー タイルの種類について説明します。
 
-| ビューの種類 | [説明] |
+| ビューの種類 | 説明 |
 |:--- |:--- |
 | [クエリのリスト](#list-of-queries-part) |ログ検索クエリのリストを表示します。 各クエリを選択すると、その結果が表示されます。 |
 | [[Number and list] (数値とリスト)](#number-and-list-part) |ヘッダーには、ログ検索クエリのレコード数を示す 1 つの数値が表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。 |
@@ -51,7 +52,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[クエリのリスト] ビュー](media/log-analytics-view-designer/view-list-queries.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | タイトル |ビューの上部に表示されるテキスト。 |
@@ -67,7 +68,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[クエリのリスト] ビュー](media/log-analytics-view-designer/view-number-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |ビューの上部に表示されるテキスト。 |
@@ -96,7 +97,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[Two numbers & list] \(2 つの番号とリスト) ビュー](media/log-analytics-view-designer/view-two-numbers-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |ビューの上部に表示されるテキスト。 |
@@ -127,7 +128,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[Donut and list] (ドーナツとリスト) ビュー](media/log-analytics-view-designer/view-donut-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -168,7 +169,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[Two timelines and list] (2 つのタイムラインとリスト) ビュー](media/log-analytics-view-designer/view-two-timelines-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -200,7 +201,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[Information] \(情報) ビュー](media/log-analytics-view-designer/view-information.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -221,7 +222,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[Line chart, callout, and list] (折れ線グラフ、コールアウト、およびリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -261,7 +262,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![[折れ線グラフとリスト] ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -297,7 +298,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 ![折れ線グラフの積み重ね](media/log-analytics-view-designer/view-stack-line-charts.png)
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | **全般** | |
 | グループ タイトル |タイルの上部に表示されるテキスト。 |
@@ -327,7 +328,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 クリックスルー ナビゲーションの設定を次の表に示します。
 
-| Setting           | [説明] |
+| Setting           | 説明 |
 |:--|:--|
 | ログ検索 (自動) | ヘッダー項目を選択したときに実行するログ検索。  これは、項目の基のログ検索と同じです。
 | ログ検索        | リストの項目を選択したときに実行されるログ検索。  **[ナビゲーション クエリ]** ボックスにクエリを入力します。   *{selected item}* を使用して、ユーザーが選択した項目の構文を含めます。  たとえば、クエリに *Computer* という列が含まれ、ナビゲーション クエリが *{selected item}* である場合は、computer を選択すると、*Computer="MyComputer"* というクエリが実行されます。 ナビゲーション クエリが *Type=Event {selected item}* の場合は、*Type=Event Computer="MyComputer"* というクエリが実行されます。 |
@@ -340,7 +341,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 スパークラインの設定を次の表に示します。
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Enable Sparklines (スパークラインを有効にする) |横棒の代わりにスパークラインが表示するには、このリンクを選択します。 |
 | 操作 |スパークラインを有効にした場合、これは、スパークラインの値を計算するために、リストの各プロパティに対して実行する演算です。<ul><li>Last Sample (最後のサンプル): 一定期間における系列の最後の値。</li><li>最大値: 一定期間における系列の最大値。</li><li>最小値: 一定期間における系列の最小値。</li><li>合計: 一定期間における系列の値の合計。</li><li>概要: ヘッダーのクエリと同じ `measure` コマンドを使用します。</li></ul> |
@@ -354,7 +355,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 しきい値の設定を次の表に示します。
 
-| Setting | [説明] |
+| Setting | 説明 |
 |:--- |:--- |
 | Enable Thresholds (しきい値を有効にする) |各値の左側にある色のアイコンを表示するには、このリンクを選択します。 このアイコンは、指定されたしきい値を基準として値の正常性を示します。 |
 | Name |しきい値の名前。 |

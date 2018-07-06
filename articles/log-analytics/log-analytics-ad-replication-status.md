@@ -3,7 +3,7 @@ title: Azure Log Analytics での Active Directory レプリケーションの�
 description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7707c4a1afdc42ef44a7b6f761ceb03b7e7da2f0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179336"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128726"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 
@@ -39,7 +39,7 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細
 次の表は、AD レプリケーションの状態のデータの収集手段と、データの収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |5 日ごと |
 

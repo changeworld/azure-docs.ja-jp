@@ -3,7 +3,7 @@ title: Azure Log Analytics での IIS 用 Blob Storage とイベント用 Table 
 description: Log Analytics は、Table Storage に診断情報を出力する Azure サービスのログと Blob Storage に出力された IIS のログを読み取ることができます。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23021347"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128743"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
 
@@ -38,7 +38,7 @@ Azure 診断は、Azure で実行している worker ロール、Web ロール�
 
 Log Analytics でこれらの Azure 診断ログを収集するためには、ログが次の場所に存在している必要があります。
 
-| ログの種類 | リソースの種類 | 場所 |
+| ログの種類 | リソースの種類 | リージョン |
 | --- | --- | --- |
 | IIS ログ |Virtual Machines <br> Web ロールの比較 <br> Worker ロール |wad-iis-logfiles (Blob Storage) |
 | syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
@@ -71,7 +71,7 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
    3. **[診断]** をクリックします。
    4. **[状態]** を **[オン]** に設定します。
    5. 収集する各診断ログを選択します。
-   6. **[OK]** をクリックします。
+   6. Click **OK**.
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>IIS ログとイベントの収集のために Web ロールで Azure 診断を有効にする
 Azure 診断を有効にする一般的な手順については、[クラウド サービスで診断を有効にする方法](../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事をご覧ください。 以下の手順ではこの情報を使用し、Log Analytics で使用するためにカスタマイズします。
@@ -192,7 +192,7 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * サポートされている Azure サービスの[ログとメトリックを収集](log-analytics-azure-storage.md)します。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。

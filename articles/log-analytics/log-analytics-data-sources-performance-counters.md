@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: b23c170e557d019abf2b9aab8edcb74728bc872d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783164"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128777"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -84,7 +85,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | parameters | 説明 |
 |:--|:--|
 | object\_name | コレクションのオブジェクト名。 |
-| instance\_regex |  収集するインスタンスを定義する*正規表現*。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、(crond\|sshd)` と指定します。 |
+| instance\_regex |  収集するインスタンスを定義する*正規表現*。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、「 `(crond\|sshd)`」と指定します。 |
 | counter\_name\_regex | 収集する (オブジェクトの) カウンターを定義する*正規表現*。 オブジェクトのすべてのカウンターを収集するには、「 `.*`」と指定します。 メモリ オブジェクトを対象にスワップ領域カウンターを収集するには、たとえば `.+Swap.+` のように指定できます。 |
 | interval | オブジェクトのカウンターを収集する頻度。 |
 
@@ -127,10 +128,10 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | 物理ディスク | Avg.Disk sec/Transfer |
 | 物理ディスク | Avg.Disk sec/Write |
 | 物理ディスク | Physical Disk Bytes/sec |
-| プロセス | Pct Privileged Time |
-| プロセス | Pct User Time |
-| プロセス | Used Memory kBytes |
-| プロセス | Virtual Shared Memory |
+| Process | Pct Privileged Time |
+| Process | Pct User Time |
+| Process | Used Memory kBytes |
+| Process | Virtual Shared Memory |
 | プロセッサ | % DPC Time |
 | プロセッサ | % Idle Time |
 | プロセッサ | % Interrupt Time |
@@ -142,10 +143,10 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | システム | Free Physical Memory |
 | システム | Free Space in Paging Files |
 | システム | Free Virtual Memory |
-| システム | Processes |
+| システム | 処理 |
 | システム | Size Stored In Paging Files |
 | システム | Uptime |
-| システム | Users |
+| システム | ユーザー |
 
 
 パフォーマンス メトリックの既定の構成を次に示します。

@@ -2,20 +2,20 @@
 title: 容量制限 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
 services: sql-data-warehouse
-author: antvgski
+author: sachinpMSFT
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 06/28/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b79d928f3c1c3d81fbca0b8d676d4a4cbf83369a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 82ad6239923f78641bfa80027ed62242b45b95eb
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839641"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096259"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。

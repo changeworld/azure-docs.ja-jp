@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 73ad78fc73a7605f8feaf114ebdfac5023cc91b6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841913"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342427"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
-この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
+この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。 ここでは、Linux 計算ノードを含む Microsoft HPC Pack クラスターを Azure にデプロイし、Intel MPI で [OpenFoam](http://openfoam.com/) ジョブを実行します。 計算ノードに RDMA 対応の Azure VM を使用できるため、計算ノードは Azure RDMA ネットワーク経由で通信します。 Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 

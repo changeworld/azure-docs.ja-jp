@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bbf885fbcca22e42b2ec0ad7ff4e7a70aa5f5828
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711972"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446726"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Azure AD B2C で年齢制限を使用する
 

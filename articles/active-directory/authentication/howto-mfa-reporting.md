@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a3e7390e0df707c4898ad9573baa96b567499de1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 4eb91e37331a5af064d2af0e937eb071d805688f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866610"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097881"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
 Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、個人や組織が使用できるいくつかのレポートを提供します。 次の表は使用できるレポートの一覧です。
 
-| レポート | 場所 | [説明] |
+| レポート | リージョン | 説明 |
 |:--- |:--- |:--- |
 | ユーザーのブロックの履歴 | [Azure AD] > [MFA サーバー] > [ユーザーのブロック/ブロック解除] | ユーザーのブロックまたはブロック解除の要求履歴を表示します。 |
 | 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
@@ -49,5 +49,5 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 ## <a name="next-steps"></a>次の手順
 
-* [ユーザー向け](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)
+* [ユーザー向け](end-user/current/multi-factor-authentication-end-user.md)
 * [デプロイする場所](concept-mfa-whichversion.md)

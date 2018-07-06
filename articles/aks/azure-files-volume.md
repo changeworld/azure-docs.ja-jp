@@ -2,19 +2,19 @@
 title: AKS で Azure Files を使用する
 description: AKS での Azure ディスクの使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/08/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e0e62d37fbcc8f296deaee8e0f6658c0f72321ad
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 25ae0e508223b50219e40245cc9dfbc407b96bba
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934616"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096698"
 ---
 # <a name="volumes-with-azure-files"></a>Azure Files を使用するボリューム
 

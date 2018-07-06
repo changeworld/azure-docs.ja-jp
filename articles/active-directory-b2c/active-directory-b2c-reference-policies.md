@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 840de51f2aeff2c14cba0f90fe9072ba7ceb7fcf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712115"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444822"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: 組み込みのポリシー
 

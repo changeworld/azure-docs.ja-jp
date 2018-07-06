@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633514"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444186"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -168,13 +168,13 @@ SELECT * FROM devices.modules
 デバイスと devices.modules コレクション間の結合は許可されません。 デバイス間でモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning'
+Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
 このクエリでは、指定したデバイスのサブセット上のみでスキャン中状態のすべてのモジュール ツインが返されます。
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C# の例

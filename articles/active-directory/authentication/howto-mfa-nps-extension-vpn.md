@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869514"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098874"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -305,7 +305,7 @@ NPS ロールがメンバー サーバーにインストールされている場
  
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 
-ユーザーに Multi-Factor Authentication を構成する方法については、「[ユーザーまたはグループに 2 段階認証を要求する方法](howto-mfa-userstates.md)」および「[アカウントへの 2 段階認証の設定](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)」をご覧ください。
+ユーザーに Multi-Factor Authentication を構成する方法については、「[ユーザーまたはグループに 2 段階認証を要求する方法](howto-mfa-userstates.md)」および「[アカウントへの 2 段階認証の設定](end-user/current/multi-factor-authentication-end-user-first-time.md)」をご覧ください。
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 

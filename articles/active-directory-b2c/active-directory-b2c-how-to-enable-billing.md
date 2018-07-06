@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4dd99d492fe4f337509cacfce0e2b254e8465424
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712081"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445943"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Azure サブスクリプションを Azure AD B2C テナントにリンクする
 

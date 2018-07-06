@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869803"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097497"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
 この記事は、現在稼働中の Azure Multi-factor Authentication を管理するのに役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの [Azure Multi-factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need) ですべての機能を使用できるわけではありません。
 
-| Feature | [説明] | 
+| Feature | 説明 | 
 |:--- |:--- |
 | [ユーザーのブロックおよびブロック解除](#block-and-unblock-users) |ユーザーのブロック/ブロック解除機能は、ユーザーが認証要求を受信できないようにする場合に使用します。 |
 | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、不正アクセスのアラート機能を構成します。 |
@@ -42,7 +42,7 @@ ms.locfileid: "33869803"
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. **[Azure Active Directory]** > **[MFA Server]** > **[ユーザーのブロック/ブロック解除]** に移動します。
 3. **[追加]** を選択してユーザーをブロックします。
-4. **[レプリケーション グループ]** を選択します。 ブロックされているユーザーのユーザー名を **username<span></span>@domain.com** として入力します。**[理由]** フィールドにコメントを入力します。
+4. **[レプリケーション グループ]** を選択します。 ブロックされているユーザーのユーザー名を **username<span></span>@domain.com** として入力します。 **[理由]** フィールドにコメントを入力します。
 5. **[追加]** を選択してユーザーのブロックを終了します。
 
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
@@ -94,7 +94,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 
 3. **[追加]** を選択します。
 4. 必要に応じて、バイパスのレプリケーション グループを選択します。
-5. ユーザー名を **username<span></span>@domain.com** として入力します。バイパスが持続する秒数を入力します。 バイパスの理由を入力します。 
+5. ユーザー名を **username<span></span>@domain.com** として入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。 
 6. **[追加]** を選択します。 制限時間はすぐに有効になります。 ユーザーはワンタイム バイパスの有効期限が切れる前にサインインする必要があります。 
 
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
@@ -292,7 +292,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ユーザーは、初回の登録時にアプリ パスワードを作成できます。 登録プロセスの最後に、アプリ パスワードを作成するためのオプションが表示されます。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](end-user/current/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>信頼済みデバイスに対する Multi-Factor Authentication の記憶
@@ -301,7 +301,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 >[!IMPORTANT]
 >アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
 >
->復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
+>復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 >
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
@@ -341,9 +341,9 @@ Multi-Factor Authentication を記憶する機能を有効にすると、ユー�
 
 _選択可能な検証方法_機能を使用して、ユーザーが使用できる検証方法を選択することができます。 次の表で方法の概要を説明します。
 
-ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](end-user/current/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-| 方法 | [説明] |
+| 方法 | 説明 |
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
 | 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で_電話の呼び出し_認証に自動的に切り替わります。|

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 729cb89fbe63dbecb65c6f948052b920bf6e70fe
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4facc88aad5338362f2220148f1b1870ade5fe7e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937454"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445485"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -117,7 +117,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 緊急アクセス用アカウントは、組織において既存の Azure Active Directory 環境内での特権アクセスを制限するのに役立ちます。 このようなアカウントは高い特権を持っており、特定のユーザーには割り当てられません。 緊急アクセス用アカウントは、通常の管理者アカウントを使うことができない '緊急事態' に制限されます。 組織は、緊急用アカウントの使用をコントロールおよび低減し、必要なときにだけ使うという目的を守る必要があります。 
 
-グローバル管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 *.onmicrosoft.com ドメイン ("非常時" の緊急アクセスが目的) を使用しているクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)」をご覧ください。
+グローバル管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 *.onmicrosoft.com ドメイン ("非常時" の緊急アクセスが目的) を使用しているクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](users-groups-roles/directory-emergency-access.md)」をご覧ください。
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録する 
 
@@ -345,7 +345,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 
 #### <a name="review-admin-roles-in-azure-active-directory"></a>Azure Active Directory の管理者ロールを確認する 
 
-現在の組み込み Azure AD 管理者ロールがまだ最新の状態であるかどうかを判断し、ユーザーが対応するアクセス許可に必要なロールと委任にのみ属していることを確認します。 Azure AD では、各種役割ごとに別々の管理者を指定することができます。 詳しくは、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」をご覧ください。
+現在の組み込み Azure AD 管理者ロールがまだ最新の状態であるかどうかを判断し、ユーザーが対応するアクセス許可に必要なロールと委任にのみ属していることを確認します。 Azure AD では、各種役割ごとに別々の管理者を指定することができます。 詳しくは、「[Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスの管理権を持つユーザーを確認する
 
@@ -442,7 +442,8 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 * [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
 
-* [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
+* 
+  [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
 
 * [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
 

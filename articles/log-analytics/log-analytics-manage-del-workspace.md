@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 084b8fa0addbe2ddeee699b58c9b0de1a6f27d99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.component: na
+ms.openlocfilehash: 54f2af60751ed0d9c64e71efad6fa9aa3ef06589
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33938694"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129117"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Azure Portal で Azure Log Analytics ワークスペースを削除する
 この記事では、不要になった Azure Log Analytics ワークスペースを Azure Portal を使用して削除する方法を示します。 

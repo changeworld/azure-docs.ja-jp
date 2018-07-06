@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754420"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446777"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -45,7 +45,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](active-directory-self-service-signup.md)」を参照してください。 |
 | Azure AD Premium または EMS 試用版が有効であること | [Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium または EMS のライセンスを PoC ユーザーに割り当て済みであること | [Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md) |
-| Azure AD 全体管理者の資格情報 | [Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md) |
+| Azure AD 全体管理者の資格情報 | [Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md) |
 | フォールバックとしての並列ラボ環境 (省略可、ただし強く推奨) | [Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>ディレクトリ同期 - パスワード ハッシュ同期 (PHS) - 新規インストール
@@ -428,7 +428,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 ### <a name="considerations"></a>考慮事項
 
 1. この構成要素の PoC 手順では、すべてのログイン ユーザーの MFA を明示的に設定しています。 ほかにも、条件付きアクセスや、より的を絞ったシナリオで MFA を利用する Identity Protection などのツールがあります。 この点については、概念実証から運用環境への移行時に考慮することになります。
-2. この構成要素の PoC 手順では、MFA 方式として明示的に電話を使用しています。 POC から運用段階への切り替え時には可能な限り、第 2 の認証要素として [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) などのアプリケーションを使うようお勧めします。
+2. この構成要素の PoC 手順では、MFA 方式として明示的に電話を使用しています。 POC から運用段階への切り替え時には可能な限り、第 2 の認証要素として [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) などのアプリケーションを使うようお勧めします。
 詳細情報: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>SaaS アプリケーション向けの MFA での条件付きアクセス
@@ -553,7 +553,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | エンタープライズ PKI からのユーザー証明書がプロビジョニングされているデバイス (Windows、iOS、Android のいずれか)。 | [ユーザー証明書をデプロイする](https://msdn.microsoft.com/library/cc770857.aspx) |
 | ADFS とフェデレーションされた Azure AD ドメイン。 | [Azure AD Connect とフェデレーション](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 証明書サービスの概要](https://technet.microsoft.com/library/hh831740.aspx)|
-| (iOS デバイスの場合) Microsoft Authenticator アプリがインストールされていること。 | [Microsoft Authenticator アプリの概要](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| (iOS デバイスの場合) Microsoft Authenticator アプリがインストールされていること。 | [Microsoft Authenticator アプリの概要](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>手順
 

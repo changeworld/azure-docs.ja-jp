@@ -3,7 +3,7 @@ title: Azure Log Analytics エージェントの管理 | Microsoft Docs
 description: この記事では、コンピューターに配置された Microsoft Monitoring Agent (MMA) のライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: na
+ms.openlocfilehash: 908418dffaffc25be320bd0008edf03493aa4e55
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320086"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128794"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 

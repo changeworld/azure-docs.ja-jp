@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895682"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342271"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -65,12 +65,11 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 
 OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
-| サービス  | [説明]|
+| サービス  | 説明|
 | :------------- | :-------------|
 | Log Analytics | 物理マシンや仮想マシンなど、さまざまなリソースの可用性とパフォーマンスを監視、分析します。 |
 |Automation | 手動プロセスを自動化し、物理マシンと仮想マシンの構成を適用します。 |
-| Backup
- | 重要なデータのバックアップと復元を行います。 |
+| Backup | 重要なデータのバックアップと復元を行います。 |
 | Site Recovery | 重要なアプリケーションの高可用性を実現します。 |
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -152,7 +151,7 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 -   **データ アクセス**: セキュリティに関する推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイル、プロセス作成イベント、VM ディスク スナップショット、アーティファクトなど) に Microsoft の担当者がアクセスする場合があります。これらの情報には、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。 Microsoft は、[Microsoft オンライン サービスの使用条件とプライバシーに関する声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりしないと記載されています。
 
--   **データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)で説明されている誓約に従います。
+-   **データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)で説明されている誓約に従います。
 
 ### <a name="data-location"></a>データの場所
 

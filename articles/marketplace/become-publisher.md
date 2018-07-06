@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b3b9228c0733d34ea909a501e8ca6f9e11948381
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826087"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083163"
 ---
 # <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>Marketplace のネットショップで公開元になる  
 以下の手順は、Marketplace のネットショップで公開元として登録するのに役立ちます。 Microsoft との既存のエンゲージメントと選択された登録リストの種類によっては、以下の手順には省略できるものもあります。  
@@ -30,7 +30,6 @@ ms.locfileid: "34826087"
 | 2 | Microsoft ID を作成する | 約 15 分 | [Microsoft ID を作成する](#create-a-microsoft-id) |  
 | 3 | Marketplace 申請フォームを送信する | 1 ～ 3 日 | [Marketplace 申請フォームを送信する](#submit-the-marketplace-nomination-form) |  
 | 4 | Microsoft デベロッパー センター (Dev Center) に登録する | 5 ～ 10 日 | [デベロッパー センターに登録する](#register-in-dev-center) |  
-| 5 | AppSource にサインインする | 約 15 分 | [AppSource にサインインする](#sign-into-appSource) |  
 | 5 |  Cloud パートナー ポータルにサインインする | 約 15 分 | [Cloud パートナー ポータルにサインインする](#sign-into-cloud-partner-portal) |  
 
 ## <a name="register-in-microsoft-partner-network"></a>Microoft Partner Network に登録する  
@@ -81,18 +80,6 @@ Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナ�
 >[!Important]
 >デベロッパー センター アカウントを作成しようとする前に、会社が既にデベロッパー センター アカウントを持っていないことを確認してください。 
 >*   詳細については、「[デベロッパー センターに登録する方法](#how-to-register-in-dev-center)」セクションを参照してください。  
-
----  
-
-## <a name="sign-into-appsource"></a>AppSource にサインインする  
-| 約 15 分 |  
-申請が承認され、MPN とデベロッパー センターの両方に登録されると、AppSource にアクセス可能な Marketplace アカウントが作成されます。 初回サインイン用の資格情報は、申請承認のメールで送信されます。 
-*   MPN にアクセスするには、「メンバーシップ」ページ ([partner.microsoft.com/membership](https://partner.microsoft.com/membership)) を参照してください。  
-*   デベロッパー センターにアクセスするには、「Windows デベロッパー センター」ページ ([dev.windows.com](https://dev.windows.com)) を参照してください。  
-*   AppSource にアクセスするには、「AppSource」ページ ([appsource.microsoft.com](https://appsource.microsoft.com)) を参照してください。  
-*   Microsoft Cloud パートナー ポータルにアクセスするには、「Cloud パートナー ポータル」ページ ([cloudpartner.azure.com](https://cloudpartner.azure.com)) を参照してください。  
-*   Cloud パートナー ポータルの使用に関する詳細については、「詳細を表示」セクション ([cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn)) を参照してください。  
-*   Cloud パートナー ポータルの使用に関するドキュメントについては、「ドキュメント」セクション ([cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation)) を参照してください。  
 
 ---  
 

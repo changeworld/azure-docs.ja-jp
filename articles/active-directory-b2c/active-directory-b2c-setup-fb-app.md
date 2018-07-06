@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/7/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ceab8df79337796bed314e04bacc37bf2ebe1d00
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 316e44ea92a25ab804c8cc499f91c45e4a66ef02
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712319"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445502"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する

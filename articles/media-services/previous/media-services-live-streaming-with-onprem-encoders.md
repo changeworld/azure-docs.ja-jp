@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943214"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098819"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
 
@@ -146,7 +146,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 プレビュー URL は、チャネルの作成時に取得できます。 URL を取得するには、チャネルが**実行中**状態である必要はありません。 チャネルがデータの取り込みを開始した後、ストリームをプレビューできます。
 
-現在、プレビュー ストリームを配信できるのは、指定された入力タイプに関係なく、フラグメント化 MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリーミングのテストには、[スムーズ ストリーミング ヘルス モニター](http://smf.cloudapp.net/healthmonitor) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
+現在、プレビュー ストリームを配信できるのは、指定された入力タイプに関係なく、フラグメント化 MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリーミングのテストには、[スムーズ ストリーミング ヘルス モニター](http://playready.directtaps.net/smoothstreaming/) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
 
 #### <a name="allowed-ip-addresses"></a>許可された IP アドレス
 プレビューのエンドポイントへの接続を許可する IP アドレスを定義できます。 IP アドレスを指定しない場合、すべての IP アドレスが許可されます。 使用できる IP アドレスは、次のいずれかとして指定できます。

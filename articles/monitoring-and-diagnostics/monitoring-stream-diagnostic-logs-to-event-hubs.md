@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 806ebe80ad49f2f908bf46549bb4abc533a6d516
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936702"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085091"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI 2.0 を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -41,7 +41,7 @@ ms.locfileid: "36936702"
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>診断ログのストリーミングの有効化
 
-診断ログのストリーミングは、プログラム、ポータル、または [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) を使用して有効にすることができます。 どの方法でも、Event Hubs 名前空間と、名前空間に送信するログ カテゴリおよびメトリックを指定する診断設定を作成します。 有効にしたログ カテゴリごとにイベント ハブがその名前空間に作成されます。 診断**ログ カテゴリ**とは、リソースで収集できるログの種類です。
+診断ログのストリーミングは、プログラム、ポータル、または [Azure Monitor REST API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) を使用して有効にすることができます。 どの方法でも、Event Hubs 名前空間と、名前空間に送信するログ カテゴリおよびメトリックを指定する診断設定を作成します。 有効にしたログ カテゴリごとにイベント ハブがその名前空間に作成されます。 診断**ログ カテゴリ**とは、リソースで収集できるログの種類です。
 
 > [!WARNING]
 > コンピューティング リソース (VM や Service Fabric など) の診断ログを有効にし、ストリーミングするには、 [別の手順が必要](../event-hubs/event-hubs-streaming-azure-diags-data.md)となります。

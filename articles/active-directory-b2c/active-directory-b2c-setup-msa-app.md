@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: be8c691835d2e89d5d305e01f9717e55e3741baf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c788b14a99125a208390cd4f8ead338efed06933
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712421"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444169"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する

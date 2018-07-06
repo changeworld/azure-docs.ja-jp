@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23665601"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097048"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -214,8 +214,8 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | データベース |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
-| バックアップ |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
-| バックアップ |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| Backup |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| Backup |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 
 *はい&#42; - ソリューション ガイドラインと制限事項を適用する必要があります。*
 
@@ -249,13 +249,13 @@ StorSimple がサポートするインフラストラクチャ コンポ―ネ�
 | バックアップ ターゲット |Veeam |Veeam v 9 以降 |[Veeam を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-veeam.md)|
 | バックアップ ターゲット |Veritas Backup Exec |Backup Exec 16 以降 |[Backup Exec を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-using-backup-exec.md)|
 | バックアップ ターゲット |Veritas NetBackup |NetBackup 7.7.x 以降  |[NetBackup を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backuptarget-netbackup.md)|
-| グローバルなファイル共有 <br></br> コラボレーション |Talon  |[StorSimple と Talon](https://www.talonstorage.com/products/fast-deployment-azure-storsimple) | |
+| グローバルなファイル共有 <br></br> コラボレーション |Talon  |[StorSimple と Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple 用語集
 Microsoft Azure StorSimple ソリューションをデプロイする前に、以下の用語と定義を確認することをお勧めします。
 
 ### <a name="key-terms-and-definitions"></a>重要な用語と定義
-| 用語 (頭字語または省略形) | [説明] |
+| 用語 (頭字語または省略形) | 説明 |
 | --- | --- |
 | アクセス制御レコード (ACR) |ボリュームに接続できるホストを決定する、Microsoft Azure StorSimple デバイス上のボリュームに関連付けられているレコード。 決定は、StorSimple デバイスに接続している (ACR に含まれる) ホストの iSCSI 修飾名 (IQN) に基づいて行われます。 |
 | AES-256 |クラウドとの間でやり取りされるデータを暗号化するための 256 ビットの Advanced Encryption Standard (AES) アルゴリズム。 |

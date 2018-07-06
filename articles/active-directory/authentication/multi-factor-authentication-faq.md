@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 226400c6da5db589db6ce2f1887c3e96cf9e1f14
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ea976f7ac80f0c485320713117c9ff2b484a287b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869871"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128692"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -118,7 +118,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 すべてのユーザーが複数の認証方法を構成していることが前提となります。 再度サインインを試すようユーザーに伝えますが、その際にサインイン ページで別の認証方法を選択してもらいます。
 
-[エンドユーザー向けトラブルシューティング ガイド](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)を参照用としてユーザーに示すこともできます。
+[エンドユーザー向けトラブルシューティング ガイド](end-user/current/multi-factor-authentication-end-user-troubleshoot.md)を参照用としてユーザーに示すこともできます。
 
 
 **Q: アカウントに入れないユーザーがいる場合はどうすればよいですか。**
@@ -131,7 +131,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 **Q: ユーザーがブラウザー以外のアプリにサインインできない場合はどうすればよいですか。**
 
-組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-mfasettings.md#app-passwords)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
+組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-mfasettings.md#app-passwords)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](end-user/current/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
 
 組織で従来型クライアントを使用していない場合は、アプリ パスワードの作成をユーザーに許可しないようにしてください。
 

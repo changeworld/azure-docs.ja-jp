@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709310"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447321"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
 

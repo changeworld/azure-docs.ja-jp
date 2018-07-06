@@ -3,7 +3,7 @@ title: Log Analytics のワイヤ データ ソリューション | Microsoft Do
 description: ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011443"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129008"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -83,7 +84,8 @@ Log Analytics に管理グループが接続されている System Center Operat
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) ソリューション プランが必要です。
+- 
+  [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) ソリューション プランが必要です。
 - ワイヤ データ ソリューションの以前のバージョンを使用している場合は、まずそのバージョンを削除する必要があります。 ただし、元のワイヤ データ ソリューションでキャプチャされたすべてのデータは、Wire Data 2.0 およびログ検索で引き続き使用できます。
 - Dependency Agent をインストールまたはアンインストールするには、管理者特権が必要です。
 - Dependency Agent は、64 ビット オペレーティング システム搭載のコンピューターにインストールする必要があります。
@@ -418,7 +420,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 入力データの種類ごとに、種類が _WireData_ であるレコードが作成されます。 WireData レコードには、次の表に示したプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |---|---|
 | Computer | データが収集されたコンピューター名 |
 | TimeGenerated | レコードの時刻 |

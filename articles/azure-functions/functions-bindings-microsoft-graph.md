@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 3b9a7d998e7153318b21adcada7c143b428e591f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724776"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085574"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -976,7 +976,7 @@ Webhook を使用すると、Microsoft Graph でのイベントに応答でき�
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions)をご覧ください。
 
 webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 877619e5c7e323985339a270f2f60abee2a3714f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f7d54129ef9f85bb4141d26b9be8d4a0652bff8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596038"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448188"
 ---
 # <a name="create-key-performance-indicators"></a>主要業績評価指標を作成する
 

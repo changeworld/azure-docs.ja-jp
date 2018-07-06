@@ -7,17 +7,17 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 01/03/2018
 ms.author: rolyon
-ms.openlocfilehash: 856fdc69bd5ce582ca772c01f8af615fbc455887
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 438a2fcd511fe62fa1dc7ba603c3770d5bcb56a4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233222"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446845"
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
 Azure Active Directory (AD) では、全体管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。 これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、 「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」に記載されているように、Azure Portal を使うことができます。

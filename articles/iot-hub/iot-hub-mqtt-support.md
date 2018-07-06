@@ -1,25 +1,19 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
 description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b058f716c2435b70244c9293b1c5d897ec215f7f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b553da54cd8ce63638fc52dd078bb517a1f9e713
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34634660"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -89,7 +83,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
   1. **デバイス エクスプローラー**で **[管理]** タブに移動します。
   2. **[SAS トークン]** (右上) をクリックします。
-  3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]**を設定します。
+  3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。 **[TTL]** を設定します。
   4. **[生成]** をクリックしてトークンを作成します。
 
      生成される SAS トークンは、次のような構成になります。
@@ -213,7 +207,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 使用できる状態コードは次のとおりです。
 
-|状態 | [説明] |
+|状態 | 説明 |
 | ----- | ----------- |
 | 200 | 成功 |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
@@ -242,7 +236,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 使用できる状態コードは次のとおりです。
 
-|状態 | [説明] |
+|状態 | 説明 |
 | ----- | ----------- |
 | 200 | 成功 |
 | 400 | 正しくない要求。 無効な形式の JSON |

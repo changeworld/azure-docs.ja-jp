@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: faeeebb21c6dde73be855af469e03ede4c6d0b5d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713186"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444958"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -88,7 +88,7 @@ Identity Protection 実装の管理アクティビティの負荷を分散する
 
 
 
-詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+詳細については、「[Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 
 
