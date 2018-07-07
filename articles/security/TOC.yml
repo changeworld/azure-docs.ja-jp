@@ -164,8 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: ガバナンスとコンプライアンス
   items:
-    - name: 規制対象ワークロードに対応した金融サービス
-      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: FFIEC
+      items:
+        - name: データ分析
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/ffiec-paaswa-overview.md
     - name: GDPR
       items:
         - name: データ分析
@@ -187,34 +195,15 @@
         - name: PaaS Web アプリケーション
           href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: 要件の概要
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: 要件 1 - ファイアウォール
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: 要件 2 - パスワード
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: 要件 3 - CHD
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: 要件 4 - 暗号化
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: 要件 5 - マルウェア
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: 要件 6 - セキュリティ保護されたシステム
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: 要件 7 - アクセス
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: 要件 8 - ID
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: 要件 9 - 物理アクセス
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: 要件 10 - 監視
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: 要件 11 - テスト
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: 要件 12 - ポリシー
-          href: ./blueprints/pci-dss-requirement-12-policy.md
+        - name: データ分析
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       items:
         - name: データ分析

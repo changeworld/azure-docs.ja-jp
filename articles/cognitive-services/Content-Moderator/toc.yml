@@ -115,6 +115,8 @@
   items:
     - name: FAQ
       href: FAQs.md
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
     - name: アカウント データのエクスポートまたは削除
@@ -123,7 +125,7 @@
       href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: サポート技術情報
+    - name: ナレッジ ベース
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: bbd0a532e54f9b221739c8ae9ff097fe44fdc4df
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751597"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344833"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 Language Understanding (LUIS) は、カスタム機械学習をユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースのサービスです。 
@@ -82,7 +82,7 @@ LUIS によってユーザーの発話内で検出されたエンティティが
 
 LUIS には、エンティティを識別して分類するさまざまな方法が用意されています。
 
-* **構築済みのエンティティ**: LUIS には、意図、発話、および[構築済みのエンティティ](pre-builtentities.md)を含む構築済みのドメイン モデルが多数あります。 構築済みのモデルの意図と発話を使用せずに、構築済みのエンティティを使用できます。 構築済みのエンティティによって時間を節約できます。
+* **構築済みのエンティティ**: LUIS には、意図、発話、および[構築済みのエンティティ](luis-prebuilt-entities.md)を含む構築済みのドメイン モデルが多数あります。 構築済みのモデルの意図と発話を使用せずに、構築済みのエンティティを使用できます。 構築済みのエンティティによって時間を節約できます。
 
 * **カスタム エンティティ**: LUIS では、さまざまな方法で、独自のカスタム [エンティティ](luis-concept-entity-types.md) (機械学習によるエンティティ、具体的で逐語的なエンティティ、および機械学習によるエンティティと逐語的なエンティティの組み合わせなど) を識別する方法が用意されています。
 
@@ -91,7 +91,7 @@ LUIS には、エンティティを識別して分類するさまざまな方法
 
 |ユーザーの発話例|意図|エンティティ|
 |-----------|-----------|-----------|
-|"Book a flight to __Seattle__?" (シアトル行きの便を予約できる?)|BookFlight|Seattle (シアトル)|
+|"Book a flight to __Seattle__?" (シアトル行きの便を予約できる?)|BookFlight|シアトル|
 |"When does your store __open__?" (お店は何時に開店しますか?)|StoreHoursAndLocation|open (開店)|
 |"Schedule a meeting at __1pm__ with __Bob__ in Distribution" (ディストリビューションのボブと午後 1 時にミーティング)|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
