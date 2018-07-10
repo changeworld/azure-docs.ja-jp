@@ -46,8 +46,8 @@ Reliable Services は、重要な機能をアプリケーションに組み込�
 * プラグ可能な通信モデル。 HTTP と [Web API](service-fabric-reliable-services-communication-webapi.md)、WebSocket、カスタム TCP プロトコルなど、あらゆるトランスポートを選んで使用できます。 Reliable Services には、すぐに使用できる優れたオプションも用意されていますが、独自のオプションを指定することもできます。
 * ステートフル サービスの場合、Reliable Services プログラミング モデルを使用すると、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) によって状態がサービス内に一貫して確実に格納されます。 Reliable Collection は、C# コレクションを使用したことがあるユーザーには馴染みのある可用性が高く信頼できる一連のコレクション クラスです。 これまでは、サービスにおいて確かな方法で状態を管理するには、外部システムが必要でした。 Reliable Collection を使用するとユーザーのコンピューターの隣に状態を格納できるようになると同時に、高可用性の外部ストアと同じレベルの高い可用性と確実性を実現できます。 このモデルでは、機能に必要な計算と状態を併置できるため、待機時間も短縮します。
 
-Reliable Services の概要については、Microsoft Virtual Academy の動画 <center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965"> をご覧ください。
+Reliable Services の概要については、Microsoft Virtual Academy の動画 をご覧ください。<center>
+<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
 <img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
 </a>
 </center>
