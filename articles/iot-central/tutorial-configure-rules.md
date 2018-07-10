@@ -55,7 +55,7 @@ ms.locfileid: "35236333"
     | Setting     | 値                          |
     | ----------- | ------------------------------ |
     | Name        | Air conditioner temperature    |
-    | ルールの有効化 | 反対に、                             |
+    | ルールの有効化 | On                             |
     | 条件   | Temperature is greater than 90 |
 
     ![温度ルールの条件](media/tutorial-configure-rules/buildertemperaturerule.png)
