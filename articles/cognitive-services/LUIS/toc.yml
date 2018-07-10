@@ -71,8 +71,6 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: パターンの利用
           href: luis-tutorial-pattern.md
-        - name: フレーズ リストの利用
-          href: luis-tutorial-interchangeable-phrase-list.md
 - name: サンプル
   items:
     - name: コード サンプル
