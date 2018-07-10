@@ -20,7 +20,9 @@
       href: storage-quickstart-blobs-cli.md
     - name: BLOB の使用 - .NET
       href: storage-quickstart-blobs-dotnet.md
-    - name: BLOB の使用 - Java
+    - name: BLOB の使用 - Java (Storage SDK V10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: BLOB の使用 - Java (Storage SDK V7)
       href: storage-quickstart-blobs-java.md
     - name: BLOB の使用 - Python
       href: storage-quickstart-blobs-python.md
@@ -192,6 +194,8 @@
           href: storage-blob-immutable-storage.md
         - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
           href: ../common/storage-security-tls.md
+        - name: コンプライアンス認証
+          href: ../common/storage-compliance-offerings.md
     - name: 監視とトラブルシューティング
       items:
         - name: トラブルシューティングのチュートリアル

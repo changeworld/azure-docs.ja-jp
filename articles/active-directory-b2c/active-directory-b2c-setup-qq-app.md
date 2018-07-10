@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ を�
 
 ### <a name="register-a-qq-application"></a>QQ アプリケーションを登録する
 
-1. [[]https://connect.qq.com/index.html[](https://connect.qq.com/index.html)] に移動します。
+1. [https://connect.qq.com/index.html](https://connect.qq.com/index.html) に移動します。
 2. **[应用管理 (アプリの管理)]** をクリックします。
 3. **[创建应用 (アプリの作成)]** をクリックします。
 4. 必要なアプリ情報を入力します。

@@ -108,6 +108,8 @@
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
           href: ../common/storage-security-tls.md
+        - name: コンプライアンス認証
+          href: ../common/storage-compliance-offerings.md
     - name: 監視とトラブルシューティング
       items:
         - name: Azure Files の接続に関するトラブルシューティング - Windows

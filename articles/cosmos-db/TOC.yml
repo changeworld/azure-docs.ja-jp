@@ -73,7 +73,7 @@ items:
     items:
       - name: グローバル配信
         href: distribute-data-globally.md
-      - name: 複数のマスターのセットアップ
+      - name: 複数のマスター
         href: multi-region-writers.md
       - name: パーティション分割
         href: partition-data.md
@@ -172,8 +172,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor - Java
                 href: bulk-executor-java.md
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
               - name: クエリ
                 items:
                   - name: SQL クエリの実行
@@ -184,8 +182,6 @@ items:
                 href: indexing-policies.md
               - name: SQL データのパーティション分割
                 href: sql-api-partition-data.md
-              - name: ストアド プロシージャ、トリガー、UDF
-                href: programming.md
               - name: Change Feed
                 href: change-feed.md
               - name: データの種類
@@ -262,8 +258,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: リソース
             items:
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
               - name: Visual Studio Code 拡張機能
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL のプレイグラウンド
@@ -328,12 +322,8 @@ items:
                 href: mongodb-ttl.md
               - name: Power BI でデータを視覚化する
                 href: powerbi-visualize.md
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
           - name: リソース
             items:
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
               - name: Visual Studio Code 拡張機能
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Graph API ドキュメント
@@ -352,12 +342,8 @@ items:
             items:
               - name: グラフのパーティション分割
                 href: graph-partitioning.md
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
           - name: リソース
             items:
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
               - name: Visual Studio Code 拡張機能
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: テーブル API ドキュメント
@@ -410,8 +396,6 @@ items:
                 href: table-sdk-python.md
           - name: リソース
             items:
-              - name: ストレージ エクスプローラーを使用した管理
-                href: storage-explorer.md
               - name: Table Storage の概要
                 href: table-storage-overview.md
               - name: Table Storage の設計ガイド
@@ -450,6 +434,8 @@ items:
         href: regional-failover.md
       - name: 診断ログの記録
         href: logging.md
+      - name: ストアド プロシージャ、トリガー、UDF
+        href: programming.md
       - name: BulkExecutor の概要
         href: bulk-executor-overview.md
       - name: コスト効率の優れた読み取りと書き込み
@@ -460,12 +446,10 @@ items:
         href: manage-account-with-powershell.md
       - name: ストレージ エクスプローラーを使用した管理
         href: storage-explorer.md
-      - name: マルチリージョン ライター
+      - name: 複数のマスターのセットアップ
         href: multi-master-workaround.md
   - name: リソース
     items:
-      - name: ストレージ エクスプローラーを使用した管理
-        href: storage-explorer.md
       - name: クエリ チート シート
         href: query-cheat-sheet.md
       - name: 20 日のヒント

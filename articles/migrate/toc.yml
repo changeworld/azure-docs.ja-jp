@@ -36,6 +36,10 @@
           href: contoso-migration-rehost-linux-vm.md
         - name: 8. Contoso - Azure VM と Azure MySQL で Linux アプリをリホストする
           href: contoso-migration-rehost-linux-vm-mysql.md
+        - name: 9. Contoso - Azure Web Apps と Azure SQL Database でアプリをリファクタリングする
+          href: contoso-migration-refactor-web-app-sql.md
+        - name: 10. Contoso - Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする
+          href: contoso-migration-refactor-linux-app-service-mysql.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化

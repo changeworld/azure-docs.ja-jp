@@ -98,7 +98,7 @@
 
 ### IoT の拡張シナリオ
 #### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
-#### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+#### [Azure Blob Storage への IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
 #### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
@@ -256,7 +256,7 @@
 ### [IoT Hub](/azure/iot-hub) 
 ### [IoT Hub Device Provisioning Service](/azure/iot-dps)
 ### [IoT サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [Maps](/azure/azure-maps) 
+### [マップ](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Microsoft Edge 
 ### [IoT Edge](/azure/iot-edge) 

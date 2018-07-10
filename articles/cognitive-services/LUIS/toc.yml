@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. センチメント分析を追加する
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: 予測の改善
+    - name: アプリの改善
       items:
+        - name: エンドポイントの発言の確認
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: パターンの利用
           href: luis-tutorial-pattern.md
         - name: フレーズ リストの利用
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: リソース
   items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure のロードマップ
       href: 'https://aka.ms/luis-roadmap'
     - name: 用語集
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: Search
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: ブログ
       href: 'https://blog.botframework.com/category/luis/'
     - name: ナレッジ ベース

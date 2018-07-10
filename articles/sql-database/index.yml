@@ -14,14 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: 64c6bd7ee69f443f819676d1605aa679066e2e84
-  ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
+  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37063351"
+  ms.lasthandoff: 07/06/2018
+  ms.locfileid: "37887285"
 abstract:
-  description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+  description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:
     image:
       alt: 
@@ -32,6 +32,42 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/sql-database/sql-database-technical-overview
+      html: <p>SQL Server データベース エンジンの安定した最新バージョンで常に動作し、<a href="/azure/sql-database/sql-database-automated-backups">自動データベース バックアップ</a>によって OS にパッチが適用される、<a href="/azure/sql-database/sql-database-high-availability">可用性の高い</a> PaaS データベース。</p>
+      image:
+        src: media/index/i_managed.svg
+      title: 完全管理型
+    - href: /azure/sql-database/sql-database-service-tiers
+      html: <p>月額 5 米ドルの手頃なデータベースから強力な 80 コア データベースまでの<a href="/azure/sql-database/sql-database-service-tiers">柔軟なパフォーマンス レベル</a>によって、価格/パフォーマンスの比率をニーズに合わせて調整することができます。</p>
+      image:
+        src: media/index/i_perftier.svg
+      title: 価格/パフォーマンス レベル
+    - href: /azure/sql-database/sql-database-single-database-scale
+      html: <p>ニーズに応じて簡単にデータベースを<a href="/azure/sql-database/sql-database-single-database-scale">スケールアップ</a>、<a href="/azure/sql-database/sql-database-read-scale-out">スケールアウト</a>、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
+      image:
+        src: media/index/i_scale.svg
+      title: スケーラビリティと弾力性
+    - href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>インテリジェンスをサービスに組み込むことで、<a href="/azure/sql-database/sql-database-automatic-tuning">自動的にデータベースのパフォーマンスをチューニングし</a>、データベース内の<a href="/azure/sql-database/sql-advanced-threat-protection">脅威</a>や<a href="/azure/sql-database/sql-vulnerability-assessment">脆弱性</a>を特定します。</p>
+      image:
+        src: media/index/i_intelligence.svg
+      title: 組み込みのインテリジェンス
+    - href: /azure/sql-database/sql-database-servers-databases
+      html: <p><a href="/azure/sql-database/sql-database-managed-instance">論理サーバーでホストされている単一データベース</a>を、予測可能なパフォーマンスで単一データベースを必要とする <a href="/azure/sql-database/saas-tenancy-app-design-patterns">SaaS アプリケーション</a>やマイクロサービスに使用します。</p>
+      image:
+        src: media/index/i_db.svg
+      title: 単一データベース
+    - href: /azure/sql-database/sql-database-managed-instance
+      html: <p><a href="/azure/sql-database/sql-database-managed-instance">Managed Instance</a> を使用すると、データベース コードの変更を最小またはゼロに抑えて簡単に Azure PaaS に<a href="azure/sql-database/sql-database-managed-instance-migrate">オンプレミス データベースを移行</a>できます。</p>
+      image:
+        src: media/index/i_mi.svg
+      title: Managed Instance
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -48,27 +84,34 @@ sections:
     - image:
         src: media/index/logo_powershell.svg
       title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Azure Resource Manager テンプレート
     rows:
     - title: 1 つの SQL データベースの作成
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/sql-database-get-started-cli
       - href: /azure/sql-database/sql-database-get-started-powershell
+      - href: 
     - title: SQL マネージド インスタンスの作成
       values:
       - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: 
     - title: SQL エラスティック プールの作成
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
     - title: 1 つの SQL データベースのスケーリング
       values:
       - href: 
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
       - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+      - href: 
     - title: SQL エラスティック プールのスケーリング
       values:
       - href: 
@@ -79,11 +122,13 @@ sections:
       - href: 
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+      - href: 
     - title: マネージド インスタンスの Azure ネットワークの構成
       values:
       - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
       - href: 
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph

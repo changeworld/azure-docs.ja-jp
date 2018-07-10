@@ -5,13 +5,12 @@
 ## [PowerShell - クイック スタート](quickstart-powershell.md)
 
 # 機能とツール
-## [Bash - 機能とツール](features.md)
-## [PowerShell - 機能とツール](features-powershell.md)
+## [機能とツール](features.md)
 
 # 操作方法
-## [Bash - ストレージの永続化](persisting-shell-storage.md)
-## [PowerShell - ストレージの永続化](persisting-shell-storage-powershell.md)
+## [ストレージの永続化](persisting-shell-storage.md)
 ## [ウィンドウの使用](using-the-shell-window.md)
+## [Windows ユーザー向けの PowerShell Cloud Shell](cloud-shell-windows-users.md)
 
 # 例
 ## [Bash - Terraform でのリソースの作成](example-terraform-bash.md)

@@ -47,6 +47,8 @@
       items:
         - name: 変更の追跡の概要
           href: automation-change-tracking.md
+        - name: 追跡対象ファイルのファイル内容の表示
+          href: change-tracking-file-contents.md
     - name: インベントリ
       items:
         - name: インベントリ コレクションでの VM の管理
