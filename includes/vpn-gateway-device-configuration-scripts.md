@@ -19,7 +19,7 @@ ms.locfileid: "30326515"
 | --- | --- | --- |
 |Cisco | ISR| IOS 15.1 (プレビュー)|
 |Cisco | ASA | 9.8 より前の ASA 用 ASA (*) RouteBased (IKEv2- No BGP) |
-|Cisco | ASA | 9.8 以降の ASA 用 ASA (*) RouteBased (IKEv2- No BGP) |
+|Cisco | ASA | 9.8 以降の ASA 用 ASA RouteBased (IKEv2- No BGP) |
 |Juniper | SRX_GA | 12.x|
 |Juniper | SSG_GA | ScreenOS 6.2.x|
 |Juniper | JSeries_GA | JunOS 12.x|
