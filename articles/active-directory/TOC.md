@@ -382,8 +382,8 @@
 ### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
 
 ## リソースへのアクセスを委任する
-### [管理者ロールのメンバーを表示する](users-groups-roles//directory-manage-roles-portal.md)
 ### [管理者ロール](users-groups-roles/directory-assign-admin-roles.md)
+#### [管理者ロールのメンバーを表示する](users-groups-roles//directory-manage-roles-portal.md)
 #### [ユーザーに管理者ロールを割り当てる](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [メンバーとゲスト ユーザーのアクセス許可の比較](fundamentals/users-default-permissions.md)
 ### [管理者ロールのセキュリティ](users-groups-roles/directory-admin-roles-secure.md)  
