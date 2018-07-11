@@ -127,11 +127,13 @@
 #### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
-
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Azure Active Directory アクティビティ ログ コンテンツ パックのエラー](active-directory-reporting-troubleshoot-content-pack.md)
+#### [Azure Active Directory Reporting API のエラー](active-directory-reporting-troubleshoot-graph-api.md)
+
+
 ### [プログラムによるアクセス](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [監査のサンプル](active-directory-reporting-api-audit-samples.md)

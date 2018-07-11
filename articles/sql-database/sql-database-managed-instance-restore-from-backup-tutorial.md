@@ -8,15 +8,15 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: c6f397c2cfcfd9fbd4a5cc8f70a99f4abc86ba21
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34850680"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949886"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
 
@@ -140,7 +140,7 @@ SSMS で、以下の手順を使用して、バックアップ ファイルか�
 
     ![ファイル一覧](./media/sql-database-managed-instance-tutorial/file-list.png)
 
-4. 次のスクリプトを使用して、バックアップ ファイルから Adventure Works 2012 データベースを復元します。コンテナーの URL にバックアップ ファイルを指定します。
+4. 次のスクリプトを使用して、バックアップ ファイルから Wide World Importers データベースを復元します。コンテナーの URL にバックアップ ファイルを指定します。
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -177,5 +177,4 @@ SSMS で、以下の手順を使用して、バックアップ ファイルか�
 次のチュートリアルに進んで、DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する方法を学習してください。
 
 > [!div class="nextstepaction"]
->
-  [DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)
+>[DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)

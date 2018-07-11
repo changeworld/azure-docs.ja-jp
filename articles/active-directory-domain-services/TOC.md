@@ -54,6 +54,7 @@
 #### [不足しているサービス プリンシパルの復元](active-directory-ds-troubleshoot-service-principals.md)
 #### [Secure LDAP のエラー](active-directory-ds-troubleshoot-ldaps.md)
 ### [一致しないテナントのエラーを解決する](active-directory-ds-mismatched-tenant-error.md)
+### [中断されたドメイン](active-directory-ds-suspension.md)
 
 
 # リファレンス
