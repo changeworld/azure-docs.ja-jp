@@ -59,10 +59,10 @@
 #### [カスタム コード](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [ローカルの実行とデバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)
 
-### 継続的インテグレーションと継続的配置
-#### [概要](data-lake-analytics-cicd-overview.md)
-#### [テストの設定](data-lake-analytics-cicd-test.md)
-#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+## 継続的インテグレーションと継続的配置
+### [概要](data-lake-analytics-cicd-overview.md)
+### [テストの設定](data-lake-analytics-cicd-test.md)
+### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

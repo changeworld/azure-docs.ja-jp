@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 9e60a25d8e41de22010a8b1844fdb6267868333c
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 374e6a75d9ddfb5765418b1044dc525f14f86f67
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33943697"
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37950821"
 abstract:
   description: Azure Linux 仮想マシンでは、Red Hat、Ubuntu、または好みの Linux ディストリビューションを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Linux VM の作成、構成、管理、更新、スケーリングを行う方法を確認してください。
   aside:
@@ -74,7 +74,6 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Team Services による CI/CD</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>、<a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a>、または <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> を使用した Web サーバー スタックの作成
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
-    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">カスタム Packer イメージでの Azure 仮想マシン スケール セットへのアプリのデプロイ</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

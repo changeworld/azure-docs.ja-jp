@@ -364,8 +364,6 @@ items:
                 href: tutorial-query-table.md
               - name: 4 - グローバル分散
                 href: tutorial-global-distribution-table.md
-              - name: 5 - サーバーレス アプリ - Node.js
-                href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
           - name: サンプル
             items:
               - name: .NET

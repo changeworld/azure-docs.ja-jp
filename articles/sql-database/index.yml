@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
-  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37887285"
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916151"
 abstract:
   description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:
@@ -48,12 +48,12 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: 価格/パフォーマンス レベル
-    - href: /azure/sql-database/sql-database-single-database-scale
+    - href: /azure/sql-database/sql-database-scale-resources
       html: <p>ニーズに応じて簡単にデータベースを<a href="/azure/sql-database/sql-database-single-database-scale">スケールアップ</a>、<a href="/azure/sql-database/sql-database-read-scale-out">スケールアウト</a>、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
       image:
         src: media/index/i_scale.svg
       title: スケーラビリティと弾力性
-    - href: /azure/sql-database/sql-database-automatic-tuning
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
       html: <p>インテリジェンスをサービスに組み込むことで、<a href="/azure/sql-database/sql-database-automatic-tuning">自動的にデータベースのパフォーマンスをチューニングし</a>、データベース内の<a href="/azure/sql-database/sql-advanced-threat-protection">脅威</a>や<a href="/azure/sql-database/sql-vulnerability-assessment">脆弱性</a>を特定します。</p>
       image:
         src: media/index/i_intelligence.svg

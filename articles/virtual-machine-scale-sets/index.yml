@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: d26c3a94c166a91644397e4a31aeede55ec29284
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33941069"
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37949732"
 abstract:
   description: Azure Virtual Machine Scale Sets では、負荷分散と自動スケーリングが行われる同一の VM のグループを作成して管理できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、仮想マシン スケール セットの作成、構成、管理、自動スケーリングを行う方法を確認してください。
 sections:
@@ -52,7 +52,6 @@ sections:
     - html: <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0</a> または <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a> でカスタム VM イメージを使用する
     - html: <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> または <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a> でアプリをスケール セットにデプロイする
     - html: <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> または <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a> でスケール セットの自動スケーリングを行う
-    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">カスタム Packer イメージでの Azure 仮想マシン スケール セットへのアプリのデプロイ</a>
 - title: サンプル
   items:
   - type: paragraph
