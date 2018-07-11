@@ -103,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Resource Manager テンプレートを使用した診断設定の有効化
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: JSON Lines 診断ログ形式の準備
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: アクティビティ ログの使用
       items:
         - name: アクティビティ ログでのイベントの表示

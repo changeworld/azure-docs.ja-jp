@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 26731d80f5917f9d21aacafb5f8a79cfb02855af
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 73c9f1fc26f5cb36cc475a66b67705c6177bebf8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795076"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095674"
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: Cassandra データをインポートする
 
@@ -57,7 +57,7 @@ Cassandra API で使用するために Cassandra データを Azure Cosmos DB �
 1. テーブルを事前に作成し、拡大縮小します。
     * 既定では、Azure Cosmos DB は毎秒 1,000 の要求ユニット (RU/秒) で新しい Cassandra API テーブルをプロビジョニングします (CQL ベースの作成は 400 RU/秒でプロビジョニングされます)。 cqlsh を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または cqlsh からすべてのテーブルを事前作成します。 
 
-    * 移行の間は、[Azure Portal](https://portal.azure.com) から、テーブルのスループットを既定のスループット (400 または 1000 RU/秒) から 10,000 RU/秒に上げます。 スループットが高くなるほど、スロットルを回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
+    * 移行の間は、[Azure Portal](https://portal.azure.com) から、テーブルのスループットを既定のスループット (400 または 1000 RU/秒) から 10,000 RU/秒に上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
 
 2. 1 つの操作の RU 負担を決定します。 これは、Azure Cosmos DB の任意の Cassandra API SDK を使用して行えます。 この例では、.NET バージョンでの RU 負担取得方法を示します。 
 

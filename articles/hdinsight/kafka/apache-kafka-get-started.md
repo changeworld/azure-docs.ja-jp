@@ -3,9 +3,8 @@ title: Apache Kafka の開始 - Azure HDInsight クイック スタート | Micr
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 services: hdinsight
 documentationcenter: ''
-author: Blackmist
+author: dhgoelmsft
 manager: jhubbard
-editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: mvc,hdinsightactive
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 17f7bc4d9325dd8040036e218c43e418f3c51b68
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 776705281a1909cbeee657f7915d4c83ec8bbabe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021210"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342155"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>クイック スタート: HDInsight クラスターに Kafka を作成する
 
@@ -101,7 +100,7 @@ HDInsight クラスターで Kafka を作成するには、次の手順に従い
 
     __[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
-5. **[ストレージ]** で、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+5. **[ストレージ]** で、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。 Data Lake Storage Gen2 の使用について詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     ![HDInsight のストレージ アカウント設定](./media/apache-kafka-get-started/storage-configuration.png)
 

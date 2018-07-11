@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063410"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340952"
 ---
-# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>チュートリアル: keyPhrase エンティティからデータを返す方法を学習する 
+# <a name="tutorial-7-add-keyphrase-entity"></a>チュートリアル: 7.  keyPhrase エンティティを追加する 
 このチュートリアルでは、発話から主題を抽出する方法を示すアプリを使用します。
 
 <!-- green checkmark -->
@@ -87,11 +87,11 @@ ms.locfileid: "37063410"
 
 1. 右上のナビゲーションで **[Publish]\(公開\)** を選択します。
 
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
 
 2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
@@ -201,10 +201,10 @@ ms.locfileid: "37063410"
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と keyPhrase データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [意図の予測と共にセンチメントを返すアプリを作成する](luis-quickstart-intent-and-sentiment-analysis.md)
+> [センチメント分析をアプリに追加する](luis-quickstart-intent-and-sentiment-analysis.md)
 

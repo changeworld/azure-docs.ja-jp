@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2b9644b8cfdcca9c9ded7890e325fe9488c9511f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 89cf9c9034c03b6ca51aca4bd2c4cd6edb8bcc13
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061112"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084231"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS 統合ランタイムをプロビジョニングする
 このチュートリアルでは、Azure Portal を使用して Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
@@ -39,8 +39,8 @@ ms.locfileid: "37061112"
 - Azure SQL Database サーバーに SSIS カタログ (SSISDB データベース) がないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。 
 
 > [!NOTE]
-> - データ ファクトリは、米国東部、米国東部 2、東南アジア、西ヨーロッパの各リージョンで作成できます。 
-> - Azure-SSIS IR は、米国東部、米国東部 2、米国中部、米国西部 2、北ヨーロッパ、西ヨーロッパ、英国南部、オーストラリア東部の各リージョンで作成できます。 
+> - 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 
+> - 現在 Azure-SSIS 統合ランタイムが利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[SSIS Integration Runtime]** を探してください。 
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -113,7 +113,7 @@ ms.locfileid: "37061112"
 
    b. **[場所]** で、SSISDB をホストするデータベース サーバーの場所を選択します。 統合ランタイムと同じ場所を選択することをお勧めします。 
 
-   c. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 SSISDB は、選択したデータベース サーバーに基づいて、スタンドアロン データベースやエラスティック プールの一部として、または Managed Instance (プレビュー) 上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、「[Compare SQL Database and Managed Instance (Preview) (SQL Database およびマネージド インスタンスを比較する (プレビュー))](create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview)」を参照してください。 仮想ネットワーク サービス エンドポイント/マネージド インスタンス (プレビュー) で Azure SQL Database を選択して、SSISDB をホストするか、オンプレミスのデータにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 [仮想ネットワークでの Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
+   c. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 SSISDB は、選択したデータベース サーバーに基づいて、スタンドアロン データベースやエラスティック プールの一部として、または Managed Instance (プレビュー) 上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、「[Compare SQL Database and Managed Instance (Preview)](create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview)」(SQL Database およびマネージド インスタンスを比較する (プレビュー)) を参照してください。 仮想ネットワーク サービス エンドポイント/マネージド インスタンス (プレビュー) で Azure SQL Database を選択して、SSISDB をホストするか、オンプレミスのデータにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 [仮想ネットワークでの Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
 
    d. **[Use AAD authentication with your ADF MSI]\(ADF MSI で AAD 認証を使用する\)** チェック ボックスで、SSISDB をホストするデータベース サーバーの認証方法 (SQL または Azure Active Directory (AAD) と Azure Data Factory (ADF) マネージド サービス ID (MSI)) を選択します。 オンにした場合、データベース サーバーへのアクセス許可が割り当てられている AAD グループに ADF MSI を追加する必要があります。[AAD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
 

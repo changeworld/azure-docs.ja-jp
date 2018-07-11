@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/03/2017
+ms.date: 07/01/2018
 ms.author: juliako
-ms.openlocfilehash: fcf02e39a305281501773db51383dff66c485493
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: da190bf2418f1cfb8ea952b69d3bf1d76258da5f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780621"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342329"
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Portal を使用した Azure Media Services アカウントの作成
 > [!div class="op_single_selector"]
@@ -31,7 +31,9 @@ ms.locfileid: "33780621"
 > 
 > 
 
-Azure Portal には、Azure Media Services (AMS) アカウントをすばやく作成する方法が用意されています。 アカウントを使用して Media Services にアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。 Media Services アカウントを作成するときは、同時に Media Services アカウントと同じリージョンにストレージ アカウントも作成して関連付けます (または既存のストレージ アカウントを使用します)。
+Azure Portal には、Azure Media Services (AMS) アカウントをすばやく作成する方法が用意されています。 アカウントを使用して Media Services にアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。 Media Services アカウントを作成するときは、同時に Media Services アカウントと同じリージョンにストレージ アカウントも作成して関連付けます (または既存のストレージ アカウントを使用します)。 
+
+プライマリ ストレージ アカウントとして、汎用 v1 または汎用 v2 を使用できます。 現在、Azure portal では v1 のみを選択できますが、API または PowerShell を使用してアカウントを作成するときに v2 を追加できます。 ストレージの種類の詳細については、「[Azure ストレージ アカウントについて](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)」を参照してください。
 
 この記事では、いくつかの一般的な概念について説明し、Azure Portal で Media Services アカウントを作成する方法を示します。
 
@@ -41,17 +43,14 @@ Azure Portal には、Azure Media Services (AMS) アカウントをすばやく�
 ## <a name="concepts"></a>概念
 Media Services にアクセスするには、関連付けられた次の 2 つのアカウントが必要です。
 
-* Media Services アカウント。 アカウントを使用して、Azure で利用可能なクラウド ベースの Media Services にアクセスできます。 Media Services アカウントには実際のメディア コンテンツは保存されません。 代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。 アカウントを作成するときに、利用可能な Media Services リージョンを選択します。 選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
+* Media Services アカウント。 アカウントを使用して、Azure で利用可能なクラウドベースの Media Services リソースにアクセスできます。 Media Services アカウントには実際のメディア コンテンツは保存されません。 代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。 アカウントを作成するときに、利用可能な Media Services リージョンを選択します。 選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
   
 * Azure ストレージ アカウント。 ストレージ アカウントは、Media Services アカウントと同じリージョンに配置する必要があります。 Media Services アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。 メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
-
-  > [!NOTE]
-  > Media Services では、プライマリ ストレージ アカウントが、テーブルやキューを含む**汎用ストレージ** アカウントに制限されています。 ストレージの種類の詳細については、「[Azure ストレージ アカウントについて](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)」を参照してください。
 
 ## <a name="create-an-ams-account"></a>AMS アカウントの作成
 このセクションでは、AMS アカウントを作成する方法について説明します。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[+新規]** > **[Web + モバイル]** > **[Media Services]** の順にクリックします。
    
     ![Media Services Create](./media/media-services-create-account/media-services-new1.png)

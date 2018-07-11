@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 844527fcfdcc2e0db22a322cafd81d07e5bd35e7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7d348bf2372ff3bc48590b6c5e97e8eee8a4136b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048113"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084945"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Python を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -106,7 +106,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             print("\tErrors: {}".format(activity_run.error['message']))
 
     ```
-3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+3. DataFactoryManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成します。 また、このオブジェクトを使用して、パイプラインの実行の詳細を監視します。 **subscription_id** 変数を、ご使用の Azure サブスクリプションの ID に設定します。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```python   
     def main():

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3d9bd187a70e8b8292e9c47497c2c6b13764045d
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 1adfd5dc21a7cab207fa14eeecc21d02507277f8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604728"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444138"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack ストレージのデータ転送ツールの使用
 
@@ -43,6 +43,10 @@ Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、お
 * [Microsoft ストレージ エクスプローラー](#microsoft-azure-storage-explorer)
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
+
+* [blobfuse](#blobfuse)
+
+    ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 
 
 Azure と Azure Stack の間のストレージ サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack ストレージと Azure ストレージの間の比較については、「[Azure Stack ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
@@ -301,9 +305,37 @@ Microsoft Azure ストレージ エクスプローラーは、Microsoft のス�
 * Azure Stack を操作する Azure ストレージ エクスプローラーの構成について詳しくは、「[Azure Stack サブスクリプションに Microsoft Azure ストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)」をご覧ください。
 * Microsoft Azure ストレージ エクスプローラーについて詳しくは、「[Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)」をご覧ください
 
+## <a name="blobfuse"></a>blobfuse 
+
+[blobfuse](https://github.com/Azure/azure-storage-fuse) は、ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Azure Blob Storage はオブジェクト ストレージ サービスであるため、階層的な名前空間を持っていません。 blobfuse は、フォワードスラッシュ `/` を区切り記号として使用して、仮想ディレクトリ スキームによってこの名前空間を提供します。 blobfuse は、Azure と Azure Stack の両方で動作します。 
+
+Linux 上で blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法の詳細については、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)」を参照してください。 
+
+Azure Stack の場合、マウントを準備する手順で Storage アカウントの資格情報を構成する際に、accountName、accountKey/sasToken、containerName に加えて **blobEndpoint** を指定する必要があります。 
+
+Azure Stack 開発キットでは、blobEndpoint を `myaccount.blob.local.azurestack.external` にする必要があります。 Azure Stack 統合システムでは、エンドポイントが不明の場合は、クラウド管理者に問い合わせてください。 
+
+accountKey と sasToken は一度に 1 つずつしか構成できないことに注意してください。 ストレージ アカウント キーを指定した資格情報構成ファイルの形式を次に示します。 
+
+```text  
+    accountName myaccount 
+    accountKey myaccesskey== 
+    containerName mycontainer 
+    blobEndpoint myaccount.blob.local.azurestack.external
+```
+
+共有アクセス トークンを指定した資格情報構成ファイルの形式を次に示します。
+
+```text  
+    accountName myaccount 
+    sasToken ?mysastoken 
+    containerName mycontainer 
+    blobEndpoint myaccount.blob.local.azurestack.external
+```
+
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Stack サブスクリプションに Microsoft Azure ストレージ エクスプローラーを接続する](azure-stack-storage-connect-se.md)
-* [Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [ストレージ エクスプローラーの概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 * [Microsoft Azure ストレージの概要](../../storage/common/storage-introduction.md)

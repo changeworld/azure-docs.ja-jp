@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c9cc94cbfb7575181a65cf21fdd8d19d2fd818f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049782"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085421"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **[バージョン]** で、**[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 
 
-   現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+   現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 7. **[ダッシュボードにピン留めする]** をオンにします。     
 8. **[作成]** を選択します。
 9. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b934cff674ee6967c9ae97baa5c3b93226600e87
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d5858ba7d10093264e1565d88ae518055b814d34
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046342"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085744"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -145,7 +145,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーを独自の値に置き換えます。 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーを独自の値に置き換えます。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
     // Set variables

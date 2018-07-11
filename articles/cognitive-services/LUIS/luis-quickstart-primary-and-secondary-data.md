@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061249"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130894"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>チュートリアル: シンプルなエンティティを使用するアプリを作成する
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>チュートリアル: 6.  シンプルなエンティティとフレーズ リストを追加する
 このチュートリアルでは、**Simple** エンティティを使用して発話から機械学習されたデータを抽出する方法を示すアプリを作成します。
 
 <!-- green checkmark -->
@@ -45,7 +45,7 @@ ms.locfileid: "37061249"
 |エンジニアリングの職に私の履歴書を提出してください。|エンジニアリング|
 |ジョブ 123456 の申込書に記入してください|123456|
 
-このチュートリアルでは、ジョブ名を抽出する新しいエンティティを追加します。 特定のジョブ番号を抽出する機能については、正規表現の[チュートリアル](luis-quickstart-intents-regex-entity.md)をご覧ください。 
+このチュートリアルでは、ジョブ名を抽出する新しいエンティティを追加します。 
 
 ## <a name="purpose-of-the-simple-entity"></a>シンプル エンティティの目的
 この LUIS アプリのシンプル エンティティの目的は、ジョブ名がどのようなもので、発話のどこで見つけられるかを、LUIS に教えることです。 発話のジョブ部分は、単語の選択や発話の長さに基づいて、発話ごとに異なります。 LUIS には、すべての意図のすべての発話におけるジョブの例が必要です。  
@@ -85,7 +85,7 @@ ms.locfileid: "37061249"
 
     ![名前に "ジョブ"、型に "シンプル" が指定された、シンプル エンティティの作成ポップアップ モデル ダイアログ](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. 発話 `Submit resume for engineering position` で、エンジニアリングとう単語にジョブ エンティティというラベルを付けます。 エンジニアリングという単語を選択し、ポップアップ メニューから [ジョブ] を選択します。 
+5. 発話 `Submit resume for engineering position` の中の `engineering` という単語にジョブのエンティティとしてラベルを付けます。 `engineering` という単語を選択し、ポップアップ メニューから **[ジョブ]** を選択します。 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "ジョブ エンティティのラベル付けが強調表示されている LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -145,7 +145,7 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
-    [![](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png#lightbox)
+    [![](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png#lightbox)
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
@@ -292,7 +292,7 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    フレーズ リストに単語をさらに追加したい場合は、推奨される単語を確認し、関連のある単語を追加します。 
+    フレーズ リストに単語をさらに追加したい場合は、**[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
 
 4. **[保存]** を選択して、フレーズ リストをアクティブにします。
 
@@ -369,7 +369,7 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 フレーズ リストを追加したことで、リスト内の単語のシグナルが強化されましたが、まだ完全一致としては使用されてい**ません**。 フレーズ リストには `lead` という単語で始まるジョブが複数存在します。また、ジョブ `welder` もありますが、`lead welder` はありません。 ジョブのこのフレーズ リストは不完全である可能性があります。 定期的に[エンドポイントの発話を確認](label-suggested-utterances.md)し、ジョブの単語を他に見つけて、その単語をご自身のフレーズ リストに追加してください。 その後、再度トレーニングして、再発行します。
 
 ## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-シンプル エンティティと単語のフレーズ リストを含むこのアプリは、自然言語クエリの意図を識別し、メッセージ データを返しました。 
+シンプル エンティティと単語のフレーズ リストを含むこのアプリは、自然言語クエリの意図を識別し、ジョブ データを返しました。 
 
 お使いのチャットボットには、現在、ジョブ応募の基本アクションと、そのアクションのパラメーター、つまり、どのジョブを参照するかを判断するための十分な情報があります。 
 
@@ -377,9 +377,9 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリは、エンティティから topScoringIntent の結果とデータを取得し、サード パーティの API を使って、ジョブ情報を人事担当者に送信できます。 ボットまたは呼び出し元アプリケーションに他のプログラム オプションがある場合でも、LUIS はその処理を行いません。 LUIS は、ユーザーの意図が何かのみを判断します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー [...] を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [事前構築済みの KeyPhrase エンティティを追加する方法を確認する](luis-quickstart-intent-and-key-phrase.md)
+> [事前構築済みの KeyPhrase エンティティを追加する](luis-quickstart-intent-and-key-phrase.md)

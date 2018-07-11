@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: dfaf3fe1427c9069939f5421c6a87efb584ebe48
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763206"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081909"
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>チュートリアル: Gremlin を使って Azure Cosmos DB Graph API を照会する
 
@@ -31,7 +31,7 @@ Azure Cosmos DB [Graph API](graph-introduction.md) は [Gremlin](https://github.
 
 ## <a name="prerequisites"></a>前提条件
 
-クエリを実行するには、Azure Cosmos DB アカウントがあり、コンテナーにグラフ データがあることが必要です。 どちらもない場合には、 [5 分でできるクイックスタート](create-graph-dotnet.md)か[開発者向けチュートリアル](tutorial-query-graph.md)を実行して、アカウントを作成し、データベースにデータを設定します。 次のクエリを実行するには、[Azure Cosmos DB .NET グラフ ライブラリ](graph-sdk-dotnet.md)、[Gremlin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)、またはお気に入りの Gremlin ドライバーを使用します。
+クエリを実行するには、Azure Cosmos DB アカウントがあり、コンテナーにグラフ データがあることが必要です。 どちらもない場合には、 [5 分でできるクイックスタート](create-graph-dotnet.md)か[開発者向けチュートリアル](tutorial-query-graph.md)を実行して、アカウントを作成し、データベースにデータを設定します。 次のクエリを実行するには、[Gremlin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)、またはお気に入りの Gremlin ドライバーを使用します。
 
 ## <a name="count-vertices-in-the-graph"></a>グラフの頂点を数える
 
@@ -80,7 +80,8 @@ Gremlin を使用すると、さらに複雑なクエリを作成したり、強
 > [!div class="checklist"]
 > * Graph を使用してクエリを実行する方法を学習しました。 
 
-次のチュートリアルに進んで、データをグローバルに分散する方法について学習できます。
+これで、"概念" セクションに進み、Cosmos DB の詳細について学習できるようになりました。
 
 > [!div class="nextstepaction"]
-> [データをグローバルに分散する](tutorial-global-distribution-graph.md)
+> [グローバル配信](distribute-data-globally.md) 
+

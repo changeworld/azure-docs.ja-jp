@@ -1,27 +1,28 @@
 ---
-title: リモート監視ソリューションでの高度な監視 - Azure | Microsoft Docs
-description: このチュートリアルでは、リモート監視ソリューションのダッシュボードでデバイスを監視する方法を示します。
+title: Azure ソリューションからの IoT デバイスの監視 | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して IoT デバイスを監視する方法を学習します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 02/22/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4d2dabd348d7fda4fa7ca3aac9975fd4179400c5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/08/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627401"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097463"
 ---
-# <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>リモート監視ソリューションを使用して高度な監視を行う
+# <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
 
-このチュートリアルでは、リモート監視のダッシュボードの機能を示します。 これらの機能を紹介するために、このチュートリアルでは Contoso IoT アプリケーションのシナリオを使用します。
+このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを監視します。 ソリューション ダッシュボードを使用して、テレメトリ、デバイス情報、アラート、および KPI を表示します。
 
-このチュートリアルでは、シミュレートされた 2 つの Contoso トラック デバイスを使用して、ソリューション アクセラレータのダッシュボードからデバイスを監視する方法を説明します。 Contoso の運用者として、フィールド上のトラックの場所と動きを監視する必要があります。
+これらの監視機能を導入するために、このチュートリアルでは 2 つのシミュレートされたトラック デバイスを使用します。 トラックは Contoso という組織によって管理され、リモート監視ソリューション アクセラレータに接続されています。 Contoso の運用者として、フィールド上のトラックの場所と動きを監視する必要があります。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、次のことを行いました。
 
 >[!div class="checklist"]
 > * ダッシュボードのデバイスをフィルターで絞り込む
@@ -32,89 +33,87 @@ ms.locfileid: "34627401"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
+このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューション アクセラレータのインスタンスをデプロイしておく必要があります。
 
-まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューション アクセラレータをデプロイしていない場合は、クイック スタート「[クラウドベースのリモート監視ソリューションのデプロイ](quickstart-remote-monitoring-deploy.md)」を完了する必要があります。
 
 ## <a name="choose-the-devices-to-display"></a>表示するデバイスを選択する
 
-**[ダッシュボード]** ページに表示するデバイスを選択するには、フィルターを使用します。 **[トラック]** デバイスのみを選択するには、フィルターのドロップダウン メニューで組み込みの **[トラック]** フィルターを選択します。
+**[ダッシュボード]** ページに表示する接続されたデバイスを選択するには、フィルターを使用します。 **[トラック]** デバイスのみを選択するには、フィルターのドロップダウン メニューで組み込みの **[トラック]** フィルターを選択します。
 
-![ダッシュボードにトラックをフィルター表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter.png)
+[![ダッシュボードに表示するトラックをフィルター処理する](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
 フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** ページのマップに表示されます。
 
-![マップに表示されたトラック](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap.png)
+[![トラックのみがマップに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
 **[テレメトリ]** グラフで表示されるデバイスも、フィルターによって決定されます。
 
-![ダッシュボードに表示されたトラックのテレメトリ](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry.png)
+[![トラックのテレメトリがダッシュボードに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
 
-フィルターの作成、編集、削除を行うには **[Manage filters]\(フィルターを管理する\)** を選択します。
+フィルターを作成、編集、および削除するには、**[Manage device groups]\(デバイス グループの管理\)** を選択します。
 
 ## <a name="view-real-time-telemetry"></a>テレメトリをリアルタイムで表示する
 
-ソリューション アクセラレータでは、リアルタイムの詳細なテレメトリ データがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフには、現在のフィルターによって選択されているデバイスのテレメトリが表示されます。
+ソリューション アクセラレータでは、リアルタイムのテレメトリがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフの上部には、現在のフィルターによって選択されているデバイスで使用可能なテレメトリの種類が表示されます。
 
-![トラックのテレメトリのプロット](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview.png)
+[![トラックのテレメトリの種類](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-表示するテレメトリの値を選択するには、グラフの上部にあるテレメトリの種類を選択します。
+温度テレメトリを表示するには、**[温度]** をクリックします。
 
-![トラックのテレメトリのプロット](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry.png)
-
-<!-- 05/01 - this features appears to have been removed
-To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
-
-![Pause and restart telemetry display](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
+[![トラックの温度テレメトリのプロット](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
 ## <a name="use-the-map"></a>マップを使用する
 
-マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンには、デバイスのアクティブな **[アラート]** または **[警告]** が示されています。 **[アラート]** と **[警告]** をまとめた数値がマップの左側に表示されます。
+マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンの色は、デバイスに対して**アラート**または**警告**がアクティブであるかどうかを示します。 **アラート**と**警告**をまとめた数値がマップの左側に表示されます。
 
-<!-- 05/01 - cannot select a deice on the map
-To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
+デバイスの詳細を表示するには、マップをパンおよび拡大縮小してデバイスを探し、マップ上でデバイスを選択します。 次に、デバイス ラベルをクリックして **[デバイスの詳細]** パネルを開きます。 デバイスの詳細情報は次のとおりです。
 
-* Recent telemetry values
-* Methods the device supports
-* Device properties
+* 最新のテレメトリの値
+* デバイスがサポートしているメソッド
+* デバイスのプロパティ
 
-![View device details on the dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail.png)-->
+[![ダッシュボードにデバイスの詳細を表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
-## <a name="view-alerts-from-your-devices"></a>デバイスのアラートを表示する
+## <a name="view-alerts"></a>アラートを表示する
 
-マップには現在のフィルターで表示されているデバイスと、**[アラート]** および **[警告]** が強調表示されます。 **[アラート]** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。
+**[アラート]** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。
 
-![ダッシュボードにシステムのアラートを表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms.png)
+[![ダッシュボードにデバイスのアラートを表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
-**[ダッシュボード]** フィルターを使用して最新のアラートの時間範囲を調整できます。 既定では、パネルには過去 1 時間のアラートが表示されます。
+フィルターを使用して最新のアラートの時間範囲を調整できます。 既定では、パネルには過去 1 時間のアラートが表示されます。
 
-![アラートを時間でフィルター表示する](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter.png)
+[![アラートを時間でフィルター処理する](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
 
 ## <a name="view-the-system-kpis"></a>システムの KPI を表示する
 
-**[ダッシュボード]** ページには、システムの KPI が表示されます。
+ソリューション アクセラレータによって計算されたシステム KPI は、**[ダッシュボード]** ページの **[分析]** パネルに表示されます。
 
-![ダッシュボード KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis.png)
+[![ダッシュボードの KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
-**ダッシュボード** フィルターを使用して KPI を集計する時間の範囲を調整できます。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
+ダッシュボードには、現在のデバイスと期間フィルターによって選択されたアラートに対して、次の 3 つの KPI が表示されます。
+
+* 最も多くのアラートをトリガーした規則のアクティブなアラートの数。
+* デバイスの種類ごとのアラートの割合。
+* 重大なアラートの割合。
+
+アラートの時間間隔を設定し、表示するデバイスを制御する同じフィルターによって、KPI の集計方法が決まります。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+次のチュートリアルに進む場合は、リモート監視ソリューション アクセラレータをデプロイしたままにしておきます。 ソリューション アクセラレータを使用していないときの実行コストを削減するには、設定パネルでシミュレートされたデバイスを停止します。
+
+[![テレメトリを一時停止する](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
+
+次のチュートリアルを開始する準備ができたら、シミュレートされたデバイスを再起動することができます。
+
+ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページから削除します。
+
+![ソリューションを削除する](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、リモート監視ソリューションでプロビジョニングされた、シミュレートされたトラックのフィルター表示や監視を、**[ダッシュボード]** ページを使用して行う方法について説明しました。
+このチュートリアルでは、リモート監視ソリューション アクセラレータの **[ダッシュボード]** ページを使用して、シミュレートされたトラックをフィルター処理および監視する方法について説明しました。 ソリューション アクセラレータを使用して接続されているデバイスの問題を検出する方法について学習するには、次のチュートリアルに進んでください。
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * ダッシュボードのデバイスをフィルターで絞り込む
-> * テレメトリをリアルタイムで表示する
-> * デバイスの詳細の表示
-> * デバイスのアラートを表示する
-> * システムの KPI を表示する
-
-デバイスの監視方法について説明したので、次に推奨される手順を以下に示します。
-
-* [しきい値に基づくルールを使用して問題を検出する](iot-accelerators-remote-monitoring-automate.md)。
-* [デバイスの管理と構成を行う](iot-accelerators-remote-monitoring-manage.md)。
-* [トラブルシューティングを行ってデバイスの問題を修復する](iot-accelerators-remote-monitoring-maintain.md)。
-* [シミュレートされたデバイスを使用してソリューションをテストする](iot-accelerators-remote-monitoring-test.md)。
-
-<!-- Next tutorials in the sequence -->
+> [!div class="nextstepaction"]
+> [監視ソリューションに接続されているデバイスの問題の検出](iot-accelerators-remote-monitoring-automate.md)

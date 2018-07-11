@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: service-bus-messaging
+author: sethmanheim
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 06/29/2018
+ms.author: sethm
+ms.custom: include file
+ms.openlocfilehash: bad7e87cb194fb7d8846e7e675881658a1d33b1e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138162"
+---
 [こちら][namespace-how-to]の説明に従って、Service Bus 名前空間を既に作成していることを確認してください。
 
 1. [Azure Portal][azure-portal] にサインインします。

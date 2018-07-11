@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 182d65ea955cfa2cac611080c30e145c26284369
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751481"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129100"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -506,8 +506,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * 「 [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。 Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md) のチュートリアルも用意されています。
 * Batch ソリューションを開発するときに使用する [BatchLabs][batch_labs] をダウンロードしてインストールします。 BatchLabs は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
-* [Linux コンピューティング ノードのプールを作成する方法](batch-linux-nodes.md)を確認します。
-* MSDN の [Azure Batch フォーラム][batch_forum]にアクセスします。 初心者の方でも上級者の方でも、Batch についてわからないことがあれば、ぜひフォーラムをご利用ください。
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 88f148e7ea175e928ee9f35b8728994a738e10da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b3735380105bca8421e3f1d654425eea465918e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417368"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37767477"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>クイック スタート: Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -53,7 +53,11 @@ block_blob_service = BlockBlobService(account_name='accountname', account_key='a
 ## <a name="run-the-sample"></a>サンプルを実行する
 このサンプルでは、"ドキュメント" フォルダーにテスト ファイルを作成します。 サンプル プログラムは、Blob Storage にテスト ファイルをアップロードし、コンテナー内の BLOB を一覧表示し、新しい名前を付けてファイルをダウンロードします。 
 
-サンプルを実行します。 次の出力は、アプリケーションを実行するときに返される出力の例です。
+最初に、`pip install` を実行して依存関係をインストールします。
+
+    pip install azure-storage
+
+次に、サンプルを実行します。 次の出力は、アプリケーションを実行するときに返される出力の例です。
   
 ```
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -137,9 +141,9 @@ Blob Storage では複数のアップロード方法を使うことができま�
 ```python
 # List the blobs in the container
 print("\nList blobs in the container")
-    generator = block_blob_service.list_blobs(container_name)
-    for blob in generator:
-        print("\t Blob name: " + blob.name)
+generator = block_blob_service.list_blobs(container_name)
+for blob in generator:
+    print("\t Blob name: " + blob.name)
 ```
 
 ### <a name="download-the-blobs"></a>BLOB のダウンロード

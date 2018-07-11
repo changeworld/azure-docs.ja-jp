@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061847"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097480"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>チュートリアル: 内部トラフィックを Basic Load Balancer によって、Azure Portal を使用する VM に負荷分散する
 
@@ -75,10 +75,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     - *myAvailabilitySet* - 作成する新しい可用性セットの名前。
     -  *myVNet* - 仮想ネットワークとしてこれが選択されていることを確認します。
     - *myBackendSubnet* - サブネットとしてこれが選択されていることを確認します。
-    - *myNetworkSecurityGroup* - 作成する必要がある新しいネットワーク セキュリティ グループ (ファイアウォール) の名前。
+5. **[ネットワーク セキュリティ グループ]** で **[Advanced]\(高度\)** を選択します。 次に、**[ネットワーク セキュリティ グループ (ファイアウォール)]** で **[なし]** を選択します。
 5. **[無効]** をクリックして、ブート診断を無効にします。
 6. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
-7. 手順 1. から 6. を使用して、*VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailabilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして *myNetworkSecurityGroup* を指定します。 
+7. 手順 1. から手順 6. を使用して *VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailabilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、**[ネットワーク セキュリティ グループ (ファイアウォール)]** として **[なし]** を指定します。 
 
 ### <a name="install-iis-and-customize-the-default-web-page"></a>IIS をインストールして既定の Web ページをカスタマイズする
 
@@ -100,33 +100,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. *myVM1* で RDP 接続を閉じます。
 6. *myVM2* で手順 1. ～ 5. を繰り返し、IIS をインストールして既定の Web ページをカスタマイズします。
 
-## <a name="create-nsg-rules"></a>NSG ルールを作成する
-
-このセクションでは、HTTP と RDP を使用する受信接続を許可するための NSG ルールを作成します。
-
-1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myResourceGroupLB]** リソース グループにある **[myNetworkSecurityGroup]** をクリックします。
-2. **[設定]** で **[受信セキュリティ規則]** をクリックし、**[追加]** をクリックします。
-3. *myHTTPRule* という名前の受信セキュリティ規則のために以下の値を入力し、ポート 80 を使用する受信 HTTP 接続を許可します。
-    - "*サービス タグ*" - **ソース**。
-    - "*インターネット*" - **ソース サービス タグ**
-    - *80* - **宛先ポート範囲**
-    - *TCP* - **プロトコル**
-    - "*許可*" - **アクション**
-    - *100* - **優先度**
-    - *myHTTPRule* - 名前
-    - "*HTTP を許可する*" - 説明
-4. Click **OK**.
- 
-5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
-    - "*サービス タグ*" - **ソース**。
-    - "*インターネット*" - **ソース サービス タグ**
-    - *3389* - **宛先ポート範囲**
-    - *TCP* - **プロトコル**
-    - "*許可*" - **アクション**
-    - *200* - **優先度**
-    - *myRDPRule* - 名前
-    - "*RDP を許可する*" - 説明
-
 ## <a name="create-basic-load-balancer-resources"></a>Basic Load Balancer のリソースを作成する
 
 このセクションでは、バックエンド アドレス プールと正常性プローブのロード バランサー設定を構成し、ロード バランサーと NAT 規則を指定します。
@@ -139,7 +112,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
 2. **[設定]** で **[バックエンド プール]** をクリックし、**[追加]** をクリックします。
 3. **[バックエンド プールの追加]** ページで、以下の操作を行います。
-    - バックエンド プールの名前として、「myBackEndPool」と入力します。
+    - バックエンド プールの名前として、[名前] に「*myBackEndPool*」と入力します。
     - **[関連付け先]** のドロップダウン メニューで **[可用性セット]** をクリックします。
     - **[可用性セット]** で **[myAvailabilitySet]** をクリックします。
     - **[ターゲット ネットワーク IP 構成の追加]** をクリックして、作成した各仮想マシン (*myVM1* & *myVM2*) をバックエンド プールに追加します。

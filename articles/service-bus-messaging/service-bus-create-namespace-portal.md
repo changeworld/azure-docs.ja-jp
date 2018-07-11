@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 06/29/2018
 ms.author: sethm
-ms.openlocfilehash: a24fa21848005d9768d26ae865680a4851e1dd81
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2763e401454cdb6145067a3ac415c3a252d7c494
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29556414"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131669"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure Portal を使用して Service Bus 名前空間を作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "29556414"
 
 ## <a name="next-steps"></a>次の手順
 
-Service Bus メッセージングのさらに高度な機能を紹介するサンプルについては、[GitHub サンプル][github-samples]を参照してください。
+Service Bus メッセージングのさらに高度な機能を紹介するサンプルについては、Service Bus [GitHub サンプル][github-samples]を参照してください。
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

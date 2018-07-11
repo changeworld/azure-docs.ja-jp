@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 39683c89db57dbeefd190a51415c783d012785e0
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 163763bf1203a045326c7163b5f6da9aa417d8cf
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36303777"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081858"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル: クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -74,33 +74,33 @@ ms.locfileid: "36303777"
 ### <a name="set-up-the-template-vm"></a>テンプレート VM を設定する
  テンプレート VM を学生に提供する前に、そのテンプレート VM に接続して必要なソフトウェアをインストールします。 
 
-1. テンプレート仮想マシンの準備が完了するまで待ちます。 準備が完了すると、**[Start]\(起動\)** ボタンが有効になります。 VM を起動するには、**[Start]\(起動\)** を選択します。
+1. テンプレート仮想マシンの準備が完了するまで待ちます。 準備が完了すると、**[開始]** ボタンが有効になります。 VM を起動するには、**[開始]** を選択します。
 
-    ![テンプレート VM を起動](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. VMに接続するには、**[接続]** を選択して指示に従います。 
+    ![テンプレート VM を起動する](../media/tutorial-setup-classroom-lab/start-template-vm.png)
+1. VM に接続するには、**[接続]** を選択して指示に従います。 
 
-    ![テンプレート VM に接続](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+    ![テンプレート VM に接続する](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
 1. 学生がラボの作業を行うために必要なソフトウェア (Visual Studio、Azure Storage Explorer など) をインストールします。 
 2. テンプレート VM から切断 (リモート デスクトップ セッションを終了) します。 
 3. **[停止]** を選択してテンプレート VM を**停止**します。 
 
-    ![テンプレート VM を停止](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
+    ![テンプレート VM を停止する](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
-### <a name="publish-the-template"></a>テンプレートの発行 
+### <a name="publish-the-template"></a>テンプレートを発行する 
 テンプレートを発行すると、Azure Lab Services がそのテンプレートを使用してラボ内に VM を作成します。 このプロセスで作成される VM の数は、ラボ内で許可されるユーザーの最大数 (ラボの利用ポリシーに設定) と同じです。 すべての仮想マシンの構成は、テンプレートと同じになります。 
 
 1. **[テンプレート]** セクションの **[発行]** を選択します。 
 
-    ![テンプレート VM の発行](../media/tutorial-setup-classroom-lab/public-access.png)
+    ![テンプレート VM を発行する](../media/tutorial-setup-classroom-lab/public-access.png)
 1. **[発行]** ウィンドウの **[発行済み]** オプションを選択します。 
 2. 次に、**[発行]** ボタンをクリックします。 作成する VM の数 (ラボへのアクセスが許可されるユーザーと同数) によっては、このプロセスにしばらく時間がかかる場合があります。
     
     > [!IMPORTANT]
-    > テンプレートがパブリックに利用できるようになった後で、そのアクセスをプライベートに変更することはできません。 
-4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが 5 つ表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
+    > いったん発行したテンプレートの発行を取り消すことはできません。 
+4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
 
     ![仮想マシン](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. VM が作成されるまで待ちます。 その状態が **[停止済み]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
+5. VM が作成されるまで待ちます。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

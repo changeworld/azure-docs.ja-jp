@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 42af2b5ec6b591929f37afebe6546d61b8a3a02a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063124"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082850"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Python IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -34,7 +34,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートで作成した Azure IoT Edge デバイス。
+* [Linux](quickstart-linux.md) 用のクイック スタートで作成した Azure IoT Edge デバイス。
+
+   >[!Note]
+   >Azure IoT Edge 用 Python モジュールは、Windows デバイスと ARM デバイスのいずれにも対応していません。 
+
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Visual Studio Code 用 の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。 
@@ -162,7 +166,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 7. このファイルを保存します。
 
-## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドする
+## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
 前のセクションでは、IoT Edge ソリューションを作成し、PythonModule にコードを追加しました。これにより、許容されるしきい値をマシンの温度が下回ることを報告するメッセージが除外されます。 次は、ソリューションをコンテナー イメージとしてビルドし、ご自身のコンテナー レジストリにプッシュする必要があります。 
 
@@ -192,7 +196,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 5. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
 
-ソリューションをビルドするように Visual Studio Code に指示すると、まず、配置テンプレートの情報が Visual Studio Code に提供され、`deployment.json` ファイルが新しい **config** フォルダーに生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Python コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
+ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、新しい **config** フォルダーに `deployment.json` ファイルが生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Python コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで実行される `docker build` コマンドで確認できます。 イメージ アドレスは、**\<repository\>:\<version\>-\<platform\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/pythonmodule:0.0.1-amd64** になります。
 
@@ -202,11 +206,11 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 1. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
-2. **Azure: Sign in** コマンドを検索して、実行します。 手順に従って、ご自身の Azure アカウントにサインインします。 
+2. **Azure: Sign in** コマンドを検索して、実行します。 手順に従って Azure アカウントにサインインします。 
 
-3. コマンド パレットで、**Azure IoT Hub: Select IoT Hub** コマンドを検索して、実行します。 
+3. コマンド パレットで、**Azure IoT Hub: Select IoT Hub** コマンドを検索して実行します。 
 
-4. ご自身の IoT ハブを含むサブスクリプションを選択し、アクセス先の IoT ハブを選択します。
+4. 自分の IoT ハブが含まれているサブスクリプションを選択し、アクセス先の IoT ハブを選択します。
 
 5. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
@@ -222,7 +226,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 2. 特定のデバイスの D2C のメッセージを監視するには、一覧でデバイスを右クリックし、**[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始\)** を選択します。
 3. データの監視を停止するには、コマンド パレットで **Azure IoT Hub: Stop monitoring D2C message** コマンドを実行します。 
 4. モジュール ツインを表示または更新するには、一覧でモジュールを右クリックし、**[Edit module twin]\(モジュール ツインの編集\)** を選択します。 モジュール ツインを更新するには、ツインの JSON ファイルを保存し、編集領域を右クリックして、**[Update Module Twin]\(モジュール ツインの更新\)** を選択します。
-5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ロカールで実行されているモジュールを Docker エクスプローラーで見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルを表示します。 
+5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ローカルで実行されているモジュールを Docker エクスプローラーで見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルで表示します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 

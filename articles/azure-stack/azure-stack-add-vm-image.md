@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/24/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287706"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447338"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Azure Stack で仮想マシン イメージを使用できるようにする
 
@@ -54,9 +54,10 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
    ![BLOB のアクセスを公開に設定](./media/azure-stack-add-vm-image/image2.png)
 
-2. Azure Stack にオペレーターとしてサインインします。 メニューから **[その他のサービス]** > **[リソース プロバイダー]** を選択します。 次に、**[Compute]** > **[VM イメージ]** > **[追加]** を選択します。
+2. Azure Stack にオペレーターとしてサインインします。 メニューの **[その他のサービス]** を選択します。 次に、**[Compute]** > **[VM イメージ]** > **[追加]** を選択します。
 
-3. **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OS Disk Blob URI]\(OS ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
+3. 
+  **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OS Disk Blob URI]\(OS ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
 
    ![イメージの作成を開始](./media/azure-stack-add-vm-image/image4.png)
 
@@ -73,6 +74,9 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 3. **[削除]** をクリックします。
 
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>PowerShell を使用して VM イメージを Marketplace に追加する
+
+> [!Note]  
+> イメージを追加すると、そのイメージは Azure Resource Manager ベースのテンプレートと PowerShell の展開のみで使用できるようになります。 イメージを Marketplace 項目としてユーザーが使用できるようにするには、「[Marketplace アイテムを作成および発行する](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)」の手順を使用して Marketplace 項目を公開してください。
 
 1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。  
 
@@ -93,9 +97,10 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
   - **publisher**  
     次に例を示します。`Canonical`  
     イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。  
-  - **offer**  
+  - 
+      **offer**  
     次に例を示します。`UbuntuServer`  
-    VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
+VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
   - **sku**  
     次に例を示します。`14.04.3-LTS`  
     VM イメージをデプロイするときにユーザーが使用する VM イメージの SKU 名のセグメント。 たとえば、**Datacenter2016** です。 このフィールドではスペースや他の特殊文字は使用できません。  
@@ -197,9 +202,10 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
   - **publisher**  
     次に例を示します。`Canonical`  
     イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。  
-  - **offer**  
+  - 
+      **offer**  
     次に例を示します。`UbuntuServer`  
-    VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
+VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。  
   - **sku**  
     次に例を示します。`14.04.3-LTS`  
     VM イメージをデプロイするときにユーザーが使用する VM イメージの SKU 名のセグメント。 たとえば、**Datacenter2016** です。 このフィールドではスペースや他の特殊文字は使用できません。  

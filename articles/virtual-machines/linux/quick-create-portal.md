@@ -3,7 +3,7 @@ title: クイック スタート - Azure portal で Linux VM を作成する | M
 description: このクイック スタートでは、Azure portal を使用して Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
-ms.author: iainfou
+ms.date: 07/03/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 18ac0291bff2c0fbfffdd5dfa3097f8a6acb561f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012885"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447960"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
@@ -63,7 +63,7 @@ Azure Portal (http://portal.azure.com) にログインします
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
 
-5. **[設定]** で、既定値をそのままにして **[OK]** を選択します。
+5. **[設定]** ページの **[ネットワーク]** > **[ネットワーク セキュリティ グループ]** > **[Select public inbound ports]\(パブリック受信ポートの選択\)** の順に移動し、**[HTTP]** と **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、**[OK]** を選択します。
 
 6. 概要ページで、**[作成]** を選択して、VM のデプロイを開始します。
 
@@ -99,14 +99,6 @@ sudo apt-get -y install nginx
 
 完了したら SSH セッションを `exit` し、Azure portal の VM のプロパティに戻ります。
 
-## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
-
-受信トラフィックと送信トラフィックのセキュリティは、ネットワーク セキュリティ グループ (NSG) で確保します。 Azure Portal から VM を作成すると、SSH 接続用のポート 22 に対する受信の規則が作成されます。 この VM は Web サーバーのホストとなるため、ポート 80 に対する NSG 規則を作成する必要があります。
-
-1. VM の概要ページで、**[ネットワーキング]** を選択します。
-2. 既存の受信規則と送信規則の一覧が表示されます。 **受信ポート規則を追加する**設定を選択します。
-3. 上部の **[Basic]** オプションを選択し、使用可能なサービスの一覧から *[HTTP]* を選択します。 ポート 80、優先度、および名前が自動的に設定されます。
-4. 規則を作成するために、**[追加]** を選択します。
 
 ## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 

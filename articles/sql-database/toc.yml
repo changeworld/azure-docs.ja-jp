@@ -84,8 +84,6 @@
           href: sql-database-service-tiers-dtu.md
         - name: リソース制限
           href: sql-database-resource-limits.md
-    - name: 高可用性
-      href: sql-database-high-availability.md
     - name: 論理サーバーと単一 DB
       items:
         - name: 論理サーバーと単一 DB
@@ -128,8 +126,46 @@
           href: sql-database-managed-instance-connect-app.md
         - name: T-SQL の相違点
           href: sql-database-managed-instance-transact-sql-information.md
-    - name: SQL Server の共通機能
-      href: sql-database-features.md
+    - name: ビジネス継続性
+      items:
+        - name: ビジネス継続性
+          href: sql-database-business-continuity.md
+        - name: 高可用性
+          href: sql-database-high-availability.md
+        - name: データベースのバックアップ
+          href: sql-database-automated-backups.md
+        - name: 長期のバックアップ リテンション期間
+          itmes:
+            - name: 長期のバックアップ リテンション期間
+              href: sql-database-long-term-retention.md
+            - name: 長期的なバックアップ保有期間の構成 - SQL ストレージ
+              href: sql-database-long-term-backup-retention-configure.md
+            - name: 長期的なバックアップ保有期間の構成 - Azure コンテナー (非推奨)
+              href: sql-database-long-term-backup-retention-configure-vault.md
+        - name: フェールオーバー グループと geo レプリケーション
+          items:
+            - name: フェールオーバー グループと geo レプリケーション
+              href: sql-database-geo-replication-overview.md
+            - name: geo レプリケーションの構成 - ポータル
+              href: sql-database-geo-replication-portal.md
+            - name: レプリカのセキュリティの構成
+              href: sql-database-geo-replication-security-config.md
+        - name: データベースの回復
+          items:
+            - name: データベースの回復
+              href: sql-database-recovery-using-backups.md
+            - name: 障害からの回復
+              href: sql-database-disaster-recovery.md
+            - name: 復旧訓練の実行
+              href: sql-database-disaster-recovery-drills.md
+        - name: アプリの設計
+          items:
+            - name: ディザスター リカバリーの設計
+              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+            - name: エラスティック プールの設計
+              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: アプリのアップグレードの設計
+              href: sql-database-manage-application-rolling-upgrade.md
     - name: セキュリティ
       items:
         - name: セキュリティ
@@ -192,76 +228,56 @@
               href: sql-database-always-encrypted.md
             - name: Azure キー コンテナーの使用
               href: sql-database-always-encrypted-azure-key-vault.md
-    - name: ビジネス継続性
+    - name: 柔軟なスケーラビリティ
       items:
-        - name: ビジネス継続性
-          href: sql-database-business-continuity.md
-        - name: データベースのバックアップ
-          href: sql-database-automated-backups.md
-        - name: 長期のバックアップ リテンション期間
-          itmes:
-            - name: 長期のバックアップ リテンション期間
-              href: sql-database-long-term-retention.md
-            - name: 長期的なバックアップ保有期間の構成 - SQL ストレージ
-              href: sql-database-long-term-backup-retention-configure.md
-            - name: 長期的なバックアップ保有期間の構成 - Azure コンテナー (非推奨)
-              href: sql-database-long-term-backup-retention-configure-vault.md
-        - name: フェールオーバー グループと geo レプリケーション
+        - name: リソースのスケーラビリティ
+          href: sql-database-scale-resources.md
+        - name: 読み取りスケールアウト
+          href: sql-database-read-scale-out.md
+        - name: データベース シャーディング
           items:
-            - name: フェールオーバー グループと geo レプリケーション
-              href: sql-database-geo-replication-overview.md
-            - name: geo レプリケーションの構成 - ポータル
-              href: sql-database-geo-replication-portal.md
-            - name: レプリカのセキュリティの構成
-              href: sql-database-geo-replication-security-config.md
-        - name: データベースの回復
-          items:
-            - name: データベースの回復
-              href: sql-database-recovery-using-backups.md
-            - name: 障害からの回復
-              href: sql-database-disaster-recovery.md
-            - name: 復旧訓練の実行
-              href: sql-database-disaster-recovery-drills.md
-        - name: アプリの設計
-          items:
-            - name: ディザスター リカバリーの設計
-              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-            - name: エラスティック プールの設計
-              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-            - name: アプリのアップグレードの設計
-              href: sql-database-manage-application-rolling-upgrade.md
-    - name: SQL Database への移行
-      items:
-        - name: SQL Database への移行
-          href: sql-database-cloud-migrate.md
-        - name: Managed Instance への移行
-          href: sql-database-managed-instance-migrate.md
-        - name: 移行後の SQL Database の管理
-          href: sql-database-manage-after-migration.md
-    - name: データの読み込みと移動
-      items:
-        - name: Azure 内での DB のコピー
-          href: sql-database-copy.md
-        - name: BACPAC からの DB のインポート
-          href: sql-database-import.md
-        - name: BACPAC への DB のエクスポート
-          href: sql-database-export.md
-        - name: データ同期
-          items:
-            - name: SQL データ同期
-              href: sql-database-sync-data.md
-            - name: スキーマ変更のレプリケート
-              href: sql-database-update-sync-schema.md
-            - name: OMS で監視する
-              href: sql-database-sync-monitor-oms.md
-            - name: データ同期のベスト プラクティス
-              href: sql-database-best-practices-data-sync.md
-            - name: データ同期のトラブルシューティング
-              href: sql-database-troubleshoot-data-sync.md
-        - name: BCP を使用したデータの読み込み
-          href: sql-database-load-from-csv-with-bcp.md
-        - name: ADF を使用したデータの読み込み
-          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
+            - name: データベース シャーディング
+              href: sql-database-elastic-scale-introduction.md
+            - name: エラスティック クライアント ライブラリ - 統合
+              href: sql-database-elastic-database-client-library.md
+            - name: エラスティック データベース クライアント ライブラリのアップグレード
+              href: sql-database-elastic-scale-upgrade-client-library.md
+            - name: シャード マップ
+              href: sql-database-elastic-scale-shard-map-management.md
+            - name: クエリのルーティング
+              href: sql-database-elastic-scale-data-dependent-routing.md
+            - name: 資格情報を管理する
+              href: sql-database-elastic-scale-manage-credentials.md
+            - name: シャード クエリ実行
+              href: sql-database-elastic-scale-multishard-querying.md
+            - name: エラスティック ツール
+              href: sql-database-elastic-scale-glossary.md
+            - name: シャード データの移動
+              href: sql-database-elastic-scale-overview-split-and-merge.md
+            - name: エラスティック クライアント ライブラリ - Dapper
+              href: sql-database-elastic-scale-working-with-dapper.md
+            - name: エラスティック ツールに関する FAQ
+              href: sql-database-elastic-scale-faq.md
+            - name: シャード化されたアプリの作成
+              href: sql-database-elastic-scale-get-started.md
+            - name: 水平方向のシャード データに対するクエリ
+              href: sql-database-elastic-query-getting-started.md
+            - name: シャード データの移動
+              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
+            - name: セキュリティ構成
+              href: sql-database-elastic-scale-split-merge-security-configuration.md
+            - name: シャードを追加する
+              href: sql-database-elastic-scale-add-a-shard.md
+            - name: シャード マップに関する問題の解決
+              href: sql-database-elastic-database-recovery-manager.md
+            - name: シャード化された DB の移行
+              href: sql-database-elastic-convert-to-use-elastic-tools.md
+            - name: カウンターの作成
+              href: sql-database-elastic-database-perf-counters.md
+            - name: Entity Framework を使用する
+              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+    - name: SQL 機能の比較
+      href: sql-database-features.md
     - name: 監視と調整
       items:
         - name: 監視と調整
@@ -318,52 +334,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-    - name: スケールアウト
-      items:
-        - name: 読み取りスケールアウト
-          href: sql-database-read-scale-out.md
-        - name: データベース シャーディング
-          items:
-            - name: データベース シャーディング
-              href: sql-database-elastic-scale-introduction.md
-            - name: エラスティック クライアント ライブラリ - 統合
-              href: sql-database-elastic-database-client-library.md
-            - name: エラスティック データベース クライアント ライブラリのアップグレード
-              href: sql-database-elastic-scale-upgrade-client-library.md
-            - name: シャード マップ
-              href: sql-database-elastic-scale-shard-map-management.md
-            - name: クエリのルーティング
-              href: sql-database-elastic-scale-data-dependent-routing.md
-            - name: 資格情報を管理する
-              href: sql-database-elastic-scale-manage-credentials.md
-            - name: シャード クエリ実行
-              href: sql-database-elastic-scale-multishard-querying.md
-            - name: エラスティック ツール
-              href: sql-database-elastic-scale-glossary.md
-            - name: シャード データの移動
-              href: sql-database-elastic-scale-overview-split-and-merge.md
-            - name: エラスティック クライアント ライブラリ - Dapper
-              href: sql-database-elastic-scale-working-with-dapper.md
-            - name: エラスティック ツールに関する FAQ
-              href: sql-database-elastic-scale-faq.md
-            - name: シャード化されたアプリの作成
-              href: sql-database-elastic-scale-get-started.md
-            - name: 水平方向のシャード データに対するクエリ
-              href: sql-database-elastic-query-getting-started.md
-            - name: シャード データの移動
-              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
-            - name: セキュリティ構成
-              href: sql-database-elastic-scale-split-merge-security-configuration.md
-            - name: シャードを追加する
-              href: sql-database-elastic-scale-add-a-shard.md
-            - name: シャード マップに関する問題の解決
-              href: sql-database-elastic-database-recovery-manager.md
-            - name: シャード化された DB の移行
-              href: sql-database-elastic-convert-to-use-elastic-tools.md
-            - name: カウンターの作成
-              href: sql-database-elastic-database-perf-counters.md
-            - name: Entity Framework を使用する
-              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: データベース間の操作
       items:
         - name: Elastic Database ジョブ
@@ -424,6 +394,40 @@
           href: sql-database-temporal-tables-retention-policy.md
         - name: インメモリの構成
           href: sql-database-in-memory-oltp-migration.md
+- name: ハウツー ガイド
+  items:
+    - name: SQL Database への移行
+      items:
+        - name: SQL Database への移行
+          href: sql-database-cloud-migrate.md
+        - name: Managed Instance への移行
+          href: sql-database-managed-instance-migrate.md
+        - name: 移行後の SQL Database の管理
+          href: sql-database-manage-after-migration.md
+    - name: データの読み込みと移動
+      items:
+        - name: Azure 内での DB のコピー
+          href: sql-database-copy.md
+        - name: BACPAC からの DB のインポート
+          href: sql-database-import.md
+        - name: BACPAC への DB のエクスポート
+          href: sql-database-export.md
+        - name: データ同期
+          items:
+            - name: SQL データ同期
+              href: sql-database-sync-data.md
+            - name: スキーマ変更のレプリケート
+              href: sql-database-update-sync-schema.md
+            - name: OMS で監視する
+              href: sql-database-sync-monitor-oms.md
+            - name: データ同期のベスト プラクティス
+              href: sql-database-best-practices-data-sync.md
+            - name: データ同期のトラブルシューティング
+              href: sql-database-troubleshoot-data-sync.md
+        - name: BCP を使用したデータの読み込み
+          href: sql-database-load-from-csv-with-bcp.md
+        - name: ADF を使用したデータの読み込み
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
     - name: アプリの開発
       items:
         - name: 接続
@@ -448,8 +452,6 @@
           href: sql-database-develop-cplusplus-simple.md
         - name: Excel
           href: sql-database-connect-excel.md
-- name: ハウツー ガイド
-  items:
     - name: マルチテナント SaaS リファレンス アーキテクチャ
       items:
         - name: Wingtip Tickets のサンプル

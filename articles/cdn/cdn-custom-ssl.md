@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5d13c565302ae16b6fb2894f6a5a3843f47f9547
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235500"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342227"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル: Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -177,7 +177,7 @@ CNAME レコードは、次の形式にする必要があります。ここで *
 
 CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)に関するセクションを参照してください。
 
-CNAME レコードが正しい形式である場合、DigiCert はカスタム ドメイン名を自動的に検証して、サブジェクトの別名 (SAN) 証明書に追加します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
+CNAME レコードが正しい形式である場合、DigiCert は自動的にそのカスタム ドメイン名を検証し、ご利用のドメイン名に使用する専用の証明書を作成します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 
 自動検証には通常、数分かかります。 1 時間以内にドメインが検証されない場合、サポート チケットを開いてください。
 
@@ -214,7 +214,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 - この要求で使われる特定のホスト名のみを承認できます。 その後の要求では追加の承認が必要になります。
 
-DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加します。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。
+承認後、カスタム ドメイン名に使用される証明書の作成が完了します。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。
 
 ## <a name="wait-for-propagation"></a>伝達を待機する
 
@@ -288,11 +288,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. *証明書プロバイダーはだれですか。どのような種類の証明書が使用されますか。*
 
-    **Azure CDN from Verizon** では、DigiCert によって提供されるサブジェクト代替名 (SAN) 証明書が使用されます。 SAN 証明書は、1 つの証明書で複数の完全修飾ドメイン名をセキュリティで保護できます。 **Azure CDN Standard from Microsoft** では、DigiCert によって提供される単一の証明書が使用されます。
+    **Azure CDN from Verizon** と **Azure CDN from Microsoft** のどちらの場合も、カスタム ドメインには、Digicert から提供される専用かつ単一の証明書が使用されます。 
 
-2. IP ベースと SNI のどちらの TLS/SSL を使用しますか。
+2. *IP ベースと SNI のどちらの TLS/SSL を使用しますか。*
 
-    **Azure CDN from Verizon** では IP ベースの TLS/SSL を使用します。 **Azure CDN Standard from Microsoft** では SNI TLS/SSL を使用します。
+    **Azure CDN from Verizon** と **Azure CDN Standard from Microsoft** のどちらも、SNI TLS/SSL が使用されます。
 
 3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
 
@@ -309,6 +309,10 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 6. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
 
     いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
+
+7. *2018 年 6 月 20 日以降、Verizon の Azure CDN で、SNI TLS/SSL による専用証明書が既定で使用されます。SAN (Subject Alternative Name: サブジェクトの別名) 証明書と IP ベースの TLS/SSL を使用している既存のカスタム ドメインはどうなるのでしょうか。*
+
+    Microsoft の分析の結果、アプリケーションに対する要求が SNI クライアント要求だけであることがわかった場合、既にあるドメインは今後数か月内に単一の証明書へと徐々に移行されます。 アプリケーションに対する非 SNI クライアント要求が Microsoft によって検出された場合、ご利用のドメインは、IP ベースの TLS/SSL による SAN 証明書のまま維持されます。 どちらの場合でも、クライアントの要求に対するサービスやサポートは、それらの要求が SNI か非 SNI かにかかわらず中断されません。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -40,6 +40,8 @@
           href: contoso-migration-refactor-web-app-sql.md
         - name: 10. Contoso - Azure Web Apps と Azure MySQL で Linux アプリをリファクタリングする
           href: contoso-migration-refactor-linux-app-service-mysql.md
+        - name: 11. Contoso - TFS を VSTS に移行する
+          href: contoso-migration-tfs-vsts.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化

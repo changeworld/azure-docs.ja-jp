@@ -1,39 +1,35 @@
 ---
-title: 概要 - Azure Logic Apps とのエンタープライズ統合 | Microsoft Docs
-description: 企業や組織の間でデータ、サービス、アプリ、システムを統合するための自動化されたワークフローとビジネス プロセスを構築します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。
-keywords: automate, workflows, enterprise application integration, EAI, system integration, data integration, orchestration, integration services, iPaaS
+title: Azure Logic Apps を使用したエンタープライズ統合ソリューション | Microsoft Docs
+description: 企業や組織の間でデータ、サービス、アプリ、システムを統合するための自動化されたワークフローとビジネス プロセスを Logic Apps で構築する方法について説明します。 データ統合、システム統合、Enterprise Application Integration (EAI)、およびオーケストレーションのシナリオのためのソリューションを作成します。
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 07765c05-72a6-4169-a8ab-f6420bfbaf07
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: c575ae1f9c801072fb1f6f32a13f111b9edd18ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 6/29/2018
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: d3640710b3ba209c8e701cf5e340103c1d3d6fa7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299241"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082221"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
-[Logic Apps](https://azure.microsoft.com/services/logic-apps) は、プロセスを[ワークフロー](#logic-app-concepts)として構築、スケジューリング、自動化し、企業や組織の間でアプリ、データ、システム、サービスを統合する際に役立つサービスです。 Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの統合、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および作成する作業を簡略化できます。
+[Logic Apps](https://azure.microsoft.com/services/logic-apps) は、タスクとビジネス プロセスを[ワークフロー](#logic-app-concepts)として自動化します。これによって企業や組織の垣根を越えて、アプリ、データ、システム、サービスを統合するソリューションが構築しやすくなります。 Logic Apps は、Azure のクラウド サービスです。Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの統合、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および作成する作業を簡略化できます。
 
 ロジック アプリを使って自動化できるワークロードには、たとえば次のようなものがあります。
 
 * オンプレミス システムとクラウド サービスの間で命令を処理し、ルーティングする。
-* アップロードされたファイルを FTP サーバーから Azure Storage に移動する。 
+* アップロードされたファイルを SFTP サーバーまたは FTP サーバーから Azure Storage に移動する。 
+* 各種のシステム、アプリ、サービスでイベントが発生したときに Office 365 でメール通知を送信する。
 * 特定の話題のツイートを監視したり、そこに込められた感情を分析したり、確認が必要な項目についてアラートやタスクを作成したりする。
 
-ロジック アプリを使って統合ソリューションを構築するには、ギャラリーからコネクタを選択する必要があります。ギャラリーには SQL Database、各種の Azure サービス、Office 365、Salesforce、Google など、[約 200 種類の組み込みコネクタ](../connectors/apis-list.md)が存在し、その数は現在も増加を続けています。 これらの[コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
+Logic Apps を使った統合ソリューションは、成長を続けるギャラリーからの選択によって構築できます。ギャラリーには、他の Azure サービス (Service Bus、Functions、Storage)、SQL、Office 365、Dynamics、BizTalk、Salesforce、SAP、Oracle DB、ファイル共有など、[200 点以上のコネクタ](../connectors/apis-list.md)が用意されています。 これらの[コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -59,56 +55,59 @@ Logic Apps、Functions、Event Grid はいずれも Microsoft Azure によって
 
 ここでは、Logic Apps の機能とメリットを詳しく紹介します。
 
-* **使いやすいツールで視覚的にワークフローを構築**
+### <a name="visually-build-workflows-with-easy-to-use-tools"></a>使いやすいツールで視覚的にワークフローを構築
 
-  ビジュアルを使ったデザイン ツールが用意されており、時間の節約と複雑なプロセスの簡略化が可能です。 
-  ロジック アプリの作成は、最初から最後まで Logic Apps デザイナーを使って進めることができます。このツールは、ブラウザーを使って Azure ポータルからアクセスできるほか、Visual Studio からも利用できます。 ワークフローの起動にはトリガーを使用します。[コネクタ ギャラリー](../connectors/apis-list.md)から追加できるアクションの数に上限はありません。
+ビジュアルを使ったデザイン ツールが用意されており、時間の節約と複雑なプロセスの簡略化が可能です。 ロジック アプリの作成は、最初から最後まで Logic Apps デザイナーを使って進めることができます。このツールは、ブラウザーを使って Azure ポータルからアクセスできるほか、Visual Studio からも利用できます。 ワークフローの起動にはトリガーを使用します。[コネクタ ギャラリー](../connectors/apis-list.md)から追加できるアクションの数に上限はありません。
 
-* **ロジック アプリ テンプレートを使って時間を節約**
+### <a name="get-started-faster-with-logic-app-templates"></a>ロジック アプリ テンプレートを使って時間を節約
 
-  [テンプレート ギャラリー](../logic-apps/logic-apps-create-logic-apps-from-templates.md)にある定義済みのワークフローを選んで使用すれば、よく使われるソリューションを今まで以上に短期間で作成できます。 
-  サービスとしてのソフトウェア (SaaS) アプリのための単純な接続を実現するものから、高度な B2B ソリューションの構築に役立つものや、"単に楽しむための" ものまで、さまざまなテンプレートがあります。 詳細については、[事前構築済みのテンプレートからロジック アプリを作成する方法](../logic-apps/logic-apps-create-logic-apps-from-templates.md)に関するページを参照してください。
+[テンプレート ギャラリー](../logic-apps/logic-apps-create-logic-apps-from-templates.md)にある定義済みのワークフローを選んで使用すれば、よく使われるソリューションを今まで以上に短期間で作成できます。 サービスとしてのソフトウェア (SaaS) アプリのための単純な接続を実現するものから、高度な B2B ソリューションの構築に役立つものや、"単に楽しむための" ものまで、さまざまなテンプレートがあります。 詳細については、[事前構築済みのテンプレートからロジック アプリを作成する方法](../logic-apps/logic-apps-create-logic-apps-from-templates.md)に関するページを参照してください。
 
-* **異なる環境にまたがる別個のシステムを接続**
+### <a name="connect-disparate-systems-across-different-environments"></a>異なる環境にまたがる別個のシステムを接続
 
-  パターンやワークフローによっては、説明は簡単でもコードで実装するのは困難なこともあります。 
-  ロジック アプリなら、各種のシステムがオンプレミスの環境とクラウド環境のどちらに存在していても、シームレスに接続できます。 たとえば、クラウドのマーケティング ソリューションをオンプレミスの請求システムに接続したり、エンタープライズ サービス バスを使ってさまざまな API とシステムのメッセージングを一元化したりすることが可能になります。 ロジック アプリは、このようなシナリオに役立つ再利用可能かつ再構成可能なソリューションを提供するにあたり、高速で信頼性と一貫性に優れた方法を提供するものです。
+パターンやワークフローによっては、説明は簡単でもコードで実装するのは困難なこともあります。 ロジック アプリなら、各種のシステムがオンプレミスの環境とクラウド環境のどちらに存在していても、シームレスに接続できます。 たとえば、クラウドのマーケティング ソリューションをオンプレミスの請求システムに接続したり、エンタープライズ サービス バスを使ってさまざまな API とシステムのメッセージングを一元化したりすることが可能になります。 ロジック アプリは、このようなシナリオに役立つ再利用可能かつ再構成可能なソリューションを提供するにあたり、高速で信頼性と一貫性に優れた方法を提供するものです。
 
-* **エンタープライズ統合と B2B のシナリオに最上級のサポートを実現**
+### <a name="first-class-support-for-enterprise-integration-and-b2b-scenarios"></a>エンタープライズ統合と B2B のシナリオに最上級のサポートを実現
 
-  企業でも組織でも、相互に電子的なやり取りをするにあたっては業界標準のメッセージ プロトコルや形式を使用しています。しかし、具体的なプロトコルや形式を見ると EDIFACT、AS2、X12 など、さまざまに異なります。 
-  [Enterprise Integration Pack (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) の機能を使えば、パートナーが使用しているメッセージ形式をユーザーの組織のシステムが解釈して処理できる形式に変換するロジック アプリを作成できます。 ロジック アプリはこのようなやり取りを円滑に処理すると共に、暗号化とデジタル署名を使ってその安全を確保します。
+企業でも組織でも、相互に電子的なやり取りをするにあたっては業界標準のメッセージ プロトコルや形式を使用しています。しかし、具体的なプロトコルや形式を見ると EDIFACT、AS2、X12 など、さまざまに異なります。 [Enterprise Integration Pack (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) の機能を使えば、パートナーが使用しているメッセージ形式をユーザーの組織のシステムが解釈して処理できる形式に変換するロジック アプリを作成できます。 Logic Apps はこのようなやり取りを円滑に処理すると共に、暗号化とデジタル署名を使ってその安全を確保します。
 
-  最初は現在のシステムとサービスを使用して小規模な運用から始め、自分のペースで段階的に利用を増やしていくことをお勧めします。 準備ができたら、以下に示す Logic Apps と EIP のさまざまな機能を使って高度な統合シナリオを実装し、スケールアップしていきましょう。
+最初は現在のシステムとサービスを使用して小規模な運用から始め、自分のペースで段階的に利用を増やしていくことをお勧めします。 準備ができたら、以下に示す Logic Apps と EIP のさまざまな機能を使って高度な統合シナリオを実装し、スケールアップしていきましょう。
 
-  * 次の製品およびサービスを使って作成: 
-    * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server) 
-    * [API Management](../api-management/api-management-key-concepts.md) 
-    * [Azure Functions](../azure-functions/functions-overview.md) 
-    * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
-  * [XML メッセージ](../logic-apps/logic-apps-enterprise-integration-xml.md)の処理
-  * [フラット ファイル](../logic-apps/logic-apps-enterprise-integration-flatfile.md)の処理
-  * [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](../logic-apps/logic-apps-enterprise-integration-x12.md) プロトコルによるメッセージのやり取り
-  * [統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)により、以下をはじめとする B2B アーティファクトを一箇所で格納、管理
-    * [パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)
-    * [アグリーメント](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
-    * [XML 変換用のマップ](../logic-apps/logic-apps-enterprise-integration-maps.md)
-    * [XML 検証用のスキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* 次の製品およびサービスを使って作成:
 
-* **1 回の作成で何度も再利用**
+  * [Microsoft BizTalk Server](https://docs.microsoft.com/biztalk/core/introducing-biztalk-server)
+  * [Azure Functions](../azure-functions/functions-overview.md)
+  * [Azure API Management](../api-management/api-management-key-concepts.md)
+  * [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-  ロジック アプリをテンプレートとして作成すると、多数の環境やリージョンにまたがる[アプリをデプロイし、再構成](../logic-apps/logic-apps-create-deploy-template.md)できます。
+* [XML メッセージ](../logic-apps/logic-apps-enterprise-integration-xml.md)の処理
+* [フラット ファイル](../logic-apps/logic-apps-enterprise-integration-flatfile.md)の処理
+* [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](../logic-apps/logic-apps-enterprise-integration-x12.md) プロトコルによるメッセージのやり取り
+* [統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)により、以下をはじめとする B2B アーティファクトを一箇所で格納、管理
 
-* **組み込みの拡張機能**
+  * [パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)
+  * [アグリーメント](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
+  * [XML 変換マップ](../logic-apps/logic-apps-enterprise-integration-maps.md)
+  * [XML 検証スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+   
+たとえば、Microsoft BizTalk Server を使っている場合、ロジック アプリから [BizTalk Server コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用してご利用の BizTalk Server に接続し、通信を行うことができます。 その後、[統合アカウント コネクタ](../connectors/apis-list.md#integration-account-connectors) (Enterprise Integration Pack に付属) を追加することで、BizTalk と同様の操作をロジック アプリで拡張したり実行したりすることができます。 
 
-  必要とするコネクタが見つからない場合や、カスタム コードの実行が必要な場合には、独自のコード スニペットを作成し、[Azure Functions](../azure-functions/functions-overview.md) を使ってオンデマンドで呼び出せば、ロジック アプリを拡張できます。 
-  独自の [API](../logic-apps/logic-apps-create-api-app.md) や[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成し、ロジック アプリから呼び出すこともできます。
+逆に、[Microsoft BizTalk Server Adapter for Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287) を使用して、BizTalk Server からロジック アプリに接続して通信を行うこともできます。 BizTalk Server で [BizTalk Server Adapter を設定して使用する](https://docs.microsoft.com/biztalk/core/logic-app-adapter)方法をご覧ください。
 
-* **使用した分だけお支払い**
+### <a name="write-once-reuse-often"></a>1 回の作成で何度も再利用
+
+ロジック アプリをテンプレートとして作成すると、多数の環境やリージョンにまたがる[アプリをデプロイし、再構成](../logic-apps/logic-apps-create-deploy-template.md)できます。
+
+### <a name="built-in-extensibility"></a>組み込みの拡張機能
+
+必要とするコネクタが見つからない場合や、カスタム コードの実行が必要な場合には、独自のコード スニペットを作成し、[Azure Functions](../azure-functions/functions-overview.md) を使ってオンデマンドで呼び出せば、ロジック アプリを拡張できます。 独自の [API](../logic-apps/logic-apps-create-api-app.md) や[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成し、ロジック アプリから呼び出すこともできます。
+
+### <a name="pay-only-for-what-you-use"></a>使用した分だけお支払い
   
-  Logic Apps では、App Service プランで以前に作成したロジック アプリがないかぎり、使用量に応じた[課金および測定](../logic-apps/logic-apps-pricing.md)が採用されます。
+Logic Apps では、App Service プランで以前に作成したロジック アプリがないかぎり、使用量に応じた[課金および測定](../logic-apps/logic-apps-pricing.md)が採用されます。
 
 Logic Apps の詳細については、以下のビデオで紹介しています。
+
 * [Logic Apps を使った統合 - "ゼロ" から "ヒーロー" へ](https://channel9.msdn.com/Events/Build/2017/C9R17) 
 * [Microsoft Azure Logic Apps を使用したエンタープライズ統合](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188)
 * [Logic Apps を使用して高度なビジネス プロセスを構築する](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179)

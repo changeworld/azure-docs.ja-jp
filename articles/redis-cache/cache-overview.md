@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 585dcd120c42562b1520d4454f9d04e445553101
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062761"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096194"
 ---
 # <a name="what-is-azure-redis-cache"></a>Azure Redis Cache とは
 
@@ -27,7 +27,7 @@ Azure Redis Cache は広く普及しているオープン ソース [Redis Cache
 
 また、Azure Redis Cache は、メモリ内のデータ構造ストア、非リレーショナル データベース、およびメッセージ ブローカーとして使用することも可能です。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
 
-Azure Redis Cache を使用すると、セキュリティで保護された専用の Redis のキャッシュにアクセスできます。このキャッシュは Microsoft で管理されており、Azure 内でホストされ、Azure 内の任意のアプリケーションにアクセスできます。
+Azure Redis Cache を使用すると、セキュリティで保護された専用の Redis のキャッシュにアクセスできます。このキャッシュは Microsoft で管理されており、Azure 内でホストされ、Azure 内外の任意のアプリケーションにアクセスできます。
 
 ## <a name="why-use-azure-redis-cache"></a>Azure Redis Cache を使用する理由
 

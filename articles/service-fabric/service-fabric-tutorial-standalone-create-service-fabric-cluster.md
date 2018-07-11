@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248437"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344157"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターのインストールと作成
 
@@ -61,13 +61,7 @@ zip ファイルを選択し、コンテキスト メニューを開いて、**[
         }
 ```
 
-次に、いくつかのプロパティを更新する必要があります。  34 行目で、診断ストアの接続文字列に変更を加える必要があります。変更後は、`"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"` のようになりますが、IP アドレスの部分は、実際のアドレスに置き換えてください。
-
-接続文字列の更新後、対応するフォルダーを忘れずに作成してください。  フォルダーは次のコマンドで作成します。以下の IP アドレスは必ず、接続文字列に挿入した IP アドレスに置き換えてください。
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+次に、いくつかのプロパティを更新する必要があります。  34 行目で、診断ストアの接続文字列に変更を加える必要があります。変更後は、`"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"` のようになります。
 
 最後に、この構成の `nodeTypes` セクションに、Windows が使用することになるエフェメラル ポートをマッピングする新しいセクションを追加します。  構成ファイルは、次のようになっている必要があります。
 

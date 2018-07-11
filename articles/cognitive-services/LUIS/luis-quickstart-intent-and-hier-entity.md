@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335562"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081695"
 ---
-# <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>チュートリアル: 階層エンティティを使用するアプリを作成する
+# <a name="tutorial-5-add-hierarchical-entity"></a>チュートリアル: 5.  階層構造エンティティを追加する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索する方法を示すアプリを作成します。 
 
 <!-- green checkmark -->
@@ -146,7 +146,7 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 
 2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [公開] ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "運用スロットへの [Publish]\(公開\) ボタンが強調表示された [Publish]\(公開\) ページのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
 
@@ -268,7 +268,7 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、エンティティから topScoringIntent の結果とデータを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー [...] を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー (...) を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 

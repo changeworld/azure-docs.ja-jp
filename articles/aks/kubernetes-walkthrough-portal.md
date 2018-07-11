@@ -2,19 +2,19 @@
 title: クイック スタート - Azure Kubernetes クラスター ポータルのクイックスタート
 description: Azure Portal を使用して AKS で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286598"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344476"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -28,11 +28,9 @@ ms.locfileid: "36286598"
 
 Azure Portal (http://portal.azure.com) にサインインします。
 
-
-
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-**[リソースの作成]** を選択し、**[Kubernetes Service]** > **[作成]** の順に選択します。
+**[リソースの作成]** を選択し、**[Kubernetes サービス]** を選択します。
 
 AKS クラスター の作成フォームの各見出しの下で、次の手順を実行します。
 

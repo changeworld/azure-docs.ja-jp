@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c49371d194b3b6f94076cb00595ec9feaeb3fb44
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763257"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096402"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート: Resource Manager テンプレートを使用して Azure HDInsight で Hadoop と Hive を使用する
 
@@ -255,6 +255,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下の記事を参照してください。
 
 * HDInsight で Azure Storage を使用する方法の詳細については、[HDInsight での Azure Storage の使用](../hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
+* Data Lake Storage で HDInsight クラスターを作成する方法について詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 * データを HDInsight にアップロードする方法については、[データを HDInsight にアップロードする方法](../hdinsight-upload-data.md)に関する記事を参照してください。
 
 HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。

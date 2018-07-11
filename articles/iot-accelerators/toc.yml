@@ -10,6 +10,8 @@
   items:
     - name: リモート監視ソリューションのデプロイ
       href: quickstart-remote-monitoring-deploy.md
+    - name: デバイス シミュレーション ソリューションのデプロイ
+      href: quickstart-device-simulation-deploy.md
 - name: チュートリアル
   items:
     - name: IoT デバイスの監視
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: デバイスのシミュレーション
       items:
-        - name: ソリューション アクセラレータのデプロイ
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: シミュレーションの実行
-          href: iot-accelerators-device-simulation-explore.md
+        - name: 既存の IoT ハブの使用
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: カスタム デバイス モデルの使用
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: リファレンス
   items:
     - name: 開発者向けリファレンス ガイド

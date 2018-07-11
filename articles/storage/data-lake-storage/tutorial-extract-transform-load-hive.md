@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ab1f8a4e406a7a58c46c5831c24b22f67a13a413
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8f5771ac860d40eab979bf9be92b18da8f5d850d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062225"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342370"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
@@ -75,33 +75,33 @@ HDInsight クラスターに関連付けられたストレージにデータを�
 1. コマンド プロンプトを開き、次のコマンドを使用して HDInsight クラスターのヘッド ノードに .zip ファイルをアップロードします。
 
     ```bash
-    scp <FILENAME>.zip <SSH-USERNAME>@<CLUSTERNAME>-ssh.azurehdinsight.net:<FILENAME.zip>
+    scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
     ```
 
-    *FILENAME* を .zip ファイルの名前に置き換えます。 *USERNAME* を HDInsight クラスターの SSH ログインに置き換えます。 *CLUSTERNAME* を HDInsight クラスターの名前に置き換えます。
+    *FILE_NAME* を .zip ファイルの名前に置き換えます。 *SSH_USER_NAME* を HDInsight クラスターの SSH ログインに置き換えます。 *CLUSTER_NAME* を HDInsight クラスターの名前に置き換えます。
 
    > [!NOTE]
-   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーへのパスを指定することが必要な場合があります。 たとえば、「`scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
+   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーへのパスを指定することが必要な場合があります。 たとえば、「`scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`」のように入力します。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。 コマンド プロンプトで次のコマンドを入力します。
 
     ```bash
-    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
     ```
 
 3. 次のコマンドを使用して .zip ファイルを解凍します。
 
     ```bash
-    unzip FILENAME.zip
+    unzip <FILE_NAME>.zip
     ```
 
-    このコマンドで、約 60 MB の .csv ファイルが抽出されます。
+    このコマンドで、約 60 MB の *.csv* ファイルが抽出されます。
 
 4. 次のコマンドを使用してディレクトリを作成し、*.csv* ファイルをそのディレクトリにコピーします。
 
     ```bash
     hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
-    hdfs dfs -put <FILENAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
+    hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
     ```
 
 5. Data Lake Storage Gen2 ファイル システムを作成します。
@@ -154,14 +154,14 @@ Hive ジョブの一環として、.csv ファイルから **Delays** という�
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/processed
+    LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -203,7 +203,7 @@ Hive ジョブの一環として、.csv ファイルから **Delays** という�
 5. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のクエリを使用してインポートされたフライト遅延データからデータを取得します。
 
     ```hiveql
-    INSERT OVERWRITE DIRECTORY 'abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output'
+    INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
     SELECT regexp_replace(origin_city_name, '''', ''),
         avg(weather_delay)
@@ -212,7 +212,7 @@ Hive ジョブの一環として、.csv ファイルから **Delays** という�
     GROUP BY origin_city_name;
     ```
 
-    このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
+    このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
 
 6. Beeline を終了するには、プロンプトで「 `!quit` 」と入力します。
 
@@ -237,7 +237,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 3. インストールが完了したら、次のコマンドを使用して SQL Database サーバーに接続します。 **serverName** は SQL Database サーバー名に置き換えてください。 **adminLogin** と **adminPassword** は SQL Database のログイン情報に置き換えてください。 **databaseName** はデータベース名に置き換えてください。
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
+    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
     ```
 
     メッセージが表示されたら、SQL Database 管理者ログインのパスワードを入力します。
@@ -284,12 +284,12 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
 ## <a name="export-data-to-sql-database-using-sqoop"></a>Sqoop を使用して SQL データベースにデータをエクスポートする
 
-前のセクションで、変換済みデータを `abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output` にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。 
+前のセクションで、変換済みデータを `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。 
 
 1. 次のコマンドを使用して、Sqoop が SQL データベースを認識できることを確認します。
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
     ```
 
     このコマンドにより、先ほど delays テーブルを作成したデータベースを含むデータベースの一覧が返されます。
@@ -297,7 +297,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 2. 次のコマンドを使って、hivesampletable から delays テーブルにデータをエクスポートします。
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'abfs://<filesystem_name>@.dfs.core.windows.net/tutorials/flightdelays/output' 
+    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' 
     --fields-terminated-by '\t' -m 1
     ```
 
@@ -306,7 +306,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 3. sqoop コマンドが完了したら、tsql ユーティリティを使ってデータベースに接続します。
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
+    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
     ```
 
     次のステートメントを使って、データが delays テーブルにエクスポートされたことを確認します。

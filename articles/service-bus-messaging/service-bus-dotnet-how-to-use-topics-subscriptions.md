@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/6/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: aa75ac48d650f28d4aaeb612f2900d705cf71b5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29396943"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447202"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -52,7 +52,7 @@ Service Bus メッセージング名前空間を既に作成している場合�
 
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2.Azure Portal を使用したトピックの作成
 
-1. [Azure Portal][azure-portal] にログオンします。
+1. [Azure Portal][azure-portal] にサインインします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は、**[すべてのサービス]** をクリックするか、**[すべてのリソース]** をクリックします)。 トピックを作成する名前空間をクリックします。 
 3. 名前空間の [概要] ウィンドウが表示されます。 **[トピック]** をクリックします。
    
@@ -429,7 +429,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
 ## <a name="next-steps"></a>次の手順
 
-Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
+Service Bus メッセージングのさらに高度な機能を紹介する、Service Bus の[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 
 <!--Image references-->
 

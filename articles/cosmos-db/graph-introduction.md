@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee6e3adc3300178164b83ee1f8dc2ab307eec45b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796140"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081214"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
@@ -45,7 +45,7 @@ Azure Cosmos DB Graph API には次のものが含まれています。
 - 調整可能な整合性レベル。
 - 包括的な SLA。すべての単一リージョン アカウントと厳密でない一貫性のすべての複数リージョン アカウントで 99.99% の可用性 SLA、すべての複数リージョン データベース アカウントで 99.999% の読み取り可用性。
 
-Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) か、または [Apache Spark GraphX](spark-connector-graph.md) などの、TinkerPop と互換性のあるその他のグラフ システムを使用できます。
+Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
 
 この記事では、Azure Cosmos DB Graph API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。
 
@@ -93,11 +93,11 @@ Azure Cosmos DB は、市場の他のグラフ データベースと比較した
 
 * Apache TinkerPop との互換性
 
- Azure Cosmos DB は、オープン ソースの Apache TinkerPop 標準をネイティブでサポートしており、他の TinkerPop 対応グラフ システムと統合できます。 そのため、Titan や Neo4j などの別のグラフ データベースから簡単に移行することができます。また、[Apache Spark GraphX](spark-connector-graph.md) などのグラフ分析フレームワークで Azure Cosmos DB を使用することもできます。
+ Azure Cosmos DB は、オープン ソースの Apache TinkerPop 標準をネイティブでサポートしており、他の TinkerPop 対応グラフ システムと統合できます。 そのため、Titan や Neo4j などの別のグラフ データベースから簡単に移行することができます。また、Apache Spark GraphX などのグラフ分析フレームワークで Azure Cosmos DB を使用することもできます。
 
 * 調整可能な整合性レベル
 
- 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、厳密、有界整合性制約、セッション、一貫性のあるプレフィックス、結果の 5 種類の整合性レベルを提供します。 明確に定義されたきめ細かな整合性レベルにより、整合性、可用性、待機時間の適切なトレードオフを行うことができます。 詳しくは、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。
+ 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的の 5 種類の整合性レベルを提供します。 明確に定義されたきめ細かな整合性レベルにより、整合性、可用性、待機時間の適切なトレードオフを行うことができます。 詳しくは、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。
 
 Azure Cosmos DB では、同じコンテナーやデータベース内でドキュメントやグラフなどの複数のモデルを使用することもできます。 ドキュメント コレクションを使用してグラフ データをドキュメントと共に格納できます。 JSON に対する SQL クエリと Gremlin クエリの両方を使用して、同じデータをグラフとして照会できます。
 

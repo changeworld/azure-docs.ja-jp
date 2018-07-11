@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 013369c84ca7f2ec232f542549c22260eca46980
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062536"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096918"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>チュートリアル: Spark を使用して Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
 
@@ -61,7 +61,7 @@ ms.locfileid: "37062536"
 8. ページの上部にある **[クラスターの作成]** をクリックします (このプロセスは完了までに最大 5 分かかる場合があります)。
 9. 処理が完了したら、ナビゲーション バーの左上にある **[Azure Databricks]** を選択します。
 10. ページの下半分にある **[新規]** セクションで **[Notebook]\(ノートブック\)** を選択します。
-11. **[名前]** フィールドに任意の名前を入力します。
+11. **[名前]** フィールドに任意の名前を入力し、言語として **[Python]** を選択します。
 12. その他のフィールドはすべて既定値のままでかまいません。
 13. **[作成]** を選択します。
 14. **[Cmd 1]** セルに次のコードを貼り付けて、値をストレージ アカウントに保持していた値で置き換えます。
@@ -96,7 +96,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 5. **[作成]** を選択します。
 6. **[Cmd 1]** セルに次のコードを貼り付けます (このコードはエディターに自動保存されます)。
 
-    ```
+    ```python
     #mount Azure Blob Storage as an HDFS file system to your databricks cluster
     #you need to specify a storage account and container to connect to. 
     #use a SAS token or an account key to connect to Blob Storage.  

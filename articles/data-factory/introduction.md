@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047277"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082956"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,11 +113,11 @@ Data Factory の概念について詳しくは、次の記事をご覧くださ�
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-現時点では、米国東部、米国東部 2、西ヨーロッパの各リージョンでデータ ファクトリを作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
+現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
 
 Azure Data Factory 自体は、データを保存しません。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、サポートされているデータ ストア間でのデータ移動と、他のリージョンまたはオンプレミスの環境にあるコンピューティング サービスを使用したデータ処理を調整できます。 また、プログラムと UI の両方のメカニズムを使用して、ワークフローを監視および管理することもできます。
 
-Data Factory を利用できるリージョンが米国東部、米国東部 2、西ヨーロッパのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているセルフホステッド統合ランタイムがデータを移動します。
+Data Factory を利用できるリージョンが特定のリージョンのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているセルフホステッド統合ランタイムがデータを移動します。
 
 たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 米国東部または米国東部 2 に Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
 

@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046780"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446607"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
 
@@ -137,7 +137,19 @@ SSH ユーザー アカウントのパスワード変更に関する詳細につ
 
 ## <a id="domainjoined"></a>認証: ドメイン参加済み HDInsight
 
-__ドメイン参加済み HDInsight クラスター__を使用している場合、SSH 接続の後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
+__ドメイン参加済み HDInsight クラスター__を使用している場合は、SSH ローカル ユーザーと接続した後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
+
+また、ドメイン アカウントを使用して SSH 接続するために、各ドメイン参加ノード (例: ヘッド ノード、エッジ ノード) で Kerberos 認証を有効にすることができます。 これを行うには、sshd 構成ファイルを編集します。
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+コメント解除し、`KerberosAuthentication` を `yes` に変更します。
+
+```bash
+sudo service sshd restart
+```
+
+Kerberos 認証が成功したかどうかを確認するには、常に `klist` コマンドを使用します。
 
 詳細については、[ドメイン参加済み HDInsight の構成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。
 

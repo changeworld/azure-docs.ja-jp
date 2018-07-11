@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 237ab0ed99793f54574c4b81e883acb8c2bc57a9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611808"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082103"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
 
@@ -99,7 +99,7 @@ X.509 証明書を既定の Java 証明書ストアにインポートする場�
 > * SSL 証明書のエクスポート
 > * Java、Python、および Node.js の証明書を使用する方法の学習
 
-これで、Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成するためのチュートリアルに進むことができるようになりました。
+これで、概念セクションに進み、Azure Cosmos DB の詳細について学習できるようになりました。 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB からの入力を使用して Azure 関数を作成する](tutorial-functions-http-trigger.md) 
+>[Azure Cosmos DB の調整可能なデータの一貫性レベル](../cosmos-db/consistency-levels.md)

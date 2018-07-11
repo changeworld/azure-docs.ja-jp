@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335773"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445428"
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -46,7 +46,10 @@ GPv2 ストレージ アカウントは、**アクセス層**属性をアカウ�
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>GPv2 へのストレージ アカウントのアップグレード
 
-ユーザーは、いつでも PowerShell または Azure CLI を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。
+ユーザーは、いつでも Azure portal、PowerShell、または Azure CLI を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。
+
+#### <a name="upgrade-with-azure-portal"></a>Azure portal を使用したアップグレード
+Azure portal を使用して GPv1 または BLOB ストレージ アカウントを GPv2 アカウントにアップグレードするには、まず [Azure portal](https://portal.azure.com) にサインインし、ストレージ アカウントを選択します。 **[設定]** > **[構成]** を選択します。 アップグレード プロセスに関するメモと共に、**[アップグレード]** ボタンが表示されます。
 
 #### <a name="upgrade-with-powershell"></a>PowerShell を使用したアップグレード
 
@@ -262,9 +265,9 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 ## <a name="migrating-existing-data"></a>既存のデータの移行
 
-GPv1 アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの移行も必要ありません。 このため、GPv1 アカウントを BLOB ストレージ アカウントではなく GPv2 アカウントを移行することを強くお勧めします。
+GPv1 または BLOB ストレージ アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの移行も必要ありません。 このため、GPv1 アカウントを BLOB ストレージ アカウントではなく GPv2 アカウントを移行することを強くお勧めします。 GPv2 へのアップグレードの詳細については、「[GPv2 へのストレージ アカウントのアップグレード](#upgrade-a-storage-account-to-gpv2)」を参照してください。
 
-それでも BLOB ストレージ アカウントに移行する必要があり、GPv2 アカウントを使用できない場合は、次の手順に従ってください。 
+それでも GPv1 から BLOB ストレージ アカウントに移行する必要があり、GPv2 アカウントを使用できない場合は、次の手順に従ってください。 
 
 BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化しています。 テーブル、キュー、ファイル、ディスク、および BLOB を格納できる既存の汎用ストレージ アカウントは、BLOB ストレージ アカウントに変換することはできません。 つまり、ストレージ層を使用するには、新しい BLOB ストレージ アカウントを作成し、既存のデータを新たに作成したアカウントに移行する必要があります。 
 

@@ -59,16 +59,20 @@
           href: luis-quickstart-intent-and-list-entity.md
         - name: 5. 階層構造エンティティを追加する
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 6. シンプルなエンティティとフレーズ リストを追加する
+        - name: 6. 複合エンティティを追加する
+          href: luis-tutorial-composite-entity.md
+        - name: 7. シンプルなエンティティとフレーズ リストを追加する
           href: luis-quickstart-primary-and-secondary-data.md
-        - name: 7. keyPhrase エンティティを追加する
+        - name: 8. keyPhrase エンティティを追加する
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. センチメント分析を追加する
+        - name: 9. センチメント分析を追加する
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: アプリの改善
       items:
         - name: エンドポイントの発言の確認
           href: luis-tutorial-review-endpoint-utterances.md
+        - name: バッチ テストの利用
+          href: luis-tutorial-batch-testing.md
         - name: パターンの利用
           href: luis-tutorial-pattern.md
 - name: サンプル
@@ -138,7 +142,7 @@
     - name: アプリの計画
       href: luis-how-plan-your-app.md
     - name: 新しいアプリの開始
-      href: Create-new-app.md
+      href: luis-how-to-start-new-app.md
     - name: モデルの構築
       items:
         - name: 意図の追加
@@ -147,15 +151,15 @@
           href: luis-how-to-add-example-utterances.md
         - name: 複数エンティティの追加
           href: luis-how-to-add-entities.md
-        - name: グループ化されたデータを複合エンティティにより抽出する
-          href: luis-tutorial-composite-entity.md
-        - name: リスト エンティティを使って正確に一致するテキストを特定する (Node.js)
-          href: luis-tutorial-list-entity.md
-        - name: Node.js を使ってプログラムによりアプリをビルドする
-          href: luis-tutorial-node-import-utterances-csv.md
+        - name: API の利用
+          items:
+            - name: Node.js を使ってプログラムによりアプリをビルドする
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: リスト エンティティを使って正確に一致するテキストを特定する (Node.js)
+              href: luis-tutorial-list-entity.md
     - name: 統合
       items:
-        - name: Bing Spell Check API v7 によるスペルの訂正
+        - name: Bing Spell Check API v7 との統合
           href: luis-tutorial-bing-spellcheck.md
         - name: Speech Service との統合
           href: luis-tutorial-speech-to-intent.md
@@ -176,7 +180,7 @@
     - name: 予測精度の改善
       items:
         - name: エンドポイントの発言の確認
-          href: Label-Suggested-Utterances.md
+          href: luis-how-to-review-endoint-utt.md
         - name: フレーズ リストの追加
           href: luis-how-to-add-features.md
         - name: パターンの追加
@@ -189,36 +193,36 @@
           href: interactive-test.md
         - name: バッチ テスト
           href: luis-how-to-batch-test.md
-        - name: バッチ テストによる精度向上
-          href: luis-tutorial-batch-testing.md
-    - name: アプリケーションの発行
+    - name: アプリの発行
       href: luis-how-to-publish-app.md
     - name: 事前構築済みのモデルの使用
       items:
-        - name: 事前構築済みのエンティティの使用
+        - name: エンティティの使用
           href: luis-prebuilt-entities.md
-        - name: 事前構築済みのドメインの使用
+        - name: ドメインの使用
           href: luis-how-to-use-prebuilt-domains.md
-        - name: 事前構築済みの Cortana アプリの使用
+        - name: Cortana の使用
           href: luis-how-to-cortana-prebuilt-app.md
-    - name: LUIS アプリの管理
+    - name: アプリの管理
       items:
         - name: ダッシュボードの利用
           href: luis-how-to-use-dashboard.md
-        - name: キーの作成
+        - name: エンドポイント キーの作成
           href: luis-how-to-azure-subscription.md
-        - name: LUIS でのキーの追加
+        - name: アプリへのエンドポイント キーの追加
           href: luis-how-to-manage-keys.md
-        - name: PowerShell を使ったエンドポイントの使用状況の表示
-          href: luis-how-to-manage-from-cloud-shell.md
         - name: バージョンの管理
           href: luis-how-to-manage-versions.md
         - name: 他の作成者との共同作業
           href: luis-how-to-collaborate.md
-        - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
-          href: traffic-manager.md
-    - name: LUIS アカウントの管理
-      href: luis-how-to-account-settings.md
+        - name: オーサリング キーの管理
+          href: luis-how-to-account-settings.md
+        - name: エンドポイントの使用状況の管理
+          items:
+            - name: PowerShell を使ったエンドポイントの使用状況の表示
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
+              href: traffic-manager.md
     - name: V2 API への移行
       href: migration-v1-to-v2.md
     - name: プログラムを使ったリージョン検索
@@ -251,6 +255,8 @@
           href: luis-reference-prebuilt-deprecated.md
         - name: 電子メール エンティティ
           href: luis-reference-prebuilt-email.md
+        - name: keyPhrase エンティティ
+          href: luis-reference-prebuilt-keyphrase.md
         - name: 数値エンティティ
           href: luis-reference-prebuilt-number.md
         - name: 序数エンティティ

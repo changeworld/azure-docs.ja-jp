@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c28686c3b6494a0cf8938d39ab9b8338de7aa0c1
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d5f44c634b953194ad4f112722d82f282d8c8f1a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012582"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444612"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Windows 仮想マシンを作成する
 
@@ -29,9 +29,9 @@ Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にサインインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
@@ -43,13 +43,13 @@ Azure Portal (https://portal.azure.com) にログインします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)
 
-5. リソース グループを**新規作成**し、名前 (たとえば、*myResourceGroup*) を指定します。 目的の**場所**を選択し、**[OK]** を選択します。
+5. リソース グループを**新規作成**し、名前 (たとえば、*myResourceGroup*) を指定します。 **場所**を選択し、**[OK]** を選択します。
 
-4. VM のサイズを選択します。 たとえば、"*計算の種類*" または "*ディスクの種類*" でフィルター処理することができます。 推奨される VM サイズは *D2s_v3* です。
+4. VM のサイズを選択します。 たとえば、"*計算の種類*" または "*ディスクの種類*" でフィルター処理することができます。 推奨される VM サイズは *D2s_v3* です。 サイズを選択した後、**[選択]** をクリックします。
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-windows-vm-portal-sizes.png)
 
-5. **[設定]** で、既定値をそのままにして **[OK]** を選択します。
+5. **[設定]** ページで **[ネットワーク]** > **[ネットワーク セキュリティ グループ]** > **[パブリック受信ポートを選択]** の順に移動し、ドロップダウンから **[HTTP]** と **[RDP (3389)]** を選択します。 残りの部分は既定値のままにし、**[OK]** を選択します。
 
 6. 概要ページで、**[作成]** を選択して、VM のデプロイを開始します。
 
@@ -69,7 +69,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 3. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「*vmname*\*username*」と入力し、仮想マシン用に作成したパスワードを入力して、**[OK]** をクリックします。
 
-4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
+4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続を作成します。
 
 ## <a name="install-web-server"></a>Web サーバーのインストール
 
@@ -81,18 +81,10 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 終了したら、VM への RDP 接続を閉じます。
 
-## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
-
-受信トラフィックと送信トラフィックのセキュリティは、ネットワーク セキュリティ グループ (NSG) で確保します。 Azure Portal から VM を作成すると、RDP 接続用のポート 3389 に対する受信の規則が作成されます。 この VM は Web サーバーのホストとなるため、ポート 80 に対する NSG 規則を作成する必要があります。
-
-1. VM の概要ページで、**[ネットワーキング]** を選択します。
-2. 既存の受信規則と送信規則の一覧が表示されます。 **受信ポート規則を追加する**設定を選択します。
-3. 上部の **[Basic]** オプションを選択し、使用可能なサービスの一覧から *[HTTP]* を選択します。 ポート 80、優先度、および名前が自動的に設定されます。
-4. 規則を作成するために、**[追加]** を選択します。
 
 ## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
 
-IIS をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して IIS の既定のウェルカム ページを表示することができます。 前の手順で取得した VM のパブリック IP アドレスを使用します。 次の例は、既定の IIS Web サイトを示しています。
+ポータルで VM を選択し、VM の概要で IP アドレスの右側にある **[クリックしてコピー]** ボタンを使用してアドレスをコピーして、ブラウザーのタブに貼り付けます。次のような、既定の IIS のようこそページが開かれます。
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png)
 

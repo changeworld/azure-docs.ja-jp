@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7254e9336fca14daee2021d5bde4c5538509fe35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 81478ace72a538f4970e114cd704fd64ceb94aa6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842324"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344897"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
-既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成して上書きすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 このチュートリアルで学習する内容は次のとおりです。
+既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * ルート テーブルの作成
@@ -54,9 +54,9 @@ Azure Portal (http://portal.azure.com) にログインします。
     |Setting|値|
     |---|---|
     |Name|myRouteTablePublic|
-    |[サブスクリプション]| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
-    |場所|米国東部|
+    |リージョン|米国東部|
  
     ![ルート テーブルを作成する](./media/tutorial-create-route-table-portal/create-route-table.png) 
 
@@ -88,9 +88,9 @@ Azure Portal (http://portal.azure.com) にログインします。
     |---|---|
     |Name|myVirtualNetwork|
     |アドレス空間| 10.0.0.0/16|
-    |[サブスクリプション] | サブスクリプションを選択します。|
+    |サブスクリプション | サブスクリプションを選択します。|
     |リソース グループ|**[既存のものを使用]**、**[myResourceGroup]** の順に選択します。|
-    |場所|*[米国東部]* を選択します。|
+    |リージョン|*[米国東部]* を選択します。|
     |サブネット名|パブリック|
     |アドレス範囲|10.0.0.0/24|
     
@@ -132,13 +132,13 @@ NVA は、ルーティング、ファイアウォール、WAN 最適化などの
     |ユーザー名|任意のユーザー名を入力します。|
     |パスワード|任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |リソース グループ| **[既存のものを使用]**、*[myResourceGroup]* の順に選択します。|
-    |場所|**[米国東部]** を選択します。|
+    |リージョン|**[米国東部]** を選択します。|
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** で以下の情報を選択または入力し、**[OK]** を選択します。
 
     |Setting|値|
     |---|---|
-    |Virtual Network|myVirtualNetwork - 選択されていない場合は、**[仮想ネットワーク]** を選択し、**[仮想ネットワークの選択]** で **[myVirtualNetwork]** を選択します。|
+    |Virtual network|myVirtualNetwork - 選択されていない場合は、**[仮想ネットワーク]** を選択し、**[仮想ネットワークの選択]** で **[myVirtualNetwork]** を選択します。|
     |サブネット|**[サブネット]** を選択し、**[サブネットの選択]** で **[DMZ]** を選択します。 |
     |パブリック IP アドレス| **[パブリック IP アドレス]** を選択し、**[パブリック IP アドレスの選択]** で **[なし]** を選択します。 この VM はインターネットと接続されないため、パブリック IP アドレスが割り当てられていません。
 6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
@@ -258,7 +258,7 @@ Azure で *myVmPublic* VM が作成されている場合に *myVmPrivate* VM を
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成された NVA を展開します。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事を参照してください。
+このチュートリアルでは、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成された NVA を展開します。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事をご覧ください。
 
 
 仮想ネットワーク内では多数の Azure リソースをデプロイできますが、一部の Azure PaaS サービスのリソースは仮想ネットワークにデプロイできなません。 ただし、一部の Azure PaaS サービスのリソースへのアクセスを、仮想ネットワーク サブネットからのトラフィックのみに制限できます。 Azure PaaS リソースへのネットワーク アクセスを制限する方法を学習するには、次のチュートリアルに進んでください。
