@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: テンプレート
           href: tutorial-autoscale-template.md
-    - name: カスタム Packer イメージでの Azure 仮想マシン スケール セットへのアプリのデプロイ
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: サンプル
   items:
     - name: Azure CLI 2.0

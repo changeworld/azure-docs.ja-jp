@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/26/2018
   ms.author: mimig
-  ms.openlocfilehash: 0feb26c11ad0a231067fc7b91b83df94e75febe4
-  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+  ms.openlocfilehash: 6b922aa90000fa574c010902c2365e4ddb7035a3
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37111665"
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37952574"
 abstract:
   description: Azure Cosmos DB は、グローバル分散型のマルチモデル データベース サービスです。 以下のクイックスタート、チュートリアル、サンプルを使用すると、一般的な API とプログラミング モデルを使って、ドキュメント、キー値、ワイドカラム、グラフのデータベースを構築できます。 また、一方で包括的な SLA を活用しながら、任意の数の Azure リージョンにデータをレプリケートし、ストレージから独立してスループットをスケーリングする方法について説明します。
   aside:
@@ -155,7 +155,6 @@ sections:
     - html: Azure Cosmos DB でのグローバル データベース レプリケーション&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Gremlin</a>
     - html: <a href="local-emulator">エミュレーターを使用してアプリケーションをローカルに開発する</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">Azure Cosmos DB 入力バインドで HTTP トリガーをする</a>
-    - html: <a href="https://docs.microsoft.com/learn/build-serverless-app/index">基本的な Web アプリケーションを作成し、Cosmos DB で静的ファイルをホストする</a>
 - title: リファレンス
   items:
   - type: list
