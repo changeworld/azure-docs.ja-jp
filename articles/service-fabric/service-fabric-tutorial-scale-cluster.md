@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric クラスターのスケール | Microsoft Docs
-description: このチュートリアルでは、Service Fabric クラスターをすばやくスケールする方法を説明します。
+title: Azure で Service Fabric クラスターをスケーリングする | Microsoft Docs
+description: このチュートリアルでは、Azure で Service Fabric クラスターをすばやくスケーリングする方法を説明します。
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83f7a03744e7e8819d71eae81ed8e497797bef62
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642701"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109411"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターをスケールする
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
 このチュートリアルはシリーズ第 2 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。
 
@@ -41,14 +41,17 @@ ms.locfileid: "34642701"
 > * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に
-- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-- [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
-- セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
-- Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
-- Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。 
+
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
+* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
+* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
 Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
 
 ```powershell
@@ -118,7 +121,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 > [!NOTE]
 > このパートは *Bronze* 耐久性レベルにのみ適用されます。 耐久性の詳細については、[Service Fabric クラスターの容量計画][durability]に関する記事をご覧ください。
 
-仮想マシン スケール セットをスケールインする場合、スケール セットでは (ほとんどの場合) 最後に作成された仮想マシン インスタンスが削除されます。 したがって、条件に合った最後に作成された Service Fabric ノードを検索する必要があります。 この最後のノードを検索するには、Service Fabric ノードで最大の `NodeInstanceId` プロパティ値をチェックします。 次のコードの例は、ノード インスタンスでソートし、最大の ID 値を持つインスタンスの詳細を返します。 
+仮想マシン スケール セットをスケールインする場合、スケール セットでは (ほとんどの場合) 最後に作成された仮想マシン インスタンスが削除されます。 したがって、条件に合った最後に作成された Service Fabric ノードを検索する必要があります。 この最後のノードを検索するには、Service Fabric ノードで最大の `NodeInstanceId` プロパティ値をチェックします。 次のコードの例は、ノード インスタンスでソートし、最大の ID 値を持つインスタンスの詳細を返します。
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -180,7 +183,7 @@ else
     # Stop node
     $stopid = New-Guid
     Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-    
+
     $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
     $loopTimeout = 10
 
@@ -191,7 +194,7 @@ else
         $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
         Write-Host "Checking state... $state found"
     }
-    
+
     if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
     {
         Write-Error "Stop transaction failed with $state"
@@ -220,13 +223,12 @@ sfctl node remove-state --node-name _nt1vm_5
 > [!TIP]
 > 以下の **sfctl** クエリを使用して、各ステップの状態を確認します。
 >
-> **非アクティブ化状態を確認する**  
+> **非アクティブ化状態を確認する**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **停止状態を確認する**  
+> **停止状態を確認する**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
-
 
 ### <a name="scale-in-the-scale-set"></a>スケール セットのスケールイン
 
@@ -249,7 +251,6 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
@@ -258,7 +259,6 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 > * クラスター ノード数を読み取る
 > * クラスター ノードを追加する (スケールアウト)
 > * クラスター ノードを削除する (スケールイン)
-
 
 次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
 > [!div class="nextstepaction"]

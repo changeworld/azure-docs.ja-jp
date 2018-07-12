@@ -26,7 +26,7 @@
 
     ![メソッドの履歴を表示する][img-method-history]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「[構成済みソリューションのカスタマイズ][lnk-customize]」では、このサンプルを拡張する方法をいくつか確認できます。 可能な拡張には、実際のセンサーの使用やその他のコマンドの実装などがあります。
 
 [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]の詳細について確認できます。

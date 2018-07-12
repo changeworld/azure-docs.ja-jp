@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335824"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127857"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>チュートリアル: リスト エンティティを使用してアプリを作成する
+# <a name="tutorial-4-add-list-entity"></a>チュートリアル: 4. リスト エンティティを追加する
 このチュートリアルでは、定義済みのリストに一致するデータを取得する方法を示すアプリを作成します。 
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ ms.locfileid: "36335824"
 この記事に従って LUIS アプリケーションを作成するには、無料の [LUIS](luis-reference-regions.md#luis-website) アカウントが必要です。
 
 ## <a name="before-you-begin"></a>開始する前に
-正規表現エンティティの[カスタム ドメイン](luis-quickstart-intents-regex-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub リポジトリにあります。
+[RegEx エンティティ](luis-quickstart-intents-regex-entity.md) チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](create-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub リポジトリにあります。
 
 元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`list` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずにさまざまな LUIS 機能を使用するための優れた方法です。 
 
@@ -97,8 +97,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |234-56-7891 を hh-2345 に|
 
     [ ![新しい発話が強調表示されている [Intents]\(意図\) ページのスクリーンショット](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    このアプリケーションには、前のチュートリアルで追加された事前構築済みの番号エンティティがあるため、各番号がタグ付けされています。 クライアント アプリケーションにとってはこの情報で十分かもしれませんが、番号には種類のラベルが付いていません。 適切な名前で新しいエンティティを作成すると、クライアント アプリケーションは、LUIS から返されたときにエンティティを処理できます。
 
 ## <a name="create-an-employee-list-entity"></a>従業員のリスト エンティティを作成する
 **MoveEmployee** 意図に発話が追加されました。次は、LUIS に従業員を認識させる必要があります。 
@@ -298,10 +296,10 @@ LUIS は、意図やエンティティ (モデル) に対する変更を、ト�
 LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、エンティティから topScoringIntent の結果とデータを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS は、ユーザーの意図が何かのみを判断します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 削除するには、アプリ リストのアプリ名の右にある 3 つのドット メニュー [...] を選択し、**[Delete]\(削除\)** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
+不要になったら、LUIS アプリを削除します。 左上のメニューで **[マイ アプリ]** を選択します。 アプリ リストのアプリ名の右にある 3 つのドット メニュー [...] を選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** のポップアップ ダイアログで、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [階層エンティティを追加する方法を確認する](luis-quickstart-intent-and-hier-entity.md)
+> [階層エンティティをアプリに追加する](luis-quickstart-intent-and-hier-entity.md)
 

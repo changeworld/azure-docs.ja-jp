@@ -1,5 +1,5 @@
 ---
-title: Service Fabric の Java アプリケーションを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に Java アプリを作成する | Microsoft Docs
 description: このチュートリアルでは、フロントエンドを備えたリライアブル サービス Java アプリケーションと Reliable Services ステートフル バックエンドを作成し、クラスターにアプリケーションをデプロイする方法について説明します。
 services: service-fabric
 documentationcenter: java
@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b512ba91d1df7ec0432bdf9048268714e570fe6b
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: a8522dbe20f302a1819b89eaea92562a2dcf43a5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958678"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114127"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成およびデプロイする
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル: Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
+
 このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。
 
 ![ローカルの投票アプリ](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
@@ -37,18 +38,21 @@ ms.locfileid: "36958678"
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> *  Java Service Fabric Reliable Services アプリケーションをビルドする
+> * Java Service Fabric Reliable Services アプリケーションをビルドする
 > * [ローカル クラスターでアプリケーションをデプロイおよびデバッグする](service-fabric-tutorial-debug-log-local-cluster.md)
 > * [アプリケーションを Azure クラスターにデプロイする](service-fabric-tutorial-java-deploy-azure.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-java-elk.md)
 > * [CI/CD を設定します](service-fabric-tutorial-java-jenkins.md)
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に
-- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-- [Mac](service-fabric-get-started-mac.md) または [Linux](service-fabric-get-started-linux.md) の開発環境を設定します。 Eclipse プラグイン、Gradle、Service Fabric SDK、および Service Fabric CLI (sfctl) を手順に従ってインストールします。
+
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+* [Mac](service-fabric-get-started-mac.md) または [Linux](service-fabric-get-started-linux.md) の開発環境を設定します。 Eclipse プラグイン、Gradle、Service Fabric SDK、および Service Fabric CLI (sfctl) を手順に従ってインストールします。
 
 ## <a name="create-the-front-end-java-stateless-service"></a>フロントエンド Java ステートレス サービスを作成する
+
 まず、投票アプリケーションの Web フロントエンドを作成します。 Java ステートレス サービスは、AngularJS に基づく Web UI をホストする軽量な HTTP サーバーに適しています。 ユーザーからの要求はこのステートレス サービスによって処理され、投票を格納するステートフル サービスにリモート プロシージャ コールとして送信されます。 
 
 1. Eclipse を起動します
@@ -62,7 +66,7 @@ ms.locfileid: "36958678"
     ![新しいサービス ダイアログで Java ステートレス サービスを選択する](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
 4. **[Add Service]\(サービスの追加\)** ページで、**[Stateless Service]\(ステートレス サービス\)** を選択し、サービスに **VotingWeb** という名前を付けます。 **[Finish]\(完了\)** をクリックしてプロジェクトを作成します。
-   
+
     ![ステートレス サービスの作成]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
 
     Eclipse によってアプリケーションとサービス プロジェクトが作成され、Package Explorer に表示されます。
@@ -80,9 +84,10 @@ ms.locfileid: "36958678"
 | settings.gradle | このフォルダー内の Gradle プロジェクトの名前が含まれています。 |
 
 ### <a name="add-html-and-javascript-to-the-votingweb-service"></a>HTML と JavaScript を VotingWeb サービスに追加する
-ステートレス サービスによってレンダリングできる UI を追加するには、*VotingApplication/VotingWebPkg/Code* に HTML ファイルを追加します。 これにより、この HTML ファイルは、ステートレス Java サービスに埋め込まれた軽量 HTTP サーバーによってレンダリングされるようになります。 
 
-1. *VotingApplication* ディレクトリを展開して *VotingApplication/VotingWebPkg/Code* ディレクトリに移動します。 
+ステートレス サービスによってレンダリングできる UI を追加するには、*VotingApplication/VotingWebPkg/Code* に HTML ファイルを追加します。 これにより、この HTML ファイルは、ステートレス Java サービスに埋め込まれた軽量 HTTP サーバーによってレンダリングされるようになります。
+
+1. *VotingApplication* ディレクトリを展開して *VotingApplication/VotingWebPkg/Code* ディレクトリに移動します。
 
 2. *Code* ディレクトリを右クリックし、**[New]\(新規\)**->**[Other]\(その他\)** の順にクリックします
 
@@ -201,7 +206,8 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 ```
 
 ### <a name="update-the-votingwebservicejava-file"></a>VotingWebService.java ファイルを更新する
-**VotingWeb** サブプロジェクトの *VotingWeb/src/statelessservice/VotingWebService.java* ファイルを開きます。 **VotingWebService** は、ステートレス サービスへのゲートウェイであり、フロントエンド API の通信リスナーを設定します。 
+
+**VotingWeb** サブプロジェクトの *VotingWeb/src/statelessservice/VotingWebService.java* ファイルを開きます。 **VotingWebService** は、ステートレス サービスへのゲートウェイであり、フロントエンド API の通信リスナーを設定します。
 
 ファイル内の **createServiceInstanceListeners** メソッドの内容を以下に置き換え、変更を保存します。
 
@@ -219,7 +225,8 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 ```
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>HTTPCommunicationListener.java ファイルを追加する
-HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\) -> [Other...]\(その他...\) -> [General]\(一般\) -> [File]\(ファイル\)** の順に選択し、**[Next]\(次へ\)** をクリックします。  ファイルに *HttpCommunicationListener.java* という名前を付け、**[Finish]\(完了\)** をクリックします。  
+
+HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\) -> [Other...]\(その他...\) -> [General]\(一般\) -> [File]\(ファイル\)** の順に選択し、**[Next]\(次へ\)** をクリックします。  ファイルに *HttpCommunicationListener.java* という名前を付け、**[Finish]\(完了\)** をクリックします。
 
 ファイルの内容を次のように置き換え、変更を保存します。  後の「[HttpCommunicationListener.java ファイルを更新する](#updatelistener_anchor)」では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
 
@@ -259,7 +266,7 @@ import system.fabric.CancellationToken;
 public class HttpCommunicationListener implements CommunicationListener {
 
     private static final Logger logger = Logger.getLogger(HttpCommunicationListener.class.getName());
-    
+
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
     private static final int STATUS_OK = 200;
     private static final int STATUS_NOT_FOUND = 404; 
@@ -267,7 +274,7 @@ public class HttpCommunicationListener implements CommunicationListener {
     private static final String RESPONSE_NOT_FOUND = "404 (Not Found) \n";
     private static final String MIME = "text/html";  
     private static final String ENCODING = "UTF-8";
-    
+
     private static final String ROOT = "wwwroot/";
     private static final String FILE_NAME = "index.html";
     private StatelessServiceContext context;
@@ -290,7 +297,7 @@ public class HttpCommunicationListener implements CommunicationListener {
             logger.log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
-        
+
         // Responsible for rendering the HTML layout described in the previous step
         server.createContext("/", new HttpHandler() {
             @Override
@@ -307,7 +314,7 @@ public class HttpCommunicationListener implements CommunicationListener {
                     } else {    
                       Headers h = t.getResponseHeaders();
                       h.set(HEADER_CONTENT_TYPE, MIME);
-                      t.sendResponseHeaders(STATUS_OK, 0);              
+                      t.sendResponseHeaders(STATUS_OK, 0);
     
                       OutputStream os = t.getResponseBody();
                       FileInputStream fs = new FileInputStream(file);
@@ -316,7 +323,7 @@ public class HttpCommunicationListener implements CommunicationListener {
                       while ((count = fs.read(buffer)) >= 0) {
                         os.write(buffer,0,count);
                       }
-                      
+
                       fs.close();
                       os.close();
                     }  
@@ -329,11 +336,11 @@ public class HttpCommunicationListener implements CommunicationListener {
         /*
         [Replace this entire comment block in the 'Connect the services' section]
         */
-        
+
         server.setExecutor(null);
         server.start();
     }
-    
+
     //Helper method to parse raw HTTP requests
     private Map<String, String> queryToMap(String query){
         Map<String, String> result = new HashMap<String, String>();
@@ -379,6 +386,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 ```
 
 ### <a name="configure-the-listening-port"></a>リスニング ポートを構成する
+
 VotingWebService フロントエンド サービスが作成されると、Service Fabric によって、サービスがリッスンするポートが選択されます。  VotingWebService は、このアプリケーションのフロントエンドとして機能して外部のトラフィックを受け付けるため、このサービスをよく知られた固定ポートにバインドしましょう。 Package Explorer で、*VotingWebService/VotingWebServicePkg/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 8080、または別のポートに変更します。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。 次のコード スニペットを **ServiceManifest** タグの下に貼り付けます。
 
 ```xml
@@ -390,16 +398,17 @@ VotingWebService フロントエンド サービスが作成されると、Servi
         <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
     </Endpoints>
   </Resources>
-```  
+```
 
 ## <a name="add-a-stateful-back-end-service-to-your-application"></a>アプリケーションにステートフルなバックエンド サービスを追加する
+
 これで、Java Web API サービスのスケルトンが完成しました。次に進み、ステートフル バックエンド サービスを完成させましょう。
 
 Service Fabric では、Reliable Collection によってデータがサービス内に一貫して確実に格納されます。 Reliable Collection は、可用性が高く信頼できる一連のコレクション クラスです。 Java コレクションを使用したことがある方は、これらのクラスの使用法をもうよくご存じでしょう。
 
 1. Package Explorer で、アプリケーション プロジェクト内の **Voting** を右クリックし、**[Service Fabric] > [Add Service Fabric Service]\(Service Fabric サービスの追加\)** の順に選択します。
-   
-2. **[Add Service]\(サービスの追加\)** ダイアログで、**[Stateful Service]\(ステートフル サービス\)** を選択し、サービスに **VotingData** という名前を付けて **[Add Service]\(サービスの追加\)** をクリックします。 
+
+2. **[Add Service]\(サービスの追加\)** ダイアログで、**[Stateful Service]\(ステートフル サービス\)** を選択し、サービスに **VotingData** という名前を付けて **[Add Service]\(サービスの追加\)** をクリックします。
 
     ![既存アプリケーションへの新しいサービスの追加](./media/service-fabric-tutorial-create-java-app/addstatefuljava.png)
 
@@ -540,8 +549,9 @@ class VotingDataService extends StatefulService implements VotingRPC {
 }
 ```
 
-## <a name="create-the-communication-interface-to-your-application"></a>アプリケーションへの通信インターフェイスを作成する 
-これで、フロントエンド ステートレス サービスとバックエンド サービスのスケルトンを作成できました。 次の手順では、この 2 つのサービスを接続します。 フロントエンドとバックエンドのどちらのサービスも、投票アプリケーションの動作を定義する VotingRPC と呼ばれるインターフェイスを利用しています。 このインターフェイスは、フロントエンド サービスとバックエンド サービスの両方によって実装され、2 つのサービス間のリモート プロシージャ コール (RPC) を可能にします。 Eclipse では Gradle サブプロジェクトの追加がサポートされていないため、このインターフェイスを含むパッケージを手動で追加する必要があります。 
+## <a name="create-the-communication-interface-to-your-application"></a>アプリケーションへの通信インターフェイスを作成する
+
+これで、フロントエンド ステートレス サービスとバックエンド サービスのスケルトンを作成できました。 次の手順では、この 2 つのサービスを接続します。 フロントエンドとバックエンドのどちらのサービスも、投票アプリケーションの動作を定義する VotingRPC と呼ばれるインターフェイスを利用しています。 このインターフェイスは、フロントエンド サービスとバックエンド サービスの両方によって実装され、2 つのサービス間のリモート プロシージャ コール (RPC) を可能にします。 Eclipse では Gradle サブプロジェクトの追加がサポートされていないため、このインターフェイスを含むパッケージを手動で追加する必要があります。
 
 1. Package Explorer で **Voting** プロジェクトを右クリックし、**[New]\(新規\) -> [Other...]\(その他...\)** の順にクリックします
 
@@ -552,7 +562,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 3. *Voting/VotingRPC/src/rpcmethods* の下に *VotingRPC.java* という名前のファイルを作成し、この **VotingRPC.java** ファイル内に以下を貼り付けます。 
 
     ```java
-    package rpcmethods; 
+    package rpcmethods;
     
     import java.util.ArrayList;
     import java.util.concurrent.CompletableFuture;
@@ -878,6 +888,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     ```
 
 ## <a name="deploy-application-to-local-cluster"></a>アプリケーションをローカル クラスターにデプロイする
+
 これで、アプリケーションをローカル Service Fabric クラスターにデプロイする準備が整いました。
 
 1. Package Explorer で **Voting** プロジェクトを右クリックし、**[Service Fabric] -> [Build Application]\(アプリケーションのビルド\)** の順にクリックして、アプリケーションをビルドします。
@@ -901,6 +912,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 6. Web ブラウザーを使用して **http://localhost:8080** にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
 
 ## <a name="next-steps"></a>次の手順
+
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]

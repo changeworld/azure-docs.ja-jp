@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric での Windows コンテナーの監視と診断 | Microsoft Docs
-description: このチュートリアルでは、Azure Service Fabric で調整された Windows コンテナーの監視と診断をセットアップします。
+title: Azure で Service Fabric 上の Windows コンテナーを監視および診断する | Microsoft Docs
+description: このチュートリアルでは、Azure Service Fabric 上の Windows コンテナーの監視と診断用に Log Analytics を構成します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300858"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114008"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric で Windows コンテナーを監視する
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric 上の Windows コンテナーを監視する
 
 これはチュートリアルの第 2 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
 
@@ -34,13 +34,16 @@ ms.locfileid: "36300858"
 > * Log Analytics エージェントを構成してコンテナーとノード メトリックを選択する
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを始める前に、次の準備が必要です。
-- Azure にクラスターを用意する、または[このチュートリアルを参照して作成する](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- [コンテナー化されたアプリケーションをクラスターにデプロイする](service-fabric-host-app-in-a-container.md)
+
+* Azure にクラスターを用意する、または[このチュートリアルを参照して作成する](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* [コンテナー化されたアプリケーションをクラスターにデプロイする](service-fabric-host-app-in-a-container.md)
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Resource Manager テンプレートでクラスターを使用して Log Analytics を設定する
 
 このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 Log Analytics を使用したコンテナーの監視を設定するために独自のクラスターを用意した場合:
+
 * Resource Manager テンプレートに次の変更を加えます。
 * PowerShell を使用してデプロイし、[テンプレートをデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)してクラスターをアップグレードします。 Azure Resource Manager はリソースが存在することを認識しているので、アップグレードとして展開されます。
 
@@ -49,7 +52,7 @@ ms.locfileid: "36300858"
 *template.json* に次の変更を加えます。
 
 1. Log Analytics ワークスペースの場所と名前を *parameters* セクションに追加します。
-    
+
     ```json
     "omsWorkspacename": {
       "type": "string",
@@ -74,8 +77,8 @@ ms.locfileid: "36300858"
 
     いずれかに使用した値を変更するには、*template.parameters.json* に同じパラメーターを追加して、そのパラメーターに使用されている値を変更します。
 
-2. ソリューション名とソリューションを *variables* に追加します。 
-    
+2. ソリューション名とソリューションを *variables* に追加します。
+
     ```json
     "omsSolutionName": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
     "omsSolution": "ServiceFabric"
@@ -102,7 +105,7 @@ ms.locfileid: "36300858"
     ```
 
 4. Log Analytics ワークスペースを個別のリソースとして追加します。 *resources* で、仮想マシン スケール セット リソースの後に次を追加します。
-    
+
     ```json
     {
         "apiVersion": "2015-11-01-preview",
@@ -193,21 +196,21 @@ ms.locfileid: "36300858"
 
 "*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、**[作成]** をクリックします。 "*コンテナー監視ソリューション*" がワークスペースに追加され、テンプレートによって Log Analytics エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
 
-*リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 ソリューションをクリックすると、ランディング ページに実行中のコンテナー イメージ数が表示されます。 
+*リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 ソリューションをクリックすると、ランディング ページに実行中のコンテナー イメージ数が表示されます。
 
 *チュートリアルの[第 2 部](service-fabric-host-app-in-a-container.md)の fabrikam コンテナーのインスタンスが 5 個実行されていたことがわかります*
 
 ![コンテナー ソリューションのランディング ページ](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-**コンテナー監視ソリューション**をクリックすると、詳細なダッシュボードが表示されます。ここでは、複数のパネルをスクロールしたり、Log Analytics でクエリを実行したりすることができます。 
+**コンテナー監視ソリューション**をクリックすると、詳細なダッシュボードが表示されます。ここでは、複数のパネルをスクロールしたり、Log Analytics でクエリを実行したりすることができます。
 
 *2017 年 9 月の時点で、ソリューションは何度か更新されました。Kubernetes イベントに関するエラーが表示されることがありますが、無視してください。現在、複数のオーケストレーターを同じソリューションに統合する処理に取り組んでいます。*
 
-エージェントが Docker ログを選択しているので、既定で *stdout* と *stderr* が表示されます。 右にスクロールすると、コンテナー イメージのインベントリ、状態、メトリック、さらに役立つデータを入手するために実行できるサンプル クエリが表示されます。 
+エージェントが Docker ログを選択しているので、既定で *stdout* と *stderr* が表示されます。 右にスクロールすると、コンテナー イメージのインベントリ、状態、メトリック、さらに役立つデータを入手するために実行できるサンプル クエリが表示されます。
 
 ![コンテナー ソリューションのダッシュボード](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-これらのパネルのいずれかをクリックすると、表示値を生成する Log Analytics クエリが表示されます。 このクエリを *\** に変更すると、選択されている全種類のログが表示されます。 ここから、コンテナーのパフォーマンスやログのクエリやフィルターを実行したり、Service Fabric プラットフォームのイベントを確認したりすることができます。 また、エージェントは、各ノードから常にハートビートを発しているので、クラスターの構成が変わった場合に、すべてのコンピューターからデータが収集されていることをハートビートによって確認することができます。   
+これらのパネルのいずれかをクリックすると、表示値を生成する Log Analytics クエリが表示されます。 このクエリを *\** に変更すると、選択されている全種類のログが表示されます。 ここから、コンテナーのパフォーマンスやログのクエリやフィルターを実行したり、Service Fabric プラットフォームのイベントを確認したりすることができます。 また、エージェントは、各ノードから常にハートビートを発しているので、クラスターの構成が変わった場合に、すべてのコンピューターからデータが収集されていることをハートビートによって確認することができます。
 
 ![コンテナーのクエリ](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
@@ -222,10 +225,9 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 
 数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
 
-*注: これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。* 
+*注: これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。*
 
 ![パフォーマンス カウンター 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
-
 
 ## <a name="next-steps"></a>次の手順
 

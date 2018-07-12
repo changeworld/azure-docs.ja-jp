@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 209fdda974dee2386328da43991cc9d453e61aa7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062163"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857482"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -93,7 +93,7 @@ Azure には、そのクラウド サービスと仮想マシンの管理者を�
 * 実行の制限。 管理に必要な定義済みの一連の実行可能ファイルのみ実行を許可します ("default deny")。 許可リストで明示的に定義されている場合を除き、ユーザーに対するプログラムの実行権限は自動的に拒否する必要があります。
 * 最小特権。 管理用ワークステーションのユーザーに、ローカル コンピューター自体の管理者権限を割り当てることは避けます。 そうすれば、意図的であれ不注意であれ、システムの構成やシステム ファイルに変更を加えることはできなくなります。
 
-以上の要素はすべて、Active Directory Domain Services (AD DS) の[グループ ポリシー オブジェクト](https://www.microsoft.com/download/details.aspx?id=2612) (GPO) を使用し、(ローカル) 管理ドメインを通じてすべての管理アカウントに適用することで履行を強制できます。
+以上の要素はすべて、Active Directory Domain Services (AD DS) の[グループ ポリシー オブジェクト](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy) (GPO) を使用し、(ローカル) 管理ドメインを通じてすべての管理アカウントに適用することで履行を強制できます。
 
 ### <a name="managing-services-applications-and-data"></a>サービス、アプリケーション、データの管理
 Azure クラウド サービスの構成は、Azure ポータルを使用して行うか、Windows PowerShell コマンドライン インターフェイスまたはカスタム アプリケーションで SMAPI の RESTful インターフェイスを介して行います。 この機構を使ったサービスには、Azure Active Directory (Azure AD)、Azure Storage、Azure Websites、Azure Virtual Network などがあります。

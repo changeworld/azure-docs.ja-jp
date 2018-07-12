@@ -1,5 +1,5 @@
 ---
-title: Azure で Java Service Fabric アプリケーションをクラスターにデプロイする | Microsoft Docs
+title: Azure で Service Fabric クラスターに Java アプリをデプロイする | Microsoft Docs
 description: このチュートリアルでは、Azure Service Fabric クラスターに Java Service Fabric アプリケーションをデプロイする方法について説明します。
 services: service-fabric
 documentationcenter: java
@@ -15,40 +15,44 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 370cb367a90c8c1a4f8051e79d3858d78c8c3b75
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: afa9aa4ef4d3d8d8a6816d194b69271fdf0d928a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644044"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109676"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
+
 このチュートリアルはシリーズの第 3 部です。Azure のクラスターに Service Fabric アプリケーションをデプロイする方法について説明します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure でのセキュリティで保護された Linux クラスターの作成 
+> * Azure でのセキュリティで保護された Linux クラスターの作成
 > * クラスターへのアプリケーションのデプロイ
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
+
 > [!div class="checklist"]
-> *  [Java Service Fabric Reliable Services アプリケーションをビルドする](service-fabric-tutorial-create-java-app.md)
+> * [Java Service Fabric Reliable Services アプリケーションをビルドする](service-fabric-tutorial-create-java-app.md)
 > * [ローカル クラスターでアプリケーションをデプロイおよびデバッグする](service-fabric-tutorial-debug-log-local-cluster.md)
 > * アプリケーションを Azure クラスターにデプロイする
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-java-elk.md)
 > * [CI/CD を設定します](service-fabric-tutorial-java-jenkins.md)
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に
-- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Mac](service-fabric-get-started-mac.md) または [Linux](service-fabric-get-started-linux.md) 向け Service Fabric SDK のインストール
-- [Python 3 のインストール](https://wiki.python.org/moin/BeginnersGuide/Download)
+
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Mac](service-fabric-get-started-mac.md) または [Linux](service-fabric-get-started-linux.md) 向け Service Fabric SDK のインストール
+* [Python 3 のインストール](https://wiki.python.org/moin/BeginnersGuide/Download)
 
 ## <a name="create-a-service-fabric-cluster-in-azure"></a>Azure に Service Fabric クラスターを作成する
 
-以降の手順では、目的のアプリケーションを Service Fabric クラスターにデプロイするために必要なリソースを作成します。 さらに、ELK (Elasticsearch、Logstash、Kibana) スタックを使ってソリューションの正常性を監視するために必要なリソースのセットアップも行います。 具体的には、Service Fabric から送信されるログのシンクとして [Event Hubs](https://azure.microsoft.com/services/event-hubs/) を使用します。 それを適切に構成することによって、Service Fabric クラスターから受信したログを Logstash インスタンスに送信します。 
+以降の手順では、目的のアプリケーションを Service Fabric クラスターにデプロイするために必要なリソースを作成します。 さらに、ELK (Elasticsearch、Logstash、Kibana) スタックを使ってソリューションの正常性を監視するために必要なリソースのセットアップも行います。 具体的には、Service Fabric から送信されるログのシンクとして [Event Hubs](https://azure.microsoft.com/services/event-hubs/) を使用します。 それを適切に構成することによって、Service Fabric クラスターから受信したログを Logstash インスタンスに送信します。
 
 1. ターミナルを開いて次のパッケージをダウンロードします。このパッケージには、Azure にリソースを作成するために必要なヘルパー スクリプトとテンプレートが含まれています。
 
@@ -56,23 +60,23 @@ ms.locfileid: "34644044"
     git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```
 
-2. Azure アカウントへのログイン 
+2. Azure アカウントへのログイン
 
     ```bash
     az login
     ```
 
-3. リソースの作成に使用する Azure サブスクリプションを設定します。 
+3. リソースの作成に使用する Azure サブスクリプションを設定します。
 
     ```bash
     az account set --subscription [SUBSCRIPTION-ID]
-    ``` 
+    ```
 
-4. *service-fabric-java-quickstart/AzureCluster* フォルダーから次のコマンドを実行して、Key Vault にクラスター証明書を作成します。 Service Fabric クラスターのセキュリティを確保するために、この証明書が使用されます。 リージョン (Service Fabric クラスターと同じリージョン)、キー コンテナーのリソース グループ名、キー コンテナー名、証明書のパスワード、クラスターの DNS 名を指定します。 
+4. *service-fabric-java-quickstart/AzureCluster* フォルダーから次のコマンドを実行して、Key Vault にクラスター証明書を作成します。 Service Fabric クラスターのセキュリティを確保するために、この証明書が使用されます。 リージョン (Service Fabric クラスターと同じリージョン)、キー コンテナーのリソース グループ名、キー コンテナー名、証明書のパスワード、クラスターの DNS 名を指定します。
 
     ```bash
     ./new-service-fabric-cluster-certificate.sh [REGION] [KEY-VAULT-RESOURCE-GROUP] [KEY-VAULT-NAME] [CERTIFICATE-PASSWORD] [CLUSTER-DNS-NAME-FOR-CERTIFICATE]
-    
+
     Example: ./new-service-fabric-cluster-certificate.sh 'westus' 'testkeyvaultrg' 'testkeyvault' '<password>' 'testservicefabric.westus.cloudapp.azure.com'
     ```
 
@@ -84,11 +88,11 @@ ms.locfileid: "34644044"
     Certificate Thumbprint: <THUMBPRINT>
     ```
 
-5. ログを格納するストレージ アカウントのリソース グループを作成します。 
+5. ログを格納するストレージ アカウントのリソース グループを作成します。
 
     ```bash
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
-    
+
     Example: az group create --location westus --name teststorageaccountrg
     ```
 
@@ -96,11 +100,11 @@ ms.locfileid: "34644044"
 
     ```bash
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
-    
+
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. [Azure Portal](https://portal.azure.com) にアクセスし、お使いのストレージ アカウントの **[Shared Access Signature]** タブに移動します。 次のように SAS トークンを生成します。 
+7. [Azure Portal](https://portal.azure.com) にアクセスし、お使いのストレージ アカウントの **[Shared Access Signature]** タブに移動します。 次のように SAS トークンを生成します。
 
     ![ストレージの SAS を生成](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -114,16 +118,16 @@ ms.locfileid: "34644044"
 
     ```bash
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
-    
+
     Example: az group create --location westus --name testeventhubsrg
     ```
 
-10. 以下のコマンドを使用して Event Hubs のリソースを作成します。 プロンプトに従って、namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule、receiveAuthorizationRule の詳細を入力してください。 
+10. 以下のコマンドを使用して Event Hubs のリソースを作成します。 プロンプトに従って、namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule、receiveAuthorizationRule の詳細を入力してください。
 
     ```bash
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
-    
-    Example: 
+
+    Example:
     az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
@@ -132,8 +136,8 @@ ms.locfileid: "34644044"
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    前のコマンドの JSON 出力から **output** フィールドの内容をコピーします。 sender の情報は、Service Fabric クラスターの作成時に使用します。 receiver name と receiver key は、次のチュートリアルで Event Hubs からメッセージを受信するための構成を Logstash サービスに対して行う際に使用するので、保存しておいてください。 次の BLOB は JSON 出力の例です。     
-    
+    前のコマンドの JSON 出力から **output** フィールドの内容をコピーします。 sender の情報は、Service Fabric クラスターの作成時に使用します。 receiver name と receiver key は、次のチュートリアルで Event Hubs からメッセージを受信するための構成を Logstash サービスに対して行う際に使用するので、保存しておいてください。 次の BLOB は JSON 出力の例です。
+
     ```json
     "outputs": {
         "receiver Key": {
@@ -169,9 +173,9 @@ ms.locfileid: "34644044"
 
     Event Hubs の SAS URL は、https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
 
-12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。 
+12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。
 
-    ```
+    ```json
     "applicationDiagnosticsStorageAccountName": {
         "value": "teststorageaccount"
     },
@@ -191,7 +195,7 @@ ms.locfileid: "34644044"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>アプリケーションをクラスターにデプロイする
 
-1. アプリケーションをデプロイする前に、*Voting/VotingApplication/ApplicationManifest.xml* ファイルに以下のスニペットを追加しておく必要があります。 **X509FindValue** フィールドは、「**Azure に Service Fabric クラスターを作成する**」セクションの手順 4. で返された拇印です。 **ApplicationManifest** フィールド (ルート フィールド) 下に、入れ子となるようにこのスニペットを追加してください。 
+1. アプリケーションをデプロイする前に、*Voting/VotingApplication/ApplicationManifest.xml* ファイルに以下のスニペットを追加しておく必要があります。 **X509FindValue** フィールドは、「**Azure に Service Fabric クラスターを作成する**」セクションの手順 4. で返された拇印です。 **ApplicationManifest** フィールド (ルート フィールド) 下に、入れ子となるようにこのスニペットを追加してください。
 
     ```xml
     <Certificates>
@@ -211,32 +215,33 @@ ms.locfileid: "34644044"
     sfctl cluster select --endpoint https://testlinuxcluster.westus.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. アプリケーションをデプロイするには、*Voting/Scripts* フォルダーに移動して、**install.sh** スクリプトを実行します。 
+4. アプリケーションをデプロイするには、*Voting/Scripts* フォルダーに移動して、**install.sh** スクリプトを実行します。
 
     ```bash
     ./install.sh
     ```
 
-5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 https://testlinuxcluster.westus.cloudapp.azure.com:19080 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。 
+5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「https://testlinuxcluster.westus.cloudapp.azure.com:19080」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. アプリケーションにアクセスするには、「 https://testlinuxcluster.westus.cloudapp.azure.com:8080 」と入力します。 
+6. アプリケーションにアクセスするには、「https://testlinuxcluster.westus.cloudapp.azure.com:8080」と入力します。
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. アプリケーションをクラスターからアンインストールするには、**Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。 
+7. アプリケーションをクラスターからアンインストールするには、**Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。
 
     ```bash
     ./uninstall.sh
     ```
 
 ## <a name="next-steps"></a>次の手順
+
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure でのセキュリティで保護された Linux クラスターの作成 
-> * ELK を使った監視に必要なリソースの作成 
+> * Azure でのセキュリティで保護された Linux クラスターの作成
+> * ELK を使った監視に必要なリソースの作成
 > * (省略可) パーティ クラスターを使用して Service Fabric を実際に試す方法
 
 次のチュートリアルに進みます。

@@ -1,29 +1,28 @@
 ---
 title: Azure Site Recovery を使用して オンプレミスのコンピューターの Azure へのディザスター リカバリー訓練を実行する | Microsoft Docs
 description: Azure Site Recovery を使用した オンプレミスから Azure へのディザスター リカバリー訓練の実行について説明します
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c706474018bd0751872381c6d28f0ad579ba772b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286581"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437214"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
 この記事では、テスト フェールオーバーを使用したオンプレミス コンピューターの Azure へのディザスター リカバリー訓練を実行する方法を示します。 訓練では、データ損失のないレプリケーション戦略を検証します。
 
-これは、オンプレミスの VMware VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。
+これは、オンプレミスの VMware VM または Hyper-V VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。
 
 このチュートリアルでは、最初の 3 つのチュートリアルを完了したことを前提としています。 
-    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
-    - [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
-    - [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
+    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware または Hyper-V のディザスター リカバリー用に [Azure のコンポーネントを準備](tutorial-prepare-azure.md)しました。
+    - 2 番目のチュートリアルでは、[VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) のディザスター リカバリー用にオンプレミスのコンポーネントを準備しました。
+    - 3 番目のチュートリアルでは、オンプレミスの [VMware VM](vmware-azure-tutorial.md)、[System Center VMM を使用する Hyper-V VM](hyper-v-vmm-azure-tutorial.md)、または [VMM を使用しない Hyper-V VM](hyper-v-azure-tutorial.md) に対してレプリケーションを設定して有効にしました。
 - これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 これらのチュートリアルはすべて、必要に応じて既定値を使用しながら最も簡単な方法で Site Recovery を設定しています。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -37,7 +36,7 @@ ms.locfileid: "36286581"
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
-テスト フェールオーバーを実行する前に、VMware VM のプロパティを確認し、[Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) または [VMware VM/物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)が Azure の要件に準拠していることを確認します。
+テスト フェールオーバーを実行する前に、VM のプロパティを調べ、[Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) または [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) が Azure の要件に準拠していることを確認します。
 
 1. **[保護された項目]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
@@ -70,3 +69,4 @@ ms.locfileid: "36286581"
 
 > [!div class="nextstepaction"]
 > [オンプレミス の VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)
+> [オンプレミス の Hyper-V VM のフェールオーバーとフェールバックを実行する](hyper-v-azure-failover-failback-tutorial.md)

@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure に AD FS をデプロイし
 keywords: azure への AD FS のデプロイ, azure adfs のデプロイ, azure adfs, azure ad fs,adfs のデプロイ, ad fs のデプロイ, azure での adfs, azure への adfs のデプロイ, azure への AD FS のデプロイ, adfs azure, AD FS の概要, Azure, Azure での AD FS, iaas, ADFS, azure への adfs の移行
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
-ms.author: anandy; billmath
+ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212674"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917137"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -116,7 +116,7 @@ ExpressRoute の使用をお勧めしますが、所属する組織に合った�
 
 次の可用性セットを作成します。
 
-| 可用性セット | 役割 | 障害ドメイン | 更新ドメイン |
+| 可用性セット | Role | 障害ドメイン | 更新ドメイン |
 |:---:|:---:|:---:|:--- |
 | contosodcset |DC/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
@@ -124,7 +124,7 @@ ExpressRoute の使用をお勧めしますが、所属する組織に合った�
 ### <a name="4-deploy-virtual-machines"></a>4.仮想マシンをデプロイする
 次に、インフラストラクチャ内の各ロールのホストとなる仮想マシンをデプロイします。 それぞれの可用性セットには、最低でも 2 つのマシンをデプロイすることをお勧めします。 基本的なデプロイでは 4 つの仮想マシンを作成します。
 
-| マシン | 役割 | サブネット | 可用性セット | ストレージ アカウント | IP アドレス |
+| マシン | Role | サブネット | 可用性セット | ストレージ アカウント | IP アドレス |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | contosodc1 |DC/ADFS |INT |contosodcset |contososac1 |静的 |
 | contosodc2 |DC/ADFS |INT |contosodcset |contososac2 |静的 |
@@ -140,7 +140,7 @@ DNS が管理下にある場合は、静的 IP アドレスをお勧めします
 ### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5.ドメイン コントローラー / AD FS サーバーを構成する
  受信要求を認証するためには、AD FS がドメイン コントローラーに問い合わせを行う必要があります。 認証のたびに Azure がオンプレミスの DC とやり取りするのでは無駄が大きいため、ドメイン コントローラーのレプリカを Azure にデプロイすることをお勧めします。 高い可用性を確保するために、少なくとも 2 つのドメイン コントローラーから成る可用性セットを作成することをお勧めします。
 
-| ドメイン コントローラー | 役割 | ストレージ アカウント |
+| ドメイン コントローラー | Role | ストレージ アカウント |
 |:---:|:---:|:---:|
 | contosodc1 |レプリカ |contososac1 |
 | contosodc2 |レプリカ |contososac2 |
@@ -323,7 +323,7 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 | パラメーター | 説明 |
 |:--- |:--- |
-| リージョン |リソースのデプロイ先となるリージョン (例: 米国東部) |
+| Location |リソースのデプロイ先となるリージョン (例: 米国東部) |
 | StorageAccountType |作成するストレージ アカウントの種類 |
 | VirtualNetworkUsage |新しい仮想ネットワークを作成するか既存のものを使用するかを示します |
 | VirtualNetworkName |作成する仮想ネットワークの名前 (新しい仮想ネットワークを使用する場合と既存のものを使用する場合の両方で必須) |

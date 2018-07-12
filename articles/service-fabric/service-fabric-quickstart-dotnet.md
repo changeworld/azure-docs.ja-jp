@@ -1,5 +1,5 @@
 ---
-title: Azure に .NET Service Fabric アプリケーションを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に .NET アプリを作成する | Microsoft Docs
 description: このクイック スタートでは、Service Fabric Reliable Services サンプル アプリケーションを使用して、Azure 用の .NET アプリケーションを作成します。
 services: service-fabric
 documentationcenter: .net
@@ -15,15 +15,16 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e6e6464bd8c8174978eded1ed626ca32029b7fbc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f04af62dc555c6c05313b9d0cd7b0231aac7d3aa
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643153"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110084"
 ---
-# <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>クイック スタート: Azure に .NET Service Fabric アプリケーションを作成する
-Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に .NET Reliable Services アプリケーションをデプロイする
+
+Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
 このクイック スタートでは、初めての .NET アプリケーションを Service Fabric にデプロイする方法を紹介します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。
 
@@ -40,7 +41,9 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 * アプリケーションのローリング アップグレードを実行する
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを完了するには、以下が必要です。
+
 1. [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールする
 2. [Git をインストールする](https://git-scm.com/)
 3. [Microsoft Azure Service Fabric SDK をインストールする](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
@@ -54,15 +57,18 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 >
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
+
 コマンド ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製します。
-```
+
+```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
+
 スタート メニューで Visual Studio アイコンを右クリックし、**[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、Visual Studio を管理者として実行する必要があります。
 
-複製したリポジトリから Visual Studio ソリューション **Voting.sln** を開きます。  
+複製したリポジトリから Visual Studio ソリューション **Voting.sln** を開きます。
 
 既定では、この投票アプリケーションは、ポート 8080 でリッスンするように設定されています。  アプリケーションのポートは、*/VotingWeb/PackageRoot/ServiceManifest.xml* ファイルで設定されます。  アプリケーションのポートは、**Endpoint** 要素の **Port** 属性を更新することで変更できます。  アプリケーションをローカルでデプロイして実行するには、アプリケーションのポートをコンピューター上で開いて、使用できるようにする必要があります。  アプリケーションのポートを変更する場合は、この記事全体で "8080" の代わりにアプリケーションのポートの新しい値を使用してください。
 
@@ -78,13 +84,16 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 これで一連の投票の選択肢を追加して投票を開始できます。 アプリケーションが実行され、データはすべて Service Fabric クラスターに保存されます。別途データベースを用意する必要はありません。
 
 ## <a name="walk-through-the-voting-sample-application"></a>投票のサンプル アプリケーションの概要
+
 この投票アプリケーションは次の 2 つのサービスから成ります。
-- Web フロントエンド サービス (VotingWeb) - ASP.NET Core Web フロントエンド サービス。Web ページを表示すると共に、バックエンド サービスとやり取りするための Web API を公開します。
-- バックエンド サービス (VotingData) - ASP.NET Core Web サービス。ディスク上に永続化された信頼性の高いディクショナリに投票結果を保存する API を公開します。
+
+* Web フロントエンド サービス (VotingWeb) - ASP.NET Core Web フロントエンド サービス。Web ページを表示すると共に、バックエンド サービスとやり取りするための Web API を公開します。
+* バックエンド サービス (VotingData) - ASP.NET Core Web サービス。ディスク上に永続化された信頼性の高いディクショナリに投票結果を保存する API を公開します。
 
 ![アプリケーション ダイアグラム](./media/service-fabric-quickstart-dotnet/application-diagram.png)
 
 アプリケーションで票を投じると、次のイベントが発生します。
+
 1. JavaScript が Web フロントエンド サービスの Web API に HTTP PUT 要求として投票要求を送信します。
 
 2. Web フロントエンド サービスがプロキシを使用して HTTP PUT 要求を検出し、バックエンド サービスに転送します。
@@ -96,37 +105,40 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
+
 1. **/VotingWeb/Controllers/VotesController.cs** ファイルを開き、Web API の **Put** メソッド (69 行目) にブレークポイントを設定します。このファイルは、Visual Studio のソリューション エクスプローラーで検索できます。
 
 2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (54 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
-    - ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
-    
+    * ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+
     ![投票フロントエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    - 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-    - 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-    - 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
+    * 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
+    * 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
+    * 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
 
 4. **F5** キーを押して続行します。
     - ブラウザーのプロンプトが表示された場合は、デバッグ モードに使用する読み取りと実行のアクセス許可を ServiceFabricAllowedUsers グループに与えます。
     - 今度は、バックエンド サービスのブレークポイントに到達します。
-    
+
     ![投票バックエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - メソッド **(1)** の先頭行では、`StateManager` によって信頼性の高いディクショナリ (`counts`) が取得または追加されます。
-    - 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-    - その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+    * メソッド **(1)** の先頭行では、`StateManager` によって信頼性の高いディクショナリ (`counts`) が取得または追加されます。
+    * 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
+    * その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 5. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
-Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。 
+
+Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。
 
 ### <a name="join-a-party-cluster"></a>パーティ クラスターに参加する
-パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。 
+
+パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。
 
 サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクをクリックして、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
 
@@ -135,7 +147,6 @@ Azure にアプリケーションをデプロイするには、アプリケー�
 > [!Note]
 > 1 時間あたりに使用可能なパーティ クラスターの数には制限があります。 パーティ クラスターへのサインアップ時にエラーが発生する場合は、少し待ってからやり直してください。または、[.NET アプリのデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application)のチュートリアルに記載されている手順に従って、Azure サブスクリプションに Service Fabric クラスターを作成し、アプリケーションをデプロイすることもできます。 Azure サブスクリプションをまだお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます。 クラスターにアプリケーションをデプロイして確認したら、このクイック スタートの「[クラスター内のアプリケーションとサービスをスケールする](#scale-applications-and-services-in-a-cluster)」に進むことができます。
 >
-
 
 お使いの Windows マシンで、*CurrentUser\My* 証明書ストアに PFX をインストールします。
 
@@ -157,12 +168,12 @@ Thumbprint                                Subject
 >
 
 ### <a name="deploy-the-application-using-visual-studio"></a>Visual Studio でアプリケーションをデプロイする
+
 これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
 
 1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-
-2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、*FindValue* と *ServerCertThumbprint* の値が前の手順でインストールした証明書の拇印に一致していることを確認します。 
+2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、*FindValue* と *ServerCertThumbprint* の値が前の手順でインストールした証明書の拇印に一致していることを確認します。
 
     ![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
@@ -175,9 +186,10 @@ Thumbprint                                Subject
     ![アプリケーションのフロントエンド](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>クラスター内のアプリケーションとサービスをスケールする
+
 Service Fabric サービスは、その負荷の変化に対応するために、クラスターで簡単にスケールすることができます。 サービスをスケールするには、クラスターで実行されるインスタンスの数を変更します。 サービスをスケールする方法は複数あり、PowerShell や Service Fabric CLI (sfctl) からスクリプトやコマンドを使用して行うことができます。 この例では、Service Fabric Explorer を使用します。
 
-Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
+Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。
 
 場所が信頼されていないというブラウザーの警告が表示される場合があります。 これは、証明書が自己署名であることが原因です。 警告を無視することを選択して続行できます。
 1. ブラウザーに求められたら、インストールされた証明書を選択して接続します。 リストから選択するパーティ クラスター証明書は、アクセスしようとしているパーティ クラスターと一致している必要があります  (例: win243uja6w62r.westus.cloudapp.azure.com)。
@@ -185,7 +197,8 @@ Service Fabric Explorer は、あらゆる Service Fabric クラスターで動�
 
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
-1. クラスターで Service Fabric Explorer を開きます (例: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
+1. クラスターで Service Fabric Explorer を開きます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。
+
 2. ツリー ビューで、**[アプリケーション]**->**[VotingType]**->**[fabric:/Voting]** の順に展開します。 ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
@@ -202,6 +215,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 たったこれだけの管理タスクにより、フロントエンド サービスでユーザー負荷を処理するためのリソースが 2 倍になりました。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
 
 ## <a name="perform-a-rolling-application-upgrade"></a>アプリケーションのローリング アップグレードを実行する
+
 アプリケーションに対して新しい更新プログラムをデプロイすると、その更新プログラムが Service Fabric によって安全にロールアウトされます。 ローリング アップグレードは、アップグレード中のダウンタイムが発生せず、また万一エラーが発生しても自動的にロールバックされます。
 
 アプリケーションをアップグレードするには、次の手順に従います。
@@ -226,8 +240,8 @@ Web フロントエンド サービスをスケールするには、次の手順
 
     Service Fabric はアップグレードを安全に行うために、クラスター内の各ノードについて、サービスのアップグレード後、2 分間待ちます。 更新がすべて完了するまでに約 8 分かかります。
 
-
 ## <a name="next-steps"></a>次の手順
+
 このクイック スタートでは、次の方法について説明しました。
 
 * .NET と Service Fabric を使用してアプリケーションを作成する

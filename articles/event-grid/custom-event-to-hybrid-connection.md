@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302979"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127715"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
 
@@ -55,7 +55,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-次のスクリプトは､リレー名前空間のリソース ID を取得します｡ ハイブリッド接続の ID を作成し､イベント グリッドのトピックにサブスクライブします｡ そしてエンドポイントのタイプを `hybridconnection` と設定し､そのエンドポイントにハイブリッド接続 ID を使用します｡
+次のスクリプトは､リレー名前空間のリソース ID を取得します｡ ハイブリッド接続の ID を作成し､イベント グリッドのトピックにサブスクライブします｡ このスクリプトは、エンドポイントのタイプを `hybridconnection` に設定し､そのエンドポイントにハイブリッド接続 ID を使用します。
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -73,9 +73,25 @@ az eventgrid event-subscription create \
   --endpoint $hybridid
 ```
 
+## <a name="create-application-to-process-events"></a>イベントを処理するアプリケーションを作成する
+
+ハイブリッド接続からイベントを取得できるアプリケーションが必要です。 [C# 用の Microsoft Azure Event Grid Hybrid Connection Consumer サンプル](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination)は、その操作を実行します。 前提条件の手順は既に完了しています。
+
+1. Visual Studio 2017 Version 15.5 以降を使っていることを確認します。
+
+1. ローカル コンピューターにリポジトリを複製します。
+
+1. Visual Studio に HybridConnectionConsumer プロジェクトを読み込みます。
+
+1. Program.cs で、`<relayConnectionString>` と `<hybridConnectionName>` を、作成した Relay 接続文字列およびハイブリッド接続名に置き換えます。
+
+1. Visual Studio からアプリケーションをコンパイルして実行します。
+
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
 
-イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、カスタム トピックの URL とキーを取得します。 `<topic_name>` には、先ほどと同じトピック名を使用してください。
+イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 この記事では、Azure CLI を使ってイベントをトリガーする方法を示します。 代わりに、[Event Grid パブリッシャー アプリケーション](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher)を使うこともできます。
+
+まず、カスタム トピックの URL とキーを取得します。 `<topic_name>` には、先ほどと同じトピック名を使用してください。
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)

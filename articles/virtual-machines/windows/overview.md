@@ -3,7 +3,7 @@ title: Windows 仮想マシンの概要 |Microsoft Docs
 description: Azure における Windows 仮想マシンの作成と管理について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 105eb95ed28d9a278d60d538aabaadb412c16f4f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c1122ab403eb7192d7acbd493c46d478d0382a6b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267113"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932196"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -31,7 +31,8 @@ Azure VM は、VM を実行する物理的なハードウェアを購入して�
 
 Azure の仮想マシンは、さまざまな方法で利用できます。 次に例をいくつか示します。
 
-* **開発とテスト** – Azure VM は、アプリケーションのコーディングとテストに必要な特定の構成でコンピューターをすばやく簡単に作成する手段を提供します。
+* 
+  **開発とテスト** – Azure VM は、アプリケーションのコーディングとテストに必要な特定の構成でコンピューターをすばやく簡単に作成する手段を提供します。
 * **クラウドのアプリケーション** – アプリケーションの需要は変動する可能性があるため、Azure の VM でアプリケーションを実行することは経済的に理に適っています。 VM が必要になったら追加分の料金を支払い、不要になったらシャットダウンすることができます。
 * **データセンターの拡張** – Azure 仮想ネットワーク内の仮想マシンは、組織のネットワークに簡単に接続できます。
 
@@ -83,11 +84,15 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
-| REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "場所"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "場所" --publisher "発行元名"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "場所" --publisher "発行元名" --offer "プラン名"|
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>
+  [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
+| REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>
+  [イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "場所"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "場所" --publisher "発行元名"<BR>
+  [az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "場所" --publisher "発行元名" --offer "プラン名"|
 
-[独自のイメージをアップロードして使用](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
+
+  [独自のイメージをアップロードして使用](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 
 ### <a name="extensions"></a>拡張機能
 VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、デプロイ後の構成と自動化タスクを通じて VM に追加の機能を提供します。

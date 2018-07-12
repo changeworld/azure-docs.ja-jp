@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 93c1c9cb27e5eb2d56583dccaffe92e9d50ecc2d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c2d92f26bec2045e7f1e8afff189d58d8c29f25a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959276"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099478"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -35,7 +35,7 @@ ms.locfileid: "36959276"
 1. 最新バージョンの [Visual Studio 2017](https://www.visualstudio.com/vs/) をインストールします。
 1. Visual Studio インストーラーで、次のワークロードが選択されていることを確認します。
     * ASP.NET および Web の開発
-1. [Azure Dev Spaces 用 Visual Studio 拡張機能](https://aka.ms/get-azds-visualstudio)をインストールします。
+1. [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio) をインストールする
 
 ## <a name="create-a-web-app-running-in-a-container"></a>コンテナーで実行される Web アプリを作成する
 

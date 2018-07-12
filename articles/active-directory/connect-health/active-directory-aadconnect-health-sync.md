@@ -3,7 +3,7 @@ title: 同期での Azure AD Connect Health の使用 | Microsoft Docs
 description: Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 0407726fa7dd5801081549f30207eac0b5e46b6e
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961640"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887054"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -79,7 +79,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 ### <a name="categorization-of-errors"></a>エラー カテゴリの分類
 レポートでは、既存の同期エラーが次のカテゴリで分類されます。
 
-| カテゴリ | 説明 |
+| Category | 説明 |
 | --- | --- |
 | 重複する属性 |Azure AD において本来テナントごとに一意であるべき属性 (proxyAddresses、UserPrincipalName など) の値に重複があるオブジェクトを Azure AD Connect が作成または更新しようとしたときに発生するエラー。 |
 | 一致しないデータ |あいまいな一致の処理で、同期エラーを引き起こしたオブジェクトの突き合わせに失敗したときのエラー。 |

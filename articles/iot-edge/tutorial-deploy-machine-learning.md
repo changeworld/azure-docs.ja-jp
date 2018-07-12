@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062043"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345493"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -52,7 +52,7 @@ Azure Machine Learning モジュールでは、ARM プロセッサをサポー�
 
 プロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
 
-最初に、IP アドレスを取得します。 コマンド ラインで `ifconfig` を入力し、**docker0** インターフェイスの IP アドレスをコピーします。
+最初に、IP アドレスを取得します。 コマンド ラインで「`ifconfig`」と入力し、**docker0** インターフェイスの IP アドレスをコピーします。
 
 IoT Edge デーモン構成ファイルを編集します。
 
@@ -60,7 +60,7 @@ IoT Edge デーモン構成ファイルを編集します。
 sudo nano /etc/iotedge/config.yaml
 ```
 
-構成の **connect** セクションを更新します。 例: 
+構成の **connect** セクションをお使いの IP アドレスで更新します。 例: 
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
@@ -110,7 +110,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 6. **machinelearningmodule** を選択します。
 7. これでコンテナー イメージの完全なパスが取得できました。 次のセクションで使用するために、イメージのパスを書き留めておきます。 これは次のようになります: **< registry_name >.azureacr.io/machinelearningmodule:1**
 
-## <a name="deploy-to-your-device"></a>デバイスに展開する
+## <a name="deploy-to-your-device"></a>デバイスにデプロイする
 
 1. [Azure Portal](https://portal.azure.com) で、IoT ハブに移動します。
 
@@ -125,7 +125,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 1. 以前 IoT Edge デバイスに tempSensor モジュールを展開したことがある場合は、自動で入力されていることがあります。 モジュールの一覧にない場合は追加します。
 
     1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
-    2. **[名前]** フィールドに「`tempsensor`」と入力します。
+    2. **[名前]** フィールドに「`tempSensor`」と入力します。
     3. **[イメージの URI]** フィールドに「`mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`」と入力します。
     4. **[保存]** を選択します。
 

@@ -3,7 +3,7 @@ title: AD FS での Azure AD Connect Health の使用 | Microsoft Docs
 description: オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 317b7103dd3c5e6aada4f8d10e57204fcb6d968d
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055417"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887727"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -105,7 +105,7 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 
 このレポートには、次の情報が表示されます。
 
-| レポート アイテム | [説明] |
+| レポート アイテム | 説明 |
 | --- | --- |
 | ユーザー ID |使用されたユーザー ID を示しています。 この値はユーザーが入力した内容です。ときどき、間違ったユーザー ID が使用されていることがあります。 |
 | 失敗した試行の回数 |そのユーザー ID で試行が失敗した回数の合計を示しています。 この表は、失敗した試行の回数が多いものから降順に並べ替えられています。 |
@@ -134,7 +134,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 ### <a name="what-is-in-the-report"></a>レポートの内容
 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が提供されます。![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report4a.png)
 
-| レポート アイテム | [説明] |
+| レポート アイテム | 説明 |
 | ------- | ----------- |
 | タイム スタンプ | Azure Portal の現地時間に基づく、検出時間枠の開始時のタイム スタンプを表示します。<br /> 日単位のイベントは、すべて UTC の午前 0 時に生成されます。 <br />時間単位のイベントのタイムスタンプは、毎時 0 分の値に丸められます。 エクスポートされたファイルの "firstAuditTimestamp" から、最初のアクティビティの開始時刻を見つけることができます。 |
 | トリガーの種類 | 検出時間枠の種類を示します。 集計トリガーの種類は、"1 時間あたり" または "1 日あたり" です。 これは、高頻度のブルート フォース攻撃と、試行回数が 1 日の中で分散している低速の攻撃を検出するのに役立ちます。 |
@@ -161,7 +161,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 ### <a name="download-risky-ip-report"></a>危険な IP のレポートのダウンロード 
 **ダウンロード**機能を使用すると、過去 30 日間の危険な IP アドレスの一覧全体を Connect Health Portal からエクスポートできます。エクスポート結果には各検出時間枠の間に失敗したすべての AD FS サインイン アクティビティが含まれるため、エクスポート後にフィルター処理をカスタマイズすることができます。 エクスポート結果には、ポータルの強調表示された集計のほかに、失敗したサインイン アクティビティの詳細が IP アドレスごとに示されます。
 
-|  レポート アイテム  |  [説明]  | 
+|  レポート アイテム  |  説明  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 検出時間枠中に失敗したアクティビティがいつ開始されたかを示す、最初のタイムスタンプを表示します。  | 
 | lastAuditTimestamp | 検出時間枠中に失敗したアクティビティがいつ終了したかを示す、最初のタイムスタンプを表示します。  | 
@@ -176,7 +176,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 
 ![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report4d.png)
 
-| しきい値の項目 | [説明] |
+| しきい値の項目 | 説明 |
 | --- | --- |
 | (不良 U/P + エクストラネットのロックアウト) / 日  | "間違ったパスワードの試行回数 + エクストラネットのロックアウトの回数" が **1 日**のしきい値を超えたときに、アクティビティをレポートしてアラート通知をトリガーするためのしきい値設定。 |
 | (不良 U/P + エクストラネットのロックアウト) / 時間 | "間違ったパスワードの試行回数 + エクストラネットのロックアウトの回数" が **1 時間**のしきい値を超えたときに、アクティビティをレポートしてアラート通知をトリガーするためのしきい値設定。 |

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.openlocfilehash: 4d68ee7f38c317b4ee42f5b40cc4c4196114e159
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525650"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437622"
 ---
 # <a name="what-is-stream-analytics"></a>Stream Analytics とは
 

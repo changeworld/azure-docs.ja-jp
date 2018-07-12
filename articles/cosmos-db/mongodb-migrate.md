@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: cacda277082f62c9d98a7459cb5dbf74375bfd87
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795348"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100298"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB データをインポートする 
 
@@ -82,7 +82,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
         
     * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport、mongorestore、または mongomirror を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または MongoDB ドライバーとツールからすべてのコレクションを事前に作成してください。 コレクションが 10 GB を超える場合は、適切なシャード キーを使用して[シャード/パーティション コレクション](partition-data.md)を作成してください。
 
-    * [Azure Portal](https://portal.azure.com) では、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、スロットルを回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
+    * [Azure Portal](https://portal.azure.com) では、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
 
     * コレクション レベルでの RU/秒 のプロビジョニングに加えて、親データベース レベルの一連のコレクションの RU/秒 のプロビジョニングも行う場合があります。 これを行うには、データベースとコレクションの事前作成と、各コレクションのシャード キーの定義が必要です。
 

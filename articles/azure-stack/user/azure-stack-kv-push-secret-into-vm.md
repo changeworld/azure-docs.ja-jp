@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069035"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108758"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>仮想マシンを作成して、Azure Stack Key Vault から取得した証明書をインストールする
 
@@ -43,8 +43,8 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 2. azuredeploy.parameters.json ファイルを更新します。
 3. テンプレートのデプロイ
 
->[!NOTE]
->この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
+> [!NOTE]
+> この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,8 +56,8 @@ Active Directory への認証、Web トラフィックの暗号化など、多�
 
 次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。
 
->[!IMPORTANT]
->Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。
+> [!IMPORTANT]
+> キー コンテナーを作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。
 
 ```powershell
 

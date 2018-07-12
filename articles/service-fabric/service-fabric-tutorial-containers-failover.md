@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric コンテナー アプリのフェールオーバーとスケーリング | Microsoft Docs
+title: Azure で Service Fabric 上のコンテナー アプリをフェールオーバーおよびスケーリングする | Microsoft Docs
 description: このチュートリアルでは、Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。
 services: service-fabric
 documentationcenter: ''
@@ -16,25 +16,27 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29555486"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112271"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
 
 このチュートリアルは、シリーズの第 3 部です。 このチュートリアルでは、Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。 さらに、コンテナーのスケーリング方法を説明します。 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * Service Fabric クラスターでのコンテナーのフェールオーバーについて学習する  
+> * Service Fabric クラスターでのコンテナーのフェールオーバーについて学習する
 > * アプリケーションの Web フロントエンド コンテナーをスケーリングする
 
 ## <a name="prerequisites"></a>前提条件
+
 [パート 2](service-fabric-tutorial-package-containers.md) のアプリケーションは、アクティブな Service Fabric クラスターで動作しています。
 
 ## <a name="fail-over-a-container-in-a-cluster"></a>クラスター内のコンテナーをフェールオーバーする
+
 障害が発生すると、Service Fabric はクラスター内の他のノードにコンテナー インスタンスを自動的に移動します。 また、コンテナーのノードを手動でドレインして、クラスター内の他のノードに適切に移動することもできます。 サービスをスケーリングするには複数の方法があります。この例では、Service Fabric Explorer を使います。
 
 フロントエンド コンテナーのフェールオーバーは、次の手順で行います。
@@ -42,13 +44,14 @@ ms.locfileid: "29555486"
 1. クラスターで Service Fabric Explorer を開きます (例: `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`)。
 2. ツリー ビューの **fabric:/TestContainer/azurevotefront** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。 ツリー ビューのノード名に注意してください。この名前は、コンテナーが現在実行しているノードを示します (例: `_nodetype_1`)。
 3. ツリー ビューの **Nodes** ノードを展開します。 コンテナーを実行しているノードの横にある省略記号 (3 つのドット) をクリックします。
-1. **[再起動]** を選んでそのノードを再起動し、再起動操作を確認します。 再起動により、コンテナーはクラスター内の別のノードにフェールオーバーします。
+4. **[再起動]** を選んでそのノードを再起動し、再起動操作を確認します。 再起動により、コンテナーはクラスター内の別のノードにフェールオーバーします。
 
 ![noderestart][noderestart]
 
 ノード名 (フロントエンド コンテナーが実行されている場所を示す) がクラスター内の別のノードに変わることを確認します。 しばらくすると、再度アプリケーションを参照し、アプリケーションが異なるノードで実行していることを確認できます。
 
 ## <a name="scale-containers-and-services-in-a-cluster"></a>クラスター内のコンテナーとサービスをスケーリングする
+
 Service Fabric コンテナーは、サービスに対する負荷に対応して、クラスター内でスケーリングすることができます。 コンテナーをスケーリングするには、クラスターで実行されるインスタンスの数を変更します。
 
 Web フロントエンドをスケーリングするには、次の手順のようにします。
@@ -74,10 +77,10 @@ Web フロントエンドをスケーリングするには、次の手順のよ�
 このチュートリアルでは、コンテナーのフェールオーバーとアプリケーションのスケーリングを実際に行いました。 次の手順を完了しました。
 
 > [!div class="checklist"]
-> * Service Fabric クラスターでのコンテナーのフェールオーバーについて学習する  
+> * Service Fabric クラスターでのコンテナーのフェールオーバーについて学習する
 > * アプリケーションの Web フロントエンド コンテナーをスケーリングする
 
-このチュートリアル シリーズで学習した内容は次のとおりです。 
+このチュートリアル シリーズで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * コンテナー イメージを作成する
 > * Azure Container Registry にコンテナー イメージをプッシュする

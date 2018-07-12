@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30836002"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114975"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -38,6 +38,7 @@ Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) �
 インターネットに直接向かう以外の経路で ASE の送信トラフィックをルーティングする場合、次の選択肢があります。
 
 * ASE で直接インターネットにアクセスできるようにする
+* BGP ルートを無視するように ASE サブネットを構成する
 * Azure SQL と Azure Storage へのサービス エンドポイントを使用するように ASE のサブネットを構成する
 * ASE の Azure SQL のファイアウォールに自分の IP を追加する
 
@@ -53,14 +54,28 @@ Azure Virtual Network が ExpressRoute を使って構成されていても ASE 
 既にネットワークのトラフィックがオンプレミスにルーティングされている場合は、ASE をデプロイする前に、ASE をホストするサブネットを作成して UDR を構成する必要があります。  
 
 > [!IMPORTANT]
-> UDR に定義されているルートは、ExpressRoute 構成でアドバタイズされたどのルートよりも優先されるように、詳細にする必要があります。 前の例では、0.0.0.0/0 という広いアドレス範囲を使用しています。 これは、より具体的なアドレス範囲を使用するルート アドバタイズによって誤って上書きされる可能性があります。
+> UDR に定義されているルートは、ExpressRoute 構成でアドバタイズされたどのルートよりも優先されるように、詳細にする必要があります。 前の例では、0.0.0.0/0 という広いアドレス範囲を使用しています。 これは、より具体的なアドレス範囲を使用するルート アドバタイズによって誤ってオーバーライドされる可能性があります。
 >
 > App Service Environment は、パブリック ピアリング パスからプライベート ピアリング パスにルートをクロスアドバタイズした ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、Microsoft からルート アドバタイズを受信します。 これらのアドバタイズには、Microsoft Azure の一連の広いアドレス範囲が含まれています。 これらのアドレス範囲がプライベートピアリング パスでクロスアドバタイズされた場合、App Service Environment のサブネットからの送信ネットワーク パケットはすべて、顧客のオンプレミスのネットワーク インフラストラクチャにルーティングされます。 既定では、このネットワーク フローは App Service Environment でサポートされていません。 この問題の 1 つの解決策として、パブリックピアリング パスからプライベートピアリング パスへのクロスアドバタイズ ルートの停止があります。 もう 1 つの解決策は、強制トンネリング構成で機能するように App Service Environment を設定することです。
 
 ![直接インターネット アクセス][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>BGP ルートを無視するように ASE サブネットを構成する ## 
+
+すべての BGP ルートを無視するように、ASE サブネットを構成することができます。  このように構成すると、ASE は何の問題もなくその依存関係にアクセスすることができます。  ただし、アプリがオンプレミスのリソースにアクセスできるようにするには、UDR を作成する必要があります。
+
+BGP ルートを無視するように ASE サブネットを構成するには
+
+* まだない場合は、UDR を作成して ASE サブネットに割り当てます。
+* Azure portal で、ASE サブネットに割り当てられているルート テーブルの UI を開きます。  [構成] を選択します。  [BGP ルート伝達] を [無効] に設定します。  [保存] をクリックします。 オフにすることについては、「[ルート テーブルの作成][routetable]」をご覧ください。
+
+このようにした後、アプリはオンプレミスにアクセスできなくなります。 それを解決するには、ASE サブネットに割り当てられている UDR を編集し、オンプレミスのアドレス範囲へのルートを追加します。 次のホップの種類は、仮想ネットワーク ゲートウェイに設定する必要があります。 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>サービス エンドポイントを使って ASE を構成する ##
+
+ > [!NOTE]
+   > SQL を含むサービス エンドポイントは、米国政府リージョン内の ASE では機能しません。  次の情報は、Azure パブリック リージョンでのみ有効です。  
 
 ASE から外に出て行く送信トラフィックを、Azure SQL と Azure Storage に向かうトラフィックを除いてすべてルーティングするには、次の手順を実行します。
 
@@ -142,3 +157,4 @@ ASE とその依存関係との間で通信ができなくなった場合、ASE 
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: d9720377beb1973b8ae4e9423fc991aa82646924
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061598"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344709"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure SQL Data Warehouse を作成し、サーバー レベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。[Azure SQL Data Warehouse の作成に関するクイック スタート](../../sql-data-warehouse/create-data-warehouse-portal.md)の手順に従ってください。
-* Azure SQL Data Warehouse に使用するデータベースのマスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
+* Azure SQL Data Warehouse に使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
 * [Azure Data Lake Storage Gen2 アカウントを作成する](quickstart-create-account.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインする
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -117,7 +117,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. 次のコードを最初のセルに入力し、コードを実行します。
 
-    ```python
+    ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
@@ -132,11 +132,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の手順では、後ほど Azure Databricks で変換するために、サンプル データ ファイルをストレージ アカウントにアップロードします。 
 
-1. Data Lake Storage Gen2 のアカウントをまだ作成していない場合は、クイック スタートに従って Data Lake Storage Gen2 アカウントを作成します。
-2. サンプル データ (**small_radio_json.json**) は、[U-SQL の例と問題追跡](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)のリポジトリで入手できます。 JSON ファイルをダウンロードし、ファイルを保存するパスをメモしておきます。
-3. ストレージ アカウントにデータをアップロードします。 ストレージ アカウントにデータをアップロードする際に使用する方法は、階層構造の名前空間サービス (HNS) が有効かどうかによって異なります。
+> [!NOTE]
+> Azure Data Lake Storage Gen2 対応のアカウントがまだない場合は、[アカウントの作成に関するクイック スタート](./quickstart-create-account.md)に従ってください。
 
-    階層構造の名前空間サービスが ADLS Gen2 アカウントで有効になっている場合は、Azure Data Factory、distp、または AzCopy (バージョン 10) を使用してアップロードを処理できます。 AzCopy バージョン 10 は、プレビューのお客様のみが使用できます。 Cloud Shell から AzCopy を使用するには、以下の手順を実行します。
+1. [U-SQL の例と問題追跡](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)のリポジトリから **small_radio_json.json** をダウンロードし、ファイルを保存したパスをメモしておきます。
+
+2. 次に、ストレージ アカウントにサンプル データをアップロードします。 ストレージ アカウントにデータをアップロードする際に使用する方法は、階層名前空間が有効かどうかによって異なります。
+
+    階層名前空間が Gen2 アカウント用に作成された Azure Storage アカウントで有効になっている場合は、Azure Data Factory、distp、または AzCopy (バージョン 10) を使用してアップロードを処理できます。 AzCopy バージョン 10 は、プレビューのお客様のみが使用できます。 AzCopy を使うには、次のコードをコマンド ウィンドウに貼り付けます。
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -150,7 +153,7 @@ Databricks Notebook に戻り、次のコードを新しいセルに入力しま
 
 1. 空のコード セルに次のスニペットを追加します。プレースホルダーの値は、先ほど保存したストレージ アカウントの値で置き換えてください。
 
-    ```python
+    ```scala
     dbutils.widgets.text("storage_account_name", "STORAGE_ACCOUNT_NAME", "<YOUR_STORAGE_ACCOUNT_NAME>")
     dbutils.widgets.text("storage_account_access_key", "YOUR_ACCESS_KEY", "<YOUR_STORAGE_ACCOUNT_SHARED_KEY>")
     ```
@@ -159,13 +162,13 @@ Databricks Notebook に戻り、次のコードを新しいセルに入力しま
 
 2. これで、サンプル json ファイルをデータフレームとして Azure Databricks に読み込むことができます。 新しいセルに次のコードを貼り付けて、**Shift + Enter** キーを押します (プレースホルダーの値を必ず置き換えてください)。
 
-    ```python
+    ```scala
     val df = spark.read.json("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/data/small_radio_json.json")
     ```
 
 3. 次のコードを実行して、データ フレームの内容を表示します。
 
-    ```python
+    ```scala
     df.show()
     ```
 
@@ -190,7 +193,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
 
 1. まず、あらかじめ作成しておいたデータフレームから、*firstName*、*lastName*、*gender*、*location*、*level* の各列だけを取得します。
 
-    ```python
+    ```scala
     val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
     ```
 
@@ -225,7 +228,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
 
 2.  さらにこのデータを変換し、**level** 列の名前を **subscription_type** に変更することができます。
 
-    ```python
+    ```scala
     val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
     renamedColumnsDF.show()
     ```
@@ -263,32 +266,32 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
 
 このセクションでは、変換したデータを Azure SQL Data Warehouse にアップロードします。 Azure Databricks 用の Azure SQL Data Warehouse コネクタを使用すると、データフレームを SQL Data Warehouse のテーブルとして直接アップロードすることができます。
 
-前述のように、SQL Data Warehouse コネクタは、Azure Blob Storage を一時記憶域として使用し、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードします。 そこでまず、そのストレージ アカウントに接続するための構成を指定することになります。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
+前述のように、SQL Data Warehouse コネクタは、Azure Blob Storage を一時記憶域として使用し、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードします。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
 
 1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。
 
-    ```python
+    ```scala
     val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-    val fileSystemName = "<FILE_SYSTEM_NJAME>"
+    val fileSystemName = "<FILE_SYSTEM_NAME>"
     val accessKey =  "<ACCESS_KEY>"
     ```
 
-2. Azure Databricks と Azure SQL Data Warehouse との間でデータを移動する間に使用する一時フォルダーを指定します。
+2. Azure Databricks と Azure SQL Data Warehouse との間でデータを移動するときに使用する一時フォルダーを指定します。
 
-    ```python
+    ```scala
     val tempDir = "abfs://" + fileSystemName + "@" + storageURI +"/tempDirs"
     ```
 
 3. 次のスニペットを実行して、Azure Blob Storage のアクセス キーを構成に格納します。 これにより、アクセス キーをプレーンテキストのままノートブックに保持せずに済みます。
 
-    ```python
+    ```scala
     val acntInfo = "fs.azure.account.key."+ storageURI
     sc.hadoopConfiguration.set(acntInfo, accessKey)
     ```
 
 4. Azure SQL Data Warehouse インスタンスに接続するための値を指定します。 SQL Data Warehouse は、前提条件の 1 つとして、あらかじめ作成しておく必要があります。
 
-    ```python
+    ```scala
     //SQL Data Warehouse related settings
     val dwDatabase = "<DATABASE NAME>"
     val dwServer = "<DATABASE SERVER NAME>" 
@@ -302,7 +305,7 @@ Azure Data Lake Storage Gen2 から Azure Databricks にデータが抽出され
 
 5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDF**) をテーブルとして SQL Data Warehouse に読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。
 
-    ```python
+    ```scala
     spark.conf.set(
         "spark.sql.parquet.writeLegacyFormat",
         "true")

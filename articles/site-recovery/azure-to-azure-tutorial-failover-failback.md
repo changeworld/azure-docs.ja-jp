@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cb9bfd000c377f63e99350d0615a7e92ba8bb8ef
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 61b354dfd6f704eb0677991c02f28de08e49ee37
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716246"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917501"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
 

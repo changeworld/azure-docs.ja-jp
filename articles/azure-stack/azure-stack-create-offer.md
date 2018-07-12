@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 07/2/2018
 ms.author: brenduns
-ms.openlocfilehash: e5b96a9464bf4d0e3b69d2f635da32c6648ce793
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247519"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345891"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Azure Stack でのオファーの作成
 
@@ -59,7 +59,7 @@ ms.locfileid: "35247519"
      **[すべてのリソース]** を選択し、新しいオファーを検索して、その新しいオファーを選択します。 **[状態の変更]** を選択し、**[パブリック]** を選択します。
 
    > [!NOTE]
-   > PowerShell を使用して、既定のオファー、プラン、およびクォータを作成することもできます。 詳細については、[Azure Stack Service Administrator の readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin) を参照してください。
+   > PowerShell を使用して、既定のオファー、プラン、およびクォータを作成することもできます。 詳しくは、[Azure Stack PowerShell Module 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
