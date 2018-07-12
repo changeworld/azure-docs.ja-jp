@@ -16,11 +16,11 @@ ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: f76f9f6280120f5c05cb304a0b87bba9ffaee043
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639760"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38703717"
 ---
 # <a name="quickstart-how-to-use-azure-redis-cache-with-java"></a>クイック スタート: Java で Azure Redis Cache を使用する方法
 
@@ -162,7 +162,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
-![削除](./media/cache-java-get-started/cache-delete-resource-group.png)
+![Delete](./media/cache-java-get-started/cache-delete-resource-group.png)
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
 

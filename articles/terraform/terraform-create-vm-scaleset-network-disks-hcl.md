@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 06/04/2018
 ms.topic: article
-ms.openlocfilehash: b7cd9ad90198ead7c68d838547232429dbd1289f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757322"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971835"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale"></a>Terraform を使用して Azure 仮想マシン スケールを作成する
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
 [Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets)では、負荷分散された同一の仮想マシンのグループを作成および管理できます。この場合、需要や定義したスケジュールに応じて仮想マシン インスタンスの数を自動的に増減できます。 
 

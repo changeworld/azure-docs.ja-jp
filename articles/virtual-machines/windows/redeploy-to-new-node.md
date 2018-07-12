@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 05/11/2018
 ms.author: genli
 ms.openlocfilehash: f0bda14634e6c8bea5800b9798086fc38279030a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160327"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531504"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>新しい Azure ノードへの Windows 仮想マシンの再デプロイ
 Windows ベースの Azure 仮想マシン (VM) へのリモート デスクトップ (RDP) 接続またはアプリケーション アクセスに関するトラブルシューティングで問題が発生している場合、VM の再デプロイが有効な場合があります。 VM を再デプロイするときは、Azure インフラストラクチャ内の新しいノードに VM を移動してから、電源をオンにすると、すべての構成オプションと関連するリソースが保持されます。 この記事では、Azure PowerShell または Azure ポータルを使用して VM を再デプロイする方法について説明します。

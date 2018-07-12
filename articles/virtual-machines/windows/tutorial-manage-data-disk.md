@@ -3,7 +3,7 @@ title: チュートリアル - Azure PowerShell を使用して Azure ディス�
 description: このチュートリアルでは、Azure PowerShell を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ea9d89b7dd94c38b326b83ff1fbf51595d67599a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67e95ea4b816e1c21b5a43233360c7fa89f43a7a
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190630"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929306"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -48,7 +48,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 576 |
@@ -63,7 +63,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 
-| 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
+| type | 一般的なサイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 64 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 64 |

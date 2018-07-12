@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 0399f9ef969098216e080140a67f81725b670115
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7ef26dc5fa7676ca590d56978c735bf4a195440b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400632"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698052"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。

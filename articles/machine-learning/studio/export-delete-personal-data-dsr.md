@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 6317d4baba5775c1e5a4fda66de80dd8299d8fed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ebd777a9723732de6ebbdf07020802190cb4b61
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660066"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969284"
 ---
 # <a name="export-and-delete-in-product-user-data-from-machine-learning-studio"></a>Machine Learning Studio から製品内ユーザー データをエクスポートおよび削除する
 
@@ -74,4 +74,4 @@ PowerShell では、コマンドを使用して Azure Machine Learning Studio �
 
 ## <a name="next-steps"></a>次の手順
 
-Web サービスおよび契約プランの課金を説明するドキュメントについては、[Azure Machine Learning REST API リファレンス](https://docs.microsoft.com/en-us/rest/api/machinelearning/)に関するページを参照してください。 
+Web サービスおよび契約プランの課金を説明するドキュメントについては、[Azure Machine Learning REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 

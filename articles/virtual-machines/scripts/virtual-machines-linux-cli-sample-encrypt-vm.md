@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - Linux VM の暗号化 | Micro
 description: Azure CLI のサンプル スクリプト - Linux VM の暗号化
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f5362a323703d895d98f95e0dddebcbbaa089a87
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5ec680d548ce57292753bc669eb36dfdc0ed05a0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849081"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928949"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>Azure における Linux 仮想マシンの暗号化
 

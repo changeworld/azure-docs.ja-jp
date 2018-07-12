@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: saysa
-ms.openlocfilehash: 047b3d00da4f192febeeab79c9c87b67a8a0489b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207963"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972250"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -298,12 +298,12 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
 開発およびテスト環境の場合は、アプリケーションをデプロイするように、Azure 資格情報またはクラスター管理エンドポイントのいずれかを構成することができます。 クラスター管理エンドポイントの構成方法の詳細については、「[クラスター管理エンドポイントを使用してデプロイを構成する](#configure-deployment-using-cluster-management-endpoint)」をご覧ください。   
 
-1. Azure Active Directory サービス プリンシパルを作成し、Azure サブスクリプションで権限を割り当てるには、「[Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)」の手順に従ってください。 次の点に注意してください。
+1. Azure Active Directory サービス プリンシパルを作成し、Azure サブスクリプションで権限を割り当てるには、「[Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)」の手順に従ってください。 次の点に注意してください。
 
    * トピックの手順を実行する際は、*[アプリケーション ID]*、*[アプリケーション キー]*、*[ディレクトリ ID (テナント ID)]*、および *[サブスクリプション ID]* の値を必ずコピーし、保存してください。 それらは Jenkins で Azure 資格情報を構成するために必要です。
-   * ディレクトリに[必要な権限](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)がない場合は、管理者に依頼して、権限を付与するかサービス プリンシパルを作成してもらう必要があります。または、Jenkins のジョブ用に **[Post-Build Actions (ビルド後のアクション)]** でクラスターの管理エンドポイントを構成する必要があります。
-   * 「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)」のセクションでは、**[サインオン URL]** に適切な形式の URL を入力することができます。
-   * 「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」のセクションでは、アプリケーションにクラスターのリソース グループの*閲覧者*ロールを割り当てることができます。
+   * ディレクトリに[必要な権限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)がない場合は、管理者に依頼して、権限を付与するかサービス プリンシパルを作成してもらう必要があります。または、Jenkins のジョブ用に **[Post-Build Actions (ビルド後のアクション)]** でクラスターの管理エンドポイントを構成する必要があります。
+   * 「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)」のセクションでは、**[サインオン URL]** に適切な形式の URL を入力することができます。
+   * 「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」のセクションでは、アプリケーションにクラスターのリソース グループの*閲覧者*ロールを割り当てることができます。
 
 2. Jenkins ジョブに戻って、**[Post-build Actions (ビルド後のアクション)]** タブをクリックします。
 3. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
@@ -321,7 +321,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 7. **[Service Fabric Cluster Configuration (Service Fabric クラスター構成)]** に戻って、**[Azure Credentials (Azure 資格情報)]** に新しい資格情報が選択されていることを確認します。 
 8. **[リソース グループ]** ドロップダウンで、アプリケーションをデプロイするクラスターのリソース グループを選択します。
 9. **[Service Fabric]** ドロップダウンで、アプリケーションをデプロイするクラスターを選択します。
-10. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置を入力します。 たとえば、「 `/var/jenkins_home/clustercert.pem`」のように指定します。 
+10. **[Client Key (クライアント キー)]** と **[Client Cert (クライアント証明書)]** には、Jenkins コンテナー内 PEM ファイルの位置を入力します。 たとえば、「 `/var/jenkins_home/clustercert.pem` 」のように指定します。 
 11. **[Application Configuration (アプリケーションの構成)]** で、**[アプリケーション名]**、**[アプリケーションの種類]**、および **[Path to Application Manifest (アプリケーション マニフェストへのパス)]** (相対) の各フィールドを設定します。
     ![Service Fabric の Jenkins のビルド後のアクションでの Azure 資格情報の構成](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. **[Verify Configuration]** をクリックします。 検証が正常に行われたら、**[保存]** をクリックします。 これで Jenkins ジョブ パイプラインが完全に構成されました。 [次のステップ](#next-steps)に進んで、デプロイをテストしてください。

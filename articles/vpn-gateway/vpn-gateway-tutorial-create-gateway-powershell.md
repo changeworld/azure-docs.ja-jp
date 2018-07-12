@@ -17,11 +17,11 @@ ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 0f10384e7e21d65b3a16869a10f8294b9643c74c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210200"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705685"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した VPN ゲートウェイの作成と管理
 
@@ -64,7 +64,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループを最初に作成する必要があります。 次の例では、*TestRG1* という名前のリソース グループが "*米国東部*" リージョンに作成されます。
 

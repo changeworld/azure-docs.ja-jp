@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054791"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972446"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,7 +288,7 @@ ms.locfileid: "37054791"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -619,7 +619,8 @@ Microsoft Azure 以降では、Windows Server プラットフォームに組み�
 * **Virtual Machine SLA**: Azure で実行されている Virtual Machines の SLA (<https://azure.microsoft.com/support/legal/sla/> を参照してください)。  
 * **SQL バージョンのサポート**: SAP のお客様に対しては、Microsoft Azure Virtual Machines で SQL Server 2008 R2 以降がサポートされています。 これより前のエディションはサポートされていません。 詳細については、この一般的な [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 マイクロソフトは基本的には SQL Server 2008 をサポートしています。 ただし、SQL Server 2008 R2 で導入された SAP の重要な機能によって、SQL Server 2008 R2 が SAP の最小リリースとなっています。 SQL Server 2012 および 2014 は IaaS シナリオに対する統合 (Azure Storage への直接バックアップなど) によってさらに拡張されていることに注意してください。 そのため、このホワイト ペーパーは、Azure に対する SQL Server 2012 および 2014 の最新のパッチ レベルに限定して説明します。
 * **SQL 機能のサポート**: SQL Server のほとんどの機能は、いくつかの例外があるものの、Microsoft Azure Virtual Machines でサポートされます。 **共有ディスクを使用した SQL Server フェールオーバー クラスタリングはサポートされていません**。  データベース ミラーリング、AlwaysOn 可用性グループ、レプリケーション、ログ配布、および Service Broker などの分散テクノロジは単一の Azure リージョン内でサポートされます。 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx> に記載されているように、SQL Server AlwaysOn はさまざまな Azure リージョン間でもサポートされます。  詳細については、 [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 AlwaysOn 構成をデプロイする方法の例は[こちら][virtual-machines-workload-template-sql-alwayson]の記事に記載されています。 また、[こちら][virtual-machines-sql-server-infrastructure-services]に記載されているベスト プラクティスをご確認ください。 
-* **SQL パフォーマンス**: Microsoft Azure がホストする Virtual Machines は、その他のパブリック クラウド仮想化製品と比べて極めて良好に機能しますが、個々の結果は異なる場合があります。 [こちら][virtual-machines-sql-server-performance-best-practices]の記事をご確認ください。
+* 
+  **SQL パフォーマンス**: Microsoft Azure がホストする Virtual Machines は、その他のパブリック クラウド仮想化製品と比べて極めて良好に機能しますが、個々の結果は異なる場合があります。 [こちら][virtual-machines-sql-server-performance-best-practices]の記事をご確認ください。
 * **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、SQL Server を含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace の SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
 * 詳細については、「 [料金の詳細」](https://azure.microsoft.com/pricing/) を参照してください。 「[SQL Server 2012 ライセンス ガイド](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf)」と「[SQL Server 2014 ライセンス ガイド](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf)」も、重要なリソースです。
 

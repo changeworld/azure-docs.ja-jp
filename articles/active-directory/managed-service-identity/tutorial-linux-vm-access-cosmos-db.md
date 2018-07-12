@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: skwan
-ms.openlocfilehash: c395851fbcc3e46357b390d9dfa20bd9ac944716
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: daveba
+ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594433"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904426"
 ---
 # <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>チュートリアル: Linux VM の MSI を使用した Azure Cosmos DB へのアクセス 
 

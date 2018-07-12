@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
 ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603387"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38600363"
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
 

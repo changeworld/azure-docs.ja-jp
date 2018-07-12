@@ -3,7 +3,7 @@ title: クイック スタート - Azure テンプレートを使用して Linux
 description: サンプル アプリのデプロイと自動スケール ルールの構成を行う Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットをすばやく作成する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
-ms.author: iainfou
-ms.openlocfilehash: c23c798e1e79f8bf66b59da96ccd5342105ffd3a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: cynthn
+ms.openlocfilehash: fc3128c0e08a54bfe95ec4d09bcc766d1d20811f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30247394"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477872"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート: Azure テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 | プロパティ                     | プロパティの説明                                  | テンプレート値の例                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| 型                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
+| type                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | スケール セットの名前                                       | myScaleSet                                |
 | location                     | スケール セットを作成する場所                     | 米国東部                                   |
 | sku.name                     | 各スケール セット インスタンスの VM サイズ                  | Standard_A1                               |

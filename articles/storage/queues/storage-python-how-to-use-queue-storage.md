@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.openlocfilehash: c7976c01436b1c30880bfd4c57cb97f72a4f48b0
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25986751"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606692"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Python から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -128,7 +128,7 @@ count = metadata.approximate_message_count
 queue_service.delete_queue('taskqueue')
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Queue Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * [Python デベロッパー センター](/develop/python/)

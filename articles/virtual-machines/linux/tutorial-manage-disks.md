@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure CLI を使用して Azure ディスクを�
 description: このチュートリアルでは、Azure CLI 2.0 を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 470e938aa4ef70f9682528003ccdaba2ef6cc013
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 889facbf9612f2462a10c886a428ac052becefd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839692"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704489"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli-20"></a>チュートリアル - Azure CLI 2.0 を使用して Azure ディスクを管理する
 
@@ -50,7 +50,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 576 |
@@ -65,7 +65,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 
-| 種類 | VM サイズ | VM あたりの最大データ ディスク数 |
+| type | VM サイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 64 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 64 |

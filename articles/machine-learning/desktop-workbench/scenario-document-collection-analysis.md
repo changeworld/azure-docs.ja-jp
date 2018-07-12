@@ -7,16 +7,16 @@ ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 60d65b17d4cbe8a45ff3fb62b06852d7b945e8f1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832861"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861258"
 ---
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
 
@@ -75,7 +75,7 @@ ms.locfileid: "34832861"
 
 ## <a name="data-description"></a>データの説明
 
-このシナリオで使用するデータセットには、米国議会が採用した各法的措置のテキストの要約と関連するメタデータが含まれています。 このデータは [GovTrack.us](https://www.govtrack.us/) から収集されています。米国議会の活動を追跡したデータであり、米国人が国の立法プロセスに参加するために役立ちます。 一括データは、手動スクリプト (このシナリオには含まれていません) を使用して[このリンク](https://www.govtrack.us/data/congress/)からダウンロードできます。 データの詳細なダウンロード方法については、[GovTrack API のドキュメント](https://www.govtrack.us/developers/api)を参照してください。
+このシナリオで使用するデータセットには、米国議会が採用した各法的措置のテキストの要約と関連するメタデータが含まれています。 このデータは [GovTrack.us](https://www.govtrack.us/) から収集されています。米国議会の活動を追跡したデータであり、米国人が国の立法プロセスに参加するために役立ちます。 一括データは、手動スクリプト (このシナリオには含まれていません) を使用して[このリンク](https://www.govtrack.us/data/congress/)からダウンロードできます。 データの詳細なダウンロード方法については、[GovTrack API のドキュメント](https://www.govtrack.us/developers)を参照してください。
 
 ### <a name="data-source"></a>データ ソース
 

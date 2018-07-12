@@ -3,7 +3,7 @@ title: チュートリアル - Linux VM 用の Azure 仮想ネットワークの
 description: このチュートリアルでは、Azure CLI 2.0 を使用して、Linux 仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 306d33dd5b5910e990caf80dae4c37fee020f7a1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e214e60cf61f809d8bc4a541c2f4ecf544feccd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193140"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928660"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>チュートリアル - Azure CLI 2.0 を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
@@ -155,13 +155,13 @@ az vm create \
 
 NSG ルールは、トラフィックが許可または拒否されるネットワーク ポートを定義します。 このルールには、特定のシステム (またはサブネット) 間のトラフィックが制御されるように送信元 IP と送信先 IP のアドレス範囲を含めることができます。 また、NSG ルールには優先順位 (1 ～ 4096) も含まれます。 ルールは、優先順位に従って評価されます。 優先順位が 100 のルールは、優先順位が 200 のルールよりも前に評価されます。
 
-すべての NSG に既定のルール一式が含まれています。 既定のルールは削除できませんが、これには最も低い優先順位が割り当てられているため、ルールを作成することで上書きできます。
+すべての NSG に既定のルール一式が含まれています。 既定のルールは削除できませんが、これには最も低い優先順位が割り当てられているため、ルールを作成することでオーバーライドできます。
 
 NSG の既定ルールは以下のとおりです。
 
 - **仮想ネットワーク** - 仮想ネットワーク内で発信および着信するトラフィックについては、受信方向と送信方向の両方で許可されます。
 - **インターネット** - 送信トラフィックは許可されますが、受信トラフィックはブロックされます。
-- **ロード バランサー** - Azure のロード バランサーによる VM とロール インスタンスの正常性プローブが許可されます。 負荷分散セットを使用していない場合は、このルールを上書きできます。
+- **ロード バランサー** - Azure のロード バランサーによる VM とロール インスタンスの正常性プローブが許可されます。 負荷分散セットを使用していない場合は、このルールをオーバーライドできます。
 
 ### <a name="create-network-security-groups"></a>ネットワーク セキュリティ グループの作成
 

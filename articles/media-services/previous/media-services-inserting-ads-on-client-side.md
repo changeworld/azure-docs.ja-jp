@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 57cb06fcee029f72dd1cf81ef086985fdda3f45f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783861"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903049"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -276,7 +276,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
     </vmap:VMAP>
 ```
 
-<**TrackingEvents**> 要素とその子の詳細については、http://iab.org/VMAP.pdf を参照してください。
+<**TrackingEvents**> 要素とその子の詳細については、http://iab.net/VMAP.pdf を参照してください。
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Media Abstract Sequencing Template (MAST) ファイルの使用
 MAST ファイルを使用すると、広告がいつ表示されるかを定義するトリガーを指定できます。 プリロール広告、ミッドロール広告、ポストロール広告のトリガーを含む MAST ファイルの例を次に示します。

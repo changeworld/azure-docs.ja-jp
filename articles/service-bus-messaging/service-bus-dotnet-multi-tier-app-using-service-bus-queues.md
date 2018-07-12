@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
 ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809456"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611234"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 

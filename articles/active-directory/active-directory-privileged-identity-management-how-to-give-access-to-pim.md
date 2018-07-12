@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d52469e11ac508ee8b353311f6040ac9d6f2e4e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 85bea1b042eb9b882022118d36e5a55a802a1bdc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447151"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950565"
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を管理するためのアクセス権の付与
 組織の Azure AD Privileged Identity Management (PIM) を有効にするグローバル管理者は、自動的にロールの割り当てを取得し、PIM にアクセスします。 ただし、他のグローバル管理者も含めて、既定で書き込みアクセス権を得るユーザーは他にはいません。 その他のグローバル管理者、セキュリティ管理者、およびセキュリティ リーダーは、Azure AD PIM に対する読み取り専用アクセス権を持ちます。 PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに **特権ロール管理者** ロールを割り当てます。
@@ -34,10 +34,10 @@ ms.locfileid: "37447151"
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードで **Azure AD Privileged Identity Management** アプリを選択します。
 2. **[特権ロールの管理]**  >  **[特権ロール管理者]**  >  **[追加]** の順に選択します。
    
-    ![特権ロール管理者の追加 - スクリーンショット][1]
+    ![特権ロール管理者の追加 - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png)
 3. [管理対象ユーザーの追加] ブレードで、手順 1 は既に完了しています。 手順 2、 **[ユーザーを選択する]** を選択し、追加するユーザーを検索します。
    
-    ![ユーザーの選択 - スクリーンショット][2]
+    ![ユーザーの選択 - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png)
 4. 検索結果からユーザーを選択し、 **[実行]** をクリックします。
 5. **[OK]** をクリックして選択を保存します。 選択したユーザーが特権ロール管理者の一覧に表示されます。
    
@@ -55,8 +55,3 @@ ms.locfileid: "37447151"
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png

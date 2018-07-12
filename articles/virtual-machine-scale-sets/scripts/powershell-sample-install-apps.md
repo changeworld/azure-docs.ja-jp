@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル - アプリをインストールする |
 description: Azure PowerShell のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 622ccac3c99d2e8f2a31849ecc1c33d0d470ca0e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4553dba3e7242f9c98f66b4851a1186ccd0cb31b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246408"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38605780"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して仮想マシン スケール セットにアプリケーションをインストールする
 このスクリプトでは、Windows Server 2016 を実行する仮想マシン スケール セットを作成し、カスタム スクリプト拡張機能を使用して基本的な Web アプリケーションをインストールします。 スクリプトを実行すると、Web ブラウザーで Web アプリにアクセスできるようになります。

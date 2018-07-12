@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9fa8455e3be6dced5717e2a7399d0eae0e26a09b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401074"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477898"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-この記事では、Azure Portal を使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事のこの手順は、クラシック デプロイメント モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事では、Azure Portal を使用して、オンプレミス ネットワークから VNet へのサイト間 VPN Gateway 接続を作成する方法について説明します。 この記事のこの手順は、クラシック デプロイ モデルに適用されます。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
@@ -44,7 +44,7 @@ ms.locfileid: "29401074"
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
-* クラシック デプロイメント モデルで作業することを確認します。 Resource Manager デプロイメント モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](vpn-gateway-howto-site-to-site-resource-manager-portal.md) に関する記事を参照してください。 可能であれば、Resource Manager デプロイメント モデルの使用をお勧めします。
+* クラシック デプロイ モデルで作業することを確認します。 Resource Manager デプロイ モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](vpn-gateway-howto-site-to-site-resource-manager-portal.md) に関する記事を参照してください。 可能であれば、Resource Manager デプロイ モデルの使用をお勧めします。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。 この IP アドレスを NAT の内側に割り当てることはできません。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。
@@ -193,7 +193,7 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>手順 2. 共有キーを設定して接続を作成する
 
-PowerShell とクラシック デプロイメント モデルを使用する場合、ポータルのリソースの名前が、PowerShell の使用時に Azure で想定されている名前と異なる場合があります。 次の手順は、ネットワーク構成ファイルをエクスポートして、名前の正確な値を取得するのに役立ちます。
+PowerShell とクラシック デプロイ モデルを使用する場合、ポータルのリソースの名前が、PowerShell の使用時に Azure で想定されている名前と異なる場合があります。 次の手順は、ネットワーク構成ファイルをエクスポートして、名前の正確な値を取得するのに役立ちます。
 
 1. コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 次の例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
 ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603693"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38706018"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 105c10423a9688300ba74874769b162e29572185
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 02277d8398fe5e3f3cfd1244e53cc80c4b627fa3
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128607"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857424"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -597,7 +597,7 @@ Flux は、構成と実装が分離可能な、Storm 0.10.0 以降で使用で�
 
 YAML ファイルは、トポロジと、これらの間のデータ フローに使用するコンポーネントを定義します。 jar ファイルの一部として YAML ファイルを含めることも、外部 YAML ファイルを使用することもできます。
 
-Flux の詳細については、「[Flux フレームワーク (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)」に関するセクションを参照してください。
+Flux の詳細については、「[Flux フレームワーク (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html)」に関するセクションを参照してください。
 
 > [!WARNING]
 > Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境のインストール](http://storm.apache.org/releases/current/Setting-up-development-environment.html)が必要になる場合があります。
@@ -767,7 +767,7 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
 
     トポロジが開始されると、バッチが出力される時間間隔が変更され、newtopology.yaml の値が反映されていることがわかります。 このように、トポロジを再コンパイルしなくても YAML ファイルから構成を変更できることがわかります。
 
-Flux フレームワークのその他の機能の詳細については、 [Flux(https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)に関するページをご覧ください。
+Flux フレームワークのその他の機能の詳細については、 [Flux(https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html)に関するページをご覧ください。
 
 ## <a name="trident"></a>Trident
 

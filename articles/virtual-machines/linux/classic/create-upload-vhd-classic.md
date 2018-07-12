@@ -3,7 +3,7 @@ title: Linux VHD の作成と Azure へのアップロード | Microsoft Docs
 description: クラシック デプロイ モデルを使用して、Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードします。
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
-ms.author: iainfou
-ms.openlocfilehash: 1ba568eeaf3bbc3d786cc48e54404aa65a00fecc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: cynthn
+ms.openlocfilehash: cdbe6aa5683ecf9d8bdaf6bbf9503ddc455f03ee
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841896"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928269"
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 > [!IMPORTANT] 
@@ -65,7 +65,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 <a id="connect"> </a>
 
 ## <a name="step-2-prepare-the-connection-to-azure"></a>手順 2. Azure への接続を準備する
-クラシック デプロイメント モデル (`azure config mode asm`) で Azure CLI を使用していることを確認し、次のように、自分のアカウントにログインします。
+クラシック デプロイ モデル (`azure config mode asm`) で Azure CLI を使用していることを確認し、次のように、自分のアカウントにログインします。
 
 ```azurecli
 azure login
@@ -111,7 +111,7 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 独自の VM を作成するには、独自のユーザー名とパスワード、場所、DNS 名、およびイメージ名を指定します。
 
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Azure クラシック デプロイメント モデルの Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)を参照してください。
+詳細については、[Azure クラシック デプロイ モデルの Azure CLI リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)を参照してください。
 
 [Step 1: Prepare the image to be uploaded]:#prepimage
 [Step 2: Prepare the connection to Azure]:#connect

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
 ms.openlocfilehash: 4cc29aad648f594a95f694cf0f778b55cb3145a8
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959882"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485531"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]

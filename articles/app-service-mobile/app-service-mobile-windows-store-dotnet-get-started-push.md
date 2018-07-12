@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 9e3ed6d19b0f830923745ad0263c5c4f920c0f51
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597860"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473522"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

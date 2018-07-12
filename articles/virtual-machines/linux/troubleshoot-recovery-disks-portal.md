@@ -3,7 +3,7 @@ title: Azure Portal でトラブルシューティング用 Linux VM を使用�
 description: Azure Portal で OS ディスクを復旧 VM に接続して、Linux 仮想マシンの問題のトラブルシューティングを行う方法について説明します。
 services: virtual-machines-linux
 documentationCenter: ''
-authors: iainfoulds
+authors: cynthn
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
-ms.author: iainfou
-ms.openlocfilehash: 89c4c5c986375177918f14417c6b5a9a24925908
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.author: cynthn
+ms.openlocfilehash: efa001a24be3fb646a2a10afe72cb9b4ebfbf836
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271744"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932011"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。

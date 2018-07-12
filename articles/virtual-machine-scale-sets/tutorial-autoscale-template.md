@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure テンプレートを使用したスケー�
 description: Azure Resource Manager テンプレートを使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7ca037a6aec8516d9656b3389da67b9b02a906d8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418827"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723121"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -46,7 +46,7 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 {
 "type": "Microsoft.insights/autoscalesettings",
 "name": "Autoscale",
-"apiVersion": "2014-04-01",
+"apiVersion": "2015-04-01",
 "location": "[variables('location')]",
 "scale": null,
 "properties": {

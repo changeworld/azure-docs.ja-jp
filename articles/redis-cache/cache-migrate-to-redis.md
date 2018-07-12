@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
 ms.openlocfilehash: f499925ecea8ca127c90691f7d92e74e8df68cf9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639488"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697341"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Managed Cache Service から Azure Redis Cache への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Redis Cache への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 この記事では、Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するのに必要な構成と、アプリケーションの変更を行う方法、および Azure Redis Cache の機能を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。

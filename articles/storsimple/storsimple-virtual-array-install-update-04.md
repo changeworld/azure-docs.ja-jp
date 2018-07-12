@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: 3fb246b1515e7a637e6cff6499bf324c3f80dd45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109810"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232191"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array への Update 0.4 のインストール
 
@@ -48,7 +48,7 @@ ms.locfileid: "23109810"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
@@ -106,7 +106,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 インストールが完了したら (ジョブの状態が 100% と示されます)、StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、このサービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 **[設定]** ブレードで、**[管理]** セクションに移動し、**[デバイスの更新プログラム]** を選択します。 表示されるソフトウェアのバージョンは **10.0.10289.0** です。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

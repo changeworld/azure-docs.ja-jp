@@ -2,24 +2,22 @@
 title: HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs
 description: Script Action を使用して Hadoop クラスターをカスタマイズする方法について説明します。 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。
 services: hdinsight
-documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8b00661e1561b4aa93be26994b20e33feac97ff6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271617"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952370"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
 HDInsight 用の Script Action スクリプトを記述する方法について説明します。 Script Action スクリプトの使用方法については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。 Linux ベースの HDInsight クラスターに関する同様の記事については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
@@ -103,10 +101,12 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 
 | Name | スクリプト |
 | --- | --- |
-| **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
-| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターへの R のインストールと使用][hdinsight-r-scripts] に関するページをご覧ください。 |
-| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
-| - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
+| **Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
+| **R のインストール** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1` [HDInsight クラスターでの R のインストールと使用](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)に関する記事を参照してください。 |
+| **Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
+| **Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
+| **Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
+
 
 Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。  詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]」をご覧ください。
 
@@ -116,7 +116,7 @@ Script Action は、Azure ポータル、Azure PowerShell から、または HDI
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>カスタム スクリプトのためのヘルパー メソッド
-Script Action ヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) で定義されています。次のサンプルを利用し、スクリプトに含めることができます。
+Script Action ヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) で定義されています。次のサンプルを利用することによってスクリプトに含めることができます。
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -169,7 +169,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
     たとえば、ドキュメントに用意されている Spark と R のカスタマイズされたクラスターのサンプルでは、ストレージ アカウント https://hdiconfigactions.blob.core.windows.net/ にリソースのローカル コピーがあります。
 * クラスターのカスタマイズ スクリプトはべき等にする
 
-    HDInsight クラスターのノードはクラスターの有効期間中に再イメージ化されることを予測する必要があります。 クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。 再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
+    クラスターの有効期間中に HDInsight クラスターのノードが再イメージ化されることを前提にする必要があります。 クラスターのカスタマイズ スクリプトは、クラスターが再イメージ化されるたびに実行されます。 再イメージ化の際に、クラスターの最初の作成時に初めてスクリプトが実行された直後と同じカスタマイズ状態に戻ることを確認するという意味で、このスクリプトはべき等であるように設計する必要があります。 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを D:\AppLocation にインストールする場合、その後スクリプトを実行するたびに、再イメージ化の際、スクリプトはアプリケーションが D:\AppLocation に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
 * 最適な場所にカスタム コンポーネントをインストールする
 
     クラスター ノードが再イメージ化されると、C:\ リソース ドライブと D:\ システム ドライブは再フォーマットされ、それらのドライブにインストールされたデータとアプリケーションが失われる可能性があります。 クラスターの一部である Azure 仮想マシン (VM) ノードが停止して、新しいノードに置き換えられた場合にも失われる可能性があります。 コンポーネントは D:\ ドライブやクラスタ上の C:\apps にインストールできます。 C:\ ドライブのその他の場所はすべて予約されています。 クラスターのカスタマイズのスクリプトに、アプリケーションやライブラリがインストールされる場所を指定します。

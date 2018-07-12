@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 563ee61b56af22ada662fcfff9f47ae58f3f32ba
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849932"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969097"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 回線とルーティング ドメイン
  接続プロバイダーを経由してオンプレミス インフラストラクチャを Microsoft に接続するには、 *ExpressRoute 回線* を注文する必要があります。 下の図は、お客様の WAN と Microsoft の接続を論理的に表現したものです。
@@ -73,15 +73,14 @@ Microsoft オンライン サービス (Office 365、Dynamics 365、Azure PaaS �
 ## <a name="routing-domain-comparison"></a>ルーティング ドメインの比較
 次の表は、3 つのルーティング ドメインを比較しています。
 
-|  | **プライベート ピアリング** | 
-  **パブリック ピアリング** (新規作成では非推奨) | **Microsoft ピアリング** |
+|  | **プライベート ピアリング** | **パブリック ピアリング** (新規作成では非推奨) | **Microsoft ピアリング** |
 | --- | --- | --- | --- |
 | **各ピアリングでサポートされるプレフィックスの最大数** |既定 4,000、ExpressRoute Premium 10,000 |200 |200 |
 | **サポートされる IP アドレス範囲** |お客様の WAN 内の任意の有効な IP アドレス。 |お客様または接続プロバイダーが所有するパブリック IP アドレス。 |お客様または接続プロバイダーが所有するパブリック IP アドレス。 |
 | **AS 番号の要件** |プライベートおよびパブリックの AS 番号。 いずれかを使用する場合はパブリックの AS 番号を所有している必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |
 | **サポート対象 IP プロトコル**| IPv4 | IPv4 | IPv4、IPv6 |
 | **ルーティング インターフェイスの IP アドレス** |RFC1918 およびパブリック IP アドレス |ルーティング レジストリに登録されているパブリック IP アドレス。 |ルーティング レジストリに登録されているパブリック IP アドレス。 |
-| **MD5 ハッシュのサポート** |はい |はい |はい |
+| **MD5 ハッシュのサポート** |[はい] |はい |[はい] |
 
 
 
@@ -90,7 +89,7 @@ Microsoft オンライン サービス (Office 365、Dynamics 365、Azure PaaS �
 3 つのピアリング セッションすべてを使用する場合は、BGP セッションのペアを 3 つ (ピアリングの種類ごとに 1 つのペア) 設定する必要があります。 BGP セッションのペアによって、高可用性リンクが実現されます。 レイヤー 2 接続プロバイダーを経由して接続している場合、ルーティングの構成と管理はお客様の責任となります。 詳細については、ExpressRoute を設定する [ワークフロー](expressroute-workflows.md) を参照してください。
 
 ## <a name="expressroute-health"></a>ExpressRoute の正常性
-[Network Performance Monitor](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
+[Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
 
 NPM は、Azure プライベート ピアリングと Microsoft ピアリングの正常性を監視します。  詳細については、こちらの[ブログ](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)を参照してください。
 

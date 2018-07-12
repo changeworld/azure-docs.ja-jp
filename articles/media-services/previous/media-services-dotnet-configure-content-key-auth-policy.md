@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: ed919d8ac9bf88e8a9385930cafaf7b2bc4d2143
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 531b90b905df8549846c6027fe547521d16cf082
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783641"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868502"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -215,7 +215,7 @@ Media Services SDK for .NET を使用する場合、TokenRestrictionTemplate ク
     TokenRestrictionTemplate tokenTemplate =
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+    // Generate a test token based on the data in the given TokenRestrictionTemplate.
     // Note, you need to pass the key id Guid because we specified 
     // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
     Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);

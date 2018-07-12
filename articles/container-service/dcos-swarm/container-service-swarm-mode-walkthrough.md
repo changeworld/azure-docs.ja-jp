@@ -2,19 +2,19 @@
 title: クイックスタート - Linux 用 Azure Docker CE クラスター
 description: Azure CLI を使用して Azure Container Service で Linux コンテナー用 Docker CE クラスターを作成する方法を簡単に説明します。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: cd52982fc650d5fd3b4edd8513946a721306a451
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164093"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903398"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE クラスターのデプロイ
 
@@ -58,7 +58,7 @@ az group create --name myResourceGroup --location ukwest
 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*mySwarmCluster* という名前のクラスターを作成します。
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 

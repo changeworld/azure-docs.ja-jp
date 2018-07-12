@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 8ef8d64ba90960281faffc350821d7934e35749a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117070"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38603180"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
@@ -281,5 +281,5 @@ Azure API Management サービスでは、API を経由して送受信される 
   * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
 * API Management と Event Hubs の統合の詳細
   * [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)
-  * [ロガーのエンティティ リファレンス](https://msdn.microsoft.com/library/azure/mt592020.aspx)
+  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)

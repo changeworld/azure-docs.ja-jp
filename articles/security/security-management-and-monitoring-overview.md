@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 9e538ac39af5b6df44860a4a70b0fd1e058c060c
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 10c2ed359fa77ad00945ddcfbc55dc0901ba8bff
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752290"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697107"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 Azure には、そのクラウド サービスと仮想マシン (VM) の管理と監視を支援するセキュリティ メカニズムが備わっています。 この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
@@ -100,8 +100,8 @@ Privileged Identity Management は、ロールまたは "ジャスト イン タ
 
 詳細情報:
 
-* [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-* [Azure AD Privileged Identity Management の使用](../active-directory/active-directory-privileged-identity-management-getting-started.md)
+* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
+* [Azure AD Privileged Identity Management の使用](../active-directory/privileged-identity-management/pim-getting-started.md)
 
 ## <a name="identity-protection"></a>Identity Protection
 Azure AD Identity Protection は、ビジネスを保護するために、不審なサインイン アクティビティと潜在的な脆弱性の統合ビューを提供します。 Identity Protection は、次のようなシグナルに基づいて、ユーザーおよび特権 (管理者) ID に対する不審なアクティビティを検出します。

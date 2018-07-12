@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 8763f1dca110a43586619c09f5d25c340c177b09
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: cbf6ac736db9935f5ec52fa4507dab1e56bcde43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300659"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611189"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ちます。 この保護によって、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証が可能になります。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) は、クラウド上の何千ものサービスとしてのソフトウェア (SaaS) アプリケーションへのシングル サインオン (SSO)、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
@@ -134,9 +134,9 @@ Azure AD Privileged Identity Management を使用することで、次のこと�
 
 詳細情報:
 
-* [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-* [Azure AD Privileged Identity Management におけるロール](../active-directory/active-directory-privileged-identity-management-roles.md)
-* [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](../active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
+* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
+* [Azure AD Privileged Identity Management におけるロール](../active-directory/privileged-identity-management/pim-roles.md)
+* [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Identity Protection
 Azure AD Identity Protection は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。 Identity Protection は、Azure AD 異常アクティビティ レポートで使用可能な既存の Azure AD の異常検出機能を活用します。 Identity Protection には、リアルタイムで異常を検出できる新しいリスク イベントの種類も導入されています。

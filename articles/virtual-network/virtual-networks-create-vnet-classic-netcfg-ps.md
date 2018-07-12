@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 3ca59df7496eeea3c5f8289b10dfa23e403f919f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797837"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38712948"
 ---
 # <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>PowerShell でのネットワーク構成ファイルを使用した仮想ネットワーク (クラシック) の作成
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "31797837"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-このドキュメントでは、従来のデプロイ モデルを使用して VNet を作成する方法を説明します。 [リソース マネージャーのデプロイメント モデルで仮想ネットワークを作成](quick-create-powershell.md)することもできます。
+このドキュメントでは、クラシック デプロイ モデルを使用して VNet を作成する方法を説明します。 [Resource Manager デプロイ モデルで仮想ネットワークを作成](quick-create-powershell.md)することもできます。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

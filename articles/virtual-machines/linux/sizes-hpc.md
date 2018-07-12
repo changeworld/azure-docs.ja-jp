@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 441e99b86e9560d47af8ea18a2633e3f37a05e94
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34653843"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37902131"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 

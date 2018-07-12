@@ -3,7 +3,7 @@ title: Azure REST API を使用して Linux 仮想マシンを作成する | Mic
 description: マネージド ディスクと SSH 認証を使用する Linux 仮想マシンを Azure REST API を使用して Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
-ms.author: iainfou
-ms.openlocfilehash: e3f41bea26e9a5ff45b31ae9d9a2e5955317ad7a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.author: cynthn
+ms.openlocfilehash: 0f77b46be0207b0ce96e6dc2562fb5298afbe36b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826221"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928184"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -49,7 +49,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-| 名前                       | 必須 | 種類                                                                                | 説明  |
+| Name                       | 必須 | type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | 文字列                                                                              | リソースの場所。 |
 | name                       |          | 文字列                                                                              | 仮想マシンの名前。 |
@@ -121,10 +121,10 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 バーチャル マシンの作成または更新操作には、2 種類の成功応答があります。
 
-| 名前        | 種類                                                                              | 説明 |
+| Name        | type                                                                              | 説明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成済み     |
+| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成日時     |
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 

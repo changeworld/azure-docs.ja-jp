@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
 ms.openlocfilehash: 0214aac013a20a72c54b29598268584cec6f60fc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30840162"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701796"
 ---
 # <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Azure VM の計画的メンテナンスのスケジュールを設定する方法
 > [!IMPORTANT]

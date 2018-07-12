@@ -16,11 +16,11 @@ ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: ee7f37f83d6b3503df1af61509f6f85ca19bc13e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29932747"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472953"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB の Web アプリを構築する
 

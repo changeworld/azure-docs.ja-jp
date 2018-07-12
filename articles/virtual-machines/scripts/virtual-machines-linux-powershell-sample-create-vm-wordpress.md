@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - WordPress | Microsoft 
 description: Azure PowerShell のサンプル スクリプト - WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19c03fea7f376a5a16a2eb77e3ebf1cc8189bb6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 07dcc2f8355c73859500e91d3b6dbe74e27b83c2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098364"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927708"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>PowerShell を使用して WordPress VM を作成する
 

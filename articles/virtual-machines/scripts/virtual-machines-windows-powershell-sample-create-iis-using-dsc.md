@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - DSC を使用する II
 description: Azure PowerShell のサンプル スクリプト - DSC を使用する IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: iainfou
-ms.openlocfilehash: 54ea4eba550a4a05c6041cbd9d1fa4f6fa24cc25
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: cynthn
+ms.openlocfilehash: d546af60b1e6a1c2c551c1824e0add0e83f806d5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100370"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930224"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
 

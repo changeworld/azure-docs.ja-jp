@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
 ms.openlocfilehash: 4208a7be3c002bcefed273015d002cb1aee0fecd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724977"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467666"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 

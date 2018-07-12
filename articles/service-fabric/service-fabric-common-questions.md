@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: a40432aa1d9a466706b4a3ebbcbd56cd8e5b768e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d864a663604794a249b08a7c7be471c3abba32af
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205564"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971538"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -29,9 +29,9 @@ Service Fabric で実行できる内容とその使用方法に関してよく�
 
 ### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書はどのようにロールバックするのですか?
 
-アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
+アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
  
-お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ことをお勧めします。
+お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ことをお勧めします。
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>複数の Azure リージョンまたは自らのデータセンターにまたがるクラスターを作成することはできますか?
 

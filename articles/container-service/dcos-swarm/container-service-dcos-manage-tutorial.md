@@ -2,19 +2,19 @@
 title: Azure Container Service チュートリアル - DC/OS の管理
 description: Azure Container Service チュートリアル - DC/OS の管理
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c06605db3044234f6171d8b784bafb7e7ce759e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 28c217430dcbc8ee17998742c31888e06dddf96f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168940"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902148"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service チュートリアル - DC/OS の管理
 

@@ -14,11 +14,11 @@ ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: f8283a5720b457b74c26852b01ad30a423bd450d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934735"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602912"
 ---
 # <a name="backup-and-restore-service"></a>サービスのバックアップと復元
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344833"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952540"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 Language Understanding (LUIS) は、カスタム機械学習をユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースのサービスです。 
@@ -99,7 +99,7 @@ LUIS には、エンティティを識別して分類するさまざまな方法
 LUIS アプリが発行され、ユーザーの実際の発話を受信した後、LUIS はさまざまな方法で予測精度を改善できます ([アクティブ ラーニング](#active-learning)ドメインの単語を含む[フレーズ リスト](#phrase-lists)、および必要な発話の数を減少させる[パターン](#patterns))。
 
 ### <a name="active-learning"></a>アクティブ ラーニング
-[アクティブ ラーニング](label-suggested-utterances.md) プロセスでは、レビューを行うエンドポイントで LUIS アプリが受け取った発話を選択することで、現実の世界の発話にアプリを順応させることができます。 エンドポイントでの予測の承認、修正、再トレーニング、および再発行を実行できます。 この反復処理によって、LUIS の学習は、最小限の時間と労力ですばやく実行されます。 
+[アクティブ ラーニング](luis-how-to-review-endoint-utt.md) プロセスでは、レビューを行うエンドポイントで LUIS アプリが受け取った発話を選択することで、現実の世界の発話にアプリを順応させることができます。 エンドポイントでの予測の承認、修正、再トレーニング、および再発行を実行できます。 この反復処理によって、LUIS の学習は、最小限の時間と労力ですばやく実行されます。 
 
 ### <a name="phrase-lists"></a>フレーズ リスト 
 LUIS では、重要な単語またはフレーズをドメイン モデルに指示できるように、[フレーズ リスト](luis-concept-feature.md)が用意されます。 LUIS は、これらのリストを使用して、それ以外の方法ではモデル内で検出されない単語またはフレーズに意味を追加します。

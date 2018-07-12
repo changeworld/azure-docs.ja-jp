@@ -16,11 +16,11 @@ ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 936077f9445ec38fe8d05314fdf20d8412fb8b06
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514287"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472732"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 

@@ -3,7 +3,7 @@ title: チュートリアル - Jenkins を使用して Azure に開発パイプ�
 description: チュートリアル - このチュートリアルでは、毎回のコードのコミット時に GitHub からプルを実行し、アプリを実行する新しい Docker コンテナーをビルドする Jenkins 仮想マシンを Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f50555775d369da7cf9321d5493bf4e1d84a7bf2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211193"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931730"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル: Jenkins、GitHub、および Docker を使用して Azure 内の Linux VM 上に開発インフラストラクチャを作成する
 
@@ -148,8 +148,8 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
 - ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
-- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します
-- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)
+- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/cynthn/nodejs-docs-hello-world*) を入力します
+- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/cynthn/nodejs-docs-hello-world.git*)
 - **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 - **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Testing"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。

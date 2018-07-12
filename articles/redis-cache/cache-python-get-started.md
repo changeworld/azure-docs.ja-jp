@@ -16,11 +16,11 @@ ms.date: 05/11/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: b03139bda44886eba13892b23dc17fd3f030cc3f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639539"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696890"
 ---
 # <a name="quickstart-use-azure-redis-cache-with-python"></a>クイック スタート: Python で Azure Redis Cache を使用する
 
@@ -115,7 +115,7 @@ Python でスクリプトを実行します。
 
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
-![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Delete](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
 

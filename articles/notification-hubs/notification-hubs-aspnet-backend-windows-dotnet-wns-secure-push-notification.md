@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 8d051107a5e114ed8aa5f4b5a629a439519157b3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777646"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696917"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 > [!div class="op_single_selector"]

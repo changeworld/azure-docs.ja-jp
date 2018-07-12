@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
-ms.openlocfilehash: 83d3a2d973604e3b8a709b24cabcb3abba1e304c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 080cb3ee536227e5ddce3fac856de79b2b061dcf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660298"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970770"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Azure マネージド サービス ID (プレビュー) から Azure AD の認証を受ける
 
@@ -22,7 +22,7 @@ Azure Storage は、[マネージド サービス ID](../../active-directory/man
 ストレージ コンテナーまたはキューのマネージド サービス ID にアクセス許可を付与するには、ストレージのアクセス許可を含む RBAC ロールを MSI に割り当てます。 ストレージの RBAC ロールについては、[RBAC でストレージ データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。 
 
 > [!IMPORTANT]
-> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage の Azure AD の統合の一般利用が宣言されるまでは利用できません。 ご利用のシナリオで Azure AD 統合がサポートされていない場合、お使いのアプリケーションでは、共有キー承認か SAS トークンを引き続き使用します。 プレビューの詳細については、[Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー)](storage-auth-aad.md) に関するページを参照してください。
+> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がまだサポートされていない場合、お使いのアプリケーションでは共有キー承認か SAS トークンを引き続き使用してください。 プレビューの詳細については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview) (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー))](storage-auth-aad.md)」を参照してください。
 >
 > プレビュー中、RBAC ロールの割り当ては反映に最大 5 分かかることがあります。
 
@@ -32,7 +32,7 @@ Azure Storage は、[マネージド サービス ID](../../active-directory/man
 
 VM から MSI を使用して Azure Storage の認証を受けるには、まず VM 上で MSI を有効にする必要があります。 MSI を有効にする方法については、以下のいずれかの記事を参照してください。
 
-- [Azure Portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)

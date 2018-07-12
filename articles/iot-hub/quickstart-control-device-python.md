@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.date: 04/30/2018
 ms.author: dobett
 ms.openlocfilehash: c48faa70154f59bae35045b623d6533c241115bb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330518"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611346"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Python)
 

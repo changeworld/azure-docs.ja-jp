@@ -5,16 +5,16 @@ services: active-directory
 author: daveba
 ms.author: daveba
 ms.date: 06/27/2018
-ms.topic: reference
+ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: b39d5144eacfe6d621dae54da66b1306db516476
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cdef4cf16fc688b61f367a77267be821ee84bf56
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060156"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902012"
 ---
 # <a name="services-that-support-managed-service-identity"></a>マネージド サービス ID をサポートするサービス 
 

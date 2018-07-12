@@ -2,19 +2,19 @@
 title: Azure Container Service クイックスタート - DC/OS のデプロイ
 description: Azure Container Service クイックスタート - DC/OS のデプロイ
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9893606943324f5a651cc800feeb86b8966dc15e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12a6e34db4134ffdb38428c0a38d94351747cc48
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167895"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900560"
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS クラスターのデプロイ
 

@@ -3,7 +3,7 @@ title: チュートリアル - Azure の Linux 仮想マシンに MEAN スタッ
 description: このチュートリアルでは、Azure 内の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6a9adcd03c5f75b4065273c4ccf657b01bc3d96d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8b472c5f1175f006e4c7a6574135460540bf2283
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190344"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720654"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 

@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: 8aa4d660fbf785a4caf99bcdeddc86aa9929c50d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627741"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969454"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -157,4 +157,4 @@ IoT Hub でデバイス ID を変更するには、[このガイド](https://mic
 ここでは、DevKit デバイスを IoT ソリューション アクセラレータに接続して、センサー データを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
 * [IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

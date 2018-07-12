@@ -3,15 +3,15 @@ title: Azure からオンプレミスへのフェールオーバーのために 
 description: Linux 仮想マシンを再保護する前に、Linux マスター ターゲット サーバーが必要になります。 そのインストール方法について説明します。
 author: nsoneji
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: article
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 338a104de6fadeff842e6e135db395758c8f8dce
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4443d8fcbf40240e1a7bd718416e522192b4efb3
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285935"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921071"
 ---
 # <a name="install-a-linux-master-target-server"></a>Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 

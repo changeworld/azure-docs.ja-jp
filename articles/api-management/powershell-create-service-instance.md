@@ -13,11 +13,11 @@ ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.openlocfilehash: 8ed6df3a0aee500192e401f1089925bf6e2d84d8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933850"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472629"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -36,7 +36,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 

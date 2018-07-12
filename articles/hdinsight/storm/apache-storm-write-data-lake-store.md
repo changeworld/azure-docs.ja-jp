@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131737"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903134"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
@@ -69,7 +69,7 @@ HdfsBolt は、ユーザーが指定したファイル スキームを使用し�
 
 ### <a name="example-configuration"></a>構成の例
 
-次の YAML は、この例に含まれている `resources/writetohdfs.yaml` ファイルからの抜粋です。 このファイルは、Apache Storm の [Flux](https://storm.apache.org/releases/1.1.0/flux.html) フレームワークを使用して Storm トポロジを定義します。
+次の YAML は、この例に含まれている `resources/writetohdfs.yaml` ファイルからの抜粋です。 このファイルは、Apache Storm の [Flux](https://storm.apache.org/releases/1.1.2/flux.html) フレームワークを使用して Storm トポロジを定義します。
 
 ```yaml
 components:
@@ -133,7 +133,7 @@ bolts:
 * `rotationPolicy`: ファイルをいつローテーションするかを定義します。 この例では、ローテーションは実行されません。
 * `hdfs-bolt`: 前のコンポーネントを `HdfsBolt` クラスの構成パラメーターとして使用します。
 
-Flux フレームワークの詳細については、「[https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)」を参照してください。
+Flux フレームワークの詳細については、「[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)」を参照してください。
 
 ## <a name="configure-the-cluster"></a>クラスターを構成する
 

@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
 ms.openlocfilehash: 1ad0fcd135e664b2b97fd16ebe851c817f567d7f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33201761"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38468208"
 ---
 # <a name="create-an-application-gateway-using-azure-powershell"></a>Azure PowerShell を使用してアプリケーション ゲートウェイを作成する
 

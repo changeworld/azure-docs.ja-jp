@@ -16,11 +16,11 @@ ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
 ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917406"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971861"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack 2012 R2 クラスターをデプロイする方法を示します。 クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。 クラスターを使用して、オンプレミスのクライアント コンピューターから Excel HPC サービスおよび SOA サービスを実行できます。 Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
@@ -87,7 +87,7 @@ Azure クイックスタート テンプレートを使用すると、Azure Port
    ![証明書をエクスポートする][cert]
 
 ### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>方法 2. HPC Pack IaaS デプロイ スクリプトを使用する
-HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデプロイするためのもう 1 つの汎用性の高い方法です。 クラシック デプロイ モデルでクラスターを作成しながら、テンプレートに Azure リソース マネージャー デプロイ モデルを使用します。 また、スクリプトは Azure Global サービスまたは Azure China サービスのサブスクリプションと互換性があります。
+HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデプロイするためのもう 1 つの汎用性の高い方法です。 クラシック デプロイ モデルでクラスターを作成しながら、テンプレートに Azure Resource Manager デプロイ モデルを使用します。 また、スクリプトは Azure Global サービスまたは Azure China サービスのサブスクリプションと互換性があります。
 
 **追加の前提条件**
 

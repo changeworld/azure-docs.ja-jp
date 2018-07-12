@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: de1ed0b85957413a254503fc72375866dfd1bea1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837159"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970861"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>UCI 成人収入予測データセットを使用したデータ サイエンス コード テスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -128,7 +128,7 @@ ms.locfileid: "34837159"
 
        ![テンプレートのリストおよび [空のプロセス] ボタン](./media/code-test/start_empty_process_template.PNG)
 
-    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを実行する場合、ここでは既定値を選択してかまいません。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/en-us/vsts/build-release/concepts/agents/agents?view=vsts)」を参照してください。
+    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを実行する場合、ここでは既定値を選択してかまいません。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts)」を参照してください。
     
        ![ビルドとエージェントの選択](./media/code-test/select_agent.PNG)
 

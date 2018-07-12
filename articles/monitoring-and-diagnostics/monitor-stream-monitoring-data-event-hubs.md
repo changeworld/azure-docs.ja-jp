@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/05/2018
+ms.date: 7/06/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 091076a86c7f1c3f83f20a47b8f351d050350c9a
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5e8d8947643494e06faaabb5335c52df5908303e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263465"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902991"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -102,7 +102,7 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
 * **IBM QRadar** - Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web サイト](http://www.ibm.com/support)からダウンロードすることができます。 Azure との統合の詳細については、[こちら](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)を参照してください。
 * **Splunk** -Splunk の設定によって、次の 2 つの方法があります。
     1. [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
-    2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/sebastus/AzureFunctionForSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
+    2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
 * **SumoLogic** - イベント ハブのデータを使用するように SumoLogic をセットアップする手順については、[こちら](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)を参照してください。
 
 ## <a name="next-steps"></a>次の手順

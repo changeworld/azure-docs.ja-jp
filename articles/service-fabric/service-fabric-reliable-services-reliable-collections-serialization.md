@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: b02d8924749abb0e2fe815b555d55767bf1e5cc1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8fb6f1767741e950b300fd297250a6b64656191c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207667"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952428"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -55,7 +55,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 
 カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がないため、汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
+[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)

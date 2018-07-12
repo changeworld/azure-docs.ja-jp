@@ -7,14 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: e02672ea76eada2d660b20f91c4417019d4efc97
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189836"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921003"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 

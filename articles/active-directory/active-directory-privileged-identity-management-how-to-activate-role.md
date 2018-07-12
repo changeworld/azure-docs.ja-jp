@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e0e9e01baccd71804b26282f288d19abff8ff8fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bc4280d6e0ac362712d3b406e2e32c42cf4a9be2
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444924"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952683"
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
@@ -44,11 +44,11 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 4. **[アクティブ化]** を選択します。 **[ロール アクティブ化要求]** ブレードが表示されます。
 5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに 1 回だけ行う必要があります。
    
-    ![ロール アクティブ化前の MFA の確認 - スクリーンショット][2]
+    ![ロール アクティブ化前の MFA の確認 - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png)
 6. テキスト フィールドにアクティブ化要求の理由を入力します。  一部のロールでは、トラブル チケット番号を入力するように求められます。
 7. **[OK]** を選択します。  ロールで承認が要求されない場合、アクティブ化されています。アクティブなロールの一覧にロールが表示されます (資格のあるロールの割り当ての一覧のすぐ下)。 ロールのアクティブ化に[承認が必要](./privileged-identity-management/azure-ad-pim-approval-workflow.md)な場合、ブラウザーの右隅にトースト通知が一時的に表示され、承認待ちになっていることが通知されます。
 
-    ![要求保留の通知 - スクリーンショット][3]
+    ![要求保留の通知 - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png)
 
 ## <a name="deactivate-a-role"></a>ロールの非アクティブ化
 ロールは、アクティブになった後、期限 (資格のある期間) に達すると自動的に非アクティブになります。
@@ -64,16 +64,9 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 4. [ロールのアクティブ化の詳細] ブレードで **[Activation is pending approval]\(アクティブ化で承認が保留になっています\)** バナーを選択します。
 5. **[承認待ち]** ブレードの上部にある **[キャンセル]** を選択します。
 
-   ![要求保留の取り消しのスクリーンショット][4]
+   ![要求保留の取り消しのスクリーンショット](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png)
 
 ## <a name="next-steps"></a>次の手順
 Azure AD Privileged Identity Management の詳細を、次のリンクで確認できます。
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png

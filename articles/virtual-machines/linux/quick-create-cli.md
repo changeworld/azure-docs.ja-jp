@@ -3,7 +3,7 @@ title: クイック スタート - Azure CLI 2.0 を使用して Linux VM を作
 description: このクイック スタートでは、Azure CLI 2.0 を使用して Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/24/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6536860bb75d068a96899f2d30ec7a6126a28436
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187931"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927633"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して Linux 仮想マシンを作成する
 
@@ -56,7 +56,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM とサポート リソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
+VM とサポートするリソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
 ```azurecli-interactive
 {

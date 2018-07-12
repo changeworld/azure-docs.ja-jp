@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
 ms.openlocfilehash: 1f4c74ab96fc9494d1b3c7dd626265516533330b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188465"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606349"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに LEMP Web サーバーをインストールする
 

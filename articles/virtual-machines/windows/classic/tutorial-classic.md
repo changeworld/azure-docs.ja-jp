@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 5fd2128ff436d3211f41c7dfdcc4c2b8aabd0eb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917831"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232328"
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Windows を実行する仮想マシンを Azure ポータルで作成する
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "30917831"
 <br>
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 **Azure Portal** を使って [Resource Manager デプロイメント モデルを使用してこれらの手順を実行する](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法について理解してください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 **Azure Portal** を使って [Resource Manager デプロイ モデルを使用してこれらの手順を実行する](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法について理解してください。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 このチュートリアルでは、Windows を実行する Azure 仮想マシン (VM) を Azure Portal で作成する方法について説明します。 例として Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。 イメージの選択肢は、サブスクリプションによって異なります。 たとえば、Windows デスクトップ イメージは MSDN サブスクライバーが使用できます。
@@ -46,6 +46,6 @@ ms.locfileid: "30917831"
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>次の手順
-* Azure Portal で [Resource Manager デプロイメント モデルを使用して VM を作成する](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法を理解します。
+* Azure Portal で [Resource Manager デプロイ モデルを使用して VM を作成する](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法を理解します。
 * 仮想マシンにログオンします。 手順については、 [Windows Server が実行されている仮想マシンへのログオン](connect-logon.md)に関する記事をご覧ください。
 * データを格納するディスクを接続します。 空のディスクと、データが含まれているディスクのどちらも接続できます。 手順については、「 [クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](attach-disk.md)」をご覧ください。

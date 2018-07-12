@@ -17,11 +17,11 @@ ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 9ba7d8c403a7778a52b858a41ad41bca405cb199
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31513987"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586923"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -70,7 +70,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 6. 新しい Cosmos DB アカウントを作成するときは、表で指定されているように **[新しいアカウント]** の設定を使います。
 
-    | Setting      | 推奨値  | [説明]                                |
+    | Setting      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
     | **API** | SQL | このトピックでは、SQL API を使用します。  |
@@ -106,7 +106,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
  
     ![taskCollection の定義](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
  
-    | Setting|推奨値|[説明] |
+    | Setting|推奨値|説明 |
     | ---|---|--- |
     | **[データベース ID]** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **[コレクション ID]** | 項目 | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |

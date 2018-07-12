@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/10/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3e53954341136a293052f9af755515a5552432fe
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300849"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38689002"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>スケーラビリティのために追加のプロセス サーバーを設定する
 

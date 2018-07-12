@@ -3,7 +3,7 @@ title: Azure CLI 2.0 でトラブルシューティング用 Linux VM を使用�
 description: Azure CLI 2.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明します
 services: virtual-machines-linux
 documentationCenter: ''
-authors: iainfoulds
+authors: cynthn
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
-ms.author: iainfou
-ms.openlocfilehash: 1b7c887be67d5d1a209f1647b567f5659f99fb44
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 8e164393b58604d74b9a794479f6e614b8da3d6c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938231"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931397"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
@@ -167,7 +167,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 ## <a name="create-vm-from-original-hard-disk"></a>元のハード ディスクから VM を作成する
 元の仮想ハード ディスクから VM を作成するには、[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)を使用します。 実際の JSON テンプレートは次のリンクにあります。
 
-- https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
+- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
 
 このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
 

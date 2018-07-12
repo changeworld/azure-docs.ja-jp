@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
 ms.openlocfilehash: 8b896705d90b51c056172c285a00dabeed54ebf2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068154"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697136"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>PowerShell を使用した内部ロード バランサー (クラシック) の作成の開始
 

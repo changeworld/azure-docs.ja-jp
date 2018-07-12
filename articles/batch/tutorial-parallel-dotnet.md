@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514004"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722815"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル: .NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -37,7 +37,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 以降のバージョン)。 
+* [Visual Studio 2017](https://www.visualstudio.com/vs)。 
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 

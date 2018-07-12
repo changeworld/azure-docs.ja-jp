@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: d0f4e292c6f5a2725b4a9efe91e78c6e634ea64e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30840907"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38605979"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 

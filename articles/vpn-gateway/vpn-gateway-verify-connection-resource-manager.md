@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
 ms.openlocfilehash: 037c1c7dd73f668bd8ad95568743b223b1e11c79
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750199"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705999"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 

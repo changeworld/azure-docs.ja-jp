@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
 ms.openlocfilehash: ee9990cb9a112dffe1a7c2980315146c2a1d7ca5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415607"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452350"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 

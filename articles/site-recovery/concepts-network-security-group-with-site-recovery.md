@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 2b35578e2dc49cd47689f62fc47c5341ea8767a4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0570a7fe0cb6f334d18f82b1f06d5fa770b5af8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660263"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921316"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery でのネットワーク セキュリティ グループ
 

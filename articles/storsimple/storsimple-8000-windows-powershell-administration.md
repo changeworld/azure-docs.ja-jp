@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743723"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696822"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627792"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970403"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -94,9 +94,9 @@ ms.locfileid: "34627792"
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>ダッシュボードの公開とデータの更新
 
-ダッシュボードを正常に作成した後、[Power BI ダッシュボードを公開](https://docs.microsoft.com/en-us/power-bi/desktop-upload-desktop-files)して他のユーザーと共有することをお勧めします。
+ダッシュボードを正常に作成した後、[Power BI ダッシュボードを公開](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files)して他のユーザーと共有することをお勧めします。
 
-また、公開されたダッシュボードで[データを更新](https://docs.microsoft.com/en-us/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
+また、公開されたダッシュボードで[データを更新](https://docs.microsoft.com/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

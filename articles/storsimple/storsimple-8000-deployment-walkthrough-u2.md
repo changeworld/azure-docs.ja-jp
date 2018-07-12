@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189753"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698615"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -40,7 +40,7 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。 これ�
 ## <a name="deployment-steps"></a>デプロイメントの手順
 StorSimple デバイスを構成し、StorSimple デバイス マネージャー サービスに接続するには、次の必須手順を実行します。 必須手順に加えて、デプロイ中にオプションの手順が必要になる場合があります。 デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
-| 手順 | [説明] |
+| 手順 | 説明 |
 | --- | --- |
 | **前提条件** |これらの前提条件は、今回のデプロイの準備として完了する必要があります。 |
 | [デプロイの構成チェック リスト](#deployment-configuration-checklist) |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |

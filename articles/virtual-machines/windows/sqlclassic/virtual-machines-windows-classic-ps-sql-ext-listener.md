@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 38bb77c6b1d083bd6b52b785a991f24965d00e12
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29398864"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698636"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Azure での AlwaysOn 可用性グループの外部リスナーの構成
 > [!div class="op_single_selector"]

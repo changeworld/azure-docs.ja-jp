@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025357"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860005"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
@@ -93,7 +93,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 ## <a name="whats-new-for-january-2017"></a>2017 年 1 月の新機能 
 2017 年 1 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification) に準拠しています。
+*   Azure Data Catalog は [CSA STAR](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-certification) に準拠しています。
 *   [Excel 2016 と Power Query for Excel での取得と変換](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605)との統合。 Excel ユーザーは、Excel 内から Azure Data Catalog を使用してクエリの共有とクエリの検出ができます。 この機能は、Power BI Pro ライセンスを持つユーザーが利用できます。
 
 ## <a name="whats-new-for-december-2016"></a>2016 年 12 月の新機能
@@ -105,7 +105,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 ## <a name="whats-new-for-november-2016"></a>2016 年 11 月の新機能
 2016 年 11 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [ISO/IEC 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001) および [ISO/IEC 27018](https://www.microsoft.com/TrustCenter/Compliance/iso-iec-27018) に準拠しています。
+*   Azure Data Catalog は [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) および [ISO/IEC 27018](https://www.microsoft.com/en-us/TrustCenter/Compliance/iso-iec-27018) に準拠しています。
 *   Data Catalog ポータルおよび REST API を使用した ODBC データ ソースの手動登録のサポート。
 
 ## <a name="whats-new-for-september-2016"></a>2016 年 9 月の新機能

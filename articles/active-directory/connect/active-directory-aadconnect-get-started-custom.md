@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849993"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473988"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -67,7 +67,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。 チャレンジは確認コードの入力か音声通話によって行うことができます。  
 ![User Sign in MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-グローバル管理者アカウントは [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) も有効になっている可能性があります。
+グローバル管理者アカウントは [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) も有効になっている可能性があります。
 
 接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 
@@ -123,7 +123,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ![一意](./media/active-directory-aadconnect-get-started-custom/unique.png)
 
-| 設定 | 説明 |
+| Setting | 説明 |
 | --- | --- |
 | [ユーザーはフォレスト全体で 1 回だけ表されます](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。 オブジェクトは、メタバースに結合されません。 |
 | [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。 連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。 このオプションを選択した場合、メール属性が設定されていないユーザー オブジェクトは、Azure AD との間で同期されません。 |
@@ -134,7 +134,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Azure AD でのユーザーの識別方法を選択する - ソース アンカー
 sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変更できない属性です。 オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。
 
-| 設定 | 説明 |
+| Setting | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択すると、Azure AD Connect ウィザードが sourceAnchor 属性選択ロジックを適用します。このロジックについては、「[Azure AD Connect: 設計概念](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)」の「Using msDS-ConsistencyGuid as sourceAnchor (sourceAnchor としての msDS-ConsistencyGuid の使用)」セクションで説明されています。 どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |

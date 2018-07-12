@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 4489f194329727160d770ab72d9cd36115f2e64d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: daveba
+ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594759"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904307"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>チュートリアル: Linux VM のマネージド サービス ID を使用して Azure Data Lake Store にアクセスする
 

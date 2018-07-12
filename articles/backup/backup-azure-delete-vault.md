@@ -1,19 +1,19 @@
 ---
 title: Azure の Recovery Services コンテナーを削除する
 description: この記事では、Recovery Services コンテナーを削除する方法について説明します。 この記事には、コンテナーを削除しようとしているのに削除できない場合のトラブルシューティングの手順が含まれています。
-services: service-name
+services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 7/6/2018
 ms.author: markgal
-ms.openlocfilehash: d8169eba6790e49a85d69434663faabe7430942e
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 5a3a67a41525d30b73bb203eeeacbdf49bb35193
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937602"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901852"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
@@ -77,7 +77,7 @@ Recovery Services コンテナーを削除するには:
 
 4. 次のコマンドを実行して、Azure Resource Manager クライアント パッケージを chocolately.org からダウンロードします。
 
-    `iex ((New-Object System.Net.WebClient) DownloadString('https://chocolatey.org/install.ps1))`
+    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
 5. 次のコマンドを使用して、Azure Resource Manager API クライアントをインストールします。
 

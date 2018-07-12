@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: v-sharos
 ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103610"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452619"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの更新
 > [!NOTE]
-> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+> StorSimple のクラシック ポータルは非推奨となる予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
 
 ## <a name="overview"></a>概要
 StorSimple の更新プログラムの機能を使用すると、StorSimple デバイスを簡単に最新の状態に保つことができます。 更新プログラムの種類に応じて、Azure クラシック ポータルまたは Windows PowerShell インターフェイスを使用して、デバイスに更新プログラムを適用できます。 このチュートリアルでは、更新プログラムの種類とそれぞれのインストール方法について説明します。

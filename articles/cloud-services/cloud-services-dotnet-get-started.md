@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 66ece0affbafc219add2ef5c4da34f29ab34e058
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342295"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860022"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -178,7 +178,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
     クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。 データ センター内の帯域幅は無料です。
 
-    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。 このチュートリアルでは、アフィニティ グループを使用しません。 詳細については、 [Azure でアフィニティ グループを作成する方法に関するページ](http://msdn.microsoft.com/library/jj156209.aspx)を参照してください。
+    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。 このチュートリアルでは、アフィニティ グループを使用しません。 詳細については、 [Azure でアフィニティ グループを作成する方法に関するページ](https://msdn.microsoft.com/library/azure/gg715317.aspx)を参照してください。
 7. **Create** をクリックしてください。
 
     ![新しいストレージ アカウント ](./media/cloud-services-dotnet-get-started/newstorage.png)

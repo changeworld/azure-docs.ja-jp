@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: 75ff53d5be29af08bb8e9c1b41f61040e5710cf7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635323"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452517"
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 Thing Dev をクラウドの Azure IoT Hub に接続する
 

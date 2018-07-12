@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 70eab088ce87d8a62d3f258b70aaec5e2e147d0e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 73b85e99ae1c100cefd50a1f2136a6b526490776
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400641"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868958"
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>リモート デスクトップによる HDInsight での Hive と Hadoop の使用
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

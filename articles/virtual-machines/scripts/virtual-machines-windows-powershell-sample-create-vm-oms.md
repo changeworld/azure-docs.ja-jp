@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - OMS | Microsoft Docs
 description: Azure PowerShell のサンプル スクリプト - OMS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bbeae35957ac59dc0b7a5ae10601032c080824c2
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5befcb526f6337c05c33bb9b13aa1354ee046248
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097638"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930370"
 ---
 # <a name="create-an-operations-management-suite-monitored-vm-with-powershell"></a>PowerShell を使用して Operations Management Suite によって監視される VM を作成する
 

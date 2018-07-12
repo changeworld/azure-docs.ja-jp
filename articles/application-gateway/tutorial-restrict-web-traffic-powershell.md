@@ -12,11 +12,11 @@ ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 0ef9ad7705c240e1c06c80ba3b765fa7aad8c70a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598846"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602894"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 

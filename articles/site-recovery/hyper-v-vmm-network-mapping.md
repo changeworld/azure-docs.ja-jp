@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 35a2fe2373ccbf24c73cd63c096145da19dc6c4c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076368"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921265"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Azure への Hyper-V VM レプリケーションのネットワーク マッピングを準備する
 

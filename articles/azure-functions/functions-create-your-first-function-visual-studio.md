@@ -18,11 +18,11 @@ ms.date: 05/22/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, 23113853-34f2-4f
 ms.openlocfilehash: c5d09e03eb79d89604cba6d9533051bb9b50ce90
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084843"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467860"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 

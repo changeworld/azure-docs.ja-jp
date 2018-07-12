@@ -3,7 +3,7 @@ title: チュートリアル - Azure 仮想マシン スケール セットの�
 description: Azure CLI 2.0 を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc8c58efcaeb5491eb23257e470f42a8d7cfd5c1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a076603519cdce5a16881e0f0703d8187001e058
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246765"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452551"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -31,7 +31,7 @@ ms.locfileid: "30246765"
 > * VM イメージを選択して使用する
 > * 特定の VM インスタンス サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -96,7 +96,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information"></a>接続情報を一覧表示する
-パブリック IP アドレスは、トラフィックを個々の VM インスタンスにルーティングするロード バランサーに割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
+トラフィックを個々の VM インスタンスにルーティングするロード バランサーに、パブリック IP アドレスが割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
 
 スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用します。
 
@@ -106,7 +106,7 @@ az vmss list-instance-connection-info \
   --name myScaleSet
 ```
 
-次の出力例には、インスタンス名、ロード バランサーのパブリック IP アドレス、および NAT 規則によってトラフィックが転送されるポート番号が示されています。
+次の出力例には、インスタンス名、ロード バランサーのパブリック IP アドレス、および NAT 規則によってトラフィックが転送される先のポート番号が示されています。
 
 ```bash
 {
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
-チュートリアルの開始時にスケール セットを作成したとき、既定で 2 つの VM インスタンスがデプロイされました。 [az vmss create](/cli/azure/vmss#az_vmss_create) と共に `--instance-count` パラメーターを指定して、スケール セットに作成されるインスタンスの数を変更することができます。 既存のスケール セット内の VM インスタンスの数を増やすか、または減らすために、手動でその容量を変更できます。 スケール セットでは、必要な数の VM インスタンスを作成または削除した後、トラフィックを分散するようにロード バランサーを構成します。
+チュートリアルの開始時にスケール セットを作成したとき、既定で 2 つの VM インスタンスがデプロイされました。 [az vmss create](/cli/azure/vmss#az_vmss_create) と共に `--instance-count` パラメーターを指定して、スケール セットに作成されるインスタンスの数を変更することができます。 既存のスケール セット内の VM インスタンスの数を増減するには、手動でその容量を変更します。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
 
 スケール セット内の VM インスタンスの数を手動で増減させるには、[az vmss scale](/cli/azure/vmss#az_vmss_scale) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
 
@@ -267,7 +267,7 @@ az vmss show \
 これで、スケール セットを作成し、接続情報を一覧表示し、VM インスタンスに接続することができます。 VM インスタンスに異なる OS イメージを使用する方法、別の VM サイズを選択する方法、インスタンス数を手動でスケーリングする方法についても学習しました。 日常の管理の一環として、スケール セット内の VM インスタンスの停止、起動、または再起動が必要になる場合があります。
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを停止および割り当て解除する
-スケール セット内の 1 つ以上の VM インスタンスを停止するには、[az vmss stop](/cli/azure/vmss#az_vmss_stop) を使用します。 `--instance-ids` パラメーターには、停止する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM インスタンスが停止されます。 次の例では、インスタンス *1* を停止します。
+スケール セット内の 1 つ以上の VM インスタンスを停止するには、[az vmss stop](/cli/azure/vmss#az_vmss_stop) を使用します。 `--instance-ids` パラメーターには、停止する VM インスタンスを 1 つ以上指定できます。 インスタンス ID を指定しないと、スケール セット内のすべての VM インスタンスが停止されます。 次の例では、インスタンス *1* を停止します。
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
@@ -310,7 +310,7 @@ az group delete --name myResourceGroup --no-wait --yes
 > * VM イメージを選択して使用する
 > * 特定の VM サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 次のチュートリアルに進み、スケール セット ディスクについて確認してください。
 

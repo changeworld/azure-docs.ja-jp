@@ -8,22 +8,22 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 03e3aaad810f6ccd5fb376765ddbada072dedb06
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 33ab56003f2d9428816ea0f32cfd6381ea857df3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301305"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611290"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Server AlwaysOn 可用性グループにリホストする
 
 この記事では、Contoso が SmartHotel アプリを Azure でリホストする方法について説明します。 アプリのフロントエンド VM を Azure VM、アプリのデータベースを Azure SQL Server VM に移行し、SQL Server AlwaysOn 可能性グループを含む Windows Server フェールオーバー クラスターで実行するようにします。
 
-このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の 1 つです。 このシリーズには背景情報やシナリオが含まれ、移行インフラストラクチャのセットアップ、移行のためのオンプレミス リソースへのアクセス、およびさまざまな種類の移行の実行が説明されています。 シナリオが複雑になってきているため、いずれ記事が追加される予定です。
+このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の 1 つです。 このシリーズには背景情報やシナリオが含まれ、移行インフラストラクチャのセットアップ、移行のためのオンプレミス リソースへのアクセス、およびさまざまな種類の移行の実行が説明されています。 シナリオが複雑になってきているため、さらに記事が追加される予定です。
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズおよび使用するサンプル アプリの概要を示します。 | 使用可能
+[記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズ、および使用するサンプル アプリの概要を示します。 | 使用可能
 [記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えてオンプレミスおよび Azure インフラストラクチャをどのように準備するかを説明します。 移行に関するすべてのアーティクルでは同じインフラストラクチャが使用されます。 | 使用可能
 [記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md)  | VMware で実行されているオンプレミスの 2 階層 SmartHotel アプリの評価を Contoso が実行する方法を説明します。 Contoso は、アプリの VM は [Azure Migrate](migrate-overview.md) サービスを使用して、アプリの SQL Server データベースは [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) を使用して評価します。 | 使用可能
 [記事 4: Azure VM および SQL Managed Instance へのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、SmartHotel アプリの Azure へのリフトアンドシフト移行を実行する方法を説明します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行し、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用してアプリのデータベースを SQL Managed Instance に移行します。 | 使用可能
@@ -50,7 +50,7 @@ IT リーダーシップ チームは、ビジネス パートナーと密接に
 Contoso クラウド チームは、この移行の目標を設定しました。 これらの目標を使用して、最良の移行方法を決定しました。
 
 - 移行しても、Azure のアプリは、現在の VMWare と同じパフォーマンスを発揮できる必要があります。  このアプリは、オンプレミスの場合と同じくクラウドでもクリティカルです。
-- Contoso は、このアプリに投資したくないと考えています。  このアプリはビジネスにとって重要なものですが、現在の形で確実にクラウドに移行することだけを望んでいます。
+- Contoso は、このアプリへの投資は望んでいません。  このアプリはビジネスにとって重要なものですが、現在の形で確実にクラウドに移行することだけを望んでいます。
 - このアプリのオンプレミス データベースでは、可用性の問題が発生しています。 このデータベースをフェールオーバー機能を備えた高可用性クラスターとして Azure にデプロイすることを望んでいます。
 - Contoso は、現在の SQL Server 2008 R2 プラットフォームを SQL Server 2017 にアップグレードしようとしています。
 - Contoso は、このアプリに Azure SQL Database を使用したくないと考えており、別のデータベースを探しています。
@@ -61,9 +61,9 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 
 - アプリは 2つの VM (WEBVM および SQLVM) に階層化されています。
 - VM は、VMware ESXi ホスト **contosohost1.contoso.com** (バージョン 6.5) 上にあります。
-- VMware 環境は、VM 上で実行中の vCenter Server 6.5 (**vcenter.contoso.com**) によって管理されます。
+- VMware 環境は、VM 上で実行中の vCenter Server 6.5 (**vcenter.contoso.com**) によって管理されています。
 - Contoso にはオンプレミスのデータセンター (contoso-datacenter) があり、そこにオンプレミスのドメイン コントローラー (**contosodc1**) が含まれています。
-- 移行が完了すると、Contoso データセンター内のオンプレミス VM は、使用が停止されます。
+- Contoso データセンター内のオンプレミス VM は、移行が行われた後に使用停止にされます。
 
 ![シナリオのアーキテクチャ](media/contoso-migration-rehost-vm-sql-ag/architecture.png) 
 
@@ -576,7 +576,7 @@ SQL デプロイを設定する最後のステップとして、Contoso は内�
 **さらにサポートが必要な場合**
 - [可用性グループ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#create-the-availability-group)と[リスナー](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-tutorial#configure-listener)を作成する方法を参照します。
 - 手動で[クラスターがロード バランサーの IP アドレスを使用するように設定](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener#configure-the-cluster-to-use-the-load-balancer-ip-address)します。
-- SAS の作成および使用については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+- SAS の作成および使用については、[こちら](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
 
 
 ## <a name="step-8-migrate-the-vm-with-site-recovery"></a>ステップ 8: Site Recovery で VM を移行する

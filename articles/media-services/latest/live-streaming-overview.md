@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: juliako
-ms.openlocfilehash: b8c9375d8ad915200cbc8b2e1a62979fd1b7d179
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35237085"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972181"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -32,7 +32,7 @@ Azure Media Services を使用してライブ ストリーミング イベント
 
 ## <a name="overview-of-main-components"></a>主要コンポーネントの概要
 
-Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ストリーミング コンテンツの処理をつかさどります。 LiveEvent は入力エンドポイントであり、その取り込み URL をオンプレミスのライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーから RTMP 形式または Smooth Streaming 形式でライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーム配信できる状態にします。 ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) を通じて制御することができます。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 
+Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ストリーミング コンテンツの処理をつかさどります。 LiveEvent は入力エンドポイントであり、その取り込み URL をオンプレミスのライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーから RTMP 形式または Smooth Streaming 形式でライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーム配信できる状態にします。 ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を通じて制御することができます。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 
 
 Media Services には**ダイナミック パッケージ**機能があり、MPEG DASH、HLS、Smooth Streaming ストリーミング形式でコンテンツをプレビューして配信することができます。つまり、これらのストリーミング形式に手動で再パッケージ化する必要がありません。 HLS、DASH、Smooth のいずれかと互換性があれば、どのようなプレーヤーでも再生することができます。 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) を使用して、ストリームをテストすることもできます。
 
@@ -101,7 +101,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 ## <a name="liveoutput"></a>LiveOutput
 
-ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) を通じて制御することができます。 LiveEvent と LiveOutput の関係は、従来のメディアと似ています。チャネル (LiveEvent) が絶えずコンテンツのストリームを配信するのに対し、プログラム (LiveOutput) は、その LiveEvent 上で決まった時間に生じるイベントです。
+ライブ ストリームの公開、レコーディング、DVR ウィンドウ設定は、[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を通じて制御することができます。 LiveEvent と LiveOutput の関係は、従来のメディアと似ています。チャネル (LiveEvent) が絶えずコンテンツのストリームを配信するのに対し、プログラム (LiveOutput) は、その LiveEvent 上で決まった時間に生じるイベントです。
 録画されたコンテンツの保持時間は、LiveOutput の **ArchiveWindowLength** プロパティで設定できます。 **ArchiveWindowLength** は、アーカイブ ウィンドウの長さを ISO 8601 形式で表した期間です (Digital Video Recorder または DVR)。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。 
 
 クライアントが現在のライブ位置からさかのぼってシークできる最長時間も **ArchiveWindowLength** によって決まります。 LiveOutput は、指定された時間の長さまでは放送できますが、アーカイブ ウィンドウの長さを過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。

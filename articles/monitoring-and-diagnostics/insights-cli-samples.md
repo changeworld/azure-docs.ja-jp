@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 571e4707cd89f1d159928845eca955801ffb9209
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262404"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971647"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Azure Monitor の CLI 2.0 クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI をまだインストールしていない場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」の手順に従います。 [Azure Cloud Shell](/azure/cloud-shell) を使用して、ブラウザーの対話型機能として CLI を実行することもできます。 使用可能なすべてのコマンドについては、[Azure Monitor CLI リファレンス](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest)をご覧ください。 
+Azure CLI をまだインストールしていない場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」の手順に従います。 [Azure Cloud Shell](/azure/cloud-shell) を使用して、ブラウザーの対話型機能として CLI を実行することもできます。 使用可能なすべてのコマンドについては、[Azure Monitor CLI リファレンス](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)をご覧ください。 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 まず、Azure アカウントにログインします。

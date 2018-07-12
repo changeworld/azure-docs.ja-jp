@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: b39259fcfc93cb0a2a1a2dc600e5235da8cc6930
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935789"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488953"
 ---
 # <a name="edit-an-api"></a>API の編集
 

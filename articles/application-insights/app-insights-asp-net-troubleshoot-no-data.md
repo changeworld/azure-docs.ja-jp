@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8253dfb6525496c78515a9382778a767f7da0771
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063580"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971042"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
@@ -41,7 +41,7 @@ ms.locfileid: "37063580"
 *ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](app-insights-windows-desktop.md)できます。
-* [Visual Studio 2013 Update 3 以降](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
+* [Visual Studio 2013 Update 3 以降](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
 * **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、アンインストールしてから Application Insights Tools を再インストールしてください。
 

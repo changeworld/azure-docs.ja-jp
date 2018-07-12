@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: carlrab
 ms.openlocfilehash: e88c069bed40bcdf1eae9d356403cc772a11ea85
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346571"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704775"
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
 

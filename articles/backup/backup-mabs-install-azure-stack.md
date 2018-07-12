@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753355"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970885"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -338,7 +338,7 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 
 ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルのホワイトリストに以下のドメイン アドレスを追加します。
 
-- www.msftncsi.com
+- `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
 - \*.microsoftonline.com

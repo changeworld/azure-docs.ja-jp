@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de8b53756c64867c9b24bcd609e5b994e870da9f
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 7daaf042d22ba4ac0369b732b586a3760d8cd51c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285585"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859576"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
 
@@ -61,7 +61,8 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
   |---------|---------|
   |**イメージの種類**|Marketplace (Linux/Windows)|
   |**発行元**     |MicrosoftWindowsServer|
-  |**プラン**     |WindowsServer|
+  |
+  **プラン**     |WindowsServer|
   |**SKU**     |2012-R2-Datacenter-smalldisk|
 
   ![プールのオペレーティング システムの選択][pool_os] 

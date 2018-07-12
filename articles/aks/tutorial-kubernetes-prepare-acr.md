@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e72ec06f7c682e68ca94ba5d4044d1d9974b0b24
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1e512bdd0a7df50b19fa49bd7b83632499775b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37101045"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927725"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -122,7 +122,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list][az-acr-repository-list] コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list][az-acr-repository-list] コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

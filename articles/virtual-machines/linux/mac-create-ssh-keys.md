@@ -3,7 +3,7 @@ title: Azure での Linux VM 用の SSH キー ペアの作成と使用 | Micros
 description: Azure 内に Linux VM 用の SSH 公開キーと秘密キーのペアを作成し、認証プロセスのセキュリティを向上させる方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: iainfou
-ms.openlocfilehash: 137fb13ff286e5284b8e8910834913ec9f1d48a9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: cynthn
+ms.openlocfilehash: 2e3d86d776f44c47a33bf075cf7f2140a3940e5e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31602632"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928456"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用の SSH 公開キー ファイルと秘密キー ファイルのペアを短時間で生成して使用する方法について説明します。 これらの手順は、Azure Cloud Shell、macOS または Linux ホスト、Windows Subsystem for Linux、および OpenSSH をサポートするその他のツールを使用して完了できます。 

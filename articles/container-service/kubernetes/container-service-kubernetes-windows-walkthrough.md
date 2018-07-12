@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165001"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485446"
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Windows コンテナー用の Kubernetes クラスターをデプロイする
 

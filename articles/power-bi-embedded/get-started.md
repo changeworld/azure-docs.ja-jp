@@ -15,16 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 33d948ee283ff3ee873e2f17ee07a7a889889925
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716025"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969495"
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded の概要
 
-**Power BI Embedded** は、独立系ソフトウェア ベンダー (ISV) および開発者が自分たちのアプリケーションに魅力的なビジュアル、レポート、ダッシュボードをすばやく追加できるサービスで、容量と利用時間に基づく課金モデルを採用しています。
+
+  **Power BI Embedded** は、独立系ソフトウェア ベンダー (ISV) および開発者が自分たちのアプリケーションに魅力的なビジュアル、レポート、ダッシュボードをすばやく追加できるサービスで、容量と利用時間に基づく課金モデルを採用しています。
 
 ![埋め込みフローの図](media/get-started/introduction.png)
 
@@ -49,7 +50,7 @@ AAD にアプリケーションを登録したら、アプリケーションに 
 アプリケーションを運用環境に移行するには、Microsoft Azure に Power BI Embedded の容量を作成します。 容量を作成する方法については、「[Create Power BI Embedded capacity in the Azure portal](create-capacity.md) (Azure Portal で Power BI Embedded の容量を作成する)」を参照してください。
 
 > [!IMPORTANT]
-> 埋め込みトークンは開発者テストだけを目的としているため、Power BI のマスター アカウントが生成できる埋め込みトークンの数には制限があります。 実稼働の埋め込みシナリオのためには、[容量を購入する必要があります](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 専用の容量を購入した場合、埋め込みトークンの生成に制限はありません。 [Get Available Features](https://msdn.microsoft.com/en-us/library/mt846473.aspx) を参照して、パーセンテージでの現在の埋め込みの使用率を確認してください。
+> 埋め込みトークンは開発者テストだけを目的としているため、Power BI のマスター アカウントが生成できる埋め込みトークンの数には制限があります。 実稼働の埋め込みシナリオのためには、[容量を購入する必要があります](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 専用の容量を購入した場合、埋め込みトークンの生成に制限はありません。 [Get Available Features](https://msdn.microsoft.com/library/mt846473.aspx) を参照して、パーセンテージでの現在の埋め込みの使用率を確認してください。
 
 容量は Power BI 管理ポータルで管理します。 アプリのワークスペースについて支援が必要な場合には、ワークスペース管理者を割り当てます。 詳細については、「[Power BI Premium および Power BI Embedded の容量を管理する](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/)」を参照してください。
 

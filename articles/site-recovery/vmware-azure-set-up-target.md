@@ -6,14 +6,14 @@ author: bsiva
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 5f14bbed7ae59737f62fb736591775cb7ba495c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4b428dff1cebf353cc081696649494e6e4ec9b92
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29811069"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921112"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Azure への VMware レプリケーションのターゲット環境を準備する
 

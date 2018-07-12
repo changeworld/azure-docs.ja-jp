@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
 ms.openlocfilehash: 4a4c9949843b16ae6be2f516de4fd1e3f7415959
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23044927"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38712967"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Ruby で Service Bus のトピックとサブスクリプションを使用する方法
  
@@ -158,7 +158,7 @@ azure_service_bus_service.delete_topic("test-topic")
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)。

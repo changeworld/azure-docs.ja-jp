@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: davidmu
 ms.openlocfilehash: 820a5860487c1d9eb112c4821281ba14ffe9264e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912456"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705767"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 

@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447559"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952462"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でセキュリティ アラートを構成する方法
 ## <a name="security-alerts"></a>セキュリティのアラート
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
 
-![PIM ダッシュボードのセキュリティ アラート - スクリーンショット][1]
+![PIM ダッシュボードのセキュリティ アラート - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | アラート: | 重大度 | トリガー | 推奨 |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ ms.locfileid: "37447559"
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードで **[Azure AD Privileged Identity Management]** タイルを選択します。
 2. **[特権ロールの管理]** > **[設定]** > **[通知の設定]** の順に選択します。
    
-    ![セキュリティ アラートの設定への移動][2]
+    ![セキュリティ アラートの設定への移動](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>"ロールをアクティブ化する頻度が高すぎます" アラート
 このアラートは、ユーザーが指定期間内に同じ特権ロールを複数回アクティブ化するとトリガーされます。 期間とアクティブ化の回数の両方を構成できます。
@@ -66,8 +66,3 @@ ms.locfileid: "37447559"
 
 ## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png

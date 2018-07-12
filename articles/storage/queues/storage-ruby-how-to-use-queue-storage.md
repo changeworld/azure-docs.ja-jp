@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27993638"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719075"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

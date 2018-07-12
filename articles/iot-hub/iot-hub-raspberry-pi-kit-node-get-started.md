@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 034a864cd98bb383e97f1def8eff1c6f9842a554
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 144669e52b8883f4dcebde02a487da865e198e5b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635748"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452602"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -45,7 +45,7 @@ ms.locfileid: "34635748"
 ![必要なもの](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2 ボードまたは Raspberry Pi 3 ボード。
-* 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * Pi に接続するモニター、USB キーボード、およびマウス。
 * Mac か、Windows または Linux を実行している PC。
 * インターネット接続。
@@ -60,9 +60,8 @@ ms.locfileid: "34635748"
 * 6 つの F/M ジャンパー ワイヤ。
 * 拡散型 10 mm LED。
 
-
 > [!NOTE] 
-省略可能な項目がない場合は、シミュレートされたセンサー データをご利用いただけます。
+> 省略可能な項目がない場合は、シミュレートされたセンサー データをご利用いただけます。
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -73,34 +72,44 @@ ms.locfileid: "34635748"
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Stretch をダウンロードします](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (.zip ファイル)。
+
+   a. [Raspbian Stretch をダウンロードします](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (.zip ファイル)。
 
    > [!WARNING]
    > `raspbian-2017-07-5` zip イメージをダウンロードするには、上のリンクを使用してください。 最新バージョンの Raspbian イメージには Wiring-Pi ノードに関する既知の問題がいくつかあるため、次の手順でエラーが発生するおそれがあります。
-   1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
+ 
+   b. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 
-1. microSD カードに Raspbian をインストールします。
-   1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
-   1. Etcher を実行し、手順 1. で抽出した Raspbian イメージを選択します。
-   1. microSD カード ドライブを選択します。 Etcher では適切なドライブが既に選択されている場合があります。
-   1. [Flash (フラッシュ)] をクリックして、microSD カードに Raspbian をインストールします。
-   1. インストールが完了したら、コンピューターから microSD カードを取り出します。 Etcher では完了時に microSD カードを自動的に取り出すか、マウント解除するため、microSD カードを直接取り出しても問題ありません。
-   1. microSD カードを Pi に挿入します。
+2. microSD カードに Raspbian をインストールします。
+
+   a. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
+
+   b. Etcher を実行し、手順 1. で抽出した Raspbian イメージを選択します。
+
+   c. microSD カード ドライブを選択します。 Etcher では適切なドライブが既に選択されている場合があります。
+
+   d. [Flash (フラッシュ)] をクリックして、microSD カードに Raspbian をインストールします。
+
+   e. インストールが完了したら、コンピューターから microSD カードを取り出します。 Etcher では完了時に microSD カードを自動的に取り出すか、マウント解除するため、microSD カードを直接取り出しても問題ありません。
+
+   f. microSD カードを Pi に挿入します。
 
 ### <a name="enable-ssh-and-i2c"></a>SSH および I2C の有効化
 
 1. Pi をモニター、キーボード、およびマウスに接続します。 
-1. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にログインします。
-1. Raspberry アイコン > **[Preferences]\(設定)** > **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
+
+2. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にログインします。
+
+3. Raspberry アイコン > **[Preferences]\(設定)** > **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. **[Interfaces]** (インターフェイス) タブで、**[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
+4. **[Interfaces]** (インターフェイス) タブで、**[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
 
    ![I2C と SSH を Raspberry Pi で有効にする](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-SSH と I2C を有効にする際の参考ドキュメントは [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) と [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) に多数あります。
+> SSH と I2C を有効にする際の参考ドキュメントは [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) と [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) に多数あります。
 
 ### <a name="connect-the-sensor-to-pi"></a>センサーを Pi に接続する
 
@@ -143,18 +152,21 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 以下の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
    
    **Windows ユーザー**
-   1. Windows 版の [PuTTY](http://www.putty.org/) をダウンロードしてインストールします。 
-   1. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
+  
+   a. Windows 版の [PuTTY](http://www.putty.org/) をダウンロードしてインストールします。 
+
+   b. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
    
    ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac ユーザーおよび Ubuntu ユーザー**
    
    Ubuntu または macOS に組み込まれている SSH クライアントを使用します。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
-   > [!NOTE] 
-   既定のユーザー名は `pi`、パスワードは`raspberry` です。
 
-1. Pi に Node.js と NPM をインストールします。
+   > [!NOTE] 
+   > 既定のユーザー名は `pi`、パスワードは`raspberry` です。
+
+2. Pi に Node.js と NPM をインストールします。
    
    まず、ご使用の Node.js のバージョンを確認します。 
    
@@ -169,20 +181,20 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    sudo apt-get -y install nodejs
    ```
 
-1. サンプル アプリケーションを複製します。
+3. サンプル アプリケーションを複製します。
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. サンプルのすべてのパッケージをインストールします。 このインストールには、Azure IoT device SDK、BME280 センサー ライブラリ、および Wiring Pi ライブラリが含まれています。
+4. サンプルのすべてのパッケージをインストールします。 このインストールには、Azure IoT device SDK、BME280 センサー ライブラリ、および Wiring Pi ライブラリが含まれています。
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   ネットワーク接続によっては、このインストール プロセスが終了するまで数分かかる場合があります。
+   >ネットワーク接続によっては、このインストール プロセスが終了するまで数分かかる場合があります。
 
 ### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
 
@@ -198,7 +210,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
-1. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
+2. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
 
 ### <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
 
@@ -209,7 +221,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    ```
 
    > [!NOTE] 
-   デバイスの接続文字列をコピーして貼り付け、必ず一重引用符で囲んでください。
+   > デバイスの接続文字列をコピーして貼り付け、必ず一重引用符で囲んでください。
 
 
 IoT Hub に送信されるセンサー データとメッセージを示す次の出力が表示されます。

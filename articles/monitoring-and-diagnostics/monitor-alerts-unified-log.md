@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264376"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971722"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor でのログ アラート - Alerts 
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、新しい [Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラートの発信基準として使用できます。 ログを使用するメトリック アラートの詳細については、「[Near Real Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)」(ほぼリアルタイムのメトリック アラート) を参照してください。
@@ -120,7 +120,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 REST API の使用に関する詳細と例については、次の記事をご覧ください。
 - [Log Analytics アラートの REST API に関する記事](../log-analytics/log-analytics-api-alerts.md) -  Azure Log Analytics 用のログ検索アラート ルールを作成、管理する方法
-- [Azure Monitor の Scheduled Query Rules REST API に関する記事](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) - Azure Application Insights 用のログ検索アラート ルールを作成、管理する方法
+- [Azure Monitor の Scheduled Query Rules REST API に関する記事](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) - Azure Application Insights 用のログ検索アラート ルールを作成、管理する方法
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 ユーザーはまた、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の柔軟な機能を使って、リソースの作成や更新を行い、ログ アラートの作成や更新に使用することができます。

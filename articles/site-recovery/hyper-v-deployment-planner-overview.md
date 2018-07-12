@@ -7,14 +7,14 @@ manager: garavd
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187309"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921214"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hyper-V から Azure 用の Site Recovery Deployment Planner
 
@@ -84,7 +84,7 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 ## <a name="prerequisites"></a>前提条件
 このツールを Hyper-V で使用する場合、VM リストの取得、プロファイル、レポート生成という 3 つの主要なフェーズがあります。 さらに第 4 の選択肢として、スループットの計算のみを行うこともできます。 次の表には、各フェーズの実行に必要なサーバーの要件を示しています。
 
-| サーバーの要件 | [説明] |
+| サーバーの要件 | 説明 |
 |---|---|
 |VM リストの取得、プロファイル、スループット測定 |<ul><li>オペレーティング システム: Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2 </li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>Azure Site Recovery Deployment Planner ツールが実行される VM は、すべての Hyper-V サーバーの TrustedHosts リストに追加する必要があります。</li><li>プロファイル対象の Hyper-V サーバーの VM はすべて、ツールが実行されるクライアント VM の TrustedHosts リストに追加する必要があります。 [TrustedHosts リストへのサーバーの追加について詳細を確認してください](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> このツールは、クライアントで PowerShell またはコマンドライン コンソールを使用して、管理特権で実行する必要があります</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |

@@ -12,11 +12,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: abe79185b817a4581c7df3f73c1d48ece6058643
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266256"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698010"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI で Azure Database for MySQL サーバーの低速のクエリ ログを有効にしてダウンロードする
 このCLI のサンプル スクリプトでは、単一の Azure Database for MySQL サーバーの、低速クエリ ログを有効にしてダウンロードします。

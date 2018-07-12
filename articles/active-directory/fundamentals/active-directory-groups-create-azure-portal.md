@@ -14,12 +14,12 @@ ms.date: 08/04/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767525"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857725"
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "37767525"
 
    ![[追加] をクリックする](./media/active-directory-groups-create-azure-portal/add-group-command.png)
 5. **[グループ]** ブレードで、グループの名前と説明を追加します。
-6. グループに追加するメンバーを選択するには、**[メンバーシップの種類]** ボックスで **[割り当て済み]** を選択し、**[メンバー]** を選択します。 グループのメンバーシップを動的に管理する方法の詳細については、 [属性を使用したグループ メンバーシップの高度なルールの作成](../active-directory-groups-dynamic-membership-azure-portal.md)を参照してください。
+6. グループに追加するメンバーを選択するには、**[メンバーシップの種類]** ボックスで **[割り当て済み]** を選択し、**[メンバー]** を選択します。 グループのメンバーシップを動的に管理する方法の詳細については、 [属性を使用したグループ メンバーシップの高度なルールの作成](../users-groups-roles/groups-dynamic-membership.md)を参照してください。
 
    ![追加するメンバーを選択する](./media/active-directory-groups-create-azure-portal/select-members.png)
 7. **[メンバー]** ブレードで、グループに追加する 1 人以上のユーザーまたは 1 つ以上のデバイスを選択し、ブレードの下部にある **[選択]** をクリックしてグループに追加します。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
@@ -56,4 +56,4 @@ ms.locfileid: "37767525"
 * [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-dynamic-membership.md)

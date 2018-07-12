@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055698"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859149"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -157,8 +157,8 @@ ms.locfileid: "37055698"
 |toUpper|文字列を大文字に変換します。 たとえば、次の式は `TWO BY TWO IS FOUR` を返します: `toUpper('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 大文字に変換する文字列です。 文字列内の文字に大文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
 |indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `7` を返します: `indexof('hello, world.', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 インデックスを探す値です。|  
 |lastindexof|文字列内で値の最後のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `3` を返します: `lastindexof('foofoo', 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 インデックスを探す値です。|  
-|startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `lastindexof('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が始まっている可能性のある値です。|  
-|endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `lastindexof('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が終わっている可能性のある値です。|  
+|startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `startswith('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が始まっている可能性のある値です。|  
+|endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `endswith('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 文字列が終わっている可能性のある値です。|  
 |split|区切り記号を使って文字列を分割します。 たとえば、次の式は `["a", "b", "c"]` を返します: `split('a;b;c',';')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 分割する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 区切り記号です。|  
   
   
@@ -228,7 +228,7 @@ ms.locfileid: "37055698"
 |decodeDataUri|入力データの URI 文字列のバイナリ表現を返します。 たとえば、次の式は `some string` のバイナリ表現を返します: `decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 バイナリ表現にデコードする dataURI です。|  
 |uriComponent|値の URI でエンコードされた表現を返します。 たとえば、次の式は `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')` を返します<br /><br /> パラメーターの詳細: 番号: 1、名前: String、説明: 必須。 URI でエンコードする文字列です。|  
 |uriComponentToBinary|URI でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` のバイナリ表現を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
-|uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
+|uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: String<br /><br />**説明**: 必須。 URI でエンコードされた文字列です。|  
 |xml|値の xml 表現を返します。 たとえば、次の式は `'\<name>Alan\</name>'` によって表される xml コンテンツを返します: `xml('\<name>Alan\</name>')` xml 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は xml コンテンツ `\<abc>xyz\</abc>` に変換されます<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: Value<br /><br />**説明**: 必須。 XML に変換する値です。|  
 |xpath|xpath 式が評価された値の xpath 式に一致する xml ノードの配列を返します。<br /><br />  **例 1**<br /><br /> パラメーター 'p1' の値が次の XML の文字列表現であるとします。<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.コード `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> は次を返します<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> これに対して<br /><br /> 2.コード `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> は次を返します<br /><br /> `13`<br /><br /> <br /><br /> **例 2**<br /><br /> 次のような XML コンテンツがあるものとします。<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2.コード `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> は、次の値は返します。<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 手順 3.コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> は、次の値は返します。<br /><br /> ``bar``<br /><br /> **パラメーター番号**: 1<br /><br />**名前**: Xml<br /><br />**説明**: 必須。 XPath 式を評価する XML です。<br /><br /> **パラメーター番号**: 2<br /><br />**名前**: XPath<br /><br />**説明**: 必須。 評価する XPath 式です。|  
 |array|パラメーターを配列に変換します。  たとえば、次の式は `["abc"]` を返します: `array('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 配列に変換する値です。|

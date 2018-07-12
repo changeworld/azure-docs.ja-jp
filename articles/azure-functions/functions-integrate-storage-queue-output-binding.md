@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a17897dc76b47f3fb7b6eb5076160faf6c5ae9c9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b90d3c77e4fc10c9ee95ced8d24e3045da315fe5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29387066"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488558"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -55,7 +55,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | Setting      |  推奨値   | [説明]                              |
+    | Setting      |  推奨値   | 説明                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **メッセージ パラメーター名** | outputQueueItem | 出力バインディング パラメーターの名前。 | 
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |

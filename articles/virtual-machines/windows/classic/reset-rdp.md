@@ -3,7 +3,7 @@ title: Azure の Windows VM でパスワードまたはリモート デスクト
 description: Azure Portal または Azure PowerShell を使用して、クラシック デプロイ モデルで作成された Windows VM でアカウントのパスワードまたはリモート デスクトップ サービスをリセットする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: iainfou
-ms.openlocfilehash: 516cb740f9acad19dac77db0239341b42a2b27fe
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917651"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931380"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 また、[Resource Manager のデプロイ モデルを使用して作成された VM でこれらの手順を実行](../reset-rdp.md)することもできます。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 また、[Resource Manager デプロイ モデルを使用して作成された VM でこれらの手順を実行](../reset-rdp.md)することもできます。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 

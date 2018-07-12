@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
 ms.openlocfilehash: a29a27ec633f5f67bb8cac4b9a4823c5f0966f8e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795790"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485463"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal を使用してグラフ データベースを作成する
 

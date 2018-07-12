@@ -7,14 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 8b16f495a21ff0b3da415390877777650a9fbb82
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048205"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921027"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 

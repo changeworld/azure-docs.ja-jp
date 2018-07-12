@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 2d44d8410734193ba8b7fdda3134727d9064340c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b4c603e9333f46498e3cd93f10208da2ed3c77b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195500"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921253"
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポート
 生成された Microsoft Excel レポートには、次のシートが含まれています。

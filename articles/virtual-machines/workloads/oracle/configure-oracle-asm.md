@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
 ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656111"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618440"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 

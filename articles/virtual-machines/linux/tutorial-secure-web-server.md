@@ -3,7 +3,7 @@ title: チュートリアル - Azure での SSL 証明書を使用した Linux W
 description: このチュートリアルでは、Azure CLI 2.0 を使用して、Azure Key Vault に格納されている SSL 証明書を使って NGINX Web サーバーを実行する Linux 仮想マシンを保護する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: f1d8576791a569007efd7d3fa446ab32a130919d
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313360"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927983"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>チュートリアル: Key Vault に格納されている SSL 証明書を使って Azure で Linux 仮想マシン上の Web サーバーをセキュリティ保護する
 Web サーバーをセキュリティ保護するには、Secure Sockets Layer (SSL) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。

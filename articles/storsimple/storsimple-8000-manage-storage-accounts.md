@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108720"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688730"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
@@ -47,7 +47,7 @@ StorSimple デバイス マネージャー サービス ブレードの **[構�
 
 * ストレージ アカウントの追加 
 * ストレージ アカウントの編集 
-* ストレージ アカウントの削除 
+* ストレージ アカウントを削除する 
 * ストレージ アカウントのキー ローテーション 
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
@@ -116,7 +116,7 @@ Azure ストレージ アカウントの資格情報を追加するには、次�
 
 設定が更新され、ストレージ アカウントに保存されます。 
 
-## <a name="delete-a-storage-account"></a>ストレージ アカウントの削除
+## <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
 
 > [!IMPORTANT]
 > ストレージ アカウントは、ボリューム コンテナーで使用されていない場合にのみ削除できます。 ストレージ アカウントがボリューム コンテナーで使用されている場合は、最初にボリューム コンテナーを削除し、次に関連するストレージ アカウントを削除します。
@@ -176,7 +176,7 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
    2. ストレージ アクセス キーは、StorSimple デバイス マネージャー サービスで更新する必要があります。 この場合は、ストレージ アクセス キーを見ることができます。 **[ストレージ アカウントのアクセス キー]** ボックスに新しいキーを入力します。 
    3. 変更を保存します。 ストレージ アカウント アクセス キーが更新されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照します。
+* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

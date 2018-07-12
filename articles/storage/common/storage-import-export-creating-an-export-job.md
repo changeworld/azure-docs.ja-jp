@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363249"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232269"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのエクスポート ジョブの作成
 REST API を使用して Microsoft Azure Import/Export サービスのエクスポート ジョブを作成するには、次の手順を実行します。

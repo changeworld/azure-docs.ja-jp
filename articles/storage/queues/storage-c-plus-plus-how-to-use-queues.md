@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
 ms.openlocfilehash: 5e81d5e0af9871099b7f921f355cf94249e4d30c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059947"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618468"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -264,7 +264,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。
 
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2b16135e83ba52f7a2e6bd214791910db80634bc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061480"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952843"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -273,7 +273,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>気象データと航空データの結合
 
-今度は、SparkR の [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
+今度は、SparkR の [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

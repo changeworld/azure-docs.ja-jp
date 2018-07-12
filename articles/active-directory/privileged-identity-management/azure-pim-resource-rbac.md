@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447584"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38528622"
 ---
 # <a name="pim-for-azure-resources"></a>Azure リソース向けの PIM
 
@@ -59,7 +59,7 @@ PIM はロールのアクティブ化、保留中のアクティブ化/要求の
 
 ## <a name="activate-roles"></a>ロールをアクティブ化する
 
-Azure リソースのロールをアクティブ化すると、ロールの有資格メンバーは、将来の日付/時刻でのアクティブ化をスケジュールしたり、管理者が許可した最長期間の範囲内でアクティブ化期間を指定できるという新しいエクスペリエンスが導入されます。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
+Azure リソースのロールをアクティブ化すると、ロールの有資格メンバーは、将来の日付/時刻でのアクティブ化をスケジュールしたり、管理者が許可した最長期間の範囲内でアクティブ化期間を指定できるという新しいエクスペリエンスが導入されます。 Azure AD ロールのアクティブ化の詳細については、[こちら](pim-how-to-activate-role.md)を参照してください。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -156,7 +156,7 @@ Azure リソースのロールを検索および管理するには、左側の�
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-アクセス レビューの詳細については、[こちら](../active-directory-privileged-identity-management-how-to-perform-security-review.md)を参照してください
+アクセス レビューの詳細については、[こちら](pim-how-to-perform-security-review.md)を参照してください
 
 >[!NOTE]
 現時点で、レビューはサブスクリプションのリソースでのみサポートされています。
@@ -196,5 +196,5 @@ Just Enough Administration (JEA) をリソースのロール割り当てで使�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)
-- Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください
+- Azure AD ロールのアクティブ化の詳細については、[こちら](pim-how-to-activate-role.md)を参照してください
 - [PIM の承認ワークフロー](azure-ad-pim-approval-workflow.md)

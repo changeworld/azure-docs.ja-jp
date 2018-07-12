@@ -17,11 +17,11 @@ ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187159"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972109"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 仮想マシンの SAP HANA の高可用性
 

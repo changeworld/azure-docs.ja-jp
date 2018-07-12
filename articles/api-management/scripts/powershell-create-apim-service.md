@@ -14,11 +14,11 @@ ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 6e7e95d3b5f747e320e0fea0cea44194f9da1dd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933379"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473834"
 ---
 # <a name="create-an-api-management-service"></a>API Management サービスの作成
 

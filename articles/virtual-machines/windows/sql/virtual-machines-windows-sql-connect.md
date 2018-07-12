@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
 ms.openlocfilehash: 522ece2528e43c1037dc6bb707201ecda8074dd9
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301388"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705964"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 

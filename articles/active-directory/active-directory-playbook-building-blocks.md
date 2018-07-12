@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446777"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451701"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
 ## <a name="catalog-of-roles"></a>ロールのカタログ
 
-| 役割 | 説明 | 概念実証 (PoC) の責任範囲 |
+| Role | 説明 | 概念実証 (PoC) の責任範囲 |
 | --- | --- | --- |
 | **ID アーキテクチャ/開発チーム** | このチームは、通常、ソリューションを設計し、プロトタイプを実装して、承認を得たうえで最後にオペレーションへの引き渡しを行います。 | 必要な環境を提供します。また管理の容易さの観点からさまざまなシナリオを評価する役割を担います。 |
 | **オンプレミス ID オペレーション チーム** | オンプレミスのさまざまな ID ソースを管理します (Active Directory フォレスト、LDAP ディレクトリ、人事システム、フェデレーション ID プロバイダー)。 | PoC のシナリオに必要なオンプレミス リソースへのアクセスを提供します。<br/>このチームの関与はできるだけ少なくする必要があります。|
@@ -42,7 +42,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | 有効な Azure サブスクリプションで定義された Azure AD テナント | [Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)<br/>**注:** Azure AD Premium ライセンスの環境が既に存在する場合は、https://aka.ms/accessaad にアクセスすることによって無制限サブスクリプションを取得できます。 <br/>詳細情報: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ および https://technet.microsoft.com/library/dn832618.aspx |
-| 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](active-directory-self-service-signup.md)」を参照してください。 |
+| 定義済みかつ検証済みのドメイン | [Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)<br/>**注:** Power BI など一部のワークロードでは、Azure AD テナントが暗黙的にプロビジョニングされています。 特定のドメインがテナントに関連付けられているかどうかを確認するには、https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration に移動します。 正常に応答が得られた場合、そのドメインはテナントに割り当て済みであり、引き継ぎが必要であると考えられます。 その場合の詳しいガイダンスについては、Microsoft にお問い合わせください。 引き継ぎの方法については、「[Azure のセルフサービス サインアップについて](users-groups-roles/directory-self-service-signup.md)」を参照してください。 |
 | Azure AD Premium または EMS 試用版が有効であること | [Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Azure AD Premium または EMS のライセンスを PoC ユーザーに割り当て済みであること | [Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全体管理者の資格情報 | [Azure Active Directory での管理者ロールの割り当て](users-groups-roles/directory-assign-admin-roles.md) |
@@ -125,11 +125,11 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Azure AD 管理ポータルのライセンス ブレードに移動します。 | [Azure AD 管理ポータル: ライセンス](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| POC ユーザーを含むセキュリティ グループにライセンスを割り当てます。 | [Azure Active Directory でのユーザーのグループへのライセンスの割り当て](active-directory-licensing-group-assignment-azure-portal.md) |
+| POC ユーザーを含むセキュリティ グループにライセンスを割り当てます。 | [Azure Active Directory でのユーザーのグループへのライセンスの割り当て](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>考慮事項
 
-問題が発生した場合は、「[Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](active-directory-licensing-group-advanced.md)」を参照してください。
+問題が発生した場合は、「[Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](users-groups-roles/licensing-group-advanced.md)」を参照してください。
 
 ## <a name="saas-federated-sso-configuration"></a>SaaS フェデレーション SSO 構成
 
@@ -468,24 +468,24 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| PIM の POC に参加する全体管理者を把握していること。 | [Azure AD Privileged Identity Management の使用開始](active-directory-privileged-identity-management-getting-started.md) |
-| セキュリティ管理者となる全体管理者を把握していること。 | [Azure AD Privileged Identity Management の使用開始](active-directory-privileged-identity-management-getting-started.md)<br/> [Azure Active Directory PIM での別の管理者ロール](active-directory-privileged-identity-management-roles.md) |
-| (省略可) PIM で電子メール通知を実施するための電子メール アクセスが全体管理者にあるかどうかを確認すること。 | [Azure AD Privileged Identity Management とは: ロール アクティブ化設定の構成](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| PIM の POC に参加する全体管理者を把握していること。 | [Azure AD Privileged Identity Management の使用開始](privileged-identity-management/pim-getting-started.md) |
+| セキュリティ管理者となる全体管理者を把握していること。 | [Azure AD Privileged Identity Management の使用開始](privileged-identity-management/pim-getting-started.md)<br/> [Azure Active Directory PIM での別の管理者ロール](privileged-identity-management/pim-roles.md) |
+| (省略可) PIM で電子メール通知を実施するための電子メール アクセスが全体管理者にあるかどうかを確認すること。 | [Azure AD Privileged Identity Management とは: ロール アクティブ化設定の構成](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>手順
 
 | 手順 | リソース |
 | --- | --- |
-| 全体管理者 (GA) として https://portal.azure.com にログインし、PIM ブレードをブートストラップします。 この手順を実行する全体管理者は、セキュリティ管理者として準備します。  このアクターを GA1 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management でのセキュリティ ウィザードの使用](active-directory-privileged-identity-management-security-wizard.md) |
-| 全体管理者を指定し、永続から候補に変更します。 明確にするために、この管理者は、手順 1. とは別の管理者にする必要があります。 このアクターを GA2 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Azure AD Privileged Identity Management とは: ロール アクティブ化設定の構成](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| 全体管理者 (GA) として https://portal.azure.com にログインし、PIM ブレードをブートストラップします。 この手順を実行する全体管理者は、セキュリティ管理者として準備します。  このアクターを GA1 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management でのセキュリティ ウィザードの使用](privileged-identity-management/pim-security-wizard.md) |
+| 全体管理者を指定し、永続から候補に変更します。 明確にするために、この管理者は、手順 1. とは別の管理者にする必要があります。 このアクターを GA2 と呼ぶことにしましょう。 | [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Azure AD Privileged Identity Management とは: ロール アクティブ化設定の構成](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | 今度は、GA2 として https://portal.azure.com にログインし、[ユーザー設定] の変更を試みます。 一部のオプションが淡色表示されていることに気が付きます。 | |
-| 新しいタブの手順 3. と同じセッションで、今度は https://portal.azure.com に移動し、ダッシュボードに PIM ブレードを追加します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: Privileged Identity Management アプリケーションの追加](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| 全体管理者ロールのアクティブ化を要求します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: ロールのアクティブ化](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| 新しいタブの手順 3. と同じセッションで、今度は https://portal.azure.com に移動し、ダッシュボードに PIM ブレードを追加します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: Privileged Identity Management アプリケーションの追加](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| 全体管理者ロールのアクティブ化を要求します。 | [Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法: ロールのアクティブ化](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | GA2 が MFA にサインアップしなかった場合、Azure MFA の登録が必要になります。 |  |
 | 手順 3. の元のタブに戻り、ブラウザーの更新ボタンをクリックします。 "ユーザー設定" の変更に対するアクセスが許可されていることがわかります。 | |
 | 全体管理者が電子メールを有効にしている場合は、GA1 と GA2 の受信トレイを見て、ロールがアクティブ化されているという通知を確認してください。 |  |
-| 8 監査履歴をチェックし、レポートを見て、GA2 が昇格されていることの記録があることを確認します。 | [Azure AD Privileged Identity Management とは: ロール アクティビティの確認](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 監査履歴をチェックし、レポートを見て、GA2 が昇格されていることの記録があることを確認します。 | [Azure AD Privileged Identity Management とは: ロール アクティビティの確認](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>考慮事項
 

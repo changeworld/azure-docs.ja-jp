@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998847"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860080"
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド
 
@@ -104,7 +104,7 @@ Microsoft Azure BizTalk Services では、BizTalk Server マップを BizTalk Se
 ## <a name="orchestrations"></a>オーケストレーション
 BizTalk Server のオーケストレーション処理を Microsoft Azure に移行する必要がある場合は、Microsoft Azure は BizTalk Server のオーケストレーションの実行をサポートしていないため、オーケストレーションを書き直す必要があります。  オーケストレーションの機能は、Windows Workflow Foundation 4.0 (WF4) サービスで書き直すことができます。  現時点では BizTalk Server オーケストレーションから WF4 への移行がないため、これは完全な書き直しになります。 Windows Workflow に関するリソースを次に示します。
 
-* "[*WCF ワークフロー サービスを Service Bus のキューおよびトピックに統合する方法*](https://msdn.microsoft.com/library/azure/hh709041.aspx)" (Paolo Salvatori)。 
+* "[*WCF ワークフロー サービスを Service Bus のキューおよびトピックに統合する方法*](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/)" (Paolo Salvatori)。 
 * ["*Windows Workflow Foundation と Azure でのアプリの構築*" セッション](http://go.microsoft.com/fwlink/p/?LinkId=237314) (Build 2011 カンファレンス)。
 * [*Windows Workflow Foundation デベロッパー センター*](http://go.microsoft.com/fwlink/p/?LinkId=237315) (MSDN)。
 * "[*Windows Workflow Foundation 4 (WF4) のドキュメント*](https://msdn.microsoft.com/library/dd489441.aspx)" (MSDN)。

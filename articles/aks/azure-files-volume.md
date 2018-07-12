@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 25ae0e508223b50219e40245cc9dfbc407b96bba
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0479e4d80b7490db170255d47ef3190bb744d2d8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096698"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901495"
 ---
 # <a name="volumes-with-azure-files"></a>Azure Files を使用するボリューム
 
@@ -52,7 +52,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 # Echo storage account name and key
 echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
-echo Storgae account key: $STORAGE_KEY
+echo Storage account key: $STORAGE_KEY
 ```
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes シークレットの作成

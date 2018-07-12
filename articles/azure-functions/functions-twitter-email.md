@@ -17,11 +17,11 @@ ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 16a46b4c49687186e25c399dcc2c5c168e7c5004
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30284103"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586876"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -164,7 +164,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![Twitter コネクタの設定](media/functions-twitter-email/azure_tweet.png)
 
-    | Setting      |  推奨値   | [説明]                                        |
+    | Setting      |  推奨値   | 説明                                        |
     | ----------------- | ------------ | ------------- |
     | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **頻度** | [分] | Twitter のポーリングに使用する頻度の単位です。  |
@@ -227,7 +227,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/send_email.png)
 
-    | Setting      |  推奨値   | [説明]  |
+    | Setting      |  推奨値   | 説明  |
     | ----------------- | ------------ | ------------- |
     | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
     | **[件名]** | "ネガティブなツイートのセンチメントを検出しました"  | 電子メール通知の件名。  |

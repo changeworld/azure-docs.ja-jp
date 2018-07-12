@@ -16,11 +16,11 @@ ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: na
 ms.openlocfilehash: dec2abdf68b3a38706549b4b655e33bc7abca1a3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131012"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452673"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 

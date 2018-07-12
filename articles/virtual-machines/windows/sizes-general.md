@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/10/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: f1e937bc585585fe862d97f815acbccfa0c8153e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 972bee67c0b6ab7918557d37b054f98eb438ccbd
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34655890"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37903429"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
 

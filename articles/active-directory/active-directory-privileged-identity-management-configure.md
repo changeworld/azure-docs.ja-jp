@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 927d2ccef6a250d489273a17b070a4a0aa820bee
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9e5039623b1f9b53c636ebaeb1e956d852185577
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767557"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952054"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -101,13 +101,13 @@ Azure AD Privileged Identity Manager には、次のような重要な情報を�
 *   過去 30 日に新たにロールが割り当てられたユーザーとグループ (Azure リソース ロール)
 
 
-![PIM dashboard - screenshot][2]
+![PIM dashboard - screenshot](./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>特権ロールの管理
 
 Azure AD Privileged Identity Management では、Azure AD ディレクトリ ロールの各ロールに永続的管理者または管理者候補を追加または削除することによって、管理者を管理できます。 テナント内のサブスクリプション管理に対応した所有者、ユーザー アクセス管理者、グローバル管理者は、Azure リソース (プレビュー) の PIM を使用して、ジャストインタイム アクセス (候補)、開始/終了日時が指定された期限付き (アクティブ化不要) アクセス、永続 (ロールの設定で有効になっている場合) のいずれかとして、ユーザーまたはグループを Azure リソース ロールに割り当てることができます。
 
-![PIM の管理者の追加/削除 - スクリーンショット][3]
+![PIM の管理者の追加/削除 - スクリーンショット](./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png)
 
 ## <a name="configure-the-role-activation-settings"></a>ロール アクティブ化設定の構成
 
@@ -119,7 +119,7 @@ Azure AD ディレクトリ ロールには、[ロールの設定](active-direct
 * サービス チケットまたはインシデントの番号
 * [承認ワークフロー要件 - プレビュー](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
 
-![PIM 設定 - 管理者アクティブ化 - スクリーンショット][4]
+![PIM 設定 - 管理者アクティブ化 - スクリーンショット](./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png)
 
 上図で、 **多要素認証** のボタンが無効化されていることに注意してください。 特定の高い特権を持つロールでは、MFA を使用して保護を強化する必要があります。
 
@@ -140,13 +140,13 @@ Azure リソース ロール (プレビュー) のロール設定では、ジャ
 
 ロールのアクティブ化は、カスタマイズできます。 PIM の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を設定できます。
 
-![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
+![PIM 管理者のロール アクティブ化要求 - スクリーン ショット](./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png)
 
 ## <a name="review-role-activity"></a>ロール アクティビティの確認
 
 従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。 1 つ目の方法は、[ディレクトリ ロール監査履歴](active-directory-privileged-identity-management-how-to-use-audit-log.md)を使用する方法です。 監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更、および Azure リソース ロール (プレビュー) の設定に対する変更を追跡します。 
 
-![PIM アクティブ化履歴 - スクリーンショット][6]
+![PIM アクティブ化履歴 - スクリーンショット](./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png)
 
 2 番目の方法は、標準的な [アクセス レビュー](active-directory-privileged-identity-management-how-to-start-security-review.md)を設定する方法です。 これらのアクセス レビューは、割り当てられたレビュー担当者 (たとえば、チーム マネージャー) によって実行することも、従業員が自分自身の確認を行うこともできます。 これは、アクセスを必要としているユーザーとアクセスを必要としなくなったユーザーを監視するための最善の方法です。
 
@@ -158,12 +158,3 @@ Azure AD Premium P2 を更新していない場合や試用版の有効期限が
 ## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png
-[3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
-[4]: ./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png
-[5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
-[6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png

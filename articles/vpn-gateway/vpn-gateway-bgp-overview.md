@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 13a17eb3d78e70a09864bf218f1027d6e98486a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23123800"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720052"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイを使用した BGP の概要
 この記事では、Azure VPN ゲートウェイの BGP (ボーダー ゲートウェイ プロトコル) サポートの概要を説明します。
@@ -54,6 +54,6 @@ BGP では、接続が直接か間接的かにかかわらず、複数のゲー�
 ## <a name="faq"></a>BGP のよくある質問
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クロスプレミス接続と VNet 間接続向けに BGP を構成する手順については、 [Azure VPN ゲートウェイでの BGP の使用](vpn-gateway-bgp-resource-manager-ps.md) に関する記事を参照してください。
 

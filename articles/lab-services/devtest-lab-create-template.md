@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781711"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687810"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>VHD ファイルからカスタム イメージを作成する
 
@@ -61,7 +61,8 @@ ms.locfileid: "33781711"
 1. カスタム イメージの作成に使用されるイメージがライセンスされていない (Microsoft によって公開されていない) イメージの場合でも、プラン名、プランの提供、プランの公開元を入力できます。
 
    - **プラン名:** このカスタム イメージの作成元の Marketplace イメージの名前 (SKU) を入力します。 
-   - **プランの提供:** このカスタム イメージの作成元の Marketplace イメージ の製品 (プラン) を入力します。 
+   - 
+  **プランの提供:** このカスタム イメージの作成元の Marketplace イメージ の製品 (オファー) を入力します。 
    - **プランの公開元:** このカスタム イメージの作成元の Marketplace イメージ の公開元を入力します。
 
    > [!NOTE]

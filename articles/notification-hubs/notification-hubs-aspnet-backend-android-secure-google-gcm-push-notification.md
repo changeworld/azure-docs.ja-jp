@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
 ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776762"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698030"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
 > [!div class="op_single_selector"]

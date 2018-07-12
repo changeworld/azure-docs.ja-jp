@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 92e4180f1efe62d2dae9778f70e25f1bb0273b7f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649885"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903100"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作
 Azure のクエリ ストアは、すべてのクエリに関する詳細な履歴情報を継続的に収集して提示する、完全に管理されたデータベース機能です。 クエリ ストアは、航空機のフライト データ レコーダーに似ていると考えることができます。この機能によって、クラウドとオンプレミスのユーザーの両方が、クエリ パフォーマンスのトラブルシューティングを大幅に簡素化できます。 この記事では、Azure でのクエリ ストアの動作の特定の側面について説明します。 この事前収集されたクエリ データを使用してパフォーマンスの問題をすばやく診断して解決することで、業務に向ける時間を増やすことができます。 
@@ -55,5 +55,5 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 * [データベースのためのフライト データ レコーダー](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 * [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
 * [クエリ ストアの使用シナリオ](https://msdn.microsoft.com/library/mt614796.aspx)
-* [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx) 
+ 
 

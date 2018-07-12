@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
 ms.openlocfilehash: 9cd23b0930accd23ba88be03bfed099aa3fc672e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333994"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482055"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Java) でハブから利用統計情報を読み取る
 

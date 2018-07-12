@@ -10,11 +10,11 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28922894"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597989"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
 

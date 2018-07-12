@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: ecb8a46c57d31c8a19f3a7b75306e42a7d3981bd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: feb9b0c3d90aea9d5e0351b6691e93186dbfb9f6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335739"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902080"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -159,7 +159,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-url-route-portal/application-gateway-iistest.png)
 
-3. URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+3. URL を http://&lt;ip-address&gt;:8080/images/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
 
     ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/create-url-route-portal/application-gateway-iistest-images.png)
 

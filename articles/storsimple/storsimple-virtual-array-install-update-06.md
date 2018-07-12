@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 111976cd684561f5bc63b92f09a20470fe3036d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109990"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606648"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 0.6 をインストール
 
@@ -57,7 +57,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
@@ -123,7 +123,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 7. ファイル `windows8.1-kb4012213-x64`、`windows8.1-kb3205400-x64`、および `windows8.1-kb4019213-x64` を使用して、Windows セキュリティ修正プログラムをインストールする手順 2 から 4 を繰り返します。 それぞれのインストール後に仮想アレイが再起動するため、ローカル web UI にサインインする必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

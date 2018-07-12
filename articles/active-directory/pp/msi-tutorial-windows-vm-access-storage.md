@@ -15,11 +15,11 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 6e1364db9ecba65b90be525141f03fb9b4a33d28
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984835"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610838"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Windows VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 

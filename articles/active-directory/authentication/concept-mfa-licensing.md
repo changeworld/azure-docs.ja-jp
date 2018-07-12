@@ -11,11 +11,11 @@ author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
 ms.openlocfilehash: ec1a3e7e3e8969e161854a9f386d4b2e767ee48a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866934"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970418"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "33866934"
 
 以下の表は、Multi-Factor Authentication の 3 つのバージョンの違いについて説明したものです。
 
-| バージョン | [説明] |
+| バージョン | 説明 |
 | --- | --- |
 | Office 365 の多要素認証 |このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 サブスクリプションの一部です。 |
 | Azure AD 管理者用の Multi-Factor Authentication | Azure AD テナントのグローバル管理者ロールを割り当てられているユーザーは、追加費用なしで、その Azure AD グローバル管理者アカウントに 2 段階認証を適用できます。|

@@ -17,11 +17,11 @@ ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 31eb2107b4c9bf2a5ac6b56896648a71a5e0c59e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282047"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488579"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>GitHub からの継続的なデプロイで Web アプリを作成する
 

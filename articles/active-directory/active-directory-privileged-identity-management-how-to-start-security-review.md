@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 38386de86c83733e3539048de9e263ed6225eee5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446896"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952162"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを開始する方法
 ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するには、特権ロール管理者またはグローバル管理者が定期的にアクセス レビューを作成して、ユーザーに付与されたロールの確認を管理者に依頼する必要があります。 このドキュメントでは、Azure AD Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
@@ -37,12 +37,12 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 
 **[レビュー]** をクリックすると、**[アクセス レビューを開始する]** ブレードが表示されます。 このブレードでは、名前と時間制限を使用してレビューを構成し、確認するロールを選択し、レビューを実行するユーザーを決定します。
 
-![アクセス レビューを開始する - スクリーン ショット][1]
+![アクセス レビューを開始する - スクリーン ショット](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png)
 
 ### <a name="configure-the-review"></a>レビューを構成する
 アクセス レビューを作成するには、名前を付け、開始日と終了日を設定する必要があります。
 
-![レビューを構成する - スクリーン ショット][2]
+![レビューを構成する - スクリーン ショット](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png)
 
 ユーザーが完了するための十分なレビューの期間の長さを作成します。 終了日の前に完了したら、常にレビューを早く停止できます。
 
@@ -51,7 +51,7 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 
 1. **[役割メンバーシップをレビューする]**
    
-    ![ロール メンバーシップを確認する - スクリーン ショット][3]
+    ![ロール メンバーシップを確認する - スクリーン ショット](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png)
 2. 一覧から 1 つのロールを選択します。
 
 ### <a name="decide-who-will-perform-the-review"></a>レビューを実行するユーザを決定する
@@ -59,7 +59,7 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 
 1. **[レビュー担当者の選択]**
    
-    ![レビュー担当者を選択する - スクリーン ショット][4]
+    ![レビュー担当者を選択する - スクリーン ショット](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png)
 2. いずれかのオプションを選択してください。
    
    * **[レビュー担当者の選択]**: アクセスが必要なユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
@@ -79,10 +79,3 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>PIM の内容一覧
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png

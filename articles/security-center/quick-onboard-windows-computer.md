@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/22/2018
 ms.author: terrylan
 ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30922775"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38702659"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。

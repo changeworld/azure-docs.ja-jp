@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 6f078823d8b911bc5ce6a36ab27b11a9c0117b80
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/21/2018
+ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018341"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970263"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -64,6 +64,8 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | 東アジア | ○ | ○ |
 | 東南アジア | ○ | ○ |
 | オーストラリア東部 |  | ○ |
+| オーストラリア中部 |  | ○ |
+| オーストラリア中部 2 |  | ○ |
 | オーストラリア南東部 |  | ○ |
 | インド中部 | ○ | ○ |
 | インド西部 | ○ | ○ |

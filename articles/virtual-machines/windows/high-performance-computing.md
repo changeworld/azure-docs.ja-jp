@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 05/11/2018
 ms.author: danlep
 ms.openlocfilehash: 661b45d9960d8d803f77295ab29cc5e93cac6619
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34076385"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697434"
 ---
 # <a name="hpc-batch-and-big-compute-solutions-using-azure-vms"></a>Azure VM を使用した HPC、Batch、および Big Compute ソリューション
 

@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 04/23/2018
 ms.author: sngun
 ms.openlocfilehash: 044f52cd1fa42653269649b92c7a06a5f623a501
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660671"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618308"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure の Table Storage の概要
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33761889"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969240"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要 
 
@@ -27,7 +27,7 @@ Web アプリケーションを実行するに当たっては、500 エラーが
  
 この機能は Web アプリの問題発生時刻が過去 24 時間以内である場合に特に役立ちますが、いずれの診断グラフも、任意の時点を対象に分析を実行することができます。 右側の列には、追加のトラブルシューティング ツールと、役立つドキュメントやフォーラムへのリンクが表示されます。
 
-App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro)、[App Service 環境](https://docs.microsoft.com/en-us/azure/app-service/environment/intro)、および [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) 上のアプリに対しても機能します。 
+App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)、[App Service 環境](https://docs.microsoft.com/azure/app-service/environment/intro)、および [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 上のアプリに対しても機能します。 
 
 ## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
 

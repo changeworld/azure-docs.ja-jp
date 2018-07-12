@@ -3,7 +3,7 @@ title: チュートリアル - Azure 仮想マシン スケール セットの�
 description: Azure PowerShell を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7531ddce37b2f6d140cb277727d6168d8d98ba1e
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 6e3262ffbf31c18611a82c8293c63e13e572e30c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802386"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531564"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -31,7 +31,7 @@ ms.locfileid: "34802386"
 > * VM イメージを選択して使用する
 > * 特定の VM インスタンス サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -97,7 +97,7 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleS
 
 
 ## <a name="list-connection-information"></a>接続情報を一覧表示する
-パブリック IP アドレスは、トラフィックを個々の VM インスタンスにルーティングするロード バランサーに割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
+トラフィックを個々の VM インスタンスにルーティングするロード バランサーに、パブリック IP アドレスが割り当てられます。 既定では、リモート接続トラフィックを特定のポート上の各 VM に転送する Azure ロード バランサーにネットワーク アドレス変換 (NAT) 規則が追加されます。 スケール セット内の VM インスタンスに接続するには、割り当てられたパブリック IP アドレスとポート番号へのリモート接続を作成します。
 
 スケール セット内の VM インスタンスに接続するための NAT ポートを一覧表示するには、まず、[Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) を使用して、ロード バランサー オブジェクトを取得します。 次に、[Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig) を使用して、受信 NAT 規則を表示します。
 
@@ -201,7 +201,7 @@ VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモ
 ### <a name="vm-instance-sizes"></a>VM インスタンス サイズ
 次の表は、ユース ケース別に一般的な VM サイズを分類したものです。
 
-| type                     | 一般的なサイズ           |    説明       |
+| type                     | 一般的なサイズ           |    [説明]       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
@@ -253,7 +253,7 @@ New-AzureRmVmss `
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
-スケール セットを作成したときは、2 つの VM インスタンスを要求しました。 スケール セット内の VM インスタンスの数を増やすか、または減らすために、手動でその容量を変更できます。 スケール セットでは、必要な数の VM インスタンスを作成または削除した後、トラフィックを分散するようにロード バランサーを構成します。
+スケール セットを作成したときは、2 つの VM インスタンスを要求しました。 スケール セット内の VM インスタンスの数を増やすか、または減らすために、手動でその容量を変更できます。 スケール セットにより、必要な数の VM インスタンスが作成または削除され、その後、トラフィックを分散するようにロード バランサーが構成されます。
 
 最初に、[Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) を使用してスケール セット オブジェクトを作成し、次に `sku.capacity` に新しい値を指定します。 容量の変更を適用するには、[Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) を使用します。 次の例では、スケール セット内の VM インスタンスの数を *3* に設定します。
 
@@ -325,7 +325,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 > * VM イメージを選択して使用する
 > * 特定の VM サイズを確認して使用する
 > * スケール セットを手動でスケーリングする
-> * 一般的なスケール セットの管理タスクを実行する
+> * スケール セットの一般的な管理タスクを実行する
 
 次のチュートリアルに進み、スケール セット ディスクについて確認してください。
 

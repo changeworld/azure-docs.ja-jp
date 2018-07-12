@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
 ms.openlocfilehash: d785436f157fb694ccf4447db91f28b25c9f2a3a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791105"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704701"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>.NET (C#) と Visual Studio で Azure SQL Database に接続してデータベースに照会する
 

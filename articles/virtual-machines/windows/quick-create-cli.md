@@ -17,11 +17,11 @@ ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b09a85686e19ae92c3e437bedff54bff8371784f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182359"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719041"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して Windows 仮想マシンを作成する
 

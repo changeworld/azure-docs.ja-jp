@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 6d1e344cc0ec66f026bcf9e7c4ab50fd71dc6ca4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905427"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705981"
 ---
 # <a name="understand-common-error-messages-when-you-manage-linux-virtual-machines-in-azure"></a>Azure で Linux 仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 

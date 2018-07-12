@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
 ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795722"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485429"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 

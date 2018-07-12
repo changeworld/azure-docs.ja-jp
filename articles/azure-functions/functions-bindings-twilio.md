@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 07/09/2018
 ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6c5a2e11e8b2faa62b04a792f5040ea928d94a3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a391c411d0d3608d30309927875a62b366899367
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318709"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929503"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
@@ -221,7 +221,7 @@ module.exports = function (context, myQueueItem) {
 ```cs
 [FunctionName("QueueTwilio")]
 [return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
+public static CreateMessageOptions Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
     TraceWriter log)
 {

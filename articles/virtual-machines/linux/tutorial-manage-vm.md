@@ -3,7 +3,7 @@ title: チュートリアル - Azure CLI を使用して Linux VM の作成と�
 description: このチュートリアルでは、Azure CLI 2.0 を使用して、Azure 内に Linux VM を作成して管理する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4e8be3af81ce74b033b2a15ceaf857540c1d9a6e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e7338da637d92520bc5f67de9d3d2bdae3204e35
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192205"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930037"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>チュートリアル - Azure CLI 2.0 を使用して Linux VM の作成と管理を行う
 
@@ -38,7 +38,7 @@ Azure 仮想マシンは、完全に構成可能で柔軟なコンピューテ�
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
@@ -155,7 +155,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| 種類                     | サイズ           |    説明       |
+| type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |

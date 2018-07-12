@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
 ms.openlocfilehash: cca9adb40557cf7bf9e1d4129fc6bd61cbf0df4f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913792"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618241"
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法
-クラシック デプロイメント モデルを使用して Azure で作成したすべての Windows 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。 この記事は、 [Linux 仮想マシン](../../linux/classic/setup-endpoints.md) にも利用できます。
+クラシック デプロイ モデルを使用して Azure で作成したすべての Windows 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。 この記事は、 [Linux 仮想マシン](../../linux/classic/setup-endpoints.md) にも利用できます。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
@@ -38,4 +38,4 @@ Azure Portal で Windows 仮想マシンを作成すると、共通エンドポ�
 ## <a name="next-steps"></a>次の手順
 * Azure PowerShell コマンドレットを使用して VM エンドポイントをセットアップするには、「 [Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx)」をご覧ください。
 * Azure PowerShell コマンドレットを使用してエンドポイントの ACL を管理するには、「 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](../../../virtual-network/virtual-networks-acl-powershell.md)」をご覧ください。
-* Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Azure PowerShell を使用して、VM へのトラフィックを制御する [ネットワーク セキュリティ グループを作成](../../../virtual-network/tutorial-filter-network-traffic.md) できます。
+* Resource Manager デプロイ モデルで仮想マシンを作成した場合は、Azure PowerShell を使用して、VM へのトラフィックを制御する[ネットワーク セキュリティ グループを作成](../../../virtual-network/tutorial-filter-network-traffic.md)できます。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66598bda7ca1fcf5c6e05ab47232236b740177a6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075240"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465745"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 
@@ -100,7 +100,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 
 ## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>AD FS ベースのデプロイ用に PowerShell を設定する
 
-インターネットに接続した状態で Azure Stack を操作している場合は、次のスクリプトを使用できます。 ただし、インターネットに接続しない状態で Azure Stack を操作している場合は、[接続が切断された状態での PowerShell のインストール方法](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)とコマンドレットを使用して PowerShell を構成すると、このスクリプトで示すのと同様になります。 Azure Stack Development Kit にサインインするか、VPN 経由で接続している場合は Windows ベースの外部クライアントにサインインします。 管理者特権の PowerShell ISE セッションを開き、次のスクリプトを実行します。 必要に応じて、**ArmEndpoint** 変数と **GraphAudience** 変数をお使いの環境の構成に合わせて更新してください。
+インターネットに接続した状態で Azure Stack を操作している場合は、次のスクリプトを使用できます。 ただし、インターネットに接続しない状態で Azure Stack を操作している場合は、[接続が切断された状態での PowerShell のインストール方法](azure-stack-powershell-install.md)とコマンドレットを使用して PowerShell を構成すると、このスクリプトで示すのと同様になります。 Azure Stack Development Kit にサインインするか、VPN 経由で接続している場合は Windows ベースの外部クライアントにサインインします。 管理者特権の PowerShell ISE セッションを開き、次のスクリプトを実行します。 必要に応じて、**ArmEndpoint** 変数と **GraphAudience** 変数をお使いの環境の構成に合わせて更新してください。
 
 ```powershell
 

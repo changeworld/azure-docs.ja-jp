@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 20bf16eeb6aff952423af6754812f9532e55cd5f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: add61dbbdaa90ae23e200163f1fa962adc2b3b8e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444459"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902097"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>PowerShell を使用して、VM 管理対象サービス ID (MSI) を構成する
 

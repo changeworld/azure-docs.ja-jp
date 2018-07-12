@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/06/2018
 ms.author: dimazaid
 ms.openlocfilehash: 00d6a2de3f51ef8ade50f29b14a4bc944ae5fee6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778411"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700865"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]

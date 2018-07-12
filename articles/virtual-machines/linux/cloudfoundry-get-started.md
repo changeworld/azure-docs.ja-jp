@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
 ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187761"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972293"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
@@ -54,7 +54,8 @@ Pivotal Cloud Foundry には、OSS 配布と同じコア プラットフォー�
 
 ## <a name="azure-service-broker"></a>Azure Service Broker
 
-Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な 12 要素) の方法論を推奨しています。 [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
+Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な 12 要素) の方法論を推奨しています。 
+  [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
 
 Pivotal Cloud Foundry を使用している場合、Service Broker は Pivotal Network から[タイルとしても使用可能](https://docs.pivotal.io/azure-sb/installing.html)です。
 

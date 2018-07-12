@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: 5468801e56849498d712f51e71cfb31bf068398a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792479"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696620"
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してネットワーク セキュリティ グループ (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "31792479"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルで NSG を作成](tutorial-filter-network-traffic-cli.md)することもできます。
+この記事では、クラシック デプロイ モデルについて説明します。 [Resource Manager デプロイ モデルで NSG を作成](tutorial-filter-network-traffic-cli.md)することもできます。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 

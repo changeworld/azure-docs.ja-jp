@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 60e9aa1daaa2edea534dabd549ed666fdcdd1940
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790221"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688844"
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Azure ポータルを使用した仮想ネットワーク (従来型) の作成
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "31790221"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-このドキュメントでは、従来のデプロイ モデルを使用して VNet を作成する方法を説明します。 [Azure Portal を使用して、Resource Manager のデプロイメント モデルで仮想ネットワークを作成](quick-create-portal.md)することもできます。
+このドキュメントでは、クラシック デプロイ モデルを使用して VNet を作成する方法を説明します。 [Azure Portal を使用して、Resource Manager デプロイ モデルで仮想ネットワークを作成](quick-create-portal.md)することもできます。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

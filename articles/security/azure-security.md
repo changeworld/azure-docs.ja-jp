@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437792"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971008"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -114,7 +114,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
-独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
+独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://msdn.microsoft.com/library/)と特定された脅威からの保護が事前に構成されています。

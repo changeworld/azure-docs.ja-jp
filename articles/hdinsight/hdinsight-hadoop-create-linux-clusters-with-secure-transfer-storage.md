@@ -3,25 +3,22 @@ title: Azure HDInsight の安全な転送のストレージ アカウントで H
 description: 安全な転送が有効になっている Azure ストレージ アカウントで HDInsight クラスターを作成する方法について説明します。
 keywords: hadoop の作業開始,hadoop linux,hadoop クイックスタート,安全な転送,azure ストレージ アカウント
 services: hdinsight
-documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/14/2018
+ms.date: 07/09/2018
 ms.author: jgao
-ms.openlocfilehash: 7a2022fd5cd67120b8dc435a950533e07017218c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1a905d574d67b5965325dba80c03d75901f97fef
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200522"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952196"
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する
 
@@ -33,6 +30,7 @@ ms.locfileid: "34200522"
 * **Azure サブスクリプション**: 1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free)で作成できます。
 * **安全な転送が有効になっている Azure ストレージ アカウント**。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。
 * **ストレージ アカウント上の BLOB コンテナー**。 
+
 ## <a name="create-cluster"></a>クラスターの作成
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: d42fa432f57def5e4f80480e41c2299098e20d7d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/11/2018
+ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020694"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971939"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -63,6 +63,8 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 | 東アジア | ○ | ○ |
 | 東南アジア | ○ | ○ |
 | オーストラリア東部 |  | ○ |
+| オーストラリア中部 |  | ○ |
+| オーストラリア中部 2 |  | ○ |
 | オーストラリア南東部 |  | ○ |
 | インド中部 | ○ | ○ |
 | インド西部 | ○ | ○ |
@@ -99,7 +101,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 
 ## <a name="scale-resources"></a>リソースのスケール
 
-ご自身のサーバーの作成後、仮想コア数、ハードウェアの世代、価格レベル (Basic への変更、および Basic からの変更を除く)、ストレージ量、およびバックアップのリテンション期間を個別に変更できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 仮想コアの数は増やしたり減らしたりできます。 バックアップのリテンション期間は、7 日から 35 日の間でスケールアップまたはスケールダウンできます。 ストレージ サイズは増やすことのみ可能です。 ポータルまたは Azure CLI を使用して、リソースのスケーリングを実行できます。 Azure CLI を使用したスケーリングの例については、「[Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング](scripts/sample-scale-server.md)」を参照してください。
+サーバーの作成後に、仮想コア数、ハードウェアの世代、価格レベル (Basic への変更、および Basic からの変更を除く)、ストレージ量、およびバックアップのリテンション期間を個別に変更できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 仮想コアの数は増やしたり減らしたりできます。 バックアップのリテンション期間は、7 日から 35 日の間でスケールアップまたはスケールダウンできます。 ストレージ サイズは増やすことのみ可能です。 ポータルまたは Azure CLI を使用して、リソースのスケーリングを実行できます。 Azure CLI を使用したスケーリングの例については、「[Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング](scripts/sample-scale-server.md)」を参照してください。
 
 仮想コア数、ハードウェアの世代、または価格レベルを変更すると、新しいコンピューティング割り当てを使用して元のサーバーのコピーが作成されます。 新しいサーバーが実行されると、接続が新しいサーバーに切り替わります。 システムが新しいサーバーに切り替わるほんの短時間、新しい接続を確立できず、コミットされていないすべてのトランザクションがロールバックされます。 この時間の長さは変動しますが、ほとんどの場合 1 分未満です。
 

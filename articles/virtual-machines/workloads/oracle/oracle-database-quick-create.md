@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
 ms.openlocfilehash: 8ff463b89b395947a66db6d067b6ba32281087ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657900"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688068"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 

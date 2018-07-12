@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 31afe8579580ab392411aa8428f023fd52c4c4c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: daveba
+ms.openlocfilehash: afd35c963c2c1c4badb32f7e8f7dba1dce87481c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595293"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904290"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>チュートリアル: Windows VM マネージド サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする
 
@@ -211,7 +211,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Windows 仮想マシンのマネージド サービス ID を使用して、Azure Data Lake Store にアクセスする方法について学びました。 Azure Data Lake Store の詳細については、以下を参照してください：
+このチュートリアルでは、Windows 仮想マシンのマネージド サービス ID を使用して、Azure Data Lake Store にアクセスする方法について学びました。 Azure Data Lake Store の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 >[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

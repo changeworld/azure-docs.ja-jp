@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 61ce66e4bb7fc13f4e8ce8c49ebf47ab4626e6c2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 8d28fd5c01e91c4af9c8eeea4a3f342b57468ddc
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34655873"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901869"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>コンピューティング最適化済み仮想マシンのサイズ
 

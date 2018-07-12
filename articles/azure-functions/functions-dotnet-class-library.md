@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: e521ef29a338d0c7d80493f92acff4758a091359
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: bde7a7788fd01bcbcc63296c0513af8eb4196021
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261289"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970181"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -314,7 +314,7 @@ public static class EnvironmentVariablesExample
 
 アプリ設定は、ローカルでの開発中と Azure での実行中の両方で、環境変数から読み取ることができます。 ローカルでの開発時、アプリ設定は *local.settings.json* ファイルの `Values` コレクションから取得します。 ローカルと Azure の両方の環境において、`GetEnvironmentVariable("<app setting name>")` は名前付きアプリ設定の値を取得します。 たとえば、ローカルでの実行中、*local.settings.json* ファイルに `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` が含まれている場合は、"My Site Name" が返されます。
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
+[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
 
 ## <a name="binding-at-runtime"></a>実行時のバインド
 

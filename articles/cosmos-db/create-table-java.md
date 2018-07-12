@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.openlocfilehash: 532b69f23b0e6d27e255f0b3d0a0eaee60eb8c10
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797507"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485514"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイックスタート: Java と Azure Cosmos DB で Table API アプリを構築する
 

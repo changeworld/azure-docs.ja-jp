@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012745"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701922"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -187,7 +187,7 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Update 5.0 より前のバージョンを実行しているデバイスでサポートされる操作
 Azure Portal では、Update 5.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 Azure Portal に移行した後は、次の表を使用して、Update 5.0 以前のバージョンを実行しているデバイス上でどの操作がサポートされているかを把握してください。
 
-| 操作                                                                                                                       | サポートされています      |
+| Operation                                                                                                                       | サポートされています      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | デバイスの登録                                                                                                               | [はい]            |
 | 全般、ネットワーク、セキュリティなどのデバイス設定の指定                                                                | [はい]            |

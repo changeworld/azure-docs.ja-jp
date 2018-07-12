@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: jroth
 ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072319"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704540"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -73,7 +73,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 ## <a id="configure"></a> 構成オプション
 SQL Server 仮想マシンを構成するための 5 つのウィンドウがあります。
 
-| 手順 | [説明] |
+| 手順 | 説明 |
 | --- | --- |
 | **基本** |[基本設定を構成する](#1-configure-basic-settings) |
 | **サイズ** |[仮想マシンのサイズを選択する](#2-choose-virtual-machine-size) |
