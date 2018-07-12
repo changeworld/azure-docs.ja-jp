@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 6ef165ddc481bf84c6189635e36b97eb9518261e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077807"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35777330"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -37,10 +37,12 @@ ms.locfileid: "34077807"
 
     ![トポロジの表示](./media/view-network-topology/view-topology.png)
 
-    前の図のように、この仮想ネットワークには 3 つのサブネットがあります。 1 つのサブネットには VM が配置されています。 この VM には、1 つのネットワーク インターフェイスが接続されており、パブリック IP アドレスが関連付けられています。 その他の 2 つのサブネットには、ルート テーブルが関連付けられています。 各ルート テーブルには 2 つのルートが含まれています。 1 つのサブネットには、ネットワーク セキュリティ グループが関連付けられています。 トポロジ情報は、以下のリソースに対してのみ表示されます。- *myVnet* 仮想ネットワークと同じリソース グループおよびリージョン内にある。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
-        - *myVnet* 仮想ネットワーク内、またはそのリソースに関連付けられている。 たとえば、*myVnet* 仮想ネットワーク内のサブネットまたはネットワーク インターフェイスに関連付けられていないネットワーク セキュリティ グループは、ネットワーク セキュリティ グループが *MyResourceGroup* リソース グループ内にあっても表示されません
+    前の図のように、この仮想ネットワークには 3 つのサブネットがあります。 1 つのサブネットには VM が配置されています。 この VM には、1 つのネットワーク インターフェイスが接続されており、パブリック IP アドレスが関連付けられています。 その他の 2 つのサブネットには、ルート テーブルが関連付けられています。 各ルート テーブルには 2 つのルートが含まれています。 1 つのサブネットには、ネットワーク セキュリティ グループが関連付けられています。 トポロジの情報は、次のリソースについてのみ表示されます。
+    
+    - *myVnet* 仮想ネットワークとしての同じリソース グループおよびリージョン内。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
+    - *myVnet* 仮想ネットワーク内、またはそのリソースに関連付けられている。 たとえば、*myVnet* 仮想ネットワーク内のサブネットまたはネットワーク インターフェイスに関連付けられていないネットワーク セキュリティ グループは、ネットワーク セキュリティ グループが *MyResourceGroup* リソース グループ内にあっても表示されません
 
-    図に示すトポロジは、**ネットワーク仮想アプライアンス スクリプト サンプルを介してルート トラフィック**を展開した後に作成される仮想ネットワーク用です。これは [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) を使用して展開できます。
+  図に示すトポロジは、**ネットワーク仮想アプライアンス スクリプト サンプルを介してルート トラフィック**を展開した後に作成される仮想ネットワーク用です。これは [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) を使用して展開できます。
 
 6. **[ダウンロード トポロジ]** を選択して、イメージを編集可能なファイル (svg 形式) としてダウンロードします。
 
@@ -132,7 +134,7 @@ ms.locfileid: "34077807"
 | 包含       | 仮想ネットワークにはサブネットが含まれています。 サブネットにはネットワーク インターフェイスが含まれています。                            |
 | 関連付け        | ネットワーク インターフェイスは VM に関連付けられています。 パブリック IP アドレスはネットワーク インターフェイスに関連付けられています。 |
 
-## <a name="properties"></a>[プロパティ]
+## <a name="properties"></a>Properties
 
 トポロジで返されるすべてのリソースには次のプロパティがあります。
 

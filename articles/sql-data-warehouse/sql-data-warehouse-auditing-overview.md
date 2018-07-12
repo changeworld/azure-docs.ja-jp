@@ -10,20 +10,21 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6e0072602586b5a1b873a3a6a0ff71a9d640ff29
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34643500"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
 監査と、Azure SQL Data Warehouse で監査を設定する方法について説明します。
 
 ## <a name="what-is-auditing"></a>監査とは
-SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、レポートと分析が容易になります。
+SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
-監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。 標準準拠をサポートする Azure プログラムの詳細については、 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure セキュリティ センター</a>のページを参照してください。
+監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
 
 ## <a id="subheading-1"></a>監査の基本
 SQL Data Warehouse データベース監査により、以下のことが可能になります。
@@ -32,48 +33,123 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 * **レポート** 。 事前に構成したレポートとダッシュボードを使用して、活動とイベントのレポートをすぐに使用できます。
 * **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
 
-次のイベント カテゴリの監査を構成できます。
-
-収集された監査ログが次のように分類される**プレーンな SQL** および**パラメーター化された SQL**  
-
-* **データへのアクセス**
-* **スキーマの変更 (DDL)**
-* **データの変更 (DML)**
-* **アカウント、ロール、アクセス許可 (DCL)**
-* **ストアド プロシージャ**、**ログイン**、**トランザクション管理**。
-
-各イベント カテゴリに対し、**成功**および**失敗**した操作の監査が個別に構成されます。
-
-監査対象の活動やイベントの詳細については、<a href="http://go.microsoft.com/fwlink/?LinkId=506733" target="_blank">監査ログ形式のリファレンス (doc ファイルのダウンロード)</a> を参照してください。
-
 監査ログは、Azure ストレージ アカウントに格納されます。 監査ログの保有期間を定義することができます。
 
-特定のデータベースに対して、または既定のサーバー ポリシーとして、監査ポリシーを定義できます。 既定のサーバー監査ポリシーは、特定のオーバーライド データベース監査ポリシーが定義されていないサーバー上のすべてのデータベースに適用されます。
+
+## <a id="subheading-4"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
+
+特定のデータベースに対して、または既定のサーバー ポリシーとして、監査ポリシーを定義できます。
+
+* サーバー ポリシーが、サーバー上にある**既存と新規作成のすべてのデータベースに適用されます**。
+
+* "*サーバー BLOB 監査が有効*" な場合は、"*常にデータベースに適用*" されます。 データベース監査設定に関係なく、データベースが監査されます。
+
+* サーバー上だけでなくデータベース上でも監査を有効にした場合であっても、サーバーの BLOB 監査の設定がオーバーライドされたり変更されたりすることは "*ありません*"。 どちらの監査も並行して存在します。 つまり、データベースは並行して 2 回監査されることになります (1 回はサーバー ポリシー、もう 1 回はデータベース ポリシーによって監査されます)。
+
+> [!NOTE]
+> **サーバー レベルの BLOB 監査のみ**を有効にし、すべてのデータベースに対してデータベース レベルの監査を無効にすることをお勧めします。
+> 次の場合を除き、サーバー監査とデータベース監査の両方を有効にすることは避けてください。
+> * 特定のデータベースに対して異なる "*ストレージ アカウント*" または "*リテンション期間*" を使用する場合。
+> * 特定のデータベースの監査対象とするイベントの種類またはカテゴリが、このサーバー上の他のデータベースの管理対象と異なる場合。 たとえば、特定のデータベースに対してのみ監査が必要なテーブルの挿入がある場合など。
+> * 脅威検出を使用する場合 (現在はデータベースレベルの監査でのみサポートされています)。
+>
+
+
+## <a id="subheading-5"></a>すべてのデータベースにサーバーレベルの監査を設定する
+
+サーバー監視ポリシーが、サーバー上にある**既存と新規作成のすべてのデータベース**に適用されます。
+
+以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
+
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
+2. 監査する **SQL Server** に移動します (特定のデータベース/DW ではなく、SQL サーバーが表示されていることを確認してください)。 **[セキュリティ]** メニューで、**[監査と脅威の検出]** を選択します。
+
+    ![ナビゲーション ウィンドウ][6]
+4. *[監査と脅威検出]* ブレードの **[監査]** で **[オン]** を選択します。 この監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
+
+    ![ナビゲーション ウィンドウ][7]
+5. **[監査ログの容量]** ブレードを開くには、**[容量の詳細]** を選択します。 ログを保存する Azure ストレージ アカウントを選択または作成してから、保有期間 (古いログを削除するまでの期間) を選択します。 次に、 **[OK]** をクリックします
+
+    ![ナビゲーション ウィンドウ][8]
+
+    > [!IMPORTANT]
+    > サーバーレベルの監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
+    >
+    > * **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+    > * **VNet 内の Storage** は現在**サポートされていません**。
+
+8. **[Save]** をクリックします。
+
+
+
+## <a id="subheading-2"></a>単一のデータベースに対してデータベースレベルの監査を設定する
+
+特定のデータベースに対して、または既定のサーバー ポリシーとして、監査ポリシーを定義できます。
+
+「[サーバー レベルおよびデータベース レベルの監査ポリシーを定義する](#subheading-4)」の説明に従って、データベース レベルの監査ではなく、サーバー レベルの監査を使用することを強くお勧めします。
 
 監査をセットアップする前に、 ["ダウンレベル クライアント"](sql-data-warehouse-auditing-downlevel-clients.md)を使用しているかどうかを確認します。
 
-## <a id="subheading-2"></a>データベースに対する監査を設定する
-1. <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>を開きます。
+
+1. [Azure ポータル](https://portal.azure.com)を開きます。
 2. 監査する SQL Data Warehouse の **[設定]** に移動します。 **[監査と脅威検出]** を選びます。
-   
+
     ![][1]
 3. 次に、 **[オン]** ボタンをクリックして監査を有効にします。
-   
+
     ![][3]
-4. 監査構成パネルで、**[容量の詳細]** を選んで [監査ログの容量] パネルを開きます。 ログの Azure ストレージ アカウントと、リテンション期間を選びます。 
->[!TIP]
->すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
-   
+4. 監査構成パネルで、**[容量の詳細]** を選んで [監査ログの容量] パネルを開きます。 ログの Azure ストレージ アカウントと、リテンション期間を選びます。
+    >[!TIP]
+    >すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
+
     ![][4]
+
 5. **[OK]** ボタンをクリックして、記憶域の詳細構成を保存します。
 6. **[イベントごとのログ記録]** で、**[成功]** および **[失敗]** を、すべてのイベントについて、または個別のイベント カテゴリについて記録します。
 7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、 [接続文字列でのサーバーの FDQN の変更](sql-data-warehouse-auditing-downlevel-clients.md) に関するトピックを参照してください。
 8. Click **OK**.
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
-監査ログは、設定時に選択した Azure ストレージ アカウントで、 **SQLDBAuditLogs** というプレフィックスを使用してストア テーブルのコレクションに集計されます。 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure ストレージ エクスプローラー</a>などのツールを使用してログ ファイルを表示できます。
 
-事前に構成されたダッシュボード レポート テンプレートが<a href="http://go.microsoft.com/fwlink/?LinkId=403540" target="_blank">ダウンロードできる Excel スプレッドシート</a>として用意されているので、ログ データをすぐに分析できます。 監査ログでテンプレートを使用するには、Excel 2013 またはそれ以降、および Power Query が必要です (<a href="http://www.microsoft.com/download/details.aspx?id=39379">ここ</a>でダウンロードできます)。
+###<a name="server-level-policy-audit-logs"></a>サーバーレベルのポリシーの監査ログ
+サーバーレベルの監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。 これらは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
+
+ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+
+BLOB 監査ログを表示するには、いくつかの方法が使用できます。
+
+* SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
+    1. SSMS のメニューから、**[ファイル]** > **[開く]** > **[監査ファイルの統合]** を選択します。
+
+    2. **[監査ファイルの追加]** ダイアログ ボックスが表示されます。 **[追加]** オプションのいずれかを選択して、ローカル ディスクから監査ファイルをマージするか、Azure Storage からインポートするかを選択します。 Microsoft Azure Storage の詳細とアカウント キーを提供する必要があります。
+
+    3. 統合するすべてのファイルを追加した後に、**[OK]** をクリックして統合の操作を完了します。
+
+    4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
+
+* 作成した[同期アプリケーション](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)を使用します。 アプリケーションは Azure で実行され、Log Analytics のパブリック API を使用して SQL 監査ログを Log Analytics にプッシュします。 同期アプリケーションは Log Analytics ダッシュボード経由で、Log Analytics へ SQL 監査ログをプッシュして使用します。
+
+* Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 [Power BI の詳細を確認し、ダウンロード可能なテンプレートにアクセスします](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)。
+
+* ポータル経由で、あるいは [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
+    * ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析できます。
+    * また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。
+
+* 他の方法:
+   * 複数のファイルまたはログ ファイルが含まれるサブフォルダーをダウンロードした後、前述の SSMS 監査ファイルの統合の指示に従って、ローカルでマージすることができます。
+
+   * BLOB 監査ログをプログラムで表示します。
+
+     * [拡張イベント リーダー](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) (C# ライブラリ) を使用します。
+     * PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+
+
+
+<br>
+###<a name="database-level-policy-audit-logs"></a>データベースレベルのポリシーの監査ログ
+データベースレベルの監査ログは、設定時に選択した Azure ストレージ アカウントで、**SQLDBAuditLogs** というプレフィックスが付いたストア テーブルのコレクションに集計されます。 [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com)などのツールを使用してログ ファイルを表示できます。
+
+事前に構成されたダッシュボード レポート テンプレートが[ダウンロードできる Excel スプレッドシート](http://go.microsoft.com/fwlink/?LinkId=403540)として用意されているので、ログ データをすぐに分析できます。 監査ログでテンプレートを使用するには、Excel 2013 以降および Power Query ([ここ](http://www.microsoft.com/download/details.aspx?id=39379)でダウンロードできます) が必要です。
 
 テンプレートでは架空のサンプル データを使用しています。Power Query を設定して Azure ストレージ アカウントから監査ログを直接インポートできます。
 
@@ -84,7 +160,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
    ![][4]
 2. ストレージ構成パネルに移動し、"*プライマリ アクセス キー*" を**再生成**します。
-3. 監査構成パネルに戻り、 
+3. 監査構成パネルに戻り、
 4. **[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替えて、**[保存]** をクリックします。
 4. ストレージの UI に戻り、 **セカンダリ アクセス キー** を *再生成* (次のキー更新サイクルの準備として) します。
 
@@ -128,7 +204,8 @@ TDS バージョン 7.3 以前をサポートする "ダウンレベル クラ�
 [Database Auditing basics]: #subheading-1
 [Set up auditing for your database]: #subheading-2
 [Analyze audit logs and reports]: #subheading-3
-
+[Define server-level vs. database-level auditing policy]: #subheading-4
+[Set up server-level auditing for all databases]: #subheading-5
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing.png
@@ -136,5 +213,6 @@ TDS バージョン 7.3 以前をサポートする "ダウンレベル クラ�
 [3]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-enable.png
 [4]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-storage-account.png
 [5]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-dashboard.png
-
-
+[6]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-server_1_overview.png
+[7]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-server_2_enable.png
+[8]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-server_3_storage.png

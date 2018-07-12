@@ -12,11 +12,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 04/13/2018
-ms.openlocfilehash: 18761c02cc423affe7b1050700e560b1f0b0594d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34627366"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 この概要では、Microsoft Genomics サービスを使用する際の一般的な問題に対応するための戦略について説明します。 一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 
@@ -72,9 +73,7 @@ Fastq ファイルは、サンプル識別子の末尾の /1 または /2 のみ
 * `Error locating input files on worker machine`
 * `Process management failure`
 
-ワークフローの再送信を試してください。 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。
-
-![Azure Portal でサポートに問い合わせる](./media/troubleshooting-guide/genomics-contact-support.png "Azure Portal でサポートに問い合わせる")
+ワークフローの再送信を試してください。 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。 サポート要求を送信する方法の詳細については、[こちら](file-support-ticket-genomics.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Microsoft Genomics サービスに関する一般的な問題のトラブルシューティングと解決方法を学びました。 詳細情報とその他の一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 

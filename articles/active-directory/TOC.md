@@ -404,7 +404,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
@@ -434,7 +434,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
+#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)
@@ -447,7 +447,7 @@
 #### [FAQ](active-directory-identity-protection-faqs.md)
 #### [用語集](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
+### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
 ## Azure AD と他のサービスのと統合 
 ### [LinkedIn を Azure AD と統合する](users-groups-roles/linkedin-integration.md)
@@ -477,7 +477,7 @@
 ## [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [開発者向け Azure AD](./develop/active-directory-how-to-integrate.md)
-## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # リソース
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
