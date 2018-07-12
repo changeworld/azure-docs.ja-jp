@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: db241c1a3c8bfd15e13ae0bd9f1cdf4c92c7081d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 00cb6cb59f8144782fdacd8c2f9763c2f7036880
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34013938"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906838"
 ---
 >[!NOTE]
 > ご意見、ご感想については、こちらのページにコメントを投稿していただくか、または [Azure フィードバック](https://feedback.azure.com/forums/216843-virtual-machines)から #azerrormessage タグを使用してコメントをお寄せください。
@@ -97,7 +97,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  InvalidParameter  |  URI {0} は正しい BLOB URI ではないようです。  |
 |  InvalidParameter  |  '{0}' という名前のディスクで既に同じ LUN: {1} を使用しています。  |
 |  InvalidParameter  |  '{0}' という名前のディスクは既に存在します。  |
-|  InvalidParameter  |  指定したイメージ参照で既に定義されているディスクに対してユーザー イメージの上書きを指定することはできません。  |
+|  InvalidParameter  |  指定したイメージ参照で既に定義されているディスクに対してユーザー イメージのオーバーライドを指定することはできません。  |
 |  InvalidParameter  |  '{0}' という名前のディスクで既に同じ VHD URL: {1} を使用しています。  |
 |  InvalidParameter  |  指定した障害ドメインの数 {0} は、{1} から {2} の範囲でなければなりません。  |
 |  InvalidParameter  |  ライセンスの種類 {0} が無効です。 有効なライセンスの種類は Windows_Client または Windows_Server (大文字小文字は区別されます) です。  |
@@ -164,7 +164,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
 |  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細: {1} イメージが適切に準備 (一般化) されているかをご確認ください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ で手順を確認することができます </li></ul> |
+|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
 ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097956"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676088"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Azure CLI 2.0 を使用して VM の負荷を分散する内部ロード バランサーを作成する
 

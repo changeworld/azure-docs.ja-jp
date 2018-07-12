@@ -9,11 +9,11 @@ ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: f8cd78e63099f864c5fc54b6268f6e558d738626
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371373"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724924"
 ---
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

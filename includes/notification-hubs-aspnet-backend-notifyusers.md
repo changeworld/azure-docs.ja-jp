@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 634bb14cfef3df2cf944eeafbfa8d671afa4ac98
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "33835799"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
