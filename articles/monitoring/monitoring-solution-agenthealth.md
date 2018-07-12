@@ -77,13 +77,13 @@ OMS ワークスペースに Agent Health ソリューションを追加する�
 
 | プロパティ | 説明 |
 | --- | --- |
-| type | *Heartbeat*|
-| カテゴリ | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
+| Type | *Heartbeat*|
+| Category | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
 | Computer | コンピューター名。|
 | OSType | Windows または Linux オペレーティング システム。|
 | OSMajorVersion | オペレーティング システムのメジャー バージョン。|
 | OSMinorVersion | オペレーティング システムのマイナー バージョン。|
-| バージョン | OMS エージェントまたは Operations Manager エージェントのバージョン。|
+| Version | OMS エージェントまたは Operations Manager エージェントのバージョン。|
 | SCAgentChannel | *Direct* と *SCManagementServer* のいずれかの値になります。|
 | IsGatewayInstalled | OMS ゲートウェイがインストールされている場合、値は *true* です。それ以外の場合は *false* になります。|
 | ComputerIP | コンピューターの IP アドレス。|

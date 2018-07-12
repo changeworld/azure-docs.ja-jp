@@ -116,20 +116,20 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | Name | type | [説明] |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
-| ResourceId |String |操作が行われたリソースの ID |
-| カテゴリ |String |ログのカテゴリ。 **Requests**など。 |
+| resourceId |String |操作が行われたリソースの ID |
+| category |String |ログのカテゴリ。 **Requests**など。 |
 | operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
 | correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
-| ID |オブジェクト |ログを生成した ID |
-| プロパティ |JSON |詳細については、以下をご覧ください。 |
+| identity |オブジェクト |ログを生成した ID |
+| properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
 | Name | type | [説明] |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
-| パス |String |操作が実行されたパス |
+| Path |String |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
 | ClientRequestId |String |この要求を一意に識別する ID |
 | StartTime |String |サーバーが要求を受信した時刻 |
@@ -163,14 +163,14 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | Name | type | [説明] |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
-| ResourceId |String |操作が行われたリソースの ID |
-| カテゴリ |String |ログのカテゴリ。 **Audit**など。 |
+| resourceId |String |操作が行われたリソースの ID |
+| category |String |ログのカテゴリ。 **Audit**など。 |
 | operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
 | resultType |String |操作の状態。200 など。 |
 | resultSignature |String |操作に関する追加情報。 |
 | correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
-| ID |オブジェクト |ログを生成した ID |
-| プロパティ |JSON |詳細については、以下をご覧ください。 |
+| identity |オブジェクト |ログを生成した ID |
+| properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
 | Name | type | [説明] |

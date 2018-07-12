@@ -212,18 +212,18 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | フィールド名 | [説明] |
 | --- | --- |
 | time |日付と時刻 (UTC)。 |
-| ResourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、常に Key Vault リソース ID となります。 |
+| resourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、常に Key Vault リソース ID となります。 |
 | operationName |次の表に示すような操作の名前です。 |
 | operationVersion |クライアントによって要求される REST API バージョンです。 |
-| カテゴリ |Key Vault のログの場合、AuditEvent は使用可能な単一の値です。 |
+| category |Key Vault のログの場合、AuditEvent は使用可能な単一の値です。 |
 | resultType |REST API 要求の結果です。 |
 | resultSignature |HTTP の状態です。 |
 | resultDescription |結果に関する追加の説明です (使用可能な場合)。 |
 | durationMs |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 これにネットワーク待機時間は含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
 | callerIpAddress |要求を行ったクライアントの IP アドレスです。 |
 | correlationId |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
-| ID |REST API 要求を行う場合に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
-| プロパティ |このフィールドには、操作に基づくさまざまな情報が含まれます (operationName)。 ほとんどの場合は、クライアント情報 (クライアントから渡された useragent 文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (KeyCreate または VaultGet など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。 |
+| identity |REST API 要求を行う場合に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
+| properties |このフィールドには、操作に基づくさまざまな情報が含まれます (operationName)。 ほとんどの場合は、クライアント情報 (クライアントから渡された useragent 文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (KeyCreate または VaultGet など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。 |
 
 **operationName** フィールドの値は、ObjectVerb 形式となります。 例: 
 
@@ -235,7 +235,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 | operationName | REST API コマンド |
 | --- | --- |
-| 認証 |Azure Active Directory エンドポイント経由 |
+| Authentication |Azure Active Directory エンドポイント経由 |
 | VaultGet |[キー コンテナーに関する情報を取得します](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | VaultPut |[キー コンテナーを作成または更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | VaultDelete |[キー コンテナーを削除します](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

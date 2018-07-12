@@ -95,27 +95,27 @@ PowerShell または Azure CLI の使用を有効にする方法については�
 | Name | type | 例 | メモ |
 | --- | --- | --- | --- |
 | time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
-| ResourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
+| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |文字列 |"Query.Search" |操作の名前 |
 | operationVersion |文字列 |"2015-02-28" |使用されている API バージョン |
-| カテゴリ |文字列 |"OperationLogs" |定数 |
+| category |文字列 |"OperationLogs" |定数 |
 | resultType |文字列 |"Success" |使用可能な値: Success または Failure |
 | resultSignature |int |200 |HTTP の結果コード |
 | durationMS |int |50 |操作時間 (ミリ秒) |
-| プロパティ |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
+| properties |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
 
 **プロパティのスキーマ**
 | Name | type | 例 | メモ |
 | --- | --- | --- | --- |
-| [説明] |文字列 |"GET /indexes('content')/docs" |操作のエンドポイント |
-| クエリ |文字列 |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
-| ドキュメント |int |42 |処理されたドキュメント数 |
+| Description |文字列 |"GET /indexes('content')/docs" |操作のエンドポイント |
+| Query |文字列 |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
+| Documents |int |42 |処理されたドキュメント数 |
 | IndexName |文字列 |"testindex" |操作に関連付けられているインデックスの名前 |
 
 #### <a name="metrics-schema"></a>メトリックのスキーマ
 | Name | type | 例 | メモ |
 | --- | --- | --- | --- |
-| ResourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
+| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
 | metricName |文字列 |"Latency" |メトリックの名前 |
 | time |Datetime |"2015-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |

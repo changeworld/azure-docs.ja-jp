@@ -162,14 +162,14 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
 | operationName | 文字列 | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
-| カテゴリ | 文字列 | "GatewayLogs" (定数値) |
+| category | 文字列 | "GatewayLogs" (定数値) |
 | durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数 |
 | callerIpAddress | 文字列 | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | 文字列 | API Management によって割り当てられる一意の http 要求識別子 |
 | location | 文字列 | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
 | httpStatusCodeCategory | 文字列 | http 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
-| ResourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> の ID |
-| プロパティ | オブジェクト | 現在の要求のプロパティ |
+| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> の ID |
+| properties | オブジェクト | 現在の要求のプロパティ |
 | method | 文字列 | 受信要求の HTTP メソッド |
 | url | 文字列 | 受信要求の URL |
 | clientProtocol | 文字列 | 受信要求の HTTP プロトコル バージョン |
@@ -190,13 +190,13 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | userId | 文字列 | 現在の要求のユーザー エンティティ識別子 | 
 | apimSubscriptionId | 文字列 | 現在の要求のサブスクリプション エンティティ識別子 | 
 | backendId | 文字列 | 現在の要求のバックエンド エンティティ識別子 | 
-| LastError | オブジェクト | 最後の要求処理エラー | 
+| lastError | オブジェクト | 最後の要求処理エラー | 
 | elapsed | integer | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
 | source | 文字列 | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
 | scope | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
 | section | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
 | reason | 文字列 | エラーの理由 | 
-| Message | 文字列 | エラー メッセージ | 
+| message | 文字列 | エラー メッセージ | 
 
 ## <a name="next-steps"></a>次の手順
 

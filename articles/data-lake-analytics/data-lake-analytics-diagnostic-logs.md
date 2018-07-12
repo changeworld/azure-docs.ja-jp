@@ -129,21 +129,21 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | Name | type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
-| ResourceId |String |操作が行われたリソースの ID |
-| カテゴリ |String |ログのカテゴリ。 **Requests**など。 |
+| resourceId |String |操作が行われたリソースの ID |
+| category |String |ログのカテゴリ。 **Requests**など。 |
 | operationName |String |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
 | correlationId |String |ロールの ID この値は、関係のあるログ エントリをグループ化する際に使用します |
-| ID |オブジェクト |ログを生成した ID |
-| プロパティ |JSON |詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
+| identity |オブジェクト |ログを生成した ID |
+| properties |JSON |詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
 
 | Name | type | 説明 |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
-| パス |String |操作が実行されたパス |
+| Path |String |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
 | ClientRequestId |String |この要求を一意に識別する ID |
 | StartTime |String |サーバーが要求を受信した時刻 |
@@ -181,13 +181,13 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | Name | type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
-| ResourceId |String |操作が行われたリソースの ID |
-| カテゴリ |String |ログのカテゴリ。 **Audit**など。 |
+| resourceId |String |操作が行われたリソースの ID |
+| category |String |ログのカテゴリ。 **Audit**など。 |
 | operationName |String |ログに記録される操作の名前。 JobSubmitted など。 |
 | resultType |String |ジョブの状態 (operationName) の副状態。 |
 | resultSignature |String |ジョブの状態 (operationName) に関する追加の詳細。 |
-| ID |String |操作を要求したユーザー。 たとえば、「susan@contoso.com」のように入力します。 |
-| プロパティ |JSON |詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
+| identity |String |操作を要求したユーザー。 たとえば、「susan@contoso.com」のように入力します。 |
+| properties |JSON |詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
 
 > [!NOTE]
 > **resultType** と **resultSignature** は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。 この 2 つには、たとえば **operationName** の値が **JobStarted** または **JobEnded** の場合にのみ値が入ります。
@@ -204,7 +204,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | SubmitTime |String |ジョブが送信された時間 (UTC) |
 | StartTime |String |ジョブが送信された後に実行を開始した時刻 (UTC) |
 | EndTime |String |ジョブが終了した時刻 |
-| 並列処理 |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
+| Parallelism	 |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** は操作に関する情報を提供します。 これらのエントリには、その操作が開始または完了した場合にのみ値が含まれます。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。

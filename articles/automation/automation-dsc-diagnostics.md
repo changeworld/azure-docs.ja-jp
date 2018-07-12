@@ -129,8 +129,8 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、__"ApplyOnly"__、__"ApplyandMonitior"__、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__: DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__: これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__: DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
-| カテゴリ | DscNodeStatus |
-| リソース | Azure Automation アカウントの名前。 |
+| Category | DscNodeStatus |
+| Resource | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |
@@ -155,8 +155,8 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | OperationName |DscResourceStatusData|
 | ResultType |リソースが準拠しているかどうか。 |
 | NodeName_s |管理対象ノードの名前。 |
-| カテゴリ | DscNodeStatus |
-| リソース | Azure Automation アカウントの名前。 |
+| Category | DscNodeStatus |
+| Resource | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |

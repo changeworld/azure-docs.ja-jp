@@ -288,16 +288,16 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
   * **allowedTypes** - 選択できる列の型をフィルター処理します。 有効な値は、次のとおりです。 
     
     * Numeric
-    * ブール
-    * カテゴリ
+    * Boolean
+    * Categorical
     * String
-    * ラベル
+    * Label
     * Feature
     * Score
-    * すべて
+    * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
     
-    * なし
+    * None
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -317,7 +317,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * AllLabel
     * AllFeature
     * AllScore
-    * すべて
+    * All
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 

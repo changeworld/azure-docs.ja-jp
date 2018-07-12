@@ -241,7 +241,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 プロパティ | [説明]|
 ----------|----------|
 Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
-カテゴリ | データの種類の分類。 Automation の場合、値は JobLogs です。|
+Category | データの種類の分類。 Automation の場合、値は JobLogs です。|
 CorrelationId | GUID。Runbook ジョブの関連付け ID です。|
 JobId | GUID。Runbook ジョブの ID です。|
 operationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。|
@@ -262,7 +262,7 @@ Time | Runbook ジョブが実行された日付と時刻。|
 プロパティ | [説明]|
 ----------|----------|
 Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
-カテゴリ | データの種類の分類。 Automation の場合、値は JobStreams です。|
+Category | データの種類の分類。 Automation の場合、値は JobStreams です。|
 JobId | GUID。Runbook ジョブの ID です。|
 operationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。|
 ResourceGroup | Runbook ジョブのリソース グループ名を指定します。|

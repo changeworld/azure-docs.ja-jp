@@ -60,9 +60,9 @@ ms.locfileid: "35263431"
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | StorageAccountId |[はい] |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzureRmLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
+| Location |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzureRmLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
 | RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| カテゴリ |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。  指定しないと、すべての可能な値と見なされます |
+| Category |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。  指定しないと、すべての可能な値と見なされます |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI を使用したアクティビティ ログのアーカイブ
 
@@ -74,9 +74,9 @@ ms.locfileid: "35263431"
 | --- | --- | --- |
 | name |[はい] |ログ プロファイルの名前。 |
 | storage-account-id |[はい] |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのスペース区切りリスト。 `az account list-locations --query [].name` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
-| 日数 |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを true に設定する必要があります。 |
-|有効 | [はい] |True または False。  アイテム保持ポリシーを有効または無効にするために使います。  True の場合は、days パラメーターを 0 より大きい値にする必要があります。
+| locations |[はい] |アクティビティ ログ イベントを収集するリージョンのスペース区切りリスト。 `az account list-locations --query [].name` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
+| days |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。  0 の場合は、enabled パラメーターを true に設定する必要があります。 |
+| enabled | [はい] |True または False。  アイテム保持ポリシーを有効または無効にするために使います。  True の場合は、days パラメーターを 0 より大きい値にする必要があります。
 | categories |[はい] |収集するイベント カテゴリのスペース区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 ## <a name="storage-schema-of-the-activity-log"></a>アクティビティ ログのストレージ スキーマ
@@ -156,19 +156,19 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| カテゴリ |アクションのカテゴリ。例:  Write、Read、Action |
+| category |アクションのカテゴリ。例:  Write、Read、Action |
 | resultType |結果の種類。例:  Success、Failure、Start |
 | resultSignature |リソースの種類によって異なります。 |
 | durationMs |操作時間 (ミリ秒) |
 | callerIpAddress |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの IP アドレス。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| ID |承認および要求を記述する JSON BLOB。 |
+| identity |承認および要求を記述する JSON BLOB。 |
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | location |発生した場所のリージョン (またはグローバル)。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
 > プロパティとそのプロパティの使用方法については、リソースによって異なることがあります。
