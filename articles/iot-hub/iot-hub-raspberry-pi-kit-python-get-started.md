@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: 15b917d811dff2d70b638ab82c808bdc7fa1012b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635153"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235731"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi の Azure IoT Hub への接続 (Python)
 

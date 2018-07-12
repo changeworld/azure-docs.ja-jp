@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 1af195e644fe93e0c59f5e4402dd8942f5fe1aba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782001"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635508"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>VSTS 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Visual Studio Team Services (VSTS) にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 

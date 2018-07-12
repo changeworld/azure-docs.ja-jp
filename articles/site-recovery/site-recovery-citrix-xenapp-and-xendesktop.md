@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: b117525a4851dee5366aeda77c8aaefd1fdde375
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c4bc8a1b2ab8f6569d6893f5c4fc16339ebddbe6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29559708"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917212"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 XenApp および Citrix XenDesktop デプロイをレプリケートします
 

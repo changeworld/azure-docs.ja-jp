@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782011"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235450"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -129,7 +129,7 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 Azure での開発またはテストに Windows クライアント OS イメージ (Windows 7 以降) を使用するには、次のいずれかを行う必要があります。
 
 - [MSDN サブスクリプションを購入する](https://www.visualstudio.com/products/how-to-buy-vs)。
-- Enterprise Agreement をご利用の場合は、[Enterprise Dev/Test プラン](https://azure.microsoft.com/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
+- Enterprise Agreement をご利用の場合は、[Enterprise Dev/Test オファー](https://azure.microsoft.com/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
 
 各 MSDN サービスの Azure クレジットの詳細については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 

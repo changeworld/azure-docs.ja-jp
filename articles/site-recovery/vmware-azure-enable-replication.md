@@ -4,15 +4,15 @@ description: この記事では、Azure Site Recovery を使用して Azure へ�
 services: site-recovery
 author: asgang
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: asgang
-ms.openlocfilehash: 5a4f184d0edf42732f1671d123f885749ae188d9
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9a868b196a287b7a5121803136d3c0119f64d9fe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287390"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917025"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 

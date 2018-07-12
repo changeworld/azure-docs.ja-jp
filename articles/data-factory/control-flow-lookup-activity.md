@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055650"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237834"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 

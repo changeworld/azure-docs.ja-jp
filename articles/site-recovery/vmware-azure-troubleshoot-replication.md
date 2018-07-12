@@ -2,21 +2,22 @@
 title: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にレプリケートする際に起こる問題のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にレプリケートする際に起こる、一般的な問題の解決方法について説明します。
 services: site-recovery
-author: asgang
+author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: asgang
-ms.openlocfilehash: 9291840428c9a8d7ba5d65bc94ce5964728316f3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 07/06/2018
+ms.author: ramamill
+ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951650"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
-Azure Site Recovery を使用して VMware 仮想マシンや物理サーバーを保護する際には、特定のエラー メッセージが表示される場合があります。 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM や物理サーバーをレプリケートする際に起こる、一般的な問題について説明します。
+VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM や物理サーバーをレプリケートする際に起こる、一般的な問題について説明します。
 
 ## <a name="initial-replication-issues"></a>初期レプリケーションの問題。
 

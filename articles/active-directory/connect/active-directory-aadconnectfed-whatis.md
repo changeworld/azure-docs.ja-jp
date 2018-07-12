@@ -3,7 +3,7 @@ title: Azure AD Connect とフェデレーション | Microsoft Docs
 description: このページは、Azure AD Connect を使用した AD FS の操作に関するすべてのドキュメントの中心となる場所です。
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.component: hybrid
-ms.author: anandy
-ms.openlocfilehash: 6c14b673bd9664aad54ea8002175999470661e34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: ce6b889d23959e9d04b95ec2bc5847340b596448
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593855"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915838"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 Azure Active Directory (Azure AD) Connect を使用すると、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD でフェデレーションを構成できます。 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。また、企業ネットワーク上では、パスワードを再度入力する必要はありません。 AD FS によるフェデレーション オプションを使用すると、AD FS の新しいインストールをデプロイすることも、Windows Server 2012 R2 ファームの既存のインストールを指定することもできます。

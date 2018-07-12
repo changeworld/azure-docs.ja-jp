@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.openlocfilehash: 8fcc654b7f5068037ec0818e19d8dff09bc07537
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030191"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635090"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Azure PowerShell での Azure ファイル共有の管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、PowerShell を使用して Azure ファイル共有を操作する方法の基本について説明します。 この記事では、次の方法について説明します。

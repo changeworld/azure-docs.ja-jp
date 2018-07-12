@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 185f6730babe077332be9f054ba338ff48295eca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4f3772abc1cdbd3b35b8b1f16e7a47c0f1a17783
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448953"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595656"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する 
 
@@ -82,6 +82,6 @@ ms.locfileid: "37448953"
 - まだサインアップしていない場合は、[Azure Active Directory Premium にサインアップ](../fundamentals/active-directory-get-started-premium.md)します。
 - [管理者として割り当てられたユーザーに Azure Multi-Factor Authentication を使うよう要求します](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states)。
 - Office 365 を使っている場合は、[Office 365 のグローバル管理者に追加の保護を構成](https://support.office.com/article/Protect-your-Office-365-global-administrator-accounts-6b4ded77-ac8d-42ed-8606-c014fd947560)します。
-- [グローバル管理者のアクセス レビューを実行](../active-directory-privileged-identity-management-how-to-start-security-review.md)し、[既存のグローバル管理者をより明確な管理者ロールに移行](directory-assign-admin-roles.md)します。
+- [グローバル管理者のアクセス レビューを実行](../privileged-identity-management/pim-how-to-start-security-review.md)し、[既存のグローバル管理者をより明確な管理者ロールに移行](directory-assign-admin-roles.md)します。
 
 

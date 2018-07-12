@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 07/10/2017
 ms.author: dobett
 ms.openlocfilehash: cb25ae0e90189f0c808f561b20e45f08b49df0d6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34633759"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299163"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 

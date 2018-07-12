@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4ee6eefa431b06e0cb694635e188c87a8a4175c9
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737267"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916481"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトに移行したマシンの再保護
 

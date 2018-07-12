@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2534210c903e77462ece91c577d731d9c8e3726f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299717"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970229"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -27,7 +27,7 @@ ms.locfileid: "35299717"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 | 
@@ -49,7 +49,7 @@ ms.locfileid: "35299717"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 |------|-------|-------| 
 | 時間継続時間 | 90 日間 | この制限を変更するには、「[実行継続時間を変更する](#change-duration)」をご覧ください。 | 
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | この制限を変更するには、「[ストレージのリテンション期間を変更する](#change-retention)」をご覧ください。 | 
@@ -76,7 +76,7 @@ ms.locfileid: "35299717"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | Until 反復数 | 5,000 | | 
 | ForEach 項目数 | 100,000 | 必要に応じて[クエリ アクション](../connectors/connectors-native-query.md)を使用することで、さらに大きな配列にフィルターを適用できます。 | 
@@ -90,7 +90,7 @@ ms.locfileid: "35299717"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ----- | ----- | ----- | 
 | 5 分間のアクション実行数 | 100,000 | 制限を 300,000 に増やすには、`High Throughput` モードでロジック アプリを実行します。 高スループット モードを構成するには、ワークフロー リソースの `runtimeConfiguration` で、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 <p>**注**: 高スループット モードはプレビュー段階です。 また、必要に応じて複数のアプリにワークロードを分散できます。 | 
 | 同時発信呼び出しアクション数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
@@ -111,7 +111,7 @@ ms.locfileid: "35299717"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 送信要求 | 120 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 | 
 | 同期応答 | 120 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
@@ -119,7 +119,7 @@ ms.locfileid: "35299717"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | メッセージ サイズ | 100 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
 | チャンクがある場合のメッセージ サイズ | 1 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 詳細については、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 | 
@@ -128,7 +128,7 @@ ms.locfileid: "35299717"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 | 
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 | 
@@ -202,7 +202,7 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 ### <a name="artifact-capacity-limits"></a>アーティファクト容量制限
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) を使用します。 | 
 | マップ (XSLT ファイル) | 2 MB | | 
@@ -218,7 +218,7 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 B2B プロトコルに適用される制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | デコードおよびエンコードに適用 | 
 | X12 | 50 MB | デコードおよびエンコードに適用 | 
@@ -235,8 +235,8 @@ B2B プロトコルに適用される制限を次に示します。
 
 | Logic Apps のリージョン | 送信 IP |
 |-------------------|-------------|
-| オーストラリア | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | オーストラリア東部 | 13.75.149.4, 104.210.91.55, 104.210.90.241 |
+| オーストラリア南東部 | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | ブラジル南部 | 191.235.82.221, 191.235.91.7, 191.234.182.26 |
 | カナダ中部 | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
 | カナダ東部 | 52.232.128.155, 52.229.120.45, 52.229.126.25 |

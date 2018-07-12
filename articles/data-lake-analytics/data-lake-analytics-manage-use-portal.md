@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1ccd4dd6b8d4ee15b7d9f14e7436ccd87392121e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dcf1a853f00f047a6d8beb8599a5b74c7f8f084d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623708"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969512"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -166,4 +166,4 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)
-* [ポリシーを使用して Azure Data Lake Analytics を管理する](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-policies)
+* [ポリシーを使用して Azure Data Lake Analytics を管理する](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-policies)

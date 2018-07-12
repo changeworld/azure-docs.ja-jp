@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.openlocfilehash: 64c49d6da556d5f2d8b24f81086f6bde8f6ada3d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796793"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634106"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB での Table API アプリの構築
 

@@ -16,11 +16,11 @@ ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
 ms.openlocfilehash: 9b9ef150a86a754d4ed328184eb02c1937008b7b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028865"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970140"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 

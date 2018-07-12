@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e53b38bf336816ca670fad3ab70a43e5cc8b3437
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a5b337e5318154e299f82b1102ca832303d752f7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763562"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970056"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -71,7 +71,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 すべての JavaScript オーケストレーション関数に、`durable-functions` モジュールが含まれている必要があります。 これは、アウト プロセス言語に対応するために、オーケストレーション関数のアクションを Durable の実行プロトコルに変換する JavaScript ライブラリです。 オーケストレーション関数と他の JavaScript 関数には、次の 3 つの大きな違いがあります。
 
-1. この関数は[ジェネレーター関数](https://docs.microsoft.com/en-us/scripting/javascript/advanced/iterators-and-generators-javascript)です。
+1. この関数は[ジェネレーター関数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)です。
 2. この関数は、`durable-functions` モジュールの呼び出しにラップされます (ここでは `df`)。
 3. この関数は、`context.done` ではなく、`return` を呼び出して終了します。
 

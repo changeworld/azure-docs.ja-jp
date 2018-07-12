@@ -6,14 +6,14 @@ author: bsiva
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: a2465bb3397a175b6ad8b8be0de933dfae1dee5b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29811059"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915522"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
 ms.openlocfilehash: 09580f3bb5d6f6f5ccb15adddf0cf1f9e19c2210
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807579"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619405"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 

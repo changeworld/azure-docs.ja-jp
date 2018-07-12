@@ -10,11 +10,11 @@ ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
 ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058082"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634371"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 

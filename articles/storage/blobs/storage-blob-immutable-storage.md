@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 4a83ebbcf045ac2b74957effceadfe80609e960c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237424"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970246"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Azure Blob Storage の不変ストレージ機能 (プレビュー)
 
@@ -42,7 +42,7 @@ Azure BLOB の不変ストレージ機能を使用すると、ユーザーはビ
 
 - **コンテナー レベルの構成:** 不変ストレージ機能では、時間ベースのリテンション ポリシーと訴訟ホールド タグをコンテナー レベルで構成できます。  ユーザーは、コンテナー レベルの簡単な設定を使用して、時間ベースのリテンション ポリシーの作成とロック、保持間隔の延長、訴訟ホールドの設定とクリアなどを行うことができます。  これらのポリシーは、コンテナー内の既存および新規のすべての BLOB に適用されます。
 
-- **監査ログのサポート:** 各コンテナーには、保持間隔の延長の最大 3 つのログと共に、ロック済みの時間ベースのリテンション ポリシーの最大 5 つの時間ベースのリテンション コマンドを示す監査ログが含まれています。  時間ベースのリテンションの場合、ログにはユーザー ID、コマンドの種類、タイムスタンプ、保持間隔が含まれます。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイムスタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、コンテナーの有効期間の間保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)にあります。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
+- **監査ログのサポート:** 各コンテナーには、保持間隔の延長の最大 3 つのログと共に、ロック済みの時間ベースのリテンション ポリシーの最大 5 つの時間ベースのリテンション コマンドを示す監査ログが含まれています。  時間ベースのリテンションの場合、ログにはユーザー ID、コマンドの種類、タイムスタンプ、保持間隔が含まれます。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイムスタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、コンテナーの有効期間の間保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)にあります。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
 
  この機能は、すべての Azure パブリック リージョンで有効になっています。
 
@@ -68,7 +68,7 @@ Azure BLOB の不変ストレージでは、時間ベースのリテンション
 
 コンテナーには、訴訟ホールドと時間ベースのリテンション ポリシーの両方を同時に適用できます。 有効なリテンション期間が終了していても、すべての訴訟ホールドがクリアされるまで、そのコンテナー内のすべての BLOB が不変状態のままになります。 逆に、すべての訴訟ホールドがクリアされていても、有効なリテンション期間が終了するまで、BLOB は不変状態のままになります。
 次の表に、さまざまな不変シナリオで無効になる BLOB 操作の種類を示します。
-Blob REST API の詳細については、[Azure Blob Service API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) のドキュメントをご覧ください。
+Blob REST API の詳細については、[Azure Blob Service API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) のドキュメントをご覧ください。
 
 |シナリオ  |BLOB の状態  |禁止されている BLOB 操作  |
 |---------|---------|---------|
@@ -79,7 +79,7 @@ Blob REST API の詳細については、[Azure Blob Service API](https://docs.m
 
 > [!NOTE]
 > 上記の表の最初の 2 つのシナリオでは、最初の Put Blob、および BLOB を作成するために必要な Put Block List と Put Block の各操作が許可されますが、以降の操作はすべて禁止されます。
-> 不変ストレージ機能は GPv2 および BLOB ストレージ アカウントでのみ使用可能であり、[Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) を使用して作成する必要があります。
+> 不変ストレージ機能は GPv2 および BLOB ストレージ アカウントでのみ使用可能であり、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用して作成する必要があります。
 
 ## <a name="pricing"></a>価格
 
@@ -94,7 +94,7 @@ Blob REST API の詳細については、[Azure Blob Service API](https://docs.m
 
 ## <a name="getting-started"></a>使用の開始
 
-Azure BLOB の Azure 不変ストレージは、最新リリースの [Azure portal](http://portal.azure.com)、Azure [CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)、および Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) 上でサポートされます。
+Azure BLOB の Azure 不変ストレージは、最新リリースの [Azure portal](http://portal.azure.com)、Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、および Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) 上でサポートされます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -130,7 +130,7 @@ Azure BLOB の Azure 不変ストレージは、最新リリースの [Azure por
 
 ### <a name="cli-20"></a>CLI 2.0
 
-`az extension add -n storage-preview` を使用して、[CLI 拡張機能](http://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)をインストールします。
+`az extension add -n storage-preview` を使用して、[CLI 拡張機能](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)をインストールします。
 
 拡張機能が既にインストールされている場合は、`az extension update -n storage-preview` コマンドを使用して、不変ストレージ機能を有効にします。
 

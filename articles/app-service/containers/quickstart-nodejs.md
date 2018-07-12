@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293906"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969546"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293906"
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で Node.js Web アプリを作成する](../app-service-web-get-started-nodejs.md)」を参照してください。
 >
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、[Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) を使用して App Service on Linux に Node.js アプリをデプロイする方法を示します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して App Service on Linux に Node.js アプリをデプロイする方法を示します。
 
 このクイックスタートは Cloud Shell で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "35293906"
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>Cloud Shell の Web アプリ拡張機能をインストールする
 
-このクイックスタートを完了するには、[az Web アプリ拡張機能](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add)を追加する必要があります。 この拡張機能が既にインストールされている場合は、最新バージョンに更新してください。 Web アプリ拡張機能を更新するには、「`az extension update -n webapp`」と入力します。
+このクイックスタートを完了するには、[az Web アプリ拡張機能](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)を追加する必要があります。 この拡張機能が既にインストールされている場合は、最新バージョンに更新してください。 Web アプリ拡張機能を更新するには、「`az extension update -n webapp`」と入力します。
 
 Web アプリ拡張機能をインストールするには、次のコマンドを実行します。
 
@@ -136,7 +136,7 @@ All done.
 
 - 指定された名前でアプリを作成する。
 
-- 現在の作業ディレクトリから Web アプリにファイルを [zip してデプロイ](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip)する。
+- 現在の作業ディレクトリから Web アプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip)する。
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 

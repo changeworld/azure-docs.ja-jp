@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c64061aee94e8c08a3f6bcae78cffca0b4172d97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9586d0c2b61fe97106378ec684c28be9143b5194
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650674"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969386"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage メトリックの移行
 
@@ -118,7 +118,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 ### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>既定では、新しいメトリック データは同じストレージ アカウントに格納されますか?
 
-いいえ。 メトリック データをストレージ アカウントにアーカイブするには、[Azure Monitor Diagnostic Setting API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate) を使用します。
+いいえ。 メトリック データをストレージ アカウントにアーカイブするには、[Azure Monitor Diagnostic Setting API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 

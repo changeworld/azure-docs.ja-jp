@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046818"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38644903"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]

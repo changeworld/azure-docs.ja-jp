@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
 ms.openlocfilehash: 3ded6fc0950c82d0aa36da89fdd5635afef7be0b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204940"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306528"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLI を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 

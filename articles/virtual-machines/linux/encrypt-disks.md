@@ -3,7 +3,7 @@ title: Azure で Linux VM のディスクを暗号化する | Microsoft Docs
 description: セキュリティを強化するために、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/31/2018
-ms.author: iainfou
-ms.openlocfilehash: 343408366c2970d10a952634ac671721caed74d4
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 75ec087536d6f833a9a2106b1fdf4ed1fd73ef8e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936872"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634622"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを暗号化する方法
 仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、仮想ディスクと VM 自体を暗号化できます。 VM は、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法について詳しく説明します。 

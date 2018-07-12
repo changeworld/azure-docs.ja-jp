@@ -17,11 +17,11 @@ ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 89973581d7c6aa99ab671d5bd04f258898e9235e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31391634"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306839"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
 

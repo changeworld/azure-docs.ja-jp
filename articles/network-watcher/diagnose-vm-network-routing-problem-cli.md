@@ -18,11 +18,11 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: fcb7ec2e40b5c0e8794d2f4d70395dcbecca019c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182162"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618952"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -71,7 +71,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>次ホップの使用
 
-Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートを上書きするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
+Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
 
 VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 

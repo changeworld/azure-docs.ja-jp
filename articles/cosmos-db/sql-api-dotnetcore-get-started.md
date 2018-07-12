@@ -13,11 +13,11 @@ ms.date: 03/12/2018
 ms.author: sngun
 ms.custom: devcenter
 ms.openlocfilehash: be8b99f8cf291d2e09187344aa458420db92364e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082327"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237649"
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: SQL API と .NET Core を使ってみる
 > [!div class="op_single_selector"]

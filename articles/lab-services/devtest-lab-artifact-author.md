@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 268b9af7835c51d78812b35aff5aaac585961b01
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781941"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619190"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 
@@ -56,12 +56,12 @@ ms.locfileid: "33781941"
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
 | $schema |いいえ  |JSON スキーマ ファイルの場所。 JSON スキーマ ファイルは、定義ファイルの有効性をテストする際に役立ちます。 |
-| title |はい |ラボで表示されるアーティファクトの名前 |
-| Description |はい |ラボで表示されるアーティファクトの説明 |
+| title |[はい] |ラボで表示されるアーティファクトの名前 |
+| Description |[はい] |ラボで表示されるアーティファクトの説明 |
 | iconUri |いいえ  |ラボで表示されるアイコンの URI。 |
-| targetOsType |はい |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
+| targetOsType |[はい] |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
 | parameters |いいえ  |マシンでアーティファクトのインストール コマンドが実行されるときに指定する値。 これは、アーティファクトをカスタマイズする際に役立ちます。 |
-| runCommand |はい |VM 上で実行されるアーティファクトのインストール コマンド。 |
+| runCommand |[はい] |VM 上で実行されるアーティファクトのインストール コマンド。 |
 
 ### <a name="artifact-parameters"></a>アーティファクトのパラメーター
 定義ファイルの parameters セクションでは、アーティファクトのインストール時にユーザーが入力できる値を指定します。 アーティファクトのインストール コマンドでこれらの値を参照できます。
@@ -78,9 +78,9 @@ ms.locfileid: "33781941"
 
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
-| type |はい |パラメーター値の型。 使用できる型については、下記を参照してください。 |
-| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 | |
-| description |はい |ラボで表示されるパラメーターの説明。 |
+| type |[はい] |パラメーター値の型。 使用できる型については、下記を参照してください。 |
+| displayName |[はい] |ラボのユーザーに対して表示されるパラメーターの名前。 | |
+| description  |[はい] |ラボで表示されるパラメーターの説明。 |
 
 使用できる型は次のとおりです。
 

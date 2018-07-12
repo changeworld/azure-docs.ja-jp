@@ -14,11 +14,11 @@ ms.date: 01/25/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 95b806eaabaf0ba93b1e8b6823340e82842b0f1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202050"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38591387"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell
 

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 06/27/2018
 ms.author: danlep
-ms.openlocfilehash: addd1e9314a754b40cc5d49c0299f007580f512f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8f428df07de029bc79f26d5941d22e7472addb95
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29763946"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915998"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -41,9 +41,8 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | 基本の A シリーズ | Basic_A0 (A0) |
 | A シリーズ | Standard_A0 |
 | B シリーズ | すべて |
-| Fsv2 シリーズ<sup>*</sup> | すべて |
 
-<sup>*</sup>このシリーズのサイズは、サポート予定のロードマップに掲載されています。
+
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 

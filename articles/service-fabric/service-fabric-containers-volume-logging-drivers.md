@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: d6195eda43dfd6ad249e82dabd0b314fc162b8c6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301084"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969607"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files ボリューム ドライバー (プレビュー)
 Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure ファイル ベースのボリュームを提供することです。
@@ -29,17 +29,17 @@ Azure Files ボリューム プラグインは、Docker コンテナーに [Azur
 >
 
 ## <a name="prerequisites"></a>前提条件
-* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](https://docs.microsoft.com/en-us/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。 Linux バージョンの Azure Files ボリューム プラグインは、Service Fabric でサポートされているすべてのオペレーティング システムのバージョンで動作します。
+* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](https://docs.microsoft.com/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。 Linux バージョンの Azure Files ボリューム プラグインは、Service Fabric でサポートされているすべてのオペレーティング システムのバージョンで動作します。
 
 * Azure Files ボリューム プラグインは、Service Fabric バージョン 6.2 以降でのみ機能します。
 
-* [Azure Files ドキュメント](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
+* [Azure Files ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
 
-* [Service Fabric モジュールと Powershell](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
+* [Service Fabric モジュールと Powershell](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Service Fabric Azure Files アプリケーションのデプロイ
 
-コンテナーにボリュームを提供する Service Fabric アプリケーションは、次の[リンク](https://aka.ms/sfvolume)からダウンロードできます。 アプリケーションは、[PowerShell](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications)、[CLI](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-lifecycle-sfctl)、または [FabricClient API](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient) を使用して、クラスターにデプロイできます。
+コンテナーにボリュームを提供する Service Fabric アプリケーションは、次の[リンク](https://aka.ms/sfvolume)からダウンロードできます。 アプリケーションは、[PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)、[CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl)、または [FabricClient API](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient) を使用して、クラスターにデプロイできます。
 
 1. コマンド ラインを使用して、ダウンロードされたアプリケーション パッケージのルート ディレクトリにディレクトリを変更します。
 

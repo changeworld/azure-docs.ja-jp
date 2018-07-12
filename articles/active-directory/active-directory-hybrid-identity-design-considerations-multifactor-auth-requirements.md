@@ -3,7 +3,7 @@ title: ハイブリッド ID 設計 - 多要素認証要件 - Azure | Microsoft 
 description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 documentationcenter: ''
 services: active-directory
-author: femila
+author: billmath
 manager: billmath
 editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: fe5ac8386394bf659de8d9905827359900f08d93
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 0c4d3edabbef6fe5626ce85c753cc7775ff2f1b9
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801036"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915403"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの多要素認証要件の決定
 ユーザーがクラウドのデータとアプリケーションにあらゆるデバイスからアクセスするこのモバイルの世界では、情報を守ることが最重要事項になりました。  毎日、セキュリティ違反に関する話題がニュースになっています。  そのような違反に対抗できる保証はありませんが、多要素認証はセキュリティの層を厚くし、違反防止に役立ちます。

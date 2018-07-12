@@ -17,11 +17,11 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd44971162a79e53b731c5c89316f14e8bb0a1a6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524859"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651961"
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ VM を作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "31524859"
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルをお勧めします。
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 

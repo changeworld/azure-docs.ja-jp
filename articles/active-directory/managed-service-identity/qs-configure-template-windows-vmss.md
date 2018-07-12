@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: f7c5d063bfb287de9afe808395b951ecb161da69
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930614"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901213"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>テンプレートを使用して VMSS のマネージド サービス ID を構成する
 

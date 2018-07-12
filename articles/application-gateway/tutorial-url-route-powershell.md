@@ -11,11 +11,11 @@ ms.date: 3/20/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 9aa0eec9036e32d6f3462886dfc7a796ed1844b8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356292"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306384"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell を使用して、URL に基づいて Web トラフィックをルーティングする
 
