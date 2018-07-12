@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: a88d8dd2af94ac796a3b2e3c667fd40a308f02a1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: acf850bdc56e55d13b13a40ef343f2f20c4a77ca
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33877161"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969114"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -192,7 +192,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
 
 ## <a name="use-service-fabric-powershell"></a>Service Fabric PowerShell の使用
 
-1. Azure Service Fabric ドキュメントの「[Windows で開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools)」から *Microsoft Azure Service Fabric SDK* をインストールします。  
+1. Azure Service Fabric ドキュメントの「[Windows で開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools)」から *Microsoft Azure Service Fabric SDK* をインストールします。  
 
 2. インストールが完了したら、Service Fabric のコマンドレットに PowerShell から確実にアクセスできるようシステム環境変数を構成します。  
     

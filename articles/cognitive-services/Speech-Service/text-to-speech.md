@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84baf03c83bb63883b80982056cdf6e1e25b3fb7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7ec8648a8428558264c9bfd4d923523b90cce07
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378396"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855942"
 ---
 # <a name="about-the-text-to-speech-api"></a>Text to Speech API について
 
@@ -35,7 +35,7 @@ Speech サービスの **Text to Speech** (TTS) API では、入力テキスト�
 
 ## <a name="voice-support"></a>音声のサポート
 
-Microsoft **Text-to-Speech** サービスでは、45 を超える言語およびロケールで 75 を超える音声を提供しています。 このような標準の ”音声フォント” を使用するには、サービスの REST API を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。 サポートされている音声の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 
+Microsoft **Text-to-Speech** サービスでは、45 を超える言語およびロケールで 75 を超える音声を提供しています。 このような標準の ”音声フォント” を使用するには、サービスの REST API を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。 サポートされている音声の詳細については、[サポートされている言語](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech)に関するページを参照してください。 
 
 独自の音声をアプリケーションで使用したい場合は、独自の音声サンプルから[カスタム音声フォント](how-to-customize-voice-font.md)を作成できます。
 

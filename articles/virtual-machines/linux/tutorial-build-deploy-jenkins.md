@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189933"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903453"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>チュートリアル: Jenkins と Visual Studio Team Services を使用して Azure 内の Linux 仮想マシンにアプリを展開する
 
@@ -49,7 +49,7 @@ ms.locfileid: "32189933"
 
 *  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)」をご覧ください。
 
-*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)」をご覧ください。
+*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)」をご覧ください。
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
@@ -75,7 +75,7 @@ ms.locfileid: "32189933"
     ![NodeJS プラグインを Jenkins に追加する](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
 4. 一覧を絞り込んで **VS Team Services Continuous Deployment** プラグインを探し、**Install without restart \(再起動せずにインストール)** オプションを選択します。
 5. Jenkins ダッシュボードに戻り、**[Jenkins の管理]** を選択します。
-6. **ツールのグローバル構成** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
+6. **[Global Tool Configuration]\(ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
 7. **[Install automatically] \(自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
 8. **[保存]** を選択します。
 
@@ -98,10 +98,10 @@ ms.locfileid: "32189933"
 1.  Team Services アカウントに PAT を作成します (まだお持ちでない場合)。 Jenkins から Team Services アカウントにアクセスするには、この情報が必要です。 必ず、このセクションの以降の手順で必要なトークンの情報を保存します。
   
     トークンの生成方法については、[VSTS と TFS 用の個人用アクセス トークンを作成する方法](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)に関するページをご覧ください。
-2. **ビルド後のアクション** タブで **ビルド後のアクションを追加する** を選択します。 **[Archive the artifacts] \(成果物のアーカイブ)** を選択します。
+2. **[Post-build Actions]\(ビルド後のアクション)** タブで **[Add post-build action]\(ビルド後のアクションを追加する)** を選択します。 **[Archive the artifacts] \(成果物のアーカイブ)** を選択します。
 3. **[Files to archive]\(アーカイブするファイル\)** に `**/*` と入力してすべてのファイルが含まれるようにします。
 4. 別のアクションを作成するには **[Add post-build action] \(ビルド後のアクションを追加する)** をクリックします。
-5. **TFS/Team Services でリリースをトリガーする** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
+5. **[Trigger release in TFS/Team Services]\(TFS/Team Services でリリースをトリガーする)** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
 6. **[チーム プロジェクト]** 名を入力します。
 7. リリース定義の名前を選択します。 (Team Services で後からこのリリース定義を作成します)。
 8. Team Services や Team Foundation Server 環境に接続するための資格情報を選択します。
@@ -149,9 +149,9 @@ Team Services でリリース定義を作成するには:
 1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開いて、**[リリース定義の作成]** を選択します。 
 2. **[空のプロセス]** で開始することを選択して **[空]** のテンプレートを選択します。
 3. **[成果物]** セクションで **[+ 成果物の追加]** を選択し、**[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、**[追加]** を選択します。
-4. **[環境 1]** の横にある省略記号を選択します。 **デプロイ グループ フェーズを追加** をクリックします。
+4. **[環境 1]** の横にある省略記号を選択します。 **[Add deployment group phase]\(デプロイ グループ フェーズを追加)** をクリックします。
 5. ご利用のデプロイ グループを選択します。
-5. **+** を選択して **デプロイ グループ フェーズ** にタスクを追加します。
+5. **[+]** を選択して **[Deployment group phase]\(デプロイ グループ フェーズ)** にタスクを追加します。
 6. **[シェル スクリプト]** タスクを選択して **[追加]** を選択します。 **[シェル スクリプト]** タスクは、Node.js をインストールし、アプリを起動するために各サーバーで実行されるスクリプトの構成を指定します。
 8. **[スクリプト パス]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** を入力します。
 9. **[詳細]** を選択して、**[作業ディレクトリを指定する]** を有効にします。

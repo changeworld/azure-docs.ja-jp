@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 05/25/2018
 ms.author: crdun
 ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597673"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307121"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
@@ -58,7 +58,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. [Azure Portal]にアクセスします。
+1. [Azure ポータル]にアクセスします。
 
 2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
@@ -72,7 +72,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. [Azure Portal]にアクセスします。
+1. [Azure ポータル]にアクセスします。
 
 2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
@@ -185,7 +185,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ## <a name="next-steps"></a>次の手順
 
-* [アプリに認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md): ID プロバイダーを使用してアプリのユーザーを認証する方法を学習します。
+* [アプリに認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法を学習します。
 
 * [アプリにプッシュ通知を追加する](app-service-mobile-xamarin-forms-get-started-push.md): アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するように Mobile Apps バックエンドを構成する方法を学習します。
 
@@ -211,4 +211,4 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/

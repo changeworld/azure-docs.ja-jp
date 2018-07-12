@@ -1,5 +1,5 @@
 
-## <a name="analytics"></a>[分析]
+## <a name="analytics"></a>Analytics
 * [概要](../articles/application-insights/app-insights-analytics.md)
 * [Analytics について](../articles/application-insights/app-insights-analytics-tour.md)
   * ここから開始します。 主な機能について説明するチュートリアルです。

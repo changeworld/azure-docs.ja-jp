@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 2ddf171090ab4a9e3dbe4506a399cbdbd2621bdd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31433336"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38732785"
 ---
 作業が終わったら、リソース グループを削除できます。 リソース グループを削除すると、ストレージ アカウント、Auzre ファイル共有、およびリソース グループ内にデプロイしたリソースがすべて削除されます。
 

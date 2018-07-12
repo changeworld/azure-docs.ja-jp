@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
-ms.locfileid: "27534857"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634970"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
@@ -43,7 +43,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 [SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid) は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。 NuGet は Microsoft Visual Studio 2015 以降に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
 > [!NOTE]
-> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、 [http://www.nuget.org](http://www.nuget.org)にアクセスして、 **[Install NuGet]** ボタンをクリックしてください。
+> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org)にアクセスして、**[Install NuGet]** をクリックしてください。
 >
 >
 
@@ -146,7 +146,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
 
 以下の例は、`SendGrid.Helpers.Mail` 名前空間の `MailHelper` クラスを使用して、ASP .NET Core API から複数の受信者に単一の電子メールを送信する際に使用できます。 この例では、ASP .NET Core 1.0 を使用しています。 
 
-この例では、API キーは `appsettings.json` ファイルに格納済みです。このファイルは、以下の例に示すように、Azure Portal から上書きできます。
+この例では、API キーは `appsettings.json` ファイルに格納済みです。このファイルは、以下の例に示すように、Azure Portal からオーバーライドできます。
 
 `appsettings.json` ファイルのコンテンツは、次のようになっています。
 

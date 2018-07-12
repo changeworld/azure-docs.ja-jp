@@ -64,7 +64,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>どのバージョンのオーケストレーターがクラスターで実行されているかを確認するには、どうすればよいですか。
 
-* DC/OS: [Mesosphere のドキュメント](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-)を参照してください
+* DC/OS: [Mesosphere のドキュメント](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)を参照してください
 * Docker Swarm: `docker version` を実行します
 * Kubernetes: `kubectl version` を実行します
 

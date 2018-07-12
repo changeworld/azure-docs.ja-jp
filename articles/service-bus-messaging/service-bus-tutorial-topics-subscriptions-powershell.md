@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 824235cfdae6df9d852875281346e35a18277f74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651685"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531662"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル: PowerShell とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
-このチュートリアルでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell のインストールと構成][]に関するページを参照してください。
+このチュートリアルでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成][]に関するページを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -286,4 +286,4 @@ Service Bus の公開/サブスクライブ機能の使用方法の詳細につ�
 > [PowerShell とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Azure PowerShell のインストールと構成]: /powershell/azure/install-azurerm-ps
+[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/install-azurerm-ps

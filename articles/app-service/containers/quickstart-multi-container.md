@@ -16,11 +16,11 @@ ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
 ms.openlocfilehash: bf567402a66f9152c7eb9b97925fec2a159ffe56
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127422"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38593122"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Web App for Containers を使用してマルチコンテナー (プレビュー) アプリを作成する
 
