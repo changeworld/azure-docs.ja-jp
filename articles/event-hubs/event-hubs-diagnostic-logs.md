@@ -75,15 +75,15 @@ Name | 説明
 TaskName | 失敗したタスクの説明。
 ActivityId | 内部 ID。追跡目的で使用されます。
 trackingId | 内部 ID。追跡目的で使用されます。
-ResourceId | Azure Resource Manager リソース ID。
+resourceId | Azure Resource Manager リソース ID。
 eventHub | イベント ハブの完全名 (名前空間の名前を含みます)。
 partitionId | 書き込み先のイベント ハブ パーティション。
 archiveStep | ArchiveFlushWriter
 startTime | 障害開始時刻。
 failures | 障害が発生した回数。
 durationInSeconds | 障害の時間。
-Message | エラー メッセージ。
-カテゴリ | ArchiveLogs
+message | エラー メッセージ。
+category | ArchiveLogs
 
 次のコードは、アーカイブ ログの JSON 文字列の例です。
 
@@ -112,13 +112,13 @@ Name | [説明]
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます。
 EventName | 操作の名前。  
-ResourceId | Azure Resource Manager リソース ID。
+resourceId | Azure Resource Manager リソース ID。
 SubscriptionId | [サブスクリプション ID] が表示されます。
 EventTimeString | 操作時間。
 EventProperties | 操作プロパティ。
-状態 | 操作の状態。
+Status | 操作の状態。
 Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)。
-カテゴリ | OperationalLogs
+category | OperationalLogs
 
 次のコードは、操作ログの JSON 文字列の例です。
 

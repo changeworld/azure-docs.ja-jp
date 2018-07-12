@@ -139,12 +139,12 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | description  |アラートの作成時に設定したアラートの説明。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | timestamp |要求を処理した Azure サービスによってイベントが生成された時刻。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
-| プロパティ |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
+| properties |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
 | event |イベントに関するメタデータを含む要素。 |
 | authorization |イベントのロールベースのアクセス制御プロパティ。 これらのプロパティには通常、action、role、scope が含まれます。 |
-| カテゴリ |イベントのカテゴリ。 サポートされる値は Administrative、Alert、Security、ServiceHealth、Recommendation です。 |
+| category |イベントのカテゴリ。 サポートされる値は Administrative、Alert、Security、ServiceHealth、Recommendation です。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 一部のシステム呼び出しでは、null の場合があります。 |
 | correlationId |通常は GUID (文字列形式)。 correlationId を含むイベントは、より大きな同じアクションに属し、通常は correlationId を共有します。 |
 | eventDescription |イベントを説明する静的テキスト。 |
@@ -154,7 +154,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | level |Critical、Error、Warning、または Informational のいずれかの値。 |
 | operationId |通常、単一の操作に対応する複数のイベントで共有される GUID。 |
 | operationName |操作の名前。 |
-| プロパティ |イベントのプロパティ。 |
+| properties |イベントのプロパティ。 |
 | status |文字列 をオンにします。 操作の状態。 一般的な値は Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。 |
 

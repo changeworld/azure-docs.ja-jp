@@ -45,8 +45,8 @@ submissionTimestamp | イベントがクエリで使用できるようになっ�
 subscriptionId | このイベントが記録された Azure サブスクリプション。
 status | 操作の状態を説明する文字列。 一般的な値は、**Started**、**In Progress**、**Succeeded**、**Failed**、**Active**、**Resolved** です。
 operationName | 操作の名前。
-カテゴリ | このプロパティは常に **ServiceHealth** です。
-ResourceId | 影響を受けるリソースのリソース ID。
+category | このプロパティは常に **ServiceHealth** です。
+resourceId | 影響を受けるリソースのリソース ID。
 Properties.title | この通信のローカライズされたタイトル。 既定は英語です。
 Properties.communication | HTML マークアップによる通信のローカライズされた詳細。 既定は英語です。
 Properties.incidentType | **ActionRequired**、**Information**、**Incident**、**Maintenance**、**Security** のいずれかの値。

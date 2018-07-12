@@ -41,7 +41,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 * **time** - イベントがログに記録された時間
 * **systemId** - ネットワーク セキュリティ グループのリソース ID。
-* **カテゴリ** - イベントのカテゴリです。 カテゴリは常に **NetworkSecurityGroupFlowEvent** となります。
+* **category ** - イベントのカテゴリです。 カテゴリは常に **NetworkSecurityGroupFlowEvent** となります。
 * **resourceid** - NSG のリソース ID
 * **operationName** -常に NetworkSecurityGroupFlowEvents
 * **properties** - フローのプロパティのコレクション

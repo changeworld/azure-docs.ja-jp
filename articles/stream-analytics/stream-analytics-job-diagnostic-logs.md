@@ -75,12 +75,12 @@ Stream Analytics には 2 種類のログがあります。
 Name | [説明]
 ------- | -------
 time | ログのタイムスタンプ (UTC)。
-ResourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
-カテゴリ | ログのカテゴリ (**実行**または**作成**のいずれか)。
+resourceId | 操作が行われたリソースの ID (大文字)。 サブスクリプション ID、リソース グループ、ジョブ名が含まれています。 例: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**
+category | ログのカテゴリ (**実行**または**作成**のいずれか)。
 operationName | ログに記録される操作の名前。 たとえば、**Send Events: SQL Output write failure to mysqloutput**。
 status | 操作の状態。 たとえば、**失敗**または**成功**。
 level | ログ レベル。 たとえば、**エラー**、**警告**、または**情報**。
-プロパティ | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
+properties | ログ エントリ固有の詳細。JSON 文字列としてシリアル化されています。 詳細については、次のセクションを参照してください。
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
 

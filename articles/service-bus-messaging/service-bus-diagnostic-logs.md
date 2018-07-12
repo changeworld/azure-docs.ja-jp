@@ -68,13 +68,13 @@ Name | [説明]
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます
 EventName | 操作の名前           
-ResourceId | Azure Resource Manager リソース ID
+resourceId | Azure Resource Manager リソース ID
 SubscriptionId | サブスクリプション ID
 EventTimeString | 操作時間
 EventProperties | 操作プロパティ
-状態 | 操作の状態
+Status | 操作の状態
 Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
-カテゴリ | OperationalLogs
+category | OperationalLogs
 
 操作ログの JSON 文字列の例を次に示します。
 
