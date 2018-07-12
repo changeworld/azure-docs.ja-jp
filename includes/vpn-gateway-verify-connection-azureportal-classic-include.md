@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: cfdf7c723416471d733e2bc9c71e0f519020fbe6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196895"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740513"
 ---
 Azure Portal で目的の接続に移動することで、クラシック VNet VPN ゲートウェイの接続の状態を確認できます。 以下に示した手順は、目的の接続に移動して接続を確認する方法の一例です。
 

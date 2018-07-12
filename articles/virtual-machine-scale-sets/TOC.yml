@@ -224,6 +224,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: テンプレートをマネージド ディスクに変換する
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Azure の計画メンテナンス
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: トラブルシューティング
       items:
         - name: Autoscale

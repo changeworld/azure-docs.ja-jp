@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723223"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -274,7 +276,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    マニフェストを作成するには、前の手順で出力されたモデル ID を指定して次のコマンドを実行します。
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
    ```
    このコマンドにより、マニフェスト ID が生成されます。
 
@@ -283,7 +285,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    Docker イメージを作成するには、前の手順で出力されたマニフェスト ID の値を指定して次のコマンドを実行します。 必要に応じて、`-c` スイッチを使用して conda 依存関係を含めることもできます。
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID> -c aml_config\conda_dependencies.yml
+   az ml image create -n irisimage --manifest-id <manifest ID> 
    ```
    このコマンドにより、Docker イメージ ID が生成されます。
    

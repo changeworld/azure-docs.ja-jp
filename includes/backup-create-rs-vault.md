@@ -9,11 +9,11 @@ ms.date: 5/14/2018
 ms.author: markgal
 ms.custom: include file
 ms.openlocfilehash: 5590da80a1c217e7902e8e010688e40f5624898c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34664957"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38730500"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 Recovery Services コンテナーは、経時的に作成されたバックアップと復旧ポイントを格納するエンティティです。 Recovery Services コンテナーには、保護される仮想マシンに関連付けられたバックアップ ポリシーも含まれます。

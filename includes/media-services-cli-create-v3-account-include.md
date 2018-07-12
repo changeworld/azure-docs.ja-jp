@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 9ecb07a2cb278f6cde4ffdc3b252cb9e816d08da
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414639"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733306"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
 

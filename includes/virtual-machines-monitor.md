@@ -59,6 +59,6 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 - [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) を使用すると、VM とその関連リソースをそれらが属しているネットワークの観点から監視することができます。 Network Watcher Agent 拡張機能は、[Linux VM](../articles/virtual-machines/linux/extensions-nwa.md) または [Windows VM](../articles/virtual-machines/windows/extensions-nwa.md) にインストールできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 「[Azure PowerShell を使用した Windows 仮想マシンの監視](../articles/virtual-machines/windows/tutorial-monitoring.md)」または [Azure CLI を使用した Linux 仮想マシンの監視](../articles/virtual-machines/linux/tutorial-monitoring.md)に関するページの手順を参照します。
 - [監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)に関するベスト プラクティスについて詳しい情報を入手します。

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 4ce2b133ed4266028f1d99151939538fb8ce60f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aeb94a430e633299637d4e9b96ef6b2c0309b163
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190770"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722917"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用した Azure 仮想マシンの管理方法の説明
 
@@ -55,7 +55,7 @@ az group create --name myResourceGroup --location "East US"
 * [Network Contributor](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
 
 次の例では、名前が *VMDemoContributors* でメール ニックネームが *vmDemoGroup* の Azure Active Directory グループを作成します。 メール ニックネームは、グループのエイリアスとして機能します。
 

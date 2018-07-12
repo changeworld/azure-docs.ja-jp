@@ -6,14 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e9a46f2a99bc9b530ac5859068bde58bf5b5098
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634089"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>チュートリアル: 更新されたイメージのリージョン デプロイへのプッシュ
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="rebuild-the-image"></a>イメージを再構築する
 
-これで Web アプリケーションが更新されたので、そのコンテナー イメージを再構築します。 前と同様に、タグには完全修飾イメージ名 (ログイン サーバー URL を含む) を使用します。
+これで Web アプリケーションが更新されたので、そのコンテナー イメージを再構築します。 以前と同様に、タグにはログイン サーバー URL を含む完全修飾イメージ名（FQDN）を使用します:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -84,9 +85,10 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-出力は次のようになります。
+`docker push`出力は次のようになります:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Web ブラウザーで両方のリージョン Web アプリ デプロイに移�
 
 ![米国東部リージョンで実行されている変更された Web アプリのブラウザー ビュー][deployed-app-eastus-modified]
 
-1 つの `docker push` で、両方のリージョン Web アプリ デプロイを更新し、Azure Container Registry はネットワーク上の近い場所にあるリポジトリからコンテナー イメージを提供しました。
+1 つの`docker push`で、両方地域で Web アプリの展開で実行されている web アプリケーションが自動的に更新されました。 Azure Container Registry は、各デプロイの一番近くに位置するデポジトリからコンテナー イメージを提供します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それがレジストリ レプリカからのローカル プルをトリガーしました。
+このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それが一番近いレジストリ レプリカからのローカル プルをトリガーしました。
 
-このシリーズの最後のチュートリアルでは、次のことを行いました。
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR のビルド: 自動イメージビルドとパッチ
 
-> [!div class="checklist"]
-> * Web アプリケーション HTML を更新しました
-> * Docker イメージを構築してタグ付けしました
-> * 変更を Azure Container Registry にプッシュしました
-> * 2 つの異なるリージョン内の更新されたアプリを表示しました
+Geo レプリケーションに加えて、ACR ビルドはコンテナー展開パイプラインを最適化するための別のAzure Container Registry です。 ACRビルド概要から始めて、機能を理解するアイデアを得ましょう:
+
+[ACRビルドを使用してOSとフレームワークの修正プログラムの適用を自動化する](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

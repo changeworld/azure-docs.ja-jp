@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/03/2018
 ms.author: sethm
 ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447202"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38298964"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 

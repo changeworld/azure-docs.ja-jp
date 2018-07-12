@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: cf77eaa07d45222cecf0450fb33fe62e556bcd9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31429373"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38729005"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してデータベースとコレクションを作成できるようになりました。 
 
@@ -25,7 +25,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してデ�
 
 2. **[コレクションの追加]** ページで、新しいコレクションの設定を入力します。
 
-    Setting|推奨値|[説明]
+    Setting|推奨値|説明
     ---|---|---
     データベース ID|タスク|新しいデータベースの名前として*タスク*を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。/、\\、#、? は使えず、末尾にスペースを入れることもできません。
     コレクション ID|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。

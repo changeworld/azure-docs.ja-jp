@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/15/2017
 ms.author: sethm
 ms.openlocfilehash: 5b900f70721f8642e27daf242295fbda77d7df6f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896457"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38680846"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 Websocket の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]

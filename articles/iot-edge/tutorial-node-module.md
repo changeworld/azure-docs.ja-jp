@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: cdcd30ea29c5c7066a6ae05f64b5bf0720572599
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061266"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299208"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Node.js IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -147,7 +147,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 9. このファイルを保存します。
 
-## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドする
+## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
 前のセクションでは、IoT Edge ソリューションを作成し、NodeModule にコードを追加しました。これにより、許容されるしきい値をマシンの温度が下回ることを報告するメッセージが除外されます。 次は、ソリューションをコンテナー イメージとしてビルドし、ご自身のコンテナー レジストリにプッシュする必要があります。 
 
@@ -175,7 +175,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 5. このファイルを保存します。
 6. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
 
-ソリューションをビルドするように Visual Studio Code に指示すると、まず、配置テンプレートの情報が Visual Studio Code に提供され、`deployment.json` ファイルが新しい **config** フォルダーに生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Node.js コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
+ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、新しい **config** フォルダーに `deployment.json` ファイルが生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、ご自身の Node.js コードがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで実行される `docker build` コマンドで確認できます。 イメージ アドレスは、**\<repository\>:\<version\>-\<platform\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/nodemodule:0.0.1-amd64** になります。
 
@@ -185,11 +185,11 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 1. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
-2. **Azure: Sign in** コマンドを検索して、実行します。 手順に従って、ご自身の Azure アカウントにサインインします。 
+2. **Azure: Sign in** コマンドを検索して、実行します。 手順に従って Azure アカウントにサインインします。 
 
-3. コマンド パレットで、**Azure IoT Hub: Select IoT Hub** コマンドを検索して、実行します。 
+3. コマンド パレットで、**Azure IoT Hub: Select IoT Hub** コマンドを検索して実行します。 
 
-4. ご自身の IoT ハブを含むサブスクリプションを選択し、アクセス先の IoT ハブを選択します。
+4. 自分の IoT ハブが含まれているサブスクリプションを選択し、アクセス先の IoT ハブを選択します。
 
 5. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
@@ -206,7 +206,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 2. 特定のデバイスの D2C のメッセージを監視するには、一覧でデバイスを右クリックし、**[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始\)** を選択します。
 3. データの監視を停止するには、コマンド パレットで **Azure IoT Hub: Stop monitoring D2C message** コマンドを実行します。 
 4. モジュール ツインを表示または更新するには、一覧でモジュールを右クリックし、**[Edit module twin]\(モジュール ツインの編集\)** を選択します。 モジュール ツインを更新するには、ツインの JSON ファイルを保存し、編集領域を右クリックして、**[Update Module Twin]\(モジュール ツインの更新\)** を選択します。
-5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ロカールで実行されているモジュールを Docker エクスプローラーで見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルを表示します。 
+5. Docker ログを表示するには、VS Code 用の [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) をインストールし、ローカルで実行されているモジュールを Docker エクスプローラーで見つけます。 コンテキスト メニューで、**[ログを表示する]** をクリックし、統合ターミナルで表示します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 

@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8cd4f87e690d64e1f69ef39f3422ebc73d79974a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 73b6397ecc97b9e289749aabddfdc4c6161375d4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053094"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667347"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル: C# IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -37,10 +37,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートで作成した Azure IoT Edge デバイス。
 * IoT Edge デバイスの主キー接続文字列。  
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* Visual Studio Code 用の [C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 * Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
-* 開発用コンピューター上の [Docker CE](https://docs.docker.com/install/)。 
+* 開発用マシン上の [Docker CE](https://docs.docker.com/install/)。 
 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
@@ -214,11 +214,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 11. このファイルを保存します。
 
-## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドする
+## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
 前のセクションでは、IoT Edge ソリューションを作成し、CSharpModule にコードを追加しました。これにより、許容されるしきい値をマシンの温度が下回ることを報告するメッセージが除外されます。 次は、ソリューションをコンテナー イメージとしてビルドし、コンテナー レジストリにプッシュする必要があります。 
 
-1. Visual Studio Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。これにより、モジュール イメージを ACR にプッシュできます。 
+1. Visual Studio Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。これにより、ご自身のモジュール イメージを ACR にプッシュできます。 
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -241,11 +241,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. このファイルを保存します。
 5. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build IoT Edge solution]\(IoT Edge ソリューションのビルド\)** を選択します。 
 
-ソリューションをビルドするように Visual Studio Code に指示すると、まず、配置テンプレートの情報が Visual Studio Code に提供され、`deployment.json` ファイルが新しい **config** フォルダーに生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、`CSharpModule.dll` がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
+ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、新しい **config** フォルダーに `deployment.json` ファイルが生成されます。 その後、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、`CSharpModule.dll` がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで確認できます。 イメージ アドレスは、**\<リポジトリ\>:\<バージョン\>-\<プラットフォーム\>** の形式で、`module.json` ファイルの情報から作成されます。 このチュートリアルでは、**registryname.azurecr.io/csharpmodule:0.0.1-amd64** になります。
 
-## <a name="deploy-and-run-the-solution"></a>ソリューションを配置して実行する
+## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 
 1. Azure IoT ツールキット拡張機能を IoT ハブの接続文字列で構成します。 
     1. **[表示]** > **[エクスプローラー]** の順に選択して、VS Code エクスプローラーを開きます。 
@@ -270,10 +270,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の推奨記事に進む場合は、既に作成したリソースおよび構成を維持して、再利用することができます。
 
-それ以外の場合は、課金されないようにするために、この記事で作成したローカルの構成および Azure リソースを削除してもかまいません。 
+それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で作成した Azure リソースを削除してもかまいません。 
 
 > [!IMPORTANT]
-> Azure リソースおよびリソース グループを削除すると、元に戻すことができません。 一度削除すると、リソース グループおよびそのグループに含まれるすべてのリソースが完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT ハブを、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT Hub リソースだけを削除してください。
+> Azure リソースとリソース グループは、削除すると元に戻すことができません。 いったん削除すると、リソース グループとそこに含まれるすべてのリソースが完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT ハブを、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT Hub リソースだけを削除してください。
 >
 
 IoT ハブだけを削除するには、ハブ名とリソース グループ名を指定して次のコマンドを実行します。

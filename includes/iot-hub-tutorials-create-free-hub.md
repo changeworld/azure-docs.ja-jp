@@ -9,11 +9,11 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: e3110e4018e214e7e7aa591b811246369c029ecd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34667292"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38941626"
 ---
 Azure portal を使用して IoT ハブを作成するには:
 

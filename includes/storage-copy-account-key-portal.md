@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 51bdb7e3a84cbd176ac1a26747a627a6c2c4fa5b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30920580"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38732762"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする
 

@@ -9,11 +9,11 @@ ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
 ms.openlocfilehash: e54813896eee8a58ae456f14f76151318ac1b9fc
-ms.sourcegitcommit: ff1896b01bfcc26df3b202011bb8ec8cfdb014fa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35620528"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38766968"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。

@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: sngun
 ms.openlocfilehash: b224a40f1ed5e778da6429d44a449d3f9ffdf16d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796124"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38543902"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Xamarin を使用した todo アプリの構築
 

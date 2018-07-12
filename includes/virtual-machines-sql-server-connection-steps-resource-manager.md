@@ -23,7 +23,7 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
 1. インターネットに接続されたコンピューターで、SQL Server Management Studio (SSMS) を開きます。 SQL Server Management Studio を保有していない場合は、[ここ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)からダウンロードできます。
 
-1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。 (前のタスクで確認した) 仮想マシンの IP アドレスまたは完全 DNS 名を入力します。 また、コンマを追加し、SQL Server の TCP ポートを指定することもできます。 たとえば、「 `mysqlvmlabel.eastus.cloudapp.azure.com,1433`」のように入力します。
+1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。 (前のタスクで確認した) 仮想マシンの IP アドレスまたは完全 DNS 名を入力します。 また、コンマを追加し、SQL Server の TCP ポートを指定することもできます。 たとえば、「`mysqlvmlabel.eastus.cloudapp.azure.com,1433`」のように入力します。
 
 1. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
 

@@ -6,18 +6,19 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: c6ac8f22f128b350844af10f309fd3b93512d54d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582303"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>チュートリアル: Azure Container Registry からの Web アプリのデプロイ
 
-これは 3 部構成のチュートリアル シリーズの第 2 部です。 [第 1 部](container-registry-tutorial-prepare-registry.md)では、プライベートの geo レプリケーション コンテナー レジストリを作成し、ソースからコンテナー イメージを構築してレジストリにプッシュしました。 この記事では、2 つの異なる Azure リージョンの 2 つの Web アプリ インスタンスにコンテナーをデプロイして、ネットワーク上の近い場所で操作できるという geo レプリケーション レジストリの 利点を活用します。
+これは 3 部構成のチュートリアル シリーズの第 2 部です。 [第 1 部](container-registry-tutorial-prepare-registry.md)では、プライベートの geo レプリケーション コンテナー レジストリを作成し、ソースからコンテナー イメージを構築してレジストリにプッシュしました。 この記事では、2 つの異なる Azure リージョンの 2 つの Web アプリ インスタンスにコンテナーをデプロイすることで、ネットワーク上の近い場所で操作できるという geo レプリケーション レジストリの利点を活用します。 各インスタンスは、最も近いレジストリから、コンテナー イメージをプルします。
 
 シリーズの第 2 部であるこのチュートリアルでは、次のことを行います。
 
@@ -103,11 +104,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、geo レプリケーション Azure Container Registry から 2 つの Web App for Containers インスタンスをデプロイしました。 このチュートリアルの手順に従って、次の作業を行いました。
-
-> [!div class="checklist"]
-> * コンテナー イメージを 2 つの *Web App for Containers* インスタンスにデプロイする
-> * デプロイしたアプリケーションを確認する
+このチュートリアルでは、geo レプリケーション Azure Container Registry から 2 つの Web App for Containers インスタンスをデプロイしました。
 
 次のチュートリアルに進み、更新を行った後で新しいコンテナー イメージをコンテナー レジストリにデプロイして、両方のリージョンで実行中の Web アプリが自動的に更新されたことを確認します。
 

@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.openlocfilehash: 7e72e9ff9be0b092bc9425828bab46ffd60f0822
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602207"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630269"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間 VPN Gateway 接続を構成する
 
 この記事は、VNet 間という接続の種類を使用して仮想ネットワークを接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
 
-この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure Portal を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事の手順は、Resource Manager デプロイ モデルに適用されます。また、この手順では Azure Portal を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

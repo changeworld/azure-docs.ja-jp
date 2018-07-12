@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 970ad90aa14d5778e8b232e32aa1dacf32789988
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27595316"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38593105"
 ---
 # <a name="create-an-ios-app"></a>iOS アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

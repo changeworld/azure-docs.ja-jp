@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
 ms.openlocfilehash: 8d771fb17019e39da93995d0244c8089ea4a08b7
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286547"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235594"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Node.js)
 

@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
 ms.openlocfilehash: 525a11d0cbb10d4170930fb4df362e0a9ea024e2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054277"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38623508"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

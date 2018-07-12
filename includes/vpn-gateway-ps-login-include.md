@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d4d370e6b76fcfc502366642842bfeb923a13991
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313678"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38732676"
 ---
 この構成を開始する前に、Azure アカウントにサインインする必要があります。 このコマンドレットは、Azure アカウントのサインイン資格情報をユーザーに求めます。 サインイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../articles/powershell-azure-resource-manager.md)」を参照してください。
 

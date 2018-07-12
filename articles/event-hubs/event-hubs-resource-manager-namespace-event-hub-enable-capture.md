@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
 ms.openlocfilehash: c241b8c38aab355729cd1bea318e70e85cf4ff1f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178710"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38578863"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 

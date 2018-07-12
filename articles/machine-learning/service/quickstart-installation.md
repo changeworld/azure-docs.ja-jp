@@ -7,15 +7,17 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 12a34bc98db396482d9fde8da778db0f0ef7de4b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 30795f542bca52159f2ff0fe052a94de3743f0e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767155"
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -57,12 +59,12 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
 
 1. **[ML Experimentation]\(ML 実験\)** ウィンドウで、Machine Learning 実験アカウントを構成します。 
 
-   Setting|チュートリアルの推奨値|[説明]
+   Setting|チュートリアルの推奨値|説明
    ---|---|---
    [Experimentation account name]\(実験アカウント名\) | "_一意の名前_" |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    [サブスクリプション] | _該当するサブスクリプション_ |実験に使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となっている適切なサブスクリプションを選択してください。
    リソース グループ | "_リソース グループ名_" | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力してこの実験アカウント用に新しいリソース グループを作成します。 
-   場所 | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
+   Location | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
    [Number of seats]\(シート数\) | 2 | 接続クライアント数を入力します。 [シートあたりの価格](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。<br/><br/>このクイック スタートで必要なシート数は 2 つだけです。 シートは、必要に応じて Azure Portal から追加したり削除したりすることができます。
    ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 名前は 3 文字以上 24 文字以下にする必要があり、英数字だけを使用することができます。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
    [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden<br/>(チュートリアルで使用する名前) | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
@@ -140,12 +142,12 @@ Azure Machine Learning におけるプロジェクトとは、問題を解決す
 
 1. フォームの各フィールドに必要事項を入力し、**[作成]** ボタンを選択すると、Workbench で新しいプロジェクトが作成されます。
 
-   フィールド|チュートリアルの推奨値|[説明]
+   フィールド|チュートリアルの推奨値|説明
    ---|---|---
    プロジェクト名 | myIris |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    プロジェクト ディレクトリ | c:\Temp\ | プロジェクトの作成先となるディレクトリを指定します。
    プロジェクトの説明 | "_空白のまま_" | 省略可能なフィールド。プロジェクトの説明を入力することができます。
-   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、必要に応じて Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
+   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、必要に応じて Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](../desktop-workbench/using-git-ml-project.md#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
    選択したワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
    プロジェクト テンプレート | あやめの分類 | テンプレートには、製品に習熟するうえで役立つスクリプトとデータが含まれています。 このクイック スタートに必要なスクリプトとデータ、そしてこのドキュメント サイトに存在する他のチュートリアルで使用するスクリプトとデータも、このテンプレートに含まれています。 
 

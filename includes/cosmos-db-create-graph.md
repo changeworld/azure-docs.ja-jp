@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: b656001c8a7d1bed21c208bc643018c5f751e09c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31429209"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733833"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
 
@@ -25,7 +25,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
 
-    Setting|推奨値|[説明]
+    Setting|推奨値|説明
     ---|---|---
     データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
     グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。

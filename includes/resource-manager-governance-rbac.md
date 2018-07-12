@@ -9,11 +9,11 @@ ms.date: 02/16/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b4b06119b9d46781b967fc8d98808c60d2b41ccb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31433251"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38753673"
 ---
 組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 ロールベースのアクセス制御 (RBAC) を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。 ロールには、許可される一連のアクションを定義します。 ロールをスコープに割り当て、スコープのそのロールに属するユーザーを指定します。
 

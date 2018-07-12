@@ -14,11 +14,11 @@ ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: c08a0a4892d1c0f5780f5b6ef9cc437078489971
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935687"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38547104"
 ---
 # <a name="import-an-api"></a>API のインポート
 

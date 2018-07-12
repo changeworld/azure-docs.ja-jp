@@ -9,11 +9,11 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36336028"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727532"
 ---
 2018 年 7 月 1 日以降、Azure VPN Gateway では TLS 1.0 および 1.1 のサポートが終了します。 VPN Gateway では、TLS 1.2 のみがサポートされるようになります。 TLS を使用する Windows 7 および Windows 8 ポイント対サイト クライアントに対する TLS サポートと接続を維持するには、次の更新プログラムをインストールすることをお勧めします。
 
