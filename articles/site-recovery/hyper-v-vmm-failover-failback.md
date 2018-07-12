@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: ecb0b9395ce7071442ddf0dd976e1ca57b8be906
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b3ca7be647ff7db0d147eca57edb20e658a28130
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161143"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919473"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック
 

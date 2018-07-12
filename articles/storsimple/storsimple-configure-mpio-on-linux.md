@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: ccd24e1498282cd2b627226df79af22e9647b64d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021755"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681576"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -445,5 +445,5 @@ A. ご使用のデバイスがホワイトリストに登録されているか�
 Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキュメントも参照することが必要になる場合があります。
 
 * [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
-* [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
+* [Linux トレーニング ガイド](http://linux-training.be/linuxsys.pdf)
 

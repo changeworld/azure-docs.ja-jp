@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
 ms.openlocfilehash: 250c66c3a39519a6eddc1ecb51259ec1944c88a9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31522222"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671124"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -43,7 +43,7 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 
 新しいキャッシュ用に VNet を構成するには、**[新規 Redis Cache]** ブレードの **[仮想ネットワーク]** をクリックし、ドロップダウン リストから目的の VNet を選択します。
 
-![Virtual Network][redis-cache-vnet]
+![Virtual network][redis-cache-vnet]
 
 **[サブネット]** ボックスの一覧で目的のサブネットを選択し、必要な**静的 IP アドレス**を指定します。 クラシック VNet を使用している場合、**[静的 IP アドレス]** フィールドは省略可能です。何も指定しないと、選択したサブネットから 1 つのアドレスが選択されます。
 
@@ -52,7 +52,7 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 > 
 > 
 
-![Virtual Network][redis-cache-vnet-ip]
+![Virtual network][redis-cache-vnet-ip]
 
 > [!IMPORTANT]
 > Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -63,7 +63,7 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 
 キャッシュが作成されたら、**[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
 
-![Virtual Network][redis-cache-vnet-info]
+![Virtual network][redis-cache-vnet-info]
 
 VNet の使用時に Azure Redis Cache インスタンスに接続するには、次の例に示すように、接続文字列でキャッシュのホスト名を指定します。
 
@@ -142,7 +142,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Redis Cache に次の項目すべてが必要になります。
 
 * 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 これには、Azure Redis Cache インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。 
-* *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。この接続は、SSL 機能をサポートするために必要です。
+* *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。 この接続は、SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
 * 次の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
 
@@ -180,7 +180,7 @@ IP アドレスでホストに接続していることが原因になってい�
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS 名を解決できない場合、StackExchange.Redis クライアントによって指定される `sslHost` のような構成オプションが、クライアント ライブラリに含まれている場合があります。 このオプションによって、証明書の検証に使用されるホスト名を上書きできます。 例: 
+DNS 名を解決できない場合、StackExchange.Redis クライアントによって指定される `sslHost` のような構成オプションが、クライアント ライブラリに含まれている場合があります。 このオプションによって、証明書の検証に使用されるホスト名をオーバーライドできます。 例: 
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -223,7 +223,7 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 ExpressRoute を使用したオンプレミス アプリケーションから Azure Redis Cache インスタンスへの接続は、パフォーマンス上の理由から一般的な使用シナリオではありません (最適なパフォーマンスを得るには、Azure Redis Cache クライアントを Azure Redis Cache と同じリージョンに配置する必要があります)。
 
 >[!IMPORTANT] 
->ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする **必要があります** 。 以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤って上書きされる可能性があります。
+>ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする **必要があります** 。 以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤ってオーバーライドされる可能性があります。
 
 >[!WARNING]  
 >Azure Redis Cache は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Redis Cache インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure Redis Cache が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。

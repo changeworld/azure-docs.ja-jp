@@ -47,7 +47,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 ## <a name="add-a-management-solution"></a>管理ソリューションの追加
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[リソースの作成]** > **[監視 + 管理]** > **[See all] (すべてを表示)** を選択します。  
+2. **[リソースの作成]** > **[監視 + 管理]** > **[See all] \(すべてを表示)** を選択します。  
     ![[監視 + 管理] ブレード](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。
 5. **[管理ソリューション]** ブレードで、ワークスペースに追加する管理ソリューションを選択します。  

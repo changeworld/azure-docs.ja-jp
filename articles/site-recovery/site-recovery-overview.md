@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 86a6a5aed731390dd27ecc329db2c687bb6ca9a3
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3242c9402d738d580f4abf5f1a0bb64f2fa7728
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287645"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919905"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 

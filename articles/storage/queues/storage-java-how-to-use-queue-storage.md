@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.openlocfilehash: cd79a21fedca1c21c2e4a65394d424f1590f32c3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30319483"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670950"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

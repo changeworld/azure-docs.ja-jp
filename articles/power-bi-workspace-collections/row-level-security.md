@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 7256e2f798fbc32c098f19f60b62e577300868c7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 09a0de1efc909b72192f9d8584edd0fda5e6217d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414104"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856353"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -93,7 +93,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 1. **[ファイル]** -> **[オプションと設定]** -> **[プレビュー機能]** -> **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]**。
 2. **[ファイル]** -> **[オプションと設定]** -> **[DirectQuery]** -> **[DirectQuery モードで無制限のメジャーを許可する]**。
 
-双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) をダウンロードしてください。
+双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) をダウンロードしてください。
 
 このホワイトペーパーでは、Power BI Desktop で実行する必要があるすべての作業がまとめられていますが、定義した RLS のルールを Power BI Embedded で機能させるために実行する必要がある作業がもう 1 つあります。 ユーザーはアプリケーションによって認証および承認され、アプリ トークンを使用して、そのユーザーに特定の Power BI Embedded レポートへのアクセス権が付与されます。 Power BI Embedded には、ユーザーが誰であるかに関する具体的な情報はありません。 RLS を機能させるには、アプリケーション トークンの一部として追加のコンテキストを渡す必要があります。
 

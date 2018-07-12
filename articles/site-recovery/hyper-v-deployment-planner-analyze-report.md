@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 060d51406f67ad8a55cdf61506cd66f5390ebe4c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 78350f8e0ab86c7c87c321397bd4e4a4849368b6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29466878"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918851"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -41,7 +41,7 @@ ms.locfileid: "29466878"
 
 **[Observed typical data churn per day (GB) (観察された 1 日あたりの標準的なデータの変更頻度 (GB))]**: プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。
 
-## <a name="recommendations"></a>推奨事項 
+## <a name="recommendations"></a>Recommendations 
 Hyper-V to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
 ![Recommendations for Hyper-V to Azure レポート](media/hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)

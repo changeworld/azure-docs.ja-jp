@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 0168849c01add3f714b139c7984e3def74f40a5b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2f1a158b6ff4ec603c77f834212cb92fa862b424
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071765"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919939"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>CSP を使用した Azure への VMware レプリケーションにおけるマルチテナント サポートの概要
 
@@ -91,7 +91,7 @@ ms.locfileid: "34071765"
 
 3. 各種オブジェクトについて、(テナントの構成サーバーで使用される) vCenter アカウントにアクセス レベルを割り当てます。
 
->| オブジェクト | 役割 | 解説 |
+>| オブジェクト | Role | 解説 |
 >| --- | --- | --- |
 >| vCenter | 読み取り専用 | さまざまなオブジェクトを管理するために vCenter によるアクセスを許可する場合にのみ必要です。 このアカウントをテナントに提供することも、vCenter での管理操作に使用することもない場合は、このアクセス許可を削除できます。 |
 >| データセンター | Azure_Site_Recovery |  |

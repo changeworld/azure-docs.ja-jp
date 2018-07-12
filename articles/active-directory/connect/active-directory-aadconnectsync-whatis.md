@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.component: hybrid
-ms.author: markvi
-ms.openlocfilehash: 6b2724f4c9511d606ab8eeac2dedea8759283883
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: 247b7bb5b5dbce94c8f8339a6f06c8ae5dab75d9
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595259"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919368"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。

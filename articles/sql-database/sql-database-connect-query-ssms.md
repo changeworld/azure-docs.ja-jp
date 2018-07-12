@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
 ms.openlocfilehash: 0d930cc200d8f8df30927ba7d2f942b2eb8a85a7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795587"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652202"
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
@@ -47,7 +47,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting      | 推奨値    | [説明] | 
+   | Setting      | 推奨値    | 説明 | 
    | ------------ | ------------------ | ----------- | 
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
    | **[サーバー名]** | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |

@@ -16,11 +16,11 @@ ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 8fdad8d8e62365c33b47e67b483c929aaab0083e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30906329"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38318016"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>チュートリアル: Azure で Node.js と MongoDB Web アプリを構築する
 

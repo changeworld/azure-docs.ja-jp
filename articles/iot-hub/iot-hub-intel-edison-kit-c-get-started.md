@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
 ms.openlocfilehash: 2efea8054320323df0e0eb603a20a5773d03cad8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634881"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676624"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison を Azure IoT Hub に接続する (C)
 

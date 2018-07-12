@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: cshoe
 ms.openlocfilehash: c19ac5f45504e3c19b0b300dbc3ea157861d05ed
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34653027"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681220"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

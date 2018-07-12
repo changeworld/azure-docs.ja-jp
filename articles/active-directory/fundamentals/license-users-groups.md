@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767461"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856091"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>クイックスタート: Azure Active Directory におけるライセンス ユーザー
 ライセンス ベースの Azure AD サービスは、Azure テナントの Azure Active Directory (Azure AD) サブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は Azure AD 管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 Enterprise Mobility + Security、Azure AD Premium、Azure AD Basic を購入すると、有効期間や前払いライセンスを含め、サブスクリプションでテナントが更新されます。 割り当てられているライセンスの数や使用可能なライセンスの数などのサブスクリプション情報は、Azure Portal で **Azure Active Directory** の **[ライセンス]** タイルを開いて確認できます。 **[ライセンス]** ブレードは、ライセンスの割り当ての管理にも最適です。
@@ -35,7 +35,7 @@ ms.locfileid: "37767461"
 * 組織内の他の管理者に決定を委任することができる ([セルフサービス グループ](../users-groups-roles/groups-self-service-management.md)を使用)
 
 > [!TIP]
-> 高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンスを割り当てる方法の詳細については、「[Azure Active Directory でのユーザーのグループへのライセンスの割り当て](../active-directory-licensing-group-assignment-azure-portal.md)」を参照してください。
+> 高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンスを割り当てる方法の詳細については、「[Azure Active Directory でのユーザーのグループへのライセンスの割り当て](../users-groups-roles/licensing-groups-assign.md)」を参照してください。
 
 ## <a name="assign-licenses-to-users-and-groups"></a>ユーザーとグループにライセンスを割り当てる
 アクティブなサブスクリプションを使用して、最初に自分自身にライセンスを割り当て、ご使用のブラウザーを最新の情報に更新して、サブスクリプションに含まれている必要な機能がすべて表示されることを確認する必要があります。 次の手順では、Azure AD の有料機能へのアクセスが必要なユーザーにライセンスを割り当てます。 ライセンスを割り当てる簡単な方法は、個人ではなくユーザーのグループに割り当てることです。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが自動的に割り当てられ、グループから削除されたユーザーからは該当するライセンスが自動的に削除されます。 

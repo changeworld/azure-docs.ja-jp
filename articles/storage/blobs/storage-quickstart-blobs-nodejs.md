@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
 ms.openlocfilehash: 07ac5195d9653affdbb0f305ac1697cecd379319
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190981"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308136"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -57,7 +57,7 @@ node index.js --command createContainer
 
 次のコマンドを使用できます。
 
-| コマンド | [説明] |
+| コマンド | 説明 |
 |---------|---------|
 |*createContainer* | *test-container* という名前のコンテナーを作成する (コンテナーが既に存在する場合でも成功します) |
 |*upload*          | *example.txt* ファイルを *test-container* コンテナーにアップロードする |

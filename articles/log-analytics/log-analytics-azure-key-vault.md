@@ -16,11 +16,11 @@ ms.date: 02/09/2017
 ms.author: richrund
 ms.component: na
 ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127044"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309341"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
@@ -108,7 +108,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 | type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |要求を行ったクライアントの IP アドレス |
-| カテゴリ | *AuditEvent* |
+| Category | *AuditEvent* |
 | CorrelationId |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
 | DurationMs |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 この時間にはネットワーク待機時間が含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
 | httpStatusCode_d |要求によって返された HTTP 状態コード (例: *200*) |

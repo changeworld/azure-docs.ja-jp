@@ -17,11 +17,11 @@ ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: f806b523543657e4241ec5bfbb4b84b85ebd9355
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30281387"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317662"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app"></a>カスタム SSL 証明書を Web アプリにバインドする
 

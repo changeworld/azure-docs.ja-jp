@@ -2,8 +2,6 @@
 title: Azure AD Connect - AD FS ファームの SSL 証明書の更新 | Microsoft Docs
 description: このドキュメントでは、Azure AD Connect を使って AD FS ファームの SSL 証明書を更新する手順について詳しく説明します。
 services: active-directory
-keywords: Azure AD Connect, AD FS SSL の更新, AD FS 証明書の更新, 変更、AD FS 証明書, 新しい AD FS 証明書, AD FS 証明書, 更新、AD FS SSL 証明書, 更新、SSL 証明書、AD FS, 構成、AD FS SSL 証明書, AD FS, SSL, 証明書, AD FS サービス通信証明書, 更新、フェデレーション, 構成、フェデレーション, AAD Connect
-authors: anandyadavmsft
 manager: mtillman
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
@@ -12,16 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 07/09/2018
 ms.component: hybrid
-ms.author: anandy
+author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d657725b7bfb75a118c1d8bbbe701c1c121b1ef2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: 0eeb3f7d54617ff060481795bcdaa8b54e36dfa8
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595004"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917654"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 

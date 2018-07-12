@@ -1,6 +1,6 @@
 ---
 title: Azure でのレプリケーション容量の見積 | Microsoft Docs
-description: Azure Site Recovery を使用してレプリケーションを行う場合は、この記事に従って容量を見積もってください
+description: Azure Site Recovery を使用してレプリケーションを行う場合は、この記事を活用して容量を見積もってください
 services: site-recovery
 documentationcenter: ''
 author: rayne-wiselman
@@ -12,29 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: d9c2645be73c4b6e34d194d6b2444a700e3900d2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d177dae71cd0787a343bbada7c900aebdbad86cc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29875907"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920663"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Site Recovery を使用して Hyper-V VM を保護するための容量計画
 
-[Hyper-V から Azure デプロイへの Azure Site Recovery Deployment Planner](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。
-このツールでは次のガイドラインが提供されます。
+[Azure へのデプロイを行う Azure Site Recovery Deployment Planner for Hyper-V](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。
+このツールでは次の指標が提供されます。
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価
-* ネットワーク帯域幅ニーズと RPO の評価
+* ネットワーク帯域幅ニーズ対 RPO の評価
 * Azure インフラストラクチャの要件
 * オンプレミス インフラストラクチャの要件
 * 初期レプリケーションのバッチ処理に関するガイダンス
 * Azure へのディザスター リカバリーの推定合計コスト
 
 
-Azure Site Recovery Capacity Planner を使用すると、Azure Site Recovery で Hyper-V VM をレプリケートするために必要な容量を算出できます。
+Azure Site Recovery Capacity Planner を使用すると、Azure Site Recovery で Hyper-V VM をレプリケートするために必要な容量の見極めが楽になります。
 
 Site Recovery Capacity Planner は、ソース環境とワークロードの分析に使用します。 帯域幅ニーズ、ソースの場所に必要なサーバー リソース、およびターゲットの場所に必要なリソース (VM やストレージなど) を見積もるのに役立ちます。
 
@@ -46,7 +46,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 ## <a name="before-you-start"></a>開始する前に
 
 * VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
-* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間にわたって実行して平均値をキャプチャすることをお勧めします。
+* レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間にわたって実行して平均値を取り込むことをお勧めします。
 
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
@@ -75,8 +75,8 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
    * **[Bandwidth required for delta replication (in Megabits/sec)]\(差分レプリケーションに必要な帯域幅 (メガビット/秒)\)**: 1 日の平均データ変更率に基づいて差分レプリケーションのネットワーク帯域幅が計算されます。
    * **[Bandwidth required for initial replication (in Megabits/sec)]\(初回レプリケーションに必要な帯域幅 (メガビット/秒)\)**: 入力した初回レプリケーションの値に基づいて初回レプリケーションのネットワーク帯域幅が計算されます。
    * **[Storage required (in GBs)]\(必要なストレージ (GB)\)**: Azure で必要なストレージの合計です。
-   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)**: Standard Storage アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
-   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)**: VM の保護に必要な Standard Storage アカウントの総数です。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
+   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)**: Standard ストレージ アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)**: VM の保護に必要な Standard ストレージ アカウントの総数です。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
    * **[Number of Blob disks required]\(必要な BLOB ディスク数\)**: Azure ストレージに作成されるディスクの数です。
    * **[Number of premium accounts required]\(必要な Premium Storage アカウントの数\)**: VM の保護に必要な Premium Storage アカウントの総数です。 IOPS が多い (20,000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80,000 IOPS に対応できます。
    * **[Total IOPS on Premium Storage]\(Premium Storage の IOPS 合計\)**: Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
@@ -133,7 +133,7 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 
 * 出力例では、以下に注意してください。
 
-  * 最初の列は、VM、ディスク、およびチャーンの検証列です。
+  * 最初の列は、VM、ディスク、および変更頻度の検証列です。
   * 5 つの VM に Standard Storage アカウントが 2 つと Premium Storage アカウントが 1 つ必要でした。
   * 1 つ以上のディスクが 1 TB 以上であるために、VM3 は保護の対象とはなりません。
   * VM1 と VM2 は、最初の Standard Storage アカウントを使用できます。

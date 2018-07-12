@@ -11,11 +11,11 @@ ms.custom: ''
 ms.service: cost-management
 manager: dougeby
 ms.openlocfilehash: 254a7f2904a63381a4eeec02ee32b19890703ae1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296632"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38310107"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 

@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
 ms.openlocfilehash: 8b3735380105bca8421e3f1d654425eea465918e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767477"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308202"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>クイック スタート: Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

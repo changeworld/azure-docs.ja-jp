@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/7/2017
 ms.author: sethm
 ms.openlocfilehash: 6af7e4d238c10c0fed3443db58644e3557525993
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26642462"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308367"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 
@@ -55,7 +55,7 @@ Service Bus キューを既に作成している場合は、「[キューへの�
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-to-the-queue"></a>3.キューへのメッセージの送信
+## <a name="3-send-messages-to-the-queue"></a>手順 3.キューへのメッセージの送信
 
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。
 
@@ -408,9 +408,9 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
     ![Queue length][queue-message-receive]
 
-ご利用ありがとうございます。 ここではキューを作成して、そこに一連のメッセージを送信したり、同じキューからそれらのメッセージを受信したりしました。
+お疲れさまでした。 ここではキューを作成して、そこに一連のメッセージを送信したり、同じキューからそれらのメッセージを受信したりしました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

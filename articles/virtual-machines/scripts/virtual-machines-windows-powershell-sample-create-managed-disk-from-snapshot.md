@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 1e86f91d2b31270db5b74ce2d27869a4d70a8b12
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34058133"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670872"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>PowerShell でスナップショットから管理ディスクを作成する
 

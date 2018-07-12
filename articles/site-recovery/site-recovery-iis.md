@@ -6,14 +6,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29809422"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920850"
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションをレプリケートする
 
@@ -134,7 +134,7 @@ SSL 証明書は、次のコンポーネントに対して発行できます。
 * Web サイトの完全修飾ドメイン名。
 * サーバーの名前。
 * ドメイン名のワイルドカード証明書。  
-* IP アドレス。 SSL 証明書が IIS サーバーの IP アドレスに対して発行されている場合、Azure サイト上にある IIS サーバーの IP アドレスに対して別の SSL 証明書を発行し、 その証明書の追加の SSL バインドを作成する必要があります。 そのため、IP アドレスに対して発行された SSL 証明書は使用しないことをお勧めします。 この方法はあまり広くは使用されておらず、新しい証明書機関/ブラウザー フォーラムの変更に従って、間もなく廃止される予定です。
+* IP アドレス。 SSL 証明書が IIS サーバーの IP アドレスに対して発行されている場合、Azure サイト上にある IIS サーバーの IP アドレスに対して別の SSL 証明書を発行し、 その証明書の追加の SSL バインドを作成する必要があります。 そのため、IP アドレスに対して発行された SSL 証明書は使用しないことをお勧めします。 この方法はあまり広くは使用されておらず、新しい証明書機関/ブラウザー フォーラムの変更に従って、間もなく非推奨となる予定です。
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Web 層とアプリケーション層の依存関係の更新
 仮想マシンの IP アドレスに基づいたアプリケーション固有の依存関係がある場合は、フェールオーバー後にその依存関係を更新する必要があります。

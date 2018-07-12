@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network でのルーティングの制御 - CLI - クラシック | Microsoft Docs
-description: クラシック デプロイメント モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する
+description: クラシック デプロイ モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 0b6c8da03c4a67aadb38280ba958a9b0feb88d1f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793887"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678580"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
@@ -34,7 +34,7 @@ ms.locfileid: "31793887"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。 [リソース マネージャーのデプロイメント モデルでルーティングを制御し、仮想アプライアンスを使用する](tutorial-create-route-table-cli.md)こともできます。
+この記事では、クラシック デプロイ モデルについて説明します。 [Resource Manager デプロイ モデルでルーティングを制御し、仮想アプライアンスを使用する](tutorial-create-route-table-cli.md)こともできます。
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9f186e682ef8f4606c50452f2e26b0d11580933
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 122fe9be768341716fb423a58560885c7d3035fe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715991"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920639"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移行する
 

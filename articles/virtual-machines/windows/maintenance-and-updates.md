@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: cynthn
 ms.openlocfilehash: a2222b77f049f0aa4d311abf85340c5efd5258e5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "30190278"
 ---
 # <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する計画メンテナンス

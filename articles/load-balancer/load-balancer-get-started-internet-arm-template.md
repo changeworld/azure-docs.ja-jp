@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 8452d3a6e165bbcd6007d9dc2261e458746b475a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30262961"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687721"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>テンプレートを使用したパブリック ロード バランサーの作成
 
