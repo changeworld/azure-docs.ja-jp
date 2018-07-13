@@ -31,7 +31,7 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 * Red Hat Enterprise Linux、CentOS、または Oracle Linux を実行している (クラシックではなく) Azure Resource Manager VM。 VM の作成手順については、「[Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
-Azure にサインインします (https://portal.azure.com)。
+Azure にサインインします ( https://portal.azure.com ) 。
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
 マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
