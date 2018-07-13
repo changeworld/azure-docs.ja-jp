@@ -64,7 +64,7 @@ Azure Cosmos DB でグローバルに分散したマルチリージョン/マル
         public string ArticleId { get; set; } 
     }
 
-## <a id="ModelingSubscriptions">サブスクリプションのモデル化</a>
+## <a id="ModelingSubscriptions"></a>サブスクリプションのモデル化
 サブスクリプションは、興味がある記事の特定のカテゴリや特定の発行者などのさまざまな条件に合わせて作成できます。 したがって、`SubscriptionFilter` がパーティション キーに適しています。
 
     class Subscriptions 
@@ -87,7 +87,7 @@ Azure Cosmos DB でグローバルに分散したマルチリージョン/マル
         } 
     }
 
-## <a id="ModelingArticles">記事のモデル化</a>
+## <a id="ModelingArticles"></a>記事のモデル化
 通知によって記事が特定されたら、通常、以降のクエリは `Article.Id` に基づきます。 `Article.Id` をパーティション キーとして選択すると、Azure Cosmos DB コレクション内に記事を格納するための最適な配布が実現されます。 
 
     class Article 
