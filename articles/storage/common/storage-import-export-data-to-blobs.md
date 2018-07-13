@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: fe9292459134972b44037a58235cdd817030a956
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660311"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968934"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -109,7 +109,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](http://www.fedex.com/us/oadr/) または [DHL](http://www.dhl.com/) の運送業者アカウントを作成してください。
     - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
 
-    ![インポート ジョブを作成する - 手順 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+    ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. **[概要]** で次の操作を実行します。
 

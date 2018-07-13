@@ -1,6 +1,6 @@
 ---
 title: Azure で Windows VM リソースにタグを付ける方法 | Microsoft Docs
-description: リソース マネージャー デプロイ モデルを使用して Azure で作成した Windows 仮想マシンのタグ付けについて説明します。
+description: Resource Manager デプロイ モデルを使用して Azure で作成した Windows 仮想マシンのタグ付けについて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mmccrory
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 5044bda855b6ac88eb5784f257686bf8a1838222
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917501"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531322"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Azure で Windows 仮想マシンにタグを付ける方法
 この記事では、Azure で Resource Manager デプロイ モデルを通して Windows 仮想マシンにタグを付けるさまざまな方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。 タグは、Resource Manager デプロイ モデル経由で作成されたリソースでのみサポートされます。 Linux 仮想マシンにタグを付けする場合は、「[Azure で Linux 仮想マシンにタグを付ける方法](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。

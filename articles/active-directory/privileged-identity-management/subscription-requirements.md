@@ -16,12 +16,12 @@ ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442374"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548130"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management サブスクリプションの要件
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management のプレビュ
 2. 「`Connect-MsolService`」を入力して、テナントのユーザーとして認証します。
 3. 「`Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`」を入力します。
 
-このコマンドによって、テナントのサブスクリプションの一覧が取得されます。 行が返されない場合、Azure AD Privileged Identity Management を使用するには、Azure AD Premium P2 の試用版を入手するか、Azure AD Premium P2 サブスクリプションまたは EMS E5 を購入する必要があります。  試用版を入手して Azure AD Privileged Identity Management を使い始めるには、「[Azure AD Privileged Identity Management の使用](../active-directory-privileged-identity-management-getting-started.md)」を参照してください。
+このコマンドによって、テナントのサブスクリプションの一覧が取得されます。 行が返されない場合、Azure AD Privileged Identity Management を使用するには、Azure AD Premium P2 の試用版を入手するか、Azure AD Premium P2 サブスクリプションまたは EMS E5 を購入する必要があります。  試用版を入手して Azure AD Privileged Identity Management を使い始めるには、「[Azure AD Privileged Identity Management の使用](pim-getting-started.md)」を参照してください。
 
 このコマンドで行が返され、その行の SkuPartNumber が "AAD_PREMIUM_P2" または "EMSPREMIUM" であり、IsTrial が "True" である場合は、Azure AD Premium P2 の試用版がテナントに存在することになります。  サブスクリプションの状態が有効でなく Azure AD Premium P2 または EMS E5 のサブスクリプションを購入していない場合に、Azure AD Privileged Identity Management を使用し続けるには、Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリプションを購入する必要があります。
 
@@ -61,5 +61,5 @@ Azure AD Premium P2 サブスクリプションまたは EMS E5 サブスクリ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD Privileged Identity Management の使用](../active-directory-privileged-identity-management-getting-started.md)
-- [Azure AD Privileged Identity Management におけるロール](../active-directory-privileged-identity-management-roles.md)
+- [Azure AD Privileged Identity Management の使用](pim-getting-started.md)
+- [Azure AD Privileged Identity Management におけるロール](pim-roles.md)

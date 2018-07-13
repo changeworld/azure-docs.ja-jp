@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/01/2018
 ms.openlocfilehash: 7312000d1f22af3eb0091b46caac2c9607231513
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736628"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531703"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL VNet サービス エンドポイントの作成と管理
 Virtual Network (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for PostgreSQL サーバーに拡張します。 便利な Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サーバーを管理するための VNet サービス エンドポイントおよびルールの作成、更新、削除、一覧化、表示を行うことができます。 制限事項も含め、Azure Database for PostgreSQL VNet サービス エンドポイントの概要については、[Azure Database for PostgreSQL サーバー VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)に関する記事をご覧ください。 VNet サービス エンドポイントは、Azure Database for PostgreSQL でサポートされるすべてのリージョンで、パブリック プレビューとして利用できます。
@@ -26,10 +26,10 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 - [Azure Database for PostgreSQL サーバーとデータベース](quickstart-create-server-database-azure-cli.md)。
 
 > [!NOTE]
-> VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされます。
+> VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の VNet サービス エンドポイントを構成する
-仮想ネットワークを構成するには、[az network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) コマンドを使用します。
+Virtual Network を構成するには、[az network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) コマンドを使用します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -70,7 +70,7 @@ Azure サービス リソースへのアクセスを VNet に限定するには�
 Vnet と Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 このプレビューの時点では、VNet と Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントに存在する必要があります。
 
 > [!IMPORTANT]
-> 下記のサンプル スクリプトを実行したり、サービス エンドポイントを構成したりする前に、サービス エンドポイントの構成と考慮事項について、この記事を読むことを強くお勧めします。 **Virtual Network サービス エンドポイント**: [Virtual Network サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 VNet サービス エンドポイントでは、SQL Database という名前の Azure サービスを参照する **Microsoft.Sql** という種類名を使用します。 このサービス タグは、Azure SQL Database、Azure Database for PostgreSQL、MySQL の各サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネット上の Azure SQL Database、Azure Database for PostgreSQL、Azure Database for MySQL の各サーバーを含むすべての Azure Database サービスに対してサービス エンドポイント トラフィックが構成されることに注意してください。 
+> 下記のサンプル スクリプトを実行したり、サービス エンドポイントを構成したりする前に、サービス エンドポイントの構成と考慮事項について、この記事を読むことを強くお勧めします。 **Virtual Network サービス エンドポイント** : [Virtual Network サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 VNet サービス エンドポイントでは、SQL Database という名前の Azure サービスを参照する **Microsoft.Sql** というサービス種類名を使用します。 このサービス タグは、Azure SQL Database、Azure Database for PostgreSQL および MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネット上の Azure SQL Database、Azure Database for PostgreSQL、Azure Database for MySQL の各サーバーを含むすべての Azure Database サービスに対してサービス エンドポイント トラフィックが構成されることに注意してください。 
 > 
 
 ### <a name="sample-script-to-create-an-azure-database-for-postgresql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>Azure Database for PostgreSQL データベース、VNet、VNet サービス エンドポイントを作成し、VNet ルールを使用してサブネットのサーバーをセキュリティで保護するサンプル スクリプト

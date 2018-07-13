@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 46d887a16273d266af7b10f888ad0c8d5acf9aab
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58c7261e3082311e4ce9d04cb39f688bc8f04bb6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34661290"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901002"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 

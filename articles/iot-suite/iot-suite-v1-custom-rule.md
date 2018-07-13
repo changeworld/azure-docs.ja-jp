@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite でカスタム規則を作成する |Microsoft ドキュメント"
-description: "IoT Suite 事前構成済みソリューションでカスタム規則を作成する方法です。"
-services: 
+title: Azure IoT Suite でカスタム規則を作成する |Microsoft ドキュメント
+description: IoT Suite 事前構成済みソリューションでカスタム規則を作成する方法です。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 562799dc-06ea-4cdd-b822-80d1f70d2f09
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 9bf2a13035de141766fd935966ce18459dccdaab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723354"
 ---
 # <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視の事前構成済みソリューションでカスタム規則を作成する
 
@@ -204,7 +205,7 @@ RemoteMonitoring Visual Studio ソリューションを変更して、シミュ�
 
 3. **ExternalTemperature** テレメトリを送信する、作成済みのカスタム デバイスを見つけて、**[デバイスの詳細]** パネルで **[ルールの追加]** をクリックします。
 
-4. **[Data Field (データ フィールド)]**で **[ExternalTemperature]** を選択します。
+4. **[Data Field (データ フィールド)]** で **[ExternalTemperature]** を選択します。
 
 5. **[Threshold (しきい値)]** を 56 に設定します。 次に、**[規則の保存と表示]** をクリックします。
 
@@ -218,7 +219,7 @@ RemoteMonitoring Visual Studio ソリューションを変更して、シミュ�
 
 演算子の変更 **>** はかなり複雑で、このチュートリアルで説明する手順の範囲を超えています。 Stream Analytics ジョブを変更して任意の演算子を使用することはできますが、その演算子をソリューション ポータルに反映するのはそれよりもずっと複雑な作業になります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 カスタム規則を作成する方法がわかったところで、構成済みソリューションについての次の詳細もご覧ください。
 
 - [ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する][lnk-logic-app]

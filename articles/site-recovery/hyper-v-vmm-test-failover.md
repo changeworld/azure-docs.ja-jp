@@ -6,14 +6,14 @@ author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c389776f62db5fd04f67ef22822e21fd4aee368f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 03533af27ac6fd406b4639c31c3add0015a76f45
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31520679"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918800"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 

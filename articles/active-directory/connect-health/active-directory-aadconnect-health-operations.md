@@ -3,7 +3,7 @@ title: Azure Active Directory Connect Health の操作
 description: この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 68be732b2a375d1667c743ac277ce653c78105f1
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958727"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886871"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -99,10 +99,10 @@ Azure AD Connect Health の [ロールベースのアクセス制御 (RBAC)](../
 ### <a name="roles"></a>ロール
 Azure AD Connect Health では、次の組み込みのロールがサポートされています。
 
-| 役割 | アクセス許可 |
+| Role | アクセス許可 |
 | --- | --- |
-| 所有者 |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
-| 共同作成者 |共同作成者は、ポータルからの "*すべての情報の表示*" (例: アラートの表示) と Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 |
+| Owner |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
+| Contributor |共同作成者は、ポータルからの "*すべての情報の表示*" (例: アラートの表示) と Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 |
 | 閲覧者 |閲覧者は、ポータルから Azure AD Connect Health 内の "*すべての情報の表示*" (例: アラートの表示) を実行できます。 |
 
 上記以外のすべてのロール ("ユーザー アクセス管理者" や "DevTest Labs ユーザー" など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。

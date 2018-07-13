@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 7afa50484c3ebf258bbdd2b7f16c9cd051710d28
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9609a0fa5599bd34fa52f7c0311369fb27aaf955
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437894"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951160"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ ServiceProxy の作成は負荷の低い処理であり、必要に応じてい�
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 プロキシの作成に api `ServiceProxy.Create` を使用する場合、フレームワークによってシングルトン ServiceProxy が作成されます。
-手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
+手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリの作成は負荷の高い操作です。 ServiceProxyFactory は通信クライアントの内部キャッシュを保持します。
 ServiceProxyFactory はできるだけ長くキャッシュすることをお勧めします。
 

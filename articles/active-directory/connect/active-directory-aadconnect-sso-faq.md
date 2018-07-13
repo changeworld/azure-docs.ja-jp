@@ -4,7 +4,7 @@ description: Azure Active Directory シームレス シングル サインオン
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1407af9e19df784f8dcb501e0556572276e9863e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e4cc67af4276bc244d402258a90dfec01d61add
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592247"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919021"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -64,7 +64,7 @@ Azure AD にこれらのパラメーターを送信し、その結果、シー�
 
 ## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>[Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO のシングル サインオン エクスペリエンスの違いは何ですか。
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) の場合、SSO は、デバイスが Azure AD に登録されているユーザーに提供されます。 そのデバイスは、必ずしもドメインに参加する必要があるとは限りません。 SSO は、Kerberos ではなく、"*プライマリ更新トークン*" (*PRT*) を使用して提供されます。 Windows 10 デバイスで、最適なユーザー エクスペリエンスが実現します。 SSO は、Microsoft Edge ブラウザーで自動的に実行されます。 ブラウザー拡張機能を使用することで Chrome でも動作します。
+[Azure AD Join](../active-directory-azureadjoin-overview.md) の場合、SSO は、デバイスが Azure AD に登録されているユーザーに提供されます。 そのデバイスは、必ずしもドメインに参加する必要があるとは限りません。 SSO は、Kerberos ではなく、"*プライマリ更新トークン*" (*PRT*) を使用して提供されます。 Windows 10 デバイスで、最適なユーザー エクスペリエンスが実現します。 SSO は、Edge ブラウザーで自動的に実行されます。 ブラウザー拡張機能を使用することで Chrome でも動作します。
 
 テナントでは、Azure AD Join とシームレス SSO の両方をご利用いただけます。 この 2 つは補完的な機能です。 両方の機能が有効な場合は、Azure AD Join がシームレス SSO に優先します。
 

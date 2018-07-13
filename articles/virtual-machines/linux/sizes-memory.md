@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/08/2017
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: eed637ecaa4e0deaff3ba6e5d07ef5d8687716c9
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a38fb8047415479710a8528c0bf55b1ccb3e178c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34653571"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900587"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>メモリ最適化済み仮想マシンのサイズ
 

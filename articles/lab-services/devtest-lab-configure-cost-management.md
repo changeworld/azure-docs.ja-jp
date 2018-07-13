@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781951"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573813"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する
 DevTest ラボのコスト管理機能は、ラボのコストを追跡するのに役立ちます。 この記事では、 **月間推定コスト傾向** グラフを使用して、現在のカレンダー月の現時点までの推定コストおよび現在のカレンダー月の月末の予測コストを表示する方法を示します。 この記事では、支出の目標としきい値を設定し、それに達した場合に DevTest Labs をトリガーして結果をレポートすることで、ラボのコスト管理を改善する方法について説明します。
@@ -50,7 +50,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 また、コスト計算には次のものは含まれて *いません* 。
 
 * CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。Azure DevTest Labs は、[Azure 課金 API](../billing/billing-usage-rate-card-overview.md) を使用してラボ コストを計算しますが、CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
-* プラン料金。 現時点では、Microsoft または Microsoft パートナーと交渉したプラン料金 (サブスクリプションの下に表示される金額) は使用できません。 従量課金制の料金のみが使用されます。
+* プラン料金。 現時点では、Microsoft または Microsoft パートナーと交渉したオファー料金 (サブスクリプションの下に表示される金額) は使用できません。 従量課金制の料金のみが使用されます。
 * 税金
 * 割引
 * 請求通貨。 現時点では、ラボのコストは USD 通貨でのみ表示されます。

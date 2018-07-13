@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111478"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968957"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Time Series Insights を使用してリモート監視データを視覚化する
 
@@ -57,7 +57,7 @@ Azure Time Series Insights は、IoT 規模の時系列データをクラウド�
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **新規作成**。 **ContosoRM** という名前を使用します。 |
-    | リージョン | **[米国東部]** を使用します。 環境は、リモート監視ソリューションと同じリージョンに作成します。 |
+    | Location | **[米国東部]** を使用します。 環境は、リモート監視ソリューションと同じリージョンに作成します。 |
     | SKU |**S1** |
     | 容量 | **1** |
     | [ダッシュボードにピン留めする] | **はい** |
@@ -99,7 +99,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 1. **Create** をクリックしてください。
 
 > [!NOTE]
-> Time Series Insights エクスプローラーにその他のユーザー アクセスを許可する必要がある場合は、[データ アクセスを許可する](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access#grant-data-access)ための手順を使用します。
+> Time Series Insights エクスプローラーにその他のユーザー アクセスを許可する必要がある場合は、[データ アクセスを許可する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access#grant-data-access)ための手順を使用します。
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights エクスプローラー
 

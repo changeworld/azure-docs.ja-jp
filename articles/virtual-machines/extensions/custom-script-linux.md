@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: e614c78ca4e8ed7afbce0d3f2423ce137c5225b5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 850acae818638bb7c823edde03dbbecccf930073
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294977"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969325"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -46,7 +46,7 @@ Linux 用カスタム スクリプト拡張機能は、サポートされてい�
 拡張機能を使用すると、Azure Blob ストレージの資格情報を使用して Azure Blob Storage にアクセスできます。 また、スクリプトは、GitHub や社内ファイル サーバーなどの、そのエンドポイントに VM をルーティングできる限り、任意の場所に保存できます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
-GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 スクリプトがローカル サーバー上にある場合も、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。
 
@@ -57,7 +57,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 * スクリプトの実行に許されているのは 90 分間で、これを超えると拡張機能へのプロビジョニングが失敗します。
 * スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張で問題が発生し、再起動後にその拡張は実行されなくなります。 
 * 再起動が必要なスクリプトの場合は、アプリケーションをインストールしてから、スクリプトを実行するなどしてください。Cron ジョブを使用して、あるいは DSC、Chef、Puppet 拡張機能などのツールを使用して再起動をスケジュールしてください。
-* 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、Systemd サービス ユニットを作成するためにスクリプトを使用することができます。
+* 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、Systemd サービス ユニットを作成するためにスクリプトを使用することができます。
 * スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Cron ジョブを作成する必要があります。 
 * スクリプトが実行されている場合は、Azure Portal または CLI には拡張機能の状態が「移行中」とのみ表示されます。 実行中のスクリプトのステータスをより高い頻度で更新するには、独自のソリューションを作成する必要があります。
 * カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。 

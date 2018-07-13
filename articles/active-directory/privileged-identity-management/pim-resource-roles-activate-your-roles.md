@@ -14,15 +14,15 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d2f61f1ebdd473a24115c7774801f5b7694f224f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 483f30a6546cf21d93b96b08eede6afae828d9e4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443207"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548306"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用した Azure リソースのロールのアクティブ化
-Privileged Identity Management (PIM) では､Azure リソースのロールのアクティブ化で新しい体験をすることができます｡ 有資格ロール メンバーは､アクティブ化する日時を指定することができます｡ 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡ 詳細は､[Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください｡
+Privileged Identity Management (PIM) では､Azure リソースのロールのアクティブ化で新しい体験をすることができます｡ 有資格ロール メンバーは､アクティブ化する日時を指定することができます｡ 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡ 詳細は､[Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法](pim-how-to-activate-role.md)を参照してください｡
 
 ## <a name="activate-roles"></a>ロールをアクティブ化する
 左側のウィンドウの **My roles** 部分を見ます｡ アクティブ化するロールの **Activate** を選択します｡

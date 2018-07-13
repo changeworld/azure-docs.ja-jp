@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 233da393bb9e030d885ce588f4841dc1c707c1cb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836268"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968793"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>人工知能 (AI) アプリケーションの DevOps: Docker と Kubernetes を使用した Azure での継続的インテグレーション パイプラインの作成
 多くの場合、AI アプリケーションには、データ サイエンティストが機械学習モデルを構築し、アプリ開発者がアプリケーションをビルドしてエンド ユーザーが使用できるように公開するという 2 つの作業の流れがあります。 この記事では、AI アプリケーション パイプラインの継続的インテグレーション (CI)/継続的デリバリー (CD) を実装する方法について説明します。 AI アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードの組み合わせです。 この記事では、個人の Azure Blob Storage アカウントから事前トレーニング済みモデルを取得しますが、AWS S3 アカウントも使用できます。 この記事では、単純な Python Flask Web アプリケーションを使用します。
@@ -35,10 +35,10 @@ ms.locfileid: "34836268"
 
 ## <a name="pre-requisites"></a>前提条件
 後述する CI/CD パイプラインには、次の前提条件があります。
-* [Visual Studio Team Services アカウント](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Kubernetes を実行する Azure Container Service (AKS)](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registy (ACR) アカウント](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+* [Visual Studio Team Services アカウント](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Kubernetes を実行する Azure Container Service (AKS)](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+* [Azure Container Registy (ACR) アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [Kubernetes クラスターに対してコマンドを実行するための Kubectl のインストール](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。 これは、ACS クラスターから構成をフェッチするために必要になります。 
 * GitHub アカウントへのリポジトリのフォーク
 
@@ -69,6 +69,6 @@ ms.locfileid: "34836268"
 
 ## <a name="references"></a>参照
 * [Team Data Science Process (TDSP)](https://aka.ms/tdsp)
-* [Azure Machine Learning (AML)](https://docs.microsoft.com/en-us/azure/machine-learning/service/)
+* [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
 * [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes)
+* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)

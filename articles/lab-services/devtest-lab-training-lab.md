@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 85eddaaf101c3e85eca7514b04660163d23c1c80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782471"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666796"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>トレーニングでの Azure DevTest Labs の使用
 Azure DevTest Labs を使用すると、開発とテストのみならず、さまざまな主要シナリオを実現できます。 そのようなシナリオの 1 つが、トレーニング用のラボのセットアップです。 Azure DevTest Labs を使用すると、ラボを作成し、各受講者がトレーニング用に同じ分離環境を作成するために使用できるカスタム テンプレートを提供できます。 各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにするポリシーを適用できます。 さらに、ワンクリックでアクセスできるラボを受講者と簡単に共有することもできます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 2cc0e29615ad4fc19040055d847435a9dffa9c95
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659333"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968563"
 ---
 # <a name="extending-geojson-geometries"></a>GeoJSON ジオメトリの拡張
 
@@ -30,7 +30,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 * Point
 * Polygon
 
-Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/en-us/rest/api/maps/search/postsearchinsidegeometry) など) の中には、[GeoJSON 仕様][1] に含まれない "Circle" が使用できるものもあります。
+Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) など) の中には、[GeoJSON 仕様][1] に含まれない "Circle" が使用できるものもあります。
 
 この記事では、特定のジオメトリを表すため、Azure Maps が [GeoJSON 仕様][1]をどのように拡張するかについて詳細に説明します。
 

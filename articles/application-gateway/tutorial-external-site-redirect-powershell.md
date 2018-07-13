@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
 ms.openlocfilehash: 6e2f0dadcb1158863282090bf6f81b0ae368416f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33201506"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317810"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Azure PowerShell を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 

@@ -18,11 +18,11 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082667"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586978"
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/06/2017
 ms.author: sethm
 ms.openlocfilehash: 4763b172375668213372e6f4f8fc87431c430e53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23044587"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561322"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -71,7 +71,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 ここで、`Endpoint` の一般的な形式は `https://[yourNamespace].servicebus.windows.net` です。
 
-いずれかの Azure サービス クライアントを作成するには、`ServicesBuilder` クラスを使用する必要があります。 そのための方法は次のとおりです。
+いずれかの Azure サービス クライアントを作成するには、`ServicesBuilder` クラスを使用する必要があります。 次のようにすることができます。
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
@@ -125,7 +125,7 @@ catch(ServiceException $e){
 > 
 > 
 
-## <a name="create-a-subscription"></a>サブスクリプションを作成する
+## <a name="create-a-subscription"></a>サブスクリプションの作成
 トピック サブスクリプションも `ServiceBusRestProxy->createSubscription` メソッドで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
@@ -333,8 +333,8 @@ catch(ServiceException $e){
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
-## <a name="next-steps"></a>次のステップ
-これで、Service Bus キューの基本を学習できました。詳しくは、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関する記事をご覧ください。
+## <a name="next-steps"></a>次の手順
+これで、Service Bus キューの基本を学習できました。詳しくは、「[Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]」をご覧ください。
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

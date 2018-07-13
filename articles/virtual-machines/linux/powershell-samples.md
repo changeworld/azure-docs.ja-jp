@@ -3,7 +3,7 @@ title: Azure 仮想マシンの PowerShell のサンプル | Microsoft Docs
 description: Azure 仮想マシンの PowerShell のサンプル
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: iainfou
-ms.openlocfilehash: c2e8cf79e5d4f7900588108809fc487e36f43b3d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 2e8be5b1183c04b5144eb38ee3c2a7d7dd2946e6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911463"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932767"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 仮想マシンの PowerShell のサンプル
 

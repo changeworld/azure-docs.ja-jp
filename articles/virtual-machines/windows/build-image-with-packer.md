@@ -3,7 +3,7 @@ title: Packer を使用して Windows Azure VM のイメージを作成する方
 description: Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
-ms.author: iainfou
-ms.openlocfilehash: b7f07ec8736086483f91746512f10118ee90762d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: cynthn
+ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333165"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931924"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/13/2018
 ms.author: raynew
-ms.openlocfilehash: c7dc9e8406494739aa5d8f21397a606e0b74a617
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 99eda135161a228fde139458de30f5120af55153
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301254"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723614"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-azure-sql-managed-instance"></a>Contoso の移行: オンプレミス アプリを Azure VM および Azure SQL Managed Instance にリホストする
 
@@ -22,17 +22,17 @@ ms.locfileid: "35301254"
 > [!NOTE]
 > Azure SQL Managed Instance は現在、プレビュー段階にあります。
 
-このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の第 4 弾です。 このシリーズは、背景情報と一連のシナリオが含まれており、移行インフラストラクチャのセットアップ方法や、さまざまな種類の移行方法を理解できるようになっています。 シナリオが複雑になってきているため、いずれ記事が追加される予定です。
+このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の第 4 弾です。 このシリーズは、背景情報と一連のシナリオが含まれており、移行インフラストラクチャのセットアップ方法や、さまざまな種類の移行方法を理解できるようになっています。 シナリオが複雑になってきているため、徐々に記事が追加される予定です。
 
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズおよび使用するサンプル アプリの概要を示します。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えてオンプレミスおよび Azure インフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
-[記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md)  | VMware で実行されているオンプレミスの 2 階層 SmartHotel アプリの評価を Contoso が実行する方法を説明します。 Contoso は、アプリの VM は [Azure Migrate](migrate-overview.md) サービスを使用して、アプリの SQL Server データベースは [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) を使用して評価します。 | 使用可能
-記事 4: Azure VM および SQL Managed Instance へのリホスト (この記事) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 Contoso は、SQL Managed Instance への移行の際、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリ フロントエンド VM を移行し、[Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
+[記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズ、および使用するサンプル アプリの概要を示します。 | 使用可能
+[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えて、オンプレミスと Azure のインフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
+[記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware 上で実行されるオンプレミスの 2 階層アプリ、SmartHotel の評価をどのように実行するかを示します。 アプリの VM については [Azure Migrate](migrate-overview.md) サービスで、アプリの SQL Server データベースについては [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) で評価を行います。 | 使用可能
+記事 4: Azure VM および SQL Managed Instance へのリホスト (この記事) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 SQL Managed Instance に移行するために、アプリのフロントエンド VM は [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用して移行し、アプリのデータベースは [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
 [記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery のみを使用して SmartHotel アプリ VM を移行する方法を説明します。
-[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を説明します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
+[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
 [記事 7: Linux アプリの Azure VM へのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法を説明します。 | 使用可能
 [記事 8: Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Linux osTicket アプリを、Site Recovery を使用して Azure VM に移行する方法と、MySQL Workbench を使用して Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
 
@@ -48,9 +48,9 @@ ms.locfileid: "35301254"
 - Contoso は、米国内に 3 つの支店を配置しています。
 - メイン データセンターは、光ファイバーによるイーサネット接続 (500 mbps) を通じて、インターネットに接続されています。
 - 各支店は、ビジネス クラスの接続を使用して、インターネットにローカルで接続されています。メインデータセンターには、IPSec VPN トンネルで接続されています。 これにより、ネットワーク全体を永続的に接続でき、インターネット接続が最適化されます。
-- メイン データ センターは、VMware によって完全に仮想化されています。 ESXi 6.5 仮想化ホストが 2 つあり、vCenter Server 6.5 で管理されています。
+- メイン データセンターは、VMware によって完全に仮想化されています。 ESXi 6.5 仮想化ホストが 2 つあり、vCenter Server 6.5 で管理されています。
 - Contoso は、ID 管理に Active Directory を使用しており、内部ネットワーク上で DNS サーバーを使用しています。
-- データ センター内のドメイン コントローラーは、VMware VM 上で実行されています。 支店にあるドメイン コントローラーは、物理サーバー上で実行されています。
+- データセンター内のドメイン コントローラーは、VMware VM 上で実行されています。 支店にあるドメイン コントローラーは、物理サーバー上で実行されています。
 
 
 
@@ -82,7 +82,7 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 - Azure SQL Managed Instance にアプリのデータベース (SmartHotelDB) を移行します。
 - Azure VM にオンプレミス VMware VM を移行します。
 - Contoso にはオンプレミスのデータセンター (contoso-datacenter) があり、そこにオンプレミスのドメイン コントローラー (**contosodc1**) が含まれています。
-- 移行が完了すると、Contoso データセンター内の VM は、使用が停止されます。
+- Contoso データセンター内のオンプレミス VM は、移行が行われた後に使用停止にされます。
 
 ![シナリオのアーキテクチャ](media/contoso-migration-rehost-vm-sql-managed-instance/architecture.png) 
 
@@ -90,9 +90,8 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 
 **サービス** | **説明** | **コスト**
 --- | --- | ---
-[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | DMS を使うと、複数のデータベース ソースから Azure データ プラットフォームに、最小限のダウンタイムでシームレスに移行できます。 | DMS の[サポートされるリージョンに関する記事](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)と、[価格の詳細に関する記事](https://azure.microsoft.com/pricing/details/database-migration/)を参照してください。
-
-  [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Managed Instance は、Azure クラウド内の完全に管理された SQL Server インスタンスを表すマネージド データベース サービスです。 最新バージョンの SQL Server データベース エンジンと同じコードを共有し、最新の機能、パフォーマンスの向上、およびセキュリティ更新プログラムが適用されています。 | Azure SQL Database Managed Instance を使うと、容量に基づく料金がかかります。 [詳細情報](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
+[Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | DMS を使うと、複数のデータベース ソースから Azure データ プラットフォームに、最小限のダウンタイムでシームレスに移行できます。 | DMS の[サポートされるリージョンに関する記事](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)と、[価格の詳細に関する記事](https://azure.microsoft.com/pricing/details/database-migration/)を参照しくてださい。
+[Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Managed Instance は、Azure クラウド内の完全に管理された SQL Server インスタンスを表すマネージド データベース サービスです。 最新バージョンの SQL Server データベース エンジンと同じコードを共有し、最新の機能、パフォーマンスの向上、およびセキュリティ更新プログラムが適用されています。 | Azure SQL Database Managed Instance を使うと、容量に基づく料金がかかります。 [詳細情報](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | このサービスは、Azure VM、オンプレミス VM、物理サーバーの移行とディザスター リカバリーを調整および管理します。  | Azure へのレプリケーションの間に、Azure Storage の料金が発生します。  フェールオーバーが発生すると、Azure VM が作成されて料金がかかります。 料金と価格について[詳しくはこちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
 
  
@@ -116,7 +115,7 @@ Contoso は、SmartHotel アプリの Web とデータ層の両方を Azure に�
 --- | ---
 **プレビューへの登録** | SQL マネージド インスタンスの限定パブリック プレビューに登録する必要があります。 [サインアップ](https://portal.azure.com#create/Microsoft.SQLManagedInstance)するには、Azure サブスクリプションが必要です。 サインアップが完了するには数日かかることがあるので、このシナリオの展開を始める前に行っておいてください。
 **Azure サブスクリプション** | このシリーズの最初の記事で評価を行ったときに、サブスクリプションは既に作成しているはずです。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。<br/><br/> 無料アカウントを作成する場合、サブスクリプションの管理者としてすべてのアクションを実行できます。<br/><br/> 既存のサブスクリプションを使用しており、管理者でない場合は、管理者に依頼して所有者アクセス許可または共同作成者アクセス許可を割り当ててもらう必要があります。<br/><br/> さらに詳細なアクセス許可が必要な場合は、[こちらの記事](../site-recovery/site-recovery-role-based-linked-access-control.md)をご覧ください。 
-**Site Recovery (オンプレミス)** | オンプレミス vCenter Server は、バージョン 5.5、6.0、または 6.5 を実行している必要があります。<br/><br/> バージョン 5.5、6.0、または 6.5 を実行している ESXi ホスト<br/><br/> ESXi ホスト上で実行している 1 つ以上の VMware VM。<br/><br/> VM は [Azure の要件](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)を満たす必要があります。<br/><br/> サポートされている[ネットワーク](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)および[ストレージ](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)の構成。
+**Site Recovery (オンプレミス)** | オンプレミスの vCenter Server は、バージョン 5.5、6.0、または 6.5 を実行している必要があります。<br/><br/> バージョン 5.5、6.0、または 6.5 を実行している ESXi ホスト<br/><br/> ESXi ホスト上で実行している 1 つ以上の VMware VM。<br/><br/> VM は [Azure の要件](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)を満たす必要があります。<br/><br/> サポートされている[ネットワーク](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)および[ストレージ](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage)の構成。
 **DMS** | DMS では、[互換性のあるオンプレミスの VPN デバイス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)が必要です。<br/><br/> オンプレミスの VPN デバイスを構成できる必要があります。 外部接続用のパブリック IPv4 アドレスを持っている必要があり、アドレスが NAT デバイスの内側に存在することはできません。<br/><br/> オンプレミスの SQL Server データベースにアクセスできることを確認します。<br/><br/> Windows ファイアウォールは、移行元のデータベース エンジンにアクセスできる必要があります。 [詳細情報](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。<br/><br/> データベース マシンの前面にファイアウォールがある場合は、SMB ポート 445 経由でのデータベースおよびファイルへのアクセスを許可する規則を追加します。<br/><br/> 移行元の SQL Server および移行先のマネージド インスタンスへの接続に使用する資格情報は、sysadmin サーバー ロールのメンバーである必要があります。<br/><br/> DMS が移行元データベースのバックアップに使用できるネットワーク共有がオンプレミスのデータベースに存在する必要があります。<br/><br/> 移行元の SQL Server インスタンスを実行しているサービス アカウントに、ネットワーク共有に対する書き込み権限があることを確認します。<br/><br/> ネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、これらのユーザーの資格情報を偽装して、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。<br/><br/> SQL Server Express のインストール プロセスでは、TCP/IP プロトコルが既定で**無効化**されます。 これが有効になっていることを確認します。
 
 
@@ -259,7 +258,7 @@ DMS を準備するために、Contoso は、以下のことを行う必要が�
 
 **さらにサポートが必要な場合**
 - DMS の設定については、[こちら](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal)をご覧ください。
-- SAS の作成および使用については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+- SAS の作成および使用については、[こちら](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
 
 
 ## <a name="step-3-prepare-azure-for-the-site-recovery-service"></a>ステップ 3: Site Recovery サービス用に Azure を準備する
@@ -283,7 +282,7 @@ Site Recovery は、以下のように設定します。
 
 **さらにサポートが必要な場合**
 
-Site Recovery 用の Azure の設定については、[こちら](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure)をご覧ください。
+Site Recovery のために Azure を設定することについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/tutorial-prepare-azure)。
 
 
 ## <a name="step-4-prepare-on-premises-vmware-for-site-recovery"></a>ステップ 4: Site Recovery 用にオンプレミス VMware を準備する
@@ -309,7 +308,7 @@ Contoso は、アカウントを以下のように設定します。
 
 **さらにサポートが必要な場合**
 
-自動検出用のロールの作成および割り当てについては、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-automatic-discovery)をご覧ください。
+自動検出のためにロールを作成して割り当てることについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-automatic-discovery)。
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストール用のアカウントを準備する
 
@@ -322,12 +321,12 @@ Contoso は、アカウントを以下のように設定します。
 
 **さらにサポートが必要な場合**
 
-モビリティ サービスのプッシュ インストール用のアカウントの作成については、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation)をご覧ください。
+モビリティ サービスのプッシュ インストールのためにアカウントを作成することについての[説明を参照します](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises#prepare-an-account-for-mobility-service-installation)。
 
 
 ### <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 
-Azure にフェールオーバーした後、Contoso は、Azure 内のレプリケートされた VM に接続できるようにしたいと考えています。 これを行うには、移行を実行する前に、オンプレミス VM 上でいくつかのステップを処理する必要があります。 
+Contoso は、Azure へのフェールオーバー後に、Azure 内のレプリケートされた VM に接続できることを望んでいます。 これを行うには、移行を実行する前に、オンプレミス VM 上でいくつかのステップを処理する必要があります。 
 
 1. インターネット経由でアクセスするため、フェールオーバー前にオンプレミス VM 上で RDP を有効にします。また、TCP および UDP ルールが**パブリック** プロファイルに追加されていること、および **[Windows ファイアウォール]** > **[許可されたアプリ]** を選択し、すべてのプロファイルで RDP が許可されていることを確認します。
 2. サイト間 VPN 経由でアクセスするため、オンプレミス マシン上で RDP を有効にします。また、**[Windows ファイアウォール]** -> **[Allowed apps and features]\(許可されたアプリおよび機能\)** (**[Domain and Private]\(ドメインおよびプライベート\)** ネットワーク) を選択して、RDP を許可します。
@@ -352,7 +351,7 @@ Azure への移行を実行する前に、Contoso は、レプリケーション
 
 ### <a name="confirm-deployment-planning"></a>展開の計画を確認する
 
-続行するには、デプロイ計画が完了したことを確認するために、**[Yes, I have done it]\(はい、計画は完了しました\)** を選択する必要があります。 このデプロイでは、Contoso が移行する VM は 1 つのみです。そのため、デプロイ計画は不要です。
+続行するには、デプロイ計画が完了したことを確認するために、**[はい、完了しました]** を選択する必要があります。 このデプロイでは、Contoso が移行する VM は 1 つのみです。そのため、デプロイ計画は不要です。
 
 ### <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
 
@@ -370,19 +369,19 @@ Contoso は、これらのステップを以下のように実行します。
     
     ![OVF をダウンロードする](./media/contoso-migration-rehost-vm-sql-managed-instance/add-cs.png)
 
-2. VMware にテンプレートをインポートして VM を作成およびデプロイします。
+2. VMware にテンプレートをインポートし、VM を作成してデプロイします。
 
     ![OVF テンプレート](./media/contoso-migration-rehost-vm-sql-managed-instance/vcenter-wizard.png)
 
-3.  最初に VM をオンにすると、Windows Server 2016 インストール環境が起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
+3.  初めて VM をオンにすると、Windows Server 2016 インストール環境が起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 4. インストールの完了後に、管理者として VM にサインインします。 初めてサインインしたときは、Azure Site Recovery 構成ツールが既定で実行されます。
 5. ツールでは、構成サーバーをコンテナーに登録するときに使用する名前を指定します。
 6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** を選択して、Azure サブスクリプションにサインインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。 
 
     [構成サーバーの登録](./media/contoso-migration-rehost-vm-sql-managed-instance/config-server-register2.png)
 
-7. ツールがいくつかの構成タスクを実行した後、再起動されます。 マシンに再度サインインすると、構成サーバーの管理ウィザードが自動的に起動します。
-8. ウィザードでは、レプリケーション トラフィックを受信する NIC を選択します。 構成後、この設定を変更することはできません。
+7. ツールがいくつかの構成タスクを実行した後、再起動されます。 マシンに再度サインインすると、構成サーバーの管理ウィザードが自動的に起動されます。
+8. ウィザードで、レプリケーション トラフィックを受信する NIC を選択します。 この設定は、構成後に変更することはできません。
 9. サブスクリプション、リソース グループ、および構成サーバーを登録するコンテナーを選択します。
         ![コンテナー](./media/contoso-migration-rehost-vm-sql-managed-instance/cswiz1.png) 
 
@@ -393,7 +392,7 @@ Contoso は、これらのステップを以下のように実行します。
 
     ![vCenter](./media/contoso-migration-rehost-vm-sql-managed-instance/cswiz2.png)
 
-7. 登録が完了したら、Azure portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを再確認します。 検出には 15 分以上かかる場合があります。 
+7. 登録が完了したら、Azure Portal で、構成サーバーと VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを再確認します。 検出には 15 分以上かかる場合があります。 
 8. Site Recovery は指定された設定を使用して VMware サーバーに接続し、VM を検出します。
 
 ### <a name="set-up-the-target"></a>ターゲットをセットアップする
@@ -401,7 +400,7 @@ Contoso は、これらのステップを以下のように実行します。
 ここで Contoso は、ターゲット レプリケーション環境を構成する必要があります。
 
 1. **[インフラストラクチャの準備]** > **[ターゲット]** で、ターゲットの設定を選択します。
-2. Site Recovery は、指定されたターゲットで、Azure ストレージ アカウントと ネットワークが存在することを確認します。
+2. Site Recovery は、指定されたターゲットに Azure のストレージ アカウントとネットワークが存在することを確認します。
 
 ### <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
@@ -422,8 +421,8 @@ Contoso は、これらのステップを以下のように実行します。
 
 **さらにサポートが必要な場合**
 
-- これらのステップの詳細な手順については、[オンプレミス VMware VM のディザスター リカバリーの設定に関する記事](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial)をご覧ください。
-- [ソース環境の設定](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-source)、[構成サーバーのデプロイ](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server)、および[レプリケーション設定の構成](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication)に役立つ詳細な手順が用意されています。
+- これらすべてのステップの詳細な手順については、[オンプレミス VMware VM のディザスター リカバリーの設定に関する記事](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial)を参照してください。
+- [ソース環境の設定](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-source)、[構成サーバーのデプロイ](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server)、および[レプリケーション設定の構成](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication)に役立つ詳細な手順が記載されています。
 
 ### <a name="enable-replication"></a>レプリケーションを有効にする
 
@@ -443,7 +442,7 @@ Contoso は、WebVM のレプリケートを開始できるようになりまし
     ![レプリケーションを有効にする](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication3.png)
 
 5. 目的のレプリケーション ポリシーが選択されていることを確認し、WEBVM のレプリケーションを有効にします。 レプリケーションの進行状況は、**[ジョブ]** で追跡します。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
-6. Azure portal の **[Essentials]\(要点\)** で、Azure にレプリケートする VM の構造を確認できます。
+6. Azure Portal の **[要点]** で、Azure にレプリケートする VM の構造を確認できます。
 
     ![インフラストラクチャ ビュー](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
 
@@ -505,26 +504,26 @@ Contoso は、クイック テスト フェールオーバーを実行してか�
 WEBVM を移行する前にテスト フェールオーバーを実行すると、すべてが正常に機能しているかどうかを確認できます。 
 
 1. テスト フェールオーバーを実行し、選択可能な最新の時点 (**最後に処理された時点**) を復帰させます。
-2. **[Shut down machine before beginning failover]\(フェールオーバー前にマシンをシャットダウンする\)** を選択します。これにより、Site Recovery は、移行元の VM をシャットダウンしてから、フェールオーバーをトリガーします。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 
+2. **[Shut down machine before beginning failover]\(フェールオーバー前にマシンをシャットダウンする\)** を選択します。これにより、Site Recovery は、フェールオーバーをトリガーする前にソース VM のシャットダウンを試みます。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 
 3. テスト フェールオーバーでは、以下が実行されます。 
 
     - 移行を実行するために必要なすべての条件が満たされていることを確認する前提条件チェックが実行されます。
     - Azure VM を作成できるように、フェールオーバーによってデータが処理されます。 最新の復旧ポイントを選択した場合は、データから復旧ポイントが作成されます。
     - 前の手順で処理されたデータを使用して、Azure VM が作成されます。
-3. フェールオーバーが完了すると、レプリカの Azure VM が Azure portal に表示されます。 Contoso は、すべてが正常に機能していることを確認します。 つまり、VM が適切なサイズであること、VM が適切なネットワークに接続されていること、および VM が実行されていることを確認します。 
+3. フェールオーバーが完了すると、Azure Portal にはレプリカの Azure VM が表示されます。 Contoso は、すべてが正常に機能していることを確認します。 つまり、VM が適切なサイズであること、VM が適切なネットワークに接続されていること、および VM が実行されていることを確認します。 
 4. テスト フェールオーバーの検査が完了したら、フェールオーバーをクリーンアップし、観察されたことをすべて記録して保存します。 
 
 ### <a name="migrate-the-vm"></a>VM の移行
 
-1. テスト フェールオーバーが正常に機能することを確認したら、移行に備えて復旧計画を作成します。 WEBVM を計画に追加します。
+1. テスト フェールオーバーが想定どおりに機能することを確認したら、移行するための復旧計画を作成します。 WEBVM を計画に追加します。
 
      ![復旧計画](./media/contoso-migration-rehost-vm-sql-managed-instance/recovery-plan.png)
 
-2. 計画に基づいて、フェールオーバーを実行します。 最新の復旧ポイントを選択し、Site Recovery がオンプレミス VM をシャットダウンしてからフェールオーバーのトリガーを試みることを指定します。
+2. 計画に基づいて、フェールオーバーを実行します。 最新の復旧ポイントを選択し、Site Recovery では、フェールオーバーをトリガーする前にオンプレミス VM のシャットダウンを試みる必要があることを指定します。
 
     ![フェールオーバー](./media/contoso-migration-rehost-vm-sql-managed-instance/failover1.png)
 
-3. フェールオーバーの後、Azure VM が Azure portal に正常に表示されることを確認します。
+3. フェールオーバーの後、Azure VM が Azure Portal に正常に表示されることを確認します。
 
    ![復旧計画](./media/contoso-migration-rehost-vm-sql-managed-instance/failover2.png)
 
@@ -548,9 +547,9 @@ WEBVM を移行する前にテスト フェールオーバーを実行すると�
 
 **さらにサポートが必要な場合**
 
-- テスト フェールオーバーの実行については、[こちら](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure)をご覧ください。 
-- 復旧計画の作成方法については、[こちら](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)をご覧ください。
-- Azure へのフェールオーバーについては、[こちら](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover)をご覧ください。
+- テスト フェールオーバーの実行に関する[説明を参照します](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure)。 
+- 復旧計画の作成方法に関する[説明を参照します](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)。
+- Azure へのフェールオーバーに関する[説明を参照します](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover)。
 
 ## <a name="clean-up-after-migration"></a>移行後にクリーンアップする
 
@@ -579,7 +578,7 @@ Contoso セキュリティ チームは、Azure VM と SQL Managed Instance を�
 
      ![Managed Instance のセキュリティ](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-VM のセキュリティ手法の詳細については、[こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)をご覧ください。
+VM に関するセキュリティの実務の[詳細については、こちら](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control)を参照してください。
 
 ### <a name="backups"></a>バックアップ
 Contoso は、Azure Backup サービスを使用して、WEBVM 上のデータをバックアップします。 [詳細情報](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -587,7 +586,7 @@ Contoso は、Azure Backup サービスを使用して、WEBVM 上のデータ�
 ### <a name="licensing-and-cost-optimization"></a>ライセンスとコストの最適化
 
 1. Contoso は、WEBVM の既存のライセンスを所有しており、Azure ハイブリッド特典を活用します。  また、この価格を利用するために、既存の Azure VM を変換します。
-2. Contoso は、Microsoft の子会社である Cloudyn からライセンスが供与される Azure Cost Management を有効にします。 これは、Azure やその他のクラウド リソースを利用したり、管理したりできるようにするマルチクラウド コスト管理ソリューションです。  Azure Cost Management について詳しくは、[こちら](https://docs.microsoft.com/azure/cost-management/overview)をご覧ください。 
+2. Contoso は、Microsoft の子会社である Cloudyn からライセンスが供与される Azure Cost Management を有効にします。 これは、Azure やその他のクラウド リソースを利用したり、管理したりできるようにするマルチクラウド コスト管理ソリューションです。  Azure Cost Management の詳細については、[こちら](https://docs.microsoft.com/azure/cost-management/overview)を参照してください。 
 
 
 ## <a name="conclusion"></a>まとめ

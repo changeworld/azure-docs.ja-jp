@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824657"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887431"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
 リソースによっては、デプロイする前に、他のリソースが存在している必要がある場合があります。 たとえば、SQL データベースをデプロイするには、先に SQL Server が存在している必要があります。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。 
@@ -55,12 +55,12 @@ Resource Manager により、リソース間の依存関係が評価され、リ
 
 ```json
 "dependsOn": [
-  "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]",
-  "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+  "[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
+  "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
 ]
 ``` 
 
-dependsOn を使用してリソース間のリレーションシップをマップする傾向があるものの、重要なのは、その操作を行う理由を理解することです。 たとえば、リソースが相互にどのように接続されているかをドキュメント化するには、dependsOn は適切な方法ではありません。 どのリソースが dependsOn 要素で定義されたかを、デプロイ後に照会することはできません。 Resource Manager では、依存関係のある 2 つのリソースが並列でデプロイされないため、dependsOn を使用すると、デプロイ時間に影響を及ぼす可能性があります。 リソース間のリレーションシップをドキュメント化するには、代わりに[リソース リンク](/rest/api/resources/resourcelinks)を使用します。
+dependsOn を使用してリソース間のリレーションシップをマップする傾向があるものの、重要なのは、その操作を行う理由を理解することです。 たとえば、リソースが相互にどのように接続されているかをドキュメント化するには、dependsOn は適切な方法ではありません。 どのリソースが dependsOn 要素で定義されたかを、デプロイ後に照会することはできません。 Resource Manager では、依存関係のある 2 つのリソースが並列でデプロイされないため、dependsOn を使用すると、デプロイ時間に影響を及ぼす可能性があります。 
 
 ## <a name="child-resources"></a>子リソース
 resources プロパティを使用すると、定義されているリソースに関連する子リソースを指定できます。 子リソースの定義の深さは 5 レベルまでです。 重要なのは、子リソースと親リソースの間に暗黙的な依存関係を作成しないことです。 親リソースの後に子リソースをデプロイする必要がある場合は、dependsOn プロパティを使用してその依存関係を明示的に指定する必要があります。 

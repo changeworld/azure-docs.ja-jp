@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 4cce2a764a14bcc4c02e5f17082e34fd88cdb977
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2cc00aefb6099eb053aac321625a9b94cb7b4188
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347874"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888876"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -323,7 +323,7 @@ Office 365 サブスクリプションから:
                                     'office365TenantID': '" + $OfficeTennantId + "',
                                     'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
                                     'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory'
+                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.Sharepoint'
                                   },
                     'etag': '*',
                     'kind': 'Office365',
@@ -534,7 +534,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 | type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| 操作 | ユーザーまたは管理者アクティビティの名前。  |
+| Operation | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |

@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594116"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969080"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web アプリの概要
 ここでは、Passport を使用して次の操作を行います。
@@ -62,7 +62,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 
 6. 登録が完了すると、Azure AD によってアプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーしておきます。
 7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 `https://<tenant-domain>/<app-name>` の形式を使用します (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
-8. シークレット キーを作成するために、[「web APl にアクセスするための　アプリケーション資格情報またはアクセス許可を追加するには」](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis)の手順4に従います。
+8. シークレット キーを作成するために、[「web APl にアクセスするための　アプリケーション資格情報またはアクセス許可を追加するには」](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis)の手順4に従います。
 
    > [!IMPORTANT]
    > アプリケーション キーの値をコピーします。 値は、これは、下記の**手順 3** に必要な`clientSecret`値です。 

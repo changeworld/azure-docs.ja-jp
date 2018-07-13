@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436405"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857533"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -227,7 +227,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
 
 * `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) 操作を呼び出した場合に返される情報と同じです。
-* `groups\<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties)の `description` プロパティに対応します。
+* `groups\<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)の `description` プロパティに対応します。
 
 ### <a name="policies-folder"></a>policies フォルダー
 `policies` フォルダーには、サービス インスタンスのポリシー ステートメントが含まれています。

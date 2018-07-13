@@ -3,7 +3,7 @@ title: Ansible を使用して Azure で基本的な Linux VM を作成する |M
 description: Ansible を使用して、Azure で基本的な Linux 仮想マシンを作成し管理する方法を説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
-ms.openlocfilehash: e36bdbf84b275fb8a6a4e42496b3080bebf1b193
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: cynthn
+ms.openlocfilehash: 35dfe8348718e0edf8683f7eeddf286831697d89
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716637"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931431"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Ansible を使用して Azure で基本的な仮想マシンを作成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 他のリソースの場合と同じように、Ansible を使用して、Azure の仮想マシン (VM) を管理できます。 この記事では、Ansible で基本的な VM を作成する方法を説明します。 また、[Ansible を使用して完全な VM 環境を作成する](ansible-create-complete-vm.md)方法についても説明します。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062208"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968621"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -77,7 +77,7 @@ Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics
 ## <a name="7-cost-saving"></a>7.コストの削減
 ### <a name="cost-saving-for-devtest-environments"></a>開発/テスト環境でのコスト削減
 #### <a name="b-series-"></a>B シリーズ: *
-Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
+Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
 #### <a name="managed-standard-disk"></a>マネージド Standard ディスク: 
 運用環境で信頼性の高いパフォーマンスを得るには、Premium ディスクが推奨されていました。  [マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)により、Standard ストレージでも同様の信頼性が得られるようになりました。ただし、パフォーマンスは異なります。 開発/テスト環境や重要度が低い環境のようなパフォーマンスが重視されないワークロードの場合、マネージド Standard ディスクは低コストな代替オプションになります。  
 ### <a name="cost-saving-in-general"></a>一般的なコスト削減 

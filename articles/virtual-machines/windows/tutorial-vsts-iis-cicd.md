@@ -3,7 +3,7 @@ title: チュートリアル - Team Services を使用して Azure に CI/CD パ
 description: このチュートリアルでは、Azure の Windows VM 上の IIS に Web アプリをデプロイする継続的インテグレーションと継続的配信のための Visual Studio Team Services パイプラインを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b23cec90573c4be73a73daf0bc0e793da012585c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192222"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932094"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>チュートリアル: Visual Studio Team Services と IIS を使用して継続的インテグレーション パイプラインを作成する
 ビルド、テスト、デプロイというアプリケーション開発の各フェーズを自動化するには、継続的インテグレーション/継続的配置 (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Visual Studio Team Services と、IIS を実行する Azure の Windows 仮想マシン (VM) を使用して CI/CD パイプラインを作成します。 学習内容は次のとおりです。

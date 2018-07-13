@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 9137e52af16f63efe7f0b8169f2693a354564968
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "36264440"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート

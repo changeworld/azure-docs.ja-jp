@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108750"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681538"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Government ポータルでのオンプレミスの StorSimple デバイスのデプロイ
 
@@ -34,13 +34,13 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。 デプ�
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 開始する前に、構成チェック リストを確認することをお勧めします。 デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
 > [!NOTE]
-> Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 7000 シリーズ デバイスの詳細については、 [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)を参照してください。 7000 シリーズのデプロイについては、『 [StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 7000 シリーズ デバイスについて詳しくは、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) をご覧ください。 7000 シリーズのデプロイについては、『 [StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 StorSimple デバイスを構成し、StorSimple デバイス マネージャー サービスに接続するには、次の必須手順を実行します。 必須手順に加えて、デプロイ中に完了することが必要となる可能性がある省略可能な手順が存在します。 デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
-| 手順 | Description |
+| 手順 | 説明 |
 | --- | --- |
 | **前提条件** |これらの前提条件は、今回のデプロイの準備として完了する必要があります。 |
 | [デプロイの構成チェック リスト](#deployment-configuration-checklist) |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
@@ -69,14 +69,14 @@ StorSimple デバイスをデプロイする前に、デバイスにソフトウ
 
 [StorSimple デプロイ構成チェックリストをダウンロードする](http://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>デプロイメントの前提条件
+## <a name="deployment-prerequisites"></a>デプロイの前提条件
 ここでは、StorSimple デバイス マネージャー サービスと StorSimple デバイスの構成の前提条件について説明します。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスの場合
 開始する前に次の点を確認します。
 
 * アクセスの資格情報を持つ Microsoft アカウントがあること。
-* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
+* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 * Microsoft Azure サブスクリプションが StorSimple デバイス マネージャー サービスに対して有効である。 サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)を通じて購入する必要があります。
 * PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -194,7 +194,7 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [仮想デバイス](storsimple-8000-cloud-appliance-u2.md)を構成します。
 * [StorSimple デバイス マネージャー サービス](storsimple-8000-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
 

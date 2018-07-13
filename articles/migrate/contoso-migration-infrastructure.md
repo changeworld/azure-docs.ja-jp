@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bf1406c8e361e0a1433b0e26c477c3c34e987fcf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232153"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38562760"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -556,7 +556,7 @@ CUS | CONTOSODC6 | VNET-PROD-CUS | PROD-DC-CUS | 10.255.42.4
 1. Azure portal で、新しい Windows Server VM を適切な VNet に展開します。
 2. VM 用の可用性セットを各場所に作成します。 可用性セットは次のことを行います。
     - Azure ファブリックが Azure リージョン内の異なるインフラストラクチャに VM を分離することを保証します。 
-    -  Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoftcom/azure/virtual-machines/windows/regions-and-availability#availability-sets)。
+    -  Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
 
     ![可用性グループ](./media/contoso-migration-infrastructure/availability-group.png) 
 3. VM を展開した後、Contoso は VM に対してネットワーク インターフェイスを開きます。 ここでは、プライベート IP を静的に設定し、有効なアドレスを指定します。

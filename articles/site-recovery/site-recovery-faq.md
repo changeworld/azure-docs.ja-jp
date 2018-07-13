@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 0ec7f9e692dd4269ccb428d644c673e5c27b413a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 41fa742571b94505588172b94ea91f196e212a4c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312680"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920965"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -91,7 +91,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 レプリケーションは、サイト間 VPN 経由では実行されません。 サイト間 VPN は、Azure 仮想ネットワークで作成できます。 これは Site Recovery のレプリケーションに干渉しません。
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
-はい。[ExpressRoute を使用して](concepts-expressroute-with-site-recovery.md)オンプレミスの仮想マシンを Azure にレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoft-peering)を設定する必要があります。 Microsoft ピアリングは、レプリケーションにお勧めされるルーティング ドメインです。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使用して、それらのマシンにアクセスできます。 レプリケーションはプライベート ピアリング上ではサポートされていません。
+はい。[ExpressRoute を使用して](concepts-expressroute-with-site-recovery.md)オンプレミスの仮想マシンを Azure にレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoft-peering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使用して、それらのマシンにアクセスできます。 プライベート ピアリングを介したレプリケーションはサポートされていません。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>仮想マシンを Azure にレプリケートするための前提条件はありますか。
 Azure にレプリケートする [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) や [Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) は、Azure 要件に適合している必要があります。

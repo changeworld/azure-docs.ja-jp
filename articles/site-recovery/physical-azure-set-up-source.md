@@ -7,14 +7,14 @@ author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: anoopkv
-ms.openlocfilehash: 96004a70547c4bfb3a1a3bfadecb1304e4910b52
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29811139"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671024"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>ソース環境のセットアップ (物理サーバーから Azure へ)
 

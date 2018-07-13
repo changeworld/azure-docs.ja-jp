@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: dobett
 ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308586"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666918"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>ジョブのスケジュールとブロードキャスト (.NET/.NET)
 

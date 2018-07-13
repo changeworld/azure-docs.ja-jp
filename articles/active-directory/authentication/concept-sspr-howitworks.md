@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593593"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869009"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -235,7 +235,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 パスワードのリセットと変更は、すべての企業間 (B2B) 構成で完全にサポートされています。 B2B ユーザーのパスワード リセットは、次の 3 つの場合にサポートされます。
 
    * **既存の Azure AD テナントがあるパートナー組織のユーザー**: パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、"*そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます*"。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Office 365 の顧客に対する追加料金はなく、[パスワード管理の開始](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)に関するガイドの手順に従って有効にできます。
-   * **セルフ サービス サインアップを使ってサインアップしたユーザー**: パートナーを組んでいる組織が[セルフ サービス サインアップ](../active-directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録されたメールを使ってパスワードをリセットできます。
+   * **セルフ サービス サインアップを使ってサインアップしたユーザー**: パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録されたメールを使ってパスワードをリセットできます。
    * **B2B ユーザー**: 新しい [Azure AD B2B 機能](../active-directory-b2b-what-is-azure-ad-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
 このシナリオをテストするには、これらのパートナー ユーザーのいずれかで http://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。

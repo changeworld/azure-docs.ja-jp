@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: bca33fe187668d38d4451b2de5b9e54d86e40ba9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660258"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968322"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>方法: Visual Studio 2017 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
@@ -26,9 +26,9 @@ Visual Studio 2017 Update 7 (15.7) では、Service Fabric サービスとして
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows 10 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 10 を構成](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)します。
-* Windows Server 2016 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 2016 を構成](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)します。
-* 「[Windows で開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started)」に従って、ローカルの Service Fabric 環境を設定します。
+* Windows 10 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 10 を構成](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)します。
+* Windows Server 2016 では、このクイックスタートに従って [Windows コンテナーを実行するように Windows 2016 を構成](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)します。
+* 「[Windows で開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)」に従って、ローカルの Service Fabric 環境を設定します。
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>コンテナーをデバッグするように開発者環境を構成する
 
@@ -47,7 +47,7 @@ Visual Studio 2017 Update 7 (15.7) では、Service Fabric サービスとして
     > `-CreateOneNodeCluster` を使用して、1 ノード クラスターを設定することができます。 既定では、ローカルの 5 ノード クラスターが作成されます。
     >
 
-    Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice)」を参照してください。
+    Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Service Fabric でコンテナーをデバッグする場合の既知の制限事項
 

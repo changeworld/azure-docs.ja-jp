@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "35294681"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する

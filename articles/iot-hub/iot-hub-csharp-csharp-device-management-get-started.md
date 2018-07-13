@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
 ms.openlocfilehash: c1cee32e3ee60ce229308055cca7f0e9832ddc49
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633827"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38578902"
 ---
 # <a name="get-started-with-device-management-netnet"></a>デバイス管理の開始 (.NET/.NET)
 

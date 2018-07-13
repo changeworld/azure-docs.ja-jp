@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
 ms.openlocfilehash: b553da54cd8ce63638fc52dd078bb517a1f9e713
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34634660"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
@@ -41,7 +41,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 次の表では、サポートされている各言語のコード サンプルへのリンクを提供すると共に、MQTT プロトコルを使用して IoT Hub への接続を確立するために使用するパラメーターを示します。
 
-| 言語 | プロトコル パラメーター |
+| Language | プロトコル パラメーター |
 | --- | --- |
 | [Node.js][lnk-sample-node] |azure-iot-device-mqtt |
 | [Java][lnk-sample-java] |IotHubClientProtocol.MQTT |

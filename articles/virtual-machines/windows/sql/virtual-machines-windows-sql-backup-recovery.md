@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809609"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968988"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
@@ -84,8 +84,8 @@ SQL VM のこの Azure Backup ソリューションは現在パブリック プ�
 
 SQL VM のバックアップと復元の操作を手動で管理する場合は、使用している SQL Server のバージョンに応じていくつかのオプションがあります。 バックアップと復元の概要については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- [SQL Server 2016 以降のバックアップと復元](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- [SQL Server 2014 のバックアップと復元](https://msdn.microsoft.com/en-us/library/ms187048%28v=sql.120%29.aspx)
+- [SQL Server 2016 以降のバックアップと復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [SQL Server 2014 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
 - [SQL Server 2012 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
 - [SQL Server SQL Server 2008 R2 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
 - [SQL Server 2008 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
@@ -105,7 +105,7 @@ SQL Server 2012 SP1 CU2 以降では、Microsoft Azure Blob ストレージに�
 | 2016 の拡張機能 | 詳細 |
 | --- | --- |
 | **ストライピング** |Microsoft Azure Blob ストレージにバックアップする場合、SQL Server 2016 では、複数の BLOB へのバックアップをサポートしているので、最大 12.8 TB の大規模なデータベースをバックアップできます。 |
-| **スナップショット バックアップ** |Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure Blob ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。 この機能により、バックアップと復元のポリシーを簡素化することができます。 ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。 詳細については、「 [Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)」をご覧ください。 |
+| **スナップショット バックアップ** |Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure Blob ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。 この機能により、バックアップと復元のポリシーを簡素化することができます。 ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。 詳細については、「 [Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)」をご覧ください。 |
 
 詳細については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 

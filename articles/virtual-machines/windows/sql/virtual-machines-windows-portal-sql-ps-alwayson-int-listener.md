@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
 ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600293"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307988"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。

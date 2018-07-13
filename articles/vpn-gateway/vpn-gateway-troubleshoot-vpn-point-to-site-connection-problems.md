@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 0db2291b53c4fe7d2d0894a4c266ed60f78219de
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072234"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857332"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -45,7 +45,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -93,7 +93,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | 場所 |
+    | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -305,11 +305,11 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー: "失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
 
 ### <a name="causes"></a>原因
-このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできない場合に発生します。失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
+このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできない場合に発生します。  失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
 
 ### <a name="solution"></a>解決策
 
-プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできることを確認します。
+プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.crl にアクセスできることを確認します。
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー: RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
 

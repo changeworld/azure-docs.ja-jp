@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a23ebddc29c6c519e68a00ef6cbff107061c341
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046260"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888281"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。 発話のパターンを指定することで、LUIS は信頼度の高い予測を実現します。 
@@ -123,5 +123,3 @@ LUIS は意図に発話例が 1 つもないアプリを許可します。 こ�
 
 > [!div class="nextstepaction"]
 > [このチュートリアルでパターンを実装する方法を学習する](luis-tutorial-pattern.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

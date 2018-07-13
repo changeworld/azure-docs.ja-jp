@@ -15,27 +15,27 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
 ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110300"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688155"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを 1 か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
 
 StorSimple デバイス マネージャー サービスに関連する一般的なタスクは次のとおりです。
 
-* サービスを作成する
+* サービスの作成
 * サービスの削除
 * サービス登録キーを取得する
 * サービス登録キーを再生成する
 
 このチュートリアルでは、それぞれのタスクの実行方法について説明します。 この記事に記載されている内容は、StorSimple Virtual Array にのみ適用されます。 StorSimple 8000 シリーズの詳細については、「 [StorSimple Manager サービスをデプロイする](storsimple-manage-service.md)」を参照してください。
 
-## <a name="create-a-service"></a>サービスを作成する
+## <a name="create-a-service"></a>サービスの作成
 
 サービスを作成する上で必要なものは次のとおりです。
 
@@ -70,7 +70,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 1. **[すべてのリソース]** に移動します。 StorSimple デバイス マネージャー サービスを検索します。 削除するサービスを選択します。
    
     ![削除するサービスの選択](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. サービス ダッシュボードに移動して、サービスに接続されているデバイスがないことを確認します。 このサービスに登録されているデバイスがない場合は、バナー メッセージにもその旨が示されます。 [ **削除**] をクリックします。
+2. サービス ダッシュボードに移動して、サービスに接続されているデバイスがないことを確認します。 このサービスに登録されているデバイスがない場合は、バナー メッセージにもその旨が示されます。 **[削除]** をクリックします。
    
     ![サービスの削除](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
@@ -119,7 +119,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
    
    このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * StorSimple Virtual Array の[使用を開始](storsimple-virtual-array-deploy1-portal-prep.md)する方法を確認します。
 * [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

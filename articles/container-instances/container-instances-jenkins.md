@@ -2,18 +2,18 @@
 title: Azure Container Instances を Jenkins ビルド エージェントとして使用する
 description: Azure Container Instances を Jenkins ビルド エージェントとして使用する方法を説明します。
 services: container-instances
-author: iainfoulds
+author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: iainfou
-ms.openlocfilehash: 7d1fa80b6d9b76a37ff29db42c5119389b3aad2a
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: marsma
+ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096436"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887693"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances を Jenkins ビルド エージェントとして使用する
 

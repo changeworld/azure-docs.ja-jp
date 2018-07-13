@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 97923af5ed4191f66434166c4743e398f8ac635a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072608"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920891"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -188,7 +188,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
 DNS がドメイン コントローラーと同じ仮想マシン上にない場合、テスト フェールオーバー用の DNS 仮想マシンを作成する必要があります。 DNS とドメイン コントローラーが同じ仮想マシン上にある場合は、このセクションをスキップできます。
 
-新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。Active Directory に対応するエントリは DNS で次のように更新する必要があります。
+新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。 Active Directory に対応するエントリは DNS で次のように更新する必要があります。
 
 1. 復旧計画内の他のすべての仮想マシンが起動する前に、次の設定が有効になっているようにします。
    * ゾーンは、フォレスト ルート名に従って名前を付ける必要があります。

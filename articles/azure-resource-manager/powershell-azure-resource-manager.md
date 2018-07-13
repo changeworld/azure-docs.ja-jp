@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 02616ef566dd576c3f406d4b9f3059dab27bf3e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603415"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723494"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
@@ -56,7 +56,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 * [Network Contributor](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Storage Account Contributor](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../active-directory/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
 
 次の例では、グループを作成し、それをリソース グループの仮想マシンの共同作業者ロールに割り当てます。 `New-AzureAdGroup` コマンドを実行するには、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用するか、または [Azure AD PowerShell モジュールをダウンロードする](https://www.powershellgallery.com/packages/AzureAD/)必要があります。
 

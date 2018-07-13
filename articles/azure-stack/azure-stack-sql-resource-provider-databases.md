@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300824"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968828"
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
 
@@ -60,7 +60,7 @@ ms.locfileid: "36300824"
 
 ## <a name="sql-always-on-databases"></a>SQL AlwaysOn データベース
 
-設計により、AlwaysOn データベースの処理は、スタンドアロン サーバー環境とは異なる方法で処理されます。 詳細については、[Azure 仮想マシンの SQL Server AlwaysOn 可用性グループの概要](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)に関する記事を参照してください。
+設計により、AlwaysOn データベースの処理は、スタンドアロン サーバー環境とは異なる方法で処理されます。 詳細については、[Azure 仮想マシンの SQL Server AlwaysOn 可用性グループの概要](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)に関する記事を参照してください。
 
 ### <a name="verify-sql-always-on-databases"></a>SQL AlwaysOn データベースの確認
 

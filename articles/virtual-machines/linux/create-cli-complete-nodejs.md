@@ -3,7 +3,7 @@ title: Azure CLI 1.0 を使用した完全な Linux 環境の作成 | Microsoft 
 description: Azure CLI 1.0 を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,18 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910766"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932346"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して完全な Linux 環境を作成する
 この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。
 
-その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。 システムがどのように構築されているかをいったん理解すると、 [Azure Resource Manager テンプレート](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、より短時間でシステムを再構築することができます。 環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
+その過程で、Resource Manager デプロイ モデルによって提供される依存関係階層とその性能についても説明します。 システムがどのように構築されているかをいったん理解すると、 [Azure Resource Manager テンプレート](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、より短時間でシステムを再構築することができます。 環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
 環境には以下を含みます。
 

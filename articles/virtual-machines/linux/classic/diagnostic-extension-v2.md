@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "32193048"
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視

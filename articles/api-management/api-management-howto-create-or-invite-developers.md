@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 3d9a4454a1b3f65b42a46a26e8d483fad83f65f6
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111271"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307400"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。 プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity)に関するドキュメントを参照してください。
