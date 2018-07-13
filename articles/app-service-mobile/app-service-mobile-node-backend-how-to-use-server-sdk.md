@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598081"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473751"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -169,7 +169,7 @@ Azure App Service には、バックエンドを公開する前に確認する�
 ## <a name="TableOperations"></a>テーブル操作
 azure-mobile-apps Node.js Server SDK では、Web API として Azure SQL Database に格納されたデータ テーブルを公開するためのメカニズムが提供されます。 以下の 5 つの操作が提供されます。
 
-| 操作 | 説明 |
+| Operation | 説明 |
 | --- | --- |
 | GET /tables/*tablename* |テーブルのすべてのレコードを取得します。 |
 | GET /tables/*tablename*/:id |テーブルの特定のレコードを取得します。 |

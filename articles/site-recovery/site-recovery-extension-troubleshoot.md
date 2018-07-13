@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777601"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919806"
 ---
 # <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Azure Site Recovery 拡張機能のエラーのトラブルシューティング: エージェントまたは拡張機能の問題
 
@@ -106,7 +106,7 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 1. [Azure Portal](https://portal.azure.com/) で、バックアップ エラーが発生している VM に移動します。
 2. **[設定]** を選択します。
 3. **[拡張機能]** を選択します。
-4. **[Site Recovery Extension](Site Recovery 拡張機能)** を選択します。
+4. **[Site Recovery 拡張機能]** を選択します。
 5. **[アンインストール]** を選択します。
 
 Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してから、保護を実行します。 

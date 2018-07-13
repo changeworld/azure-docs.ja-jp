@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 3bd29e348fd067c12def8ca36fbdc1d7e35b2874
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627588"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971739"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -180,4 +180,4 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Data Lake Analytics を使用して、Data Lake Store データセットに関するビッグ データ分析を実行できます。 詳細については、「[Azure Data Lake Analytics のドキュメント](https://docs.microsoft.com/en-us/azure/data-lake-analytics)」を参照してください。
+Azure Data Lake Analytics を使用して、Data Lake Store データセットに関するビッグ データ分析を実行できます。 詳細については、「[Azure Data Lake Analytics のドキュメント](https://docs.microsoft.com/azure/data-lake-analytics)」を参照してください。

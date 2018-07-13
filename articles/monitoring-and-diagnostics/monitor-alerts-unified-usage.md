@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a913075c051c6b784495917b7edbd7340254a212
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287839"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952632"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Azure Monitor を使用してアラートを作成、表示、管理する  
 
@@ -62,7 +62,7 @@ ms.locfileid: "36287839"
 
     > アクティビティ ログ アラートもサポートされていますが、まだプレビューです。 [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
 
-5. *メトリック アラート: **[リソースの種類]** がシグナルの種類と共に **[メトリック]** として選択されていることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックして [アラートの作成] に戻ります。 次に **[条件の追加]** を使用して、シグナル オプションの一覧にある特定のシグナル、それらの監視サービス、先ほど選択したリソースで使用可能な種類を選択します。
+5. "*メトリック アラート*": **[リソースの種類]** がシグナルの種類と共に **[メトリック]** として選択されていることを確認し、適切な**リソース**を選択したら、"*[完了]*" をクリックして [アラートの作成] に戻ります。 次に **[条件の追加]** を使用して、シグナル オプションの一覧にある特定のシグナル、それらの監視サービス、先ほど選択したリソースで使用可能な種類を選択します。
 
     ![リソースの選択](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 

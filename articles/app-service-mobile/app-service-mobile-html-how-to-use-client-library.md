@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151078"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488894"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け JavaScript クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -73,7 +73,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 
 既定では、App Service 認証は、モバイル アプリ バックエンドからのアクセスだけを許可するように構成されているため、ローカルで実行すると、問題が発生する可能性があります。 App Service 設定を変更して、サーバーがローカルで実行されているときに認証を有効にするには、次の手順を実行します。
 
-1. [Azure ポータル]
+1. [Azure Portal]
 2. モバイル アプリ バックエンドに移動します。
 3. **[開発ツール]** メニューの **[リソース エクスプローラー]** を選択します。
 4. **[移動]** をクリックして、新しいタブまたはウィンドウでモバイル アプリ バックエンドのリソース エクスプローラーを開きます。
@@ -91,7 +91,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 
 CORS のホワイトリスト設定にも、同じループバック URL を追加する必要があります。
 
-1. [Azure ポータル]に戻ります。
+1. [Azure Portal]に戻ります。
 2. モバイル アプリ バックエンドに移動します。
 3. **API** メニューの **[CORS]** をクリックします。
 4. 空の **[許可される元のドメイン]** ボックスに各 URL を入力します。  新しいテキスト ボックスが作成されます。
@@ -104,6 +104,6 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure Mobile Apps 向け JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

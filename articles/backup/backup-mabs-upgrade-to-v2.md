@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: 27da52a46b52e06a8ea4f80fa06487aca34c1c3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fdf69003566f704354a17335b1f46fc3077aedbc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606955"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598392"
 ---
 # <a name="install-azure-backup-server-v2"></a>Azure Backup Server v2 のインストール
 
@@ -41,35 +41,35 @@ Backup Server v1 から Backup Server v2 にアップグレードするには、
 
 1. ダウンロード センターで、[アップグレード インストーラーをダウンロード](https://go.microsoft.com/fwlink/?LinkId=626082)します。
 
-2. セットアップ ウィザードを抽出したら、**[setup.exe を実行する]** が選択されていることを確認してから **[完了]** を選択します。
+2. セットアップ ウィザードを抽出したら、**[Execute setup.exe]**(setup.exe を実行する) が選択されていることを確認してから **[完了]** を選択します。
 
   ![セットアップ インストーラー - セットアップを実行](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
-3. Microsoft Azure Backup Server ウィザードの **[インストール]** で **[Microsoft Azure Backup Server]** を選択します。
+3. Microsoft Azure Backup Server ウィザードの **[Install]**(インストール) で **[Microsoft Azure Backup Server]** を選択します。
 
-  ![セットアップ インストーラー - インストールを選択](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
+   ![セットアップ インストーラー - インストールを選択](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
 
-4. **[ようこそ]** ページで、警告を確認して、**[次へ]** を選択します。
+4. **[Welcome]**(ようこそ) ページで、警告を確認して、**[Next]**(次へ) を選択します。
 
-  ![セットアップ インストーラー - [ようこそ] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
+   ![セットアップ インストーラー - ようこそ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
 
-5. セットアップ ウィザードでは、前提条件の確認を実行し、お客様の環境をアップグレードできるかどうかを確認します。 **前提条件のチェック** ページで、**チェック** を選択します。
+5. セットアップ ウィザードでは、前提条件の確認を実行し、お客様の環境をアップグレードできるかどうかを確認します。 **[Prerequisite Checks]**(前提条件のチェック) ページで、**[Check]**(チェック) を選択します。
 
-  ![セットアップ インストーラー - [前提条件のチェック] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
+   ![セットアップ インストーラー - 前提条件のチェック ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
 
-6. 環境が前提条件のチェックをパスする必要があります。 環境がチェックに合格しなかった場合は、問題をメモし、修正します。 **[再チェック]** を選択します。 前提条件のチェックに合格してから、**[Next]** \(次へ) を選択します。
+6. 環境が前提条件のチェックをパスする必要があります。 環境がチェックに合格しなかった場合は、問題をメモし、修正します。 **[Check Again]**(再チェック) を選択します。 前提条件のチェックに合格してから、**[Next]** \(次へ) を選択します。
 
   ![セットアップ インストーラー - [Check Again]\(再チェック) ボタン](./media/backup-mabs-upgrade-to-v2/mabs-installer-s4-pass-checks.png)
 
-7. **SQL Settings**\(SQL 設定) ページで、SQL のインストールに関連するオプションを選択し、**Check and Install**\(チェックしてインストール) を選択します。
+7. **[SQL Settings]** \(SQL 設定) ページで、SQL のインストールに関連するオプションを選択し、**[Check and Install]** \(チェックしてインストール) を選択します。
 
-  ![セットアップ インストーラー - [SQL 設定] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
+   ![セットアップ インストーラー - SQL 設定 ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
 
   このチェックには数分間かかります。 チェックが完了したら、**[Next]**(次へ) をクリックします。
 
-  ![セットアップ インストーラー - [SQL Settings]\(SQL 設定) の [Check and Install]\(チェックしてインストール) ボタン](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
+   ![セットアップ インストーラー - [SQL Settings]\(SQL 設定) の [Check and Install]\(チェックしてインストール) ボタン](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and-fix-settings.png)
 
-8. **[インストール設定]**() ページで、Backup Server をインストールする場所、またはスクラッチ ロケーションを変更します。 **[次へ]** を選択します。
+8. **[Installation Settings]**(インストール設定) ページで、Backup Server をインストールする場所、またはスクラッチ ロケーションを変更します。 **[次へ]** を選択します。
 
   ![セットアップ インストーラー - [インストール設定] ページ](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
@@ -90,7 +90,7 @@ Backup Server にボリュームを追加する場合、ボリュームにフレ
 
 管理者コンソールでボリュームを追加するには、次の手順を実行します。
 
-1. Azure Backup Server の管理者コンソールで、**Management**(管理) > **Disk Storage**(ディスク ストレージ) > **Add**(追加) の順に選択します。
+1. Azure Backup Server の管理者コンソールで、**[Management]**(管理) > **[Disk Storage]**(ディスク ストレージ) > **[Add]**(追加) の順に選択します。
 
     ![[ディスク ストレージの追加] ウィザードを開きます](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
