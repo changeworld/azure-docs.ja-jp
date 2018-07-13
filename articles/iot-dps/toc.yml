@@ -157,6 +157,16 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
+    - name: 'C# 用 Azure IoT サンプル (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: Node.js 用 Azure IoT サンプル
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: Java 用 Azure IoT サンプル
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: Python 用 Azure IoT サンプル
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: iOS プラットフォーム用 Azure IoT サンプル
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT Hub
       href: 'https://azure.microsoft.com/services/iot-hub/'
     - name: IoT デバイス カタログ向けの Azure 認定

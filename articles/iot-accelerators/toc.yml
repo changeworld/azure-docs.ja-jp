@@ -10,6 +10,8 @@
   items:
     - name: リモート監視ソリューションのデプロイ
       href: quickstart-remote-monitoring-deploy.md
+    - name: 予測メンテナンス ソリューションのデプロイ
+      href: quickstart-predictive-maintenance-deploy.md
     - name: デバイス シミュレーション ソリューションのデプロイ
       href: quickstart-device-simulation-deploy.md
 - name: チュートリアル

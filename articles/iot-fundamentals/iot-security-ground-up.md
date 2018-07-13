@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: dobett
 ms.openlocfilehash: e710d1ea10deb07dd9c405b11681b17c37e3b962
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35773045"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299274"
 ---
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 

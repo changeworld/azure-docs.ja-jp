@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure にサインインします (https://portal.azure.com)。
+Azure にサインインします( https://portal.azure.com )。
 
 ## <a name="create-runbook"></a>Runbook を作成する
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29345704"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651789"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 
@@ -37,7 +37,7 @@ ms.locfileid: "29345704"
 
 [Windows 10 PowerShell の手順](vpn-gateway-certificates-point-to-site.md)を使用して証明書を作成することをお勧めしますが、別の手段としてこれらの MakeCert による手順も提供しています。 いずれかの方法を使用して生成した証明書は、[サポートされている任意のクライアント オペレーティング システム](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)にインストールできます。 ただし、MakeCert には次の制限事項があります。
 
-* MakeCert は推奨されていません。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使用してすでに生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
+* MakeCert は非推奨となっています。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使用してすでに生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 

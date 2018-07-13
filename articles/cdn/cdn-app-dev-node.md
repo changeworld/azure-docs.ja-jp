@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "22998387"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38301567"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
-> * [Node.JS](cdn-app-dev-node.md)
+> * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 
@@ -360,7 +360,7 @@ function cdnDelete() {
 
 ![Delete profile](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルの完成したプロジェクトを確認するには、 [サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)してください。
 
 Azure CDN SDK for Node.js のリファレンスは、 [こちら](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)でご覧いただけます。

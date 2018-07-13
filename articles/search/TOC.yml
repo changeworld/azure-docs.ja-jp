@@ -7,18 +7,10 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: コグニティブ検索を使ってみる
-      href: cognitive-search-quickstart-blob.md
     - name: サービスの作成
       href: search-create-service-portal.md
-    - name: ポータル
-      items:
-        - name: インデックスを作成する
-          href: search-create-index-portal.md
-        - name: Import data
-          href: search-import-data-portal.md
-        - name: Search エクスプローラー
-          href: search-explorer.md
+    - name: コグニティブ検索を使ってみる
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: インデックスを作成する
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: チュートリアル
   items:
+    - name: 組み込みのツールの使用
+      href: search-get-started-portal.md
     - name: コグニティブ検索の開発
       href: cognitive-search-tutorial-blob.md
-    - name: Azure SQL Database のインデックスを作成する
-      href: search-indexer-tutorial.md
     - name: Azure BLOB のインデックスを作成する
       href: search-semi-structured-data.md
+    - name: Azure SQL Database のインデックスを作成する
+      href: search-indexer-tutorial.md
     - name: .NET でシノニムを追加する
       href: search-synonyms-tutorial-sdk.md
     - name: .NET でオートコンプリートを追加する
       href: search-autocomplete-tutorial.md
-    - name: ポータルのチュートリアル
-      href: search-get-started-portal.md
 - name: サンプル
   items:
     - name: Azure のコード サンプル
@@ -129,6 +121,8 @@
       items:
         - name: インデックスの定義
           href: search-what-is-an-index.md
+        - name: インデックスの作成 (ポータル)
+          href: search-create-index-portal.md
         - name: アナライザー
           items:
             - name: テキスト アナライザー
@@ -151,6 +145,8 @@
       items:
         - name: プッシュ インデックス作成とプル インデックス作成
           href: search-what-is-data-import.md
+        - name: インポート ウィザード (ポータル)
+          href: search-import-data-portal.md
         - name: インデックスを再構築する
           href: search-howto-reindex.md
         - name: 大規模なデータ セットにインデックスを付ける
@@ -181,6 +177,8 @@
       items:
         - name: 基本的なクエリの構築
           href: search-query-overview.md
+        - name: Search エクスプローラー (ポータル)
+          href: search-explorer.md
         - name: 単純なクエリ構文
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene クエリ構文

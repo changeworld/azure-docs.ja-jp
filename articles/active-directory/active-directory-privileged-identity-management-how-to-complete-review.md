@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a3de94aa11b9326a9eadfb3385db83724f427ff2
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc6376a7bf1abd81e7a5ff17549a7b4a193edec4
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447236"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950582"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを完了する方法
 [セキュリティ レビューが開始](active-directory-privileged-identity-management-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、セキュリティ管理者が [セキュリティ レビューを実行する方法](active-directory-privileged-identity-management-how-to-perform-security-review.md)についての指示をユーザーに送信します。
@@ -32,7 +32,7 @@ ms.locfileid: "37447236"
 
 アクセス レビューの [詳細] ブレードには、このレビューを管理するためのオプションが多数あります。
 
-![PIM アクセス レビューのボタン - スクリーンショット][1]
+![PIM アクセス レビューのボタン - スクリーンショット](./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png)
 
 ### <a name="remind"></a>リマインダーを送信
 ユーザーが各自をレビューできるようにアクセス レビューが設定された場合、 **[リマインダーを送信]** をクリックすると通知が送信されます。 
@@ -46,7 +46,7 @@ ms.locfileid: "37447236"
 ### <a name="export"></a>エクスポート
 セキュリティ レビューの結果を手動で適用する場合は、レビューをエクスポートできます。 **[エクスポート]** ボタンをクリックすると、CSV ファイルのダウンロードが開始されます。 Excel など、CSV ファイルを開くことができるプログラムで結果を管理できます。
 
-### <a name="delete"></a>削除
+### <a name="delete"></a>Delete
 そのレビューが今後も必要なければ、削除します。 **[削除]** ボタンをクリックすると、レビューが PIM アプリケーションから削除されます。
 
 > [!IMPORTANT]
@@ -54,7 +54,3 @@ ms.locfileid: "37447236"
 
 ## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png

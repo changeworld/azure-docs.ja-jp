@@ -6,14 +6,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: cf16a0e67aaf2d2c73649adccabf3e5eb0540bd3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 75220d964f3e1208c85d34c1da97fab32044e62b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072472"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917110"
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>オンプレミスから Azure へレプリケーションして仮想マシンのネットワーク インターフェイスを管理する
 

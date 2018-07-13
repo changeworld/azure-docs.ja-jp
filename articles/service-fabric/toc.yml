@@ -215,6 +215,10 @@
               href: service-fabric-image-store-connection-string.md
         - name: サービスのリソース
           href: service-fabric-service-manifest-resources.md
+        - name: 定期的なバックアップと復元
+          items:
+            - name: 定期的なバックアップの構成について
+              href: service-fabric-backuprestoreservice-configure-periodic-backup.md
     - name: クラスター
       href: service-fabric-deploy-anywhere.md
       items:
@@ -533,7 +537,7 @@
       items:
         - name: Azure 上のクラスター
           items:
-            - name: '[作成]'
+            - name: Create
               items:
                 - name: Azure ポータル
                   href: service-fabric-cluster-creation-via-portal.md
@@ -561,7 +565,7 @@
               href: service-fabric-cluster-rollover-cert-cn.md
             - name: クラスター証明書の管理
               href: service-fabric-cluster-security-update-certs-azure.md
-            - name: 削除
+            - name: Delete
               href: service-fabric-cluster-delete.md
             - name: クラスター ノード VM へのリモート接続
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
@@ -569,7 +573,7 @@
               href: service-fabric-update-vmss-sku.md
         - name: スタンドアロンのクラスター
           items:
-            - name: '[作成]'
+            - name: Create
               items:
                 - name: オンプレミスでの作成
                   href: service-fabric-cluster-creation-for-windows-server.md

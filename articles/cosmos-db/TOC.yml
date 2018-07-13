@@ -318,8 +318,6 @@ items:
                 href: mongodb-readpreference.md
               - name: インデックス作成
                 href: mongodb-indexing.md
-              - name: MongoDB の TTL
-                href: mongodb-ttl.md
               - name: Power BI でデータを視覚化する
                 href: powerbi-visualize.md
           - name: リソース
