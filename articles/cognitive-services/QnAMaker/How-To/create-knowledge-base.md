@@ -1,6 +1,6 @@
 ---
-title: サポート技術情報の作成方法 - QnA Maker - Azure Cognitive Services | Microsoft Docs
-description: サポート技術情報の作成方法
+title: ナレッジ ベースの作成方法 - QnA Maker - Azure Cognitive Services | Microsoft Docs
+description: ナレッジ ベースの作成方法
 services: cognitive-services
 author: nstulasi
 manager: sangitap
@@ -18,7 +18,7 @@ ms.locfileid: "35378697"
 ---
 # <a name="create-a-knowledge-base"></a>ナレッジ ベースの作成
 
-QnA Maker では、既存のデータ ソースをオンボードし、サポート技術情報を作成することが非常に簡単です。 FAQ ページ、製品マニュアル、構造化されたドキュメントから新しい QnA Maker サポート技術情報を作成したり、編集者としてそれらを追加したりできます。
+QnA Maker では、既存のデータ ソースをオンボードし、ナレッジ ベースを作成することが非常に簡単です。 FAQ ページ、製品マニュアル、構造化されたドキュメントから新しい QnA Maker ナレッジ ベースを作成したり、編集者としてそれらを追加したりできます。
 
 ## <a name="steps"></a>手順
 
@@ -26,11 +26,11 @@ QnA Maker では、既存のデータ ソースをオンボードし、サポー
 
     ![KB を作成する ](../media/qnamaker-how-to-create-kb/create-new-service.png)
 
-2. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 作成している場合、手順 2 のドロップダウンから QnA Maker サービスを選択します。 サポート技術情報をホストする QnA Maker サービスを選択します。
+2. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 作成している場合、手順 2 のドロップダウンから QnA Maker サービスを選択します。 ナレッジ ベースをホストする QnA Maker サービスを選択します。
 
     ![QnA サービスを設定する](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
-3. サポート技術情報を作成する目的で次の情報を入力します。
+3. ナレッジ ベースを作成する目的で次の情報を入力します。
 
     ![データ ソースを設定する](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
@@ -48,9 +48,9 @@ QnA Maker では、既存のデータ ソースをオンボードし、サポー
 
     ![抽出](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-6. サポート技術情報が正常に作成されると、**サポート技術情報**ページにリダイレクトされます。
+6. ナレッジ ベースが正常に作成されると、**ナレッジ ベース**ページにリダイレクトされます。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [サポート技術情報をインポートする](../Tutorials/migrate-knowledge-base.md)
+> [ナレッジ ベースをインポートする](../Tutorials/migrate-knowledge-base.md)
