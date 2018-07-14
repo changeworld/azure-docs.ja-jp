@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: e6f694e601c506adae217e6348b4bf388cc24390
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 344ed971dd4a869cfbdc363222d772dcc3191199
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211832"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916042"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 

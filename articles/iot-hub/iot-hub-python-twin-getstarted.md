@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: kgremban
 ms.openlocfilehash: 08e457febaa7522cac86e63c0c187d1e8e49daff
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34634983"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619367"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035578"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888672"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Azure Machine Learning で予測モデルを構築して配置する
 
@@ -663,6 +663,11 @@ whole_tsdf.ts_report()
 
 ![png](./media/how-to-build-deploy-forecast-models/output_15_6.png)
 
+![png](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+ 
 
 
 ## <a name="integrate-with-external-data"></a>外部データとの統合

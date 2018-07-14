@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c12630deb45fd057537c42157d88fdeef22d18b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593015"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295398"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -174,7 +174,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 認証に成功しました。 全体管理者ではありません。
 
 ### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
-認証に成功しました。 Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。 詳細については、[Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) に関するページをご覧ください。
+認証に成功しました。 Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。 詳細については、[Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) に関するページをご覧ください。
 
 ### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
 認証に成功しました。 Azure AD から会社情報を取得できませんでした。

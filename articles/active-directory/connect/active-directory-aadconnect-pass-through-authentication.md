@@ -4,7 +4,7 @@ description: この記事では、Azure Active Directory (Azure AD) パススル
 services: active-directory
 keywords: Azure AD Connect パススルー認証とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031772"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917280"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 

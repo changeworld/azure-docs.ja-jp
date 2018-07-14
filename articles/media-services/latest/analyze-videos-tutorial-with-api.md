@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 314ffce8a9f8dde62cac670099afbc2223df37e4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114226"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972000"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>チュートリアル: Azure Media Services を使用してビデオを分析する 
 
@@ -112,7 +112,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 #### <a name="job"></a>ジョブ
 
-上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/en-us/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Services アカウント内にあるアセットを使用して指定できます。 
+上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Services アカウント内にあるアセットを使用して指定できます。 
 
 この例では、ジョブの入力はローカル ビデオです。  
 
@@ -120,7 +120,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 [ジョブ](https://docs.microsoft.com/en-us/rest/api/media/jobs)完了の通知の取得にはさまざまなオプションがあります。 最も簡単なオプション (次に示すもの) は、ポーリングを使うものです。 
+ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)完了の通知の取得にはさまざまなオプションがあります。 最も簡単なオプション (次に示すもの) は、ポーリングを使うものです。 
 
 潜在的な待機時間により、ポーリングは運用アプリケーション用の推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。
 

@@ -3,7 +3,7 @@ title: Docker マシンを使用して Azure で Linux ホストを作成する 
 description: Docker マシンを使用して、Azure で Docker ホストを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: 26e54efc32aa316e1da93598cc861003aefff182
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: cynthn
+ms.openlocfilehash: a59183365ada644f2ff1aae7d52bac5fb1f42354
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29125505"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295769"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker マシンを使用して、Azure で Docker ホストを作成する方法
 この記事では、[Docker マシン](https://docs.docker.com/machine/)を使用して、Azure で Docker ホストを作成する方法を詳しく説明します。 `docker-machine` コマンドを実行すると、Azure で Linux 仮想マシン (VM) が作成され、次に Docker がインストールされます。 これにより、同じローカル ツールとワークフローを使用して、Azure で Docker ホストを管理できます。 Windows 10 で Docker コンピューターを使用するには、Linux バッシュを使用する必要があります。
@@ -40,7 +40,7 @@ docker-machine create -d azure \
     --azure-subscription-id $sub \
     --azure-ssh-user azureuser \
     --azure-open-port 80 \
-    --azure-size "Standard_D2_v2" \
+    --azure-size "Standard_DS2_v2" \
     myvm
 ```
 

@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446056"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295011"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD アクセス レビュー
 
@@ -43,4 +43,4 @@ ms.locfileid: "37446056"
 - [Azure AD のアクセス レビューでゲスト アクセスを管理する](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [Azure AD アクセス レビューに使用するプログラムとコントロールを管理する](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](active-directory-azure-ad-controls-create-access-review.md)
-- [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](privileged-identity-management/pim-how-to-start-security-review.md)

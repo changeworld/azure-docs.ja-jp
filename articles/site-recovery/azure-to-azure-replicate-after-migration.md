@@ -5,14 +5,14 @@ services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c42a997560ee40eb0a587b81a6f191f372e0dd26
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 85ebb141390e0fa6b4dfbd77d7b7d3f6844950d7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716008"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916464"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 

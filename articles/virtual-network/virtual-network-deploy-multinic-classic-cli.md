@@ -17,11 +17,11 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0b56ab474ff23748487c50bd34487c80242c6429
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792081"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651988"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC が設定された VM (クラシック) を作成する
 

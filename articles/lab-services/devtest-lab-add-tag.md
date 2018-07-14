@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 3d9a5b3c0ae0b6058d3e8ccf8cdb340bd1200edc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781641"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299113"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
 

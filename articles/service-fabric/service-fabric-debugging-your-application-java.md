@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 0e9e816fa84816b1b5d12f066dc65aee7b4930f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 78483a5a5d78b539415aeeb0e28c1dbaf3680173
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205455"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619342"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Eclipse を使用して Java Service Fabric アプリケーションをデバッグする
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "34205455"
 2. デバッグするサービスの entryPoint.sh を更新して、リモートのデバッグ パラメーターで java プロセスを開始するようにします。 このファイルは次の場所にあります: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``。 この例では、デバッグ用にポート 8001 が設定されています。
 
     ```sh
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
 3. アプリケーション マニフェストを更新して、デバッグするサービスのインスタンス数またはレプリカ数を 1 に設定します。 この設定により、デバッグに使用されるポートの競合を回避できます。 たとえば、ステートレス サービスについては、``InstanceCount="1"`` と設定し、ステートフル サービスについては、`` TargetReplicaSetSize="1" MinReplicaSetSize="1"`` のように設定して、レプリカ セット サイズのターゲット値と最小値を 1 にします。
 

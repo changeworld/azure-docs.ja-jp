@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 7e717d06aaaef6031a0a3b26c5caf76f0c8c11df
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715940"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915927"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 

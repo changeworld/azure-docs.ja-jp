@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
 ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193820"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232869"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールして構成する
 ## <a name="overview"></a>概要

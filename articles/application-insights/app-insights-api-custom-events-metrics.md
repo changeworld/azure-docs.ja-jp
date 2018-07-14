@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
 ms.openlocfilehash: 5c33e1a5568de5fffb5ea9cedb43bdc04aeaeba7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293843"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306762"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 

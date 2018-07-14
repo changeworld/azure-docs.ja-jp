@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.openlocfilehash: f3f479de8bc3975f4da07a7761ffc99f976db20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320239"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235477"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Azure CLI でゾーン冗長フロントエンドを使用してパブリック Load Balancer Standard を作成する
 

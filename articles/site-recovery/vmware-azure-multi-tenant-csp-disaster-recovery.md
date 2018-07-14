@@ -6,14 +6,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 58ea2e7c387137f974425464ef2c9d17f438ba7c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d384a77054cdcab0305b9e6d3fe5bb824e49bb16
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071861"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916804"
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware レプリケーションをセットアップする
 

@@ -29,12 +29,12 @@
   items:
     - name: 'C#'
       href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Android
+      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: ハウツー ガイド
   items:
     - name: 最初の Face API アプリ
       items:
-        - name: Java for Android
-          href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
         - name: Python
           href: Tutorials/FaceAPIinPythonTutorial.md
     - name: 画像内の顔を検出する

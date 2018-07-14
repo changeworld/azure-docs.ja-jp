@@ -49,8 +49,8 @@
           href: howto-version-devicetemplate.md
         - name: テレメトリ ルールを作成する
           href: howto-create-telemetry-rules.md
-        - name: イベント ルールを作成する
-          href: howto-create-event-rules.md
+        - name: ホーム ページを構成する
+          href: howto-configure-homepage.md
         - name: 画像を準備してアップロードする
           href: howto-prepare-images.md
     - name: 演算子

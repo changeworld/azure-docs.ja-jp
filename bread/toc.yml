@@ -289,6 +289,9 @@
     - name: ExpressRoute
       tocHref: /azure/expressroute/
       topicHref: /azure/expressroute/
+    - name: ファイアウォール
+      tocHref: /azure/firewall/
+      topicHref: /azure/firewall/
     - name: ガイダンス
       tocHref: /azure/guidance/
       topicHref: /azure/guidance/
