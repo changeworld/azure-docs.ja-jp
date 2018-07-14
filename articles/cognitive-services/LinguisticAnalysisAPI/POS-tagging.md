@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 35d2042db5f8d64c7dbd1df6bfdebcba6d6aab28
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 90fd5b05c2dabdac88c6c8da288ab629177be38d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373293"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082640"
 ---
 # <a name="part-of-speech-tagging"></a>品詞のタグ付け
 
@@ -35,7 +35,7 @@ ms.locfileid: "35373293"
 | ) | 終了のかっこ | ) ] } |
 | 。 | コンマ | 。 |
 | -- | ダッシュ | -- |
-| . | 文の終端記号 | . ! ? |
+| が必要です。 | 文の終端記号 | が必要です。 ! ? |
 | : | コロンまたは省略記号 | : ; ... |
 | CC | 接続詞、等位接続詞 | and but or yet|
 | CD | 数値、基数 | nine 20 1980 '96 |
@@ -76,4 +76,4 @@ ms.locfileid: "35373293"
 
 ## <a name="specification"></a>仕様
 
-トークン化については、[Penn Treebank](https://www.cis.upenn.edu/~treebank/) の仕様を利用しています。
+トークン化については、[Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) の仕様を利用しています。

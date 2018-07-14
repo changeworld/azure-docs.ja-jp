@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: scottwhi
 ms.openlocfilehash: dbff2fb80c9d13783881bb94fc94fa8e1d609d3d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372725"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38300790"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
 

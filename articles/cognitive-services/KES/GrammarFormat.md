@@ -9,12 +9,12 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 27202379b8c36696a380049336229cac040b0108
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373405"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865755"
 ---
 # <a name="grammar-format"></a>文法形式
 文法とは、サービスが解釈できる自然言語のクエリの重み付けセットと、これらの自然言語のクエリをセマンティック クエリ式に変換する方法を指定する、XML ファイルのことです。  文法構文は、音声認識文法の W3C 標準である [SRGS](http://www.w3.org/TR/speech-grammar/) をベースとし、データ インデックスの統合やセマンティック関数をサポートする拡張機能が備わっています。

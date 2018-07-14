@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378529"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340775"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Azure エンドポイント サブスクリプション キーの管理
 
@@ -40,7 +40,7 @@ ms.locfileid: "35378529"
     ![Azure キー](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * リージョンの [LUIS](luis-reference-regions.md) Web サイトにログインし、[新しい LUIS エンドポイント キーを追加](Manage-Keys.md#assign-endpoint-key)します。 
+    > * リージョンの [LUIS](luis-reference-regions.md) Web サイトにログインし、[新しい LUIS エンドポイント キーを追加](luis-how-to-manage-keys.md#assign-endpoint-key)します。 
     > * 作成した Azure サービスの名前は、リージョンの [LUIS](luis-reference-regions.md) 発行ページで選択できるように覚えておく必要があります。  
 
 ## <a name="change-luis-pricing-tier"></a>LUIS 価格レベルの変更
@@ -53,7 +53,7 @@ ms.locfileid: "35378529"
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 4.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。 
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
-5. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](manage-keys.md#assign-endpoint-key)て、すべてのエンドポイントのクエリで使用します。 
+5. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)て、すべてのエンドポイントのクエリで使用します。 
 
 ## <a name="exceed-pricing-tier-usage"></a>価格レベルの使用量の超過
 価格レベルごとに、LUIS アカウントに対して許可されるエンドポイント要求の割合が決まっています。 要求の割合が、従量制課金アカウントで許可されている 1 分または 1 か月あたりの割合を超えると、要求は "429: 要求が多すぎます" という HTTP エラーを受け取ります。

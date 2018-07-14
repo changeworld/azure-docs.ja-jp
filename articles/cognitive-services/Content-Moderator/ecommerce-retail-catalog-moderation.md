@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 5cb93941751c8744a19a5473d13f1e135a589eaa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373237"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095753"
 ---
 # <a name="ecommerce-catalog-moderation-with-machine-learning"></a>機械学習による e コマース カタログのモデレーション
 
@@ -158,7 +158,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 ## <a name="classify-into-flags-toys-and-pens"></a>旗、おもちゃ、ペンに分類する
 
-1. [Custom Vision API プレビュー](https://www.customvision.ai/)に[サインイン](https://www.customvision.ai/account/signin)します。
+1. [Custom Vision API プレビュー](https://www.customvision.ai/)に[サインイン](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/)します。
 2. [クイック スタート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)を使用して、旗、おもちゃ、ペンが存在する可能性があるコンテンツを検出するカスタム分類子を構築します。
    ![Custom Vision のトレーニング画像](images/tutorial-ecommerce-custom-vision.PNG)
 3. カスタム分類子の[予測エンドポイント URL を取得します](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。

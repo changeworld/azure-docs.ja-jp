@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: v-geberr
-ms.openlocfilehash: 2de25645e5377efdd53bcc980695804d34db5ee2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8dfe5b2363fbf9b89947956f212d8d4e1ef5d82a
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376984"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867037"
 ---
 # <a name="manage-luis-service-from-azure-cloud-shell"></a>Azure Cloud Shell から LUIS サービスを管理する
 Azure portal で PowerShell コマンドレットを使って、LUIS リソースを操作することができます。 
@@ -22,7 +22,7 @@ Azure portal で PowerShell コマンドレットを使って、LUIS リソー�
 これらのコマンドレットを使うと、LUIS サブスクリプションを[作成](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0)し、サブスクリプションに関する[使用状況](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)などの情報を取得し、サブスクリプションを[削除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)することができます。 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell のストレージ アカウントと認証
-Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) で PowerShell を使うには、Azure ストレージ アカウントが必要です。 [ストレージ アカウント](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share)がない場合は、作成するよう要求されます。 ストレージ アカウントがあると、Cloud Shell に PowerShell スクリプトを保存することができます。  
+Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) で PowerShell を使うには、Azure ストレージ アカウントが必要です。 [ストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share)がない場合は、作成するよう要求されます。 ストレージ アカウントがあると、Cloud Shell に PowerShell スクリプトを保存することができます。  
 
 また、リソースにアクセスするには、Cloud Shell 内の Azure に対して認証を行う必要があります。 
 

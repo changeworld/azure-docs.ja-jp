@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: a084b50e44fe26ba2547d0f7b7ed184fb71b190c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f851c030a05880d79a998ed4b4a941082c057b9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35374261"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865473"
 ---
 # <a name="video-and-transcript-moderation-tutorial"></a>ビデオとトランスクリプトをモデレートするためのチュートリアル
 
@@ -66,7 +66,7 @@ Content Moderator のビデオ API を使用してビデオをモデレートし
 
 ### <a name="methods-of-class-program"></a>Program クラスのメソッド
 
-|メソッド|説明|
+|方法|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|
@@ -419,7 +419,7 @@ Content Moderator のビデオ API を使用してビデオをモデレートし
 `GenerateVTT` フラグが設定されると、ビデオの音声のトランスクリプトも生成されます。
 
 > [!NOTE]
-> このコンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 
 ## <a name="creating-the-human-in-the-loop-review"></a>人間参加型レビューの作成
