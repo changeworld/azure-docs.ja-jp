@@ -21,16 +21,16 @@ ms.locfileid: "36301463"
 
 この記事では、Java で [Microsoft QnA Maker API](../Overview/overview.md) を使用し、次を行う方法について説明します。
 
-- [新しいサポート技術情報を作成します。](#Create)
-- [既存のサポート技術情報を更新します。](#Update)
-- [サポート技術情報の作成または更新要求の状態を取得します。](#Status)
-- [既存のサポート技術情報を公開します。](#Publish)
-- [既存のサポート技術情報のコンテンツを置換します。](#Replace)
-- [サポート技術情報のコンテンツをダウンロードします。](#GetQnA)
-- [サポート技術情報を使用し、質問の回答を取得します。](#GetAnswers)
-- [サポート技術情報に関する情報を取得します。](#GetKB)
-- [指定のユーザーに属するすべてのサポート技術情報に関する情報を取得します。](#GetKBsByUser)
-- [サポート技術情報を削除します。](#Delete)
+- [新しいナレッジ ベースを作成します。](#Create)
+- [既存のナレッジ ベースを更新します。](#Update)
+- [ナレッジ ベースの作成または更新要求の状態を取得します。](#Status)
+- [既存のナレッジ ベースを公開します。](#Publish)
+- [既存のナレッジ ベースのコンテンツを置換します。](#Replace)
+- [ナレッジ ベースのコンテンツをダウンロードします。](#GetQnA)
+- [ナレッジ ベースを使用し、質問の回答を取得します。](#GetAnswers)
+- [ナレッジ ベースに関する情報を取得します。](#GetKB)
+- [指定のユーザーに属するすべてのナレッジ ベースに関する情報を取得します。](#GetKBsByUser)
+- [ナレッジ ベースを削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
 - [現在の一連の単語変更を取得します。](#GetAlterations)
@@ -44,9 +44,9 @@ ms.locfileid: "36301463"
 
 <a name="Create"></a>
 
-## <a name="create-knowledge-base"></a>サポート技術情報を作成する
+## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -259,7 +259,7 @@ public class CreateKB {
 }
 ```
 
-**サポート技術情報の応答を作成する**
+**ナレッジ ベースの応答を作成する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -294,9 +294,9 @@ public class CreateKB {
 
 <a name="Update"></a>
 
-## <a name="update-knowledge-base"></a>サポート技術情報を更新する
+## <a name="update-knowledge-base"></a>ナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のサポート技術情報が更新されます。
+次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -568,7 +568,7 @@ public class UpdateKB {
 }
 ```
 
-**サポート技術情報の応答を更新する**
+**ナレッジ ベースの応答を更新する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -598,15 +598,15 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 [先頭に戻る](#HOLTop)
 
 <a name="Publish"></a>
 
-## <a name="publish-knowledge-base"></a>サポート技術情報を公開する
+## <a name="publish-knowledge-base"></a>ナレッジ ベースを公開する
 
-次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のサポート技術情報が公開されます。
+次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のナレッジ ベースが公開されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -719,7 +719,7 @@ public class PublishKB {
 }
 ```
 
-**サポート技術情報の応答を公開する**
+**ナレッジ ベースの応答を公開する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -733,9 +733,9 @@ public class PublishKB {
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>サポート技術情報を置換する
+## <a name="replace-knowledge-base"></a>ナレッジ ベースを置換する
 
-次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のサポート技術情報のコンテンツが置換されます。
+次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のナレッジ ベースのコンテンツが置換されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -889,7 +889,7 @@ public class ReplaceKB {
 }
 ```
 
-**サポート技術情報の応答を置換する**
+**ナレッジ ベースの応答を置換する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -903,9 +903,9 @@ public class ReplaceKB {
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>サポート技術情報のコンテンツをダウンロードする
+## <a name="download-the-contents-of-a-knowledge-base"></a>ナレッジ ベースのコンテンツをダウンロードする
 
-次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のサポート技術情報のコンテンツがダウンロードされます。
+次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のナレッジ ベースのコンテンツがダウンロードされます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1008,7 +1008,7 @@ public class GetQnA {
 }
 ```
 
-**サポート技術情報の応答をダウンロードする**
+**ナレッジ ベースの応答をダウンロードする**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -1047,15 +1047,15 @@ public class GetQnA {
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>サポート技術情報を使用し、質問の回答を取得する
+## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>ナレッジ ベースを使用し、質問の回答を取得する
 
-次のコードでは、**Generate answers** メソッドを利用し、指定のサポート技術情報による質問の回答が生成されます。
+次のコードでは、**Generate answers** メソッドを利用し、指定のナレッジ ベースによる質問の回答が生成されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 1. 次に示すコードを追加します。
 1. `host` の値を QnA Maker サブスクリプションの Web サイト名で置換します。 詳細については、「[QnA Maker サービスを作成する](../How-To/set-up-qnamaker-service-azure.md)」を参照してください。
 1. `endpoint_key` の値を、お使いのサブスクリプションで有効なエンドポイント キーに置き換えます。 これはサブスクリプション キーと同じではないことにご注意ください。 [Get endpoint keys](#GetKeys) メソッドでエンドポイント キーを取得できます。
-1. `kb` の値を、回答を求めるサポート技術情報の ID で置換します。 このサポート技術情報は [Publish](#Publish) メソッドを利用して公開しておく必要があります。
+1. `kb` の値を、回答を求めるナレッジ ベースの ID で置換します。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
 1. プログラムを実行します。
 
 ```java
@@ -1190,9 +1190,9 @@ public class GetAnswers {
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>サポート技術情報に関する情報を取得する
+## <a name="get-information-about-a-knowledge-base"></a>ナレッジ ベースに関する情報を取得する
 
-次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のナレッジ ベースに関する情報が取得されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1291,7 +1291,7 @@ public class GetKB {
 }
 ```
 
-**サポート技術情報の詳細応答を取得する**
+**ナレッジ ベースの詳細応答を取得する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -1317,9 +1317,9 @@ public class GetKB {
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>ユーザーのすべてのサポート技術情報を取得する
+## <a name="get-all-knowledge-bases-for-a-user"></a>ユーザーのすべてのナレッジ ベースを取得する
 
-次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのナレッジ ベースに関する情報が取得されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1415,7 +1415,7 @@ public class GetKBsByUser {
 }
 ```
 
-**ユーザー応答のサポート技術情報を取得する**
+**ユーザー応答のナレッジ ベースを取得する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -1457,9 +1457,9 @@ Press any key to continue.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>サポート技術情報を削除する
+## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
-次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のサポート技術情報が削除されます。
+次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のナレッジ ベースが削除されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1564,7 +1564,7 @@ public class DeleteKB {
 }
 ```
 
-**サポート技術情報の応答を削除する**
+**ナレッジ ベースの応答を削除する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
