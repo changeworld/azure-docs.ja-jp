@@ -1,6 +1,6 @@
 ---
-title: Microsoft Translator Text API 音訳メソッド | Microsoft Docs
-description: Microsoft Translator Text API 音訳メソッドを使用します。
+title: Microsoft Translator Text API Transliterate メソッド | Microsoft Docs
+description: Microsoft Translator Text API Transliterate メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/23/2018
 ms.locfileid: "35377520"
 ---
-# <a name="text-api-30-transliterate"></a>Text API 3.0: 音訳
+# <a name="text-api-30-transliterate"></a>Text API 3.0: Transliterate
 
 ある言語のテキストを、あるスクリプトから別のスクリプトに変換します。
 
@@ -40,7 +40,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*必須のパラメーター*。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
-    <td>言語</td>
+    <td>language</td>
     <td>*必須のパラメーター*。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、[サポートされている言語](.\v3-0-languages.md)をサービスに照会することによって得られる `transliteration` スコープにリストされます。</td>
   </tr>
   <tr>
