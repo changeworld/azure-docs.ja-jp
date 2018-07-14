@@ -1,0 +1,52 @@
+- name: Azure Firewall のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Firewall とは
+      href: overview.md
+- name: チュートリアル
+  items:
+    - name: 1. デプロイと構成
+      href: tutorial-firewall-deploy-portal.md
+    - name: 2. 診断ログの監視
+      href: tutorial-diagnostics.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      href: sample-powershell.md
+- name: ハウツー ガイド
+  items:
+    - name: パブリック プレビューへのサインアップ
+      href: public-preview.md
+    - name: テンプレートを使用したデプロイ
+      href: deploy-template.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST ()
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: リソース
+  items:
+    - name: テンプレートの作成
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

@@ -31,6 +31,8 @@
       href: update-managed-resources.md
     - name: ポータルを使用して発行する
       href: publish-portal.md
+    - name: Key Vault のシークレットを使用する
+      href: key-vault-access.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -62,7 +64,7 @@
               href: microsoft-common-textblock.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: Compute
+        - name: コンピューティング
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md

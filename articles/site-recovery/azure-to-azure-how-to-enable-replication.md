@@ -6,14 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 175b71488b429b3fd69d23db6cc9318d8db20568
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e7cd3032053b3628b94f93f3c7e00b6890afd4ca
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715974"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916284"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Azure 仮想マシンを別の Azure リージョンにレプリケートする
 

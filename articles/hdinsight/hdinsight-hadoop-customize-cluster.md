@@ -2,7 +2,6 @@
 title: スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure | Microsoft Docs
 description: スクリプト アクションを使って HDInsight クラスターをカスタマイズする方法について説明します。
 services: hdinsight
-documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808861"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950616"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
@@ -53,11 +52,11 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 | Name | スクリプト |
 | --- | --- |
-| **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
-| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターへの R のインストールと使用][hdinsight-install-r] に関するページをご覧ください。 |
-| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
-| - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
-| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
+| **Spark のインストール** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1` 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
+| **R のインストール** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1` [HDInsight クラスターでの R のインストールと使用](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)に関する記事を参照してください。 |
+| **Solr のインストール** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1` [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
+| **Giraph のインストール** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1` [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
+| **Hive ライブラリの事前読み込み** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1` 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Azure Portal を使用してスクリプトを呼び出す
 **Azure Portal**

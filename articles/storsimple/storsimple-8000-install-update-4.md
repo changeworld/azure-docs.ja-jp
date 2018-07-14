@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108390"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630196"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple デバイスへの Update 4 のインストール
 
@@ -85,7 +85,7 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 | 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB3121899 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
+| 手順 3. |KB3121899 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 
 <br></br>
 
@@ -100,6 +100,6 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳しくは、[Update 4 リリース](storsimple-update4-release-notes.md)に関するページをご覧ください。
 

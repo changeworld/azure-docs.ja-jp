@@ -11,12 +11,12 @@
   items:
     - name: 関数の作成 - ポータル
       href: functions-create-first-azure-function.md
-    - name: 関数の作成 - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: 関数の作成 - Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: 関数の作成 - Java/Maven
       href: functions-create-first-java-maven.md
+    - name: 関数の作成 - Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: 関数の作成 - Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: トリガー
@@ -97,6 +97,8 @@
       items:
         - name: 概要
           href: durable-functions-overview.md
+        - name: 関数の種類と機能
+          href: durable-functions-types-features-overview.md
         - name: バインド
           href: durable-functions-bindings.md
         - name: チェックポイントと再生

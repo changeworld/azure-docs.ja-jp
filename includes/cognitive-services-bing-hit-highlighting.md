@@ -35,7 +35,7 @@ Bing には、マーカーとして Unicode 文字または HTML タグを使用
 |U+E018|\<sup>|上付き文字のコンテンツの開始をマークします
 |U+E019|\</sup>|上付き文字のコンテンツの終了をマークします
 
-次の例で示す `Computation` の結果には、log(2) という検索語の下付き文字マーカーが含まれています。 `expression` フィールドにマーカーが含まれるのは、`textDecoration が **true** の場合のみです。
+次の例で示す `Computation` の結果には、log(2) という検索語の下付き文字マーカーが含まれています。 `expression` フィールドにマーカーが含まれるのは、`textDecoration` が **true** の場合のみです。
 
 ![計算のマーカー](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
 

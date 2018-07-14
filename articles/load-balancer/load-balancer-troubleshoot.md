@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 07/06/2018
 ms.author: genli
-ms.openlocfilehash: 294bb6dd780d1df642d6e793b29267da1e8b8336
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774915"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37890806"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -127,7 +127,6 @@ ILB VIP が VNet 内で構成されている場合、参加しているバック
 ## <a name="additional-network-captures"></a>その他のネットワーク キャプチャ
 サポート ケースを開く場合は、迅速に解決できるように次の情報を収集します。 1 つのバックエンド VM を選択して、次のテストを実行してください。
 - VNet 内にあるバックエンド VM から Psping でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。 
-- VNet 内にあるバックエンド VM から TCPing でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。
 - この ping テストで応答がなかった場合は、PsPing を実行しながら、バックエンド VM と VNet テスト VM で同時 Netsh トレースを実行し、その後、Netsh トレースを停止します。 
   
 ## <a name="next-steps"></a>次の手順

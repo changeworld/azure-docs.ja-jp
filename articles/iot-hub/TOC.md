@@ -212,7 +212,7 @@
 ### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)
 ## 実在のデバイスの使用
-### [はじめに](iot-hub-get-started.md)
+### [作業の開始](iot-hub-get-started.md)
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -263,6 +263,11 @@
 ### [IoT デバイス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # リソース
+## [C# 用 Azure IoT サンプル (.NET)](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)
+## [Node.js 用 Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-node/)
+## [Java 用 Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-java/)
+## [Python 用 Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-python/)
+## [iOS プラットフォーム用 Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/)
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [顧客データ要求](iot-hub-customer-data-requests.md)

@@ -13,6 +13,7 @@
 ## [リソース プロバイダーと種類](resource-manager-supported-services.md)
 ## [管理グループ](management-groups-overview.md)
 ## [サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [クラウドの一貫性を実現するテンプレート](templates-cloud-consistency.md)
 
 # 方法
 ## テンプレートの作成

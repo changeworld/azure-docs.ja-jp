@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
 ms.openlocfilehash: 5ffb758fe5fa42be6323de06afbfb38068ae1926
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296171"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969172"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Application Insights の .NET トレース ログを調べる
 ASP.NET アプリケーションで診断トレースに NLog、log4Net、または System.Diagnostics.Trace を使用している場合、ログを [Azure Application Insights][start] に送信し、そこで調査したり、検索したりできます。 ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。

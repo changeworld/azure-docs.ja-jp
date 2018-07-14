@@ -201,8 +201,6 @@
           href: luis-prebuilt-entities.md
         - name: ドメインの使用
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Cortana の使用
-          href: luis-how-to-cortana-prebuilt-app.md
     - name: アプリの管理
       items:
         - name: ダッシュボードの利用
@@ -253,11 +251,11 @@
           href: luis-reference-prebuilt-dimension.md
         - name: 非推奨のエンティティ
           href: luis-reference-prebuilt-deprecated.md
-        - name: 電子メール エンティティ
+        - name: email エンティティ
           href: luis-reference-prebuilt-email.md
         - name: keyPhrase エンティティ
           href: luis-reference-prebuilt-keyphrase.md
-        - name: 数値エンティティ
+        - name: number エンティティ
           href: luis-reference-prebuilt-number.md
         - name: 序数エンティティ
           href: luis-reference-prebuilt-ordinal.md
@@ -267,12 +265,10 @@
           href: luis-reference-prebuilt-phonenumber.md
         - name: 温度エンティティ
           href: luis-reference-prebuilt-temperature.md
-        - name: URL エンティティ
+        - name: url エンティティ
           href: luis-reference-prebuilt-url.md
     - name: 事前構築済みのドメインのリファレンス
       href: luis-reference-prebuilt-domains.md
-    - name: 事前構築済みの Cortana アプリのリファレンス
-      href: luis-reference-cortana-prebuilt.md
     - name: V2 API の作成
       href: 'https://aka.ms/luis-authoring-apis'
     - name: エンドポイント V2 API

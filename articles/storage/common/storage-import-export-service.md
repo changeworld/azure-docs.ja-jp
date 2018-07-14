@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: 83ba437e699eb150e86e6c89e478377394966419
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809544"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232679"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 

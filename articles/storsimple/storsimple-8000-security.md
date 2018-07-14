@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650939"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906388"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
 
@@ -43,7 +43,7 @@ Microsoft Azure StorSimple ソリューションは、互いに連携し合う 4
 
 StorSimple デバイス マネージャー サービスは、Microsoft Azure でホストされる管理サービスです。組織が導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。 StorSimple デバイス マネージャー サービスには、Web ブラウザーから組織の資格情報を使用して Azure ポータルにログオンすることでアクセスできます。
 
-StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/sign-up-organization.md)」で詳しい情報をご覧いただけます。
+StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/fundamentals/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
 StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
@@ -267,7 +267,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** 新しい証明書を StorSimple デバイス マネージャー サービスからダウンロードできます。その後、リモート アクセス クライアントの証明書ストアに新しい証明書をインストールしてください。 手順については、次をご覧ください。
 
-* [Import-Certificate コマンドレット](https://technet.microsoft.com/library/hh848630.aspx)
+* [Import-Certificate コマンドレット](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
 **Q:** StorSimple デバイス マネージャー サービスのセキュリティが侵害されてもデータは保護されますか。
 

@@ -30,6 +30,12 @@
           href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Azure サブスクリプションにまたがるログの収集
           href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+- name: データの監視
+  items:
+    - name: データの種類と分析ツール
+      href: monitoring-data-collection.md
+    - name: Azure 監視のデータ ソース
+      href: monitoring-data-sources.md
 - name: リソースの監視
   items:
     - name: '[アプリケーション]'
@@ -92,7 +98,7 @@
               href: monitoring-solutions-inventory.md
             - name: ターゲット ソリューション
               href: monitoring-solution-targeting.md
-        - name: '[作成]'
+        - name: Create
           items:
             - name: 設計とビルド
               href: monitoring-solutions-creating.md
