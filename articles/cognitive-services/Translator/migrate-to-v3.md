@@ -37,19 +37,19 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 
 | V2 API メソッド   | V3 API 互換性 |
 |:----------- |:-------------|
-| 翻訳     | 翻訳          |
-| TranslateArray      | 翻訳          |
-| GetLanguageNames      | 言語          |
-| GetLanguagesForTranslate     | 言語        |
+| Translate     | Translate          |
+| TranslateArray      | Translate          |
+| GetLanguageNames      | Languages          |
+| GetLanguagesForTranslate     | Languages        |
 | GetLanguagesForSpeak      | Cognitive Services Speech API         |
 | Speak     | Cognitive Services Speech API          |
-| 検出     | 検出         |
-| DetectArray     | 検出         |
+| Detect     | Detect         |
+| DetectArray     | Detect         |
 | AddTranslation     | Microsoft Translator HUB API         |
 | AddTranslationArray    | Microsoft Translator HUB API          |
 | BreakSentences      | BreakSentence         |
-| GetTranslations      | Feature は現在サポートされていません         |
-| GetTranslationsArray      | Feature は現在サポートされていません         |
+| GetTranslations      | この機能は現在サポートされていません         |
+| GetTranslationsArray      | この機能は現在サポートされていません         |
 
 ## <a name="move-to-json-format"></a>JSON 形式に移行
 
@@ -71,12 +71,12 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 | V3 メソッド   | 課金対象となる文字数 |
 |:----------- |:-------------|
-| 言語     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
-| 翻訳     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
-| 音訳     | 音訳のために送信された文字数が数えられます。         |
+| Languages     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
+| Translate     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
+| Transliterate     | 音訳のために送信された文字数が数えられます。         |
 | Dictionary の lookup と example     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
 | BreakSentence     | 課金はありません。       |
-| 検出     | 課金はありません。      |
+| Detect     | 課金はありません。      |
 
 ## <a name="v3-end-points"></a>V3 エンド ポイント
 
@@ -87,15 +87,15 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 ## <a name="v3-api-text-translations-methods"></a>V3 API テキスト翻訳メソッド
 
-[言語](reference/v3-0-languages.md)
+[Languages](reference/v3-0-languages.md)
 
-[翻訳](reference/v3-0-translate.md)
+[Translate](reference/v3-0-translate.md)
 
-[音訳](reference/v3-0-transliterate.md)
+[Transliterate](reference/v3-0-transliterate.md)
 
 [BreakSentence](reference/v3-0-break-sentence.md)
 
-[検出](reference/v3-0-detect.md)
+[Detect](reference/v3-0-detect.md)
 
 [Dictionary/lookup](reference/v3-0-dictionary-lookup.md)
 
