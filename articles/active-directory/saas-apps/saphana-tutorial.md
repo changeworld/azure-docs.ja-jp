@@ -111,7 +111,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
     ![[SAP HANA のドメインと URL] のシングル サインオン情報](./media/saphana-tutorial/tutorial_saphana_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに「`HA100`」と入力します。 
+    a. **[識別子]** ボックスに「`HA100`」と入力します。 
 
     b. **[応答 URL]** ボックスに、`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc` の形式で URL を入力します。
 
@@ -133,7 +133,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
 6. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー識別子]** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a. **[ユーザー識別子]** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
     
     b. **[メール]** ドロップダウン リストで **[user.mail]** を選択します。
 
@@ -150,7 +150,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
     ![ID プロバイダーの追加](./media/saphana-tutorial/sap1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Add Identity Provider Info]\(ID プロバイダーの情報の追加\)** ウィンドウで、Azure Portal からダウンロードしたメタデータ XML の内容を、**[Metadata]\(メタデータ\)** ボックスに貼り付けます。
+    a. **[Add Identity Provider Info]\(ID プロバイダーの情報の追加\)** ウィンドウで、Azure Portal からダウンロードしたメタデータ XML の内容を、**[Metadata]\(メタデータ\)** ボックスに貼り付けます。
 
     ![ID プロバイダーの設定の追加](./media/saphana-tutorial/sap2.png)
 
