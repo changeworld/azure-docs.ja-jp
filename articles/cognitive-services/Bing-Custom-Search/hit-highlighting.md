@@ -1,8 +1,29 @@
+---
+title: 'Bing Custom Search: 装飾マーカーを使用してテキストを強調表示する | Microsoft Docs'
+description: 検索応答の文字飾りを有効にする方法を示します。
+services: cognitive-services
+author: brapel
+manager: ehansen
+ms.assetid: 5365B568-EA55-4D97-8FBE-0AF60158D4D5
+ms.service: cognitive-services
+ms.component: bing-custom-search
+ms.topic: article
+ms.date: 09/28/2017
+ms.author: v-brapel
+ms.openlocfilehash: d2d0070865aa29257ac827bbb4fc313d87ea7282
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "35373037"
+---
+# <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
+
 Bing は検索語の強調表示をサポートしています。検索語の強調表示により、結果の表示文字列内で検索語 (または Bing が関連すると見なしたその他の語) がマークされます。 たとえば、Web ページの `name`、`displayUrl`、`snippet` フィールドでは検索語をマークするとします。
 
 Bing は、既定で、表示文字列に強調表示のマーカーを含めません。 マーカーを含めるには、要求に `textDecorations` クエリ パラメーターを含め、それを **true** に設定します。 Bing では、検索語のマークに Unicode 文字 E000 と E001 が使用され、検索語の開始と終了がマークされます。 たとえば、検索語が Sailing Dinghy で、いずれかの語がフィールドに存在する場合、次の例に示すように、その語が検索語の強調表示文字で囲まれます。  
   
-![検索語の強調表示](./media/cognitive-services-bing-hit-highlighting/bing-hit-highlighting.PNG) 
+![検索語の強調表示](./media/bing-hit-highlighting.PNG) 
 
 ユーザー インターフェイスにこの文字列を表示する前に、Unicode 文字を、表示形式に適した文字に置き換えます。 たとえば、テキストを HTML として表示している場合は、E000 を <b\>、E001 を </b\> に置き換えて検索語を強調表示できます。 書式設定を適用しない場合は、文字列からマーカーを削除してください。 
 
@@ -35,9 +56,9 @@ Bing には、マーカーとして Unicode 文字または HTML タグを使用
 |U+E018|\<sup>|上付き文字のコンテンツの開始をマークします
 |U+E019|\</sup>|上付き文字のコンテンツの終了をマークします
 
-次の例で示す `Computation` の結果には、log(2) という検索語の下付き文字マーカーが含まれています。 `expression` フィールドにマーカーが含まれるのは、`textDecoration` が **true** の場合のみです。
+次の例で示す `Computation` の結果には、log(2) という検索語の下付き文字マーカーが含まれています。 `expression` フィールドにマーカーが含まれるのは、`textDecoration が **true** の場合のみです。
 
-![計算のマーカー](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
+![計算のマーカー](./media/bing-markers-computation.PNG) 
 
 要求によって装飾が要求されなかった場合、式は log10(2) になります。 
   
