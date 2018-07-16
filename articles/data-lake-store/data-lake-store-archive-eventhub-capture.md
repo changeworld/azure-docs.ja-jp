@@ -45,7 +45,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
 3. Data Lake Store のルートにアクセス許可を割り当てます。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのルートを選択して、**[アクセス]** をクリックします。
+    a. **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのルートを選択して、**[アクセス]** をクリックします。
 
     ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Store のルートにアクセス許可を割り当てる")
 
@@ -94,7 +94,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![イベント ハブを作成する](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "イベント ハブを作成する")
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 イベント ハブの名前を指定します。
+    a. イベント ハブの名前を指定します。
     
     b. このチュートリアルでは、**[パーティション数]** と **[メッセージのリテンション期間]** を既定値に設定します。
     
