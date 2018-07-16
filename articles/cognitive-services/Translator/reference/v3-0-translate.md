@@ -53,7 +53,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>*省略可能なパラメーター*。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は `plain` (既定値) または `html` です。</td>
   </tr>
   <tr>
-    <td>カテゴリ</td>
+    <td>category</td>
     <td>*省略可能なパラメーター*。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、[Custom Translator](../customization.md) でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 既定値は `general` です。</td>
   </tr>
   <tr>

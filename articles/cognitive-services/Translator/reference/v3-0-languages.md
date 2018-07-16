@@ -1,6 +1,6 @@
 ---
-title: Microsoft Translator Text API 言語メソッド | Microsoft Docs
-description: Microsoft Translator Text API 言語メソッドを使用します。
+title: Microsoft Translator Text API Languages メソッド | Microsoft Docs
+description: Microsoft Translator Text API Languages メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 06/23/2018
 ms.locfileid: "35376437"
 ---
-# <a name="text-api-30-languages"></a>Text API 3.0: 言語
+# <a name="text-api-30-languages"></a>Text API 3.0: Languages
 
 Text API の他の操作で現在サポートされている言語のセットを取得します。 
 

@@ -76,7 +76,7 @@ Authorization: Bearer <Base64-access_token>
     <td>*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。</td>
   </tr>
   <tr>
-    <td>承認</td>
+    <td>Authorization</td>
     <td>*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。</td>
   </tr>
 </table> 
