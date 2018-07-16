@@ -119,7 +119,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name* で、実行中のコンテナーに名前を付けます (コンテナー ID ではありません)。
 
-実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、"http://localhost:4000")。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、" http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ![Hello World!][hello-world]
 
@@ -231,7 +231,7 @@ sfctl cluster select --endpoint http://localhost:19080
 
 ブラウザーを開き、http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。 Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 
-実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、"http://localhost:4000")。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、" http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ![Hello World!][hello-world]
 

@@ -300,7 +300,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org)。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

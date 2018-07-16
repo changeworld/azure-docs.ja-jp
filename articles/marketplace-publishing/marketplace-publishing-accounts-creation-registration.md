@@ -192,7 +192,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 [発行ポータル](http://publish.windowsazure.com) は、プランの発行と管理に使用されます。
 
 1. 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
-2. [[]http://publish.windowsazure.com[](http://publish.windowsazure.com)] に移動します。
+2. [http://publish.windowsazure.com](http://publish.windowsazure.com) に移動します。
 3. 新しいユーザーが発行ポータルに初めてサインインする場合は、デベロッパー センター アカウントの登録に使用した電子メール ID でサインインする必要があります。 これにより、デベロッパー センター アカウントと発行ポータル アカウントが相互に関連付けられます。 アプリケーションで作業している会社の他のメンバーは、次の手順に従って、発行ポータルで共同管理者として後で追加できます。
 
 発行ポータルで共同管理者として追加されている場合は、共同管理者アカウントでサインインできます。
