@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: 9ccc94727a18fbcd77f00000531934be57b8e132
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a9b0ddbd8d0a348d00e57526e6d248e59a8a1e79
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801366"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903959"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM マネージド ID を使用して Azure Storage にアクセスする
 

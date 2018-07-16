@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737206"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915971"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -54,11 +54,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure portal](https://portal.azure.com) のメニューで、**[リソースの作成]** > **[Storage]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** を使用します。 選択する名前は Azure 内で一意である必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
 3. **[デプロイ モデル]** で、**[Resource Manager]** を選択します。
-4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。 **[パフォーマンス]** で **[Standard]** を選択します。 
+4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。
 5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。 **[安全な転送が必須]** は **[無効]** のままにしています。
-6. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。 
-2. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** を使用します。
-3. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 
+6. **[パフォーマンス]** には **[標準]** を選択し、**[アクセス層]** には既定のオプションの **[ホット]** を選択します。
+7. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。
+8. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** を使用します。
+9. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 
 
    ![ストレージ アカウントの作成](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -98,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Azure ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)についての学習。
 - [Azure Storage の種類](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)についての学習。
-- - [ストレージの冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)についての詳細、およびストレージの[セキュリティで保護された転送](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
+- [ストレージの冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)についての詳細、およびストレージの[セキュリティで保護された転送](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
 
 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031432"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902906"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -48,7 +48,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 4. **[すべてのリソース]** ページで、前の手順で作成したストレージ アカウントを特定します。 **[概要]** ページを開き、**[BLOB]** タイルを開きます。  
 
-5. **[Blob Service]** ページで **[コンテナー]** を選択し、コンテナーの**名前**を指定します (*container1* など)。次に、**パブリック アクセス レベル**を BLOB (BLOB 専用の匿名読み取りアクセス) に変更して、**[OK]** を選択します。  
+5. **[Blob Service]** ページで **[コンテナー]** を選択し、コンテナーの**名前**を指定します (*container1* など)。次に、**[パブリック アクセス レベル]** を [Private (no anonymous access)]\(プライベート (匿名アクセスなし)\) に変更して、**[OK]** を選択します。  
 
    ![コンテナーを作成する](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 
@@ -71,7 +71,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
    |ジョブ名   |  myasajob   |   Stream Analytics ジョブを識別するための名前を入力します。 Stream Analytics ジョブ名には、英数字、ハイフン、アンダースコアのみを使用することができます。長さは 3 文字以上 63 文字以下でなければなりません。 |
    |サブスクリプション  | \<該当するサブスクリプション\> |  このジョブで使用する Azure サブスクリプションを選択します。 |
    |リソース グループ   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
-   |リージョン  |  \<ユーザーに最も近いリージョンを選択\> | Stream Analytics ジョブをホストすることができる地理的な場所を選択します。 パフォーマンスを向上させ、データ転送コストを削減するために、ユーザーに最も近い場所を使用します。 |
+   |Location  |  \<ユーザーに最も近いリージョンを選択\> | Stream Analytics ジョブをホストすることができる地理的な場所を選択します。 パフォーマンスを向上させ、データ転送コストを削減するために、ユーザーに最も近い場所を使用します。 |
    |[ストリーミング ユニット]  | 1  |   ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。   |
    |ホスティング環境  |  クラウド  |   Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT エッジ デバイスにデプロイすることができます。 |
 

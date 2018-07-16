@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2018f5b7051f2b6906372dad3319c763974b93b1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 49702349b1c2476f5743122b33cb3375e54df191
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355187"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930098"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>クイック スタート: App Service on Linux で Java Web アプリを作成する
 
@@ -76,7 +76,7 @@ Maven からデプロイするには、*pom.xml* ファイルの `<build>` 要�
       <plugin>
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-webapp-maven-plugin</artifactId> 
-        <version>1.1.0</version>
+        <version>1.2.0</version>
         <configuration> 
           <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
           <appName>YOUR_WEB_APP</appName> 
@@ -101,12 +101,44 @@ Maven からデプロイするには、*pom.xml* ファイルの `<build>` 要�
 
 プラグイン構成で、次のプレースホルダーを更新します。
 
-| Placeholder | [説明] |
+| Placeholder | 説明 |
 | ----------- | ----------- |
 | `YOUR_RESOURCE_GROUP` | Web アプリの作成先となる新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
 | `YOUR_WEB_APP` | Azure にデプロイされると、アプリ名は Web アプリのホスト名の一部になります (YOUR_WEB_APP.azurewebsites.net)。 この値を、Java アプリをホストする新しい Azure Web アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
 
-構成の `linuxRuntime` 要素は、アプリケーションでどの組み込みの Linux イメージが使用されるかを制御します。
+構成の `linuxRuntime` 要素は、アプリケーションでどの組み込みの Linux イメージが使用されるかを制御します。 サポートされているすべてのランタイム スタックは、[こちらのリンク](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin#runtime-stacks)に見つかります。 
+
+
+> [!NOTE] 
+> この記事では、WAR ファイルのみを取り扱います。 ただし、このプラグインは、*pom.xml* ファイルの `<build>` 要素内に次のプラグイン定義を使用することで、JAR Web アプリケーションをサポートします。
+>
+>```xml
+>    <plugins>
+>      <plugin>
+>        <groupId>com.microsoft.azure</groupId> 
+>        <artifactId>azure-webapp-maven-plugin</artifactId> 
+>        <version>1.2.0</version>
+>        <configuration> 
+>          <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
+>          <appName>YOUR_WEB_APP</appName> 
+>          <linuxRuntime>jre8</linuxRuntime>   
+>          <!-- This is to make sure the jar file will not be occupied during the deployment -->
+>          <stopAppDuringDeployment>true</stopAppDuringDeployment>
+>          <deploymentType>ftp</deploymentType> 
+>          <resources> 
+>              <resource> 
+>                  <directory>${project.basedir}/target</directory> 
+>                  <targetPath>webapps</targetPath> 
+>                  <includes> 
+>                      <!-- Currently it is required to set as app.jar -->
+>                      <include>app.jar</include> 
+>                  </includes>  
+>              </resource> 
+>          </resources> 
+>        </configuration>
+>      </plugin>
+>    </plugins>
+>```    
 
 次のコマンドを実行し、すべての指示に従って Azure CLI で認証を行います。
 

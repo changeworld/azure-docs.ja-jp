@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796357"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928694"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>MongoDB の機能と構文に対する MongoDB API サポート
 
@@ -23,14 +23,19 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 Azure Cosmos DB の MongoDB API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partition-data.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Azure Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
+## <a name="mongodb-protocol-support"></a>MongoDB のプロトコル サポート
+
+Azure Cosmos DB MongoDB API は、既定で MongoDB Server バージョン **3.2** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 現在、MongoDB バージョン **3.4** で追加された機能やクエリ演算子は、プレビュー機能として使用できます。 これらのプロトコルを認識するクライアント ドライバーはすべて、MongoDB API を使用して Cosmos DB に接続できる必要があります。
+
+また、現在、[MongoDB 集計パイプライン](#aggregation-pipeline)も、別個のプレビュー機能として使用できます。
+
 ## <a name="mongodb-query-language-support"></a>MongoDB クエリ言語のサポート
 
 Azure Cosmos DB の MongoDB API は、MongoDB クエリ言語の構成要素を包括的にサポートしています。 以下に、現在サポートされている操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
 
-
 ## <a name="database-commands"></a>データベース コマンド
 
-Azure Cosmos DB は、MongoDB API のすべてのアカウントで、以下のデータベース コマンドをサポートしています。 
+Azure Cosmos DB は、MongoDB API のすべてのアカウントで、以下のデータベース コマンドをサポートしています。
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 - 削除
@@ -287,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | サポートされていません。 代わりに $regex を使用 
+$text |  | サポートされていません。 代わりに $regex を使用してください。
+
+## <a name="unsupported-operators"></a>サポートされていない演算子
+
+```$where``` と ```$eval``` の演算子は、Azure Cosmos DB ではサポートされていません。
 
 ### <a name="methods"></a>メソッド
 
@@ -316,6 +325,10 @@ Azure Cosmos DB では、ユーザーとロールはまだサポートされて�
 ## <a name="replication"></a>レプリケーション
 
 Cosmos azure DB では、最下位のレイヤーで、自動のネイティブ レプリケーションがサポートされています。 このロジックは、低待機時間のグローバルなレプリケーションも実現するために拡張されています。 Azure Cosmos DB Cosmos では、手動のレプリケーション コマンドはサポートされていません。
+
+## <a name="write-concern"></a>書き込み確認
+
+一部の MongoDB の API では、書き込み操作中に必要とされる応答の数を指定する、[書き込み確認](https://docs.mongodb.com/manual/reference/write-concern/)の指定がサポートされています。 Cosmos DB が背景でレプリケーションを処理する方法により、既定ですべての書き込みが自動的にクォーラムになります。 クライアント コードによって指定される書き込み確認はすべて無視されます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。
 
 ## <a name="sharding"></a>シャーディング
 

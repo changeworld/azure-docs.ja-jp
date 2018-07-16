@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f1d23419df6f66ef430cb57f41a9a70c7babe7df
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30242052"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919143"
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
 
@@ -46,8 +46,8 @@ Azure Site Recovery を使用してすべての適合 VM を Azure に保護す�
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)** Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 
 ## <a name="detailed-cost-analysis"></a>Detailed cost analysis (詳細コスト分析)
-Azure のコンピューティング、ストレージ、ネットワークなどの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているプランに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、プラン ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
-このセクションには、レポート生成に使用されたサブスクリプション ID とプラン ID が表示されます。  使用しなかった場合は、何も表示されません。
+Azure のコンピューティング、ストレージ、ネットワークなどの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、オファー ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
+このセクションには、レポート生成に使用されたサブスクリプション ID とオファー ID が表示されます。  使用しなかった場合は、何も表示されません。
 
 レポート全体のうち、灰色でマークされたセルは読み取り専用です。 白色のセルは、必要に応じて変更できます。
 
@@ -92,7 +92,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 ### <a name="number-of-virtual-machines-type-and-compute-cost-per-year"></a>Number of virtual machines type and compute cost (per year) (各種仮想マシンの数とコンピューティング コスト (年間))
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
-### <a name="settings"></a>[設定] 
+### <a name="settings"></a>設定 
 **[Using managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。 [Cost duration]\(コスト期間\): すべてのコストは、月または年単位で表示できます。 

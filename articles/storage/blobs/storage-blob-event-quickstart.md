@@ -5,31 +5,32 @@ services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 07/05/2018
+ms.topic: quickstart
 ms.service: storage
-ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e2f6f2cbf843c6c3b0202a2ef59f6b8e16291f54
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869248"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Azure CLI で Blob Storage のイベントをカスタム Web エンドポイントにルーティングする
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。
 
-通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([Hookbin](https://hookbin.com/)) を使用して作成します。
+通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
-> [!NOTE]
-> **Hookbin** は、高スループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+この記事の手順の最後に、イベント データが Web アプリに送信済みであることを確認できます。
 
-この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
+![サブスクリプション イベントの表示](./media/storage-blob-event-quickstart/view-results.png)
+
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択した場合、この記事では、最新バージョンの Azure CLI (2.0.24 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用することを選択した場合、この記事では、最新バージョンの Azure CLI (2.0.24 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
 
@@ -66,20 +67,44 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 Hookbin は、エンドポイントを作成し、そこに送信された要求を表示できるサードパーティ ツールです。 [Hookbin](https://hookbin.com/) に移動し、**[新しいエンドポイントの作成]** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/dbarkol/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
+
+`<your-site-name>` は、Web アプリの一意の名前に置き換えてください。 Web アプリ名は、DNS エントリの一部であるため、一意である必要があります。
+
+```azurecli-interactive
+sitename=<your-site-name>
+
+az group deployment create \
+  --resource-group <resource_group_name> \
+  --template-uri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" \
+  --parameters siteName=$sitename hostingPlanName=viewerhost
+```
+
+デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
+
+現在表示されているメッセージがないサイトが表示されます。
+
+[!INCLUDE [event-grid-register-provider-cli.md](../../../includes/event-grid-register-provider-cli.md)]
 
 ## <a name="subscribe-to-your-storage-account"></a>ストレージ アカウントをサブスクライブする
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、Hookbin からの URL をイベント通知のエンドポイントとして渡します。 `<event_subscription_name>` は、実際のイベント サブスクリプションの一意の名前に、`<endpoint_URL>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<resource_group_name>` と `<storage_account_name>` には、先ほど作成した値を使用します。  
+どのイベントを追跡し、どこにイベントを送信するかは、トピックをサブスクライブすることによって Event Grid に伝えます。 次の例では、作成したストレージ アカウントをサブスクライブし、Web アプリからの URL をイベント通知のエンドポイントとして渡します。 `<event_subscription_name>` をイベント サブスクリプションの名前に置き換えます。 `<resource_group_name>` と `<storage_account_name>` には、先ほど作成した値を使用します。
+
+Web アプリのエンドポイントには、サフィックス `/api/updates/` が含まれている必要があります。
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
   --resource-id $storageid \
   --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
+  --endpoint $endpoint
 ```
+
+Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 目のアイコンを選択してイベント データを展開します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 Web アプリには、サブスクリプションを検証するコードが含まれています。
+
+![サブスクリプション イベントの表示](./media/storage-blob-event-quickstart/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Blob Storage からのイベントのトリガー
 
@@ -95,7 +120,8 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL に移動します。 または、開いているブラウザーで [更新] をクリックします。 先ほど送信したイベントが表示されます。 
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、送信したイベント確認します。
+
 
 ```json
 [{

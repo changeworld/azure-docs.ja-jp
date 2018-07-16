@@ -1,6 +1,6 @@
 ---
-title: ネットワーク トラフィックをフィルター処理する - チュートリアル - Azure PowerShell | Microsoft Docs
-description: このチュートリアルでは、ネットワーク セキュリティ グループと PowerShell を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
+title: ネットワーク トラフィックをフィルター処理する - チュートリアル - Azure portal | Microsoft Docs
+description: このチュートリアルでは、ネットワーク セキュリティ グループと Azure portal を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/30/2018
+ms.date: 06/20/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 165bd6770109348bd19ebb4fa1735bedf83004b1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.custom: ''
+ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261319"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901400"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-powershell"></a>チュートリアル: ネットワーク セキュリティ グループと PowerShell を使用してネットワーク トラフィックをフィルター処理する
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: ネットワーク セキュリティ グループと Azure portal を使用してネットワーク トラフィックをフィルター処理する
 
 ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,272 +34,191 @@ ms.locfileid: "34261319"
 > * 仮想マシン (VM) をサブネットに展開する
 > * トラフィック フィルターをテストする
 
-好みに応じて、[Azure CLI](tutorial-filter-network-traffic-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
+普段使用している [Azure CLI](tutorial-filter-network-traffic-cli.md) や [PowerShell](tutorial-filter-network-traffic-powershell.md) を使用してこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
-
-## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-
-ネットワーク セキュリティ グループにはセキュリティ規則が含まれています。 セキュリティ規則には、送信元と送信先が指定されています。 送信元と送信先にはアプリケーション セキュリティ グループを指定できます。
-
-### <a name="create-application-security-groups"></a>アプリケーション セキュリティ グループを作成する
-
-まず [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して、このチュートリアルで作成したすべてのリソースのリソース グループを作成します。 次の例では、*eastus* の場所にリソース グループを作成します。 
-
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
-```
-
-[New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup) を使用してアプリケーション セキュリティ グループを作成します。 アプリケーション セキュリティ グループを使用すると、同様のポート フィルター処理要件を持つサーバーをグループ化できます。 次の例では、2 つのアプリケーション セキュリティ グループを作成します。
-
-```azurepowershell-interactive
-$webAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgWebServers `
-  -Location eastus
-
-$mgmtAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgMgmtServers `
-  -Location eastus
-```
-
-### <a name="create-security-rules"></a>セキュリティ規則を作成する
-
-[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用してセキュリティ規則を作成します。 次の例では、インターネットから *myWebServers* アプリケーション セキュリティ グループへの、ポート 80 および 443 経由の受信トラフィックを許可する規則を作成します。
-
-```azurepowershell-interactive
-$webRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-Web-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 100 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $webAsg.id `
-  -DestinationPortRange 80,443
-
-The following example creates a rule that allows traffic inbound from the internet to the *myMgmtServers* application security group over port 3389:
-
-$mgmtRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-RDP-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 110 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $mgmtAsg.id `
-  -DestinationPortRange 3389
-```
-
-このチュートリアルでは、*myAsgMgmtServers* VM の RDP (ポート 3389) がインターネットに公開されています。 運用環境では、ポート 3389 をインターネットに公開せずに、[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または[プライベート](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ネットワーク接続を使用して、管理する Azure リソースに接続することをお勧めします。
-
-### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-
-[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsg* という名前のネットワーク セキュリティ グループを作成します。 
-
-```powershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myNsg `
-  -SecurityRules $webRule,$mgmtRule
-```
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
-```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location EastUS `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | Name                    | myVirtualNetwork                                   |
+    | アドレス空間           | 10.0.0.0/16                                        |
+    | サブスクリプション            | サブスクリプションを選択します。                          |
+    | リソース グループ          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
+    | Location                | **[米国東部]** を選択します。                                |
+    | サブネット名            | mySubnet                                           |
+    | サブネット アドレス範囲  | 10.0.0.0/24                                        |
 
-[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネット構成を作成し、[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) を使用してサブネット構成を仮想ネットワークに書き込みます。 次の例では、*mySubnet* という名前のサブネットを仮想ネットワークに追加し、それに *myNsg* ネットワーク セキュリティ グループを関連付けます。
+## <a name="create-application-security-groups"></a>アプリケーション セキュリティ グループを作成する
 
-```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -VirtualNetwork $virtualNetwork `
-  -AddressPrefix "10.0.2.0/24" `
-  -NetworkSecurityGroup $nsg
-$virtualNetwork | Set-AzureRmVirtualNetwork
-```
+アプリケーション セキュリティ グループを使用すると、Web サーバーなど、同様の機能を持つサーバーをグループ化できます。
+
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[Marketplace を検索]** ボックスで、「*Application security group*」と入力します。 検索結果に **Application security group** が表示されたら、それを選択し、**[Everything]** の下にある **[Application security group]** を再度選択して、**[作成]** を選択します。
+3. 以下の情報を入力するか選んだ後、**[作成]** を選びます。
+
+    | Setting        | 値                                                         |
+    | ---            | ---                                                           |
+    | Name           | myAsgWebServers                                               |
+    | サブスクリプション   | サブスクリプションを選択します。                                     |
+    | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
+    | Location       | 米国東部                                                       |
+
+4. 手順 3 を繰り返し、次の値を指定します。
+
+    | Setting        | 値                                                         |
+    | ---            | ---                                                           |
+    | Name           | myAsgMgmtServers                                              |
+    | サブスクリプション   | サブスクリプションを選択します。                                     |
+    | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
+    | Location       | 米国東部                                                       |
+
+## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[ネットワーク]** を選び、**[ネットワーク セキュリティ グループ]** を選びます。
+3. 以下の情報を入力するか選んだ後、**[作成]** を選びます。
+
+    |Setting|値|
+    |---|---|
+    |Name|myNsg|
+    |サブスクリプション| サブスクリプションを選択します。|
+    |リソース グループ | **[既存のものを使用]**、*[myResourceGroup]* の順に選択します。|
+    |Location|米国東部|
+
+## <a name="associate-network-security-group-to-subnet"></a>ネットワーク セキュリティ グループをサブネットに関連付ける
+
+1. ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスで、「*myNsg*」と入力します。 検索結果に **myNsg** が表示されたら、それを選択します。
+2. 次の図に示すように、**[設定]** で **[サブネット]** を選択し、**[+ 関連付け]** を選択します。
+
+    ![NSG をサブネットに関連付ける](./media/tutorial-filter-network-traffic/associate-nsg-subnet.png)
+
+3. **[サブネットの関連付け]** で **[仮想ネットワーク]** を選択し、**[myVirtualNetwork]** を選択します。 **[サブネット]** を選択し、**[mySubnet]** を選択して **[OK]** を選択します。
+
+## <a name="create-security-rules"></a>セキュリティ規則を作成する
+
+1. 次の図に示すように、**[設定]** で **[受信セキュリティ規則]** を選択し、**[+ 追加]** を選択します。
+
+    ![受信セキュリティ規則を追加する](./media/tutorial-filter-network-traffic/add-inbound-rule.png)
+
+2. **myAsgWebServers** アプリケーション セキュリティ グループに、ポート 80 と 443 を許可するセキュリティ規則を作成します。 **[受信セキュリティ規則]** で、値を入力するか次の値を選択し、残りの既定値はそのまま受け入れて、**[追加]** を選択します。
+
+    | Setting                 | 値                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | 変換先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
+    | 宛先ポート範囲 | 「80,443」と入力                                                                                                    |
+    | プロトコル                | [TCP] を選択                                                                                                      |
+    | Name                    | Allow-Web-All                                                                                                   |
+
+3. 手順 2 を繰り返して、次の値を指定します。
+
+    | Setting                 | 値                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | 変換先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
+    | 宛先ポート範囲 | 「3389」と入力                                                                                                      |
+    | プロトコル                | [TCP] を選択                                                                                                      |
+    | 優先順位                | 「110」と入力                                                                                                       |
+    | Name                    | Allow-RDP-All                                                                                                   |
+
+    このチュートリアルでは、*myAsgMgmtServers* アプリケーション セキュリティ グループに割り当てられている VM 用に、RDP (ポート 3389) がインターネットに公開されています。 運用環境では、ポート 3389 をインターネットに公開せずに、VPN またはプライベート ネットワーク接続を使用して、管理する Azure リソースに接続することをお勧めします。
+
+手順 1 から 3 を完了したら、作成した規則を確認します。 一覧は、次の図のように表示されます。
+
+![セキュリティ規則](./media/tutorial-filter-network-traffic/security-rules.png)
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-VM を作成する前に、[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) を使用して、サブネットを持つ仮想ネットワーク オブジェクトを取得します。
+仮想ネットワーク内に 2 つの VM を作成します。
 
-```powershell-interactive
-$virtualNetwork = Get-AzureRmVirtualNetwork `
- -Name myVirtualNetwork `
- -Resourcegroupname myResourceGroup
-```
-[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用して、各 VM のパブリック IP アドレスを作成します。
+### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-```powershell-interactive
-$publicIpWeb = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmWeb
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
 
-$publicIpMgmt = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmMgmt
-```
+    |Setting|値|
+    |---|---|
+    |Name|myVmWeb|
+    |ユーザー名| 任意のユーザー名を入力します。|
+    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |サブスクリプション| サブスクリプションを選択します。|
+    |リソース グループ| **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。|
+    |Location| **[米国東部]** を選択します。|
 
-[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) で 2 つのネットワーク インターフェイスを作成し、パブリック IP アドレスをネットワーク インターフェイスに割り当てます。 次の例では、ネットワーク インターフェイスを作成し、それに *myVmWeb* パブリック IP アドレスを関連付けて、*myAsgWebServers* アプリケーション セキュリティ グループのメンバーにします。
+4. VM のサイズを選択して、**[選択]** を選択します。
+5. **[設定]** で、次の値を選択し、それ以外の値は既定値をそのまま使用して、**[OK]** を選択します。
 
-```powershell-interactive
-$webNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $webAsg.Id `
-  -PublicIpAddressId $publicIpWeb.Id
-```
+    |Setting|値|
+    |---|---|
+    |Virtual network |**[myVirtualNetwork]** を選択する|
+    |ネットワーク セキュリティ グループ | **[Advanced] \(詳細設定)** を選択します。|
+    |ネットワーク セキュリティ グループ (ファイアウォール)| **[(new) myVmWeb-nsg]** を選択し、**[ネットワーク セキュリティ グループの選択]** で、**[なし]** を選択します。 |
 
-次の例では、ネットワーク インターフェイスを作成し、それに *myVmMgmt* パブリック IP アドレスを関連付けて、*myAsgMgmtServers* アプリケーション セキュリティ グループのメンバーにします。
+6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
 
-```powershell-interactive
-$mgmtNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $mgmtAsg.Id `
-  -PublicIpAddressId $publicIpMgmt.Id
-```
+### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
-仮想ネットワークに 2 つの VM を作成して、後でトラフィックのフィルター処理を検証できるようにします。 
+手順 1 から 6 をもう一度実行します。ただし、手順 3 では、VM の名前を *myVmMgmt* にします。 VM のデプロイには数分かかります。 VM がデプロイされるまで、次の手順に進まないでください。
 
-[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使用して VM 構成を作成し、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 次の例では、Web サーバーとして機能する VM を作成します。 `-AsJob` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 
+## <a name="associate-network-interfaces-to-an-asg"></a>ネットワーク インターフェイスを ASG に関連付ける
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+ポータルで VM が作成されると、各 VM 用のネットワーク インターフェイスが作成され、そのネットワーク インターフェイスを VM に接続します。 各 VM 用のネットワーク インターフェイスを、前に作成したアプリケーション セキュリティ グループの 1 つに追加します。
 
-$webVmConfig = New-AzureRmVMConfig `
-  -VMName myVmWeb `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmWeb `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $webNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $webVmConfig `
-  -AsJob
-```
+1. ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスで、「*myVmWeb*」と入力します。 検索結果に **[myVmWeb]** VM が表示されたら、それを選択します。
+2. **[設定]** で、**[ネットワーク]** を選択します。  次の図に示すように、**[Configure the application security groups]\(アプリケーション セキュリティ グループの構成\)** を選択し、**[Application security groups]\(アプリケーション セキュリティ グループ\)** で **[myAsgWebServers]** を選択して、**[OK]** を選択します。
 
-管理サーバーとして機能する VM を作成します。
+    ![ASG を関連付ける](./media/tutorial-filter-network-traffic/associate-to-asg.png)
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-# Create the web server virtual machine configuration and virtual machine.
-$mgmtVmConfig = New-AzureRmVMConfig `
-  -VMName myVmMgmt `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmMgmt `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $mgmtNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $mgmtVmConfig
-```
-
-仮想マシンの作成には、数分かかります。 Azure で VM の作成が完了するまで、次の手順に進まないでください。
+3. 手順 1 および 2 をもう一度実行し、**myVmMgmt** VM を検索して、**myAsgMgmtServers** ASG を選択します。
 
 ## <a name="test-traffic-filters"></a>トラフィック フィルターをテストする
 
-[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 次の例では、*myVmMgmt* VM のパブリック IP アドレスを返しています。
+1. *myVmMgmt* VM に接続します。 ポータル上部の [検索] ボックスに「*myVmMgmt*」と入力します。 検索結果に **[myVmMgmt]** が表示されたら、それを選択します。 **[接続]** を選択します。
+2. **[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードした RDP ファイルを開き、**[接続]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
+4. **[OK]** を選択します。
+5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
+    インターネットから、*myVmMgmt* VM に接続されているネットワーク インターフェイスが含まれている *myAsgMgmtServers* アプリケーション セキュリティ グループに対する送信でポート 3389 が許可されているため、この接続は成功します。
 
-次のコマンドを使用して、お使いのローカル コンピューターから、*myVmMgmt* VM でリモート デスクトップ セッションを作成します。 `<publicIpAddress>` を前のコマンドで返された IP アドレスに置き換えます。
+6. PowerShell セッションで次のコマンドを入力し、*myVmMgmt* VM から *myVmWeb* VM に接続します。
 
-```
-mstsc /v:<publicIpAddress>
-```
+    ``` 
+    mstsc /v:myVmWeb
+    ```
 
-ダウンロードされた RDP ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。
+    myVmMgmt VM から myVmWeb VM に接続できるのは、同じ仮想ネットワーク内にある VM が既定で任意のポートを使用して互いに通信できるためです。 ただし、*myAsgWebServers* のセキュリティ規則は、インターネットからのポート 3389 を介した受信を許可せず、すべてのリソースに対するインターネットからの受信トラフィックは既定で拒否されるため、インターネットから *myVmWeb* VM へのリモート デスクトップ接続を作成することはできません。
 
-VM の作成時に指定したユーザー名とパスワードを入力し (VM の作成時に入力した資格情報を指定するために、**[その他]**、**[別のアカウントを使う]** の選択が必要になる場合があります)、**[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** を選択して、接続処理を続行します。 
-   
-インターネットから、*myVmMgmt* VM に接続されているネットワーク インターフェイスが含まれている *myAsgMgmtServers* アプリケーション セキュリティ グループに対する送信でポート 3389 が許可されているため、この接続は成功します。
+7. *myVmWeb* VM に Microsoft IIS をインストールするには、*myVmWeb* VM の PowerShell セッションから次のコマンドを入力します。
 
-PowerShell から次のコマンドを使用して、*myVmMgmt* VM から *myVmWeb* VM へのリモート デスクトップ接続を作成します。
+    ```powershell
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    ```
 
-``` 
-mstsc /v:myvmWeb
-```
+8. IIS のインストールが完了したら、*myVmWeb* VM から切断します。*myVmMgmt* VM のリモート デスクトップ接続は保持されます。
+9. *myVmMgmt* VM から切断します。
+10. Azure portal の上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、お使いのコンピューターから「*myVmWeb*」と入力します。 検索結果に **[myVmWeb]** が表示されたら、それを選択します。 実際の VM の**パブリック IP アドレス**をメモします。 次の図に示すアドレスは 137.135.84.74 になっていますが、実際のアドレスは異なります。
 
-各ネットワーク セキュリティ グループ内の既定のセキュリティ規則では、仮想ネットワーク内のすべての IP アドレス間で、すべてのポートを介したトラフィックが許可されるため、この接続は成功します。 *myAsgWebServers* のセキュリティ規則は、インターネットからのポート 3389 を介した受信を許可しないため、インターネットから *myVmWeb* VM へのリモート デスクトップ接続を作成することはできません。
-
-PowerShell から次のコマンドを使用して、Microsoft IIS を *myVmWeb* VM にインストールします。
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-IIS のインストールが完了したら、*myVmWeb* VM から切断します。*myVmMgmt* VM のリモート デスクトップ接続は保持されます。 IIS のようこそ画面を表示するには、インターネット ブラウザーを開き、http://myVmWeb にアクセスします。
-
-*myVmMgmt* VM から切断します。
-
-コンピューターで PowerShell から次のコマンドを入力し、*myVmWeb* サーバーのパブリック IP アドレスを取得します。
-
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
-
-Azure の外部から *myVmWeb* Web サーバーにアクセスできることを確認するには、コンピューターでインターネット ブラウザーを開き、`http://<public-ip-address-from-previous-step>` にアクセスします。 インターネットから、*myVmWeb* VM に接続されているネットワーク インターフェイスが含まれている *myAsgWebServers* アプリケーション セキュリティ グループに対する送信でポート 80 が許可されているため、この接続は成功します。
+    ![パブリック IP アドレス](./media/tutorial-filter-network-traffic/public-ip-address.png)
+  
+11. インターネットから *myVmWeb* Web サーバーにアクセスできることを確認するには、コンピューターでインターネット ブラウザーを開き、`http://<public-ip-address-from-previous-step>` にアクセスします。 IIS のウェルカム画面が表示されます。*myVmWeb* VM に接続されているネットワーク インターフェイスを含む *myAsgWebServers* アプリケーション セキュリティ グループへのインターネットからの受信トラフィックが、ポート 80 で許可されているためです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
+リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
 
-```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
-```
+1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+2. **[リソース グループの削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,17 +4,17 @@ description: このクイック スタートでは、事前作成されたコー
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 07/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0e0d22b3363b00c81be5091fd12773f9e486c09e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8ee43a1e3b448faae79a7e3086e2e1d639c341f2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099187"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611929"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
@@ -32,6 +32,13 @@ Azure IoT Edge を使用すると、すべてのデータをクラウドにプ�
 このクイック スタートでは、Linux コンピューターまたは仮想マシンを IoT Edge デバイスに変えます。 その後、モジュールを Azure portal からご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。 
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][lnk-account]を作成してください。
+
+## <a name="prerequisites"></a>前提条件
+
+このクイック スタートでは、Linux マシンを IoT Edge デバイスとして使用しています。 テスト用に用意していない場合は、[Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)方法の手順に従って作成してください。 
+* Web サーバーをインストールして実行する手順に従う必要はありません。 仮想マシンに接続する手順までで止めることができます。  
+* 新しいリソース グループに仮想マシンを作成します。このリソース グループは、このクイック スタートの他の Azure リソースを作成するときに使用できます。 *IoTEdgeResources* など、わかりやすい名前に変更します。 
+* IoT Edge をテストするために非常に大きな仮想マシンは必要ありません。 **B1ms** などのサイズで十分です。 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -54,6 +61,8 @@ Azure IoT Edge ランタイムをデバイスにインストールして開始�
 ![デバイスを登録する][5]
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。 
+
+このクイック スタートで準備した Linux マシンまたは VM で、次の手順を実行します。 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>デバイスを登録してソフトウェア リポジトリを使用する
 
@@ -85,11 +94,16 @@ IoT Edge ランタイムは一連のコンテナーであり、ご自身の IoT 
    sudo apt-get update
    ```
 
-Moby、コンテナー ランタイム、およびその CLI コマンドをインストールします。 
+コンテナー ランタイムの **Moby** をインストールします。
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+Moby の CLI コマンドをインストールします。 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>IoT Edge セキュリティ デーモンをインストールして構成する
@@ -109,9 +123,13 @@ Moby、コンテナー ランタイム、およびその CLI コマンドをイ�
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. ご自身のデバイスを登録したときにコピーした IoT Edge デバイスの接続文字列を追加します。 このクイック スタートで前にコピーした変数 **device_connection_string** の値を置き換えます。
+3. IoT Edge デバイスの接続文字列を追加します。 変数 **device_connection_string** を見つけて、値をデバイスの登録後にコピーした文字列に更新します。
 
-4. Edge セキュリティ デーモンを再起動します。
+4. ファイルを保存して閉じます。 
+
+   `CTRL + X`、`Y`、`Enter`
+
+4. IoT Edge セキュリティ デーモンを再起動します。
 
    ```bash
    sudo systemctl restart iotedge
@@ -133,10 +151,12 @@ Moby、コンテナー ランタイム、およびその CLI コマンドをイ�
 
 6. ご自身のデバイスで実行されているモジュールを表示します。 
 
+   >[!TIP]
+   >最初に *sudo* を使用して `iotedge` コマンドを実行する必要があります。 マシンからサインアウトし、サインインし直してアクセス許可を更新すると、昇格された特権を使用せずに `iotedge` コマンドを実行できます。 
+
    ```bash
    sudo iotedge list
    ```
-一度ログオフしてからログインすると、上記のコマンドで *sudo* は不要になります。
 
    ![ご自身のデバイス上の 1 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -157,7 +177,6 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
    ```bash
    sudo iotedge list
    ```
-一度ログオフしてからログインすると、上記のコマンドで *sudo* は不要になります。
 
    ![ご利用のデバイスの 3 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-2.png)
 
@@ -177,7 +196,22 @@ tempSensor モジュールから送信されているメッセージを確認し
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-IoT Edge のチュートリアルに進む場合は、このクイック スタートで登録および設定したデバイスを使用できます。 デバイスからインストールを削除するには、次のコマンドを使用します。  
+IoT Edge のチュートリアルに進む場合は、このクイック スタートで登録および設定したデバイスを使用できます。 それ以外の場合は、作成した Azure リソースを削除し、デバイスから IoT Edge ランタイムを削除することができます。 
+
+### <a name="delete-azure-resources"></a>Azure リソースを削除する
+
+新しいリソース グループで仮想マシンと IoT ハブを作成した場合、そのグループと関連するすべてのリソースを削除できます。 リソース グループ内に残したいリソースがある場合は、クリーン アップする個々のリソースのみを削除します。 
+
+リソース グループを削除するには、次の手順を実行します。 
+
+1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+2. **[名前でフィルター処理してください]** ボックスに、IoT ハブが含まれているリソース グループの名前を入力します。 
+3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+
+### <a name="remove-the-iot-edge-runtime"></a>IoT Edge ランタイムを削除する
+
+デバイスからインストールを削除するには、次のコマンドを使用します。  
 
 IoT Edge ランタイムを削除します。
 
@@ -185,10 +219,18 @@ IoT Edge ランタイムを削除します。
    sudo apt-get remove --purge iotedge
    ```
 
-デバイス上に作成されたコンテナーを削除します。 
+IoT Edge ランタイムが削除されると、作成したコンテナーは停止されますが、デバイスには残っています。 すべてのコンテナーを表示します。
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+IoT Edge ランタイムによってデバイス上に作成されたコンテナーを削除します。 tempSensor コンテナーを別の名前で呼ぶ場合は、名前を変更します。 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 コンテナー ランタイムを削除します。
@@ -196,8 +238,6 @@ IoT Edge ランタイムを削除します。
    ```bash
    sudo apt-get remove --purge moby
    ```
-
-このクイック スタートで作成した Azure IoT ハブまたは IoT Edge デバイスが不要になった場合は、Azure portal で削除できます。 IoT ハブの概要ページに移動し、**[削除]** を選択します。 
 
 ## <a name="next-steps"></a>次の手順
 
@@ -221,5 +261,6 @@ IoT Edge ランタイムを削除します。
 [9]: ./media/tutorial-simulate-device-linux/sensor-data.png
 
 <!-- Links -->
+[lnk-account]: https://azure.microsoft.com/free
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

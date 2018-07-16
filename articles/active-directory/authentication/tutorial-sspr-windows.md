@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867495"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972983"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>ログイン画面からの Azure AD パスワード リセット
 
@@ -28,7 +28,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 * Windows 10 April 2018 Update、または [Azure AD に参加済み](../device-management-azure-portal.md)または[ハイブリッド Azure AD に参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)の新しいクライアント。
 * Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
 * "パスワードのリセット" リンクを有効にするための設定を、次のいずれかの方法で構成し、デプロイしてください。
-   * [Intune デバイス構成プロファイル](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Intune デバイス構成プロファイル](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)。 この方法では、デバイスの Intune 登録が必要です。
    * [レジストリ キー](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
@@ -66,7 +66,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
    * **[選択]** をクリックします。
 4. **[作成]**
 
-グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory-manage-groups.md)」の記事を参照してください。
+グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)」の記事を参照してください。
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>デバイス構成ポリシーをデバイス グループに割り当てる
 

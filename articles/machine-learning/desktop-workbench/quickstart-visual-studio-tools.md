@@ -7,22 +7,24 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932984"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 Visual Studio Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 また、[Azure Batch AI (プレビュー)](https://docs.microsoft.com/azure/batch-ai/) にも簡単にアクセスできるようになっています。
  
 ## <a name="getting-started"></a>使用の開始 
 操作を開始するには、最初に [Visual Studio](https://www.visualstudio.com/downloads/) をダウンロードしてインストールする必要があります。 Visual Studio を開いたら、次の手順を実行します。
-1. Visual Studio のメニュー バーをクリックし、[拡張機能と更新プログラム] を選択します。
+1. Visual Studio のメニュー バーの [ツール] をクリックし、[拡張機能と更新プログラム] を選択します。
 2. [オンライン] タブをクリックし、[Visual Studio Marketplace の検索] を選択します。
 3. 「Visual Studio for AI」を検索します。 
 3. **[ダウンロード]** ボタンをクリックします。 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 531aeaacf0bd70521d70afb45d141fc3296ebb04
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a302cdcf94baa869e55262c4cd380fc05bf64299
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058116"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461607"
 ---
 # <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-build"></a>チュートリアル: Azure Container Registry Build を使用して基本イメージの更新時のイメージ ビルドを自動化する
 
@@ -33,7 +33,7 @@ ACR Build では、いずれかの基本イメージ内で OS またはアプリ
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.32** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli]」を参照してください。
+ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.32** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

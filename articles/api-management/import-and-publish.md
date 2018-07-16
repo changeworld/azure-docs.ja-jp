@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935879"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722849"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
@@ -53,7 +53,9 @@ ms.locfileid: "33935879"
 
     API の値は、作成時に、または後で **[設定]** タブに移動して設定できます。フィールドの横にある赤色の星印は、必須フィールドを示します。
 
-    |Setting|値|[説明]|
+    以下の表の値を使用して、最初の API を作成します。
+
+    |設定|値|説明|
     |---|---|---|
     |**OpenAPI の仕様**|http://conferenceapi.azurewebsites.net?format=json|API を実装しているサービスを参照します。 要求は、API Management によってこのアドレスに転送されます。|
     |**[表示名]**|*Demo Conference API\(デモ会議 API\)*|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。 <br/>この名前は開発者ポータルに表示されます。|
@@ -75,19 +77,21 @@ Azure Portal には、API の操作を表示およびテストするための便
 1. 前の手順 (**[API]** タブ) で作成した API を選びます。
 2. **[テスト]** タブをクリックします。![API をテストする](./media/api-management-get-started/test-api.png)
 3. **[GetSpeakers]** をクリックします。
-    ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
+    このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
 4. **[送信]** をクリックします。
 
     バックエンドは **200 OK** といくつかのデータで応答します。
 
 ## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
 
-操作を**開発者ポータル**から呼び出して API をテストすることもできます。 
+操作を**開発者ポータル**から呼び出して API をテストすることもできます。
 
-1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
-2. **[GetSpeakers]** をクリックします。
+1. **開発者ポータル**に移動します。
+![開発者ポータル](./media/api-management-get-started/developer-portal.png)
+
+2. **[APIS]** を選択し、**[Demo Conference API]\(デモ会議 API\)**、**[GetSpeakers]** の順にクリックします。
     
-    ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
+    このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
 3. **[テスト]** をクリックします。
 4. **[送信]** をクリックします。
     

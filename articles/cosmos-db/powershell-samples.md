@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: 71e75b4b2bb60ad2c1ae1a468991fe1f5520136c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 066826661381f40af2943359eb75abae8306bb7b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700368"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855585"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure Cosmos DB 用 Azure PowerShell サンプル
 
-次の表には、Azure Cosmos DB の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。 現時点では、PowerShell 経由で Azure Cosmos DB アカウントを管理することしかできません。データベースやコレクションなどの他のリソースは、PowerShell 経由では管理できません。
+次の表には、Azure Cosmos DB の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。 現時点では、PowerShell 経由で Azure Cosmos DB アカウントのみを管理できます。データベースやコンテナーなどの他のリソースは、PowerShell 経由では管理できません。
 
 | |  |
 |---|---|

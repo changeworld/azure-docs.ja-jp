@@ -11,12 +11,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 11/29/2017
 ms.author: sngun
-ms.openlocfilehash: c83d8ad5b424be1a9a695f3b9a466d45ddf8f0b4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 42cfe71210b95732b4b69f7ca21a8b647e187a38
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700283"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858862"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure CLI サンプル
 
@@ -27,7 +27,7 @@ ms.locfileid: "34700283"
 |**Azure Cosmos DB のアカウント、データベース、およびコンテナーの作成**||
 |[SQL API アカウントの作成](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| SQL API で使う Azure Cosmos DB API の単一のアカウント、データベース、およびコンテナーを作成します。 |
 | [MongoDB API アカウントの作成](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB MongoDB API の単一のアカウント、データベース、およびコレクションを作成します。 |
-| [Gremlin API アカウントの作成](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB Gremlin API の単一のアカウント、データベース、およびコレクションを作成します。 |
+| [Gremlin API アカウントの作成](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB Gremlin API の単一のアカウント、データベース、およびコンテナーを作成します。 |
 |**Azure Cosmos DB のスケーリング**||
 | [コンテナーのスループットのスケーリング](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | コンテナーのプロビジョニング済みスループットを変更します。|
 |[複数リージョンへの Azure Cosmos DB データベース アカウントのレプリケートと、フェールオーバーの優先順位の構成](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|指定したフェールオーバー優先順位で、複数リージョンにグローバルにアカウント データをレプリケートします。|

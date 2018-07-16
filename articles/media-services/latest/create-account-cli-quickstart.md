@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - CLI 2.0 で Azure Media Services アカウントを作成する | Microsoft Docs
+title: クイック スタート - Azure CLI で Azure Media Services アカウントを作成する | Microsoft Docs
 description: Azure Media Services アカウントを作成するには、このクイック スタートの手順に従います。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779720"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767104"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>クイック スタート - Azure Media Services アカウントを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "33779720"
 
 開発者でもメディア コンテンツ作成者でも、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、ストリーム配信するには、Media Services アカウントを作成する必要があります。 Media Services アカウントを作成するときは、Azure Storage アカウント リソースの ID を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 このストレージ アカウント リソースは、Media Services アカウントと同じリージョンに配置する必要があります。  
 
-このクイック スタートでは、CLI 2.0 を使って新しい Azure Media Services アカウントを作成する手順について説明します。  
+このクイック スタートでは、Azure CLI を使用して新しい Azure Media Services アカウントを作成する手順について説明します。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "33779720"
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="set-the-azure-subscription"></a>Azure サブスクリプションを設定する
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5f44c634b953194ad4f112722d82f282d8c8f1a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f5a92d421bbf7bfe485252c148d5f64ae2fb8e23
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444612"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916117"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Windows 仮想マシンを作成する
 
@@ -67,7 +67,7 @@ Azure Portal (https://portal.azure.com) にサインインします。
 
 2. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** をクリックします。 
 
-3. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「*vmname*\*username*」と入力し、仮想マシン用に作成したパスワードを入力して、**[OK]** をクリックします。
+3. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「*vmname*\\*username*」と入力し、仮想マシン用に作成したパスワードを入力して、**[OK]** をクリックします。
 
 4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続を作成します。
 

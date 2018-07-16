@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 99508d6e4e6502fe4fd2a81ee7aaefdde7cd2e15
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d0cb1c113724af5d07abf75e6d3a45b54e5202dc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945804"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950772"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発空間を作成する (Node.js)
 
@@ -32,7 +32,7 @@ ms.locfileid: "36945804"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
-- 米国東部、西ヨーロッパ、またはカナダ東部の各リージョンで Kubernetes 1.9.6 を実行中の [Kubernetes クラスター](https://ms.portal.azure.com/#create/microsoft.aks)で、**[Http アプリケーションのルーティング]** が有効になっているクラスター。
+- 米国東部、米国中部、米国西部 2、西ヨーロッパ、カナダ中部、カナダ東部のいずれかのリージョンに存在し、[[HTTP アプリケーションのルーティング]](https://ms.portal.azure.com/#create/microsoft.aks) が有効になっていて、Kubernetes 1.10.3 を実行する **Kubernetes クラスター**。
 
   ![[Http アプリケーションのルーティング] が有効であることを確認してください。](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -42,8 +42,7 @@ ms.locfileid: "36945804"
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (バージョン 2.0.38 以降) をインストールします。
 1. AKS クラスターに Dev Spaces をセットアップします。`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. VS Code 用の[Azure Dev Spaces 拡張機能](https://aka.ms/get-azds-code)をダウンロードします。
-1. 拡張機能をインストールします。`code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. VS Code 用の[Azure Dev Spaces 拡張機能](https://aka.ms/get-azds-code)をダウンロードします。 拡張機能の Marketplace ページで [インストール] を 1 回クリックし、VS Code でもう一度クリックします。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes でコードをビルドして実行する
 
@@ -182,4 +181,4 @@ app.get('/api', function (req, res) {
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [複数のコンテナーの操作とチーム開発](get-started-nodejs.md#call-a-service-running-in-a-separate-container)
+> [複数のコンテナーの操作とチーム開発](team-development-nodejs.md)

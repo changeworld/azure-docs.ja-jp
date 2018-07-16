@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22c1d24042072de5d57d41da379a5fad18180de7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33835758"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972522"
 ---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[リソースの作成]** > **[Web + モバイル]** > **[通知ハブ]** を選択します。
+2. **[リソースの作成]** > **[モバイル]** > **[通知ハブ]** を選択します。
    
       ![Azure Portal - 通知ハブを作成](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       

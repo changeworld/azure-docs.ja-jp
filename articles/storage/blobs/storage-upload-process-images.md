@@ -12,17 +12,24 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 29accb3394e9a2f6939a657172c1a5c2e411706a
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 307ccc6f5fce703b786708196779f0cf3d71ae96
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461505"
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Storage Client Library を使用してストレージ アカウントに画像をアップロードする Web アプリケーションのデプロイ方法を示します。 このチュートリアルでは、Web アプリの保存と Azure Storage からの画像の表示を実習します。
 
+# <a name="nettabnet"></a>[\.NET](#tab/net)
 ![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+
+---
 
 シリーズの第 1 部で学習する内容は次のとおりです。
 
@@ -53,7 +60,7 @@ az group create --name myResourceGroup --location westcentralus
 サンプルでは、Azure Storage アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。 
 
 > [!IMPORTANT] 
-> このチュートリアルの第 2 部では、BLOB ストレージのイベント サブスクリプションを使用します。 イベント サブスクリプションは、現時点では米国中西部と米国西部 2 の Blob Storage アカウントのみをサポートしています。 この制約のため、サンプル アプリが画像とサムネイルを格納するために使用する BLOB ストレージ アカウントを作成する必要があります。   
+> このチュートリアルの第 2 部では、BLOB ストレージのイベント サブスクリプションを使用します。 現在、イベント サブスクリプションがサポートされているのは、東南アジア、東アジア、オーストラリア東部、オーストラリア南東部、米国中部、米国東部、米国東部 2、西ヨーロッパ、北ヨーロッパ、東日本、西日本、米国中西部、米国西部、米国西部 2 のみです。 この制約のため、サンプル アプリが画像とサムネイルを格納するために使用する BLOB ストレージ アカウントを作成する必要があります。   
 
 次のコマンドの `<blob_storage_account>` プレースホルダーを、BLOB ストレージ アカウントのグローバルな一意の名前に置き換えます。  
 
@@ -64,7 +71,7 @@ az storage account create --name <blob_storage_account> \
 ``` 
  
 ## <a name="create-blob-storage-containers"></a>BLOB ストレージ コンテナーの作成
- 
+
 アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB の格納に使用します。 "_images_" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半で、Azure 関数アプリで、サイズ変更した画像を _thumbnails_ コンテナーにアップロードします。 
 
 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドでこのキーを使用して、2 つのコンテナーを作成します。  
@@ -74,7 +81,7 @@ az storage account create --name <blob_storage_account> \
 ```azurecli-interactive 
 $blobStorageAccount="<blob_storage_account>"
 
-blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container create -n images --account-name $blobStorageAccount \
@@ -111,11 +118,18 @@ Web アプリは、GitHub サンプル リポジトリからデプロイされ�
 az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan 
 ``` 
 
-## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする 
+## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする
+
+# <a name="nettabnet"></a>[\.NET](#tab/net)
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
 
 サンプル プロジェクトには、画像を受信してストレージ アカウントに保存し、サムネイル コンテナーの画像を表示する [ASP.NET MVC](https://www.asp.net/mvc) アプリが含まれています。 この Web アプリは、Azure Storage Client Library の [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet)、[Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet)、および [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) 名前空間を使用して Azure Storage と対話します。 
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。 `<web_app>` を、前の手順で作成した Web アプリの名前に置き換えます。
+
+---
 
 ```azurecli-interactive 
 az webapp deployment source config --name <web_app> \
@@ -142,6 +156,8 @@ Web アプリをデプロイして構成したら、アプリで画像のアッ�
 ## <a name="upload-an-image"></a>イメージをアップロードする 
 
 Web アプリをテストするには、発行したアプリの URL に移動します。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。 **[写真のアップロード]** 領域を選択し、ファイルを選択してアップロードするか、ファイルを領域にドラッグ アンド ドロップします。 正常にアップロードされると、画像は表示されなくなります。
+
+# <a name="nettabnet"></a>[\.NET](#tab/net)
 
 ![ImageResizer アプリ](media/storage-upload-process-images/figure1.png)
 
@@ -182,6 +198,69 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 |[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)    | [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_GetBlockBlobReference_System_String_)        |
 |[CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)     | [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet)        |
 
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+![画像アップロード アプリ](media/storage-upload-process-images/upload-app-nodejs.png)
+
+このサンプル コードでは、`post` ルートが画像を BLOB コンテナーにアップロードする処理を担当します。 このルートは、次のモジュールを使用してアップロードを処理します。
+
+- [multer](https://github.com/expressjs/multer) は、ルート ハンドラーのアップロード戦略を実装しています
+- [into-stream](https://github.com/sindresorhus/into-stream) は、[createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html#createBlockBlobFromStream) の要求に応じてバッファーをストリームに変換します
+
+ファイルがルートに送信されると、ファイルが BLOB コンテナーにアップロードされるまで、ファイルの内容はメモリに残ります。
+
+> [!IMPORTANT]
+> 非常に大きなファイルをメモリに読み込むと、Web アプリケーションのパフォーマンスが低下する可能性があります。 ユーザーが大きなファイルを投稿することを想定する場合は、Web サーバー ファイル システム上にファイルをステージングしてから、BLOB ストレージへのアップロードをスケジュールする処理の検討をお勧めします。 ファイルが BLOB ストレージに格納されたら、サーバー ファイル システムからそのファイルを削除できます。
+
+```javascript
+const
+      express = require('express')
+    , router = express.Router()
+
+    , multer = require('multer')
+    , inMemoryStorage = multer.memoryStorage()
+    , uploadStrategy = multer({ storage: inMemoryStorage }).single('image')
+
+    , azureStorage = require('azure-storage')
+    , blobService = azureStorage.createBlobService()
+
+    , getStream = require('into-stream')
+    , containerName = 'images'
+;
+
+const handleError = (err, res) => {
+    res.status(500);
+    res.render('error', { error: err });
+};
+
+const getBlobName = originalName => {
+    const identifier = Math.random().toString().replace(/0\./, ''); // remove "0." from start of string
+    return `${originalName}-${identifier}`;
+};
+
+router.post('/', uploadStrategy, (req, res) => {
+
+    const
+          blobName = getBlobName(req.file.originalname)
+        , stream = getStream(req.file.buffer)
+        , streamLength = req.file.buffer.length
+    ;
+
+    blobService.createBlockBlobFromStream(containerName, blobName, stream, streamLength, err => {
+
+        if(err) {
+            handleError(err);
+            return;
+        }
+
+        res.render('success', { 
+            message: 'File uploaded to Azure Blob storage.' 
+        });
+    });
+});
+```
+---
+
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>ストレージ アカウント内に画像が表示されることを確認する
 
 [Azure Portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[概要]** で、**[images]** コンテナーを選択します。
@@ -200,7 +279,13 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
+# <a name="nettabnet"></a>[\.NET](#tab/net)
 ![images コンテナーの表示](media/storage-upload-process-images/figure2.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+![images コンテナーの表示](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+
+---
 
 Azure Portal の **thumbnails** コンテナーで、アップロードした画像を選択し、**[削除]** を選択して画像を削除します。 このシリーズの第 2 部でサムネイル画像の作成を自動化するため、このテスト画像は必要ありません。
 

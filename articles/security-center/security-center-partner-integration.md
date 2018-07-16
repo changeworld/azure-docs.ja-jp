@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2018
+ms.date: 07/05/2018
 ms.author: terrylan
-ms.openlocfilehash: 49558f5a4777818478ee11b96636d87b70e1e156
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 594588bfaf328c687bb43f2d958ff928a521c5ab
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335368"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888934"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -27,16 +27,22 @@ ms.locfileid: "36335368"
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。
 
-- **簡略化されたデプロイ**: Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価のようなソリューションでは、Security Center は、仮想マシンで必要なエージェントをプロビジョニングできます。また、ファイアウォール アプライアンスでは、必要とされるネットワーク構成の多くに対処できます。
+- 
+  **簡略化されたデプロイ**: Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価のようなソリューションでは、Security Center は、仮想マシンで必要なエージェントをプロビジョニングできます。また、ファイアウォール アプライアンスでは、必要とされるネットワーク構成の多くに対処できます。
 - **統合された検出機能**: パートナー ソリューションのセキュリティ イベントは、Security Center の警告とインシデントの一環として自動的に収集、集計、表示されます。 また、これらのイベントは、他のソースからの検出とも組み合わされ、高度な脅威検出機能を提供します。
 - **統合された正常性の監視と管理**: ユーザーは、統合された正常性イベントを使用して、すべてのパートナー ソリューションをひとめで監視できます。 基本的な管理は、パートナー ソリューションを使用して高度な設定に簡単にアクセスできれば、使用できます。
 
 現時点では、統合されたセキュリティ ソリューションには以下が含まれます。
 
-- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection)、および [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection))
+- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://www.microsoft.com/windows/comprehensive-security)、および [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection))
 - Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/products.html)、[Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
 - 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)、および [Palo Alto Networks](https://www.paloaltonetworks.com/products))
-- 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+- 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) および [Rapid7](https://www.rapid7.com/products/insightvm/))
+
+> [!NOTE]
+> Rapid7 はプレビュー段階にあります。
+>
+>
 
 エンドポイント保護の統合エクスペリエンスはソリューションによって異なります。 次の表に、各ソリューションのエクスペリエンスの詳細を示します。
 

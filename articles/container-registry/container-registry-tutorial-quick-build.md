@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: fefa6096e39d86b94f8ea348d894179220ad09e1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d86c47c890fd15515c590e06b395ca82f9747ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057570"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461471"
 ---
 # <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-build"></a>チュートリアル: Azure Container Registry Build を使用してクラウド内のコンテナー イメージをビルドする
 
@@ -35,7 +35,7 @@ Dockerfile に関する専門知識をすべて、ACR Build に直接転送で�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.32** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli]」を参照してください。
+ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.32** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

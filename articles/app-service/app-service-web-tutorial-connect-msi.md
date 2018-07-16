@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461539"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>チュートリアル: マネージド サービス ID による SQL Database 接続のセキュリティ保護
 
@@ -31,6 +32,9 @@ ms.lasthandoff: 04/23/2018
 > * SQL Database へのアクセスをサービス ID に許可する
 > * Azure Active Directory 認証を使用して SQL Database で認証するようにアプリケーション コードを構成する
 > * SQL Database 内でサービス ID に最小限の特権を付与する
+
+> [!NOTE]
+> Azure Active Directory 認証は、オンプレミスの Active Directory (AD DS) の[統合 Windows 認証](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))とは_異なります_。 AD DS と Azure Active Directory はまったく異なる認証プロトコルを使用しています。 詳細については、「[The difference between Windows Server AD DS and Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad)」(Windows Server AD DS と Azure AD の違い) を参照してください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ Azure Active Directory に ID が作成された後の出力の例を次に示�
 次の手順では、`principalId` の値を使用します。 Azure Active Directory 内の新しい ID の詳細を表示するには、`principalId` の値を指定して次のオプション コマンドを実行します。
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>データベースへのアクセスを ID に許可する
@@ -156,7 +160,7 @@ Cloud Shell 内で、アプリのマネージド サービス ID を、次のス
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: mabrigg
-ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 21015d31a738d3ad57048fe4a703bf78dda7e40c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26636179"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865772"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
@@ -63,7 +63,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module
 Import-Module .\Connect\AzureStack.Connect.psm1 
 
-# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the the IP address and password values for your environment. 
+# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the IP address and password values for your environment. 
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -106,7 +106,7 @@ Add-AzsVpnConnection `
 
 ポータル接続をテストするには、インターネット ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) にアクセスし、サインインしてリソースを作成します。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 

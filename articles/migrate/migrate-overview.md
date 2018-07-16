@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6c78554b78468329819726bfd95671a34f51b231
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 753a21638745870941ac77e340b5e6aa713c7ffe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285799"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920724"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -30,7 +30,11 @@ Azure Migrate によって次のことが可能になります。
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - 現時点では Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、または 6.5) で管理する必要があります。
-- Hyper-V についても今後サポートされる予定です。 それまでの間、Hyper-V のワークロードの移行を計画するときは、[Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を使うことをお勧めします。
+
+> [!NOTE]
+> 現在、Hyper-V および物理サーバーをサポートするよう開発を進めています。 それまでの間、Hyper-V のワークロードの移行を計画するときは [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc)、物理ワークロードの移行を計画するときは[パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用することをお勧めします。
+
+
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。 より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。詳細については、[こちら](how-to-scale-assessment.md)を参照してください。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate プロジェクトを作成できるのは、米国中西部または米国東部リージョンに限られます。 ただし、これが他の Azure リージョンへの移行計画に影響することはありません。 移行プロジェクトの場所は単に、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。
 - Azure Migrate の移行評価では、管理ディスクのみがサポートされます。
@@ -48,7 +52,7 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 **プロパティ** | **詳細**
 --- | ---
 **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 既定では、ターゲットの場所は、米国西部 2 に設定されます。
-**ストレージの種類** | Azure に割り当てるディスクの種類を指定できます。 このプロパティは、サイズ変更の設定基準が オンプレミスのときに適用されます。 ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 既定値は、Premium マネージド ディスクです。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいてディスクのレコメンデーションが自動的に行われます。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
+**ストレージの種類** | Azure に割り当てるディスクの種類を指定できます。 このプロパティは、サイズ変更の設定基準がオンプレミスのときに適用されます。 ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 既定値は、Premium マネージド ディスクです。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいてディスクのレコメンデーションが自動的に行われます。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 サイズ変更は、オンプレミス VM の*パフォーマンス履歴*に基づいて行うことも、パフォーマンス履歴を考慮せずに、Azure でも "*オンプレミスと同じ*" VM サイズにすることもできます。 サイズ変更設定の既定値はオンプレミスです。
 **Azure オファー** | 登録されている [Azure オファー](https://azure.microsoft.com/support/legal/offer-details/)を指定できます。Azure Migrate はそれに応じてコストを見積もります。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用してコストの割引を受ける資格があるかどうかを指定できます。

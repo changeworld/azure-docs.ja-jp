@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793023"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950682"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
@@ -29,8 +29,8 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="find-azure-search"></a>Azure Search を探す
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左上隅のプラス記号 ("+") をクリックします。
-3. **[Web + Mobile]** > **[Azure Search]** を選択します。
+2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
+3. **[Web]** > **[Azure Search]** を選択します。
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -58,7 +58,8 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 Azure サービスの 1 つである Azure Search は、世界中のデータ センターでホストできます。 地域によって[価格が異なる場合がある](https://azure.microsoft.com/pricing/details/search/)ことにご注意ください。
 
 ## <a name="select-a-pricing-tier-sku"></a>価格レベルの選択 (SKU)
-[Azure Search は現在、Free、Basic、Standard の複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
+
+  [Azure Search は現在、Free、Basic、Standard の複数の価格レベルで提供されています](https://azure.microsoft.com/pricing/details/search/)。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、 [価格レベルまたは SKU の選択](search-sku-tier.md) に関する記事をご覧ください。
 
 このチュートリアルでは、サービスに Standard レベルを選択しました。
 
@@ -77,12 +78,14 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
 ***レプリカ***を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
 
+リソースを追加すると、月ごとの請求が増加します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使うと、リソース追加の課金への影響を把握できます。 負荷に基づいてリソースを調整できることに注意してください。 たとえば、リソースを増やして完全な初期インデックスを作成した後、増分インデックス作成に適したレベルまでリソースを減らすことができます。
+
 > [!Important]
 > サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
 
 1. Azure Portal で検索サービス ページを開きます。
 2. 左のナビゲーション ウィンドウで、**[設定]** > **[スケール]** を選択します。
-3. スライダーを使用して、[レプリカ] または [パーティション] を追加します。
+3. スライダーを使って、いずれかの種類のリソースを追加します。
 
 ![](./media/search-create-service-portal/settings-scale.png)
 

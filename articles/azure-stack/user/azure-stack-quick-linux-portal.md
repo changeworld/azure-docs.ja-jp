@@ -11,18 +11,18 @@ ms.date: 04/24/2018
 ms.author: brenduns
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 2ea07f04d4c566c0add39d75cad3d3a4ed81c6c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c364a9ba5a9606967fa86262417ccd1ac3aeffc3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152222"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866272"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Linux サーバー仮想マシンを作成する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下の手順についても説明します。
+Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下のことを実行する手順も示します。
 
 * リモート クライアントを使用して仮想マシンに接続する。
 * NGINX Web サーバーをインストールする。
@@ -132,7 +132,7 @@ NGINX のインストールが完了したら、SSH セッションを終了し�
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
 
-NGINX がインストールされ、仮想マシン上のポート 80 が開かれたので、その仮想マシンのパブリック IP アドレスを使用して Web サーバーにアクセスできます  (パブリック IP アドレスは仮想マシンの [概要] ページに表示されます)。
+NGINX がインストールされ、仮想マシン上のポート 80 が開かれたので、その仮想マシンのパブリック IP アドレスを使用して Web サーバーにアクセスできます。 (パブリック IP アドレスは仮想マシンの [概要] ページに表示されます)。
 
 Web ブラウザーを開き、```http://<public IP address>``` を参照します。
 

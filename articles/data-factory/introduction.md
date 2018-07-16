@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082956"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38579179"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,6 +120,10 @@ Azure Data Factory 自体は、データを保存しません。 Azure Data Fact
 Data Factory を利用できるリージョンが特定のリージョンのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているセルフホステッド統合ランタイムがデータを移動します。
 
 たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 米国東部または米国東部 2 に Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
+
+## <a name="accessibility"></a>アクセシビリティ
+
+Azure portal の Data Factory ユーザー エクスペリエンスはアクセシビリティ対応です。
 
 ## <a name="compare-with-version-1"></a>バージョン 1 との比較
 Data Factory サービスのバージョン 1 と現在のバージョンの相違点の一覧については、「[バージョン 1 との比較](compare-versions.md)」を参照してください。 

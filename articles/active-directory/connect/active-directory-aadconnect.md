@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d866a6b068e9f6b8a46e53d60653d55e35a2ffd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f56ac74c62334ef64fca45a6430a539e3c4c372c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594025"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442538"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
@@ -33,8 +33,9 @@ Azure AD Connect は、オンプレミスのディレクトリと Azure Active D
 
 > 
 > - ユーザーと Azure AD を同期する機能は**無料の機能**であり、顧客は有料のサブスクリプションを必要としません。
->- 同期されたユーザーには、"*いかなる*" ライセンスも**自動的に付与されません**。 ライセンスの割り当ては、引き続き管理者が完全に管理します。 
+> - 同期されたユーザーには、"*いかなる*" ライセンスも**自動的に付与されません**。 ライセンスの割り当ては、引き続き管理者が完全に管理します。 
 > - Microsoft では、IT 管理者がすべてのユーザーを同期することをお勧めします。 これにより、ユーザーによる任意の Azure AD 統合リソースへのアクセスが妨げられないことに加え、どのアプリケーションがユーザーによってアクセスされているかを IT 管理者がより広い視野で確認することができます。 
+> - Microsoft は、ユーザーと AAD の管理者ロールを同期しないことを強くお勧めします。
 
 ![What is Azure AD Connect](media/active-directory-aadconnect/arch.png)
 

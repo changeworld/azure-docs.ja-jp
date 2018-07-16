@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 7cd652231b461236510a1a4fc35734afdb06e501
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 84c92b1c0b2977ca15b82a0884870d78d895a761
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798153"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38543774"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
@@ -176,7 +176,7 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コレクションの順に展開し、**[グラフ]** を選択します。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、**[グラフ]** を選択します。
 
 **[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
 

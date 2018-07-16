@@ -1,12 +1,12 @@
 ---
-title: "構成済みソリューションの使用 | Microsoft Docs"
-description: "このチュートリアルに従って、Azure IoT Suite 事前構成済みソリューションのデプロイ方法について学習します。"
-services: 
+title: 構成済みソリューションの使用 | Microsoft Docs
+description: このチュートリアルに従って、Azure IoT Suite 事前構成済みソリューションのデプロイ方法について学習します。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6ab38d1a-b564-469e-8a87-e597aa51d0f7
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 12eb858f0be4220419300019497070a081e58249
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723019"
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>事前に構成されたソリューションを使ってみる
 
@@ -228,7 +229,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 1. **[Let me define my own Device ID (自分で自分のデバイス ID を定義する)]** を選択し、**mydevice_01** など一意のデバイス ID 名を入力します。
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
    ![Save a new device][img-definedevice]
 
@@ -330,7 +331,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
    ![Command status in dashboard][img-pingcommand]
 
-ソリューションは、送信した各コマンドの状態を追跡します。 最初は結果が **[保留中]**になっています。 コマンドを実行したことがデバイスから報告されると、結果が **[成功]**に設定されます。
+ソリューションは、送信した各コマンドの状態を追跡します。 最初は結果が **[保留中]** になっています。 コマンドを実行したことがデバイスから報告されると、結果が **[成功]** に設定されます。
 
 ## <a name="behind-the-scenes"></a>バックグラウンド処理
 
@@ -351,7 +352,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 > [!NOTE]
 > 事前構成済みソリューションに関連するすべてのものを確実に削除するには、ポータルでリソース グループを削除するのではなく、[azureiotsuite.com][lnk-azureiotsuite] サイトで事前構成済みソリューションを削除してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、事前構成済みの実際のソリューションをデプロイできました。引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 

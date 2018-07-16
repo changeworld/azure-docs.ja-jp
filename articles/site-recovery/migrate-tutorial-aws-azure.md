@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737614"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922659"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -34,10 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 - 移行する VM で、サポートされている OS バージョンが実行されていることを確認します。 次のバージョンがサポートされています。 
     - Windows Server 2016
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - Windows Server 2008 R2 SP1 以降の 64 ビット バージョン
-    - Red Hat Enterprise Linux 6.7 (HVM 仮想化インスタンスのみ) と、Citrix Paravirtual ドライバーまたは AWS Paravirtual ドライバー。 Red Hat Paravirtual ドライバーを実行しているインスタンスは、サポートされて "*いません*"。
+    - Red Hat Enterprise Linux 6.7 (HVM 仮想化インスタンスのみ)。Citrix PV または AWS PV ドライバーのみが含まれている必要があります。 Red Hat PV ドライバーを実行しているインスタンスはサポート**されません**。
 
 - モビリティ サービスは、レプリケートする各 VM にインストールする必要があります。 
 

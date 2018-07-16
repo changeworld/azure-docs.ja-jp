@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651592"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869596"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -49,7 +49,7 @@ az extension add --name azure-cli-iot-ext
 node --version
 ```
 
-https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip からサンプル デバイス シミュレーター Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル デバイス シミュレーター Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -123,6 +123,9 @@ node SimulatedDevice-1.js "{your device connection string}"
 デバイスが IoT Hub デバイス SDK のいずれかを使用している場合、SDK ライブラリ コードで、ハブの認証を受けるために使用される SAS トークンを生成します。 SAS トークンは、ハブの名前、デバイスの名前、およびデバイス キーから生成されます。
 
 クラウド プロトコル ゲートウェイやカスタム認証スキームの一部のシナリオなど、場合によっては SAS トークンを手動で生成する必要があります。 SAS 生成コードに関する問題を解決する場合、テスト時に使用できる問題のない既知の SAS トークンを生成できると便利です。
+
+> [!NOTE]
+> SimulatedDevice-2.js のサンプルには、SDK があるバージョンとないバージョンの SAS トークンを生成する例が含まれています。
 
 CLI を使用して問題のない既知の SAS トークンを生成するには、次のコマンドを実行します。
 

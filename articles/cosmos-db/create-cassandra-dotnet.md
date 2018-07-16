@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 421047f79cf353ad2dcebc0e14b51b3bf0c177ae
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1b7021987c1c58c7b08798a28643ac647569e2bc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795239"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485550"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 
@@ -171,7 +171,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコンテナーを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB への Cassandra データのインポート](cassandra-import-data.md)

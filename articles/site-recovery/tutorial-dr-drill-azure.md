@@ -4,14 +4,14 @@ description: Azure Site Recovery を使用した オンプレミスから Azure 
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437214"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920173"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -20,10 +20,10 @@ ms.locfileid: "37437214"
 これは、オンプレミスの VMware VM または Hyper-V VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。
 
 このチュートリアルでは、最初の 3 つのチュートリアルを完了したことを前提としています。 
-    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware または Hyper-V のディザスター リカバリー用に [Azure のコンポーネントを準備](tutorial-prepare-azure.md)しました。
-    - 2 番目のチュートリアルでは、[VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) のディザスター リカバリー用にオンプレミスのコンポーネントを準備しました。
-    - 3 番目のチュートリアルでは、オンプレミスの [VMware VM](vmware-azure-tutorial.md)、[System Center VMM を使用する Hyper-V VM](hyper-v-vmm-azure-tutorial.md)、または [VMM を使用しない Hyper-V VM](hyper-v-azure-tutorial.md) に対してレプリケーションを設定して有効にしました。
-- これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 これらのチュートリアルはすべて、必要に応じて既定値を使用しながら最も簡単な方法で Site Recovery を設定しています。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
+    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
+    - [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
+    - [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
+    - これらのチュートリアルは、**シナリオの最も簡単なデプロイ パス**を示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
 
 このチュートリアルで学習する内容は次のとおりです。
 

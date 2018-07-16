@@ -11,12 +11,12 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054692"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866819"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -113,6 +113,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"       |
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
@@ -130,6 +131,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
 |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
 
    > [!NOTE]   
    > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。

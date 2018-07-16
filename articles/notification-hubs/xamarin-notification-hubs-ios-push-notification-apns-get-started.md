@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: babd6bff3cec38318cacc0d55394a7563f8e69a4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cebb73fedffe3b5f0a11c919ff39d1d2acd462d3
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776874"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969529"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -84,34 +84,46 @@ ms.locfileid: "33776874"
 
     ![Visual Studio - iOS アプリの構成][32]
 
-4. Azure Messaging パッケージを追加します。 ソリューション ビューでプロジェクトを右クリックし、**[追加]** > **[NuGet パッケージの追加]** を選択します。 **Xamarin.Azure.NotificationHubs.iOS** を検索し、パッケージをプロジェクトに追加します。
+4. [ソリューション] ビューで、*Entitlements.plist* をダブル クリックして、[プッシュ通知を有効にする] がオンになっていることを確認します。
 
-5. 新しいファイルをクラスに追加し、**Constants.cs** と名前を付け、次の変数を追加し、文字列リテラルのプレースホルダーを*ハブ名*とメモしておいた *DefaultListenSharedAccessSignature* に置き換えます。
+    ![Visual Studio - iOS エンタイトルメントの構成][33]
+
+5. Azure Messaging パッケージを追加します。 ソリューション ビューでプロジェクトを右クリックし、**[追加]** > **[NuGet パッケージの追加]** を選択します。 **Xamarin.Azure.NotificationHubs.iOS** を検索し、パッケージをプロジェクトに追加します。
+
+6. 新しいファイルをクラスに追加し、**Constants.cs** と名前を付け、次の変数を追加し、文字列リテラルのプレースホルダーを*ハブ名*とメモしておいた *DefaultListenSharedAccessSignature* に置き換えます。
    
     ```csharp
         // Azure app-specific connection string and hub path
-        public const string ConnectionString = "<Azure connection string>";
-        public const string NotificationHubPath = "<Azure hub path>";
+        public const string ListenConnectionString = "<Azure connection string>";
+        public const string NotificationHubName = "<Azure hub path>";
     ```
 
-6. **AppDelegate.cs**で、次の using ステートメントを追加します。
+7. **AppDelegate.cs**で、次の using ステートメントを追加します。
    
     ```csharp
         using WindowsAzure.Messaging;
     ```
 
-7. **SBNotificationHub**のインスタンスを宣言します。
+8. **SBNotificationHub**のインスタンスを宣言します。
    
     ```csharp
         private SBNotificationHub Hub { get; set; }
     ```
 
-8. **AppDelegate.cs** で、次のコードに一致するように **FinishedLaunching()** を更新します。
-   
+9.  **AppDelegate.cs** で、次のコードに一致するように **FinishedLaunching()** を更新します。
+  
     ```csharp
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+                                                                      (granted, error) =>
+                {
+                    if (granted)
+                        InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                });
+            } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
                        UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
                        new NSSet ());
@@ -127,12 +139,12 @@ ms.locfileid: "33776874"
         }
     ```
 
-9. **AppDelegate.cs** で **RegisteredForRemoteNotifications()** メソッドをオーバーライドします。
+10. **AppDelegate.cs** で **RegisteredForRemoteNotifications()** メソッドをオーバーライドします。
    
     ```csharp
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
+            Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
    
             Hub.UnregisterAllAsync (deviceToken, (error) => {
                 if (error != null)
@@ -150,7 +162,7 @@ ms.locfileid: "33776874"
         }
     ```
 
-10. **AppDelegate.cs** で **ReceivedRemoteNotification()** メソッドをオーバーライドします。
+11. **AppDelegate.cs** で **ReceivedRemoteNotification()** メソッドをオーバーライドします。
    
     ```csharp
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -159,7 +171,7 @@ ms.locfileid: "33776874"
         }
     ```
 
-11. **AppDelegate.cs** で次の **ProcessNotification()** メソッドを作成します。
+12. **AppDelegate.cs** で次の **ProcessNotification()** メソッドを作成します。
    
     ```csharp
         void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,7 +212,7 @@ ms.locfileid: "33776874"
    > ネットワーク接続がないなどの状況に対処するために、 **FailedToRegisterForRemoteNotifications()** をオーバーライドすることを選択できます。 これは、ユーザーがオフラインモード (Airplane など) でアプリケーションを起動し、アプリケーション固有のプッシュメッセージングシナリオを処理する場合に特に重要です。
   
 
-12. デバイスでアプリケーションを実行します。
+13. デバイスでアプリケーションを実行します。
 
 ## <a name="send-test-push-notifications"></a>テスト プッシュ通知を送信する
 アプリの通知の受信をテストするには、[Azure Portal] の *[テスト送信]* オプションを使用します。 これは、デバイスにテスト プッシュ通知を送信します。
@@ -226,6 +238,7 @@ ms.locfileid: "33776874"
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
 [31]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-ios-app.png
 [32]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-app-settings.png
+[33]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-entitlements-settings.png
 
 
 

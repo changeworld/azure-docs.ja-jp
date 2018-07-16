@@ -1,5 +1,5 @@
 ---
-title: Azure クイック スタート - Java を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+title: Azure クイック スタート - Java Storage SDK V7 を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Java 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: roygara
@@ -9,14 +9,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 197777971b92ad9cd53e91602b88858a371ce1d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30d31a7f4b77864549dcb9e27030ba19c4fd84fe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192011"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606611"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>クイック スタート: Java を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>クイック スタート: Java SDK V7 を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、Java を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
-このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-java-quickstart)は、基本的なコンソール アプリケーションです。 
+このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-java-quickstart)は、基本的なコンソール アプリケーションです。  
 
 アプリケーションのコピーを開発環境にダウンロードするには、[git](https://git-scm.com/) を使います。 
 
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 プロジェクトのインポートが完了したら、(**src/main/java** 内の **blobQuickstart.blobAzureApp** に格納されている) **AzureApp.java** を開き、`storageConnectionString` 文字列内の `accountname` と `accountkey` を置き換えます。 そのうえでアプリケーションを実行します。
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]   
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]    
 
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
     
@@ -65,9 +65,7 @@ public static final String storageConnectionString =
 
 このサンプルは、既定のディレクトリ (Windows ユーザーの場合はマイ ドキュメント) にテスト ファイルを作成して Blob Storage にアップロードし、コンテナー内の BLOB の一覧を取得してから、古いファイルと新しいファイルを比較できるように新しい名前でファイルをダウンロードします。 
 
-Eclipse で **Ctrl + F11** キーを押してサンプルを実行します。
-
-Maven を使用してコマンド ラインからサンプルを実行する場合は、シェルを開き、先ほど複製したディレクトリの **blobAzureApp** に移動します。 次に「`mvn compile exec:java`」と入力します。
+コマンド ラインで Maven を使用してサンプルを実行します。 シェルを開き、複製されたディレクトリ内の **blobAzureApp** に移動します。 次に「`mvn compile exec:java`」と入力します。 
 
 次に示したのは、アプリケーションを Windows で実行した場合の出力例です。
 
@@ -84,9 +82,9 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
- 続行する前に、既定のディレクトリ (Windows ユーザーの場合はマイ ドキュメント) で 2 つのファイルをチェックしてください。 それらを開いて、同じであるかどうか確認します。 コンソール ウィンドウから BLOB の URL をコピーしてブラウザーに貼り付け、Blob Storage のファイルの内容を表示します。 Enter キーを押すと、ストレージ コンテナーとファイルが削除されます。
+続行する前に、既定のディレクトリ (Windows ユーザーの場合はマイ ドキュメント) で 2 つのファイルをチェックしてください。 それらを開いて、同じであるかどうか確認します。 コンソール ウィンドウから BLOB の URL をコピーしてブラウザーに貼り付け、Blob Storage のファイルの内容を表示します。 Enter キーを押すと、ストレージ コンテナーとファイルが削除されます。 
 
-[Azure Storage Explorer](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
+[Azure Storage Explorer](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。
 
 ファイルを確認した後、Enter キーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**AzureApp.java** ファイルを開いてコードを確認します。 
 
@@ -113,7 +111,7 @@ Deleting the source, and downloaded files
 > [!IMPORTANT]
 > コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-### <a name="create-a-container"></a>コンテナーを作成する 
+### <a name="create-a-container"></a>コンテナーを作成する
 
 このセクションでは、オブジェクトのインスタンスを作成し、新しいコンテナーを作成した後、BLOB をパブリックにして URL のみでアクセスできるように、コンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 
@@ -205,26 +203,13 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="resources-for-developing-java-applications-with-blobs"></a>BLOB を使用する Java アプリケーションを開発するためのリソース
-
-Blob Storage を使用する Java 開発については、以下の追加リソースを参照してください。
-
-### <a name="binaries-and-source-code"></a>バイナリとソース コード
-
-- GitHub で Azure Storage 用の [Java クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-java)を確認し、ダウンロードします。
-
-### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
-
-- Java クライアント ライブラリの詳細については、[Java API リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage)を参照してください。
-- Java クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob)を確認します。
-
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
+このクイックスタートでは、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
-> [Blob Storage の操作方法](storage-java-how-to-use-blob-storage.md)
+> [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java) 
+> [API リファレンス](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [Java のコード サンプル](../common/storage-samples-java.md)
 
-Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md)」をご覧ください。
-
-Java のサンプルについて詳しくは、「[Java を使用した Azure Storage サンプル](../common/storage-samples-java.md)」をご覧ください。
+* Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

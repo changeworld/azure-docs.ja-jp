@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722951"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する 
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 05/10/2018
 
 元の応答を表示するには:
 
-1. **[API]** タブを選択します。
+1. APIM サービス インスタンスで **[API]** (**[API 管理]** の下) を選択します。
 2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
 3. **[GetSpeakers]** 操作を選択します。
 4. 画面の上部にある **[テスト]** タブをクリックします。
@@ -66,24 +67,24 @@ ms.lasthandoff: 05/10/2018
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[すべての操作]** を選択します。
-5. 画面の上部の **[デザイン]** タブを選択します。
-6. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
-7. **[コード エディター]** を選択します。
-    
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. 画面の上部の **[デザイン]** タブを選択します。
+3. **[すべての操作]** を選択します。
+4. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
      ![ポリシーを編集する](./media/set-edit-policies/set-edit-policies01.png)
-9. **&lt;outbound&gt;** 要素内にカーソルを配置します。
-10. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
+5. **&lt;outbound&gt;** 要素内にカーソルを配置します。
+6. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
     ![ポリシー](./media/transform-api/transform-api.png)
-11. **<outbound>** コードを次のように変更します。
+7. **<outbound>** コードを次のように変更します。
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
-                
+
+    ![ポリシー](./media/transform-api/set-policy.png)
+8. **[保存]** ボタンをクリックします。
+
+
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>API 応答の本文内の元の URL を APIM ゲートウェイの URL に置換する
 
 このセクションでは、API の HTTP 応答の本文に表示される元の URL を非表示にして、代わりに APIM ゲートウェイにリダイレクトする方法を示します。
@@ -92,11 +93,10 @@ ms.lasthandoff: 05/10/2018
 
 元の応答を表示するには:
 
-1. **[API]** タブを選択します。
-2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-3. **[GetSpeakers]** 操作を選択します。
-4. 画面の上部にある **[テスト]** タブをクリックします。
-5. 画面の下部にある **[送信]** をクリックします。 
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[GetSpeakers]** 操作を選択します。
+3. 画面の上部にある **[テスト]** タブをクリックします。
+4. 画面の下部にある **[送信]** をクリックします。 
 
     元の応答が次のように表示されます。
 
@@ -104,16 +104,13 @@ ms.lasthandoff: 05/10/2018
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[すべての操作]** を選択します。
-5. 画面の上部の **[デザイン]** タブを選択します。
-6. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
-7. **[コード エディター]** を選択します。
-8. **&lt;outbound&gt;** 要素内にカーソルを配置します。
-9. 右側のウィンドウの **[変換ポリシー]** で、**[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-10. **<find-and-replace** コード (**<outbound>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例: 
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[すべての操作]** を選択します。
+3. 画面の上部の **[デザイン]** タブを選択します。
+4. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
+5. **&lt;outbound&gt;** 要素内にカーソルを配置します。
+6. 右側のウィンドウの **[変換ポリシー]** で、**[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
+7. **find-and-replace** コード (**\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例: 
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -121,22 +118,19 @@ ms.lasthandoff: 05/10/2018
 
 このセクションでは、レート制限を構成してバックエンド API の保護を強化する方法を示します。 たとえば、API の呼び出し回数を制限して、開発者が過剰に使用しないようにすることができます。 この例では、各サブスクリプション ID に対して呼び出しの上限が 15 秒ごとに 3 回に設定されます。15 秒後、開発者は、API の呼び出しを再試行できます。
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[すべての操作]** を選択します。
-5. 画面の上部の **[デザイン]** タブを選択します。
-6. **[受信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
-7. **[コード エディター]** を選択します。
-8. **&lt;inbound&gt;** 要素内にカーソルを配置します。
-9. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
-10. **<rate-limit-by-key** コード (**<inbound>** 要素内) を次のコードに変更します。
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[すべての操作]** を選択します。
+3. 画面の上部の **[デザイン]** タブを選択します。
+4. **[受信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
+5. **&lt;inbound&gt;** 要素内にカーソルを配置します。
+6. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
+7. **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>変換をテストする
         
-この時点で、ポリシー コードは次のようになります。
+この時点でコード エディターのコードを確認すると、ポリシーは次のようになります。
 
     <policies>
         <inbound>
@@ -161,12 +155,10 @@ ms.lasthandoff: 05/10/2018
 
 ### <a name="test-the-stripped-response-headers"></a>削除した応答ヘッダーをテストする
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[GetSpeakers]** 操作をクリックします。
-5. **[テスト]** タブを選択します。
-6. **[送信]** をクリックします。
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[GetSpeakers]** 操作をクリックします。
+3. **[テスト]** タブを選択します。
+4. **[送信]** をクリックします。
 
     ヘッダーが削除されたことがわかります。
 
@@ -174,12 +166,10 @@ ms.lasthandoff: 05/10/2018
 
 ### <a name="test-the-replaced-url"></a>置換された URL をテストする
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[GetSpeakers]** 操作をクリックします。
-5. **[テスト]** タブを選択します。
-6. **[送信]** をクリックします。
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[GetSpeakers]** 操作をクリックします。
+3. **[テスト]** タブを選択します。
+4. **[送信]** をクリックします。
 
     URL が置換されたことがわかります。
 
@@ -187,15 +177,13 @@ ms.lasthandoff: 05/10/2018
 
 ### <a name="test-the-rate-limit-throttling"></a>レート制限 (調整) をテストする
 
-1. APIM インスタンスを参照します。
-2. **[API]** タブを選択します。
-3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-4. **[GetSpeakers]** 操作をクリックします。
-5. **[テスト]** タブを選びます。
-6. 行の **[送信]** を 3 回クリックします。
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[GetSpeakers]** 操作をクリックします。
+3. **[テスト]** タブを選びます。
+4. 行の **[送信]** を 3 回クリックします。
 
     要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
-7. 15 秒ほど待ち、**[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
+5. 15 秒ほど待ち、**[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
 
     ![調整](./media/transform-api/test-throttling.png)
 

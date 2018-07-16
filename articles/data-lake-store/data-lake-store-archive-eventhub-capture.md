@@ -62,7 +62,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Store のルートにアクセス許可を割り当てる")
 
-    Click **OK**.
+    **OK** をクリックします。
 
 4. データをキャプチャする Data Lake Store アカウントのフォルダーにアクセス許可を割り当てます。
 

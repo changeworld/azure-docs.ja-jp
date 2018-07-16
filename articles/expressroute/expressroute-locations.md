@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: eef664877fab68fc78e9bb5717d92594900d0f5f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751113"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972419"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -51,6 +51,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **オーストラリア政府** | オーストラリア中部、オーストラリア中部 2 |キャンベラ、キャンベラ2 | 
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
 | **韓国** |韓国中部、韓国南部 |釜山、ソウル |
+| **南アフリカ** |[南アフリカ西部+、南アフリカ北部+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |ケープタウン、ヨハネスブルグ |
+
+ **+** は近日対応予定を表します
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドのリージョンと地理的境界
 次の表は、国内のクラウドのリージョンと地政学的境界に関する情報をまとめたものです。
@@ -95,7 +98,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、ロンドン、パリ、シンガポール、ワシントン DC |
 | **Internet2** |サポートされています |サポートされています |ワシントン DC |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
-| **Internet Solutions - Cloud Connect** |サポートされています |サポートされています |アムステルダム、ロンドン |
+| **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ、ロンドン |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン、パリ |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|サポートされています |サポートされています | シリコン バレー、トロント |
 | **Jisc** |サポートされています |サポートされています |ロンドン |
@@ -106,7 +109,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、デンバー、ダブリン、香港特別行政区、ラスベガス、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、シドニー、トロント、ワシントン DC |
 | **MTN** |サポートされています |サポートされています |ロンドン |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |サポートされています |サポートされています |マイアミ、サンパウロ |
+| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |サポートされています |サポートされています |ダラス、マイアミ、サンパウロ |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |サポートされています |サポートされています |ニューポート (ウェールズ) |
 | **NEXTDC** |サポートされています |サポートされています |メルボルン、シドニー |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |サポートされています |サポートされています |アムステルダム、香港、ロンドン、ロサンゼルス、大阪、シンガポール、シドニー、東京、ワシントン DC |

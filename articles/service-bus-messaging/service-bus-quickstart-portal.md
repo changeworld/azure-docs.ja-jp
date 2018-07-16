@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
 ms.author: sethm
-ms.openlocfilehash: b970fe1d9d705bd91e616f19a6ef133d6cfd7dd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660638"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867207"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する
 

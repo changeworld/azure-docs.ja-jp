@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 21b94544105f55cbb8cb77c28d8c546ffcf7f8c0
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 3bb190570cbdf795668dd6e9f9d36630b6f3201b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945858"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949868"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および VS Code)
 
@@ -32,7 +32,7 @@ ms.locfileid: "36945858"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
-- 米国東部、西ヨーロッパ、またはカナダ東部の各リージョンで Kubernetes 1.9.6 を実行中の [Kubernetes クラスター](https://ms.portal.azure.com/#create/microsoft.aks)で、**[Http アプリケーションのルーティング]** が有効になっているクラスター。
+- 米国東部、米国中部、米国西部 2、西ヨーロッパ、カナダ中部、カナダ東部のいずれかのリージョンに存在し、[[HTTP アプリケーションのルーティング]](https://ms.portal.azure.com/#create/microsoft.aks) が有効になっていて、Kubernetes 1.10.3 を実行する **Kubernetes クラスター**。
 
   ![[Http アプリケーションのルーティング] が有効であることを確認してください。](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -42,8 +42,7 @@ ms.locfileid: "36945858"
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (バージョン 2.0.38 以降) をインストールします。
 1. AKS クラスターに Dev Spaces をセットアップします。`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. VS Code 用の[Azure Dev Spaces 拡張機能](https://aka.ms/get-azds-code)をダウンロードします。
-1. 拡張機能をインストールします。`code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. VS Code 用の[Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)をダウンロードします。 拡張機能の Marketplace ページで [インストール] を 1 回クリックし、VS Code でもう一度クリックします。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes でコードをビルドして実行する
 
@@ -89,7 +88,7 @@ ms.locfileid: "36945858"
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>VS Code 拡張機能によるデバッグ アセットの初期化
 まず、VS Code が Azure 内の開発空間と通信するように、コード プロジェクトを構成する必要があります。 Azure Dev Spaces 用の VS Code 拡張機能は、デバッグ構成をセットアップするためのヘルパー コマンドを提供します。 
 
-(**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Create configuration files for connected development`。 
+(**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。
 
@@ -143,4 +142,4 @@ public IActionResult About()
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。 
 
 > [!div class="nextstepaction"]
-> [複数のコンテナーの操作とチーム開発](get-started-netcore.md#call-a-service-running-in-a-separate-container)
+> [複数のコンテナーの操作とチーム開発](team-development-netcore.md)

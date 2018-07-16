@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c1277484d8f8b3073ac15534110b01903c265318
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795885"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453418"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
@@ -86,7 +86,7 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
     private static int port = 443;
     private static string authKey = "your-authentication-key";
     private static string database = "your-database";
-    private static string collection = "your-collection-or-graph";
+    private static string collection = "your-graph-container";
     ```
 
 * 実行される Gremlin コマンドの一覧は、Dictionary に記述されています (26 行目)。
@@ -175,7 +175,7 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
     `private static string database = "your-database";`
 
-5. 同様に、上で作成したコレクションの情報を使用して、23 行目の `collection` 変数内にコレクション (グラフ名でもあります) を貼り付けます。 
+5. 同様に、上で作成したコレクションの情報を使用して、23 行目の `collection` 変数内にコンテナー (グラフ名でもあります) を貼り付けます。 
 
     `private static string collection = "your-collection-or-graph";`
 
@@ -193,7 +193,7 @@ Ctrl + F5 キーを押してアプリケーションを実行します。 アプ
 
 次に、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データを参照しクエリできます。
 
-1. データ エクスプローラーで新しいデータベースが [グラフ] ウィンドウに表示されます。 データベースとコレクションのノードを展開し、**[グラフ]** をクリックします。
+1. データ エクスプローラーで新しいデータベースが [グラフ] ウィンドウに表示されます。 データベースとコンテナーのノードを展開し、**[グラフ]** をクリックします。
 
 2. **[フィルターの適用]** をクリックし、既定のクエリを使用してグラフのすべての頂点を表示します。 サンプル アプリで生成されたデータは、[グラフ] ウィンドウに表示されます。
 

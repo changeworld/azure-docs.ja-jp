@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: b742dc94b6f6bea76a0809114f300287633c2a67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674854"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート: SignalR Service を使ってチャット ルームを作成する
 
@@ -86,18 +87,18 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview1-10009
+        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
         dotnet restore
 
-3. シークレット マネージャーに、*Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 このシークレットには、SignalR Service リソースにアクセスするための接続文字列が含められます。 *Azure:SignalR:ConnectionString* は、SignalR が接続を確立するために検索する、既定の構成キーです。 下記のコマンドの値を、SignalR Service リソースの接続文字列に置き換えてください。
+3. シークレット マネージャーに、*Azure__SignalR__ConnectionString* という名前のシークレットを追加します。 このシークレットは階層的な構成値であり、プラットフォームによっては、コロン (:) が機能しない場合があります。 このシークレット例のように二重アンダースコア (__) は、すべてのプラットフォームでサポートされています。  このシークレットには、SignalR Service リソースにアクセスするための接続文字列が含められます。 *Azure__SignalR__ConnectionString* は、SignalR が接続を確立するために検索する、既定の構成キーです。 下記のコマンドの値を、SignalR Service リソースの接続文字列に置き換えてください。
 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     シークレット マネージャーは、ローカルでホストされているときの、Web アプリのテスト用にのみ使用されます。 この後のチュートリアルでは、Azure にチャット Web アプリをデプロイします。 この Web アプリが Azure にデプロイされた後は、シークレット マネージャーで接続文字列を保存するのではなく、アプリケーション設定を使用します。
@@ -112,7 +113,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     }
     ```
 
-    このコードでは、`AddAzureSignalR()` にパラメーターを渡すのではなく、SignalR Service リソースの接続文字列に既定の構成キー (*Azure:SignalR:ConnectionString*) を使用しています。
+    このコードでは、`AddAzureSignalR()` にパラメーターを渡すのではなく、SignalR Service リソースの接続文字列に既定の構成キー (*Azure__SignalR__ConnectionString*) を使用しています。
 
 5. また、*Startup.cs* で、`app.UseStaticFiles()` への呼び出しを次のコードに置き換えることで `Configure` メソッドを更新し、ファイルを保存します。
 
@@ -255,7 +256,7 @@ connection.start()
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
    
-![削除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
+![Delete](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。

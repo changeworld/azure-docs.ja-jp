@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 03/16/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303557"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930479"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>メッセージを配信する Azure サービスの選択
 
@@ -37,7 +37,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 一連のイベントは、状態を報告し、分析可能です。 イベントは、時間順に並べられ、相互に関連付けられています。 処理者は、一連のイベントを分析して、何が起こったかを知る必要があります。
 
-### <a name="message"></a>メッセージ
+### <a name="message"></a>Message
 
 メッセージは、サービスによって生成される生データで、別の場所で使用または格納されます。 メッセージには、メッセージ パイプラインをトリガーしたデータが含まれています。 メッセージの発行元は、処理者によるメッセージの処理方法を予測しています。 両者の間には協定が存在します。 たとえば、発行元は、メッセージを生データで送信し、処理者がそのデータからファイルを作成し、作業が終わったときに応答を送信すると予測しています。
 
@@ -47,7 +47,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
-| Service Bus | 高価値のエンタープライズ メッセージング | メッセージ | 注文処理や金融取引 |
+| Service Bus | 高価値のエンタープライズ メッセージング | Message | 注文処理や金融取引 |
 
 ### <a name="event-grid"></a>Event Grid
 
@@ -60,6 +60,7 @@ Event Grid は Azure サービスと緊密に統合されており、サード �
 * 動的にスケーラブル
 * 低コスト
 * サーバーレス
+* 1 回以上の配信
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -69,6 +70,7 @@ Azure Event Hubs は、ビッグ データのパイプラインです。 テレ�
 
 * 待ち時間の短縮
 * 1 秒あたり数百万のイベントを受信および処理可能
+* 1 回以上の配信
 
 ### <a name="service-bus"></a>Service Bus
 
@@ -80,6 +82,7 @@ Service Bus はブローカー メッセージング システムです。 使�
 
 * ポーリングが必要な信頼性の高い非同期メッセージ配信 (サービスとしてのエンタープライズ メッセージング)
 * 高度なメッセージング機能 (FIFO、バッチ処理/セッション、トランザクション、配信不能処理、一時的制御、ルーティングとフィルタリング、重複検出など)
+* 厳密に 1 回の配信
 
 ## <a name="use-the-services-together"></a>サービスを組み合わせて使用する
 

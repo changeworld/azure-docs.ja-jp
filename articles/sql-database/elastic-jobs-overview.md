@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 06/14/2018
 ms.author: srinia
-ms.openlocfilehash: b2cbf7501b3c5006c7504c7af7d70c14035cfc74
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 65e920858b1c859dc9f8e911cdf59d4ab02da6d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113359"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972164"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Elastic Database ジョブを使ってデータベースのグループを管理する
 
@@ -192,7 +192,7 @@ SQL Server エージェント (オンプレミスで SQL Database Managed Instan
 
 |  |エラスティック ジョブ  |SQL Server エージェント |
 |---------|---------|---------|
-|スコープ     |  ジョブ エージェントと同一の Azure クラウド内に存在する任意の数の Azure SQL データベースまたはデータ ウェアハウス。 ロジック サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるデータベースすべてを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同一の SQL Server インスタンス内の単一のデータベース。 |
+|Scope (スコープ)     |  ジョブ エージェントと同一の Azure クラウド内に存在する任意の数の Azure SQL データベースまたはデータ ウェアハウス。 ロジック サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるすべてのデータベースを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同一の SQL Server インスタンス内の単一のデータベース。 |
 |サポートされる API とツール     |  ポータル、PowerShell、T-SQL、Azure Resource Manager      |   T-SQL、SQL Server Management Studio (SSMS)     |
 
 

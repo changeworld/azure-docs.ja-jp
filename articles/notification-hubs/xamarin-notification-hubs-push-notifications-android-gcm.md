@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c537b06c4ff50d90d9fd5a847b378038f252790
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776714"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972276"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "33776714"
 
 通知ハブが FCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
 
-## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Xamain.Android アプリを作成し、それを通知ハブに接続する
+## <a name="create-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Xamarin.Android アプリを作成し、それを通知ハブに接続する
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio プロジェクトを作成し、NuGet パッケージを追加する
 1. Visual Studio で、**[ファイル]** をポイントし、**[新規]** を選択してから **[プロジェクト]** を選択します。 
@@ -142,6 +142,7 @@ ms.locfileid: "33776714"
 8. 次の using ステートメントを **MyFirebaseIIDService.cs** に追加します。
    
     ```csharp
+    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -183,6 +184,7 @@ ms.locfileid: "33776714"
 12. 次の using ステートメントを **MyFirebaseMessagingService.cs** に追加します。
     
     ```csharp
+        using Android.App;
         using Android.Util;
         using Firebase.Messaging;
     ```
