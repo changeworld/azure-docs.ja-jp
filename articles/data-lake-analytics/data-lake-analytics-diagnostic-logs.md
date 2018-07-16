@@ -204,7 +204,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | SubmitTime |String |ジョブが送信された時間 (UTC) |
 | StartTime |String |ジョブが送信された後に実行を開始した時刻 (UTC) |
 | EndTime |String |ジョブが終了した時刻 |
-| Parallelism	 |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
+| Parallelism |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** は操作に関する情報を提供します。 これらのエントリには、その操作が開始または完了した場合にのみ値が含まれます。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。

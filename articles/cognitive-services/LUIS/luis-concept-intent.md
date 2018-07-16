@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5c2feb0240b676d4e106cbda65aaaed7604a35c5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: cbf1ad2da3bbc86f8c6861458ae9e5d5c49c56ce
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265154"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888580"
 ---
 # <a name="intents-in-luis"></a>LUIS での意図
 
@@ -100,5 +100,3 @@ None 意図に残されているのはどのような種類の発話でしょう
 * 意図に関連する重要な単語である、[エンティティ](luis-concept-entity-types.md)について詳細を確認します。
 * LUIS アプリで[意図を追加および管理](luis-how-to-add-intents.md)する方法を確認します。
 * 意図に関する[ベスト プラクティス](luis-concept-best-practices.md)を確認します。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

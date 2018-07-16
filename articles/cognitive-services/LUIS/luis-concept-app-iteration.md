@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7f8dd46dc8289322726934f330761b0f1ab94bd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265939"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888250"
 ---
 # <a name="authoring-cycle"></a>作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 
@@ -40,7 +40,7 @@ Do not add features such as a [phrase list](luis-concept-feature.md) feature in 
 必要なエンティティがラベル付けされている 10 から 15 のさまざまな発話を意図ごとに用意したら、LUIS をトレーニングし、公開してエンドポイントを取得します。 アプリを作成し、必要な[エンドポイント領域](luis-reference-regions.md)で利用できるように公開します。 
 
 ## <a name="https-endpoint-testing"></a>HTTPS エンドポイントのテスト
-LUIS アプリは、**[[公開]](publishapp.md)** ページに記載されている HTTPS エンドポイントからテストできます。 エンドポイントからテストすると、LUIS では、信頼度が低い発話を確認用に選択できます。  
+LUIS アプリは、**[[公開]](luis-how-to-publish-app.md)** ページに記載されている HTTPS エンドポイントからテストできます。 エンドポイントからテストすると、LUIS では、信頼度が低い発話を確認用に選択できます。  
 
 ## <a name="recycle"></a>リサイクル
 作成サイクルが完了したら、もう一度開始できます。 LUIS によって信頼度が低いとマークされたエンドポイントの発話の見直しから開始します。 意図とエンティティの両方について、これらの発話をチェックします。 発話を確認したら、確認リストが空になります。  
@@ -51,5 +51,3 @@ LUIS アプリは、**[[公開]](publishapp.md)** ページに記載されてい
 ## <a name="next-steps"></a>次の手順
 
 [コラボレーション](luis-concept-collaborator.md)の概念を学習します。
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains

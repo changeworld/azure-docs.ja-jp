@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 927d95f6b6fac922d2c3701b8a5124efb18825f6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221633"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951239"
 ---
 # <a name="test-your-luis-app"></a>LUIS アプリのテスト
 <a name="train-your-app"></a>
@@ -65,7 +65,7 @@ ms.locfileid: "36221633"
 
 ## <a name="view-sentiment-results"></a>センチメント結果の表示
 
-**[[Publish]\(公開\)](publishapp.md#enable-sentiment-analysis)** ページで**感情分析**が構成されている場合、テスト結果には、発話で見つかったセンチメントが含まれます。 
+**[[Publish]\(公開\)](luis-how-to-publish-app.md#enable-sentiment-analysis)** ページで**感情分析**が構成されている場合、テスト結果には、発話で見つかったセンチメントが含まれます。 
 
 ![感情分析を含む [Test]\(テスト\) ウィンドウの画像](./media/luis-how-to-interactive-test/sentiment.png)
 
@@ -129,5 +129,5 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリの精度を向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](Label-Suggested-Utterances.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264011"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951115"
 ---
 # <a name="best-practices"></a>ベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -25,7 +25,7 @@ ms.locfileid: "36264011"
 * エンドポイントからテストする 
 * 機能を追加する
 
-ご自身のアプリが[公開](publishapp.md)されたら、機能を追加する、公開する、エンドポイントからテストする、という作成サイクルを使用します。 発話の例を追加することによって、次の作成サイクルを開始しないでください。 そうすると、実際のユーザーの発話を使用して LUIS にモデルを学習させることができなくなります。 
+ご自身のアプリが[公開](luis-how-to-publish-app.md)されたら、機能を追加する、公開する、エンドポイントからテストする、という作成サイクルを使用します。 発話の例を追加することによって、次の作成サイクルを開始しないでください。 そうすると、実際のユーザーの発話を使用して LUIS にモデルを学習させることができなくなります。 
 
 LUIS による学習効率を高めるには、現在の発話の例とエンドポイント発話の両方が、高い予測スコアを確実に返すまでは、発話を増やさないようにします。 スコアを上げるには、アクティブ ラーニング、[パターン](luis-concept-patterns.md)、および[フレーズ リスト](luis-concept-feature.md)を使用します。 
 
@@ -77,7 +77,7 @@ LUIS の予測データを使用して、意図が重複していないかどう
 これは代替用の意図で、お使いのアプリケーション外のものすべてを示していました。 ご自身の残りの LUIS アプリでは、発話の例 10 個それぞれに 1 つの発話の例を None 意図に追加してください。
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>すべきこと: アクティブ ラーニングの提案機能を活用する
-発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](label-suggested-utterances.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
+発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>すべきこと: ご自身のアプリのパフォーマンスを監視する
 テスト セットを使用して予測精度を監視します。 
@@ -113,6 +113,4 @@ LUIS では、意図の発話にバリエーションが必要です。 発話�
 
 ## <a name="next-steps"></a>次の手順
 
-* お使いの LUIS アプリで[ご自身のアプリを計画](plan-your-app.md)する方法を確認します。
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+* お使いの LUIS アプリで[ご自身のアプリを計画](luis-how-plan-your-app.md)する方法を確認します。

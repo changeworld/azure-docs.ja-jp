@@ -10,16 +10,16 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 86a20770178707f72cf2991ca08b6b98eaeaf0cf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d81fbc03689788066fb9275523a5e96647117c58
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36236677"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346454"
 ---
 # <a name="regions-and-keys"></a>リージョンとキー
 
-LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 [アプリを公開](./PublishApp.md)するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。 LUIS アプリを複数のリージョンに公開するには、リージョンごとに少なくとも 1 つのキーが必要です。 
+LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 [アプリを公開](./luis-how-to-publish-app.md)するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。 LUIS アプリを複数のリージョンに公開するには、リージョンごとに少なくとも 1 つのキーが必要です。 
 
 ## <a name="luis-website"></a>LUIS Web サイト
 リージョンに基づいて 3 つの LUIS Web サイトがあります。 作成と公開は同じリージョンで行う必要があります。 
