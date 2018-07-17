@@ -116,7 +116,7 @@ var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateReco
 Attribute | 説明
 -------------|-------------
 version | Emotion API for Video の JSON のバージョンを指します。
-timescale | ビデオの 1 秒あたりの "ティック数" です。
+タイムスケール | ビデオの 1 秒あたりの "ティック数" です。
 offset  |タイムスタンプの時間オフセットです。 バージョン 1.0 の Emotion API for Video では、これは常に 0 になります。 この値は、今後サポートされるシナリオで変更される可能性があります。
 framerate | ビデオの 1 秒あたりのフレーム数です。
 fragments   | メタデータは、フラグメントと呼ばれる異なる小さな部分に切り刻まれます。 各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。

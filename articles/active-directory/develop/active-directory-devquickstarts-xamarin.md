@@ -93,7 +93,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 
   * *tenant* には、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) を指定します。
   * *clientId* には、ポータルからコピーしたアプリのクライアント ID を指定します。
-  * *returnUri* は、ポータルで入力したリダイレクト URI です (例: http://DirectorySearcher))。
+  * *returnUri* は、ポータルで入力したリダイレクト URI です (例: http://DirectorySearcher) )。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>手順 4: ADAL を使用して Azure AD からトークンを取得する
 ほとんどすべてのアプリの認証ロジックは、`DirectorySearcher.SearchByAlias(...)` 内にあります。 プラットフォーム固有プロジェクトで必要なのは、`DirectorySearcher` PCL にコンテキスト パラメーターを渡すことだけです。

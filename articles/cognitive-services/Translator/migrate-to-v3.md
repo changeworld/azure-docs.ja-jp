@@ -87,7 +87,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 ## <a name="v3-api-text-translations-methods"></a>V3 API テキスト翻訳メソッド
 
-[Languages](reference/v3-0-languages.md)
+[言語](reference/v3-0-languages.md)
 
 [Translate](reference/v3-0-translate.md)
 
