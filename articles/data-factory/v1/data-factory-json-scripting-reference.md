@@ -299,8 +299,8 @@ Azure Data Factory のデータセットは次のように定義されます。
 | --- | --- | --- |
 | name |列の名前です。 |はい |
 | type |列のデータ型です。  |いいえ  |
-| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
-| format |型を指定するときに使用される書式指定文字列。.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
+| culture |型を指定するときに使用される .NET ベースのカルチャ。\.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
+| format |型を指定するときに使用される書式指定文字列。\.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
 
 次の例では、データセットに `slicetimestamp`、`projectname`、`pageviews` の 3 つの列があり、それぞれの列の型は、String、String、Decimal です。
 
@@ -1653,7 +1653,7 @@ Amazon Redshift からデータをコピーする場合は、コピー アクテ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -1706,7 +1706,7 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |DB2 サーバーの名前です。 |はい |
-| database |DB2 データベースの名前です。 |はい |
+| [データベース] |DB2 データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
@@ -1772,7 +1772,7 @@ IBM DB2 からデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `"query": "select * from "MySchema"."MyTable""`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `"query": "select * from "MySchema"."MyTable""`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 ```json
@@ -1821,8 +1821,8 @@ MySQL のリンクされたサービスを定義するには、リンクされ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| server |MySQL サーバーの名前です。 |はい |
-| database |MySQL データベースの名前です。 |はい |
+| [サーバー] |MySQL サーバーの名前です。 |はい |
+| [データベース] |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
 | username |MySQL データベースに接続するユーザー名を指定します。 |はい |
@@ -1890,7 +1890,7 @@ MySQL データベースからデータをコピーする場合は、コピー �
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 
 #### <a name="example"></a>例
@@ -2112,8 +2112,8 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| server |PostgreSQL サーバーの名前です。 |はい |
-| database |PostgreSQL データベースの名前です。 |はい |
+| [サーバー] |PostgreSQL サーバーの名前です。 |はい |
+| [データベース] |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
@@ -2179,7 +2179,7 @@ PostgreSQL データベースからデータをコピーする場合は、コピ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2231,7 +2231,7 @@ SAP Business Warehouse (BW) のリンクされたサービスを定義するに�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-server | SAP BW インスタンスが存在するサーバーの名前。 | 文字列 | はい
+[サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | 文字列 | はい
 systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
 clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
 username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | はい
@@ -2288,7 +2288,7 @@ SAP Business Warehouse からデータをコピーする場合は、コピー �
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
+| クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
 
 #### <a name="example"></a>例
 
@@ -2341,7 +2341,7 @@ SAP HANA のリンクされたサービスを定義するには、リンクさ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | 文字列 | はい
+[サーバー] | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | 文字列 | はい
 authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | はい 
 username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | はい
 password | ユーザーのパスワード。 | 文字列 | はい
@@ -2395,7 +2395,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | はい |
+| クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | はい |
 
 
 #### <a name="example"></a>例
@@ -2670,8 +2670,8 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| server |Sybase サーバーの名前です。 |はい |
-| database |Sybase データベースの名前です。 |はい |
+| [サーバー] |Sybase サーバーの名前です。 |はい |
+| [データベース] |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
 | authenticationType |Sybase データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
@@ -2739,7 +2739,7 @@ Sybase データベースからデータをコピーする場合は、コピー 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2790,7 +2790,7 @@ Teradata のリンクされたサービスを定義するには、リンクさ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| server |Teradata のサーバーの名前です。 |はい |
+| [サーバー] |Teradata のサーバーの名前です。 |はい |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
@@ -2849,7 +2849,7 @@ Teradata データベースからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |はい |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |はい |
 
 #### <a name="example"></a>例
 
@@ -2905,7 +2905,7 @@ Cassandra のリンクされたサービスを定義するには、リンクさ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
-| port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
+| ポート |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |はい |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | password |ユーザー アカウントのパスワードを指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
@@ -2976,7 +2976,7 @@ Cassandra からデータをコピーする場合は、コピー アクティビ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
 | consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
 
 #### <a name="example"></a>例
@@ -3031,8 +3031,8 @@ MongoDB のリンクされたサービスを定義するには、リンクされ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
-| port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
+| [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
@@ -3098,7 +3098,7 @@ MongoDB からデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |いいえ (**データセット**の **collectionName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -3555,7 +3555,7 @@ FTP のリンクされたサービスを定義するには、リンクされた�
 | password |ユーザーのパスワード (ユーザー名) |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報 |いいえ  |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway の名前 |いいえ  |&nbsp; |
-| port |FTP サーバーがリッスンしているポート |いいえ  |21 |
+| ポート |FTP サーバーがリッスンしているポート |いいえ  |21 |
 | enableSsl |FTP over SSL/TLS チャネルを使用するかどうかを指定します |いいえ  |true |
 | enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用した場合にサーバーの SSL 証明書の検証を有効にするかどうかを指定します |いいえ  |true |
 
@@ -3728,7 +3728,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **Hdfs** |はい |
-| url |HDFS への URL |はい |
+| Url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
@@ -3864,7 +3864,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
-| port |SFTP サーバーがリッスンしているポート。 既定値は 21 です |いいえ  |
+| ポート |SFTP サーバーがリッスンしているポート。 既定値は 21 です |いいえ  |
 | authenticationType |認証の種類を指定します。 指定できる値: **Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |はい |
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
@@ -4348,7 +4348,7 @@ OData データセットを定義するには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| path |OData リソースへのパス |いいえ  |
+| パス |OData リソースへのパス |いいえ  |
 
 #### <a name="example"></a>例
 
@@ -4383,7 +4383,7 @@ OData ソースからデータをコピーする場合は、コピー アクテ�
 
 | プロパティ | 説明 | 例 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ  |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |"?$select=Name, Description&$top=5" |いいえ  |
 
 #### <a name="example"></a>例
 
@@ -4439,7 +4439,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 |はい |
-| credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |いいえ  |
+| 資格情報 |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |いいえ  |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 Anonymous と Basic のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
@@ -4538,7 +4538,7 @@ ODBC データ ストアからデータをコピーする場合は、コピー �
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |はい |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `select * from MyTable`」のように入力します。 |はい |
 
 #### <a name="example"></a>例
 
@@ -4656,7 +4656,7 @@ Salesforce からデータをコピーする場合は、コピー アクティ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例  
 
@@ -4715,7 +4715,7 @@ Web のリンクされたサービスを定義するには、リンクされた�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| url |Web ソースへの URL |はい |
+| Url |Web ソースへの URL |はい |
 | authenticationType |Anonymous |はい |
  
 
@@ -4743,7 +4743,7 @@ Web データセットを定義するには、データセットの **type** を
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |データセットの型。 **データセット** |はい |
-| path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 #### <a name="example"></a>例
@@ -4907,10 +4907,10 @@ Azure Batch のリンクされたサービスを作成し、仮想マシン (VM)
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは **AzureBatch**に設定されます。 |はい |
-| accountName |Azure Batch アカウントの名前です。 |はい |
+| .<リージョン名 |Azure Batch アカウントの名前です。 |はい |
 | accessKey |Azure Batch アカウントのアクセス キーです。 |はい |
 | poolName |仮想マシンのプールの名前です。 |はい |
-| linkedServiceName |この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 |はい |
+| 既定のコンテナー |この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングとアクティビティ実行ログの保存に利用されます。 |はい |
 
 
 #### <a name="json-example"></a>JSON の例
@@ -5126,8 +5126,8 @@ Hive アクティビティの JSON 定義では、以下のプロパティを指
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| script |Hive スクリプトをインラインに指定します |いいえ  |
-| scriptPath |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
+| script (スクリプト) |Hive スクリプトをインラインに指定します |いいえ  |
+| スクリプトのパス |Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
 
 これらの種類のプロパティは、Hive アクティビティに固有です。 その他 (typeProperties セクション外) のプロパティは、すべてのアクティビティで使用できます。   
@@ -5172,8 +5172,8 @@ Pig アクティビティの JSON 定義では、以下のプロパティを指�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| script |Pig スクリプトをインラインに指定します |いいえ  |
-| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
+| script (スクリプト) |Pig スクリプトをインラインに指定します |いいえ  |
+| スクリプトのパス |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
 
 これらの種類のプロパティは、Pig アクティビティに固有です。 その他 (typeProperties セクション外) のプロパティは、すべてのアクティビティで使用できます。   
@@ -5526,7 +5526,7 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 |:--- |:--- |:--- |
 | scriptPath |U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 |いいえ (スクリプトを使用する場合) |
 | scriptLinkedService |Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス |いいえ (スクリプトを使用する場合) |
-| script |scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 例: "script": "CREATE DATABASE test" |いいえ (scriptPath と scriptLinkedService を使用する場合) |
+| script (スクリプト) |scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 例: "script": "CREATE DATABASE test" |いいえ (scriptPath と scriptLinkedService を使用する場合) |
 | degreeOfParallelism |ジョブを実行するために同時に使用される最大ノード数。 |いいえ  |
 | priority |キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 |いいえ  |
 | parameters |U-SQL スクリプトのパラメーター |いいえ  |
