@@ -42,9 +42,9 @@
 ### [アクセス レビューを開始する](pim-resource-roles-start-access-review.md)
 ### [アクセス レビューを終了する](pim-resource-roles-complete-access-review.md)
 
-# FAQ
-## リソース ロール用の PIM
-### [割り当ての種類](pim-resource-roles-eligible-visibility.md)
+# 概念
+## [割り当ての種類](pim-resource-roles-eligible-visibility.md)
+## [電子メール通知](pim-email-notifications.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)

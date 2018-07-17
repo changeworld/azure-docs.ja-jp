@@ -218,11 +218,10 @@
           href: ./blueprints/uknhs-iaaswa-overview.md
         - name: PaaS Web アプリケーション
           href: ./blueprints/uknhs-paaswa-overview.md
-    - name: UK-OFFICIAL
-      href: ./blueprints/uk-official-three-tier-applications-overview.md
+    - name: UK OFFICIAL
       items:
-        - name: 原則の概要
-          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/ukofficial-iaaswa-overview.md
     - name: HIPAA/HITRUST 正常性データおよび AI
       href: ./blueprints/azure-health.md
 - name: ホワイト ペーパー
@@ -257,7 +256,7 @@
           items:
             - name: 監査とログ記録
               href: azure-security-threat-modeling-tool-auditing-and-logging.md
-            - name: 認証
+            - name: Authentication
               href: azure-security-threat-modeling-tool-authentication.md
             - name: 承認
               href: azure-security-threat-modeling-tool-authorization.md
