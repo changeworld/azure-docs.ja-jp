@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 69741fb139d2225ce827f4c158603a0ffacbfa76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d0553a1b8e4e6db63724991a1cdfdb277afbefd6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004213"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050418"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -2147,6 +2147,25 @@ s" alt="" />
                                                 <div class="cardText">
                                                     <h3>Azure Firewall</h3>
                                                     <p>可用性が高くスケーラブルなクラウドベースのネットワーク セキュリティ サービス</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/virtual-wan/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/WAN.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Virtual WAN</h3>
+                                                    <p>グローバルなスケールで支社の安全な接続を作成</p>
                                                 </div>
                                             </div>
                                         </div>
