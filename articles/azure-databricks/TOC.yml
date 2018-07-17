@@ -31,6 +31,9 @@
       href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
     - name: データ ソースへの接続
       href: databricks-connect-to-data-sources.md
+    - name: Azure Data Factory での使用
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
     - name: Excel、R、Python を使用した接続
       href: connect-databricks-excel-python-r.md
     - name: Azure Cloud Shell からの Databricks CLI の使用

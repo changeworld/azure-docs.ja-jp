@@ -4,7 +4,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Maps について
+    - name: Azure Maps とは
       href: about-azure-maps.md
 - name: クイック スタート
   items:
@@ -22,22 +22,10 @@
   items:
     - name: ズーム レベルとタイル グリッド
       href: zoom-levels-and-tile-grid.md
-    - name: ジオコーディングの対象範囲
-      href: geocoding-coverage.md
-    - name: トラフィックの対象範囲
-      href: traffic-coverage.md
-    - name: レンダーの対象範囲
-      href: render-coverage.md
-    - name: ルーティングの対象範囲
-      href: routing-coverage.md
     - name: サポートされている検索カテゴリ
       href: supported-search-categories.md
     - name: サポートされている言語
       href: supported-languages.md
-    - name: 消費モデル
-      href: consumption-model.md
-    - name: GeoJSON の拡張
-      href: extend-geojson.md
 - name: ハウツー ガイド
   items:
     - name: Maps のアカウントを管理する
@@ -76,6 +64,22 @@
           href: map-accessibility.md
 - name: リファレンス
   items:
+    - name: サービスの範囲
+      items:
+        - name: ジオコーディング
+          href: geocoding-coverage.md
+        - name: トラフィック
+          href: traffic-coverage.md
+        - name: レンダー
+          href: render-coverage.md
+        - name: ルーティング
+          href: routing-coverage.md
+    - name: API とパラメーターの拡張子
+      items:
+        - name: 車両消費モデル
+          href: consumption-model.md
+        - name: GeoJSON 形式の拡張
+          href: extend-geojson.md
     - name: REST ()
       items:
         - name: Render Service
@@ -139,4 +143,4 @@
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos'
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

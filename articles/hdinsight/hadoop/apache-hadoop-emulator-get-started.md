@@ -51,7 +51,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 1. Hortonworks Sandbox を選択し、**[Start (開始)]**、**[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
    
     ![[Normal Start (通常の方法で開始)]](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888))。
+2. Web ブラウザーを開き、表示された URL に移動します (通常は http://127.0.0.1:8888) )。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 

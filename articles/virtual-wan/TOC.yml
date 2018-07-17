@@ -1,0 +1,34 @@
+- name: Virtual WAN のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Virtual WAN について
+      href: virtual-wan-about.md
+- name: チュートリアル
+  items:
+    - name: サイト間接続を作成する
+      href: virtual-wan-site-to-site-portal.md
+- name: ハウツー ガイド
+  items:
+    - name: 自動化を構成する - WAN パートナー
+      href: virtual-wan-configure-automation-providers.md
+- name: リファレンス
+  items:
+    - name: REST ()
+      href: /rest/api/azure
+- name: リソース
+  items:
+    - name: FAQ
+      href: virtual-wan-faq.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: サブスクリプションとサービスの制限
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

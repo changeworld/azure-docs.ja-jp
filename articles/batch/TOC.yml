@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: 同時実行ノード タスク
           href: batch-parallel-node-tasks.md
-        - name: 状態別にタスクをカウントする
-          href: batch-get-task-counts.md
         - name: Task dependencies
           href: batch-task-dependencies.md
         - name: タスクを実行するためのユーザー アカウント
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: Application Insights での監視
           href: monitor-application-insights.md
-        - name: 効率的なリスト クエリ
+        - name: 状態別でのリソースのカウント
+          href: batch-get-resource-counts.md
+        - name: リソースの効率的なクエリ
           href: batch-efficient-list-queries.md
     - name: 開発者ツールの使用
       items:

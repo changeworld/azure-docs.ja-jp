@@ -22,7 +22,7 @@
       items:
         - name: 1. Contoso 移行の概要
           href: contoso-migration-overview.md
-        - name: 2. Contoso - Azure インフラストラクチャを設定する
+        - name: 2. Contoso - Azure インフラストラクチャのデプロイ
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
           href: contoso-migration-assessment.md
@@ -30,7 +30,7 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso - Azure VM でアプリをリホストする
           href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso - Azure VM と Azure SQL AlwaysOn でアプリをリホストする
+        - name: 6. Contoso - Azure VM と Azure SQL Server AlwaysOn 可用性グループでアプリをリホストする
           href: contoso-migration-rehost-vm-sql-ag.md
         - name: 7. Contoso - Azure VM で Linux アプリをリホストする
           href: contoso-migration-rehost-linux-vm.md
@@ -42,7 +42,7 @@
           href: contoso-migration-refactor-linux-app-service-mysql.md
         - name: 11. Contoso - TFS を VSTS に移行する
           href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso - Azure Service Fabric と Azure SQL Database でアプリを再構築する
+        - name: 12. Contoso - Azure Containers と Azure SQL Database でアプリを再構築する
           href: contoso-migration-rearchitect-container-sql.md
         - name: 13. Contoso - Azure でのアプリのリビルド
           href: contoso-migration-rebuild.md

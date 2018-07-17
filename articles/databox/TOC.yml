@@ -1,0 +1,50 @@
+- name: Azure Data Box のドキュメント
+  href: /azure/databox/
+- name: 概要
+  items:
+    - name: Data Box ディスクとは
+      href: data-box-disk-overview.md
+- name: クイック スタート
+  items:
+    - name: 設定 - Azure portal
+      href: data-box-disk-quickstart-portal.md
+- name: チュートリアル
+  items:
+    - name: 1 - 注文
+      href: data-box-disk-deploy-ordered.md
+    - name: 2 - 設定
+      href: data-box-disk-deploy-set-up.md
+    - name: 3 - データのコピー
+      href: data-box-disk-deploy-copy-data.md
+    - name: 4 - 返却、アップロード、確認
+      href: data-box-disk-deploy-picked-up.md
+- name: 概念
+  items:
+    - name: 要件を確認する
+      href: data-box-disk-system-requirements.md
+    - name: 制限を理解する
+      href: data-box-disk-limits.md
+    - name: セキュリティを確認する
+      href: data-box-disk-security.md
+    - name: FAQ
+      href: data-box-disk-faq.md
+- name: 方法
+  items:
+    - name: Azure Portal で管理する
+      href: data-box-portal-ui-admin.md
+    - name: ディスクに関する問題のトラブルシューティング
+      href: data-box-disk-troubleshoot.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure Data Box のマーケティング
+      href: 'https://azure.microsoft.com/services/storage/databox/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=databox'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=databox'

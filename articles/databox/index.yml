@@ -1,0 +1,46 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Box のドキュメント
+metadata:
+  title: Azure Data Box のドキュメント
+  description: Azure Data Box サービスでは、信頼性が高く、迅速かつ安価な方法で、テラバイト単位のデータを Azure に転送することができます。 Microsoft は、お客様のディスクを配送してエンドツーエンドの物流を行うことで、安全なデータ転送を促進します。
+  services: databox
+  author: alkohli
+  manager: twooley
+  ms.service: databox
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/10/2018
+  ms.author: alkohli
+  ms.openlocfilehash: 5077d0ba77b6bdce99f1dfdf258182980a367b6c
+  ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/13/2018
+  ms.locfileid: "39010142"
+abstract:
+  description: Azure Data Box サービスでは、信頼性が高く、迅速かつ安価な方法で、テラバイト単位のデータを Azure に転送することができます。 Microsoft は、お客様のディスクを配送してエンドツーエンドの物流を行うことで、安全なデータ転送を促進します。<p>注文、受け取り、ディスクへのデータのコピー、Azure へのディスクの返却という 4 つの簡単な手順で、大量のデータを Azure に転送します。 ディスクの受領後、データは Azure に取り込まれ、ディスクから安全に削除されます。<p><a href="/azure/databox/data-box-disk-overview">Data Box ディスクの詳細</a>。</p>
+sections:
+- title: クイック スタート
+  items:
+  - type: paragraph
+    text: Data Box ディスクを使用してデータを Azure に転送する方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/databox/data-box-disk-quickstart-portal
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Data Box ディスクでデータを Azure にインポートする方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="data-box-disk-deploy-ordered">Data Box ディスクを注文する</a>
+    - html: <a href="data-box-disk-deploy-set-up">Data Box ディスクを設定する</a>
+    - html: <a href="data-box-disk-deploy-copy-data">データを Data Box ディスクにコピーする</a>
+    - html: <a href="data-box-disk-deploy-picked-up">Data Box ディスクを返却してデータを Azure にアップロードする</a>

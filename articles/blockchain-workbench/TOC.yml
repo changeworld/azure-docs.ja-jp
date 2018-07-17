@@ -40,8 +40,6 @@
           href: blockchain-workbench-data-sql-management-studio.md
 - name: リファレンス
   items:
-    - name: コード サンプル
-      href: 'https://github.com/Azure-Samples/blockchain'
     - name: 構成
       href: blockchain-workbench-configuration-overview.md
     - name: データベース ビュー
@@ -50,6 +48,19 @@
       href: blockchain-workbench-messages-overview.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+- name: リソース
+  expanded: true
+  items:
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: コミュニティ
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: フォーラム
+      href: 'https://aka.ms/workbenchforum'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/586780-blockchain'
     - name: ソリューション テンプレート
       items:
         - name: Ethereum プルーフオブワーク コンソーシアム

@@ -143,9 +143,9 @@
 ## パスワードの管理
 ### [パスワードの概要](authentication/active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
-#### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
+#### [パスワードのリセットまたは変更](user-help/active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
-#### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
+#### [セルフサービスのパスワード リセットのための登録](user-help/active-directory-passwords-reset-register.md)
 ### [SSPR のしくみ](authentication/concept-sspr-howitworks.md)
 ### [SSPR デプロイ ガイド](authentication/howto-sspr-deployment.md)
 ### [SSPR と Windows 10](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [Azure AD Join の計画](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [FAQ](device-management-faq.md)
 ### タスク
-#### [Azure AD 登録済み Windows 10 デバイスの設定](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Azure AD 参加済みデバイスの設定](device-management-azuread-joined-devices-setup.md)
+#### [Azure AD 登録済み Windows 10 デバイスの設定](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [Azure AD 参加済みデバイスの設定](user-help/device-management-azuread-joined-devices-setup.md)
 #### [ハイブリッド Azure AD 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
@@ -291,7 +291,7 @@
 ##### [アプリケーション オブジェクトのフィールドの入力](application-dev-registration-config-specific-application-property-how-to.md)
 ##### [トークン有効期間の既定値の変更](application-dev-registration-config-change-token-lifetime-how-to.md)
 
-#### 認証
+#### Authentication
 ##### [エンドポイントの構成](application-dev-registration-config-how-to.md)
 
 #### 条件付きアクセス
@@ -404,7 +404,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
