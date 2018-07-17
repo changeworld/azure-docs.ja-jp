@@ -42,7 +42,7 @@ QnA Maker には、[価格モデル](https://azure.microsoft.com/en-us/pricing/d
 
     ![KB の作成 ](../media/qnamaker-how-to-create-kb/create-new-service.png)
     
-5. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 作成している場合、手順 2. のドロップダウンから QnA Maker サービスを選択します。 サポート技術情報をホストする QnA Maker サービスを選択します。
+5. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 作成している場合、手順 2. のドロップダウンから QnA Maker サービスを選択します。 ナレッジ ベースをホストする QnA Maker サービスを選択します。
 
     ![QnA サービスのセットアップ](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
