@@ -44,8 +44,8 @@
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/keyvault/client?view=azure-dotnet)
 ## [Java](/java/api/overview/azure/keyvault?view=azure-java-stable)
 ## Node.js
-### [コンテナーの管理](https://docs.microsoft.com/en-us/javascript/api/overview/azure/keyvault/client?view=azure-node-latest)
-### [コンテナーの内容の管理](https://docs.microsoft.com/en-us/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
+### [コンテナーの管理](https://docs.microsoft.com/javascript/api/azure-keyvault/index?view=azure-node-latest)
+### [コンテナーの内容の管理](https://docs.microsoft.com/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
 ## [REST](/rest/api/keyvault)
 ## 開発
 ### [開発者クイック スタート ビデオ](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)

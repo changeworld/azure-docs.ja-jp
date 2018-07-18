@@ -61,8 +61,6 @@
           maintainContext: true
         - name: Azure Container Service での Kafka の使用
           href: apache-kafka-azure-container-services.md
-        - name: Kafka と Azure Functions
-          href: apache-kafka-azure-functions.md
     - name: 開発
       items:
         - name: 空のエッジ ノードを使用する
