@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
 ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
+ms.lasthandoff: 07/17/2018
 ms.locfileid: "34757229"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
