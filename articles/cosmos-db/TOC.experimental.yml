@@ -274,7 +274,7 @@ items:
                 items:
                   - name: Node.js
                     href: mongodb-samples.md
-                  - name: Node.js と角度
+                  - name: Node.js と Angular
                     items:
                       - name: パート 1 - はじめに
                         href: tutorial-develop-mongodb-nodejs.md
@@ -288,7 +288,7 @@ items:
                         href: tutorial-develop-mongodb-nodejs-part5.md
                       - name: パート 6 - アプリへの書き込み
                         href: tutorial-develop-mongodb-nodejs-part6.md
-                  - name: Node.js と反応
+                  - name: Node.js と React
                     href: tutorial-develop-mongodb-react.md
               - name: 2 - インポート
                 href: mongodb-migrate.md
