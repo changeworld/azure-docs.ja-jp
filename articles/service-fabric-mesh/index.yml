@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2018
   ms.author: ryanwi
-  ms.openlocfilehash: e5fc62d84ace2acd46816a7116ea1cf2198be63f
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+  ms.openlocfilehash: fccd805f6d4abcf7005fca0cc6f4d368ac5764f1
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39073701"
+  ms.locfileid: "39090045"
 abstract:
   description: Azure Service Fabric mesh は、開発者がインフラストラクチャを管理することなくミッション クリティカルなアプリケーションをビルドしてデプロイできるようにするフル マネージド サービスです。  Service Fabric mesh を使用すると、オンデマンドでスケーリングされる安全な分散型のマイクロサービス アプリケーションをビルドして実行できます。 Microsoft が提供するクイック スタートやチュートリアルを使用して、Service Fabric mesh の使用方法を確認してください。  詳細については、<a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Service Fabric mesh の概要</a>に関するページを参照してください。
 sections:
@@ -45,15 +45,3 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">.NET Core アプリケーションのデプロイ</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: Windows および Linux 用の .NET Core サンプル アプリケーションはこちらにあります。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld">Hello world!</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/azurefiles-volume">Azure Files ボリューム</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp">To Do リスト</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects">ビジュアル オブジェクト</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp">投票</a>
