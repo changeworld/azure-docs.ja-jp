@@ -13,14 +13,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/01/2018
+  ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 21f67f7fcce505e18792a3be830524d64dd8045e
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
+  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37045305"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39070112"
 abstract:
   description: Microsoft 音声サービスでは、<a href="rest-apis">REST API</a> または <a href="speech-sdk">C#、C++、Java の SDK</a> を使用して、音声コマンド制御、文字起こし、ディクテーションなどの強力な音声認識機能をアプリケーションに追加する簡単な手段が開発者に提供されます。<p>音声サービスを利用すると、<a href="how-to-customize-speech-models">音声テキスト変換</a>モデルをカスタマイズして、特殊なボキャブラリ、騒がしい環境、さまざまな話し方に対応できます。 また、カスタマイズされた<a href="https://cris.ai/Home/customvoice">テキスト読み上げ</a>と<a href="https://www.microsoft.com/translator/customization.aspx">音声翻訳</a>も利用できます。<p>詳細については、<a href="overview">音声サービスの概要</a>に関するページをご覧ください。
 sections:
@@ -32,27 +32,63 @@ sections:
     style: dataMatrix
     columns:
     - image:
+        src: media/index/uwp.jpg
+    - image:
         src: media/index/logo_csharp.svg
     - image:
         src: media/index/logo_cplusplus.svg
     - image:
-        src: media/index/logo_java.jpg
+        src: media/index/logo_netcore.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
     rows:
     - title: Windows
       values:
+      - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
+      - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
     - title: Linux
       values:
       - href: 
+      - href: 
       - href: quickstart-cpp-linux
       - href: 
-    - title: Devices SDK (Android)
+      - href: 
+    - title: Android SDK
       values:
       - href: 
       - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+      - href: 
+      - href: 
+      - href: quickstart-java-android
+      - href: 
+      - href: 
+    - title: Devices SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: speech-devices-sdk
+      - href: 
+      - href: 
+    - title: Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: rest-apis
+      - href: rest-apis
 - title: サンプルとリファレンス
   items:
   - type: list
@@ -62,10 +98,8 @@ sections:
     - title: 例
       html: <ul><li><a href="speech-to-text-sample.md">音声認識</a></li><li><a href="intent.md">意図認識</a></li><li><a href="translation.md">翻訳</a></li></ul>
     - title: API リファレンス
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API</a></li><li><a href="https://aka.ms/csspeech/cppref">C++ API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API (Speech Devices SDK)</a></li></ul>
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET Standard を含む)</a></li><li><a href="https://aka.ms/csspeech/cppref">C++ API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API</a> (Speech SDK<br>および Speech Devices SDK 向け)</li></ul>
 - title: Speech Devices SDK
   items:
   - type: paragraph
-    text: 統合音声サービスの導入に伴い、Microsoft とそのパートナーは、音声認識デバイスの開発に最適化された統合ハードウェア/ソフトウェア プラットフォーム、<b>Speech Devices SDK</b> を提供しています。 この SDK は、あらゆる種類のアプリケーション用のスマート音声デバイスを開発するのに適しています。
-  - type: paragraph
-    text: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">Speech Devices SDK</a> では、オーディオ キャプチャをトリガーするブランド固有のウェイク ワードをカスタマイズして、独自の環境デバイスを構築できます。 さらに、ノイズの抑制、遠距離の音声、ビームフォーミングなど、マルチチャネル ソースに対して高度なオーディオ処理が行われ、より正確な音声認識が実現されます。
+    text: 統合音声サービスの導入に伴い、Microsoft とそのパートナーは、音声認識デバイスの開発に最適化された統合ハードウェア/ソフトウェア プラットフォーム、<a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a> を提供しています。 あらゆる種類のアプリケーションに対応するデバイスの開発に適しているため、この SDK を使用すると、ブランド固有のカスタム <I>ウェイク ワード</I>を定義できます。 このハードウェアでは、ノイズの抑制、遠距離の音声、ビームフォーミングなど、マルチチャンネル ソースに対して高度なオーディオ処理が行われ、より正確な音声認識が実現されます。

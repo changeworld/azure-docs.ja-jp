@@ -1,5 +1,5 @@
 # 概要
-## [作業開始](get-started.md)
+## [はじめに](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## [概要とアーキテクチャ](hana-overview-architecture.md)
@@ -48,8 +48,19 @@
 ### SAP マルチ SID
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [デプロイ ガイド](deployment-guide.md)
-## [DBMS デプロイ ガイド](dbms-guide.md)
+## [SAP NetWeaver のデプロイ ガイド](deployment-guide.md)
+## SAP ワークロード向け DBMS デプロイ ガイド
+### [SAP ワークロードのための一般的な Azure Virtual Machines DBMS のデプロイ](dbms_guide_general.md)
+### [SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ](dbms_guide_sqlserver.md)
+### [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ](dbms_guide_oracle.md)
+### [SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ](dbms_guide_ibm.md)
+### [SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](dbms_guide_sapase.md)
+### [Azure での SAP MaxDB、liveCache、Content Server のデプロイ](dbms_guide_maxdb.md)
+### [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
+#### Azure Virtual Machines での SAP HANA の可用性
+##### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
+##### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
+##### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
 ## [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP ID 統合およびシングル サインオン
 ## [SAP Cloud との統合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

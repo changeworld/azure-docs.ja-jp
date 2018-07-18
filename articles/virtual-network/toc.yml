@@ -35,7 +35,7 @@
       href: policy-samples.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: セキュリティ グループ
       href: security-overview.md
     - name: ルーティング
       href: virtual-networks-udr-overview.md

@@ -20,6 +20,8 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - JavaScript UDF の実行
       href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4 - VSTS での CI/CD によるデプロイ
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: サンプル
   items:
     - name: コード サンプル

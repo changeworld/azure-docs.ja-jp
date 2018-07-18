@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/29/2018
   ms.author: cgronlun
-  ms.openlocfilehash: 314e756981076468056dd691bce7d24073d6ff4b
-  ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+  ms.openlocfilehash: 5ac8d7ca6f607acd54ab40402bb83376fd8b5d63
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37865023"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39089583"
 abstract:
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
 sections:
@@ -47,7 +47,7 @@ sections:
     rows:
     - title: Computer Vision - 画像を分析する
       values:
-      - href: /azure/cognitive-services/Computer-vision/Quickstarts/CSharp-analyze
+      - href: /azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/java-analyze
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/node-analyze
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/python-analyze
@@ -94,6 +94,7 @@ sections:
   - type: list
     style: unordered
     items:
+    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">画像内の顔を検出してフレームに収める</a>
     - html: <a href="/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page">Custom Search Web ページの作成</a>
     - html: <a href="/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample">ボットでの Language Understanding (LUIS) の使用</a>
     - html: <a href="/azure/cognitive-services/luis/luis-tutorial-batch-testing">ホーム オートメーション コマンドの意図の精度を向上させる</a>
@@ -107,7 +108,7 @@ sections:
       html: <p><a class="barLink" href="/azure/cognitive-services/computer-vision/"><img src="../media/index/API_Computer_Vision.svg" alt="" />Computer Vision</a></p> <p><a class="barLink" href="/azure/cognitive-services/content-moderator/overview"><img src="../media/index/API_Content_Moderator.svg" alt="" />Content Moderator</a></p> <p><a class="barLink" href="/azure/cognitive-services/Custom-Vision-Service/home"><img src="../media/index/API_Custom_Vision.svg" alt="" /><span>Custom Vision Service&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/emotion/home"><img src="../media/index/API_Emotion.svg" alt="" /><span>Emotion API&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/face/"><img src="../media/index/API_Face.svg" alt="" />Face API</a></p> <p><a class="barLink" href="/azure/cognitive-services/video-indexer/video-indexer-overview"><img src="../media/index/API_VideoIndexer.svg" alt="" /><span>Video Indexer&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p>
     - title: 音声
       html: <p><a class="barLink" href="/azure/cognitive-services/speech-service"><img src="../media/index/API_Speech_Service.svg" alt="" />Speech Service&nbsp;<sup style="font-size:70%">プレビュー</sup></a></p> <p><a class="barLink" href="/azure/cognitive-services/speech/home"><img src="../media/index/API_Bing_Speech.svg" alt="" />Speech API</a></p> <p><a class="barLink" href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><img src="../media/index/API_Custom_Speech.svg" alt="" /><span>Custom Speech Service&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/speaker-recognition/home"><img src="../media/index/API_Speaker_Recognition.svg" alt="" /><span>Speaker Recognition&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/translator-speech/"><img src="../media/index/API_TranslatorSpeech.svg" alt="" />Translator Speech</a></p>
-    - title: 言語
+    - title: Language
       html: <p><a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="../media/index/API_Bing_Spell_Check.svg" alt="" />Bing Spell Check</a></p> <p><a class="barLink" href="/azure/cognitive-services/luis/"><img src="../media/index/API_Luis.svg" alt="" /><span>Language Understanding (LUIS)</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="../media/index/API_LinguisticAnalysis.svg" alt="" /><span>Linguistic Analysis&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/text-analytics/"><img src="../media/index/API_TextAnalytics.svg" alt="" />Text Analytics</a></p> <p><a class="barLink" href="/azure/cognitive-services/translator/"><img src="../media/index/API_TranslatorText.svg" alt="" />Translator Text</a></p> <p><a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="../media/index/API_WebLanguageModel.svg" alt="" /><span>Web Language Model&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p>
     - title: ナレッジ
       html: <p><a class="barLink" href="/azure/cognitive-services/custom-decision-service/"><img src="../media/index/API_Custom_Decision_Service.svg" alt="" /><span>Custom Decision Service&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p> <p><a class="barLink" href="/azure/cognitive-services/qnamaker/index"><img src="../media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker</span></a></p> <p><a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="../media/index/API_Recommendations.svg" alt="" /><span>Recommendations&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a></p>

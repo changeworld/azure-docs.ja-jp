@@ -1,0 +1,63 @@
+- name: Service Fabric mesh のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Service Fabric mesh について
+      href: service-fabric-mesh-overview.md
+- name: クイック スタート
+  items:
+    - name: Hello World をデプロイする
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: Web アプリを作成してデプロイする
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: チュートリアル
+  items:
+    - name: マルチサービス Web アプリの作成とデプロイ
+      items:
+        - name: 1- ASP.NET Core アプリケーションのビルド
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2 - アプリケーションのデバッグ
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3 - アプリケーションのデプロイ
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: 概念
+  items:
+    - name: 用語集
+      href: service-fabric-mesh-terminology.md
+    - name: Service Fabric のリソース
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: 監視と診断
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: 状態の保存
+      href: service-fabric-mesh-storing-state.md
+- name: ハウツー ガイド
+  items:
+    - name: 開発環境を設定する
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: Service Fabric mesh CLI の設定
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: .NET Core マイクロサービス アプリのデプロイ
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: プライベート レジストリからのアプリのデプロイ
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: Azure Files ボリュームによる状態の保存
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: アプリにおけるマイクロサービスの個別のスケーリング
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: リソース
+  items:
+    - name: 一般的な質問
+      href: service-fabric-mesh-faq.md
+    - name: サンプル アプリケーション
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

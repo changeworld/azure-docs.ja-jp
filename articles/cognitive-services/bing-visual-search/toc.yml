@@ -28,7 +28,7 @@
       href: visual-search-sdk-python.md
 - name: チュートリアル
   items:
-    - name: Visual Search 画像のアップロード
+    - name: 画像アップロード Web アプリ
       href: tutorial-visual-search-image-upload.md
     - name: 単一ページの Web アプリ
       href: tutorial-bing-visual-search-single-page-app.md

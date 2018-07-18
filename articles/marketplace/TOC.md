@@ -8,12 +8,8 @@
 ### Marketplace で公開する方法  
 #### [ソリューションの登録リストの種類を選定する](./determine-your-listing-type.md)  
 #### [マーケットプレースで公開元になる](./become-publisher.md)  
-#### [登録リストの種類別の要件](./listing-type-requirements.md) 
-#### ビジネスの確認チェックリスト  
-##### [ガイドライン](./guidelines.md)  
-##### [デベロッパー センターに登録する](./register-dev-center.md)  
-##### [銀行口座および税の情報を追加する](./add-bank-tax-info.md)  
-##### [Azure AD を使って使用版を有効にする](./enable-trial-using-azure-ad.md)  
+##### [Microsoft アカウントの作成](./guidelines.md)
+##### [デベロッパー センターに登録する](./register-dev-center.md) 
 ##### [Azure Marketplace の請求オプション](./billing-options-azure-marketplace.md)  
 
 ### プランの種類別の公開ガイド 
@@ -24,12 +20,21 @@
 #### [Containers](./marketplace-containers.md)
 #### [コンサルティング サービス](./consulting-services.md)  
 #### [AppSource アプリ](./appsource-offer-publishing-guide.md)
+#### [Azure Active Directory を使用した Marketplace 試用版エクスペリエンスの有効化](./enable-trial-using-azure-ad.md)
 
 ### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
 #### [推奨されるソリューション](./preferred-solutions.md) 
 
 ### サポート  
 #### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
+
+### 発行ガイド  
+#### [Azure Marketplace コンサルティング サービス](consulting-services.md)  
+#### [Azure Marketplace SaaS アプリの技術的な発行ガイド](marketplace-saas-applications-technical-publishing-guide.md) 
+#### [Azure Active Directory を使用した Marketplace 試用版の有効化](./enable-trial-using-azure-ad.md)  
+
+### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
+#### [推奨されるソリューション](./preferred-solutions.md) 
 
 ## [クラウド パートナー ポータル](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

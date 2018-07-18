@@ -5,12 +5,13 @@
     - name: Azure DNS とは
       href: dns-overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: 名前解決 - ポータル
       href: dns-getstarted-portal.md
-    - name: DNS ゾーンとレコードを作成する - PowerShell
+    - name: 名前解決 - PowerShell
       href: dns-getstarted-powershell.md
-    - name: DNS ゾーンとレコードを作成する - CLI
+    - name: 名前解決 - CLI
       href: dns-getstarted-cli.md
 - name: チュートリアル
   items:

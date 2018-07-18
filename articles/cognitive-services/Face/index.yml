@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/31/2018
   ms.author: nolachar
-  ms.openlocfilehash: 234b25ce674162cf69905689cec383c049bae6e6
-  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+  ms.openlocfilehash: 32f5dfcbd26206268172109188395765cb80b884
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37341135"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39089352"
 abstract:
   description: クラウドベースの Face API を使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
 sections:
@@ -50,6 +50,15 @@ sections:
         src: media/index/logo_go.svg
       text: Go
       href: QuickStarts/Go
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Face サービスを使用してアプリケーションを開発する方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Windows で画像内の顔を検出してフレームに収める</a></li>
+    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Android で画像内の顔を検出してフレームに収める</a></li>
 - title: リファレンス
   items:
   - type: list

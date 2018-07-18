@@ -9,14 +9,20 @@
       href: speech-scenarios.md
 - name: クイック スタート
   items:
-    - name: 音声サービスを無料で試す
+    - name: Speech Service を無料で試す
       href: get-started.md
-    - name: 'C# で音声を認識する'
-      href: quickstart-csharp-windows.md
+    - name: 'C# で音声を認識する (Windows 上の .NET)'
+      href: quickstart-csharp-dotnet-windows.md
+    - name: 'C# で音声を認識する (Windows 上の .NET Core)'
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: UWP アプリで音声を認識する
+      href: quickstart-csharp-uwp.md
     - name: C++ で音声を認識する (Windows)
       href: quickstart-cpp-windows.md
     - name: C++ で音声を認識する (Linux)
       href: quickstart-cpp-linux.md
+    - name: Java for Android で音声を認識する
+      href: quickstart-java-android.md
     - name: Speech Devices SDK を使ってみる
       href: speech-devices-sdk-qsg.md
 - name: ハウツー ガイド

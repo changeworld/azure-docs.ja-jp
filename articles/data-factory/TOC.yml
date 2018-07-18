@@ -319,6 +319,10 @@
           href: transform-data-using-data-lake-analytics.md
         - name: Databricks ノートブック アクティビティ
           href: transform-data-databricks-notebook.md
+        - name: Databricks Jar アクティビティ
+          href: transform-data-databricks-jar.md
+        - name: Databricks Python アクティビティ
+          href: transform-data-databricks-python.md
         - name: カスタム アクティビティ
           href: transform-data-using-dotnet-custom-activity.md
         - name: コンピューティングのリンクされたサービス

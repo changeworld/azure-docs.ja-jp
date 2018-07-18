@@ -10,6 +10,8 @@
   items:
     - name: リモート監視ソリューションのデプロイ
       href: quickstart-remote-monitoring-deploy.md
+    - name: コネクテッド ファクトリ ソリューションのデプロイ
+      href: quickstart-connected-factory-deploy.md
     - name: 予測メンテナンス ソリューションのデプロイ
       href: quickstart-predictive-maintenance-deploy.md
     - name: デバイス シミュレーション ソリューションのデプロイ
@@ -141,8 +143,8 @@
           href: iot-accelerators-predictive-overview.md
     - name: 接続済みファクトリ
       items:
-        - name: ソリューション アクセラレータのデプロイ
-          href: iot-accelerators-connected-factory-overview.md
+        - name: ダッシュボードの使用
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: ゲートウェイの選択
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: OPC Publisher の利用

@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: ガバナンスとコンプライアンス
   items:
+    - name: FedRAMP
+      items:
+        - name: データ分析
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: データ分析
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: PaaS Web アプリケーション
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: データ分析
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: データ ウェアハウス
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS Web アプリケーション
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS Web アプリケーション
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Azure による信頼できるインターネット接続
-          href: ./compliance/compliance-tic.md
+        - name: 正常性データと AI
+          href: ./blueprints/azure-health.md
     - name: PCI DSS
       items:
         - name: データ分析
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: PaaS Web アプリケーション
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Azure による信頼できるインターネット接続
+          href: ./compliance/compliance-tic.md
     - name: UK NHS
       items:
         - name: データ分析
@@ -222,8 +226,6 @@
       items:
         - name: IaaS Web アプリケーション
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: HIPAA/HITRUST 正常性データおよび AI
-      href: ./blueprints/azure-health.md
 - name: ホワイト ペーパー
   href: security-white-papers.md
 - name: Azure セキュリティ サービス

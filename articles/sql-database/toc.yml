@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: Managed Instance への移行
           href: sql-database-managed-instance-migrate.md
+        - name: Managed Instance への TDE 証明書の移行
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: 移行後の SQL Database の管理
           href: sql-database-manage-after-migration.md
     - name: データの読み込みと移動
