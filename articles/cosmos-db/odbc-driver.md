@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725093"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096511"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -63,7 +63,7 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 4. **[テスト]** ボタンをクリックして、Azure Cosmos DB アカウントに接続できることを確認します。 
 5. **[詳細オプション]** をクリックして、次の値を設定します。
     - **Query Consistency** (クエリの一貫性): 操作の[一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
-    - **再試行回数**: サービスの調整のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
+    - **再試行回数**: サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
     - **スキーマ ファイル**: これにはオプションがいくつかあります。
         - 既定では、このエントリをそのまま (空白) にしておくと、ドライバーがすべてのコレクションの最初のページをスキャンして、各コレクションのスキーマを判定します。 これは、コレクション マッピングとして知られています。 スキーマ ファイルが定義されていないと、ドライバーはドライバー セッションごとにスキャンを実行する必要があるため、DSN を使ったアプリケーションの起動に時間がかかることがあります。 スキーマ ファイルを DSN と常に関連付けることをお勧めします。
         - ([スキーマ エディター](#schema-editor)を使用して作成した) スキーマ ファイルが既にある場合は、**[参照]** をクリックしてファイルに移動し、**[保存]** をクリックしてから **[OK]** をクリックします。

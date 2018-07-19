@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800726"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084724"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
@@ -58,7 +58,7 @@ ms.locfileid: "34800726"
 * 現在、その統合は運用中ですか、パイロットですか。
 
 > [!NOTE]
-> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 作業を開始するには、「[Cloud App Discovery](manage-apps/cloud-app-discovery.md)」をご覧ください。
+> Cloud Discovery は、Microsoft Cloud App Security のクラウド アプリ カタログに対するトラフィック ログを分析します。クラウド アプリ カタログは、16,000 を超えるクラウド アプリからなり、これらのクラウド アプリは、70 を超えるリスク要因に基づいてランクとスコアが付けられています。このトラフィック ログの分析により、クラウドの利用状況、シャドウ IT、シャドウ IT が組織に与えるリスクを継続的に確認することができます。Cloud Discovery を使い始めるには、「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
 > 
 > 
 

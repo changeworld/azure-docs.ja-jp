@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 71d762b6f1c199db17058ac107aad7a0b3260ae7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633497"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436321"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
@@ -166,9 +166,9 @@ ms.locfileid: "34633497"
 * **タグの置換** この操作では、ソリューション バックエンドによって既存のタグをすべて完全に上書きし、`tags` の新しい JSON ドキュメントに置き換えられます。
 * **ツイン通知の受信** この操作は、ソリューション バックエンドでツインが変更されたときに通知できるようにします。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *twinChangeEvents* に設定する必要があります。 既定では、ツイン通知は送信されません。つまり、このようなルートは事前に存在しません。 変化率が高すぎる場合、または内部エラーなどの理由のために、IoT Hub はすべての変更を含む 1 つの通知のみを送信する場合があります。 そのため、アプリケーションに信頼性の高い監査とすべての中間状態のログ記録が必要な場合は、device-to-cloud メッセージを使用する必要があります。 ツイン通知メッセージには、プロパティおよび本文が含まれます。
 
-    - Properties
+    - プロパティ
 
-    | Name | 値 |
+    | 名前 | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -319,7 +319,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
 ## <a name="next-steps"></a>次の手順
 この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
-* [.NET バックアップおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要][lnk-module-twin-tutorial]
+* [.NET バックエンドおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要][lnk-module-twin-tutorial]
 
 <!-- links and images -->
 

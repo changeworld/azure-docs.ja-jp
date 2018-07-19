@@ -5,15 +5,15 @@ services: virtual-machines-linux, virtual-machines-windows
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 05/11/2018
+ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34152225"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348237"
 ---
 さまざまな組織が、大規模なコンピューティングに対するニーズを抱えています。 大規模なコンピューティングを必要とするワークロードとしては、エンジニアリング設計と分析、金融分野のリスク計算、画像レンダリング、複雑なモデリング、モンテカルロ シミュレーションなどが挙げられます。 
 
@@ -40,7 +40,8 @@ Azure クラウドを使用して、並列バッチ ジョブから従来の HPC
     * [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/)、[Cycle Computing](https://cyclecomputing.com/) (現在は [Microsoft と統合](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)) などのベンダーが提供する、Azure 対応のエンジニアリングおよびシミュレーション ソリューションを実行します。
     * Azure でホストされるサービスとして [Cray スーパー コンピューター](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure)を使用します。
 * **Marketplace のソリューション**
-    * [Azure Marketplace](https://azuremarketplace.microsoft.com/) で提供される大規模な [HPC アプリケーション](#hpc-applications)や[ソリューション](#marketplace-solutions)を使用します。 
+    * 
+  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) で提供される大規模な [HPC アプリケーション](#hpc-applications)や[ソリューション](#marketplace-solutions)を使用します。 
     
 
 
@@ -64,7 +65,7 @@ Linux と Windows の HPC 用 VM イメージとソリューションについ�
  
 ## <a name="hpc-applications"></a>HPC アプリケーション
 
-Azure ではカスタム HPC アプリケーションや商用 HPC アプリケーションを実行できます。 このセクションのさまざまな例で、VM やコンピューティング コアを追加して効率的にスケールできることが確認されています。 すぐにデプロイ可能なソリューションについては、[Azure Marketplace](https://marketplace.azure.com) を参照してください。
+Azure ではカスタム HPC アプリケーションや商用 HPC アプリケーションを実行できます。 このセクションのさまざまな例で、VM やコンピューティング コアを追加して効率的にスケールできることが確認されています。 すぐにデプロイ可能なソリューションについては、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) を参照してください。
 
 > [!NOTE]
 > クラウドで実行するためのライセンスまたはその他の制限事項については、商用アプリケーションのベンダーに確認してください。 すべてのベンダーが従量課金制ライセンスを提供しているとは限りません。 ソリューション用にクラウド内にライセンス サーバーを用意したり、オンプレミスのライセンス サーバーに接続することが必要になる場合があります。
@@ -154,7 +155,7 @@ Azure のインフラストラクチャで実行できるクラスターおよ�
 
 Azure の仮想マシン、仮想マシン スケール セット、Batch、およびこれらに関連するコンピューティング サービスは、Azure のほとんどの HPC ソリューションの基盤となっています。 もっとも、お使いのソリューションでも Azure の関連サービスの多くを利用できます。 その一部を以下に紹介します。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 * [Blob、Table、Queue Storage](../articles/storage/storage-introduction.md)
 * [File Storage](../articles/storage/storage-files-introduction.md)
@@ -175,7 +176,7 @@ Azure の仮想マシン、仮想マシン スケール セット、Batch、お�
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>コンテナー
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [Azure Kubernetes Service (AKS)](../articles/aks/intro-kubernetes.md)
 * [コンテナー レジストリ](../articles/container-registry/container-registry-intro.md)
@@ -196,6 +197,7 @@ Azure HPC ソリューションを使ってビジネスの問題を解決した�
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
 * [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
+* [NeuroInitiative](https://customers.microsoft.com/en-us/story/neuroinitiative-health-provider-azure)
 * [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 * [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 

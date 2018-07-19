@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: edc44f0ab2d2cc737807dd8ad543997cdd75bd43
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 96ca5a7ec8b0c87984ea2c76af446d7a8b5504a1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034701"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344302"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Windows IoT Edge デバイスを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "37034701"
 > * また、IoT Edge デバイスは、IoT Edge ゲートウェイに接続できません。
 > * ダウンストリーム デバイスではファイル アップロードを使用できません。
 
-透過的なゲートウェイの作成について困難な作業は、ゲートウェイをダウンストリーム デバイスに安全に接続することです。 Azure IoT Edge では、PKI インフラストラクチャを使用して、これらのデバイス間にセキュリティで保護された TLS 接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edgeデバイスにダウンストリーム デバイスが接続できるようにします。  合理的なセキュリティを維持するには、デバイスを自分のゲートウェイにのみ接続し、悪意のある可能性があるゲートウェイには接続しないようにする必要があるため、ダウンストリーム デバイスは Edge デバイスの ID を確認する必要があります。
+透過的なゲートウェイの作成について困難な作業は、ゲートウェイをダウンストリーム デバイスに安全に接続することです。 Azure IoT Edge では、PKI インフラストラクチャを使用して、これらのデバイス間にセキュリティで保護された TLS 接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。  合理的なセキュリティを維持するには、デバイスを自分のゲートウェイにのみ接続し、悪意のある可能性があるゲートウェイには接続しないようにする必要があるため、ダウンストリーム デバイスは Edge デバイスの ID を確認する必要があります。
 
 デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、[X.509 CA セキュリティ][lnk-iothub-x509]を IoT Hub で有効にするために使用するのと同じ証明書のセットアップが前提となっています。これには、特定の IoT ハブ (IoT ハブ所有者の CA) に関連付けられている X.509 CA 証明書、およびこの CA と Edge デバイスの CA で署名された一連の証明書が含まれます。
 
@@ -38,46 +38,56 @@ ms.locfileid: "37034701"
 ## <a name="prerequisites"></a>前提条件
 1.  透過的なゲートウェイとして使用する Windows デバイスに [Azure IoT Edge ランタイムをインストール][lnk-install-windows-x64]します。
 
-1. OpenSSL for Windows を入手します。 OpenSSL をインストールする方法は数多くあります。 ここに示す手順では、vcpkg を使用してこれを行います。
-   1. 管理者の PowerShell から次のコマンドを実行して vcpkg をダウンロードおよびインストールします。 OpenSSL をインストールするディレクトリに移動します。ここでは、これを `$VCPKGDIR` と呼びます。
+1. OpenSSL for Windows を入手します。 OpenSSL をインストールする方法はたくさんあります。
 
-   ```PowerShell
-   git clone https://github.com/Microsoft/vcpkg
-   cd vcpkg
-   .\bootstrap-vcpkg.bat
-   .\vcpkg integrate install
-   .\vcpkg install openssl:x64-windows
-   ```
+   >[!NOTE]
+   >OpenSSL をWindows デバイスに既にインストールしている場合は、この手順をスキップできますが、`openssl.exe` が `%PATH%` 環境変数で使用可能であることを確認してください。
 
-   1. 環境変数 `OPENSSL_ROOT_DIR` を `$VCPKGDIR\vcpkg\packages\openssl_x64-windows` に設定し、`$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` も `PATH` 環境変数に追加します。
+   * [サードパーティの OpenSSL バイナリ](https://wiki.openssl.org/index.php/Binaries) (たとえば、[SourceForge のこちらのプロジェクトのバイナリ](https://sourceforge.net/projects/openssl/)) をダウンロードしてインストールします。
+   
+   * OpenSSL ソース コードをダウンロードし、ローカル コンピューター上でバイナリをビルドします。または [vcpkg](https://github.com/Microsoft/vcpkg) 経由でこれを実行します。 以下に示す指示は、vcpkg を使用してソース コードのダウンロード、コンパイル、および Windows コンピューターへの OpenSSL のインストールを、非常に簡単に使用できる手順で実行します。
+
+      1. vcpkg をインストールするディレクトリに移動します。 ここでは、それを $VCPKGDIR と呼びます。 指示に従って [vcpkg](https://github.com/Microsoft/vcpkg) インストーラーをダウンロードし、実行します。
+   
+      1. vcpkg がインストールされたら、Powershell プロンプトから次のコマンドを実行して、Windows x64 用の OpenSSL パッケージをインストールします。 これは、通常は、完了まで約 5 分かかります。
+
+         ```PowerShell
+         .\vcpkg install openssl:x64-windows
+         ```
+      1. `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` を `PATH` 環境変数に追加して、`openssl.exe` ファイルを呼び出すことができるようにします。
+
+1. 作業するディレクトリに移動します。 ここでは、これを $WRKDIR と呼びます。  すべてのファイルがこのディレクトリに作成されます。
+   
+   cd $WRKDIR
 
 1.  次のコマンドで、必要な非運用環境の証明書を生成するスクリプトを取得します。 これらのスクリプトでは、透過的なゲートウェイの設定に必要な証明書を作成できます。
 
-   ```PowerShell
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
-   ```
+      ```PowerShell
+      git clone https://github.com/Azure/azure-iot-sdk-c.git
+      ```
 
-1. 作業するディレクトリに移動します。 ここでは、これを $WRKDIR と呼びます。  すべてのファイルがこのディレクトリに作成されます。
+1. 構成ファイルとスクリプト ファイルを作業ディレクトリにコピーします。 さらに、openssl_root_ca.cnf 構成ファイルを使用するように OPENSSL_CONF 環境変数を設定します。
 
-   cd $WRKDIR
-
-1. 構成ファイルとスクリプト ファイルを作業ディレクトリにコピーします。
    ```PowerShell
    copy azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
+   $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
    ```
 
 1. 次のコマンドを実行して、PowerShell がスクリプトを実行できるようにします
+
    ```PowerShell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
    ```
 
 1. 次のコマンドを使用してドット ソース形式で読み込み、スクリプトで使用される関数を PowerShell のグローバル名前空間に取り込みます
+   
    ```PowerShell
    . .\ca-certs.ps1
    ```
 
-1. OpenSSL が正しくインストールされていることを確認し、次のコマンドを実行して既存の証明書の名前の競合がないことを確認します。
+1. OpenSSL が正しくインストールされていることを確認し、次のコマンドを実行して既存の証明書の名前の競合がないことを確認します。 問題がある場合は、スクリプトによって、システム上でそれらを修正する方法が説明されます。
+
    ```PowerShell
    Test-CACertsPrerequisites
    ```
@@ -85,30 +95,18 @@ ms.locfileid: "37034701"
 ## <a name="certificate-creation"></a>証明書の作成
 1.  所有者 CA 証明書と 1 つの中間証明書を作成します。 これらはすべて `$WRKDIR` にあります。
 
-   ```PowerShell
-   New-CACertsCertChain rsa
-   ```
-
-   スクリプトの実行の出力は、次の証明書とキーです。
-   * 証明書
-      * `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
-      * `$WRKDIR\certs\azure-iot-test-only.intermediate.cert.pem`
-   * 構成する
-      * `$WRKDIR\private\azure-iot-test-only.root.ca.key.pem`
-      * `$WRKDIR\private\azure-iot-test-only.intermediate.key.pem`
+      ```PowerShell
+      New-CACertsCertChain rsa
+      ```
 
 1.  次のコマンドで、Edge デバイス CA 証明書と秘密キーを作成します。
 
    >[!NOTE]
    > ゲートウェイの DNS ホスト名と同じ名前を使用**しない**でください。 そのようにすると、これらの証明書に対するクライアント証明が失敗します。
 
-      ```PowerShell
-      New-CACertsEdgeDevice "<gateway device name>"
-      ```
-
-   スクリプトの実行の出力は、次の証明書とキーです。
-   * `$WRKDIR\certs\new-edge-device.*`
-   * `$WRKDIR\private\new-edge-device.key.pem`
+   ```PowerShell
+   New-CACertsEdgeDevice "<gateway device name>"
+   ```
 
 ## <a name="certificate-chain-creation"></a>証明書チェーンの作成
 次のコマンドを使用して、所有者 CA 証明書、中間証明書、Edge デバイス CA 証明書から証明書チェーンを作成します。 チェーン ファイルに配置すると、透過的なゲートウェイとして機能する Edge デバイスに簡単にインストールできます。
@@ -117,6 +115,11 @@ ms.locfileid: "37034701"
    Write-CACertsCertificatesForEdgeDevice "<gateway device name>"
    ```
 
+   スクリプトの実行の出力は、次の証明書とキーです。
+   * `$WRKDIR\certs\new-edge-device.*`
+   * `$WRKDIR\private\new-edge-device.key.pem`
+   * `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
+
 ## <a name="installation-on-the-gateway"></a>ゲートウェイへのインストール
 1.  次のファイルを $WRKDIR から Edge デバイス上の任意の場所にコピーします。この場所を $CERTDIR と呼びます。 Edge デバイスで証明書を生成した場合は、この手順をスキップします。
 
@@ -124,15 +127,15 @@ ms.locfileid: "37034701"
    * デバイス CA 秘密キー - `$WRKDIR\private\new-edge-device.key.pem`
    * 所有者 CA - `$WRKDIR\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2.  セキュリティ デーモン config yaml ファイル内の `certificate` プロパティを、証明書とキー ファイルを配置した場所のパスに設定します。
+2.  セキュリティ デーモン構成 yaml ファイル内の `certificate` プロパティを、証明書とキー ファイルを配置した場所のパスに設定します。
 
 ```yaml
 certificates:
-  device_ca_cert: "$CERTDIR\certs\new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR\private\new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR\certs\azure-iot-test-only.root.ca.cert.pem"
+  device_ca_cert: "$CERTDIR\\certs\\new-edge-device-full-chain.cert.pem"
+  device_ca_pk: "$CERTDIR\\private\\new-edge-device.key.pem"
+  trusted_ca_certs: "$CERTDIR\\certs\\azure-iot-test-only.root.ca.cert.pem"
 ```
-## <a name="deploy-edgehub-to-the-gateway"></a>ゲートウェイへの Edgeハブのデプロイ
+## <a name="deploy-edgehub-to-the-gateway"></a>ゲートウェイへの Edge ハブのデプロイ
 Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デバイスにモジュールをデプロイできることです。 このセクションでは、空に見えるデプロイを作成します。ただし、他のモジュールがない場合でも、Edge ハブはすべてのデプロイに自動的に追加されます。 Edge ハブは、透過的なゲートウェイとして動作させる Edge デバイスに必要な唯一のモジュールであるため、空のデプロイを作成すれば十分です。 
 1. Azure Portal で、お使いの IoT ハブに移動します。
 2. **IoT Edge** に移動し、ゲートウェイとして使用する IoT Edge デバイスを選択します。
@@ -163,7 +166,11 @@ OS 証明書ストアにこの証明書をインストールすると、すべ�
  
     "Updating certificates in /etc/ssl/certs...1 added, 0 removed; done." (/etc/ssl/certs の証明書を更新しています... 1 個追加、0 個削除されました。完了しました) というメッセージが表示されます。
 
-* Windows - [この](https://msdn.microsoft.com/en-us/library/cc750534.aspx)記事で、証明書のインポート ウィザードを使用して Windows デバイスでこれを実行する方法について詳しく説明しています。
+* Windows - Windows ホストに CA 証明書をインストールする方法の例を次に示します。
+  * [スタート] メニューで、[コンピューター証明書の管理] を実行します。 `certlm` という名前のユーティリティが起動します。
+  * [証明書 - ローカル コンピューター] -->  [信頼されたルート証明書] --> [証明書] --> 右クリック --> [すべてのタスク] --> [インポート] に移動して、証明書インポート ウィザードを起動します。
+  * 指示に従って次の手順を実行し、証明書ファイル $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem をインポートします。
+  * 完了すると、「正常にインポートされました」メッセージが表示されます。
 
 ### <a name="application-level"></a>アプリケーション レベル
 .NET アプリケーションの場合、次のスニペットを追加して PEM 形式の証明書を信頼することができます。 変数 `certPath` を `$CERTDIR\certs\azure-iot-test-only.root.ca.cert.pem` で初期化します。

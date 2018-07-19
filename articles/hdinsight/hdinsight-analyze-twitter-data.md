@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960129"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436166"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
@@ -82,7 +82,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
    | フィールド | 値 |
    | --- | --- |
-   |  Name |MyHDInsightApp |
+   |  名前 |MyHDInsightApp |
    |  説明 |MyHDInsightApp |
    |  Web サイト |http://www.myhdinsightapp.com |
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
@@ -99,7 +99,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **ツイートを取得するには**
 
-1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます  (Windows 8 のスタート画面では、「**PowerShell_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。 「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][powershell-start]」を参照してください)。
+1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます  (Windows 8 のスタート画面では、「**PowerShell_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。 「[Start Windows PowerShell on Windows 8 and Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)」(Windows 8 と Windows での Windows PowerShell の起動) を参照してください。
 2. 次のスクリプトをスクリプト ウィンドウにコピーします。
 
     ```powershell
@@ -230,7 +230,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
-    可変|説明
+    変数|説明
     ---|---
     $clusterName|アプリケーションを実行する HDInsight クラスターの名前です。
     $oauth_consumer_key|Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの **コンシューマー キー** です。
@@ -439,7 +439,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 3. スクリプトの最初の 2 個の変数を設定します。
 
-   | 可変 | 説明 |
+   | 変数 | 説明 |
    | --- | --- |
    |  $clusterName |アプリケーションを実行する HDInsight クラスター名を入力します。 |
    |  $subscriptionID |Azure サブスクリプション ID を入力します。 |

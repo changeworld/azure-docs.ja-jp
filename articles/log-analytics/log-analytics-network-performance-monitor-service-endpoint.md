@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics のネットワーク パフォーマンス モニター ソリューション | Microsoft Docs
-description: Network Performance Monitor のサービス エンドポイント マネージャー機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視します。
+description: Network Performance Monitor のサービス接続モニター機能を使って、TCP ポートが開いている任意のエンドポイントへのネットワーク接続を監視します。
 services: log-analytics
 documentationcenter: ''
 author: abshamsft
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.component: na
+ms.openlocfilehash: 3c9352e8e4aee7817b1195c15f74503e86e597ea
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030711"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434921"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -78,7 +79,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 10. 監視条件を選択します。 しきい値を入力して、正常性イベントの生成に関するカスタムしきい値を設定できます。 選択したネットワーク ペア/サブネットワーク ペアに対して選択したしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 11. **[保存]** を選んで構成を保存します。 
 
-    ![サービス エンドポイント モニターのテスト構成](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![サービス接続モニターのテスト構成](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
 
 
 
@@ -86,11 +87,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要については、**[サービス接続の監視]** ページで確認できます。 
 
-![[サービス エンドポイント モニター] ページ](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![サービス接続モニター ページ](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 
 タイルを選び、**[テスト]** ページでテストの詳細を確認します。 左側のテーブルでは、すべてのテストについて、特定の時点での正常性と、サービス応答時間、ネットワーク待機時間、およびパケット損失の値を確認できます。 過去の別の時点のスナップショットを表示するには、[ネットワーク状態の記録機能] コントロールを使います。 テーブルで調査するテストを選びます。 右側のウィンドウのグラフでは、損失、待機時間、および応答時間の値に関する過去の傾向を確認できます。 **[テストの詳細]** リンクを選ぶと、各ノードからのパフォーマンスを確認できます。
 
-![サービス エンドポイント モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
 
 **[テスト ノード]** ビューでは、各ノードからのネットワーク接続を確認できます。 パフォーマンスが低下しているノードを選びます。 これは、アプリケーションの実行速度が低下しているノードです。
 
@@ -98,15 +99,15 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 * **アプリケーションの問題:** 応答時間の急増が見られる一方、ネットワーク待機時間は一貫している場合は、ネットワークは正常に動作しており、問題の原因はアプリケーション側にあると考えられます。 
 
-    ![サービス エンドポイント モニターのアプリケーションの問題](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![サービス接続モニターのアプリケーションの問題](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
 
 * **ネットワークの問題:** 応答時間の急増に伴ってネットワーク待機時間も急増している場合、応答時間の増加は、ネットワーク待機時間の増加に起因していると考えられます。 
 
-    ![サービス エンドポイント モニターのネットワークの問題](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![サービス接続モニターのネットワークの問題](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
 
 問題の原因がネットワークであると判断した後は、**[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
 
-![サービス エンドポイント モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>診断 
 

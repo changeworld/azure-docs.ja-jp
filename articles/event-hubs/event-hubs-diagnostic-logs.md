@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/30/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 451fc42f573db2b60985912cfa63617e04f09e6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932717"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435033"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs 診断ログ
 
@@ -31,7 +31,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
 ## <a name="enable-diagnostic-logs"></a>Azure App Service の Web アプリの診断ログの有効化
 
-既定では、診断ログは無効になっています。 診断ログを有効にするには
+既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
 1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
 
@@ -70,7 +70,7 @@ Event Hubs では、2 つのカテゴリの診断ログをキャプチャしま�
 
 アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
 TaskName | 失敗したタスクの説明。
 ActivityId | 内部 ID。追跡目的で使用されます。
@@ -108,12 +108,12 @@ category | ArchiveLogs
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | [説明]
+名前 | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます。
 EventName | 操作の名前。  
 resourceId | Azure Resource Manager リソース ID。
-SubscriptionId | [サブスクリプション ID] が表示されます。
+SubscriptionId | サブスクリプション ID 。
 EventTimeString | 操作時間。
 EventProperties | 操作プロパティ。
 Status | 操作の状態。

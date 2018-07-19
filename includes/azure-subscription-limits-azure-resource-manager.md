@@ -1,10 +1,27 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: billing
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 07/02/2018
+ms.author: jroth
+ms.custom: include file
+ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348203"
+---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 10,000 <sup>1</sup> |リージョンあたり 10,000 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
-| [Storage アカウント](../articles/storage/common/storage-create-storage-account.md) 数 |200 |200<sup>2</sup> |
+| サブスクリプションあたりのリージョンごとの[ストレージ アカウント数](../articles/storage/common/storage-create-storage-account.md) |200 |200<sup>2</sup> |
 | サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
 | [可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 数 |リージョンあたり 2,000 |リージョンあたり 2,000 |
 | リソース マネージャー API 読み取り数 |1 時間あたり 15,000 |1 時間あたり 15,000 |
@@ -15,7 +32,8 @@
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |該当なし<sup>4</sup> |該当なし<sup>4</sup> |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |該当なし<sup>4</sup> |該当なし<sup>4</sup> |
 
-<sup>1</sup>既定の制限は、プラン カテゴリの種類 (無料試用版や従量課金制など) とシリーズ (Dv2、F、G など) によって異なります。
+
+  <sup>1</sup>既定の制限は、プラン カテゴリの種類 (無料試用版や従量課金制など) とシリーズ (Dv2、F、G など) によって異なります。
 
 <sup>2</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。 必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。
 

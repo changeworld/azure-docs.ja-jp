@@ -8,12 +8,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 73da48d449a7cc5cdca598c8aef176952909ed85
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c0197b8f0cceab575aa5e830d094ddd2fb6b6b01
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634925"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436297"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -37,17 +37,17 @@ Azure IoT Hub サービスの Azure Monitor 統合機能を使って診断ログ
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレードを使って、デバイスを削除することができます。それにより、そのデバイスに関連付けられているデータが削除されます。
 
-REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、「[Device Api - Delete Device](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice)」(デバイス API- デバイスの削除) をご覧ください。
+REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](https://docs.microsoft.com/rest/api/iothub/service/deletedevice)に関する記事をご覧ください。
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレード内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
 
-REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、「[Device Api - Get Device](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice)」(デバイス API- デバイスの取得) をご覧ください。
+REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](https://docs.microsoft.com/rest/api/iothub/service/getdevice)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft のエンタープライズ サービスを使うと、システム生成ログと呼ばれる情報がいくつか生成されます。 Azure IoT Hub システムによって生成されたログの一部は、テナント管理者がアクセスしたりエクスポートしたりすることはできません。 これらのログは、個々のデバイスに関連するサービスと診断データ内で実行された実際のアクションで構成されています。
 
 ## <a name="links-to-additional-documentation"></a>その他のドキュメントへのリンク
 
-Azure IoT Hub デバイス API の完全なドキュメントは、[https://docs.microsoft.com/rest/api/iothub/deviceapi](https://docs.microsoft.com/rest/api/iothub/deviceapi) にあります。
+Azure IoT Hub Service API の完全なドキュメントは、[https://docs.microsoft.com/rest/api/iothub/service](https://docs.microsoft.com/rest/api/iothub/service) にあります。

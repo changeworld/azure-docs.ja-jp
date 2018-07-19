@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304123"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082525"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成と構成、すべてのクラスルーム ラボの表示、またはラボの削除を実行する方法を説明します。
@@ -86,8 +86,8 @@ ms.locfileid: "36304123"
 2. 次に、**[発行]** ボタンをクリックします。 作成する VM の数 (ラボへのアクセスが許可されるユーザーと同数) によっては、このプロセスにしばらく時間がかかる場合があります。
     
     > [!IMPORTANT]
-    > テンプレートがパブリックに利用できるようになった後で、そのアクセスをプライベートに変更することはできません。 
-4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが 5 つ表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
+    > いったん発行したテンプレートの発行を取り消すことはできません。 
+4. **[仮想マシン]** ページに切り替えて、**[未割り当て]** 状態の仮想マシンが表示されていることを確認します。 これらの VM は、まだ学生に割り当てられていません。 
 
     ![仮想マシン](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. VM が作成されるまで待ちます。 その状態が **[停止]** になっている必要があります。 このページで、学生の VM の起動、VM への接続、VM の停止、VM の削除を実行できます。 VM は、このページから自分で起動できるほか、学生に起動してもらうこともできます。 

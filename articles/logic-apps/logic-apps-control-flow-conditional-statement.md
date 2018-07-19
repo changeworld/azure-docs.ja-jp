@@ -10,12 +10,12 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298170"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096378"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
@@ -46,36 +46,31 @@ ms.locfileid: "35298170"
 
    ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[+ 新しいステップ]** > **[条件の追加]** を選択します。
 
-3. **[条件]** で、条件を作成します。 
+3. **[条件]** の下で、条件を作成します。 
 
    1. 左のボックスに、比較するデータまたはフィールドを指定します。
 
-      **[動的なコンテンツの追加]** リストで、自分のロジック アプリの既存のフィールドを選択できます。
+      左側のボックス内をクリックすると、動的コンテンツの一覧が表示され、ロジック アプリの前のステップからの出力を選択できます。 
+      この例では、RSS フィードの概要を選択します。
+
+      ![条件を作成する](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    2. 中央のリストで、実行する操作を選択します。 
-   3. 右のボックスに、条件として値またはフィールドを指定します。
+   この例では、 **[次の値を含む]** を選択します。 
 
-   例: 
-
-   ![基本モードで条件を編集する](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   3. 右のボックスに、条件として値またはフィールドを指定します。 
+   この例では、**Microsoft** の文字列を指定します。
 
    完成した条件を次に示します。
 
-   ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+5. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
+
+   ![[If true]\(true の場合\) パスと [If false]\(false の場合\) パスを使用した条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > 高度な条件を作成したり、式を使用したりするには、**[Edit in advanced mode]\(詳細モードで編集\)** を選択します。 [ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で定義された式を使用できます。
-   > 
-   > 例: 
-   >
-   > ![コードで条件を編集する](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
-
-5. **IF YES** と **IF NO** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
-
-   ![YES および NO のパスの条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > 既存のアクションを **IF YES** と **IF NO** のパスにドラッグできます。
+   > 既存のアクションを **[If true]\(true の場合\)** パスと **[If false]\(false の場合\)** パスにドラッグできます。
 
 6. ロジック アプリを保存し、
 
@@ -87,14 +82,21 @@ ms.locfileid: "35298170"
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }

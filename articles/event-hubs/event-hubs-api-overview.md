@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2017
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: abd44fd0c9cbfab2365b1552e3cd90e84a5348d7
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: bcd570d5fd2bdcf6cd344f5c81902420163b87ae
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
-ms.locfileid: "25957529"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434543"
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
 
@@ -27,7 +27,7 @@ ms.locfileid: "25957529"
 
 ## <a name="runtime-apis"></a>ランタイム API
 
-現在使用できる Azure Event Hubs ランタイム クライアントの説明を次に示します。 ライブラリの中には管理機能が制限されているものがありますが、管理操作専用の[ライブラリ](#management-apis)もあります。 これらのライブラリの主な目的は、イベント ハブからメッセージを送受信することです。
+次のセクションで、現在使用できるすべての Azure Event Hubs ランタイム クライアントについて説明します。 ライブラリの中には管理機能が制限されているものがありますが、管理操作専用の[ライブラリ](#management-apis)もあります。 これらのライブラリの主な目的は、イベント ハブからメッセージを送受信することです。
 
 各ランタイム ライブラリの現在の状態の詳細については、[追加情報](#additional-information)を参照してください。
 
@@ -42,21 +42,22 @@ ms.locfileid: "25957529"
 ### <a name="additional-information"></a>追加情報
 
 #### <a name="net"></a>.NET
-.NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework の詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions)」を参照してください。
+
+.NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework バージョンの詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions)」を参照してください。
 
 #### <a name="node"></a>ノード
 
-Node.js ライブラリは現在プレビュー段階で、Microsoft 従業員と外部の共同作成者によってサイド プロジェクトとして管理されています。 ソース コードなど、お寄せいただいた投稿はすべて確認いたします。
+[Node.js ライブラリ](https://github.com/Azure/azure-event-hubs-node)は現在プレビュー段階で、Microsoft 従業員と外部の共同作成者によってサイド プロジェクトとして管理されています。 ソース コードなど、お寄せいただいた投稿はすべて確認いたします。
 
 ## <a name="management-apis"></a>管理 API
 
-現在使用できる管理専用ライブラリをの一覧を次に示します。 ここで示すライブラリは Event Hubs エンティティの管理専用で、ランタイム操作は含まれていません。
+現在使用できる管理専用ライブラリをの一覧を次の表に示します。 ここで示すライブラリは Event Hubs エンティティの管理専用で、ランタイム操作は含まれていません。
 
 | 言語/プラットフォーム | 管理パッケージ | リポジトリ |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

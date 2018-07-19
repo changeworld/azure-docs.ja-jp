@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 237f0d2b25230528c64bd47edd10ebae62750a0c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063512"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345384"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -35,9 +35,9 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 ![Update Management プロセスのフロー](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-コンピューターが更新プログラムの対応状態を確認するためにスキャンを実行した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、対応スキャンは既定で 12 時間ごとに実行されます。 
+コンピューターが更新プログラムの対応状態を確認するためにスキャンを実行した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、対応スキャンは既定で 12 時間ごとに実行されます。
 
-このスキャン スケジュールに加えて、Microsoft Monitoring Agent (MMA) の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムの対応状態を確認するためのスキャンが開始されます。 
+このスキャン スケジュールに加えて、Microsoft Monitoring Agent (MMA) の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムの対応状態を確認するためのスキャンが開始されます。
 
 Linux コンピューターでは、対応スキャンは既定では 3 時間ごとに実行されます。 MMA エージェントを再起動した場合は、対応スキャンは 15 分以内に開始されます。
 
@@ -86,7 +86,7 @@ Windows エージェントは、Windows Server Update Services (WSUS) サーバ�
 
 #### <a name="linux"></a>Linux
 
-Linux では、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 このソリューションでは、Operations Management Suite (OMS) for Linux エージェントが複数の Log Analytics ワークスペースにレポートする構成はサポートされていません。
+Linux では、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 このソリューションでは、Operations Management Suite (OMS) for Linux エージェントが複数の Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
 OMS エージェント for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite エージェント for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。 Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページを参照してください。
 
@@ -115,6 +115,9 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 * 更新プログラムの展開 MP
 
 ソリューション管理パックの更新方法の詳細については、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」を参照してください。
+
+> [!NOTE]
+> Operations Manger エージェントを使用しているシステムを Update Management によって完全に管理できるようにするには、エージェントを Microsoft Monitoring Agent に更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](/system-center/scom/deploy-upgrade-agents.md)に関する記事を参照してください。
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
 
@@ -159,9 +162,9 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br/>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
@@ -210,7 +213,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 | プロパティ | 説明 |
 | --- | --- |
-|Name |更新プログラムの展開を識別する一意の名前。 |
+|名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| **Linux** か **Windows** を選択します。|
 |更新するマシン |保存した検索条件を選択するか、ドロップダウンから **[マシン]** を選択し、個別のマシンを選択します |
 |更新プログラムの分類|必要な更新プログラムの分類をすべて選択します。 CentOS ではこれは既定ではサポートされていません。|
@@ -260,6 +263,8 @@ Update Management には次のアドレスが明示的に必要です。 この�
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 Hybrid Runbook Worker で必要なポートの詳細については、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください。
+
+例外を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の IP アドレスをダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。
 
 ## <a name="search-logs"></a>検索ログ
 

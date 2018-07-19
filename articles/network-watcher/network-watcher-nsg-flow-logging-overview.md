@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: c6a24fbca37d6aa1d775a70c708a139dfb70b813
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ae4edb82fa5e192a30d297dae82199bb7efca0c2
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182427"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344973"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "32182427"
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログの保持ポリシーの期間は、1 日から 365 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
+その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログの保持ポリシーの期間は、1 日から 2,147,483,647 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
 
 ## <a name="log-file"></a>ログ ファイル
 
@@ -41,7 +41,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 * **time** - イベントがログに記録された時間
 * **systemId** - ネットワーク セキュリティ グループのリソース ID。
-* **category ** - イベントのカテゴリです。 カテゴリは常に **NetworkSecurityGroupFlowEvent** となります。
+* **category** - イベントのカテゴリです。 カテゴリは常に **NetworkSecurityGroupFlowEvent** となります。
 * **resourceid** - NSG のリソース ID
 * **operationName** -常に NetworkSecurityGroupFlowEvents
 * **properties** - フローのプロパティのコレクション

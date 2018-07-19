@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604711"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083228"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 証明書署名要求の生成
 
@@ -30,8 +30,6 @@ Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) では、�
 
  - **標準証明書の要求**  
     [Azure Stack デプロイのための PKI 証明書の生成](azure-stack-get-pki-certs.md)に関する説明に従って、要求します。
- - **要求の種類**  
-    証明書署名要求が 1 つの要求か、または複数の要求かを指定します。
  - **サービスとしてのプラットフォーム**  
     必要に応じて、「[Azure Stack 公開キー インフラストラクチャ証明書の要件」の「オプションの PaaS 証明書](azure-stack-pki-certs.md#optional-paas-certificates)」で指定されている証明書に対するサービスとしてのプラットフォーム (PaaS) 名を要求します。
 
@@ -98,22 +96,22 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
     > [!note]  
     > `<regionName>.<externalFQDN>` は、Azure Stack のすべての外部 DNS が作成されるベースを形成します。この例では、ポータルは `portal.east.azurestack.contoso.com` となります。  
 
-6. 複数のサブジェクトの別名がある 1 つの証明書要求を生成する場合は、次のように実行します。
+6. DNS 名ごとに証明書署名要求を生成する場合は、次のように実行します。
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    PaaS サービスを含めるには、スイッチ ```-IncludePaaS``` を指定します
+
+7. Dev/Test 環境の場合、 複数のサブジェクトの別名 (SAN) を含む 1 つの証明書要求を生成するには、**-RequestType SingleCSR** パラメーターと値を追加します (運用環境では、推奨**されません**)。
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     PaaS サービスを含めるには、スイッチ ```-IncludePaaS``` を指定します
-
-7. DNS 名ごとに個々の証明書署名要求を生成する場合は、次のように実行します。
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    PaaS サービスを含めるには、スイッチ ```-IncludePaaS``` を指定します
-
+    
 8. 出力を確認します。
 
     ````PowerShell  

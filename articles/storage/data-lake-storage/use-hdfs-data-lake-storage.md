@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 75fb07120c78c45d422ee5017eac0afcf0e80859
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 591d8ea7670bf9b29450695ee7cbee5fa39baaac
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060820"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344724"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
-Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Data Lake Storage Gen2 に保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。 以下の記事では、[Azure Storage チームによる Azure Storage Explorer と Azure portal のサポート追加への取り組み](https://azure.microsoft.com/roadmap/)の間に選択できるオプションについて説明します。ご期待ください。
+Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Data Lake Storage Gen2 に保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。 以下の記事では、[Azure Storage チームによる Azure Storage Explorer と Azure portal のサポート追加への取り組み](https://azure.microsoft.com/roadmap/)の間に選択できるオプションについて説明します。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDInsight での HDFS CLI
 

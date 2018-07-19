@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 04/04/2018
+ms.date: 06/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 9149405e2778557a94815812fdf4966d38a3149c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 18c162e03030fc4277fa0a7b3e953bf780574a21
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308457"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084962"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -40,7 +40,7 @@ SQL Database には、自動バックアップ、オプションのデータベ�
 
 SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (1 時間ごと)、およびトランザクション ログのバックアップ (5 ～ 10 分ごと) を組み合わせて自動的に実行します。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用する場合、これらのバックアップは、Standard および Premium サービス レベルのデータベースについては 35 日間、Basic サービス レベルのデータベースについては 7 日間、RA-GRS ストレージに格納されます。 サービス階層のリテンション期間がビジネス要件を満たしていない場合、リテンション期間を長くするには、[サービス階層を変更](sql-database-single-database-scale.md)します。 [仮想コアベースの購入モデル (プレビュー) を使用している場合](sql-database-service-tiers-vcore.md)、General Purpose および Business Critical サービス レベルでは、バックアップ リテンション期間は最大 35 日に設定できます。 データベースの完全バックアップと差分バックアップは、データ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にもレプリケートされます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。
 
-サポートされている PITR リテンション期間がアプリケーションにとって十分でない場合は、データベースの長期リテンション期間 (LTR) ポリシーを構成することで、リテンション期間を拡張できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+サポートされているポイントインタイム リストア (PITR) リテンション期間がアプリケーションにとって十分でない場合は、データベースの長期リテンション期間 (LTR) ポリシーを構成することで、リテンション期間を拡張できます。 詳細については、「[自動バックアップに関する記事](sql-database-automated-backups.md)」と「[長期バックアップ リテンション期間に関する記事](sql-database-long-term-retention.md)」を参照してください。
 
 これらのデータベースの自動バックアップを使用して、さまざまな中断イベントから、データ センター内または別のデータ センターにデータベースを回復することができます。 データベースの自動バックアップでの復旧時間は、同じリージョン内で同時に復旧するデータベースの合計数、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅など、複数の要因によって異なりますが、 通常は 12 時間もかかりません。 非常に大規模な、またはアクティブなデータベースの復旧には時間がかかることがあります。 復旧時間の詳細については、[データベースの復旧時間](sql-database-recovery-using-backups.md#recovery-time)に関するページを参照してください。 他のデータ リージョンに復旧する場合は、geo 冗長ストレージで 1 時間ごとにデータベースの差分バックアップが実行されるため、潜在的なデータ損失が 1 時間分の量を超えることはありません。
 

@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: conceptual
+ms.date: 07/03/2018
 ms.author: bwren
-ms.openlocfilehash: 33b98c56cde8d4a876f217d0bbdd716d3a336260
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: a2aab89bcd550cc2b1dcc4f980f09b5c1e0e9464
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636734"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436381"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -41,9 +42,9 @@ Log Analytics リポジトリ内のすべてのデータは、特定の種類の
 HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の 3 つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
-| Attribute | プロパティ |
+| 属性 | プロパティ |
 |:--- |:--- |
-| 方法 |POST |
+| メソッド |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | コンテンツの種類 |application/json |
 
@@ -57,10 +58,10 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
-| 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
+| Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 現在、ログの種類でサポートされているのは、アルファベットのみです。 数字や特殊文字はサポートされていません。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
-| time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 これは Null ではない可能性があり、有効な日時を含める必要があります。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
+| time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
 ## <a name="authorization"></a>承認
 Log Analytics HTTP データ コレクター API への要求には、承認ヘッダーを含める必要があります。 要求を認証するには、その要求を行っているワークスペースの主キーまたはセカンダリ キーのどちらかを使用して、要求に署名する必要があります。 次に、その署名を要求の一部として渡します。   
@@ -101,29 +102,33 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを 1 つ以上含める必要があります。
 
 ```
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-}
+[
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    }
+]
 ```
 
 次の形式を使用して複数のレコードを 1 つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
 
 ```
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-},
-{
-"property1": "value1",
-" property 2": "value2"
-" property 3": "value3",
-" property 4": "value4"
-}
+[
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    },
+    {
+        "property 1": "value1",
+        "property 2": "value2",
+        "property 3": "value3",
+        "property 4": "value4"
+    }
+]
 ```
 
 ## <a name="record-type-and-properties"></a>レコードの型とプロパティ
@@ -136,7 +141,7 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 | プロパティのデータ型 | サフィックス |
 |:--- |:--- |
 | String |_s |
-| ブール |_b |
+| Boolean |_b |
 | Double |_d |
 | Date/time |_t |
 | GUID |_g |
@@ -274,7 +279,6 @@ Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
         -sharedKey $sharedKey `
         -date $rfc1123date `
         -contentLength $contentLength `
-        -fileName $fileName `
         -method $method `
         -contentType $contentType `
         -resource $resource
@@ -382,7 +386,7 @@ namespace OIAPIExample
 
 ```
 
-### <a name="python-sample"></a>Python のサンプル
+### <a name="python-2-sample"></a>Python 2 のサンプル
 ```
 import json
 import requests

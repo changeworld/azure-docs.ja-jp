@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fe9d98b694b8c42f3342e615d92fae9824dca26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2f5d2f3634545001dc6dc1419530223b5a1a85a3
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195150"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435793"
 ---
 # <a name="my-first-powershell-runbook"></a>初めての PowerShell Runbook
 
@@ -88,13 +88,16 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. MyFirstRunbook-PowerShell ページで **[編集]** をクリックして、テキスト エディターを開きます。
 2. **Write-Output** の行は不要になったので削除します。
 3. Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
-   
-   ```
+
+   ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
-   <br>
+
+   > [!IMPORTANT]
+   > これで **Add-AzureRmAccount** および **Login-AzureRmAccount** が **Connect-AzureRMAccount** のエイリアスになりました。 **Connect-AzureRMAccount** コマンドレットが存在しない場合、**Add-AzureRmAccount** または **Login-AzureRmAccount** を使用したり、Automation アカウントで最新バージョンにモジュールを更新したりできます。
+
 4. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
 5. **[開始]** をクリックしてテストを開始します。 テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。 これにより、資格情報が有効であることを確認できます。<br><br> ![認証](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 

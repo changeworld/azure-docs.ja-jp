@@ -1,20 +1,17 @@
 ---
 title: 'ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン | Microsoft Docs'
 description: データセンターでの障害発生時にアプリケーションの耐障害性を確保するための Azure のリージョン ペアについて説明します。
-services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: e2c288af881fa925c1680efdb0f86deec60b7510
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302680"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436911"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン
 
@@ -28,11 +25,11 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 図 1 – Azure リージョン ペア
 
-| [地理的な場所] | ペアになっているリージョン |  |
+| 地理的な場所 | ペアになっているリージョン |  |
 |:--- |:--- |:--- |
 | アジア |東アジア |東南アジア |
 | オーストラリア |オーストラリア東部 |オーストラリア南東部 |
-| オーストラリア |オーストラリア中部 |オーストラリア中部 (2) |
+| オーストラリア |オーストラリア中部 |オーストラリア中部 2 |
 | ブラジル |ブラジル南部 (2) |米国中南部 |
 | カナダ |カナダ中部 |カナダ東部 |
 | 中国 |中国 (北部) |中国 (東部)|
@@ -47,7 +44,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | 北米 |米国中北部 |米国中南部 |
 | 北米 |米国西部 2 |米国中西部 
 | 英国 |英国西部 |英国南部 |
-| 米国国防総省 |US DoD East |US DoD Central |
+| 米国国防総省 |米国防総省東部 |米国防総省中部 |
 | 米国政府 |米国政府アリゾナ |米国政府テキサス |
 | 米国政府 |米国政府アイオワ (3) |米国政府バージニア州 |
 | 米国政府 |米国政府バージニア (4) |米国政府テキサス |

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/02/2018
+ms.date: 07/02/2018
 ms.author: jroth
-ms.openlocfilehash: 71c86af9d4dcdf1026b4f539574b9932ef1cfc89
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767802"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345279"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -66,7 +66,7 @@ ms.locfileid: "32767802"
 
 **使用した分の SQL Server ライセンス料金を支払う**方法では、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれます。 各種 SQL Server エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure VM の料金ページで確認できます。
 
-コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 1 秒あたりのライセンス コストは VM のコア数によって変わり､これはあらゆる SQL Server ライセンスの標準です｡
+コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
 
 使用した分だけ SQL Server ライセンス料金を支払う方法は、次の場合にお勧めします。
 
@@ -105,7 +105,7 @@ ms.locfileid: "32767802"
 
 BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
 
-| BYOL のメリット | [説明] |
+| BYOL のメリット | 説明 |
 |-----|-----|
 | **コスト削減** | 自分の SQL Server ライセンスの持ち込みが、使用した分だけ支払うよりもコスト効果が高くなるのは、ワークロードによって SQL Server Standard または Enterprise が "*10 か月を超えて*" 実行され続ける場合です。 |
 | **長期的なコスト削減** | 平均すると、当初 3 年間は SQL Server ライセンスを購入または更新する方が "*1 年あたり 30% のコストダ ウン*" です。 3 年経過した後は、ライセンスを更新する必要がなくなり、ソフトウェア アシュアランスのみの支払いになります。 その時点で、"*200% のコスト ダウン*" になります。 |
@@ -128,7 +128,7 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 
 ### <a id="machinesize"></a> VM の適切なサイズ設定
 
-SQL Server のライセンス コストはコアの数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)と [Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
+SQL Server のライセンス コストは vCPU の数に直接関連します。 CPU、メモリ、記憶域、および I/O 帯域幅の予想されるニーズに合った VM サイズを選択してください。 マシンのサイズ オプションの一覧については、[Windows VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)と [Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをそれぞれご覧ください。
 
 特定の種類の SQL Server ワークロードで適切に動作する新しいマシン サイズがあります。 こうしたマシン サイズでは、メモリ、記憶域、および I/O 帯域幅が高いレベルで維持されますが、仮想化されたコア数は少なくなります。 たとえば、次の例を考えてみましょう。
 
@@ -140,7 +140,7 @@ SQL Server のライセンス コストはコアの数に直接関連します�
 > [!IMPORTANT]
 > これは、特定の時点の例です。 最新の仕様については、マシンのサイズに関する記事と、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) および [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) それぞれの Azure 価格ページをご覧ください。
 
-前の例で、**Standard_DS14v2** と **Standard_DS14-4v2** の仕様は、vCPU を除いて同じであることがわかります。 **Standard_DS14-4v2** マシン サイズの末尾のサフィックス **-4v2** は、アクティブな vCPU の番号を示します。 SQL Server のライセンス コストはコア数と関連するため、追加 vCPU が不要なシナリオでは、これにより VM のコストが大幅に削減されます。 これは 1 つの例であり、このサフィックス パターンで特定される、vCPU が制約されたマシン サイズは多数あります。 詳細については、[データベース作業のコスト効率を高めるための新しい Azure VM サイズについての発表](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
+前の例で、**Standard_DS14v2** と **Standard_DS14-4v2** の仕様は、vCPU を除いて同じであることがわかります。 **Standard_DS14-4v2** マシン サイズの末尾のサフィックス **-4v2** は、アクティブな vCPU の番号を示します。 SQL Server のライセンス コストは vCPU の数と関連するため、追加 vCPU が不要なシナリオでは、これにより VM のコストが大幅に削減されます。 これは 1 つの例であり、このサフィックス パターンで特定される、vCPU が制約されたマシン サイズは多数あります。 詳細については、[データベース作業のコスト効率を高めるための新しい Azure VM サイズについての発表](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
 
 ### <a name="shut-down-your-vm-when-possible"></a>可能な場合は VM をシャットダウン
 

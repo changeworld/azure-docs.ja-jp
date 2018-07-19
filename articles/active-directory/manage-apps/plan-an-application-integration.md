@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292839"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088449"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>概要
@@ -61,8 +61,8 @@ ms.locfileid: "35292839"
 * Azure サブスクリプションと Azure Active Directory のディレクトリ。  Azure サブスクリプションをまだ取得していない場合は、30 日間の無料試用版を試すことができます。 [実際に使ってみてください。](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>Azure AD とのアプリケーションの統合
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-app-discovery"></a>承認されていないクラウド アプリケーションを Cloud App Discovery で検出する
-前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 詳細については、 [承認されていないクラウド アプリケーションを Cloud App Discovery で検出する方法](cloud-app-discovery.md)に関するページを参照してください。
+### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>承認されていないクラウド アプリケーションを Cloud Discovery で検出する
+前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery.md)」を参照してください。
 
 ### <a name="authentication-types"></a>認証の種類
 各アプリケーションにさまざまな認証の要件が存在する可能性があります。 Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。 Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-certificates-for-federated-single-sign-on.md)」と[パスワード ベースのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。
@@ -73,9 +73,9 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 ### <a name="integrating-applications-with-azure-ad"></a>Azure AD とアプリケーションの統合
 次の記事では、アプリケーションを Azure AD と統合するさまざまな方法について説明し、ガイダンスをいくつか示します。
 
-* [使用する Active Directory の決定](../active-directory-administer.md)
+* [使用する Active Directory の決定](../fundamentals/active-directory-administer.md)
 * [Azure アプリケーション ギャラリーのアプリケーションの使用](what-is-single-sign-on.md)
-* [SaaS アプリケーションのチュートリアルの一覧の統合](../active-directory-saas-tutorial-list.md)
+* [SaaS アプリケーションのチュートリアルの一覧の統合](../saas-apps/tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>アプリケーションへのアクセスの管理
 次の記事では、Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。

@@ -8,12 +8,12 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: aa371ef2ebad01fba379675e8438f56dca9ce356
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030381"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096969"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -40,12 +40,12 @@ Edge ハブと Edge エージェントは、いずれも、IoT Edge デバイス
 Edge ハブでは、Azure IoT Edge ランタイムを構成する 2 つのモジュールの 1 つです。 Edge ハブは、IoT Hub と同じプロトコル エンドポイントを公開することで IoT Hub のためのローカル プロキシとして動作します。 この整合性により、クライアント (デバイスまたはモジュール) は、IoT Hub と同じように IoT Edge ランタイムに接続できます。 
 
 >[!NOTE]
-> パブリック プレビューでは、Edge Hub は MQTT を使用して接続するクライアントのみサポートします。
+>Edge ハブでは、MQTT または AMQP を使用して接続するクライアントがサポートされます。 HTTP を使用するクライアントはサポートされません。 
 
 Edge ハブは、ローカルで実行される完全バージョンの IoT Hub ではありません。 Edge ハブは、いくつかの機能を IoT Hub をサイレントにデリゲートします。 たとえば、Edge ハブは、デバイスがはじめて接続を試みたとき、IoT Hub に認証要求を送信します。 初めて接続を確立した後は、セキュリティ情報は Edge ハブによってローカルでキャッシュされます。 そのデバイスからのその後の接続は、クラウドへの認証なしに許可されます。 
 
 >[!NOTE]
-> パブリック プレビューでは、デバイスを認証するたびに、ランタイムに接続する必要があります。
+>デバイスの認証を試みるたびに、ランタイムの接続が必要です。
 
 IoT Edge ソリューションが使用する帯域幅を減らすために、Edge ハブは、クラウドへの実際の接続数を最適化します。 Edge ハブは、モジュールまたはリーフ デバイスなどのクライアントからの論理接続を取得し、クラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
 

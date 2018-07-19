@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2797c9f18364a2321bea885592690793271d8b8e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e9fd28ac21ce843655697c5d58849d940e305fce
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062191"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344956"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
 
@@ -45,11 +45,11 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 
-    hdfs://<namenodehost>/<path>
+    hdfs://<NAME_NODE_HOST>/<PATH>
 
-さらに、HDInsight では、Azure Data Lake Storage に格納されたデータにアクセスすることもできます。 構文は次のとおりです。
+さらに、HDInsight では、Azure Data Lake Storage に格納されたデータにアクセスすることもできます。 の構文は次のとおりです。
 
-    abfs[s]://<file_system>@<accountname>.dfs.core.widows.net/<path>
+    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<path>
 
 HDInsight クラスターで Azure Storage アカウントを使用するときの考慮事項を次に示します。
 
@@ -62,7 +62,7 @@ HDInsight クラスターで Azure Storage アカウントを使用するとき�
  
 * **クラスターに接続されていないストレージ アカウントのプライベート ファイル システム**では、WebHCat ジョブを送信するときにストレージ アカウントを定義しない限り、ファイル システム内のファイルにはアクセスできません。 この制限の理由については、この記事で後述します。
 
-作成プロセスで定義されたストレージ アカウントとそのキーは、クラスター ノードの %HADOOP_HOME%/conf/core-site.xml に格納されます。 HDInsight の既定の動作では、core-site.xml ファイルに定義されたストレージ アカウントが使用されます。 この設定は、[Ambari](/hdinsight/hdinsight-hadoop-manage-ambari.md) を使用して変更できます。
+作成プロセスで定義されたストレージ アカウントとそのキーは、クラスター ノードの *%HADOOP_HOME%/conf/core-site.xml* に格納されます。 HDInsight の既定の動作では、*core-site.xml* ファイルに定義されたストレージ アカウントが使用されます。 この設定は、[Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md) を使用して変更できます。
 
 Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。 (このアプローチは、現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。詳細については、「 [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
 
@@ -73,16 +73,21 @@ Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat
 HDFS ではなく、Azure Storage にデータを格納することにはいくつかの利点があります。
 
 * **データの再使用と共有:** HDFS のデータはコンピューティング クラスター内に配置されます。 HDFS API を使用してデータを操作できるのは、コンピューティング クラスターへのアクセスが許可されているアプリケーションだけです。 Azure Storage 内のデータには、HDFS API または [Blob Storage REST API][blob-storage-restAPI] を使用してアクセスできます。 したがって、さまざまなアプリケーション (その他の HDInsight クラスターを含む) やツールを使用してデータの生成と利用ができます。
-* **データのアーカイブ:** Azure Storage にデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
-* **データ ストレージ コスト:** コンピューティング クラスターは Azure Storage よりコストがかかるため、DFS に長期間データを格納すると、Azure Storage にデータを格納した場合よりコストが高くなります。 さらに、コンピューティング クラスターを生成するたびにデータを読み込む必要がないので、データの読み込みコストも節約できます。
-* **柔軟なスケールアウト:** HDFS は大規模なファイル システムを提供しますが、規模を拡張するにはクラスターに対して作成するノードの数を増やさなければならないので、作業が複雑になります。 一方、Azure Storage には柔軟なスケール機能がもともと備わっています。
-* **geo レプリケーション:** Azure Storage は、別の拠点に geo レプリケートできます。 災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケートした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。 geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
-* **データのライフサイクル管理:** あらゆるファイル システムのすべてのデータは、アーカイブまたは削除されるまでに、非常に価値が高く頻繁にアクセスされる状態から、価値が低くあまりアクセスされない状態へと遷移する独自のライフサイクルを経由します。 Azure Storage には、データのライフサイクル段階に合わせて適切にデータを階層化するデータの階層化機能とライフサイクル管理ポリシーが用意されています。
 
-MapReduce の一部のジョブやパッケージでは中間結果が生成されますが、Azure Storage には保存したくない場合もあります。 このような場合、中間結果データをローカルの HDFS に保存できます。 実際、HDInsight では、Hive ジョブやその他のプロセスで生成される中間結果の一部が DFS に格納されます。
+* **データのアーカイブ:** Azure Storage にデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
+
+* **データ ストレージ コスト:** コンピューティング クラスターは Azure Storage よりコストがかかるため、ネイティブ HDFS に長期間データを格納すると、Azure Storage にデータを格納した場合よりコストが高くなります。 さらに、コンピューティング クラスターを生成するたびにデータを読み込む必要がないので、データの読み込みコストも節約できます。
+
+* **柔軟なスケールアウト:** HDFS は大規模なファイル システムを提供しますが、規模を拡張するにはクラスターに対して作成するノードの数を増やさなければならないので、作業が複雑になります。 一方、Azure Storage には柔軟なスケール機能がもともと備わっています。
+
+* **geo レプリケーション:** Azure Storage データは、別の拠点に geo レプリケートできます。 この機能は、災害発生時に別の拠点にデータを回復でき、データの冗長性を高めますが、geo レプリケートした別拠点へのフェールオーバーのサポートはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。 このため、geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
+
+* **データ ライフ サイクル管理:** すべてのファイル システムのすべてのデータが独自のライフサイクルを経過します。 多くの場合、データは、非常に価値があり頻繁にアクセスされる状態から始まり、徐々に価値とアクセス頻度が下がり、最終的にはアーカイブに保存されるか削除されます。 Azure Storage には、データのライフサイクル段階に合わせて適切にデータを階層化するデータの階層化機能とライフサイクル管理ポリシーが用意されています。
+
+MapReduce の一部のジョブやパッケージでは中間結果が生成されますが、Azure Storage には保存したくない場合もあります。 このような場合、中間結果データをローカルの HDFS に保存できます。 実際、HDInsight では、Hive ジョブやその他のプロセスで生成される中間結果の一部で、HDFS のネイティブ実装 (DFS と呼ばれます) が使用されます。
 
 > [!NOTE]
-> ほとんどの HDFS コマンド (`ls`、`copyFromLocal`、`mkdir` など) は通常と同じように機能します。 ただし、`fschk` や `dfsadmin` など、HDFS ネイティブ実装 (DFS) に固有のコマンドについては、Azure Storage 上で実行した場合に動作が異なります。
+> ほとんどの HDFS コマンド (`ls`、`copyFromLocal`、`mkdir` など) は通常と同じように機能します。 ただし、`fschk` や `dfsadmin` など、DFS に固有のコマンドについては、Azure Storage 上で実行した場合に動作が異なります。
 
 ## <a name="create-an-data-lake-storage-file-system"></a>Data Lake Storage ファイル システムを作成する
 
@@ -90,7 +95,7 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 
 作成される各ファイル システムは、どこにあるとしても、Azure Data Lake Storage アカウント内のコンテナーに属します。 
 
-既定の Data Lake Storage ファイル システムには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。 既定の Data Lake Storage ファイル システムは複数の HDInsight クラスターと共有しないでください。 ジョブ履歴が破損する場合があります。 各クラスターで別のファイル システムを使用し、既定のストレージ アカウントではなく、関連するすべてのクラスターのデプロイメントで指定された、リンクされているストレージ アカウントに共有データを格納することをお勧めします。 リンクされているストレージ アカウントの構成の詳細については、[HDInsight クラスターの作成][hdinsight-creation]に関するページを参照してください。 ただし、元の HDInsight クラスターを削除した後でも既定のストレージ ファイル システムを再利用できます。 HBase クラスターでは、削除された HBase クラスターで使用される既定の BLOB コンテナーを使用して、新しい HBase クラスターを作成することで、HBase テーブルのスキーマとデータを実際に保持できます。
+既定の Data Lake Storage ファイル システムには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。 既定の Data Lake Storage ファイル システムは複数の HDInsight クラスターと共有しないでください。 ジョブ履歴が破損する場合があります。 各クラスターで別のファイル システムを使用し、既定のストレージ アカウントではなく、関連するすべてのクラスターのデプロイメントで指定された、リンクされているストレージ アカウントに共有データを格納することをお勧めします。 リンクされているストレージ アカウントの構成の詳細については、[HDInsight クラスターの作成][hdinsight-creation]に関するページを参照してください。 ただし、元の HDInsight クラスターを削除した後でも既定のストレージ ファイル システムを再利用できます。 HBase クラスターでは、削除された HBase クラスターで使用される既定の BLOB コンテナーを使用して、新しい HBase クラスターを作成することで、HBase テーブルのスキーマとデータを保持できます。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -144,20 +149,28 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 
 [Azure CLI のインストールと構成](../../cli-install-nodejs.md)が完了している場合は、次のコマンドを使用して、ストレージ アカウントとコンテナーを作成できます。
 
-    azure storage account create <storageaccountname> --type LRS --is-hns-enabled true
+```bash
+az storage account create \
+    --name <STORAGE_ACCOUNT_NAME> \
+    --resource-group <RESOURCE_GROUP_NAME> \
+    --location westus2 \
+    --sku Standard_LRS \
+    --kind StorageV2 \
+    --Enable-hierarchical-namespace true
+```
 
 > [!NOTE]
-> Data Lake Storage Gen2 のパブリック プレビュー期間中は、`--type LRS` のみがサポートされています。 プレビュー プログラム全体で、追加の冗長オプションを使用できるようになる予定です。
+> Data Lake Storage Gen2 のパブリック プレビュー期間中は、`--sku Standard_LRS` のみがサポートされています。
 
 ストレージ アカウントの作成先となる地理的リージョンを指定するよう要求されます。 ストレージ アカウントは、HDInsight クラスターの作成を計画しているリージョンと同じリージョンに作成してください。
 
 ストレージ アカウントを作成した後は、次のコマンドを使用して、ストレージ アカウント キーを取得します。
 
-    azure storage account keys list <storageaccountname>
+    azure storage account keys list <STORAGE_ACCOUNT_NAME>
 
 コンテナーを作成するには、次のコマンドを使用します。
 
-    azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
+    azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
 > コンテナーの作成は、Azure Data Lake Storage でファイル システムを作成することと同じ意味です。
@@ -166,31 +179,30 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 
 HDInsight から Azure Storage 内のファイルにアクセスするための URI スキームは次のとおりです。
 
-    abfs[s]://<FileSystem>@<AccountName>.dfs.core.widows.net/<path>
+    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>
 
 この URI スキームは、暗号化なしのアクセス (*abfs:* プレフィックス) と SSL で暗号化されたアクセス (*abfss*) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *abfss* を使用することをお勧めします。
 
-&lt;FileSystem&gt; には、ファイル システム Azure Data Lake Storage のパスを指定します。
-&lt;AccountName&gt; には、Azure Storage アカウントを指定します。 完全修飾ドメイン名 (FQDN) を指定する必要があります。
+* &lt;FILE_SYSTEM_NAME&gt; には、Azure Data Lake Storage ファイル システムのパスを指定します。
+* &lt;ACCOUNT_NAME&gt; には、Azure Storage アカウントを指定します。 完全修飾ドメイン名 (FQDN) を指定する必要があります。
 
-&lt;FileSystem&gt; と &lt;AccountName&gt; の値をどちらも指定しない場合は、既定のファイル システムが使用されます。 既定のファイル システム上にあるファイルに関しては、相対パスか絶対パスを使用できます。 たとえば、HDInsight クラスターに付属している *hadoop-mapreduce-examples.jar* ファイルは、次のいずれかのパスを使用して参照できます。
-
-    abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
-    abfs:///example/jars/hadoop-mapreduce-examples.jar
-    /example/jars/hadoop-mapreduce-examples.jar
+    &lt;FILE_SYSTEM_NAME&gt; と &lt;ACCOUNT_NAME&gt; の値をどちらも指定しない場合は、既定のファイル システムが使用されます。 既定のファイル システム上にあるファイルに関しては、相対パスか絶対パスを使用できます。 たとえば、HDInsight クラスターに付属している *hadoop-mapreduce-examples.jar* ファイルは、次のいずれかのパスを使用して参照できます。
+    
+        abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
+        abfs:///example/jars/hadoop-mapreduce-examples.jar
+        /example/jars/hadoop-mapreduce-examples.jar
 
 > [!NOTE]
 > HDInsight バージョン 2.1 クラスターと 1.6 クラスターでは、ファイル名は *hadoop-examples.jar* です。
 
-&lt;パス&gt;は、ファイルまたはディレクトリの HDFS パス名です。
+* &lt;PATH&gt; は、ファイルまたはディレクトリの HDFS パス名です。
 
 > [!NOTE]
 > HDInsight の外部からファイルを操作する場合、ほとんどのユーティリティで ABFS 形式が認識されず、代わりに `example/jars/hadoop-mapreduce-examples.jar` などの基本的なパス形式が要求されます。
-> 
-
+ 
 ## <a name="use-additional-storage-accounts"></a>追加ストレージ アカウントの使用
 
-HDInsight クラスターを作成しているときに、そのクラスターに関連付ける Azure ストレージ アカウントを指定します。 作成プロセス時またはクラスターが作成された後に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。 ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成](/hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
+HDInsight クラスターを作成しているときに、そのクラスターに関連付ける Azure ストレージ アカウントを指定します。 作成プロセス時またはクラスターが作成された後に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。 ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
 
 > [!WARNING]
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
@@ -207,9 +219,9 @@ HDInsight クラスターを作成しているときに、そのクラスター�
 * [distcp を使用して Azure Data Lake Storage にデータを取り込む](use-distcp.md)
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[hdinsight-creation]: /hdinsight/hdinsight-hadoop-provision-linux-clusters.md
+[hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
 
 [blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
-[azure-storage-create]: /storage/common/storage-create-storage-account.md
+[azure-storage-create]: ../common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/use-hdi-cluster/HDI.PowerShell.BlobCommands.png

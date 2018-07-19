@@ -11,20 +11,27 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1b4974c78a5cdb7b4eb885797319b283be2d393
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9009d29e281ace179ad1dd2021c7cf35e3dc611a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260842"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084809"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
 1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
+
+要素定義からのデフォルト値を含むセレクターが表示されます。
+
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+
+コントロールを選択すると、使用可能なサイズのビューが拡大されて表示されます。
+
+![拡大された Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>スキーマ
 ```json
@@ -44,6 +51,9 @@ ms.locfileid: "34260842"
     "numAvailabilityZonesRequired": 3,
     "zone": "3"
   },
+  "options": {
+    "hideDiskTypeFilter": false
+  },
   "osPlatform": "Windows",
   "imageReference": {
     "publisher": "MicrosoftWindowsServer",
@@ -56,14 +66,14 @@ ms.locfileid: "34260842"
 ```
 
 ## <a name="remarks"></a>解説
-- `recommendedSizes` には少なくとも 1 つのサイズを含める必要があります。 最初の推奨サイズが既定値として使用されます。
+- `recommendedSizes` には、少なくとも 1 つのサイズが必要です。 最初の推奨サイズが既定値として使用されます。 使用可能なサイズの一覧は、推奨される状態で並べ替えられていません。 その列を選択すると、推奨される状態で並べ替えることができます。
 - 推奨されたサイズが選択した場所で使用できない場合、そのサイズは自動的にスキップされます。 代わりに、次の推奨サイズが使用されます。
-- `constraints.allowedSizes` で指定されていないサイズはすべて非表示となり、`constraints.excludedSizes` で指定されていないサイズはすべて表示されます。
-`constraints.allowedSizes` と `constraints.excludedSizes` は両方とも使用できますが、同時に使用することはできません。 使用可能なサイズの一覧は、[サブスクリプションの使用可能な仮想マシン サイズを一覧表示する操作](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)を呼び出すことで決定できます。
+- `constraints.allowedSizes` と `constraints.excludedSizes` は両方ともオプションとして使用できますが、同時に使用することはできません。 使用可能なサイズの一覧は、[サブスクリプションの使用可能な仮想マシン サイズを一覧表示する操作](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)を呼び出すことで決定できます。 `constraints.allowedSizes` で指定されていないサイズはすべて非表示となり、`constraints.excludedSizes` で指定されていないサイズはすべて表示されます。
 - `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。 これは、仮想マシンのハードウェア コストの決定に使用されます。
 - `imageReference` はファーストパーティのイメージでは省略されますが、サードパーティのイメージでは指定されます。 これは、仮想マシンのソフトウェア コストの決定に使用されます。
 - `count` は適切な乗数を要素に設定するために使用されます。 **2** などの静的な値のほか、他の要素からの `[steps('step1').vmCount]` などの動的な値もサポートします。 既定値は **1** です。
 - `numAvailabilityZonesRequired` には、1、2、または 3 を指定できます。
+- 既定では、`hideDiskTypeFilter` は **false** です。 ディスク の種類のフィルターを使用すると、ディスクの種類をすべて表示することも、SSD のみを表示することもできます。
 
 ## <a name="sample-output"></a>サンプル出力
 ```json

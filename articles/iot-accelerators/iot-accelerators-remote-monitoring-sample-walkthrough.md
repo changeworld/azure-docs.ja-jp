@@ -1,6 +1,6 @@
 ---
-title: リモート監視ソリューションのアーキテクチャ - Azure | Microsoft Docs
-description: リモート監視ソリューション アクセラレータのアーキテクチャのチュートリアルです。
+title: リモート監視ソリューション アクセラレータの概要 - Azure | Microsoft Docs
+description: リモート監視ソリューション アクセラレータの概要。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757435"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084530"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>リモート監視ソリューション アクセラレータのアーキテクチャ
+# <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 
 リモート監視[ソリューション アクセラレータ](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)は、遠隔地で実行されている複数のコンピューターを対象としたエンド ツー エンドの監視ソリューションを実装します。 このソリューションは、主要な Azure サービスを組み合わせることで、ビジネス シナリオの汎用的な実装を実現したものです。 このソリューションを実装の出発点として使用し、お客様固有のビジネス要件を満たすように[カスタマイズ](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)することができます。
 

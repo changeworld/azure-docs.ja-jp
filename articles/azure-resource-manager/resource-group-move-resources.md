@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4f73b6d735997b663ca6769aaceaf363b6d3eda7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36940163"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346486"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -30,7 +30,7 @@ ms.locfileid: "36940163"
 リソースの場所を変更することはできません。 リソースを移動しても、新しいリソース グループに移動されるだけです。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更 (従量課金制から前払いにアップグレードするなど) しながら既存のリソースの処理を継続する場合は、 [別の Azure サブスクリプション プランへの切り替え](../billing/billing-how-to-switch-azure-offer.md)に関するページをご覧ください。
+> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント オファーを変更 (従量課金制から前払いにアップグレードするなど) しながら既存のリソースの処理を継続する場合は、 [別の Azure サブスクリプション オファーへの切り替え](../billing/billing-how-to-switch-azure-offer.md)に関するページをご覧ください。
 >
 >
 
@@ -119,19 +119,26 @@ ms.locfileid: "36940163"
 * Application Insights
 * Analysis Services
 * Automation
+* Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Maps
 * Azure Relay
+* Azure Stack - 登録
+* Azure Migrate
 * Batch
-* Bing Maps
+* BizTalk Services
+* ボット サービス
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Cognitive Services
+* Container Registry
 * Content Moderator
 * Data Catalog
-* Data Factory - V1 は移動できますが、V2 の移動 (プレビュー) はサポートされていません
+* Data Factory
 * Data Lake Analytics
 * Data Lake Store
 * DNS
+* Event Grid
 * Event Hubs
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * IoT Hub
@@ -145,14 +152,15 @@ ms.locfileid: "36940163"
 * Notification Hubs
 * Operational Insights
 * Operations Management
+* ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Redis Cache
 * Scheduler
 * Search
-* Server Management
 * Service Bus
 * Service Fabric
+* SignalR Service
 * Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
@@ -175,20 +183,24 @@ ms.locfileid: "36940163"
 * Application Gateway
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Azure Migrate
-* BizTalk Services
+* Azure Database Migration
+* Azure Databricks
+* Batch AI
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
 * Container Service
-* DevTest Labs - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
+* Lab Services - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Managed Applications
 * Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
+* Microsoft Genomics
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
+* SAP HANA on Azure
 * セキュリティ
+* Site Recovery
 * StorSimple デバイス マネージャー
 * Virtual Networks (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 
