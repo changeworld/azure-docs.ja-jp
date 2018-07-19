@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 60deb440d339e5b7d1fb7fe9d9511a3a3331c17c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 06bd3670c576a0515956147996d7500c75cf8708
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230286"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>チュートリアル: Azure Active Directory と Skills Manager の統合
 
@@ -205,7 +205,7 @@ Skills Manager で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skills Manager] タイルをクリックすると、自動的に Skills Manager アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

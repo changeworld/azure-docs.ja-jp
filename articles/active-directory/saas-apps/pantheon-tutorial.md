@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 67758e527549827b673d00ad82911d3114a44ca7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2f77fedddd84303ae489379a62a3b1845127b16b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227841"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>チュートリアル: Azure Active Directory と Pantheon の統合
 
@@ -102,15 +102,15 @@ Pantheon で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Pantheon** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_pantheon_samlbase.png)
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_pantheon_samlbase.png)
 
 3. **[Pantheon のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_pantheon_url.png)
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_pantheon_url.png)
 
     a. **[識別子]** ボックスに、`urn:auth0:pantheon:<orgname>-SSO` の形式で URL を入力します。
 
@@ -121,20 +121,20 @@ Pantheon で Azure AD のシングル サインオンを構成してテストす
 
 4. Pantheon アプリケーションでは特定の形式の SAML アサーションが要求されるため、ユーザーの電子メール アドレスで UserIdentifier 属性値を設定する必要があります。 既定では、Azure AD は UserIdentifier 属性に UserPrincipalName を使用します。 ただし、正常に統合するには、この値がユーザーの電子メール アドレスと一致するように調整する必要があります。 統合は、適切なマッピングが行われた後にのみ機能します。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_attribute.png)    
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_attribute.png)    
 
 
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_pantheon_certificate.png)
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_pantheon_certificate.png)
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_general_400.png)
 
 7. **[Pantheon 構成]** セクションで、**[Pantheon の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_pantheon_configure.png) 
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_pantheon_configure.png) 
 
 8. **Pantheon** 側にシングルサインオンを構成するには、ダウンロードされた**証明書**および **SAML シングル サインオン サービス URL** を [Pantheon サポート チーム](https://pantheon.io/docs/getting-support/)に送信する必要があります。
 
@@ -210,7 +210,7 @@ Pantheon で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[Pantheon]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/pantheon-tutorial/tutorial_pantheon_app.png) 
+    ![Configure single sign-on](./media/pantheon-tutorial/tutorial_pantheon_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -231,7 +231,7 @@ Pantheon で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Pantheon] タイルをクリックすると、Pantheon アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

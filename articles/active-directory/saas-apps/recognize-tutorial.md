@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: c33b066aa1ba627166021a648a548b9b39d54630
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a4ea4272b11c167d95840b45b39634abea8c1cea
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219059"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル: Azure Active Directory と Recognize の統合
 
@@ -102,15 +102,15 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Recognize** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_samlbase.png)
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_recognize_samlbase.png)
 
 3. **[Recognize のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_url.png)
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_recognize_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://recognizeapp.com/<your-domain>/saml/sso` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Recognize で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_certificate.png) 
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_recognize_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_general_400.png)
 
 6. **[Recognize 構成]** セクションで、**[Recognize の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_configure.png) 
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_recognize_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として Recognize テナントにサインオンします。
 
@@ -238,7 +238,7 @@ Azure AD ユーザーが Recognize にログインできるようにするには
 
 2. アプリケーションの一覧で **[Recognize]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/recognize-tutorial/tutorial_recognize_app.png) 
+    ![Configure single sign-on](./media/recognize-tutorial/tutorial_recognize_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -258,7 +258,7 @@ Azure AD ユーザーが Recognize にログインできるようにするには
 
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
-アクセス パネルで [Recognize] タイルをクリックすると、自動的に Recognize アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [Recognize] タイルをクリックすると、自動的に Recognize アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

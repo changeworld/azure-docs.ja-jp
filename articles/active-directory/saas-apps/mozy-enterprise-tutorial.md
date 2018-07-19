@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 6c814de45fe91990af61bb47c10a43e81e6c4159
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a0e3d6822c3aa79018482ec601a3f821f9fda254
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224711"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
@@ -102,15 +102,15 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
 
 1. Azure Portal の **Mozy Enterprise** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_samlbase.png)
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_samlbase.png)
 
 3. **[Mozy Enterprise Domain and URLs]\(Mozy Enterprise のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_url.png)
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_url.png)
 
     **[サインオン URL]** ボックスに、`https://<tenantname>.Mozyenterprise.com` のパターンを使用して URL を入力します。
 
@@ -119,15 +119,15 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_certificate.png) 
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_general_400.png)
 
 6. **[Mozy Enterprise Configuration]\(Mozy Enterprise 構成\)** セクションで、**[Configure Mozy Enterprise]\(Mozy Enterprise を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_configure.png) 
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、Mozy Enterprise の企業サイトに管理者としてログインします。
 
@@ -241,7 +241,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 2. アプリケーションの一覧で、**[Mozy Enterprise]\(Mozy Enterprise\)** を選択します。
 
-    ![[Configure Single Sign-On]](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_app.png) 
+    ![Configure single sign-on](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -262,7 +262,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Mozy Enterprise] タイルをクリックすると、Mozy Enterprise アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

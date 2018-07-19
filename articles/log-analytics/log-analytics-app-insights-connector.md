@@ -3,7 +3,7 @@ title: Azure Application Insights アプリのデータを表示する | Microso
 description: Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -11,19 +11,23 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/18/2017
+ms.topic: conceptual
+ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 854ec70c897b6a561fdec056228f82ccec3ae16c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186235"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131628"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
 ![Application Insights シンボル](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
+
+>[!NOTE]
+> [リソース間のクエリ](log-analytics-cross-workspace-search.md)のサポートにより、Application Insight コネクタ管理ソリューションはもはや必要でなくなり、非推奨になります。 7 月以降は、新しい Application Insights リソースを Log Analytics ワークスペースにリンクさせることができなくなります。 既存のリンクとダッシュボードは引き続き 2018 年 11 月まで使用可能です。 詳細については、「[OMS ポータルの Azure への移行](log-analytics-oms-portal-transition.md)」を参照してください。
 
 Application Insights Connector ソリューションを使用すると、[Application Insights](../application-insights/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
@@ -38,7 +42,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 他のほとんどの Log Analytics ソリューションとは異なり、Application Insights Connector 用のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
@@ -120,7 +124,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 **Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
-![アプリケーション インサイト ](./media/log-analytics-app-insights-connector/app-insights-search.png)
+![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
 パースペクティブ コンポーネントは、検索クエリに応じて更新されます。 つまり、結果を任意の検索フィールドを使用してフィルター処理することで、以下のデータを表示することができます。
 
@@ -171,7 +175,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>一般的なフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | Type | ApplicationInsights |
 | ClientIP |   |
@@ -197,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性に固有のフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web テストの名前 |
@@ -239,7 +243,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>要求に固有のフィールド
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | Type | ApplicationInsights |
 | TelemetryType | 要求 |

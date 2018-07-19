@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 4899c6d27c034ce3f92efc3b0ddfb8b3446a6115
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ccedc0288e313df2639862a14078d8cad9951286
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229664"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>チュートリアル: Azure Active Directory と AppNeta Performance Monitor の統合
 
@@ -117,7 +117,7 @@ AppNeta Performance Monitor で Azure AD のシングル サインオンを構�
 
 5. AppNeta Performance Monitor アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、SAML トークン属性の構成に、カスタム属性マッピングを追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。
 
-    ![[Configure Single Sign-On]](./media/appneta-tutorial/attribute.png)
+    ![Configure single sign-on](./media/appneta-tutorial/attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
            
@@ -136,9 +136,9 @@ AppNeta Performance Monitor で Azure AD のシングル サインオンを構�
         
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/appneta-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/appneta-tutorial/tutorial_attribute_04.png)
     
-    ![[Configure Single Sign-On]](./media/appneta-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/appneta-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -231,7 +231,7 @@ AppNeta Performance Monitor で Azure AD のシングル サインオンを構�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで AppNeta Performance Monitor のタイルをクリックすると、AppNeta Performance Monitor アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

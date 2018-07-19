@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
+ms.date: 6/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 268ec61515f438fb7f98b6cef7a8ec60ba22e23f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212638"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110874"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
@@ -50,16 +50,19 @@ StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable Services ランタイムでは、次のパフォーマンス カウンター カテゴリを定義しています。
 
-| カテゴリ | [説明] |
+| カテゴリ | 説明 |
 | --- | --- |
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
+| Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
 
-Service Fabric トランザクション レプリケーターは、特定の一連の[レプリカ](service-fabric-concepts-replica-lifecycle.md)内でトランザクションをレプリケートするために、[Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) によって使用されます。 
+Service Fabric トランザクション レプリケーターは、特定の一連の[レプリカ](service-fabric-concepts-replica-lifecycle.md)内でトランザクションをレプリケートするために、[Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) によって使用されます。
+
+Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-services-reliable-collections-internals.md) でキーと値のペアを格納および取得するために使用されるコンポーネントです。
 
 パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
-多数の Reliable Service または Reliable Service パーティションを持つクラスターには、多数のトランザクション レプリケーターのパフォーマンス カウンター インスタンスが含まれます。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の[パーティション](service-fabric-concepts-partitioning.md)とサービス レプリカを識別するのに役立ちます。
+多数の Reliable Service または Reliable Service パーティションを持つクラスターには、多数のトランザクション レプリケーターのパフォーマンス カウンター インスタンスが含まれます。 これは TStore パフォーマンス カウンターの場合と同様ですが、使用されているリライアブル ディクショナリとリライアブル キューの数も乗算されます。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の[パーティション](service-fabric-concepts-partitioning.md)、サービス レプリカ、および TStore の場合の状態プロバイダーを識別するために役立ちます。
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric トランザクション レプリケーターのカテゴリ
 カテゴリ `Service Fabric Transactional Replicator`では、カウンター インスタンス名の形式は次のようになります。
@@ -76,11 +79,30 @@ Service Fabric トランザクション レプリケーターは、特定の一�
 
 この例の `00d0126d-3e36-4d68-98da-cc4f7195d85e` は Service Fabric パーティション ID の文字列表現であり、`131652217797162571` はレプリカ ID です。
 
+#### <a name="service-fabric-tstore-category"></a>Service Fabric TStore カテゴリ
+カテゴリ `Service Fabric TStore`では、カウンター インスタンス名の形式は次のようになります。
+
+`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+
+*ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) を使用して生成されます。
+
+*ServiceFabricReplicaId* は、Reliable Service の特定のレプリカに関連付けられている ID です。 一意性を確保し、同じパーティションによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、レプリカ ID は、パフォーマンス カウンター インスタンス名の中に組み入れられています。 Reliable Services におけるレプリカとその役割に関する詳細については、[こちら](service-fabric-concepts-replica-lifecycle.md)で確認できます。
+
+*ServiceFabricStateProviderId* は、リライアブル サービス内の状態プロバイダーと関連付けられている ID です。 状態プロバイダー ID は、TStore を別の TStore と区別するために、パフォーマンス カウンター インスタンス名に含まれています。
+
+*PerformanceCounterInstanceDifferentiator* は、状態プロバイダー内のパフォーマンス カウンター インスタンスに関連付けられた差別化 ID です。 一意性を確保し、同じ状態プロバイダーによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、この差別化要素は、パフォーマンス カウンター インスタンス名の中に組み入れられています。
+
+次のカウンター インスタンス名は、`Service Fabric TStore` カテゴリ下のカウンターでは一般的です。
+
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+
+上記の例で、`00d0126d-3e36-4d68-98da-cc4f7195d85e` は Service Fabric パーティション ID の文字列表現、`131652217797162571` はレプリカ ID、`142652217797162571` は状態プロバイダー ID、`1337` はパフォーマンス カウンター インスタンスの差別化要素です。
+
 ### <a name="transactional-replicator-performance-counters"></a>トランザクション レプリケーター パフォーマンス カウンター
 
 Reliable Services ランタイムでは、`Service Fabric Transactional Replicator` カテゴリにある次のイベントを出力します。
 
- カウンター名 | [説明] |
+ カウンター名 | 説明 |
 | --- | --- |
 | トランザクションの開始操作数/秒 | 1 秒あたりに作成された新しい書き込みトランザクションの数。|
 | トランザクション操作数/秒 | 1 秒あたりにリライアブル コレクションで実行される追加/更新/削除操作の数。|
@@ -88,6 +110,14 @@ Reliable Services ランタイムでは、`Service Fabric Transactional Replicat
 | 調整された操作数/秒 | 調整のため、トランザクション レプリケーターによって 1 秒あたりに拒否される操作の数。 |
 | Avg.コミットあたりのトランザクション ミリ秒 | トランザクションあたりのミリ秒単位での平均コミット遅延時間 |
 | Avg.フラッシュ待機時間 (ミリ秒) | トランザクション レプリケーターによって開始されたディスク フラッシュ操作のミリ秒単位での平均時間 |
+
+### <a name="tstore-performance-counters"></a>TStore のパフォーマンス カウンター
+
+Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリにある次のイベントを出力します。
+
+ カウンター名 | 説明 |
+| --- | --- |
+| 項目数 | ストアに含まれるキー数。|
 
 ## <a name="next-steps"></a>次の手順
 [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

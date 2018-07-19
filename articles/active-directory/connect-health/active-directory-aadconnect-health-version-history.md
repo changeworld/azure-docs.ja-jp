@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319267"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129673"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。
@@ -29,6 +29,13 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 * Azure AD Connect Health for Sync - ポータルから重複する属性の同期エラーを診断して修復します。 
 
 **エージェントの更新:** 
+*  AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.7.0)    
+   1. .NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題の修正プログラム
+
+*   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.7.0)  
+   1. .NET Framework KB リリースを使用してエージェントを監視する場合に CPU が高くなる問題の修正プログラム  
+   2. ADFS Server 2016 セカンダリ サーバーのテスト結果の修正
+   
 *   AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.2.0)  
    1. バージョン 3.0.244.0 のエージェントのメモリ管理の修正プログラムと関連する警告
 

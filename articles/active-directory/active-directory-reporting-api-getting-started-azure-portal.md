@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 842e4d8413544a303b656a8e4a05bdf58a7c8164
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223843"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442085"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -47,6 +47,13 @@ Azure AD レポート API を使うと、一連の REST ベースの API を使�
  
 詳しい説明については、[Azure Active Directory レポート API にアクセスするための前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)に関するページをご覧ください。
 
+## <a name="apis-with-graph-explorer"></a>Graph Explorer での API
+
+[MSGraph エクスプローラー](https://developer.microsoft.com/en-us/graph/graph-explorer)を使用してサインインを確認し、API データを監査できます。 Graph エクスプローラーの UI で、両方のサインイン ボタンを使用してアカウントにサインインし、次に示すようにテナントの **Tasks.ReadWrite** および **Directory.ReadAll** のアクセス許可を設定します。   
+
+![Graph エクスプローラー](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
+
+![アクセス許可の変更 UI](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
 ## <a name="recommendation"></a>推奨 
 

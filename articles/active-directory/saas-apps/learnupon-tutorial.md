@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a50d1f17293bb86c69ece10e05af0017b1fabf9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3409545169208adc87eb63358082afc6c6d8d575
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219457"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
@@ -102,15 +102,15 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **LearnUpon** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_samlbase.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_samlbase.png)
 
 3. **[LearnUpon のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_url.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_url.png)
 
     **[応答 URL]** ボックスに、`https://<companyname>.learnupon.com/saml/consumer` のパターンを使用して URL を入力します。
 
@@ -121,29 +121,29 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[SAML 署名証明書]** セクションの **[拇印]** を確認します。これが LearnUpon SAML 設定に追加されます。
 
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_certificate.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_general_400.png)
 
 6. **[LearnUpon 構成]** セクションで、**[LearnUpon の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_configure.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_configure.png) 
 
 7. 別のブラウザー インスタンスを開き、管理者アカウントを使用して LearnUpon にログインします。 
 
 8. **[settings (設定)]** タブをクリックします。
    
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 9. **[Single Sign On - SAML (シングル サインオン - SAML)]**、**[General Settings (全般設定)]** の順にクリックし、SAML 設定を構成します。
    
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 10. **[General Settings (全般設定)]** セクションで、次の手順に従います。
    
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. **[Enabled]** を選択します。
 
@@ -163,7 +163,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
 11. **[User Settings (ユーザー設定)]** をクリックし、次の手順を実行します。
    
-     ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
  
     a. **[First Name Identifier Format]\(名識別子形式\)** ボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**)。
   
@@ -227,7 +227,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[LearnUpon]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/learnupon-tutorial/tutorial_learnupon_app.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -248,7 +248,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [LearnUpon] タイルをクリックすると、LearnUpon アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e2936d0b428249226e428ddc0912d62e29a84f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225060"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>チュートリアル: Azure Active Directory と Collaborative Innovation の統合
 
@@ -102,15 +102,15 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
 1. Azure Portal の **Collaborative Innovation** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
 
 3. **[Collaborative Innovation のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<instancename>.foundry.<companyname>.com/` のパターンを使用して URL を入力します。
 
@@ -121,7 +121,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
 4. Collaborative Innovation アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/attribute.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/attribute.png)
     
 5. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
 
@@ -134,7 +134,7 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
     a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/url_update.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/url_update.png)
 
     b. **[名前空間]** から URL の値を削除します。
     
@@ -142,11 +142,11 @@ Collaborative Innovation で Azure AD のシングル サインオンを構成�
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
 
 8. **Collaborative Innovation** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Collaborative Innovation サポート チーム](https://www.unilever.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -205,7 +205,7 @@ Azure AD ユーザーが Collaborative Innovation にログインできるよう
 
 2. アプリケーション一覧で **[Collaborative Innovation]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -226,7 +226,7 @@ Azure AD ユーザーが Collaborative Innovation にログインできるよう
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Collaborative Innovation] タイルをクリックすると、Collaborative Innovation アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

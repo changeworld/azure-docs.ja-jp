@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 143cf41f597050cb27b97ff2584860a6c22aae74
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f51f9eff7a2ab0dd7ca466931f9de78355b917c0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213537"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル: Azure Active Directory と Work.com の統合
 
@@ -102,7 +102,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Work.com** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -311,7 +311,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Work.com] タイルをクリックすると、自動的に Work.com アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

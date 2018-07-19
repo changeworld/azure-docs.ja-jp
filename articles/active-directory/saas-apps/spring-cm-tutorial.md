@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: cd61654df99c980c4a34fd52caa2862ec2be63c1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cf0495e27d7fc06c54266eba6640e0c0fb99be42
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223316"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -102,15 +102,15 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **SpringCM** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_springcm_samlbase.png)
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_springcm_samlbase.png)
 
 3. **[SpringCM のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_springcm_url.png)
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_springcm_url.png)
 
     **[サインオン URL]** ボックスに、`https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>` のパターンを使用して URL を入力します。
 
@@ -119,15 +119,15 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_springcm_certificate.png) 
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_springcm_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_general_400.png)
 
 6. **[SpringCM 構成]** セクションで、**[SpringCM の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_springcm_configure.png)     
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_springcm_configure.png)     
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **SpringCM** 企業サイトにサインオンします。
 
@@ -229,7 +229,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 2. アプリケーションの一覧で **[SpringCM]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/spring-cm-tutorial/tutorial_springcm_app.png) 
+    ![Configure single sign-on](./media/spring-cm-tutorial/tutorial_springcm_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -251,7 +251,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
  
 アクセス パネルで SpringCM のタイルをクリックすると、自動的に SpringCM アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

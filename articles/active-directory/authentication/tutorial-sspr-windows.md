@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972983"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054503"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>ログイン画面からの Azure AD パスワード リセット
 
@@ -99,7 +99,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 ユーザーがログインを試みると、ログオン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワード リセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
-[職場または学校アカウントのパスワードをリセットする方法](../active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
+[職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
 ## <a name="common-issues"></a>一般的な問題
 

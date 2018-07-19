@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 690775bb2ff0d5ee16ec5d7f1869c4f23b3745ad
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 60a15c69f1ec748e366697640707804565245cea
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900917"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001587"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする
 
@@ -50,7 +50,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
 3. 仮想マシンの情報を入力します。 **[認証の種類]** で、**[SSH 公開キー]** または **[パスワード]** を選択します。 作成した資格情報を使用して VM にログインできます。
 
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. ドロップダウンで仮想マシンの**サブスクリプション**を選択します。
 5. 仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
@@ -65,7 +65,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
 4. **[保存]** をクリックして構成を保存します。
 
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager で VM にリソース グループへのアクセスを許可する 
 
@@ -79,7 +79,7 @@ MSI を使用すると、Azure AD 認証をサポートするリソースに対�
 6. 次に、**[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。
 7. 最後に、**[選択]** の一覧で、使用する Linux 仮想マシンを選択し、**[保存]** をクリックします。
 
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
+    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>VM の ID を使用してアクセス トークンを取得し、このトークンを使用して Resource Manager を呼び出す 
 

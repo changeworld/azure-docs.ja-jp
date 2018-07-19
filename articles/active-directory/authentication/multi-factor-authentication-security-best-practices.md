@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 1e143c8c17d5cbc3403d90f7a354d5300265d679
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: f1df6544ea7ca5a0f84bfb164982d816633d7fbe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100387"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054405"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティ ガイダンス
 
@@ -106,5 +106,5 @@ Multi-Factor Authentication Server を設定する場合は、次の点を考慮
 この記事では Azure MFA のベスト プラクティスに重点を置いて説明しましたが、このほかにも、MFA のデプロイを計画する際に利用できるリソースがあります。 このプロセスで役立つ重要な記事を次に示します。
 
 * [Azure Multi-Factor Authentication のレポート](howto-mfa-reporting.md)
-* [2 段階認証登録エクスペリエンス](end-user/current/multi-factor-authentication-end-user-first-time.md)
+* [2 段階認証登録エクスペリエンス](../user-help/multi-factor-authentication-end-user-first-time.md)
 * [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)

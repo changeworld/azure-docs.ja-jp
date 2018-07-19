@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: acca6f4cd2f4e7b452f5a70457d3d034e4d4aa7e
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 6043d01e26d9f28f90e45c2cc194863b3a9cd017
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345187"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072284"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 
@@ -171,4 +171,4 @@ Speech サービスでは、次の正規化規則を実行します。
 ## <a name="next-steps"></a>次の手順
 
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-- [C# で音声を認識する](quickstart-csharp-windows.md)
+- [C# で音声を認識する](quickstart-csharp-dotnet-windows.md)

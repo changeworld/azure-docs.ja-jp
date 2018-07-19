@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ae5cbd2926f4429cda3138f40a40426efe64627a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: edfa9d31688cc88fb8e50ec0f5f7d2d366487030
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216985"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>チュートリアル: Azure Active Directory と Sciforma の統合
 
@@ -102,15 +102,15 @@ Sciforma で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Sciforma** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/sciforma-tutorial/tutorial_sciforma_samlbase.png)
+    ![Configure single sign-on](./media/sciforma-tutorial/tutorial_sciforma_samlbase.png)
 
 3. **[Sciforma のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/sciforma-tutorial/tutorial_sciforma_url.png)
+    ![Configure single sign-on](./media/sciforma-tutorial/tutorial_sciforma_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.sciforma.net/sciforma/main.html` のパターンを使用して URL を入力します。
 
@@ -123,11 +123,11 @@ Sciforma で Azure AD のシングル サインオンを構成してテストす
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/sciforma-tutorial/tutorial_sciforma_certificate.png) 
+    ![Configure single sign-on](./media/sciforma-tutorial/tutorial_sciforma_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/sciforma-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sciforma-tutorial/tutorial_general_400.png)
 
 6. **Sciforma** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Sciforma サポート チーム](http://www.sciforma.com/company/contact_us)に送信する必要があります。
 
@@ -186,7 +186,7 @@ Sciforma へのユーザー プロビジョニングの構成にあたって必�
 
 2. アプリケーションの一覧で **[Sciforma]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/sciforma-tutorial/tutorial_sciforma_app.png) 
+    ![Configure single sign-on](./media/sciforma-tutorial/tutorial_sciforma_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -204,7 +204,7 @@ Sciforma へのユーザー プロビジョニングの構成にあたって必�
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

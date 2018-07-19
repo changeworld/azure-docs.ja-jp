@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: 629cdf3907f45419ecfa5fce59430a163767c8fb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d1a6ff8dbd17d2792709a1ce065bcf793154e585
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943268"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37780674"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行
 この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../articles/azure-resource-manager/resource-group-overview.md)の詳細を参照してください。 
@@ -28,7 +28,7 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 
 * Virtual Machines
 * 可用性セット
-* Cloud Services
+* Cloud Services と Virtual Machines
 * ストレージ アカウント
 * 仮想ネットワーク
 * VPN ゲートウェイ
@@ -89,7 +89,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 ### <a name="unsupported-features"></a>サポートされていない機能
 次の機能は現在サポートされていません。 必要に応じて、これらの設定を削除し、VM を移行してから、Resource Manager デプロイ モデルでその設定を再度有効にすることができます。
 
-| リソース プロバイダー | 機能 | 推奨 |
+| リソース プロバイダー | Feature | 推奨 |
 | --- | --- | --- |
 | コンピューティング | 関連付けのない仮想マシン ディスク。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
 | コンピューティング | 仮想マシン イメージ。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |

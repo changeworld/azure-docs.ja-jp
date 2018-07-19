@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: aef5338b5bc47879dfbe97f14d35d55ca58ddf7f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 09f04ab4d289eb7fb6664d192404f719f8604e1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219508"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
 
@@ -98,7 +98,7 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
 1. Azure Portal の **TigerText Secure Messenger** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -198,7 +198,7 @@ TigerText Secure Messenger で Azure AD のシングル サインオンを構成
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TigerText] タイルをクリックすると、自動的に TigerText アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [TigerText] タイルをクリックすると、自動的に TigerText アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

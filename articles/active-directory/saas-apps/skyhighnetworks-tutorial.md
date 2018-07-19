@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f3f892d085c6fcea7d7891c16d7121a99cfe650
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 403d5754052e616354413160c6c34fa16ff0d837
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214343"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>チュートリアル: Azure Active Directory と Skyhigh Networks の統合
 
@@ -206,7 +206,7 @@ Skyhigh Networks で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skyhigh Networks] タイルをクリックすると、自動的に Skyhigh Networks アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

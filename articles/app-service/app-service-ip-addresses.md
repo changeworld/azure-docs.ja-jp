@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
-ms.openlocfilehash: 906a5d511615c57b6ff807ac240a838c63917e66
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 752f9d82afafaf7324c0c63c0d7377b952fe0716
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788078"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003148"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -67,4 +67,4 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ソース IP アドレスによって受信トラフィックを制限する方法を確認します。
 
 > [!div class="nextstepaction"]
-> [静的 IP の制限事項](app-service-ip-addresses.md)
+> [静的 IP の制限事項](app-service-ip-restrictions.md)

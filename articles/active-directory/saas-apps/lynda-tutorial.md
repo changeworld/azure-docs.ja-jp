@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 09527d5e204d2bbc7ebe56cc56288e79e7f1507b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 25a61f03989e2a531e83ea2750c51d2deb92e650
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217315"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>チュートリアル: Azure Active Directory と Lynda.com の統合
 
@@ -102,15 +102,15 @@ Lynda.com で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Lynda.com** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/lynda-tutorial/tutorial_lynda.com_samlbase.png)
+    ![Configure single sign-on](./media/lynda-tutorial/tutorial_lynda.com_samlbase.png)
 
 3. **[Lynda.com のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/lynda-tutorial/tutorial_lynda.com_url.png)
+    ![Configure single sign-on](./media/lynda-tutorial/tutorial_lynda.com_url.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url> ` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Lynda.com で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/lynda-tutorial/tutorial_lynda.com_certificate.png) 
+    ![Configure single sign-on](./media/lynda-tutorial/tutorial_lynda.com_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/lynda-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lynda-tutorial/tutorial_general_400.png)
 
 6. **Lynda.com** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Lynda.com サポート](https://www.linkedin.com/help/lynda/ask)に送信する必要があります。
 
@@ -182,7 +182,7 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
 
 2. アプリケーションの一覧で **[Lynda.com]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/lynda-tutorial/tutorial_lynda.com_app.png) 
+    ![Configure single sign-on](./media/lynda-tutorial/tutorial_lynda.com_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -200,7 +200,7 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

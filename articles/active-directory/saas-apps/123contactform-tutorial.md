@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fdcbf8efa9a8d77fba30c8cec3d8ee30506fe7d8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ecbe627697fc4f8b5fbfecf96c3cb65d9ffe4607
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223230"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>チュートリアル: Azure Active Directory と 123ContactForm の統合
 
@@ -102,15 +102,15 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 1. Azure Portal の **123ContactForm** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
 
 3. **[123ContactForm のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/url1.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url1.png)
 
     a. **[識別子]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 4. **SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/url2.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url2.png)
 
     a. **[詳細な URL 設定の表示]** をクリックします。
 
@@ -129,15 +129,15 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
     
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_general_400.png)
 
 7. **123ContactForm** 側からシングル サインオンを構成するために、[https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) に移動して次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/submit.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/submit.png) 
 
     a. **[Email]\(電子メール\)** ボックスに、ユーザーの電子メールを入力します。例:  **BrittaSimon@Contoso.com**。
 
@@ -147,7 +147,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 8. **[Microsoft Azure AD - Single sign-on - Configure App Settings]\(Microsoft Azure AD - シングル サインオン - アプリケーション設定の構成\)** で、次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/url3.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url3.png)
 
     a. アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[IDENTIFIER]\(識別子\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
     
@@ -208,7 +208,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 2. アプリケーションの一覧で **[123ContactForm]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -229,7 +229,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [123ContactForm] タイルをクリックすると、自動的に 123ContactForm アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

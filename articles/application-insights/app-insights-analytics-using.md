@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/02/2018
 ms.reviewer: danha
 ms.author: mbullwin
-ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aa86e2f3b1fb147ab167c948475a5207693143c2
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295521"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341564"
 ---
 # <a name="using-analytics-in-application-insights"></a>Application Insights の Analytics の使用
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -151,7 +151,7 @@ Analytics Diagnostics の詳細については、[こちら](app-insights-analyt
 
 グラフをダッシュボードにピン留めする際は、特定の簡略化が適用されます。
 
-**時間の制限:** クエリの対象は自動的に過去 14 日間のものに制限されます。 結果は、クエリに `where timestamp > ago(14d)` が含まれている場合と同じです。
+**時間の制限:** クエリの対象は自動的に過去 30 日間のものに制限されます。 結果は、クエリに `where timestamp > ago(30d)` が含まれている場合と同じです。
 
 **ビン数の制限:** 多数の不連続ビン (通常は横棒グラフ) が表示されているグラフを表示すると、割合の低いビンは "その他" のビンに自動的にグループ化されます。 次のクエリを例にします。
 

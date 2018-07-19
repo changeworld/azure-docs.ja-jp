@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048790"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341581"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -101,7 +101,7 @@ ms.locfileid: "37048790"
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
-自己ホスト型統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードをを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。
+セルフホステッド統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。
 1. 自己ホスト型統合ランタイムの可用性が向上したことによって、ビッグ データ ソリューションや Azure Data Factory を使用したクラウド データ統合において、単一の障害発生点となることはなくなりました。最大 4 つのノードによって、継続性を確保しています。
 2. オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
@@ -140,6 +140,7 @@ ms.locfileid: "37048790"
 *.servicebus.windows.net | 443、80 | Data Movement Service のバックエンドとの通信に使用
 *.core.windows.net | 443 | Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)
 *. frontend.clouddatahub.net | 443 | Data Movement Service のバックエンドとの通信に使用
+download.microsoft.com | 443 | 更新プログラムのダウンロードに使用
 
 **Windows ファイアウォール**のレベル (コンピューター レベル) では、通常これらの送信ポートが有効になっています。 有効でない場合は、自己ホスト型統合ランタイム コンピューターに応じたドメインとポートを構成することができます。
 

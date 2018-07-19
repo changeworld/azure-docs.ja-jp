@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d8b95b74b026ca8dc7776bc4faccec867c5ee36f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e5a7bfc51bcd1931def202d701127de701afb595
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230456"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル: Azure Active Directory と Compliance ELF の統合
 
@@ -123,7 +123,7 @@ Compliance ELF で Azure AD のシングル サインオンを構成してテス
 
 5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/complianceelf-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/complianceelf-tutorial/tutorial_metadataurl.png)
      
 6. **[保存]** ボタンをクリックします。
 
@@ -202,7 +202,7 @@ Compliance ELF で Britta Simon というユーザーを作成します。 [Comp
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Compliance ELF] タイルをクリックすると、自動的に Compliance ELF アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

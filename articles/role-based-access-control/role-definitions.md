@@ -1,6 +1,6 @@
 ---
 title: Azure RBAC のロール定義の概要 | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) のロール定義と、Azure のリソースの詳細なアクセス管理に合わせてカスタム ロールを定義する方法について説明します。
+description: Azure のリソースの詳細なアクセス管理を行うためのロールベースのアクセス制御 (RBAC) のロール定義について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,19 +8,19 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/18/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9bb7808f2b483fe9cd7d22c6df3fe80d4a98f1f4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1d594b91b85a1bad3bbaa69bc27e62a4829a5661
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266858"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438278"
 ---
 # <a name="understand-role-definitions"></a>ロール定義について
 
@@ -47,7 +47,7 @@ type
 
 操作は、次の形式の文字列で指定します。
 
-- `Microsoft.{ProviderName}/{ChildResourceType}/{action}`
+- `{Company}.{ProviderName}/{resourceType}/{action}`
 
 操作文字列の `{action}` 部分には、リソースの種類に対して実行できる操作の種類を指定します。 たとえば、`{action}` には次の部分文字列が表示されます。
 
@@ -94,7 +94,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 ## <a name="management-and-data-operations-preview"></a>管理操作とデータ操作 (プレビュー)
 
-管理操作のロールベースのアクセス制御は、ロール定義の `actions` セクションと `notActions` セクションで指定されています。 Azure での管理操作の例をいくつか示します。
+管理操作のロールベースのアクセス制御は、ロール定義の `actions` プロパティと `notActions` プロパティで指定されています。 Azure での管理操作の例をいくつか示します。
 
 - ストレージ アカウントに対するアクセスを管理する
 - BLOB コンテナーの作成、更新、または削除
@@ -104,13 +104,13 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 
 以前は、ロールベースのアクセス制御はデータ操作には使用されませんでした。 データ操作のアクセス許可はリソース プロバイダーによって異なります。 管理操作に使用する同じロールベースのアクセス制御許可モデルがデータ操作に拡張されました (現在プレビュー中)。
 
-データ操作をサポートするために、新しいデータ セクションがロール定義構造体に追加されました。 データ操作は `dataActions` セクションおよび `notDataActions` セクションで指定されます。 これらのデータ セクションを追加することによって、管理とデータの分離が維持されます。 このことによって、ワイルドカード (`*`) を含む現在のロール割り当てが突然データにアクセスする動作が防止されます。 `dataActions` および `notDataActions` で指定できるデータ操作の一部を次に示します。
+データ操作をサポートするために、新しいデータ プロパティがロール定義構造体に追加されました。 データ操作は `dataActions` プロパティおよび `notDataActions` プロパティで指定されます。 これらのデータ プロパティを追加することによって、管理とデータの分離が維持されます。 このことによって、ワイルドカード (`*`) を含む現在のロール割り当てが突然データにアクセスする動作が防止されます。 `dataActions` および `notDataActions` で指定できるデータ操作の一部を次に示します。
 
 - コンテナーの BLOB の一覧の読み取り
 - コンテナーのストレージ BLOB の書き込み
 - キュー内のメッセージの削除
 
-以下は、[ストレージ BLOB データ閲覧者 (プレビュー)](built-in-roles.md#storage-blob-data-reader-preview) ロール定義で、`actions` セクションと `dataActions` セクション両方の操作が含まれています。 このロールでは、BLOB コンテナーおよび基になる BLOB データを読み取ることができます。
+以下は、[ストレージ BLOB データ閲覧者 (プレビュー)](built-in-roles.md#storage-blob-data-reader-preview) ロール定義で、`actions` プロパティと `dataActions` プロパティ両方の操作が含まれています。 このロールでは、BLOB コンテナーおよび基になる BLOB データを読み取ることができます。
 
 ```json
 [
@@ -142,7 +142,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 ]
 ```
 
-`dataActions` セクションと `notDataActions` セクションに追加できるのはデータ操作のみです。 リソース プロバイダーはどの操作がデータ操作かを指定します。そのためには `isDataAction` プロパティを `true` に設定します。 `isDataAction` が `true` である操作の一覧を確認するには、「[リソース プロバイダー操作](resource-provider-operations.md)」を参照してください。 データ操作のないロールは、ロール定義内に `dataActions` セクションと `notDataActions` セクションを含める必要はありません。
+`dataActions` プロパティと `notDataActions` プロパティに追加できるのはデータ操作のみです。 リソース プロバイダーはどの操作がデータ操作かを指定します。そのためには `isDataAction` プロパティを `true` に設定します。 `isDataAction` が `true` である操作の一覧を確認するには、「[リソース プロバイダー操作](resource-provider-operations.md)」を参照してください。 データ操作のないロールは、ロール定義内に `dataActions` プロパティと `notDataActions` プロパティを含める必要はありません。
 
 すべての管理操作 API 呼び出しの許可は Azure Resource Manager によって処理されます。 データ操作 API 呼び出しの許可はリソース プロバイダーまたは Azure Resource Manager のいずれかによって処理されます。
 
@@ -190,7 +190,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 
 ## <a name="actions"></a>アクション
 
-`actions` アクセス許可は、ロールがアクセスを許可する管理操作を指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 `actions` で使用できる管理操作の例をいくつか示します。
+`actions` アクセス許可では、ロールで実行できる管理操作を指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 `actions` で使用できる管理操作の例をいくつか示します。
 
 | 操作文字列    | 説明         |
 | ------------------- | ------------------- |
@@ -210,7 +210,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 
 ## <a name="dataactions-preview"></a>dataActions (プレビュー)
 
-`dataActions` アクセス許可では、そのオブジェクト内のデータへのアクセスがロールによって付与されるデータ操作が指定されます。 たとえば、ユーザーがあるストレージ アカウントへの BLOB データの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB を読み取ることができます。 次に `dataActions` で使用できるデータ操作の例を示します。
+`dataActions` アクセス許可では、対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定します。 たとえば、ユーザーがあるストレージ アカウントへの BLOB データの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB を読み取ることができます。 次に `dataActions` で使用できるデータ操作の例を示します。
 
 | 操作文字列    | 説明         |
 | ------------------- | ------------------- |
@@ -229,11 +229,9 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 
 ## <a name="assignablescopes"></a>assignableScopes
 
-`assignableScopes` セクションでは、ロールを割り当て可能なスコープ (管理グループ (現在はプレビュー段階)、サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つの管理グループ、サブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+`assignableScopes` プロパティでは、ロールを割り当て可能なスコープ (管理グループ (現在はプレビュー段階)、サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つの管理グループ、サブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 
-組み込みロールでは `assignableScopes` がルート スコープ (`"/"`) に設定されています。 ルート スコープは、すべてのスコープでそのロールを割り当て可能であることを示します。 作成したカスタム ロールには、ルート スコープを使用できません。 試すと、承認エラーが発生します。
-
-有効な AssignableScopes の例を次に示します。
+組み込みロールでは `assignableScopes` がルート スコープ (`"/"`) に設定されています。 ルート スコープは、すべてのスコープでそのロールを割り当て可能であることを示します。 有効な AssignableScopes の例を次に示します。
 
 | シナリオ | 例 |
 |----------|---------|
@@ -242,86 +240,9 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プ�
 | ネットワーク リソース グループでのみ割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | すべてのスコープの割り当てにロールを使用できる | `"/"` |
 
-## <a name="assignablescopes-and-custom-roles"></a>assignableScopes とカスタム ロール
+カスタム ロールの `assignableScopes` について詳しくは、[カスタム ロール](custom-roles.md)に関する記事をご覧ください。
 
-カスタム ロールの `assignableScopes` セクションでは、カスタム ロールを作成、削除、変更、または表示できるユーザーも制御されます。
-
-| タスク | 操作 | 説明 |
-| --- | --- | --- |
-| カスタム ロールの作成/削除 | `Microsoft.Authorization/ roleDefinition/write` | カスタム ロールのすべての `assignableScopes` に対してこの操作が許可されているユーザーは、これらのスコープで使用するカスタム ロールを作成 (または削除) できます。 たとえば、サブスクリプション、リソース グループ、リソースの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
-| カスタム ロールの修正 | `Microsoft.Authorization/ roleDefinition/write` | カスタム ロールのすべての `assignableScopes` に対してこの操作が許可されているユーザーは、これらのスコープ内のカスタム ロールを変更できます。 たとえば、サブスクリプション、リソース グループ、リソースの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
-| カスタム ロールの表示 | `Microsoft.Authorization/ roleDefinition/read` | あるスコープでこの操作を許可されたユーザーは、そのスコープで割り当て可能なカスタム ロールを表示できます。 すべての組み込みロールでは、カスタム ロールを割り当てることができます。 |
-
-## <a name="role-definition-examples"></a>ロール定義の例
-
-次の例は、Azure CLI を使用して表示される、[閲覧者](built-in-roles.md#reader)ロール定義を示しています。
-
-```json
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you view everything, but not make any changes.",
-    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "permissions": [
-      {
-        "actions": [
-          "*/read"
-        ],
-        "additionalProperties": {},
-        "dataActions": [],
-        "notActions": [],
-        "notDataActions": []
-      }
-    ],
-    "roleName": "Reader",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
-
-次の例は、Azure PowerShell を使用して表示される、仮想マシンの監視と再起動を行うカスタム ロールを示しています。
-
-```json
-{
-  "Name":  "Virtual Machine Operator",
-  "Id":  "88888888-8888-8888-8888-888888888888",
-  "IsCustom":  true,
-  "Description":  "Can monitor and restart virtual machines.",
-  "Actions":  [
-                  "Microsoft.Storage/*/read",
-                  "Microsoft.Network/*/read",
-                  "Microsoft.Compute/*/read",
-                  "Microsoft.Compute/virtualMachines/start/action",
-                  "Microsoft.Compute/virtualMachines/restart/action",
-                  "Microsoft.Authorization/*/read",
-                  "Microsoft.Resources/subscriptions/resourceGroups/read",
-                  "Microsoft.Insights/alertRules/*",
-                  "Microsoft.Insights/diagnosticSettings/*",
-                  "Microsoft.Support/*"
-  ],
-  "NotActions":  [
-
-                 ],
-  "DataActions":  [
-
-                  ],
-  "NotDataActions":  [
-
-                     ],
-  "AssignableScopes":  [
-                           "/subscriptions/{subscriptionId1}",
-                           "/subscriptions/{subscriptionId2}",
-                           "/subscriptions/{subscriptionId3}"
-                       ]
-}
-```
-
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 * [組み込みのロール](built-in-roles.md)
 * [カスタム ロール](custom-roles.md)

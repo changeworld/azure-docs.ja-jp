@@ -2,18 +2,18 @@
 title: Azure SQL データ同期のベスト プラクティス | Microsoft Docs
 description: Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 07/03/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025349"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445162"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -85,6 +85,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 -   CHECK 制約はプロビジョニングされません。  
 -   同期元テーブルの既存のトリガーはプロビジョニングされません。  
 -   ビューとストアド プロシージャは同期先データベースに作成されません。
+-   外部キー制約の UPDATE CASCADE および ON DELETE CASCADE アクションは、同期先テーブルに再作成されません。
 
 #### <a name="recommendations"></a>Recommendations
 

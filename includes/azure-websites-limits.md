@@ -1,4 +1,4 @@
-| リソース | 無料 | Shared (プレビュー) | Basic | 標準 | Premium </th> |
+| Resource | 無料 | Shared (プレビュー) | Basic | 標準 | Premium </th> |
 | --- | --- | --- | --- | --- | --- |
 | [App Service プラン](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)あたりの [Web、モバイル、または API アプリ数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup> |
 | [App Service プラン](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)あたりの[ロジック アプリ数](https://azure.microsoft.com/services/app-service/logic/)</a><sup>1</sup> |10 |10 |10 |コアあたり 20 |コアあたり 20 |

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: b7cb8b1ca2f377964f3613ad8e0549418cb2abec
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737370"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131873"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
 
@@ -198,9 +198,20 @@ az storage account create \
   * `Standard_RAGRS`
   * `Standard_ZRS`
 
-
 ### <a name="set-default-azure-storage-account-environment-variables"></a>既定の Azure ストレージ アカウント環境変数を設定する
+
 Azure サブスクリプションでは複数のストレージ アカウントを持つことができます。 それらの 1 つを選んですべての後続のストレージ コマンドに使用するには、下記のように環境変数を設定します。
+
+まず、[az storage account keys list](/cli/azure/storage/account/keys#list) コマンドを使用してストレージ アカウント キーを表示します。
+
+```azurecli-interactive
+az storage account keys list \
+    --account-name <account_name> \
+    --resource-group <resource_group> \
+    --output table
+```
+
+キーを確認できたので、キーとアカウント名を環境変数として定義することができます。
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -223,7 +234,6 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 
 > [!NOTE]
 > この記事のこれ以降のセクションでは、すべての例は `AZURE_STORAGE_ACCOUNT` および `AZURE_STORAGE_ACCESS_KEY` 環境変数を設定済みであると仮定しています。
->
 
 ## <a name="create-and-manage-blobs"></a>BLOB を作成および管理する
 Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](/rest/api/storageservices/blob-service-concepts)」をご覧ください。

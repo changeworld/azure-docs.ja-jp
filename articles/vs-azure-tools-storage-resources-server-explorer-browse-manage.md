@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061745"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112322"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
@@ -219,7 +219,7 @@ Azure Table Storage は、大量の構造化データを格納します。 こ�
 1. クエリの作成を終えたら、ダイアログ ボックスを閉じます。 クエリの結果であるテキスト形式が WCF Data Services フィルターとしてテキスト ボックスに表示されます。
 1. クエリを実行するには、緑の三角形のアイコンをクリックします。
 
-また、フィルター テキスト ボックスに WCF Data Services フィルター文字列を直接入力することで、テーブル デザイナーに表示されるエンティティ データをフィルター処理することもできます。 この種の文字列は、SQL の WHERE 句に似ていますが、サーバーには HTTP 要求として送信されます。 フィルター文字列を作成する方法の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](https://msdn.microsoft.com/library/azure/ff683669.aspx)」を参照してください。
+また、フィルター テキスト ボックスに WCF Data Services フィルター文字列を直接入力することで、テーブル デザイナーに表示されるエンティティ データをフィルター処理することもできます。 この種の文字列は、SQL の WHERE 句に似ていますが、サーバーには HTTP 要求として送信されます。 フィルター文字列を作成する方法の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings)」を参照してください。
 
 有効なフィルター文字列の例を次の図に示します。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: a4798ca3664f0db1da51d8641b9f2e181e331eef
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e2ca2d4f4a93f6c4bbfdacb6f25185cd59586964
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222731"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>チュートリアル: Azure Active Directory と Mercell の統合
 
@@ -112,7 +112,7 @@ Mercell で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/mercell-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/mercell-tutorial/tutorial_metadataurl.png)
      
 5. **[保存]** ボタンをクリックします。
 
@@ -193,7 +193,7 @@ Mercell で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Mercell] タイルをクリックすると、Mercell アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

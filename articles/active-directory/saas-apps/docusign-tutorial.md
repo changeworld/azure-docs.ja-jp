@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 027bf154fb57e8f324757fd6b32ea6c421bbc705
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 05ec113db5fbdc0f2ea7d1f176c9be654f53a946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229514"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>チュートリアル: Azure Active Directory と DocuSign の統合
 
@@ -102,19 +102,19 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **DocuSign** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
 
 3. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
 
 4. Azure Portal の **[DocuSign 構成]** セクションで、**[DocuSign の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
     
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_docusign_configure.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_configure.png)
 
 5. 別の Web ブラウザー ウィンドウで、**DocuSign 管理者ポータル**に管理者としてログインします。
 
@@ -180,13 +180,13 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
    
     b. **[Service Provider Login URL]\(サービス プロバイダー ログイン URL\)** をコピーし、Azure Portal の **[DocuSign のドメインと URL]** セクションの **[サインオン URL]** ボックスに、`https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/` のパターンで貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_docusign_url.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_url.png)
       
     c.  **[閉じる]** をクリックします。
     
 17. Azure Portal で、**[保存]** をクリックします。
     
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_general_400.png)
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -240,7 +240,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[DocuSign]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/docusign-tutorial/tutorial_docusign_app.png) 
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -261,7 +261,7 @@ DocuSign で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [DocuSign] タイルをクリックすると、自動的に DocuSign アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: c5a55f00273ea070d824f0b3d75fc86b4ff6be11
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 791d1d7c514815962d815925f49a03ccfa1f76f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286893"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>チュートリアル: Azure Active Directory と ASC Contracts の統合
 
@@ -102,15 +102,15 @@ ASC Contracts で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **ASC Contracts** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
 
 3. **[ASC Contracts のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/asccontracts-tutorial/tutorial_asccontracts_url.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_url.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.asccontracts.com/shibboleth` の形式で URL を入力します。
 
@@ -121,11 +121,11 @@ ASC Contracts で Azure AD のシングル サインオンを構成してテス�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/asccontracts-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_general_400.png)
 
 6. **ASC Contracts** 側のシングル サインオンを構成するには、ASC Networks Inc. (ASC) のサポートに電話して (**613.599.6178**)、ダウンロードした**メタデータ XML** を提供します。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
 
@@ -181,7 +181,7 @@ ASC Networks Inc. (ASC) のサポート チーム (**613.599.6178**) と協力�
 
 2. アプリケーションの一覧で **[ASC Contracts]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/asccontracts-tutorial/tutorial_asccontracts_app.png) 
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -201,7 +201,7 @@ ASC Networks Inc. (ASC) のサポート チーム (**613.599.6178**) と協力�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [ASC Contracts] タイルをクリックすると、自動的に ASC Contracts アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [ASC Contracts] タイルをクリックすると、自動的に ASC Contracts アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

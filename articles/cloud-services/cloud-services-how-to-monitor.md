@@ -3,7 +3,7 @@ title: Azure クラウド サービスの監視 | Microsoft Docs
 description: Azure クラウド サービスの監視に関する情報やいくつかのオプションについて説明します。
 services: cloud-services
 documentationcenter: ''
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: adegeo
-ms.openlocfilehash: f3a3a1beb8540ee8ab0502379396c06ea505fb44
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: jeconnoc
+ms.openlocfilehash: 725a705f746bbf5e32fcc410ba4153ac29e3fc3d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29149908"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003855"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
@@ -58,7 +58,7 @@ ms.locfileid: "29149908"
 
 ## <a name="setup-diagnostics-extension"></a>診断拡張機能の設定
 
-まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 ストレージ アカウントが**クラシック デプロイメント モデル**を指定して作成されたことを確認します。
+まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 ストレージ アカウントが**クラシック デプロイ モデル**を指定して作成されたことを確認します。
 
 次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]** > **[アクセス キー]** を選択し、**[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
 

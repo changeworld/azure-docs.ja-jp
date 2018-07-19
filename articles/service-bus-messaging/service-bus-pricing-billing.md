@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159788"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448409"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
 
@@ -39,7 +39,10 @@ Service Bus では、キューとトピック/サブスクリプションに次�
 
 **Premium** 階層では、各顧客のワークロードが個別に実行されるように、CPU およびメモリ層でのリソースの分離が提供されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを購入できます。 1 つのワークロードまたはエンティティは、複数のメッセージング ユニットにまたがることができます。課金は 24 時間単位、すなわち日単位ですが、メッセージング ユニットの数は自由に変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。 このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。
 
-Standard 階層の基本料金は、Azure サブスクリプションごとに毎月 1 回だけ課金されることに注意してください。 これはつまり、単一の Standard 階層の Service Bus 名前空間を作成した後、追加の基本料金なしで、同じ Azure サブスクリプション下で Standard 名前空間を何個でも作成できます。
+> [!NOTE]
+> トピックとサブスクリプションは、Standard または Premium 価格レベルでのみ利用できます。Basic レベルでは、キューのみがサポートされます。
+
+Standard レベルの基本料金は、Azure サブスクリプションごとに毎月 1 回だけ課金されます。 これはつまり、単一の Standard 階層の Service Bus 名前空間を作成した後、追加の基本料金なしで、同じ Azure サブスクリプション下で Standard 名前空間を何個でも作成できます。
 
 [Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)表は、Standard 階層と Premium 階層の機能の違いをまとめたものです。
 
@@ -47,7 +50,7 @@ Standard 階層の基本料金は、Azure サブスクリプションごとに�
 
 キューおよびトピック/サブスクリプションは、メッセージ単位ではなく、"操作" 単位で課金されます。 操作とは、キューまたはトピック/サブスクリプションのサービス エンドポイントに対して行われたすべての API 呼び出しのことです。 これには、管理、送信/受信、およびセッション状態の操作が含まれます。
 
-| 操作の種類 | [説明] |
+| 操作の種類 | 説明 |
 | --- | --- |
 | 管理 |キューまたはトピック/サブスクリプションに対する作成、読み取り、更新、削除 (CRUD)。 |
 | メッセージング |キューまたはトピック/サブスクリプションでメッセージを送受信する。 |

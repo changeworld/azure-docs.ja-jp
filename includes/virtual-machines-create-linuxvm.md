@@ -51,6 +51,6 @@
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらすべての Azure CLI 1.0 仮想マシン コマンドについて詳しくは、[クラシック デプロイメント API での Azure CLI 1.0 コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関する記事をご覧ください。
 

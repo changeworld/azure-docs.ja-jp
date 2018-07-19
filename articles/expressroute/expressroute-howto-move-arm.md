@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/03/2017
+ms.date: 06/28/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 20914eec070452186295f6d87a85ea0675ebaf4c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060088"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100455"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -97,9 +97,7 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-> [!NOTE]
-> クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 Resource Manager (ARM) の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzureRmExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
-> 
+クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 しかし、Resource Manager の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzureRmExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
 
 > [!NOTE]
 > 移行が完了した後は、前のコマンドレットで表示される新しい名前を使用してリソースにアクセスします。 回線の名前は実質的に変更されます。

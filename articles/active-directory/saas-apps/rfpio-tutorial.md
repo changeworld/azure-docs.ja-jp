@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ea5729e02c9f9641b7ed5d136ffea5fc94d1fe03
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59b05814be0be9042e7507cc8d928b5f5feb80ad
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211654"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
 
@@ -102,19 +102,19 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **RFPIO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_samlbase.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
 3. **[RFPIO のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_url.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_url.png)
 
     a. **[識別子]** テキストボックスに、URL として「`https://www.rfpio.com`」と入力します。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_url1.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_url1.png)
 
     b. **[詳細な URL 設定の表示]** をクリックします。
 
@@ -122,39 +122,39 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。 
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_url2.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_url2.png)
 
     **[サインオン URL]** テキストボックスに、URL として「`https://www.app.rfpio.com`」と入力します。
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_certificate.png) 
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_general_400.png)
 
 7. 別の Web ブラウザー ウィンドウで、**RFPIO** Web サイトに管理者としてログインします。
 
 8. 左下隅にあるドロップダウンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app1.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
 
 9. **[組織設定]** をクリックします。 
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app2.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
 
 10. **[FEATURES & INTEGRATION (機能と統合)]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app4.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app4.png)
 
 11. **[SAML SSO 構成]** で **[編集]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app3.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app3.png)
 
 12. このセクションでは、次のアクション実行します。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app5.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app5.png)
     
     a. **ダウンロードしたメタデータ XML** の内容をコピーし、**[ID 構成]** フィールドに貼り付けます。
 
@@ -213,23 +213,23 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
 2. 左下隅にあるドロップダウンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app1.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
 
 3. **[組織設定]** をクリックします。 
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app2.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
 
 4. **[チーム メンバー]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app6.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app6.png)
 
 5. **[メンバーの追加]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app7.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app7.png)
 
 6. **[新しいメンバーの追加]** セクションで、 次の操作を実行します。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/app8.png)
+    ![Configure single sign-on](./media/rfpio-tutorial/app8.png)
 
     a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
 
@@ -254,7 +254,7 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[RFPIO]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/rfpio-tutorial/tutorial_rfpio_app.png) 
+    ![Configure single sign-on](./media/rfpio-tutorial/tutorial_rfpio_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -275,7 +275,7 @@ RFPIO の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [RFPIO] タイルをクリックすると、自動的に RFPIO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

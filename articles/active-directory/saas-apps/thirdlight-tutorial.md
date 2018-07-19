@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 42be83af52298e1fc6b01793b7692a3fcd7d6250
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eb458f7ce55ace0375b9bf7e4a79391ebcdb5e4a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218261"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル: Azure Active Directory と ThirdLight の統合
 
@@ -102,15 +102,15 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **ThirdLight** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_thirdlight_samlbase.png)
+    ![Configure single sign-on](./media/thirdlight-tutorial/tutorial_thirdlight_samlbase.png)
 
 3. **[ThirdLight のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_thirdlight_url.png)
+    ![Configure single sign-on](./media/thirdlight-tutorial/tutorial_thirdlight_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.thirdlight.com/` のパターンを使用して URL を入力します。
 
@@ -121,11 +121,11 @@ ThirdLight で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_thirdlight_certificate.png) 
+    ![Configure single sign-on](./media/thirdlight-tutorial/tutorial_thirdlight_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/thirdlight-tutorial/tutorial_general_400.png)
 
 6. 別の Web ブラウザーのウィンドウで、ThirdLight 企業サイトに管理者としてログインします。
 
@@ -215,7 +215,7 @@ ThirdLight の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[ThirdLight]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/thirdlight-tutorial/tutorial_thirdlight_app.png) 
+    ![Configure single sign-on](./media/thirdlight-tutorial/tutorial_thirdlight_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -236,7 +236,7 @@ ThirdLight の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ThirdLight] タイルをクリックすると、自動的に ThirdLight アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

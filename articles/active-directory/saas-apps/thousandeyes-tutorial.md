@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0bbab96988c801f4078fb3a543cbcc20b781a6ec
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b6dcc2e057ab0877646bb5ace962cfd00cfb8839
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218379"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル: Azure Active Directory と ThousandEyes の統合
 
@@ -102,29 +102,29 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **ThousandEyes** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
 
 3. **[ThousandEyes のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_thousandeyes_url.png)
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_url.png)
 
     **[サインオン URL]** ボックスに、「`https://app.thousandeyes.com/login/sso`」と入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_thousandeyes_certificate.png)
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_general_400.png)
 
 6. **[ThousandEyes 構成]** セクションで、**[ThousandEyes の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **ThousandEyes** 企業サイトにサインオンします。
 
@@ -237,7 +237,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
 2. アプリケーションの一覧で **[ThousandEyes]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
+    ![Configure single sign-on](./media/thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -259,7 +259,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
 アクセス パネルで ThousandEyes のタイルをクリックすると、自動的に ThousandEyes アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

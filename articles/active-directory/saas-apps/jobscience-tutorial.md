@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 12dbf4483e3f049948df6b825b0e0937a79ad826
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0d717c9a70d078300b59a4e3fd6df08e971e8075
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211898"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル: Azure Active Directory と Jobscience の統合
 
@@ -102,15 +102,15 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Jobscience** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
 3. **[Jobscience のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_jobscience_url.png)
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
     **[サインオン URL]** ボックスに、`http://<company name>.my.salesforce.com` のパターンを使用して URL を入力します。
     
@@ -119,15 +119,15 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_general_400.png)
 
 6. **[Jobscience 構成]** セクションで、**[Jobscience の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 7. Jobscience の企業サイトに管理者としてログインします。
 
@@ -287,7 +287,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
 2. アプリケーションの一覧で **[Jobscience]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
+    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -308,7 +308,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Jobscience] タイルをクリックすると、自動的に Jobscience アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

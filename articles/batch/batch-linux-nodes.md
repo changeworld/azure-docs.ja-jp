@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3faa9e811216cc930354b76903519a66f3d3587
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 713583a6a184a583145c610b4e014f56941efa4c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128813"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113513"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -48,7 +48,7 @@ Batch サービスでは、[仮想マシン スケール セット](../virtual-m
 | 発行元 |Canonical |
 | プラン |UbuntuServer |
 | SKU |14.04.4-LTS |
-| バージョン |latest |
+| Version |latest |
 
 > [!TIP]
 > これらのプロパティと、Marketplace イメージを一覧表示する方法の詳細については、「[CLI または PowerShell を使用した Azure での Linux 仮想マシン イメージへの移動と選択](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 現時点では、すべての Marketplace イメージに Batch との互換性があるわけではありません。 詳細については、「 [ノード エージェント SKU](#node-agent-sku)」を参照してください。
@@ -325,10 +325,7 @@ Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジ�
 [アプリケーション パッケージ](batch-application-packages.md)を使ってアプリケーションを Batch ノードにデプロイする場合は、アプリケーション パッケージで使われる Azure Storage リソースにも課金されます。 一般に、Azure Storage のコストは最小限です。 
 
 ## <a name="next-steps"></a>次の手順
-### <a name="batch-python-tutorial"></a>Batch Python のチュートリアル
-Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「 [Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。 ヘルパー関数 `get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
 
-### <a name="batch-python-code-samples"></a>Batch Python コード サンプル
 GitHub の [azure-batch-samples][github_samples] リポジトリにある [Python コード サンプル][github_samples_py]には、プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すスクリプトが含まれています。 Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx

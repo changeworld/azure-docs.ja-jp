@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c71fa918e72ac08c653bc319e3d84e0cc4e0508
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 25847d93c9c22ee15970f164802149ad66e77203
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217590"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>チュートリアル: Azure Active Directory と Bpm’online の統合
 
@@ -125,7 +125,7 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
 5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/bpmonline-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
 6. **[保存]** ボタンをクリックします。
 
@@ -204,7 +204,7 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Bpm’online] タイルをクリックすると、自動的に Bpm’online アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

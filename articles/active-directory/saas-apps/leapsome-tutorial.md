@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b23a93db7912aa25b420157241c41533f4f48a27
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b2c23745a5e624bcf668dfbfe5d085392d7a583
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939934"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>チュートリアル: Azure Active Directory と Leapsome の統合
 
@@ -122,7 +122,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 
 5. Leapsome アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットは、例を示しています。
     
-    ![[Configure Single Sign-On]](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -138,9 +138,9 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/leapsome-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/leapsome-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -255,7 +255,7 @@ Leapsome で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Leapsome] タイルをクリックすると、自動的に Leapsome アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

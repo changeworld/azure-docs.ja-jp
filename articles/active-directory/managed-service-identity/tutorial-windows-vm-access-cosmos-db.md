@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: ed1aff411ae5446688fe717ddc4570ea756c4c1e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: cee3a1425d7c3ad8f680394831175165203b4839
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904273"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005647"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>チュートリアル: Windows VM MSI を使用して Azure Cosmos DB にアクセスする
 
@@ -56,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. 仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
 6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ページで、既定値のまま **[OK]** をクリックします。
 
-   ![イメージ テキスト](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする 
 
@@ -66,7 +66,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 2. 左側のナビゲーション バーで、**[構成]** をクリックします。 
 3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
 4. **[保存]** をクリックして構成を保存します。  
-   ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 

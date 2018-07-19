@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061646"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110614"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -66,7 +66,8 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。 
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
 
-[Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](sql-database-auditing.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
+
+  [Azure Security Center](https://azure.microsoft.com/services/security-center/): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 [監査](sql-database-auditing.md)や [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database ではどのようなユーザー認証方法が提供されますか?
 SQL Database では [2 種類の認証方法](sql-database-control-access.md#authentication)が提供されています。 
@@ -254,7 +255,7 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>SQL Database と SQL Server の間でデータを同期するにはどうすればよいですか?
 これを行うには、いくつかの方法があります。 
 - **[データ同期](sql-database-sync-data.md)** – この機能を使うと、複数のオンプレミス SQL Server データベースと SQL Database の間でデータを双方向に同期することができます。 オンプレミスの SQL Server データベースと同期するには、ローカル コンピューターに同期エージェントをインストールして構成し、発信 TCP ポート 1433 を開く必要があります。
-- **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法について詳しくは、「[トランザクション レプリケーションの使用](sql-database-cloud-migrate.md#method-2-use-transactional-replication)」をご覧ください
+- **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法の詳細については、「[トランザクション レプリケーションの使用](sql-database-cloud-migrate.md#method-2-use-transactional-replication)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 [SQL Database](sql-database-technical-overview.md) についての詳細情報。

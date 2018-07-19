@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: aa7a97a7233e84e19671f77974495eedbe083177
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7188be263ccf73c6bb7e503c1ef7a28b7b721758
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219824"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>チュートリアル: Azure Active Directory と Peoplecart の統合
 
@@ -99,11 +99,11 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Peoplecart** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/peoplecart-tutorial/tutorial_peoplecart_samlbase.png)
+    ![Configure single sign-on](./media/peoplecart-tutorial/tutorial_peoplecart_samlbase.png)
 
 3. **[Peoplecart のドメインと URL]** セクションで、次の手順を実行します。
 
@@ -204,7 +204,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Peoplecart のタイルをクリックすると、Peoplecart アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

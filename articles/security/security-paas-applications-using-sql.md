@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 054a3987cfd67fbd558fe9d4b482aac3d9b467fd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794873"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114679"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
 

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/07/2017
+ms.date: 06/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 897671ef592ac691402a4e452f7a0baa04aa228a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294068"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129059"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -126,35 +126,60 @@ Web ページのコード内にインストルメンテーション キーがあ
 データをデータ センター間で移動するときは、すべてのデータが暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
-はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。 
+はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
 
-## <a name="personally-identifiable-information"></a>個人を特定できる情報
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>個人を特定できる情報 (PII) は Application Insights に送信されますか。
-はい、できます。 
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>TLS 1.2 を使用して Application Insight にデータを送信するにはどうすればよいですか。
 
-一般的なガイダンス:
+Application Insight エンドポイントへのデータの転送時のセキュリティを保証するため、少なくとも Transport Layer Security (TLS) 1.2 を使用するようにアプリケーションを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。さらに、業界はこれらの以前のプロトコルのサポートを中止する方向へ急速に動いています。 
 
-* ほとんどの標準テレメトリ (つまり、コードを書かなくても送信されるテレメトリ) には、明示的な PII は含まれません。 ただし、イベントのコレクションから推論することによって、個人を特定できる場合があります。
-* 例外とトレースのメッセージには PII が含まれている可能性があります。
-* カスタム テレメトリ (つまり、API またはログ トレースを使用してコードに記述する TrackEvent などの呼び出し) には、自分で選んだすべてのデータを含めることができます。
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、[2018 年 6 月 30 日を期限として](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)、TLS/SSL の以前のバージョンを無効にし、より安全なプロトコルにアップグレードすることを求めています。 Azure がレガシー サポートを廃止した場合、アプリケーション/クライアントが TLS 1.2 以上で通信できないと Application Insight にデータを送信できなくなります。 アプリケーションの TLS のサポートをテストおよび検証する方法は、オペレーティング システム/プラットフォームのほか、アプリケーションで使用する言語/フレームワークによって異なります。
 
-収集されるデータに関する詳細な説明については、このドキュメントの末尾の表をご覧ください。
+アプリケーションで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。 アプリケーションのコードを徹底的に監査して、特定の TLS/SSL バージョンのハードコーディングを確認することをお勧めします。
 
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>私は PII に関する法令を遵守する責任を負いますか。
-はい。 データの収集と使用に関して法令および Microsoft Online Services の条項に従っていることを確認するのはお客様の責任です。
+### <a name="platformlanguage-specific-guidance"></a>プラットフォーム/言語に固有のガイダンス
 
-お客様は、アプリケーションが収集するデータと、データの使用方法について、顧客に適切に通知する必要があります。
+|プラットフォーム/言語 | サポート | 詳細情報 |
+| --- | --- | --- |
+| Azure App Service  | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。  |
+| Azure Function App | サポートされています。構成が必要な場合があります。 | サポートは 2018 年 4 月に発表されました。 [構成の詳細](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)のお知らせを参照してください。 |
+|.NET | サポートされています。構成はバージョンによって異なります。 | .NET 4.7 およびそれ以前のバージョンの詳細な構成情報については、[これらの手順](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)を参照してください。  |
+|Status Monitor | サポートされています。構成が必要です | Status Monitor は、TLS 1.2 をサポートするために [OS 構成](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) + [.NET 構成](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)に依存します。
+|Node.js |  サポートされています。v10.5.0 では構成が必要な場合があります。 | アプリケーションに固有の構成については、[公式の Node.js TLS/SSL ドキュメント](https://nodejs.org/api/tls.html)を使用してください。 |
+|Java | サポートされています。JDK の TLS 1.2 のサポートは、[JDK 6 更新プログラム 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) および [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) で追加されました。 | JDK 8 では、[既定で TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default) が使用されます。  |
+|Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows Server 2008 SP2 | TLS 1.2 のサポートには、更新プログラムが必要です。 | Windows Server 2008 SP2 に [TLS 1.2 のサポートを追加する更新プログラム](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)に関するページを参照してください。 |
+|Windows Vista | サポートされていません。 | 該当なし
+
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Linux ディストリビューションで実行されている OpenSSL のバージョンを確認する
+
+インストールされている OpenSSL のバージョンを確認するには、ターミナルを開き、次のコマンドを実行します。
+
+```terminal
+openssl version -a
+```
+
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Linux 上でテスト TLS 1.2 トランザクションを実行する
+
+Linux システムが TLS 1.2 で通信できるかどうかを確認する基本的な予備テストを実行するには、 ターミナルを開き、次のコマンドを実行します。
+
+```terminal
+openssl s_client -connect bing.com:443 -tls1_2
+```
+
+## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
+
+この件については、[Application Insights の個人データに関する記事](app-insights-customer-data.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。
 
 ただし、アプリケーションでそのような機能を実装することはできます。 すべての SDK には、テレメトリの収集を無効にする API 設定が含まれています。 
 
-#### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>アプリケーションが意図せずに機密情報を収集しています。 このデータの収集を取り消して Application Insights にデータが保持されないようにすることはできますか。
-Application Insights がデータをフィルター処理したり、削除したりすることはありません。 データを適切に管理して、そのようなデータが Application Insights に送信されないように注意してください。
-
 ## <a name="data-sent-by-application-insights"></a>Application Insights によって送信されるデータ
-SDK はプラットフォームごとに異なり、インストールできるコンポーネントも複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
+SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 | 操作 | 収集されるデータのクラス (次の表を参照) |

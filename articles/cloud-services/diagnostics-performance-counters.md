@@ -3,7 +3,7 @@ title: Azure Cloud Services でパフォーマンス カウンターを収集す
 description: Azure 診断および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
-ms.author: adegeo
-ms.openlocfilehash: 3e0af48c172fa912f0ac9e05b7b761dd7eaad795
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29134049"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001465"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -82,7 +82,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 パフォーマンス カウンターは、Azure 診断または Application Insights のクラウド サービスに追加できます。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 
 Cloud Services 用の Azure Application Insights では、収集するパフォーマンス カウンターを指定できます。 [プロジェクトに Application Insights を追加する](../application-insights/app-insights-cloudservices.md#sdk)と、**ApplicationInsights.config** という名前の構成ファイルが Visual Studio プロジェクトに追加されます。 この構成ファイルでは、Application Insights で収集して Azure に送信する情報の種類を定義します。
 
@@ -240,7 +240,7 @@ counterServiceUsed.Increment();
 アプリケーションでカスタム カウンターが使用されているため、カウンターを追跡するように Azure 診断または Application Insights を構成する必要があります。
 
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 
 既に説明したとおり、Application Insights のパフォーマンス カウンターは **ApplicationInsights.config** ファイルで定義されています。 **ApplicationInsights.config** を開き、**ApplicationInsights** > **TelemetryModules** > **Add** > **Counters** 要素を見つけます。 `<Add>` 子要素を作成し、`PerformanceCounter` 属性を、コードで作成したパフォーマンス カウンターのカテゴリと名前に設定します。 `ReportAs` 属性を、ポータルに表示するわかりやすい名前に設定します。
 

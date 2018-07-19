@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5cb3ccbc949f8250101fab6cb7899b859149fdfd
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287750"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341094"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -81,6 +81,7 @@ module.exports = function (context, input) {
 * **CustomStatus**: JSON 形式でのカスタム オーケストレーションの状態。 
 * **Output**: JSON 値として関数の出力 (関数が完了している場合)。 オーケストレーター関数が失敗した場合、このプロパティには、エラーの詳細が含まれます。 オーケストレーター関数が終了した場合、このプロパティには、提供されている終了の理由が含まれます (存在する場合)。
 * **RuntimeStatus**: 次のいずれかの値を指定できます。
+    * **Pending**: インスタンスはスケジュールされていますが、まだ実行が開始されていません。
     * **Running**: インスタンスの実行が開始されました。
     * **Completed**: インスタンスが正常に完了しました。
     * **ContinuedAsNew**: インスタンスが新しい履歴で再起動されました。 これは遷移状態です。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: cf23620eb3a3b0a9cb8e5877f517281a9c21809c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e465518f5526dcf581afab77e30d0af33aaae88e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323437"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>チュートリアル: Azure Active Directory と Certain Admin SSO の統合
 
@@ -199,7 +199,7 @@ Certain Admin SSO で Azure AD のシングル サインオンを構成および
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Certain Admin SSO のタイルをクリックすると、自動的に Certain Admin SSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

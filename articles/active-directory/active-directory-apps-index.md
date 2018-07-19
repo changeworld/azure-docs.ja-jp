@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 76430fa5652e98cba86c41433f376e27dbb1639a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293094"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446862"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -45,7 +45,7 @@ ms.locfileid: "35293094"
 | パスワードベースのシングル サインオン |[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 | アプリケーション プロキシ |[アプリケーション プロキシのトラブルシューティング](manage-apps/application-proxy-troubleshoot.md) |
 | オンプレミス AD と Azure AD 間のシングル サインオン |[パスワード ハッシュ同期のトラブルシューティング](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
-| 動的グループ メンバーシップ |[グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
+| 動的グループ メンバーシップ |[グループの動的メンバーシップのトラブルシューティング](users-groups-roles/groups-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>シングル サインオン (SSO)
 ### <a name="federated-single-sign-on-sign-into-many-apps-using-one-identity"></a>フェデレーション シングル サインオン: 1 つの ID を使用した多数のアプリへのサインイン
@@ -54,8 +54,8 @@ ms.locfileid: "35293094"
 | 記事の紹介 |  |
 |:---:| --- |
 | フェデレーションとその他の種類のサインオンの概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md) |
-| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](active-directory-saas-tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
-| [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) などのアプリ用にシングル サインオンを構成する方法に関する 150 以上のアプリ チュートリアル |[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md) |
+| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](saas-apps/tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
+| [Salesforce](saas-apps/salesforce-tutorial.md)、[ServiceNow](saas-apps/servicenow-tutorial.md)、[Google Apps](saas-apps/google-apps-tutorial.md)、[Workday](saas-apps/workday-tutorial.md) などのアプリ用にシングル サインオンを構成する方法に関する 150 以上のアプリ チュートリアル |[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](saas-apps/tutorial-list.md) |
 | シングル サインオンの構成を手動で設定してカスタマイズする方法 |[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリへのフェデレーション シングル サインオンを構成する方法](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md) |
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
 | アプリの証明書の有効期限を構成する方法と証明書を更新する方法 |[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
@@ -112,23 +112,18 @@ Azure AD Connect は、 [Azure Active Directory のすべてのエディショ�
 | 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access-azure-portal.md)<br /><br />[条件付きアクセスの使用](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 |[Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイスの手順](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Windows 7 デバイスの手順](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| 2 段階認証のために Microsoft Authenticator アプリを使用する方法 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| 2 段階認証のために Microsoft Authenticator アプリを使用する方法 |[Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 条件付きアクセスは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ## <a name="apps--azure-ad"></a>アプリと Azure AD
-### <a name="cloud-app-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>Cloud App Discovery: 組織で使用されている SaaS アプリを検索
-Cloud App Discovery を使用すると、IT 部門は、組織全体でどの SaaS アプリが使用されているかを知ることができます。 アプリの使用状況や人気を測定できるため、IT はどのアプリを IT が管理して Azure AD と統合すれば最大の効果が得られるかを判断できます。
+### <a name="cloud-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>Cloud Discovery: 組織で使用されている SaaS アプリを検索
+Cloud Discovery は、Microsoft Cloud App Security のクラウド アプリ カタログに対するトラフィック ログを分析します。クラウド アプリ カタログは、16,000 を超えるクラウド アプリからなり、これらのクラウド アプリは、70 を超えるリスク要因に基づいてランクとスコアが付けられています。このトラフィック ログの分析により、クラウドの利用状況、シャドウ IT、シャドウ IT が組織に与えるリスクを継続的に確認することができます。
 
 | 記事の紹介 |  |
 |:---:| --- |
-| 機能の概要 |[承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](manage-apps/cloud-app-discovery.md) |
-| 機能の詳細と、プライバシーに関する質問の回答 |[Cloud App Discovery のセキュリティとプライバシーの考慮事項](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
-| よく寄せられる質問 |[FAQ for Cloud App Discovery (Cloud App Discovery に関する FAQ)](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
-| Cloud App Discovery をデプロイするためのチュートリアル |[グループ ポリシーのデプロイメント ガイド](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[System Center デプロイメント ガイド](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[Cloud App Discovery のプロキシ サービス用レジストリ設定](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |
-| Cloud App Discovery エージェントの更新プログラムの変更ログ |[Cloud App Discovery - Agent Changelog (Cloud App Discovery - エージェントの変更ログ)](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx) |
+| 機能の概要 |[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery) |
 
-Cloud App Discovery は、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ### <a name="automatically-provision-and-deprovision-user-accounts-in-saas-apps"></a>SaaS アプリのユーザー アカウントの自動プロビジョニングとプロビジョニング解除
 Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、ユーザー ID の作成、保守、削除を自動化します。 Azure AD と SaaS アプリ間で既存の ID を照合および同期します。また、ユーザーが組織を離れるときに自動的にアカウントを無効にすることでアクセスを制御します。
@@ -160,10 +155,10 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 
 | 記事の紹介 |  |
 |:---:| --- |
-| Azure AD アクセス管理機能の概要 |[アプリへのアクセスの管理](manage-apps/what-is-access-management.md)<br /><br />[Azure AD でのアクセス管理のしくみ](active-directory-manage-groups.md)<br /><br />[SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md) |
-| アプリとグループのセルフサービス管理の有効化 |[セルフサービス アプリケーション管理](active-directory-self-service-application-access.md)<br /><br />[アプリケーション アクセス管理のセルフサービス化に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md) |
-| Azure AD でグループを設定するための手順 |[セキュリティ グループを作成する方法](active-directory-groups-create-azure-portal.md)<br /><br />[グループの所有者を指定する方法](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md) |
-| 動的グループを使用した、属性ベースのメンバーシップ規則によるグループのメンバーシップの自動設定 |[動的メンバーシップ: 高度な規則](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
+| Azure AD アクセス管理機能の概要 |[アプリへのアクセスの管理](manage-apps/what-is-access-management.md)<br /><br />[Azure AD でのアクセス管理のしくみ](fundamentals/active-directory-manage-groups.md)<br /><br />[SaaS アプリケーションへのアクセスをグループで管理する](users-groups-roles/groups-saasapps.md) |
+| アプリとグループのセルフサービス管理の有効化 |[セルフサービス アプリケーション管理](active-directory-self-service-application-access.md)<br /><br />[アプリケーション アクセス管理のセルフサービス化に必要な Azure Active Directory の設定](users-groups-roles/groups-self-service-management.md) |
+| Azure AD でグループを設定するための手順 |[セキュリティ グループを作成する方法](fundamentals/active-directory-groups-create-azure-portal.md)<br /><br />[グループの所有者を指定する方法](fundamentals/active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md) |
+| 動的グループを使用した、属性ベースのメンバーシップ規則によるグループのメンバーシップの自動設定 |[動的メンバーシップ: 高度な規則](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[グループの動的メンバーシップのトラブルシューティング](users-groups-roles/groups-troubleshooting.md) |
 
 グループ ベースのアプリケーション アクセス管理は、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。 セルフサービス グループ管理、セルフサービス アプリケーション管理、および動的グループは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
@@ -205,7 +200,7 @@ Azure Active Directory には、組織のアプリケーションへのアクセ
 Azure Active Directory の各エディションに付属のレポートを確認するには、 [ここをクリック](active-directory-view-access-usage-reports.md)してください。
 
 ## <a name="see-also"></a>関連項目
-[Azure Active Directory とは](active-directory-whatis.md)
+[Azure Active Directory とは](fundamentals/active-directory-whatis.md)
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)
 

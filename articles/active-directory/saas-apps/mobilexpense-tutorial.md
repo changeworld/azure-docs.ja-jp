@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 57c811f0f29c885ef4bbe78c46ddc6b10b0f71f3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 22352261e7bf2796e1c258cd86a9e11474239926
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212531"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル: Azure Active Directory と Mobile Xpense の統合
 
@@ -207,7 +207,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Mobile Xpense] タイルをクリックすると、Mobile Xpense アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

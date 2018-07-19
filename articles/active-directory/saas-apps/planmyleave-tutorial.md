@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 3c33c545e2b630ef501ebd81f4bd29b16cf77759
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c064223e06768dc40892774f00b0588b7ec32fdc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223870"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>チュートリアル: Azure Active Directory と PlanMyLeave の統合
 
@@ -229,7 +229,7 @@ PlanMyLeave で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [PlanMyLeave] タイルをクリックすると、自動的に PlanMyLeave アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

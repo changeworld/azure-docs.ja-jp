@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 5aab890340fcdd87e1b3788d8bcca903c43da1da
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235748"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036804"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
 
@@ -229,6 +229,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
     ```Azlog.exe authorize subscriptionId``` 例:
 
 ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+
 4.  次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。
     - C:\Users\azlog\AzureResourceManagerJson
     - C:\Users\azlog\AzureResourceManagerJsonLD

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu1
 ms.component: B2C
-ms.openlocfilehash: 63bf3725eddd14d665e51427a65a339116ceb09b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: d306d27f448ab9dd95e891b81f27b69e11f05495
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710085"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442068"
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: アプリケーションの種類
 Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。 また、 [アプリケーションの構築を始める](active-directory-b2c-overview.md)前にシナリオの概要を理解することもできます。
@@ -38,8 +38,7 @@ Azure AD B2C に送信される各要求は、 **ポリシー**を指定しま�
 5. リソース サーバーは、セキュリティ トークンを検証し、アクセスを許可できることを確認します。
 6. アプリは、セキュリティ トークンを定期的に更新します。
 
-<!-- TODO: Need a page for libraries to link to -->
-これらの手順は、構築しているアプリの種類によりわずかに異なることがあります。
+<!-- TODO: Need a page for libraries to link to --> これらの手順は、構築しているアプリの種類によりわずかに異なることがあります。
 
 ## <a name="web-apps"></a>Web Apps
 サーバーでホストされ、ブラウザーを通じてアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node.js など) に対して、Azure AD B2C は、すべてのユーザー エクスペリエンスで [OpenID Connect](active-directory-b2c-reference-protocols.md) をサポートします。 これには、サインイン、サインアップ、およびプロファイル管理が含まれます。 Azure AD B2C の OpenID Connect の実装では、Web アプリは、これらのユーザーエクスペリエンスを Azure AD に認証要求を発行することで開始します。 要求の結果は `id_token`です。 このセキュリティ トークンは、ユーザーの ID を表します。 また、要求の形式でユーザーに関する情報も提供します。

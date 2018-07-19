@@ -9,13 +9,13 @@ ms.date: 04/03/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 6572adb0d8d629910492603a17988b89acce2f17
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34852060"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755752"
 ---
-| リソース | 既定の制限 |
+| Resource | 既定の制限 |
 | --- | --- |
 | サブスクリプションあたり/リージョンあたりのストレージ アカウント数 | 200<sup>1</sup> |
 | ストレージ アカウントの最大容量 | 500 TiB<sup>2</sup> |

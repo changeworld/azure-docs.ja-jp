@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b1bc18307227a728e2bc8fd95e30fdc1cbdb8c59
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0c5d045cb949f5393bb2d9da54715b2b84229c36
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "24994498"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036290"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する (クラシック)
 > [!div class="op_single_selector"]
@@ -195,3 +195,4 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 OperationDescription        OperationId                      OperationStatus                                                
 --------------------        -----------                      ---------------                                           
 Set-AzureVNetConfig         e0ee6e66-9167-cfa7-a746-7casb9   Succeeded
+```

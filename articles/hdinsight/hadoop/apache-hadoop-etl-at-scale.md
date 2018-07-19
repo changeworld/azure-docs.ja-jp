@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402065"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115604"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -85,7 +85,7 @@ ADLS は、Azure Event Hub または Apache Storm を使用したイベントの
 
 * Azure ExpressRoute。Azure ExpressRoute を使用すると、Azure データセンターとオンプレミスのインフラストラクチャ間のプライベート接続を作成できます。 これらの接続により、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
 
-* データの "オフライン" アップロード。 [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../../data-factory/v1/data-factory-azure-datalake-connector.md) または [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) ツールを使用して、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
+* データの "オフライン" アップロード。 [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) または [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) ツールを使用して、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 

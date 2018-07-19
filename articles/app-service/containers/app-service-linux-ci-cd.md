@@ -4,8 +4,8 @@ description: Web App for Containers で Docker コンテナー レジストリ�
 keywords: Azure App Service, Linux, Docker, acr, oss
 services: app-service
 documentationcenter: ''
-author: ahmedelnably
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
-ms.author: aelnably;msangapu
-ms.openlocfilehash: ac35dbd041de50ab8aae1a0fb4c00fe3917a7297
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/29/2018
+ms.author: msangapu
+ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168328"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130967"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -54,7 +54,8 @@ Docker Hub の継続的なデプロイを構成するアプリの名前を選択
 az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
-webhook URL の場合は、エンドポイント `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook` が必要です。
+Webhook URL を書き留めておきます。 これは、次のセクションで必要になります。
+`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`
 
 `publishingusername` および `publishingpwd` を取得するには、Azure Portal を使用して Web アプリの発行プロファイルをダウンロードします。
 
@@ -62,29 +63,10 @@ webhook URL の場合は、エンドポイント `https://<publishingusername>:<
 
 ## <a name="add-a-webhook"></a>webhook を追加する
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+Webhook を追加するには、次のガイドの手順に従います。
 
-1. レジストリ ポータル ページで、**[Webhook]** を選択します。
-2. 新しい webhook を作成するには、**[追加]** を選択します。 
-3. **[Create webhook] (webhook の作成)** ウィンドウで、webhook に名前を付けます。 webhook URI には、前のセクションで取得された URL を指定します。
-
-スコープがコンテナー イメージを含むリポジトリとして定義されていることを確認してください。
-
-![webhook のスクリーンショット](./media/app-service-webapp-service-linux-ci-cd/step3ACRWebhook-1.png)
-
-イメージを更新すると、Web アプリが新しいイメージで自動的に更新されます。
-
-### <a name="docker-hub"></a>Docker Hub
-
-[Docker Hub] ページで、**[Webhook]**、**[CREATE A WEBHOOK] (webhook の作成)** の順に選択します。
-
-![webhook 1 の追加のスクリーンショット](./media/app-service-webapp-service-linux-ci-cd/step3-1.png)
-
-webhook URL には、前に取得した URL を指定します。
-
-![webhook 2 の追加のスクリーンショット](./media/app-service-webapp-service-linux-ci-cd/step3-2.png)
-
-イメージを更新すると、Web アプリが新しいイメージで自動的に更新されます。
+- Webhook URL を使用する [Azure Container Registry](../../container-registry/container-registry-webhook.md)
+- [Docker Hub 用 Webhook](https://docs.docker.com/docker-hub/webhooks/)
 
 ## <a name="next-steps"></a>次の手順
 

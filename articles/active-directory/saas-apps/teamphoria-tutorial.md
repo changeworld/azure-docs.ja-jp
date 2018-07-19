@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ff053b88a718c152d31b593a7759b034347f3ef
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293671"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル: Azure Active Directory と Teamphoria の統合
 
@@ -101,15 +101,15 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
 1. Azure portal の **Teamphoria** アプリケーション統合ページで、**[シングルサインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
 3. **[Teamphoria のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
 
     **[サインオン URL]** ボックスに、`https://<sub-domain>.teamphoria.com/login` という形式で URL を入力します。   
 
@@ -118,29 +118,29 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書を保存します。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_general_400.png)
 
 6. **[Teamphoria Configuration (Teamphoria 構成)]** セクションで、**[Configure Teamphoria (Teamphoria を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
 7. **Teamphoria** 側でシングル サインオンを構成するには、Teamphoria アプリケーションに管理者としてログインします。
 
 8. 左のツールバーの [Configure] タブの **[ADMIN SETTINGS]** オプションに移動し、**[SINGLE SIGN-ON]** をクリックして SSO 構成ウィンドウを開きます。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 9. 右上隅の **[ADD NEW IDENTITY PROVIDER (新しい ID プロバイダーの追加)]** をクリックして、SSO の設定を追加するためのフォームを開きます。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 10. 以下の説明に従って、フィールドに詳細を入力します。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **表示名**: 管理者ページでのプラグインの表示名を入力します。
 
@@ -225,7 +225,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
 2. アプリケーションの一覧で **[Teamphoria]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -245,7 +245,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

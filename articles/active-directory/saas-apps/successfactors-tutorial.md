@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: bf5fb050e81b59195d9bf9bfed9372e1fe8402ab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8401462ed4bf5ef2ac1ff10cf3f6750cbed7b4e5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231272"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
 
@@ -158,7 +158,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
     
 6. **[SuccessFactors 構成]** セクションで、**[SuccessFactors の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/successfactors-tutorial/tutorial_successfactors_configure.png) 
+    ![Configure single sign-on](./media/successfactors-tutorial/tutorial_successfactors_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、**SuccessFactors 管理者ポータル**に管理者としてログインします。
     
@@ -214,7 +214,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
 
 12. 大文字と小文字を区別しないログイン ユーザー名を作成する場合、次の手順を実行します。
    
-    ![[Configure Single Sign-On]][29]
+    ![Configure single sign-on][29]
     
     a. 下部の **[Company Settings (会社設定)]** に移動します。
    
@@ -302,7 +302,7 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SuccessFactors] タイルをクリックすると、自動的に SuccessFactors アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

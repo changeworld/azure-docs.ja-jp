@@ -3,7 +3,7 @@ title: カスタムのドメイン コント ローラーにクラウド サー�
 description: PowerShell と AD ドメイン拡張機能を使ってカスタム AD ドメインに Web ロールまたは worker ロールを接続する方法について説明します
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: jeconnoc
+ms.openlocfilehash: b05e20b5c99c6f1b5b1bf93ca781ec97284fba79
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29845657"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004917"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 最初に、Azure に Virtual Network (VNet) を設定します。 次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。 次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。

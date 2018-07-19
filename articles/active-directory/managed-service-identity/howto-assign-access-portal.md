@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 06f316a7c96ff266e9f4593fa3a9ac871b2979aa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf6df6dd87de56ca3c8180d5377e35d9be9bbd79
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929774"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036447"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure Portal を使用してリソースに管理対象サービス ID アクセスを割り当てる
 
@@ -41,20 +41,20 @@ ms.locfileid: "33929774"
 
 3. Azure 仮想マシンについては、リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ 追加]** を選択します。 **[ロール]** を指定し、**[アクセスの割り当て先] を [仮想マシン]** にして、対応する **[サブスクリプション]** とリソースが存在する **[リソース グループ]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
 
-   ![アクセス制御 (IAM) のスクリーンショット](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![アクセス制御 (IAM) のスクリーンショット](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
    Azure 仮想マシン スケール セットについては、リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ 追加]** を選択します。 次に、**ロール**、**アクセスの割り当て先**を指定します。 検索条件領域で、仮想マシン スケール セットを検索します。 リソースを選択し、**[保存]** を選択します。
    
-   ![アクセス制御 (IAM) のスクリーンショット](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
+   ![アクセス制御 (IAM) のスクリーンショット](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
 
 4. **[アクセス制御 (IAM)]** のメイン ページに戻ると、リソースの MSI の新しいエントリが表示されます。
 
     Azure 仮想マシン:
 
-   ![アクセス制御 (IAM) のスクリーンショット](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![アクセス制御 (IAM) のスクリーンショット](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
     Azure 仮想マシン スケール セット:
 
-    ![アクセス制御 (IAM) のスクリーンショット](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
+    ![アクセス制御 (IAM) のスクリーンショット](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

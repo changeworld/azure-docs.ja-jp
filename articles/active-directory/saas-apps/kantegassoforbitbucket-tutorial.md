@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: dddf05946685b09500c74e9f678b638ee54870bb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ce88ff333cd24e331c0d9c9b3b58372d5b09fdec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223156"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bitbucket の統合
 
@@ -102,15 +102,15 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 1. Azure Portal の **Kantega SSO for Bitbucket** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_samlbase.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_samlbase.png)
 
 3. **IDP** 開始モードにして、**[Kantega SSO for Bitbucket のドメインと URL]** セクションで次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
     a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 4. **SP** 開始モードで、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url2.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url2.png)
     
     **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login` のパターンを使用して URL を入力します。
 
@@ -127,49 +127,49 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_certificate.png) 
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_general_400.png)
 
 7. 別の Web ブラウザー ウィンドウで、Bitbucket 管理者ポータルに管理者としてログインします。
 
 8. 歯車アイコンをクリックして、**[Find new add-ons]\(新しいアドオンの検出\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
 9. **Kantega SSO for Bitbucket SAML & Kerberos** を検索し、**[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 10. プラグインのインストールが開始されます。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
 11. インストールが完了したら、 **[閉じる]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
-12. **[Manage]** をクリックします。
+12. **Manage**をクリックします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon34.png)
     
 13. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。    
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
 14. **[SAML]** セクションに移動します。 **[Add identity provider]\(ID プロバイダーの追加\)** ボックスで **[Azure Active Directory (Azure AD)]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
 15. サブスクリプション レベルは **[Basic]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
 16. **[App properties]\(アプリのプロパティ\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
     a. **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bitbucket のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
 
@@ -177,7 +177,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 17. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
     a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
@@ -185,7 +185,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 18. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
     a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
@@ -193,11 +193,11 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 19. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。  
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
 20. **[Bitbucket user accounts]\(Bitbucket ユーザー アカウント\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
     a. **[Create users in Bitbucket's internal Directory if needed]\(必要に応じて Bitbucket の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
@@ -205,11 +205,11 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
 21. **[完了]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
 22. **[Known domains for Azure AD]\(既知の Azure AD ドメイン\)** セクションで、次の手順を実行します。 
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
     a. ページの左側のパネルにある **[Known domains]\(既知のドメイン\)** を選択します。
 
@@ -302,7 +302,7 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
 
 2. アプリケーションの一覧で、**[Kantega SSO for Bitbucket]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_app.png) 
+    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -323,7 +323,7 @@ Azure AD ユーザーが Bitbucket にログインできるようにするには
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Kantega SSO for Bitbucket のタイルをクリックすると、自動的に Kantega SSO for Bitbucket アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

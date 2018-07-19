@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1e79fee75b2361dd7da8c46c175a5a6532089ad6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263118"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437241"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -25,6 +25,9 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 - 影響を受けたサブスクリプション。
 - 影響を受けたサービス。
 - 影響を受けたリージョン。
+
+> [!NOTE]
+> サービス正常性通知では、リソース正常性イベントに関するアラートは送信されません。
 
 次の方法でアラートを送信するユーザーを構成することもできます。
 

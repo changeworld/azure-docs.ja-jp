@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 5157e12e2afd40b8cfbc948e984747274764a276
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1a1a868302c4cd140d799fdf4962a0badf060c98
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218182"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>チュートリアル: Azure Active Directory と Dow Jones Factiva の統合
 
@@ -102,23 +102,23 @@ Dow Jones Factiva で Azure AD のシングル サインオンを構成してテ
 
 1. Azure Portal の **Dow Jones Factiva** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_samlbase.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_samlbase.png)
 
 3. アプリは Azure と事前に統合済みであるため、**[Dow Jones Factiva のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[Configure Single Sign-On]](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_url.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_url.png)
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_certificate.png) 
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/dowjones-factiva-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_general_400.png)
 
 6. **Dow Jones Factiva** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Dow Jones Factiva サポート チーム](https://www.dowjones.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -174,7 +174,7 @@ Dow Jones Factiva で Azure AD のシングル サインオンを構成してテ
 
 2. アプリケーションの一覧で **[Dow Jones Factiva]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_app.png) 
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -195,7 +195,7 @@ Dow Jones Factiva で Azure AD のシングル サインオンを構成してテ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Dow Jones Factiva のタイルをクリックすると、自動的に Dow Jones Factiva アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

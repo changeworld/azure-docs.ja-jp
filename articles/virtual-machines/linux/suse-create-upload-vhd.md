@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3bdd3f4d67fcaae37736022c3c59af19eb04bec7
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653435"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036651"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "34653435"
 ## <a name="use-suse-studio"></a>SUSE Studio を使用する
 [SUSE Studio](http://www.susestudio.com) を使用すると、Azure および Hyper-V 用の SLES イメージと openSUSE イメージを簡単に作成、管理できます。 独自の SLES イメージや openSUSE イメージをカスタマイズする場合はこの方法をお勧めします。
 
-SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007)に SLES の BYOS (Bring Your Own Subscription) イメージを発行することもできます。
+SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)に SLES の BYOS (Bring Your Own Subscription) イメージを発行することもできます。
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>SUSE Linux Enterprise Server 11 SP4 を準備する
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。

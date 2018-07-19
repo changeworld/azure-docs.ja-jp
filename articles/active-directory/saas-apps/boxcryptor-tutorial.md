@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 8e1008636fe442d6d00a36fecd63a6e48f2cce04
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3b6f088b044b661037c754dad3918bec879a387
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220052"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル: Azure Active Directory と Boxcryptor の統合
 
@@ -201,7 +201,7 @@ Boxcryptor で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Boxcryptor のタイルをクリックすると、Boxcryptor アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

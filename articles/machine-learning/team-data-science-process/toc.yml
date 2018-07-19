@@ -11,7 +11,7 @@
       href: lifecycle-data.md
     - name: 3. モデリング
       href: lifecycle-modeling.md
-    - name: 4. デプロイ
+    - name: 4. Deployment
       href: lifecycle-deployment.md
     - name: 5. 顧客による受け入れ
       href: lifecycle-acceptance.md
@@ -243,8 +243,8 @@
       maintainContext: true
     - name: Cortana Intelligence パートナー ソリューション
       items:
-        - name: Cortana Intelligence ギャラリー
-          href: 'https://gallery.cortanaintelligence.com'
+        - name: Azure AI ギャラリー
+          href: 'https://gallery.azure.ai'
         - name: Cortana Intelligence の発行ガイド
           href: cortana-intelligence-appsource-publishing-guide.md
         - name: Cortana Intelligence ソリューション評価ツール

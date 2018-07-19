@@ -10,18 +10,18 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2b25bb73a9f7227fbe3c15610a5b91016505bae4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b2179aa80e97a6c043bf97fe40a8de2f1ba25204
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187370"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341166"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse データ管理パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## <a name="data-management-partners"></a>データ管理パートナー
-| パートナー | [説明] | リンク | ビデオ |
+| パートナー | 説明 | リンク | ビデオ |
 | --- | --- | --- | --- |
 | ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing は、クエリ実行システムに特化された設計で、10 年の実績があるツール、Nexus Chameleon を提供しています。 Nexus は SQL Data Warehouse のクエリ ツールとして使用できます。 Nexus を使用することで、社内およびクラウド コンピューターにクエリを実行し、異種プラットフォーム間でデータを結合できます。 ポイントしてクリックするだけでレポートが生成されます。 |[Marketplace][coffing_marketplace]<br>[Web サイト][coffing_website]<br>[プレス リリース][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![coffing ビデオ](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
 | ![Inbrein][2] |**MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |[Web サイト][inbrein_website]<br>[データシート][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![inbrein ビデオ](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
@@ -56,35 +56,22 @@ ms.locfileid: "32187370"
 <!--ebook Links-->
 
 <!--Datasheet Links-->
-<!--[coffing_datasheet]:-->
-[inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf
-<!--[infolibrarian_datasheet]:-->
-[redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf
-[redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf
-<!--[sql_sentry_datasheet]:-->
+<!--[coffing_datasheet]:--> [inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf <!--[infolibrarian_datasheet]:--> [redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf [redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf <!--[sql_sentry_datasheet]:-->
 
 <!--Marketplace Links -->
 [coffing_marketplace]:https://azure.microsoft.com/marketplace/partners/nexus/nexus-chameleon-9/ 
-<!--[inbrein_marketplace]:-->
-[infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/
-[redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/
-[redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ 
-[sql_sentry_marketplace]:https://azure.microsoft.com/marketplace/partners/sqlsentry/sqlsentryplatform/
+<!--[inbrein_marketplace]:--> [infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/ [redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/ [redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ [sql_sentry_marketplace]:https://azure.microsoft.com/marketplace/partners/sqlsentry/sqlsentryplatform//
 
 <!--Press links-->
 [coffing_press]:http://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
 <!--[inbrein_press]:-->
-<!--[infolibrarian_press]:-->
-[redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
-[sql_sentry_press]:https://www.sentryone.com/Company/News-Article/20160713-sql-sentry-performance-advisor-for-azure-sql-dw/
+<!--[infolibrarian_press]:--> [redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/ [sql_sentry_press]:https://www.sentryone.com/sentryone-v-11.2-offers-new-insights-and-powerful-automationn
 
 
 <!--YouTube links-->
 [coffing_youtube]:https://www.youtube.com/channel/UC8o1zhc9tNp9ve6vDn34tkw
 [inbrein_youtube]:https://www.youtube.com/channel/UCHTYjFFaTpo6bPAtuxgdZig
-<!--[infolibrarian_youtube]:-->
-[redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal
-[sql_sentry_youtube]:https://www.youtube.com/user/SQLSentry
+<!--[infolibrarian_youtube]:--> [redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal [sql_sentry_youtube]:https://www.youtube.com/user/SQLSentryy
 
 <!--Twitter links-->
 [coffing_twitter]:https://twitter.com/CoffingDW

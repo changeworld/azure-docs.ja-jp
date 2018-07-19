@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: a87ed8630f86cf004a05cdb2ae8b34c479cdaf32
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 42ec8aa6119dbf01297743cd509285145c7bea29
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34594083"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
@@ -29,6 +30,7 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント : Azure アカウントがない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか、[Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にします。
+- **Visual Studio 2015** またはそれ以降。 [Visual Studio 2017 を今すぐダウンロードする](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>[接続済みサービス] ダイアログを使用して Azure Active Directory に接続する
 

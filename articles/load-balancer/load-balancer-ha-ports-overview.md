@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 04/07/2018
 ms.author: kumud
-ms.openlocfilehash: 53e09498324f802ce1839d262999657d37ee973b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 716a3dafe08e896924bd28e44d69141e4c229687
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169120"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005505"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 

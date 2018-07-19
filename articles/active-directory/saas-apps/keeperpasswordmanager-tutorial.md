@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b61465e9f38a5a461802d4ab46a7221c557b4595
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: fb57ab0f746fcad702c18032b9da1a9ec820b809
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308144"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル: Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -55,7 +55,7 @@ Keeper Password Manager & Digital Vault と Azure AD の統合を構成するに
 2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>ギャラリーからの Keeper Password Manager & Digital Vault の追加
-Azure AD への Keeper Password Manager & Digital Vault の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Keeper Password Manager & Digital Vault を追加する必要があります。
+Azure AD への Keeper Password Manager &amp; Digital Vault の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Keeper Password Manager &amp; Digital Vault を追加する必要があります。
 
 **ギャラリーから Keeper Password Manager & Digital Vault を追加するには、次の手順に従います。**
 
@@ -102,15 +102,15 @@ Keeper Password Manager & Digital Vault で Azure AD のシングル サイン�
 
 1. Azure Portal の **Keeper Password Manager & Digital Vault** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_samlbase.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_samlbase.png)
 
 3. **[Keeper Password Manager & Digital Vault のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://{SSO CONNECT SERVER}/sso-connect/saml/login` のパターンを使用して URL を入力します。
 
@@ -123,15 +123,15 @@ Keeper Password Manager & Digital Vault で Azure AD のシングル サイン�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_certificate.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_general_400.png)
     
 6. **[Keeper Password Manager & Digital Vault 構成]** セクションで、**[Keeper Password Manager & Digital Vault の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
 
 7. **Keeper Password Manager & Digital Vault Configuration** 側でシングル サインオンを構成するには、『[Keeper Support Guide](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)』(Keeper サポート ガイド) のガイドラインに従ってください。
 
@@ -188,7 +188,7 @@ Azure AD ユーザーが Keeper Password Manager & Digital Vault にログイン
 
 2. アプリケーションの一覧で **[Keeper Password Manager & Digital Vault]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/keeperpasswordmanager-tutorial/tutorial_keeper_app.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -208,7 +208,7 @@ Azure AD ユーザーが Keeper Password Manager & Digital Vault にログイン
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Keeper Password Manager & Digital Vault] タイルをクリックすると、Keeper Password Manager & Digital Vault アプリケーションのログイン ページが表示されます。 認証が成功すると、アプリケーションが表示されます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [Keeper Password Manager & Digital Vault] タイルをクリックすると、Keeper Password Manager & Digital Vault アプリケーションのログイン ページが表示されます。 認証が成功すると、アプリケーションが表示されます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

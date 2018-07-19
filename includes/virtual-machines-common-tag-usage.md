@@ -2,7 +2,7 @@
 
 
 ## <a name="viewing-your-tags-in-the-usage-details"></a>使用量の詳細でタグを確認する
-Resource Manager デプロイメント モデルで Compute、Network、および Storage リソースに設定したタグは、 [課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
+Resource Manager デプロイ モデルで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
 
 **[使用量の詳細のダウンロード]** をクリックして、サブスクリプションの使用量の詳細を表示します。
 

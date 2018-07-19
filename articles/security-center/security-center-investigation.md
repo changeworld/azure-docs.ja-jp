@@ -3,36 +3,41 @@ title: Azure Security Center でのインシデントとアラートの調査 | 
 description: このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776484"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340792"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
 このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
 
 ## <a name="what-is-investigation-in-security-center"></a>Security Center の調査とは
 Security Center の調査機能を使用すると、潜在的な[セキュリティ インシデント](https://docs.microsoft.com/azure/security-center/security-center-incident)について、トリアージ、範囲の把握、根本原因の特定を行うことできます。
- 
+
 その目的は、調査中のインシデントに関するすべてのエンティティ ([セキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)、ユーザー、コンピューター、インシデント) を関連付けて、調査プロセスを容易にすることです。  Security Center では、重要なデータとすべての関連するエンティティを相互に関連付けたうえで、対象の検索と重要な情報の視覚化に役立つライブ グラフを使ってその相関関係を明らかにすることで、これを実現します。
+
+> [!NOTE]
+> [カスタム アラート](security-center-custom-alert.md)は、Security Center の調査機能ではサポートされていません。
+>
+>
 
 
 ## <a name="how-investigation-works"></a>調査のしくみ
 調査は、調査ダッシュボードの中央の領域を占めるグラフで構成されます。 このグラフでは、常に特定のエンティティに焦点が当てられており、それに関連するエンティティが表示されています。 エンティティは、セキュリティ アラート、ユーザー、コンピューター、またはインシデントの場合があります。
- 
+
 ![マップ](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 ユーザーは、グラフ中のエンティティをクリックすることで、別のエンティティに移動できます。 選択したエンティティとその関連エンティティに自動的に中心になります。 関連がなくなったエンティティは、グラフから削除される場合があります。
@@ -43,7 +48,7 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 ![パス](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>一般情報
-グラフにエンティティが表示されると、そのエンティティに関する追加の情報がタブに表示されます。 **[情報]** タブでは、利用可能なさまざまな情報ソースから取得されたエンティティの一般情報が表示されます。 
+グラフにエンティティが表示されると、そのエンティティに関する追加の情報がタブに表示されます。 **[情報]** タブでは、利用可能なさまざまな情報ソースから取得されたエンティティの一般情報が表示されます。
 
 ![一般情報](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -71,7 +76,7 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
 ### <a name="timeline"></a>タイムライン
 
-グラフと各種タブに表示されるデータのほとんどは、ある特定の期間に関するものです。 この時間範囲は、グラフの左上にある時間範囲セレクターを使用して設定します。 調査担当者は、さまざまな方法で期間を選択できます。 
+グラフと各種タブに表示されるデータのほとんどは、ある特定の期間に関するものです。 この時間範囲は、グラフの左上にある時間範囲セレクターを使用して設定します。 調査担当者は、さまざまな方法で期間を選択できます。
 
 ![タイムライン](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -103,7 +108,7 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
     ![調査ダッシュボード](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-この時点で、このインシデントに関連するエンティティを探索し、それぞれのエンティティについて詳しく調べることができるようになります。 
+この時点で、このインシデントに関連するエンティティを探索し、それぞれのエンティティについて詳しく調べることができるようになります。
 
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、Security Center の調査機能を使用する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
@@ -111,7 +116,6 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 * [Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 さまざまな種類のセキュリティ アラートについて説明します。
-* [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 Security Center における一般的な問題のトラブルシューティング方法について説明します。 
+* [Azure Security Center トラブルシューティング ガイド](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 Security Center における一般的な問題のトラブルシューティング方法について説明します。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-

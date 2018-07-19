@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 004577ead56befce02771b82ace088706e8f0c3c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0832b3b8e0b2b6d7459eeddb8d8e5a93a7f17d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709208"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448351"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -38,21 +38,13 @@ ms.locfileid: "34709208"
 * 有効な証明書 (秘密キーを備えた .pfx ファイル) がある。
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>手順 1: Web アプリのクライアント証明書認証を構成する
-クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、REST API を使用する必要があります。 この設定は、Azure Portal の管理エクスペリエンスを通じて使用できます。 この設定を見つけるには、RESTful アプリケーションの **[設定]** メニューの **[開発ツール]** で、**[リソース エクスプローラー]** を選択します。
+クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、Azure portal で Web アプリのページを開きます。 左側のナビゲーションの **[設定]** で **[SSL 設定]** を選択します。 **[クライアント証明書]** セクションで、**[着信クライアント証明書]** オプションをオンにします。
 
 >[!NOTE]
 >Azure App Service プランが Standard 以上であることを確認してください。 詳細については、[Azure App Service プランの詳細な概要](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)に関する記事をご覧ください。
 
-
-次の図のように、[Azure Resource Explorer (プレビュー)](https://resources.azure.com) を使用して、**clientCertEnabled** プロパティを *true* に設定します。
-
-![Azure Resource Explorer で clientCertEnabled を設定](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
-
 >[!NOTE]
 >**clientCertEnabled** プロパティを設定する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
-
->[!TIP]
->また、[ARMClient](https://github.com/projectkudu/ARMClient) ツールを使用して、REST API 呼び出しを簡単に作成することもできます。
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>手順 2: 証明書を Azure AD B2C ポリシー キーにアップロードする
 `clientCertEnabled` を *true* に設定すると、RESTful API との通信にクライアント証明書が求められます。 クライアント証明書を取得し、Azure AD B2C テナントにアップロードして保存するには、次の手順を実行する必要があります。 

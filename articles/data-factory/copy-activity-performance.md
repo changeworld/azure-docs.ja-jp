@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 07/06/2018
 ms.author: jingwang
-ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049334"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002247"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

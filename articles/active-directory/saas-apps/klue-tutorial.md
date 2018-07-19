@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e2a625c733aac82b5db8529f2d770d31578a6246
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3a6d4b41d3b3994af08ba5492e542b7c31a9ebfe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220422"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル: Azure Active Directory と Klue の統合
 
@@ -102,15 +102,15 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure Portal の **Klue** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_samlbase.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_samlbase.png)
 
 3. **[Klue のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_url1.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url1.png)
 
     a. **[識別子]** ボックスに、`urn:klue:<Customer ID>` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_url2.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url2.png)
 
     **[サインオン URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/` のパターンを使用して URL を入力します。
      
@@ -127,7 +127,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 
 5. Klue アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/attribute.png)
+    ![Configure single sign-on](./media/klue-tutorial/attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -139,9 +139,9 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -151,15 +151,15 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 
 7. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_certificate.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_certificate.png) 
 
 8. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_general_400.png)
     
 9. **[Klue 構成]** セクションで、**[Klue の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_configure.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_configure.png) 
 
 10. **Klue** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、SAML シングル サインオン サービス URL、および SAML エンティティ ID を [Klue サポート チーム](mailto:support@klue.com)に送信する必要があります。
 
@@ -218,7 +218,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 
 2. アプリケーションの一覧で **[Klue]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/klue-tutorial/tutorial_klue_app.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -239,7 +239,7 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Klue] タイルをクリックすると、自動的に Klue アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

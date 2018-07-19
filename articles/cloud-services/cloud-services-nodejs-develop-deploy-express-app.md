@@ -3,7 +3,7 @@ title: Node.js Express アプリをビルドして Azure Cloud Services にデ�
 description: Node.js で Express.js アプリケーションをビルドして、Azure Cloud Services にデプロイします
 services: cloud-services
 documentationcenter: nodejs
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: adegeo
-ms.openlocfilehash: 8bb78330591b0557b036a161eb83e47b41a8fd43
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: jeconnoc
+ms.openlocfilehash: ac62baae2ececf257d22f8220d472c1bcb5ee082
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010110"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012180"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services にデプロイする
 
@@ -119,7 +119,7 @@ Azure PowerShell ウィンドウで、 **Publish-AzureServiceProject** コマン
 ![Express ページを表示している Web ブラウザー。 URL は、ページが Azure でホストされていることを示している。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 ## <a name="next-steps"></a>次の手順
-詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](https://docs.microsoft.com/en-us/javascript/azure/?view=azure-node-latest)を参照してください。
 
 [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: http://expressjs.com/

@@ -9,16 +9,16 @@ ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568145"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755712"
 ---
 #### <a name="expressroute-limits"></a>ExpressRoute の制限
 各サブスクリプションの ExpressRoute リソースには、次の制限が適用されます。
 
-| リソース | 既定の制限 |
+| Resource | 既定の制限 |
 | --- | --- |
 | サブスクリプションあたりの ExpressRoute 回線数 |10 |
 | ARM のサブスクリプションあたりの地域ごとの ExpressRoute 回線数 |10 |

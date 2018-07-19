@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: dfd45a68934250978fa8ac0cc9cebabcf8bad597
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7dd4f8cc53d86933d10294dbbf55157d2b1cf290
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629696"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001781"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 
@@ -55,7 +55,6 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 
 - **Azure IoT Hub C SDK** は、開発用の CA 証明書とリーフ証明書を作成し、確認コードを使って所有証明を実行するための、PowerShell (Windows) スクリプトと Bash (Linux) スクリプトを提供します。 システムに関連する[ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を作業フォルダーにダウンロードし、[CA 証明書の管理の readme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の説明に従って、CA 証明書で所有証明を実行します。 
 - **Azure IoT Hub C# SDK** には[グループ証明書の検証のサンプル](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)が含まれており、所有証明に使うことができます。
-- IoT Hub のドキュメント「[CA が署名した X.509 証明書を管理する PowerShell スクリプト](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates)」の手順に従います。具体的には、「[X.509 CA 証明書の所有証明](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode)」というタイトルのセクションに記載されているスクリプトです。
  
 > [!IMPORTANT]
 > 所有証明の実行に加えて、前に示した PowerShell スクリプトと Bash スクリプトでは、デバイスの認証とプロビジョニングに使うことができるルート証明書、中間証明書、およびリーフ証明書も作成できます。 これらの証明書は開発にのみ使ってください。 運用環境では使わないでください。 

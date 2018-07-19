@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4279211d130c8fe00a6b89c66222071de480fc52
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 56b392e57809cea0ae93800df39bb9dacd164ce2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216261"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル: Azure Active Directory と Adobe Experience Manager の統合
 
@@ -278,7 +278,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 
 アクセス パネルで [Adobe Experience Manager] タイルを選択すると、自動的に Adobe Experience Manager アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

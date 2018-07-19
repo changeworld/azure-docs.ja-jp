@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 287204afa7ace9e39507c9dc006549a731b3b992
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b699714a2ab90fd0ad1c2f290681ccdae7aeb1ba
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230388"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル: Azure Active Directory と Lifesize Cloud の統合
 
@@ -102,15 +102,15 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
 
 1. Azure Portal の **Lifesize Cloud** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
 
 3. **[Lifesize Cloud のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://login.lifesizecloud.com/ls/?acs` のパターンを使用して URL を入力します。
 
@@ -119,7 +119,7 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
      
 4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。    
    
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
     **[リレー状態]** ボックスに、`https://webapp.lifesizecloud.com/?ent=<identifier>` のパターンで URL を入力します。
    
@@ -128,29 +128,29 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_general_400.png)
 
 6. **[Lifesize Cloud 構成]** セクションで、**[Lifesize Cloud の構成]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
 
 7. アプリケーション用に構成された SSO を取得するには、管理者権限で Lifesize Cloud アプリケーションにログインします。
 
 8. ページの右上にある自分の名前をクリックし、**[詳細設定]** をクリックします。
    
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 9. [詳細設定] で **[SSO 構成]** のリンクをクリックします。 インスタンスの [SSO 構成] ページが開きます。
    
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 10. SSO 構成 UI で、次の値を構成します。    
    
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
     
     a. **[ID プロバイダーの発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -227,7 +227,7 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
 
 2. アプリケーションの一覧で **[Lifesize Cloud]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -248,7 +248,7 @@ Lifesize Cloud での Azure AD シングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Lifesize Cloud のタイルをクリックすると、Lifesize Cloud アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

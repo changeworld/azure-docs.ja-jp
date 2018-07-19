@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292542"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110489"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure クラウド サービスと仮想マシンに対する診断を設定する
 Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用して Azure 診断を簡単に構成できます。 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込みます。 診断データは、選択したストレージ アカウントに転送されます。 Azure での診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
@@ -87,7 +87,11 @@ Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファ
    * **[サブスクリプション]** オプションを選択した場合は、使用する Azure サブスクリプションを選択し、アカウント名を入力できます。 Azure サブスクリプションを管理するには、**[アカウントの管理]** を選択します。
    * **[手動で入力された資格情報]** オプションを選択した場合は、使用する Azure アカウントの名前とキーを入力します。
 5. **[診断構成]** ダイアログ ボックスを表示するには、**[構成]** を選択します。 **[全般]** と **[ログ ディレクトリ]** を除く各タブは、収集できる診断データのソースを表します。 既定の **[全般]** タブでは、診断データの収集オプションとして、**[エラーのみ]**、**[すべての情報]**、**[カスタム プラン]** を指定できます。 既定の **[エラーのみ]** オプションでは、警告またはトレース メッセージが転送されないため、必要とするストレージ容量が最小限で済みます。 **[すべての情報]** オプションは最も多くの情報を転送し、最も多くのストレージを使用するため、コストが最も高いオプションです。
-   
+
+   > [!NOTE]
+   > [ディスク クォータ (MB)] のサポートされる最小サイズは 4 GB です。 ただし、メモリ ダンプを収集する場合は、10 GB のような高い値に増やしてください。
+   >
+  
     ![Enable Azure diagnostics and configuration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. この例では、**[カスタム プラン]** オプションを選択して、収集するデータをカスタマイズできるようにします。
 7. **[ディスク クォータ (MB)]** ボックスに、ストレージ アカウントで診断データ用に割り当てる容量を設定できます。 既定の値を変更することも、そのまま使用することもできます。
@@ -217,7 +221,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
     Cloud Explorer またはサーバー エクスプローラーで、対象のデプロイに関連付けられたストレージ アカウントを開きます。
 3. テーブル ビューアーで診断テーブルを開き、収集したデータを確認します。 IIS ログおよびカスタム ログについては、BLOB コンテナーを開くことができます。 次の表に、異なるログ ファイルのデータを含むテーブルまたは BLOB コンテナーの一覧を示します。 テーブルの項目には、ログ ファイルのデータだけでなく、**EventTickCount**、**DeploymentId**、**Role**、および **RoleInstance** が含まれており、どの仮想マシンとロールがデータがいつ生成したかを特定できます。 
    
-   | 診断データ | [説明] | 場所 |
+   | 診断データ | 説明 | リージョン |
    | --- | --- | --- |
    | アプリケーション ログ |コードが **System.Diagnostics.Trace** クラスのメソッドを呼び出すことで生成するログ。 |WADLogsTable |
    | イベント ログ |仮想マシンの Windows イベント ログから生成されるデータ。 Windows がこれらのログに情報を格納しますが、アプリケーションやサービスも、このログを使用してエラーまたはログ情報を報告します。 |WADWindowsEventLogsTable |

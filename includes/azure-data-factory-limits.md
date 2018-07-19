@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 43408ebc65d4acf581b612e8ecfb9d00679cc078
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 67144407b078a30c521201cbc31c6087c839fa26
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066103"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39030007"
 ---
 Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 制限のほとんどは、サポートに問い合わせることでサブスクリプションの上限まで引き上げることができます。
 
 ### <a name="version-2"></a>Version 2
 
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | -------- | ------------- | ------------- |
 | Azure サブスクリプション内の Data Factory | 50 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | データ ファクトリ内のエンティティ (パイプライン、データセット、トリガー、リンクされたサービス、統合ランタイム) の合計数 | 5000 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コアの合計 | 100 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コアの合計 | 128 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインあたりの同時実行パイプラインの実行数 | 100 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | データ ファクトリあたりの同時実行パイプラインの実行数 | 10,000  | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインあたりの最大アクティビティ数 (コンテナーの内部アクティビティを含む) | 40 | 40 |

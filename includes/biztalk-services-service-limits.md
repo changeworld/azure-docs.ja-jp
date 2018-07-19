@@ -9,11 +9,11 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 7fa6930acf4d19b3939bb8a5b0306d216346c2b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "29765919"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755721"
 ---
 | リソース | 無料 (プレビュー) | 開発者 | 基本 | Standard | プレミアム |
 | --- | --- | --- | --- | --- | --- |

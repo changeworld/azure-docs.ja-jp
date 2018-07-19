@@ -135,7 +135,7 @@
         - name: データベースのバックアップ
           href: sql-database-automated-backups.md
         - name: 長期のバックアップ リテンション期間
-          itmes:
+          items:
             - name: 長期のバックアップ リテンション期間
               href: sql-database-long-term-retention.md
             - name: 長期的なバックアップ保有期間の構成 - SQL ストレージ
@@ -180,7 +180,7 @@
               href: sql-vulnerability-assessment.md
             - name: 脅威の検出 - SQL Database
               href: sql-database-threat-detection.md
-            - name: 脅威の検出 - Managed Instance
+            - name: 脅威の検出 - マネージド インスタンス
               href: sql-database-managed-instance-threat-detection.md
         - name: ファイアウォール規則
           items:
@@ -212,7 +212,7 @@
           items:
             - name: 監査 - サーバー、プール、データベース
               href: sql-database-auditing.md
-            - name: 監査 - Managed Instance
+            - name: 監査 - マネージド インスタンス
               href: sql-database-managed-instance-auditing.md
             - name: テーブルの監査 (非推奨)
               href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
@@ -400,7 +400,7 @@
       items:
         - name: SQL Database への移行
           href: sql-database-cloud-migrate.md
-        - name: Managed Instance への移行
+        - name: マネージド インスタンスへの移行
           href: sql-database-managed-instance-migrate.md
         - name: Managed Instance への TDE 証明書の移行
           href: sql-database-managed-instance-migrate-tde-certificate.md

@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 1501ca1c036a8db1d53b9b27170d9ae05d41f797
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a2cddec1308b96b960cd0bbc5ccae9fd1a1a9a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724117"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449394"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート - Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
 
@@ -42,8 +42,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - **Azure AD Premium エディションへのアクセス** - Azure AD の条件付きアクセスは Azure AD Premium の機能です。 
 
-- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](add-users-azure-active-directory.md#add-cloud-based-users)」を参照してください。
+- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](fundamentals/add-users-azure-active-directory.md#add-cloud-based-users)」を参照してください。
 
+
+## <a name="test-your-sign-in"></a>サインインをテストする
+
+この手順の目的は、条件付きアクセス ポリシーがないサインイン エクスペリエンスの印象を確認することです。
+
+**環境を初期化するには:**
+
+1. Isabella Simonsen として Azure portal にサインインします。
+
+2. サインアウトします。
 
 
 ## <a name="create-your-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する 
@@ -69,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **条件付きアクセス ポリシーを構成するには:**
 
-1. [Azure Portal](https://portal.azure.com) に全体管理者としてサインインします。
+1. [Azure portal](https://portal.azure.com) に全体管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 
 2. Azure Portal の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。 
 
@@ -179,7 +189,7 @@ What If ポリシー評価ツールを初期化するには、次のように設
 
     c. **[選択]** をクリックします。
 
-    d. **[選択]** ページで [Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
+    d. **[選択]** ページで **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。
 
     e. [クラウド アプリ] ページで、**[完了]** をクリックします。
 
@@ -199,7 +209,7 @@ What If ポリシー評価ツールを初期化するには、次のように設
 
 不要になったら、テスト ユーザーと条件付きアクセス ポリシーを削除します。
 
-- Azure AD ユーザーの削除方法がわからない場合は、「[Azure AD からユーザーを削除する](add-users-azure-active-directory.md#delete-users-from-azure-ad)」を参照してください。
+- Azure AD ユーザーの削除方法がわからない場合は、「[Azure AD からユーザーを削除する](fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad)」を参照してください。
 
 - ポリシーを削除するには、ポリシーを選択し、クイック アクセス ツール バーの **[削除]** をクリックします。
 
@@ -208,5 +218,6 @@ What If ポリシー評価ツールを初期化するには、次のように設
 
 ## <a name="next-steps"></a>次の手順
 
-条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)に関する記事を参照してください。
-
+> [!div class="nextstepaction"]
+> [使用条件への同意を要求する](./active-directory-conditional-access-tou.md)
+> [セッションのリスクが検出されたときにアクセスをブロックする](./active-directory-conditional-access-app-sign-in-risk.md)

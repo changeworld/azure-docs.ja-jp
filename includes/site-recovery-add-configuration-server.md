@@ -35,6 +35,6 @@
 
 11. **[概要]** で情報を確認し、**[インストール]** をクリックします。 インストールが完了すると、パスフレーズが生成されます。 このパスフレーズは、レプリケーションを有効にするときに必要になるので、コピーしてセキュリティで保護された場所に保管してください。
 
-    ![概要](./media/site-recovery-add-configuration-server/combined-wiz10.png)
+    ![まとめ](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
 登録が完了すると、コンテナーの **[設定]** > **[サーバー]** ブレードに、サーバーが表示されます。

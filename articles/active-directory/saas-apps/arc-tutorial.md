@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969369"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>チュートリアル: Azure Active Directory と Arc Publishing - SSO の統合
 
@@ -123,7 +123,7 @@ Arc Publishing - SSO で Azure AD のシングル サインオンを構成およ
 
 1. Arc Publishing - SSO アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/arc-tutorial/tutorial_arc_attribute.png)
+    ![Configure single sign-on](./media/arc-tutorial/tutorial_arc_attribute.png)
 
 1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -136,9 +136,9 @@ Arc Publishing - SSO で Azure AD のシングル サインオンを構成およ
 
     1. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-     ![[Configure Single Sign-On]](./media/arc-tutorial/tutorial_attribute_04.png)
+     ![Configure single sign-on](./media/arc-tutorial/tutorial_attribute_04.png)
 
-     ![[Configure Single Sign-On]](./media/arc-tutorial/tutorial_attribute_05.png)
+     ![Configure single sign-on](./media/arc-tutorial/tutorial_attribute_05.png)
     
     1. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -239,7 +239,7 @@ Arc Publishing - SSO で Azure AD のシングル サインオンを構成およ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Arc Publishing - SSO のタイルをクリックすると、自動的に Arc Publishing - SSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

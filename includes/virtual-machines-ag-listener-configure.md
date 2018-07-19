@@ -88,5 +88,30 @@
 
     b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
+上記の手順を繰り返して、WSFC クラスター IP アドレスのクラスター パラメーターを設定します。
+
+1. WSFC クラスター IP アドレスの IP アドレス名を取得します。 **[フェールオーバー クラスター マネージャー]** の **[クラスター コア リソース]** で、**[サーバー名]** を見つけます。
+
+1. **[IP アドレス]** を右クリックし、**[プロパティ]** を選択します。
+
+1. IP アドレスの **[名前]** をコピーします。 たとえば `Cluster IP Address` です。 
+
+1. <a name="setwsfcparam"></a>PowerShell でクラスターのパラメーターを設定します。
+    
+    a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+
     > [!NOTE]
     > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ILBIP` と `$ProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名は同じものを使用します。 

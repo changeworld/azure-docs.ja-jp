@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4dfb92257dca4069905f17e1c3ccd43d87cd45c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ecde4d8cd8ee454290b16b640ba05d310cf348fe
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710160"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449434"
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
 
@@ -49,182 +49,192 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
 
 1. 閲覧セッションを開き、[Azure Portal](https://portal.azure.com) に移動して、構成する B2C ディレクトリの管理者資格情報でサインインします。
-1. 左側のナビゲーション メニューで、**[Azure Active Directory]** をクリックします。 [その他のサービス >] をクリックしないと表示されない場合があります。
-1. **[アプリの登録]** を選択し、**[新しいアプリケーションの登録]** をクリックします。
-1. 以下の推奨エントリを指定します。
-  * Web アプリケーションの名前を指定します: **WebApp-GraphAPI-DirectoryExtensions**
-  * アプリケーションの種類: Web アプリ/API
-  * サインオン URL: https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
-1. [**作成] を選択します。 正常に完了したことが**通知**に表示されます。
-1. 新しく作成された Web アプリケーション **WebApp-GraphAPI-DirectoryExtensions** を選択します。
-1. 設定として **[必要なアクセス許可]** を選択します。
-1. API として **Windows Azure Active Directory** を選択します。
-1. [アプリケーションのアクセス許可] で **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにし、**[保存]** を選択します。
-1. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
-1. [WebApp-GraphAPI-DirectoryExtensions] > [設定] > [プロパティ] の順に移動し、次の識別子をクリップボードにコピーして保存します。
-*  **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`
-* **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
+2. 左側のナビゲーション メニューで、**[Azure Active Directory]** をクリックします。 [その他のサービス >] をクリックしないと表示されない場合があります。
+3. **[アプリの登録]** を選択し、**[新しいアプリケーションの登録]** をクリックします。
+4. 以下の推奨エントリを指定します。
+    * Web アプリケーションの名前を指定します: **WebApp-GraphAPI-DirectoryExtensions**
+    * アプリケーションの種類: Web アプリ/API
+    * サインオン URL: https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
+5. **[作成]** を選択します。
+6. 新しく作成された Web アプリケーションを選択します。
+7. **［設定］** > **［必要なアクセス許可］** の順に選択します。
+8. API として **Windows Azure Active Directory** を選択します。
+9. [アプリケーションのアクセス許可] で **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにし、**[保存]** を選択します。
+10. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
+11. 次の識別子をクリップボードにコピーして保存します。
+    * **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`
+    * **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
 
 
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して ApplicationObjectId を追加する
 
-```xml
+[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関する記事の手順を完了した時点で、*TrustFrameworkBase.xml*、*TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml* という名前の[ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)がダウンロードおよび変更されています。 次の手順では、これらのファイルに引き続き変更を加えます。
+
+1. 次の例のように、*TrustFrameworkBase.xml* ファイルを開いて `Metadata` セクションを追加します。 `ApplicationObjectId` の値には以前に記録したオブジェクト ID、`ClientId` の値には以前に記録したアプリケーション ID を挿入します。 
+
+    ```xml
     <ClaimsProviders>
         <ClaimsProvider>
-              <DisplayName>Azure Active Directory</DisplayName>
+          <DisplayName>Azure Active Directory</DisplayName>
             <TechnicalProfile Id="AAD-Common">
-              <DisplayName>Azure Active Directory</DisplayName>
-              <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-              <!-- Provide objectId and appId before using extension properties. -->
-              <Metadata>
-                <Item Key="ApplicationObjectId">insert objectId here</Item>
-                <Item Key="ClientId">insert appId here</Item>
-              </Metadata>
-            <!-- End of changes -->
-              <CryptographicKeys>
-                <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-              </CryptographicKeys>
-              <IncludeInSso>false</IncludeInSso>
-              <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-            </TechnicalProfile>
+          <DisplayName>Azure Active Directory</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+              
+          <!-- Provide objectId and appId before using extension properties. -->
+          <Metadata>
+            <Item Key="ApplicationObjectId">insert objectId here</Item>
+            <Item Key="ClientId">insert appId here</Item>
+          </Metadata>
+          <!-- End of changes -->
+              
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <IncludeInSso>false</IncludeInSso>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
         </ClaimsProvider>
     </ClaimsProviders>
-```
+    ```
 
 >[!NOTE]
-><TechnicalProfile Id="AAD-Common"> は、その要素が、次の要素を使用することによってすべての Azure Active Directory TechnicalProfile に含まれて再利用されるため、"共通" と呼ばれます。`<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
-
->[!NOTE]
->TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。  拡張機能プロパティは、初めて使われるときに作成されます。  
+>TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。 拡張機能プロパティは、初めて使われるときに作成されます。  
 
 ## <a name="using-the-new-extension-property--custom-attribute-in-a-user-journey"></a>ユーザー体験で新しい拡張機能プロパティ/カスタム属性を使用する
 
+1. *ProfileEdit.xml* ファイルを開きます。
+2. カスタム要求 `loyaltyId` を追加します。  カスタム要求は、`<RelyingParty>` 要素に含めることで、アプリケーション用のトークンに含まれます。
+    
+    ```xml
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="ProfileEdit" />
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+          <OutputClaim ClaimTypeReferenceId="city" />
 
-1. ポリシーの編集ユーザー体験が記述されている証明書利用者 (RP) ファイルを開きます。  初めての場合は、RP-PolicyEdit ファイルの構成済みバージョンを Azure Portal の Azure B2C カスタム ポリシーのセクションから直接ダウンロードすることをお勧めします。  または、ストレージ フォルダーから XML ファイルを開きます。
-2. カスタム要求 `loyaltyId` を追加します。  カスタム要求は、`<RelyingParty>` 要素に含めることによって、パラメーターとして UserJourney TechnicalProfile に渡され、アプリケーション用のトークンに含まれます。
-```xml
-<RelyingParty>
-   <DefaultUserJourney ReferenceId="ProfileEdit" />
-   <TechnicalProfile Id="PolicyProfile">
-     <DisplayName>PolicyProfile</DisplayName>
-     <Protocol Name="OpenIdConnect" />
-     <OutputClaims>
-       <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-       <OutputClaim ClaimTypeReferenceId="city" />
+          <!-- Provide the custom claim identifier -->
+          <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
+          <!-- End of changes -->
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
 
-       <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
+3. *TrustFrameworkExtensions.xml* ファイルを開き、`<ClaimsSchema>` 要素とその子要素を `BuildingBlocks` 要素に追加します。
 
-     </OutputClaims>
-     <SubjectNamingInfo ClaimType="sub" />
-   </TechnicalProfile>
- </RelyingParty>
- ```
-3. 要求の定義を、次のように、拡張ポリシー ファイル `TrustFrameworkExtensions.xml` の `<ClaimsSchema>` 要素の内部に追加します。
-```xml
-<ClaimsSchema>
-        <ClaimType Id="extension_loyaltyId">
-            <DisplayName>Loyalty Identification Tag</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your loyalty number from your membership card</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-</ClaimsSchema>
-```
-4. 同じ要求の定義を基本ポリシー ファイル `TrustFrameworkBase.xml` に追加します。  
->`ClaimType` 定義は、通常、基本ファイルと拡張ファイルの両方に追加する必要はありません。ただし、次の手順で基本ファイルの TechnicalProfile に extension_loyaltyId を追加するため、この定義がないと、ポリシー検証で基本ファイルのアップロードが拒否されます。
->TrustFrameworkBase.xml ファイルの "ProfileEdit" という名前のユーザー体験の実行を追跡すると役立つ場合があります。  エディターで同じ名前のユーザー体験を検索し、オーケストレーション手順 5. で TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" が呼び出されることを確認します。  この TechnicalProfile を検索して調査すると、処理の流れについて理解が深まります。
-5. TechnicalProfile "SelfAsserted-ProfileUpdate" で、入力および出力要求として loyaltyId を追加します。
-```xml
-<TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-          <DisplayName>User ID signup</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="ContentDefinitionReferenceId">api.selfasserted.profileupdate</Item>
-          </Metadata>
-          <IncludeInSso>false</IncludeInSso>
-          <InputClaims>
+    ```xml
+    <BuildingBlocks>
+      <ClaimsSchema> 
+        <ClaimType Id="extension_loyaltyId"> 
+          <DisplayName>Loyalty Identification Tag</DisplayName> 
+          <DataType>string</DataType> 
+          <UserHelpText>Your loyalty number from your membership card</UserHelpText> 
+          <UserInputType>TextBox</UserInputType> 
+        </ClaimType> 
+      </ClaimsSchema>
+    </BuildingBlocks>
+    ```
 
-            <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
-            <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+4. 同じ `ClaimType` 定義を *TrustFrameworkBase.xml* に追加します。 `ClaimType` 定義は、通常、基本ファイルと拡張ファイルの両方に追加する必要はありません。ただし、次の手順で基本ファイルの TechnicalProfile に `extension_loyaltyId` を追加するため、この定義がないと、ポリシー検証で基本ファイルのアップロードが拒否されます。 *TrustFrameworkBase.xml* ファイルの "ProfileEdit" という名前のユーザー体験の実行を追跡すると役立つ場合があります。  エディターで同じ名前のユーザー体験を検索し、オーケストレーション手順 5. で TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" が呼び出されることを確認します。  この TechnicalProfile を検索して調査すると、処理の流れについて理解が深まります。
 
-            <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
-            <InputClaim ClaimTypeReferenceId="givenName" />
+5. *TrustFrameworkBase.xml* ファイルを開き、TechnicalProfile の "SelfAsserted-ProfileUpdate" に、入力および出力要求として `loyaltyId` を追加します。
+
+    ```xml
+    <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <DisplayName>User ID signup</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ContentDefinitionReferenceId">api.selfasserted.profileupdate</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
+        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+        <InputClaim ClaimTypeReferenceId="givenName" />
             <InputClaim ClaimTypeReferenceId="surname" />
-            <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
-          </InputClaims>
-          <OutputClaims>
-            <!-- Required claims -->
-            <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
 
-            <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
-            <OutputClaim ClaimTypeReferenceId="givenName" />
-            <OutputClaim ClaimTypeReferenceId="surname" />
-            <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
-          </OutputClaims>
-          <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="AAD-UserWriteProfileUsingObjectId" />
-          </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-```
-6. ディレクトリの現在のユーザーに関する、拡張プロパティ内の要求の値を保持する要求を TechnicalProfile "AAD-UserWriteProfileUsingObjectId" に追加します。
-```xml
-<TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-          <Metadata>
-            <Item Key="Operation">Write</Item>
-            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">false</Item>
-            <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-          </Metadata>
-          <IncludeInSso>false</IncludeInSso>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
-          </InputClaims>
-          <PersistedClaims>
-            <!-- Required claims -->
-            <PersistedClaim ClaimTypeReferenceId="objectId" />
+        <!-- Add the loyalty identifier -->
+        <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
+        <!-- End of changes -->
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        
+        <!-- Add the loyalty identifier -->
+        <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
+        <!-- End of changes -->
 
-            <!-- Optional claims -->
-            <PersistedClaim ClaimTypeReferenceId="givenName" />
-            <PersistedClaim ClaimTypeReferenceId="surname" />
-            <PersistedClaim ClaimTypeReferenceId="extension_loyaltyId" />
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
+        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteProfileUsingObjectId" />
+      </ValidationTechnicalProfiles>
+    </TechnicalProfile>
+    ```
 
-          </PersistedClaims>
-          <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-        </TechnicalProfile>
-```
-7. ユーザーがログインするたびに拡張属性の値を読み取る要求を TechnicalProfile "AAD-UserReadUsingObjectId" に追加します。 ここまで、TechnicalProfile は、ローカル アカウントのフローだけで変更されてきました。  ソーシャル/フェデレーション アカウントのフローで新しい属性が必要な場合は、TechnicalProfile の別のセットを変更する必要があります。 「次のステップ」をご覧ください。
+6. *TrustFrameworkBase.xml* ファイルで、ディレクトリの現在のユーザーに関する、拡張プロパティ内の要求の値を保持する `loyaltyId` 要求を TechnicalProfile の "AAD-UserWriteProfileUsingObjectId" に追加します。
 
-```xml
-<!-- The following technical profile is used to read data after user authenticates. -->
-     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
-       <Metadata>
-         <Item Key="Operation">Read</Item>
-         <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-       </Metadata>
-       <IncludeInSso>false</IncludeInSso>
-       <InputClaims>
-         <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
-       </InputClaims>
-       <OutputClaims>
-         <!-- Optional claims -->
-         <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-         <OutputClaim ClaimTypeReferenceId="displayName" />
-         <OutputClaim ClaimTypeReferenceId="otherMails" />
-         <OutputClaim ClaimTypeReferenceId="givenName" />
-         <OutputClaim ClaimTypeReferenceId="surname" />
-         <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
-       </OutputClaims>
-       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-     </TechnicalProfile>
-```
+    ```xml
+    <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
+      <Metadata>
+        <Item Key="Operation">Write</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">false</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+      </InputClaims>
+      <PersistedClaims>
+        <PersistedClaim ClaimTypeReferenceId="objectId" />
+        <PersistedClaim ClaimTypeReferenceId="givenName" />
+        <PersistedClaim ClaimTypeReferenceId="surname" />
 
+        <!-- Add the loyalty identifier -->
+        <PersistedClaim ClaimTypeReferenceId="extension_loyaltyId" />
+        <!-- End of changes -->
 
->[!IMPORTANT]
->IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
+      </PersistedClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    </TechnicalProfile>
+    ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>"Run Now" を使用してカスタム ポリシーをテストする
+7. *TrustFrameworkBase.xml* ファイルで、ユーザーがログインするたびに拡張属性の値を読み取る `loyaltyId` 要求を TechnicalProfile の "AAD-UserReadUsingObjectId" に追加します。 ここまで、TechnicalProfile は、ローカル アカウントのフローだけで変更されてきました。  ソーシャル/フェデレーション アカウントのフローで新しい属性が必要な場合は、TechnicalProfile の別のセットを変更する必要があります。 「次のステップ」をご覧ください。
+
+    ```xml
+    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <Metadata>
+        <Item Key="Operation">Read</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+
+        <!-- Add the loyalty identifier -->
+        <OutputClaim ClaimTypeReferenceId="extension_loyaltyId" />
+        <!-- End of changes -->
+
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    </TechnicalProfile>
+    ```
+
+## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
+
 1. **[Azure AD B2C] ブレード**を開き、**[Identity Experience Framework] > [カスタム ポリシー]** に移動します。
 1. アップロードしたカスタム ポリシーを選択し、**[Run now]**(今すぐ実行) ボタンをクリックします。
 1. メール アドレスを使用してサインアップできることを確認します。

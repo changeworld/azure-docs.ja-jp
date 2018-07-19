@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: d1aec5ac1506d1c6151042a65dd8525f29353379
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317810"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>チュートリアル: Azure Active Directory と Manabi Pocket の統合
 
@@ -195,7 +195,7 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Manabi Pocket] タイルをクリックすると、自動的に Manabi Pocket アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

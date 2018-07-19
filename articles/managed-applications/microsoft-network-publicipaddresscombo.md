@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260562"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109571"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 要素
 新規または既存のパブリック IP アドレスを選択するコントロールのグループです。
@@ -70,14 +70,16 @@ ms.locfileid: "34260562"
 - `zone` の場合、指定されたゾーンのパブリック IP アドレスまたはゾーン回復性のパブリック IP アドレスのみを使用できます。
 
 ## <a name="sample-output"></a>サンプル出力
-ユーザーがパブリック IP アドレスを選択しなかった場合、出力は次のようになります。
+ユーザーがパブリック IP アドレスを選択しなかった場合、コントロールから次の出力が返されます。
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-ユーザーが新規または既存の IP アドレスを選択した場合、出力は次のようになります。
+ユーザーが新しいまたは既存の IP アドレスを選択した場合、コントロールから次の出力が返されます。
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ ms.locfileid: "34260562"
   "newOrExistingOrNone": "new"
 }
 ```
+
 - `options.hideNone` が **true** として指定されると、`newOrExistingOrNone`は**新規**または**既存** の値のみを持ちます。
 - `options.hideDomainNameLabel` が **true** として指定されると、`domainNameLabel` は宣言されません。
 

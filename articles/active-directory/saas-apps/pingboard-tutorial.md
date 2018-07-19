@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: e07e85e60c8a4b93e4b0fd7bf43f470c4e3acc61
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3dd1c0043a4516bfba0801d403f4b475fa2817a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221191"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル: Azure Active Directory と PingBoard の統合
 
@@ -135,7 +135,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 8. 上部のメニューで、**[アプリ]、[統合]** の順に選択します。
 
-    ![[Configure Single Sign-On]](./media/pingboard-tutorial/Pingboard_integration.png)
+    ![Configure single sign-on](./media/pingboard-tutorial/Pingboard_integration.png)
 
 9. **[Integrations]** ページで、**[Azure Active Directory]** タイルを探してクリックします。
 
@@ -187,7 +187,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 このセクションの目的は、Pingboard に Bitta Simon というユーザーを作成することです。 Pingboard では、　自動ユーザー プロビジョニングがサポートされています。この設定は、規定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](pingboard-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します：**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
 1. PingBoard 企業サイトに管理者としてログインします。
 
@@ -249,7 +249,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 アクセス パネルで [PingBoard] タイルをクリックすると、自動的に PingBoard アプリケーションにサインオンします。
 

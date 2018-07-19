@@ -10,17 +10,17 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 2f2177b289ba9d13ba635bddcd61748e1e8ab0d1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936399"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39062995"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 
 1. F5 キーを押して (またはターミナル ウィンドウで「`azds up`」と入力して)、サービスを実行します。 新たに選択した `default/scott` 空間で、サービスが自動的に実行されます。 
-1. `azds list` をもう一度実行すると、サービスが独自の空間で実行されていることを確認できます。 まず、`mywebapi` のインスタンスが `default/scott` 空間で実行されていることがわかります (`default` で実行されているバージョンもまだ実行されていますが、リストされていません)。 次に、`webfrontend` のアクセス ポイント URL に、"scott.s." というプレフィックスが付いていることがわかります。 この URL は `default/scott` 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、`default/scott` 空間内のサービスへのルーティングが試行され、失敗した場合は、`default` 空間内のサービスにフォールバックされることを示します。
+1. `azds list-up` をもう一度実行すると、サービスが独自の空間で実行されていることを確認できます。 まず、`mywebapi` のインスタンスが `default/scott` 空間で実行されていることがわかります (`default` で実行されているバージョンもまだ実行されていますが、リストされていません)。 次に、`webfrontend` のアクセス ポイント URL に、"scott.s." というプレフィックスが付いていることがわかります。 この URL は `default/scott` 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、`default/scott` 空間内のサービスへのルーティングが試行され、失敗した場合は、`default` 空間内のサービスにフォールバックされることを示します。
 
 ```
 Name         Space          Chart              Ports   Updated     Access Points

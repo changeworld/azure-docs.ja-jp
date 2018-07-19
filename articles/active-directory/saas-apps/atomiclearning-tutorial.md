@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 785a2af9cf736bad0aa0520898664c2939720a78
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b69050ef85bd7108fcfb5dc5d2f6742af6218618
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212119"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>チュートリアル: Azure Active Directory と Atomic Learning の統合
 
@@ -102,15 +102,15 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **[Atomic Learning]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/atomiclearning-tutorial/tutorial_atomiclearning_samlbase.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_samlbase.png)
 
 3. **[Atomic Learning Domain and URLs] \(Atomic Learning のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/atomiclearning-tutorial/tutorial_atomiclearning_url.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_url.png)
 
      **[サインオン URL]** ボックスに、`https://secure2.atomiclearning.com/sso/shibboleth/<companyname>` のパターンを使用して URL を入力します。
     
@@ -119,11 +119,11 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/atomiclearning-tutorial/tutorial_atomiclearning_certificate.png) 
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/atomiclearning-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_general_400.png)
 
 6. **Atomic Learning** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Atomic Learning サポート チーム](mailto:cs@atomiclearning.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -181,7 +181,7 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **[Atomic Learning]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/atomiclearning-tutorial/tutorial_atomiclearning_app.png) 
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -202,7 +202,7 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Atomic Learning] タイルをクリックすると、Atomic Learning アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

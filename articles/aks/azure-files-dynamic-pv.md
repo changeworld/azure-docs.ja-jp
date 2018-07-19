@@ -2,19 +2,19 @@
 title: AKS で Azure Files を使用する
 description: AKS での Azure ディスクの使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 84500791887194884e1ec7d15ddfbc169ba22517
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597503"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098347"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Azure ファイルを含む永続ボリューム
 
@@ -24,7 +24,7 @@ ms.locfileid: "34597503"
 
 ## <a name="create-storage-account"></a>[ストレージ アカウントの作成]
 
-Azure ファイル共有を Kubernetes ボリュームとして動的に作成するときは、AKS **ノード** リソース グループ内にある限り、任意のストレージ アカウントを使用できます。 [az resource show][az-resource-show] コマンドを使用して、リソース グループ名を取得します。
+Azure ファイル共有を Kubernetes ボリュームとして動的に作成するときは、AKS **ノード** リソース グループ内にある限り、任意のストレージ アカウントを使用できます。 これは、AKS クラスターにリソースのプロビジョニングによって作成された `MC_` プレフィックスを備えています。 [az resource show][az-resource-show] コマンドを使用して、リソース グループの名前を取得します。
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -40,13 +40,15 @@ MC_myResourceGroup_myAKSCluster_eastus
 az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
+> Azure Files は現在、Standard ストレージのみと連動します。 Premium ストレージを使用すると、ボリュームはプロビジョニングに失敗します。
+
 ## <a name="create-storage-class"></a>ストレージ クラスの作成
 
 ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 クラス内に特定のストレージ アカウントを指定できます。 ストレージ アカウントが指定されない場合は、`skuName` と `location` が指定される必要があり、関連するリソース グループ内のすべてのストレージ アカウントが一致するかどうかの評価が行われます。
 
 Azure ファイル用の Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
 
-`azure-file-sc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 `storageAccount` をターゲットのストレージ アカウントの名前に更新します。
+`azure-file-sc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 `storageAccount` をターゲットのストレージ アカウントの名前に更新します。 `mountOptions` の詳細については、「マウント オプション」セクションを参照してください。
 
 ```yaml
 kind: StorageClass
@@ -54,8 +56,13 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: azurefile
 provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
 parameters:
-  storageAccount: mystorageaccount
+  skuName: Standard_LRS
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用して、ストレージ クラスを作成します。
@@ -206,3 +213,4 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
+[mount-options]: #mount-options

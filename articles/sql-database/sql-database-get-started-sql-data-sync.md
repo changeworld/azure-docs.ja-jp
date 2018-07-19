@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7cb7ce0ea81cf99c2ee14a6f209864894563d237
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025525"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111781"
 ---
 # <a name="set-up-sql-data-sync"></a>SQL データ同期の設定
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。

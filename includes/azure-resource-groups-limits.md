@@ -1,4 +1,4 @@
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (リソースの種類) あたりのリソース数 |800 |リソースの種類ごとに異なる |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800 |800 |

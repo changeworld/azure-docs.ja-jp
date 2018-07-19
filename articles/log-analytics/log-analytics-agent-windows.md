@@ -3,7 +3,7 @@ title: Windows コンピューターを Azure Log Analytics に接続する | Mi
 description: この記事では、Microsoft Monitoring Agent (MMA) を使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Log Analytics に接続する方法について説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: df61ef74d95dd9305fa8d97758bf07bcb40d54a6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637414"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131388"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -32,7 +33,7 @@ Log Analytics を使用して、ローカル データ センターやその他�
 * 手動インストール。 セットアップ ウィザード、コマンドライン、または既存のソフトウェア配布ツールを使用して、コンピューター上でセットアップを手動で実行します。
 * Azure Automation Desired State Configuration (DSC)。 Azure Automation 内の DSC と、環境内に既にデプロイされている Windows コンピューター用のスクリプトを使用します。  
 * PowerShell スクリプト。
-* Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレートです。  
+* Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。  
 
 サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-concept-hybrid.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-concept-hybrid.md#network-firewall-requirements)」をご覧ください。
 

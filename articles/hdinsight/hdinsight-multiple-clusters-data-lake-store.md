@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404569"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101695"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する
 
 HDInsight バージョン 3.5 からは、Azure Data Lake Store アカウントを既定のファイル システムとして使用して HDInsight クラスターを作成できます。
-Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store をストレージとして使用して HDInsight クラスターを作成する方法については、「[Data Lake Store を使用して HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+Data Lake Store は、無制限のストレージをサポートしているため、大量のデータのホスティングだけでなく、1 つの Data Lake Store アカウントを共有する複数の HDInsight クラスターのホスティングにも最適です。 Data Lake Store で HDInsight クラスターを作成する方法の手順については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
 この記事では、複数の**アクティブな** HDInsight クラスターにわたって使用できる 1 つの、および共有された Data Lake Store アカウントを設定するための Data Lake Store 管理者への推奨事項を示します。 これらの推奨事項は、共有された Data Lake Store アカウント上の複数のセキュリティ保護された、およびセキュリティ保護されていない Hadoop クラスターのホスティングに適用されます。
 
@@ -51,7 +51,7 @@ Data Lake Store アカウントで複数の HDInsight クラスターを使用�
 - **サービス プリンシパル**は、そのアカウントに関連付けられている Azure Active Directory (AAD) サービス プリンシパルです。
 - **FINGRP**は、財務組織のユーザーを含む AAD で作成されたユーザー グループです。
 
-AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
+AAD アプリケーション (これはサービス プリンシパルも作成します) を作成する方法については、「[AAD アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」を参照してください。 AAD でユーザー グループを作成する方法については、「[Azure Active Directory でのグループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 いくつかの考慮すべき重要な点。
 
@@ -97,6 +97,6 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 ## <a name="see-also"></a>関連項目
 
-* [Data Lake Store をストレージとして使用して HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

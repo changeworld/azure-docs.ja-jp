@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 488c9c62138cf9b042de749c35b8e8932b1da30f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: efa2c421b405b11acb605106bc14ccc76f1a2149
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226937"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル: Azure Active Directory と Qumu Cloud の統合
 
@@ -123,7 +123,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
 4. Qumu Cloud アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/qumucloud-tutorial/attribute.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/attribute.png)
     
 5. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
 
@@ -136,11 +136,11 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
     a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
-    ![[Configure Single Sign-On]](./media/qumucloud-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/tutorial_attribute_04.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![[Configure Single Sign-On]](./media/qumucloud-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/tutorial_attribute_05.png)
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
@@ -234,7 +234,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Qumu Cloud のタイルをクリックすると、自動的に Qumu Cloud アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

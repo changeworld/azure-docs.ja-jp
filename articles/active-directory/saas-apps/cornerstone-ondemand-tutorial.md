@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6928242f39e079af0238b21f6e06c2afbb4eca22
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cfbf431f8fa483b9a34beb71d9b1dbe3e691cdba
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219406"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>チュートリアル: Azure Active Directory と Cornerstone OnDemand の統合
 
@@ -102,15 +102,15 @@ Cornerstone OnDemand で Azure AD のシングル サインオンを構成して
 
 1. Azure Portal の **Cornerstone OnDemand**  アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
 
 3. **[Cornerstone OnDemand のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_url.png)
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<company>.csod.com` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Cornerstone OnDemand で Azure AD のシングル サインオンを構成して
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_general_400.png)
 
 6. **[Cornerstone OnDemand Configuration]\(Cornerstone OnDemand 構成\)** セクションで **[Configure Cornerstone OnDemand]\(Cornerstone OnDemand の構成\)** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_configure.png) 
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_configure.png) 
 
 7. **Cornerstone OnDemand** 側にシングル サインオンを構成するには、ダウンロードされた**証明書**、**サインアウト URL**、および **SAML シングル サインオン サービス URL** を [Cornerstone OnDemand サポート チーム](mailTo:moreinfo@csod.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -189,7 +189,7 @@ Cornerstone OnDemand で Azure AD のシングル サインオンを構成して
 
 2. アプリケーション一覧で **[Cornerstone OnDemand]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_app.png) 
+    ![Configure single sign-on](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -210,7 +210,7 @@ Cornerstone OnDemand で Azure AD のシングル サインオンを構成して
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Cornerstone OnDemand] タイルをクリックすると、自動的に Cornerstone OnDemand アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

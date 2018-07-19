@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: a40ec6e8cea8515e84690e3f95c2b3440c359b55
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5859a48034339fafa59acb003c117dd8873850c2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231629"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル: Azure Active Directory と Evidence.com の統合
 
@@ -228,7 +228,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Evidence.com のタイルをクリックすると、自動的に Evidence.com アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 72cfc470dde29033dfce50aa3e815507c03b3857
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8ea156f09f79d2e2718b0aeb1a6a9e870828c32d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215938"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 
@@ -102,15 +102,15 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 
 1. Azure Portal の **Cloud Management Portal for Microsoft Azure** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_newsignature_samlbase.png)
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_newsignature_samlbase.png)
 
 3. **[Cloud Management Portal for Microsoft Azure のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_newsignature_url.png)
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_newsignature_url.png)
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 
     
@@ -139,15 +139,15 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_newsignature_certificate.png) 
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_newsignature_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_general_400.png)
 
 6. **[Cloud Management Portal for Microsoft Azure 構成]** セクションで **[Cloud Management Portal for Microsoft Azure の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_newsignature_configure.png) 
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_newsignature_configure.png) 
 
 7. **Cloud Management Portal for Microsoft Azure** 側でシングル サインオンを構成するには、ダウンロードした**証明書**、**サインアウト URL**、**SAML シングル サインオン サービス URL**、**SAML エンティティ ID** を [Cloud Management Portal for Microsoft Azure サポート チーム](mailto:jczernuszka@newsignature.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -204,7 +204,7 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 
 2. アプリケーションの一覧で **Cloud Management Portal for Microsoft Azure**を選択します。
 
-    ![[Configure Single Sign-On]](./media/newsignature-tutorial/tutorial_newsignature_app.png) 
+    ![Configure single sign-on](./media/newsignature-tutorial/tutorial_newsignature_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -225,7 +225,7 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 アクセス パネルで Cloud Management Portal for Microsoft Azure のタイルをクリックすると、自動的に Cloud Management Portal for Microsoft Azure アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

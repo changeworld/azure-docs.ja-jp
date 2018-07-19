@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: sngun
-ms.openlocfilehash: c392e51cdde1b66cad1fa00ea5a301d62f24846c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f39f3f73dd70808a40caea2b3a11aca22ae72d66
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616119"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109639"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB のホワイトペーパー 
 

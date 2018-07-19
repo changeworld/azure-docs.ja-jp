@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333914"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109744"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Azure Virtual Network サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティで保護する
 
@@ -249,7 +249,7 @@ NSG タグの詳細については、[仮想ネットワークのサービス �
 
 この 2 つの機能は、Azure Cosmos DB アセットを確実に分離し、それらをセキュリティで保護するために、互いに補完しています。 IP ファイアウォールを使用すると、静的 IP が確実に Azure Cosmos DB アカウントにアクセスできます。  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Azure Virtual Network ゲートウェイ (VPN) または Express Route ゲートウェイを介して接続しているオンプレミス デバイスの IP アドレスは、Azure Cosmos DB アカウントにアクセスできますか。  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Azure Virtual Network ゲートウェイ (VPN) または Express Route ゲートウェイを介して接続しているオンプレミス デバイスの IP アドレスは、Azure Cosmos DB アカウントにアクセスできますか。  
 
 Azure Cosmos DB アカウントにアクセスするには、オンプレミス デバイスの IP アドレスまたは IP アドレス範囲を静的 IP の一覧に追加する必要があります。  
 

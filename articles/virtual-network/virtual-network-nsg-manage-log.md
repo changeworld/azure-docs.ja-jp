@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: c3f4a64c9e11d17899987bbe818506f61c415e3f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 81809660bdda957eb4502e02799b9f7f5538ae51
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757061"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114025"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 
@@ -35,11 +35,11 @@ ms.locfileid: "34757061"
 
 ## <a name="enable-logging"></a>ログの有効化
 
-[Azure portal](#azure-portal) または [PowerShell](#powershell) を使って、診断ログを有効にできます。
+[Azure portal](#azure-portal)、[PowerShell](#powershell)、または [Azure CLI](#azure-cli) を使って、診断ログを有効にすることができます。
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. [ポータル](https://portal.azure.com)にログインします。
+1. [ポータル](https://portal.azure.com)にサインインします。
 2. **[すべてのサービス]** を選び、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選びます。
 3. ログを有効にする NSG を選択します。
 4. 次の図に示すように、**[監視]** で **[診断ログ]** を選び、**[診断をオンにする]** を選びます。
@@ -57,7 +57,7 @@ ms.locfileid: "34757061"
 
 ### <a name="powershell"></a>PowerShell
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはお使いのコンピューターから PowerShell を実行することで、実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.1.1 以降が必要です。 インストールされているバージョンを確認するには、コンピューターで `Get-Module -ListAvailable AzureRM` を実行してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.1.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にサインインする必要もあります。
 
 診断ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を実行して作成できます。
 
@@ -69,12 +69,12 @@ $Nsg=Get-AzureRmNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-3 種類の保存先に診断ログを書き込むことができます。 詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。 この記事では、例として *Log Analytics* の保存先にログを送信します。 [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) を使用して、既存の Log Analytics ワークスペースを取得します。 たとえば、*LaWorkspaces* という名前のリソース グループに存在する *myLaWorkspace* という名前の既存のワークスペースを取得するには、次のコマンドを入力します。
+3 種類の保存先に診断ログを書き込むことができます。 詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。 この記事では、例として *Log Analytics* の保存先にログを送信します。 [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) を使用して、既存の Log Analytics ワークスペースを取得します。 たとえば、*myWorkspaces* という名前のリソース グループに存在する *myWorkspace* という名前の既存のワークスペースを取得するには、次のコマンドを入力します。
 
 ```azurepowershell-interactive
 $Oms=Get-AzureRmOperationalInsightsWorkspace `
-  -ResourceGroupName LaWorkspaces `
-  -Name myLaWorkspace
+  -ResourceGroupName myWorkspaces `
+  -Name myWorkspace
 ```
 
 既存のワークスペースがない場合は、[New-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) を使用して作成できます。
@@ -89,6 +89,41 @@ Set-AzureRmDiagnosticSetting `
 ```
 
 両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Event Hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切なパラメーターを使います。
+
+ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
+
+### <a name="azure-cli"></a>Azure CLI
+
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
+
+診断ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して作成できます。
+
+[az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) を使用して、診断ログを有効にするネットワーク セキュリティ グループを取得します。 たとえば、*myResourceGroup* という名前のリソース グループに存在する *myNsg* という名前の NSG を取得するには、次のコマンドを入力します。
+
+```azurecli-interactive
+nsgId=$(az network nsg show \
+  --name myNsg \
+  --resource-group myResourceGroup \
+  --query id \
+  --output tsv)
+```
+
+3 種類の保存先に診断ログを書き込むことができます。 詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。 この記事では、例として *Log Analytics* の保存先にログを送信します。 詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。 
+
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) を使用して、NSG に対する診断ログを有効にします。 次の例では、*myWorkspaces* というリソース グループ内に存在する *myWorkspace* という既存のワークスペースに対するイベントとカウンター カテゴリ データの両方と、以前に取得した NSG の ID をログに記録します。
+
+```azurecli-interactive
+az monitor diagnostic-settings create \
+  --name myNsgDiagnostics \
+  --resource $nsgId \
+  --logs '[ { "category": "NetworkSecurityGroupEvent", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "NetworkSecurityGroupRuleCounter", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
+  --workspace myWorkspace \
+  --resource-group myWorkspaces
+```
+
+既存のワークスペースがない場合は、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) を使って作成できます。 2 つのカテゴリのログを有効にすることができます。 
+
+あるカテゴリまたは他のカテゴリのデータのみをログに記録する場合は、前のコマンドでデータをログに記録しないカテゴリを削除します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Event Hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切なパラメーターを使います。
 
 ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 

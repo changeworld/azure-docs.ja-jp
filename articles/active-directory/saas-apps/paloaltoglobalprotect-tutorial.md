@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: e840a8cbcbf03bf6a658047686f4d4a29994af09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6f395897687235f0956928fd0a5dccf00d4c7d12
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219936"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - GlobalProtect の統合
 
@@ -119,7 +119,7 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
  
 4. Palo Alto Networks - GlobalProtect アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_attribute.png)
+    ![Configure single sign-on](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_attribute.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -129,9 +129,9 @@ Palo Alto Networks - GlobalProtect で Azure AD のシングル サインオン�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/paloaltoglobalprotect-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -243,7 +243,7 @@ Palo Alto Networks - GlobalProtect は Just-In-Time ユーザー プロビジョ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Palo Alto Networks - GlobalProtect のタイルをクリックすると、Palo Alto Networks - GlobalProtect アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

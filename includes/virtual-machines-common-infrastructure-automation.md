@@ -24,7 +24,8 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 
 ## <a name="chef"></a>Chef
-[Chef](https://www.chef.io/) は、インフラストラクチャを構成、デプロイ、管理する方法を定義するのに役立つ自動化プラットフォームです。 追加コンポーネントには、インフラストラクチャではなくアプリケーションのライフサイクル自動化のための Chef Habitat のほか、セキュリティとポリシー要件へのコンプライアンスの自動化に役立つ Chef InSpec があります。 Chef Client はターゲット マシンにインストールし、1 つ以上の中央 Chef Server で構成を保存および管理します。 詳細は、「[An Overview of Chef (シェフの概要)](https://docs.chef.io/chef_overview.html)」を参照してください。
+
+  [Chef](https://www.chef.io/) は、インフラストラクチャを構成、デプロイ、管理する方法を定義するのに役立つ自動化プラットフォームです。 追加コンポーネントには、インフラストラクチャではなくアプリケーションのライフサイクル自動化のための Chef Habitat のほか、セキュリティとポリシー要件へのコンプライアンスの自動化に役立つ Chef InSpec があります。 Chef Client はターゲット マシンにインストールし、1 つ以上の中央 Chef Server で構成を保存および管理します。 詳細は、「[An Overview of Chef (シェフの概要)](https://docs.chef.io/chef_overview.html)」を参照してください。
 
 以下の項目について説明します。
 
@@ -47,7 +48,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| 発行元 | プラン | SKU | バージョン | cloud-init 対応
+| 発行元 | プラン | SKU | Version | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |

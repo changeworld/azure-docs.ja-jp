@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 3deb7f23f6fb54cc832ec52fcdbe34aa58a24668
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 30cf33de7385add20ec5c255bf20b4e3cb7580fc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227076"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル: Azure Active Directory と Pluralsight の統合
 
@@ -127,7 +127,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
     Pluralsight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。
 
-    ![[Configure Single Sign-On]](./media/pluralsight-tutorial/tutorial_pluralsight_attribute.png)
+    ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_pluralsight_attribute.png)
 
     >[!NOTE]
     >**"一意の ID"** 属性を追加し、EmployeeID などの組織に合った適切な値を設定することもできます。 これは必須の属性ではありませんが、一意のユーザーを識別するために追加できます。 
@@ -142,7 +142,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
    
    a. **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
     
-     ![[Configure Single Sign-On]](./media/pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
+     ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
   
    b. **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
   
@@ -152,7 +152,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/pluralsight-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_general_400.png)
 
 8. アプリケーション用に構成された SSO を入手するには、[Pluralsight のプロフェッショナル サービス](mailTo:professionalservices@pluralsight.com) チームに連絡し、ダウンロードしたメタデータ ファイルを提供します。
 
@@ -230,7 +230,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Pluralsight] タイルをクリックすると、自動的に Pluralsight アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

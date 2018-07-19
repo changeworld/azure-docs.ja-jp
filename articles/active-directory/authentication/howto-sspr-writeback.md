@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: fce92845591f20f7f2e9cff1a856e0904629255b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296889"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054796"
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
@@ -216,8 +216,8 @@ SSPR の範囲内に入るには、Azure AD Connect ユーティリティで指�
 ## <a name="next-steps"></a>次の手順
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットと変更。](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスによるパスワード リセットの登録。](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

@@ -1,20 +1,20 @@
 ---
 title: Azure Backup のレポートを構成する
-description: この記事では、Recovery Services コンテナーを使用する Azure Backup の Power BI レポートを構成する方法について説明します。
+description: Recovery Services コンテナーを使用する Azure Backup の Power BI レポートを構成します。
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/10/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b645d12255ab2bd6c3747eb966b2a6ecc3e284b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81653f9125b9cc4411e5cfe358bd602f92c5bf89
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605231"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448368"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用する Azure Backup のレポートを構成し、Power BI を使用してそのレポートにアクセスする手順を説明します。 この手順を実行すると、Power BI に直接アクセスしてすべてのレポートを表示し、レポートのカスタマイズおよび作成を行えるようになります。 

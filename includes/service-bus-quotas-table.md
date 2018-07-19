@@ -9,15 +9,15 @@ ms.date: 06/04/2018
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 0ff1e31e52c7db5c41f92cb9e4cb1a17f28dea6f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806402"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755862"
 ---
 次の表は、Service Bus メッセージングに固有のクォータ情報の一覧です。 Service Bus の料金やその他のクォータについては、「 [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/) 」の概要を参照してください。
 
-| クォータ名 | スコープ | メモ | 値 |
+| クォータ名 | Scope (スコープ) | メモ | 値 |
 | --- | --- | --- | --- | --- |
 | Azure サブスクリプションごとの Basic/Standard 名前空間の最大数 |名前空間 |追加の Basic/Standard 名前空間に関する後続の要求はポータルで拒否されます。 |100|
 | Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |10 |

@@ -3,7 +3,7 @@ title: ポータルでのクラウド サービスの自動スケール | Micros
 description: ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 0eea38cdb9827ab6e322025ff344ebbab0e83da3
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: jeconnoc
+ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27992274"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004338"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 

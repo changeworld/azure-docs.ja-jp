@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298792"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441534"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>ロジック アプリの障害のトラブルシューティングと診断
 
@@ -105,15 +105,15 @@ ms.locfileid: "35298792"
 
 ## <a name="perform-runtime-debugging"></a>ランタイム デバッグを実行する
 
-デバッグを行いやすいように、トリガーや実行の履歴を確認するほか、診断手順をワークフローに追加することができます。 たとえば、[RequestBin](http://requestb.in) サービスを使用する手順を追加できます。これにより、HTTP 要求を調べて、正確なサイズ、シェイプ、および形式を特定できます。
+デバッグを行いやすいように、トリガーや実行の履歴を確認するほか、診断手順をワークフローに追加することができます。 たとえば、[Webhook Tester](https://webhook.site/) サービスを使用する手順を追加できます。これにより、HTTP 要求を調べて、正確なサイズ、シェイプ、および形式を特定できます。
 
-1. RequestBin を作成します。これをプライベートにして、ブラウザーでのみ表示可能にできます。
+1. [Webhook Tester](https://webhook.site/) にアクセスし、作成された一意の URL をコピーします
 
 2. ロジック アプリで、テスト対象の HTTP POST アクションと本文コンテンツを追加します (式、別の手順の出力など)。
 
-3. RequestBin の URL を HTTP POST アクションに貼り付けます。
+3. Webhook Tester の URL を HTTP POST アクションに貼り付けます。
 
-4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリの実行し、RequestBin を更新します。
+4. 要求が Logic Apps エンジンからの生成時にどのように形成されたかを確認するには、ロジック アプリを実行し、詳細を Webhook Tester で確認します。
 
 ## <a name="next-steps"></a>次の手順
 

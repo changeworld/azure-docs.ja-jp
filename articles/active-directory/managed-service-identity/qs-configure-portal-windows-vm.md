@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901359"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035943"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Azure ポータルを使用して、VM 管理対象サービス ID (MSI) を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "37901359"
 
 ## <a name="prerequisites"></a>前提条件
 
-- マネージド サービス ID の基本についてご不明な点がある場合は、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。
+- MSI の基本的な事柄については、[管理対象のサービス ID の概要](overview.md)に関するページを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Azure VM の作成中のマネージド サービス ID
@@ -59,7 +59,7 @@ ms.locfileid: "37901359"
     > [!NOTE]
     > Azure portal による VM へのユーザー割り当て ID の追加は、現時点ではサポートされていません。
 
-   ![[構成] ページのスクリーンショット](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![[構成] ページのスクリーンショット](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Azure VM からマネージド サービス ID を削除する
 
@@ -74,7 +74,7 @@ ms.locfileid: "37901359"
     > [!NOTE]
     > Azure portal による VM へのユーザー割り当て ID の追加は、現時点ではサポートされていません。
 
-   ![[構成] ページのスクリーンショット](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![[構成] ページのスクリーンショット](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>関連コンテンツ
 

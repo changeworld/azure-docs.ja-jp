@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: e6ef6b141f22680c0a97f4d35298a137a5abe1a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 47780b9c1d6a83dfedb9607dee3ac4c89b443f93
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38591683"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054830"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -250,6 +250,7 @@ Set-AzureRmVmssStorageProfile $vmssConfig `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
   -ImageReferenceVersion latest
+  -OsDiskCreateOption FromImage
 Set-AzureRmVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `
   -AdminPassword "Azure123456!" `
@@ -268,7 +269,7 @@ New-AzureRmVmss `
 ### <a name="install-iis"></a>IIS のインストール
 
 ```azurepowershell-interactive
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
@@ -297,7 +298,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http://www.contoso.org ) 。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

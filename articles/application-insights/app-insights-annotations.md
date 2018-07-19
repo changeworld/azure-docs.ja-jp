@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293437"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036399"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
-[メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)により自動で作成されます。 [PowerShell から作成する](#create-annotations-from-powershell)ことにより、任意のイベントにフラグを設定する注釈を作成することもできます。
+[メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Visual Studio Team Services ビルド システム](https://docs.microsoft.com/vsts/pipelines/tasks/)により自動で作成されます。 [PowerShell から作成する](#create-annotations-from-powershell)ことにより、任意のイベントにフラグを設定する注釈を作成することもできます。
 
 ![サーバー応答時間と明確な相関関係のある注釈の例](./media/app-insights-annotations/00.png)
 

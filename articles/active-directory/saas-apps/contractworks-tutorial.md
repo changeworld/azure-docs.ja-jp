@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: db6fa96e713878c75fd6ebc6056ee825458e986b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1fd442556a5634cdd4fb358a9c977abedd99f3d3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231231"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>チュートリアル: Azure Active Directory と ContractWorks の統合
 
@@ -118,7 +118,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
      
 5. ContractWorks アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/contractworks-tutorial/tutorial_ContractWorks_attribute.png)
+    ![Configure single sign-on](./media/contractworks-tutorial/tutorial_ContractWorks_attribute.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -129,9 +129,9 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/contractworks-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/contractworks-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/contractworks-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/contractworks-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -143,7 +143,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
 
 7. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/contractworks-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/contractworks-tutorial/tutorial_metadataurl.png)
      
 8. **[保存]** ボタンをクリックします。
 
@@ -222,7 +222,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ContractWorks] タイルをクリックすると、自動的に ContractWorks アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

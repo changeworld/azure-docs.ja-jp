@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 85368e4e-a0db-4c02-8dbc-8e2928fa6091
 caps.latest.revision: 60
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 6db3edef937dc0b5cdd805d0045897e02b985e7b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e548841f334705aa71ada92c43ccde207a1f6318
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360344"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002315"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services の定義: WebRole スキーマ
 Azure Web ロールは、Web アプリケーションのプログラミング用として IIS 7 でサポートされるようにカスタマイズされたロールであり、ASP.NET、PHP、Windows Communication Foundation、FastCGI などがあります。
@@ -163,7 +163,7 @@ Web ロールが含まれるサービス定義ファイルの基本形式は次�
 
 以下の表に、`WebRole` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 Web ロールの名前です。 ロールの名前は一意である必要があります。|  
 |enableNativeCodeExecution|ブール値|省略可能。 既定値は `true` であり、ネイティブ コード実行および完全な信頼は既定で有効になっています。 Web ロールでネイティブ コード実行を無効にし、代わりに Azure 部分信頼を使用するには、この属性を `false` に設定します。|  
@@ -177,7 +177,7 @@ Web ロールが含まれるサービス定義ファイルの基本形式は次�
 
 以下の表に、`Setting` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 構成設定の一意の名前です。|  
 
@@ -194,7 +194,7 @@ Web ロールが含まれるサービス定義ファイルの基本形式は次�
 
 以下の表に、`LocalStorage` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 ローカル ストアの一意名です。|  
 |cleanOnRoleRecycle|ブール値|省略可能。 ロールの再起動時にローカル ストアをクリーンアップするかどうかを指定します。 既定値は `true` です。|  
@@ -217,7 +217,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`InputEndpoint` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 外部エンドポイントの一意名です。|  
 |protocol|文字列|必須。 外部エンドポイントのトランスポート プロトコルです。 Web ロールで使用可能な値は、`HTTP`、`HTTPS`、`UDP`、および `TCP` です。|  
@@ -232,7 +232,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`InternalEndpoint` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 内部エンドポイントの一意名です。|  
 |protocol|文字列|必須。 内部エンドポイントのトランスポート プロトコルです。 指定できる値は、`HTTP`、`TCP`、`UDP`、および `ANY` です。<br /><br /> 値を `ANY` にすると、あらゆるプロトコルおよびポートが許可されます。|  
@@ -245,7 +245,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`InstanceInputEndpoint` 要素の属性を示します。
   
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 エンドポイントの一意名です。|  
 |localPort|int|必須。 ロード バランサーから転送された受信トラフィックを受信するために、すべてのロール インスタンスがリッスンする内部ポートを指定します。 指定できる値は 1 以上 65535 以下です。|  
@@ -263,7 +263,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPort` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |ポート|int|必須。 内部エンドポイントのポートです。 この属性の効果は、`FixedPortRange` の min と max を同じポートに設定した場合と同じです。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
 
@@ -277,7 +277,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPortRange` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |Min|int|必須。 範囲の最小ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
 |max|文字列|必須。 範囲の最大ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
@@ -290,7 +290,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Certificate` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 この証明書の名前です。証明書を HTTPS `InputEndpoint` 要素に関連付けた場合に、その証明書を参照するために使用します。|  
 |storeLocation|文字列|必須。 この証明書を見つけることのできるローカル マシン上の証明書ストアの場所です。 可能な値は `CurrentUser` と `LocalMachine` です。|  
@@ -309,7 +309,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Import` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |moduleName|文字列|必須。 インポートするモジュールの名前です。 有効なインポート モジュールは次のとおりです。<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> RemoteAccess モジュールと RemoteForwarder モジュールを使用すると、ロール インスタンスをリモート デスクトップ接続用に構成できます。 詳細については、[リモート デスクトップの有効化](cloud-services-role-enable-remote-desktop-new-portal.md)に関するページをご覧ください。<br /><br /> Diagnostics モジュールを使用すると、ロール インスタンスの診断データを収集できます。|  
 
@@ -320,7 +320,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Runtime` 要素の属性を示します。  
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |executionContext|文字列|省略可能。 ロール プロセスを起動するコンテキストを指定します。 既定のコンテキストは `limited` です。<br /><br /> -   `limited` – プロセスは管理者権限を使用せずに起動されます。<br />-   `elevated` – プロセスは管理者権限を使用して起動されます。|  
 
@@ -334,7 +334,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Variable` 要素の属性を示します。  
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 設定する環境変数の名前です。|  
 |value|文字列|省略可能。 環境変数に対して設定する値です。 value 属性か `RoleInstanceValue` 要素のいずれかを指定する必要があります。|  
@@ -344,7 +344,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`RoleInstanceValue` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |xpath|文字列|省略可能。 インスタンスのデプロイ設定の保存先のパスです。 詳しくは、[XPath を使用した構成変数](cloud-services-role-config-xpath.md)に関するページをご覧ください。<br /><br /> value 属性か `RoleInstanceValue` 要素のいずれかを指定する必要があります。|  
 
@@ -361,7 +361,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`NetFxEntryPoint` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |assemblyName|文字列|必須。 エントリ ポイントが含まれるアセンブリのパスとファイル名です。 パスは、フォルダー **\\%ROLEROOT%\Approot** に対して相対的に指定します (`commandLine` で **\\%ROLEROOT%\Approot** を指定しないでください。これは仮定のものです)。 **%ROLEROOT%** は Azure で保持される環境変数であり、ロールのルート フォルダーの場所を表します。 **\\%ROLEROOT%\Approot** フォルダーは、ロールのアプリケーション フォルダーとなります。<br /><br /> HWC ロールの場合、パスは常に **\\%ROLEROOT%\Approot\bin** フォルダーに対して相対的に指定します。<br /><br /> 完全 IIS および IIS Express の各 Web ロールについては、**\\%ROLEROOT%\Approot** フォルダーへの相対パスでアセンブリが見つからない場合、**\\%ROLEROOT%\Approot\bin** が検索されます。<br /><br /> 完全 IIS 向けのこのフォールバック動作は推奨されるベスト プラクティスではないため、今後のバージョンで削除される可能性があります。|  
 |targetFrameworkVersion|文字列|必須。 アセンブリがビルドされた .NET Framework のバージョンです。 たとえば、「`targetFrameworkVersion="v4.0"`」のように入力します。|  
@@ -378,7 +378,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Site` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 Web サイトまたはアプリケーションの名前です。|  
 |physicalDirectory|文字列|サイト ルートのコンテンツ ディレクトリの場所です。 場所は、.csdef に対する絶対パスまたは相対パスを指定できます。|  
@@ -390,7 +390,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`VirtualApplication` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 仮想アプリケーションを識別する名前を指定します。|  
 |physicalDirectory|文字列|必須。 仮想アプリケーションが含まれる開発用コンピューター上のパスを指定します。 コンピューティング エミュレーターでは、IIS はこの場所からコンテンツを取得するように構成されています。 物理ディレクトリのコンテンツを Azure にデプロイすると、コンテンツはサービスの他のコンテンツと共にパッケージ化されます。 サービス パッケージを Azure にデプロイすると、IIS にはアンパックされたコンテンツの場所が設定されます。|  
@@ -402,7 +402,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`VirtualDirectory` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 仮想ディレクトリを識別する名前を指定します。|  
 |value|physicalDirectory|必須。 Web サイトまたは仮想ディレクトリのコンテンツが含まれる開発用コンピューター上のパスを指定します。 コンピューティング エミュレーターでは、IIS はこの場所からコンテンツを取得するように構成されています。 物理ディレクトリのコンテンツを Azure にデプロイすると、コンテンツはサービスの他のコンテンツと共にパッケージ化されます。 サービス パッケージを Azure にデプロイすると、IIS にはアンパックされたコンテンツの場所が設定されます。|  
@@ -417,7 +417,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 `Binding` 要素は、Azure SDK バージョン 1.3 以上を使用している場合のみ利用可能です。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |name|文字列|必須。 バインドを識別する名前を指定します。|  
 |endpointName|文字列|必須。 バインド先のエンドポイント名を指定します。|  
@@ -428,7 +428,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Startup` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |priority|int|内部使用専用です。|  
 
@@ -439,7 +439,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Task` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |commandLine|文字列|必須。 CMD ファイルなど、実行するコマンドが含まれるスクリプトです。 スタートアップ コマンドとバッチ ファイルは ANSI 形式で保存する必要があります。 ファイルの先頭にバイト順マーカーが設定されているファイル形式は、正常に処理されません。|  
 |executionContext|文字列|スクリプトが実行されるコンテキストを指定します。<br /><br /> -   `limited` (既定) – プロセスをホストするロールと同じ権限で実行します。<br />-   `elevated` – 管理者特権で実行します。|  
@@ -457,7 +457,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Content` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |destination|文字列|必須。 コンテンツを配置する Azure 仮想マシン上の場所です。 この場所は、フォルダー **%ROLEROOT%\Approot** に対する相対パスとして指定します。|  
 
@@ -470,7 +470,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`SourceDirectory` 要素の属性を示します。
 
-| Attribute | type | [説明] |  
+| Attribute | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |パス|文字列|必須。 Azure 仮想マシンにコピーするコンテンツが含まれるローカル ディレクトリの相対パスまたは絶対パスです。 ディレクトリ パスでは環境変数の展開がサポートされます。|  
   

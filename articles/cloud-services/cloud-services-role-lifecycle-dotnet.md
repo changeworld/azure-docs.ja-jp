@@ -3,7 +3,7 @@ title: クラウド サービスのライフサイクル イベントの処理 |
 description: .NET でクラウド サービスのロールのライフサイクル メソッドを使用する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 39b30acd-57b9-48b7-a7c4-40ea3430e451
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: eb78c05df3b3cdf3887334c11bdabd5cebb74747
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeconnoc
+ms.openlocfilehash: 56f7b5e3b303ce68868f15528d1ec200919b52aa
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998787"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001560"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
 worker ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。 Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。
@@ -80,6 +80,6 @@ public override bool OnStart()
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Web ロール用の ASP.NET ライフサイクル メソッドの実装
 Web ロールの初期化とシャットダウン シーケンスを管理するには、 **RoleEntryPoint** クラスで提供されるメソッドのほかに、ASP.NET のライフサイクル メソッドも使用できます。 これは既存の ASP.NET アプリケーションを Azure に移植する場合に、互換性の面で役立つことがあります。 ASP.NET のライフサイクル メソッドは、 **RoleEntryPoint** メソッドの内部から呼び出されます。 **Application\_Start** メソッドは、**RoleEntryPoint.OnStart** メソッドが終了した後に呼び出されます。 **Application\_End** メソッドは、**RoleEntryPoint.OnStop** メソッドが呼び出される前に呼び出されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 

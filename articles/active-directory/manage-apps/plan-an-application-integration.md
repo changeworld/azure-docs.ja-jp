@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 97404421a48d15339fdecf23a951a64d975da577
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088449"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090350"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>概要
@@ -62,7 +62,7 @@ ms.locfileid: "37088449"
 
 ## <a name="application-integration-with-azure-ad"></a>Azure AD とのアプリケーションの統合
 ### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>承認されていないクラウド アプリケーションを Cloud Discovery で検出する
-前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery.md)」を参照してください。
+前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
 
 ### <a name="authentication-types"></a>認証の種類
 各アプリケーションにさまざまな認証の要件が存在する可能性があります。 Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。 Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-certificates-for-federated-single-sign-on.md)」と[パスワード ベースのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5627d0fa99cee4f289787e3fccf83a4c6fa228e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221269"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル: Azure Active Directory と Vodeclic の統合
 
@@ -211,7 +211,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
 アクセス パネルで Vodeclic のタイルを選択すると、自動的に Vodeclic アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

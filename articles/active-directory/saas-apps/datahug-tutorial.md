@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: bb2d6194b5a515d89e3204679860ab19a052ba03
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 24b2ed28d0ad0f3bf5a66494d1f1266254fb552e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285166"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル: Azure Active Directory と Datahug の統合
 
@@ -102,15 +102,15 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Datahug** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
 
 3. **[Datahug のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_ur1.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
     a. **[識別子]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_url2.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_url2.png)
 
     **[サインオン URL]** ボックスに、「`https://apps.datahug.com/`」と入力します。
      
@@ -127,11 +127,11 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
 
 6.  **[証明書署名の詳細設定を表示する]** チェック ボックスをオンにし、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_cert.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
     a. **[署名オプション]** で **[SAML アサーションへの署名]** を選択します。
     
@@ -139,11 +139,11 @@ Datahug で Azure AD のシングル サインオンを構成してテストす�
  
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_general_400.png)
     
 8. **[Datahug Configuration (Datahug 構成)]** セクションで、**[Configure Datahug (Datahug を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_configure.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_configure.png) 
 
 9. **Datahug** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** を [Datahug サポート](http://datahug.com/about/contact-us/)に送る必要があります。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
 
@@ -221,7 +221,7 @@ Datahug の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[Datahug]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/datahug-tutorial/tutorial_datahug_app.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -240,7 +240,7 @@ Datahug の場合、プロビジョニングは手動で行います。
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-アクセス パネルで [Datahug] タイルをクリックすると、自動的に Datahug アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [Datahug] タイルをクリックすると、自動的に Datahug アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

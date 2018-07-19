@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e1219134b398219d653a87b18aa9ed582f84a33d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9b264a7ba1479e485ff528ee242c78c4b39010dc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226273"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル: Azure Active Directory と IQNavigator VMS の統合
 
@@ -102,15 +102,15 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **IQNavigator VMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. **[IQNavigator VMS のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
 
     a. **[識別子]** ボックスに、URL として「`iqn.com`」と入力します。
 
@@ -118,7 +118,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
 
     **[リレー状態]** ボックスに、`https://<subdomain>.iqnavigator.com` のパターンで URL を入力します。
 
@@ -127,19 +127,19 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
 6. IQNavigator アプリケーションでは、名前識別子の要求で一意のユーザー識別子の値が必要です。 顧客は、名前識別子要求の適切な値をマップできます。 ここでは、デモのために user.UserPrincipalName をマップしました。 ただし、組織の設定に従って、正しい値をマップする必要があります。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
 
 8. **[IQNavigator VMS 構成]** セクションで、**[IQNavigator VMS の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
 9. **IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/iqn-product-support/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -192,7 +192,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **[IQNavigator VMS]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -213,7 +213,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで IQNavigator VMS のタイルをクリックすると、自動的に IQNavigator VMS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

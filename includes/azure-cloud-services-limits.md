@@ -1,4 +1,4 @@
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [デプロイあたりの Web/worker ロール数](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
 | [インスタンスの入力エンドポイント](http://msdn.microsoft.com/library/gg557552.aspx#InstanceInputEndpoint) 数 |25 |25 |

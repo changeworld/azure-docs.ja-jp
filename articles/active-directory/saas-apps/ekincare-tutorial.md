@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 413ae4197b95932321e29eb1662fe8168c77799a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 24f49cac136335493fcc9290f29a08efcc5eb5da
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216941"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>チュートリアル: Azure Active Directory と eKincare の統合
 
@@ -102,15 +102,15 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **eKincare** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_ekincare_samlbase.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_samlbase.png)
 
 3. **[eKincare のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_ekincare_url.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_url.png)
 
     a. **[識別子]** ボックスに、`https://<instancename>.ekincare.com/` の形式で URL を入力します。
 
@@ -123,7 +123,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
     要求の名前は常に **"employeeid"** であり、その値はユーザーの employeeid を含む user.extensionattribute1 にマップされています。 その他 2 つの要求の名前 **"organizationid"** と **"organizationname"** は常に同一になり、値にはそれぞれユーザーの組織の詳細が含まれます。
     
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/attribute.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/attribute.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -135,9 +135,9 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/04.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/04.png)
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/05.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -147,11 +147,11 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_ekincare_certificate.png) 
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_general_400.png)
 
 8. **eKincare** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [eKincare サポート チーム](mailto:tech@ekincare.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -208,7 +208,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[eKincare]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/ekincare-tutorial/tutorial_ekincare_app.png) 
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -229,7 +229,7 @@ eKincare で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [eKincare] タイルをクリックすると、自動的に eKincare アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

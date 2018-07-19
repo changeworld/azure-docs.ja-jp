@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 4fb4a01e10baf835a1e967e9c865241d07b6639d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fe876db13cc5fb97f827a80a328003a7d2585adc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212225"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>チュートリアル: Azure Active Directory と Workplace by Facebook の統合
 
@@ -106,15 +106,15 @@ Workplace by Facebook で Azure AD のシングル サインオンを構成し�
 
 1. Azure Portal の **Workplace by Facebook** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_samlbase.png)
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_samlbase.png)
 
 3. **[Workplace by Facebook のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<instancename>.facebook.com` のパターンを使用して URL を入力します。
 
@@ -125,15 +125,15 @@ Workplace by Facebook で Azure AD のシングル サインオンを構成し�
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_certificate.png) 
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/tutorial_general_400.png)
 
 6. **[Workplace by Facebook 構成]** セクションで、**[Workplace by Facebook の構成する]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/config.png) 
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/config.png) 
 
 7. 別の Web ブラウザーのウィンドウで、Workplace by Facebook 企業サイトに管理者としてログインします。
   
@@ -229,7 +229,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 2. アプリケーションの一覧で **[Workplace by Facebook]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_app.png) 
+    ![Configure single sign-on](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -248,7 +248,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 
 ## <a name="additional-resources"></a>その他のリソース

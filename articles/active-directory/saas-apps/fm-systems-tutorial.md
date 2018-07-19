@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: d089e35e28c466f91c550a41898731f683bf5033
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4bb0d3cd247862d7bb8d4b17e26c26f7cda48c95
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216334"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル: Azure Active Directory と FM:Systems の統合
 
@@ -102,15 +102,15 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **FM:Systems** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/fm-systems-tutorial/tutorial_fmsystems_samlbase.png)
+    ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_samlbase.png)
 
 3. **[FM:Systems のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/fm-systems-tutorial/tutorial_fmsystems_url.png)
+    ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_url.png)
 
     **[応答 URL]** ボックスに、`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx` のパターンを使って FM:Systems の**応答 URL** を入力します。
 
@@ -119,11 +119,11 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/fm-systems-tutorial/tutorial_fmsystems_certificate.png) 
+    ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/fm-systems-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_general_400.png)
 
 6. **FM:Systems** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [FM:Systems サポート チーム](https://fmsystems.com/ask-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
 
@@ -195,7 +195,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[FM:Systems]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/fm-systems-tutorial/tutorial_fmsystems_app.png) 
+    ![Configure single sign-on](./media/fm-systems-tutorial/tutorial_fmsystems_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -216,7 +216,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで FM:Systems のタイルをクリックすると、自動的に FM:Systems アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

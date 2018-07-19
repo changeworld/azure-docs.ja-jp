@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7fe59763162ca53ea0256d5902aeece90525f214
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660154"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110422"
 ---
 # <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Azure Media Services v3 (プレビュー) のよく寄せられる質問
 
@@ -30,7 +30,7 @@ ms.locfileid: "34660154"
 
 Media Services チームは現在、v3 の RU を排除しています。 ただし、必要なサービス作業は完了していません。 それまでは、お客様は Azure portal または AMS v2 API を使用して、RU を設定する必要があります ([メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照)。 
 
-S3 RU は、**VideoAnalyzerPreset** および **AudioAnalyzerPreset** V3 プリセットで必要です。
+**VideoAnalyzerPreset**、**AudioAnalyzerPreset**、またはその両方を使用する場合は、Media Services アカウントを 10 個の S3 メディア占有ユニットに設定します。
 
 ## <a name="does-v3-asset-have-no-assetfile-concept"></a>V3 資産に AssetFile の概念はないのですか?
 

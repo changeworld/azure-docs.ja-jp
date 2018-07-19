@@ -1,7 +1,7 @@
 >[!NOTE]
 >固定されていないリソースについては、サポート チケットを開いてクォータの増加を依頼できます。 上限を高くするために追加の Azure Media Services アカウントを作成することは**しないでください**。
 
-| リソース | 既定の制限 | 
+| Resource | 既定の制限 | 
 | --- | --- | 
 | 1 つのサブスクリプション内の Azure Media Services (AMS) アカウント数 | 25 (固定) |
 | AMS アカウントあたりのメディア占有ユニット数 (RU) |25 (S1)<br/>10 (S2、S3) <sup>(1)</sup> | 
@@ -24,18 +24,18 @@
 
 <sup>2</sup> この数には、キューに置かれたジョブ、終了したジョブ、アクティブなジョブ、取り消されたジョブが含まれています。 これには、削除されたジョブは含まれません。 **IJob.Delete** または **DELETE** HTTP 要求を使用して古いジョブを削除できます。
 
-2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、[ここ](../articles/media-services/media-services-dotnet-manage-entities.md)で説明されているコードを使用できます。
+2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、[ここ](../articles/media-services/previous/media-services-dotnet-manage-entities.md)で説明されているコードを使用できます。
 
 <sup>3</sup> Job エンティティの一覧を要求すると、要求ごとに最大 1,000 件のジョブが返されます。 送信したすべてのジョブを追跡する必要がある場合は、「 [OData システム クエリ オプション](http://msdn.microsoft.com/library/gg309461.aspx)」の説明に従って top/skip を使うことができます。
 
-<sup>4</sup>ロケーターはユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。 詳細については、 [こちらの](../articles/media-services/media-services-content-protection-overview.md) セクションを参照してください。
+<sup>4</sup>ロケーターはユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。 詳細については、 [こちらの](../articles/media-services/previous/media-services-content-protection-overview.md) セクションを参照してください。
 
 <sup>5</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 
 <sup>6</sup> さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 
 
 >[!NOTE]
-> 常に同じ日数、アクセス許可などを使用する場合は、同じポリシー ID を使用する必要があります。詳細と例については、[こちらの](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies)セクションをご覧ください。
+> 常に同じ日数、アクセス許可などを使用する場合は、同じポリシー ID を使用する必要があります。詳細と例については、[こちらの](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies)セクションをご覧ください。
 
 <sup>7</sup> Microsoft サービスのメディア プロセッサのいずれか (つまり、Media Encoder Standard や Media Encoder Premium Workflow などのエンコードまたは Face Detector などの分析エンジン) で処理する目的でコンテンツを Azure Media Services のアセットにアップロードする場合は、サポートされる最大ファイル サイズについての制限に注意する必要があります。 
 

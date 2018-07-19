@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 38ff1ee4c525d41e2a7446d5adc792c746504491
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754183"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035620"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -88,7 +88,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
     ```CMD
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
-    </br>
+     
     **Azure Linux:** Azure Linux イメージには制限の緩やかなファイアウォールがあります。 ポートでリッスンするアプリケーションがある場合、トラフィックは通過を許可されます。 セキュリティ保護されているカスタム イメージには、明示的に開かれたポートが必要な可能性があります。 一般的な Linux OS レイヤー ファイアウォールには、`iptables`、`ufw`、または`firewalld` が含まれます。
 
 3. サーバー ノードで、iperf3.exe の抽出元のディレクトリに移動します。 iPerf をサーバー モードで実行し、次のコマンドとして、ポート 5001 でリッスンするように設定します。

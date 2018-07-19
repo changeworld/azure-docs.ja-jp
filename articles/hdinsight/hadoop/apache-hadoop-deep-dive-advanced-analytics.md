@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048473"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008231"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -67,7 +67,8 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="machine-learning-and-spark"></a>Machine Learning と Spark
 
-[HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Spark](http://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 
+
+  [HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Spark](http://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 
 
 分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリが 3 つあります。
 
@@ -81,11 +82,12 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージ サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
+
+  [Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 ### <a name="spark-and-deep-learning"></a>Spark とディープ ラーニング
 
-[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
+[ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>シナリオ - 画像をスコア付けして都市開発におけるパターンを特定する
 

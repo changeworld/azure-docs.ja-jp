@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: a1f1346e363318c73e2cba6a6a356cc376a39eac
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 28d3cab6cb8b823df061810af351bec5fec5e445
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217961"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル: Azure Active Directory と TrackVia の統合
 
@@ -218,7 +218,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [TrackVia] タイルをクリックすると、TrackVia アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

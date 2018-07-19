@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 612cce99b1a510dfb53ec4a6c1e2a40185367db1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 046673abd2b17118732439f2895e36ca18ad8321
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323627"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innovation-hub"></a>チュートリアル: Azure Active Directory と Innovation Hub の統合
 
@@ -116,20 +116,20 @@ Innovation Hub で Azure AD のシングル サインオンを構成してテス
 
 4. Innovation Hub アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
 
-    ![[Configure Single Sign-On]](./media/innovationhub-tutorial/attribute.png)
+    ![Configure single sign-on](./media/innovationhub-tutorial/attribute.png)
 
 5. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
 
     | 属性名 | 属性値 | 名前空間の値|
     | ---------------| --------------- |----------------|
-    | displayname | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | displayName | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/innovationhub-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/innovationhub-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/innovationhub-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/innovationhub-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -222,7 +222,7 @@ Innovation Hub で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Innovation Hub] タイルをクリックすると、自動的に Innovation Hub アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

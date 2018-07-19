@@ -3,7 +3,7 @@ title: Azure Cloud Services のロールに .NET をインストールする | M
 description: この記事では、クラウド サービスの Web ロールと worker ロールに .NET Framework を手動でインストールする方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
-ms.author: adegeo
-ms.openlocfilehash: 8bd146f5265e499c38b016ea8d8cb00685867cd3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: jeconnoc
+ms.openlocfilehash: 80f525f3c7b71c2d5d1fdbd415c298452ab75423
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034762"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004831"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。

@@ -5,7 +5,7 @@ Azure Virtual Machines は、複数のデータ ディスクの接続をサポ�
 
 * **Azure Managed Disks の場合:** 
 
-> | リソース | 既定の制限 | 上限 |
+> | Resource | 既定の制限 | 上限 |
 > | --- | --- | --- |
 > | Standard Managed Disks | 10,000 | 50,000 |
 > | Standard SSD Managed Disks | 10,000 | 50,000 |

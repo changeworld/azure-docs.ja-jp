@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: ebba28e72b3b27729318956bad07b6b6df3f14ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823548"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130837"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>管理と発行のための Event Grid SDK
 
@@ -43,6 +43,7 @@ Event Grid の SDK を使うと、プログラムでリソースの管理やイ�
 
 ## <a name="next-steps"></a>次の手順
 
+* アプリケーションの例については、[Event Grid のコード サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)に関するページを参照してください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure CLI での Event Grid コマンドについては、[Azure CLI](/cli/azure/eventgrid) のページをご覧ください。
 * PowerShell での Event Grid コマンドについては、[PowerShell](/powershell/module/azurerm.eventgrid) のページをご覧ください。

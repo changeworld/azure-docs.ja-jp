@@ -18,6 +18,6 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 
 引き続き IoT Hub の使用方法を確認するには、[IoT Edge の使用][lnk-iot-edge]に関する記事を参照してください。
 
-[lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
+[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
 [lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

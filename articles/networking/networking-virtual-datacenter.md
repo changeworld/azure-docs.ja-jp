@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Azure 仮想データセンター: ネットワークの観点 | Microsoft Docs'
+title: Azure 仮想データセンター - ネットワークの観点
 description: Azure で仮想データ センターを構築する方法について説明します
 services: networking
 author: tracsman
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942447"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445383"
 ---
-# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 仮想データセンター: ネットワークの観点
+# <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 仮想データセンター: ネットワークの観点
 **Microsoft Azure**: 移行の高速化、コストの削減、オンプレミスのアプリとデータの統合
 
 ## <a name="overview"></a>概要
@@ -232,11 +232,15 @@ IT インフラストラクチャ チームの主要なタスクの 1 つは、�
 
 ほとんどの大企業は、複数のドメインを管理しています。 Azure DNS を使って、特定のドメインの DNS レコードをホストできます。 たとえば、Azure 外部ロード バランサー (または WAF) の仮想 IP アドレス (VIP) を、Azure DNS レコードの A レコードに登録できます。
 
-[**Azure Load Balancer**][ALB] Azure Load Balancer が提供する高可用性レイヤー 4 (TCP、UDP) サービスは、負荷分散セットで定義されているサービス インスタンス間に受信トラフィックを分散できます。 フロントエンド エンドポイント (パブリック IP エンドポイントまたはプライベート IP エンドポイント) からロード バランサーに送信されたトラフィックは、アドレス変換をして、またはしないで、バックエンド IP アドレス プール (例: ネットワーク仮想アプライアンスまたは VM) のセットに再配信できます。
+
+  [
+  **Azure Load Balancer**][ALB] Azure Load Balancer が提供する高可用性レイヤー 4 (TCP、UDP) サービスは、負荷分散セットで定義されているサービス インスタンス間に受信トラフィックを分散できます。 フロントエンド エンドポイント (パブリック IP エンドポイントまたはプライベート IP エンドポイント) からロード バランサーに送信されたトラフィックは、アドレス変換をして、またはしないで、バックエンド IP アドレス プール (例: ネットワーク仮想アプライアンスまたは VM) のセットに再配信できます。
 
 Azure Load Balancer は、さまざまなサーバー インスタンスの正常性をプローブすることもでき、プローブが応答に失敗した場合、ロード バランサーは異常なインスタンスへのトラフィック送信を停止します。 vDC では、外部ロード バランサーがハブ (たとえば、NVA へのトラフィックの分散) とスポーク (多階層アプリケーションの異なる VM 間へのトラフィックの分散などのタスクを実行するため) に存在します。
 
-[**Application Gateway**][AppGW] Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL 終了を Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 アプリケーション ゲートウェイの WAF SKU の一部として、Web アプリケーション ファイアウォール (WAF) も提供されます。 この SKU は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 
+
+  [
+  **Application Gateway**][AppGW] Microsoft Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL 終了を Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 アプリケーション ゲートウェイの WAF SKU の一部として、Web アプリケーション ファイアウォール (WAF) も提供されます。 この SKU は、一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 
 
 [**パブリック IP**][PIP] Azure の一部の機能を使うと、サービス エンドポイントをパブリック IP アドレスに関連付けて、インターネットからリソースにアクセスできるようにすることができます。 このエンドポイントでは、ネットワーク アドレス変換 (NAT) を使って、トラフィックを Azure 仮想ネットワークの内部アドレスとポートにルーティングします。 これは、外部トラフィックが仮想ネットワークに到達するための主な経路です。 パブリック IP アドレスは、仮想ネットワークに渡されるトラフィックと、そのトラフィックが仮想ネットワークのどこでどのように変換されるかを決定するために構成できます。
 

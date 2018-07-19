@@ -12,26 +12,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 06/28/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 1884574bcb39a1cbbd95b481adabdd06ebd499a9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 42258a352b05d97341f20c13bf837e1398dd8979
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386080"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099964"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、お客様の (内部または外部の) ユーザーはあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、完全に管理された VM 上でユーザーのアプリを実行できます。
 
-Azure App Service はビジネス プロセスの自動化やクラウド API のホストに利用できる機能も備えています。 単一の統合サービスである Azure App Service では、さまざまなコンポーネント (Web サイト、RESTful API、ビジネス プロセス) を 1 つのソリューションにまとめることができます。
+Azure App Service を使用すると、ビジネス プロセスとホスティング クラウド API を自動化できます。 単一の統合サービスである Azure App Service では、さまざまなコンポーネント (Web サイト、RESTful API、ビジネス プロセス) を 1 つのソリューションにまとめることができます。
 
 ## <a name="why-offer-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を勧める理由
 
 App Service のいくつかの主要機能を次に示します。
+
 - **複数の言語とフレームワーク**: App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、Windows PowerShell などのスクリプトや実行可能ファイルを実行することもできます。
 - **DevOps の最適化**: 継続的インテグレーションと継続的配置を GitHub、ローカルの Git または BitBucket でセットアップできます。 テスト環境やステージング環境を介して更新を反映できます。 App Service でのアプリの管理には、Azure PowerShell またはクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用します。
 - **Visual Studio の統合**: Visual Studio の専用ツールを使えば、アプリケーションの作成やデプロイ作業が効率的になります。
@@ -47,10 +49,11 @@ App Service にはアプリの種類が複数用意されており、それぞ�
 ここで言うアプリとは、ワークロードの実行専用のホスティング リソースを指しています。 "Web アプリ" を例にとると、Web アプリをコンピューティング リソースとアプリケーション コードの両方の観点から捉えることに皆さんおそらく慣れていることでしょう。この両者が合わさって、ブラウザーに機能が提供されます。 しかし、App Service の Web アプリとは、アプリケーション コードをホストするために Azure Stack が提供するコンピューティング リソースです。
 
 アプリケーションは、さまざまな種類の複数の App Service アプリで構成することもできます。 たとえば、アプリケーションが Web フロントエンドと RESTful API バックエンドで構成されている場合は、次のようなことを実行できます。
+
 - 1 つの Web アプリに両方 (フロントエンドと API) をデプロイする
 - フロントエンドのコードを Web アプリに、バックエンドのコードを API アプリにデプロイする
 
-   ![](media/azure-stack-app-service-overview/image01.png)
+   ![データの監視を表示した App Service の [概要]](media/azure-stack-app-service-overview/image01.png)
 
 ## <a name="what-is-an-app-service-plan"></a>App Service プランとは
 
@@ -60,10 +63,9 @@ Azure には、共有ワーカーと専用ワーカーがあります。 共有�
 
 ## <a name="portal-features"></a>ポータルの機能
 
-Azure Stack 上の App Service では、Azure App Service と同じ UI が使用されます。これはバックエンドに当てはまります。 Azure Stack では一部の機能が無効になり、機能しません。 Azure Stack では、このような機能に必要な Azure 固有の期待値やサービスはまだ使用できません。
+Azure Stack 上の App Service では、Azure App Service と同一の UI が使用されます。同じことが、バックエンドにも当てはまります。 しかし、Azure Stack では一部の機能が無効になり、機能しません。 Azure Stack では現在、このような機能に必要な Azure 固有の期待値やサービスはまだ使用できません。
 
 ## <a name="next-steps"></a>次の手順
-
 
 - [Azure Stack 上の App Service を開始する前に](azure-stack-app-service-before-you-get-started.md)
 - [App Service リソース プロバイダーのインストール](azure-stack-app-service-deploy.md)

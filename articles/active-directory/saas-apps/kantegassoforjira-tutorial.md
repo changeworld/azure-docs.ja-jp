@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ebbb61b8612418fbec37769ee56907ff99d5214a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9355af15ed8156fee5f4b3584aa3342ea40c0628
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228766"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合
 
@@ -151,7 +151,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成して
 
     ![[Configure Single Sign-On]](./media/kantegassoforjira-tutorial/addon33.png)
 
-12. **[Manage]** をクリックします。
+12. **Manage**をクリックします。
 
     ![[Configure Single Sign-On]](./media/kantegassoforjira-tutorial/addon34.png)
     

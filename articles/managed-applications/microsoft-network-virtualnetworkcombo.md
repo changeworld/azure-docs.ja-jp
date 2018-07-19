@@ -11,23 +11,26 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d806afbfd74d68d139f494c7a5a6e871a7dae36
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260596"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110067"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 要素
 新規または既存の仮想ネットワークを選択するコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
-![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
+新しい仮想ネットワークを選択すると、各サブネットの名前とアドレスのプレフィックスをカスタマイズすることができます。 サブネットの構成は省略可能です。
 
-- 上部のワイヤーフレームでは、新しい仮想ネットワークが選択されており、ユーザーは各サブネットの名前とアドレスのプレフィックスをカスタマイズすることができます。 この場合、サブネットの構成は省略可能です。
-- 下部のワイヤーフレームでは、既存の仮想ネットワークが選択されており、ユーザーはデプロイ テンプレートに必要な各サブネットを既存のサブネットにマップする必要があります。 この場合、サブネットを構成する必要があります。
+![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+既存の仮想ネットワークを選択する場合、デプロイ テンプレートに必要な各サブネットを既存のサブネットにマップする必要があります。 この場合、サブネットを構成する必要があります。
+
+![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>スキーマ
 ```json
@@ -88,12 +91,12 @@ ms.locfileid: "34260596"
 - `constraints.minAddressPrefixSize` を指定する必要があります。 アドレス空間が指定した値よりも小さい既存の仮想ネットワークは選択できません。
 - `subnets` を指定する必要があるほか、サブネットごとに `constraints.minAddressPrefixSize` を指定する必要があります。
 - 新しい仮想ネットワークを作成するときは、その仮想ネットワークのアドレス プレフィックスと各 `addressPrefixSize` に基づいて、各サブネットのアドレス プレフィックスが自動的に計算されます。
-- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。
-既定値は **0** です。 使用可能なアドレスを連続させるには、`requireContiguousAddresses` に **true** を設定します。 既定値は **true**です。
+- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。 既定値は **0** です。 使用可能なアドレスを連続させるには、`requireContiguousAddresses` に **true** を設定します。 既定値は **true**です。
 - 既存の仮想ネットワークでのサブネットの作成はサポートされていません。
 - `options.hideExisting` が **true** である場合、ユーザーは既存の仮想ネットワークを選択できません。 既定値は **false** です。
 
 ## <a name="sample-output"></a>サンプル出力
+
 ```json
 {
   "name": "vnet01",

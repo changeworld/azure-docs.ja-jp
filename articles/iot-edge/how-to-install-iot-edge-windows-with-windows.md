@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 0ab70de83c36ec3048d9bbf74e5a315026f02b85
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035706"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437843"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する
 
@@ -89,15 +89,37 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンの構成
 
-`C:\ProgramData\iotedge\config.yaml` にある構成ファイルを使用して、デーモンを構成できます。エッジ デバイスは、<!--[automatically via Device Provisioning Service][lnk-dps] or-->[デバイス接続文字列][lnk-dcs]を使用して手動で構成できます。
+デーモンは、`C:\ProgramData\iotedge\config.yaml` にある構成ファイルを使用して構成できます。
 
-手動で構成する場合は、デバイス接続文字列を **config.yaml** の **provisioning:** セクションに入力します
+エッジ デバイスは、[デバイスの接続文字列][lnk-dcs]を使用して手動で構成することも、[Device Provisioning Service を介して自動的に][lnk-dps]構成することもできます。
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+* 手動構成の場合は、**manual** プロビジョニング モードのコメントを解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* 自動構成の場合は、**dps** プロビジョニング モードのコメントを解除します。 **scope_id** と **registration_id** の値を、IoT Hub DPS インスタンスと TPM を搭載した IoT Edge デバイスからの値で更新します。 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 PowerShell で `hostname` コマンドを使用してエッジ デバイスの名前を取得し、構成 yaml で **hostname:** の値として設定します。 例: 
 
@@ -114,30 +136,38 @@ PowerShell で `hostname` コマンドを使用してエッジ デバイスの�
   hostname: "edgedevice-1"
 ```
 
-次に、構成の **connect:** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
+次に、構成の **connect:** および **listen:** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定します。
 
-IP アドレスについては、次の例に示すように PowerShell ウィンドウに `ipconfig` と入力し、**vEthernet (nat)**' インターフェイスの IP アドレスを選択します (ご使用のシステム上の IP アドレスは異なる場合があります)。  
+IP アドレスを取得するには、次の例に示すように PowerShell ウィンドウに `ipconfig` と入力し、**vEthernet (nat)** インターフェイスの IP アドレスをコピーします (ご使用のシステム上の IP アドレスは異なる場合があります)。  
 
 ![nat][img-nat]
 
+構成ファイルの **connect:** セクションの **workload_uri** と **management_uri** を更新します。 **\<GATEWAY_ADDRESS\>** をコピーした IP アドレスに置き換えます。 
+
 ```yaml
 connect:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-構成の **listen** セクションに同じアドレスを入力します。 例: 
+IP アドレスをゲートウェイ アドレスとして使用して、同じアドレスを構成の **listen:** セクションに入力します。
 
 ```yaml
 listen:
-  management_uri: "http://172.29.240.1:15580"
-  workload_uri: "http://172.29.240.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-PowerShell ウィンドウで、環境変数 **IOTEDGE_HOST** を **management_uri** アドレスで作成します。次に例を示します。
+PowerShell ウィンドウで、環境変数 **IOTEDGE_HOST** を **management_uri** アドレスで作成します。
 
 ```powershell
-[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://172.29.240.1:15580")
+[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
+```
+
+再起動と再起動の間で環境変数を維持します。
+
+```powershell
+SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"
 ```
 
 最後に、**moby_runtime:** の下の **network:** 設定のコメントが解除され、**nat** に設定されていることを確認します。
@@ -156,7 +186,9 @@ sleep 5
 Start-Service iotedge
 ```
 
-## <a name="verify-successful-installation"></a>インストールの成功の確認
+## <a name="verify-successful-installation"></a>インストールの成功を確認する
+
+前のセクションで**手動構成**手順を使用した場合、IoT Edge ランタイムがデバイス上で正常にプロビジョニングおよび実行されている必要があります。 **自動構成**手順を使用した場合は、ランタイムが IoT ハブにデバイスを登録できるように、追加の手順を完了する必要があります。 次の手順については、[Windows でのシミュレートされた TPM Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable)に関するページをご覧ください。
 
 以下によって IoT Edge サービスの状態を確認できます。 
 
@@ -193,8 +225,8 @@ Edge ランタイムの正常なインストールに問題がある場合は、
 
 <!-- Links -->
 [lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

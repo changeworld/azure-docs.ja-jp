@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 04823409b209d1f35a27452321cfd37d30097dde
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808776"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444397"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -36,13 +36,16 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 次の方法で[アクセス許可](#iot-hub-permissions)を付与できます。
 
 * **IoT Hub レベルの共有アクセス ポリシー**:  共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] を使用してプログラムによって定義することもできます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
+  
+  | 共有アクセス ポリシー | アクセス許可 |
+  | -------------------- | ----------- |
+  | iothubowner | すべてのアクセス許可 |
+  | service | **ServiceConnect** アクセス許可 |
+  | device | **DeviceConnect** アクセス許可 |
+  | registryRead | **RegistryRead** アクセス許可 |
+  | registryReadWrite | **RegistryRead** および **RegistryWrite** アクセス許可 |
 
-  * **iothubowner**: すべてのアクセス許可を持つポリシー。
-  * **service**: **ServiceConnect** アクセス許可を持つポリシー。
-  * **device**: **DeviceConnect** アクセス許可を持つポリシー。
-  * **registryRead**: **RegistryRead** アクセス許可を持つポリシー。
-  * **registryReadWrite**: **RegistryRead** アクセス許可と RegistryWrite アクセス許可を持つポリシー。
-  * **デバイスごとのセキュリティ資格情報**。 各 IoT Hub には、[ID レジストリ][lnk-identity-registry]が含まれています。 この ID レジストリ内の各デバイスでは、対応するデバイスのエンドポイントを対象として **DeviceConnect** アクセス許可を付与する、セキュリティ資格情報を構成できます。
+* **デバイスごとのセキュリティ資格情報**。 各 IoT Hub には、[ID レジストリ][lnk-identity-registry]が含まれています。 この ID レジストリ内の各デバイスでは、対応するデバイスのエンドポイントを対象として **DeviceConnect** アクセス許可を付与する、セキュリティ資格情報を構成できます。
 
 たとえば、標準的な IoT ソリューションの場合は次のようになります。
 
@@ -462,7 +465,7 @@ IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-openssl]: https://www.openssl.org/
-[lnk-selfsigned]: https://technet.microsoft.com/library/hh848633
+[lnk-selfsigned]: https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate
 
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-sas-tokens]: iot-hub-devguide-security.md#security-tokens

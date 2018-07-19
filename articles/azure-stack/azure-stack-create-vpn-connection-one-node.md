@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6225a12b50ebb7bf0a0cb9244153800ba734d93a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159853"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006905"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
 ## <a name="overview"></a>概要
@@ -44,7 +45,7 @@ ms.locfileid: "32159853"
 
 
 ## <a name="prepare-an-offer-on-poc1-and-poc2"></a>POC1 と POC2 でプランを用意する
-POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシンをデプロイできるようにプランを用意します。 プランの作成方法については、「[Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md)」 (Azure Stack ユーザーが仮想マシンを使えるようにする) を参照してください。
+POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシンをデプロイできるようにプランを用意します。 オファーの作成方法については、「[Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md)」 (Azure Stack ユーザーが仮想マシンを使えるようにする) を参照してください。
 
 ## <a name="review-and-complete-the-network-configuration-table"></a>ネットワーク構成表を確認し、完成する
 次の表は、両方の Azure Stack Development Kit 環境のネットワーク構成についてまとめたものです。 表の後に出てくる手順で、自分のネットワークに固有の外部 BGPNAT アドレスを追加します。

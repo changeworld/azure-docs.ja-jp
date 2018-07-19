@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 565ceb179d8cf749842bb58ab25a8b3d946efa12
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608649"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130854"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
 
@@ -258,7 +258,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 現在、テンプレートとファイル転送のサポートは、Azure CLI にのみ追加されています。 目標は、Batch を使用できる対象ユーザーを、Batch API 使用してコードを開発する必要のないユーザー (研究者、IT ユーザーなど) に拡大することです。 Azure、Batch、Batch によって実行されるアプリケーションの知識があるユーザーは、コードを記述せずにプールやジョブを作成するためのテンプレートを作成できます。 テンプレートのパラメーターにより、Batch やアプリケーションの詳細な知識のないユーザーがテンプレートを使用できるようになります。
 
-Azure CLI の Batch 拡張機能を試し、フィードバックまたは提案をお寄せください。その際には、この記事に対するコメントまたは [Azure Batch フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch)をご利用ください。
+Azure CLI の Batch 拡張機能を試し、フィードバックまたは提案をお寄せください。その際には、この記事に対するコメントまたは [Batch コミュニティ リポジトリ](https://github.com/Azure/Batch)をご利用ください。
 
 ## <a name="next-steps"></a>次の手順
 

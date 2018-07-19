@@ -2,22 +2,22 @@
 title: Azure Backup の Log Analytics データ モデル
 description: この記事では、Azure Backup データに使用する Log Analytics データ モデルの詳細について説明します。
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a2ba1d523e7a6364420302eee095f24fd08eadb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605775"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448392"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
-この記事では、Log Analytics にレポート データをプッシュするのに使用するデータ モデルについて説明します。 このデータ モデルを使用すると、カスタム クエリ、ダッシュボードを作成し、Log Analytics で活用することができます。 
+レポートの作成には、Log Analytics データ モデルを使用します。 データ モデルでは、カスタム クエリとダッシュボードを作成したり、Azure Backup データを自由にカスタマイズしたりすることができます。
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
 データ モデルの一部として提供される次のフィールドを使用して、ビジュアル、カスタム クエリ、ダッシュボードを要件に合わせて作成できます。
@@ -27,53 +27,53 @@ ms.locfileid: "34605775"
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| AlertUniqueId_s |テキスト |生成されたアラートの一意の ID |
-| AlertType_s |テキスト |生成されたアラートの種類 (例: バックアップ) |
+| AlertUniqueId_s |テキスト |生成されたアラートの一意の識別子 |
+| AlertType_s |テキスト |アラートの種類 (例: バックアップ) |
 | AlertStatus_s |テキスト |アラートの状態 (例: アクティブ) |
 | AlertOccurenceDateTime_s |日付/時刻 |アラートが作成された日付と時刻 |
 | AlertSeverity_s |テキスト |アラートの重大度 (例: 重大) |
-| EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| BackupItemUniqueId_s |テキスト |このアラートが属しているバックアップ項目の一意の ID |
-| SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
+| EventName_s |テキスト |イベントの名前。 常に AzureBackupCentralReport |
+| BackupItemUniqueId_s |テキスト |アラートに関連付けられているバックアップ項目の一意の識別子 |
+| SchemaVersion_s |テキスト |スキーマの現在のバージョン (例: **V1**) |
 | State_s |テキスト |アラート オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このアラートが属する FileFolder) |
-| OperationName |テキスト |このフィールドは現在の操作の名前 (Alert) を表します。 |
-| カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
+| OperationName |テキスト |現在の操作の名前 (例: アラート) |
+| カテゴリ |テキスト |Log Analytics にプッシュされた診断データのカテゴリ。 常に AzureBackupReport |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
-| ProtectedServerUniqueId_s |テキスト |このアラートが属している保護対象の一意の ID |
-| VaultUniqueId_s |テキスト |このアラートが属している保護対象の一意の ID |
+| ProtectedServerUniqueId_s |テキスト |アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| VaultUniqueId_s |テキスト |アラートに関連付けられている保護されるコンテナーの一意の識別子 |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |データの収集対象のリソースの一意の識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="backupitem"></a>BackupItem
 次の表は、バックアップ項目に関連するフィールドの詳細を示しています。
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
-| BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
-| BackupItemId_s |テキスト |バックアップ項目の ID |
+| EventName_s |テキスト |イベントの名前。 常に AzureBackupCentralReport |  
+| BackupItemUniqueId_s |テキスト |バックアップ項目の一意の識別子 |
+| BackupItemId_s |テキスト |バックアップ項目の識別子 |
 | BackupItemName_s |テキスト |バックアップ項目の名前 |
 | BackupItemFriendlyName_s |テキスト |バックアップ項目のフレンドリ名 |
 | BackupItemType_s |テキスト |バックアップ項目の種類 (例: VM、FileFolder) |
 | ProtectedServerName_s |テキスト |バックアップ項目が属している保護されるサーバーの名前 |
 | ProtectionState_s |テキスト |バックアップ項目の現在の保護状態 (例: 保護済み、保護停止) |
-| SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
-| State_s |テキスト |バックアップ項目オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| SchemaVersion_s |テキスト |スキーマのバージョン (例: **V1**) |
+| State_s |テキスト |バックアップ項目オブジェクトの状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このバックアップ項目が属する FileFolder) |
-| OperationName |テキスト |このフィールドは現在の操作の名前 (BackupItem) を表します。 |
-| カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
-| リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
+| OperationName |テキスト |操作の名前 (例: BackupItem) |
+| カテゴリ |テキスト |Log Analytics にプッシュされた診断データのカテゴリ。 常に AzureBackupReport |
+| リソース |テキスト |データの収集対象のリソース (例: Recovery Services コンテナー名) |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース ID (例: Recovery Services コンテナーのリソース ID) |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |収集されるデータのリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |収集されるデータのリソース プロバイダー (例: Microsoft.RecoveryServices) |
+| ResourceType |テキスト |収集されるデータのリソースの種類 (例: コンテナー) |
 
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 次の表は、バックアップ項目 アソシエーションとさまざまなエンティティの詳細を示しています。
@@ -84,35 +84,35 @@ ms.locfileid: "34605775"
 | BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |バックアップ項目アソシエーション オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このバックアップ項目が属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (BackupItemAssociation) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
-| PolicyUniqueId_g |テキスト |バックアップ項目が関連付けられているポリシーを識別する一意の ID |
-| ProtectedServerUniqueId_s |テキスト |バックアップ項目が属している保護されるサーバーの一意の ID |
-| VaultUniqueId_s |テキスト |バックアップ項目が属しているコンテナーの一意の ID |
+| PolicyUniqueId_g |テキスト |バックアップ項目に関連付けられているポリシーの一意の識別子 |
+| ProtectedServerUniqueId_s |テキスト |バックアップ項目に関連付けられている保護されるサーバーの一意の識別子 |
+| VaultUniqueId_s |テキスト |バックアップ項目を含むコンテナーの一意の識別子 |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |収集されるデータのリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |収集されるデータのリソース プロバイダー (例: Microsoft.RecoveryServices) |
+| ResourceType |テキスト |収集されるデータのリソースの種類 (例: コンテナー) |
 
 ### <a name="job"></a>ジョブ
 次の表は、ジョブに関連するフィールドの詳細を示しています。
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| BackupItemUniqueId_s |テキスト |このジョブが属しているバックアップ項目の一意の ID |
-| SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
+| EventName_s |テキスト |イベントの名前。 常に AzureBackupCentralReport |
+| BackupItemUniqueId_s |テキスト |バックアップ項目の一意の識別子 |
+| SchemaVersion_s |テキスト |スキーマのバージョン (例: **V1**) |
 | State_s |テキスト |ジョブ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このジョブが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (Job) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
-| ProtectedServerUniqueId_s |テキスト |このジョブが属している保護対象の一意の ID |
-| VaultUniqueId_s |テキスト |このジョブが属している保護対象の一意の ID |
+| ProtectedServerUniqueId_s |テキスト |ジョブに関連付けられている保護されるサーバーの一意の識別子 |
+| VaultUniqueId_s |テキスト |保護されるコンテナーの一意の識別子 |
 | JobOperation_s |テキスト |ジョブを実行する対象の操作 (例: バックアップ、復元、バックアップの構成) |
 | JobStatus_s |テキスト |完了したジョブの状態 (例: 完了、失敗) |
 | JobFailureCode_s |テキスト |ジョブ エラーが発生したことによるエラー コードの文字列 |
@@ -122,11 +122,11 @@ ms.locfileid: "34605775"
 | DataTransferredInMB_s | Number |このジョブで転送されたデータ (MB)|
 | JobUniqueId_g |テキスト |ジョブを識別する一意の ID |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID|
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="policy"></a>ポリシー
 次の表は、ポリシーに関連するフィールドの詳細を示しています。
@@ -136,7 +136,7 @@ ms.locfileid: "34605775"
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |ポリシー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このポリシーが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (Policy) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
@@ -162,11 +162,11 @@ ms.locfileid: "34605775"
 | YearlyRetentionFormat_s |テキスト |毎年のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) |
 | YearlyRetentionDaysOfTheMonth_s |テキスト |毎年のリテンション期間に選択された月の日数 |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="policyassociation"></a>PolicyAssociation
 次の表は、ポリシー アソシエーションとさまざまなエンティティの詳細を示しています。
@@ -176,18 +176,18 @@ ms.locfileid: "34605775"
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |ポリシー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このポリシーが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (PolicyAssociation) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | PolicyUniqueId_g |テキスト |ポリシーを識別する一意の ID |
 | VaultUniqueId_s |テキスト |ポリシーが属しているコンテナーの一意の ID |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="protectedserver"></a>ProtectedServer
 次の表は、保護されるサーバーに関連するフィールドの詳細を示しています。
@@ -198,21 +198,21 @@ ms.locfileid: "34605775"
 | ProtectedServerName_s |テキスト |保護されるサーバーの名前 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |保護されるサーバー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、この保護されるサーバーが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (ProtectedServer) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedServerUniqueId_s |テキスト |保護されるサーバーの一意の ID |
 | RegisteredContainerId_s |テキスト |バックアップ用に登録されたコンテナーの ID |
-| ProtectedServerType_s |テキスト |バックアップされた保護されるサーバーの種類 (例: Windows) |
+| ProtectedServerType_s |テキスト |保護されるサーバーの種類 (例: Windows) |
 | ProtectedServerFriendlyName_s |テキスト |保護されるサーバーのフレンドリ名 |
 | AzureBackupAgentVersion_s |テキスト |エージェント バックアップ バージョンのバージョン番号 |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 次の表は、保護されるサーバー アソシエーションとさまざまなエンティティの詳細を示しています。
@@ -222,18 +222,18 @@ ms.locfileid: "34605775"
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |保護されるサーバー アソシエーション オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、この保護されるサーバーが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (ProtectedServerAssociation) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedServerUniqueId_s |テキスト |保護されるサーバーの一意の ID |
 | VaultUniqueId_s |テキスト |この保護されるサーバーが属しているコンテナーの一意の ID |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="storage"></a>Storage
 次の表は、ストレージに関連するフィールドの詳細を示しています。
@@ -245,18 +245,18 @@ ms.locfileid: "34605775"
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
 | State_s |テキスト |ストレージ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| BackupManagementType_s |テキスト |バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このストレージが属する FileFolder) |
+| BackupManagementType_s |テキスト |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |テキスト |このフィールドは現在の操作の名前 (Storage) を表します。 |
 | カテゴリ |テキスト |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
 | リソース |テキスト |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedServerUniqueId_s |テキスト |ストレージを計算するために使用する保護されるサーバーの一意の ID |
 | VaultUniqueId_s |テキスト |ストレージを計算するために使用するコンテナーの一意の ID |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ### <a name="vault"></a>コンテナー
 次の表は、コンテナーに関連するフィールドの詳細を示しています。
@@ -274,11 +274,11 @@ ms.locfileid: "34605775"
 | AzureDataCenter_s |テキスト |コンテナーが配置されるデータ センター |
 | StorageReplicationType_s |テキスト |コンテナーのストレージ レプリケーションの種類 (例: GeoRedundant) |
 | SourceSystem |テキスト |現在のデータのソース システム (Azure) |
-| ResourceId |テキスト |このフィールドはデータの収集対象のリソース ID を表し、Recovery Services コンテナーのリソース ID を示します。 |
-| SubscriptionId |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のサブスクリプション ID を表します。 |
-| ResourceGroup |テキスト |このフィールドはデータの収集対象のリソース (RS コンテナー) のリソース グループを表します。 |
-| ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
-| ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
+| ResourceId |テキスト |収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
+| SubscriptionId |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のサブスクリプション識別子 |
+| ResourceGroup |テキスト |データの収集対象のリソース (例:  Recovery Services コンテナー) のリソース グループ |
+| ResourceProvider |テキスト |データの収集対象のリソース プロバイダー。 たとえば、Microsoft.RecoveryServices |
+| ResourceType |テキスト |データの収集対象のリソースの種類。 たとえば、コンテナー |
 
 ## <a name="next-steps"></a>次の手順
 Azure Backup のレポートを作成するためのデータ モデルを確認したら、Log Analytics で[ダッシュボードの作成](../log-analytics/log-analytics-dashboards.md)を開始できます。

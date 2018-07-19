@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297755"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133601"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 OMS ポータルをご利用いただきありがとうございます。 お客様からのご支援を励みに、今後も監視と管理のサービスへの重点的な投資を継続いたします。 お客様から繰り返し寄せられたフィードバックの 1 つに、オンプレミスと Azure の両方のワークロードを同じ方法で監視、管理できるようにしてほしいというものがありました。 ご存知のことと思われますが、Azure portal はすべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、ほぼすべての OMS ポータルの機能が Azure portal に組み込まれたことをご報告します。 実際に、Traffic Manager などの一部の新機能は、Azure portal でのみ使用可能となっています。 機能のギャップがほんのいくつか残っており、影響の大きい 5 つのソリューションについては、現在も Azure portal への移行が進められています。 これらの機能を使用していない場合は、OMS ポータルで実行していた作業をすべて Azure portal で実行でき、さらに新しい機能も使用できます。 まだ Azure portal を使用されていない場合は、すぐに使い始めることをお勧めします。 
@@ -94,7 +95,7 @@ OMS モバイル アプリは、OMS ポータルと共に非推奨となりま�
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure ネットワーク セキュリティ グループ分析
-[Azure Network Security Group Analytics ソリューション](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics)は、最近発表された [Traffic Analytics](../network-watcher/traffic-analytics.md) に置き換えられます。Traffic Analytics では、クラウド ネットワークにおけるユーザーとアプリケーションのアクティビティを視覚化できます。 Traffic Analytics は、組織のネットワーク アクティビティの監査、アプリケーションとデータのセキュリティ保護、ワークロードのパフォーマンスの最適化、コンプライアンスの維持に役立ちます。 
+[Azure Network Security Group Analytics ソリューション](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics)は、最近発表された [Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) に置き換えられます。Traffic Analytics では、クラウド ネットワークにおけるユーザーとアプリケーションのアクティビティを視覚化できます。 Traffic Analytics は、組織のネットワーク アクティビティの監査、アプリケーションとデータのセキュリティ保護、ワークロードのパフォーマンスの最適化、コンプライアンスの維持に役立ちます。 
 
 このソリューションでは、NSG フロー ログを分析し、次の分析情報を提供します。
 
@@ -105,7 +106,7 @@ OMS モバイル アプリは、OMS ポータルと共に非推奨となりま�
 - 悪意のあるトラフィック、インターネットに対して開かれているポート、インターネットにアクセスしようとしているアプリケーションや VM などに対するセキュリティ。
 - 容量使用率。過剰なプロビジョニングまたは過小使用の問題を回避するのに役立ちます。
 
-診断の設定を引き続き使用して、NSG ログを Log Analytics に送信できるので、保存された既存の検索、アラート、ダッシュボードを引き続き使用できます。 このソリューションを既にインストール済みのお客様は、別途通知があるまで、引き続きお使いいただけます。 6 月 20 日から、NSG ソリューションはマーケットプレースから削除され、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)としてコミュニティを通じて入手できるようになります。
+診断の設定を引き続き使用して、NSG ログを Log Analytics に送信できるので、保存された既存の検索、アラート、ダッシュボードを引き続き使用できます。 このソリューションを既にインストール済みのお客様は、別途通知があるまで、引き続きお使いいただけます。 6 月 20 日から、Network Security Group Analytics ソリューションはマーケットプレースから削除され、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)としてコミュニティを通じて入手できるようになります。
 
 ## <a name="next-steps"></a>次の手順
 - OMS ポータルから Azure portal への移行に関するガイダンスについては、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](log-analytics-oms-portal-faq.md)」を参照してください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 69a9aa2ab6c1fd379d7f3421fc70cc8cffd1cb3a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 24a5c1a260cf86f0860e0292c2eb9527f976a363
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214272"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>チュートリアル: Azure Active Directory と SignalFx の統合
 
@@ -117,7 +117,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
 4. SignalFx アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。   
 
-    ![[Configure Single Sign-On]](./media/signalfx-tutorial/tutorial_signalfx_attribute.png)
+    ![Configure single sign-on](./media/signalfx-tutorial/tutorial_signalfx_attribute.png)
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -260,7 +260,7 @@ SAML SSO から SignalFx に初めてサインインするとき、[SignalFx サ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SignalFx] タイルをクリックすると、自動的に SignalFx アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

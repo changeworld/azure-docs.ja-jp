@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7457a820d9179248eab976ceec64f6b7a4a38563
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e16f1ae28f2212d0cec61368a2fba946d48fd811
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643340"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006286"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Service Fabric のリソース使用量と負荷をメトリックで管理する
 "*メトリック*" は、サービスが関心を持っているリソースであり、クラスター内のノードによって提供されます。 メトリックは、サービスのパフォーマンスを向上させたり監視したりするために管理する必要があるすべての要素を指します。 たとえば、メモリの消費量を監視して、サービスが過負荷になっているかどうかを知ることができます。 パフォーマンスを向上させるためにメモリ制約が少ないところにサービスを移動できるかどうかを確認するために使用することもできます。
@@ -35,9 +35,9 @@ ms.locfileid: "34643340"
 
 | メトリック | ステートレス インスタンス負荷 | ステートフル セカンダリ負荷 | ステートフル プライマリ負荷 | Weight |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |0 |
-| ReplicaCount |0 |1 |1 |0 |
-| Count |1 |1 |1 |0 |
+| PrimaryCount |0 |0 |1 |高 |
+| ReplicaCount |0 |1 |1 |Medium |
+| Count |1 |1 |1 |低 |
 
 
 基本的なワークロードでは、既定のメトリックによって、作業がクラスターに適切に分散されます。 次の例で、2 つのサービスを作成し、均衡をとることを既定のメトリックに任せた場合は何が起こるかを見てみましょう。 1 つ目のサービスはステートフル サービスであり、3 つのパーティションとサイズが 3 に設定されたターゲット レプリカ セットがあります。 2 つ目のサービスはステートレス サービスであり、1 つのパーティションと 3 つのインスタンスがあります。

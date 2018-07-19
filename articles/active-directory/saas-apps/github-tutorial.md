@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9263be24f883d8a02735e757f3ac02b54960f61f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 79a2bc9d517e3c292268a4a70f08936cb0325fbd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227396"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>チュートリアル: Azure Active Directory と GitHub の統合
 
@@ -117,7 +117,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[ユーザー属性]** セクションで、**[ユーザー識別子]** として [user.mail] を選択します。
 
-    ![[Configure Single Sign-On]](./media/github-tutorial/tutorial_github_attribute_new01.png)
+    ![Configure single sign-on](./media/github-tutorial/tutorial_github_attribute_new01.png)
 
 5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -193,7 +193,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションの目的は、GitHub で Britta Simon というユーザーを作成することです。 GitHub では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](github-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します：**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
 1. GitHub 企業サイトに管理者としてログインします。
 
@@ -253,7 +253,7 @@ GitHub で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで GitHub のタイルをクリックすると、GitHub アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

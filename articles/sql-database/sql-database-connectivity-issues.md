@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: daleche
-ms.openlocfilehash: 37cd099e6efe44ee70dc1799ef4b2b4377c571d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 07/11/2018
+ms.author: ninarn
+ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647262"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113496"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
@@ -246,7 +246,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 診断には、クライアントで発生したエラーのログが役立ちます。 SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
 
-Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET マネージ クラスがあります。 詳細については、「[5 - As easy as falling off a log: Use the Logging Application Block (5 - きわめて簡単: Logging アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440731.aspx)」を参照してください。
+Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET マネージド クラスがあります。 詳細については、「[5 - As easy as falling off a log: Use the Logging Application Block (5 - きわめて簡単: Logging アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440731.aspx)」を参照してください。
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -255,8 +255,10 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 
 | ログのクエリ | 説明 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |
+  [sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |
+  [sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -308,8 +310,8 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 > [!NOTE]
 > EntLib60 のソース コードは、[ダウンロード センター](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
-> 
-> 
+>
+>
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
@@ -319,12 +321,12 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 名前空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:
 
 * **RetryPolicy** クラス
-  
+
   * **ExecuteAction** メソッド
 * **ExponentialBackoff** クラス
 * **SqlDatabaseTransientErrorDetectionStrategy** クラス
 * **ReliableSqlConnection** クラス
-  
+
   * **ExecuteCommand** メソッド
 
 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**名前空間:
@@ -342,7 +344,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 
 ### <a name="entlib60-the-logging-block"></a>EntLib60: Logging ブロック
 * Logging ブロックは、きわめて柔軟性に優れた構成可能なソリューションであり、次の目的で使用できます。
-  
+
   * ログ メッセージをさまざまな場所に作成して保存する。
   * メッセージを分類したりフィルタリングしたりする。
   * デバッグやトレース、監査要件、全般的なログ要件に利用できるコンテキスト情報を収集する。
@@ -434,4 +436,3 @@ public bool IsTransient(Exception ex)
 [step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
-

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e9a4ab5bb262b274f4c53741f7a9ea1ce3956848
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 57c418f686aa956294efeabd831042441c055e56
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220130"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル: Azure Active Directory と Questetra BPM Suite の統合
 
@@ -99,7 +99,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 1. Azure Portal の **Questetra BPM Suite** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -146,7 +146,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 11. **Questetra BPM Suite** 企業サイトで、次の手順に従います。 
    
-    ![[Configure Single Sign-On]][15]
+    ![Configure single sign-on][15]
    
     a. **[シングル サインオンを有効にする]** を選択します。
    
@@ -252,7 +252,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Questetra BPM Suite のタイルをクリックすると、自動的に Questetra BPM Suite アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

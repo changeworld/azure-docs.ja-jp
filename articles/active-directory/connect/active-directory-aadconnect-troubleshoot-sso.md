@@ -2,25 +2,22 @@
 title: 'Azure Active Directory Connect: シームレス シングル サインオンのトラブルシューティングを行う | Microsoft Docs'
 description: このトピックでは、Azure Active Directory シームレス シングル サインオンのトラブルシューティング方法について説明します
 services: active-directory
-keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
-documentationcenter: ''
-author: swkrish
+author: billmath
+ms.reviewer: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 205df47c36cb1d6925e232f06c0f1355c40ae973
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592230"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110891"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -84,6 +81,7 @@ ms.locfileid: "34592230"
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
 - デバイスの時刻が、Active Directory とドメイン コントローラーの両方の時刻と同期されており、時刻のずれが 5 分以内であることを確認します。
+- シームレス SSO を有効にする各 AD フォレストで `AZUREADSSOACCT` コンピューター アカウントが存在し、有効になっていることを確認します。 
 - コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACCT` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 10 時間有効です。 Active Directory で別の設定が行われていることがあります。
 - テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまでシングル サインオン機能は利用できません。
 - `klist purge` コマンドを使用してデバイスから既存の Kerberos チケットを消去し、やり直します。

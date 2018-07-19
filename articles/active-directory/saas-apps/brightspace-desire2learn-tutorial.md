@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b15012fae7ffacd63762c723f14cae62f9a0817d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2387cb6517675e59bc84c6283d31575c9a0aff60
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211147"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -102,15 +102,15 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
 1. Azure Portal の **[Brightspace by Desire2Learn]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_samlbase.png)
+    ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_samlbase.png)
 
 3. **[Brightspace by Desire2Learn Domain and URLs] \(Brightspace by Desire2Learn のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
+    ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
     | |
@@ -127,11 +127,11 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_certificate.png) 
+    ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_general_400.png)
 
 6. **Brightspace by Desire2Learn** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Brightspace by Desire2Learn サポート チーム](https://www.d2l.com/contact/)に送信する必要があります。
 
@@ -193,7 +193,7 @@ Brightspace by Desire2Learn の場合、ユーザー アカウントは [Brights
 
 2. アプリケーションの一覧で、**[Brightspace by Desire2Learn]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_app.png) 
+    ![Configure single sign-on](./media/brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -214,7 +214,7 @@ Brightspace by Desire2Learn の場合、ユーザー アカウントは [Brights
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Brightspace by Desire2Learn] タイルをクリックすると、Brightspace by Desire2Learn アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

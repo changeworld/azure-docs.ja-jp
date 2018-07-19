@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225791"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
 
@@ -67,7 +67,7 @@ Azure AD への Riskware の統合を構成するには、ギャラリーから�
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -101,7 +101,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
 3. **[Riskware ドメインと URL]** セクションで、次の手順を実行します。
@@ -113,7 +113,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
     | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` | 
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. **[識別子 (エンティティ ID)]** ボックスに、URL を入力します。
@@ -121,10 +121,10 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
     | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` | 
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
-    > [!NOTE] 
+    > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Riskware クライアント サポート チーム](mailto:support@pansoftware.com.au)にお問い合わせください。
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
@@ -137,11 +137,11 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
 6. **[Riskware 構成]** セクションで、**[Riskware の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![Riskware 構成](./media/riskware-tutorial/tutorial_riskware_configure.png) 
+    ![Riskware 構成](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
-7. 別の Web ブラウザー ウィンドウで、Riskware 企業サイトに管理者としてログインします。
+7. 別の Web ブラウザー ウィンドウで、Riskware 企業サイトに管理者としてサインインします。
 
-8. 右上の **[Maintenance]\(メンテナンス\)** をクリックしてメンテナンス ページを開きます。 
+8. 右上の **[Maintenance]\(メンテナンス\)** をクリックしてメンテナンス ページを開きます。
 
     ![Riskware 構成、メンテナンス](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
@@ -159,16 +159,16 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Description]\(説明\)** ボックスに説明を入力します (例:SSO 用 AZURE 構成)。
 
-    d. **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    e. **[Sign out Page]\(サインアウト ページ\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    e. **[Sign out Page]\(サインアウト ページ\)** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    f. **[Post Form Field]\(Post フォーム フィールド\)** ボックスに、SAML を含む Post 応答にあるフィールド名を入力します (例: SamlResponse)
+    f. **[Post Form Field]\(Post フォーム フィールド\)** ボックスに、SAML を含む Post 応答にあるフィールド名を入力します (例: SAMLResponse)
 
     g. **[XML Identity Tag Name]\(XML ID タグ名\)** ボックスに、SAML 応答内の一意の識別子を含む属性を入力します (例: NameID)。
 
     h. Azure Portal からダウンロードした**メタデータ Xml** をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[証明書]\(Certificate\)** ボックスに貼り付けます
-    
+
     i. **[Consumer URL]\(コンシューマー URL\)** ボックスに、サポート チームから入手した**応答 URL** の値を貼り付けます。
 
     j. **[Issuer]\(発行者\)** ボックスに、サポート チームから入手した**識別子**の値を貼り付けます。
@@ -176,9 +176,9 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     > [!Note]
     > これらの値を取得するには、[Riskware クライアント サポート チーム](mailto:support@pansoftware.com.au)にお問い合わせください
 
-    k. SAML 要求を POST パラメーターとして渡すために、**[Use POST]\(POST を使用\)** を選択します。
+    k. **[Use POST]\(POST を使用する\)** チェックボックスをオンにします。
 
-    l. SP 開始モード用の SSO 許可 SAML 要求を渡すために、**[Use SAML Request]\(SAML 要求を使用\)** を選択します。
+    l. **[Use SAML Request]\(SAML 要求を使用する\)** チェックボックスをオンにします。
 
     m. **[Save]** をクリックします。
 
@@ -213,14 +213,14 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
+
 ### <a name="create-a-riskware-test-user"></a>Riskware のテスト ユーザーの作成
 
-Azure AD ユーザーが Riskware にログインできるようにするには、ユーザーを Riskware にプロビジョニングする必要があります。 Riskware では、プロビジョニングは手動で行います。
+Azure AD ユーザーが Riskware にサインインできるようにするには、ユーザーを Riskware にプロビジョニングする必要があります。 Riskware では、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
-1. セキュリティ管理者として Riskware にログインします。
+1. セキュリティ管理者として Riskware にサインインします。
 
 2. 右上の **[Maintenance]\(メンテナンス\)** をクリックしてメンテナンス ページを開きます。 
 
@@ -230,8 +230,8 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
     ![Riskware 構成、ユーザー](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. **[Details]\(詳細\)** タブで、次の手順に従います。
-    
+4. **[Details]\(詳細\)** タブを選択し、次の手順を実行します。
+
     ![Riskware 構成、詳細](./media/riskware-tutorial/tutorial_riskware_details.png)
 
     a. **[Person Type]\(ユーザーの種類\)** で、ユーザーの種類を選択します (例: [Employee]\(従業員\))。
@@ -240,7 +240,7 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
     c. **[Surname]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-5. **[セキュリティ]** タブで、次の手順に従います。    
+5. **[セキュリティ]** タブで、次の手順に従います。
 
     ![Riskware 構成、セキュリティ](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -250,12 +250,12 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
     c. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
-6. **[Organisation]\(組織\)** タブで、次の手順に従います。
+6. **[Organization]\(組織\)** タブで、次の手順に従います。
 
     ![Riskware 構成、組織](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. **[Organisation]\(組織\)** セクションで、**[Level1]\(レベル 1\)** の組織として選択します。
-    
+    a. **Level1** 組織としてオプションを選択します。
+
     b. **[Person's Primary Workplace]\(ユーザーのプライマリ ワークプレース\)** セクションで、**[Location]\(場所\)** ボックスに場所を入力します。
 
     c. **[Employee]\(従業員\)** セクションで、**[Employee Status]\(従業員のステータス\)** を選択します (例: [Casual]\(カジュアル\))。
@@ -266,7 +266,7 @@ Azure AD ユーザーが Riskware にログインできるようにするには�
 
 このセクションでは、Britta Simon に Riskware へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+![ユーザー ロールを割り当てる][200]
 
 **Riskware に Britta Simon を割り当てるには、次の手順に従います。**
 

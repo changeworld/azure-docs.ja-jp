@@ -9,11 +9,11 @@ ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313515"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38764724"
 ---
 Azure 仮想マシン (VM) で実行されているアプリケーションを起動できなかったり、アプリケーションに接続できなかったりする理由はいろいろあります。 アプリケーションが適切なポートで実行されていない、適切なポートでリッスンしていない、リスニング ポートがブロックされている、ネットワーク ルールがトラフィックをアプリケーションに正しく渡していない、などの理由です。 この記事では、問題を検出して解決するための系統的アプローチについて説明します。
 

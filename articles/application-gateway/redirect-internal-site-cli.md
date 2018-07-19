@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: fa9d3c1a1b7ddbf735b9b86de2fb808bbfb88d12
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98b8fecc1befeac53f76f1e1b925b36e59d734d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354983"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068711"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -195,7 +195,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
@@ -217,7 +217,7 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http://www.contoso.org ) 。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d99311dfe096c1fca94bafd630385ef856123ca1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6c13bb4c10adeeba59ff8d0f2c8d7120d6fae43a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209835"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル: Azure Active Directory と TeamSeer の統合
 
@@ -102,15 +102,15 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **TeamSeer** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
 
 3. **[TeamSeer のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_teamseer_url.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_url.png)
 
      **[サインオン URL]** ボックスに、`https://www.teamseer.com/<companyid>` のパターンを使用して URL を入力します。
 
@@ -119,15 +119,15 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_general_400.png)
 
 6. **[TeamSeer 構成]** セクションで、**[TeamSeer の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
 
 7. 別の Web ブラウザーのウィンドウで、TeamSeer 企業サイトに管理者としてログインします。
 
@@ -239,7 +239,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 2. アプリケーションの一覧で **[TeamSeer]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -257,7 +257,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

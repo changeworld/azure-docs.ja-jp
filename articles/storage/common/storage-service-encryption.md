@@ -6,14 +6,14 @@ author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 06/12/2018
 ms.author: lakasa
-ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d469dfb5092f1269a6600ee8ee2f81778fd83b96
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525082"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449062"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
 
@@ -41,7 +41,7 @@ Storage Service Encryption の設定を表示するには、[Azure Portal](https
 
 **Q: クラシック ストレージ アカウントがあります。これに対して Storage Service Encryption を有効にできますか?**
 
-A: Storage Service Encryption は、既定ですべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。
+A: Storage Service Encryption は、すべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。
 
 **Q: クラシック ストレージ アカウントのデータを暗号化するにはどうすればよいですか?**
 
@@ -53,7 +53,7 @@ A: Storage Service Encryption は、既定で既存のすべての Resource Mana
 
 **Q: Resource Manager ストレージ アカウントのデータはどのように暗号化すればよいですか?**
 
-A: Storage Service Encryption は、既定ですべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。暗号化が有効になる前に作成されたストレージ アカウント内の既存のファイルは、バック グラウンド暗号化プロセスによって遡って暗号化されます。
+A: Storage Service Encryption は、すべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。暗号化が有効になる前に作成されたストレージ アカウント内の既存のファイルは、バックグラウンド暗号化プロセスによってさかのぼって暗号化されます。
 
 **Q: Azure PowerShell および Azure CLI を使用して、Storage Service Encryption を有効にしたストレージ アカウントを作成できますか?**
 
@@ -73,7 +73,7 @@ A: Azure Key Vault で[独自の暗号化キーを使用している](storage-se
 
 **Q: Storage Service Encryption は、ストレージ アカウントを作成すると、既定で有効になりますか?**
 
-A: はい。Storage Service Encryption は、既定ですべてのストレージ アカウントとすべての Microsoft Azure Storage サービスに対して有効です。
+A: はい。Storage Service Encryption は、すべてのストレージ アカウントとすべての Microsoft Azure Storage サービスに対して有効です。
 
 **Q: この機能は Azure Disk Encryption とどのように違うのですか?**
 
@@ -93,7 +93,11 @@ A: 暗号化は既定で有効になっており、ストレージ アカウン�
 
 **Q: Storage Service Encryption は、特定のリージョンだけで許可されますか?**
 
-A: すべてのサービスのすべてのリージョンで Storage Service Encryption を使用できます。 
+A: すべてのサービスのすべてのリージョンで Storage Service Encryption を使用できます。
+
+**Q: Storage Service Encryption は FIPS 140-2 に準拠していますか?**
+
+A: はい。Storage Service Encryption は FIPS 140-2 に準拠しています。
 
 **Q: 問題やフィードバックの連絡先はどこですか?**
 

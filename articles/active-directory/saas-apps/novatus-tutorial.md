@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2017
 ms.author: jeedes
-ms.openlocfilehash: f1dbbc2695234e5196b76b13d2b71848eb7f00a6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7d26ac2d4e7ab3cdb7603a201b4238bf9068cdab
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212810"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>チュートリアル: Azure Active Directory と Novatus の統合
 
@@ -102,15 +102,15 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Novatus** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_novatus_samlbase.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_samlbase.png)
 
 3. **[Novatus Domain and URLs]\(Novatus のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_novatus_url.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_url.png)
 
      **[サインオン URL]** ボックスに、`https://sso.novatuscontracts.com/<companyname>` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_novatus_certificate.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_general_400.png)
 
 6. **[Novatus Configuration]\(Novatus 構成\)** セクションで、**[Configure Novatus]\(Novatus の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_novatus_configure.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_configure.png) 
 
 7. お使いのアプリケーション用に構成された SSO を取得するには、[Novatus のサポート チーム](mailto:jvinci@novatusinc.com)にお問い合わせください。 Novatus チーム側で SSO を設定する必要があるため、**ダウンロードした証明書**ファイルを電子メールに添付して、**メタデータ URL** (**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL**) をチームと共有してください。
 
@@ -192,7 +192,7 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[Novatus]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/novatus-tutorial/tutorial_novatus_app.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -212,7 +212,7 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
-アクセス パネルで Novatus のタイルをクリックすると、自動的に Novatus アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで Novatus のタイルをクリックすると、自動的に Novatus アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a244c6495098623310023e36f579a9acf1dc871
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d68db3f1b1e6993676ee342d84b7ad1f2e52fffe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212793"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050709"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>チュートリアル: Azure Active Directory と Workfront の統合
 
@@ -102,15 +102,15 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Workfront** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_samlbase.png)
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_workfront_samlbase.png)
 
 3. **[Workfront のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_url.png)
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_workfront_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.attask-ondemand.com` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_certificate.png) 
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_workfront_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_general_400.png)
 
 6. **[Workfront 構成]** セクションで、**[Workfront の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[Quick Reference]\(クイック リファレンス\)** セクションから、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_configure.png) 
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_workfront_configure.png) 
 
 7. Workfront 企業サイトに管理者としてサインオンします。
 
@@ -137,7 +137,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 
 9. **[Single Sign-On (シングル サインオン)]** ダイアログ ボックスで、次の手順を実行します。
     
-    ![[Configure Single Sign-On]][23]
+    ![Configure single sign-on][23]
    
     a. **[Type]** で **[SAML 2.0]** を選択します。
    
@@ -220,7 +220,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Workfront]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/workfront-tutorial/tutorial_workfront_app.png) 
+    ![Configure single sign-on](./media/workfront-tutorial/tutorial_workfront_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -241,7 +241,7 @@ Workfront で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Workfront] タイルをクリックすると、Workfront アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b09bb295d889255dada0cebbb9ded2379d95d23
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710238"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440955"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -38,7 +38,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Twi
 
     b. **[Web サイト]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。 
 
-    c. **[コールバック URL]** ボックスに **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
+    c. 4. **[Callback URL]** に「`https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** は実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換え、**{policyId}** は実際のポリシー ID (例: b2c_1_policy) に置き換える必要があります。  **コールバック URL は、すべて小文字である必要があります。** Twitter ログインを使用するすべてのポリシーのコールバック URL を追加する必要があります。 アプリケーションで使用する場合は、` login.microsoftonline.com` の代わりに `b2clogin.com` を使用してください。
 
     d. ページの下部に記載されている条項を読んで同意し、**[Create your Twitter application]** を選択します。
 

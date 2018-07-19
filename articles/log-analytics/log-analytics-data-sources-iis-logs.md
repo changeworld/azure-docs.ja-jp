@@ -1,24 +1,26 @@
 ---
-title: "Azure Log Analytics の IIS ログ | Microsoft Docs"
-description: "インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  この記事では、IIS ログの収集を構成する方法と Log Analytics ワークスペースに作成されるレコードの詳細について説明します。"
+title: Azure Log Analytics の IIS ログ | Microsoft Docs
+description: インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  この記事では、IIS ログの収集を構成する方法と Log Analytics ワークスペースに作成されるレコードの詳細について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 06/12/2018
 ms.author: bwren
-ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.comopnent: na
+ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133550"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics の IIS ログ
 インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  
@@ -33,15 +35,15 @@ NCSA 形式や IIS のネイティブ形式のログは、Log Analytics によ�
 
 Log Analytics の IIS ログは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]**(W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
 
-IIS ログの収集を有効にする場合、各サーバーに IIS ログ ロールオーバー設定を構成することをお勧めします。
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は約 15 分おきに接続されたソースから IIS ログのエントリを収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントがオフラインになった場合、Log Analytics は中止した箇所からイベントの収集を再開します。オフラインの間に作成されたイベントも収集されます。
+Log Analytics は、ログが閉じられ、新しいログが作成されるたびに、各エージェントから IIS ログ エントリを収集します。 この頻度は、IIS サイトの **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** 設定によって制御されます。この設定の既定値は 1 日に 1 回です。 たとえば、設定が **[毎時]** の場合、Log Analytics は毎時間ログを収集します。  たとえば、設定が **[日単位]** の場合、Log Analytics は 24 時間ごとにログを収集します。
+
 
 ## <a name="iis-log-record-properties"></a>IIS ログ レコードのプロパティ
 IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Computer |イベント収集元のコンピューターの名前。 |
 | cIP |クライアントの IP アドレス。 |
@@ -68,7 +70,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## <a name="log-searches-with-iis-logs"></a>IIS ログのログ検索
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |:--- |:--- |
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |

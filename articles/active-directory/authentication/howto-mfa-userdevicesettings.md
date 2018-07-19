@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 363106421e75fa2e1b220d03a7d7cbed25447bcc
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 3abe858c61eb47a9b0174461275c39acdf71a273
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098398"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054388"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 
@@ -75,4 +75,4 @@ Azure Multi-Factor Authentication の構成可能な機能の 1 つに、デバ�
 
 - 詳細については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」をご覧ください。
 
-- ヘルプが必要な場合、「[2 段階認証のユーザー ガイド](end-user/current/multi-factor-authentication-end-user.md)」を参照してください。
+- ヘルプが必要な場合、「[2 段階認証のユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)」を参照してください。

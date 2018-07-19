@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ef80f7fab21e2b43d9b6b8da80d10d4d47a63dd3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 27c9606357d9599fa56e4045606f8d9046722e7f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214952"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
 
@@ -269,7 +269,7 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Mimecast Admin Console のタイルをクリックすると、Mimecast Admin Console アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

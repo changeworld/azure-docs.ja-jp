@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937419"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113719"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -41,39 +41,10 @@ ms.locfileid: "36937419"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="stable-builds"></a>安定したビルド
+### <a name="v2-builds"></a>v2 のビルド
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* ログが追加されました。
-* 保留中の作業見積もりを複数回呼び出すときの DocumentClient のリークを修正しました。
-
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* 保留中の作業見積もりを修正しました。
-
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* 安定性が向上しました。
-  * 一部のパーティションでオブザーバーの停止につながる可能性がある取り消されたタスクの問題を処理するために修正しました。
-* 手動チェックポイント処理をサポートします。
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21 以降と互換性があります。
-
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* .NET Standard 2.0 のサポートを追加します。 このパッケージで `netstandard2.0`と`net451` フレームワーク モニカーがサポートされるようになりました。
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.17.0 以降と互換性があります。
-* [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) バージョン 1.5.1 以降と互換性があります。
-
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* 変更フィードが空であるか保留中の作業がない場合の、残っている作業の推定量の計算に関する問題を修正しました。
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
-
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Change Feed に処理が残っている作業の推定量を取得するメソッドが追加されました。
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
-
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
-* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
-
-### <a name="pre-release-builds"></a>プレリリース ビルド
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
 * 次の問題が修正されました。
@@ -108,6 +79,39 @@ ms.locfileid: "36937419"
 * v1 API との 100% の下位互換性
 * 新しいコード ベース。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21.1 以降と互換性があります。
+
+### <a name="v1-builds"></a>v1 のビルド
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* ログが追加されました。
+* 保留中の作業見積もりを複数回呼び出すときの DocumentClient のリークを修正しました。
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* 保留中の作業見積もりを修正しました。
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+* 安定性が向上しました。
+  * 一部のパーティションでオブザーバーの停止につながる可能性がある取り消されたタスクの問題を処理するために修正しました。
+* 手動チェックポイント処理をサポートします。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21 以降と互換性があります。
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* .NET Standard 2.0 のサポートを追加します。 このパッケージで `netstandard2.0`と`net451` フレームワーク モニカーがサポートされるようになりました。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.17.0 以降と互換性があります。
+* [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) バージョン 1.5.1 以降と互換性があります。
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* 変更フィードが空であるか保留中の作業がない場合の、残っている作業の推定量の計算に関する問題を修正しました。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Change Feed に処理が残っている作業の推定量を取得するメソッドが追加されました。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* GA SDK
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
+
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。

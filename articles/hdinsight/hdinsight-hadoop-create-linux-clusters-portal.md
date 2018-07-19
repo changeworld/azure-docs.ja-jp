@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5a6fa3f2bb6ab76bf323fe3ca829797878f5e774
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401963"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100506"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -74,14 +74,14 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
     * **[次へ]** をクリックします。
 
-4. **[ストレージ]** で、既定のストレージとして Azure Storage (WASB) と Data Lake Store のどちらを使用するかを指定します。 詳細については、下の表をご覧ください。
+4. **[ストレージ]** で、既定のストレージとして Azure Storage (WASB) と Data Lake Storage のどちらを使用するかを指定します。 詳細については、下の表をご覧ください。
 
     ![Azure Portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "Azure Portal で新しいクラスターを作成する")
 
-    | Storage                                      | [説明] |
+    | Storage                                      | 説明 |
     |----------------------------------------------|-------------|
-    | **既定のストレージとしての Azure Storage BLOB**   | <ul><li>**[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択します。 その後、**[メソッドの選択]** で、Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は **[個人用サブスクリプション]** を選択して、ストレージ アカウントを選択することができます。 それ以外の場合、**[アクセス キー]** をクリックして、Azure サブスクリプションの外部から選択するストレージ アカウントの情報を提供します。</li><li>**[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[追加のストレージ アカウント]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定することができます (オプション)。 **[Azure Storage キー]** で **[ストレージ キーの追加]** をクリックして、自分の Azure サブスクリプションまたはその他のサブスクリプションから (ストレージ アカウント アクセス キーを指定することで) ストレージ アカウントを指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[Data Lake Store アクセス]** をクリックし、追加のストレージとして Azure Data Lake Store を指定できます (オプション)。 詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。</li></ul> |
-    | **既定のストレージとしての Azure Data Lake Store** | **[プライマリ ストレージの種類]** で、**[Data Lake Store]** を選択します。手順については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。 |
+    | **既定のストレージとしての Azure Storage BLOB**   | <ul><li>**[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択します。 その後、**[メソッドの選択]** で、Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は **[個人用サブスクリプション]** を選択して、ストレージ アカウントを選択することができます。 それ以外の場合、**[アクセス キー]** をクリックして、Azure サブスクリプションの外部から選択するストレージ アカウントの情報を提供します。</li><li>**[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[追加のストレージ アカウント]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定することができます (オプション)。 **[Azure Storage キー]** で **[ストレージ キーの追加]** をクリックして、自分の Azure サブスクリプションまたはその他のサブスクリプションから (ストレージ アカウント アクセス キーを指定することで) ストレージ アカウントを指定することができます。</li><li>既定のストレージとして WASB を使用している場合、**[Data Lake Store アクセス]** をクリックし、追加のストレージとして Azure Data Lake Storage を指定できます (オプション)。 詳細については、「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) をご覧ください。</li></ul> |
+    | **既定のストレージとしての Azure Data Lake Storage** | **[プライマリ ストレージの種類]** で、**[Azure Data Lake Storage Gen1]** または **[Azure Data Lake Storage Gen2 (Preview)]** を選択します。その後、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順を参照してください。 |
     | **外部メタストア**                      | 必要に応じて、クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL データベースを指定します。 **[Hive 用の SQL データベースを選択する]** で、SQL データベースを選択し、データベースのユーザー名とパスワードを指定します。 以上の手順を Oozie メタデータについても行います。<br><br>メタストアに対して Azure SQL Database を使用する場合、いくつかの考慮事項があります。 <ul><li>メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。 これは、SQL Database インスタンスが実行されているサーバーです。 サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。</li><li>メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。</li></ul> |
 
     **[次へ]** をクリックします。 
@@ -109,7 +109,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
     ![[ノード価格レベル]](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "クラスター ノード数の指定")
 
-    | オプション | [説明] |
+    | オプション | 説明 |
     |--------|-------------|
     | **スクリプト アクション** | クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、このオプションを使用します。 スクリプト アクションの詳細については、「 [Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。 |
     | **Virtual Network** | クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。 Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「 [Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。 |

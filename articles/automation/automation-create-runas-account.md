@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9180b3f6bf6b151909ab681d0f33bc6b3583ce0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714665"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436977"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、Azure Portal または PowerShell を使用して既存の Automation アカウントを更新できます。
 
-* Automation アカウントは作成済みであるものの、実行アカウントの作成を拒否した場合。
+* Automation アカウントは作成済みであるものの、実行アカウントを作成しない場合。
 * Resource Manager リソースを管理するための Automation アカウントを既に所有しており、そのアカウントを更新する形で Runbook 認証用の実行アカウントを追加する場合。
 * クラシック リソースを管理するための Automation アカウントを既に所有しており、それを、新しいアカウントを作成する代わりにクラシック実行アカウントを使用するように更新し、Runbook と資産をそのアカウントに移行する場合。   
 
@@ -248,6 +248,9 @@ Automation アカウントを更新するには、このトピックの作業で
         Write-Host -ForegroundColor red       $UploadMessage
     }
     ```
+
+    > [!IMPORTANT]
+    > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
 
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
 3. 昇格されたコマンドライン シェルから、手順 1. で作成したスクリプトがあるフォルダーに移動します。  

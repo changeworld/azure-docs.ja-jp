@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 15929f5ba8c19190a72344ecf70662d34f9f4454
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cdc883adb321d4efffd1580bdb730f998f9b5b47
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231697"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>チュートリアル: Azure Active Directory と Lucidchart の統合
 
@@ -102,25 +102,25 @@ Lucidchart で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Lucidchart** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/lucidchart-tutorial/tutorial_lucidchart_samlbase.png)
+    ![Configure single sign-on](./media/lucidchart-tutorial/tutorial_lucidchart_samlbase.png)
 
 3. **[Lucidchart のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/lucidchart-tutorial/tutorial_lucidchart_url.png)
+    ![Configure single sign-on](./media/lucidchart-tutorial/tutorial_lucidchart_url.png)
 
     **[サインオン URL]** ボックスに、「`https://chart2.office.lucidchart.com/saml/sso/azure`」と入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/lucidchart-tutorial/tutorial_lucidchart_certificate.png) 
+    ![Configure single sign-on](./media/lucidchart-tutorial/tutorial_lucidchart_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/lucidchart-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lucidchart-tutorial/tutorial_general_400.png)
 
 6. 別の Web ブラウザー ウィンドウで、Lucidchart の企業サイトに管理者としてログインします。
 
@@ -204,7 +204,7 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 
 2. アプリケーションの一覧で **[Lucidchart]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/lucidchart-tutorial/tutorial_lucidchart_app.png) 
+    ![Configure single sign-on](./media/lucidchart-tutorial/tutorial_lucidchart_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -225,7 +225,7 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Lucidchart のタイルをクリックすると、自動的に Lucidchart アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

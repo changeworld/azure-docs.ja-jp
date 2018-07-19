@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1d5e7683050c5e1e4216b81e23554724f12d45f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097497"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054711"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -292,7 +292,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ユーザーは、初回の登録時にアプリ パスワードを作成できます。 登録プロセスの最後に、アプリ パスワードを作成するためのオプションが表示されます。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](end-user/current/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>信頼済みデバイスに対する Multi-Factor Authentication の記憶
@@ -301,7 +301,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 >[!IMPORTANT]
 >アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
 >
->復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
+>復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 >
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
@@ -341,7 +341,7 @@ Multi-Factor Authentication を記憶する機能を有効にすると、ユー�
 
 _選択可能な検証方法_機能を使用して、ユーザーが使用できる検証方法を選択することができます。 次の表で方法の概要を説明します。
 
-ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](end-user/current/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
 | 方法 | 説明 |
 |:--- |:--- |

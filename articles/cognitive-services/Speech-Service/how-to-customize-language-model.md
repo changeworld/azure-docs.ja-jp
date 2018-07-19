@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: c608c1b40c7b4cdaedb2b7e7a609ad65c6357584
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 85e67be406b3d9723476821adfb09fc4db8dc1d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344218"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068575"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 
@@ -114,6 +114,6 @@ Azure portal での Speech Service サブスクリプションの作成につい
 
 ## <a name="next-steps"></a>次の手順
 
-- [音声サービスの試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-- [C# で音声を認識する方法](quickstart-csharp-windows.md)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [C# で音声を認識する方法](quickstart-csharp-dotnet-windows.md)
 - [Git サンプル データ](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

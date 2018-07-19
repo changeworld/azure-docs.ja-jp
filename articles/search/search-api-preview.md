@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 05/17/2018
+ms.date: 06/28/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: ce5771777762414a0229cf83425c2f3601cb979a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b5cb60bf16a4c904c9a6060113eba8b4d3a671ef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660226"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112604"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Azure Search Service REST api-version 2017-11-11-Preview
 この記事では、まだ一般公開されていない実験的機能を提供する Azure Search Service REST API の `api-version=2017-11-11-Preview` バージョンについて説明します。
@@ -27,11 +27,11 @@ ms.locfileid: "34660226"
 
 ## <a name="new-in-2017-11-11-preview"></a>2017-11-11-Preview の新機能
 
-[コグニティブ検索](cognitive-search-concept-intro.md)は、Azure Search における新しい強化機能で、テキスト以外のソースや区別されていないテキスト内の潜在的な情報を検索し、それを Azure Search でフルテキスト検索可能なコンテンツに変換します。
+[**オートコンプリート**](search-autocomplete-tutorial.md)が既存の [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) に追加され、検索バーで補完的な先行入力機能を利用できるようになりました。 オートコンプリートは、以降の検索でクエリ文字列として選択できるクエリ用語候補を返します。 Suggestions は、部分的な入力に応答して実際のドキュメントを返します。検索結果は即時に表示され、検索語の入力が長さと特異性が増すにつれて動的に変化します。
 
-プレビュー REST API では、次のリソースが導入または変更されています。 その他のすべての REST API は、一般公開バージョンまたはプレビュー バージョンのどちらを呼び出しても同じです。
+[**コグニティブ検索**](cognitive-search-concept-intro.md)は、Azure Search における新しい強化機能で、テキスト以外のソースや区別されていないテキスト内の潜在的な情報を検索し、それを Azure Search でフルテキスト検索可能なコンテンツに変換します。 プレビューの REST API では、次のリソースが導入または変更されています。 その他のすべての REST API は、一般公開バージョンまたはプレビュー バージョンのどちらを呼び出しても同じです。
 
-+ [スキルセットの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセット操作 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
 + [インデクサーの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

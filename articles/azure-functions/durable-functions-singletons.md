@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 71c0cebf676d29308fe9f4942350ae96d3bedcf6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972553"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340833"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -59,6 +59,9 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 既定では、インスタンス ID は、ランダムに生成される GUID です。 ただし、ここでは、インスタンス ID は URL からルート データに渡されます。 コードは、[GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) を呼び出して、指定した ID を持つインスタンスが既に実行されているかどうかを確認します。 実行されていなければ、インスタンスがその ID で作成されます。
+
+> [!NOTE]
+> このサンプルには潜在的な競合状態があります。 **HttpStartSingle** の 2 つのインスタンスが同時に実行されると、結果として、シングルトンの 2 つの異なるインスタンスが作成され、一方がもう一方を上書きします。 これは、要件によっては望ましくない副作用になる可能性があります。 このため、このトリガー関数を同時に 2 つの要求で実行できないようにすることが重要です。
 
 オーケストレーター関数の 実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
 

@@ -1,9 +1,9 @@
 ---
 title: Log Analytics の Azure SQL Analytics ソリューション | Microsoft Docs
-description: Azure SQL Analytics ソリューションを使用して、Azure SQL データベースを管理できます。
+description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -11,25 +11,26 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: na
+ms.openlocfilehash: f57a47677f752a644975a25fa746d78bced5d766
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775079"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133497"
 ---
-# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
+# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Monitor Azure SQL Database の監視
 
 ![Azure SQL Analytics のシンボル](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure Log Analytics の Azure SQL Analytics ソリューションは、SQL Azure の重要なパフォーマンス メトリックを収集し、視覚化します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 また、Azure SQL Database とエラスティック プールのメトリックを、複数の Azure サブスクリプションとエラスティック プールにわたって監視し、視覚化することもできます。 このソリューションは、アプリケーション スタックの各層の問題を特定する際にも役立ちます。  [Azure 診断メトリック](log-analytics-azure-storage.md)と Log Analytics ビューを使用して、すべての Azure SQL データベースとエラスティック プールのデータを単一の Log Analytics ワークスペースに表示します。
+Azure SQL Analytics は、複数のエラスティック プールとサブスクリプションにわたって大規模に Azure SQL Database のパフォーマンスを監視するためのクラウド監視ソリューションです。 Azure SQL Analytics は、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化します。 
+
+このソリューションを使用して収集できるメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 このソリューションは、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Log Analytics ビューを使用して、すべての Azure SQL Database とエラスティック プールのデータを単一の Log Analytics ワークスペースに表示します。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
 このソリューションは現在プレビュー段階にあり、ワークスペースごとに最大 150,000 個の Azure SQL データベースと、最大 5,000 個の SQL エラスティック プールをサポートしています。
-
-この Azure SQL Analytics ソリューションでは、Log Analytics で利用可能な他のソリューションと同様に、Azure リソース (この場合は Azure SQL Database) の正常性の監視と、それに関する通知の受信ができます。 Microsoft Azure SQL Database は、使い慣れた SQL Server と同様の機能を、Azure クラウドで実行されているアプリケーションで提供する、スケーラブルなリレーショナル データベース サービスです。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
 Azure SQL Analytics ソリューションの使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
 
@@ -38,39 +39,34 @@ Azure SQL Analytics ソリューションの使用に関する実践的な概要
 
 ## <a name="connected-sources"></a>接続先ソース
 
-Azure SQL Analytics ソリューションでは、Log Analytics サービスに接続するためのエージェントを使用しません。
+Azure SQL Analytics は、Azure SQL Database とエラスティック プールの診断テレメトリのストリーミングをサポートするクラウド監視ソリューションです。 このソリューションでは、Log Analytics サービスへの接続にエージェントが使用されないため、Windows、Linux、または SCOM のリソースとの接続はサポートされていません。次の互換性に関する表を参照してください。
 
-次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
-
-| 接続先ソース | サポート | [説明] |
+| 接続先ソース | サポート | 説明 |
 | --- | --- | --- |
+| **[Azure 診断](log-analytics-azure-storage.md)** | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
 | [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | このソリューションでは、直接の Windows エージェントは使用されません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | このソリューションでは、直接の Linux エージェントは使用されません。 |
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ  | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
-| [Azure 診断](log-analytics-azure-storage.md) | [はい] | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
-
-## <a name="prerequisites"></a>前提条件
-
-- Azure サブスクリプション。 持っていない場合は、[無料](https://azure.microsoft.com/free/)で作成できます。
-- Log Analytics ワークスペース。 既存のものを使用します。ソリューションの使用を開始する前に[新しく作成](log-analytics-quick-create-workspace.md)することもできます。
-- Azure SQL データベースとエラスティック プールの Azure 診断を有効にして、[Log Analytics にデータを送信するように構成](../sql-database/sql-database-metrics-diag-logging.md)します。
 
 ## <a name="configuration"></a>構成
 
 Azure SQL Analytics ソリューションをワークスペースに追加するには、次の手順を実行します。
 
-1. Azure SQL Analytics ソリューションをワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページに説明されている手順に従って追加してください。
-2. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** をクリックします。  
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) から Azure SQL Analytics ソリューションをワークスペースに追加します。
+2. Azure portal で **[+ リソースの作成]** をクリックし、次に **Azure SQL Analytics** を検索します。  
     ![監視 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
-3. **[監視 + 管理]** の一覧で、**[すべて表示]** をクリックします。
-4. **[推奨]** の一覧で **[詳細]** をクリックし、新しい一覧で **[Azure SQL Analytics (プレビュー)]** を探して選択します。  
-    ![Azure SQL Analytics のソリューション](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. **[Azure SQL Analytics (プレビュー)]** 領域で、**[作成]** をクリックします。  
+3. 一覧から **Azure SQL Analytics (プレビュー)** を選択します
+4. **[Azure SQL Analytics (プレビュー)]** 領域で、**[作成]** をクリックします。  
     ![作成](./media/log-analytics-azure-sql/portal-create.png)
-6. **[新しいソリューションの作成]** 領域で、ソリューションを追加するワークスペースを選択し、**[作成]** をクリックします。  
+5. **[新しいソリューションの作成]** 領域で、ソリューションを追加するワークスペースを新規作成するか既存のワークスペースを選択し、**[作成]** をクリックします。  
     ![ワークスペースに追加](./media/log-analytics-azure-sql/add-to-workspace.png)
 
+### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーム配信するための Azure SQL Database とエラスティック プールの構成
+
+Azure SQL Database およびエラスティック プールのパフォーマンスを監視するには、ワークスペースに Azure SQL Analytics ソリューションを作成した後で、診断テレメトリをソリューションにストリーム配信するように、監視対象の Azure SQL Database およびエラスティック プール リソースの**それぞれを構成**する必要があります。
+
+- Azure SQL データベースとエラスティック プールの Azure 診断を有効にして、[Log Analytics にデータを送信するように構成](../sql-database/sql-database-metrics-diag-logging.md)します。
 
 ### <a name="to-configure-multiple-azure-subscriptions"></a>複数の Azure サブスクリプションの構成方法
 
@@ -104,7 +100,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
-| パースペクティブ | [説明] |
+| パースペクティブ | 説明 |
 | --- | --- |
 | 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 |
 | 洞察 | インテリジェントな洞察の階層型のドリルダウンを提供します。 インテリジェントな洞察の詳細を参照してください。 |
@@ -150,7 +146,7 @@ AzureMetrics
 | render timechart
 ```
 
-*高 DTU (Azure SQL Database エラスティック プール上)*
+*高 DTU (Azure SQL Database Elastic Pool 上)*
 
 ```
 AzureMetrics 

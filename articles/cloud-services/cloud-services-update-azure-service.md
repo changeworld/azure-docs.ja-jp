@@ -3,7 +3,7 @@ title: クラウド サービスの更新方法 | Microsoft Docs
 description: Azure のクラウド サービスの更新方法について説明します。 クラウド サービスで更新が処理され、可用性が確保されるしくみについて説明します。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 36d4ee9dabd39f4103d17455e47521b378af6ebb
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: jeconnoc
+ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24860673"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008095"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 
@@ -54,18 +54,18 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 
 | ホスティング、サービス、ロールに対して許可される変更 | インプレース更新 | ステージング (VIP スワップ) | 削除と再デプロイ |
 | --- | --- | --- | --- |
-| オペレーティング システムのバージョン |はい |あり |はい |
-| .NET 信頼レベル |はい |あり |はい |
-| 仮想マシンのサイズ<sup>1</sup> |はい<sup>2</sup> |はい |はい |
-| ローカル ストレージの設定 |増加のみ<sup>2</sup> |はい |はい |
-| サービス内のロールの追加または削除 |はい |あり |はい |
-| 特定のロールのインスタンスの数 |はい |あり |はい |
-| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ |はい |
-| 構成設定の名前と値 |はい |あり |はい |
-| 構成設定の値 (名前は不可) |はい |あり |はい |
-| 新しい証明書の追加 |はい |あり |はい |
-| 既存の証明書の変更 |はい |あり |はい |
-| 新しいコードのデプロイ |はい |あり |はい |
+| オペレーティング システムのバージョン |[はい] |はい |[はい] |
+| .NET 信頼レベル |[はい] |はい |[はい] |
+| 仮想マシンのサイズ<sup>1</sup> |はい<sup>2</sup> |[はい] |[はい] |
+| ローカル ストレージの設定 |増加のみ<sup>2</sup> |[はい] |[はい] |
+| サービス内のロールの追加または削除 |[はい] |はい |[はい] |
+| 特定のロールのインスタンスの数 |[はい] |はい |[はい] |
+| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ  |[はい] |
+| 構成設定の名前と値 |[はい] |はい |[はい] |
+| 構成設定の値 (名前は不可) |[はい] |はい |[はい] |
+| 新しい証明書の追加 |[はい] |はい |[はい] |
+| 既存の証明書の変更 |[はい] |はい |[はい] |
+| 新しいコードのデプロイ |[はい] |はい |[はい] |
 
 <sup>1</sup> サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
 
@@ -186,7 +186,7 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)  
 [クラウド サービスの監視方法](cloud-services-how-to-monitor.md)  
 [Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)  

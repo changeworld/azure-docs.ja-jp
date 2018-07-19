@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 332bfba0664391b6126669c4c89e38d1af4cf4fa
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b4358d1ccffd31d1f347f1872237620bee081251
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30265086"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989361"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -65,6 +65,6 @@ ExpressRoute で Dynamics 365 を有効にする予定がある場合は、以�
 * ExpressRoute 接続プロバイダーを探します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
 * [ルーティング](expressroute-routing.md)、[NAT](expressroute-nat.md)、[QoS](expressroute-qos.md) の要件を参照してください。
 * ExpressRoute 接続を構成します。
-  * [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
-  * [ルーティングの構成](expressroute-howto-routing-classic.md)
-  * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
+  * [ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)
+  * [ルーティングの構成](expressroute-howto-routing-arm.md)
+  * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)

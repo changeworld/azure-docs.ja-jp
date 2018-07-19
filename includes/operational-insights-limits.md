@@ -9,15 +9,15 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307490"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755761"
 ---
 各サブスクリプションの Log Analytics リソースには、次の制限が適用されます。
 
-| リソース | 既定の制限 | 説明
+| Resource | 既定の制限 | 説明
 | --- | --- | --- |
 | サブスクリプションあたりの無料のワークスペースの数 | 10 | この制限を増やすことはできません。 |
 | サブスクリプションあたりの有料のワークスペースの数 | 該当なし | リソース グループ内のリソースの数とサブスクリプションあたりのリソース グループの数によって制限されます | 
@@ -37,7 +37,7 @@ Log Analytics の各ワークスペースには次の制限が適用されます
 
 <sup>2</sup> スタンドアロン、OMS、および GB あたりの価格プランに対するデータ保有期間は、730 日間にまで増やすことができます。
 
-| カテゴリ | 制限 | 説明
+| Category | 制限 | 説明
 | --- | --- | --- |
 | データ コレクター API | 1 回の投稿の最大サイズは 30 MB<br>フィールド値の最大サイズは 32 KB | 大量の場合は複数の投稿に分割します<br>32 KB を超えるフィールドは切り詰められます。 |
 | Search API | 非集計データの場合に返されるレコードは 5,000 件<br>集計データの場合に返されるのは 500,000 件 | 集計データは、`summarize` コマンドを含む検索です

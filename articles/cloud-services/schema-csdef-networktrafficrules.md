@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
 caps.latest.revision: 17
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 779d3b42aeab04bb93756439a0482f32ade6557e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 71c791c9ac6f679f0f67b014c8fb5dd915d1a3e3
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360038"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004406"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services 定義 NetworkTrafficRules スキーマ
 `NetworkTrafficRules` ノードは、ロールが互いに通信する方法を指定する、サービス定義ファイル内の省略可能な要素です。 特定のロールの内部エンドポイントにアクセスできるロールを制限します。 `NetworkTrafficRules` はスタンドアロン要素ではなく、サービス定義ファイルで 2 つ以上のロールと組み合わされます。
@@ -76,7 +76,7 @@ ms.locfileid: "34360038"
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 要素
 `RoleEndpoint` 要素は、通信を許可するロール上のエンドポイントを記述します。 ロールに複数のエンドポイントがある場合は、複数の `RoleEndpoint` 要素を指定することができます。
 
-| Attribute      | type     | [説明] |
+| Attribute      | Type     | 説明 |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必須。 トラフィックの宛先として許可するエンドポイントの名前。|
 | `roleName`     | `string` | 必須。 通信の相手として許可する Web ロールの名前。|
@@ -87,14 +87,14 @@ ms.locfileid: "34360038"
 ##  <a name="WhenSource"></a> WhenSource 要素
 `WhenSource` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールのコレクションを記述します。
 
-| Attribute | type     | [説明] |
+| Attribute | Type     | 説明 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必須。 通信を許可するときに適用する規則を指定します。 有用な値は現在 `AnyRule` のみです。|
   
 ##  <a name="FromRole"></a> FromRole 要素
 `FromRole` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールを指定します。 エンドポイントと通信できるロールが複数ある場合、複数の `FromRole` 要素を指定することができます。
 
-| Attribute  | type     | [説明] |
+| Attribute  | Type     | 説明 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必須。 通信の許可元のロールの名前。|
 

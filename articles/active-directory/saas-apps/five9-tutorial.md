@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 1698a1fc6f9acc2815ae982e090651301d0a8bc5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3caa9b6885b87664f4b63d629677e69f47768a29
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220609"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052963"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
 
@@ -102,15 +102,15 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 
 1. Azure ポータルの **Five9 Plus Adapter (CTI、Contact Center Agents)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_five9_samlbase.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_samlbase.png)
 
 3. **[Five9 Plus Adapter (CTI, Contact Center Agents) のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_five9_url.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_url.png)
     
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
 
@@ -130,15 +130,15 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_five9_certificate.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_general_400.png)
 
 6. **[Five9 Plus Adapter (CTI, Contact Center Agents) 構成]** セクションで **[Five9 Plus Adapter (CTI, Contact Center Agents) の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_five9_configure.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_configure.png) 
 
 7. **Five9 Plus Adapter (CTI、Contact Center Agents)** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Five9 Plus Adapter (CTI、Contact Center Agents) サポート チーム](https://www.five9.com/about/contact)に送信する必要があります。 また、SSO をさらに構成するために、アダプターに従って以下の手順のようにしてください。
 
@@ -202,7 +202,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 
 2. アプリケーションの一覧で **[Five9 Plus Adapter (CTI, Contact Center Agents)]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/five9-tutorial/tutorial_five9_app.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -223,7 +223,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Five9 Plus Adapter (CTI、Contact Center Agents) のタイルをクリックすると、自動的に Five9 Plus Adapter (CTI、Contact Center Agents) アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

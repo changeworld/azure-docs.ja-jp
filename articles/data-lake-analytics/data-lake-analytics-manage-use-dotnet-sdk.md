@@ -10,12 +10,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: dc49bb9b5461a4e8eb3573877276f5876e12f340
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc5482ab83eca34d24cf15b76e0a0076456ae069
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625122"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109302"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics .NET アプリを管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -332,22 +332,27 @@ IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
 foreach (USqlTableColumn utc in columns)
 {
-  string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
-  Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
-  string scriptTxt = string.Empty;
-  using (StreamReader sr = new StreamReader(scriptStrm))
-  {
-      scriptTxt = sr.ReadToEnd();
-  }
-
-  var jobName = "SR_Wikipedia";
-  var jobId = Guid.NewGuid();
-  var properties = new USqlJobProperties(scriptTxt);
-  var parameters = new JobInformation(jobName, JobType.USql, properties, priority: 1, degreeOfParallelism: 1, jobId: jobId);
-  var jobInfo = adlaJobClient.Job.Create(adla, jobId, parameters);
-  Console.WriteLine($"Job {jobName} submitted.");
-
+  Console.WriteLine($"\t{utc.Name}");
 }
+```
+
+### <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
+次のコードは、Data Lake Analytics のジョブ管理クライアントを使用してジョブを送信する方法を示しています。
+``` csharp
+string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
+Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
+string scriptTxt = string.Empty;
+using (StreamReader sr = new StreamReader(scriptStrm))
+{
+    scriptTxt = sr.ReadToEnd();
+}
+
+var jobName = "SR_Wikipedia";
+var jobId = Guid.NewGuid();
+var properties = new USqlJobProperties(scriptTxt);
+var parameters = new JobInformation(jobName, JobType.USql, properties, priority: 1, degreeOfParallelism: 1, jobId: jobId);
+var jobInfo = adlaJobClient.Job.Create(adla, jobId, parameters);
+Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>失敗したジョブを一覧表示する

@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 78baef69d0d411b7611575300580c1c719c28bf8
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417577"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988814"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -34,7 +34,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 <a name="asal"></a>
 ## <a name="using-the-library"></a>ライブラリの使用
 
-.NET アプリケーションの場合、管理対象サービス ID (MSI) と連携する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
+.NET アプリケーションの場合、管理対象サービス ID (MSI) を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -66,7 +66,8 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 次のサンプルは、`Microsoft.Azure.Services.AppAuthentication` ライブラリの動作について示しています。
 
-1. [実行時に管理対象サービス ID (MSI) を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+1. 
+  [実行時に管理対象サービス ID (MSI) を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 2. [MSI を使用して Azure VM から Azure Resource Manager テンプレートをプログラムでデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)。
 
@@ -189,7 +190,7 @@ Azure AD にサインインするために証明書を使用するには、次�
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
-          CertificateStoreLocation={LocalMachine or CurrentUser}.
+          CertificateStoreLocation={LocalMachine or CurrentUser}
     ```
  
     _{AppId}_、_{TenantId}_、_{Thumbprint}_ は、手順 1 で生成された値に置き換えます。
@@ -205,7 +206,7 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 2. **AzureServicesAuthConnectionString** という名前の環境変数を次のように設定します。
 
     ```
-    RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}. 
+    RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret} 
     ```
 
     _{AppId}_、_{TenantId}_、_{ClientSecret}_ は、手順 1 で生成された値に置き換えます。
@@ -236,7 +237,8 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [管理対象サービス ID](/azure/app-service/app-service-managed-service-identity) について詳細を参照する。
+- 
+  [管理対象サービス ID](/azure/app-service/app-service-managed-service-identity) について詳細を参照する。
 
 - [アプリの認証と承認](/azure/app-service/app-service-authentication-overview)を行う他のさまざまな方法について参照する。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: garye
 ms.reviewer: gibattag
-ms.openlocfilehash: 3697dd0628f0028cb486139e92c032f0d757c6ed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ed5f19b23375ecb83e19274c7405e9a1208a7985
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374488"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036155"
 ---
 # <a name="create-a-cognitive-services-apis-account-in-the-azure-portal"></a>Azure Portal で Cognitive Services APIs アカウントを作成する
 
@@ -73,6 +73,6 @@ Cognitive Services アカウントが正常にデプロイされたら、ダッ�
 
 サンプルの Cognitive Services APIs を使用するためのクイック スタート ガイドについては、以下を参照してください。
 
- - [Computer Vision C# クイック スタート](/computer-vision/quickstarts/csharp.md)
- - [Text Analytics と Python](/text-analytics/quickstarts/python.md)
- - [Face API と JavaScript](/face/quickstarts/javascript.md)
+ - [Computer Vision C# クイック スタート](computer-vision/quickstarts/csharp.md)
+ - [Text Analytics と Python](text-analytics/quickstarts/python.md)
+ - [Face API と JavaScript](face/quickstarts/javascript.md)

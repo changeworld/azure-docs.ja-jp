@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 2bd4b6ee8575c3e70276870ebf91b2b8cfa35dac
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1dba198c747e52be18ed49aca271109997c86929
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226711"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>チュートリアル: Azure Active Directory と IMPAC Risk Manager の統合
 
@@ -147,7 +147,7 @@ IMPAC Risk Manager で Azure AD のシングル サインオンを構成して�
     
 7. **[IMPAC Risk Manager 構成]** セクションで、**[IMPAC Risk Manager を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML シングル サインオン サービス URL、SAML エンティティ ID**、**サインアウト URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_configure.png)
+    ![Configure single sign-on](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_configure.png)
 
 8. **IMPAC Risk Manager** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID**、および **SAML シングル サインオン サービス URL** を [IMPAC Risk Manager サポート チーム](mailto:rmsupport@Impac.co.nz)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -225,7 +225,7 @@ IMPAC Risk Manager で Azure AD のシングル サインオンを構成して�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [IMPAC Risk Manager] タイルをクリックすると、自動的に IMPAC Risk Manager アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7fab0b5b6bd2093b3a1113a509243e4ba49c30b8
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: e3a4af27a2e662b9d857f3293814fd06f6b0e284
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342387"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055085"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Functions の Azure Cosmos DB バインド 2.x (プレビュー)
 
@@ -925,7 +925,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
     "collectionName": "MyCollection",
     "id" : "{queueTrigger_payload_property}",
     "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSettingStringSetting": "MyAccount_COSMOSDB",     
+    "connectionStringSetting": "MyAccount_COSMOSDB",     
     "direction": "in"
 },
 {

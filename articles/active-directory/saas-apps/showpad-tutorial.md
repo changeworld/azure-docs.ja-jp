@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a2eaee7af1ae87900fb989f52573200838f6c888
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 74ab20c7ae7e70f04cce224e4fb45d7eb646c085
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222925"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>チュートリアル: Azure Active Directory と Showpad の統合
 
@@ -104,15 +104,15 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Showpad** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_showpad_samlbase.png)
+    ![Configure single sign-on](./media/showpad-tutorial/tutorial_showpad_samlbase.png)
 
 3. **[Showpad のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_showpad_url.png)
+    ![Configure single sign-on](./media/showpad-tutorial/tutorial_showpad_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<comapany-name>.showpad.biz/login` のパターンを使用して URL を入力します。
 
@@ -125,11 +125,11 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_showpad_certificate.png) 
+    ![Configure single sign-on](./media/showpad-tutorial/tutorial_showpad_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/showpad-tutorial/tutorial_general_400.png)
 
 6. Showpad テナントに管理者としてサインオンします。
 
@@ -212,7 +212,7 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 
 2. アプリケーションの一覧で **[Showpad]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/showpad-tutorial/tutorial_showpad_app.png) 
+    ![Configure single sign-on](./media/showpad-tutorial/tutorial_showpad_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -233,7 +233,7 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Showpad] タイルをクリックすると、自動的に Showpad アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

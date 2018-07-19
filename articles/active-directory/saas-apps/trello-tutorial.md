@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: a92fd3557455c5293ce72582210d3261c9ef0adb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ef8e493816321d9aaffbf6e4870ff3e3a9e1180b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218301"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>チュートリアル: Azure Active Directory と Trello の統合
 
@@ -128,7 +128,7 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
 5. Trello アプリケーションは SAML アサーションを使用し、特定の属性を含みます。 このアプリケーションには、次の属性を構成します。 これらの属性の値は、アプリケーションの **[ユーザー属性]** から管理できます。 次のスクリーンショットはその例です。
 
-    ![[Configure Single Sign-On]](./media/trello-tutorial/tutorial_trello_attribute.png)
+    ![Configure single sign-on](./media/trello-tutorial/tutorial_trello_attribute.png)
 
 6. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
  
@@ -140,9 +140,9 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/trello-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/trello-tutorial/tutorial_officespace_04.png)
 
-    ![[Configure Single Sign-On]](./media/trello-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/trello-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。 
 
@@ -242,7 +242,7 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Trello] タイルをクリックすると、自動的に Trello アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

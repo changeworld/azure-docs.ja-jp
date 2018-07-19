@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064512"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110730"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -32,7 +32,8 @@ ms.locfileid: "37064512"
 
 頻繁に使用される他の定義は次のとおりです。
 - **L インスタンス スタンプ:** SAP HANA TDI 認定のハードウェア インフラストラクチャ スタック。Azure 内で SAP HANA インスタンスを実行するための専用のスタックです。
-- **SAP HANA on Azure (L インスタンス):** 異なる Azure リージョンの L インスタンス スタンプにデプロイされる SAP HANA TDI 認定ハードウェアで HANA インスタンスを実行する、Azure におけるサービスの正式名称。 関連用語の **HANA L インスタンス**は、SAP HANA on Azure (L インスタンス) の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
+- 
+  **SAP HANA on Azure (L インスタンス):** 異なる Azure リージョンの L インスタンス スタンプにデプロイされる SAP HANA TDI 認定ハードウェアで HANA インスタンスを実行する、Azure におけるサービスの正式名称。 関連用語の **HANA L インスタンス**は、SAP HANA on Azure (L インスタンス) の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
 
 
 SAP HANA はお客様がインストールする必要があります。アクティビティは、新しい SAP HANA on Azure (L インスタンス) サーバーのハンドオフ後に開始できます。 その後、Azure VNet と HANA L インスタンス ユニット間の接続が確立されます。 
@@ -163,7 +164,8 @@ SAP HANA on SLES 12 の実装に適用できる SAP サポート ノートは次
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)。
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)。
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
+
+  [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
 
 その他の便利な SAP on Red Hat 関連のリンクは次のとおりです。
 - [SAP HANA on Red Hat Linux のサイト](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)。

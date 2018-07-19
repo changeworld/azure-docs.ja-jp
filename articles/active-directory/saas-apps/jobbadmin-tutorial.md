@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 85c8f58fecf2a652db73a44650d26a3c9faf33e2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 63a1004e5eabe754640eeb375e37cfe8b403da13
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223095"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>チュートリアル: Azure Active Directory と Jobbadmin の統合
 
@@ -102,15 +102,15 @@ Jobbadmin で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Jobbadmin** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/jobbadmin-tutorial/tutorial_jobbadmin_samlbase.png)
+    ![Configure single sign-on](./media/jobbadmin-tutorial/tutorial_jobbadmin_samlbase.png)
 
 3. **[Jobbadmin のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/jobbadmin-tutorial/tutorial_jobbadmin_url.png)
+    ![Configure single sign-on](./media/jobbadmin-tutorial/tutorial_jobbadmin_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx` のパターンを使用して URL を入力します。
 
@@ -125,11 +125,11 @@ Jobbadmin で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/jobbadmin-tutorial/tutorial_jobbadmin_certificate.png) 
+    ![Configure single sign-on](./media/jobbadmin-tutorial/tutorial_jobbadmin_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/jobbadmin-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/jobbadmin-tutorial/tutorial_general_400.png)
 
 6. **Jobbadmin** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Jobbadmin サポート チーム](https://www.jobbnorge.no/om-oss/kontakt-oss)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -188,7 +188,7 @@ Azure AD ユーザーが Jobbadmin にログインできるようにするには
 
 2. アプリケーションの一覧で **[Jobbadmin]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/jobbadmin-tutorial/tutorial_jobbadmin_app.png) 
+    ![Configure single sign-on](./media/jobbadmin-tutorial/tutorial_jobbadmin_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -209,7 +209,7 @@ Azure AD ユーザーが Jobbadmin にログインできるようにするには
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Jobbadmin] タイルをクリックすると、Jobbadmin アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

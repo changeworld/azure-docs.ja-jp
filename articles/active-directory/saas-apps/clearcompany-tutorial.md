@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: fa6f7e601bf9734e0b15fd18f19a9db2f8ec866c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0463a89b8c320b31929bf5e0322079088c2cdeab
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231561"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>チュートリアル: Azure Active Directory と ClearCompany の統合
 
@@ -209,7 +209,7 @@ ClearCompany で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ClearCompany] タイルをクリックすると、自動的に ClearCompany アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

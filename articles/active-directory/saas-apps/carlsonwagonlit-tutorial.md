@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: f8dff92f8ff8596d8f2293948585328b8ce2d578
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b1854b8e2c05fb2bcc5bd864c9ed8049250743b8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225407"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054116"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
 
@@ -197,7 +197,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Carlson Wagonlit Travel] タイルをクリックすると、自動的に Carlson Wagonlit Travel アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
