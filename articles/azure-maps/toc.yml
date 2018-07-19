@@ -22,8 +22,16 @@
   items:
     - name: ズーム レベルとタイル グリッド
       href: zoom-levels-and-tile-grid.md
-    - name: サポートされている検索カテゴリ
-      href: supported-search-categories.md
+    - name: サービスの範囲
+      items:
+        - name: ジオコーディング
+          href: geocoding-coverage.md
+        - name: トラフィック
+          href: traffic-coverage.md
+        - name: レンダー
+          href: render-coverage.md
+        - name: ルーティング
+          href: routing-coverage.md
     - name: サポートされている言語
       href: supported-languages.md
 - name: ハウツー ガイド
@@ -64,22 +72,14 @@
           href: map-accessibility.md
 - name: リファレンス
   items:
-    - name: サービスの範囲
-      items:
-        - name: ジオコーディング
-          href: geocoding-coverage.md
-        - name: トラフィック
-          href: traffic-coverage.md
-        - name: レンダー
-          href: render-coverage.md
-        - name: ルーティング
-          href: routing-coverage.md
     - name: API とパラメーターの拡張子
       items:
         - name: 車両消費モデル
           href: consumption-model.md
         - name: GeoJSON 形式の拡張
           href: extend-geojson.md
+        - name: サポートされている検索カテゴリ
+          href: supported-search-categories.md
     - name: REST ()
       items:
         - name: Render Service
@@ -129,7 +129,7 @@
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: 価格

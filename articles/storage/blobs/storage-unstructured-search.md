@@ -2,19 +2,19 @@
 title: Azure クラウド ストレージで非構造化データを検索する
 description: Azure Search を使用した非構造化データの検索。
 author: roygara
-manager: timlt
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/12/2017
-ms.author: rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 930b735eb03aea6ce701b694ca527049b4c3f24d
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e50ff3b3a53a13d1604fcb7872853d758259ff9f
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23451639"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136538"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>クラウド ストレージで非構造化データを検索する
 
@@ -36,7 +36,7 @@ ms.locfileid: "23451639"
 
 サンプルは、[clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) から取得したテキスト ファイルで構成されています。 Azure を使用して検索する場合のテキスト ファイルの例として、それらを使用できます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 [Azure Portal](http://portal.azure.com) にログインします。
 
@@ -144,7 +144,7 @@ Blob Storage に接続できる検索サービスが用意されました。 こ
     
     a. 独自の将来のシナリオでは、**[Storage metadata only] \(ストレージのメタデータのみ)** を選択することもできます。 これを選択するのは、インデックスを作成するデータを標準 BLOB プロパティまたはユーザー定義プロパティに制限する場合などです。
     
-    b. **[All metadata] \(すべてのメタデータ)** を選択して、標準 BLOB プロパティおよび*すべて*のコンテンツ タイプ固有のメタデータを取得することもできます。 
+    b. **[All metadata] (すべてのメタデータ)** を選択して、標準 BLOB プロパティおよび*すべて*のコンテンツ タイプ固有のメタデータを取得することもできます。 
 
 2. 使用している BLOB はテキスト ファイルであるため、**[Parsing Mode] \(解析モード)** を **[Text] \(テキスト)** に設定します。
     
@@ -179,7 +179,7 @@ Blob Storage に接続できる検索サービスが用意されました。 こ
 **[FIELD NAME] \(フィールド名)** 列に、パラメーターが含まれます。 次の表に、使用可能な属性とその説明の一覧を提供します。
 
 ### <a name="field-attributes"></a>フィールド属性
-| 属性 | Description |
+| 属性 | 説明 |
 | --- | --- |
 | *キー* |ドキュメント検索に使用される各ドキュメントの一意の ID を提供する文字列です。 各インデックスに、1 つのキーが必要です。 1 つのフィールドだけをキーにすることができ、その型を Edm.String に設定する必要があります。 |
 | *Retrievable* |検索結果でフィールドを返すことができるかどうかを設定します。 |
@@ -241,7 +241,7 @@ BLOB を検索サービスに正常に接続しました。 ポータルで、�
 
 このチュートリアルが完了し、非構造化データの検索可能なセットが用意されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の方法など、Azure Search を使用して非構造化データを検索することについて説明しました。
 

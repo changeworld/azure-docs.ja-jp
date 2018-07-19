@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128590"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114543"
 ---
 # <a name="get-started-with-batch-rendering"></a>Batch Rendering を使ってみる 
 
@@ -123,7 +123,7 @@ Maya では、以下を使用できます。
 
 3ds Max Batch Labs テンプレートを使用すると、Batch Rendering を使用して VRay および Arnold のシーンをレンダリングできます。 V-Ray と Arnold のテンプレートは 2 種類あります。1 つは、標準のシーン用で、もう 1 つはアセットおよびテクスチャへの 3ds Max パス ファイル (.mxp ファイル) を必要とする複雑なシーン用です。 3ds Max Batch Labs テンプレートの詳細については、GitHub の [Batch Labs データ](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) リポジトリを参照してください。
 
-さらに、[Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) を使用して、レンダリングを既存のパイプラインと統合することができます。
+さらに、[Batch Python SDK](/python/api/overview/azure/batch) を使用して、レンダリングを既存のパイプラインと統合することができます。
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Maya 用の Batch プラグインを使用したレンダリング ジョブの送信

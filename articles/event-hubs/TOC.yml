@@ -26,6 +26,10 @@
   items:
     - name: Event Processor Host の概要
       href: event-hubs-event-processor-host.md
+    - name: IP 接続フィルター
+      href: event-hubs-ip-filtering.md
+    - name: Virtual Network サービスのエンドポイント
+      href: event-hubs-service-endpoints.md
     - name: プログラミング ガイド
       href: event-hubs-programming-guide.md
     - name: Event Grid との統合
@@ -150,7 +154,7 @@
     - name: FAQ
       href: event-hubs-faq.md
     - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
     - name: 価格

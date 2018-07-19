@@ -11,21 +11,14 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: bef298ea8e5710b386822f071d0644c9ddad04a2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 807fd49a54c82b0930134beb8413e14c1c28b278
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314423"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115563"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
-
-> [!div class="op_single_selector"]
-> * [.NET](batch-dotnet-get-started.md)
-> * [Python](batch-python-tutorial.md)
-> * [Node.js](batch-nodejs-get-started.md)
->
->
 
 この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。  
 
