@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fcdfa2150e4b2341b878c6cd407bb4169fad4ab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 78c622dca89789c123e714d6101c9b1397182602
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216373"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル: Azure Active Directory と Getabstract の統合
 
@@ -222,7 +222,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Getabstract] タイルをクリックすると、自動的に Getabstract アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

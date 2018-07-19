@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory で全体管理者のアクセス権を昇格する | Microsoft Docs
-description: Azure Portal または REST API を使用して、Azure Active Directory の全体管理者のアクセス権を昇格する方法について説明します。
+description: Azure portal または REST API を使用して、Azure Active Directory の全体管理者のアクセス権を昇格する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,22 +9,22 @@ editor: bagovind
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/29/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266507"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445213"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory で全体管理者のアクセス権を昇格する
+# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory の全体管理者のアクセス権を昇格する
 
-Azure Active Directory (Azure AD) の[全体管理者](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator)の場合は、以下の操作を行うことがあります。
+Azure Active Directory (Azure AD) の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)の場合は、以下の操作を行うことがあります。
 
 - ユーザーがアクセス権を失ったときに Azure サブスクリプションへのアクセス権を回復する
 - 別のユーザーまたは自分に Azure サブスクリプションへのアクセス権を付与する
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) の[全体管理者](../active-directory/activ
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Azure Portal を使用して全体管理者のアクセス権を昇格する
+## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Azure portal を使用して全体管理者のアクセス権を昇格する
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
@@ -220,4 +220,5 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 ## <a name="next-steps"></a>次の手順
 
 - [REST を使用したロールベースのアクセス制御](role-assignments-rest.md)
-- [アクセス権の割り当てを管理する](role-assignments-users.md)
+- [Privileged Identity Management で Azure リソースへのアクセスを管理する](pim-azure-resource.md)
+- [条件付きアクセスを使用して Azure 管理へのアクセスを管理する](conditional-access-azure-management.md)

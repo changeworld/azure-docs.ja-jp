@@ -6,73 +6,73 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f6f9b9c7ae71697efb6d722eff55d9ee3f8746d5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5d68f8fe28b7f029d19a0ed0c03e5324c32f29c0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712302"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446811"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー (ROPC) を構成する
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
-リソース所有者のパスワード資格情報 (ROPC) フローは、OAUTH の標準認証フローです。アプリケーションは、証明書利用者とも呼ばれ、ID トークン、アクセス トークン、および更新トークンのユーザー ID とパスワードなどの有効な資格情報を交換します。 
+リソース所有者のパスワード資格情報 (ROPC) フローは、OAuth の標準認証フローです。アプリケーションは、証明書利用者とも呼ばれ、ID トークン、アクセス トークン、および更新トークンのユーザー ID とパスワードなどの有効な資格情報を交換します。 
 
 > [!NOTE]
 > この機能はプレビュー段階にあります。
 
-Azure AD B2C では、次のオプションがサポートされています。
+Azure Active Directory (Azure AD) B2C では、次のオプションがサポートされています。
 
-- **ネイティブ クライアント** - 認証時のユーザー操作は、ユーザー側デバイス上で実行されているコードを使用して行われます。このコードは、Android などのネイティブ オペレーティング システムで実行されているモバイル アプリケーションや、JavaScript などのブラウザーで実行されているモバイル アプリケーションの可能性があります。
-- **パブリック クライアント フロー** - アプリケーションによって収集されたユーザーの資格情報のみが API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加** - 新しい要求を追加するために、ID トークンの内容を変更することができます。 
+- **ネイティブ クライアント**: 認証時のユーザー操作は、ユーザー側のデバイスでコードが実行されているときに発生します。 デバイスは、Android などのネイティブ オペレーティング システムで実行されているモバイル アプリケーションや、JavaScript などのブラウザーで実行されているモバイル アプリケーションの可能性があります。
+- **パブリック クライアント フロー**: アプリケーションによって収集されたユーザーの資格情報のみが API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
+- **新しい要求の追加**新しい要求を追加するために、ID トークンの内容を変更することができます。 
 
-これらのフローはサポートされていません。
+次のフローはサポートされていません。
 
-- **サーバー対サーバー** - ID 保護システム (IDPS) は、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスが必要です。  サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。失敗した認証の動的しきい値を超えた場合、IDPS によって、繰り返される IP アドレスが攻撃者として特定される可能性があります。
-- **機密性の高いクライアント フロー** - アプリケーション クライアント ID は検証されますが、アプリケーション シークレットは検証されません。
+- **サーバー対サーバー**: ID 保護システムは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスを必要とします。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 失敗した認証の動的しきい値を超えた場合、ID 保護システムによって、繰り返される IP アドレスが攻撃者として特定される可能性があります。
+- **機密性の高いクライアント フロー**: アプリケーション クライアント ID は検証されますが、アプリケーション シークレットは検証されません。
 
 ##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
 
-1. Azure AD B2C テナントの全体管理者として、Azure Portal にログインします。
+1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
 2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
 3. **[ポリシー]** で、**[リソース所有者のポリシー]** を選択します。
-4. *ROPC_Auth* など、ポリシーの名前を入力して **[アプリケーション要求]** をクリックします。
+4. *ROPC_Auth* など、ポリシーの名前を入力して **[アプリケーション要求]** を選択します。
 5. *[表示名]*、*[メール アドレス]*、*[ID プロバイダー]* など、アプリケーションに必要なアプリケーション要求を選択します。
-6. **[OK]** をクリックし、**[作成]** をクリックします。
+6. **[OK]** を選択し、**[作成]** を選択します。
 
-次の例のようなエンドポイントが表示されます。
+   次の例のようなエンドポイントが表示されます。
 
-`https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
+   `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
 
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-1. B2C の設定で **[アプリケーション]** をクリックし、**[+ 追加]** をクリックします。
+1. B2C の設定で、**[アプリケーション]** を選択し、**[追加]** を選択します。
 2. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
-3. **Web アプリ/Web API** の場合は **[いいえ]** をクリックし、**ネイティブ クライアント**の場合は **[はい]** をクリックします。
-4. その他のすべての値はそのままにして、**[作成]** をクリックします。
-5. 新しいアプリケーションを選択し、アプリケーション ID をメモします。
+3. **[Web App/Web API]\(Web アプリ/Web API\)** に対して **[いいえ]** を選択し、次に **[Native client]\(ネイティブ クライアント\)** に対して **[はい]** を選択します。
+4. その他のすべての値はそのままにして、**[作成]** を選択します。
+5. 新しいアプリケーションを選択し、後で使用するためにアプリケーション ID をメモします。
 
 ## <a name="test-the-policy"></a>ポリシーをテストする
 
 お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ポリシーをデバッグします。 次の表の情報を使用して、POST 要求の本文として、このような呼び出しを作成します。
-- *yourtenant.onmicrosoft.com* は実際の B2C テナント名に置き換えます
-- *B2C_1A_ROPC_Auth* は実際の ROPC ポリシーのフル ネームに置き換えます
-- *bef2222d56-552f-4a5b-b90a-1988a7d634c3* は実際の登録のアプリケーション ID に置き換えます。
+- *\<yourtenant.onmicrosoft.com>* は実際の B2C テナント名に置き換えます。
+- *\<B2C_1A_ROPC_Auth>* は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
+- *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* は実際の登録のアプリケーション ID に置き換えます。
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | キー | 値 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| scope | openid bef2222d56-552f-4a5b-b90a-1988a7d634c3 offline_access |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
 *Client_id* は、以前にアプリケーション ID としてメモした値です。 更新トークンを受信する場合、*Offline_access* は省略可能です。 
@@ -81,14 +81,14 @@ Azure AD B2C では、次のオプションがサポートされています。
 
 ```
 POST /yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
-Host: te.cpim.windows.net
+Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
 
-オフラインアクセスで成功した応答は、次の例のようになります。
+オフライン アクセスで成功した応答は、次の例のようになります。
 
 ```
 { 
@@ -102,26 +102,25 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 ## <a name="redeem-a-refresh-token"></a>更新トークンを利用する
 
-次の表の情報を使用して、POST 要求の本文として、このような POST 呼び出しを作成します。
+次の表の情報を要求の本文として使用して、ここに示すような POST 呼び出しを作成します。
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | キー | 値 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
-| resource | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* と *resource* は、以前にアプリケーション ID としてメモした値です。 *Refresh_token* は、前述の認証呼び出しで受け取ったトークンです。
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>好みのネイティブ SDK を使用して実装するか、App-Auth を使用する
 
+Azure AD B2C の実装は、パブリック クライアント リソース所有者のパスワード認証情報に関する OAuth 2.0 標準を満たしており、ほとんどのクライアント SDK と互換性があります。 このフローは、AppAuth for iOS と AppAuth for Android を使用して、運用環境で幅広くテストしました。 最新情報については、[最新のベスト プラクティスを実装する OAuth 2.0 と OpenID Connect のネイティブ App SDK](https://appauth.io/) に関するページを参照してください。
 
-Azure AD B2C の実装は、OAuth 2.0 標準またはパブリック クライアント ROPC を満たしており、ほとんどのクライアント SDK と互換性があります。  このフローは、AppAuth for iOS と AppAuth for Android を使用して、運用環境で幅広くテストしました。  最新情報については、https://appauth.io/ を参照してください。
-
-Azure AD B2C で使用するように構成された作業サンプルは、GitHub の https://aka.ms/aadb2cappauthropc (Android 用) と https://aka.ms/aadb2ciosappauthropc でダウンロードできます。
+Azure AD B2C で使用するように構成された作業サンプル ([Android 用](https://aka.ms/aadb2cappauthropc)、[iOS 用](https://aka.ms/aadb2ciosappauthropc)) を GitHub からダウンロードしてください。
 
 
 

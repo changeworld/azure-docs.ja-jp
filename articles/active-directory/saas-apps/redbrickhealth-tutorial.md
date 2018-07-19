@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: c30da2ecebd7c46e8396351f7e7c5ee69c130e29
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d852b30568acff4f1d56a1e208528e8c90b5b1f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217036"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051780"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>チュートリアル: Azure Active Directory と RedBrick Health の統合
 
@@ -127,7 +127,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
 
 4. RedBrick Health アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 これらの要求はお客様に固有であり、お客様の要件によって異なります。 次のオプションの要求は、アプリケーションで構成できる単なる例です。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。
 
-    ![[Configure Single Sign-On]](./media/redbrickhealth-tutorial/attribute.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/attribute.png)
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
@@ -142,9 +142,9 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
-    ![[Configure Single Sign-On]](./media/redbrickhealth-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/tutorial_attribute_04.png)
     
-    ![[Configure Single Sign-On]](./media/redbrickhealth-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -242,7 +242,7 @@ RedBrick Health で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [RedBrick Health] タイルをクリックすると、自動的に RedBrick Health アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -2,19 +2,19 @@
 title: AKS と Azure Container Registry で Draft を使用します。
 description: AKS と Azure Container Registry で Draft を使用します。
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a5dfecefb6ce1d74e02c64371a864a6d3b07a2e1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8f273a5a2c47b25dc339fd63df127d141fe2f8e2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257317"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130245"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
@@ -58,11 +58,11 @@ Draft によってコンテナー イメージをローカルにビルドし、�
 
 ### <a name="create-trust-between-aks-cluster-and-acr"></a>AKS クラスターと ACR 間に信頼を作成する
 
-AKS クラスターと ACR レジストリ間の信頼を確立するために、ACR リポジトリのスコープを使用して共同作成者ロールを追加して、AKS と共に使用する Azure Active Directory サービス プリンシパルを変更します。 このためには、次のコマンドを実行します。_&lt;aks-rg-name&gt;_ と _&lt;aks-cluster-name&gt;_ をそれぞれ AKS クラスターのリソース グループと名前に置き換え、_&lt;acr-rg-nam&gt;_ と _&lt;acr-repo-name&gt;_ を信頼の作成に使用する ACR リポジトリのリソース グループとリポジトリ名に置き換えます。
+AKS クラスターと ACR レジストリ間の信頼を確立するために、ACR レジストリのスコープを使用して共同作成者ロールを追加して、AKS と共に使用する Azure Active Directory サービス プリンシパルを変更します。 このためには、次のコマンドを実行します。_&lt;aks-rg-name&gt;_ と _&lt;aks-cluster-name&gt;_ をそれぞれ AKS クラスターのリソース グループと名前に置き換え、_&lt;acr-rg-nam&gt;_ と _&lt;acr-registry-name&gt;_ を信頼の作成に使用する ACR レジストリのリソース グループとレジストリ名に置き換えます。
 
 ```console
 export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
-export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-registry-name> --query "id" -o tsv)
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 

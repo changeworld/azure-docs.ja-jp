@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: d9ed4134cfb8047d5d6839979cd89ba37ff0c3f8
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e963b0f816d30411aa7d1e8c172ca0c2e5ddf0f1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701354"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444363"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -115,6 +115,10 @@ az account set --subscription $subscriptionId
 
 次のコマンドは、Windows および Linux クラスターを作成する場合に利用できます。必要な変更は、使用する OS の指定のみです。 次の PowerShell/CLI コマンドから、CertificateOutputFolder に指定されている証明書も出力されますが、証明書フォルダーはあらかじめ作成しておく必要があります。 このコマンドは、VM SKU など他のパラメーターも受け取ります。
 
+> [!NOTE]
+> 次の PowerShell コマンドは、バージョン 6.1 より新しい Azure Resource Manager PowerShell でのみ動作します。 Azure Resource Manager PowerShell の現在のバージョンを確認するには、PowerShell コマンド "Get-Module AzureRM" を実行します。 Azure Resource Manager PowerShell のバージョンをアップグレードするには、次のリンクに従ってください。 https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0
+>
+>
 ```PowerShell
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"

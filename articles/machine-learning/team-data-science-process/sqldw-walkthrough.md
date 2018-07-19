@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 12eb182c859617139fce6553496c6aa6e9bcdc98
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 205c62246210373333c1315d5f3a9b3ec8571e59
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839063"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004372"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -887,7 +887,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 ## <a name="references"></a>参照
 •    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
 •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png
