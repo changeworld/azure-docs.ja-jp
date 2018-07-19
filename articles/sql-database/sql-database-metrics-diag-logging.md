@@ -51,7 +51,7 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 - [Errors](sql-database-metrics-diag-logging.md#errors-dataset): このデータベースで発生した SQL エラーに関する情報が含まれます。
 - [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): データベースが各種の待機に費やした時間に関する情報が含まれます。
 - [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): データベースで発生したタイムアウトに関する情報が含まれます。
-- [Timeouts](sql-database-metrics-diag-logging.md#blockings-dataset): データベースで発生したブロック イベントに関する情報が含まれます。
+- [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): データベースで発生したブロック イベントに関する情報が含まれます。
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights が含まれます。 [Intelligent Insights](sql-database-intelligent-insights.md) の詳細。
 - **Audit** / **SQLSecurityAuditEvents**: 現在利用できません。
 
