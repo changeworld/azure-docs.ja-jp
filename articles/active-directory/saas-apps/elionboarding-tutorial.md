@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: c6853c5dd3ec320afd70e095fe1909c7942f52e0
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 36bcf5773388aa0a286b6add649907139dc4896f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323347"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>チュートリアル: Azure Active Directory と Eli Onboarding の統合
 
@@ -195,7 +195,7 @@ Eli Onboarding で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Eli Onboarding] タイルをクリックすると、自動的に Eli Onboarding アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

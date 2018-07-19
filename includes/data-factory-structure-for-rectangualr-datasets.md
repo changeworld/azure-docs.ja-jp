@@ -5,10 +5,10 @@
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |列の名前です。 |あり |
-| type |列のデータ型です。 型情報を指定する必要がある場合の詳細については、以下の型変換のセクションを参照してください。 |いいえ |
-| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の Datetime または Datetimeoffset です。 既定値は “en-us” です。 |いいえ |
-| BlobSink の format |型を指定するときに使用される書式指定文字列。.NET 型の Datetime または Datetimeoffset です。 |なし |
+| name |列の名前です。 |[はい] |
+| type |列のデータ型です。 型情報を指定する必要がある場合の詳細については、以下の型変換のセクションを参照してください。 |いいえ  |
+| culture |型を指定するときに使用される .NET ベースのカルチャ.NET 型の Datetime または Datetimeoffset です。 既定値は “en-us” です。 |いいえ  |
+| format |型を指定するときに使用される書式指定文字列.NET 型の Datetime または Datetimeoffset です。 |いいえ  |
 
 次に、userid、name、および lastlogindate という 3 つの列があるテーブルの structure セクション JSON の例を示します。
 
@@ -31,7 +31,7 @@
   * データセットがコピー アクティビティのソースの場合、"structure" で型情報を提供できます。Data Factory ではシンクのネイティブ型への変換にその型情報を使用します。 詳細については、[Azure BLOB との間のデータの移動](../articles/data-factory/v1/data-factory-azure-blob-connector.md)に関する記事を参照してください。
 
 ### <a name="supported-net-based-types"></a>サポートされる .NET ベースの型
-Data Factory は、Azure BLOB などの読み取りデータ ソースでスキーマに "structure" で型情報を提供する場合、次の CLS 準拠の .NET ベースの型値をサポートしています。
+Data Factory は、Azure BLOB などの読み取りデータ ソースでスキーマに "structure" で型情報を提供する場合、次の CLS に準拠している .NET ベースの型値をサポートしています。
 
 * Int16
 * Int32 

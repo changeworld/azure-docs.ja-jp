@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d86a2b702eac4fc976fd59ca24fd7122a76005b4
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061679"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920816"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
-> [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [フィード](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)をサブスクライブして、Azure Active Directory (Azure AD) の新着情報を常に把握するようにしてください。
+> [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [フィード](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)をサブスクライブして、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取ります。
 
 Azure AD は随時改善されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
--   最新のリリース
--   既知の問題
--   バグの修正
--   非推奨の機能
--   変更の計画
+- 最新のリリース
+- 既知の問題
+- バグの修正
+- 非推奨の機能
+- 変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
 
@@ -40,8 +40,8 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 ### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>変更通知: Azure AD アクティビティ ログ API を使用するアプリの委任された承認ワークフローに対するセキュリティの修正
 
 **タイプ:** 変更の計画  
-**サービス カテゴリ:** 監視とレポート  
-**製品の機能:** レポート
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
 
 セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](https://aka.ms/aadreportsapi) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日**までに行われます。
 
@@ -64,7 +64,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 ### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>PCI DSS コンプライアンスのために TLS 設定を構成して Azure AD サービスに接続する
 
 **タイプ:** 新機能  
-**サービス カテゴリ:** 新機能  
+**サービス カテゴリ:** 該当なし  
 **製品の機能:** プラットフォーム
 
 トランスポート層セキュリティ (TLS) は、通信する 2 つのアプリケーション間にプライバシーとデータ整合性を提供するプロトコルであり、今日、最も広く展開され、使用されているセキュリティ プロトコルです。
@@ -172,7 +172,8 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 ### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>パブリック プレビューにある Azure AD の委任されたアプリ管理ロール
 
 **タイプ:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリの**製品機能:** アクセス制御
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** Access Control
 
 管理者は、グローバル管理者ロールを割り当てずに、アプリ管理タスクを委任できるようになりました。 新しいロールと機能は次のとおりです。
 

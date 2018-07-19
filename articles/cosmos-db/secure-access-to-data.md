@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: sngun
-ms.openlocfilehash: 079cbff3a1669efb7ba7cd7a97da9256dbbfe9f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c51d399b646e7914ba85048c0928837caac7c15b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613219"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901121"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -24,7 +24,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 |キーの種類|リソース|
 |---|---|
 |[マスター キー](#master-keys) |次の管理リソースで使用されます。データベース アカウント、データベース、ユーザー、およびアクセス許可|
-|[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コレクション、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF|
+|[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コンテナー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF|
 
 <a id="master-keys"></a>
 
@@ -32,7 +32,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 マスター キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 マスター キー:  
 - アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
-- コレクションとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
+- コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
 - アカウントの作成時に作成されます。
 - いつでも再生成することができます。
 
@@ -75,7 +75,7 @@ Database database = await client.CreateDatabaseAsync(
 ## <a name="resource-tokens"></a>リソース トークン
 
 リソース トークンは、データベース内のアプリケーション リソースへのアクセスを提供します。 リソース トークン:
-- コレクション、パーティション キー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF へのアクセスを提供します。
+- コンテナー、パーティション キー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF へのアクセスを提供します。
 - [ユーザー](#users)が特定のリソースへの[アクセス許可](#permissions)を付与されたときに作成されます。
 - アクセス許可リソースが POST、GET、または PUT 呼び出しで動作するときに作成されます。
 - ユーザー、リソース、およびアクセス許可用に特別に構築されたハッシュ リソース トークンを使用します。
@@ -134,7 +134,7 @@ Cosmos DB アクセス許可リソースは Cosmos DB ユーザーに関連付�
 * Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
-> Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
+> Cosmos DB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。
 > 
 > 
 
@@ -174,6 +174,11 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="delete-or-export-user-data"></a>ユーザー データの削除またはエクスポート
+Azure Cosmos DB では、データベースまたはコレクションにあるすべての個人データを、検索、選択、変更、削除することができます。 Azure Cosmos DB には、個人データを検索および削除する API があります。しかし、個人データを消去する API を使用してロジックを定義するのはユーザーの責任です。 各マルチモデル API (SQL API、MongoDB API、Gremlin API、Cassandra API、Table API) では、個人データを検索および削除するメソッドを含む SDK をさまざまな言語で提供しています。 [Time to Live (TTL)](time-to-live.md) 機能を有効にすると、追加のコストの発生なしに、指定した期間後に自動的にデータを削除するようにすることもできます。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>次の手順
 * Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。

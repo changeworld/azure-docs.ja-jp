@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 3/13/2017
+ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658725"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902301"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>ストレージ スナップショットに基づいた SAP HANA のバックアップ
 
@@ -28,9 +28,9 @@ ms.locfileid: "34658725"
 
 オールインワンの単一インスタンス デモ システムで VM バックアップ機能を使用する場合、OS レベルで HANA バックアップを管理するのではなく、VM バックアップを実行することを検討する必要があります。 別の方法としては、Azure BLOB スナップショットを作成して、仮想マシンに接続されている個別の仮想ディスクのコピーを作成し、HANA データ ファイルを保持する方法があります。 しかし、システムの稼働中に VM バックアップまたはディスク スナップショットを作成する場合、アプリの整合性が重要な問題になります。 関連記事「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)」の「_ストレージ スナップショットを作成する際の SAP HANA データの整合性_」を参照してください。 SAP HANA には、これらの種類のストレージ スナップショットに対応する機能が備わっています。
 
-## <a name="sap-hana-snapshots"></a>SAP HANA スナップショット
+## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>アプリケーションの整合バックアップの中心部としての SAP HANA スナップショット
 
-SAP HANA には、ストレージ スナップショットの作成に対応する機能が備わっています。 ただし 2016 年 12 月の時点では、単一コンテナー システムの制限があります。 マルチテナント コンテナー構成では、この種類のデータベース スナップショットはサポートされていません (「[Create a Storage Snapshot (SAP HANA Studio) (ストレージ スナップショットの作成 (SAP HANA Studio))](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)」を参照)。
+SAP HANA には、ストレージのスナップショットを作成する機能があります。 単一コンテナー システムの制限があります。 複数のテナントで SAP HANA MCS を使用するシナリオでは、この種の SAP HANA データベース スナップショットをサポートしていません (「[Create a Storage Snapshot (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)」 (ストレージ スナップショットの作成 (SAP HANA Studio)) を参照)。
 
 手順は次のようになります。
 
@@ -59,7 +59,9 @@ SAP HANA がスナップショット準備モードの間、ストレージ ス�
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>Azure Backup サービスによる HANA VM バックアップ
 
-2016 年 12 月の時点で、Linux VM では Azure Backup サービスの Backup エージェントを使用できません。 ファイル/ディレクトリ レベルの Azure バックアップを使用するには、SAP HANA バックアップ ファイルを Windows VM にコピーしたうえで、Backup エージェントを使用します。 それ以外では、Azure Backup サービスによる Linux VM の完全バックアップのみが可能です。 詳細については、「[Azure Backup の各機能の概要](../../../backup/backup-introduction-to-azure-backup.md)」を参照してください。
+Linux VM では Azure Backup サービスの Backup エージェントは使用できません。 また、Linux には Windows の VSS と同様な機能はありません。  ファイル/ディレクトリ レベルの Azure バックアップを使用するには、SAP HANA バックアップ ファイルを Windows VM にコピーしたうえで、Backup エージェントを使用します。 
+
+それ以外では、Azure Backup サービスによる Linux VM の完全バックアップのみが可能です。 詳細については、「[Azure Backup の各機能の概要](../../../backup/backup-introduction-to-azure-backup.md)」を参照してください。
 
 Azure Backup サービスには、VM をバックアップして復元するオプションが用意されています。 このサービスの詳細としくみについては、記事「[Azure における VM バックアップ インフラストラクチャの計画を立てる](../../../backup/backup-azure-vms-introduction.md)」を参照してください。
 
@@ -75,52 +77,32 @@ _&quot;アプリケーションでは、復元されたデータに対する独�
 
 _&quot;作成後のストレージ スナップショットは、できるだけ早く確認または破棄することを強くお勧めします。ストレージ スナップショットの準備中または作成中、スナップショット関連データはフリーズしています。スナップショット関連データがフリーズしている間も、データベースに対する変更は可能なままです。そのような変更によって、フリーズ中のスナップショット関連データが変更されることはありません。その代わり、変更は、データ領域内にある、ストレージ スナップショットとは別の場所に書き込まれます。また、変更はログにも書き込まれます。しかし、スナップショット関連データのフリーズ時間の長さに比例して、データ ボリュームは大きくなる可能性があります。&quot;_
 
-Azure Backup では、ファイル システムの整合性の確保は Azure VM 拡張機能によって行われます。 これらの拡張機能はスタンドアロンでは使用できず、必ず Azure Backup サービスと共に使用する必要があります。 それでも、SAP HANA スナップショットを管理してアプリ整合性を確保することは必須です。
+Azure Backup では、ファイル システムの整合性の確保は Azure VM 拡張機能によって行われます。 これらの拡張機能はスタンドアロンでは使用できず、必ず Azure Backup サービスと共に使用する必要があります。 それでも、SAP HANA スナップショットを作成および削除するスクリプトを提供してアプリ整合性を確保することは必須です。
 
-Azure Backup には主に次の 2 つのフェーズがあります。
+Azure Backup には主に次の 4 つのフェーズがあります。
 
+- 準備スクリプトの実行: スクリプトで SAP HANA スナップショットが作成される必要があります
 - スナップショットの作成
+- ポストスナップショット スクリプトの実行: スクリプトで準備スクリプトによって作成された SAP HANA が削除される必要があります
 - コンテナーへのデータ転送
 
-Azure Backup サービスによるスナップショットの作成フェーズが完了したら、SAP HANA スナップショットを確認することができます。 Azure Portal に表示されるまで数分かかる場合があります。
+これらのスクリプトをコピーする場所と Azure Backup の正確な動作の詳細については、次の記事を参照してください。
 
-![この図は、Azure Backup サービスのバックアップ ジョブ リストの一部を示しています](media/sap-hana-backup-storage-snapshots/image014.png)
+- [Azure における VM バックアップ インフラストラクチャの計画を立てる](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
+- [Azure Linux VM のアプリケーション整合性バックアップ](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
 
-この図は、Azure Backup サービスのバックアップ ジョブ リストの一部を示しています。
 
-![ジョブの詳細を表示するには、Azure Portal でバックアップ ジョブをクリックします](media/sap-hana-backup-storage-snapshots/image015.png)
 
-ジョブの詳細を表示するには、Azure Portal でバックアップ ジョブをクリックします。 ここには 2 つのフェーズが表示されます。 スナップショット フェーズが完了になるまで、数分かかる場合があります。 ほとんどの時間はデータ転送のフェーズに費やされます。
+Microsoft では現時点では、まだ SAP HANA の準備スクリプトおよびポストスナップショット スクリプトは公開していません。 これらのスクリプトは、お客様自身またはシステム インテグレーターが作成して、上記のドキュメントに従って手順を構成する必要があります。
 
-## <a name="hana-vm-backup-automation-via-azure-backup-service"></a>Azure Backup サービスによる HANA VM バックアップの自動化
 
-先ほど説明したとおり、Azure Backup スナップショット フェーズが完了したら、SAP HANA スナップショットを手動で確認できます。しかし、管理者が Azure Portal でバックアップ ジョブ リストを監視できない可能性があるため、自動化の検討をお勧めします。
+## <a name="restore-from-application-consistent-backup-against-a-vm"></a>VM に対するアプリケーション整合性バックアップからの復元
+アプリケーション整合性バックアップで Azure Backup から復元する手順については、「[Azure 仮想マシンのバックアップからファイルを回復する](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)」の記事を参照してください。 
 
-ここでは、Azure PowerShell コマンドレットを使用して自動化を実現する方法を説明します。
+> [!IMPORTANT]
+> 「[Azure 仮想マシンのバックアップからファイルを回復する](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)」の記事には、ディスクのストライプ セットを使用するときの例外と手順があります。 SAP HANA の VM は、通常ディスクがストライピングされ構成されています。 つまり、記事を読み、記事に記載されているようなケースの復元手順をテストすることが不可欠です。 
 
-![Azure Backup サービスは hana-backup-vault という名前で作成されています](media/sap-hana-backup-storage-snapshots/image016.png)
 
-Azure Backup サービスは &quot;hana-backup-vault&quot; という名前で作成されています。PS コマンド **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** で対応するオブジェクトを取得します。 次に、このオブジェクトを使用して、次の図のようにバックアップ コンテキストを設定します。
-
-![現在進行中のバックアップ ジョブを確認できます](media/sap-hana-backup-storage-snapshots/image017.png)
-
-コンテキストを正しく設定した後、現在進行中のバックアップ ジョブを確認して、そのジョブの詳細を探すことができます。 サブタスクの一覧に、Azure バックアップ ジョブのスナップショット フェーズが既に完了しているかどうかが示されます。
-
-```
-$ars = Get-AzureRmRecoveryServicesVault -Name hana-backup-vault
-Set-AzureRmRecoveryServicesVaultContext -Vault $ars
-$jid = Get-AzureRmRecoveryServicesBackupJob -Status InProgress | select -ExpandProperty jobid
-Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-```
-
-![Completed が返されるまでループで値をポーリングします](media/sap-hana-backup-storage-snapshots/image018.png)
-
-ジョブの詳細が変数に格納されたら、単純な PS 構文で最初の配列エントリにアクセスし、状態値を取得します。 自動化スクリプトを完了するには、&quot;Completed&quot; が返されるまでループで値をポーリングします。
-
-```
-$st = Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-$st[0] | select -ExpandProperty status
-```
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>HANA ライセンス キーと Azure Backup サービスによる VM の復元
 
@@ -144,7 +126,7 @@ Azure Backup サービスを使用するのではなく、PowerShell を使用�
 
 柔軟性は高まりますが、このドキュメントで先ほど説明した問題が解決されるわけではありません。
 
-- この場合も SAP HANA の整合性を確保する必要があります。
+- SAP HANA スナップショットを作成して SAP HANA の整合性を確保する必要があります。
 - リースの存在を示すエラーが原因で VM の割り当てが解除された場合でも、OS ディスクは上書きできません。 OS ディスクは VM の削除後にのみ動作します。これは、新しい一意の VM ID と新しい SAP ライセンスのインストールが必要であることを意味します。
 
 ![復元できるのは Azure VM のデータ ディスクのみです](media/sap-hana-backup-storage-snapshots/image021.png)

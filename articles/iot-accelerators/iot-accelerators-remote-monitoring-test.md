@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628261"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088462"
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
@@ -191,15 +191,15 @@ ms.locfileid: "34628261"
 
 デバイス シミュレーション サービスを変更するとき、そのサービスをローカルで実行して、変更をテストできます。 デバイス シミュレーション サービスをローカルで実行する前に、仮想マシンで実行されているインスタンスを次のようにして停止する必要があります。
 
-1. **device-simulation** の**コンテナー ID** を見つけるには、仮想マシンに接続されている SSH セッションで、次のコマンドを実行します。
+1. **device-simulation-dotnet** の**コンテナー ID** を見つけるには、仮想マシンに接続されている SSH セッションで、次のコマンドを実行します。
 
     ```sh
     docker ps
     ```
 
-    **device-simulation** サービスのコンテナー ID を書き留めておきます。
+    **device-simulation-dotnet** サービスのコンテナー ID を書き留めておきます。
 
-1. **device-simulation** コンテナーを停止するには、次のコマンドを実行します。
+1. **device-simulation-dotnet** コンテナーを停止するには、次のコマンドを実行します。
 
     ```sh
     docker stop container-id-from-previous-step
@@ -248,12 +248,6 @@ ms.locfileid: "34628261"
 ## <a name="create-a-simulated-device-type"></a>デバイスのシミュレーションの種類を作成
 
 最も簡単にデバイスの種類をデバイス シミュレーション サービスに新しく作成する方法は、既存の種類をコピーして変更することです。 次の手順では、組み込みの **Chiller** デバイスをコピーして新しい **Lightbulb (電球)** デバイスを作成する方法を説明します。
-
-1. Visual Studio を使用して、**device-simulation** リポジトリのローカル複製で **device-simulation.sln** ソリューション ファイルを開きます。
-
-1. ソリューション エクスプローラーで、**SimulationAgent** プロジェクトを右クリックし、**[プロパティ]**、**[デバッグ]** の順に選択します。
-
-1. **[環境変数]** セクションで、**PCS\_IOTHUB\_CONNSTRING** 変数の値を編集して、前にメモした IoT ハブ接続文字列に変更します。 次に、変更を保存します。
 
 1. ソリューション エクスプローラーで、**WebService** プロジェクトを右クリックし、**[プロパティ]**、**[デバッグ]** の順に選択します。
 
@@ -385,18 +379,21 @@ ms.locfileid: "34628261"
 1. 次のスニペットに示すように、**main** 関数を編集して動作を実装します。
 
     ```js
-    function main(context, previousState) {
+    function main(context, previousState, previousProperties) {
 
-      // Restore the global state before generating the new telemetry, so that
-      // the telemetry can apply changes using the previous function state.
-      restoreState(previousState);
+        // Restore the global device properties and the global state before
+        // generating the new telemetry, so that the telemetry can apply changes
+        // using the previous function state.
+        restoreSimulation(previousState, previousProperties);
 
-      state.temperature = vary(200, 5, 150, 250);
+        state.temperature = vary(200, 5, 150, 250);
 
-      // Make this flip every so often
-      state.status = flip(state.status);
+        // Make this flip every so often
+        state.status = flip(state.status);
 
-      return state;
+        updateState(state);
+
+        return state;
     }
     ```
 
@@ -545,11 +542,11 @@ ms.locfileid: "34628261"
 
     スクリプトにより、**[テスト]** タグがイメージに追加されました。
 
-1. SSH を使用して、Azure のソリューションの仮想マシンに接続します。 次に、**[アプリ]** フォルダーに移動して、**docker-compose.yaml** ファイルを編集します。
+1. SSH を使用して、Azure のソリューションの仮想マシンに接続します。 次に、**[アプリ]** フォルダーに移動して、**docker-compose.yml** ファイルを編集します。
 
     ```sh
     cd /app
-    sudo nano docker-compose.yaml
+    sudo nano docker-compose.yml
     ```
 
 1. Docker イメージが使用されるようにデバイス シミュレーション サービスのエントリを編集します。
@@ -605,7 +602,7 @@ ms.locfileid: "34628261"
 
 次の手順では、組み込みの **Chiller** デバイスを定義するファイルの検索方法を説明します。
 
-1. **デバイス シミュレーション** GitHub リポジトリをローカル コンピューターに複製していない場合は、次のコマンドを実行して複製してください。
+1. **device-simulation-dotnet** GitHub リポジトリをローカル コンピューターに複製していない場合は、次のコマンドを実行して複製してください。
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -673,9 +670,9 @@ ms.locfileid: "34628261"
 
 ### <a name="test-the-chiller-device-type"></a>Chiller デバイスの種類のテスト
 
-更新された **Chiller** デバイスの種類をテストするには、最初に、**device-simulation** サービスのローカル コピーを実行して、使用するデバイスの種類が想定どおりに動作することをテストします。 更新されたデバイスの種類をローカルでテストおよびデバッグした場合、コンテナーを再構築して**デバイス シミュレーション** サービスを Azure に再デプロイできます。
+更新された **Chiller** デバイスの種類をテストするには、最初に、**device-simulation-dotnet** サービスのローカル コピーを実行して、使用するデバイスの種類が想定どおりに動作することをテストします。 更新されたデバイスの種類をローカルでテストおよびデバッグした場合、コンテナーを再構築して **device-simulation-dotnet** サービスを Azure に再デプロイできます。
 
-**デバイス シミュレーション** サービスをローカルで実行すると、このサービスはご利用のリモート監視ソリューションにテレメトリを送信します。 **[デバイス]** ページで、更新されたデバイスの種類のインスタンスをプロビジョニングできます。
+**device-simulation-dotnet** サービスをローカルで実行すると、このサービスはご利用のリモート監視ソリューションにテレメトリを送信します。 **[デバイス]** ページで、更新されたデバイスの種類のインスタンスをプロビジョニングできます。
 
 変更をローカルでテストおよびデバッグするには、前の「[Lightbulb デバイスの種類をローカルでテストする](#test-the-lightbulb-device-type-locally)」を参照してください。
 

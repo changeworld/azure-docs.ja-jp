@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261187"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868437"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -57,8 +57,8 @@ Windows 10 Anniversary Update および Windows Server 2016 が実行されて�
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://aka.ms/hybrid/sso)のシームレス シングル サインオンを介してサポート**されます**。 
-- Azure AD パススルー認証を使用する場合、ダウンレベルの Windows デバイスの登録はサポート**されません**。
+- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)のシームレス シングル サインオンを介してサポート**されます**。 
+- シームレス シングル サインオンを使用せずに Azure AD パススルー認証を使用する場合、ダウンレベルの Windows デバイスの登録はサポート**されません**。
 - ダウンレベルの Windows デバイスの登録は、ローミング プロファイルを使用するデバイスではサポート**されません**。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
 
 
@@ -92,8 +92,6 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 組織がシームレス SSO の使用を計画している場合、組織内のコンピューターから次の URL に到達できる必要があります。また、ユーザーのローカル イントラネット ゾーンに追加する必要があります。
 
 - https://autologon.microsoftazuread-sso.com
-
-- https://aadg.windows.net.nsatc.net
 
 - また、ユーザーのイントラネット ゾーンで [スクリプトを介したステータス バーの更新を許可する] という設定を有効にしてください。
 
@@ -179,7 +177,6 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
     $de = New-Object System.DirectoryServices.DirectoryEntry
     $de.Path = "LDAP://CN=Services," + $configNC
-
     $deDRC = $de.Children.Add("CN=Device Registration Configuration", "container")
     $deDRC.CommitChanges()
 
@@ -572,7 +569,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 ### <a name="remarks"></a>解説
 
-- ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターについては、自動登録のロールアウトをグループ ポリシー オブジェクトで制御することができます。 **これらのデバイスを Azure AD に自動登録したくない場合、または登録を制御したい場合は**、構成手順を開始する前に、自動登録を無効にするグループ ポリシーをそのすべてのデバイスに展開する必要があります。 構成が完了し、テストする準備ができたら、自動登録を有効にするグループ ポリシーを、最初はテスト デバイスにのみ展開し、その後、他のすべてのデバイスに好きなように展開します。
+- グループ ポリシー オブジェクトまたは System Center Configuration Manager のクライアント設定を使用して、ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターの自動登録のロールアウトを制御することができます。 **これらのデバイスを Azure AD に自動登録したくない場合、または登録を制御したい場合は**、最初に、自動登録を無効にするグループ ポリシーをそのすべてのデバイスに展開する必要があります。または、Configuration Manager を使用している場合は、構成手順のいずれかを開始する前に、[Cloud Services] のクライアント設定で、[新しい Windows 10 ドメインに参加しているデバイスを自動的に Azure Active Directory に登録する] を [いいえ] に設定する必要があります。 構成が完了し、テストする準備ができたら、自動登録を有効にするグループ ポリシーを、最初はテスト デバイスにのみ展開し、その後、他のすべてのデバイスに好きなように展開します。
 
 - ダウンレベルの Windows コンピューターをロールアウトするために、選択したコンピューターに [Windows インストーラー パッケージ](#windows-installer-packages-for-non-windows-10-computers)をデプロイできます。
 

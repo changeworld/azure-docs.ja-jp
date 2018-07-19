@@ -1,6 +1,6 @@
 ---
 title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
-description: Azure Cosmos DB の Bulk Executor Java ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションに一括インポートし、一括更新します。
+description: Azure Cosmos DB の Bulk Executor Java ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーに一括インポートし、一括更新します。
 keywords: Java Bulk Executor
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 8e68a90c347d4802a99072d6ee4492e01dab54ca
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300715"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859978"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コレクションに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
+このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,7 +77,7 @@ ms.locfileid: "36300715"
      DATABASE_NAME,
      COLLECTION_NAME,
      collection.getPartitionKey(),
-     offerThroughput) // throughput you want to allocate for bulk import out of the collection's total throughput
+     offerThroughput) // throughput you want to allocate for bulk import out of the container's total throughput
 
    // Instantiate DocumentBulkExecutor
    DocumentBulkExecutor bulkExecutor = bulkExecutorBuilder.build()
@@ -87,7 +87,7 @@ ms.locfileid: "36300715"
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
 ```
 
-4. Azure Cosmos DB コレクションに一括インポートするランダムなドキュメントを生成する ImportAll API を呼び出します。 CmdLineConfiguration.java ファイルで、コマンド ライン構成を構成できます。
+4. Azure Cosmos DB コンテナーに一括インポートするランダムなドキュメントを生成する importAll API を呼び出します。 CmdLineConfiguration.java ファイルで、コマンド ライン構成を構成できます。
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -154,7 +154,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Azure Cosmos DB コレクションに一括インポートするランダムなドキュメントを生成する updateAll API を呼び出します。 CmdLineConfiguration.java ファイルで渡されるコマンド ライン構成を構成できます。
+2. Azure Cosmos DB コンテナーに一括インポートするランダムなドキュメントを生成する updateAll API を呼び出します。 CmdLineConfiguration.java ファイルで渡されるコマンド ライン構成を構成できます。
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -205,9 +205,9 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
    * 多数のドキュメントを処理するときのメモリの問題を回避するため、JVM のヒープ サイズを十分に大きい値に設定します。 推奨されるヒープ サイズ: max(3GB, 3 * sizeof(1 回のバッチで一括インポート API に渡されるすべてのドキュメント))。  
    * 前処理にかかる時間があるため、多数のドキュメントで一括操作を実行すると、スループットが高くなります。 そのため、10,000, 000 個のドキュメントをインポートする場合、100,000 ドキュメントずつ 100 回の一括インポートを実行するより、1,000,000 ドキュメントずつ 10 回の一括インポートを実行する方が効率的です。  
 
-* 特定の Azure Cosmos DB コレクションに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの DocumentBulkExecutor オブジェクトをインスタンス化することをお勧めします。  
+* 特定の Azure Cosmos DB コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの DocumentBulkExecutor オブジェクトをインスタンス化することをお勧めします。  
 
-* 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコレクション全体のスループットを消費できない場合 (コレクションのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。
+* 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコンテナー全体のスループットを消費できない場合 (コンテナーのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。
 
     
 ## <a name="next-steps"></a>次の手順

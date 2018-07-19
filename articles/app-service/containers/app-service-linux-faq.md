@@ -1,11 +1,11 @@
 ---
 title: Azure App Service on Linux の FAQ | Microsoft Docs
 description: Azure App Service on Linux の FAQ
-keywords: Azure App Service, Web アプリ, FAQ, Linux, OSS
+keywords: Azure App Service、Web アプリ、FAQ、Linux、OSS、コンテナー用の Web アプリ、複数コンテナー、マルチコンテナー
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222979"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916858"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -66,7 +66,7 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 はい。
 
-**"*Web デプロイ*" を使用して Web アプリをデプロイすることはできますか。**
+***WebDeploy/MSDeploy* を使用して Web アプリをデプロイすることはできますか。**
 
 はい。`WEBSITE_WEBDEPLOY_USE_SCM` というアプリ設定を *false* に設定する必要があります。
 
@@ -144,6 +144,35 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 **カスタム コンテナーに HTTPS を実装する必要がありますか。**
 
 いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Docker Compose と Kubernetes を使用した複数コンテナー
+
+**複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
+
+複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose または Kubernetes の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
+
+次のアプリケーション設定を作成します。
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (完全な URL、例: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (ACR 設定で管理者アクセスを有効にする)
+
+次の例のように、構成ファイル内で ACR イメージを参照します。
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**インターネットにアクセスできるコンテナーを識別する方法を教えてください。**
+
+- アクセスできるコンテナーは 1 つのみ
+- ポート 80 および 8080 のみがアクセス可能 (公開ポート)
+
+アクセス可能なコンテナーを判断するためのルールを次に示します (優先順)。
+
+- コンテナー名に設定されるアプリケーション設定 `WEBSITES_WEB_CONTAINER_NAME`
+- ポート 80 または 8080 を定義する最初のコンテナー
+- 上記のいずれにも当てはまらない場合、ファイルで定義されている最初のコンテナーがアクセス可能 (公開) になります
 
 ## <a name="pricing-and-sla"></a>料金と SLA
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 166dfa8c5b3456de59055e5f62a566064540db31
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3ff5a833da5bbe99c5c6d1576b9775051b3ce07b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225026"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -137,7 +137,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
 5. iQualify LMS アプリケーションでは、Security Assertion Markup Language (SAML) のアサーションを特定の形式で表示する必要があります。 次のスクリーンショットに示すように、iQualify LMS アプリケーション統合ページの **[ユーザー属性]** セクションで、要求を構成し、属性の値を管理します。
     
-    ![[Configure Single Sign-On]](./media/iqualify-tutorial/atb.png)
+    ![Configure single sign-on](./media/iqualify-tutorial/atb.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、以下の表に示す行ごとに、次の手順を実行します。
     
@@ -150,9 +150,9 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/iqualify-tutorial/atb2.png)
+    ![Configure single sign-on](./media/iqualify-tutorial/atb2.png)
 
-    ![[Configure Single Sign-On]](./media/iqualify-tutorial/atb3.png)
+    ![Configure single sign-on](./media/iqualify-tutorial/atb3.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -287,7 +287,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
 **[Sign in with Azure AD]\(Azure AD でサインイン\)** ボタンをクリックすると、iQualify LMS アプリケーションに自動的にサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

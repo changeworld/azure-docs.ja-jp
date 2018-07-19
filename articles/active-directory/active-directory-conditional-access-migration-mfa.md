@@ -1,6 +1,6 @@
 ---
-title: Azure Portal での多要素認証が必要なクラシック ポリシーの移行 | Microsoft Docs
-description: この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
+title: Azure portal での多要素認証が必要なクラシック ポリシーの移行 | Microsoft Docs
+description: この記事では、Azure portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6190a8ee90855223779751373bf16ca3db0fe761
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723689"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37871504"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行 
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure portal での多要素認証が必要なクラシック ポリシーの移行 
 
 この記事では、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。 前提条件ではありませんが、クラシック ポリシーの移行を開始する前に「[Azure Portal でクラシック ポリシーを移行する](active-directory-conditional-access-migration.md)」を読むことをお勧めします。
 
@@ -47,7 +47,7 @@ ms.locfileid: "34723689"
 
 ## <a name="open-a-classic-policy"></a>クラシック ポリシーを開く
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration-mfa/01.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "34723689"
 ## <a name="create-a-new-conditional-access-policy"></a>新しい条件付きアクセス ポリシーを作成する
 
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
 
@@ -102,8 +102,6 @@ ms.locfileid: "34723689"
     ![条件付きアクセス](./media/active-directory-conditional-access-migration/37.png)
 
 6. **[新規]** ページで **[クラウド アプリ]** ページを開くには、**[割り当て]** セクションで **[クラウド アプリ]** をクリックします。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
 
 8. **[クラウド アプリ]** ページで、次の手順を実行します。
 
@@ -151,6 +149,6 @@ ms.locfileid: "34723689"
 - クラシック ポリシーの移行について詳しくは、「[Azure Portal でクラシック ポリシーを移行する](active-directory-conditional-access-migration.md)」をご覧ください。
 
 
-- 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
+- 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](active-directory-conditional-access-app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 

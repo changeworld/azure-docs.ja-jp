@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/21/2018
 ms.author: trinadhk
-ms.openlocfilehash: d6e78d46f0886b06cb1cf3577c16c8bc4f842bab
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5828b4e4f42c349246845bd003e874fb0352bae
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607261"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008078"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -24,7 +24,7 @@ ms.locfileid: "34607261"
 | 仮想マシンがネットワークに接続していないためにスナップショット操作が失敗した - VM がネットワークにアクセスできることを確認してください。 スナップショットを成功させるには、Azure データセンターの IP 範囲をホワイトリストに追加するか、プロキシ サーバーをネットワーク アクセス用にセットアップします。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 を参照してください。 既にプロキシ サーバーを使用している場合は、プロキシ サーバー設定が正しく構成されていることを確認してください | このエラーは、仮想マシンで送信インターネット接続を拒否している場合にスローされます。 インターネット接続は、VM スナップショット拡張機能で仮想マシンの基になるディスクのスナップショットを取得するために必要です。 ネットワーク アクセスのブロックによるスナップショットのエラーを修正する方法については、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)を参照してください。 |
 | VM エージェントが Azure Backup サービスと通信できません。 - VM がネットワークに接続でき、最新の VM エージェントが実行されていることを確認します。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 をご覧ください。 |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup)を参照してください。<br> VM エージェントで問題が発生していない場合は、VM を再起動してください。 VM の状態が正しくないため問題が発生する場合があります。その場合は、VM を再起動すると、この "正しくない状態" がリセットされます。 |
 | VM はプロビジョニングに失敗した状態です - VM を再起動して、バックアップのために VM が実行中またはシャットダウンの状態になっていることを確認してください | これは、いずれかの拡張機能が失敗して、VM の状態がプロビジョニングに失敗した状態になる場合に発生します。 拡張機能の一覧に移動し、失敗した拡張機能があるかどうかを確認して、それを削除し、仮想マシンを再起動してみます。 すべての拡張機能が実行状態になっている場合は、VM エージェント サービスが実行されているかどうかを確認してください。 されていない場合は、VM エージェント サービスを再起動します。 | 
-| 管理ディスクの VMSnapshot の拡張操作に失敗しました - バックアップ操作を再試行してください。 問題が繰り返し発生する場合は、'http://go.microsoft.com/fwlink/?LinkId=800034' の手順に従ってください。 それでもエラーになる場合は、Microsoft サポートに問い合わせてください | このエラーは、Azure Backup サービスがスナップショットのトリガーに失敗した場合に発生します。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed)を参照してください。 |
+| マネージド ディスクの VMSnapshot の拡張操作に失敗しました - バックアップ操作を再試行してください。 問題が繰り返し発生する場合は、'http://go.microsoft.com/fwlink/?LinkId=800034' の手順に従ってください。 それでもエラーになる場合は、Microsoft サポートに問い合わせてください | このエラーは、Azure Backup サービスがスナップショットのトリガーに失敗した場合に発生します。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed)を参照してください。 |
 | 仮想マシンのスナップショットをコピーできませんでした。ストレージ アカウントに十分な空き領域がありません - ストレージ アカウントに、仮想マシンに接続されているプレミアム ストレージ ディスクにあるデータと同じ量の空き領域があることを確認してください | VM バックアップ スタック V1 の Premium VM の場合、スナップショットがストレージ アカウントにコピーされます。 これは、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようにするためです。 Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送できるように、ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 | 
 | VM エージェントが応答していないため、この操作を実行できません |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 Windows VM の場合は、サービスで VM エージェントのサービスの状態を確認し、コントロール パネルのプログラムにエージェントが表示されているかどうかを調べます。 コントロール パネルからプログラムを削除し、[下記の手順](#vm-agent)に従ってエージェントを再インストールしてみてください。 エージェントを再インストールした後で、確認のためにアドホック バックアップをトリガーします。 |
 | Recovery Services 拡張機能の操作に失敗しました。 - 仮想マシンに最新の仮想マシン エージェントが存在し、エージェント サービスが実行されていることを確認してください。 バックアップ操作を再試行し、失敗した場合は、Microsoft サポートにお問い合わせください。 |このエラーは、VM エージェントが古い場合にスローされます。 次の「VM エージェントの更新」を参照して、VM エージェントを更新してください。 |
@@ -139,7 +139,7 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 
 1. Azure データ センターの IP 範囲をホワイトリストに登録する。
    * ホワイトリストに登録する [Azure データセンター IP](https://www.microsoft.com/download/details.aspx?id=41653) の一覧を取得します。
-   * [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) コマンドレットを使用して、IP アドレスのブロックを解除します。 管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
+   * [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) コマンドレットを使用して、IP アドレスのブロックを解除します。 管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
    * 規則を NSG に追加して IP にアクセスできるようにします (NSG を使用している場合)。
 2. フローに対する HTTP トラフィック用のパスを作成する
    * 何らかのネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。 HTTP プロキシ サーバーをデプロイする手順は、[こちら](backup-azure-arm-vms-prepare.md#establish-network-connectivity)を参照してください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 70a67f5205ee9b1249d3db2cda3eb4af9acabe31
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230177"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
 
@@ -179,7 +179,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
 このセクションの目的は、Replicon で Britta Simon というユーザーを作成することです。 Replicon では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](replicon-provisioning-tutorial.md)を参照してください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します。**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
 1. Web ブラウザー ウィンドウで、 Replicon 企業サイトに管理者としてログインします。
 
@@ -243,7 +243,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Replicon のタイルをクリックすると、自動的に Replicon アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

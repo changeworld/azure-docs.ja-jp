@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311116"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901138"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -86,11 +86,18 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
 
 ---
-**Q: デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
+**Q: デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?**
+
 **A:** 
 - ハイブリッド Azure AD 参加済みデバイスの場合、スケジュールされたタスクによってデバイスが再登録されないように、自動登録をオフにます。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除することもできます。
 
 - 純粋な Azure AD 参加済みデバイスの場合、Azure AD ユーザーの資格情報ではサインインできなくなるので、オフラインのローカル管理者アカウントを持っている必要があります。 次に、**[設定]** > **[アカウント]** > **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、**[切断]** をクリックします。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して参加の解除プロセスを完了します。
+
+---
+
+**Q: ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすれば Azure AD 参加済みデバイスからの印刷を有効にできますか?**
+
+**A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
 
 ---
 
@@ -124,6 +131,11 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 ---
 
+**Q: 一部のユーザーの Azure AD 参加済みデバイスで MFA のプロンプトが表示されないのはなぜですか?**
+
+**A:** ユーザーが多要素認証を使用してデバイスを Azure AD に参加または登録すると、そのデバイス自体がそのユーザーにとっての信頼された 2 つ目の要素となります。 その後、同じユーザーがデバイスにサインインし、アプリケーションにアクセスすると、Azure AD ではデバイスが 2 つ目の要素として考慮されるので、ユーザーには MFA のプロンプトが表示されずアプリケーションにシームレスにアクセスできます。 そのデバイスにサインインする他のユーザーに対しては、このようには動作しないので、そのデバイスにアクセスするその他のすべてのユーザーには、MFA を必要とするアプリケーションにアクセスする前に MFA のプロンプトが表示されます。
+
+---
 
 **Q: Azure portal の [ユーザー情報] にデバイス レコードが表示され、デバイスに状態が登録済みと表示されます。条件付きアクセスの使用は正しく設定されていますか?**
 
@@ -173,5 +185,6 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 - [Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
+
 ---
 

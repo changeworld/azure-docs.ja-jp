@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 7596428b4ed067bf53f3b295a1682ed372f8d472
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131446"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859780"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントは、[Azure セキュリティ センター](../security/security-microsoft-trust-center.md)に関する情報を補完する Azure Log Analytics 固有の情報を提供することを目的としています。  
@@ -51,7 +51,6 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 | **ソリューション** | **データ型** |
 | --- | --- |
 | 容量とパフォーマンス |パフォーマンス データとメタデータ |
-| マルウェアの評価 |構成データとメタデータ |
 | 更新管理 |メタデータと状態のデータ |
 | ログの管理 |ユーザー定義のイベント ログ、Windows イベント ログ、IIS ログ |
 | 変更の追跡 |ソフトウェア インベントリ、Windows サービスと Linux デーモン メタデータ、Windows/Linux ファイルのメタデータ |
@@ -63,16 +62,16 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 | --- | --- |
 | アラート: |アラート名、アラートの説明、BaseManagedEntityId、問題 ID、IsMonitorAlert、RuleId、ResolutionState、優先度、重大度、カテゴリ、所有者、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
 | 構成 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
-| Event |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、番号、カテゴリ、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注:** カスタム フィールドを使ってイベントを Windows のイベント ログに書き込むと、それらのイベントは OMS によって収集されます。 |
+| Event |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、番号、カテゴリ、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注:** カスタム フィールドを使ってイベントを Windows のイベント ログに書き込むと、それらのイベントは Log Analytics によって収集されます。 |
 | Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、 NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | [パフォーマンス] |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
 | State |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理的なセキュリティ
-Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む OMS サービスへの責任がなくなったユーザに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/en-us/global-infrastructure/)を参照してください。
+Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む Log Analytics サービスへの責任がなくなったユーザーに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/en-us/global-infrastructure/)を参照してください。
 
 ## <a name="incident-management"></a>インシデント管理
-OMS には、すべての Microsoft サービスが準拠するインシデント管理プロセスがあります。 まとめると次のようになります。
+Log Analytics には、すべての Microsoft サービスが準拠するインシデント管理プロセスがあります。 まとめると次のようになります。
 
 * セキュリティ責任の一部が Microsoft に属し、一部が顧客に属する責任の分担モデルの使用
 * Azure のセキュリティ インシデントの管理:
@@ -125,7 +124,7 @@ Azure Log Analytics は、次の要件を満たしています。
 >
 
 ## <a name="cloud-computing-security-data-flow"></a>クラウド コンピューティングのセキュリティ データ フロー
-次の図は、企業の情報フローを例にしたクラウドのセキュリティ アーキテクチャです。情報が Log Analytics サービスまで移動する間にどのように保護され、最終的に Azure Portal または OMS クラシック ポータルでユーザーに表示されるかを示しています。 各手順の詳細は図の後で説明します。
+次の図は、企業の情報フローを例にしたクラウドのセキュリティ アーキテクチャです。情報が Log Analytics サービスまで移動する間にどのように保護され、最終的に Azure portal でユーザーに表示されるかを示しています。 各手順の詳細は図の後で説明します。
 
 ![Log Analytics データ収集とセキュリティの図](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
 
@@ -139,7 +138,7 @@ Log Analytics ワークスペースは、データが収集、集計、分析、
 
 Operations Manager の場合、Operations Manager 管理グループは、Log Analytics サービスとの接続を確立します。 管理グループ内のエージェントで管理されるどのシステムがデータの収集とサービスへのデータ送信を許可されるかを構成します。 ソリューションからのデータは、有効にしているソリューションに応じて、Operations Manager 管理サーバーから Log Analytics サービスに直接送信される場合と、エージェント管理システムで収集されるデータ量の関係で、エージェントからサービスに直接送信される場合があります。 Operations Manager によって監視されていないシステムでは、それぞれ安全に Log Analytics サービスに直接接続します。
 
-接続されたシステムと Log Analytics サービスの間の通信はすべて暗号化されます。  暗号化には TLS (HTTPS) プロトコルが使用されます。  Log Analytics が最も最近の暗号化プロトコルを使用して最新の状態であるようにするため、続けて Microsoft SDL の手順が行われます。
+接続されたシステムと Log Analytics サービスの間の通信はすべて暗号化されます。 暗号化には TLS (HTTPS) プロトコルが使用されます。  Log Analytics が最も最近の暗号化プロトコルを使用して最新の状態であるようにするため、続けて Microsoft SDL の手順が行われます。
 
 各エージェントが Log Analytics のデータを収集します。 収集されるデータの種類は、使用するソリューションの種類によって異なります。 データ収集の概要については「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 また、ほぼすべてのソリューションについて、より詳細な収集情報も提供されています。 ソリューションは、定義済みビュー、ログ検索クエリ、データの収集ルール、処理ロジックのバンドルになります。 Log Analytics を使用してソリューションをインポートできるのは管理者のみです。 ソリューションはインポート後、Operations Manager 管理サーバー (使用する場合) に移動され、選択した任意のエージェントに移動されます。 その後、エージェントはデータを収集します。
 

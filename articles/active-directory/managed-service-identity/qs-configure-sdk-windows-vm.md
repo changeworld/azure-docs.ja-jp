@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: dee4a3e27623150ce3fa648d73542db0cbb23e93
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33930809"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901444"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Azure SDK を使用して、VM 管理対象サービス ID (MSI) を構成する
+# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Azure SDK を使用して、VM マネージド サービス ID (MSI) を構成する
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

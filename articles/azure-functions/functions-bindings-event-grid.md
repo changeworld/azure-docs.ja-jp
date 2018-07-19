@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 06/08/2018
 ms.author: tdykstra
-ms.openlocfilehash: 7e0fb3cee8d4ec72e1ec44f7444264fabb1dd202
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6678109414eaa71ced369e87e1cd15544fee5ee5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724732"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723434"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -30,7 +30,7 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 イベント "*ハンドラー*" は、イベントを受信して処理します。 Azure Functions は、[Event Grid イベントを処理する組み込みサポートを備えている Azure サービス](../event-grid/overview.md#event-handlers)の 1 つです。 この記事では、Event Grid からイベントを受信したときに、Event Grid トリガーを使って関数を呼び出す方法を説明します。
 
-好みに応じて、Event Grid イベントの処理に HTTP トリガーを使うこともできます。後の「[Event Grid トリガーとして HTTP トリガーを使用する](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。
+好みに応じて、Event Grid イベントの処理に HTTP トリガーを使うこともできます。後の「[Event Grid トリガーとして HTTP トリガーを使用する](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。 現時点では、[CloudEvents スキーマ](../event-grid/cloudevents-schema.md)でイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 代わりに、HTTP トリガーを使用してください。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -331,45 +331,44 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 代わりに、HTTP PUT を送信して自分でキーの値を指定することもできます。
 
-## <a name="local-testing-with-requestbin"></a>RequestBin でのローカル テスト
-
-> [!NOTE]
-> RequestBin サイトは現在使用できませんが、代わりに https://hookbin.com によるこのアプローチを使用できます。 そのサイトがダウンしている場合は、[ngrok](#local-testing-with-ngrok) を使用できます。
+## <a name="local-testing-with-viewer-web-app"></a>ビューアー Web アプリでのローカル テスト
 
 Event Grid トリガーをローカルにテストするには、クラウド内の送信元からローカル コンピューターに配信された Event Grid の HTTP 要求を取得する必要があります。 これを行う方法の 1 つは、オンラインで要求をキャプチャし、ローカル コンピューター上でそれを手動で再送信することです。
 
-2. [RequestBin エンドポイントを作成](#create-a-RequestBin-endpoint)します。
-3. RequestBin エンドポイントにイベントを送信する [Event Grid サブスクリプションを作成](#create-an-event-grid-subscription)します。
-4. [要求を生成](#generate-a-request)し、RequestBin サイトから要求の本文をコピーします。
+2. イベント メッセージをキャプチャする[ビューアー Web アプリを作成](#create-a-viewer-web-app)します。
+3. ビューアー アプリにイベントを送信する [Event Grid サブスクリプションを作成](#create-an-event-grid-subscription)します。
+4. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
 5. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
 
 テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Azure CLI コマンドを使います。
 
-### <a name="create-a-requestbin-endpoint"></a>RequestBin エンドポイントを作成する
+### <a name="create-a-viewer-web-app"></a>ビューアー Web アプリを作成する
 
-RequestBin は、HTTP 要求を受け入れて要求本文を表示するオープン ソース ツールです。 http://requestb.in の URL は、Azure Event Grid によって特別な処理を行われます。 テストを容易にするため、Event Grid は、サブスクリプション検証要求に対する正しい応答を必要としないで、RequestBin の URL にイベントを送信します。 他の 1 つのテストツール http://hookbin.com も、同じように処理されます。
+イベント メッセージのキャプチャを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/dbarkol/azure-event-grid-viewer)をデプロイすることができます。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
 
-RequestBin は、高いスループットでの使用を意図されていません。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+**[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-エンドポイントを作成します。
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdbarkol%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-![RequestBin エンドポイントを作成します。](media/functions-bindings-event-grid/create-requestbin.png)
+デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 
-エンドポイントの URL をコピーします。
+サイトは表示されますが、イベントはまだ送信されていません。
 
-![RequestBin エンドポイントをコピーします。](media/functions-bindings-event-grid/save-requestbin-url.png)
+![新しいサイトを表示する](media/functions-bindings-event-grid/view-site.png)
 
 ### <a name="create-an-event-grid-subscription"></a>Event Grid のサブスクリプションを作成する
 
-テストする種類の Event Grid サブスクリプションを作成し、それに RequestBin エンドポイントを提供します。 サブスクリプションを作成する方法については、前の「[サブスクリプションの作成](#create-a-subscription)」をご覧ください。
+テストする種類の Event Grid サブスクリプションを作成し、イベント通知のエンドポイントとして Web アプリからの URL を指定します。 Web アプリのエンドポイントには、サフィックス `/api/updates/` が含まれている必要があります。 したがって、完全な URL は `https://<your-site-name>.azurewebsites.net/api/updates` となります。
+
+Azure Portal を使ってサブスクリプションを作成する方法については、Event Grid のドキュメントの「[カスタム イベントの作成 - Azure Portal](../event-grid/custom-event-quickstart-portal.md)」を参照してください。
 
 ### <a name="generate-a-request"></a>要求を生成する
 
-RequestBin エンドポイントへの HTTP トラフィックを生成するイベントをトリガーします。  たとえば、BLOB ストレージ サブスクリプションを作成した場合は、BLOB をアップロードまたは削除します。 要求が RequestBin のページに表示されたら、要求の本文をコピーします。
+Web アプリ エンドポイントへの HTTP トラフィックを生成するイベントをトリガーします。  たとえば、BLOB ストレージ サブスクリプションを作成した場合は、BLOB をアップロードまたは削除します。 要求が Web アプリに表示されたら、要求本文をコピーします。
 
 最初に、サブスクリプション検証要求を受信します。検証要求はすべて無視し、イベント要求をコピーします。
 
-![RequestBin から要求本文をコピーする](media/functions-bindings-event-grid/copy-request-body.png)
+![Web アプリから要求本文をコピーする](media/functions-bindings-event-grid/view-results.png)
 
 ### <a name="manually-post-the-request"></a>要求を手動で投稿する
 
@@ -467,14 +466,18 @@ Event Grid トリガー関数が実行されて、次の例のようなログが
 
 ## <a name="use-an-http-trigger-as-an-event-grid-trigger"></a>Event Grid トリガーとして HTTP トリガーを使用する
 
-Event Grid イベントは HTTP 要求として受信されるので、Event Grid トリガーの代わりに HTTP トリガーを使ってイベントを処理できます。 これを行う理由の 1 つとして考えられるのは、関数を呼び出すエンドポイントの URL をより詳細に制御するためです。 
+Event Grid イベントは HTTP 要求として受信されるので、Event Grid トリガーの代わりに HTTP トリガーを使ってイベントを処理できます。 これを行う理由の 1 つとして考えられるのは、関数を呼び出すエンドポイントの URL をより詳細に制御するためです。 もう 1 つの理由は、[CloudEvents スキーマ](../event-grid/cloudevents-schema.md)でイベントを受信する必要があるためです。 現時点では、Event Grid トリガーでは CloudEvents スキーマはサポートされていません。 このセクションの例では、Event Grid スキーマと CloudEvents スキーマの両方のソリューションを示します。
 
 HTTP トリガーを使う場合は、Event Grid トリガーによって自動的に行われる処理のコードを記述する必要があります。
 
 * [サブスクリプション検証要求](../event-grid/security-authentication.md#webhook-event-delivery)に検証応答を送信します。
 * 要求本文に含まれるイベント配列の要素ごとに、関数を 1 回呼び出します。
 
-次に示す HTTP トリガーの C# コード サンプルは、Event Grid トリガーの動作をシミュレートします。
+関数をローカルに呼び出す場合、または Azure 内で実行するときに使う URL については、[HTTP トリガーのバインドに関するリファレンス ドキュメント](functions-bindings-http-webhook.md)をご覧ください
+
+### <a name="event-grid-schema"></a>Event Grid スキーマ
+
+次に示す HTTP トリガーの C# コード サンプルでは、Event Grid トリガーの動作をシミュレートします。 Event Grid スキーマで配信されたイベントでは、この例を使用します。
 
 ```csharp
 [FunctionName("HttpTrigger")]
@@ -512,7 +515,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-次に示す HTTP トリガーの JavaScript コード サンプルは、Event Grid トリガーの動作をシミュレートします。
+次に示す HTTP トリガーの JavaScript コード サンプルでは、Event Grid トリガーの動作をシミュレートします。 Event Grid スキーマで配信されたイベントでは、この例を使用します。
 
 ```javascript
 module.exports = function (context, req) {
@@ -522,10 +525,12 @@ module.exports = function (context, req) {
     // If the request is for subscription validation, send back the validation code.
     if (messages.length > 0 && messages[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
         context.log('Validate request received');
-        context.res = { status: 200, body: JSON.stringify({validationResponse: messages[0].data.validationCode}) }
+        var code = messages[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
     }
     else {
         // The request is not for subscription validation, so it's for one or more events.
+        // Event Grid schema delivers events in an array.
         for (var i = 0; i < messages.length; i++) {
             // Handle one event.
             var message = messages[i];
@@ -540,7 +545,70 @@ module.exports = function (context, req) {
 
 イベント処理コードは、`messages` 配列のループ内を処理します。
 
-関数をローカルに呼び出す場合、または Azure 内で実行するときに使う URL については、[HTTP トリガーのバインドに関するリファレンス ドキュメント](functions-bindings-http-webhook.md)をご覧ください 
+### <a name="cloudevents-schema"></a>CloudEvents スキーマ
+
+次に示す HTTP トリガーの C# コード サンプルでは、Event Grid トリガーの動作をシミュレートします。  CloudEvents スキーマで配信されたイベントでは、この例を使用します。
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.Info("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.Info($"Source: {message["source"]}");
+        log.Info($"Time: {message["eventTime"]}");
+        log.Info($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+次に示す HTTP トリガーの JavaScript コード サンプルでは、Event Grid トリガーの動作をシミュレートします。 CloudEvents スキーマで配信されたイベントでは、この例を使用します。
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>次の手順
 

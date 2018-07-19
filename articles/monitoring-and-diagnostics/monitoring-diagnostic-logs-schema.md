@@ -5,22 +5,44 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 6/08/2018
+ms.date: 7/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 45595893a199b845c8b010bc1e2545b89aa688cd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264981"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921231"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
-[Azure リソース診断ログ](monitoring-overview-of-diagnostic-logs.md)は、Azure リソースから出力されるログであり、そのリソースの操作を説明します。 これらのログは、リソースの種類ごとに固有です。 この記事では、サポートされる一連のサービスと、各サービスで出力されるイベントのイベント スキーマについて説明します。 また、この記事にはリソースの種類ごとに使用可能なログ カテゴリの完全な一覧も含まれています。
+[Azure リソース診断ログ](monitoring-overview-of-diagnostic-logs.md)は、Azure リソースから出力されるログであり、そのリソースの操作を説明します。 Azure Monitor を通じて使用可能なすべての診断ログでは、共通の上位スキーマを共有します。そのため、各サービスは独自のイベントの一意のプロパティをフレキシブルに出力することができます。
 
-## <a name="supported-services-and-schemas-for-resource-diagnostic-logs"></a>リソース診断ログでサポートされているサービスとスキーマ
-リソース診断ログのスキーマは、リソースとログ カテゴリによって異なります。   
+(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、診断ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
+
+## <a name="top-level-diagnostic-logs-schema"></a>診断ログの上位スキーマ
+
+| Name | 必須/省略可能 | 説明 |
+|---|---|---|
+| time | 必須 | イベントのタイムスタンプ (UTC)。 |
+| ResourceId | 必須 | イベントを出力したリソースのリソース ID。 |
+| operationName | 必須 | このイベントで表される操作の名前。 イベントが RBAC 操作を表す場合、これは RBAC 操作の名前になります (例:  Microsoft.Storage/storageAccounts/blobServices/blobs/Read)。 実際の文書化されている Resource Manager 操作でない場合でも、通常は、Resource Manager 操作の形式でモデル化されます (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`)。 |
+| operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  http://myservice.windowsazure.net/object?api-version=2016-06-01))。 この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
+| カテゴリ | 必須 | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 一般的なログ カテゴリは、"Audit"、"Operational"、"Execution"、"Request" です。 |
+| resultType | 省略可能 | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| resultSignature | 省略可能 | イベントの副状態。 この操作が REST API 呼び出しに対応している場合、これは、対応する REST 呼び出しの HTTP 状態コードです。 |
+| resultDescription | 省略可能 | この操作を説明する静的テキスト (例:  "Get storage file")。 |
+| durationMs | 省略可能 | 操作時間 (ミリ秒)。 |
+| callerIpAddress | 省略可能 | 操作が、一般的に利用できる IP アドレスを持つエンティティからの API 呼び出しに対応している場合は、呼び出し元 IP アドレス。 |
+| correlationId | 省略可能 | 関連するイベントのセットをグループ化するために使用される GUID。 通常、2 つのイベントの operationName は同じであるものの、状態が異なる (たとえば、 "Started" と "Succeeded") 場合、同じ関連付け ID が共有されます。 これは、イベント間の他のリレーションシップを表す場合もあります。 |
+| ID | 省略可能 | 操作を実行したユーザーまたはアプリケーションの ID を説明する JSON BLOB。 通常、これにはアクティブ ディレクトリからの認証および要求 / JWT トークンが含まれます。 |
+| Level | 省略可能 | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
+| location | 省略可能 | イベントを出力するリソースの領域 (例:  "East US"、"France South")。 |
+| プロパティ | 省略可能 | この特定のイベント カテゴリに関連する拡張プロパティ。 すべてのカスタム/一意のプロパティは、このスキーマの "Part B" 内に配置する必要があります。 |
+
+## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>リソース診断ログのサービス固有のスキーマ
+リソース診断ログのスキーマは、リソースとログ カテゴリによって異なります。 この一覧は、診断ログを使用できるようにするすべてのサービスと、サービスおよびカテゴリ固有のスキーマ (使用可能な場合) へのリンクを示しています。
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
@@ -54,7 +76,7 @@ ms.locfileid: "35264981"
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
-|リソースの種類|カテゴリ|カテゴリの表示名|
+|リソースの種類|Category|カテゴリの表示名|
 |---|---|---|
 |Microsoft.AnalysisServices/servers|エンジン|エンジン|
 |Microsoft.AnalysisServices/servers|サービス|サービス|

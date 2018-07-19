@@ -1,23 +1,20 @@
 ---
 title: Ambari を使用したクラスター構成の最適化 - Azure HDInsight | Microsoft Docs
 description: Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。
-documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406186"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951218"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
 
@@ -245,9 +242,9 @@ Hive では、個々のパーティションを事前に定義せずに、レコ
 
 2. 動的パーティション モードを *strict* に変更します。 strict モードでは、少なくとも 1 つのパーティションが静的である必要があります。 これにより、WHERE 句にパーティション フィルターがないクエリを防ぐことができます。つまり、*strict* はすべてのパーティションをスキャンするクエリを防ぎます。 Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.dynamic.partition.mode` を **strict** に設定します。 既定値は **nonstrict** です。
  
-3. 作成する動的パーティションの数を制限するには、"hive.exec.max.dynamic.partitions" パラメーターを変更します。 既定値は 5,000 です。
+3. 作成する動的パーティションの数を制限するには、`hive.exec.max.dynamic.partitions` パラメーターを変更します。 既定値は 5000 です。
  
-4. ノードあたりの動的パーティションの総数を制限するには、`hive.exec.max.dynamic.partitions.pernode` を変更します。 既定値は 2,000 です。
+4. ノードあたりの動的パーティションの総数を制限するには、`hive.exec.max.dynamic.partitions.pernode` を変更します。 既定値は 2000 です。
 
 ### <a name="enable-local-mode"></a>ローカル モードを有効にする
 
@@ -304,7 +301,7 @@ Ambari Web UI から Pig プロパティを変更して、Pig クエリを調整
     ![[Advanced pig-properties]\(高度な pig-properties\)](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
 > [!NOTE]
-> セッション レベルの設定によって、`pig.properties` ファイルのプロパティ値が上書きされます。
+> セッション レベルの設定によって、`pig.properties` ファイルのプロパティ値がオーバーライドされます。
 
 ### <a name="tune-execution-engine"></a>実行エンジンを調整する
 

@@ -1,6 +1,6 @@
 ---
 title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
-description: Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションに一括インポートし、一括更新します。
+description: Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーに一括インポートし、一括更新します。
 keywords: .Net Bulk Executor
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: b09fd415c442c1e605987a6b25fd938ce04ce5c1
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300773"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857278"
 ---
 # <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、サンプル .NET アプリケーションを使って、ランダムに生成されたドキュメントを Azure Cosmos DB コレクションに一括インポートする手順を説明します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
+このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、サンプル .NET アプリケーションを使って、ランダムに生成されたドキュメントを Azure Cosmos DB コンテナーに一括インポートする手順を説明します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -170,11 +170,11 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
 
 * パフォーマンスを最大限に高めるには、Cosmos DB アカウントの書き込みリージョンと同じリージョンにある Azure 仮想マシンからアプリケーションを実行します。  
 
-* 特定の Cosmos DB コレクションに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの BulkExecutor オブジェクトをインスタンス化することをお勧めします。  
+* 特定の Cosmos DB コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの BulkExecutor オブジェクトをインスタンス化することをお勧めします。  
 
-* 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコレクション全体のスループットを消費できない場合 (コレクションのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。  
+* 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコンテナー全体のスループットを消費できない場合 (コンテナーのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。  
 
-* BulkExecutor オブジェクトをインスタンス化して、ターゲット Cosmos DB コレクションのパーティション マップを取得した後、InitializeAsync() が呼び出されるようにします。  
+* BulkExecutor オブジェクトをインスタンス化して、ターゲット Cosmos DB コンテナーのパーティション マップを取得した後、InitializeAsync() が確実に呼び出されるようにします。  
 
 * パフォーマンス向上のために、アプリケーションの App.Config で **gcServer** を有効にします。
   ```xml  

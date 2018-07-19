@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5e0349d6bae9295e7a0ba9f366f84753ebd838c2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "35630024"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
@@ -35,6 +36,10 @@ ms.lasthandoff: 05/12/2018
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
 3. [Azure Resource Manager テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)か、GitHub からテンプレートを選択します。 Marketplace アイテムでは、このテンプレートを使用して新しいリソースを作成します。
+
+    > [!Note]  
+    > プロダクト キー、パスワード、お客様を特定できる情報などの機密情報を Azure Resource Manager テンプレートにハード コーディングしないでください。 テンプレート json ファイルは、ギャラリーで発行されると、認証を必要とせずにアクセスできます。  機密情報はすべて [Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-keyvault-parameter) に格納し、テンプレート内から呼び出してください。
+
 4. リソースを正常にデプロイできるか確認するには、Microsoft Azure Stack API を使ってテンプレートをテストします。
 5. テンプレートが仮想マシン イメージに依存する場合、指示に従って [Azure Stack に仮想マシン イメージを追加](azure-stack-add-vm-image.md)します。
 6. Azure Resource Manager テンプレートを **/Contoso.TodoList/DeploymentTemplates/** フォルダーに保存します。
@@ -72,12 +77,12 @@ ms.lasthandoff: 05/12/2018
 ## <a name="publish-a-marketplace-item"></a>Marketplace アイテムの発行
 1. PowerShell または Azure Storage Explorer を使用して、Marketplace アイテム (.azpkg) を Azure Blob Storage にアップロードします。 ローカルの Azure Stack ストレージへのアップロード、または Azure Storage へのアップロードができます。 (パッケージの一時的な場所です。)BLOB がパブリックにアクセスできることを確認します。
 2. Microsoft Azure Stack 環境のクライアント仮想マシンで、PowerShell セッションがサービス管理者の資格情報を使用して設定されていることを確認します。 Azure Stack で PowerShell を認証する方法についての説明は、[PowerShell を使用したテンプレートのデプロイ](user/azure-stack-deploy-template-powershell.md)に関するページにあります。
-3. **Add-AzureRMGalleryItem** PowerShell コマンドレットを使用して Marketplace アイテムを Azure Stack に発行します。 例: 
+3. [PowerShell 1.3.0]( azure-stack-powershell-install.md) 以降を使用する場合、**Add-AzsGalleryItem** PowerShell コマンドレットを使用して Marketplace アイテムを Azure Stack に発行できます。 PowerShell 1.3.0 を使用する前は、**Add-AzsGalleryItem** の代わりに、**Add-AzureRMGalleryitem** コマンドレットを使用します。  たとえば、PowerShell 1.3.0 以降を使用する場合
    
-       Add-AzureRMGalleryItem -GalleryItemUri `
+       Add-AzsGalleryItem -GalleryItemUri `
        https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
-   | パラメーター | [説明] |
+   | パラメーター | 説明 |
    | --- | --- |
    | サブスクリプション ID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
    | GalleryItemUri |ストレージに既にアップロードされた、ギャラリー パッケージの BLOB URI。 |
@@ -89,6 +94,12 @@ ms.lasthandoff: 05/12/2018
    > 
    > 
 5. これで Marketplace アイテムが Azure Stack Marketplace に保存されました。 Blob Storage の場所から削除することができます。
+    > [!Caution]  
+    > すべての既定のギャラリー アイテムと、カスタムのギャラリー アイテムは、次の URL での認証を使用せずにアクセスできるようになりました。  
+`https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://systemgallery.blob.[Region].[external FQDN]/dev20161101-microsoft-windowsazure-gallery/[Template Name]/UiDefinition.json`
+
 6. Marketplace アイテムを削除するには、**Remove-AzureRMGalleryItem** コマンドレットを使用します。 例:
    
         Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
@@ -100,21 +111,21 @@ ms.lasthandoff: 05/12/2018
 
 ## <a name="reference-marketplace-item-manifestjson"></a>リファレンス: Marketplace アイテム manifest.json
 ### <a name="identity-information"></a>ID 情報
-| Name | 必須 | type | 制約 | [説明] |
+| Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | Name |○ |String |[A-Za-z0-9]+ | |
 | 発行元 |○ |String |[A-Za-z0-9]+ | |
 | バージョン |○ |String |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
-| Name | 必須 | type | 制約 | [説明] |
+| Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |○ |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
 | PublisherDisplayName |○ |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
 | PublisherLegalName |○ |String |最大 256 文字 | |
 | まとめ |○ |String |60 ～ 100 文字 | |
 | LongSummary |○ |String |140 ～ 256 文字 |Azure Stack ではまだ適用なし。 |
-| [説明] |○ |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
+| 説明 |○ |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
 
 ### <a name="images"></a>イメージ
 Marketplace では、次のアイコンを使用します。
@@ -133,7 +144,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 ### <a name="links"></a>リンク
 各 Marketplace アイテムには、追加コンテンツへのさまざまなリンクを含めることができます。 リンクは、名前と URI の一覧として指定されます。
 
-| Name | 必須 | type | 制約 | [説明] |
+| Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |○ |String |最大 64 文字 | |
 | Uri |○ |URI | | |
@@ -141,7 +152,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 ### <a name="additional-properties"></a>追加のプロパティ
 前述のメタデータに加えて、Marketplace 作成者は次の形式でカスタムのキー/値のペアでデータを指定することができます。
 
-| Name | 必須 | type | 制約 | [説明] |
+| Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |○ |String |最大 25 文字 | |
 | 値 |○ |String |最大 30 文字 | |

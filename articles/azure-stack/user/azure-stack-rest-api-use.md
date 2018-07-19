@@ -3,22 +3,22 @@ title: Azure Stack API を使用する | Microsoft Docs
 description: Azure から認証を取得して、Azure Stack に対して API 要求を行う方法を説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: cblackuk
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/02/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359113"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346792"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -26,9 +26,9 @@ ms.locfileid: "34359113"
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack アプリケーション プログラミング インターフェイス (API) を使用して、マーケットプレース項目の配信などの操作を自動化できます。
+アプリケーション プログラミング インターフェイス (API) を使用して、Azure Stack クラウドへの VM の追加などの操作を自動化できます。
 
-API には、Microsoft Azure ログイン エンドポイントに対するクライアントの認証が必要です。 エンドポイントは、Azure Stack API に送信されるすべての要求のヘッダーで使用されるトークンを返します  Microsoft Azure では Oauth 2.0 を使用します。
+この API では、Microsoft Azure ログイン エンドポイントに対するクライアントの認証が必要です。 エンドポイントは、Azure Stack API に送信されるすべての要求のヘッダーで使用されるトークンを返します  Microsoft Azure では Oauth 2.0 を使用します。
 
 この記事では、**cURL** ユーティリティを使用して Azure Stack 要求を作成する例を示します。 アプリケーション cURL は、データの転送にライブラリを使用するコマンドライン ツールです。 これらの例で説明するのは、Azure Stack API にアクセスするためのトークンを取得するプロセスです。 ほとんどのプログラミング言語に Oauth 2.0 ライブラリが用意されています。このライブラリでは、トークンの更新など、堅牢なトークン管理および処理タスクを行うことができます。
 

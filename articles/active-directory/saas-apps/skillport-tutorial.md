@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d9199f96c4263a8027067b0784a63aaeafe0a06d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbe2e6db514eb978cf99b249c434eb5cf3df6cd2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294654"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
 
@@ -102,15 +102,15 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Skillport** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
 
 3. **[Skillport のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/skillport-tutorial/tutorial_skillport_url.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_url.png)
 
     a. **[サインオン URL]** ボックスに、次の URL を入力します。
       
@@ -132,11 +132,11 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/skillport-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_general_400.png)
 
 6. **Skillport** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Skillport サポート チーム](https://www.skillsoft.com/contact.asp)に送信する必要があります。 サポート チームはこれをセットアップして、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -189,7 +189,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Skillport]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/skillport-tutorial/tutorial_skillport_app.png) 
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -210,7 +210,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skillport] タイルをクリックすると、自動的に Skillport アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

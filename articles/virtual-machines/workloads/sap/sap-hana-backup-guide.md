@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 3/13/2017
+ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9346ed6b26b4fa4a7875354153b6847938253d1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657011"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867003"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -33,7 +33,7 @@ Azure Virtual Machines で実行されている SAP HANA のバックアップ �
 
 SAP HANA には、サードパーティ製のバックアップ ツールを SAP HANA に直接統合できるバックアップ API が用意されています  (この API についてはこの記事で取り上げません)。この API に基づいた Azure Backup サービスとの SAP HANA の直接統合は、現時点では使用できません。
 
-SAP HANA はタイプ GS5 の単一インスタンス Azure VM で正式にサポートされていますが、OLAP ワークロードに関する追加の制限事項があります (SAP Web サイトの「[Find Certified IaaS Platforms (認定 IaaS プラットフォームの検索)](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)」を参照)。 この記事は、SAP HANA on Azure の新しいサービスが公開されたら更新される予定です。
+SAP HANA は、Azure M シリーズなどのさまざまな Azure VM で正式にサポートされています。 SAP HANA が認定されている Azure VM の完全な一覧については、「[Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)」(認定 IaaS プラットフォームの検索) を参照してください。 この記事は、SAP HANA on Azure の新しいサービスが公開されたら更新される予定です。
 
 Azure で使用できる SAP HANA ハイブリッド ソリューションもあります。この場合、仮想化は行われず、SAP HANA は物理サーバー上で実行されます。 ただし、この SAP HANA Azure バックアップ ガイドでは、Azure VM 内で SAP HANA が実行される純粋な Azure 環境について取り上げます。&quot;L インスタンス&quot; で実行されている SAP HANA については説明しません。&quot;L インスタンス&quot; を対象とする、ストレージ スナップショットに基づいたこのバックアップ ソリューションの詳細については、「[SAP HANA (large instances) overview and architecture on Azure (SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ)](hana-overview-architecture.md)」を参照してください。
 
@@ -175,7 +175,7 @@ Azure Backup サービスでは、暗号化された VM/ディスクを処理す
 
 ### <a name="test-virtual-machine-on-azure"></a>テストの Azure 仮想マシン
 
-次のバックアップ/復元テストでは、SAP HANA は Azure GS5 VM にインストールされています。
+テストを実行するために、次のバックアップ/復元テストでは、SAP HANA は Azure GS5 VM にインストールされています。 原則は、M シリーズ VM の場合と同様です。
 
 ![この図は、HANA テスト VM に関する Azure Portal の概要の一部を示しています](media/sap-hana-backup-guide/image007.png)
 

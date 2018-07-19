@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d4e754192d15bce6f7803ba34500e7c018c4dc54
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5be27723e6dfea9ce0d720baab2b650cff9c0f64
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222771"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>チュートリアル: Azure Active Directory と Jostle の統合
 
@@ -49,7 +49,8 @@ Azure AD と Jostle の統合を構成するには、次のものが必要です
 - Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Jostle の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -59,21 +60,21 @@ Azure AD への Jostle の統合を構成するには、ギャラリーから管
 
 **ギャラリーから Jostle を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[アプリケーション]][3]
+3. ウィンドウ上部の **[追加]** をクリックします。
 
-4. 検索ボックスに、「 **Jostle**」と入力します。
+    ![add_01](./media/jostle-tutorial/add_01.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/tutorial_jostle_search.png)
+4. **[アプリケーションの追加]** の下にある検索ボックスに「**Jostle**」と入力します。
+
+    ![add_02](./media/jostle-tutorial/add_02.png)
 
 5. 結果ウィンドウで **[Jostle]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
@@ -105,35 +106,36 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
     ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
 
 3. **[Jostle Domain and URLs]\(Jostle のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_jostle_url.png)
+    ![url_01](./media/jostle-tutorial/url_01.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tanent name>.jostle.us/jostle-prod/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、「`https://login-prod.jostle.us`」と入力します。
 
-    b. **[識別子]** ボックスに、`https://<tanent name>.jostle.us` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、「`https://jostle.us`」と入力します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Jostle サポート チーム](mailto:support@jostle.me)にお問い合わせください。 
- 
+    c. **[詳細な URL 設定の表示]** チェック ボックスをオンにします。
 
+    d. **[応答 URL]** ボックスに、「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[ユーザー属性]** セクションで、**[ユーザー識別子]** フィールドに「`user.userprincipalname`」と入力します。
 
-    ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_jostle_certificate.png) 
+    ![url_02](./media/jostle-tutorial/url_02.png)
 
-5. **[保存]** ボタンをクリックします。
+5. ウィンドウの上部にある **[保存]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_general_400.png)
+6. **[SAML 署名証明書]** に移動し、**[アクティブ]** に設定されていることを確認します。 **[メタデータ XML]** をクリックし、メタデータ ファイルをダウンロードします。
 
-7. Jostle 側にシングル サインオンを構成するには、ダウンロードしたメタデータ XML を [Jostle サポート チーム](mailto:support@jostle.me)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 
+    ![url_03](./media/jostle-tutorial/url_03.png)
+
+7. Jostle 側にシングル サインオンを構成するには、ダウンロードしたメタデータ XML を [Jostle サポート チーム](mailto:support@jostle.me)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+>
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -144,19 +146,19 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 
 1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_01.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_01.png)
 
 2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_02.png) 
+
+    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_02.png)
 
 3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_03.png) 
+
+    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_03.png)
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_04.png) 
+
+    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_04.png)
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -165,7 +167,7 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
     d. **Create** をクリックしてください。
- 
+
 ### <a name="creating-a-jostle-test-user"></a>Jostle のテスト ユーザーの作成
 
 このセクションでは、Jostle で Britta Simon というユーザーを作成します。 Jostle に Britta Simon を追加する方法がわからない場合は、[Jostle サポート チーム](mailto:support@jostle.me)に連絡し、テスト ユーザーを追加して SSO を有効にしてください。
@@ -177,21 +179,21 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションでは、Britta Simon に Jostle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+![ユーザーの割り当て][200]
 
 **Jostle に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 
 2. アプリケーションの一覧で **[Jostle]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_jostle_app.png) 
+    ![[Configure Single Sign-On]](./media/jostle-tutorial/tutorial_jostle_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![ユーザーの割り当て][202]
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
@@ -202,7 +204,7 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
@@ -230,4 +232,3 @@ Jostle で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/jostle-tutorial/tutorial_general_201.png
 [202]: ./media/jostle-tutorial/tutorial_general_202.png
 [203]: ./media/jostle-tutorial/tutorial_general_203.png
-

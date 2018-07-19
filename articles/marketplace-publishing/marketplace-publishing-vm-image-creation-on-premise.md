@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 58be44e05a0b293b1f8f200cb01b4a483bae10b2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29944433"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006514"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
 Azure 仮想ハード ディスク (VHD) は、リモート デスクトップ プロトコルを使用してクラウドで直接作成することを強くお勧めします。 ただし、必要な場合は、VHD をダウンロードして、オンプレミスのインフラストラクチャを使用して開発できます。  
@@ -117,7 +117,7 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-その後、そのストレージ アカウント内に、 [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) コマンドレットを使用してコンテナーを作成できます。
+その後、そのストレージ アカウント内に、 [NewAzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) コマンドレットを使用してコンテナーを作成できます。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 

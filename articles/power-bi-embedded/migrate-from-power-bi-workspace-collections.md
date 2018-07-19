@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: maghan
-ms.openlocfilehash: d138b0c26ffc0a44947f79811fd586dda7df4509
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: de20d532112ca73f34f7cb603d043579c28179d6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419098"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071234"
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行する方法
 
@@ -118,17 +118,17 @@ Power BI 内でアプリケーション ワークスペースを作成するに�
 
 **フロー**
 
-1. GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources を呼び出し、受信した接続文字列を保存します。
+1. GET `https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources` を呼び出し、受信した接続文字列を保存します。
 2. Power BI ワークスペース コレクション ワークスペースから Download PBIX API を呼び出します。
 3. PBIX を保存します。
 4. Power BI Embedded ワークスペースに Import PBIX を呼び出します。
-5. POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections を呼び出して接続文字列を更新します。
-6. GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources を呼び出して GW ID とデータソース ID を取得します。
-7. PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id} を呼び出してユーザーの資格情報を更新します。
+5. POST `https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections` を呼び出して接続文字列を更新します。
+6. GET `https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources` を呼び出して GW ID とデータソース ID を取得します。
+7. PATCH `https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}` を呼び出してユーザーの資格情報を更新します。
 
 #### <a name="old-dataset-and-reports"></a>古いデータセットとレポート
 
-2016 年 10 月より前にアップロードされたレポートは、PBIX のダウンロード機能をサポートしていません。
+2016 年 10 月より前にアップロードされたレポートは、PBIX のダウンロード機能をサポートしていません。 
 
 **フロー**
 

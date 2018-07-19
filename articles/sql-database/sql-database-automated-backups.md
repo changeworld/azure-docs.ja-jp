@@ -6,25 +6,27 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.workload: Active
-ms.date: 04/04/2018
+ms.date: 05/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 37bbbf8ea5a5d8439b300d0740e4f1a048e98e91
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189070"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "35636317"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
-SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 独自のストレージ コンテナーにバックアップを保持したい場合は、長期的なバックアップの保持ポリシーを構成できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、長期間バックアップが利用できる必要がある場合は、長期的なバックアップ アイテム保持ポリシーを構成できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
-SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](http://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 
 これらのバックアップを使用して、以下を行うことができます。
@@ -32,61 +34,104 @@ SQL Database は、ポイントインタイム リストア (PITR) の目的で�
 * リテンション期間内の特定の時点にデータベースを復元します。 この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されます。
 * 削除したデータベースを、削除された時点または保有期間内の任意の時点に復元します。 削除されたデータベースは、元のデータベースが作成されたサーバーと同じサーバーにのみ復元できます。
 * 別の地理的リージョンにデータベースを復元します。 これにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。 
-* データベースが長期リテンション ポリシーで構成されている場合、そのデータベースは、特定の長期バックアップから復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
+* データベースが長期アイテム保持ポリシー (LTR) で構成されている場合、そのデータベースは、特定の長期バックアップから復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 * 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
+> Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の *データベース レプリケーション* は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
 > 
 
-## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
-完全データベース バックアップは毎週作成され、差分データベース バックアップは通常、数時間に 1 回作成されます。また、トランザクション ログのバックアップは通常 5 - 10 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 
+## <a name="how-long-are-backups-kept"></a>バックアップはどれだけの時間保持されますか。
+各 SQL Database バックアップにはデータベースのサービス レベルに基づく既定のリテンション期間があります。さらに、各 SQL Database バックアップは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) とで異なります。 データベースのバックアップのリテンション期間を更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-backup-retention-period)に関するセクションを参照してください。
 
-バックアップ ストレージの geo レプリケーションは、Azure Storage のレプリケーション スケジュールに基づいて発生します。
+データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間のリテンション期間のある基本的なデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
 
-## <a name="how-long-do-you-keep-my-backups"></a>バックアップはどのくらいの期間保存されますか。
-各 SQL Database バックアップにはデータベースのサービス レベルに基づくリテンション期間があります。さらに、各 SQL Database バックアップは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) とで異なります。 
-
-
-### <a name="database-retention-for-dtu-based-purchasing-model"></a>DTU ベースの購入モデルのデータベース リテンション期間
-DTU ベースの購入モデル内のデータベースのリテンション期間は、サービス レベルに依存します。 データベースのリテンション期間:
-
-* Basic サービスレベルの場合、7 日間です。
-* Standard サービス レベルの場合、35 日間です。
-* Premium サービス レベルの場合、35 日間です。
-* 汎用レベルは、最大 35 日間で構成できます (既定では 7 日間)*
-* Business Critical レベル (プレビュー) は、最大 35 日間で構成できます (既定では 7 日間)*
-
-\* プレビュー段階では、バックアップ リテンション期間は構成できず、7 日間に固定されています。
-
-バックアップ リテンション期間が長いデータベースを、短いリテンション期間のデータベースに変換すると、変換先のレベルのリテンション期間よりも古い既存のバックアップはすべて利用できなくなります。
-
-リテンション期間が短いデータベースを、長いリテンション期間のデータベースにアップグレードすると、SQL Database では、長いリテンション期間に達するまで既存のバックアップが保持されます。 
-
-データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、リテンション期間が 7 日間の Basic データベースを削除するとします。 3 日経過したバックアップはあと 4 日間保存されます。
+最大 PITR リテンション期間より長くバックアップを保持する必要がある場合は、データベースに 1 つまたは複数のより長いリテンション期間を追加するようにバックアップのプロパティを変更できます。 詳細については、[バックアップの長期保有期間](sql-database-long-term-retention.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> SQL Database をホストする Azure SQL サーバーを削除すると、サーバーに属するすべてのデータベースも削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
+> SQL Database をホストする Azure SQL サーバーを削除すると、サーバーに属するすべてのエラスティック プールとデータベースも削除され、復元できなくなります。 削除されたサーバーを復元することはできません。 長期保有を構成した場合、LTR を使用したデータベースのバックアップは削除されず、これらのデータベースを復元することができます。
 
-### <a name="database-retention-for-the-vcore-based-purchasing-model-preview"></a>仮想コア ベースの購入モデル (プレビュー) のデータベース リテンション期間
+### <a name="pitr-retention-for-dtu-based-service-tiers"></a>DTU に基づくサービス層の PITR リテンション期間
+DTU ベースの購入モデルを使用して作成されたデータベースのリテンション期間は、サービス レベルに依存します。
 
-データベース バックアップのストレージは、SQL Database のポイントインタイム リストア (PITR) および長期リテンション期間 (LTR) 機能をサポートするために割り当てられます。 このストレージはデータベースごとに別個に割り当てられ、データベース料金ごとに 2 つが個々に課金されます。 
+* Basic サービスレベルの場合、1 週間です。
+* Standard サービス レベルの場合、5 週間です。
+* Premium サービス レベルの場合、5 週間です。
 
-- **PITR**: 個々のデータベース バックアップが、RA-GRS ストレージに自動的にコピーされます。 ストレージのサイズは、新しいバックアップが作成されるにつれ、動的に増加します。  このストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とリテンション期間によって異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データ サイズと同量の最小ストレージ容量が、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
-- **LTR**: SQL Database には、最大 10 年の完全バックアップの長期リテンション期間を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 この構成によって、LTR バックアップに使用されるストレージ容量が定義されます。 LTR ストレージのコストは、LTR 料金計算ツールを使用して見積もることができます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+現在の PITR リテンション期間を短縮した場合、新しいリテンション期間より古いすべての既存のバックアップは使用できなくなります。 
 
-## <a name="how-to-extend-the-backup-retention-period"></a>バックアップの保有期間を延長するにはどうすればよいですか。
+現在の PITR リテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
 
-アプリケーションで、最大 PITR バックアップ リテンション期間よりも長い期間、バックアップを使用可能にしておく必要がある場合は、個々のデータベースに対して長期バックアップ リテンション ポリシー (LTR ポリシー) を構成できます。 これにより、組み込みのリテンション期間を最大 35 日から 10 年に延長できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>仮想コアに基づくサービス レベル (プレビュー) の PITR リテンション期間
 
-Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが、長期リテンション期間用の個別の RA-GRS ストレージ コンテナー (LTR ストレージ) に、自動的にコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。 期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、SQL Database によって自動的に削除されます。 ポリシーの設定後は、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 これらのバックアップは、Azure Portal または PowerShell を使用して表示、復元、または削除できます。
+プレビュー期間中は、仮想コアに基づく購入モデルを使用して作成されたデータベースの PITR リテンション期間は 7 日間に設定されます。 関連付けられているストレージは無料で含まれます。    
+
+
+## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
+### <a name="backups-for-point-in-time-restore"></a>ポイントインタイム リストアのバックアップ
+SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週作成され、差分データベース バックアップは、数時間に 1 回作成されます。また、トランザクション ログのバックアップは 5 - 10 分間隔で作成されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
+
+PITR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
+
+詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
+
+### <a name="backups-for-long-term-retention"></a>長期保有のためのバックアップ
+SQL Database には、最大 10 年の完全バックアップの長期保有 (LTR) を構成するオプションが用意されています。 LTR ポリシーが有効になっている場合、週次の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なったリテンション期間を選択することができます。 ストレージの使用量は、選択したバックアップの頻度とリテンション期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。 
+
+PITR と同じように、LTR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
+
+詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 
 ## <a name="are-backups-encrypted"></a>バックアップは暗号化されますか?
 
-Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+データベースが TDE で暗号化されている場合、LTR バックアップを含むバックアップは保存中に自動的に暗号化されます。 Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
-## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>自動バックアップは GDPR に準拠していますか。
-バックアップに個人データが含まれ、これが一般データ保護規則 (GDPR) の対象である場合は、セキュリティ対策を強化して、そのデータを不正なアクセスから保護する必要があります。 GDPR に準拠するには、バックアップにアクセスせずにデータ所有者のデータ要求を管理する手段が必要です。  短期バックアップについては、1 つの解決策として、バックアップ期間を 30 日より短くします。これは、データ アクセス要求を満たすために許容される期間とします。  さらに長い期間のバックアップが必要な場合は、"偽名" データのみをバックアップに格納することをお勧めします。 たとえば、個人に関するデータを削除または更新する必要がある場合でも、これにより既存のバックアップの削除または更新が不要になります。 GDPR に関するベスト プラクティスの詳細については、[GDPR コンプライアンスのデータ ガバナンス](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html)に関するページをご覧ください。
+## <a name="how-do-automated-backups-impact-my-compliance"></a>自動バックアップはどのようにコンプライアンスに影響しますか。
+
+PITR リテンション期間が 35 日間である DTU ベースのサービス レベルから仮想コア ベースのサービス レベルにデータベースを移行した場合、アプリケーションのデータ リカバリ ポリシーが損なわれないように、PITR リテンション期間が保持されます。 既定のリテンション期間では、お客様のコンプライアンス要件を満たしていない場合は、PowerShell または REST API を使用して PITR リテンション期間を変更できます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-backup-retention-period)に関するセクションを参照してください。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
+
+## <a name="how-to-change-backup-retention-period"></a>バックアップのリテンション期間の変更方法
+REST API または PowerShell を使用して既定のリテンション期間を変更することができます。 サポートされている値は、7、14、21、28、または 35 日です。次の例では、28 日に PITR リテンション期間を変更する方法を示します。 
+
+> [!NOTE]
+> これらの API は PITR リテンション期間にのみ影響を与えます。 データベースの LTR を構成した場合、それには影響ありません。 LTR リテンション期間の変更方法については、[長期的なバックアップ保有期間](sql-database-long-term-retention.md)に関するページを参照してください。
+
+### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell を使用して PITR バックアップ リテンション期間を変更する
+```powershell
+Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
+```
+> [!IMPORTANT]
+> この API は、バージョン [4.7.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.7.0-preview) 以降の AzureRM.Sql PowerShell モジュールに含まれています。 
+
+### <a name="change-pitr-retention-period-using-rest-api"></a>REST API を使用して PITR リテンション期間を変更する
+**要求のサンプル**
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+**要求本文**
+```json
+{
+  "properties":{  
+      "retentionDays":28
+   }
+}
+```
+**応答のサンプル**
+
+状態コード: 200
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+詳細については、[バックアップ リテンション期間 REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

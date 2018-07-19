@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2018
+ms.date: 06/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67f6119dd1fccc126131979148c001b9d1815175
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8675223162527cc5b2bc45dc5521aac07edaf36c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195983"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906338"
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure Automation の Start/Stop VMs during off-hours ソリューション (プレビュー)
 
-Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Log Analytics によって洞察を深め、[SendGrid](https://azuremarketplace.microsoft.com/marketplace/apps/SendGrid.SendGrid?tab=Overview) を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
+Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Log Analytics によって分析情報を提供して、[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
 
 このソリューションは、サーバーレスで低コストなリソースを使用してコストを削減する必要のあるユーザーに、分散的なオートメーション オプションを提供します。 このソリューションでは次のことが可能です。
 
@@ -34,16 +34,6 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 
   > [!NOTE]
   > VM のスケジュールを管理する Runbook は、任意のリージョンの VM を対象にできます。
-
-* VM の開始および停止の Runbook の終了時に電子メール通知を送信するには、Azure Marketplace からオンボード中に、**[はい]** を選択して SendGrid をデプロイします。
-
-  > [!IMPORTANT]
-  > SendGrid はサード パーティのサービスです。 サポートについては、[SendGrid](https://sendgrid.com/contact/) にお問い合わせください。
-
-  SendGrid に関する制限:
-
-  * ユーザー、サブスクリプションごとに最大 1 つの SendGrid アカウント。
-  * サブスクリプションごとに最大 2 つの SendGrid アカウント。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
@@ -79,8 +69,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    ここでは、次の操作が求められます。
    * **ターゲット ResourceGroup 名**を指定します。 これは、このソリューションで管理する VM を含むリソース グループの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードを使用して、サブスクリプション内の全リソース グループの VM を対象にすることもできます。 この値は、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupNames** 変数に格納されます。
    * **VM 除外リスト (文字列)** を指定します。 これは、ターゲット リソース グループの 1 つ以上の仮想マシンの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードの使用がサポートされています。 この値は **External_ExcludeVMNames** 変数に格納されます。
-   * **スケジュール**を選択します。 これは、ターゲット リソース グループの VM を定期的に起動および停止する日時です。 既定では、スケジュールは UTC タイム ゾーンに合わせて構成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedule)」を参照してください。
-   * SendGrid から**電子メール通知**を受信するには、既定値 **[はい]** をそのまま使用し、有効なメール アドレスを指定します。 **[いいえ]** を選択し、後から電子メール通知を受信することにした場合は、コンマで区切られた有効な電子メール アドレスで **External_EmailToAddress** 変数を更新し、**External_IsSendEmail** 変数を **[はい]** という値で変更します。
+   * **スケジュール**を選択します。 これは、ターゲット リソース グループの VM を定期的に起動および停止する日時です。 既定では、スケジュールは今から 30 分後に構成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedule)」を参照してください。
+   * アクション グループから**電子メール通知**を受信するには、既定値の **[はい]** をそのまま使用し、有効なメール アドレスを指定します。 [[いいえ]](../monitoring-and-diagnostics/monitoring-action-groups.md) を選択したものの、後日、電子メール通知を受信することにした場合は、コンマで区切られた有効なメール アドレスで作成された**アクション グループ**を更新することができます。
 
     > [!IMPORTANT]
     > **[Target ResourceGroup Names]\(ターゲット リソース グループ名\)** の既定値は **&ast;** です。 これは、サブスクリプション内のすべての VM が対象です。 ソリューションでサブスクリプション内のすべての VM を対象にするのでない場合は、スケジュールを有効にする前に、この値をリソース グループ名の一覧に更新する必要があります。
@@ -134,7 +124,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 2. ACTION パラメーターを **start** に設定して **SequencedStartStop_Parent** Runbook を実行し、*VMList* パラメーターに VM のコンマ区切りリストを追加して、WHATIF パラメーターを **True** に設定します。 変更をプレビューします。
 3. **External_ExcludeVMNames** パラメーターを、VM のコンマ区切りリスト (VM1,VM2,VM3) で構成します。
 4. このシナリオでは、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupnames** 変数は考慮されていません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、「[Azure Automation の Runbook をスケジュール設定する](../automation/automation-schedules.md)」を参照してください。
-5. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** にセットして手動で Runbook を実行するか、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が、指定されたスケジュールに従って自動的に実行されるようにします。
+5. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** にセットして手動で monitoring-and-diagnostics/monitoring-action-groupsrunbook を実行するか、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が、指定されたスケジュールに従って自動的に実行されるようにします。
 
 ### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>シナリオ 3: CPU 使用率に基づいて自動的に開始/停止する
 
@@ -163,8 +153,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 これで CPU 使用率に基づいて VM を停止するスケジュールが完成したので、次のスケジュールの 1 つを有効にして開始する必要があります。
 
-* サブスクリプションとリソース グループによる起動アクションを対象にします。 **Scheduled-StartVM** スケジュールのテストと有効化については、[シナリオ 1](#scenario-1:-daily-stop/start-vms-across-a-subscription-or-target-resource-groups) の手順を参照してください。
-* サブスクリプション、リソース グループ、およびタグによる起動アクションを対象にします。 **Sequenced-StartVM** スケジュールのテストと有効化については、[シナリオ 2](#scenario-2:-sequence-the-stop/start-vms-across-a-subscription-using-tags) の手順を参照してください。
+* サブスクリプションとリソース グループによる起動アクションを対象にします。 **Scheduled-StartVM** スケジュールのテストと有効化については、[シナリオ 1](#scenario-1-startstop-vms-on-a-schedule) の手順を参照してください。
+* サブスクリプション、リソース グループ、およびタグによる起動アクションを対象にします。 **Sequenced-StartVM** スケジュールのテストと有効化については、[シナリオ 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) の手順を参照してください。
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
@@ -202,19 +192,13 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |External_AutoStop_Threshold | 変数 *External_AutoStop_MetricName* で指定される Azure アラート ルールのしきい値。 パーセンテージの値の範囲は 1 ～ 100 です。|
 |External_AutoStop_TimeAggregationOperator | 時間の集計演算子。条件を評価するために選択した時間枠のサイズに適用されます。 指定できる値は、**Average**、**Minimum**、**Maximum**、**Total**、および **Last** です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure が分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
-|External_EmailFromAddress | 電子メールの送信者を指定します。|
-|External_EmailSubject | 電子メールの件名に使用するテキストを指定します。|
-|External_EmailToAddress | 電子メールの受信者を指定します。 コンマで名前を区切ります。|
 |External_ExcludeVMNames | 除外される VM の名前を入力します。スペースなしのコンマで名前を区切ります。|
-|External_IsSendEmail | 完了時に電子メール通知を送信するオプションを指定します。 **Yes** を指定するか、メールを送信しない場合は **No** を選択します。 最初のデプロイ時に電子メール通知を有効にしていない場合は、このオプションを **No** にする必要があります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つ以上のリソース グループを、コンマ区切り値で指定します。|
 |Internal_AutomationAccountName | Automation アカウントの名前を指定します。|
 |Internal_AutoSnooze_WebhookUri | AutoStop シナリオで呼び出される Webhook URI を指定します。|
 |Internal_AzureSubscriptionId | Azure サブスクリプション ID を指定します。|
 |Internal_ResourceGroupName | Automation アカウントのリソース グループ名を指定します。|
-|Internal_SendGridAccountName | SendGrid アカウント名を指定します。|
-|Internal_SendGridPassword | SendGrid アカウントのパスワードを指定します。|
 
 すべてのシナリオで、VM を対象とするために **External_Start_ResourceGroupNames**、**External_Stop_ResourceGroupNames**、および **External_ExcludeVMNames** 変数が必要です。例外は、**AutoStop_CreateAlert_Parent**、**SequencedStartStop_Parent**、および **ScheduledStartStop_Parent** Runbook に対して VM のコンマ区切りリストを指定する場合です。 つまり、開始および停止アクションを発生させるためには、ターゲット リソース グループ内に VM が存在する必要があります。 このロジックは Azure Policy に似ています。サブスクリプションまたはリソース グループを対象にすることができ、アクションは新しく作成された VM に継承されます。 この方法により、VM ごとに個別のスケジュールを保持したり、スケールで起動および停止を管理したりする必要がなくなります。
 
@@ -238,7 +222,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 ### <a name="job-logs"></a>ジョブ ログ
 
-プロパティ | [説明]|
+プロパティ | 説明|
 ----------|----------|
 Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
 Category | データの種類の分類。 Automation の場合、値は JobLogs です。|
@@ -259,7 +243,7 @@ Time | Runbook ジョブが実行された日付と時刻。|
 
 ### <a name="job-streams"></a>ジョブ ストリーム
 
-プロパティ | [説明]|
+プロパティ | 説明|
 ----------|----------|
 Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
 Category | データの種類の分類。 Automation の場合、値は JobStreams です。|
@@ -282,7 +266,7 @@ Time | Runbook ジョブが実行された日付と時刻。|
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-クエリ | [説明]|
+クエリ | 説明|
 ----------|----------|
 正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "ScheduledStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc|
 正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc
@@ -299,11 +283,21 @@ Time | Runbook ジョブが実行された日付と時刻。|
 
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 
-ソリューションのデプロイ後に電子メール通知を構成するには、次の 3 つの変数を変更します。
+ソリューションのデプロイ後に電子メール通知を変更するには、デプロイ時に作成されたアクション グループを変更します。  
 
-* External_EmailFromAddress: 送信者のメール アドレスを指定します。
-* External_EmailToAddress: 通知メールを受信するメール アドレスのコンマ区切りリスト (user@hotmail.com,user@outlook.com) を指定します。
-* External_IsSendEmail: 電子メールを受信する場合は **Yes** に設定します。 メール通知を無効にするには、**No** に設定します。
+Azure Portal で、[監視]、[アクション グループ] の順に移動します。 **StartStop_VM_Notication** というタイトルのアクション グループを選択します。
+
+![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/azure-monitor.png)
+
+**[StartStop_VM_Notification]** ページで、**[詳細]** の **[詳細の編集]** をクリックします。 これで、**[電子メール/SMS/プッシュ/音声]** ページが開きます。 メール アドレスを更新し、**[OK]** をクリックして変更を保存します。
+
+![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/change-email.png)
+
+アクション グループにさらにアクションを追加することもできます。アクション グループの詳細については、「[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)」を参照してください。
+
+ソリューションで仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
+
+![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/email.png)
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 

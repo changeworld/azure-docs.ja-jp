@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/16/2018
-ms.author: khdang
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62555d3ba3513ce7183e24506530edcf78368247
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798629"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344939"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**はじめに**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
+<tr><td>**作業の開始**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)</td></tr>
 
@@ -52,6 +52,13 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* ストリーミングのフェールオーバーに対するサポートが追加されました。
+* カスタム メタデータのサポートが追加されました。
+* セッション処理ロジックが強化されました。
+* パーティション キー範囲のキャッシュのバグを修正しました。
+* 直接モードでの NPE バグを修正しました。
 
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * 一意なインデックスのサポートが追加されました。
@@ -150,7 +157,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * IPartitionResolver に基づくカスタム パーティション分割コードを非推奨にしました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* スロットルのための再試行ポリシー サポートを追加しました。  
+* レート制限の再試行ポリシー サポートを追加しました。  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
@@ -198,6 +205,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.16.2](#1.16.2) |2018 年 6 月 29 日 |--- |
 | [1.16.1](#1.16.1) |2018 年 5 月 16 日 |--- |
 | [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 11 月 14 日 |--- |

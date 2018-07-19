@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: be600fa6707e86e483e21f638d0d80515f9372b4
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 4c88d6a8b22e4c5c19112c30e15bc960bc8ed1b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294994"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>チュートリアル: Azure Active Directory と Tableau Server の統合
 
@@ -102,15 +102,15 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **Tableau Server** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
 
 3. **[Tableau Server のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://azure.<domain name>.link` のパターンを使用して URL を入力します。
     
@@ -123,7 +123,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
 4. Tableau Server アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/3.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/3.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -133,9 +133,9 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_officespace_04.png)
 
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_officespace_05.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_officespace_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -146,7 +146,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
@@ -156,7 +156,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
    
    a. Tableau Server の構成で、**[SAML]** タブをクリックします。
   
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
   
    b. **[Use SAML for single sign-on]** チェックボックスをオンにします。
    
@@ -236,7 +236,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
 2. アプリケーションの一覧で **[Tableau Server]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -257,7 +257,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Tableau Server] タイルをクリックすると、Tableau Server アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

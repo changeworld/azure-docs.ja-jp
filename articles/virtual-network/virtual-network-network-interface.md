@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a6e3bb31886f1b682ef20404b536bfc4a0c07151
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b584dfa49c42328a44fff0645dcdec2504abaa2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656885"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904222"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -58,11 +58,11 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     |[プライベート IP アドレス (IPv6)]|いいえ | このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の [IPv6](#IPv6) についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
     |[IPv6 名] \(**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合にのみ表示されます) |はい (**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合)。| この名前は、ネットワーク インターフェイスのセカンダリ IP 構成に割り当てられます。 IP 構成の詳細については、「[ネットワーク インターフェイス設定の表示](#view-network-interface-settings)」を参照してください。|
     |リソース グループ|[はい]|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 ネットワーク インターフェイスは、アタッチ先の仮想マシンや接続先の仮想ネットワークと同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
-    |リージョン|[はい]|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
+    |Location|[はい]|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
 
 ポータルには、ネットワーク インターフェイスを作成するときに、そこにパブリック IP アドレスを割り当てるオプションは用意されていません。しかし、ポータルを使用して仮想マシンを作成するときには、確かにポータルによってパブリック IP アドレスが作成され、それがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスの作成後にパブリック IP アドレスを追加する方法については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください。 パブリック IP アドレスを指定してネットワーク インターフェイスを作成する場合は、CLI または PowerShell を使用してネットワーク インターフェイスを作成する必要があります。
 
-ネットワーク インターフェイスをアプリケーション セキュリティ グループに割り当てるオプションは、ポータルにはありませんが、Azure CLI と PowerShell にはあります。 アプリケーション セキュリティ グループの詳細については、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」を参照してください。
+ネットワーク インターフェイスの作成時に、アプリケーション セキュリティ グループにネットワーク インターフェイスを割り当てるオプションはポータルにはありませんが、Azure CLI と PowerShell にはあります。 ただし、ネットワーク インターフェイスが仮想マシンに接続されている限り、ポータルを使用して、アプリケーション セキュリティ グループに既存のネットワーク インターフェイスを割り当てることはできます。 アプリケーション セキュリティ グループにネットワーク インターフェイスを割り当てる方法については、「[アプリケーション セキュリティ グループに対して追加または削除を実行する](#add-to-or-remove-from-application-security-groups)」を参照してください。
 
 >[!Note]
 > Azure では、ネットワーク インターフェイスの仮想マシンへのアタッチと、仮想マシンの初回起動の後にのみ、ネットワーク インターフェイスに MAC アドレスが割り当てられます。 Azure によってネットワーク インターフェイスに割り当てられる MAC アドレスは指定できません。 MAC アドレスがネットワーク インターフェイスに割り当てられると、そのネットワーク インターフェイスが削除されるか、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 IP アドレスと IP 構成の詳細については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください
@@ -161,7 +161,10 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>アプリケーション セキュリティ グループに対して追加または削除を実行する
 
-アプリケーション セキュリティ グループに対してネットワーク インターフェイスを割り当てるか削除するオプションは、ポータルにはありませんが、Azure CLI と PowerShell にはあります。 アプリケーション セキュリティ グループの詳細については、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」と「[アプリケーション セキュリティ グループを作成する](#create-an-application-security-group)」を参照してください。
+ポータルを使用して、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除できるのは、ネットワーク インターフェイスが仮想マシンに接続されている場合のみです。 PowerShell や Azure CLI を使用すれば、ネットワーク インターフェイスが仮想マシンに接続されているかどうかに関係なく、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除することができます。 [アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)と[アプリケーション セキュリティ グループの作成](manage-network-security-group.md#create-an-application-security-group)方法の詳細を参照してください。
+
+1. ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、まず、アプリケーション セキュリティ グループに対して追加または削除するネットワーク インターフェイスを持つ仮想マシンの名前を入力します。 検索結果にご利用の VM の名前が表示されたら、それを選択します。
+2. **[設定]** で、**[ネットワーク]** を選択します。  **[Configure the application security groups]\(アプリケーション セキュリティ グループの構成\)** を選択し、ネットワーク インターフェイスを追加するアプリケーション ネットワーク グループを選びます。または、ネットワーク インターフェイスを削除するアプリケーション セキュリティ グループの選択を解除します。次に、**[保存]** を選択します。 同じアプリケーション セキュリティ グループに追加できるのは、同じ仮想ネットワークに存在するネットワーク インターフェイスのみです。 アプリケーション セキュリティ グループは、ネットワーク インターフェイスと同じ場所に存在している必要があります。
 
 **コマンド**
 
@@ -264,6 +267,6 @@ Azure Network Watcher の次ホップ機能も、ルートが仮想マシンと�
 
 - [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、複数の NIC を備えた VM を作成します
 - [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) または [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) を使って、複数の IPv4 アドレスが割り当てられた 1 つの NIC VM を作成します
-- [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、または [Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、プライベート IPv6 アドレスを割り当てられた 1 つの NIC VM を (Azure Load Balancer の背後に) 作成します|
-- [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、ネットワーク インターフェイスを作成します
+- [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、または [Azure Resource Manager テンプレート](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って、プライベート IPv6 アドレスが割り当てられた 1 つの NIC VM を (Azure Load Balancer の背後に) 作成します
+- [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプト、あるいは Azure [Resource Manager テンプレート](template-samples.md)を使って、ネットワーク インターフェイスを作成します
 - [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

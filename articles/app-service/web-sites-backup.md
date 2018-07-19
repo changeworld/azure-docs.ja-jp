@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e8e41c51b6df9962e561d56be75108ba9cd76377
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751515"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901621"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](app-service-web-overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -53,6 +53,10 @@ App Service によって、アプリで使用するようにユーザーが構�
   **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
 * バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure のストレージ アカウントの詳細については、この記事の末尾に示されている [リンク](#moreaboutstorage) を参照してください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
+* SSL が有効な Azure Database for MySQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
+* SSL が有効な Azure Database for PostgreSQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
+* バックアップの保存先として、ファイアウォールが有効なストレージ アカウントを使用することは、サポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
+
 
 <a name="manualbackup"></a>
 

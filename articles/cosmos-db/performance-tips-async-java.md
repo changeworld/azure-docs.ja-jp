@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613984"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101830"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -49,7 +49,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 3. **ConnectionPolicy のチューニング**
 
-    Async Java SDK を使っているときは Azure Cosmos DB の要求は HTTPS/REST を介して行われ、既定の最大接続プール サイズ (1000) の対象となります。 ほとんどのユース ケースではこの既定値で最適なはずです。 ただし、多数のパーティションを含む非常に大きいコレクションがある場合は、setMaxPoolSize を使って、最大接続プール サイズをもっと大きい値 (たとえば 1500) に設定できます。
+    Async Java SDK を使っているときは Azure Cosmos DB の要求は HTTPS/REST を介して行われ、既定の最大接続プール サイズ (1000) の対象となります。 ほとんどのユース ケースではこの既定値で最適なはずです。 ただし、多数のパーティションを含む大きいコレクションがある場合は、setMaxPoolSize を使って、最大接続プール サイズをもっと大きい値 (たとえば 1500) に設定できます。
 
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 
@@ -83,11 +83,11 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     また、setMaxItemCount メソッドを使ってページ サイズを設定することもできます。
     
-9. **適切なスケジューラを使用する (Eventloop IO Netty スレッドを盗まない)**
+9. **適切なスケジューラを使用する (イベント ループの IO Netty スレッドを盗まない)**
 
-    Async Java SDK は非ブロッキング IO に [netty](https://netty.io/) を使います。 SDK は、固定数の IO netty eventloop スレッド (コンピューターの CPU コアと同じ数) を使って IO 操作を実行します。 API によって返される Observable は、共有 IO eventloop netty スレッドの 1 つに結果を出力します。 したがって、共有 IO eventloop netty スレッドをブロックしないことが重要です。 IO eventloop netty スレッドで CPU を大量に使う処理を行ったり、操作をブロックしたりすると、デッドロックが発生したり、SDK のスループットが大幅に低下したりする可能性があります。
+    Async Java SDK は非ブロッキング IO に [netty](https://netty.io/) を使います。 SDK は、固定数の IO netty イベント ループ スレッド (コンピューターの CPU コアと同じ数) を使って IO 操作を実行します。 API によって返される Observable は、共有 IO イベント ループ netty スレッドの 1 つに結果を出力します。 したがって、共有 IO イベント ループ netty スレッドをブロックしないことが重要です。 IO イベント ループ netty スレッドで CPU を大量に使う処理を行ったり、操作をブロックしたりすると、デッドロックが発生したり、SDK のスループットが大幅に低下したりする可能性があります。
 
-    たとえば、次のコードは、eventloop IO netty スレッドで CPU を大量に使う処理を実行します。
+    たとえば、次のコードは、イベント ループ IO netty スレッドで CPU を大量に使う処理を実行します。
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -103,7 +103,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
       });
     ```
 
-    結果を受け取った後、結果に対して CPU 負荷の高い操作を実行する場合は、eventloop IO netty スレッドでは行わないようにする必要があります。 代わりに、独自のスケジューラを用意し、処理の実行に専用のスレッドを提供できます。
+    結果を受け取った後、結果に対して CPU 負荷の高い操作を実行する場合は、イベント ループ IO netty スレッドでは行わないようにする必要があります。 代わりに、独自のスケジューラを用意し、処理の実行に専用のスレッドを提供できます。
 
     ```java
     import rx.schedulers;
@@ -126,13 +126,13 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     詳しくは、Async Java SDK に関する [Github のページ](https://github.com/Azure/azure-cosmosdb-java)をご覧ください。
 
-10. **netty のログを無効にする** netty ライブラリのログは量が多いので、CPU コストが増えないようにオフにする必要があります (構成でログを抑制するだけでは不十分な場合があります)。 デバッグ モードではない場合は、netty のログを完全に無効にします。 したがって、log4j を使って netty からの ``org.apache.log4j.Category.callAppenders()`` によって発生する追加の CPU コストを削除するには、コードベースに次の行を追加します。
+10. **netty のログを無効にする** netty ライブラリのログは量が多いので、CPU コストが増えないようにオフにする必要があります (構成へのサインインを抑制するだけでは不十分な場合があります)。 デバッグ モードではない場合は、netty のログを完全に無効にします。 したがって、log4j を使って netty からの ``org.apache.log4j.Category.callAppenders()`` によって発生する追加の CPU コストを削除するには、コードベースに次の行を追加します。
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **OS の開かれるファイルのリソース制限** Redhat などの一部の Linux システムには、開かれるファイルの数、したがって合計接続数に上限があります。 現在の制限を確認するには、次のコマンドを実行します。
+11. **OS の開かれるファイルのリソース制限** Red Hat などの一部の Linux システムには、開かれるファイルの数、したがって合計接続数に上限があります。 現在の制限を確認するには、次のコマンドを実行します。
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     </dependency>
     ```
 
-他のプラットフォーム (Redhat、Windows、Mac など) の場合は、https://netty.io/wiki/forked-tomcat-native.html の説明をご覧ください。
+他のプラットフォーム (Red Hat、Windows、Mac など) の場合は、https://netty.io/wiki/forked-tomcat-native.html の説明をご覧ください。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
  
@@ -209,7 +209,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     response.getRequestCharge();
     ```             
 
-    このヘッダーで返される要求の使用量は、プロビジョニングしたスループットの一部です。 たとえば、2000 RU/秒がプロビジョニングされていて、上記のクエリが 1 KB のドキュメントを 1000 個返した場合、この操作のコストは 1000 になります。 そのため、後続の要求を調整する前に、サーバーは 1 秒以内にこのような要求を 2 つだけ受け付けます。 詳細については、[要求ユニット](request-units.md)に関する記事および[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)のページを参照してください。
+    このヘッダーで返される要求の使用量は、プロビジョニングしたスループットの一部です。 たとえば、2000 RU/秒がプロビジョニングされていて、上記のクエリが 1 KB のドキュメントを 1000 個返した場合、この操作のコストは 1000 になります。 そのため、後続の要求をレート制限する前に、サーバーは 1 秒以内にこのような要求を 2 つだけ受け付けます。 詳細については、[要求ユニット](request-units.md)に関する記事および[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)のページを参照してください。
 <a id="429"></a>
 2. **レート制限と大きすぎる要求レートに対処する**
 

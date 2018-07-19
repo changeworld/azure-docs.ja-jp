@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 5c21df2b3bdeee6ac7c3956fe1cafa4f947dd6dd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034867"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866527"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage クライアントのセキュリティで保護された TLS の有効化
 
@@ -86,3 +86,4 @@ Fiddler を使用すると、TLS 1.2 が実際に使用されるかどうかを�
 ## <a name="see-also"></a>関連項目
 
 * [トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [Java クライアントで TLS を有効にする](https://www.java.com/en/configure_crypto.html)

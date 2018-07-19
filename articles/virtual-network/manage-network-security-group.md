@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5ca70b085b5ac9db4d108966fa695f042c20489d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292037"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920513"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -121,17 +121,15 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
     
     |Setting  |値  |詳細  |
     |---------|---------|---------|
-    |ソース     | **[任意]**、**[IP アドレス]**、または **[サービス タグ]** を選択します。        | **[IP アドレス]** 選択した場合は、**[発信元 IP アドレス/CIDR 範囲]** を指定する必要があります。 単一の値またはコンマで区切った複数の値の一覧を指定できます。 複数の値の例は、10.0.0.0/16, 192.188.1.1 です。 指定できる値の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 **[サービス タグ]** を選択した場合は、1 つのサービス タグを選択する必要があります。 サービス タグは、IP アドレスのカテゴリに対する定義済みの識別子です。 利用可能なサービス タグと各タグが表していることの詳細については、「[サービス タグ](security-overview.md#service-tags)」を参照してください。 指定した IP アドレスが Azure 仮想マシンに割り当てられていて、パブリック IP アドレスが仮想マシンに割り当てられている場合は、パブリック IP アドレスではなくプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
+    |ソース     | 受信セキュリティ規則として、**[任意]**、**[アプリケーション セキュリティ グループ]**、**[IP アドレス]**、または **[サービス タグ]** を選択します。 送信セキュリティ規則を作成する場合、オプションは **[変換先]** に対して一覧表示されるオプションと同じです。       | **[アプリケーション セキュリティ グループ]** を選択した場合は、ネットワーク インターフェイスと同じ領域に存在する既存のアプリケーション セキュリティ グループを 1 つ以上選択します。 [アプリケーション セキュリティ グループの作成](#create-an-application-security-group)方法を参照してください。 **[ソース]** と **[変換先]** の両方に対して **[アプリケーション セキュリティ グループ]** を選択した場合は、両方のアプリケーション セキュリティ グループ内のネットワーク インターフェイスが同じ仮想ネットワークにある必要があります。 **[IP アドレス]** 選択した場合は、**[発信元 IP アドレス/CIDR 範囲]** を指定します。 単一の値またはコンマで区切った複数の値の一覧を指定できます。 複数の値の例は、10.0.0.0/16, 192.188.1.1 です。 指定できる値の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 **[サービス タグ]** を選択した場合は、1 つのサービス タグを選択します。 サービス タグは、IP アドレスのカテゴリに対する定義済みの識別子です。 利用可能なサービス タグと各タグが表していることの詳細については、「[サービス タグ](security-overview.md#service-tags)」を参照してください。 指定した IP アドレスが Azure 仮想マシンに割り当てられている場合は、仮想マシンに割り当てられているパブリック IP アドレスではなく、確実にプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
     |ソース ポート範囲     | 単一のポート (例: 80)、ポートの範囲 (例: 1024-65535)、コンマで区切った単一のポートとポートの範囲の一覧 (例: 80, 1024-65535) を指定します。 任意のポートでトラフィックを許可する場合は、アスタリスクを入力します。 | ポートと範囲は、規則によってトラフィックが許可または拒否されるポートを指定します。 指定できるポートの数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。  |
-    |変換先     | **[任意]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。        | **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定する必要があります。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。 指定した IP アドレスが Azure 仮想マシンに割り当てられていて、パブリック IP アドレスが仮想マシンに割り当てられている場合は、パブリック IP アドレスではなくプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
+    |変換先     | 受信セキュリティ規則として、**[任意]**、**[アプリケーション セキュリティ グループ]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。 送信セキュリティ規則を作成する場合、オプションは **[ソース]** に対して一覧表示されるオプションと同じです。        | **[アプリケーション セキュリティ グループ]** を選択した場合は、ネットワーク インターフェイスと同じ領域に存在する既存のアプリケーション セキュリティ グループを 1 つ以上選択する必要があります。 [アプリケーション セキュリティ グループの作成](#create-an-application-security-group)方法を参照してください。 **[アプリケーション セキュリティ グループ]** を選択した場合は、ネットワーク インターフェイスと同じ領域に存在する既存のアプリケーション セキュリティ グループを 1 つ選択します。 **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定します。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。 指定した IP アドレスが Azure 仮想マシンに割り当てられている場合は、仮想マシンに割り当てられているパブリック IP アドレスではなく、確実にプライベート IP アドレスを指定してください。 セキュリティ ルールが処理されるタイミングは、受信セキュリティ ルールの場合は Azure がパブリック IP アドレスをプライベート IP アドレスに変換した後、送信ルールの場合は Azure がプライベート IP アドレスをパブリック IP アドレスに変換する前です。 Azure のパブリック IP アドレスとプライベート IP アドレスの詳細については、[IP アドレスの種類](virtual-network-ip-addresses-overview-arm.md)に関するページを参照してください。        |
     |宛先ポート範囲     | 単一の値またはコンマで区切った値の一覧を指定します。 | **[ソース ポート範囲]** と同じように、単一のポート、複数のポート、または範囲を指定できます。指定できる数には制限があります。 |
     |プロトコル     | **[任意]**、**[TCP]**、または **[UDP]** を選択します。        |         |
     |アクションを表示します。     | **[許可]** または **[拒否]** を選択します。        |         |
     |優先順位     | ネットワーク セキュリティ グループ内のすべてのセキュリティ規則に対して一意である 100 ～ 4096 の範囲の値を入力します。 |規則は、優先順位に従って処理されます。 数値が小さいほど、優先度は高くなります。 規則を作成するときに、間を空けて優先順位を指定することをお勧めします (100、200、300 など)。 間を空けることで、既存の規則よりも優先順位が高いまたは低い規則が必要になった場合に、そのような規則を簡単に追加できます。         |
     |Name     | ネットワーク セキュリティ グループ内の一意の名前。        |  名前の最大長は 80 文字です。 先頭にはアルファベットまたは数字、末尾にはアルファベット、数字、またはアンダースコアを使用する必要があります。また、使用できるのは、アルファベット、数字、アンダースコア、ピリオド、ハイフンのみです。       |
     |説明     | 任意の説明です。        |         |
-
-    **[ソース]** または **[宛先]** に対する[アプリケーション セキュリティ グループ](#work-with-application-security-groups)の指定は、ポータルでは実行できません。 ただし、Azure CLI または PowerShell による指定は可能です。 **送信セキュリティ規則**も同じような方法で設定できるため、特に説明しません。
 
 **コマンド**
 
@@ -185,29 +183,54 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 - Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
 - PowerShell: [Remove-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
 
-
 ## <a name="work-with-application-security-groups"></a>アプリケーション セキュリティ グループを操作する
 
-アプリケーション セキュリティ グループには、0 個または複数個のネットワーク インターフェイスが含まれます。 詳細については、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」を参照してください。 アプリケーション セキュリティ グループはポータルでは操作できませんが、PowerShell または Azure CLI を使用して操作できます。 アプリケーション セキュリティ グループ内のすべてのネットワーク インターフェイスは、同じ仮想ネットワークに存在している必要があります。 アプリケーション セキュリティ グループに追加された最初のネットワーク インターフェイスによって、後続のネットワーク インターフェイスが存在する必要がある仮想ネットワークが決まります。 アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する方法については、「[アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)」を参照してください。
+アプリケーション セキュリティ グループには、0 個または複数個のネットワーク インターフェイスが含まれます。 詳細については、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」を参照してください。 アプリケーション セキュリティ グループ内のすべてのネットワーク インターフェイスは、同じ仮想ネットワークに存在している必要があります。 アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する方法については、「[アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)」を参照してください。
 
 ### <a name="create-an-application-security-group"></a>アプリケーション セキュリティ グループを作成する
+
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[Marketplace を検索]** ボックスに、「*アプリケーション セキュリティ グループ*」と入力します。 検索結果に**アプリケーション セキュリティ グループ**が表示されたら、それを選択し、**[すべて]** の下の**アプリケーション セキュリティ グループ** をもう一度選択します。次に、**[作成]** を選択します。
+3. 以下の情報を入力するか選んだ後、**[作成]** を選びます。
+
+    | Setting        | 値                                                   |
+    | ---            | ---                                                     |
+    | Name           | 名前はリソース グループ内で一意である必要があります。        |
+    | サブスクリプション   | サブスクリプションを選択します。                               |
+    | リソース グループ | 既存のリソース グループを選択するか、新しいものを作成します。 |
+    | Location       | 場所を選択します。                                       |
+
+**コマンド**
 
 - Azure CLI: [az network asg create](/cli/azure/network/asg#az-network-asg-create)
 - PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
 
 ### <a name="view-all-application-security-groups"></a>すべてのアプリケーション セキュリティ グループを表示する
 
+1. Azure Portal の左上隅にある **[すべてのサービス]** を選択します。
+2. **[すべてのサービス] のフィルター** ボックスに「*アプリケーション セキュリティ グループ*」と入力し、検索結果に**アプリケーション セキュリティ グループ**が表示されたらそれを選択します。
+
+**コマンド**
+
 - Azure CLI: [az network asg list](/cli/azure/network/asg#az-network-asg-list)
 - PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>特定のアプリケーション セキュリティ グループの詳細を表示する
+
+1. Azure Portal の左上隅にある **[すべてのサービス]** を選択します。
+2. **[すべてのサービス] のフィルター** ボックスに「*アプリケーション セキュリティ グループ*」と入力し、検索結果に**アプリケーション セキュリティ グループ**が表示されたらそれを選択します。
+3. 詳細を表示するアプリケーション セキュリティ グループを選択します。
+
+**コマンド**
 
 - Azure CLI: [az network asg show](/cli/azure/network/asg#az-network-asg-show)
 - PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
 
 ### <a name="change-an-application-security-group"></a>アプリケーション セキュリティ グループを変更する
 
-既存のアプリケーション セキュリティ グループの設定は、その一部 (タグやアクセス許可など) を変更できますが、名前と場所を変更することはできません。
+1. Azure Portal の左上隅にある **[すべてのサービス]** を選択します。
+2. **[すべてのサービス] のフィルター** ボックスに「*アプリケーション セキュリティ グループ*」と入力し、検索結果に**アプリケーション セキュリティ グループ**が表示されたらそれを選択します。
+3. 設定を変更するアプリケーション セキュリティ グループを選択します。 タグを追加したり削除したりすることができます。また、アプリケーション セキュリティ グループに対するアクセス許可を割り当てたり削除したりすることもできます。
 
 - Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
 - PowerShell: PowerShell コマンドレットはありません。
@@ -215,6 +238,11 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 ### <a name="delete-an-application-security-group"></a>アプリケーション セキュリティ グループを削除する
 
 アプリケーション セキュリティ グループ内にネットワーク インターフェイスがある場合、アプリケーション セキュリティ グループを削除することはできません。 ネットワーク インターフェイスの設定を変更するかネットワーク インターフェイスを削除することで、アプリケーション セキュリティ グループからすべてのネットワーク インターフェイスを削除します。 詳細については、[アプリケーション セキュリティ グループに対するネットワークインターフェイスの追加または削除](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)に関する記事または「[ネットワーク インターフェイスの削除](virtual-network-network-interface.md#delete-a-network-interface)」を参照してください。
+
+1. Azure Portal の左上隅にある **[すべてのサービス]** を選択します。
+2. **[すべてのサービス] のフィルター** ボックスに「*アプリケーション セキュリティ グループ*」と入力し、検索結果に**アプリケーション セキュリティ グループ**が表示されたらそれを選択します。
+3. 削除するアプリケーション セキュリティ グループを選択します。
+4. **[削除]** を選択し、**[はい]** を選んでアプリケーション セキュリティ グループを削除します。
 
 **コマンド**
 
@@ -225,21 +253,25 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ネットワーク セキュリティ グループ、セキュリティ規則、およびアプリケーション セキュリティ グループに関するタスクを実行するには、使用するアカウントが[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に示す適切なアクセス許可が割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
-### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
+### <a name="network-security-group"></a>ネットワーク セキュリティ グループ
 
 | アクションを表示します。                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/ruleTables/read                             |   ネットワーク セキュリティ グループの取得                                          |
-| Microsoft.Network/ruleTables/write                            |   ネットワーク セキュリティ グループの作成または更新                             |
-| Microsoft.Network/ruleTables/delete                           |   ネットワーク セキュリティ グループの削除                                       |
-| Microsoft.Network/ruleTables/join/action                      |   サブネットまたはネットワーク インターフェイスへのネットワーク セキュリティ グループの関連付け |
-| Microsoft.Network/ruleTables/rules/read                       |   規則の取得                                                            |
-| Microsoft.Network/ruleTables/rules/write                      |   規則の作成または更新                                               |
-| Microsoft.Network/ruleTables/rules/delete                     |   規則の削除                                                         |
-| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   ネットワーク インターフェイスの有効なネットワーク セキュリティ グループの取得              |
-| Microsoft.Network/networkWatchers/nextHop/action              |   VM から次ホップを取得する                                         |
+| Microsoft.Network/networkSecurityGroups/read                  |   ネットワーク セキュリティ グループの取得                                          |
+| Microsoft.Network/networkSecurityGroups/write                 |   ネットワーク セキュリティ グループの作成または更新                             |
+| Microsoft.Network/networkSecurityGroups/delete                |   ネットワーク セキュリティ グループの削除                                       |
+| Microsoft.Network/networkSecurityGroups/join/action           |   サブネットまたはネットワーク インターフェイスへのネットワーク セキュリティ グループの関連付け 
 
-### <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
+
+### <a name="network-security-group-rule"></a>ネットワーク セキュリティ グループの規則
+
+| アクションを表示します。                                                        |   Name                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/networkSecurityGroups/rules/read            |   規則の取得                                                            |
+| Microsoft.Network/networkSecurityGroups/rules/write           |   規則の作成または更新                                               |
+| Microsoft.Network/networkSecurityGroups/rules/delete          |   規則の削除                                                         |
+
+### <a name="application-security-group"></a>アプリケーション セキュリティ グループ
 
 | アクションを表示します。                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |

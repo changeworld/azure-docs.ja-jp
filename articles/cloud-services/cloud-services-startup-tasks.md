@@ -3,7 +3,7 @@ title: Azure Cloud Services でのスタートアップ タスクの実行 | Mic
 description: スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。 スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: adegeo
-ms.openlocfilehash: 1c1b3aa86dc8211de0c07c9fb68da5685c86f551
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeconnoc
+ms.openlocfilehash: 6601eba90f3c3644d418ddd0a74746e1a12bcbd3
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22999137"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007781"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
@@ -30,7 +30,7 @@ ms.locfileid: "22999137"
 > 
 
 ## <a name="how-startup-tasks-work"></a>スタートアップ タスクの動作方法
-スタートアップ タスクはロールが開始する前に実行されるアクションであり、[Task] ファイルにおいて [Startup] 要素の [Task] 要素を使用して定義されます。 多くの場合スタートアップ タスクはバッチ ファイルですが、コンソール アプリケーションまたは PowerShell スクリプトを開始するバッチ ファイルでもかまいません。
+スタートアップ タスクはロールが開始する前に実行されるアクションであり、[ServiceDefinition.csdef] ファイルにおいて [Startup] 要素の [Task] 要素を使用して定義されます。 多くの場合スタートアップ タスクはバッチ ファイルですが、コンソール アプリケーションまたは PowerShell スクリプトを開始するバッチ ファイルでもかまいません。
 
 スタートアップ タスクに情報を渡すには環境変数を使用し、スタートアップ タスクから情報を受け取るにはローカル ストレージを使用します。 たとえば、環境変数を使用してインストールするプログラムへのパスを指定でき、ファイルをローカル ストレージに書き込んでおいて後からロールで読み取ることができます。
 
@@ -59,7 +59,7 @@ Azure でのロールのスタートアップ手順を次に示します。
 6. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドが呼び出されます。
 
 ## <a name="example-of-a-startup-task"></a>スタートアップ タスクの例
-スタートアップ タスクは、[Task] ファイルの **Task** 要素で定義されています。 **commandLine** 属性では、スタートアップ バッチ ファイルまたはコンソール コマンドの名前とパラメーターを指定します。**executionContext** 属性では、スタートアップ タスクの特権レベルを指定します。**taskType** 属性では、タスクの実行方法を指定します。
+スタートアップ タスクは、[ServiceDefinition.csdef] ファイルの **Task** 要素で定義されています。 **commandLine** 属性では、スタートアップ バッチ ファイルまたはコンソール コマンドの名前とパラメーターを指定します。**executionContext** 属性では、スタートアップ タスクの特権レベルを指定します。**taskType** 属性では、タスクの実行方法を指定します。
 
 この例では、環境変数 **MyVersionNumber** をスタートアップ タスク用に作成し、値を "**1.0.0.0**" に設定しています。
 
@@ -88,7 +88,7 @@ EXIT /B 0
 > 
 
 ## <a name="description-of-task-attributes"></a>タスクの属性の説明
-次に、 **ServiceDefinition.csdef** ファイルの [Task] 要素の属性について説明します。
+次に、 **ServiceDefinition.csdef** ファイルの [ServiceDefinition.csdef] 要素の属性について説明します。
 
 **commandLine** -スタートアップ タスクのコマンド ラインを指定します。
 
@@ -112,7 +112,7 @@ EXIT /B 0
 **taskType** -スタートアップ タスクを実行する方法を指定します。
 
 * **単純な**  
-  タスクは、 [Task] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。 ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。 それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。   
+  タスクは、 [ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。 ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。 それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。   
   
   > [!NOTE]
   > **simple** タスクが 0 以外の **errorlevel** で終了した場合は、インスタンスがブロックされます。 後続の **simple** スタートアップ タスクおよびロール自体は開始されません。
@@ -128,13 +128,13 @@ EXIT /B 0
 ## <a name="environment-variables"></a>環境変数
 環境変数は、スタートアップ タスクに情報を渡すための手段です。 たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。
 
-スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [Task] ファイルの [Environment] セクションにあり、[value] 要素と **name** 属性を使用します。
+スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [ServiceDefinition.csdef] ファイルの [Environment] セクションにあり、[Variable] 要素と **name** 属性を使用します。
 
-静的環境変数は、 **Variable** 要素の [value] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
+静的環境変数は、 **Variable** 要素の [Variable] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
 
-RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [value] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
+RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [Variable] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
 
-たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [value] 要素と [RoleInstanceValue] 要素を使用します。
+たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [Variable] 要素と [RoleInstanceValue] 要素を使用します。
 
 ```xml
 <Startup>
@@ -155,16 +155,16 @@ RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素�
 </Startup>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Cloud Service で [一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md) を実行する方法を学習します。
 
 [パッケージ化](cloud-services-model-and-package.md) します。  
 
-[Task]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[value]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

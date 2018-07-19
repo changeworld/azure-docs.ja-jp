@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160752"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952826"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
@@ -66,7 +66,7 @@ ms.locfileid: "34160752"
 
 |    |           |
 | ------------- | ------------- |
-| 紹介   | ディープ ラーニング フレームワーク      |
+| 紹介   | 高度なディープ ラーニング API      |
 | サポートされている DSVM エディション      | Windows、Linux     |
 | DSVM での構成/インストール方法  | TensorFlow は、[Linux および Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上の Python 3.5 および [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上の Python 3.6 にインストールされています。 |
 | サンプルへのリンク      | https://github.com/fchollet/keras/tree/master/examples      |
@@ -121,7 +121,7 @@ Caffe のインストールされるバージョンは Python 2.7 を必要と�
 | DSVM での構成/インストール方法  | Chainer は、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) にインストールされています。 ChainerRL と ChainerCV もインストールされます。   |
 | サンプルへのリンク      | サンプル ノートブックは、JupyterHub に含まれています。 |
 | DSVM 上の関連ツール      | Caffe      |
-| 使用/実行方法  | * ターミナルで、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行してから、Chainer をインポートします。 <br/>
+| 使用/実行方法  | * ターミナルで、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行してから Chainer をインポートします。 <br/>
 * JupyterHub で、[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルのノートブックが保存されている Chainer ディレクトリに移動します。
 
 
@@ -145,7 +145,7 @@ export CUDA_ROOT=/usr/local/cuda-8.0
 ```
 
 Deep Water を使用するには:
-* ターミナルで [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行します。 <br/>
+* * ターミナルで [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行します。 <br/>
 * JupyterHub で [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルのノートブックが保存されている deep_water ディレクトリに移動します。
 
 ## <a name="mxnet"></a>MXNet
@@ -178,7 +178,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 
 
 
-## <a name="nvdia-smi"></a>nvdia-smi
+## <a name="nvidia-smi"></a>nvidia-smi
 
 |    |           |
 | ------------- | ------------- |

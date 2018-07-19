@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904307"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004882"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>チュートリアル: Linux VM のマネージド サービス ID を使用して Azure Data Lake Store にアクセスする
 
@@ -52,7 +52,7 @@ ms.locfileid: "37904307"
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
 3. 仮想マシンの情報を入力します。 **[認証の種類]** で、**[SSH 公開キー]** または **[パスワード]** を選択します。 作成した資格情報を使用して VM にログインできます。
 
-   ![仮想マシンを作成するための [基本] ウィンドウ](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![仮想マシンを作成するための [基本] ウィンドウ](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. **[サブスクリプション]** ボックスの一覧で、仮想マシンのサブスクリプションを選択します。
 5. 仮想マシンを作成する新しいリソース グループを選択するには、**[リソース グループ]** > **[新規作成]** を選択します。 終了したら、**[OK]** を選択します。
@@ -64,8 +64,9 @@ VM MSI を使用すると、コードに資格情報を挿入しなくても、A
 
 1. **Virtual Machine** の場合、MSI を有効にする仮想マシンを選択します。
 2. 左側のウィンドウで、**[構成]** を選択します。
-3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にするには、**[はい]** を選択します。 無効にする場合は、**[いいえ]** を選択します。
-   ![[Azure Active Directory に登録する] の選択](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+3. 
+     **管理対象のサービス ID** が表示されます。 MSI を登録して有効にするには、**[はい]** を選択します。 無効にする場合は、**[いいえ]** を選択します。
+![[Azure Active Directory に登録する] の選択](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. **[保存]** を選択します。
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>VM に Azure Data Lake Store へのアクセスを許可する

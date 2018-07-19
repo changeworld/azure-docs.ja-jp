@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6c46ada7fc95d5789512f8f7c7842852e6a86b69
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248993"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112988"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS と Traffic Manager を使用したディザスター リカバリー
 
@@ -59,7 +59,7 @@ DNS は多くの場合、データ センターの外部で使用できるグロ
 
 この記事で説明する解決策について説明するために広く使用される DNS に関するいくつかの概念を理解しておく必要があります。
 - **DNS の A レコード** - A レコードは、ドメインから IPv4 アドレスへの対応を示すポインターです。 
-- **CNAME または正規名** - このレコード タイプは別の DNS レコードを指すために使用します。 CNAME は IP に応答せず、IP アドレスを含むレコードへのポインターに応答します。 
+- **CNAME または正規名** - このレコード タイプは別の DNS レコードを指すために使用します。 CNAME は IP アドレスに応答せず、IP アドレスを含むレコードへのポインターに応答します。 
 - **重み付けルーティング** – サービス エンドポイントに重み付けを関連付け、割り当てられた重み付けに基づいてトラフィックを分散させることができます。 このルーティング方式は、 Traffic Manager で使用可能な 4 つのトラフィック ルーティング メカニズムのうちの 1 つです。 詳細については、「[重み付けルーティング方式](../traffic-manager/traffic-manager-routing-methods.md#weighted)」を参照してください。
 - **優先順位によるルーティング** – 優先順位によるルーティングはエンドポイントの正常性チェックに基づいています。 既定では、Azure Traffic Manager は優先順位が最高のエンドポイントにすべてのトラフィックを送信し、障害や災害が発生すると、Traffic Manager はセカンダリ エンドポイントにトラフィックをルーティングします。 詳細については、「[優先順位によるルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#priority)」を参照してください。
 

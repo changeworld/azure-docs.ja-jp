@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030439"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901043"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -31,7 +31,7 @@ Azure IoT Hub には Basic と Standard の 2 つのレベルがあり、サポ�
 
 IoT Hub の Standard レベルではすべての機能が有効になり、双方向通信機能を利用する IoT ソリューションの場合はこのレベルが必要です。 Basic レベルでは機能のサブセットが有効になり、デバイスからクラウドへの単方向通信だけが必要な IoT ソリューション用です。 提供されるセキュリティ機能と認証機能は、どちらのレベルも同じです。
 
-IoT Hub を作成した後は、既存の操作を中断することなく、Basic レベルから Standard レベルにアップグレードできます。 詳しくは、「[IoT Hub のアップグレード方法](iot-hub-upgrade.md)」をご覧ください。
+IoT Hub を作成した後は、既存の操作を中断することなく、Basic レベルから Standard レベルにアップグレードできます。 詳しくは、「[IoT Hub のアップグレード方法](iot-hub-upgrade.md)」をご覧ください。 Basic レベルの IoT Hub に対するパーティション数の制限は 8 であることに注意してください。 Basic レベルから Standard レベルに移行してもこの制限は変わりません。
 
 | 機能 | Basic レベル | Standard レベル |
 | ---------- | ---------- | ------------- |
@@ -43,7 +43,7 @@ IoT Hub を作成した後は、既存の操作を中断することなく、Bas
 | [監視と診断](iot-hub-monitor-resource-health.md) | [はい] | [はい] |
 | [cloud-to-device メッセージング](iot-hub-devguide-c2d-guidance.md) |   | [はい] |
 | [デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、および[デバイス管理](iot-hub-device-management-overview.md) |   | [はい] |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | [はい] |
+| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | [はい] |
 
 IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。 
 
@@ -59,9 +59,9 @@ IoT Hub の Basic レベルと Standard レベルでサポートされる機能�
 | モジュールの取得 | [はい] | [はい] |
 | [レジストリの統計情報の取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | [はい] | [はい] |
 | [サービスの統計情報の取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | [はい] | [はい] |
-| [デバイスの作成または更新](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | [はい] | [はい] |
+| [デバイスの設定](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | [はい] | [はい] |
 | モジュールの設定 | [はい] | [はい] |
-| [IoT Hub にクエリを実行する](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | [はい] | [はい] |
+| [デバイスのクエリ](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | [はい] | [はい] |
 | モジュールのクエリ | [はい] | [はい] |
 | [ファイル アップロード SAS URI の作成](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | [はい] | [はい] |
 | [デバイス バインド通知の受け取り](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | [はい] | [はい] |

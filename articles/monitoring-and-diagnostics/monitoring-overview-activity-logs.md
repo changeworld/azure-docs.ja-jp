@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: b6639ecc6fbd36df29458532d555b68b50b0a19c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018979"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918483"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -33,7 +33,8 @@ ms.locfileid: "37018979"
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 > [!NOTE]
->  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
+>  
+  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
 
 アクティビティ ログの概要については、次のビデオを参照してください。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -105,6 +106,11 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 > [!NOTE]
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
 
+> [!WARNING]
+> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
+
 ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure Portal を使用したログ プロファイルの構成
@@ -144,9 +150,9 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Name |[はい] |ログ プロファイルの名前。 |
 | StorageAccountId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| リージョン |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| Location |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
 | RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| カテゴリ |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+| Category |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
 ```

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ce186978d910cfdae068e68b5f86a8ebd5fa712
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2957fffecbf448fa456d80200aba9752569b5f69
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227423"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>チュートリアル: Azure Active Directory と Elium の統合
 
@@ -123,7 +123,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
 5. Elium アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
            
@@ -140,11 +140,11 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute_04.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute_05.png)
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
@@ -164,15 +164,15 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
 8. 右上隅の **[ユーザー プロファイル]** をクリックし、**[管理]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/user1.png)
+    ![Configure single sign-on](./media/elium-tutorial/user1.png)
 
 9. **[セキュリティ]** タブを選びます。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/user2.png)
+    ![Configure single sign-on](./media/elium-tutorial/user2.png)
 
 10. **[シングル サインオン (SSO)]** セクションにスクロールし、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/user3.png)
+    ![Configure single sign-on](./media/elium-tutorial/user3.png)
 
     a. **[Verify that SAML2 authentication works for your account]\(SAML2 認証がアカウントに対して動作することを確認する\)** の値をコピーし、Azure Portal の **[Elium のドメインと URL]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。
 
@@ -187,11 +187,11 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 
     e. **SP メタデータ** ファイルで **entityID** を検索し、**entityID** の値をコピーして、Azure Portal の **[Elium のドメインと URL]** セクションの **[識別子]** テキストボックスに貼り付けます。 
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/user4.png)
+    ![Configure single sign-on](./media/elium-tutorial/user4.png)
 
     f. **SP メタデータ** ファイルで **AssertionConsumerService** を検索し、**Location** の値をコピーして、Azure Portal の **[Elium のドメインと URL]** セクションの **[応答 URL]** テキストボックスに貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/elium-tutorial/user5.png)
+    ![Configure single sign-on](./media/elium-tutorial/user5.png)
 
     g. Azure Portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、**[IdP Metadata]\(IdP メタデータ\)** テキストボックスに貼り付けます。
 
@@ -270,7 +270,7 @@ Elium で Azure AD のシングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Elium] タイルをクリックすると、Elium アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

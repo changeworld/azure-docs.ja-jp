@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74824af6f17a6c1d2638c8604edd38ffa419d607
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611369"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858121"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
@@ -100,7 +100,7 @@ GeoJSON では、Point、LineString、Polygon に加え、複数の地理空間�
 今日使われている最も一般的な CRS は、世界測地系の [WGS-84](http://earth-info.nga.mil/GandG/wgs84/) です。 WGS-84 は、GPS 装置や、多くの地図サービス (Google マップ、Bing マップの API など) で使用されています。 Azure Cosmos DB でサポートされるのは、WGS-84 CRS を使用した地理空間データのインデックスとクエリだけです。 
 
 ## <a name="creating-documents-with-spatial-data"></a>空間データを使用したドキュメントの作成
-GeoJSON の値を含んだドキュメントを作成すると、対応するコレクションのインデックス作成ポリシーに従い、空間インデックスを使用して自動的にインデックスが作成されます。 Python や Node.js など動的に型付けされる言語で Azure Cosmos DB SDK を使用している場合は、有効な GeoJSON を作成する必要があります。
+GeoJSON の値を含んだドキュメントを作成すると、対応するコンテナーのインデックス作成ポリシーに従い、空間インデックスを使用して自動的にインデックスが作成されます。 Python や Node.js など動的に型付けされる言語で Azure Cosmos DB SDK を使用している場合は、有効な GeoJSON を作成する必要があります。
 
 **地理空間データを含んだドキュメントの作成 (Node.js)**
 

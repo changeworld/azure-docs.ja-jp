@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a0f9e54b920ee2c16a141ee62d22784f75c0af6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224163"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル: Azure Active Directory と Cisco Cloud の統合
 
@@ -101,7 +101,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/ciscocloud-tutorial/tutorial_ciscocloud_samlbase.png)
 
 3. **[Cisco Cloud のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
@@ -117,19 +117,45 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
     ![[Cisco Cloud のドメインと URL] のシングル サインオン情報](./media/ciscocloud-tutorial/tutorial_ciscocloud_url1.png)
 
     **[サインオン URL]** ボックスに、「`https://<subdomain>.cloudapps.cisco.com`」と入力します。
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Cisco Cloud クライアント サポート チーム](mailto:cpr-ops@cisco.com)にお問い合わせください。
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+5. Cisco Cloud アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。
+ 次のスクリーンショットは、その例を示しています。
+
+    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/attribute.png)
+
+6. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
+
+    | 属性名 | 属性値 |
+    | ---------------| ----------------|
+    | country      |user.country |
+    | company      |user.companyname |
+
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+
+    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/tutorial_attribute_04.png)
+
+    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/tutorial_attribute_05.png)
+
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+
+    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+
+    d. **[名前空間]** 値は空白のままにします。
+
+    e. **[OK]** をクリックします。
+
+7. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
-6. **[保存]** ボタンをクリックします。
+8. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/ciscocloud-tutorial/tutorial_general_400.png)
 
-7. **Cisco Cloud** 側にシングル サインオンを構成するには、**[アプリのフェデレーション メタデータ URL]** を [Cisco Cloud サポート チーム](mailto:cpr-ops@cisco.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+9. **Cisco Cloud** 側にシングル サインオンを構成するには、**[アプリのフェデレーション メタデータ URL]** を [Cisco Cloud サポート チーム](mailto:cpr-ops@cisco.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Store との間でのデータのコピー | Microsoft Docs
+title: Azure Data Lake Storage Gen1 との間でのデータのコピー | Microsoft Docs
 description: Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します
 services: data-factory
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f86f43b4d8c474f338285abffb3c444f5ebc2d7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 97bd2081df8c90f885996629862f25cbec8fd2c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054740"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860233"
 ---
-# <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Data Factory を使用して Data Lake Store との間でデータをコピーする
+# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-azure-datalake-connector.md)
-> * [Version 2 (現在のバージョン)](../connector-azure-data-lake-store.md)
+> * [バージョン 2 (最新バージョン)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Data Lake Store コネクタ](../connector-azure-data-lake-store.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure Data Lake Storage Gen1 コネクター](../connector-azure-data-lake-store.md)に関するページを参照してください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Store との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の概要についての記事「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」が基になっています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Data Lake Storage Gen1 (旧称 Azure Data Lake Store) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の概要についての記事「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」が基になっています。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Data Lake Store から**以下のデータ ストアにデータをコピーできます。

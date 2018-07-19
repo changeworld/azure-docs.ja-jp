@@ -3,7 +3,7 @@ title: Cloud Services 共通のスタートアップ タスク | Microsoft Docs
 description: クラウド サービスの Web ロールや worker ロールで実行できる共通のスタートアップ タスクの例を示します。
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: cee23da5b089b02bfc0ef10afd60f0f2272585b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeconnoc
+ms.openlocfilehash: 0737738bfd0ab27898631263f57302d15ee11d53
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22999167"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006548"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -73,7 +73,7 @@ ms.locfileid: "22999167"
 ### <a name="example-of-managing-the-error-level"></a>エラー レベルの管理の例
 この例では *Web.config* に JSON 用の圧縮セクションと圧縮エントリを追加し、エラー処理とログ記録を示します。
 
-ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
+ここに示す [EndPoints] ファイルの関連セクションでは、[executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -125,13 +125,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>ファイアウォール規則を追加する
-Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [ServiceDefinition.csdef] ファイルの [EndPoints] 要素によって制御されます。
+Azure では、実質的に 2 つのファイアウォールがあります。 最初のファイアウォールは、仮想マシンと外部世界の間の接続を制御します。 このファイアウォールは [EndPoints] ファイルの [EndPoints] 要素によって制御されます。
 
 2 つ目のファイアウォールは、仮想マシンとその仮想マシン内の処理との間の接続を制御します。 このファイアウォールは、`netsh advfirewall firewall` コマンド ライン ツールを使用して制御できます。
 
 Azure はお使いのロール内で開始されるプロセス用のファイアウォール規則を作成します。 たとえば、サービスやプログラムを開始すると、Azure はそのサービスがインターネットと通信するのに必要なファイアウォール規則を自動的に作成します。 ただし、お使いのロール外のプロセスによって開始されるサービス (COM + サービスや Windows によってスケジュール設定されるタスクなど) を作成する場合は、そのサービスへのアクセスを許可するファイアウォール規則を手動で作成する必要があります。 これらのファイアウォール規則はスタートアップ タスクを使用して作成できます。
 
-ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
+ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [EndPoints] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -161,7 +161,7 @@ IIS **web.config** ファイルを修正することで、特定の IP アドレ
 
 **ApplicationHost.config** ファイルの **ipSecurity** セクションのロックを解除するには、ロールの開始時に実行されるコマンド ファイルを作成します。 お使いの Web ロールのルート レベルに **startup** という名前のフォルダーを作成し、このフォルダーに **startup.cmd** という名前のバッチ ファイルを作成します。 このファイルを Visual Studio プロジェクトに追加し、プロパティを **[常にコピーする]** に設定して、ファイルが常にパッケージに含まれるようにします。
 
-次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
+次のスタートアップ タスクを [EndPoints] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -219,7 +219,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell のスタートアップ タスクを作成する
-Windows PowerShell のスクリプトは [ServiceDefinition.csdef] から直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
+Windows PowerShell のスクリプトは [EndPoints] から直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
 
 PowerShell では (既定では) 未署名のスクリプトは実行されません。 スクリプトに署名しない場合は、未署名のスクリプトを実行するように PowerShell を構成する必要があります。 未署名のスクリプトを実行するには、**ExecutionPolicy** を **Unrestricted** に設定する必要があります。 使用する **ExecutionPolicy** の設定は、Windows PowerShell のバージョンに基づきます。
 
@@ -250,7 +250,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>スタートアップ タスクからのファイルをローカル ストレージに作成する
 スタートアップ タスクによって作成されたファイルをローカル ストレージ リソースに格納し、後でお使いのアプリケーションからアクセスできます。
 
-ローカル ストレージ リソースを作成するには、[ServiceDefinition.csdef] ファイルに [LocalResources] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
+ローカル ストレージ リソースを作成するには、[EndPoints] ファイルに [LocalResources] セクションを追加した後で [LocalStorage] 子要素を追加します。 ローカル ストレージ リソースに一意の名前を付与し、お使いのスタートアップ タスク用に適切なサイズを設定します。
 
 スタートアップ タスクにローカル ストレージ リソースを使用するには、ローカル ストレージ リソースの場所を参照する環境変数を作成する必要があります。 これにより、スタートアップ タスクとアプリケーションがローカル ストレージ リソースのファイルを読み書きできます。
 
@@ -304,7 +304,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>エミュレーターまたはクラウドで実行する
 クラウドとコンピューティング エミュレーターで動作するスタートアップ タスクを区別することができます。 たとえば、エミュレーターで実行されている場合にのみ、SQL データの新しいコピーを使用するように設定できます。 または、エミュレーターで実行する場合は不要な、クラウドのパフォーマンスを最適化する操作を実行することもできます。
 
-コンピューティング エミュレーターとクラウドで別の操作を実行するには、[ServiceDefinition.csdef] ファイルに環境変数を作成します。 その後、スタートアップ タスク内の値に対する環境変数をテストします。
+コンピューティング エミュレーターとクラウドで別の操作を実行するには、[EndPoints] ファイルに環境変数を作成します。 その後、スタートアップ タスク内の値に対する環境変数をテストします。
 
 環境変数を作成するには、[Variable]/[RoleInstanceValue] 要素を追加し、XPath 値 `/RoleEnvironment/Deployment/@emulated` を作成します。 **%ComputeEmulatorRunning%** 環境変数の値は、コンピューティング エミュレーターで実行される場合は `true`、クラウドで実行される場合は `false` になります。
 
@@ -499,14 +499,14 @@ EXIT %ERRORLEVEL%
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>ロールでアクセスする必要があるファイルをローカル ストレージに格納する
 スタートアップ タスクの実行時にファイルをコピーまたは作成し、後からお使いのロールでアクセスするには、そのファイルをローカル ストレージに配置する必要があります。 [前のセクション](#create-files-in-local-storage-from-a-startup-task)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラウドの [サービス モデルとパッケージ](cloud-services-model-and-package.md)
 
 [タスク](cloud-services-startup-tasks.md) の動作について説明します。
 
 クラウド サービス パッケージを[作成してデプロイ](cloud-services-how-to-create-deploy-portal.md)します。
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[EndPoints]: cloud-services-model-and-package.md#csdef
 [Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime

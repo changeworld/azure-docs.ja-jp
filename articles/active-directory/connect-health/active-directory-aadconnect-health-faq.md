@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 957a68c80f9fcc07ef6f84b2b08f344745a58d95
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282200"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866026"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -33,7 +33,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 次の表は、役割と、サポートされているオペレーティング システムのバージョンの一覧です。
 
-|役割| オペレーティング システム/バージョン|
+|Role| オペレーティング システム/バージョン|
 |--|--|
 |Active Directory フェデレーション サービス (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | バージョン 1.0.9125 以上|
@@ -62,8 +62,16 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 **Q: Azure AD Connect Health は、Azure Germany Cloud をサポートしていますか。**
 
-Azure AD Connect Health には、Azure Germany 向けの[インストール](active-directory-aadconnect-health-agent-install.md)が用意されています。 German Cloud の顧客のデータはすべて、Azure Germany Cloud 内に保持されています。
+[同期エラー レポート機能](active-directory-aadconnect-health-sync.md#object-level-synchronization-error-report-preview)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。 
 
+| ロール | 機能 | German Cloud でサポートされている |
+| ------ | --------------- | --- |
+| Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ  |
+|  | 同期エラー レポート | [はい] |
+| Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
+| Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
+
+同期のための Connect Health のエージェントの接続を確保するには、必要に応じて[インストール要件](active-directory-aadconnect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を構成します。   
 
 ## <a name="installation-questions"></a>インストールに関する質問
 

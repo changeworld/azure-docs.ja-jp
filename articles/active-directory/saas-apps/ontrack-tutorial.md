@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: aaf36af70b1d868589d52fd212beb5395202e972
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bf0fdb75a3091380557e1fbb2d69ed59aeb130bf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225730"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル: Azure Active Directory と OnTrack の統合
 
@@ -128,7 +128,7 @@ OnTrack で Azure AD のシングル サインオンを構成してテストす�
 
 5. OnTrack アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[Configure Single Sign-On]](./media/ontrack-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/ontrack-tutorial/tutorial_attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -142,9 +142,9 @@ OnTrack で Azure AD のシングル サインオンを構成してテストす�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/ontrack-tutorial/tutorial_attribute_04.png) 
+    ![Configure single sign-on](./media/ontrack-tutorial/tutorial_attribute_04.png) 
 
-    ![[Configure Single Sign-On]](./media/ontrack-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ontrack-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -233,7 +233,7 @@ OnTrack で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [OnTrack] タイルをクリックすると、自動的に OnTrack アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

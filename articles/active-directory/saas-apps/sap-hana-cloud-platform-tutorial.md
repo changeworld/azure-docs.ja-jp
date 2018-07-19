@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 2f3c3c8db93ae638cfc0bf82ee26ff2e26646d49
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 176ed1718818b24866620d86d7eff4d9af1d378f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220276"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
@@ -41,7 +41,7 @@ SAP Cloud Platform と Azure AD の統合を構成するには、次のものが
 - Azure AD サブスクリプション
 - SAP Cloud Platform でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、SAP Cloud Platform に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、SAP Cloud Platform に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 >[!IMPORTANT]
 >シングル サインオンをテストするには、独自のアプリケーションをデプロイするか、SAP Cloud Platform アカウントでアプリケーションをサブスクライブする必要があります。 このチュートリアルでは、アプリケーションはアカウントにデプロイされます。

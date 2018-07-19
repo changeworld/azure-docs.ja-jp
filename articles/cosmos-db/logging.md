@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612216"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857101"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -42,7 +42,7 @@ Azure Cosmos DB アカウントの監視方法を説明する前に、ログと�
 
 Azure アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析に利用できるサブスクリプション ログです。 アクティビティ ログは、サブスクリプションのコントロール プレーン イベントを管理カテゴリで報告します。 アクティビティ ログを使うと、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 
 
-アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("_コントロール プレーン_")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作には、コレクションの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("_データ プレーン_")。 診断ログでのデータ プレーン操作の例としては、Delete、Insert、ReadFeed などがあります。
+アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("_コントロール プレーン_")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作には、コンテナーの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("_データ プレーン_")。 診断ログでのデータ プレーン操作の例としては、Delete、Insert、ReadFeed などがあります。
 
 アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。 アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。 ただし、診断ログでは、多くの場合、個人データがこれらのログから削除されるため、実際は限定的である可能性があります。 呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
 
@@ -354,7 +354,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>Log Analytics ログを表示する
 
-ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コレクションの診断ログは 2 時間以内に Log Analytics に転送されます。 ログ記録を有効にした直後に Log Analytics を見ても、データは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
+ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コンテナーの診断ログは 2 時間以内に Log Analytics に転送されます。 ログ記録を有効にした直後に Log Analytics を見ても、データは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
 
 ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** を選び、次の図のようにワークスペース名を選択します。 **[OMS ワークスペース]** ページが表示されます。
 
@@ -446,7 +446,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
 | **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
-| **resourceType** | **ResourceType** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Collection、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
+| **resourceType** | **ResourceType** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
 | **statusCode** | **statusCode_s** | 操作の応答状態。 |
 | **requestResourceId** | **ResourceId** | 要求に関連するリソース ID。 値は、実行された操作によって databaseRid、collectionRid、または documentRid を示す可能性があります。|
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5c2971a59bbaa241a2e1eb4ecca0db7e8b95a885
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227134"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
 
@@ -141,29 +141,29 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
 8. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/configure1.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/configure1.png)
 
 9. ナビゲーション ウィンドウの **[SETTINGS]\(設定\)** まで下へスクロールし、**[Identity]\(ID\)** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-admin-sso.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso.png)
 
 10. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
     > Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)にお問い合わせください。 
 
 11. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
-      ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-enable-saml.png)
+      ![Configure single sign-on](./media/salesforce-tutorial/sf-enable-saml.png)
 12. SAML のシングル サインオン設定を構成するには、 **[新規]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-admin-sso-new.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
 13. **[SAML シングル サインオン設定の編集]** ページで、次の構成を行います。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-saml-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-saml-config.png)
 
     a. **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
 
@@ -194,15 +194,15 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
 14. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-my-domain.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-my-domain.png)
 
 15. **[認証の構成]** セクションまで下へスクロールし、**[編集]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-edit-auth-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
 16. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[Login Page]\(ログイン ページ\)** をオンにし、**[Save]\(保存\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/salesforce-tutorial/sf-auth-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > 複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始すると、サインインに使用する認証サービスを選択するよう要求されます。 このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに**しておいてください。
@@ -278,7 +278,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Salesforce] タイルをクリックすると、Salesforce アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

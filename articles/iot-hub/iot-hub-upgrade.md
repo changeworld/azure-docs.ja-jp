@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 472115f166adc5385b6f46b2f3ac5ef75a6cde92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f60b7d30c073c49d5e0a7d35e7263c2181ed744
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637278"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903066"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>IoT Hub のアップグレード方法
 
@@ -45,7 +45,7 @@ IoT Hub をダウングレードする場合は、ユニットを削除し、IoT
 4. Hub のユニット数を変更するには、**[IoT Hub ユニット]** の下に新しい値を入力します。 
 5. **[保存]** を選択して変更を保存します。 
 
-IoT Hub が調整されますが、構成は変更されません。 
+IoT Hub が調整されますが、構成は変更されません。 Basic レベルの IoT Hub に対するパーティション数の制限は 8 であることに注意してください。 Basic レベルから Standard レベルに移行してもこの制限は変わりません。
 
 ## <a name="next-steps"></a>次の手順
 

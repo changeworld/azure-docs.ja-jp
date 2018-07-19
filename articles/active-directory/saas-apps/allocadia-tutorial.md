@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 5aacb6a1df10b32fe5310138d19532eff249c677
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a25fbd4daaa4d1fb09d788ba7ab61392ffb100f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222585"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>チュートリアル: Azure Active Directory と Allocadia の統合
 
@@ -102,15 +102,15 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **[Allocadia]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_samlbase.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_samlbase.png)
 
 3. **[Allocadia Domain and URLs] \(Allocadia のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_url.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_url.png)
 
     a. **[識別子]** テキスト ボックスに、次のパターンを使用して URL を入力します。 
        
@@ -129,7 +129,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 
 4. Allocadia アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_attributes.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_attributes.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -141,11 +141,11 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_04.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_05.png)
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
  
@@ -155,12 +155,12 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_certificate.png) 
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_certificate.png) 
 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_general_400.png)
 
 8. **Allocadia** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [Allocadia サポート チーム](mailTo:support@allocadia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -217,7 +217,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Allocadia]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/allocadia-tutorial/tutorial_allocadia_app.png) 
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -238,7 +238,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Allocadia のタイルをクリックすると、自動的に Allocadia アプリケーションにサインオンします。
-アクセス パネルの詳細については、「[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)」を参照してください
+アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください
 
 ## <a name="additional-resources"></a>その他のリソース
 

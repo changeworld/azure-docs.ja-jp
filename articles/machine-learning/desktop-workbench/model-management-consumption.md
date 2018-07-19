@@ -7,23 +7,24 @@ ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: f87f865ef6d2c3403903a1bdcc402c01c3e9f939
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831991"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38973174"
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
 
 [Azure Machine Learning Web サービス](model-management-service-deploy.md)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。
 
-API キーを使用できるのは、クラスター デプロイ モードだけであることに注意してください。 ローカルの Web サービスにはキーがありません。
+> [!NOTE]
+> API キーを使用できるのは、クラスター デプロイ モードだけであることに注意してください。 ローカルの Web サービスにはキーがありません。
 
 ## <a name="service-deployment-options"></a>サービス デプロイのオプション
 Azure Machine Learning Web サービスは、実稼働とテストの両方のシナリオでクラウド ベースのクラスターにデプロイでき、Docker エンジンを使用してローカル ワークステーションにデプロイできます。 どちらのケースでも、予測モデルの機能は同じです。 クラスター ベースのデプロイでは、Azure Container Service に基づいて、スケーラブルでパフォーマンスの高いソリューションが提供されます。一方、ローカル デプロイは、デバッグに使用できます。 
@@ -72,11 +73,11 @@ HTTP 要求を作成するときは、Authorization ヘッダーにキーを使�
 1. Visual Studio で、新しいコンソール アプリを作成します。 
     * メニューで、[ファイル]、[新規作成]、[プロジェクト] の順にクリックします。
     * Visual Studio C# で、[Windows Class Desktop]\(ウィンドウ クラス デスクトップ\) をクリックし、[コンソール アプリ] を選択します。
-2. プロジェクトの名前として「_MyFirstService_」と入力し、[OK] をクリックします。
-3. [プロジェクト参照] で、参照を _System.Net_ と _System.Net.Http_ に設定します。
-4. [ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順にクリックし、Microsoft.AspNet.WebApi.Client パッケージをインストールします。
-5. Program.cs ファイルを開き、コードを次のコードに置き換えます。
-6. _SERVICE_URL_ および _API_KEY_ パラメーターを Web サービスの情報に更新します。
+2. プロジェクトの名前として「`MyFirstService`」と入力し、[OK] をクリックします。
+3. [プロジェクトの参照] で、参照を `System.Net` と `System.Net.Http` に設定します。
+4. [ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順にクリックし、**Microsoft.AspNet.WebApi.Client** パッケージをインストールします。
+5. **Program.cs** ファイルを開き、コードを次のコードに置き換えます。
+6. `SERVICE_URL` パラメーターと `API_KEY` パラメーターを Web サービスからの情報に変更します。
 7. プロジェクトを実行します。
 
 ```csharp

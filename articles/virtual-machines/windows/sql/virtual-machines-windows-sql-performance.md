@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/19/2018
 ms.author: jroth
-ms.openlocfilehash: 9d3fbbab76f16a8546c431d5acf913bf419edeb4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7a24bde6cc34befee7de3bcbf13b96c8b641af2
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798157"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888910"
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
@@ -28,7 +28,7 @@ ms.locfileid: "31798157"
 
 この記事では、Microsoft Azure Virtual Machine で SQL Server のパフォーマンスを最適化するためのガイダンスを紹介します。 Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。 ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-[Azure Portal でプロビジョニングされる SQL Server イメージ](quickstart-sql-vm-create-portal.md)は、ストレージ構成のベスト プラクティスに従います。 ストレージの構成方法の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 プロビジョニングした後で、この記事で説明するその他の最適化を適用することを検討します。 ワークロードに関する選択を基準に、テストを通して検証します。
+[Azure portal でプロビジョニングされる SQL Server イメージ](quickstart-sql-vm-create-portal.md)は、ストレージ構成のベスト プラクティスに従います。 ストレージの構成方法の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 プロビジョニングした後で、この記事で説明するその他の最適化を適用することを検討します。 ワークロードに関する選択を基準に、テストを通して検証します。
 
 > [!TIP]
 > この記事は、Azure VM で SQL Server の *最適な* パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
@@ -39,7 +39,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 | 領域 | 最適化 |
 | --- | --- |
-| [VM サイズ](#vm-size-guidance) |SQL Enterprise Edition: [DS3](../sizes-general.md) 以上<br/><br/>SQL Standard Edition および Web Edition: [DS2](../sizes-general.md) 以上 |
+| [VM サイズ](#vm-size-guidance) |SQL Enterprise Edition: [DS3_v2](../sizes-general.md) 以上。<br/><br/>SQL Standard Edition および Web Edition: [DS2_v2](../sizes-general.md) 以上。 |
 | [Storage](#storage-guidance) |[Premium Storage](../premium-storage.md) を使用します。 標準ストレージは、開発/テストにのみ使用することをお勧めします。<br/><br/>[ストレージ アカウント](../../../storage/common/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで [Azure geo 冗長ストレージ](../../../storage/common/storage-redundancy.md) (geo レプリケーション) を無効にします。 |
 | [ディスク](#disks-guidance) |最小で 2 つの [P30 ディスク](../premium-storage.md#scalability-and-performance-targets)を使用します (1 つはログ ファイル用、1 つはデータ ファイルと TempDB 用。または 2 つ以上のディスクをストライピングし、すべてのファイルを単一のボリュームに格納します)。<br/><br/>データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB データ ファイルをホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>重要: Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを向上させます。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。 |
 | [I/O](#io-guidance) |データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースの自動拡張を制限します。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。 |
@@ -49,10 +49,12 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 ## <a name="vm-size-guidance"></a>VM サイズのガイダンス
 
-パフォーマンス重視のアプリケーションでは、次の[仮想マシン サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用することをお勧めします。
+パフォーマンス重視のアプリケーションでは、次の[仮想マシン サイズ](../sizes.md)を使用することをお勧めします。
 
-* **SQL Server Enterprise Edition**: DS3 以上
-* **SQL Server Standard Edition または Web Edition**: DS2 以上
+* **SQL Server Enterprise Edition:** DS3_v2 以上
+* **SQL Server Standard Edition または Web Edition**: DS2_v2 以上
+
+[DSv2 シリーズ](../sizes-general.md#dsv2-series)の VM では、Premium Storage をサポートしています。最適なパフォーマンスを得るには、これをお勧めします。 ここで推奨されるサイズが基準ですが、選択する実際のマシン サイズはワークロードの必要に応じて異なります。 DSv2 シリーズの VM がさまざまなワークロードに適している汎用 VM であるのに対して、その他のマシン サイズは特定のワークロードの種類用に最適化されています。 たとえば、[M シリーズ](../sizes-memory.md#m-series)では、最大の SQL Server ワークロードに対して最大の vCPU 数とメモリを提供します。 [GS シリーズ](../sizes-memory.md#gs-series)と [DSv2 シリーズ 11-15](../sizes-memory.md#dsv2-series-11-15) は、大量のメモリ要件のために最適化されています。 また、これらのシリーズはどちらも、[制約付きの主要なサイズ](../../windows/constrained-vcpu.md)で利用することができ、低いコンピューティング要求のワークロードの場合は節約できます。 [Ls シリーズ](../sizes-storage.md)のマシンは、高いディスク スループットと IO 用に最適化されています。 特定の SQL Server ワークロードを考慮し、VM シリーズとサイズの選択に適用することが重要です。
 
 ## <a name="storage-guidance"></a>ストレージのガイダンス
 
@@ -110,7 +112,7 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
     New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false 
     ```
 
-  * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 Windows 8 および Windows Server 2012 の時点で、このオプションは使用されていません。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)に関するページでサポートに関する声明をご覧ください。
+  * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 Windows 8 および Windows Server 2012 の時点で、このオプションは非推奨となっています。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)に関するページでサポートに関する声明をご覧ください。
 
   * [記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) を [SQL Server フェールオーバー クラスター インスタンス](virtual-machines-windows-portal-sql-create-failover-cluster.md)のようなシナリオで使用している場合は、単一プールを構成する必要があります。 その単一プール上にはさまざまなボリュームを作成できますが、それらのボリュームはすべて、同一のキャッシング ポリシーのような同じ特性を共有することになります。
 

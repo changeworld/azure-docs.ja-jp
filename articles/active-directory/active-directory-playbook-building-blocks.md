@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451701"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049471"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -157,9 +157,10 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | ServiceNow の構成手順に従います。 |  |
 | ServiceNow アプリの [プロビジョニング] ブレードで "自動" プロビジョニングを有効にします。 | [新しい Azure Portal でエンタープライズ アプリケーションのユーザー アカウント プロビジョニングを管理する](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | プロビジョニングが完了するまで数分待ちます。  その間にプロビジョニング レポートを確認できます。 |  |
-| アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
+| アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 | 作成したアプリケーションのタイルをクリックします。 アクセスを確認します。 |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージ アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -188,10 +189,11 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | 「前提条件」に示されているグループにアプリを割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | アクセス権を持つテスト ユーザーとして https://myapps.microsoft.com/ にログインします。 |  |
-| 作成したアプリケーションのタイルをクリックします。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| アプリケーションの資格情報を指定します。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| 作成したアプリケーションのタイルをクリックします。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| アプリケーションの資格情報を指定します。 | [アクセス パネルとは: パスワード ベースの SSO (ID プロビジョニングなし)](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | ブラウザーを閉じて再度ログインします。 今回は、ユーザーがアプリケーションにシームレスにアクセスできるはずです。 |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージ アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -223,7 +225,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | パスワード SSO を構成します | [新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する: パスワードベースのサインオン](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | 「前提条件」に示されているグループにアプリを割り当てるとともに、グループに資格情報を割り当てます。 | [Azure Active Directory でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](manage-apps/assign-user-or-group-access-portal.md) |
 | **同じ共有アカウント**としてアプリにアクセスする別のユーザーとしてログインします。  |  |
-| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージ アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
+| 必要に応じて、アプリケーションの使用状況レポートを確認することができます。 多少待ち時間が生じるため、レポートにトラフィックが反映されるまでしばらく待つ必要があります。 | 
+  [Azure Active Directory ポータルのサインイン アクティビティ レポート: マネージド アプリケーションの使用状況](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md) |
 
 
 ### <a name="considerations"></a>考慮事項
@@ -308,7 +311,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | SaaS アプリケーション (フェデレーション SSO またはパスワード SSO) が既に構成されていること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) |
 | 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
 | グループ所有者の資格情報が利用可能であること。 | [Azure Active Directory のグループによるリソースへのアクセス管理](fundamentals/active-directory-manage-groups.md) |
-| アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
+| アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>手順
@@ -318,7 +321,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | アプリケーションへのアクセスが許可されているグループを特定し、そのグループの所有者を構成します。| [Azure Active Directory でグループのメンバーを管理する](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | グループ所有者としてログインし、アクセス パネルの [グループ] タブでグループのメンバーシップを確認します。 | [Azure Active Directory グループ管理ページ](https://account.activedirectory.windowsazure.com/r#/groups) |
 | テストするインフォメーション ワーカーを追加します。 |  |
-| インフォメーション ワーカーとしてログインし、タイルが利用可能であることを確認します。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
+| インフォメーション ワーカーとしてログインし、タイルが利用可能であることを確認します。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>考慮事項
 
@@ -332,7 +335,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | SaaS アプリケーション (フェデレーション SSO またはパスワード SSO) が既に構成されていること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) |
 | 1 番目のアプリケーションへのアクセス権が割り当てられているクラウド グループを把握していること。 | 構成要素: [SaaS フェデレーション SSO 構成](#saas-federated-sso-configuration) <br/>[Azure Active Directory でグループを作成し、メンバーを追加する](fundamentals/active-directory-groups-create-azure-portal.md) |
-| アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](active-directory-saas-access-panel-introduction.md) |
+| アプリにアクセスするインフォメーション ワーカーの資格情報を把握していること。 | [アクセス パネルとは](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>手順
@@ -380,7 +383,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](active-directory-passwords-update-your-own-password.md) |
+| テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](user-help/active-directory-passwords-update-your-own-password.md) |
 | オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](authentication/howto-sspr-writeback.md) |
 | この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](authentication/howto-sspr-writeback.md) |
 
@@ -395,7 +398,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 2. で構成した "セルフサービスによるパスワードのリセット" データを指定します。 | https://aka.ms/ssprsetup |
 | ブラウザーを閉じます。 |  |
 | 手順 4. で使用したインフォメーション ワーカーとしてログイン プロセスを最初からやり直します。 |  |
-| パスワードをリセットします。 | [自分のパスワードを更新する: パスワードをリセットする](active-directory-passwords-update-your-own-password.md) |
+| パスワードをリセットします。 | [自分のパスワードを更新する: パスワードをリセットする](user-help/active-directory-passwords-update-your-own-password.md) |
 | 新しいパスワードで Azure AD とオンプレミス リソースにログインします。 |  |
 
 ### <a name="considerations"></a>考慮事項
@@ -428,7 +431,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 ### <a name="considerations"></a>考慮事項
 
 1. この構成要素の PoC 手順では、すべてのログイン ユーザーの MFA を明示的に設定しています。 ほかにも、条件付きアクセスや、より的を絞ったシナリオで MFA を利用する Identity Protection などのツールがあります。 この点については、概念実証から運用環境への移行時に考慮することになります。
-2. この構成要素の PoC 手順では、MFA 方式として明示的に電話を使用しています。 POC から運用段階への切り替え時には可能な限り、第 2 の認証要素として [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) などのアプリケーションを使うようお勧めします。
+2. この構成要素の PoC 手順では、MFA 方式として明示的に電話を使用しています。 POC から運用段階への切り替え時には可能な限り、第 2 の認証要素として [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) などのアプリケーションを使うようお勧めします。
 詳細情報: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>SaaS アプリケーション向けの MFA での条件付きアクセス
@@ -553,7 +556,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | --- | --- |
 | エンタープライズ PKI からのユーザー証明書がプロビジョニングされているデバイス (Windows、iOS、Android のいずれか)。 | [ユーザー証明書をデプロイする](https://msdn.microsoft.com/library/cc770857.aspx) |
 | ADFS とフェデレーションされた Azure AD ドメイン。 | [Azure AD Connect とフェデレーション](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 証明書サービスの概要](https://technet.microsoft.com/library/hh831740.aspx)|
-| (iOS デバイスの場合) Microsoft Authenticator アプリがインストールされていること。 | [Microsoft Authenticator アプリの概要](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| (iOS デバイスの場合) Microsoft Authenticator アプリがインストールされていること。 | [Microsoft Authenticator アプリの概要](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>手順
 

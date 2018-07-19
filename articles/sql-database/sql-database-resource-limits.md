@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750953"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345721"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限の概要 
 
@@ -27,10 +27,11 @@ ms.locfileid: "36750953"
 | サーバーあたりのデータベース数 | 5000 |
 | 任意のリージョンにおけるサブスクリプションあたりの既定のサーバー数 | 20 |
 | 任意のリージョンにおけるサブスクリプションあたりの最大サーバー数 | 200 |
+| サーバーあたりの DTU/eDTU クォータ | 54,000 |
 |||
 
 > [!NOTE]
-> 既定量よりも多いサーバー クォータを取得する場合は、Azure Portal で、目的のサブスクリプションに対して、発行の種類を “Quota” として新しいサポート要求を送信できます。
+> 既定量よりも多い DTU/eDTU クオータまたはサーバーを取得する場合は、Azure Portal で、目的のサブスクリプションに対して、発行の種類を [クオータ] として新しいサポート要求を送信できます。 サーバーあたりの DTU/eDTU クオータとデータベース制限には、サーバーあたりのエラスティック プールの数が含まれます。 
 
 > [!IMPORTANT]
 > データベースの数がサーバーあたりの制限に近づくと、次の状況が発生します。
@@ -47,7 +48,7 @@ ms.locfileid: "36750953"
 - データベースまたエラスティック プールのパフォーマンス レベルを上げて、より多くのコンピューティング リソースをデータベースに提供します。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 使用済みのデータベース容量が最大サイズの上限に達すると、データのサイズが増えるデータベースの挿入および更新は失敗し、クライアントは[エラー メッセージ](sql-database-develop-error-messages.md)を受け取ります。 データベースの SELECTS と DELETES は引き続き成功します。
 

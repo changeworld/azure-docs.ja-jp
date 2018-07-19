@@ -11,18 +11,18 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526520"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857946"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
 入れ子になった仮想化は、Dv3 および Ev3 シリーズの Azure 仮想マシンでサポートされています。 この機能により、開発、テスト、トレーニング、デモなど、各環境のシナリオに柔軟に対応できます。 
 
-この記事では、Azure VM で入れ子になった仮想化を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
+すべての Dv3 および Ev3 シリーズの仮想マシンは、追加構成なしで入れ子になった仮想化をサポートします。  この記事では、Azure VM で Hyper-V を有効にして、ゲスト仮想マシンへのインターネット接続を構成する手順について説明します。
 
 ## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Dv3 または Ev3 シリーズ の Azure VM を作成する
 

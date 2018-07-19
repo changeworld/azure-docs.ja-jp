@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用した Azure Data Lake Store へのデータの読み込み | Microsoft Docs
-description: Azure Data Factory を使用して Azure Data Lake Store にデータをコピーします
+title: Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み | Microsoft Docs
+description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 にデータをコピーします
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055519"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857203"
 ---
-# <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Store へのデータの読み込み
+# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
-[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake では、任意のサイズ、型、および取り込み速度のデータをキャプチャできます。 データは、運用分析や調査分析のために 1 か所でキャプチャされます。
+[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (旧称 Azure Data Lake Store) は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake では、任意のサイズ、型、および取り込み速度のデータをキャプチャできます。 データは、運用分析や調査分析のために 1 か所でキャプチャされます。
 
 Azure Data Factory は、完全管理型のクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで Azure Data Lake を設定し、分析ソリューションを構築する際の時間を節約できます。
 

@@ -10,17 +10,17 @@ ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
 ms.component: msi
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930988"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906218"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
@@ -60,7 +60,7 @@ Azure IaaS でサポートされているすべての Linux ディストリビ�
 メモ: MSI VM 拡張機能では、次の Linux ディストリビューションだけがサポートされています。
 - CoreOS Stable
 - CentOS 7.1
-- RedHat 7.2
+- Red Hat 7.2
 - Ubuntu 15.04
 - Ubuntu 16.04
 
@@ -128,7 +128,8 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 - VM に対する VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。 
 - "存在しない" ユーザー割り当て ID を追加すると、VM は失敗します。 
 - 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当て ID の作成はサポートされていません。
-- ユーザー割り当て ID の名前は、エンド ツー エンドのシナリオで 24 文字に制限されています。 ユーザー割り当て ID の名前が 24 文字より長いと、割り当ては失敗します。  
+- ユーザー割り当て ID の名前は、エンド ツー エンドのシナリオで 24 文字に制限されています。 ユーザー割り当て ID の名前が 24 文字より長いと、割り当ては失敗します。
+- マネージド ID 仮想マシン拡張機能を使用している場合にサポートされるユーザー割り当て済みマネージド ID の制限値は 32 個です。 マネージド ID 仮想マシン拡張機能を使用していない場合にサポートされる制限値は 512 です。  
 - 2 番目のユーザー割り当て ID を追加すると、VM 拡張機能のトークンを要求するときに、clientID を使用できなくなる場合があります。 この問題を軽減するには、次の 2 つのバッシュ コマンドを使用して、MSI VM 拡張機能を再起動します。
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
