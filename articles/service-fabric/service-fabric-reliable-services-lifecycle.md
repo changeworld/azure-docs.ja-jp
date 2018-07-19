@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 42833323cbebf25ce2ca14e6ab7ec4fa5adbfd15
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206946"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044579"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 2. 次に、2 つのことが並行して行われます。
     - `StatelessService.CreateServiceInstanceListeners()` が呼び出され、返されたリスナーはすべて開かれます。 `ICommunicationListener.OpenAsync()` が各リスナーに呼び出されます。
     - サービスの `StatelessService.RunAsync()` メソッドが呼び出されます。
-3. 存在する場合は、サービスの `StatelessService.OnOpenAsync()` メソッドが呼び出されます。 この呼び出しの上書きは一般的ではありませんが利用可能です。 この時点で、拡張サービス初期化タスクを開始できます。
+3. 存在する場合は、サービスの `StatelessService.OnOpenAsync()` メソッドが呼び出されます。 この呼び出しのオーバーライドは一般的ではありませんが利用可能です。 この時点で、拡張サービス初期化タスクを開始できます。
 
 また、リスナーを作成して開く呼び出しと **RunAsync** の順番は調整されないことに注意してください。 **RunAsync** が開始される前にリスナーが開くことがあります。 同様に、通信リスナーが開く前、または構築される前に **RunAsync** が呼び出される場合もあります。 同期が必要な場合、実装者がこれを行います。 一般的な解決策をいくつか次に示します。
 
@@ -71,15 +71,18 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 ステートフル サービスのパターンはステートレス サービスに似ていますが、変更点がいくつかあります。 ステートフル サービスを開始する場合のイベントの順序は次の通りです。
 
 1. サービスが構築されます。
-2. `StatefulServiceBase.OnOpenAsync()` が呼び出されます この呼び出しがサービスで上書きされることはほとんどありません。
+2. `StatefulServiceBase.OnOpenAsync()` が呼び出されます この呼び出しがサービスでオーバーライドされることはほとんどありません。
 3. 次のことが並行して行われます。
     - `StatefulServiceBase.CreateServiceReplicaListeners()` が呼び出されます。 
       - サービスがプライマリ サービスである場合、返されるすべてのリスナーは開かれます。 `ICommunicationListener.OpenAsync()` が各リスナーに呼び出されます。
       - サービスがセカンダリ サービスである場合、`ListenOnSecondary = true` とマークされているリスナーのみが開かれます。 開いているリスナーがセカンダリにあるのは、あまり一般的ではありません。
     - サービスが現在プライマリである場合、サービスの `StatefulServiceBase.RunAsync()` メソッドが呼び出されます。
-4. すべてのレプリカ リスナーの `OpenAsync()` 呼び出しが完了して、`RunAsync()` が呼び出されると、`StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスで上書きされることはほとんどありません。
+4. すべてのレプリカ リスナーの `OpenAsync()` 呼び出しが完了して、`RunAsync()` が呼び出されると、`StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスでオーバーライドされることはほとんどありません。
 
-ステートレス サービスと同様に、リスナーが作成され開かれる順序と **RunAsync** が呼び出されるタイミングは調整されません。 調整が必要な場合、解決策はほぼ同じです。 ステートフル サービスでは 1 つ追加のケースがあります。 通信リスナーが受信する呼び出しで、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) に保管されている情報が必要です。 Reliable Collection が読み込み可能または書き込み可能になる前、および **RunAsync** が起動する前に通信リスナーが開く可能性があるため、追加の調整が必要となります。 最も簡単で一般的な解決策は、クライアントに要求の再試行を知らせるエラー コードを通信リスナーが返すことです。
+ステートレス サービスと同様に、リスナーが作成され開かれる順序と **RunAsync** が呼び出されるタイミングは調整されません。 調整が必要な場合、解決策はほぼ同じです。 ステートフル サービスでは 1 つ追加のケースがあります。 通信リスナーが受信する呼び出しで、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) に保管されている情報が必要です。
+
+   > [!NOTE]  
+   > Reliable Collection が読み込み可能または書き込み可能になる前、および **RunAsync** が起動する前に通信リスナーが開く可能性があるため、追加の調整が必要となります。 最も簡単で一般的な解決策は、クライアントに要求の再試行を知らせるエラー コードを通信リスナーが返すことです。
 
 ## <a name="stateful-service-shutdown"></a>ステートフル サービスのシャットダウン
 ステートレス サービスと同様に、シャットダウン中のライフサイクル イベントは起動時と同じですが、順序が逆です。 ステートフル サービスのシャットダウン時には、次のイベントが発生します。
@@ -87,12 +90,12 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 1. 次のことが並行して行われます。
     - 開いているすべてのリスナーが閉じられます。 `ICommunicationListener.CloseAsync()` が各リスナーに呼び出されます。
     - `RunAsync()` に渡されたキャンセル トークンが取り消されます。 キャンセル トークンの `IsCancellationRequested` プロパティをチェックすると true が返され、呼び出された場合、トークンの `ThrowIfCancellationRequested` メソッドは `OperationCanceledException` をスローします。
-2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスで上書きされることはほとんどありません。
+2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスでオーバーライドされることはほとんどありません。
 
    > [!NOTE]  
    > このレプリカがプライマリ レプリカの場合にのみ、**RunAsync** が完了するのを待つ必要があります。
 
-3. `StatefulServiceBase.OnChangeRoleAsync()` メソッドが完了すると、`StatefulServiceBase.OnCloseAsync()` メソッドが呼び出されます。 この呼び出しの上書きは一般的ではありませんが利用可能です。
+3. `StatefulServiceBase.OnChangeRoleAsync()` メソッドが完了すると、`StatefulServiceBase.OnCloseAsync()` メソッドが呼び出されます。 この呼び出しのオーバーライドは一般的ではありませんが利用可能です。
 3. `StatefulServiceBase.OnCloseAsync()` が完了すると、サービス オブジェクトは破棄されます。
 
 ## <a name="stateful-service-primary-swaps"></a>ステートフル サービスのプライマリ スワップ
@@ -104,7 +107,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 1. 次のことが並行して行われます。
     - 開いているすべてのリスナーが閉じられます。 `ICommunicationListener.CloseAsync()` が各リスナーに呼び出されます。
     - `RunAsync()` に渡されたキャンセル トークンが取り消されます。 キャンセル トークンの `IsCancellationRequested` プロパティをチェックすると true が返され、呼び出された場合、トークンの `ThrowIfCancellationRequested` メソッドは `OperationCanceledException` をスローします。
-2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスで上書きされることはほとんどありません。
+2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスでオーバーライドされることはほとんどありません。
 
 ### <a name="for-the-secondary-thats-promoted"></a>昇格されているセカンダリの場合
 同様に、Service Fabric では、昇格されているセカンダリ レプリカで送信中のメッセージのリッスンを開始して、完了する必要があるバックグラウンド タスクをすべて開始する必要があります。 その結果、レプリカ自体が既に存在している点以外、この手順はサービスの作成時と似たものになります。 次の API が呼び出されます。
@@ -112,7 +115,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 1. 次のことが並行して行われます。
     - `StatefulServiceBase.CreateServiceReplicaListeners()` が呼び出され、返されたリスナーはすべて開かれます。 `ICommunicationListener.OpenAsync()` が各リスナーに呼び出されます。
     - サービスの `StatefulServiceBase.RunAsync()` メソッドが呼び出されます。
-2. すべてのレプリカ リスナーの `OpenAsync()` 呼び出しが完了して、`RunAsync()` が呼び出されると、`StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスで上書きされることはほとんどありません。
+2. すべてのレプリカ リスナーの `OpenAsync()` 呼び出しが完了して、`RunAsync()` が呼び出されると、`StatefulServiceBase.OnChangeRoleAsync()` が呼び出されます。 この呼び出しがサービスでオーバーライドされることはほとんどありません。
 
 ### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>ステートフル サービスのシャットダウンとプライマリの降格における一般的な問題
 Service Fabric は、さまざまな理由でステートフル サービスのプライマリを変更します。 最も一般的な理由は、[クラスターの再分散](service-fabric-cluster-resource-manager-balancing.md)と[アプリケーションのアップグレード](service-fabric-application-upgrade.md)です。 これらの操作の際 (および通常のサービス シャットダウンの際にサービスが削除されたかどうかを確認する場合) には、サービスが `CancellationToken` に対応することが重要です。 

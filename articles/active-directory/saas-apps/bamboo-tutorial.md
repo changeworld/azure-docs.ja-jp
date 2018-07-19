@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: c92d8167b46b185a55ed915b097ea6238e4bde69
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b69e81b78e4bc3fd7493133f00c5cfbc03ae8743
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216193"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bamboo by resolution GmbH の統合
 
@@ -245,7 +245,7 @@ SAML SSO for Bamboo by resolution GmbH で Azure AD のシングル サインオ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAML SSO for Bamboo by resolution GmbH] タイルをクリックすると、SAML SSO for Bamboo by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: fe96581428b8a41219a4aff46ecc0316d97884ae
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2dd273a1a0b5a5af65c4c40337975cb6f3f858ae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228671"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル: Azure Active Directory と Veracode の統合
 
@@ -108,7 +108,7 @@ Veracode で Azure AD のシングル サインオンを構成してテストす
 
 3. アプリは Azure と事前に統合済みであるため、**[Veracode のドメインと URL]** セクションで実行が必要な手順はありません。 
 
-    ![[Configure Single Sign-On]](./media/veracode-tutorial/tutorial_veracode_url.png)
+    ![Configure single sign-on](./media/veracode-tutorial/tutorial_veracode_url.png)
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -264,7 +264,7 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Veracode] タイルをクリックすると、自動的に Veracode アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

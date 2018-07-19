@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869009"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048881"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -248,8 +248,8 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットまたは変更](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

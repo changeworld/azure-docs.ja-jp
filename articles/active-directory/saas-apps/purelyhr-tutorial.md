@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3e3546a5161c62c137af0a29daf5140133f91eb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286934"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>チュートリアル: Azure Active Directory と PurelyHR の統合
 
@@ -102,21 +102,21 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **PurelyHR** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
 
 3. **[PurelyHR のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
    
     **[応答 URL]** ボックスに、`https://<companyID>.purelyhr.com/sso-consume` のパターンを使用して URL を入力します。
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
     
     **[サインオン URL]** ボックスに、`https://<companyID>.purelyhr.com/sso-initiate` のパターンを使用して値を入力します。
      
@@ -125,15 +125,15 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
 5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_general_400.png)
     
 7. **[PurelyHR Configuration (PurelyHR 構成)]** セクションで、**[Configure PurelyHR (PurelyHR を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
 
 8. **PurelyHR** 側でシングル サインオンを構成するために、PurelyHR の Web サイトに管理者としてログインします。
 
@@ -141,7 +141,7 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
 10. 以下の説明に従って、各ボックスに値を貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
+    ![Configure single sign-on](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
     a. Azure Portal からダウンロードした **Certificate(Bas64)** をメモ帳で開き、証明書の値をコピーします。 コピーした値を **[X.509 Certificate]** ボックスに貼り付けます。
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが PurelyHR にログインできるようにするには�
 
 2. アプリケーションの一覧で **[PurelyHR]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -228,7 +228,7 @@ Azure AD ユーザーが PurelyHR にログインできるようにするには�
 
 アクセス パネルで PurelyHR のタイルをクリックすると、自動的に PurelyHR アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、 [アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

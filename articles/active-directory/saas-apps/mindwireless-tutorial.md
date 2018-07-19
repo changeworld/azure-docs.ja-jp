@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 293a8921e64bae03d036f847d2f9138d88ebef4a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3898f64ebc32db2a512b04949e9b33a36694cdb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210260"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>チュートリアル: Azure Active Directory と mindWireless の統合
 
@@ -119,7 +119,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
 
 5. 次のスクリーンショットは、その例を示しています。 要求の名前は常に **Employee ID** であり、その値はユーザーの Employee ID を含む user.employeeid にマップされています。 ここで、Azure AD から mindWireless へのユーザー マッピングは EmployeeID で完了しますが、それをアプリケーションの設定に基づいて別の値にもマップできます。 最初に [mindWireless サポート チーム](mailto:sdulloor@mindwireless.com)と協力してユーザーの正しい ID を使用し、その値を **Employee ID** 要求でマップすることができます。
 
-    ![[Configure Single Sign-On]](./media/mindwireless-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -129,9 +129,9 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/mindwireless-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/mindwireless-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -226,7 +226,7 @@ mindWireless で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [mindWireless] タイルをクリックすると、自動的に mindWireless アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

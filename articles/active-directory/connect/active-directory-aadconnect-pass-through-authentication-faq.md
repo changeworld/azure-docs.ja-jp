@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e62117ee98b1d47600141249dcd3b17ec58a9654
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918157"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048970"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -60,7 +60,7 @@ ms.locfileid: "37918157"
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>ユーザーのパスワードの有効期限が切れている場合に、パススルー認証を使用してサインインしようとすると、どうなりますか。
 
-特定のユーザーに対して[パスワード ライトバック](../active-directory-passwords-update-your-own-password.md)を構成済みの場合、パススルー認証を使用してサインインしたユーザーは、パスワードを変更またはリセットできます。 パスワードはオンプレミス Active Directory に想定どおりに書き戻されます。
+特定のユーザーに対して[パスワード ライトバック](../user-help/active-directory-passwords-update-your-own-password.md)を構成済みの場合、パススルー認証を使用してサインインしたユーザーは、パスワードを変更またはリセットできます。 パスワードはオンプレミス Active Directory に想定どおりに書き戻されます。
 
 特定のユーザーにパスワード ライトバックが構成されていない場合、またはユーザーに有効な Azure AD ライセンスが割り当てられていない場合、ユーザーはクラウドでパスワードを更新できません。 自身のパスワードの有効期限が切れた場合でも、そのパスワードを更新することはできません。 代わりに、"このサイトでパスワードを変更することをお客様の組織が許可していません。 組織によって推奨されている方法でパスワードを更新するか、サポートが必要な場合は管理者にお問い合わせください。" というメッセージが表示されます。 ユーザーまたは管理者は、オンプレミスの Active Directory でパスワードをリセットする必要があります。
 
@@ -92,9 +92,9 @@ ms.locfileid: "37918157"
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>既に AD FS を使用して、Azure AD にサインインしています。 これをパススルー認証に切り替えるには、どうすればよいですか。
 
-Azure AD Connect ウィザードを使用して、AD FS をサインイン方法として構成している場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更により、テナントでパススルー認証が有効になり、"_すべて_" のフェデレーション ドメインが管理対象ドメインに変換されます。 テナントへの以降のサインイン要求はすべて、パススルー認証によって処理されます。 現時点では、異なるドメイン間で AD FS とパススルー認証を組み合わせて使用する方法は、Azure AD Connect ではサポートされていません。
+Azure AD Connect ウィザードを使用して、AD FS をサインイン方法として構成している場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更により、テナントでパススルー認証が有効になり、"_すべて_" のフェデレーション ドメインがマネージド ドメインに変換されます。 テナントへの以降のサインイン要求はすべて、パススルー認証によって処理されます。 現時点では、異なるドメイン間で AD FS とパススルー認証を組み合わせて使用する方法は、Azure AD Connect ではサポートされていません。
 
-Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法として構成された場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更は、**[構成しない]** オプションから行うことができます。 この変更により、テナントでパススルー認証が有効になりますが、すべてのフェデレーション ドメインでは引き続きサインインに AD FS が使用されます。 こうしたフェデレーション ドメインの一部またはすべてを管理対象ドメインに変換するには、PowerShell を使用して手動で行います。 この変更を加えると、管理対象ドメインへのサインイン要求はすべて、パススルー認証 "*のみ*" によって処理されます。
+Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法として構成された場合は、ユーザーのサインイン方法をパススルー認証に変更します。 この変更は、**[構成しない]** オプションから行うことができます。 この変更により、テナントでパススルー認証が有効になりますが、すべてのフェデレーション ドメインでは引き続きサインインに AD FS が使用されます。 こうしたフェデレーション ドメインの一部またはすべてをマネージド ドメインに変換するには、PowerShell を使用して手動で行います。 この変更を加えると、マネージド ドメインへのサインイン要求はすべて、パススルー認証 "*のみ*" によって処理されます。
 
 >[!IMPORTANT]
 >パススルー認証では、クラウド専用 Azure AD ユーザーのサインインは処理されません。

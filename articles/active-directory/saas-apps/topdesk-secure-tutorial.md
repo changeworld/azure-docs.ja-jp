@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 132803377554ecb4494d8b4ca6db7aa2f5f3aff1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2da2a2cae3993f7c29726b842db6767d4300cacc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225230"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
 
@@ -288,7 +288,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [TOPdesk - Public] のタイルをクリックすると、TOPdesk - Public アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

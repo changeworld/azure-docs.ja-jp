@@ -7,19 +7,21 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/01/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: bb5a383828e98c773c079dcea8e3cf37f9a068f0
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017437"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342659"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
+
+## <a name="architecture-of-sql-data-sync"></a>SQL データ同期のアーキテクチャ
 
 データ同期は、同期グループの概念に基づいています。 同期グループは、同期するデータベースのグループです。
 
@@ -29,7 +31,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   **同期の方向**は、双方向にするか、一方向だけのフローにすることができます。 つまり、同期の方向は、"*[Hub to Member]\(ハブからメンバーへ\)*" または "*[Member to Hub]\(メンバーからハブへ\)*"、あるいはその両方にすることができます。
 
--   **同期間隔**は、同期が発生する頻度です。
+-   **同期間隔**は、同期が発生する頻度を示します。
 
 -   **競合解決ポリシー**は、グループ レベルのポリシーであり、*[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
 
@@ -39,7 +41,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
 
 > [!NOTE]
-> オンプレミスのデータベースを使っている場合は、[ローカル エージェントを構成する](sql-database-get-started-sql-data-sync.md#add-on-prem)必要があります。
+> オンプレミスのデータベースをメンバー データベースとして使用している場合は、[ローカル同期エージェントをインストールして構成する](sql-database-get-started-sql-data-sync.md#add-on-prem)必要があります。
 
 ![データベース間でのデータの同期](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -73,9 +75,27 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
     -   *[ハブ側に合わせる]* を選択すると、ハブでの変更が常にメンバーでの変更を上書きします。
     -   *[Member wins]\(メンバー側に合わせる\)* を選択すると、メンバーでの変更がハブでの変更を上書きします。 複数のメンバーがある場合、最終的な値は、どのメンバーが最初に同期されるかによって異なります。
 
-## <a name="sync-req-lim"></a> 要件と制限
+## <a name="get-started-with-sql-data-sync"></a>SQL データ同期の概要
 
-### <a name="general-considerations"></a>一般的な考慮事項
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal でのデータ同期の設定
+
+-   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
+
+### <a name="set-up-data-sync-with-powershell"></a>PowerShell を使用したデータ同期の設定
+
+-   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+
+-   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+
+### <a name="review-the-best-practices-for-data-sync"></a>データ同期のベスト プラクティスの確認
+
+-   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+
+### <a name="did-something-go-wrong"></a>何か問題がありますか。
+
+-   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
+
+## <a name="consistency-and-performance"></a>一貫性とパフォーマンス
 
 #### <a name="eventual-consistency"></a>最終的な一貫性
 データ同期はトリガー ベースであるため、トランザクションの一貫性は保証されません。 Microsoft では、最終的にはすべての変更が行われることと、データ同期でデータ損失が発生しないことを保証しています。
@@ -84,6 +104,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
 
 同期グループの作成、更新、および削除中のプロビジョニングとプロビジョニング解除は、データベースのパフォーマンスにも影響を与える可能性があります。 
+
+## <a name="sync-req-lim"></a> 要件と制限
 
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -110,6 +132,14 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   XMLSchemaCollection (XML サポート)
 
 -   Cursor、Timestamp、Hierarchyid
+
+#### <a name="unsupported-column-types"></a>サポートされていない列の種類
+
+データ同期では、読み取り専用の列またはシステムで生成された列は同期できません。 例: 
+
+-   計算列。
+
+-   テンポラル テーブル用にシステムで生成された列。
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
 
@@ -147,7 +177,8 @@ SQL データ同期は、すべてのパブリック クラウド リージョ�
 -   サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
 -   それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
    
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>データ同期を使用して、実稼働データベースからデータを空のデータベースにデータを挿入し、それらの同期を維持することはできますか? 
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>データ同期を使用して、実稼働データベースから空のデータベースにデータをシードし、同期することはできますか?
+
 はい。 元のデータベースからスクリプトを作成することで、新しいデータベース内にスキーマを手動で作成します。 スキーマを作成した後で、同期グループにテーブルを追加し、データをコピーして同期を維持します。
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>データベースをバックアップおよび復元するには、SQL データ同期を使う必要がありますか?
@@ -176,20 +207,30 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 ## <a name="next-steps"></a>次の手順
 
-SQL データ同期の詳細については、以下を参照してください。
+### <a name="update-the-schema-of-a-synced-database"></a>同期されたデータベースのスキーマの更新
 
--   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
--   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+同期グループ内のデータベースのスキーマを更新する必要がある場合、 スキーマ変更は自動的にはレプリケートされません。 いくつかのソリューションについては、次の記事を参照してください。
+
+-   [Azure SQL データ同期でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
+
+-   [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)
+
+### <a name="monitor-and-troubleshoot"></a>監視とトラブルシューティング
+
+SQL データ同期が想定どおりに実行されているかどうかを確認したい場合に、 アクティビティを監視して問題のトラブルシューティングを行うには、次の記事を参照してください。
+
 -   [Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
--   SQL データ同期を構成する方法を示す完全な PowerShell の例
-    -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+### <a name="learn-more-about-azure-sql-database"></a>Azure SQL Database の詳細
 
--   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
-
-SQL Database の詳細については、以下を参照してください。
+SQL Database の詳細については、次の記事を参照してください。
 
 -   [SQL Database の概要](sql-database-technical-overview.md)
+
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
+
+### <a name="developer-reference"></a>開発者用リファレンス
+
+-   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

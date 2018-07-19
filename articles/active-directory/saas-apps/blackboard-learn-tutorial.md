@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c16e5d05378df9271b108eb93d36173672fc501
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1148e6f85905888eccafde638de66215073e0eaa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223666"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>チュートリアル: Azure Active Directory と Blackboard Learn の統合
 
@@ -102,15 +102,15 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Blackboard Learn** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_samlbase.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_samlbase.png)
 
 3. **[Blackboard Learn のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.blackboard.com/` のパターンを使用して URL を入力します。
 
@@ -122,7 +122,7 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
 4. Blackboard Learn アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。
  次のスクリーンショットは、その例を示しています。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute.png)
 
 5. **[Single sign-on\(シングル サインオン\)]** ダイアログの **[User Attributes\(ユーザー属性\)]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。 ここでは、一意のユーザー属性として、Userprincipalname をマッピングしていますが、組織内のユーザーを一意に識別し、Blackboard Learn ユーザー名フィールドにマッピングする適切な値にマッピングすることができます。
            
@@ -132,9 +132,9 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
     
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -144,15 +144,15 @@ Blackboard Learn で Azure AD のシングル サインオンを構成してテ�
 
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_certificate.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_certificate.png)
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_general_400.png)
 
 8. **[Blackboard Learn 構成]** セクションで、**[Blackboard Learn の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_configure.png) 
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_configure.png) 
 
 9. **Blackboard Learn** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML エンティティ ID** を [Blackboard Learn サポート](https://www.blackboard.com/support/index.aspx)に送る必要があります。
 
@@ -208,7 +208,7 @@ Blackboard Learn アプリケーションは、ジャスト イン タイム ユ
 
 2. アプリケーションの一覧で **[Blackboard Learn]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_app.png) 
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -228,7 +228,7 @@ Blackboard Learn アプリケーションは、ジャスト イン タイム ユ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Blackboard Learn] タイルをクリックすると、自動的に Blackboard Learn アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [Blackboard Learn] タイルをクリックすると、自動的に Blackboard Learn アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

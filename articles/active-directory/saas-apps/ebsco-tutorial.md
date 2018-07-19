@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 993d03e05c7d97634b7ed12c50d248643ce9e51d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 50e9a65f881981964270e0a8bbc7af46a9dfd27a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221286"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>チュートリアル: Azure Active Directory と EBSCO の統合
 
@@ -127,7 +127,7 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
 
 5. EBSCO アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
 
     > [!Note]
     > **名前**属性は必須であり、EBSCO アプリケーションの**ユーザー識別子**と共にマッピングされます。 これは既定で追加されるため、手動で追加する必要はありません。
@@ -142,9 +142,9 @@ EBSCO で Azure AD のシングル サインオンを構成してテストする
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/ebsco-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_officespace_04.png)
 
-    ![[Configure Single Sign-On]](./media/ebsco-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -243,7 +243,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 1. アクセス パネルで EBSCO のタイルをクリックすると、EBSCO アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 2. アプリケーションにログインしたら、右上隅の **[サインイン]** ボタンをクリックします。
 

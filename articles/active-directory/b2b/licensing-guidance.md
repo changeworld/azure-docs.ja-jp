@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: beeb7801465d38743fdd654496c7b1b8e3ba1cc3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2050952eb924e1eee5e6d7d6312d9cd02f475d10
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267072"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092804"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
@@ -65,7 +65,7 @@ B2B ゲスト ユーザーとは、パートナー組織から招待されてホ
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する以下の記事をご覧ください。
+Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](faq.md)

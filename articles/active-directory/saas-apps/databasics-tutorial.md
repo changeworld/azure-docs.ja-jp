@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ac26fbe81a89f2054b7966df9a9aea5dcd16925
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 32f59fdae3f60afdf3b6ff67ee51e1242915b84f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213228"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>チュートリアル: Azure Active Directory と DATABASICS の統合
 
@@ -205,7 +205,7 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで DATABASICS のタイルをクリックすると、自動的に DATABASICS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

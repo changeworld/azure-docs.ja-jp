@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: e39bd40a25333f6b2e323439d29e2a85e67d20d5
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ad5c8a61a83211147f5e4929a4f4f6fab738ba32
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284932"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>チュートリアル: Azure Active Directory と Apptio の統合
 
@@ -118,7 +118,7 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
 
 5. Apptio Software アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 **[User Identifier] (ユーザー識別子)** が **user.mail** にマッピングされていることに注意してください。 この他に **fullname、mail、role** の 3 つの属性を構成する必要があります。 次のスクリーンショットはその例です。
 
-    ![[Configure Single Sign-On]](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
     
     > [!NOTE]
     > Azure AD で**役割**を構成する方法については、[ここ](../../role-based-access-control/role-assignments-portal.md)をクリックしてください
@@ -133,9 +133,9 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/apptio-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/apptio-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -223,7 +223,7 @@ Apptio で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Apptio] タイルをクリックすると、Apptio アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

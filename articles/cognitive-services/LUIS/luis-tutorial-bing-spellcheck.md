@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 340fb34c234a12f93fcfc3182ac3fd44fce324fe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e7bf447dafecf090f610f670539ca4673827953a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378835"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343980"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -26,8 +26,9 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 ![無料のキーの作成](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-## <a name="create-subscription-key"></a>サブスクリプション キーの作成
-無料のキーの期限が切れた場合は、サブスクリプション キーを作成します。
+<a name"create-subscription-key"></a>
+## <a name="create-endpoint-key"></a>エンドポイント キーの作成
+無料のキーの期限が切れた場合は、エンドポイント キーを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。 
 
@@ -56,7 +57,7 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 10. 最初のキーをコピーします。 必要なのは 2 つのキーのうち 1 つだけです。 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>LUIS テスト パネルでのキーの使用
-LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト パネル](train-test.md#view-bing-spell-check-corrections-in-test-panel)です。 キーは LUIS には保存されず、セッションごとに変わります。 テスト パネルで Bing Spell Check API v7 サービスを発話に適用するには、そのたびにキーを設定する必要があります。 キーの設定については、テスト パネルの[説明](train-test.md#view-bing-spell-check-corrections-in-test-panel)に従ってください。
+LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト パネル](interactive-test.md#view-bing-spell-check-corrections-in-test-panel)です。 キーは LUIS には保存されず、セッションごとに変わります。 テスト パネルで Bing Spell Check API v7 サービスを発話に適用するには、そのたびにキーを設定する必要があります。 キーの設定については、テスト パネルの[説明](interactive-test.md#view-bing-spell-check-corrections-in-test-panel)に従ってください。
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>エンドポイント URL へのキーの追加
 エンドポイント クエリでは、スペルの修正を適用するクエリごとに、キーがクエリ文字列パラメーターに渡される必要があります。 LUIS を呼び出すチャットボットを使用することも、LUIS エンドポイント API を直接呼び出すこともできます。 エンドポイントがどのように呼び出されたかに関係なく、すべての呼び出しに、スペルの修正が適切に動作するうえで必要な情報が含まれていなければなりません。
@@ -90,7 +91,7 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription
 Bing Spell Check API v7 サービスを使用したくない場合は、LUIS が正しいスペルと入力ミスを学習できるように、スペル ミスを含む発話にラベルを付けることができます。 このラベル付けオプションは、スペル チェックを使用するよりも手間がかかります。
 
 ## <a name="publishing-page"></a>ページの公開
-[公開](publishapp.md)ページには、**[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
+[公開](luis-how-to-publish-app.md)ページには、**[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
 
 > [!div class="nextstepaction"]
 > [発話の例の詳細](luis-how-to-add-example-utterances.md)

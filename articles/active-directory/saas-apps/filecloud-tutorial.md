@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 724c572dcc4381b865da12b1a1efd1e1f99a7cfd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fe5ad8a575152f6dd7ca3c804c1597f10f0d2731
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226420"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>チュートリアル: Azure Active Directory と FileCloud の統合
 
@@ -231,7 +231,7 @@ FileCloud で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [FileCloud] タイルをクリックすると、自動的に FileCloud アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

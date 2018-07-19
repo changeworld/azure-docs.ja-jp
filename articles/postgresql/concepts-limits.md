@@ -2,19 +2,19 @@
 title: Azure Database for PostgreSQL の制限事項
 description: この記事では、Azure Database for PostgreSQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757418"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343303"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
 次のセクションでは、データベース サービス容量と機能の制限について説明します。
@@ -43,8 +43,8 @@ Azure システムでは、Azure Database for PostgreSQL サーバーを監視�
 
 ## <a name="functional-limitations"></a>機能制限
 ### <a name="scale-operations"></a>スケール操作
-1.  価格レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic、汎用、メモリ最適化の各レベル間の切り替えはサポートされません。
-2.  現在、サーバー ストレージを減らすことはできません。
+- Basic 価格レベルとの間の動的スケーリングは現在サポートされていません。
+- 現在、サーバー ストレージを減らすことはできません。
 
 ### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード
 - データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。
@@ -52,9 +52,12 @@ Azure システムでは、Azure Database for PostgreSQL サーバーを監視�
 ### <a name="subscription-management"></a>サブスクリプション管理
 - サブスクリプションとリソース グループ間でのサーバーの動的な移動は現在サポートされていません。
 
+### <a name="vnet-service-endpoints"></a>VNET サービス エンドポイント
+- VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
+
 ### <a name="point-in-time-restore-pitr"></a>ポイントインタイム リストア (PITR)
-1.  PITR 機能を使うと、基になっているサーバーと同じ構成で新しいサーバーが作成されます。
-2.  削除されたサーバーへの復元はサポートされていません。
+- PITR 機能を使うと、基になっているサーバーと同じ構成で新しいサーバーが作成されます。
+- 削除されたサーバーへの復元はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 - [各価格レベルで使用できる内容](concepts-pricing-tiers.md)について理解します

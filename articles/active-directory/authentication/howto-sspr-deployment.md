@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866985"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048953"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 
 ## <a name="create-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 
-多くのお客様は、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。このページには、以下の情報へのリンクを設定します。
+多くのお客様は、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。 このページには、以下の情報へのリンクを設定します。
 
 * [Azure AD のパスワード リセットのポータル - https://aka.ms/sspr](https://aka.ms/sspr)
 * [Azure AD のパスワード リセットの登録ポータル - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
@@ -86,8 +86,8 @@ Azure Active Directory の製品グループは、組織がビジネス ケー�
 
 ## <a name="next-steps"></a>次の手順
 
-* [パスワードのリセットまたは変更](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)

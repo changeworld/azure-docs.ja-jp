@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c7bf7efe76f9fdee6a5508131c4d86d503a87366
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5807ab0090f401c02599db40f110b7a9b1504060
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217070"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル: Azure Active Directory と Kudos の統合
 
@@ -102,15 +102,15 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **Kudos** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_kudos_samlbase.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_samlbase.png)
 
 3. **[Kudos のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_kudos_url.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company>.kudosnow.com` のパターンを使用して URL を入力します。
     
@@ -119,15 +119,15 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_kudos_certificate.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_general_400.png)
 
 6. **[Kudos 構成]** セクションで、**[Kudos の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_kudos_configure.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、Kudos の企業サイトに管理者としてログインします。
 
@@ -231,7 +231,7 @@ Kudos の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[Kudos]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/kudos-tutorial/tutorial_kudos_app.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -251,7 +251,7 @@ Kudos の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Kudos のタイルをクリックすると、自動的に Kudos アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで Kudos のタイルをクリックすると、自動的に Kudos アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

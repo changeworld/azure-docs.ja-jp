@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 47640b2b8145372f372f4f1129eb992bd4f247ed
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b7a097107f68c692c960efc465d00b05e81f7c81
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216414"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>チュートリアル: Azure Active Directory と Learning at Work の統合
 
@@ -102,15 +102,15 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Learning at Work** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_samlbase.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_samlbase.png)
 
 3. **[Learning at Work のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.sabacloud.com/Saba/Web/<company code>` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_certificate.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_general_400.png)
 
 6. **[Learning at Work 構成]** セクションで、**[Learning at Work の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_configure.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_configure.png) 
 
 7. **Learning at Work** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL**、および**サインアウト URL** を、[Learning at Work サポート チーム](https://www.learninga-z.com/site/contact/support)に送る必要があります。
 
@@ -185,7 +185,7 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **[Learning at Work]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/learning-at-work-tutorial/tutorial_learningatwork_app.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -206,7 +206,7 @@ Learning at Work で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Learning at Work] タイルをクリックすると、Learning at Work アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

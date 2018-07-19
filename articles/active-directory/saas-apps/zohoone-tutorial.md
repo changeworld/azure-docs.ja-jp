@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9168b58cda54fa5de497ba331e1e4995dbc4d4e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9f1db693ac75d7ab4b9776d60f63a0ca7524f760
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220535"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル: Azure Active Directory と Zoho One の統合
 
@@ -264,7 +264,7 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Zoho One のタイルをクリックすると、自動的に Zoho One アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

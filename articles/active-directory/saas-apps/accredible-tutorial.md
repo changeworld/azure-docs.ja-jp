@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 270c3b9965665643b8406827cb7421ba46198b4a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b997d03534fdd7c5075b1bd483dac9ad5e1ddbd3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221112"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048329"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル: Azure Active Directory と Accredible の統合
 
@@ -205,7 +205,7 @@ Accredible で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Accredible] タイルをクリックすると、自動的に Accredible アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

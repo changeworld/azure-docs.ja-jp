@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332716"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342710"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -35,8 +35,7 @@ ms.locfileid: "36332716"
 * 同時に実行できるスクリプトは 1 つ
 * スクリプトの実行を取り消すことはできない
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
-
-**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
+* スクリプトの結果を返すために、VM からの送信接続が必要
 
 ## <a name="run-a-command"></a>コマンドの実行
 

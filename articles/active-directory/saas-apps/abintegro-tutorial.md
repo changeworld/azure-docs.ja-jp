@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 71f3a850d4b60c9ca2e3742ea8c83587e04f1dca
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 70b9d41ff9ed47e9ac376f1e13627cc82d87130f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221463"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-abintegro"></a>チュートリアル: Azure Active Directory と Abintegro の統合
 
@@ -102,15 +102,15 @@ Abintegro で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure ポータルの **Abintegro** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/abintegro-tutorial/tutorial_abintegro_samlbase.png)
+    ![Configure single sign-on](./media/abintegro-tutorial/tutorial_abintegro_samlbase.png)
 
 3. **[Abintegro のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/abintegro-tutorial/tutorial_abintegro_url.png)
+    ![Configure single sign-on](./media/abintegro-tutorial/tutorial_abintegro_url.png)
 
     **[サインオン URL]** ボックスに、`https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Abintegro で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/abintegro-tutorial/tutorial_abintegro_certificate.png) 
+    ![Configure single sign-on](./media/abintegro-tutorial/tutorial_abintegro_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/abintegro-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/abintegro-tutorial/tutorial_general_400.png)
 
 6. **Abintegro** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Abintegro サポート チーム](mailto:support@abintegro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -181,7 +181,7 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 
 2. アプリケーションの一覧で **[Abintegro]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/abintegro-tutorial/tutorial_abintegro_app.png) 
+    ![Configure single sign-on](./media/abintegro-tutorial/tutorial_abintegro_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -202,7 +202,7 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Abintegro] タイルをクリックすると、Abintegro アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

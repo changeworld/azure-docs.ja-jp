@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: fb67d1eea588d96129c4b58a8c1b2f569c9663bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904409"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049339"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM マネージド ID を使用して Azure Storage にアクセスする 
 
@@ -61,7 +61,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
 3. 仮想マシンの情報を入力します。 **[認証の種類]** で、**[SSH 公開キー]** または **[パスワード]** を選択します。 作成した資格情報を使用して VM にログインできます。
 
-   ![仮想マシンを作成するための [基本] ウィンドウ](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![仮想マシンを作成するための [基本] ウィンドウ](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. **[サブスクリプション]** ボックスの一覧で、仮想マシンのサブスクリプションを選択します。
 5. 仮想マシンを作成する新しいリソース グループを選択するには、**[リソース グループ]** > **[新規作成]** を選択します。 終了したら、**[OK]** を選択します。
@@ -87,7 +87,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
 
-    ![新しいストレージ アカウントを作成する](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![新しいストレージ アカウントを作成する](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>BLOB コンテナーを作成し、ファイルをストレージ アカウントにアップロードする
 
@@ -98,14 +98,14 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. ページの上部にある **[+ コンテナー]** をクリックします。
 4. **[新しいコンテナー]** で、コンテナーの名前を入力し、**[パブリック アクセス レベル]** で既定値を保持します。
 
-    ![ストレージ コンテナーの作成](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![ストレージ コンテナーの作成](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. 任意のエディターを使用して、ローカル コンピューターに *hello world.txt* という名前のファイルを作成します。  ファイルを開き、"Hello world! :)" というテキストを (引用符なしで) 追加し、保存します。 
 
 6. 新しく作成したコンテナーにファイルをアップロードします。コンテナー名をクリックしてから **[アップロード]** をクリックします。
 7. **[BLOB のアップロード]** ウィンドウの **[ファイル]** で、フォルダー アイコンをクリックし、ローカル コンピューターの **hello_world.txt** を参照してファイルを選択して、**[アップロード]** をクリックします。
 
-    ![テキスト ファイルをアップロードする](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![テキスト ファイルをアップロードする](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する 
 

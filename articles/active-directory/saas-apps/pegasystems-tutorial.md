@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 005f487b46ca3894ed2d94ec032bb009c3051796
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c1b29cb7d09bcaa25457cf6f99731beae30fa7b2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223384"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル: Azure Active Directory と Pega Systems の統合
 
@@ -125,7 +125,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
 5. Pega Systems アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 これらの要求はお客様に固有であり、お客様の要件によって異なります。 次のオプションの要求は、アプリケーションで構成できる単なる例です。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[Configure Single Sign-On]](./media/pegasystems-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/pegasystems-tutorial/tutorial_attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -146,9 +146,9 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/pegasystems-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/pegasystems-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/pegasystems-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/pegasystems-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -276,7 +276,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Pega Systems のタイルをクリックすると、Pega Systems アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

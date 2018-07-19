@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308243"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>チュートリアル: Azure Active Directory と TimeOffManager の統合
 
@@ -99,7 +99,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **TimeOffManager** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -144,7 +144,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/timeoffmanager-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/timeoffmanager-tutorial/tutorial_general_400.png)
 
 7. **[TimeOffManager 構成]** セクションで、**[Configure TimeOffManager]\(TimeOffManager を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
@@ -258,7 +258,7 @@ TimeOffManager は、ジャストインタイム ユーザー プロビジョニ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TimeOffManager] タイルをクリックすると、TimeOffManager アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [TimeOffManager] タイルをクリックすると、TimeOffManager アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

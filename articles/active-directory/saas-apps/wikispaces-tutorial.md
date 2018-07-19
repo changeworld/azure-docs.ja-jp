@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 334dd3b2f126d42c9c71f5fabb3515a68eb52c57
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 920777aa56d9ea9c619815b99b234b66bd676b44
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227321"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル: Azure Active Directory と Wikispaces の統合
 
@@ -102,15 +102,15 @@ Wikispaces で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Wikispaces** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_wikispaces_samlbase.png)
+    ![Configure single sign-on](./media/wikispaces-tutorial/tutorial_wikispaces_samlbase.png)
 
 3. **[Wikispaces のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_wikispaces_url.png)
+    ![Configure single sign-on](./media/wikispaces-tutorial/tutorial_wikispaces_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.wikispaces.net` のパターンを使用して URL を入力します。
 
@@ -121,11 +121,11 @@ Wikispaces で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_wikispaces_certificate.png) 
+    ![Configure single sign-on](./media/wikispaces-tutorial/tutorial_wikispaces_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/wikispaces-tutorial/tutorial_general_400.png)
 
 6. **Wikispaces** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Wikispaces サポート チーム](https://www.wikispaces.com/site/help)に送信する必要があります。 構成が完了すると、サポート チームから通知が届きます。
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
 
 2. アプリケーションの一覧で **[Wikispaces]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/wikispaces-tutorial/tutorial_wikispaces_app.png) 
+    ![Configure single sign-on](./media/wikispaces-tutorial/tutorial_wikispaces_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -227,7 +227,7 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Wikispaces のタイルをクリックすると、自動的に Wikispaces アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

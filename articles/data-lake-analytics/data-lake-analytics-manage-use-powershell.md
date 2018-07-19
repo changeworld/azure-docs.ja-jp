@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: 560f36dc64480fd6aceaa50226b191ee40d2486f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.date: 06/29/2018
+ms.openlocfilehash: 94cd8de875baac31ee6cd450707be57a3d1dfdd0
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959850"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341863"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -56,7 +56,7 @@ Connect-AzureRmAccount -SubscriptionId $subId
 Connect-AzureRmAccount -SubscriptionName $subname 
 ```
 
-## <a name="saving-authenticaiton-context"></a>認証コンテキストの保存
+## <a name="saving-authentication-context"></a>認証コンテキストの保存
 
 `Connect-AzureRmAccount` コマンドレットは、常に資格情報を要求します。 次のコマンドレットを使用すると、要求を回避できます。
 
@@ -156,13 +156,13 @@ Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 
 ```powershell
 # List all the data sources
-Get-AdlAnalyticsDataSource -Name $adla
+Get-AdlAnalyticsDataSource -Account $adla
 
 # List attached Data Lake Store accounts
-Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "DataLakeStore"
+Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "DataLakeStore"
 
 # List attached Storage accounts
-Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "Blob"
+Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 ```
 
 ## <a name="submit-u-sql-jobs"></a>U-SQL ジョブを送信する

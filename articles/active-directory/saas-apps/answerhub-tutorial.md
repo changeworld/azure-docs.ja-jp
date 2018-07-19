@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8505474687728f8dcf0927e4d2b7ce59e7a4c742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 447a3911bc1f021fb1ca2658716de1910b5379b6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231289"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
 
@@ -102,15 +102,15 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
 1. Azure Portal の **[AnswerHub]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_samlbase.png)
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_samlbase.png)
 
 3. **[AnswerHub Domain and URLs] \(AnswerHub のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_url.png)
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<company>.answerhub.com` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_certificate.png) 
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_general_400.png)
 
 6. **[AnswerHub Configuration] \(AnswerHub 構成)** セクションで、**[Configure AnswerHub] \(AnswerHub の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_configure.png) 
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として AnswerHub 企業サイトにログインします。
    
@@ -236,7 +236,7 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で、**[AnswerHub]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/answerhub-tutorial/tutorial_answerhub_app.png) 
+    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -257,7 +257,7 @@ AnswerHub の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [AnswerHub] タイルをクリックすると、AnswerHub アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

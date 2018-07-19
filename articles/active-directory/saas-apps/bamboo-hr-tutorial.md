@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: d31d8d92590f665b847bb92370967e88ef4590ff
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210705"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048040"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル: Azure Active Directory と BambooHR の統合
 
@@ -236,7 +236,7 @@ BambooHR に Britta Simon というユーザーを割り当てるには、次の
 
 アクセス パネルの **[BambooHR]** タイルを選択すると、BambooHR アプリケーションに自動的にサインインされます。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

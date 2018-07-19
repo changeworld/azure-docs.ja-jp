@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 0cd42f5863293dfe5b52ab1fd99c2fc04aa9aeee
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 20c7656fc3f3cfd54007f5dbbf6dd91557020b20
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285816"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル: Azure Active Directory と LCVista の統合
 
@@ -102,15 +102,15 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure ポータルの **LCVista** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_samlbase.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_samlbase.png)
 
 3. **[LCVista のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_url.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.lcvista.com/rainier/login` のパターンを使用して URL を入力します。
 
@@ -121,21 +121,21 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_certificate.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_general_400.png)
     
 6. **[LCVista 構成]** セクションで、**[LCVista を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_configure.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_configure.png) 
 
 7.  管理者として LCVista アプリケーションにサインオンします。
 
 8. **[SAML Config (SAML 構成)]** セクションで、**[Enable SAML login (SAML ログインを有効にする)]** をオンにし、次の画像に従って詳細を入力します。 
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_config.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_config.png)
 
     a. Azure AD で **[エンティティ ID]** セクションからコピーした **[発行者の URL]** を貼り付けます。 
 
@@ -206,7 +206,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[LCVista]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/lcvista-tutorial/tutorial_lcvista_app.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -224,7 +224,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 アクセス パネルの [LCVista] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、LCVista アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 アクセス パネルの [LCVista] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、LCVista アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 1189a60b33c385377767ea44877dd5fdf853f260
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4ae5c9834352bd2413075e87c79e27a9a3c354b9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221537"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル: Azure Active Directory と Flatter Files の統合
 
@@ -102,37 +102,37 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **Flatter Files** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
 
 3. アプリは Azure と事前に統合済みであるため、**[Flatter Files のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_general_400.png)
 
 6. **[Flatter Files 構成]** セクションで、**[Flatter Files の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
 
 7. 管理者として Flatter Files アプリケーションにサインオンします。
 
 8. **[DASHBOARD]\(ダッシュボード\)** をクリックします。 
    
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 9. **[設定]** をクリックし、**[会社]** タブで次の手順に従います。 
    
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. **[Use SAML 2.0 for Authentication]** を選択します。
     
@@ -140,7 +140,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
 8. **[SAML Configuration]** ダイアログ ボックスで、次の手順を実行します。 
    
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
     a. **[ドメイン]** ボックスに、登録済みのドメインを入力します。
    
@@ -229,7 +229,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
 2. アプリケーションの一覧で **[Flatter Files]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -250,7 +250,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Flatter Files] タイルをクリックすると、自動的に Flatter Files アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

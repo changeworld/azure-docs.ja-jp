@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e77858edc3acfe8491c90eac3b8a146a230556e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 59546e19190e11a1f32b24e0d7b8fb293556c69c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213651"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>チュートリアル: Azure Active Directory と Moxi Engage の統合
 
@@ -102,15 +102,15 @@ Moxi Engage で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Moxi Engage** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/moxiengage-tutorial/tutorial_moxiengage_samlbase.png)
+    ![Configure single sign-on](./media/moxiengage-tutorial/tutorial_moxiengage_samlbase.png)
 
 3. **[Moxi Engage のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/moxiengage-tutorial/tutorial_moxiengage_url.png)
+    ![Configure single sign-on](./media/moxiengage-tutorial/tutorial_moxiengage_url.png)
 
     **[サインオン URL]** ボックスに、`https://svc.<moxiworks-integration-domain>/service/v1/auth/inbound/saml/aad` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Moxi Engage で Azure AD のシングル サインオンを構成してテスト
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/moxiengage-tutorial/tutorial_moxiengage_certificate.png) 
+    ![Configure single sign-on](./media/moxiengage-tutorial/tutorial_moxiengage_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/moxiengage-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/moxiengage-tutorial/tutorial_general_400.png)
 
 6. **Moxi Engage** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Moxi Engage サポート チーム](mailto:support@moxiworks.com)に送信する必要があります。 サポート チームはこれをセットアップして、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -180,7 +180,7 @@ Moxi Engage で Azure AD のシングル サインオンを構成してテスト
 
 2. アプリケーションの一覧で **[Moxi Engage]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/moxiengage-tutorial/tutorial_moxiengage_app.png) 
+    ![Configure single sign-on](./media/moxiengage-tutorial/tutorial_moxiengage_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -201,7 +201,7 @@ Moxi Engage で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Moxi Engage] タイルをクリックすると、自動的に Moxi Engage アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: e14a9fc822fa42ec12390d1ed4540b246802a990
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 77cd9f90de1d50e91061a6a7222d01c72aadf3f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226376"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル: Azure Active Directory と Cerner Central の統合
 
@@ -100,15 +100,15 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **Cerner Central** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
 3. **[Cerner Central のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
 
     a. **[識別子]** ボックスに、次の形式で値を入力します。
 
@@ -128,11 +128,11 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
 4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/cernercentral-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_metadataurl.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/cernercentral-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_general_400.png)
 
 6. **Cerner Central** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Cerner Central サポート](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations)に送信する必要があります。 アプリケーション側で SSO が構成され、統合が完了します。
 
@@ -185,7 +185,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
 2. アプリケーションの一覧で **[Cerner Central]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -205,7 +205,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cerner Central] タイルをクリックすると、自動的に Cerner Central アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [Cerner Central] タイルをクリックすると、自動的に Cerner Central アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: e91bf648a7113b95ac5ff55f2c287b7e2c20dacb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1c93f0dccceffa0b5d3389732aa108a47e5c8af7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217199"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>チュートリアル: Azure Active Directory と Chromeriver の統合
 
@@ -102,15 +102,15 @@ Chromeriver で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Chromeriver** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/chromeriver-tutorial/tutorial_chromeriver_samlbase.png)
+    ![Configure single sign-on](./media/chromeriver-tutorial/tutorial_chromeriver_samlbase.png)
 
 3. **[Chromeriver のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/chromeriver-tutorial/tutorial_chromeriver_url.png)
+    ![Configure single sign-on](./media/chromeriver-tutorial/tutorial_chromeriver_url.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.chromeriver.com` の形式で URL を入力します。
 
@@ -123,11 +123,11 @@ Chromeriver で Azure AD のシングル サインオンを構成してテスト
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/chromeriver-tutorial/tutorial_chromeriver_certificate.png) 
+    ![Configure single sign-on](./media/chromeriver-tutorial/tutorial_chromeriver_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/chromeriver-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/chromeriver-tutorial/tutorial_general_400.png)
 
 6. **Chromeriver** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Chromeriver サポート チーム](https://www.chromeriver.com/services/support)に送信する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
 
@@ -189,7 +189,7 @@ Chromeriver の場合、[Chromeriver サポート チーム](https://www.chromer
 
 2. アプリケーションの一覧で **[Chromeriver]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/chromeriver-tutorial/tutorial_chromeriver_app.png) 
+    ![Configure single sign-on](./media/chromeriver-tutorial/tutorial_chromeriver_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -209,7 +209,7 @@ Chromeriver の場合、[Chromeriver サポート チーム](https://www.chromer
 
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
-アクセス パネルで [Chromeriver] タイルをクリックすると、自動的に Chromeriver アプリケーションにサインオンします。 アクセス パネルの詳細については、 [アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)を参照してください。
+アクセス パネルで [Chromeriver] タイルをクリックすると、自動的に Chromeriver アプリケーションにサインオンします。 アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

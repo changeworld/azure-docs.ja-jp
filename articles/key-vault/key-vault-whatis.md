@@ -14,24 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/26/2017
 ms.author: barclayn
-ms.openlocfilehash: d1c7a61522770d5bf590637629ec48ee35151623
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1fd39cf6363cb028b2f933934c95ea2b635b754a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28924950"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089307"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
-Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
-
-## <a name="introduction"></a>はじめに
 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、.PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 その場合、FIPS 140-2 Level 2 適合の HSM (ハードウェアおよびファームウェア) でマイクロソフトがお客様のキーを処理します。  
 
 Key Vault は、キー管理プロセスを合理化し、データにアクセスして暗号化するキーの制御を維持できます。 開発者は、開発やテスト用のキーを数分で作成し、それらをシームレスに実稼働キーに移行できます。 セキュリティ管理者は、必要に応じて、キーに権限を付与する (取り消す) ことができます。
 
 次の表を使用して、Key Vault が開発者やセキュリティ管理者のニーズを満たすのに役立つ方法を十分に理解します。
 
-| 役割 | 問題の説明 | Azure Key Vault による解決 |
+| Role | 問題の説明 | Azure Key Vault による解決 |
 | --- | --- | --- |
 | Azure アプリケーションの開発者 |"署名と暗号化のキーを使用する Azure のアプリケーションを作成したいが、ソリューションが地理的に分散したアプリケーションに合うように、これらのキーをアプリケーションの外部に設定したい。 <br/><br/>また、これらのキーとシークレットは、自分でコードを記述せずに保護したい。 さらに、簡単にアプリケーションから最適なパフォーマンスで使用できるようにしたい。" |√ キーは、資格情報コンテナーに格納され、必要に応じて、URI によって呼び出されます。<br/><br/> √ キーは、業界標準のアルゴリズム、キーの長さ、ハードウェア セキュリティ モジュール (HSM) を使用して、Azure によってセキュリティで保護されています。<br/><br/> √ キーは、アプリケーションと同じ Azure データセンターに存在する HSM で処理されます。 そのため、信頼性が向上し、オンプレミスの場所などの別の場所にキーが存在する場合より待機時間が削減されます。 |
 | サービスとしてのソフトウェア (SaaS) の開発者 |"顧客のテナント キーやシークレットに対して義務や潜在的責任を負いたくない。 <br/><br/>顧客はキーを自分で所有して管理してほしい。そうすることで、私は自分の専門分野である、中心的なソフトウェア機能を提供することに集中できる。" |√ 顧客は Azure に自分のキーをインポートして管理できます。 SaaS アプリケーションが顧客のキーを使用して暗号化操作を実行する必要がある場合は、Key Vault がアプリケーションに代わって、これらの操作を行います。 アプリケーションには、顧客のキーは表示されません。 |
@@ -60,3 +57,4 @@ Azure Key Vault でキーとシークレットを使用する方法の詳細に�
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。

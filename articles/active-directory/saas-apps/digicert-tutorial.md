@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 9c8ecac3adc3ac06eed5c87c3e1c92c91ed67d70
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 428878d3b1a8a369b58b045544f034eb4235c74c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227161"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>チュートリアル: Azure Active Directory と DigiCert の統合
 
@@ -102,21 +102,21 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **DigiCert** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
 
 3. **[DigiCert のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_digicert_url.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_url.png)
     
     **[識別子]** ボックスに次の URL を入力します。`https://www.digicert.com/sso`
 
 4. DigiCert アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_digicert_attributes.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_attributes.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -130,9 +130,9 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -142,11 +142,11 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_general_400.png)
 
 8. **DigiCert** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [DigiCert サポート チーム](mailto:support@digicert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -199,7 +199,7 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[DigiCert]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/digicert-tutorial/tutorial_digicert_app.png) 
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -220,7 +220,7 @@ DigiCert で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [DigiCert] タイルをクリックすると、自動的に DigiCert アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

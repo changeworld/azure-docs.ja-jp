@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d5fe4b6703f9b860932e36a296f3d103a4f94807
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4f5ff9906ec5a4f57d64704a4b10cf7027878e72
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219858"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル: Azure Active Directory と iWellnessNow の統合
 
@@ -216,7 +216,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [iWellnessNow] タイルをクリックすると、自動的に iWellnessNow アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: a7557a5dc19fd08461a18252d914b74306816c8a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3a33f9ba0ca744709e21e9e55acc22b657c2adc2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216848"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合
 
@@ -102,15 +102,15 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
 1. Azure Portal の **[8x8 Virtual Office]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
 
 3. **[8x8 Virtual Office Domain and URLs] \(8x8 Virtual Office のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
@@ -130,15 +130,15 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Raw) (証明書 (Raw))]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_general_400.png)
 
 6. **[8x8 Virtual Office Configuration] \(8x8 Virtual Office 構成)** セクションで、**[Configure 8x8 Virtual Office] \(8x8 Virtual Office の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
 
 7. 8x8 Virtual Office テナントに管理者としてサインオンします。
 
@@ -226,7 +226,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
 2. アプリケーションの一覧で **[8x8 Virtual Office]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -247,7 +247,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [8x8 Virtual Office] タイルをクリックすると、自動的に 8x8 Virtual Office アプリケーションにサインオンします。
-アクセス パネルの詳細については、「[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)」を参照してください
+アクセス パネルの詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください
 
 ## <a name="additional-resources"></a>その他のリソース
 

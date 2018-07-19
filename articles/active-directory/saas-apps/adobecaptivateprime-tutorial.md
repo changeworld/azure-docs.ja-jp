@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b8d678f9125e6051dad1b41eba5dec3ec1ac747
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbeae2cadde3e64f17b20eafabaf5e2dbf5a5cc6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224115"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
 
@@ -197,7 +197,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Adobe Captivate Prime] タイルをクリックすると、自動的に Adobe Captivate Prime アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 75a5713af0f5c6bbfca95bca2a345509cc154f4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f579f914496427febdf60c3a8d3dc368ef265a9d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224958"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル: Azure Active Directory と Trisotech Digital Enterprise Server の統合
 
@@ -127,15 +127,15 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
 7. **メニュー アイコン**をクリックし、**[管理]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 8. **[User Provider]\(ユーザー プロバイダー\)** を選択します。
 
-    ![[Configure Single Sign-On]](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 9. **[User Provider Configurations]\(ユーザー プロバイダー構成\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. **[認証方法]** のドロップダウン リストから **[Secured Assertion Markup Language 2 (SAML 2)]** を選択します。
 
@@ -222,7 +222,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Trisotech Digital Enterprise Server] タイルをクリックすると、Trisotech Digital Enterprise Server アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

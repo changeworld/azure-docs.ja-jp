@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c34deca7b8248ff8c12433a0d0967fcc3e8e2b4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e5ef74329e2adb6f3b8b60f547231a245a03b1fe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221036"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>チュートリアル: Azure Active Directory と Zendesk の統合
 
@@ -123,7 +123,7 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
 5. Zendesk は、特定の形式で構成された SAML アサーションを受け入れます。 必須の SAML 属性はありませんが、必要に応じて以下の手順に従って **[ユーザー属性]** セクションから属性を追加できます。 
 
-     ![[Configure Single Sign-On]](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
+     ![Configure single sign-on](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
@@ -262,7 +262,7 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Zendesk] タイルをクリックすると、自動的に Zendesk アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

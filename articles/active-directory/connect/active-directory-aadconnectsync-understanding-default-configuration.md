@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7be5569654cb537260117ecd452e58cff9824a88
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595310"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044776"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -77,9 +77,9 @@ ms.locfileid: "34595310"
 
 * 連絡先はメール対応である必要があります。 次のルールで検証されます。
   * `IsPresent([proxyAddresses]) = True)` proxyAddresses 属性に入力する必要があります。
-  * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 @ が存在することで、コンテンツが電子メールであることが確認されます。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))` "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)` メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
+  * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 \@ が存在することで、コンテンツが電子メールであることが確認されます。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))` "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に \@ は含まれますか。
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)` メール属性は入力されますか。入力される場合、文字列に \@ は含まれますか。
 
 次の連絡先オブジェクトは Azure AD に同期 **されません** 。
 

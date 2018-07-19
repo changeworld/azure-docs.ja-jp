@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: e27bc853db6236165d77f2fb3418bab1170400b2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c126b3bf08174886b3668cd54c76b72d113ba76
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227705"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
 
@@ -211,7 +211,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで ForeSee CX Suite のタイルをクリックすると、自動的に ForeSee CX Suite アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

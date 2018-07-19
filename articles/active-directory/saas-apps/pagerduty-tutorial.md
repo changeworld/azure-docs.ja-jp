@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 2ac5dee8fe9a27ffeed717e010cade522b9fefc0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317984"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル: Azure Active Directory と PagerDuty の統合
 
@@ -253,7 +253,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 
 アクセス パネルで [PagerDuty] タイルをクリックすると、PagerDuty アプリケーションに自動的にサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

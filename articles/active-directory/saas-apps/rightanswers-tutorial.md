@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 45912e3aa0621ea9bfd24202392eda1a53addf80
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9f87c0a9c705e5a87b16abf97afba10165c80425
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222421"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>チュートリアル: Azure Active Directory と RightAnswers の統合
 
@@ -102,15 +102,15 @@ RightAnswers で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **RightAnswers** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/rightanswers-tutorial/tutorial_rightanswers_samlbase.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_samlbase.png)
 
 3. **[RightAnswers のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/rightanswers-tutorial/tutorial_rightanswers_url.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.rightanswers.com/portal/ss/` のパターンを使用して URL を入力します。
 
@@ -121,11 +121,11 @@ RightAnswers で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/rightanswers-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_general_400.png)
 
 6. **RightAnswers** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [RightAnswers サポート チーム](https://www.rightanswers.com/contact-us/)に送信する必要があります。
 
@@ -190,7 +190,7 @@ Azure AD ユーザーが RightAnswers にログインできるようにするに
 
 2. アプリケーションの一覧で **[RightAnswers]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/rightanswers-tutorial/tutorial_rightanswers_app.png) 
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -208,7 +208,7 @@ Azure AD ユーザーが RightAnswers にログインできるようにするに
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)

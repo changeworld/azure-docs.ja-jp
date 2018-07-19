@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7d86082abb6412072af44a6b2d794bcf536fa18d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738532"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342728"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -51,9 +51,17 @@ Azure File Sync エージェントと Azure とのチャンネルに関して特
 Azure File Sync は、Azure に到達さえできれば、その接続手段を問わず正しく機能します。さまざまなネットワーク特性 (帯域幅、待ち時間など) に応じた自動調整のほか、管理制御による微調整の手段も用意されています。 一部の機能については、現時点では利用することができません。 構成の対象として希望する具体的な動作がある場合は、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) でお聞かせください。
 
 ## <a name="proxy"></a>プロキシ
-Azure File Sync で現在サポートされるプロキシ設定はマシン単位となります。 このプロキシ設定は、Azure File Sync エージェントに対して透過的です。このプロキシではサーバーのトラフィック全体がルーティングされるためです。
+Azure File Sync では、アプリ固有のプロキシ設定とマシン全体のプロキシ設定がサポートされています。
 
-アプリ固有のプロキシ設定は現在開発中であり、今後リリースされる Azure File Sync エージェントでサポートされる予定です。 これにより、Azure File Sync のトラフィック専用のプロキシを構成できるようになります。
+マシン全体のプロキシ設定は、Azure File Sync エージェントに対して透過的です。このプロキシではサーバーのトラフィック全体がルーティングされるためです。
+
+アプリ固有のプロキシ設定を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 3.0.12.0 以降でサポートされ、エージェントのインストール中に構成するか、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
+
+アプリ固有のプロキシ設定を構成する PowerShell コマンドを次に示します。
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
 
 ## <a name="firewall"></a>ファイアウォール
 前のセクションで述べたように、送信方向のポート 443 を開放する必要があります。 さらに、ご利用のデータセンターやブランチ、リージョンのポリシーによっては、このポート上のトラフィックを特定のドメインに制限することが望ましい、または必須となる場合もあります。

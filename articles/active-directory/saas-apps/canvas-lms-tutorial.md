@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: e0b20acb29aaf489dd3f449f883c011a26b7862a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9811be78bd6260b17c462c077ed299dff8309b83
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223401"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>チュートリアル: Azure Active Directory と Canvas LMS の統合
 
@@ -102,15 +102,15 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
 
 1. Azure Portal の **[Canvas]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
 3. **[Canvas Domain and URLs] \(Canvas のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_url.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<tenant-name>.instructure.com` のパターンを使用して URL を入力します。
 
@@ -121,19 +121,20 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
  
 4. **[SAML 署名証明書]** セクションで、証明書の **THUMBPRINT** 値をコピーします。
 
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_general_400.png)
 
 6. **[Canvas Configuration] \(Canvas 構成)** セクションで、**[Configure Canvas] \(Canvas の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**パスワードの変更 URL、サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
 7. 別の Web ブラウザー ウィンドウで、Canvas 企業サイトに管理者としてログインします。
 
-8. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
+8. 
+  **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
    
     ![Canvas](./media/canvas-lms-tutorial/IC775990.png "Canvas")
 
@@ -205,7 +206,8 @@ Canvas の場合、ユーザー プロビジョニングは手動のタスクで
 
 1. **Canvas** テナントにログインします。
 
-2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
+2. 
+  **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
    
    ![Canvas](./media/canvas-lms-tutorial/IC775990.png "Canvas")
 
@@ -248,7 +250,7 @@ Canvas の場合、ユーザー プロビジョニングは手動のタスクで
 
 2. アプリケーションの一覧で、**[Canvas]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/canvas-lms-tutorial/tutorial_canvaslms_app.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -269,7 +271,7 @@ Canvas の場合、ユーザー プロビジョニングは手動のタスクで
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Canvas] タイルをクリックすると、Canvas アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

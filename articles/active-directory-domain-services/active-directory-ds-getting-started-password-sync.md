@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216142"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048935"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする
-前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュを Azure AD Domain Services との間で同期できるようにします。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、管理対象ドメインにサインインできます。
+前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュを Azure AD Domain Services との間で同期できるようにします。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
 
 対象となるユーザー アカウントがクラウド専用のアカウントであるか、オンプレミス ディレクトリとの間で Azure AD Connect を使って同期されたアカウントであるかによって、必要な手順は異なります。 
 
@@ -31,7 +31,8 @@ ms.locfileid: "36216142"
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- |---|
 | **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
-| **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [オンプレミス AD との間で同期されたユーザー アカウントのパスワード ハッシュを管理対象ドメインとの間で同期する](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
+| **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |
+  **&amp;#x2713;**[オンプレミス AD との間で同期されたユーザー アカウントのパスワード ハッシュをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
 
 <br>
 
@@ -40,8 +41,8 @@ ms.locfileid: "36216142"
 > Azure AD テナントにクラウドのみのユーザーとオンプレミス AD からのユーザーとが混在している場合、両方の手順を実行する必要があります。
 >
 
-## <a name="task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>タスク 5: 管理対象ドメインとの間でクラウド専用ユーザー アカウントのパスワード ハッシュの同期を有効にする
-Azure Active Directory Domain Services では、管理対象ドメインでユーザーを認証するために、NTLM および Kerberos 認証に適した形式のパスワード ハッシュが必要です。 テナントに対して Azure Active Directory Domain Services を有効にしない限り、Azure AD で NTLM または Kerberos 認証に必要な形式のパスワード ハッシュが生成または保存されることはありません。 明らかなセキュリティ上の理由から、Azure AD はパスワード資格情報をクリア テキスト形式でも保存しません。 そのため、Azure AD には、これらの NTLM または Kerberos パスワード ハッシュをユーザーの既存の資格情報に基づいて自動的に生成する方法がありません。
+## <a name="task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>タスク 5: マネージド ドメインとの間でクラウド専用ユーザー アカウントのパスワード ハッシュの同期を有効にする
+Azure Active Directory Domain Services では、マネージド ドメインでユーザーを認証するために、NTLM および Kerberos 認証に適した形式のパスワード ハッシュが必要です。 テナントに対して Azure Active Directory Domain Services を有効にしない限り、Azure AD で NTLM または Kerberos 認証に必要な形式のパスワード ハッシュが生成または保存されることはありません。 明らかなセキュリティ上の理由から、Azure AD はパスワード資格情報をクリア テキスト形式でも保存しません。 そのため、Azure AD には、これらの NTLM または Kerberos パスワード ハッシュをユーザーの既存の資格情報に基づいて自動的に生成する方法がありません。
 
 > [!NOTE]
 > **組織にクラウド専用ユーザー アカウントが存在する場合、Azure Active Directory Domain Services を使用する必要があるすべてのユーザーは、自分のパスワードを変更しなければなりません。** クラウド専用ユーザー アカウントとは、Azure Portal または Azure AD PowerShell コマンドレットを使って Azure AD ディレクトリに作成されたアカウントです。 そのようなユーザー アカウントは、オンプレミス ディレクトリとの間で同期されません。
@@ -75,10 +76,10 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
 
 5. **[送信]** をクリックします。
 
-パスワードを変更すると、数分後に Azure Active Directory Domain Services で新しいパスワードを使用できるようになります。 約 20 分後には、新しく変更したパスワードを使用して、管理対象ドメインに参加しているコンピューターにサインインできるようになります。
+パスワードを変更すると、数分後に Azure Active Directory Domain Services で新しいパスワードを使用できるようになります。 約 20 分後には、新しく変更したパスワードを使用して、マネージド ドメインに参加しているコンピューターにサインインできるようになります。
 
 ## <a name="related-content"></a>関連コンテンツ
-* [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [自分のパスワードを更新する方法](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Azure AD でのパスワード管理の概要](../active-directory/authentication/quickstart-sspr.md)
 * [Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Azure Active Directory Domain Services で管理されているドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)

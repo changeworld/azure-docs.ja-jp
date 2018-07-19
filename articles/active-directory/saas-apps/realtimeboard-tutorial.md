@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: cd287748c3630ed8164f17f9ba7b731aace77a0d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 00b0844deb8cc81f770f6c98f8b020f1402d2ff7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230119"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル: Azure Active Directory と RealtimeBoard の統合
 
@@ -114,7 +114,7 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
+    ![Configure single sign-on](./media/realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
 
     **[サインオン URL]** ボックスに、「`https://realtimeboard.com/sso/saml`」と入力します。
 
@@ -205,7 +205,7 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで RealtimeBoard のタイルをクリックすると、自動的に RealtimeBoard アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

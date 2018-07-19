@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e72429eb8aadb4749bc19a4536972bfe6006769b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc4b9ceaa48cd34930a620779019bdf3a90b4bf7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229429"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>チュートリアル: Azure Active Directory と Tango Analytics の統合
 
@@ -102,15 +102,15 @@ Tango Analytics で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Tango Analytics** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_samlbase.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_samlbase.png)
 
 3. **[Tango Analytics のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
 
     a. **[識別子]** テキストボックスに、値「`TACORE_SSO`」を入力します。
 
@@ -121,11 +121,11 @@ Tango Analytics で Azure AD のシングル サインオンを構成してテ�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_certificate.png) 
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/tangoanalytics-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_general_400.png)
 
 6. **Tango Analytics** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Tango Analytics サポート チーム](mailto:support@tangoanalytics.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -182,7 +182,7 @@ Tango Analytics で Azure AD のシングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **[Tango Analytics]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_app.png) 
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -203,7 +203,7 @@ Tango Analytics で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Tango Analytics] タイルをクリックすると、自動的に Tango Analytics アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3983055cd580c263d39b908c61a16ed14353c9a4
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23036667"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089648"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-security-group-view-cli.md)
+> - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループと VM で構成されている規則を監査および診断して、トラフィックが正しく許可または拒否されていることを確認する際に役立ちます。 この記事では、PowerShell を使用して、仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得する方法を説明します。
@@ -35,7 +34,7 @@ ms.locfileid: "23036667"
 
 このシナリオでは、`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットを実行してセキュリティ規則情報を取得します。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -43,7 +42,7 @@ ms.locfileid: "23036667"
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher の取得
 
-まず、Network Watcher インスタンスを取得します。 この変数は、`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
+最初の手順では、Network Watcher インスタンスを取得します。 この変数は、`Get-AzureRmNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -127,7 +126,7 @@ NetworkInterfaces : [
                     ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-nsg-auditing-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの自動検証の方法を確認する。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d6642231bf9d012b0015902c82d2bfde3b86285c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61719d482a4db1c737bbe38277f2ac3b2d684b63
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112260"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342435"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple デバイスのデプロイメントのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -189,7 +189,7 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
    * インターフェイスは正常な状態だが、有効になっていない場合、**ifIndex** の状態は **NotPresent** と表示されます。
    * インターフェイスが存在しない場合は、この一覧に表示されません。 StorSimple Device Manager サービスの UI では、このインターフェイスの状態は失敗として今までどおり表示されます。
 
-このコマンドレットを使用する方法の詳細については、Windows PowerShell コマンドレット リファレンスの「 [Get-NetAdapter](https://technet.microsoft.com/library/jj130867.aspx) 」を参照してください。
+このコマンドレットを使用する方法の詳細については、Windows PowerShell コマンドレット リファレンスの「[Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps)」を参照してください。
 
 次のセクションでは、 `Get-NetAdapter` コマンドレットの出力のサンプルを示します。
 

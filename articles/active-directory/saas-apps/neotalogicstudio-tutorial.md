@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 01987f3a5f2a37d7cf2b16202310b7d442c9d7a8
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5861d709e238e5da07cd6a44fefdcc456422ad9d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285833"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル: Azure Active Directory と Neota Logic Studio の統合
 
@@ -105,15 +105,15 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 
 1. Azure Portal の **Neota Logic Studio** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_samlbase.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_samlbase.png)
 
 3. **[Neota Logic Studio のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_url.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<sub domain>.neotalogic.com/a/<sub application>` のパターンを使用して URL を入力します。
 
@@ -124,11 +124,11 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_certificate.png) 
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/neotalogicstudio-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_general_400.png)
 
 6. アプリケーション用に構成された SSO を入手するには、[Neota Logic Studio サポート チーム](https://www.neotalogic.com/contact-us/)に連絡し、ダウンロードした**メタデータ XML** ファイルを提供してください。
 
@@ -184,7 +184,7 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 
 2. アプリケーションの一覧で **[Neota Logic Studio]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_app.png) 
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -204,7 +204,7 @@ Neota Logic Studio で Azure AD のシングル サインオンを構成して�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [Neota Logic Studio] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、Neota Logic Studio アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの [Neota Logic Studio] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、Neota Logic Studio アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

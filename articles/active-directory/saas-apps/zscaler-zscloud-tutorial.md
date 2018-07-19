@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308732"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
@@ -103,15 +103,15 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Zscaler ZSCloud** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
 3. **[Zscaler ZSCloud Domain and URLs (Zscaler ZSCloud のドメインと URL)]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
      **[サインオン URL]** ボックスに、ユーザーが ZScaler ZSCloud アプリケーションへのサインオンに使用する URL を入力します。
     
@@ -120,15 +120,15 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
 
 6. **[Zscaler ZSCloud Configuration (Zscaler ZSCloud 構成)]** セクションで、 **[Configure Zscaler ZSCloud (Zscaler ZSCloud を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、ZScaler ZSCloud 企業サイトに管理者としてログインします。
 
@@ -276,7 +276,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で、**[Zscaler ZSCloud]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -298,7 +298,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 
 アクセス パネルで Zscaler ZSCloud のタイルをクリックすると、自動的に Zscaler ZSCloud アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

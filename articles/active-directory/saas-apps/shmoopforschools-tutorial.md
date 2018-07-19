@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e9dc784d84c43600f3ba4fda92e023c01afe8995
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301142"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>チュートリアル: Azure Active Directory と Shmoop For Schools の統合
 
@@ -227,7 +227,7 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
 アクセス パネルで **[Shmoop For Schools]** タイルを選択すると、自動的に Shmoop For Schools アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

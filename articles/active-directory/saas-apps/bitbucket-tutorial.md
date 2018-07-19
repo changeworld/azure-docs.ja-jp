@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d18d41caf7a7fb3a821c388e786b3a45d30f4810
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 21b6adb98fdb973b75aa1d6db519777bab730d73
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221446"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
@@ -243,7 +243,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サイン
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAML SSO for Bitbucket by resolution GmbH] タイルをクリックすると、SAML SSO for Bitbucket by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

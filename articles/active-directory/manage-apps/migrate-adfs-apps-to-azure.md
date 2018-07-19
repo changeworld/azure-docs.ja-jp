@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 71fa305c0151ba2ff319694cdd3df55bf351e0c5
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d3548e7640fa8ab59f7b11c66cf1d9492f23cf99
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946272"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044370"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -202,7 +202,7 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 
 ![[割り当ての追加] ウィンドウ](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](../active-directory-saas-access-panel-introduction.md)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは http://myapps.microsoft.com にあります。 この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
+アクセス権を確認するには、ユーザーがサインインしているときに[アクセス パネル](../user-help/active-directory-saas-access-panel-introduction.md)に SaaS アプリが表示されるかどうかを調べます。 アクセス パネルは http://myapps.microsoft.com にあります。 この例では、ユーザーに Salesforce と ServiceNow の両方へのアクセス権が正常に割り当てられています。
 
 ![Salesforce と ServiceNow アプリが表示されているアクセス パネルの例](media/migrate-adfs-apps-to-azure/migrate8.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 97943bc17c9722ffcd8dc815ec67d033e8aa4fee
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 995765b70c6cf2379bf6d6702971ddacec7428d5
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234905"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342455"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -538,14 +538,31 @@ namespace CosmosDBSamplesV1
 
 ### <a name="input---c-script-examples"></a>入力 - C# スクリプトの例
 
-このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
+このセクションには、次の例が含まれています。
 
-* キュー トリガー、キュー メッセージからの ID の検索
-* キュー トリガー、SqlQuery を使用したキュー メッセージからの ID の検索
+* [キュー トリガー、文字列からの ID の検索](#queue-trigger-look-up-id-from-string-c-script)
+* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-c-script)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-c-script)
+* [HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得](#http-trigger-get-multiple-docs-using-documentclient-c-script)
+
+HTTP トリガーの例では、次のようなシンプルな `ToDoItem` タイプを参照します。
+
+```cs
+namespace CosmosDBSamplesV1
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-queue-message-c-script"></a>キュー トリガー、キュー メッセージからの ID の検索 (C# スクリプト)
+#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>キュー トリガー、文字列からの ID の検索 (C# スクリプト)
 
 次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
 
@@ -579,7 +596,7 @@ C# スクリプト コードを次に示します。
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-queue-message-using-sqlquery-c-script"></a>キュー トリガー、SqlQuery を使用したキュー メッセージからの ID の検索 (C# スクリプト)
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得 (C# スクリプト)
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
 
@@ -620,16 +637,276 @@ C# スクリプト コードを次に示します。
 
 [入力の例をスキップする](#input---attributes)
 
-### <a name="input---javascript-examples"></a>入力 - JavaScript の例
+#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP トリガー、クエリ文字列からの ID の検索 (C# スクリプト)
 
-このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
+次の例は、単一のドキュメントを取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
-* キュー トリガー、キュー メッセージからの ID の検索
-* キュー トリガー、SqlQuery を使用したキュー メッセージからの ID の検索
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}"
+    }
+  ],
+  "disabled": true
+}
+```
+
+C# スクリプト コードを次に示します。
+
+```cs
+using System.Net;
+
+public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    if (toDoItem == null)
+    {
+         log.Info($"ToDo item not found");
+    }
+    else
+    {
+        log.Info($"Found ToDo item, Description={toDoItem.Description}");
+    }
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-queue-message-javascript"></a>キュー トリガー、キュー メッセージからの ID の検索 (JavaScript)
+#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP トリガー、ルート データからの ID の検索 (C# スクリプト)
+
+次の例は、単一のドキュメントを取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、ルート データを使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+C# スクリプト コードを次に示します。
+
+```cs
+using System.Net;
+
+public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    if (toDoItem == null)
+    {
+         log.Info($"ToDo item not found");
+    }
+    else
+    {
+        log.Info($"Found ToDo item, Description={toDoItem.Description}");
+    }
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+[入力の例をスキップする](#input---attributes)
+
+#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得 (C# スクリプト)
+
+次の例は、ドキュメントの一覧を取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 クエリは、`SqlQuery` 属性プロパティで指定されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "sqlQuery": "SELECT top 2 * FROM c order by c._ts desc"
+    }
+  ],
+  "disabled": false
+}
+```
+
+C# スクリプト コードを次に示します。
+
+```cs
+using System.Net;
+
+public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoItem> toDoItems, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    foreach (ToDoItem toDoItem in toDoItems)
+    {
+        log.Info(toDoItem.Description);
+    }
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+[入力の例をスキップする](#input---attributes)
+
+#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得 (C# スクリプト)
+
+次の例は、ドキュメントの一覧を取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、Azure Cosmos DB バインドによって提供される `DocumentClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`DocumentClient` インスタンスは、書き込み操作に使用できます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "client",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "inout"
+    }
+  ],
+  "disabled": false
+}
+```
+
+C# スクリプト コードを次に示します。
+
+```cs
+#r "Microsoft.Azure.Documents.Client"
+
+using System.Net;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, DocumentClient client, TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
+
+    Uri collectionUri = UriFactory.CreateDocumentCollectionUri("ToDoItems", "Items");
+    string searchterm = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "searchterm", true) == 0)
+        .Value;
+
+    if (searchterm == null)
+    {
+        return req.CreateResponse(HttpStatusCode.NotFound);
+    }
+
+    log.Info($"Searching for word: {searchterm} using Uri: {collectionUri.ToString()}");
+    IDocumentQuery<ToDoItem> query = client.CreateDocumentQuery<ToDoItem>(collectionUri)
+        .Where(p => p.Description.Contains(searchterm))
+        .AsDocumentQuery();
+
+    while (query.HasMoreResults)
+    {
+        foreach (ToDoItem result in await query.ExecuteNextAsync())
+        {
+            log.Info(result.Description);
+        }
+    }
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+[入力の例をスキップする](#input---attributes)
+
+### <a name="input---javascript-examples"></a>入力 - JavaScript の例
+
+このセクションには、次の例が含まれています。
+
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-javascript)
+* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
+* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+
+[入力の例をスキップする](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>キュー トリガー、JSON からの ID の検索 (JavaScript)
 
 次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
 
@@ -672,7 +949,126 @@ JavaScript コードを次に示します。
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-queue-message-using-sqlquery-javascript"></a>キュー トリガー、SqlQuery を使用したキュー メッセージからの ID の検索 (JavaScript)
+#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP トリガー、クエリ文字列からの ID の検索 (JavaScript)
+
+次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}"
+    }
+  ],
+  "disabled": true
+}
+```
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+[入力の例をスキップする](#input---attributes)
+
+#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP トリガー、ルート データからの ID の検索 (JavaScript)
+
+次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードを次に示します。
+
+```cs
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+[入力の例をスキップする](#input---attributes)
+
+
+
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得 (JavaScript)
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
 
@@ -794,9 +1190,9 @@ Azure Cosmos DB 出力バインドを使用すると、Azure Cosmos DB データ
 >[!NOTE]
 > Cosmos DB アカウントで MongoDB API を使用している場合は、Azure Cosmos DB の入力または出力バインディングを使用しないでください。 データの破損を引き起こす可能性があります。
 
-## <a name="output---example"></a>出力 - 例
+## <a name="output---examples"></a>出力 - 例
 
-言語固有の例をご覧ください。
+言語固有の例を参照してください。
 
 * [C#](#output---c-examples)
 * [C# スクリプト (.csx)](#output---c-script-examples)
@@ -901,6 +1297,15 @@ namespace CosmosDBSamplesV1
 
 ### <a name="output---c-script-examples"></a>出力 - C# スクリプトの例
 
+このセクションには、次の例が含まれています。
+
+* キュー トリガー、1 つのドキュメントの書き込み
+* キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
+
+[出力の例をスキップする](#output---attributes)
+
+#### <a name="queue-trigger-write-one-doc-c-script"></a>キュー トリガー、1 つのドキュメントの書き込み (C# スクリプト)
+
 次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
 
 ```json
@@ -961,7 +1366,64 @@ C# スクリプト コードを次に示します。
     }
 ```
 
+#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
+
 複数のドキュメントを作成するために `ICollector<T>` または `IAsyncCollector<T>` にバインドできます。`T` は、サポートされている型のいずれかです。
+
+この例では、次のようなシンプルな `ToDoItem` タイプを参照します。
+
+```cs
+namespace CosmosDBSamplesV1
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+function.json ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "toDoItemsIn",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "todoqueueforwritemulti",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "documentDB",
+      "name": "toDoItemsOut",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+C# スクリプト コードを次に示します。
+
+```cs
+using System;
+
+public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> toDoItemsOut, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed {toDoItemsIn?.Length} items");
+
+    foreach (ToDoItem toDoItem in toDoItemsIn)
+    {
+        log.Info($"Description={toDoItem.Description}");
+        await toDoItemsOut.AddAsync(toDoItem);
+    }
+}
+```
 
 [出力の例をスキップする](#output---attributes)
 

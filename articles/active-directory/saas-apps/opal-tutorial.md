@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f33d6338e00e6041c7b63776882c56566920990
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 00a32d853b0810a484dbd03734c5ef278be36ee5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214401"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opal"></a>チュートリアル: Azure Active Directory と Opal の統合
 
@@ -226,7 +226,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Opal のタイルをクリックすると、Opal アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

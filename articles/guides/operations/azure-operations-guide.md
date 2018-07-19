@@ -3,7 +3,7 @@ title: Azure IT オペレーター向けファースト ステップ ガイド |
 description: Azure IT オペレーター向けファースト ステップ ガイド
 services: ''
 documentationcenter: ''
-author: iainfoulds
+author: themichaelbender-ms
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: iainfou
-ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: mibender
+ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099495"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072336"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
@@ -141,13 +141,11 @@ Azure サービスの詳細については、「[Azure サービスのドキュ�
 
 ### <a name="datacenters-and-regions"></a>データセンターとリージョン
 
-
 Azure は、世界中のさまざまな地域で一般的に利用できるグローバル クラウド プラットフォームです。 Azure でサービス、アプリケーション、VM をプロビジョニングするとき、リージョン (地域) を選択するように求められます。 選択したリージョンは、アプリケーションが実行される特定のデータセンターに相当します。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
 
 Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
 
 ### <a name="azure-portal"></a>Azure ポータル
-
 
 Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
 
@@ -165,7 +163,6 @@ Azure Resource Manager テンプレートは、リソース グループへの�
 
 ### <a name="automation"></a>Automation
 
-
 Azure Portal を利用したリソースの作成、管理、削除に加え、PowerShell または Azure コマンド ライン インターフェイス (CLI) を利用し、リソースの作成、管理、削除を自動化することもできます。
 
 **Azure PowerShell**
@@ -178,9 +175,7 @@ Azure コマンド ライン インターフェイスは、コマンド ライ�
 
 **REST API** Azure は、Azure Portal UI をサポートする REST API のセットに基づいて構築されています。 そのような REST API の多くもサポートされており、あらゆるインターネット対応デバイスから Azure リソースとアプリをプログラミングでプロビジョニングしたり、管理したりできます。 詳細については、「[Azure REST SDK リファレンス](https://docs.microsoft.com/rest/api/index)」を参照してください。
 
-
 ## <a name="azure-subscriptions"></a>Azure サブスクリプション
-
 
 サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 管理者に加え、RBAC 経由で Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
 
@@ -200,10 +195,7 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 **エンタープライズ契約**: エンタープライズ契約では、向こう 1 年、Azure の一定数のサービスを使用する契約を結び、料金を前払いします。 契約分はその年を通して使用します。 契約額を超えた場合、超過分は後払いできます。 契約額によっては、Azure のサービスで割り引きが受けられます。
 
-
-
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure サブスクリプションに管理アクセスを与える
-
 
 複数のアカウント管理者ロールが利用できます。ロールはいつでも変更できます。 2 つの主要ロール:
 
@@ -215,13 +207,11 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Azure Portal で請求情報を表示する
 
-
 Azure の使用で重要になることの 1 つが請求情報を表示する機能です。 Azure Portal では、Azure の課金情報の詳細を確認できます。
 
 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../../billing/billing-download-azure-invoice-daily-usage-date.md)」を参照してください。
 
 ### <a name="get-billing-information-from-billing-apis"></a>課金 API から課金情報を取得する
-
 
 課金情報はポータルで表示する以外に、Azure Billing REST API でスクリプトまたはプログラムを利用し、アクセスするという方法があります。
 
@@ -262,7 +252,6 @@ Resource Manager はデプロイ機能も備えています。デプロイをカ
 -   同じタグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。
 
 ### <a name="tips-for-creating-resource-groups"></a>リソース グループ作成のヒント
-
 
 リソース グループ関連で決定するときは、以下の助言について検討してください。
 
@@ -347,7 +336,6 @@ Azure Virtual Machines のデプロイには、Azure Portal、Azure PowerShell �
 Azure Portal で仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 構成が異なる、さまざまなオペレーティング システム イメージを選択できます。 ストレージ要件とネットワーク要件はすべて、デプロイ中に構成されます。 詳細については、「Create a virtual machine in the Azure portal」 (Azure Portal で仮想マシンを作成する) の [Windows](../../virtual-machines/windows/quick-create-portal.md) と [Linux](../../virtual-machines/linux/quick-create-portal.md) の項目をご覧ください。
 
 Azure Portal から仮想マシンをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
-
 
 **PowerShell**
 

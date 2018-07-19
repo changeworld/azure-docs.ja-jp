@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 260656ed17fecb0cac30b7970e9a2b76be42d8ea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fe1960fb07a7cb62246f0eefe9563d6ee2b13f5c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230160"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 
@@ -104,15 +104,15 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
 1. Azure Portal の **SAML SSO for Confluence by resolution GmbH** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_samlbase.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_samlbase.png)
 
 3. **[SAML SSO for Confluence by resolution GmbH のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_1.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_1.png)
 
     a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
@@ -120,7 +120,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_2.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_url_2.png)
 
     **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
      
@@ -129,55 +129,55 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_certificate.png) 
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_general_400.png)    
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_general_400.png)    
     
 7. 別の Web ブラウザー ウィンドウで、**SAML SSO for Confluence by resolution GmbH 管理者ポータル**に管理者としてログインします。
 
 8. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
     
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon1.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon1.png)
 
 9. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされます。 パスワードを入力し、**[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon2.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon2.png)
 
 10. **[ATLASSIAN MARKETPLACE]** タブで、**[Find new add-ons]\(新しいアドオンの検索\)** をクリックします。 
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon.png)
 
 11. **[SAML Single Sign On (SSO) for Confluence]\(Confluence の SAML シングル サインオン \(SSO\)\)** を検索し、**[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon7.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon7.png)
 
 12. プラグインのインストールが開始されます。 **[閉じる]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon8.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon9.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon9.png)
 
-13. **[Manage]** をクリックします。
+13. **Manage**をクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon10.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon10.png)
     
 14. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon11.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon11.png)
 
 15. この新しいプラグインは、**[USERS & SECURITY]\(ユーザーとセキュリティ\)** タブにも表示されます。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon3.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon3.png)
     
 16. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで **[Add new IdP]\(新しい IDP の追加\)** ボタンをクリックし、ID プロバイダーの設定を構成します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon4.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon4.png)
 
 17. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5a.png)
  
     a. IDP の種類として **[Azure AD]** を設定します。
     
@@ -189,11 +189,11 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
     
 18. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5b.png)
 
 19. **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5c.png)
 
     a. **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
 
@@ -205,19 +205,19 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
     
 20. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[次へ]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5d.png)
     
 21. **[User creation and update]\(ユーザーの作成と更新\)** ページで、**[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。   
     
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6a.png)
     
 22. **[Test your settings]\(設定のテスト\)** ページで、**[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックしてここではユーザー テストをスキップします。 テストは次のセクションで実行し、Azure Portal でいくつか設定する必要があります。 
     
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6b.png)
     
 23. 表示される **[Skipping the test means...]\(テストをスキップすると...\)** ダイアログ ボックスで、**[OK]** をクリックします。
     
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/addon6c.png)
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6c.png)
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -296,7 +296,7 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 
 2. アプリケーションの一覧で **[SAML SSO for Confluence by resolution GmbH]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_app.png) 
+    ![Configure single sign-on](./media/samlssoconfluence-tutorial/tutorial_samlssoconfluence_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -317,7 +317,7 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAML SSO for Confluence by resolution GmbH] タイルをクリックすると、SAML SSO for Confluence by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

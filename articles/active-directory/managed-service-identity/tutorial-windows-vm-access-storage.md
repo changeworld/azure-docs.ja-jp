@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 823b647dbc171050f7b36cfc729b0d3529e1f296
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 94e16156e8accc2460005cb1927a621ec7921c71
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901230"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043994"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Windows VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -54,7 +54,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5.  仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
 6.  VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
 
-    ![イメージ テキスト](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
 
@@ -65,7 +65,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
 4. **[保存]** をクリックして構成を保存します。
 
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
@@ -78,7 +78,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
 
-    ![新しいストレージ アカウントを作成する](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![新しいストレージ アカウントを作成する](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>ストレージ アカウントに BLOB コンテナーを作成する
 
@@ -89,7 +89,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. ページの上部にある **[+ コンテナー]** をクリックすると、[新しいコンテナー] パネルがスライドして現れます。
 4. コンテナーに名前を付け、アクセス レベルを選択して、**[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
 
-    ![ストレージ コンテナーの作成](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![ストレージ コンテナーの作成](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>ストレージ アカウント キーを使用するために VM の MSI にアクセス権を付与する 
 
@@ -103,7 +103,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を [すべてのリソース グループ] に設定します。  
 7. 最後に、**[選択]** のドロップダウンで Windows 仮想マシンを選択し、**[保存]** をクリックします。 
 
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![イメージ テキスト](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>VM ID を使用してアクセス トークンを取得し、そのアクセス トークンを使用して Azure Resource Manager を呼び出す 
 

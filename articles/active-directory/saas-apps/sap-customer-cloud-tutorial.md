@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 661bb15f93c505ad069e826b1506f6e69c5339e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8855a82c1490c916e040f61c07e1116d9125e7e6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223350"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>チュートリアル: Azure Active Directory と SAP Cloud for Customer の統合
 
@@ -102,15 +102,15 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 1. Azure Portal の **SAP Cloud for Customer** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
 
 3. **[SAP Cloud for Customer のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<server name>.crm.ondemand.com` のパターンを使用して URL を入力します。
 
@@ -121,7 +121,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 4. **[User Attributes (ユーザー属性)]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
 
     a. **[ユーザー識別子]** リストで、**[ExtractMailPrefix()]** 関数を選択します。
 
@@ -130,15 +130,15 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
 
 7. **[SAP Cloud for Customer Configuration (SAP Cloud for Customer 構成)]** セクションで、**[Configure SAP Cloud for Customer (SAP Cloud for Customer を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
 
 8. 構成された SSO を取得するには、次の手順を実行します。
    
@@ -148,7 +148,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
    
     c. **[New Identity Provider (新しい ID プロバイダー)]** をクリックし、Azure Portal からダウンロードしたメタデータの XML ファイルを選択します。 メタデータをインポートすることによって、必要な署名証明書と暗号化証明書が自動的にアップロードされます。
    
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
     d. Azure Active Directory は、SAML 要求で Assertion Consumer Service URL 要素を必要とするため、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** チェック ボックスをオンにします。
    
@@ -158,11 +158,11 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
    
     g. **[My System (自分のシステム)]** タブをクリックします。
    
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
     h. **[Azure AD Sign On URL (Azure AD サインオン URL)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
    
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
     i. ユーザー ID とパスワードでログオンするか、SSO でログオンするかを従業員が手動で選択できるかどうかを、**[Manual Identity Provider Selection (ID プロバイダーの手動選択)]** を選択して指定します。
    
@@ -239,7 +239,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 2. アプリケーションの一覧で **[SAP Cloud for Customer]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -260,7 +260,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SAP Cloud for Customer] タイルをクリックすると、自動的に SAP Cloud for Customer アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

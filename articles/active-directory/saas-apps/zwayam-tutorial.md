@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: jeedes
-ms.openlocfilehash: f51f44e7564991231746b8448d26057995b15510
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 45adcc4566fc90f2eff1938297e43e516c9cf8c4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220986"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>チュートリアル: Azure Active Directory と Zwayam の統合
 
@@ -204,7 +204,7 @@ Zwayam で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Zwayam] タイルをクリックすると、Zwayam アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

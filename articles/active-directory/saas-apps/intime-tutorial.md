@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 14ac5aab1488c86949f44f712d80966719f60c4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c2d8470581fb5bb25b6c1271079508b0e951694d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231444"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>チュートリアル: Azure Active Directory と InTime の統合
 
@@ -206,7 +206,7 @@ InTime で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [InTime] タイルをクリックすると、InTime アプリケーションのログイン ページが表示されます。 **[ログイン]** ボタンをクリックすると、ボタンの一覧に一連の IdP が表示されます。 [InTime サポート チーム](mailto:hdollard@intimesoft.com)から提供された **IDP 名**をクリックして InTime アプリケーションにログインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [InTime] タイルをクリックすると、InTime アプリケーションのログイン ページが表示されます。 **[ログイン]** ボタンをクリックすると、ボタンの一覧に一連の IdP が表示されます。 [InTime サポート チーム](mailto:hdollard@intimesoft.com)から提供された **IDP 名**をクリックして InTime アプリケーションにログインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

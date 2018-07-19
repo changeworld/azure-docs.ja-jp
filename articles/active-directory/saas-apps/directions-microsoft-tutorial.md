@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 282869295f26f85683a2d28706280c4bf62fa54b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b83f452300295078e4edf797ec2ef2f0c5223031
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221378"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>チュートリアル: Azure Active Directory と Directions on Microsoft の統合
 
@@ -102,15 +102,15 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
 
 1. Azure Portal の **Directions on Microsoft** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
+    ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
 
 3. **[Directions on Microsoft のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
+    ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     |  |
@@ -129,11 +129,11 @@ Directions on Microsoft で Azure AD のシングル サインオンを構成し
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
+    ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/directions-microsoft-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_general_400.png)
 
 6. **Directions on Microsoft** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Directions on Microsoft サポート チーム](mailto:service@DirectionsOnMicrosoft.com)に送信する必要があります。 Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
     
@@ -195,7 +195,7 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
 2. アプリケーション一覧で **[Directions on Microsoft]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
+    ![Configure single sign-on](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -217,7 +217,7 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
  
 アクセス パネルの [Directions on Microsoft] タイルをクリックすると、Directions on Microsoft アプリケーションに自動的にサインオンされます。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

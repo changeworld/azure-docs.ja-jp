@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 6945966d4a701ea6e2684b7da766c8b6c9f9a283
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099611"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049050"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>ユーザーまたはグループに 2 段階認証を要求する方法
 
@@ -36,9 +36,9 @@ ms.locfileid: "37099611"
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-| 状態 | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
+| Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:|:---:|:---:|:--:|:--:|
-| 無効 |新しいユーザーの既定の状態は、Azure MFA に登録されていません。 |いいえ  |いいえ  |いいえ  |
+| Disabled |新しいユーザーの既定の状態は、Azure MFA に登録されていません。 |いいえ  |いいえ  |いいえ  |
 | 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
 | 適用 |ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 |はい。  アプリはアプリ パスワードを必要とします。 |はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
 
@@ -71,14 +71,14 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 5. 開いたポップアップ ウィンドウで選択内容を確認します。 
 
-ユーザーを有効にした後は、ユーザーにメールで通知します。 次回サインインしたときに登録を求められることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 ユーザーが参照できるように、[Azure MFA エンドユーザー ガイド](end-user/current/multi-factor-authentication-end-user.md)に関するページのリンクを含めることもできます。
+ユーザーを有効にした後は、ユーザーにメールで通知します。 次回サインインしたときに登録を求められることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 ユーザーが参照できるように、[Azure MFA エンドユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)に関するページのリンクを含めることもできます。
 
 ### <a name="use-powershell"></a>PowerShell の使用
 [Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、`$st.State` を変更します。 状態は 3 つあります。
 
 * 有効
 * 適用
-* 無効  
+* Disabled  
 
 ユーザーを直接 "*適用*" の状態に移さないでください。 "適用" 状態に移行しても、ユーザーが MFA の登録を終えておらず、[アプリのパスワード](howto-mfa-mfasettings.md#app-passwords)を取得していないため、ブラウザーベースでないアプリが動作を停止します。 
 

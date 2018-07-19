@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 64f47954d3d8c393bd5bf236fbd265e49f10fe5c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4936e8d3c48486247677cf072513b7e450f1bf17
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211409"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>チュートリアル: Azure Active Directory と Anaplan の統合
 
@@ -102,15 +102,15 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Anaplan** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_samlbase.png)
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_anaplan_samlbase.png)
 
 3. **[Anaplan のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_url.png)
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_anaplan_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://sdp.anaplan.com/frontdoor/saml/<tenant name>` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_certificate.png) 
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_anaplan_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_general_400.png)
 
 6. **[Anaplan 構成]** セクションで、**[Anaplan の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_configure.png) 
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_anaplan_configure.png) 
 
 7. **Anaplan** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL**、および**サインアウト URL** を [Anaplan サポート チーム](mailto:support@anaplan.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -185,7 +185,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[Anaplan]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/anaplan-tutorial/tutorial_anaplan_app.png) 
+    ![Configure single sign-on](./media/anaplan-tutorial/tutorial_anaplan_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -207,7 +207,7 @@ Anaplan で Azure AD のシングル サインオンを構成してテストす�
 
 アクセス パネルで Anaplan のタイルをクリックすると、自動的に Anaplan アプリケーションにサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

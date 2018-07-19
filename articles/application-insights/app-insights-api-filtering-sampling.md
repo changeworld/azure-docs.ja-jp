@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d46ff5563df1423e3c01ba945b328b748b5979b4
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294098"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091573"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -54,7 +54,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
     テレメトリ プロセッサが処理のチェーンを構築することに注意してください。 テレメトリ プロセッサをインスタンス化するときは、リンクをチェーン内の次のプロセッサに渡します。 テレメトリ データ ポイントが Process メソッドに渡されると、作業が実行され、そのチェーンの次のテレメトリ プロセッサが呼び出されます。
 
-    ``` C#
+    ```csharp
 
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -101,7 +101,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
     ```
 1. 次の内容を ApplicationInsights.config に挿入します
 
-```XML
+```xml
 
     <TelemetryProcessors>
       <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
@@ -141,7 +141,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 #### <a name="synthetic-requests"></a>人工的な要求
 ボットと Web テストを除外します。 メトリックス エクスプローラーで人工的なソースを除外することもできますが、SDK でそのソースをフィルター処理することでトラフィックが削減されます。
 
-``` C#
+```csharp
 
     public void Process(ITelemetry item)
     {
@@ -182,7 +182,7 @@ public void Process(ITelemetry item)
 >
 >
 
-``` C#
+```csharp
 
 public void Process(ITelemetry item)
 {
@@ -255,6 +255,7 @@ public void Process(ITelemetry item)
 
 ApplicationInsights.config で:
 
+```xml
     <ApplicationInsights>
       <TelemetryInitializers>
         <!-- Fully qualified type name, assembly name: -->
@@ -262,6 +263,7 @@ ApplicationInsights.config で:
         ...
       </TelemetryInitializers>
     </ApplicationInsights>
+```
 
 *または、* Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 

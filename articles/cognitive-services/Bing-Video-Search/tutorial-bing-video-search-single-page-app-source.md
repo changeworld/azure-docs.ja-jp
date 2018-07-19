@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373128"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112462"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
 
 これは、Bing Video Search の[単一ページ アプリのチュートリアル](tutorial-bing-video-search-single-page-app.md)で説明した完全なソース コードです。 アプリを実行するには、メモ帳または別のテキスト エディターにソース コードをコピーし、`bing.html` として保存します。 保存したファイルを、Microsoft Edge やその他一般的なブラウザーで開きます。
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

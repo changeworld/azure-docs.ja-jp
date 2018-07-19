@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 2bc4f42b0a22ce804db9290728944575888f9c72
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 1df301e197c90970aa1e73620f94f977ecd34ba0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287448"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>チュートリアル: Azure Active Directory と LinkedIn Sales Navigator の統合
 
@@ -102,25 +102,25 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 1. Azure Portal で、**LinkedIn Sales Navigator** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択して、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
 3. 別の Web ブラウザーのウィンドウで、管理者として **LinkedIn Sales Navigator** テナントにサインオンします。
 
 4. **[Account Center (アカウント センター)]** で、**[Settings (設定)]** の下の **[Global Settings (グローバル設定)]** をクリックします。 さらに、ドロップダウン リストから **[Sales Navigator]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
 6. アプリケーションを **IDP** 開始モードで構成する場合は、Azure Portal の **[LinkedIn Sales Navigator のドメインと URL]** セクションで次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
     a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
@@ -128,13 +128,13 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 7. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
     **[サインオン URL]** ボックスに、`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator` のパターンを使用して値を入力します。
 
 8. **LinkedIn Sales Navigator** アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、例を示しています。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、LinkedIn Sales Navigator はこれがユーザーの電子メール アドレスにマップされることを想定します。 一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。 
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
     
 9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 ユーザーは **email**、**department**、**firstname**、**lastname** という名前の 4 つの要求を追加する必要があり、値はそれぞれ **user.mail**、**user.department**、**user.givenname**、**user.surname** にマップします。
 
@@ -163,7 +163,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
     a. 属性をクリックして、**[属性の編集]** ウィンドウを開きます。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/url_update.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
     b. **namespace** から URL の値を削除します。
     
@@ -171,7 +171,7 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 11. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
 12. **[保存]** ボタンをクリックします。
 
@@ -179,11 +179,11 @@ LinkedIn Sales Navigator で Azure AD のシングル サインオンを構成�
 
 13. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 **[Upload XML file (XML ファイルのアップロード)]** をクリックして、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 14. **[ON (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[Not Connected (未接続)]** から **[Connected (接続済み)]** に変更されます
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
@@ -241,7 +241,7 @@ Linked Sales Navigator アプリケーションでは、ジャストインタイ
 
 2. アプリケーションの一覧で **[LinkedIn Sales Navigator]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -261,7 +261,7 @@ Linked Sales Navigator アプリケーションでは、ジャストインタイ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [LinkedIn Sales Navigator] タイルをクリックすると、個人用の LinkedIn アカウントの詳細を指定した [Organizational (組織)] ページにリダイレクトします。 個人アカウントが LinkedIn ビジネス アカウントにリンクされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [LinkedIn Sales Navigator] タイルをクリックすると、個人用の LinkedIn アカウントの詳細を指定した [Organizational (組織)] ページにリダイレクトします。 個人アカウントが LinkedIn ビジネス アカウントにリンクされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

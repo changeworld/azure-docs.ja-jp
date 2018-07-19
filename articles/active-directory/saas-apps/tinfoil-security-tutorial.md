@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a86d98bbdedc2200020aeeb1e561c3786a150
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218753"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル: Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -99,7 +99,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure ポータルの **TINFOIL SECURITY** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -107,7 +107,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 3. アプリは Azure と事前に統合済みであるため、**[TINFOIL SECURITY のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[Configure Single Sign-On]](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
+    ![Configure single sign-on](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
 4. **[SAML 署名証明書]** セクションで、**[拇印]** の値をコピーします。
@@ -252,7 +252,7 @@ Azure AD ユーザーが TINFOIL SECURITY にログインできるようにす�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TINFOIL SECURITY] タイルをクリックすると、TINFOIL SECURITY アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [TINFOIL SECURITY] タイルをクリックすると、TINFOIL SECURITY アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -28,14 +28,6 @@
 ### サポート  
 #### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 
-### 発行ガイド  
-#### [Azure Marketplace コンサルティング サービス](consulting-services.md)  
-#### [Azure Marketplace SaaS アプリの技術的な発行ガイド](marketplace-saas-applications-technical-publishing-guide.md) 
-#### [Azure Active Directory を使用した Marketplace 試用版の有効化](./enable-trial-using-azure-ad.md)  
-
-### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
-#### [推奨されるソリューション](./preferred-solutions.md) 
-
 ## [クラウド パートナー ポータル](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 
 ## リソース  

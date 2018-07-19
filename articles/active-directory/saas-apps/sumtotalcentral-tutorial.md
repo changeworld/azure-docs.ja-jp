@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 000f9b113d599181fe2e0cda10b39a2c4667a2ca
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8cc37bbabd33fbf9e05132f0dfed575d03e93f4c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227889"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>チュートリアル: Azure Active Directory と SumTotalCentral の統合
 
@@ -202,7 +202,7 @@ SumTotalCentral で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SumTotalCentral] タイルをクリックすると、自動的に SumTotalCentral アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b45eb87af7ed56a6641ffcaeb6ea47c3d07389c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 120acc30c968670cd81fac4c45e246991f5f9c81
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226209"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>チュートリアル: Azure Active Directory と myPolicies の統合
 
@@ -102,15 +102,15 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **myPolicies** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_samlbase.png)
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_samlbase.png)
 
 3. **[myPolicies のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_url.png)
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_url.png)
 
     a. **[識別子]** ボックスに、`https://<tenantname>.mypolicies.com/` の形式で URL を入力します。
 
@@ -121,7 +121,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
 
 4. myPolicies アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。 
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_attribute.png)
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_attribute.png)
 
 5. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
 
@@ -134,7 +134,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
     
     a. 属性をクリックして、**[属性の編集]** ダイアログを開きます。
     
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_attribute_05.png)
     
     b. **[名前空間]** から URL の値を削除します。
     
@@ -142,15 +142,15 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
     
 6. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_certificate.png) 
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_general_400.png)
 
 8. **[myPolicies 構成]** セクションで、**[myPolicies の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_configure.png) 
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_configure.png) 
 
 9. **myPolicies** 側にシングルサインオンを構成するには、ダウンロードされた**証明書 (Base64)** および **SAML シングル サインオン サービス URL** を [myPolicies サポート チーム](mailto:support@mypolicies.com)に送信する必要があります。 
 
@@ -207,7 +207,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[myPolicies]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/mypolicies-tutorial/tutorial_mypolicies_app.png) 
+    ![Configure single sign-on](./media/mypolicies-tutorial/tutorial_mypolicies_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -228,7 +228,7 @@ myPolicies で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで myPolicies のタイルをクリックすると、自動的に myPolicies アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

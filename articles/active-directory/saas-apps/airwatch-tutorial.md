@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 4073fbb534ae712f8a5cad6c2e4aa750cec365b7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3bbcbb70759e7a995797cf89ad75a2a39314927
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213286"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル: Azure Active Directory と AirWatch の統合
 
@@ -103,15 +103,15 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **AirWatch** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_samlbase.png)
+    ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_samlbase.png)
 
 3. **[AirWatch Domain and URLs]\(AirWatch のドメインと URL\)** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_url.png)
+    ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode` のパターンを使用して URL を入力します。
 
@@ -122,11 +122,11 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_certificate.png) 
+    ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_certificate.png) 
 
 5. **[AirWatch Configuration]\(AirWatch 構成\)** セクションで、**[Configure AirWatch]\(AirWatch を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_configure.png) 
+    ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_configure.png) 
 
 6. **[保存]** ボタンをクリックします。
 
@@ -266,7 +266,7 @@ Azure AD ユーザーが AirWatch にログインできるようにするには�
 
 2. アプリケーションの一覧で **[AirWatch]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/airwatch-tutorial/tutorial_airwatch_app.png) 
+    ![Configure single sign-on](./media/airwatch-tutorial/tutorial_airwatch_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -286,7 +286,7 @@ Azure AD ユーザーが AirWatch にログインできるようにするには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 
 ## <a name="additional-resources"></a>その他のリソース

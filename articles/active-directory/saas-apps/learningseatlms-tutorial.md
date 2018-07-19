@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d1a15617830f7b517210c7e86146a88d38ae8343
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286247"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>チュートリアル: Azure Active Directory と Learning Seat LMS の統合
 
@@ -101,15 +101,15 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 
 1. Azure Portal の **Learning Seat LMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
 
 3. **[Learning Seat LMS Domain and URLs]\(Learning Seat LMS のドメインと URL\)** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.learningseatlms.com` の形式で URL を入力します。
 
@@ -117,7 +117,7 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.learningseatlms.com` のパターンを使用して URL を入力します。
      
@@ -126,11 +126,11 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_general_400.png)
 
 7. **Learning Seat LMS** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Learning Seat サポート チーム](http://help.learningseatlms.com/help)に送信する必要があります。
 
@@ -187,7 +187,7 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 
 2. アプリケーションの一覧で **[Learning Seat LMS]\(Learning Seat LMS\)** を選択します。
 
-    ![[Configure Single Sign-On]](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -207,7 +207,7 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [Learning Seat LMS] タイルをクリックすると、自動的に Learning Seat LMS アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [Learning Seat LMS] タイルをクリックすると、自動的に Learning Seat LMS アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

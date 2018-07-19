@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: f156f8dfdde5f9b13494d837c64c0f2117e4d1d7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0ad1c1e66ac0719889760d4685607bd6e5f39f1f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219025"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>チュートリアル: Azure Active Directory と Projectplace の統合
 
@@ -102,15 +102,15 @@ Projectplace で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **Projectplace** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/projectplace-tutorial/tutorial_projectplace_samlbase.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_samlbase.png)
 
 3. **[Projectplace のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/projectplace-tutorial/tutorial_projectplace_url.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company>.projectplace.com` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Projectplace で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/projectplace-tutorial/tutorial_projectplace_certificate.png) 
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/projectplace-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_general_400.png)
 
 7. **Projectplace** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Projectplace サポート チーム](https://success.planview.com/Projectplace/Support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
 2. アプリケーションの一覧で **[Projectplace]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/projectplace-tutorial/tutorial_projectplace_app.png) 
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -228,7 +228,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Projectplace] タイルをクリックすると、自動的に Projectplace アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

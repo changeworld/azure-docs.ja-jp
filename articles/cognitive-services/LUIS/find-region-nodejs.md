@@ -1,6 +1,6 @@
 ---
 title: Language Understanding (LUIS) 境界での Node.js による LUIS リージョンの検索 | Microsoft Docs
-description: LUIS のサブスクリプション キーとアプリケーション ID で公開リージョンをプログラムによって検索します。
+description: LUIS のエンドポイント キーとアプリケーション ID で公開リージョンをプログラムによって検索します。
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 18ee324c10f074601c0c04573ca1a5266481f21c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6d85e6007b3e85a1b55997541e721ad57c22dddf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2018
-ms.locfileid: "35378733"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111747"
 ---
 # <a name="region-can-be-determined-from-api-call"></a>API 呼び出しからリージョンを特定可能 
 LUIS アプリ ID と LUIS サブスクリプション ID がある場合は、エンドポイントのクエリに使用するリージョンを見つけることができます。
@@ -25,19 +25,19 @@ LUIS アプリ ID と LUIS サブスクリプション ID がある場合は、�
 ## <a name="luis-endpoint-query-strategy"></a>LUIS エンドポイントのクエリ戦略
 各 LUIS エンドポイントのクエリに以下が必要です。
 
-* サブスクリプション キー
+* エンドポイント キー
 * アプリ ID
 * リージョン
 
-LUIS エンドポイント クエリで使用されているサブスクリプション キーとアプリ ID が正しく、リージョンが誤っている場合、応答コードは 401 です。 401 要求は、サブスクリプション クォータにはカウントされません。 この要求を、すべてのリージョンをポーリングして正しいリージョンを見つける戦略に変更します。 正しいリージョンは、2xx 状態コード返す要求だけです。 
+LUIS エンドポイント クエリで使用されているエンドポイント キーとアプリ ID が正しく、リージョンが誤っている場合、応答コードは 401 です。 401 要求は、サブスクリプション クォータにはカウントされません。 この要求を、すべてのリージョンをポーリングして正しいリージョンを見つける戦略に変更します。 正しいリージョンは、2xx 状態コード返す要求だけです。 
 
 |応答コード|parameters|
 |--|--|
-|2xx|正しいサブスクリプション キー<br>正しいアプリ ID<br>正しいホスト リージョン|
-|401|正しいサブスクリプション キー<br>正しいアプリ ID<br>"_誤った_" ホスト リージョン|
+|2xx|正しいエンドポイント キー<br>正しいアプリ ID<br>正しいホスト リージョン|
+|401|正しいエンドポイント キー<br>正しいアプリ ID<br>"_誤った_" ホスト リージョン|
 
 ## <a name="nodejs-code-to-find-region"></a>リージョンを見つけるための Node.js コード
-コンソール アプリケーションによって、LUIS アプリ ID とサブスクリプション キーが取得され、それに関連付けられているすべてのリージョンが返されます。 現時点では、リージョンによってサブスクリプション キーが作成されているため、1 つのリージョンのみが返されます。
+コンソール アプリケーションによって、LUIS アプリ ID とエンドポイント キーが取得され、それに関連付けられているすべてのリージョンが返されます。 現時点では、リージョンによってエンドポイント キーが作成されているため、1 つのリージョンのみが返されます。
 
 NPM 依存関係を追加します。
 
@@ -55,7 +55,7 @@ NPM 依存関係を追加します。
 
 [!code-javascript[Call the function](~/samples-luis/documentation-samples/find-region/nodejs/index.js?range=39-43 "Call the function")]
 
-アプリケーションが実行されると、ターミナルに、アプリ ID とサブスクリプション キーのリージョンが表示されます。
+アプリケーションが実行されると、ターミナルに、アプリ ID のリージョンが表示されます。
 
 ![LUIS リージョンが表示されているコンソール アプリのスクリーンショット](./media/find-region-nodejs/console.png)
 

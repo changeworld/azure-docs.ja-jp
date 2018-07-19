@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: d115a2640da7a23cc0e7744bbe79251afb9302a1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 70066f1c29849b77c67710eb908ef2a340cdc45f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229238"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>チュートリアル: Azure Active Directory と Envi MMIS の統合
 
@@ -263,7 +263,7 @@ Envi MMIS の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Envi MMIS のタイルをクリックすると、自動的に Envi MMIS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

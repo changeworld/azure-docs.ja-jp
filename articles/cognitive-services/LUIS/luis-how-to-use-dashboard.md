@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378541"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110050"
 ---
 # <a name="application-dashboard"></a>アプリケーション ダッシュボード
 アプリ ダッシュボードを使用すると、ご自身のアプリをひと目で監視することができます。 **ダッシュボード**は、**[マイ アプリ]** でアプリケーション名をクリックし、上部パネルから **[ダッシュボード]** を選択してアプリを開いたときに表示されます。 
@@ -69,7 +69,7 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 2. 一覧から期間を選択し、戻る矢印  ![戻る矢印 ](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) をクリックして、グラフを表示します。
 
 ### <a name="key-usage"></a>キー使用法
-アプリケーションのサブスクリプション キーからのヒットの数です。 サブスクリプション キーの詳細については、「[Keys in LUIS (LUIS のキー)](luis-concept-keys.md)」を参照してください。 
+アプリケーションのエンドポイント キーからのヒットの数です。 エンドポイント キーの詳細については、「[LUIS でのキー](luis-concept-keys.md)」を参照してください。 
   
 ## <a name="intent-breakdown"></a>意図の内訳
 **[Intent Breakdown]\(意図の内訳\)** には、ラベル付き発話またはエンドポイント ヒットに基づいて意図の内訳が表示されます。 この概要グラフは、アプリ内の各意図の重要度を相対的に示しています。 スライスにマウス ポインターを置くと、意図の名前と、ラベル付き発話/エンドポイント ヒットの合計に対する意図の内訳がパーセンテージで表示されます。 

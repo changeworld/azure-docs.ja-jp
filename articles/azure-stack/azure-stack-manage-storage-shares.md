@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: da6bb00d7538c1a26e1ed4be29d3c882aa378e9e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077413"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071387"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する
 
@@ -159,12 +159,13 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 
     $destinationshares を確認します。
 
-    ````PowerShell $destinationshares
+    ````PowerShell 
+    $destinationshares
     ````
 
-    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+    ![例: $destination 共有](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. Start migration for a container. Migration is asynchronous. If you start migration of additional containers before the first migration completes, use the job id to track the status of each.
+4. コンテナーの移行を開始します。 移行は非同期です。 最初の移行が完了する前に、別のコンテナーの移行を開始する場合は、ジョブ ID を使用してそれぞれの状態を追跡します。
 
   ````PowerShell
   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
@@ -203,4 +204,5 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 領域を管理する最も極端な方法には、仮想マシンのディスクの移動が伴います。 接続されているコンテナー (VM ディスクを含むコンテナー) の移動は複雑であるため、この操作を実行する場合は Microsoft サポートに問い合わせてください。
 
 ## <a name="next-steps"></a>次の手順
-[ユーザーに対する仮想マシンの提供](azure-stack-tutorial-tenant-vm.md)についての詳細を確認します。
+
+  [ユーザーに対する仮想マシンの提供](azure-stack-tutorial-tenant-vm.md)についての詳細を確認します。

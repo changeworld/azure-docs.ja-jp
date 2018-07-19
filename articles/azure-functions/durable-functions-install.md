@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4dd4bbb9c382b772f8f60b259844e7e471ec73e3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762355"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343264"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
@@ -49,7 +49,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 サンプルから始めるのと同じ手順に従いますが、*.zip* ファイルをダウンロードする代わりに次の手順に従います。
 
 1. Function App プロジェクトを作成します。
-2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.4.0 を検索し (このパッケージを検索するときは、*[プレリリースを含める]* をオンにします)、プロジェクトに追加します。
+2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.5.0 を検索し、プロジェクトに追加します。
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -79,7 +79,7 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Twilio Extension をインストールします。
 
@@ -101,7 +101,7 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、npm パッケージを復元します。
     
@@ -122,7 +122,7 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 2. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
 3. 次のコマンドを実行して Function App プロジェクトを作成します。
 

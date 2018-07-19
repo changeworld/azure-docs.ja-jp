@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f2bb181b08720d096c5abf4e73b16de8306bd58
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 17c7763c514d64cf25cfd0a3bb629f54030d4a39
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218522"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>チュートリアル: Azure Active Directory と Convercent の統合
 
@@ -102,21 +102,21 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Convercent** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_samlbase.png)
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_convercent_samlbase.png)
 
 3. **[Convercent のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_url.png)
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_convercent_url.png)
 
     **[識別子]** ボックスに、`https://<instancename>.convercent.com/` の形式で URL を入力します。
  
 4. **SP 開始モード**でアプリケーションを構成する場合は、**[Convercent のドメインと URL]** セクションで次の手順を実行します。
     
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_url1.png)
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_convercent_url1.png)
 
      a. **[詳細な URL 設定の表示]** をクリックします。 
 
@@ -129,11 +129,11 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
 
 5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_certificate.png) 
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_convercent_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_general_400.png)
 
 7. アプリケーション用に構成された SSO を取得するには、[Convercent サポート チーム](mailto:support@convercent.com)に連絡して、ダウンロードした**メタデータ XML** を提供してください。
 
@@ -189,7 +189,7 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Convercent]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/convercent-tutorial/tutorial_convercent_app.png) 
+    ![Configure single sign-on](./media/convercent-tutorial/tutorial_convercent_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -210,7 +210,7 @@ Convercent で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Convercent] タイルをクリックすると、自動的に Convercent アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

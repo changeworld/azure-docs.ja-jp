@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: ee97eaf4624b1a34dbc66d1d4e8febab761b7b09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e0128d4422c462d4424583306af0b30174178bac
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221480"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>チュートリアル: Azure Active Directory と Boomi の統合
 
@@ -119,7 +119,7 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
  
 4. Boomi アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[Configure Single Sign-On]](./media/boomi-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/boomi-tutorial/tutorial_attribute.png)
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、以下の表に示す行ごとに、次の手順を実行します。
 
@@ -129,9 +129,9 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
-    ![[Configure Single Sign-On]](./media/boomi-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/boomi-tutorial/tutorial_officespace_04.png)
     
-    ![[Configure Single Sign-On]](./media/boomi-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/boomi-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -272,7 +272,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Boomi] タイルをクリックすると、自動的に Boomi アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

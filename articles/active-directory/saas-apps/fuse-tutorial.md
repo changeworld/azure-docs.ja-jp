@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 45d2be1150ea9772d69c86935a530fd830464d62
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5ac9db26bc73d7b97507cca0db36ca10024422cd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219960"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>チュートリアル: Azure Active Directory と Fuse の統合
 
@@ -210,7 +210,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Fuse] タイルをクリックすると、自動的に Fuse アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

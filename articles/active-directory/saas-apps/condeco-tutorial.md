@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 374c4cb970c12ce9cd015f503b70e19fcfbe294b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e19d78cdf1993b520de757d02e85572442ba09c7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228239"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>チュートリアル: Azure Active Directory と Condeco の統合
 
@@ -102,15 +102,15 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Condeco** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/condeco-tutorial/tutorial_condeco_samlbase.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_samlbase.png)
 
 3. **[Condeco のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/condeco-tutorial/tutorial_condeco_url.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_url.png)
 
     **[サインオン URL]** ボックスに、`https://<companyname>.condecosoftware.com` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/condeco-tutorial/tutorial_condeco_certificate.png) 
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/condeco-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_general_400.png)
 
 6. **Condeco** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Condeco サポート チーム](mailTo:supportna@condecosoftware.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -184,7 +184,7 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[Condeco]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/condeco-tutorial/tutorial_condeco_app.png) 
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -205,7 +205,7 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Condeco] タイルをクリックすると、自動的に Condeco アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

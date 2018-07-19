@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 6803ae61d8cb8d71fdee763473926e8935dc40b7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1811f15f10beaed167d9682554be74bcc439dad1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210440"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル: Azure Active Directory と Bersin の統合
 
@@ -202,7 +202,7 @@ Bersin で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Bersin のタイルをクリックすると、自動的に Bersin アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

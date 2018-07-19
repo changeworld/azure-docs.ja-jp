@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4aa2a2f41bcdd78991184e026f22f8e04754eccb
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 066ae92056e4b80b6627b371d6ebeb3235b2781d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286115"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043780"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -266,7 +266,7 @@ Absorb LMS に Britta Simon というユーザーを割り当てるには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで **Absorb LMS** タイルを選択すると、Absorb LMS アプリケーションに自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで **Absorb LMS** タイルを選択すると、Absorb LMS アプリケーションに自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

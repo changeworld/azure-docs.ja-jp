@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 7254e8d1b5a525c3ab06230837bd368e17911dbe
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: ff5227ab61145ab372fdc6e28f1b97ec31e47023
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100281"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049145"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -30,7 +30,7 @@ ms.locfileid: "37100281"
 ![MFA ユーザー ポータル](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](end-user/current/multi-factor-authentication-end-user-first-time.md)に関するページか「[2 段階認証設定の管理](end-user/current/multi-factor-authentication-end-user-manage-settings.md)」をユーザーに参照してもらってください。
+> ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](../user-help/multi-factor-authentication-end-user-first-time.md)に関するページか「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」をユーザーに参照してもらってください。
 
 ## <a name="install-the-web-service-sdk"></a>Web サービス SDK のインストール
 

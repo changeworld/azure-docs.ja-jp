@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b42b9551a297d6c506e0dbca7e7c9898a002a9b5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a2815b60799f98071915a0f06908fd92ff3fb2f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215173"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043933"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>チュートリアル: Azure Active Directory と Amplitude の統合
 
@@ -133,15 +133,15 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 
 8. 左側のナビゲーション バーから **[Plan Admin]\(プラン管理者\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/amplitude-tutorial/configure1.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure1.png)
 
 9. **[SSO Integration]\(SSO の統合\)** から **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** を選択します。
 
-    ![[Configure Single Sign-On]](./media/amplitude-tutorial/configure2.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure2.png)
 
 10. **[Setup Single Sign-On]\(シングル サインオンの設定\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/amplitude-tutorial/configure3.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure3.png)
 
     a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
@@ -225,7 +225,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Amplitude] タイルをクリックすると、自動的に Amplitude アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
