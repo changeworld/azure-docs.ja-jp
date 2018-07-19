@@ -6,14 +6,14 @@ author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: mysql-database
-ms.topic: article
-ms.date: 07/11/2018
-ms.openlocfilehash: fd3b47d52cf785798d4063eeed20148436b72947
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.topic: conceptual
+ms.date: 07/18/2018
+ms.openlocfilehash: 4cd6b82073380cdb0258f9faedd47492fd032da9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531748"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116022"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL の移行パートナー
 Azure Database for MySQL ソリューションを広くサポートするために、業界をリードするパートナーとツールを広範な選択肢の中から選択できます。 この記事は、Azure Database for MySQL をサポートする移行ソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -42,7 +42,7 @@ Microsoft の他のパートナーの詳細については、[Microsoft パー�
 [dbbest_website]:https://www.dbbest.com/technologies/azure-database-service-mysql-postgresql//
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
-[credativ_website]:https://credativ.com
+[credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
 
 <!--Get Started Links-->
 <!--Datasheet Links-->
