@@ -3,31 +3,31 @@ title: Azure AD 階層型パスワード セキュリティ | Microsoft Docs
 description: Azure AD が強力なパスワードを強制し、サイバー犯罪からユーザーのパスワードを守るしくみについて説明します。
 services: active-directory
 documentationcenter: ''
-author: barlanmsft
+author: eross-msft
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 08/28/2017
-ms.author: barlan
-ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: lizross
+ms.openlocfilehash: e3e97a5a9b768b3b9d4a36627d28955be1f3d9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586376"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056921"
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>多層を利用した Azure AD パスワード セキュリティ
 
 この記事では、Azure Active Directory (Azure AD) または Microsoft アカウントを保護するために皆さんがユーザーとして、または管理者として実践できるベスト プラクティスについて説明します。
 
  > [!NOTE]
- > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+ > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](user-help/active-directory-passwords-update-your-own-password.md)。
  >
- > Azure AD 管理者は「[Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)」という記事にある手引きでユーザー パスワードをリセットできます。
+ > Azure AD 管理者は「[Azure Active Directory でのユーザー パスワードのリセット](fundamentals/active-directory-users-reset-password-azure-portal.md)」という記事にある手引きでユーザー パスワードをリセットできます。
  >
 
 ## <a name="password-requirements"></a>パスワード要件
@@ -38,7 +38,7 @@ ms.locfileid: "31586376"
 * パスワードの複雑さの要件
 * パスワードの有効期限 (定期的に変更を強制)
 
-Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
+Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](user-help/active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
 
 ## <a name="azure-ad-password-protections"></a>Azure AD のパスワード保護
 
@@ -75,7 +75,7 @@ Microsoft は[データの侵害](https://www.privacyrights.org/data-breaches)�
 
   ![Microsoft アカウントからロックアウト](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
+Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](user-help/active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
 
   >[!NOTE]
   >Azure AD の管理者の方は、従来のパスワードをユーザーが一切作成できないように、[Windows Hello](https://www.microsoft.com/windows/windows-hello) を導入することもご検討ください。
@@ -83,6 +83,6 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
+* [自分のパスワードを更新する方法](user-help/active-directory-passwords-update-your-own-password.md)
 * [Azure ID 管理の基礎](fundamentals-identity.md)
 * [パスワード リセット アクティビティに関するレポート](authentication/howto-sspr-reporting.md)

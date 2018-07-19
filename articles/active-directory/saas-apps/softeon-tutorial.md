@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 803064033df63fb260319fc46c59f77ca7490ef4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 65c70cd67a9fb77977b083027c79d3c96ffa96b1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225138"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>チュートリアル: Azure Active Directory と Softeon WMS の統合
 
@@ -102,15 +102,15 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Softeon WMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_softeon_samlbase.png)
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_softeon_samlbase.png)
 
 3. **[Softeon WMS のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_softeon_url.png)
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_softeon_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.softeon.com/<instancename>` のパターンを使用して URL を入力します。
 
@@ -121,15 +121,15 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_softeon_certificate.png) 
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_softeon_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_general_400.png)
 
 6. **[Softeon WMS 構成]** セクションで、**[Softeon WMS の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[Quick Reference]\(クイック リファレンス\)** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_softeon_configure.png) 
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_softeon_configure.png) 
 
 7. **Softeon WMS** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Softeon WMS サポート チーム](mailto:contact@softeon.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -186,7 +186,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 
 2. アプリケーションの一覧で **[Softeon WMS]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/softeon-tutorial/tutorial_softeon_app.png) 
+    ![Configure single sign-on](./media/softeon-tutorial/tutorial_softeon_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -207,7 +207,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Softeon WMS] タイルをクリックすると、Softeon WMS アプリケーションのログイン ページが表示されます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 5accb676c7fb732c9b59dbbbeda944a3a3015d50
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 64019237370d867b2f9a35a59139b5c4cc719ffa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285418"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>チュートリアル: Azure Active Directory と BenefitHub の統合
 
@@ -102,15 +102,15 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **BenefitHub** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_samlbase.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_samlbase.png)
 
 3. **[BenefitHub のドメインと URL]\(BenefitHub のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_url1.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_url1.png)
   
     a. **[識別子]** ボックスに、「`urn:benefithub:passport`」と入力します。
     
@@ -118,7 +118,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
 4. BenefitHub アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_attribute.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_attribute.png)
 
 5. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -131,9 +131,9 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -146,11 +146,11 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_certificate.png) 
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_general_400.png)
 
 8. **BenefitHub** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [BenefitHub サポート チーム](https://www.benefithub.com/Home/ContactUs)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -206,7 +206,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[BenefitHub]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/benefithub-tutorial/tutorial_benefithub_app.png) 
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -227,7 +227,7 @@ BenefitHub で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [BenefitHub] タイルをクリックすると、自動的に BenefitHub アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

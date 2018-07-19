@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fbe3ceb3d26de90bd46ee02263d09c822ee90c29
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2dbf52d0e157379687b144feba5c7933a7c5a3e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868849"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>チュートリアル: Azure Active Directory と Intralinks の統合
 
@@ -102,15 +102,15 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Intralinks** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_samlbase.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_samlbase.png)
 
 3. **[Intralinks のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_url.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>` のパターンを使用して URL を入力します。
 
@@ -119,11 +119,11 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_certificate.png) 
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_general_400.png)
 
 6. **Intralinks** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Intralinks サポート チーム](https://www.intralinks.com/contact-1)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -179,7 +179,7 @@ Intralinks で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Intralinks]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_app.png) 
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -231,15 +231,15 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 
 6.  Azure Portal の **Intralinks** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 7. **[シングル サインオン]** ダイアログで、**[モード]** として **[リンクされたサインオン]** を選択します。
  
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
 8. 他の Intralinks アプリケーションの [Intralinks チーム](https://www.intralinks.com/contact-1)から SP によって開始される SSO URL を取得し、その URL を **[サインオン URL の構成]** に以下のように入力します。 
     
-     ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
+     ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     
      [サインオン URL] ボックスで、ユーザーが Intralinks アプリケーションへのサインオンに使用する URL を次の形式で入力します。
    
@@ -247,7 +247,7 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 
 9. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/intralinks-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_general_400.png)
 
 10. 「**[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)**」セクションの手順に従って、アプリケーションをユーザーまたはグループに割り当てます。
 
@@ -256,7 +256,7 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Intralinks のタイルをクリックすると、自動的に Intralinks アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

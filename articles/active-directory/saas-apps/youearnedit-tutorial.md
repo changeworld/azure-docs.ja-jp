@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 5af3195f8543e5ef3763666b3a997ffb4cd25713
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 89370b6d861301e2452d7440dd7b950d6ed5f3f6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213781"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>チュートリアル: Azure Active Directory と YouEarnedIt の統合
 
@@ -216,7 +216,7 @@ YouEarnedIt で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [YouEarnedIt] タイルをクリックすると、自動的に YouEarnedIt アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

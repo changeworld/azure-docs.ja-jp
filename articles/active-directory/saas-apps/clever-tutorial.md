@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 06606b4dede242a01beea2136126e6d252f9a4a1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5e5f89ebef3f42380f3dcceab50fda0ace9516de
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211433"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>チュートリアル: Azure Active Directory と Clever の統合
 
@@ -119,13 +119,13 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
 
 4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/clever-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_metadataurl.png)
 
 5. Clever アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性** の構成に追加する必要があります。
 
     次のスクリーンショットはその例です。
 
-    ![[Configure Single Sign-On]](./media/clever-tutorial/tutorial_clever_07.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_clever_07.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -138,9 +138,9 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/clever-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_attribute_04.png)
     
-    ![[Configure Single Sign-On]](./media/clever-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -254,7 +254,7 @@ Clever の場合は、[Clever クライアント サポート チーム](https:/
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Clever のタイルをクリックすると、Clever アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

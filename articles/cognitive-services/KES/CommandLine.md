@@ -9,12 +9,12 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: ffa42ac73b42a8271004d2d45d7a80f3307ef059
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373296"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136357"
 ---
 # <a name="command-line-interface"></a>コマンド ライン インターフェイス
 KES コマンド ライン インターフェイスには、構造化データからインデックス ファイルと文法ファイルをビルドし、Web サービスとして展開する機能があります。  一般的な構文は `kes.exe <command> <required_args> [<optional_args>]` です。  コマンドの一覧を表示するには引数なしで `kes.exe` を実行します。指定したコマンドに使用できる引数の一覧を表示するには、`kes.exe <command>` を実行します。  使用できるコマンドの一覧を次に示します。
@@ -26,7 +26,9 @@ KES コマンド ライン インターフェイスには、構造化データ�
 * describe_grammar
 
 <a name="build_index-command"></a>
+
 ## <a name="buildindex-command"></a>build_index Command
+
 **build_index** コマンドは、インデックス付けされるオブジェクトのスキーマ定義ファイルとデータ ファイルからバイナリ インデックス ファイルをビルドします。  結果のインデックス ファイルを使用して、構造化されたクエリ式を評価したり、コンパイル済みの文法ファイルと組み合わせて自然言語クエリの解釈を生成したりすることができます。
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
@@ -49,7 +51,9 @@ KES コマンド ライン インターフェイスには、構造化データ�
 > より高速にビルドするには、データ ファイル内のオブジェクトを確率の降順で事前に並べ替えておきます。
 
 <a name="build_grammar-command"></a>
+
 ## <a name="buildgrammar-command"></a>build_grammar コマンド
+
 **build_grammar** コマンドは、XML で指定された文法をバイナリ文法ファイルにコンパイルします。  結果の文法ファイルをインデックス ファイルと組み合わせて使用して、自然言語クエリの解釈を生成することができます。
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
@@ -62,7 +66,9 @@ KES コマンド ライン インターフェイスには、構造化データ�
 これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  文法仕様には、加重が設定された一連の自然言語表現とそのセマンティック解釈が記載されています ([「Grammar Format」(文法の形式)](GrammarFormat.md) を参照してください。)  ビルドが成功すると、出力文法ファイルには、高速デコードが可能になる文法仕様のバイナリ表現が含まれます。
 
 <a name="host_service-command"/>
+
 ## <a name="hostservice-command"></a>host_service コマンド
+
 **host_service** コマンドは、ローカル マシン上で KES サービスのインスタンスをホストします。
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
@@ -78,7 +84,9 @@ KES コマンド ライン インターフェイスには、構造化データ�
 Azure 環境以外の場合、ローカルでホストされるサービスは、最大 1 MB のサイズのインデックス ファイル、毎秒 10 要求、合計 1,000 回の呼び出しに制限されます。  これらの制限をなくすには、Azure VM 内で **host_service** を実行するか、**deploy_service** を使用して Azure クラウド サービスにデプロイします。
 
 <a name="deploy_service-command"/>
+
 ## <a name="deployservice-command"></a>deploy_service コマンド
+
 **deploy_service** コマンドは、KES サービスのインスタンスを Azure クラウド サービスにデプロイします。
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
@@ -96,7 +104,9 @@ Azure 環境以外の場合、ローカルでホストされるサービスは�
 既定では、サービスはステージング環境にデプロイされます。必要に応じて --slot パラメーターで上書きすることができます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
 
 <a name="describe_index-command"/>
+
 ## <a name="describeindex-command"></a>describe_index コマンド
+
 **describe_index** コマンドは、スキーマや説明など、インデックス ファイルに関する情報を出力します。
 
 `kes.exe describe_index <indexFile>`
@@ -108,7 +118,9 @@ Azure 環境以外の場合、ローカルでホストされるサービスは�
 このファイルは、ローカル ファイルのパスまたは Azure BLOB への URL パスで指定できます。  出力の説明文字列は、**build_index** コマンドの --description パラメーターを使用して指定できます。
 
 <a name="describe_grammar-command"/>
+
 ## <a name="describegrammar-command"></a>describe_grammar コマンド
+
 **describe_grammar** コマンドは、バイナリ文法のビルドに使用された元の文法仕様を出力します。
 
 `kes.exe describe_grammar <grammarFile>`

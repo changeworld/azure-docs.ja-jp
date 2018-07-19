@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5952d0b1568e2554f53797515cde5cb23ad95a9b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867444"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054762"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -146,8 +146,8 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットと変更。](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスによるパスワード リセットの登録。](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法。](concept-sspr-howitworks.md#authentication-methods)

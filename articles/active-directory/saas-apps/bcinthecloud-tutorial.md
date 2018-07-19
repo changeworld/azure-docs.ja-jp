@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 936587b5f1cd90104073438232141a113cabb375
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f451ce2296626c4b79e986ffba7049a6b496c74d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226784"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure Active Directory と BC in the Cloud の統合
 
@@ -102,15 +102,15 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
 
 1. Azure Portal の **BC in the Cloud** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_samlbase.png)
+    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_samlbase.png)
 
 3. **[BC in the Cloud Domain and URLs]\(BC in the Cloud のドメインと URL\)** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
+    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://app.bcinthecloud.com/router/loginSaml/<customerid>` のパターンを使用して URL を入力します。
 
@@ -121,11 +121,11 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_certificate.png) 
+    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/bcinthecloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_general_400.png)
 
 6. **BC in the Cloud** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [BC in the Cloud サポート チーム](https://www.bcinthecloud.com/supportcenter/)に送信する必要があります。
 
@@ -182,7 +182,7 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **[BC in the Cloud]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_app.png) 
+    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -202,7 +202,7 @@ BC in the Cloud での Azure AD シングル サインオンを構成してテ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
- アクセス パネルで BC in the Cloud のタイルをクリックすると、自動的に BC in the Cloud アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+ アクセス パネルで BC in the Cloud のタイルをクリックすると、自動的に BC in the Cloud アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

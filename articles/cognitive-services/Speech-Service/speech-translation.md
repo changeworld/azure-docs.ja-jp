@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 43fcde887c21794989aa43540a214ef34893a630
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378379"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069201"
 ---
 # <a name="about-the-speech-translation-api"></a>Speech Translation API について
 
@@ -43,4 +43,4 @@ Speech Translation API では、Microsoft のさまざまな製品やサービ�
 ## <a name="next-steps"></a>次の手順
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-windows.md)
+* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)

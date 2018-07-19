@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: dd86ad6b9a60c8a44dd73b31d908838d9c213fd1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302604"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126662"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -116,7 +116,7 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 
 最新の認証をサポートする Outlook クライアントと Skype for Business クライアントでは、最新の認証が有効になっていないテナントに対して従来のプロトコルを引き続き使用できる可能性があるため、テナント制限を実質的に迂回します。 認証時に login.microsoftonline.com、login.microsoft.com、または login.windows.net に接続する場合、従来のプロトコルを使用するアプリケーションは、テナントの制限によってブロックされる可能性があります。
 
-Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](http://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。 Windows 以外のプラットフォーム上の Outlook と、すべてのプラットフォーム上の Skype for Business では、現在、テナントの制限が完全にはサポートされていません。
+Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](http://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。
 
 ## <a name="testing"></a>テスト
 

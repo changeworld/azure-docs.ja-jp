@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ef43f7cc91467d4f9b7ab2f4cbc8c35e9b7f4586
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e7cc2779661f4359c3c30fe76a387740f5f044f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211795"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
 
@@ -131,15 +131,15 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
 8. **[管理]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/xaitporter-tutorial/user1.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user1.png)
 
 9. **[システム設定]** ドロップダウン リストから、**[シングル サインオンの管理]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/xaitporter-tutorial/user2.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user2.png)
 
 10. **[シングル サインオンの管理]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/xaitporter-tutorial/user3.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user3.png)
 
     a. **[シングル サインオンを有効にする]** を選択します。
 
@@ -220,7 +220,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [XaitPorter] タイルをクリックすると、自動的に XaitPorter アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

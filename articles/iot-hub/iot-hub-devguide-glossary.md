@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 69bc7d71e804ca33b984699ee30a44774542803f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960493"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125921"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -93,7 +93,7 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 ## <a name="device-to-cloud"></a>デバイスからクラウドへ
 接続されたデバイスから [IoT Hub](#iot-hub) に送信されるメッセージを指します。 これらのメッセージは、[データ ポイント](#data-point-message)または[対話型](#interactive-message)メッセージの場合があります。 詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
 
-## <a name="device"></a>デバイス
+## <a name="device"></a>Device
 IoT においては、デバイスは、通常は、データの収集や他のデバイスの制御を実行できる、小規模なスタンドアロン コンピューティング デバイスです。 環境監視デバイス (温室の散水システムや換気システムのコントローラー) はデバイスの一例です。 [デバイス カタログ](https://catalog.azureiotsuite.com/)は、[IoT Hub](#iot-hub) で機能することが認定されたハードウェア デバイスの一覧を示します。
 
 ## <a name="device-app"></a>デバイス アプリ
@@ -121,7 +121,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 [IoT Hub](#iot-hub) では、デバイスでの再起動、工場出荷時リセットの実行、ファームウェア更新プログラムの実行など、一般的なデバイス管理のパターンを使用できます。
 
 ## <a name="device-rest-api"></a>デバイス REST API
-デバイスから [Device REST API](https://docs.microsoft.com/rest/api/iothub/device/device) を使用して、デバイスからクラウドへのメッセージを IoT Hub に送信し、[クラウドからデバイスへ](#cloud-to-device)のメッセージを IoT Hub から受信できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[デバイス SDK](#azure-iot-device-sdks) のいずれかを使用する必要があります。
+デバイスから [Device REST API](https://docs.microsoft.com/rest/api/iothub/device) を使用して、デバイスからクラウドへのメッセージを IoT Hub に送信し、[クラウドからデバイスへ](#cloud-to-device)のメッセージを IoT Hub から受信できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[デバイス SDK](#azure-iot-device-sdks) のいずれかを使用する必要があります。
 
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 デバイス プロビジョニングとは、最初の[デバイス データ](#device-data)をソリューション内のストアに追加するプロセスです。 新しいデバイスをハブに接続できるようにするには、デバイスの ID とキーを IoT Hub [ID レジストリ](#identity-registry)に追加する必要があります。 プロビジョニング プロセスの一環として、他のソリューション ストアにあるデバイス固有データの初期化が必要になる場合があります。
@@ -168,7 +168,7 @@ IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)�
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
-IoT Hub は、何百万ものデバイスとソリューションのバックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理された Azure サービスです。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。 [Azure サブスクリプション](#subscription)を使用して、IoT メッセージングのワークロードを処理する IoT Hub を作成できます。
+IoT Hub は、何百万ものデバイスとソリューションのバックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、フル マネージドの Azure サービスです。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。 [Azure サブスクリプション](#subscription)を使用して、IoT メッセージングのワークロードを処理する IoT Hub を作成できます。
 
 ## <a name="iot-hub-metrics"></a>IoT Hub メトリック
 [IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
@@ -225,7 +225,7 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 SASL PLAIN は、[AMQP](#advanced-message-queue-protocol) プロトコルがセキュリティ トークンを転送するために使用するプロトコルです。
 
 ## <a name="service-rest-api"></a>サービス REST API
-ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service/service) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
+ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
 ## <a name="shared-access-signature"></a>共有アクセス署名
 Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS 認証には_共有アクセス ポリシー_と _Shared Access Signature_ (多くの場合トークンと呼ばれます) という 2 つのコンポーネントがあります。 デバイスは、IoT Hub での認証に SAS を使用します。 [バック エンド アプリ](#back-end-app)も IoT Hub 上のサービス向けエンドポイントでの認証に SAS を使用します。 通常、SAS トークンは、IoT Hub への接続を確立するためにアプリが使用する[接続文字列](#connection-string)に含めます。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: a1e743f596423e155647a528b6ccadc6c14c61c4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1814b83351ae0662fcbe102861c2736df06e5b4c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214139"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>チュートリアル: Azure Active Directory と PatentSQUAR の統合
 
@@ -197,7 +197,7 @@ PatentSQUAR で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [PatentSQUARE] タイルをクリックすると、自動的に PatentSQUARE アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 48c59a20a86bca5de8c3c4874f3f758fef92a124
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ae49e60188c554a2eaa0221c05b49ca67c835f0c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227583"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>チュートリアル: Azure Active Directory と TargetProcess の統合
 
@@ -99,7 +99,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **TargetProcess** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -144,7 +144,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
 
 11. [Single Sign-on] の設定ダイアログで、次の手順を実行します。
    
-    ![[Configure Single Sign-On]](./media/target-process-tutorial/tutorial_target_process_08.png)
+    ![Configure single sign-on](./media/target-process-tutorial/tutorial_target_process_08.png)
     
     a. **[Enable Single Sign-on (シングル サインオンを有効にする)]** をクリックします。
     
@@ -233,7 +233,7 @@ TargetProcess では、Just-In-Time プロビジョニングがサポートさ�
 
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
-アクセス パネルで [TargetProcess] タイルをクリックすると、TargetProcess アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [TargetProcess] タイルをクリックすると、TargetProcess アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

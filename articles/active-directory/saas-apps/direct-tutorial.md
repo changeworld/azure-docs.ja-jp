@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e74138deda20ebb4fbb83ceaa3304dcca82767e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ad0aed1ded41a422160679dc238ee8814cac4b71
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228851"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル: Azure Active Directory と Direct の統合
 
@@ -102,31 +102,31 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Direct** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_direct_samlbase.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_samlbase.png)
 
 3. **[Direct のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_direct_url.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url.png)
 
     **[識別子]** ボックスに次の URL を入力します。`https://direct4b.com/`
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_direct_url1.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url1.png)
 
      **[サインオン URL]** テキストボックスに、URL: `https://direct4b.com/sso` を入力します 
     
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_direct_certificate.png) 
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_general_400.png)
 
 7. **Direct** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)に送信する必要があります。 
 
@@ -183,7 +183,7 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[Direct]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/direct-tutorial/tutorial_direct_app.png) 
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -213,7 +213,7 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
     b. 表示されるボックスに「`subdomain`」と入力し、[Next]\(次へ\) を押します。**Direct** アプリケーションに自動的にサインオンされます。
     
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

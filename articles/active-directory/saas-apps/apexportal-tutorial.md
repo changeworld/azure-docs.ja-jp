@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 27c10c2e08177b7987077de747482fc5ea620d91
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c267313e4851e621b57aa1d2bddc73118405776
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231680"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>チュートリアル: Azure Active Directory と Apex Portal の統合
 
@@ -119,7 +119,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
  
 4. Apex Portal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[Configure Single Sign-On]](./media/apexportal-tutorial/attribute.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/attribute.png)
 
 5. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -131,9 +131,9 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/apexportal-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/apexportal-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -228,7 +228,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Apex Portal のタイルをクリックすると、Apex Portal アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

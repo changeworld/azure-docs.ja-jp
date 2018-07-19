@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: a9b0ddbd8d0a348d00e57526e6d248e59a8a1e79
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903959"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056176"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM マネージド ID を使用して Azure Storage にアクセスする
 
@@ -58,7 +58,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5.  仮想マシンを作成する新しい**リソース グループ**を選択するには、**[新規作成]** を選択します。 完了したら、**[OK]** をクリックします。
 6.  VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 設定ブレードで、既定値のまま **[OK]** をクリックします。
 
-    ![イメージ テキスト](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-managed-identity-on-your-vm"></a>VM のマネージド ID を有効にする
 
@@ -80,7 +80,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
 
-    ![新しいストレージ アカウントを作成する](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![新しいストレージ アカウントを作成する](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>BLOB コンテナーを作成し、ファイルをストレージ アカウントにアップロードする
 
@@ -91,12 +91,12 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 3. ページの上部にある **[+ コンテナー]** をクリックします。
 4. **[新しいコンテナー]** で、コンテナーの名前を入力し、**[パブリック アクセス レベル]** で既定値を保持します。
 
-    ![ストレージ コンテナーの作成](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![ストレージ コンテナーの作成](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. 任意のエディターを使用して、ローカル コンピューターに *hello world.txt* という名前のファイルを作成します。  ファイルを開き、"Hello world! :)" というテキストを (引用符なしで) 追加し、保存します。 
 6. 新しく作成したコンテナーにファイルをアップロードします。コンテナー名をクリックしてから **[アップロード]** をクリックします。
 7. **[BLOB のアップロード]** ウィンドウの **[ファイル]** で、フォルダー アイコンをクリックし、ローカル コンピューターの **hello_world.txt** を参照してファイルを選択して、**[アップロード]** をクリックします。
-    ![テキスト ファイルをアップロードする](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![テキスト ファイルをアップロードする](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する 
 

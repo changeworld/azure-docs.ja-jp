@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: dc62d7a24a53ffa04026c0f1a40b05b18e6db71d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 97e77fdbb352e1fcf66044f48e17cb19a8aa2e1d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231391"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform Identity Authentication の統合
 
@@ -275,7 +275,7 @@ SAP Cloud Platform Identity Authentication との ID フェデレーションを
 
 アクセス パネルの [SAP Cloud Platform Identity Authentication] タイルを選択すると、SAP Cloud Platform Identity Authentication アプリケーションに自動的にサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

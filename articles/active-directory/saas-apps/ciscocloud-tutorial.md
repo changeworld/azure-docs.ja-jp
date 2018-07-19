@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28576452ab982896614af5527a0237ca4ab275f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866561"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル: Azure Active Directory と Cisco Cloud の統合
 
@@ -124,7 +124,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
 5. Cisco Cloud アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。
  次のスクリーンショットは、その例を示しています。
 
-    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/attribute.png)
+    ![Configure single sign-on](./media/ciscocloud-tutorial/attribute.png)
 
 6. **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を展開します。 表示される各属性について、次の手順を実行します。
 
@@ -135,9 +135,9 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/ciscocloud-tutorial/tutorial_attribute_04.png)
 
-    ![[Configure Single Sign-On]](./media/ciscocloud-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ciscocloud-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -228,7 +228,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Cisco Cloud] タイルをクリックすると、自動的に Cisco Cloud アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

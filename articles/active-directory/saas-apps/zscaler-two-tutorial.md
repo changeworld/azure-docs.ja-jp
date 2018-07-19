@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 066581456b0f3dcbe4793c95cdb511e52413d1fb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: be41b1cc19043faf40804876d11fd43a32a1a45c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211572"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>チュートリアル: Azure Active Directory と Zscaler Two の統合
 
@@ -103,15 +103,15 @@ Zscaler Two で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Zscaler Two** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_zscalertwo_samlbase.png)
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_zscalertwo_samlbase.png)
 
 3. **[Zscaler Two のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_zscalertwo_url.png)
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_zscalertwo_url.png)
 
    [サインオン URL] ボックスに、ユーザーが Zscaler Two アプリケーションへのサインオンに使用する URL を入力します。
 
@@ -120,15 +120,15 @@ Zscaler Two で Azure AD のシングル サインオンを構成してテスト
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_zscalertwo_certificate.png) 
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_zscalertwo_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_general_400.png)
 
 6. **[Zscaler Two 構成]** セクションで、**[Zscaler Two の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_zscalertwo_configure.png) 
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_zscalertwo_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、Zscaler Two 企業サイトに管理者としてログインします。
 
@@ -279,7 +279,7 @@ Azure AD ユーザーが Zscaler Two にログインできるようにするに�
 
 2. アプリケーションの一覧で、**[Zscaler Two]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/zscaler-two-tutorial/tutorial_zscalertwo_app.png) 
+    ![Configure single sign-on](./media/zscaler-two-tutorial/tutorial_zscalertwo_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -300,7 +300,7 @@ Azure AD ユーザーが Zscaler Two にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Zscaler Two のタイルをクリックすると、自動的に Zscaler Two アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

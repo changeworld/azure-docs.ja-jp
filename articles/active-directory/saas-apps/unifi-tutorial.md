@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0aa3ec013e93ddb89cd6982c01a38411f67b34c4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: a93e4863a8466ad6599b11e6fe6e53d8d4d971a4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866350"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル: Azure Active Directory と UNIFI の統合
 
@@ -102,49 +102,49 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **UNIFI** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
 
 3. **[UNIFI のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_url1.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_url1.png)
 
     **[識別子]** テキストボックスに、値として「`INVIEWlabs`」を入力します。 
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_url2.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_url2.png)
 
     **[サインオン URL]** テキストボックスに、URL として「`https://app.discoverunifi.com/login`」と入力します。
 
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_general_400.png)
     
 7. **[UNIFI 構成]** セクションで、**[UNIFI の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_configure.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_configure.png)
 
 8. 別の Web ブラウザーのウィンドウで、管理者として **UNIFI** 企業サイトにサインオンします。
 
 9. **[ユーザー]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/app1.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/app1.png) 
 
 10. **[Add New Identity Provider(新しい ID プロバイダーを追加)]** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/app2.png)
+    ![Configure single sign-on](./media/unifi-tutorial/app2.png)
 
 11. **[Add Identity Provider(ID プロバイダーの追加)]** セクションで、次の手順を実行します。   
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/app3.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/app3.png) 
 
     a. **[プロバイダー名]** テキストボックスに、ID プロバイダーの名前を入力します。
 
@@ -207,7 +207,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 
 2. アプリケーションの一覧で **[UNIFI]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/unifi-tutorial/tutorial_unifi_app.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -228,7 +228,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [UNIFI] タイルをクリックすると、自動的に UNIFI アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

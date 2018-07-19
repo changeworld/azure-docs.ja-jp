@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: bd99bb452f39bd99f0d92e478b21d7f3786ed785
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7a8b0387ebda574da572ac738bf3b75ef882224c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223713"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>チュートリアル: Azure Active Directory と Dynamic Signal の統合
 
@@ -205,7 +205,7 @@ Dynamic Signal で Azure AD のシングル サインオンを構成してテス
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Dynamic Signal] タイルをクリックすると、自動的に Dynamic Signal アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

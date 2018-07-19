@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b097a85ee97fb815106803ab95f3e4f6edde4896
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050575"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136674"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -44,7 +44,7 @@ Batch サービスでは、複数のアプリケーションを並列で大規�
 また、Batch の詳細については、[Batch のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/batch/)に関するページを参照してください。
 
 ## <a name="why-azure-data-factory"></a>Azure Data Factory を選ぶ理由
-Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。 Data Factory を使用すると、オンプレミスおよびクラウドのデータ ストアから中央のデータ ストアにデータを移動する、管理されたデータ パイプラインを作成できます。 たとえば、Azure BLOB ストレージなどです。 Data Factory を使用すると、Azure HDInsight や Azure Machine Learning などのサービスを利用してデータを処理または変換することができます。 スケジュールされた方法 (たとえば、時間単位、日単位、週単位) でデータ パイプラインを実行するようにスケジュールを設定することもできます。 パイプラインを一目で監視および管理して、問題を特定し、行動を取ることができます。
+Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。 Data Factory を使用すると、オンプレミスおよびクラウドのデータ ストアから中央のデータ ストアにデータを移動する、マネージド データ パイプラインを作成できます。 たとえば、Azure BLOB ストレージなどです。 Data Factory を使用すると、Azure HDInsight や Azure Machine Learning などのサービスを利用してデータを処理または変換することができます。 スケジュールされた方法 (たとえば、時間単位、日単位、週単位) でデータ パイプラインを実行するようにスケジュールを設定することもできます。 パイプラインを一目で監視および管理して、問題を特定し、行動を取ることができます。
 
   Data Factory に慣れていない場合は、次の記事を参照してください。この記事で説明されるソリューションのアーキテクチャや実装の理解に役立ちます。  
 
@@ -847,7 +847,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 10. **[OutputDataset]** ブレードで、**[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックします。 **[実行]** を選択し、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
-    ![実行](./media/data-factory-data-processing-using-batch/image17.png)
+    ![ラン](./media/data-factory-data-processing-using-batch/image17.png)
 
 11. スライスを実行して、その状態が **[準備完了]** になると、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 この出力ファイルは、BLOB ストレージの `outputfolder` 内の `mycontainer` 以下に表示されます。 スライスのファイルごとに 1 行あります。
 
@@ -975,7 +975,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
   * [Batch の基本](../../batch/batch-technical-overview.md)
   * [Azure Batch 機能の概要](../../batch/batch-api-basics.md)
   * [Azure Portal で Batch アカウントを作成して管理する](../../batch/batch-account-create-portal.md)
-  * [.NET 向け Batch クライアント ライブラリの概要](../../batch/batch-dotnet-get-started.md)
+  * [.NET 向け Batch クライアント ライブラリの概要](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

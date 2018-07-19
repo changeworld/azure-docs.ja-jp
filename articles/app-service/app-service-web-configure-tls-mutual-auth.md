@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: bdf8731b2a5028f47c2baf6f164d75123f716ebb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857641"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056210"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Web アプリの TLS 相互認証を構成する方法
 ## <a name="overview"></a>概要
@@ -51,7 +51,7 @@ Web アプリを、クライアント証明書を要求するように設定す�
 
 https://resources.azure.com を使用して `clientCertEnabled` プロパティを `true`に反転することもできます。
 
-> **注:** PowerShell から ARMClient を実行する場合、JSON ファイルの @ 記号をアクサン グラーブ (`) でエスケープする必要があります。
+> **注:** PowerShell から ARMClient を実行する場合、JSON ファイルの \@ 記号をアクサン グラーブ (`) でエスケープする必要があります。
 > 
 > 
 

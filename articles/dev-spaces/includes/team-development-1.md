@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 23b5373f4986c4a3d113baebe9e04ce65b9a9df0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939182"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39062914"
 ---
 ここまでは、アプリケーションを扱う唯一の開発者であるかのようにアプリケーションのコードを実行しました。 このセクションでは、Azure Dev Spaces によるチーム開発の効率化について説明します。
 * 共有開発空間で、または必要に応じて個別の開発空間で作業することで、同じ環境の中で開発者チームが作業できるようにします。
@@ -45,7 +45,7 @@ Azure Dev Spaces を使用して、Azure に "*共有*" 開発空間をセット
 > [!Note]
 > 続行する前に、両方のサービスの VS Code ウィンドウをすべて閉じ、サービスの各ルート フォルダーで `azds up -d` を実行します  (これはプレビューでの制限事項です)。
 
-それでは、サービスが現在実行されている箇所を詳しく見てましょう。 `azds list` コマンドを実行すると、次のような出力が表示されます。
+それでは、サービスが現在実行されている箇所を詳しく見てましょう。 `azds list-up` コマンドを実行すると、次のような出力が表示されます。
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points

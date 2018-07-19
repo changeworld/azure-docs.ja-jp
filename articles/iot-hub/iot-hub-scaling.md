@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901043"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126696"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -53,34 +53,34 @@ IoT Hub の Basic レベルと Standard レベルでサポートされる機能�
 
 | API | Basic レベル | Standard レベル |
 | --- | ---------- | ------------- |
-| [デバイスの削除](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | [はい] | [はい] |
-| [デバイスの取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | [はい] | [はい] |
+| [デバイスの削除](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | [はい] | [はい] |
+| [デバイスの取得](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | [はい] | [はい] |
 | モジュールの削除 | [はい] | [はい] |
 | モジュールの取得 | [はい] | [はい] |
-| [レジストリの統計情報の取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | [はい] | [はい] |
-| [サービスの統計情報の取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | [はい] | [はい] |
-| [デバイスの設定](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | [はい] | [はい] |
+| [レジストリの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | [はい] | [はい] |
+| [サービスの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | [はい] | [はい] |
+| [デバイスの作成または更新](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | [はい] | [はい] |
 | モジュールの設定 | [はい] | [はい] |
-| [デバイスのクエリ](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | [はい] | [はい] |
+| [IoT Hub にクエリを実行する](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | [はい] | [はい] |
 | モジュールのクエリ | [はい] | [はい] |
-| [ファイル アップロード SAS URI の作成](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | [はい] | [はい] |
-| [デバイス バインド通知の受け取り](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | [はい] | [はい] |
-| [デバイス イベントの送信](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | [はい] | [はい] |
+| [ファイル アップロード SAS URI の作成](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | [はい] | [はい] |
+| [デバイス バインド通知の受け取り](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | [はい] | [はい] |
+| [デバイス イベントの送信](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | [はい] | [はい] |
 | モジュール イベントの送信 | [はい] | [はい] |
-| [ファイル アップロード ステータスの更新](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | [はい] | [はい] |
-| [デバイスの一括操作](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | はい (IoT Edge 機能を除く) | [はい] | 
-| [コマンド キューの消去](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | [はい] |
-| [デバイス ツインの取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | [はい] |
+| [ファイル アップロード ステータスの更新](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | [はい] | [はい] |
+| [デバイスの一括操作](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | はい (IoT Edge 機能を除く) | [はい] | 
+| [コマンド キューの消去](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | [はい] |
+| [デバイス ツインの取得](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | [はい] |
 | モジュール ツインの取得 |   | [はい] |
-| [デバイス メソッドの呼び出し](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | [はい] |
-| [デバイス ツインの更新](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | [はい] | 
+| [デバイス メソッドの呼び出し](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | [はい] |
+| [デバイス ツインの更新](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | [はい] | 
 | モジュール ツインの更新 |   | [はい] | 
-| [デバイス バインド通知の破棄](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | [はい] |
-| [デバイス バインド通知の完了](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | [はい] |
-| [ジョブの取り消し](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | [はい] |
-| [ジョブの作成](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | [はい] |
-| [ジョブの取得](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | [はい] |
-| [ジョブのクエリ](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | [はい] |
+| [デバイス バインド通知の破棄](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | [はい] |
+| [デバイス バインド通知の完了](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | [はい] |
+| [ジョブの取り消し](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | [はい] |
+| [ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | [はい] |
+| [ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | [はい] |
+| [ジョブのクエリ](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | [はい] |
 
 ## <a name="message-throughput"></a>メッセージのスループット
 

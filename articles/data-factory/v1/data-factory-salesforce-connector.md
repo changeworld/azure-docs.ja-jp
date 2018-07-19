@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048289"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125672"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-salesforce-connector.md)
-> * [バージョン 2 (現在のバージョン)](../connector-salesforce.md)
+> * [バージョン 2 (最新バージョン)](../connector-salesforce.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Salesforce コネクタ](../connector-salesforce.md)に関するページを参照してください。
@@ -100,7 +100,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
@@ -288,19 +288,19 @@ RelationalSource でサポートされるプロパティの一覧については
 | Salesforce の型 | .NET ベースの型 |
 | --- | --- |
 | オート ナンバー |String |
-| チェックボックス |ブール |
-| 通貨 |Double |
+| チェックボックス |Boolean |
+| 通貨 |Decimal |
 | 日付 |Datetime |
 | 日付/時刻 |Datetime |
 | 電子メール |String |
 | ID |String |
 | 参照リレーションシップ |String |
 | 複数選択の候補リスト |String |
-| Number |Double |
-| Percent |Double |
+| Number |Decimal |
+| Percent |Decimal |
 | 電話 |String |
 | 候補リスト |String |
-| テキスト |String |
+| Text |String |
 | テキスト領域 |String |
 | テキスト領域 (ロング) |String |
 | テキスト領域 (リッチ) |String |

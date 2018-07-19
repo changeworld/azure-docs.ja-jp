@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 43e4cb7bf14da604620d353d7420673ea830857e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5065bfafe4781e9261a69b018d1238cba2941ed7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220806"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>チュートリアル: Azure Active Directory と Edcor の統合
 
@@ -202,7 +202,7 @@ Edcor Azure AD のシングル サインオンを構成してテストするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Edcor] タイルをクリックすると、Edcor アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

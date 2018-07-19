@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 925d4b0d8c116887c14d22f821500273daefba40
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 245482ec708534a8a6df2efaac193c6bb2e26397
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218596"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル: Azure Active Directory と Workpath の統合
 
@@ -102,15 +102,15 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Workpath** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_samlbase.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_samlbase.png)
 
 3. **[Workpath のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_url.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url.png)
 
     a. **[識別子]** ボックスに、`https://api.workpath.com/v1/saml/metadata/<instancename>` の形式で URL を入力します。
 
@@ -118,7 +118,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_url1.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url1.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.workpath.com/ ` のパターンを使用して URL を入力します。
 
@@ -127,7 +127,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
 5. Workpath アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_attributes.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_attributes.png)
     
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -138,11 +138,11 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
     
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_attribute_04.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_attribute_05.png)
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
@@ -153,15 +153,15 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
 7. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_certificate.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_certificate.png) 
 
 8. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_general_400.png)
 
 9. **[Workpath 構成]** セクションで、**[Workpath の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_configure.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_configure.png) 
 
 10. **Workpath** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Workpath サポート チーム](https://help.workpath.com)に送る必要があります。 
 
@@ -219,7 +219,7 @@ Workpath は、ジャストインタイム ユーザー プロビジョニング
 
 2. アプリケーションの一覧で **[Workpath]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/workpath-tutorial/tutorial_workpath_app.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -240,7 +240,7 @@ Workpath は、ジャストインタイム ユーザー プロビジョニング
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Workpath] タイルをクリックすると、自動的に Workpath アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951650"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126019"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -74,25 +74,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 * **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認**: サーバーで URL ベースのファイアウォール ルールを使用している場合は、以下の URL がファイアウォール構成に追加されていることを確認します。
 
-  `*.accesscontrol.windows.net:` アクセス制御と ID 管理に使用
-
-  `*.backup.windowsazure.com:` レプリケーション データの転送とオーケストレーションに使用
-
-  `*.blob.core.windows.net:` レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
-
-  `*.hypervrecoverymanager.windowsazure.com:` レプリケーション管理操作とオーケストレーションに使用
-
-  `time.nist.gov` と `time.windows.com`: システム時刻とグローバル時刻間の時刻同期の確認に使用。
-
-**Azure Government クラウド**の URL:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **プロセス サーバーのプロキシ設定がアクセスをブロックしていないかどうかを確認**:   プロキシ サーバーを使用している場合は、DNS サーバーでプロキシ サーバー名が解決されていることを確認します。
 構成サーバーのセットアップ時に指定した内容を確認するには、 レジストリ キーに移動します。

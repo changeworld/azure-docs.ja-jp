@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ca99710f814a0fe48809fecb3d564e7360314a30
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f2635483cb68db52e85d442e04e65fbcbd2c5b8f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222857"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>チュートリアル: Azure Active Directory と IMAGE WORKS の統合
 
@@ -206,7 +206,7 @@ IMAGE WORKS で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [IMAGE WORKS] タイルをクリックすると、自動的に IMAGE WORKS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

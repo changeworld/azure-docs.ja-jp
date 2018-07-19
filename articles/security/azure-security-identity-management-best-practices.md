@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365782"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059204"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
 ID はセキュリティの新しい境界レイヤーであり、従来のネットワーク中心の観点からその役割を引き継ぐものであると一般に考えられています。 セキュリティに関する注目と投資の主軸のこのような変化は、ネットワーク境界の侵入がますます容易になり、[BYOD](http://aka.ms/byodcg) デバイスとクラウド アプリケーションが爆発的に増加する前と比べて境界防御の有効性が低下しているという事実によるものです。
 
-この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../active-directory/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
+この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 それぞれのベスト プラクティスについて、次の点を説明します。
 
@@ -65,7 +65,7 @@ Azure AD の同期について詳しくは、「[オンプレミス ID と Azure
 
 管理対象のディレクトリが複数あると、IT 部門にとって管理上の問題となるだけでなく、複数のパスワードを覚えておく必要があるエンド ユーザーにとっても問題です。 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) を使用することにより、ユーザーは、必要なリソースがオンプレミスまたはクラウドのどちらにあっても、同じ資格情報セットを使用してリソースにサインインしてアクセスできます。
 
-SSO を使用すると、ユーザーは Azure AD 内の組織アカウントに基づいて[SaaS アプリケーション](../active-directory/manage-apps/what-is-single-sign-on.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) や [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../active-directory/fundamentals-identity.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
+SSO を使用すると、ユーザーは Azure AD 内の組織アカウントに基づいて[SaaS アプリケーション](../active-directory/manage-apps/what-is-single-sign-on.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../active-directory/saas-apps/google-apps-tutorial.md) や [Salesforce](../active-directory/saas-apps/salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../active-directory/fundamentals-identity.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
 
 > [!NOTE]
 > SSO を使用するかどうかにより、オンプレミスのディレクトリとクラウド ディレクトリの統合方法に影響があります。 SSO が必要な場合、ディレクトリ同期は[同じサインオン エクスペリエンス](../active-directory/active-directory-aadconnect.md)だけを提供するので、フェデレーションを使用する必要があります。
@@ -78,7 +78,7 @@ Azure AD の SSO の詳細については、「[Azure AD Connect を使用した
 
 ## <a name="deploy-password-management"></a>パスワード管理をデプロイする
 
-複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../active-directory/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。 Azure では、セルフ サービスのパスワード リセット機能を利用し、ビジネス ニーズに合わせてセキュリティ オプションをカスタマイズすることができます。
+複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。 Azure では、セルフ サービスのパスワード リセット機能を利用し、ビジネス ニーズに合わせてセキュリティ オプションをカスタマイズすることができます。
 
 ユーザーからフィードバックを収集し、これらの手順を実行したときの経験から学ぶことが重要です。 ユーザーの経験を基にして、大きなグループへのデプロイで発生する可能性がある問題を軽減する詳細な計画を作成します。 また、[パスワード リセット登録アクティビティ レポート](../active-directory/active-directory-passwords-get-insights.md)を使用して登録しているユーザーを監視することもお勧めします。
 

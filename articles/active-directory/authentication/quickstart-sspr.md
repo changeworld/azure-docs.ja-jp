@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870024"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057363"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD のセルフ サービスによるパスワード リセットの迅速なデプロイ
 
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合、[Azure AD パスワードを忘れた場合](../active-directory-passwords-update-your-own-password.md)に関するページを参照してください。
+> **サインインに問題がありますか?** その場合、[Azure AD パスワードを忘れた場合](../user-help/active-directory-passwords-update-your-own-password.md)に関するページを参照してください。
 
 セルフ サービスによるパスワードのリセット (SSPR) は、ユーザーが自分のパスワードやアカウントのリセットまたはロック解除を行うことができるようにする簡単な方法を IT 管理者に提供します。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
 
-このガイドでは、試用版またはライセンス版の Azure Active Directory (Azure AD) テナントが既に稼働していることを前提としています。 Azure AD の設定に関するヘルプが必要な場合は、[Azure AD の概要](../get-started-azure-ad.md)に関する記事を参照してください。
+このガイドでは、試用版またはライセンス版の Azure Active Directory (Azure AD) テナントが既に稼働していることを前提としています。 Azure AD の設定に関するヘルプが必要な場合は、[Azure AD の概要](../fundamentals/get-started-azure-ad.md)に関する記事を参照してください。
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Azure AD テナントの SSPR の有効化
 
@@ -62,7 +62,7 @@ ms.locfileid: "33870024"
    * パスワードのリセットについてユーザーに通知する。
    * 他の管理者が自分のパスワードをリセットしたときに、すべての管理者に通知する。
 
-この時点で、Azure AD テナントの SSPR が構成できました。 ユーザーは「[セルフサービスによるパスワードのリセットを登録する](../active-directory-passwords-reset-register.md)」および[パスワードのリセットまたは変更](../active-directory-passwords-update-your-own-password.md)に関するページの手順に従って、管理者による介入なしでパスワードを更新できます。 クラウドのみの場合、ここでやめることができます。 または、引き続き次のセクションで、オンプレミスの Active Directory ドメインへのパスワード同期を構成できます。
+この時点で、Azure AD テナントの SSPR が構成できました。 ユーザーは「[セルフサービスによるパスワードのリセットを登録する](../user-help/active-directory-passwords-reset-register.md)」および[パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)に関するページの手順に従って、管理者による介入なしでパスワードを更新できます。 クラウドのみの場合、ここでやめることができます。 または、引き続き次のセクションで、オンプレミスの Active Directory ドメインへのパスワード同期を構成できます。
 
 > [!TIP]
 > Microsoft では Azure 管理者アカウントに対して強力な認証要件を適用しているため、管理者ではなくユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[パスワード ポリシー](concept-sspr-policy.md#administrator-password-policy-differences)に関する記事を参照してください。
@@ -95,8 +95,8 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットまたは変更](../active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../active-directory-passwords-reset-register.md)
+* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
+* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 79721c2ad0ae83e3c8bd103aee94916f1e2995aa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937140"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054639"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -52,7 +52,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Azure および Office 365 マーケットプレースのアプリケーションの宣伝
 **既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。**  マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。 [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/)のアプリケーションの宣伝に関する詳細を参照してください。
 
-**ユーザーがアプリケーションにサインアップすると、アプリケーションは Azure AD アクセス パネルと Office 365 アプリケーション ランチャーに表示されるようになります。**  ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。 [Azure AD アクセス パネル](../active-directory-saas-access-panel-introduction.md)に関する詳細を参照してください。
+**ユーザーがアプリケーションにサインアップすると、アプリケーションは Azure AD アクセス パネルと Office 365 アプリケーション ランチャーに表示されるようになります。**  ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。 [Azure AD アクセス パネル](../user-help/active-directory-saas-access-panel-introduction.md)に関する詳細を参照してください。
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>デバイスとサービスの間およびサービスとサービスの間の安全な通信
 **サービスおよびデバイスの ID 管理に Azure AD を使用すると、記述する必要があるコードが減り、IT 部門はアクセスを管理できるようになります。**  サービスおよびデバイスは、OAuth を使用して Azure AD からトークンを取得し、そのトークンを使用して Web API にアクセスできます。 Azure AD を使用すると、複雑な認証コードを作成しなくて済みます。 サービスおよびデバイスの ID は Azure AD に格納されるため、IT 部門はキーと失効を 1 か所で管理できます。アプリケーションで個別に行う必要はありません。
@@ -78,7 +78,8 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 **オープン ソース ライブラリ。**  Microsoft は、開発時間短縮のため、一般的な言語とプラットフォームの完全にサポートされたオープン ソース ライブラリを提供します。 ソース コードは Apache 2.0 でライセンスされており、自由にフォークしてプロジェクトに役立てることができます。 [Azure AD 認証ライブラリ](active-directory-authentication-libraries.md)の詳細を参照してください。
 
 ### <a name="worldwide-presence-and-high-availability"></a>世界的なプレゼンスと高可用性
-**Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
+
+  **Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
 
 ## <a name="next-steps"></a>次の手順
 [コード作成の開始](active-directory-developers-guide.md#get-started)
