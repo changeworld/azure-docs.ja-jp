@@ -14,16 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 557f071e2cd8d4f639c881274e6e74a8fb745859
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2be04c7037dd26755300cf8b7794678a6a958278
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
-ms.locfileid: "26290228"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488462"
 ---
-# <a name="azure-functions-runtime-overview"></a>Azure Functions ランタイム プレビューの概要
+# <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime の概要 (プレビュー)
 
-Azure Functions ランタイムは、オンプレミスの Azure Functions プログラミング モデルのシンプルさと柔軟性を活用するための新たな手段です。 Azure Functions ランタイムは、Azure Functions と同一のオープン ソースのルートで構築すると、オンプレミスにデプロイされて、クラウド サービスとほぼ同じ開発環境を提供します。
+Azure Functions Runtime (プレビュー) は、オンプレミスの Azure Functions プログラミング モデルのシンプルさと柔軟性を活用するための新たな手段です。 Azure Functions ランタイムは、Azure Functions と同一のオープン ソースのルートで構築すると、オンプレミスにデプロイされて、クラウド サービスとほぼ同じ開発環境を提供します。
 
 ![Azure Functions ランタイム プレビュー ポータル][1]
 
@@ -50,7 +50,7 @@ Azure Functions worker ロールは、Windows コンテナーにデプロイさ�
 
 Azure Functions ランタイムを使用するには、Windows Server 2016 または Windows 10 Creators Update がインストールされていて、SQL Server インスタンスにアクセスできるコンピューターが必要です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Functions ランタイム プレビュー](https://aka.ms/azafrdoc)をインストールする
 

@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: c3402c824b70d357b68e71ed7cb5783a7489b2b0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d9d9bfc6f8571ab30804d76b9ab9490b0d2e43c7
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837380"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934194"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
-
 [!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning は、現在、オンプレミスの SQL Server データベースからのデータの読み取りと、そのデータによるモデルのトレーニングおよびスコア付けをサポートしています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのためにオンプレミス SQL Server データベースから直接読み取ることができます。
@@ -39,44 +38,46 @@ ms.locfileid: "34837380"
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="install-the-microsoft-data-management-gateway"></a>Microsoft Data Management Gateway をインストールする
-Azure Machine Learning でオンプレミス SQL Server データベースにアクセスするには、Microsoft Data Management Gateway をダウンロードおよびインストールする必要があります。 Machine Learning Studio でゲートウェイ接続を構成するときに、後で説明する **[Download and register data gateway (データ ゲートウェイをダウンロードして登録)]** ダイアログを使用して、ゲートウェイをダウンロードおよびインストールできます。
+## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Data Factory セルフホステッド統合ランタイムをインストールする
+Azure Machine Learning でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio で接続を構成するときに、後で説明する **[Download and register data gateway]\(データ ゲートウェイのダウンロードと登録\)** ダイアログを使用して、統合ランタイム (IR) をダウンロードおよびインストールできます。
 
-[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行し、Data Management Gateway を事前にインストールすることもできます。
-コンピューターに応じて 32 ビットまたは 64 ビットを選択し、最新バージョンを使用してください。 MSI は、既存の Data Management Gateway を、すべての設定を保持しつつ最新バージョンにアップグレードするためにも使用できます。
 
-ゲートウェイには、以下の前提条件があります。
+[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することにより、IR を事前にインストールすることもできます。MSI を使うと、すべての設定を保持したまま、既存の IR を最新バージョンにアップグレードすることもできます。
 
-* サポートされている Windows オペレーティング システムのバージョンは、Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 です。
-* ゲートウェイ コンピューターの推奨される最小限の構成は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
-* ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答しません。 そのため、ゲートウェイをインストールする前に、コンピューターの適切な電源プランを構成します。 コンピューターが休止状態に構成されている場合、ゲートウェイのインストール時にメッセージが表示されます。
+Data Factory セルフホステッド統合ランタイムには、次の前提条件があります。
+
+* Data Factory セルフホステッド統合には、.NET Framework 4.6.1 以降を含む 64 ビット オペレーティング システムが必要です。
+* サポートされる Windows オペレーティング システムのバージョンは、Windows 10、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 です。 
+* IR コンピューターの推奨される最小限の構成は、2 GHz、4 コア CPU、8 GB の RAM、80 GB のディスクです。
+* ホスト コンピューターが休止状態の場合、IR はデータ要求に応答しません。 そのため、IR をインストールする前に、コンピューターの適切な電源プランを構成します。 コンピューターが休止状態に構成されている場合、IR のインストール時にメッセージが表示されます。
 * コピー アクティビティは特定の頻度で発生するので、コンピューターのリソース (CPU、メモリ) の使用も同じピークとアイドルのパターンに従います。 リソース使用率はまた、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のとき、ピーク時にはリソース使用率が上昇するのがわかります。 上記の最小限の構成は技術的には十分ですが、データ移動の特定の負荷に応じて、最小構成より多くのリソースを持つ構成が必要になる場合もあります。
 
-Data Management Gateway のセットアップと使用の際には、以下の点を考慮します。
+Data Factory セルフホステッド統合ランタイムを設定して使用するときは、次のことを考慮してください。
 
-* 1 台のコンピューターには、Data Management Gateway のインスタンスを 1 つだけインストールできます。
-* 複数のオンプレミス データ ソースに対して、1 つのゲートウェイを使用できます。
-* 異なるコンピューター上の複数のゲートウェイを、同じオンプレミス データ ソースに接続することができます。
-* 一度に 1 つだけのワークスペースに対して、ゲートウェイを構成します。 現在、複数のワークスペースでゲートウェイを共有することはできません。
-* 1 つのワークスペースに対して複数のゲートウェイを構成することはできます。 たとえば、開発中はテスト データ ソースに接続されているゲートウェイを使用し、運用の準備ができたら運用ゲートウェイを使用したい場合があります。
-* ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが、 データ ソースの近くにあると、ゲートウェイがデータ ソースに接続するときの時間が短縮されます。 ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
-* Power BI または Azure Data Factory のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、Azure Machine Learning 用のゲートウェイを別のコンピューターにインストールしてください。
+* 1 台のコンピューターには、IR のインスタンスを 1 つだけインストールできます。
+* 複数のオンプレミス データ ソースに対して、1 つの IR を使用できます。
+* 異なるコンピューター上の複数の IR を、同じオンプレミス データ ソースに接続することができます。
+* 一度に 1 つだけのワークスペースに対して、IR を構成します。 現在、複数のワークスペースで IR を共有することはできません。
+* 1 つのワークスペースに対して複数の IR を構成することはできます。 たとえば、開発中はテスト データ ソースに接続されている IR を使用し、運用の準備ができたら運用 IR を使用したい場合があります。
+* IR はデータ ソースと同じコンピューター上に存在する必要はありませんが、 データ ソースの近くにあると、ゲートウェイがデータ ソースに接続するときの時間が短縮されます。 IR とデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターに IR をインストールすることをお勧めします。
+* Power BI または Azure Data Factory のシナリオを提供する IR がコンピューターに既にインストールされている場合は、Azure Machine Learning 用の IR を別のコンピューターにインストールしてください。
 
   > [!NOTE]
-  > 同じコンピューター上で Data Management Gateway と Power BI Gateway を実行することはできません。
+  > Data Factory セルフホステッド統合ランタイムと Power BI Gateway を同じコンピューターで実行することはできません。
   >
   >
-* 他のデータ用に Azure ExpressRoute を使用している場合でも、Azure Machine Learning 用に Data Management Gateway を使用する必要があります。 ExpressRouteを使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱う必要があります。 Data Management Gateway を使用して Machine Learning とデータ ソースの間の接続を確立します。
+* 他のデータ用に Azure ExpressRoute を使用している場合でも、Azure Machine Learning 用に Data Factory セルフホステッド統合ランタイムを使用する必要があります。 ExpressRouteを使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱う必要があります。 Data Factory セルフホステッド統合ランタイムを使用して、Machine Learning とデータ ソースの間の接続を確立します。
 
-インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway](../../data-factory/v1/data-factory-data-management-gateway.md)」という記事を参照してください。
+インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Azure Data Factory の統合ランタイム](../../data-factory/concepts-integration-runtime.md)」をご覧ください。
 
 ## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>オンプレミスの SQL Server データベースから Azure Machine Learning にデータを受信する
-このチュートリアルでは、Azure Machine Learning ワークスペースに Data Management Gateway をセットアップして構成し、オンプレミスの SQL Server データベースからデータを読み取ります。
+このチュートリアルでは、Azure Machine Learning ワークスペースに Azure Data Factory Integration Runtime を設定して構成し、オンプレミスの SQL Server データベースからデータを読み取ります。
 
 > [!TIP]
 > 開始する前に、`studio.azureml.net` に対するブラウザーのポップアップ ブロックを無効にしてください。 Google Chrome ブラウザーを使用している場合は、Google Chrome WebStore の [Click Once アプリ拡張機能](https://chrome.google.com/webstore/search/clickonce?_category=extensions)にあるプラグインのいずれかをダウンロードしてインストールしてください。
 >
->
+> [!NOTE]
+> Azure Data Factory セルフホステッド統合ランタイムは、以前は Data Management Gateway と呼ばれていました。 ステップ バイ ステップ チュートリアルでは、引き続きゲートウェイと呼ばれています。  
 
 ### <a name="step-1-create-a-gateway"></a>手順 1: ゲートウェイを作成する
 最初の手順は、オンプレミス SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
@@ -92,7 +93,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 5. [Download and register data gateway (データ ゲートウェイのダウンロードと登録)] ダイアログで、ゲートウェイ登録キーをクリップボードにコピーします。
 
     ![データ ゲートウェイをダウンロードして登録](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
+6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」という記事の冒頭のセクションを参照してください。
 7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
 8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
 9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。
@@ -123,7 +124,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 これで、Azure Machine Learning でのゲートウェイのセットアップ作業が完了しました。
 オンプレミス データを使用する準備ができました。
 
-Studio で各ワークスペースに対して複数のゲートウェイを作成し、セットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
+Studio で各ワークスペースに対して複数のゲートウェイを作成し、セットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2: ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
 ゲートウェイをセットアップした後は、オンプレミス SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。

@@ -7,14 +7,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 07/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: c484358bf98f0121cfc3ce270b162b01c75b5b09
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: fa349555a5effd41ca519cbd5a29005203d79543
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096235"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952557"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones---preview"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する - プレビュー
 
@@ -207,10 +207,6 @@ $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $
 
 仮想ネットワーク ゲートウェイを作成します。
 
->[!NOTE]
->現時点では、ゲートウェイの SKU を指定することはできません。 SKU は自動的に既定値に設定され、ExpressRoute の場合は ErGw1AZ、VPN Gateway の場合は VpnGw1AZ となります。
->
-
 ### <a name="for-expressroute"></a>ExpressRoute の場合
 
 ```azurepowershell-interactive
@@ -236,6 +232,10 @@ New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name 
 ### <a name="what-will-change-when-i-enroll"></a>登録すると何が変わりますか。
 
 お客様の観点からは、プレビュー中に、ゾーン冗長性を備えたゲートウェイをデプロイできるようになります。 つまり、すべてのゲートウェイ インスタンスが複数の Azure Availability Zones にわたってデプロイされ、それぞれの Availability Zone が別々の障害ドメインおよび更新ドメインとなります。 これにより、ゲートウェイの信頼性、可用性、およびゾーン障害に対する回復性が向上します。
+
+### <a name="can-i-use-the-azure-portal"></a>Azure Portal を使用することはできますか。
+
+はい。プレビュー版の Azure Portal を使用することができます。 ただし、引き続き PowerShell を使用して登録する必要があります。そうしないと、プレビュー期間中にポータルを使用することはできません。
 
 ### <a name="what-regions-are-available-for-the-preview"></a>このプレビューではどのようなリージョンを利用できますか。
 

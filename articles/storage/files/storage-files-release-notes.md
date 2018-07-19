@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 946311c42088d3a5840eb35387c8a552d3d5d70f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735646"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128760"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Azure File Sync エージェント (プレビュー) のリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,8 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | 状態 |
 |----|----------------------|--------------|------------------|
-| 更新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | サポートされています (推奨されるバージョン) |
+| 6 月の更新プログラム ロールアップ | 3.0.13.0 | 2018 年 6 月 29 日 | サポートされています (推奨されるバージョン) |
+| 更新 2 | 3.0.12.0 | 2018 年 5 月 22 日 | サポートされています |
 | 4 月の更新プログラム ロールアップ | 2.3.0.0 | 2018 年 5 月 8 日 | サポートされています |
 | 3 月の更新プログラム ロールアップ | 2.2.0.0 | 2018 年 3 月 12 日 | サポートされています |
 | 2 月の更新プログラム ロールアップ | 2.1.0.0 | 2018 年 2 月 28 日 | サポートされています |
@@ -37,6 +38,12 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-30130"></a>エージェント バージョン 3.0.13.0
+次のリリース ノートは、2018 年 6 月 29 日にリリースされた Azure File Sync エージェントのバージョン 3.0.13.0 を対象としています。 バージョン 3.0.12.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースでは、以下の修正が行われています。
+- サーバー上のサーバー エンドポイントの場所に再解析ポイントが存在する場合、既存の同期グループにサーバーを追加すると同期が失敗します。
 
 ## <a name="agent-version-30120"></a>エージェント バージョン 3.0.12.0
 次のリリース ノートは、2018 年 5 月 22 日にリリースされた Azure File Sync エージェントのバージョン 3.0.12.0 を対象としています。

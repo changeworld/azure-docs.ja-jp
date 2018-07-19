@@ -15,29 +15,31 @@ ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31391135"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930292"
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack の開始および停止
-この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 
+この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 シャットダウンは、Azure Stack 環境全体の電源を物理的に切ります。 スタートアップは、すべてのインフラストラクチャ ロールの電源を入れ、テナントのリソースをシャットダウン前の電源状態に戻します。
 
 ## <a name="stop-azure-stack"></a>Azure Stack の停止 
 
 Azure Stack は次の手順でシャットダウンします。
 
-1. Azure Stack ERCS VM へのネットワーク アクセスを持つマシンから特権エンドポイント セッション (PEP) を開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
+1. 将来のシャットダウンに備えて、Azure Stack 環境のテナント リソースで実行しているすべてのワークロードを準備します。 
 
-2. PEP から次を実行します。
+2. Azure Stack ERCS VM へのネットワーク アクセスを持つマシンから特権エンドポイント セッション (PEP) を開きます。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。
+
+3. PEP から次を実行します。
 
     ```powershell
       Stop-AzureStack
     ```
 
-3. Azure Stack のすべての物理ノードの電源がオフになるまで待ちます。
+4. Azure Stack のすべての物理ノードの電源がオフになるまで待ちます。
 
 > [!Note]  
 > 物理ノードの電源の状態は、お使いの Azure Stack ハードウェアを提供した OEM の手順に従って確認できます。 
@@ -50,6 +52,7 @@ Azure Stack は次の手順で開始します。 Azure Stack を停止した方�
 
 2. Azure Stack インフラストラクチャ サービスが開始されるまで待ちます。 Azure Stack インフラストラクチャ サービスは、開始プロセスの終了に 2 時間かかることがあります。 Azure Stack の開始状態は、[**Get-ActionStatus** コマンドレット](#get-the-startup-status-for-azure-stack)を使って確認できます。
 
+3. すべてのテナント リソースがシャットダウン前の状態に戻ったことを確認します。 ワークロード マネージャーによる起動後に、テナント リソースで実行しているワークロードの再構成が必要な場合があります。
 
 ## <a name="get-the-startup-status-for-azure-stack"></a>Azure Stack のスタートアップ状態の取得
 

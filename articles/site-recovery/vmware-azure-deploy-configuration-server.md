@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 841176d8c5f215d18edf25b1f191792b37555fa9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318121"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718959"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -99,8 +99,10 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。
 2. **[Recovery Services コンテナーを選択する]** で、Microsoft Azure にサインインし、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
-    >[!NOTE]
+
+    > [!NOTE]
     > 登録後に Recovery Services コンテナーを変更する柔軟性はありません。
+    
 3. **[サードパーティ製ソフトウェアのインストール]** で、
 
     |シナリオ   |実行する手順  |
@@ -117,11 +119,27 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="faq"></a>FAQ
 
-1. さまざまな目的で構成サーバーがインストールされている VM を使用することはできますか?  **いいえ**。構成サーバーは専用のサーバーである必要があります。共有サーバーとしての使用はサポートされません。
-2. 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか?  **いいえ**。コンテナーは、構成サーバーに登録した後に変更することはできません。
-3. 物理マシンと仮想マシンの両方を保護するために同じ構成サーバーを使用することはできますか?  **はい**。物理マシンと仮想マシンをレプリケートするために同じ構成サーバーを使用することができます。 ただし、物理マシンへのフェールバックはサポートされていません。
-4. 構成サーバーはどこで使用されるのですか?  構成サーバーとその機能の詳細については、Azure Site Recovery アーキテクチャに関する[こちら](vmware-azure-architecture.md)のページを参照してください。
-5. 構成サーバーの最新バージョンはどこで入手できますか?  [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードできます。 [こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)のサーバー構成をアップグレードする手順に関する記事を参照してください。
+1. 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
+
+    **いいえ**。VM は構成サーバー専用にすることをお勧めします。 ディザスター リカバリーを効率的に管理するため、必ず、[前のセクション](vmware-azure-deploy-configuration-server.md#Prerequisites)に記述されているすべての仕様に従ってください。
+2. 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか? 
+
+    **いいえ**。コンテナーは、構成サーバーに登録した後に変更することはできません。
+3. 物理マシンと仮想マシンの両方を保護するために同じ構成サーバーを使用することはできますか? 
+
+    **はい**。物理マシンと仮想マシンをレプリケートするために同じ構成サーバーを使用することができます。 ただし、物理マシンをフェールバックできるのは、VMware VM にのみです。
+4. 構成サーバーの目的は何ですか? また、どこで使用されるのですか?
+
+    構成サーバーとその機能の詳細については、Azure Site Recovery アーキテクチャに関する[こちら](vmware-azure-architecture.md)のページを参照してください。
+5. 構成サーバーの最新バージョンはどこで入手できますか? 
+
+    [ポータルを使用して](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)、構成サーバーをアップグレードする手順に関する記事を参照してください。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
+6. 構成サーバーのパスフレーズはどこでダウンロードできますか?
+
+    パスフレーズをダウンロードする場合は、[こちらの記事](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)を参照してください。
+7. コンテナー登録キーはどこでダウンロードできますか?
+
+    **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 

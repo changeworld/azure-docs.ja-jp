@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/30/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d7d51a7c037e109c730dd79005a2c75eeb0697c0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3219f8e61a0aa469775a972e6b240eb2069c2cd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266894"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929969"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
@@ -83,7 +83,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |FailedRequests|失敗したゲートウェイ要求|Count|合計|ゲートウェイ要求における失敗の数|Location、Hostname|
 |OtherRequests|その他のゲートウェイ要求|Count|合計|その他のゲートウェイ要求の数|Location、Hostname|
 |時間|ゲートウェイ要求の全体の期間|ミリ秒|平均|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
-|容量|容量 (プレビュー)|Percent|平均|ApiManagement サービスの使用状況メトリック|リージョン|
+|容量|容量 (プレビュー)|Percent|平均|ApiManagement サービスの使用状況メトリック|Location|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -892,76 +892,69 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|ディメンション|
 |---|---|---|---|---|---|
-|Average_% Free Inodes|Average_% Free Inodes|Count|平均|Average_% Free Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Free Space|Average_% Free Space|Count|平均|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Used Inodes|Average_% Used Inodes|Count|平均|Average_% Used Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Used Space|Average_% Used Space|Count|平均|Average_% Used Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Read Bytes/sec|Average_Disk Read Bytes/sec|Count|平均|Average_Disk Read Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Write Bytes/sec|Average_Disk Write Bytes/sec|Count|平均|Average_Disk Write Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Free Megabytes|Average_Free Megabytes|Count|平均|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Logical Disk Bytes/sec|Average_Logical Disk Bytes/sec|Count|平均|Average_Logical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Available Memory|Average_% Available Memory|Count|平均|Average_% Available Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Available Swap Space|Average_% Available Swap Space|Count|平均|Average_% Available Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Used Memory|Average_% Used Memory|Count|平均|Average_% Used Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Used Swap Space|Average_% Used Swap Space|Count|平均|Average_% Used Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Available MBytes Memory|Average_Available MBytes Memory|Count|平均|Average_Available MBytes Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Available MBytes Swap|Average_Available MBytes Swap|Count|平均|Average_Available MBytes Swap|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Page Reads/sec|Average_Page Reads/sec|Count|平均|Average_Page Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Page Writes/sec|Average_Page Writes/sec|Count|平均|Average_Page Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Pages/sec|Average_Pages/sec|Count|平均|Average_Pages/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Used MBytes Swap Space|Average_Used MBytes Swap Space|Count|平均|Average_Used MBytes Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Used Memory MBytes|Average_Used Memory MBytes|Count|平均|Average_Used Memory MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Bytes Transmitted|Average_Total Bytes Transmitted|Count|平均|Average_Total Bytes Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Bytes Received|Average_Total Bytes Received|Count|平均|Average_Total Bytes Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Bytes|Average_Total Bytes|Count|平均|Average_Total Bytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Packets Transmitted|Average_Total Packets Transmitted|Count|平均|Average_Total Packets Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Packets Received|Average_Total Packets Received|Count|平均|Average_Total Packets Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Rx Errors|Average_Total Rx Errors|Count|平均|Average_Total Rx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Tx Errors|Average_Total Tx Errors|Count|平均|Average_Total Tx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Total Collisions|Average_Total Collisions|Count|平均|Average_Total Collisions|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Read|Average_Avg。 Disk sec/Read|Count|平均|Average_Avg。 Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Transfer|Average_Avg。 Disk sec/Transfer|Count|平均|Average_Avg。 Disk sec/Transfer|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Write|Average_Avg。 Disk sec/Write|Count|平均|Average_Avg。 Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Physical Disk Bytes/sec|Average_Physical Disk Bytes/sec|Count|平均|Average_Physical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Pct Privileged Time|Average_Pct Privileged Time|Count|平均|Average_Pct Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Pct User Time|Average_Pct User Time|Count|平均|Average_Pct User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Used Memory kBytes|Average_Used Memory kBytes|Count|平均|Average_Used Memory kBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Virtual Shared Memory|Average_Virtual Shared Memory|Count|平均|Average_Virtual Shared Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% DPC Time|Average_% DPC Time|Count|平均|Average_% DPC Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Idle Time|Average_% Idle Time|Count|平均|Average_% Idle Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Interrupt Time|Average_% Interrupt Time|Count|平均|Average_% Interrupt Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% IO Wait Time|Average_% IO Wait Time|Count|平均|Average_% IO Wait Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Nice Time|Average_% Nice Time|Count|平均|Average_% Nice Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Privileged Time|Average_% Privileged Time|Count|平均|Average_% Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Processor Time|Average_% Processor Time|Count|平均|Average_% Processor Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% User Time|Average_% User Time|Count|平均|Average_% User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Free Physical Memory|Average_Free Physical Memory|Count|平均|Average_Free Physical Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Free Space in Paging Files|Average_Free Space in Paging Files|Count|平均|Average_Free Space in Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Free Virtual Memory|Average_Free Virtual Memory|Count|平均|Average_Free Virtual Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Processes|Average_Processes|Count|平均|Average_Processes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Size Stored In Paging Files|Average_Size Stored In Paging Files|Count|平均|Average_Size Stored In Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Uptime|Average_Uptime|Count|平均|Average_Uptime|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Users|Average_Users|Count|平均|Average_Users|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Read|Average_Avg。 Disk sec/Read|Count|平均|Average_Avg。 Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Write|Average_Avg。 Disk sec/Write|Count|平均|Average_Avg。 Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Current Disk Queue Length|Average_Current Disk Queue Length|Count|平均|Average_Current Disk Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Free Megabytes|Average_Free Megabytes|Count|平均|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Free Space|Average_% Free Space|Count|平均|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Available MBytes|Average_Available MBytes|Count|平均|Average_Available MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Committed Bytes In Use|Average_% Committed Bytes In Use|Count|平均|Average_% Committed Bytes In Use|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Bytes Received/sec|Average_Bytes Received/sec|Count|平均|Average_Bytes Received/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Bytes Sent/sec|Average_Bytes Sent/sec|Count|平均|Average_Bytes Sent/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Bytes Total/sec|Average_Bytes Total/sec|Count|平均|Average_Bytes Total/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_% Processor Time|Average_% Processor Time|Count|平均|Average_% Processor Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Processor Queue Length|Average_Processor Queue Length|Count|平均|Average_Processor Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Heartbeat|Heartbeat|Count|平均|Heartbeat|Computer、OSType、Version、SourceComputerId|
-|アップデート|アップデート|Count|平均|アップデート|Computer、Product、Classification、UpdateState、Optional、Approved|
+Average_% Free Inodes|% Free Inodes|Count|平均|Average_% Free Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Free Space|% Free Space|Count|平均|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Used Inodes|% Used Inodes|Count|平均|Average_% Used Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Used Space|% Used Space|Count|平均|Average_% Used Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Disk Read Bytes/sec|Disk Read Bytes/sec |Count|平均|Average_Disk Read Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Disk Reads/sec|Disk Reads/sec |Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Disk Transfers/sec|Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Disk Write Bytes/sec|Disk Write Bytes/sec|Count|平均|Average_Disk Write Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Disk Writes/sec|Disk Writes/sec|Count|平均|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Free Megabytes|Free Megabytes|Count|平均|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Logical Disk Bytes/sec|Logical Disk Bytes/sec|Count|平均|Average_Logical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Available Memory|% Available Memory|Count|平均|Average_% Available Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Available Swap Space|% Available Swap Space|Count|平均|Average_% Available Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Used Memory|% Used Memory|Count|平均|Average_% Used Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Used Swap Space|% Used Swap Space|Count|平均|Average_% Used Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Available MBytes Memory|Available MBytes Memory|Count|平均|Average_Available MBytes Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Available MBytes Swap|Available MBytes Swap|Count|平均|Average_Available MBytes Swap|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Page Reads/sec|Page Reads/sec|Count|平均|Average_Page Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Page Writes/sec|Page Writes/sec|Count|平均|Average_Page Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Pages/sec|Pages/sec|Count|平均|Average_Pages/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Used MBytes Swap Space|Available MBytes Memory|Count|平均|Average_Used MBytes Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Used Memory MBytes|Available MBytes Swap|Count|平均|Average_Used Memory MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Bytes Transmitted|Total Bytes Transmitted|Count|平均|Average_Total Bytes Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Bytes Received|Total Bytes Received|Count|平均|Average_Total Bytes Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Bytes|Total Bytes|Count|平均|Average_Total Bytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Packets Transmitted|Total Packets Transmitted|Count|平均|Average_Total Packets Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Packets Received|Total Packets Received|Count|平均|Average_Total Packets Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Rx Errors|Total Rx Errors|Count|平均|Average_Total Rx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Tx Errors|Total Tx Errors|Count|平均|Average_Total Tx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Total Collisions|Total Collisions|Count|平均|Average_Total Collisions|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Avg。 Disk sec/Read|Avg.Disk sec/Read|Count|平均|Average_Avg。 Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Avg。 Disk sec/Transfer|Avg.Disk sec/Transfer|Count|平均|Average_Avg。 Disk sec/Transfer|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Avg。 Disk sec/Write|Avg.Disk sec/Write|Count|平均|Average_Avg。 Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Physical Disk Bytes/sec|Physical Disk Bytes/sec|Count|平均|Average_Physical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Pct Privileged Time|Pct Privileged Time|Count|平均|Average_Pct Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Pct User Time|Pct User Time|Count|平均|Average_Pct User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Used Memory kBytes|Used Memory kBytes|Count|平均|Average_Used Memory kBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Virtual Shared Memory|Virtual Shared Memory|Count|平均|Average_Virtual Shared Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% DPC Time|% DPC Time|Count|平均|Average_% DPC Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Idle Time|% Idle Time|Count|平均|Average_% Idle Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Interrupt Time|% Interrupt Time|Count|平均|Average_% Interrupt Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% IO Wait Time|% IO Wait Time|Count|平均|Average_% IO Wait Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Nice Time|% Nice Time|Count|平均|Average_% Nice Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Privileged Time|% Privileged Time|Count|平均|Average_% Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Processor Time|% Processor Time|Count|平均|Average_% Processor Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% User Time|% User Time|Count|平均|Average_% User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Free Physical Memory|Free Physical Memory|Count|平均|Average_Free Physical Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Free Space in Paging Files|Free Space in Paging Files|Count|平均|Average_Free Space in Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Free Virtual Memory|Free Virtual Memory|Count|平均|Average_Free Virtual Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Processes|処理|Count|平均|Average_Processes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Size Stored In Paging Files|Size Stored In Paging Files|Count|平均|Average_Size Stored In Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Uptime|Uptime|Count|平均|Average_Uptime|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Users|ユーザー|Count|平均|Average_Users|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Current Disk Queue Length|現在のディスク キューの長さ|Count|平均|Average_Current Disk Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Available MBytes|Available MBytes|Count|平均|Average_Available MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_% Committed Bytes In Use|% Committed Bytes In Use|Count|平均|Average_% Committed Bytes In Use|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Bytes Received/sec|Bytes Received/sec|Count|平均|Average_Bytes Received/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Bytes Sent/sec|Bytes Sent/sec|Count|平均|Average_Bytes Sent/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Average_Bytes Total/sec|Bytes Total/sec|Count|平均|Average_Bytes Total/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+Heartbeat|Heartbeat|Count|平均|Heartbeat|Computer、OSType、Version、SourceComputerId|
+アップデート|アップデート|Count|平均|アップデート|Computer、Product、Classification、UpdateState、Optional、Approved|
+Event|Event|Count|平均|Event|Source、EventLog、Computer、EventCategory、EventLevel、EventLevelName、EventID|
+
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 

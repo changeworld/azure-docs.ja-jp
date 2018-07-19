@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ce20ae800887d8c9e865ecec46d0cf9a49fb7c3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cf9ee5339c53eb4f9c74f6b5f251a7963555d676
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631627"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928751"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -274,7 +274,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
-VS Code で、次の手順を実行し、シリアル モニターを開いて設定します。
+VS Code で、次の手順に従ってシリアル モニターを開いて設定します。
 
 1. ステータス バーの `COM[X]` の単語をクリックして、右側の COM ポートを `STMicroelectronics` で設定します。![com-port](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/com-port.png)
 
@@ -285,7 +285,7 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 次の結果が表示された場合、サンプル アプリケーションは正常に実行されてます。
 
 * シリアル モニターに、次のスクリーンショットの内容と同じ情報が表示されている。
-* MXChip IoT DevKit の LED が点滅している。
+* MXChip IoT DevKit の RGB LED が点滅している。
 
 ![VS Code での最終出力](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/result-serial-output.png)
 

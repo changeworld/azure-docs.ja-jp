@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 8b0a591f84dd8ece0f6a8e2de19cddfee21b28e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449329"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054745"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -93,7 +93,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 
 **A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](http://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを Office 365 ポータルで使用できます。
 
-詳細については、「[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)」を参照してください。
+詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
 
 - - -
 **Q: Azure AD はオンプレミスのインフラストラクチャの管理に役立ちますか?**
@@ -116,7 +116,8 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 詳細については、「[パスワード管理の概要](../authentication/quickstart-sspr.md)」を参照してください。
 
 - - -
-**Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
+
+  **Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
 
 **A:** はい。パスワード ライトバックが有効な状態であれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。  
 

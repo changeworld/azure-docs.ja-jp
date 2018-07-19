@@ -3,7 +3,7 @@ title: Linux VM に Azure Active Directory の資格情報を使用してログ�
 description: この記事では、ユーザー ログインに Azure Active Directory 認証を使用する Linux VM を作成および構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/16/2018
-ms.author: iainfou
-ms.openlocfilehash: 96cc7aeb5fd1c64dc3793a801a4a5b759e7558b9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/17/2018
+ms.author: cynthn
+ms.openlocfilehash: 614375c95f4af3a5fbeeb4368ff8c577372e6381
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652874"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933954"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -45,9 +45,10 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 | ディストリビューション | バージョン |
 | --- | --- |
-| CentOS | CentOS 6.9 および CentOS 7.4 |
-| RedHat Enterprise Linux | RHEL 7 | 
-| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 17.10 |
+| CentOS | CentOS 6.9、CentOS 7.4 |
+| Debian | Debian 9 |
+| RedHat Enterprise Linux | RHEL 6、RHEL 7 | 
+| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 17.10、Ubuntu Server 18.04 |
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
@@ -178,4 +179,4 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Active Directory の詳細については、「[Azure Active Directory とは](../../active-directory/active-directory-whatis.md)」と「[Azure AD の概要](../../active-directory/get-started-azure-ad.md)」を参照してください。
+Azure Active Directory の詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」と「[Azure AD の概要](../../active-directory/fundamentals/get-started-azure-ad.md)」を参照してください。

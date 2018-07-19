@@ -15,97 +15,73 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: aa0891126ad6fa05a39b9245e4fe85b61218ec40
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0da0e5d4b7dd8ff000d6c56716bea1b36935af01
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222462"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928908"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
-[Azure Active Directory (Azure AD) レポート API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
+[Azure Active Directory (Azure AD) レポート API](active-directory-reporting-api-getting-started-azure-portal.md) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 ユーザーの介入なしに Azure AD Reporting API にアクセスする場合は、証明書を使用するようにアクセスを構成できます。
 
-ユーザーの介入なしに Azure AD Reporting API にアクセスする場合は、証明書を使用するようにアクセスを構成できます。
+これには、次の手順が含まれます。
 
-この記事の内容は次のとおりです。
+1. [前提条件をインストールする](#install-prerequisites)
+2. [アプリで証明書を登録する](#register-the-certificate-in-your-app)
+3. [MS Graph API のアクセス トークンを取得する](#get-an-access-token-for-ms-graph-api)
+4. [MS Graph API のエンドポイントにクエリを行う](#query-the-ms-graph-api-endpoints)
 
-- 証明書を使用して Azure AD Reporting API にアクセスするために必要な手順を説明します。
-- [Azure Active Directory Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)を満たしていることを前提としています。 
-
-
-証明書を使用して Reporting API にアクセスするには、次の手順を実行する必要があります。
-
-1. 前提条件をインストールする
-2. 目的のアプリで証明書を設定する 
-3. アクセス許可を付与する
-4. アクセス トークンを取得する
-
-
-
-
-ソース コードについては、[Report API モジュールの活用](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils)に関するページを参照してください。 
 
 ## <a name="install-prerequisites"></a>必須コンポーネントをインストールする
 
-Azure AD PowerShell V2 と AzureADUtils モジュールがインストールされている必要があります。
+1. 最初に、[Azure Active Directory Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites-azure-portal.md)を満たしていることを確認します。 
 
-1. [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md) についての手順に従い、Azure AD Powershell V2 をダウンロードしてインストールします。
+2. [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md) についての手順に従い、Azure AD Powershell V2 をダウンロードしてインストールします。
 
-2. [AzureAD/azure-activedirectory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1) から Azure AD Utils モジュールをダウンロードします。 
-  このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
-    - Nuget を使用して最新バージョンの ADAL を入手
+3. [PowerShellGallery - MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) から MSCloudIDUtils をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
+    - 認証に必要な ADAL ライブラリ
     - ADAL を使用してユーザー キー、アプリケーション キー、証明書からアクセス トークンを取得
     - Graph API でページ単位の結果を処理
 
-**Azure AD Utils モジュールをインストールするには:**
+4. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行してセットアップを完了します。初めてではない場合は、**Import-Module** Powershell コマンドを使ってすぐにインポートできます。
 
-1. ユーティリティ モジュールの保存先ディレクトリ (c:\azureAD など) を作成し、GitHub からモジュールをダウンロードします。
-2. PowerShell セッションを開いて、先ほど作成したディレクトリに移動します。 
-3. 対象のモジュールをインポートし、Install-AzureADUtilsModule コマンドレットを使用して PowerShell モジュールのパスにインストールします。 
+セッションは次のような画面になります。
 
-このセッションは次のような画面になります。
+  ![Windows PowerShell](./media/active-directory-reporting-api-with-certificates/module-install.png)
 
-  ![Windows PowerShell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
+## <a name="register-the-certificate-in-your-app"></a>アプリで証明書を登録する
 
-## <a name="set-the-certificate-in-your-app"></a>目的のアプリで証明書を設定する
+1. 最初に、アプリケーションの登録ページに移動します。 これは、[Azure portal](https://portal.azure.com) に移動し、**[Azure Active Directory]** をクリックしてから、**[アプリの登録]** をクリックして一覧からアプリケーションを選択することによって、行うことができます。 
 
-**目的のアプリで証明書を設定するには:**
+2. その後、アプリケーションの[証明書を Azure AD に登録する](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials#register-your-certificate-with-azure-ad)手順に従います。 
 
-1. Azure portal からアプリの[オブジェクト ID を取得](active-directory-reporting-api-prerequisites-azure-portal.md#get-your-applications-client-id)します。 
+3. アプリケーション ID と、アプリケーションで登録した証明書のサムプリントを書き留めます。 サムプリントを調べるには、ポータルのアプリケーション ページから **[設定]** に移動し、**[キー]** をクリックします。 サムプリントは **[公開鍵]** 一覧の下にあります。
 
-  ![Azure ポータル](./media/active-directory-report-api-with-certificates/azure-portal.png)
-
-2. PowerShell セッションを開き、Connect-AzureAD コマンドレットを使って Azure AD に接続します。
-
-  ![Azure ポータル](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
-
-3. AzureADUtils の New-AzureADApplicationCertificateCredential コマンドレットを使って証明書の資格情報をそこに追加します。 
-
->[!Note]
->先ほど取得したアプリケーションのオブジェクト ID のほか、証明書オブジェクト (Cert: ドライブを使用して取得) を指定する必要があります。
->
-
-
-  ![Azure ポータル](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
   
-## <a name="get-an-access-token"></a>アクセス トークンを取得する
+## <a name="get-an-access-token-for-ms-graph-api"></a>MS Graph API のアクセス トークンを取得する
 
-アクセス トークンを取得するには、AzureADUtils の **Get-AzureADGraphAPIAccessTokenFromCert** コマンドレットを使用します。 
+MS Graph API のアクセス トークンを取得するには、MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使います。 
 
 >[!NOTE]
->前のセクションで使用したオブジェクト ID ではなくアプリケーション ID を使う必要があります。
+>アプリケーション ID (クライアント ID とも呼ばれます) と、コンピューターの証明書ストア (CurrentUser または LocalMachine 証明書ストア) にインストールされている秘密キーの証明書の証明書サムプリントを、使う必要があります。
 >
 
- ![Azure ポータル](./media/active-directory-report-api-with-certificates/application-id.png)
+ ![Azure ポータル](./media/active-directory-reporting-api-with-certificates/getaccesstoken.png)
 
 ## <a name="use-the-access-token-to-call-the-graph-api"></a>アクセス トークンを使用して Graph API を呼び出す
 
-これでスクリプトを作成できるようになりました。 AzureADUtils の **Invoke-AzureADGraphAPIQuery** コマンドレットの使用例を次に示します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。 
+ここで、Powershell スクリプトでアクセス トークンを使って、Graph API のクエリを行うことができます。 次に示すのは、MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns または diectoryAudits エンドポイントを列挙する方法の例です。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
- ![Azure ポータル](./media/active-directory-report-api-with-certificates/script-completed.png)
+### <a name="query-the-directoryaudits-endpoint"></a>DirectoryAudits エンドポイントのクエリ
+ ![Azure ポータル](./media/active-directory-reporting-api-with-certificates/query-directoryAudits.png)
 
-ここから CSV をエクスポートして SIEM システムに保存することができます。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
+ ### <a name="query-the-signins-endpoint"></a>SignIns エンドポイントのクエリ
+ ![Azure ポータル](./media/active-directory-reporting-api-with-certificates/query-signins.png)
+
+このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
+
 
 ## <a name="next-steps"></a>次の手順
 

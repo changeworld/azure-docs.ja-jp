@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938011"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972385"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -415,7 +415,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 | # | タイトル | 説明 |
 |--:|:------|-------------|
 | 1 | [Azure 予測メンテナンスの機械学習サンプル](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |次の N 期間における障害を予測する PdM のサンプルです。 このサンプルは Azure ML の Workbench プロジェクトとして記述されており、PdM の初心者に最適です。 関連する[追加ドキュメント](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)をご覧ください。|
-| 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | 複数の PdM シナリオを実演するエンド ツー エンド フレームワークです。 このテンプレートでは 2 つのシナリオが提示されます。1 つ目は、リアルタイムで障害条件を分類する新しいユース ケースです。 2 つ目のシナリオは、ソリューション [1] をこのソリューション テンプレートに単純に統合したものです。 デプロイされた同じインフラストラクチャを再利用して、他の新しいシナリオ、または既存のシナリオを追加する方法が実演されます。|
+| 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | IoT リモート監視における、ML モデリングと、予測メンテナンス シナリオを支援できる完全な Azure インフラストラクチャを示すオープンソースのソリューション テンプレート。 |
 | 3 | [予測メンテナンスのためのディープ ラーニング](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 予測メンテナンスのために LSTM (Long Short-Term Memory) ネットワーク (再帰型ニューラル ネットワークの 1 クラス) を使用したデモ ソリューションを含む Azure Notebook です。[このサンプルに関するブログ記事](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)をご覧ください。|
 | 4 | [R での予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R のスクリプトを使用した PdM のモデリング ガイドです。|
 | 5 | [航空宇宙業界向けの Azure 予測メンテナンス](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 航空機メンテナンスのための、Azure ML v1.0 に基づいた最初の PdM ソリューション テンプレートの 1 つです。 本ガイドの起源はこのプロジェクトでした。 |

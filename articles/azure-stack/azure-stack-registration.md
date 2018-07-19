@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/09/2018
 ms.author: jeffgilb
-ms.reviewer: avishwan
-ms.openlocfilehash: 7d14b246220264641a3bb726d5505c25dc25bbbd
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.reviewer: brbartle
+ms.openlocfilehash: 65525ffe33ddc100dd3066e7c2b52ef8a856fbc3
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248144"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933489"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
 [Azure Stack](azure-stack-poc.md) の Azure への登録により、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 Azure Stack を登録した後は、Azure コマースに使用状況が報告され、登録に使用したサブスクリプションの下で確認できます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 さらに、従量制課金モデルを使用している場合、登録しないと、Azure Stack のライセンス条項違反になります。 Azure Stack のライセンス モデルに関する詳細は、[購入方法のページ](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -61,7 +61,7 @@ Azure に登録するには、最新の PowerShell for Azure Stack を使用す�
 
 ### <a name="bkmk_tools"></a>Azure Stack ツールをダウンロードする
 
-Azure Stack ツールの GitHub リポジトリには、Azure Stack 機能 (登録機能を含む) をサポートする PowerShell モジュールが含まれています。 登録プロセス中に、Azure Stack ツール リポジトリにある RegisterWithAzure.psm1 PowerShell モジュールをインポートおよび使用して、Azure Stack インスタンスを Azure に登録する必要があります。
+Azure Stack ツールの GitHub リポジトリには、Azure Stack 機能 (登録機能を含む) をサポートする PowerShell モジュールが含まれています。 登録プロセス中に、Azure Stack ツール リポジトリにある RegisterWithAzure.psm1 PowerShell モジュールをインポートおよび利用して、使用する Azure Stack インスタンスを Azure に登録する必要があります。
 
 最新バージョンを使用していることを確認するには、Azure に登録する前に、既存のバージョンの Azure Stack ツールをすべて削除し、[GitHub から最新バージョンをダウンロードする](azure-stack-powershell-download.md)必要があります。
 
@@ -82,7 +82,7 @@ Azure Stack リソース プロバイダーを Azure に登録するには、Pow
       Add-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
    ```
 
-   | パラメーター | 説明 |  
+   | パラメーター | [説明] |  
    |-----|-----|
    | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
    |  |  |
@@ -125,7 +125,7 @@ Azure Stack リソース プロバイダーを Azure に登録するには、Pow
       -BillingModel PayAsYouUse
    ```
 
-  |パラメーター|説明|
+  |パラメーター|[説明]|
   |-----|-----|
   |PrivilegedEndpointCredential|[特権エンドポイントへのアクセス](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)に使用する資格情報。 ユーザー名は、**AzureStackDomain\CloudAdmin** の形式です。|
   |PrivilegedEndpoint|ログ収集およびその他のデプロイ後タスクのような機能を提供する、あらかじめ構成されたリモート PowerShell コンソール。 詳細については、[特権エンドポイントの使用](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)の記事を参照してください。|
@@ -150,9 +150,6 @@ Set-AzsRegistration `
 ```
 
 ## <a name="register-azure-stack-in-disconnected-environments"></a>切断された環境で Azure Stack を登録する
-
-*このセクションの情報は Azure Stack 1712 更新バージョン (180106.1) 以降に適用され、それ以前のバージョンではサポートされていません。*
-
 切断された (インターネット接続のない) 環境で Azure Stack を登録している場合は、Azure Stack 環境から登録トークンを取得してから、Azure に接続でき、かつ [PowerShell for Azure Stack がインストールされた](#bkmk_powershell)コンピューター上でそのトークンを使用する必要があります。  
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Azure Stack 環境から登録トークンを取得する
@@ -283,7 +280,7 @@ Azure Stack のアクティブ化リソースを削除するには、Azure Stack
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-次に、Azure の登録リソースを削除するには、Azure に接続されたコンピューターを使用していることを確認して、正しい Azure PowerShell コンテキストにログインし、以下の説明に従って、適切な PowerShell コマンドを実行します。
+次に、Azure の登録リソースを削除するには、Azure に接続されたコンピューターを使用していることを確認して、正しい Azure PowerShell コンテキストにサインインし、以下の説明に従って、適切な PowerShell コマンドを実行します。
 
 リソースの作成に使用した登録トークンを使用できます。  
 

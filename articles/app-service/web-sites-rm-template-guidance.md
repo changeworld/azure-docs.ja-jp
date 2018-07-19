@@ -4,20 +4,19 @@ description: Web アプリをデプロイするための Azure Resource Manager 
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8c29cf5a65e9587b281a6000b5b4eff47f11da91
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807324"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927674"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -110,6 +109,30 @@ Web アプリの名前は、グローバルに一意である必要がありま�
   ...
 }
 ```
+
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Web アプリの証明書を Key Vault からデプロイする
+
+テンプレートに SSL バインディングの [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) リソースが含まれ、証明書が Key Vault に格納されている場合、App Service の ID が証明書にアクセスできることを確認する必要があります。
+
+グローバル Azure では、App Service サービス プリンシパルの ID は **abfa0a7c-a6b6-4736-8310-5855508787cd** です。 App Service サービス プリンシパルに Key Vault へのアクセスを許可するには、次を使用します。
+
+```azurepowershell-interactive
+Set-AzureRmKeyVaultAccessPolicy `
+  -VaultName KEY_VAULT_NAME `
+  -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
+  -PermissionsToSecrets get `
+  -PermissionsToCertificates get
+```
+
+Azure Government では、App Service サービス プリンシパルの ID は **6a02c803-dafd-4136-b4c3-5a6f318b4714** です。 前の例でその ID を使います。
+
+お使いの Key Vault で **[証明書]** と **[生成/インポート]** を選択して、証明書をアップロードします。
+
+![証明書のインポート](media/web-sites-rm-template-guidance/import-certificate.png)
+
+テンプレートで、`keyVaultSecretName` に対する証明書の名前を指定します。
+
+テンプレートの例については、「[Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)」(Key Vault シークレットから Web アプリ証明書を展開し、SSL バインディングの作成に使用する) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

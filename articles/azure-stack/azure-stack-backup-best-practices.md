@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: ec30832e6863ad92eff8f5c2e613adc503c73af5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075750"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969471"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -42,9 +42,7 @@ ms.locfileid: "34075750"
 
 ### <a name="encryption"></a>暗号化
 
-暗号化キーを使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 キーは、AzureStack-Tools を使用して生成できます。 
-
-![AzureStack-Tools](media\azure-stack-backup\azure-stack-backup-encryption1.png)
+暗号化キーを使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 キーは、[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)一環として生成されます。
 
 キーは、安全な場所 (パブリックの Azure Key Vault シークレット) に格納する必要があります。 このキーは、Azure Stack の再展開時に使用します。 
 
@@ -63,7 +61,7 @@ ms.locfileid: "34075750"
  - インフラストラクチャでは、MASBACKUP フォルダーが自動的に作成されます。 これは、Microsoft によって管理される共有です。 MASBACKUP と同じレベルの共有を作成することもできます。 Azure Stack 以外で作成された MASBACKUP 内に、フォルダーやストレージ データを作成することは推奨されません。 
  -  フォルダー名に FQDN とリージョンを使用して、バックアップ データを、他のクラウドと区別します。 Azure Stack のデプロイの完全修飾ドメイン名 (FQDN) とエンドポイントは、リージョン パラメーターと外部ドメイン名 パラメーターの組み合わせです。 詳細については、「[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)」をご覧ください。
 
-たとえば、バックアップ共有を、fileserver01.contoso.com 上でホストされている AzSBackups とします。このファイル共有では、外部ドメイン名を使用する、Azure Stack 展開ごとのフォルダーと、リージョン名を使用するサブフォルダーが存在する可能性があります。 
+たとえば、バックアップ共有を、fileserver01.contoso.com 上でホストされている AzSBackups とします。 このファイル共有では、外部ドメイン名を使用する、Azure Stack 展開ごとのフォルダーと、リージョン名を使用するサブフォルダーが存在する可能性があります。 
 
 FQDN: contoso.com  
 リージョン: nyc
@@ -87,7 +85,7 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 システムでサポートされるアラートは、以下のとおりです。
 
-| アラート:                                                   | [説明]                                                                                     | 修復                                                                                                                                |
+| アラート:                                                   | 説明                                                                                     | 修復                                                                                                                                |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ファイル共有の容量が不足しているため、バックアップに失敗しました | ファイル共有が容量不足のため、バックアップ コントローラーがバックアップ ファイルをその場所にエクスポートできません。 | ストレージ容量を追加して、バックアップをやり直します。 既存のバックアップを (最も古いものから) 削除して、空き容量を増やします。                    |
 | 接続の問題のため、バックアップに失敗しました。             | Azure Stack とファイル共有間のネットワークに問題があります。                          | ネットワークの問題に対処して、バックアップをやり直します。                                                                                            |

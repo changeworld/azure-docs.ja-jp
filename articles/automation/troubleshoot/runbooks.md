@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bb340b8439927f191bc4a22f385d85d4e21b1cdb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064532"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929351"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -204,6 +204,20 @@ Runbook ジョブがエラーで失敗します。
 #### <a name="resolution"></a>解決策
 
 この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。 詳細については、「[PowerShell ワークフローについての説明](../automation-powershell-workflow.md#checkpoints)」をご覧ください。 "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
+
+### <a name="long-running-runbook"></a>シナリオ: 実行時間の長い Runbook が完了しない
+
+#### <a name="issue"></a>問題
+
+これは Azure Automation 内のプロセスの "フェア シェア" 監視のための Azure サンドボックスでの設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。
+
+#### <a name="cause"></a>原因
+
+Runbook が、Azure サンドボックスのフェア シェアによって許可されている 3 時間の制限を超えて実行しました
+
+#### <a name="resolution"></a>解決策
+
+推奨される解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 Hybrid Worker には、Azure サンドボックスのような[フェア シェア](../automation-runbook-execution.md#fair-share)による 3 時間の Runbook 制限はありません。
 
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5aa716f91a3155e81ef8dc7c436b4a9a5811238b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c9a1d605f6cf2ef9dae3a5549e3848931d508394
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34723254"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082745"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開き、以下の手順を実行します。
+6. 別のウィンドウで [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開き、以下の手順を実行します。
 
     a. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 

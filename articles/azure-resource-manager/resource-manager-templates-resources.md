@@ -4,21 +4,20 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359674"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723454"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース セクション
 
@@ -82,12 +81,12 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ]
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | condition | いいえ  | リソースをデプロイするかどうかを示すブール値。 |
 | apiVersion |[はい] |リソースの作成に使用する REST API バージョン。 |
-| 型 |[はい] |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
-| name |[はい] |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスは、名前が別の ID になりすますことがないように、その名前を検証します。 |
+| type |[はい] |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
+| name |[はい] |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 |
 | location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 |
 | tags |いいえ  |リソースに関連付けられたタグ。 サブスクリプション間でリソースを論理的に編成するためのタグを適用します。 |
 | コメント |いいえ  |テンプレート内にドキュメント化するリソースについてのメモ。 |
@@ -99,19 +98,42 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | プラン | いいえ  | 一部のリソースでは、デプロイするプランを定義する値が許可されます。 たとえば、仮想マシンのマーケットプレース イメージを指定することができます。 | 
 | resources |いいえ  |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 子リソースの完全修飾型には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 |
 
+## <a name="condition"></a>条件
+
+デプロイ時にリソースを作成するどうかを決定する必要がある場合は、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースはデプロイされます。 値が false の場合、リソースはデプロイされません。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+`condition` 要素を使用する完全なテンプレート例については、[新規または既存の仮想ネットワーク、ストレージ、およびパブリック IP を使用する VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) に関するページを参照してください。
+
 ## <a name="resource-specific-values"></a>リソース固有の値
 
 **apiVersion**、**type**、および **properties** 要素は、リソースの種類ごとに異なります。 **sku**、**kind**、および **plan** 要素は、すべてではなく一部のリソースの種類だけで使用することができます。 これらのプロパティの値を確認するには、[テンプレート参照](/azure/templates/)をご覧ください。
 
 ## <a name="resource-names"></a>リソース名
+
 Resource Manager では、一般に、次の 3 種類のリソース名を使用します。
 
 * 一意である必要があるリソース名
-* 一意である必要がないリソース名。ただし、リソースを識別するのに役立つ名前を選択します。
+* 一意である必要がないリソース名。ただし、リソースを識別するのに役立つ名前を指定するようにします。
 * 一般的なものでよいリソース名
 
 ### <a name="unique-resource-names"></a>一意のリソース名
-データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を付ける必要があります。 一意の名前にする必要がある一般的なリソースの種類には次のようなものがあります。
+
+データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を指定します。 一意の名前にする必要がある一般的なリソースの種類には次のようなものがあります。
 
 * Azure Storage<sup>1</sup> 
 * Azure App Service の Web Apps の機能
@@ -159,7 +181,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 }
 ```
 
-## <a name="location"></a>場所
+## <a name="location"></a>Location
 テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所ごとに、異なるリソースの種類がサポートされます。 特定のリソースの種類について、サブスクリプションで利用できる場所の一覧を表示するには、Azure PowerShell または Azure CLI を使用します。 
 
 次の例では、PowerShell を使用して、`Microsoft.Web\sites` リソースの種類の場所を取得しています。
@@ -168,7 +190,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-次の例では、Azure CLI 2.0 を使用して、`Microsoft.Web\sites` リソースの種類の場所を取得しています。
+次の例では、Azure CLI を使用して、`Microsoft.Web\sites` リソースの種類の場所を取得しています。
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -259,13 +281,13 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 }
 ```
 
-入れ子にした場合、種類は `databases` に設定されますが、全体的なリソースの種類は `Microsoft.Sql/servers/databases` です。 親リソースから想定されるため、`Microsoft.Sql/servers/` は不要です。 子リソースの名前は `exampledatabase` が設定されていますが、完全な名前には親の名前が含まれています。 親リソースから想定されるため、`exampleserver` は不要です。
+入れ子にした場合、種類は `databases` に設定されますが、全体的なリソースの種類は `Microsoft.Sql/servers/databases` です。 親リソースの種類から想定されるため、`Microsoft.Sql/servers/` は不要です。 子リソースの名前は `exampledatabase` が設定されていますが、完全な名前には親の名前が含まれています。 親リソースから想定されるため、`exampleserver` は不要です。
 
 子リソースの種類の形式は次の通りです。`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
 子リソースの名前の形式は次の通りです。`{parent-resource-name}/{child-resource-name}`
 
-ただし、データベースをサーバー内で定義する必要はありません。 最上位レベルで子リソースを定義できます。 親のリソースが同じテンプレート内に展開されていない場合、または複数の子リソースを作成するために `copy` を使用したい場合は、このアプローチを使用することがあります。 このアプローチの場合、完全なリソースの種類を指定する必要があり、子リソースの名前に親のリソースの名前を含める必要があります。
+ただし、データベースをサーバー内で定義する必要はありません。 最上位レベルで子リソースを定義できます。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために `copy` を使う場合は、このアプローチを使用することがあります。 このアプローチの場合、完全なリソースの種類を指定する必要があり、子リソースの名前に親のリソースの名前を含める必要があります。
 
 ```json
 {
@@ -284,7 +306,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 }
 ```
 
-リソースに対する完全修飾参照を作成する場合、種類と名前からセグメントを結合する順序は、単に 2 つの連結ではありません。  名前空間の後に、"*種類/名前*" のペアを具体性の低いものから高いものへの順に使用します。
+リソースに対する完全修飾参照を作成する場合、種類と名前からセグメントを結合する順序は、単に 2 つの連結ではありません。 名前空間の後に、"*種類/名前*" のペアを具体性の低いものから高いものへの順に使用します。
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -312,7 +334,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
    ]
    ```
 
-* テンプレートで "*パブリック エンドポイント*" (Azure Blob Storage のパブリック エンドポイントなど) を使用する場合、名前空間は "*ハードコーディングしないで*" ください。 名前空間を動的に取得するには、**reference** 関数を使用します。 そうすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。 API バージョンは、テンプレートのストレージ アカウントで使用するものと同じバージョンにしてください。
+* テンプレートで "*パブリック エンドポイント*" (Azure Blob Storage のパブリック エンドポイントなど) を使用する場合、名前空間は "*ハードコーディングしないで*" ください。 名前空間を動的に取得するには、**reference** 関数を使用します。 そうすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。 API バージョンは、テンプレートのストレージ アカウントで使用するものと同じバージョンに設定します。
    
    ```json
    "osDisk": {
@@ -323,7 +345,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
    }
    ```
    
-   作成しているテンプレートにストレージ アカウントをデプロイする場合、リソースの参照でプロバイダーの名前空間を指定する必要はありません。 簡単な構文の例を次に示します。
+   作成している同じテンプレートにストレージ アカウントがデプロイされている場合、リソースの参照でプロバイダーの名前空間を指定する必要はありません。 簡単な構文の例を次に示します。
    
    ```json
    "osDisk": {
@@ -410,6 +432,6 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 ## <a name="next-steps"></a>次の手順
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
-* デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
+* デプロイ中に複数のテンプレートを使用する場合は、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions-resource.md#resourceid)に関するセクションをご覧ください。
 * リソース名の制限事項については、「 [Azure リソースの推奨される名前付け規則](../guidance/guidance-naming-conventions.md)」を参照してください。

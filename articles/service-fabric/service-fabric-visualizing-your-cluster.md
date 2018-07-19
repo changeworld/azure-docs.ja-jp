@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: mikhegn
-ms.openlocfilehash: 916742d89447af4097d37b5d78e97ff86c12834c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210183"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972334"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
-Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検査および管理するためのオープン ソース ツールです。 Service Fabric Explorer は、Windows および Linux 用のデスクトップ アプリケーションです。 MacOS のサポートは近日対応予定です。
+Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検査および管理するためのオープン ソース ツールです。 Service Fabric Explorer は、Windows、macOS、Linux 用のデスクトップ アプリケーションです。
 
 ## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer のダウンロード
 

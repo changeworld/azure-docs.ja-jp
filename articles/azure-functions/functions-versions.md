@@ -12,26 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: 9f916aaa8032ff519709d73a1c1f51195f811686
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919357"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602119"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
- Azure Functions ランタイムには、2 つのメジャー バージョン 1.x と 2.x があります。 この記事では、使用するメジャー バージョンを選択する方法について説明します。
-
-> [!IMPORTANT] 
-> ランタイム 1.x は、運用環境用に承認された唯一のバージョンです。
+ Azure Functions Runtime には、2 つのメジャー バージョン 1.x と 2.x があります。 運用環境用に承認されているのは 1.x のみです。 この記事では、2.x (プレビュー段階) の新機能について説明します。
 
 | ランタイム | 状態 |
 |---------|---------|
 |1.x|一般公開 (GA)|
 |2.x|プレビュー|
 
-関数アプリまたは特定のバージョン用の開発環境を構成する方法については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」および「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」をご覧ください。
+> [!NOTE] 
+> この記事は、クラウド サービスの Azure Functions に関するものです。 オンプレミスの Azure Functions を実行できる製品については、[Azure Functions Runtime の概要](functions-runtime-overview.md)に関するページを参照してください。
 
 ## <a name="cross-platform-development"></a>クロスプラットフォーム開発
 
@@ -65,8 +63,8 @@ ms.locfileid: "28919357"
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [ローカル開発環境で 2.0 ランタイムをターゲットにする](functions-run-local.md)
+詳細については、次のリソースを参照してください。
 
-> [!div class="nextstepaction"]
-> [ランタイムのバージョンについては、リリース ノートを参照してください](https://github.com/Azure/azure-webjobs-sdk-script/releases)
+* [Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)
+* [Azure Functions Runtime バージョンをターゲットにする方法](set-runtime-version.md)
+* [リリース ノート](https://github.com/Azure/azure-functions-host/releases)

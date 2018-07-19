@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441133"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598426"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>暗号化された仮想マシンを Azure Backup でバックアップおよび復元する
 この記事では、Azure Backup を使用して仮想マシン (VM) をバックアップおよび復元する手順を紹介します。 また、サポートされるシナリオ、前提条件のほか、エラーが発生した場合のトラブルシューティングの手順についても、詳しく説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
- * 暗号化された VM のバックアップと復元は、Azure Resource Manager デプロイ モデルを使用する VM でのみサポートされます。 クラシック デプロイ モデルを使用する VM ではサポートされません。 <br>
- * 暗号化された VM のバックアップと復元は、Azure Disk Encryption を使用する Windows VM と Linux VM の両方でサポートされています。 Disk Encryption では、Windows の業界標準の BitLocker 機能と、Linux の dm-crypt 機能を使用して、ディスクの暗号化を提供します。 <br>
- 
- 次の表に、BitLocker 暗号化キー (BEK) のみで暗号化された VM と、キー暗号化キー (KEK) で暗号化された VM でサポートされるシナリオを示します。
- 
- 
+ 暗号化された VM のバックアップと復元は、Azure Resource Manager デプロイ モデルを使用する VM でのみサポートされます。 クラシック デプロイ モデルを使用する VM ではサポートされません。 暗号化された VM のバックアップと復元は、Azure Disk Encryption を使用する Windows VM と Linux VM でサポートされています。 Disk Encryption では、Windows の業界標準の BitLocker 機能と、Linux の dm-crypt 機能を使用して、ディスクの暗号化を提供します。 次の表に、暗号化の種類と VM のサポートを示します。
+
    |  | BEK + KEK VM | BEK のみの VM |
    | --- | --- | --- |
    | **管理対象外 VM**  | [はい] | [はい]  |
@@ -134,7 +130,7 @@ VM の暗号化を後で有効にする VM が Recovery Services コンテナー
 * または、[テンプレートを使用して復元された VM をカスタマイズし](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)、復元されたディスクから VM を作成する。 テンプレートは、2017年 4 月 26 日より後に作成された復旧ポイントに対してのみ使うことができます。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
-| 操作 | エラーの詳細 | 解決策 |
+| Operation | エラーの詳細 | 解決策 |
 | --- | --- | --- |
 |Backup | Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 | [前のセクションで示した手順](#provide-permissions-to-azure-backup)に従って、Backup にこれらのアクセス許可を付与する必要があります。 または、PowerShell ドキュメントの「保護を有効にする」セクションの「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md#back-up-azure-vms)」で示す手順に従います。 |  
 | Restore |この暗号化済み VM は、関連付けられているキー コンテナーが存在しないため復元できません。 |「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」に記載の手順に従って、キー コンテナーを作成してください。 キーとシークレットがない場合にそれらを復元する方法については、[Azure Backup を使用したキー コンテナーのキーとシークレットの復元](backup-azure-restore-key-secret.md)に関する記事をご覧ください。 |

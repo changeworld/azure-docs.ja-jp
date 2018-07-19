@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077328"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951123"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -62,7 +62,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンに 2 つの仮想ネットワークを設定する
 
-2 つの異なるリージョンに 2 つの仮想ネットワークを作成し、その VNet 間に VPN 接続を作成するには、次のイメージを選択して作成します。 このテンプレートは、[パブリック BLOB ストレージ]](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)に格納されています。
+2 つの異なるリージョンの 2 つの仮想ネットワークと、その VNet 間の VPN 接続を作成するテンプレートを使用するには、次の **[Deploy to Azure]** ボタンを選択します。 テンプレートの定義は、[パブリック BLOB ストレージ](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)に格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -72,7 +72,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国西部 |
+| Location | 米国西部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
 | アドレス空間プレフィックス | 10.1.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -89,7 +89,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国東部 |
+| Location | 米国東部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -305,7 +305,7 @@ sudo service bind9 status
 
 必須の引数:
 
-|名前|説明|
+|Name|説明|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -314,7 +314,7 @@ sudo service bind9 status
 
 省略可能な引数:
 
-|名前|説明|
+|Name|説明|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
@@ -390,7 +390,7 @@ sudo service bind9 status
 - **すべてのテーブルのレプリケーションを無効にする**:
 
         -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
-  または
+  or
 
         --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 

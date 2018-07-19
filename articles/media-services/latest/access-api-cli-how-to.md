@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services API にアクセスする - CLI 2.0 | Microsoft Docs
+title: Azure Media Services API にアクセスする - Azure CLI | Microsoft Docs
 description: Azure Media Services API にアクセスするには、このハウツー記事の手順に従います。
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e20cac5f1063589bdbfee0f384ac6af5a39811ed
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639777"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723694"
 ---
-# <a name="access-azure-media-services-api-with-cli-20"></a>CLI 2.0 で Azure Media Services API にアクセスする
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLI で Azure Media Services API にアクセスする
  
 Azure Media Services API に接続するには、Azure AD サービス プリンシパル認証を使用する必要があります。 アプリケーションは、次のパラメーターを持つ Azure AD トークンを要求する必要があります。
 
@@ -28,7 +28,7 @@ Azure Media Services API に接続するには、Azure AD サービス プリン
 * REST Media Services のリソース URI
 * Azure AD アプリケーションの値: クライアント ID とクライアント シークレット
 
-この記事では、CLI 2.0 を使用して、Azure Media Services リソースにアクセスする Azure AD アプリケーションとサービス プリンシパルを作成し、Azure Media Services リソースにアクセスするために必要な値を取得する方法について説明します。
+この記事では、Azure CLI を使用して、Azure AD アプリケーションとサービス プリンシパルを作成し、Azure Media Services リソースにアクセスするために必要な値を取得する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -40,7 +40,7 @@ Azure Media Services API に接続するには、Azure AD サービス プリン
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -51,4 +51,4 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="see-also"></a>関連項目
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

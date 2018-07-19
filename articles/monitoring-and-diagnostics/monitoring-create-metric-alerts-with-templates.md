@@ -8,15 +8,19 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263448"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932213"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure Monitor に[新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)で利用することができます｡
+
+> [!IMPORTANT]
+> Log Analytics からのメトリックのサポートはプレビューであるため、メトリック アラートに対して指定されている Resource Manager テンプレートは、リソースの種類 Microsoft.OperationalInsights/workspaces に対しては機能しません。 リソース テンプレートでのプレビュー機能の使用にご興味のあるユーザーは、[Azure アラートのフィードバック](mailto:azurealertsfeedback@microsoft.com)でお問い合わせください。
+
 
 基本的な手順は次のとおりです。
 

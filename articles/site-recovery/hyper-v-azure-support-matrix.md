@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266963"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37923470"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -33,7 +33,7 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2 | Site Recovery で Hyper-V サイトを構成する場合、Windows Server 2016 と 2012 R2 を実行するホストの混在はサポートされません。<br/><br/> Windows Server 2016 を実行しているホスト上にある VM の場合、別の場所への回復はサポートされていません。
+Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | Site Recovery で Hyper-V サイトを構成する場合、Windows Server 2016 と 2012 R2 を実行するホストの混在はサポートされません。<br/><br/> Windows Server 2016 を実行しているホスト上にある VM の場合、別の場所への回復はサポートされていません。
 Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2016 ホストは、Virtual Machine Manager 2016 で管理する必要があります。<br/><br/> Windows Server 2016 上および 2012 R2 上で実行されている Hyper-V ホストが混在する Virtual Machine Manager クラウドは、現在サポートされていません。<br/><br/> 既存の Virtual Machine Manager 2012 R2 サーバーから 2016 へのアップグレードを含む環境はサポートされていません。
 
 

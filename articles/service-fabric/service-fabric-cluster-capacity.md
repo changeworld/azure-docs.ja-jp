@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cc6837ab14aa8fb36317da52cf011ddbd7e464be
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061560"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972233"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -162,6 +162,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 運用ワークロードの場合: 
 
+- クラスターのプライマリ NodeType をシステム サービス専用とし、配置制約を利用してアプリケーションをセカンダリ NodeType にデプロイすることをお勧めします。
 - 推奨される VM SKU は、Standard D3 か Standard D3_V2、またはローカル SSD が 14 GB 以上のこれらと同等の SKU です
 - サポートされる最小の VM SKU は、Standard D1 か Standard D1_V2、またはローカル SSD が 14 GB 以上のこれらと同等の SKU です 
 - コア数が少ない Standard A0 のような VM SKU は、運用ワークロードではサポートされません。

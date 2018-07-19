@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209833"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922750"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -29,6 +29,11 @@ Site Recovery で更新を管理できるようにすると、コンテナーと
 
 > [!NOTE]
 > 自動更新を有効しても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
+
+> [!NOTE]
+> Automation アカウントによって使われるジョブの請求は、1 か月間に使われたジョブ実行時間の分数に基づき、既定では Automation アカウントの無料ユニットとして 500 分が含まれます。 1 日あたりのジョブの実行は、**数秒から 1 分程度**であり、**無料クレジットの範囲内**です。
+
+含まれている無料ユニット (1 か月あたり)**   価格ジョブ実行時間    500 分 ₹0.14/分
 
 ## <a name="enable-automatic-updates"></a>自動更新を有効にする
 
@@ -64,7 +69,7 @@ Site Recovery による更新の管理は次の方法で選択できます。
 自動更新を有効にしようとして失敗した場合は、以下を参照してトラブルシューティングを行ってください。
 
 **エラー**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。 
-- 推奨される操作: ログインしたアカウントに "共同作成者" が割り当てられていることを確認してから、操作を再試行します。
+- 推奨される操作: ログインしたアカウントに "共同作成者" が割り当てられていることを確認してから、操作を再試行します。 適切なアクセス許可の割り当ての詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)のドキュメントをご覧ください。
  
 自動更新をオンにすると、Site Recovery サービスによってほとんどの問題を修正できます。それには、**[修復]** ボタンをクリックする必要があります。
 

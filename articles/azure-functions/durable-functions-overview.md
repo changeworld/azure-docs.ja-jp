@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764402"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970491"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions の概要
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](functions-overview.md) と [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
-この拡張機能を使用すると、*オーケストレーター関数*という新しいタイプの関数で、ステートフルなワークフローを定義できます。 オーケストレーター関数のメリットは以下のとおりです。
+この拡張機能を使用すると、[*オーケストレーター関数*](durable-functions-types-features-overview.md#orchestrator-functions)という新しいタイプの関数で、ステートフルなワークフローを定義できます。 オーケストレーター関数のメリットは以下のとおりです。
 
 * コードでワークフローを定義します。 JSON スキーマまたはデザイナーが不要です。
 * 他の関数を同期と非同期のどちらでも呼び出すことができます。 呼び出された関数からの出力は、ローカル変数に保存できます。
@@ -340,7 +340,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 この拡張機能による Event Sourcing の使用は透過的です。 背後では、オーケストレーター関数内の `await` 演算子が、Durable Task Framework のディスパッチャーにオーケストレーター スレッドのコントロールを引き渡します。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションは、オーケストレーション インスタンスの *"実行履歴"* に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。 それに対する課金は Azure Functions の従量課金プランを使用している場合は停止します。  処理すべき作業がさらにある場合は、関数は再起動され、関数の状態は再構築されます。
 
-オーケストレーション関数にさらに処理すべき作業が与えられる (たとえば、応答メッセージを受け取る、または永続タイマーが期限切れになる) と、ローカルの状態を再構築するためにオーケストレーターがもう一度起動して始めからその関数全体を再実行します。 このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework は現在のオーケストレーションの*実行履歴*を照会します。 アクティビティ関数が既に実行されいくつかの結果を生成していることが確認されると、その関数の結果をリプレイしてオーケストレーター コードが実行を継続します。 この動作は、関数コードが完了する、または新しい非同期作業をスケジュールする時点まで継続して行われます。
+オーケストレーション関数にさらに処理すべき作業が与えられる (たとえば、応答メッセージを受け取る、または永続タイマーが期限切れになる) と、ローカルの状態を再構築するためにオーケストレーターがもう一度起動して始めからその関数全体を再実行します。 このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework は現在のオーケストレーションの*実行履歴*を照会します。 [アクティビティ関数](durable-functions-types-features-overview.md#activity-functions)が既に実行されいくつかの結果を生成していることが確認されると、その関数の結果をリプレイしてオーケストレーター コードが実行を継続します。 この動作は、関数コードが完了する、または新しい非同期作業をスケジュールする時点まで継続して行われます。
 
 ### <a name="orchestrator-code-constraints"></a>オーケストレーター コードの制約
 
@@ -348,7 +348,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 ## <a name="language-support"></a>言語のサポート
 
-現時点では、Durable Functions でサポートされている言語は、C# (Functions v1 および v2) と JavaScript (Functions v2 のみ) だけです。 これには、オーケストレーター関数とアクティビティ関数が含まれます。 今後、Azure Functions でサポートされているすべての言語をサポートしていく予定です。 言語サポートの追加に関する最新の進捗状況については、Azure Functions の [GitHub リポジトリの Issue 一覧](https://github.com/Azure/azure-functions-durable-extension/issues)をご覧ください。
+現時点では、Durable Functions でサポートされている言語は、C# (Functions v1 と v2)、F# と JavaScript (Functions v2 のみ) だけです。 これには、オーケストレーター関数とアクティビティ関数が含まれます。 今後、Azure Functions でサポートされているすべての言語をサポートしていく予定です。 言語サポートの追加に関する最新の進捗状況については、Azure Functions の [GitHub リポジトリの Issue 一覧](https://github.com/Azure/azure-functions-durable-extension/issues)をご覧ください。
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
@@ -384,7 +384,7 @@ Table Storage は、オーケストレーター アカウントの実行履歴�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [続けて Durable Functions のドキュメントを読む](durable-functions-bindings.md)
+> [続けて Durable Functions のドキュメントを読む](durable-functions-types-features-overview.md)
 
 > [!div class="nextstepaction"]
 > [Durable Functions 拡張機能のインストールとサンプル](durable-functions-install.md)
