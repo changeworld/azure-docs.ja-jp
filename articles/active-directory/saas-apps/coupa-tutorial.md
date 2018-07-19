@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 36c7bfeece12fe2bb2738e50de03ba2c8fc07bfa
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: adad60611f1447b78173368ed137205f077cb8b7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111948"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 
@@ -255,7 +255,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Coupa のタイルをクリックすると、Coupa アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

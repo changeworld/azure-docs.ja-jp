@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 97b6507cb8c5a66b8b6ccbfccd2c838b4b3fb53a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110560"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合
 
@@ -117,15 +117,15 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
 1. Azure Portal の **Confluence SAML SSO by Microsoft** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
 3. **[Confluence SAML SSO by Microsoft のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します。
 
@@ -138,29 +138,29 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
 4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
 
 6. 別の Web ブラウザー ウィンドウで、Confluence インスタンスに管理者としてログインします。
 
 7. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
     
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon1.png)
 
 8. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。 
     
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon12.png)
 
 9. プラグインがインストールされると、**[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
     
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/addon13.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon13.png)
 
 10. 構成ページで次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/addon52.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon52.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
@@ -262,7 +262,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
 2. アプリケーションの一覧で、**[Confluence SAML SSO by Microsoft]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -283,7 +283,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Confluence SAML SSO by Microsoft] のタイルをクリックすると、Confluence SAML SSO by Microsoft アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

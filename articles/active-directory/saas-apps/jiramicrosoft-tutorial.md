@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: fc3867ca79eb5f142f1d1caaa5569d93e7ea001e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 92b505e698f2d56a2678ac53f42bb49dbaf22463
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110237"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と JIRA SAML SSO by Microsoft の統合
 
@@ -136,29 +136,29 @@ JIRA SAML SSO by Microsoft で Azure AD のシングル サインオンを構成
 
 4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/tutorial_metadataurl.png)
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/tutorial_general_400.png)
 
 6. 別の Web ブラウザー ウィンドウで、JIRA インスタンスに管理者としてログインします。
 
 7. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon1.png)
 
 8. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56506)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon12.png)
 
 9. プラグインがインストールされると、**[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/addon13.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon13.png)
 
 10. 構成ページで次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/jiramicrosoft-tutorial/addon52.png)
+    ![Configure single sign-on](./media/jiramicrosoft-tutorial/addon52.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
@@ -288,7 +288,7 @@ JIRA SAML SSO by Microsoft で Azure AD のシングル サインオンを構成
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [JIRA SAML SSO by Microsoft] のタイルをクリックすると、JIRA SAML SSO by Microsoft アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
