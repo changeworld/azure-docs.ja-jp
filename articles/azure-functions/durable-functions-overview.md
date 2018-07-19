@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970491"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115399"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions の概要
 
@@ -300,7 +300,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ```js
 const df = require("durable-functions");
-const moment = require('moment');
+const df = require('moment');
 
 module.exports = df(function*(ctx) {
     yield ctx.df.callActivityAsync("RequestApproval");

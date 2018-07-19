@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 313f4915a8c522ae2b9fc5ebbbe85fdfb4741cc4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969580"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005834"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -51,6 +51,14 @@ ms.locfileid: "38969580"
 
 ![イベントとしてトリガーの種類を選択する](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
+### <a name="map-trigger-properties-to-pipeline-parameters"></a>トリガー プロパティをパイプライン パラメーターにマップする
+
+特定の BLOB に対してイベント トリガーが発生した場合、イベントはその BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline.parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。
+
+![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+たとえば、前のスクリーンショットでは、 `.csv` で終わる BLOB パスがストレージ アカウントで作成されたときに発生するようにトリガーが構成されています。 その結果、`.csv` 拡張子を持つ BLOB がストレージ アカウント内の任意の場所で作成されたときに、`folderPath` および `fileName` プロパティでは新しい BLOB の場所がキャプチャされます。 たとえば、`@triggerBody().folderPath` が `/containername/foldername/nestedfoldername` などの値を持ち、`@triggerBody().fileName` が `filename.csv` などの値を持つとします。 この例では、これらの値はパイプライン パラメーターの `sourceFolder` および `sourceFile` にマップされます。 これらをそれぞれ `@pipeline.parameters.sourceFolder` および `@pipeline.parameters.sourceFile` として、パイプライン全体で使用することができます。
+
 ## <a name="json-schema"></a>JSON スキーマ
 
 次の表に、イベントベースのトリガーに関連するスキーマ要素の概要を示します。
@@ -75,14 +83,6 @@ ms.locfileid: "38969580"
 
 > [!NOTE]
 > コンテナーとフォルダー、コンテナーとファイル、またはコンテナー、フォルダー、およびファイルを指定するたびに、パスの `/blobs/` セグメントを含める必要があります。
-
-## <a name="map-trigger-properties-to-pipeline-parameters"></a>トリガー プロパティをパイプライン パラメーターにマップする
-
-特定の BLOB に対してイベント トリガーが発生した場合、イベントはその BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline.parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。
-
-![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
-
-たとえば、前のスクリーンショットでは、 `.csv` で終わる BLOB パスがストレージ アカウントで作成されたときに発生するようにトリガーが構成されています。 その結果、`.csv` 拡張子を持つ BLOB がストレージ アカウント内の任意の場所で作成されたときに、`folderPath` および `fileName` プロパティでは新しい BLOB の場所がキャプチャされます。 たとえば、`@triggerBody().folderPath` が `/containername/foldername/nestedfoldername` などの値を持ち、`@triggerBody().fileName` が `filename.csv` などの値を持つとします。 この例では、これらの値はパイプライン パラメーターの `sourceFolder` および `sourceFile` にマップされます。 これらをそれぞれ `@pipeline.parameters.sourceFolder` および `@pipeline.parameters.sourceFile` として、パイプライン全体で使用することができます。
 
 ## <a name="next-steps"></a>次の手順
 トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。
