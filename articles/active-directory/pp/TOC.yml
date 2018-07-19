@@ -1,4 +1,0 @@
-- name: VM MSI を使用した Azure ストレージへのアクセス
-  items:
-    - name: Linux VM から (アクセス キーを使用)
-      href: msi-tutorial-linux-vm-access-storage.md
