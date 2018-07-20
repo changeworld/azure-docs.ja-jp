@@ -118,6 +118,8 @@ items:
                         href: sql-api-dotnetcore-get-started.md
                       - name: Java
                         href: sql-api-java-get-started.md
+                      - name: Async Java
+                        href: sql-api-async-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
                   - name: Web アプリを構築する
@@ -172,7 +174,7 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor - Java
                 href: bulk-executor-java.md
-              - name: クエリ
+              - name: Query
                 items:
                   - name: SQL クエリの実行
                     href: sql-api-sql-query.md
@@ -412,38 +414,50 @@ items:
                 href: cassandra-import-data.md
   - name: ハウツー ガイド
     items:
-      - name: キーと整合性
-        href: manage-account.md
-      - name: Throughput
-        href: set-throughput.md
-      - name: ファイアウォールのサポート
-        href: firewall-support.md
-      - name: 仮想ネットワーク サービス エンドポイントの設定
-        href: vnet-service-endpoint.md
-      - name: メトリック
-        href: use-metrics.md
-      - name: SLA の監視
-        href: monitor-accounts.md
-      - name: バックアップおよび復元
-        href: online-backup-and-restore.md
-      - name: リージョン内フェールオーバー
-        href: regional-failover.md
-      - name: 診断ログの記録
-        href: logging.md
-      - name: ストアド プロシージャ、トリガー、UDF
-        href: programming.md
-      - name: BulkExecutor の概要
+      - name: '[管理]'
+        items:
+          - name: PowerShell を使用して管理する
+            href: manage-account-with-powershell.md
+          - name: ストレージ エクスプローラーを使用した管理
+            href: storage-explorer.md
+          - name: データ エクスプローラーを使用した管理
+            href: data-explorer.md
+          - name: キーと整合性レベルの管理
+            href: manage-account.md
+          - name: Throughput
+            href: set-throughput.md
+          - name: データを自動的に期限切れにする
+            href: time-to-live.md
+          - name: 診断ログの記録
+            href: logging.md
+      - name: データのセキュリティ保護
+        items:
+          - name: ファイアウォールのサポート
+            href: firewall-support.md
+          - name: 仮想ネットワーク サービス エンドポイントの設定
+            href: vnet-service-endpoint.md
+      - name: 監視
+        items:
+          - name: メトリックを使用した監視
+            href: use-metrics.md
+          - name: SLA の監視
+            href: monitor-accounts.md
+      - name: バックアップと復元
+        items:
+          - name: オンラインのバックアップと復元
+            href: online-backup-and-restore.md
+          - name: リージョン内フェールオーバー
+            href: regional-failover.md
+      - name: 自動化
+        items:
+          - name: ストアド プロシージャ、トリガー、UDF
+            href: programming.md
+          - name: 複数のマスターのセットアップ
+            href: multi-master-workaround.md
+      - name: Bulk Executor ライブラリ
         href: bulk-executor-overview.md
       - name: コスト効率の優れた読み取りと書き込み
         href: key-value-store-cost.md
-      - name: データを自動的に期限切れにする
-        href: time-to-live.md
-      - name: PowerShell を使用して管理する
-        href: manage-account-with-powershell.md
-      - name: ストレージ エクスプローラーを使用した管理
-        href: storage-explorer.md
-      - name: 複数のマスターのセットアップ
-        href: multi-master-workaround.md
   - name: リソース
     items:
       - name: クエリ チート シート

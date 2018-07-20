@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 9c6d819234111c461bf4793376324dbe77e85ae2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295364"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル: Azure Active Directory と Imagineer WebVision の統合
 
@@ -195,7 +195,7 @@ Imagineer WebVision で Azure AD シングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Imagineer WebVision] タイルをクリックすると、自動的に Imagineer WebVision アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

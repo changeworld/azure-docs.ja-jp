@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 50e517e5719fb102fd91072abe59d3908176278e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762464"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969913"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
-この記事では、オーケストレーション ライフサイクル イベント (作成、完了、失敗など) をカスタムの [Azure Event Grid トピック](https://docs.microsoft.com/en-us/azure/event-grid/overview)に発行するように Azure Durable Functions を設定する方法を示します。 
+この記事では、オーケストレーション ライフサイクル イベント (作成、完了、失敗など) をカスタムの [Azure Event Grid トピック](https://docs.microsoft.com/azure/event-grid/overview)に発行するように Azure Durable Functions を設定する方法を示します。 
 
 この機能が役立つシナリオを次にいくつか示します。
 
-* **ブルー/グリーン デプロイなどの DevOps シナリオ**: [並行デプロイ戦略](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-versioning#side-by-side-deployments)を実装する前に、タスクが実行されているかどうかを知ることが必要な場合があります。
+* **ブルー/グリーン デプロイなどの DevOps シナリオ**: [並行デプロイ戦略](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments)を実装する前に、タスクが実行されているかどうかを知ることが必要な場合があります。
 
 * **高度な監視と診断のサポート**: SQL データベースや CosmosDB など、クエリ用に最適化された外部ストアで、オーケストレーションの状態情報を追跡できます。
 
@@ -36,19 +36,19 @@ ms.locfileid: "33762464"
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc 以降を Durable Functions プロジェクトにインストールします。
-* [Azure ストレージ エミュレーター](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)をインストールします。
-* [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) を使用します
+* [Azure ストレージ エミュレーター](https://docs.microsoft.com/azure/storage/common/storage-use-emulator)をインストールします。
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) をインストールするか、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用します
 
 ## <a name="create-a-custom-event-grid-topic"></a>カスタムの Event Grid トピックの作成
 
 Durable Functions からイベントを送信するための Event Grid トピックを作成します。 次の手順は、Azure CLI を使用してトピックを作成する方法を示しています。 PowerShell または Azure Portal を使用して行う方法については、次の記事をご覧ください。
 
-* [EventGrid クイック スタート: カスタム イベントの作成 - PowerShell](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid クイック スタート: カスタム イベントの作成 - Azure Portal](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid クイック スタート: カスタム イベントの作成 - PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid クイック スタート: カスタム イベントの作成 - Azure Portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-`az group create` コマンドでリソース グループを作成します。 現時点では、Event Grid ではすべてのリージョンをサポートしているわけではありません。 サポートされるリージョンについては、[Event Grid の概要](https://docs.microsoft.com/en-us/azure/event-grid/overview)に関する記事をご覧ください。 
+`az group create` コマンドでリソース グループを作成します。 現時点では、Event Grid ではすべてのリージョンをサポートしているわけではありません。 サポートされるリージョンについては、[Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)に関する記事をご覧ください。 
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -93,8 +93,12 @@ Durable Functions プロジェクトで、`host.json` ファイルを検索し�
 }
 ```
 
-* **EventGridTopicEndpoint** - Event Grid トピックのエンドポイント。
+可能性のある Azure Event Grid の構成プロパティは次のとおりです。
+
+* **EventGridTopicEndpoint** - Event Grid トピックのエンドポイント。 *%AppSettingName%* 構文を使用すると、アプリケーションの設定または環境変数からこの値を解決できます。
 * **EventGridKeySettingName** - Azure 関数に対するアプリケーション設定のキー。 Durable Functions は、値から Event Grid トピックキーを取得します。
+* **EventGridPublishRetryCount** - [省略可能] Event Grid トピックへの発行が失敗した場合に再試行する回数。
+* **EventGridPublishRetryInterval** - [省略可能] Event Grid の発行を再試行する間隔 (*hh:mm:ss* 形式)。 指定されていない場合、既定の再試行間隔は 5 分です。
 
 `host.json` ファイルを構成すると、Durable Functions プロジェクトは Event Grid トピックへのライフサイクル イベントの送信を開始します。 これは、Function App で実行する場合とローカルで実行する場合に動作します。
 
@@ -111,7 +115,7 @@ Function App と `local.setting.json` で、トピック キーのアプリ設�
 }
 ```
 
-[ストレージ エミュレーター](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)が動作していることを確認します。 実行する前に `AzureStorageEmulator.exe clear all` コマンドを実行することをお勧めします。
+[ストレージ エミュレーター](https://docs.microsoft.com/azure/storage/common/storage-use-emulator)が動作していることを確認します。 実行する前に `AzureStorageEmulator.exe clear all` コマンドを実行することをお勧めします。
 
 ## <a name="create-functions-that-listen-for-events"></a>イベントをリッスンする関数の作成
 
@@ -143,7 +147,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-[`Add Event Grid Subscription`] を選択します。 この操作では、作成した Event Grid トピックの Event Grid サブスクリプションを追加します。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/en-us/azure/event-grid/concepts)」をご覧ください
+[`Add Event Grid Subscription`] を選択します。 この操作では、作成した Event Grid トピックの Event Grid サブスクリプションを追加します。 詳しくは、「[Azure Event Grid の概念](https://docs.microsoft.com/azure/event-grid/concepts)」をご覧ください
 
 ![[イベント グリッド トリガー] リンクの選択。](media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -258,10 +262,10 @@ Azure Portal で作成した関数からのログをご覧ください。
 * **id**: Event Grid イベントの一意識別子。
 * **subject**: イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **data**: Durable Functions 固有のパラメーター。
-    * **hubName**: [TaskHub](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-task-hubs) 名。
+    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) 名。
     * **functionName**: オーケストレーター関数名。
     * **instanceId**: Durable Functions の instanceId。
-    * **reason**: 追跡イベントに関連付けられている付加的なデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)」をご覧ください
+    * **reason**: 追跡イベントに関連付けられている付加的なデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)」をご覧ください
     * **runtimeStatus**: オーケストレーションのランタイム状態。 実行中、完了、失敗、取り消し済みです。 
 * **eventType**: "orchestratorEvent"
 * **eventTime**: イベントの時刻 (UTC)。

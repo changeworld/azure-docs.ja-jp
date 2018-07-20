@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867955"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069449"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
 この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+
+## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
+
+Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
+
+* Windows Server 2008 Service Pack 1 (SP1) 以降
+* Windows 7 SP1 以降
+
+## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
+
+次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
+
+* Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
+* CentOS Linux 5、6、および 7 (x86/x64)  
+* Oracle Linux 5、6、および 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
+* Debian GNU/Linux 6、7、および 8 (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
 ## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
