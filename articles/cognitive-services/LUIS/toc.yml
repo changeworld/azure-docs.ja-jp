@@ -230,9 +230,9 @@
     - name: プログラムを使ったリージョン検索
       items:
         - name: 'C# の使用'
-          href: find-region-csharp.md
+          href: luis-find-region-csharp.md
         - name: Node.js の使用
-          href: find-region-nodejs.md
+          href: luis-find-region-nodejs.md
 - name: リファレンス
   items:
     - name: ユーザーのプライバシー

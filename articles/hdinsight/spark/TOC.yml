@@ -27,9 +27,9 @@
       href: apache-spark-use-bi-tools.md
     - name: ストリーミング ジョブの実行
       href: apache-spark-eventhub-streaming.md
-    - name: Machine Learning アプリケーションの作成
+    - name: 機械学習アプリの作成
       href: apache-spark-ipython-notebook-machine-learning.md
-    - name: IntelliJ を使用した Spark アプリケーションの作成
+    - name: IntelliJ での Spark アプリの作成
       href: apache-spark-create-standalone-application.md
 - name: 方法
   items:

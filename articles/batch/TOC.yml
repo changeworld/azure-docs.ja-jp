@@ -121,18 +121,14 @@
           href: batch-get-resource-counts.md
         - name: リソースの効率的なクエリ
           href: batch-efficient-list-queries.md
-    - name: 開発者ツールの使用
+    - name: スクリプト ツールの使用
       items:
-        - name: Batch .NET の使用
-          href: batch-dotnet-get-started.md
-        - name: Batch Python の使用
-          href: batch-python-tutorial.md
-        - name: Batch Node.js の使用
-          href: batch-nodejs-get-started.md
         - name: PowerShell コマンドレットの使用
           href: batch-powershell-cmdlets-get-started.md
         - name: Azure CLI の使用
           href: batch-cli-get-started.md
+    - name: Batch Node.js SDK の使用
+      href: batch-nodejs-get-started.md
 - name: リファレンス
   items:
     - name: Azure CLI

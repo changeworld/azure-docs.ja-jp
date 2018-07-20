@@ -71,7 +71,7 @@
       href: functions-scale.md
     - name: トリガーとバインド
       href: functions-triggers-bindings.md
-    - name: 言語
+    - name: Languages
       items:
         - name: サポートされている言語
           href: supported-languages.md
@@ -145,6 +145,8 @@
           href: functions-develop-vs.md
         - name: コア ツールの開発
           href: functions-run-local.md
+        - name: IntelliJ IDEA での開発
+          href: functions-create-maven-intellij.md
         - name: 接続の管理
           href: manage-connections.md
         - name: エラー処理

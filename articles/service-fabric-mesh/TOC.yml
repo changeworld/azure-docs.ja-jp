@@ -9,17 +9,17 @@
   items:
     - name: Hello World をデプロイする
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: Web アプリを作成してデプロイする
+    - name: Web アプリを作成して Azure Service Fabric mesh にデプロイする
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: チュートリアル
   items:
-    - name: マルチサービス Web アプリの作成とデプロイ
+    - name: マルチサービス Service Fabric mesh Web アプリの作成、デバッグ、デプロイ
       items:
-        - name: 1- ASP.NET Core アプリケーションのビルド
+        - name: 1 - Service Fabric mesh Web アプリを作成する
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2 - アプリケーションのデバッグ
+        - name: 2 - Service Fabric mesh Web アプリをデバッグする
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3 - アプリケーションのデプロイ
+        - name: 3 - Service Fabric mesh Web アプリをデプロイする
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: 概念
   items:

@@ -41,6 +41,8 @@
           href: automation-update-management.md
         - name: 複数の VM の更新プログラム管理
           href: manage-update-multi.md
+        - name: OMS の更新プログラムの展開を Azure に移行する
+          href: migrate-oms-update-deployments.md
         - name: SCCM と Update Management の統合
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: 変更の追跡
