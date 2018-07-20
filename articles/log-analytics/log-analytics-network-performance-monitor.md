@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: na
-ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 28f5ac882051250903fc2f45def95eb65d1b1ce3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129999"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635540"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -35,7 +35,7 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 
 * [パフォーマンス モニター](log-analytics-network-performance-monitor-performance-monitor.md): クラウドの展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスのネットワーク接続を監視できます。 パフォーマンスの監視では、ユーザーから不満があがる前に、ネットワークの問題を検出できます。
 
-* [サービス エンドポイント モニター](log-analytics-network-performance-monitor-service-endpoint.md): 注意を払ってサービスへのユーザーからの接続を監視して、パス内のインフラストラクチャを特定し、ネットワークのボトルネックが発生している場所を識別できます。 ユーザーより前に障害について把握して、ネットワーク パスの問題の正確な場所を確認できます。 
+* [サービス接続モニター](log-analytics-network-performance-monitor-service-endpoint.md): 注意を払ってサービスへのユーザーからの接続を監視して、パス内のインフラストラクチャを特定し、ネットワークのボトルネックが発生している場所を識別できます。 ユーザーより前に障害について把握して、ネットワーク パスの問題の正確な場所を確認できます。 
 
     この機能では、HTTP、HTTPS、TCP、および ICMP に基づくテストを行うことで、サービスの可用性と応答時間を、ほぼリアルタイムに、または履歴情報として監視できます。 ネットワークに起因するパケット損失と待ち時間を監視することもできます。 ネットワーク トポロジ マップでは、ネットワークの速度低下を分離できます。 各ホップでの待ち時間のデータを使ってノードからサービスへのネットワーク パスで発生する問題点を識別できます。 組み込みのテストでは、Office 365 や Dynamics CRM へのネットワーク接続を事前構成なしで監視できます。 この機能により、Web サイト、SaaS アプリケーション、PaaS アプリケーション、SQL データベースなどの TCP 対応のエンドポイントへのネットワーク接続を監視することができます。
 
@@ -68,13 +68,13 @@ ExpressRoute モニターのサポート対象リージョンの一覧は、[こ
 
     ネットワーク リンクを監視するには、このリンクの両方のエンドポイントにエージェントをインストールします。 ネットワークのトポロジがわからない場合、ネットワーク パフォーマンスの監視対象の間に重要なワークロードがあるサーバーに、エージェントをインストールしてください。 たとえば、Web サーバーと SQL を実行しているサーバー間のネットワーク接続を監視する場合は、両方のサーバーにエージェントをインストールします。 エージェントによって監視されるのはホストそのものではなく、ホスト間のネットワーク接続 (リンク) です。 
 
-* **サービス エンドポイント モニター**: Operations Management Suite エージェントは、サービス エンドポイントへのネットワーク接続を関する各ノードにインストールします。 たとえば、O1、O2、O3 というラベルの付いたオフィス サイトから Office 365 へのネットワーク接続を監視する場合は、 O1、O2、O3 それぞれの少なくとも 1 つのノードに、Operations Management Suite エージェントをインストールします。 
+* **サービス接続モニター**: Operations Management Suite エージェントは、サービス エンドポイントへのネットワーク接続を関する各ノードにインストールします。 たとえば、O1、O2、O3 というラベルの付いたオフィス サイトから Office 365 へのネットワーク接続を監視する場合は、 O1、O2、O3 それぞれの少なくとも 1 つのノードに、Operations Management Suite エージェントをインストールします。 
 
 * **ExpressRoute モニター**: Azure 仮想ネットワークに少なくとも 1 つの Operations Management Suite エージェントをインストールします。 また、オンプレミスのサブネットワークに少なくとも 1 つのエージェントをインストールし、ExpressRoute のプライベート ピアリング経由で接続します。  
 
 ### <a name="configure-operations-management-suite-agents-for-monitoring"></a>監視用に Operations Management Suite エージェントを構成する 
 
-Network Performance Monitor は、代理トランザクションを使って、送信元と宛先のエージェント間のネットワーク パフォーマンスを監視します。 パフォーマンス モニター機能とサービス エンドポイント モニター機能では、監視用のプロトコルとして TCP と ICMP のいずれかを選択できます。 ExpressRoute モニターでは TCP が使われます。 ファイアウォールで、選択したプロトコルで監視に使わる Operations Management Suite エージェント間の通信が許可されていることを確認します。 
+Network Performance Monitor は、代理トランザクションを使って、送信元と宛先のエージェント間のネットワーク パフォーマンスを監視します。 パフォーマンス モニター機能とサービス接続モニター機能では、監視用のプロトコルとして TCP と ICMP のいずれかを選択できます。 TCP のみが ExpressRoute モニターの監視プロトコルとして使用できます。 ファイアウォールで、選択したプロトコルで監視に使わる Operations Management Suite エージェント間の通信が許可されていることを確認します。 
 
 * **TCP プロトコル**: 監視用のプロトコルとして TCP を選んだ場合は、ネットワーク パフォーマンス モニターと ExpressRoute モニターに使われるエージェントのファイアウォール ポートを開いて、エージェントが確実に相互接続できるようにします。 ポートを開くには、[EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell スクリプトを、管理者特権の PowerShell ウィンドウでパラメーターを指定せずに実行します。
 
@@ -114,7 +114,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
    ![[パフォーマンス モニター] ビュー](media/log-analytics-network-performance-monitor/npm-synthetic-transactions.png)
     
-   **[サービス エンドポイント モニター]**: この機能では、事前構成済みの組み込みのテストを実行して、エージェントから Office 365 と Dynamics 365 へのネットワーク接続を監視することができます。 横にチェック ボックスをオンにして、監視する Office 365 と Dynamics 365 のサービスを選びます。 監視用のエージェントを選ぶには、**[エージェントの追加]** を選びます。 この機能が必要ない場合、または後で設定する場合は、何も選ばないで、**[保存して続行]** を選びます。
+   **[サービス接続モニター]**: この機能では、事前構成済みの組み込みのテストを実行して、エージェントから Office 365 と Dynamics 365 へのネットワーク接続を監視することができます。 横にチェック ボックスをオンにして、監視する Office 365 と Dynamics 365 のサービスを選びます。 監視用のエージェントを選ぶには、**[エージェントの追加]** を選びます。 この機能が必要ない場合、または後で設定する場合は、何も選ばないで、**[保存して続行]** を選びます。
 
    ![[サービス エンドポイント モニター] ビュー](media/log-analytics-network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -196,7 +196,7 @@ Network Performance Monitor ソリューションを有効にすると、**[概�
 
 * **[ExpressRoute モニター]**: このページでは、ソリューションが監視しているさまざまな ExpressRoute ピアリング接続の正常性の概要が提供されます。 **[トポロジ]** タイルには、ネットワーク内の監視対象の ExpressRoute 回線上のネットワーク パスの数が表示されます。 このタイルを選ぶと、**[トポロジ]** ビューに移動します。
 
-* **[サービス エンドポイント モニター]**: このページでは、ユーザーが作成したさまざまなテストの正常性の概要が提供されます。 **[トポロジ]** タイルには、監視対象のエンドポイントの数が表示されます。 このタイルを選ぶと、**[トポロジ]** ビューに移動します。
+* **[サービス接続モニター]**: このページでは、ユーザーが作成したさまざまなテストの正常性の概要が提供されます。 **[トポロジ]** タイルには、監視対象のエンドポイントの数が表示されます。 このタイルを選ぶと、**[トポロジ]** ビューに移動します。
 
 * **[パフォーマンス モニター]**: このページでは、ソリューションが監視している **[ネットワーク]** リンクと **[サブネットワーク]** リンクの正常性の概要が提供されます。 **[トポロジ]** タイルには、ネットワーク内の監視対象のネットワーク パスの数が表示されます。 このタイルを選ぶと、**[トポロジ]** ビューに移動します。 
 
@@ -281,4 +281,4 @@ Azure Portal を介してアラートを作成する NPM ユーザーの場合:
 * **コーホートへの参加**: Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 ご協力いただける場合は、こちらの [簡単なアンケート](https://aka.ms/npmcohort)への記入をお願いいたします。 
 
 ## <a name="next-steps"></a>次の手順 
-[パフォーマンスの監視](log-analytics-network-performance-monitor-performance-monitor.md)、[サービス エンドポイントの監視](log-analytics-network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](log-analytics-network-performance-monitor-expressroute.md)の詳細情報を確認します。 
+[パフォーマンスの監視](log-analytics-network-performance-monitor-performance-monitor.md)、[サービス接続の監視](log-analytics-network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](log-analytics-network-performance-monitor-expressroute.md)の詳細情報を確認します。 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063631"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859954"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 このドキュメントでは、HANA L インスタンス (HLI) のサポートされるシナリオとそのアーキテクチャの詳細について説明します。
@@ -54,10 +54,11 @@ HANA L インスタンスは、ビジネス要件を達成するためにさま�
 
 ### <a name="ethernet"></a>イーサネット
 
-プロビジョニングされる各サーバーには、イーサネットのセットが事前に構成されています。 各 HLI ユニットに構成されているイーサネットの詳細は次のとおりです。
+プロビジョニングされる各サーバーには、イーサネット インターフェイスのセットが事前に構成されています。 各 HLI ユニットに構成されているイーサネット インターフェイスの詳細は次のとおりです。
 
-- **A**: クライアント アクセスに使用されます。
-- **B**: ノード間通信に使用されます。 (要求されるトポロジに関係なく) すべてのサーバーで構成されますが、スケールアウトシナリオにのみ使用されます。
+- **A**: このインターフェイスは、クライアント アクセスに使用されます。
+- **B**: このインターフェイスは、ノード間通信に使用されます。 このインターフェイスは (要求されるトポロジには関係なく) すべてのサーバー上に構成されますが、 
+- スケールアウト シナリオにのみ使用されます。
 - **C**: このインターフェイスは、ノードからストレージへの接続に使用されます。
 - **D**: このインターフェイスは、STONITH の設定のために、ノードから ISCSI デバイスへの接続に使用されます。 このインターフェイスは、HSR 設定が要求されたときにのみ構成されます。  
 
@@ -81,19 +82,19 @@ HLI ユニットに構成されたトポロジに基づいてインターフェ�
 
 2 つの IP アドレスが割り当てられているユニットの区分は次にようになっています。
 
-イーサネット "A" には、お客様が Microsoft に提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 OS の /etc/hosts には、この IP アドレスが記述されます。
+- イーサネット "A" には、お客様が Microsoft に提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 OS の /etc/hosts には、この IP アドレスが記述されます。
 
-イーサネット "B" には、NFS との通信用の IP アドレスが割り当てられます。 そのため、テナント内のインスタンスどうしがトラフィックをやり取りするために、これらのアドレスが etc/hosts に記述されている必要は**ありません**。
+- イーサネット "C" には、NFS への通信に使用される IP アドレスが割り当てられます。 そのため、テナント内のインスタンスどうしがトラフィックをやり取りするために、これらのアドレスが etc/hosts に記述されている必要は**ありません**。
 
 HANA システム レプリケーションまたは HANA スケールアウトのデプロイの場合、2 つの IP アドレスが割り当てられたブレード構成は適していません。 IP アドレスを 2 つだけ割り当てたうえで、そのような構成をデプロイする場合は、SAP HANA on Azure サービス管理に連絡して、3 つ目の VLAN で 3 つ目の IP アドレスを割り当ててください。 3 つの NIC ポートに 3 つの IP アドレスが割り当てられている HANA L インスタンス ユニットでは、次の使用規則が適用されます。
 
 - イーサネット "A" には、お客様が Microsoft に提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます。 したがって OS の /etc/hosts には、この IP アドレスが記述されません。
 
-- イーサネット "B" には、NFS ストレージとの通信用の IP アドレスが割り当てられます。 そのため、このタイプのアドレスは etc/hosts には記述されません。
+- イーサネット "B" だけが etc/hosts に記述され、さまざまなインスタンス間の通信に使用されます。 これらのアドレスは、HANA がノード間の構成に使用する IP アドレスとして、スケールアウト HANA 構成で保持する必要がある IP アドレスでもあります。
 
-- イーサネット "C" だけが etc/hosts に記述され、さまざまなインスタンス間の通信に使用されます。 これらのアドレスは、HANA がノード間の構成に使用する IP アドレスとして、スケールアウト HANA 構成で保持する必要がある IP アドレスでもあります。
+- イーサネット "C" には、NFS ストレージへの通信に使用される IP アドレスが割り当てられます。 そのため、このタイプのアドレスは etc/hosts には記述されません。
 
-- イーサネット "D" は、ペースメーカー用 STONITH デバイスにアクセスするためにのみ使用する必要があります。 これは、HANA System Replication (HSR) を構成し、SBD ベースのデバイスを使用してオペレーティング システムで自動フェールオーバーを実現する場合に必要です。
+- イーサネット "D" は、ペースメーカー用 STONITH デバイスにアクセスするためにのみ使用する必要があります。 このインターフェイスは、HANA System Replication (HSR) を構成し、SBD ベースのデバイスを使用してオペレーティング システムで自動フェールオーバーを実現する場合に必要です。
 
 
 ### <a name="storage"></a>Storage
@@ -236,7 +237,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」を参照してください。
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 
@@ -285,13 +286,13 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」を参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 ## <a name="5-hsr-with-stonith"></a>5.STONITH ありの HSR
  
-このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 
+このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 この構成は、ノード上の単一 HANA インスタンスに対してのみサポートされます。 つまり、MCOS シナリオはサポートされません。
 
 **現在のところ、このアーキテクチャは SUSE オペレーティング システムでのみサポートされています。**
 
@@ -340,7 +341,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ## <a name="6-hsr-with-dr"></a>6.DR ありの HSR
  
-このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 標準 DR と多目的 DR の両方がサポートされます。 
+このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 標準 DR と多目的 DR の両方がサポートされます。 これらの構成は、ノード上の単一 HANA インスタンスに対してのみサポートされます。 つまり、これらの構成では MCOS シナリオはサポートされません。
 
 この図では多目的シナリオが描かれ、DR サイトでは、実稼働操作がプライマリ サイトから実行されているときに、HLA ユニットが QA インスタンスに使用されます。 DR のフェールオーバー (またはフェールオーバー テスト) 時には、DR サイトの QA インスタンスが停止されます。 
 
@@ -394,7 +395,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 - DR: プライマリおよびセカンダリ ノードのレプリケーションには、**2 セットのストレージ ボリュームが必要です**。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」を参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
@@ -558,7 +559,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 -  DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」を参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 

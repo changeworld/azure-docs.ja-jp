@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 7/6/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235415"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302825"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Azure での SQL Server データベースのバックアップ
 
-SQL Server データベースは、低い回復ポイントの目標値 (RPO) と長期のリテンション期間を必要とする重要なワークロードです。 Azure Backup では、SQL Server バックアップ ソリューションを提供しています。このソリューションでは、インフラストラクチャを必要としません。つまり、管理対象となる複雑なバックアップ サーバー、管理エージェント、またはバックアップ ストレージがありません。 Azure Backup では、すべての SQL Server のバックアップだけでなく、さまざまなワークロードも含めた一元管理を提供しています。
+SQL Server データベースは、低い回復ポイントの目標値 (RPO) と長期のリテンション期間を必要とする重要なワークロードです。 Azure Backup は、インフラストラクチャを必要としない、つまり、管理する複雑なバックアップ サーバー、管理エージェント、バックアップ ストレージなどが存在しない SQL Server バックアップ ソリューションを提供します。 Azure Backup では、すべての SQL Server のバックアップだけでなく、さまざまなワークロードも含めた一元管理を提供しています。
 
  この記事では、次のことについて説明します。
 
@@ -78,7 +78,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>サポートされるオペレーティング システムと SQL Server のバージョン
 
-サポートされる以下のオペレーティング システムと SQL Server のバージョンは、SQL マーケットプレイスの Azure 仮想マシンと、マーケットプレイス以外の仮想マシン (SQL Server が手動でインストールされている) に適用されます。
+次のオペレーティング システムがサポートされています。 SQL マーケットプレイスの Azure 仮想マシンと、マーケットプレイス以外の (SQL Server が手動でインストールされる) 仮想マシンがサポートされています。
 
 ### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 
@@ -131,7 +131,7 @@ SQL Server データベースをバックアップする前に、次の条件を
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>マーケットプレイス以外の SQL VM に権限を設定する
 
-仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Azure マーケットプレイスの仮想マシンを使用している場合は、このセクションを省略して「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Azure マーケットプレイスから作成されなかった場合は、このセクションの以降の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースの検出中に、Azure Backup は NT Service\AzureWLBackupPluginSvc というアカウントを作成します。 Azure Backup が SQL データベースを検出するために、NT Service\AzureWLBackupPluginSvc アカウントが SQL ログイン権限と SQL sysadmin 権限を備えている必要があります。 次の手順では、これらの権限を指定する方法について説明します。
+仮想マシンをバックアップするために、Azure Backup には **AzureBackupWindowsWorkload** 拡張機能がインストールされている必要があります。 Azure マーケットプレイスの仮想マシンを使用している場合は、このセクションを省略して「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」に進んでください。 SQL データベースをホストする仮想マシンが Azure マーケットプレイスから作成されなかった場合は、このセクションの以降の手順を完了して拡張機能をインストールし、適切な権限を設定します。 **AzureBackupWindowsWorkload** 拡張機能に加えて、Azure Backup では、SQL データベースを保護するために SQL sysadmin 特権が必要になります。 仮想マシン上のデータベースの検出中に、Azure Backup は NT Service\AzureWLBackupPluginSvc というアカウントを作成します。 Azure Backup が SQL データベースを検出するには、NT Service\AzureWLBackupPluginSvc アカウントに SQL および SQL sysadmin 権限が必要です。 次の手順では、これらの権限を指定する方法について説明します。
 
 権限を構成するには、次の手順に従います。
 
@@ -168,13 +168,13 @@ Recovery Services コンテナーとデータベースを関連付けたら、�
 
 ### <a name="fixing-sql-sysadmin-permissions"></a>SQL sysadmin 権限を修正する
 
-インストール プロセス中にエラー **UserErrorSQLNoSysadminMembership** が表示された場合は、SQL sysadmin 権限を備えたアカウントを使って SQL Server Management Studio (SSMS) にサインインします。 特殊な権限を必要としない限り、Windows 認証を使ってアカウントを認識できる必要があります。
+インストール プロセス中にエラー **UserErrorSQLNoSysadminMembership** が表示された場合は、SQL sysadmin 権限を持つアカウントを使用して SQL Server Management Studio (SSMS) にサインインします。 特殊な権限が必要でない限り、Windows 認証が機能するはずです。
 
 1. SQL Server で、**Security/Logins** フォルダーを開きます。
 
     ![SQL Server およびセキュリティとログインのフォルダーを開いて、アカウントを表示する](./media/backup-azure-sql-database/security-login-list.png)
 
-2. [ログイン] フォルダーで、**[新しいログイン]** を右クリックして選択し、[Login - New]\(ログイン - 新規作成\) ダイアログで **[検索]** をクリックします。
+2. [ログイン] フォルダーで、**[新しいログイン]** を右クリックして選択し、[ログイン - 新規作成] ダイアログで **[検索]** をクリックします。
 
     ![[Login - New]\(ログイン - 新規作成\) ダイアログで [検索] を開く](./media/backup-azure-sql-database/new-login-search.png)
 
@@ -190,7 +190,7 @@ Recovery Services コンテナーとデータベースを関連付けたら、�
 
     この時点で、必要な権限が揃っているはずです。
 
-6. 権限エラーは修正済しましたが、まだ、Recovery Services コンテナーとデータベースを関連付ける必要があります。 Azure Portal の **[保護されたサーバー]** 一覧で、エラーになっているサーバーを右クリックして、**[Rediscover DBs]\(DB の再検出\)** を選択します。
+6. 権限エラーは修正済しましたが、まだ、Recovery Services コンテナーとデータベースを関連付ける必要があります。 Azure Portal の **[保護されたサーバー]** 一覧で、エラー状態にあるサーバーを右クリックし、**[Rediscover DBs] (DB の再検出)** を選択します。
 
     ![サーバーに適切な権限があることを確認する](./media/backup-azure-sql-database/check-erroneous-server.png)
 
@@ -251,7 +251,7 @@ Azure Backup では、バックアップの前提条件を基にしてデータ�
 
 - 仮想マシン上に **AzureBackupWindowsWorkload** 拡張機能をインストールする。 SQL データベースのバックアップは、エージェントレス ソリューションです。つまり、仮想マシン上に拡張機能がインストールされた状態で、エージェントが SQL データベースにインストールされることはありません。
 
-- 仮想マシン上にサービス アカウント **NT Service\AzureWLBackupPluginSvc** を作成する。 すべてのバックアップおよび復元操作に、サービス アカウントを使用します。 **NT Server\AzureWLBackupPluginSvc** には、SQL sysadmin 権限が必要です。 すべての SQL Marketplace 仮想マシンは SqlIaaSExtension がインストールされた状態で出荷されており、AzureBackupWindowsWorkload は SQLIaaSExtension を使用して自動的に必要な権限を取得します。 仮想マシン にSqlIaaSExtension がインストールされていない場合、DB の検出操作は失敗し、エラー メッセージ **UserErrorSQLNoSysAdminMembership** を取得します。 バックアップの sysadmin 権限を追加するには、[マーケットプレース以外の SQL VM に Azure Backup の権限を設定する](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms)手順に従います。
+- 仮想マシン上にサービス アカウント **NT Service\AzureWLBackupPluginSvc** を作成する。 すべてのバックアップおよび復元操作に、サービス アカウントを使用します。 **NT Service\AzureWLBackupPluginSvc** には、SQL sysadmin 権限が必要です。 すべての SQL Marketplace 仮想マシンは SqlIaaSExtension がインストールされた状態で出荷されており、AzureBackupWindowsWorkload は SQLIaaSExtension を使用して自動的に必要な権限を取得します。 仮想マシン にSqlIaaSExtension がインストールされていない場合、DB の検出操作は失敗し、エラー メッセージ **UserErrorSQLNoSysAdminMembership** を取得します。 バックアップの sysadmin 権限を追加するには、[マーケットプレース以外の SQL VM に Azure Backup の権限を設定する](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms)手順に従います。
 
     ![VM とデータベースを選択する](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -286,7 +286,7 @@ Azure Backup は、SQL Server データベースを保護してバックアッ�
     Azure Backup サービスでは、SQL AlwaysOn 可用性グループだけでなく、スタンドアロン データベースを備えたすべての SQL インスタンスが表示されます。 SQL インスタンスのスタンドアロン データベースを表示するには、インスタンス名の横にある V 字型のマークをクリックします。 次の図は、スタンドアロン インスタンスと Always On 可用性グループの例を示しています。
 
     > [!NOTE]
-    > SQL プラットフォームには該当の制限があるため、完全バックアップと差分バックアップはプライマリ ノードから実行されます。 ログ バックアップは、バックアップの設定に基づいて行われる場合があります。 この制限のために、プライマリ ノードが登録されている必要があります。
+    > SQL Always On 可用性グループの場合は、SQL のバックアップ設定を使用します。 ただし、SQL プラットフォームの制限のために、完全および差分バックアップはプライマリ ノードから実行する必要があります。 ログ バックアップは、バックアップの設定に基づいて行われる場合があります。 この制限のために、可用性グループにプライマリ ノードが常に登録されている必要があります。
     >
 
     ![SQL インスタンスのデータベースの一覧](./media/backup-azure-sql-database/discovered-databases.png)
@@ -335,7 +335,7 @@ Azure Backup は、SQL Server データベースを保護してバックアッ�
 
 バックアップ ポリシーは、バックアップをいつ取得し、そのバックアップをいつまで保持するかのマトリクスを定義します。 Azure Backup を使用して、SQL データベースの 3 つの種類のバックアップのスケジュールを設定できます。
 
-* 完全バックアップ - 完全なデータベース バックアップでは、データベース全体をバックアップします。 完全バックアップには、特定のデータベースあるいは一連のファイルグループまたはファイル内のすべてのデータと、そのデータを復旧するための十分なログが含まれます。 最多で、1 日に 1 回の完全バックアップをトリガーできます。 日次または週次で完全バックアップを取得することを選択できます。 
+* 完全バックアップ - 完全なデータベース バックアップでは、データベース全体をバックアップします。 完全バックアップには、特定のデータベースあるいは一連のファイル グループまたはファイル内のすべてのデータと、そのデータを復旧するための十分なログが含まれます。 最多で、1 日に 1 回の完全バックアップをトリガーできます。 日次または週次で完全バックアップを取得することを選択できます。 
 * 差分バックアップ - 差分バックアップは、直近の完全データ バックアップに基づきます。 差分バックアップでは、完全バックアップ以降に変更されたデータのみをキャプチャします。 最多で、1 日に 1 回の差分バックアップをトリガーできます。 完全バックアップと差分バックアップを同じ日に構成することはできません。
 * トランザクション ログ バックアップ - ログ バックアップでは、ある特定の時点への復元を、指定した秒に至るまで可能にします。 最多で、15 分ごとにトランザクション ログ バックアップを構成できます。
 
@@ -394,13 +394,16 @@ Azure Backup は、SQL Server データベースを保護してバックアッ�
 
 8. バックアップ ポリシーに対するすべての編集を終えたら、**[OK]** をクリックします。 
 
-   ![差分のリテンション期間の範囲](./media/backup-azure-sql-database/differential-backup-policy.png)
+   ![新しいポリシーを受け入れる](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>SQL データベースを復元する
 
 Azure Backup は、トランザクション ログ バックアップを使用して、指定した秒に至るまで、特定の日付または時刻へ個々のデータベースを復元する機能を提供しています。 指定した復元時刻を基に、Azure Backup は完全、差分、または一連のログ バックアップから、データの復元に必要になる適切なバックアップを自動的に判断します。
 
 または、特定の完全または差分バックアップを選択して、特定の時刻ではなく、特定の復旧ポイントまで復元できます。
+ > [!Note]
+ > "マスター" データベースの復元をトリガーする前に、スタートアップ オプション "-m AzureWorkloadBackup" を使用してシングル ユーザー モードで SQL Server を起動してください。 -m への引数はクライアントの名前です。このクライアントのみが、接続を開くことを許可されます。 すべてのシステム データベース (モデル、マスター、msdb) の場合は、復元をトリガーする前に SQL エージェント サービスを停止してください。 これらのいずれかの DB への接続を盗もうとする可能性があるアプリケーションはすべて閉じます。
+>
 
 データベースを復元するには、次の手順を実行します。
 
@@ -442,6 +445,10 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 ### <a name="restore-to-an-alternate-location"></a>別の場所に復元する
 
 この手順では、別の場所にデータを復元する方法を示します。 復元時にデータベースを上書きしたい場合は、「[データベースを復元して上書きする](backup-azure-sql-database.md#restore-and-overwrite-the-database)」セクションに進んでください。 この手順では、Recovery Services コンテナーを開いており、[復元の構成] メニューが表示されていることを前提にしています。 この状態になっていない場合は、「[SQL データベースを復元する](backup-azure-sql-database.md#restore-a-sql-database)」セクションから開始してください。
+
+> [!NOTE]
+> このデータベースを同じ Azure リージョン内の SQL Server に復元することができ、宛先サーバーが Recovery Services コンテナーに登録されている必要があります。 
+>
 
 **[サーバー]** ドロップダウン メニューには、Recovery Services コンテナーと共に登録された SQL Server のみが表示されます。 目的のサーバーが **[サーバー]** 一覧にない場合は、「[SQL Server データベースを検出する](backup-azure-sql-database.md#discover-sql-server-databases)」セクションを参照してサーバーを見つけます。 データベースの検出プロセスの間に、Recovery Services コンテナーに新しいサーバーが登録されます。
 
@@ -607,10 +614,40 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 * SQL Server の登録解除
 
 ### <a name="monitor-jobs"></a>ジョブの監視
+エンタープライズ クラスのソリューションである Azure Backup は、高度なバックアップ アラートやすべてのエラーの通知を提供します (下の「バックアップ アラート」セクションを参照)。 引き続き特定のジョブを監視したい場合は、要件に基づいて次のいずれかのオプションを使用できます。
 
-Azure Backup では、すべてのバックアップ操作に SQL ネイティブ API を使用します。 ネイティブ API を使用して、msdb データベース にある [SQL バックアップセット テーブル](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017)からすべてのジョブ情報をフェッチできます。 さらに、Azure Backup はバックアップ ジョブのポータルに、手動でトリガーされたジョブまたはアドホック ジョブをすべて表示します。 ポータルで利用可能なジョブには、バックアップ操作の構成、操作の復元、データベース操作の登録および検出、バックアップ操作の停止がすべて含まれます。 また、スケジュールされたジョブはすべて、OMS Log Analytics を使って監視できます。 Log Analytics を使用することで、ジョブの低優先メールが除去され、特定のジョブの監視やフィルター処理においてより細やかな柔軟性を実現します。
-
+#### <a name="use-azure-portal-for-all-adhoc-operations"></a>[Use Azure portal for all adhoc operations] (すべてのアドホック操作に Azure Portal を使用する)
+Azure Backup は、バックアップ ジョブのポータルに、手動でトリガーされたジョブまたはアドホック ジョブをすべて表示します。 ポータルで使用可能なジョブには、バックアップの構成操作、手動でトリガーされたバックアップ操作、復元操作、データベースの登録および検出操作、バックアップの停止操作がすべて含まれます。 
 ![[詳細な構成] メニュー](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> 完全、差分、およびログ バックアップを含むスケジュールされたバックアップ ジョブはすべてポータルには表示されず、下で説明されているように、SQL Server Management Studio を使用して監視できます。
+>
+
+#### <a name="use-sql-server-management-studio-for-backup-jobs"></a>[Use SQL Server Management Studio for backup jobs] (バックアップ ジョブに SQL Server Management Studio を使用する)
+Azure Backup では、すべてのバックアップ操作に SQL ネイティブ API を使用します。 ネイティブ API では、msdb データベース内の [SQL アップセット テーブル](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017)からすべてのジョブ情報をフェッチできます。
+
+次の例は、**DB1** という名前のデータベースのすべてのバックアップ ジョブをフェッチするためのクエリです。 より高度な監視を行うには、このクエリをカスタマイズします。
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>バックアップ アラート
 
@@ -711,6 +748,42 @@ SQL データベースの保護を停止するときに **[バックアップデ
 5. [保護されたサーバー] メニューで、保護されているサーバーを右クリックして、**[削除]** を選択します。 
 
    ![データベースの保護を再開する](./media/backup-azure-sql-database/delete-protected-server.png)
+
+## <a name="sql-database-backup-faq"></a>SQL データベースのバックアップに関する FAQ
+
+次のセクションでは、SQL データベースのバックアップに関する追加情報を提供します。
+
+### <a name="can-i-throttle-the-speed-of-the-sql-backup-policy-so-it-minimizes-impact-on-the-sql-server"></a>SQL サーバーへの影響が最小限に抑えられるように、SQL バックアップ ポリシーの速度を調整できますか
+
+はい。バックアップ ポリシーが実行される速度を調整できます。 設定を変更するには:
+
+1. SQL Server で、`C:\Program Files\Azure Workload Backup\bin` フォルダー内の **TaskThrottlerSettings.json** を開きます。
+
+2. **TaskThrottlerSettings.json** ファイルで、**DefaultBackupTasksThreshold** を小さな値 (たとえば、5) に変更します。
+
+3. 変更を保存してファイルを閉じます。
+
+4. SQL Server で、タスク マネージャーを開き、**Azure Backup ワークロード コーディネーター サービス**を再開します。
+
+### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>セカンダリ レプリカから完全バックアップを実行できますか
+
+いいえ。この機能はサポートされていません。
+
+### <a name="do-successful-backup-jobs-create-alerts"></a>成功したバックアップ ジョブでアラートが作成されますか
+
+いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。
+
+### <a name="are-scheduled-backup-job-details-shown-in-the-jobs-menu"></a>スケジュールされたバックアップ ジョブの詳細は [ジョブ] メニューに表示されますか
+
+いいえ。 [ジョブ] メニューにはアドホック ジョブの詳細が表示されますが、スケジュールされたバックアップ ジョブは表示されません。 スケジュールされたバックアップ ジョブのいずれかが失敗した場合は、失敗したジョブのアラートですべての詳細を見つけることができます。 スケジュールされたバックアップ ジョブとアドホック バックアップ ジョブをすべて監視する場合は、[SQL Server Management Studio を使用します](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs)。
+
+### <a name="if-i-select-a-sql-server-will-future-databases-automatically-be-added"></a>SQL サーバーを選択すると、将来のデータベースは自動的に追加されますか
+
+いいえ。 SQL サーバーの保護を構成する場合、サーバー レベルのチェックボックスを選択すると、すべてのデータベースが追加されます。 ただし、保護を構成した後に SQL サーバーにデータベースを追加した場合、新しいデータベースを保護するにはそれらを手動で追加する必要があります。 これらのデータベースは、構成された保護に自動的には含まれません。
+
+### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>復旧モデルを変更した場合、保護を再開するにはどうすればよいですか
+
+復旧モデルを変更した場合は、完全バックアップをトリガーすると、ログ バックアップが期待どおりに開始されます。
 
 ## <a name="next-steps"></a>次の手順
 

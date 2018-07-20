@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637737"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888434"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Azure Machine Learning で画像分類モデルを構築して配置する
 
@@ -34,7 +34,7 @@ ms.locfileid: "34637737"
 7. Web サービスのデプロイ
 8. Web サービスのロード テスト
 
-ディープ ラーニング フレームワークとして [CNTK](https://www.microsoft.com/cognitive-toolkit/) が使用され、[ディープ ラーニング データ サイエンス VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) などの GPU を備えたマシンでトレーニングがローカルに実行され、展開では Azure ML Operationalization CLI が使用されます。
+ディープ ラーニング フレームワークとして [CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) が使用され、[ディープ ラーニング データ サイエンス VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) などの GPU を備えたマシンでトレーニングがローカルに実行され、展開では Azure ML Operationalization CLI が使用されます。
 
 各モジュールとクラスの詳細なリファレンスについては、[パッケージ リファレンス ドキュメント](https://aka.ms/aml-packages/vision)を参照してください、
 
@@ -66,12 +66,6 @@ ms.locfileid: "34637737"
 
 ![Azure Machine Learning のデータセット](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
 
-## <a name="storage-context"></a>ストレージ コンテキスト
-
-ストレージ コンテキストを使用して、拡張画像などのさまざまな出力ファイルや DNN モデル ファイルを格納する場所が決定されます。 ストレージ コンテキストの詳細については、[StorageContext のドキュメント](https://review.docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-python&branch=smoke-test)を参照してください。 
-
-通常、ストレージ コンテンツは明示的に設定する必要はありません。 ただし、Azure Machine Learning Workbench が課しているプロジェクト サイズの制限 (25 MB) を避けるために、Azure Machine Learning Package for Computer Vision の出力ディレクトリは、Azure Machine Learning プロジェクト以外の場所に設定してください ("../../../../cvtk_output")。 "cvtk_output" ディレクトリは、不要になったら必ず削除してください。
-
 
 ```python
 import warnings
@@ -84,29 +78,19 @@ from sklearn import svm
 from cvtk import ClassificationDataset, CNTKTLModel, Context, Splitter, StorageContext
 from cvtk.augmentation import augment_dataset
 from cvtk.core.classifier import ScikitClassifier
-from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix, basic_plot
+from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix
 import matplotlib.pyplot as plt
+
+from classification.notebook.ui_utils.ui_annotation import AnnotationUI
+from classification.notebook.ui_utils.ui_results_viewer import ResultsUI
+from classification.notebook.ui_utils.ui_precision_recall import PrecisionRecallUI
+
 %matplotlib inline
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
-
-# Set storage context.
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
 ```
-
-
-
-
-    {
-        "storage": {
-            "outputs_path": "../../../cvtk_output",
-            "persistent_path": "../../../cvtk_output",
-            "temp_path": "../../../cvtk_output"
-        }
-    }
 
 
 
@@ -125,8 +109,8 @@ Azure Machine Learning Package for Computer Vision でそのオブジェクト�
 
 
 ```python
-# Root image directory 
-dataset_location = os.path.abspath(os.path.join(os.getcwd(), "../sample_data/imgs_recycling"))
+# Root image directory
+dataset_location = os.path.abspath("classification/sample_data/imgs_recycling")
 
 dataset_name = 'recycling'
 dataset = ClassificationDataset.create_from_dir(dataset_name, dataset_location)
@@ -182,7 +166,6 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
 
 
 ```python
-from ui_utils.ui_annotation import AnnotationUI
 annotation_ui = AnnotationUI(dataset, Context.get_global_context())
 display(annotation_ui.ui)
 ```
@@ -407,7 +390,6 @@ labels = [l.name for l in dataset.labels]
 pred_scores = ce.scores #classification scores for all images and all classes
 pred_labels = [labels[i] for i in np.argmax(pred_scores, axis=1)]
 
-from ui_utils.ui_results_viewer import ResultsUI
 results_ui = ResultsUI(test_set, Context.get_global_context(), pred_scores, pred_labels)
 display(results_ui.ui)
 ```
@@ -420,7 +402,6 @@ display(results_ui.ui)
 precisions, recalls, thresholds = ce.compute_precision_recall_curve() 
 thresholds = list(thresholds)
 thresholds.append(thresholds[-1])
-from ui_utils.ui_precision_recall import PrecisionRecallUI
 pr_ui = PrecisionRecallUI(100*precisions[::-1], 100*recalls[::-1], thresholds[::-1])
 display(pr_ui.ui) 
 ```
@@ -433,7 +414,7 @@ display(pr_ui.ui)
 
 モデルのトレーニングが終わったら、そのモデルを [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning) を使用して Web サービスとしてデプロイできます。 モデルは、ローカル コンピューターまたは Azure Container Service (ACS) クラスターに展開できます。 ACS では、Web サービスを手動で、または自動スケール機能を使用してスケーリングできます。
 
-**Azure CLI 2.0 でログインする**
+**Azure CLI を使用してサインインする**
 
 [Azure](https://azure.microsoft.com/) アカウントの有効なサブスクリプションを使用して、次の CLI コマンドでログインします。
 <br>`az login`

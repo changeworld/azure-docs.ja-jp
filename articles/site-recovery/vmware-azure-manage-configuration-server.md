@@ -3,15 +3,15 @@ title: Azure Site Recovery での VMware ディザスター リカバリーの�
 description: この記事では、Azure Site Recovery で Azure への VMware ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: article
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d7c2224e6529d1675cdad5b29de887f19135a2a6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287407"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916912"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware VM 用の構成サーバーの管理
 
@@ -96,21 +96,18 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
 2. 更新プログラムがある場合は、**[エージェントのバージョン]** 列にリンクが表示されます。
-
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
-
-1. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
     ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. インストーラーをダブルクリックして実行します。
-2. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。 
-3. アップグレードの完了時に、サーバー構成が検証されます。
+5. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。
+6. アップグレードの完了時に、サーバー構成が検証されます。
 
     ![アップデート](./media/vmware-azure-manage-configuration-server/update3.png)
-
-4. **[完了]** をクリックしてインストーラーを閉じます。
-
+    
+7. **[完了]** をクリックしてインストーラーを閉じます。
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーを削除または登録解除する
 
@@ -150,7 +147,12 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 > [!NOTE]
 > Remove-AzureRmSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
  
+## <a name="generate-configuration-server-passphrase"></a>構成サーバーのパスフレーズを生成する
 
+1. 構成サーバーにサインインし、コマンド プロンプト ウィンドウを管理者として開きます。
+2. bin フォルダーにディレクトリを変更するには、コマンド **cd %ProgramData%\ASR\home\svsystems\bin** を実行します。
+3. パスフレーズ ファイルを生成するには、**genpassphrase.exe -v > MobSvc.passphrase** を実行します。
+4. **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** にあるファイルにパスフレーズが格納されます。
 
 ## <a name="renew-ssl-certificates"></a>SSL 証明書を更新する
 

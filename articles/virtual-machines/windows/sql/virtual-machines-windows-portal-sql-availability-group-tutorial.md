@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287805"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531581"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -86,7 +86,7 @@ ms.locfileid: "36287805"
 
    ![クラスターのプロパティ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. **[静的 IP アドレス]** を選択し、[アドレス] テキスト ボックスに Automatic Private IP Addressing (APIPA) の範囲で使用できるアドレス (169.254.0.1 から 169.254.255.254) を指定します。 この例では、その範囲内の任意のアドレスを使用できます。 たとえば、「 `169.254.0.1`」のように指定します。 次に、 **[OK]** をクリックします
+3. **[静的 IP アドレス]** を選択し、仮想マシンと同じサブネットの使用可能なアドレスを指定します。
 
 4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、**[オンラインにする]** をクリックします。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使います。
 
@@ -341,7 +341,7 @@ Repeat these steps on the second SQL Server.
 
 ## <a name="create-an-azure-load-balancer"></a>Azure Load Balancer を作成する
 
-Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーは、可用性グループ リスナーの IP アドレスを保持しています。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
+Azure Virtual Machines では、SQL Server 可用性グループにはロード バランサーが必要です。 ロード バランサーは、可用性グループ リスナーと Windows Server フェールオーバー クラスターの IP アドレスを保持しています。 このセクションでは、Azure Portal でロード バランサーを作成する方法の概要を説明します。
 
 1. Azure Portal で、SQL Server が存在するリソース グループに移動し、**[+ 追加]** をクリックします。
 2. 「**ロード バランサー**」を検索します。 Microsoft が公開しているロード バランサーを選びます。
@@ -370,7 +370,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 ロード バランサーを構成するには、バックエンド プールとプローブを作成し、負荷分散規則を設定する必要があります。 これらは Azure Portal で行います。
 
-### <a name="add-backend-pool"></a>バックエンド プールを追加する
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>可用性グループ リスナーのバックエンド プールを追加する
 
 1. Azure Portal で、可用性グループに移動します。 新しく作成したロード バランサーを表示するため、ビューの更新が必要な場合があります。
 
@@ -395,7 +395,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | テキスト | SQLAlwaysOnEndPointProbe |
+   | **名前** | Text | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **ポート** | 未使用の任意のポート | 59999 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -410,12 +410,52 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 1. 次のように負荷分散規則を設定します。
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | テキスト | SQLAlwaysOnEndPointListener |
+   | **名前** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
    | **ポート** | 可用性グループ リスナーのポートを使用する | 1435 |
    | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 1435 |
    | **プローブ** |プローブに指定した名前 | SQLAlwaysOnEndPointProbe |
+   | **セッション永続化** | ドロップダウン リスト | **なし** |
+   | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
+   | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |
+
+   > [!WARNING]
+   > Direct Server Return は作成の間に設定されます。 この値は変更しないでください。
+
+1. **[OK]** をクリックして、負荷分散規則を設定します。
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>WSFC のフロント エンド IP アドレスを追加する
+
+WSFC の IP アドレスもロード バランサー上に存在する必要があります。 
+
+1. ポータルで、WSFC の新しいフロントエンド IP 構成を追加します。 クラスター コア リソース内の WSFC 用に構成した IP アドレスを使用します。 この IP アドレスを静的として設定します。 
+
+1. ロード バランサーをクリックし、**[正常性プローブ]** をクリックして、**[+ 追加]** をクリックします。
+
+1. 正常性プローブを次のように設定します。
+
+   | Setting | 説明 | 例
+   | --- | --- |---
+   | **名前** | Text | WSFCEndPointProbe |
+   | **プロトコル** | TCP を選びます | TCP |
+   | **ポート** | 未使用の任意のポート | 58888 |
+   | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
+   | **異常のしきい値** | 仮想マシンが異常と判断されるために必要な、連続したプローブ失敗の数  | 2 |
+
+1. **[OK]** をクリックして、正常性プローブを設定します。
+
+1. 負荷分散規則を設定します。 **[負荷分散規則]** をクリックし、**[+ 追加]** をクリックします。
+
+1. 次のように負荷分散規則を設定します。
+   | Setting | 説明 | 例
+   | --- | --- |---
+   | **名前** | Text | WSFCPointListener |
+   | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 |
+   | **プロトコル** | TCP を選びます |TCP |
+   | **ポート** | 可用性グループ リスナーのポートを使用する | 58888 |
+   | **バックエンド ポート** | Direct Server Return に Floating IP を設定するときは、このフィールドは使われません | 58888 |
+   | **プローブ** |プローブに指定した名前 | WSFCEndPointProbe |
    | **セッション永続化** | ドロップダウン リスト | **なし** |
    | **アイドル タイムアウト** | TCP 接続を開いたままにしておく時間 (分) | 4 |
    | **フローティング IP (ダイレクト サーバー リターン)** | |有効 |

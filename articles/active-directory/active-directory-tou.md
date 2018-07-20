@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: 2919ce1d7c57b7a92420ac11b61503caa1fdd3b0
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267559"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856418"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -30,7 +30,7 @@ Azure AD Terms of use は、エンド ユーザーに情報を提示するため
 Azure AD Terms of use を使用すると、以下のことができます。
 - 従業員やゲストに、アクセス前に使用条件への同意を求める。
 - 組織内のすべてのユーザーに一般的な使用条件を提示する。
-- ユーザーの属性 (例:  [動的グループ](active-directory-groups-dynamic-membership-azure-portal.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
+- ユーザーの属性 (例:  [動的グループ](users-groups-roles/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする際に特定の使用条件を提示する。
 - 使用条件を異なる言語で提示する。
 - 使用条件に同意したユーザーと同意していないユーザーを一覧表示する。
@@ -167,7 +167,7 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q: ユーザーが使用条件に同意したかどうか、および同意した日時を確認するにはどうすればよいですか?**</br>
-A: 該当する使用条件の欄で、[同意] の下に表示される数値をクリックしてください。  詳しくは、「[同意したユーザーと拒否したユーザーの表示](#view-who-has-accepted-and-declined)」をご覧ください。  また、使用条件に同意したユーザーは監査ログに書き込まれます。 Azure AD の監査ログを検索して結果を確認できます。  
+A: [使用条件] ブレードで **承認済み**の下の数字をクリックします。 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーの表示](#view-who-has-accepted-and-declined)」および「[監査ログの表示](#view-audit-logs)」をご覧ください。
 
 **Q: 使用条件を変更した場合、ユーザーはもう一度同意する必要がありますか?**</br>
 A: はい、管理者は使用条件を変更でき、変更した場合、ユーザーは新しい条件に同意し直す必要があります。
@@ -179,13 +179,16 @@ A: はい。  現時点では、管理者が 1 つの使用条件に対して構
 A: 使用条件は、サインイン エクスペリエンスの間にトリガーされます。
 
 **Q: どのようなアプリケーションを使用条件の対象にできますか?**</br>
-A: 最新の認証を使ったエンタープライズ アプリケーションに条件付きアクセス ポリシーを作成できます。  詳細については、[エンタープライズ アプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal)に関するページをご覧ください。
+A: 最新の認証を使ったエンタープライズ アプリケーションに条件付きアクセス ポリシーを作成できます。  詳細については、[エンタープライズ アプリケーション](./manage-apps/view-applications-portal.md)に関するページをご覧ください。
 
 **Q: 特定のユーザーまたはアプリケーションに複数の使用条件を追加できますか?**</br>
 A: はい、そのグループやアプリケーションを対象とする複数の条件付きアクセス ポリシーを作成することで可能です。 複数の使用条件の対象になっているユーザーは、一度に 1 つの使用条件に同意します。
  
 **Q: ユーザーが使用条件を拒否した場合はどうなりますか?**</br>
 A: ユーザーは、アプリケーションへのアクセスをブロックされます。 ユーザーは、アクセスするには、もう一度サインインして使用条件に同意する必要があります。
+ 
+**Q: 以前に同意した使用条件の同意を取り消すことはできますか?**</br>
+A: [以前に同意した使用条件を確認する](#how-users-can-review-their-terms-of-use)ことはできますが、現在、同意を取り消す方法はありません。
  
 **Q: 情報はどのくらいの期間保存されますか?**</br>
 ユーザーの数および同意したユーザーと拒否したユーザーは、使用条件が有効な間、保存されます。 監査ログは 30 日間保存されます。

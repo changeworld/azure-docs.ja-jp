@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232129"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971076"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード
 
@@ -75,9 +75,10 @@ ms.locfileid: "36232129"
 |50008|トークンに SAML アサーションがないか、正しく構成されていません。 フェデレーション プロバイダーに問い合わせてください。|
 |50010|トークン対象ユーザーが構成されていないため、アプリケーションの対象ユーザー URI の検証が失敗しました。 アプリケーションの所有者に問い合わせください|
 |50011|返信アドレスがないか、正しく構成されていません。または、アプリケーションに対して構成されている返信アドレスと一致しません。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) で説明されている解決策を試してください。 問題が引き続き発生する場合は、アプリケーションの所有者またはアプリ管理者に問い合わせてください|
+|50012| これは、認証が失敗したことを示す一般的なエラー メッセージです。 これは、要求内の資格情報やクレームが欠落している、無効であるなどの理由で起きることがあります。 要求が正しい資格情報およびクレームと一緒に送信されていることを確認してください。 |
 |50013|さまざまな理由によりアサーションが無効です。たとえば、トークンの発行者が有効期間内の API と一致しない、期限が切れている、形式が正しくない、アサーションの更新トークンがプライマリ更新トークンではない、などです。|
 |50017|次の理由から、証明書の検証が失敗しました。<ul><li>信頼できる証明書に発行側の証明書が見つかりません</li><li>予期される CrlSegment が見つかりきません</li><li>信頼できる証明書に発行側の証明書が見つかりません</li><li>構成されている Delta CRL 配布点に、対応する CRL 配布点がありません</li><li>タイムアウトの問題のため、有効な CRL セグメントを取得できません</li><li>CRL をダウンロードできません</li></ul>テナント管理者に問い合わせてください。|
-|50020|ユーザーが承認されていません。バージョンの問題のため、トークンを発行できません。発行者名が指定されていません。発行者名の問題 (null 最大長)。 アプリの所有者に問い合わせてください|
+|50020|ユーザーは、次のいずれかの理由で承認されていません。<ul><li>ユーザーは、v1 エンドポイントを持つ MSA アカウントでログインしようとしている</li><li>ユーザーは、テナントに存在していない。</li></ul> アプリケーションの所有者に問い合わせください。|
 |50027|次の理由により JWT トークンが無効です。<ul><li>nonce 要求、サブ要求が含まれていない</li><li>サブジェクト識別子の不一致</li><li>idToken 要求内の要求の重複</li><li>予期しない発行者</li><li>予期しない対象ユーザー</li><li>有効な時間範囲内でない </li><li>トークンの形式が適切ではない</li><li>発行元からの外部 ID トークンが、署名の検証に失敗しました。</li></ul>アプリケーションの所有者に問い合わせください|
 |50029|無効な URI - ドメイン名に無効な文字が含まれています。 テナント管理者に問い合わせてください。|
 |50034|ユーザーがディレクトリに存在しません。 テナント管理者に問い合わせてください。|
@@ -99,7 +100,7 @@ ms.locfileid: "36232129"
 |50089|フロー トークンの有効期限が切れています。認証に失敗しました。 ユーザーに、ユーザー名とパスワードで再度サインインを試行させます|
 |50097|デバイス認証が必要です。DeviceId -DeviceAltSecId 要求が null であるか、またはデバイス識別子に対応するデバイスが存在しません|
 |50099|JWT 署名が無効です。 アプリケーションの所有者に問い合わせください。|
-|50105|サインインしているユーザーが、サインインしているアプリケーションのロールに割り当てられていません。 アプリケーションにユーザーを割り当ててください。 詳しくは、[https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role) をご覧ください|
+|50105|サインインしているユーザーが、サインインしているアプリケーションのロールに割り当てられていません。 アプリケーションにユーザーを割り当ててください。 詳しくは、[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role) をご覧ください|
 |50107|要求されたフェデレーション領域オブジェクトが存在しません。 テナント管理者に問い合わせてください。|
 |50120|JWT ヘッダーに関する問題です。 テナント管理者に問い合わせてください。|
 |50124|要求の変換に、無効な入力パラメーターが含まれています。 テナント管理者に問い合わせて、ポリシーを更新してください。|
@@ -173,7 +174,10 @@ ms.locfileid: "36232129"
 |81001|ユーザーの Kerberos チケットが大きすぎます。 これは、ユーザーが属しているグループが多すぎ、したがって Kerberos チケットに含まれるグループ メンバーシップが多すぎる場合に発生します。 ユーザーのグループ メンバーシップを減らしてやり直してください。|
 |81005|認証パッケージがサポートされていません|
 |81007|テナントで、シームレス SSO が有効になっていません|
-
+|90010|要求は、さまざまな理由でサポートされません。 たとえば、サポートされていない要求メソッドを使用して要求が行われた (POST メソッドだけがサポートされています)、または要求されたトークン署名アルゴリズムがサポートされていません。 アプリケーション開発者に問い合わせください。|
+|90014| プロトコル メッセージに関する必須フィールドが欠落していました。アプリケーション所有者に問い合わせてください。 アプリケーション所有者である場合は、ログイン要求に必要なすべてのパラメーターがあることを確認します。 |
+|90072| アカウントは、まずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD アカウントで再度サインインしてください。|
+|90094| 付与には、管理者のアクセス許可が必要です。 このアプリケーションに同意するようにテナント管理者に依頼してください。|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643313"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704902"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -124,19 +124,25 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 開始する前に次の作業を行います。 
 
-- 構成サーバー マシンのシステム クロックが[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
-- マシンが次の URL にアクセスできることを確認します。       [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+#### <a name="verify-time-accuracy"></a>時間の精度を検証する
+構成サーバー マシンのシステム クロックが[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
 
-- IP アドレスベースのファイアウォール規則で Azure への通信を許可する必要があります。
-- [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。
-- ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
+#### <a name="verify-connectivity"></a>接続を検証する
+コンピューターが、環境に基づいて次の URL にアクセスできることを確認します。 
 
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
+
+IP アドレス ベースのファイアウォール規則では、HTTPS (443) ポートの上に示されているすべての Azure URL への通信が許可される必要があります。 IP 範囲を簡略化および制限するために、URL フィルタリングを実行することをお勧めします。
+
+- **商用 IP** - [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。 AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、サブスクリプションの Azure リージョンの IP アドレス範囲を許可します。  
+- **Government IP** - AAD、バックアップ、レプリケーション、およびストレージ URL をサポートするために、すべての米国政府リージョン (バージニア、テキサス、アリゾナ、およびアイオワ) の [Azure Government データセンターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=57063)と HTTPS (443) ポートを許可します。  
+
+#### <a name="run-setup"></a>セットアップを実行する
 ローカル管理者として統合セットアップを実行し、構成サーバーをインストールします。 プロセス サーバーとマスター ターゲット サーバーも既定で構成サーバーにインストールされます。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 登録が完了すると、コンテナーの **[設定]** の  > **[サーバー]** ページに構成サーバーが表示されます。
-
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 

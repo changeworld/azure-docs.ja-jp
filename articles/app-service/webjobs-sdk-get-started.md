@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 68377ffd53d5f2b99ddc08386529a40dda12e1b2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018457"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901553"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -46,7 +46,7 @@ public static void Run(
 
 ### <a name="versions-2x-and-3x"></a>バージョン 2.x および 3.x
 
-手順では、WebJobs SDK バージョン 2.x プロジェクトを作成する方法を示し、3.x (プレビュー版) との相違点を示します。 3.x で導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。
+この手順では、WebJobs SDK バージョン 2.x プロジェクトを作成する方法を示します。 最新バージョンの WebJobs SDK は 3.x ですが、これは現在プレビューの段階にあり、この記事にはまだ、そのバージョン用の手順は含まれていません。 バージョン 3.x で導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。
 
 ### <a name="azure-functions"></a>Azure Functions
 
@@ -65,18 +65,13 @@ public static void Run(
 
 2. **[Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** を選択します。
 
-   3.x プロジェクトを作成するには、**[.NET Core] > [コンソール アプリ (.NET Core)]** を選択します。
-   
-   > [!NOTE]
-   > 3.x はまだプレビュー中であり、開発中です。 この記事に示した 3.x の手順は不完全です。最新の情報については、ページの一番下にある GitHub の問題を参照してください。
-
 3. プロジェクトに *WebJobsSDKSample* という名前を付け、**[OK]** を選択します。
 
    ![[新しいプロジェクト] ダイアログ](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="add-webjobs-nuget-package"></a>WebJobs NuGet パッケージの追加
 
-1. NuGet パッケージ `Microsoft.Azure.WebJobs` の最新の安定した 2.x バージョンをインストールします  (WebJobs SDK 3.x の場合は、最新の 3.x バージョンを選択します)。
+1. NuGet パッケージ `Microsoft.Azure.WebJobs` の最新の安定した 2.x バージョンをインストールします 
  
    バージョン 2.2.0 用の **パッケージ マネージャー コンソール** コマンドを次に示しします。
 
@@ -353,7 +348,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 ### <a name="add-application-insights-logging-provider"></a>Application Insights ログ プロバイダーの追加
 
-1. Application Insights ログ プロバイダー用の NuGet パッケージの最新の安定した 2.x バージョンをインストールします: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`  (WebJobs SDK 3.x の場合は、最新の 3.x バージョンのパッケージを選択します)。
+1. Application Insights ログ プロバイダー用の NuGet パッケージの最新の安定した 2.x バージョンをインストールします: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` 
 
    バージョン 2.2.0 用の **パッケージ マネージャー コンソール** コマンドを次に示しします。
 

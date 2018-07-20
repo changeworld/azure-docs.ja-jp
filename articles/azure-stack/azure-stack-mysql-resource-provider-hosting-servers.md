@@ -11,19 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5522eb1b8b0398aeb6f1b0dd8578b906880b4e89
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939656"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302315"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>MySQL リソース プロバイダー用のホスティング サーバーの追加
 
 MySQL リソース プロバイダーが SQL インスタンスに接続できる限り、その MySQL インスタンスを、[Azure Stack](azure-stack-poc.md) 内の仮想マシン (VM) 上、または Azure Stack 環境の外部にある VM 上でホストできます。
+
+ホスティング サーバーには、MySQL バージョン 5.6、5.7、および 8.0 を使用できます。 MySQL RP は、caching_sha2_password 認証をサポートしていません。これは、次のリリースで追加される予定です。 mysql_native_password を使用するには、MySQL 8.0 サーバーを構成する必要があります。 MariaDB もサポートされています。
 
 ## <a name="connect-to-a-mysql-hosting-server"></a>MySQL ホスティング サーバーに接続する
 
@@ -51,13 +53,21 @@ MySQL リソース プロバイダーが SQL インスタンスに接続でき�
 
    ユーザーが自分のデータベースを適切な SKU にデプロイできるように、SKU の **[名前]** には SKU のプロパティが反映される必要があります。
 
-   >[!IMPORTANT]
-   >MySQL リソース プロバイダーの SKU を作成する際、**[名前]** または **[レベル]** では、スペースやピリオドなどの特殊文字はサポートされていません。
-
 6. **[OK]** を選択して SKU を作成します。
+> [!NOTE]
+> SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU がデプロイされて実行されるまで、データベースを作成することはできません。
+
 7. **[Add a MySQL Hosting Server]\(MySQL ホスティング サーバーの追加\)** の下で、**[作成]** を選択します。
 
 サーバーを追加する際に、サービス内容を区別するために新規または既存の SKU に割り当てます。 たとえば、増加したデータベースと自動バックアップを提供する MySQL エンタープライズ インスタンスを使用できます。 この高パフォーマンス サーバーは、組織内のさまざまな部門用に予約できます。
+
+## <a name="security-considerations-for-mysql"></a>MySQL のセキュリティに関する考慮事項
+
+次の情報は、RP および MySQL ホスティング サーバーに適用されます。
+
+* すべてのホスティング サーバーが TLS 1.2 を使用した通信用に構成されていることを確認します。 [暗号化された接続を使用するための MySQL の構成](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html)に関するページを参照してください。
+* [Transparent Data Encryption](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html) を採用します。
+* MySQL RP は、caching_sha2_password 認証をサポートしていません。
 
 ## <a name="increase-backend-database-capacity"></a>バックエンド データベース容量を増やす
 
@@ -65,9 +75,7 @@ MySQL リソース プロバイダーが SQL インスタンスに接続でき�
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>ユーザーが MySQL データベース サーバーを使用できるようにする
 
-ユーザーが MySQL データベース サーバーを使用できるようにプランとオファーを作成します。 プランに Microsoft.MySqlAdapter サービスを追加した後、既定のクォータを追加するか、新しいクォータを作成します。
-
-![データベースのプランとオファーを作成する](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
+ユーザーが MySQL データベース サーバーを使用できるようにプランとオファーを作成します。 プランに Microsoft.MySqlAdapter サービスを追加し、新しいクォータを作成します。 MySQL では、データベースのサイズの制限が許可されません。
 
 ## <a name="next-steps"></a>次の手順
 

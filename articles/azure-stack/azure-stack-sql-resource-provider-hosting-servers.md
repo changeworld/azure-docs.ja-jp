@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
-ms.openlocfilehash: af820f90c5d8822dbdaa768b16360d534fd47828
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.reviewer: jeffgo
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060044"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970553"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 
@@ -28,15 +29,15 @@ SQL リソース プロバイダーが SQL インスタンスに接続できる�
 
 SQL ホスティング サーバーを追加する前に、次の必須要件と一般要件を確認します。
 
-**必須要件**
+### <a name="mandatory-requirements"></a>必須要件
 
 * SQL Server インスタンス上で SQL 認証を有効にします。 SQL リソース プロバイダーの VM は、ドメインに参加していません。そのため、ホスティング サーバーに接続するときは、SQL 認証を使用する必要があります。
-* SQL インスタンスの IP アドレスをパブリックとして構成します。 リソース プロバイダーや、Web アプリなどのユーザーは、ユーザー ネットワーク経由で通信します。そのため、このネットワーク上の SQL インスタンスへの接続が必要となります。
+* Azure Stack にインストールするときに、SQL インスタンスの IP アドレスをパブリックとして構成します。 リソース プロバイダーや、Web アプリなどのユーザーは、ユーザー ネットワーク経由で通信します。そのため、このネットワーク上の SQL インスタンスへの接続が必要となります。
 
-**一般要件**
+### <a name="general-requirements"></a>一般的な要件
 
 * SQL インスタンスは、リソース プロバイダーとユーザー ワークロードでのみ使用されるようにする必要があります。 他のコンシューマーが使用中の SQL インスタンスは使用できません。 この制限は、App Services にも適用されます。
-* リソース プロバイダー用に、適切な特権レベルが設定されたアカウントを構成します。
+* リソース プロバイダー用に、適切な特権レベルが設定されたアカウントを構成します (下記参照)。
 * SQL インスタンスとそのホストを管理する責任があります。  たとえば、リソース プロバイダーは、更新プログラムの適用、バックアップの処理、または資格情報のローテーションの処理は行いません。
 
 ### <a name="sql-server-virtual-machine-images"></a>SQL Server 仮想マシンのイメージ
@@ -48,7 +49,7 @@ Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **
 SQL VM のデプロイにはその他の選択肢もあります。[Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates) のテンプレートなどです。
 
 > [!NOTE]
-> 複数ノードの Azure Stack にインストールされるホスティング サーバーは、ユーザー サブスクリプションから作成する必要があります。 既定のプロバイダー サブスクリプションからは作成できません。 ユーザー ポータル、または適切にログインされた PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーが課金対象の VM であり、適切な SQL ライセンスが必要です。 サービス管理者は、そのサブスクリプションの所有者になることが_できます_。
+> 複数ノードの Azure Stack にインストールされるホスティング サーバーは、既定のプロバイダー サブスクリプションではなくユーザー サブスクリプションから作成する必要があります。 ユーザー ポータル、または適切にログインされた PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーが課金対象の VM であり、適切な SQL ライセンスが必要です。 サービス管理者は、そのサブスクリプションの所有者になることが_できます_。
 
 ### <a name="required-privileges"></a>必要な特権
 
@@ -58,6 +59,16 @@ SQL sysadmin より低い特権を持つ管理ユーザーを作成できます�
 * 可用性グループ: データベースの変更、結合、追加/削除
 * ログイン: 作成、選択、変更、ドロップ、取り消し
 * 操作の選択: \[master\].\[sys\].\[availability_group_listeners\] (AlwaysOn)、sys.availability_replicas (AlwaysOn)、sys.databases、\[master\].\[sys\].\[dm_os_sys_memory\]、SERVERPROPERTY、\[master\].\[sys\].\[availability_groups\] (AlwaysOn)、sys.master_files
+
+### <a name="additional-security-information"></a>追加のセキュリティに関する情報
+
+次の情報は、追加のセキュリティに関するガイダンスを提供します。
+
+* すべての Azure Stack ストレージは BitLocker を使用して暗号化されているので、Azure Stack 上のどの SQL インスタンスも暗号化された Blob ストレージを利用します。
+* SQL リソース プロバイダーは、TLS 1.2 を完全にサポートします。 SQL RP を通じて管理される SQL Server はすべて、TLS 1.2 _のみ_に対して構成されており、RP は既定でこれに設定されることを確認します。 サポートされるすべてのバージョンの SQL Server で TLS 1.2 をサポートしています。[Microsoft SQL Server の TLS 1.2 サポート](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server)を参照してください。
+* SQL Server 構成マネージャーを使用して、SQL Server へのすべての通信が常に暗号化されるように **ForceEncryption** オプションを設定します。 [暗号化された接続を強制するようにサーバーを構成するには](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections)を参照してください。
+* クライアント アプリケーションが、暗号化された接続で通信することも確認します。
+* RP は、SQL Server インスタンスで使用される証明書を信頼するように構成されています。
 
 ## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>スタンドアロンのホスティング SQL Server に接続して容量を提供する
 
@@ -89,53 +100,50 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
    * 既存の SKU を使用するには、使用可能な SKU を選択してから、**[作成]** を選択します。
    * SKU を作成するには、**[+ Create new SKU]\(+ 新しい SKU の作成\)** を選択します。 必要な情報を **[Create SKU]\(SKU の作成\)** に入力し、**[OK]** を選択します。
 
-     > [!IMPORTANT]
-     > **[名前]** フィールドでは、特殊文字 (スペースとピリオドを含む) はサポートされません。 次の画面キャプチャの例を使用して、**[ファミリー]**、**[階層]**、および **[エディション]** フィールドに値を入力します。
-
      ![SKU の作成](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
-
-      SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU の作成が完了するまで、ユーザーはデータベースを作成できません。
-
-### <a name="sku-notes"></a>SKU に関する注意
-
-SKU を使用すると、サービス内容を区別できます。 たとえば、次の特徴を持つ SQL Enterprise インスタンスを用意できます。
-  
-* 大容量
-* 高パフォーマンス
-* 高可用性
-
-前の例に対して SKU を作成し、高パフォーマンス データベースが必要な特定のグループにアクセス先を制限できます。
-
->[!TIP]
->使用する SKU 名は、SKU 内のサーバーの機能 (容量やパフォーマンス) を示すものにしてください。 この名前は、該当する SKU にユーザーがデータベースをデプロイするときの助けになります。
-
-ベスト プラクティスとして、SKU 内のすべてのホスティング サーバーに同じリソースとパフォーマンス特性を持たせてください。
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>SQL Always On 可用性グループを使用して高可用性を提供する
 
 SQL Always On インスタンスの構成にはさらに手順が必要で、3 台の VM (または物理マシン) が必要です。この記事は、Always On 可用性グループについて十分に理解していることを前提にしています。 詳細については、次の記事を参照してください。
 
-* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Always On 可用性グループ (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Azure Virtual Machines での SQL Server Always On 可用性グループの概要](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Always On 可用性グループ (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
-> SQL アダプター リソース プロバイダーは、Always On に対して SQL 2016 SP1 Enterprise 以降のインスタンス "_のみ_" をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
+> SQL アダプター リソース プロバイダーは、Always On 可用性グループに対して SQL 2016 SP1 Enterprise 以降のインスタンス_のみ_をサポートします。 このアダプターの構成には、自動シード処理などの SQL の新機能が必要です。
 
-また、SQL Server のインスタンスごとに各可用性グループで[自動シード](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
+### <a name="automatic-seeding"></a>自動シード処理
 
-すべてのインスタンスで自動シード処理を有効にするには、次の SQL コマンドを編集し、インスタンスごとに実行します。
+SQL Server のインスタンスごとに各可用性グループで[自動シード処理](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
 
-  ```
+すべてのインスタンスで自動シード処理を有効にするには、次の SQL コマンドを編集し、セカンダリ インスタンスごとにプライマリ レプリカで実行します。
+
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-セカンダリ インスタンスでは、次の SQL コマンドを編集し、インスタンスごとに実行します。
+可用性グループは大かっこで囲む必要があることに注意してください。
 
-  ```
+セカンダリ ノードで、次の SQL コマンドを実行します。
+
+  ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
+
+### <a name="configure-contained-database-authentication"></a>包含データベース認証を構成する
+
+包含データベースを可用性グループに追加する前に、包含データベース認証サーバー オプションが、可用性グループの可用性レプリカをホストするすべてのサーバー インスタンスで 1 に設定されていることを確認します。 詳細については、[包含データベース認証サーバー構成オプション](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)を参照してください。
+
+これらのコマンドを使用して、包含データベース認証サーバー オプションをインスタンスごとに設定します。
+
+  ```sql
+  EXEC sp_configure 'contained database authentication', 1
+  GO
+  RECONFIGURE
   GO
   ```
 
@@ -147,7 +155,7 @@ SQL Always On インスタンスの構成にはさらに手順が必要で、3 �
 
    **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** では、リソース プロバイダーのバックエンドとして機能する SQL Server の実際のインスタンスに SQL Server リソース プロバイダーを接続できます。
 
-3. SQL Server インスタンスの接続詳細をフォームに入力します。 Always On リスナーの FQDN アドレス (および必要に応じてポート番号) を使用していることを確認します。sysadmin 特権で構成したアカウントの情報を提供します。
+3. SQL Server インスタンスの接続詳細をフォームに入力します。 Always On リスナーの FQDN アドレス (および必要に応じてポート番号とインスタンス名) を必ず使用してください。 sysadmin 特権で構成したアカウントの情報を提供します。
 
 4. SQL Always On 可用性グループ ボックスのインスタンスのサポートを有効にするには、[Always On 可用性グループ] ボックスをオンにします。
 
@@ -158,11 +166,26 @@ SQL Always On インスタンスの構成にはさらに手順が必要で、3 �
    > [!IMPORTANT]
    > 同じ SKU にスタンドアロン サーバーと Always On インスタンスを混在させることはできません。 最初のホスティング サーバーを追加した後に型を混在させようとすると、エラーになります。
 
+## <a name="sku-notes"></a>SKU に関する注意
+
+SKU を使用すると、サービス内容を区別できます。 たとえば、次の特徴を持つ SQL Enterprise インスタンスを用意できます。
+  
+* 大容量
+* 高パフォーマンス
+* 高可用性
+
+SKU は、このリリースでは、特定のユーザーやグループに割り当てることはできません。
+
+ SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU の作成が完了するまで、ユーザーはデータベースを作成できません。
+
+>[!TIP]
+>使用する SKU 名は、SKU 内のサーバーの機能 (容量やパフォーマンス) を示すものにしてください。 この名前は、該当する SKU にユーザーがデータベースをデプロイするときの助けになります。
+
+ベスト プラクティスとして、SKU 内のすべてのホスティング サーバーに同じリソースとパフォーマンス特性を持たせてください。
+
 ## <a name="make-the-sql-databases-available-to-users"></a>ユーザーが SQL データベースを使用できるようにする
 
-ユーザーが SQL データベースを使用できるようにするプランとオファーを作成します。 プランに **Microsoft.SqlAdapter** サービスを追加し、既定のクォータを追加するか新しいクォータを作成します。
-
-![データベースに含めるプランとサービスの作成](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
+ユーザーが SQL データベースを使用できるようにするプランとオファーを作成します。 プランに **Microsoft.SqlAdapter** サービスを追加し、新しいクォータを作成します。
 
 ## <a name="next-steps"></a>次の手順
 

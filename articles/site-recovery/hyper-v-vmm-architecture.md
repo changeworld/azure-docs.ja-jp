@@ -4,14 +4,14 @@ description: この記事では、Azure Site Recovery を使用してオンプ�
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 39a397edd17327a91882535fbd00222a4ae4dddc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0319e4d1cdbd20c39772c659a3e5a1580d8b925b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894298"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919650"
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V のレプリケーション
 
@@ -37,8 +37,8 @@ ms.locfileid: "33894298"
 
 1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。
 2. VM の仮想ハード ディスクが 1 つずつセカンダリの場所にレプリケーションされます。
-3. 初期レプリケーションの進行中にディスクの変更が発生した場合 
-4. 初期レプリケーションが完了したら、差分レプリケーションが開始されます。 Hyper-V レプリカのレプリケーション トラッカーは、変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリの場所に送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
+3. 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーはそれらの変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリの場所に送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
+4. 初期レプリケーションが完了すると、VM スナップショットは削除され、デルタ レプリケーションが開始されます。
 5. ログの差分ディスク変更は、親ディスクに同期され、マージされます。
 
 

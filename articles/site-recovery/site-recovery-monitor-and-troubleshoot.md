@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/22/2018
+ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: b357a3231dac6dfa54cb02fe921baf771c0880f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84b5bf3be09083a69216802fc7f557de1a7f0ee6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186293"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917535"
 ---
 # <a name="monitoring-and-troubleshooting-azure-site-recovery"></a>Azure Site Recovery の監視とトラブルシューティング
 

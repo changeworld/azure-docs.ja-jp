@@ -1,25 +1,19 @@
 ---
-title: Azure Backup - DPM と Azure Backup Server のオフライン バックアップ | Microsoft Docs
+title: Azure Backup - DPM と Azure Backup Server のオフライン バックアップ
 description: Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。 この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: e3f7ae187bee8680fbff7e5c78c666a0bda7e48f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: saurse
+ms.openlocfilehash: 1a0e196f4d96494aca1c19a7527ac7d81837fb5c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941260"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "34606479"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM と Azure Backup Server のオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 Azure Backup では、初回バックアップが圧縮されます。 オフライン シード処理プロセスによって、Azure Backup でディスクを使用し、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。
@@ -64,7 +58,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export を
  ![クラシック ストレージ アカウントの作成](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* Azure に送信されるディスクに関して、2.5 インチ SSD、または 2.5 インチか 3.5 インチの SATA II/III 内蔵ハード ドライブが使用されていることを確認します。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-service.md#hard-disk-drives)をご覧ください。
+* Azure に送信されるディスクに関して、2.5 インチ SSD、または 2.5 インチか 3.5 インチの SATA II/III 内蔵ハード ドライブが使用されていることを確認します。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
 * SATA ドライブは、"*ステージング場所*" から SATA ドライブへのバックアップ データのコピーが行われるコンピューター ("*コピー用コンピューター*" と呼ばれます) に接続されている必要があります。 "*コピー用コンピューター*" で BitLocker が有効になっていることを確認します 
 
 ## <a name="workflow"></a>ワークフロー
@@ -122,7 +116,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export を
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | パラメーター | [説明] |
+    | パラメーター | 説明 |
     | --- | --- |
     | s:&lt;*ステージング場所のパス*&gt; |必須。**オフライン バックアップの開始**ワークフローで入力したステージング場所へのパスを指定します。 |
     | p:&lt;*PublishSettingsFile へのパス*&gt; |オプション。**オフライン バックアップの開始**ワークフローで入力した **Azure 発行設定**ファイルへのパスを指定します。 |
@@ -163,7 +157,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export を
    
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | パラメーター | [説明] |
+    | パラメーター | 説明 |
     | --- | --- |
     | u: | Azure インポート ジョブの発送詳細の更新に使用される必須の入力 |
     | s:&lt;*ステージング場所のパス*&gt; | ソース コンピューターでコマンドを実行していない場合に必須の入力。 **オフライン バックアップの開始**ワークフローで入力したステージング場所へのパスを指定するために使用します。 |
@@ -203,7 +197,7 @@ Azure インポート ジョブの処理にかかる時間は、運送時間、�
 
     ![インポート ジョブの状態の確認](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
 
-Azure インポート ジョブの各種の状態について詳しくは、[こちらの記事](../storage/common/storage-import-export-service.md#how-does-the-azure-importexport-service-work)をご覧ください
+Azure インポート ジョブの各種の状態について詳しくは、[こちらの記事](../storage/common/storage-import-export-view-drive-status.md)をご覧ください
 
 ### <a name="complete-the-workflow"></a>ワークフローを完了する
 インポート ジョブが完了すると、初回バックアップ データをストレージ アカウントで使用できます。 次回のスケジュール バックアップでは、Azure Backup は次のようにストレージ アカウントのデータのコンテンツを Recovery Services コンテナーにコピーします。 

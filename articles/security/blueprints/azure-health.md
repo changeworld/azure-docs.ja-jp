@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
-ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33894315"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37113233"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
 ## <a name="overview"></a>概要
 
-**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作を安全に行う方法を示す Azure PaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
+
+  **Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作を安全に行う方法を示す Azure PaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
 
 エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 これは一般的な参照アーキテクチャを紹介し、Microsoft Azure の導入を簡素化するために設計されています。 提供されるアーキテクチャは、デプロイの負担を軽減し、コストを削減するクラウドベースのアプローチを求めている組織のニーズを満たすソリューションを示しています。
 

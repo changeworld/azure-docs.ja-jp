@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261561"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37859702"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -116,6 +116,11 @@ Azure Cosmos DB は、「[Azure リージョン](https://azure.microsoft.com/reg
 
 リージョンを設定するときは、Azure Cosmos DB では主権のあるクラウドと政府機関のクラウドが重視されることに注意してください。 つまり、[独立リージョン](https://azure.microsoft.com/global-infrastructure/)にアカウントを作成した場合、その[独立リージョン](https://azure.microsoft.com/global-infrastructure/)の外部にレプリケートすることはできません。 同様に、外部のアカウントから他の独立した場所へのレプリケーションを有効にすることはできません。 
 
+### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>コンテナー レベルのスループットのプロビジョニングからデータベース レベルのスループットのプロビジョニングに切り替えられますか? またはその逆はどうですか
+
+コンテナー レベルとデータベース レベルのスループットのプロビジョニングは別個のサービスであり、これらのサービス間で切り替えるには移行元から移行先へのデータの移行が必要になります。 つまり、新しいデータベースまたは新しいコレクションを作成した後、[Bulk Executor ライブラリ](bulk-executor-overview.md)または [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用してデータを移行する必要があります。
+
+
 ## <a name="develop-against-the-sql-api"></a>SQL API に対する開発
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>SQL API に対する開発を開始するにはどうすればよいですか?
@@ -131,12 +136,16 @@ SQL API の [.NET](sql-api-dotnet-samples.md)、[Java](https://github.com/Azure/
 はい。SQL API では、スキーマ定義やヒントを必要とせずに、アプリケーションが任意の JSON ドキュメントを格納できます。 データは、Azure Cosmos DB SQL クエリ インターフェイスを使用してクエリにすぐに使用できます。  
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>SQL API は ACID トランザクションをサポートしていますか?
-はい。SQL API では、JavaScript のストアド プロシージャとトリガーとして表現されるクロス ドキュメント トランザクションをサポートしています。 トランザクションは、各コレクション内の単一のパーティションを対象とし、他の同時実行されるコードおよびユーザー要求から "完全に" 分離された ACID セマンティクスで実行されます。 JavaScript アプリケーション コードのサーバー側実行により例外がスローされた場合は、トランザクション全体がロールバックされます。 トランザクションの詳細については、「 [プログラム データベース トランザクション](programming.md#database-program-transactions)」を参照してください。
+はい。SQL API では、JavaScript のストアド プロシージャとトリガーとして表現されるクロス ドキュメント トランザクションをサポートしています。 トランザクションは、各コンテナー内の単一のパーティションを対象とし、他の同時実行されるコードおよびユーザー要求から "完全に" 分離された ACID セマンティクスで実行されます。 JavaScript アプリケーション コードのサーバー側実行により例外がスローされた場合は、トランザクション全体がロールバックされます。 トランザクションの詳細については、「 [プログラム データベース トランザクション](programming.md#database-program-transactions)」を参照してください。
 
-### <a name="what-is-a-collection"></a>コレクションとは何ですか?
-コレクションとは、ドキュメントと、関連する JavaScript アプリケーション ロジックのグループです。 コレクションは課金対象のエンティティであり、その[コスト](performance-levels.md)は、スループットと使用しているストレージによって決まります。 コレクションは、1 つ以上のパーティションまたはサーバーにまたがって存在することができ、拡張性があるので、対応できるストレージまたはスループットの量には実質的に制限はありません。
+### <a name="what-is-a-container"></a>コンテナーとは何ですか?
+コンテナーとは、ドキュメントと、関連する JavaScript アプリケーション ロジックのグループです。 コンテナーは課金対象のエンティティであり、その[コスト](performance-levels.md)は、スループットと使用しているストレージによって決まります。 コンテナーは、1 つ以上のパーティションまたはサーバーにまたがって存在することができ、拡張性があるので、対応できるストレージまたはスループットの量には実質的に制限はありません。 
 
-コレクションは、Azure Cosmos DB の課金エンティティでもあります。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。 
+* SQL および MongoDB API アカウントの場合、コンテナーはコレクションにマップされます。 
+* Cassandra および Table API アカウントの場合、コンテナーはテーブルにマップされます。 
+* Gremlin API アカウントの場合、コンテナーはグラフにマップされます。 
+
+コンテナーは、Azure Cosmos DB の課金エンティティでもあります。 各コンテナーは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。 
 
 ### <a name="how-do-i-create-a-database"></a>どのようにしてデータベースを作成しますか?
 データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-sql-api-dotnet.md#create-collection)」を参照)、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/cosmos-db/) を使用して作成できます。 
@@ -165,7 +174,7 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 * データ移行ツール。[Azure Cosmos DB 用のデータベース移行ツール](import-data.md)に関する記事で説明されています。
 * ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](programming.md)に関する記事で説明されています。
 
-### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>非同期インデックスを使用するようにコレクションを設定しましたが、クエリで期待される結果が返りません。 
+### <a name="i-have-setup-my-container-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>非同期インデックスを使用するようにコンテナーを設定しましたが、クエリで期待される結果が返りません。 
 インデックス作成セクションに説明されているように、非同期インデックスではこのような結果になる可能性があります。 常にすべてのアプリケーションで同期インデックスを使用する必要があります。 
 
 
@@ -180,7 +189,7 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>アクセス許可はオブジェクト階層のどこで許可されますか?
 
-ResourceTokens の使用によるアクセス許可の作成は、コレクション レベルとその子孫 (ドキュメントや添付ファイルなど) で許可されます。 これは、データベースまたはアカウント レベルでのアクセス許可の作成は、現時点では許可されないことを示唆しています。
+ResourceTokens の使用によるアクセス許可の作成は、コンテナー レベルとその子孫 (ドキュメントや添付ファイルなど) で許可されます。 これは、データベースまたはアカウント レベルでのアクセス許可の作成は、現時点では許可されないことを示唆しています。
 
 
 ## <a name="develop-against-the-api-for-mongodb"></a>MongoDB 用 API に対する開発
@@ -280,9 +289,6 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使うことができます。
 
 以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API に対応できます。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。 
-
-### <a name="do-powershell-or-azure-cli-work-with-the-table-api"></a>PowerShell または Azure CLI は Table API で動作しますか?
-[PowerShell](table-powershell.md) はサポートされています。 Azure CLI は、現在は使うことができません。
 
 ### <a name="is-the-concurrency-on-operations-controlled"></a>操作の同時実行は制御されますか?
 はい。オプティミスティック同時実行制御は、ETag メカニズムを使用して提供されます。 
@@ -410,7 +416,7 @@ Table API は Azure Table Storage と同じクエリ機能を提供します。 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Table API の料金はどのように計算されますか? 
 料金は、割り当てられた TableThroughput によって異なります。 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Table API では、テーブルの調整にどのように対処すればよいですか? 
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Table API では、テーブルのレート制限にどのように対処すればよいですか? 
 要求レートが基になるコンテナーまたはコンテナーのセットのプロビジョニング スループットの容量を超えると、エラーが発生し、SDK は再試行ポリシーを適用して呼び出しを再試行します。
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Azure Cosmos DB の Table API サービスを利用するために、PartitionKey および RowKey とは別にスループットを選ぶ必要があるのはなぜですか?

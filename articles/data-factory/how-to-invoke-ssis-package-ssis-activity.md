@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 07/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054723"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951969"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
@@ -92,9 +92,11 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 ### <a name="optionally-parameterize-the-activity"></a>必要に応じてアクティビティをパラメーター化する
 
-必要に応じて、**[詳細]** タブで、JSON 形式のプロジェクトまたはパッケージ パラメーターに、Data Factory システム変数を参照できる値、式、または関数を割り当てます。たとえば、次のスクリーン ショットに示すように、Data Factory パイプライン パラメーターを、SSIS プロジェクトまたはパッケージ パラメーターに割り当てることができます。
+オプションで、SSIS パッケージの実行アクティビティ ボックスの一番下にある **[View Source Code] (ソース コードの表示)** ボタン、またはパイプライン領域の右上隅にある **[コード]** ボタンを使用して、Data Factory システム変数を参照できる値、式、または関数をプロジェクトまたはパッケージ パラメーターに JSON 形式で割り当てます。 たとえば、次のスクリーンショットに示すように、Data Factory パイプライン パラメーターを SSIS プロジェクトまたはパッケージ パラメーターに割り当てることができます。
 
-![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+![SSIS パッケージの実行アクティビティの JSON スクリプトを編集する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>パイプラインを実行して監視する
 このセクションでは、パイプラインの実行をトリガーして監視します。 
@@ -174,7 +176,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在、Data Factory でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパ、および東南アジアだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する 
 この手順では、SSIS アクティビティのあるパイプラインを作成します。 このアクティビティは SSIS パッケージを実行します。 

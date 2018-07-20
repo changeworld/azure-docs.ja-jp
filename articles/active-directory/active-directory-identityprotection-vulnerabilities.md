@@ -2,7 +2,7 @@
 title: Azure Active Directory Identity Protection で検出される脆弱性 | Microsoft Docs
 description: Azure Active Directory Identity Protection で検出される脆弱性の概要
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
+keywords: Azure Active Directory Identity Protection, Cloud Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 804ee23a8e27eda89861ef820d266f93013d7ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713696"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307332"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -47,9 +47,9 @@ Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 の�
 
 現代の企業では、IT 部門が、組織のユーザーが作業のために使用しているクラウド アプリケーションを部分的にしか認識できていないことがよくあります。 管理者が企業データへの不正アクセスを心配している理由は容易に理解できます。データの漏洩やその他のセキュリティ リスクが発生するおそれがあるからです。 
 
-Cloud App Discovery をデプロイしてアンマネージド クラウド アプリケーションを検出し、Azure Active Directory を使用してこれらのアプリケーションを管理することをお勧めします。
+Cloud Discovery をデプロイしてアンマネージド クラウド アプリケーションを検出し、Azure Active Directory を使用してこれらのアプリケーションを管理することをお勧めします。
 
-詳細については、[アンマネージド クラウド アプリケーションの Cloud App Discovery による検出](manage-apps/cloud-app-discovery.md)に関するページを参照してください。
+詳細については、「[Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Privileged Identity Management からのセキュリティ アラート
 この脆弱性は、組織内の特権 ID に関するアラートを検出して解決するのに役立ちます。  
@@ -58,7 +58,7 @@ Cloud App Discovery をデプロイしてアンマネージド クラウド ア�
 
 Azure AD Privileged Identity Management を使用して、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視することをお勧めします。
 
-詳しくは、[Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) に関するページを参照してください。 
+詳しくは、[Azure AD Privileged Identity Management](privileged-identity-management/pim-configure.md) に関するページを参照してください。 
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

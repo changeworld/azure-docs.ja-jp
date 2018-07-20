@@ -3,7 +3,7 @@ title: Log Analytics のサービス プロバイダー向け機能 | Microsoft 
 description: Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
+author: MeirMen
 manager: jochan
 editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
@@ -11,76 +11,77 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/22/2016
-ms.author: richrund
-ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.topic: conceptual
+ms.date: 07/05/2018
+ms.author: meirm
+ms.component: na
+ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593051"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931992"
 ---
-# <a name="log-analytics-features-for-service-providers"></a>Log Analytics のサービス プロバイダー向け機能
+# <a name="log-analytics-for-service-providers"></a>サービス プロバイダー向け Log Analytics
 Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。 
 
 特に多くの異なる部署の IT 管理を担当する一元的な IT チームがある大企業では、サービス プロバイダーと多くの類似点を共有します。 このドキュメントでは簡単にするために*サービス プロバイダー* という言葉を使用していますが、企業およびその他のお客様にも同じ機能をご利用いただけます。
 
-## <a name="cloud-solution-provider"></a>クラウド ソリューション プロバイダー
 [クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Log Analytics は [Azure CSP サブスクリプション](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)で使用できる Azure サービスの 1 つです。 
 
-Log Analytics では、*クラウド ソリューション プロバイダー* サブスクリプションで次の機能が有効になっています。
+## <a name="architectures-for-service-providers"></a>サービス プロバイダー向けアーキテクチャ
 
-*クラウド ソリューション プロバイダー*としてできることは次の通りです。
+Log Analytics ワークスペースは、ログのフローと分離を制御し、特定のビジネス ニーズに対処するログ アーキテクチャを作成するための方法を管理者にもたらします。 [この記事](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access)では、ワークスペースの管理に関する一般的な考慮事項について説明します。 サービス プロバイダーには追加の考慮事項があります。
 
-* テナント (顧客) のサブスクリプションでの Log Analytics ワークスペースの作成。
-* テナントが作成したワークスペースへのアクセス。 
-* Azure のユーザー管理を使用した、ワークスペースへのユーザー アクセスの追加と削除。 OMS ポータルにおけるテナントのワークスペースで、[設定] の [ユーザー管理] ページが使用できない場合
-  * Log Analytics では、ロールベースのアクセスをまだサポートしていません。Azure Portal でユーザーに `reader` アクセス許可を付与すれば、OMS ポータルで構成の変更を行うことができます。
+Log Analytics ワークスペースに関するサービス プロバイダー向けのアーキテクチャは次の 3 つ考えられます。
 
-テナントのサブスクリプションにログインするには、テナント ID を指定する必要があります。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1.分散 - ログは、顧客のテナントに置かれたワークスペースに格納されます 
 
-* OMS ポータルでは、ポータルの URL に `?tenant=contoso.com` を追加します。 たとえば、`mms.microsoft.com/?tenant=contoso.com` のように指定します。
-* PowerShell では、`Connect-AzureRmAccount` コマンドレットを使用する場合 `-Tenant contoso.com` パラメーターを使用します。
-* Azure Portal からの `OMS portal` リンクを使用して、選択したワークスペースの OMS ポータルを開いたりログインすると、テナント ID が自動的に追加されます。
+このアーキテクチャでは、ワークスペースは、顧客のテナント (その顧客のすべてのログに使用) にデプロイされます。 サービス プロバイダーの管理者は、[Azure Active Directory ゲスト ユーザー (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b) を使用したこのワークスペースへのアクセスが認められています。 サービス プロバイダーの管理者は、これらのワークスペースにアクセスするために、Microsoft Azure portal でその顧客のディレクトリに切り替える必要があります。
 
-クラウド ソリューション プロバイダーの*顧客*としてできることは次の通りです。
+このアーキテクチャの利点は次のとおりです。
+* 顧客は、自身の[ロールベース アクセス](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)を使用してログへのアクセスを管理できます。
+* 保有期間やデータ キャッピングなど、顧客ごとに異なるワークスペース設定が可能です。
+* 規制やコンプライアンスについて顧客間で分離します。
+* 各ワークスペースの料金は、顧客のサブスクリプションにまとめられます。
+* ログは、リソースのすべてのタイプから収集でき、単なるエージェントベースではできません。 たとえば、Azure 監査です。
 
-* CSP サブスクリプションでの Log Analytics ワークスペースの作成。
-* CSP が作成したワークスペースへのアクセス。
-  * Azure Portal からの `OMS portal` リンクを使用して、選択したワークスペースの OMS ポータルを開いたりログインすること。
-* OMS ポータルの [設定] の [ユーザー管理] ページの表示と使用。
+このアーキテクチャの短所は次のとおりです。
+* 一度に多数の顧客のテナントをサービス プロバイダーが管理することが困難になります。
+* サービス プロバイダーの管理者は、顧客のディレクトリでプロビジョニングされている必要があります。
+* サービス プロバイダーは、顧客間でデータを分析することはできません。
 
-> [!NOTE]
-> Log Analytics の組み込みの Backup ソリューションと Site Recovery ソリューションは、Recovery Services コンテナーに接続できず、CSP サブスクリプションでは構成できません。 
-> 
-> 
+### <a name="2-central---logs-are-stored-in-workspace-located-in-the-service-provider-tenant"></a>2.中央 - ログは、サービス プロバイダーのテナントに置かれているワークスペースに格納されます
 
-## <a name="managing-multiple-customers-using-log-analytics"></a>Log Analytics を使用した複数の顧客の管理
-管理する顧客ごとに Log Analytics ワークスペースを作成することをお勧めします。 Log Analytics ワークスペースには次の情報が示されます。
+このアーキテクチャでは、ログは、顧客のテナントに格納されませんが、サービス プロバイダーのいずれかのサブスクリプション内にある中央の場所にのみ格納されます。 顧客の VM 上にインストールされたエージェントは、ワークスペース ID と秘密鍵を使用してこのワークスペースにログを送信するように構成されています。
 
-* データを格納するための地理的な場所 
-* 課金の粒度 
-* データの分離 
-* 一意の構成
+このアーキテクチャの利点は次のとおりです。
+* 多数の顧客を管理して、さまざまなバックエンド システムに統合するときに簡単に行えます。
+* サービス プロバイダーは、ログと、関数や保存クエリなどの成果物に対する完全な所有権を持ちます。
+* サービス プロバイダーは、すべての顧客の分析を実行できます。
 
-顧客ごとにワークスペースを作成すると、顧客のデータを個別化し、顧客ごとに使用状況を追跡することができます。
+このアーキテクチャの短所は次のとおりです。
+* このアーキテクチャは、エージェント ベースの VM データにのみ適用可能で、PaaS、SaaS、Azure ファブリック データ ソースには対応しません。
+* 顧客間のデータは、単一のワークスペースにマージされると、分離することが困難になる可能性があります。 これを行う唯一の適切な方法は、コンピューターの完全修飾ドメイン名 (FQDN) を使用するか、または Azure サブスクリプション ID を介するというものです。 
+* すべてのお客様からのすべてのデータは、単一の請求書と、同じ保有期間および構成設定を伴う同じリージョンに格納されます。
+* Microsoft Azure 診断や Azure 監査などの Azure のファブリックおよび PaaS サービスは、ワークスペースがリソースと同じテナントにあることを必要とするため、中央のワークスペースにログを送信することができません。
+* すべての顧客からのすべての VM エージェントは、同じワークスペース ID とキーを使用して中央のワークスペースで認証されます。 他の顧客を中断せずに特定の顧客からのログをブロックする方法はありません。
 
-複数のワークスペースを作成するタイミングと理由の詳細については、[Log Analytics へのアクセスの管理](log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need)に関するセクションを参照してください。
 
-[PowerShell](log-analytics-powershell-workspace-configuration.md)、[Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)、または [REST API](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/) を使用して、顧客のワークスペースの作成と構成を自動化することができます。
+### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>手順 3.ハイブリッド - ログは、顧客のテナントに置かれているワークスペースに格納され、その一部は中央の場所にプルされます。
 
-ワークスペースの構成に Resource Manager テンプレートを利用すると、ワークスペースの作成と構成に使用できる優れた構成を持つことができます。 顧客にワークスペースが作成されると、そのワークスペースは要件を満たすように自動的に構成されます。 要件を更新すると、テンプレートが更新されて既存のワークスペースに再適用されます。 このプロセスにより、既存のワークスペースも新しい基準を満たすことが保証されます。    
+3 番目のアーキテクチャは、2 つのオプションを組み合わせたものです。 これは、ログが各顧客の元でローカルに格納されるという最初の分散アーキテクチャに基づきながら、何らかのメカニズムを使用して、ログの中央のリポジトリを作成します。 ログの一部はレポートと分析のために中央の場所にプルされます。 この一部は、少数のデータ型であることも、日次統計などのアクティビティの概要であることもあります。
 
-複数の Log Analytics ワークスペースを管理する場合は、[アラート](log-analytics-alerts.md)機能を使用して、ワークスペースごとに既存のチケット システムまたはオペレーション コンソールと統合することをお勧めします。 既存のシステムと統合することで、サポート スタッフは引き続きなじみのあるプロセスに従うことができます。 Log Analytics は、指定されたアラートの条件に沿って各ワークスペースを定期的にチェックし、アクションが必要な場合はアラートを生成します。
+Log Analytics に中央の場所を実装するオプションは次の 2 つあります。
 
-データのビューをカスタマイズするには、Azure Portal の[ダッシュボード](../azure-portal/azure-portal-dashboards.md)機能を使用します。  
+1. 中央ワークスペース: サービス プロバイダーは、そのテナント内にワークスペースを作成し、[クエリ API](https://dev.loganalytics.io/) を [データ収集 API](log-analytics-data-collector-api.md) とともに利用してさまざまなワークスペースからこの中央の場所にデータを移動させるスクリプトを使用できます。 スクリプト以外のもう 1 つのオプションは [Azure Logic App](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview) を使用するというものです。
 
-ワークスペース全体のデータを要約するエグゼクティブ レベルのレポートには、Log Analytics と [PowerBI](log-analytics-powerbi.md) 間の統合を利用することができます。 別のレポート システムと統合する必要がある場合は、クエリの実行と検索結果のエクスポートに (PowerShell または [REST](log-analytics-log-search-api.md) で) Search API を使用することができます。
+2. 中央の場所としての Power BI: Power BI は、さまざまなワークスペースが Log Analytics と [Power BI](log-analytics-powerbi.md) との統合を使用してデータをエクスポートするときに、中央の場所として機能します。 
+
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)を使用してワークスペースの作成および構成を自動化する
 * [PowerShell](log-analytics-powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する 
 * [アラート](log-analytics-alerts.md) を使用して既存のシステムと統合する
-* [PowerBI](log-analytics-powerbi.md) を使用して概要レポートを作成する
+* [Power BI](log-analytics-powerbi.md) を使用して概要レポートを作成する
 

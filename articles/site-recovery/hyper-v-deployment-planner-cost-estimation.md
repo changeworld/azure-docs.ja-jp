@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 31461e70e81f0f48a8d67e31b98cfae2dd627a54
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29466828"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917474"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -39,9 +39,9 @@ Azure Site Recovery を使用して適合 VM を保護する場合に、スト�
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)**: Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 
 ## <a name="detailed-cost-analysis"></a>Detailed cost analysis (詳細コスト分析)
-Azure のコンピューティング、ストレージ、ネットワークの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているプランに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、プラン ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
+Azure のコンピューティング、ストレージ、ネットワークの料金は Azure リージョンによって異なります。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の Azure 料金に関するコスト見積もりレポートを生成することができます。 既定では、Azure リージョンに "米国西部 2" が、通貨には米ドル (USD) が使用されます。 その他のリージョンや通貨を使用した場合、次回サブスクリプション ID、オファー ID、ターゲット リージョン、通貨を指定せずにレポートを生成すると、前回使用したターゲット リージョンと通貨に基づく料金がコスト見積もりに使用されます。
 
-このセクションには、レポート生成に使用されたサブスクリプション ID とプラン ID が表示されます。 使用しなかった場合は、何も表示されません。
+このセクションには、レポート生成に使用されたサブスクリプション ID とオファー ID が表示されます。 使用しなかった場合は、何も表示されません。
 
 レポート全体のうち、灰色でマークされたセルは読み取り専用です。 白色のセルは、必要に応じて変更できます。
 
@@ -172,7 +172,7 @@ Site Recovery Deployment Planner は、次のいずれかの通貨でコスト �
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|
 |EUR|ユーロ (€)||GBP|イギリス ポンド (£)||HKD|香港ドル (HK$)|
-|IDR|インドネシア ルピア (Rp)||INR|インド ルピー (₹)||JPY|日本円 (¥)|
+|IDR|インドネシア ルピア (Rp)||INR|インド ルピー ()||JPY|日本円 (¥)|
 |KRW|韓国ウォン (₩)||MXN|メキシコ ペソ (MX$)||MYR|マレーシア リンギ (RM$)|
 |NOK|ノルウェー クローネ (kr)||NZD|ニュージーランド ドル ($)||RUB|ロシア ルーブル (руб)|
 |SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|

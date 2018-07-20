@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838478"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951143"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>データ サイエンス チーム プロジェクトのためのプラットフォームとツール
 
@@ -102,9 +102,9 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 R Services (データベース内) は、新たな洞察を発見できるインテリジェント アプリケーションを開発、デプロイするためのプラットフォームです。 R コミュニティで提供される多数のパッケージを含め、豊富で強力な R 言語を使用して、SQL Server データを使ったモデルの作成や予測の生成を行うことができます。 R Services (データベース内) では R 言語が SQL Server と統合されるため、常にデータの近くで分析が実行されます。これにより、データの移動に関連するコストやセキュリティ リスクが排除されます。
 
-R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) に関する記事をご覧ください。
+R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services) に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://msdn.microsoft.com/library/mt612857.aspx)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://msdn.microsoft.com/library/mt683480.aspx)をご覧ください。
+Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
 
 
 ## <a name="appendix"></a>付録: データ サイエンス プロジェクトを設定するためのツール

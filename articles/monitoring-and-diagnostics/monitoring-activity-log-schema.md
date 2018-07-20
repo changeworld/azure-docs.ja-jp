@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: f6f6c59195fdc79959a1964c1f2770c3b6a68b22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264553"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917229"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。
+**Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./monitoring-diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
 
 ## <a name="administrative"></a>管理
 このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
@@ -560,6 +560,30 @@ ms.locfileid: "35264553"
 | properties.recommendationImpact| 推奨の影響。 指定できる値は "High"、"Medium"、"Low" です。 |
 | properties.recommendationRisk| 推奨のリスク。 指定できる値は "Error"、"Warning"、"None" です。 |
 
+## <a name="mapping-to-diagnostic-logs-schema"></a>診断ログのスキーマへのマッピング
+
+Azure アクティビティ ログをストレージ アカウントまたは Event Hubs 名前空間にストリーミングする場合、データは [Azure 診断ログ スキーマ](./monitoring-diagnostic-logs-schema.md)に従います。 上記のスキーマから診断ログ スキーマへのプロパティのマッピングを次に示します。
+
+| 診断ログ スキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | メモ |
+| --- | --- | --- |
+| time | eventTimestamp |  |
+| ResourceId | ResourceId | subscriptionId、resourceType、resourceGroupName は、すべて resourceId から推測されます。 |
+| operationName | operationName.value |  |
+| カテゴリ | 操作の名前の一部 | 操作の種類の詳細内訳 - "Write"/"Delete"/"Action" |
+| resultType | status.value | |
+| resultSignature | substatus.value | |
+| resultDescription | description  |  |
+| durationMs | 該当なし | 常時 0 |
+| callerIpAddress | httpRequest.clientIpAddress |  |
+| correlationId | correlationId |  |
+| ID | 要求と承認プロパティ |  |
+| Level | Level |  |
+| location | 該当なし | イベントが処理される場所。 *これは、リソースの場所ではなく、イベントが処理される場所です。このプロパティは、今後の更新で削除されます。* |
+| Properties | properties.eventProperties |  |
+| properties.eventCategory | カテゴリ | properties.eventCategory が存在しない場合、カテゴリは "Administrative" |
+| properties.eventName | eventName |  |
+| properties.operationId | operationId |  |
+| properties.eventProperties | プロパティ |  |
 
 
 ## <a name="next-steps"></a>次の手順

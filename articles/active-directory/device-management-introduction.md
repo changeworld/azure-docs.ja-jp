@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850010"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970902"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
 
@@ -75,8 +75,8 @@ Azure AD 参加済みデバイスの目的は、次の操作を単純化する�
 ![Azure AD 登録済みデバイス](./media/device-management-introduction/02.png)
 
 Azure AD Join は、次の方法のいずれかを使用して展開できます： 
- - [Windows Auto pilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
- - [Bulk の展開](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Windows Auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Bulk の展開](https://docs.microsoft.com/intune/windows-bulk-enroll)
  - [セルフ サービス エクスペリエンス](device-management-azuread-joined-devices-frx.md) 
 
 **Azure AD Join**は、クラウド優先 (つまり、主にクラウド サービスを利用して、オンプレミスのインフラストラクチャの使用を削減することを目的とする) またはクラウド専用 (オンプレミスのインフラストラクチャがない)を望む企業のために意図されています。 Azure AD Join をデプロイできる組織の規模または種類に制限はありません。 Azure AD は、ハイブリッド環境 でも動作し、オンプレミス アプリやリソース Join へもアクセスできます。
@@ -96,9 +96,9 @@ Azure AD 参加済みデバイスを実装すると、次のメリットを得�
 - デバイスがオンプレミスのドメイン コントローラーにアクセスできる場合の**オンプレミス リソースへのシームレスなアクセス**。 
 
 
-Azure AD join は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けです。次のようなシナリオでも確実に使用できます： Azure AD および Intune のような MDM を使用して、クラウドベースのインフラストラクチャに移行したい場合です。
+Azure AD への参加は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けですが、次のようなシナリオで確実に使用できます。
 
-- You want to transition to cloud-based infrastructure using Azure AD and MDM like Intune.
+- Azure AD および Intune などの MDM を使用してクラウド ベースのインフラストラクチャに移行しようと考えています。
 
 - たとえばタブレットや電話などのモバイル デバイスを管理する必要があるが、オンプレミスのドメインへの参加を使用できない。
 
