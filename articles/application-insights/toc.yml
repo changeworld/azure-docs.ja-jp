@@ -164,6 +164,8 @@
               href: app-insights-proactive-application-security-detection-pack.md
             - name: Azure クラウド サービス
               href: app-insights-proactive-cloud-services.md
+            - name: スマート検出規則の管理
+              href: app-insights-proactive-arm-config.md
         - name: リソースの作成
           href: app-insights-create-new-resource.md
     - name: 分析
@@ -313,7 +315,7 @@
     - name: データ モデル
       href: application-insights-data-model.md
       items:
-        - name: 要求
+        - name: Request
           href: application-insights-data-model-request-telemetry.md
         - name: 依存関係
           href: application-insights-data-model-dependency-telemetry.md
@@ -353,7 +355,7 @@
           href: app-insights-release-notes-vsix.md
     - name: FAQ
       href: app-insights-troubleshoot-faq.md
-    - name: '[ヘルプ]'
+    - name: '[Help]'
       items:
         - name: MSDN フォーラム
           href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights'

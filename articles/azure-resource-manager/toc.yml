@@ -1,0 +1,208 @@
+- name: Azure Resource Manager のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Azure Resource Manager とは
+      href: resource-group-overview.md
+    - name: Resource Manager デプロイとクラシック デプロイ
+      href: resource-manager-deployment-model.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: テンプレートの作成 - ポータル
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: テンプレートの作成 - VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: テンプレートの作成 - Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: 概念
+  items:
+    - name: リソース プロバイダーと種類
+      href: resource-manager-supported-services.md
+    - name: 管理グループ
+      href: management-groups-overview.md
+    - name: サブスクリプションのガバナンス
+      href: /azure/architecture/cloud-adoption-guide/subscription-governance
+      maintainContext: true
+    - name: クラウドの一貫性を実現するテンプレート
+      href: templates-cloud-consistency.md
+- name: 方法
+  items:
+    - name: テンプレートの作成
+      items:
+        - name: テンプレート セクション
+          href: resource-group-authoring-templates.md
+          items:
+            - name: parameters
+              href: resource-manager-templates-parameters.md
+            - name: variables
+              href: resource-manager-templates-variables.md
+            - name: Functions
+              href: 'resource-group-authoring-templates.md#functions'
+            - name: リソース
+              href: resource-manager-templates-resources.md
+            - name: 出力
+              href: resource-manager-templates-outputs.md
+        - name: リンクされたテンプレートと入れ子になったテンプレート
+          href: resource-group-linked-templates.md
+        - name: リソース間の依存関係を定義する
+          href: resource-group-define-dependencies.md
+        - name: 複数のインスタンスの作成
+          href: resource-group-create-multiple.md
+        - name: リソースの更新
+          href: /azure/architecture/building-blocks/extending-templates/update-resource
+    - name: デプロイ
+      items:
+        - name: Azure PowerShell
+          items:
+            - name: テンプレートのデプロイ
+              href: resource-group-template-deploy.md
+            - name: SAS トークンを使用してプライベートのテンプレートをデプロイする
+              href: resource-manager-powershell-sas-token.md
+            - name: テンプレートをエクスポートして再デプロイする
+              href: resource-manager-export-template-powershell.md
+        - name: Azure CLI
+          items:
+            - name: テンプレートのデプロイ
+              href: resource-group-template-deploy-cli.md
+            - name: SAS トークンを使用してプライベートのテンプレートをデプロイする
+              href: resource-manager-cli-sas-token.md
+            - name: テンプレートをエクスポートして再デプロイする
+              href: resource-manager-export-template-cli.md
+        - name: Azure ポータル
+          items:
+            - name: リソースのデプロイ
+              href: resource-group-template-deploy-portal.md
+            - name: テンプレートをエクスポートする
+              href: resource-manager-export-template.md
+        - name: REST API
+          href: resource-group-template-deploy-rest.md
+        - name: 複数のリソース グループまたはサブスクリプション
+          href: resource-manager-cross-resource-group-deployment.md
+        - name: Visual Studio Team Services を使用した継続的インテグレーション
+          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
+          maintainContext: true
+        - name: デプロイメント時にセキュリティで保護された値を渡す
+          href: resource-manager-keyvault-parameter.md
+    - name: '[管理]'
+      items:
+        - name: Azure PowerShell
+          href: powershell-azure-resource-manager.md
+        - name: Azure CLI
+          href: xplat-cli-azure-resource-manager.md
+        - name: Azure ポータル
+          href: resource-group-portal.md
+        - name: タグを使用してリソースを整理する
+          href: resource-group-using-tags.md
+        - name: リソースを新しいグループまたはサブスクリプションに移動する
+          href: resource-group-move-resources.md
+        - name: EA サブスクリプションを作成する
+          href: programmatically-create-subscription.md
+        - name: EA サブスクリプションを作成するためのアクセスを許可する
+          href: grant-access-to-create-subscription.md
+        - name: 管理グループの作成
+          href: management-groups-create.md
+        - name: 管理グループを管理する
+          href: management-groups-manage.md
+    - name: アクセスを制御する
+      items:
+        - name: サービス プリンシパルの作成
+          items:
+            - name: Azure PowerShell
+              href: resource-group-authenticate-service-principal.md
+            - name: Azure CLI
+              href: /cli/azure/create-an-azure-service-principal-azure-cli
+              maintainContext: true
+            - name: Azure ポータル
+              href: resource-group-create-service-principal-portal.md
+        - name: サブスクリプションにアクセスするための認証 API
+          href: resource-manager-api-authentication.md
+        - name: リソースのロック
+          href: resource-group-lock-resources.md
+    - name: Audit
+      items:
+        - name: アクティビティ ログを表示する
+          href: resource-group-audit.md
+        - name: デプロイ操作を表示する
+          href: resource-manager-deployment-operations.md
+    - name: トラブルシューティング
+      items:
+        - name: デプロイ エラーのトラブルシューティング
+          href: resource-manager-common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: resource-manager-storage-account-name-errors.md
+        - name: InvalidTemplate
+          href: resource-manager-invalid-template-errors.md
+        - name: Linux デプロイの問題
+          href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: resource-manager-register-provider-errors.md
+        - name: NotFound
+          href: resource-manager-not-found-errors.md
+        - name: ParentResourceNotFound
+          href: resource-manager-parent-resource-errors.md
+        - name: Linux のプロビジョニングと割り当ての問題
+          href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Windows のプロビジョニングと割り当ての問題
+          href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: resource-manager-policy-requestdisallowedbypolicy-error.md
+        - name: ReservedResourceName
+          href: resource-manager-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: resource-manager-quota-errors.md
+        - name: SkuNotAvailable
+          href: resource-manager-sku-not-available-errors.md
+        - name: Windows デプロイの問題
+          href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: リファレンス
+  items:
+    - name: テンプレート リファレンス
+      href: subtoc/toc.yml
+    - name: テンプレート関数
+      href: resource-group-template-functions.md
+      items:
+        - name: 配列とオブジェクトの関数
+          href: resource-group-template-functions-array.md
+        - name: 比較関数
+          href: resource-group-template-functions-comparison.md
+        - name: デプロイ関数
+          href: resource-group-template-functions-deployment.md
+        - name: 論理関数
+          href: resource-group-template-functions-logical.md
+        - name: 数値関数
+          href: resource-group-template-functions-numeric.md
+        - name: リソース関数
+          href: resource-group-template-functions-resource.md
+        - name: 文字列関数
+          href: resource-group-template-functions-string.md
+    - name: PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html'
+    - name: REST ()
+      href: /rest/api/resources/
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: 個人データを管理する
+      href: resource-manager-personal-data.md
+    - name: スロットル リクエスト
+      href: resource-manager-request-limits.md
+    - name: 非同期操作の追跡
+      href: resource-manager-async-operations.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

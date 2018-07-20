@@ -49,6 +49,8 @@
           href: aad-integration.md
         - name: Virtual Kubelet の使用
           href: virtual-kubelet.md
+        - name: クラスター オートスケーラーの使用
+          href: autoscaler.md
         - name: Terraform を使用した AKS のデプロイ
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

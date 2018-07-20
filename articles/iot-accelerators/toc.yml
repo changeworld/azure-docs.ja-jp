@@ -8,13 +8,13 @@
       href: about-iot-accelerators.md
 - name: クイック スタート
   items:
-    - name: リモート監視ソリューションのデプロイ
+    - name: リモート監視ソリューションを試す
       href: quickstart-remote-monitoring-deploy.md
-    - name: コネクテッド ファクトリ ソリューションのデプロイ
+    - name: コネクテッド ファクトリ ソリューションを試す
       href: quickstart-connected-factory-deploy.md
-    - name: 予測メンテナンス ソリューションのデプロイ
+    - name: 予測メンテナンス ソリューションを試す
       href: quickstart-predictive-maintenance-deploy.md
-    - name: デバイス シミュレーション ソリューションのデプロイ
+    - name: デバイス シミュレーション ソリューションを試す
       href: quickstart-device-simulation-deploy.md
 - name: チュートリアル
   items:
@@ -137,10 +137,6 @@
               href: ../iot-suite/iot-suite-v1-custom-rule.md
             - name: リモート監視ソリューションにおけるデバイス情報
               href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: 予測メンテナンス
-      items:
-        - name: ソリューション アクセラレータのデプロイ
-          href: iot-accelerators-predictive-overview.md
     - name: 接続済みファクトリ
       items:
         - name: ダッシュボードの使用
