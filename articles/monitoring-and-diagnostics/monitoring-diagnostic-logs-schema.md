@@ -26,20 +26,20 @@ ms.locfileid: "37921231"
 | Name | 必須/省略可能 | 説明 |
 |---|---|---|
 | time | 必須 | イベントのタイムスタンプ (UTC)。 |
-| ResourceId | 必須 | イベントを出力したリソースのリソース ID。 |
+| resourceId | 必須 | イベントを出力したリソースのリソース ID。 |
 | operationName | 必須 | このイベントで表される操作の名前。 イベントが RBAC 操作を表す場合、これは RBAC 操作の名前になります (例:  Microsoft.Storage/storageAccounts/blobServices/blobs/Read)。 実際の文書化されている Resource Manager 操作でない場合でも、通常は、Resource Manager 操作の形式でモデル化されます (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`)。 |
 | operationVersion | 省略可能 | operationName が API を使用して実行された場合は、操作に関連付けられている api-version (例:  http://myservice.windowsazure.net/object?api-version=2016-06-01))。 この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
-| カテゴリ | 必須 | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 一般的なログ カテゴリは、"Audit"、"Operational"、"Execution"、"Request" です。 |
+| category | 必須 | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 一般的なログ カテゴリは、"Audit"、"Operational"、"Execution"、"Request" です。 |
 | resultType | 省略可能 | イベントの状態。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | resultSignature | 省略可能 | イベントの副状態。 この操作が REST API 呼び出しに対応している場合、これは、対応する REST 呼び出しの HTTP 状態コードです。 |
 | resultDescription | 省略可能 | この操作を説明する静的テキスト (例:  "Get storage file")。 |
 | durationMs | 省略可能 | 操作時間 (ミリ秒)。 |
 | callerIpAddress | 省略可能 | 操作が、一般的に利用できる IP アドレスを持つエンティティからの API 呼び出しに対応している場合は、呼び出し元 IP アドレス。 |
 | correlationId | 省略可能 | 関連するイベントのセットをグループ化するために使用される GUID。 通常、2 つのイベントの operationName は同じであるものの、状態が異なる (たとえば、 "Started" と "Succeeded") 場合、同じ関連付け ID が共有されます。 これは、イベント間の他のリレーションシップを表す場合もあります。 |
-| ID | 省略可能 | 操作を実行したユーザーまたはアプリケーションの ID を説明する JSON BLOB。 通常、これにはアクティブ ディレクトリからの認証および要求 / JWT トークンが含まれます。 |
+| identity | 省略可能 | 操作を実行したユーザーまたはアプリケーションの ID を説明する JSON BLOB。 通常、これにはアクティブ ディレクトリからの認証および要求 / JWT トークンが含まれます。 |
 | Level | 省略可能 | イベントの重大度レベル。 Informational、Warning、Error、Critical のいずれかである必要があります。 |
 | location | 省略可能 | イベントを出力するリソースの領域 (例:  "East US"、"France South")。 |
-| プロパティ | 省略可能 | この特定のイベント カテゴリに関連する拡張プロパティ。 すべてのカスタム/一意のプロパティは、このスキーマの "Part B" 内に配置する必要があります。 |
+| properties | 省略可能 | この特定のイベント カテゴリに関連する拡張プロパティ。 すべてのカスタム/一意のプロパティは、このスキーマの "Part B" 内に配置する必要があります。 |
 
 ## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>リソース診断ログのサービス固有のスキーマ
 リソース診断ログのスキーマは、リソースとログ カテゴリによって異なります。 この一覧は、診断ログを使用できるようにするすべてのサービスと、サービスおよびカテゴリ固有のスキーマ (使用可能な場合) へのリンクを示しています。
@@ -78,8 +78,8 @@ ms.locfileid: "37921231"
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|Category|カテゴリの表示名|
 |---|---|---|
-|Microsoft.AnalysisServices/servers|エンジン|エンジン|
-|Microsoft.AnalysisServices/servers|サービス|サービス|
+|Microsoft.AnalysisServices/servers|Engine|エンジン|
+|Microsoft.AnalysisServices/servers|Service|サービス|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
 |Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
 |Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
@@ -91,17 +91,17 @@ ms.locfileid: "37921231"
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
 |Microsoft.DataFactory/factories|TriggerRuns|トリガー実行ログ|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
-|Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
+|Microsoft.DataLakeAnalytics/accounts|Requests|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL のバックアップ イベント|
-|Microsoft.Devices/IotHubs|接続|接続|
+|Microsoft.Devices/IotHubs|Connections|接続|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
 |Microsoft.Devices/IotHubs|DeviceIdentityOperations|デバイス ID の操作|
 |Microsoft.Devices/IotHubs|FileUploadOperations|ファイルのアップロード操作|
-|Microsoft.Devices/IotHubs|ルート|ルート|
+|Microsoft.Devices/IotHubs|Routes|ルート|
 |Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
 |Microsoft.Devices/IotHubs|C2DTwinOperations|C2D ツイン操作|
 |Microsoft.Devices/IotHubs|TwinQueries|ツイン クエリ|
@@ -135,7 +135,7 @@ ms.locfileid: "37921231"
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
-|Microsoft.PowerBIDedicated/capacities|エンジン|エンジン|
+|Microsoft.PowerBIDedicated/capacities|Engine|エンジン|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
@@ -150,13 +150,13 @@ ms.locfileid: "37921231"
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
-|Microsoft.Sql/servers/databases|タイムアウト|タイムアウト|
-|Microsoft.Sql/servers/databases|ブロック|ブロック|
+|Microsoft.Sql/servers/databases|Timeouts|タイムアウト|
+|Microsoft.Sql/servers/databases|Blocks|ブロック|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|Microsoft.StreamAnalytics/streamingjobs|実行|実行|
-|Microsoft.StreamAnalytics/streamingjobs|作成|作成|
+|Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
+|Microsoft.StreamAnalytics/streamingjobs|Authoring|作成|
 
 ## <a name="next-steps"></a>次の手順
 
