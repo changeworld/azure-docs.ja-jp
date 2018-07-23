@@ -19,6 +19,8 @@
       href: quickstart-nodejs.md
     - name: Java アプリの作成
       href: quickstart-java.md
+    - name: Python アプリの作成
+      href: quickstart-python.md
     - name: Ruby アプリの作成
       href: quickstart-ruby.md
     - name: Docker/Go アプリの作成

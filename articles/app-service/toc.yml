@@ -23,8 +23,6 @@
       href: app-service-web-get-started-php.md
     - name: Java アプリの作成
       href: app-service-web-get-started-java.md
-    - name: Python アプリの作成
-      href: app-service-web-get-started-python.md
     - name: 静的な HTML サイトの作成
       href: app-service-web-get-started-html.md
 - name: チュートリアル
@@ -41,8 +39,6 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java と MySQL
           href: app-service-web-tutorial-java-mysql.md
-        - name: Python と PostgreSQL
-          href: app-service-web-tutorial-python-postgresql.md
     - name: SQL DB への安全なアクセス
       href: app-service-web-tutorial-connect-msi.md
     - name: RESTful API のホスト

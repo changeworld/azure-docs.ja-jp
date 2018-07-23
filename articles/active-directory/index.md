@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: carolz
-ms.openlocfilehash: 04b2853729296d158fee77d96a807972bd4f92e5
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: b39c3c47325b7bca4e9bc1e68024fb9c04fabea3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946042"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171842"
 ---
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
                         <p>
                         <a href="/azure/active-directory/active-directory-whatis">Azure AD とは</a><br/>
                         <a href="/azure/active-directory/understand-azure-identity-solutions">ID ソリューション</a><br/>
-                        <a href="/azure/active-directory/get-started-azure-ad">作業開始</a><br/>
+                        <a href="/azure/active-directory/get-started-azure-ad">はじめに</a><br/>
                         <a href="/azure/active-directory/whats-new">新機能</a>
                         </p>
                     </div>
@@ -79,10 +79,10 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>認証</h3>
+                        <h3>Authentication</h3>
                         <p>
-                        <a href="/azure/active-directory/active-directory-passwords-overview">パスワード</a><br/>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements">多要素認証</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-sspr-howitworks">パスワード</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">多要素認証</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
                         <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">証明書ベースの認証</a>
                         </p>
@@ -149,6 +149,7 @@ Azure Active Directory (Azure AD) は、マルチテナントに対応したク�
                         <p>
                         <a href="/azure/active-directory/develop/active-directory-authentication-scenarios">認証の基本</a><br/>
                         <a href="/azure/active-directory/develop/active-directory-integrating-applications">アプリの統合</a><br/>
+  
                         <a href="/azure/active-directory/managed-service-identity/overview">管理対象 ID</a><br/>
                         <a href="/azure/active-directory/develop/active-directory-code-samples">コード サンプル</a>
                         </p>

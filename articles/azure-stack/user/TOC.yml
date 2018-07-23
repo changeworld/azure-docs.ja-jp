@@ -110,7 +110,8 @@
         - name: 開発環境をセットアップする
           items:
             - name: Azure Stack PowerShell のインストール
-              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
+              href: ../azure-stack-powershell-install.md
+              maintainContext: true
             - name: Azure Stack ツールのダウンロード
               href: azure-stack-powershell-download.md
             - name: PowerShell の構成 - ユーザー

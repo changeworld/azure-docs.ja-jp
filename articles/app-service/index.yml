@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 1a4c6399f0c67df70781142db7c09a4d04d37991
-  ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+  ms.openlocfilehash: fd9ef52162933ae054263f42ca7498e24b1d863b
+  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/28/2018
-  ms.locfileid: "37080913"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39172655"
 abstract:
   description: Azure Web Apps を使用すると、インフラストラクチャを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
   aside:
@@ -55,10 +55,6 @@ sections:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
       text: Java
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
-      text: Python
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-python
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg
       text: HTML
@@ -145,7 +141,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
