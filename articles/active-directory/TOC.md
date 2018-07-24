@@ -82,7 +82,7 @@
 
 ## [グループとメンバーの管理](fundamentals/active-directory-manage-groups.md)
 ### グループの管理
-#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
+#### [Azure ポータル](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell for Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [グループ メンバーを管理する](fundamentals/active-directory-groups-members-azure-portal.md)
@@ -103,7 +103,7 @@
 ### [削除された Office 365 グループを復元する](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [グループ設定の管理](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### 高度なルールの作成
-#### [Azure Portal](users-groups-roles/groups-dynamic-membership.md)
+#### [Azure ポータル](users-groups-roles/groups-dynamic-membership.md)
 ### [セルフサービス グループのセットアップ](users-groups-roles/groups-self-service-management.md)
 ### [トラブルシューティング](users-groups-roles/groups-troubleshooting.md)
 
@@ -140,33 +140,13 @@
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [証明書の使用](active-directory-reporting-api-with-certificates.md)
 
-## パスワードの管理
-### [パスワードの概要](authentication/active-directory-passwords-overview.md)
+## パスワードの管理 (active-directory/authentication/concept-sspr-howitworks.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](user-help/active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](user-help/active-directory-passwords-reset-register.md)
-### [SSPR のしくみ](authentication/concept-sspr-howitworks.md)
-### [SSPR デプロイ ガイド](authentication/howto-sspr-deployment.md)
-### [SSPR と Windows 10](authentication/tutorial-sspr-windows.md)
-### [SSPR のポリシー](authentication/concept-sspr-policy.md)
-### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
-### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
-### [SSPR のレポート](authentication/howto-sspr-reporting.md)
-### [スマート ロックアウト](authentication/howto-password-smart-lockout.md)
-### [脆弱なパスワードを排除する](authentication/concept-password-ban-bad.md)
-### [禁止パスワード リストを構成する](authentication/howto-password-ban-bad.md)
-### [オンプレミスの統合](authentication/concept-password-ban-bad-on-premises.md)
-### [Azure AD のパスワード保護をデプロイする](authentication/howto-password-ban-bad-on-premises.md)
-### [Azure AD のパスワード保護を構成する](authentication/howto-password-ban-bad-on-premises-operations.md)
-### [Azure AD のパスワード保護を監視する](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT 管理者: パスワードのリセット
-#### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [SSPR のライセンス](authentication/concept-sspr-licensing.md)
-### [パスワード ライトバック](authentication/howto-sspr-writeback.md)
-### [トラブルシューティング](authentication/active-directory-passwords-troubleshoot.md)
-### [FAQ](authentication/active-directory-passwords-faq.md)
-
+#### [Azure ポータル](fundamentals/active-directory-users-reset-password-azure-portal.md)
 
 ## デバイスを管理する
 ### [はじめに](device-management-introduction.md)
@@ -404,7 +384,7 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
+#### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### クイック スタート
 ##### [クラウド アプリごとの MFA を構成する](active-directory-conditional-access-app-based-mfa.md)
 ##### [使用条件への同意を要求する](active-directory-conditional-access-tou.md)
@@ -434,7 +414,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
+#### [はじめに](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

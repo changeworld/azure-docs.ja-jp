@@ -15,6 +15,13 @@
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: テンプレートの作成 - Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 暗号化されたストレージ アカウントの作成
+      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+    - name: 複数のリソースの作成
+      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
 - name: 概念
   items:
     - name: リソース プロバイダーと種類

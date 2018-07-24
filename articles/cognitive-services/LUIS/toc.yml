@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: パターンの利用
           href: luis-tutorial-pattern.md
+        - name: ロールの利用
+          href: luis-tutorial-pattern-roles.md
+        - name: Pattern.any エンティティの利用
+          href: luis-tutorial-pattern-any.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -194,7 +198,7 @@
     - name: テスト
       items:
         - name: 対話型テスト
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: バッチ テスト
           href: luis-how-to-batch-test.md
     - name: アプリの発行
@@ -226,7 +230,7 @@
             - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
               href: luis-traffic-manager.md
     - name: V2 API への移行
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: プログラムを使ったリージョン検索
       items:
         - name: 'C# の使用'

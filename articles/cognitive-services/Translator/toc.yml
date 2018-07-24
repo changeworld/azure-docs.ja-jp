@@ -105,6 +105,10 @@
           href: quickstart-ruby-languages.md
         - name: テキスト内の文の長さを取得する
           href: quickstart-ruby-sentences.md
+- name: チュートリアル
+  items:
+    - name: Translator Text の WPF アプリの作成
+      href: tutorial-wpf-translation-csharp.md
 - name: 概念
   items:
     - name: サポートされている言語
@@ -125,20 +129,18 @@
       href: word-alignment.md
     - name: 動的ディクショナリ機能を使用する
       href: dynamic-dictionary.md
-    - name: WPF を使ったテキスト翻訳アプリを作成する
-      href: tutorial-wpf-translation-csharp.md
 - name: リファレンス
   items:
     - name: v3 Translator Text API のリファレンス
       href: reference/v3-0-reference.md
       items:
-        - name: 言語
+        - name: Languages
           href: reference/v3-0-languages.md
-        - name: 翻訳
+        - name: Translate
           href: reference/v3-0-translate.md
-        - name: 音訳
+        - name: Transliterate
           href: reference/v3-0-transliterate.md
-        - name: 検出
+        - name: Detect
           href: reference/v3-0-detect.md
         - name: BreakSentence
           href: reference/v3-0-break-sentence.md

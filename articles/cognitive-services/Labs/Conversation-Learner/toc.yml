@@ -48,6 +48,8 @@
       href: tutorials/15-branching-and-undo.md
     - name: バージョン管理とタグ付け
       href: tutorials/16-versioning-and-tagging.md
+    - name: ハイブリッド ボット
+      href: tutorials/17-hybrid-bots.md
     - name: デモ - パスワードのリセット
       href: tutorials/demo-password-reset.md
     - name: デモ - ピザの注文
