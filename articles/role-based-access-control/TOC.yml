@@ -41,6 +41,8 @@
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
+        - name: テンプレート
+          href: role-assignments-template.md
     - name: カスタム ロール
       href: custom-roles.md
       items:

@@ -157,8 +157,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: ブログ
       href: 'http://blogs.msdn.com/b/streamanalytics/'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: フィードバック フォーラム
       href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: フォーラム
@@ -172,7 +170,7 @@
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics'
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: お客様導入事例
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
     - name: ホワイトペーパー - リアルタイム イベント処理
