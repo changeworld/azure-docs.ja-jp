@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 35d15811f31e64d0c27a23da802a16ce2e4570aa
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972419"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113985"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -107,7 +107,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ニューポート、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、デンバー、ダブリン、香港特別行政区、ラスベガス、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、シドニー、トロント、ワシントン DC |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、デンバー、ダブリン、香港特別行政区、ラスベガス、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、シドニー、トロント、ワシントン DC |
 | **MTN** |サポートされています |サポートされています |ロンドン |
 | **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |サポートされています |サポートされています |ダラス、マイアミ、サンパウロ |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |サポートされています |サポートされています |ニューポート (ウェールズ) |

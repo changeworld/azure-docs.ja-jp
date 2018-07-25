@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 07/11/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e78528783d57d31e1eb9bcda82fa9acccf69dde
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127961"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005251"
 ---
 # <a name="what-is-azure-log-analytics"></a>Azure Log Analytics とは
 Log Analytics は、Azure の管理において中心的役割を果たします。たとえば、さまざまなソースからテレメトリなどのデータを収集します。また、アプリケーションやリソースの運用に欠かせない分析情報を得る手段としてクエリ言語や分析エンジンを備えていることも、そうした役割の 1 つです。  Log Analytics のデータは、ログの検索やビューを通じて直接、対話操作することができるほか、Log Analytics にデータを格納する他の Azure サービス (Application Insights、Azure Security Center など) の分析ツールを使用することもできます。  
@@ -41,12 +41,12 @@ Log Analytics はさまざまなソースからデータを収集します。  �
 
 Log Analytics へのデータ収集には、次のような方法があります。
 
-- Azure Monitor で Azure リソースから収集するメトリックとログをコピーするように構成します。
-- [Windows](log-analytics-windows-agent.md) 仮想マシンと [Linux](log-analytics-linux-agents.md) 仮想マシン上のエージェントが、構成された[データ ソース](log-analytics-data-sources.md)に応じて、ゲスト オペレーティング システムやアプリケーションから Log Analytics にテレメトリを送信します。  
-- [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)を Log Analytics に接続して、そのエージェントからデータを収集します。
+- Azure Monitor で Azure リソースから収集する[メトリックとログ](../monitoring/monitoring-data-collection.md#types-of-monitoring-data)をコピーするように構成します。
+- [Azure Storage](log-analytics-azure-storage-iis-table.md) に書き込まれたテレメトリを収集します。
+- [Windows](log-analytics-windows-agent.md) 仮想マシンと [Linux](log-analytics-linux-agents.md) 仮想マシン上のエージェントが、構成された[データ ソース](log-analytics-data-sources.md)に応じて、ゲスト オペレーティング システムやアプリケーションから Log Analytics にテレメトリを送信します。 エージェントは直接接続できるほか、[OMS ゲートウェイ](log-analytics-oms-gateway.md)経由で接続したり (ファイアウォール アクセスがない場合)、[System Center Operations Manager の管理グループ](log-analytics-om-agents.md)経由で接続したりすることもできます。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) や [Azure Security Center](https://docs.microsoft.com/azure/security-center/) などの Azure サービスは、何も構成されていなくても、そのデータを直接 Log Analytics に格納します。
 - PowerShell コマンド ラインまたは [Azure Automation Runbook](../automation/automation-runbook-types.md) から Log Analytics のコマンドレットを使用してデータを書き込みます。
-- カスタムの要件がある場合は、[HTTP データ コレクター API](log-analytics-data-collector-api.md) を使用して REST API クライアントから Log Analytics にデータを書き込むことができます。
+- カスタムの要件がある場合は、[HTTP データ コレクター API](log-analytics-data-collector-api.md) を使用して REST API クライアントから Log Analytics にデータを書き込んだり、[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) を使用してカスタム ワークフローからデータを書き込んだりすることもできます。
 
 
 ![Log Analytics コンポーネント](media/log-analytics-overview/collecting-data.png)

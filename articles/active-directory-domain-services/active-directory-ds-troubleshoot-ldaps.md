@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: dbe2715d76f18daf87b65871c26d73205ec2f7fd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8304ffa7c0cd225f258064d3c1a36a754c684241
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218845"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950718"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 
@@ -58,7 +58,7 @@ Secure LDAP を有効にするときは、特定の IP アドレスからの受�
 
 **アラート メッセージ:**
 
-"*管理対象ドメインのセキュリティで保護された LDAP 証明は XX に有効期限が切れます。*"
+*マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。*
 
 **解決策:**
 

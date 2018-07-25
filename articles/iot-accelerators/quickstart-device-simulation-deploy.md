@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967017"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005035"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>クイック スタート: クラウドベースのデバイス シミュレーション ソリューションをデプロイして実行する
 
 このクイック スタートでは、IoT ソリューションのテストに使用する Azure IoT デバイス シミュレーション ソリューション アクセラレータをデプロイする方法を示します。 ソリューション アクセラレータをデプロイした後、**[シミュレーション]** ページを使用し、シミュレーションを作成して実行します。
-
-## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、アクティブな Azure サブスクリプションが必要です。
 
@@ -88,7 +86,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 さらに調べる場合は、デバイス シミュレーション ソリューション アクセラレータをデプロイしたままにします。
 
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページから削除します。
+ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、**[ソリューションの削除]** をクリックして削除してください。
 
 ![ソリューションを削除する](media/quickstart-device-simulation-deploy/deletesolution.png)
 
@@ -96,7 +94,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 このクイック スタートでは、デバイス シミュレーション ソリューション アクセラレータをデプロイし、IoT デバイスのシミュレーションを実行しました。
 
-シミュレーションで既存の IoT ハブを使用する方法については、ハウツー ガイドを参照してください。
+シミュレーションで既存の IoT Hub を使用する方法については、次のハウツー ガイドを参照してください。
 
 > [!div class="nextstepaction"]
 > [デバイス シミュレーション ソリューション アクセラレータで既存の IoT ハブを使用する](iot-accelerators-device-simulation-choose-hub.md)

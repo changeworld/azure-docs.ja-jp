@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447253"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048918"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。
 * [Node.js](https://nodejs.org/en/download/)
-* Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
+* Facebook アカウント。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -63,21 +63,17 @@ Web ブラウザーでアプリの URL (`http://localhost:6420`) にアクセス
 
 **[Login]\(ログイン\)** ボタンをクリックすると、Azure AD B2C のポリシーに基づく Azure AD B2C の**サインアップまたはサインイン** ワークフローが開始されます。 
 
-このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
+このサンプルは、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ オプションをサポートすることを目的としています。 このクイック スタートでは、Facebook アカウントを使用します。 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>ソーシャル ID プロバイダーを使用してサインアップする
 
 このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 
 
-1. ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
-
-    ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. ソーシャル ID プロバイダーを使用してサインアップするには、Facebook ID プロバイダーのボタンをクリックします。
 
     ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
-2. ID プロバイダーのサインイン プロセスを完了します。 たとえば、Twitter を選択した場合、Twitter の資格情報を入力し、**[サインイン]** をクリックします。
-
-    ![ソーシャル アカウントを使用して認証と承認を行う](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. 資格情報を入力して、ID プロバイダーのサインイン プロセスを完了します。
 
     新しいアカウントのプロファイルの詳細には、ソーシャル アカウントからの情報があらかじめ設定されています。 
 

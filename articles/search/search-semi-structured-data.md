@@ -1,21 +1,21 @@
 ---
-title: Azure クラウド ストレージで半構造化データを検索する
-description: Azure Search を使用した半構造化 BLOB データの検索。
-author: roygara
+title: Azure Search で Azure クラウド ストレージから半構造化データを検索するチュートリアル | Microsoft Docs
+description: このチュートリアルでは、半構造化された Azure BLOB データを Azure Search を使用して検索する方法について説明します。
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795043"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005079"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>パート 2: クラウド ストレージで半構造化データを検索する
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>チュートリアル: Azure クラウド ストレージで半構造化データを検索する
 
 2 部構成のチュートリアル シリーズでは、Azure Search を使用して半構造化データと非構造化データを検索する方法について説明します。 [パート 1](../storage/blobs/storage-unstructured-search.md) では非構造化データの検索について説明しましたが、ストレージ アカウントの作成など、このチュートリアルを行うための重要な前提条件も含まれています。 
 
@@ -28,14 +28,16 @@ ms.locfileid: "31795043"
 > * コンテナーをクロールし、検索可能コンテンツを抽出するために、Azure Search のインデックスとインデクサーを作成および設定する
 > * 作成したインデックスを検索する
 
-> [!NOTE]
-> このチュートリアルは、現在 Azure Search のプレビュー機能である JSON 配列サポートに依存します。 ポータルでは使用できません。 そのため、この機能を提供するプレビュー版の REST API、および REST クライアント ツールを使用して、API を呼び出します。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [前のチュートリアル](../storage/blobs/storage-unstructured-search.md)を完了していること。これにより、前のチュートリアルで作成されたストレージ アカウントと検索サービスが提供されます。
 
 * REST クライアントがインストールされており、HTTP 要求の作成方法を理解していること。 このチュートリアルでは、[Postman](https://www.getpostman.com/) を使用しています。 別の REST クライアントを使い慣れている場合は、そのクライアントを使用してもかまいません。
+
+> [!NOTE]
+> このチュートリアルは、現在 Azure Search のプレビュー機能である JSON 配列サポートに依存します。 ポータルでは使用できません。 そのため、この機能を提供するプレビュー版の REST API、および REST クライアント ツールを使用して、API を呼び出します。
 
 ## <a name="set-up-postman"></a>Postman の設定
 
@@ -55,9 +57,9 @@ Postman を開始し、HTTP 要求を設定します。 このツールに慣れ
 
 このサンプルに含まれているのは JSON ファイルであり、元は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) から取得したテキスト ファイルです。 便宜上、それらのテキスト ファイルを JSON に変換しました。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](http://portal.azure.com) にログインします。
+[Azure ポータル](http://portal.azure.com)にサインインします。
 
 ## <a name="upload-the-sample-data"></a>サンプル データのアップロード
 
@@ -277,15 +279,13 @@ Azure Portal を開き、検索サービスに戻ります。 これは前のチ
 
 `$filter` パラメーターは、インデックスの作成時にフィルター可能としてマークされたメタデータでのみ使用できます。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Search サービスの [概要] ページに表示されます。
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、次の方法など、Azure Search を使用して半構造化データを検索することについて説明しました。
-
-> [!div class="checklist"]
-> * REST API を使用した Azure Search Service の作成
-> * Azure Search Service を使用したコンテナーの検索
-
-検索の詳細については、このリンクに従ってください。
+インデクサー パイプラインには、AI を活用したアルゴリズムをアタッチすることができます。 引き続き次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md)

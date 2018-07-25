@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 07/16/2018
 ms.author: sachinp
-ms.openlocfilehash: 264397fee8ea37321841a4130cb5977219861053
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 172ee6c2200334a57ebaa073d7ff530d19b2f07d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345425"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090532"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "37345425"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
   >[!NOTE]
-  >このチュートリアルでは、DTU ベースの購入モデルを使用しますが、[vCore ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) も利用できます。
+  >このチュートリアルでは、DTU ベースの購入モデルを使用しますが、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)も利用できます。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 

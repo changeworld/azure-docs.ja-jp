@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068600"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115322"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -39,9 +39,9 @@ Key Vault を使用すると、コンテナーと呼ばれるセキュリティ�
 
 アプリケーションのキーまたはシークレットが Azure Key Vault に格納された後、アプリケーションは、シークレットの特定のバージョンを取得できる URI を使用して、必要な情報に安全にアクセスできます。 これは、機密情報のいずれかを保護するカスタム コードを記述する必要なしに発生します。
 
-### <a name="securely-store-secrets"></a>シークレットの安全な格納
+### <a name="securely-store-secrets-and-keys"></a>シークレットとキーを安全に保存
 
-キーは、業界標準のアルゴリズム、キーの長さ、およびハードウェア セキュリティ モジュール (HSM) を使用して、Azure によってセキュリティで保護されています。 使用される HSM では、Federal Information Processing Standards (FIPS) 140-2 Level 2 が検証されています。
+シークレットとキーは、業界標準のアルゴリズム、キーの長さ、ハードウェア セキュリティ モジュール (HSM) を使用して、Azure によってセキュリティで保護されています。 使用される HSM では、Federal Information Processing Standards (FIPS) 140-2 Level 2 が検証されています。
 
 キー コンテナーにアクセスする場合、呼び出し元 (ユーザーまたはアプリケーション) がアクセスする前に適切な認証と認可が必要になります。 認証では呼び出し元の ID を確認し、認可では呼び出し元が実行できる操作を決定します。
 
@@ -49,7 +49,7 @@ Key Vault を使用すると、コンテナーと呼ばれるセキュリティ�
 
 Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で保護されます。 さらに追加の保証が必要な状況では、ハードウェア セキュリティ モジュール (HSM) 内でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 Microsoft では、Thales ハードウェア セキュリティ モジュールを使用しています。 Thales のツールを使用して、HSM からキーを Azure Key Vault に移動することができます。
 
-最後に、Key Vault は、Microsoft がキーを確認または抽出しないように作られています。
+最後に、Azure Key Vault は、Microsoft がデータを確認および抽出しないように設計されています。
 
 ### <a name="monitor-access-and-use"></a>アクセスおよび利用状況の監視
 

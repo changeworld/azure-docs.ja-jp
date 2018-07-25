@@ -11,14 +11,14 @@ ms.service: sql-database
 ms.custom: overview-samples, mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2245964cab3361e0f298cf35d26e8b0a1b8456f0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 81f39c2ecc014ee53dcff2fab88ff0f890e1a610
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30924121"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091889"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure PowerShell サンプル
 
@@ -32,7 +32,7 @@ ms.locfileid: "30924121"
 |**geo レプリケーションを構成しフェールオーバーする**||
 | [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、単一の Azure SQL Database のアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
 | [アクティブ geo レプリケーションを使用して、プールされているデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、SQL エラスティック プールにある Azure SQL Database のアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
-| [単一のデータベースのフェールオーバー グループを構成およびフェールオーバーする (プレビュー)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database サーバー インスタンスのフェールオーバー グループを構成し、このフェールオーバー グループにデータベースを追加し、セカンダリ サーバーにフェールオーバーします |
+| [単一データベースのフェールオーバー グループを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database サーバー インスタンスのフェールオーバー グループを構成し、このフェールオーバー グループにデータベースを追加し、セカンダリ サーバーにフェールオーバーします |
 |**単一のデータベースとエラスティック プールをスケーリングする**||
 | [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database のパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。 |
 | [エラスティック プールをスケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database のエラスティック プールのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。  |

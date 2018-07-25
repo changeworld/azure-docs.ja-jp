@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9de4b00b2fff1feabcaee4e30667dfbdc75d9266
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129100"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114441"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -504,7 +504,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 ## <a name="next-steps"></a>次の手順
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
-* 「 [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。 Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md) のチュートリアルも用意されています。
+* [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
 * Batch ソリューションを開発するときに使用する [BatchLabs][batch_labs] をダウンロードしてインストールします。 BatchLabs は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
 

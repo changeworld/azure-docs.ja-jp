@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 01a9120af2fb240eed1463613f7a6f946a9c16ed
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934693"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057329"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>要求トレースを使用して API をデバッグする
 
@@ -44,6 +44,12 @@ ms.locfileid: "33934693"
 3. **[GetSpeakers]** 操作を選択します。
 4. **[テスト]** タブに切り替えます。
 5. **Ocp-Apim-Trace** という名前の HTTP ヘッダーを、値を **true** に設定して含めます。
+
+    ![API トレース ヘッダー](media/api-management-howto-api-inspector/api-management-tracing-header.png)
+
+    > [!NOTE]
+    > Ocp-Apim-Subscription-Key が自動的に入力されない場合は、開発者ポータルに移動し、プロファイル ページのキーを公開することで取得できます。
+
 6. **[送信]** をクリックして、API 呼び出しを行います。 
 7. 呼び出しが完了するのを待ちます。 
 8. **API コンソール**の **[トレース]** タブに移動します。 詳細なトレース情報に移動するには、リンク (**[受信]**、**[バックエンド]**、**[送信]**) をクリックします。

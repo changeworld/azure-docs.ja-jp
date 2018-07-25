@@ -1,20 +1,20 @@
 ---
-title: 'チュートリアル: Azure Search でのコグニティブ検索 API の呼び出し | Microsoft Docs'
-description: データの抽出と変換のための Azure Search インデックス作成での、データの抽出、自然言語、および画像 AI 処理の例。
+title: Azure Search でのコグニティブ検索 API を呼び出すチュートリアル | Microsoft Docs
+description: このチュートリアルでは、データの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を段階的に説明していきます。
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757572"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991921"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>チュートリアル: コグニティブ検索 API を呼び出す方法を学習する (プレビュー)
 
@@ -23,8 +23,8 @@ ms.locfileid: "34757572"
 このチュートリアルでは、REST API を呼び出して、次のタスクを実行します。
 
 > [!div class="checklist"]
-> * インデックスへのルートでソース データをエンリッチする、インデックス作成パイプラインを作成する
-> * サンプル データで、組み込みのスキル (エンティティの認識、言語の検出、テキスト操作、キー フレーズ抽出) を使用する
+> * インデックスへのルートでサンプル データをエンリッチする、インデックス作成パイプラインを作成する
+> * 組み込みのスキル (エンティティの認識、言語の検出、テキスト操作、キー フレーズ抽出) を適用する
 > * スキルセットの出力に入力をマップして、スキルをまとめて連結する方法を学習する
 > * 要求を実行し、結果を確認する
 > * 将来の開発のためにインデックスとインデクサーをリセットする
@@ -76,11 +76,11 @@ Azure Search への REST 呼び出しを行うには、PowerShell、または Te
 
 1. [サンプル データをダウンロードします](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。 サンプル データは、さまざまなタイプの小さいファイル セットで構成されています。 
 
-1. Azure Blob Storage にサインアップし、ストレージ アカウントを作成し、Storage Explorer にログインし、`basicdemo` という名前のコンテナーを作成します。 すべての手順の説明については、[Azure Storage Explorer のクイック スタート](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)をご覧ください。
+1. Azure Blob Storage にサインアップし、ストレージ アカウントを作成し、Storage Explorer にサインインし、`basicdemo` という名前のコンテナーを作成します。 すべての手順の説明については、[Azure Storage Explorer のクイック スタート](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)をご覧ください。
 
 1. Azure Storage Explorer を使用して、作成した `basicdemo` コンテナーで、**[アップロード]** をクリックしてサンプル ファイルをアップロードします。
 
-1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure Portal でストレージ アカウントに移動して実行できます。 **[アクセス キー]** で、**[接続文字列]** フィールドをコピーします。
+1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure portal でストレージ アカウントに移動して実行できます。 **[アクセス キー]** で、**[接続文字列]** フィールドをコピーします。
 
   接続文字列は次の例のような URL です。
 

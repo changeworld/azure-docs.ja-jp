@@ -3,16 +3,17 @@ title: 'クイック スタート: Portal を使用した Azure Search でのコ
 description: サンプル データを使用した Azure Portal でのデータの抽出、自然言語、および画像処理のスキルの例。
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640263"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003698"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート: スキルとサンプル データを使用したコグニティブ検索パイプラインの作成
 
@@ -72,7 +73,7 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
 
-1. Azure Blob Storage にサインアップし、ストレージ アカウントを作成し、Storage Explorer にログインし、コンテナーを作成します。 すべての手順の説明については、[Azure Storage Explorer のクイック スタート](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)をご覧ください。
+1. Azure Blob Storage にサインアップしてストレージ アカウントを作成し、Storage Explorer にサインインしてコンテナーを作成します。 すべての手順の説明については、[Azure Storage Explorer のクイック スタート](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)をご覧ください。
 
 1. Azure Storage Explorer を使用して、作成したコンテナーで、**[アップロード]** をクリックしてサンプル ファイルをアップロードします。
 

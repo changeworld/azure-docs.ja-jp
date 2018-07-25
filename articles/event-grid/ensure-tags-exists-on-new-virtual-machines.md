@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2017
 ms.author: eamono
-ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 6270f8bad893798f46d8db91e7b1140b6a125350
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
-ms.locfileid: "26349071"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049866"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Azure Automation を Event Grid および Microsoft Teams と統合する
 
@@ -38,14 +38,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを行うには、Azure Event Grid のサブスクリプションからトリガーされる Runbook を保持するために [Azure Automation アカウント](../automation/automation-offering-get-started.md)が必要です。
 
+* `AzureRM.Tags` モジュールは Automation アカウントに読み込む必要があります。モジュールを Azure Automation にインポートする方法については、[Azure Automation にモジュールをインポートする方法](../automation/automation-update-azure-modules.md)に関するページを参照してください。
+
 ## <a name="import-an-event-grid-sample-runbook"></a>Event Grid のサンプル Runbook をインポートする
+
 1. お使いの Automation アカウントを選び、**[Runbook]** ページを選びます。
 
    ![Runbook を選ぶ](./media/ensure-tags-exists-on-new-virtual-machines/select-runbooks.png)
 
 2. **[ギャラリーを参照]** ボタンを選びます。
 
-3. **Event Grid** を検索し、**[Integrating Azure Automation with Event grid]\(Azure Automation と Event Grid の統合\)** を選びます。 
+3. **Event Grid** を検索し、**[Integrating Azure Automation with Event grid]\(Azure Automation と Event Grid の統合\)** を選びます。
 
     ![ギャラリーの Runbook をインポートする](media/ensure-tags-exists-on-new-virtual-machines/gallery-event-grid.png)
 
@@ -53,7 +56,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. インポートされた後、**[編集]** を選んで Runbook ソースを表示します。 **[発行]** を選択します。
 
+> [!NOTE]
+> スクリプトの 74 行目は `Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose` に変更する必要があります。 `-Tags` パラメーターは `-Tag` になりました。
+
 ## <a name="create-an-optional-microsoft-teams-webhook"></a>オプションの Microsoft Teams webhook を作成する
+
 1. Microsoft Teams で、チャネル名の隣の **[その他のオプション]** を選び、**[コネクタ]** を選びます。
 
     ![Microsoft Teams の接続](media/ensure-tags-exists-on-new-virtual-machines/teams-webhook.png)
@@ -67,6 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **[完了]** を選んで webhook を保存します。
 
 ## <a name="create-a-webhook-for-the-runbook"></a>Runbook に対する webhook を作成する
+
 1. Watch-VMWrite Runbook を開きます。
 
 2. **[Webhook]** を選び、**[Webhook の追加]** ボタンを選びます。
@@ -111,7 +119,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Microsoft Teams の通知](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Event Grid と Automation の間の統合を設定しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

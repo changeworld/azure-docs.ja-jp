@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c0a1caca1c7b026965d2a83211c87d49db53c4ca
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798442"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991633"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -89,25 +89,25 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/app-insights-java-quick-start/0008-j.png)
+   ![Application Insights の概要メニュー](./media/app-insights-java-quick-start/overview-001.png)
 
-2. **[App map (アプリ マップ)]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
+2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/app-insights-java-quick-start/005-j.png)
+   ![アプリケーション マップ](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. **[アプリ分析]** アイコンをクリックし、![[アプリケーション マップ]](./media/app-insights-java-quick-start/006.png) アイコンをクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための多機能なクエリ言語を利用可能な **Application Insights Analytics** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/app-insights-java-quick-start/0010-j.png)
 
-4. **概要**ページに戻り、**正常性の概要のタイムライン**を確認します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
+4. **[概要]** ページに戻って KPI グラフを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
 
-   ![正常性の概要のタイムライン グラフ](./media/app-insights-java-quick-start/0009-j.png)
+   ![正常性の概要のタイムライン グラフ](./media/app-insights-java-quick-start/overview-perf.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

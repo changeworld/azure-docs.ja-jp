@@ -13,19 +13,21 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/26/2018
+ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7d3fc71bc53e85fa7555dbee5ee79b3f06f27fe8
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 0650fffeb54ebc4390c82fb2711d7c89e0ac4572
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960340"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989420"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
-このサンプル スクリプトでは、Function App を関連リソースと共に作成し、`www.<yourdomain>` にマップします。 関数アプリが [App Service プラン](../functions-scale.md#app-service-plan)でホストされている場合、CNAME レコードまたは A レコードを使用してカスタム ドメインをマップできます。 [従量課金プラン](../functions-scale.md#consumption-plan)の関数アプリの場合、CNAME オプションのみがサポートされます。
+このサンプル スクリプトは、App Service プランに関数アプリを作成し、指定したカスタム ドメインにそれをマッピングします。 関数アプリが [App Service プラン](../functions-scale.md#app-service-plan)でホストされている場合、CNAME レコードまたは A レコードを使用してカスタム ドメインをマップできます。 [従量課金プラン](../functions-scale.md#consumption-plan)の関数アプリの場合、CNAME オプションのみがサポートされます。 このサンプルは、App Service プランを作成します。そのドメインにマッピングするための A レコードが必要となります。 
+
+このサンプル スクリプトを実行するには、Web アプリの既定のドメイン名を指し示す A レコードがカスタム ドメインに構成済みであることが必要です。 詳細については、[Azure App Service にカスタム ドメインをマップする方法](https://aka.ms/appservicecustomdns)に関するページを参照してください。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,14 +48,14 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Function App に必要なストレージ アカウントを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | カスタム ドメインをマップするのに必要な App Service プランを作成します。 |
-| [az functionapp create]() | Function App を作成します。 |
-| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | カスタム ドメインを Function App にマップします。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Function App に必要なストレージ アカウントを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | カスタム ドメインをマップするのに必要な App Service プランを作成します。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | App Service プランで関数アプリを作成します。 |
+| [az functionapp config hostname add](https://docs.microsoft.com/cli/azure/functionapp/config/hostname#az-functionapp-config-hostname-add) | カスタム ドメインを Function App にマップします。 |
 
 ## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
-その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント]()で確認できます。
+その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

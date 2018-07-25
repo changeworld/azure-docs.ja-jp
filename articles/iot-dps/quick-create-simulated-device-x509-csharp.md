@@ -1,8 +1,8 @@
 ---
 title: シミュレートされた X.509 デバイスを C# を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
 description: Azure クイックスタート - Azure IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/18
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 697526b243fad585b8692edd59650661ea60fd62
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28e6158a3dcd4cee98c380c53a1a345983bdf4f7
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629723"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090821"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -40,6 +40,14 @@ ms.locfileid: "34629723"
     ```
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>自己署名 X.509 デバイス証明書と個々の登録エントリを作成する
+
+このセクションでは、自己署名 X.509 証明書を使用します。次の点に留意することが重要です。
+
+* 自己署名証明書はテスト目的専用であるため、運用環境では使用しないでください。
+* 自己署名証明書の既定の有効期限は 1 年間です。
+
+[Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) のサンプル コードを使用して、シミュレートされたデバイスの個々の登録エントリで使用する証明書を作成します。
+
 
 1. コマンド プロンプトで、ディレクトリを X.509 デバイス プロビジョニング サンプルのプロジェクト ディレクトリに変更します。
 

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630461"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091086"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して X.509 デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -54,7 +54,12 @@ ms.locfileid: "34630461"
 
 ## <a name="download-and-modify-the-java-sample-code"></a>Java サンプル コードをダウンロードして変更する
 
-ここでは、X.509 デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
+このセクションでは、自己署名 X.509 証明書を使用します。次の点に留意することが重要です。
+
+* 自己署名証明書はテスト目的専用であるため、運用環境では使用しないでください。
+* 自己署名証明書の既定の有効期限は 1 年間です。
+
+以降の手順では、X.509 デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
 
 1. コマンド プロンプトを開きます。 Java Service SDK を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
     

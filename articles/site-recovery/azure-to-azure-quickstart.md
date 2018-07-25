@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c72ae695c33bf9147bce7f326e8501ce2a88bb33
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916604"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990865"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
 
@@ -34,7 +34,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 1. Azure Portal で **[仮想マシン]** をクリックし、レプリケートする VM を選択します。
 
-2. **[設定]** で、**[ディザスター リカバリー]** をクリックします。
+2. **[操作]** で、**[ディザスター リカバリー]** をクリックします。
 3. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)** > **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
 4. このクイック スタートでは、その他は既定の設定をそのまま使用します。
 5. **[レプリケーションを有効にする]** をクリックします。 これにより VM レプリケーションを有効にするジョブが開始されます。

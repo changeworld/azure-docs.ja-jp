@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 07/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308615"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115208"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>チュートリアル: REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う
 
@@ -77,22 +77,23 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     > [!Note]
     > 前述の **[Access the Media Services API]\(Media Services API にアクセスする\)** セクションから取得した値で、アクセス変数を更新します。
 
-7. ダイアログを閉じます。
-8. ドロップ ダウンから **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境を選択します。
+7. 選択されたファイルをダブルクリックして、[API へのアクセス](#access-the-media-services-api)に関する手順に従って取得した値を入力します。
+8. ダイアログを閉じます。
+9. ドロップ ダウンから **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境を選択します。
 
     ![環境を選択する](./media/develop-with-postman/choose-env.png)
    
 ### <a name="configure-the-collection"></a>コレクションの構成
 
 1. **[インポート]** をクリックしてコレクション ファイルをインポートします。
-1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Media Services v3 (2018-03-30-preview).postman_collection.json` ファイルを参照します。
-3. **Media Services v3 (2018-03-30-preview).postman_collection.json** ファイルを選択します。
+1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Media Services v3.postman_collection.json` ファイルを参照します。
+3. **Media Services v3.postman_collection.json** ファイルを選択します。
 
     ![ファイルをインポートする](./media/develop-with-postman/postman-import-collection.png)
 
 ## <a name="send-requests-using-postman"></a>Postman を使用して要求を送信する
 
-このセクションでは、ファイルをストリーミングできるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
+このセクションでは、ファイルをストリーム配信できるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
 
 1. サービス プリンシパルの認証のために Azure AD トークンを取得する
 2. 出力資産を作成する
@@ -128,11 +129,21 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 2. 次に、[Create or update an Asset]\(資産を作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
-    次の **PUT** 操作が送信されます。
+    * 次の **PUT** 操作が送信されます。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
+        ```
+    * 操作の本文は次のとおりです。
+
+        ```json
+        {
+        "properties": {
+            "description": "My Asset",
+            "alternateId" : "some GUID"
+         }
+        }
+        ```
 
 ### <a name="create-a-transform"></a>変換を作成する
 
@@ -149,11 +160,30 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 2. [Create Transform]\(変換の作成\) を選択します。
 3. **[送信]** をクリックします。
 
-    次の **PUT** 操作が送信されます。
+    * 次の **PUT** 操作が送信されます。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
+        ```
+    * 操作の本文は次のとおりです。
+
+        ```json
+        {
+            "properties": {
+                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "outputs": [
+                    {
+                    "onError": "StopProcessingJob",
+                "relativePriority": "Normal",
+                    "preset": {
+                        "@odata.type": "#Microsoft.Media.BuiltInStandardEncoderPreset",
+                        "presetName": "AdaptiveStreaming"
+                    }
+                    }
+                ]
+            }
+        }
+        ```
 
 ### <a name="create-a-job"></a>ジョブを作成する
 
@@ -165,11 +195,32 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 2. 次に、[Create or Update Job]\(ジョブを作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
-    次の **PUT** 操作が送信されます。
+    * 次の **PUT** 操作が送信されます。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
+        ```
+    * 操作の本文は次のとおりです。
+
+        ```json
+        {
+        "properties": {
+            "input": {
+            "@odata.type": "#Microsoft.Media.JobInputHttp",
+            "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
+            "files": [
+                    "Ignite-short.mp4"
+                ]
+            },
+            "outputs": [
+            {
+                "@odata.type": "#Microsoft.Media.JobOutputAsset",
+                "assetName": "testAsset1"
+            }
+            ]
+        }
+        }
+        ```
 
 ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 ジョブの進行状況を確認するには、Event Grid を使用することをお勧めします。 Event Grid は、高可用性、一貫したパフォーマンス、および動的スケーリングを目的に設計されています。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 単純な HTTP ベースのリアクティブ イベント ハンドリングでは、インテリジェントなイベント フィルタリングやイベント ルーティングを使用して、効率的なソリューションを構築できます。  [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
 
@@ -189,14 +240,24 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
 
 1. Postman の左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
-2. 次に、[Create a Streaming Policy]\(ストリーミング ポリシーの作成\) を選択します。
+2. 次に、[Create a Streaming Locator]\(ストリーミング ロケーターの作成\) を選択します。
 3. **[送信]** をクリックします。
 
-    次の **PUT** 操作が送信されます。
+    * 次の **PUT** 操作が送信されます。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        ```
+    * 操作の本文は次のとおりです。
+
+        ```json
+        {
+            "properties":{
+            "assetName": "{{assetName}}",
+            "streamingPolicyName": "{{streamingPolicyName}}"
+            }
+        }
+        ```
 
 ### <a name="list-paths-and-build-streaming-urls"></a>パスを一覧を取得し、ストリーミング URL を構築する
 
@@ -208,40 +269,40 @@ Media Service アカウントには、StreamingPolicy エントリの数に対�
 2. [List Paths]\(パスの一覧表示\) を選択します。
 3. **[送信]** をクリックします。
 
-    次の **POST** 操作が送信されます。
+    * 次の **POST** 操作が送信されます。
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
+        ```
+        
+    * 操作に本文はありません。
+        
 4. ストリーミングに使用するパスの 1 つをメモします。次のセクションで使用します。 この例では、次のパスが返されました。
     
     ```
-    {
-        "streamingPaths": [
-            {
-                "streamingProtocol": "Hls",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)"
-                ]
-            },
-            {
-                "streamingProtocol": "Dash",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=mpd-time-csf)"
-                ]
-            },
-            {
-                "streamingProtocol": "SmoothStreaming",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest"
-                ]
-            }
-        ],
-        "downloadPaths": []
-    }
+    "streamingPaths": [
+        {
+            "streamingProtocol": "Hls",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)"
+            ]
+        },
+        {
+            "streamingProtocol": "Dash",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=mpd-time-csf)"
+            ]
+        },
+        {
+            "streamingProtocol": "SmoothStreaming",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest"
+            ]
+        }
+    ]
     ```
 
 #### <a name="build-the-streaming-urls"></a>ストリーミング URL を構築する
@@ -254,15 +315,26 @@ Media Service アカウントには、StreamingPolicy エントリの数に対�
     > プレーヤーが HTTPS サイトでホストされている場合は、忘れずに URL を "https" に更新してください。
 
 2. StreamingEndpoint のホスト名。 この例では、名前は "amsaccount-usw22.streaming.media.azure.net" です。
-3. 前のセクションで取得したパス。  
+
+    ホスト名を取得するには、次の GET 操作を使用できます。
+    
+    ```
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    ```
+    
+3. 前のセクション「パスの一覧を取得する」で取得したパス。  
 
 結果として、次の HLS URL が構築されました。
 
 ```
-https://amsaccount-usw22.streaming.media.azure.net/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)
+https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)
 ```
 
 ## <a name="test-the-streaming-url"></a>ストリーミング URL をテストする
+
+
+> [!NOTE]
+> ストリーム配信元のストリーミング エンドポイントが実行されていることを確認してください。
 
 ストリーム配信をテストするため、この記事では Azure Media Player を使います。 
 

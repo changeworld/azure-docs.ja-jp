@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1962a4aac8e2d15caf4ec33998da1985d3b8a9af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ee83446bb08e66c7f325bdd5585b8cc0484a74e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306475"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090930"
 ---
 # <a name="import-a-function-app-as-an-api"></a>API としての Function App のインポート
 
@@ -34,7 +34,8 @@ ms.locfileid: "38306475"
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
-+ サブスクリプションに Function App があることを確認します。 詳細については、「[Function App を作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」をご覧ください。
++ サブスクリプションに Azure 関数アプリがあることを確認します。 詳細については、「[Function App を作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」をご覧ください。
++ Azure 関数アプリの [OpenAPI 定義を作成します](../azure-functions/functions-openapi-definition.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,6 +57,24 @@ ms.locfileid: "38306475"
     * **スターター**
     * **無制限**   
 7. **[作成]** を選択します。
+
+## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Azure API Management での Azure 関数キーの入力
+
+インポートされた Azure 関数がキーによって保護される場合、それらの**名前付きの値**が Azure API Management によって自動的に作成されます。ただし、エントリへのシークレットの入力は行われません。 各エントリについて、以下の手順を実行する必要があります。  
+
+1. API Management インスタンスの **[名前付きの値]** タブに移動します。
+2. エントリをクリックして、サイド バーの **[値の表示]** をクリックします。
+
+    ![名前付きの値](./media/import-function-app-as-api/apim-named-values.png)
+
+3. 内容が "*<Azure 関数名> のコード*" のような場合、インポートされた Azure 関数アプリに進んで、Azure 関数に移動します。
+4. Azure 関数の認証方法に基づいて、目的の Azure 関数の **[管理]** セクションに移動して関連するキーをコピーします。
+
+    ![関数アプリ](./media/import-function-app-as-api/azure-functions-app-keys.png)
+
+5. **[名前付きの値]** でテキスト ボックスにキーを貼り付けて、**[保存]** をクリックします。
+
+    ![関数アプリ](./media/import-function-app-as-api/apim-named-values-2.png)
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 

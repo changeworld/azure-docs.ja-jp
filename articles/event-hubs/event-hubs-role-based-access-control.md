@@ -5,21 +5,17 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 0d3a779eb2cccf242bcd42d82c1a90048b3512ab
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783350"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888369"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -35,7 +31,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Azure AD ドメイン ユーザー アカウントで Event Hubs を使用する
 
-次のセクションでは、対話型の Azure AD ユーザーにログオンを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Event Hubs にアクセスする方法について説明します。 
+次のセクションでは、対話型の Azure AD ユーザーにサインオンを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Event Hubs にアクセスする方法について説明します。 
 
 この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは Github にあります](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)。
 
@@ -69,12 +65,12 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 - `tenantId`: **TenantId** の値に設定します。
 - `clientId`: **ApplicationId** の値に設定します。 
-- `clientSecret`: クライアント シークレットを使ってログオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
-- `eventHubNamespaceFQDN`: 新しく作成した Event Hubs 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
+- `clientSecret`: クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
+- `eventHubNamespaceFQDN`: 新しく作成した Event Hubs 名前空間の完全修飾 DNS 名に設定します (例: `example.servicebus.windows.net`)。
 - `eventHubName`: 作成したイベント ハブの名前に設定します。
 - 前の手順においてアプリで指定したリダイレクト URI です。
  
-コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはログイン ウィンドウを表示し、Event Hubs へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。
+コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはサインイン ウィンドウを表示し、Event Hubs へのアクセスの同意を求めた後、サービスを使ってサインイン ID を用いた送信/受信シナリオを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,22 +1,22 @@
 ---
 title: Azure Search で Azure SQL データベースのインデックスを作成するチュートリアル | Microsoft Docs
-description: Azure SQL データベースをクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。
+description: このチュートリアルでは、Azure SQL データベースをクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799517"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988797"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure Search インデクサーを使用して Azure SQL データベースをクロールする方法
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>チュートリアル: Azure Search インデクサーを使用して Azure SQL データベースをクロールする
 
 このチュートリアルでは、検索可能なデータをサンプル Azure SQL データベースから抽出するためのインデクサーを構成する方法について説明します。 [インデクサー](search-indexer-overview.md)は、外部データ ソースをクロールして[検索インデックス](search-what-is-an-index.md)にデータを投入する Azure Search のコンポーネントです。 Azure SQL データベースのインデクサーは、すべてのインデクサーの中で最も広く使用されています。 
 
@@ -33,9 +33,9 @@ ms.locfileid: "31799517"
 > * インデックスを検索する
 > * インデクサーの構成をポータルで確認する
 
-## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
+## <a name="prerequisites"></a>前提条件
 
 * Azure Search サービス。 その設定方法については、[Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
@@ -269,21 +269,14 @@ Azure Portal にアクセスし、Search サービスの [概要] ページで�
 
   ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-今後このサービスを使用しない場合は、以下の手順に従い、このチュートリアルで作成したすべてのリソースを Azure Portal で削除してください。 
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
-2. リソース グループのページで **[リソース グループの削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Search サービスの [概要] ページに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-サポートされているデータ ソースごとのタスクおよび詳細については、次の記事を参照してください。
+インデクサー パイプラインには、AI を活用したアルゴリズムをアタッチすることができます。 引き続き次のチュートリアルに進んでください。
 
-* [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-* [Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md)

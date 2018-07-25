@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611230"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071980"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -40,7 +40,8 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
         * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えたスキーマのない JSON データベース エンジン。
         * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB データベースを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
         * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB データベースを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Gremlin API](graph-introduction.md): 完全に管理された水平方向にスケーラブルなグラフ データベース サービス。Open Graph API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
+        * 
+  [Gremlin API](graph-introduction.md): フル マネージドの、水平方向にスケーラブルなグラフ データベース サービス。Open Graph API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
         * [テーブル API](table-introduction.md): 既存の Azure テーブル ストレージ アプリケーションに高度な機能 (自動インデックス作成、低待機時間の保証、グローバルな分散など) を提供する、キーと値のデータベース サービス。アプリを変更する必要はありません。
         * 他のデータ モデルおよび API も近日対応予定です。
 
@@ -68,7 +69,7 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
     * Azure Cosmos DB のデータベース エンジンは、完全にスキーマ フリーとなっています。取り込んだデータにはすべて自動でインデックスが作成されるため、スキーマやインデックスの指定が求められることはありません。さらに、クエリもきわめて高速です。 
 
 * **保有コストを削減**
-    * 管理されていないソリューションまたはオンプレミスの NoSQL ソリューションの 5 ～ 10 倍の[コスト効率](https://aka.ms/cosmos-db-tco-paper)を実現しました。
+    * 非マネージド ソリューションまたはオンプレミスの NoSQL ソリューションの 5 から 10 倍のコスト効果を実現しました。
     * AWS DynamoDB や Google Spanner の 3 分の 1 の価格です。
 
 ## <a name="capability-comparison"></a>機能の比較

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5b5ae6ba945b1428ffc2877711ebdc73937ea0a3
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8b9f53b34b75f9827e4976681a78f873b812ad96
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915944"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055119"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -34,20 +34,20 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 リソース グループを作成するときに場所を指定するように求められます。Azure で利用するリソースは、その場所に配置されます。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、*myAKSCluster* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myAKSCluster --location eastus
 ```
 
 出力:
 
 ```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myAKSCluster",
   "location": "eastus",
   "managedBy": null,
-  "name": "myResourceGroup",
+  "name": "myAKSCluster",
   "properties": {
     "provisioningState": "Succeeded"
   },
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location eastus
 AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 AKS クラスターをデプロイするときに、コンテナー正常性監視ソリューションも有効にできます。 コンテナー正常性監視ソリューションの有効化について詳しくは、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページをご覧ください。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 数分してコマンドが完了すると、このクラスターに関する情報が JSON 形式で表示されます。
@@ -79,7 +79,7 @@ az aks install-cli
 Kubernetes クラスターに接続するように kubectl を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。 表示されるまでに数分かかる場合があります。
@@ -209,8 +209,11 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 クラスターが必要なくなったら、[az group delete][az-group-delete] コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes --no-wait
+az group delete --name myAKSCluster --yes --no-wait
 ```
+
+> [!NOTE]
+> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
 
 ## <a name="get-the-code"></a>コードの入手
 
@@ -246,4 +249,4 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

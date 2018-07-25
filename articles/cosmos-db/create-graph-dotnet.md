@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 27cfb391c5c47ef44c443e2603da62fe5d6a3122
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453418"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113047"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
@@ -153,21 +153,25 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure portal](http://portal.azure.com/) でグラフ データベース アカウントに移動します。 **[概要]** タブで、2 つのエンドポイントを確認できます。 
+ 
+   **.NET SDK URI** - この値は、Microsoft.Azure.Graphs ライブラリを使用してグラフ アカウントに接続する場合に使用されます。 
 
-    URI の値の最初の部分をコピーします。
+   **Gremlin エンドポイント** - この値は、Gremlin.Net ライブラリを使用してグラフ アカウントに接続する場合に使用されます。
 
-    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-dotnet/keys.png)
+    ![エンドポイントのコピー](./media/create-graph-dotnet/endpoint.png)
+
+   このサンプルを実行するには、**[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。
 
 2. Program.cs で、19 行目の `hostname` 変数の `your-endpoint` に値を貼り付けます。 
 
-    `"private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";`
+    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
 
     endpoint の値は次のようになります。
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. ポータルで **PRIMARY KEY** 値をコピーし、`authkey` 変数に貼り付けて、21 行目の `"your-authentication-key"` プレースホルダーを置き換えます。 
+3. 次に、**[キー]** タブに移動してポータルから **[主キー]** の値をコピーし、`authkey` 変数に貼り付けて、21 行目の `"your-authentication-key"` プレースホルダーを置き換えます。 
 
     `private static string authKey = "your-authentication-key";`
 

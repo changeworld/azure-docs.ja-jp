@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 63acf0297a694ff442d56e67d52fd9b4e49f812d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36288049"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008588"
 ---
 最初の手順では、Azure Portal を使用して、サブスクリプションに IoT Hub を作成します。 IoT Hub を使用すると、多くのデバイスからクラウドに大量の利用統計情報を取り込むことができます。 ハブにより、クラウド内で実行されている 1 つまたは複数のバックエンド サービスがその利用統計情報を読み取って処理することが可能になります。
 
@@ -26,12 +26,9 @@ ms.locfileid: "36288049"
 1. **[IoT Hub]** ウィンドウで、IoT Hub のために以下の情報を入力します。
 
    * **[サブスクリプション]**: この IoT ハブを作成するために使用するサブスクリプションを選択します。
-
-   * **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 関連するすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのグループに含まれているすべてのリソースが削除されます。 詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
-
-   * **[リージョン]**: 最も近い場所を選択します。
-
-   * **[名前]**: IoT ハブの名前を作成します。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
+   * **[リソース グループ]**: IoT Hub を入れるリソース グループを作成するか、既存のリソース グループを使用します。 関連するすべてのリソースを 1 つのグループ (**TestResources** など) 内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのグループに含まれているすべてのリソースが削除されます。 詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
+   * **[リージョン]**: 使用しているデバイスに最も近い場所を選択します。
+   * **[名前]**: IoT ハブの一意の名前を作成します。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

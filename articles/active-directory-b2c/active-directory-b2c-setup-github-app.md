@@ -1,55 +1,53 @@
 ---
-title: Azure Active Directory B2C の GitHub ID プロバイダーの構成 | Microsoft Docs
-description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、GitHub アカウントを使用する顧客にサインアップとサインインを提供します。
+title: Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
+description: Azure Active Directory B2C を使用するアプリケーションで GitHub アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2017
+ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3754a169b301bac97f3e12d10b754222e3cf325d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 88fffd28319101c112f848eebc6e8ee27f7f863e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443343"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952020"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C: GitHub アカウントでコンシューマーにサインアップおよびサインインを提供する
+# <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する
 
 > [!NOTE]
 > この機能はプレビュー段階にあります。
 > 
 
-この記事では、GitHub アカウントを持つユーザーのサインインを可能にする方法について説明します。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして GitHub アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ GitHub アカウントを持っていない場合は、[https://www.github.com/](https://www.github.com/) で取得できます。
 
 ## <a name="create-a-github-oauth-application"></a>GitHub OAuth アプリケーションを作成する
 
-Azure AD B2C で GitHub を ID プロバイダーとして使用するには、GitHub OAuth アプリを作成して適切なパラメーターを指定する必要があります。
+1. GitHub 資格情報を使用して [GitHub Developer](https://github.com/settings/developers) Web サイトにサインインします。
+2. **[OAuth Apps]**(OAuth アプリ) を選択してから、**[新しいアプリケーションの登録]** を選択します。
+3. **アプリケーション名**と**ホームページ URL** を入力します。
+4. **[Authorization callback URL]**(承認コールバック URL) に `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` を入力します。 **{tenant}** を Azure AD B2C テナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。
+5. **[Register application (アプリケーションを登録する)]** をクリックします。
+6. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 ID プロバイダーをテナントに追加するには、両方が必要です。
 
-1. GitHub にサインインした後、[GitHub 開発者設定](https://github.com/settings/developers)に移動します。
-1. **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします
-1. **アプリケーション名**と**ホームページ URL** を入力します。
-1. **[Authorization callback URL]\(認証コールバック エンドポイント URL\)** に、「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** を Azure AD B2C テナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。
+## <a name="configure-a-github-account-as-an-identity-provider"></a>ID プロバイダーとして GitHub アカウントを構成する
 
-    >[!NOTE]
-    >**[Sign-on URL]\(サインイン URL\)** の "tenant" の値は、すべて小文字にする必要があります。
+1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
 
-1. **[Register application (アプリケーションを登録する)]** をクリックします。
-1. **[Client ID]\(クライアント ID\)** と **[Client Secret]\(クライアント シークレット\)** の値を保存します。 どちらも次のセクションで必要になります。
+    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-github-app/switch-directories.png)
 
-## <a name="configure-github-as-an-identity-provider-in-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントで GitHub を ID プロバイダーとして構成する
+    テナントが含まれるディレクトリを選択します。
 
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-1. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
-1. ブレードの上部にある **[+追加]** をクリックします。
-1. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「GitHub」と入力します。
-1. **[ID プロバイダーの種類]** をクリックし、**[GitHub]** を選択して、**[OK]** をクリックします。
-1. **[この ID プロバイダーを設定する]** をクリックし、前にコピーした GitHub OAuth アプリケーションのクライアント ID とクライアント シークレットを入力します。
-1. **[OK]** をクリックし、**[作成]** をクリックして GitHub の構成を保存します。
+    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-github-app/select-directory.png)
 
-## <a name="next-steps"></a>次の手順
-
-[組み込みのポリシー](active-directory-b2c-reference-policies.md)を作成するか編集し、GitHub を ID プロバイダーとして追加します。
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
+4. **[ID プロバイダー]**、**[追加]** の順に選択します。
+5. **[名前]** を入力します。 たとえば、「*GitHub*」と入力します。
+6. **[ID プロバイダーの種類]** を選択し、**[Github (Preview)]**(GitHub (プレビュー)) を選択して、**[OK]** をクリックします。
+7. **[この ID プロバイダーをセットアップします]** を選択し、**[クライアント ID]** として前に記録したクライアント ID を入力し、前に作成した GitHub アカウント アプリケーションの **[クライアント シークレット]** として記録したクライアント シークレットを入力します。
+8. **[OK]** をクリックし、**[作成]** をクリックして GitHub アカウントの構成を保存します。

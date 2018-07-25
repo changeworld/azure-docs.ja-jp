@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809871"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112965"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Azure Log Analytics によるコンテナー インスタンスのログ記録
 
@@ -43,9 +43,26 @@ Log Analytics ワークスペースの ID とプライマリ キーを取得す�
 
 ## <a name="create-container-group"></a>コンテナー グループを作成する
 
-Log Analytics のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。 次の例では、単一の [Fluentd][fluentd] コンテナーでコンテナー グループを作成します。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
+Log Analytics のワークスペース ID とプライマリ キーがわかったので、ログ記録が有効なコンテナー グループを作成できます。
 
-最初に、1 つのコンテナーを含むコンテナー グループを定義している次の YAML を新しいファイルにコピーします。 `LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` は、前のステップで取得した値に置き換えてください。その後、ファイルを **deploy-aci.yaml** として保存します。
+次の例は、1 つの [fluentd][fluentd] コンテナーが含まれたコンテナー グループを作成する 2 つの方法を示します。1 つは Azure CLI を使用する方法で、もう 1 つは Azure CLI と YAML テンプレートを使用する方法です。 Fluentd コンテナーは、既定の構成で複数の出力行を生成します。 この出力は Log Analytics ワークスペースに送信されるため、ログの表示とクエリのデモンストレーションに適しています。
+
+### <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
+
+Azure CLI でデプロイするには、[az container create][az-container-create] コマンドで `--log-analytics-workspace` パラメーターと `--log-analytics-workspace-key` パラメーターを指定します。 次のコマンドを実行する前に、2 つのワークスペースの値を前の手順で取得した値に置き換えます (また、リソース グループ名を更新します)。
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>YAML でのデプロイ
+
+YAML でコンテナー グループをデプロイしたい場合にはこの方法を使用します。 次の YAML は、1 つのコンテナーが含まれたコンテナー グループを定義します。 YAML を新しいファイルにコピーしてから、`LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` を前の手順で取得した値に置き換えます。 ファイルを **deploy-aci.yaml** として保存します。
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 次に、以下のコマンドを実行してコンテナー グループを展開します。`myResourceGroup` は、サブスクリプション内のリソース グループに置き換えます (または、"myResourceGroup" という名前のリソース グループを最初に作成します)。
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 コマンドを発行した直後に、Azure から展開の詳細を含む応答を受け取るはずです。
@@ -135,3 +152,4 @@ Azure Log Analytics でのログのクエリとアラートの構成について
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

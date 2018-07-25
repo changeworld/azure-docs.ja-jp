@@ -4,17 +4,17 @@ description: Function App の作成と Visual Studio Team Services からの関�
 services: functions
 keywords: ''
 author: syntaxc4
-ms.author: cfowler
-ms.date: 01/09/2018
+ms.author: glenga
+ms.date: 07/03/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 0bd2e0896758b4d9f019b0c9520c5e9e1f3afd94
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1b54cfebd3ae36fc8025aeb4ea9c91d336bc5343
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29842349"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988954"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>関数アプリの作成と Visual Studio Team Services からの関数コードのデプロイ
 
@@ -47,10 +47,10 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
-| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
+| [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
 
 ## <a name="next-steps"></a>次の手順
 

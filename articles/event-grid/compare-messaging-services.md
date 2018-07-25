@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930479"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003749"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>メッセージを配信する Azure サービスの選択
 
@@ -43,7 +43,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 ## <a name="comparison-of-services"></a>サービスの比較
 
-| サービス | 目的 | type | いつ使用するか |
+| サービス | 目的 | Type | いつ使用するか |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
@@ -82,7 +82,8 @@ Service Bus はブローカー メッセージング システムです。 使�
 
 * ポーリングが必要な信頼性の高い非同期メッセージ配信 (サービスとしてのエンタープライズ メッセージング)
 * 高度なメッセージング機能 (FIFO、バッチ処理/セッション、トランザクション、配信不能処理、一時的制御、ルーティングとフィルタリング、重複検出など)
-* 厳密に 1 回の配信
+* 1 回以上の配信
+* 順次配信 (オプション)
 
 ## <a name="use-the-services-together"></a>サービスを組み合わせて使用する
 

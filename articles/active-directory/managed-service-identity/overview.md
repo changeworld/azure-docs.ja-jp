@@ -1,6 +1,6 @@
 ---
 title: Azure リソースのマネージド サービス ID とは
-description: Azure リソースの マネージド サービス ID の概要。
+description: Azure リソースの管理対象サービス ID の概要。
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547975"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006932"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Azure リソースのマネージド サービス ID とは
 
@@ -27,7 +27,7 @@ ms.locfileid: "38547975"
 
 クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証用のコードに必要な資格情報を管理する方法です。 これらの資格情報を安全に保つことは重要なタスクです。 こうした資格情報が開発者ワークステーションに表示されず、ソース管理で検査されないことが理想的です。 Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 マネージド サービス ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-マネージド サービス ID は、Azure サブスクリプションの既定値である Azure Active Directory Free に付属しています。 マネージド サービス ID のための追加コストはありません。
+マネージド サービス ID は、Azure サブスクリプションの既定値である Azure Active Directory Free に付属しています。 管理対象サービス ID のための追加コストはありません。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -40,7 +40,7 @@ ms.locfileid: "38547975"
 
 次の例は、Azure Virtual Machines でシステム割り当て ID がどのように動作するかを示しています。
 
-![仮想マシンのマネージド ID の例](overview/msi-vm-vmextension-imds-example.png)
+![仮想マシンのマネージド ID の例](media/overview/msi-vm-vmextension-imds-example.png)
 
 1. Azure Resource Manager は、VM でシステム割り当て ID を有効にするための要求を受け取ります。
 2. Azure Resource Manager は、Azure AD で VM の ID を表すサービス プリンシパルを作成します。 このサブスクリプションによって信頼されている Azure AD テナントで、サービス プリンシパルが作成されます。
@@ -80,32 +80,49 @@ ms.locfileid: "38547975"
 6. 手順 3. で構成したクライアント ID と証明書を使用して、手順 5. で指定したアクセス トークンを要求する呼び出しが Azure AD に対して行われます。 Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。
      
-## <a name="try-managed-service-identity"></a>マネージド サービス ID を試す
+## <a name="try-managed-service-identity"></a>管理対象のサービス ID を試行する
 
-さまざまな Azure リソースにアクセスするためのエンド ツー エンドのシナリオについては、マネージド サービス ID のチュートリアルを試してください。
+さまざまな Azure リソースにアクセスするためのエンド ツー エンドのシナリオについては、管理対象サービス ID のチュートリアルを試してください。
 <br><br>
 | マネージド ID 対応のリソース | 説明内容 |
 | ------- | -------- |
-| Azure VM (Windows) | [Windows VM マネージド サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](tutorial-windows-vm-access-datalake.md) |
-|                    | [Windows VM マネージド サービス ID (MSI) を使用して Azure Resource Manager にアクセスする](tutorial-windows-vm-access-arm.md) |
-|                    | [Windows VM マネージド サービス ID を使用して Azure SQL にアクセスする](tutorial-windows-vm-access-sql.md) |
-|                    | [Windows VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする](tutorial-windows-vm-access-storage.md) |
-|                    | [Windows VM マネージド サービス ID を使用して SAS で Azure Storage にアクセスする](tutorial-windows-vm-access-storage-sas.md) |
-|                    | [Windows VM マネージド サービス ID (MSI) および Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](tutorial-windows-vm-access-nonaad.md) |
-| Azure VM (Linux)   | [Linux VM マネージド サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](tutorial-linux-vm-access-datalake.md) |
-|                    | [Linux VM マネージド サービス ID (MSI) を使用して Azure Resource Manager にアクセスする](tutorial-linux-vm-access-arm.md) |
-|                    | [Linux VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md) |
-|                    | [Linux VM マネージド サービス ID を使用して SAS で Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md) |
-|                    | [Linux VM マネージド サービス ID と Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md) |
-| Azure App Service  | [Azure App Service または Azure Functions で マネージド サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
-| Azure Functions    | [Azure App Service または Azure Functions で マネージド サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
-| Azure Service Bus  | [Azure Service Bus で マネージド サービス ID を使用する](../../service-bus-messaging/service-bus-managed-service-identity.md) |
-| Azure Event Hubs   | [Azure Event Hubs で マネージド サービス ID を使用する](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure VM (Windows) | 
+  [Windows VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](tutorial-windows-vm-access-datalake.md) |
+|                    | 
+  [Windows VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](tutorial-windows-vm-access-arm.md) |
+|                    | 
+  [Windows VM 管理対象サービス ID を使用して Azure SQL にアクセスする](tutorial-windows-vm-access-sql.md) |
+|                    | 
+  [Windows VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする](tutorial-windows-vm-access-storage.md) |
+|                    | 
+  [Windows VM の管理対象サービス ID を使用して SAS で Azure Storage にアクセスする](tutorial-windows-vm-access-storage-sas.md) |
+|                    | 
+  [Windows VM 管理対象サービス ID (MSI) および Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](tutorial-windows-vm-access-nonaad.md) |
+| Azure VM (Linux)   | 
+  [Linux VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](tutorial-linux-vm-access-datalake.md) |
+|                    | 
+  [Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](tutorial-linux-vm-access-arm.md) |
+|                    | 
+  [Linux VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md) |
+|                    | 
+  [Linux VM 管理対象サービス ID を使用して SAS で Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md) |
+|                    | 
+  [Linux VM 管理対象サービス ID と Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md) |
+| Azure App Service  | 
+  [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | 
+  [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
+| Azure Service Bus  | 
+  [Azure Service Bus で管理対象サービス ID を使用する](../../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Event Hubs   | 
+  [Azure Event Hubs で管理対象サービス ID を使用する](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure API Management | [Azure API Management でマネージド サービス ID を使用する](../../api-management/api-management-howto-use-managed-service-identity.md) |
 
-## <a name="which-azure-services-support-managed-service-identity"></a>どの Azure サービスがマネージド サービス ID をサポートしていますか。
+## <a name="which-azure-services-support-managed-service-identity"></a>Azure サービスは管理対象サービス ID をサポートしますか。
 
 マネージド ID は、Azure AD 認証をサポートするサービスの認証に使用することができます。 マネージド サービス ID をサポートしている Azure サービスの一覧については、次の記事を参照してください。
-- [マネージド サービス ID をサポートするサービス](services-support-msi.md)
+- 
+  [管理対象サービス ID をサポートするサービス](services-support-msi.md)
 
 ## <a name="next-steps"></a>次の手順
 

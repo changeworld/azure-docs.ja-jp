@@ -4,18 +4,19 @@ description: Application Insights と App Center で監視するモバイル ア
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867953"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988927"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -144,7 +145,7 @@ Application Insights は、App Center で提供されている分析ツールよ
 
    [ユーザー フロー] ツールは、特定の開始イベントの後にユーザーがどのようなイベントを送信するかを視覚化します。 これは、ユーザーがアプリ内をどのように移動しているかの全体像を把握するのに便利です。 また、多くのユーザーがアプリから離脱している場所や、何度も同じアクションを繰り返している場所を特定できます。
 
-   Application Insights には、[ユーザー フロー] 以外にも、特定の質問に答えるための利用状況分析ツールがいくつか用意されています。
+   Application Insights には、[ユーザー フロー] 以外にも、特定の質問に答えるためのユーザー行動分析ツールがいくつか用意されています。
 
    * **[じょうご]**: コンバージョン レートを分析および監視します。
    * **[リテンション期間]**: アプリが時間の経過と共にどの程度ユーザーを保持できているかを分析します。

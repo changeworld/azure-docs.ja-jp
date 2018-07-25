@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970246"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070010"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Azure Blob Storage の不変ストレージ機能 (プレビュー)
 
@@ -178,11 +178,11 @@ BLOB の不変ストレージ機能は、どの種類の BLOB でも使用でき
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用されたコンテナーを削除しようとするとどうなりますか?**
 
-ロック済みの時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された BLOB が 1 つ以上あると、Delete Container 操作は失敗します。 保持間隔がアクティブな BLOB がなく、訴訟ホールドもなければ、Delete Container 操作は成功します。 コンテナーを削除するには、BLOB を削除しておく必要があります。
+ロック済みの時間ベースのアイテム保持ポリシーまたは訴訟ホールドが適用された BLOB が 1 つ以上あると、Delete Container 操作は失敗します。 これは、データが[論理的に削除](storage-blob-soft-delete.md)された場合にも当てはまります。保持間隔がアクティブな BLOB がなく、訴訟ホールドもなければ、Delete Container 操作は成功します。 コンテナーを削除するには、BLOB を削除しておく必要があります。 
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された WORM コンテナーを含むストレージ アカウントを削除しようとするとどうなりますか?**
 
-訴訟ホールドまたは保持間隔がアクティブな BLOB が格納された WORM コンテナーが 1 つ以上ある場合、ストレージ アカウントの削除は失敗します。  ストレージ アカウントを削除するには、すべての WORM コンテナーを削除しておく必要があります。  コンテナーの削除については、質問 2 を参照してください。
+訴訟ホールドまたは保持間隔がアクティブな BLOB が格納された WORM コンテナーが 1 つ以上ある場合、ストレージ アカウントの削除は失敗します。  ストレージ アカウントを削除するには、すべての WORM コンテナーを削除しておく必要があります。  コンテナーの削除については、前の質問を参照してください。
 
 **BLOB が不変状態のときに、異なる BLOB 層 (ホット、クール、コールド) の間でデータを移動できますか?**
 

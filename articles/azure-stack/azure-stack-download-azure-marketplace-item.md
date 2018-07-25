@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 07/13/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5d403f7c1d0fff466f6c0fb9942ec777ab820eab
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 73f8616449141ca91f96e9fcebede74597bc4fe3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604534"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044919"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -136,7 +136,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
    ![Azure Marketplace アイテムのポップアップ](media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. ダウンロードする項目を選択し、"*バージョン*" を書き留めておきます  (*Ctrl* キーを押しながら、複数の項目を選択することができます)。次の手順で項目をインポートするときに、"*バージョン*" を参照します。 
+7. ダウンロードする項目を選択し、"*バージョン*" を書き留めておきます  (*Ctrl* キーを押しながら、複数のイメージを選択することができます)。次の手順で項目をインポートするときに、"*バージョン*" を参照します。 
    
    また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。
 
@@ -148,20 +148,10 @@ Azure Stack が切断モードでインターネットに接続されていな�
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>ダウンロードのインポートと Azure Stack Marketplace への発行
 1. [以前にダウンロードした](#use-the-marketplace-syndication-tool-to-download-marketplace-items)仮想マシン イメージまたはソリューション テンプレートのファイルは、Azure Stack 環境でローカルに使用できるようにする必要があります。  
 
-2. .VHD ファイルを Azure Stack にインポートします。 仮想マシン (VM) のイメージを正常にインポートするには、VM に関する次の情報が必要です。
-   - 前の手順の 7. で書き留めておいた "*バージョン*"。
-   - VM の "*パブリッシャー*"、"*オファー*"、および "*SKU*" の値。 これらの値を取得するには、**.azpkg** ファイルのコピーの名前を変更し、ファイル拡張子を **.zip** にします。 次に、テキスト エディターを使用して、**DeploymentTemplates\CreateUiDefinition.json** を開くことができます。 .json ファイルで、*imageReference* セクションを探します。このセクションには、Marketplace 項目のこれらの値が含まれています。 次の例は、この情報がどのように表示されるかを示しています。
+2. **Add-AzsPlatformimage** コマンドレットを使用して、Azure Stack に VHD イメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 
 
-     ```json  
-     "imageReference": {  
-        "publisher": "MicrosoftWindowsServer",  
-        "offer": "WindowsServer",  
-        "sku": "2016-Datacenter-Server-Core"  
-      }
-     ```  
-
-   **Add-AzsPlatformimage** コマンドレットを使用して、Azure Stack にイメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 AZPKG ファイルと共にダウンロードされ、指定の場所に保存されたテキスト ファイルから、イメージの "*パブリッシャー*"、"*オファー*"、および "*SKU*" 値を取得できます。 
-
+   AZPKG ファイルと共にダウンロードされたテキスト ファイルから、イメージの "*パブリッシャー*"、"*オファー*"、および *SKU* の値を取得できます。 テキスト ファイルは、指定の場所に保存されています。
+ 
    次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 
 
    ```PowerShell  

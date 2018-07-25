@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: bceec3e85a54eb0e8b542d40ab20536ab41a50f0
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "23059927"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718942"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは PHP で記述されています。
@@ -47,7 +47,7 @@ Azure PHP アプリケーションで SendGrid を使用するために、特別
 SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
 
 ### <a name="smtp-api"></a>SMTP API
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 *Swift Mailer* ライブラリは、[http://swiftmailer.org/download][http://swiftmailer.org/download] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[Composer] を使用します)。 このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 *Swift Mailer* ライブラリは、[http://swiftmailer.org/download][https://swiftmailer.symfony.com/] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[Composer] を使用します)。 このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
 
     <?php
      include_once "vendor/autoload.php";

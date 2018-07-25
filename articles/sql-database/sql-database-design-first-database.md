@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 6/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311033"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091544"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>チュートリアル: SSMS を使用して最初の Azure SQL データベースを設計する
 
@@ -31,7 +31,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
    >[!NOTE]
-   > このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)を選択することもできます。 
+   > このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を選択することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,7 +77,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 5. **[選択]** をクリックします。
 
-6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)を選択することもできます。 
+6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を選択することもできます。 
 
 7. このチュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **100 DTU (S3)** と **400** GB のストレージを選択します。
 
@@ -149,7 +149,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |
-   | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+   | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 

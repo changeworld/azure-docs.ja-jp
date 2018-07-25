@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: da81f26109eb140135eb972fd28e487139470b82
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a69bfbe4c062012e82ca49233226eb1fcb8eb75e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032911"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113542"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成
 
@@ -72,6 +72,11 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
    ![Stream Analytics プロジェクトを作成する](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
+Azure Stream Analytics プロジェクトに含まれる要素に注目してください。
+
+   <img src="./media/stream-analytics-quick-create-vs/stream-analytics-project.png" alt="Azure Stream Analytics project elements" width="300px"/>
+
+
 ## <a name="choose-the-required-subscription"></a>必要なサブスクリプションを選択する
 
 1. Visual Studio の **[表示]** メニューで **[サーバー エクスプローラー]** を選択します。
@@ -89,7 +94,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
    |入力のエイリアス  |  入力   |  ジョブの入力を識別する名前を入力します。   |
    |ソースの種類   |  データ ストリーム |  適切な入力ソース ([データ ストリーム] または [参照データ]) を選択します。   |
    |ソース  |  Blob Storage |  適切な入力ソースを選択します。   |
-   |リソース  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
+   |Resource  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |
    |ストレージ アカウント  |  asaquickstartstorage   |  ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。   |
    |コンテナー  |  container1   |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |
@@ -108,7 +113,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
    |---------|---------|---------|
    |出力のエイリアス  |  出力   |  ジョブの出力を識別する名前を入力します。   |
    |シンク   |  Blob Storage |  適切なシンクを選択します。    |
-   |リソース  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
+   |Resource  |  データ ソース設定を手動で提供します |  手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。   |
    |ストレージ アカウント  |  asaquickstartstorage   |  ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。   |
    |コンテナー  |  container1   |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |

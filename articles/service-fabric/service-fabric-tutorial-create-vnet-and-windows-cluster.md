@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 91bb57f49f8c92967275d340410e22381adad19e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f795333e8af2f09800dedc0b65030c42165d6bbb
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114277"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068905"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Service Fabric Windows クラスターをデプロイする
 
@@ -57,7 +57,8 @@ ms.locfileid: "37114277"
 
 ## <a name="key-concepts"></a>主要な概念
 
-[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。
+
+  [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。
 
 ノード タイプは、クラスターの一連の仮想マシンのサイズ、数、およびプロパティを定義します。 すべての定義されたノード タイプは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure 計算リソースである、[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)として設定されます。 各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 ノード タイプを使用して、一連の "フロントエンド" または "バックエンド" などのクラスター ノードの役割を定義します。  クラスターには複数のノード タイプを指定できますが、運用環境クラスターの場合、プライマリ ノード タイプには少なくとも 5 つの VM が必要です (テスト環境のクラスターの場合は 3 つ以上)。  [Service Fabric のシステム サービス](service-fabric-technical-overview.md#system-services)は、プライマリ ノード タイプのノードに配置されます。
 
@@ -97,7 +98,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 * [リバース プロキシ](service-fabric-reverseproxy.md)が有効
 * [DNS サービス](service-fabric-dnsservice.md)が有効
 * ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
-* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
+ * シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
 * クライアント接続エンドポイント: 19000 (テンプレート パラメーターで構成可能)
 * HTTP ゲートウェイ エンドポイント: 19080 (テンプレート パラメーターで構成可能)
 
@@ -139,9 +140,9 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 |パラメーター|値の例|メモ|
 |---|---||
-|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。 |
-|adminPassword|Password#1234| クラスター VM の管理者パスワード。|
-|clusterName|mysfcluster123| クラスターの名前。 |
+|adminUserName|vmadmin| クラスター VM の管理者ユーザー名。[VM のユーザー名要件](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
+|adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)|
+|clusterName|mysfcluster123| クラスターの名前。 使用できる文字はアルファベットと数字のみです。 長さは 3 から 23 文字で指定できます。|
 |location|southcentralus| クラスターの場所。 |
 |certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の拇印値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"</p>が必要です。 |
 |certificateUrlValue|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。 </p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の URL を入力します。 (例: "https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346")。</p>|

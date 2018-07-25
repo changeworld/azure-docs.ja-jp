@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/14/2018
+ms.date: 07/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ad3b8755615332249ac00f43a2d0cc5fa13a7233
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971909"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113286"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -69,6 +69,52 @@ Media Services リソース名には、"<",">"、"%"、"&"、":"、"&#92;"、"?"
 
 Azure Resource Manager の名前付けの詳細については、[名前付けの要件](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)に関するページおよび「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」を参照してください。
 
+## <a name="media-services-v3-api-design-principles"></a>Media Services v3 API の設計原則
+
+v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API は、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 シークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 別のアクションを使用すれば、シークレットが取得/表示される API もあればそうでない API もある場合に、異なる RBAC セキュリティ アクセス許可を設定できます。 RBAC を使用してアクセスを管理する方法の詳細については、[RBAC を使用したアクセスの管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)に関するページを参照してください。
+
+この例には以下のようなものがあります 
+
+* StreamingLocator の Get で ContentKey の値が返されない。 
+* ContentKeyPolicy の Get で制限キーが返されない。 
+* ジョブの HTTP 入力 URL の (署名を削除する) URL に含まれているクエリ文字列部分が返されない。
+
+次の .NET サンプルは、既存のポリシーから署名キーを取得する方法を示します。 **GetPolicyPropertiesWithSecretsAsync** を使用してキーを取得する必要があります。
+
+```csharp
+private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
+    IAzureMediaServicesClient client,
+    string resourceGroupName,
+    string accountName,
+    string contentKeyPolicyName)
+{
+    ContentKeyPolicy policy = await client.ContentKeyPolicies.GetAsync(resourceGroupName, accountName, contentKeyPolicyName);
+
+    if (policy == null)
+    {
+        // Configure and create a new policy.
+        
+        . . . 
+        policy = await client.ContentKeyPolicies.CreateOrUpdateAsync(resourceGroupName, accountName, contentKeyPolicyName, options);
+    }
+    else
+    {
+        var policyProperties = await client.ContentKeyPolicies.GetPolicyPropertiesWithSecretsAsync(resourceGroupName, accountName, contentKeyPolicyName);
+        var restriction = policyProperties.Options[0].Restriction as ContentKeyPolicyTokenRestriction;
+        if (restriction != null)
+        {
+            var signingKey = restriction.PrimaryVerificationKey as ContentKeyPolicySymmetricTokenKey;
+            if (signingKey != null)
+            {
+                TokenSigningKey = signingKey.KeyValue;
+            }
+        }
+    }
+
+    return policy;
+}
+```
+
 ## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法
 
 開発者は、Media Services の [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 REST Postman の例については、[こちら](https://github.com/Azure-Samples/media-services-v3-rest-postman)をご覧ください。 [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates) を使用することもできます。
@@ -77,10 +123,10 @@ Microsoft は、次のクライアント ライブラリを生成してサポー
 
 |クライアント ライブラリ|サンプル|
 |---|---|
-|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Azure CLI のサンプル](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)|[Azure CLI のサンプル](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
 |[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET のサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
 |[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (**[.NET CLI]** タブを選択します)|[.NET Core のサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Java SDK](https://docs.microsoft.com/java/api/mediaservices/management?view=azure-java-stable)||
 |[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js のサンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
 |[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
 |[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||

@@ -1,28 +1,34 @@
 ---
-title: Azure Search でのシノニム チュートリアル | Microsoft Docs
-description: Azure Search のインデックスにシノニム機能を追加します。
+title: Azure Search における同意語 (C# チュートリアル) | Microsoft Docs
+description: このチュートリアルでは、Azure Search のインデックスに同意語機能を追加します。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/20/2018
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182091"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990563"
 ---
-# <a name="synonym-c-tutorial-for-azure-search"></a>Azure Search のシノニム C# チュートリアル
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>チュートリアル: Azure Search に使用する同意語を C# で追加する
 
-シノニムは、意味的に入力用語と同等と見なされる用語を一致させることにより、クエリを拡張します。 たとえば、"car" を "automobile" または "vehicle" という用語が含まれているドキュメントと一致させたい場合があります。
+シノニムは、意味的に入力用語と同等と見なされる用語を一致させることにより、クエリを拡張します。 たとえば、"car" を "automobile" または "vehicle" という用語が含まれているドキュメントと一致させたい場合があります。 
 
-Azure Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 複数のシノニム マップを作成し、サービス全体の任意のインデックスで使用できるリソースとしてポストして、フィールド レベルでどのマップを使用するかを参照することができます。 クエリの際に、Azure Search はインデックスを検索するだけでなく、クエリで使用されているフィールドにシノニム マップが指定されていれば、そのマップも参照します。
+Azure Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 このチュートリアルでは、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。 学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * マッピング規則を作成してポストすることによって同意語を有効にする 
+> * クエリ文字列で同意語マップを参照する
+
+複数のシノニム マップを作成し、サービス全体の任意のインデックスで使用できるリソースとしてポストして、フィールド レベルでどのマップを使用するかを参照することができます。 クエリの際に、Azure Search はインデックスを検索するだけでなく、クエリで使用されているフィールドにシノニム マップが指定されていれば、そのマップも参照します。
 
 > [!NOTE]
-> シノニム機能は API と SDK の最新バージョン (API はバージョン 2017-11-11、SDK はバージョン 5.0.0) でサポートされています。 現時点で Azure Portal のサポートはありません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
+> 同意語は API と SDK の最新バージョン (API はバージョン 2017-11-11、SDK はバージョン 5.0.0) でサポートされています。 現時点で Azure Portal のサポートはありません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -159,8 +165,13 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ## <a name="sample-application-source-code"></a>サンプル アプリケーションのソース コード
 このチュートリアルで使用したサンプル アプリケーションの完全なソース コードが [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) にあります。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+チュートリアルの後で最も速くクリーンアップする方法は、Azure Search サービスが含まれているリソース グループを削除することです。 リソース グループを削除することで、そのすべての内容を完全に削除することができます。 ポータルでは、リソース グループ名は Azure Search サービスの [概要] ページに表示されます。
+
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Search でのシノニムの使用方法](search-synonyms.md)を調べる
-* [シノニムの REST API ドキュメント](https://aka.ms/rgm6rq)を調べる
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
+このチュートリアルでは、C# コードから[同意語の REST API](https://aka.ms/rgm6rq) を使ってマッピング規則を作成、ポストし、クエリで同意語マップを呼び出す方法をデモンストレーションします。 さらに詳しい情報については、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
+
+> [!div class="nextstepaction"]
+> [Azure Search で同意語を使用する方法](search-synonyms.md)

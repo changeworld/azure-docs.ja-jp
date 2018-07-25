@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5346467dff40832aa35799ee3d532e99bf14d569
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482076"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005817"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
@@ -76,7 +76,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 1. IoT ハブを新しいリソース グループに作成します。 次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
 
    ```azurecli-interactive
-   az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
 
    サブスクリプションに無料のハブが既に 1 つあるためにエラーが発生する場合は、SKU を **S1** に変更します。 
@@ -250,12 +250,11 @@ IoT Edge のチュートリアルに進む場合は、このクイック スタ�
 
 新しいリソース グループで仮想マシンと IoT ハブを作成した場合、そのグループと関連するすべてのリソースを削除できます。 リソース グループ内に残したいリソースがある場合は、クリーン アップする個々のリソースのみを削除します。 
 
-リソース グループを削除するには、次の手順を実行します。 
+**IoTEdgeResources** グループを削除します。 
 
-1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
-2. **[名前でフィルター処理してください]** ボックスに、IoT ハブが含まれているリソース グループの名前を入力します。 
-3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+   ```azurecli-interactive
+   az group delete --name IoTEdgeResources 
+   ```
 
 ### <a name="remove-the-iot-edge-runtime"></a>IoT Edge ランタイムを削除する
 

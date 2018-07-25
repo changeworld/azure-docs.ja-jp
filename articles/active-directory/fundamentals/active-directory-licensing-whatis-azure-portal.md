@@ -15,12 +15,12 @@ ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c6800e5a00d2fb837538141571c105a1d21e4374
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860465"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005233"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスの基礎
 
@@ -30,8 +30,8 @@ ms.locfileid: "37860465"
 
 これらの課題を受けて、Azure AD はグループベース ライセンス機能が搭載されました。 この機能により、1 つのグループに 1 つ以上の製品ライセンスを割り当てることができます。 グループに含まれるメンバー全員に、Azure AD からライセンスが割り当てられるようになります。 新しいメンバーがグループに参加すると、適切なライセンスが割り当てられます。 グループから抜けると、割り当てられていたライセンスが削除されます。 これにより、組織や部門の構造の変化を反映するように PowerShell でユーザーごとのライセンス管理を自動化する必要はなくなりました。
 
->[!NOTE]
->現在、この機能はパブリック プレビュー段階にあります。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) の有料ライセンス プランで使用できます。 ただし、機能が一般公開されたら、機能の一部で 1 つ以上の Azure Active Directory Premium ライセンスが必要になる場合があります。
+>[!Note]
+>グループベースのライセンスは Azure Active Directory (Azure AD) のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="features"></a>機能
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63a78332742dcefab20401575b1df0e23c06aa78
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22719927"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035148"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 
 Traffic Manager プロファイルを作成すると、Azure では、そのプロファイルに DNS 名が自動的に割り当てられます。 独自の DNS ゾーンの名前を使用するには、Traffic Manager プロファイルのドメイン名にマップされる CNAME DNS レコードを作成します。 Traffic Manager プロファイルの [構成] ページの **[全般]** セクションで、Traffic Manager ドメイン名を確認できます。
 
-たとえば、www.contoso.com で Traffic Manager DNS 名 contoso.trafficmanager.net を参照させるには、次の DNS リソース レコードを作成します。
+たとえば、`www.contoso.com` で Traffic Manager DNS 名 `contoso.trafficmanager.net` を参照させるには、次の DNS リソース レコードを作成します。
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
@@ -34,7 +34,7 @@ Traffic Manager プロファイルを作成すると、Azure では、そのプ�
 > [!IMPORTANT]
 > *contoso.com*などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
 * [Traffic Manager  - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)

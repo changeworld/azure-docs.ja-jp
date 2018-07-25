@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 62e376a345be837e910ea615f8648e6b8d196ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435546"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006249"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリと SQL Database をデプロイします。  
@@ -292,7 +292,6 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  }
   ```
 
 2. リソース グループを再デプロイします。 Azure portal でダッシュボードを見て、共有ダッシュボードが選択肢の一覧に追加されたことを確認します。

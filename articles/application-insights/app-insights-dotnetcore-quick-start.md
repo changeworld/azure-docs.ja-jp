@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386386"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991623"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -33,7 +33,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - [.NET Core 2.0 SDK のインストール](https://www.microsoft.com/net/core)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
-ASP.NET Core Web アプリケーションがない場合は、[ASP.NET Core Web アプリを作成するためのガイド](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)に従って作成できます。
+ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](app-insights-asp-net-core.md)してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -77,25 +77,25 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. Azure Portal で、**[プロジェクト]** > **[Application Insights]** > **[Application Insights ポータルを開く]** を選択して Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/app-insights-dotnetcore-quick-start/004-Black.png)
+   ![Application Insights の概要メニュー](./media/app-insights-dotnetcore-quick-start/overview-001.png)
 
-2. **[App map (アプリ マップ)]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
+2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/app-insights-dotnetcore-quick-start/0002-dc.png)
+   ![アプリケーション マップ](./media/app-insights-dotnetcore-quick-start/application-map.png)
 
 3. **[アプリ分析]** アイコンをクリックし、![[アプリケーション マップ]](./media/app-insights-dotnetcore-quick-start/006.png) アイコンをクリックします。  これにより、Application Insights で収集されたすべてのデータを分析するための多機能なクエリ言語を利用可能な **Application Insights Analytics** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/app-insights-dotnetcore-quick-start/0007-dc.png)
 
-4. **概要**ページに戻り、**正常性の概要のタイムライン**を確認します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。 
+4. **[概要]** ページに戻って KPI ダッシュボードを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。 
 
-   ![正常性の概要のタイムライン グラフ](./media/app-insights-dotnetcore-quick-start/0008-dc.png)
+   ![正常性の概要のタイムライン グラフ](./media/app-insights-dotnetcore-quick-start/overview-graphs.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

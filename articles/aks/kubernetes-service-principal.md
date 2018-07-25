@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f933788968ffdbd4a856a84476d8d82b32637d62
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100336"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035202"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -35,7 +35,7 @@ Azure AD サービス プリンシパルを作成するには、アプリケー�
 
 次の例では、AKS クラスターが作成されます。また、既存のサービス プリンシパルが指定されていないため、そのクラスター用にサービス プリンシパルが作成されます。 この操作を完了するために、アカウントには、サービス プリンシパルを作成するための適切な権限が必要です。
 
-```azurecli
+```azurecli-interactive
 az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
@@ -47,7 +47,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ss
 
 Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac][az-ad-sp-create] コマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
@@ -84,7 +84,12 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 * サービス プリンシパルの**クライアント ID** を指定する場合は、この記事で示すように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用してください。
 * Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
-* `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 `az ad sp delete --id $clientID` を使用して削除してください。
+* `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 サービス プリンシパルを削除するには、まず、[az ad app list][az-ad-app-list] でサービス プリンシパルの ID を取得します。 次の例では、*myAKSCluster* という名前のクラスターを検索するクエリを実行し、該当するアプリ ID を [az ad app delete][az-ad-app-delete] で削除しています。 これらの名前は、実際の値に置き換えてください。
+
+    ```azurecli-interactive
+    az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
+    az ad app delete --id <appId>
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
@@ -101,3 +106,5 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [install-azure-cli]: /cli/azure/install-azure-cli
 [service-principal]: ../active-directory/develop/active-directory-application-objects.md
 [user-defined-routes]: ../load-balancer/load-balancer-overview.md
+[az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
+[az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete

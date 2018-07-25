@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/10/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 30b75f577b5e68614131e6476586921a752768dc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bc725a5d9e3e9cdf82a01693aed83bff1f16c04
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386539"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991630"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Node.js Web アプリケーションの監視を開始する
 
@@ -30,7 +30,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - Azure サブスクリプションと既存の Node.js Web アプリケーションが必要です。
 
 Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)に従って作成できます。
- 
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. **[概要]** > **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
-   ![新しい App Insights リソースのフォーム](./media/app-insights-nodejs-quick-start/003-Black.png)
+   ![新しい App Insights リソースのフォーム](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
 
 2. Application Insights SDK for Node.js をアプリケーションに追加します。 アプリのルート フォルダーから次のものを実行します。
 
@@ -84,25 +84,25 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/app-insights-nodejs-quick-start/004-Black.png)
+   ![Application Insights の概要メニュー](./media/app-insights-nodejs-quick-start/overview-001.png)
 
 2. **[App map (アプリ マップ)]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/app-insights-nodejs-quick-start/005-Black.png)
+   ![アプリケーション マップ](./media/app-insights-nodejs-quick-start/application-map.png)
 
 3. **[アプリ分析]** アイコンをクリックし、![[アプリケーション マップ]](./media/app-insights-nodejs-quick-start/006.png) アイコンをクリックします。  これにより、Application Insights で収集されたすべてのデータを分析するための多機能なクエリ言語を利用可能な **Application Insights Analytics** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/app-insights-nodejs-quick-start/007-Black.png)
 
-4. **概要**ページに戻り、**正常性の概要のタイムライン**を確認します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。 
+4. **[概要]** ページに戻って KPI グラフを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。 
 
-   ![正常性の概要のタイムライン グラフ](./media/app-insights-nodejs-quick-start/008-Black.png)
+   ![正常性の概要のタイムライン グラフ](./media/app-insights-nodejs-quick-start/overview-perf.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics tools about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

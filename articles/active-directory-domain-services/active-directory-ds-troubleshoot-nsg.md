@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 807dd2bdcc1e2ad18b1a93c3337c8244e3f1366b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 67f4f0850d0600fc7ca0f1323e7c7801187089f5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218981"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950736"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>管理対象ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
@@ -35,8 +35,8 @@ ms.locfileid: "36218981"
 1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します
 2. テーブルから、管理対象ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
 3. 左側のウィンドウの **[設定]** の下で、**[受信セキュリティ規則]** をクリックします。
-4. 現在の規則を確認し、どのルールが[これらのポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスをブロックしているか確認します。
-5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または[準拠している新しい NSG の作成](#create-a-nsg-for-azure-ad-domain-services-using-powershell)方法は以下のとおりです。
+4. 現在の規則を確認し、どのルールが[これらのポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスをブロックしているか確認します
+5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または[準拠している新しい NSG の作成](#create-a-nsg-for-azure-ad-domain-services-using-powershell)方法は以下のとおりです
 
 ## <a name="sample-nsg"></a>NSG のサンプル
 次の表では、管理対象ドメインのセキュリティ保護を維持しながら、Microsoft が情報を監視、管理、更新できるようにする、NSG の例を示します。
@@ -49,7 +49,7 @@ ms.locfileid: "36218981"
 ## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Azure Portal を使用してネットワーク セキュリティ グループに規則を追加する
 PowerShell を使いたくない場合は、Azure Portal を使って手動で 1 つの規則を NSG に追加できます。 ネットワーク セキュリティ グループに規則を作成するには、次の手順を実行します。
 
-1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します
+1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します。
 2. テーブルから、管理対象ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
 3. 左側のパネルの **[設定]** で、**[受信セキュリティ規則]** または **[送信セキュリティ規則]** をクリックします。
 4. **[追加]** をクリックして情報を入力し、規則を作成します。 Click **OK**.

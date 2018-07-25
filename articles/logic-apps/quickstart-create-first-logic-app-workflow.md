@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
+ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300941"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125741"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート: Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure Portal
 
@@ -34,7 +34,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する 
 
-1. Azure のメイン メニューで、**[リソースの作成]** > **[Enterprise Integration]** > **[Logic App]** の順に選択します。
+1. Azure のメイン メニューで、**[リソースの作成]** > **[統合]** > **[ロジック アプリ]** の順に選択します。
 
    ![ロジック アプリを作成する](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
@@ -42,12 +42,12 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリの詳細を指定する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
-   | ------- | ----- | ----------- | 
+   | プロパティ | 値 | [説明] | 
+   |----------|-------|-------------| 
    | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **場所** | 米国東部 2 | ロジック アプリの情報の保存先となるリージョン | 
+   | **リソース グループ** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -69,12 +69,12 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Setting | 値 | 説明 | 
-   | ------- | ----- | ----------- | 
+   | プロパティ | 値 | 説明 | 
+   |----------|-------|-------------| 
    | **RSS フィードの URL** | ```http://feeds.reuters.com/reuters/topNews``` | 監視する RSS フィードのリンク | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | [分] | チェックの間隔に使う時間の単位  | 
-   |  |  |  | 
+   |||| 
 
    ロジック アプリのトリガーには、間隔と頻度の組み合わせでそのスケジュールを定義します。 
    このロジック アプリでは、1 分おきにフィードをチェックします。
@@ -95,9 +95,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![アクションを追加する](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. **[アクションを選択してください]** で「メールの送信」を検索し、目的のメール プロバイダーの "メールの送信" アクションを選択します。 アクション一覧をフィルタリングしてサービスを絞り込み、**[コネクタ]** の一番上に表示されるコネクタを選択してください。
+2. **[アクションを選択してください]** で、フィルターとして「メールの送信」と入力します。 アクション リストから、目的のメール プロバイダーの "メールの送信" アクションを選択します。 
 
    ![[Office 365 Outlook - 電子メールの送信] アクションを選択する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+
+   アクション リストを絞り込んで特定のアプリまたはサービスだけが表示されるようにするには、最初にアプリまたはサービスを選択します。
 
    * Azure の職場または学校アカウントには、Office 365 Outlook を選択します。 
    * 個人用 Microsoft アカウントには、Outlook.com を選択します。
@@ -109,21 +111,14 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    1. **[宛先]** ボックスに、受信者の電子メール アドレスを入力します。 
    テスト目的で自分の電子メール アドレスを使用できます。
 
-      パラメーター リストまたは **[動的なコンテンツの追加]** リストが表示されますが、ここでは無視してください。 
-      いくつかの編集ボックスは、その内部をクリックすると、このリストが表示され、先行するステップから、ワークフローへの入力として追加できるパラメーターがすべて表示されます。
-      どちらのリストが表示されるかは、お使いのブラウザーの幅によって決まります。
+      **[動的なコンテンツの追加]** リストが表示されますが、ここでは無視してください。 
+      いくつかの編集ボックスは、その内部をクリックすると、このリストが表示され、先行するステップから、ワークフローへの入力として追加できるパラメーターがすべて表示されます。 
 
    2. **[件名]** ボックスに「```New RSS item: ```」と入力し、その後ろに空白スペースを追加します。
 
       ![電子メールの件名を入力する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  
-   3. パラメーター リストまたは **[動的なコンテンツの追加]** リストから **[フィード タイトル]** を選択して RSS 項目のタイトルを追加します。
-
-      パラメーター リストの例を次に示します。
-
-      ![パラメーター リスト - "フィード タイトル"](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-parameters-list.png)
-
-      一方、動的コンテンツ リストは次のように表示されます。
+   3. **[動的なコンテンツの追加]** リストから **[フィード タイトル]** を選択して RSS 項目のタイトルを追加します。
 
       ![動的コンテンツ リスト - "フィード タイトル"](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -131,18 +126,18 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![追加されたフィード タイトル](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
 
-      デザイナーに "For each" ループが表示された場合、**[categories-item]\(カテゴリ-項目\)** フィールドなど、配列を含むフィールドを選択したことが原因です。 
-      この種のフィールドを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 
+      デザイナーに "For each" ループが表示される場合、**[categories-item]\(カテゴリ-項目\)** トークンなど、配列のトークンを選択したことが原因です。 
+      この種のトークンを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 
       そうすることで個々の配列項目に同じアクションが実行されます。 
       ループを削除するには、ループのタイトル バーで**省略記号** (**...**) を選択し、**[削除]** を選択します。
 
-   4. **[Body]\(本文\)** ボックスには、メール本文に使用するテキストを次のように入力し、対応するフィールドを選択します。 
+   4. **[本文]** ボックスには、メール本文に使用するテキストを次のように入力し、対応するトークンを選択します。 
    編集ボックスで空白行を追加するには、Shift + Enter キーを押します。 
 
       ![電子メールの本文の内容を追加する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Setting | 説明 | 
-      | ------- | ----------- | 
+      | プロパティ | 説明 | 
+      |----------|-------------| 
       | **フィード タイトル** | 項目のタイトル | 
       | **フィードの公開日付** | 項目の公開日時 | 
       | **プライマリ フィード リンク** | 項目の URL | 
@@ -167,9 +162,15 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、ロジック アプリと関連リソースを含んだリソース グループを削除しましょう。 Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、**[削除]** を選択します。
+このサンプルの必要がなくなったら、ロジック アプリと関連リソースが含まれるリソース グループを削除しましょう。 
 
-![[リソース グループ] > [概要] > [リソース グループの削除]](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+1. Azure のメイン メニューから **[リソース グループ]** に移動し、対象のロジック アプリのリソース グループを選択します。 **[概要]** ページで **[リソース グループの削除]** を選択します。 
+
+   ![[リソース グループ] > [概要] > [リソース グループの削除]](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+
+2. 確認のためにリソース グループ名を入力し、**[削除]** を選択します。
+
+   ![削除の確定](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 ## <a name="get-support"></a>サポートを受ける
 

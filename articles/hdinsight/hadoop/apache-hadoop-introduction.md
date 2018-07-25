@@ -1,29 +1,26 @@
 ---
-title: HDInsight と Hadoop および Spark テクノロジ スタックとは - Azure | Microsoft Docs
+title: HDInsight と Hadoop および Spark テクノロジ スタックとは - Azure
 description: HDInsight と、ビッグ データの分析用の Kafka、Hive、Storm、HBase を含む、Hadoop および Spark テクノロジ スタックおよびコンポーネントの概要。
 keywords: Azure Hadoop, Hadoop Azure, Hadoop の紹介, Hadoop の概要, Hadoop テクノロジ スタック, Hadoop の概説, Hadoop 入門, Hadoop クラスターとは, Hadoop クラスターについて, Hadoop の使用目的
 services: hdinsight
-documentationcenter: ''
 author: cjgronlund
+ms.author: cgronlun
 manager: jhubbard
-editor: cgronlun
 ms.assetid: e56a396a-1b39-43e0-b543-f2dee5b8dd3a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: cgronlun
-ms.openlocfilehash: b84389c1d52c0c43f1e71da3eed86f4057b85559
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7bed171a3b866f4b1f94d6a5348dd25d8820f2b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051384"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115343"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Azure HDInsight および Hadoop テクノロジ スタックとは
 
-この記事では、Azure HDInsight 上の Apache Hadoop の概要について説明します。 Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R など、オープン ソースのフレームワークを使用することができます。 
+この記事では、Azure HDInsight 上の Apache Hadoop の概要について説明します。 Azure HDInsight は、フル マネージドの、全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R など、オープン ソースのフレームワークを使用することができます。 
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
@@ -70,7 +67,7 @@ HDInsight を使用して、あらゆる形式の構造化データや非構造�
 
 ### <a name="internet-of-things-iot"></a>モノのインターネット(IoT)
 
-さまざまなデバイスからリアルタイムで受信したストリーミング データを HDInsight で処理することができます。 詳細については、[Azure Managed Disks を使用した HDInsight での Apache Kafka のパブリック プレビューを知らせる Azure のブログ記事を参照してください](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
+さまざまなデバイスからリアルタイムで受信したストリーミング データを HDInsight で処理することができます。 詳細については、[Azure マネージド ディスクを使用した HDInsight での Apache Kafka のパブリック プレビューを知らせる Azure のブログ記事を参照してください](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
 ![HDInsight のアーキテクチャ: モノのインターネット](./media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT のアーキテクチャ") 
 
@@ -89,7 +86,7 @@ HDInsight を使用して、既にあるオンプレミスのビッグ データ
 ## <a name="cluster-types-in-hdinsight"></a>HDInsight でのクラスターの種類
 HDInsight には、特定のクラスターの種類のほか、コンポーネント、ユーティリティ、および言語を追加する機能などのクラスター カスタマイズ機能が含まれています。 HDInsight は、次のクラスターの種類を提供します。
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: [HDFS](#hdfs)、[YARN](#yarn) によるリソース管理、およびシンプルな [MapReduce](#mapreduce) プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワーク。
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワーク。
 
 * **[Apache Spark](http://spark.apache.org/)**: ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](../spark/apache-spark-overview.md)に関する記事を参照してください。
 
