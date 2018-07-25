@@ -44,7 +44,7 @@ ms.locfileid: "37921231"
 ## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>リソース診断ログのサービス固有のスキーマ
 リソース診断ログのスキーマは、リソースとログ カテゴリによって異なります。 この一覧は、診断ログを使用できるようにするすべてのサービスと、サービスおよびカテゴリ固有のスキーマ (使用可能な場合) へのリンクを示しています。
 
-| サービス | スキーマとドキュメント |
+| Service | スキーマとドキュメント |
 | --- | --- |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
@@ -78,8 +78,8 @@ ms.locfileid: "37921231"
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|Category|カテゴリの表示名|
 |---|---|---|
-|Microsoft.AnalysisServices/servers|Engine|エンジン|
-|Microsoft.AnalysisServices/servers|Service|サービス|
+|Microsoft.AnalysisServices/servers|Engine|Engine|
+|Microsoft.AnalysisServices/servers|Service|Service|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
 |Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
 |Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
@@ -96,12 +96,12 @@ ms.locfileid: "37921231"
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL のバックアップ イベント|
-|Microsoft.Devices/IotHubs|Connections|接続|
+|Microsoft.Devices/IotHubs|Connections|Connections|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
 |Microsoft.Devices/IotHubs|DeviceIdentityOperations|デバイス ID の操作|
 |Microsoft.Devices/IotHubs|FileUploadOperations|ファイルのアップロード操作|
-|Microsoft.Devices/IotHubs|Routes|ルート|
+|Microsoft.Devices/IotHubs|Routes|Routes|
 |Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
 |Microsoft.Devices/IotHubs|C2DTwinOperations|C2D ツイン操作|
 |Microsoft.Devices/IotHubs|TwinQueries|ツイン クエリ|
@@ -135,7 +135,7 @@ ms.locfileid: "37921231"
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
-|Microsoft.PowerBIDedicated/capacities|Engine|エンジン|
+|Microsoft.PowerBIDedicated/capacities|Engine|Engine|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
@@ -150,13 +150,13 @@ ms.locfileid: "37921231"
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
-|Microsoft.Sql/servers/databases|Timeouts|タイムアウト|
-|Microsoft.Sql/servers/databases|Blocks|ブロック|
+|Microsoft.Sql/servers/databases|Timeouts|Timeouts|
+|Microsoft.Sql/servers/databases|Blocks|Blocks|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
-|Microsoft.StreamAnalytics/streamingjobs|Authoring|作成|
+|Microsoft.StreamAnalytics/streamingjobs|Execution|Execution|
+|Microsoft.StreamAnalytics/streamingjobs|Authoring|Authoring|
 
 ## <a name="next-steps"></a>次の手順
 
