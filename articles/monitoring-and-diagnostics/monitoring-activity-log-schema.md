@@ -123,10 +123,10 @@ ms.locfileid: "37917229"
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus |通常は対応する REST 呼び出しの HTTP 状態コードですが、副状態を示す他の文字列が含まれる場合もあります。たとえば、OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code: 503)、Gateway Timeout (HTTP Status Code: 504) などの一般的な値が含まれる場合があります。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
@@ -269,10 +269,10 @@ ms.locfileid: "37917229"
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
 | resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 その他のアラートの場合、これはアラート自体のリソース プロバイダーの名前です。 |
-| ResourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
+| resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus | アラートの場合、通常は null です。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
@@ -378,10 +378,10 @@ ms.locfileid: "37917229"
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
 | resourceProviderName |自動スケール設定のリソース プロバイダーの名前。 |
-| ResourceId |自動スケール設定のリソース ID。 |
+| resourceId |自動スケール設定のリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 | properties.Description | 自動スケール エンジンが実行していた処理の詳細な説明。 |
 | properties.ResourceName | 影響を受けるリソース (スケール アクションが実行されていたリソース) のリソース ID |
 | properties.OldInstancesCount | 自動スケール アクションが有効になる前のインスタンスの数。 |
@@ -469,10 +469,10 @@ ms.locfileid: "37917229"
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
 | resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
-| ResourceId |セキュリティ アラートのリソース ID。 |
+| resourceId |セキュリティ アラートのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
-| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../security-center/security-center-alerts-type.md)をご覧ください。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../security-center/security-center-alerts-type.md)をご覧ください。 |
 | properties.Severity |重大度のレベル。 可能性のある値は、"High"、"Medium"、"Low" です。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus | 通常、セキュリティ イベントの場合は null です。 |
@@ -543,18 +543,18 @@ ms.locfileid: "37917229"
 | correlationId | 文字列形式の GUID。 |
 | description  |推奨イベントを説明する静的テキスト |
 | eventDataId | 推奨イベントの一意の識別子。 |
-| カテゴリ | 常に "Recommendation" |
+| category | 常に "Recommendation" |
 | id |推奨イベントの一意のリソース ID。 |
 | level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
 | operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |この推奨が適用されるリソースのリソース プロバイダーの名前 ("MICROSOFT.COMPUTE" など) |
 | resourceType |この推奨が適用されるリソースのリソース タイプの名前 ("MICROSOFT.COMPUTE/virtualmachines" など) |
-| ResourceId |推奨が適用されるリソースのリソース ID |
+| resourceId |推奨が適用されるリソースのリソース ID |
 | status | 常に "Active" |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
-| プロパティ |推奨の詳細を示す `<Key, Value>` ペアのセット (辞書)。|
+| properties |推奨の詳細を示す `<Key, Value>` ペアのセット (辞書)。|
 | properties.recommendationSchemaVersion| アクティビティ ログ エントリに公開される推奨プロパティのスキーマ バージョン |
 | properties.recommendationCategory | 推奨のカテゴリ。 指定できる値は "High Availability"、"Performance"、"Security"、"Cost" です。 |
 | properties.recommendationImpact| 推奨の影響。 指定できる値は "High"、"Medium"、"Low" です。 |
@@ -567,23 +567,23 @@ Azure アクティビティ ログをストレージ アカウントまたは Ev
 | 診断ログ スキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | メモ |
 | --- | --- | --- |
 | time | eventTimestamp |  |
-| ResourceId | ResourceId | subscriptionId、resourceType、resourceGroupName は、すべて resourceId から推測されます。 |
+| resourceId | resourceId | subscriptionId、resourceType、resourceGroupName は、すべて resourceId から推測されます。 |
 | operationName | operationName.value |  |
-| カテゴリ | 操作の名前の一部 | 操作の種類の詳細内訳 - "Write"/"Delete"/"Action" |
+| category | 操作の名前の一部 | 操作の種類の詳細内訳 - "Write"/"Delete"/"Action" |
 | resultType | status.value | |
 | resultSignature | substatus.value | |
 | resultDescription | description  |  |
 | durationMs | 該当なし | 常時 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| ID | 要求と承認プロパティ |  |
+| identity | claim と authorization プロパティ |  |
 | Level | Level |  |
 | location | 該当なし | イベントが処理される場所。 *これは、リソースの場所ではなく、イベントが処理される場所です。このプロパティは、今後の更新で削除されます。* |
 | Properties | properties.eventProperties |  |
-| properties.eventCategory | カテゴリ | properties.eventCategory が存在しない場合、カテゴリは "Administrative" |
+| properties.eventCategory | category | properties.eventCategory が存在しない場合、カテゴリは "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
-| properties.eventProperties | プロパティ |  |
+| properties.eventProperties | properties |  |
 
 
 ## <a name="next-steps"></a>次の手順
