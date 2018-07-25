@@ -5,15 +5,15 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 4b4dcb16adf207b775bd8411848d9e5d69c397a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 36902edd7b2df472960d19b8ef9a4ebd4cdfe695
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34669800"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906682"
 ---
 この記事では、仮想マシンのサイズの前の世代の情報を提供します。 これらのサイズも、使用できますが、より新しい世代が使用可能です。
 
@@ -21,6 +21,10 @@ ms.locfileid: "34669800"
 ## <a name="ds-series"></a>DS シリーズ
 
 ACU: 160
+
+Premium Storage:  サポートされています
+
+Premium Storage Caching:  サポートされています
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -34,6 +38,10 @@ ACU: 160
 ## <a name="ds-series---memory-optimized"></a>DS シリーズ - メモリ最適化済み
 
 ACU: 160 <sup>1</sup>
+
+Premium Storage:  サポートされています
+
+Premium Storage Caching:  サポートされています
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -50,6 +58,10 @@ ACU: 160 <sup>1</sup>
 
 ACU: 160
 
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
+
 | サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D1  | 1         | 3.5         | 50             | 3000/46/23                                           | 4 / 4x500                         | 2/500                 |
@@ -63,6 +75,10 @@ ACU: 160
 
 ACU: 160
 
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
+
 | サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 8 / 8x500                         | 2/1,000                     |
@@ -75,6 +91,10 @@ ACU: 160
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
 
 ACU: 225
+
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
 
 A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
@@ -93,6 +113,10 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 
 ACU: 50 ～ 100
 
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
+
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (HDD): GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 <sup>1</sup> |1 |0.768 |20 |1 |1x500 |2/100 |
@@ -108,6 +132,7 @@ ACU: 50 ～ 100
 <sup>1</sup> A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。 この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。 下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard A0 ～ A4 (CLI と PowerShell の使用)
+
 クラシック デプロイ モデルでは、一部の VM サイズが CLI と PowerShell で若干異なります。
 
 * Standard_A0: ExtraSmall 
@@ -117,6 +142,10 @@ ACU: 50 ～ 100
 * Standard_A4: ExtraLarge
 
 ## <a name="basic-a"></a>Basic A
+
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
 
 Basic レベルのサイズは主に、負荷分散や自動スケール、メモリ消費量の多い仮想マシンのいずれも必要としない用途 (開発ワークロードなど) 向けです。
 

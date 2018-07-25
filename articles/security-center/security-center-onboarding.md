@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416491"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479463"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
 ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は 60 日間無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
@@ -33,7 +33,7 @@ Security Center Standard は次の機能を備えています。
 ## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出     
 Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
 
-Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。また、特定のリソース グループだけをアップグレードする固有のポリシーを定義することもできます。 リソース グループのポリシー設定が固有の場合、サブスクリプションを Standard レベルにアップグレードしたときに価格ポリシーは上書きされません。 Standard レベルをサブスクリプションに適用すると、Security Center によって作成されたワークスペースに報告する、サブスクリプション内の VM にのみ適用されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
+Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。また、特定のリソース グループだけをアップグレードする固有のポリシーを定義することもできます。 リソース グループのポリシー設定が固有の場合、サブスクリプションを Standard レベルにアップグレードしたときに価格ポリシーはオーバーライドされません。 Standard レベルをサブスクリプションに適用すると、Security Center によって作成されたワークスペースに報告する、サブスクリプション内の VM にのみ適用されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
 
 > [!NOTE]
 > ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。  ソリューションのターゲット設定を使用している場合、Security Center はソリューションがないものとしてワークスペースを表示します。
@@ -42,7 +42,7 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 
 ## <a name="upgrade-an-azure-subscription"></a>Azure サブスクリプションのアップグレード
 すべてのサブスクリプションを Standard にアップグレードするには、次の手順に従います。
-1. Security Center のメイン メニューの **[オンボード]** を選択します。
+1. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
 2. **[高度なセキュリティへのオンボード]** に、オンボードの対象となるサブスクリプションが一覧表示されます。 **[Standard プランを適用]** をクリックすると、表示されているすべてのサブスクリプションをアップグレードできます。
 
   ![すべてのサブスクリプションのアップグレード][1]
@@ -113,8 +113,8 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    ![概要][5]
 
-2. **[コンピューティング]** タイルを選択します。
-3. **[コンピューティング]** で、**[コンピューターの追加]** を選択します。
+2. **[Compute & apps (コンピューティングとアプリ)]** を選択します。
+3. **[Compute & apps (コンピューティングとアプリ)]** で、**[コンピューターの追加]** を選択します。
 
    ![[コンピューティング] ブレード][6]
 

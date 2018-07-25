@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710408"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308033"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Azure Active Directory B2C のサインアップ、サインイン、プロファイル編集、パスワード リセットを使用する ASP.NET Web アプリケーションの構築
 
@@ -31,19 +31,21 @@ ms.locfileid: "34710408"
 - B2C テナントを Azure アカウントに接続する必要があります。 無料の Azure アカウントが[ここで](https://azure.microsoft.com/)作成できます。
 - サンプル コードを表示および変更するには、[Microsoft Visual Studio](https://www.visualstudio.com/) かそれに類似したプログラムが必要です。
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの作成
+## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 ディレクトリをまだ作成していない場合は、先に進む前に B2C ディレクトリを作成してください。
+Azure AD B2C を使用するには、テナントを作成しておく必要があります。 テナントは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 テナントをまだ作成していない場合は、先に進む前に B2C テナントを作成してください。
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> B2C テナントを Azure サブスクリプションに接続する必要があります。 **[作成]** を選択した後、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** オプションを選択し、**[Azure AD B2C テナント]** ドロップ ダウンで関連付けるテナントを選択します。
+> Azure AD B2C テナントを Azure サブスクリプションに接続する必要があります。 **[作成]** を選択した後、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** オプションを選択し、**[Azure AD B2C テナント]** ドロップ ダウンで関連付けるテナントを選択します。
 
 ## <a name="create-and-register-an-application"></a>アプリケーションの作成と登録
 
-次に、B2C ディレクトリでアプリケーションを作成し、登録する必要があります。 これにより、Azure AD B2C がアプリケーションと安全に通信するために必要な情報が提供されます。 
+次に、Azure AD B2C テナントでアプリケーションを作成し、登録する必要があります。 これにより、Azure AD B2C がアプリケーションと安全に通信するために必要な情報が提供されます。 
+
+Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、以前作成したテナントが使用されます。
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 

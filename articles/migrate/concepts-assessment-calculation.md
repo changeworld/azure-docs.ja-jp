@@ -4,14 +4,14 @@ description: Azure Migrate サービスにおけるアセスメントの計算�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287890"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920926"
 ---
 # <a name="assessment-calculations"></a>評価の計算
 
@@ -58,7 +58,7 @@ Windows Server 2016 および全 SP | Azure は完全サポートを提供しま
 Windows Server 2012 R2 および全 SP | Azure は完全サポートを提供します。 | Azure に対応
 Windows Server 2012 および全 SP | Azure は完全サポートを提供します。 | Azure に対応
 Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供します。| Azure に対応
-Windows Server 2003 - 2008 R2 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
+Windows Server 2003-2008 | これらのオペレーティング システムはサポート終了日が過ぎているため、Azure でのサポートには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、98、95、NT、3.1、MS-DOS | これらのオペレーティング システムはサポート終了日が過ぎています。マシンは Azure で起動できますが、Azure による OS のサポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Windows Client 7、8、10 | Azure は、Visual Studio サブスクリプションでのみサポートを提供します。 | Azure に条件付きで対応
 Windows Vista、XP Professional | これらのオペレーティング システムはサポート終了日が過ぎています。マシンは Azure で起動できますが、Azure による OS のサポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。

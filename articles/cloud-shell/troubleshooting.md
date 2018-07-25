@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/03/2018
 ms.author: damaerte
-ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608952"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856489"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -52,16 +52,6 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 
 ## <a name="powershell-troubleshooting"></a>PowerShell のトラブルシューティング
 
-### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
-
-- **詳細**: アプリケーション (git、vim など) が `$Home` に書き込むデータが、PowerShell セッション間で永続化されません。
-- **解決策**: PowerShell プロファイルで、`clouddrive` 内のアプリケーション固有のフォルダーへのシンボリック リンクを $Home に作成します。
-
-### <a name="ctrlc-doesnt-exit-out-of-a-cmdlet-prompt"></a>Ctrl + C キーでコマンドレット プロンプトが終了しない
-
-- **詳細**: コマンドレットのプロンプトを終了しようとして `Ctrl+C` キーを押しても、プロンプトが終了しません。
-- **解決策**: プロンプトを終了するには、`Ctrl+C` キーを押した後、`Enter` キーを押します。
-
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
 - **詳細**: ユーザーが GUI アプリを起動しても、プロンプトが返りません。 たとえば、ユーザーが 2 要素認証が有効なプライベート GitHub リポジトリを閉じると、2 要素認証を完了するためのダイアログ ボックスが表示されます。  
@@ -75,18 +65,8 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Azure VM のリモート管理のトラブルシューティング
 
 - **詳細**: WinRM に対する Windows ファイアウォールの既定の設定のため、次のようなエラー メッセージが表示されることがあります。`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解決策**: VM が実行されていることを確認します。 `Get-AzureRmVM -Status` を実行して、VM の状態を確認できます。  次に、サブネットからの WinRM 接続を許可する新しいファイアウォール規則をリモート VM に追加します。次はその例です。
-
- ``` Powershell
- New-NetFirewallRule -Name 'WINRM-HTTP-In-TCP-PSCloudShell' -Group 'Windows Remote Management' -Enabled True -Protocol TCP -LocalPort 5985 -Direction Inbound -Action Allow -DisplayName 'Windows Remote Management - PSCloud (HTTP-In)' -Profile Public
- ```
- [Azure カスタム スクリプト拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)を使って、リモート VM にログオンしないで新しいファイアウォール規則を追加できます。
- 前述のスクリプトをファイル (`addfirerule.ps1` など) に保存し、Azure ストレージ コンテナーにアップロードできます。
- その後、次のコマンドを試します。
-
- ``` Powershell
- Get-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup | Set-AzureRmVMCustomScriptExtension -VMName MyVM1 -FileUri https://mystorageaccount.blob.core.windows.net/mycontainer/addfirerule.ps1 -Run 'addfirerule.ps1' -Name myextension
- ```
+- **解決策**: `Enable-AzureRmVMPSRemoting` を実行して、ターゲット コンピューター上での PowerShell リモート処理のすべての側面を有効にします。
+ 
 
 ### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` で Azure ドライブに結果をキャッシュする
 
@@ -133,21 +113,39 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 ## <a name="powershell-limitations"></a>PowerShell の制限事項
 
-### <a name="slow-startup-time"></a>起動時間が遅い
+### <a name="azuread-module-name"></a>`AzureAD` モジュールの名前
 
-Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間中は、初期化に最大で 60 秒かかる場合があります。
+`AzureAD` モジュールの名前は現在 `AzureAD.Standard.Preview` であり、このモジュールは同じ機能を提供します。
+
+### <a name="sqlserver-module-functionality"></a>`SqlServer` モジュールの機能
+
+Cloud Shell に含まれている `SqlServer` モジュールには、PowerShell Core に対するプレリリース サポートしかありません。 特に、`Invoke-SqlCmd` はまだ使用できません。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
 
-ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 Vim や Nano などの他のツールを使用して新しいファイルを作成すると、ファイルは既定で C:\Users フォルダーに保存されます。 
+ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 ユーザーが vim や nano などの他のツールを使用して新しいファイルを作成すると、これらのファイルは、既定では `$HOME` に保存されます。 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
 Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Connect-AzureRmAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
 
-## <a name="gdpr-compliance-for-cloud-shell"></a>Cloud Shell の GDPR コンプライアンス
+### <a name="tab-completion-crashes-psreadline"></a>タブ補完によって PSReadline がクラッシュする
 
-Azure Cloud Shell では、お客様の個人情報を慎重に取り扱っています。Azure Cloud Shell サービスによって取得および保存されたデータは、最近使用したシェル、選択されたフォント サイズ、選択されたフォントの種類、clouddrive の基盤となるファイル共有の詳細など、エクスペリエンスの既定値を設定するために使用されます。 このデータをエクスポートまたは削除したい場合は、以下の手順に従ってください。
+PSReadline でのユーザーの EditMode が Emacs に設定されており、そのユーザーがタブ補完ですべての可能性を表示しようとしたが、ウィンドウ サイズが小さすぎてすべての可能性を表示できない場合、PSReadline はクラッシュします。
+
+### <a name="large-gap-after-displaying-progress-bar"></a>進行状況バーを表示した後に大きなギャップができる
+
+ユーザーが進行状況バーを表示するアクション (`Azure:` ドライブ内にある状態でのタブ補完など) を実行した場合は、カーソルが正しく設定されていないために、前に進行状況バーがあった場所にギャップが現れることがあります。
+
+### <a name="random-characters-appear-inline"></a>ランダムな文字がインラインで表示される
+
+ユーザー入力にカーソル位置のシーケンス コード (`5;13R` など) が表示される場合があります。  これらの文字は手動で削除できます。
+
+## <a name="personal-data-in-cloud-shell"></a>Cloud Shell での個人データ
+
+Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱います。Azure Cloud Shell サービスによって取得および格納されたデータは、最近使用されたシェル、推奨されるフォント サイズ、推奨されるフォントの種類、クラウド ドライブの基盤となるファイル共有の詳細などの、ユーザー エクスペリエンスのための既定値を提供するために使用されます。 このデータをエクスポートまたは削除したい場合は、以下の手順に従ってください。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>エクスポート
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
@@ -159,7 +157,7 @@ user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "r
 user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
 ```
 
-### <a name="delete"></a>削除
+### <a name="delete"></a>Delete
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**削除**するには、次のコマンドを実行します。 次回、Cloud Shell を起動すると、再びファイル共有にオンボードするように求めるメッセージが表示されます。 
 
 ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。Azure Files に移動して、その操作を完了します。

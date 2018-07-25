@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837440"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887489"
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure Scheduler のプランと課金
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン
@@ -57,12 +57,12 @@ P20 Premium 課金単位には、最大 5,000 個の P20 Premium ジョブ コ�
 P20 Premium ジョブ コレクションで提供される機能は P10 Premium ジョブ コレクションと同じですが、P10 Premium ジョブ コレクションよりもジョブ コレクションあたりでサポートされるジョブの数が多く、ジョブ全体の総数もより多くなるため、スケーラビリティが向上します。
 
 ## <a name="billing-and-active-status"></a>課金とアクティブ状態
-ジョブ コレクションは、サブスクリプション全体が課金に関する問題のために一時的な無効状態にならない限り、常にアクティブです。 ジョブ コレクションが課金されないようにするには、*Free* プランに設定するか、ジョブ コレクションを削除します。
+ジョブ コレクションは、サブスクリプション全体が課金に関する問題のために一時的な無効状態にならない限り、常にアクティブです。 ジョブ コレクションが課金されないようにするには、ジョブ コレクションを削除します。
 
 1 回の操作でジョブ コレクション内のすべてのジョブを無効にすることができますが、その操作を行ってもジョブ コレクションの課金状態は変更されず、ジョブ コレクションに対して*依然として* 課金されます。 同様に、空のジョブ コレクションもアクティブと見なされ、課金の対象となります。
 
 ## <a name="pricing"></a>価格
-料金の詳細については、「 [Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
+料金の詳細については、「[Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)

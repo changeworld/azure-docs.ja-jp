@@ -4,14 +4,14 @@ description: Azure Migrate サービスを使用して、多数のオンプレ�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: dd7524c0114589e0c145cb4c03b0f531d58ce950
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214693"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919864"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -23,6 +23,31 @@ Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に�
 - **vCenter アカウント**: vCenter Server にアクセスするために、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**: vCenter Server で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 - **統計情報の設定**: デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 レベルが 3 未満の場合、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合の推奨サイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づきます。
+
+
+### <a name="set-up-permissions"></a>アクセス許可の設定
+
+Azure Migrate は、評価対象の VM を自動的に検出するために、VMware サーバーにアクセスする必要があります。 VMware アカウントには次のアクセス許可が必要です。
+
+- ユーザーの種類: 読み取り専用以上
+- アクセス許可: データ センター オブジェクト –> 子オブジェクトへの伝達、ロール=読み取り専用
+- 詳細: ユーザーはデータセンター レベルで割り当てられ、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。
+- アクセスを制限するには、子オブジェクトへの伝達特権を持つアクセスなしロールを子オブジェクト (vSphere ホスト、データストア、VM、ネットワーク) に割り当てます。
+
+テナント環境にデプロイする場合、これを設定する 1 つの方法を以下に示します。
+
+1.  テナントあたり 1 つのユーザーを作成し、[RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、特定のテナントに属するすべての VM に読み取り専用のアクセス許可を割り当てます。 次にこれらの資格情報を使用して検出を行います。 RBAC により、対応する vCenter ユーザーが、テナント固有の VM のみにアクセスできるようになります。
+2. 次の例でユーザー 1 とユーザー 2 について記載されているように、異なるテナント ユーザーに対して RBAC を設定します。
+
+    - **[ユーザー名]** と **[パスワード]** に、コレクターが VM を検出するために使用する読み取り専用の資格情報を指定します。
+    - Datacenter1 - ユーザー 1 とユーザー 2 に読み取り専用アクセス許可を付与します。 アクセス許可を個々の VM に設定するため、これらのアクセス許可をすべての子オブジェクトに反映しないようにします。
+
+      - VM1 (テナント 1) (ユーザー 1 への読み取り専用アクセス許可)
+      - VM2 (テナント 1) (ユーザー 1 への読み取り専用アクセス許可)
+      - VM3 (テナント 2) (ユーザー 2 への読み取り専用アクセス許可)
+      - VM4 (テナント 2) (ユーザー 2 への読み取り専用アクセス許可)
+
+   - ユーザー 1 の資格情報を使用して検出を実行する場合、VM1 と VM2 のみが検出されます。
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>移行プロジェクトと検出を計画する
 
@@ -100,6 +125,14 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
    使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. 生成されたハッシュが次の設定と一致することを確認します。
+
+    OVA バージョン 1.0.9.12 の場合
+
+    **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
     OVA バージョン 1.0.9.8 の場合
 

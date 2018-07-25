@@ -11,12 +11,12 @@ ms.service: azure-maps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
-ms.openlocfilehash: 2523287669628b8c58028cae9887743c20b6bc5e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 537a8c80dc0d1fcb2f536d0e30200de19a2111a4
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659332"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867054"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 

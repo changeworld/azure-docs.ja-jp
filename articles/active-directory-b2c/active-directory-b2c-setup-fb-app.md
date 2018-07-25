@@ -1,67 +1,58 @@
 ---
-title: Azure Active Directory B2C の Facebook の構成 | Microsoft Docs
-description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Facebook アカウントを使用するコンシューマーにサインアップとサインインを提供します。
+title: Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
+description: Azure Active Directory B2C を使用するアプリケーションで Facebook アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 8/7/2017
+ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 316e44ea92a25ab804c8cc499f91c45e4a66ef02
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: de059e3875b5f15526cb176d43a019fd2d9ee9b9
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445502"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901383"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
+# <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
+
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Facebook を使用するには、Facebook アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Facebook アカウントが必要です。 アカウントがない場合は、[https://www.facebook.com/](https://www.facebook.com/) で取得できます。
 
-1. [Facebook for developers](https://developers.facebook.com/) の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
-2. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 そのためには、ページの右上隅にある **[Register (登録)]** をクリックし、Facebook のポリシーに同意して登録手順を完了します。
-3. **[My Apps] \(マイ アプリ)** をクリックし、**[Add a New App] \(新しいアプリの追加)** をクリックします。 
-4. フォームに、**表示名**と有効な**連絡先の電子メール**を入力します。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Facebook アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Facebook アカウントを持っていない場合は、[https://www.facebook.com/](https://www.facebook.com/) で取得できます。
+
+1. Facebook アカウントの資格情報を使用して、[開発者向けの Facebook](https://developers.facebook.com/)にサインインします。
+2. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 これを行うには、ページの右上隅にある **[登録]** を選択し、Facebook のポリシーに同意して登録手順を完了します。
+3. **[マイ アプリ]** を選択し、**[Add New App] (新しいアプリの追加)** をクリックします。 
+4. **[表示名]** および有効な **[連絡先の電子メール]** を入力します。
 5. **[Create App ID] \(アプリ ID の作成)** をクリックします。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
-6. 左の列の **[設定] \(Settings)** をクリックし、選択が済んでいない場合は **[Basic]** を選択します。
-7. **[Category] \(カテゴリ)** を選択します。 
-8. **[+Add Platform] \(+ プラットフォームの追加)** をクリックし、**[Website] \(Web サイト)** を選択します。
-   
-    ![Facebook - 設定](./media/active-directory-b2c-setup-fb-app/fb-settings.png)
-   
-    ![Facebook - 設定 - ウェブサイト](./media/active-directory-b2c-setup-fb-app/fb-website.png)
-9. **[サイトの URL]** フィールドに「`https://login.microsoftonline.com/`」と入力し、そのページの下部にある **[Save Changes]\(変更の保存\)** をクリックします。
-   
-    ![Facebook - サイトの URL](./media/active-directory-b2c-setup-fb-app/fb-site-url.png)
+6. **[設定]** > **[基本]** を選択します。
+7. ページの下部で、**[プラットフォームの追加]**、**[Web サイト]** の順に選択します。
+8. **[サイトの URL]** に「`https://login.microsoftonline.com/`」と入力します。 **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com` など) を入力します。
+9. **[変更の保存]** を選択します。
+11. ページの上部で、**[App ID] (アプリ ID)** の値をコピーします。 
+12. **[Show (表示)]** をクリックし、**[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。
+13. **[Products] (製品)** を選択し、**[Facebook Login] (Facebook ログイン)** で **[セットアップ]** を選択します。
+14. **[Facebook Login] (Facebook ログイン)** の **[設定]** を選択します。
+15. **[Valid OAuth redirect URIs] (有効な OAuth リダイレクト URI)** に「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
+16. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、**[App Review] (アプリのレビュー)** を選択し、**[Make My Application public?] (アプリケーションを公開する)** を **[はい]** に設定し、カテゴリ (`Business and Pages` など) を選択して **[確認]** をクリックします。
 
-10. **[App ID]** の値をコピーします。 **[Show (表示)]** をクリックし、**[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、両方の値が必要です。 **[App Secret]** は、重要なセキュリティ資格情報です。
-   
-    ![Facebook - アプリ ID とアプリケーション シークレット](./media/active-directory-b2c-setup-fb-app/fb-app-id-app-secret.png)
-11. 左のナビゲーションで **[+ 製品の追加]** をクリックし、**[Facebook Login]\(Facebook ログイン\)** の **[セット]** をクリックします。
-   
-    ![Facebook - Facebook ログイン](./media/active-directory-b2c-setup-fb-app/fb-login.png)
-12. 右のナビゲーションで **[Facebook Login]\(Facebook ログイン\)** の下にある **[設定]** をクリックします。
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
 
-    ![Facebook - Facebook ログイン設定](./media/active-directory-b2c-setup-fb-app/fb-login-settings.png)
-13. **[Client OAuth Settings (クライアント OAuth 設定)]** セクションの **[Valid OAuth redirect URIs (有効な OAuth リダイレクト URI)]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。 **{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。 ページの下部にある **[Save Changes]** をクリックします。
-    
-    ![Facebook - OAuth リダイレクト URI](./media/active-directory-b2c-setup-fb-app/fb-oauth-redirect-uri.png)
-14. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、アプリケーションをパブリックに利用できるようにする必要があります。 そのためには、左側のナビゲーションで **[App Review (アプリのレビュー)]** をクリックし、ページの先頭にあるスイッチを **[YES]** にして、**[Confirm (確認)]** をクリックします。
-    
-    ![Facebook - アプリの公開](./media/active-directory-b2c-setup-fb-app/fb-app-public.png)
+1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
 
-## <a name="configure-facebook-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Facebook を構成する
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
-2. B2C 機能ブレードで、 **[ID プロバイダー]** をクリックします。
-3. ブレードの上部にある **[+追加]** をクリックします。
-4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば、「Facebook」などと入力します。
-5. **[Identity provider type (ID プロバイダーの種類)]** をクリックし、**[Facebook]** を選択して、**[OK]** をクリックします。
-6. **[Set up this identity provider (この ID プロバイダーを設定する)]** をクリックし、先に作成した Facebook アプリケーションのアプリ ID とアプリ シークレットを **[クライアント ID]** および **[クライアント シークレット]** フィールドに入力します。
-7. **[OK]** をクリックし、**[作成]** をクリックして Facebook の構成を保存します。
+    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
 
-> [!NOTE]
-> **ID プロバイダー**をテナントに追加しても、既存のポリシーは変更されません。 作成したばかりの ID プロバイダーを含めるときは、忘れずにポリシーを更新してください。
->
+    テナントが含まれるディレクトリを選択します。
+
+    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
+4. **[ID プロバイダー]**、**[追加]** の順に選択します。
+5. **[名前]** を入力します。 たとえば、「*Facebook*」と入力します。
+6. **[ID プロバイダーの種類]**、**[Facebook]** の順に選択し、**[OK]** をクリックします。
+7. **[この ID プロバイダーをセットアップします]** を選択し、**[クライアント ID]** として前に記録したアプリ ID を入力し、前に作成した Facebook アプリケーションの **[クライアント シークレット]** として記録したアプリ シークレットを入力します。
+8. **[OK]** をクリックし、**[作成]** をクリックして Facebook の構成を保存します。

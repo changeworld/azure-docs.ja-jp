@@ -2,19 +2,19 @@
 title: AKS での Azure ディスクの使用
 description: AKS での Azure ディスクの使用
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597069"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868247"
 ---
 # <a name="volumes-with-azure-disks"></a>Azure ディスクを使用するボリューム
 
@@ -49,6 +49,12 @@ az disk create \
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
+> [!NOTE]
+> Azure 管理ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S50 または P50 ディスクの 4 TiB までです。 さらに、Premium 管理ディスクのスループットおよび IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+
+> [!NOTE]
+> 独立したリソース グループにディスクを作成する必要がある場合、`Contributor` ロールで、クラスターの Azure Kubernetes Service (AKS) サービス プリンシパルを、ディスクを保持しているリソース グループに追加する必要もあります。 
+>
 
 ## <a name="mount-disk-as-volume"></a>ディスクをボリュームとしてマウントする
 
@@ -94,6 +100,7 @@ Azure ディスクを使用した Kubernetes ボリュームについて、さ�
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
 [az-disk-list]: /cli/azure/disk#az_disk_list

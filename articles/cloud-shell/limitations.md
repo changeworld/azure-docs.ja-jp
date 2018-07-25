@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31590523"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855986"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -31,7 +31,7 @@ Azure Cloud Shell には、次の既知の制限があります。
 
 Cloud Shell セッションを提供するマシンは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、Azure ファイル共有がマウントされている必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをセットアップできることが必要です。 その他の考慮事項:
 
-* マウントされたストレージでは、`clouddrive` ディレクトリ内の変更のみが永続化されます。 Bash では、`$Home` ディレクトリも永続化されます。
+* マウントされたストレージでは、`$Home` ディレクトリ内の変更のみが永続化されます。
 * Azure ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
   * Bash では、`env` を実行して、`ACC_LOCATION` として設定されたリージョンを検索します。
 
@@ -63,21 +63,33 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 ## <a name="powershell-limitations"></a>PowerShell の制限事項
 
-### <a name="slow-startup-time"></a>起動時間が遅い
+### <a name="azuread-module-name"></a>`AzureAD` モジュールの名前
 
-Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間中は、初期化に最大で 60 秒かかる場合があります。
+`AzureAD` モジュールの名前は現在 `AzureAD.Standard.Preview` であり、このモジュールは同じ機能を提供します。
 
-### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
+### <a name="sqlserver-module-functionality"></a>`SqlServer` モジュールの機能
 
-アプリケーション (たとえば、git、vim など) によって `$Home` に書き込まれたデータは、PowerShell セッション間で保持されません。 回避策については、[こちらをご覧ください](troubleshooting.md#powershell-troubleshooting)。
+Cloud Shell に含まれている `SqlServer` モジュールには、PowerShell Core に対するプレリリース サポートしかありません。 特に、`Invoke-SqlCmd` はまだ使用できません。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
 
-ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 Vim や Nano などの他のツールを使用して新しいファイルを作成すると、ファイルは既定で C:\Users フォルダーに保存されます。 
+ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 ユーザーが vim や nano などの他のツールを使用して新しいファイルを作成すると、これらのファイルは、既定では `$HOME` に保存されます。 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
 Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Connect-AzureRmAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
+
+### <a name="tab-completion-crashes-psreadline"></a>タブ補完によって PSReadline がクラッシュする
+
+PSReadline でのユーザーの EditMode が Emacs に設定されており、そのユーザーがタブ補完ですべての可能性を表示しようとしたが、ウィンドウ サイズが小さすぎてすべての可能性を表示できない場合、PSReadline はクラッシュします。
+
+### <a name="large-gap-after-displaying-progress-bar"></a>進行状況バーを表示した後に大きなギャップができる
+
+ユーザーが進行状況バーを表示するアクション (`Azure:` ドライブ内にある状態でのタブ補完など) を実行した場合は、カーソルが正しく設定されていないために、前に進行状況バーがあった場所にギャップが現れることがあります。
+
+### <a name="random-characters-appear-inline"></a>ランダムな文字がインラインで表示される
+
+ユーザー入力にカーソル位置のシーケンス コード (`5;13R` など) が表示される場合があります。  これらの文字は手動で削除できます。
 
 ## <a name="next-steps"></a>次の手順
 

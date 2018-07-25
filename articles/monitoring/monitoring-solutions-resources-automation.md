@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7f32cc47c96f6fc8adaedef8f8ea3156ee70115
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d5b2499f9e260e6ed134c4191b053325ca3f42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887472"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868825"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -76,12 +76,12 @@ Azure Automation のリソースはすべて、[Automation アカウント](../a
 
 次の表では、Runbook のプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | runbookType |Runbook のタイプを指定します。 <br><br> Script - PowerShell スクリプト <br>PowerShell - PowerShell ワークフロー <br> GraphPowerShell - グラフィカル PowerShell スクリプト Runbook <br> GraphPowerShellWorkflow - グラフィカル PowerShell ワークフロー Runbook |
 | logProgress |Runbook の[進捗状況レコード](../automation/automation-runbook-output-and-messages.md)を生成するかどうかを指定します。 |
 | logVerbose |Runbook の[詳細レコード](../automation/automation-runbook-output-and-messages.md)を生成するかどうかを指定します。 |
-| 説明 |Runbook の説明です (省略可能)。 |
+| description  |Runbook の説明です (省略可能)。 |
 | publishContentLink |Runbook のコンテンツを指定します。 <br><br>uri - Runbook のコンテンツへの URI です。  PowerShell Runbook およびスクリプト Runbook の場合は .ps1 ファイル、Graph Runbook の場合はエクスポート済みのグラフィカル Runbook ファイルになります。  <br> version - 追跡対象の Runbook のバージョンです。 |
 
 
@@ -112,7 +112,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、Automation ジョブのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | runbook |起動する Runbook の名前を指定する単一の name エンティティです。 |
 | parameters |Runbook に必要な各パラメーター値のエンティティです。 |
@@ -143,7 +143,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、証明書リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | base64Value |証明書の Base 64 値です。 |
 | thumbprint |証明書の拇印です。 |
@@ -170,7 +170,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、資格情報リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | userName |資格情報のユーザー名です。 |
 | password |資格情報のパスワードです。 |
@@ -198,9 +198,9 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 説明 |スケジュールの説明です (省略可能)。 |
+| description  |スケジュールの説明です (省略可能)。 |
 | startTime |スケジュールの開始時刻を DateTime オブジェクトとして指定します。 有効な DateTime に変更可能な文字列を指定することもできます。 |
 | isEnabled |スケジュールを有効にするかどうかを指定します。 |
 | interval |スケジュールの間隔の種類です。<br><br>day<br>hour |
@@ -241,7 +241,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、ジョブ スケジュールのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | スケジュール名 |スケジュールの名前を指定する単一の **name** エンティティです。 |
 | Runbook 名  |Runbook の名前を指定する単一の **name** エンティティです。  |
@@ -268,11 +268,11 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、変数リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
-| 説明 | 変数の説明です (省略可能)。 |
+| description  | 変数の説明です (省略可能)。 |
 | isEncrypted | 変数を暗号化するかどうかを指定します。 |
-| 型 | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
+| type | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
 | value | 変数の値です。 |
 
 > [!NOTE]
@@ -280,7 +280,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 変数の初期値を設定する場合、正しいデータ型として構成する必要があります。  次の表では、使用可能なさまざまなデータ型とその構文を示します。  JSON の値は常に引用符で囲まれ、特殊文字は引用符で囲まれているものと想定されていることに注意してください。  たとえば、文字列値は文字列を囲む (エスケープ文字 (\\) を使った) 引用符で指定され、数値は 1 組の引用符で指定されます。
 
-| データ型 | [説明] | 例 | 結果 |
+| データ型 | 説明 | 例 | 結果 |
 |:--|:--|:--|:--|
 | 文字列   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | 数値  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
@@ -308,7 +308,7 @@ Runbook で使用する[グローバル モジュール](../automation/automatio
 
 次の表では、モジュール リソースのプロパティについて説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | contentLink |モジュールのコンテンツを指定します。 <br><br>uri - モジュールのコンテンツへの URI です。  PowerShell Runbook およびスクリプト Runbook の場合は .ps1 ファイル、Graph Runbook の場合はエクスポート済みのグラフィカル Runbook ファイルになります。  <br> version - 追跡対象のモジュールのバージョンです。 |
 

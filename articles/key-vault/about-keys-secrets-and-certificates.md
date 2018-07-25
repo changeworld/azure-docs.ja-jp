@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636608"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972402"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内に暗号化キーを保存して使用できます。 Key Vault は複数のキーの種類とアルゴリズムをサポートし、価値の高いキーにハードウェア セキュリティ モジュールを使用できるようにします。 さらに、Key Vault では、ユーザーはシークレットを安全に保管できます。 シークレットは、特定のセマンティクスを持たない限られたサイズのオクテット オブジェクトです。 Key Vault は、キーとシークレットを基に構築された証明書もサポートし、自動更新機能を追加します。
@@ -122,7 +122,7 @@ Azure Key Vault の最初のリリースでは、RSA キーだけがサポート
 -   **RSA**: 2048 ビットの RSA キー。 これは "ソフト" キーであり、Key Vault によってソフトウェアで処理されますが、HSM 内のシステム キーを使って保存時に暗号化されます。 クライアントは、既存の RSA キーをインポートするか、または Azure Key Vault による生成を要求できます。  
 -   **RSA-HSM**: HSM で処理される RSA キー。 RSA-HSM キーは、Azure Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとにセキュリティ ワールドがあります)。 クライアントは、RSA キーをインポートするか (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)、または Azure Key Vault に生成を要求できます。 このキーの種類は、HSM キー マテリアルを保持するために JWK 取得に T 属性を追加します。  
 
-     地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/en-us/support/trust-center/privacy/)をご覧ください。  
+     地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。  
 
 ###  <a name="BKMK_RSAAlgorithms"></a> RSA アルゴリズム  
  Azure Key Vault の RSA キーでは、次のアルゴリズム識別子がサポートされます。  
@@ -172,7 +172,7 @@ Azure Key Vault は、キー オブジェクトに対する次の操作をサポ
 -   **バックアップ**: 保護された形式でキーをエクスポートします。  
 -   **復元**: 以前にバックアップしたキーをインポートします。  
 
-詳しくは、[キーの操作](/rest/api/keyvault/key-operations.md)に関するページをご覧ください。  
+詳しくは、[キーの操作](/rest/api/keyvault/key-operations)に関するページをご覧ください。  
 
 Azure Key Vault にキーが作成されたら、キーを使って次の暗号化操作を実行できます。  
 
@@ -281,7 +281,7 @@ Key Vault で管理されているシークレットのアクセス制御は、�
 -   *delete*: シークレットを削除します  
 -   *all*: すべてのアクセス許可  
 
-シークレットの処理について詳しくは、[シークレットの操作](/rest/api/keyvault/secret-operations.md)に関するページをご覧ください。  
+シークレットの処理について詳しくは、[シークレットの操作](/rest/api/keyvault/secret-operations)に関するページをご覧ください。  
 
 ###  <a name="BKMK_SecretTags"></a> シークレットのタグ  
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Azure Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
@@ -443,9 +443,9 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
 ## <a name="additional-information-for-certificates"></a>証明書の追加情報
 
-- [証明書とポリシー](/rest/api/keyvault/certificates-and-policies.md)
-- [証明書の発行者](/rest/api/keyvault/certificate-issuers.md)
-- [証明書の連絡先](/rest/api/keyvault/certificate-contacts.md)
+- [証明書とポリシー](/rest/api/keyvault/certificates-and-policies)
+- [証明書の発行者](/rest/api/keyvault/certificate-issuers)
+- [証明書の連絡先](/rest/api/keyvault/certificate-contacts)
 
 ## <a name="see-also"></a>関連項目
 

@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414571"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935749"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -102,7 +102,7 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 はい。非管理ディスクと管理ディスクの両方がサポートされています。 新しいワークロードでは管理ディスクを使用し、現在のワークロードは管理ディスクに移行することをお勧めします。
 
 
-**128 GB のディスクを作成した後でサイズを 130 GB に増やした場合は、1 つ上のディスク サイズ (512 GB) として課金されますか?**
+**128 GB のディスクを作成した後でサイズを 130 GB に増やした場合は、1 つ上のディスク サイズ (256 GB) として課金されますか?**
 
 はい。
 
@@ -126,6 +126,10 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ管理デ
 * [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
+**非管理ディスクと管理ディスクを同じ VM 上に共存させることはできますか?**
+
+いいえ。
+
 ## <a name="standard-ssd-disks-preview"></a>Standard SSD ディスク (プレビュー)
 
 **Azure Standard SSD ディスクとは何ですか?**
@@ -133,6 +137,13 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 
 <a id="standard-ssds-azure-regions"></a>**Standard SSD ディスク (プレビュー) に対して現在サポートされている地域とは?**
 * 北ヨーロッパ
+* フランス中部
+* 米国東部 2
+* 米国中央部
+* カナダ中部
+* 東アジア
+* 韓国南部
+* オーストラリア東部
 
 **Standard SSD ディスクを作成するにはどうすればよいですか?**
 現時点では、Azure Resource Manager テンプレートを使用して Standard SSD ディスクを作成することができます。 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
@@ -156,8 +167,15 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 
 テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
 
+**既存のディスクを Standard SSD に変換できますか?**
+はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
+-AccountType StandardSSD_LRS
+
 **Standard SSD を非管理ディスクとして使用できますか?**
 いいえ。Standard SSD ディスクは Managed Disks としてのみ使用できます。
+
+**Standard SSD ディスクは "単一インスタンス VM SLA" をサポートしますか?**
+いいえ、Standard SSD には単一インスタンス VM SLA はありません。 単一インスタンス VM SLA が必要な場合、Premium SSD ディスクを使用します。
 
 ## <a name="migrate-to-managed-disks"></a>管理ディスクに移行する 
 
@@ -209,11 +227,11 @@ Standard SSD ディスクは、ソリッドステート メディアでサポー
 
 **Storage Service Encryption は、特定のリージョンだけで使用可能ですか?**
 
-いいえ。 Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。
+いいえ。 Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。 中国でも使用できますが、Microsoft 管理キーのみが対象であり、顧客管理キーは対象外です。
 
 **管理ディスクが暗号化されているかどうかは、どうすれば判断できますか?**
 
-Azure Portal、Azure CLI、および PowerShell で、管理ディスクがいつ作成されたかを調べることができます。 その日時が 2017 年 6 月 9 日より後であれば、ディスクは暗号化されています。 
+Azure Portal、Azure CLI、および PowerShell で、管理ディスクがいつ作成されたかを調べることができます。 その日時が 2017 年 6 月 9 日より後であれば、ディスクは暗号化されています。
 
 **2017 年 6 月 10 日より前に作成された既存のディスクは、どうすれば暗号化できますか?**
 

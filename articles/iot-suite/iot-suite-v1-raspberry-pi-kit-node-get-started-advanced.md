@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 31bbeff8049c6005671b991f965fae7316e3adf6
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24010875"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309593"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Node.js を使用して Raspberry Pi 3 をリモート監視ソリューションに接続し、リモート ファームウェア更新を有効にする
 
@@ -115,7 +115,7 @@ HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=
 
 変更を保存し (**Ctrl + O** キー、**Enter** キー)、エディターを終了します (**Ctrl + X** キー)。
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 次のコマンドを実行して、サンプルの前提条件となるパッケージをインストールします。
 
@@ -144,9 +144,9 @@ sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/re
 
 1. **[メソッドの呼び出し]** ページで、**[方法]** ドロップダウンの **[InitiateFirmwareUpdate]** を選択します。
 
-1. **[FWPackageURI]** フィールドで、「**https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**」と入力します。 このファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
+1. **[FWPackageURI]** フィールドに、 **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js** を入力します。 このファイルには、ファームウェアのバージョン 2.0 の実装が含まれています。
 
-1. **[InvokeMethod]** を選択します。 Raspberry Pi 上のアプリは、ソリューション ダッシュボードに受信確認を送信します。 次に、ファームウェアの新しいバージョンをダウンロードしてファームウェアの更新プロセスが開始します。
+1. **InvokeMethod** を選択します。 Raspberry Pi 上のアプリは、ソリューション ダッシュボードに受信確認を送信します。 次に、ファームウェアの新しいバージョンをダウンロードしてファームウェアの更新プロセスが開始します。
 
     ![メソッドの履歴を表示する][img-method-history]
 
@@ -170,7 +170,7 @@ sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/re
 > [!WARNING]
 > Azure アカウントでリモート監視ソリューションを実行したままにしておくと、実行時間分が課金されます。 リモート監視ソリューション実行中の使用料金を削減する方法の詳細については、「[Configuring Azure IoT Suite preconfigured solutions for demo purposes (デモの目的で Azure IoT Suite 構成済みソリューションを構成する)][lnk-demo-config]」をご覧ください。 ソリューションの使用を終了するときに、Azure アカウントから構成済みソリューションを削除してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT のその他のサンプルとドキュメントについては、「[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)」をご覧ください。
 

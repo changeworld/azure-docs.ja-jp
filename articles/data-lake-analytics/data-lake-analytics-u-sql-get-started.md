@@ -10,12 +10,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 2903046154808da5113f7b32a04bbfba254a07ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d6688524e396a6e36f6d7f293f2930598afaad1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623453"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867285"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL を使用する
 U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。 
@@ -223,7 +223,7 @@ U-SQL の ORDER BY 句では、SELECT 式で FETCH 句と組み合わせる必�
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](https://msdn.microsoft.com/library/azure/mt621335.aspx)をご確認ください。
+高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](https://msdn.microsoft.com/library/azure/mt621335.aspx)をご確認ください
 
 ## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)

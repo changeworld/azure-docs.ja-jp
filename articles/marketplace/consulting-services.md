@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312085"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950408"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace コンサルティング サービス
 Azure Marketplace のコンサルティング サービスは、Azure の使用をサポートし、拡張するために、お客様とサービスを結ぶという目標を Microsoft パートナーに提供しています。 Azure Marketplace は、Microsoft のシステム インテグレーター (SI) パートナーが提供するコンサルティング サービスの掲載をサポートしています。 
 
-これらのコンサルティングサービス プランは、お客様ごとに固有の契約です。 範囲と期間が決まっており、固定価格または無料で提供され、結果が定義されています。 プランにご関心がある場合は、パートナーからの連絡を要求できます。 パートナーは、CRM システムで通知を受け取り、48 時間以内に要求に応答するように努めます。
+これらのコンサルティングサービス プランは、お客様ごとに固有の契約です。 パブリッシャーには、掲載タイプ、固定の範囲および期間、固定価格または無料のいずれかを決定するオプションがあります。また、顧客に対する定義済みの成果物があります。 パートナーは、CRM システムで通知を受け取り、48 時間以内に要求に応答するように努めます。
 
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketplace と AppSource Storefront のコンサルティング サービス
 マーケットプレースのネットショップは、対象ユーザーや Microsoft のクラウド製品に合わせて作られており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップでは、公開への投資を最大限に活かすための特別な公開オプションが提供されています。 これらのオプションを以下の表にまとめています。
@@ -37,7 +37,8 @@ Azure Marketplace のコンサルティング サービスは、Azure の使用�
 |製品エクスペリエンス      |Microsoft Azure 管理ポータル|Dynamics 365、Office 365、Office クライアント アプリ| 
 |その他      |Azure Stack 経由のオンプレミス公開|Dynamics と Power BI 向けのコンサルティング サービス|
 
-Azure Marketplace のコンサルティング サービスでは、Azure の技術的なソリューションとサービスに焦点を当て、技術者を対象にしたサービスを活用する必要があります。
+>[!Note]
+>Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、技術者を対象にしたサービスを活用する必要があります。
 
 
 Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プランは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
@@ -66,13 +67,21 @@ SI パートナーは、次の 18 か国でコンサルティングサービス 
 |ベルギー     |イタリア         |ノルウェー         |
 |カナダ     |インド         |ポーランド         |
 |デンマーク     |日本         |スウェーデン         |
-|フィンランド     |メキシコ         |英国         |
+|フィンランド     |メキシコ         |イギリス         |
 |フランス     |オランダ         |米国         |
 
-Azure Marketplace コンサルティング サービスは最初に、オーストラリア、カナダ、英国、および米国で提供されます。 他の国のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
+Azure Marketplace コンサルティング サービスは最初に、オーストラリア、カナダ、イギリス、および米国で提供されます。 他の国のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
+
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Azure Marketplace でコンサルティング サービスに登録する方法
+はじめに、コンサルティング サービスを [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup) に登録します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher)」を参照することができます。 
+
+**登録後の流れ** 1 ～ 3 営業日で、Cloud パートナー ポータル (CPP) のログイン情報が記載されたウェルカム メールがオンボーディング チームから届きます。 [Cloud パートナー ポータル](https://cloudpartner.azure.com)は、パブリッシャーが掲載情報および提出物を提出するプラン掲載ポータルです。 
+
+>[!Note]
+>パートナーは一度登録するだけでパブリッシャーになることができます。 パブリッシャーは、ウェルカム メールおよび Cloud パートナー ポータルのログイン情報を受け取った後は、別の掲載タイプを公開するために再登録する必要はありません。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>成果物の公開を準備する
-サービスを申請する前であっても、対象のお客様に対してサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を始めることができます。 
+登録前に、対象のお客様に対してサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を始めることができます。 
 
 |新しいパブリッシャーの設定  |
 |---------|
@@ -142,3 +151,12 @@ Azure Marketplace へのコンサルティングサービス プランの掲載�
 |ワークショップ    |   選択されたプランの期間に応じて、日ごと、週ごと、月ごとの詳細な議題を含めます。 ワークショップでの学習の目標やその他の成果を明確にします     |   プラン概要を検索エンジン最適化の上位キーワードで最適化します      |
 
 Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
+
+**サンプルの Markdown ノート**
+*   コピー ブロックの最初と最後に * を追加します。斜体にする場合、スペースは入れません (例: *content*)
+* ":" コロンの後に改行を含めます
+*   箇条書きの "*" の後にスペース (例: *(スペース)内容)
+*    ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>見出しのスペース (例: ###(スペース)議題/成果物)
+*   見出しの後の改行
+*   ** = 太字 (スペースなし) (例: **スペースなし**) •   プラン概要を斜体にする •   議題と成果物を見出しに
+

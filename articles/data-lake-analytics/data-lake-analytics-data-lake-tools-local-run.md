@@ -1,112 +1,119 @@
 ---
-title: Azure Data Lake U-SQL SDK を使用して U-SQL スクリプトをローカルで実行する
-description: この記事では、Azure Data Lake Tools for Visual Studio を使用して、ローカル ワークステーション上の U-SQL ジョブをテストおよびデバッグする方法について説明します。
+title: ローカル コンピューター上で Azure Data Lake U-SQL スクリプトを実行する | Microsoft Docs
+description: Azure Data Lake Tools for Visual Studio を使用してローカル コンピューター上で U-SQL ジョブを実行する方法について説明します。
 services: data-lake-analytics
-ms.service: data-lake-analytics
-author: mumian
-ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+documentationcenter: ''
+author: yanancai
+manager: ''
+editor: ''
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
-ms.topic: conceptual
-ms.date: 11/15/2016
-ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.service: data-lake-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 07/03/2018
+ms.author: yanacai
+ms.openlocfilehash: a7f43c7e17f36d9b4e0767744eee9604c2628ea8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736005"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888968"
 ---
-# <a name="runing-u-sql-scripts-locally"></a>ローカルでの U-SQL スクリプトの実行
+# <a name="run-u-sql-script-on-your-local-machine"></a>ローカル コンピューターで U-SQL スクリプトを実行する
 
-Azure で U-SQL を実行するのではなく、ご利用のコンピューター上で U-SQL を実行することができます。 これを "ローカル実行" といいます。 
+U-SQL スクリプトを開発する場合は、コストと時間が節約されるため、U-SQL スクリプトをローカルで実行することが一般的です。 Azure Data Lake Tools for Visual Studio は、ローカル コンピューター上での U-SQL スクリプトの実行をサポートしています。 
 
-U-SQL ローカル実行は、次のツールで使用できます。
-* Azure Data Lake Tools for Visual Studio
-* Azure Data Lake U-SQL SDK
+## <a name="basic-concepts-for-local-run"></a>ローカル実行の基本的な概念
 
-## <a name="understand-the-data-root-folder-and-the-file-path"></a>データルート フォルダーとファイル パスについて
+次の表は、ローカル実行のためのコンポーネント、およびこれらのコンポーネントとクラウド実行との対応を示しています。
 
-ローカル実行と U-SQL SDK は、どちらもデータルート フォルダーを必要とします。 データルート フォルダーは、ローカル コンピューティング アカウント用の "ローカル ストア" で、 Data Lake Analytics アカウントの Azure Data Lake Store アカウントに相当します。 別のデータルート フォルダーへの切り換えは、別のストア アカウントへの切り換えと同じです。 さまざまなデータルート フォルダーで通常共有されるデータにアクセスする必要がある場合は、スクリプト内で絶対パスを使用す必要があります。 または、このデータルート フォルダー内に、共有データを指すファイル システムのシンボリック リンクを作成します (たとえば、NTFS で **mklink** を作成します)。
+|コンポーネント|ローカル実行|クラウド実行|
+|---------|---------|---------|
+|Storage|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
+|コンピューティング|U-SQL ローカル実行エンジン|Azure Data Lake Analytics サービス|
+|実行環境|ローカル コンピューター上の作業ディレクトリ|Azure Data Lake Analytics クラスター|
 
-データルート フォルダーは、以下の目的で使用されます。
+ローカル実行コンポーネントの詳細な説明:
 
-- データベース、テーブル、テーブル値関数 (TVF)、アセンブリなどのメタデータを格納する。
-- U-SQL で相対パスとして定義されている入力および出力パスを検索する。 相対パスを使用することにより、U-SQL プロジェクトを Azure にデプロイしやすくなります。
+### <a name="local-data-root-folder"></a>ローカル データ ルート フォルダー
 
-U-SQL スクリプトでは、相対パスとローカル絶対パスの両方を使用できます。 相対パスは、指定したデータルート フォルダー パスを基準としています。 サーバー側と互換性のあるスクリプトにするため、パスの区切り文字として "/" を使用することをお勧めします。 以下に相対パスとそれに相当する絶対パスの例をいくつか示します。 次の例では、"C:\LocalRunDataRoot" がデータルート フォルダーです。
+ローカル データ ルート フォルダーは、ローカル コンピューティング アカウント用の "ローカル ストア" です。 ローカル コンピューター上のローカル ファイル システム内のすべてのフォルダーをローカル データ ルート フォルダーにすることができます。 これは、Data Lake Analytics アカウントの既定の Azure Data Lake Store アカウントと同等です。 別のデータ ルート フォルダーへの切り替えは、別の既定のストア アカウントへの切り替えと同じです。 
 
-|相対パス|絶対パス|
-|-------------|-------------|
-|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/abc/def/input.csv |D:\abc\def\input.csv|
+データ ルート フォルダーは、次の操作のために使用されます。
+- データベース、テーブル、テーブル値関数、アセンブリなどのメタデータを格納する。
+- U-SQL スクリプトで相対パスとして定義されている入力および出力パスを検索する。 相対パスを使用すると、U-SQL スクリプトを Azure にデプロイすることが容易になります。
 
-## <a name="use-local-run-from-visual-studio"></a>Visual Studio からのローカル実行の使用
+### <a name="u-sql-local-run-engine"></a>U-SQL ローカル実行エンジン
 
-Data Lake Tools for Visual Studio により、Visual Studio で U-SQL ローカル実行機能が使用できます。 この機能を使用すると、以下の操作を行うことができます。
+U-SQL ローカル実行エンジンは、U-SQL ジョブ用の "ローカル コンピューティング アカウント" です。 ユーザーは、Azure Data Lake Tools for Visual Studio を使用して U-SQL ジョブをローカルで実行できます。 ローカル実行はまた、Azure Data Lake U-SQL SDK コマンド ラインやプログラミング インターフェイスでもサポートされています。 [詳細については、「Azure Data Lake U-SQL SDK」を参照してください](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)。
 
-- C# アセンブリと共に U-SQL スクリプトをローカルで実行する。
-- C# アセンブリをローカルでデバッグする。
-- サーバー エクスプローラーの U-SQL カタログ (ローカル データベース、アセンブリ、スキーマ、テーブル) を作成、表示、削除する。 ローカル カタログは、サーバー エクスプローラーから確認することもできます。
+### <a name="working-directory"></a>作業ディレクトリ
 
-    ![Data Lake Tools for Visual Studio ローカル実行のローカル カタログ](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-local-catalog.png)
+U-SQL スクリプトを実行する場合は、コンパイル結果や実行ログなどをキャッシュするために作業ディレクトリ フォルダーが必要です。 Azure Data Lake Tools for Visual Studio では、作業ディレクトリは U-SQL プロジェクトの作業ディレクトリです (通常は、`<U-SQL project root path>/bin/debug>` の下にあります)。 作業ディレクトリは、新しい実行がトリガーされるたびにクリーニングされます。
 
-Data Lake Tools インストーラーによって C:\LocalRunRoot フォルダーが作成され、既定のデータルート フォルダーとして使用されます。 ローカル実行の並列処理の既定値は 1 です。
+## <a name="local-run-in-visual-studio"></a>Visual Studio でのローカル実行
 
-### <a name="to-configure-local-run-in-visual-studio"></a>Visual Studio でローカル実行を構成するには
+Azure Data Lake Tools for Visual Studio には組み込みのローカル実行エンジンがあり、それがローカル コンピューティング アカウントとして表示されます。 U-SQL スクリプトをローカルで実行するには、スクリプトのエディターの端にあるドロップダウンで (Local-machine) または (Local-project) アカウントを選択し、**[送信]** をクリックします。
 
-1. Visual Studio を開きます。
-2. **[サーバー エクスプローラー]** を開きます。
-3. **[Azure]**  >  **[Data Lake Analytics]** の順に展開します。
-4. **[Data Lake]** メニューをクリックし、**[オプションと設定]** をクリックします。
-5. 左側のツリーで **[Azure Data Lake]** を展開し、**[全般]** を展開します。
+![Data Lake Tools for Visual Studio ローカル アカウントへのスクリプトの送信](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+ 
+## <a name="local-run-with-local-machine-account"></a>(Local-machine) アカウントでのローカル実行
 
-    ![Data Lake Tools for Visual Studio ローカル実行の設定の構成](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-configure.png)
+(Local-machine) アカウントは、ローカル ストア アカウントとして 1 つのローカル データ ルート フォルダーを持つ共有されたローカル コンピューティング アカウントです。 データ ルート フォルダーは、既定では "C:\Users\<username>\AppData\Local\USQLDataRoot" にあり、**[ツール] > [Data Lake] > [オプションと設定]** でも構成できます。
 
-ローカル実行を実行するには、Visual Studio U-SQL プロジェクトが必要です。 この部分は、Azure から U-SQL スクリプトを実行する場合と異なります。
+![Data Lake Tools for Visual Studio ローカル データ ルートの構成](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+  
+ローカル実行には U-SQL プロジェクトが必要です。 U-SQL プロジェクトの作業ディレクトリは、U-SQL ローカル実行の作業ディレクトリに使用されます。 ローカル実行中にコンパイル結果、実行ログ、その他のジョブの実行に関連したファイルが生成され、作業ディレクトリ フォルダーの下に格納されます。 スクリプトを再実行するたびに、作業ディレクトリ内のこれらのファイルはすべてクリーニングされ、再生成されることに注意してください。
 
-### <a name="to-run-a-u-sql-script-locally"></a>U-SQL スクリプトをローカルで実行するには
-1. Visual Studio で、U-SQL プロジェクトを開きます。   
-2. ソリューション エクスプローラーで U-SQL スクリプトを右クリックし、**[Submit Script (スクリプトの送信)]** をクリックします。
-3. スクリプトをローカルで実行する Analytics アカウントとして **[(Local) ((ローカル))]** を選択します。
-スクリプト ウィンドウの上部にある **[(Local) ((ローカル))]** アカウントをクリックしてから、**[送信]** をクリックすることもできます (または Ctrl + F5 キーボード ショートカットを使用します)。
+## <a name="local-run-with-local-project-account"></a>(Local-project) アカウントでのローカル実行
 
-    ![Data Lake Tools for Visual Studio ローカル実行のジョブの送信](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
+(Local-project) アカウントは、分離されたローカル データ ルート フォルダーを持つ、各プロジェクトのプロジェクトごとに分離されたローカル コンピューティング アカウントです。 ソリューション エクスプローラーで開かれているすべてのアクティブな U-SQL プロジェクトは、対応する `(Local-project: <project name>)` アカウントがサーバー エクスプローラーと U-SQL スクリプトのエディターの端の両方に示されています。 
 
-### <a name="debug-scripts-and-c-assemblies-locally"></a>スクリプトと C# アセンブリをローカルでデバッグする
+(Local-project) アカウントは、開発者のためのクリーンな分離開発環境を提供します。 すべてのローカル ジョブのメタデータや入出力データを格納する共有されたローカル データ ルート フォルダーがある (Local-machine) アカウントとは異なり、(Local-project) アカウントでは、U-SQL スクリプトが実行されるたびに U-SQL プロジェクトの作業ディレクトリの下に一時ローカル データ ルート フォルダーが作成されます。 この一時データ ルート フォルダーは、再ビルドまたは再実行が発生するとクリーニングされます。 
 
-Azure Data Lake Analytics サービスに提出し、登録しなくても C# アセンブリをデバッグできます。 分離コード ファイルと参照 C# プロジェクトの両方にブレークポイントを設定できます。
+U-SQL プロジェクトでは、プロジェクト参照およびプロパティを通して、この分離されたローカル実行環境を管理するための優れたエクスペリエンスが提供されます。 プロジェクト内の U-SQL スクリプトの入力データ ソースと、参照されるデータベース環境の両方を構成できます。
 
-#### <a name="to-debug-local-code-in-code-behind-file"></a>分離コード ファイルのローカル コードをデバッグするには
+### <a name="manage-input-data-source-for-local-project-account"></a>(Local-project) アカウントの入力データ ソースを管理する
 
-1. 分離コード ファイルにブレークポイントを設定します。
-2. F5 キーを押して、スクリプトをローカルでデバッグします。
+U-SQL プロジェクトでは、(Local-project) アカウントのローカル データ ルート フォルダーの作成とデータの設定を管理します。 一時データ ルート フォルダーは、再ビルドおよびローカル実行が発生するたびにクリーニングされ、U-SQL プロジェクトの作業ディレクトリの下に再作成されます。 ローカル ジョブの実行の前に、U-SQL プロジェクトによって構成されたすべてのデータ ソースがこの一時ローカル データ ルート フォルダーにコピーされます。 
 
-> [!NOTE]
-   > 次の手順は、Visual Studio 2015 でのみ機能します。 以前の Visual Studio では、pdb ファイルを手動で追加する必要があります。  
-   >
-   >
+データ ソースのルート フォルダーは、**U-SQL プロジェクトの右クリック > [プロパティ] > [Test Data Source] (テスト データ ソース)** で構成できます。 (Local-project) アカウントで U-SQL スクリプトを実行する場合は、**Test Data Source** フォルダー内のすべてのファイルおよびサブフォルダー (サブフォルダーの下のファイルを含む) が一時ローカル データ ルート フォルダーにコピーされます。 ローカル ジョブの実行が完了した後、その出力結果も、プロジェクトの作業ディレクトリ内の一時ローカル データ ルート フォルダーの下に見つけることができます。 プロジェクトが再ビルドされ、クリーニングされると、これらのすべての出力が削除およびクリーニングされることに注意してください。 
 
-#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>参照先の C# プロジェクトのローカル コードをデバッグするには
+![Data Lake Tools for Visual Studio プロジェクトのテスト データ ソースの構成](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-1. C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
-2. U-SQL ステートメントを使用して dll を登録します。
+### <a name="manage-referenced-database-environment-for-local-project-account"></a>(Local-project) アカウントの参照されるデータベース環境を管理する 
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-        
-3. C# コードにブレークポイントを設定します。
-4. F5 キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。
+U-SQL クエリで U-SQL データベース オブジェクトを使用するか、またはそれに対してクエリを実行する場合は、この U-SQL スクリプトをローカルで実行する前に、データベース環境をローカルで使用できるように準備する必要があります。 (Local-project) アカウントの場合は、U-SQL データベースの依存関係を U-SQL プロジェクト参照によって管理できます。 U-SQL プロジェクトに U-SQL データベース プロジェクト参照を追加できます。 (Local-project) アカウントで U-SQL スクリプトを実行する前に、参照されるすべてのデータベースが一時ローカル データ ルート フォルダーにデプロイされます。 さらに、実行のたびに、一時データ ルート フォルダーが新しい分離された環境としてクリーニングされます。
 
-## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Data Lake U-SQL SDK からのローカル実行の使用
+関連記事:
+* [U-SQL データベース プロジェクトで U-SQL データベース定義を管理する方法について](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)
+* [U-SQL プロジェクトで U-SQL データベース参照を管理する方法について](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 
-Visual Studio を使用してローカルで U-SQL スクリプトを実行するだけでなく、Azure Data Lake U-SQL SDK を使用して、コマンド ラインとプログラミング インターフェイスによってローカルで U-SQL スクリプトを実行できます。 これにより、U-SQL ローカル テストを拡張することができます。
+## <a name="difference-between-local-machine-and-local-project-account"></a>(Local-machine) アカウントと (Local-project) アカウントの違い
 
-詳細については、「[Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)」を参照してください。
+(Local-machine) アカウントは、ユーザーのローカル コンピューター上で Azure Data Lake Analytics アカウントをシミュレートすることを目的にしています。 ここでは、Azure Data Lake Analytics アカウントと同じエクスペリエンスが共有されます。 (Local-project) は、スクリプトをローカルで実行する前に、ユーザーのデータベース参照や入力データのデプロイに役立つ、わかりやすいローカル開発環境を提供することを目的にしています。 (Local-machine) アカウントは、すべてのプロジェクトからアクセスできる、共有された永続的な環境を提供します。 (Local-project) アカウントはプロジェクトごとの分離開発環境を提供し、実行のたびに更新されます。 そのため、(Local-project) アカウントは新しい変更をすばやく適用することによって、より高速な開発エクスペリエンスを提供します。
 
+次の表に、(Local-machine) アカウントと (Local-project) アカウントのさらに詳細な違いを示します。
+
+|違いの観点|(Local-machine)|(Local-project)|
+|----------------|---------------|---------------|
+|ローカル アクセス|すべてのプロジェクトからアクセスできます。|このアカウントにアクセスできるのは対応するプロジェクトだけです。|
+|ローカル データ ルート フォルダー|永続的なローカル フォルダー。 **[ツール] > [Data Lake] > [オプションと設定]** で構成されます。|U-SQL プロジェクトの作業ディレクトリの下の、ローカル実行のたびに作成される一時フォルダー。 このフォルダーは、再ビルドまたは再実行が発生するとクリーニングされます。|
+|U-SQL スクリプトの入力データ|永続的なローカル データ ルート フォルダーの下の相対パス。|**U-SQL プロジェクトの [プロパティ] > [Test Data Source] (テスト データ ソース)** で設定されます。 ローカル実行の前に、すべてのファイルおよびサブフォルダーが一時データ ルート フォルダーにコピーされます。|
+|U-SQL スクリプトの出力データ|永続的なローカル データ ルート フォルダーの下の相対パス。|一時データ ルート フォルダーに出力されます。 これらの結果は、再ビルドまたは再実行が発生するとクリーニングされます。|
+|参照されるデータベースのデプロイ|(Local-machine) アカウントに対して実行する場合、参照されるデータベースは自動的にはデプロイされません。 Azure Data Lake Analytics アカウントへの送信についても同じです。|参照されるデータベースは、ローカル実行の前に (Local-project) アカウントに自動的にデプロイされます。 再ビルドまたは再実行が発生すると、すべてのデータベース環境がクリーニングされ、再デプロイされます。|
+
+## <a name="local-run-with-u-sql-sdk"></a>U-SQL SDK でのローカル実行
+
+Visual Studio での U-SQL スクリプトのローカルでの実行に加えて、Azure Data Lake U-SQL SDK を使用して、コマンド ラインやプログラミング インターフェイスで U-SQL スクリプトをローカルで実行することもできます。 これらのインターフェイス経由で、U-SQL のローカル実行やテストを自動化できます。
+
+[詳細については、「Azure Data Lake U-SQL SDK」を参照してください](data-lake-analytics-u-sql-sdk.md)。
 
 ## <a name="next-steps"></a>次の手順
 
-* より複雑なクエリを表示する場合は、[Azure Data Lake Analytics を使用した Web サイトのログの分析](data-lake-analytics-analyze-weblogs.md)に関するページをご覧ください。
-* ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。
-* 頂点実行ビューの使用方法については、「[Data Lake Tools for Visual Studio での頂点実行ビューの使用](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
+- [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+- [Azure Data Lake Analytics の CI/CD パイプラインを設定する方法](data-lake-analytics-cicd-overview.md)
+- [U-SQL データベース プロジェクトを使用して U-SQL データベースを開発する](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+- [Azure Data Lake Analytics コードをテストする方法](data-lake-analytics-cicd-test.md)

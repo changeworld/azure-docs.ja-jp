@@ -12,17 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/1/2018
+ms.date: 7/6/2018
 ms.author: raiye
-ms.openlocfilehash: aaf91f8394ac4fd4fa6372c6c0f17ff92178589e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737539"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902165"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="june-guest-os"></a>June ゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-06 | [4284880] |Windows 10 セキュリティ |5.20 |2018 年 6 月 12 日 |
+| Rel 18-06 | [4284867] |Windows セキュリティのみ |2.75 |2018 年 6 月 12 日 |
+| Rel 18-06 | [4284846] |Windows セキュリティのみ |3.62 |2018 年 6 月 12 日 |
+| Rel 18-06 | [4284878] |Windows セキュリティのみ |4.55 |2018 年 6 月 12 日 |
+| Rel 18-06 | [4230450] |Internet Explorer |2.75、3.62、4.75 |2018 年 6 月 12 日 |
+| Rel 18-06 | [4287903] |点滅 |3.62、4.75、5.20 |2018 年 6 月 12 日 |
+| 該当なし | [4103718] |5 月のセキュリティ以外のロールアップ |2.75 |2018 年 5 月 8 日 |
+| 該当なし | [4103730] |5 月のセキュリティ以外のロールアップ |3.62 |2018 年 5 月 8 日 |
+| 該当なし | [4103725] |5 月のセキュリティ以外のロールアップ |4.55 |2018 年 5 月 8 日 |
+| 該当なし | [4040980]、[4040977] |.NET の 2017 年 9 月のセキュリティ以外のロールアップ |2.75 |2017 年 11 月 14 日 |
+| 該当なし | [4095874] |.NET 3.5 の 5 月のセキュリティ以外のリリース |2.75 |2018 年 5 月 8 日 |
+| 該当なし | [4096495] |.NET 4.x の 5 月のセキュリティ以外のリリース |2.75 |2018 年 5 月 8 日 |
+| 該当なし | [4040975] |.NET の 2017 年 9 月のセキュリティ以外のロールアップ |3.62 |2017 年 11 月 14 日 |
+| 該当なし | [4095872] |.NET 3.5 の 5 月のセキュリティ以外のリリース |3.62 |2018 年 5 月 8 日 |
+| 該当なし | [4096494] |.NET 4.x の 5 月のセキュリティ以外のリリース |3.62 |2018 年 5 月 8 日 |
+| 該当なし | [4096416] |.NET 4.5x の 5 月のセキュリティ以外のリリース |3.62 |2018 年 5 月 8 日 |
+| 該当なし | [4040974]、[4040972] |.NET の 2017 年 9 月のセキュリティ以外のロールアップ |4.55 |2017 年 11 月 14 日 |
+| 該当なし | [4043763] |.NET の 2017 年 10 月のセキュリティ以外のロールアップ |4.55 |2017 年 9 月 12 日 |
+| 該当なし | [4095876] |.NET 4.x の 5 月のセキュリティ以外のリリース |4.55 |2018 年 5 月 8 日 |
+| 該当なし | [4096417] |.NET 4.5x の 5 月のセキュリティ以外のリリース |4.55 |2018 年 5 月 8 日 |
+| 該当なし | [4132216] |5 月 SSU |5.20 |2018 年 5 月 8 日 |
 
 ## <a name="may-guest-os"></a>May ゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -648,6 +673,32 @@ ms.locfileid: "34737539"
 | 該当なし |[3007054] |Windows で Windows ストア アプリケーション内のドキュメントを印刷するときに、PIN で保護された印刷オプションが常に表示される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
+
+
+[4284880]: http://support.microsoft.com/kb/4284880
+[4284867]: http://support.microsoft.com/kb/4284867
+[4284846]: http://support.microsoft.com/kb/4284846
+[4284878]: http://support.microsoft.com/kb/4284878
+[4230450]: http://support.microsoft.com/kb/4230450
+[4287903]: http://support.microsoft.com/kb/4287903
+[4103718]: http://support.microsoft.com/kb/4103718
+[4103718]: http://support.microsoft.com/kb/4103718
+[4103730]: http://support.microsoft.com/kb/4103730
+[4103725]: http://support.microsoft.com/kb/4103725
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040977]: http://support.microsoft.com/kb/4040977
+[4095874]: http://support.microsoft.com/kb/4095874
+[4096495]: http://support.microsoft.com/kb/4096495
+[4040975]: http://support.microsoft.com/kb/4040975
+[4095872]: http://support.microsoft.com/kb/4095872
+[4096494]: http://support.microsoft.com/kb/4096494
+[4096416]: http://support.microsoft.com/kb/4096416
+[4040974]: http://support.microsoft.com/kb/4040974
+[4040972]: http://support.microsoft.com/kb/4040972
+[4043763]: http://support.microsoft.com/kb/4043763
+[4095876]: http://support.microsoft.com/kb/4095876
+[4096417]: http://support.microsoft.com/kb/4096417
+[4132216]: http://support.microsoft.com/kb/4132216
 
 [4103721]: http://support.microsoft.com/kb/4103721
 [4103727]: http://support.microsoft.com/kb/4103727 

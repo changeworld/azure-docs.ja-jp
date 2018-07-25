@@ -5,21 +5,17 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/18/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: dd50e4f6ebc5fdf5496a5127fde20bd052087b59
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: abff3f715a1fccba172147f02b83f7209f87cf9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783345"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902518"
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 
@@ -65,7 +61,10 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp)の Web アプリケーション コードを使用することもできます。 
 
-アプリを開始した後、ブラウザーで EventHubsMSIDemo.aspx を参照します。 または、スタート ページとして設定します。 コードは EventHubsMSIDemo.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Event Hubs に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。 
+>[!NOTE] 
+> MSI 機能のプレビュー中は、新しい API にアクセスするために、[Service Bus ライブラリのプレビュー バージョン](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview)を必ず使用してください。 
+
+アプリを開始した後、ブラウザーで EventHubsMSIDemo.aspx を参照します。 または、スタート ページとして設定します。 コードは EventHubsMSIDemo.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Event Hubs に接続してイベントを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。 
 
 [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) オブジェクトを初期化する方法に注意してください。 共有アクセス トークン (SAS) トークン プロバイダーを使用するのではなく、コードで `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` を呼び出して管理対象サービス ID のトークン プロバイダーを作成します。 そのため、保持および使用するシークレットはありません。 管理対象サービス ID コンテキストから Event Hubs へのフローと承認ハンドシェイクは、トークン プロバイダーによって自動的に処理されます。これは SAS の使用よりも単純なモデルです。
 

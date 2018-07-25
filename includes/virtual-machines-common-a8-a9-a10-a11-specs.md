@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.date: 05/29/2018
+ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: ee32886ddb74bdbbe0f240310629c8ef26230a68
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "34669348"
 ---
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 * **Azure サブスクリプション** – 多数のコンピューティング集中型インスタンスをデプロイするには、従量課金制サブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 
-* **価格と可用性** - これらの VM サイズは、Standard 価格レベルでのみ提供されます。 各 Azure リージョンで利用できるかどうかについては、[リージョン別の利用可能な製品] (https://azure.microsoft.com/regions/services/)) を参照してください。 
+* 
+  **価格と可用性** - これらの VM サイズは、Standard 価格レベルでのみ提供されます。 各 Azure リージョンで利用できるかどうかについては、[リージョン別の利用可能な製品] (https://azure.microsoft.com/regions/services/)) を参照してください。 
 * **コア クォータ** – 場合によっては、Azure サブスクリプションのコア クォータを既定値から増やす必要があります。 サブスクリプションによっては、H シリーズを含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../articles/azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 (既定の制限は、サブスクリプション カテゴリによって異なる場合があります。)
   
   > [!NOTE]
@@ -36,4 +38,4 @@ ms.lasthandoff: 03/16/2018
 > Azure では、IB 上の IP はサポートされません。 RDMA over IB のみがサポートされます。
 >
 
-RDMA 対応の HPC VM は、同じ可用性セットまたは VM スケール セット (Azure Resource Manager デプロイメント モデルを使用している場合) または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 RDMA 対応の HPC VM が Azure RDMA ネットワークにアクセスするための追加の要件があります。
+RDMA 対応の HPC VM は、同じ可用性セットまたは VM スケール セット (Azure Resource Manager デプロイ モデルを使用している場合) または同じクラウド サービス (クラシック デプロイ モデルを使用している場合) 内にデプロイします。 VM スケール セットを使用する場合は必ず、デプロイを 1 つの配置グループに制限してください。たとえば、Resource Manager テンプレートで、*singlePlacementGroup* プロパティを *true* に設定します。 RDMA 対応の HPC VM が Azure RDMA ネットワークにアクセスするための追加の要件があります。

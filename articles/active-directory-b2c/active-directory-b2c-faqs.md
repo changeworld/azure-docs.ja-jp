@@ -6,19 +6,22 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939937"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928734"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Azure Portal で Azure AD B2C の拡張機能にアクセスできないのはなぜですか。
+Azure AD 拡張機能が動作しない一般的な理由は 2 つあります。  Azure AD B2C では、ディレクトリのユーザー ロールがグローバル管理者である必要があります。  アクセス権限が必要だと思われる場合は、管理者に問い合わせてください。  グローバル管理者権限がある場合、ユーザーが Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。  [Azure AD B2C ディレクトリを作成する](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)手順を確認してください。
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
 Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。  Azure AD テナントは、組織を表します。  Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。  Azure AD B2C では、カスタム ポリシー (パブリック プレビュー中) を使用して、Azure AD にフェデレーションし、組織の従業員の認証を許可することができます。
@@ -97,9 +100,9 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 いいえ。Azure AD B2C では Azure AD Premium と同じレポート セットはサポートされていません。 ただし、多くの共通点があります。
 
-* **サインイン レポート**は、Azure Portal でのみ利用でき ([Azure Active Directory] > [アクティビティ] > [サインイン])、Graph API では利用できません。 サインイン レポートは、各サインインの記録を、詳細は除外して提供します。
-* **監査レポート**は、Azure Portal でのみ利用でき ([Azure Active Directory] > [アクティビティ] > [監査ログ])、Graph API では利用できません。 監査レポートには、管理アクティビティとアプリケーション アクティビティの両方が含まれます。 
-* **使用状況レポート**は、[Usage Reporting API](active-directory-b2c-reference-usage-reporting-api.md) によってのみ利用でき、Azure Portal では利用できません。 使用状況レポートには、ユーザーの数、ログインの回数、MFA のボリュームが含まれます。 
+* **サインイン レポート**は、各サインインの記録を、詳細は除外して提供します。
+* **監査レポート**には、管理アクティビティとアプリケーション アクティビティの両方が含まれます。 
+* **使用状況レポート**には、ユーザーの数、ログインの回数、MFA のボリュームが含まれます。 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C で提供されているページの UI をローカライズできますか。 どの言語がサポートされていますか。
 はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。  Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。

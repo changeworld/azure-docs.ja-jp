@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 638b52edb554b6bddb206943fca42b03bdc69060
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 033ae1de25fbaada0c2bce715e6bdd71818b341a
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "30845133"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906804"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -32,6 +32,10 @@ Fs シリーズには、Premium Storage に加え、F シリーズのすべて�
 ## <a name="fsv2-series-sup1sup"></a>Fsv2 シリーズ <sup>1</sup>
 
 ACU: 195 ～ 210
+
+Premium Storage:  サポートされています
+
+Premium Storage Caching:  サポートされています
 
 | サイズ             | vCPU の数 | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
@@ -53,6 +57,10 @@ ACU: 195 ～ 210
 
 ACU: 210 ～ 250
 
+Premium Storage:  サポートされています
+
+Premium Storage Caching:  サポートされています
+
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4,000/32 (12) |3,200/48 |2/750 |
@@ -71,6 +79,10 @@ MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 ## <a name="f-series"></a>F シリーズ
 
 ACU: 210 ～ 250
+
+Premium Storage:  サポートされていません
+
+Premium Storage Caching:  サポートされていません
 
 | サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
