@@ -427,8 +427,8 @@ Visual Studio Team Service でデータベース デプロイ タスクをセッ
 
 |パラメーター|説明|既定値|必須|
 |---------|-----------|-------------|--------|
-|パッケージ|デプロイする U-SQL データベース デプロイ パッケージのパス|null|true|
-|データベース|デプロイ先または作成するデータベースの名前|master|false|
+|Package|デプロイする U-SQL データベース デプロイ パッケージのパス|null|true|
+|Database|デプロイ先または作成するデータベースの名前|master|false|
 |LogFile|ログ記録のためのファイルのパス。既定では標準出力 (コンソール)|null|false|
 |LogLevel|ログ レベル : 詳細、標準、警告、エラー|LogLevel.Normal|false|
 
@@ -442,12 +442,12 @@ Visual Studio Team Service でデータベース デプロイ タスクをセッ
 
 |パラメーター|説明|既定値|必須|
 |---------|-----------|-------------|--------|
-|アカウント|どの Azure Data Lake Analytics アカウントにデプロイするかをアカウント名で指定する|null|true|
+|Account|どの Azure Data Lake Analytics アカウントにデプロイするかをアカウント名で指定する|null|true|
 |ResourceGroup|Azure Data Lake Analytics アカウントの Azure リソース グループ名|null|true|
 |SubscriptionId|Azure Data Lake Analytics アカウントの Azure サブスクリプション ID|null|true|
-|テナント|テナント名 (AAD ディレクトリのドメイン名。Azure portal のサブスクリプション管理ページで確認可能)|null|true|
+|Tenant|テナント名 (AAD ディレクトリのドメイン名。Azure portal のサブスクリプション管理ページで確認可能)|null|true|
 |AzureSDKPath|Azure SDK 内の依存アセンブリを検索するためのパス|null|true|
-|対話|認証に対話型モードを使用するかどうか|false|false|
+|Interactive|認証に対話型モードを使用するかどうか|false|false|
 |ClientId|非対話型認証のための AAD アプリケーション ID。非対話型認証に必要|null|非対話型認証に必要|
 |Secrete|非対話型認証用のシークレット/パスワード。信頼された/安全な環境でのみ使用すること|null|非対話型認証に必要、または SecreteFile を使用|
 |SecreteFile|非対話型認証用のシークレット/パスワードを保存したファイル。必ず、現在のユーザーによる読み取りのみが可能な状態を維持すること|null|非対話型認証に必要、または Secrete を使用|
