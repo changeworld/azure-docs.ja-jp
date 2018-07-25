@@ -291,6 +291,8 @@
           items:
             - name: iothub-explorer を使用したクラウド デバイス メッセージングの管理
               href: iot-hub-explorer-cloud-device-messaging.md
+            - name: Azure IoT Toolkit for VS Code を使用したクラウド デバイス メッセージングの管理
+              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
             - name: Azure Blob Storage への IoT Hub メッセージの保存
               href: iot-hub-store-data-in-azure-table-storage.md
             - name: Power BI でのデータ視覚化

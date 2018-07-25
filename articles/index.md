@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 6f1378116ce41646a0d94f1b6f010e1010d9c507
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 7db35731a7a95a1ba327445a2044050c28fafb4c
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145521"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224206"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -809,7 +809,7 @@ Azure DevOps プロジェクト </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://docs.microsofttranslator.com/speech-translate.html">
+                                            <a href="/azure/cognitive-services/translator-speech/">
                                                 <img src="media/index/API_TranslatorSpeech.svg" alt="" />
                                                 <p>Translator Speech API</p>
                                             </a>

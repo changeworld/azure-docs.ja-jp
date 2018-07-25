@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: b33dbc4b7cb654f71fd619364a25791cbce1d219
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226487"
 documentType: LandingData
 title: Key Vault のドキュメント
 metadata:
@@ -15,12 +21,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 1dd00a68510ef5d1dbb726a3aea4a85897256a5b
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2018
-  ms.locfileid: "32180795"
 abstract:
   description: Key Vault を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソースやソリューションにアクセスして暗号化するキーを作成および管理する方法を紹介します。
 sections:
@@ -31,6 +31,10 @@ sections:
   - type: list
     style: icon48
     items:
+    - image:
+        src: media/index/logo_NET.svg
+      text: .NET
+      href: /azure/key-vault/quick-create-net
     - image:
         src: media/index/cli.svg
       text: Azure CLI
@@ -67,7 +71,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/keyvault">REST API</a></p>
