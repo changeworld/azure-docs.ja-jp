@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: e7e79d51b59d82ebf91d68f0714b8eb7bcaafbe6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a8ff6abd392b91ba553a92ac161421ced5a045bb
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443632"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136470"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -31,10 +31,12 @@ ms.locfileid: "37443632"
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: 一般公開 (全 Azure リージョン)。
 - **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: 一般公開 (全 Azure リージョン)。
 - **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: 一般公開 (全 Azure パブリック クラウド リージョン)。 
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビュー (全 Azure パブリック クラウド リージョン)。
-- **PostgreSQL および MySQL 向け Azure データベースサービス**: データベース サービスを利用できる Azure リージョンでプレビュー段階にあります。
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能 (全 Azure パブリック クラウド リージョン)。
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能。
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能。
+- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: プレビューで利用可能。
+- **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能 (データベース サービスを利用できる Azure リージョン)。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8bf8388829504b18e71ec597d21b844e29a82346
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6e5b9ce7a4625cccdfaa29492250a5e8255ec23d
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931136"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136521"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows 仮想マシン用の Azure 仮想ネットワークを作成および管理する
 
@@ -49,7 +49,7 @@ Azure 仮想ネットワークを使用すると、仮想マシン、インタ�
 - *myVNet* - VM 間、およびインターネットと通信するために VM によって使用される仮想ネットワーク。
 - *myFrontendSubnet* - フロントエンド リソースによって使用される、*myVNet* 内のサブネット。
 - *myPublicIPAddress* - インターネットから *myFrontendVM* にアクセスするために使用するパブリック IP アドレス。
-- *myFrontentNic* - *myFrontendVM* が *myBackendVM* と通信するために使用するネットワーク インターフェイス。
+- *myFrontendNic* - *myFrontendVM* が *myBackendVM* と通信するために使用するネットワーク インターフェイス。
 - *myFrontendVM* -インターネットと *myBackendVM* との間の通信に使用する VM。
 - *myBackendNSG* - *myFrontendVM* と *myBackendVM* 間の通信を制御するネットワーク セキュリティ グループ。
 - *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースによって使用されるサブネット。

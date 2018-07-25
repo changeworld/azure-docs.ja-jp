@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 9ef6b216889416ea00786dcd3043d6e0f246b305
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 96105931bca8c0e75fb89552eb91af47bd860e3a
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595475"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136708"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 

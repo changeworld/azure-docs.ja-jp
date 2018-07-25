@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/25/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 576558f7ab3ae9a0e3ceebb65d19f689b4836022
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 9b8f87f3cf09fef020ceed0166dd1652617ef605
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958818"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126611"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
@@ -63,7 +63,9 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 3. アプリやコンピューターの開始または停止など、リソースの管理には命令型コマンドを実行します。
 4. リソース グループ内の同じライフサイクルでリソースを調整します。 リソースのその他すべての整理には、タグを使用します。
 
-企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。
+企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)」を参照してください。
+
+グローバル Azure、Azure ソブリン クラウド、および Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。
 
 ## <a name="resource-groups"></a>リソース グループ
 リソース グループを定義する際、次のような考慮すべき要素があります。
@@ -283,6 +285,7 @@ Azure の SDK は、複数の言語とプラットフォームで利用できま
 * さらに詳しくテンプレートの作成方法を解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
 * テンプレートで使用できる関数については、 [テンプレートの関数](resource-group-template-functions.md)
 * Visual Studio と Resource Manager の使用については、「 [Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+* クラシックから ARM へのリソースの移行については、[クラシックから Azure Resource Manager への移行](resource-manager-deployment-model.md#migrate-from-classic-to-resource-manager)に関するセクションをご覧ください。
 
 この概要のデモンストレーション ビデオを次に示します。
 

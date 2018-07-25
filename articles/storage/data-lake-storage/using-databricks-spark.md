@@ -1,26 +1,26 @@
 ---
-title: Spark を使用して Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする | Microsoft Docs
-description: Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を学習します。
+title: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする | Microsoft Docs
+description: Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を説明します。
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096918"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136405"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>チュートリアル: Spark を使用して Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
 
-このチュートリアルでは、Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 プレビュー対応アカウント内のデータを照会する方法を学習します。
+このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 プレビュー対応アカウント内のデータを照会する方法を説明します。
 
 > [!div class="checklist"]
 > * Databricks クラスターを作成する
@@ -51,7 +51,7 @@ ms.locfileid: "37096918"
 
 次の手順では、[Databricks クラスター](https://docs.azuredatabricks.net/)を作成して、データ ワークスペースを作成します。
 
-1. [Databricks サービス](https://ms.portal.azure.com/#create/Microsoft.Databricks)を作成し、**myFlightDataService** という名前を付けます (このサービスを作成するときに、*[ダッシュボードにピン留めする]* チェックボックスを必ずオンにします)。
+1. [Databricks サービス](https://ms.portal.azure.com/#create/Microsoft.Databricks)を作成し、**myFlightDataService** という名前を付けます (このサービスを作成するときに、*[ダッシュボードにピン留めする]* チェック ボックスを必ずオンにします)。
 2. **[Launch Workspace]\(ワークスペースの起動\)** をクリックして、新しいブラウザー ウィンドウでワークスペースを開きます。
 3. 左側のナビゲーション バーで **[クラスター]** をクリックします。
 4. **[クラスターの作成]** をクリックします。

@@ -464,7 +464,7 @@ ms.locfileid: "37917229"
 | description  |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
-| id |セキュリティ イベントの一意リソース識別子。 |
+| identity |セキュリティ イベントの一意リソース識別子。 |
 | level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
@@ -544,7 +544,7 @@ ms.locfileid: "37917229"
 | description  |推奨イベントを説明する静的テキスト |
 | eventDataId | 推奨イベントの一意の識別子。 |
 | category | 常に "Recommendation" |
-| id |推奨イベントの一意のリソース ID。 |
+| identity |推奨イベントの一意のリソース ID。 |
 | level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
 | operationName |操作の名前。  常に "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |リソースのリソース グループの名前。 |
@@ -576,7 +576,7 @@ Azure アクティビティ ログをストレージ アカウントまたは Ev
 | durationMs | 該当なし | 常時 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| identity | claim と authorization プロパティ |  |
+| identity | 要求と承認プロパティ |  |
 | Level | Level |  |
 | location | 該当なし | イベントが処理される場所。 *これは、リソースの場所ではなく、イベントが処理される場所です。このプロパティは、今後の更新で削除されます。* |
 | Properties | properties.eventProperties |  |

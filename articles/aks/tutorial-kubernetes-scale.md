@@ -9,25 +9,25 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 22f7f9aee791d315300ffdc4dc9f708a80a5baf7
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934381"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39127412"
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
 ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。
 
-このチュートリアルでは、8 つあるうちの 5 番目のパートで、アプリのポッドをスケールアウトし、ポッドの自動スケーリングを試します。 また、Azure VM ノードの数をスケーリングして、クラスターがワークロードをホストする容量を変更する方法についても説明します。 次のタスクを行います。
+このチュートリアルでは、7 つあるうちの 5 番目のパートで、アプリのポッドをスケールアウトし、ポッドの自動スケーリングを試します。 また、Azure VM ノードの数をスケーリングして、クラスターがワークロードをホストする容量を変更する方法についても説明します。 次のタスクを行います。
 
 > [!div class="checklist"]
 > * Kubernetes の Azure ノードのスケーリング
 > * Kubernetes ポッドの手動スケーリング
 > * アプリのフロントエンドを実行する自動スケール ポッドの構成
 
-その後のチュートリアルでは、Azure Vote アプリケーションを更新し、Kubernetes クラスターを監視するように Log Analytics を構成します。
+後続のチュートリアルでは、Azure Vote アプリケーションが新しいバージョンに更新されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -105,7 +105,12 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする
 
-Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。
+Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、リソース使用率を Kubernetes に提供するために使用します。 Metrics Server をインストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kuberenetes 1.8+][metrics-server-github] を参照してください。
+
+```console
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+kubectl create -f metrics-server/deploy/1.8+/
+```
 
 自動スケーラーを使うには、ポッドで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーは 0.25 CPU を要求します。上限は 0.5 CPU です。 設定は次のようになります。
 
@@ -118,7 +123,6 @@ resources:
 ```
 
 次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、`azure-vote-front` のデプロイのポッド数を自動スケーリングします。 ここでは、CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 10 個まで増やします。
-
 
 ```azurecli
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -158,6 +162,8 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
+[metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
