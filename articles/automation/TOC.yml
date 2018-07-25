@@ -99,6 +99,8 @@
           href: automation-runbook-output-and-messages.md
         - name: ソース管理の統合
           href: automation-source-control-integration.md
+        - name: グラフィカル Runbook SDK による Runbook の作成
+          href: graphical-runbook-sdk.md
     - name: 自動化
       items:
         - name: Runbook を開始する

@@ -7,7 +7,7 @@
 ## [キー コンテナーの作成 - CLI](quick-create-cli.md)
 ## [キー コンテナーの作成 - PowerShell](quick-create-powershell.md)
 ## [キー コンテナーの作成 - ポータル](quick-create-portal.md)
-
+## [キー コンテナーからの読み取り - .NET](quick-create-net.md)
 # チュートリアル
 ## [Key Vault からシークレットを読み取る](tutorial-web-application-keyvault.md)
 ## [Key Vault を使ってみる](key-vault-get-started.md)

@@ -157,18 +157,26 @@
           href: iot-accelerators-device-simulation-custom-model.md
 - name: リファレンス
   items:
-    - name: 開発者向けリファレンス ガイド
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-    - name: 開発者向けトラブルシューティング ガイド
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-    - name: セキュリティのアーキテクチャ
-      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-    - name: セキュリティのベスト プラクティス
-      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-    - name: IoT デプロイのセキュリティ保護
-      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-    - name: 徹底的なセキュリティ
-      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+    - name: リモート監視
+      items:
+        - name: 開発者向けリファレンス ガイド
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: 開発者向けトラブルシューティング ガイド
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+    - name: デバイスのシミュレーション
+      items:
+        - name: 開発者向けリファレンス ガイド
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+    - name: セキュリティ
+      items:
+        - name: セキュリティのアーキテクチャ
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+        - name: セキュリティのベスト プラクティス
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+        - name: IoT デプロイのセキュリティ保護
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+        - name: 徹底的なセキュリティ
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
 - name: 関連項目
   items:
     - name: 解決方法
@@ -203,6 +211,18 @@
       href: /azure/machine-learning/
 - name: リソース
   items:
+    - name: GitHub リポジトリ
+      items:
+        - name: リモート監視 (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: リモート監視 (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: 接続済みファクトリ
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 予測メンテナンス
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+        - name: デバイスのシミュレーション
+          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: FAQ
